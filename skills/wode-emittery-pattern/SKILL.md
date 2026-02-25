@@ -1,9 +1,6 @@
 ---
 name: wode-emittery-pattern
-description: |
-  USE THIS SKILL WHEN the user needs to implement type-safe event-driven architecture using Emittery in React applications.
-  This pattern enforces: (1) as-const event type objects (never enums), (2) 'Module:Action' naming convention, (3) Typed Emittery instances, (4) Sidecar component pattern for side-effects, (5) useEmitteryListen hook for subscriptions.
-  Trigger keywords: "事件驱动", "Emittery", "事件发射", "Sidecar 模式", "useEmitteryListen", "event emitter".
+description: 'Use when implementing event-driven communication between React components using Emittery, including event types, sidecar components, or subscription hooks'
 ---
 
 # Wode Emittery Event-Driven Pattern

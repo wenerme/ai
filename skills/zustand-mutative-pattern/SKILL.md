@@ -1,9 +1,6 @@
 ---
 name: zustand-mutative-pattern
-description: |
-  USE THIS SKILL EXCLUSIVELY WHEN implementing React state management using Zustand in this project's specific architecture.
-  This pattern enforces: (1) Context-based scope isolation, (2) 'zustand-mutative' for immutable updates, (3) Strict 'actions' namespace for state mutations, (4) Event-driven side-effects via Emittery, (5) 'useShallow' for performance.
-  Trigger keywords: "zustand", "状态管理", "createStore", "useShallow", "mutative", "状态作用域隔离".
+description: 'Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions namespace patterns'
 ---
 
 # Zustand Context-Mutative Architecture

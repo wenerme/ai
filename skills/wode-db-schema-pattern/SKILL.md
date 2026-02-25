@@ -1,9 +1,6 @@
 ---
 name: wode-db-schema-pattern
-description: |
-  USE THIS SKILL WHEN the user needs to design, create, or modify PostgreSQL database table schemas in the Wode project architecture.
-  This pattern enforces: (1) K-Sortable IDs (ULID/UUIDv7) with type prefixes, (2) Multi-tenant isolation via tid, (3) Strict naming conventions (singular tables, _at/_id/_type suffixes, PascalCase enums), (4) Standard field templates, (5) Extension data strategy (attributes/properties/extensions).
-  Trigger keywords: "设计表结构", "数据库 schema", "主键策略", "多租户表", "ULID", "UUIDv7", "create table".
+description: 'Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy, multi-tenant isolation, or naming conventions'
 ---
 
 # Wode DB Schema Pattern
