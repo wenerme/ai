@@ -8,7 +8,7 @@ bunx skills add wenerme/ai --skill tmux-session-manager
 <!--region skills-->
 ## Skills
 
-> 6 skills available
+> 8 skills available
 
 | Skill | Description |
 |-------|-------------|
@@ -17,6 +17,8 @@ bunx skills add wenerme/ai --skill tmux-session-manager
 | `bun-ffi-interop-pattern` | USE THIS SKILL STRICTLY WHEN the user requests to call Native libraries (C/C++, Rust, Go compiled shared libs) using... |
 | `orpc-implementation-sops` | USE THIS SKILL WHEN the user needs to build, update, or refactor oRPC (TypeScript type-safe RPC) contracts, server... |
 | `tmux-session-manager` | USE THIS SKILL WHEN the user needs to execute shell commands, run builds, start services, or monitor logs in a visible... |
+| `wode-db-schema-pattern` | USE THIS SKILL WHEN the user needs to design, create, or modify PostgreSQL database table schemas in the Wode project... |
+| `wode-emittery-pattern` | USE THIS SKILL WHEN the user needs to implement type-safe event-driven architecture using Emittery in React... |
 | `zustand-mutative-pattern` | USE THIS SKILL EXCLUSIVELY WHEN implementing React state management using Zustand in this project's specific... |
 
 <details>
@@ -77,6 +79,30 @@ Core triggers:
 (3) Collaborative debugging within the user's active terminal context.
 (4) Managing background services or tailing log streams.
 Provides the SOP for safely interacting with the user's tmux environment.
+
+</details>
+<details>
+<summary><code>wode-db-schema-pattern</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill wode-db-schema-pattern
+```
+
+USE THIS SKILL WHEN the user needs to design, create, or modify PostgreSQL database table schemas in the Wode project architecture.
+This pattern enforces: (1) K-Sortable IDs (ULID/UUIDv7) with type prefixes, (2) Multi-tenant isolation via tid, (3) Strict naming conventions (singular tables, _at/_id/_type suffixes, PascalCase enums), (4) Standard field templates, (5) Extension data strategy (attributes/properties/extensions).
+Trigger keywords: "设计表结构", "数据库 schema", "主键策略", "多租户表", "ULID", "UUIDv7", "create table".
+
+</details>
+<details>
+<summary><code>wode-emittery-pattern</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill wode-emittery-pattern
+```
+
+USE THIS SKILL WHEN the user needs to implement type-safe event-driven architecture using Emittery in React applications.
+This pattern enforces: (1) as-const event type objects (never enums), (2) 'Module:Action' naming convention, (3) Typed Emittery instances, (4) Sidecar component pattern for side-effects, (5) useEmitteryListen hook for subscriptions.
+Trigger keywords: "事件驱动", "Emittery", "事件发射", "Sidecar 模式", "useEmitteryListen", "event emitter".
 
 </details>
 <details>

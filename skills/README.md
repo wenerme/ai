@@ -63,6 +63,6 @@ allowed-tools: tool1 tool2    # 可选，实验性，预授权工具列表
 
 - [agentskills.io](https://agentskills.io/) — 官方站点
 - [agentskills/agentskills](https://github.com/agentskills/agentskills) — 规范仓库
-- [skillsmp.com](https://skillsmp.com/) — 使用指南
+- [skillsmp.com](https://skillsmp.com/) — skills marketplace
 - [skills.sh](https://skills.sh) — Registry (`npx skills add <owner/repo>`)
 - [context7.com](https://context7.com/?tab=skills) — Registry (`npx ctx7 skills search <name>`)
