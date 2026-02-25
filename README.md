@@ -1,20 +1,23 @@
 # ai
-AI related stuff
+
+A curated collection of AI Agent Skills — some crafted by me, some from the community.
 
 ```bash
-bunx skills add wenerme/ai --skill tmux-session-manager
+# Install a skill
+npx skills add wenerme/ai --skill <skill-name>
 ```
 
 <!--region skills-->
 ## Skills
 
-> 8 skills available
+> 9 skills available
 
 | Skill | Description |
 |-------|-------------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... |
 | `bun-ffi-interop-pattern` | USE THIS SKILL STRICTLY WHEN the user requests to call Native libraries (C/C++, Rust, Go compiled shared libs) using... |
+| `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... |
 | `orpc-implementation-sops` | USE THIS SKILL WHEN the user needs to build, update, or refactor oRPC (TypeScript type-safe RPC) contracts, server... |
 | `tmux-session-manager` | USE THIS SKILL WHEN the user needs to execute shell commands, run builds, start services, or monitor logs in a visible... |
 | `wode-db-schema-pattern` | USE THIS SKILL WHEN the user needs to design, create, or modify PostgreSQL database table schemas in the Wode project... |
@@ -51,6 +54,16 @@ npx skills add wenerme/ai --skill bun-ffi-interop-pattern
 USE THIS SKILL STRICTLY WHEN the user requests to call Native libraries (C/C++, Rust, Go compiled shared libs) using `bun:ffi`.
 Core scenarios: (1) Loading shared libraries (.so/.dylib/.dll) via dlopen, (2) Defining FFI function signatures, (3) Safe pointer and memory manipulation, (4) Reading C struct data via memory offsets, (5) Handling Pass-by-Value struct limitations.
 Trigger keywords: "bun:ffi", "调用 native 库", "dlopen", "FFI 指针", "C 结构体", "toArrayBuffer", "CString".
+
+</details>
+<details>
+<summary><code>chrome-devtools</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill chrome-devtools
+```
+
+Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automating browser interactions, analyzing performance, or inspecting network requests. This skill does not apply to `--slim` mode (MCP configuration).
 
 </details>
 <details>
