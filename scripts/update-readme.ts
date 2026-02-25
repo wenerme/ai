@@ -5,11 +5,23 @@ import { parse as parseYaml } from "yaml";
 const projectDir = join(import.meta.dirname, "..");
 const skillsDir = join(projectDir, "skills");
 const readmePath = join(projectDir, "README.md");
+const skillsJsonPath = join(skillsDir, "skills.json");
+
+interface ExternalSkill {
+  repo: string;
+  path: string;
+  name: string;
+}
 
 interface SkillMeta {
   name: string;
   description: string;
+  source?: string; // "repo" link or "local"
 }
+
+// Load external skills map: name -> repo
+const externalSkills: ExternalSkill[] = JSON.parse(readFileSync(skillsJsonPath, "utf-8"));
+const externalMap = new Map(externalSkills.map((s) => [s.name, s.repo]));
 
 function truncate(s: string, max: number): string {
   if (s.length <= max) return s;
@@ -30,9 +42,11 @@ function parseSkillMeta(skillDir: string): SkillMeta | undefined {
   if (!match) return undefined;
 
   const meta = parseYaml(match[1]);
+  const repo = externalMap.get(skillDir);
   return {
     name: meta.name,
     description: String(meta.description || "").trim(),
+    source: repo ? `[${repo}](https://github.com/${repo})` : "local",
   };
 }
 
@@ -52,9 +66,9 @@ const lines = [
   "",
   `> ${skills.length} skills available`,
   "",
-  "| Skill | Description |",
-  "|-------|-------------|",
-  ...skills.map((s) => `| \`${s.name}\` | ${shortDesc(s)} |`),
+  "| Skill | Description | Source |",
+  "|-------|-------------|--------|",
+  ...skills.map((s) => `| \`${s.name}\` | ${shortDesc(s)} | ${s.source} |`),
   "",
   ...skills.map((s) =>
     [

@@ -6,4 +6,12 @@ update-readme:
 
 # Update skills from external repositories
 update-skills:
-    bash scripts/update-skills.sh
+    bun scripts/update-skills.ts
+
+# Lint skills for best practices
+lint-skills:
+    bun scripts/lint-skills.ts
+
+# Lint and auto-fix skills
+fix-skills:
+    bun scripts/lint-skills.ts --fix

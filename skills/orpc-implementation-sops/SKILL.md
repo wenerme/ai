@@ -1,9 +1,6 @@
 ---
 name: orpc-implementation-sops
-description: |
-  USE THIS SKILL WHEN the user needs to build, update, or refactor oRPC (TypeScript type-safe RPC) contracts, server handlers, or clients.
-  Trigger keywords: "oRPC", "Contract-First", "RPC 客户端", "API Contract", "createRpcContractClient".
-  Provides strict SOPs for: (1) Contract-First API design, (2) Server Handlers, (3) RPC Clients, (4) React Query integration, (5) REST API modeling.
+description: 'Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration'
 ---
 
 # oRPC Implementation SOPs

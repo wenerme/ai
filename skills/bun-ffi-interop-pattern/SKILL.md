@@ -1,9 +1,6 @@
 ---
 name: bun-ffi-interop-pattern
-description: |
-  USE THIS SKILL STRICTLY WHEN the user requests to call Native libraries (C/C++, Rust, Go compiled shared libs) using `bun:ffi`.
-  Core scenarios: (1) Loading shared libraries (.so/.dylib/.dll) via dlopen, (2) Defining FFI function signatures, (3) Safe pointer and memory manipulation, (4) Reading C struct data via memory offsets, (5) Handling Pass-by-Value struct limitations.
-  Trigger keywords: "bun:ffi", "调用 native 库", "dlopen", "FFI 指针", "C 结构体", "toArrayBuffer", "CString".
+description: 'Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C struct memory layouts'
 ---
 
 # Bun FFI Interop Pattern

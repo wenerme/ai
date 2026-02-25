@@ -1,13 +1,6 @@
 ---
 name: tmux-session-manager
-description: |
-  USE THIS SKILL WHEN the user needs to execute shell commands, run builds, start services, or monitor logs in a visible tmux pane.
-  Core triggers:
-  (1) Executing terminal commands or starting services.
-  (2) Running long-running tasks requiring real-time output observation.
-  (3) Collaborative debugging within the user's active terminal context.
-  (4) Managing background services or tailing log streams.
-  Provides the SOP for safely interacting with the user's tmux environment.
+description: 'Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane'
 ---
 
 # 共享终端协作
