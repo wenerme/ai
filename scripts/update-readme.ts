@@ -46,7 +46,7 @@ function parseSkillMeta(skillDir: string): SkillMeta | undefined {
   return {
     name: meta.name,
     description: String(meta.description || "").trim(),
-    source: repo ? `[${repo}](https://github.com/${repo})` : "local",
+    source: repo ? `[${repo}](https://github.com/${repo})` : "",
   };
 }
 
