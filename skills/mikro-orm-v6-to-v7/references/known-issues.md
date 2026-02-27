@@ -337,3 +337,29 @@ pnpm add dataloader
 | `Property 'loadFile' does not exist on type 'Connection'` | `connection.executeDump(content)` |
 | `Cannot find name 'ArrayCollection'` | 使用 `Collection` |
 | `Module '"@mikro-orm/core"' has no exported member 'Entity'` | 从 `@mikro-orm/decorators/legacy` 导入 |
+| `does not provide an export named 'Entity'` (ESM) | 同上，ESM 环境下的等价错误 |
+| `em.nativeInsert is not a function` | `em.insert(Entity, data)`（`nativeUpdate`/`nativeDelete` 不变） |
+| `No matching version for @mikro-orm/nestjs@7.x` | `@mikro-orm/nestjs` 独立维护，版本号不同步，用 `npm view @mikro-orm/nestjs versions` 查找可用版本 |
+
+## 15. Driver 类型联合导致 TypeScript 错误
+
+### 症状
+
+```typescript
+const orm = await MikroORM.init({
+  driver: isPostgres ? PostgreSqlDriver : SqliteDriver,  // TS2322
+});
+```
+
+### 原因
+
+联合类型 `typeof PostgreSqlDriver | typeof SqliteDriver` 不满足 MikroORM 的 driver 泛型约束。
+
+### 修复
+
+用条件分支分别初始化：
+
+```typescript
+const orm = isPostgres
+  ? await MikroORM.init({ driver: PostgreSqlDriver, clientUrl: config.url, entities })
+  : await MikroORM.init({ driver: SqliteDriver, dbName: config.path, entities });

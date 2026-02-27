@@ -18,6 +18,10 @@
 - em.removeAndFlush(entity)
 + em.remove(entity).flush()
 
+- em.nativeInsert(Entity, data)
++ em.insert(Entity, data)
+# 注意: nativeUpdate / nativeDelete 方法名不变
+
 - em.getKnex()
 + em.getKysely()
 
@@ -92,6 +96,19 @@
 - raw('...').as('"alias"')
 + raw('...').as('alias')
 ```
+
+## knex → kysely 迁移
+
+```diff
+- em.getKnex()
++ em.getKysely()
+
+- qb.getKnexQuery()  # 完全移除，无直接替代
+```
+
+依赖 Knex 内部 API（如 `knex.client.acquireConnection()`）的代码需要重写：
+- 简单 raw query：使用 `em.execute('SQL')` 或 QueryBuilder
+- 临时兼容：安装 `@mikro-orm/knex-compat` 包
 
 ## 字符串引用 → 类引用
 
@@ -275,6 +292,19 @@ MikroORM.init({
   },
 });
 ```
+
+## 类型重命名
+
+| v6 | v7 |
+|----|----|
+| `MikroORMOptions` | `Options` + `RequiredOptions` |
+| `UmzugMigration` | `MigrationInfo` |
+| `ArrayCollection` | `Collection`（已合并） |
+
+## 其他移除
+
+- `.env` 自动加载已移除 — 需手动调用 `dotenv` 或使用运行时的 env 支持
+- `dataloader` 变为可选 peer dependency — 需要时手动安装
 
 ## SQLite 特定变更
 

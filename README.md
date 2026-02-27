@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 15 skills available
+> 17 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -20,10 +20,12 @@ npx skills add wenerme/ai --skill <skill-name>
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
+| `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
+| `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
@@ -91,6 +93,16 @@ Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browse
 
 </details>
 <details>
+<summary><code>glab-cli</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill glab-cli
+```
+
+Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD pipelines, making API calls, or performing any GitLab operation from the terminal. Triggers on glab, gitlab cli, merge request, MR create, pipeline status, ci lint.
+
+</details>
+<details>
 <summary><code>lark-node-sdk</code></summary>
 
 ```bash
@@ -128,6 +140,16 @@ npx skills add wenerme/ai --skill react-resizable-panels-v3-to-v4
 ```
 
 Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported, direction prop invalid, layout broken), adapting to the new Group/Separator API and percentage string syntax, or updating CSS selectors for renamed data attributes. Triggers on "react-resizable-panels v4", "PanelGroup not found", "PanelResizeHandle not found", "panel layout broken after upgrade".
+
+</details>
+<details>
+<summary><code>skill-writer</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill skill-writer
+```
+
+Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large skills into references, or validating skills against best practices
 
 </details>
 <details>
