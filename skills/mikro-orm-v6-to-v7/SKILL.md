@@ -57,6 +57,9 @@ pnpm add @mikro-orm/decorators
 - em.removeAndFlush(entity)
 + em.remove(entity).flush()
 
+- em.nativeInsert(Entity, data)
++ em.insert(Entity, data)
+
 - em.getKnex()
 + em.getKysely()
 
@@ -145,6 +148,7 @@ export class User extends BaseEntity {
 |------|------|------|
 | `Cannot find module '@mikro-orm/knex'` | 包重命名 | 替换为 `@mikro-orm/sql` |
 | `persistAndFlush is not a function` | API 移除 | `em.persist(entity).flush()` |
+| `nativeInsert is not a function` | 方法重命名 | `em.insert(Entity, data)` |
 | `Decorator SyntaxError` (SWC/Vite) | 装饰器编译未配置 | 见 [decorators.md](references/decorators.md) |
 | `Value for X.id is required` | `onCreate` 未配置 | PrimaryKey 加 `onCreate` |
 | `TypedArray.prototype.join incompatible` | Blob clone 问题 | 见 [known-issues.md](references/known-issues.md) |

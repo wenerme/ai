@@ -8,21 +8,27 @@ A curated collection of AI Agent Skills — personal patterns and community skil
   - `SKILL.md` — Skill definition (YAML frontmatter + instructions)
   - `references/` — Detailed docs loaded on demand
   - `scripts/`, `assets/` — Optional supporting files
-- `scripts/update-skills.sh` — Pull external repos and sync skills
+- `skills/skills.json` — Tracks external skill sources (repo, path, name)
+- `scripts/update-skills.ts` — Pull external repos and sync skills
 - `scripts/update-readme.ts` — Generate skills table in README.md
+- `scripts/lint-skills.ts` — Validate skills against best practices
 
 ## Commands
+
+**Always use `just` to execute scripts.**
 
 ```bash
 just update-skills   # git pull external repos + rsync skills
 just update-readme   # regenerate README.md skills table
+just lint-skills     # validate skills (errors, warnings, info)
+just fix-skills      # auto-fix (e.g. flatten multiline descriptions)
 ```
 
 ## Adding a New Skill
 
 ### From an external repo
 
-1. Add `ensure_repo` + `sync_skill` entries in `scripts/update-skills.sh`
+1. Add entry to `skills/skills.json` with `repo`, `path`, and `name`
 2. Run `just update-skills`
 3. Run `just update-readme`
 
@@ -30,7 +36,8 @@ just update-readme   # regenerate README.md skills table
 
 1. Create `skills/<name>/SKILL.md` with proper frontmatter (`name` must match directory name)
 2. Keep SKILL.md body < 5000 tokens; move details to `references/`
-3. Run `just update-readme`
+3. Run `just lint-skills` to validate
+4. Run `just update-readme`
 
 ## Skill Authoring Rules
 

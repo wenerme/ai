@@ -122,8 +122,8 @@ v4 简化了 data 属性体系：
 
 | v3 属性 | v4 属性 | 说明 |
 |---------|---------|------|
-| `data-panel-group-direction="horizontal"` | `aria-orientation="horizontal"` | 改用标准 ARIA |
-| `data-panel-group-direction="vertical"` | `aria-orientation="vertical"` | 改用标准 ARIA |
+| `data-panel-group-direction="horizontal"` | `aria-orientation="vertical"` | **语义翻转！** v3=组方向，v4=分隔条方向 |
+| `data-panel-group-direction="vertical"` | `aria-orientation="horizontal"` | **语义翻转！** 水平分隔条在垂直组中 |
 | `data-resize-handle-state="hover"` | `data-separator="hover"` | 简化 |
 | `data-resize-handle-state="drag"` | `data-separator="active"` | `drag` → `active` |
 | `data-resize-handle-state="inactive"` | `data-separator="inactive"` | 简化 |
@@ -131,10 +131,18 @@ v4 简化了 data 属性体系：
 
 **Separator 的 `data-separator` 属性值**: `inactive`、`hover`、`active`、`disabled`
 
+**关键陷阱**: v3 的 `data-panel-group-direction` 是**组的方向**，v4 的 `aria-orientation` 是**分隔条自身的方向**。语义完全翻转！
+
+- 水平组 (`orientation="horizontal"`)：分隔条是**垂直**的 → `aria-orientation="vertical"` → 需要 `width`
+- 垂直组 (`orientation="vertical"`)：分隔条是**水平**的 → `aria-orientation="horizontal"` → 需要 `height`
+
 ```diff
-  /* CSS 选择器更新 */
-- [data-panel-group-direction="horizontal"] { ... }
-+ [aria-orientation="horizontal"] { ... }
+  /* CSS 选择器更新 — 注意语义翻转！ */
+- [data-panel-group-direction="horizontal"] { width: 1px; cursor: col-resize; }
++ [aria-orientation="vertical"] { width: 1px; cursor: col-resize; }
+
+- [data-panel-group-direction="vertical"] { height: 1px; cursor: row-resize; }
++ [aria-orientation="horizontal"] { height: 1px; cursor: row-resize; }
 
 - [data-resize-handle-state="hover"] { ... }
 + [data-separator="hover"] { ... }

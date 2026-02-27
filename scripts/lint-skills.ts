@@ -116,6 +116,15 @@ for (const dir of dirs) {
     }
   }
 
+  // --- metadata (always in context) checks ---
+  const metadataText = `${name} ${desc}`;
+  const metadataTokens = Math.round(metadataText.length / 4);
+  if (metadataTokens > 200) {
+    addIssue(dir, "warn", `metadata ~${metadataTokens} tokens (recommended < 200 — loaded in every conversation)`);
+  } else if (metadataTokens > 150) {
+    addIssue(dir, "info", `metadata ~${metadataTokens} tokens (ideal < 150 — loaded in every conversation)`);
+  }
+
   // --- body checks ---
   const bodyLines = body.trim().split("\n");
   const lineCount = bodyLines.length;
@@ -124,9 +133,9 @@ for (const dir of dirs) {
   }
 
   // Estimate tokens (~4 chars per token)
-  const tokenEstimate = Math.round(body.length / 4);
-  if (tokenEstimate > 5000) {
-    addIssue(dir, "warn", `SKILL.md body ~${tokenEstimate} tokens (recommended < 5000)`);
+  const bodyTokens = Math.round(body.length / 4);
+  if (bodyTokens > 5000) {
+    addIssue(dir, "warn", `SKILL.md body ~${bodyTokens} tokens (recommended < 5000)`);
   }
 }
 
