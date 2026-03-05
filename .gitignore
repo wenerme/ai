@@ -1,6 +1,7 @@
 # Local overrides
 local.*
 .idea
+.mcp.json
 # Logs
 logs
 *.log

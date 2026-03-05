@@ -8,6 +8,14 @@ update-readme:
 update-skills:
     bun scripts/update-skills.ts
 
+# Update claude-code-docs from local mirror
+update-claude-code-docs:
+    cd ~/gits/ericbuess/claude-code-docs && git pull --ff-only
+    rsync -a --delete ~/gits/ericbuess/claude-code-docs/docs/*.md skills/claude-code-docs/references/
+
+# Update all: external skills + claude-code-docs + README
+update: update-skills update-claude-code-docs update-readme
+
 # Lint skills for best practices
 lint-skills:
     bun scripts/lint-skills.ts
