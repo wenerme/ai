@@ -1,0 +1,715 @@
+# Workspaces
+
+## Create
+
+**post** `/v1/organizations/workspaces`
+
+Create Workspace
+
+### Body Parameters
+
+- `name: string`
+
+  Name of the Workspace.
+
+- `data_residency: optional object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+  Data residency configuration for the workspace. If omitted, defaults to workspace_geo=`"us"`, allowed_inference_geos=`"unrestricted"`, and default_inference_geo=`"global"`.
+
+  - `allowed_inference_geos: optional array of string or "unrestricted"`
+
+    Permitted inference geo values. Defaults to 'unrestricted' if omitted, which allows all geos. Use the string 'unrestricted' to allow all geos, or a list of specific geos.
+
+    - `UnionMember0 = array of string`
+
+    - `UnionMember1 = "unrestricted"`
+
+      - `"unrestricted"`
+
+  - `default_inference_geo: optional string`
+
+    Default inference geo applied when requests omit the parameter. Defaults to 'global' if omitted. Must be a member of allowed_inference_geos unless allowed_inference_geos is `"unrestricted"`.
+
+  - `workspace_geo: optional string`
+
+    Geographic region for workspace data storage. Immutable after creation. Defaults to 'us' if omitted.
+
+### Returns
+
+- `Workspace = object { id, archived_at, created_at, 4 more }`
+
+  - `id: string`
+
+    ID of the Workspace.
+
+  - `archived_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was archived, or `null` if the Workspace is not archived.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was created.
+
+  - `data_residency: object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+    Data residency configuration.
+
+    - `allowed_inference_geos: array of string or "unrestricted"`
+
+      Permitted inference geo values. 'unrestricted' means all geos are allowed.
+
+      - `UnionMember0 = array of string`
+
+      - `UnionMember1 = "unrestricted"`
+
+        - `"unrestricted"`
+
+    - `default_inference_geo: string`
+
+      Default inference geo applied when requests omit the parameter.
+
+    - `workspace_geo: string`
+
+      Geographic region for workspace data storage. Immutable after creation.
+
+  - `display_color: string`
+
+    Hex color code representing the Workspace in the Anthropic Console.
+
+  - `name: string`
+
+    Name of the Workspace.
+
+  - `type: "workspace"`
+
+    Object type.
+
+    For Workspaces, this is always `"workspace"`.
+
+    - `"workspace"`
+
+## Retrieve
+
+**get** `/v1/organizations/workspaces/{workspace_id}`
+
+Get Workspace
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+### Returns
+
+- `Workspace = object { id, archived_at, created_at, 4 more }`
+
+  - `id: string`
+
+    ID of the Workspace.
+
+  - `archived_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was archived, or `null` if the Workspace is not archived.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was created.
+
+  - `data_residency: object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+    Data residency configuration.
+
+    - `allowed_inference_geos: array of string or "unrestricted"`
+
+      Permitted inference geo values. 'unrestricted' means all geos are allowed.
+
+      - `UnionMember0 = array of string`
+
+      - `UnionMember1 = "unrestricted"`
+
+        - `"unrestricted"`
+
+    - `default_inference_geo: string`
+
+      Default inference geo applied when requests omit the parameter.
+
+    - `workspace_geo: string`
+
+      Geographic region for workspace data storage. Immutable after creation.
+
+  - `display_color: string`
+
+    Hex color code representing the Workspace in the Anthropic Console.
+
+  - `name: string`
+
+    Name of the Workspace.
+
+  - `type: "workspace"`
+
+    Object type.
+
+    For Workspaces, this is always `"workspace"`.
+
+    - `"workspace"`
+
+## List
+
+**get** `/v1/organizations/workspaces`
+
+List Workspaces
+
+### Query Parameters
+
+- `after_id: optional string`
+
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately after this object.
+
+- `before_id: optional string`
+
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately before this object.
+
+- `include_archived: optional boolean`
+
+  Whether to include Workspaces that have been archived in the response
+
+- `limit: optional number`
+
+  Number of items to return per page.
+
+  Defaults to `20`. Ranges from `1` to `1000`.
+
+### Returns
+
+- `data: array of Workspace`
+
+  - `id: string`
+
+    ID of the Workspace.
+
+  - `archived_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was archived, or `null` if the Workspace is not archived.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was created.
+
+  - `data_residency: object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+    Data residency configuration.
+
+    - `allowed_inference_geos: array of string or "unrestricted"`
+
+      Permitted inference geo values. 'unrestricted' means all geos are allowed.
+
+      - `UnionMember0 = array of string`
+
+      - `UnionMember1 = "unrestricted"`
+
+        - `"unrestricted"`
+
+    - `default_inference_geo: string`
+
+      Default inference geo applied when requests omit the parameter.
+
+    - `workspace_geo: string`
+
+      Geographic region for workspace data storage. Immutable after creation.
+
+  - `display_color: string`
+
+    Hex color code representing the Workspace in the Anthropic Console.
+
+  - `name: string`
+
+    Name of the Workspace.
+
+  - `type: "workspace"`
+
+    Object type.
+
+    For Workspaces, this is always `"workspace"`.
+
+    - `"workspace"`
+
+- `first_id: string`
+
+  First ID in the `data` list. Can be used as the `before_id` for the previous page.
+
+- `has_more: boolean`
+
+  Indicates if there are more results in the requested page direction.
+
+- `last_id: string`
+
+  Last ID in the `data` list. Can be used as the `after_id` for the next page.
+
+## Update
+
+**post** `/v1/organizations/workspaces/{workspace_id}`
+
+Update Workspace
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+### Body Parameters
+
+- `name: string`
+
+  Name of the Workspace.
+
+- `data_residency: optional object { allowed_inference_geos, default_inference_geo }`
+
+  Data residency configuration for the workspace.
+
+  - `allowed_inference_geos: optional array of string or "unrestricted"`
+
+    Permitted inference geo values. Use 'unrestricted' to allow all geos, or a list of specific geos.
+
+    - `UnionMember0 = array of string`
+
+    - `UnionMember1 = "unrestricted"`
+
+      - `"unrestricted"`
+
+  - `default_inference_geo: optional string`
+
+    Default inference geo applied when requests omit the parameter. Must be a member of allowed_inference_geos unless allowed_inference_geos is `"unrestricted"`.
+
+### Returns
+
+- `Workspace = object { id, archived_at, created_at, 4 more }`
+
+  - `id: string`
+
+    ID of the Workspace.
+
+  - `archived_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was archived, or `null` if the Workspace is not archived.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was created.
+
+  - `data_residency: object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+    Data residency configuration.
+
+    - `allowed_inference_geos: array of string or "unrestricted"`
+
+      Permitted inference geo values. 'unrestricted' means all geos are allowed.
+
+      - `UnionMember0 = array of string`
+
+      - `UnionMember1 = "unrestricted"`
+
+        - `"unrestricted"`
+
+    - `default_inference_geo: string`
+
+      Default inference geo applied when requests omit the parameter.
+
+    - `workspace_geo: string`
+
+      Geographic region for workspace data storage. Immutable after creation.
+
+  - `display_color: string`
+
+    Hex color code representing the Workspace in the Anthropic Console.
+
+  - `name: string`
+
+    Name of the Workspace.
+
+  - `type: "workspace"`
+
+    Object type.
+
+    For Workspaces, this is always `"workspace"`.
+
+    - `"workspace"`
+
+## Archive
+
+**post** `/v1/organizations/workspaces/{workspace_id}/archive`
+
+Archive Workspace
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+### Returns
+
+- `Workspace = object { id, archived_at, created_at, 4 more }`
+
+  - `id: string`
+
+    ID of the Workspace.
+
+  - `archived_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was archived, or `null` if the Workspace is not archived.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the Workspace was created.
+
+  - `data_residency: object { allowed_inference_geos, default_inference_geo, workspace_geo }`
+
+    Data residency configuration.
+
+    - `allowed_inference_geos: array of string or "unrestricted"`
+
+      Permitted inference geo values. 'unrestricted' means all geos are allowed.
+
+      - `UnionMember0 = array of string`
+
+      - `UnionMember1 = "unrestricted"`
+
+        - `"unrestricted"`
+
+    - `default_inference_geo: string`
+
+      Default inference geo applied when requests omit the parameter.
+
+    - `workspace_geo: string`
+
+      Geographic region for workspace data storage. Immutable after creation.
+
+  - `display_color: string`
+
+    Hex color code representing the Workspace in the Anthropic Console.
+
+  - `name: string`
+
+    Name of the Workspace.
+
+  - `type: "workspace"`
+
+    Object type.
+
+    For Workspaces, this is always `"workspace"`.
+
+    - `"workspace"`
+
+# Members
+
+## Create
+
+**post** `/v1/organizations/workspaces/{workspace_id}/members`
+
+Create Workspace Member
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+### Body Parameters
+
+- `user_id: string`
+
+  ID of the User.
+
+- `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin"`
+
+  Role of the new Workspace Member. Cannot be "workspace_billing".
+
+  - `"workspace_user"`
+
+  - `"workspace_developer"`
+
+  - `"workspace_admin"`
+
+### Returns
+
+- `WorkspaceMember = object { type, user_id, workspace_id, workspace_role }`
+
+  - `type: "workspace_member"`
+
+    Object type.
+
+    For Workspace Members, this is always `"workspace_member"`.
+
+    - `"workspace_member"`
+
+  - `user_id: string`
+
+    ID of the User.
+
+  - `workspace_id: string`
+
+    ID of the Workspace.
+
+  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+    Role of the Workspace Member.
+
+    - `"workspace_user"`
+
+    - `"workspace_developer"`
+
+    - `"workspace_admin"`
+
+    - `"workspace_billing"`
+
+## Retrieve
+
+**get** `/v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+
+Get Workspace Member
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+- `user_id: string`
+
+  ID of the User.
+
+### Returns
+
+- `WorkspaceMember = object { type, user_id, workspace_id, workspace_role }`
+
+  - `type: "workspace_member"`
+
+    Object type.
+
+    For Workspace Members, this is always `"workspace_member"`.
+
+    - `"workspace_member"`
+
+  - `user_id: string`
+
+    ID of the User.
+
+  - `workspace_id: string`
+
+    ID of the Workspace.
+
+  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+    Role of the Workspace Member.
+
+    - `"workspace_user"`
+
+    - `"workspace_developer"`
+
+    - `"workspace_admin"`
+
+    - `"workspace_billing"`
+
+## List
+
+**get** `/v1/organizations/workspaces/{workspace_id}/members`
+
+List Workspace Members
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+### Query Parameters
+
+- `after_id: optional string`
+
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately after this object.
+
+- `before_id: optional string`
+
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately before this object.
+
+- `limit: optional number`
+
+  Number of items to return per page.
+
+  Defaults to `20`. Ranges from `1` to `1000`.
+
+### Returns
+
+- `data: array of WorkspaceMember`
+
+  - `type: "workspace_member"`
+
+    Object type.
+
+    For Workspace Members, this is always `"workspace_member"`.
+
+    - `"workspace_member"`
+
+  - `user_id: string`
+
+    ID of the User.
+
+  - `workspace_id: string`
+
+    ID of the Workspace.
+
+  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+    Role of the Workspace Member.
+
+    - `"workspace_user"`
+
+    - `"workspace_developer"`
+
+    - `"workspace_admin"`
+
+    - `"workspace_billing"`
+
+- `first_id: string`
+
+  First ID in the `data` list. Can be used as the `before_id` for the previous page.
+
+- `has_more: boolean`
+
+  Indicates if there are more results in the requested page direction.
+
+- `last_id: string`
+
+  Last ID in the `data` list. Can be used as the `after_id` for the next page.
+
+## Update
+
+**post** `/v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+
+Update Workspace Member
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+- `user_id: string`
+
+  ID of the User.
+
+### Body Parameters
+
+- `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+  New workspace role for the User.
+
+  - `"workspace_user"`
+
+  - `"workspace_developer"`
+
+  - `"workspace_admin"`
+
+  - `"workspace_billing"`
+
+### Returns
+
+- `WorkspaceMember = object { type, user_id, workspace_id, workspace_role }`
+
+  - `type: "workspace_member"`
+
+    Object type.
+
+    For Workspace Members, this is always `"workspace_member"`.
+
+    - `"workspace_member"`
+
+  - `user_id: string`
+
+    ID of the User.
+
+  - `workspace_id: string`
+
+    ID of the Workspace.
+
+  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+    Role of the Workspace Member.
+
+    - `"workspace_user"`
+
+    - `"workspace_developer"`
+
+    - `"workspace_admin"`
+
+    - `"workspace_billing"`
+
+## Delete
+
+**delete** `/v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+
+Delete Workspace Member
+
+### Path Parameters
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+- `user_id: string`
+
+  ID of the User.
+
+### Returns
+
+- `type: "workspace_member_deleted"`
+
+  Deleted object type.
+
+  For Workspace Members, this is always `"workspace_member_deleted"`.
+
+  - `"workspace_member_deleted"`
+
+- `user_id: string`
+
+  ID of the User.
+
+- `workspace_id: string`
+
+  ID of the Workspace.
+
+## Domain Types
+
+### Workspace Member
+
+- `WorkspaceMember = object { type, user_id, workspace_id, workspace_role }`
+
+  - `type: "workspace_member"`
+
+    Object type.
+
+    For Workspace Members, this is always `"workspace_member"`.
+
+    - `"workspace_member"`
+
+  - `user_id: string`
+
+    ID of the User.
+
+  - `workspace_id: string`
+
+    ID of the Workspace.
+
+  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+
+    Role of the Workspace Member.
+
+    - `"workspace_user"`
+
+    - `"workspace_developer"`
+
+    - `"workspace_admin"`
+
+    - `"workspace_billing"`

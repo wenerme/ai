@@ -10,12 +10,21 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 20 skills available
+> 29 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
+| `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... |  |
+| `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... |  |
+| `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... |  |
+| `anthropic-sdk-csharp` | Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `anthropic-sdk-go` | Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `anthropic-sdk-java` | Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `anthropic-sdk-python` | Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `anthropic-sdk-ruby` | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
@@ -53,6 +62,96 @@ npx skills add wenerme/ai --skill ai-sdk
 ```
 
 Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI SDK", "generateText", "streamText", "add AI to my app", "build an agent", "tool calling", "structured output", "useChat".
+
+</details>
+<details>
+<summary><code>anthropic-agent-sdk</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-agent-sdk
+```
+
+Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming, permissions, hooks, sessions, subagents, MCP integration, custom tools, slash commands, skills, plugins, cost tracking, or hosting/deployment.
+
+</details>
+<details>
+<summary><code>anthropic-api</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-api
+```
+
+Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills API, Admin API, rate limits, errors, versioning, service tiers, or supported regions. Triggers on anthropic api, messages api, api key, rate limit, batch processing, admin api.
+
+</details>
+<details>
+<summary><code>anthropic-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-docs
+```
+
+Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels, vision, PDF support, streaming, structured outputs, tool use, MCP, context windows, prompt caching, embeddings, testing, guardrails, data residency, or Anthropic platform features.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-csharp</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-csharp
+```
+
+Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any C#-specific Anthropic API integration.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-go</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-go
+```
+
+Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any Go-specific Anthropic API integration.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-java</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-java
+```
+
+Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any Java-specific Anthropic API integration.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-python</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-python
+```
+
+Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any Python-specific Anthropic API integration.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-ruby</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-ruby
+```
+
+Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any Ruby-specific Anthropic API integration.
+
+</details>
+<details>
+<summary><code>anthropic-sdk-typescript</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill anthropic-sdk-typescript
+```
+
+Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token counting, file uploads, model listing, or any TypeScript-specific Anthropic API integration.
 
 </details>
 <details>

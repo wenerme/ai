@@ -8,13 +8,16 @@ update-readme:
 update-skills:
     bun scripts/update-skills.ts
 
-# Update claude-code-docs from local mirror
+# Fetch Claude Code docs from code.claude.com + CHANGELOG
 update-claude-code-docs:
-    cd ~/gits/ericbuess/claude-code-docs && git pull --ff-only
-    rsync -a --delete ~/gits/ericbuess/claude-code-docs/docs/*.md skills/claude-code-docs/references/
+    bun scripts/fetch-claude-code-docs.ts
 
-# Update all: external skills + claude-code-docs + README
-update: update-skills update-claude-code-docs update-readme
+# Fetch Anthropic platform docs (api, sdk, agent-sdk, docs)
+update-anthropic-docs:
+    bun scripts/fetch-anthropic-api-docs.ts
+
+# Update all: external skills + claude-code-docs + anthropic-docs + README
+update: update-skills update-claude-code-docs update-anthropic-docs update-readme
 
 # Lint skills for best practices
 lint-skills:
