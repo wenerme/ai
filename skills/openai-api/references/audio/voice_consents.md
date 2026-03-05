@@ -1,0 +1,223 @@
+# Voice Consents
+
+## List
+
+**get** `/audio/voice_consents`
+
+Returns a list of voice consent recordings.
+
+### Query Parameters
+
+- `after: optional string`
+
+  A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
+
+- `limit: optional number`
+
+  A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
+
+### Returns
+
+- `data: array of object { id, created_at, language, 2 more }`
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+- `has_more: boolean`
+
+- `object: "list"`
+
+  - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Create
+
+**post** `/audio/voice_consents`
+
+Upload a voice consent recording.
+
+### Returns
+
+- `id: string`
+
+  The consent recording identifier.
+
+- `created_at: number`
+
+  The Unix timestamp (in seconds) for when the consent recording was created.
+
+- `language: string`
+
+  The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+- `name: string`
+
+  The label provided when the consent recording was uploaded.
+
+- `object: "audio.voice_consent"`
+
+  The object type, which is always `audio.voice_consent`.
+
+  - `"audio.voice_consent"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents \
+    -H 'Content-Type: multipart/form-data' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F language=language \
+    -F name=name \
+    -F 'recording=@/path/to/recording'
+```
+
+## Retrieve
+
+**get** `/audio/voice_consents/{consent_id}`
+
+Retrieves a voice consent recording.
+
+### Path Parameters
+
+- `consent_id: string`
+
+### Returns
+
+- `id: string`
+
+  The consent recording identifier.
+
+- `created_at: number`
+
+  The Unix timestamp (in seconds) for when the consent recording was created.
+
+- `language: string`
+
+  The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+- `name: string`
+
+  The label provided when the consent recording was uploaded.
+
+- `object: "audio.voice_consent"`
+
+  The object type, which is always `audio.voice_consent`.
+
+  - `"audio.voice_consent"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Update
+
+**post** `/audio/voice_consents/{consent_id}`
+
+Updates a voice consent recording (metadata only).
+
+### Path Parameters
+
+- `consent_id: string`
+
+### Body Parameters
+
+- `name: string`
+
+  The updated label for this consent recording.
+
+### Returns
+
+- `id: string`
+
+  The consent recording identifier.
+
+- `created_at: number`
+
+  The Unix timestamp (in seconds) for when the consent recording was created.
+
+- `language: string`
+
+  The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+- `name: string`
+
+  The label provided when the consent recording was uploaded.
+
+- `object: "audio.voice_consent"`
+
+  The object type, which is always `audio.voice_consent`.
+
+  - `"audio.voice_consent"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "name": "name"
+        }'
+```
+
+## Delete
+
+**delete** `/audio/voice_consents/{consent_id}`
+
+Deletes a voice consent recording.
+
+### Path Parameters
+
+- `consent_id: string`
+
+### Returns
+
+- `id: string`
+
+  The consent recording identifier.
+
+- `deleted: boolean`
+
+- `object: "audio.voice_consent"`
+
+  - `"audio.voice_consent"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```

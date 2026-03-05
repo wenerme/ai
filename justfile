@@ -16,8 +16,12 @@ update-claude-code-docs:
 update-anthropic-docs:
     bun scripts/fetch-anthropic-api-docs.ts
 
-# Update all: external skills + claude-code-docs + anthropic-docs + README
-update: update-skills update-claude-code-docs update-anthropic-docs update-readme
+# Fetch OpenAI developer docs (api, sdk, docs)
+update-openai-docs:
+    bun scripts/fetch-openai-docs.ts
+
+# Update all: external skills + all docs + README
+update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-readme
 
 # Lint skills for best practices
 lint-skills:
