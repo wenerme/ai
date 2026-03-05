@@ -1,0 +1,13840 @@
+# Evals
+
+## List
+
+`evals.list(EvalListParams**kwargs)  -> SyncCursorPage[EvalListResponse]`
+
+**get** `/evals`
+
+List evaluations for a project.
+
+### Parameters
+
+- `after: Optional[str]`
+
+  Identifier for the last eval from the previous pagination request.
+
+- `limit: Optional[int]`
+
+  Number of evals to retrieve.
+
+- `order: Optional[Literal["asc", "desc"]]`
+
+  Sort order for evals by timestamp. Use `asc` for ascending order or `desc` for descending order.
+
+  - `"asc"`
+
+  - `"desc"`
+
+- `order_by: Optional[Literal["created_at", "updated_at"]]`
+
+  Evals can be ordered by creation time or last updated time. Use
+  `created_at` for creation time or `updated_at` for last updated time.
+
+  - `"created_at"`
+
+  - `"updated_at"`
+
+### Returns
+
+- `class EvalListResponse: …`
+
+  An Eval object with a data source config and testing criteria.
+  An Eval represents a task to be done for your LLM integration.
+  Like:
+
+  - Improve the quality of my chatbot
+  - See how well my chatbot handles customer support
+  - Check if o4-mini is better at my usecase than gpt-4o
+
+  - `id: str`
+
+    Unique identifier for the evaluation.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the eval was created.
+
+  - `data_source_config: DataSourceConfig`
+
+    Configuration of data sources used in runs of the evaluation.
+
+    - `class EvalCustomDataSourceConfig: …`
+
+      A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+      The response schema defines the shape of the data that will be:
+
+      - Used to define your testing criteria and
+      - What data is required when creating a run
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["custom"]`
+
+        The type of data source. Always `custom`.
+
+        - `"custom"`
+
+    - `class DataSourceConfigLogs: …`
+
+      A LogsDataSourceConfig which specifies the metadata property of your logs query.
+      This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+      The schema returned by this data source config is used to defined what variables are available in your evals.
+      `item` and `sample` are both defined when using this data source config.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["logs"]`
+
+        The type of data source. Always `logs`.
+
+        - `"logs"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+    - `class EvalStoredCompletionsDataSourceConfig: …`
+
+      Deprecated in favor of LogsDataSourceConfig.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["stored_completions"]`
+
+        The type of data source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `name: str`
+
+    The name of the evaluation.
+
+  - `object: Literal["eval"]`
+
+    The object type.
+
+    - `"eval"`
+
+  - `testing_criteria: List[TestingCriterion]`
+
+    A list of testing criteria.
+
+    - `class LabelModelGrader: …`
+
+      A LabelModelGrader object which uses a model to assign labels to each item
+      in the evaluation.
+
+      - `input: List[Input]`
+
+        - `content: InputContent`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `str`
+
+            A text input to the model.
+
+          - `class ResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `class InputContentOutputText: …`
+
+            A text output from the model.
+
+            - `text: str`
+
+              The text output from the model.
+
+            - `type: Literal["output_text"]`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `class InputContentInputImage: …`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: str`
+
+              The URL of the image input.
+
+            - `type: Literal["input_image"]`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[str]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `class ResponseInputAudio: …`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: str`
+
+                Base64-encoded audio data.
+
+              - `format: Literal["mp3", "wav"]`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: Literal["input_audio"]`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `List[GraderInputItem]`
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class GraderInputItemOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class GraderInputItemInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+        - `role: Literal["user", "assistant", "system", "developer"]`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type: Optional[Literal["message"]]`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+      - `labels: List[str]`
+
+        The labels to assign to each item in the evaluation.
+
+      - `model: str`
+
+        The model to use for the evaluation. Must support structured outputs.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `passing_labels: List[str]`
+
+        The labels that indicate a passing result. Must be a subset of labels.
+
+      - `type: Literal["label_model"]`
+
+        The object type, which is always `label_model`.
+
+        - `"label_model"`
+
+    - `class StringCheckGrader: …`
+
+      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+      - `input: str`
+
+        The input text. This may include template strings.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `operation: Literal["eq", "ne", "like", "ilike"]`
+
+        The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+        - `"eq"`
+
+        - `"ne"`
+
+        - `"like"`
+
+        - `"ilike"`
+
+      - `reference: str`
+
+        The reference text. This may include template strings.
+
+      - `type: Literal["string_check"]`
+
+        The object type, which is always `string_check`.
+
+        - `"string_check"`
+
+    - `class TestingCriterionEvalGraderTextSimilarity: …`
+
+      A TextSimilarityGrader object which grades text based on similarity metrics.
+
+      - `pass_threshold: float`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderPython: …`
+
+      A PythonGrader object that runs a python script on the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderScoreModel: …`
+
+      A ScoreModelGrader object that uses a model to assign a score to the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+page = client.evals.list()
+page = page.data[0]
+print(page.id)
+```
+
+## Create
+
+`evals.create(EvalCreateParams**kwargs)  -> EvalCreateResponse`
+
+**post** `/evals`
+
+Create the structure of an evaluation that can be used to test a model's performance.
+An evaluation is a set of testing criteria and the config for a data source, which dictates the schema of the data used in the evaluation. After creating an evaluation, you can run it on different models and model parameters. We support several types of graders and datasources.
+For more information, see the [Evals guide](https://platform.openai.com/docs/guides/evals).
+
+### Parameters
+
+- `data_source_config: DataSourceConfig`
+
+  The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
+
+  - `class DataSourceConfigCustom: …`
+
+    A CustomDataSourceConfig object that defines the schema for the data source used for the evaluation runs.
+    This schema is used to define the shape of the data that will be:
+
+    - Used to define your testing criteria and
+    - What data is required when creating a run
+
+    - `item_schema: Dict[str, object]`
+
+      The json schema for each row in the data source.
+
+    - `type: Literal["custom"]`
+
+      The type of data source. Always `custom`.
+
+      - `"custom"`
+
+    - `include_sample_schema: Optional[bool]`
+
+      Whether the eval should expect you to populate the sample namespace (ie, by generating responses off of your data source)
+
+  - `class DataSourceConfigLogs: …`
+
+    A data source config which specifies the metadata property of your logs query.
+    This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+
+    - `type: Literal["logs"]`
+
+      The type of data source. Always `logs`.
+
+      - `"logs"`
+
+    - `metadata: Optional[Dict[str, object]]`
+
+      Metadata filters for the logs data source.
+
+  - `class DataSourceConfigStoredCompletions: …`
+
+    Deprecated in favor of LogsDataSourceConfig.
+
+    - `type: Literal["stored_completions"]`
+
+      The type of data source. Always `stored_completions`.
+
+      - `"stored_completions"`
+
+    - `metadata: Optional[Dict[str, object]]`
+
+      Metadata filters for the stored completions data source.
+
+- `testing_criteria: Iterable[TestingCriterion]`
+
+  A list of graders for all eval runs in this group. Graders can reference variables in the data source using double curly braces notation, like `{{item.variable_name}}`. To reference the model's output, use the `sample` namespace (ie, `{{sample.output_text}}`).
+
+  - `class TestingCriterionLabelModel: …`
+
+    A LabelModelGrader object which uses a model to assign labels to each item
+    in the evaluation.
+
+    - `input: Iterable[TestingCriterionLabelModelInput]`
+
+      A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+      - `class TestingCriterionLabelModelInputSimpleInputMessage: …`
+
+        - `content: str`
+
+          The content of the message.
+
+        - `role: str`
+
+          The role of the message (e.g. "system", "assistant", "user").
+
+      - `class TestingCriterionLabelModelInputEvalItem: …`
+
+        A message input to the model with a role indicating instruction following
+        hierarchy. Instructions given with the `developer` or `system` role take
+        precedence over instructions given with the `user` role. Messages with the
+        `assistant` role are presumed to have been generated by the model in previous
+        interactions.
+
+        - `content: TestingCriterionLabelModelInputEvalItemContent`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `str`
+
+            A text input to the model.
+
+          - `class ResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `class TestingCriterionLabelModelInputEvalItemContentOutputText: …`
+
+            A text output from the model.
+
+            - `text: str`
+
+              The text output from the model.
+
+            - `type: Literal["output_text"]`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `class TestingCriterionLabelModelInputEvalItemContentInputImage: …`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: str`
+
+              The URL of the image input.
+
+            - `type: Literal["input_image"]`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[str]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `class ResponseInputAudio: …`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: str`
+
+                Base64-encoded audio data.
+
+              - `format: Literal["mp3", "wav"]`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: Literal["input_audio"]`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `List[GraderInputItem]`
+
+            A list of inputs, each of which may be either an input text, output text, input
+            image, or input audio object.
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class GraderInputItemOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class GraderInputItemInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+        - `role: Literal["user", "assistant", "system", "developer"]`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type: Optional[Literal["message"]]`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+    - `labels: SequenceNotStr[str]`
+
+      The labels to classify to each item in the evaluation.
+
+    - `model: str`
+
+      The model to use for the evaluation. Must support structured outputs.
+
+    - `name: str`
+
+      The name of the grader.
+
+    - `passing_labels: SequenceNotStr[str]`
+
+      The labels that indicate a passing result. Must be a subset of labels.
+
+    - `type: Literal["label_model"]`
+
+      The object type, which is always `label_model`.
+
+      - `"label_model"`
+
+  - `class StringCheckGrader: …`
+
+    A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+    - `input: str`
+
+      The input text. This may include template strings.
+
+    - `name: str`
+
+      The name of the grader.
+
+    - `operation: Literal["eq", "ne", "like", "ilike"]`
+
+      The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+      - `"eq"`
+
+      - `"ne"`
+
+      - `"like"`
+
+      - `"ilike"`
+
+    - `reference: str`
+
+      The reference text. This may include template strings.
+
+    - `type: Literal["string_check"]`
+
+      The object type, which is always `string_check`.
+
+      - `"string_check"`
+
+  - `class TestingCriterionTextSimilarity: …`
+
+    A TextSimilarityGrader object which grades text based on similarity metrics.
+
+    - `pass_threshold: float`
+
+      The threshold for the score.
+
+  - `class TestingCriterionPython: …`
+
+    A PythonGrader object that runs a python script on the input.
+
+    - `pass_threshold: Optional[float]`
+
+      The threshold for the score.
+
+  - `class TestingCriterionScoreModel: …`
+
+    A ScoreModelGrader object that uses a model to assign a score to the input.
+
+    - `pass_threshold: Optional[float]`
+
+      The threshold for the score.
+
+- `metadata: Optional[Metadata]`
+
+  Set of 16 key-value pairs that can be attached to an object. This can be
+  useful for storing additional information about the object in a structured
+  format, and querying for objects via API or the dashboard.
+
+  Keys are strings with a maximum length of 64 characters. Values are strings
+  with a maximum length of 512 characters.
+
+- `name: Optional[str]`
+
+  The name of the evaluation.
+
+### Returns
+
+- `class EvalCreateResponse: …`
+
+  An Eval object with a data source config and testing criteria.
+  An Eval represents a task to be done for your LLM integration.
+  Like:
+
+  - Improve the quality of my chatbot
+  - See how well my chatbot handles customer support
+  - Check if o4-mini is better at my usecase than gpt-4o
+
+  - `id: str`
+
+    Unique identifier for the evaluation.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the eval was created.
+
+  - `data_source_config: DataSourceConfig`
+
+    Configuration of data sources used in runs of the evaluation.
+
+    - `class EvalCustomDataSourceConfig: …`
+
+      A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+      The response schema defines the shape of the data that will be:
+
+      - Used to define your testing criteria and
+      - What data is required when creating a run
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["custom"]`
+
+        The type of data source. Always `custom`.
+
+        - `"custom"`
+
+    - `class DataSourceConfigLogs: …`
+
+      A LogsDataSourceConfig which specifies the metadata property of your logs query.
+      This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+      The schema returned by this data source config is used to defined what variables are available in your evals.
+      `item` and `sample` are both defined when using this data source config.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["logs"]`
+
+        The type of data source. Always `logs`.
+
+        - `"logs"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+    - `class EvalStoredCompletionsDataSourceConfig: …`
+
+      Deprecated in favor of LogsDataSourceConfig.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["stored_completions"]`
+
+        The type of data source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `name: str`
+
+    The name of the evaluation.
+
+  - `object: Literal["eval"]`
+
+    The object type.
+
+    - `"eval"`
+
+  - `testing_criteria: List[TestingCriterion]`
+
+    A list of testing criteria.
+
+    - `class LabelModelGrader: …`
+
+      A LabelModelGrader object which uses a model to assign labels to each item
+      in the evaluation.
+
+      - `input: List[Input]`
+
+        - `content: InputContent`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `str`
+
+            A text input to the model.
+
+          - `class ResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `class InputContentOutputText: …`
+
+            A text output from the model.
+
+            - `text: str`
+
+              The text output from the model.
+
+            - `type: Literal["output_text"]`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `class InputContentInputImage: …`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: str`
+
+              The URL of the image input.
+
+            - `type: Literal["input_image"]`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[str]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `class ResponseInputAudio: …`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: str`
+
+                Base64-encoded audio data.
+
+              - `format: Literal["mp3", "wav"]`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: Literal["input_audio"]`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `List[GraderInputItem]`
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class GraderInputItemOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class GraderInputItemInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+        - `role: Literal["user", "assistant", "system", "developer"]`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type: Optional[Literal["message"]]`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+      - `labels: List[str]`
+
+        The labels to assign to each item in the evaluation.
+
+      - `model: str`
+
+        The model to use for the evaluation. Must support structured outputs.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `passing_labels: List[str]`
+
+        The labels that indicate a passing result. Must be a subset of labels.
+
+      - `type: Literal["label_model"]`
+
+        The object type, which is always `label_model`.
+
+        - `"label_model"`
+
+    - `class StringCheckGrader: …`
+
+      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+      - `input: str`
+
+        The input text. This may include template strings.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `operation: Literal["eq", "ne", "like", "ilike"]`
+
+        The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+        - `"eq"`
+
+        - `"ne"`
+
+        - `"like"`
+
+        - `"ilike"`
+
+      - `reference: str`
+
+        The reference text. This may include template strings.
+
+      - `type: Literal["string_check"]`
+
+        The object type, which is always `string_check`.
+
+        - `"string_check"`
+
+    - `class TestingCriterionEvalGraderTextSimilarity: …`
+
+      A TextSimilarityGrader object which grades text based on similarity metrics.
+
+      - `pass_threshold: float`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderPython: …`
+
+      A PythonGrader object that runs a python script on the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderScoreModel: …`
+
+      A ScoreModelGrader object that uses a model to assign a score to the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+eval = client.evals.create(
+    data_source_config={
+        "item_schema": {
+            "foo": "bar"
+        },
+        "type": "custom",
+    },
+    testing_criteria=[{
+        "input": [{
+            "content": "content",
+            "role": "role",
+        }],
+        "labels": ["string"],
+        "model": "model",
+        "name": "name",
+        "passing_labels": ["string"],
+        "type": "label_model",
+    }],
+)
+print(eval.id)
+```
+
+## Retrieve
+
+`evals.retrieve(streval_id)  -> EvalRetrieveResponse`
+
+**get** `/evals/{eval_id}`
+
+Get an evaluation by ID.
+
+### Parameters
+
+- `eval_id: str`
+
+### Returns
+
+- `class EvalRetrieveResponse: …`
+
+  An Eval object with a data source config and testing criteria.
+  An Eval represents a task to be done for your LLM integration.
+  Like:
+
+  - Improve the quality of my chatbot
+  - See how well my chatbot handles customer support
+  - Check if o4-mini is better at my usecase than gpt-4o
+
+  - `id: str`
+
+    Unique identifier for the evaluation.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the eval was created.
+
+  - `data_source_config: DataSourceConfig`
+
+    Configuration of data sources used in runs of the evaluation.
+
+    - `class EvalCustomDataSourceConfig: …`
+
+      A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+      The response schema defines the shape of the data that will be:
+
+      - Used to define your testing criteria and
+      - What data is required when creating a run
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["custom"]`
+
+        The type of data source. Always `custom`.
+
+        - `"custom"`
+
+    - `class DataSourceConfigLogs: …`
+
+      A LogsDataSourceConfig which specifies the metadata property of your logs query.
+      This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+      The schema returned by this data source config is used to defined what variables are available in your evals.
+      `item` and `sample` are both defined when using this data source config.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["logs"]`
+
+        The type of data source. Always `logs`.
+
+        - `"logs"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+    - `class EvalStoredCompletionsDataSourceConfig: …`
+
+      Deprecated in favor of LogsDataSourceConfig.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["stored_completions"]`
+
+        The type of data source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `name: str`
+
+    The name of the evaluation.
+
+  - `object: Literal["eval"]`
+
+    The object type.
+
+    - `"eval"`
+
+  - `testing_criteria: List[TestingCriterion]`
+
+    A list of testing criteria.
+
+    - `class LabelModelGrader: …`
+
+      A LabelModelGrader object which uses a model to assign labels to each item
+      in the evaluation.
+
+      - `input: List[Input]`
+
+        - `content: InputContent`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `str`
+
+            A text input to the model.
+
+          - `class ResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `class InputContentOutputText: …`
+
+            A text output from the model.
+
+            - `text: str`
+
+              The text output from the model.
+
+            - `type: Literal["output_text"]`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `class InputContentInputImage: …`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: str`
+
+              The URL of the image input.
+
+            - `type: Literal["input_image"]`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[str]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `class ResponseInputAudio: …`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: str`
+
+                Base64-encoded audio data.
+
+              - `format: Literal["mp3", "wav"]`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: Literal["input_audio"]`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `List[GraderInputItem]`
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class GraderInputItemOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class GraderInputItemInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+        - `role: Literal["user", "assistant", "system", "developer"]`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type: Optional[Literal["message"]]`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+      - `labels: List[str]`
+
+        The labels to assign to each item in the evaluation.
+
+      - `model: str`
+
+        The model to use for the evaluation. Must support structured outputs.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `passing_labels: List[str]`
+
+        The labels that indicate a passing result. Must be a subset of labels.
+
+      - `type: Literal["label_model"]`
+
+        The object type, which is always `label_model`.
+
+        - `"label_model"`
+
+    - `class StringCheckGrader: …`
+
+      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+      - `input: str`
+
+        The input text. This may include template strings.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `operation: Literal["eq", "ne", "like", "ilike"]`
+
+        The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+        - `"eq"`
+
+        - `"ne"`
+
+        - `"like"`
+
+        - `"ilike"`
+
+      - `reference: str`
+
+        The reference text. This may include template strings.
+
+      - `type: Literal["string_check"]`
+
+        The object type, which is always `string_check`.
+
+        - `"string_check"`
+
+    - `class TestingCriterionEvalGraderTextSimilarity: …`
+
+      A TextSimilarityGrader object which grades text based on similarity metrics.
+
+      - `pass_threshold: float`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderPython: …`
+
+      A PythonGrader object that runs a python script on the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderScoreModel: …`
+
+      A ScoreModelGrader object that uses a model to assign a score to the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+eval = client.evals.retrieve(
+    "eval_id",
+)
+print(eval.id)
+```
+
+## Update
+
+`evals.update(streval_id, EvalUpdateParams**kwargs)  -> EvalUpdateResponse`
+
+**post** `/evals/{eval_id}`
+
+Update certain properties of an evaluation.
+
+### Parameters
+
+- `eval_id: str`
+
+- `metadata: Optional[Metadata]`
+
+  Set of 16 key-value pairs that can be attached to an object. This can be
+  useful for storing additional information about the object in a structured
+  format, and querying for objects via API or the dashboard.
+
+  Keys are strings with a maximum length of 64 characters. Values are strings
+  with a maximum length of 512 characters.
+
+- `name: Optional[str]`
+
+  Rename the evaluation.
+
+### Returns
+
+- `class EvalUpdateResponse: …`
+
+  An Eval object with a data source config and testing criteria.
+  An Eval represents a task to be done for your LLM integration.
+  Like:
+
+  - Improve the quality of my chatbot
+  - See how well my chatbot handles customer support
+  - Check if o4-mini is better at my usecase than gpt-4o
+
+  - `id: str`
+
+    Unique identifier for the evaluation.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the eval was created.
+
+  - `data_source_config: DataSourceConfig`
+
+    Configuration of data sources used in runs of the evaluation.
+
+    - `class EvalCustomDataSourceConfig: …`
+
+      A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+      The response schema defines the shape of the data that will be:
+
+      - Used to define your testing criteria and
+      - What data is required when creating a run
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["custom"]`
+
+        The type of data source. Always `custom`.
+
+        - `"custom"`
+
+    - `class DataSourceConfigLogs: …`
+
+      A LogsDataSourceConfig which specifies the metadata property of your logs query.
+      This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+      The schema returned by this data source config is used to defined what variables are available in your evals.
+      `item` and `sample` are both defined when using this data source config.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["logs"]`
+
+        The type of data source. Always `logs`.
+
+        - `"logs"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+    - `class EvalStoredCompletionsDataSourceConfig: …`
+
+      Deprecated in favor of LogsDataSourceConfig.
+
+      - `schema: Dict[str, object]`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: Literal["stored_completions"]`
+
+        The type of data source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `name: str`
+
+    The name of the evaluation.
+
+  - `object: Literal["eval"]`
+
+    The object type.
+
+    - `"eval"`
+
+  - `testing_criteria: List[TestingCriterion]`
+
+    A list of testing criteria.
+
+    - `class LabelModelGrader: …`
+
+      A LabelModelGrader object which uses a model to assign labels to each item
+      in the evaluation.
+
+      - `input: List[Input]`
+
+        - `content: InputContent`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `str`
+
+            A text input to the model.
+
+          - `class ResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `class InputContentOutputText: …`
+
+            A text output from the model.
+
+            - `text: str`
+
+              The text output from the model.
+
+            - `type: Literal["output_text"]`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `class InputContentInputImage: …`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: str`
+
+              The URL of the image input.
+
+            - `type: Literal["input_image"]`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[str]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `class ResponseInputAudio: …`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: str`
+
+                Base64-encoded audio data.
+
+              - `format: Literal["mp3", "wav"]`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: Literal["input_audio"]`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `List[GraderInputItem]`
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class GraderInputItemOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class GraderInputItemInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+        - `role: Literal["user", "assistant", "system", "developer"]`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type: Optional[Literal["message"]]`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+      - `labels: List[str]`
+
+        The labels to assign to each item in the evaluation.
+
+      - `model: str`
+
+        The model to use for the evaluation. Must support structured outputs.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `passing_labels: List[str]`
+
+        The labels that indicate a passing result. Must be a subset of labels.
+
+      - `type: Literal["label_model"]`
+
+        The object type, which is always `label_model`.
+
+        - `"label_model"`
+
+    - `class StringCheckGrader: …`
+
+      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+      - `input: str`
+
+        The input text. This may include template strings.
+
+      - `name: str`
+
+        The name of the grader.
+
+      - `operation: Literal["eq", "ne", "like", "ilike"]`
+
+        The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+        - `"eq"`
+
+        - `"ne"`
+
+        - `"like"`
+
+        - `"ilike"`
+
+      - `reference: str`
+
+        The reference text. This may include template strings.
+
+      - `type: Literal["string_check"]`
+
+        The object type, which is always `string_check`.
+
+        - `"string_check"`
+
+    - `class TestingCriterionEvalGraderTextSimilarity: …`
+
+      A TextSimilarityGrader object which grades text based on similarity metrics.
+
+      - `pass_threshold: float`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderPython: …`
+
+      A PythonGrader object that runs a python script on the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+    - `class TestingCriterionEvalGraderScoreModel: …`
+
+      A ScoreModelGrader object that uses a model to assign a score to the input.
+
+      - `pass_threshold: Optional[float]`
+
+        The threshold for the score.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+eval = client.evals.update(
+    eval_id="eval_id",
+)
+print(eval.id)
+```
+
+## Delete
+
+`evals.delete(streval_id)  -> EvalDeleteResponse`
+
+**delete** `/evals/{eval_id}`
+
+Delete an evaluation.
+
+### Parameters
+
+- `eval_id: str`
+
+### Returns
+
+- `class EvalDeleteResponse: …`
+
+  - `deleted: bool`
+
+  - `eval_id: str`
+
+  - `object: str`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+eval = client.evals.delete(
+    "eval_id",
+)
+print(eval.eval_id)
+```
+
+## Domain Types
+
+### Eval Custom Data Source Config
+
+- `class EvalCustomDataSourceConfig: …`
+
+  A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+  The response schema defines the shape of the data that will be:
+
+  - Used to define your testing criteria and
+  - What data is required when creating a run
+
+  - `schema: Dict[str, object]`
+
+    The json schema for the run data source items.
+    Learn how to build JSON schemas [here](https://json-schema.org/).
+
+  - `type: Literal["custom"]`
+
+    The type of data source. Always `custom`.
+
+    - `"custom"`
+
+### Eval Stored Completions Data Source Config
+
+- `class EvalStoredCompletionsDataSourceConfig: …`
+
+  Deprecated in favor of LogsDataSourceConfig.
+
+  - `schema: Dict[str, object]`
+
+    The json schema for the run data source items.
+    Learn how to build JSON schemas [here](https://json-schema.org/).
+
+  - `type: Literal["stored_completions"]`
+
+    The type of data source. Always `stored_completions`.
+
+    - `"stored_completions"`
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+# Runs
+
+## List
+
+`evals.runs.list(streval_id, RunListParams**kwargs)  -> SyncCursorPage[RunListResponse]`
+
+**get** `/evals/{eval_id}/runs`
+
+Get a list of runs for an evaluation.
+
+### Parameters
+
+- `eval_id: str`
+
+- `after: Optional[str]`
+
+  Identifier for the last run from the previous pagination request.
+
+- `limit: Optional[int]`
+
+  Number of runs to retrieve.
+
+- `order: Optional[Literal["asc", "desc"]]`
+
+  Sort order for runs by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
+
+  - `"asc"`
+
+  - `"desc"`
+
+- `status: Optional[Literal["queued", "in_progress", "completed", 2 more]]`
+
+  Filter runs by status. One of `queued` | `in_progress` | `failed` | `completed` | `canceled`.
+
+  - `"queued"`
+
+  - `"in_progress"`
+
+  - `"completed"`
+
+  - `"canceled"`
+
+  - `"failed"`
+
+### Returns
+
+- `class RunListResponse: …`
+
+  A schema representing an evaluation run.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: DataSource`
+
+    Information about the run's data source.
+
+    - `class CreateEvalJSONLRunDataSource: …`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: Literal["jsonl"]`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `class CreateEvalCompletionsRunDataSource: …`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class SourceStoredCompletions: …`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: Literal["stored_completions"]`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: Optional[int]`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: Optional[int]`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: Optional[int]`
+
+            An optional maximum number of items to return.
+
+          - `metadata: Optional[Metadata]`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: Optional[str]`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: Literal["completions"]`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: Optional[InputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class InputMessagesTemplate: …`
+
+          - `template: List[InputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class EasyInputMessage: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: Union[str, ResponseInputMessageContentList]`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `List[ResponseInputContent]`
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class ResponseInputImage: …`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                    - `detail: Literal["low", "high", "auto"]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: Optional[str]`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `class ResponseInputFile: …`
+
+                    A file input to the model.
+
+                    - `type: Literal["input_file"]`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `file_data: Optional[str]`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: Optional[str]`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: Optional[str]`
+
+                      The name of the file to be sent to the model.
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                Use `commentary` for an intermediate assistant message and `final_answer` for
+                the final assistant message. For follow-up requests with models like
+                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+                messages. Omitting it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `class InputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class InputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[SamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: Optional[SamplingParamsResponseFormat]`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `class ResponseFormatText: …`
+
+            Default response format. Used to generate text responses.
+
+            - `type: Literal["text"]`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `class ResponseFormatJSONSchema: …`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `json_schema: JSONSchema`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: Optional[Dict[str, object]]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `type: Literal["json_schema"]`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `class ResponseFormatJSONObject: …`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: Literal["json_object"]`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: str`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: Optional[str]`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: Optional[FunctionParameters]`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+          - `type: Literal["function"]`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `class DataSourceResponses: …`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: DataSourceResponsesSource`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class DataSourceResponsesSourceFileContent: …`
+
+          - `content: List[DataSourceResponsesSourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class DataSourceResponsesSourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class DataSourceResponsesSourceResponses: …`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: Literal["responses"]`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: Optional[int]`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: Optional[int]`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: Optional[str]`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: Optional[object]`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: Optional[str]`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: Optional[ReasoningEffort]`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+          - `temperature: Optional[float]`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: Optional[List[str]]`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: Optional[float]`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: Optional[List[str]]`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: Literal["responses"]`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: Optional[DataSourceResponsesInputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class DataSourceResponsesInputMessagesTemplate: …`
+
+          - `template: List[DataSourceResponsesInputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateChatMessage: …`
+
+              - `content: str`
+
+                The content of the message.
+
+              - `role: str`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: DataSourceResponsesInputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class DataSourceResponsesInputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[DataSourceResponsesSamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: Optional[DataSourceResponsesSamplingParamsText]`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+
+          - `format: Optional[ResponseFormatTextConfig]`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `class ResponseFormatText: …`
+
+              Default response format. Used to generate text responses.
+
+              - `type: Literal["text"]`
+
+                The type of response format being defined. Always `text`.
+
+                - `"text"`
+
+            - `class ResponseFormatTextJSONSchemaConfig: …`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: Dict[str, object]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: Literal["json_schema"]`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `class ResponseFormatJSONObject: …`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+              - `type: Literal["json_object"]`
+
+                The type of response format being defined. Always `json_object`.
+
+                - `"json_object"`
+
+        - `tools: Optional[List[Tool]]`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: str`
+
+              The name of the function to call.
+
+            - `parameters: Optional[Dict[str, object]]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: Literal["function"]`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `description: Optional[str]`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: Literal["file_search"]`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: List[str]`
+
+              The IDs of the vector stores to search.
+
+            - `filters: Optional[Filters]`
+
+              A filter to apply.
+
+              - `class ComparisonFilter: …`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: str`
+
+                  The key to compare against the value.
+
+                - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `str`
+
+                  - `float`
+
+                  - `bool`
+
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
+
+              - `class CompoundFilter: …`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: List[Filter]`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `class ComparisonFilter: …`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                    - `key: str`
+
+                      The key to compare against the value.
+
+                    - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                      - `eq`: equals
+                      - `ne`: not equal
+                      - `gt`: greater than
+                      - `gte`: greater than or equal
+                      - `lt`: less than
+                      - `lte`: less than or equal
+                      - `in`: in
+                      - `nin`: not in
+
+                      - `"eq"`
+
+                      - `"ne"`
+
+                      - `"gt"`
+
+                      - `"gte"`
+
+                      - `"lt"`
+
+                      - `"lte"`
+
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                      The value to compare against the attribute key; supports string, number, or boolean types.
+
+                      - `str`
+
+                      - `float`
+
+                      - `bool`
+
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
+
+                  - `object`
+
+                - `type: Literal["and", "or"]`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: Optional[int]`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: Optional[RankingOptions]`
+
+              Ranking options for search.
+
+              - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: float`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: float`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: Optional[float]`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: int`
+
+              The height of the computer display.
+
+            - `display_width: int`
+
+              The width of the computer display.
+
+            - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: Literal["computer_use_preview"]`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: Optional[Filters]`
+
+              Filters for the search.
+
+              - `allowed_domains: Optional[List[str]]`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The approximate location of the user.
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: Optional[Literal["approximate"]]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `server_label: str`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: Literal["mcp"]`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: Optional[McpAllowedTools]`
+
+              List of allowed tool names or a filter object.
+
+              - `List[str]`
+
+                A string array of allowed tool names
+
+              - `class McpAllowedToolsMcpToolFilter: …`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `authorization: Optional[str]`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `headers: Optional[Dict[str, str]]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: Optional[McpRequireApproval]`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+                - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+              - `Literal["always", "never"]`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: Optional[str]`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: Optional[str]`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: CodeInterpreterContainer`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `str`
+
+                The container ID.
+
+              - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: Literal["auto"]`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: Literal["image_generation"]`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: Optional[Literal["high", "low"]]`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: Optional[str]`
+
+                File ID for the mask image.
+
+              - `image_url: Optional[str]`
+
+                Base64-encoded mask image.
+
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `str`
+
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: Optional[Literal["auto", "low"]]`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: Optional[int]`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: Optional[int]`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: Literal["local_shell"]`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: Literal["shell"]`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: Optional[Environment]`
+
+              - `class ContainerAuto: …`
+
+                - `type: Literal["container_auto"]`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[NetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+                - `skills: Optional[List[Skill]]`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `class SkillReference: …`
+
+                    - `skill_id: str`
+
+                      The ID of the referenced skill.
+
+                    - `type: Literal["skill_reference"]`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: Optional[str]`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `class InlineSkill: …`
+
+                    - `description: str`
+
+                      The description of the skill.
+
+                    - `name: str`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: str`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: Literal["application/zip"]`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: Literal["base64"]`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: Literal["inline"]`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `class LocalEnvironment: …`
+
+                - `type: Literal["local"]`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: Optional[List[LocalSkill]]`
+
+                  An optional list of skills.
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `path: str`
+
+                    The path to the directory containing the skill.
+
+              - `class ContainerReference: …`
+
+                - `container_id: str`
+
+                  The ID of the referenced container.
+
+                - `type: Literal["container_reference"]`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `name: str`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: Literal["custom"]`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `description: Optional[str]`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: Optional[CustomToolInputFormat]`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `class Text: …`
+
+                Unconstrained free-form text.
+
+                - `type: Literal["text"]`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `class Grammar: …`
+
+                A grammar defined by the user.
+
+                - `definition: str`
+
+                  The grammar definition.
+
+                - `syntax: Literal["lark", "regex"]`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: Literal["grammar"]`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The user's location.
+
+              - `type: Literal["approximate"]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["apply_patch"]`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: str`
+
+      The error code.
+
+    - `message: str`
+
+      The error message.
+
+  - `eval_id: str`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: str`
+
+    The model that is evaluated, if applicable.
+
+  - `name: str`
+
+    The name of the evaluation run.
+
+  - `object: Literal["eval.run"]`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: List[PerModelUsage]`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: int`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: int`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: int`
+
+      The number of invocations.
+
+    - `model_name: str`
+
+      The name of the model.
+
+    - `prompt_tokens: int`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: int`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: List[PerTestingCriteriaResult]`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: int`
+
+      Number of tests failed for this criteria.
+
+    - `passed: int`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: str`
+
+      A description of the testing criteria.
+
+  - `report_url: str`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: ResultCounts`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: int`
+
+      Number of output items that resulted in an error.
+
+    - `failed: int`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: int`
+
+      Number of output items that passed the evaluation.
+
+    - `total: int`
+
+      Total number of executed output items.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+page = client.evals.runs.list(
+    eval_id="eval_id",
+)
+page = page.data[0]
+print(page.id)
+```
+
+## Create
+
+`evals.runs.create(streval_id, RunCreateParams**kwargs)  -> RunCreateResponse`
+
+**post** `/evals/{eval_id}/runs`
+
+Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
+
+### Parameters
+
+- `eval_id: str`
+
+- `data_source: DataSource`
+
+  Details about the run's data source.
+
+  - `class CreateEvalJSONLRunDataSource: …`
+
+    A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+    - `source: Source`
+
+      Determines what populates the `item` namespace in the data source.
+
+      - `class SourceFileContent: …`
+
+        - `content: List[SourceFileContentContent]`
+
+          The content of the jsonl file.
+
+          - `item: Dict[str, object]`
+
+          - `sample: Optional[Dict[str, object]]`
+
+        - `type: Literal["file_content"]`
+
+          The type of jsonl source. Always `file_content`.
+
+          - `"file_content"`
+
+      - `class SourceFileID: …`
+
+        - `id: str`
+
+          The identifier of the file.
+
+        - `type: Literal["file_id"]`
+
+          The type of jsonl source. Always `file_id`.
+
+          - `"file_id"`
+
+    - `type: Literal["jsonl"]`
+
+      The type of data source. Always `jsonl`.
+
+      - `"jsonl"`
+
+  - `class CreateEvalCompletionsRunDataSource: …`
+
+    A CompletionsRunDataSource object describing a model sampling configuration.
+
+    - `source: Source`
+
+      Determines what populates the `item` namespace in this run's data source.
+
+      - `class SourceFileContent: …`
+
+        - `content: List[SourceFileContentContent]`
+
+          The content of the jsonl file.
+
+          - `item: Dict[str, object]`
+
+          - `sample: Optional[Dict[str, object]]`
+
+        - `type: Literal["file_content"]`
+
+          The type of jsonl source. Always `file_content`.
+
+          - `"file_content"`
+
+      - `class SourceFileID: …`
+
+        - `id: str`
+
+          The identifier of the file.
+
+        - `type: Literal["file_id"]`
+
+          The type of jsonl source. Always `file_id`.
+
+          - `"file_id"`
+
+      - `class SourceStoredCompletions: …`
+
+        A StoredCompletionsRunDataSource configuration describing a set of filters
+
+        - `type: Literal["stored_completions"]`
+
+          The type of source. Always `stored_completions`.
+
+          - `"stored_completions"`
+
+        - `created_after: Optional[int]`
+
+          An optional Unix timestamp to filter items created after this time.
+
+        - `created_before: Optional[int]`
+
+          An optional Unix timestamp to filter items created before this time.
+
+        - `limit: Optional[int]`
+
+          An optional maximum number of items to return.
+
+        - `metadata: Optional[Metadata]`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard.
+
+          Keys are strings with a maximum length of 64 characters. Values are strings
+          with a maximum length of 512 characters.
+
+        - `model: Optional[str]`
+
+          An optional model to filter by (e.g., 'gpt-4o').
+
+    - `type: Literal["completions"]`
+
+      The type of run data source. Always `completions`.
+
+      - `"completions"`
+
+    - `input_messages: Optional[InputMessages]`
+
+      Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+      - `class InputMessagesTemplate: …`
+
+        - `template: List[InputMessagesTemplateTemplate]`
+
+          A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+          - `class EasyInputMessage: …`
+
+            A message input to the model with a role indicating instruction following
+            hierarchy. Instructions given with the `developer` or `system` role take
+            precedence over instructions given with the `user` role. Messages with the
+            `assistant` role are presumed to have been generated by the model in previous
+            interactions.
+
+            - `content: Union[str, ResponseInputMessageContentList]`
+
+              Text, image, or audio input to the model, used to generate a response.
+              Can also contain previous assistant responses.
+
+              - `str`
+
+                A text input to the model.
+
+              - `List[ResponseInputContent]`
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class ResponseInputImage: …`
+
+                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                  - `detail: Literal["low", "high", "auto"]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                    - `"low"`
+
+                    - `"high"`
+
+                    - `"auto"`
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the input item. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `file_id: Optional[str]`
+
+                    The ID of the file to be sent to the model.
+
+                  - `image_url: Optional[str]`
+
+                    The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                - `class ResponseInputFile: …`
+
+                  A file input to the model.
+
+                  - `type: Literal["input_file"]`
+
+                    The type of the input item. Always `input_file`.
+
+                    - `"input_file"`
+
+                  - `file_data: Optional[str]`
+
+                    The content of the file to be sent to the model.
+
+                  - `file_id: Optional[str]`
+
+                    The ID of the file to be sent to the model.
+
+                  - `file_url: Optional[str]`
+
+                    The URL of the file to be sent to the model.
+
+                  - `filename: Optional[str]`
+
+                    The name of the file to be sent to the model.
+
+            - `role: Literal["user", "assistant", "system", "developer"]`
+
+              The role of the message input. One of `user`, `assistant`, `system`, or
+              `developer`.
+
+              - `"user"`
+
+              - `"assistant"`
+
+              - `"system"`
+
+              - `"developer"`
+
+            - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+              Use `commentary` for an intermediate assistant message and `final_answer` for
+              the final assistant message. For follow-up requests with models like
+              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+              messages. Omitting it can degrade performance. Not used for user messages.
+
+              - `"commentary"`
+
+              - `"final_answer"`
+
+            - `type: Optional[Literal["message"]]`
+
+              The type of the message input. Always `message`.
+
+              - `"message"`
+
+          - `class InputMessagesTemplateTemplateEvalItem: …`
+
+            A message input to the model with a role indicating instruction following
+            hierarchy. Instructions given with the `developer` or `system` role take
+            precedence over instructions given with the `user` role. Messages with the
+            `assistant` role are presumed to have been generated by the model in previous
+            interactions.
+
+            - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+              - `str`
+
+                A text input to the model.
+
+              - `class ResponseInputText: …`
+
+                A text input to the model.
+
+                - `text: str`
+
+                  The text input to the model.
+
+                - `type: Literal["input_text"]`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+              - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                A text output from the model.
+
+                - `text: str`
+
+                  The text output from the model.
+
+                - `type: Literal["output_text"]`
+
+                  The type of the output text. Always `output_text`.
+
+                  - `"output_text"`
+
+              - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                An image input block used within EvalItem content arrays.
+
+                - `image_url: str`
+
+                  The URL of the image input.
+
+                - `type: Literal["input_image"]`
+
+                  The type of the image input. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `detail: Optional[str]`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+              - `class ResponseInputAudio: …`
+
+                An audio input to the model.
+
+                - `input_audio: InputAudio`
+
+                  - `data: str`
+
+                    Base64-encoded audio data.
+
+                  - `format: Literal["mp3", "wav"]`
+
+                    The format of the audio data. Currently supported formats are `mp3` and
+                    `wav`.
+
+                    - `"mp3"`
+
+                    - `"wav"`
+
+                - `type: Literal["input_audio"]`
+
+                  The type of the input item. Always `input_audio`.
+
+                  - `"input_audio"`
+
+              - `List[GraderInputItem]`
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class GraderInputItemOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class GraderInputItemInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+            - `role: Literal["user", "assistant", "system", "developer"]`
+
+              The role of the message input. One of `user`, `assistant`, `system`, or
+              `developer`.
+
+              - `"user"`
+
+              - `"assistant"`
+
+              - `"system"`
+
+              - `"developer"`
+
+            - `type: Optional[Literal["message"]]`
+
+              The type of the message input. Always `message`.
+
+              - `"message"`
+
+        - `type: Literal["template"]`
+
+          The type of input messages. Always `template`.
+
+          - `"template"`
+
+      - `class InputMessagesItemReference: …`
+
+        - `item_reference: str`
+
+          A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+        - `type: Literal["item_reference"]`
+
+          The type of input messages. Always `item_reference`.
+
+          - `"item_reference"`
+
+    - `model: Optional[str]`
+
+      The name of the model to use for generating completions (e.g. "o3-mini").
+
+    - `sampling_params: Optional[SamplingParams]`
+
+      - `max_completion_tokens: Optional[int]`
+
+        The maximum number of tokens in the generated output.
+
+      - `reasoning_effort: Optional[ReasoningEffort]`
+
+        Constrains effort on reasoning for
+        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+        reasoning effort can result in faster responses and fewer tokens used
+        on reasoning in a response.
+
+        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `"none"`
+
+        - `"minimal"`
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
+
+      - `response_format: Optional[SamplingParamsResponseFormat]`
+
+        An object specifying the format that the model must output.
+
+        Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+        Structured Outputs which ensures the model will match your supplied JSON
+        schema. Learn more in the [Structured Outputs
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+        Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+        ensures the message the model generates is valid JSON. Using `json_schema`
+        is preferred for models that support it.
+
+        - `class ResponseFormatText: …`
+
+          Default response format. Used to generate text responses.
+
+          - `type: Literal["text"]`
+
+            The type of response format being defined. Always `text`.
+
+            - `"text"`
+
+        - `class ResponseFormatJSONSchema: …`
+
+          JSON Schema response format. Used to generate structured JSON responses.
+          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+          - `json_schema: JSONSchema`
+
+            Structured Outputs configuration options, including a JSON Schema.
+
+            - `name: str`
+
+              The name of the response format. Must be a-z, A-Z, 0-9, or contain
+              underscores and dashes, with a maximum length of 64.
+
+            - `description: Optional[str]`
+
+              A description of what the response format is for, used by the model to
+              determine how to respond in the format.
+
+            - `schema: Optional[Dict[str, object]]`
+
+              The schema for the response format, described as a JSON Schema object.
+              Learn how to build JSON schemas [here](https://json-schema.org/).
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the output.
+              If set to true, the model will always follow the exact schema defined
+              in the `schema` field. Only a subset of JSON Schema is supported when
+              `strict` is `true`. To learn more, read the [Structured Outputs
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          - `type: Literal["json_schema"]`
+
+            The type of response format being defined. Always `json_schema`.
+
+            - `"json_schema"`
+
+        - `class ResponseFormatJSONObject: …`
+
+          JSON object response format. An older method of generating JSON responses.
+          Using `json_schema` is recommended for models that support it. Note that the
+          model will not generate JSON without a system or user message instructing it
+          to do so.
+
+          - `type: Literal["json_object"]`
+
+            The type of response format being defined. Always `json_object`.
+
+            - `"json_object"`
+
+      - `seed: Optional[int]`
+
+        A seed value to initialize the randomness, during sampling.
+
+      - `temperature: Optional[float]`
+
+        A higher temperature increases randomness in the outputs.
+
+      - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+        A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+        - `function: FunctionDefinition`
+
+          - `name: str`
+
+            The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+          - `description: Optional[str]`
+
+            A description of what the function does, used by the model to choose when and how to call the function.
+
+          - `parameters: Optional[FunctionParameters]`
+
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+            Omitting `parameters` defines a function with an empty parameter list.
+
+          - `strict: Optional[bool]`
+
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+        - `type: Literal["function"]`
+
+          The type of the tool. Currently, only `function` is supported.
+
+          - `"function"`
+
+      - `top_p: Optional[float]`
+
+        An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `class DataSourceCreateEvalResponsesRunDataSource: …`
+
+    A ResponsesRunDataSource object describing a model sampling configuration.
+
+    - `source: DataSourceCreateEvalResponsesRunDataSourceSource`
+
+      Determines what populates the `item` namespace in this run's data source.
+
+      - `class DataSourceCreateEvalResponsesRunDataSourceSourceFileContent: …`
+
+        - `content: Iterable[DataSourceCreateEvalResponsesRunDataSourceSourceFileContentContent]`
+
+          The content of the jsonl file.
+
+          - `item: Dict[str, object]`
+
+          - `sample: Optional[Dict[str, object]]`
+
+        - `type: Literal["file_content"]`
+
+          The type of jsonl source. Always `file_content`.
+
+          - `"file_content"`
+
+      - `class DataSourceCreateEvalResponsesRunDataSourceSourceFileID: …`
+
+        - `id: str`
+
+          The identifier of the file.
+
+        - `type: Literal["file_id"]`
+
+          The type of jsonl source. Always `file_id`.
+
+          - `"file_id"`
+
+      - `class DataSourceCreateEvalResponsesRunDataSourceSourceResponses: …`
+
+        A EvalResponsesSource object describing a run data source configuration.
+
+        - `type: Literal["responses"]`
+
+          The type of run data source. Always `responses`.
+
+          - `"responses"`
+
+        - `created_after: Optional[int]`
+
+          Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+        - `created_before: Optional[int]`
+
+          Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+        - `instructions_search: Optional[str]`
+
+          Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+        - `metadata: Optional[object]`
+
+          Metadata filter for the responses. This is a query parameter used to select responses.
+
+        - `model: Optional[str]`
+
+          The name of the model to find responses for. This is a query parameter used to select responses.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `temperature: Optional[float]`
+
+          Sampling temperature. This is a query parameter used to select responses.
+
+        - `tools: Optional[SequenceNotStr[str]]`
+
+          List of tool names. This is a query parameter used to select responses.
+
+        - `top_p: Optional[float]`
+
+          Nucleus sampling parameter. This is a query parameter used to select responses.
+
+        - `users: Optional[SequenceNotStr[str]]`
+
+          List of user identifiers. This is a query parameter used to select responses.
+
+    - `type: Literal["responses"]`
+
+      The type of run data source. Always `responses`.
+
+      - `"responses"`
+
+    - `input_messages: Optional[DataSourceCreateEvalResponsesRunDataSourceInputMessages]`
+
+      Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+      - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplate: …`
+
+        - `template: Iterable[DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplate]`
+
+          A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+          - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplateChatMessage: …`
+
+            - `content: str`
+
+              The content of the message.
+
+            - `role: str`
+
+              The role of the message (e.g. "system", "assistant", "user").
+
+          - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplateEvalItem: …`
+
+            A message input to the model with a role indicating instruction following
+            hierarchy. Instructions given with the `developer` or `system` role take
+            precedence over instructions given with the `user` role. Messages with the
+            `assistant` role are presumed to have been generated by the model in previous
+            interactions.
+
+            - `content: DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplateEvalItemContent`
+
+              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+              - `str`
+
+                A text input to the model.
+
+              - `class ResponseInputText: …`
+
+                A text input to the model.
+
+                - `text: str`
+
+                  The text input to the model.
+
+                - `type: Literal["input_text"]`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+              - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                A text output from the model.
+
+                - `text: str`
+
+                  The text output from the model.
+
+                - `type: Literal["output_text"]`
+
+                  The type of the output text. Always `output_text`.
+
+                  - `"output_text"`
+
+              - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                An image input block used within EvalItem content arrays.
+
+                - `image_url: str`
+
+                  The URL of the image input.
+
+                - `type: Literal["input_image"]`
+
+                  The type of the image input. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `detail: Optional[str]`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+              - `class ResponseInputAudio: …`
+
+                An audio input to the model.
+
+                - `input_audio: InputAudio`
+
+                  - `data: str`
+
+                    Base64-encoded audio data.
+
+                  - `format: Literal["mp3", "wav"]`
+
+                    The format of the audio data. Currently supported formats are `mp3` and
+                    `wav`.
+
+                    - `"mp3"`
+
+                    - `"wav"`
+
+                - `type: Literal["input_audio"]`
+
+                  The type of the input item. Always `input_audio`.
+
+                  - `"input_audio"`
+
+              - `List[GraderInputItem]`
+
+                A list of inputs, each of which may be either an input text, output text, input
+                image, or input audio object.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class GraderInputItemOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class GraderInputItemInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+            - `role: Literal["user", "assistant", "system", "developer"]`
+
+              The role of the message input. One of `user`, `assistant`, `system`, or
+              `developer`.
+
+              - `"user"`
+
+              - `"assistant"`
+
+              - `"system"`
+
+              - `"developer"`
+
+            - `type: Optional[Literal["message"]]`
+
+              The type of the message input. Always `message`.
+
+              - `"message"`
+
+        - `type: Literal["template"]`
+
+          The type of input messages. Always `template`.
+
+          - `"template"`
+
+      - `class DataSourceCreateEvalResponsesRunDataSourceInputMessagesItemReference: …`
+
+        - `item_reference: str`
+
+          A reference to a variable in the `item` namespace. Ie, "item.name"
+
+        - `type: Literal["item_reference"]`
+
+          The type of input messages. Always `item_reference`.
+
+          - `"item_reference"`
+
+    - `model: Optional[str]`
+
+      The name of the model to use for generating completions (e.g. "o3-mini").
+
+    - `sampling_params: Optional[DataSourceCreateEvalResponsesRunDataSourceSamplingParams]`
+
+      - `max_completion_tokens: Optional[int]`
+
+        The maximum number of tokens in the generated output.
+
+      - `reasoning_effort: Optional[ReasoningEffort]`
+
+        Constrains effort on reasoning for
+        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+        reasoning effort can result in faster responses and fewer tokens used
+        on reasoning in a response.
+
+        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `"none"`
+
+        - `"minimal"`
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
+
+      - `seed: Optional[int]`
+
+        A seed value to initialize the randomness, during sampling.
+
+      - `temperature: Optional[float]`
+
+        A higher temperature increases randomness in the outputs.
+
+      - `text: Optional[DataSourceCreateEvalResponsesRunDataSourceSamplingParamsText]`
+
+        Configuration options for a text response from the model. Can be plain
+        text or structured JSON data. Learn more:
+
+        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+
+        - `format: Optional[ResponseFormatTextConfigParam]`
+
+          An object specifying the format that the model must output.
+
+          Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+          which ensures the model will match your supplied JSON schema. Learn more in the
+          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          The default format is `{ "type": "text" }` with no additional options.
+
+          **Not recommended for gpt-4o and newer models:**
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `class ResponseFormatText: …`
+
+            Default response format. Used to generate text responses.
+
+            - `type: Literal["text"]`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `class ResponseFormatTextJSONSchemaConfig: …`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `name: str`
+
+              The name of the response format. Must be a-z, A-Z, 0-9, or contain
+              underscores and dashes, with a maximum length of 64.
+
+            - `schema: Dict[str, object]`
+
+              The schema for the response format, described as a JSON Schema object.
+              Learn how to build JSON schemas [here](https://json-schema.org/).
+
+            - `type: Literal["json_schema"]`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+            - `description: Optional[str]`
+
+              A description of what the response format is for, used by the model to
+              determine how to respond in the format.
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the output.
+              If set to true, the model will always follow the exact schema defined
+              in the `schema` field. Only a subset of JSON Schema is supported when
+              `strict` is `true`. To learn more, read the [Structured Outputs
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          - `class ResponseFormatJSONObject: …`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: Literal["json_object"]`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+      - `tools: Optional[Iterable[ToolParam]]`
+
+        An array of tools the model may call while generating a response. You
+        can specify which tool to use by setting the `tool_choice` parameter.
+
+        The two categories of tools you can provide the model are:
+
+        - **Built-in tools**: Tools that are provided by OpenAI that extend the
+          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+          [built-in tools](https://platform.openai.com/docs/guides/tools).
+        - **Function calls (custom tools)**: Functions that are defined by you,
+          enabling the model to call your own code. Learn more about
+          [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: str`
+
+            The name of the function to call.
+
+          - `parameters: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: Optional[bool]`
+
+            Whether to enforce strict parameter validation. Default `true`.
+
+          - `type: Literal["function"]`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `description: Optional[str]`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: Literal["file_search"]`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: List[str]`
+
+            The IDs of the vector stores to search.
+
+          - `filters: Optional[Filters]`
+
+            A filter to apply.
+
+            - `class ComparisonFilter: …`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: str`
+
+                The key to compare against the value.
+
+              - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `str`
+
+                - `float`
+
+                - `bool`
+
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
+
+            - `class CompoundFilter: …`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: List[Filter]`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `class ComparisonFilter: …`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: str`
+
+                    The key to compare against the value.
+
+                  - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `str`
+
+                    - `float`
+
+                    - `bool`
+
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
+
+                - `object`
+
+              - `type: Literal["and", "or"]`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results: Optional[int]`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options: Optional[RankingOptions]`
+
+            Ranking options for search.
+
+            - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: float`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: float`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold: Optional[float]`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: int`
+
+            The height of the computer display.
+
+          - `display_width: int`
+
+            The width of the computer display.
+
+          - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: Literal["computer_use_preview"]`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters: Optional[Filters]`
+
+            Filters for the search.
+
+            - `allowed_domains: Optional[List[str]]`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The approximate location of the user.
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type: Optional[Literal["approximate"]]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: str`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: Literal["mcp"]`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_tools: Optional[McpAllowedTools]`
+
+            List of allowed tool names or a filter object.
+
+            - `List[str]`
+
+              A string array of allowed tool names
+
+            - `class McpAllowedToolsMcpToolFilter: …`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: Optional[bool]`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: Optional[List[str]]`
+
+                List of allowed tool names.
+
+          - `authorization: Optional[str]`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url` or `connector_id` must be provided. Learn more about service
+            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `headers: Optional[Dict[str, str]]`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval: Optional[McpRequireApproval]`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+              - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `Literal["always", "never"]`
+
+              Specify a single approval policy for all tools. One of `always` or
+              `never`. When set to `always`, all tools will require approval. When
+              set to `never`, all tools will not require approval.
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description: Optional[str]`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url: Optional[str]`
+
+            The URL for the MCP server. One of `server_url` or `connector_id` must be
+            provided.
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: CodeInterpreterContainer`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `str`
+
+              The container ID.
+
+            - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: Literal["auto"]`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class ContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class ContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: Literal["image_generation"]`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity: Optional[Literal["high", "low"]]`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id: Optional[str]`
+
+              File ID for the mask image.
+
+            - `image_url: Optional[str]`
+
+              Base64-encoded mask image.
+
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `str`
+
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-1.5"`
+
+          - `moderation: Optional[Literal["auto", "low"]]`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression: Optional[int]`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images: Optional[int]`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+            The size of the generated image. One of `1024x1024`, `1024x1536`,
+            `1536x1024`, or `auto`. Default: `auto`.
+
+            - `"1024x1024"`
+
+            - `"1024x1536"`
+
+            - `"1536x1024"`
+
+            - `"auto"`
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: Literal["local_shell"]`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: Literal["shell"]`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `environment: Optional[Environment]`
+
+            - `class ContainerAuto: …`
+
+              - `type: Literal["container_auto"]`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[NetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class ContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class ContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+              - `skills: Optional[List[Skill]]`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `class SkillReference: …`
+
+                  - `skill_id: str`
+
+                    The ID of the referenced skill.
+
+                  - `type: Literal["skill_reference"]`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version: Optional[str]`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `class InlineSkill: …`
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `source: InlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: str`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: Literal["application/zip"]`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: Literal["base64"]`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: Literal["inline"]`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `class LocalEnvironment: …`
+
+              - `type: Literal["local"]`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills: Optional[List[LocalSkill]]`
+
+                An optional list of skills.
+
+                - `description: str`
+
+                  The description of the skill.
+
+                - `name: str`
+
+                  The name of the skill.
+
+                - `path: str`
+
+                  The path to the directory containing the skill.
+
+            - `class ContainerReference: …`
+
+              - `container_id: str`
+
+                The ID of the referenced container.
+
+              - `type: Literal["container_reference"]`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: str`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: Literal["custom"]`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `description: Optional[str]`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format: Optional[CustomToolInputFormat]`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `class Text: …`
+
+              Unconstrained free-form text.
+
+              - `type: Literal["text"]`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `class Grammar: …`
+
+              A grammar defined by the user.
+
+              - `definition: str`
+
+                The grammar definition.
+
+              - `syntax: Literal["lark", "regex"]`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: Literal["grammar"]`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The user's location.
+
+            - `type: Literal["approximate"]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["apply_patch"]`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+      - `top_p: Optional[float]`
+
+        An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+- `metadata: Optional[Metadata]`
+
+  Set of 16 key-value pairs that can be attached to an object. This can be
+  useful for storing additional information about the object in a structured
+  format, and querying for objects via API or the dashboard.
+
+  Keys are strings with a maximum length of 64 characters. Values are strings
+  with a maximum length of 512 characters.
+
+- `name: Optional[str]`
+
+  The name of the run.
+
+### Returns
+
+- `class RunCreateResponse: …`
+
+  A schema representing an evaluation run.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: DataSource`
+
+    Information about the run's data source.
+
+    - `class CreateEvalJSONLRunDataSource: …`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: Literal["jsonl"]`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `class CreateEvalCompletionsRunDataSource: …`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class SourceStoredCompletions: …`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: Literal["stored_completions"]`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: Optional[int]`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: Optional[int]`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: Optional[int]`
+
+            An optional maximum number of items to return.
+
+          - `metadata: Optional[Metadata]`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: Optional[str]`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: Literal["completions"]`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: Optional[InputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class InputMessagesTemplate: …`
+
+          - `template: List[InputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class EasyInputMessage: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: Union[str, ResponseInputMessageContentList]`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `List[ResponseInputContent]`
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class ResponseInputImage: …`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                    - `detail: Literal["low", "high", "auto"]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: Optional[str]`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `class ResponseInputFile: …`
+
+                    A file input to the model.
+
+                    - `type: Literal["input_file"]`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `file_data: Optional[str]`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: Optional[str]`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: Optional[str]`
+
+                      The name of the file to be sent to the model.
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                Use `commentary` for an intermediate assistant message and `final_answer` for
+                the final assistant message. For follow-up requests with models like
+                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+                messages. Omitting it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `class InputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class InputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[SamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: Optional[SamplingParamsResponseFormat]`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `class ResponseFormatText: …`
+
+            Default response format. Used to generate text responses.
+
+            - `type: Literal["text"]`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `class ResponseFormatJSONSchema: …`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `json_schema: JSONSchema`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: Optional[Dict[str, object]]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `type: Literal["json_schema"]`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `class ResponseFormatJSONObject: …`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: Literal["json_object"]`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: str`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: Optional[str]`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: Optional[FunctionParameters]`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+          - `type: Literal["function"]`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `class DataSourceResponses: …`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: DataSourceResponsesSource`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class DataSourceResponsesSourceFileContent: …`
+
+          - `content: List[DataSourceResponsesSourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class DataSourceResponsesSourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class DataSourceResponsesSourceResponses: …`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: Literal["responses"]`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: Optional[int]`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: Optional[int]`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: Optional[str]`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: Optional[object]`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: Optional[str]`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: Optional[ReasoningEffort]`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+          - `temperature: Optional[float]`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: Optional[List[str]]`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: Optional[float]`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: Optional[List[str]]`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: Literal["responses"]`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: Optional[DataSourceResponsesInputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class DataSourceResponsesInputMessagesTemplate: …`
+
+          - `template: List[DataSourceResponsesInputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateChatMessage: …`
+
+              - `content: str`
+
+                The content of the message.
+
+              - `role: str`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: DataSourceResponsesInputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class DataSourceResponsesInputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[DataSourceResponsesSamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: Optional[DataSourceResponsesSamplingParamsText]`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+
+          - `format: Optional[ResponseFormatTextConfig]`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `class ResponseFormatText: …`
+
+              Default response format. Used to generate text responses.
+
+              - `type: Literal["text"]`
+
+                The type of response format being defined. Always `text`.
+
+                - `"text"`
+
+            - `class ResponseFormatTextJSONSchemaConfig: …`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: Dict[str, object]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: Literal["json_schema"]`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `class ResponseFormatJSONObject: …`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+              - `type: Literal["json_object"]`
+
+                The type of response format being defined. Always `json_object`.
+
+                - `"json_object"`
+
+        - `tools: Optional[List[Tool]]`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: str`
+
+              The name of the function to call.
+
+            - `parameters: Optional[Dict[str, object]]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: Literal["function"]`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `description: Optional[str]`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: Literal["file_search"]`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: List[str]`
+
+              The IDs of the vector stores to search.
+
+            - `filters: Optional[Filters]`
+
+              A filter to apply.
+
+              - `class ComparisonFilter: …`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: str`
+
+                  The key to compare against the value.
+
+                - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `str`
+
+                  - `float`
+
+                  - `bool`
+
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
+
+              - `class CompoundFilter: …`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: List[Filter]`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `class ComparisonFilter: …`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                    - `key: str`
+
+                      The key to compare against the value.
+
+                    - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                      - `eq`: equals
+                      - `ne`: not equal
+                      - `gt`: greater than
+                      - `gte`: greater than or equal
+                      - `lt`: less than
+                      - `lte`: less than or equal
+                      - `in`: in
+                      - `nin`: not in
+
+                      - `"eq"`
+
+                      - `"ne"`
+
+                      - `"gt"`
+
+                      - `"gte"`
+
+                      - `"lt"`
+
+                      - `"lte"`
+
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                      The value to compare against the attribute key; supports string, number, or boolean types.
+
+                      - `str`
+
+                      - `float`
+
+                      - `bool`
+
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
+
+                  - `object`
+
+                - `type: Literal["and", "or"]`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: Optional[int]`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: Optional[RankingOptions]`
+
+              Ranking options for search.
+
+              - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: float`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: float`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: Optional[float]`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: int`
+
+              The height of the computer display.
+
+            - `display_width: int`
+
+              The width of the computer display.
+
+            - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: Literal["computer_use_preview"]`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: Optional[Filters]`
+
+              Filters for the search.
+
+              - `allowed_domains: Optional[List[str]]`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The approximate location of the user.
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: Optional[Literal["approximate"]]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `server_label: str`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: Literal["mcp"]`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: Optional[McpAllowedTools]`
+
+              List of allowed tool names or a filter object.
+
+              - `List[str]`
+
+                A string array of allowed tool names
+
+              - `class McpAllowedToolsMcpToolFilter: …`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `authorization: Optional[str]`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `headers: Optional[Dict[str, str]]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: Optional[McpRequireApproval]`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+                - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+              - `Literal["always", "never"]`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: Optional[str]`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: Optional[str]`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: CodeInterpreterContainer`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `str`
+
+                The container ID.
+
+              - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: Literal["auto"]`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: Literal["image_generation"]`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: Optional[Literal["high", "low"]]`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: Optional[str]`
+
+                File ID for the mask image.
+
+              - `image_url: Optional[str]`
+
+                Base64-encoded mask image.
+
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `str`
+
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: Optional[Literal["auto", "low"]]`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: Optional[int]`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: Optional[int]`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: Literal["local_shell"]`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: Literal["shell"]`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: Optional[Environment]`
+
+              - `class ContainerAuto: …`
+
+                - `type: Literal["container_auto"]`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[NetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+                - `skills: Optional[List[Skill]]`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `class SkillReference: …`
+
+                    - `skill_id: str`
+
+                      The ID of the referenced skill.
+
+                    - `type: Literal["skill_reference"]`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: Optional[str]`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `class InlineSkill: …`
+
+                    - `description: str`
+
+                      The description of the skill.
+
+                    - `name: str`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: str`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: Literal["application/zip"]`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: Literal["base64"]`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: Literal["inline"]`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `class LocalEnvironment: …`
+
+                - `type: Literal["local"]`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: Optional[List[LocalSkill]]`
+
+                  An optional list of skills.
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `path: str`
+
+                    The path to the directory containing the skill.
+
+              - `class ContainerReference: …`
+
+                - `container_id: str`
+
+                  The ID of the referenced container.
+
+                - `type: Literal["container_reference"]`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `name: str`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: Literal["custom"]`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `description: Optional[str]`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: Optional[CustomToolInputFormat]`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `class Text: …`
+
+                Unconstrained free-form text.
+
+                - `type: Literal["text"]`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `class Grammar: …`
+
+                A grammar defined by the user.
+
+                - `definition: str`
+
+                  The grammar definition.
+
+                - `syntax: Literal["lark", "regex"]`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: Literal["grammar"]`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The user's location.
+
+              - `type: Literal["approximate"]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["apply_patch"]`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: str`
+
+      The error code.
+
+    - `message: str`
+
+      The error message.
+
+  - `eval_id: str`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: str`
+
+    The model that is evaluated, if applicable.
+
+  - `name: str`
+
+    The name of the evaluation run.
+
+  - `object: Literal["eval.run"]`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: List[PerModelUsage]`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: int`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: int`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: int`
+
+      The number of invocations.
+
+    - `model_name: str`
+
+      The name of the model.
+
+    - `prompt_tokens: int`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: int`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: List[PerTestingCriteriaResult]`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: int`
+
+      Number of tests failed for this criteria.
+
+    - `passed: int`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: str`
+
+      A description of the testing criteria.
+
+  - `report_url: str`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: ResultCounts`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: int`
+
+      Number of output items that resulted in an error.
+
+    - `failed: int`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: int`
+
+      Number of output items that passed the evaluation.
+
+    - `total: int`
+
+      Total number of executed output items.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+run = client.evals.runs.create(
+    eval_id="eval_id",
+    data_source={
+        "source": {
+            "content": [{
+                "item": {
+                    "foo": "bar"
+                }
+            }],
+            "type": "file_content",
+        },
+        "type": "jsonl",
+    },
+)
+print(run.id)
+```
+
+## Retrieve
+
+`evals.runs.retrieve(strrun_id, RunRetrieveParams**kwargs)  -> RunRetrieveResponse`
+
+**get** `/evals/{eval_id}/runs/{run_id}`
+
+Get an evaluation run by ID.
+
+### Parameters
+
+- `eval_id: str`
+
+- `run_id: str`
+
+### Returns
+
+- `class RunRetrieveResponse: …`
+
+  A schema representing an evaluation run.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: DataSource`
+
+    Information about the run's data source.
+
+    - `class CreateEvalJSONLRunDataSource: …`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: Literal["jsonl"]`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `class CreateEvalCompletionsRunDataSource: …`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class SourceStoredCompletions: …`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: Literal["stored_completions"]`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: Optional[int]`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: Optional[int]`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: Optional[int]`
+
+            An optional maximum number of items to return.
+
+          - `metadata: Optional[Metadata]`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: Optional[str]`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: Literal["completions"]`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: Optional[InputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class InputMessagesTemplate: …`
+
+          - `template: List[InputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class EasyInputMessage: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: Union[str, ResponseInputMessageContentList]`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `List[ResponseInputContent]`
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class ResponseInputImage: …`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                    - `detail: Literal["low", "high", "auto"]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: Optional[str]`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `class ResponseInputFile: …`
+
+                    A file input to the model.
+
+                    - `type: Literal["input_file"]`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `file_data: Optional[str]`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: Optional[str]`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: Optional[str]`
+
+                      The name of the file to be sent to the model.
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                Use `commentary` for an intermediate assistant message and `final_answer` for
+                the final assistant message. For follow-up requests with models like
+                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+                messages. Omitting it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `class InputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class InputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[SamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: Optional[SamplingParamsResponseFormat]`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `class ResponseFormatText: …`
+
+            Default response format. Used to generate text responses.
+
+            - `type: Literal["text"]`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `class ResponseFormatJSONSchema: …`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `json_schema: JSONSchema`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: Optional[Dict[str, object]]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `type: Literal["json_schema"]`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `class ResponseFormatJSONObject: …`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: Literal["json_object"]`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: str`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: Optional[str]`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: Optional[FunctionParameters]`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+          - `type: Literal["function"]`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `class DataSourceResponses: …`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: DataSourceResponsesSource`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class DataSourceResponsesSourceFileContent: …`
+
+          - `content: List[DataSourceResponsesSourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class DataSourceResponsesSourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class DataSourceResponsesSourceResponses: …`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: Literal["responses"]`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: Optional[int]`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: Optional[int]`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: Optional[str]`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: Optional[object]`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: Optional[str]`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: Optional[ReasoningEffort]`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+          - `temperature: Optional[float]`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: Optional[List[str]]`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: Optional[float]`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: Optional[List[str]]`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: Literal["responses"]`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: Optional[DataSourceResponsesInputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class DataSourceResponsesInputMessagesTemplate: …`
+
+          - `template: List[DataSourceResponsesInputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateChatMessage: …`
+
+              - `content: str`
+
+                The content of the message.
+
+              - `role: str`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: DataSourceResponsesInputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class DataSourceResponsesInputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[DataSourceResponsesSamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: Optional[DataSourceResponsesSamplingParamsText]`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+
+          - `format: Optional[ResponseFormatTextConfig]`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `class ResponseFormatText: …`
+
+              Default response format. Used to generate text responses.
+
+              - `type: Literal["text"]`
+
+                The type of response format being defined. Always `text`.
+
+                - `"text"`
+
+            - `class ResponseFormatTextJSONSchemaConfig: …`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: Dict[str, object]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: Literal["json_schema"]`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `class ResponseFormatJSONObject: …`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+              - `type: Literal["json_object"]`
+
+                The type of response format being defined. Always `json_object`.
+
+                - `"json_object"`
+
+        - `tools: Optional[List[Tool]]`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: str`
+
+              The name of the function to call.
+
+            - `parameters: Optional[Dict[str, object]]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: Literal["function"]`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `description: Optional[str]`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: Literal["file_search"]`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: List[str]`
+
+              The IDs of the vector stores to search.
+
+            - `filters: Optional[Filters]`
+
+              A filter to apply.
+
+              - `class ComparisonFilter: …`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: str`
+
+                  The key to compare against the value.
+
+                - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `str`
+
+                  - `float`
+
+                  - `bool`
+
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
+
+              - `class CompoundFilter: …`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: List[Filter]`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `class ComparisonFilter: …`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                    - `key: str`
+
+                      The key to compare against the value.
+
+                    - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                      - `eq`: equals
+                      - `ne`: not equal
+                      - `gt`: greater than
+                      - `gte`: greater than or equal
+                      - `lt`: less than
+                      - `lte`: less than or equal
+                      - `in`: in
+                      - `nin`: not in
+
+                      - `"eq"`
+
+                      - `"ne"`
+
+                      - `"gt"`
+
+                      - `"gte"`
+
+                      - `"lt"`
+
+                      - `"lte"`
+
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                      The value to compare against the attribute key; supports string, number, or boolean types.
+
+                      - `str`
+
+                      - `float`
+
+                      - `bool`
+
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
+
+                  - `object`
+
+                - `type: Literal["and", "or"]`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: Optional[int]`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: Optional[RankingOptions]`
+
+              Ranking options for search.
+
+              - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: float`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: float`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: Optional[float]`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: int`
+
+              The height of the computer display.
+
+            - `display_width: int`
+
+              The width of the computer display.
+
+            - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: Literal["computer_use_preview"]`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: Optional[Filters]`
+
+              Filters for the search.
+
+              - `allowed_domains: Optional[List[str]]`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The approximate location of the user.
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: Optional[Literal["approximate"]]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `server_label: str`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: Literal["mcp"]`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: Optional[McpAllowedTools]`
+
+              List of allowed tool names or a filter object.
+
+              - `List[str]`
+
+                A string array of allowed tool names
+
+              - `class McpAllowedToolsMcpToolFilter: …`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `authorization: Optional[str]`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `headers: Optional[Dict[str, str]]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: Optional[McpRequireApproval]`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+                - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+              - `Literal["always", "never"]`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: Optional[str]`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: Optional[str]`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: CodeInterpreterContainer`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `str`
+
+                The container ID.
+
+              - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: Literal["auto"]`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: Literal["image_generation"]`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: Optional[Literal["high", "low"]]`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: Optional[str]`
+
+                File ID for the mask image.
+
+              - `image_url: Optional[str]`
+
+                Base64-encoded mask image.
+
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `str`
+
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: Optional[Literal["auto", "low"]]`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: Optional[int]`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: Optional[int]`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: Literal["local_shell"]`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: Literal["shell"]`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: Optional[Environment]`
+
+              - `class ContainerAuto: …`
+
+                - `type: Literal["container_auto"]`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[NetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+                - `skills: Optional[List[Skill]]`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `class SkillReference: …`
+
+                    - `skill_id: str`
+
+                      The ID of the referenced skill.
+
+                    - `type: Literal["skill_reference"]`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: Optional[str]`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `class InlineSkill: …`
+
+                    - `description: str`
+
+                      The description of the skill.
+
+                    - `name: str`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: str`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: Literal["application/zip"]`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: Literal["base64"]`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: Literal["inline"]`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `class LocalEnvironment: …`
+
+                - `type: Literal["local"]`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: Optional[List[LocalSkill]]`
+
+                  An optional list of skills.
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `path: str`
+
+                    The path to the directory containing the skill.
+
+              - `class ContainerReference: …`
+
+                - `container_id: str`
+
+                  The ID of the referenced container.
+
+                - `type: Literal["container_reference"]`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `name: str`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: Literal["custom"]`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `description: Optional[str]`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: Optional[CustomToolInputFormat]`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `class Text: …`
+
+                Unconstrained free-form text.
+
+                - `type: Literal["text"]`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `class Grammar: …`
+
+                A grammar defined by the user.
+
+                - `definition: str`
+
+                  The grammar definition.
+
+                - `syntax: Literal["lark", "regex"]`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: Literal["grammar"]`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The user's location.
+
+              - `type: Literal["approximate"]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["apply_patch"]`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: str`
+
+      The error code.
+
+    - `message: str`
+
+      The error message.
+
+  - `eval_id: str`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: str`
+
+    The model that is evaluated, if applicable.
+
+  - `name: str`
+
+    The name of the evaluation run.
+
+  - `object: Literal["eval.run"]`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: List[PerModelUsage]`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: int`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: int`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: int`
+
+      The number of invocations.
+
+    - `model_name: str`
+
+      The name of the model.
+
+    - `prompt_tokens: int`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: int`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: List[PerTestingCriteriaResult]`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: int`
+
+      Number of tests failed for this criteria.
+
+    - `passed: int`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: str`
+
+      A description of the testing criteria.
+
+  - `report_url: str`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: ResultCounts`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: int`
+
+      Number of output items that resulted in an error.
+
+    - `failed: int`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: int`
+
+      Number of output items that passed the evaluation.
+
+    - `total: int`
+
+      Total number of executed output items.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+run = client.evals.runs.retrieve(
+    run_id="run_id",
+    eval_id="eval_id",
+)
+print(run.id)
+```
+
+## Cancel
+
+`evals.runs.cancel(strrun_id, RunCancelParams**kwargs)  -> RunCancelResponse`
+
+**post** `/evals/{eval_id}/runs/{run_id}`
+
+Cancel an ongoing evaluation run.
+
+### Parameters
+
+- `eval_id: str`
+
+- `run_id: str`
+
+### Returns
+
+- `class RunCancelResponse: …`
+
+  A schema representing an evaluation run.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: DataSource`
+
+    Information about the run's data source.
+
+    - `class CreateEvalJSONLRunDataSource: …`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: Literal["jsonl"]`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `class CreateEvalCompletionsRunDataSource: …`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: Source`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class SourceFileContent: …`
+
+          - `content: List[SourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class SourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class SourceStoredCompletions: …`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: Literal["stored_completions"]`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: Optional[int]`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: Optional[int]`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: Optional[int]`
+
+            An optional maximum number of items to return.
+
+          - `metadata: Optional[Metadata]`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: Optional[str]`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: Literal["completions"]`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: Optional[InputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class InputMessagesTemplate: …`
+
+          - `template: List[InputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class EasyInputMessage: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: Union[str, ResponseInputMessageContentList]`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `List[ResponseInputContent]`
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class ResponseInputImage: …`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                    - `detail: Literal["low", "high", "auto"]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: Optional[str]`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `class ResponseInputFile: …`
+
+                    A file input to the model.
+
+                    - `type: Literal["input_file"]`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `file_data: Optional[str]`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: Optional[str]`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: Optional[str]`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: Optional[str]`
+
+                      The name of the file to be sent to the model.
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                Use `commentary` for an intermediate assistant message and `final_answer` for
+                the final assistant message. For follow-up requests with models like
+                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+                messages. Omitting it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `class InputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class InputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[SamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: Optional[SamplingParamsResponseFormat]`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `class ResponseFormatText: …`
+
+            Default response format. Used to generate text responses.
+
+            - `type: Literal["text"]`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `class ResponseFormatJSONSchema: …`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `json_schema: JSONSchema`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: Optional[Dict[str, object]]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `type: Literal["json_schema"]`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `class ResponseFormatJSONObject: …`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: Literal["json_object"]`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: str`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: Optional[str]`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: Optional[FunctionParameters]`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: Optional[bool]`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+          - `type: Literal["function"]`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `class DataSourceResponses: …`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: DataSourceResponsesSource`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `class DataSourceResponsesSourceFileContent: …`
+
+          - `content: List[DataSourceResponsesSourceFileContentContent]`
+
+            The content of the jsonl file.
+
+            - `item: Dict[str, object]`
+
+            - `sample: Optional[Dict[str, object]]`
+
+          - `type: Literal["file_content"]`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `class DataSourceResponsesSourceFileID: …`
+
+          - `id: str`
+
+            The identifier of the file.
+
+          - `type: Literal["file_id"]`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `class DataSourceResponsesSourceResponses: …`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: Literal["responses"]`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: Optional[int]`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: Optional[int]`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: Optional[str]`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: Optional[object]`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: Optional[str]`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: Optional[ReasoningEffort]`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+          - `temperature: Optional[float]`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: Optional[List[str]]`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: Optional[float]`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: Optional[List[str]]`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: Literal["responses"]`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: Optional[DataSourceResponsesInputMessages]`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `class DataSourceResponsesInputMessagesTemplate: …`
+
+          - `template: List[DataSourceResponsesInputMessagesTemplateTemplate]`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateChatMessage: …`
+
+              - `content: str`
+
+                The content of the message.
+
+              - `role: str`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItem: …`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: DataSourceResponsesInputMessagesTemplateTemplateEvalItemContent`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `str`
+
+                  A text input to the model.
+
+                - `class ResponseInputText: …`
+
+                  A text input to the model.
+
+                  - `text: str`
+
+                    The text input to the model.
+
+                  - `type: Literal["input_text"]`
+
+                    The type of the input item. Always `input_text`.
+
+                    - `"input_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+                  A text output from the model.
+
+                  - `text: str`
+
+                    The text output from the model.
+
+                  - `type: Literal["output_text"]`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: str`
+
+                    The URL of the image input.
+
+                  - `type: Literal["input_image"]`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: Optional[str]`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `class ResponseInputAudio: …`
+
+                  An audio input to the model.
+
+                  - `input_audio: InputAudio`
+
+                    - `data: str`
+
+                      Base64-encoded audio data.
+
+                    - `format: Literal["mp3", "wav"]`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: Literal["input_audio"]`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `List[GraderInputItem]`
+
+                  - `str`
+
+                    A text input to the model.
+
+                  - `class ResponseInputText: …`
+
+                    A text input to the model.
+
+                    - `text: str`
+
+                      The text input to the model.
+
+                    - `type: Literal["input_text"]`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `class GraderInputItemOutputText: …`
+
+                    A text output from the model.
+
+                    - `text: str`
+
+                      The text output from the model.
+
+                    - `type: Literal["output_text"]`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `class GraderInputItemInputImage: …`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: str`
+
+                      The URL of the image input.
+
+                    - `type: Literal["input_image"]`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: Optional[str]`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `class ResponseInputAudio: …`
+
+                    An audio input to the model.
+
+                    - `input_audio: InputAudio`
+
+                      - `data: str`
+
+                        Base64-encoded audio data.
+
+                      - `format: Literal["mp3", "wav"]`
+
+                        The format of the audio data. Currently supported formats are `mp3` and
+                        `wav`.
+
+                        - `"mp3"`
+
+                        - `"wav"`
+
+                    - `type: Literal["input_audio"]`
+
+                      The type of the input item. Always `input_audio`.
+
+                      - `"input_audio"`
+
+              - `role: Literal["user", "assistant", "system", "developer"]`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: Optional[Literal["message"]]`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: Literal["template"]`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `class DataSourceResponsesInputMessagesItemReference: …`
+
+          - `item_reference: str`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: Literal["item_reference"]`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: Optional[str]`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: Optional[DataSourceResponsesSamplingParams]`
+
+        - `max_completion_tokens: Optional[int]`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: Optional[ReasoningEffort]`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `seed: Optional[int]`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: Optional[float]`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: Optional[DataSourceResponsesSamplingParamsText]`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+
+          - `format: Optional[ResponseFormatTextConfig]`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `class ResponseFormatText: …`
+
+              Default response format. Used to generate text responses.
+
+              - `type: Literal["text"]`
+
+                The type of response format being defined. Always `text`.
+
+                - `"text"`
+
+            - `class ResponseFormatTextJSONSchemaConfig: …`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+              - `name: str`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: Dict[str, object]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: Literal["json_schema"]`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: Optional[str]`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: Optional[bool]`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+            - `class ResponseFormatJSONObject: …`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+              - `type: Literal["json_object"]`
+
+                The type of response format being defined. Always `json_object`.
+
+                - `"json_object"`
+
+        - `tools: Optional[List[Tool]]`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: str`
+
+              The name of the function to call.
+
+            - `parameters: Optional[Dict[str, object]]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: Literal["function"]`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `description: Optional[str]`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: Literal["file_search"]`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: List[str]`
+
+              The IDs of the vector stores to search.
+
+            - `filters: Optional[Filters]`
+
+              A filter to apply.
+
+              - `class ComparisonFilter: …`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: str`
+
+                  The key to compare against the value.
+
+                - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `str`
+
+                  - `float`
+
+                  - `bool`
+
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
+
+              - `class CompoundFilter: …`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: List[Filter]`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `class ComparisonFilter: …`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                    - `key: str`
+
+                      The key to compare against the value.
+
+                    - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                      - `eq`: equals
+                      - `ne`: not equal
+                      - `gt`: greater than
+                      - `gte`: greater than or equal
+                      - `lt`: less than
+                      - `lte`: less than or equal
+                      - `in`: in
+                      - `nin`: not in
+
+                      - `"eq"`
+
+                      - `"ne"`
+
+                      - `"gt"`
+
+                      - `"gte"`
+
+                      - `"lt"`
+
+                      - `"lte"`
+
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                      The value to compare against the attribute key; supports string, number, or boolean types.
+
+                      - `str`
+
+                      - `float`
+
+                      - `bool`
+
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
+
+                  - `object`
+
+                - `type: Literal["and", "or"]`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: Optional[int]`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: Optional[RankingOptions]`
+
+              Ranking options for search.
+
+              - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: float`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: float`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: Optional[float]`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: int`
+
+              The height of the computer display.
+
+            - `display_width: int`
+
+              The width of the computer display.
+
+            - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: Literal["computer_use_preview"]`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: Optional[Filters]`
+
+              Filters for the search.
+
+              - `allowed_domains: Optional[List[str]]`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The approximate location of the user.
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: Optional[Literal["approximate"]]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `server_label: str`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: Literal["mcp"]`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: Optional[McpAllowedTools]`
+
+              List of allowed tool names or a filter object.
+
+              - `List[str]`
+
+                A string array of allowed tool names
+
+              - `class McpAllowedToolsMcpToolFilter: …`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `authorization: Optional[str]`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `headers: Optional[Dict[str, str]]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: Optional[McpRequireApproval]`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+                - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: Optional[bool]`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: Optional[List[str]]`
+
+                    List of allowed tool names.
+
+              - `Literal["always", "never"]`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: Optional[str]`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: Optional[str]`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: CodeInterpreterContainer`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `str`
+
+                The container ID.
+
+              - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: Literal["auto"]`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: Literal["image_generation"]`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: Optional[Literal["high", "low"]]`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: Optional[str]`
+
+                File ID for the mask image.
+
+              - `image_url: Optional[str]`
+
+                Base64-encoded mask image.
+
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `str`
+
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: Optional[Literal["auto", "low"]]`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: Optional[int]`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: Optional[int]`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: Literal["local_shell"]`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: Literal["shell"]`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: Optional[Environment]`
+
+              - `class ContainerAuto: …`
+
+                - `type: Literal["container_auto"]`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: Optional[List[str]]`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: Optional[NetworkPolicy]`
+
+                  Network access policy for the container.
+
+                  - `class ContainerNetworkPolicyDisabled: …`
+
+                    - `type: Literal["disabled"]`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `class ContainerNetworkPolicyAllowlist: …`
+
+                    - `allowed_domains: List[str]`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: Literal["allowlist"]`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: str`
+
+                        The domain associated with the secret.
+
+                      - `name: str`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: str`
+
+                        The secret value to inject for the domain.
+
+                - `skills: Optional[List[Skill]]`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `class SkillReference: …`
+
+                    - `skill_id: str`
+
+                      The ID of the referenced skill.
+
+                    - `type: Literal["skill_reference"]`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: Optional[str]`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `class InlineSkill: …`
+
+                    - `description: str`
+
+                      The description of the skill.
+
+                    - `name: str`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: str`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: Literal["application/zip"]`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: Literal["base64"]`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: Literal["inline"]`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `class LocalEnvironment: …`
+
+                - `type: Literal["local"]`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: Optional[List[LocalSkill]]`
+
+                  An optional list of skills.
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `path: str`
+
+                    The path to the directory containing the skill.
+
+              - `class ContainerReference: …`
+
+                - `container_id: str`
+
+                  The ID of the referenced container.
+
+                - `type: Literal["container_reference"]`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `name: str`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: Literal["custom"]`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `description: Optional[str]`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: Optional[CustomToolInputFormat]`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `class Text: …`
+
+                Unconstrained free-form text.
+
+                - `type: Literal["text"]`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `class Grammar: …`
+
+                A grammar defined by the user.
+
+                - `definition: str`
+
+                  The grammar definition.
+
+                - `syntax: Literal["lark", "regex"]`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: Literal["grammar"]`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: Optional[UserLocation]`
+
+              The user's location.
+
+              - `type: Literal["approximate"]`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: Optional[str]`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: Optional[str]`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: Optional[str]`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: Optional[str]`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["apply_patch"]`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: Optional[float]`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: str`
+
+      The error code.
+
+    - `message: str`
+
+      The error message.
+
+  - `eval_id: str`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Optional[Metadata]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: str`
+
+    The model that is evaluated, if applicable.
+
+  - `name: str`
+
+    The name of the evaluation run.
+
+  - `object: Literal["eval.run"]`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: List[PerModelUsage]`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: int`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: int`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: int`
+
+      The number of invocations.
+
+    - `model_name: str`
+
+      The name of the model.
+
+    - `prompt_tokens: int`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: int`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: List[PerTestingCriteriaResult]`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: int`
+
+      Number of tests failed for this criteria.
+
+    - `passed: int`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: str`
+
+      A description of the testing criteria.
+
+  - `report_url: str`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: ResultCounts`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: int`
+
+      Number of output items that resulted in an error.
+
+    - `failed: int`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: int`
+
+      Number of output items that passed the evaluation.
+
+    - `total: int`
+
+      Total number of executed output items.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+response = client.evals.runs.cancel(
+    run_id="run_id",
+    eval_id="eval_id",
+)
+print(response.id)
+```
+
+## Delete
+
+`evals.runs.delete(strrun_id, RunDeleteParams**kwargs)  -> RunDeleteResponse`
+
+**delete** `/evals/{eval_id}/runs/{run_id}`
+
+Delete an eval run.
+
+### Parameters
+
+- `eval_id: str`
+
+- `run_id: str`
+
+### Returns
+
+- `class RunDeleteResponse: …`
+
+  - `deleted: Optional[bool]`
+
+  - `object: Optional[str]`
+
+  - `run_id: Optional[str]`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+run = client.evals.runs.delete(
+    run_id="run_id",
+    eval_id="eval_id",
+)
+print(run.run_id)
+```
+
+## Domain Types
+
+### Create Eval Completions Run Data Source
+
+- `class CreateEvalCompletionsRunDataSource: …`
+
+  A CompletionsRunDataSource object describing a model sampling configuration.
+
+  - `source: Source`
+
+    Determines what populates the `item` namespace in this run's data source.
+
+    - `class SourceFileContent: …`
+
+      - `content: List[SourceFileContentContent]`
+
+        The content of the jsonl file.
+
+        - `item: Dict[str, object]`
+
+        - `sample: Optional[Dict[str, object]]`
+
+      - `type: Literal["file_content"]`
+
+        The type of jsonl source. Always `file_content`.
+
+        - `"file_content"`
+
+    - `class SourceFileID: …`
+
+      - `id: str`
+
+        The identifier of the file.
+
+      - `type: Literal["file_id"]`
+
+        The type of jsonl source. Always `file_id`.
+
+        - `"file_id"`
+
+    - `class SourceStoredCompletions: …`
+
+      A StoredCompletionsRunDataSource configuration describing a set of filters
+
+      - `type: Literal["stored_completions"]`
+
+        The type of source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `created_after: Optional[int]`
+
+        An optional Unix timestamp to filter items created after this time.
+
+      - `created_before: Optional[int]`
+
+        An optional Unix timestamp to filter items created before this time.
+
+      - `limit: Optional[int]`
+
+        An optional maximum number of items to return.
+
+      - `metadata: Optional[Metadata]`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+      - `model: Optional[str]`
+
+        An optional model to filter by (e.g., 'gpt-4o').
+
+  - `type: Literal["completions"]`
+
+    The type of run data source. Always `completions`.
+
+    - `"completions"`
+
+  - `input_messages: Optional[InputMessages]`
+
+    Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+    - `class InputMessagesTemplate: …`
+
+      - `template: List[InputMessagesTemplateTemplate]`
+
+        A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+        - `class EasyInputMessage: …`
+
+          A message input to the model with a role indicating instruction following
+          hierarchy. Instructions given with the `developer` or `system` role take
+          precedence over instructions given with the `user` role. Messages with the
+          `assistant` role are presumed to have been generated by the model in previous
+          interactions.
+
+          - `content: Union[str, ResponseInputMessageContentList]`
+
+            Text, image, or audio input to the model, used to generate a response.
+            Can also contain previous assistant responses.
+
+            - `str`
+
+              A text input to the model.
+
+            - `List[ResponseInputContent]`
+
+              - `class ResponseInputText: …`
+
+                A text input to the model.
+
+                - `text: str`
+
+                  The text input to the model.
+
+                - `type: Literal["input_text"]`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+              - `class ResponseInputImage: …`
+
+                An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+                - `detail: Literal["low", "high", "auto"]`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `"low"`
+
+                  - `"high"`
+
+                  - `"auto"`
+
+                - `type: Literal["input_image"]`
+
+                  The type of the input item. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `file_id: Optional[str]`
+
+                  The ID of the file to be sent to the model.
+
+                - `image_url: Optional[str]`
+
+                  The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+              - `class ResponseInputFile: …`
+
+                A file input to the model.
+
+                - `type: Literal["input_file"]`
+
+                  The type of the input item. Always `input_file`.
+
+                  - `"input_file"`
+
+                - `file_data: Optional[str]`
+
+                  The content of the file to be sent to the model.
+
+                - `file_id: Optional[str]`
+
+                  The ID of the file to be sent to the model.
+
+                - `file_url: Optional[str]`
+
+                  The URL of the file to be sent to the model.
+
+                - `filename: Optional[str]`
+
+                  The name of the file to be sent to the model.
+
+          - `role: Literal["user", "assistant", "system", "developer"]`
+
+            The role of the message input. One of `user`, `assistant`, `system`, or
+            `developer`.
+
+            - `"user"`
+
+            - `"assistant"`
+
+            - `"system"`
+
+            - `"developer"`
+
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+            Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+            Use `commentary` for an intermediate assistant message and `final_answer` for
+            the final assistant message. For follow-up requests with models like
+            `gpt-5.3-codex` and later, preserve and resend phase on all assistant
+            messages. Omitting it can degrade performance. Not used for user messages.
+
+            - `"commentary"`
+
+            - `"final_answer"`
+
+          - `type: Optional[Literal["message"]]`
+
+            The type of the message input. Always `message`.
+
+            - `"message"`
+
+        - `class InputMessagesTemplateTemplateEvalItem: …`
+
+          A message input to the model with a role indicating instruction following
+          hierarchy. Instructions given with the `developer` or `system` role take
+          precedence over instructions given with the `user` role. Messages with the
+          `assistant` role are presumed to have been generated by the model in previous
+          interactions.
+
+          - `content: InputMessagesTemplateTemplateEvalItemContent`
+
+            Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+            - `str`
+
+              A text input to the model.
+
+            - `class ResponseInputText: …`
+
+              A text input to the model.
+
+              - `text: str`
+
+                The text input to the model.
+
+              - `type: Literal["input_text"]`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+            - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
+
+              A text output from the model.
+
+              - `text: str`
+
+                The text output from the model.
+
+              - `type: Literal["output_text"]`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `class InputMessagesTemplateTemplateEvalItemContentInputImage: …`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: str`
+
+                The URL of the image input.
+
+              - `type: Literal["input_image"]`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: Optional[str]`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `class ResponseInputAudio: …`
+
+              An audio input to the model.
+
+              - `input_audio: InputAudio`
+
+                - `data: str`
+
+                  Base64-encoded audio data.
+
+                - `format: Literal["mp3", "wav"]`
+
+                  The format of the audio data. Currently supported formats are `mp3` and
+                  `wav`.
+
+                  - `"mp3"`
+
+                  - `"wav"`
+
+              - `type: Literal["input_audio"]`
+
+                The type of the input item. Always `input_audio`.
+
+                - `"input_audio"`
+
+            - `List[GraderInputItem]`
+
+              - `str`
+
+                A text input to the model.
+
+              - `class ResponseInputText: …`
+
+                A text input to the model.
+
+                - `text: str`
+
+                  The text input to the model.
+
+                - `type: Literal["input_text"]`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+              - `class GraderInputItemOutputText: …`
+
+                A text output from the model.
+
+                - `text: str`
+
+                  The text output from the model.
+
+                - `type: Literal["output_text"]`
+
+                  The type of the output text. Always `output_text`.
+
+                  - `"output_text"`
+
+              - `class GraderInputItemInputImage: …`
+
+                An image input block used within EvalItem content arrays.
+
+                - `image_url: str`
+
+                  The URL of the image input.
+
+                - `type: Literal["input_image"]`
+
+                  The type of the image input. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `detail: Optional[str]`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+              - `class ResponseInputAudio: …`
+
+                An audio input to the model.
+
+                - `input_audio: InputAudio`
+
+                  - `data: str`
+
+                    Base64-encoded audio data.
+
+                  - `format: Literal["mp3", "wav"]`
+
+                    The format of the audio data. Currently supported formats are `mp3` and
+                    `wav`.
+
+                    - `"mp3"`
+
+                    - `"wav"`
+
+                - `type: Literal["input_audio"]`
+
+                  The type of the input item. Always `input_audio`.
+
+                  - `"input_audio"`
+
+          - `role: Literal["user", "assistant", "system", "developer"]`
+
+            The role of the message input. One of `user`, `assistant`, `system`, or
+            `developer`.
+
+            - `"user"`
+
+            - `"assistant"`
+
+            - `"system"`
+
+            - `"developer"`
+
+          - `type: Optional[Literal["message"]]`
+
+            The type of the message input. Always `message`.
+
+            - `"message"`
+
+      - `type: Literal["template"]`
+
+        The type of input messages. Always `template`.
+
+        - `"template"`
+
+    - `class InputMessagesItemReference: …`
+
+      - `item_reference: str`
+
+        A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+      - `type: Literal["item_reference"]`
+
+        The type of input messages. Always `item_reference`.
+
+        - `"item_reference"`
+
+  - `model: Optional[str]`
+
+    The name of the model to use for generating completions (e.g. "o3-mini").
+
+  - `sampling_params: Optional[SamplingParams]`
+
+    - `max_completion_tokens: Optional[int]`
+
+      The maximum number of tokens in the generated output.
+
+    - `reasoning_effort: Optional[ReasoningEffort]`
+
+      Constrains effort on reasoning for
+      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+      reasoning effort can result in faster responses and fewer tokens used
+      on reasoning in a response.
+
+      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+      - `"none"`
+
+      - `"minimal"`
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+      - `"xhigh"`
+
+    - `response_format: Optional[SamplingParamsResponseFormat]`
+
+      An object specifying the format that the model must output.
+
+      Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+      Structured Outputs which ensures the model will match your supplied JSON
+      schema. Learn more in the [Structured Outputs
+      guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+      Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+      ensures the message the model generates is valid JSON. Using `json_schema`
+      is preferred for models that support it.
+
+      - `class ResponseFormatText: …`
+
+        Default response format. Used to generate text responses.
+
+        - `type: Literal["text"]`
+
+          The type of response format being defined. Always `text`.
+
+          - `"text"`
+
+      - `class ResponseFormatJSONSchema: …`
+
+        JSON Schema response format. Used to generate structured JSON responses.
+        Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+
+        - `json_schema: JSONSchema`
+
+          Structured Outputs configuration options, including a JSON Schema.
+
+          - `name: str`
+
+            The name of the response format. Must be a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64.
+
+          - `description: Optional[str]`
+
+            A description of what the response format is for, used by the model to
+            determine how to respond in the format.
+
+          - `schema: Optional[Dict[str, object]]`
+
+            The schema for the response format, described as a JSON Schema object.
+            Learn how to build JSON schemas [here](https://json-schema.org/).
+
+          - `strict: Optional[bool]`
+
+            Whether to enable strict schema adherence when generating the output.
+            If set to true, the model will always follow the exact schema defined
+            in the `schema` field. Only a subset of JSON Schema is supported when
+            `strict` is `true`. To learn more, read the [Structured Outputs
+            guide](https://platform.openai.com/docs/guides/structured-outputs).
+
+        - `type: Literal["json_schema"]`
+
+          The type of response format being defined. Always `json_schema`.
+
+          - `"json_schema"`
+
+      - `class ResponseFormatJSONObject: …`
+
+        JSON object response format. An older method of generating JSON responses.
+        Using `json_schema` is recommended for models that support it. Note that the
+        model will not generate JSON without a system or user message instructing it
+        to do so.
+
+        - `type: Literal["json_object"]`
+
+          The type of response format being defined. Always `json_object`.
+
+          - `"json_object"`
+
+    - `seed: Optional[int]`
+
+      A seed value to initialize the randomness, during sampling.
+
+    - `temperature: Optional[float]`
+
+      A higher temperature increases randomness in the outputs.
+
+    - `tools: Optional[List[ChatCompletionFunctionTool]]`
+
+      A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of the tool. Currently, only `function` is supported.
+
+        - `"function"`
+
+    - `top_p: Optional[float]`
+
+      An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+### Create Eval JSONL Run Data Source
+
+- `class CreateEvalJSONLRunDataSource: …`
+
+  A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+  - `source: Source`
+
+    Determines what populates the `item` namespace in the data source.
+
+    - `class SourceFileContent: …`
+
+      - `content: List[SourceFileContentContent]`
+
+        The content of the jsonl file.
+
+        - `item: Dict[str, object]`
+
+        - `sample: Optional[Dict[str, object]]`
+
+      - `type: Literal["file_content"]`
+
+        The type of jsonl source. Always `file_content`.
+
+        - `"file_content"`
+
+    - `class SourceFileID: …`
+
+      - `id: str`
+
+        The identifier of the file.
+
+      - `type: Literal["file_id"]`
+
+        The type of jsonl source. Always `file_id`.
+
+        - `"file_id"`
+
+  - `type: Literal["jsonl"]`
+
+    The type of data source. Always `jsonl`.
+
+    - `"jsonl"`
+
+### Eval API Error
+
+- `class EvalAPIError: …`
+
+  An object representing an error response from the Eval API.
+
+  - `code: str`
+
+    The error code.
+
+  - `message: str`
+
+    The error message.
+
+# Output Items
+
+## List
+
+`evals.runs.output_items.list(strrun_id, OutputItemListParams**kwargs)  -> SyncCursorPage[OutputItemListResponse]`
+
+**get** `/evals/{eval_id}/runs/{run_id}/output_items`
+
+Get a list of output items for an evaluation run.
+
+### Parameters
+
+- `eval_id: str`
+
+- `run_id: str`
+
+- `after: Optional[str]`
+
+  Identifier for the last output item from the previous pagination request.
+
+- `limit: Optional[int]`
+
+  Number of output items to retrieve.
+
+- `order: Optional[Literal["asc", "desc"]]`
+
+  Sort order for output items by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
+
+  - `"asc"`
+
+  - `"desc"`
+
+- `status: Optional[Literal["fail", "pass"]]`
+
+  Filter output items by status. Use `failed` to filter by failed output
+  items or `pass` to filter by passed output items.
+
+  - `"fail"`
+
+  - `"pass"`
+
+### Returns
+
+- `class OutputItemListResponse: …`
+
+  A schema representing an evaluation run output item.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run output item.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `datasource_item: Dict[str, object]`
+
+    Details of the input data source item.
+
+  - `datasource_item_id: int`
+
+    The identifier for the data source item.
+
+  - `eval_id: str`
+
+    The identifier of the evaluation group.
+
+  - `object: Literal["eval.run.output_item"]`
+
+    The type of the object. Always "eval.run.output_item".
+
+    - `"eval.run.output_item"`
+
+  - `results: List[Result]`
+
+    A list of grader results for this output item.
+
+    - `name: str`
+
+      The name of the grader.
+
+    - `passed: bool`
+
+      Whether the grader considered the output a pass.
+
+    - `score: float`
+
+      The numeric score produced by the grader.
+
+    - `sample: Optional[Dict[str, object]]`
+
+      Optional sample or intermediate data produced by the grader.
+
+    - `type: Optional[str]`
+
+      The grader type (for example, "string-check-grader").
+
+  - `run_id: str`
+
+    The identifier of the evaluation run associated with this output item.
+
+  - `sample: Sample`
+
+    A sample containing the input and output of the evaluation run.
+
+    - `error: EvalAPIError`
+
+      An object representing an error response from the Eval API.
+
+      - `code: str`
+
+        The error code.
+
+      - `message: str`
+
+        The error message.
+
+    - `finish_reason: str`
+
+      The reason why the sample generation was finished.
+
+    - `input: List[SampleInput]`
+
+      An array of input messages.
+
+      - `content: str`
+
+        The content of the message.
+
+      - `role: str`
+
+        The role of the message sender (e.g., system, user, developer).
+
+    - `max_completion_tokens: int`
+
+      The maximum number of tokens allowed for completion.
+
+    - `model: str`
+
+      The model used for generating the sample.
+
+    - `output: List[SampleOutput]`
+
+      An array of output messages.
+
+      - `content: Optional[str]`
+
+        The content of the message.
+
+      - `role: Optional[str]`
+
+        The role of the message (e.g. "system", "assistant", "user").
+
+    - `seed: int`
+
+      The seed used for generating the sample.
+
+    - `temperature: float`
+
+      The sampling temperature used.
+
+    - `top_p: float`
+
+      The top_p value used for sampling.
+
+    - `usage: SampleUsage`
+
+      Token usage details for the sample.
+
+      - `cached_tokens: int`
+
+        The number of tokens retrieved from cache.
+
+      - `completion_tokens: int`
+
+        The number of completion tokens generated.
+
+      - `prompt_tokens: int`
+
+        The number of prompt tokens used.
+
+      - `total_tokens: int`
+
+        The total number of tokens used.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+page = client.evals.runs.output_items.list(
+    run_id="run_id",
+    eval_id="eval_id",
+)
+page = page.data[0]
+print(page.id)
+```
+
+## Retrieve
+
+`evals.runs.output_items.retrieve(stroutput_item_id, OutputItemRetrieveParams**kwargs)  -> OutputItemRetrieveResponse`
+
+**get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
+
+Get an evaluation run output item by ID.
+
+### Parameters
+
+- `eval_id: str`
+
+- `run_id: str`
+
+- `output_item_id: str`
+
+### Returns
+
+- `class OutputItemRetrieveResponse: …`
+
+  A schema representing an evaluation run output item.
+
+  - `id: str`
+
+    Unique identifier for the evaluation run output item.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `datasource_item: Dict[str, object]`
+
+    Details of the input data source item.
+
+  - `datasource_item_id: int`
+
+    The identifier for the data source item.
+
+  - `eval_id: str`
+
+    The identifier of the evaluation group.
+
+  - `object: Literal["eval.run.output_item"]`
+
+    The type of the object. Always "eval.run.output_item".
+
+    - `"eval.run.output_item"`
+
+  - `results: List[Result]`
+
+    A list of grader results for this output item.
+
+    - `name: str`
+
+      The name of the grader.
+
+    - `passed: bool`
+
+      Whether the grader considered the output a pass.
+
+    - `score: float`
+
+      The numeric score produced by the grader.
+
+    - `sample: Optional[Dict[str, object]]`
+
+      Optional sample or intermediate data produced by the grader.
+
+    - `type: Optional[str]`
+
+      The grader type (for example, "string-check-grader").
+
+  - `run_id: str`
+
+    The identifier of the evaluation run associated with this output item.
+
+  - `sample: Sample`
+
+    A sample containing the input and output of the evaluation run.
+
+    - `error: EvalAPIError`
+
+      An object representing an error response from the Eval API.
+
+      - `code: str`
+
+        The error code.
+
+      - `message: str`
+
+        The error message.
+
+    - `finish_reason: str`
+
+      The reason why the sample generation was finished.
+
+    - `input: List[SampleInput]`
+
+      An array of input messages.
+
+      - `content: str`
+
+        The content of the message.
+
+      - `role: str`
+
+        The role of the message sender (e.g., system, user, developer).
+
+    - `max_completion_tokens: int`
+
+      The maximum number of tokens allowed for completion.
+
+    - `model: str`
+
+      The model used for generating the sample.
+
+    - `output: List[SampleOutput]`
+
+      An array of output messages.
+
+      - `content: Optional[str]`
+
+        The content of the message.
+
+      - `role: Optional[str]`
+
+        The role of the message (e.g. "system", "assistant", "user").
+
+    - `seed: int`
+
+      The seed used for generating the sample.
+
+    - `temperature: float`
+
+      The sampling temperature used.
+
+    - `top_p: float`
+
+      The top_p value used for sampling.
+
+    - `usage: SampleUsage`
+
+      Token usage details for the sample.
+
+      - `cached_tokens: int`
+
+        The number of tokens retrieved from cache.
+
+      - `completion_tokens: int`
+
+        The number of completion tokens generated.
+
+      - `prompt_tokens: int`
+
+        The number of prompt tokens used.
+
+      - `total_tokens: int`
+
+        The total number of tokens used.
+
+  - `status: str`
+
+    The status of the evaluation run.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+output_item = client.evals.runs.output_items.retrieve(
+    output_item_id="output_item_id",
+    eval_id="eval_id",
+    run_id="run_id",
+)
+print(output_item.id)
+```

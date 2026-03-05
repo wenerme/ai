@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 29 skills available
+> 33 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -33,6 +33,10 @@ npx skills add wenerme/ai --skill <skill-name>
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
+| `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
+| `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
+| `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
+| `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
@@ -232,6 +236,46 @@ npx skills add wenerme/ai --skill mikro-orm-v6-to-v7
 ```
 
 Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError, persistAndFlush removed, nativeInsert not found), adapting knex to kysely or better-sqlite to new SQLite drivers, running MikroORM in Edge/Bun/node:sqlite environments, or choosing between defineEntity vs decorator entity definitions. Triggers on "mikro-orm v7", "persistAndFlush", "@mikro-orm/decorators", "@mikro-orm/sql", "defineEntity", "bun:sqlite mikro-orm".
+
+</details>
+<details>
+<summary><code>openai-api</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openai-api
+```
+
+Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings, images, files, fine-tuning, batches, models, moderations, vector stores, assistants, or any OpenAI API endpoint parameters and response shapes.
+
+</details>
+<details>
+<summary><code>openai-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openai-docs
+```
+
+Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function calling, text generation, vision, audio, embeddings, fine-tuning, batch processing, moderation, assistants, ChatKit, or any OpenAI developer guide topic.
+
+</details>
+<details>
+<summary><code>openai-sdk-python</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openai-sdk-python
+```
+
+Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio transcription, embeddings, image generation, file uploads, fine-tuning, or any Python-specific OpenAI API integration.
+
+</details>
+<details>
+<summary><code>openai-sdk-typescript</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openai-sdk-typescript
+```
+
+Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio transcription, embeddings, image generation, file uploads, fine-tuning, or any TypeScript-specific OpenAI API integration.
 
 </details>
 <details>
