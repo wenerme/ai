@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 17 skills available
+> 20 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -20,12 +20,15 @@ npx skills add wenerme/ai --skill <skill-name>
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
+| `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
+| `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
+| `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
@@ -93,6 +96,16 @@ Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browse
 
 </details>
 <details>
+<summary><code>claude-code-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill claude-code-docs
+```
+
+Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings, sub-agents, teams, plugins, keybindings, IDE integration, CI/CD setup, troubleshooting, or any Claude Code usage topic.
+
+</details>
+<details>
 <summary><code>glab-cli</code></summary>
 
 ```bash
@@ -133,6 +146,16 @@ Use when building, updating, or refactoring oRPC contracts, server handlers, cli
 
 </details>
 <details>
+<summary><code>peekaboo</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill peekaboo
+```
+
+Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing apps/windows/menus, scrolling, dragging, or scripting any desktop interaction. Triggers on peekaboo, macOS automation, UI automation, screen capture, accessibility.
+
+</details>
+<details>
 <summary><code>react-resizable-panels-v3-to-v4</code></summary>
 
 ```bash
@@ -150,6 +173,16 @@ npx skills add wenerme/ai --skill skill-writer
 ```
 
 Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large skills into references, or validating skills against best practices
+
+</details>
+<details>
+<summary><code>tencent-cls</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill tencent-cls
+```
+
+Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL analysis on log data, using CLS MCP tools (search, cluster_logs, log_context, histogram), or troubleshooting CLS query issues. Triggers on CLS, CQL, log search, log analysis, tencent cloud logs, topic query.
 
 </details>
 <details>
@@ -203,3 +236,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 </details>
 <!--endregion-->
+
+## References
+
+- [ericbuess/claude-code-docs](https://github.com/ericbuess/claude-code-docs) — Offline mirror of official Claude Code documentation, used by `claude-code-docs` skill
