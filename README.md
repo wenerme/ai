@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 33 skills available
+> 36 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -31,12 +31,15 @@ npx skills add wenerme/ai --skill <skill-name>
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
+| `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
+| `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
 | `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
 | `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
+| `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
@@ -219,6 +222,26 @@ Use when interacting with GitLab via the glab CLI: creating/reviewing merge requ
 
 </details>
 <details>
+<summary><code>google-ai-api</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill google-ai-api
+```
+
+Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads, token counting, model tuning, batch mode, live/real-time API, or any Google AI API endpoint parameters and response shapes.
+
+</details>
+<details>
+<summary><code>google-ai-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill google-ai-docs
+```
+
+Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision, audio, video, structured output, function calling, code execution, grounding, prompt caching, context windows, safety, embeddings, pricing, or OpenAI compatibility.
+
+</details>
+<details>
 <summary><code>lark-node-sdk</code></summary>
 
 ```bash
@@ -276,6 +299,16 @@ npx skills add wenerme/ai --skill openai-sdk-typescript
 ```
 
 Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio transcription, embeddings, image generation, file uploads, fine-tuning, or any TypeScript-specific OpenAI API integration.
+
+</details>
+<details>
+<summary><code>openrouter-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openrouter-docs
+```
+
+Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool calling, structured outputs, prompt caching, OAuth, API keys, rate limits, streaming, embeddings, Claude Code integration, or any OpenRouter-specific feature.
 
 </details>
 <details>
