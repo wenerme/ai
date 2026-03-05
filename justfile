@@ -20,8 +20,16 @@ update-anthropic-docs:
 update-openai-docs:
     bun scripts/fetch-openai-docs.ts
 
+# Fetch OpenRouter docs
+update-openrouter-docs:
+    bun scripts/fetch-openrouter-docs.ts
+
+# Fetch Google AI (Gemini) docs
+update-google-ai-docs:
+    bun scripts/fetch-google-ai-docs.ts
+
 # Update all: external skills + all docs + README
-update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-readme
+update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-readme
 
 # Lint skills for best practices
 lint-skills:

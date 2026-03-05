@@ -1,0 +1,68 @@
+Help us improve OpenRouter by reporting issues with AI generations. You can submit feedback directly from the Chatroom or the Activity page.
+
+## Overview
+
+The Report Feedback feature allows you to flag problematic generations with a category and description. This helps our team identify and address issues with model responses, latency, billing, and more.
+
+### Feedback Categories
+
+When reporting feedback, select the category that best describes the issue:
+
+* **Latency**: Response was slower than expected
+* **Incoherence**: Response didn't make sense or was off-topic
+* **Incorrect Response**: Response contained factual errors or wrong information
+* **Formatting**: Response had formatting issues (markdown, code blocks, etc.)
+* **Billing**: Unexpected charges or token counts
+* **API Error**: Technical errors or failed requests
+* **Other**: Any other issue not covered above
+
+## Reporting from the Chatroom
+
+In the Chatroom, you can report feedback on individual assistant messages:
+
+1. Hover over an assistant message to reveal the action buttons
+2. Click the bug icon to open the Report Feedback dialog
+3. Select a category that describes the issue
+4. Add a comment explaining what went wrong
+5. Click **Submit** to send your feedback
+
+The generation ID is automatically captured from the message, so you don't need to look it up.
+
+## Reporting from the Activity Page
+
+The Activity page offers two ways to report feedback:
+
+### Per-Generation Feedback
+
+Each row in your activity history has a feedback button:
+
+1. Go to [openrouter.ai/activity](https://openrouter.ai/activity)
+2. Find the generation you want to report
+3. Click the bug icon on that row
+4. Select a category and add your comment
+5. Click **Submit**
+
+### General Feedback Button
+
+For reporting issues when you have a generation ID handy:
+
+1. Go to [openrouter.ai/activity](https://openrouter.ai/activity)
+2. Click the **Report Feedback** button in the header (top right)
+3. Enter the generation ID (found in your API response or activity row)
+4. Select a category and add your comment
+5. Click **Submit**
+
+<Note title="Finding Your Generation ID">
+  The generation ID is returned in the API response under the `id` field. You can also find it by clicking on a row in the Activity page to view the generation details.
+</Note>
+
+## What Happens After You Submit
+
+Your feedback is reviewed by our team to help improve:
+
+* Model routing and provider selection
+* Error handling and recovery
+* Billing accuracy
+* Overall platform reliability
+
+We appreciate your help in making OpenRouter better for everyone.
