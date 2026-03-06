@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 36 skills available
+> 38 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -27,12 +27,14 @@ npx skills add wenerme/ai --skill <skill-name>
 | `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
+| `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... |  |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
+| `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
@@ -182,6 +184,16 @@ Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or runni
 
 </details>
 <details>
+<summary><code>bun-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill bun-docs
+```
+
+Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O, SQLite, S3, Redis, shell scripting, FFI, workers, WebSocket, bunfig, bun install, bun test, bun build, bundler plugins, loaders, executables, macros, or any Bun API and configuration.
+
+</details>
+<details>
 <summary><code>bun-ffi-interop-pattern</code></summary>
 
 ```bash
@@ -239,6 +251,16 @@ npx skills add wenerme/ai --skill google-ai-docs
 ```
 
 Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision, audio, video, structured output, function calling, code execution, grounding, prompt caching, context windows, safety, embeddings, pricing, or OpenAI compatibility.
+
+</details>
+<details>
+<summary><code>grafana-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill grafana-docs
+```
+
+Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki, Elasticsearch, InfluxDB, MySQL, PostgreSQL, CloudWatch, Azure Monitor), provisioning, as-code (Terraform, Ansible, Grafana Operator), RBAC, SSO/SAML/LDAP, plugins, API, or Grafana setup and administration.
 
 </details>
 <details>
