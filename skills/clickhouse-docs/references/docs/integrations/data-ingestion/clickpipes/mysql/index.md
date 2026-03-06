@@ -1,0 +1,137 @@
+---
+sidebar_label: 'Ingesting Data from MySQL to ClickHouse'
+description: 'Seamlessly ingest data from your MySQL or MariaDB database to ClickHouse Cloud.'
+slug: /integrations/clickpipes/mysql
+title: 'Ingesting data from MySQL to ClickHouse (using CDC)'
+doc_type: 'guide'
+keywords: ['MySQL', 'ClickPipes', 'CDC', 'change data capture', 'database replication']
+integration:
+   - support_level: 'core'
+   - category: 'clickpipes'
+---
+
+import Aurorasvg from '@site/static/images/integrations/logos/amazon_aurora.svg';
+import AFSsvg from '@site/static/images/integrations/logos/azure_database_mysql.svg';
+import CloudSQLsvg from '@site/static/images/integrations/logos/gcp_cloudsql.svg';
+import MariaDBsvg from '@site/static/images/integrations/logos/mariadb.svg';
+import MySQLsvg from '@site/static/images/integrations/logos/mysql.svg';
+import RDSsvg from '@site/static/images/integrations/logos/amazon_rds.svg';
+import BetaBadge from '@theme/badges/BetaBadge';
+import cp_service from '@site/static/images/integrations/data-ingestion/clickpipes/cp_service.png';
+import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
+import mysql_tile from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/mysql-tile.png'
+import mysql_connection_details from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/mysql-connection-details.png'
+import ssh_tunnel from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ssh-tunnel.jpg'
+import select_destination_db from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/select-destination-db.png'
+import ch_permissions from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ch-permissions.jpg'
+import Image from '@theme/IdealImage';
+
+# Ingesting data from MySQL to ClickHouse (using CDC)
+
+<BetaBadge/>
+
+:::info
+Ingesting data from MySQL to ClickHouse Cloud via ClickPipes is in public beta.
+:::
+
+The MySQL ClickPipe provides a fully-managed and resilient way to ingest data from MySQL and MariaDB databases into ClickHouse Cloud. It supports both **bulk loads** for one-time ingestion and **Change Data Capture (CDC)** for continuous ingestion.
+
+MySQL ClickPipes can be deployed and managed manually using the ClickPipes UI. In the future, it'll be possible to deploy and manage MySQL ClickPipes programmatically using [OpenAPI](https://clickhouse.com/docs/cloud/manage/api/swagger#tag/ClickPipes/paths/~1v1~1organizations~1%7BorganizationId%7D~1services~1%7BserviceId%7D~1clickpipes/post) and [Terraform](https://registry.terraform.io/providers/ClickHouse/clickhouse/3.8.1-alpha1/docs/resources/clickpipe).
+
+## Prerequisites {#prerequisites}
+
+[//]: # "TODO Binlog replication configuration isn't needed for one-time ingestion pipes. This has been a source of confusion in the past, so we should also provide the bare minimum requirements for bulk loads to avoid scaring users off."
+
+To get started, you first need to ensure that your MySQL database is correctly configured for binlog replication. The configuration steps depend on how you're deploying MySQL, so please follow the relevant guide below:
+
+### Supported data sources {#supported-data-sources}
+
+| Name                 | Logo | Details           |
+|----------------------|------|-------------------|
+| **Amazon RDS MySQL** <br></br> _One-time load, CDC_ |  | Follow the [Amazon RDS MySQL](./mysql/source/rds) configuration guide. |
+| **Amazon Aurora MySQL** <br></br> _One-time load, CDC_ |  | Follow the [Amazon Aurora MySQL](./mysql/source/aurora) configuration guide. |
+| **Cloud SQL for MySQL** <br></br> _One-time load, CDC_ | |  Follow the [Cloud SQL for MySQL](./mysql/source/gcp) configuration guide. |
+| **Azure Flexible Server for MySQL** <br></br> _One-time load_ |  | Follow the [Azure Flexible Server for MySQL](./mysql/source/azure-flexible-server-mysql) configuration guide. |
+| **Self-hosted MySQL** <br></br> _One-time load, CDC_ | |  Follow the [Generic MySQL](./mysql/source/generic) configuration guide. |
+| **Amazon RDS MariaDB** <br></br> _One-time load, CDC_ |  | Follow the [Amazon RDS MariaDB](./mysql/source/rds_maria) configuration guide. |
+| **Self-hosted MariaDB** <br></br> _One-time load, CDC_ | |  Follow the [Generic MariaDB](./mysql/source/generic_maria) configuration guide. |
+
+Once your source MySQL database is set up, you can continue creating your ClickPipe.
+
+## Create your ClickPipe {#create-your-clickpipe}
+
+Make sure you're logged in to your ClickHouse Cloud account. If you don't have an account yet, you can sign up [here](https://cloud.clickhouse.com/).
+
+[//]: # (   TODO update image here)
+1. In the ClickHouse Cloud console, navigate to your ClickHouse Cloud Service.
+
+<Image img={cp_service} alt="ClickPipes service" size="lg" border/>
+
+2. Select the `Data Sources` button on the left-side menu and click on "Set up a ClickPipe"
+
+<Image img={cp_step0} alt="Select imports" size="lg" border/>
+
+3. Select the `MySQL CDC` tile
+
+<Image img={mysql_tile} alt="Select MySQL" size="lg" border/>
+
+### Add your source MySQL database connection {#add-your-source-mysql-database-connection}
+
+4. Fill in the connection details for your source MySQL database which you configured in the prerequisites step.
+
+   :::info
+   Before you start adding your connection details make sure that you have whitelisted ClickPipes IP addresses in your firewall rules. On the following page you can find a [list of ClickPipes IP addresses](../index.md#list-of-static-ips).
+   For more information refer to the source MySQL setup guides linked at [the top of this page](#prerequisites).
+   :::
+
+   <Image img={mysql_connection_details} alt="Fill in connection details" size="lg" border/>
+
+#### (Optional) Set up SSH Tunneling {#optional-set-up-ssh-tunneling}
+
+You can specify SSH tunneling details if your source MySQL database isn't publicly accessible.
+
+1. Enable the "Use SSH Tunnelling" toggle.
+2. Fill in the SSH connection details.
+
+   <Image img={ssh_tunnel} alt="SSH tunneling" size="lg" border/>
+
+3. To use Key-based authentication, click on "Revoke and generate key pair" to generate a new key pair and copy the generated public key to your SSH server under `~/.ssh/authorized_keys`.
+4. Click on "Verify Connection" to verify the connection.
+
+:::note
+Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
+:::
+
+Once the connection details are filled in, click `Next`.
+
+#### Configure advanced settings {#advanced-settings}
+
+You can configure the advanced settings if needed. A brief description of each setting is provided below:
+
+- **Sync interval**: This is the interval at which ClickPipes will poll the source database for changes. This has an implication on the destination ClickHouse service, for cost-sensitive users we recommend to keep this at a higher value (over `3600`).
+- **Parallel threads for initial load**: This is the number of parallel workers that will be used to fetch the initial snapshot. This is useful when you have a large number of tables and you want to control the number of parallel workers used to fetch the initial snapshot. This setting is per-table.
+- **Pull batch size**: The number of rows to fetch in a single batch. This is a best effort setting and may not be respected in all cases.
+- **Snapshot number of rows per partition**: This is the number of rows that will be fetched in each partition during the initial snapshot. This is useful when you have a large number of rows in your tables and you want to control the number of rows fetched in each partition.
+- **Snapshot number of tables in parallel**: This is the number of tables that will be fetched in parallel during the initial snapshot. This is useful when you have a large number of tables and you want to control the number of tables fetched in parallel.
+
+### Configure the tables {#configure-the-tables}
+
+5. Here you can select the destination database for your ClickPipe. You can either select an existing database or create a new one.
+
+   <Image img={select_destination_db} alt="Select destination database" size="lg" border/>
+
+6. You can select the tables you want to replicate from the source MySQL database. While selecting the tables, you can also choose to rename the tables in the destination ClickHouse database as well as exclude specific columns.
+
+### Review permissions and start the ClickPipe {#review-permissions-and-start-the-clickpipe}
+
+7. Select the "Full access" role from the permissions dropdown and click "Complete Setup".
+
+   <Image img={ch_permissions} alt="Review permissions" size="lg" border/>
+
+Finally, please refer to the ["ClickPipes for MySQL FAQ"](/integrations/clickpipes/mysql/faq) page for more information about common issues and how to resolve them.
+
+## What's next? {#whats-next}
+
+[//]: # "TODO Write a MySQL-specific migration guide and best practices similar to the existing one for PostgreSQL. The current migration guide points to the MySQL table engine, which isn't ideal."
+
+Once you've set up your ClickPipe to replicate data from MySQL to ClickHouse Cloud, you can focus on how to query and model your data for optimal performance. For common questions around MySQL CDC and troubleshooting, see the [MySQL FAQs page](/integrations/data-ingestion/clickpipes/mysql/faq.md).

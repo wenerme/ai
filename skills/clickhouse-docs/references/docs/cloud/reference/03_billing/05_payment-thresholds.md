@@ -1,0 +1,40 @@
+---
+sidebar_label: 'Payment thresholds'
+slug: /cloud/billing/payment-thresholds
+title: 'Payment thresholds'
+description: 'Payment thresholds and automatic invoicing for ClickHouse Cloud.'
+keywords: ['billing', 'payment thresholds', 'automatic invoicing', 'invoice']
+doc_type: 'guide'
+---
+
+import Image from '@theme/IdealImage';
+import billing_1 from '@site/static/images/cloud/reference/billing_payment_threshhold.png';
+import billing_2 from '@site/static/images/cloud/reference/billing_payment_threshhold_2.png';
+
+## Payment thresholds {#threshholds}
+
+If you are a pay as you go customer and your amount due in a billing period for ClickHouse Cloud reaches $10,000 USD or the equivalent value, your payment method configured to your organization will be automatically charged. 
+
+:::tip
+This default payment threshold amount can be adjusted below $10,000.
+If you wish to do so, [contact support](support@clickhouse.com).
+:::
+
+A failed charge will result in the suspension of your services after a 14 day grace period.
+If you receive multiple invoices within a billing period, all are due upon receipt and must be paid to keep your ClickHouse Cloud organization [compliant](/manage/clickhouse-cloud-billing-compliance).
+
+If your automatic payment has a failed charge then it may be due to an issue with your configured credit card or that you have not set up an e-mandate on your credit card or your credit card is not compliant with the Reserve Bank of India (RBI) framework for processing of e-mandates for recurring online transactions.
+In case your credit cards are not RBI-complaint, you must add a new payment method that is RBI-compliant or continue making manual payments until you are able to set up the e-mandate on your card.
+
+In the example below, the Billing UI in cloud console is shown:
+
+<Image img={billing_1} size="sm" alt="Where to find billing in the UI"/>
+
+<Image img={billing_2} size="lg" alt="Bill"/>
+
+As you can see from the above example - there was a threshold invoice sent during the Feb 28-March 31 billing period and then there is another invoice sent during the same billing period for the remaining usage over $10,000.
+
+## Payment threshold notifications {#threshholds-notifications}
+
+If your organization reaches 90% of the payment threshold and is on-track to exceed the payment threshold mid-period, the billing contact email associated with the organization will receive an email notification.
+You will also receive an email notification as well as an invoice when you exceed the payment threshold.
