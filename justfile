@@ -28,8 +28,16 @@ update-openrouter-docs:
 update-google-ai-docs:
     bun scripts/fetch-google-ai-docs.ts
 
+# Sync Bun docs from local oven-sh/bun clone
+update-bun-docs:
+    bun scripts/sync-bun-docs.ts
+
+# Sync Grafana docs from local grafana/grafana clone
+update-grafana-docs:
+    bun scripts/sync-grafana-docs.ts
+
 # Update all: external skills + all docs + README
-update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-readme
+update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-bun-docs update-grafana-docs update-readme
 
 # Lint skills for best practices
 lint-skills:
