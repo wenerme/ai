@@ -1,0 +1,322 @@
+---
+title: Can you PIVOT in ClickHouse?
+description: "ClickHouse doesn't have a PIVOT clause, but we can get close to this functionality using aggregate function combinators. Let's see how to do this using the UK housing prices dataset."
+date: 2024-12-11
+tags: ['Data Modelling', 'Core Data Concepts']
+keywords: ['PIVOT', 'Aggregate Function Combinators']
+---
+
+{frontMatter.description}
+{/* truncate */}
+
+## Introduction \{#introduction\}
+
+ClickHouse has no pivot operator, but we can achieve similar behavior using [aggregate function combinators](/sql-reference/aggregate-functions/combinators) and, in particular, the ones with the [`-Map` suffix](/sql-reference/aggregate-functions/combinators#-map).
+
+In this article, we're going to learn how to do that. 
+There is also a video covering the same material, which you can see below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nlRMOmwYtF4?si=0TZSNg-uo7zjiO52" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Understanding aggregate function combinators \{#understanding-aggregate-function-combinators\}
+
+Let's start with a simple example. We're going to use [clickhouse-local](/operations/utilities/clickhouse-local), which you can launch by running the following:
+
+```bash
+clickhouse -m --output_format_pretty_row_numbers=0
+```
+
+The following query calls the `sumMap` function, which takes in a map and sums the values of each key:
+
+```sql
+SELECT sumMap(map('ClickHouse', 1, 'ClickBench', 2));
+```
+
+```text
+┌─sumMap(map('ClickHouse', 1, 'ClickBench', 2))─┐
+│ {'ClickBench':2,'ClickHouse':1}               │
+└───────────────────────────────────────────────┘
+```
+
+This isn't a particularly interesting example as it returns the same map that we passed in.
+Let's now call `sumMap` over multiple rows of maps;
+
+```sql
+WITH values AS (
+  SELECT map('ClickHouse', 3) AS value
+  UNION ALL
+  SELECT map('ClickBench', 2, 'ClickHouse', 4) AS value
+)
+SELECT sumMap(value)
+FROM values;
+```
+
+
+```text
+┌─sumMap(value)───────────────────┐
+│ {'ClickBench':2,'ClickHouse':7} │
+└─────────────────────────────────┘
+```
+
+The key `ClickHouse` appeared on both rows and its values have been summed. The key `ClickBench` was only present on one line, so it sums a single value, which returns that value!
+
+We can also use `maxMap` to find the maximum values per key:
+
+```sql
+WITH values AS (
+  SELECT map('ClickHouse', 3) AS value
+  UNION ALL
+  SELECT map('ClickBench', 2, 'ClickHouse', 4) AS value
+)
+SELECT maxMap(value)
+FROM values;
+```
+
+
+```text
+┌─maxMap(value)───────────────────┐
+│ {'ClickBench':2,'ClickHouse':4} │
+└─────────────────────────────────┘
+```
+
+Or we can use `avgMap` to find the average value per key:
+
+```sql
+WITH values AS (
+  SELECT map('ClickHouse', 3) AS value
+  UNION ALL
+  SELECT map('ClickBench', 2, 'ClickHouse', 4) AS value
+)
+SELECT avgMap(value)
+FROM values;
+```
+
+
+```text
+┌─avgMap(value)─────────────────────┐
+│ {'ClickBench':2,'ClickHouse':3.5} │
+└───────────────────────────────────┘
+```
+
+Hopefully that's given you an idea of how these function combinators work.
+
+## Real-World Application: UK housing prices dataset \{#real-world-application-uk-housing-prices-dataset\}
+
+Now we're going to use them on a bigger dataset in the [ClickHouse SQL playground](https://clickhouse.com/blog/announcing-the-new-sql-playground).
+
+We can connect to the playground using clickhouse-client:
+
+```bash
+clickhouse client -m \
+  -h sql-clickhouse.clickhouse.com \
+  -u demo \
+  --secure
+```
+
+We're going to query the `uk_price_paid` table, so let's explore the data in that table:
+
+```sql
+SELECT * FROM uk.uk_price_paid LIMIT 1 FORMAT Vertical;
+```
+
+```text
+Row 1:
+──────
+price:     145000
+date:      2008-11-19
+postcode1:
+postcode2:
+type:      semi-detached
+is_new:    0
+duration:  leasehold
+addr1:
+addr2:
+street:    CURLEW DRIVE
+locality:  SCARBOROUGH
+town:      SCARBOROUGH
+district:  SCARBOROUGH
+county:    NORTH YORKSHIRE
+category:  0
+```
+
+We can see above that the table contains various fields related to property sales in the UK.
+
+### Grouping and aggregating by decade \{#grouping-and-aggregating-by-decade\}
+
+Let's work out the median prices grouped by county for each decade in the dataset:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    county,
+    medianMap(map(year, price)) AS medianPrices
+FROM uk.uk_price_paid
+GROUP BY ALL
+ORDER BY max(price) DESC
+LIMIT 10;
+```
+
+```text
+    ┌─county─────────────┬─medianPrices───────────────────────────────────────┐
+ 1. │ GREATER LONDON     │ {1990:89972.5,2000:215000,2010:381500,2020:485000} │
+ 2. │ TYNE AND WEAR      │ {1990:46500,2000:93000,2010:130000,2020:139000}    │
+ 3. │ WEST MIDLANDS      │ {1990:50000,2000:110000,2010:149950,2020:185000}   │
+ 4. │ GREATER MANCHESTER │ {1990:47000,2000:97000,2010:141171,2020:178000}    │
+ 5. │ MERSEYSIDE         │ {1990:46750,2000:94972.5,2010:128000,2020:149000}  │
+ 6. │ HERTFORDSHIRE      │ {1990:86500,2000:193000,2010:315000,2020:415000}   │
+ 7. │ WEST YORKSHIRE     │ {1990:48995,2000:99950,2010:139000,2020:164950}    │
+ 8. │ BRIGHTON AND HOVE  │ {1990:70000,2000:173000,2010:288000,2020:387000}   │
+ 9. │ DORSET             │ {1990:76500,2000:182000,2010:250000,2020:315000}   │
+10. │ HAMPSHIRE          │ {1990:79950,2000:177500,2010:260000,2020:335000}   │
+    └────────────────────┴────────────────────────────────────────────────────┘
+```
+
+### Filtering results \{#filtering-results\}
+
+We can filter the results to only include data from 2010 and on:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    county,
+    medianMap(map(year, price)) AS medianPrices
+FROM uk.uk_price_paid
+WHERE year >= 2010
+GROUP BY ALL
+ORDER BY max(price) DESC
+LIMIT 10;
+```
+
+```text
+    ┌─county─────────────┬─medianPrices────────────────┐
+ 1. │ GREATER LONDON     │ {2010:384975,2020:485919.5} │
+ 2. │ TYNE AND WEAR      │ {2010:130000,2020:140000}   │
+ 3. │ WEST MIDLANDS      │ {2010:146500,2020:185000}   │
+ 4. │ GREATER MANCHESTER │ {2010:140000,2020:177500}   │
+ 5. │ MERSEYSIDE         │ {2010:130000,2020:150000}   │
+ 6. │ HERTFORDSHIRE      │ {2010:315000,2020:415000}   │
+ 7. │ WEST YORKSHIRE     │ {2010:140000,2020:162500}   │
+ 8. │ BRIGHTON AND HOVE  │ {2010:287500,2020:387000}   │
+ 9. │ DORSET             │ {2010:255750,2020:315000}   │
+10. │ HAMPSHIRE          │ {2010:265000,2020:330000}   │
+    └────────────────────┴─────────────────────────────┘
+```
+
+## Combining multiple aggregations \{#combining-multiple-aggregations\}
+
+And if we want to find the maximum price per decade we can do that using the `maxMap` function that we saw earlier:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    county,
+    medianMap(map(year, price)) AS medianPrices,
+    maxMap(map(year, price)) AS maxPrices
+FROM uk.uk_price_paid
+WHERE year >= 2010
+GROUP BY ALL
+ORDER BY max(price) DESC
+LIMIT 10;
+```
+
+```text
+    ┌─county─────────────┬─medianPrices──────────────┬─maxPrices───────────────────────┐
+ 1. │ GREATER LONDON     │ {2010:385000,2020:485250} │ {2010:594300000,2020:630000000} │
+ 2. │ TYNE AND WEAR      │ {2010:130000,2020:141000} │ {2010:448300979,2020:93395000}  │
+ 3. │ WEST MIDLANDS      │ {2010:149000,2020:184250} │ {2010:415000000,2020:104500000} │
+ 4. │ GREATER MANCHESTER │ {2010:140000,2020:175000} │ {2010:107086856,2020:319186000} │
+ 5. │ MERSEYSIDE         │ {2010:129950,2020:150000} │ {2010:300000000,2020:93395000}  │
+ 6. │ HERTFORDSHIRE      │ {2010:315000,2020:415000} │ {2010:254325163,2020:93395000}  │
+ 7. │ WEST YORKSHIRE     │ {2010:138500,2020:165000} │ {2010:246300000,2020:109686257} │
+ 8. │ BRIGHTON AND HOVE  │ {2010:285000,2020:387000} │ {2010:200000000,2020:71540000}  │
+ 9. │ DORSET             │ {2010:250000,2020:315000} │ {2010:150000000,2020:20230000}  │
+10. │ HAMPSHIRE          │ {2010:264000,2020:330000} │ {2010:150000000,2020:48482500}  │
+    └────────────────────┴───────────────────────────┴─────────────────────────────────┘
+```
+
+## Applying functions to map values \{#applying-functions-to-map-values\}
+
+Alternatively, we can compute the average price using `avgMap`.
+Those values have a lot of decimal points, which we can clean up by using the [`mapApply`](/sql-reference/functions/tuple-map-functions#mapApply) function to call the [`floor`](/sql-reference/functions/rounding-functions#floor) function on each value in the map:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    county,
+    medianMap(map(year, price)) AS medianPrices,
+    mapApply((k, v) -> (k, floor(v)), avgMap(map(year, price))) AS avgPrices
+FROM uk.uk_price_paid
+WHERE year >= 2010
+GROUP BY ALL
+ORDER BY max(price) DESC
+LIMIT 10;
+```
+
+```text
+    ┌─county─────────────┬─medianPrices──────────────┬─avgPrices─────────────────┐
+ 1. │ GREATER LONDON     │ {2010:382000,2020:490000} │ {2010:626091,2020:807240} │
+ 2. │ TYNE AND WEAR      │ {2010:127000,2020:140000} │ {2010:176955,2020:225770} │
+ 3. │ WEST MIDLANDS      │ {2010:148500,2020:183000} │ {2010:204128,2020:257226} │
+ 4. │ GREATER MANCHESTER │ {2010:140000,2020:177500} │ {2010:195592,2020:251165} │
+ 5. │ MERSEYSIDE         │ {2010:127995,2020:150000} │ {2010:182194,2020:206062} │
+ 6. │ HERTFORDSHIRE      │ {2010:317500,2020:415000} │ {2010:414134,2020:529409} │
+ 7. │ WEST YORKSHIRE     │ {2010:140000,2020:164500} │ {2010:185121,2020:234870} │
+ 8. │ BRIGHTON AND HOVE  │ {2010:285000,2020:387000} │ {2010:372285,2020:527184} │
+ 9. │ DORSET             │ {2010:250000,2020:315000} │ {2010:305581,2020:370739} │
+10. │ HAMPSHIRE          │ {2010:265000,2020:330000} │ {2010:335945,2020:425196} │
+    └────────────────────┴───────────────────────────┴───────────────────────────┘
+```
+
+## Flexible grouping: counties, districts, and postcodes \{#flexible-grouping-counties-districts-and-postcodes\}
+
+Let's try to group by some different fields.
+This time we're going to compute the median price per decade grouped by county and district:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    county,
+    district,
+    medianMap(map(year, price)) AS medianPrices
+FROM uk.uk_price_paid
+WHERE year >= 2010
+GROUP BY ALL
+ORDER BY max(price) DESC
+LIMIT 10
+```
+
+```text
+    ┌─county─────────────┬─district───────────────┬─medianPrices────────────────┐
+ 1. │ GREATER LONDON     │ CROYDON                │ {2010:298475,2020:400000}   │
+ 2. │ GREATER LONDON     │ CITY OF WESTMINSTER    │ {2010:800000,2020:935000}   │
+ 3. │ GREATER LONDON     │ SOUTHWARK              │ {2010:437000,2020:540000}   │
+ 4. │ TYNE AND WEAR      │ NEWCASTLE UPON TYNE    │ {2010:144000,2020:162500}   │
+ 5. │ WEST MIDLANDS      │ WALSALL                │ {2010:137450,2020:162000}   │
+ 6. │ GREATER LONDON     │ CITY OF LONDON         │ {2010:725875,2020:840000}   │
+ 7. │ GREATER LONDON     │ HILLINGDON             │ {2010:329125,2020:439000}   │
+ 8. │ GREATER MANCHESTER │ MANCHESTER             │ {2010:144972.5,2020:190000} │
+ 9. │ GREATER LONDON     │ HAMMERSMITH AND FULHAM │ {2010:622250,2020:750000}   │
+10. │ GREATER LONDON     │ ISLINGTON              │ {2010:500000,2020:640000}   │
+    └────────────────────┴────────────────────────┴─────────────────────────────┘
+```
+
+We could also choose to group by year and then concatenate `postcode1` and `postcode2` in the map:
+
+```sql
+WITH year(toStartOfInterval(date, toIntervalYear(10))) AS year
+SELECT
+    year,
+    medianMap(map(postcode1 || ' ' || postcode2, price)) AS medianPrices
+FROM uk.uk_price_paid
+WHERE postcode1 LIKE 'NP1'
+GROUP BY ALL;
+```
+
+```text
+   ┌─year─┬─medianPrices────────────────────────────────────────────────────────┐
+1. │ 1990 │ {'NP1 4PB':9000}                                                    │
+2. │ 2000 │ {'NP1 4SR':28475,'NP1 7HZ':200000}                                  │
+3. │ 2010 │ {'NP1 4PB':5000,'NP1 4QJ':1075000,'NP1 4SR':58000,'NP1 8BR':200000} │
+4. │ 2020 │ {'NP1 5DW':140000}                                                  │
+   └──────┴─────────────────────────────────────────────────────────────────────┘
+```

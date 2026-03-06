@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 38 skills available
+> 42 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -31,6 +31,9 @@ npx skills add wenerme/ai --skill <skill-name>
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
+| `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... |  |
+| `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
+| `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
@@ -41,6 +44,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
 | `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
+| `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... |  |
 | `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
@@ -224,6 +228,36 @@ Use when answering questions about Claude Code CLI features, configuration, hook
 
 </details>
 <details>
+<summary><code>clickhouse-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill clickhouse-docs
+```
+
+Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views, dictionaries, data modeling (denormalization, sharding, replication), integrations (Kafka, S3, PostgreSQL, MySQL), ClickHouse Cloud, Kubernetes operator, data compression, query optimization, or troubleshooting ClickHouse issues.
+
+</details>
+<details>
+<summary><code>doris-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill doris-docs
+```
+
+Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL syntax, data import (Stream Load, Broker Load, INSERT INTO), data export, lakehouse (Hive/Iceberg/Hudi/Paimon catalogs), materialized views, query acceleration, inverted index, compute-storage decoupled mode, administration, or Doris ecosystem tools.
+
+</details>
+<details>
+<summary><code>gemini-cli-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gemini-cli-docs
+```
+
+Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model selection, keyboard shortcuts, GEMINI.md project instructions, tools (shell, file system, web search, web fetch, MCP servers, memory, todos), hooks, extensions, IDE integration, checkpointing, or troubleshooting Gemini CLI issues.
+
+</details>
+<details>
 <summary><code>glab-cli</code></summary>
 
 ```bash
@@ -321,6 +355,16 @@ npx skills add wenerme/ai --skill openai-sdk-typescript
 ```
 
 Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio transcription, embeddings, image generation, file uploads, fine-tuning, or any TypeScript-specific OpenAI API integration.
+
+</details>
+<details>
+<summary><code>opencode-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill opencode-docs
+```
+
+Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude, OpenAI, Google, local models), custom agents, custom commands, LSP integration, key bindings, themes, or OpenCode development setup.
 
 </details>
 <details>

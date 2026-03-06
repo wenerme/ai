@@ -36,8 +36,24 @@ update-bun-docs:
 update-grafana-docs:
     bun scripts/sync-grafana-docs.ts
 
+# Sync Doris docs from local apache/doris-website clone
+update-doris-docs:
+    bun scripts/sync-doris-docs.ts
+
+# Sync ClickHouse docs from local ClickHouse/clickhouse-docs clone
+update-clickhouse-docs:
+    bun scripts/sync-clickhouse-docs.ts
+
+# Sync Gemini CLI docs from local google-gemini/gemini-cli clone
+update-gemini-cli-docs:
+    bun scripts/sync-gemini-cli-docs.ts
+
+# Sync OpenCode docs from local anomalyco/opencode clone
+update-opencode-docs:
+    bun scripts/sync-opencode-docs.ts
+
 # Update all: external skills + all docs + README
-update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-bun-docs update-grafana-docs update-readme
+update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-bun-docs update-grafana-docs update-doris-docs update-clickhouse-docs update-gemini-cli-docs update-opencode-docs update-readme
 
 # Lint skills for best practices
 lint-skills:

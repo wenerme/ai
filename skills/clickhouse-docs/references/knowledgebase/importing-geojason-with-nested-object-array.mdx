@@ -1,0 +1,247 @@
+---
+title: Importing GeoJSON with a deeply nested object array
+description: “Importing GeoJSON with a deeply nested object array“
+date: 2024-12-18
+tags: ['Data Formats']
+keywords: ['GeoJSON']
+---
+
+{frontMatter.description}
+{/* truncate */}
+
+## Question \{#question\}
+
+How do I import GeoJSON with a nested object array?
+
+## Answer \{#answer\}
+
+For this tutorial, we will use open data publicly available [here](https://opendata.esri.es/datasets/ComunidadSIG::municipios-ign/explore?location=39.536006%2C-0.303882%2C6.57). A copy can be found [here](https://datasets-documentation.s3.eu-west-3.amazonaws.com/geoJSON/Municipios.geojson).
+
+1. Download the data in GeoJSON format and rename the file to `geojson.json`.
+
+2. Understand the structure.  
+
+```sql
+DESCRIBE TABLE file('geojson.json', 'JSON')
+┌─name─────┬─type─────────────────────────────────────────────────────────────────────────────────────────┐
+│ type     │ Nullable(String)                                                                             │     
+│ name     │ Nullable(String)                                                                             │     
+│ crs      │ Tuple( properties Tuple(name Nullable(String)),type Nullable(String))                        │     
+│ features │ Array(Tuple(                                                                                 │  
+│          │                  geometry Tuple(coordinates Array(Array(Array(Array(Nullable(Float64))))),   │  
+│          │                  type Nullable(String)),                                                     │  
+│          │                  properties Tuple(   CODIGOINE Nullable(String),                             │  
+│          │                                      CODNUT1 Nullable(String),                               │  
+│          │                                      CODNUT2 Nullable(String),                               │  
+│          │                                      CODNUT3 Nullable(String),                               │  
+│          │                                      FID Nullable(Int64),                                    │  
+│          │                                      INSPIREID Nullable(String),                             │  
+│          │                                      NAMEUNIT Nullable(String),                              │ 
+│          │                                      NATCODE Nullable(String),                               │  
+│          │                                      SHAPE_Area Nullable(Float64),                           │  
+│          │                                      SHAPE_Length Nullable(Float64)                          │  
+│          │                                  ),                                                          │  
+│          │                  type Nullable(String)                                                       │  
+│          │              )                                                                               │  
+│          │      )                                                                                       │  
+└──────────┴──────────────────────────────────────────────────────────────────────────────────────────────┘ 
+```
+
+3. Create a table to store the GeoJSON rows.  
+
+<br/>
+
+The requirement here is to generate a row for each `object` in the `features array`.
+The data type inferred for the field `geometry` suggests that it translates to ClickHouse's **MultiPolygon** [data type](https://clickhouse.com/docs/sql-reference/data-types/geo#multipolygon).
+
+```sql
+create table geojson 
+(
+    type String,
+    name String,
+    crsType String,
+    crsName String,
+    featureType String,
+    id Int64,
+    inspiredId String,
+    natCode String,
+    nameUnit String,
+    codNut1 String,
+    codNut2 String,
+    codNut3 String,
+    codigoIne String,
+    shapeLength Float64,
+    shapeArea Float64,
+    geometryType String,
+    geometry MultiPolygon
+)
+engine = MergeTree
+order by id;
+```
+
+4. Prepare the data.
+
+<br/>
+
+The main purpose of the query is to verify that we obtain one row for each **object** in the **features array**.
+
+
+:::note
+The field `features.geometry.coordinates` is commented to make the result set more readable.
+:::
+
+```sql
+SELECT
+    type AS type,
+    name AS name,
+    crs.type AS crsType,
+    crs.properties.name AS crsName,
+    features.type AS featureType,
+    features.properties.FID AS id,
+    features.properties.INSPIREID AS inspiredId,
+    features.properties.NATCODE AS natCode,
+    features.properties.NAMEUNIT AS nameUnit,
+    features.properties.CODNUT1 AS codNut1,
+    features.properties.CODNUT2 AS codNut2,
+    features.properties.CODNUT3 AS codNut3,
+    features.properties.CODIGOINE AS codigoIne,
+    features.properties.SHAPE_Length AS shapeLength,
+    features.properties.SHAPE_Area AS shapeArea,
+    features.geometry.type AS geometryType
+    --,features.geometry.coordinates
+FROM file('municipios_ign.geojson', 'JSON')
+ARRAY JOIN features
+LIMIT 5
+
+┌─type──────────────┬─name───────────┬─crsType─┬─crsName───────────────────────┬─featureType─┬─id─┬─inspiredId───────────────┬─natCode─────┬─nameUnit──────────────┬─codNut1─┬─codNut2─┬─codNut3─┬─codigoIne─┬────────shapeLength─┬─────────────shapeArea─┬─geometryType─┐
+│ FeatureCollection │ Municipios_IGN │ name    │ urn:ogc:def:crs:OGC:1.3:CRS84 │ Feature     │  1 │ ES.IGN.SIGLIM34081616266 │ 34081616266 │ Villarejo-Periesteban │ ES4     │ ES42    │ ES423   │ 16266     │ 0.2697476997304121 │ 0.0035198414406406673 │ MultiPolygon │
+│ FeatureCollection │ Municipios_IGN │ name    │ urn:ogc:def:crs:OGC:1.3:CRS84 │ Feature     │  2 │ ES.IGN.SIGLIM34081616269 │ 34081616269 │ Villares del Saz      │ ES4     │ ES42    │ ES423   │ 16269     │ 0.4476083901269905 │   0.00738179315030249 │ MultiPolygon │
+│ FeatureCollection │ Municipios_IGN │ name    │ urn:ogc:def:crs:OGC:1.3:CRS84 │ Feature     │  3 │ ES.IGN.SIGLIM34081616270 │ 34081616270 │ Villarrubio           │ ES4     │ ES42    │ ES423   │ 16270     │ 0.3053942273994179 │ 0.0029777582813496337 │ MultiPolygon │
+│ FeatureCollection │ Municipios_IGN │ name    │ urn:ogc:def:crs:OGC:1.3:CRS84 │ Feature     │  4 │ ES.IGN.SIGLIM34081616271 │ 34081616271 │ Villarta              │ ES4     │ ES42    │ ES423   │ 16271     │ 0.2831226979821184 │  0.002680273189024594 │ MultiPolygon │
+│ FeatureCollection │ Municipios_IGN │ name    │ urn:ogc:def:crs:OGC:1.3:CRS84 │ Feature     │  5 │ ES.IGN.SIGLIM34081616272 │ 34081616272 │ Villas de la Ventosa  │ ES4     │ ES42    │ ES423   │ 16272     │ 0.5958276749246777 │  0.015354885085133583 │ MultiPolygon │
+└───────────────────┴────────────────┴─────────┴───────────────────────────────┴─────────────┴────┴──────────────────────────┴─────────────┴───────────────────────┴─────────┴─────────┴─────────┴───────────┴────────────────────┴───────────────────────┴──────────────┘
+```
+
+5. Insert the data.
+
+<br/>
+
+```sql
+INSERT INTO geojson
+SELECT
+    type AS type,
+    name AS name,
+    crs.type AS crsType,
+    crs.properties.name AS crsName,
+    features.type AS featureType,
+    features.properties.FID AS id,
+    features.properties.INSPIREID AS inspiredId,
+    features.properties.NATCODE AS natCode,
+    features.properties.NAMEUNIT AS nameUnit,
+    features.properties.CODNUT1 AS codNut1,
+    features.properties.CODNUT2 AS codNut2,
+    features.properties.CODNUT3 AS codNut3,
+    features.properties.CODIGOINE AS codigoIne,
+    features.properties.SHAPE_Length AS shapeLength,
+    features.properties.SHAPE_Area AS shapeArea,
+    features.geometry.type AS geometryType,
+    features.geometry.coordinates as geometry
+FROM file('municipios_ign.geojson', 'JSON')
+ARRAY JOIN features
+```
+
+Here, we get the following error:
+
+```
+Code: 53. DB::Exception: Received from localhost:9000. DB::Exception: ARRAY JOIN requires array or map argument. (TYPE_MISMATCH)
+Received exception from server (version 24.1.2):
+```
+
+This is caused by the parsing of `features.geometry.coordinates`.
+
+6. Let's check its data type.
+
+<br/>
+
+``` sql
+SELECT DISTINCT toTypeName(features.geometry.coordinates) AS geometry
+FROM file('municipios_ign.geojson', 'JSON')
+ARRAY JOIN features
+
+┌─geometry──────────────────────────────────────┐
+│ Array(Array(Array(Array(Nullable(Float64))))) │
+└───────────────────────────────────────────────┘
+```
+
+It can be fixed by casting `multipolygon.properties.coordinates` to `Array(Array(Array(Tuple(Float64,Float64))))`.
+To do so, we can use the function [arrayMap(func,arr1,...)](https://clickhouse.com/docs/sql-reference/functions/array-functions#arraymapfunc-arr1-).
+
+```sql
+SELECT distinct
+    toTypeName(
+        arrayMap(features.geometry.coordinates->
+                    arrayMap(features.geometry.coordinates-> 
+                            arrayMap(features.geometry.coordinates-> (features.geometry.coordinates[1],features.geometry.coordinates[2]) 
+                    ,features.geometry.coordinates),
+                features.geometry.coordinates),
+        features.geometry.coordinates)
+    ) as toTypeName
+FROM file('municipios_ign.geojson', 'JSON')
+ARRAY JOIN features;
+
+┌─toTypeName───────────────────────────────────────────────────────┐
+│ Array(Array(Array(Tuple(Nullable(Float64), Nullable(Float64))))) │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+7. Insert the data.
+
+<br/>
+
+```sql
+INSERT INTO geojson
+SELECT
+    type as type,
+    name as name,
+    crs.type as crsType,
+    crs.properties.name as crsName,
+    features.type as featureType,
+    features.properties.FID id,
+    features.properties.INSPIREID inspiredId,
+    features.properties.NATCODE natCode,
+    features.properties.NAMEUNIT nameUnit,
+    features.properties.CODNUT1 codNut1,
+    features.properties.CODNUT2 codNut2,
+    features.properties.CODNUT3 codNut3,
+    features.properties.CODIGOINE codigoIne,
+    features.properties.SHAPE_Length shapeLength,
+    features.properties.SHAPE_Area shapeArea,
+    features.geometry.type geometryType,
+    arrayMap(features.geometry.coordinates->
+                arrayMap(features.geometry.coordinates-> 
+                        arrayMap(features.geometry.coordinates-> (features.geometry.coordinates[1],features.geometry.coordinates[2]),features.geometry.coordinates)
+                ,features.geometry.coordinates)
+    ,features.geometry.coordinates) geometry
+FROM file('municipios_ign.geojson', 'JSON')
+ARRAY JOIN features;
+```
+
+```sql
+SELECT count()
+FROM geojson
+
+┌─count()─┐
+│    8205 │
+└─────────┘
+
+SELECT DISTINCT toTypeName(geometry)
+FROM geojson
+
+┌─toTypeName(geometry)─┐
+│ MultiPolygon         │
+└──────────────────────┘
+```
+
+### Conclusion \{#conclusion\}
+Handling JSON can result in a complex task. This tutorial addressed a scenario where a nested object array could make this task even more difficult.  
+For any other JSON-related requirements, please refer to our [documentation](https://clickhouse.com/docs/integrations/data-formats/json).
