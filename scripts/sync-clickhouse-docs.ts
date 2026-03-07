@@ -27,21 +27,20 @@ const SKIP_DIRS = new Set([
 
 function pullLatest() {
   if (!existsSync(REPO)) {
-    console.error(`ClickHouse docs repo not found at ${REPO}`);
-    console.error(
-      "Run: git clone --depth 1 --filter=blob:none --sparse https://github.com/ClickHouse/clickhouse-docs.git ~/gits/ClickHouse/clickhouse-docs"
-    );
-    console.error("     cd ~/gits/ClickHouse/clickhouse-docs && git sparse-checkout set docs knowledgebase");
-    process.exit(1);
+    console.log("Cloning ClickHouse/clickhouse-docs (sparse: docs/ knowledgebase/)...");
+    mkdirSync(dirname(REPO), { recursive: true });
+    execSync(`git clone --depth 1 --filter=blob:none --sparse https://github.com/ClickHouse/clickhouse-docs.git ${REPO}`, { stdio: "pipe" });
+    execSync("git sparse-checkout set docs knowledgebase", { cwd: REPO, stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from ClickHouse/clickhouse-docs...");
+    try {
+      execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin main && git reset --hard origin/main", { cwd: REPO, stdio: "pipe" });
+    }
   }
-  console.log("Pulling latest from ClickHouse/clickhouse-docs...");
-  try {
-    execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function sanitizeContent(content: string): string {

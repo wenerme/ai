@@ -52,8 +52,31 @@ update-gemini-cli-docs:
 update-opencode-docs:
     bun scripts/sync-opencode-docs.ts
 
-# Update all: external skills + all docs + README
-update: update-skills update-claude-code-docs update-anthropic-docs update-openai-docs update-openrouter-docs update-google-ai-docs update-bun-docs update-grafana-docs update-doris-docs update-clickhouse-docs update-gemini-cli-docs update-opencode-docs update-readme
+# Sync llama.cpp docs from local ggml-org/llama.cpp clone
+update-llamacpp-docs:
+    bun scripts/sync-llamacpp-docs.ts
+
+# Sync vLLM docs from local vllm-project/vllm clone
+update-vllm-docs:
+    bun scripts/sync-vllm-docs.ts
+
+# Update all: external skills + all docs + README (tolerates individual failures)
+update:
+    -just update-skills
+    -just update-claude-code-docs
+    -just update-anthropic-docs
+    -just update-openai-docs
+    -just update-openrouter-docs
+    -just update-google-ai-docs
+    -just update-bun-docs
+    -just update-grafana-docs
+    -just update-doris-docs
+    -just update-clickhouse-docs
+    -just update-gemini-cli-docs
+    -just update-opencode-docs
+    -just update-llamacpp-docs
+    -just update-vllm-docs
+    just update-readme
 
 # Lint skills for best practices
 lint-skills:

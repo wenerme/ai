@@ -25,22 +25,20 @@ const SKIP_DIRS = new Set([
 
 function pullLatest() {
   if (!existsSync(GRAFANA_REPO)) {
-    console.error(`Grafana repo not found at ${GRAFANA_REPO}`);
-    console.error(
-      "Run: git clone --depth 1 --filter=blob:none --sparse https://github.com/grafana/grafana.git ~/gits/grafana/grafana"
-    );
-    console.error("     cd ~/gits/grafana/grafana && git sparse-checkout set docs/sources");
-    process.exit(1);
+    console.log("Cloning grafana/grafana (sparse: docs/sources/)...");
+    mkdirSync(dirname(GRAFANA_REPO), { recursive: true });
+    execSync(`git clone --depth 1 --filter=blob:none --sparse https://github.com/grafana/grafana.git ${GRAFANA_REPO}`, { stdio: "pipe" });
+    execSync("git sparse-checkout set docs/sources", { cwd: GRAFANA_REPO, stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from grafana/grafana...");
+    try {
+      execSync("git pull --ff-only", { cwd: GRAFANA_REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin main && git reset --hard origin/main", { cwd: GRAFANA_REPO, stdio: "pipe" });
+    }
   }
-
-  console.log("Pulling latest from grafana/grafana...");
-  try {
-    execSync("git pull --ff-only", { cwd: GRAFANA_REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: GRAFANA_REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: GRAFANA_REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function collectFiles(dir: string, base: string): string[] {

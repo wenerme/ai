@@ -22,21 +22,20 @@ const SKIP_DIRS = new Set([
 
 function pullLatest() {
   if (!existsSync(REPO)) {
-    console.error(`Doris website repo not found at ${REPO}`);
-    console.error(
-      "Run: git clone --depth 1 --filter=blob:none --sparse https://github.com/apache/doris-website.git ~/gits/apache/doris-website"
-    );
-    console.error("     cd ~/gits/apache/doris-website && git sparse-checkout set docs");
-    process.exit(1);
+    console.log("Cloning apache/doris-website (sparse: docs/)...");
+    mkdirSync(dirname(REPO), { recursive: true });
+    execSync(`git clone --depth 1 --filter=blob:none --sparse https://github.com/apache/doris-website.git ${REPO}`, { stdio: "pipe" });
+    execSync("git sparse-checkout set docs", { cwd: REPO, stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from apache/doris-website...");
+    try {
+      execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin master && git reset --hard origin/master", { cwd: REPO, stdio: "pipe" });
+    }
   }
-  console.log("Pulling latest from apache/doris-website...");
-  try {
-    execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function sanitizeContent(content: string): string {

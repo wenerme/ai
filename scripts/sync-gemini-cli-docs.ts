@@ -24,18 +24,19 @@ const SKIP_DIRS = new Set([
 
 function pullLatest() {
   if (!existsSync(REPO)) {
-    console.error(`Gemini CLI repo not found at ${REPO}`);
-    console.error("Run: git clone https://github.com/google-gemini/gemini-cli.git ~/gits/google-gemini/gemini-cli");
-    process.exit(1);
+    console.log("Cloning google-gemini/gemini-cli (shallow)...");
+    mkdirSync(dirname(REPO), { recursive: true });
+    execSync(`git clone --depth 1 https://github.com/google-gemini/gemini-cli.git ${REPO}`, { stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from google-gemini/gemini-cli...");
+    try {
+      execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin main && git reset --hard origin/main", { cwd: REPO, stdio: "pipe" });
+    }
   }
-  console.log("Pulling latest from google-gemini/gemini-cli...");
-  try {
-    execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function collectFiles(dir: string, base: string): string[] {
