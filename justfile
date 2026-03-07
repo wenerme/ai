@@ -60,6 +60,10 @@ update-llamacpp-docs:
 update-vllm-docs:
     bun scripts/sync-vllm-docs.ts
 
+# Sync oRPC docs from local unnoq/orpc clone
+update-orpc-docs:
+    bun scripts/sync-orpc-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -76,6 +80,7 @@ update:
     -just update-opencode-docs
     -just update-llamacpp-docs
     -just update-vllm-docs
+    -just update-orpc-docs
     just update-readme
 
 # Lint skills for best practices

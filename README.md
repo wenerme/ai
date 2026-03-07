@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 48 skills available
+> 50 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... |  |
 | `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
+| `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
@@ -57,6 +58,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
+| `ui-ux-pro-max` | UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 9 stacks (React, Next.js, Vue, Svelte,... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
@@ -424,6 +426,16 @@ Use when working with the OpenRouter API: model routing, provider selection, mod
 
 </details>
 <details>
+<summary><code>orpc-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill orpc-docs
+```
+
+Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware, context, error handling, event iterators (streaming), file upload/download, contract-first design, OpenAPI spec generation, server adapters (Next.js, Hono, Express, Fastify, Nuxt, Astro, Elysia, H3, SvelteKit, Remix, TanStack Start, Solid Start, WebSocket, Electron, Web Workers), client-side usage (RPC link, OpenAPI link, dynamic link), plugins (CORS, batch requests, compression, retry, CSRF, rate limit), integrations (TanStack Query, AI SDK, Better Auth, Sentry, OpenTelemetry, Pinia Colada, SWR), or migrating from tRPC.
+
+</details>
+<details>
 <summary><code>orpc-implementation-sops</code></summary>
 
 ```bash
@@ -491,6 +503,16 @@ npx skills add wenerme/ai --skill tmux-session-manager
 ```
 
 Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane
+
+</details>
+<details>
+<summary><code>ui-ux-pro-max</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ui-ux-pro-max
+```
+
+UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 9 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, mobile app, .html, .tsx, .vue, .svelte. Elements: button, modal, navbar, sidebar, card, table, form, chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, flat design. Topics: color palette, accessibility, animation, layout, typography, font pairing, spacing, hover, shadow, gradient. Integrations: shadcn/ui MCP for component search and examples.
 
 </details>
 <details>
