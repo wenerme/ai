@@ -23,22 +23,20 @@ const SKIP_FILES = new Set(["docs.json", "normalize-internal-links.js", "style.c
 
 function pullLatest() {
   if (!existsSync(BUN_REPO)) {
-    console.error(`Bun repo not found at ${BUN_REPO}`);
-    console.error(
-      "Run: git clone --depth 1 --filter=blob:none --sparse https://github.com/oven-sh/bun.git ~/gits/oven-sh/bun"
-    );
-    console.error("     cd ~/gits/oven-sh/bun && git sparse-checkout set docs");
-    process.exit(1);
+    console.log("Cloning oven-sh/bun (sparse: docs/)...");
+    mkdirSync(dirname(BUN_REPO), { recursive: true });
+    execSync(`git clone --depth 1 --filter=blob:none --sparse https://github.com/oven-sh/bun.git ${BUN_REPO}`, { stdio: "pipe" });
+    execSync("git sparse-checkout set docs", { cwd: BUN_REPO, stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from oven-sh/bun...");
+    try {
+      execSync("git pull --ff-only", { cwd: BUN_REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin main && git reset --hard origin/main", { cwd: BUN_REPO, stdio: "pipe" });
+    }
   }
-
-  console.log("Pulling latest from oven-sh/bun...");
-  try {
-    execSync("git pull --ff-only", { cwd: BUN_REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: BUN_REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: BUN_REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function collectFiles(dir: string, base: string): string[] {

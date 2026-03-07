@@ -22,18 +22,19 @@ const SKIP_DIRS = new Set(["essentials"]); // Mintlify template files, not openc
 
 function pullLatest() {
   if (!existsSync(REPO)) {
-    console.error(`OpenCode repo not found at ${REPO}`);
-    console.error("Run: git clone https://github.com/anomalyco/opencode.git ~/gits/anomalyco/opencode");
-    process.exit(1);
+    console.log("Cloning anomalyco/opencode (shallow)...");
+    mkdirSync(dirname(REPO), { recursive: true });
+    execSync(`git clone --depth 1 https://github.com/anomalyco/opencode.git ${REPO}`, { stdio: "pipe" });
+  } else {
+    console.log("Pulling latest from anomalyco/opencode...");
+    try {
+      execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
+    } catch {
+      execSync("git fetch --depth 1 origin main && git reset --hard origin/main", { cwd: REPO, stdio: "pipe" });
+    }
   }
-  console.log("Pulling latest from anomalyco/opencode...");
-  try {
-    execSync("git pull --ff-only", { cwd: REPO, stdio: "pipe" });
-    const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
-    console.log(`  Current commit: ${hash}`);
-  } catch (e: any) {
-    console.warn(`  git pull failed: ${e.message?.split("\n")[0]}`);
-  }
+  const hash = execSync("git rev-parse --short HEAD", { cwd: REPO, encoding: "utf-8" }).trim();
+  console.log(`  Current commit: ${hash}`);
 }
 
 function collectFiles(dir: string, base: string): string[] {

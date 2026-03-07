@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 43 skills available
+> 45 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -39,6 +39,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
+| `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
@@ -53,6 +54,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
+| `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -309,6 +311,16 @@ Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk
 
 </details>
 <details>
+<summary><code>llamacpp-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill llamacpp-docs
+```
+
+Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative decoding, function calling, multimodal models (LLaVA, Gemma3, MiniCPM), GPU backends (CUDA, Metal, Vulkan, SYCL, OpenCL, CANN), Android deployment, Docker setup, performance tuning, or adding new model architectures to llama.cpp.
+
+</details>
+<details>
 <summary><code>mikro-orm-v6-to-v7</code></summary>
 
 ```bash
@@ -446,6 +458,16 @@ npx skills add wenerme/ai --skill tmux-session-manager
 ```
 
 Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane
+
+</details>
+<details>
+<summary><code>vllm-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill vllm-docs
+```
+
+Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8, GGUF, INT4/INT8), speculative decoding, LoRA adapters, structured outputs, tool calling, multimodal inputs, distributed serving (tensor/pipeline/expert/context parallel), Docker/Kubernetes deployment, engine configuration, memory optimization, PagedAttention, offline inference, CLI usage, or troubleshooting vLLM issues.
 
 </details>
 <details>
