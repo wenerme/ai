@@ -55,7 +55,7 @@ for (const { repo, path, name } of skills) {
 
   console.log(`    Syncing ${name} ...`);
   mkdirSync(dst, { recursive: true });
-  await $`rsync -a --delete ${src}/ ${dst}/`;
+  await $`rsync -aL --delete ${src}/ ${dst}/`;
   console.log(`    Done: ${name}`);
 }
 

@@ -3,5 +3,7 @@
   { "repo": "vercel-labs/agent-browser", "path": "skills/agent-browser", "name": "agent-browser" },
   { "repo": "ChromeDevTools/chrome-devtools-mcp", "path": "skills/chrome-devtools", "name": "chrome-devtools" },
   { "repo": "obra/superpowers", "path": "skills/writing-skills", "name": "writing-skills" },
-  { "repo": "mastra-ai/skills", "path": "skills/mastra", "name": "mastra" }
+  { "repo": "mastra-ai/skills", "path": "skills/mastra", "name": "mastra" },
+  { "repo": "shadcn-ui/ui", "path": "skills/shadcn", "name": "shadcn" },
+  { "repo": "nextlevelbuilder/ui-ux-pro-max-skill", "path": ".claude/skills/ui-ux-pro-max", "name": "ui-ux-pro-max" }
 ]
