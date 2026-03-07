@@ -1,4 +1,4 @@
-# Apply patch
+# Apply Patch
 
 import {
   CheckCircleFilled,
@@ -171,6 +171,10 @@ The model can then adjust future diffs (for example, by re-reading a file in you
     </div>
   </td>
   <td style={{ maxWidth: "150px" }}>
+    [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4)
+    <br />
+    [GPT-5.2](https://developers.openai.com/api/docs/models/gpt-5.2)
+    <br />
     [GPT-5.1](https://developers.openai.com/api/docs/models/gpt-5.1)
   </td>
 </tr>

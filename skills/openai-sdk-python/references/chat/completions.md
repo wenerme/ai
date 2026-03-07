@@ -419,7 +419,11 @@ chunk objects if the request is streamed.
 
   - `str`
 
-  - `Literal["gpt-5.2", "gpt-5.2-2025-12-11", "gpt-5.2-chat-latest", 69 more]`
+  - `Literal["gpt-5.4", "gpt-5.3-chat-latest", "gpt-5.2", 71 more]`
+
+    - `"gpt-5.4"`
+
+    - `"gpt-5.3-chat-latest"`
 
     - `"gpt-5.2"`
 
@@ -1610,7 +1614,7 @@ chat_completion = client.chat.completions.create(
         "content": "string",
         "role": "developer",
     }],
-    model="gpt-4o",
+    model="gpt-5.4",
 )
 print(chat_completion)
 ```

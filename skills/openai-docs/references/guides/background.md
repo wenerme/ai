@@ -17,7 +17,7 @@ curl https://api.openai.com/v1/responses \\
 -H "Content-Type: application/json" \\
 -H "Authorization: Bearer $OPENAI_API_KEY" \\
 -d '{
-  "model": "gpt-5.2",
+  "model": "gpt-5.4",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
@@ -28,7 +28,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.2",
+  model: "gpt-5.4",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -42,7 +42,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.2",
+  model="gpt-5.4",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -68,7 +68,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 let resp = await client.responses.create({
-model: "gpt-5.2",
+model: "gpt-5.4",
 input: "Write a very long novel about otters in space.",
 background: true,
 });
@@ -89,7 +89,7 @@ from time import sleep
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.2",
+  model="gpt-5.4",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -151,7 +151,7 @@ curl https://api.openai.com/v1/responses \\
 -H "Content-Type: application/json" \\
 -H "Authorization: Bearer $OPENAI_API_KEY" \\
 -d '{
-  "model": "gpt-5.2",
+  "model": "gpt-5.4",
   "input": "Write a very long novel about otters in space.",
   "background": true,
   "stream": true
@@ -168,7 +168,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const stream = await client.responses.create({
-  model: "gpt-5.2",
+  model: "gpt-5.4",
   input: "Write a very long novel about otters in space.",
   background: true,
   stream: true,
@@ -192,7 +192,7 @@ client = OpenAI()
 
 # Fire off an async response but also start streaming immediately
 stream = client.responses.create(
-  model="gpt-5.2",
+  model="gpt-5.4",
   input="Write a very long novel about otters in space.",
   background=True,
   stream=True,

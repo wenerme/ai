@@ -1,10 +1,6 @@
 # Code generation
 
-Writing, reviewing, editing, and answering questions about code is one of the primary use cases for OpenAI models today. This guide walks through your options for code generation.
-
-**Codex** is OpenAI's series of AI coding tools that help developers move faster by delegating tasks to powerful cloud and local coding agents. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
-
-**Codex models** are LLMs specifically trained at coding tasks. They power Codex, and you can use them to create coding-specific applications. For example, let your _end users_ generate code.
+Writing, reviewing, editing, and answering questions about code is one of the primary use cases for OpenAI models today. This guide walks through your options for code generation with GPT-5.4 and Codex.
 
 ## Get started
 
@@ -13,26 +9,26 @@ Writing, reviewing, editing, and answering questions about code is one of the pr
 
 ## Use Codex
 
-Codex has an interface in the browser, similar to ChatGPT, where you can kick off coding tasks that run in the cloud. Visit [chatgpt.com/codex](https://chatgpt.com/codex) to use it.
+[**Codex**](https://developers.openai.com/codex/overview) is OpenAI's coding agent for software development. It helps you write, review and debug code. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
 
-Codex also has an IDE extension, CLI, and SDK to help you create coding tasks in whichever environment makes the most sense for you. For example, the SDK is useful for using Codex in CI/CD pipelines. The CLI, on the other hand, runs locally from your terminal and can read, modify, and run code on your machine.
+Codex works best with the latest models from the GPT-5 family, such as [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4). We offer a range of models specifically designed to work with coding agents like Codex, such as [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex), but starting with `gpt-5.4`, we recommend using the general-purpose model for most code generation tasks.
 
-See the [Codex docs](https://developers.openai.com/codex) for quickstarts, reference, pricing, and more information.
+See the [Codex docs](https://developers.openai.com/codex) for setup guides, reference material, pricing, and more information.
 
 ## Integrate with coding models
 
-OpenAI has several models trained specifically to work with code. GPT-5.1-Codex-Max is our best agentic coding model. That said, many OpenAI models excel at writing and editing code as well as other tasks. Use a Codex model if you _only_ want it for coding-related work.
+For most API-based code generation, start with **`gpt-5.4`**. It handles both general-purpose work and coding, which makes it a strong default when your application needs to write code, reason about requirements, inspect docs, and handle broader workflows in one place.
 
-Here's an example that calls GPT-5.1-Codex-Max, the model that powers Codex:
+This example shows how you can use the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) for a code generation use case:
 
-Slower, high reasoning tasks
+Default model for most coding tasks
 
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
 const result = await openai.responses.create({
-  model: "gpt-5.1-codex-max",
+  model: "gpt-5.4",
   input: "Find the null pointer exception: ...your code here...",
   reasoning: { effort: "high" },
 });
@@ -45,7 +41,7 @@ from openai import OpenAI
 client = OpenAI()
 
 result = client.responses.create(
-    model="gpt-5.1-codex-max",
+    model="gpt-5.4",
     input="Find the null pointer exception: ...your code here...",
     reasoning={ "effort": "high" },
 )
@@ -58,18 +54,22 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5.1-codex-max",
+    "model": "gpt-5.4",
     "input": "Find the null pointer exception: ...your code here...",
     "reasoning": { "effort": "high" }
   }'
 ```
 
 
-Learn more about GPT-5.1-Codex-Max in the [blog post](https://openai.com/index/gpt-5-1-codex-max/). Read the [GPT-5.1-Codex-Max prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-1-codex-max_prompting_guide) to start building with it.
+## Frontend development
+
+Our models from the GPT-5 family are especially strong at frontend development, especially when combined with a coding agent harness such as Codex.
+
+The demo applications below were one shot generations, i.e. generated from a single prompt without hand-written code. Use them to evaluate frontend generation quality and prompt patterns for UI-heavy code generation workflows.
 
 ## Next steps
 
 - Visit the [Codex docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
-- See the [GPT-5.1.-Codex-Max prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-1-codex-max_prompting_guide) for best practices on maximizing performance.
-- Learn more about [GPT-5.1 and its variants](https://developers.openai.com/api/docs/guides/latest-model).
-- Visit the [GPT-5.1-Codex-Max model page](https://developers.openai.com/api/docs/models/gpt-5.1-codex-max) to compare models.
+- Read [Using GPT-5.4](https://developers.openai.com/api/docs/guides/latest-model) for model selection, features, and migration guidance.
+- See [Prompt guidance for GPT-5.4](https://developers.openai.com/api/docs/guides/prompt-guidance) for prompting patterns that work well on coding and agentic tasks.
+- Compare [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4) and [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) on the model pages.

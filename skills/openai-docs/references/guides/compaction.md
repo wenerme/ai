@@ -61,7 +61,7 @@ conversation = [
 
 while keep_going:
     response = client.responses.create(
-        model="gpt-5.2-codex",
+        model="gpt-5.3-codex",
         input=conversation,
         store=False,
         context_management=[{"type": "compaction", "compact_threshold": 200000}],
@@ -121,7 +121,7 @@ long_input_items_array = [...]
 
 # 1) Compact the current window
 compacted = client.responses.compact(
-    model="gpt-5.2",
+    model="gpt-5.4",
     input=long_input_items_array,
 )
 
@@ -136,7 +136,7 @@ next_input = [
 ]
 
 next_response = client.responses.create(
-    model="gpt-5.2",
+    model="gpt-5.4",
     input=next_input,
     store=False,  # Keep the flow ZDR-friendly
 )

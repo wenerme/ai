@@ -551,7 +551,7 @@ Create an assistant with a model and instructions.
 
       - `file_ids: optional array of string`
 
-        A list of [file](/docs/api-reference/files) IDs to add to the vector store. There can be a maximum of 10000 files in a vector store.
+        A list of [file](/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
 
       - `metadata: optional Metadata`
 

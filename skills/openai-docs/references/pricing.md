@@ -27,7 +27,68 @@ Text tokens
   <div data-content-switcher-pane data-value="standard">
     <div class="hidden">Standard</div>
 
-    </div>
+    <PricingTable
+      headings={["Model", "Input", "Cached input", "Output"]}
+      rows={[
+        ["gpt-5.4 (<272K context length)", 2.5, 0.25, 15],
+        ["gpt-5.4 (>272K context length)", 5, 0.5, 22.5],
+        ["gpt-5.4-pro (<272K context length)", 30, "", 180],
+        ["gpt-5.4-pro (>272K context length)", 60, "", 270],
+        ["gpt-5.2", 1.75, 0.175, 14],
+        ["gpt-5.1", 1.25, 0.125, 10],
+        ["gpt-5", 1.25, 0.125, 10],
+        ["gpt-5-mini", 0.25, 0.025, 2],
+        ["gpt-5-nano", 0.05, 0.005, 0.4],
+        ["gpt-5.3-chat-latest", 1.75, 0.175, 14],
+        ["gpt-5.2-chat-latest", 1.75, 0.175, 14],
+        ["gpt-5.1-chat-latest", 1.25, 0.125, 10],
+        ["gpt-5-chat-latest", 1.25, 0.125, 10],
+        ["gpt-5.3-codex", 1.75, 0.175, 14],
+        ["gpt-5.2-codex", 1.75, 0.175, 14],
+        ["gpt-5.1-codex-max", 1.25, 0.125, 10],
+        ["gpt-5.1-codex", 1.25, 0.125, 10],
+        ["gpt-5-codex", 1.25, 0.125, 10],
+        ["gpt-5.2-pro", 21, "-", 168],
+        ["gpt-5-pro", 15, null, 120],
+        ["gpt-4.1", 2, 0.5, 8],
+        ["gpt-4.1-mini", 0.4, 0.1, 1.6],
+        ["gpt-4.1-nano", 0.1, 0.025, 0.4],
+        ["gpt-4o", 2.5, 1.25, 10],
+        ["gpt-4o-2024-05-13", 5, null, 15],
+        ["gpt-4o-mini", 0.15, 0.075, 0.6],
+        ["gpt-realtime", 4, 0.4, 16],
+        ["gpt-realtime-1.5", 4, 0.4, 16],
+        ["gpt-realtime-mini", 0.6, 0.06, 2.4],
+        ["gpt-4o-realtime-preview", 5, 2.5, 20],
+        ["gpt-4o-mini-realtime-preview", 0.6, 0.3, 2.4],
+        ["gpt-audio", 2.5, null, 10],
+        ["gpt-audio-1.5", 2.5, null, 10],
+        ["gpt-audio-mini", 0.6, null, 2.4],
+        ["gpt-4o-audio-preview", 2.5, null, 10],
+        ["gpt-4o-mini-audio-preview", 0.15, null, 0.6],
+        ["o1", 15, 7.5, 60],
+        ["o1-pro", 150, null, 600],
+        ["o3-pro", 20, null, 80],
+        ["o3", 2, 0.5, 8],
+        ["o3-deep-research", 10, 2.5, 40],
+        ["o4-mini", 1.1, 0.275, 4.4],
+        ["o4-mini-deep-research", 2, 0.5, 8],
+        ["o3-mini", 1.1, 0.55, 4.4],
+        ["o1-mini", 1.1, 0.55, 4.4],
+        ["gpt-5.1-codex-mini", 0.25, 0.025, 2],
+        ["codex-mini-latest", 1.5, 0.375, 6],
+        ["gpt-5-search-api", 1.25, 0.1250, 10],
+        ["gpt-4o-mini-search-preview", 0.15, null, 0.6],
+        ["gpt-4o-search-preview", 2.5, null, 10],
+        ["computer-use-preview", 3, null, 12],
+        ["gpt-image-1.5", 5, 1.25, 10],
+        ["chatgpt-image-latest", 5, 1.25, 10],
+        ["gpt-image-1", 5, 1.25, null],
+        ["gpt-image-1-mini", 2.0, 0.2, null],
+      ]}
+    />
+
+  </div>
   <div data-content-switcher-pane data-value="priority" hidden>
     <div class="hidden">Priority</div>
 
@@ -43,12 +104,27 @@ Text tokens
     Large numbers of API requests which are not time-sensitive can use the
     [Batch API](https://developers.openai.com/api/docs/guides/batch) for additional savings as well.
 
+    For models with a 1.05M context window (`gpt-5.4` and `gpt-5.4-pro`), the
+    listed prices apply to prompts with fewer than 272K input tokens. Prompts
+    with more than 272K input tokens are priced at 2x input and 1.5x output for
+    the full session for standard, batch, and flex.
+
     While reasoning tokens are not visible via the API, they still occupy space in
     the model's context window and are billed as output tokens.
 
     For gpt-image-1.5, Text output tokens include model reasoning tokens.
 
 </small>
+
+<div className="-mb-6 mt-8">
+  
+
+Data Residency and Regional Processing
+
+
+</div>
+
+Beginning with GPT-5.4, requests made to [Data Residency and Regional Processing endpoints](https://developers.openai.com/api/docs/guides/your-data#how-does-data-residency-work) are charged an additional 10% on top of all other applicable pricing.
 
 <br />
 

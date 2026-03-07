@@ -1,5 +1,3 @@
-<br />
-
 > To learn about video understanding, see the [Video understanding](https://ai.google.dev/gemini-api/docs/video-understanding) guide.
 
 [Veo 3.1](https://deepmind.google/models/veo/) is Google's state-of-the-art
@@ -915,9 +913,7 @@ For example, using these three images generated with
       -X "POST" \
       -d '{
         "instances": [{
-          "prompt": "The video opens with a medium, eye-level shot of a beautiful woman with dark hair and warm brown eyes. She wears a magnificent, high-fashion flamingo dress with layers of pink and fuchsia feathers, complemented by whimsical pink, heart-shaped sunglasses. She walks with serene confidence through the crystal-clear, shallow turquoise water of a sun-drenched lagoon. The camera slowly pulls back to a medium-wide shot, revealing the breathtaking scene as the dress'\''s long train glides and floats gracefully on the water'\''s surface behind her. The cinematic, dreamlike atmosphere is enhanced by the vibrant colors of the dress against the serene, minimalist landscape, capturing a moment of pure elegance and high-fashion fantasy."
-        }],
-        "parameters": {
+          "prompt": "The video opens with a medium, eye-level shot of a beautiful woman with dark hair and warm brown eyes. She wears a magnificent, high-fashion flamingo dress with layers of pink and fuchsia feathers, complemented by whimsical pink, heart-shaped sunglasses. She walks with serene confidence through the crystal-clear, shallow turquoise water of a sun-drenched lagoon. The camera slowly pulls back to a medium-wide shot, revealing the breathtaking scene as the dress'\''s long train glides and floats gracefully on the water'\''s surface behind her. The cinematic, dreamlike atmosphere is enhanced by the vibrant colors of the dress against the serene, minimalist landscape, capturing a moment of pure elegance and high-fashion fantasy.",
           "referenceImages": [
             {
               "image": {"inlineData": {"mimeType": "image/png", "data": "'"$dress_image_base64"'"}},
@@ -932,7 +928,7 @@ For example, using these three images generated with
               "referenceType": "asset"
             }
           ]
-        }
+        }],
       }' | jq -r .name)
 
     # Poll the operation status until the video is ready
@@ -1102,11 +1098,9 @@ for video generation, see the [Veo prompt guide](https://ai.google.dev/gemini-ap
       -d '{
         "instances": [{
           "prompt": "A cinematic, haunting video. A ghostly woman with long white hair and a flowing dress swings gently on a rope swing beneath a massive, gnarled tree in a foggy, moonlit clearing. The fog thickens and swirls around her, and she slowly fades away, vanishing completely. The empty swing is left swaying rhythmically on its own in the eerie silence.",
-          "image": {"inlineData": {"mimeType": "image/png", "data": "'"$first_image_base64"'"}}
-        }],
-        "parameters": {
+          "image": {"inlineData": {"mimeType": "image/png", "data": "'"$first_image_base64"'"}},
           "lastFrame": {"inlineData": {"mimeType": "image/png", "data": "'"$last_image_base64"'"}}
-        }
+        }],
       }' | jq -r .name)
 
     # Poll the operation status until the video is ready
@@ -1519,170 +1513,20 @@ generation process.
 
 | Parameter | Description | Veo 3.1 \& Veo 3.1 Fast | Veo 3 \& Veo 3 Fast | Veo 2 |
 |---|---|---|---|---|
+| Instances |||||
 | `prompt` | The text description for the video. Supports audio cues. | `string` | `string` | `string` |
-| `negativePrompt` | Text describing what not to include in the video. | `string` | `string` | `string` |
 | `image` | An initial image to animate. | `Image` object | `Image` object | `Image` object |
 | `lastFrame` | The final image for an interpolation video to transition. Must be used in combination with the `image` parameter. | `Image` object | `Image` object | `Image` object |
 | `referenceImages` | Up to three images to be used as style and content references. | `VideoGenerationReferenceImage` object (Veo 3.1 only) | n/a | n/a |
 | `video` | Video to be used for video extension. | `Video` object from a previous generation | n/a | n/a |
+| Parameters |||||
 | `aspectRatio` | The video's aspect ratio. | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` |
-| `resolution` | The video's aspect ratio. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | Unsupported |
 | `durationSeconds` | Length of the generated video. | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"5"`, `"6"`, `"8"` |
 | `personGeneration` | Controls the generation of people. (See [Limitations](https://ai.google.dev/gemini-api/docs/video#limitations) for region restrictions) | Text-to-video \& Extension: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video: `"allow_adult"` only | Text-to-video: `"allow_all"`, `"allow_adult"`, `"dont_allow"` Image-to-video: `"allow_adult"`, and `"dont_allow"` |
+| `resolution` | The video's resolution. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | Unsupported |
 
 Note that the `seed` parameter is also available for Veo 3 models.
 It doesn't guarantee determinism, but slightly improves it.
-
-You can customize your video generation by setting parameters in your request.
-For example you can specify `negativePrompt` to guide the model.
-
-### Python
-
-    import time
-    from google import genai
-    from google.genai import types
-
-    client = genai.Client()
-
-    operation = client.models.generate_videos(
-        model="veo-3.1-generate-preview",
-        prompt="A cinematic shot of a majestic lion in the savannah.",
-        config=types.GenerateVideosConfig(negative_prompt="cartoon, drawing, low quality"),
-    )
-
-    # Poll the operation status until the video is ready.
-    while not operation.done:
-        print("Waiting for video generation to complete...")
-        time.sleep(10)
-        operation = client.operations.get(operation)
-
-    # Download the generated video.
-    generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("parameters_example.mp4")
-    print("Generated video saved to parameters_example.mp4")
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    const ai = new GoogleGenAI({});
-
-    let operation = await ai.models.generateVideos({
-      model: "veo-3.1-generate-preview",
-      prompt: "A cinematic shot of a majestic lion in the savannah.",
-      config: {
-        aspectRatio: "16:9",
-        negativePrompt: "cartoon, drawing, low quality"
-      },
-    });
-
-    // Poll the operation status until the video is ready.
-    while (!operation.done) {
-      console.log("Waiting for video generation to complete...")
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-      operation = await ai.operations.getVideosOperation({
-        operation: operation,
-      });
-    }
-
-    // Download the generated video.
-    ai.files.download({
-        file: operation.response.generatedVideos[0].video,
-        downloadPath: "parameters_example.mp4",
-    });
-    console.log(`Generated video saved to parameters_example.mp4`);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "log"
-        "os"
-        "time"
-
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        videoConfig := &genai.GenerateVideosConfig{
-            AspectRatio: "16:9",
-            NegativePrompt: "cartoon, drawing, low quality",
-        }
-
-        operation, _ := client.Models.GenerateVideos(
-            ctx,
-            "veo-3.1-generate-preview",
-            "A cinematic shot of a majestic lion in the savannah.",
-            nil,
-            videoConfig,
-        )
-
-        // Poll the operation status until the video is ready.
-        for !operation.Done {
-            log.Println("Waiting for video generation to complete...")
-            time.Sleep(10 * time.Second)
-            operation, _ = client.Operations.GetVideosOperation(ctx, operation, nil)
-        }
-
-        // Download the generated video.
-        video := operation.Response.GeneratedVideos[0]
-        client.Files.Download(ctx, video.Video, nil)
-        fname := "parameters_example.mp4"
-        _ = os.WriteFile(fname, video.Video.VideoBytes, 0644)
-        log.Printf("Generated video saved to %s\n", fname)
-    }
-
-### REST
-
-    # Note: This script uses jq to parse the JSON response.
-    # GEMINI API Base URL
-    BASE_URL="https://generativelanguage.googleapis.com/v1beta"
-
-    # Send request to generate video and capture the operation name into a variable.
-    operation_name=$(curl -s "${BASE_URL}/models/veo-3.1-generate-preview:predictLongRunning" \
-      -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H "Content-Type: application/json" \
-      -X "POST" \
-      -d '{
-        "instances": [{
-            "prompt": "A cinematic shot of a majestic lion in the savannah."
-          }
-        ],
-        "parameters": {
-          "aspectRatio": "16:9",
-          "negativePrompt": "cartoon, drawing, low quality"
-        }
-      }' | jq -r .name)
-
-    # Poll the operation status until the video is ready
-    while true; do
-      # Get the full JSON status and store it in a variable.
-      status_response=$(curl -s -H "x-goog-api-key: $GEMINI_API_KEY" "${BASE_URL}/${operation_name}")
-
-      # Check the "done" field from the JSON stored in the variable.
-      is_done=$(echo "${status_response}" | jq .done)
-
-      if [ "${is_done}" = "true" ]; then
-        # Extract the download URI from the final response.
-        video_uri=$(echo "${status_response}" | jq -r '.response.generateVideoResponse.generatedSamples[0].video.uri')
-        echo "Downloading video from: ${video_uri}"
-
-        # Download the video using the URI and API key and follow redirects.
-        curl -L -o parameters_example.mp4 -H "x-goog-api-key: $GEMINI_API_KEY" "${video_uri}"
-        break
-      fi
-      # Wait for 5 seconds before checking again.
-      sleep 10
-    done
 
 ## Veo prompt guide
 

@@ -407,15 +407,17 @@ to complete the peer connection.
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -440,6 +442,14 @@ to complete the peer connection.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -607,6 +617,10 @@ to complete the peer connection.
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: Optional[bool]`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: Optional[Dict[str, str]]`
 

@@ -406,7 +406,7 @@ chunk objects if the request is streamed.
 
       - `"function"`
 
-- `model: string or "gpt-5.2" or "gpt-5.2-2025-12-11" or "gpt-5.2-chat-latest" or 69 more`
+- `model: string or "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 71 more`
 
   Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
@@ -415,12 +415,16 @@ chunk objects if the request is streamed.
 
   - `UnionMember0 = string`
 
-  - `UnionMember1 = "gpt-5.2" or "gpt-5.2-2025-12-11" or "gpt-5.2-chat-latest" or 69 more`
+  - `UnionMember1 = "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 71 more`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
+
+    - `"gpt-5.4"`
+
+    - `"gpt-5.3-chat-latest"`
 
     - `"gpt-5.2"`
 
@@ -1619,7 +1623,7 @@ curl https://api.openai.com/v1/chat/completions \
               "role": "developer"
             }
           ],
-          "model": "gpt-4o",
+          "model": "gpt-5.4",
           "n": 1,
           "prompt_cache_key": "prompt-cache-key-1234",
           "safety_identifier": "safety-identifier-1234",

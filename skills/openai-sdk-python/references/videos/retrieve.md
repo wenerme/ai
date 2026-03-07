@@ -80,15 +80,19 @@ Fetch the latest metadata for a generated video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: Union[str, VideoSeconds]`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `str`
 
-    - `"8"`
+    - `Literal["4", "8", "12"]`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
