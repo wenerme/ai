@@ -423,6 +423,77 @@ When migrating to GPT-5.4 from an older OpenAI model, start by experimenting wit
 - **o4-mini or gpt-4.1-mini**: `gpt-5-mini` with prompt tuning is a great replacement.
 - **gpt-4.1-nano**: `gpt-5-nano` with prompt tuning is a great replacement.
 
+### New `phase` parameter
+
+For long-running or tool-heavy GPT-5.4 flows in the Responses API, use the assistant message `phase` field to avoid early stopping and other misbehavior.
+
+`phase` is optional at the API level, but we highly recommend using it. Use `phase: "commentary"` for intermediate assistant updates (such as preambles before tool calls) and `phase: "final_answer"` for the completed answer. Do not add `phase` to user messages.
+
+If you use `previous_response_id`, that is usually the simplest path because
+  prior assistant state is preserved. If you replay assistant history manually,
+  preserve each original `phase` value.
+
+Missing or dropped `phase` can cause preambles to be treated as final answers, which can degrade quality on multi-step tasks. For additional guidance and examples, see the [GPT-5.4 prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-4_prompting_guide#phase).
+
+Round-trip assistant phase values
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-5.4",
+  input: [
+    {
+      role: "assistant",
+      phase: "commentary",
+      content:
+        "I’ll inspect the logs and then summarize root cause and remediation.",
+    },
+    {
+      role: "assistant",
+      phase: "final_answer",
+      content: "Root cause: cache invalidation race.",
+    },
+    {
+      role: "user",
+      content: "Great—now give me a rollout-safe fix plan.",
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.4",
+    input=[
+        {
+            "role": "assistant",
+            "phase": "commentary",
+            "content": "I’ll inspect the logs and then summarize root cause and remediation.",
+        },
+        {
+            "role": "assistant",
+            "phase": "final_answer",
+            "content": "Root cause: cache invalidation race.",
+        },
+        {
+            "role": "user",
+            "content": "Great—now give me a rollout-safe fix plan.",
+        },
+    ],
+)
+
+print(response.output_text)
+```
+
+
 ### GPT-5.4 parameter compatibility
 
 The following parameters are **only supported** when using GPT-5.4 with reasoning effort set to `none`:

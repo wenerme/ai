@@ -173,6 +173,16 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup" \
 
 The API responds with `200 OK` when it starts tearing down the call.
 
+## Dedicated SIP IP ranges
+
+If you need to allowlist OpenAI SIP traffic. `sip.api.openai.com` does GeoIP routing, you
+will be connected to the closest region.
+
+- `13.79.45.80/28` for `northeurope`
+- `23.98.140.64/28` for `southcentralus`
+- `40.67.149.176/28` for `eastus2`
+- `40.83.204.240/28` for `westus`
+
 ## Python example
 
 The following is an example of a `realtime.call.incoming` handler. It accepts the call and then logs all the events from

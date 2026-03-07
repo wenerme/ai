@@ -55,7 +55,7 @@ You can also use specialized image generation models—DALL·E 2 and DALL·E 3�
 | GPT Image | Image API: Generations, Edits – Responses API (as part of the image generation tool) | Superior instruction following, text rendering, detailed editing, real-world knowledge |
 
 
-This guide focuses on GPT Image, but you can also switch to the docs for [DALL·E 2](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-2) and [DALL·E 3](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-3).
+This guide focuses on GPT Image. To view the DALL·E model-specific content in this same guide, switch to the [DALL·E 2 view](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-2) or [DALL·E 3 view](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-3).
 
 To ensure this model is used responsibly, you may need to complete the [API
   Organization

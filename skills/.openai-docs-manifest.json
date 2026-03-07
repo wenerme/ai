@@ -378,10 +378,10 @@
   "openai-docs/guides/flex-processing.md": {
     "url": "https://developers.openai.com/api/docs/guides/flex-processing.md",
     "skill": "openai-docs",
-    "etag": "\"b46c3f1bbc7c69da60a39dfe27a5ccef\"",
-    "lastModified": "Thu, 05 Mar 2026 06:03:58 GMT",
-    "size": 3993,
-    "updatedAt": "2026-03-05T06:03:58.483Z"
+    "etag": "\"c5af4435e39b843d72490cc7ca56006b\"",
+    "lastModified": "Sat, 07 Mar 2026 18:29:55 GMT",
+    "size": 4008,
+    "updatedAt": "2026-03-07T18:29:55.165Z"
   },
   "openai-docs/guides/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/function-calling.md",
@@ -402,10 +402,10 @@
   "openai-docs/guides/image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/image-generation.md",
     "skill": "openai-docs",
-    "etag": "\"4ce72fd724194a7f4189b4e951b5e63c\"",
-    "lastModified": "Thu, 05 Mar 2026 06:03:59 GMT",
-    "size": 46450,
-    "updatedAt": "2026-03-05T06:04:00.019Z"
+    "etag": "\"bb5b8c7a20cb1a664408e116c0229359\"",
+    "lastModified": "Sat, 07 Mar 2026 18:29:55 GMT",
+    "size": 46495,
+    "updatedAt": "2026-03-07T18:29:55.976Z"
   },
   "openai-docs/guides/images-vision.md": {
     "url": "https://developers.openai.com/api/docs/guides/images-vision.md",
@@ -426,10 +426,10 @@
   "openai-docs/guides/latest-model.md": {
     "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
     "skill": "openai-docs",
-    "etag": "\"323df45ab6a18d6996dce6b925b12483\"",
-    "lastModified": "Fri, 06 Mar 2026 06:06:25 GMT",
-    "size": 27340,
-    "updatedAt": "2026-03-06T06:06:25.978Z"
+    "etag": "\"ce6cbe90cb12d8899092ba61fac96d65\"",
+    "lastModified": "Sat, 07 Mar 2026 12:26:13 GMT",
+    "size": 29507,
+    "updatedAt": "2026-03-07T18:29:56.726Z"
   },
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
@@ -602,10 +602,10 @@
   "openai-docs/guides/realtime-sip.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-sip.md",
     "skill": "openai-docs",
-    "etag": "\"9dbec716d0e83aa2509ef0b804e0a4ba\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:14 GMT",
-    "size": 10443,
-    "updatedAt": "2026-03-05T06:04:14.278Z"
+    "etag": "\"1f5d11211f96c85a060c293c21932277\"",
+    "lastModified": "Sat, 07 Mar 2026 18:30:02 GMT",
+    "size": 10751,
+    "updatedAt": "2026-03-07T18:30:02.335Z"
   },
   "openai-docs/guides/realtime-transcription.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-transcription.md",
