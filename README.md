@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 45 skills available
+> 46 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -40,6 +40,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
+| `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
@@ -318,6 +319,16 @@ npx skills add wenerme/ai --skill llamacpp-docs
 ```
 
 Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative decoding, function calling, multimodal models (LLaVA, Gemma3, MiniCPM), GPU backends (CUDA, Metal, Vulkan, SYCL, OpenCL, CANN), Android deployment, Docker setup, performance tuning, or adding new model architectures to llama.cpp.
+
+</details>
+<details>
+<summary><code>mastra</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill mastra
+```
+
+Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents and workflows. Covers documentation lookup strategies (embedded docs, remote docs), core concepts (agents vs workflows, tools, memory, RAG), TypeScript requirements, and common patterns. Use this skill for all Mastra development to ensure you're using current APIs from the installed version or latest documentation.
 
 </details>
 <details>
