@@ -158,18 +158,15 @@ async function main() {
       const old = manifest[key];
 
       if (!stats[skill]) stats[skill] = { updated: 0, unchanged: 0, failed: 0 };
-      process.stdout.write(`[${i + 1}/${pending.length}] ${skill}/${filepath} ... `);
-
       try {
         const result = await fetchMdTxt(path, old);
         if (result === "not-modified") {
-          console.log("not modified");
           stats[skill].unchanged++;
           newManifest[key] = old;
         } else {
           mkdirSync(dirname(fullPath), { recursive: true });
           writeFileSync(fullPath, result.content);
-          console.log(old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`);
+          console.log(`[${i + 1}/${pending.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
           stats[skill].updated++;
           newManifest[key] = { url: `${BASE_URL}${path}`, skill, etag: result.etag, lastModified: result.lastModified, size: result.content.length, updatedAt: new Date().toISOString() };
 
@@ -181,7 +178,7 @@ async function main() {
           }
         }
       } catch (e: any) {
-        console.log(`FAILED: ${e.message}`);
+        console.log(`[${i + 1}/${pending.length}] ${skill}/${filepath} ... FAILED: ${e.message}`);
         stats[skill].failed++;
         if (old) newManifest[key] = old;
       }
@@ -193,7 +190,9 @@ async function main() {
   saveManifest(newManifest);
   console.log(`\n--- Summary ---`);
   for (const [skill, s] of Object.entries(stats).sort(([a], [b]) => a.localeCompare(b))) {
-    console.log(`${skill}: ${s.updated} new/updated, ${s.unchanged} unchanged, ${s.failed} failed`);
+    if (s.updated > 0 || s.failed > 0) {
+      console.log(`${skill}: ${s.updated} new/updated, ${s.failed} failed`);
+    }
   }
   console.log(`Total: ${Object.keys(newManifest).length} files`);
 }

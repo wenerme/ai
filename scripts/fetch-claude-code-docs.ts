@@ -108,17 +108,14 @@ async function main() {
     const mdUrl = `${BASE_URL}${path}.md`;
     const old = manifest[filename];
 
-    process.stdout.write(`[${i + 1}/${paths.length + 1}] ${filename} ... `);
-
     try {
       const result = await fetchMarkdown(mdUrl, old);
       if (result === "not-modified") {
-        console.log("not modified");
         unchanged++;
         newManifest[filename] = old;
       } else {
         writeFileSync(join(OUT_DIR, filename), result.content);
-        console.log(old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`);
+        console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
         updated++;
         newManifest[filename] = {
           url: `${BASE_URL}${path}`,
@@ -129,7 +126,7 @@ async function main() {
         };
       }
     } catch (e: any) {
-      console.log(`FAILED: ${e.message}`);
+      console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... FAILED: ${e.message}`);
       failed++;
       if (old) newManifest[filename] = old;
     }
@@ -141,19 +138,17 @@ async function main() {
   {
     const filename = "changelog.md";
     const old = manifest[filename];
-    process.stdout.write(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... `);
 
     try {
       const result = await fetchMarkdown(CHANGELOG_URL, old);
       if (result === "not-modified") {
-        console.log("not modified");
         unchanged++;
         newManifest[filename] = old;
       } else {
         const header = `# Claude Code Changelog\n\n> **Source**: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md\n\n---\n\n`;
         const content = header + result.content;
         writeFileSync(join(OUT_DIR, filename), content);
-        console.log(old ? "updated" : `new (${(content.length / 1024).toFixed(0)}KB)`);
+        console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(content.length / 1024).toFixed(0)}KB)`}`);
         updated++;
         newManifest[filename] = {
           url: CHANGELOG_URL,
@@ -164,7 +159,7 @@ async function main() {
         };
       }
     } catch (e: any) {
-      console.log(`FAILED: ${e.message}`);
+      console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... FAILED: ${e.message}`);
       failed++;
       if (old) newManifest[filename] = old;
     }
@@ -184,7 +179,11 @@ async function main() {
   }
 
   saveManifest(newManifest);
-  console.log(`\nDone: ${updated} new/updated, ${unchanged} unchanged, ${failed} failed, ${Object.keys(newManifest).length} total`);
+  if (updated > 0 || failed > 0) {
+    console.log(`\nDone: ${updated} new/updated, ${failed} failed, ${Object.keys(newManifest).length} total`);
+  } else {
+    console.log(`\nDone: no changes (${Object.keys(newManifest).length} files)`);
+  }
 }
 
 main().catch((e) => {

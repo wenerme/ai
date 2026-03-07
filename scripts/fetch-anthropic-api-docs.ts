@@ -151,19 +151,16 @@ async function main() {
 
     if (!skillStats[skill]) skillStats[skill] = { updated: 0, unchanged: 0, failed: 0 };
 
-    process.stdout.write(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... `);
-
     try {
       const result = await fetchMarkdown(path, old);
 
       if (result === "not-modified") {
-        console.log("not modified");
         skillStats[skill].unchanged++;
         newManifest[key] = old;
       } else {
         mkdirSync(dirname(fullPath), { recursive: true });
         writeFileSync(fullPath, result.content);
-        console.log(old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`);
+        console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
         skillStats[skill].updated++;
         newManifest[key] = {
           url: `${BASE_URL}${path}`,
@@ -175,7 +172,7 @@ async function main() {
         };
       }
     } catch (e: any) {
-      console.log(`FAILED: ${e.message}`);
+      console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... FAILED: ${e.message}`);
       skillStats[skill].failed++;
       if (old) newManifest[key] = old;
     }
@@ -190,8 +187,9 @@ async function main() {
   console.log(`\n--- Summary ---`);
   console.log(`Skipped: ${skipped} (unsupported languages)`);
   for (const [skill, stats] of Object.entries(skillStats).sort(([a], [b]) => a.localeCompare(b))) {
-    const total = stats.updated + stats.unchanged;
-    console.log(`${skill}: ${stats.updated} new/updated, ${stats.unchanged} unchanged, ${stats.failed} failed (${total} files)`);
+    if (stats.updated > 0 || stats.failed > 0) {
+      console.log(`${skill}: ${stats.updated} new/updated, ${stats.failed} failed`);
+    }
   }
   console.log(`Total: ${Object.keys(newManifest).length} files in manifest`);
 }

@@ -101,23 +101,20 @@ async function main() {
     const fullPath = join(SKILL_DIR, filepath);
     const old = manifest[filepath];
 
-    process.stdout.write(`[${i + 1}/${docPaths.length}] ${filepath} ... `);
-
     try {
       const result = await fetchMd(mdUrl, old);
       if (result === "not-modified") {
-        console.log("not modified");
         unchanged++;
         newManifest[filepath] = old;
       } else {
         mkdirSync(dirname(fullPath), { recursive: true });
         writeFileSync(fullPath, result.content);
-        console.log(old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`);
+        console.log(`[${i + 1}/${docPaths.length}] ${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
         updated++;
         newManifest[filepath] = { url: mdUrl, etag: result.etag, lastModified: result.lastModified, size: result.content.length, updatedAt: new Date().toISOString() };
       }
     } catch (e: any) {
-      console.log(`FAILED: ${e.message}`);
+      console.log(`[${i + 1}/${docPaths.length}] ${filepath} ... FAILED: ${e.message}`);
       failed++;
       if (old) newManifest[filepath] = old;
     }
@@ -126,7 +123,11 @@ async function main() {
   }
 
   saveManifest(newManifest);
-  console.log(`\nDone: ${updated} new/updated, ${unchanged} unchanged, ${failed} failed, ${Object.keys(newManifest).length} total`);
+  if (updated > 0 || failed > 0) {
+    console.log(`\nDone: ${updated} new/updated, ${failed} failed, ${Object.keys(newManifest).length} total`);
+  } else {
+    console.log(`\nDone: no changes (${Object.keys(newManifest).length} files)`);
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
