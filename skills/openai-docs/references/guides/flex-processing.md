@@ -21,7 +21,7 @@ const client = new OpenAI({
 });
 
 const response = await client.responses.create({
-    model: "o3",
+    model: "gpt-5.4",
     instructions: "List and describe all the metaphors used in this book.",
     input: "<very long text of book here>",
     service_tier: "flex",
@@ -39,7 +39,7 @@ client = OpenAI(
 
 # you can override the max timeout per request as well
 response = client.with_options(timeout=900.0).responses.create(
-    model="o3",
+    model="gpt-5.4",
     instructions="List and describe all the metaphors used in this book.",
     input="<very long text of book here>",
     service_tier="flex",
@@ -53,7 +53,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "o3",
+    "model": "gpt-5.4",
     "instructions": "List and describe all the metaphors used in this book.",
     "input": "<very long text of book here>",
     "service_tier": "flex"
