@@ -12,9 +12,19 @@ Create a new video generation job from a prompt and optional reference assets.
 
   Text prompt that describes the video to generate.
 
+- `image_reference: optional object { file_id, image_url }`
+
+  Optional JSON-safe image reference that guides generation. Provide exactly one of `image_url` or `file_id`.
+
+  - `file_id: optional string`
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
 - `input_reference: optional string`
 
-  Optional image reference that guides generation.
+  Optional multipart reference asset that guides generation.
 
 - `model: optional VideoModel`
 
@@ -126,15 +136,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 
@@ -263,15 +267,9 @@ List recently generated videos for the current project.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 
@@ -402,15 +400,9 @@ Fetch the latest metadata for a generated video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 
@@ -563,15 +555,9 @@ Create a remix of a completed video using a refreshed prompt.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 
@@ -711,15 +697,9 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 

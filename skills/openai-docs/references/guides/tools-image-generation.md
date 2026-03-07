@@ -389,6 +389,7 @@ The image generation tool is supported for the following models:
 - `o3`
 - `gpt-5`
 - `gpt-5-nano`
+- `gpt-5.4`
 - `gpt-5.2`
 
 The model used for the image generation process is always a GPT Image model (`gpt-image-1.5`, `gpt-image-1`, or `gpt-image-1-mini`), but these models are not valid values for the `model` field in the Responses API. Use a text-capable mainline model (for example, `gpt-4.1` or `gpt-5`) with the hosted `image_generation` tool.

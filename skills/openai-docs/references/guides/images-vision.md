@@ -423,8 +423,8 @@ Input images must meet the following requirements to be used in the API.
   <tr>
     <td>Supported file types</td>
     <td>
-      - PNG (.png) - JPEG (.jpeg and .jpg) - WEBP (.webp) - Non-animated GIF
-      (.gif)
+      - PNG (`.png`) - JPEG (`.jpeg` and `.jpg`) - WEBP (`.webp`) - Non-animated
+      GIF (`.gif`)
     </td>
   </tr>
   <tr>
@@ -443,100 +443,162 @@ Input images must meet the following requirements to be used in the API.
   </tr>
 </table>
 
-### Specify image input detail level
+### Choose an image detail level
 
-The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, or `auto` to let the model decide). If you skip the parameter, the model will use `auto`.
-
-
+The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, `original`, or `auto` to let the model decide). If you skip the parameter, the model will use `auto`. This behavior is the same in both the Responses API and the Chat Completions API.
 
 
-  You can save tokens and speed up responses by using `"detail": "low"`. This lets the model process the image with a budget of 85 tokens. The model receives a low-resolution 512px x 512px version of the image. This is fine if your use case doesn't require the model to see with high-resolution detail (for example, if you're asking about the dominant shape or color in the image).
 
-On the other hand, you can use `"detail": "high"` if you want the model to have a better understanding of the image.
 
-Read more about calculating image processing costs in the [Calculating
-  costs](#calculating-costs) section below.
+  Use the following guidance to choose a detail level:
 
-## Limitations
+| Detail level | Best for                                                                                                                                       |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"low"`      | Fast, low-cost understanding when fine visual detail is not important. The model receives a low-resolution 512px x 512px version of the image. |
+| `"high"`     | Standard high-fidelity image understanding.                                                                                                    |
+| `"original"` | Large, dense, spatially sensitive, or computer-use images. Available on `gpt-5.4` and future models.                                           |
+| `"auto"`     | Let the model choose the detail level.                                                                                                         |
 
-While models with vision capabilities are powerful and can be used in many situations, it's important to understand the limitations of these models. Here are some known limitations:
+For computer use, localization, and click-accuracy use cases on `gpt-5.4` and future models, we recommend `"detail": "original"`. See the [Computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use) for more detail.
 
-- **Medical images**: The model is not suitable for interpreting specialized medical images like CT scans and shouldn't be used for medical advice.
-- **Non-English**: The model may not perform optimally when handling images with text of non-Latin alphabets, such as Japanese or Korean.
-- **Small text**: Enlarge text within the image to improve readability, but avoid cropping important details.
-- **Rotation**: The model may misinterpret rotated or upside-down text and images.
-- **Visual elements**: The model may struggle to understand graphs or text where colors or styles—like solid, dashed, or dotted lines—vary.
-- **Spatial reasoning**: The model struggles with tasks requiring precise spatial localization, such as identifying chess positions.
-- **Accuracy**: The model may generate incorrect descriptions or captions in certain scenarios.
-- **Image shape**: The model struggles with panoramic and fisheye images.
-- **Metadata and resizing**: The model doesn't process original file names or metadata, and images are resized before analysis, affecting their original dimensions.
-- **Counting**: The model may give approximate counts for objects in images.
-- **CAPTCHAS**: For safety reasons, our system blocks the submission of CAPTCHAs.
+Read more about how models resize images in the [Model sizing
+  behavior](#model-sizing-behavior) section, and about token costs in the
+  [Calculating costs](#calculating-costs) section below.
+
+### Model sizing behavior
+
+Different models use different resizing rules before image tokenization:
+
+<table>
+  <tr>
+    <th>Model family</th>
+    <th>Supported detail levels</th>
+    <th>Patch and resizing behavior</th>
+  </tr>
+  <tr>
+    <td>
+      <code>gpt-5.4</code> and future models
+    </td>
+    <td>
+      <code>low</code>, <code>high</code>, <code>original</code>,
+      <code>auto</code>
+    </td>
+    <td>
+      <code>high</code> allows up to 2,500 patches or a 2048-pixel maximum
+      dimension. <code>original</code> allows up to 10,000 patches or a
+      6000-pixel maximum dimension. If either limit is exceeded, we resize the
+      image while preserving aspect ratio to fit within the lesser of those two
+      constraints for the selected detail level. [Full resizing details
+      below.](#patch-based-image-tokenization)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>gpt-5-mini</code>, <code>gpt-5-nano</code>, <code>gpt-5.2</code>,
+      <code>gpt-5.3-codex</code>, <code>gpt-5-codex-mini</code>,
+      <code>gpt-5.1-codex-mini</code>, <code>gpt-5.2-codex</code>,
+      <code>gpt-5.2-chat-latest</code>, <code>o4-mini</code>, and the{" "}
+      <code>gpt-4.1-mini</code> and <code>gpt-4.1-nano</code> 2025-04-14
+      snapshot variants
+    </td>
+    <td>
+      <code>low</code>, <code>high</code>, <code>auto</code>
+    </td>
+    <td>
+      <code>high</code> allows up to 1,536 patches or a 2048-pixel maximum
+      dimension. If either limit is exceeded, we resize the image while
+      preserving aspect ratio to fit within the lesser of those two constraints.
+      [Full resizing details below.](#patch-based-image-tokenization)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>GPT-4o</code>, <code>GPT-4.1</code>, <code>GPT-4o-mini</code>,
+      <code>computer-use-preview</code>, and o-series models except
+      <code>o4-mini</code>
+    </td>
+    <td>
+      <code>low</code>, <code>high</code>, <code>auto</code>
+    </td>
+    <td>
+      Use tile-based resizing behavior. See{" "}
+      <a href="#gpt-4o-gpt-41-gpt-4o-mini-cua-and-o-series-except-o4-mini">
+        the detailed behavior below
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Calculating costs
 
-Image inputs are metered and charged in tokens, just as text inputs are. How images are converted to text token inputs varies based on the model. You can find a vision pricing calculator in the FAQ section of the [pricing page](https://openai.com/api/pricing/).
+Image inputs are metered and charged in token units similar to text inputs. How images are converted to text token inputs varies based on the model. You can find a vision pricing calculator in the FAQ section of the [pricing page](https://openai.com/api/pricing/).
 
-### GPT-4.1-mini, GPT-4.1-nano, o4-mini
+### Patch-based image tokenization
 
-Image inputs are metered and charged in tokens based on their dimensions. The token cost of an image is determined as follows:
+Some models tokenize images by covering them with 32px x 32px patches. Each model defines a maximum patch budget. The token cost of an image is determined as follows:
 
-A. Calculate the number of 32px x 32px patches that are needed to fully cover the image (a patch may extend beyond the image boundaries; out-of-bounds pixels are treated as black.)
-
-```
-raw_patches = ceil(width/32)×ceil(height/32)
-```
-
-B. If the number of patches exceeds 1536, we scale down the image so that it can be covered by no more than 1536 patches
+A. Compute how many 32px x 32px patches are needed to cover the original image. A patch may extend beyond the image boundary.
 
 ```
-r = √(32²×1536/(width×height))
-r = r × min( floor(width×r/32) / (width×r/32), floor(height×r/32) / (height×r/32) )
+original_patch_count = ceil(width/32)×ceil(height/32)
 ```
 
-C. The token cost is the number of patches, capped at a maximum of 1536 tokens
+B. If the original image would exceed the model's patch budget, scale it down proportionally until it fits within that budget. Then adjust the scale so the final resized image stays within budget after converting to integer pixel dimensions and computing patch coverage.
 
 ```
-image_tokens = ceil(resized_width/32)×ceil(resized_height/32)
+shrink_factor = sqrt((32^2 * patch_budget) / (width * height))
+adjusted_shrink_factor = shrink_factor * min(
+  floor(width * shrink_factor / 32) / (width * shrink_factor / 32),
+  floor(height * shrink_factor / 32) / (height * shrink_factor / 32)
+)
 ```
 
-D. Apply a multiplier based on the model to get the total tokens.
+C. Convert the adjusted scale into integer pixel dimensions, then compute the number of patches needed to cover the resized image. This resized patch count is the image-token count before applying the model multiplier, and it is capped by the model's patch budget.
 
-| Model          | Multiplier |
-| -------------- | ---------- |
-| `gpt-5-mini`   | 1.62       |
-| `gpt-5-nano`   | 2.46       |
-| `gpt-4.1-mini` | 1.62       |
-| `gpt-4.1-nano` | 2.46       |
-| `o4-mini`      | 1.72       |
+```
+resized_patch_count = ceil(resized_width/32)×ceil(resized_height/32)
+```
 
-**Cost calculation examples**
+D. Apply a multiplier based on the model to get the total tokens:
 
-- A 1024 x 1024 image is **1024 tokens**
-  - Width is 1024, resulting in `(1024 + 32 - 1) // 32 = 32` patches
-  - Height is 1024, resulting in `(1024 + 32 - 1) // 32 = 32` patches
-  - Tokens calculated as `32 * 32 = 1024`, below the cap of 1536
-- A 1800 x 2400 image is **1452 tokens**
-  - Width is 1800, resulting in `(1800 + 32 - 1) // 32 = 57` patches
-  - Height is 2400, resulting in `(2400 + 32 - 1) // 32 = 75` patches
-  - We need `57 * 75 = 4275` patches to cover the full image. Since that exceeds 1536, we need to scale down the image while preserving the aspect ratio.
-  - We can calculate the shrink factor as `sqrt(token_budget × patch_size^2 / (width * height))`. In our example, the shrink factor is `sqrt(1536 * 32^2 / (1800 * 2400)) = 0.603`.
-  - Width is now 1086, resulting in `1086 / 32 = 33.94` patches
-  - Height is now 1448, resulting in `1448 / 32 = 45.25` patches
-  - We want to make sure the image fits in a whole number of patches. In this case we scale again by `33 / 33.94 = 0.97` to fit the width in 33 patches.
-  - The final width is then `1086 * (33 / 33.94) = 1056)` and the final height is `1448 * (33 / 33.94) = 1408`
-  - The image now requires `1056 / 32 = 33` patches to cover the width and `1408 / 32 = 44` patches to cover the height
-  - The total number of tokens is the `33 * 44 = 1452`, below the cap of 1536
+| Model           | Multiplier |
+| --------------- | ---------- |
+| `gpt-5-mini`    | 1.62       |
+| `gpt-5-nano`    | 2.46       |
+| `gpt-4.1-mini*` | 1.62       |
+| `gpt-4.1-nano*` | 2.46       |
+| `o4-mini`       | 1.72       |
 
-### GPT 4o, GPT-4.1, GPT-4o-mini, CUA, and o-series (except o4-mini)
+_For `gpt-4.1-mini` and `gpt-4.1-nano`, this applies to the 2025-04-14 snapshot variants._
+
+**Cost calculation examples for a model with a 1,536-patch budget**
+
+- A 1024 x 1024 image has a post-resize patch count of **1024**
+  - A. `original_patch_count = ceil(1024 / 32) * ceil(1024 / 32) = 32 * 32 = 1024`
+  - B. `1024` is below the `1,536` patch budget, so no resize is needed.
+  - C. `resized_patch_count = 1024`
+  - Resized patch count before the model multiplier: `1024`
+  - Multiply by the model's token multiplier to get the billed token units.
+- A 1800 x 2400 image has a post-resize patch count of **1452**
+  - A. `original_patch_count = ceil(1800 / 32) * ceil(2400 / 32) = 57 * 75 = 4275`
+  - B. `4275` exceeds the `1,536` patch budget, so we first compute `shrink_factor = sqrt((32^2 * 1536) / (1800 * 2400)) = 0.603`.
+  - We then adjust that scale so the final integer pixel dimensions stay within budget after patch counting: `adjusted_shrink_factor = 0.603 * min(floor(1800 * 0.603 / 32) / (1800 * 0.603 / 32), floor(2400 * 0.603 / 32) / (2400 * 0.603 / 32)) = 0.586`.
+  - Resized image in integer pixels: `1056 x 1408`
+  - C. `resized_patch_count = ceil(1056 / 32) * ceil(1408 / 32) = 33 * 44 = 1452`
+  - Resized patch count before the model multiplier: `1452`
+  - Multiply by the model's token multiplier to get the billed token units.
+
+### Tile-based image tokenization
+
+#### GPT-4o, GPT-4.1, GPT-4o-mini, CUA, and o-series (except o4-mini)
 
 The token cost of an image is determined by two factors: size and detail.
 
-Any image with `"detail": "low"` costs a set, base number of tokens. This amount varies by model (see chart below). To calculate the cost of an image with `"detail": "high"`, we do the following:
+Any image with `"detail": "low"` costs a set, base number of tokens. This amount varies by model. To calculate the cost of an image with `"detail": "high"`, we do the following:
 
 - Scale to fit in a 2048px x 2048px square, maintaining original aspect ratio
 - Scale so that the image's shortest side is 768px long
-- Count the number of 512px squares in the image—each square costs a set amount of tokens (see chart below)
+- Count the number of 512px squares in the image. Each square costs a set amount of tokens, shown below.
 - Add the base tokens to the total
 
 | Model                    | Base tokens | Tile tokens |
@@ -546,19 +608,6 @@ Any image with `"detail": "low"` costs a set, base number of tokens. This amount
 | 4o-mini                  | 2833        | 5667        |
 | o1, o1-pro, o3           | 75          | 150         |
 | computer-use-preview     | 65          | 129         |
-
-**Cost calculation examples (for gpt-4o)**
-
-- A 1024 x 1024 square image in `"detail": "high"` mode costs 765 tokens
-  - 1024 is less than 2048, so there is no initial resize.
-  - The shortest side is 1024, so we scale the image down to 768 x 768.
-  - 4 512px square tiles are needed to represent the image, so the final token cost is `170 * 4 + 85 = 765`.
-- A 2048 x 4096 image in `"detail": "high"` mode costs 1105 tokens
-  - We scale down the image to 1024 x 2048 to fit within the 2048 square.
-  - The shortest side is 1024, so we further scale down to 768 x 1536.
-  - 6 512px tiles are needed, so the final token cost is `170 * 6 + 85 = 1105`.
-- A 4096 x 8192 image in `"detail": "low"` most costs 85 tokens
-  - Regardless of input size, low detail images are a fixed cost.
 
 ### GPT Image 1
 
@@ -572,6 +621,22 @@ When using high input fidelity, we add a set number of tokens based on the image
 - If it is closer to portrait or landscape, we add 6240 extra tokens.
 
 To see pricing for image input tokens, refer to our [pricing page](https://developers.openai.com/api/docs/pricing#latest-models).
+
+## Limitations
+
+While models with vision capabilities are powerful and can be used in many situations, it's important to understand the limitations of these models. Here are some known limitations:
+
+- **Medical images**: The model is not suitable for interpreting specialized medical images like CT scans and shouldn't be used for medical advice.
+- **Non-English**: The model may not perform optimally when handling images with text of non-Latin alphabets, such as Japanese or Korean.
+- **Small text**: Enlarge text within the image to improve readability. When available, using `"detail": "original"` can also help performance.
+- **Rotation**: The model may misinterpret rotated or upside-down text and images.
+- **Visual elements**: The model may struggle to understand graphs or text where colors or styles—like solid, dashed, or dotted lines—vary.
+- **Spatial reasoning**: The model struggles with tasks requiring precise spatial localization, such as identifying chess positions.
+- **Accuracy**: The model may generate incorrect descriptions or captions in certain scenarios.
+- **Image shape**: The model struggles with panoramic and fisheye images.
+- **Metadata and resizing**: The model doesn't process original file names or metadata. Depending on image size and `detail` level, images may be resized before analysis, affecting their original dimensions.
+- **Counting**: The model may give approximate counts for objects in images.
+- **CAPTCHAS**: For safety reasons, our system blocks the submission of CAPTCHAs.
 
 ---
 

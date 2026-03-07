@@ -35,16 +35,20 @@ Categories are organized into groups for the [marketplace](/apps):
 * `cli-agent` — Terminal-based coding assistants
 * `ide-extension` — Editor/IDE integrations
 * `cloud-agent` — Cloud-hosted coding agents
-* `programming-app` — Programming App
+* `programming-app` — Programming apps
+* `native-app-builder` — Mobile and desktop app builders
 
 **Creative** — Creative apps:
 
-*(No subcategories yet)*
+* `creative-writing` — Creative writing tools
+* `video-gen` — Video generation apps
+* `image-gen` — Image generation apps
 
 **Productivity** — Writing and productivity tools:
 
 * `writing-assistant` — AI-powered writing tools
 * `general-chat` — General chat apps
+* `personal-agent` — Personal AI agents
 
 **Entertainment** — Entertainment apps:
 

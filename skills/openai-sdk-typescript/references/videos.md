@@ -18,7 +18,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
   - `input_reference?: Uploadable`
 
-    Optional image reference that guides generation.
+    Optional multipart reference asset that guides generation.
 
   - `model?: VideoModel`
 
@@ -130,15 +130,19 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -276,15 +280,19 @@ List recently generated videos for the current project.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -407,15 +415,19 @@ Fetch the latest metadata for a generated video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -589,15 +601,19 @@ Create a remix of a completed video using a refreshed prompt.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -756,15 +772,19 @@ console.log(content);
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 

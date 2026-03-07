@@ -96,15 +96,19 @@ List recently generated videos for the current project.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: (string & {}) | VideoSeconds`
 
-    Duration of the generated clip in seconds.
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
-    - `"4"`
+    - `(string & {})`
 
-    - `"8"`
+    - `VideoSeconds = "4" | "8" | "12"`
 
-    - `"12"`
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 

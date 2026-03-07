@@ -76,15 +76,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -109,6 +111,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -141,12 +151,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-        Use `commentary` for an intermediate assistant message and `final_answer` for
-        the final assistant message. For follow-up requests with models like
-        `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-        messages. Omitting it can degrade performance. Not used for user messages.
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
 
@@ -187,15 +194,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: Literal["low", "high", "auto"]`
+          - `detail: Literal["low", "high", "auto", "original"]`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: Literal["input_image"]`
 
@@ -220,6 +229,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: Optional[Literal["low", "high"]]`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -445,12 +462,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-        Use `commentary` for an intermediate assistant message and `final_answer` for
-        the final assistant message. For follow-up requests with models like
-        `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-        messages. Omitting it can degrade performance. Not used for user messages.
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
 
@@ -533,7 +547,44 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the computer call.
 
-      - `action: Action`
+      - `call_id: str`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: List[PendingSafetyCheck]`
+
+        The pending safety checks for the computer call.
+
+        - `id: str`
+
+          The ID of the pending safety check.
+
+        - `code: Optional[str]`
+
+          The type of the pending safety check.
+
+        - `message: Optional[str]`
+
+          Details about the pending safety check.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["computer_call"]`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action: Optional[Action]`
 
         A click action.
 
@@ -708,42 +759,181 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"wait"`
 
-      - `call_id: str`
+      - `actions: Optional[ComputerActionList]`
 
-        An identifier used when responding to the tool call with output.
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
 
-      - `pending_safety_checks: List[PendingSafetyCheck]`
+        - `class Click: …`
 
-        The pending safety checks for the computer call.
+          A click action.
 
-        - `id: str`
+          - `button: Literal["left", "right", "wheel", 2 more]`
 
-          The ID of the pending safety check.
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
 
-        - `code: Optional[str]`
+            - `"left"`
 
-          The type of the pending safety check.
+            - `"right"`
 
-        - `message: Optional[str]`
+            - `"wheel"`
 
-          Details about the pending safety check.
+            - `"back"`
 
-      - `status: Literal["in_progress", "completed", "incomplete"]`
+            - `"forward"`
 
-        The status of the item. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when items are returned via API.
+          - `type: Literal["click"]`
 
-        - `"in_progress"`
+            Specifies the event type. For a click action, this property is always `click`.
 
-        - `"completed"`
+            - `"click"`
 
-        - `"incomplete"`
+          - `x: int`
 
-      - `type: Literal["computer_call"]`
+            The x-coordinate where the click occurred.
 
-        The type of the computer call. Always `computer_call`.
+          - `y: int`
 
-        - `"computer_call"`
+            The y-coordinate where the click occurred.
+
+        - `class DoubleClick: …`
+
+          A double click action.
+
+          - `type: Literal["double_click"]`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: int`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: int`
+
+            The y-coordinate where the double click occurred.
+
+        - `class Drag: …`
+
+          A drag action.
+
+          - `path: List[DragPath]`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: int`
+
+              The x-coordinate.
+
+            - `y: int`
+
+              The y-coordinate.
+
+          - `type: Literal["drag"]`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+        - `class Keypress: …`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: List[str]`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: Literal["keypress"]`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `class Move: …`
+
+          A mouse move action.
+
+          - `type: Literal["move"]`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: int`
+
+            The x-coordinate to move to.
+
+          - `y: int`
+
+            The y-coordinate to move to.
+
+        - `class Screenshot: …`
+
+          A screenshot action.
+
+          - `type: Literal["screenshot"]`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `class Scroll: …`
+
+          A scroll action.
+
+          - `scroll_x: int`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: int`
+
+            The vertical scroll distance.
+
+          - `type: Literal["scroll"]`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: int`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: int`
+
+            The y-coordinate where the scroll occurred.
+
+        - `class Type: …`
+
+          An action to type in text.
+
+          - `text: str`
+
+            The text to type.
+
+          - `type: Literal["type"]`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `class Wait: …`
+
+          A wait action.
+
+          - `type: Literal["wait"]`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
 
     - `class ComputerCallOutput: …`
 
@@ -931,6 +1121,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the function tool call.
 
+      - `namespace: Optional[str]`
+
+        The namespace of the function to run.
+
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -984,15 +1178,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_image"`
 
-            - `detail: Optional[Literal["low", "high", "auto"]]`
+            - `detail: Optional[Literal["low", "high", "auto", "original"]]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `file_id: Optional[str]`
 
@@ -1011,6 +1207,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["high", "low"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"high"`
+
+              - `"low"`
 
             - `file_data: Optional[str]`
 
@@ -1041,6 +1245,1149 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
         The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ToolSearchCall: …`
+
+      - `arguments: object`
+
+        The arguments supplied to the tool search call.
+
+      - `type: Literal["tool_search_call"]`
+
+        The item type. Always `tool_search_call`.
+
+        - `"tool_search_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search call.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ResponseToolSearchOutputItemParam: …`
+
+      - `tools: List[Tool]`
+
+        The loaded tool definitions returned by the tool search output.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: str`
+
+            The name of the function to call.
+
+          - `parameters: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: Optional[bool]`
+
+            Whether to enforce strict parameter validation. Default `true`.
+
+          - `type: Literal["function"]`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this function is deferred and loaded via tool search.
+
+          - `description: Optional[str]`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: Literal["file_search"]`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: List[str]`
+
+            The IDs of the vector stores to search.
+
+          - `filters: Optional[Filters]`
+
+            A filter to apply.
+
+            - `class ComparisonFilter: …`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: str`
+
+                The key to compare against the value.
+
+              - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `str`
+
+                - `float`
+
+                - `bool`
+
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
+
+            - `class CompoundFilter: …`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: List[Filter]`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `class ComparisonFilter: …`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: str`
+
+                    The key to compare against the value.
+
+                  - `type: Literal["eq", "ne", "gt", 3 more]`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `str`
+
+                    - `float`
+
+                    - `bool`
+
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
+
+                - `object`
+
+              - `type: Literal["and", "or"]`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results: Optional[int]`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options: Optional[RankingOptions]`
+
+            Ranking options for search.
+
+            - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: float`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: float`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold: Optional[float]`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: Literal["computer"]`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: int`
+
+            The height of the computer display.
+
+          - `display_width: int`
+
+            The width of the computer display.
+
+          - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: Literal["computer_use_preview"]`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters: Optional[Filters]`
+
+            Filters for the search.
+
+            - `allowed_domains: Optional[List[str]]`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The approximate location of the user.
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type: Optional[Literal["approximate"]]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: str`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: Literal["mcp"]`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_tools: Optional[McpAllowedTools]`
+
+            List of allowed tool names or a filter object.
+
+            - `List[str]`
+
+              A string array of allowed tool names
+
+            - `class McpAllowedToolsMcpToolFilter: …`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: Optional[bool]`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: Optional[List[str]]`
+
+                List of allowed tool names.
+
+          - `authorization: Optional[str]`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url` or `connector_id` must be provided. Learn more about service
+            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
+
+          - `headers: Optional[Dict[str, str]]`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval: Optional[McpRequireApproval]`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+              - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `Literal["always", "never"]`
+
+              Specify a single approval policy for all tools. One of `always` or
+              `never`. When set to `always`, all tools will require approval. When
+              set to `never`, all tools will not require approval.
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description: Optional[str]`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url: Optional[str]`
+
+            The URL for the MCP server. One of `server_url` or `connector_id` must be
+            provided.
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: CodeInterpreterContainer`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `str`
+
+              The container ID.
+
+            - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: Literal["auto"]`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class ContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class ContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: Literal["image_generation"]`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity: Optional[Literal["high", "low"]]`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id: Optional[str]`
+
+              File ID for the mask image.
+
+            - `image_url: Optional[str]`
+
+              Base64-encoded mask image.
+
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `str`
+
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-1.5"`
+
+          - `moderation: Optional[Literal["auto", "low"]]`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression: Optional[int]`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images: Optional[int]`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+
+            The size of the generated image. One of `1024x1024`, `1024x1536`,
+            `1536x1024`, or `auto`. Default: `auto`.
+
+            - `"1024x1024"`
+
+            - `"1024x1536"`
+
+            - `"1536x1024"`
+
+            - `"auto"`
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: Literal["local_shell"]`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: Literal["shell"]`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `environment: Optional[Environment]`
+
+            - `class ContainerAuto: …`
+
+              - `type: Literal["container_auto"]`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[NetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class ContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class ContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+              - `skills: Optional[List[Skill]]`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `class SkillReference: …`
+
+                  - `skill_id: str`
+
+                    The ID of the referenced skill.
+
+                  - `type: Literal["skill_reference"]`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version: Optional[str]`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `class InlineSkill: …`
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `source: InlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: str`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: Literal["application/zip"]`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: Literal["base64"]`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: Literal["inline"]`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `class LocalEnvironment: …`
+
+              - `type: Literal["local"]`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills: Optional[List[LocalSkill]]`
+
+                An optional list of skills.
+
+                - `description: str`
+
+                  The description of the skill.
+
+                - `name: str`
+
+                  The name of the skill.
+
+                - `path: str`
+
+                  The path to the directory containing the skill.
+
+            - `class ContainerReference: …`
+
+              - `container_id: str`
+
+                The ID of the referenced container.
+
+              - `type: Literal["container_reference"]`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: str`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: Literal["custom"]`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this tool should be deferred and discovered via tool search.
+
+          - `description: Optional[str]`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format: Optional[CustomToolInputFormat]`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `class Text: …`
+
+              Unconstrained free-form text.
+
+              - `type: Literal["text"]`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `class Grammar: …`
+
+              A grammar defined by the user.
+
+              - `definition: str`
+
+                The grammar definition.
+
+              - `syntax: Literal["lark", "regex"]`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: Literal["grammar"]`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: str`
+
+            A description of the namespace shown to the model.
+
+          - `name: str`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: List[Tool]`
+
+            The function/custom tools available inside this namespace.
+
+            - `class ToolFunction: …`
+
+              - `name: str`
+
+              - `type: Literal["function"]`
+
+                - `"function"`
+
+              - `description: Optional[str]`
+
+              - `parameters: Optional[object]`
+
+              - `strict: Optional[bool]`
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+              - `name: str`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: Literal["custom"]`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: Optional[str]`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: Optional[CustomToolInputFormat]`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `class Text: …`
+
+                  Unconstrained free-form text.
+
+                  - `type: Literal["text"]`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `class Grammar: …`
+
+                  A grammar defined by the user.
+
+                  - `definition: str`
+
+                    The grammar definition.
+
+                  - `syntax: Literal["lark", "regex"]`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: Literal["grammar"]`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: Literal["namespace"]`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: Literal["tool_search"]`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: Optional[str]`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: Optional[Literal["server", "client"]]`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: Optional[object]`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+            - `"text"`
+
+            - `"image"`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The user's location.
+
+            - `type: Literal["approximate"]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["apply_patch"]`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+      - `type: Literal["tool_search_output"]`
+
+        The item type. Always `tool_search_output`.
+
+        - `"tool_search_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search output.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search output.
 
         - `"in_progress"`
 
@@ -1764,15 +3111,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -1797,6 +3146,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -1849,6 +3206,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: Optional[str]`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `namespace: Optional[str]`
+
+        The namespace of the custom tool being called.
 
     - `class ItemReference: …`
 
@@ -2085,7 +3446,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     Indicates that the model should use a built-in tool to generate a response.
     [Learn more about built-in tools](https://platform.openai.com/docs/guides/tools).
 
-    - `type: Literal["file_search", "web_search_preview", "computer_use_preview", 3 more]`
+    - `type: Literal["file_search", "web_search_preview", "computer", 5 more]`
 
       The type of hosted tool the model should to use. Learn more about
       [built-in tools](https://platform.openai.com/docs/guides/tools).
@@ -2094,7 +3455,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `file_search`
       - `web_search_preview`
+      - `computer`
       - `computer_use_preview`
+      - `computer_use`
       - `code_interpreter`
       - `image_generation`
 
@@ -2102,7 +3465,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"web_search_preview"`
 
+      - `"computer"`
+
       - `"computer_use_preview"`
+
+      - `"computer_use"`
 
       - `"web_search_preview_2025_03_11"`
 
@@ -2201,6 +3568,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       The type of the function tool. Always `function`.
 
       - `"function"`
+
+    - `defer_loading: Optional[bool]`
+
+      Whether this function is deferred and loaded via tool search.
 
     - `description: Optional[str]`
 
@@ -2376,6 +3747,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+    - `type: Literal["computer"]`
+
+      The type of the computer tool. Always `computer`.
+
+      - `"computer"`
+
+  - `class ComputerUsePreviewTool: …`
+
+    A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
     - `display_height: int`
 
       The height of the computer display.
@@ -2539,6 +3920,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: Optional[bool]`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: Optional[Dict[str, str]]`
 
@@ -3001,6 +4386,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"custom"`
 
+    - `defer_loading: Optional[bool]`
+
+      Whether this tool should be deferred and discovered via tool search.
+
     - `description: Optional[str]`
 
       Optional description of the custom tool, used to provide more context.
@@ -3041,6 +4430,126 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `"grammar"`
 
+  - `class NamespaceTool: …`
+
+    Groups function/custom tools under a shared namespace.
+
+    - `description: str`
+
+      A description of the namespace shown to the model.
+
+    - `name: str`
+
+      The namespace name used in tool calls (for example, `crm`).
+
+    - `tools: List[Tool]`
+
+      The function/custom tools available inside this namespace.
+
+      - `class ToolFunction: …`
+
+        - `name: str`
+
+        - `type: Literal["function"]`
+
+          - `"function"`
+
+        - `description: Optional[str]`
+
+        - `parameters: Optional[object]`
+
+        - `strict: Optional[bool]`
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `name: str`
+
+          The name of the custom tool, used to identify it in tool calls.
+
+        - `type: Literal["custom"]`
+
+          The type of the custom tool. Always `custom`.
+
+          - `"custom"`
+
+        - `defer_loading: Optional[bool]`
+
+          Whether this tool should be deferred and discovered via tool search.
+
+        - `description: Optional[str]`
+
+          Optional description of the custom tool, used to provide more context.
+
+        - `format: Optional[CustomToolInputFormat]`
+
+          The input format for the custom tool. Default is unconstrained text.
+
+          - `class Text: …`
+
+            Unconstrained free-form text.
+
+            - `type: Literal["text"]`
+
+              Unconstrained text format. Always `text`.
+
+              - `"text"`
+
+          - `class Grammar: …`
+
+            A grammar defined by the user.
+
+            - `definition: str`
+
+              The grammar definition.
+
+            - `syntax: Literal["lark", "regex"]`
+
+              The syntax of the grammar definition. One of `lark` or `regex`.
+
+              - `"lark"`
+
+              - `"regex"`
+
+            - `type: Literal["grammar"]`
+
+              Grammar format. Always `grammar`.
+
+              - `"grammar"`
+
+    - `type: Literal["namespace"]`
+
+      The type of the tool. Always `namespace`.
+
+      - `"namespace"`
+
+  - `class ToolSearchTool: …`
+
+    Hosted or BYOT tool search configuration for deferred tools.
+
+    - `type: Literal["tool_search"]`
+
+      The type of the tool. Always `tool_search`.
+
+      - `"tool_search"`
+
+    - `description: Optional[str]`
+
+      Description shown to the model for a client-executed tool search tool.
+
+    - `execution: Optional[Literal["server", "client"]]`
+
+      Whether tool search is executed by the server or by the client.
+
+      - `"server"`
+
+      - `"client"`
+
+    - `parameters: Optional[object]`
+
+      Parameter schema for a client-executed tool search tool.
+
   - `class WebSearchPreviewTool: …`
 
     This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -3052,6 +4561,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"web_search_preview"`
 
       - `"web_search_preview_2025_03_11"`
+
+    - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+      - `"text"`
+
+      - `"image"`
 
     - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 

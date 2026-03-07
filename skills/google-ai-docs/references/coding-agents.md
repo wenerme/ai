@@ -3,43 +3,57 @@ at a specific date, missing new API features and changes. Without access to
 Gemini-specific documentation, agents may suggest generic patterns instead of
 optimized approaches.
 
-The [Gemini API development skill](https://github.com/google-gemini/gemini-skills)
-addresses these gaps by giving your coding
+[Gemini API skills](https://github.com/google-gemini/gemini-skills)
+address these gaps by giving your coding
 agent direct access to the latest Gemini API documentation, integration
 patterns, and best practices. This ensures your agent can offer more accurate
-and specific code examples and guidance. By leveraging this skill, your coding
-assistant stays current with the evolving Gemini API and its recommended usage.
+and specific code examples and guidance. By installing these skills, your
+coding assistant stays current with the evolving Gemini API and its recommended
+usage.
 
-## What the skill provides
+## Available skills
 
-The Gemini API development skill (`gemini-api-dev`):
+The following skills are available. Install the ones relevant to your use case.
+
+- **[skills.sh](https://skills.sh)**: Recommended. The open standard for portable agent behaviors.
+- **[Context7](https://context7.com)**: Supported for users already utilizing the Context7 ecosystem.
+
+### gemini-api-dev
+
+The core Gemini API development skill:
 
 - Points your coding agent to official Gemini API documentation
 - Provides best practices for building Gemini-powered applications
 - Includes recommended patterns for common integrations
 
-The following sections describe the installation methods based on your preferred
-skill management ecosystem. Both install the same skill---run these commands in
-your terminal from any directory.
+#### Install with skills.sh
 
-- **[skills.sh](https://skills.sh)**: Recommended. The open standard for portable agent behaviors.
-- **[Context7](https://context7.com)**: Supported for users already utilizing the Context7 ecosystem.
-
-### Install with skills.sh
-
-    # List available skills
-    npx skills add google-gemini/gemini-skills --list
-
-    # Install the gemini-api-dev skill globally
     npx skills add google-gemini/gemini-skills --skill gemini-api-dev --global
 
-### Install with Context7
+#### Install with Context7
 
-    # Interactively browse and install skills
-    npx ctx7 skills install /google-gemini/gemini-skills
-
-    # Install a specific skill directly
     npx ctx7 skills install /google-gemini/gemini-skills gemini-api-dev
+
+### gemini-interactions-api
+
+Skill for building apps with the
+[Interactions API](https://ai.google.dev/gemini-api/docs/interactions). The Interactions API is a
+unified interface for interacting with Gemini models and agents, designed for
+agentic applications. This skill covers:
+
+- Text generation, multi-turn chat, and streaming
+- Function calling, structured output, and image generation
+- Background execution and Deep Research agents
+- Server-side conversation state management
+- Python and TypeScript SDK patterns
+
+#### Install with skills.sh
+
+    npx skills add google-gemini/gemini-skills --skill gemini-interactions-api --global
+
+#### Install with Context7
+
+    npx ctx7 skills install /google-gemini/gemini-skills gemini-interactions-api
 
 ## Verify installation
 
@@ -95,5 +109,6 @@ global flag:
 ## Resources
 
 - [Gemini API skills on GitHub](https://github.com/google-gemini/gemini-skills)
+- [Interactions API](https://ai.google.dev/gemini-api/docs/interactions)
 - [Quickstart](https://ai.google.dev/gemini-api/docs/quickstart)
 - [Libraries](https://ai.google.dev/gemini-api/docs/libraries)

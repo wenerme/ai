@@ -6,7 +6,7 @@ Create a conversation.
 
 ### Body Parameters
 
-- `items: optional array of ResponseInputItem`
+- `items: optional array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
 
   Initial items to include in the conversation context. You may add up to 20 items at a time.
 
@@ -50,15 +50,17 @@ Create a conversation.
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto"`
+          - `detail: "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: "input_image"`
 
@@ -74,7 +76,7 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -83,6 +85,14 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -115,12 +125,9 @@ Create a conversation.
 
     - `phase: optional "commentary" or "final_answer"`
 
-      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-      Use `commentary` for an intermediate assistant message and `final_answer` for
-      the final assistant message. For follow-up requests with models like
-      `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-      messages. Omitting it can degrade performance. Not used for user messages.
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+      For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+      phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
 
@@ -161,15 +168,17 @@ Create a conversation.
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto"`
+        - `detail: "low" or "high" or "auto" or "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -185,7 +194,7 @@ Create a conversation.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -194,6 +203,14 @@ Create a conversation.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 
@@ -419,18 +436,15 @@ Create a conversation.
 
     - `phase: optional "commentary" or "final_answer"`
 
-      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-      Use `commentary` for an intermediate assistant message and `final_answer` for
-      the final assistant message. For follow-up requests with models like
-      `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-      messages. Omitting it can degrade performance. Not used for user messages.
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+      For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+      phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
 
       - `"final_answer"`
 
-  - `ResponseFileSearchToolCall = object { id, queries, status, 2 more }`
+  - `FileSearchCall = object { id, queries, status, 2 more }`
 
     The results of a file search tool call. See the
     [file search guide](/docs/guides/tools-file-search) for more information.
@@ -498,7 +512,7 @@ Create a conversation.
 
         The text that was retrieved from the file.
 
-  - `ResponseComputerToolCall = object { id, action, call_id, 3 more }`
+  - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
 
     A tool call to a computer use tool. See the
     [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -507,7 +521,44 @@ Create a conversation.
 
       The unique ID of the computer call.
 
-    - `action: object { button, type, x, y }  or object { type, x, y }  or object { path, type }  or 6 more`
+    - `call_id: string`
+
+      An identifier used when responding to the tool call with output.
+
+    - `pending_safety_checks: array of object { id, code, message }`
+
+      The pending safety checks for the computer call.
+
+      - `id: string`
+
+        The ID of the pending safety check.
+
+      - `code: optional string`
+
+        The type of the pending safety check.
+
+      - `message: optional string`
+
+        Details about the pending safety check.
+
+    - `status: "in_progress" or "completed" or "incomplete"`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "computer_call"`
+
+      The type of the computer call. Always `computer_call`.
+
+      - `"computer_call"`
+
+    - `action: optional ComputerAction`
 
       A click action.
 
@@ -682,42 +733,181 @@ Create a conversation.
 
           - `"wait"`
 
-    - `call_id: string`
+    - `actions: optional ComputerActionList`
 
-      An identifier used when responding to the tool call with output.
+      Flattened batched actions for `computer_use`. Each action includes an
+      `type` discriminator and action-specific fields.
 
-    - `pending_safety_checks: array of object { id, code, message }`
+      - `Click = object { button, type, x, y }`
 
-      The pending safety checks for the computer call.
+        A click action.
 
-      - `id: string`
+        - `button: "left" or "right" or "wheel" or 2 more`
 
-        The ID of the pending safety check.
+          Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
 
-      - `code: optional string`
+          - `"left"`
 
-        The type of the pending safety check.
+          - `"right"`
 
-      - `message: optional string`
+          - `"wheel"`
 
-        Details about the pending safety check.
+          - `"back"`
 
-    - `status: "in_progress" or "completed" or "incomplete"`
+          - `"forward"`
 
-      The status of the item. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when items are returned via API.
+        - `type: "click"`
 
-      - `"in_progress"`
+          Specifies the event type. For a click action, this property is always `click`.
 
-      - `"completed"`
+          - `"click"`
 
-      - `"incomplete"`
+        - `x: number`
 
-    - `type: "computer_call"`
+          The x-coordinate where the click occurred.
 
-      The type of the computer call. Always `computer_call`.
+        - `y: number`
 
-      - `"computer_call"`
+          The y-coordinate where the click occurred.
+
+      - `DoubleClick = object { type, x, y }`
+
+        A double click action.
+
+        - `type: "double_click"`
+
+          Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+          - `"double_click"`
+
+        - `x: number`
+
+          The x-coordinate where the double click occurred.
+
+        - `y: number`
+
+          The y-coordinate where the double click occurred.
+
+      - `Drag = object { path, type }`
+
+        A drag action.
+
+        - `path: array of object { x, y }`
+
+          An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+          ```
+          [
+            { x: 100, y: 200 },
+            { x: 200, y: 300 }
+          ]
+          ```
+
+          - `x: number`
+
+            The x-coordinate.
+
+          - `y: number`
+
+            The y-coordinate.
+
+        - `type: "drag"`
+
+          Specifies the event type. For a drag action, this property is always set to `drag`.
+
+          - `"drag"`
+
+      - `Keypress = object { keys, type }`
+
+        A collection of keypresses the model would like to perform.
+
+        - `keys: array of string`
+
+          The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+        - `type: "keypress"`
+
+          Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+          - `"keypress"`
+
+      - `Move = object { type, x, y }`
+
+        A mouse move action.
+
+        - `type: "move"`
+
+          Specifies the event type. For a move action, this property is always set to `move`.
+
+          - `"move"`
+
+        - `x: number`
+
+          The x-coordinate to move to.
+
+        - `y: number`
+
+          The y-coordinate to move to.
+
+      - `Screenshot = object { type }`
+
+        A screenshot action.
+
+        - `type: "screenshot"`
+
+          Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+          - `"screenshot"`
+
+      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+
+        A scroll action.
+
+        - `scroll_x: number`
+
+          The horizontal scroll distance.
+
+        - `scroll_y: number`
+
+          The vertical scroll distance.
+
+        - `type: "scroll"`
+
+          Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+          - `"scroll"`
+
+        - `x: number`
+
+          The x-coordinate where the scroll occurred.
+
+        - `y: number`
+
+          The y-coordinate where the scroll occurred.
+
+      - `Type = object { text, type }`
+
+        An action to type in text.
+
+        - `text: string`
+
+          The text to type.
+
+        - `type: "type"`
+
+          Specifies the event type. For a type action, this property is always set to `type`.
+
+          - `"type"`
+
+      - `Wait = object { type }`
+
+        A wait action.
+
+        - `type: "wait"`
+
+          Specifies the event type. For a wait action, this property is always set to `wait`.
+
+          - `"wait"`
 
   - `ComputerCallOutput = object { call_id, output, type, 3 more }`
 
@@ -782,7 +972,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ResponseFunctionWebSearch = object { id, action, status, type }`
+  - `WebSearchCall = object { id, action, status, type }`
 
     The results of a web search tool call. See the
     [web search guide](/docs/guides/tools-web-search) for more information.
@@ -878,7 +1068,7 @@ Create a conversation.
 
       - `"web_search_call"`
 
-  - `ResponseFunctionToolCall = object { arguments, call_id, name, 3 more }`
+  - `FunctionCall = object { arguments, call_id, name, 4 more }`
 
     A tool call to run a function. See the
     [function calling guide](/docs/guides/function-calling) for more information.
@@ -904,6 +1094,10 @@ Create a conversation.
     - `id: optional string`
 
       The unique ID of the function tool call.
+
+    - `namespace: optional string`
+
+      The namespace of the function to run.
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -960,15 +1154,17 @@ Create a conversation.
 
             - `"input_image"`
 
-          - `detail: optional "low" or "high" or "auto"`
+          - `detail: optional "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `file_id: optional string`
 
@@ -978,7 +1174,7 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFileContent = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -987,6 +1183,14 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "high" or "low"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"high"`
+
+            - `"low"`
 
           - `file_data: optional string`
 
@@ -1024,7 +1228,1150 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ResponseReasoningItem = object { id, summary, type, 3 more }`
+  - `ToolSearchCall = object { arguments, type, id, 3 more }`
+
+    - `arguments: unknown`
+
+      The arguments supplied to the tool search call.
+
+    - `type: "tool_search_call"`
+
+      The item type. Always `tool_search_call`.
+
+      - `"tool_search_call"`
+
+    - `id: optional string`
+
+      The unique ID of this tool search call.
+
+    - `call_id: optional string`
+
+      The unique ID of the tool search call generated by the model.
+
+    - `execution: optional "server" or "client"`
+
+      Whether tool search was executed by the server or by the client.
+
+      - `"server"`
+
+      - `"client"`
+
+    - `status: optional "in_progress" or "completed" or "incomplete"`
+
+      The status of the tool search call.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+  - `ToolSearchOutput = object { tools, type, id, 3 more }`
+
+    - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+
+      The loaded tool definitions returned by the tool search output.
+
+      - `Function = object { name, parameters, strict, 3 more }`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `name: string`
+
+          The name of the function to call.
+
+        - `parameters: map[unknown]`
+
+          A JSON schema object describing the parameters of the function.
+
+        - `strict: boolean`
+
+          Whether to enforce strict parameter validation. Default `true`.
+
+        - `type: "function"`
+
+          The type of the function tool. Always `function`.
+
+          - `"function"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this function is deferred and loaded via tool search.
+
+        - `description: optional string`
+
+          A description of the function. Used by the model to determine whether or not to call the function.
+
+      - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `type: "file_search"`
+
+          The type of the file search tool. Always `file_search`.
+
+          - `"file_search"`
+
+        - `vector_store_ids: array of string`
+
+          The IDs of the vector stores to search.
+
+        - `filters: optional ComparisonFilter or CompoundFilter`
+
+          A filter to apply.
+
+          - `ComparisonFilter = object { key, type, value }`
+
+            A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+            - `key: string`
+
+              The key to compare against the value.
+
+            - `type: "eq" or "ne" or "gt" or 3 more`
+
+              Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+              - `eq`: equals
+              - `ne`: not equal
+              - `gt`: greater than
+              - `gte`: greater than or equal
+              - `lt`: less than
+              - `lte`: less than or equal
+              - `in`: in
+              - `nin`: not in
+
+              - `"eq"`
+
+              - `"ne"`
+
+              - `"gt"`
+
+              - `"gte"`
+
+              - `"lt"`
+
+              - `"lte"`
+
+            - `value: string or number or boolean or array of string or number`
+
+              The value to compare against the attribute key; supports string, number, or boolean types.
+
+              - `UnionMember0 = string`
+
+              - `UnionMember1 = number`
+
+              - `UnionMember2 = boolean`
+
+              - `UnionMember3 = array of string or number`
+
+                - `UnionMember0 = string`
+
+                - `UnionMember1 = number`
+
+          - `CompoundFilter = object { filters, type }`
+
+            Combine multiple filters using `and` or `or`.
+
+            - `filters: array of ComparisonFilter or unknown`
+
+              Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+              - `ComparisonFilter = object { key, type, value }`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: string`
+
+                  The key to compare against the value.
+
+                - `type: "eq" or "ne" or "gt" or 3 more`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                - `value: string or number or boolean or array of string or number`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `UnionMember0 = string`
+
+                  - `UnionMember1 = number`
+
+                  - `UnionMember2 = boolean`
+
+                  - `UnionMember3 = array of string or number`
+
+                    - `UnionMember0 = string`
+
+                    - `UnionMember1 = number`
+
+              - `UnionMember1 = unknown`
+
+            - `type: "and" or "or"`
+
+              Type of operation: `and` or `or`.
+
+              - `"and"`
+
+              - `"or"`
+
+        - `max_num_results: optional number`
+
+          The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+        - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
+
+          Ranking options for search.
+
+          - `hybrid_search: optional object { embedding_weight, text_weight }`
+
+            Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+            - `embedding_weight: number`
+
+              The weight of the embedding in the reciprocal ranking fusion.
+
+            - `text_weight: number`
+
+              The weight of the text in the reciprocal ranking fusion.
+
+          - `ranker: optional "auto" or "default-2024-11-15"`
+
+            The ranker to use for the file search.
+
+            - `"auto"`
+
+            - `"default-2024-11-15"`
+
+          - `score_threshold: optional number`
+
+            The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+      - `Computer = object { type }`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `type: "computer"`
+
+          The type of the computer tool. Always `computer`.
+
+          - `"computer"`
+
+      - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `display_height: number`
+
+          The height of the computer display.
+
+        - `display_width: number`
+
+          The width of the computer display.
+
+        - `environment: "windows" or "mac" or "linux" or 2 more`
+
+          The type of computer environment to control.
+
+          - `"windows"`
+
+          - `"mac"`
+
+          - `"linux"`
+
+          - `"ubuntu"`
+
+          - `"browser"`
+
+        - `type: "computer_use_preview"`
+
+          The type of the computer use tool. Always `computer_use_preview`.
+
+          - `"computer_use_preview"`
+
+      - `WebSearch = object { type, filters, search_context_size, user_location }`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](/docs/guides/tools-web-search).
+
+        - `type: "web_search" or "web_search_2025_08_26"`
+
+          The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+          - `"web_search"`
+
+          - `"web_search_2025_08_26"`
+
+        - `filters: optional object { allowed_domains }`
+
+          Filters for the search.
+
+          - `allowed_domains: optional array of string`
+
+            Allowed domains for the search. If not provided, all domains are allowed.
+            Subdomains of the provided domains are allowed as well.
+
+            Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+        - `search_context_size: optional "low" or "medium" or "high"`
+
+          High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `user_location: optional object { city, country, region, 2 more }`
+
+          The approximate location of the user.
+
+          - `city: optional string`
+
+            Free text input for the city of the user, e.g. `San Francisco`.
+
+          - `country: optional string`
+
+            The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+          - `region: optional string`
+
+            Free text input for the region of the user, e.g. `California`.
+
+          - `timezone: optional string`
+
+            The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `type: optional "approximate"`
+
+            The type of location approximation. Always `approximate`.
+
+            - `"approximate"`
+
+      - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+
+        - `server_label: string`
+
+          A label for this MCP server, used to identify it in tool calls.
+
+        - `type: "mcp"`
+
+          The type of the MCP tool. Always `mcp`.
+
+          - `"mcp"`
+
+        - `allowed_tools: optional array of string or object { read_only, tool_names }`
+
+          List of allowed tool names or a filter object.
+
+          - `McpAllowedTools = array of string`
+
+            A string array of allowed tool names
+
+          - `McpToolFilter = object { read_only, tool_names }`
+
+            A filter object to specify which tools are allowed.
+
+            - `read_only: optional boolean`
+
+              Indicates whether or not a tool modifies data or is read-only. If an
+              MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+              it will match this filter.
+
+            - `tool_names: optional array of string`
+
+              List of allowed tool names.
+
+        - `authorization: optional string`
+
+          An OAuth access token that can be used with a remote MCP server, either
+          with a custom MCP server URL or a service connector. Your application
+          must handle the OAuth authorization flow and provide the token here.
+
+        - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
+
+          Identifier for service connectors, like those available in ChatGPT. One of
+          `server_url` or `connector_id` must be provided. Learn more about service
+          connectors [here](/docs/guides/tools-remote-mcp#connectors).
+
+          Currently supported `connector_id` values are:
+
+          - Dropbox: `connector_dropbox`
+          - Gmail: `connector_gmail`
+          - Google Calendar: `connector_googlecalendar`
+          - Google Drive: `connector_googledrive`
+          - Microsoft Teams: `connector_microsoftteams`
+          - Outlook Calendar: `connector_outlookcalendar`
+          - Outlook Email: `connector_outlookemail`
+          - SharePoint: `connector_sharepoint`
+
+          - `"connector_dropbox"`
+
+          - `"connector_gmail"`
+
+          - `"connector_googlecalendar"`
+
+          - `"connector_googledrive"`
+
+          - `"connector_microsoftteams"`
+
+          - `"connector_outlookcalendar"`
+
+          - `"connector_outlookemail"`
+
+          - `"connector_sharepoint"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this MCP tool is deferred and discovered via tool search.
+
+        - `headers: optional map[string]`
+
+          Optional HTTP headers to send to the MCP server. Use for authentication
+          or other purposes.
+
+        - `require_approval: optional object { always, never }  or "always" or "never"`
+
+          Specify which of the MCP server's tools require approval.
+
+          - `McpToolApprovalFilter = object { always, never }`
+
+            Specify which of the MCP server's tools require approval. Can be
+            `always`, `never`, or a filter object associated with tools
+            that require approval.
+
+            - `always: optional object { read_only, tool_names }`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: optional boolean`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: optional array of string`
+
+                List of allowed tool names.
+
+            - `never: optional object { read_only, tool_names }`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: optional boolean`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: optional array of string`
+
+                List of allowed tool names.
+
+          - `McpToolApprovalSetting = "always" or "never"`
+
+            Specify a single approval policy for all tools. One of `always` or
+            `never`. When set to `always`, all tools will require approval. When
+            set to `never`, all tools will not require approval.
+
+            - `"always"`
+
+            - `"never"`
+
+        - `server_description: optional string`
+
+          Optional description of the MCP server, used to provide more context.
+
+        - `server_url: optional string`
+
+          The URL for the MCP server. One of `server_url` or `connector_id` must be
+          provided.
+
+      - `CodeInterpreter = object { container, type }`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+
+          The code interpreter container. Can be a container ID or an object that
+          specifies uploaded file IDs to make available to your code, along with an
+          optional `memory_limit` setting.
+
+          - `UnionMember0 = string`
+
+            The container ID.
+
+          - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+
+            Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+            - `type: "auto"`
+
+              Always `auto`.
+
+              - `"auto"`
+
+            - `file_ids: optional array of string`
+
+              An optional list of uploaded files to make available to your code.
+
+            - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+              The memory limit for the code interpreter container.
+
+              - `"1g"`
+
+              - `"4g"`
+
+              - `"16g"`
+
+              - `"64g"`
+
+            - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+              Network access policy for the container.
+
+              - `ContainerNetworkPolicyDisabled = object { type }`
+
+                - `type: "disabled"`
+
+                  Disable outbound network access. Always `disabled`.
+
+                  - `"disabled"`
+
+              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+
+                - `allowed_domains: array of string`
+
+                  A list of allowed domains when type is `allowlist`.
+
+                - `type: "allowlist"`
+
+                  Allow outbound network access only to specified domains. Always `allowlist`.
+
+                  - `"allowlist"`
+
+                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                  Optional domain-scoped secrets for allowlisted domains.
+
+                  - `domain: string`
+
+                    The domain associated with the secret.
+
+                  - `name: string`
+
+                    The name of the secret to inject for the domain.
+
+                  - `value: string`
+
+                    The secret value to inject for the domain.
+
+        - `type: "code_interpreter"`
+
+          The type of the code interpreter tool. Always `code_interpreter`.
+
+          - `"code_interpreter"`
+
+      - `ImageGeneration = object { type, action, background, 9 more }`
+
+        A tool that generates images using the GPT image models.
+
+        - `type: "image_generation"`
+
+          The type of the image generation tool. Always `image_generation`.
+
+          - `"image_generation"`
+
+        - `action: optional "generate" or "edit" or "auto"`
+
+          Whether to generate a new image or edit an existing image. Default: `auto`.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
+        - `background: optional "transparent" or "opaque" or "auto"`
+
+          Background type for the generated image. One of `transparent`,
+          `opaque`, or `auto`. Default: `auto`.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `input_fidelity: optional "high" or "low"`
+
+          Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+          - `"high"`
+
+          - `"low"`
+
+        - `input_image_mask: optional object { file_id, image_url }`
+
+          Optional mask for inpainting. Contains `image_url`
+          (string, optional) and `file_id` (string, optional).
+
+          - `file_id: optional string`
+
+            File ID for the mask image.
+
+          - `image_url: optional string`
+
+            Base64-encoded mask image.
+
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+          The image generation model to use. Default: `gpt-image-1`.
+
+          - `UnionMember0 = string`
+
+          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `"gpt-image-1"`
+
+            - `"gpt-image-1-mini"`
+
+            - `"gpt-image-1.5"`
+
+        - `moderation: optional "auto" or "low"`
+
+          Moderation level for the generated image. Default: `auto`.
+
+          - `"auto"`
+
+          - `"low"`
+
+        - `output_compression: optional number`
+
+          Compression level for the output image. Default: 100.
+
+        - `output_format: optional "png" or "webp" or "jpeg"`
+
+          The output format of the generated image. One of `png`, `webp`, or
+          `jpeg`. Default: `png`.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
+
+        - `partial_images: optional number`
+
+          Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+        - `quality: optional "low" or "medium" or "high" or "auto"`
+
+          The quality of the generated image. One of `low`, `medium`, `high`,
+          or `auto`. Default: `auto`.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"auto"`
+
+        - `size: optional "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+
+          The size of the generated image. One of `1024x1024`, `1024x1536`,
+          `1536x1024`, or `auto`. Default: `auto`.
+
+          - `"1024x1024"`
+
+          - `"1024x1536"`
+
+          - `"1536x1024"`
+
+          - `"auto"`
+
+      - `LocalShell = object { type }`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+        - `type: "local_shell"`
+
+          The type of the local shell tool. Always `local_shell`.
+
+          - `"local_shell"`
+
+      - `Shell = object { type, environment }`
+
+        A tool that allows the model to execute shell commands.
+
+        - `type: "shell"`
+
+          The type of the shell tool. Always `shell`.
+
+          - `"shell"`
+
+        - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+
+          - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+
+            - `type: "container_auto"`
+
+              Automatically creates a container for this request
+
+              - `"container_auto"`
+
+            - `file_ids: optional array of string`
+
+              An optional list of uploaded files to make available to your code.
+
+            - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+              The memory limit for the container.
+
+              - `"1g"`
+
+              - `"4g"`
+
+              - `"16g"`
+
+              - `"64g"`
+
+            - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+              Network access policy for the container.
+
+              - `ContainerNetworkPolicyDisabled = object { type }`
+
+                - `type: "disabled"`
+
+                  Disable outbound network access. Always `disabled`.
+
+                  - `"disabled"`
+
+              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+
+                - `allowed_domains: array of string`
+
+                  A list of allowed domains when type is `allowlist`.
+
+                - `type: "allowlist"`
+
+                  Allow outbound network access only to specified domains. Always `allowlist`.
+
+                  - `"allowlist"`
+
+                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                  Optional domain-scoped secrets for allowlisted domains.
+
+                  - `domain: string`
+
+                    The domain associated with the secret.
+
+                  - `name: string`
+
+                    The name of the secret to inject for the domain.
+
+                  - `value: string`
+
+                    The secret value to inject for the domain.
+
+            - `skills: optional array of SkillReference or InlineSkill`
+
+              An optional list of skills referenced by id or inline data.
+
+              - `SkillReference = object { skill_id, type, version }`
+
+                - `skill_id: string`
+
+                  The ID of the referenced skill.
+
+                - `type: "skill_reference"`
+
+                  References a skill created with the /v1/skills endpoint.
+
+                  - `"skill_reference"`
+
+                - `version: optional string`
+
+                  Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+              - `InlineSkill = object { description, name, source, type }`
+
+                - `description: string`
+
+                  The description of the skill.
+
+                - `name: string`
+
+                  The name of the skill.
+
+                - `source: InlineSkillSource`
+
+                  Inline skill payload
+
+                  - `data: string`
+
+                    Base64-encoded skill zip bundle.
+
+                  - `media_type: "application/zip"`
+
+                    The media type of the inline skill payload. Must be `application/zip`.
+
+                    - `"application/zip"`
+
+                  - `type: "base64"`
+
+                    The type of the inline skill source. Must be `base64`.
+
+                    - `"base64"`
+
+                - `type: "inline"`
+
+                  Defines an inline skill for this request.
+
+                  - `"inline"`
+
+          - `LocalEnvironment = object { type, skills }`
+
+            - `type: "local"`
+
+              Use a local computer environment.
+
+              - `"local"`
+
+            - `skills: optional array of LocalSkill`
+
+              An optional list of skills.
+
+              - `description: string`
+
+                The description of the skill.
+
+              - `name: string`
+
+                The name of the skill.
+
+              - `path: string`
+
+                The path to the directory containing the skill.
+
+          - `ContainerReference = object { container_id, type }`
+
+            - `container_id: string`
+
+              The ID of the referenced container.
+
+            - `type: "container_reference"`
+
+              References a container created with the /v1/containers endpoint
+
+              - `"container_reference"`
+
+      - `Custom = object { name, type, defer_loading, 2 more }`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+        - `name: string`
+
+          The name of the custom tool, used to identify it in tool calls.
+
+        - `type: "custom"`
+
+          The type of the custom tool. Always `custom`.
+
+          - `"custom"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this tool should be deferred and discovered via tool search.
+
+        - `description: optional string`
+
+          Optional description of the custom tool, used to provide more context.
+
+        - `format: optional CustomToolInputFormat`
+
+          The input format for the custom tool. Default is unconstrained text.
+
+          - `Text = object { type }`
+
+            Unconstrained free-form text.
+
+            - `type: "text"`
+
+              Unconstrained text format. Always `text`.
+
+              - `"text"`
+
+          - `Grammar = object { definition, syntax, type }`
+
+            A grammar defined by the user.
+
+            - `definition: string`
+
+              The grammar definition.
+
+            - `syntax: "lark" or "regex"`
+
+              The syntax of the grammar definition. One of `lark` or `regex`.
+
+              - `"lark"`
+
+              - `"regex"`
+
+            - `type: "grammar"`
+
+              Grammar format. Always `grammar`.
+
+              - `"grammar"`
+
+      - `Namespace = object { description, name, tools, type }`
+
+        Groups function/custom tools under a shared namespace.
+
+        - `description: string`
+
+          A description of the namespace shown to the model.
+
+        - `name: string`
+
+          The namespace name used in tool calls (for example, `crm`).
+
+        - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+          The function/custom tools available inside this namespace.
+
+          - `Function = object { name, type, description, 2 more }`
+
+            - `name: string`
+
+            - `type: "function"`
+
+              - `"function"`
+
+            - `description: optional string`
+
+            - `parameters: optional unknown`
+
+            - `strict: optional boolean`
+
+          - `Custom = object { name, type, defer_loading, 2 more }`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+            - `name: string`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: "custom"`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
+
+            - `description: optional string`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: optional CustomToolInputFormat`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `Text = object { type }`
+
+                Unconstrained free-form text.
+
+                - `type: "text"`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `Grammar = object { definition, syntax, type }`
+
+                A grammar defined by the user.
+
+                - `definition: string`
+
+                  The grammar definition.
+
+                - `syntax: "lark" or "regex"`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: "grammar"`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+        - `type: "namespace"`
+
+          The type of the tool. Always `namespace`.
+
+          - `"namespace"`
+
+      - `ToolSearch = object { type, description, execution, parameters }`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+        - `type: "tool_search"`
+
+          The type of the tool. Always `tool_search`.
+
+          - `"tool_search"`
+
+        - `description: optional string`
+
+          Description shown to the model for a client-executed tool search tool.
+
+        - `execution: optional "server" or "client"`
+
+          Whether tool search is executed by the server or by the client.
+
+          - `"server"`
+
+          - `"client"`
+
+        - `parameters: optional unknown`
+
+          Parameter schema for a client-executed tool search tool.
+
+      - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+
+          The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+          - `"web_search_preview"`
+
+          - `"web_search_preview_2025_03_11"`
+
+        - `search_content_types: optional array of "text" or "image"`
+
+          - `"text"`
+
+          - `"image"`
+
+        - `search_context_size: optional "low" or "medium" or "high"`
+
+          High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `user_location: optional object { type, city, country, 2 more }`
+
+          The user's location.
+
+          - `type: "approximate"`
+
+            The type of location approximation. Always `approximate`.
+
+            - `"approximate"`
+
+          - `city: optional string`
+
+            Free text input for the city of the user, e.g. `San Francisco`.
+
+          - `country: optional string`
+
+            The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+          - `region: optional string`
+
+            Free text input for the region of the user, e.g. `California`.
+
+          - `timezone: optional string`
+
+            The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+      - `ApplyPatch = object { type }`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: "apply_patch"`
+
+          The type of the tool. Always `apply_patch`.
+
+          - `"apply_patch"`
+
+    - `type: "tool_search_output"`
+
+      The item type. Always `tool_search_output`.
+
+      - `"tool_search_output"`
+
+    - `id: optional string`
+
+      The unique ID of this tool search output.
+
+    - `call_id: optional string`
+
+      The unique ID of the tool search call generated by the model.
+
+    - `execution: optional "server" or "client"`
+
+      Whether tool search was executed by the server or by the client.
+
+      - `"server"`
+
+      - `"client"`
+
+    - `status: optional "in_progress" or "completed" or "incomplete"`
+
+      The status of the tool search output.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+  - `Reasoning = object { id, summary, type, 3 more }`
 
     A description of the chain of thought used by a reasoning model while generating
     a response. Be sure to include these items in your `input` to the Responses API
@@ -1085,7 +2432,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ResponseCompactionItemParam = object { encrypted_content, type, id }`
+  - `Compaction = object { encrypted_content, type, id }`
 
     A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -1133,7 +2480,7 @@ Create a conversation.
 
       - `"image_generation_call"`
 
-  - `ResponseCodeInterpreterToolCall = object { id, code, container_id, 3 more }`
+  - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 
     A tool call to run code.
 
@@ -1701,7 +3048,7 @@ Create a conversation.
 
       - `"failed"`
 
-  - `ResponseCustomToolCallOutput = object { call_id, output, type, id }`
+  - `CustomToolCallOutput = object { call_id, output, type, id }`
 
     The output of a custom tool call from your code, being sent back to the model.
 
@@ -1740,15 +3087,17 @@ Create a conversation.
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto"`
+          - `detail: "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: "input_image"`
 
@@ -1764,7 +3113,7 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -1773,6 +3122,14 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -1800,7 +3157,7 @@ Create a conversation.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
-  - `ResponseCustomToolCall = object { call_id, input, name, 2 more }`
+  - `CustomToolCall = object { call_id, input, name, 3 more }`
 
     A call to a custom tool created by the model.
 
@@ -1825,6 +3182,10 @@ Create a conversation.
     - `id: optional string`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `namespace: optional string`
+
+      The namespace of the custom tool being called.
 
   - `ItemReference = object { id, type }`
 

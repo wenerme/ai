@@ -2346,15 +2346,17 @@ Get a list of runs for an evaluation.
 
                     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                    - `detail: Literal["low", "high", "auto"]`
+                    - `detail: Literal["low", "high", "auto", "original"]`
 
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                       - `"low"`
 
                       - `"high"`
 
                       - `"auto"`
+
+                      - `"original"`
 
                     - `type: Literal["input_image"]`
 
@@ -2379,6 +2381,14 @@ Get a list of runs for an evaluation.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail: Optional[Literal["low", "high"]]`
+
+                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data: Optional[str]`
 
@@ -2411,12 +2421,9 @@ Get a list of runs for an evaluation.
 
               - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-                Use `commentary` for an intermediate assistant message and `final_answer` for
-                the final assistant message. For follow-up requests with models like
-                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-                messages. Omitting it can degrade performance. Not used for user messages.
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
                 - `"commentary"`
 
@@ -3275,6 +3282,10 @@ Get a list of runs for an evaluation.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function is deferred and loaded via tool search.
+
             - `description: Optional[str]`
 
               A description of the function. Used by the model to determine whether or not to call the function.
@@ -3449,6 +3460,16 @@ Get a list of runs for an evaluation.
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+            - `type: Literal["computer"]`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
             - `display_height: int`
 
               The height of the computer display.
@@ -3612,6 +3633,10 @@ Get a list of runs for an evaluation.
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -4074,6 +4099,10 @@ Get a list of runs for an evaluation.
 
               - `"custom"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this tool should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
               Optional description of the custom tool, used to provide more context.
@@ -4114,6 +4143,126 @@ Get a list of runs for an evaluation.
 
                   - `"grammar"`
 
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: str`
+
+              A description of the namespace shown to the model.
+
+            - `name: str`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: List[Tool]`
+
+              The function/custom tools available inside this namespace.
+
+              - `class ToolFunction: …`
+
+                - `name: str`
+
+                - `type: Literal["function"]`
+
+                  - `"function"`
+
+                - `description: Optional[str]`
+
+                - `parameters: Optional[object]`
+
+                - `strict: Optional[bool]`
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+                - `name: str`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: Literal["custom"]`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: Optional[bool]`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: Optional[str]`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: Optional[CustomToolInputFormat]`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+                  - `class Text: …`
+
+                    Unconstrained free-form text.
+
+                    - `type: Literal["text"]`
+
+                      Unconstrained text format. Always `text`.
+
+                      - `"text"`
+
+                  - `class Grammar: …`
+
+                    A grammar defined by the user.
+
+                    - `definition: str`
+
+                      The grammar definition.
+
+                    - `syntax: Literal["lark", "regex"]`
+
+                      The syntax of the grammar definition. One of `lark` or `regex`.
+
+                      - `"lark"`
+
+                      - `"regex"`
+
+                    - `type: Literal["grammar"]`
+
+                      Grammar format. Always `grammar`.
+
+                      - `"grammar"`
+
+            - `type: Literal["namespace"]`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: Literal["tool_search"]`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: Optional[str]`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: Optional[Literal["server", "client"]]`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: Optional[object]`
+
+              Parameter schema for a client-executed tool search tool.
+
           - `class WebSearchPreviewTool: …`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -4125,6 +4274,12 @@ Get a list of runs for an evaluation.
               - `"web_search_preview"`
 
               - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+              - `"text"`
+
+              - `"image"`
 
             - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 
@@ -4485,15 +4640,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                  - `detail: Literal["low", "high", "auto"]`
+                  - `detail: Literal["low", "high", "auto", "original"]`
 
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                     - `"low"`
 
                     - `"high"`
 
                     - `"auto"`
+
+                    - `"original"`
 
                   - `type: Literal["input_image"]`
 
@@ -4518,6 +4675,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
+
+                  - `detail: Optional[Literal["low", "high"]]`
+
+                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                    - `"low"`
+
+                    - `"high"`
 
                   - `file_data: Optional[str]`
 
@@ -4550,12 +4715,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              Use `commentary` for an intermediate assistant message and `final_answer` for
-              the final assistant message. For follow-up requests with models like
-              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-              messages. Omitting it can degrade performance. Not used for user messages.
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
 
@@ -5417,6 +5579,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"function"`
 
+          - `defer_loading: Optional[bool]`
+
+            Whether this function is deferred and loaded via tool search.
+
           - `description: Optional[str]`
 
             A description of the function. Used by the model to determine whether or not to call the function.
@@ -5591,6 +5757,16 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+          - `type: Literal["computer"]`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
           - `display_height: int`
 
             The height of the computer display.
@@ -5754,6 +5930,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -6216,6 +6396,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"custom"`
 
+          - `defer_loading: Optional[bool]`
+
+            Whether this tool should be deferred and discovered via tool search.
+
           - `description: Optional[str]`
 
             Optional description of the custom tool, used to provide more context.
@@ -6256,6 +6440,126 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"grammar"`
 
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: str`
+
+            A description of the namespace shown to the model.
+
+          - `name: str`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: List[Tool]`
+
+            The function/custom tools available inside this namespace.
+
+            - `class ToolFunction: …`
+
+              - `name: str`
+
+              - `type: Literal["function"]`
+
+                - `"function"`
+
+              - `description: Optional[str]`
+
+              - `parameters: Optional[object]`
+
+              - `strict: Optional[bool]`
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+              - `name: str`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: Literal["custom"]`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: Optional[str]`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: Optional[CustomToolInputFormat]`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `class Text: …`
+
+                  Unconstrained free-form text.
+
+                  - `type: Literal["text"]`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `class Grammar: …`
+
+                  A grammar defined by the user.
+
+                  - `definition: str`
+
+                    The grammar definition.
+
+                  - `syntax: Literal["lark", "regex"]`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: Literal["grammar"]`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: Literal["namespace"]`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: Literal["tool_search"]`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: Optional[str]`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: Optional[Literal["server", "client"]]`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: Optional[object]`
+
+            Parameter schema for a client-executed tool search tool.
+
         - `class WebSearchPreviewTool: …`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -6267,6 +6571,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"web_search_preview"`
 
             - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+            - `"text"`
+
+            - `"image"`
 
           - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 
@@ -6515,15 +6825,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                    - `detail: Literal["low", "high", "auto"]`
+                    - `detail: Literal["low", "high", "auto", "original"]`
 
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                       - `"low"`
 
                       - `"high"`
 
                       - `"auto"`
+
+                      - `"original"`
 
                     - `type: Literal["input_image"]`
 
@@ -6548,6 +6860,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail: Optional[Literal["low", "high"]]`
+
+                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data: Optional[str]`
 
@@ -6580,12 +6900,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-                Use `commentary` for an intermediate assistant message and `final_answer` for
-                the final assistant message. For follow-up requests with models like
-                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-                messages. Omitting it can degrade performance. Not used for user messages.
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
                 - `"commentary"`
 
@@ -7444,6 +7761,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function is deferred and loaded via tool search.
+
             - `description: Optional[str]`
 
               A description of the function. Used by the model to determine whether or not to call the function.
@@ -7618,6 +7939,16 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+            - `type: Literal["computer"]`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
             - `display_height: int`
 
               The height of the computer display.
@@ -7781,6 +8112,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -8243,6 +8578,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"custom"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this tool should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
               Optional description of the custom tool, used to provide more context.
@@ -8283,6 +8622,126 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"grammar"`
 
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: str`
+
+              A description of the namespace shown to the model.
+
+            - `name: str`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: List[Tool]`
+
+              The function/custom tools available inside this namespace.
+
+              - `class ToolFunction: …`
+
+                - `name: str`
+
+                - `type: Literal["function"]`
+
+                  - `"function"`
+
+                - `description: Optional[str]`
+
+                - `parameters: Optional[object]`
+
+                - `strict: Optional[bool]`
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+                - `name: str`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: Literal["custom"]`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: Optional[bool]`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: Optional[str]`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: Optional[CustomToolInputFormat]`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+                  - `class Text: …`
+
+                    Unconstrained free-form text.
+
+                    - `type: Literal["text"]`
+
+                      Unconstrained text format. Always `text`.
+
+                      - `"text"`
+
+                  - `class Grammar: …`
+
+                    A grammar defined by the user.
+
+                    - `definition: str`
+
+                      The grammar definition.
+
+                    - `syntax: Literal["lark", "regex"]`
+
+                      The syntax of the grammar definition. One of `lark` or `regex`.
+
+                      - `"lark"`
+
+                      - `"regex"`
+
+                    - `type: Literal["grammar"]`
+
+                      Grammar format. Always `grammar`.
+
+                      - `"grammar"`
+
+            - `type: Literal["namespace"]`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: Literal["tool_search"]`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: Optional[str]`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: Optional[Literal["server", "client"]]`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: Optional[object]`
+
+              Parameter schema for a client-executed tool search tool.
+
           - `class WebSearchPreviewTool: …`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -8294,6 +8753,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `"web_search_preview"`
 
               - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+              - `"text"`
+
+              - `"image"`
 
             - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 
@@ -8680,15 +9145,17 @@ Get an evaluation run by ID.
 
                     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                    - `detail: Literal["low", "high", "auto"]`
+                    - `detail: Literal["low", "high", "auto", "original"]`
 
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                       - `"low"`
 
                       - `"high"`
 
                       - `"auto"`
+
+                      - `"original"`
 
                     - `type: Literal["input_image"]`
 
@@ -8713,6 +9180,14 @@ Get an evaluation run by ID.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail: Optional[Literal["low", "high"]]`
+
+                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data: Optional[str]`
 
@@ -8745,12 +9220,9 @@ Get an evaluation run by ID.
 
               - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-                Use `commentary` for an intermediate assistant message and `final_answer` for
-                the final assistant message. For follow-up requests with models like
-                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-                messages. Omitting it can degrade performance. Not used for user messages.
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
                 - `"commentary"`
 
@@ -9609,6 +10081,10 @@ Get an evaluation run by ID.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function is deferred and loaded via tool search.
+
             - `description: Optional[str]`
 
               A description of the function. Used by the model to determine whether or not to call the function.
@@ -9783,6 +10259,16 @@ Get an evaluation run by ID.
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+            - `type: Literal["computer"]`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
             - `display_height: int`
 
               The height of the computer display.
@@ -9946,6 +10432,10 @@ Get an evaluation run by ID.
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -10408,6 +10898,10 @@ Get an evaluation run by ID.
 
               - `"custom"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this tool should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
               Optional description of the custom tool, used to provide more context.
@@ -10448,6 +10942,126 @@ Get an evaluation run by ID.
 
                   - `"grammar"`
 
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: str`
+
+              A description of the namespace shown to the model.
+
+            - `name: str`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: List[Tool]`
+
+              The function/custom tools available inside this namespace.
+
+              - `class ToolFunction: …`
+
+                - `name: str`
+
+                - `type: Literal["function"]`
+
+                  - `"function"`
+
+                - `description: Optional[str]`
+
+                - `parameters: Optional[object]`
+
+                - `strict: Optional[bool]`
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+                - `name: str`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: Literal["custom"]`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: Optional[bool]`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: Optional[str]`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: Optional[CustomToolInputFormat]`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+                  - `class Text: …`
+
+                    Unconstrained free-form text.
+
+                    - `type: Literal["text"]`
+
+                      Unconstrained text format. Always `text`.
+
+                      - `"text"`
+
+                  - `class Grammar: …`
+
+                    A grammar defined by the user.
+
+                    - `definition: str`
+
+                      The grammar definition.
+
+                    - `syntax: Literal["lark", "regex"]`
+
+                      The syntax of the grammar definition. One of `lark` or `regex`.
+
+                      - `"lark"`
+
+                      - `"regex"`
+
+                    - `type: Literal["grammar"]`
+
+                      Grammar format. Always `grammar`.
+
+                      - `"grammar"`
+
+            - `type: Literal["namespace"]`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: Literal["tool_search"]`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: Optional[str]`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: Optional[Literal["server", "client"]]`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: Optional[object]`
+
+              Parameter schema for a client-executed tool search tool.
+
           - `class WebSearchPreviewTool: …`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -10459,6 +11073,12 @@ Get an evaluation run by ID.
               - `"web_search_preview"`
 
               - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+              - `"text"`
+
+              - `"image"`
 
             - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 
@@ -10835,15 +11455,17 @@ Cancel an ongoing evaluation run.
 
                     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                    - `detail: Literal["low", "high", "auto"]`
+                    - `detail: Literal["low", "high", "auto", "original"]`
 
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                       - `"low"`
 
                       - `"high"`
 
                       - `"auto"`
+
+                      - `"original"`
 
                     - `type: Literal["input_image"]`
 
@@ -10868,6 +11490,14 @@ Cancel an ongoing evaluation run.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail: Optional[Literal["low", "high"]]`
+
+                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data: Optional[str]`
 
@@ -10900,12 +11530,9 @@ Cancel an ongoing evaluation run.
 
               - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-                Use `commentary` for an intermediate assistant message and `final_answer` for
-                the final assistant message. For follow-up requests with models like
-                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-                messages. Omitting it can degrade performance. Not used for user messages.
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
                 - `"commentary"`
 
@@ -11764,6 +12391,10 @@ Cancel an ongoing evaluation run.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function is deferred and loaded via tool search.
+
             - `description: Optional[str]`
 
               A description of the function. Used by the model to determine whether or not to call the function.
@@ -11938,6 +12569,16 @@ Cancel an ongoing evaluation run.
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
+            - `type: Literal["computer"]`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
             - `display_height: int`
 
               The height of the computer display.
@@ -12101,6 +12742,10 @@ Cancel an ongoing evaluation run.
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -12563,6 +13208,10 @@ Cancel an ongoing evaluation run.
 
               - `"custom"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this tool should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
               Optional description of the custom tool, used to provide more context.
@@ -12603,6 +13252,126 @@ Cancel an ongoing evaluation run.
 
                   - `"grammar"`
 
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: str`
+
+              A description of the namespace shown to the model.
+
+            - `name: str`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: List[Tool]`
+
+              The function/custom tools available inside this namespace.
+
+              - `class ToolFunction: …`
+
+                - `name: str`
+
+                - `type: Literal["function"]`
+
+                  - `"function"`
+
+                - `description: Optional[str]`
+
+                - `parameters: Optional[object]`
+
+                - `strict: Optional[bool]`
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+                - `name: str`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: Literal["custom"]`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: Optional[bool]`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: Optional[str]`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: Optional[CustomToolInputFormat]`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+                  - `class Text: …`
+
+                    Unconstrained free-form text.
+
+                    - `type: Literal["text"]`
+
+                      Unconstrained text format. Always `text`.
+
+                      - `"text"`
+
+                  - `class Grammar: …`
+
+                    A grammar defined by the user.
+
+                    - `definition: str`
+
+                      The grammar definition.
+
+                    - `syntax: Literal["lark", "regex"]`
+
+                      The syntax of the grammar definition. One of `lark` or `regex`.
+
+                      - `"lark"`
+
+                      - `"regex"`
+
+                    - `type: Literal["grammar"]`
+
+                      Grammar format. Always `grammar`.
+
+                      - `"grammar"`
+
+            - `type: Literal["namespace"]`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: Literal["tool_search"]`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: Optional[str]`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: Optional[Literal["server", "client"]]`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: Optional[object]`
+
+              Parameter schema for a client-executed tool search tool.
+
           - `class WebSearchPreviewTool: …`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
@@ -12614,6 +13383,12 @@ Cancel an ongoing evaluation run.
               - `"web_search_preview"`
 
               - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+              - `"text"`
+
+              - `"image"`
 
             - `search_context_size: Optional[Literal["low", "medium", "high"]]`
 
@@ -12960,15 +13735,17 @@ print(run.run_id)
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-                - `detail: Literal["low", "high", "auto"]`
+                - `detail: Literal["low", "high", "auto", "original"]`
 
-                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                  The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                   - `"low"`
 
                   - `"high"`
 
                   - `"auto"`
+
+                  - `"original"`
 
                 - `type: Literal["input_image"]`
 
@@ -12993,6 +13770,14 @@ print(run.run_id)
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
+
+                - `detail: Optional[Literal["low", "high"]]`
+
+                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                  - `"low"`
+
+                  - `"high"`
 
                 - `file_data: Optional[str]`
 
@@ -13025,12 +13810,9 @@ print(run.run_id)
 
           - `phase: Optional[Literal["commentary", "final_answer"]]`
 
-            Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-            Use `commentary` for an intermediate assistant message and `final_answer` for
-            the final assistant message. For follow-up requests with models like
-            `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-            messages. Omitting it can degrade performance. Not used for user messages.
+            Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+            For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+            phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
 

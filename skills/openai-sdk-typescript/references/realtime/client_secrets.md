@@ -434,15 +434,17 @@ Returns the created client secret and the effective session object. The client s
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto"`
+            - `detail: "low" | "high" | "auto" | "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -467,6 +469,14 @@ Returns the created client secret and the effective session object. The client s
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 
@@ -641,6 +651,10 @@ Returns the created client secret and the effective session object. The client s
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading?: boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers?: Record<string, string> | null`
 
@@ -1395,15 +1409,17 @@ Returns the created client secret and the effective session object. The client s
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto"`
+            - `detail: "low" | "high" | "auto" | "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -1428,6 +1444,14 @@ Returns the created client secret and the effective session object. The client s
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 
@@ -1602,6 +1626,10 @@ Returns the created client secret and the effective session object. The client s
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading?: boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers?: Record<string, string> | null`
 
@@ -2323,15 +2351,17 @@ console.log(clientSecret.expires_at);
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: "low" | "high" | "auto"`
+        - `detail: "low" | "high" | "auto" | "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -2356,6 +2386,14 @@ console.log(clientSecret.expires_at);
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data?: string`
 
@@ -2530,6 +2568,10 @@ console.log(clientSecret.expires_at);
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading?: boolean`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers?: Record<string, string> | null`
 

@@ -5200,15 +5200,17 @@
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto"`
+            - `detail: "low" or "high" or "auto" or "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -5224,7 +5226,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -5233,6 +5235,14 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -5308,7 +5318,7 @@
 
             The name of the tool to call on the server.
 
-      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
         Tools available to the model.
 
@@ -5334,7 +5344,7 @@
 
             - `"function"`
 
-        - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+        - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -5409,6 +5419,10 @@
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -5896,15 +5910,17 @@
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto"`
+              - `detail: "low" or "high" or "auto" or "original"`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: "input_image"`
 
@@ -5920,7 +5936,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -5929,6 +5945,14 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -6030,7 +6054,7 @@
 
               - `"function"`
 
-          - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+          - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -6105,6 +6129,10 @@
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: optional map[string]`
 
@@ -8428,15 +8456,17 @@
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto"`
+        - `detail: "low" or "high" or "auto" or "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -8452,7 +8482,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -8461,6 +8491,14 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 
@@ -8536,7 +8574,7 @@
 
         The name of the tool to call on the server.
 
-  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
     Tools available to the model.
 
@@ -8562,7 +8600,7 @@
 
         - `"function"`
 
-    - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+    - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
       (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -8637,6 +8675,10 @@
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: optional boolean`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: optional map[string]`
 
@@ -13365,15 +13407,17 @@
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto"`
+              - `detail: "low" or "high" or "auto" or "original"`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: "input_image"`
 
@@ -13389,7 +13433,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -13398,6 +13442,14 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -13499,7 +13551,7 @@
 
               - `"function"`
 
-          - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+          - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -13574,6 +13626,10 @@
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: optional map[string]`
 
@@ -14344,15 +14400,17 @@
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto"`
+              - `detail: "low" or "high" or "auto" or "original"`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: "input_image"`
 
@@ -14368,7 +14426,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -14377,6 +14435,14 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -14478,7 +14544,7 @@
 
               - `"function"`
 
-          - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+          - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -14553,6 +14619,10 @@
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: optional map[string]`
 
@@ -16345,15 +16415,17 @@
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto"`
+        - `detail: "low" or "high" or "auto" or "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -16369,7 +16441,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -16378,6 +16450,14 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 
@@ -17009,15 +17089,17 @@
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto"`
+        - `detail: "low" or "high" or "auto" or "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -17033,7 +17115,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -17042,6 +17124,14 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 
@@ -17143,7 +17233,7 @@
 
         - `"function"`
 
-    - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+    - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
       (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -17218,6 +17308,10 @@
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: optional boolean`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: optional map[string]`
 
@@ -17438,7 +17532,7 @@
 
       - `"function"`
 
-  - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+  - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
     (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -17513,6 +17607,10 @@
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: optional boolean`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: optional map[string]`
 
@@ -17578,7 +17676,7 @@
 
 ### Realtime Tools Config Union
 
-- `RealtimeToolsConfigUnion = RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+- `RealtimeToolsConfigUnion = RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
   Give the model access to additional tools via remote Model Context Protocol
   (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -17605,7 +17703,7 @@
 
       - `"function"`
 
-  - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+  - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
     (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -17680,6 +17778,10 @@
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: optional boolean`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: optional map[string]`
 
@@ -19444,15 +19546,17 @@
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto"`
+          - `detail: "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: "input_image"`
 
@@ -19468,7 +19572,7 @@
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -19477,6 +19581,14 @@
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -19552,7 +19664,7 @@
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
       Tools available to the model.
 
@@ -19578,7 +19690,7 @@
 
           - `"function"`
 
-      - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+      - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -19653,6 +19765,10 @@
           - `"connector_outlookemail"`
 
           - `"connector_sharepoint"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this MCP tool is deferred and discovered via tool search.
 
         - `headers: optional map[string]`
 
@@ -22753,15 +22869,17 @@
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto"`
+            - `detail: "low" or "high" or "auto" or "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -22777,7 +22895,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -22786,6 +22904,14 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -22887,7 +23013,7 @@
 
             - `"function"`
 
-        - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+        - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -22962,6 +23088,10 @@
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -23738,15 +23868,17 @@
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto"`
+            - `detail: "low" or "high" or "auto" or "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -23762,7 +23894,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -23771,6 +23903,14 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -23872,7 +24012,7 @@
 
             - `"function"`
 
-        - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+        - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -23947,6 +24087,10 @@
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -24723,15 +24867,17 @@
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto"`
+            - `detail: "low" or "high" or "auto" or "original"`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: "input_image"`
 
@@ -24747,7 +24893,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -24756,6 +24902,14 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -24857,7 +25011,7 @@
 
             - `"function"`
 
-        - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+        - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -24932,6 +25086,10 @@
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -25968,15 +26126,17 @@ Returns the created client secret and the effective session object. The client s
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto"`
+          - `detail: "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: "input_image"`
 
@@ -25992,7 +26152,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -26001,6 +26161,14 @@ Returns the created client secret and the effective session object. The client s
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -26102,7 +26270,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+      - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -26177,6 +26345,10 @@ Returns the created client secret and the effective session object. The client s
           - `"connector_outlookemail"`
 
           - `"connector_sharepoint"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this MCP tool is deferred and discovered via tool search.
 
         - `headers: optional map[string]`
 
@@ -26947,15 +27119,17 @@ Returns the created client secret and the effective session object. The client s
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto"`
+          - `detail: "low" or "high" or "auto" or "original"`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: "input_image"`
 
@@ -26971,7 +27145,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -26980,6 +27154,14 @@ Returns the created client secret and the effective session object. The client s
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -27055,7 +27237,7 @@ Returns the created client secret and the effective session object. The client s
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
       Tools available to the model.
 
@@ -27081,7 +27263,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+      - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -27156,6 +27338,10 @@ Returns the created client secret and the effective session object. The client s
           - `"connector_outlookemail"`
 
           - `"connector_sharepoint"`
+
+        - `defer_loading: optional boolean`
+
+          Whether this MCP tool is deferred and discovered via tool search.
 
         - `headers: optional map[string]`
 
@@ -27892,15 +28078,17 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto"`
+        - `detail: "low" or "high" or "auto" or "original"`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: "input_image"`
 
@@ -27916,7 +28104,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -27925,6 +28113,14 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 
@@ -28000,7 +28196,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
         The name of the tool to call on the server.
 
-  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 6 more }`
+  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
 
     Tools available to the model.
 
@@ -28026,7 +28222,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
         - `"function"`
 
-    - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+    - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
       (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -28101,6 +28297,10 @@ curl https://api.openai.com/v1/realtime/client_secrets \
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: optional boolean`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: optional map[string]`
 
@@ -28838,15 +29038,17 @@ handle it.
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-      - `detail: "low" or "high" or "auto"`
+      - `detail: "low" or "high" or "auto" or "original"`
 
-        The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
         - `"low"`
 
         - `"high"`
 
         - `"auto"`
+
+        - `"original"`
 
       - `type: "input_image"`
 
@@ -28862,7 +29064,7 @@ handle it.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -28871,6 +29073,14 @@ handle it.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
+
+      - `detail: optional "low" or "high"`
+
+        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+        - `"low"`
+
+        - `"high"`
 
       - `file_data: optional string`
 
@@ -28972,7 +29182,7 @@ handle it.
 
       - `"function"`
 
-  - `McpTool = object { server_label, type, allowed_tools, 6 more }`
+  - `McpTool = object { server_label, type, allowed_tools, 7 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
     (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -29047,6 +29257,10 @@ handle it.
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: optional boolean`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: optional map[string]`
 
@@ -29381,15 +29595,17 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-      - `detail: "low" or "high" or "auto"`
+      - `detail: "low" or "high" or "auto" or "original"`
 
-        The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
         - `"low"`
 
         - `"high"`
 
         - `"auto"`
+
+        - `"original"`
 
       - `type: "input_image"`
 
@@ -29405,7 +29621,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -29414,6 +29630,14 @@ Returns the created Realtime session object, plus an ephemeral key.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
+
+      - `detail: optional "low" or "high"`
+
+        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+        - `"low"`
+
+        - `"high"`
 
       - `file_data: optional string`
 

@@ -78,15 +78,9 @@ Fetch the latest metadata for a generated video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: VideoSeconds`
+  - `seconds: string`
 
-    Duration of the generated clip in seconds.
-
-    - `"4"`
-
-    - `"8"`
-
-    - `"12"`
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
 
   - `size: VideoSize`
 

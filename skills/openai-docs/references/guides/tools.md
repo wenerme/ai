@@ -14,7 +14,8 @@ import {
 
 
 
-When generating model responses, you can extend capabilities using built‑in tools and remote MCP servers. These enable the model to search the web, retrieve from your files, call your own functions, or access third‑party services.
+
+When generating model responses, you can extend capabilities using built‑in tools, function calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, or access third‑party services.
 
 
 
@@ -76,6 +77,9 @@ Console.WriteLine(response.GetOutputText());
 ```
 
   </div>
+  <div data-content-switcher-pane data-value="tool-search" hidden>
+    <div class="hidden">Tool search</div>
+    </div>
   <div data-content-switcher-pane data-value="function-calling" hidden>
     <div class="hidden">Function calling</div>
     </div>
@@ -207,58 +211,6 @@ Here's an overview of the tools available in the OpenAI platform—select one of
 
 </a>
 
-<a href="/api/docs/guides/tools-file-search">
-  
-
-<span slot="icon">
-      </span>
-    Search the contents of uploaded files for context when generating a
-    response.
-
-
-</a>
-
-<a href="/api/docs/guides/tools-image-generation">
-  
-
-<span slot="icon">
-      </span>
-    Generate or edit images using GPT Image.
-
-
-</a>
-
-<a href="/api/docs/guides/tools-code-interpreter">
-  
-
-<span slot="icon">
-      </span>
-    Allow the model to execute code in a secure container.
-
-
-</a>
-
-<a href="/api/docs/guides/tools-computer-use">
-  
-
-<span slot="icon">
-      </span>
-    Create agentic workflows that enable a model to control a computer
-    interface.
-
-
-</a>
-
-<a href="/api/docs/guides/tools-apply-patch">
-  
-
-<span slot="icon">
-      </span>
-    Allow models to propose structured diffs that your integration applies.
-
-
-</a>
-
 <a href="/api/docs/guides/tools-skills">
   
 
@@ -279,16 +231,55 @@ Here's an overview of the tools available in the OpenAI platform—select one of
 
 </a>
 
+<a href="/api/docs/guides/tools-computer-use">
+  
+
+<span slot="icon">
+      </span>
+    Create agentic workflows that enable a model to control a computer
+    interface.
+
+
+</a>
+
+<a href="/api/docs/guides/tools-image-generation">
+  
+
+<span slot="icon">
+      </span>
+    Generate or edit images using GPT Image.
+
+
+</a>
+
+<a href="/api/docs/guides/tools-file-search">
+  
+
+<span slot="icon">
+      </span>
+    Search the contents of uploaded files for context when generating a
+    response.
+
+
+</a>
+
+<a href="/api/docs/guides/tools-tool-search">
+  
+
+<span slot="icon">
+      </span>
+    Dynamically load relevant tools into the model’s context to optimize token
+    usage and latency.
+
+
+</a>
+
 ## Usage in the API
 
-When making a request to generate a [model response](https://developers.openai.com/api/docs/api-reference/responses/create), you can enable tool access by specifying configurations in the `tools` parameter. Each tool has its own unique configuration requirements—see the [Available tools](#available-tools) section for detailed instructions.
+When making a request to generate a [model response](https://developers.openai.com/api/docs/api-reference/responses/create), you usually enable tool access by specifying configurations in the `tools` parameter. Each tool has its own unique configuration requirements—see the [Available tools](#available-tools) section for detailed instructions.
 
 Based on the provided [prompt](https://developers.openai.com/api/docs/guides/text), the model automatically decides whether to use a configured tool. For instance, if your prompt requests information beyond the model's training cutoff date and web search is enabled, the model will typically invoke the web search tool to retrieve relevant, up-to-date information.
 
+Some advanced workflows can also load additional tool definitions during the interaction. For example, [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) can defer function definitions until the model decides they are needed.
+
 You can explicitly control or guide this behavior by setting the `tool_choice` parameter [in the API request](https://developers.openai.com/api/docs/api-reference/responses/create).
-
-### Function calling
-
-In addition to built-in tools, you can define custom functions using the `tools` array. These custom functions allow the model to call your application's code, enabling access to specific data or capabilities not directly available within the model.
-
-Learn more in the [function calling guide](https://developers.openai.com/api/docs/guides/function-calling).

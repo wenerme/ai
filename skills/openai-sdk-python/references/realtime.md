@@ -5199,15 +5199,17 @@ client.realtime.connect()
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -5232,6 +5234,14 @@ client.realtime.connect()
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -5399,6 +5409,10 @@ client.realtime.connect()
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -5873,15 +5887,17 @@ client.realtime.connect()
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-              - `detail: Literal["low", "high", "auto"]`
+              - `detail: Literal["low", "high", "auto", "original"]`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: Literal["input_image"]`
 
@@ -5906,6 +5922,14 @@ client.realtime.connect()
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -6073,6 +6097,10 @@ client.realtime.connect()
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -7842,6 +7870,10 @@ client.realtime.connect()
 
     - `"connector_sharepoint"`
 
+  - `defer_loading: Optional[bool]`
+
+    Whether this MCP tool is deferred and discovered via tool search.
+
   - `headers: Optional[Dict[str, str]]`
 
     Optional HTTP headers to send to the MCP server. Use for authentication
@@ -8510,15 +8542,17 @@ client.realtime.connect()
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -8543,6 +8577,14 @@ client.realtime.connect()
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -8710,6 +8752,10 @@ client.realtime.connect()
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: Optional[bool]`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: Optional[Dict[str, str]]`
 
@@ -13427,15 +13473,17 @@ client.realtime.connect()
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-              - `detail: Literal["low", "high", "auto"]`
+              - `detail: Literal["low", "high", "auto", "original"]`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: Literal["input_image"]`
 
@@ -13460,6 +13508,14 @@ client.realtime.connect()
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -13627,6 +13683,10 @@ client.realtime.connect()
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -14384,15 +14444,17 @@ client.realtime.connect()
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-              - `detail: Literal["low", "high", "auto"]`
+              - `detail: Literal["low", "high", "auto", "original"]`
 
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                 - `"low"`
 
                 - `"high"`
 
                 - `"auto"`
+
+                - `"original"`
 
               - `type: Literal["input_image"]`
 
@@ -14417,6 +14479,14 @@ client.realtime.connect()
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -14584,6 +14654,10 @@ client.realtime.connect()
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: Optional[Dict[str, str]]`
 
@@ -16376,15 +16450,17 @@ client.realtime.connect()
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -16409,6 +16485,14 @@ client.realtime.connect()
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -17027,15 +17111,17 @@ client.realtime.connect()
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -17060,6 +17146,14 @@ client.realtime.connect()
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -17227,6 +17321,10 @@ client.realtime.connect()
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: Optional[bool]`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: Optional[Dict[str, str]]`
 
@@ -17514,6 +17612,10 @@ client.realtime.connect()
 
       - `"connector_sharepoint"`
 
+    - `defer_loading: Optional[bool]`
+
+      Whether this MCP tool is deferred and discovered via tool search.
+
     - `headers: Optional[Dict[str, str]]`
 
       Optional HTTP headers to send to the MCP server. Use for authentication
@@ -17680,6 +17782,10 @@ client.realtime.connect()
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: Optional[bool]`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: Optional[Dict[str, str]]`
 
@@ -19455,15 +19561,17 @@ client.realtime.connect()
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: Literal["low", "high", "auto"]`
+          - `detail: Literal["low", "high", "auto", "original"]`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: Literal["input_image"]`
 
@@ -19488,6 +19596,14 @@ client.realtime.connect()
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: Optional[Literal["low", "high"]]`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -19655,6 +19771,10 @@ client.realtime.connect()
           - `"connector_outlookemail"`
 
           - `"connector_sharepoint"`
+
+        - `defer_loading: Optional[bool]`
+
+          Whether this MCP tool is deferred and discovered via tool search.
 
         - `headers: Optional[Dict[str, str]]`
 
@@ -22742,15 +22862,17 @@ client.realtime.connect()
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -22775,6 +22897,14 @@ client.realtime.connect()
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -22942,6 +23072,10 @@ client.realtime.connect()
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -23705,15 +23839,17 @@ client.realtime.connect()
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -23738,6 +23874,14 @@ client.realtime.connect()
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -23905,6 +24049,10 @@ client.realtime.connect()
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -24668,15 +24816,17 @@ client.realtime.connect()
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -24701,6 +24851,14 @@ client.realtime.connect()
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -24868,6 +25026,10 @@ client.realtime.connect()
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -25893,15 +26055,17 @@ Returns the created client secret and the effective session object. The client s
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: Literal["low", "high", "auto"]`
+          - `detail: Literal["low", "high", "auto", "original"]`
 
-            The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
             - `"low"`
 
             - `"high"`
 
             - `"auto"`
+
+            - `"original"`
 
           - `type: Literal["input_image"]`
 
@@ -25926,6 +26090,14 @@ Returns the created client secret and the effective session object. The client s
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: Optional[Literal["low", "high"]]`
+
+            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -26093,6 +26265,10 @@ Returns the created client secret and the effective session object. The client s
           - `"connector_outlookemail"`
 
           - `"connector_sharepoint"`
+
+        - `defer_loading: Optional[bool]`
+
+          Whether this MCP tool is deferred and discovered via tool search.
 
         - `headers: Optional[Dict[str, str]]`
 
@@ -26867,15 +27043,17 @@ Returns the created client secret and the effective session object. The client s
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto"]`
+            - `detail: Literal["low", "high", "auto", "original"]`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
               - `"low"`
 
               - `"high"`
 
               - `"auto"`
+
+              - `"original"`
 
             - `type: Literal["input_image"]`
 
@@ -26900,6 +27078,14 @@ Returns the created client secret and the effective session object. The client s
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -27067,6 +27253,10 @@ Returns the created client secret and the effective session object. The client s
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: Optional[Dict[str, str]]`
 
@@ -27807,15 +27997,17 @@ print(client_secret.expires_at)
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -27840,6 +28032,14 @@ print(client_secret.expires_at)
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -28007,6 +28207,10 @@ print(client_secret.expires_at)
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: Optional[bool]`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: Optional[Dict[str, str]]`
 
@@ -28731,15 +28935,17 @@ handle it.
 
       An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-      - `detail: Literal["low", "high", "auto"]`
+      - `detail: Literal["low", "high", "auto", "original"]`
 
-        The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
         - `"low"`
 
         - `"high"`
 
         - `"auto"`
+
+        - `"original"`
 
       - `type: Literal["input_image"]`
 
@@ -28764,6 +28970,14 @@ handle it.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
+
+      - `detail: Optional[Literal["low", "high"]]`
+
+        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+        - `"low"`
+
+        - `"high"`
 
       - `file_data: Optional[str]`
 
@@ -28931,6 +29145,10 @@ handle it.
       - `"connector_outlookemail"`
 
       - `"connector_sharepoint"`
+
+    - `defer_loading: Optional[bool]`
+
+      Whether this MCP tool is deferred and discovered via tool search.
 
     - `headers: Optional[Dict[str, str]]`
 
@@ -29581,15 +29799,17 @@ to complete the peer connection.
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-        - `detail: Literal["low", "high", "auto"]`
+        - `detail: Literal["low", "high", "auto", "original"]`
 
-          The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
           - `"low"`
 
           - `"high"`
 
           - `"auto"`
+
+          - `"original"`
 
         - `type: Literal["input_image"]`
 
@@ -29614,6 +29834,14 @@ to complete the peer connection.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -29781,6 +30009,10 @@ to complete the peer connection.
         - `"connector_outlookemail"`
 
         - `"connector_sharepoint"`
+
+      - `defer_loading: Optional[bool]`
+
+        Whether this MCP tool is deferred and discovered via tool search.
 
       - `headers: Optional[Dict[str, str]]`
 

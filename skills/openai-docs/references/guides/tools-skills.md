@@ -36,7 +36,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.2",
+  model: "gpt-5.4",
   tools: [
     {
       type: "shell",
@@ -61,7 +61,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.2",
+    model="gpt-5.4",
     tools=[
         {
             "type": "shell",
@@ -102,7 +102,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.2",
+  model: "gpt-5.4",
   tools: [
     {
       type: "shell",
@@ -130,7 +130,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.2",
+    model="gpt-5.4",
     tools=[
         {
             "type": "shell",

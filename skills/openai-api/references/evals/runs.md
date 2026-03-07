@@ -229,15 +229,17 @@ Get a list of runs for an evaluation.
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto"`
+                    - `detail: "low" or "high" or "auto" or "original"`
 
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                       - `"low"`
 
                       - `"high"`
 
                       - `"auto"`
+
+                      - `"original"`
 
                     - `type: "input_image"`
 
@@ -253,7 +255,7 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+                  - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                     A file input to the model.
 
@@ -262,6 +264,14 @@ Get a list of runs for an evaluation.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail: optional "low" or "high"`
+
+                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data: optional string`
 
@@ -294,12 +304,9 @@ Get a list of runs for an evaluation.
 
               - `phase: optional "commentary" or "final_answer"`
 
-                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-                Use `commentary` for an intermediate assistant message and `final_answer` for
-                the final assistant message. For follow-up requests with models like
-                `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-                messages. Omitting it can degrade performance. Not used for user messages.
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
                 - `"commentary"`
 
@@ -1127,7 +1134,7 @@ Get a list of runs for an evaluation.
 
                 - `"json_object"`
 
-        - `tools: optional array of Tool`
+        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -1142,7 +1149,7 @@ Get a list of runs for an evaluation.
             enabling the model to call your own code. Learn more about
             [function calling](/docs/guides/function-calling).
 
-          - `FunctionTool = object { name, parameters, strict, 2 more }`
+          - `Function = object { name, parameters, strict, 3 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1164,11 +1171,15 @@ Get a list of runs for an evaluation.
 
               - `"function"`
 
+            - `defer_loading: optional boolean`
+
+              Whether this function is deferred and loaded via tool search.
+
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `FileSearchTool = object { type, vector_store_ids, filters, 2 more }`
+          - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
 
             A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -1334,7 +1345,17 @@ Get a list of runs for an evaluation.
 
                 The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-          - `ComputerTool = object { display_height, display_width, environment, type }`
+          - `Computer = object { type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `type: "computer"`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `ComputerUsePreview = object { display_height, display_width, environment, type }`
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1366,7 +1387,7 @@ Get a list of runs for an evaluation.
 
               - `"computer_use_preview"`
 
-          - `WebSearchTool = object { type, filters, search_context_size, user_location }`
+          - `WebSearch = object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -1426,7 +1447,7 @@ Get a list of runs for an evaluation.
 
                 - `"approximate"`
 
-          - `Mcp = object { server_label, type, allowed_tools, 6 more }`
+          - `Mcp = object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1501,6 +1522,10 @@ Get a list of runs for an evaluation.
               - `"connector_outlookemail"`
 
               - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
 
             - `headers: optional map[string]`
 
@@ -1781,7 +1806,7 @@ Get a list of runs for an evaluation.
 
               - `"local_shell"`
 
-          - `FunctionShellTool = object { type, environment }`
+          - `Shell = object { type, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -1949,7 +1974,7 @@ Get a list of runs for an evaluation.
 
                   - `"container_reference"`
 
-          - `CustomTool = object { name, type, description, format }`
+          - `Custom = object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -1962,6 +1987,10 @@ Get a list of runs for an evaluation.
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
 
             - `description: optional string`
 
@@ -2003,7 +2032,127 @@ Get a list of runs for an evaluation.
 
                   - `"grammar"`
 
-          - `WebSearchPreviewTool = object { type, search_context_size, user_location }`
+          - `Namespace = object { description, name, tools, type }`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: string`
+
+              A description of the namespace shown to the model.
+
+            - `name: string`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+              The function/custom tools available inside this namespace.
+
+              - `Function = object { name, type, description, 2 more }`
+
+                - `name: string`
+
+                - `type: "function"`
+
+                  - `"function"`
+
+                - `description: optional string`
+
+                - `parameters: optional unknown`
+
+                - `strict: optional boolean`
+
+              - `Custom = object { name, type, defer_loading, 2 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+                - `name: string`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: "custom"`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: optional CustomToolInputFormat`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+                  - `Text = object { type }`
+
+                    Unconstrained free-form text.
+
+                    - `type: "text"`
+
+                      Unconstrained text format. Always `text`.
+
+                      - `"text"`
+
+                  - `Grammar = object { definition, syntax, type }`
+
+                    A grammar defined by the user.
+
+                    - `definition: string`
+
+                      The grammar definition.
+
+                    - `syntax: "lark" or "regex"`
+
+                      The syntax of the grammar definition. One of `lark` or `regex`.
+
+                      - `"lark"`
+
+                      - `"regex"`
+
+                    - `type: "grammar"`
+
+                      Grammar format. Always `grammar`.
+
+                      - `"grammar"`
+
+            - `type: "namespace"`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `ToolSearch = object { type, description, execution, parameters }`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: "tool_search"`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: optional string`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: optional "server" or "client"`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: optional unknown`
+
+              Parameter schema for a client-executed tool search tool.
+
+          - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -2014,6 +2163,12 @@ Get a list of runs for an evaluation.
               - `"web_search_preview"`
 
               - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: optional array of "text" or "image"`
+
+              - `"text"`
+
+              - `"image"`
 
             - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -2051,7 +2206,7 @@ Get a list of runs for an evaluation.
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatchTool = object { type }`
+          - `ApplyPatch = object { type }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2386,15 +2541,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto"`
+                  - `detail: "low" or "high" or "auto" or "original"`
 
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                     - `"low"`
 
                     - `"high"`
 
                     - `"auto"`
+
+                    - `"original"`
 
                   - `type: "input_image"`
 
@@ -2410,7 +2567,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -2419,6 +2576,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
+
+                  - `detail: optional "low" or "high"`
+
+                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                    - `"low"`
+
+                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -2451,12 +2616,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `phase: optional "commentary" or "final_answer"`
 
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              Use `commentary` for an intermediate assistant message and `final_answer` for
-              the final assistant message. For follow-up requests with models like
-              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-              messages. Omitting it can degrade performance. Not used for user messages.
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
 
@@ -3284,7 +3446,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"json_object"`
 
-      - `tools: optional array of Tool`
+      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -3299,7 +3461,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `FunctionTool = object { name, parameters, strict, 2 more }`
+        - `Function = object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -3321,11 +3483,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"function"`
 
+          - `defer_loading: optional boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearchTool = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -3491,7 +3657,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `ComputerTool = object { display_height, display_width, environment, type }`
+        - `Computer = object { type }`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -3523,7 +3699,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer_use_preview"`
 
-        - `WebSearchTool = object { type, filters, search_context_size, user_location }`
+        - `WebSearch = object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -3583,7 +3759,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 6 more }`
+        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -3658,6 +3834,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -3938,7 +4118,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `FunctionShellTool = object { type, environment }`
+        - `Shell = object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -4106,7 +4286,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `CustomTool = object { name, type, description, format }`
+        - `Custom = object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -4119,6 +4299,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
 
           - `description: optional string`
 
@@ -4160,7 +4344,127 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"grammar"`
 
-        - `WebSearchPreviewTool = object { type, search_context_size, user_location }`
+        - `Namespace = object { description, name, tools, type }`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function = object { name, type, description, 2 more }`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `description: optional string`
+
+              - `parameters: optional unknown`
+
+              - `strict: optional boolean`
+
+            - `Custom = object { name, type, defer_loading, 2 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+              - `name: string`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: "custom"`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: optional string`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: optional CustomToolInputFormat`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `Text = object { type }`
+
+                  Unconstrained free-form text.
+
+                  - `type: "text"`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `Grammar = object { definition, syntax, type }`
+
+                  A grammar defined by the user.
+
+                  - `definition: string`
+
+                    The grammar definition.
+
+                  - `syntax: "lark" or "regex"`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: "grammar"`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `ToolSearch = object { type, description, execution, parameters }`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: optional string`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: optional "server" or "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: optional unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -4171,6 +4475,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"web_search_preview"`
 
             - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: optional array of "text" or "image"`
+
+            - `"text"`
+
+            - `"image"`
 
           - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -4208,7 +4518,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatchTool = object { type }`
+        - `ApplyPatch = object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -4418,15 +4728,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto"`
+                  - `detail: "low" or "high" or "auto" or "original"`
 
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                     - `"low"`
 
                     - `"high"`
 
                     - `"auto"`
+
+                    - `"original"`
 
                   - `type: "input_image"`
 
@@ -4442,7 +4754,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -4451,6 +4763,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
+
+                  - `detail: optional "low" or "high"`
+
+                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                    - `"low"`
+
+                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -4483,12 +4803,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `phase: optional "commentary" or "final_answer"`
 
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              Use `commentary` for an intermediate assistant message and `final_answer` for
-              the final assistant message. For follow-up requests with models like
-              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-              messages. Omitting it can degrade performance. Not used for user messages.
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
 
@@ -5316,7 +5633,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"json_object"`
 
-      - `tools: optional array of Tool`
+      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -5331,7 +5648,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `FunctionTool = object { name, parameters, strict, 2 more }`
+        - `Function = object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -5353,11 +5670,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"function"`
 
+          - `defer_loading: optional boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearchTool = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -5523,7 +5844,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `ComputerTool = object { display_height, display_width, environment, type }`
+        - `Computer = object { type }`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -5555,7 +5886,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer_use_preview"`
 
-        - `WebSearchTool = object { type, filters, search_context_size, user_location }`
+        - `WebSearch = object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -5615,7 +5946,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 6 more }`
+        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -5690,6 +6021,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -5970,7 +6305,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `FunctionShellTool = object { type, environment }`
+        - `Shell = object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -6138,7 +6473,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `CustomTool = object { name, type, description, format }`
+        - `Custom = object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -6151,6 +6486,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
 
           - `description: optional string`
 
@@ -6192,7 +6531,127 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"grammar"`
 
-        - `WebSearchPreviewTool = object { type, search_context_size, user_location }`
+        - `Namespace = object { description, name, tools, type }`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function = object { name, type, description, 2 more }`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `description: optional string`
+
+              - `parameters: optional unknown`
+
+              - `strict: optional boolean`
+
+            - `Custom = object { name, type, defer_loading, 2 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+              - `name: string`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: "custom"`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: optional string`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: optional CustomToolInputFormat`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `Text = object { type }`
+
+                  Unconstrained free-form text.
+
+                  - `type: "text"`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `Grammar = object { definition, syntax, type }`
+
+                  A grammar defined by the user.
+
+                  - `definition: string`
+
+                    The grammar definition.
+
+                  - `syntax: "lark" or "regex"`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: "grammar"`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `ToolSearch = object { type, description, execution, parameters }`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: optional string`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: optional "server" or "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: optional unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -6203,6 +6662,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `"web_search_preview"`
 
             - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: optional array of "text" or "image"`
+
+            - `"text"`
+
+            - `"image"`
 
           - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -6240,7 +6705,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatchTool = object { type }`
+        - `ApplyPatch = object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -6583,15 +7048,17 @@ Get an evaluation run by ID.
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto"`
+                  - `detail: "low" or "high" or "auto" or "original"`
 
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                     - `"low"`
 
                     - `"high"`
 
                     - `"auto"`
+
+                    - `"original"`
 
                   - `type: "input_image"`
 
@@ -6607,7 +7074,7 @@ Get an evaluation run by ID.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -6616,6 +7083,14 @@ Get an evaluation run by ID.
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
+
+                  - `detail: optional "low" or "high"`
+
+                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                    - `"low"`
+
+                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -6648,12 +7123,9 @@ Get an evaluation run by ID.
 
             - `phase: optional "commentary" or "final_answer"`
 
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              Use `commentary` for an intermediate assistant message and `final_answer` for
-              the final assistant message. For follow-up requests with models like
-              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-              messages. Omitting it can degrade performance. Not used for user messages.
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
 
@@ -7481,7 +7953,7 @@ Get an evaluation run by ID.
 
               - `"json_object"`
 
-      - `tools: optional array of Tool`
+      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -7496,7 +7968,7 @@ Get an evaluation run by ID.
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `FunctionTool = object { name, parameters, strict, 2 more }`
+        - `Function = object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -7518,11 +7990,15 @@ Get an evaluation run by ID.
 
             - `"function"`
 
+          - `defer_loading: optional boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearchTool = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -7688,7 +8164,17 @@ Get an evaluation run by ID.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `ComputerTool = object { display_height, display_width, environment, type }`
+        - `Computer = object { type }`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -7720,7 +8206,7 @@ Get an evaluation run by ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearchTool = object { type, filters, search_context_size, user_location }`
+        - `WebSearch = object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -7780,7 +8266,7 @@ Get an evaluation run by ID.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 6 more }`
+        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -7855,6 +8341,10 @@ Get an evaluation run by ID.
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -8135,7 +8625,7 @@ Get an evaluation run by ID.
 
             - `"local_shell"`
 
-        - `FunctionShellTool = object { type, environment }`
+        - `Shell = object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -8303,7 +8793,7 @@ Get an evaluation run by ID.
 
                 - `"container_reference"`
 
-        - `CustomTool = object { name, type, description, format }`
+        - `Custom = object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -8316,6 +8806,10 @@ Get an evaluation run by ID.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
 
           - `description: optional string`
 
@@ -8357,7 +8851,127 @@ Get an evaluation run by ID.
 
                 - `"grammar"`
 
-        - `WebSearchPreviewTool = object { type, search_context_size, user_location }`
+        - `Namespace = object { description, name, tools, type }`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function = object { name, type, description, 2 more }`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `description: optional string`
+
+              - `parameters: optional unknown`
+
+              - `strict: optional boolean`
+
+            - `Custom = object { name, type, defer_loading, 2 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+              - `name: string`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: "custom"`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: optional string`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: optional CustomToolInputFormat`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `Text = object { type }`
+
+                  Unconstrained free-form text.
+
+                  - `type: "text"`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `Grammar = object { definition, syntax, type }`
+
+                  A grammar defined by the user.
+
+                  - `definition: string`
+
+                    The grammar definition.
+
+                  - `syntax: "lark" or "regex"`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: "grammar"`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `ToolSearch = object { type, description, execution, parameters }`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: optional string`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: optional "server" or "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: optional unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -8368,6 +8982,12 @@ Get an evaluation run by ID.
             - `"web_search_preview"`
 
             - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: optional array of "text" or "image"`
+
+            - `"text"`
+
+            - `"image"`
 
           - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -8405,7 +9025,7 @@ Get an evaluation run by ID.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatchTool = object { type }`
+        - `ApplyPatch = object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -8732,15 +9352,17 @@ Cancel an ongoing evaluation run.
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto"`
+                  - `detail: "low" or "high" or "auto" or "original"`
 
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                     - `"low"`
 
                     - `"high"`
 
                     - `"auto"`
+
+                    - `"original"`
 
                   - `type: "input_image"`
 
@@ -8756,7 +9378,7 @@ Cancel an ongoing evaluation run.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -8765,6 +9387,14 @@ Cancel an ongoing evaluation run.
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
+
+                  - `detail: optional "low" or "high"`
+
+                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                    - `"low"`
+
+                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -8797,12 +9427,9 @@ Cancel an ongoing evaluation run.
 
             - `phase: optional "commentary" or "final_answer"`
 
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              Use `commentary` for an intermediate assistant message and `final_answer` for
-              the final assistant message. For follow-up requests with models like
-              `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-              messages. Omitting it can degrade performance. Not used for user messages.
+              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
 
@@ -9630,7 +10257,7 @@ Cancel an ongoing evaluation run.
 
               - `"json_object"`
 
-      - `tools: optional array of Tool`
+      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -9645,7 +10272,7 @@ Cancel an ongoing evaluation run.
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `FunctionTool = object { name, parameters, strict, 2 more }`
+        - `Function = object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -9667,11 +10294,15 @@ Cancel an ongoing evaluation run.
 
             - `"function"`
 
+          - `defer_loading: optional boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearchTool = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -9837,7 +10468,17 @@ Cancel an ongoing evaluation run.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `ComputerTool = object { display_height, display_width, environment, type }`
+        - `Computer = object { type }`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -9869,7 +10510,7 @@ Cancel an ongoing evaluation run.
 
             - `"computer_use_preview"`
 
-        - `WebSearchTool = object { type, filters, search_context_size, user_location }`
+        - `WebSearch = object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -9929,7 +10570,7 @@ Cancel an ongoing evaluation run.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 6 more }`
+        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -10004,6 +10645,10 @@ Cancel an ongoing evaluation run.
             - `"connector_outlookemail"`
 
             - `"connector_sharepoint"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
 
           - `headers: optional map[string]`
 
@@ -10284,7 +10929,7 @@ Cancel an ongoing evaluation run.
 
             - `"local_shell"`
 
-        - `FunctionShellTool = object { type, environment }`
+        - `Shell = object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -10452,7 +11097,7 @@ Cancel an ongoing evaluation run.
 
                 - `"container_reference"`
 
-        - `CustomTool = object { name, type, description, format }`
+        - `Custom = object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -10465,6 +11110,10 @@ Cancel an ongoing evaluation run.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `defer_loading: optional boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
 
           - `description: optional string`
 
@@ -10506,7 +11155,127 @@ Cancel an ongoing evaluation run.
 
                 - `"grammar"`
 
-        - `WebSearchPreviewTool = object { type, search_context_size, user_location }`
+        - `Namespace = object { description, name, tools, type }`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function = object { name, type, description, 2 more }`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `description: optional string`
+
+              - `parameters: optional unknown`
+
+              - `strict: optional boolean`
+
+            - `Custom = object { name, type, defer_loading, 2 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+              - `name: string`
+
+                The name of the custom tool, used to identify it in tool calls.
+
+              - `type: "custom"`
+
+                The type of the custom tool. Always `custom`.
+
+                - `"custom"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this tool should be deferred and discovered via tool search.
+
+              - `description: optional string`
+
+                Optional description of the custom tool, used to provide more context.
+
+              - `format: optional CustomToolInputFormat`
+
+                The input format for the custom tool. Default is unconstrained text.
+
+                - `Text = object { type }`
+
+                  Unconstrained free-form text.
+
+                  - `type: "text"`
+
+                    Unconstrained text format. Always `text`.
+
+                    - `"text"`
+
+                - `Grammar = object { definition, syntax, type }`
+
+                  A grammar defined by the user.
+
+                  - `definition: string`
+
+                    The grammar definition.
+
+                  - `syntax: "lark" or "regex"`
+
+                    The syntax of the grammar definition. One of `lark` or `regex`.
+
+                    - `"lark"`
+
+                    - `"regex"`
+
+                  - `type: "grammar"`
+
+                    Grammar format. Always `grammar`.
+
+                    - `"grammar"`
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `ToolSearch = object { type, description, execution, parameters }`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: optional string`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: optional "server" or "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: optional unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -10517,6 +11286,12 @@ Cancel an ongoing evaluation run.
             - `"web_search_preview"`
 
             - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: optional array of "text" or "image"`
+
+            - `"text"`
+
+            - `"image"`
 
           - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -10554,7 +11329,7 @@ Cancel an ongoing evaluation run.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatchTool = object { type }`
+        - `ApplyPatch = object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -10846,15 +11621,17 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto"`
+                - `detail: "low" or "high" or "auto" or "original"`
 
-                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+                  The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                   - `"low"`
 
                   - `"high"`
 
                   - `"auto"`
+
+                  - `"original"`
 
                 - `type: "input_image"`
 
@@ -10870,7 +11647,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-              - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+              - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
                 A file input to the model.
 
@@ -10879,6 +11656,14 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
+
+                - `detail: optional "low" or "high"`
+
+                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
+
+                  - `"low"`
+
+                  - `"high"`
 
                 - `file_data: optional string`
 
@@ -10911,12 +11696,9 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
 
           - `phase: optional "commentary" or "final_answer"`
 
-            Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-            Use `commentary` for an intermediate assistant message and `final_answer` for
-            the final assistant message. For follow-up requests with models like
-            `gpt-5.3-codex` and later, preserve and resend phase on all assistant
-            messages. Omitting it can degrade performance. Not used for user messages.
+            Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+            For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+            phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
 

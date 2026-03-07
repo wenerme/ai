@@ -2,6 +2,8 @@
 
 **Function calling** (also known as **tool calling**) provides a powerful and flexible way for OpenAI models to interface with external systems and access data outside their training data. This guide shows how you can connect a model to data and actions provided by your application. We'll show how to use function tools (defined by a JSON schema) and custom tools which work with free form text inputs and outputs.
 
+If your application has many functions or large schemas, you can pair function calling with [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) to defer rarely used tools and load them only when the model needs them.
+
 ## How it works
 
 Let's begin by understanding a few key terms about tool calling. After we have a shared vocabulary for tool calling, we'll show you how it's done with some practical examples.
@@ -220,7 +222,7 @@ Note that for reasoning models like GPT-5 or o4-mini, any reasoning items
 
 ## Defining functions
 
-Functions can be set in the `tools` parameter of each API request. A function is defined by its schema, which informs the model what it does and what input arguments it expects. A function definition has the following properties:
+Functions are usually declared in the `tools` parameter of each API request. With [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search), your application can also load deferred functions later in the interaction. Either way, each callable function uses the same schema shape. A function definition has the following properties:
 
 | Field         | Description                                                                     |
 | ------------- | ------------------------------------------------------------------------------- |
@@ -259,6 +261,51 @@ Here is an example function definition for a `get_weather` function
 
 Because the `parameters` are defined by a [JSON schema](https://json-schema.org/), you can leverage many of its rich features like property types, enums, descriptions, nested objects, and, recursive objects.
 
+## Defining namespaces
+
+Use namespaces to group related tools by domain, such as `crm`, `billing`, or `shipping`. Namespaces help organize similar tools and are especially useful when the model must choose between tools that serve different systems or purposes, such as one search tool for your CRM and another for your support ticketing system.
+
+```json
+{
+  "type": "namespace",
+  "name": "crm",
+  "description": "CRM tools for customer lookup and order management.",
+  "tools": [
+    {
+      "type": "function",
+      "name": "get_customer_profile",
+      "description": "Fetch a customer profile by customer ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "customer_id": { "type": "string" }
+        },
+        "required": ["customer_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "list_open_orders",
+      "description": "List open orders for a customer ID.",
+      "defer_loading": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "customer_id": { "type": "string" }
+        },
+        "required": ["customer_id"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}
+```
+
+## Tool search
+
+If you need to give the model access to a large ecosystem of tools, you can defer loading some or all of those tools with `tool_search`. The `tool_search` tool lets the model search for relevant tools, add them to the model context, and then use them. Read the [tool search guide](https://developers.openai.com/api/docs/guides/tools-tool-search) to learn more.
+
 
 
 ### Best practices for defining functions
@@ -267,6 +314,7 @@ Because the `parameters` are defined by a [JSON schema](https://json-schema.org/
    - **Explicitly describe the purpose of the function and each parameter** (and its format), and what the output represents.
    - **Use the system prompt to describe when (and when not) to use each function.** Generally, tell the model _exactly_ what to do.
    - **Include examples and edge cases**, especially to rectify any recurring failures. (**Note:** Adding examples may hurt performance for [reasoning models](https://developers.openai.com/api/docs/guides/reasoning).)
+   - **For deferred tools, put detailed guidance in the function description and keep the namespace description concise.** The namespace helps the model choose what to load; the function description helps it use the loaded tool correctly.
 
 1. **Apply software engineering best practices.**
    - **Make the functions obvious and intuitive**. ([principle of least surprise](https://en.wikipedia.org/wiki/Principle_of_least_astonishment))
@@ -277,9 +325,10 @@ Because the `parameters` are defined by a [JSON schema](https://json-schema.org/
    - **Don't make the model fill arguments you already know.** For example, if you already have an `order_id` based on a previous menu, don't have an `order_id` param – instead, have no params `submit_refund()` and pass the `order_id` with code.
    - **Combine functions that are always called in sequence.** For example, if you always call `mark_location()` after `query_location()`, just move the marking logic into the query function call.
 
-1. **Keep the number of functions small for higher accuracy.**
+1. **Keep the number of initially available functions small for higher accuracy.**
    - **Evaluate your performance** with different numbers of functions.
-   - **Aim for fewer than 20 functions** at any one time, though this is just a soft suggestion.
+   - **Aim for fewer than 20 functions available at the start of a turn** at any one time, though this is just a soft suggestion.
+   - **Use tool search** to defer large or infrequently used parts of your tool surface instead of exposing everything up front.
 
 1. **Leverage OpenAI resources.**
    - **Generate and iterate on function schemas** in the [Playground](https://platform.openai.com/playground).
@@ -287,7 +336,7 @@ Because the `parameters` are defined by a [JSON schema](https://json-schema.org/
 
 ### Token Usage
 
-Under the hood, functions are injected into the system message in a syntax the model has been trained on. This means functions count against the model's context limit and are billed as input tokens. If you run into token limits, we suggest limiting the number of functions or the length of the descriptions you provide for function parameters.
+Under the hood, functions are injected into the system message in a syntax the model has been trained on. This means callable function definitions count against the model's context limit and are billed as input tokens. If you run into token limits, we suggest limiting the number of functions loaded up front, shortening descriptions where possible, or using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) so deferred tools are loaded only when needed.
 
 It is also possible to use [fine-tuning](https://developers.openai.com/api/docs/guides/fine-tuning#fine-tuning-examples) to reduce the number of tokens used if you have many functions defined in your tools specification.
 
@@ -298,6 +347,8 @@ When the model calls a function, you must execute it and return the result. Sinc
 
 
 The response `output` array contains an entry with the `type` having a value of `function_call`. Each entry with a `call_id` (used later to submit the function result), `name`, and JSON-encoded `arguments`.
+
+If you are using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search), you may also see `tool_search_call` and `tool_search_output` items before a `function_call`. Once the function is loaded, handle the function call in the same way shown here.
 
 In the example above, we have a hypothetical `call_function` to route each call. Here’s a possible implementation:
 
@@ -347,6 +398,8 @@ a subset of tools available across model requests, but not modify the list of to
 ```
 
 You can also set `tool_choice` to `"none"` to imitate the behavior of passing no functions.
+
+When you use tool search, `tool_choice` still applies to the tools that are currently callable in the turn. This is most useful after you load a subset of tools and want to constrain the model to that subset.
 
 ### Parallel function calling
 
@@ -504,13 +557,13 @@ Just as before, the `output` array will contain a tool call generated by the mod
 ]
 ```
 
-## Context-free grammars
+### Context-free grammars
 
 A [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) (CFG) is a set of rules that define how to produce valid text in a given format. For custom tools, you can provide a CFG that will constrain the model's text input for a custom tool.
 
 You can provide a custom CFG using the `grammar` parameter when configuring a custom tool. Currently, we support two CFG syntaxes when defining grammars: `lark` and `regex`.
 
-## Lark CFG
+#### Lark CFG
 
 Lark context free grammar example
 
@@ -695,7 +748,7 @@ Don't rely on open-ended `%ignore` directives. Using unbounded ignore directives
   - Iterate on the prompt (add few-shot examples) and tool description (explain the grammar and instruct the model to reason and conform to it).
   - Experiment with a higher reasoning effort (e.g, bump from medium to high).
 
-## Regex CFG
+#### Regex CFG
 
 Regex context free grammar example
 

@@ -42,6 +42,7 @@ When using the in-memory policy, cached prefixes generally remain active for 5 t
 
 Extended prompt cache retention is available for the following models:
 
+- gpt-5.4
 - gpt-5.2
 - gp5-5.1-codex-max
 - gpt-5.1

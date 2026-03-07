@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 42 skills available
+> 43 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -40,6 +40,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
+| `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
 | `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
 | `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
@@ -315,6 +316,16 @@ npx skills add wenerme/ai --skill mikro-orm-v6-to-v7
 ```
 
 Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError, persistAndFlush removed, nativeInsert not found), adapting knex to kysely or better-sqlite to new SQLite drivers, running MikroORM in Edge/Bun/node:sqlite environments, or choosing between defineEntity vs decorator entity definitions. Triggers on "mikro-orm v7", "persistAndFlush", "@mikro-orm/decorators", "@mikro-orm/sql", "defineEntity", "bun:sqlite mikro-orm".
+
+</details>
+<details>
+<summary><code>model-reference</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill model-reference
+```
+
+AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing models, checking benchmark scores, finding recommended sampling parameters (temperature, top_p, top_k), model sizing/memory requirements, or pricing. Covers LLM, VLM, image, and video generation model families.
 
 </details>
 <details>

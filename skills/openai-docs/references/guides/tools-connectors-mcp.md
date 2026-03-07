@@ -1,4 +1,4 @@
-# Connectors and MCP servers
+# MCP and Connectors
 
 import {
   CheckCircleFilled,
@@ -1172,6 +1172,12 @@ Sharepoint
       <td>User.Read</td>
     </tr>
   </table>
+
+## Defer loading tools in an MCP server
+
+If you are using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search), you can defer loading the functions exposed by an MCP server until the model decides it needs them. To do this, set `defer_loading: true` on the MCP server tool definition.
+
+When you defer loading an MCP server, the model can still use the MCP server's label and description to decide when to search it, but the individual function definitions are loaded only when needed. This can help reduce overall token usage, and it is most useful for MCP servers that expose large numbers of functions.
 
 ## Risks and safety
 
