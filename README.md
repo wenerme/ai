@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 46 skills available
+> 48 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -32,6 +32,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... |  |
+| `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... |  |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
@@ -52,6 +53,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
+| `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
@@ -239,6 +241,16 @@ npx skills add wenerme/ai --skill clickhouse-docs
 ```
 
 Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views, dictionaries, data modeling (denormalization, sharding, replication), integrations (Kafka, S3, PostgreSQL, MySQL), ClickHouse Cloud, Kubernetes operator, data compression, query optimization, or troubleshooting ClickHouse issues.
+
+</details>
+<details>
+<summary><code>daisyui-v5</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill daisyui-v5
+```
+
+USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component class names (btn, card, modal, drawer, menu, tab, table, form inputs), color system (primary, secondary, accent, neutral, base, info/success/warning/error), theming with @plugin syntax, config options, and all 53 component APIs with syntax and rules. Triggers on: daisyui, daisyUI, daisy-ui, Tailwind CSS components, btn class, card class.
 
 </details>
 <details>
@@ -439,6 +451,16 @@ npx skills add wenerme/ai --skill react-resizable-panels-v3-to-v4
 ```
 
 Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported, direction prop invalid, layout broken), adapting to the new Group/Separator API and percentage string syntax, or updating CSS selectors for renamed data attributes. Triggers on "react-resizable-panels v4", "PanelGroup not found", "PanelResizeHandle not found", "panel layout broken after upgrade".
+
+</details>
+<details>
+<summary><code>shadcn</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill shadcn
+```
+
+Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
 
 </details>
 <details>
