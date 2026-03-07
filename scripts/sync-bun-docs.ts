@@ -135,7 +135,7 @@ function sync() {
   // Clean up files that no longer exist in source
   cleanOutDir(new Set(files));
 
-  console.log(`Synced: ${copied} copied, ${skipped} unchanged`);
+  if (copied > 0) console.log(`Synced: ${copied} copied`);
 }
 
 sync();

@@ -111,7 +111,7 @@ function sync() {
   }
 
   cleanOutDir(new Set(allFiles));
-  console.log(`Synced: ${copied} copied, ${skipped} unchanged`);
+  if (copied > 0) console.log(`Synced: ${copied} copied`);
 }
 
 sync();
