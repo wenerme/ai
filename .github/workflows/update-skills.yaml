@@ -1,0 +1,40 @@
+name: Update Skills
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 2 * * 1"  # Every Monday at 02:00 UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - uses: extractions/setup-just@v2
+
+      - name: Cache sparse clones
+        uses: actions/cache@v4
+        with:
+          path: ~/gits
+          key: sparse-clones-${{ runner.os }}-${{ hashFiles('skills/skills.json') }}
+          restore-keys: |
+            sparse-clones-${{ runner.os }}-
+
+      - name: Update skills
+        run: just update
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update skills [skip ci]"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com

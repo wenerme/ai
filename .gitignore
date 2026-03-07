@@ -3,11 +3,6 @@ local.*
 *.local.md
 .idea
 .mcp.json
-skills/.anthropic-docs-manifest.json
-skills/.openai-docs-manifest.json
-skills/.openrouter-docs-manifest.json
-skills/.google-ai-docs-manifest.json
-skills/claude-code-docs/references/manifest.json
 # Logs
 logs
 *.log
