@@ -401,6 +401,16 @@ components:
           description: >-
             List of provider responses for this generation, including fallback
             attempts
+        user_agent:
+          type:
+            - string
+            - 'null'
+          description: User-Agent header from the request
+        http_referer:
+          type:
+            - string
+            - 'null'
+          description: Referer header from the request
       required:
         - id
         - upstream_id
@@ -436,6 +446,8 @@ components:
         - api_type
         - router
         - provider_responses
+        - user_agent
+        - http_referer
       description: Generation data
       title: GenerationGetResponsesContentApplicationJsonSchemaData
     Generations_getGeneration_Response_200:

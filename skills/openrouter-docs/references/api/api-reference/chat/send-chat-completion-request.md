@@ -1144,28 +1144,6 @@ components:
           description: Audio transcript
       description: Audio output data or reference
       title: ChatCompletionAudioOutput
-    AssistantMessagePhase0:
-      type: string
-      enum:
-        - commentary
-      title: AssistantMessagePhase0
-    AssistantMessagePhase1:
-      type: string
-      enum:
-        - final_answer
-      title: AssistantMessagePhase1
-    AssistantMessagePhase:
-      oneOf:
-        - $ref: '#/components/schemas/AssistantMessagePhase0'
-        - $ref: '#/components/schemas/AssistantMessagePhase1'
-        - description: Any type
-      description: >-
-        The phase of an assistant message. Use `commentary` for an intermediate
-        assistant message and `final_answer` for the final assistant message.
-        For follow-up requests with models like `gpt-5.3-codex` and later,
-        preserve and resend phase on all assistant messages. Omitting it can
-        degrade performance. Not used for user messages.
-      title: AssistantMessagePhase
     AssistantMessage:
       type: object
       properties:
@@ -1198,15 +1176,6 @@ components:
           $ref: '#/components/schemas/AssistantMessageImages'
         audio:
           $ref: '#/components/schemas/ChatCompletionAudioOutput'
-        phase:
-          $ref: '#/components/schemas/AssistantMessagePhase'
-          description: >-
-            The phase of an assistant message. Use `commentary` for an
-            intermediate assistant message and `final_answer` for the final
-            assistant message. For follow-up requests with models like
-            `gpt-5.3-codex` and later, preserve and resend phase on all
-            assistant messages. Omitting it can degrade performance. Not used
-            for user messages.
       required:
         - role
       description: Assistant message for requests and responses
@@ -1549,6 +1518,31 @@ components:
         - image
         - audio
       title: ChatGenerationParamsModalitiesItems
+    ChatGenerationParamsCacheControlType:
+      type: string
+      enum:
+        - ephemeral
+      title: ChatGenerationParamsCacheControlType
+    ChatGenerationParamsCacheControlTtl:
+      type: string
+      enum:
+        - 5m
+        - 1h
+      title: ChatGenerationParamsCacheControlTtl
+    ChatGenerationParamsCacheControl:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ChatGenerationParamsCacheControlType'
+        ttl:
+          $ref: '#/components/schemas/ChatGenerationParamsCacheControlTtl'
+      required:
+        - type
+      description: >-
+        Enable automatic prompt caching. When set, the system automatically
+        applies cache breakpoints to the last cacheable block in the request.
+        Currently supported for Anthropic Claude models.
+      title: ChatGenerationParamsCacheControl
     ChatGenerationParams:
       type: object
       properties:
@@ -1707,6 +1701,12 @@ components:
           description: >-
             Output modalities for the response. Supported values are "text",
             "image", and "audio".
+        cache_control:
+          $ref: '#/components/schemas/ChatGenerationParamsCacheControl'
+          description: >-
+            Enable automatic prompt caching. When set, the system automatically
+            applies cache breakpoints to the last cacheable block in the
+            request. Currently supported for Anthropic Claude models.
       required:
         - messages
       description: Chat completion request parameters

@@ -6,10 +6,15 @@ assistant messages. This field is critical for multi-turn
 agentic workflows — it tells the model whether an assistant
 message is intermediate commentary or the final answer.
 
-OpenRouter supports `phase` in both the
-[Responses API](/docs/api/api-reference/responses/create-responses)
-and the
-[Chat Completions API](/docs/api/api-reference/chat/send-chat-completion-request).
+OpenRouter supports `phase` in the
+[Responses API](/docs/api/api-reference/responses/create-responses).
+
+<Note>
+  `phase` is **not available** in the Chat Completions API.
+  The Chat Completions format cannot represent multiple
+  output items with distinct phases in a single response.
+  Use the Responses API for full `phase` support.
+</Note>
 
 ## The `phase` Field
 
@@ -150,68 +155,22 @@ items with their `phase` intact:
 
 ### Chat Completions API
 
-`phase` is also supported in the Chat Completions API.
-It appears in assistant messages in both request and
-response:
+The Chat Completions API does **not** support `phase` in
+responses. A single chat completion response can only
+contain one message per choice, so there is no way to
+represent the separate commentary and final answer output
+items that models like GPT-5.4 produce.
 
-```json
-{
-  "model": "openai/gpt-5.4",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Refactor the auth module"
-    },
-    {
-      "role": "assistant",
-      "content": "I'll start by analyzing...",
-      "phase": "commentary"
-    },
-    {
-      "role": "assistant",
-      "content": "Here's the refactored code...",
-      "phase": "final_answer"
-    },
-    {
-      "role": "user",
-      "content": "Now add unit tests"
-    }
-  ]
-}
-```
-
-In streaming responses, `phase` appears on each delta
-chunk:
-
-```json
-{
-  "choices": [
-    {
-      "delta": {
-        "role": "assistant",
-        "content": "Let me write...",
-        "phase": "final_answer"
-      }
-    }
-  ]
-}
-```
+If you need `phase` support for multi-turn agentic
+workflows, use the
+[Responses API](/docs/api/api-reference/responses/create-responses)
+instead.
 
 ## Implementation Pattern
 
-When building an integration, persist your conversation
-transcript verbatim, including `phase` on assistant
-items:
-
-```typescript
-type Phase = null | "commentary" | "final_answer";
-
-interface StoredMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
-  phase?: Phase; // Only present on assistant messages
-}
-```
+When building an integration with the Responses API,
+persist your output items verbatim, including `phase`
+on assistant messages:
 
 ### Key Rules
 
@@ -224,6 +183,9 @@ interface StoredMessage {
 3. **Do not drop phase** — Omitting `phase` from
    assistant messages in multi-turn conversations will
    degrade model performance.
+4. **Use the Responses API** — `phase` requires the
+   Responses API. The Chat Completions API cannot
+   represent multi-phase output.
 
 ## Supported Models
 
