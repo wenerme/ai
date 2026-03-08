@@ -10,12 +10,13 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 50 skills available
+> 51 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
+| `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... |  |
 | `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... |  |
 | `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... |  |
 | `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... |  |
@@ -83,6 +84,16 @@ npx skills add wenerme/ai --skill ai-sdk
 ```
 
 Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI SDK", "generateText", "streamText", "add AI to my app", "build an agent", "tool calling", "structured output", "useChat".
+
+</details>
+<details>
+<summary><code>alpine-aports-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill alpine-aports-docs
+```
+
+USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package management, APKINDEX format, commit/coding style, contributing to aports, package upgrade/rebuild/move/rename, subpackages, cross-compilation, secfixes, checksum handling, testing packages, or Alpine Linux packaging best practices. Triggers on: APKBUILD, abuild, apk add, apk del, aports, Alpine package, pkgname, pkgver, pkgrel.
 
 </details>
 <details>
