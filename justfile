@@ -64,6 +64,10 @@ update-vllm-docs:
 update-orpc-docs:
     bun scripts/sync-orpc-docs.ts
 
+# Sync HuggingFace Transformers docs from local huggingface/transformers clone
+update-transformers-docs:
+    bun scripts/sync-transformers-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -81,6 +85,7 @@ update:
     -just update-llamacpp-docs
     -just update-vllm-docs
     -just update-orpc-docs
+    -just update-transformers-docs
     just update-readme
 
 # Lint skills for best practices

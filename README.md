@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 51 skills available
+> 52 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -59,6 +59,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
+| `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
 | `ui-ux-pro-max` | UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 9 stacks (React, Next.js, Vue, Svelte,... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
@@ -514,6 +515,16 @@ npx skills add wenerme/ai --skill tmux-session-manager
 ```
 
 Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane
+
+</details>
+<details>
+<summary><code>transformers-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill transformers-docs
+```
+
+USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text generation, tokenizers, chat templates, quantization (GPTQ/AWQ/bitsandbytes/GGUF), distributed training (FSDP/DeepSpeed), inference optimization, Trainer API, or vLLM/SGLang integration. Triggers on: transformers, AutoModel, AutoTokenizer, from_pretrained, pipeline(), generate(), Trainer, BitsAndBytesConfig, chat_template.
 
 </details>
 <details>
