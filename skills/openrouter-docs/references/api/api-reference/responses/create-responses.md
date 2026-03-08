@@ -542,6 +542,39 @@ components:
       enum:
         - function_call_output
       title: OpenResponsesFunctionCallOutputType
+    OpenResponsesFunctionCallOutputOutputOneOf1Items1:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ResponseInputImageType'
+        detail:
+          $ref: '#/components/schemas/ResponseInputImageDetail'
+        image_url:
+          type:
+            - string
+            - 'null'
+      required:
+        - type
+        - detail
+      description: Image input content item
+      title: OpenResponsesFunctionCallOutputOutputOneOf1Items1
+    OpenResponsesFunctionCallOutputOutputOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/ResponseInputText'
+        - $ref: >-
+            #/components/schemas/OpenResponsesFunctionCallOutputOutputOneOf1Items1
+        - $ref: '#/components/schemas/ResponseInputFile'
+      title: OpenResponsesFunctionCallOutputOutputOneOf1Items
+    OpenResponsesFunctionCallOutputOutput1:
+      type: array
+      items:
+        $ref: '#/components/schemas/OpenResponsesFunctionCallOutputOutputOneOf1Items'
+      title: OpenResponsesFunctionCallOutputOutput1
+    OpenResponsesFunctionCallOutputOutput:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/OpenResponsesFunctionCallOutputOutput1'
+      title: OpenResponsesFunctionCallOutputOutput
     OpenResponsesFunctionCallOutput:
       type: object
       properties:
@@ -554,7 +587,7 @@ components:
         call_id:
           type: string
         output:
-          type: string
+          $ref: '#/components/schemas/OpenResponsesFunctionCallOutputOutput'
         status:
           $ref: '#/components/schemas/ToolCallStatus'
       required:
@@ -3196,6 +3229,23 @@ components:
       enum:
         - function_call_output
       title: OpenAiResponsesInputOneOf1ItemsOneOf2Type
+    OpenAiResponsesInputOneOf1ItemsOneOf2OutputOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/ResponseInputText'
+        - $ref: '#/components/schemas/ResponseInputImage'
+        - $ref: '#/components/schemas/ResponseInputFile'
+      title: OpenAiResponsesInputOneOf1ItemsOneOf2OutputOneOf1Items
+    OpenAiResponsesInputOneOf1ItemsOneOf2Output1:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/OpenAiResponsesInputOneOf1ItemsOneOf2OutputOneOf1Items
+      title: OpenAiResponsesInputOneOf1ItemsOneOf2Output1
+    OpenAiResponsesInputOneOf1ItemsOneOf2Output:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/OpenAiResponsesInputOneOf1ItemsOneOf2Output1'
+      title: OpenAiResponsesInputOneOf1ItemsOneOf2Output
     OpenAiResponsesInputOneOf1Items2:
       type: object
       properties:
@@ -3208,7 +3258,7 @@ components:
         call_id:
           type: string
         output:
-          type: string
+          $ref: '#/components/schemas/OpenAiResponsesInputOneOf1ItemsOneOf2Output'
         status:
           $ref: '#/components/schemas/ToolCallStatus'
       required:
