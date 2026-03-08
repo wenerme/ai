@@ -117,6 +117,7 @@ Rules: lowercase after colon, no trailing dot, imperative present tense, one com
 
 ## References
 
+- `references/abuild-workflow.md` — Full abuild workflow: new package, upgrade (abump), build debug, patch creation, MR submission, glab commands, secfixes, subpackages, rebuild, move
 - `references/codingstyle.md` — APKBUILD coding style (formatting, quoting, naming, metadata order)
 - `references/commitstyle.md` — Full commit message policy with all types and exceptions
 - `references/contributing.md` — How to submit MRs/PRs, CI requirements
