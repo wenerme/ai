@@ -68,6 +68,10 @@ update-orpc-docs:
 update-transformers-docs:
     bun scripts/sync-transformers-docs.ts
 
+# Sync EvalScope docs from local modelscope/evalscope clone
+update-evalscope-docs:
+    bun scripts/sync-evalscope-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -86,6 +90,7 @@ update:
     -just update-vllm-docs
     -just update-orpc-docs
     -just update-transformers-docs
+    -just update-evalscope-docs
     just update-readme
 
 # Lint skills for best practices

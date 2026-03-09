@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 53 skills available
+> 54 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -36,6 +36,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... |  |
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... |  |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
+| `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... |  |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
@@ -286,6 +287,16 @@ npx skills add wenerme/ai --skill doris-docs
 ```
 
 Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL syntax, data import (Stream Load, Broker Load, INSERT INTO), data export, lakehouse (Hive/Iceberg/Hudi/Paimon catalogs), materialized views, query acceleration, inverted index, compute-storage decoupled mode, administration, or Doris ecosystem tools.
+
+</details>
+<details>
+<summary><code>evalscope-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill evalscope-docs
+```
+
+USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig, supported datasets/benchmarks, evaluation backends (Native/OpenCompass/VLMEvalKit/RAGEval), performance stress testing (perf), custom datasets, multi-modal eval, arena mode, visualization, or integrating with vLLM/Swift/SGLang. Triggers on: evalscope, EvalScope, run_task, TaskConfig, evalscope eval, evalscope perf, ModelScope eval.
 
 </details>
 <details>
