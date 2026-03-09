@@ -30,6 +30,16 @@ const SKIP_LANGS = ["go", "java", "ruby"];
 // Top-level reference sections that don't support .md
 const SKIP_SECTIONS = ["responses", "chat-completions", "realtime-beta", "administration", "overview"];
 
+// Codex paths to skip (marketing, community, non-text content)
+const CODEX_SKIP_PREFIXES = [
+  "/codex/ambassadors",
+  "/codex/community",
+  "/codex/codex-for-oss-terms",
+  "/codex/open-source",
+  "/codex/explore",
+  "/codex/videos",
+];
+
 interface ManifestEntry {
   url: string;
   skill: string;
@@ -105,6 +115,20 @@ function routeUrl(urlPath: string): Route | null {
   // Skip known non-.md sections and other languages
   for (const s of [...SKIP_SECTIONS, ...SKIP_LANGS]) {
     if (p.startsWith(`/api/reference/${s}`)) return null;
+  }
+
+  // /codex/** → codex-docs (skip marketing/community pages)
+  if (p.startsWith("/codex/")) {
+    for (const skip of CODEX_SKIP_PREFIXES) {
+      if (p.startsWith(skip)) return null;
+    }
+    const rel = p.replace("/codex/", "").replace(/\/$/, "");
+    if (!rel) return null; // skip /codex/ root
+    return {
+      skill: "codex-docs",
+      filepath: rel + ".md",
+      mdUrl: `${BASE_URL}/codex/${rel}.md`,
+    };
   }
 
   return null;

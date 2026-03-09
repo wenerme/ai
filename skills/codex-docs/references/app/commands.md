@@ -1,0 +1,54 @@
+# Codex app commands
+
+Use these commands and keyboard shortcuts to navigate the Codex app.
+
+## Keyboard shortcuts
+
+|             | Action             | macOS shortcut                                                                    |
+| ----------- | ------------------ | --------------------------------------------------------------------------------- |
+| **General** |                    |                                                                                   |
+|             | Command menu       | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or <kbd>Cmd</kbd> + <kbd>K</kbd> |
+|             | Settings           | <kbd>Cmd</kbd> + <kbd>,</kbd>                                                     |
+|             | Open folder        | <kbd>Cmd</kbd> + <kbd>O</kbd>                                                     |
+|             | Navigate back      | <kbd>Cmd</kbd> + <kbd>[</kbd>                                                     |
+|             | Navigate forward   | <kbd>Cmd</kbd> + <kbd>]</kbd>                                                     |
+|             | Increase font size | <kbd>Cmd</kbd> + <kbd>+</kbd> or <kbd>Cmd</kbd> + <kbd>=</kbd>                    |
+|             | Decrease font size | <kbd>Cmd</kbd> + <kbd>-</kbd> or <kbd>Cmd</kbd> + <kbd>\_</kbd>                   |
+|             | Toggle sidebar     | <kbd>Cmd</kbd> + <kbd>B</kbd>                                                     |
+|             | Toggle diff panel  | <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>B</kbd>                                 |
+|             | Toggle terminal    | <kbd>Cmd</kbd> + <kbd>J</kbd>                                                     |
+|             | Clear the terminal | <kbd>Ctrl</kbd> + <kbd>L</kbd>                                                    |
+| **Thread**  |                    |                                                                                   |
+|             | New thread         | <kbd>Cmd</kbd> + <kbd>N</kbd> or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> |
+|             | Find in thread     | <kbd>Cmd</kbd> + <kbd>F</kbd>                                                     |
+|             | Previous thread    | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>[</kbd>                                  |
+|             | Next thread        | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>]</kbd>                                  |
+|             | Dictation          | <kbd>Ctrl</kbd> + <kbd>M</kbd>                                                    |
+
+## Slash commands
+
+Slash commands let you control Codex without leaving the thread composer. Available commands vary based on your environment and access.
+
+### Use a slash command
+
+1. In the thread composer, type `/`.
+2. Select a command from the list, or keep typing to filter (for example, `/status`).
+
+You can also explicitly invoke skills by typing `$` in the thread composer. See [Skills](https://developers.openai.com/codex/skills).
+
+Enabled skills also appear in the slash command list (for example, `/imagegen`).
+
+### Available slash commands
+
+| Slash command | Description                                                                            |
+| ------------- | -------------------------------------------------------------------------------------- |
+| `/feedback`   | Open the feedback dialog to submit feedback and optionally include logs.               |
+| `/mcp`        | Open MCP status to view connected servers.                                             |
+| `/plan-mode`  | Toggle plan mode for multi-step planning.                                              |
+| `/review`     | Start code review mode to review uncommitted changes or compare against a base branch. |
+| `/status`     | Show the thread ID, context usage, and rate limits.                                    |
+
+## See also
+
+- [Features](https://developers.openai.com/codex/app/features)
+- [Settings](https://developers.openai.com/codex/app/settings)
