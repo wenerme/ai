@@ -72,6 +72,14 @@ update-transformers-docs:
 update-evalscope-docs:
     bun scripts/sync-evalscope-docs.ts
 
+# Sync ms-swift docs from local modelscope/swift clone
+update-swift-ms-docs:
+    bun scripts/sync-swift-ms-docs.ts
+
+# Sync Mastra docs from local mastra-ai/mastra clone
+update-mastra-docs:
+    bun scripts/sync-mastra-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -91,6 +99,8 @@ update:
     -just update-orpc-docs
     -just update-transformers-docs
     -just update-evalscope-docs
+    -just update-swift-ms-docs
+    -just update-mastra-docs
     just update-readme
 
 # Lint skills for best practices

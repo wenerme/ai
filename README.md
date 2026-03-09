@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 54 skills available
+> 56 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -45,6 +45,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
+| `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
@@ -59,6 +60,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
+| `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
@@ -380,6 +382,16 @@ Comprehensive Mastra framework guide. Teaches how to find current documentation,
 
 </details>
 <details>
+<summary><code>mastra-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill mastra-docs
+```
+
+USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines, memory, voice, evals, MCP tools, observability/tracing, deploying to Mastra Cloud/Cloudflare/Vercel, or using Mastra client SDK. Triggers on: mastra, Mastra agent, Mastra workflow, createAgent, createWorkflow, mastra.run, MastraClient, @mastra/core.
+
+</details>
+<details>
 <summary><code>mikro-orm-v6-to-v7</code></summary>
 
 ```bash
@@ -517,6 +529,16 @@ npx skills add wenerme/ai --skill skill-writer
 ```
 
 Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large skills into references, or validating skills against best practices
+
+</details>
+<details>
+<summary><code>swift-ms-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill swift-ms-docs
+```
+
+USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO reinforcement learning, RLHF (DPO/KTO/SimPO), pre-training, Megatron distributed training, inference/deployment with vLLM/SGLang/LmDeploy, quantization (AWQ/GPTQ/BNB/FP8), evaluation, custom datasets/models, or Web-UI. Triggers on: ms-swift, swift train, swift infer, swift deploy, swift export, LoRA fine-tuning ModelScope, GRPO training.
 
 </details>
 <details>

@@ -1,0 +1,66 @@
+---
+title: "Reference: CloudflareDeployer | Deployer"
+description: "Documentation for the CloudflareDeployer class, which deploys Mastra applications to Cloudflare Workers."
+packages:
+  - "@mastra/deployer-cloudflare"
+---
+
+# CloudflareDeployer
+
+The `CloudflareDeployer` bundles your Mastra server and generates a `wrangler.jsonc` file conforming to Cloudflare's [wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/). Cloudflare deploys this as a Cloudflare Worker.
+
+## Installation
+
+To use `CloudflareDeployer`, install the `@mastra/deployer-cloudflare` package:
+
+```bash npm2yarn
+npm install @mastra/deployer-cloudflare@latest
+```
+
+## Usage example
+
+Import `CloudflareDeployer` and set it as the deployer in your Mastra configuration:
+
+```typescript title="src/mastra/index.ts"
+import { Mastra } from '@mastra/core'
+import { CloudflareDeployer } from '@mastra/deployer-cloudflare'
+
+export const mastra = new Mastra({
+  deployer: new CloudflareDeployer({
+    name: 'your-project-name',
+    routes: [
+      {
+        pattern: 'example.com/*',
+        zone_name: 'example.com',
+        custom_domain: true,
+      },
+    ],
+    vars: {
+      NODE_ENV: 'production',
+      API_KEY: '<api-key>',
+    },
+    d1_databases: [
+      {
+        binding: 'DB',
+        database_name: 'my-database',
+        database_id: 'd1-database-id',
+        preview_database_id: 'your-preview-database-id',
+      },
+    ],
+    kv_namespaces: [
+      {
+        binding: 'CACHE',
+        id: 'kv-namespace-id',
+      },
+    ],
+  }),
+})
+```
+
+## Constructor options
+
+The `CloudflareDeployer` constructor accepts the same configuration options as `wrangler.jsonc`. See the [Wrangler configuration documentation](https://developers.cloudflare.com/workers/wrangler/configuration/) for all available options.
+
+## Build output
+
+After running `mastra build`, the deployer generates a `wrangler.jsonc` file conforming to Cloudflare's [wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/). It points to files inside `.mastra/output` so you need to run `mastra build` before deploying with Wrangler.
