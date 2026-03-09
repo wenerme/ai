@@ -93,4 +93,4 @@ run_task(task_cfg)
 - `references/` — 228 doc files from docs/en/
 - `references/benchmarks/` — 153 benchmark docs (name, dataset_id, metrics, examples, usage)
 - `references/local/` — 6 hand-curated deep-dive docs (overview, api, dataset, registry, backend, app)
-- `references/datasets.json` — Full dataset registry (4400+ lines, all supported datasets)
+- `references/datasets.csv` — Full dataset registry (190 datasets: name, title, dataset_id, backends, tags, metrics, subsets, description)
