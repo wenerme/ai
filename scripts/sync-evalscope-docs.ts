@@ -4,12 +4,31 @@
  * Copies:
  *   1. docs/en/*.md files (official English docs, skip images/blog/experiments)
  *   2. *.local.md files (hand-curated deep-dive docs) → references/local/
- *   3. datasets.json → references/datasets.json
+ *   3. datasets.json → references/datasets.csv (converted from JSON)
  */
 
 import { join } from "path";
-import { copyFileSync, mkdirSync, existsSync, statSync } from "fs";
+import { copyFileSync, mkdirSync, existsSync, statSync, writeFileSync } from "fs";
 import { cloneOrPull, collectFiles, cleanOutDir, syncFiles } from "./common.ts";
+
+function jsonToCsv(jsonPath: string): string {
+  const data: any[] = JSON.parse(require("fs").readFileSync(jsonPath, "utf-8"));
+  const rows = [["name", "title", "dataset_id", "backends", "tags", "metrics", "subsets", "description"]];
+  for (const d of data) {
+    const metrics = (d.metrics ?? []).map((m: any) => (typeof m === "string" ? m : Object.keys(m).join("|"))).join("|");
+    rows.push([
+      d.name ?? "",
+      d.title ?? "",
+      d.dataset_id ?? "",
+      (d.backends ?? []).join("|"),
+      (d.tags ?? []).join("|"),
+      metrics,
+      (d.subset_list ?? []).join("|"),
+      d.description ?? "",
+    ]);
+  }
+  return rows.map((r) => r.map((v) => (v.includes(",") || v.includes('"') || v.includes("\n") ? `"${v.replace(/"/g, '""')}"` : v)).join(",")).join("\n") + "\n";
+}
 
 const REPO = join(process.env.HOME!, "gits/modelscope/evalscope");
 const DOCS_DIR = join(REPO, "docs/en");
@@ -29,14 +48,14 @@ console.log(`Found ${docFiles.length} English doc files`);
 const { copied } = syncFiles(docFiles, DOCS_DIR, OUT_DIR);
 cleanOutDir(OUT_DIR, new Set([
   ...docFiles,
-  // Keep local/ and datasets.json from cleanup
+  // Keep local/ and datasets.csv from cleanup
   "local/overview.md",
   "local/api.md",
   "local/dataset.md",
   "local/registry.md",
   "local/backend.md",
   "local/app.md",
-  "datasets.json",
+  "datasets.csv",
 ]));
 
 // 2. Sync *.local.md → references/local/
@@ -54,17 +73,17 @@ for (const name of localFiles) {
   localCopied++;
 }
 
-// 3. Sync datasets.json
+// 3. Convert datasets.json → datasets.csv
 const datasetsSrc = join(REPO, "datasets.json");
-const datasetsDst = join(OUT_DIR, "datasets.json");
+const datasetsDst = join(OUT_DIR, "datasets.csv");
 let datasetCopied = false;
 if (existsSync(datasetsSrc)) {
   const srcStat = statSync(datasetsSrc);
   if (!existsSync(datasetsDst) || statSync(datasetsDst).mtimeMs < srcStat.mtimeMs) {
-    copyFileSync(datasetsSrc, datasetsDst);
+    writeFileSync(datasetsDst, jsonToCsv(datasetsSrc));
     datasetCopied = true;
   }
 }
 
 const total = copied + localCopied + (datasetCopied ? 1 : 0);
-if (total > 0) console.log(`Synced: ${copied} docs, ${localCopied} local, ${datasetCopied ? 1 : 0} datasets.json`);
+if (total > 0) console.log(`Synced: ${copied} docs, ${localCopied} local, ${datasetCopied ? 1 : 0} datasets.csv`);
