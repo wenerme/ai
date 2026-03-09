@@ -9,7 +9,7 @@ description: "USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluat
 
 - [GitHub](https://github.com/modelscope/evalscope) | [Docs](https://evalscope.readthedocs.io)
 
-CRITICAL: grep `references/` for detailed docs. `references/benchmarks/` has 153 individual benchmark files with full details, metrics, and usage examples. `references/local/` has deep-dive architecture docs.
+CRITICAL: grep `references/` for detailed docs. `references/benchmarks/` has 153 individual benchmark files with full details, metrics, and usage examples.
 
 ## Quick Start
 
@@ -57,13 +57,13 @@ run_task(task_cfg)
 - `references/get_started/supported_dataset/agent.md` — Agent benchmarks
 - `references/get_started/supported_dataset/aigc.md` — AIGC (T2I) benchmarks
 - `references/benchmarks/` — **153 individual benchmark docs** with metrics, examples, prompt templates
+- `references/datasets.csv` — Full registry (190 datasets: name, backends, tags, metrics, subsets)
 
 ### Backends
 - `references/user_guides/backend/index.md` — Backend selection guide
 - `references/user_guides/backend/opencompass_backend.md` — OpenCompass backend
 - `references/user_guides/backend/vlmevalkit_backend.md` — VLMEvalKit backend
 - `references/user_guides/backend/rageval_backend/` — RAGEval (RAGAS, MTEB, CLIP)
-- `references/local/backend.md` — Backend architecture deep-dive
 
 ### Performance Testing
 - `references/user_guides/stress_test/index.md` — Stress test overview
@@ -84,13 +84,9 @@ run_task(task_cfg)
 ### Best Practices
 - `references/best_practice/` — Qwen3, DeepSeek-R1, QwQ, GPT, VLM, T2I evaluation guides
 - `references/third_party/` — SWE-Bench, BFCL, ToolBench, LongWriter, NeedleHaystack
-- `references/local/overview.md` — Architecture overview (zh)
-- `references/local/api.md` — TaskConfig & API reference (zh)
-- `references/local/dataset.md` — Dataset loading & caching (zh)
 
 ## References
 
 - `references/` — 228 doc files from docs/en/
 - `references/benchmarks/` — 153 benchmark docs (name, dataset_id, metrics, examples, usage)
-- `references/local/` — 6 hand-curated deep-dive docs (overview, api, dataset, registry, backend, app)
-- `references/datasets.csv` — Full dataset registry (190 datasets: name, title, dataset_id, backends, tags, metrics, subsets, description)
+- `references/datasets.csv` — Full dataset registry (190 datasets)
