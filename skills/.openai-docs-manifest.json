@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "\"05cdf93129d82626517c42534403586e\"",
-    "lastModified": "Thu, 05 Mar 2026 05:48:43 GMT",
-    "size": 21640,
-    "updatedAt": "2026-03-05T06:03:44.178Z"
+    "etag": "\"d00a5caa1504ba7ae300d29487ede25e\"",
+    "lastModified": "Tue, 10 Mar 2026 10:14:47 GMT",
+    "size": 21637,
+    "updatedAt": "2026-03-10T10:14:47.173Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -426,10 +426,10 @@
   "openai-docs/guides/latest-model.md": {
     "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
     "skill": "openai-docs",
-    "etag": "\"ce6cbe90cb12d8899092ba61fac96d65\"",
-    "lastModified": "Sat, 07 Mar 2026 12:26:13 GMT",
-    "size": 29507,
-    "updatedAt": "2026-03-07T18:29:56.726Z"
+    "etag": "\"f8052d12992ef51dd804977bf3d79217\"",
+    "lastModified": "Tue, 10 Mar 2026 05:46:14 GMT",
+    "size": 29481,
+    "updatedAt": "2026-03-10T10:14:56.436Z"
   },
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
@@ -850,10 +850,10 @@
   "openai-docs/guides/tools-tool-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-tool-search.md",
     "skill": "openai-docs",
-    "etag": "\"ec509ba15290d3eb9a4ecb8b15ac7615\"",
-    "lastModified": "Fri, 06 Mar 2026 06:07:05 GMT",
-    "size": 7242,
-    "updatedAt": "2026-03-06T06:07:05.602Z"
+    "etag": "\"6f4d8e3d3705a1d7c7f632320d942a80\"",
+    "lastModified": "Tue, 10 Mar 2026 06:09:22 GMT",
+    "size": 7232,
+    "updatedAt": "2026-03-10T10:15:10.186Z"
   },
   "openai-docs/guides/tools-web-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-web-search.md",
@@ -866,10 +866,10 @@
   "openai-docs/guides/tools.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools.md",
     "skill": "openai-docs",
-    "etag": "\"4775ece69a6b2c9c7997ba454d7bff51\"",
-    "lastModified": "Fri, 06 Mar 2026 06:07:06 GMT",
-    "size": 7222,
-    "updatedAt": "2026-03-06T06:07:06.962Z"
+    "etag": "\"ba3713fcd79948a7e672b086b5eb8ee3\"",
+    "lastModified": "Tue, 10 Mar 2026 06:09:21 GMT",
+    "size": 7210,
+    "updatedAt": "2026-03-10T10:15:10.655Z"
   },
   "openai-docs/guides/trace-grading.md": {
     "url": "https://developers.openai.com/api/docs/guides/trace-grading.md",

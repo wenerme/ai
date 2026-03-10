@@ -60,7 +60,9 @@ Google Cloud project and create a key:
 
 Once a project is imported, go to the **API Keys** page from the **Dashboard**
 menu and create an API key in the project you just imported.
-| **Note:** For existing users, the keys are pre-populated in the imports pane based on the last 30-days of activity in AI Studio.
+
+> [!NOTE]
+> **Note:** For existing users, the keys are pre-populated in the imports pane based on the last 30-days of activity in AI Studio.
 
 ## Limitations
 
@@ -72,7 +74,11 @@ Google AI Studio.
 - The **API keys** and **Projects** pages display a maximum of 100 keys and 50 projects.
 - Only API keys that have no restrictions, or are restricted to the Generative Language API are displayed.
 
-For additional management access to your projects, visit the Google Cloud Console.
+For additional management access to your projects, including modifying and
+restricting API keys, visit the
+[Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).
+In the Cloud Console, you can select your project, click an existing API key,
+and then restrict it to the **Generative Language API**.
 
 ## Setting the API key as an environment variable
 
@@ -86,47 +92,47 @@ If you're using the REST API, or JavaScript on the browser, you will need to
 provide the API key explicitly.
 
 Here is how you can set your API key locally as the environment variable
-`GEMINI_API_KEY` with different operating systems.  
+`GEMINI_API_KEY` with different operating systems.
 
 ### Linux/macOS - Bash
 
 Bash is a common Linux and macOS terminal configuration. You can check if
-you have a configuration file for it by running the following command:  
+you have a configuration file for it by running the following command:
 
     ~/.bashrc
 
 If the response is "No such file or directory", you will need to create this
-file and open it by running the following commands, or use `zsh`:  
+file and open it by running the following commands, or use `zsh`:
 
     touch ~/.bashrc
     open ~/.bashrc
 
-Next, you need to set your API key by adding the following export command:  
+Next, you need to set your API key by adding the following export command:
 
     export GEMINI_API_KEY=<YOUR_API_KEY_HERE>
 
-After saving the file, apply the changes by running:  
+After saving the file, apply the changes by running:
 
     source ~/.bashrc
 
 ### macOS - Zsh
 
 Zsh is a common Linux and macOS terminal configuration. You can check if
-you have a configuration file for it by running the following command:  
+you have a configuration file for it by running the following command:
 
     ~/.zshrc
 
 If the response is "No such file or directory", you will need to create this
-file and open it by running the following commands, or use `bash`:  
+file and open it by running the following commands, or use `bash`:
 
     touch ~/.zshrc
     open ~/.zshrc
 
-Next, you need to set your API key by adding the following export command:  
+Next, you need to set your API key by adding the following export command:
 
     export GEMINI_API_KEY=<YOUR_API_KEY_HERE>
 
-After saving the file, apply the changes by running:  
+After saving the file, apply the changes by running:
 
     source ~/.zshrc
 
@@ -150,13 +156,13 @@ In some cases, you may want to explicitly provide an API key. For example:
 - You want explicit control without having to rely on automatic discovery of environment variables by the Gemini API libraries
 - You're using an environment where environment variables are not supported (e.g web) or you are making REST calls.
 
-Below are examples for how you can provide an API key explicitly:  
+Below are examples for how you can provide an API key explicitly:
 
 ### Python
 
     from google import genai
 
-    client = genai.Client(api_key="<var translate="no">YOUR_API_KEY</var>")
+    client = genai.Client(api_key="YOUR_API_KEY")
 
     response = client.models.generate_content(
         model="gemini-3-flash-preview", contents="Explain how AI works in a few words"
@@ -167,7 +173,7 @@ Below are examples for how you can provide an API key explicitly:
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({ apiKey: "<var translate="no">YOUR_API_KEY</var>" });
+    const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
 
     async function main() {
       const response = await ai.models.generateContent({
@@ -193,7 +199,7 @@ Below are examples for how you can provide an API key explicitly:
     func main() {
         ctx := context.Background()
         client, err := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  "<var translate="no">YOUR_API_KEY</var>",
+            APIKey:  "YOUR_API_KEY",
             Backend: genai.BackendGeminiAPI,
         })
         if err != nil {
@@ -221,7 +227,7 @@ Below are examples for how you can provide an API key explicitly:
 
     public class GenerateTextFromTextInput {
       public static void main(String[] args) {
-        Client client = Client.builder().apiKey("<var translate="no">YOUR_API_KEY</var>").build();
+        Client client = Client.builder().apiKey("YOUR_API_KEY").build();
 
         GenerateContentResponse response =
             client.models.generateContent(
@@ -237,7 +243,7 @@ Below are examples for how you can provide an API key explicitly:
 
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
       -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: <var translate="no">YOUR_API_KEY</var>" \
+      -H "x-goog-api-key: YOUR_API_KEY" \
       -X POST \
       -d '{
         "contents": [

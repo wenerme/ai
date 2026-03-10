@@ -61,13 +61,13 @@ To improve reliability and make it easier for developers to choose the right mod
 
 ### 2025-09-15: Realtime API Beta
 
-The Realtime API Beta will be deprecated and removed from the API on March 24, 2026.
+The Realtime API Beta will be deprecated and removed from the API on May 7, 2026.
 
 There are a few key differences between the interfaces in the Realtime beta API and the released GA API. See [the migration guide](https://developers.openai.com/api/docs/guides/realtime#beta-to-ga-migration) to learn more about how to migrate your current beta integration.
 
 | Shutdown date | Model / system           | Recommended replacement |
 | ------------- | ------------------------ | ----------------------- |
-| 2026‑03‑24    | OpenAI-Beta: realtime=v1 | Realtime API            |
+| 2026‑05‑07    | OpenAI-Beta: realtime=v1 | Realtime API            |
 
 ### 2025-08-20: Assistants API
 
@@ -87,12 +87,12 @@ In September, 2025, we notified developers using gpt-4o-realtime-preview models 
 
 | Shutdown date | Model / system                     | Recommended replacement |
 | ------------- | ---------------------------------- | ----------------------- |
-| 2026-03-24    | gpt-4o-realtime-preview            | gpt-realtime            |
-| 2026-03-24    | gpt-4o-realtime-preview-2025-06-03 | gpt-realtime            |
-| 2026-03-24    | gpt-4o-realtime-preview-2024-12-17 | gpt-realtime            |
-| 2026-03-24    | gpt-4o-mini-realtime-preview       | gpt-realtime-mini       |
-| 2026-03-24    | gpt-4o-audio-preview               | gpt-audio               |
-| 2026-03-24    | gpt-4o-mini-audio-preview          | gpt-audio-mini          |
+| 2026-05-07    | gpt-4o-realtime-preview            | gpt-realtime-1.5        |
+| 2026-05-07    | gpt-4o-realtime-preview-2025-06-03 | gpt-realtime-1.5        |
+| 2026-05-07    | gpt-4o-realtime-preview-2024-12-17 | gpt-realtime-1.5        |
+| 2026-05-07    | gpt-4o-mini-realtime-preview       | gpt-realtime-mini       |
+| 2026-05-07    | gpt-4o-audio-preview               | gpt-audio-1.5           |
+| 2026-05-07    | gpt-4o-mini-audio-preview          | gpt-audio-mini          |
 
 ### 2025-06-10: gpt-4o-realtime-preview-2024-10-01
 
@@ -100,7 +100,7 @@ On June 10th, 2025, we notified developers using gpt-4o-realtime-preview-2024-10
 
 | Shutdown date | Model / system                     | Recommended replacement |
 | ------------- | ---------------------------------- | ----------------------- |
-| 2025-10-10    | gpt-4o-realtime-preview-2024-10-01 | gpt-realtime            |
+| 2025-10-10    | gpt-4o-realtime-preview-2024-10-01 | gpt-realtime-1.5        |
 
 ### 2025-06-10: gpt-4o-audio-preview-2024-10-01
 
@@ -108,7 +108,7 @@ On June 10th, 2025, we notified developers using `gpt-4o-audio-preview-2024-10-0
 
 | Shutdown date | Model / system                    | Recommended replacement |
 | ------------- | --------------------------------- | ----------------------- |
-| 2025-10-10    | `gpt-4o-audio-preview-2024-10-01` | `gpt-audio`             |
+| 2025-10-10    | `gpt-4o-audio-preview-2024-10-01` | `gpt-audio-1.5`         |
 
 ### 2025-04-28: text-moderation
 

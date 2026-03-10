@@ -390,7 +390,7 @@ By separating all possible tools from the subset that can be used _now_, you gai
 }'
 ```
 
-For a more detailed overview of all of these new features, see the [accompanying cookbook](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-4_prompting_guide).
+For a more detailed overview of all of these new features, see the [prompt guidance for GPT-5.4](https://developers.openai.com/api/docs/guides/prompt-guidance).
 
 ### Preambles
 
@@ -596,7 +596,7 @@ Learn more about reasoning models and how to get the most out of them in our [re
 
 ## Further reading
 
-[GPT-5.4 prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-4_prompting_guide)
+[GPT-5.4 prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance)
 
 [GPT-5.3-Codex prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide)
 
