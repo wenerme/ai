@@ -9290,10 +9290,10 @@
   "codex-docs/overview.md": {
     "url": "https://developers.openai.com/codex/overview.md",
     "skill": "codex-docs",
-    "etag": "\"83111cf274a4d5672bd15bca0665e40a\"",
-    "lastModified": "Mon, 09 Mar 2026 03:50:53 GMT",
-    "size": 2547,
-    "updatedAt": "2026-03-09T03:50:53.882Z"
+    "etag": "\"4d98d9a1dbc41ce5c825542e32a0c20b\"",
+    "lastModified": "Tue, 10 Mar 2026 00:17:39 GMT",
+    "size": 2538,
+    "updatedAt": "2026-03-10T00:17:39.456Z"
   },
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",

@@ -1,7 +1,7 @@
 *** ** * ** ***
 
 > [!WARNING]
-> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
+> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
 
 ## Gemini 3
 
@@ -15,9 +15,7 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) [### Gemini 3 Pro
-Our state-of-the-art reasoning model, with advanced multimodal understanding.
-Discontinuing](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview)
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview)
 
 *** ** * ** ***
 
@@ -87,6 +85,10 @@ High-fidelity music generation model providing granular creative control over in
 
 *This section contains all generative media models, including ones that may already be listed in other sections*
 
+### [Nano Banana 2 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview)
+
+High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds.
+
 ### [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview)
 
 State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio.
@@ -95,13 +97,13 @@ State-of-the-art cinematic video generation with advanced creative controls and 
 
 A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering.
 
-### [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
-
-State-of-the-art native image generation and editing designed for fast, creative workflows.
-
 ### [Lyria Experimental](https://ai.google.dev/gemini-api/docs/models/lyria-realtime-exp)
 
 High-fidelity music generation model providing granular creative control over instruments, BPM, and complex compositions.
+
+### [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
+
+State-of-the-art native image generation and editing designed for fast, creative workflows.
 
 ### [Imagen 4](https://ai.google.dev/gemini-api/docs/models/imagen)
 
@@ -136,7 +138,7 @@ Advanced embodied reasoning model that understands physical spaces and plans mul
 ## Previous models
 
 > [!WARNING]
-> These models are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down soon; migrate to Gemini 2.5 for improved performance.
+> These models are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down soon; migrate to newer models to prevent service interruptions.
 
 ### [Gemini 2.0 Flash Deprecated](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash)
 
@@ -145,6 +147,10 @@ Our second generation workhorse model, with next-gen features and improved capab
 ### [Gemini 2.0 Flash-Lite Deprecated](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-lite)
 
 Our fastest second generation model, optimized for cost efficiency and low latency.
+
+### [Gemini 3 Pro Preview Shut down](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview)
+
+Our state-of-the-art reasoning model, with advanced multimodal understanding.
 
 *** ** * ** ***
 

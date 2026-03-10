@@ -34,6 +34,23 @@ The core Gemini API development skill:
 
     npx ctx7 skills install /google-gemini/gemini-skills gemini-api-dev
 
+### gemini-live-api-dev
+
+Skill for building real-time conversational AI applications with Gemini Live
+API. This skill provides documentation and best practices for:
+
+- WebSocket connections for low-latency streaming
+- Streaming audio, video, and text
+- Voice activity detection and barge-in support
+
+#### Install with skills.sh
+
+    npx skills add google-gemini/gemini-skills --skill gemini-live-api-dev --global
+
+#### Install with Context7
+
+    npx ctx7 skills install /google-gemini/gemini-skills gemini-live-api-dev
+
 ### gemini-interactions-api
 
 Skill for building apps with the
@@ -71,7 +88,7 @@ A successful installation will:
 - Reference specific Gemini methods like `cacheContent` or `cachedContents.create`.
 - Show an indicator that it is "Using skill: gemini-api-dev".
 
-### Verify manifest
+### 2. Verify manifest
 
 If the agent gives a generic answer, use the specific "discovery" command for
 your environment to verify the skill is loaded.
@@ -79,7 +96,7 @@ your environment to verify the skill is loaded.
 | Environment | Verification method |
 |---|---|
 | Claude Code | Type `/skills` in the terminal to list all active manifests. |
-| Cursor | Open **Settings \> Rules** . Verify `gemini-api-dev` appears under "Agent Decides." |
+| Cursor | Open **Settings \> Rules**. Verify the skill appears under "Agent Decides." |
 | Antigravity | Type `/skills list` or check the **Customizations \> Rules** sidebar. |
 | Gemini CLI | Run `gemini skills list` or use the `/skills` slash command in-session. |
 | Copilot | Type `@gemini /skills` (or just `/skills`) to view active extensions. |

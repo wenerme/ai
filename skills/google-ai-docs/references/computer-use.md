@@ -818,7 +818,7 @@ practices:
 
 ## Model versions
 
-Note that `gemini-3-pro-preview` and `gemini-3-flash-preview` have built-in
+Note that `gemini-3-flash-preview` has built-in
 support for Computer Use; you do not need a separate model to access the tool.
 
 | Property | Description |
