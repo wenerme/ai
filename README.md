@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 56 skills available
+> 57 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -44,6 +44,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
+| `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... |  |
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
@@ -369,6 +370,16 @@ npx skills add wenerme/ai --skill llamacpp-docs
 ```
 
 Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative decoding, function calling, multimodal models (LLaVA, Gemma3, MiniCPM), GPU backends (CUDA, Metal, Vulkan, SYCL, OpenCL, CANN), Android deployment, Docker setup, performance tuning, or adding new model architectures to llama.cpp.
+
+</details>
+<details>
+<summary><code>llamafactory-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill llamafactory-docs
+```
+
+USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset preparation (alpaca/sharegpt format), DeepSpeed/FSDP distributed training, LLaMA Board Web UI, model deployment (vLLM/SGLang), GRPO reinforcement learning, multimodal training, or using llamafactory-cli. Triggers on: LlamaFactory, llamafactory-cli, LLaMA Factory, llama-factory, LLaMA Board.
 
 </details>
 <details>
