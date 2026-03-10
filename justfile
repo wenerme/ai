@@ -80,6 +80,10 @@ update-swift-ms-docs:
 update-mastra-docs:
     bun scripts/sync-mastra-docs.ts
 
+# Sync LlamaFactory docs from local hiyouga/LlamaFactory clone
+update-llamafactory-docs:
+    bun scripts/sync-llamafactory-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -101,6 +105,7 @@ update:
     -just update-evalscope-docs
     -just update-swift-ms-docs
     -just update-mastra-docs
+    -just update-llamafactory-docs
     just update-readme
 
 # Lint skills for best practices
