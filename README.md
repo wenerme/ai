@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 57 skills available
+> 58 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -42,6 +42,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
+| `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
 | `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... |  |
@@ -350,6 +351,16 @@ npx skills add wenerme/ai --skill grafana-docs
 ```
 
 Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki, Elasticsearch, InfluxDB, MySQL, PostgreSQL, CloudWatch, Azure Monitor), provisioning, as-code (Terraform, Ansible, Grafana Operator), RBAC, SSO/SAML/LDAP, plugins, API, or Grafana setup and administration.
+
+</details>
+<details>
+<summary><code>image-prompt-guide</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill image-prompt-guide
+```
+
+USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, and scenario-specific templates. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, image generation.
 
 </details>
 <details>
