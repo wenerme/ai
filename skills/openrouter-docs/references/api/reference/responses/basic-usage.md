@@ -363,7 +363,7 @@ Since the Responses API Beta is stateless, you must include the full conversatio
 <CodeGroup>
   ```typescript title="TypeScript"
   // First request
-  const firstResponse = await fetch('https://openrouter.ai/api/beta/responses', {
+  const firstResponse = await fetch('https://openrouter.ai/api/v1/responses', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
@@ -390,7 +390,7 @@ Since the Responses API Beta is stateless, you must include the full conversatio
   const firstResult = await firstResponse.json();
 
   // Second request - include previous conversation
-  const secondResponse = await fetch('https://openrouter.ai/api/beta/responses', {
+  const secondResponse = await fetch('https://openrouter.ai/api/v1/responses', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',

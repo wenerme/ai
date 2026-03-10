@@ -148,40 +148,8 @@ are equivalent to $0.101 per image. Output images at 4K (4096x4096px) consume
 
 ^\*\*^ A customer-submitted request to Gemini may result in one or more
 queries to Google Search. You will be charged for each individual search query
-performed. Retrieved context (text or images) provided by Grounding with Google Search is not charged as input tokens.
-
-## Gemini 3 Pro Preview
-
-*`gemini-3-pro-preview`*
-
-> [!WARNING]
-> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $2.00, prompts \<= 200k tokens $4.00, prompts \> 200k tokens |
-| Output price (including thinking tokens) | Not available | $12.00, prompts \<= 200k tokens $18.00, prompts \> 200k |
-| Context caching price | Not available | $0.20, prompts \<= 200k tokens $0.40, prompts \> 200k $4.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free), then $14 / 1,000 search queries |
-| Grounding with Google Maps | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $1.00, prompts \<= 200k tokens $2.00, prompts \> 200k tokens |
-| Output price (including thinking tokens) | Not available | $6.00, prompts \<= 200k tokens $9.00, prompts \> 200k |
-| Context caching price | Not available | $0.20, prompts \<= 200k tokens $0.40, prompts \> 200k $4.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 1,500 RPD (free), then $14 / 1,000 search queries |
-| Grounding with Google Maps | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-^\*^ A customer-submitted request to Gemini may result in one or more
-queries to Google Search. You will be charged for each individual search query
-performed.
+performed. Retrieved context (text or images) provided by Grounding with Google
+Search is not charged as input tokens.
 
 ## Gemini 3 Flash Preview
 
@@ -228,7 +196,7 @@ performed.
 
 Our native image generation model, optimized for speed, flexibility, and
 contextual understanding. **Text input and output** is priced the same as
-[Gemini 3 Pro](https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-preview).
+[Gemini 3.1 Pro](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview).
 
 Preview models may change before becoming stable and have more restrictive rate
 limits.
@@ -260,6 +228,13 @@ are equivalent to $0.134 per image. Output images up to 4096x4096px (4K) consume
 ^\*\*\*^ A customer-submitted request to Gemini may result in one or more
 queries to Google Search. You will be charged for each individual search query
 performed.
+
+## Gemini 3 Pro Preview
+
+*`gemini-3-pro-preview`*
+
+> [!WARNING]
+> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
 
 ## Gemini 2.5 Pro
 
@@ -501,11 +476,8 @@ limits.
 
 *`gemini-2.0-flash`*
 
-
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.0-flash)
-
-Our most balanced multimodal model with great performance across all tasks, with
-a 1 million token context window, and built for the era of Agents.
+> [!WARNING]
+> **Warning:** Gemini 2.0 Flash is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
 
 ### Standard
 
@@ -515,7 +487,7 @@ a 1 million token context window, and built for the era of Agents.
 | Output price | Free of charge | $0.40 |
 | Context caching price | Free of charge | $0.025 / 1,000,000 tokens (text/image/video) $0.175 / 1,000,000 tokens (audio) |
 | Context caching (storage) | Not available | $1.00 / 1,000,000 tokens per hour |
-| Image generation pricing | Free of charge | $0.039 per image\* |
+| Image generation pricing | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) |
 | Tuning price | Not available | Not available |
 | Grounding with Google Search | Free of charge, up to 500 RPD | 1,500 RPD (free), then $35 / 1,000 grounded prompts |
 | Grounding with Google Maps | 500 RPD | 1,500 RPD (free), then $25 / 1,000 grounded prompts |
@@ -529,7 +501,7 @@ a 1 million token context window, and built for the era of Agents.
 | Output price | Not available | $0.20 |
 | Context caching price | Not available | $0.025 / 1,000,000 tokens (text/image/video) $0.175 / 1,000,000 tokens (audio) |
 | Context caching (storage) | Not available | $1.00 / 1,000,000 tokens per hour |
-| Image generation pricing | Not available | $0.0195 per image\* |
+| Image generation pricing | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) |
 | Tuning price | Not available | Not available |
 | Grounding with Google Search | Not available | 1,500 RPD (free), then $35 / 1,000 grounded prompts |
 | Grounding with Google Maps | Not available | Not available |
@@ -542,10 +514,8 @@ a 1 million token context window, and built for the era of Agents.
 
 *`gemini-2.0-flash-lite`*
 
-
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.0-flash-lite)
-
-Our smallest and most cost effective model, built for at scale usage.
+> [!WARNING]
+> **Warning:** Gemini 2.0 Flash-Lite is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
 
 ### Standard
 

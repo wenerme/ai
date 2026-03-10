@@ -6,7 +6,7 @@ To create an organization, navigate to [Settings > Preferences](https://openrout
 
 Key organization capabilities include shared credit pools for centralized billing, role-based access control (Admin and Member roles), and organization-wide activity tracking.
 
-For complete details on organization setup and management, see the [Organization Management](/docs/guides/guides/use-cases/organization-management) guide.
+For complete details on organization setup and management, see the [Organization Management](/docs/guides/guides/administration/organization-management) guide.
 
 ## 2. Configure API Key Management
 
@@ -24,7 +24,7 @@ Regular key rotation limits the impact of compromised credentials. OpenRouter's 
 
 If you use [BYOK (Bring Your Own Key)](/docs/guides/overview/auth/byok), you can rotate OpenRouter API keys without touching your provider credentials, simplifying key management.
 
-See [API Key Rotation](/docs/guides/guides/api-key-rotation) for step-by-step instructions.
+See [API Key Rotation](/docs/guides/guides/administration/api-key-rotation) for step-by-step instructions.
 
 ## 3. Implement Security Controls
 
@@ -34,11 +34,11 @@ Guardrails let organizations control how members and API keys use OpenRouter. Co
 
 Guardrails can be assigned to organization members (baseline for all their keys) or directly to specific API keys for granular control. When multiple guardrails apply, stricter rules always win.
 
-See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api-reference/guardrails/list-guardrails) for programmatic management.
+See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
 ### Zero Data Retention (ZDR)
 
-Zero Data Retention ensures providers do not store your prompts or responses. Enable ZDR globally in your [privacy settings](/settings/privacy) or per-request using the `zdr` parameter.
+Zero Data Retention ensures providers do not store your prompts or responses. Enable ZDR globally in your [privacy settings](https://openrouter.ai/settings/privacy) or per-request using the `zdr` parameter.
 
 OpenRouter itself has a ZDR policy and does not retain your prompts unless you explicitly opt in to prompt logging.
 
@@ -64,7 +64,7 @@ See [Broadcast](/docs/guides/features/broadcast) for setup instructions and dest
 
 Track your end-users by including a `user` parameter in API requests. This improves caching performance (sticky routing per user) and enables user-level analytics in your activity feed and exports.
 
-See [User Tracking](/docs/guides/guides/user-tracking) for implementation details.
+See [User Tracking](/docs/guides/guides/administration/user-tracking) for implementation details.
 
 ## 5. Monitor Usage and Costs
 
@@ -72,13 +72,13 @@ See [User Tracking](/docs/guides/guides/user-tracking) for implementation detail
 
 Every API response includes detailed usage information: token counts (prompt, completion, reasoning, cached), cost in credits, and timing data. This enables real-time cost tracking without additional API calls.
 
-See [Usage Accounting](/docs/guides/guides/usage-accounting) for response format details and code examples.
+See [Usage Accounting](/docs/guides/guides/administration/usage-accounting) for response format details and code examples.
 
 ### Activity Export
 
 Export aggregated usage data as CSV or PDF from the [Activity page](https://openrouter.ai/activity). Filter by time period and group by Model, API Key, or Creator (organization member) for detailed reporting.
 
-See [Activity Export](/docs/guides/guides/activity-export) for export instructions.
+See [Activity Export](/docs/guides/guides/administration/activity-export) for export instructions.
 
 ## 6. Optimize for Reliability
 
@@ -86,7 +86,7 @@ See [Activity Export](/docs/guides/guides/activity-export) for export instructio
 
 OpenRouter monitors provider health in real-time and automatically routes around outages. Configure fallback chains by specifying multiple models, and customize provider selection based on cost, latency, or specific provider preferences.
 
-See [Provider Selection](/docs/features/provider-routing) and [Model Fallbacks](/docs/routing/model-fallbacks) for configuration options.
+See [Provider Selection](/docs/guides/routing/provider-selection) and [Model Fallbacks](/docs/guides/routing/model-fallbacks) for configuration options.
 
 ### Uptime Optimization
 
@@ -99,8 +99,8 @@ See [Uptime Optimization](/docs/guides/best-practices/uptime-optimization) for d
 Once your organization is configured, explore these additional resources:
 
 * [Quickstart](/docs/quickstart) for basic API integration examples
-* [Structured Outputs](/docs/features/structured-outputs) for JSON schema enforcement
-* [Tool Calling](/docs/features/tool-calling) for function calling capabilities
+* [Structured Outputs](/docs/guides/features/structured-outputs) for JSON schema enforcement
+* [Tool Calling](/docs/guides/features/tool-calling) for function calling capabilities
 * [Prompt Caching](/docs/guides/best-practices/prompt-caching) for cost optimization
 * [Latency and Performance](/docs/guides/best-practices/latency-and-performance) for performance tuning
 

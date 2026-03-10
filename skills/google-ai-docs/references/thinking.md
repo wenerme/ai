@@ -473,8 +473,8 @@ The following example shows how to set the thinking level.
       }
     }'
 
-You cannot disable thinking for Gemini 3 Pro. Gemini 3 Flash also does not
-support full thinking-off, but the `minimal`
+You cannot disable thinking for Gemini 3.1 Pro. Gemini 3 Flash and Flash-Lite
+also do not support full thinking-off, but the `minimal`
 setting means the model likely will not think (though it still potentially can).
 If you don't specify a thinking level, Gemini will use the Gemini 3 models'
 default dynamic thinking level, `"high"`.
