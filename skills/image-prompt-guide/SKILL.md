@@ -183,4 +183,4 @@ ASPECT: 16:9
 - `references/palettes.md` — 10 color palettes with hex values, decorative hints, and use cases
 - `references/templates.md` — Detailed prompt templates with style-specific overrides
 - `references/auto-selection.md` — Content signal → dimension mapping rules
-- `references/sd-styles.csv` — 836 Stable Diffusion style presets (name, prompt, negative_prompt) for prompt vocabulary reference
+- `references/sd-styles.csv` — 1062 image generation style presets (name, prompt, negative_prompt) merged from 7 sources (Douleb 850+, Fooocus 200+, BBrother, rocketingdatascience, twri/sdxl_prompt_styler, jheidt)
