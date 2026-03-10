@@ -269,7 +269,7 @@ Here's an overview of the tools available in the OpenAI platform—select one of
 <span slot="icon">
       </span>
     Dynamically load relevant tools into the model’s context to optimize token
-    usage and latency.
+    usage.
 
 
 </a>

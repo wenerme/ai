@@ -136,11 +136,11 @@ limits.
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Not available | $0.25 (text, image) |
-| Output price | Not available | $1.50 (text and thinking) $30.00 (images) Equivalent to $0.022 per 512px image^\*^ $0.034 per 1K image^\*^, $0.050 per 2K image^\*^, and $0.076 per 4K image^\*^. |
+| Output price | Not available | $1.50 (text and thinking) $30.00 (images) Equivalent to $0.022 per 0.5K image^\*^ $0.034 per 1K image^\*^, $0.050 per 2K image^\*^, and $0.076 per 4K image^\*^. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ^\*^ Image output is priced at $60 per 1,000,000 tokens.
-Output images at 512px consume 747 tokens and are equivalent to $0.045 per
+Output images at 0.5K (512px) consume 747 tokens and are equivalent to $0.045 per
 image. Output images at 1K (1024x1024px) consume 1120 tokens and are equivalent
 to $0.067 per image. Output images at 2K (2048x2048px) consume 1680 tokens and
 are equivalent to $0.101 per image. Output images at 4K (4096x4096px) consume

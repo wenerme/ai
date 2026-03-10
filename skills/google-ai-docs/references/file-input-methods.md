@@ -9,7 +9,7 @@ The simplest way to include a file as your input is to read a local file and
 include it in a prompt. The following example shows how to read a local PDF
 file. PDFs are limited to 50MB for this method. See the
 [Input method comparison table](https://ai.google.dev/gemini-api/docs/file-input-methods#method-comparison) for a complete list of file
-input types and limits.  
+input types and limits.
 
 ### Python
 
@@ -118,7 +118,7 @@ this page.
 ### Fetch from a URL
 
 You can also fetch a file from a URL, convert it to bytes, and include it in the
-input.  
+input.
 
 ### Python
 
@@ -222,7 +222,7 @@ use in multiple requests.
 ### Standard file upload
 
 Upload a local file to the Gemini API. Files uploaded this way are stored
-temporarily (48 hours) and processed for efficient retrieval by the model.  
+temporarily (48 hours) and processed for efficient retrieval by the model.
 
 ### Python
 
@@ -370,7 +370,7 @@ download and re-upload it. You can register it directly with the File API.
    management](https://docs.cloud.google.com/iam/docs/keys-create-delete).
 
    Then use the following commands to authenticate. These commands assume your
-   service account file is in the current directory, named `service-account.json`.  
+   service account file is in the current directory, named `service-account.json`.
 
    ### Python
 
@@ -416,13 +416,13 @@ download and re-upload it. You can register it directly with the File API.
    Run functions](https://cloud.google.com/functions) or a
    [Compute Engine instance](https://cloud.google.com/products/compute), you will
    have implicit credentials but will need to re-authenticate to grant the
-   appropriate scopes.  
+   appropriate scopes.
 
    ### Python
 
    This code expects that the service is running in an environment where
    [Application Default Credentials](https://docs.cloud.google.com/docs/authentication/application-default-credentials)
-   can be obtained automatically, such as Cloud Run or Compute Engine.  
+   can be obtained automatically, such as Cloud Run or Compute Engine.
 
        import google.auth
 
@@ -437,7 +437,7 @@ download and re-upload it. You can register it directly with the File API.
 
    This code expects that the service is running in an environment where
    [Application Default Credentials](https://docs.cloud.google.com/docs/authentication/application-default-credentials)
-   can be obtained automatically, such as Cloud Run or Compute Engine.  
+   can be obtained automatically, such as Cloud Run or Compute Engine.
 
        const { GoogleAuth } = require('google-auth-library');
 
@@ -453,7 +453,7 @@ download and re-upload it. You can register it directly with the File API.
    This is an interactive command. For services like Compute Engine you can attach scopes to
    the running service at the config level. See the [user-managed service
    docs](https://docs.cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using)
-   for an example.  
+   for an example.
 
        gcloud auth application-default login \
        --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/devstorage.read_only"
@@ -461,7 +461,7 @@ download and re-upload it. You can register it directly with the File API.
 3. File registration (Files API)
 
    Use the Files API to register files and produce a Files API path that can
-   directly be used in the Gemini API.  
+   directly be used in the Gemini API.
 
    ### Python
 
@@ -510,10 +510,12 @@ URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSigned
 and Azure SAS) directly in your generation request. The Gemini API will fetch
 the content securely during processing. This is ideal for files up to 100MB that
 you don't want to re-upload.
-| **Note:** Gemini 2.0 family of models are not supported
+
+> [!NOTE]
+> **Note:** Gemini 2.0 family of models are not supported
 
 You can use public or signed URLs as input by using the URLs in the
-[file_uri](https://ai.google.dev/api/caching#FileData) field.  
+`https://ai.google.dev/api/caching#FileData` field.
 
 ### Python
 
@@ -609,7 +611,7 @@ currently only supports publicly accessible URLs.
 - `text/css`
 - `text/plain`
 - `text/xml`
-- `text/scv`
+- `text/csv`
 - `text/rtf`
 - `text/javascript`
 

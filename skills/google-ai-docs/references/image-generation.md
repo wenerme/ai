@@ -569,7 +569,7 @@ You can then use the same chat to change the language on the graphic to Spanish.
 
     message = "Update this infographic to be in Spanish. Do not change any other elements of the image."
     aspect_ratio = "16:9" # "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
-    resolution = "2K" # "512px", "1K", "2K", "4K"
+    resolution = "2K" # "512", "1K", "2K", "4K"
 
     response = chat.send_message(message,
         config=types.GenerateContentConfig(
@@ -618,7 +618,7 @@ You can then use the same chat to change the language on the graphic to Spanish.
 
     message = "Update this infographic to be in Spanish. Do not change any other elements of the image."
     aspect_ratio = "16:9" // "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
-    resolution = "2K"     // "512px", "1K", "2K", "4K"
+    resolution = "2K"     // "512", "1K", "2K", "4K"
 
     model.GenerationConfig.ImageConfig = &pb.ImageConfig{
         AspectRatio: aspect_ratio,
@@ -644,7 +644,7 @@ You can then use the same chat to change the language on the graphic to Spanish.
 ### Java
 
     String aspectRatio = "16:9"; // "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
-    String resolution = "2K"; // "512px", "1K", "2K", "4K"
+    String resolution = "2K"; // "512", "1K", "2K", "4K"
 
     config = GenerateContentConfig.builder()
         .responseModalities("TEXT", "IMAGE")
@@ -712,7 +712,7 @@ Designed to tackle the most challenging workflows through advanced reasoning,
 they excel at complex, multi-turn creation and modification tasks.
 
 - **High-resolution output** : Built-in generation capabilities for 1K, 2K, and 4K visuals.
-  - **Gemini 3.1 Flash Image** adds the smaller 512px (0.5K) resolution.
+  - **Gemini 3.1 Flash Image** adds the smaller 512 (0.5K) resolution.
 - **Advanced text rendering**: Capable of generating legible, stylized text for infographics, menus, diagrams, and marketing assets.
 - **Grounding with Google Search** : The model can use Google Search as a tool to verify facts and generate imagery based on real-time data (e.g., current weather maps, stock charts, recent events).
   - **Gemini 3.1 Flash Image** adds the integration of Google Image Search Grounding alongside Web Search.
@@ -738,7 +738,7 @@ can include the following:
 
     prompt = "An office group photo of these people, they are making funny faces."
     aspect_ratio = "5:4" # "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
-    resolution = "2K" # "512px", "1K", "2K", "4K"
+    resolution = "2K" # "512", "1K", "2K", "4K"
 
     client = genai.Client()
 
@@ -1306,10 +1306,10 @@ and metadata to link its output to verified sources. Key fields in the
 ### Generate images up to 4K resolution
 
 Gemini 3 image models generate 1K images by default but can also output 2K,
-4K, and 512px (05.K) (Gemini 3.1 Flash Image only) images. To generate higher
+4K, and 512 (0.5K) (Gemini 3.1 Flash Image only) images. To generate higher
 resolution assets, specify the `image_size` in the `generation_config`.
 
-You must use an uppercase 'K' (e.g. 512px (05.K), 1K, 2K, 4K). Lowercase
+You must use an uppercase 'K' (e.g. 1K, 2K, 4K). The `512` value does not use a 'K' suffix. Lowercase
 parameters (e.g., 1k) will be rejected.
 
 ### Python
@@ -1319,7 +1319,7 @@ parameters (e.g., 1k) will be rejected.
 
     prompt = "Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English."
     aspect_ratio = "1:1" # "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
-    resolution = "1K" # "512px", "1K", "2K", "4K"
+    resolution = "1K" # "512", "1K", "2K", "4K"
 
     client = genai.Client()
 
@@ -4803,7 +4803,7 @@ the following tables:
 
 ### 3.1 Flash Image Preview
 
-| Aspect ratio | 512px resolution | 0.5K tokens | 1K resolution | 1K tokens | 2K resolution | 2K tokens | 4K resolution | 4K tokens |
+| Aspect ratio | 512 resolution | 0.5K tokens | 1K resolution | 1K tokens | 2K resolution | 2K tokens | 4K resolution | 4K tokens |
 |---|---|---|---|---|---|---|---|---|
 | **1:1** | 512x512 | 747 | 1024x1024 | 1120 | 2048x2048 | 1120 | 4096x4096 | 2000 |
 | **1:4** | 256x1024 | 747 | 512x2048 | 1120 | 1024x4096 | 1120 | 2048x8192 | 2000 |
