@@ -114,6 +114,7 @@ If you used the Codex app, CLI, or IDE Extension before you'll see past projects
    </ExampleGallery>
 
    If you need more inspiration, check out the [explore section](https://developers.openai.com/codex/explore).
+   If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 
 </WorkflowSteps>
 

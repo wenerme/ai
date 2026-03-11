@@ -65,7 +65,7 @@ You can find a list of models that support structured outputs on the [models pag
 
 * OpenAI models (GPT-4o and later versions) [Docs](https://platform.openai.com/docs/guides/structured-outputs)
 * Google Gemini models [Docs](https://ai.google.dev/gemini-api/docs/structured-output)
-* Anthropic models (Sonnet 4.5 and Opus 4.1) [Docs](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
+* Anthropic models (Sonnet 4.5, Opus 4.1+) [Docs](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
 * Most open-source models
 * All Fireworks provided models [Docs](https://docs.fireworks.ai/structured-responses/structured-response-formatting#structured-response-modes)
 

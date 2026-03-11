@@ -237,14 +237,6 @@ Cancel an ongoing evaluation run.
 
                       - `"input_file"`
 
-                    - `detail?: "low" | "high"`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
-
                     - `file_data?: string`
 
                       The content of the file to be sent to the model.

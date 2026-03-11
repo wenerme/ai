@@ -278,14 +278,6 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
-
               - `file_data?: string`
 
                 The content of the file to be sent to the model.
@@ -395,14 +387,6 @@ Learn when and how to compact long-running conversations in the [conversation st
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -1373,14 +1357,6 @@ Learn when and how to compact long-running conversations in the [conversation st
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail?: "high" | "low"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"high"`
-
-                - `"low"`
 
               - `file_data?: string | null`
 
@@ -3298,14 +3274,6 @@ Learn when and how to compact long-running conversations in the [conversation st
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail?: "low" | "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data?: string`
 

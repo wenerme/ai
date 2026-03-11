@@ -5226,7 +5226,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
             A file input to the model.
 
@@ -5235,14 +5235,6 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: optional string`
 
@@ -5936,7 +5928,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
               A file input to the model.
 
@@ -5945,14 +5937,6 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: optional "low" or "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: optional string`
 
@@ -8482,7 +8466,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
         A file input to the model.
 
@@ -8491,14 +8475,6 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: optional string`
 
@@ -13433,7 +13409,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
               A file input to the model.
 
@@ -13442,14 +13418,6 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: optional "low" or "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: optional string`
 
@@ -14426,7 +14394,7 @@
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
               A file input to the model.
 
@@ -14435,14 +14403,6 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: optional "low" or "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: optional string`
 
@@ -16441,7 +16401,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
         A file input to the model.
 
@@ -16450,14 +16410,6 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: optional string`
 
@@ -17115,7 +17067,7 @@
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
         A file input to the model.
 
@@ -17124,14 +17076,6 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: optional string`
 
@@ -19572,7 +19516,7 @@
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
           A file input to the model.
 
@@ -19581,14 +19525,6 @@
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: optional string`
 
@@ -22895,7 +22831,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
             A file input to the model.
 
@@ -22904,14 +22840,6 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: optional string`
 
@@ -23894,7 +23822,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
             A file input to the model.
 
@@ -23903,14 +23831,6 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: optional string`
 
@@ -24893,7 +24813,7 @@
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
             A file input to the model.
 
@@ -24902,14 +24822,6 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: optional string`
 
@@ -26152,7 +26064,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
           A file input to the model.
 
@@ -26161,14 +26073,6 @@ Returns the created client secret and the effective session object. The client s
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: optional string`
 
@@ -27145,7 +27049,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
           A file input to the model.
 
@@ -27154,14 +27058,6 @@ Returns the created client secret and the effective session object. The client s
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: optional string`
 
@@ -28104,7 +28000,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
         A file input to the model.
 
@@ -28113,14 +28009,6 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: optional string`
 
@@ -29064,7 +28952,7 @@ handle it.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
       A file input to the model.
 
@@ -29073,14 +28961,6 @@ handle it.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
-
-      - `detail: optional "low" or "high"`
-
-        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-        - `"low"`
-
-        - `"high"`
 
       - `file_data: optional string`
 
@@ -29621,7 +29501,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
       A file input to the model.
 
@@ -29630,14 +29510,6 @@ Returns the created Realtime session object, plus an ephemeral key.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
-
-      - `detail: optional "low" or "high"`
-
-        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-        - `"low"`
-
-        - `"high"`
 
       - `file_data: optional string`
 

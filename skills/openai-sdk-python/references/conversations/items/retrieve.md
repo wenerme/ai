@@ -317,14 +317,6 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -462,14 +454,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -3046,14 +3030,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
