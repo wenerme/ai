@@ -151,3 +151,53 @@ To keep your metrics competitive:
 * Return early 429s if under load, rather than queueing requests
 * Stream tokens as soon as they're available
 * If processing takes time (e.g. reasoning models), send SSE comments as keep-alives so we know you're still working on the request. Otherwise we may cancel with a fetch timeout and fallback to another provider
+
+### 5. Auto Exacto: Tool-Calling Traffic Routing
+
+[Auto Exacto](/docs/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
+
+#### How traffic is affected
+
+Auto Exacto shifts tool-calling traffic toward providers that perform well on tool-use quality signals. Providers with strong metrics are moved to the front of the routing order and will receive more tool-calling requests, while providers with weaker signals are deprioritized and will see less.
+
+Non-tool-calling traffic is **not affected** by Auto Exacto -- it continues to follow the standard [price-weighted routing](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy).
+
+#### How ranking factors are determined
+
+Auto Exacto uses three classes of signals, all derived from real traffic and evaluations on your endpoints:
+
+* **Throughput** -- real-time tokens-per-second measured from actual requests routed through your endpoint (visible on the [Performance tab](https://openrouter.ai/models) of any model page).
+* **Tool-calling success rate** -- how reliably your endpoint completes tool calls without errors (also visible on the Performance tab).
+* **Benchmark data** -- results from internal evaluations we run against provider endpoints. We are actively collecting this data and will make it available in your provider dashboard soon so you can review and run the same benchmarks on your end.
+
+These are the same metrics available in your provider dashboard. Once onboarded, our team can give you access to it.
+
+#### How deprioritization thresholds work
+
+For each model, we compare every provider's signal values against the group of providers serving that model. We use a **median + MAD** (median absolute deviation) approach rather than simple averages, which keeps thresholds stable even when one provider is a significant outlier.
+
+Each signal has a different sensitivity:
+
+* **Benchmark accuracy** -- providers falling more than **1 standard deviation** below the median are deprioritized. This is the tightest threshold because benchmark scores cluster closely and small differences are meaningful.
+* **Throughput** -- providers falling more than **1.5 standard deviations** below the median are deprioritized. The wider margin accounts for natural throughput variance caused by time-of-day load patterns.
+* **Tool-calling success rate** -- providers falling more than **2 standard deviations** below the median are deprioritized. Success rates cluster near 100%, so this wider margin avoids penalizing normal noise while catching genuinely broken endpoints.
+
+A minimum of **4 providers** serving the same model is required before statistical thresholds are computed. Below that count, no deprioritization is applied for that signal.
+
+Endpoints are placed into one of three tiers:
+
+1. **Good** -- sufficient data and no signals below threshold. These receive top routing priority.
+2. **Insufficient data** -- not enough recent traffic to evaluate. These sort behind known-good providers but ahead of deprioritized ones. An endpoint needs at least 100 general requests (30-minute window) and 200 tool-call requests (2-hour window) before it can be evaluated.
+3. **Deprioritized** -- one or more signals fell below threshold. These are routed to last.
+
+Consistent rate limiting (429s) can reduce the volume of successful requests available for evaluation, making it harder for us to collect enough benchmark data to place your endpoint in the top tier. Returning early 429s is still preferred over queueing, but minimizing rate limits where possible helps ensure your endpoint has sufficient data for a fair evaluation.
+
+#### How to improve your ranking
+
+To maximize the tool-calling traffic routed to your endpoints:
+
+* **Maintain high tool-call reliability** -- ensure your endpoint returns well-formed tool call responses consistently.
+* **Optimize throughput** -- minimize queueing and stream tokens as soon as they are available (see [Performance Metrics](#4-performance-metrics) above).
+* **Return early 429s under load** -- rather than queueing and degrading throughput, return rate limit errors so we can retry with another provider and your metrics stay healthy.
+
+For the full user-facing documentation on Auto Exacto, see [Auto Exacto](/docs/guides/routing/auto-exacto).

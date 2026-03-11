@@ -922,10 +922,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "\"7514da24202d1bcd5a5c4c06d0ac7a5d\"",
-    "lastModified": "Fri, 06 Mar 2026 06:07:11 GMT",
+    "etag": "\"882c7a62bbd26db95a204161566d7f50\"",
+    "lastModified": "Wed, 11 Mar 2026 10:15:24 GMT",
     "size": 41824,
-    "updatedAt": "2026-03-06T06:07:12.240Z"
+    "updatedAt": "2026-03-11T10:15:24.206Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
