@@ -90,14 +90,6 @@ Create a conversation.
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -207,14 +199,6 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -1185,14 +1169,6 @@ Create a conversation.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "high" | "low"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"high"`
-
-              - `"low"`
 
             - `file_data?: string | null`
 
@@ -3110,14 +3086,6 @@ Create a conversation.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -3743,14 +3711,6 @@ console.log(conversationDeletedResource.id);
 
         - `"input_file"`
 
-      - `detail?: "low" | "high"`
-
-        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-        - `"low"`
-
-        - `"high"`
-
       - `file_data?: string`
 
         The content of the file to be sent to the model.
@@ -3925,14 +3885,6 @@ Create items in a conversation with the given ID.
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -4042,14 +3994,6 @@ Create items in a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -5020,14 +4964,6 @@ Create items in a conversation with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "high" | "low"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"high"`
-
-              - `"low"`
 
             - `file_data?: string | null`
 
@@ -6946,14 +6882,6 @@ Create items in a conversation with the given ID.
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -7333,14 +7261,6 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data?: string`
 
             The content of the file to be sent to the model.
@@ -7474,14 +7394,6 @@ Create items in a conversation with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -10044,14 +9956,6 @@ Create items in a conversation with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -10465,14 +10369,6 @@ List all items for a conversation with the given ID.
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -10606,14 +10502,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -13176,14 +13064,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -13549,14 +13429,6 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -13690,14 +13562,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -16260,14 +16124,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -16654,14 +16510,6 @@ console.log(conversation.id);
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -16795,14 +16643,6 @@ console.log(conversation.id);
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -19366,14 +19206,6 @@ console.log(conversation.id);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data?: string`
 
             The content of the file to be sent to the model.
@@ -19688,14 +19520,6 @@ console.log(conversation.id);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data?: string`
 
             The content of the file to be sent to the model.
@@ -19829,14 +19653,6 @@ console.log(conversation.id);
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -22399,14 +22215,6 @@ console.log(conversation.id);
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 

@@ -94,14 +94,14 @@
 
     1. `:free` - The model is always provided for free and has low rate limits. [Learn more](/docs/guides/routing/model-variants/free).
     2. `:extended` - The model has longer than usual context length. [Learn more](/docs/guides/routing/model-variants/extended).
-    3. `:exacto` - The model only uses OpenRouter-curated high-quality endpoints. [Learn more](/docs/guides/routing/model-variants/exacto).
-    4. `:thinking` - The model supports reasoning by default. [Learn more](/docs/guides/routing/model-variants/thinking).
+    3. `:thinking` - The model supports reasoning by default. [Learn more](/docs/guides/routing/model-variants/thinking).
 
     Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
 
     1. `:online` - All requests will run a query to extract web results that are attached to the prompt. [Learn more](/docs/guides/routing/model-variants/online).
     2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/features/provider-routing#nitro-shortcut).
     3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/features/provider-routing#floor-price-shortcut).
+    4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).
   </Accordion>
 
   <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">

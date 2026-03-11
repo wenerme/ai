@@ -2335,7 +2335,7 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                  - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                     A file input to the model.
 
@@ -2344,14 +2344,6 @@ Get a list of runs for an evaluation.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
-
-                    - `detail: optional "low" or "high"`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
 
                     - `file_data: optional string`
 
@@ -4647,7 +4639,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                   A file input to the model.
 
@@ -4656,14 +4648,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
-
-                  - `detail: optional "low" or "high"`
-
-                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                    - `"low"`
-
-                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -6834,7 +6818,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                   A file input to the model.
 
@@ -6843,14 +6827,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
-
-                  - `detail: optional "low" or "high"`
-
-                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                    - `"low"`
-
-                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -9154,7 +9130,7 @@ Get an evaluation run by ID.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                   A file input to the model.
 
@@ -9163,14 +9139,6 @@ Get an evaluation run by ID.
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
-
-                  - `detail: optional "low" or "high"`
-
-                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                    - `"low"`
-
-                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -11458,7 +11426,7 @@ Cancel an ongoing evaluation run.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                   A file input to the model.
 
@@ -11467,14 +11435,6 @@ Cancel an ongoing evaluation run.
                     The type of the input item. Always `input_file`.
 
                     - `"input_file"`
-
-                  - `detail: optional "low" or "high"`
-
-                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                    - `"low"`
-
-                    - `"high"`
 
                   - `file_data: optional string`
 
@@ -13727,7 +13687,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-              - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+              - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
 
                 A file input to the model.
 
@@ -13736,14 +13696,6 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
-
-                - `detail: optional "low" or "high"`
-
-                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                  - `"low"`
-
-                  - `"high"`
 
                 - `file_data: optional string`
 

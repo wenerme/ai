@@ -171,14 +171,6 @@ as input for the model's response.
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
-
-                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                  - `"low"`
-
-                  - `"high"`
-
                 - `file_data?: string`
 
                   The content of the file to be sent to the model.
@@ -288,14 +280,6 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail?: "low" | "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data?: string`
 
@@ -1266,14 +1250,6 @@ as input for the model's response.
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
-
-                - `detail?: "high" | "low"`
-
-                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                  - `"high"`
-
-                  - `"low"`
 
                 - `file_data?: string | null`
 
@@ -3192,14 +3168,6 @@ as input for the model's response.
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
-
-                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                  - `"low"`
-
-                  - `"high"`
-
                 - `file_data?: string`
 
                   The content of the file to be sent to the model.
@@ -3564,14 +3532,6 @@ as input for the model's response.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -5270,14 +5230,6 @@ as input for the model's response.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
-
               - `file_data?: string`
 
                 The content of the file to be sent to the model.
@@ -5387,14 +5339,6 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data?: string`
 
@@ -6365,14 +6309,6 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail?: "high" | "low"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"high"`
-
-                - `"low"`
 
               - `file_data?: string | null`
 
@@ -8290,14 +8226,6 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail?: "low" | "high"`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data?: string`
 
@@ -12537,14 +12465,6 @@ as input for the model's response.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail?: "low" | "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data?: string`
 

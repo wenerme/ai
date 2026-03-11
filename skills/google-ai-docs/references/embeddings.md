@@ -1,9 +1,16 @@
 <br />
 
-The Gemini API offers text embedding models to generate embeddings for words,
-phrases, sentences, and code. Embeddings tasks such as semantic search,
-classification, and clustering, providing more accurate, context-aware results
-than keyword-based approaches.
+The Gemini API offers embedding models to generate embeddings for text, images,
+video, and other content. These resulting embeddings can then be used for tasks
+such as semantic search, classification, and clustering, providing more accurate,
+context-aware results than keyword-based approaches.
+
+The latest model, `gemini-embedding-2-preview`, is the first multimodal
+embedding model in the Gemini API. It maps text, images,
+video, audio, and documents into a unified embedding space, enabling cross-modal
+search, classification, and clustering across over 100 languages. See the
+[multimodal embeddings section](https://ai.google.dev/gemini-api/docs/embeddings#multimodal) to learn more. For text-only
+use cases, `gemini-embedding-001` remains available.
 
 Building Retrieval Augmented Generation (RAG) systems is a common use case for
 AI products. Embeddings play a key role in significantly enhancing model outputs
@@ -13,7 +20,7 @@ tool which makes doing RAG easier to manage and more cost effective.
 
 ## Generating embeddings
 
-Use the `embedContent` method to generate text embeddings:  
+Use the `embedContent` method to generate text embeddings:
 
 ### Python
 
@@ -100,7 +107,7 @@ Use the `embedContent` method to generate text embeddings:
         }'
 
 You can also generate embeddings for multiple chunks at once by passing them in
-as a list of strings.  
+as a list of strings.
 
 ### Python
 
@@ -215,7 +222,9 @@ table.
 
 The following example shows how you can use
 `SEMANTIC_SIMILARITY` to check how similar in meaning strings of texts are.
-**Note:** Cosine similarity is a good distance metric because it focuses on direction rather than magnitude, which more accurately reflects conceptual closeness. Values range from -1 (opposite) to 1 (greatest similarity).  
+
+> [!NOTE]
+> **Note:** Cosine similarity is a good distance metric because it focuses on direction rather than magnitude, which more accurately reflects conceptual closeness. Values range from -1 (opposite) to 1 (greatest similarity).
 
 ### Python
 
@@ -386,18 +395,18 @@ another when run.
 
 ## Controlling embedding size
 
-The Gemini embedding model, `gemini-embedding-001`, is trained using the
-Matryoshka Representation Learning (MRL) technique which teaches a model to
+Both `gemini-embedding-001` and `gemini-embedding-2-preview` are trained using
+the Matryoshka Representation Learning (MRL) technique which teaches a model to
 learn high-dimensional embeddings that have initial segments (or prefixes) which
 are also useful, simpler versions of the same data.
 
 Use the `output_dimensionality` parameter to control the size of
 the output embedding vector. Selecting a smaller output dimensionality can save
 storage space and increase computational efficiency for downstream applications,
-while sacrificing little in terms of quality. By default, it outputs a
+while sacrificing little in terms of quality. By default, both models output a
 3072-dimensional embedding, but you can truncate it to a smaller size without
 losing quality to save storage space. We recommend using 768, 1536, or 3072
-output dimensions.  
+output dimensions.
 
 ### Python
 
@@ -486,7 +495,7 @@ output dimensions.
             "output_dimensionality": 768
         }'
 
-Example output from the code snippet:  
+Example output from the code snippet:
 
     Length of embedding: 768
 
@@ -495,7 +504,7 @@ Example output from the code snippet:
 The 3072 dimension embedding is normalized. Normalized embeddings produce more
 accurate semantic similarity by comparing vector direction, not magnitude. For
 other dimensions, including 768 and 1536, you need to normalize the embeddings
-as follows:  
+as follows:
 
 ### Python
 
@@ -508,7 +517,7 @@ as follows:
     print(f"Normed embedding length: {len(normed_embedding)}")
     print(f"Norm of normed embedding: {np.linalg.norm(normed_embedding):.6f}") # Should be very close to 1
 
-Example output from this code snippet:  
+Example output from this code snippet:
 
     Normed embedding length: 768
     Norm of normed embedding: 1.000000
@@ -527,6 +536,485 @@ dimensions achieving scores comparable to their higher dimension counterparts.
 | 256 | 66.19 |
 | 128 | 63.31 |
 
+## Multimodal embeddings
+
+The `gemini-embedding-2-preview` model supports multimodal input, allowing you
+to embed images, video, audio, and documents content alongside text. All modalities
+are mapped into the same embedding space, enabling cross-modal search and
+comparison.
+
+### Supported modalities and limits
+
+The overall maximum input tokens limit is 8192 tokens.
+
+| Modality | Specifications and limits |
+|---|---|
+| **Text** | Supports up to 8,192 tokens. |
+| **Image** | Maximum of 6 images per request. Supported formats: PNG, JPEG. |
+| **Audio** | Maximum duration of 80 seconds. Supported formats: MP3, WAV. |
+| **Video** | Maximum duration of 128 seconds. Supported formats: MP4, MOV, Supported codec: H264, H265, AV1, VP9 |
+| **Documents (PDF)** | Maximum of 6 pages. |
+
+### Embedding images
+
+The following example shows how to embed an image using
+`gemini-embedding-2-preview`.
+
+Images can be provided as inline data or as uploaded files
+through the [Files API](https://ai.google.dev/gemini-api/docs/files).
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    with open('example.png', 'rb') as f:
+        image_bytes = f.read()
+
+    client = genai.Client()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            types.Part.from_bytes(
+                data=image_bytes,
+                mime_type='image/png',
+            ),
+        ]
+    )
+
+    print(result.embeddings)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const imgBase64 = fs.readFileSync("example.png", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: [{
+                inlineData: {
+                    mimeType: 'image/png',
+                    data: imgBase64,
+                },
+            }],
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    IMG_PATH="/path/to/your/image.png"
+    IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [{
+                    "inline_data": {
+                        "mime_type": "image/png",
+                        "data": "'"${IMG_BASE64}"'"
+                    }
+                }]
+            }
+        }'
+
+### Embedding aggregation
+
+When working with multimodal content, how you structure your input affects the
+embedding output:
+
+- **Single content entry:** Submitting multiple parts (for example, text and an image) within a single content entry produces one aggregated embedding for all modalities within that entry.
+- **Multiple entries:** Sending multiple entries in the `contents` array returns separate embeddings for each entry.
+- **Post-level representation:** For complex objects like social media posts with multiple media items, we recommend aggregating separate embeddings (for example, by averaging) to create a coherent post-level representation.
+
+The following example shows how to create one aggregated embedding for text and image input.
+Use the `parts` field to combine multiple inputs:
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    with open('dog.png', 'rb') as f:
+        image_bytes = f.read()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            types.Content(
+                parts=[
+                    types.Part(text="An image of a dog"),
+                    types.Part.from_bytes(
+                        data=image_bytes,
+                        mime_type='image/png',
+                    )
+                ]
+            )
+        ]
+    )
+
+    # This produces one embedding
+    for embedding in result.embeddings:
+        print(embedding.values)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const imgBase64 = fs.readFileSync("dog.png", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: {
+                parts: [
+                    { text: 'An image of a dog' },
+                    { inlineData: { mimeType: 'image/png', data: imgBase64 } },
+                ],
+            },
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    IMG_PATH="/path/to/your/dog.png"
+    IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [
+                    {"text": "An image of a dog"},
+                    {
+                        "inline_data": {
+                            "mime_type": "image/png",
+                            "data": "'"${IMG_BASE64}"'"
+                        }
+                    }
+                ]
+            }
+        }'
+
+On the other hand, this example creates multiple embeddings in one embedding call:
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    with open('dog.png', 'rb') as f:
+        image_bytes = f.read()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            "The dog is cute",
+            types.Part.from_bytes(
+                data=image_bytes,
+                mime_type='image/png',
+            ),
+        ]
+    )
+
+    # This produces two embeddings
+    for embedding in result.embeddings:
+        print(embedding.values)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const imgBase64 = fs.readFileSync("dog.png", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: [
+                'The dog is cute',
+                {
+                    inlineData: {
+                        mimeType: 'image/png',
+                        data: imgBase64,
+                    },
+                },
+            ],
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    IMG_PATH="/path/to/your/dog.png"
+    IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [
+                    {"text": "The dog is cute"},
+                    {
+                        "inline_data": {
+                            "mime_type": "image/png",
+                            "data": "'"${IMG_BASE64}"'"
+                        }
+                    }
+                ]
+            }
+        }'
+
+### Embedding audio
+
+The following example shows how to embed an audio file using
+`gemini-embedding-2-preview`.
+
+Audio files can be provided as inline data or as uploaded files
+through the [Files API](https://ai.google.dev/gemini-api/docs/files).
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    with open('example.mp3', 'rb') as f:
+        audio_bytes = f.read()
+
+    client = genai.Client()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            types.Part.from_bytes(
+                data=audio_bytes,
+                mime_type='audio/mpeg',
+            ),
+        ]
+    )
+
+    print(result.embeddings)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const audioBase64 = fs.readFileSync("example.mp3", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: [{
+                inlineData: {
+                    mimeType: 'audio/mpeg',
+                    data: audioBase64,
+                },
+            }],
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    AUDIO_PATH="/path/to/your/example.mp3"
+    AUDIO_BASE64=$(base64 -w0 "${AUDIO_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [{
+                    "inline_data": {
+                        "mime_type": "audio/mpeg",
+                        "data": "'"${AUDIO_BASE64}"'"
+                    }
+                }]
+            }
+        }'
+
+### Embedding video
+
+The following example shows how to embed a video using
+`gemini-embedding-2-preview`.
+
+Videos can be provided as inline data or as uploaded files
+through the [Files API](https://ai.google.dev/gemini-api/docs/files).
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client()
+
+    with open('example.mp4', 'rb') as f:
+        video_bytes = f.read()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            types.Part.from_bytes(
+                data=video_bytes,
+                mime_type='video/mp4',
+            ),
+        ]
+    )
+
+    print(result.embeddings[0].values)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const videoBase64 = fs.readFileSync("example.mp4", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: [{
+                inlineData: {
+                    mimeType: 'video/mp4',
+                    data: videoBase64,
+                },
+            }],
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    VIDEO_PATH="/path/to/your/video.mp4"
+    VIDEO_BASE64=$(base64 -w0 "${VIDEO_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [{
+                    "inline_data": {
+                        "mime_type": "video/mp4",
+                        "data": "'"${VIDEO_BASE64}"'"
+                    }
+                }]
+            }
+        }'
+
+If you need to embed videos \>128 seconds, you can chunk the video into
+overlapping segments and embed those chunks individually.
+
+### Embedding documents
+
+documents in PDF format can be embedded directly. The model processes the visual and text
+content of each page.
+
+PDFs can be provided as inline data or as uploaded files
+through the [Files API](https://ai.google.dev/gemini-api/docs/files).
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    with open('example.pdf', 'rb') as f:
+        pdf_bytes = f.read()
+
+    client = genai.Client()
+
+    result = client.models.embed_content(
+        model='gemini-embedding-2-preview',
+        contents=[
+            types.Part.from_bytes(
+                data=pdf_bytes,
+                mime_type='application/pdf',
+            ),
+        ]
+    )
+
+    print(result.embeddings)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const pdfBase64 = fs.readFileSync("example.pdf", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2-preview',
+            contents: [{
+                inlineData: {
+                    mimeType: 'application/pdf',
+                    data: pdfBase64,
+                },
+            }],
+        });
+
+        console.log(response.embeddings);
+    }
+
+    main();
+
+### REST
+
+    PDF_PATH="/path/to/your/example.pdf"
+    PDF_BASE64=$(base64 -w0 "${PDF_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "content": {
+                "parts": [{
+                    "inline_data": {
+                        "mime_type": "application/pdf",
+                        "data": "'"${PDF_BASE64}"'"
+                    }
+                }]
+            }
+        }'
+
 ## Use cases
 
 Text embeddings are crucial for a variety of common AI use cases, such as:
@@ -535,23 +1023,23 @@ Text embeddings are crucial for a variety of common AI use cases, such as:
 - **Information retrieval:** Search for the most semantically similar text or
   documents given a piece of input text.
 
-  [Document search tutorialtask](https://github.com/google-gemini/cookbook/blob/main/examples/Talk_to_documents_with_embeddings.ipynb)
+  [Document search tutorial](https://github.com/google-gemini/cookbook/blob/main/examples/Talk_to_documents_with_embeddings.ipynb)
 - **Search reranking**: Prioritize the most relevant items by semantically
   scoring initial results against the query.
 
-  [Search reranking tutorialtask](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb)
+  [Search reranking tutorial](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb)
 - **Anomaly detection:** Comparing groups of embeddings can help identify
   hidden trends or outliers.
 
-  [Anomaly detection tutorialbubble_chart](https://github.com/google-gemini/cookbook/blob/main/examples/Anomaly_detection_with_embeddings.ipynb)
+  [Anomaly detection tutorial](https://github.com/google-gemini/cookbook/blob/main/examples/Anomaly_detection_with_embeddings.ipynb)
 - **Classification:** Automatically categorize text based on its content, such
   as sentiment analysis or spam detection
 
-  [Classification tutorialtoken](https://github.com/google-gemini/cookbook/blob/main/examples/Classify_text_with_embeddings.ipynb)
+  [Classification tutorial](https://github.com/google-gemini/cookbook/blob/main/examples/Classify_text_with_embeddings.ipynb)
 - **Clustering:** Effectively grasp complex relationships by creating clusters
   and visualizations of your embeddings.
 
-  [Clustering visualization tutorialbubble_chart](https://github.com/google-gemini/cookbook/blob/main/examples/clustering_with_embeddings.ipynb)
+  [Clustering visualization tutorial](https://github.com/google-gemini/cookbook/blob/main/examples/clustering_with_embeddings.ipynb)
 
 ## Storing embeddings
 
@@ -566,26 +1054,46 @@ can be used for this purpose including
 The following tutorials show how to use other third party vector databases
 with Gemini Embedding.
 
-- [ChromaDB tutorialsbolt](https://github.com/google-gemini/cookbook/tree/main/examples/chromadb)
-- [QDrant tutorialsbolt](https://github.com/google-gemini/cookbook/tree/main/examples/qdrant)
-- [Weaviate tutorialsbolt](https://github.com/google-gemini/cookbook/tree/main/examples/weaviate)
-- [Pinecone tutorialsbolt](https://github.com/google-gemini/cookbook/blob/main/examples/langchain/Gemini_LangChain_QA_Pinecone_WebLoad.ipynb)
+- [ChromaDB tutorials](https://docs.trychroma.com/integrations/embedding-models/google-gemini)
+- [QDrant tutorials](https://qdrant.tech/documentation/embeddings/gemini/)
+- [Weaviate tutorials](https://docs.weaviate.io/weaviate/model-providers/google)
+- [Pinecone tutorials](https://github.com/google-gemini/cookbook/blob/main/examples/langchain/Gemini_LangChain_QA_Pinecone_WebLoad.ipynb)
 
 ## Model versions
 
+### Gemini Embedding 2 Preview
+
 | Property | Description |
 |---|---|
-| id_cardModel code | **Gemini API** `gemini-embedding-001` |
-| saveSupported data types | **Input** Text **Output** Text embeddings |
-| token_autoToken limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 2,048 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
-| 123Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-001` |
-| calendar_monthLatest update | June 2025 |
+| Model code | **Gemini API** `gemini-embedding-2-preview` |
+| Supported data types | **Input** Text, image, video, audio, PDF **Output** Text embeddings |
+| Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 8,192 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
+| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Preview: `gemini-embedding-2-preview` |
+| Latest update | November 2025 |
+
+### Gemini Embedding
+
+| Property | Description |
+|---|---|
+| Model code | **Gemini API** `gemini-embedding-001` |
+| Supported data types | **Input** Text **Output** Text embeddings |
+| Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 2,048 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
+| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-001` |
+| Latest update | June 2025 |
 
 For deprecated Embeddings models, visit the [Deprecations](https://ai.google.dev/gemini-api/docs/deprecations) page
 
+## Migration from gemini-embedding-001
+
+The embedding spaces between `gemini-embedding-001` and
+`gemini-embedding-2-preview` are **incompatible** . This means you cannot
+directly compare embeddings generated by one model with embeddings generated by
+the other. If you are upgrading to `gemini-embedding-2-preview`, you must
+re-embed all of your existing data.
+
 ## Batch embeddings
 
-If latency is not a concern, try using the Gemini Embeddings model with
+If latency is not a concern, try using the Gemini Embeddings models with
 [Batch API](https://ai.google.dev/gemini-api/docs/batch-api#batch-embedding). This
 allows for much higher throughput at 50% of the default Embedding price.
 Find examples on how to get started in the [Batch API cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb).

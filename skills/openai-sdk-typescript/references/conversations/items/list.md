@@ -344,14 +344,6 @@ List all items for a conversation with the given ID.
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -485,14 +477,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 
@@ -3055,14 +3039,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data?: string`
 

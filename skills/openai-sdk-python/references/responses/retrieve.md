@@ -217,14 +217,6 @@ Retrieves a model response with the given ID.
 
                 - `"input_file"`
 
-              - `detail: Optional[Literal["low", "high"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
-
               - `file_data: Optional[str]`
 
                 The content of the file to be sent to the model.
@@ -334,14 +326,6 @@ Retrieves a model response with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -1312,14 +1296,6 @@ Retrieves a model response with the given ID.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: Optional[Literal["high", "low"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"high"`
-
-                - `"low"`
 
               - `file_data: Optional[str]`
 
@@ -3251,14 +3227,6 @@ Retrieves a model response with the given ID.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: Optional[Literal["low", "high"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -7509,14 +7477,6 @@ Retrieves a model response with the given ID.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 

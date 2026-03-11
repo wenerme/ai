@@ -81,7 +81,7 @@ The Codex app is available on macOS (Apple Silicon).
 
    Choose a project folder that you want Codex to work in.
 
-If you used the Codex app, CLI, or IDE Extension before you'll see past projects that you worked on.
+    If you used the Codex app, CLI, or IDE Extension before you'll see past projects that you worked on.
 
 4. Send your first message
 
@@ -148,6 +148,7 @@ If you used the Codex app, CLI, or IDE Extension before you'll see past projects
    </ExampleGallery>
 
    If you need more inspiration, check out the [explore section](https://developers.openai.com/codex/explore).
+   If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 
     <CtaPillLink href="/codex/app" label="Learn more about the Codex app" class="mt-8" />
 </WorkflowSteps>
@@ -239,6 +240,7 @@ Install the Codex extension for your IDE.
 4. Use Git checkpoints
 
     Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
+    If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
     
     <CtaPillLink href="/codex/ide" label="Learn more about the Codex IDE extension" class="mt-8" />
 </WorkflowSteps>
@@ -333,6 +335,7 @@ The Codex CLI is supported on macOS, Windows, and Linux.
 4. Use Git checkpoints
 
     Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
+    If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 </WorkflowSteps>
 
     <CtaPillLink href="/codex/cli" label="Learn more about the Codex CLI" class="mt-8" />

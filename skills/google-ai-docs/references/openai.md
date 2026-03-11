@@ -814,7 +814,9 @@ Gemini models can output JSON objects in any [structure you define](https://ai.g
 ## Embeddings
 
 Text embeddings measure the relatedness of text strings and can be generated
-using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings).
+using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You can use
+`gemini-embedding-2-preview` for multimodal embeddings or
+`gemini-embedding-001` for text-only embeddings.
 
 ### Python
 
@@ -827,7 +829,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings).
 
     response = client.embeddings.create(
         input="Your text string goes here",
-        model="gemini-embedding-001"
+        model="gemini-embedding-2-preview"
     )
 
     print(response.data[0].embedding)
@@ -843,7 +845,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings).
 
     async function main() {
       const embedding = await openai.embeddings.create({
-        model: "gemini-embedding-001",
+        model: "gemini-embedding-2-preview",
         input: "Your text string goes here",
       });
 
@@ -859,7 +861,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings).
     -H "Authorization: Bearer GEMINI_API_KEY" \
     -d '{
         "input": "Your text string goes here",
-        "model": "gemini-embedding-001"
+        "model": "gemini-embedding-2-preview"
       }'
 
 ## Batch API

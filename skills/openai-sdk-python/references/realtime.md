@@ -5235,14 +5235,6 @@ client.realtime.connect()
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -5922,14 +5914,6 @@ client.realtime.connect()
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: Optional[Literal["low", "high"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -8577,14 +8561,6 @@ client.realtime.connect()
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -13509,14 +13485,6 @@ client.realtime.connect()
 
                 - `"input_file"`
 
-              - `detail: Optional[Literal["low", "high"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
-
               - `file_data: Optional[str]`
 
                 The content of the file to be sent to the model.
@@ -14479,14 +14447,6 @@ client.realtime.connect()
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
-
-              - `detail: Optional[Literal["low", "high"]]`
-
-                The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                - `"low"`
-
-                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -16486,14 +16446,6 @@ client.realtime.connect()
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -17146,14 +17098,6 @@ client.realtime.connect()
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -19596,14 +19540,6 @@ client.realtime.connect()
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -22898,14 +22834,6 @@ client.realtime.connect()
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -23875,14 +23803,6 @@ client.realtime.connect()
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -24851,14 +24771,6 @@ client.realtime.connect()
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -26091,14 +26003,6 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -27079,14 +26983,6 @@ Returns the created client secret and the effective session object. The client s
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
-
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -28033,14 +27929,6 @@ print(client_secret.expires_at)
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -28971,14 +28859,6 @@ handle it.
 
         - `"input_file"`
 
-      - `detail: Optional[Literal["low", "high"]]`
-
-        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-        - `"low"`
-
-        - `"high"`
-
       - `file_data: Optional[str]`
 
         The content of the file to be sent to the model.
@@ -29834,14 +29714,6 @@ to complete the peer connection.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 

@@ -1,8 +1,8 @@
-Introducing a new set of endpoints, `:exacto`, focused on higher tool‑calling accuracy by routing to a sub‑group of providers with measurably better tool‑use success rates. It uses the same request payloads as any other variant, but filters endpoints so that only vetted providers for the chosen model are considered. To learn more, read our [blog post](https://openrouter.ai/announcements/provider-variance-introducing-exacto).
+Exacto is a virtual model variant that explicitly applies quality-first provider sorting. When you add `:exacto` to a model slug, OpenRouter prefers providers with stronger tool-calling quality signals for that model instead of using the default price-weighted ordering.
 
 ## Using the Exacto Variant
 
-Add `:exacto` to the end of any supported model slug. The curated allowlist is enforced before provider sorting, fallback, or load balancing — no extra provider preference config is required.
+Add `:exacto` to the end of any supported model slug. This is a shortcut for setting the provider sort to Exacto on that model.
 
 <CodeGroup>
   ```typescript title="TypeScript SDK"
@@ -65,51 +65,51 @@ Add `:exacto` to the end of any supported model slug. The curated allowlist is e
 
 <Tip>
   You can still supply fallback models with the `models` array. Any model that
-  carries the `:exacto` suffix will enforce the curated provider list when it is
-  selected.
+  carries the `:exacto` suffix will request Exacto sorting when it is selected.
 </Tip>
 
 ## What Is the Exacto Variant?
 
-Exacto is a curated routing variant specifically focused on tool‑calling accuracy. Unlike standard routing, which considers all available providers for a model, Exacto restricts routing to providers that demonstrate higher tool‑use accuracy and normal tool‑use propensity on real workloads.
+Exacto is a routing shortcut for quality-first provider ordering. Unlike standard routing, which primarily favors lower-cost providers, Exacto prefers providers with stronger signals for tool-calling reliability and deprioritizes weaker performers.
 
 ## Why Use Exacto?
 
 ### Why We Built It
 
-Providers running the same model can differ in accuracy due to implementation details in production inference. OpenRouter sees billions of requests monthly, giving us a unique vantage point to observe these differences and minimize surprises for users. Exacto combines benchmark results with real‑world tool‑calling telemetry to select the best‑performing providers.
+Providers serving the same model can vary meaningfully in tool-use behavior. Exacto gives you an explicit, request-level way to prefer higher-quality providers when you care more about tool-calling reliability than the default price-weighted route.
 
 ### Recommended Use Cases
 
-Exacto is optimized for quality‑sensitive, agentic workflows where tool‑calling accuracy and reliability are critical.
+Exacto is useful for quality-sensitive, agentic workflows where tool-calling accuracy and reliability matter more than raw cost efficiency.
+
+## How Exacto Works
+
+Exacto uses the same provider-ranking signals as [Auto Exacto](/docs/guides/routing/auto-exacto), but applies them explicitly because you chose the `:exacto` suffix.
+
+We use three classes of signals:
+
+* Tool-calling success and reliability from real traffic
+* Provider performance metrics such as throughput and latency
+* Benchmark and evaluation data as it becomes available
+
+Providers with strong track records are moved toward the front of the list. Providers with limited data are kept behind well-established performers, and providers with poor quality signals are deprioritized further.
+
+## Exacto vs. Auto Exacto
+
+* **Auto Exacto** runs automatically on tool-calling requests and requires no model suffix.
+* **`:exacto`** is the explicit shortcut when you want to request the Exacto sorting mode directly on a specific model slug.
+
+If you explicitly sort by price, throughput, or latency, that explicit sort still takes precedence.
 
 ## Supported Models
 
-Exacto endpoints are available for:
+Exacto is a virtual variant and is not backed by a separate endpoint pool. It can be used anywhere provider sorting is meaningful, especially on models with multiple compatible providers.
 
-* Kimi K2 (`moonshotai/kimi-k2-0905:exacto`)
-* DeepSeek v3.1 Terminus (`deepseek/deepseek-v3.1-terminus:exacto`)
-* GLM 4.6 (`z-ai/glm-4.6:exacto`)
-* GPT‑OSS 120B (`openai/gpt-oss-120b:exacto`)
-* Qwen3 Coder (`qwen/qwen3-coder:exacto`)
+In practice, Exacto is most useful on models that:
 
-## How We Select Providers
-
-We use three inputs:
-
-* Tool‑calling accuracy from real traffic across billions of calls
-* Real‑time provider preferences (pins/ignores) from users making tool calls
-* Benchmarking (internal eval suites, Groq OpenBench running LiveMCPBench, official tau2bench, and similar)
-
-You will be routed only to providers that:
-
-1. Are top‑tier on tool‑calling accuracy
-2. Fall within a normal range of tool‑calling propensity
-3. Are not frequently ignored or blacklisted by users when tools are provided
-
-In our evaluations and open‑source benchmarks (e.g., tau2‑Bench, LiveMCPBench), Exacto shows materially fewer tool‑calling failures and more reliable tool use.
-
-We will continue working with providers not currently in the Exacto pool to help them improve and be included. Exacto targets tool‑calling specifically and is not a broad statement on overall provider quality.
+* Support tool calling
+* Have multiple providers available on OpenRouter
+* Show meaningful provider variance in tool-use reliability
 
 <Note>
   If you have feedback on the Exacto variant, please fill out this form:

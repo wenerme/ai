@@ -125,7 +125,11 @@ An agentic model that autonomously plans and executes multi-step research across
 
 ## Specialized task models
 
-### [Gemini Embeddings](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001)
+### [Gemini Embedding 2 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2-preview)
+
+Our first multimodal embedding model, mapping text, images, video, audio, and PDFs into a unified embedding space for advanced semantic search and RAG systems.
+
+### [Gemini Embedding](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001)
 
 High-dimensional vector representations for advanced semantic search, text classification, and RAG systems.
 

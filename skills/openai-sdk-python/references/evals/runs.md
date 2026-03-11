@@ -262,14 +262,6 @@ Get a list of runs for an evaluation.
 
                       - `"input_file"`
 
-                    - `detail: Optional[Literal["low", "high"]]`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
-
                     - `file_data: Optional[str]`
 
                       The content of the file to be sent to the model.
@@ -2556,14 +2548,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_file"`
 
-                  - `detail: Optional[Literal["low", "high"]]`
-
-                    The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                    - `"low"`
-
-                    - `"high"`
-
                   - `file_data: Optional[str]`
 
                     The content of the file to be sent to the model.
@@ -4740,14 +4724,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
-
-                    - `detail: Optional[Literal["low", "high"]]`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
 
                     - `file_data: Optional[str]`
 
@@ -7061,14 +7037,6 @@ Get an evaluation run by ID.
 
                       - `"input_file"`
 
-                    - `detail: Optional[Literal["low", "high"]]`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
-
                     - `file_data: Optional[str]`
 
                       The content of the file to be sent to the model.
@@ -9371,14 +9339,6 @@ Cancel an ongoing evaluation run.
 
                       - `"input_file"`
 
-                    - `detail: Optional[Literal["low", "high"]]`
-
-                      The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                      - `"low"`
-
-                      - `"high"`
-
                     - `file_data: Optional[str]`
 
                       The content of the file to be sent to the model.
@@ -11650,14 +11610,6 @@ print(run.run_id)
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
-
-                - `detail: Optional[Literal["low", "high"]]`
-
-                  The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-                  - `"low"`
-
-                  - `"high"`
 
                 - `file_data: Optional[str]`
 

@@ -617,6 +617,36 @@ paid tier of the Gemini API.
 | Video price | Not available | $0.35 |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
+## Gemini Embedding 2 Preview
+
+*`gemini-embedding-2-preview`*
+
+
+[Try the API](https://ai.google.dev/gemini-api/docs/embeddings)
+
+Our first multimodal embedding model, mapping text, images, video, audio, and
+PDFs into a unified embedding space.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Text input price | Free of charge | $0.20 |
+| Image input price | Free of charge | $0.45 ($0.00012 per image) |
+| Audio input price | Free of charge | $6.50 ($0.00016 per second) |
+| Video input price | Free of charge | $12.00 ($0.00079 per fps) |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Text input price | FNot available | $0.10 |
+| Image input price | Not available | $0.225 ($0.00006 per image) |
+| Audio input price | Not available | $3.25 ($0.00008 per second) |
+| Video input price | Not available | $6.00 ($0.000395 per fps) |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
 ## Gemini Embedding
 
 *`gemini-embedding-001`*
@@ -624,8 +654,7 @@ paid tier of the Gemini API.
 
 [Try the API](https://ai.google.dev/gemini-api/docs/embeddings)
 
-Our newest embeddings model, more stable and with higher rate limits than
-previous versions, available to developers on the free and paid tiers of the Gemini API.
+Our Gemini Embeddings model for text-only use cases, available to developers on the free and paid tiers of the Gemini API.
 
 ### Standard
 

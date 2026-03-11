@@ -443,14 +443,6 @@ to complete the peer connection.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.

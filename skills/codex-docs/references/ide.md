@@ -80,6 +80,7 @@ Codex includes commands you can bind as keyboard shortcuts in your IDE settings 
 To see all available commands and bind them as keyboard shortcuts, select the settings icon in the Codex chat and select **Keyboard shortcuts**.
 You can also refer to the [Codex IDE extension commands](https://developers.openai.com/codex/ide/commands) page.
 For a list of supported slash commands, see [Codex IDE extension slash commands](https://developers.openai.com/codex/ide/slash-commands).
+If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 
 ---
 

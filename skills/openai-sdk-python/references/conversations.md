@@ -87,14 +87,6 @@ Create a conversation.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -204,14 +196,6 @@ Create a conversation.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -1182,14 +1166,6 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["high", "low"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"high"`
-
-            - `"low"`
 
           - `file_data: Optional[str]`
 
@@ -3121,14 +3097,6 @@ Create a conversation.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -3757,14 +3725,6 @@ print(conversation_deleted_resource.id)
 
         - `"input_file"`
 
-      - `detail: Optional[Literal["low", "high"]]`
-
-        The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-        - `"low"`
-
-        - `"high"`
-
       - `file_data: Optional[str]`
 
         The content of the file to be sent to the model.
@@ -3936,14 +3896,6 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -4053,14 +4005,6 @@ Create items in a conversation with the given ID.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
-
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
 
         - `file_data: Optional[str]`
 
@@ -5031,14 +4975,6 @@ Create items in a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["high", "low"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"high"`
-
-            - `"low"`
 
           - `file_data: Optional[str]`
 
@@ -6971,14 +6907,6 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -7358,14 +7286,6 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -7503,14 +7423,6 @@ Create items in a conversation with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -10087,14 +9999,6 @@ Create items in a conversation with the given ID.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -10504,14 +10408,6 @@ List all items for a conversation with the given ID.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -10649,14 +10545,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -13233,14 +13121,6 @@ List all items for a conversation with the given ID.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -13603,14 +13483,6 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -13748,14 +13620,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -16332,14 +16196,6 @@ Get a single item from a conversation with the given IDs.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -16722,14 +16578,6 @@ print(conversation.id)
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
-
-          The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-          - `"low"`
-
-          - `"high"`
-
         - `file_data: Optional[str]`
 
           The content of the file to be sent to the model.
@@ -16867,14 +16715,6 @@ print(conversation.id)
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -19452,14 +19292,6 @@ print(conversation.id)
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -19774,14 +19606,6 @@ print(conversation.id)
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-            - `"low"`
-
-            - `"high"`
-
           - `file_data: Optional[str]`
 
             The content of the file to be sent to the model.
@@ -19919,14 +19743,6 @@ print(conversation.id)
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -22503,14 +22319,6 @@ print(conversation.id)
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. One of `high` or `low`. Defaults to `high`.
-
-              - `"low"`
-
-              - `"high"`
 
             - `file_data: Optional[str]`
 

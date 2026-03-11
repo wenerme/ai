@@ -93,6 +93,7 @@ limits, separate from the non-batch API calls.
 | Gemini 2.0 Flash-Lite | 10,000,000 |
 | Gemini 3.1 Flash Image Preview 🍌 | 1,000,000 |
 | Gemini 3 Pro Image Preview 🍌 | 2,000,000 |
+| Gemini Embedding | 500,000 |
 
 ### Tier 2
 
@@ -115,6 +116,7 @@ limits, separate from the non-batch API calls.
 | Gemini 2.0 Flash-Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Image Preview 🍌 | 250,000,000 |
 | Gemini 3 Pro Image Preview 🍌 | 270,000,000 |
+| Gemini Embedding | 5,000,000 |
 
 ### Tier 3
 
@@ -137,6 +139,7 @@ limits, separate from the non-batch API calls.
 | Gemini 2.0 Flash-Lite | 5,000,000,000 |
 | Gemini 3.1 Flash Image Preview 🍌 | 750,000,000 |
 | Gemini 3 Pro Image Preview 🍌 | 1,000,000,000 |
+| Gemini Embedding | 10,000,000 |
 
 ## How to upgrade to the next tier
 
