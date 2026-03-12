@@ -131,6 +131,7 @@ components:
     ProviderName:
       type: string
       enum:
+        - Akash
         - AI21
         - AionLabs
         - Alibaba
@@ -508,6 +509,8 @@ components:
       enum:
         - native
         - exa
+        - firecrawl
+        - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
     ChatGenerationParamsPluginsItems2:

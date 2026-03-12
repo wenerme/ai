@@ -19,6 +19,15 @@ paths:
       tags:
         - subpackage_models
       parameters:
+        - name: output_modality
+          in: query
+          description: >-
+            Filter models by output modality. Accepts a comma-separated list of
+            modalities (text, image, audio, embeddings) or "all" to include all
+            models. Defaults to "text".
+          required: false
+          schema:
+            type: string
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -32,6 +41,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModelsCountResponse'
+        '400':
+          description: Bad Request - Invalid output_modality value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '500':
           description: Internal Server Error
           content:
@@ -63,6 +78,37 @@ components:
         - data
       description: Model count data
       title: ModelsCountResponse
+    BadRequestResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for BadRequestResponse
+      title: BadRequestResponseErrorData
+    BadRequestResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Bad Request - Invalid request parameters or malformed input
+      title: BadRequestResponse
     InternalServerResponseErrorData:
       type: object
       properties:

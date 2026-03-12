@@ -2146,6 +2146,7 @@ components:
     ProviderName:
       type: string
       enum:
+        - Akash
         - AI21
         - AionLabs
         - Alibaba
@@ -2255,6 +2256,7 @@ components:
         - price
         - throughput
         - latency
+        - exacto
       description: The provider sorting strategy (price, throughput, latency)
       title: ProviderSort
     ProviderSortConfigBy:
@@ -2263,6 +2265,7 @@ components:
         - price
         - throughput
         - latency
+        - exacto
       description: The provider sorting strategy (price, throughput, latency)
       title: ProviderSortConfigBy
     ProviderSortConfigPartition:
@@ -2575,6 +2578,8 @@ components:
       enum:
         - native
         - exa
+        - firecrawl
+        - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
     OpenResponsesRequestPluginsItems2:

@@ -773,21 +773,20 @@ On the other hand, this example creates multiple embeddings in one embedding cal
     IMG_PATH="/path/to/your/dog.png"
     IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:embedContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:batchEmbedContents" \
         -H "Content-Type: application/json" \
         -H "x-goog-api-key: ${GEMINI_API_KEY}" \
         -d '{
-            "content": {
-                "parts": [
-                    {"text": "The dog is cute"},
-                    {
-                        "inline_data": {
-                            "mime_type": "image/png",
-                            "data": "'"${IMG_BASE64}"'"
-                        }
-                    }
-                ]
-            }
+            "requests": [
+                {
+                    "model": "models/gemini-embedding-2-preview",
+                    "content": {"parts": [{"text": "The dog is cute"}]}
+                },
+                {
+                    "model": "models/gemini-embedding-2-preview",
+                    "content": {"parts": [{"inline_data": {"mime_type": "image/png", "data": "'"${IMG_BASE64}"'"}}]}
+                }
+            ]
         }'
 
 ### Embedding audio

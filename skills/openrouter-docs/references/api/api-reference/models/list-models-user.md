@@ -221,6 +221,7 @@ components:
         - image
         - embeddings
         - audio
+        - video
       title: OutputModality
     ModelArchitecture:
       type: object

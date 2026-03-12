@@ -125,6 +125,7 @@ components:
         - image
         - embeddings
         - audio
+        - video
       title: OutputModality
     ListEndpointsResponseArchitectureTokenizer:
       type: object
@@ -277,6 +278,7 @@ components:
     ProviderName:
       type: string
       enum:
+        - Akash
         - AI21
         - AionLabs
         - Alibaba
