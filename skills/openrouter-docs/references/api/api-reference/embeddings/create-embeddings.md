@@ -229,6 +229,7 @@ components:
     ProviderName:
       type: string
       enum:
+        - Akash
         - AI21
         - AionLabs
         - Alibaba

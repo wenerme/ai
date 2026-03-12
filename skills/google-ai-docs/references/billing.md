@@ -33,7 +33,7 @@ existing project to upgrade to the Paid Tier directly in
 [Google Cloud console](https://console.cloud.google.com/). You'll gain immediate
 billable status without any upfront
 costs, and pay later only for the specific resources you consume during the
-billing cycle (read the [Cloud automated Billing setup](https://docs.cloud.google.com/billing/docs/in-product-billing-setup)
+billing cycle (read the [Cloud automated billing setup](https://docs.cloud.google.com/billing/docs/in-product-billing-setup)
 for more information).
 
 1. Go to the [AI Studio API keys](https://aistudio.google.com/api-keys) page (or anywhere you see "Set up billing" in AI Studio).
@@ -81,7 +81,7 @@ be automatically upgraded to the next tier.
 
 ## Verify billing status
 
-After you [Set up billing for the Paid Tier](https://ai.google.dev/gemini-api/docs/billing#setup-billing), you'll immediately
+After you [Set up billing for the paid tier](https://ai.google.dev/gemini-api/docs/billing#setup-billing), you'll immediately
 be informed whether setup was successful. You can
 also verify that your Google Cloud Project is linked to the Google Cloud Billing
 account and ready for paid usage on the
@@ -89,21 +89,7 @@ account and ready for paid usage on the
 in the **Quota tier** column might show:
 
 - **Tier 1, 2, or 3**: Verifies your project is linked and immediately billable.
-- **Action needed** : You need to submit a one time [prepayment](https://ai.google.dev/gemini-api/docs/billing#prepay) that applies to your account usage.
-
-### One-time prepayment verification
-
-Google may require a one-time prepayment to activate the paid tier for the
-Gemini API. This measure helps maintain the security and availability of our
-platform for all users. It is not a fee; it is a credit that is applied directly
-to your account for future use.
-
-#### Prepayment process
-
-1. [**Set up billing**](https://ai.google.dev/gemini-api/docs/billing#setup-billing): When you activate the Gemini API on a project linked to an eligible billing account, we'll notify you if a prepayment is required.
-2. [**Get notified**](https://ai.google.dev/gemini-api/docs/billing#verify-billing): You'll see a dialog in AI Studio after billing account setup, and receive an email informing you of the requirement.
-3. **Make a payment** : On the API keys page, click **Action needed** under **Quota tier** for your newly linked key.
-4. **Get upgraded**: Once your payment is successfully processed (which is instant for most payment methods), your project will upgrade to the Paid Tier, and your new rate limits will apply.
+- **Action needed**: You need to take action on your account, like pay a bill, update a payment method, etc.
 
 ## Monitor usage
 
@@ -111,16 +97,33 @@ You can monitor your usage of the Gemini API in
 [Google AI Studio](https://aistudio.google.com/usage) in **Dashboard** \>
 **Usage**.
 
+## Project spend caps
+
+You can set your own [project-level](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) spend caps in AI Studio.
+This is useful if you have multiple projects under the same billing
+account and want to ensure each has access to enough of the spending limit.
+
+Accounts with the project editor, owner, or admin [roles](https://docs.cloud.google.com/iam/docs/roles-overview) can set spend caps per
+project in AI Studio on the [Spend](https://aistudio.google.com/spend) page
+under **Monthly spend cap** \> **Edit spend cap**.
+
+If you switch a project to a different billing account, any spend cap you
+already set for that project will persist, but any accumulated spend will
+reset to $0 for the new billing cycle.
+
+> [!CAUTION]
+> **Caution:** Billing data processing times can be slightly delayed in AI Studio, up to several minutes. You may experience overages beyond your project cap if billing data hasn't processed before more charges are accrued.
+
 ## Cloud Billing
 
 The Gemini API uses
 [Cloud Billing](https://cloud.google.com/billing/docs/concepts) for billing
 services, which you can [set up directly in AI Studio](https://ai.google.dev/gemini-api/docs/billing#setup-billing). You can
 use AI Studio to track spending and understand costs. You can access the same
-information and make payments in your Cloud Billing account.
+information and make payments in your Cloud billing account.
 
 > [!NOTE]
-> **Note:** [New users](https://ai.google.dev/gemini-api/docs/billing#new-user) may be granted a [$300 welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits) in their new Google Cloud Billing accounts. You can't use these credits on AI Studio or the Gemini API, but you can use them on other Google Cloud products in the [Google Cloud console](https://ai.google.dev/gemini-api/docs/console.cloud.google.com).
+> **Note:** [New users](https://ai.google.dev/gemini-api/docs/billing#new-user) may be granted a [$300 welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits) in their new Google Cloud Billing accounts. You can't use these credits on AI Studio or the Gemini API, but you can use them on other Google Cloud products in the [Google Cloud console](https://console.cloud.google.com/).
 
 ## Frequently asked questions
 
@@ -185,18 +188,13 @@ Studio, up until the credits expire after 90 days.
 
 ### How is billing handled?
 
-Billing for the Gemini API is handled by the [Cloud Billing](https://cloud.google.com/billing/docs/concepts) system. Learn about the
-automated Billing setup in the [Cloud Billing documentation](http://docs.cloud.google.com/billing/docs).
+Billing for the Gemini API is handled by the [Cloud billing](https://cloud.google.com/billing/docs/concepts) system. Learn about the
+automated Billing setup in the [Cloud billing documentation](http://docs.cloud.google.com/billing/docs).
 
 ### Am I charged for failed requests?
 
 If your request fails with a 400 or 500 error, you won't be charged for the
 tokens used. However, the request will still count against your quota.
-
-### Is there a charge for fine-tuning the models?
-
-[Model tuning](https://ai.google.dev/gemini-api/docs/model-tuning) is no longer supported in the
-Gemini API or AIS.
 
 ### Is `GetTokens` billed?
 
@@ -205,39 +203,15 @@ inference quota.
 
 ### How is my Google AI Studio data handled if I have a paid API account?
 
-Refer to the [Terms of Service](https://ai.google.dev/gemini-api/terms#paid-services) for details on
+Refer to the [Terms of service](https://ai.google.dev/gemini-api/terms#paid-services) for details on
 how data is handled when Cloud billing is enabled (see "How Google Uses Your
 Data" under "Paid Services"). Note that your Google AI Studio prompts are
 treated under the same "Paid Services" terms so long as at least 1 API project
 has billing enabled, which you can validate on the
-[Gemini API Key page](https://aistudio.google.com/api-keys) if you see any
+[Gemini API key page](https://aistudio.google.com/api-keys) if you see any
 projects marked as "Paid" under "Plan".
-
-### What happens to my prepayment?
-
-The full amount is added as a credit to your Cloud Billing account. This credit
-will automatically be used to pay for any usage you accrue on Google Cloud,
-including the Gemini API or other services like Compute Engine and Cloud
-Storage.
-
-### What if I don't prepay?
-
-No problem. Your project will remain on the Gemini API free tier. You won't lose
-any access, but you'll be subject to the free tier's rate limits. You can choose
-to complete the prepayment at any time in the future to upgrade.
-
-### Can I get a refund for my prepayment?
-
-Yes. If you have a credit balance on your account, you can request a refund
-through the Cloud Console, subject to our standard refund policies.
-
-### What happens if I spend beyond the prepaid amount?
-
-Once your prepaid credit balance is exhausted, your account will transition to
-standard billing. Any additional usage will be charged to the primary payment
-method linked to your Cloud Billing account.
 
 ### Where can I get help with billing?
 
 To get help with billing, see
-[Get Cloud Billing support](https://cloud.google.com/support/billing).
+[Get Cloud billing support](https://cloud.google.com/support/billing).

@@ -44,7 +44,7 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.5-flash-image` | October 2, 2025 | October 2, 2026 | `gemini-3.1-flash-image-preview` |
 | `gemini-2.5-flash-lite` | July 22, 2025 | July 22, 2026 | `gemini-3.1-flash-lite-preview` |
 | Preview models ||||
-| `gemini-2.5-flash-lite-preview-09-25` | September 25, 2025 |   |   |
+| `gemini-2.5-flash-lite-preview-09-2025` | September 25, 2025 | March 31, 2026 | `gemini-3.1-flash-lite-preview` |
 | `gemini-2.5-flash-preview-05-20` | May 20, 2025 | November 18, 2025 | `gemini-3-flash-preview` |
 | `gemini-2.5-flash-image-preview` | May 7, 2025 | January 15, 2026 | `gemini-2.5-flash-image` |
 | `gemini-2.5-flash-preview-09-25` | September 25, 2025 | February 17, 2026 | `gemini-3-flash-preview` |

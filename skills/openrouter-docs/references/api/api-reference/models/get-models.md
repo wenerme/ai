@@ -30,6 +30,15 @@ paths:
           required: false
           schema:
             type: string
+        - name: output_modality
+          in: query
+          description: >-
+            Filter models by output modality. Accepts a comma-separated list of
+            modalities (text, image, audio, embeddings) or "all" to include all
+            models. Defaults to "text".
+          required: false
+          schema:
+            type: string
         - name: use_rss
           in: query
           required: false
@@ -242,6 +251,7 @@ components:
         - image
         - embeddings
         - audio
+        - video
       title: OutputModality
     ModelArchitecture:
       type: object

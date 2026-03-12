@@ -634,17 +634,17 @@ PDFs into a unified embedding space.
 | Text input price | Free of charge | $0.20 |
 | Image input price | Free of charge | $0.45 ($0.00012 per image) |
 | Audio input price | Free of charge | $6.50 ($0.00016 per second) |
-| Video input price | Free of charge | $12.00 ($0.00079 per fps) |
+| Video input price | Free of charge | $12.00 ($0.00079 per frame) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Text input price | FNot available | $0.10 |
+| Text input price | Not available | $0.10 |
 | Image input price | Not available | $0.225 ($0.00006 per image) |
 | Audio input price | Not available | $3.25 ($0.00008 per second) |
-| Video input price | Not available | $6.00 ($0.000395 per fps) |
+| Video input price | Not available | $6.00 ($0.000395 per frame) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini Embedding

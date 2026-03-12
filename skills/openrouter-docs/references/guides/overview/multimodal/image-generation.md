@@ -4,6 +4,20 @@ OpenRouter supports image generation through models that have `"image"` in their
 
 You can find image generation models in several ways:
 
+### Via the API
+
+Use the `output_modality` query parameter on the [Models API](/docs/api-reference/models/get-models) to programmatically discover image generation models:
+
+```bash
+# List only image generation models
+curl https://openrouter.ai/api/v1/models?output_modality=image
+
+# List models that support both text and image output
+curl https://openrouter.ai/api/v1/models?output_modality=text,image
+```
+
+See [Models - Query Parameters](/docs/guides/overview/models#query-parameters) for the full list of supported modality values.
+
 ### On the Models Page
 
 Visit the [Models page](/models) and filter by output modalities to find models capable of image generation. Look for models that list `"image"` in their output modalities.

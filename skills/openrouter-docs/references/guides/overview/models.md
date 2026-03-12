@@ -1,5 +1,47 @@
 Explore and browse 400+ models and providers [on our website](/models), or [with our API](/docs/api-reference/models/get-models). You can also subscribe to our [RSS feed](/api/v1/models?use_rss=true) to stay updated on new models.
 
+## Query Parameters
+
+The Models API supports query parameters to filter the list of models returned.
+
+### `output_modality`
+
+Filter models by their output capabilities. Accepts a comma-separated list of modalities or `"all"` to include every model regardless of output type.
+
+| Value        | Description                                 |
+| ------------ | ------------------------------------------- |
+| `text`       | Models that produce text output (default)   |
+| `image`      | Models that generate images                 |
+| `audio`      | Models that produce audio output            |
+| `embeddings` | Embedding models                            |
+| `all`        | Include all models, skip modality filtering |
+
+Examples:
+
+```bash
+# Default — text models only
+curl https://openrouter.ai/api/v1/models
+
+# Image generation models only
+curl https://openrouter.ai/api/v1/models?output_modality=image
+
+# Text and image models
+curl https://openrouter.ai/api/v1/models?output_modality=text,image
+
+# All models regardless of modality
+curl https://openrouter.ai/api/v1/models?output_modality=all
+```
+
+The same parameter is available on the [`/v1/models/count`](/docs/api-reference/models/count) endpoint so that counts stay consistent with list results.
+
+### `supported_parameters`
+
+Filter models by the API parameters they support. For example, to find models that support tool calling:
+
+```bash
+curl https://openrouter.ai/api/v1/models?supported_parameters=tools
+```
+
 ## Models API Standard
 
 Our [Models API](/docs/api-reference/models/get-models) makes the most important information about all LLMs freely available as soon as we confirm it.
@@ -35,6 +77,8 @@ Each model in the `data` array contains the following standardized fields:
 | `top_provider`         | `TopProvider`                                 | Configuration details for the primary provider                                         |
 | `per_request_limits`   | Rate limiting information (null if no limits) |                                                                                        |
 | `supported_parameters` | `string[]`                                    | Array of supported API parameters for this model                                       |
+| `default_parameters`   | `object \| null`                              | Default parameter values for this model (null if none)                                 |
+| `expiration_date`      | `string \| null`                              | Deprecation date for the model endpoint (null if not deprecated)                       |
 
 #### Architecture Object
 
