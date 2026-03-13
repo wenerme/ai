@@ -14,9 +14,19 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Text prompt that describes the video to generate.
 
-  - `input_reference?: Uploadable`
+  - `input_reference?: Uploadable | ImageRefParam2`
 
-    Optional multipart reference asset that guides generation.
+    Optional reference asset upload or reference object that guides generation.
+
+    - `Uploadable`
+
+    - `ImageRefParam2`
+
+      - `file_id?: string`
+
+      - `image_url?: string`
+
+        A fully qualified URL or base64-encoded data URL.
 
   - `model?: VideoModel`
 

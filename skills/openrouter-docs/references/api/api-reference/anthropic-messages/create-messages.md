@@ -3875,7 +3875,7 @@ components:
     ProviderName:
       type: string
       enum:
-        - Akash
+        - AkashML
         - AI21
         - AionLabs
         - Alibaba
@@ -6009,7 +6009,7 @@ components:
         - Together 2
         - Ubicloud
         - 01.AI
-        - Akash
+        - AkashML
         - AI21
         - AionLabs
         - Alibaba

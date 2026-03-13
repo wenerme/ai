@@ -99,6 +99,9 @@ You can monitor your usage of the Gemini API in
 
 ## Project spend caps
 
+> [!WARNING]
+> **Experimental:** The feature is experimental and may change in scope.
+
 You can set your own [project-level](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) spend caps in AI Studio.
 This is useful if you have multiple projects under the same billing
 account and want to ensure each has access to enough of the spending limit.
@@ -111,8 +114,10 @@ If you switch a project to a different billing account, any spend cap you
 already set for that project will persist, but any accumulated spend will
 reset to $0 for the new billing cycle.
 
+[Batch mode](https://ai.google.dev/gemini-api/docs/batch-api) completions may still incur overages.
+
 > [!CAUTION]
-> **Caution:** Billing data processing times can be slightly delayed in AI Studio, up to several minutes. You may experience overages beyond your project cap if billing data hasn't processed before more charges are accrued.
+> **Caution:** Billing data processing times can be slightly delayed in AI Studio, up to around 10 minutes. You may experience overages beyond your project cap if billing data hasn't processed before more charges are accrued.
 
 ## Cloud Billing
 

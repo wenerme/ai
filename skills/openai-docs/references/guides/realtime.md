@@ -86,6 +86,7 @@ Once connected to a realtime model using one of the methods above, learn how to 
 
 - **[Prompting guide](https://developers.openai.com/api/docs/guides/realtime-models-prompting):** learn tips and best practices for prompting and steering Realtime models.
 - **[Managing conversations](https://developers.openai.com/api/docs/guides/realtime-conversations):** Learn about the Realtime session lifecycle and the key events that happen during a conversation.
+- **[MCP servers](https://developers.openai.com/api/docs/guides/realtime-mcp):** Connect remote MCP servers or connectors to a Realtime session and handle their event flow.
 - **[Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/realtime-server-controls):** Learn how you can control a Realtime session on the server to call tools and implement guardrails.
 - **[Managing costs](https://developers.openai.com/api/docs/guides/realtime-costs):** Learn how to monitor and optimize your usage of the Realtime API.
 - **[Realtime audio transcription](https://developers.openai.com/api/docs/guides/realtime-transcription):** Transcribe audio streams in real time over a WebSocket connection.

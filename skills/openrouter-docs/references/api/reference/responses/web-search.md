@@ -66,10 +66,51 @@ Enable web search using the `plugins` parameter:
 
 Configure web search behavior:
 
-| Parameter     | Type    | Description                               |
-| ------------- | ------- | ----------------------------------------- |
-| `id`          | string  | **Required.** Must be "web"               |
-| `max_results` | integer | Maximum search results to retrieve (1-10) |
+| Parameter         | Type      | Description                                                                       |
+| ----------------- | --------- | --------------------------------------------------------------------------------- |
+| `id`              | string    | **Required.** Must be "web"                                                       |
+| `engine`          | string    | Search engine: `"native"`, `"exa"`, `"firecrawl"`, `"parallel"`, or omit for auto |
+| `max_results`     | integer   | Maximum search results to retrieve (1-25, default 5)                              |
+| `include_domains` | string\[] | Restrict results to these domains (supports wildcards like `*.substack.com`)      |
+| `exclude_domains` | string\[] | Exclude results from these domains                                                |
+
+See the [Web Search plugin docs](/docs/guides/features/plugins/web-search) for full details on engine selection, domain filter compatibility, and pricing.
+
+## X Search Filters (xAI only)
+
+When using xAI models (e.g. `x-ai/grok-4.1-fast`),
+you can pass `x_search_filter` as a top-level
+request parameter to filter X/Twitter search
+results:
+
+```json
+{
+  "model": "x-ai/grok-4.1-fast",
+  "input": "What are people saying about AI?",
+  "plugins": [{ "id": "web" }],
+  "x_search_filter": {
+    "allowed_x_handles": ["OpenRouterAI"],
+    "from_date": "2025-01-01",
+    "enable_image_understanding": true
+  }
+}
+```
+
+| Parameter                    | Type      | Description                                    |
+| ---------------------------- | --------- | ---------------------------------------------- |
+| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 10) |
+| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 10)      |
+| `from_date`                  | string    | Start date (ISO 8601, e.g. `"2025-01-01"`)     |
+| `to_date`                    | string    | End date (ISO 8601, e.g. `"2025-12-31"`)       |
+| `enable_image_understanding` | boolean   | Analyze images in posts                        |
+| `enable_video_understanding` | boolean   | Analyze videos in posts                        |
+
+<Warning>
+  `allowed_x_handles` and `excluded_x_handles` are
+  mutually exclusive. See the
+  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-xai-only)
+  for full details.
+</Warning>
 
 ## Structured Message with Web Search
 

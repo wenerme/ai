@@ -227,36 +227,124 @@ Built-in tools
 
 </div>
 <div id="container-usage-pricing"></div>
-| Tool | Cost | |
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-|
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| | Container usage (including [Hosted
-Shell](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart) and [Code
-Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter)) <br />
-Now | 1 GB (default): \$0.03 / container
-<br />4 GB: \$0.12 / container
-<br />
-16 GB: \$0.48 / container
-<br />
-64 GB: \$1.92 / container | | Container usage (including [Hosted
-Shell](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart) and [Code
-Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter)) <br />
-Starting March 31st | 1 GB (default): \$0.03 / 20 minutes / container
-<br />4 GB: \$0.12 / 20 minutes / container
-<br />
-16 GB: \$0.48 / 20 minutes / container
-<br />
-64 GB: \$1.92 / 20 minutes / container | | File search storage | \$0.10 / GB per
-day (1GB free) | | File search tool call <br />
-<small>Responses API only</small> | \$2.50 / 1k calls | | Web search (all
-models) <br />
-<small>[1]</small> | \$10.00 / 1k calls + search content tokens billed at model
-rates | | Web search preview (reasoning models, including gpt-5, o-series)
-<br />
-<small></small> | \$10.00 / 1k calls + search content tokens billed at model
-rates | | Web search preview (non-reasoning models) <br />
-<small></small> | \$25.00 / 1k calls + search content tokens are free |
+<table style={{ width: "100%", tableLayout: "fixed", fontSize: "14px" }}>
+  <thead>
+    <tr>
+      <th style={{ width: "33%" }} set:html={"Tool"} />
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={"Cost"}
+      />
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={`<div>Container usage (including <a href="/api/docs/guides/tools-shell#hosted-shell-quickstart">Hosted Shell</a> and <a href="/api/docs/guides/tools-code-interpreter">Code Interpreter</a>)</div><div>Now</div>`}
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={`<div>1 GB (default): $0.03 / container</div><div>4 GB: $0.12 / container</div><div>16 GB: $0.48 / container</div><div>64 GB: $1.92 / container</div>`}
+      />
+    </tr>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={`<div>Container usage (including <a href="/api/docs/guides/tools-shell#hosted-shell-quickstart">Hosted Shell</a> and <a href="/api/docs/guides/tools-code-interpreter">Code Interpreter</a>)</div><div>Starting March 31st</div>`}
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={`<div>1 GB (default): $0.03 / 20 minutes / container</div><div>4 GB: $0.12 / 20 minutes / container</div><div>16 GB: $0.48 / 20 minutes / container</div><div>64 GB: $1.92 / 20 minutes / container</div>`}
+      />
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }} set:html={"File search storage"} />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={"$0.10 / GB per day (1GB free)"}
+      />
+    </tr>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={`<div>File search tool call</div><small>Responses API only</small>`}
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={"$2.50 / 1k calls"}
+      />
+    </tr>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={`<div>Web search (all models)</div><small>[1]</small>`}
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={
+          "$10.00 / 1k calls + search content tokens billed at model rates"
+        }
+      />
+    </tr>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={
+          "Web search preview (reasoning models, including gpt-5, o-series)"
+        }
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={
+          "$10.00 / 1k calls + search content tokens billed at model rates"
+        }
+      />
+    </tr>
+    <tr>
+      <td
+        style={{ width: "33%" }}
+        set:html={"Web search preview (non-reasoning models)"}
+      />
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+        set:html={"$25.00 / 1k calls + search content tokens are free"}
+      />
+    </tr>
+  </tbody>
+</table>
 <small>
   The tokens used for built-in tools are billed at the chosen model's per-token
   rates. GB refers to binary gigabytes of storage (also known as gibibyte),
@@ -292,20 +380,429 @@ Transcription and speech generation
 
 </div>
 <small className="pricing-section-meta">Prices per 1M tokens.</small>
-#### Text tokens | Model | Input | Output | Estimated cost | |
-------------------------- | ------ | ------- | ---------------- | |
-gpt-4o-mini-tts | \$0.60 | - | \$0.015 / minute | | gpt-4o-transcribe | \$2.50 |
-\$10.00 | \$0.006 / minute | | gpt-4o-transcribe-diarize | \$2.50 | \$10.00 |
-\$0.006 / minute | | gpt-4o-mini-transcribe | \$1.25 | \$5.00 | \$0.003 / minute
-| #### Audio tokens | Model | Input | Output | Estimated cost | |
-------------------------- | ------ | ------- | ---------------- | |
-gpt-4o-mini-tts | - | \$12.00 | \$0.015 / minute | | gpt-4o-transcribe | \$6.00
-| - | \$0.006 / minute | | gpt-4o-transcribe-diarize | \$6.00 | - | \$0.006 /
-minute | | gpt-4o-mini-transcribe | \$3.00 | - | \$0.003 / minute | #### Other
-models | Model | Use case | Cost | | ------- | ----------------- |
------------------------ | | Whisper | Transcription | \$0.006 / minute | | TTS |
-Speech generation | \$15.00 / 1M characters | | TTS HD | Speech generation |
-\$30.00 / 1M characters |
+<div className="pricing-section-heading">
+  
+
+Text tokens
+
+
+</div>
+<table style={{ width: "100%", tableLayout: "fixed", fontSize: "14px" }}>
+  <thead>
+    <tr>
+      <th style={{ width: "33%" }}>Model</th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Input
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Output
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Estimated cost
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-mini-tts</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.60
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        -
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.015 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-transcribe</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $2.50
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $10.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.006 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-transcribe-diarize</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $2.50
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $10.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.006 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-mini-transcribe</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $1.25
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $5.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.003 / minute
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div className="pricing-section-heading">
+  
+
+Audio tokens
+
+
+</div>
+<table style={{ width: "100%", tableLayout: "fixed", fontSize: "14px" }}>
+  <thead>
+    <tr>
+      <th style={{ width: "33%" }}>Model</th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Input
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Output
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Estimated cost
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-mini-tts</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        -
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $12.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.015 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-transcribe</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $6.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        -
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.006 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-transcribe-diarize</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $6.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        -
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.006 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>gpt-4o-mini-transcribe</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $3.00
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        -
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.003 / minute
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div className="pricing-section-heading">
+  
+
+Other models
+
+
+</div>
+<table style={{ width: "100%", tableLayout: "fixed", fontSize: "14px" }}>
+  <thead>
+    <tr>
+      <th style={{ width: "33%" }}>Model</th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Use case
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Cost
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "33%" }}>Whisper</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Transcription
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.006 / minute
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>TTS</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Speech generation
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $15.00 / 1M characters
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "33%" }}>TTS HD</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Speech generation
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $30.00 / 1M characters
+      </td>
+    </tr>
+  </tbody>
+</table>
 <br />
 <div className="pricing-section-heading">
   

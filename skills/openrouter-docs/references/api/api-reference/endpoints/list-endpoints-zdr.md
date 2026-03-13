@@ -133,7 +133,7 @@ components:
     ProviderName:
       type: string
       enum:
-        - Akash
+        - AkashML
         - AI21
         - AionLabs
         - Alibaba

@@ -115,7 +115,7 @@ components:
         - Together 2
         - Ubicloud
         - 01.AI
-        - Akash
+        - AkashML
         - AI21
         - AionLabs
         - Alibaba
