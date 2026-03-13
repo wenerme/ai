@@ -84,6 +84,26 @@ update-mastra-docs:
 update-llamafactory-docs:
     bun scripts/sync-llamafactory-docs.ts
 
+# Sync OpenObserve docs from local openobserve/openobserve-docs clone
+update-openobserve-docs:
+    bun scripts/sync-openobserve-docs.ts
+
+# Sync Happy Coder docs from local slopus/happy clone
+update-slopus-happy-docs:
+    bun scripts/sync-slopus-happy-docs.ts
+
+# Sync Ghostty docs from local ghostty-org/website clone
+update-ghostty-docs:
+    bun scripts/sync-ghostty-docs.ts
+
+# Sync MikroORM docs from local mikro-orm/mikro-orm clone
+update-mikroorm-docs:
+    bun scripts/sync-mikroorm-docs.ts
+
+# Sync Gitea docs from local gitea/docs clone
+update-gitea-docs:
+    bun scripts/sync-gitea-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -106,6 +126,11 @@ update:
     -just update-swift-ms-docs
     -just update-mastra-docs
     -just update-llamafactory-docs
+    -just update-openobserve-docs
+    -just update-slopus-happy-docs
+    -just update-ghostty-docs
+    -just update-mikroorm-docs
+    -just update-gitea-docs
     just update-readme
 
 # Lint skills for best practices

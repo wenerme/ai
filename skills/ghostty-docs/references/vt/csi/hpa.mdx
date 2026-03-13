@@ -1,0 +1,15 @@
+---
+title: Horizontal Position Absolute (HPA)
+description: Move the cursor to a specific column.
+---
+
+<VTSequence sequence={["CSI", "Px", "`"]} />
+
+This sequence performs [cursor position (CUP)](/docs/vt/csi/cup) with `x` set
+to the parameterized value and `y` set to the current cursor position.
+There is no additional or different behavior for using `HPA`.
+
+Because this invokes `CUP`, the cursor row (`x`) can change if it is
+outside the bounds of the `CUP` operation. For example, if
+[origin mode](#TODO) is set and the current cursor position is outside
+of the scroll region, the row will be adjusted.

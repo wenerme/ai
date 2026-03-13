@@ -1,0 +1,54 @@
+---
+title: Help
+description: |-
+  How to seek help, a list of common issues and solutions,
+  and how to report a bug or request a feature.
+---
+
+Ghostty is a personal side project with no commercial backing.
+As such, there is no support team or dedicated resources to help you.
+The community is very helpful and may provide assistance, and
+we try to document as many common issues and solutions as possible.
+
+## Common Issues and Solutions
+
+| Issue                                                                      | Solution                                                                                                       |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Error "missing or unsuitable terminal" when running commands or using SSH. | [Terminfo](/docs/help/terminfo)                                                                                |
+| macOS window managers such as Yabai or Aerospace act strange               | [macOS Tiling Window Managers](/docs/help/macos-tiling-wms)                                                    |
+| Ghostty has slow startup or high memory usage on Linux.                    | [GTK Single Instance](/docs/help/gtk-single-instance), [`+new-window`](https://ghostty.org/docs/linux/systemd) |
+| "Unable to acquire OpenGL context" error on Linux                          | [GTK OpenGL Context](/docs/help/gtk-opengl-context)                                                            |
+| macOS defaults to login shells                                             | [macOS Login Shells](/docs/help/macos-login-shells)                                                            |
+| CLI tools like Claude Code, Docker, etc. repeatedly flash or flicker       | [Synchronized Output](/docs/help/synchronized-output)                                                          |
+
+## Seeking Help
+
+If the common issues and solutions above did not help and you
+can't find an answer in the documentation, the following resources
+are available:
+
+<CardLinks
+  cards={[
+    {
+      title: "GitHub Discussions",
+      description: "Search for and ask questions from the community on GitHub.",
+      href: "https://github.com/ghostty-org/ghostty/discussions/categories/q-a",
+    },
+    {
+      title: "Discord",
+      description: "Real-time chat with the community. Community-moderated.",
+      href: "https://discord.gg/ghostty",
+    },
+  ]}
+/>
+
+## Reporting Bugs or Requesting Features
+
+Please, please, please read the [contributing guide on GitHub](https://github.com/ghostty-org/ghostty/blob/main/CONTRIBUTING.md).
+
+<Important>
+  **GitHub Issues is probably not the right place to go.** This project starts
+  all bugs and feature requests as discussions on GitHub Discussions until more
+  specific details are known. From there, we convert them into GitHub Issues as
+  needed. See the contributing guide for more details.
+</Important>

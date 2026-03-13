@@ -1,0 +1,13 @@
+---
+title: Restore Cursor (DECRC)
+description: Restore the cursor-related state saved via Save Cursor (DECSC).
+---
+
+<VTSequence sequence={["ESC", "8"]} />
+
+If a cursor was never previously saved, this sets all the typically saved
+values to their default values.
+
+## Validation
+
+Validation is shared with [Save Cursor (DECSC)](/docs/vt/esc/decsc).
