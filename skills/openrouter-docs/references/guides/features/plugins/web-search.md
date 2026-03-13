@@ -70,9 +70,11 @@ The maximum results allowed by the web plugin and the prompt used to attach them
   "plugins": [
     {
       "id": "web",
-      "engine": "exa", // Optional: "native", "exa", or undefined
+      "engine": "exa", // Optional: "native", "exa", "firecrawl", "parallel", or undefined
       "max_results": 1, // Defaults to 5
-      "search_prompt": "Some relevant web results:" // See default below
+      "search_prompt": "Some relevant web results:", // See default below
+      "include_domains": ["example.com", "*.substack.com"], // Optional
+      "exclude_domains": ["reddit.com"] // Optional
     }
   ]
 }
@@ -87,12 +89,95 @@ IMPORTANT: Cite them using markdown links named using the domain of the source.
 Example: [nytimes.com](https://nytimes.com/some-page).
 ```
 
+## Domain Filtering
+
+You can restrict which domains appear in web search results using `include_domains` and `exclude_domains`:
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "include_domains": ["example.com", "*.substack.com"],
+      "exclude_domains": ["reddit.com"]
+    }
+  ]
+}
+```
+
+Both fields accept an array of domain strings. You can use wildcards (`*.substack.com`) and path filtering (`openai.com/blog`).
+
+### Engine Compatibility
+
+| Engine        | `include_domains` | `exclude_domains` | Notes                                           |
+| ------------- | :---------------: | :---------------: | ----------------------------------------------- |
+| **Exa**       |        Yes        |        Yes        | Both can be used simultaneously                 |
+| **Parallel**  |        Yes        |        Yes        | Either can be used, they are mutually exclusive |
+| **Native**    |       Varies      |       Varies      | See provider notes below                        |
+| **Firecrawl** |         No        |         No        | Returns 400 if domain filters are set           |
+
+### Native Provider Behavior
+
+When using native search, domain filter support depends on the provider:
+
+* **Anthropic**: Supports both `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both at once
+* **OpenAI**: Supports `include_domains` only; `exclude_domains` is silently ignored
+* **xAI**: Supports both, but they are mutually exclusive with a maximum of 5 domains each
+
+## X Search Filters (xAI only)
+
+When using xAI models with web search enabled,
+OpenRouter automatically adds the `x_search` tool
+alongside `web_search`. You can pass filter
+parameters to control X/Twitter search results
+using the top-level `x_search_filter` parameter:
+
+```json
+{
+  "model": "x-ai/grok-4.1-fast",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are people saying about OpenRouter?"
+    }
+  ],
+  "plugins": [{ "id": "web" }],
+  "x_search_filter": {
+    "allowed_x_handles": ["OpenRouterAI"],
+    "from_date": "2025-01-01",
+    "to_date": "2025-12-31"
+  }
+}
+```
+
+### Filter Parameters
+
+| Parameter                    | Type      | Description                                                 |
+| ---------------------------- | --------- | ----------------------------------------------------------- |
+| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 10)              |
+| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 10)                   |
+| `from_date`                  | string    | Start date for search range (ISO 8601, e.g. `"2025-01-01"`) |
+| `to_date`                    | string    | End date for search range (ISO 8601, e.g. `"2025-12-31"`)   |
+| `enable_image_understanding` | boolean   | Enable analysis of images within posts                      |
+| `enable_video_understanding` | boolean   | Enable analysis of videos within posts                      |
+
+<Warning>
+  `allowed_x_handles` and `excluded_x_handles` are
+  mutually exclusive — you cannot use both in the
+  same request. If validation fails, the filter is
+  silently dropped and a basic `x_search` tool is
+  used instead.
+</Warning>
+
 ## Engine Selection
 
 The web search plugin supports the following options for the `engine` parameter:
 
 * **`native`**: Always uses the model provider's built-in web search capabilities
 * **`exa`**: Uses Exa's search API for web results
+* **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API
+* **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API for web results
 * **`undefined` (not specified)**: Uses native search if available for the provider, otherwise falls back to Exa
 
 ### Default Behavior
@@ -135,10 +220,57 @@ Or force Exa search even for models that support native search:
 }
 ```
 
+### Firecrawl
+
+Firecrawl is a BYOK (bring your own key) search engine. To use it:
+
+1. Go to your [OpenRouter plugin settings](https://openrouter.ai/settings/plugins) and select Firecrawl as the web search engine
+2. Accept the [Firecrawl Terms of Service](https://www.firecrawl.dev/terms-of-service) — this automatically creates a Firecrawl account linked to your email
+3. Your account starts with a **free hobby plan and 100,000 credits**
+
+Once set up, Firecrawl searches use your Firecrawl credits directly — there is no additional charge from OpenRouter.
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "firecrawl",
+      "max_results": 5
+    }
+  ]
+}
+```
+
+<Note>
+  Firecrawl does not support domain filters (`include_domains` / `exclude_domains`). If you need domain filtering, use `exa` or `parallel` instead.
+</Note>
+
+### Parallel
+
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering and uses OpenRouter credits at the same rate as Exa (\$4 per 1000 results).
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "parallel",
+      "max_results": 5,
+      "include_domains": ["arxiv.org"]
+    }
+  ]
+}
+```
+
 ### Engine-Specific Pricing
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
 * **Exa search**: Uses OpenRouter credits at \$4 per 1000 results (default 5 results = \$0.02 per request)
+* **Parallel search**: Uses OpenRouter credits at \$4 per 1000 results (same as Exa)
+* **Firecrawl search**: Uses your Firecrawl credits directly, refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
 ## Pricing
 

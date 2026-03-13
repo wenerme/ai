@@ -10,19 +10,15 @@ Create a new video generation job from a prompt and optional reference assets.
 
   Text prompt that describes the video to generate.
 
-- `image_reference: optional object { file_id, image_url }`
+- `input_reference: optional object { file_id, image_url }`
 
-  Optional JSON-safe image reference that guides generation. Provide exactly one of `image_url` or `file_id`.
+  Optional reference object that guides generation. Provide exactly one of `image_url` or `file_id`.
 
   - `file_id: optional string`
 
   - `image_url: optional string`
 
     A fully qualified URL or base64-encoded data URL.
-
-- `input_reference: optional string`
-
-  Optional multipart reference asset that guides generation.
 
 - `model: optional VideoModel`
 
@@ -168,5 +164,7 @@ Create a new video generation job from a prompt and optional reference assets.
 curl https://api.openai.com/v1/videos \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F prompt=x
+    -d '{
+          "prompt": "x"
+        }'
 ```
