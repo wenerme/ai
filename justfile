@@ -104,6 +104,10 @@ update-mikroorm-docs:
 update-gitea-docs:
     bun scripts/sync-gitea-docs.ts
 
+# Sync Three.js API docs from local mrdoob/three.js clone
+update-threejs-docs:
+    bun scripts/sync-threejs-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -131,6 +135,7 @@ update:
     -just update-ghostty-docs
     -just update-mikroorm-docs
     -just update-gitea-docs
+    -just update-threejs-docs
     just update-readme
 
 # Lint skills for best practices
