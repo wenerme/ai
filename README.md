@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 58 skills available
+> 64 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -38,10 +38,13 @@ npx skills add wenerme/ai --skill <skill-name>
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... |  |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
+| `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... |  |
+| `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
+| `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
@@ -49,12 +52,14 @@ npx skills add wenerme/ai --skill <skill-name>
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
+| `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... |  |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
 | `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
 | `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
 | `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... |  |
+| `openobserve-docs` | OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture,... |  |
 | `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
 | `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
@@ -62,6 +67,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
+| `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... |  |
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
@@ -314,6 +320,26 @@ Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authe
 
 </details>
 <details>
+<summary><code>ghostty-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ghostty-docs
+```
+
+Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration reference, keybindings, shell integration, themes, AppleScript automation, installation (binary/package/build from source), release notes, Linux/systemd setup, troubleshooting (GTK OpenGL, macOS login shells, terminfo, tiling WMs), and VT100/xterm virtual terminal reference (CSI, ESC, OSC, DCS, mode sequences). USE THIS SKILL WHEN the user asks about Ghostty config, keybindings, themes, terminal escape sequences, or installation.
+
+</details>
+<details>
+<summary><code>gitea-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gitea-docs
+```
+
+Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation (Docker, binary, source, Kubernetes, cloud providers), administration (config cheat sheet, environment variables, reverse proxy, HTTPS, email, logging, authentication, backup/restore, Git LFS, GPG signing, fail2ban), usage (Actions CI/CD, packages registry for npm/PyPI/Docker/Maven/Go/Helm/Cargo/etc, webhooks, pull requests, AGit flow, protected branches/tags, repository mirroring, code owners, markdown), and development (API, OAuth2 provider, migrations, contributing guidelines). USE THIS SKILL WHEN the user asks about Gitea setup, configuration, Actions, package registry, API, or administration.
+
+</details>
+<details>
 <summary><code>glab-cli</code></summary>
 
 ```bash
@@ -351,6 +377,16 @@ npx skills add wenerme/ai --skill grafana-docs
 ```
 
 Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki, Elasticsearch, InfluxDB, MySQL, PostgreSQL, CloudWatch, Azure Monitor), provisioning, as-code (Terraform, Ansible, Grafana Operator), RBAC, SSO/SAML/LDAP, plugins, API, or Grafana setup and administration.
+
+</details>
+<details>
+<summary><code>humanizer</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill humanizer
+```
+
+Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's comprehensive "Signs of AI writing" guide. Detects and fixes patterns including: inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary words, negative parallelisms, and excessive conjunctive phrases.
 
 </details>
 <details>
@@ -424,6 +460,16 @@ Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type err
 
 </details>
 <details>
+<summary><code>mikroorm-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill mikroorm-docs
+```
+
+MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map patterns. Covers entity definition (decorators, EntitySchema, defineEntity), relationships (1:1, M:1, 1:M, M:N), query builder (Kysely-based), migrations, seeding, caching, embeddables, inheritance mapping, serialization, virtual/view entities, composite keys, JSON properties, transactions, streaming, filters, events, folder-based discovery, NestJS/Next.js integration, and upgrading from v6 to v7. USE THIS SKILL WHEN the user asks about MikroORM entities, relationships, query builder, migrations, EntityManager, Unit of Work, or v7 upgrade.
+
+</details>
+<details>
 <summary><code>model-reference</code></summary>
 
 ```bash
@@ -481,6 +527,16 @@ npx skills add wenerme/ai --skill opencode-docs
 ```
 
 Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude, OpenAI, Google, local models), custom agents, custom commands, LSP integration, key bindings, themes, or OpenCode development setup.
+
+</details>
+<details>
+<summary><code>openobserve-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill openobserve-docs
+```
+
+OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture, deployment, ingestion (OTLP, Fluent Bit, Vector, syslog), SQL functions, alerts, dashboards, pipelines, RBAC, API reference, and 50+ integrations (AWS, GCP, K8s, databases). USE THIS SKILL WHEN the user asks about OpenObserve setup, configuration, querying, alerting, or integration with observability pipelines.
 
 </details>
 <details>
@@ -551,6 +607,16 @@ npx skills add wenerme/ai --skill skill-writer
 ```
 
 Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large skills into references, or validating skills against best practices
+
+</details>
+<details>
+<summary><code>slopus-happy-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill slopus-happy-docs
+```
+
+Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption. Covers wire protocol (WebSocket), HTTP API, encryption boundaries, backend architecture, CLI/daemon architecture, session protocol, permission resolution, deployment, and development plans. USE THIS SKILL WHEN the user asks about Happy Coder setup, protocol, architecture, or Claude Code mobile/web client integration.
 
 </details>
 <details>
