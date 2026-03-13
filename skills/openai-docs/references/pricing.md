@@ -180,14 +180,29 @@ Audio tokens
 </div>
 <small className="pricing-section-meta">Prices per 1M tokens.</small>
 <br />
-<div className="pricing-section-heading">
-  
+<div className="pricing-switcher-layout">
+  <div className="pricing-switcher-header pricing-section-heading">
+    
 
 Video
 
 
+    <small className="pricing-switcher-meta">Prices per second.</small>
+  </div>
+
+  
+
+<div data-content-switcher-pane data-value="standard">
+      <div class="hidden">Standard</div>
+
+      </div>
+    <div data-content-switcher-pane data-value="batch" hidden>
+      <div class="hidden">Batch</div>
+
+      </div>
+
+
 </div>
-<small className="pricing-section-meta">Prices per second.</small>
 <br />
 <div className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
