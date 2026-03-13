@@ -357,9 +357,10 @@ Options about which input is included in the user's turn.
 
 | Enums ||
 |---|---|
-| `TURN_COVERAGE_UNSPECIFIED` | If unspecified, the default behavior is `TURN_INCLUDES_ONLY_ACTIVITY`. |
-| `TURN_INCLUDES_ONLY_ACTIVITY` | The users turn only includes activity since the last turn, excluding inactivity (e.g. silence on the audio stream). This is the default behavior. |
-| `TURN_INCLUDES_ALL_INPUT` | The users turn includes all realtime input since the last turn, including inactivity (e.g. silence on the audio stream). |
+| `TURN_COVERAGE_UNSPECIFIED` | If unspecified, a default behavior is selected based on the model. |
+| `TURN_INCLUDES_ONLY_ACTIVITY` | Includes activity since the last turn, excluding inactivity (e.g. silence on the audio stream). |
+| `TURN_INCLUDES_ALL_INPUT` | Includes all realtime input since the last turn, including inactivity (e.g. silence on the audio stream). |
+| `TURN_INCLUDES_AUDIO_ACTIVITY_AND_ALL_VIDEO` | Includes audio activity and all video since the last turn. With automatic activity detection, audio activity means speech and excludes silence. |
 
 ### UrlContextMetadata
 
