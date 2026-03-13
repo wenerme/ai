@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 64 skills available
+> 66 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -70,6 +70,8 @@ npx skills add wenerme/ai --skill <skill-name>
 | `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... |  |
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
+| `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... |  |
+| `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
@@ -637,6 +639,26 @@ npx skills add wenerme/ai --skill tencent-cls
 ```
 
 Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL analysis on log data, using CLS MCP tools (search, cluster_logs, log_context, histogram), or troubleshooting CLS query issues. Triggers on CLS, CQL, log search, log analysis, tencent cloud logs, topic query.
+
+</details>
+<details>
+<summary><code>threejs-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill threejs-docs
+```
+
+Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array), Renderer (WebGLRenderer, WebGPURenderer), Mesh, BufferGeometry, Materials (MeshStandardMaterial, ShaderMaterial, NodeMaterial), Lights, Shadows, Animation (AnimationMixer, AnimationClip, AnimationAction), Loaders (GLTFLoader, DRACOLoader, TextureLoader), Controls (OrbitControls, MapControls, FlyControls), Math (Vector2/3/4, Matrix3/4, Quaternion, Euler, Box3, Ray, Frustum), Helpers, Audio, Raycaster, postprocessing passes, and TSL shader nodes. USE THIS SKILL WHEN the user asks about Three.js class API, constructor parameters, methods, properties, or inheritance.
+
+</details>
+<details>
+<summary><code>threejs-guide</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill threejs-guide
+```
+
+Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders, GLSL, textures, UV mapping, lighting, shadows, animation, skeletal animation, morph targets, post-processing, bloom, DOF, loaders, GLTF, interaction, raycasting, OrbitControls, 3D, WebGL. USE THIS SKILL WHEN the user asks about Three.js, 3D web development, WebGL rendering, or any Three.js API topic.
 
 </details>
 <details>
