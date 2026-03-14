@@ -2068,6 +2068,10 @@ Returns a list of input items for a given response.
 
               - `"function"`
 
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description?: string | null`
 
             - `parameters?: unknown`
@@ -4873,6 +4877,10 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
               - `type: "function"`
 
                 - `"function"`
+
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 

@@ -2181,6 +2181,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -4423,6 +4427,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `type: Literal["function"]`
 
           - `"function"`
+
+        - `defer_loading: Optional[bool]`
+
+          Whether this function should be deferred and discovered via tool search.
 
         - `description: Optional[str]`
 

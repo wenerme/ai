@@ -2080,6 +2080,10 @@ Returns a list of input items for a given response.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -4900,6 +4904,10 @@ print(page)
               - `type: Literal["function"]`
 
                 - `"function"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 

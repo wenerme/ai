@@ -14,9 +14,9 @@ Creates and executes a batch from an uploaded file of requests
 
   - `"24h"`
 
-- `endpoint: "/v1/responses" or "/v1/chat/completions" or "/v1/embeddings" or 4 more`
+- `endpoint: "/v1/responses" or "/v1/chat/completions" or "/v1/embeddings" or 5 more`
 
-  The endpoint to be used for all requests in the batch. Currently `/v1/responses`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/completions`, `/v1/moderations`, `/v1/images/generations`, and `/v1/images/edits` are supported. Note that `/v1/embeddings` batches are also restricted to a maximum of 50,000 embedding inputs across all requests in the batch.
+  The endpoint to be used for all requests in the batch. Currently `/v1/responses`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/completions`, `/v1/moderations`, `/v1/images/generations`, `/v1/images/edits`, and `/v1/videos` are supported. Note that `/v1/embeddings` batches are also restricted to a maximum of 50,000 embedding inputs across all requests in the batch.
 
   - `"/v1/responses"`
 
@@ -31,6 +31,8 @@ Creates and executes a batch from an uploaded file of requests
   - `"/v1/images/generations"`
 
   - `"/v1/images/edits"`
+
+  - `"/v1/videos"`
 
 - `input_file_id: string`
 

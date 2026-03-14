@@ -2295,6 +2295,10 @@ Retrieves a model response with the given ID.
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -5344,6 +5348,10 @@ Retrieves a model response with the given ID.
 
                 - `"function"`
 
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description?: string | null`
 
               - `parameters?: unknown`
@@ -7201,6 +7209,10 @@ Retrieves a model response with the given ID.
           - `type: "function"`
 
             - `"function"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 

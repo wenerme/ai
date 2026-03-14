@@ -2154,6 +2154,10 @@ Create items in a conversation with the given ID.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -5282,6 +5286,10 @@ Create items in a conversation with the given ID.
               - `type: Literal["function"]`
 
                 - `"function"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 

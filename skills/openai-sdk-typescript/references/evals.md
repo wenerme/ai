@@ -4144,6 +4144,10 @@ Get a list of runs for an evaluation.
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -6420,6 +6424,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -8582,6 +8590,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `type: "function"`
 
                   - `"function"`
+
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
@@ -10881,6 +10893,10 @@ Get an evaluation run by ID.
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -13173,6 +13189,10 @@ Cancel an ongoing evaluation run.
                 - `type: "function"`
 
                   - `"function"`
+
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 

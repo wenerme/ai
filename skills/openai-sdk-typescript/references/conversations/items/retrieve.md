@@ -2113,6 +2113,10 @@ Get a single item from a conversation with the given IDs.
 
               - `"function"`
 
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description?: string | null`
 
             - `parameters?: unknown`

@@ -2348,6 +2348,10 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -5230,6 +5234,10 @@ Learn when and how to compact long-running conversations in the [conversation st
               - `type: Literal["function"]`
 
                 - `"function"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 

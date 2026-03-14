@@ -2123,6 +2123,10 @@ Get a single item from a conversation with the given IDs.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`

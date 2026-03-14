@@ -2227,6 +2227,10 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -5276,6 +5280,10 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"function"`
 
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description?: string | null`
 
               - `parameters?: unknown`
@@ -7133,6 +7141,10 @@ the `background` parameter set to `true` can be cancelled.
           - `type: "function"`
 
             - `"function"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 

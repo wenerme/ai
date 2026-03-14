@@ -2168,6 +2168,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -4405,6 +4409,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `type: "function"`
 
             - `"function"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 

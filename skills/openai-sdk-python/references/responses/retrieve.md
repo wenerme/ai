@@ -2284,6 +2284,10 @@ Retrieves a model response with the given ID.
 
                   - `"function"`
 
+                - `defer_loading: Optional[bool]`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description: Optional[str]`
 
                 - `parameters: Optional[object]`
@@ -5347,6 +5351,10 @@ Retrieves a model response with the given ID.
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -7205,6 +7213,10 @@ Retrieves a model response with the given ID.
           - `type: Literal["function"]`
 
             - `"function"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description: Optional[str]`
 
