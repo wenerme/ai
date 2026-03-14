@@ -24,9 +24,11 @@ Create an extension of a completed video.
 
     - `"12"`
 
-  - `video: VideoReferenceInputParam | Uploadable`
+  - `video: Uploadable | VideoReferenceInputParam`
 
-    Reference to the completed video.
+    Reference to the completed video to extend.
+
+    - `Uploadable`
 
     - `VideoReferenceInputParam`
 
@@ -35,8 +37,6 @@ Create an extension of a completed video.
       - `id: string`
 
         The identifier of the completed video.
-
-    - `Uploadable`
 
 ### Returns
 
@@ -158,7 +158,7 @@ const client = new OpenAI({
 const video = await client.videos.extend({
   prompt: 'x',
   seconds: '4',
-  video: { id: 'video_123' },
+  video: fs.createReadStream('path/to/file'),
 });
 
 console.log(video.id);

@@ -3,6 +3,7 @@
 import {
   PricingTable,
   TextTokenPricingTables,
+  ImagePricingTable,
   withDataSharing,
 } from "./pricing.jsx";
 
@@ -132,7 +133,6 @@ Text tokens
   they still occupy space in the model's context window and are billed as output
   tokens. For gpt-image-1.5, Text output tokens include model reasoning tokens.
 </small>
-<br />
 <div className="-mb-6">
   
 
@@ -159,12 +159,12 @@ Image tokens
 
   
 
-<div data-content-switcher-pane data-value="batch" hidden>
-      <div class="hidden">Batch</div>
+<div data-content-switcher-pane data-value="standard">
+      <div class="hidden">Standard</div>
 
       </div>
-    <div data-content-switcher-pane data-value="standard">
-      <div class="hidden">Standard</div>
+    <div data-content-switcher-pane data-value="batch" hidden>
+      <div class="hidden">Batch</div>
 
       </div>
 
@@ -203,38 +203,7 @@ Video
 
 
 </div>
-<br />
-<div className="pricing-switcher-layout">
-  <div className="pricing-switcher-header pricing-section-heading">
-    
-
-Fine-tuning
-
-
-    <small className="pricing-switcher-meta">Prices per 1M tokens.</small>
-  </div>
-
-  
-
-<div data-content-switcher-pane data-value="batch" hidden>
-      <div class="hidden">Batch</div>
-
-      </div>
-    <div data-content-switcher-pane data-value="standard">
-      <div class="hidden">Standard</div>
-
-      </div>
-
-
-</div>
-<small>
-  Tokens used for model grading in reinforcement fine-tuning are billed at that
-  model's per-token rate. Inference discounts are available if you enable data
-  sharing when creating the fine-tune job. [Learn
-  more](https://help.openai.com/en/articles/10306912-sharing-feedback-evaluation-and-fine-tuning-data-and-api-inputs-and-outputs-with-openai#h_c93188c569).
-</small>
-<br />
-<div className="-mb-6">
+<div className="-mb-6" style={{ marginTop: "-8px" }}>
   
 
 Built-in tools
@@ -375,6 +344,35 @@ Built-in tools
   8,000 input tokens per call.
 </small>
 <br />
+<div className="pricing-switcher-layout">
+  <div className="pricing-switcher-header pricing-section-heading">
+    
+
+Fine-tuning
+
+
+    <small className="pricing-switcher-meta">Prices per 1M tokens.</small>
+  </div>
+
+  
+
+<div data-content-switcher-pane data-value="batch" hidden>
+      <div class="hidden">Batch</div>
+
+      </div>
+    <div data-content-switcher-pane data-value="standard">
+      <div class="hidden">Standard</div>
+
+      </div>
+
+
+</div>
+<small>
+  Tokens used for model grading in reinforcement fine-tuning are billed at that
+  model's per-token rate. Inference discounts are available if you enable data
+  sharing when creating the fine-tune job. [Learn
+  more](https://help.openai.com/en/articles/10306912-sharing-feedback-evaluation-and-fine-tuning-data-and-api-inputs-and-outputs-with-openai#h_c93188c569).
+</small>
 <div className="-mb-6">
   
 

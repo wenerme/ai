@@ -4,7 +4,7 @@ Explore and browse 400+ models and providers [on our website](/models), or [with
 
 The Models API supports query parameters to filter the list of models returned.
 
-### `output_modality`
+### `output_modalities`
 
 Filter models by their output capabilities. Accepts a comma-separated list of modalities or `"all"` to include every model regardless of output type.
 
@@ -20,16 +20,16 @@ Examples:
 
 ```bash
 # Default — text models only
-curl https://openrouter.ai/api/v1/models
+curl "https://openrouter.ai/api/v1/models"
 
 # Image generation models only
-curl https://openrouter.ai/api/v1/models?output_modality=image
+curl "https://openrouter.ai/api/v1/models?output_modalities=image"
 
 # Text and image models
-curl https://openrouter.ai/api/v1/models?output_modality=text,image
+curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
 
 # All models regardless of modality
-curl https://openrouter.ai/api/v1/models?output_modality=all
+curl "https://openrouter.ai/api/v1/models?output_modalities=all"
 ```
 
 The same parameter is available on the [`/v1/models/count`](/docs/api-reference/models/count) endpoint so that counts stay consistent with list results.
@@ -39,7 +39,7 @@ The same parameter is available on the [`/v1/models/count`](/docs/api-reference/
 Filter models by the API parameters they support. For example, to find models that support tool calling:
 
 ```bash
-curl https://openrouter.ai/api/v1/models?supported_parameters=tools
+curl "https://openrouter.ai/api/v1/models?supported_parameters=tools"
 ```
 
 ## Models API Standard

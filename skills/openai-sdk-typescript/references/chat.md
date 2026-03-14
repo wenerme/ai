@@ -577,11 +577,14 @@ chunk objects if the request is streamed.
 
         - `"pcm16"`
 
-      - `voice: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+      - `voice: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
+        The voice the model uses to respond. Supported built-in voices are
+        `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
+        `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
+        custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
 
-        - `(string & {})`
+        - `string`
 
         - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -604,6 +607,14 @@ chunk objects if the request is streamed.
           - `"marin"`
 
           - `"cedar"`
+
+        - `ID`
+
+          Custom voice reference.
+
+          - `id: string`
+
+            The custom voice ID, e.g. `voice_1234`.
 
     - `frequency_penalty?: number | null`
 
@@ -3363,11 +3374,14 @@ console.log(chatCompletionDeleted.id);
 
     - `"pcm16"`
 
-  - `voice: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+  - `voice: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-    The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
+    The voice the model uses to respond. Supported built-in voices are
+    `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
+    `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
+    custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
 
-    - `(string & {})`
+    - `string`
 
     - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -3390,6 +3404,14 @@ console.log(chatCompletionDeleted.id);
       - `"marin"`
 
       - `"cedar"`
+
+    - `ID`
+
+      Custom voice reference.
+
+      - `id: string`
+
+        The custom voice ID, e.g. `voice_1234`.
 
 ### Chat Completion Chunk
 

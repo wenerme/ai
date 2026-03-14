@@ -56,8 +56,8 @@ While the model did as prompted, writing out the instructions in natural languag
 can sometimes be challenging and it leaves a lot to the model's interpretation.
 For example, a restaurants menu might contain many items. To reduce the size of
 the JSON response, you probably want to omit the items that weren't ordered. In
-this case, you can give an example and a [response prefix](https://ai.google.dev/gemini-api/docs/prompting-strategies#prefixes) and let
-the model complete it:
+this case, you can give an example and a response prefix and let the model
+complete it:
 
 |---|
 | **Prompt:** ```` Valid fields are cheeseburger, hamburger, fries, and drink. Order: Give me a cheeseburger and fries Output: ``` { "cheeseburger": 1, "fries": 1 } ``` Order: I want two burgers, a drink, and fries. Output: ```` **Response:** ```` ``` { "hamburger": 2, "drink": 1, "fries": 1 } ``` ```` (gemini-2.5-flash) |
@@ -82,7 +82,7 @@ pitch, keywords, sentence, or paragraph. The following system instruction tells
 the model to be more conversational in its response:
 
 |---|
-| **System instruction** ``` All questions should be answered comprehensively with details, unless the user requests a concise response specifically. ``` **Prompt** ``` What is a smart way to make a business that sells DVD's in 2025? ``` **Response:** ``` Starting a business selling DVDs in 2025 presents significant challenges due to the overwhelming dominance of digital streaming and on-demand services; a "smart" approach would therefore require a highly specialized niche, a strong value proposition beyond just the disc, and likely a focus on community or collector markets rather than mainstream consumption. Here's a breakdown of what a smart DVD business in 2025 would likely entail: 1. Extreme Niche Specialization: You cannot compete with streaming libraries. Your business must focus on what digital doesn't offer easily or at all. This could include: * Out-of-Print & Rare Titles: Sourcing films or TV shows that have never been released digitally or are currently unavailable on major streaming platforms. .... ``` (gemini-2.5-flash) |
+| **System instruction** ``` All questions should be answered comprehensively with details, unless the user requests a concise response specifically. ``` **Prompt** ``` What is a smart way to make a business that sells DVD's in 2026? ``` **Response:** ``` Starting a business selling DVDs in 2026 presents significant challenges due to the overwhelming dominance of digital streaming and on-demand services; a "smart" approach would therefore require a highly specialized niche, a strong value proposition beyond just the disc, and likely a focus on community or collector markets rather than mainstream consumption. Here's a breakdown of what a smart DVD business in 2026 would likely entail: 1. Extreme Niche Specialization: You cannot compete with streaming libraries. Your business must focus on what digital doesn't offer easily or at all. This could include: * Out-of-Print & Rare Titles: Sourcing films or TV shows that have never been released digitally or are currently unavailable on major streaming platforms. .... ``` (gemini-2.5-flash) |
 
 #### Format responses with the completion strategy
 
@@ -140,21 +140,6 @@ for the best results. At the same time, if you include too many examples,
 the model may start to [overfit](https://developers.google.com/machine-learning/glossary#overfitting)
 the response to the examples.
 
-### Patterns vs anti patterns
-
-Using examples to show the model a pattern to follow is more effective than using
-examples to show the model an anti pattern to avoid.
-
-⛔ **Negative pattern:**
-
-|---|
-| **Example** ``` Don't end haikus with a question: Haiku are fun A short and simple poem Don't you enjoy them? ``` <br /> |
-
-✅ **Positive pattern:**
-
-|---|
-| **Example** ``` Always end haikus with an assertion: Haiku are fun A short and simple poem A joy to write ``` <br /> |
-
 ### Consistent formatting
 
 Make sure that the structure and formatting of few-shot examples are the same to
@@ -183,21 +168,6 @@ troubleshooting guide as context for it to refer to when providing a response.
 
 |---|
 | **Prompt:** ``` Answer the question using the text below. Respond with only the text provided. Question: What should I do to fix my disconnected wifi? The light on my Google Wifi router is yellow and blinking slowly. Text: Color: Slowly pulsing yellow What it means: There is a network error. What to do: Check that the Ethernet cable is connected to both your router and your modem and both devices are turned on. You might need to unplug and plug in each device again. Color: Fast blinking yellow What it means: You are holding down the reset button and are factory resetting this device. What to do: If you keep holding down the reset button, after about 12 seconds, the light will turn solid yellow. Once it is solid yellow, let go of the factory reset button. Color: Solid yellow What it means: Router is factory resetting. What to do: This can take up to 10 minutes. When it's done, the device will reset itself and start pulsing white, letting you know it's ready for setup. Color: Solid red What it means: Something is wrong. What to do: Critical failure. Factory reset the router. If the light stays red, contact Wifi customer support. ``` **Response:** ``` Check that the Ethernet cable is connected to both your router and your modem and both devices are turned on. You might need to unplug and plug in each device again. ``` (gemini-2.5-flash) |
-
-## Add prefixes
-
-A prefix is a word or phrase that you add to the prompt content that can serve
-several purposes, depending on where you put the prefix:
-
-- **Input prefix:** Adding a prefix to the input signals semantically meaningful parts of the input to the model. For example, the prefixes "English:" and "French:" demarcate two different languages.
-- **Output prefix:** Even though the output is generated by the model, you can add a prefix for the output in the prompt. The output prefix gives the model information about what's expected as a response. For example, the output prefix "JSON:" signals to the model that the output should be in JSON format.
-- **Example prefix:** In few-shot prompts, adding prefixes to the examples provides labels that the model can use when generating the output, which makes it easier to parse output content.
-
-In the following example, "Text:" is the input prefix and "The answer is:" is the
-output prefix.
-
-|---|
-| **Prompt:** ``` Classify the text as one of the following categories. - large - small Text: Rhino The answer is: large Text: Mouse The answer is: small Text: Snail The answer is: small Text: Elephant The answer is: ``` **Response:** ``` The answer is: large ``` (gemini-2.5-flash) |
 
 ## Break down prompts into components
 
@@ -351,11 +321,11 @@ optimal results with Gemini 3:
 ### Gemini 3 Flash strategies
 
 - **Current day accuracy:** Add the following clause to the system
-  instructions to help the model pay attention to the current day being in 2025:
+  instructions to help the model pay attention to the current day being in 2026:
 
       For time-sensitive user queries that require up-to-date information, you
       MUST follow the provided current time (date and year) when formulating
-      search queries in tool calls. Remember it is 2025 this year.
+      search queries in tool calls. Remember it is 2026 this year.
 
 - **Knowledge cutoff accuracy:** Add the following clause to the system
   instructions to make the model aware of its knowledge cutoff:

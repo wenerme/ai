@@ -259,15 +259,18 @@ handle it.
       This parameter is a post-processing adjustment to the audio after it is generated, it's
       also possible to prompt the model to speak faster or slower.
 
-    - `voice: Optional[Union[str, Literal["alloy", "ash", "ballad", 7 more], null]]`
+    - `voice: Optional[Voice]`
 
-      The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+      The voice the model uses to respond. Supported built-in voices are
+      `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+      `marin`, and `cedar`. You may also provide a custom voice object with
+      an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+      during the session once the model has responded with audio at least once.
+      We recommend `marin` and `cedar` for best quality.
 
       - `str`
 
       - `Literal["alloy", "ash", "ballad", 7 more]`
-
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
 
         - `"alloy"`
 
@@ -288,6 +291,14 @@ handle it.
         - `"marin"`
 
         - `"cedar"`
+
+      - `class VoiceID: …`
+
+        Custom voice reference.
+
+        - `id: str`
+
+          The custom voice ID, e.g. `voice_1234`.
 
 - `include: Optional[List[Literal["item.input_audio_transcription.logprobs"]]]`
 
@@ -1115,15 +1126,18 @@ to complete the peer connection.
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
 
-      - `voice: Optional[Union[str, Literal["alloy", "ash", "ballad", 7 more], null]]`
+      - `voice: Optional[Voice]`
 
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+        The voice the model uses to respond. Supported built-in voices are
+        `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+        `marin`, and `cedar`. You may also provide a custom voice object with
+        an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+        during the session once the model has responded with audio at least once.
+        We recommend `marin` and `cedar` for best quality.
 
         - `str`
 
         - `Literal["alloy", "ash", "ballad", 7 more]`
-
-          The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
 
           - `"alloy"`
 
@@ -1144,6 +1158,14 @@ to complete the peer connection.
           - `"marin"`
 
           - `"cedar"`
+
+        - `class VoiceID: …`
+
+          Custom voice reference.
+
+          - `id: str`
+
+            The custom voice ID, e.g. `voice_1234`.
 
   - `include: Optional[List[Literal["item.input_audio_transcription.logprobs"]]]`
 

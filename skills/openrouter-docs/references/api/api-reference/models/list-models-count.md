@@ -19,7 +19,7 @@ paths:
       tags:
         - subpackage_models
       parameters:
-        - name: output_modality
+        - name: output_modalities
           in: query
           description: >-
             Filter models by output modality. Accepts a comma-separated list of
@@ -42,7 +42,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelsCountResponse'
         '400':
-          description: Bad Request - Invalid output_modality value
+          description: Bad Request - Invalid output_modalities value
           content:
             application/json:
               schema:

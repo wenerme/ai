@@ -681,7 +681,6 @@ consideration of safety risks.
 - **Google search:** [Google
   Search](https://ai.google.dev/gemini-api/docs/google-search) is enabled by default and [specific
   restrictions](https://ai.google.dev/gemini-api/terms#use-restrictions2) apply to the grounded results.
-- **Audio inputs:** Audio inputs are not supported.
 
 ## What's next
 

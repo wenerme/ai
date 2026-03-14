@@ -3402,12 +3402,63 @@ components:
         - type
         - name
       title: AnthropicMessagesRequestToolsItems3
+    DatetimeServerToolType:
+      type: string
+      enum:
+        - openrouter:datetime
+      title: DatetimeServerToolType
+    DatetimeServerToolParameters:
+      type: object
+      properties:
+        timezone:
+          type: string
+          description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
+      title: DatetimeServerToolParameters
+    DatetimeServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/DatetimeServerToolType'
+        parameters:
+          $ref: '#/components/schemas/DatetimeServerToolParameters'
+      required:
+        - type
+      description: 'OpenRouter built-in server tool: returns the current date and time'
+      title: DatetimeServerTool
+    WebSearchServerToolType:
+      type: string
+      enum:
+        - openrouter:web_search
+      title: WebSearchServerToolType
+    WebSearchServerToolParameters:
+      type: object
+      properties:
+        max_results:
+          type: number
+          format: double
+          description: Maximum number of search results to return. Defaults to 5.
+      title: WebSearchServerToolParameters
+    WebSearchServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchServerToolType'
+        parameters:
+          $ref: '#/components/schemas/WebSearchServerToolParameters'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: searches the web for current
+        information
+      title: WebSearchServerTool
     AnthropicMessagesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems0'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems1'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems2'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems3'
+        - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/WebSearchServerTool'
       title: AnthropicMessagesRequestToolsItems
     AnthropicMessagesRequestToolChoiceOneOf0Type:
       type: string

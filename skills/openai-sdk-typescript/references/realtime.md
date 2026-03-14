@@ -3438,11 +3438,16 @@
       This parameter is a post-processing adjustment to the audio after it is generated, it's
       also possible to prompt the model to speak faster or slower.
 
-    - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+    - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-      The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+      The voice the model uses to respond. Supported built-in voices are
+      `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+      `marin`, and `cedar`. You may also provide a custom voice object with
+      an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+      during the session once the model has responded with audio at least once.
+      We recommend `marin` and `cedar` for best quality.
 
-      - `(string & {})`
+      - `string`
 
       - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -3465,6 +3470,14 @@
         - `"marin"`
 
         - `"cedar"`
+
+      - `ID`
+
+        Custom voice reference.
+
+        - `id: string`
+
+          The custom voice ID, e.g. `voice_1234`.
 
 ### Realtime Audio Config Input
 
@@ -3704,11 +3717,16 @@
     This parameter is a post-processing adjustment to the audio after it is generated, it's
     also possible to prompt the model to speak faster or slower.
 
-  - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+  - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-    The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+    The voice the model uses to respond. Supported built-in voices are
+    `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+    `marin`, and `cedar`. You may also provide a custom voice object with
+    an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+    during the session once the model has responded with audio at least once.
+    We recommend `marin` and `cedar` for best quality.
 
-    - `(string & {})`
+    - `string`
 
     - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -3731,6 +3749,14 @@
       - `"marin"`
 
       - `"cedar"`
+
+    - `ID`
+
+      Custom voice reference.
+
+      - `id: string`
+
+        The custom voice ID, e.g. `voice_1234`.
 
 ### Realtime Audio Formats
 
@@ -4601,11 +4627,16 @@
 
                 - `"audio/pcma"`
 
-          - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+          - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-            The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once.
+            The voice the model uses to respond. Supported built-in voices are
+            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+            `marin`, and `cedar`. You may also provide a custom voice object with
+            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+            during the session once the model has responded with audio at least once.
+            We recommend `marin` and `cedar` for best quality.
 
-            - `(string & {})`
+            - `string`
 
             - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -4628,6 +4659,14 @@
               - `"marin"`
 
               - `"cedar"`
+
+            - `ID`
+
+              Custom voice reference.
+
+              - `id: string`
+
+                The custom voice ID, e.g. `voice_1234`.
 
       - `conversation?: (string & {}) | "auto" | "none"`
 
@@ -5684,11 +5723,16 @@
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
 
-            - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+            - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-              The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+              The voice the model uses to respond. Supported built-in voices are
+              `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+              `marin`, and `cedar`. You may also provide a custom voice object with
+              an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+              during the session once the model has responded with audio at least once.
+              We recommend `marin` and `cedar` for best quality.
 
-              - `(string & {})`
+              - `string`
 
               - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -5711,6 +5755,14 @@
                 - `"marin"`
 
                 - `"cedar"`
+
+              - `ID`
+
+                Custom voice reference.
+
+                - `id: string`
+
+                  The custom voice ID, e.g. `voice_1234`.
 
         - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -7682,11 +7734,16 @@
 
           - `"audio/pcma"`
 
-    - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+    - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-      The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once.
+      The voice the model uses to respond. Supported built-in voices are
+      `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+      `marin`, and `cedar`. You may also provide a custom voice object with
+      an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+      during the session once the model has responded with audio at least once.
+      We recommend `marin` and `cedar` for best quality.
 
-      - `(string & {})`
+      - `string`
 
       - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -7709,6 +7766,14 @@
         - `"marin"`
 
         - `"cedar"`
+
+      - `ID`
+
+        Custom voice reference.
+
+        - `id: string`
+
+          The custom voice ID, e.g. `voice_1234`.
 
 ### Realtime Response Create Mcp Tool
 
@@ -7900,11 +7965,16 @@
 
             - `"audio/pcma"`
 
-      - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+      - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once.
+        The voice the model uses to respond. Supported built-in voices are
+        `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+        `marin`, and `cedar`. You may also provide a custom voice object with
+        an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+        during the session once the model has responded with audio at least once.
+        We recommend `marin` and `cedar` for best quality.
 
-        - `(string & {})`
+        - `string`
 
         - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -7927,6 +7997,14 @@
           - `"marin"`
 
           - `"cedar"`
+
+        - `ID`
+
+          Custom voice reference.
+
+          - `id: string`
+
+            The custom voice ID, e.g. `voice_1234`.
 
   - `conversation?: (string & {}) | "auto" | "none"`
 
@@ -13214,11 +13292,16 @@
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
 
-            - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+            - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-              The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+              The voice the model uses to respond. Supported built-in voices are
+              `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+              `marin`, and `cedar`. You may also provide a custom voice object with
+              an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+              during the session once the model has responded with audio at least once.
+              We recommend `marin` and `cedar` for best quality.
 
-              - `(string & {})`
+              - `string`
 
               - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -13241,6 +13324,14 @@
                 - `"marin"`
 
                 - `"cedar"`
+
+              - `ID`
+
+                Custom voice reference.
+
+                - `id: string`
+
+                  The custom voice ID, e.g. `voice_1234`.
 
         - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -14168,11 +14259,16 @@
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
 
-            - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+            - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-              The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+              The voice the model uses to respond. Supported built-in voices are
+              `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+              `marin`, and `cedar`. You may also provide a custom voice object with
+              an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+              during the session once the model has responded with audio at least once.
+              We recommend `marin` and `cedar` for best quality.
 
-              - `(string & {})`
+              - `string`
 
               - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -14195,6 +14291,14 @@
                 - `"marin"`
 
                 - `"cedar"`
+
+              - `ID`
+
+                Custom voice reference.
+
+                - `id: string`
+
+                  The custom voice ID, e.g. `voice_1234`.
 
         - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -16799,11 +16903,16 @@
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
 
-      - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+      - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+        The voice the model uses to respond. Supported built-in voices are
+        `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+        `marin`, and `cedar`. You may also provide a custom voice object with
+        an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+        during the session once the model has responded with audio at least once.
+        We recommend `marin` and `cedar` for best quality.
 
-        - `(string & {})`
+        - `string`
 
         - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -16826,6 +16935,14 @@
           - `"marin"`
 
           - `"cedar"`
+
+        - `ID`
+
+          Custom voice reference.
+
+          - `id: string`
+
+            The custom voice ID, e.g. `voice_1234`.
 
   - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -18813,11 +18930,16 @@
 
               - `"audio/pcma"`
 
-        - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+        - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-          The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once.
+          The voice the model uses to respond. Supported built-in voices are
+          `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+          `marin`, and `cedar`. You may also provide a custom voice object with
+          an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+          during the session once the model has responded with audio at least once.
+          We recommend `marin` and `cedar` for best quality.
 
-          - `(string & {})`
+          - `string`
 
           - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -18840,6 +18962,14 @@
             - `"marin"`
 
             - `"cedar"`
+
+          - `ID`
+
+            Custom voice reference.
+
+            - `id: string`
+
+              The custom voice ID, e.g. `voice_1234`.
 
     - `conversation?: (string & {}) | "auto" | "none"`
 
@@ -22497,11 +22627,16 @@
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+          - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-            The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Supported built-in voices are
+            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+            `marin`, and `cedar`. You may also provide a custom voice object with
+            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+            during the session once the model has responded with audio at least once.
+            We recommend `marin` and `cedar` for best quality.
 
-            - `(string & {})`
+            - `string`
 
             - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -22524,6 +22659,14 @@
               - `"marin"`
 
               - `"cedar"`
+
+            - `ID`
+
+              Custom voice reference.
+
+              - `id: string`
+
+                The custom voice ID, e.g. `voice_1234`.
 
       - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -23457,11 +23600,16 @@
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+          - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-            The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Supported built-in voices are
+            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+            `marin`, and `cedar`. You may also provide a custom voice object with
+            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+            during the session once the model has responded with audio at least once.
+            We recommend `marin` and `cedar` for best quality.
 
-            - `(string & {})`
+            - `string`
 
             - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -23484,6 +23632,14 @@
               - `"marin"`
 
               - `"cedar"`
+
+            - `ID`
+
+              Custom voice reference.
+
+              - `id: string`
+
+                The custom voice ID, e.g. `voice_1234`.
 
       - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -24417,11 +24573,16 @@
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+          - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-            The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Supported built-in voices are
+            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+            `marin`, and `cedar`. You may also provide a custom voice object with
+            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+            during the session once the model has responded with audio at least once.
+            We recommend `marin` and `cedar` for best quality.
 
-            - `(string & {})`
+            - `string`
 
             - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -24444,6 +24605,14 @@
               - `"marin"`
 
               - `"cedar"`
+
+            - `ID`
+
+              Custom voice reference.
+
+              - `id: string`
+
+                The custom voice ID, e.g. `voice_1234`.
 
       - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -25637,11 +25806,16 @@ Returns the created client secret and the effective session object. The client s
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+          - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-            The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Supported built-in voices are
+            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+            `marin`, and `cedar`. You may also provide a custom voice object with
+            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+            during the session once the model has responded with audio at least once.
+            We recommend `marin` and `cedar` for best quality.
 
-            - `(string & {})`
+            - `string`
 
             - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -25664,6 +25838,14 @@ Returns the created client secret and the effective session object. The client s
               - `"marin"`
 
               - `"cedar"`
+
+            - `ID`
+
+              Custom voice reference.
+
+              - `id: string`
+
+                The custom voice ID, e.g. `voice_1234`.
 
       - `include?: Array<"item.input_audio_transcription.logprobs">`
 
@@ -28461,11 +28643,16 @@ handle it.
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
 
-      - `voice?: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+      - `voice?: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-        The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Voice cannot be changed during the session once the model has responded with audio at least once. We recommend `marin` and `cedar` for best quality.
+        The voice the model uses to respond. Supported built-in voices are
+        `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
+        `marin`, and `cedar`. You may also provide a custom voice object with
+        an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
+        during the session once the model has responded with audio at least once.
+        We recommend `marin` and `cedar` for best quality.
 
-        - `(string & {})`
+        - `string`
 
         - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -28488,6 +28675,14 @@ handle it.
           - `"marin"`
 
           - `"cedar"`
+
+        - `ID`
+
+          Custom voice reference.
+
+          - `id: string`
+
+            The custom voice ID, e.g. `voice_1234`.
 
   - `include?: Array<"item.input_audio_transcription.logprobs">`
 

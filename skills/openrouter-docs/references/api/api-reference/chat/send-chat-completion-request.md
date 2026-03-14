@@ -1452,12 +1452,12 @@ components:
         - $ref: '#/components/schemas/NamedToolChoice'
       description: Tool choice configuration
       title: ToolChoiceOption
-    ToolDefinitionJsonType:
+    ToolDefinitionJsonOneOf0Type:
       type: string
       enum:
         - function
-      title: ToolDefinitionJsonType
-    ToolDefinitionJsonFunction:
+      title: ToolDefinitionJsonOneOf0Type
+    ToolDefinitionJsonOneOf0Function:
       type: object
       properties:
         name:
@@ -1479,21 +1479,78 @@ components:
       required:
         - name
       description: Function definition for tool calling
-      title: ToolDefinitionJsonFunction
-    ToolDefinitionJson:
+      title: ToolDefinitionJsonOneOf0Function
+    ToolDefinitionJson0:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ToolDefinitionJsonType'
+          $ref: '#/components/schemas/ToolDefinitionJsonOneOf0Type'
         function:
-          $ref: '#/components/schemas/ToolDefinitionJsonFunction'
+          $ref: '#/components/schemas/ToolDefinitionJsonOneOf0Function'
           description: Function definition for tool calling
         cache_control:
           $ref: '#/components/schemas/ChatMessageContentItemCacheControl'
       required:
         - type
         - function
-      description: Tool definition for function calling
+      title: ToolDefinitionJson0
+    DatetimeServerToolType:
+      type: string
+      enum:
+        - openrouter:datetime
+      title: DatetimeServerToolType
+    DatetimeServerToolParameters:
+      type: object
+      properties:
+        timezone:
+          type: string
+          description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
+      title: DatetimeServerToolParameters
+    DatetimeServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/DatetimeServerToolType'
+        parameters:
+          $ref: '#/components/schemas/DatetimeServerToolParameters'
+      required:
+        - type
+      description: 'OpenRouter built-in server tool: returns the current date and time'
+      title: DatetimeServerTool
+    WebSearchServerToolType:
+      type: string
+      enum:
+        - openrouter:web_search
+      title: WebSearchServerToolType
+    WebSearchServerToolParameters:
+      type: object
+      properties:
+        max_results:
+          type: number
+          format: double
+          description: Maximum number of search results to return. Defaults to 5.
+      title: WebSearchServerToolParameters
+    WebSearchServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchServerToolType'
+        parameters:
+          $ref: '#/components/schemas/WebSearchServerToolParameters'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: searches the web for current
+        information
+      title: WebSearchServerTool
+    ToolDefinitionJson:
+      oneOf:
+        - $ref: '#/components/schemas/ToolDefinitionJson0'
+        - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/WebSearchServerTool'
+      description: >-
+        Tool definition for function calling (regular function or OpenRouter
+        built-in server tool)
       title: ToolDefinitionJson
     DebugOptions:
       type: object

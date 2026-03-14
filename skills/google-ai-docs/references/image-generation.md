@@ -715,7 +715,7 @@ they excel at complex, multi-turn creation and modification tasks.
   - **Gemini 3.1 Flash Image** adds the smaller 512 (0.5K) resolution.
 - **Advanced text rendering**: Capable of generating legible, stylized text for infographics, menus, diagrams, and marketing assets.
 - **Grounding with Google Search** : The model can use Google Search as a tool to verify facts and generate imagery based on real-time data (e.g., current weather maps, stock charts, recent events).
-  - **Gemini 3.1 Flash Image** adds the integration of Google Image Search Grounding alongside Web Search.
+  - **Gemini 3.1 Flash Image** adds the integration of Grounding with Google Search for Images alongside Web Search.
 - **Thinking mode**: The model utilizes a "thinking" process to reason through complex prompts. It generates interim "thought images" (visible in the backend but not charged) to refine the composition before producing the final high-quality output.
 - **Up to 14 reference images**: You can now mix up to 14 reference images to produce the final image.
 - **New aspect ratios** : Gemini 3.1 Flash Image Preview adds 1:4, 4:1, 1:8, and 8:1 [aspect ratios](https://ai.google.dev/gemini-api/docs/image-generation#aspect_ratios_and_image_size).
@@ -996,7 +996,7 @@ recent events.
 
 Note that when using Grounding with Google Search with image generation,
 image-based search results are not passed to the generation model and are
-excluded from the response (see [Grounding with Google Image Search](https://ai.google.dev/gemini-api/docs/image-generation#image-search))
+excluded from the response (see [Grounding with Google Search for images](https://ai.google.dev/gemini-api/docs/image-generation#image-search))
 
 ### Python
 
@@ -1138,7 +1138,7 @@ fields:
 - **`searchEntryPoint`**: Contains the HTML and CSS to render the required search suggestions.
 - **`groundingChunks`**: Returns the top 3 web sources used to ground the generated image
 
-### Grounding with Google Image Search (3.1 Flash)
+### Grounding with Google Search for Images (3.1 Flash)
 
 > [!NOTE]
 > **Note:** This feature is only available for the Gemini 3.1 Flash Image model.
@@ -4578,6 +4578,7 @@ strategies into your workflow.
 - The model won't always follow the exact number of image outputs that the user explicitly asks for.
 - `gemini-2.5-flash-image` works best with up to 3 images as input, while `gemini-3-pro-image-preview` supports 5 images with high fidelity, and up to 14 images in total. `gemini-3.1-flash-image-preview` supports character resemblance of up to 4 characters and the fidelity of up to 10 objects in a single workflow.
 - When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.
+- `gemini-3.1-flash-image-preview` Grounding with Google Search does not support using real-world images of people from web search at this time.
 - All generated images include a [SynthID watermark](https://ai.google.dev/responsible/docs/safeguards/synthid).
 
 ## Optional configurations

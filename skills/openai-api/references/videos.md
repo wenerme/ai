@@ -12,7 +12,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
   Text prompt that describes the video to generate.
 
-- `input_reference: optional object { file_id, image_url }`
+- `input_reference: optional ImageInputReferenceParam`
 
   Optional reference object that guides generation. Provide exactly one of `image_url` or `file_id`.
 
@@ -444,6 +444,67 @@ curl https://api.openai.com/v1/videos/extensions \
             "id": "video_123"
           }
         }'
+```
+
+## Create Character
+
+**post** `/videos/characters`
+
+Create a character from an uploaded video.
+
+### Returns
+
+- `id: string`
+
+  Identifier for the character creation cameo.
+
+- `created_at: number`
+
+  Unix timestamp (in seconds) when the character was created.
+
+- `name: string`
+
+  Display name for the character.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos/characters \
+    -H 'Content-Type: multipart/form-data' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F name=x \
+    -F 'video=@/path/to/video'
+```
+
+## Get Character
+
+**get** `/videos/characters/{character_id}`
+
+Fetch a character.
+
+### Path Parameters
+
+- `character_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the character creation cameo.
+
+- `created_at: number`
+
+  Unix timestamp (in seconds) when the character was created.
+
+- `name: string`
+
+  Display name for the character.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos/characters/$CHARACTER_ID \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 ## List
@@ -900,6 +961,16 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
 ## Domain Types
 
+### Image Input Reference Param
+
+- `ImageInputReferenceParam = object { file_id, image_url }`
+
+  - `file_id: optional string`
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
 ### Video
 
 - `Video = object { id, completed_at, created_at, 10 more }`
@@ -1051,66 +1122,3 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
   - `"1024x1792"`
 
   - `"1792x1024"`
-
-# Character
-
-## Create
-
-**post** `/videos/characters`
-
-Create a character from an uploaded video.
-
-### Returns
-
-- `id: string`
-
-  Identifier for the character creation cameo.
-
-- `created_at: number`
-
-  Unix timestamp (in seconds) when the character was created.
-
-- `name: string`
-
-  Display name for the character.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/videos/characters \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F name=x \
-    -F 'video=@/path/to/video'
-```
-
-## Get
-
-**get** `/videos/characters/{character_id}`
-
-Fetch a character.
-
-### Path Parameters
-
-- `character_id: string`
-
-### Returns
-
-- `id: string`
-
-  Identifier for the character creation cameo.
-
-- `created_at: number`
-
-  Unix timestamp (in seconds) when the character was created.
-
-- `name: string`
-
-  Display name for the character.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/videos/characters/$CHARACTER_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```

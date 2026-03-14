@@ -173,7 +173,9 @@ worktree. Toggle it using the terminal icon in the top right of the app or by
 pressing <kbd>Cmd</kbd>+<kbd>J</kbd>.
 
 Use the terminal to validate changes, run scripts, and perform Git operations
-without leaving the app.
+without leaving the app. Codex can also read the current terminal output, so
+it can check the status of a running development server or refer back to a
+failed build while it works with you.
 
 Common tasks include:
 

@@ -32,11 +32,11 @@ Returns the audio file content, or a stream of audio events.
 
       - `"gpt-4o-mini-tts-2025-12-15"`
 
-  - `voice: (string & {}) | "alloy" | "ash" | "ballad" | 7 more`
+  - `voice: string | "alloy" | "ash" | "ballad" | 7 more | ID`
 
-    The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
+    The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
 
-    - `(string & {})`
+    - `string`
 
     - `"alloy" | "ash" | "ballad" | 7 more`
 
@@ -59,6 +59,14 @@ Returns the audio file content, or a stream of audio events.
       - `"marin"`
 
       - `"cedar"`
+
+    - `ID`
+
+      Custom voice reference.
+
+      - `id: string`
+
+        The custom voice ID, e.g. `voice_1234`.
 
   - `instructions?: string`
 
@@ -108,7 +116,7 @@ const client = new OpenAI({
 const speech = await client.audio.speech.create({
   input: 'input',
   model: 'string',
-  voice: 'ash',
+  voice: 'string',
 });
 
 console.log(speech);

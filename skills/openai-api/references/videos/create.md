@@ -10,7 +10,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
   Text prompt that describes the video to generate.
 
-- `input_reference: optional object { file_id, image_url }`
+- `input_reference: optional ImageInputReferenceParam`
 
   Optional reference object that guides generation. Provide exactly one of `image_url` or `file_id`.
 

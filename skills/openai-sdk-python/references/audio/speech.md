@@ -32,15 +32,13 @@ Returns the audio file content, or a stream of audio events.
 
     - `"gpt-4o-mini-tts-2025-12-15"`
 
-- `voice: Union[str, Literal["alloy", "ash", "ballad", 7 more]]`
+- `voice: Voice`
 
-  The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
+  The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
 
   - `str`
 
   - `Literal["alloy", "ash", "ballad", 7 more]`
-
-    The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
 
     - `"alloy"`
 
@@ -61,6 +59,14 @@ Returns the audio file content, or a stream of audio events.
     - `"marin"`
 
     - `"cedar"`
+
+  - `class VoiceID: …`
+
+    Custom voice reference.
+
+    - `id: str`
+
+      The custom voice ID, e.g. `voice_1234`.
 
 - `instructions: Optional[str]`
 
@@ -110,7 +116,7 @@ client = OpenAI(
 speech = client.audio.speech.create(
     input="input",
     model="string",
-    voice="ash",
+    voice="string",
 )
 print(speech)
 content = speech.read()

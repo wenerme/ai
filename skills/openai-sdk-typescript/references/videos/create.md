@@ -14,13 +14,13 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Text prompt that describes the video to generate.
 
-  - `input_reference?: Uploadable | ImageRefParam2`
+  - `input_reference?: Uploadable | ImageInputReferenceParam`
 
     Optional reference asset upload or reference object that guides generation.
 
     - `Uploadable`
 
-    - `ImageRefParam2`
+    - `ImageInputReferenceParam`
 
       - `file_id?: string`
 
