@@ -2339,17 +2339,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, description, 2 more }`
+            - `Function = object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
               - `type: "function"`
 
                 - `"function"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
@@ -4741,17 +4745,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, description, 2 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, description, 2 more }`
+            - `Function = object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
               - `type: "function"`
 
                 - `"function"`
+
+              - `defer_loading: optional boolean`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 

@@ -2154,6 +2154,10 @@ Create a conversation.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -5963,6 +5967,10 @@ Create items in a conversation with the given ID.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -9092,6 +9100,10 @@ Create items in a conversation with the given ID.
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -12214,6 +12226,10 @@ List all items for a conversation with the given ID.
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -15288,6 +15304,10 @@ Get a single item from a conversation with the given IDs.
             - `type: Literal["function"]`
 
               - `"function"`
+
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
@@ -18384,6 +18404,10 @@ print(conversation.id)
 
               - `"function"`
 
+            - `defer_loading: Optional[bool]`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description: Optional[str]`
 
             - `parameters: Optional[object]`
@@ -21411,6 +21435,10 @@ print(conversation.id)
               - `type: Literal["function"]`
 
                 - `"function"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 

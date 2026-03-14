@@ -2002,6 +2002,10 @@ Get an evaluation run by ID.
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`

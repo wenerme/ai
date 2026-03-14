@@ -1996,6 +1996,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -4169,6 +4173,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `type: Literal["function"]`
 
                   - `"function"`
+
+                - `defer_loading: Optional[bool]`
+
+                  Whether this function should be deferred and discovered via tool search.
 
                 - `description: Optional[str]`
 

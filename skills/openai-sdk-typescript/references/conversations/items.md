@@ -2149,6 +2149,10 @@ Create items in a conversation with the given ID.
 
                 - `"function"`
 
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description?: string | null`
 
               - `parameters?: unknown`
@@ -5260,6 +5264,10 @@ Create items in a conversation with the given ID.
 
                 - `"function"`
 
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description?: string | null`
 
               - `parameters?: unknown`
@@ -8368,6 +8376,10 @@ List all items for a conversation with the given ID.
 
               - `"function"`
 
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description?: string | null`
 
             - `parameters?: unknown`
@@ -11427,6 +11439,10 @@ Get a single item from a conversation with the given IDs.
             - `type: "function"`
 
               - `"function"`
+
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
@@ -14509,6 +14525,10 @@ console.log(conversation.id);
 
               - `"function"`
 
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description?: string | null`
 
             - `parameters?: unknown`
@@ -17518,6 +17538,10 @@ console.log(conversation.id);
               - `type: "function"`
 
                 - `"function"`
+
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 

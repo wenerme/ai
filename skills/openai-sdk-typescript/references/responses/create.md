@@ -2228,6 +2228,10 @@ as input for the model's response.
 
                     - `"function"`
 
+                  - `defer_loading?: boolean`
+
+                    Whether this function should be deferred and discovered via tool search.
+
                   - `description?: string | null`
 
                   - `parameters?: unknown`
@@ -4856,6 +4860,10 @@ as input for the model's response.
 
               - `"function"`
 
+            - `defer_loading?: boolean`
+
+              Whether this function should be deferred and discovered via tool search.
+
             - `description?: string | null`
 
             - `parameters?: unknown`
@@ -7286,6 +7294,10 @@ as input for the model's response.
                 - `type: "function"`
 
                   - `"function"`
+
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
@@ -10336,6 +10348,10 @@ as input for the model's response.
 
                 - `"function"`
 
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description?: string | null`
 
               - `parameters?: unknown`
@@ -12193,6 +12209,10 @@ as input for the model's response.
           - `type: "function"`
 
             - `"function"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 

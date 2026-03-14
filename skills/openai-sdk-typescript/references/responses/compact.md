@@ -2335,6 +2335,10 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `"function"`
 
+                - `defer_loading?: boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description?: string | null`
 
                 - `parameters?: unknown`
@@ -5203,6 +5207,10 @@ Learn when and how to compact long-running conversations in the [conversation st
               - `type: "function"`
 
                 - `"function"`
+
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 

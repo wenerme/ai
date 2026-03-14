@@ -2242,6 +2242,10 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `"function"`
 
+                - `defer_loading: Optional[bool]`
+
+                  Whether this function should be deferred and discovered via tool search.
+
                 - `description: Optional[str]`
 
                 - `parameters: Optional[object]`
@@ -5305,6 +5309,10 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"function"`
 
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
               - `description: Optional[str]`
 
               - `parameters: Optional[object]`
@@ -7163,6 +7171,10 @@ the `background` parameter set to `true` can be cancelled.
           - `type: Literal["function"]`
 
             - `"function"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this function should be deferred and discovered via tool search.
 
           - `description: Optional[str]`
 
