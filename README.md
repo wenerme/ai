@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 66 skills available
+> 68 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -28,6 +28,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
+| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... |  |
 | `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... |  |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
@@ -37,6 +38,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... |  |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... |  |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... |  |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
 | `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... |  |
 | `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... |  |
@@ -222,6 +224,16 @@ Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or runni
 
 </details>
 <details>
+<summary><code>brainstorming</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill brainstorming
+```
+
+You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.
+
+</details>
+<details>
 <summary><code>bun-docs</code></summary>
 
 ```bash
@@ -309,6 +321,16 @@ npx skills add wenerme/ai --skill evalscope-docs
 ```
 
 USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig, supported datasets/benchmarks, evaluation backends (Native/OpenCompass/VLMEvalKit/RAGEval), performance stress testing (perf), custom datasets, multi-modal eval, arena mode, visualization, or integrating with vLLM/Swift/SGLang. Triggers on: evalscope, EvalScope, run_task, TaskConfig, evalscope eval, evalscope perf, ModelScope eval.
+
+</details>
+<details>
+<summary><code>find-skills</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill find-skills
+```
+
+Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.
 
 </details>
 <details>
