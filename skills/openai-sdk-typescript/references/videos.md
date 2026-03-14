@@ -16,13 +16,13 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Text prompt that describes the video to generate.
 
-  - `input_reference?: Uploadable | ImageRefParam2`
+  - `input_reference?: Uploadable | ImageInputReferenceParam`
 
     Optional reference asset upload or reference object that guides generation.
 
     - `Uploadable`
 
-    - `ImageRefParam2`
+    - `ImageInputReferenceParam`
 
       - `file_id?: string`
 
@@ -370,9 +370,11 @@ Create an extension of a completed video.
 
     - `"12"`
 
-  - `video: VideoReferenceInputParam | Uploadable`
+  - `video: Uploadable | VideoReferenceInputParam`
 
-    Reference to the completed video.
+    Reference to the completed video to extend.
+
+    - `Uploadable`
 
     - `VideoReferenceInputParam`
 
@@ -381,8 +383,6 @@ Create an extension of a completed video.
       - `id: string`
 
         The identifier of the completed video.
-
-    - `Uploadable`
 
 ### Returns
 
@@ -504,10 +504,105 @@ const client = new OpenAI({
 const video = await client.videos.extend({
   prompt: 'x',
   seconds: '4',
-  video: { id: 'video_123' },
+  video: fs.createReadStream('path/to/file'),
 });
 
 console.log(video.id);
+```
+
+## Create Character
+
+`client.videos.createCharacter(VideoCreateCharacterParamsbody, RequestOptionsoptions?): VideoCreateCharacterResponse`
+
+**post** `/videos/characters`
+
+Create a character from an uploaded video.
+
+### Parameters
+
+- `body: VideoCreateCharacterParams`
+
+  - `name: string`
+
+    Display name for this API character.
+
+  - `video: Uploadable`
+
+    Video file used to create a character.
+
+### Returns
+
+- `VideoCreateCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const response = await client.videos.createCharacter({
+  name: 'x',
+  video: fs.createReadStream('path/to/file'),
+});
+
+console.log(response.id);
+```
+
+## Get Character
+
+`client.videos.getCharacter(stringcharacterID, RequestOptionsoptions?): VideoGetCharacterResponse`
+
+**get** `/videos/characters/{character_id}`
+
+Fetch a character.
+
+### Parameters
+
+- `characterID: string`
+
+### Returns
+
+- `VideoGetCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const response = await client.videos.getCharacter('char_123');
+
+console.log(response.id);
 ```
 
 ## List
@@ -1030,6 +1125,16 @@ console.log(content);
 
 ## Domain Types
 
+### Image Input Reference Param
+
+- `ImageInputReferenceParam`
+
+  - `file_id?: string`
+
+  - `image_url?: string`
+
+    A fully qualified URL or base64-encoded data URL.
+
 ### Video
 
 - `Video`
@@ -1191,100 +1296,3 @@ console.log(content);
   - `"1024x1792"`
 
   - `"1792x1024"`
-
-# Character
-
-## Create
-
-`client.videos.character.create(CharacterCreateParamsbody, RequestOptionsoptions?): CharacterCreateResponse`
-
-**post** `/videos/characters`
-
-Create a character from an uploaded video.
-
-### Parameters
-
-- `body: CharacterCreateParams`
-
-  - `name: string`
-
-    Display name for this API character.
-
-  - `video: Uploadable`
-
-    Video file used to create a character.
-
-### Returns
-
-- `CharacterCreateResponse`
-
-  - `id: string | null`
-
-    Identifier for the character creation cameo.
-
-  - `created_at: number`
-
-    Unix timestamp (in seconds) when the character was created.
-
-  - `name: string | null`
-
-    Display name for the character.
-
-### Example
-
-```typescript
-import OpenAI from 'openai';
-
-const client = new OpenAI({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
-});
-
-const character = await client.videos.character.create({
-  name: 'x',
-  video: fs.createReadStream('path/to/file'),
-});
-
-console.log(character.id);
-```
-
-## Get
-
-`client.videos.character.get(stringcharacterID, RequestOptionsoptions?): CharacterGetResponse`
-
-**get** `/videos/characters/{character_id}`
-
-Fetch a character.
-
-### Parameters
-
-- `characterID: string`
-
-### Returns
-
-- `CharacterGetResponse`
-
-  - `id: string | null`
-
-    Identifier for the character creation cameo.
-
-  - `created_at: number`
-
-    Unix timestamp (in seconds) when the character was created.
-
-  - `name: string | null`
-
-    Display name for the character.
-
-### Example
-
-```typescript
-import OpenAI from 'openai';
-
-const client = new OpenAI({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
-});
-
-const character = await client.videos.character.get('char_123');
-
-console.log(character.id);
-```

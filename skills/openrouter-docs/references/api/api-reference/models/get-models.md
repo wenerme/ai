@@ -30,7 +30,7 @@ paths:
           required: false
           schema:
             type: string
-        - name: output_modality
+        - name: output_modalities
           in: query
           description: >-
             Filter models by output modality. Accepts a comma-separated list of

@@ -24,7 +24,11 @@ Create an extension of a completed video.
 
 - `video: Video`
 
-  Reference to the completed video.
+  Reference to the completed video to extend.
+
+  - `FileTypes`
+
+    Reference to the completed video to extend.
 
   - `class VideoVideoReferenceInputParam: …`
 
@@ -33,10 +37,6 @@ Create an extension of a completed video.
     - `id: str`
 
       The identifier of the completed video.
-
-  - `FileTypes`
-
-    Reference to the completed video to extend.
 
 ### Returns
 
@@ -158,9 +158,7 @@ client = OpenAI(
 video = client.videos.extend(
     prompt="x",
     seconds="4",
-    video={
-        "id": "video_123"
-    },
+    video=b"raw file contents",
 )
 print(video.id)
 ```

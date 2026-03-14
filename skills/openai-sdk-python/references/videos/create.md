@@ -20,7 +20,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Optional reference asset upload or reference object that guides generation.
 
-  - `class InputReferenceImageRefParam2: …`
+  - `class ImageInputReferenceParam: …`
 
     - `file_id: Optional[str]`
 

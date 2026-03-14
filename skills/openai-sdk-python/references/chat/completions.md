@@ -591,15 +591,16 @@ chunk objects if the request is streamed.
 
     - `"pcm16"`
 
-  - `voice: Union[str, Literal["alloy", "ash", "ballad", 7 more]]`
+  - `voice: Voice`
 
-    The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
+    The voice the model uses to respond. Supported built-in voices are
+    `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
+    `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
+    custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
 
     - `str`
 
     - `Literal["alloy", "ash", "ballad", 7 more]`
-
-      The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
 
       - `"alloy"`
 
@@ -620,6 +621,14 @@ chunk objects if the request is streamed.
       - `"marin"`
 
       - `"cedar"`
+
+    - `class VoiceID: …`
+
+      Custom voice reference.
+
+      - `id: str`
+
+        The custom voice ID, e.g. `voice_1234`.
 
 - `frequency_penalty: Optional[float]`
 
@@ -3369,15 +3378,16 @@ print(chat_completion_deleted.id)
 
     - `"pcm16"`
 
-  - `voice: Union[str, Literal["alloy", "ash", "ballad", 7 more]]`
+  - `voice: Voice`
 
-    The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
+    The voice the model uses to respond. Supported built-in voices are
+    `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
+    `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
+    custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
 
     - `str`
 
     - `Literal["alloy", "ash", "ballad", 7 more]`
-
-      The voice the model uses to respond. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, `shimmer`, `marin`, and `cedar`.
 
       - `"alloy"`
 
@@ -3398,6 +3408,14 @@ print(chat_completion_deleted.id)
       - `"marin"`
 
       - `"cedar"`
+
+    - `class VoiceID: …`
+
+      Custom voice reference.
+
+      - `id: str`
+
+        The custom voice ID, e.g. `voice_1234`.
 
 ### Chat Completion Chunk
 

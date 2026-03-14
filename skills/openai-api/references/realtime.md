@@ -3447,31 +3447,29 @@
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+      - `UnionMember0 = string`
 
-        - `UnionMember0 = string`
+      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy"`
 
-          - `"alloy"`
+        - `"ash"`
 
-          - `"ash"`
+        - `"ballad"`
 
-          - `"ballad"`
+        - `"coral"`
 
-          - `"coral"`
+        - `"echo"`
 
-          - `"echo"`
+        - `"sage"`
 
-          - `"sage"`
+        - `"shimmer"`
 
-          - `"shimmer"`
+        - `"verse"`
 
-          - `"verse"`
+        - `"marin"`
 
-          - `"marin"`
-
-          - `"cedar"`
+        - `"cedar"`
 
       - `ID = object { id }`
 
@@ -3730,31 +3728,29 @@
     during the session once the model has responded with audio at least once.
     We recommend `marin` and `cedar` for best quality.
 
-    - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+    - `UnionMember0 = string`
 
-      - `UnionMember0 = string`
+    - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy"`
 
-        - `"alloy"`
+      - `"ash"`
 
-        - `"ash"`
+      - `"ballad"`
 
-        - `"ballad"`
+      - `"coral"`
 
-        - `"coral"`
+      - `"echo"`
 
-        - `"echo"`
+      - `"sage"`
 
-        - `"sage"`
+      - `"shimmer"`
 
-        - `"shimmer"`
+      - `"verse"`
 
-        - `"verse"`
+      - `"marin"`
 
-        - `"marin"`
-
-        - `"cedar"`
+      - `"cedar"`
 
     - `ID = object { id }`
 
@@ -4642,31 +4638,29 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+            - `UnionMember0 = string`
 
-              - `UnionMember0 = string`
+            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy"`
 
-                - `"alloy"`
+              - `"ash"`
 
-                - `"ash"`
+              - `"ballad"`
 
-                - `"ballad"`
+              - `"coral"`
 
-                - `"coral"`
+              - `"echo"`
 
-                - `"echo"`
+              - `"sage"`
 
-                - `"sage"`
+              - `"shimmer"`
 
-                - `"shimmer"`
+              - `"verse"`
 
-                - `"verse"`
+              - `"marin"`
 
-                - `"marin"`
-
-                - `"cedar"`
+              - `"cedar"`
 
             - `ID = object { id }`
 
@@ -5754,31 +5748,29 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+              - `UnionMember0 = string`
 
-                - `UnionMember0 = string`
+              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-                - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+                - `"alloy"`
 
-                  - `"alloy"`
+                - `"ash"`
 
-                  - `"ash"`
+                - `"ballad"`
 
-                  - `"ballad"`
+                - `"coral"`
 
-                  - `"coral"`
+                - `"echo"`
 
-                  - `"echo"`
+                - `"sage"`
 
-                  - `"sage"`
+                - `"shimmer"`
 
-                  - `"shimmer"`
+                - `"verse"`
 
-                  - `"verse"`
+                - `"marin"`
 
-                  - `"marin"`
-
-                  - `"cedar"`
+                - `"cedar"`
 
               - `ID = object { id }`
 
@@ -7787,31 +7779,29 @@
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+      - `UnionMember0 = string`
 
-        - `UnionMember0 = string`
+      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy"`
 
-          - `"alloy"`
+        - `"ash"`
 
-          - `"ash"`
+        - `"ballad"`
 
-          - `"ballad"`
+        - `"coral"`
 
-          - `"coral"`
+        - `"echo"`
 
-          - `"echo"`
+        - `"sage"`
 
-          - `"sage"`
+        - `"shimmer"`
 
-          - `"shimmer"`
+        - `"verse"`
 
-          - `"verse"`
+        - `"marin"`
 
-          - `"marin"`
-
-          - `"cedar"`
+        - `"cedar"`
 
       - `ID = object { id }`
 
@@ -7882,31 +7872,29 @@
         during the session once the model has responded with audio at least once.
         We recommend `marin` and `cedar` for best quality.
 
-        - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+        - `UnionMember0 = string`
 
-          - `UnionMember0 = string`
+        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy"`
 
-            - `"alloy"`
+          - `"ash"`
 
-            - `"ash"`
+          - `"ballad"`
 
-            - `"ballad"`
+          - `"coral"`
 
-            - `"coral"`
+          - `"echo"`
 
-            - `"echo"`
+          - `"sage"`
 
-            - `"sage"`
+          - `"shimmer"`
 
-            - `"shimmer"`
+          - `"verse"`
 
-            - `"verse"`
+          - `"marin"`
 
-            - `"marin"`
-
-            - `"cedar"`
+          - `"cedar"`
 
         - `ID = object { id }`
 
@@ -13235,31 +13223,29 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+              - `UnionMember0 = string`
 
-                - `UnionMember0 = string`
+              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-                - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+                - `"alloy"`
 
-                  - `"alloy"`
+                - `"ash"`
 
-                  - `"ash"`
+                - `"ballad"`
 
-                  - `"ballad"`
+                - `"coral"`
 
-                  - `"coral"`
+                - `"echo"`
 
-                  - `"echo"`
+                - `"sage"`
 
-                  - `"sage"`
+                - `"shimmer"`
 
-                  - `"shimmer"`
+                - `"verse"`
 
-                  - `"verse"`
+                - `"marin"`
 
-                  - `"marin"`
-
-                  - `"cedar"`
+                - `"cedar"`
 
               - `ID = object { id }`
 
@@ -14220,31 +14206,29 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+              - `UnionMember0 = string`
 
-                - `UnionMember0 = string`
+              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-                - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+                - `"alloy"`
 
-                  - `"alloy"`
+                - `"ash"`
 
-                  - `"ash"`
+                - `"ballad"`
 
-                  - `"ballad"`
+                - `"coral"`
 
-                  - `"coral"`
+                - `"echo"`
 
-                  - `"echo"`
+                - `"sage"`
 
-                  - `"sage"`
+                - `"shimmer"`
 
-                  - `"shimmer"`
+                - `"verse"`
 
-                  - `"verse"`
+                - `"marin"`
 
-                  - `"marin"`
-
-                  - `"cedar"`
+                - `"cedar"`
 
               - `ID = object { id }`
 
@@ -16893,31 +16877,29 @@
         during the session once the model has responded with audio at least once.
         We recommend `marin` and `cedar` for best quality.
 
-        - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+        - `UnionMember0 = string`
 
-          - `UnionMember0 = string`
+        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy"`
 
-            - `"alloy"`
+          - `"ash"`
 
-            - `"ash"`
+          - `"ballad"`
 
-            - `"ballad"`
+          - `"coral"`
 
-            - `"coral"`
+          - `"echo"`
 
-            - `"echo"`
+          - `"sage"`
 
-            - `"sage"`
+          - `"shimmer"`
 
-            - `"shimmer"`
+          - `"verse"`
 
-            - `"verse"`
+          - `"marin"`
 
-            - `"marin"`
-
-            - `"cedar"`
+          - `"cedar"`
 
         - `ID = object { id }`
 
@@ -18932,31 +18914,29 @@
           during the session once the model has responded with audio at least once.
           We recommend `marin` and `cedar` for best quality.
 
-          - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+          - `UnionMember0 = string`
 
-            - `UnionMember0 = string`
+          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy"`
 
-              - `"alloy"`
+            - `"ash"`
 
-              - `"ash"`
+            - `"ballad"`
 
-              - `"ballad"`
+            - `"coral"`
 
-              - `"coral"`
+            - `"echo"`
 
-              - `"echo"`
+            - `"sage"`
 
-              - `"sage"`
+            - `"shimmer"`
 
-              - `"shimmer"`
+            - `"verse"`
 
-              - `"verse"`
+            - `"marin"`
 
-              - `"marin"`
-
-              - `"cedar"`
+            - `"cedar"`
 
           - `ID = object { id }`
 
@@ -22657,31 +22637,29 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+            - `UnionMember0 = string`
 
-              - `UnionMember0 = string`
+            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy"`
 
-                - `"alloy"`
+              - `"ash"`
 
-                - `"ash"`
+              - `"ballad"`
 
-                - `"ballad"`
+              - `"coral"`
 
-                - `"coral"`
+              - `"echo"`
 
-                - `"echo"`
+              - `"sage"`
 
-                - `"sage"`
+              - `"shimmer"`
 
-                - `"shimmer"`
+              - `"verse"`
 
-                - `"verse"`
+              - `"marin"`
 
-                - `"marin"`
-
-                - `"cedar"`
+              - `"cedar"`
 
             - `ID = object { id }`
 
@@ -23648,31 +23626,29 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+            - `UnionMember0 = string`
 
-              - `UnionMember0 = string`
+            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy"`
 
-                - `"alloy"`
+              - `"ash"`
 
-                - `"ash"`
+              - `"ballad"`
 
-                - `"ballad"`
+              - `"coral"`
 
-                - `"coral"`
+              - `"echo"`
 
-                - `"echo"`
+              - `"sage"`
 
-                - `"sage"`
+              - `"shimmer"`
 
-                - `"shimmer"`
+              - `"verse"`
 
-                - `"verse"`
+              - `"marin"`
 
-                - `"marin"`
-
-                - `"cedar"`
+              - `"cedar"`
 
             - `ID = object { id }`
 
@@ -24639,31 +24615,29 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+            - `UnionMember0 = string`
 
-              - `UnionMember0 = string`
+            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy"`
 
-                - `"alloy"`
+              - `"ash"`
 
-                - `"ash"`
+              - `"ballad"`
 
-                - `"ballad"`
+              - `"coral"`
 
-                - `"coral"`
+              - `"echo"`
 
-                - `"echo"`
+              - `"sage"`
 
-                - `"sage"`
+              - `"shimmer"`
 
-                - `"shimmer"`
+              - `"verse"`
 
-                - `"verse"`
+              - `"marin"`
 
-                - `"marin"`
-
-                - `"cedar"`
+              - `"cedar"`
 
             - `ID = object { id }`
 
@@ -25890,31 +25864,29 @@ Returns the created client secret and the effective session object. The client s
           during the session once the model has responded with audio at least once.
           We recommend `marin` and `cedar` for best quality.
 
-          - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+          - `UnionMember0 = string`
 
-            - `UnionMember0 = string`
+          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy"`
 
-              - `"alloy"`
+            - `"ash"`
 
-              - `"ash"`
+            - `"ballad"`
 
-              - `"ballad"`
+            - `"coral"`
 
-              - `"coral"`
+            - `"echo"`
 
-              - `"echo"`
+            - `"sage"`
 
-              - `"sage"`
+            - `"shimmer"`
 
-              - `"shimmer"`
+            - `"verse"`
 
-              - `"verse"`
+            - `"marin"`
 
-              - `"marin"`
-
-              - `"cedar"`
+            - `"cedar"`
 
           - `ID = object { id }`
 
@@ -28778,31 +28750,29 @@ handle it.
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+      - `UnionMember0 = string`
 
-        - `UnionMember0 = string`
+      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy"`
 
-          - `"alloy"`
+        - `"ash"`
 
-          - `"ash"`
+        - `"ballad"`
 
-          - `"ballad"`
+        - `"coral"`
 
-          - `"coral"`
+        - `"echo"`
 
-          - `"echo"`
+        - `"sage"`
 
-          - `"sage"`
+        - `"shimmer"`
 
-          - `"shimmer"`
+        - `"verse"`
 
-          - `"verse"`
+        - `"marin"`
 
-          - `"marin"`
-
-          - `"cedar"`
+        - `"cedar"`
 
       - `ID = object { id }`
 
@@ -29678,31 +29648,29 @@ Returns the created Realtime session object, plus an ephemeral key.
   `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed during
   the session once the model has responded with audio at least once.
 
-  - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+  - `UnionMember0 = string`
 
-    - `UnionMember0 = string`
+  - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-    - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+    - `"alloy"`
 
-      - `"alloy"`
+    - `"ash"`
 
-      - `"ash"`
+    - `"ballad"`
 
-      - `"ballad"`
+    - `"coral"`
 
-      - `"coral"`
+    - `"echo"`
 
-      - `"echo"`
+    - `"sage"`
 
-      - `"sage"`
+    - `"shimmer"`
 
-      - `"shimmer"`
+    - `"verse"`
 
-      - `"verse"`
+    - `"marin"`
 
-      - `"marin"`
-
-      - `"cedar"`
+    - `"cedar"`
 
   - `ID = object { id }`
 

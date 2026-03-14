@@ -1149,31 +1149,29 @@ Returns the audio file content, or a stream of audio events.
 
   The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech#voice-options).
 
-  - `VoiceIDsShared = string or "alloy" or "ash" or "ballad" or 7 more`
+  - `UnionMember0 = string`
 
-    - `UnionMember0 = string`
+  - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
 
-    - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+    - `"alloy"`
 
-      - `"alloy"`
+    - `"ash"`
 
-      - `"ash"`
+    - `"ballad"`
 
-      - `"ballad"`
+    - `"coral"`
 
-      - `"coral"`
+    - `"echo"`
 
-      - `"echo"`
+    - `"sage"`
 
-      - `"sage"`
+    - `"shimmer"`
 
-      - `"shimmer"`
+    - `"verse"`
 
-      - `"verse"`
+    - `"marin"`
 
-      - `"marin"`
-
-      - `"cedar"`
+    - `"cedar"`
 
   - `ID = object { id }`
 
@@ -1224,7 +1222,7 @@ curl https://api.openai.com/v1/audio/speech \
     -d '{
           "input": "input",
           "model": "string",
-          "voice": "ash"
+          "voice": "string"
         }'
 ```
 

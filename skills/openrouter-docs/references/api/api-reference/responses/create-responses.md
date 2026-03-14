@@ -1865,6 +1865,55 @@ components:
         - name
       description: Custom tool configuration
       title: OpenResponsesCustomTool
+    DatetimeServerToolType:
+      type: string
+      enum:
+        - openrouter:datetime
+      title: DatetimeServerToolType
+    DatetimeServerToolParameters:
+      type: object
+      properties:
+        timezone:
+          type: string
+          description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
+      title: DatetimeServerToolParameters
+    DatetimeServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/DatetimeServerToolType'
+        parameters:
+          $ref: '#/components/schemas/DatetimeServerToolParameters'
+      required:
+        - type
+      description: 'OpenRouter built-in server tool: returns the current date and time'
+      title: DatetimeServerTool
+    WebSearchServerToolType:
+      type: string
+      enum:
+        - openrouter:web_search
+      title: WebSearchServerToolType
+    WebSearchServerToolParameters:
+      type: object
+      properties:
+        max_results:
+          type: number
+          format: double
+          description: Maximum number of search results to return. Defaults to 5.
+      title: WebSearchServerToolParameters
+    WebSearchServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchServerToolType'
+        parameters:
+          $ref: '#/components/schemas/WebSearchServerToolParameters'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: searches the web for current
+        information
+      title: WebSearchServerTool
     OpenResponsesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/OpenResponsesRequestToolsItems0'
@@ -1881,6 +1930,8 @@ components:
         - $ref: '#/components/schemas/OpenResponsesFunctionShellTool'
         - $ref: '#/components/schemas/OpenResponsesApplyPatchTool'
         - $ref: '#/components/schemas/OpenResponsesCustomTool'
+        - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/WebSearchServerTool'
       title: OpenResponsesRequestToolsItems
     OpenAiResponsesToolChoice0:
       type: string
@@ -3465,7 +3516,41 @@ components:
         - summary
       description: An output item containing reasoning
       title: ResponsesOutputItemReasoning
-    ResponsesOutputItem:
+    ResponsesDatetimeOutputType:
+      type: string
+      enum:
+        - openrouter:datetime
+      title: ResponsesDatetimeOutputType
+    ResponsesDatetimeOutputStatus:
+      type: string
+      enum:
+        - completed
+        - in_progress
+        - incomplete
+      title: ResponsesDatetimeOutputStatus
+    ResponsesDatetimeOutput:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ResponsesDatetimeOutputType'
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/ResponsesDatetimeOutputStatus'
+        datetime:
+          type: string
+          description: ISO 8601 datetime string
+        timezone:
+          type: string
+          description: IANA timezone name
+      required:
+        - type
+        - status
+        - datetime
+        - timezone
+      description: An openrouter:datetime server tool output item
+      title: ResponsesDatetimeOutput
+    OpenResponsesNonStreamingResponseOutputItems:
       oneOf:
         - $ref: '#/components/schemas/ResponsesOutputMessage'
         - $ref: '#/components/schemas/ResponsesOutputItemReasoning'
@@ -3473,8 +3558,8 @@ components:
         - $ref: '#/components/schemas/ResponsesWebSearchCallOutput'
         - $ref: '#/components/schemas/ResponsesOutputItemFileSearchCall'
         - $ref: '#/components/schemas/ResponsesImageGenerationCall'
-      description: An output item from the response
-      title: ResponsesOutputItem
+        - $ref: '#/components/schemas/ResponsesDatetimeOutput'
+      title: OpenResponsesNonStreamingResponseOutputItems
     OpenResponsesUsageCostDetails:
       type: object
       properties:
@@ -3550,7 +3635,7 @@ components:
         output:
           type: array
           items:
-            $ref: '#/components/schemas/ResponsesOutputItem'
+            $ref: '#/components/schemas/OpenResponsesNonStreamingResponseOutputItems'
         user:
           type:
             - string
