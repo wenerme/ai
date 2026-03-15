@@ -2,916 +2,916 @@
   "quickstart.md": {
     "url": "https://openrouter.ai/docs/quickstart.md",
     "size": 5792,
-    "updatedAt": "2026-03-15T00:18:08.983Z"
+    "updatedAt": "2026-03-15T10:13:54.759Z"
   },
   "guides/overview/principles.md": {
     "url": "https://openrouter.ai/docs/guides/overview/principles.md",
     "size": 1186,
-    "updatedAt": "2026-03-15T00:18:09.405Z"
+    "updatedAt": "2026-03-15T10:13:55.184Z"
   },
   "guides/overview/models.md": {
     "url": "https://openrouter.ai/docs/guides/overview/models.md",
     "size": 7529,
-    "updatedAt": "2026-03-15T00:18:10.133Z"
+    "updatedAt": "2026-03-15T10:13:55.725Z"
   },
   "guides/overview/multimodal/overview.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/overview.md",
     "size": 4721,
-    "updatedAt": "2026-03-15T00:18:10.532Z"
+    "updatedAt": "2026-03-15T10:13:56.171Z"
   },
   "guides/overview/multimodal/images.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/images.md",
     "size": 7568,
-    "updatedAt": "2026-03-15T00:18:10.907Z"
+    "updatedAt": "2026-03-15T10:13:56.567Z"
   },
   "guides/overview/multimodal/image-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/image-generation.md",
     "size": 15696,
-    "updatedAt": "2026-03-15T00:18:11.498Z"
+    "updatedAt": "2026-03-15T10:13:57.120Z"
   },
   "guides/overview/multimodal/pdfs.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/pdfs.md",
     "size": 17755,
-    "updatedAt": "2026-03-15T00:18:12.123Z"
+    "updatedAt": "2026-03-15T10:13:57.746Z"
   },
   "guides/overview/multimodal/audio.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/audio.md",
     "size": 9989,
-    "updatedAt": "2026-03-15T00:18:12.487Z"
+    "updatedAt": "2026-03-15T10:13:58.218Z"
   },
   "guides/overview/multimodal/videos.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/videos.md",
     "size": 11012,
-    "updatedAt": "2026-03-15T00:18:13.081Z"
+    "updatedAt": "2026-03-15T10:13:58.742Z"
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",
     "size": 5473,
-    "updatedAt": "2026-03-15T00:18:13.466Z"
+    "updatedAt": "2026-03-15T10:13:59.274Z"
   },
   "guides/overview/auth/management-api-keys.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/management-api-keys.md",
     "size": 6800,
-    "updatedAt": "2026-03-15T00:18:13.855Z"
+    "updatedAt": "2026-03-15T10:13:59.740Z"
   },
   "guides/overview/auth/byok.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/byok.md",
     "size": 12593,
-    "updatedAt": "2026-03-15T00:18:14.264Z"
+    "updatedAt": "2026-03-15T10:14:00.261Z"
   },
   "faq.md": {
     "url": "https://openrouter.ai/docs/faq.md",
     "size": 17059,
-    "updatedAt": "2026-03-15T00:18:15.023Z"
+    "updatedAt": "2026-03-15T10:14:00.951Z"
   },
   "guides/overview/report-feedback.md": {
     "url": "https://openrouter.ai/docs/guides/overview/report-feedback.md",
     "size": 2576,
-    "updatedAt": "2026-03-15T00:18:15.488Z"
+    "updatedAt": "2026-03-15T10:14:01.473Z"
   },
   "guides/routing/model-fallbacks.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-fallbacks.md",
     "size": 4047,
-    "updatedAt": "2026-03-15T00:18:15.936Z"
+    "updatedAt": "2026-03-15T10:14:01.884Z"
   },
   "guides/routing/provider-selection.md": {
     "url": "https://openrouter.ai/docs/guides/routing/provider-selection.md",
     "size": 65386,
-    "updatedAt": "2026-03-15T00:18:16.467Z"
+    "updatedAt": "2026-03-15T10:14:02.638Z"
   },
   "guides/routing/auto-exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/auto-exacto.md",
     "size": 2467,
-    "updatedAt": "2026-03-15T00:18:16.818Z"
+    "updatedAt": "2026-03-15T10:14:03.148Z"
   },
   "guides/routing/model-variants/free.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/free.md",
     "size": 521,
-    "updatedAt": "2026-03-15T00:18:17.185Z"
+    "updatedAt": "2026-03-15T10:14:03.572Z"
   },
   "guides/routing/model-variants/extended.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/extended.md",
     "size": 375,
-    "updatedAt": "2026-03-15T00:18:17.575Z"
+    "updatedAt": "2026-03-15T10:14:03.997Z"
   },
   "guides/routing/model-variants/exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/exacto.md",
     "size": 4520,
-    "updatedAt": "2026-03-15T00:18:18.058Z"
+    "updatedAt": "2026-03-15T10:14:04.464Z"
   },
   "guides/routing/model-variants/thinking.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/thinking.md",
     "size": 531,
-    "updatedAt": "2026-03-15T00:18:18.509Z"
+    "updatedAt": "2026-03-15T10:14:04.876Z"
   },
   "guides/routing/model-variants/online.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/online.md",
     "size": 694,
-    "updatedAt": "2026-03-15T00:18:18.927Z"
+    "updatedAt": "2026-03-15T10:14:05.362Z"
   },
   "guides/routing/model-variants/nitro.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/nitro.md",
     "size": 494,
-    "updatedAt": "2026-03-15T00:18:19.313Z"
+    "updatedAt": "2026-03-15T10:14:05.754Z"
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
     "size": 7467,
-    "updatedAt": "2026-03-15T00:18:19.836Z"
+    "updatedAt": "2026-03-15T10:14:06.293Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",
     "size": 6891,
-    "updatedAt": "2026-03-15T00:18:20.283Z"
+    "updatedAt": "2026-03-15T10:14:06.757Z"
   },
   "guides/routing/routers/free-models-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/free-models-router.md",
     "size": 6169,
-    "updatedAt": "2026-03-15T00:18:20.654Z"
+    "updatedAt": "2026-03-15T10:14:07.287Z"
   },
   "guides/features/presets.md": {
     "url": "https://openrouter.ai/docs/guides/features/presets.md",
     "size": 3150,
-    "updatedAt": "2026-03-15T00:18:20.999Z"
+    "updatedAt": "2026-03-15T10:14:07.713Z"
   },
   "guides/features/tool-calling.md": {
     "url": "https://openrouter.ai/docs/guides/features/tool-calling.md",
     "size": 24283,
-    "updatedAt": "2026-03-15T00:18:21.538Z"
+    "updatedAt": "2026-03-15T10:14:08.628Z"
   },
   "guides/features/plugins/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/overview.md",
     "size": 5976,
-    "updatedAt": "2026-03-15T00:18:21.945Z"
+    "updatedAt": "2026-03-15T10:14:09.230Z"
   },
   "guides/features/plugins/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/web-search.md",
     "size": 11379,
-    "updatedAt": "2026-03-15T00:18:22.438Z"
+    "updatedAt": "2026-03-15T10:14:09.771Z"
   },
   "guides/features/plugins/response-healing.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/response-healing.md",
     "size": 5131,
-    "updatedAt": "2026-03-15T00:18:22.817Z"
+    "updatedAt": "2026-03-15T10:14:10.207Z"
   },
   "guides/features/structured-outputs.md": {
     "url": "https://openrouter.ai/docs/guides/features/structured-outputs.md",
     "size": 8208,
-    "updatedAt": "2026-03-15T00:18:23.202Z"
+    "updatedAt": "2026-03-15T10:14:10.628Z"
   },
   "guides/features/message-transforms.md": {
     "url": "https://openrouter.ai/docs/guides/features/message-transforms.md",
     "size": 2004,
-    "updatedAt": "2026-03-15T00:18:23.645Z"
+    "updatedAt": "2026-03-15T10:14:11.039Z"
   },
   "guides/features/zero-completion-insurance.md": {
     "url": "https://openrouter.ai/docs/guides/features/zero-completion-insurance.md",
     "size": 1005,
-    "updatedAt": "2026-03-15T00:18:23.993Z"
+    "updatedAt": "2026-03-15T10:14:11.446Z"
   },
   "guides/features/zdr.md": {
     "url": "https://openrouter.ai/docs/guides/features/zdr.md",
     "size": 3702,
-    "updatedAt": "2026-03-15T00:18:24.437Z"
+    "updatedAt": "2026-03-15T10:14:11.859Z"
   },
   "app-attribution.md": {
     "url": "https://openrouter.ai/docs/app-attribution.md",
     "size": 9229,
-    "updatedAt": "2026-03-15T00:18:24.908Z"
+    "updatedAt": "2026-03-15T10:14:12.334Z"
   },
   "guides/features/guardrails.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails.md",
     "size": 4616,
-    "updatedAt": "2026-03-15T00:18:25.287Z"
+    "updatedAt": "2026-03-15T10:14:12.911Z"
   },
   "guides/features/broadcast/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/overview.md",
     "size": 13799,
-    "updatedAt": "2026-03-15T00:18:25.702Z"
+    "updatedAt": "2026-03-15T10:14:13.497Z"
   },
   "guides/features/broadcast/arize.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/arize.md",
     "size": 3637,
-    "updatedAt": "2026-03-15T00:18:26.062Z"
+    "updatedAt": "2026-03-15T10:14:14.127Z"
   },
   "guides/features/broadcast/braintrust.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/braintrust.md",
     "size": 3908,
-    "updatedAt": "2026-03-15T00:18:26.554Z"
+    "updatedAt": "2026-03-15T10:14:14.543Z"
   },
   "guides/features/broadcast/clickhouse.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/clickhouse.md",
     "size": 8223,
-    "updatedAt": "2026-03-15T00:18:27.102Z"
+    "updatedAt": "2026-03-15T10:14:15.017Z"
   },
   "guides/features/broadcast/opik.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/opik.md",
     "size": 3560,
-    "updatedAt": "2026-03-15T00:18:27.665Z"
+    "updatedAt": "2026-03-15T10:14:15.586Z"
   },
   "guides/features/broadcast/datadog.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/datadog.md",
     "size": 3797,
-    "updatedAt": "2026-03-15T00:18:28.090Z"
+    "updatedAt": "2026-03-15T10:14:16.049Z"
   },
   "guides/features/broadcast/grafana.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/grafana.md",
     "size": 8903,
-    "updatedAt": "2026-03-15T00:18:28.626Z"
+    "updatedAt": "2026-03-15T10:14:16.569Z"
   },
   "guides/features/broadcast/langfuse.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/langfuse.md",
     "size": 4203,
-    "updatedAt": "2026-03-15T00:18:29.058Z"
+    "updatedAt": "2026-03-15T10:14:17.011Z"
   },
   "guides/features/broadcast/langsmith.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/langsmith.md",
     "size": 4218,
-    "updatedAt": "2026-03-15T00:18:29.455Z"
+    "updatedAt": "2026-03-15T10:14:17.476Z"
   },
   "guides/features/broadcast/newrelic.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/newrelic.md",
     "size": 3569,
-    "updatedAt": "2026-03-15T00:18:29.821Z"
+    "updatedAt": "2026-03-15T10:14:17.888Z"
   },
   "guides/features/broadcast/otel-collector.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/otel-collector.md",
     "size": 5059,
-    "updatedAt": "2026-03-15T00:18:30.240Z"
+    "updatedAt": "2026-03-15T10:14:18.363Z"
   },
   "guides/features/broadcast/posthog.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/posthog.md",
     "size": 3248,
-    "updatedAt": "2026-03-15T00:18:30.616Z"
+    "updatedAt": "2026-03-15T10:14:19.037Z"
   },
   "guides/features/broadcast/s3.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/s3.md",
     "size": 5095,
-    "updatedAt": "2026-03-15T00:18:31.067Z"
+    "updatedAt": "2026-03-15T10:14:19.498Z"
   },
   "guides/features/broadcast/sentry.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/sentry.md",
     "size": 3896,
-    "updatedAt": "2026-03-15T00:18:31.463Z"
+    "updatedAt": "2026-03-15T10:14:19.924Z"
   },
   "guides/features/broadcast/snowflake.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/snowflake.md",
     "size": 8126,
-    "updatedAt": "2026-03-15T00:18:31.891Z"
+    "updatedAt": "2026-03-15T10:14:20.397Z"
   },
   "guides/features/broadcast/weave.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/weave.md",
     "size": 3889,
-    "updatedAt": "2026-03-15T00:18:32.273Z"
+    "updatedAt": "2026-03-15T10:14:20.801Z"
   },
   "guides/features/broadcast/webhook.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/webhook.md",
     "size": 6187,
-    "updatedAt": "2026-03-15T00:18:32.703Z"
+    "updatedAt": "2026-03-15T10:14:21.266Z"
   },
   "guides/privacy/data-collection.md": {
     "url": "https://openrouter.ai/docs/guides/privacy/data-collection.md",
     "size": 1272,
-    "updatedAt": "2026-03-15T00:18:33.063Z"
+    "updatedAt": "2026-03-15T10:14:21.670Z"
   },
   "guides/privacy/logging.md": {
     "url": "https://openrouter.ai/docs/guides/privacy/logging.md",
     "size": 2585,
-    "updatedAt": "2026-03-15T00:18:33.407Z"
+    "updatedAt": "2026-03-15T10:14:22.141Z"
   },
   "guides/best-practices/latency-and-performance.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/latency-and-performance.md",
     "size": 2185,
-    "updatedAt": "2026-03-15T00:18:33.757Z"
+    "updatedAt": "2026-03-15T10:14:22.591Z"
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
     "size": 14728,
-    "updatedAt": "2026-03-15T00:18:34.328Z"
+    "updatedAt": "2026-03-15T10:14:23.161Z"
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",
     "size": 1089,
-    "updatedAt": "2026-03-15T00:18:34.724Z"
+    "updatedAt": "2026-03-15T10:14:23.749Z"
   },
   "guides/best-practices/reasoning-tokens.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens.md",
     "size": 32932,
-    "updatedAt": "2026-03-15T00:18:35.344Z"
+    "updatedAt": "2026-03-15T10:14:24.317Z"
   },
   "guides/guides/administration/activity-export.md": {
     "url": "https://openrouter.ai/docs/guides/guides/administration/activity-export.md",
     "size": 2195,
-    "updatedAt": "2026-03-15T00:18:35.786Z"
+    "updatedAt": "2026-03-15T10:14:24.747Z"
   },
   "guides/guides/administration/api-key-rotation.md": {
     "url": "https://openrouter.ai/docs/guides/guides/administration/api-key-rotation.md",
     "size": 6953,
-    "updatedAt": "2026-03-15T00:18:36.210Z"
+    "updatedAt": "2026-03-15T10:14:25.419Z"
   },
   "guides/guides/administration/crypto-api.md": {
     "url": "https://openrouter.ai/docs/guides/guides/administration/crypto-api.md",
     "size": 31193,
-    "updatedAt": "2026-03-15T00:18:36.645Z"
+    "updatedAt": "2026-03-15T10:14:25.848Z"
   },
   "organization-management.md": {
     "url": "https://openrouter.ai/docs/organization-management.md",
     "size": 7856,
-    "updatedAt": "2026-03-15T00:18:37.037Z"
+    "updatedAt": "2026-03-15T10:14:26.294Z"
   },
   "guides/guides/administration/usage-accounting.md": {
     "url": "https://openrouter.ai/docs/guides/guides/administration/usage-accounting.md",
     "size": 8038,
-    "updatedAt": "2026-03-15T00:18:37.540Z"
+    "updatedAt": "2026-03-15T10:14:26.746Z"
   },
   "guides/guides/administration/user-tracking.md": {
     "url": "https://openrouter.ai/docs/guides/guides/administration/user-tracking.md",
     "size": 4212,
-    "updatedAt": "2026-03-15T00:18:37.900Z"
+    "updatedAt": "2026-03-15T10:14:27.168Z"
   },
   "guides/guides/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/guides/guides/coding-agents/claude-code-integration.md",
     "size": 8177,
-    "updatedAt": "2026-03-15T00:18:38.363Z"
+    "updatedAt": "2026-03-15T10:14:27.768Z"
   },
   "guides/guides/coding-agents/codex-cli.md": {
     "url": "https://openrouter.ai/docs/guides/guides/coding-agents/codex-cli.md",
     "size": 4817,
-    "updatedAt": "2026-03-15T00:18:38.752Z"
+    "updatedAt": "2026-03-15T10:14:28.250Z"
   },
   "guides/guides/coding-agents/junie.md": {
     "url": "https://openrouter.ai/docs/guides/guides/coding-agents/junie.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:39.155Z"
+    "updatedAt": "2026-03-15T10:14:28.692Z"
   },
   "guides/guides/coding-agents/mcp-servers.md": {
     "url": "https://openrouter.ai/docs/guides/guides/coding-agents/mcp-servers.md",
     "size": 6761,
-    "updatedAt": "2026-03-15T00:18:39.759Z"
+    "updatedAt": "2026-03-15T10:14:29.142Z"
   },
   "guides/guides/coding-agents/openclaw-integration.md": {
     "url": "https://openrouter.ai/docs/guides/guides/coding-agents/openclaw-integration.md",
     "size": 8681,
-    "updatedAt": "2026-03-15T00:18:40.220Z"
+    "updatedAt": "2026-03-15T10:14:29.768Z"
   },
   "guides/guides/evaluate-and-optimize/distillation.md": {
     "url": "https://openrouter.ai/docs/guides/guides/evaluate-and-optimize/distillation.md",
     "size": 5618,
-    "updatedAt": "2026-03-15T00:18:40.578Z"
+    "updatedAt": "2026-03-15T10:14:30.196Z"
   },
   "guides/guides/evaluate-and-optimize/model-migrations/claude-4-6.md": {
     "url": "https://openrouter.ai/docs/guides/guides/evaluate-and-optimize/model-migrations/claude-4-6.md",
     "size": 3817,
-    "updatedAt": "2026-03-15T00:18:40.944Z"
+    "updatedAt": "2026-03-15T10:14:30.621Z"
   },
   "guides/guides/evaluate-and-optimize/model-migrations/gpt-5-4.md": {
     "url": "https://openrouter.ai/docs/guides/guides/evaluate-and-optimize/model-migrations/gpt-5-4.md",
     "size": 6122,
-    "updatedAt": "2026-03-15T00:18:41.329Z"
+    "updatedAt": "2026-03-15T10:14:31.074Z"
   },
   "guides/guides/evaluate-and-optimize/red-teaming.md": {
     "url": "https://openrouter.ai/docs/guides/guides/evaluate-and-optimize/red-teaming.md",
     "size": 1928,
-    "updatedAt": "2026-03-15T00:18:41.720Z"
+    "updatedAt": "2026-03-15T10:14:31.581Z"
   },
   "enterprise-quickstart.md": {
     "url": "https://openrouter.ai/docs/enterprise-quickstart.md",
     "size": 6548,
-    "updatedAt": "2026-03-15T00:18:42.113Z"
+    "updatedAt": "2026-03-15T10:14:32.239Z"
   },
   "guides/guides/get-started/for-providers.md": {
     "url": "https://openrouter.ai/docs/guides/guides/get-started/for-providers.md",
     "size": 10616,
-    "updatedAt": "2026-03-15T00:18:42.543Z"
+    "updatedAt": "2026-03-15T10:14:32.666Z"
   },
   "guides/guides/get-started/free-models-router-playground.md": {
     "url": "https://openrouter.ai/docs/guides/guides/get-started/free-models-router-playground.md",
     "size": 3793,
-    "updatedAt": "2026-03-15T00:18:42.909Z"
+    "updatedAt": "2026-03-15T10:14:33.154Z"
   },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:43.281Z"
+    "updatedAt": "2026-03-15T10:14:33.644Z"
   },
   "guides/community/awesome-openrouter.md": {
     "url": "https://openrouter.ai/docs/guides/community/awesome-openrouter.md",
     "size": 928,
-    "updatedAt": "2026-03-15T00:18:43.637Z"
+    "updatedAt": "2026-03-15T10:14:34.043Z"
   },
   "guides/community/effect-ai-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/effect-ai-sdk.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:43.997Z"
+    "updatedAt": "2026-03-15T10:14:34.494Z"
   },
   "guides/community/arize.md": {
     "url": "https://openrouter.ai/docs/guides/community/arize.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:44.436Z"
+    "updatedAt": "2026-03-15T10:14:34.960Z"
   },
   "guides/community/langchain.md": {
     "url": "https://openrouter.ai/docs/guides/community/langchain.md",
     "size": 1838,
-    "updatedAt": "2026-03-15T00:18:44.819Z"
+    "updatedAt": "2026-03-15T10:14:35.396Z"
   },
   "guides/community/livekit.md": {
     "url": "https://openrouter.ai/docs/guides/community/livekit.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:45.235Z"
+    "updatedAt": "2026-03-15T10:14:35.788Z"
   },
   "guides/community/langfuse.md": {
     "url": "https://openrouter.ai/docs/guides/community/langfuse.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:45.609Z"
+    "updatedAt": "2026-03-15T10:14:36.351Z"
   },
   "guides/community/mastra.md": {
     "url": "https://openrouter.ai/docs/guides/community/mastra.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:46.041Z"
+    "updatedAt": "2026-03-15T10:14:36.825Z"
   },
   "guides/community/openai-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/openai-sdk.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:46.405Z"
+    "updatedAt": "2026-03-15T10:14:37.278Z"
   },
   "guides/community/anthropic-agent-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/anthropic-agent-sdk.md",
     "size": 2222,
-    "updatedAt": "2026-03-15T00:18:46.842Z"
+    "updatedAt": "2026-03-15T10:14:37.816Z"
   },
   "guides/community/pydantic-ai.md": {
     "url": "https://openrouter.ai/docs/guides/community/pydantic-ai.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:47.209Z"
+    "updatedAt": "2026-03-15T10:14:38.233Z"
   },
   "guides/community/tanstack-ai.md": {
     "url": "https://openrouter.ai/docs/guides/community/tanstack-ai.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:47.610Z"
+    "updatedAt": "2026-03-15T10:14:38.679Z"
   },
   "guides/community/vercel-ai-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/vercel-ai-sdk.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:48.089Z"
+    "updatedAt": "2026-03-15T10:14:39.088Z"
   },
   "guides/community/xcode.md": {
     "url": "https://openrouter.ai/docs/guides/community/xcode.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:48.508Z"
+    "updatedAt": "2026-03-15T10:14:39.564Z"
   },
   "guides/community/zapier.md": {
     "url": "https://openrouter.ai/docs/guides/community/zapier.md",
     "size": 0,
-    "updatedAt": "2026-03-15T00:18:48.918Z"
+    "updatedAt": "2026-03-15T10:14:40.054Z"
   },
   "guides/community/infisical.md": {
     "url": "https://openrouter.ai/docs/guides/community/infisical.md",
     "size": 6069,
-    "updatedAt": "2026-03-15T00:18:49.300Z"
+    "updatedAt": "2026-03-15T10:14:40.519Z"
   },
   "api/reference/overview.md": {
     "url": "https://openrouter.ai/docs/api/reference/overview.md",
     "size": 15199,
-    "updatedAt": "2026-03-15T00:18:49.704Z"
+    "updatedAt": "2026-03-15T10:14:40.962Z"
   },
   "api/reference/streaming.md": {
     "url": "https://openrouter.ai/docs/api/reference/streaming.md",
     "size": 16720,
-    "updatedAt": "2026-03-15T00:18:50.263Z"
+    "updatedAt": "2026-03-15T10:14:41.416Z"
   },
   "api/reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/api/reference/embeddings.md",
     "size": 22010,
-    "updatedAt": "2026-03-15T00:18:50.692Z"
+    "updatedAt": "2026-03-15T10:14:41.995Z"
   },
   "api/reference/limits.md": {
     "url": "https://openrouter.ai/docs/api/reference/limits.md",
     "size": 3432,
-    "updatedAt": "2026-03-15T00:18:51.068Z"
+    "updatedAt": "2026-03-15T10:14:42.430Z"
   },
   "api/reference/authentication.md": {
     "url": "https://openrouter.ai/docs/api/reference/authentication.md",
     "size": 5062,
-    "updatedAt": "2026-03-15T00:18:51.480Z"
+    "updatedAt": "2026-03-15T10:14:42.845Z"
   },
   "api/reference/parameters.md": {
     "url": "https://openrouter.ai/docs/api/reference/parameters.md",
     "size": 7878,
-    "updatedAt": "2026-03-15T00:18:51.917Z"
+    "updatedAt": "2026-03-15T10:14:43.353Z"
   },
   "api/reference/errors-and-debugging.md": {
     "url": "https://openrouter.ai/docs/api/reference/errors-and-debugging.md",
     "size": 12433,
-    "updatedAt": "2026-03-15T00:18:52.335Z"
+    "updatedAt": "2026-03-15T10:14:43.909Z"
   },
   "api/reference/responses/overview.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/overview.md",
     "size": 2822,
-    "updatedAt": "2026-03-15T00:18:52.831Z"
+    "updatedAt": "2026-03-15T10:14:44.331Z"
   },
   "api/reference/responses/basic-usage.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/basic-usage.md",
     "size": 15016,
-    "updatedAt": "2026-03-15T00:18:53.227Z"
+    "updatedAt": "2026-03-15T10:14:44.767Z"
   },
   "api/reference/responses/reasoning.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/reasoning.md",
     "size": 11054,
-    "updatedAt": "2026-03-15T00:18:53.821Z"
+    "updatedAt": "2026-03-15T10:14:45.208Z"
   },
   "api/reference/responses/tool-calling.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/tool-calling.md",
     "size": 20674,
-    "updatedAt": "2026-03-15T00:18:54.196Z"
+    "updatedAt": "2026-03-15T10:14:45.776Z"
   },
   "api/reference/responses/web-search.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/web-search.md",
     "size": 19249,
-    "updatedAt": "2026-03-15T00:18:54.589Z"
+    "updatedAt": "2026-03-15T10:14:46.243Z"
   },
   "api/reference/responses/error-handling.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/error-handling.md",
     "size": 1099,
-    "updatedAt": "2026-03-15T00:18:54.942Z"
+    "updatedAt": "2026-03-15T10:14:46.620Z"
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
     "size": 133610,
-    "updatedAt": "2026-03-15T00:18:56.005Z"
+    "updatedAt": "2026-03-15T10:14:47.641Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
     "size": 10609,
-    "updatedAt": "2026-03-15T00:18:56.935Z"
+    "updatedAt": "2026-03-15T10:14:48.797Z"
   },
   "api/api-reference/o-auth/create-auth-keys-code.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/create-auth-keys-code.md",
     "size": 12759,
-    "updatedAt": "2026-03-15T00:18:58.063Z"
+    "updatedAt": "2026-03-15T10:14:49.675Z"
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
     "size": 234583,
-    "updatedAt": "2026-03-15T00:18:59.059Z"
+    "updatedAt": "2026-03-15T10:14:50.858Z"
   },
   "api/api-reference/analytics/get-user-activity.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/analytics/get-user-activity.md",
     "size": 10400,
-    "updatedAt": "2026-03-15T00:18:59.929Z"
+    "updatedAt": "2026-03-15T10:14:51.877Z"
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
     "size": 77302,
-    "updatedAt": "2026-03-15T00:19:00.973Z"
+    "updatedAt": "2026-03-15T10:14:52.928Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
     "size": 7875,
-    "updatedAt": "2026-03-15T00:19:02.010Z"
+    "updatedAt": "2026-03-15T10:14:54.314Z"
   },
   "api/api-reference/credits/create-coinbase-charge.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/create-coinbase-charge.md",
     "size": 13575,
-    "updatedAt": "2026-03-15T00:19:03.224Z"
+    "updatedAt": "2026-03-15T10:14:55.507Z"
   },
   "api/api-reference/embeddings/create-embeddings.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/create-embeddings.md",
     "size": 31461,
-    "updatedAt": "2026-03-15T00:19:04.195Z"
+    "updatedAt": "2026-03-15T10:14:56.768Z"
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
     "size": 15911,
-    "updatedAt": "2026-03-15T00:19:05.302Z"
+    "updatedAt": "2026-03-15T10:14:57.776Z"
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
     "size": 20473,
-    "updatedAt": "2026-03-15T00:19:06.092Z"
+    "updatedAt": "2026-03-15T10:14:58.767Z"
   },
   "api/api-reference/models/list-models-count.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-count.md",
     "size": 6695,
-    "updatedAt": "2026-03-15T00:19:06.974Z"
+    "updatedAt": "2026-03-15T10:14:59.705Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
     "size": 16948,
-    "updatedAt": "2026-03-15T00:19:07.854Z"
+    "updatedAt": "2026-03-15T10:15:00.666Z"
   },
   "api/api-reference/models/list-models-user.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-user.md",
     "size": 17705,
-    "updatedAt": "2026-03-15T00:19:08.787Z"
+    "updatedAt": "2026-03-15T10:15:01.871Z"
   },
   "api/api-reference/endpoints/list-endpoints.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints.md",
     "size": 18827,
-    "updatedAt": "2026-03-15T00:19:09.856Z"
+    "updatedAt": "2026-03-15T10:15:02.845Z"
   },
   "api/api-reference/endpoints/list-endpoints-zdr.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr.md",
     "size": 13771,
-    "updatedAt": "2026-03-15T00:19:10.804Z"
+    "updatedAt": "2026-03-15T10:15:03.806Z"
   },
   "api/api-reference/providers/list-providers.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/providers/list-providers.md",
     "size": 5929,
-    "updatedAt": "2026-03-15T00:19:11.664Z"
+    "updatedAt": "2026-03-15T10:15:04.956Z"
   },
   "api/api-reference/api-keys/list.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/list.md",
     "size": 10971,
-    "updatedAt": "2026-03-15T00:19:12.514Z"
+    "updatedAt": "2026-03-15T10:15:06.038Z"
   },
   "api/api-reference/api-keys/create-keys.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-keys.md",
     "size": 15769,
-    "updatedAt": "2026-03-15T00:19:13.359Z"
+    "updatedAt": "2026-03-15T10:15:06.881Z"
   },
   "api/api-reference/api-keys/get-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/get-key.md",
     "size": 12269,
-    "updatedAt": "2026-03-15T00:19:14.208Z"
+    "updatedAt": "2026-03-15T10:15:08.128Z"
   },
   "api/api-reference/api-keys/delete-keys.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/delete-keys.md",
     "size": 8936,
-    "updatedAt": "2026-03-15T00:19:15.329Z"
+    "updatedAt": "2026-03-15T10:15:09.124Z"
   },
   "api/api-reference/api-keys/update-keys.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/update-keys.md",
     "size": 16866,
-    "updatedAt": "2026-03-15T00:19:16.425Z"
+    "updatedAt": "2026-03-15T10:15:10.060Z"
   },
   "api/api-reference/api-keys/get-current-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/get-current-key.md",
     "size": 10191,
-    "updatedAt": "2026-03-15T00:19:17.591Z"
+    "updatedAt": "2026-03-15T10:15:11.238Z"
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
     "size": 9210,
-    "updatedAt": "2026-03-15T00:19:18.553Z"
+    "updatedAt": "2026-03-15T10:15:12.302Z"
   },
   "api/api-reference/guardrails/create-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-guardrail.md",
     "size": 14698,
-    "updatedAt": "2026-03-15T00:19:19.441Z"
+    "updatedAt": "2026-03-15T10:15:13.307Z"
   },
   "api/api-reference/guardrails/get-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-guardrail.md",
     "size": 10110,
-    "updatedAt": "2026-03-15T00:19:20.574Z"
+    "updatedAt": "2026-03-15T10:15:14.326Z"
   },
   "api/api-reference/guardrails/delete-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/delete-guardrail.md",
     "size": 7821,
-    "updatedAt": "2026-03-15T00:19:21.568Z"
+    "updatedAt": "2026-03-15T10:15:15.527Z"
   },
   "api/api-reference/guardrails/update-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/update-guardrail.md",
     "size": 15244,
-    "updatedAt": "2026-03-15T00:19:22.631Z"
+    "updatedAt": "2026-03-15T10:15:16.732Z"
   },
   "api/api-reference/guardrails/list-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-key-assignments.md",
     "size": 8333,
-    "updatedAt": "2026-03-15T00:19:23.662Z"
+    "updatedAt": "2026-03-15T10:15:17.805Z"
   },
   "api/api-reference/guardrails/list-member-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-member-assignments.md",
     "size": 8317,
-    "updatedAt": "2026-03-15T00:19:24.523Z"
+    "updatedAt": "2026-03-15T10:15:18.836Z"
   },
   "api/api-reference/guardrails/list-guardrail-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-key-assignments.md",
     "size": 9826,
-    "updatedAt": "2026-03-15T00:19:25.691Z"
+    "updatedAt": "2026-03-15T10:15:19.798Z"
   },
   "api/api-reference/guardrails/bulk-assign-keys-to-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/bulk-assign-keys-to-guardrail.md",
     "size": 10975,
-    "updatedAt": "2026-03-15T00:19:26.679Z"
+    "updatedAt": "2026-03-15T10:15:20.803Z"
   },
   "api/api-reference/guardrails/list-guardrail-member-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-member-assignments.md",
     "size": 9818,
-    "updatedAt": "2026-03-15T00:19:27.693Z"
+    "updatedAt": "2026-03-15T10:15:21.871Z"
   },
   "api/api-reference/guardrails/bulk-assign-members-to-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/bulk-assign-members-to-guardrail.md",
     "size": 10839,
-    "updatedAt": "2026-03-15T00:19:28.706Z"
+    "updatedAt": "2026-03-15T10:15:22.789Z"
   },
   "api/api-reference/guardrails/bulk-unassign-keys-from-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/bulk-unassign-keys-from-guardrail.md",
     "size": 11093,
-    "updatedAt": "2026-03-15T00:19:29.533Z"
+    "updatedAt": "2026-03-15T10:15:23.925Z"
   },
   "api/api-reference/guardrails/bulk-unassign-members-from-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/bulk-unassign-members-from-guardrail.md",
     "size": 10957,
-    "updatedAt": "2026-03-15T00:19:30.724Z"
+    "updatedAt": "2026-03-15T10:15:24.873Z"
   },
   "sdks/agentic-usage.md": {
     "url": "https://openrouter.ai/docs/sdks/agentic-usage.md",
     "size": 3434,
-    "updatedAt": "2026-03-15T00:19:31.272Z"
+    "updatedAt": "2026-03-15T10:15:25.334Z"
   },
   "sdks/dev-tools/devtools.md": {
     "url": "https://openrouter.ai/docs/sdks/dev-tools/devtools.md",
     "size": 8581,
-    "updatedAt": "2026-03-15T00:19:31.799Z"
+    "updatedAt": "2026-03-15T10:15:25.843Z"
   },
   "sdks/typescript/overview.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/overview.md",
     "size": 2895,
-    "updatedAt": "2026-03-15T00:19:32.240Z"
+    "updatedAt": "2026-03-15T10:15:26.272Z"
   },
   "sdks/typescript/call-model/overview.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/overview.md",
     "size": 4570,
-    "updatedAt": "2026-03-15T00:19:32.715Z"
+    "updatedAt": "2026-03-15T10:15:26.868Z"
   },
   "sdks/typescript/call-model/working-with-items.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/working-with-items.md",
     "size": 5604,
-    "updatedAt": "2026-03-15T00:19:33.299Z"
+    "updatedAt": "2026-03-15T10:15:27.364Z"
   },
   "sdks/typescript/call-model/api-reference.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/api-reference.md",
     "size": 14309,
-    "updatedAt": "2026-03-15T00:19:33.806Z"
+    "updatedAt": "2026-03-15T10:15:27.891Z"
   },
   "sdks/typescript/call-model/dynamic-parameters.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/dynamic-parameters.md",
     "size": 7198,
-    "updatedAt": "2026-03-15T00:19:34.305Z"
+    "updatedAt": "2026-03-15T10:15:28.449Z"
   },
   "sdks/typescript/call-model/next-turn-params.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/next-turn-params.md",
     "size": 10643,
-    "updatedAt": "2026-03-15T00:19:34.726Z"
+    "updatedAt": "2026-03-15T10:15:28.920Z"
   },
   "sdks/typescript/call-model/stop-conditions.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/stop-conditions.md",
     "size": 7766,
-    "updatedAt": "2026-03-15T00:19:35.161Z"
+    "updatedAt": "2026-03-15T10:15:30.246Z"
   },
   "sdks/typescript/call-model/streaming.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/streaming.md",
     "size": 10204,
-    "updatedAt": "2026-03-15T00:19:35.635Z"
+    "updatedAt": "2026-03-15T10:15:30.779Z"
   },
   "sdks/typescript/call-model/text-generation.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/text-generation.md",
     "size": 4884,
-    "updatedAt": "2026-03-15T00:19:35.995Z"
+    "updatedAt": "2026-03-15T10:15:31.202Z"
   },
   "sdks/typescript/call-model/message-formats.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/message-formats.md",
     "size": 7006,
-    "updatedAt": "2026-03-15T00:19:36.406Z"
+    "updatedAt": "2026-03-15T10:15:31.727Z"
   },
   "sdks/typescript/call-model/tools.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/tools.md",
     "size": 18817,
-    "updatedAt": "2026-03-15T00:19:36.898Z"
+    "updatedAt": "2026-03-15T10:15:32.245Z"
   },
   "sdks/typescript/call-model/examples/weather-tool.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/examples/weather-tool.md",
     "size": 7847,
-    "updatedAt": "2026-03-15T00:19:37.303Z"
+    "updatedAt": "2026-03-15T10:15:32.705Z"
   },
   "sdks/typescript/call-model/examples/skills-loader.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/call-model/examples/skills-loader.md",
     "size": 12480,
-    "updatedAt": "2026-03-15T00:19:37.715Z"
+    "updatedAt": "2026-03-15T10:15:33.179Z"
   },
   "sdks/typescript/api-reference/analytics.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/analytics.md",
     "size": 4339,
-    "updatedAt": "2026-03-15T00:19:38.077Z"
+    "updatedAt": "2026-03-15T10:15:33.622Z"
   },
   "sdks/typescript/api-reference/apikeys.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/apikeys.md",
     "size": 23377,
-    "updatedAt": "2026-03-15T00:19:38.543Z"
+    "updatedAt": "2026-03-15T10:15:34.137Z"
   },
   "sdks/typescript/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/chat.md",
     "size": 3993,
-    "updatedAt": "2026-03-15T00:19:38.937Z"
+    "updatedAt": "2026-03-15T10:15:34.548Z"
   },
   "sdks/typescript/api-reference/credits.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/credits.md",
     "size": 8369,
-    "updatedAt": "2026-03-15T00:19:39.322Z"
+    "updatedAt": "2026-03-15T10:15:35.069Z"
   },
   "sdks/typescript/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/embeddings.md",
     "size": 8111,
-    "updatedAt": "2026-03-15T00:19:39.707Z"
+    "updatedAt": "2026-03-15T10:15:35.620Z"
   },
   "sdks/typescript/api-reference/endpoints.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/endpoints.md",
     "size": 7391,
-    "updatedAt": "2026-03-15T00:19:40.085Z"
+    "updatedAt": "2026-03-15T10:15:36.071Z"
   },
   "sdks/typescript/api-reference/generations.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/generations.md",
     "size": 4570,
-    "updatedAt": "2026-03-15T00:19:40.460Z"
+    "updatedAt": "2026-03-15T10:15:36.677Z"
   },
   "sdks/typescript/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/guardrails.md",
     "size": 55337,
-    "updatedAt": "2026-03-15T00:19:41.300Z"
+    "updatedAt": "2026-03-15T10:15:37.315Z"
   },
   "sdks/typescript/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/models/models.md",
     "size": 11273,
-    "updatedAt": "2026-03-15T00:19:41.922Z"
+    "updatedAt": "2026-03-15T10:15:37.850Z"
   },
   "sdks/typescript/api-reference/oauth.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/oauth.md",
     "size": 8525,
-    "updatedAt": "2026-03-15T00:19:42.453Z"
+    "updatedAt": "2026-03-15T10:15:38.431Z"
   },
   "sdks/typescript/api-reference/providers.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/providers.md",
     "size": 3436,
-    "updatedAt": "2026-03-15T00:19:42.843Z"
+    "updatedAt": "2026-03-15T10:15:38.902Z"
   },
   "sdks/typescript/api-reference/responses.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/responses.md",
     "size": 4824,
-    "updatedAt": "2026-03-15T00:19:43.221Z"
+    "updatedAt": "2026-03-15T10:15:39.392Z"
   },
   "sdks/python/overview.md": {
     "url": "https://openrouter.ai/docs/sdks/python/overview.md",
     "size": 3453,
-    "updatedAt": "2026-03-15T00:19:43.612Z"
+    "updatedAt": "2026-03-15T10:15:39.875Z"
   },
   "sdks/python/api-reference/analytics.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/analytics.md",
     "size": 2344,
-    "updatedAt": "2026-03-15T00:19:43.994Z"
+    "updatedAt": "2026-03-15T10:15:40.314Z"
   },
   "sdks/python/api-reference/apikeys.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/apikeys.md",
     "size": 17001,
-    "updatedAt": "2026-03-15T00:19:44.531Z"
+    "updatedAt": "2026-03-15T10:15:40.785Z"
   },
   "sdks/python/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/chat.md",
     "size": 14976,
-    "updatedAt": "2026-03-15T00:19:45.135Z"
+    "updatedAt": "2026-03-15T10:15:41.218Z"
   },
   "sdks/python/api-reference/credits.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/credits.md",
     "size": 4879,
-    "updatedAt": "2026-03-15T00:19:45.519Z"
+    "updatedAt": "2026-03-15T10:15:41.713Z"
   },
   "sdks/python/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/embeddings.md",
     "size": 5499,
-    "updatedAt": "2026-03-15T00:19:45.970Z"
+    "updatedAt": "2026-03-15T10:15:42.259Z"
   },
   "sdks/python/api-reference/endpoints.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/endpoints.md",
     "size": 3661,
-    "updatedAt": "2026-03-15T00:19:46.421Z"
+    "updatedAt": "2026-03-15T10:15:42.716Z"
   },
   "sdks/python/api-reference/generations.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/generations.md",
     "size": 2486,
-    "updatedAt": "2026-03-15T00:19:46.850Z"
+    "updatedAt": "2026-03-15T10:15:43.135Z"
   },
   "sdks/python/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/guardrails.md",
     "size": 35875,
-    "updatedAt": "2026-03-15T00:19:47.698Z"
+    "updatedAt": "2026-03-15T10:15:43.931Z"
   },
   "sdks/python/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/models/models.md",
     "size": 6025,
-    "updatedAt": "2026-03-15T00:19:48.063Z"
+    "updatedAt": "2026-03-15T10:15:44.400Z"
   },
   "sdks/python/api-reference/oauth.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/oauth.md",
     "size": 7479,
-    "updatedAt": "2026-03-15T00:19:48.478Z"
+    "updatedAt": "2026-03-15T10:15:44.838Z"
   },
   "sdks/python/api-reference/providers.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/providers.md",
     "size": 1654,
-    "updatedAt": "2026-03-15T00:19:48.914Z"
+    "updatedAt": "2026-03-15T10:15:45.266Z"
   },
   "sdks/python/api-reference/responses.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/responses.md",
     "size": 22279,
-    "updatedAt": "2026-03-15T00:19:49.462Z"
+    "updatedAt": "2026-03-15T10:15:45.738Z"
   }
 }
