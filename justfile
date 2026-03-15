@@ -108,6 +108,14 @@ update-gitea-docs:
 update-threejs-docs:
     bun scripts/sync-threejs-docs.ts
 
+# Sync LiteLLM docs from local BerriAI/litellm clone
+update-litellm-docs:
+    bun scripts/sync-litellm-docs.ts
+
+# Sync mihomo docs from local MetaCubeX/Meta-Docs clone
+update-mihomo-docs:
+    bun scripts/sync-mihomo-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -136,6 +144,8 @@ update:
     -just update-mikroorm-docs
     -just update-gitea-docs
     -just update-threejs-docs
+    -just update-litellm-docs
+    -just update-mihomo-docs
     just update-readme
 
 # Lint skills for best practices

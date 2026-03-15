@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 68 skills available
+> 70 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -49,10 +49,12 @@ npx skills add wenerme/ai --skill <skill-name>
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
+| `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
 | `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... |  |
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
+| `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... |  |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... |  |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
@@ -434,6 +436,16 @@ Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk
 
 </details>
 <details>
+<summary><code>litellm-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill litellm-docs
+```
+
+LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure, AWS Bedrock, Vertex AI, Cohere, Mistral, Ollama, vLLM, etc). Covers completion, embedding, image generation, audio, reranking, fine-tuning API; LiteLLM Proxy server (load balancing, rate limiting, virtual keys, spend tracking, SSO, RBAC, guardrails); caching (Redis, S3, in-memory); observability (Langfuse, Datadog, Prometheus, OpenTelemetry); secret managers (AWS, Azure, GCP, HashiCorp Vault); and provider-specific configuration. USE THIS SKILL WHEN the user asks about LiteLLM proxy setup, multi-provider LLM routing, model fallbacks, spend tracking, or calling any LLM API through LiteLLM.
+
+</details>
+<details>
 <summary><code>llamacpp-docs</code></summary>
 
 ```bash
@@ -471,6 +483,16 @@ npx skills add wenerme/ai --skill mastra-docs
 ```
 
 USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines, memory, voice, evals, MCP tools, observability/tracing, deploying to Mastra Cloud/Cloudflare/Vercel, or using Mastra client SDK. Triggers on: mastra, Mastra agent, Mastra workflow, createAgent, createWorkflow, mastra.run, MastraClient, @mastra/core.
+
+</details>
+<details>
+<summary><code>mihomo-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill mihomo-docs
+```
+
+mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整 YAML 配置参考：通用设置、DNS（hosts/策略路由/图解）、入站（TUN/混合端口/监听器）、代理节点、代理组（选择/URL测速/负载均衡/故障转移/链式中继）、规则/子规则、规则提供者、代理提供者、嗅探、NTP、隧道、实验性功能；新手指南（DNS/出站/路由/语法）；部署（服务安装/客户端/Web面板）；REST API。USE THIS SKILL WHEN the user asks about mihomo/Clash Meta configuration, proxy protocols, DNS routing, TUN mode, proxy groups, rules, or deployment.
 
 </details>
 <details>
