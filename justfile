@@ -108,6 +108,10 @@ update-gitea-docs:
 update-threejs-docs:
     bun scripts/sync-threejs-docs.ts
 
+# Sync Wails docs from local wailsapp/wails clone
+update-wails-docs:
+    bun scripts/sync-wails-docs.ts
+
 # Sync Biome docs from local biomejs/website clone
 update-biome-docs:
     bun scripts/sync-biome-docs.ts
@@ -156,6 +160,7 @@ update:
     -just update-mikroorm-docs
     -just update-gitea-docs
     -just update-threejs-docs
+    -just update-wails-docs
     -just update-biome-docs
     -just update-vite-docs
     -just update-vitest-docs

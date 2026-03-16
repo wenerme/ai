@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 73 skills available
+> 74 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -83,6 +83,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... |  |
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... |  |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
+| `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -776,6 +777,16 @@ npx skills add wenerme/ai --skill vllm-docs
 ```
 
 Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8, GGUF, INT4/INT8), speculative decoding, LoRA adapters, structured outputs, tool calling, multimodal inputs, distributed serving (tensor/pipeline/expert/context parallel), Docker/Kubernetes deployment, engine configuration, memory optimization, PagedAttention, offline inference, CLI usage, or troubleshooting vLLM issues.
+
+</details>
+<details>
+<summary><code>wails-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill wails-docs
+```
+
+Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation, project creation, development workflow, building/packaging, runtime API (window, dialog, clipboard, events, menu, drag-and-drop, notifications, screen, browser, logging), CLI reference, project config (wails.json), guides (Angular, SvelteKit, frameless windows, file association, custom protocol schemes, dynamic assets, cross-platform build, code signing, Mac App Store, Windows installer, single instance lock, Linux distro support), and migration from v2. USE THIS SKILL WHEN the user asks about Wails setup, Go desktop app development, Wails runtime API, or building cross-platform desktop apps with Go + web frontend.
 
 </details>
 <details>
