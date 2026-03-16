@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 71 skills available
+> 72 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -79,6 +79,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... |  |
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... |  |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
@@ -734,6 +735,16 @@ npx skills add wenerme/ai --skill ui-ux-pro-max
 ```
 
 UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.
+
+</details>
+<details>
+<summary><code>vite-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill vite-docs
+```
+
+Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep optimization, worker options), features (HMR, TypeScript, CSS/PostCSS, static assets, JSON, glob import, WebAssembly, Web Workers), plugin API (hooks, HMR API, environment API), SSR, backend integration, static deployment, dependency pre-bundling, env variables and modes, CLI, build optimization, migration guide (v5→v6→v7→v8), and Environment API (frameworks, instances, plugins, runtimes). USE THIS SKILL WHEN the user asks about Vite config, plugins, HMR, SSR, build optimization, or migration.
 
 </details>
 <details>
