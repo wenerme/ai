@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 72 skills available
+> 73 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -27,6 +27,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `anthropic-sdk-ruby` | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
 | `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
+| `biome-docs` | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... |  |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... |  |
 | `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... |  |
@@ -215,6 +216,16 @@ npx skills add wenerme/ai --skill argocd-cli-guide
 ```
 
 Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including checking app health, running diffs, syncing deployments, viewing logs, or switching between ArgoCD server contexts
+
+</details>
+<details>
+<summary><code>biome-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill biome-docs
+```
+
+Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473 lint rules across accessibility, complexity, correctness, nursery, performance, security, style, suspicious categories), formatter (JS/TS/JSON/CSS/GraphQL formatting options), analyzer (import sorting), assist (actions and source actions), configuration reference (biome.json), CLI usage, editor integration, recipes (CI setup, Git hooks), and internals (architecture, changelog, credits). USE THIS SKILL WHEN the user asks about Biome linting rules, formatting config, biome.json setup, migration from ESLint/Prettier, or Biome CLI usage.
 
 </details>
 <details>

@@ -108,6 +108,10 @@ update-gitea-docs:
 update-threejs-docs:
     bun scripts/sync-threejs-docs.ts
 
+# Sync Biome docs from local biomejs/website clone
+update-biome-docs:
+    bun scripts/sync-biome-docs.ts
+
 # Sync Vite docs from local vitejs/vite clone
 update-vite-docs:
     bun scripts/sync-vite-docs.ts
@@ -152,6 +156,7 @@ update:
     -just update-mikroorm-docs
     -just update-gitea-docs
     -just update-threejs-docs
+    -just update-biome-docs
     -just update-vite-docs
     -just update-vitest-docs
     -just update-litellm-docs
