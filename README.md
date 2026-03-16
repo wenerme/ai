@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 70 skills available
+> 71 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -79,6 +79,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... |  |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
@@ -422,7 +423,7 @@ Remove signs of AI-generated writing from text. Use when editing or reviewing te
 npx skills add wenerme/ai --skill image-prompt-guide
 ```
 
-USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, and scenario-specific templates. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, image generation.
+USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, scenario-specific templates, SD style presets, and Nano Banana (Gemini Flash) prompt techniques with 100 real-world cases. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, nano banana, gemini image, image generation.
 
 </details>
 <details>
@@ -733,6 +734,16 @@ npx skills add wenerme/ai --skill ui-ux-pro-max
 ```
 
 UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.
+
+</details>
+<details>
+<summary><code>vitest-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill vitest-docs
+```
+
+Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi, hooks), mocking (modules, functions, classes, timers, dates, file system, globals, network requests), snapshot testing, coverage (v8/istanbul), browser testing (Playwright/WebDriverIO, component testing for React/Vue/Svelte, visual regression, trace view), configuration reference (120+ options), CLI commands, environments (node/jsdom/happy-dom/edge-runtime), filtering/tags, projects/workspaces, parallelism, reporters, debugging, IDE integration, type testing, in-source testing, migration from Jest, and performance profiling. USE THIS SKILL WHEN the user asks about Vitest configuration, test writing, mocking, coverage, browser testing, or migration from Jest.
 
 </details>
 <details>

@@ -108,6 +108,10 @@ update-gitea-docs:
 update-threejs-docs:
     bun scripts/sync-threejs-docs.ts
 
+# Sync Vitest docs from local vitest-dev/vitest clone
+update-vitest-docs:
+    bun scripts/sync-vitest-docs.ts
+
 # Sync LiteLLM docs from local BerriAI/litellm clone
 update-litellm-docs:
     bun scripts/sync-litellm-docs.ts
@@ -144,6 +148,7 @@ update:
     -just update-mikroorm-docs
     -just update-gitea-docs
     -just update-threejs-docs
+    -just update-vitest-docs
     -just update-litellm-docs
     -just update-mihomo-docs
     just update-readme
