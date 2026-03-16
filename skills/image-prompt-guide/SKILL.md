@@ -1,6 +1,6 @@
 ---
 name: image-prompt-guide
-description: "USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, and scenario-specific templates. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, image generation."
+description: "USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, scenario-specific templates, SD style presets, and Nano Banana (Gemini Flash) prompt techniques with 100 real-world cases. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, nano banana, gemini image, image generation."
 ---
 
 # Image Prompt Guide
@@ -184,3 +184,5 @@ ASPECT: 16:9
 - `references/templates.md` — Detailed prompt templates with style-specific overrides
 - `references/auto-selection.md` — Content signal → dimension mapping rules
 - `references/sd-styles.csv` — 1062 image generation style presets (name, prompt, negative_prompt) merged from 7 sources (Douleb 850+, Fooocus 200+, BBrother, rocketingdatascience, twri/sdxl_prompt_styler, jheidt)
+- `references/nano-banana.md` — Nano Banana (Gemini 2.5 Flash) prompt guide: core principles, 7 style templates (3D chibi, product ads, retro, effects, style transfer, design, creative scenes), structured JSON prompts, mixed-style techniques
+- `references/nano-banana-cases.csv` — 100 real-world Nano Banana/GPT-4o prompt cases with zh/en bilingual prompts (from awesome-nano-banana)
