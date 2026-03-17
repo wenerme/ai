@@ -5,25 +5,31 @@ frequently asked questions (FAQs) about billing.
 
 ## About billing and tiers
 
-Billing for the Gemini API is based on two pricing tiers: the **Free Tier** and
-the **Paid Tier** (*pay-as-you-go* or *pay only for what you use* ). The Free
-Tier is available for certain models, which are documented on the
-[Pricing](https://ai.google.dev/gemini-api/docs/pricing) page. Pricing and
-[rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) differ between tiers and vary by
-[model](https://ai.google.dev/gemini-api/docs/models/gemini).
+Billing for the Gemini API is based on your payment history.
 
-[Google AI Studio](https://aistudio.google.com/) also provides free usage up to
-a limit for some models, separate from the API Free Tier. For access to
-Paid-only models and features in AI Studio, you can link a Paid API Key.
-You can unlink an API Key to return to the Free AIS quota.
+> [!CAUTION]
+> **Caution:** Note that the amounts for the Qualifications and Billing tier caps are rolling out and subject to change.
 
-### Why use the Paid Tier?
+| Usage tier | Qualification | [Billing tier cap](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) |
+|---|---|---|
+| **Free** | Signup | N/A |
+| **Tier 1** | Active Billing Account | $250 |
+| **Tier 2** | Paid $100 + 3 days from first successful payment | $2,000 |
+| **Tier 3** | Paid $1,000 + 30 days from first successful payment | $20,000 - $100,000+ |
 
-Upgrading to the **Paid Tier** lets you access higher
-[rate limits](https://ai.google.dev/gemini-api/docs/rate-limits), use advanced models, and ensures
-your prompts and responses are **not** used to improve Google products
-(enterprise-grade data privacy). For more information on data use for paid
-services, see the [Terms of Service](https://ai.google.dev/gemini-api/terms#data-use-paid).
+New accounts begin on the Free tier, which allows access to
+[certain models](https://ai.google.dev/gemini-api/docs/pricing) in the Gemini API and AI Studio,
+up to the models' [rate limits](https://aistudio.google.com/rate-limit).
+
+To access higher rate limits, use advanced models, and ensure your prompts and
+responses are **not** used to improve Google products^\*^, you can
+[link a billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) to move to the paid tiers.
+You'll move through higher tiers based on cumulative spend and account
+age. You can always unlink individual API keys to return that key to the
+free AI Studio quota.
+
+^\*^ Enterprise-grade data privacy: For more information on data use
+for paid services, see the [Terms of Service](https://ai.google.dev/gemini-api/terms#data-use-paid).
 
 ## Set up billing to access the Paid Tier
 
@@ -97,7 +103,13 @@ You can monitor your usage of the Gemini API in
 [Google AI Studio](https://aistudio.google.com/usage) in **Dashboard** \>
 **Usage**.
 
-## Project spend caps
+## Spend caps
+
+The Gemini API supports monthly spend caps at both the billing account tier and
+project levels. These controls are designed to protect both your account from
+unexpected overages, and the ecosystem to ensure service availability.
+
+### Project spend caps
 
 > [!WARNING]
 > **Experimental:** The feature is experimental and may change in scope.
@@ -116,23 +128,62 @@ reset to $0 for the new billing cycle.
 
 [Batch mode](https://ai.google.dev/gemini-api/docs/batch-api) completions may still incur overages.
 
+Billing data processing times can be slightly delayed in AI Studio,
+up to around 10 minutes. You may experience overages beyond your project cap
+if billing data hasn't processed before more charges are accrued.
+
+### Billing Account Tier spend caps
+
+Each [tier](https://ai.google.dev/gemini-api/docs/billing#about-billing) has a maximum monthly spend limit:
+
+| Usage tier | Spend cap |
+|---|---|
+| **Free** | N/A |
+| **Tier 1** | $250 |
+| **Tier 2** | $2,000 |
+| **Tier 3** | $20,000 - $100,000 |
+
+Monthly usage caps are enforced at the [billing account](https://ai.google.dev/gemini-api/docs/billing#cloud-billing)
+level; they are preset and non-configurable. Total spend is aggregated
+across all linked projects; once the cumulative total reaches the tier
+limit, service is suspended for all projects under that account until the
+start of the next billing cycle (monthly).
+
 > [!CAUTION]
-> **Caution:** Billing data processing times can be slightly delayed in AI Studio, up to around 10 minutes. You may experience overages beyond your project cap if billing data hasn't processed before more charges are accrued.
+> **Caution:** **Tier spend caps will only begin being *enforced* on April 1, 2026** , though their interface will be visible in AI Studio earlier, to allow users time to adjust.   
+>
+> Note that a small number of users will be impacted when this goes into effect. If your current spend is higher than the newly enforced tier cap, you will be notified via email with more details.
 
 ## Cloud Billing
 
 The Gemini API uses
 [Cloud Billing](https://cloud.google.com/billing/docs/concepts) for billing
-services, which you can [set up directly in AI Studio](https://ai.google.dev/gemini-api/docs/billing#setup-billing). You can
-use AI Studio to track spending and understand costs. You can access the same
-information and make payments in your Cloud billing account.
+accounts, which you can [set up directly in AI Studio](https://ai.google.dev/gemini-api/docs/billing#setup-billing).
+You can use AI Studio to track spending and understand costs. You can access the
+same information and make payments in your Cloud billing account.
 
 > [!NOTE]
 > **Note:** [New users](https://ai.google.dev/gemini-api/docs/billing#new-user) may be granted a [$300 welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits) in their new Google Cloud Billing accounts. You can't use these credits on AI Studio or the Gemini API, but you can use them on other Google Cloud products in the [Google Cloud console](https://console.cloud.google.com/).
 
+### Projects and API keys
+
+You can create up to 10 projects under one billing account,
+and one project can link up to 5 API keys.
+
+[Usage tiers](https://ai.google.dev/gemini-api/docs/billing#about-billing) apply at the billing account level. All
+projects under a billing account inherit its quota tier and associated limits.
+Cumulative spend and account age across all projects tied to a billing
+account counts towards its tier qualifications.
+
+[API keys](https://ai.google.dev/gemini-api/docs/api-key) are credentials generated inside a project.
+They have no independent billing settings; they inherit the tier limits and
+billing status of the project. The cumulative usage from all keys within a
+project counts toward that project's spend cap and the billing account's total
+spend.
+
 ## Frequently asked questions
 
-This section provides answers to frequently asked questions.
+The following sections provide answers to frequently asked questions.
 
 ### What am I billed for?
 

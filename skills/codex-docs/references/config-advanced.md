@@ -2,7 +2,7 @@
 
 Use these options when you need more control over providers, policies, and integrations. For a quick start, see [Config basics](https://developers.openai.com/codex/config-basic).
 
-For background on project guidance, reusable capabilities, custom slash commands, multi-agent workflows, and integrations, see [Customization](https://developers.openai.com/codex/concepts/customization). For configuration keys, see [Configuration Reference](https://developers.openai.com/codex/config-reference).
+For background on project guidance, reusable capabilities, custom slash commands, subagent workflows, and integrations, see [Customization](https://developers.openai.com/codex/concepts/customization). For configuration keys, see [Configuration Reference](https://developers.openai.com/codex/config-reference).
 
 ## Profiles
 
@@ -91,7 +91,7 @@ Relative paths inside a project config (for example, `experimental_instructions_
 
 ## Agent roles (`[agents]` in `config.toml`)
 
-For multi-agent role configuration (`[agents]` in `config.toml`), see [Multi-agents](https://developers.openai.com/codex/multi-agent).
+For subagent role configuration (`[agents]` in `config.toml`), see [Subagents](https://developers.openai.com/codex/subagents).
 
 ## Project root detection
 
@@ -190,7 +190,7 @@ model_context_window = 128000             # Context window size
 
 Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
 
-For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](https://developers.openai.com/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
+For operational details to keep in mind while editing `config.toml`, see [Common sandbox and approval combinations](https://developers.openai.com/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
 
 You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories, such as sandbox approvals, `execpolicy` rule prompts, or MCP input requests (`mcp_elicitations`), while keeping other prompts interactive.
 

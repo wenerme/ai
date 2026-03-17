@@ -1263,7 +1263,7 @@ Returns a list of input items for a given response.
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1287,6 +1287,10 @@ Returns a list of input items for a given response.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -1320,7 +1324,7 @@ Returns a list of input items for a given response.
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1344,6 +1348,10 @@ Returns a list of input items for a given response.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 
@@ -4127,7 +4135,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4151,6 +4159,10 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -4184,7 +4196,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4208,6 +4220,10 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 

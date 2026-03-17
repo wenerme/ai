@@ -16,11 +16,13 @@ Only `gpt-5.4` and later models support `tool_search`.
 To activate tool search, you must do two things:
 
 1. Add `tool_search` as a tool in your `tools` array.
-2. Mark the [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), [namespaces](https://developers.openai.com/api/docs/guides/function-calling#defining-namespaces), or [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) you want to make searchable with `defer_loading: true`.
+2. If you are using [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), mark the ones you want to defer with `defer_loading: true`. If you are using [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), set `defer_loading: true` on the MCP server tool definition.
 
 ### Use namespaces where possible
 
 You can use tool search with deferred [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), [namespaces](https://developers.openai.com/api/docs/guides/function-calling#defining-namespaces), or [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), but we recommend using namespaces or MCP servers when possible. Our models have primarily been trained to search those surfaces, and token savings are usually more material there.
+
+For namespaces, `defer_loading` applies to the functions inside the namespace, not to the namespace object itself.
 
 At the start of a request, the model still sees the name and description of whatever is searchable. For a namespace or MCP server, that means the model sees only the namespace or server name and description at the beginning, without showing details of the individual functions contained within it until the tool search tool loads them. For an individual deferred function, the model still sees the function name and description, so in practice tool search is mostly deferring the parameter schema.
 
@@ -42,7 +44,7 @@ Start with hosted tool search if the candidate tools are already known when
 
 ## Hosted tool search
 
-Hosted tool search is the simplest path when you already know the full inventory of deferred tools. You declare the deferred [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), [namespaces](https://developers.openai.com/api/docs/guides/function-calling#defining-namespaces), or [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) up front, add `{"type": "tool_search"}`, and let the API decide when to load a deferred tool.
+Hosted tool search is the simplest path when you already know the full inventory of [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), [namespaces](https://developers.openai.com/api/docs/guides/function-calling#defining-namespaces), or [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) you want the model to search. You declare them up front, add `{"type": "tool_search"}`, and let the API decide what to load.
 
 If the model decides it needs a deferred tool, the response includes two additional output items before the eventual function call:
 

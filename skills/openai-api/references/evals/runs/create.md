@@ -1151,7 +1151,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1175,6 +1175,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -1208,7 +1212,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1232,6 +1236,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 
@@ -3334,7 +3342,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3358,6 +3366,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -3391,7 +3403,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3415,6 +3427,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 

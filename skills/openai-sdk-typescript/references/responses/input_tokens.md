@@ -1327,7 +1327,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1351,6 +1351,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -1384,7 +1388,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                       The key to compare against the value.
 
-                    - `type: "eq" | "ne" | "gt" | 3 more`
+                    - `type: "eq" | "ne" | "gt" | 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1408,6 +1412,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string | number | boolean | Array<string | number>`
 
@@ -3569,7 +3577,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The key to compare against the value.
 
-          - `type: "eq" | "ne" | "gt" | 3 more`
+          - `type: "eq" | "ne" | "gt" | 5 more`
 
             Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3593,6 +3601,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"lt"`
 
             - `"lte"`
+
+            - `"in"`
+
+            - `"nin"`
 
           - `value: string | number | boolean | Array<string | number>`
 
@@ -3626,7 +3638,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3650,6 +3662,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 

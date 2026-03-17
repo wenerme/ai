@@ -1433,7 +1433,7 @@ Retrieves a model response with the given ID.
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1457,6 +1457,10 @@ Retrieves a model response with the given ID.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -1490,7 +1494,7 @@ Retrieves a model response with the given ID.
 
                       The key to compare against the value.
 
-                    - `type: Literal["eq", "ne", "gt", 3 more]`
+                    - `type: Literal["eq", "ne", "gt", 5 more]`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1514,6 +1518,10 @@ Retrieves a model response with the given ID.
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4500,7 +4508,7 @@ Retrieves a model response with the given ID.
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4524,6 +4532,10 @@ Retrieves a model response with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4557,7 +4569,7 @@ Retrieves a model response with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4581,6 +4593,10 @@ Retrieves a model response with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -6363,7 +6379,7 @@ Retrieves a model response with the given ID.
 
             The key to compare against the value.
 
-          - `type: Literal["eq", "ne", "gt", 3 more]`
+          - `type: Literal["eq", "ne", "gt", 5 more]`
 
             Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6387,6 +6403,10 @@ Retrieves a model response with the given ID.
             - `"lt"`
 
             - `"lte"`
+
+            - `"in"`
+
+            - `"nin"`
 
           - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -6420,7 +6440,7 @@ Retrieves a model response with the given ID.
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6444,6 +6464,10 @@ Retrieves a model response with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 

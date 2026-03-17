@@ -30,7 +30,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
       The key to compare against the value.
 
-    - `type: Literal["eq", "ne", "gt", 3 more]`
+    - `type: Literal["eq", "ne", "gt", 5 more]`
 
       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -54,6 +54,10 @@ Search a vector store for relevant chunks based on a query and file attributes f
       - `"lt"`
 
       - `"lte"`
+
+      - `"in"`
+
+      - `"nin"`
 
     - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -87,7 +91,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
           The key to compare against the value.
 
-        - `type: Literal["eq", "ne", "gt", 3 more]`
+        - `type: Literal["eq", "ne", "gt", 5 more]`
 
           Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -111,6 +115,10 @@ Search a vector store for relevant chunks based on a query and file attributes f
           - `"lt"`
 
           - `"lte"`
+
+          - `"in"`
+
+          - `"nin"`
 
         - `value: Union[str, float, bool, List[Union[str, float]]]`
 

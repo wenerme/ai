@@ -339,7 +339,7 @@ const prompt =
   "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape";
 const stream = await openai.images.generate({
   prompt: prompt,
-  model: "gpt-image-1",
+  model: "gpt-image-1.5",
   stream: true,
   partial_images: 2,
 });
@@ -362,7 +362,7 @@ client = OpenAI()
 
 stream = client.images.generate(
     prompt="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     stream=True,
     partial_images=2,
 )

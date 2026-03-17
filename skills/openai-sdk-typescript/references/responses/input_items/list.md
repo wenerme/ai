@@ -1225,7 +1225,7 @@ Returns a list of input items for a given response.
 
               The key to compare against the value.
 
-            - `type: "eq" | "ne" | "gt" | 3 more`
+            - `type: "eq" | "ne" | "gt" | 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1249,6 +1249,10 @@ Returns a list of input items for a given response.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string | number | boolean | Array<string | number>`
 
@@ -1282,7 +1286,7 @@ Returns a list of input items for a given response.
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1306,6 +1310,10 @@ Returns a list of input items for a given response.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 

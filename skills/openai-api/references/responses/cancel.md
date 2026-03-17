@@ -1394,7 +1394,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 3 more`
+                - `type: "eq" or "ne" or "gt" or 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1418,6 +1418,10 @@ the `background` parameter set to `true` can be cancelled.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string or number or boolean or array of string or number`
 
@@ -1451,7 +1455,7 @@ the `background` parameter set to `true` can be cancelled.
 
                       The key to compare against the value.
 
-                    - `type: "eq" or "ne" or "gt" or 3 more`
+                    - `type: "eq" or "ne" or "gt" or 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1475,6 +1479,10 @@ the `background` parameter set to `true` can be cancelled.
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string or number or boolean or array of string or number`
 
@@ -4461,7 +4469,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4485,6 +4493,10 @@ the `background` parameter set to `true` can be cancelled.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -4518,7 +4530,7 @@ the `background` parameter set to `true` can be cancelled.
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4542,6 +4554,10 @@ the `background` parameter set to `true` can be cancelled.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 
@@ -6333,7 +6349,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The key to compare against the value.
 
-          - `type: "eq" or "ne" or "gt" or 3 more`
+          - `type: "eq" or "ne" or "gt" or 5 more`
 
             Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6357,6 +6373,10 @@ the `background` parameter set to `true` can be cancelled.
             - `"lt"`
 
             - `"lte"`
+
+            - `"in"`
+
+            - `"nin"`
 
           - `value: string or number or boolean or array of string or number`
 
@@ -6390,7 +6410,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6414,6 +6434,10 @@ the `background` parameter set to `true` can be cancelled.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 

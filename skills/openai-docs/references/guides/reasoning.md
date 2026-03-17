@@ -12,9 +12,9 @@ import {
 
 
 
-**Reasoning models** like [GPT-5](https://developers.openai.com/api/docs/models/gpt-5) are LLMs trained with reinforcement learning to perform reasoning. Reasoning models [think before they answer](https://openai.com/index/introducing-openai-o1-preview/), producing a long internal chain of thought before responding to the user. Reasoning models excel in complex problem solving, coding, scientific reasoning, and multi-step planning for agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
+**Reasoning models** like [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4) allocate internal reasoning tokens before producing a response. They work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
 
-We provide smaller, faster models (`gpt-5-mini` and `gpt-5-nano`) that are less expensive per token. The larger model (`gpt-5`) is slower and more expensive but often generates better responses for complex tasks and broad domains.
+Start with `gpt-5.4` for most reasoning workloads. If you need the highest-intelligence API option for tougher problems that can tolerate more latency, use [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro). For lower cost and latency, consider `gpt-5-mini` or `gpt-5-nano`.
 
 **Reasoning models work better with the [Responses
   API](https://developers.openai.com/api/docs/guides/migrate-to-responses)**. While the Chat Completions API
@@ -38,8 +38,8 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 \`;
 
 const response = await openai.responses.create({
-    model: "gpt-5",
-    reasoning: { effort: "medium" },
+    model: "gpt-5.4",
+    reasoning: { effort: "low" },
     input: [
         {
             role: "user",
@@ -62,8 +62,8 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5",
-    reasoning={"effort": "medium"},
+    model="gpt-5.4",
+    reasoning={"effort": "low"},
     input=[
         {
             "role": "user", 
@@ -80,8 +80,8 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5",
-    "reasoning": {"effort": "medium"},
+    "model": "gpt-5.4",
+    "reasoning": {"effort": "low"},
     "input": [
       {
         "role": "user",
@@ -94,7 +94,16 @@ curl https://api.openai.com/v1/responses \\
 
 In the example above, the `reasoning.effort` parameter guides the model on how many reasoning tokens to generate before creating a response to the prompt.
 
-Specify `low`, `medium`, or `high` for this parameter, where `low` favors speed and economical token usage, and `high` favors more complete reasoning. The default value is `medium`, which is a balance between speed and reasoning accuracy.
+Supported values are model-dependent and can include `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Lower effort favors speed and lower token usage, while higher effort favors more complete reasoning. Defaults are also model-dependent rather than universal. For example, `gpt-5.4` defaults to `none`, while older GPT-5 models default to `medium`.
+
+| Effort             | Start here when...                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `none`             | You want the lowest latency for execution-heavy tasks such as extraction, routing, or simple transforms |
+| `low`              | A small amount of extra thinking can improve reliability without adding much latency                    |
+| `medium` or `high` | The task involves planning, coding, synthesis, or harder reasoning                                      |
+| `xhigh`            | Only when your evals show a clear benefit that justifies the extra latency and cost                     |
+
+Some models support only a subset of these values, so check the relevant [model page](https://developers.openai.com/api/docs/models) before choosing a setting.
 
 ## How reasoning works
 
@@ -156,7 +165,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 \`;
 
 const response = await openai.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.4",
     reasoning: { effort: "medium" },
     input: [
         {
@@ -191,7 +200,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     reasoning={"effort": "medium"},
     input=[
         {
@@ -213,7 +222,7 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
 
 ### Keeping reasoning items in context
 
-When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/docs/apit-reference/responses), we highly recommend you pass back any reasoning items returned with the last function call (in addition to the output of your function). If the model calls multiple functions consecutively, you should pass back all reasoning items, function call items, and function call output items, since the last `user` message. This allows the model to continue its reasoning process to produce better results in the most token-efficient manner.
+When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), we highly recommend you pass back any reasoning items returned with the last function call (in addition to the output of your function). If the model calls multiple functions consecutively, you should pass back all reasoning items, function call items, and function call output items, since the last `user` message. This allows the model to continue its reasoning process to produce better results in the most token-efficient manner.
 
 The simplest way to do this is to pass in all reasoning items from a previous response into the next one. Our systems will smartly ignore any reasoning items that aren't relevant to your functions, and only retain those in context that are relevant. You can pass reasoning items from previous responses either using the `previous_response_id` parameter, or by manually passing in all the [output](https://developers.openai.com/api/docs/api-reference/responses/object#responses/object-output) items from a past response into the [input](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-input) of a new one.
 
@@ -242,7 +251,7 @@ Any reasoning items in the `output` array will now have an `encrypted_content` p
 
 ## Reasoning summaries
 
-While we don't expose the raw reasoning tokens emitted by the model, you can view a summary of the model's reasoning using the the `summary` parameter. See our [model documentation](https://developers.openai.com/api/docs/models) to check which reasoning models support summaries.
+While we don't expose the raw reasoning tokens emitted by the model, you can view a summary of the model's reasoning using the `summary` parameter. See our [model documentation](https://developers.openai.com/api/docs/models) to check which reasoning models support summaries.
 
 Different models support different reasoning summary settings. For example, our computer use model supports the `concise` summarizer, while o4-mini supports `detailed`. To access the most detailed summarizer available for a model, set the value of this parameter to `auto`. `auto` will be equivalent to `detailed` for most reasoning models today, but there may be more granular settings in the future.
 
@@ -257,7 +266,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input: "What is the capital of France?",
   reasoning: {
     effort: "low",
@@ -273,7 +282,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="What is the capital of France?",
     reasoning={
         "effort": "low",
@@ -289,7 +298,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.4",
     "input": "What is the capital of France?",
     "reasoning": {
         "effort": "low",
@@ -338,10 +347,11 @@ Before using summarizers with our latest reasoning models, you may need to
 
 ## Advice on prompting
 
-There are some differences to consider when prompting a reasoning model. Reasoning models provide better results on tasks with only high-level guidance, while GPT models often benefit from very precise instructions.
+There are some differences to consider when prompting a reasoning model. Reasoning-capable GPT-5 models usually work best when you give them a clear goal, strong constraints, and an explicit output contract without prescribing every intermediate step.
 
-- A reasoning model is like a senior co-worker—you can give them a goal to achieve and trust them to work out the details.
-- A GPT model is like a junior coworker—they'll perform best with explicit instructions to create a specific output.
+- Give the model the task, constraints, and desired output format.
+- Treat `reasoning.effort` as a tuning knob, not the primary way to recover quality.
+- For agentic or research-heavy workflows, define what counts as done and how the model should verify its work.
 
 For more information on best practices when using reasoning models, [refer to this guide](https://developers.openai.com/api/docs/guides/reasoning-best-practices).
 

@@ -1227,7 +1227,7 @@ Returns a list of input items for a given response.
 
               The key to compare against the value.
 
-            - `type: "eq" | "ne" | "gt" | 3 more`
+            - `type: "eq" | "ne" | "gt" | 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1251,6 +1251,10 @@ Returns a list of input items for a given response.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string | number | boolean | Array<string | number>`
 
@@ -1284,7 +1288,7 @@ Returns a list of input items for a given response.
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1308,6 +1312,10 @@ Returns a list of input items for a given response.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -4037,7 +4045,7 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4061,6 +4069,10 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 
@@ -4094,7 +4106,7 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4118,6 +4130,10 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 

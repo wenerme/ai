@@ -1306,7 +1306,7 @@ Create items in a conversation with the given ID.
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1330,6 +1330,10 @@ Create items in a conversation with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 
@@ -1363,7 +1367,7 @@ Create items in a conversation with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1387,6 +1391,10 @@ Create items in a conversation with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 
@@ -4421,7 +4429,7 @@ Create items in a conversation with the given ID.
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4445,6 +4453,10 @@ Create items in a conversation with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 
@@ -4478,7 +4490,7 @@ Create items in a conversation with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4502,6 +4514,10 @@ Create items in a conversation with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 

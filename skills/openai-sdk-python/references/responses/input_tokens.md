@@ -1330,7 +1330,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1354,6 +1354,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -1387,7 +1391,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1411,6 +1415,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -3577,7 +3585,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The key to compare against the value.
 
-        - `type: Literal["eq", "ne", "gt", 3 more]`
+        - `type: Literal["eq", "ne", "gt", 5 more]`
 
           Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3601,6 +3609,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `"lt"`
 
           - `"lte"`
+
+          - `"in"`
+
+          - `"nin"`
 
         - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -3634,7 +3646,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3658,6 +3670,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 

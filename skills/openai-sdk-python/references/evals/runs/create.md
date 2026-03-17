@@ -1145,7 +1145,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1169,6 +1169,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -1202,7 +1206,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1226,6 +1230,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -3323,7 +3331,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3347,6 +3355,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -3380,7 +3392,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                       The key to compare against the value.
 
-                    - `type: Literal["eq", "ne", "gt", 3 more]`
+                    - `type: Literal["eq", "ne", "gt", 5 more]`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3404,6 +3416,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: Union[str, float, bool, List[Union[str, float]]]`
 

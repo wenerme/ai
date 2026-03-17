@@ -661,7 +661,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
         The key to compare against the value.
 
-      - `type: "eq" | "ne" | "gt" | 3 more`
+      - `type: "eq" | "ne" | "gt" | 5 more`
 
         Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -685,6 +685,10 @@ Search a vector store for relevant chunks based on a query and file attributes f
         - `"lt"`
 
         - `"lte"`
+
+        - `"in"`
+
+        - `"nin"`
 
       - `value: string | number | boolean | Array<string | number>`
 
@@ -718,7 +722,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
             The key to compare against the value.
 
-          - `type: "eq" | "ne" | "gt" | 3 more`
+          - `type: "eq" | "ne" | "gt" | 5 more`
 
             Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -742,6 +746,10 @@ Search a vector store for relevant chunks based on a query and file attributes f
             - `"lt"`
 
             - `"lte"`
+
+            - `"in"`
+
+            - `"nin"`
 
           - `value: string | number | boolean | Array<string | number>`
 

@@ -1333,7 +1333,7 @@ Create items in a conversation with the given ID.
 
               The key to compare against the value.
 
-            - `type: "eq" or "ne" or "gt" or 3 more`
+            - `type: "eq" or "ne" or "gt" or 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1357,6 +1357,10 @@ Create items in a conversation with the given ID.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string or number or boolean or array of string or number`
 
@@ -1390,7 +1394,7 @@ Create items in a conversation with the given ID.
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 3 more`
+                - `type: "eq" or "ne" or "gt" or 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1414,6 +1418,10 @@ Create items in a conversation with the given ID.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string or number or boolean or array of string or number`
 
@@ -4475,7 +4483,7 @@ Create items in a conversation with the given ID.
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4499,6 +4507,10 @@ Create items in a conversation with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -4532,7 +4544,7 @@ Create items in a conversation with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4556,6 +4568,10 @@ Create items in a conversation with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 
@@ -7632,7 +7648,7 @@ List all items for a conversation with the given ID.
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -7656,6 +7672,10 @@ List all items for a conversation with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -7689,7 +7709,7 @@ List all items for a conversation with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -7713,6 +7733,10 @@ List all items for a conversation with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 
@@ -10750,7 +10774,7 @@ Get a single item from a conversation with the given IDs.
 
               The key to compare against the value.
 
-            - `type: "eq" or "ne" or "gt" or 3 more`
+            - `type: "eq" or "ne" or "gt" or 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -10774,6 +10798,10 @@ Get a single item from a conversation with the given IDs.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string or number or boolean or array of string or number`
 
@@ -10807,7 +10835,7 @@ Get a single item from a conversation with the given IDs.
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 3 more`
+                - `type: "eq" or "ne" or "gt" or 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -10831,6 +10859,10 @@ Get a single item from a conversation with the given IDs.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string or number or boolean or array of string or number`
 
@@ -13860,7 +13892,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
               The key to compare against the value.
 
-            - `type: "eq" or "ne" or "gt" or 3 more`
+            - `type: "eq" or "ne" or "gt" or 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -13884,6 +13916,10 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string or number or boolean or array of string or number`
 
@@ -13917,7 +13953,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 3 more`
+                - `type: "eq" or "ne" or "gt" or 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -13941,6 +13977,10 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string or number or boolean or array of string or number`
 
@@ -16922,7 +16962,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 3 more`
+              - `type: "eq" or "ne" or "gt" or 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -16946,6 +16986,10 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string or number or boolean or array of string or number`
 
@@ -16979,7 +17023,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                     The key to compare against the value.
 
-                  - `type: "eq" or "ne" or "gt" or 3 more`
+                  - `type: "eq" or "ne" or "gt" or 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -17003,6 +17047,10 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string or number or boolean or array of string or number`
 

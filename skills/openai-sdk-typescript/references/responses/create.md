@@ -1387,7 +1387,7 @@ as input for the model's response.
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1411,6 +1411,10 @@ as input for the model's response.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 
@@ -1444,7 +1448,7 @@ as input for the model's response.
 
                         The key to compare against the value.
 
-                      - `type: "eq" | "ne" | "gt" | 3 more`
+                      - `type: "eq" | "ne" | "gt" | 5 more`
 
                         Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1468,6 +1472,10 @@ as input for the model's response.
                         - `"lt"`
 
                         - `"lte"`
+
+                        - `"in"`
+
+                        - `"nin"`
 
                       - `value: string | number | boolean | Array<string | number>`
 
@@ -4019,7 +4027,7 @@ as input for the model's response.
 
               The key to compare against the value.
 
-            - `type: "eq" | "ne" | "gt" | 3 more`
+            - `type: "eq" | "ne" | "gt" | 5 more`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4043,6 +4051,10 @@ as input for the model's response.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: string | number | boolean | Array<string | number>`
 
@@ -4076,7 +4088,7 @@ as input for the model's response.
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4100,6 +4112,10 @@ as input for the model's response.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -6454,7 +6470,7 @@ as input for the model's response.
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6478,6 +6494,10 @@ as input for the model's response.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -6511,7 +6531,7 @@ as input for the model's response.
 
                       The key to compare against the value.
 
-                    - `type: "eq" | "ne" | "gt" | 3 more`
+                    - `type: "eq" | "ne" | "gt" | 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -6535,6 +6555,10 @@ as input for the model's response.
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string | number | boolean | Array<string | number>`
 
@@ -9507,7 +9531,7 @@ as input for the model's response.
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -9531,6 +9555,10 @@ as input for the model's response.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 
@@ -9564,7 +9592,7 @@ as input for the model's response.
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -9588,6 +9616,10 @@ as input for the model's response.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 
@@ -11369,7 +11401,7 @@ as input for the model's response.
 
             The key to compare against the value.
 
-          - `type: "eq" | "ne" | "gt" | 3 more`
+          - `type: "eq" | "ne" | "gt" | 5 more`
 
             Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -11393,6 +11425,10 @@ as input for the model's response.
             - `"lt"`
 
             - `"lte"`
+
+            - `"in"`
+
+            - `"nin"`
 
           - `value: string | number | boolean | Array<string | number>`
 
@@ -11426,7 +11462,7 @@ as input for the model's response.
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -11450,6 +11486,10 @@ as input for the model's response.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 

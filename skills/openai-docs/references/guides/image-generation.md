@@ -159,7 +159,7 @@ listen to the heartbeat of a baby otter.
 \`;
 
 const result = await openai.images.generate({
-    model: "gpt-image-1",
+    model: "gpt-image-1.5",
     prompt,
 });
 
@@ -180,7 +180,7 @@ listen to the heartbeat of a baby otter.
 """
 
 result = client.images.generate(
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     prompt=prompt
 )
 
@@ -197,7 +197,7 @@ curl -X POST "https://api.openai.com/v1/images/generations" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -H "Content-type: application/json" \\
     -d '{
-        "model": "gpt-image-1",
+        "model": "gpt-image-1.5",
         "prompt": "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
@@ -613,7 +613,7 @@ const prompt =
   "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape";
 const stream = await openai.images.generate({
   prompt: prompt,
-  model: "gpt-image-1",
+  model: "gpt-image-1.5",
   stream: true,
   partial_images: 2,
 });
@@ -636,7 +636,7 @@ client = OpenAI()
 
 stream = client.images.generate(
     prompt="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     stream=True,
     partial_images=2,
 )
@@ -728,7 +728,7 @@ containing all the items in the reference pictures.
 """
 
 result = client.images.edit(
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     image=[
         open("body-lotion.png", "rb"),
         open("bath-bomb.png", "rb"),
@@ -774,7 +774,7 @@ const images = await Promise.all(
 );
 
 const response = await client.images.edit({
-    model: "gpt-image-1",
+    model: "gpt-image-1.5",
     image: images,
     prompt,
 });
@@ -790,7 +790,7 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \\
   -X POST "https://api.openai.com/v1/images/edits" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-1" \\
+  -F "model=gpt-image-1.5" \\
   -F "image[]=@body-lotion.png" \\
   -F "image[]=@bath-bomb.png" \\
   -F "image[]=@incense-kit.png" \\
@@ -923,7 +923,7 @@ from openai import OpenAI
 client = OpenAI()
 
 result = client.images.edit(
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     image=open("sunlit_lounge.png", "rb"),
     mask=open("mask.png", "rb"),
     prompt="A sunlit indoor lounge area with a pool containing a flamingo"
@@ -944,7 +944,7 @@ import OpenAI, { toFile } from "openai";
 const client = new OpenAI();
 
 const rsp = await client.images.edit({
-    model: "gpt-image-1",
+    model: "gpt-image-1.5",
     image: await toFile(fs.createReadStream("sunlit_lounge.png"), null, {
         type: "image/png",
     }),
@@ -965,7 +965,7 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -o >(jq -r '.data[0].b64_json' | base64 --decode > lounge.png) \\
   -X POST "https://api.openai.com/v1/images/edits" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-1" \\
+  -F "model=gpt-image-1.5" \\
   -F "mask=@mask.png" \\   
   -F "image[]=@sunlit_lounge.png" \\
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
@@ -1140,7 +1140,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 const prompt = "Add the logo to the woman's top, as if stamped into the fabric.";
 const result = await openai.images.edit({
-  model: "gpt-image-1",
+  model: "gpt-image-1.5",
   image: [
     fs.createReadStream("woman.jpg"),
     fs.createReadStream("logo.png")
@@ -1162,7 +1162,7 @@ import base64
 client = OpenAI()
 
 result = client.images.edit(
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     image=[open("woman.jpg", "rb"), open("logo.png", "rb")],
     prompt="Add the logo to the woman's top, as if stamped into the fabric.",
     input_fidelity="high"
@@ -1351,7 +1351,7 @@ import fs from "fs";
 const openai = new OpenAI();
 
 const result = await openai.images.generate({
-    model: "gpt-image-1",
+    model: "gpt-image-1.5",
     prompt: "Draw a 2D pixel art style sprite sheet of a tabby gray cat",
     size: "1024x1024",
     background: "transparent",
@@ -1370,7 +1370,7 @@ import base64
 client = OpenAI()
 
 result = client.images.generate(
-    model="gpt-image-1",
+    model="gpt-image-1.5",
     prompt="Draw a 2D pixel art style sprite sheet of a tabby gray cat",
     size="1024x1024",
     background="transparent",

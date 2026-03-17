@@ -1229,7 +1229,7 @@ Returns a list of input items for a given response.
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1253,6 +1253,10 @@ Returns a list of input items for a given response.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -1286,7 +1290,7 @@ Returns a list of input items for a given response.
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1310,6 +1314,10 @@ Returns a list of input items for a given response.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4054,7 +4062,7 @@ print(page)
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4078,6 +4086,10 @@ print(page)
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4111,7 +4123,7 @@ print(page)
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4135,6 +4147,10 @@ print(page)
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 

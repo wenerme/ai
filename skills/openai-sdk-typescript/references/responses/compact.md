@@ -1494,7 +1494,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1518,6 +1518,10 @@ Learn when and how to compact long-running conversations in the [conversation st
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -1551,7 +1555,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                       The key to compare against the value.
 
-                    - `type: "eq" | "ne" | "gt" | 3 more`
+                    - `type: "eq" | "ne" | "gt" | 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1575,6 +1579,10 @@ Learn when and how to compact long-running conversations in the [conversation st
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string | number | boolean | Array<string | number>`
 
@@ -4367,7 +4375,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The key to compare against the value.
 
-              - `type: "eq" | "ne" | "gt" | 3 more`
+              - `type: "eq" | "ne" | "gt" | 5 more`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4391,6 +4399,10 @@ Learn when and how to compact long-running conversations in the [conversation st
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: string | number | boolean | Array<string | number>`
 
@@ -4424,7 +4436,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                     The key to compare against the value.
 
-                  - `type: "eq" | "ne" | "gt" | 3 more`
+                  - `type: "eq" | "ne" | "gt" | 5 more`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4448,6 +4460,10 @@ Learn when and how to compact long-running conversations in the [conversation st
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: string | number | boolean | Array<string | number>`
 

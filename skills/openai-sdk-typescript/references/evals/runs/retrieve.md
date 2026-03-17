@@ -1161,7 +1161,7 @@ Get an evaluation run by ID.
 
                   The key to compare against the value.
 
-                - `type: "eq" | "ne" | "gt" | 3 more`
+                - `type: "eq" | "ne" | "gt" | 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1185,6 +1185,10 @@ Get an evaluation run by ID.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string | number | boolean | Array<string | number>`
 
@@ -1218,7 +1222,7 @@ Get an evaluation run by ID.
 
                       The key to compare against the value.
 
-                    - `type: "eq" | "ne" | "gt" | 3 more`
+                    - `type: "eq" | "ne" | "gt" | 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1242,6 +1246,10 @@ Get an evaluation run by ID.
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string | number | boolean | Array<string | number>`
 

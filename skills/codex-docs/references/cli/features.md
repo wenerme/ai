@@ -20,7 +20,7 @@ Once the session is open, you can:
 
 - Send prompts, code snippets, or screenshots (see [image inputs](#image-inputs)) directly into the composer.
 - Watch Codex explain its plan before making a change, and approve or reject steps inline.
-- Read syntax-highlighted markdown code blocks and diffs in the TUI, then use `/theme` to preview and save a preferred color theme.
+- Read syntax-highlighted markdown code blocks and diffs in the TUI, then use `/theme` to preview and save a preferred theme.
 - Use `/clear` to wipe the terminal and start a fresh chat, or press <kbd>Ctrl</kbd>+<kbd>L</kbd> to clear the screen without starting a new conversation.
 - Use `/copy` to copy the latest completed Codex output. If a turn is still running, Codex copies the most recent finished output instead of in-progress text.
 - Navigate draft history in the composer with <kbd>Up</kbd>/<kbd>Down</kbd>; Codex restores prior draft text and image placeholders.
@@ -68,9 +68,13 @@ codex features disable shell_snapshot
 
 `codex features enable <feature>` and `codex features disable <feature>` write to `~/.codex/config.toml`. If you launch Codex with `--profile`, Codex stores the change in that profile rather than the root configuration.
 
-## Multi-agents (experimental)
+## Subagents
 
-Use Codex multi-agent workflows to parallelize larger tasks. For setup, role configuration (`[agents]` in `config.toml`), and examples, see [Multi-agents](https://developers.openai.com/codex/multi-agent).
+Use Codex subagent workflows to parallelize larger tasks. For setup, role configuration (`[agents]` in `config.toml`), and examples, see [Subagents](https://developers.openai.com/codex/subagents).
+
+Codex only spawns subagents when you explicitly ask it to. Because each
+subagent does its own model and tool work, subagent workflows consume more
+tokens than comparable single-agent runs.
 
 ## Image inputs
 

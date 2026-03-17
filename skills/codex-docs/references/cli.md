@@ -3,7 +3,7 @@
 Codex CLI is OpenAI's coding agent that you can run locally from your terminal. It can read, change, and run code on your machine in the selected directory.
 It's [open source](https://github.com/openai/codex) and built in Rust for speed and efficiency.
 
-Codex is included with ChatGPT Plus, Pro, Business, Edu, and Enterprise plans. Learn more about [what's included](https://developers.openai.com/codex/pricing).
+ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what's included](https://developers.openai.com/codex/pricing).
 
 <YouTubeEmbed
   title="Codex CLI overview"
@@ -57,11 +57,11 @@ Get your code reviewed by a separate Codex agent before you commit or push your 
 
   </BentoContent>
 
-  <BentoContent href="/codex/multi-agent">
+  <BentoContent href="/codex/subagents">
 
-### Use multi-agent
+### Use subagents
 
-Enable experimental multi-agent collaboration and parallelize complex tasks.
+Use subagents to parallelize complex tasks.
 
   </BentoContent>
 

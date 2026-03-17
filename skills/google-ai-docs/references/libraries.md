@@ -92,7 +92,7 @@ Each legacy library's support status varies, detailed in the following table:
 | **Python** | `https://github.com/google-gemini/deprecated-generative-ai-python` | Not actively maintained | `https://github.com/googleapis/python-genai` |
 | **JavaScript/TypeScript** | `https://github.com/google-gemini/generative-ai-js` | Not actively maintained | `https://github.com/googleapis/js-genai` |
 | **Go** | `https://github.com/google/generative-ai-go` | Not actively maintained | `https://github.com/googleapis/go-genai` |
-| **Dart and Flutter** | `https://pub.dev/packages/google_generative_ai/install` | Not actively maintained | Use trusted community or third party libraries, like [firebase_ai](https://pub.dev/packages/firebase_ai), or access using REST API |
+| **Dart and Flutter** | `https://pub.dev/packages/google_generative_ai/install` | Not actively maintained | Use [Genkit Dart](https://genkit.dev/docs/dart/get-started/) or [Firebase AI Logic](https://pub.dev/packages/firebase_ai) |
 | **Swift** | `https://github.com/google/generative-ai-swift` | Not actively maintained | Use [Firebase AI Logic](https://firebase.google.com/products/firebase-ai-logic) |
 | **Android** | `https://github.com/google-gemini/generative-ai-android` | Not actively maintained | Use [Firebase AI Logic](https://firebase.google.com/products/firebase-ai-logic) |
 

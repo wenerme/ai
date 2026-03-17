@@ -1046,6 +1046,7 @@ As you take embeddings to production, it is common to
 use **vector databases** to efficiently store, index, and retrieve
 high-dimensional embeddings. Google Cloud offers managed data services that
 can be used for this purpose including
+[Vertex AI Vector Search 2.0](https://docs.cloud.google.com/vertex-ai/docs/vector-search-2/overview),
 [BigQuery](https://cloud.google.com/bigquery/docs/introduction),
 [AlloyDB](https://cloud.google.com/alloydb/docs/overview), and
 [Cloud SQL](https://cloud.google.com/sql/docs/postgres/introduction).

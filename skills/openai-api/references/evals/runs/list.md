@@ -1195,7 +1195,7 @@ Get a list of runs for an evaluation.
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 3 more`
+                - `type: "eq" or "ne" or "gt" or 5 more`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1219,6 +1219,10 @@ Get a list of runs for an evaluation.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: string or number or boolean or array of string or number`
 
@@ -1252,7 +1256,7 @@ Get a list of runs for an evaluation.
 
                       The key to compare against the value.
 
-                    - `type: "eq" or "ne" or "gt" or 3 more`
+                    - `type: "eq" or "ne" or "gt" or 5 more`
 
                       Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1276,6 +1280,10 @@ Get a list of runs for an evaluation.
                       - `"lt"`
 
                       - `"lte"`
+
+                      - `"in"`
+
+                      - `"nin"`
 
                     - `value: string or number or boolean or array of string or number`
 

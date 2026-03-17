@@ -1305,7 +1305,7 @@ Create items in a conversation with the given ID.
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1329,6 +1329,10 @@ Create items in a conversation with the given ID.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -1362,7 +1366,7 @@ Create items in a conversation with the given ID.
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1386,6 +1390,10 @@ Create items in a conversation with the given ID.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4438,7 +4446,7 @@ Create items in a conversation with the given ID.
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4462,6 +4470,10 @@ Create items in a conversation with the given ID.
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -4495,7 +4507,7 @@ Create items in a conversation with the given ID.
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -4519,6 +4531,10 @@ Create items in a conversation with the given ID.
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -7564,7 +7580,7 @@ List all items for a conversation with the given ID.
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -7588,6 +7604,10 @@ List all items for a conversation with the given ID.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -7621,7 +7641,7 @@ List all items for a conversation with the given ID.
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -7645,6 +7665,10 @@ List all items for a conversation with the given ID.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -10643,7 +10667,7 @@ Get a single item from a conversation with the given IDs.
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -10667,6 +10691,10 @@ Get a single item from a conversation with the given IDs.
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -10700,7 +10728,7 @@ Get a single item from a conversation with the given IDs.
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -10724,6 +10752,10 @@ Get a single item from a conversation with the given IDs.
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -13742,7 +13774,7 @@ print(conversation.id)
 
               The key to compare against the value.
 
-            - `type: Literal["eq", "ne", "gt", 3 more]`
+            - `type: Literal["eq", "ne", "gt", 5 more]`
 
               Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -13766,6 +13798,10 @@ print(conversation.id)
               - `"lt"`
 
               - `"lte"`
+
+              - `"in"`
+
+              - `"nin"`
 
             - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -13799,7 +13835,7 @@ print(conversation.id)
 
                   The key to compare against the value.
 
-                - `type: Literal["eq", "ne", "gt", 3 more]`
+                - `type: Literal["eq", "ne", "gt", 5 more]`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -13823,6 +13859,10 @@ print(conversation.id)
                   - `"lt"`
 
                   - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
 
                 - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -16774,7 +16814,7 @@ print(conversation.id)
 
                 The key to compare against the value.
 
-              - `type: Literal["eq", "ne", "gt", 3 more]`
+              - `type: Literal["eq", "ne", "gt", 5 more]`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -16798,6 +16838,10 @@ print(conversation.id)
                 - `"lt"`
 
                 - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
 
               - `value: Union[str, float, bool, List[Union[str, float]]]`
 
@@ -16831,7 +16875,7 @@ print(conversation.id)
 
                     The key to compare against the value.
 
-                  - `type: Literal["eq", "ne", "gt", 3 more]`
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
 
                     Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -16855,6 +16899,10 @@ print(conversation.id)
                     - `"lt"`
 
                     - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
 
                   - `value: Union[str, float, bool, List[Union[str, float]]]`
 

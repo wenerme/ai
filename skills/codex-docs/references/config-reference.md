@@ -436,12 +436,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Enable undo support (stable; off by default).",
     },
     {
-      key: "features.multi_agent",
-      type: "boolean",
-      description:
-        "Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait`, `close_agent`, and `spawn_agents_on_csv`) (experimental; off by default).",
-    },
-    {
       key: "features.personality",
       type: "boolean",
       description:
