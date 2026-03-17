@@ -20,7 +20,7 @@ Gemini can generate and process images conversationally
 with text, images, or a combination of both. This lets you create, edit, and
 iterate on visuals with unprecedented control.
 
-Nano Banana refers to two distinct models available in the Gemini API:
+Nano Banana refers to three distinct models available in the Gemini API:
 
 - **Nano Banana 2** : The [Gemini 3.1 Flash Image Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview) model (`gemini-3.1-flash-image-preview`). This model serves as the high-efficiency counterpart to Gemini 3 Pro Image, optimized for speed and high-volume developer use cases.
 - **Nano Banana Pro** : The [Gemini 3 Pro Image Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) model (`gemini-3-pro-image-preview`). This model is designed for professional asset production, utilizing advanced reasoning ("Thinking") to follow complex instructions and render high-fidelity text.
