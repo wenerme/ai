@@ -602,6 +602,32 @@ components:
       required:
         - id
       title: ChatGenerationParamsPluginsItems4
+    ChatGenerationParamsPluginsItemsOneOf5Id:
+      type: string
+      enum:
+        - context-compression
+      title: ChatGenerationParamsPluginsItemsOneOf5Id
+    ContextCompressionEngine:
+      type: string
+      enum:
+        - middle-out
+      description: The compression engine to use. Defaults to "middle-out".
+      title: ContextCompressionEngine
+    ChatGenerationParamsPluginsItems5:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf5Id'
+        enabled:
+          type: boolean
+          description: >-
+            Set to false to disable the context-compression plugin for this
+            request. Defaults to true.
+        engine:
+          $ref: '#/components/schemas/ContextCompressionEngine'
+      required:
+        - id
+      title: ChatGenerationParamsPluginsItems5
     ChatGenerationParamsPluginsItems:
       oneOf:
         - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems0'
@@ -609,6 +635,7 @@ components:
         - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems2'
         - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems3'
         - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems4'
+        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems5'
       title: ChatGenerationParamsPluginsItems
     ChatGenerationParamsTrace:
       type: object
@@ -1522,13 +1549,88 @@ components:
       enum:
         - openrouter:web_search
       title: WebSearchServerToolType
+    WebSearchServerToolParametersEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: WebSearchServerToolParametersEngine
+    WebSearchServerToolParametersSearchContextSize:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+      description: >-
+        How much context to retrieve per result. Defaults to medium (15000
+        chars).
+      title: WebSearchServerToolParametersSearchContextSize
+    WebSearchServerToolParametersUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchServerToolParametersUserLocationType
+    WebSearchServerToolParametersUserLocation:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchServerToolParametersUserLocationType'
+        city:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+      description: Approximate user location for location-biased results.
+      title: WebSearchServerToolParametersUserLocation
     WebSearchServerToolParameters:
       type: object
       properties:
+        engine:
+          $ref: '#/components/schemas/WebSearchServerToolParametersEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
         max_results:
           type: number
           format: double
-          description: Maximum number of search results to return. Defaults to 5.
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        max_total_results:
+          type: number
+          format: double
+          description: >-
+            Maximum total number of search results across all search calls in a
+            single request. Once this limit is reached, the tool will stop
+            returning new results. Useful for controlling cost and context size
+            in agentic loops.
+        search_context_size:
+          $ref: '#/components/schemas/WebSearchServerToolParametersSearchContextSize'
+          description: >-
+            How much context to retrieve per result. Defaults to medium (15000
+            chars).
+        user_location:
+          $ref: '#/components/schemas/WebSearchServerToolParametersUserLocation'
+          description: Approximate user location for location-biased results.
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: Limit search results to these domains.
+        excluded_domains:
+          type: array
+          items:
+            type: string
+          description: Exclude search results from these domains.
       title: WebSearchServerToolParameters
     WebSearchServerTool:
       type: object
@@ -1543,11 +1645,195 @@ components:
         OpenRouter built-in server tool: searches the web for current
         information
       title: WebSearchServerTool
+    WebSearchShorthandType:
+      type: string
+      enum:
+        - web_search
+        - web_search_preview
+        - web_search_preview_2025_03_11
+        - web_search_2025_08_26
+      title: WebSearchShorthandType
+    WebSearchShorthandEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: WebSearchShorthandEngine
+    WebSearchShorthandSearchContextSize:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+      description: >-
+        How much context to retrieve per result. Defaults to medium (15000
+        chars).
+      title: WebSearchShorthandSearchContextSize
+    WebSearchShorthandUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchShorthandUserLocationType
+    WebSearchShorthandUserLocation:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchShorthandUserLocationType'
+        city:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+      description: Approximate user location for location-biased results.
+      title: WebSearchShorthandUserLocation
+    WebSearchShorthandParametersEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: WebSearchShorthandParametersEngine
+    WebSearchShorthandParametersSearchContextSize:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+      description: >-
+        How much context to retrieve per result. Defaults to medium (15000
+        chars).
+      title: WebSearchShorthandParametersSearchContextSize
+    WebSearchShorthandParametersUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchShorthandParametersUserLocationType
+    WebSearchShorthandParametersUserLocation:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchShorthandParametersUserLocationType'
+        city:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+      description: Approximate user location for location-biased results.
+      title: WebSearchShorthandParametersUserLocation
+    WebSearchShorthandParameters:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/WebSearchShorthandParametersEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        max_total_results:
+          type: number
+          format: double
+          description: >-
+            Maximum total number of search results across all search calls in a
+            single request. Once this limit is reached, the tool will stop
+            returning new results. Useful for controlling cost and context size
+            in agentic loops.
+        search_context_size:
+          $ref: '#/components/schemas/WebSearchShorthandParametersSearchContextSize'
+          description: >-
+            How much context to retrieve per result. Defaults to medium (15000
+            chars).
+        user_location:
+          $ref: '#/components/schemas/WebSearchShorthandParametersUserLocation'
+          description: Approximate user location for location-biased results.
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: Limit search results to these domains.
+        excluded_domains:
+          type: array
+          items:
+            type: string
+          description: Exclude search results from these domains.
+      title: WebSearchShorthandParameters
+    WebSearchShorthand:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchShorthandType'
+        engine:
+          $ref: '#/components/schemas/WebSearchShorthandEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        max_total_results:
+          type: number
+          format: double
+          description: >-
+            Maximum total number of search results across all search calls in a
+            single request. Once this limit is reached, the tool will stop
+            returning new results. Useful for controlling cost and context size
+            in agentic loops.
+        search_context_size:
+          $ref: '#/components/schemas/WebSearchShorthandSearchContextSize'
+          description: >-
+            How much context to retrieve per result. Defaults to medium (15000
+            chars).
+        user_location:
+          $ref: '#/components/schemas/WebSearchShorthandUserLocation'
+          description: Approximate user location for location-biased results.
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: Limit search results to these domains.
+        excluded_domains:
+          type: array
+          items:
+            type: string
+          description: Exclude search results from these domains.
+        parameters:
+          $ref: '#/components/schemas/WebSearchShorthandParameters'
+      required:
+        - type
+      description: >-
+        Web search tool using OpenAI Responses API syntax. Automatically
+        converted to openrouter:web_search.
+      title: WebSearchShorthand
     ToolDefinitionJson:
       oneOf:
         - $ref: '#/components/schemas/ToolDefinitionJson0'
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/WebSearchServerTool'
+        - $ref: '#/components/schemas/WebSearchShorthand'
       description: >-
         Tool definition for function calling (regular function or OpenRouter
         built-in server tool)

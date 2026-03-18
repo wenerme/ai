@@ -61,6 +61,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `jnlpba_rare` | [JNLPBA-Rare](../../benchmarks/jnlpba_rare.md) | `Knowledge`, `NER` |
 | `live_code_bench` | [Live-Code-Bench](../../benchmarks/live_code_bench.md) | `Coding` |
 | `logi_qa` | [LogiQA](../../benchmarks/logi_qa.md) | `MCQ`, `Reasoning` |
+| `longbench_v2` | [LongBench-v2](../../benchmarks/longbench_v2.md) | `LongContext`, `MCQ`, `ReadingComprehension` |
 | `maritime_bench` | [MaritimeBench](../../benchmarks/maritime_bench.md) | `Chinese`, `Knowledge`, `MCQ` |
 | `math_500` | [MATH-500](../../benchmarks/math_500.md) | `Math`, `Reasoning` |
 | `math_qa` | [MathQA](../../benchmarks/math_qa.md) | `MCQ`, `Math`, `Reasoning` |
@@ -74,6 +75,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `mmlu` | [MMLU](../../benchmarks/mmlu.md) | `Knowledge`, `MCQ` |
 | `mmlu_pro` | [MMLU-Pro](../../benchmarks/mmlu_pro.md) | `Knowledge`, `MCQ` |
 | `mmlu_redux` | [MMLU-Redux](../../benchmarks/mmlu_redux.md) | `Knowledge`, `MCQ` |
+| `mmmlu` | [MMMLU](../../benchmarks/mmmlu.md) | `Knowledge`, `MCQ`, `MultiLingual` |
 | `mri_mcqa` | [MRI-MCQA](../../benchmarks/mri_mcqa.md) | `Knowledge`, `MCQ`, `Medical` |
 | `multi_if` | [Multi-IF](../../benchmarks/multi_if.md) | `InstructionFollowing`, `MultiLingual`, `MultiTurn` |
 | `multi_nerd` | [MultiNERD](../../benchmarks/multi_nerd.md) | `Knowledge`, `NER` |
@@ -171,6 +173,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/jnlpba_rare.md
 ../../benchmarks/live_code_bench.md
 ../../benchmarks/logi_qa.md
+../../benchmarks/longbench_v2.md
 ../../benchmarks/maritime_bench.md
 ../../benchmarks/math_500.md
 ../../benchmarks/math_qa.md
@@ -184,6 +187,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/mmlu.md
 ../../benchmarks/mmlu_pro.md
 ../../benchmarks/mmlu_redux.md
+../../benchmarks/mmmlu.md
 ../../benchmarks/mri_mcqa.md
 ../../benchmarks/multi_if.md
 ../../benchmarks/multi_nerd.md

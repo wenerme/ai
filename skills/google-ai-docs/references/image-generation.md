@@ -1535,8 +1535,10 @@ You can check the thoughts that lead to the final image being produced.
 #### Controlling thinking levels
 
 With Gemini 3.1 Flash Image, you can control the amount of thinking the model
-uses to balance quality and latency. The default `thinkingLevel` is `minimal`,
-and the supported levels are `minimal` and `high`.
+uses to balance quality and latency. The default `thinkingLevel` is `high`,
+and the supported levels are `minimal` and `high`. We recommend setting the
+`thinkingLevel` to `minimal` for lowest latency responses. Note that minimal
+thinking does not mean the model uses no thinking at all.
 
 You can add the `includeThoughts` boolean to determine whether the model's
 generated thoughts are returned in the response, or remain hidden.

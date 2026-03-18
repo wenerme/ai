@@ -27,6 +27,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Provider id from `model_providers` (default: `openai`).",
     },
     {
+      key: "openai_base_url",
+      type: "string",
+      description:
+        "Base URL override for the built-in `openai` model provider.",
+    },
+    {
       key: "model_context_window",
       type: "number",
       description: "Context window tokens available to the active model.",
@@ -51,27 +57,39 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "approval_policy",
-      type: "untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }",
+      type: "untrusted | on-request | never | { granular = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool, request_permissions = bool, skill_approval = bool } }",
       description:
-        "Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.",
+        "Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { granular = { ... } }` to allow or auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.",
     },
     {
-      key: "approval_policy.reject.sandbox_approval",
+      key: "approval_policy.granular.sandbox_approval",
       type: "boolean",
       description:
-        "When `true`, sandbox escalation approval prompts are auto-rejected.",
+        "When `true`, sandbox escalation approval prompts are allowed to surface.",
     },
     {
-      key: "approval_policy.reject.rules",
+      key: "approval_policy.granular.rules",
       type: "boolean",
       description:
-        "When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected.",
+        "When `true`, approvals triggered by execpolicy `prompt` rules are allowed to surface.",
     },
     {
-      key: "approval_policy.reject.mcp_elicitations",
+      key: "approval_policy.granular.mcp_elicitations",
       type: "boolean",
       description:
-        "When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user.",
+        "When `true`, MCP elicitation prompts are allowed to surface instead of being auto-rejected.",
+    },
+    {
+      key: "approval_policy.granular.request_permissions",
+      type: "boolean",
+      description:
+        "When `true`, prompts from the `request_permissions` tool are allowed to surface.",
+    },
+    {
+      key: "approval_policy.granular.skill_approval",
+      type: "boolean",
+      description:
+        "When `true`, skill-script approval prompts are allowed to surface.",
     },
     {
       key: "allow_login_shell",
@@ -114,6 +132,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "unelevated | elevated",
       description:
         "Windows-only native sandbox mode when running Codex natively on Windows.",
+    },
+    {
+      key: "windows.sandbox_private_desktop",
+      type: "boolean",
+      description:
+        "Run the final sandboxed child process on a private desktop by default on native Windows. Set `false` only for compatibility with the older `Winsta0\\\\Default` behavior.",
     },
     {
       key: "notify",
@@ -189,8 +213,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     {
       key: "service_tier",
       type: "flex | fast",
-      description:
-        "Preferred service tier for new turns. `fast` is honored only when the `features.fast_mode` gate is enabled.",
+      description: "Preferred service tier for new turns.",
     },
     {
       key: "experimental_compact_prompt_file",
@@ -276,12 +299,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "features.apps",
       type: "boolean",
       description: "Enable ChatGPT Apps/connectors support (experimental).",
-    },
-    {
-      key: "features.apps_mcp_gateway",
-      type: "boolean",
-      description:
-        "Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental).",
     },
     {
       key: "mcp_servers.<id>.command",
@@ -436,6 +453,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Enable undo support (stable; off by default).",
     },
     {
+      key: "features.multi_agent",
+      type: "boolean",
+      description:
+        "Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default).",
+    },
+    {
       key: "features.personality",
       type: "boolean",
       description:
@@ -466,118 +489,22 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Enable the default `shell` tool for running commands (stable; on by default).",
     },
     {
-      key: "features.request_rule",
-      type: "boolean",
-      description:
-        "Legacy toggle for Smart approvals. Current builds include this behavior by default, so most users can leave this unset.",
-    },
-    {
-      key: "features.search_tool",
-      type: "boolean",
-      description:
-        "Legacy toggle for an older Apps discovery flow. Current builds do not use it.",
-    },
-    {
-      key: "features.collaboration_modes",
-      type: "boolean",
-      description:
-        "Legacy toggle for collaboration modes. Plan and default modes are available in current builds without setting this key.",
-    },
-    {
-      key: "features.use_linux_sandbox_bwrap",
-      type: "boolean",
-      description:
-        "Use the bubblewrap-based Linux sandbox pipeline (experimental; off by default).",
-    },
-    {
-      key: "features.remote_models",
-      type: "boolean",
-      description:
-        "Legacy toggle for an older remote-model readiness flow. Current builds do not use it.",
-    },
-    {
-      key: "features.runtime_metrics",
-      type: "boolean",
-      description:
-        "Show runtime metrics summary in TUI turn separators (experimental).",
-    },
-    {
-      key: "features.powershell_utf8",
-      type: "boolean",
-      description:
-        "Force PowerShell UTF-8 output. Enabled by default on Windows and off elsewhere.",
-    },
-    {
-      key: "features.child_agents_md",
-      type: "boolean",
-      description:
-        "Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental).",
-    },
-    {
-      key: "features.sqlite",
-      type: "boolean",
-      description:
-        "Enable SQLite-backed state persistence (stable; on by default).",
-    },
-    {
-      key: "features.image_detail_original",
-      type: "boolean",
-      description:
-        'Allow image outputs with `detail = "original"` on supported models (under development).',
-    },
-    {
-      key: "features.experimental_windows_sandbox",
-      type: "boolean",
-      description:
-        "Legacy toggle for an earlier Windows sandbox rollout. Current builds do not use it.",
-    },
-    {
-      key: "features.elevated_windows_sandbox",
-      type: "boolean",
-      description:
-        "Legacy toggle for an earlier elevated Windows sandbox rollout. Current builds do not use it.",
-    },
-    {
       key: "features.enable_request_compression",
       type: "boolean",
       description:
         "Compress streaming request bodies with zstd when supported (stable; on by default).",
     },
     {
-      key: "features.image_generation",
+      key: "features.smart_approvals",
       type: "boolean",
       description:
-        "Enable the built-in image generation tool (under development).",
+        "Route eligible approval requests through the guardian reviewer subagent (experimental; off by default).",
     },
     {
       key: "features.skill_mcp_dependency_install",
       type: "boolean",
       description:
         "Allow prompting and installing missing MCP dependencies for skills (stable; on by default).",
-    },
-    {
-      key: "features.skill_env_var_dependency_prompt",
-      type: "boolean",
-      description:
-        "Prompt for missing skill environment-variable dependencies (under development).",
-    },
-    {
-      key: "features.steer",
-      type: "boolean",
-      description:
-        "Legacy toggle from an earlier Enter/Tab steering rollout. Current builds always use the current steering behavior.",
-    },
-    {
-      key: "features.default_mode_request_user_input",
-      type: "boolean",
-      description:
-        "Allow `request_user_input` in default collaboration mode (under development; off by default).",
-    },
-    {
-      key: "features.artifact",
-      type: "boolean",
-      description:
-        "Enable native artifact tools such as slides and spreadsheets (under development).",
     },
     {
       key: "features.fast_mode",
@@ -590,18 +517,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Prevent the machine from sleeping while a turn is actively running (experimental; off by default).",
-    },
-    {
-      key: "features.responses_websockets",
-      type: "boolean",
-      description:
-        "Prefer the Responses API WebSocket transport for supported providers (under development).",
-    },
-    {
-      key: "features.responses_websockets_v2",
-      type: "boolean",
-      description:
-        "Enable Responses API WebSocket v2 mode (under development).",
     },
     {
       key: "suppress_unstable_features_warning",
@@ -1070,9 +985,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "tools.web_search",
-      type: "boolean",
+      type: 'boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }',
       description:
-        "Deprecated legacy toggle for web search; prefer the top-level `web_search` setting.",
+        "Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location.",
     },
     {
       key: "tools.view_image",
@@ -1086,83 +1001,97 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         'Web search mode (default: `"cached"`; cached uses an OpenAI-maintained index and does not fetch live pages; if you use `--yolo` or another full access sandbox setting, it defaults to `"live"`). Use `"live"` to fetch the most recent data from the web, or `"disabled"` to remove the tool.',
     },
     {
-      key: "permissions.network.enabled",
+      key: "default_permissions",
+      type: "string",
+      description:
+        "Name of the default permissions profile to apply to sandboxed tool calls.",
+    },
+    {
+      key: "permissions.<name>.filesystem",
+      type: "table",
+      description:
+        "Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`.",
+    },
+    {
+      key: "permissions.<name>.filesystem.<path>",
+      type: '"read" | "write" | "none" | table',
+      description:
+        "Grant direct access for a path or special token, or scope nested entries under that root.",
+    },
+    {
+      key: 'permissions.<name>.filesystem.":project_roots".<subpath>',
+      type: '"read" | "write" | "none"',
+      description:
+        'Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself.',
+    },
+    {
+      key: "permissions.<name>.network.enabled",
+      type: "boolean",
+      description: "Enable network access for this named permissions profile.",
+    },
+    {
+      key: "permissions.<name>.network.proxy_url",
+      type: "string",
+      description:
+        "HTTP proxy endpoint used when this permissions profile enables the managed network proxy.",
+    },
+    {
+      key: "permissions.<name>.network.enable_socks5",
       type: "boolean",
       description:
-        "Enable the managed network proxy configuration for subprocesses.",
+        "Expose a SOCKS5 listener when this permissions profile enables the managed network proxy.",
     },
     {
-      key: "permissions.network.proxy_url",
+      key: "permissions.<name>.network.socks_url",
       type: "string",
-      description: "HTTP proxy endpoint used by the managed network proxy.",
+      description: "SOCKS5 proxy endpoint used by this permissions profile.",
     },
     {
-      key: "permissions.network.admin_url",
-      type: "string",
-      description: "Admin endpoint for the managed network proxy.",
-    },
-    {
-      key: "permissions.network.enable_socks5",
-      type: "boolean",
-      description: "Expose a SOCKS5 listener from the managed network proxy.",
-    },
-    {
-      key: "permissions.network.socks_url",
-      type: "string",
-      description: "SOCKS5 proxy endpoint used by the managed network proxy.",
-    },
-    {
-      key: "permissions.network.enable_socks5_udp",
+      key: "permissions.<name>.network.enable_socks5_udp",
       type: "boolean",
       description: "Allow UDP over the SOCKS5 listener when enabled.",
     },
     {
-      key: "permissions.network.allow_upstream_proxy",
+      key: "permissions.<name>.network.allow_upstream_proxy",
       type: "boolean",
       description:
         "Allow the managed proxy to chain to another upstream proxy.",
     },
     {
-      key: "permissions.network.dangerously_allow_non_loopback_proxy",
+      key: "permissions.<name>.network.dangerously_allow_non_loopback_proxy",
       type: "boolean",
       description:
         "Permit non-loopback bind addresses for the managed proxy listener.",
     },
     {
-      key: "permissions.network.dangerously_allow_non_loopback_admin",
-      type: "boolean",
-      description:
-        "Permit non-loopback bind addresses for the managed proxy admin listener.",
-    },
-    {
-      key: "permissions.network.dangerously_allow_all_unix_sockets",
+      key: "permissions.<name>.network.dangerously_allow_all_unix_sockets",
       type: "boolean",
       description:
         "Allow the proxy to use arbitrary Unix sockets instead of the default restricted set.",
     },
     {
-      key: "permissions.network.mode",
+      key: "permissions.<name>.network.mode",
       type: "limited | full",
       description: "Network proxy mode used for subprocess traffic.",
     },
     {
-      key: "permissions.network.allowed_domains",
+      key: "permissions.<name>.network.allowed_domains",
       type: "array<string>",
       description: "Allowlist of domains permitted through the managed proxy.",
     },
     {
-      key: "permissions.network.denied_domains",
+      key: "permissions.<name>.network.denied_domains",
       type: "array<string>",
       description: "Denylist of domains blocked by the managed proxy.",
     },
     {
-      key: "permissions.network.allow_unix_sockets",
+      key: "permissions.<name>.network.allow_unix_sockets",
       type: "array<string>",
       description:
         "Allowlist of Unix socket paths permitted through the managed proxy.",
     },
     {
-      key: "permissions.network.allow_local_binding",
+      key: "permissions.<name>.network.allow_local_binding",
       type: "boolean",
       description:
         "Permit local bind/listen operations through the managed proxy.",
@@ -1245,7 +1174,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       key: "allowed_approval_policies",
       type: "array<string>",
       description:
-        "Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `reject`).",
+        "Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`).",
     },
     {
       key: "allowed_sandbox_modes",

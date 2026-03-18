@@ -3536,32 +3536,110 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
-    WebSearchServerToolType:
+    AnthropicWebSearchServerToolType:
       type: string
       enum:
         - openrouter:web_search
-      title: WebSearchServerToolType
-    WebSearchServerToolParameters:
-      type: object
-      properties:
-        max_results:
-          type: number
-          format: double
-          description: Maximum number of search results to return. Defaults to 5.
-      title: WebSearchServerToolParameters
-    WebSearchServerTool:
+      title: AnthropicWebSearchServerToolType
+    AnthropicWebSearchServerToolParametersEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: AnthropicWebSearchServerToolParametersEngine
+    AnthropicWebSearchServerToolParametersSearchContextSize:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+      description: >-
+        How much context to retrieve per result. Defaults to medium (15000
+        chars).
+      title: AnthropicWebSearchServerToolParametersSearchContextSize
+    AnthropicWebSearchServerToolParametersUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: AnthropicWebSearchServerToolParametersUserLocationType
+    AnthropicWebSearchServerToolParametersUserLocation:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchServerToolType'
+          $ref: >-
+            #/components/schemas/AnthropicWebSearchServerToolParametersUserLocationType
+        city:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+      description: Approximate user location for location-biased results.
+      title: AnthropicWebSearchServerToolParametersUserLocation
+    AnthropicWebSearchServerToolParameters:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/AnthropicWebSearchServerToolParametersEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        max_total_results:
+          type: number
+          format: double
+          description: >-
+            Maximum total number of search results across all search calls in a
+            single request. Once this limit is reached, the tool will stop
+            returning new results. Useful for controlling cost and context size
+            in agentic loops.
+        search_context_size:
+          $ref: >-
+            #/components/schemas/AnthropicWebSearchServerToolParametersSearchContextSize
+          description: >-
+            How much context to retrieve per result. Defaults to medium (15000
+            chars).
+        user_location:
+          $ref: >-
+            #/components/schemas/AnthropicWebSearchServerToolParametersUserLocation
+          description: Approximate user location for location-biased results.
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: Limit search results to these domains.
+        excluded_domains:
+          type: array
+          items:
+            type: string
+          description: Exclude search results from these domains.
+      title: AnthropicWebSearchServerToolParameters
+    AnthropicWebSearchServerTool:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/WebSearchServerToolParameters'
+          $ref: '#/components/schemas/AnthropicWebSearchServerToolParameters'
       required:
         - type
       description: >-
         OpenRouter built-in server tool: searches the web for current
         information
-      title: WebSearchServerTool
+      title: AnthropicWebSearchServerTool
     AnthropicMessagesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems0'
@@ -3570,7 +3648,7 @@ components:
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems3'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems4'
         - $ref: '#/components/schemas/DatetimeServerTool'
-        - $ref: '#/components/schemas/WebSearchServerTool'
+        - $ref: '#/components/schemas/AnthropicWebSearchServerTool'
       title: AnthropicMessagesRequestToolsItems
     AnthropicMessagesRequestToolChoiceOneOf0Type:
       type: string
@@ -4510,6 +4588,32 @@ components:
       required:
         - id
       title: AnthropicMessagesRequestPluginsItems4
+    AnthropicMessagesRequestPluginsItemsOneOf5Id:
+      type: string
+      enum:
+        - context-compression
+      title: AnthropicMessagesRequestPluginsItemsOneOf5Id
+    ContextCompressionEngine:
+      type: string
+      enum:
+        - middle-out
+      description: The compression engine to use. Defaults to "middle-out".
+      title: ContextCompressionEngine
+    AnthropicMessagesRequestPluginsItems5:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf5Id'
+        enabled:
+          type: boolean
+          description: >-
+            Set to false to disable the context-compression plugin for this
+            request. Defaults to true.
+        engine:
+          $ref: '#/components/schemas/ContextCompressionEngine'
+      required:
+        - id
+      title: AnthropicMessagesRequestPluginsItems5
     AnthropicMessagesRequestPluginsItems:
       oneOf:
         - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems0'
@@ -4517,6 +4621,7 @@ components:
         - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems2'
         - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems3'
         - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems4'
+        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems5'
       title: AnthropicMessagesRequestPluginsItems
     AnthropicMessagesRequestTrace:
       type: object

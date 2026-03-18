@@ -50,6 +50,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '409':
+          description: Conflict - App upsert conflict during auth code creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
         '500':
           description: Internal Server Error - Unexpected server error
           content:
@@ -211,6 +217,37 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    ConflictResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ConflictResponse
+      title: ConflictResponseErrorData
+    ConflictResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ConflictResponseErrorData'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Conflict - Resource conflict or concurrent modification
+      title: ConflictResponse
     InternalServerResponseErrorData:
       type: object
       properties:

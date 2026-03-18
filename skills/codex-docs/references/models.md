@@ -166,9 +166,9 @@
 For most tasks in Codex, start with `gpt-5.4`. It combines strong coding,
   reasoning, native computer use, and broader professional workflows in one
   model. Use `gpt-5.4-mini` when you want a faster, lower-cost option for
-  lighter coding tasks or subagents. The `gpt-5.3-codex-spark` model remains
+  lighter coding tasks or subagents. The `gpt-5.3-codex-spark` model is
   available in research preview for ChatGPT Pro subscribers and is optimized for
-  near-instant, text-only iteration.
+  near-instant, real-time coding iteration.
 
 ## Alternative models
 

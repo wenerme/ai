@@ -1126,6 +1126,28 @@ components:
         - id
         - status
       title: ResponsesImageGenerationCall
+    ResponsesServerToolOutputStatus:
+      type: string
+      enum:
+        - completed
+        - in_progress
+        - incomplete
+      title: ResponsesServerToolOutputStatus
+    ResponsesServerToolOutput:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Server tool type (e.g. openrouter:datetime, openrouter:web_search)
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/ResponsesServerToolOutputStatus'
+      required:
+        - type
+        - status
+      description: A generic OpenRouter server tool output item
+      title: ResponsesServerToolOutput
     OpenResponsesInputOneOf1Items:
       oneOf:
         - $ref: '#/components/schemas/OpenResponsesReasoning'
@@ -1139,6 +1161,7 @@ components:
         - $ref: '#/components/schemas/ResponsesWebSearchCallOutput'
         - $ref: '#/components/schemas/ResponsesOutputItemFileSearchCall'
         - $ref: '#/components/schemas/ResponsesImageGenerationCall'
+        - $ref: '#/components/schemas/ResponsesServerToolOutput'
       title: OpenResponsesInputOneOf1Items
     OpenResponsesInput1:
       type: array
@@ -1234,6 +1257,33 @@ components:
       required:
         - type
       title: WebSearchPreviewToolUserLocation
+    OpenResponsesWebSearchPreviewToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: OpenResponsesWebSearchPreviewToolEngine
+    OpenResponsesWebSearchPreviewToolFilters:
+      type: object
+      properties:
+        allowed_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        excluded_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+      title: OpenResponsesWebSearchPreviewToolFilters
     OpenResponsesWebSearchPreviewTool:
       type: object
       properties:
@@ -1243,6 +1293,22 @@ components:
           $ref: '#/components/schemas/ResponsesSearchContextSize'
         user_location:
           $ref: '#/components/schemas/WebSearchPreviewToolUserLocation'
+        engine:
+          $ref: '#/components/schemas/OpenResponsesWebSearchPreviewToolEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        filters:
+          oneOf:
+            - $ref: '#/components/schemas/OpenResponsesWebSearchPreviewToolFilters'
+            - type: 'null'
       required:
         - type
       description: Web search preview tool configuration
@@ -1252,6 +1318,33 @@ components:
       enum:
         - web_search_preview_2025_03_11
       title: OpenResponsesWebSearchPreview20250311ToolType
+    OpenResponsesWebSearchPreview20250311ToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: OpenResponsesWebSearchPreview20250311ToolEngine
+    OpenResponsesWebSearchPreview20250311ToolFilters:
+      type: object
+      properties:
+        allowed_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        excluded_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+      title: OpenResponsesWebSearchPreview20250311ToolFilters
     OpenResponsesWebSearchPreview20250311Tool:
       type: object
       properties:
@@ -1261,6 +1354,23 @@ components:
           $ref: '#/components/schemas/ResponsesSearchContextSize'
         user_location:
           $ref: '#/components/schemas/WebSearchPreviewToolUserLocation'
+        engine:
+          $ref: '#/components/schemas/OpenResponsesWebSearchPreview20250311ToolEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        filters:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/OpenResponsesWebSearchPreview20250311ToolFilters
+            - type: 'null'
       required:
         - type
       description: Web search preview tool configuration (2025-03-11 version)
@@ -1274,6 +1384,12 @@ components:
       type: object
       properties:
         allowed_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        excluded_domains:
           type:
             - array
             - 'null'
@@ -1308,6 +1424,17 @@ components:
             - 'null'
       description: User location information for web search
       title: ResponsesWebSearchUserLocation
+    OpenResponsesWebSearchToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: OpenResponsesWebSearchToolEngine
     OpenResponsesWebSearchTool:
       type: object
       properties:
@@ -1321,6 +1448,18 @@ components:
           $ref: '#/components/schemas/ResponsesSearchContextSize'
         user_location:
           $ref: '#/components/schemas/ResponsesWebSearchUserLocation'
+        engine:
+          $ref: '#/components/schemas/OpenResponsesWebSearchToolEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
       required:
         - type
       description: Web search tool configuration
@@ -1339,7 +1478,24 @@ components:
             - 'null'
           items:
             type: string
+        excluded_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
       title: OpenResponsesWebSearch20250826ToolFilters
+    OpenResponsesWebSearch20250826ToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - exa
+      description: >-
+        Which search engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        search. "exa" forces the Exa search API.
+      title: OpenResponsesWebSearch20250826ToolEngine
     OpenResponsesWebSearch20250826Tool:
       type: object
       properties:
@@ -1353,6 +1509,18 @@ components:
           $ref: '#/components/schemas/ResponsesSearchContextSize'
         user_location:
           $ref: '#/components/schemas/ResponsesWebSearchUserLocation'
+        engine:
+          $ref: '#/components/schemas/OpenResponsesWebSearch20250826ToolEngine'
+          description: >-
+            Which search engine to use. "auto" (default) uses native if the
+            provider supports it, otherwise Exa. "native" forces the provider's
+            built-in search. "exa" forces the Exa search API.
+        max_results:
+          type: number
+          format: double
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
       required:
         - type
       description: Web search tool configuration (2025-08-26 version)
@@ -1888,32 +2056,41 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
-    WebSearchServerToolType:
+    ResponsesWebSearchServerToolType:
       type: string
       enum:
         - openrouter:web_search
-      title: WebSearchServerToolType
-    WebSearchServerToolParameters:
+      title: ResponsesWebSearchServerToolType
+    ResponsesWebSearchServerToolParameters:
       type: object
       properties:
         max_results:
           type: number
           format: double
-          description: Maximum number of search results to return. Defaults to 5.
-      title: WebSearchServerToolParameters
-    WebSearchServerTool:
+          description: >-
+            Maximum number of search results to return per search call. Defaults
+            to 5.
+        max_total_results:
+          type: number
+          format: double
+          description: >-
+            Maximum total number of search results across all search calls in a
+            single request. Once this limit is reached, the tool will stop
+            returning new results.
+      title: ResponsesWebSearchServerToolParameters
+    ResponsesWebSearchServerTool:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchServerToolType'
+          $ref: '#/components/schemas/ResponsesWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/WebSearchServerToolParameters'
+          $ref: '#/components/schemas/ResponsesWebSearchServerToolParameters'
       required:
         - type
       description: >-
         OpenRouter built-in server tool: searches the web for current
         information
-      title: WebSearchServerTool
+      title: ResponsesWebSearchServerTool
     OpenResponsesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/OpenResponsesRequestToolsItems0'
@@ -1931,7 +2108,7 @@ components:
         - $ref: '#/components/schemas/OpenResponsesApplyPatchTool'
         - $ref: '#/components/schemas/OpenResponsesCustomTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
-        - $ref: '#/components/schemas/WebSearchServerTool'
+        - $ref: '#/components/schemas/ResponsesWebSearchServerTool'
       title: OpenResponsesRequestToolsItems
     OpenAiResponsesToolChoice0:
       type: string
@@ -2722,6 +2899,32 @@ components:
       required:
         - id
       title: OpenResponsesRequestPluginsItems4
+    OpenResponsesRequestPluginsItemsOneOf5Id:
+      type: string
+      enum:
+        - context-compression
+      title: OpenResponsesRequestPluginsItemsOneOf5Id
+    ContextCompressionEngine:
+      type: string
+      enum:
+        - middle-out
+      description: The compression engine to use. Defaults to "middle-out".
+      title: ContextCompressionEngine
+    OpenResponsesRequestPluginsItems5:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/OpenResponsesRequestPluginsItemsOneOf5Id'
+        enabled:
+          type: boolean
+          description: >-
+            Set to false to disable the context-compression plugin for this
+            request. Defaults to true.
+        engine:
+          $ref: '#/components/schemas/ContextCompressionEngine'
+      required:
+        - id
+      title: OpenResponsesRequestPluginsItems5
     OpenResponsesRequestPluginsItems:
       oneOf:
         - $ref: '#/components/schemas/OpenResponsesRequestPluginsItems0'
@@ -2729,6 +2932,7 @@ components:
         - $ref: '#/components/schemas/OpenResponsesRequestPluginsItems2'
         - $ref: '#/components/schemas/OpenResponsesRequestPluginsItems3'
         - $ref: '#/components/schemas/OpenResponsesRequestPluginsItems4'
+        - $ref: '#/components/schemas/OpenResponsesRequestPluginsItems5'
       title: OpenResponsesRequestPluginsItems
     OpenResponsesRequestTrace:
       type: object
@@ -3516,41 +3720,7 @@ components:
         - summary
       description: An output item containing reasoning
       title: ResponsesOutputItemReasoning
-    ResponsesDatetimeOutputType:
-      type: string
-      enum:
-        - openrouter:datetime
-      title: ResponsesDatetimeOutputType
-    ResponsesDatetimeOutputStatus:
-      type: string
-      enum:
-        - completed
-        - in_progress
-        - incomplete
-      title: ResponsesDatetimeOutputStatus
-    ResponsesDatetimeOutput:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ResponsesDatetimeOutputType'
-        id:
-          type: string
-        status:
-          $ref: '#/components/schemas/ResponsesDatetimeOutputStatus'
-        datetime:
-          type: string
-          description: ISO 8601 datetime string
-        timezone:
-          type: string
-          description: IANA timezone name
-      required:
-        - type
-        - status
-        - datetime
-        - timezone
-      description: An openrouter:datetime server tool output item
-      title: ResponsesDatetimeOutput
-    OpenResponsesNonStreamingResponseOutputItems:
+    ResponsesOutputItem:
       oneOf:
         - $ref: '#/components/schemas/ResponsesOutputMessage'
         - $ref: '#/components/schemas/ResponsesOutputItemReasoning'
@@ -3558,8 +3728,9 @@ components:
         - $ref: '#/components/schemas/ResponsesWebSearchCallOutput'
         - $ref: '#/components/schemas/ResponsesOutputItemFileSearchCall'
         - $ref: '#/components/schemas/ResponsesImageGenerationCall'
-        - $ref: '#/components/schemas/ResponsesDatetimeOutput'
-      title: OpenResponsesNonStreamingResponseOutputItems
+        - $ref: '#/components/schemas/ResponsesServerToolOutput'
+      description: An output item from the response
+      title: ResponsesOutputItem
     OpenResponsesUsageCostDetails:
       type: object
       properties:
@@ -3635,7 +3806,7 @@ components:
         output:
           type: array
           items:
-            $ref: '#/components/schemas/OpenResponsesNonStreamingResponseOutputItems'
+            $ref: '#/components/schemas/ResponsesOutputItem'
         user:
           type:
             - string

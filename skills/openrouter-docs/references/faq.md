@@ -186,7 +186,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     and completion are not logged by default. We do zero logging of your prompts/completions,
     even if an error occurs, unless you opt-in to logging them.
 
-    We have an opt-in [setting](https://openrouter.ai/settings/privacy) that
+    We have an opt-in [setting](https://openrouter.ai/settings/preferences) that
     lets users opt-in to log their prompts and completions in exchange for a 1%
     discount on usage costs.
 
@@ -260,7 +260,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     and are usually not suitable for production use. If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits,
     the free models will be limited to {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
 
-    You can also use the [Free Models Router](/docs/guides/guides/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
+    You can also use the [Free Models Router](/docs/guides/get-started/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
   </Accordion>
 
   <Accordion title="How do volume discounts work?">

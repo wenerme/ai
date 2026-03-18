@@ -16,4 +16,4 @@ Free variants provide access to models without cost, but may have different rate
 
 ## Related Resources
 
-* [Free Models Router](/docs/guides/guides/free-models-router-playground) - Learn how to use the Free Models Router in the Chat Playground for zero-cost inference
+* [Free Models Router](/docs/guides/get-started/free-models-router-playground) - Learn how to use the Free Models Router in the Chat Playground for zero-cost inference

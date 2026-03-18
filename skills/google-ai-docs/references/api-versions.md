@@ -6,33 +6,33 @@ and `v1beta` versions of the Gemini API.
 
 | Feature | v1 | v1beta |
 |---|---|---|
-| Generate Content - Text-only input |   |   |
-| Generate Content - Text-and-image input |   |   |
-| Generate Content - Text output |   |   |
-| Generate Content - Multi-turn conversations (chat) |   |   |
-| Generate Content - Function calls |   |   |
-| Generate Content - Streaming |   |   |
-| Embed Content - Text-only input |   |   |
-| Generate Answer |   |   |
-| Semantic retriever |   |   |
-| Interactions API |   |   |
+| Generate Content - Text-only input | Yes | Yes |
+| Generate Content - Text-and-image input | Yes | Yes |
+| Generate Content - Text output | Yes | Yes |
+| Generate Content - Multi-turn conversations (chat) | Yes | Yes |
+| Generate Content - Function calls |   | Yes |
+| Generate Content - Streaming | Yes | Yes |
+| Embed Content - Text-only input | Yes | Yes |
+| Generate Answer |   | Yes |
+| Semantic retriever |   | Yes |
+| Interactions API |   | Yes |
 
-- - Supported
-- - Will never be supported
+- Yes - Supported
+- No - Will never be supported
 
 ## Configure API version in an SDK
 
 The Gemini API SDK's default to `v1beta`, but you can opt to use other versions
-by setting the API version as shown in the following code sample:  
+by setting the API version as shown in the following code sample:
 
 ### Python
 
     from google import genai
 
-    client = genai.Client(http_options={'api_version': 'v1alpha'})
+    client = genai.Client(http_options={'api_version': 'v1'})
 
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents="Explain how AI works",
     )
 
@@ -43,12 +43,12 @@ by setting the API version as shown in the following code sample:
     import { GoogleGenAI } from "@google/genai";
 
     const ai = new GoogleGenAI({
-      httpOptions: { apiVersion: "v1alpha" },
+      httpOptions: { apiVersion: "v1" },
     });
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3-flash-preview",
         contents: "Explain how AI works",
       });
       console.log(response.text);
@@ -58,7 +58,7 @@ by setting the API version as shown in the following code sample:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1/models/gemini-3-flash-preview:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \

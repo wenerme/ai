@@ -123,7 +123,7 @@ Use the thread APIs to create, list, or archive conversations. Drive a conversat
 
 Clients must send a single `initialize` request per transport connection before invoking any other method on that connection, then acknowledge with an `initialized` notification. Requests sent before initialization receive a `Not initialized` error, and repeated `initialize` calls on the same connection return `Already initialized`.
 
-The server returns the user agent string it will present to upstream services. Set `clientInfo` to identify your integration.
+The server returns the user agent string it will present to upstream services plus `platformFamily` and `platformOs` values that describe the runtime target. Set `clientInfo` to identify your integration.
 
 `initialize.params.capabilities` also supports per-connection notification opt-out via `optOutNotificationMethods`, which is a list of exact method names to suppress for that connection. Matching is exact (no wildcards/prefixes). Unknown method names are accepted and ignored.
 
@@ -159,10 +159,7 @@ Example with notification opt-out:
     },
     "capabilities": {
       "experimentalApi": true,
-      "optOutNotificationMethods": [
-        "codex/event/session_configured",
-        "item/agentMessage/delta"
-      ]
+      "optOutNotificationMethods": ["thread/started", "item/agentMessage/delta"]
     }
   }
 }
@@ -204,6 +201,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
 - `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filters. Returned `thread` objects include runtime `status`.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
+- `thread/name/set` - set or update a thread's user-facing name for a loaded thread or a persisted rollout; emits `thread/name/updated`.
 - `thread/archive` - move a thread's log file into the archived directory; returns `{}` on success and emits `thread/archived`.
 - `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread and emits `thread/closed`.
 - `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread` and emits `thread/unarchived`.
@@ -215,10 +213,15 @@ If a client sends an experimental method or field without opting in, app-server 
 - `turn/interrupt` - request cancellation of an in-flight turn; success is `{}` and the turn ends with `status: "interrupted"`.
 - `review/start` - kick off the Codex reviewer for a thread; emits `enteredReviewMode` and `exitedReviewMode` items.
 - `command/exec` - run a single command under the server sandbox without starting a thread/turn.
+- `command/exec/write` - write stdin bytes to a running `command/exec` session or close stdin.
+- `command/exec/resize` - resize a running PTY-backed `command/exec` session.
+- `command/exec/terminate` - terminate a running `command/exec` session.
 - `model/list` - list available models (set `includeHidden: true` to include entries with `hidden: true`) with effort options, optional `upgrade`, and `inputModalities`.
 - `experimentalFeature/list` - list feature flags with lifecycle stage metadata and cursor pagination.
 - `collaborationMode/list` - list collaboration mode presets (experimental, no pagination).
 - `skills/list` - list skills for one or more `cwd` values (supports `forceReload` and optional `perCwdExtraUserRoots`).
+- `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata.
+- `plugin/read` - read one plugin by marketplace path and plugin name, including bundled skills, apps, and MCP server names.
 - `app/list` - list available apps (connectors) with pagination plus accessibility/enabled metadata.
 - `skills/config/write` - enable or disable skills by path.
 - `mcpServer/oauth/login` - start an OAuth login for a configured MCP server; returns an authorization URL and emits `mcpServer/oauthLogin/completed` on completion.
@@ -233,6 +236,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `config/value/write` - write a single configuration key/value to the user's `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user's `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven't set any up).
+- `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, and `fs/copy` - operate on absolute filesystem paths through the app-server v2 filesystem API.
 
 ## Models
 
@@ -713,6 +717,8 @@ Notes:
 - The server rejects empty `command` arrays.
 - `sandboxPolicy` accepts the same shape used by `turn/start` (for example, `dangerFullAccess`, `readOnly`, `workspaceWrite`, `externalSandbox`).
 - When omitted, `timeoutMs` falls back to the server default.
+- Set `tty: true` for PTY-backed sessions, and use `processId` when you plan to follow up with `command/exec/write`, `command/exec/resize`, or `command/exec/terminate`.
+- Set `streamStdoutStderr: true` to receive `command/exec/outputDelta` notifications while the command is running.
 
 ### Read admin requirements (`configRequirements/read`)
 
@@ -773,7 +779,7 @@ Clients can suppress specific notifications per connection by sending exact meth
 
 - Exact-match only: `item/agentMessage/delta` suppresses only that method.
 - Unknown method names are ignored.
-- Applies to both legacy (`codex/event/*`) and v2 (`thread/*`, `turn/*`, `item/*`, etc.) notifications.
+- Applies to the current `thread/*`, `turn/*`, `item/*`, and related v2 notifications.
 - Doesn't apply to requests, responses, or errors.
 
 ### Fuzzy file search events (experimental)
