@@ -529,6 +529,50 @@ These starting points work well for many migrations:
 | Research-heavy assistants | `medium` or `high`                 | Use explicit research multi-pass and citation gating.               |
 | Long-horizon agents       | `medium` or `high`                 | Add tool persistence and completeness accounting.                   |
 
+### Small-model guidance for `gpt-5.4-mini` and `gpt-5.4-nano`
+
+`gpt-5.4-mini` and `gpt-5.4-nano` are highly steerable, but they are less likely than larger models to infer missing steps, resolve ambiguity implicitly, or package outputs the way you intended unless you specify that behavior directly. In practice, prompts for smaller models are often a bit longer and more explicit.
+
+**How `gpt-5.4-mini` differs**
+
+- `gpt-5.4-mini` is more literal and makes fewer assumptions.
+- It is strong when the task is clearly structured, but weaker on implicit workflows and ambiguity handling.
+- By default, it may try to keep the conversation going with a follow-up question unless you suppress that behavior explicitly.
+
+**Prompting `gpt-5.4-mini`**
+
+- Put critical rules first.
+- Specify the full execution order when tool use or side effects matter.
+- Do not rely on "you MUST" alone. Use structural scaffolding such as numbered steps, decision rules, and explicit action definitions.
+- Separate "do the action" from "report the action."
+- Show the correct flow, not just the final format.
+- Define ambiguity behavior explicitly: when to ask, abstain, or proceed.
+- Specify packaging directly: answer length, whether to ask a follow-up question, citation style, and section order.
+- Be careful with `output nothing else`. Prefer scoped instructions such as `after the final JSON, output nothing further`.
+
+**Prompting `gpt-5.4-nano`**
+
+- Use `gpt-5.4-nano` only for narrow, well-bounded tasks.
+- Prefer closed outputs: labels, enums, short JSON, or fixed templates.
+- Avoid multi-step orchestration unless the flow is extremely constrained.
+- Route ambiguous or planning-heavy tasks to a stronger model instead of over-prompting `gpt-5.4-nano`.
+
+**Good default pattern**
+
+1. Task
+2. Critical rule
+3. Exact step order
+4. Edge cases or clarification behavior
+5. Output format
+6. One correct example
+
+**Avoid**
+
+- Implied next steps
+- Unspecified edge cases
+- Schema-only prompts for tool workflows
+- Generic instructions without structure
+
 ### Web search and deep research
 
 If you are migrating a research agent in particular, make these prompt updates before increasing reasoning effort:

@@ -153,16 +153,16 @@ Like earlier GPT-5 models, GPT-5.4 supports custom tools, parameters to control 
 
 In general, `gpt-5.4` is the default model for your most important work across both general-purpose tasks and coding. It replaces the previous `gpt-5.2` model in the API, and `gpt-5.3-codex` in Codex. The model powering ChatGPT is `gpt-5-chat-latest`. For more difficult problems, `gpt-5.4-pro` uses more compute to think longer and provide consistently better answers.
 
-For a smaller model, use `gpt-5-mini`.
+For smaller, faster variants, start with `gpt-5.4-mini` or `gpt-5.4-nano`.
 
 To help you pick the model that best fits your use case, consider these tradeoffs:
 
-| Variant                                       | Best for                                                                                                             |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4)         | General-purpose work, including complex reasoning, broad world knowledge, and code-heavy or multi-step agentic tasks |
-| [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro) | Tough problems that may take longer to solve and need deeper reasoning                                               |
-| [`gpt-5-mini`](https://developers.openai.com/api/docs/models/gpt-5-mini)   | Cost-optimized reasoning and chat; balances speed, cost, and capability                                              |
-| [`gpt-5-nano`](https://developers.openai.com/api/docs/models/gpt-5-nano)   | High-throughput tasks, especially straightforward instruction-following or classification                            |
+| Variant                                         | Best for                                                                                                             |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4)           | General-purpose work, including complex reasoning, broad world knowledge, and code-heavy or multi-step agentic tasks |
+| [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro)   | Tough problems that may take longer to solve and need deeper reasoning                                               |
+| [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini) | High-volume coding, computer use, and agent workflows that still need strong reasoning                               |
+| [`gpt-5.4-nano`](https://developers.openai.com/api/docs/models/gpt-5.4-nano) | Simple high-throughput tasks where speed and cost matter most                                                        |
 
 ### Lower reasoning effort
 
@@ -420,8 +420,8 @@ When migrating to GPT-5.4 from an older OpenAI model, start by experimenting wit
 - **gpt-5.2**: `gpt-5.4` with default settings is meant to be a drop-in replacement.
 - **o3**: `gpt-5.4` with `medium` or `high` reasoning. Start with `medium` reasoning with prompt tuning, then increase to `high` if you aren't getting the results you want.
 - **gpt-4.1**: `gpt-5.4` with `none` reasoning. Start with `none` and tune your prompts; increase if you need better performance.
-- **o4-mini or gpt-4.1-mini**: `gpt-5-mini` with prompt tuning is a great replacement.
-- **gpt-4.1-nano**: `gpt-5-nano` with prompt tuning is a great replacement.
+- **o4-mini or gpt-4.1-mini**: `gpt-5.4-mini` with prompt tuning is a great replacement.
+- **gpt-4.1-nano**: `gpt-5.4-nano` with prompt tuning is a great replacement.
 
 ### New `phase` parameter
 

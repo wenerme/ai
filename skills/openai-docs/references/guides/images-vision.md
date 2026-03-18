@@ -494,6 +494,7 @@ Different models use different resizing rules before image tokenization:
   </tr>
   <tr>
     <td>
+      <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>,
       <code>gpt-5-mini</code>, <code>gpt-5-nano</code>, <code>gpt-5.2</code>,
       <code>gpt-5.3-codex</code>, <code>gpt-5-codex-mini</code>,
       <code>gpt-5.1-codex-mini</code>, <code>gpt-5.2-codex</code>,
@@ -563,6 +564,8 @@ D. Apply a multiplier based on the model to get the total tokens:
 
 | Model           | Multiplier |
 | --------------- | ---------- |
+| `gpt-5.4-mini`  | 1.62       |
+| `gpt-5.4-nano`  | 2.46       |
 | `gpt-5-mini`    | 1.62       |
 | `gpt-5-nano`    | 2.46       |
 | `gpt-4.1-mini*` | 1.62       |

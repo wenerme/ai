@@ -8,15 +8,23 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 85 more or string`
+- `model: "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 89 more or string`
 
   Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
-  - `UnionMember0 = "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 85 more`
+  - `UnionMember0 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 89 more`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
     - `"gpt-5.4"`
+
+    - `"gpt-5.4-mini"`
+
+    - `"gpt-5.4-nano"`
+
+    - `"gpt-5.4-mini-2026-03-17"`
+
+    - `"gpt-5.4-nano-2026-03-17"`
 
     - `"gpt-5.3-chat-latest"`
 

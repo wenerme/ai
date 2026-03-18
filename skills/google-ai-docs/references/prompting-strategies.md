@@ -527,36 +527,6 @@ You can adapt this template to fit your specific use case constraints.
 
     9) Inhibit your response: only take an action after all the above reasoning is completed. Once you've taken an action, you cannot take it back.
 
-## Generative models under the hood
-
-This section aims to answer the question - ***Is there randomness in generative
-models' responses, or are they deterministic?***
-
-The short answer - yes to both. When you prompt a generative model, a text
-response is generated in two stages. In the first stage, the generative model
-processes the input prompt and generates a **probability distribution** over
-possible tokens (words) that are likely to come next. For example, if you prompt
-with the input text "The dog jumped over the ... ", the generative model will
-produce an array of probable next words:
-
-    [("fence", 0.77), ("ledge", 0.12), ("blanket", 0.03), ...]
-
-This process is deterministic; a generative model will produce this same
-distribution every time it's input the same prompt text.
-
-In the second stage, the generative model converts these distributions into
-actual text responses through one of several decoding strategies. A simple
-decoding strategy might select the most likely token at every timestep. This
-process would always be deterministic. However, you could instead choose to
-generate a response by *randomly sampling* over the distribution returned by the
-model. This process would be stochastic (random). Control the degree of
-randomness allowed in this decoding process by setting the temperature. A
-temperature of 0 means only the most likely tokens are selected, and there's no
-randomness. Conversely, a high temperature injects a high degree of randomness
-into the tokens selected by the model, leading to more unexpected, surprising
-model responses. For **Gemini 3**, it's recommended to not change the default
-temperature of 1.0 to avoid unexpected outcomes.
-
 ## Next steps
 
 - Now that you have a deeper understanding of prompt design, try writing your own prompts using [Google AI Studio](http://aistudio.google.com).

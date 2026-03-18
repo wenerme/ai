@@ -10,15 +10,23 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Parameters
 
-- `model: Union[Literal["gpt-5.4", "gpt-5.3-chat-latest", "gpt-5.2", 85 more], str, null]`
+- `model: Union[Literal["gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", 89 more], str, null]`
 
   Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
 
-  - `Literal["gpt-5.4", "gpt-5.3-chat-latest", "gpt-5.2", 85 more]`
+  - `Literal["gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", 89 more]`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
 
     - `"gpt-5.4"`
+
+    - `"gpt-5.4-mini"`
+
+    - `"gpt-5.4-nano"`
+
+    - `"gpt-5.4-mini-2026-03-17"`
+
+    - `"gpt-5.4-nano-2026-03-17"`
 
     - `"gpt-5.3-chat-latest"`
 

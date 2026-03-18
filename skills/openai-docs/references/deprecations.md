@@ -47,15 +47,15 @@ On November 14th, 2025, we notified developers using DALL·E model snapshots of 
 
 To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models with declining usage over the next six to twelve months. Access to these models will be shut down on the dates below.
 
-| Shutdown date | Model / system                                                                                                             | Recommended replacement         |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| 2026‑03‑26    | `gpt-4-0314`                                                                                                               | `gpt-5` or `gpt-4.1*`           |
-| 2026‑03‑26    | `gpt-4-1106-preview`                                                                                                       | `gpt-5` or `gpt-4.1*`           |
-| 2026‑03‑26    | `gpt-4-0125-preview` (including `gpt-4-turbo-preview` and `gpt-4-turbo-preview-completions`, which point to this snapshot) | `gpt-5` or `gpt-4.1*`           |
-| 2026-09-28    | `gpt-3.5-turbo-instruct`                                                                                                   | `gpt-5-mini` or `gpt-4.1-mini*` |
-| 2026-09-28    | `babbage-002`                                                                                                              | `gpt-5-mini` or `gpt-4.1-mini*` |
-| 2026-09-28    | `davinci-002`                                                                                                              | `gpt-5-mini` or `gpt-4.1-mini*` |
-| 2026-09-28    | `gpt-3.5-turbo-1106`                                                                                                       | `gpt-5-mini` or `gpt-4.1-mini*` |
+| Shutdown date | Model / system                                                                                                             | Recommended replacement        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 2026‑03‑26    | `gpt-4-0314`                                                                                                               | `gpt-5` or `gpt-4.1*`          |
+| 2026‑03‑26    | `gpt-4-1106-preview`                                                                                                       | `gpt-5` or `gpt-4.1*`          |
+| 2026‑03‑26    | `gpt-4-0125-preview` (including `gpt-4-turbo-preview` and `gpt-4-turbo-preview-completions`, which point to this snapshot) | `gpt-5` or `gpt-4.1*`          |
+| 2026-09-28    | `gpt-3.5-turbo-instruct`                                                                                                   | `gpt-5.4-mini` or `gpt-5-mini` |
+| 2026-09-28    | `babbage-002`                                                                                                              | `gpt-5.4-mini` or `gpt-5-mini` |
+| 2026-09-28    | `davinci-002`                                                                                                              | `gpt-5.4-mini` or `gpt-5-mini` |
+| 2026-09-28    | `gpt-3.5-turbo-1106`                                                                                                       | `gpt-5.4-mini` or `gpt-5-mini` |
 
 \*For tasks that are especially latency sensitive and don't require reasoning
 

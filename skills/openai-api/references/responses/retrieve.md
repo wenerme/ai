@@ -3333,9 +3333,17 @@ Retrieves a model response with the given ID.
 
     - `UnionMember0 = string`
 
-    - `UnionMember1 = "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 71 more`
+    - `UnionMember1 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
       - `"gpt-5.4"`
+
+      - `"gpt-5.4-mini"`
+
+      - `"gpt-5.4-nano"`
+
+      - `"gpt-5.4-mini-2026-03-17"`
+
+      - `"gpt-5.4-nano-2026-03-17"`
 
       - `"gpt-5.3-chat-latest"`
 

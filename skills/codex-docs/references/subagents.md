@@ -210,7 +210,7 @@ Lead with concrete findings, include reproduction steps when possible, and avoid
 ```toml
 name = "docs_researcher"
 description = "Documentation specialist that uses the docs MCP server to verify APIs and framework behavior."
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.4-mini"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -288,7 +288,7 @@ max_depth = 1
 ```toml
 name = "code_mapper"
 description = "Read-only codebase explorer for locating the relevant frontend and backend code paths."
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.4-mini"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """

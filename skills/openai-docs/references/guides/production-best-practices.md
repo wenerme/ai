@@ -87,7 +87,7 @@ Now that we have looked at the basics of latency, let’s take a look at various
 #### Model
 
 Our API offers different models with varying levels of complexity and generality. The most capable models, such as `gpt-5`, can generate more complex and diverse completions, but they also take longer to process your query.
-Models such as `gpt-5-nano`, can generate faster and cheaper Responses, but they may generate results that are less accurate or relevant for your query. You can choose the model that best suits your use case and the trade-off between speed, cost, and quality.
+Models such as `gpt-5.4-mini` and `gpt-5.4-nano` can generate faster and cheaper Responses, while `gpt-5.4` is a stronger default when you want more headroom on complex tasks. You can choose the model that best suits your use case and the trade-off between speed, cost, and quality.
 
 #### Number of completion tokens
 

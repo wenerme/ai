@@ -6,7 +6,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-model="gpt-5-mini",
+model="gpt-5.4-mini",
 messages=[
 {"role": "user", "content": "This is a test"}
 ],
@@ -18,7 +18,7 @@ curl https://api.openai.com/v1/chat/completions \\
 -H "Content-Type: application/json" \\
 -H "Authorization: Bearer $OPENAI_API_KEY" \\
 -d '{
-"model": "gpt-5-mini",
+"model": "gpt-5.4-mini",
 "messages": [
 {"role": "user", "content": "This is a test"}
 ],
@@ -33,7 +33,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-model="gpt-5-mini",
+model="gpt-5.4-mini",
 input="This is a test",
 safety_identifier="user_123456",
 )
@@ -43,7 +43,7 @@ curl https://api.openai.com/v1/responses \\
 -H "Content-Type: application/json" \\
 -H "Authorization: Bearer $OPENAI_API_KEY" \\
 -d '{
-"model": "gpt-5-mini",
+"model": "gpt-5.4-mini",
 "input": "This is a test",
 "safety_identifier": "user_123456"
 }'

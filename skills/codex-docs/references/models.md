@@ -44,6 +44,43 @@
 
 <ModelDetails
   client:load
+  name="gpt-5.4-mini"
+  slug="gpt-5.4-mini"
+  wallpaperUrl="/images/api/models/gpt-5-mini.jpg"
+  description="Fast, efficient mini model for responsive coding tasks and subagents."
+  data={{
+    features: [
+      {
+        title: "Capability",
+        value: "",
+        icons: [
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+        ],
+      },
+      {
+        title: "Speed",
+        value: "",
+        icons: ["openai.Flash", "openai.Flash", "openai.Flash", "openai.Flash"],
+      },
+      {
+        title: "Codex CLI & SDK",
+        value: true,
+      },
+      { title: "Codex app & IDE extension", value: true },
+      {
+        title: "Codex Cloud",
+        value: false,
+      },
+      { title: "ChatGPT Credits", value: true },
+      { title: "API Access", value: true },
+    ],
+  }}
+/>
+
+<ModelDetails
+  client:load
   name="gpt-5.3-codex"
   slug="gpt-5.3-codex"
   wallpaperUrl="/images/codex/codex-wallpaper-1.webp"
@@ -128,9 +165,10 @@
 
 For most tasks in Codex, start with `gpt-5.4`. It combines strong coding,
   reasoning, native computer use, and broader professional workflows in one
-  model. The `gpt-5.3-codex-spark` model is available in research preview for
-  ChatGPT Pro subscribers and is optimized for near-instant, real-time coding
-  iteration.
+  model. Use `gpt-5.4-mini` when you want a faster, lower-cost option for
+  lighter coding tasks or subagents. The `gpt-5.3-codex-spark` model remains
+  available in research preview for ChatGPT Pro subscribers and is optimized for
+  near-instant, text-only iteration.
 
 ## Alternative models
 

@@ -3402,6 +3402,117 @@ components:
         - type
         - name
       title: AnthropicMessagesRequestToolsItems3
+    AnthropicMessagesRequestToolsItemsOneOf4Type:
+      type: string
+      enum:
+        - web_search_20260209
+      title: AnthropicMessagesRequestToolsItemsOneOf4Type
+    AnthropicMessagesRequestToolsItemsOneOf4Name:
+      type: string
+      enum:
+        - web_search
+      title: AnthropicMessagesRequestToolsItemsOneOf4Name
+    AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems:
+      type: string
+      enum:
+        - direct
+        - code_execution_20250825
+        - code_execution_20260120
+      title: AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems
+    AnthropicMessagesRequestToolsItemsOneOf4UserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: AnthropicMessagesRequestToolsItemsOneOf4UserLocationType
+    AnthropicMessagesRequestToolsItemsOneOf4UserLocation:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4UserLocationType
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+      required:
+        - type
+      title: AnthropicMessagesRequestToolsItemsOneOf4UserLocation
+    AnthropicMessagesRequestToolsItemsOneOf4CacheControlType:
+      type: string
+      enum:
+        - ephemeral
+      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControlType
+    AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl:
+      type: string
+      enum:
+        - 5m
+        - 1h
+      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl
+    AnthropicMessagesRequestToolsItemsOneOf4CacheControl:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControlType
+        ttl:
+          $ref: >-
+            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl
+      required:
+        - type
+      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControl
+    AnthropicMessagesRequestToolsItems4:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4Type'
+        name:
+          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4Name'
+        allowed_callers:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems
+        allowed_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        blocked_domains:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        max_uses:
+          type:
+            - number
+            - 'null'
+          format: double
+        user_location:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4UserLocation
+            - type: 'null'
+        cache_control:
+          $ref: >-
+            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControl
+      required:
+        - type
+        - name
+      title: AnthropicMessagesRequestToolsItems4
     DatetimeServerToolType:
       type: string
       enum:
@@ -3457,6 +3568,7 @@ components:
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems1'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems2'
         - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems3'
+        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems4'
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/WebSearchServerTool'
       title: AnthropicMessagesRequestToolsItems

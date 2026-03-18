@@ -68,8 +68,6 @@ For a complete list of parameters, see the [Parameters](/docs/api-reference/para
     prediction?: { type: 'content'; content: string };
 
     // OpenRouter-only parameters
-    // See "Prompt Transforms" section: openrouter.ai/docs/guides/features/message-transforms
-    transforms?: string[];
     // See "Model Routing" section: openrouter.ai/docs/guides/features/model-routing
     models?: string[];
     route?: 'fallback';
@@ -151,7 +149,7 @@ For a complete list of parameters, see the [Parameters](/docs/api-reference/para
 
   // Plugin configuration
   type Plugin = {
-    id: string; // 'web', 'file-parser', 'response-healing'
+    id: string; // 'web', 'file-parser', 'response-healing', 'context-compression'
     enabled?: boolean;
     // Additional plugin-specific options
     [key: string]: unknown;
@@ -170,7 +168,7 @@ For detailed usage and examples, see [Structured Outputs](/docs/guides/features/
 
 ### Plugins
 
-OpenRouter plugins extend model capabilities with features like web search, PDF processing, and response healing. Enable plugins by adding a `plugins` array to your request:
+OpenRouter plugins extend model capabilities with features like web search, PDF processing, response healing, and context compression. Enable plugins by adding a `plugins` array to your request:
 
 ```json
 {
@@ -181,7 +179,7 @@ OpenRouter plugins extend model capabilities with features like web search, PDF 
 }
 ```
 
-Available plugins include `web` (real-time web search), `file-parser` (PDF processing), and `response-healing` (automatic JSON repair). For detailed configuration options, see [Plugins](/docs/guides/features/plugins)
+Available plugins include `web` (real-time web search), `file-parser` (PDF processing), `response-healing` (automatic JSON repair), and `context-compression` (middle-out prompt compression). For detailed configuration options, see [Plugins](/docs/guides/features/plugins)
 
 ### Headers
 

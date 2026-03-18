@@ -132,7 +132,7 @@ Billing data processing times can be slightly delayed in AI Studio,
 up to around 10 minutes. You may experience overages beyond your project cap
 if billing data hasn't processed before more charges are accrued.
 
-### Billing Account Tier spend caps
+### Billing Account tier spend caps
 
 Each [tier](https://ai.google.dev/gemini-api/docs/billing#about-billing) has a maximum monthly spend limit:
 
@@ -152,7 +152,18 @@ start of the next billing cycle (monthly).
 > [!CAUTION]
 > **Caution:** **Tier spend caps will only begin being *enforced* on April 1, 2026** , though their interface will be visible in AI Studio earlier, to allow users time to adjust.   
 >
-> Note that a small number of users will be impacted when this goes into effect. If your current spend is higher than the newly enforced tier cap, you will be notified via email with more details.
+> Note that a small number of users will be impacted when this goes into effect. If your current spend is higher than the newly enforced tier cap, you will be notified via email with more details. Read [Evaluate your Billing Account spend](https://ai.google.dev/gemini-api/docs/billing#evaluate-spend) for more info.
+
+#### Evaluate your Billing Account spend
+
+To evaluate your historical monthly spending to determine if the new [Billing
+Account tier spend caps](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) will impact your ongoing projects,
+follow these steps:
+
+- Go to your [Billing account management](https://console.cloud.google.com/billing/) page in the Cloud Console.
+- The **Billing account overview** dashboard displays **Your total cost** in the current month; Click [**View details on Reports**](https://console.cloud.google.com/billing/reports) at the bottom of that window.
+- The report defaults to "Group by Service" in the "Current month". You will see **Gemini API** in the **Service** column and total spend in the **Usage cost** column of the table.
+- Adjust the **Time range by usage date** filter to your desired range to evaluate your historical spend in a period.
 
 ## Cloud Billing
 

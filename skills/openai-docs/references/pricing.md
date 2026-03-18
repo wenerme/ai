@@ -142,7 +142,8 @@ Data Residency and Regional Processing
 </div>
 <p>
   Regional processing (data residency) endpoints are charged a 10% uplift for
-  <code>gpt-5.4</code> and <code>gpt-5.4-pro</code>. See our{" "}
+  <code>gpt-5.4</code>, <code>gpt-5.4-pro</code>, <code>gpt-5.4-mini</code>, and{" "}
+  <code>gpt-5.4-nano</code>. See our{" "}
   <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions
   and processing details.
 </p>
@@ -203,7 +204,38 @@ Video
 
 
 </div>
-<div className="-mb-6" style={{ marginTop: "-8px" }}>
+<br />
+<div className="pricing-switcher-layout">
+  <div className="pricing-switcher-header pricing-section-heading">
+    
+
+Fine-tuning
+
+
+    <small className="pricing-switcher-meta">Prices per 1M tokens.</small>
+  </div>
+
+  
+
+<div data-content-switcher-pane data-value="standard">
+      <div class="hidden">Standard</div>
+
+      </div>
+    <div data-content-switcher-pane data-value="batch" hidden>
+      <div class="hidden">Batch</div>
+
+      </div>
+
+
+</div>
+<small>
+  Tokens used for model grading in reinforcement fine-tuning are billed at that
+  model's per-token rate. Inference discounts are available if you enable data
+  sharing when creating the fine-tune job. [Learn
+  more](https://help.openai.com/en/articles/10306912-sharing-feedback-evaluation-and-fine-tuning-data-and-api-inputs-and-outputs-with-openai#h_c93188c569).
+</small>
+<br />
+<div className="-mb-6">
   
 
 Built-in tools
@@ -393,7 +425,7 @@ Transcription and speech generation
 
 </div>
 <small className="pricing-section-meta">Prices per 1M tokens.</small>
-<div className="pricing-section-heading">
+<div className="pricing-section-heading" style={{ marginTop: "12px" }}>
   
 
 Text tokens
@@ -452,7 +484,7 @@ Text tokens
           paddingRight: "0.5rem",
         }}
       >
-        -
+        {"-"}
       </td>
       <td
         style={{
@@ -606,7 +638,7 @@ Audio tokens
           paddingRight: "0.5rem",
         }}
       >
-        -
+        {"-"}
       </td>
       <td
         style={{
@@ -645,7 +677,7 @@ Audio tokens
           paddingRight: "0.5rem",
         }}
       >
-        -
+        {"-"}
       </td>
       <td
         style={{
@@ -675,7 +707,7 @@ Audio tokens
           paddingRight: "0.5rem",
         }}
       >
-        -
+        {"-"}
       </td>
       <td
         style={{
@@ -705,7 +737,7 @@ Audio tokens
           paddingRight: "0.5rem",
         }}
       >
-        -
+        {"-"}
       </td>
       <td
         style={{
@@ -825,19 +857,23 @@ Image generation
 
 </div>
 <small className="pricing-section-meta">Prices per image.</small>
-<table style={{ borderCollapse: "collapse", width: "100%" }}>
+<table
+  style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
+>
   <thead>
     <tr>
-      <th style={{ textAlign: "left", padding: "8px" }}>Model</th>
-      <th style={{ textAlign: "left", padding: "8px" }}>Quality</th>
-      <th style={{ padding: "8px" }}>1024 x 1024</th>
-      <th style={{ padding: "8px" }}>1024 x 1536</th>
-      <th style={{ padding: "8px" }}>1536 x 1024</th>
+      <th style={{ textAlign: "left", padding: "8px", width: "28%" }}>Model</th>
+      <th style={{ textAlign: "left", padding: "8px", width: "14%" }}>
+        Quality
+      </th>
+      <th style={{ padding: "8px", width: "19.33%" }}>1024 x 1024</th>
+      <th style={{ padding: "8px", width: "19.33%" }}>1024 x 1536</th>
+      <th style={{ padding: "8px", width: "19.34%" }}>1536 x 1024</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td rowSpan="3" style={{ padding: "8px" }}>
+      <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
         GPT Image 1.5
       </td>
       <td style={{ padding: "8px" }}>Low</td>
@@ -859,7 +895,7 @@ Image generation
     </tr>
 
     <tr>
-      <td rowSpan="3" style={{ padding: "8px" }}>
+      <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
         GPT Image Latest
       </td>
       <td style={{ padding: "8px" }}>Low</td>
@@ -881,7 +917,7 @@ Image generation
     </tr>
 
     <tr>
-      <td rowSpan="3" style={{ padding: "8px" }}>
+      <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
         GPT Image 1
       </td>
       <td style={{ padding: "8px" }}>Low</td>
@@ -903,7 +939,7 @@ Image generation
     </tr>
 
     <tr>
-      <td rowSpan="3" style={{ padding: "8px" }}>
+      <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
         GPT Image 1 Mini
       </td>
       <td style={{ padding: "8px" }}>Low</td>
@@ -923,51 +959,225 @@ Image generation
       <td style={{ padding: "8px" }}>$0.052</td>
       <td style={{ padding: "8px" }}>$0.052</td>
     </tr>
-
+  </tbody>
+</table>
+<table
+  style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
+>
+  <thead>
     <tr>
-      <td colSpan="5" style={{ height: "16px" }}></td>
+      <th style={{ width: "28%" }}>Model</th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "14%",
+        }}
+      >
+        Quality
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.33%",
+        }}
+      >
+        1024 x 1024
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.33%",
+        }}
+      >
+        1024 x 1792
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.34%",
+        }}
+      >
+        1792 x 1024
+      </th>
     </tr>
-
+  </thead>
+  <tbody>
     <tr>
-      <th style={{ textAlign: "left", padding: "8px" }}>Model</th>
-      <th style={{ textAlign: "left", padding: "8px" }}>Quality</th>
-      <th style={{ padding: "8px" }}>1024 x 1024</th>
-      <th style={{ padding: "8px" }}>1024 x 1792</th>
-      <th style={{ padding: "8px" }}>1792 x 1024</th>
-    </tr>
-    <tr>
-      <td rowSpan="2" style={{ padding: "8px" }}>
+      <td rowSpan="2" style={{ width: "28%" }}>
         DALL·E 3
       </td>
-      <td style={{ padding: "8px" }}>Standard</td>
-      <td style={{ padding: "8px" }}>$0.04</td>
-      <td style={{ padding: "8px" }}>$0.08</td>
-      <td style={{ padding: "8px" }}>$0.08</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Standard
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.04
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.08
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.08
+      </td>
     </tr>
     <tr>
-      <td style={{ padding: "8px" }}>HD</td>
-      <td style={{ padding: "8px" }}>$0.08</td>
-      <td style={{ padding: "8px" }}>$0.12</td>
-      <td style={{ padding: "8px" }}>$0.12</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        HD
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.08
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.12
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.12
+      </td>
     </tr>
-
+  </tbody>
+</table>
+<table
+  style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
+>
+  <thead>
     <tr>
-      <td colSpan="5" style={{ height: "16px" }}></td>
+      <th style={{ width: "28%" }}>Model</th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "14%",
+        }}
+      >
+        Quality
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.33%",
+        }}
+      >
+        256 x 256
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.33%",
+        }}
+      >
+        512 x 512
+      </th>
+      <th
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+          width: "19.34%",
+        }}
+      >
+        1024 x 1024
+      </th>
     </tr>
-
+  </thead>
+  <tbody>
     <tr>
-      <th style={{ textAlign: "left", padding: "8px" }}>Model</th>
-      <th style={{ textAlign: "left", padding: "8px" }}>Quality</th>
-      <th style={{ padding: "8px" }}>256 x 256</th>
-      <th style={{ padding: "8px" }}>512 x 512</th>
-      <th style={{ padding: "8px" }}>1024 x 1024</th>
-    </tr>
-    <tr>
-      <td style={{ padding: "8px" }}>DALL·E 2</td>
-      <td style={{ padding: "8px" }}>Standard</td>
-      <td style={{ padding: "8px" }}>$0.016</td>
-      <td style={{ padding: "8px" }}>$0.018</td>
-      <td style={{ padding: "8px" }}>$0.02</td>
+      <td style={{ width: "28%" }}>DALL·E 2</td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        Standard
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.016
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.018
+      </td>
+      <td
+        style={{
+          textAlign: "left",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem",
+        }}
+      >
+        $0.02
+      </td>
     </tr>
   </tbody>
 </table>
@@ -981,7 +1191,14 @@ Embeddings
 </div>
 <small className="pricing-section-meta">Prices per 1M tokens.</small>
 <br />
-### Moderation Our `omni-moderation` models are made available free of charge ✌️
+<div className="pricing-section-heading">
+  
+
+Moderation
+
+
+</div>
+<p>Our `omni-moderation` models are made available free of charge.</p>
 <br />
 <div className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
@@ -995,12 +1212,12 @@ Legacy models
 
   
 
-<div data-content-switcher-pane data-value="batch" hidden>
-      <div class="hidden">Batch</div>
+<div data-content-switcher-pane data-value="standard">
+      <div class="hidden">Standard</div>
 
       </div>
-    <div data-content-switcher-pane data-value="standard">
-      <div class="hidden">Standard</div>
+    <div data-content-switcher-pane data-value="batch" hidden>
+      <div class="hidden">Batch</div>
 
       </div>
 

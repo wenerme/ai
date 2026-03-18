@@ -17,7 +17,7 @@ For a limited time, **try Codex for free in ChatGPT Free and Go**, or enjoy
     - Codex on the web, in the CLI, in the IDE extension, and on iOS
     - Cloud-based integrations like automatic code review and Slack integration
     - The latest models, including GPT-5.4 and GPT-5.3-Codex
-    - GPT-5.1-Codex-Mini for up to 4x higher usage limits for local messages
+    - GPT-5.4-mini for up to 3.3x higher usage limits for local messages
     - Flexibly extend usage with [ChatGPT credits](#credits-overview)
     - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the Plus plan
 
@@ -114,12 +114,12 @@ The number of Codex messages you can send depends on the model used, size and co
         value: "gpt-5-4",
       },
       {
-        label: "GPT-5.3-Codex",
-        value: "gpt-5-3-codex",
+        label: "GPT-5.4-mini",
+        value: "gpt-5-4-mini",
       },
       {
-        label: "GPT-5.1-Codex-Mini",
-        value: "gpt-5-1-codex-mini",
+        label: "GPT-5.3-Codex",
+        value: "gpt-5-3-codex",
       },
     ]}
   >
@@ -157,6 +157,60 @@ The number of Codex messages you can send depends on the model used, size and co
           <tr>
             <td>ChatGPT Business</td>
             <td style="text-align:center">33-168</td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>ChatGPT Enterprise &amp; Edu</td>
+            <td colspan="3" style="text-align:center">
+              No fixed limits — usage scales with [credits](#credits-overview)
+            </td>
+          </tr>
+          <tr>
+            <td>API Key</td>
+            <td style="text-align:center">
+              [Usage-based](https://platform.openai.com/docs/pricing)
+            </td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div data-content-switcher-pane data-value="gpt-5-4-mini" hidden>
+      <div class="hidden">GPT-5.4-mini</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" style="text-align:center">
+              Local Messages[\*](#shared-limits) / 5h
+            </th>
+            <th scope="col" style="text-align:center">
+              Cloud Tasks[\*](#shared-limits) / 5h
+            </th>
+            <th scope="col" style="text-align:center">
+              Code Reviews / week
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ChatGPT Plus</td>
+            <td style="text-align:center">110-560</td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>ChatGPT Pro</td>
+            <td style="text-align:center">743-3733</td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>ChatGPT Business</td>
+            <td style="text-align:center">110-560</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
@@ -231,62 +285,6 @@ The number of Codex messages you can send depends on the model used, size and co
         </tbody>
       </table>
     </div>
-    <div data-content-switcher-pane data-value="gpt-5-1-codex-mini" hidden>
-      <div class="hidden">GPT-5.1-Codex-Mini</div>
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud Tasks[\*](#shared-limits) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / week
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ChatGPT Plus</td>
-            <td style="text-align:center">180-900</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>ChatGPT Pro</td>
-            <td style="text-align:center">1200-6000</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>ChatGPT Business</td>
-            <td style="text-align:center">180-900</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>ChatGPT Enterprise &amp; Edu</td>
-            <td style="text-align:center">
-              Local usage scales with [credits](#credits-overview)
-            </td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>API Key</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
   </ContentSwitcher>
 </div>
@@ -310,7 +308,7 @@ ChatGPT Plus and Pro users who reach their usage limit can purchase additional c
 
 Business, Edu, and Enterprise plans with [flexible pricing](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans) can purchase additional workspace credits to continue using Codex.
 
-If you are approaching usage limits, you can also switch to the GPT-5.1-Codex-Mini model to make your usage limits last longer.
+If you are approaching usage limits, you can also switch to the GPT-5.4-mini model to make your usage limits last longer.
 
 All users may also run extra local tasks using an API key, with usage charged at [standard API rates](https://platform.openai.com/docs/pricing).
 
@@ -335,12 +333,12 @@ Credit cost per message varies based on the model used, the task size and comple
         value: "gpt-5-4",
       },
       {
-        label: "GPT-5.3-Codex",
-        value: "gpt-5-3-codex",
+        label: "GPT-5.4-mini",
+        value: "gpt-5-4-mini",
       },
       {
-        label: "GPT-5.1-Codex-Mini",
-        value: "gpt-5-1-codex-mini",
+        label: "GPT-5.3-Codex",
+        value: "gpt-5-3-codex",
       },
     ]}
   >
@@ -370,6 +368,36 @@ Credit cost per message varies based on the model used, the task size and comple
             <td>Code Review</td>
             <td style="text-align:center">1 pull request</td>
             <td style="text-align:center">\~34 credits</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div data-content-switcher-pane data-value="gpt-5-4-mini" hidden>
+      <div class="hidden">GPT-5.4-mini</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" style="text-align:center">Unit</th>
+            <th scope="col" style="text-align:center">Average credit cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Local Tasks</td>
+            <td style="text-align:center">1 message</td>
+            <td style="text-align:center">\~2 credits</td>
+          </tr>
+          <tr>
+            <td>Cloud Tasks</td>
+            <td style="text-align:center">1 message</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>Code Review</td>
+            <td style="text-align:center">1 pull request</td>
+            <td style="text-align:center">Not available</td>
           </tr>
         </tbody>
       </table>
@@ -404,36 +432,6 @@ Credit cost per message varies based on the model used, the task size and comple
         </tbody>
       </table>
     </div>
-    <div data-content-switcher-pane data-value="gpt-5-1-codex-mini" hidden>
-      <div class="hidden">GPT-5.1-Codex-Mini</div>
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">Unit</th>
-            <th scope="col" style="text-align:center">Average credit cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Local Tasks</td>
-            <td style="text-align:center">1 message</td>
-            <td style="text-align:center">\~1 credit</td>
-          </tr>
-          <tr>
-            <td>Cloud Tasks</td>
-            <td style="text-align:center">1 message</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>Code Review</td>
-            <td style="text-align:center">1 pull request</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
   </ContentSwitcher>
 </div>
@@ -457,4 +455,4 @@ The usage limits and credits above are average rates. You can try the following 
 - **Control the size of your prompts.** Be precise with the instructions you give Codex, but remove unnecessary context.
 - **Reduce the size of your AGENTS.md.** If you work on a larger project, you can control how much context you inject through AGENTS.md files by [nesting them within your repository](https://developers.openai.com/codex/guides/agents-md#layer-project-instructions).
 - **Limit the number of MCP servers you use.** Every [MCP](https://developers.openai.com/codex/mcp) you add to Codex adds more context to your messages and uses more of your limit. Disable MCP servers when you don’t need them.
-- **Switch to GPT-5.1-Codex-Mini for routine tasks.** Using the mini model should extend your usage limits by roughly 4x.
+- **Switch to GPT-5.4-mini for routine tasks.** Using the mini model should extend your local-message usage limits by roughly 2.5x to 3.3x, depending on the model you switch from.

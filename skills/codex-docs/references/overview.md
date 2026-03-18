@@ -52,15 +52,15 @@ Codex is OpenAI's coding agent for software development. ChatGPT Plus, Pro, Busi
   />
   <LinkCard
     title="Community"
-    href="/codex/community/meetups"
-    description="Explore Codex Ambassadors and upcoming community meetups by location."
+    href="/community"
+    description="Read community posts, explore meetups, and connect with Codex builders."
     variant="image"
     ctaLabel="See community"
     backgroundImage="/images/codex/codex-wallpaper-2.webp"
   />
   <LinkCard
-    title="Codex for OSS"
-    href="/codex/community/codex-for-oss"
+    title="Codex for Open Source"
+    href="/community/codex-for-oss"
     description="Apply or nominate maintainers for API credits, ChatGPT Pro with Codex, and selective Codex Security access."
     variant="image"
     ctaLabel="Learn more"

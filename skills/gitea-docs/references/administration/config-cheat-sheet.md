@@ -34,8 +34,34 @@ A full restart is required for Gitea configuration changes to take effect.
 
 ## Use environment variables to setup Gitea
 
-There is [environment-to-ini](https://github.com/go-gitea/gitea/blob/main/docker/root/usr/local/bin/environment-to-ini) to help to
-generate Gitea's `app.ini` from environment variables.
+Gitea supports setting `app.ini` values via environment variables of the form `GITEA__<section>__<KEY>`. These require running `gitea config edit-ini --in-place --apply-env` before starting Gitea to write them into `app.ini`. The official Docker images do this automatically on container startup.
+
+For example, to configure the database connection via environment variables:
+
+```
+GITEA__database__DB_TYPE=postgres
+GITEA__database__HOST=127.0.0.1:5432
+GITEA__database__NAME=gitea
+GITEA__database__USER=gitea
+GITEA__database__PASSWD=secret
+```
+
+This is equivalent to the following `app.ini` configuration:
+
+```ini
+[database]
+DB_TYPE = postgres
+HOST = 127.0.0.1:5432
+NAME = gitea
+USER = gitea
+PASSWD = secret
+```
+
+You can also load values from files by appending `__FILE` to the variable name. This is useful for Docker secrets:
+
+```
+GITEA__database__PASSWD__FILE=/run/secrets/db_password
+```
 
 ## Default Internal Variables (non-`app.ini` configuration)
 

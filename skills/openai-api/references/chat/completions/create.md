@@ -406,7 +406,7 @@ chunk objects if the request is streamed.
 
       - `"function"`
 
-- `model: string or "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 71 more`
+- `model: string or "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
   Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
@@ -415,7 +415,7 @@ chunk objects if the request is streamed.
 
   - `UnionMember0 = string`
 
-  - `UnionMember1 = "gpt-5.4" or "gpt-5.3-chat-latest" or "gpt-5.2" or 71 more`
+  - `UnionMember1 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -423,6 +423,14 @@ chunk objects if the request is streamed.
     to browse and compare available models.
 
     - `"gpt-5.4"`
+
+    - `"gpt-5.4-mini"`
+
+    - `"gpt-5.4-nano"`
+
+    - `"gpt-5.4-mini-2026-03-17"`
+
+    - `"gpt-5.4-nano-2026-03-17"`
 
     - `"gpt-5.3-chat-latest"`
 

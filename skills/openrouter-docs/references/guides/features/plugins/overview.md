@@ -1,14 +1,15 @@
-OpenRouter plugins extend the capabilities of any model by adding features like real-time web search, PDF processing, and automatic JSON repair. Plugins can be enabled per-request via the API or configured as defaults for all your API requests through the [Plugins settings page](https://openrouter.ai/settings/plugins).
+OpenRouter plugins extend the capabilities of any model by adding features like real-time web search, PDF processing, automatic JSON repair, and context compression. Plugins can be enabled per-request via the API or configured as defaults for all your API requests through the [Plugins settings page](https://openrouter.ai/settings/plugins).
 
 ## Available Plugins
 
 OpenRouter currently supports the following plugins:
 
-| Plugin               | Description                                             | Docs                                                               |
-| -------------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| **Web Search**       | Augment LLM responses with real-time web search results | [Web Search](/docs/guides/features/plugins/web-search)             |
-| **PDF Inputs**       | Parse and extract content from uploaded PDF files       | [PDF Inputs](/docs/guides/overview/multimodal/pdfs)                |
-| **Response Healing** | Automatically fix malformed JSON responses from LLMs    | [Response Healing](/docs/guides/features/plugins/response-healing) |
+| Plugin                  | Description                                                                       | Docs                                                               |
+| ----------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Web Search**          | Augment LLM responses with real-time web search results                           | [Web Search](/docs/guides/features/plugins/web-search)             |
+| **PDF Inputs**          | Parse and extract content from uploaded PDF files                                 | [PDF Inputs](/docs/guides/overview/multimodal/pdfs)                |
+| **Response Healing**    | Automatically fix malformed JSON responses from LLMs                              | [Response Healing](/docs/guides/features/plugins/response-healing) |
+| **Context Compression** | Compress prompts that exceed a model's context window using middle-out truncation | [Message Transforms](/docs/guides/features/message-transforms)     |
 
 ## Enabling Plugins via API
 
