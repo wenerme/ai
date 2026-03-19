@@ -14,10 +14,7 @@ are relevant to the user's specified location or general area.
 This example demonstrates how to integrate Grounding with Google Maps into your
 application to provide accurate, location-aware responses to user queries. The
 prompt asks for local recommendations with an optional user location, enabling
-the Gemini model to leverage Google Maps data.
-
-> [!NOTE]
-> **Note:** Grounding with Google Maps is not available with Gemini 3.
+the Gemini model to use Google Maps data.
 
 ### Python
 
@@ -29,7 +26,7 @@ the Gemini model to leverage Google Maps data.
     prompt = "What are the best Italian restaurants within a 15-minute walk from here?"
 
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents=prompt,
         config=types.GenerateContentConfig(
             # Turn on grounding with Google Maps
@@ -59,7 +56,7 @@ the Gemini model to leverage Google Maps data.
 
     async function generateContentWithMapsGrounding() {
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3-flash-preview",
         contents: "What are the best Italian restaurants within a 15-minute walk from here?",
         config: {
           // Turn on grounding with Google Maps
@@ -95,7 +92,7 @@ the Gemini model to leverage Google Maps data.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -166,8 +163,9 @@ request.
       "tools":  { "googleMaps": {} }
     }
 
-The [`googleMaps`](https://ai.google.dev/api/caching#GoogleMaps) tool can additionally accept a boolean `enableWidget`
-parameter, that is used to control whether the [`googleMapsWidgetContextToken`](https://ai.google.dev/api/generate-content#GroundingMetadata)
+The [`googleMaps`](https://ai.google.dev/api/caching#GoogleMaps) tool can additionally accept a
+boolean `enableWidget` parameter, that is used to control whether the
+[`googleMapsWidgetContextToken`](https://ai.google.dev/api/generate-content#GroundingMetadata)
 field is returned in the response. This can be used to display a
 [contextual Places widget](https://developers.google.com/maps/documentation/javascript/reference/places-widget).
 
@@ -260,8 +258,7 @@ The Gemini API returns the following information with the
 
 - `groundingChunks`: Array of objects containing the `maps` sources (`uri`, `placeId` and `title`).
 - `groundingSupports`: Array of chunks to connect model response text to the sources in `groundingChunks`. Each chunk links a text span (defined by `startIndex` and `endIndex`) to one or more `groundingChunkIndices`. This is the key to building inline citations.
-- `googleMapsWidgetContextToken`: A text token that can be used to render a [contextual Places
-  widget](https://developers.google.com/maps/documentation/javascript/reference/places-widget).
+- `googleMapsWidgetContextToken`: A text token that can be used to render a [contextual Places widget](https://developers.google.com/maps/documentation/javascript/reference/places-widget).
 
 For a code snippet showing how to render inline citations in text, see [the
 example](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
@@ -295,7 +292,7 @@ user reviews and other Maps data.
     prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?"
 
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents=prompt,
         config=types.GenerateContentConfig(
             # Turn on the Maps tool
@@ -329,7 +326,7 @@ user reviews and other Maps data.
       const prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3-flash-preview',
         contents: prompt,
         config: {
           // Turn on the Maps tool
@@ -365,7 +362,7 @@ user reviews and other Maps data.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -398,7 +395,7 @@ area.
     prompt = "Which family-friendly restaurants near here have the best playground reviews?"
 
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents=prompt,
         config=types.GenerateContentConfig(
           tools=[types.Tool(google_maps=types.GoogleMaps())],
@@ -429,7 +426,7 @@ area.
       const prompt = "Which family-friendly restaurants near here have the best playground reviews?";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3-flash-preview',
         contents: prompt,
         config: {
           tools: [{googleMaps: {}}],
@@ -464,7 +461,7 @@ area.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -489,7 +486,8 @@ locations, perfect for travel applications.
 
 In this example, the `googleMapsWidgetContextToken` has been requested by
 enabling the widget in the Google Maps tool. When enabled, the returned token
-can be used to render a contextual Places widget using the `https://developers.google.com/maps/documentation/javascript/reference/places-widget#PlaceContextualElement`
+can be used to render a contextual Places widget using the
+`https://developers.google.com/maps/documentation/javascript/reference/places-widget#PlaceContextualElement`
 from the Google Maps JavaScript API.
 
 ### Python
@@ -502,7 +500,7 @@ from the Google Maps JavaScript API.
     prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
 
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3-flash-preview',
         contents=prompt,
         config=types.GenerateContentConfig(
           tools=[types.Tool(google_maps=types.GoogleMaps(enable_widget=True))],
@@ -537,7 +535,7 @@ from the Google Maps JavaScript API.
       const prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3-flash-preview',
         contents: prompt,
         config: {
           tools: [{googleMaps: {enableWidget: true}}],
@@ -579,7 +577,7 @@ from the Google Maps JavaScript API.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -608,8 +606,9 @@ Maps.
 
 ### Inform the user about the use of Google Maps sources
 
-With each Google Maps Grounded Result, you'll receive sources in `groundingChunks`
-that support each response. The following metadata is also returned:
+With each Google Maps Grounded result, you'll receive sources in
+`groundingChunks` that support each response. The following metadata is also
+returned:
 
 - source uri
 - title
@@ -624,8 +623,8 @@ associated Google Maps sources, and inform your users of the following:
 ### Display Google Maps sources with Google Maps links
 
 For each source in `groundingChunks` and in
-`grounding_chunks.maps.placeAnswerSources.reviewSnippets`, a link preview must be
-generated following these requirements:
+`grounding_chunks.maps.placeAnswerSources.reviewSnippets`, a link preview must
+be generated following these requirements:
 
 - Attribute each source to Google Maps following the Google Maps text [attribution guidelines](https://ai.google.dev/gemini-api/docs/maps-grounding#maps-attribution-guidelines).
 - Display the source title provided in the response.
@@ -642,7 +641,7 @@ You can collapse the view of the sources.
 
 Optional: Enhance the link preview with additional content, such as:
 
-- A [Google Maps favicon](https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico) is inserted before the Google Maps text attribution.
+- A [Google Maps favicon](https://www.google.com/images/branding/product/ico/web_maps_icon_32dp.ico) is inserted before the Google Maps text attribution.
 - A photo from the source URL (`og:image`).
 
 For more information about some of our Google Maps data providers and their
@@ -705,22 +704,23 @@ apply.
 
 Grounding with Google Maps has additional restrictions for certain content and
 activities to maintain a safe and reliable platform. In addition to the usage
-restrictions in the Terms, you will not use Grounding with Google Maps
-for high risk activities including emergency response services. You will
-not distribute or market your application that offers Grounding with
-Google Maps in a Prohibited Territory. The current Prohibited Territories are:
+restrictions in the [Terms](https://ai.google.dev/gemini-api/terms#grounding-with-google-maps):
 
-- China
-- Crimea
-- Cuba
-- Donetsk People's Republic
-- Iran
-- Luhansk People's Republic
-- North Korea
-- Syria
-- Vietnam
+- You will not use Grounding with Google Maps for high risk activities including emergency response services.
+- You will not distribute or market your application that offers Grounding with
+  Google Maps in a Prohibited Territory. The current Prohibited Territories are:
 
-This list may be updated from time to time.
+  - China
+  - Crimea
+  - Cuba
+  - Donetsk People's Republic
+  - Iran
+  - Luhansk People's Republic
+  - North Korea
+  - Syria
+  - Vietnam
+
+  This list may be updated from time to time.
 
 ## Best practices
 
@@ -733,8 +733,8 @@ This list may be updated from time to time.
 
 ## Limitations
 
-- **Geographical Scope:** Currently, Grounding with Google Maps is globally available
-- **Model Support:** Only specific Gemini models support Grounding with Google Maps: Gemini 2.5 Flash-Lite, Gemini 2.5 Pro, Gemini 2.5 Flash, and Gemini 2.0 Flash (but not 2.0 Flash Lite).
+- **Geographical Scope:** Grounding with Google Maps is globally available
+- **Model Support:** See the [Supported models](https://ai.google.dev/gemini-api/docs/maps-grounding#supported-models) section.
 - **Multimodal Inputs/Outputs:** Grounding with Google Maps does not currently support multimodal inputs or outputs beyond text and contextual map widgets.
 - **Default State:** The Grounding with Google Maps tool is off by default. You must explicitly enable it in your API requests.
 
@@ -755,18 +755,27 @@ For detailed pricing information, see the [Gemini API pricing page](https://ai.g
 
 ## Supported models
 
-You can find their capabilities on the [model overview](https://ai.google.dev/gemini-api/docs/models) page.
+The following models support Grounding with Google Maps:
 
 | Model | Grounding with Google Maps |
 |---|---|
+| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
+| [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-flash-lite-preview) | ✔️ |
+| [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
 | [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | ✔️ |
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ |
 | [Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash) | ✔️ |
 
+## Supported tool combinations
+
+Gemini 3 models support combining built-in tools (like Grounding with Google
+Maps) with custom tools (function calling). Learn more on the
+[tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
+
 ## What's next
 
 - Try the [Grounding with Google Search in the Gemini API
   Cookbook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Search_Grounding.ipynb).
-- Learn about other available tools, like [Function calling](https://ai.google.dev/gemini-api/docs/function-calling).
+- Learn about other [available tools](https://ai.google.dev/gemini-api/docs/tools).
 - To learn more about responsible AI best practices and Gemini API's safety filters, see [the Safety settings guide](https://ai.google.dev/gemini-api/docs/safety-settings).

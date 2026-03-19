@@ -1626,14 +1626,14 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-chat_completion = client.chat.completions.create(
+for completion in client.chat.completions.create(
     messages=[{
         "content": "string",
         "role": "developer",
     }],
     model="gpt-5.4",
-)
-print(chat_completion)
+):
+  print(completion)
 ```
 
 ## List
@@ -1657,12 +1657,9 @@ with the `store` parameter set to `true` will be returned.
 
 - `metadata: Optional[Metadata]`
 
-  Set of 16 key-value pairs that can be attached to an object. This can be
-  useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
+  A list of metadata keys to filter the Chat Completions by. Example:
 
-  Keys are strings with a maximum length of 64 characters. Values are strings
-  with a maximum length of 512 characters.
+  `metadata[key1]=value1&metadata[key2]=value2`
 
 - `model: Optional[str]`
 

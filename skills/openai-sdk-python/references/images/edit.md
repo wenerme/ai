@@ -266,9 +266,9 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-images_response = client.images.edit(
+for image in client.images.edit(
     image=b"raw file contents",
     prompt="A cute baby sea otter wearing a beret",
-)
-print(images_response)
+):
+  print(image)
 ```

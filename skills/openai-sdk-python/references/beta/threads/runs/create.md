@@ -1002,9 +1002,9 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-run = client.beta.threads.runs.create(
+for run in client.beta.threads.runs.create(
     thread_id="thread_id",
     assistant_id="assistant_id",
-)
-print(run.id)
+):
+  print(run)
 ```

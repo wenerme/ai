@@ -4,6 +4,8 @@
 
 In Braintrust, go to your [Account Settings](https://www.braintrust.dev/app/settings) to create an API key, and find your Project ID in your project's settings.
 
+![Braintrust Project ID](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ae8543a6d27222b8f750e4e9510f7205c32f1a999073400ef14fd0a88ba649b1/content/pages/features/broadcast/braintrust-project-id-example.png)
+
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.

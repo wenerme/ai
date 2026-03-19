@@ -166,15 +166,15 @@ Creates an image given a prompt. [Learn more](https://platform.openai.com/docs/g
 
       - `false`
 
-  - `ImageGenerateParamsNonStreaming extends ImageGenerateParamsBase`
+  - `ImageGenerateParamsStreaming extends ImageGenerateParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       Generate the image in streaming mode. Defaults to `false`. See the
       [Image generation guide](https://platform.openai.com/docs/guides/image-generation) for more information.
       This parameter is only supported for the GPT image models.
 
-      - `false`
+      - `true`
 
 ### Returns
 
@@ -462,14 +462,14 @@ Creates an edited or extended image given one or more source images and a prompt
 
       - `false`
 
-  - `ImageEditParamsNonStreaming extends ImageEditParamsBase`
+  - `ImageEditParamsStreaming extends ImageEditParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       Edit the image in streaming mode. Defaults to `false`. See the
       [Image generation guide](https://platform.openai.com/docs/guides/image-generation) for more information.
 
-      - `false`
+      - `true`
 
 ### Returns
 

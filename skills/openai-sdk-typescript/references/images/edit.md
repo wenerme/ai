@@ -166,14 +166,14 @@ Creates an edited or extended image given one or more source images and a prompt
 
       - `false`
 
-  - `ImageEditParamsNonStreaming extends ImageEditParamsBase`
+  - `ImageEditParamsStreaming extends ImageEditParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       Edit the image in streaming mode. Defaults to `false`. See the
       [Image generation guide](https://platform.openai.com/docs/guides/image-generation) for more information.
 
-      - `false`
+      - `true`
 
 ### Returns
 

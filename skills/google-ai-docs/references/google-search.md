@@ -263,11 +263,15 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 > [!NOTE]
 > **Note:** Older models use a `google_search_retrieval` tool. For all current models, use the `google_search` tool as shown in the examples.
 
-## Supported tools combinations
+## Supported tool combinations
 
 You can use Grounding with Google Search with other tools like
 [code execution](https://ai.google.dev/gemini-api/docs/code-execution) and
 [URL context](https://ai.google.dev/gemini-api/docs/url-context) to power more complex use cases.
+
+Gemini 3 models support combining built-in tools (like Grounding with Google
+Search) with custom tools (function calling). Learn more on the
+[tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
 
 ## What's next
 

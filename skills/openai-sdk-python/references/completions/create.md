@@ -282,9 +282,9 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-completion = client.completions.create(
+for completion in client.completions.create(
     model="string",
     prompt="This is a test.",
-)
-print(completion)
+):
+  print(completion)
 ```

@@ -12861,6 +12861,6 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-response = client.responses.create()
-print(response.id)
+for response in client.responses.create():
+  print(response)
 ```

@@ -21,7 +21,7 @@ In WebSocket mode, app-server uses bounded queues. When request ingress is full,
 Requests include `method`, `params`, and `id`:
 
 ```json
-{ "method": "thread/start", "id": 10, "params": { "model": "gpt-5.1-codex" } }
+{ "method": "thread/start", "id": 10, "params": { "model": "gpt-5.4" } }
 ```
 
 Responses echo the `id` with either `result` or `error`:
@@ -99,7 +99,7 @@ send({
   },
 });
 send({ method: "initialized", params: {} });
-send({ method: "thread/start", id: 1, params: { model: "gpt-5.1-codex" } });
+send({ method: "thread/start", id: 1, params: { model: "gpt-5.4" } });
 ```
 
 ## Core primitives
@@ -319,7 +319,7 @@ Start a fresh thread when you need a new Codex conversation.
 
 ```json
 { "method": "thread/start", "id": 10, "params": {
-  "model": "gpt-5.1-codex",
+  "model": "gpt-5.4",
   "cwd": "/Users/me/project",
   "approvalPolicy": "never",
   "sandbox": "workspaceWrite",
@@ -574,7 +574,7 @@ Examples:
     "writableRoots": ["/Users/me/project"],
     "networkAccess": true
   },
-  "model": "gpt-5.1-codex",
+  "model": "gpt-5.4",
   "effort": "medium",
   "summary": "concise",
   "personality": "friendly",

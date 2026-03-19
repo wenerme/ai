@@ -1044,13 +1044,13 @@ Create a run.
 
       - `false`
 
-  - `RunCreateParamsNonStreaming extends RunCreateParamsBase`
+  - `RunCreateParamsStreaming extends RunCreateParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       Body param: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
 
-      - `false`
+      - `true`
 
 ### Returns
 
@@ -2373,13 +2373,13 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
       - `false`
 
-  - `RunSubmitToolOutputsParamsNonStreaming extends RunSubmitToolOutputsParamsBase`
+  - `RunSubmitToolOutputsParamsStreaming extends RunSubmitToolOutputsParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       Body param: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
 
-      - `false`
+      - `true`
 
 ### Returns
 

@@ -655,13 +655,13 @@ Create a thread and run it in one request.
 
       - `false`
 
-  - `ThreadCreateAndRunParamsNonStreaming extends ThreadCreateAndRunParamsBase`
+  - `ThreadCreateAndRunParamsStreaming extends ThreadCreateAndRunParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
 
-      - `false`
+      - `true`
 
 ### Returns
 

@@ -5093,16 +5093,16 @@ as input for the model's response.
 
       - `false`
 
-  - `ResponseCreateParamsNonStreaming extends ResponseCreateParamsBase`
+  - `ResponseCreateParamsStreaming extends ResponseCreateParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       If set to true, the model response data will be streamed to the client
       as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
       See the [Streaming section below](https://platform.openai.com/docs/api-reference/responses-streaming)
       for more information.
 
-      - `false`
+      - `true`
 
 ### Returns
 

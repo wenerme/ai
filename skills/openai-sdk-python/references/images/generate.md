@@ -263,8 +263,8 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-images_response = client.images.generate(
+for image in client.images.generate(
     prompt="A cute baby sea otter",
-)
-print(images_response)
+):
+  print(image)
 ```

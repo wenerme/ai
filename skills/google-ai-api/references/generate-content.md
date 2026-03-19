@@ -34,42 +34,35 @@ The Gemini API supports content generation with images, audio, code, tools, and 
   - [Safety Settings](https://ai.google.dev/api/generate-content#body.codeSnippets.group_12)
   - [System Instruction](https://ai.google.dev/api/generate-content#body.codeSnippets.group_13)
 
-Generates a model response given an input `GenerateContentRequest`. Refer to the [text generation guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed usage information. Input capabilities differ between models, including tuned models. Refer to the [model guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.  
+Generates a model response given an input `GenerateContentRequest`. Refer to the [text generation guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed usage information. Input capabilities differ between models, including tuned models. Refer to the [model guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
 
 ### Endpoint
 
-post `https:``/``/generativelanguage.googleapis.com``/v1beta``/{model=models``/*}:generateContent`   
+post `https://generativelanguage.googleapis.com/v1beta/{model=models/*}:generateContent`   
 
 ### Path parameters
 
-`model` `string`  
-Required. The name of the `Model` to use for generating the completion.
+`model` `string` Required. The name of the `Model` to use for generating the completion.
 
 Format: `models/{model}`. It takes the form `models/{model}`.
 
 ### Request body
 
 The request body contains data with the following structure:
-Fields `contents[]` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Required. The content of the current conversation with the model.
+Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Required. The content of the current conversation with the model.
 
 For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-`tools[]` `object (`[Tool](https://ai.google.dev/api/caching#Tool)`)`  
-Optional. A list of `Tools` the `Model` may use to generate the next response.
+`tools[]` ``object (`https://ai.google.dev/api/caching#Tool`)`` Optional. A list of `Tools` the `Model` may use to generate the next response.
 
 A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `codeExecution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
-`toolConfig` `object (`[ToolConfig](https://ai.google.dev/api/caching#ToolConfig)`)`  
-Optional. Tool configuration for any `Tool` specified in the request. Refer to the [Function calling guide](https://ai.google.dev/gemini-api/docs/function-calling#function_calling_mode) for a usage example.
-`safetySettings[]` `object (`[SafetySetting](https://ai.google.dev/api/generate-content#v1beta.SafetySetting)`)`  
-Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
+`toolConfig` ``object (`https://ai.google.dev/api/caching#ToolConfig`)`` Optional. Tool configuration for any `Tool` specified in the request. Refer to the [Function calling guide](https://ai.google.dev/gemini-api/docs/function-calling#function_calling_mode) for a usage example.
+`safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-`systemInstruction` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
-`generationConfig` `object (`[GenerationConfig](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig)`)`  
-Optional. Configuration options for model generation and outputs.
-`cachedContent` `string`  
-Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`  
+`systemInstruction` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
+`generationConfig` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
+`cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+`store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
 
@@ -83,8 +76,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents="Write a story about a magic backpack."
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L26-L32
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L26-L32
 
 ### Node.js
 
@@ -96,8 +88,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       model: "gemini-2.0-flash",
       contents: "Write a story about a magic backpack.",
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L36-L44
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L36-L44
 
 ### Go
 
@@ -116,8 +107,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L16-L31
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L16-L31
 
 ### Shell
 
@@ -128,8 +118,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
           "contents": [{
             "parts":[{"text": "Write a story about a magic backpack."}]
             }]
-           }' 2> /dev/null  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L21-L29
+           }' 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L21-L29
 
 ### Java
 
@@ -141,8 +130,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
                     "Write a story about a magic backpack.",
                     null);
 
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L34-L42
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L34-L42
 
 ### Image
 
@@ -156,8 +144,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L50-L58
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L50-L58
 
 ### Node.js
 
@@ -178,8 +165,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         ]),
       ],
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L70-L87
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L70-L87
 
 ### Go
 
@@ -214,8 +200,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L66-L97
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L66-L97
 
 ### Shell
 
@@ -247,8 +232,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d "@$TEMP_JSON" 2> /dev/null  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L41-L70
+        -d "@$TEMP_JSON" 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L41-L70
 
 ### Java
 
@@ -264,8 +248,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
 
     GenerateContentResponse response = client.models.generateContent("gemini-2.0-flash", content, null);
 
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L70-L82
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L70-L82
 
 ### Audio
 
@@ -279,8 +262,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         model="gemini-2.0-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L118-L126
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L118-L126
 
 ### Node.js
 
@@ -301,8 +283,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         ]),
       ],
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L185-L202
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L185-L202
 
 ### Go
 
@@ -339,8 +320,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L256-L289
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L256-L289
 
 ### Shell
 
@@ -389,8 +369,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L174-L220
+    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L174-L220
 
 ### Video
 
@@ -414,8 +393,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
     )
-    print(f"{response.text=}")  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L146-L164
+    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L146-L164
 
 ### Node.js
 
@@ -444,8 +422,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         ]),
       ],
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L237-L262
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L237-L262
 
 ### Go
 
@@ -494,8 +471,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L342-L387
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L342-L387
 
 ### Shell
 
@@ -557,8 +533,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L272-L331
+    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L272-L331
 
 ### PDF
 
@@ -572,8 +547,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         model="gemini-2.0-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
-    print(f"{response.text=}")  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L194-L202
+    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L194-L202
 
 ### Go
 
@@ -610,8 +584,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L452-L485
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L452-L485
 
 ### Shell
 
@@ -662,8 +635,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L393-L441
+    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L393-L441
 
 ### Chat
 
@@ -691,8 +663,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     response = chat.send_message(message="I have 2 dogs in my house.")
     print(response.text)
     response = chat.send_message(message="How many paws are in my house?")
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L25-L47
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L25-L47
 
 ### Node.js
 
@@ -721,8 +692,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     const response2 = await chat.sendMessage({
       message: "How many paws are in my house?",
     });
-    console.log("Chat response 2:", response2.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L33-L58
+    console.log("Chat response 2:", response2.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L33-L58
 
 ### Go
 
@@ -756,8 +726,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(secondResp.Text())  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L16-L46
+    fmt.Println(secondResp.Text())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L16-L46
 
 ### Shell
 
@@ -776,8 +745,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
              "parts":[{
                "text": "I have two dogs in my house. How many paws are in my house?"}]},
           ]
-        }' 2> /dev/null | grep "text"  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L7-L23
+        }' 2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L7-L23
 
 ### Java
 
@@ -805,7 +773,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     System.out.println(response1.text());
 
     GenerateContentResponse response2 = chat.sendMessage("How many paws are in my house?");
-    System.out.println(response2.text());  
+    System.out.println(response2.text());
     https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/ChatSession.java#L32-L57
 
 ### Cache
@@ -833,8 +801,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L25-L46
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L25-L46
 
 ### Node.js
 
@@ -867,8 +834,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       contents: "Please summarize this transcript",
       config: { cachedContent: cache.name },
     });
-    console.log("Response text:", response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L33-L62
+    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L33-L62
 
 ### Go
 
@@ -922,16 +888,14 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L16-L66
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L16-L66
 
 ### Tuned Model
 
 ### Python
 
     # With Gemini 2 we're launching a new SDK. See the following doc for details.
-    # https://ai.google.dev/gemini-api/docs/migrate  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/README.md#L23-L24
+    # https://ai.google.dev/gemini-api/docs/migratehttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/README.md#L23-L24
 
 ### JSON Mode
 
@@ -953,8 +917,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
             response_mime_type="application/json", response_schema=list[Recipe]
         ),
     )
-    print(result)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/controlled_generation.py#L25-L41
+    print(result)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/controlled_generation.py#L25-L41
 
 ### Node.js
 
@@ -979,8 +942,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         },
       },
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/controlled_generation.js#L33-L54
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/controlled_generation.js#L33-L54
 
 ### Go
 
@@ -1022,8 +984,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/controlled_generation.go#L14-L52
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/controlled_generation.go#L14-L52
 
 ### Shell
 
@@ -1047,8 +1008,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
               }
             }
         }
-    }' 2> /dev/null | head  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/controlled_generation.sh#L5-L25
+    }' 2> /dev/null | headhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/controlled_generation.sh#L5-L25
 
 ### Java
 
@@ -1085,8 +1045,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
                     "List a few popular cookie recipes.",
                     config);
 
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/ControlledGeneration.java#L39-L72
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/ControlledGeneration.java#L39-L72
 
 ### Code execution
 
@@ -1109,8 +1068,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
 
     print("-" * 80)
     # The .text accessor concatenates the parts into a markdown-formatted text.
-    print("\n", response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/code_execution.py#L22-L39
+    print("\n", response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/code_execution.py#L22-L39
 
 ### Go
 
@@ -1140,8 +1098,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     printResponse(response)
 
     fmt.Println("---")
-    fmt.Println(response.Text())  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/code_execution.go#L14-L40
+    fmt.Println(response.Text())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/code_execution.go#L14-L40
 
 ### Java
 
@@ -1163,8 +1120,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     }
 
     System.out.println("-".repeat(80));
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/CodeExecution.java#L32-L50
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/CodeExecution.java#L32-L50
 
 ### Function Calling
 
@@ -1199,8 +1155,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     response = chat.send_message(
         message="I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/function_calling.py#L22-L51
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/function_calling.py#L22-L51
 
 ### Go
 
@@ -1302,8 +1257,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     	log.Fatal(err)
     }
 
-    printResponse(finalResponse)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/function_calling.go#L63-L161
+    printResponse(finalResponse)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/function_calling.go#L63-L161
 
 ### Node.js
 
@@ -1488,7 +1442,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       });
       console.log(chatResponse.text);
       return chatResponse;
-    }  
+    }
     https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/function_calling.js#L22-L-1
 
 ### Shell
@@ -1547,8 +1501,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
           }
         }
       }
-    ') 2>/dev/null |sed -n '/"content"/,/"finishReason"/p'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/function_calling.sh#L4-L59
+    ') 2>/dev/null |sed -n '/"content"/,/"finishReason"/p'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/function_calling.sh#L4-L59
 
 ### Java
 
@@ -1653,8 +1606,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     Number secondParam = (Number) arguments.get().get("secondParam");
     Double result = function.apply(firstParam.doubleValue(), secondParam.doubleValue());
 
-    System.out.println(result);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/FunctionCalling.java#L38-L139
+    System.out.println(result);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/FunctionCalling.java#L38-L139
 
 ### Generation config
 
@@ -1674,8 +1626,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
             temperature=1.0,
         ),
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/configure_model_parameters.py#L22-L36
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/configure_model_parameters.py#L22-L36
 
 ### Node.js
 
@@ -1694,8 +1645,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       },
     });
 
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/configure_model_parameters.js#L22-L37
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/configure_model_parameters.js#L22-L37
 
 ### Go
 
@@ -1728,8 +1678,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     	log.Fatal(err)
     }
 
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/configure_model_parameters.go#L13-L42
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/configure_model_parameters.go#L13-L42
 
 ### Shell
 
@@ -1751,8 +1700,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
                 "topP": 0.8,
                 "topK": 10
             }
-        }'  2> /dev/null | grep "text"  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/configure_model_parameters.sh#L4-L23
+        }'  2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/configure_model_parameters.sh#L4-L23
 
 ### Java
 
@@ -1772,8 +1720,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
                     "Tell me a story about a magic backpack.",
                     config);
 
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/ConfigureModelParameters.java#L29-L45
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/ConfigureModelParameters.java#L29-L45
 
 ### Safety Settings
 
@@ -1807,8 +1754,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     except Exception:
         print("No information generated by the model.")
 
-    print(response.candidates[0].safety_ratings)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/safety_settings.py#L48-L76
+    print(response.candidates[0].safety_ratings)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/safety_settings.py#L48-L76
 
 ### Node.js
 
@@ -1842,7 +1788,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       }
       console.log("Safety ratings:", response.candidates[0].safetyRatings);
       return response;
-    }  
+    }
     https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/safety_settings.js#L49-L-1
 
 ### Go
@@ -1893,8 +1839,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     	fmt.Println("Safety ratings:", string(safetyRatings))
     } else {
     	fmt.Println("No candidate returned.")
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/safety_settings.go#L60-L106
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/safety_settings.go#L60-L106
 
 ### Shell
 
@@ -1910,8 +1855,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d @request.json 2> /dev/null  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/safety_settings.sh#L20-L33
+        -d @request.json 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/safety_settings.sh#L20-L33
 
 ### Java
 
@@ -1947,8 +1891,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         System.out.println("No information generated by the model");
     }
 
-    System.out.println(response.candidates().get().getFirst().safetyRatings());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/SafetySettings.java#L60-L92
+    System.out.println(response.candidates().get().getFirst().safetyRatings());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/SafetySettings.java#L60-L92
 
 ### System Instruction
 
@@ -1965,8 +1908,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
             system_instruction="You are a cat. Your name is Neko."
         ),
     )
-    print(response.text)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/system_instruction.py#L22-L33
+    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/system_instruction.py#L22-L33
 
 ### Node.js
 
@@ -1980,8 +1922,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         systemInstruction: "You are a cat. Your name is Neko.",
       },
     });
-    console.log(response.text);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/system_instruction.js#L22-L32
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/system_instruction.js#L22-L32
 
 ### Go
 
@@ -2008,8 +1949,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/system_instruction.go#L13-L36
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/system_instruction.go#L13-L36
 
 ### Shell
 
@@ -2020,8 +1960,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
           { "text": "You are a cat. Your name is Neko."}},
         "contents": {
           "parts": {
-            "text": "Hello there"}}}'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/system_instruction.sh#L4-L12
+            "text": "Hello there"}}}'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/system_instruction.sh#L4-L12
 
 ### Java
 
@@ -2041,12 +1980,11 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
                     "Good morning! How are you?",
                     config);
 
-    System.out.println(response.text());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/SystemInstruction.java#L30-L46
+    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/SystemInstruction.java#L30-L46
 
 ### Response body
 
-If successful, the response body contains an instance of [GenerateContentResponse](https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse).  
+If successful, the response body contains an instance of `https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse`.
 
 ## Method: models.streamGenerateContent
 
@@ -2064,42 +2002,35 @@ If successful, the response body contains an instance of [GenerateContentRespons
   - [PDF](https://ai.google.dev/api/generate-content#body.codeSnippets.group_4)
   - [Chat](https://ai.google.dev/api/generate-content#body.codeSnippets.group_5)
 
-Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.  
+Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.
 
 ### Endpoint
 
-post `https:``/``/generativelanguage.googleapis.com``/v1beta``/{model=models``/*}:streamGenerateContent`   
+post `https://generativelanguage.googleapis.com/v1beta/{model=models/*}:streamGenerateContent`   
 
 ### Path parameters
 
-`model` `string`  
-Required. The name of the `Model` to use for generating the completion.
+`model` `string` Required. The name of the `Model` to use for generating the completion.
 
 Format: `models/{model}`. It takes the form `models/{model}`.
 
 ### Request body
 
 The request body contains data with the following structure:
-Fields `contents[]` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Required. The content of the current conversation with the model.
+Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Required. The content of the current conversation with the model.
 
 For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-`tools[]` `object (`[Tool](https://ai.google.dev/api/caching#Tool)`)`  
-Optional. A list of `Tools` the `Model` may use to generate the next response.
+`tools[]` ``object (`https://ai.google.dev/api/caching#Tool`)`` Optional. A list of `Tools` the `Model` may use to generate the next response.
 
 A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `codeExecution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
-`toolConfig` `object (`[ToolConfig](https://ai.google.dev/api/caching#ToolConfig)`)`  
-Optional. Tool configuration for any `Tool` specified in the request. Refer to the [Function calling guide](https://ai.google.dev/gemini-api/docs/function-calling#function_calling_mode) for a usage example.
-`safetySettings[]` `object (`[SafetySetting](https://ai.google.dev/api/generate-content#v1beta.SafetySetting)`)`  
-Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
+`toolConfig` ``object (`https://ai.google.dev/api/caching#ToolConfig`)`` Optional. Tool configuration for any `Tool` specified in the request. Refer to the [Function calling guide](https://ai.google.dev/gemini-api/docs/function-calling#function_calling_mode) for a usage example.
+`safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-`systemInstruction` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
-`generationConfig` `object (`[GenerationConfig](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig)`)`  
-Optional. Configuration options for model generation and outputs.
-`cachedContent` `string`  
-Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`  
+`systemInstruction` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
+`generationConfig` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
+`cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+`store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
 
@@ -2115,8 +2046,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L37-L45
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L37-L45
 
 ### Node.js
 
@@ -2132,8 +2062,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L51-L63
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L51-L63
 
 ### Go
 
@@ -2158,16 +2087,14 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L38-L59
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L38-L59
 
 ### Shell
 
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}" \
             -H 'Content-Type: application/json' \
             --no-buffer \
-            -d '{ "contents":[{"parts":[{"text": "Write a story about a magic backpack."}]}]}'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L33-L37
+            -d '{ "contents":[{"parts":[{"text": "Write a story about a magic backpack."}]}]}'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L33-L37
 
 ### Java
 
@@ -2185,8 +2112,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         response.append(res.text());
     }
 
-    responseStream.close();  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L49-L63
+    responseStream.close();https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L49-L63
 
 ### Image
 
@@ -2202,8 +2128,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L63-L73
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L63-L73
 
 ### Node.js
 
@@ -2228,8 +2153,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L94-L115
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L94-L115
 
 ### Go
 
@@ -2268,8 +2192,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L104-L139
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L104-L139
 
 ### Shell
 
@@ -2292,8 +2215,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d "@$TEMP_JSON" 2> /dev/null  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L74-L94
+        -d "@$TEMP_JSON" 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L74-L94
 
 ### Java
 
@@ -2320,8 +2242,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         response.append(res.text());
     }
 
-    responseStream.close();  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L89-L112
+    responseStream.close();https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/java/src/main/java/com/example/gemini/TextGeneration.java#L89-L112
 
 ### Audio
 
@@ -2337,8 +2258,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L131-L141
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L131-L141
 
 ### Go
 
@@ -2381,8 +2301,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L296-L335
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L296-L335
 
 ### Shell
 
@@ -2429,8 +2348,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
            }' 2> /dev/null > response.json
 
     cat response.json
-    echo  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L224-L268
+    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L224-L268
 
 ### Video
 
@@ -2456,8 +2374,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L169-L189
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L169-L189
 
 ### Node.js
 
@@ -2490,8 +2407,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L269-L298
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L269-L298
 
 ### Go
 
@@ -2546,8 +2462,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L394-L445
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L394-L445
 
 ### Shell
 
@@ -2604,8 +2519,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
            }' 2> /dev/null > response.json
 
     cat response.json
-    echo  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L335-L389
+    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L335-L389
 
 ### PDF
 
@@ -2622,8 +2536,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
 
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L207-L218
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L207-L218
 
 ### Go
 
@@ -2666,8 +2579,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L492-L531
+    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L492-L531
 
 ### Shell
 
@@ -2716,8 +2628,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
            }' 2> /dev/null > response.json
 
     cat response.json
-    echo  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L445-L491
+    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L445-L491
 
 ### Chat
 
@@ -2750,8 +2661,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
         print(chunk.text)
         print("_" * 80)
 
-    print(chat.get_history())  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L52-L79
+    print(chat.get_history())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L52-L79
 
 ### Node.js
 
@@ -2790,8 +2700,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
       console.log("_".repeat(80));
     }
 
-    console.log(chat.getHistory());  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L66-L101
+    console.log(chat.getHistory());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L66-L101
 
 ### Go
 
@@ -2829,8 +2738,7 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
     	fmt.Println(strings.Repeat("_", 64))
     }
 
-    fmt.Println(chat.History(false))  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L54-L88
+    fmt.Println(chat.History(false))https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L54-L88
 
 ### Shell
 
@@ -2849,12 +2757,11 @@ Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs
              "parts":[{
                "text": "I have two dogs in my house. How many paws are in my house?"}]},
           ]
-        }' 2> /dev/null | grep "text"  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L27-L43
+        }' 2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L27-L43
 
 ### Response body
 
-If successful, the response body contains a stream of [GenerateContentResponse](https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse) instances.  
+If successful, the response body contains a stream of `https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse` instances.
 
 ## GenerateContentResponse
 
@@ -2871,34 +2778,26 @@ If successful, the response body contains a stream of [GenerateContentResponse](
 Response from the model supporting multiple candidate responses.
 
 Safety ratings and content filtering are reported for both prompt in `GenerateContentResponse.prompt_feedback` and for each candidate in `finishReason` and in `safetyRatings`. The API: - Returns either all requested candidates or none of them - Returns no candidates at all only if there was something wrong with the prompt (check `promptFeedback`) - Reports feedback on each candidate in `finishReason` and `safetyRatings`.
-Fields `candidates[]` `object (`[Candidate](https://ai.google.dev/api/generate-content#v1beta.Candidate)`)`  
-Candidate responses from the model.
-`promptFeedback` `object (`[PromptFeedback](https://ai.google.dev/api/generate-content#PromptFeedback)`)`  
-Returns the prompt's feedback related to the content filters.
-`usageMetadata` `object (`[UsageMetadata](https://ai.google.dev/api/generate-content#UsageMetadata)`)`  
-Output only. Metadata on the generation requests' token usage.
-`modelVersion` `string`  
-Output only. The model version used to generate the response.
-`responseId` `string`  
-Output only. responseId is used to identify each response.
-`modelStatus` `object (`[ModelStatus](https://ai.google.dev/api/generate-content#ModelStatus)`)`  
-Output only. The current model status of this model.  
+Fields `candidates[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Candidate`)`` Candidate responses from the model.
+`promptFeedback` ``object (`https://ai.google.dev/api/generate-content#PromptFeedback`)`` Returns the prompt's feedback related to the content filters.
+`usageMetadata` ``object (`https://ai.google.dev/api/generate-content#UsageMetadata`)`` Output only. Metadata on the generation requests' token usage.
+`modelVersion` `string` Output only. The model version used to generate the response.
+`responseId` `string` Output only. responseId is used to identify each response.
+`modelStatus` ``object (`https://ai.google.dev/api/generate-content#ModelStatus`)`` Output only. The current model status of this model.
 
 | JSON representation |
 |---|
-| ``` { "candidates": [ { object (https://ai.google.dev/api/generate-content#v1beta.Candidate) } ], "promptFeedback": { object (https://ai.google.dev/api/generate-content#PromptFeedback) }, "usageMetadata": { object (https://ai.google.dev/api/generate-content#UsageMetadata) }, "modelVersion": string, "responseId": string, "modelStatus": { object (https://ai.google.dev/api/generate-content#ModelStatus) } } ``` |
+| ``` { "candidates": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Candidate`) } ], "promptFeedback": { object (`https://ai.google.dev/api/generate-content#PromptFeedback`) }, "usageMetadata": { object (`https://ai.google.dev/api/generate-content#UsageMetadata`) }, "modelVersion": string, "responseId": string, "modelStatus": { object (`https://ai.google.dev/api/generate-content#ModelStatus`) } } ``` |
 
 ## PromptFeedback
 
 A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-Fields `blockReason` `enum (`[BlockReason](https://ai.google.dev/api/generate-content#BlockReason)`)`  
-Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
-`safetyRatings[]` `object (`[SafetyRating](https://ai.google.dev/api/generate-content#v1beta.SafetyRating)`)`  
-Ratings for safety of the prompt. There is at most one rating per category.  
+Fields `blockReason` ``enum (`https://ai.google.dev/api/generate-content#BlockReason`)`` Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
+`safetyRatings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`)`` Ratings for safety of the prompt. There is at most one rating per category.
 
 | JSON representation |
 |---|
-| ``` { "blockReason": enum (https://ai.google.dev/api/generate-content#BlockReason), "safetyRatings": [ { object (https://ai.google.dev/api/generate-content#v1beta.SafetyRating) } ] } ``` |
+| ``` { "blockReason": enum (`https://ai.google.dev/api/generate-content#BlockReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ] } ``` |
 
 ## BlockReason
 
@@ -2916,46 +2815,33 @@ Specifies the reason why the prompt was blocked.
 ## UsageMetadata
 
 Metadata on the generation request's token usage.
-Fields `promptTokenCount` `integer`  
-Number of tokens in the prompt. When `cachedContent` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
-`cachedContentTokenCount` `integer`  
-Number of tokens in the cached part of the prompt (the cached content)
-`candidatesTokenCount` `integer`  
-Total number of tokens across all the generated response candidates.
-`toolUsePromptTokenCount` `integer`  
-Output only. Number of tokens present in tool-use prompt(s).
-`thoughtsTokenCount` `integer`  
-Output only. Number of tokens of thoughts for thinking models.
-`totalTokenCount` `integer`  
-Total token count for the generation request (prompt + response candidates).
-`promptTokensDetails[]` `object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities that were processed in the request input.
-`cacheTokensDetails[]` `object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities of the cached content in the request input.
-`candidatesTokensDetails[]` `object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities that were returned in the response.
-`toolUsePromptTokensDetails[]` `object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities that were processed for tool-use request inputs.  
+Fields `promptTokenCount` `integer` Number of tokens in the prompt. When `cachedContent` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
+`cachedContentTokenCount` `integer` Number of tokens in the cached part of the prompt (the cached content)
+`candidatesTokenCount` `integer` Total number of tokens across all the generated response candidates.
+`toolUsePromptTokenCount` `integer` Output only. Number of tokens present in tool-use prompt(s).
+`thoughtsTokenCount` `integer` Output only. Number of tokens of thoughts for thinking models.
+`totalTokenCount` `integer` Total token count for the generation request (prompt + response candidates).
+`promptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed in the request input.
+`cacheTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities of the cached content in the request input.
+`candidatesTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were returned in the response.
+`toolUsePromptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed for tool-use request inputs.
 
 | JSON representation |
 |---|
-| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ], "cacheTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ], "candidatesTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ], "toolUsePromptTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ] } ``` |
+| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "candidatesTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "toolUsePromptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ] } ``` |
 
 ## ModelStatus
 
 The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
-Fields `modelStage` `enum (`[ModelStage](https://ai.google.dev/api/generate-content#ModelStage)`)`  
-The stage of the underlying model.
-`retirementTime` `string (`[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)`  
-The time at which the model will be retired.
+Fields `modelStage` ``enum (`https://ai.google.dev/api/generate-content#ModelStage`)`` The stage of the underlying model.
+`retirementTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` The time at which the model will be retired.
 
 Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.
-`message` `string`  
-A message explaining the model status.  
+`message` `string` A message explaining the model status.
 
 | JSON representation |
 |---|
-| ``` { "modelStage": enum (https://ai.google.dev/api/generate-content#ModelStage), "retirementTime": string, "message": string } ``` |
+| ``` { "modelStage": enum (`https://ai.google.dev/api/generate-content#ModelStage`), "retirementTime": string, "message": string } ``` |
 
 ## ModelStage
 
@@ -2964,12 +2850,12 @@ Defines the stage of the underlying model.
 | Enums ||
 |---|---|
 | `MODEL_STAGE_UNSPECIFIED` | Unspecified model stage. |
-| `UNSTABLE_EXPERIMENTAL` | The underlying model is subject to lots of tunings. | This item is deprecated! |
+| `UNSTABLE_EXPERIMENTAL` | The underlying model is subject to lots of tunings. > [!WARNING] > This item is deprecated! |
 | `EXPERIMENTAL` | Models in this stage are for experimental purposes only. |
 | `PREVIEW` | Models in this stage are more mature than experimental models. |
 | `STABLE` | Models in this stage are considered stable and ready for production use. |
 | `LEGACY` | If the model is on this stage, it means that this model is on the path to deprecation in near future. Only existing customers can use this model. |
-| `DEPRECATED` | Models in this stage are deprecated. These models cannot be used. | This item is deprecated! |
+| `DEPRECATED` | Models in this stage are deprecated. These models cannot be used. > [!WARNING] > This item is deprecated! |
 | `RETIRED` | Models in this stage are retired. These models cannot be used. |
 
 ## Candidate
@@ -2992,8 +2878,14 @@ Defines the stage of the underlying model.
   - [JSON representation](https://ai.google.dev/api/generate-content#GroundingChunk.SCHEMA_REPRESENTATION)
 - [Web](https://ai.google.dev/api/generate-content#Web)
   - [JSON representation](https://ai.google.dev/api/generate-content#Web.SCHEMA_REPRESENTATION)
+- [Image](https://ai.google.dev/api/generate-content#Image)
+  - [JSON representation](https://ai.google.dev/api/generate-content#Image.SCHEMA_REPRESENTATION)
 - [RetrievedContext](https://ai.google.dev/api/generate-content#RetrievedContext)
   - [JSON representation](https://ai.google.dev/api/generate-content#RetrievedContext.SCHEMA_REPRESENTATION)
+- [CustomMetadata](https://ai.google.dev/api/generate-content#CustomMetadata)
+  - [JSON representation](https://ai.google.dev/api/generate-content#CustomMetadata.SCHEMA_REPRESENTATION)
+- [StringList](https://ai.google.dev/api/generate-content#StringList)
+  - [JSON representation](https://ai.google.dev/api/generate-content#StringList.SCHEMA_REPRESENTATION)
 - [Maps](https://ai.google.dev/api/generate-content#Maps)
   - [JSON representation](https://ai.google.dev/api/generate-content#Maps.SCHEMA_REPRESENTATION)
 - [PlaceAnswerSources](https://ai.google.dev/api/generate-content#PlaceAnswerSources)
@@ -3019,44 +2911,32 @@ Defines the stage of the underlying model.
 - [UrlRetrievalStatus](https://ai.google.dev/api/generate-content#UrlRetrievalStatus)
 
 A response candidate generated from the model.
-Fields `content` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Output only. Generated content returned from the model.
-`finishReason` `enum (`[FinishReason](https://ai.google.dev/api/generate-content#FinishReason)`)`  
-Optional. Output only. The reason why the model stopped generating tokens.
+Fields `content` ``object (`https://ai.google.dev/api/caching#Content`)`` Output only. Generated content returned from the model.
+`finishReason` ``enum (`https://ai.google.dev/api/generate-content#FinishReason`)`` Optional. Output only. The reason why the model stopped generating tokens.
 
 If empty, the model has not stopped generating tokens.
-`safetyRatings[]` `object (`[SafetyRating](https://ai.google.dev/api/generate-content#v1beta.SafetyRating)`)`  
-List of ratings for the safety of a response candidate.
+`safetyRatings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`)`` List of ratings for the safety of a response candidate.
 
 There is at most one rating per category.
-`citationMetadata` `object (`[CitationMetadata](https://ai.google.dev/api/generate-content#v1beta.CitationMetadata)`)`  
-Output only. Citation information for model-generated candidate.
+`citationMetadata` ``object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`)`` Output only. Citation information for model-generated candidate.
 
 This field may be populated with recitation information for any text included in the `content`. These are passages that are "recited" from copyrighted material in the foundational LLM's training data.
-`tokenCount` `integer`  
-Output only. Token count for this candidate.
-`groundingAttributions[]` `object (`[GroundingAttribution](https://ai.google.dev/api/generate-content#GroundingAttribution)`)`  
-Output only. Attribution information for sources that contributed to a grounded answer.
+`tokenCount` `integer` Output only. Token count for this candidate.
+`groundingAttributions[]` ``object (`https://ai.google.dev/api/generate-content#GroundingAttribution`)`` Output only. Attribution information for sources that contributed to a grounded answer.
 
 This field is populated for `GenerateAnswer` calls.
-`groundingMetadata` `object (`[GroundingMetadata](https://ai.google.dev/api/generate-content#GroundingMetadata)`)`  
-Output only. Grounding metadata for the candidate.
+`groundingMetadata` ``object (`https://ai.google.dev/api/generate-content#GroundingMetadata`)`` Output only. Grounding metadata for the candidate.
 
 This field is populated for `GenerateContent` calls.
-`avgLogprobs` `number`  
-Output only. Average log probability score of the candidate.
-`logprobsResult` `object (`[LogprobsResult](https://ai.google.dev/api/generate-content#LogprobsResult)`)`  
-Output only. Log-likelihood scores for the response tokens and top tokens
-`urlContextMetadata` `object (`[UrlContextMetadata](https://ai.google.dev/api/generate-content#UrlContextMetadata)`)`  
-Output only. Metadata related to url context retrieval tool.
-`index` `integer`  
-Output only. Index of the candidate in the list of response candidates.
-`finishMessage` `string`  
-Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finishReason` is set.  
+`avgLogprobs` `number` Output only. Average log probability score of the candidate.
+`logprobsResult` ``object (`https://ai.google.dev/api/generate-content#LogprobsResult`)`` Output only. Log-likelihood scores for the response tokens and top tokens
+`urlContextMetadata` ``object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`)`` Output only. Metadata related to url context retrieval tool.
+`index` `integer` Output only. Index of the candidate in the list of response candidates.
+`finishMessage` `string` Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finishReason` is set.
 
 | JSON representation |
 |---|
-| ``` { "content": { object (https://ai.google.dev/api/caching#Content) }, "finishReason": enum (https://ai.google.dev/api/generate-content#FinishReason), "safetyRatings": [ { object (https://ai.google.dev/api/generate-content#v1beta.SafetyRating) } ], "citationMetadata": { object (https://ai.google.dev/api/generate-content#v1beta.CitationMetadata) }, "tokenCount": integer, "groundingAttributions": [ { object (https://ai.google.dev/api/generate-content#GroundingAttribution) } ], "groundingMetadata": { object (https://ai.google.dev/api/generate-content#GroundingMetadata) }, "avgLogprobs": number, "logprobsResult": { object (https://ai.google.dev/api/generate-content#LogprobsResult) }, "urlContextMetadata": { object (https://ai.google.dev/api/generate-content#UrlContextMetadata) }, "index": integer, "finishMessage": string } ``` |
+| ``` { "content": { object (`https://ai.google.dev/api/caching#Content`) }, "finishReason": enum (`https://ai.google.dev/api/generate-content#FinishReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ], "citationMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`) }, "tokenCount": integer, "groundingAttributions": [ { object (`https://ai.google.dev/api/generate-content#GroundingAttribution`) } ], "groundingMetadata": { object (`https://ai.google.dev/api/generate-content#GroundingMetadata`) }, "avgLogprobs": number, "logprobsResult": { object (`https://ai.google.dev/api/generate-content#LogprobsResult`) }, "urlContextMetadata": { object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`) }, "index": integer, "finishMessage": string } ``` |
 
 ## FinishReason
 
@@ -3083,41 +2963,33 @@ Defines the reason why the model stopped generating tokens.
 | `UNEXPECTED_TOOL_CALL` | Model generated a tool call but no tools were enabled in the request. |
 | `TOO_MANY_TOOL_CALLS` | Model called too many tools consecutively, thus the system exited execution. |
 | `MISSING_THOUGHT_SIGNATURE` | Request has at least one thought signature missing. |
+| `MALFORMED_RESPONSE` | Finished due to malformed response. |
 
 ## GroundingAttribution
 
 Attribution for a source that contributed to an answer.
-Fields `sourceId` `object (`[AttributionSourceId](https://ai.google.dev/api/generate-content#AttributionSourceId)`)`  
-Output only. Identifier for the source contributing to this attribution.
-`content` `object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Grounding source content that makes up this attribution.  
+Fields `sourceId` ``object (`https://ai.google.dev/api/generate-content#AttributionSourceId`)`` Output only. Identifier for the source contributing to this attribution.
+`content` ``object (`https://ai.google.dev/api/caching#Content`)`` Grounding source content that makes up this attribution.
 
 | JSON representation |
 |---|
-| ``` { "sourceId": { object (https://ai.google.dev/api/generate-content#AttributionSourceId) }, "content": { object (https://ai.google.dev/api/caching#Content) } } ``` |
+| ``` { "sourceId": { object (`https://ai.google.dev/api/generate-content#AttributionSourceId`) }, "content": { object (`https://ai.google.dev/api/caching#Content`) } } ``` |
 
 ## AttributionSourceId
 
 Identifier for the source contributing to this attribution.
-Fields  
-`source` `Union type`  
-`source` can be only one of the following:
-`groundingPassage` `object (`[GroundingPassageId](https://ai.google.dev/api/generate-content#GroundingPassageId)`)`  
-Identifier for an inline passage.
-`semanticRetrieverChunk` `object (`[SemanticRetrieverChunk](https://ai.google.dev/api/generate-content#SemanticRetrieverChunk)`)`  
-Identifier for a `Chunk` fetched via Semantic Retriever.  
+Fields `source` `Union type` `source` can be only one of the following: `groundingPassage` ``object (`https://ai.google.dev/api/generate-content#GroundingPassageId`)`` Identifier for an inline passage.
+`semanticRetrieverChunk` ``object (`https://ai.google.dev/api/generate-content#SemanticRetrieverChunk`)`` Identifier for a `Chunk` fetched via Semantic Retriever.
 
 | JSON representation |
 |---|
-| ``` { // source "groundingPassage": { object (https://ai.google.dev/api/generate-content#GroundingPassageId) }, "semanticRetrieverChunk": { object (https://ai.google.dev/api/generate-content#SemanticRetrieverChunk) } // Union type } ``` |
+| ``` { // source "groundingPassage": { object (`https://ai.google.dev/api/generate-content#GroundingPassageId`) }, "semanticRetrieverChunk": { object (`https://ai.google.dev/api/generate-content#SemanticRetrieverChunk`) } // Union type } ``` |
 
 ## GroundingPassageId
 
 Identifier for a part within a `GroundingPassage`.
-Fields `passageId` `string`  
-Output only. ID of the passage matching the `GenerateAnswerRequest`'s `GroundingPassage.id`.
-`partIndex` `integer`  
-Output only. Index of the part within the `GenerateAnswerRequest`'s `GroundingPassage.content`.  
+Fields `passageId` `string` Output only. ID of the passage matching the `GenerateAnswerRequest`'s `GroundingPassage.id`.
+`partIndex` `integer` Output only. Index of the part within the `GenerateAnswerRequest`'s `GroundingPassage.content`.
 
 | JSON representation |
 |---|
@@ -3126,10 +2998,8 @@ Output only. Index of the part within the `GenerateAnswerRequest`'s `GroundingPa
 ## SemanticRetrieverChunk
 
 Identifier for a `Chunk` retrieved via Semantic Retriever specified in the `GenerateAnswerRequest` using `SemanticRetrieverConfig`.
-Fields `source` `string`  
-Output only. Name of the source matching the request's `SemanticRetrieverConfig.source`. Example: `corpora/123` or `corpora/123/documents/abc`
-`chunk` `string`  
-Output only. Name of the `Chunk` containing the attributed text. Example: `corpora/123/documents/abc/chunks/xyz`  
+Fields `source` `string` Output only. Name of the source matching the request's `SemanticRetrieverConfig.source`. Example: `corpora/123` or `corpora/123/documents/abc`
+`chunk` `string` Output only. Name of the `Chunk` containing the attributed text. Example: `corpora/123/documents/abc/chunks/xyz`
 
 | JSON representation |
 |---|
@@ -3138,32 +3008,25 @@ Output only. Name of the `Chunk` containing the attributed text. Example: `corpo
 ## GroundingMetadata
 
 Metadata returned to client when grounding is enabled.
-Fields `groundingChunks[]` `object (`[GroundingChunk](https://ai.google.dev/api/generate-content#GroundingChunk)`)`  
-List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
-`groundingSupports[]` `object (`[GroundingSupport](https://ai.google.dev/api/generate-content#GroundingSupport)`)`  
-List of grounding support.
-`webSearchQueries[]` `string`  
-Web search queries for the following-up web search.
-`searchEntryPoint` `object (`[SearchEntryPoint](https://ai.google.dev/api/generate-content#SearchEntryPoint)`)`  
-Optional. Google search entry for the following-up web searches.
-`retrievalMetadata` `object (`[RetrievalMetadata](https://ai.google.dev/api/generate-content#RetrievalMetadata)`)`  
-Metadata related to retrieval in the grounding flow.
-`googleMapsWidgetContextToken` `string`  
-Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.  
+Fields `groundingChunks[]` ``object (`https://ai.google.dev/api/generate-content#GroundingChunk`)`` List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
+`groundingSupports[]` ``object (`https://ai.google.dev/api/generate-content#GroundingSupport`)`` List of grounding support.
+`webSearchQueries[]` `string` Web search queries for the following-up web search.
+`imageSearchQueries[]` `string` Image search queries used for grounding.
+`searchEntryPoint` ``object (`https://ai.google.dev/api/generate-content#SearchEntryPoint`)`` Optional. Google search entry for the following-up web searches.
+`retrievalMetadata` ``object (`https://ai.google.dev/api/generate-content#RetrievalMetadata`)`` Metadata related to retrieval in the grounding flow.
+`googleMapsWidgetContextToken` `string` Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
 
 | JSON representation |
 |---|
-| ``` { "groundingChunks": [ { object (https://ai.google.dev/api/generate-content#GroundingChunk) } ], "groundingSupports": [ { object (https://ai.google.dev/api/generate-content#GroundingSupport) } ], "webSearchQueries": [ string ], "searchEntryPoint": { object (https://ai.google.dev/api/generate-content#SearchEntryPoint) }, "retrievalMetadata": { object (https://ai.google.dev/api/generate-content#RetrievalMetadata) }, "googleMapsWidgetContextToken": string } ``` |
+| ``` { "groundingChunks": [ { object (`https://ai.google.dev/api/generate-content#GroundingChunk`) } ], "groundingSupports": [ { object (`https://ai.google.dev/api/generate-content#GroundingSupport`) } ], "webSearchQueries": [ string ], "imageSearchQueries": [ string ], "searchEntryPoint": { object (`https://ai.google.dev/api/generate-content#SearchEntryPoint`) }, "retrievalMetadata": { object (`https://ai.google.dev/api/generate-content#RetrievalMetadata`) }, "googleMapsWidgetContextToken": string } ``` |
 
 ## SearchEntryPoint
 
 Google search entry point.
-Fields `renderedContent` `string`  
-Optional. Web content snippet that can be embedded in a web page or an app webview.
-`sdkBlob` `string (`[bytes](https://developers.google.com/discovery/v1/type-format)` format)`  
-Optional. Base64 encoded JSON representing array of \<search term, search url\> tuple.
+Fields `renderedContent` `string` Optional. Web content snippet that can be embedded in a web page or an app webview.
+`sdkBlob` `string (https://developers.google.com/discovery/v1/type-format format)` Optional. Base64 encoded JSON representing array of \<search term, search url\> tuple.
 
-A base64-encoded string.  
+A base64-encoded string.
 
 | JSON representation |
 |---|
@@ -3171,86 +3034,100 @@ A base64-encoded string.
 
 ## GroundingChunk
 
-Grounding chunk.
-Fields  
-`chunk_type` `Union type`  
-Chunk type. `chunk_type` can be only one of the following:
-`web` `object (`[Web](https://ai.google.dev/api/generate-content#Web)`)`  
-Grounding chunk from the web.
-`retrievedContext` `object (`[RetrievedContext](https://ai.google.dev/api/generate-content#RetrievedContext)`)`  
-Optional. Grounding chunk from context retrieved by the file search tool.
-`maps` `object (`[Maps](https://ai.google.dev/api/generate-content#Maps)`)`  
-Optional. Grounding chunk from Google Maps.  
+A `GroundingChunk` represents a segment of supporting evidence that grounds the model's response. It can be a chunk from the web, a retrieved context from a file, or information from Google Maps.
+Fields `chunk_type` `Union type` Chunk type. `chunk_type` can be only one of the following: `web` ``object (`https://ai.google.dev/api/generate-content#Web`)`` Grounding chunk from the web.
+`image` ``object (`https://ai.google.dev/api/generate-content#Image`)`` Optional. Grounding chunk from image search.
+`retrievedContext` ``object (`https://ai.google.dev/api/generate-content#RetrievedContext`)`` Optional. Grounding chunk from context retrieved by the file search tool.
+`maps` ``object (`https://ai.google.dev/api/generate-content#Maps`)`` Optional. Grounding chunk from Google Maps.
 
 | JSON representation |
 |---|
-| ``` { // chunk_type "web": { object (https://ai.google.dev/api/generate-content#Web) }, "retrievedContext": { object (https://ai.google.dev/api/generate-content#RetrievedContext) }, "maps": { object (https://ai.google.dev/api/generate-content#Maps) } // Union type } ``` |
+| ``` { // chunk_type "web": { object (`https://ai.google.dev/api/generate-content#Web`) }, "image": { object (`https://ai.google.dev/api/generate-content#Image`) }, "retrievedContext": { object (`https://ai.google.dev/api/generate-content#RetrievedContext`) }, "maps": { object (`https://ai.google.dev/api/generate-content#Maps`) } // Union type } ``` |
 
 ## Web
 
 Chunk from the web.
-Fields `uri` `string`  
-URI reference of the chunk.
-`title` `string`  
-Title of the chunk.  
+Fields `uri` `string` Output only. URI reference of the chunk.
+`title` `string` Output only. Title of the chunk.
 
 | JSON representation |
 |---|
 | ``` { "uri": string, "title": string } ``` |
 
-## RetrievedContext
+## Image
 
-Chunk from context retrieved by the file search tool.
-Fields `uri` `string`  
-Optional. URI reference of the semantic retrieval document.
-`title` `string`  
-Optional. Title of the document.
-`text` `string`  
-Optional. Text of the chunk.
-`fileSearchStore` `string`  
-Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`  
+Chunk from image search.
+Fields `sourceUri` `string` The web page URI for attribution.
+`imageUri` `string` The image asset URL.
+`title` `string` The title of the web page that the image is from.
+`domain` `string` The root domain of the web page that the image is from, e.g. "example.com".
 
 | JSON representation |
 |---|
-| ``` { "uri": string, "title": string, "text": string, "fileSearchStore": string } ``` |
+| ``` { "sourceUri": string, "imageUri": string, "title": string, "domain": string } ``` |
+
+## RetrievedContext
+
+Chunk from context retrieved by the file search tool.
+Fields `customMetadata[]` ``object (`https://ai.google.dev/api/generate-content#CustomMetadata`)`` Optional. User-provided metadata about the retrieved context.
+`uri` `string` Optional. URI reference of the semantic retrieval document.
+`title` `string` Optional. Title of the document.
+`text` `string` Optional. Text of the chunk.
+`fileSearchStore` `string` Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+
+| JSON representation |
+|---|
+| ``` { "customMetadata": [ { object (`https://ai.google.dev/api/generate-content#CustomMetadata`) } ], "uri": string, "title": string, "text": string, "fileSearchStore": string } ``` |
+
+## CustomMetadata
+
+User provided metadata about the GroundingFact.
+Fields `key` `string` The key of the metadata.
+`value` `Union type` The value of the metadata. Can be a string, a list of strings, or a number. `value` can be only one of the following: `stringValue` `string` Optional. The string value of the metadata.
+`stringListValue` ``object (`https://ai.google.dev/api/generate-content#StringList`)`` Optional. A list of string values for the metadata.
+`numericValue` `number` Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
+
+| JSON representation |
+|---|
+| ``` { "key": string, // value "stringValue": string, "stringListValue": { object (`https://ai.google.dev/api/generate-content#StringList`) }, "numericValue": number // Union type } ``` |
+
+## StringList
+
+A list of string values.
+Fields `values[]` `string` The string values of the list.
+
+| JSON representation |
+|---|
+| ``` { "values": [ string ] } ``` |
 
 ## Maps
 
 A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
-Fields `uri` `string`  
-URI reference of the place.
-`title` `string`  
-Title of the place.
-`text` `string`  
-Text description of the place answer.
-`placeId` `string`  
-This ID of the place, in `places/{placeId}` format. A user can use this ID to look up that place.
-`placeAnswerSources` `object (`[PlaceAnswerSources](https://ai.google.dev/api/generate-content#PlaceAnswerSources)`)`  
-Sources that provide answers about the features of a given place in Google Maps.  
+Fields `uri` `string` URI reference of the place.
+`title` `string` Title of the place.
+`text` `string` Text description of the place answer.
+`placeId` `string` The ID of the place, in `places/{placeId}` format. A user can use this ID to look up that place.
+`placeAnswerSources` ``object (`https://ai.google.dev/api/generate-content#PlaceAnswerSources`)`` Sources that provide answers about the features of a given place in Google Maps.
 
 | JSON representation |
 |---|
-| ``` { "uri": string, "title": string, "text": string, "placeId": string, "placeAnswerSources": { object (https://ai.google.dev/api/generate-content#PlaceAnswerSources) } } ``` |
+| ``` { "uri": string, "title": string, "text": string, "placeId": string, "placeAnswerSources": { object (`https://ai.google.dev/api/generate-content#PlaceAnswerSources`) } } ``` |
 
 ## PlaceAnswerSources
 
 Collection of sources that provide answers about the features of a given place in Google Maps. Each PlaceAnswerSources message corresponds to a specific place in Google Maps. The Google Maps tool used these sources in order to answer questions about features of the place (e.g: "does Bar Foo have Wifi" or "is Foo Bar wheelchair accessible?"). Currently we only support review snippets as sources.
-Fields `reviewSnippets[]` `object (`[ReviewSnippet](https://ai.google.dev/api/generate-content#ReviewSnippet)`)`  
-Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.  
+Fields `reviewSnippets[]` ``object (`https://ai.google.dev/api/generate-content#ReviewSnippet`)`` Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
 | JSON representation |
 |---|
-| ``` { "reviewSnippets": [ { object (https://ai.google.dev/api/generate-content#ReviewSnippet) } ] } ``` |
+| ``` { "reviewSnippets": [ { object (`https://ai.google.dev/api/generate-content#ReviewSnippet`) } ] } ``` |
 
 ## ReviewSnippet
 
 Encapsulates a snippet of a user review that answers a question about the features of a specific place in Google Maps.
-Fields `reviewId` `string`  
-The ID of the review snippet.
-`googleMapsUri` `string`  
-A link that corresponds to the user review on Google Maps.
-`title` `string`  
-Title of the review.  
+Fields `reviewId` `string` The ID of the review snippet.
+`googleMapsUri` `string` A link that corresponds to the user review on Google Maps.
+`title` `string` Title of the review.
 
 | JSON representation |
 |---|
@@ -3259,28 +3136,22 @@ Title of the review.
 ## GroundingSupport
 
 Grounding support.
-Fields `groundingChunkIndices[]` `integer`  
-Optional. A list of indices (into 'grounding_chunk' in `response.candidate.grounding_metadata`) specifying the citations associated with the claim. For instance \[1,3,4\] means that grounding_chunk\[1\], grounding_chunk\[3\], grounding_chunk\[4\] are the retrieved content attributed to the claim. If the response is streaming, the groundingChunkIndices refer to the indices across all responses. It is the client's responsibility to accumulate the grounding chunks from all responses (while maintaining the same order).
-`confidenceScores[]` `number`  
-Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the groundingChunkIndices.
-`segment` `object (`[Segment](https://ai.google.dev/api/generate-content#Segment)`)`  
-Segment of the content this support belongs to.  
+Fields `groundingChunkIndices[]` `integer` Optional. A list of indices (into 'grounding_chunk' in `response.candidate.grounding_metadata`) specifying the citations associated with the claim. For instance \[1,3,4\] means that grounding_chunk\[1\], grounding_chunk\[3\], grounding_chunk\[4\] are the retrieved content attributed to the claim. If the response is streaming, the groundingChunkIndices refer to the indices across all responses. It is the client's responsibility to accumulate the grounding chunks from all responses (while maintaining the same order).
+`confidenceScores[]` `number` Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the groundingChunkIndices.
+`renderedParts[]` `integer` Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.
+`segment` ``object (`https://ai.google.dev/api/generate-content#Segment`)`` Segment of the content this support belongs to.
 
 | JSON representation |
 |---|
-| ``` { "groundingChunkIndices": [ integer ], "confidenceScores": [ number ], "segment": { object (https://ai.google.dev/api/generate-content#Segment) } } ``` |
+| ``` { "groundingChunkIndices": [ integer ], "confidenceScores": [ number ], "renderedParts": [ integer ], "segment": { object (`https://ai.google.dev/api/generate-content#Segment`) } } ``` |
 
 ## Segment
 
 Segment of the content.
-Fields `partIndex` `integer`  
-The index of a Part object within its parent Content object.
-`startIndex` `integer`  
-Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
-`endIndex` `integer`  
-End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
-`text` `string`  
-The text corresponding to the segment from the response.  
+Fields `partIndex` `integer` The index of a Part object within its parent Content object.
+`startIndex` `integer` Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
+`endIndex` `integer` End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
+`text` `string` The text corresponding to the segment from the response.
 
 | JSON representation |
 |---|
@@ -3289,8 +3160,7 @@ The text corresponding to the segment from the response.
 ## RetrievalMetadata
 
 Metadata related to retrieval in the grounding flow.
-Fields `googleSearchDynamicRetrievalScore` `number`  
-Optional. Score indicating how likely information from google search could help answer the prompt. The score is in the range \[0, 1\], where 0 is the least likely and 1 is the most likely. This score is only populated when google search grounding and dynamic retrieval is enabled. It will be compared to the threshold to determine whether to trigger google search.  
+Fields `googleSearchDynamicRetrievalScore` `number` Optional. Score indicating how likely information from google search could help answer the prompt. The score is in the range \[0, 1\], where 0 is the least likely and 1 is the most likely. This score is only populated when google search grounding and dynamic retrieval is enabled. It will be compared to the threshold to determine whether to trigger google search.
 
 | JSON representation |
 |---|
@@ -3299,36 +3169,29 @@ Optional. Score indicating how likely information from google search could help 
 ## LogprobsResult
 
 Logprobs Result
-Fields `topCandidates[]` `object (`[TopCandidates](https://ai.google.dev/api/generate-content#TopCandidates)`)`  
-Length = total number of decoding steps.
-`chosenCandidates[]` `object (`[Candidate](https://ai.google.dev/api/generate-content#Candidate)`)`  
-Length = total number of decoding steps. The chosen candidates may or may not be in topCandidates.
-`logProbabilitySum` `number`  
-Sum of log probabilities for all tokens.  
+Fields `topCandidates[]` ``object (`https://ai.google.dev/api/generate-content#TopCandidates`)`` Length = total number of decoding steps.
+`chosenCandidates[]` ``object (`https://ai.google.dev/api/generate-content#Candidate`)`` Length = total number of decoding steps. The chosen candidates may or may not be in topCandidates.
+`logProbabilitySum` `number` Sum of log probabilities for all tokens.
 
 | JSON representation |
 |---|
-| ``` { "topCandidates": [ { object (https://ai.google.dev/api/generate-content#TopCandidates) } ], "chosenCandidates": [ { object (https://ai.google.dev/api/generate-content#Candidate) } ], "logProbabilitySum": number } ``` |
+| ``` { "topCandidates": [ { object (`https://ai.google.dev/api/generate-content#TopCandidates`) } ], "chosenCandidates": [ { object (`https://ai.google.dev/api/generate-content#Candidate`) } ], "logProbabilitySum": number } ``` |
 
 ## TopCandidates
 
 Candidates with top log probabilities at each decoding step.
-Fields `candidates[]` `object (`[Candidate](https://ai.google.dev/api/generate-content#Candidate)`)`  
-Sorted by log probability in descending order.  
+Fields `candidates[]` ``object (`https://ai.google.dev/api/generate-content#Candidate`)`` Sorted by log probability in descending order.
 
 | JSON representation |
 |---|
-| ``` { "candidates": [ { object (https://ai.google.dev/api/generate-content#Candidate) } ] } ``` |
+| ``` { "candidates": [ { object (`https://ai.google.dev/api/generate-content#Candidate`) } ] } ``` |
 
 ## Candidate
 
 Candidate for the logprobs token and score.
-Fields `token` `string`  
-The candidate's token string value.
-`tokenId` `integer`  
-The candidate's token id value.
-`logProbability` `number`  
-The candidate's log probability.  
+Fields `token` `string` The candidate's token string value.
+`tokenId` `integer` The candidate's token id value.
+`logProbability` `number` The candidate's log probability.
 
 | JSON representation |
 |---|
@@ -3337,24 +3200,21 @@ The candidate's log probability.
 ## UrlContextMetadata
 
 Metadata related to url context retrieval tool.
-Fields `urlMetadata[]` `object (`[UrlMetadata](https://ai.google.dev/api/generate-content#UrlMetadata)`)`  
-List of url context.  
+Fields `urlMetadata[]` ``object (`https://ai.google.dev/api/generate-content#UrlMetadata`)`` List of url context.
 
 | JSON representation |
 |---|
-| ``` { "urlMetadata": [ { object (https://ai.google.dev/api/generate-content#UrlMetadata) } ] } ``` |
+| ``` { "urlMetadata": [ { object (`https://ai.google.dev/api/generate-content#UrlMetadata`) } ] } ``` |
 
 ## UrlMetadata
 
 Context of the a single url retrieval.
-Fields `retrievedUrl` `string`  
-Retrieved url by the tool.
-`urlRetrievalStatus` `enum (`[UrlRetrievalStatus](https://ai.google.dev/api/generate-content#UrlRetrievalStatus)`)`  
-Status of the url retrieval.  
+Fields `retrievedUrl` `string` Retrieved url by the tool.
+`urlRetrievalStatus` ``enum (`https://ai.google.dev/api/generate-content#UrlRetrievalStatus`)`` Status of the url retrieval.
 
 | JSON representation |
 |---|
-| ``` { "retrievedUrl": string, "urlRetrievalStatus": enum (https://ai.google.dev/api/generate-content#UrlRetrievalStatus) } ``` |
+| ``` { "retrievedUrl": string, "urlRetrievalStatus": enum (`https://ai.google.dev/api/generate-content#UrlRetrievalStatus`) } ``` |
 
 ## UrlRetrievalStatus
 
@@ -3375,28 +3235,23 @@ Status of the url retrieval.
   - [JSON representation](https://ai.google.dev/api/generate-content#CitationSource.SCHEMA_REPRESENTATION)
 
 A collection of source attributions for a piece of content.
-Fields `citationSources[]` `object (`[CitationSource](https://ai.google.dev/api/generate-content#CitationSource)`)`  
-Citations to sources for a specific response.  
+Fields `citationSources[]` ``object (`https://ai.google.dev/api/generate-content#CitationSource`)`` Citations to sources for a specific response.
 
 | JSON representation |
 |---|
-| ``` { "citationSources": [ { object (https://ai.google.dev/api/generate-content#CitationSource) } ] } ``` |
+| ``` { "citationSources": [ { object (`https://ai.google.dev/api/generate-content#CitationSource`) } ] } ``` |
 
 ## CitationSource
 
 A citation to a source for a portion of a specific response.
-Fields `startIndex` `integer`  
-Optional. Start of segment of the response that is attributed to this source.
+Fields `startIndex` `integer` Optional. Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-`endIndex` `integer`  
-Optional. End of the attributed segment, exclusive.
-`uri` `string`  
-Optional. URI that is attributed as a source for a portion of the text.
-`license` `string`  
-Optional. License for the GitHub project that is attributed as a source for segment.
+`endIndex` `integer` Optional. End of the attributed segment, exclusive.
+`uri` `string` Optional. URI that is attributed as a source for a portion of the text.
+`license` `string` Optional. License for the GitHub project that is attributed as a source for segment.
 
-License info is required for code citations.  
+License info is required for code citations.
 
 | JSON representation |
 |---|
@@ -3424,16 +3279,12 @@ License info is required for code citations.
 - [MediaResolution](https://ai.google.dev/api/generate-content#MediaResolution)
 
 Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-Fields `stopSequences[]` `string`  
-Optional. The set of character sequences (up to 5) that will stop output generation. If specified, the API will stop at the first appearance of a `stop_sequence`. The stop sequence will not be included as part of the response.
-`responseMimeType` `string`  
-Optional. MIME type of the generated candidate text. Supported MIME types are: `text/plain`: (default) Text output. `application/json`: JSON response in the response candidates. `text/x.enum`: ENUM as a string response in the response candidates. Refer to the [docs](https://ai.google.dev/gemini-api/docs/prompting_with_media#plain_text_formats) for a list of all supported text MIME types.
-`responseSchema` `object (`[Schema](https://ai.google.dev/api/caching#Schema)`)`  
-Optional. Output schema of the generated candidate text. Schemas must be a subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema) and can be objects, primitives or arrays.
+Fields `stopSequences[]` `string` Optional. The set of character sequences (up to 5) that will stop output generation. If specified, the API will stop at the first appearance of a `stop_sequence`. The stop sequence will not be included as part of the response.
+`responseMimeType` `string` Optional. MIME type of the generated candidate text. Supported MIME types are: `text/plain`: (default) Text output. `application/json`: JSON response in the response candidates. `text/x.enum`: ENUM as a string response in the response candidates. Refer to the [docs](https://ai.google.dev/gemini-api/docs/prompting_with_media#plain_text_formats) for a list of all supported text MIME types.
+`responseSchema` ``object (`https://ai.google.dev/api/caching#Schema`)`` Optional. Output schema of the generated candidate text. Schemas must be a subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema) and can be objects, primitives or arrays.
 
 If set, a compatible `responseMimeType` must also be set. Compatible MIME types: `application/json`: Schema for JSON response. Refer to the [JSON text generation guide](https://ai.google.dev/gemini-api/docs/json-mode) for more details.
-`_responseJsonSchema` `value (`[Value](https://protobuf.dev/reference/protobuf/google.protobuf/#value)` format)`  
-Optional. Output schema of the generated response. This is an alternative to `responseSchema` that accepts [JSON Schema](https://json-schema.org/).
+`_responseJsonSchema` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. Output schema of the generated response. This is an alternative to `responseSchema` that accepts [JSON Schema](https://json-schema.org/).
 
 If set, `responseSchema` must be omitted, but `responseMimeType` is required.
 
@@ -3463,74 +3314,57 @@ While the full JSON Schema may be sent, not all features are supported. Specific
 The non-standard `propertyOrdering` property may also be set.
 
 Cyclic references are unrolled to a limited degree and, as such, may only be used within non-required properties. (Nullable properties are not sufficient.) If `$ref` is set on a sub-schema, no other properties, except for than those starting as a `$`, may be set.
-`responseJsonSchema` `value (`[Value](https://protobuf.dev/reference/protobuf/google.protobuf/#value)` format)`  
-Optional. An internal detail. Use `responseJsonSchema` rather than this field.
-`responseModalities[]` `enum (`[Modality](https://ai.google.dev/api/generate-content#Modality)`)`  
-Optional. The requested modalities of the response. Represents the set of modalities that the model can return, and should be expected in the response. This is an exact match to the modalities of the response.
+`responseJsonSchema` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. An internal detail. Use `responseJsonSchema` rather than this field.
+`responseModalities[]` ``enum (`https://ai.google.dev/api/generate-content#Modality`)`` Optional. The requested modalities of the response. Represents the set of modalities that the model can return, and should be expected in the response. This is an exact match to the modalities of the response.
 
 A model may have multiple combinations of supported modalities. If the requested modalities do not match any of the supported combinations, an error will be returned.
 
 An empty list is equivalent to requesting only text.
-`candidateCount` `integer`  
-Optional. Number of generated responses to return. If unset, this will default to 1. Please note that this doesn't work for previous generation models (Gemini 1.0 family)
-`maxOutputTokens` `integer`  
-Optional. The maximum number of tokens to include in a response candidate.
+`candidateCount` `integer` Optional. Number of generated responses to return. If unset, this will default to 1. Please note that this doesn't work for previous generation models (Gemini 1.0 family)
+`maxOutputTokens` `integer` Optional. The maximum number of tokens to include in a response candidate.
 
 Note: The default value varies by model, see the `Model.output_token_limit` attribute of the `Model` returned from the `getModel` function.
-`temperature` `number`  
-Optional. Controls the randomness of the output.
+`temperature` `number` Optional. Controls the randomness of the output.
 
 Note: The default value varies by model, see the `Model.temperature` attribute of the `Model` returned from the `getModel` function.
 
 Values can range from \[0.0, 2.0\].
-`topP` `number`  
-Optional. The maximum cumulative probability of tokens to consider when sampling.
+`topP` `number` Optional. The maximum cumulative probability of tokens to consider when sampling.
 
 The model uses combined Top-k and Top-p (nucleus) sampling.
 
 Tokens are sorted based on their assigned probabilities so that only the most likely tokens are considered. Top-k sampling directly limits the maximum number of tokens to consider, while Nucleus sampling limits the number of tokens based on the cumulative probability.
 
 Note: The default value varies by `Model` and is specified by the`Model.top_p` attribute returned from the `getModel` function. An empty `topK` attribute indicates that the model doesn't apply top-k sampling and doesn't allow setting `topK` on requests.
-`topK` `integer`  
-Optional. The maximum number of tokens to consider when sampling.
+`topK` `integer` Optional. The maximum number of tokens to consider when sampling.
 
 Gemini models use Top-p (nucleus) sampling or a combination of Top-k and nucleus sampling. Top-k sampling considers the set of `topK` most probable tokens. Models running with nucleus sampling don't allow topK setting.
 
 Note: The default value varies by `Model` and is specified by the`Model.top_p` attribute returned from the `getModel` function. An empty `topK` attribute indicates that the model doesn't apply top-k sampling and doesn't allow setting `topK` on requests.
-`seed` `integer`  
-Optional. Seed used in decoding. If not set, the request uses a randomly generated seed.
-`presencePenalty` `number`  
-Optional. Presence penalty applied to the next token's logprobs if the token has already been seen in the response.
+`seed` `integer` Optional. Seed used in decoding. If not set, the request uses a randomly generated seed.
+`presencePenalty` `number` Optional. Presence penalty applied to the next token's logprobs if the token has already been seen in the response.
 
-This penalty is binary on/off and not dependant on the number of times the token is used (after the first). Use [frequencyPenalty](https://ai.google.dev/api/generate-content#FIELDS.frequency_penalty) for a penalty that increases with each use.
+This penalty is binary on/off and not dependant on the number of times the token is used (after the first). Use `https://ai.google.dev/api/generate-content#FIELDS.frequency_penalty` for a penalty that increases with each use.
 
 A positive penalty will discourage the use of tokens that have already been used in the response, increasing the vocabulary.
 
 A negative penalty will encourage the use of tokens that have already been used in the response, decreasing the vocabulary.
-`frequencyPenalty` `number`  
-Optional. Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far.
+`frequencyPenalty` `number` Optional. Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far.
 
 A positive penalty will discourage the use of tokens that have already been used, proportional to the number of times the token has been used: The more a token is used, the more difficult it is for the model to use that token again increasing the vocabulary of responses.
 
-Caution: A *negative* penalty will encourage the model to reuse tokens proportional to the number of times the token has been used. Small negative values will reduce the vocabulary of a response. Larger negative values will cause the model to start repeating a common token until it hits the [maxOutputTokens](https://ai.google.dev/api/generate-content#FIELDS.max_output_tokens) limit.
-`responseLogprobs` `boolean`  
-Optional. If true, export the logprobs results in response.
-`logprobs` `integer`  
-Optional. Only valid if [responseLogprobs=True](https://ai.google.dev/api/generate-content#FIELDS.response_logprobs). This sets the number of top logprobs to return at each decoding step in the [Candidate.logprobs_result](https://ai.google.dev/api/generate-content#FIELDS.logprobs_result). The number must be in the range of \[0, 20\].
-`enableEnhancedCivicAnswers` `boolean`  
-Optional. Enables enhanced civic answers. It may not be available for all models.
-`speechConfig` `object (`[SpeechConfig](https://ai.google.dev/api/generate-content#SpeechConfig)`)`  
-Optional. The speech generation config.
-`thinkingConfig` `object (`[ThinkingConfig](https://ai.google.dev/api/generate-content#ThinkingConfig)`)`  
-Optional. Config for thinking features. An error will be returned if this field is set for models that don't support thinking.
-`imageConfig` `object (`[ImageConfig](https://ai.google.dev/api/generate-content#ImageConfig)`)`  
-Optional. Config for image generation. An error will be returned if this field is set for models that don't support these config options.
-`mediaResolution` `enum (`[MediaResolution](https://ai.google.dev/api/generate-content#MediaResolution)`)`  
-Optional. If specified, the media resolution specified will be used.  
+Caution: A *negative* penalty will encourage the model to reuse tokens proportional to the number of times the token has been used. Small negative values will reduce the vocabulary of a response. Larger negative values will cause the model to start repeating a common token until it hits the `https://ai.google.dev/api/generate-content#FIELDS.max_output_tokens` limit.
+`responseLogprobs` `boolean` Optional. If true, export the logprobs results in response.
+`logprobs` `integer` Optional. Only valid if `https://ai.google.dev/api/generate-content#FIELDS.response_logprobs`. This sets the number of top logprobs, including the chosen candidate, to return at each decoding step in the `https://ai.google.dev/api/generate-content#FIELDS.logprobs_result`. The number must be in the range of \[0, 20\].
+`enableEnhancedCivicAnswers` `boolean` Optional. Enables enhanced civic answers. It may not be available for all models.
+`speechConfig` ``object (`https://ai.google.dev/api/generate-content#SpeechConfig`)`` Optional. The speech generation config.
+`thinkingConfig` ``object (`https://ai.google.dev/api/generate-content#ThinkingConfig`)`` Optional. Config for thinking features. An error will be returned if this field is set for models that don't support thinking.
+`imageConfig` ``object (`https://ai.google.dev/api/generate-content#ImageConfig`)`` Optional. Config for image generation. An error will be returned if this field is set for models that don't support these config options.
+`mediaResolution` ``enum (`https://ai.google.dev/api/generate-content#MediaResolution`)`` Optional. If specified, the media resolution specified will be used.
 
 | JSON representation |
 |---|
-| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (https://ai.google.dev/api/caching#Schema) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (https://ai.google.dev/api/generate-content#Modality) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (https://ai.google.dev/api/generate-content#SpeechConfig) }, "thinkingConfig": { object (https://ai.google.dev/api/generate-content#ThinkingConfig) }, "imageConfig": { object (https://ai.google.dev/api/generate-content#ImageConfig) }, "mediaResolution": enum (https://ai.google.dev/api/generate-content#MediaResolution) } ``` |
+| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (`https://ai.google.dev/api/caching#Schema`) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#Modality`) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) }, "thinkingConfig": { object (`https://ai.google.dev/api/generate-content#ThinkingConfig`) }, "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "mediaResolution": enum (`https://ai.google.dev/api/generate-content#MediaResolution`) } ``` |
 
 ## Modality
 
@@ -3545,38 +3379,30 @@ Supported modalities of the response.
 
 ## SpeechConfig
 
-The speech generation config.
-Fields `voiceConfig` `object (`[VoiceConfig](https://ai.google.dev/api/generate-content#VoiceConfig)`)`  
-The configuration in case of single-voice output.
-`multiSpeakerVoiceConfig` `object (`[MultiSpeakerVoiceConfig](https://ai.google.dev/api/generate-content#MultiSpeakerVoiceConfig)`)`  
-Optional. The configuration for the multi-speaker setup. It is mutually exclusive with the voiceConfig field.
-`languageCode` `string`  
-Optional. Language code (in BCP 47 format, e.g. "en-US") for speech synthesis.
+Config for speech generation and transcription.
+Fields `voiceConfig` ``object (`https://ai.google.dev/api/generate-content#VoiceConfig`)`` The configuration in case of single-voice output.
+`multiSpeakerVoiceConfig` ``object (`https://ai.google.dev/api/generate-content#MultiSpeakerVoiceConfig`)`` Optional. The configuration for the multi-speaker setup. It is mutually exclusive with the voiceConfig field.
+`languageCode` `string` Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis.
 
-Valid values are: de-DE, en-AU, en-GB, en-IN, en-US, es-US, fr-FR, hi-IN, pt-BR, ar-XA, es-ES, fr-CA, id-ID, it-IT, ja-JP, tr-TR, vi-VN, bn-IN, gu-IN, kn-IN, ml-IN, mr-IN, ta-IN, te-IN, nl-NL, ko-KR, cmn-CN, pl-PL, ru-RU, and th-TH.  
+Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
 
 | JSON representation |
 |---|
-| ``` { "voiceConfig": { object (https://ai.google.dev/api/generate-content#VoiceConfig) }, "multiSpeakerVoiceConfig": { object (https://ai.google.dev/api/generate-content#MultiSpeakerVoiceConfig) }, "languageCode": string } ``` |
+| ``` { "voiceConfig": { object (`https://ai.google.dev/api/generate-content#VoiceConfig`) }, "multiSpeakerVoiceConfig": { object (`https://ai.google.dev/api/generate-content#MultiSpeakerVoiceConfig`) }, "languageCode": string } ``` |
 
 ## VoiceConfig
 
 The configuration for the voice to use.
-Fields  
-`voice_config` `Union type`  
-The configuration for the speaker to use. `voice_config` can be only one of the following:
-`prebuiltVoiceConfig` `object (`[PrebuiltVoiceConfig](https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig)`)`  
-The configuration for the prebuilt voice to use.  
+Fields `voice_config` `Union type` The configuration for the speaker to use. `voice_config` can be only one of the following: `prebuiltVoiceConfig` ``object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`)`` The configuration for the prebuilt voice to use.
 
 | JSON representation |
 |---|
-| ``` { // voice_config "prebuiltVoiceConfig": { object (https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig) } // Union type } ``` |
+| ``` { // voice_config "prebuiltVoiceConfig": { object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`) } // Union type } ``` |
 
 ## PrebuiltVoiceConfig
 
 The configuration for the prebuilt speaker to use.
-Fields `voiceName` `string`  
-The name of the preset voice to use.  
+Fields `voiceName` `string` The name of the preset voice to use.
 
 | JSON representation |
 |---|
@@ -3585,38 +3411,32 @@ The name of the preset voice to use.
 ## MultiSpeakerVoiceConfig
 
 The configuration for the multi-speaker setup.
-Fields `speakerVoiceConfigs[]` `object (`[SpeakerVoiceConfig](https://ai.google.dev/api/generate-content#SpeakerVoiceConfig)`)`  
-Required. All the enabled speaker voices.  
+Fields `speakerVoiceConfigs[]` ``object (`https://ai.google.dev/api/generate-content#SpeakerVoiceConfig`)`` Required. All the enabled speaker voices.
 
 | JSON representation |
 |---|
-| ``` { "speakerVoiceConfigs": [ { object (https://ai.google.dev/api/generate-content#SpeakerVoiceConfig) } ] } ``` |
+| ``` { "speakerVoiceConfigs": [ { object (`https://ai.google.dev/api/generate-content#SpeakerVoiceConfig`) } ] } ``` |
 
 ## SpeakerVoiceConfig
 
 The configuration for a single speaker in a multi speaker setup.
-Fields `speaker` `string`  
-Required. The name of the speaker to use. Should be the same as in the prompt.
-`voiceConfig` `object (`[VoiceConfig](https://ai.google.dev/api/generate-content#VoiceConfig)`)`  
-Required. The configuration for the voice to use.  
+Fields `speaker` `string` Required. The name of the speaker to use. Should be the same as in the prompt.
+`voiceConfig` ``object (`https://ai.google.dev/api/generate-content#VoiceConfig`)`` Required. The configuration for the voice to use.
 
 | JSON representation |
 |---|
-| ``` { "speaker": string, "voiceConfig": { object (https://ai.google.dev/api/generate-content#VoiceConfig) } } ``` |
+| ``` { "speaker": string, "voiceConfig": { object (`https://ai.google.dev/api/generate-content#VoiceConfig`) } } ``` |
 
 ## ThinkingConfig
 
 Config for thinking features.
-Fields `includeThoughts` `boolean`  
-Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
-`thinkingBudget` `integer`  
-The number of thoughts tokens that the model should generate.
-`thinkingLevel` `enum (`[ThinkingLevel](https://ai.google.dev/api/generate-content#ThinkingLevel)`)`  
-Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. If not specified, the default is HIGH. Recommended for Gemini 3 or later models. Use with earlier models results in an error.  
+Fields `includeThoughts` `boolean` Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
+`thinkingBudget` `integer` The number of thoughts tokens that the model should generate.
+`thinkingLevel` ``enum (`https://ai.google.dev/api/generate-content#ThinkingLevel`)`` Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. If not specified, the default is HIGH. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
 
 | JSON representation |
 |---|
-| ``` { "includeThoughts": boolean, "thinkingBudget": integer, "thinkingLevel": enum (https://ai.google.dev/api/generate-content#ThinkingLevel) } ``` |
+| ``` { "includeThoughts": boolean, "thinkingBudget": integer, "thinkingLevel": enum (`https://ai.google.dev/api/generate-content#ThinkingLevel`) } ``` |
 
 ## ThinkingLevel
 
@@ -3633,12 +3453,10 @@ Allow user to specify how much to think using enum instead of integer budget.
 ## ImageConfig
 
 Config for image generation features.
-Fields `aspectRatio` `string`  
-Optional. The aspect ratio of the image to generate. Supported aspect ratios: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, or `21:9`.
+Fields `aspectRatio` `string` Optional. The aspect ratio of the image to generate. Supported aspect ratios: `1:1`, `1:4`, `4:1`, `1:8`, `8:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, or `21:9`.
 
 If not specified, the model will choose a default aspect ratio based on any reference images provided.
-`imageSize` `string`  
-Optional. Specifies the size of generated images. Supported values are `1K`, `2K`, `4K`. If not specified, the model will use default value `1K`.  
+`imageSize` `string` Optional. Specifies the size of generated images. Supported values are `512`, `1K`, `2K`, `4K`. If not specified, the model will use default value `1K`.
 
 | JSON representation |
 |---|
@@ -3674,7 +3492,7 @@ These categories cover various kinds of harms that developers may wish to adjust
 | `HARM_CATEGORY_HATE_SPEECH` | **Gemini** - Hate speech and content. |
 | `HARM_CATEGORY_SEXUALLY_EXPLICIT` | **Gemini** - Sexually explicit content. |
 | `HARM_CATEGORY_DANGEROUS_CONTENT` | **Gemini** - Dangerous content. |
-| `HARM_CATEGORY_CIVIC_INTEGRITY` | **Gemini** - Content that may be used to harm civic integrity. DEPRECATED: use enableEnhancedCivicAnswers instead. | This item is deprecated! |
+| `HARM_CATEGORY_CIVIC_INTEGRITY` | **Gemini** - Content that may be used to harm civic integrity. DEPRECATED: use enableEnhancedCivicAnswers instead. > [!WARNING] > This item is deprecated! |
 
 ## ModalityTokenCount
 
@@ -3682,14 +3500,12 @@ These categories cover various kinds of harms that developers may wish to adjust
 - [Modality](https://ai.google.dev/api/generate-content#Modality)
 
 Represents token counting info for a single modality.
-Fields `modality` `enum (`[Modality](https://ai.google.dev/api/generate-content#Modality)`)`  
-The modality associated with this token count.
-`tokenCount` `integer`  
-Number of tokens.  
+Fields `modality` ``enum (`https://ai.google.dev/api/generate-content#Modality`)`` The modality associated with this token count.
+`tokenCount` `integer` Number of tokens.
 
 | JSON representation |
 |---|
-| ``` { "modality": enum (https://ai.google.dev/api/generate-content#Modality), "tokenCount": integer } ``` |
+| ``` { "modality": enum (`https://ai.google.dev/api/generate-content#Modality`), "tokenCount": integer } ``` |
 
 ## Modality
 
@@ -3712,16 +3528,13 @@ Content Part modality
 Safety rating for a piece of content.
 
 The safety rating contains the category of harm and the harm probability level in that category for a piece of content. Content is classified for safety across a number of harm categories and the probability of the harm classification is included here.
-Fields `category` `enum (`[HarmCategory](https://ai.google.dev/api/generate-content#v1beta.HarmCategory)`)`  
-Required. The category for this rating.
-`probability` `enum (`[HarmProbability](https://ai.google.dev/api/generate-content#HarmProbability)`)`  
-Required. The probability of harm for this content.
-`blocked` `boolean`  
-Was this content blocked because of this rating?  
+Fields `category` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`)`` Required. The category for this rating.
+`probability` ``enum (`https://ai.google.dev/api/generate-content#HarmProbability`)`` Required. The probability of harm for this content.
+`blocked` `boolean` Was this content blocked because of this rating?
 
 | JSON representation |
 |---|
-| ``` { "category": enum (https://ai.google.dev/api/generate-content#v1beta.HarmCategory), "probability": enum (https://ai.google.dev/api/generate-content#HarmProbability), "blocked": boolean } ``` |
+| ``` { "category": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`), "probability": enum (`https://ai.google.dev/api/generate-content#HarmProbability`), "blocked": boolean } ``` |
 
 ## HarmProbability
 
@@ -3745,14 +3558,12 @@ The classification system gives the probability of the content being unsafe. Thi
 Safety setting, affecting the safety-blocking behavior.
 
 Passing a safety setting for a category changes the allowed probability that content is blocked.
-Fields `category` `enum (`[HarmCategory](https://ai.google.dev/api/generate-content#v1beta.HarmCategory)`)`  
-Required. The category for this setting.
-`threshold` `enum (`[HarmBlockThreshold](https://ai.google.dev/api/generate-content#HarmBlockThreshold)`)`  
-Required. Controls the probability threshold at which harm is blocked.  
+Fields `category` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`)`` Required. The category for this setting.
+`threshold` ``enum (`https://ai.google.dev/api/generate-content#HarmBlockThreshold`)`` Required. Controls the probability threshold at which harm is blocked.
 
 | JSON representation |
 |---|
-| ``` { "category": enum (https://ai.google.dev/api/generate-content#v1beta.HarmCategory), "threshold": enum (https://ai.google.dev/api/generate-content#HarmBlockThreshold) } ``` |
+| ``` { "category": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`), "threshold": enum (`https://ai.google.dev/api/generate-content#HarmBlockThreshold`) } ``` |
 
 ## HarmBlockThreshold
 

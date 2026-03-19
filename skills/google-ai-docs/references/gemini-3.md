@@ -1124,6 +1124,148 @@ function responses:
         ]
       }'
 
+### Combine built-in tools and function calling
+
+Gemini 3 allows the use of built-in tools (like Google Search, URL
+context, and [more](https://ai.google.dev/gemini-api/docs/tools)) and custom [function calling](https://ai.google.dev/gemini-api/docs/function-calling) tools in the same API call, allowing for
+more complex workflows. Learn more on the [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client()
+
+    getWeather = {
+        "name": "getWeather",
+        "description": "Gets the weather for a requested city.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "The city and state, e.g. Utqiaġvik, Alaska",
+                },
+            },
+            "required": ["city"],
+        },
+    }
+
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents="What is the northernmost city in the United States? What's the weather like there today?",
+        config=types.GenerateContentConfig(
+          tools=[
+            types.Tool(
+              google_search=types.ToolGoogleSearch(),  # Built-in tool
+              function_declarations=[getWeather]       # Custom tool
+            ),
+          ],
+          include_server_side_tool_invocations=True
+        ),
+    )
+
+    history = [
+        types.Content(
+            role="user",
+            parts=[types.Part(text="What is the northernmost city in the United States? What's the weather like there today?")]
+        ),
+        response.candidates[0].content,
+        types.Content(
+            role="user",
+            parts=[types.Part(
+                function_response=types.FunctionResponse(
+                    name="getWeather",
+                    response={"response": "Very cold. 22 degrees Fahrenheit."},
+                    id=response.candidates[0].content.parts[2].function_call.id
+                )
+            )]
+        )
+    ]
+
+    response_2 = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents=history,
+        config=types.GenerateContentConfig(
+          tools=[
+            types.Tool(
+              google_search=types.ToolGoogleSearch(),
+              function_declarations=[getWeather]
+            ),
+          ],
+          include_server_side_tool_invocations=True
+        ),
+    )
+
+### Javascript
+
+    import { GoogleGenAI, Type } from '@google/genai';
+
+    const client = new GoogleGenAI({});
+
+    const getWeather = {
+        name: "getWeather",
+        description: "Get the weather in a given location",
+        parameters: {
+            type: "OBJECT",
+            properties: {
+                location: {
+                    type: "STRING",
+                    description: "The city and state, e.g. San Francisco, CA"
+                }
+            },
+            required: ["location"]
+        }
+    };
+
+    async function run() {
+        const model = client.models.generateContent({
+            model: "gemini-3-flash-preview",
+        });
+
+        const tools = [
+          { googleSearch: {} },
+          { functionDeclarations: [getWeather] }
+        ];
+        const toolConfig = { includeServerSideToolInvocations: true };
+
+        const result1 = await model.generateContent({
+            contents: [{role: "user", parts: [{text: "What is the northernmost city in the United States? What's the weather like there today?"}]}],
+            tools: tools,
+            toolConfig: toolConfig,
+        });
+
+        const response1 = result1.response;
+        const functionCallId = response1.candidates[0].content.parts.find(p => p.functionCall)?.functionCall?.id;
+
+        const history = [
+            {
+                role: "user",
+                parts:[{text: "What is the northernmost city in the United States? What's the weather like there today?"}]
+            },
+            response1.candidates[0].content,
+            {
+                role: "user",
+                parts: [{
+                    functionResponse: {
+                        name: "getWeather",
+                        response: {response: "Very cold. 22 degrees Fahrenheit."},
+                        id: functionCallId
+                    }
+                }]
+            }
+        ];
+
+        const result2 = await model.generateContent({
+            contents: history,
+            tools: tools,
+            toolConfig: toolConfig,
+        });
+    }
+
+    run();
+
 ## Migrating from Gemini 2.5
 
 Gemini 3 is our most capable model family to date and offers a stepwise
@@ -1136,7 +1278,8 @@ improvement over Gemini 2.5. When migrating, consider the following:
 - **Image segmentation:** Image segmentation capabilities (returning pixel-level masks for objects) are not supported in Gemini 3 Pro or Gemini 3 Flash. For workloads requiring native image segmentation, we recommend continuing to utilize Gemini 2.5 Flash with thinking turned off or [Gemini Robotics-ER 1.5](https://ai.google.dev/gemini-api/docs/robotics-overview).
 - **Computer Use:** Gemini 3 Pro and Gemini 3 Flash support [Computer
   Use](https://ai.google.dev/gemini-api/docs/computer-use). Unlike the 2.5 series, you don't need to use a separate model to access the Computer Use tool.
-- **Tool support**: Maps grounding is not yet supported for Gemini 3 models, so won't migrate. Additionally, combining built-in tools with function calling is not yet supported.
+- **Tool support** : [Combining built-in tools with function calling](https://ai.google.dev/gemini-api/docs/tool-combination) is now supported for Gemini 3 models. [Maps
+  grounding](https://ai.google.dev/gemini-api/docs/maps-grounding) is also now supported for Gemini 3 models.
 
 ## OpenAI compatibility
 
@@ -1179,9 +1322,9 @@ Learn more about prompt design strategies in the [prompt engineering guide](http
 
 6. **Is Context Caching supported?** Yes, [Context Caching](https://ai.google.dev/gemini-api/docs/caching) is supported for Gemini 3.
 
-7. **Which tools are supported in Gemini 3?** Gemini 3 supports [Google Search](https://ai.google.dev/gemini-api/docs/google-search), [File Search](https://ai.google.dev/gemini-api/docs/file-search),
-   [Code Execution](https://ai.google.dev/gemini-api/docs/code-execution), and [URL Context](https://ai.google.dev/gemini-api/docs/url-context). It also supports standard [Function Calling](https://ai.google.dev/gemini-api/docs/function-calling?example=meeting) for your own custom tools
-   (but not with built-in tools). Note that [Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding) is currently not supported.
+7. **Which tools are supported in Gemini 3?** Gemini 3 supports [Google Search](https://ai.google.dev/gemini-api/docs/google-search), [Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding), [File Search](https://ai.google.dev/gemini-api/docs/file-search),
+   [Code Execution](https://ai.google.dev/gemini-api/docs/code-execution), and [URL Context](https://ai.google.dev/gemini-api/docs/url-context). It also supports standard [Function Calling](https://ai.google.dev/gemini-api/docs/function-calling) for your own custom tools,
+   and in [combination with built-in tools](https://ai.google.dev/gemini-api/docs/tool-combination).
 
 8. **What is `gemini-3.1-pro-preview-customtools`?** If you are using `gemini-3.1-pro-preview` and the model ignores your custom tools in favor of bash commands, try the `gemini-3.1-pro-preview-customtools` model instead. More info [here](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview#gemini-31-pro-preview-customtools).
 

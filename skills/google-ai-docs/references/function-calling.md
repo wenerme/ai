@@ -8,6 +8,9 @@ actions and data. Function calling has 3 primary use cases:
 - **Extend Capabilities:** Use external tools to perform computations and extend the limitations of the model, such as using a calculator or creating charts.
 - **Take Actions:** Interact with external systems using APIs, such as scheduling appointments, creating invoices, sending emails, or controlling smart home devices.
 
+> [!NOTE]
+> **Important:** Gemini 3 model APIs now generate a unique `id` for every function call. If you are manually constructing the conversation history or using the REST API, when returning the result of your executed function to the model we recommend passing the matching `id` in your `functionResponse`. If you are using the standard Python or Node.js SDKs, this is handled automatically.
+
 <button value="weather">Get Weather</button> <button value="meeting" default="">Schedule Meeting</button> <button value="chart">Create Chart</button>
 
 ### Python
@@ -60,6 +63,7 @@ actions and data. Function calling has 3 primary use cases:
     if response.candidates[0].content.parts[0].function_call:
         function_call = response.candidates[0].content.parts[0].function_call
         print(f"Function to call: {function_call.name}")
+        print(f"ID: {function_call.id}")
         print(f"Arguments: {function_call.args}")
         #  In a real app, you would call your function here:
         #  result = schedule_meeting(**function_call.args)
@@ -118,6 +122,7 @@ actions and data. Function calling has 3 primary use cases:
     if (response.functionCalls && response.functionCalls.length > 0) {
       const functionCall = response.functionCalls[0]; // Assuming one function call
       console.log(`Function to call: ${functionCall.name}`);
+      console.log(`ID: ${functionCall.id}`);
       console.log(`Arguments: ${JSON.stringify(functionCall.args)}`);
       // In a real app, you would call your actual function here:
       // const result = await scheduleMeeting(functionCall.args);
@@ -186,19 +191,23 @@ overview](https://ai.google.dev/static/gemini-api/docs/images/function-calling-o
 Function calling involves a structured interaction between your application, the
 model, and external functions. Here's a breakdown of the process:
 
-1. **Define Function Declaration:** Define the function declaration in your application code. Function Declarations describe the function's name, parameters, and purpose to the model.
-2. **Call LLM with function declarations:** Send user prompt along with the function declaration(s) to the model. It analyzes the request and determines if a function call would be helpful. If so, it responds with a structured JSON object.
-3. **Execute Function Code (Your Responsibility):** The Model *doesn't* execute the function itself. It's your application's responsibility to process the response and check for Function Call, if
-   - **Yes**: Extract the name and args of the function and execute the corresponding function in your application.
+1. **Define function declaration:** Define the function declaration in your application code. Function Declarations describe the function's name, parameters, and purpose to the model.
+2. **Call API with function declarations:** Send user prompt along with the function declaration(s) to the model. It analyzes the request and determines if a function call would be helpful. If so, it responds with a structured JSON object containing the function name, arguments, and a unique `id` (this `id` is now always returned by the API for Gemini 3 models^\*^).
+3. **Execute function code (your responsibility):** The Model *doesn't* execute the function itself. It's your application's responsibility to process the response and check for a function call. If
+   - **Yes** : Extract the name, args, and `id` of the function and execute the corresponding function in your application.
    - **No:** The model has provided a direct text response to the prompt (this flow is less emphasized in the example but is a possible outcome).
-4. **Create User friendly response:** If a function was executed, capture the result and send it back to the model in a subsequent turn of the conversation. It will use the result to generate a final, user-friendly response that incorporates the information from the function call.
+4. **Create user friendly response:** If a function was executed, capture the result and send it back to the model, ensuring you include the matching `id`, in a subsequent turn of the conversation. It will use the result to generate a final, user-friendly response that incorporates the information from the function call.
 
 This process can be repeated over multiple turns, allowing for complex
 interactions and workflows. The model also supports calling multiple functions
-in a single turn ([parallel function
-calling](https://ai.google.dev/gemini-api/docs/function-calling#parallel_function_calling)) and in
-sequence ([compositional function
-calling](https://ai.google.dev/gemini-api/docs/function-calling#compositional_function_calling)).
+in a single turn ([parallel function calling](https://ai.google.dev/gemini-api/docs/function-calling#parallel_function_calling)), in
+sequence ([compositional function calling](https://ai.google.dev/gemini-api/docs/function-calling#compositional_function_calling)),
+and with built-in Gemini tools ([multi-tool use](https://ai.google.dev/gemini-api/docs/function-calling#native-tools)).
+
+^\*^ **Always map function IDs:** Gemini 3 now always returns a unique
+`id` with every `functionCall`. Include this exact `id` in your
+`functionResponse` so the model can accurately map your result back to the
+original request.
 
 ### Step 1: Define a function declaration
 
@@ -350,11 +359,12 @@ respond to the user's question.
 
 ### Python
 
-    id=None args={'color_temp': 'warm', 'brightness': 25} name='set_light_values'
+    id='8f2b1a3c' args={'color_temp': 'warm', 'brightness': 25} name='set_light_values'
 
 ### JavaScript
 
     {
+      id: '8f2b1a3c',
       name: 'set_light_values',
       args: { brightness: 25, color_temp: 'warm' }
     }
@@ -398,6 +408,7 @@ incorporate this information into its final response to the user.
     function_response_part = types.Part.from_function_response(
         name=tool_call.name,
         response={"result": result},
+        id=tool_call.id,
     )
 
     # Append function call and result of the function execution to contents
@@ -418,7 +429,8 @@ incorporate this information into its final response to the user.
     // Create a function response part
     const function_response_part = {
       name: tool_call.name,
-      response: { result }
+      response: { result },
+      id: tool_call.id
     }
 
     // Append function call and result of the function execution to contents
@@ -485,6 +497,8 @@ must correctly handle the `thought_signature` included in the model's turn.
 Follow these rules to ensure the model's context is preserved:
 
 - Always send the `thought_signature` back to the model inside its original [`Part`](https://ai.google.dev/api#request-body-structure).
+- **Always include the exact `id` from the `function_call` in your
+  `function_response` so the API can map the result to the correct request.**
 - Don't merge a `Part` containing a signature with one that does not. This breaks the positional context of the thought.
 - Don't combine two `Parts` that both contain signatures, as the signature strings cannot be merged.
 
@@ -501,7 +515,7 @@ If you are manipulating conversation history manually, refer to the
 [Thoughts Signatures](https://ai.google.dev/gemini-api/docs/thought-signatures) page for complete
 guidance and details on handling thought signatures for Gemini 3.
 
-### Inspecting thought signatures
+##### Inspecting thought signatures
 
 While not necessary for implementation, you can inspect the response to see the
 `thought_signature` for debugging or educational purposes.
@@ -541,7 +555,12 @@ as retrieving customer details from different databases or checking inventory
 levels across various warehouses or performing multiple actions such as
 converting your apartment into a disco.
 
-When the model initiates multiple function calls in a single turn, you don't need to return the `function_result` objects in the same order that the `function_call` objects were received. The Gemini API maps each result back to its corresponding call using the `tool_use_id` (which matches the `call_id` from the model's output). This lets you execute your functions asynchronously and append the results to your list as they complete.
+When the model initiates multiple function calls in a single turn, you don't
+need to return the `function_result` objects in the same order that the
+`function_call` objects were received. The Gemini API maps each result back to
+its corresponding call using the `id` from the model's output. This lets you
+execute your functions asynchronously and append the results to your list as
+they complete.
 
 ### Python
 
@@ -679,7 +698,7 @@ To learn more, you can read about
     print("Example 1: Forced function calling")
     for fn in response.function_calls:
         args = ", ".join(f"{key}={val}" for key, val in fn.args.items())
-        print(f"{fn.name}({args})")
+        print(f"{fn.name}({args}) - ID: {fn.id}")
 
 ### JavaScript
 
@@ -716,7 +735,7 @@ To learn more, you can read about
         const args = Object.entries(fn.args)
             .map(([key, val]) => `${key}=${val}`)
             .join(', ');
-        console.log(`${fn.name}(${args})`);
+        console.log(`${fn.name}(${args}) - ID: ${fn.id}`);
     }
 
 Each of the printed results reflects a single function call that the model has
@@ -959,6 +978,7 @@ function calling using a manual execution loop.
           response: {
             result: toolResponse,
           },
+          id: functionCall.id,
         };
 
         // Send the function response back to the model.
@@ -1176,63 +1196,156 @@ To see what the inferred schema looks like, you can convert it using
     # to_json_dict() provides a clean JSON representation.
     print(fn_decl.to_json_dict())
 
-## Multi-tool use: Combine native tools with function calling
+## Multi-tool use: Combine built-in tools with function calling
 
-You can enable multiple tools combining native tools with
-function calling at the same time. Here's an example that enables two tools,
-[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/grounding) and
-[code execution](https://ai.google.dev/gemini-api/docs/code-execution), in a request using the
-[Live API](https://ai.google.dev/gemini-api/docs/live).
+You can enable multiple tools, combining built-in tools with function calling in
+the same request.
 
-> [!NOTE]
-> **Note:** Multi-tool use is a-[Live API](https://ai.google.dev/gemini-api/docs/live) only feature at the moment. The `run()` function declaration, which handles the asynchronous websocket setup, is omitted for brevity.
+Gemini 3 models can combine built-in tools with function calling out-of-the-box,
+thanks to the tool context circulation feature. Read the page on
+[Combining built-in tools and function calling](https://ai.google.dev/gemini-api/docs/tool-combination) to learn more.
+
+> [!WARNING]
+> **Preview:** Combining built-in tools with function calling and tool context circulation features are in Preview in Gemini 3 models.
 
 ### Python
 
-    # Multiple tasks example - combining lights, code execution, and search
-    prompt = """
-      Hey, I need you to do three things for me.
+    from google import genai
+    from google.genai import types
 
-        1.  Turn on the lights.
-        2.  Then compute the largest prime palindrome under 100000.
-        3.  Then use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024.
+    client = genai.Client()
 
-      Thanks!
-      """
+    getWeather = {
+        "name": "getWeather",
+        "description": "Gets the weather for a requested city.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "The city and state, e.g. Utqiaġvik, Alaska",
+                },
+            },
+            "required": ["city"],
+        },
+    }
 
-    tools = [
-        {'google_search': {}},
-        {'code_execution': {}},
-        {'function_declarations': [turn_on_the_lights_schema, turn_off_the_lights_schema]} # not defined here.
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents="What is the northernmost city in the United States? What's the weather like there today?",
+        config=types.GenerateContentConfig(
+          tools=[
+            types.Tool(
+              google_search=types.ToolGoogleSearch(),  # Built-in tool
+              function_declarations=[getWeather]       # Custom tool
+            ),
+          ],
+          include_server_side_tool_invocations=True
+        ),
+    )
+
+    history = [
+        types.Content(
+            role="user",
+            parts=[types.Part(text="What is the northernmost city in the United States? What's the weather like there today?")]
+        ),
+        response.candidates[0].content,
+        types.Content(
+            role="user",
+            parts=[types.Part(
+                function_response=types.FunctionResponse(
+                    name="getWeather",
+                    response={"response": "Very cold. 22 degrees Fahrenheit."},
+                    id=response.candidates[0].content.parts[2].function_call.id
+                )
+            )]
+        )
     ]
 
-    # Execute the prompt with specified tools in audio modality
-    await run(prompt, tools=tools, modality="AUDIO")
+    response_2 = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents=history,
+        config=types.GenerateContentConfig(
+          tools=[
+            types.Tool(
+              google_search=types.ToolGoogleSearch(),
+              function_declarations=[getWeather]
+            ),
+          ],
+          include_server_side_tool_invocations=True
+        ),
+    )
 
-### JavaScript
+### Javascript
 
-    // Multiple tasks example - combining lights, code execution, and search
-    const prompt = `
-      Hey, I need you to do three things for me.
+    import { GoogleGenAI, Type } from '@google/genai';
 
-        1.  Turn on the lights.
-        2.  Then compute the largest prime palindrome under 100000.
-        3.  Then use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024.
+    const client = new GoogleGenAI({});
 
-      Thanks!
-    `;
+    const getWeather = {
+        name: "getWeather",
+        description: "Get the weather in a given location",
+        parameters: {
+            type: "OBJECT",
+            properties: {
+                location: {
+                    type: "STRING",
+                    description: "The city and state, e.g. San Francisco, CA"
+                }
+            },
+            required: ["location"]
+        }
+    };
 
-    const tools = [
-      { googleSearch: {} },
-      { codeExecution: {} },
-      { functionDeclarations: [turnOnTheLightsSchema, turnOffTheLightsSchema] } // not defined here.
-    ];
+    async function run() {
+        const model = client.models.generateContent({
+            model: "gemini-3-flash-preview",
+        });
 
-    // Execute the prompt with specified tools in audio modality
-    await run(prompt, {tools: tools, modality: "AUDIO"});
+        const tools = [
+          { googleSearch: {} },
+          { functionDeclarations: [getWeather] }
+        ];
+        const toolConfig = { includeServerSideToolInvocations: true };
 
-Python developers can try this out in the [Live API Tool Use
-notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_LiveAPI_tools.ipynb).
+        const result1 = await model.generateContent({
+            contents: [{role: "user", parts: [{text: "What is the northernmost city in the United States? What's the weather like there today?"}]}],
+            tools: tools,
+            toolConfig: toolConfig,
+        });
+
+        const response1 = result1.response;
+        const functionCallId = response1.candidates[0].content.parts.find(p => p.functionCall)?.functionCall?.id;
+
+        const history = [
+            {
+                role: "user",
+                parts:[{text: "What is the northernmost city in the United States? What's the weather like there today?"}]
+            },
+            response1.candidates[0].content,
+            {
+                role: "user",
+                parts: [{
+                    functionResponse: {
+                        name: "getWeather",
+                        response: {response: "Very cold. 22 degrees Fahrenheit."},
+                        id: functionCallId
+                    }
+                }]
+            }
+        ];
+
+        const result2 = await model.generateContent({
+            contents: history,
+            tools: tools,
+            toolConfig: toolConfig,
+        });
+    }
+
+    run();
+
+For models before the Gemini 3 series, use the
+[Live API](https://ai.google.dev/gemini-api/docs/live-api/tools).
 
 ## Multimodal function responses
 
@@ -1333,6 +1446,7 @@ references this image part:
         role="user",
         parts=[
             types.Part.from_function_response(
+              id=function_call.id,
               name=function_call.name,
               response=function_response_data,
               parts=[function_response_multimodal_data]
@@ -1421,13 +1535,14 @@ references this image part:
       { role: 'user', parts: [{ text: prompt }] },
       response1.candidates[0].content,
       {
-        role: 'tool',
+        role: 'user',
         parts: [
           {
             functionResponse: {
+              id: functionCall.id,
               name: functionCall.name,
               response: functionResponseData,
-              parts: [functionResponseMultimodalData],
+              parts: [functionResponseMultimodalData]
             },
           },
         ],
@@ -1476,6 +1591,7 @@ references this image part:
             {
                 "functionResponse": {
                   "name": "get_image",
+                  "id": "UNIQUE_CALL_ID_HERE",
                   "response": {
                     "image_ref": {
                       "$ref": "instrument.jpg"
@@ -1502,7 +1618,11 @@ references this image part:
 > [!NOTE]
 > **Note:** This feature is available for [Gemini 3](https://ai.google.dev/gemini-api/docs/gemini-3) series models.
 
-For Gemini 3 series models, you can use function calling with [structured output](https://ai.google.dev/gemini-api/docs/structured-output). This lets the model predict function calls or outputs that adhere to a specific schema. As a result, you receive consistently formatted responses when the model doesn't generate function calls.
+For Gemini 3 series models, you can use function calling with
+[structured output](https://ai.google.dev/gemini-api/docs/structured-output). This lets the model
+predict function calls or outputs that adhere to a specific schema. As a result,
+you receive consistently formatted responses when the model doesn't generate
+function calls.
 
 ## Model context protocol (MCP)
 
@@ -1692,12 +1812,14 @@ the [model overview](https://ai.google.dev/gemini-api/docs/models) page.
   number of functions or the length of the descriptions, break down complex
   tasks into smaller, more focused function sets.
 
-- **Mix of bash and custom tools** For those building with a mix of bash and custom tools, Gemini 3.1 Pro Preview
+- **Mix of bash and custom tools** For those building with a mix of bash and
+  custom tools, Gemini 3.1 Pro Preview
   comes with a separate endpoint available via the API called
   [`gemini-3.1-pro-preview-customtools`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview#gemini-31-pro-preview-customtools).
 
 ## Notes and limitations
 
+- Positioning of function call parts: When using custom function declarations [alongside built-in tools](https://ai.google.dev/gemini-api/docs/tool-combination) (like Google Search), the model may return a mix of `functionCall`, `toolCall`, and `toolResponse` parts in a single turn. Because of this, don't assume the `functionCall` will always be the last item in the parts array. If you are manually parsing the JSON response, always iterate through the parts array rather than relying on position.
 - Only a [subset of the OpenAPI
   schema](https://ai.google.dev/api/caching#FunctionDeclaration) is supported.
 - For `ANY` mode, the API may reject very large or deeply nested schemas. If you encounter errors, try simplifying your function parameter and response schemas by shortening property names, reducing nesting, or limiting the number of function declarations.

@@ -259,6 +259,7 @@ The following example shows how you can use
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
+    // npm i compute-cosine-similarity
     import * as cosineSimilarity from "compute-cosine-similarity";
 
     async function main() {
@@ -273,7 +274,7 @@ The following example shows how you can use
         const response = await ai.models.embedContent({
             model: 'gemini-embedding-001',
             contents: texts,
-            taskType: 'SEMANTIC_SIMILARITY'
+            config: { taskType: 'SEMANTIC_SIMILARITY' },
         });
 
         const embeddings = response.embeddings.map(e => e.values);
@@ -435,11 +436,11 @@ output dimensions.
 
         const response = await ai.models.embedContent({
             model: 'gemini-embedding-001',
-            content: 'What is the meaning of life?',
-            outputDimensionality: 768,
+            contents: 'What is the meaning of life?',
+            config: { outputDimensionality: 768 },
         });
 
-        const embeddingLength = response.embedding.values.length;
+        const embeddingLength = response.embeddings[0].values.length;
         console.log(`Length of embedding: ${embeddingLength}`);
     }
 
@@ -527,7 +528,7 @@ embeddings, for different dimensions. Notably, the result shows that performance
 is not strictly tied to the size of the embedding dimension, with lower
 dimensions achieving scores comparable to their higher dimension counterparts.
 
-| MRL Dimension | MTEB Score |
+| MRL Dimension | MTEB Score (Gemini Embedding 001) |
 |---|---|
 | 2048 | 68.16 |
 | 1536 | 68.17 |
@@ -552,7 +553,7 @@ The overall maximum input tokens limit is 8192 tokens.
 | **Text** | Supports up to 8,192 tokens. |
 | **Image** | Maximum of 6 images per request. Supported formats: PNG, JPEG. |
 | **Audio** | Maximum duration of 80 seconds. Supported formats: MP3, WAV. |
-| **Video** | Maximum duration of 128 seconds. Supported formats: MP4, MOV, Supported codec: H264, H265, AV1, VP9 |
+| **Video** | Maximum duration of 120 seconds. Supported formats: MP4, MOV. Supported codecs: H264, H265, AV1, VP9. The system processes a maximum of 32 frames per video: short videos (≤32s) are sampled at 1 fps, while longer videos are uniformly sampled to 32 frames. Audio tracks are not processed in video files. |
 | **Documents (PDF)** | Maximum of 6 pages. |
 
 ### Embedding images
@@ -937,7 +938,7 @@ through the [Files API](https://ai.google.dev/gemini-api/docs/files).
             }
         }'
 
-If you need to embed videos \>128 seconds, you can chunk the video into
+If you need to embed videos \>120 seconds, you can chunk the video into
 overlapping segments and embed those chunks individually.
 
 ### Embedding documents

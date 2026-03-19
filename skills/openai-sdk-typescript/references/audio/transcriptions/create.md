@@ -149,9 +149,9 @@ format, or a stream of transcript events.
 
       - `false`
 
-  - `TranscriptionCreateParamsNonStreaming extends TranscriptionCreateParamsBase`
+  - `TranscriptionCreateParamsStreaming extends TranscriptionCreateParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       If set to true, the model response data will be streamed to the client
       as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
@@ -160,7 +160,7 @@ format, or a stream of transcript events.
 
       Note: Streaming is not supported for the `whisper-1` model and will be ignored.
 
-      - `false`
+      - `true`
 
 ### Returns
 

@@ -439,10 +439,10 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-run = client.beta.threads.runs.submit_tool_outputs(
+for run in client.beta.threads.runs.submit_tool_outputs(
     run_id="run_id",
     thread_id="thread_id",
     tool_outputs=[{}],
-)
-print(run.id)
+):
+  print(run)
 ```

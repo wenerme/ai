@@ -1268,9 +1268,9 @@ chunk objects if the request is streamed.
 
       - `false`
 
-  - `ChatCompletionCreateParamsNonStreaming extends ChatCompletionCreateParamsBase`
+  - `ChatCompletionCreateParamsStreaming extends ChatCompletionCreateParamsBase`
 
-    - `stream?: false | null`
+    - `stream: true`
 
       If set to true, the model response data will be streamed to the client
       as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
@@ -1278,7 +1278,7 @@ chunk objects if the request is streamed.
       for more information, along with the [streaming responses](https://platform.openai.com/docs/guides/streaming-responses)
       guide for more information on how to handle the streaming events.
 
-      - `false`
+      - `true`
 
 ### Returns
 
@@ -1658,12 +1658,9 @@ with the `store` parameter set to `true` will be returned.
 
   - `metadata?: Metadata | null`
 
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
+    A list of metadata keys to filter the Chat Completions by. Example:
 
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
+    `metadata[key1]=value1&metadata[key2]=value2`
 
   - `model?: string`
 

@@ -7818,8 +7818,8 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-response = client.responses.retrieve(
+for response in client.responses.retrieve(
     response_id="resp_677efb5139a88190b512bc3fef8e535d",
-)
-print(response.id)
+):
+  print(response)
 ```

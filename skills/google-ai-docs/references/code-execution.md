@@ -10,6 +10,9 @@ Gemini is only able to execute code in Python. You can still ask Gemini to
 generate code in another language, but the model can't use the code execution
 tool to run it.
 
+> [!NOTE]
+> **Important:** If you are manually constructing conversation history or using the REST API when using code execution (such as in a multi-turn conversation ([chat](https://ai.google.dev/gemini-api/docs/code-execution#code-in-chat))), you must pass back the `id` and `thought_signature` fields returned by the API to ensure context is preserved for [tool combination](https://ai.google.dev/gemini-api/docs/tool-combination) to work. If you are using the standard Python or Node.js SDKs, this is handled automatically.
+
 ## Enable code execution
 
 To enable code execution, configure the code execution tool on the model. This
@@ -123,7 +126,8 @@ allows the model to generate and run code.
         },
     }'
 
-| **Note:** This REST example doesn't parse the JSON response as shown in the example output.
+> [!NOTE]
+> **Note:** This REST example doesn't parse the JSON response as shown in the example output.
 
 The output might look something like the following, which has been formatted for
 readability:
@@ -193,7 +197,8 @@ manipulate and inspect images.
 - **Visual math**: The model can run multi-step calculations using code (e.g., summing line items on a receipt).
 - **Image annotation**: The model can annotate images to answer questions, such as drawing arrows to show relationships.
 
-| **Note:** While the model automatically handles zooming for small details, you should prompt it explicitly to use code for other tasks, such as "Write code to count the number of gears" or "Rotate this image to make it upright".
+> [!NOTE]
+> **Note:** While the model automatically handles zooming for small details, you should prompt it explicitly to use code for other tasks, such as "Write code to count the number of gears" or "Rotate this image to make it upright".
 
 ### Enable Code Execution with images
 
@@ -523,28 +528,29 @@ You can also use code execution as part of a chat.
             {
                 "role": "user",
                 "parts": [{
-                    "text": "Can you print \"Hello world!\"?"
+                    "text": "Write code to print \"Hello world!\" and execute it"
                 }]
             },{
                 "role": "model",
                 "parts": [
                   {
-                    "text": ""
-                  },
-                  {
                     "executable_code": {
+                      "id": "a1b2c3d4",
                       "language": "PYTHON",
                       "code": "\nprint(\"hello world!\")\n"
                     }
+                    "thought_signature": "..."
                   },
                   {
                     "code_execution_result": {
+                      "id": "a1b2c3d4",
                       "outcome": "OUTCOME_OK",
                       "output": "hello world!\n"
                     }
                   },
                   {
-                    "text": "I have printed \"hello world!\" using the provided python code block. \n"
+                    "text": "I have printed \"hello world!\" using the provided python code block. \n",
+                    "thought_signature": "..."
                   }
                 ],
             },{
@@ -558,10 +564,8 @@ You can also use code execution as part of a chat.
 
 ## Input/output (I/O)
 
-Starting with
-[Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash), code
-execution supports file input and graph output. Using these input and output
-capabilities, you can upload CSV and text files, ask questions about the
+Code execution supports file input and graph output. Using these input and
+output capabilities, you can upload CSV and text files, ask questions about the
 files, and have [Matplotlib](https://matplotlib.org/) graphs generated as part
 of the response. The output files are returned as inline images in the response.
 
@@ -588,7 +592,7 @@ details:
 
 - The maximum runtime of the code environment is 30 seconds.
 - If the code environment generates an error, the model may decide to regenerate the code output. This can happen up to 5 times.
-- The maximum file input size is limited by the model token window. In AI Studio, using Gemini Flash 2.0, the maximum input file size is 1 million tokens (roughly 2MB for text files of the supported input types). If you upload a file that's too large, AI Studio won't let you send it.
+- The maximum file input size is limited by the model token window. In AI Studio, the maximum input file size is 1 million tokens (roughly 2MB for text files of the supported input types). If you upload a file that's too large, AI Studio won't let you send it.
 - Code execution works best with text and CSV files.
 - The input file can be passed in `part.inlineData` or `part.fileData` (uploaded via the [Files API](https://ai.google.dev/gemini-api/docs/files)), and the output file is always returned as `part.inlineData`.
 
@@ -624,6 +628,11 @@ The billing model is shown in the following diagram:
 Code execution tool can be combined with
 [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) to
 power more complex use cases.
+
+Gemini 3 models support combining built-in tools (like Code Execution) with
+custom tools (function calling). You must pass back the `id` and
+`thought_signature` fields for tool combination to work. Learn more on the
+[tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
 
 ## Supported libraries
 
@@ -668,7 +677,9 @@ The code execution environment includes the following libraries:
 - xlrd
 
 You can't install your own libraries.
-| **Note:** Only `matplotlib` is supported for graph rendering using code execution.
+
+> [!NOTE]
+> **Note:** Only `matplotlib` is supported for graph rendering using code execution.
 
 ## What's next
 

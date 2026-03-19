@@ -1,9 +1,11 @@
-If you reached this page after trying to open
-[Google AI Studio](https://aistudio.google.com/), it may be because Google AI
-Studio is not available in your region, or you don't meet the age requirements
-(18+) for access. You can learn more about the available regions in the
-following section and other requirements in the
-[terms of service](https://ai.google.dev/gemini-api/terms).
+If you reached this page while attempting to access [Google AI Studio](https://aistudio.google.com/), it may
+be due to one of the following reasons:
+
+- **Regional restrictions**: Google AI Studio is not available in your region. Refer to the section below for a list of supported regions.
+- **Age requirements**: You do not meet the minimum age requirement (18+) to access this service.
+- **Account verification** : You may have access to the service, but you haven't yet [verified your age](https://support.google.com/accounts/answer/10071085) on your Google Account.
+
+For further details regarding requirements, review our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
 ## Available regions
 

@@ -417,11 +417,11 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-transcription = client.audio.transcriptions.create(
+for transcription in client.audio.transcriptions.create(
     file=b"raw file contents",
     model="gpt-4o-transcribe",
-)
-print(transcription)
+):
+  print(transcription)
 ```
 
 ## Domain Types

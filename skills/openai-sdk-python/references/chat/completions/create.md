@@ -1624,12 +1624,12 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
-chat_completion = client.chat.completions.create(
+for completion in client.chat.completions.create(
     messages=[{
         "content": "string",
         "role": "developer",
     }],
     model="gpt-5.4",
-)
-print(chat_completion)
+):
+  print(completion)
 ```
