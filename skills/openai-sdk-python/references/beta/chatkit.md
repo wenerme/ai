@@ -36,7 +36,7 @@
 
 # Sessions
 
-## Cancel
+## Cancel chat session
 
 `beta.chatkit.sessions.cancel(strsession_id)  -> ChatSession`
 
@@ -185,7 +185,80 @@ chat_session = client.beta.chatkit.sessions.cancel(
 print(chat_session.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chat_session = client.beta.chatkit.sessions.cancel(
+    "cksess_123",
+)
+print(chat_session.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "cksess_123",
+  "object": "chatkit.session",
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "1"
+  },
+  "scope": {
+    "customer_id": "cust_456"
+  },
+  "max_requests_per_1_minute": 30,
+  "ttl_seconds": 900,
+  "status": "cancelled",
+  "cancelled_at": 1712345678
+}
+```
+
+## Create ChatKit session
 
 `beta.chatkit.sessions.create(SessionCreateParams**kwargs)  -> ChatSession`
 
@@ -429,9 +502,85 @@ chat_session = client.beta.chatkit.sessions.create(
 print(chat_session.id)
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chat_session = client.beta.chatkit.sessions.create(
+    user="user",
+    workflow={
+        "id": "id"
+    },
+)
+print(chat_session.id)
+```
+
+#### Response
+
+```json
+{
+  "client_secret": "chatkit_token_123",
+  "expires_at": 1735689600,
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "2024-10-01"
+  },
+  "scope": {
+    "project": "alpha",
+    "environment": "staging"
+  },
+  "max_requests_per_1_minute": 60,
+  "max_requests_per_session": 500,
+  "status": "active"
+}
+```
+
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 `beta.chatkit.threads.list_items(strthread_id, ThreadListItemsParams**kwargs)  -> SyncConversationCursorPage[Data]`
 
@@ -855,7 +1004,95 @@ page = page.data[0]
 print(page)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.beta.chatkit.threads.list_items(
+    thread_id="cthr_123",
+)
+page = page.data[0]
+print(page)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 `beta.chatkit.threads.retrieve(strthread_id)  -> ChatKitThread`
 
@@ -952,7 +1189,72 @@ chatkit_thread = client.beta.chatkit.threads.retrieve(
 print(chatkit_thread.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chatkit_thread = client.beta.chatkit.threads.retrieve(
+    "cthr_123",
+)
+print(chatkit_thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 `beta.chatkit.threads.delete(strthread_id)  -> ThreadDeleteResponse`
 
@@ -999,7 +1301,29 @@ thread = client.beta.chatkit.threads.delete(
 print(thread.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+thread = client.beta.chat_kit.threads.delete(
+    "cthr_123",
+)
+print(thread.id)
+```
+
+## List ChatKit threads
 
 `beta.chatkit.threads.list(ThreadListParams**kwargs)  -> SyncConversationCursorPage[ChatKitThread]`
 
@@ -1115,6 +1439,61 @@ client = OpenAI(
 page = client.beta.chatkit.threads.list()
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.beta.chatkit.threads.list()
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
 ```
 
 ## Domain Types

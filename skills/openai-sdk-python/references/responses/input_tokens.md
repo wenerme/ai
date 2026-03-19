@@ -1,6 +1,6 @@
 # Input Tokens
 
-## Count
+## Get input token counts
 
 `responses.input_tokens.count(InputTokenCountParams**kwargs)  -> InputTokenCountResponse`
 
@@ -4637,4 +4637,36 @@ client = OpenAI(
 )
 response = client.responses.input_tokens.count()
 print(response.input_tokens)
+```
+
+#### Response
+
+```json
+{
+  "input_tokens": 123,
+  "object": "response.input_tokens"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.input_tokens.count(
+    model="gpt-5",
+    input="Tell me a joke."
+)
+print(response.input_tokens)
+```
+
+#### Response
+
+```json
+{
+  "object": "response.input_tokens",
+  "input_tokens": 11
+}
 ```

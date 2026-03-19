@@ -1,4 +1,4 @@
-## List
+## List project groups
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -73,4 +73,50 @@ Lists the groups that have access to a project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "created_at": 0,
+      "group_id": "group_id",
+      "group_name": "group_name",
+      "object": "project.group",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "project.group",
+            "project_id": "proj_abc123",
+            "group_id": "group_01J1F8ABCDXYZ",
+            "group_name": "Support Team",
+            "created_at": 1711471533
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
 ```

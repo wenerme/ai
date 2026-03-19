@@ -1,6 +1,6 @@
 # Uploads
 
-## Create
+## Create upload
 
 `client.uploads.create(UploadCreateParamsbody, RequestOptionsoptions?): Upload`
 
@@ -209,7 +209,33 @@ const upload = await client.uploads.create({
 console.log(upload.id);
 ```
 
-## Complete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
+## Complete upload
 
 `client.uploads.complete(stringuploadID, UploadCompleteParamsbody, RequestOptionsoptions?): Upload`
 
@@ -364,7 +390,33 @@ const upload = await client.uploads.complete('upload_abc123', { part_ids: ['stri
 console.log(upload.id);
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
+## Cancel upload
 
 `client.uploads.cancel(stringuploadID, RequestOptionsoptions?): Upload`
 
@@ -504,6 +556,32 @@ const upload = await client.uploads.cancel('upload_abc123');
 console.log(upload.id);
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
 ## Domain Types
 
 ### Upload
@@ -620,7 +698,7 @@ console.log(upload.id);
 
 # Parts
 
-## Create
+## Add upload part
 
 `client.uploads.parts.create(stringuploadID, PartCreateParamsbody, RequestOptionsoptions?): UploadPart`
 
@@ -680,6 +758,17 @@ const uploadPart = await client.uploads.parts.create('upload_abc123', {
 });
 
 console.log(uploadPart.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "upload.part",
+  "upload_id": "upload_id"
+}
 ```
 
 ## Domain Types

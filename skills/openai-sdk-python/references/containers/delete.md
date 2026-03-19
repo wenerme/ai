@@ -1,4 +1,4 @@
-## Delete
+## Delete a container
 
 `containers.delete(strcontainer_id)`
 

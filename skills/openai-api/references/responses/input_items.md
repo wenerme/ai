@@ -1,6 +1,6 @@
 # Input Items
 
-## List
+## List input items
 
 **get** `/responses/{response_id}/input_items`
 
@@ -406,11 +406,11 @@ Returns a list of input items for a given response.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -1296,17 +1296,17 @@ Returns a list of input items for a given response.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -1357,19 +1357,19 @@ Returns a list of input items for a given response.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -1665,7 +1665,7 @@ Returns a list of input items for a given response.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -1797,9 +1797,9 @@ Returns a list of input items for a given response.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2923,6 +2923,63 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "user",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/responses/resp_abc123/input_items \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Tell me a three sentence bedtime story about a unicorn."
+        }
+      ]
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc123",
+  "has_more": false
+}
+```
+
 ## Domain Types
 
 ### Response Item List
@@ -3278,11 +3335,11 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -4168,17 +4225,17 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -4229,19 +4286,19 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -4537,7 +4594,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -4669,9 +4726,9 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 

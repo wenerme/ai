@@ -1,4 +1,4 @@
-## Delete
+## Delete checkpoint permission
 
 `client.fineTuning.checkpoints.permissions.delete(stringpermissionID, PermissionDeleteParamsparams, RequestOptionsoptions?): PermissionDeleteResponse`
 
@@ -51,4 +51,14 @@ const permission = await client.fineTuning.checkpoints.permissions.delete(
 );
 
 console.log(permission.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "checkpoint.permission"
+}
 ```

@@ -1,4 +1,4 @@
-## List
+## List skill versions for a skill.
 
 **get** `/skills/{skill_id}/versions`
 
@@ -87,4 +87,26 @@ List skill versions for a skill.
 ```http
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
 ```

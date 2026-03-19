@@ -1,6 +1,6 @@
 # Checkpoints
 
-## List
+## List fine-tuning checkpoints
 
 `fine_tuning.jobs.checkpoints.list(strfine_tuning_job_id, CheckpointListParams**kwargs)  -> SyncCursorPage[FineTuningJobCheckpoint]`
 
@@ -84,6 +84,36 @@ page = client.fine_tuning.jobs.checkpoints.list(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "fine_tuned_model_checkpoint": "fine_tuned_model_checkpoint",
+      "fine_tuning_job_id": "fine_tuning_job_id",
+      "metrics": {
+        "full_valid_loss": 0,
+        "full_valid_mean_token_accuracy": 0,
+        "step": 0,
+        "train_loss": 0,
+        "train_mean_token_accuracy": 0,
+        "valid_loss": 0,
+        "valid_mean_token_accuracy": 0
+      },
+      "object": "fine_tuning.job.checkpoint",
+      "step_number": 0
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
 ```
 
 ## Domain Types

@@ -1,4 +1,4 @@
-## Get Character
+## Fetch a character.
 
 `videos.get_character(strcharacter_id)  -> VideoGetCharacterResponse`
 
@@ -39,4 +39,14 @@ response = client.videos.get_character(
     "char_123",
 )
 print(response.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

@@ -1,4 +1,4 @@
-## List
+## List projects
 
 **get** `/organization/projects`
 
@@ -67,4 +67,54 @@ Returns a list of projects.
 ```http
 curl https://api.openai.com/v1/organization/projects \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project",
+      "status": "active",
+      "archived_at": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects?after=proj_abc&limit=20&include_archived=false \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "proj_abc",
+            "object": "organization.project",
+            "name": "Project example",
+            "created_at": 1711471533,
+            "archived_at": null,
+            "status": "active"
+        }
+    ],
+    "first_id": "proj-abc",
+    "last_id": "proj-xyz",
+    "has_more": false
+}
 ```

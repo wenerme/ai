@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve file
 
 `files.retrieve(strfile_id)  -> FileObject`
 
@@ -89,4 +89,43 @@ file_object = client.files.retrieve(
     "file_id",
 )
 print(file_object.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.retrieve("file-abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
 ```

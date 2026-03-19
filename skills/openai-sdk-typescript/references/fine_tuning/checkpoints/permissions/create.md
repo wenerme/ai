@@ -1,4 +1,4 @@
-## Create
+## Create checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.create(stringfineTunedModelCheckpoint, PermissionCreateParamsbody, RequestOptionsoptions?): Page<PermissionCreateResponse>`
 
@@ -57,5 +57,24 @@ for await (const permissionCreateResponse of client.fineTuning.checkpoints.permi
   { project_ids: ['string'] },
 )) {
   console.log(permissionCreateResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```

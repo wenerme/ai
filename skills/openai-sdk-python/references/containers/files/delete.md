@@ -1,4 +1,4 @@
-## Delete
+## Delete a container file
 
 `containers.files.delete(strfile_id, FileDeleteParams**kwargs)`
 

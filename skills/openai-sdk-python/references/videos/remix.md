@@ -1,4 +1,4 @@
-## Remix
+## Remix video
 
 `videos.remix(strvideo_id, VideoRemixParams**kwargs)  -> Video`
 
@@ -136,4 +136,56 @@ video = client.videos.remix(
     prompt="x",
 )
 print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.remix(
+    video_id="video_123",
+    prompt="Extend the scene with the cat taking a bow to the cheering audience",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
 ```

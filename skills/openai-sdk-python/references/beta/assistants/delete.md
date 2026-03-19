@@ -1,4 +1,4 @@
-## Delete
+## Delete assistant
 
 `beta.assistants.delete(strassistant_id)  -> AssistantDeleted`
 
@@ -35,4 +35,34 @@ assistant_deleted = client.beta.assistants.delete(
     "assistant_id",
 )
 print(assistant_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "assistant.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.beta.assistants.delete("asst_abc123")
+print(response)
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant.deleted",
+  "deleted": true
+}
 ```

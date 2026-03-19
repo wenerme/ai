@@ -1,4 +1,4 @@
-## Create
+## Upload file
 
 **post** `/files`
 
@@ -94,4 +94,45 @@ curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -F 'file=@/path/to/file' \
     -F purpose=assistants
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="fine-tune" \
+  -F file="@mydata.jsonl"
+  -F expires_after[anchor]="created_at"
+  -F expires_after[seconds]=2592000
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
 ```

@@ -1,4 +1,4 @@
-## Get Images
+## Images
 
 **get** `/organization/usage/images`
 
@@ -403,4 +403,76 @@ Get images usage details for the organization.
 ```http
 curl https://api.openai.com/v1/organization/usage/images \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/images?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.images.result",
+                    "images": 2,
+                    "num_model_requests": 2,
+                    "size": null,
+                    "source": null,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
 ```

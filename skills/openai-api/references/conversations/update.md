@@ -1,4 +1,4 @@
-## Update
+## Update a conversation
 
 **post** `/conversations/{conversation_id}`
 
@@ -53,4 +53,37 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
             "foo": "string"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "metadata": {"topic": "project-x"}
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "project-x"}
+}
 ```

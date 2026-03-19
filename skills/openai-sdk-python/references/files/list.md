@@ -1,4 +1,4 @@
-## List
+## List files
 
 `files.list(FileListParams**kwargs)  -> SyncCursorPage[FileObject]`
 
@@ -106,4 +106,68 @@ client = OpenAI(
 page = client.files.list()
 page = page.data[0]
 print(page)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "created_at": 0,
+      "filename": "filename",
+      "object": "file",
+      "purpose": "assistants",
+      "status": "uploaded",
+      "expires_at": 0,
+      "status_details": "status_details"
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.list()
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "file",
+      "bytes": 175,
+      "created_at": 1613677385,
+      "expires_at": 1677614202,
+      "filename": "salesOverview.pdf",
+      "purpose": "assistants",
+    },
+    {
+      "id": "file-abc456",
+      "object": "file",
+      "bytes": 140,
+      "created_at": 1613779121,
+      "expires_at": 1677614202,
+      "filename": "puppy.jsonl",
+      "purpose": "fine-tune",
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
 ```

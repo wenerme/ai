@@ -1,4 +1,4 @@
-## Delete
+## Delete ChatKit thread
 
 `beta.chatkit.threads.delete(strthread_id)  -> ThreadDeleteResponse`
 
@@ -40,6 +40,28 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 thread = client.beta.chatkit.threads.delete(
+    "cthr_123",
+)
+print(thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+thread = client.beta.chat_kit.threads.delete(
     "cthr_123",
 )
 print(thread.id)

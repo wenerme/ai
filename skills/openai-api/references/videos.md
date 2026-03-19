@@ -1,6 +1,6 @@
 # Videos
 
-## Create
+## Create video
 
 **post** `/videos`
 
@@ -26,9 +26,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
   The video generation model to use (allowed values: sora-2, sora-2-pro). Defaults to `sora-2`.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+  - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
     - `"sora-2"`
 
@@ -100,9 +100,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -171,7 +171,55 @@ curl https://api.openai.com/v1/videos \
         }'
 ```
 
-## Edit
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "model=sora-2" \
+  -F "prompt=A calico cat playing a piano on stage"
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
+```
+
+## Create a new video generation job by editing a source video or existing generated video.
 
 **post** `/videos/edits`
 
@@ -229,9 +277,9 @@ Create a new video generation job by editing a source video or existing generate
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -303,7 +351,30 @@ curl https://api.openai.com/v1/videos/edits \
         }'
 ```
 
-## Extend
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create an extension of a completed video.
 
 **post** `/videos/extensions`
 
@@ -371,9 +442,9 @@ Create an extension of a completed video.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -446,7 +517,30 @@ curl https://api.openai.com/v1/videos/extensions \
         }'
 ```
 
-## Create Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create a character from an uploaded video.
 
 **post** `/videos/characters`
 
@@ -476,7 +570,17 @@ curl https://api.openai.com/v1/videos/characters \
     -F 'video=@/path/to/video'
 ```
 
-## Get Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## Fetch a character.
 
 **get** `/videos/characters/{character_id}`
 
@@ -507,7 +611,17 @@ curl https://api.openai.com/v1/videos/characters/$CHARACTER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## List videos
 
 **get** `/videos`
 
@@ -569,9 +683,9 @@ List recently generated videos for the current project.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -654,7 +768,61 @@ curl https://api.openai.com/v1/videos \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "seconds",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
+```
+
+## Retrieve video
 
 **get** `/videos/{video_id}`
 
@@ -702,9 +870,9 @@ Fetch the latest metadata for a generated video.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -769,7 +937,30 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Delete video
 
 **delete** `/videos/{video_id}`
 
@@ -803,7 +994,17 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Remix
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+## Remix video
 
 **post** `/videos/{video_id}/remix`
 
@@ -857,9 +1058,9 @@ Create a remix of a completed video using a refreshed prompt.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -928,7 +1129,57 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/remix \
         }'
 ```
 
-## Download Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/videos/video_123/remix \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "Extend the scene with the cat taking a bow to the cheering audience"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
+```
+
+## Retrieve video content
 
 **get** `/videos/{video_id}/content`
 
@@ -1009,9 +1260,9 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -1087,9 +1338,9 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
 - `VideoModel = string or "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+  - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
     - `"sora-2"`
 

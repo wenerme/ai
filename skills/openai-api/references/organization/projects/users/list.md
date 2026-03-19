@@ -1,4 +1,4 @@
-## List
+## List project users
 
 **get** `/organization/projects/{project_id}/users`
 
@@ -65,4 +65,54 @@ Returns a list of users in the project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.project.user",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.user",
+            "id": "user_abc",
+            "name": "First Last",
+            "email": "user@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "first_id": "user-abc",
+    "last_id": "user-xyz",
+    "has_more": false
+}
 ```

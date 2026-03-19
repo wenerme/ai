@@ -1,4 +1,4 @@
-## List
+## List videos
 
 `videos.list(VideoListParams**kwargs)  -> SyncConversationCursorPage[Video]`
 
@@ -144,4 +144,62 @@ client = OpenAI(
 page = client.videos.list()
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "string",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.videos.list()
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
 ```

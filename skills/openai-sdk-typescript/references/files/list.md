@@ -1,4 +1,4 @@
-## List
+## List files
 
 `client.files.list(FileListParamsquery?, RequestOptionsoptions?): CursorPage<FileObject>`
 
@@ -108,5 +108,78 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const fileObject of client.files.list()) {
   console.log(fileObject);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "created_at": 0,
+      "filename": "filename",
+      "object": "file",
+      "purpose": "assistants",
+      "status": "uploaded",
+      "expires_at": 0,
+      "status_details": "status_details"
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.files.list();
+
+  for await (const file of list) {
+    console.log(file);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "file",
+      "bytes": 175,
+      "created_at": 1613677385,
+      "expires_at": 1677614202,
+      "filename": "salesOverview.pdf",
+      "purpose": "assistants",
+    },
+    {
+      "id": "file-abc456",
+      "object": "file",
+      "bytes": 140,
+      "created_at": 1613779121,
+      "expires_at": 1677614202,
+      "filename": "puppy.jsonl",
+      "purpose": "fine-tune",
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
 }
 ```

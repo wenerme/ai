@@ -1,4 +1,4 @@
-## Delete
+## Delete a conversation
 
 `client.conversations.delete(stringconversationID, RequestOptionsoptions?): ConversationDeletedResource`
 
@@ -34,4 +34,34 @@ const client = new OpenAI({
 const conversationDeletedResource = await client.conversations.delete('conv_123');
 
 console.log(conversationDeletedResource.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const deleted = await client.conversations.delete("conv_123");
+console.log(deleted);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```

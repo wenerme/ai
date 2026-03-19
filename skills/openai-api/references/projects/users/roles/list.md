@@ -1,4 +1,4 @@
-## List
+## List project user role assignments
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
@@ -97,4 +97,75 @@ Lists the project roles assigned to a user within a project.
 ```http
 curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8PROJ",
+            "name": "API Project Key Manager",
+            "permissions": [
+                "api.organization.projects.api_keys.read",
+                "api.organization.projects.api_keys.write"
+            ],
+            "resource_type": "api.project",
+            "predefined_role": false,
+            "description": "Allows managing API keys for the project",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
 ```

@@ -1,6 +1,6 @@
 # Voices
 
-## Create
+## Create voice
 
 **post** `/audio/voices`
 
@@ -35,4 +35,26 @@ curl https://api.openai.com/v1/audio/voices \
     -F 'audio_sample=@/path/to/audio_sample' \
     -F consent=consent \
     -F name=name
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "audio.voice"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voices \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "name=My new voice" \
+  -F "consent=cons_1234" \
+  -F "audio_sample=@$HOME/audio_sample.wav;type=audio/x-wav"
 ```

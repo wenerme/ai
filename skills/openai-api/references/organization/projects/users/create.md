@@ -1,4 +1,4 @@
-## Create
+## Create project user
 
 **post** `/organization/projects/{project_id}/users`
 
@@ -68,4 +68,41 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
           "role": "owner",
           "user_id": "user_id"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.project.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc",
+      "role": "member"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user",
+    "id": "user_abc",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
 ```

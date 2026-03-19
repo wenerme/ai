@@ -1,4 +1,4 @@
-## Create
+## Create video
 
 **post** `/videos`
 
@@ -24,9 +24,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
   The video generation model to use (allowed values: sora-2, sora-2-pro). Defaults to `sora-2`.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+  - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
     - `"sora-2"`
 
@@ -98,9 +98,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -167,4 +167,52 @@ curl https://api.openai.com/v1/videos \
     -d '{
           "prompt": "x"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "model=sora-2" \
+  -F "prompt=A calico cat playing a piano on stage"
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
 ```

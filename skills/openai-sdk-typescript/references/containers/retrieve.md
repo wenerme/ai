@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve container
 
 `client.containers.retrieve(stringcontainerID, RequestOptionsoptions?): ContainerRetrieveResponse`
 
@@ -94,4 +94,28 @@ const client = new OpenAI({
 const container = await client.containers.retrieve('container_id');
 
 console.log(container.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
 ```

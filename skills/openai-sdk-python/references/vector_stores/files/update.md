@@ -1,4 +1,4 @@
-## Update
+## Update vector store file attributes
 
 `vector_stores.files.update(strfile_id, FileUpdateParams**kwargs)  -> VectorStoreFile`
 
@@ -149,4 +149,31 @@ vector_store_file = client.vector_stores.files.update(
     },
 )
 print(vector_store_file.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
 ```

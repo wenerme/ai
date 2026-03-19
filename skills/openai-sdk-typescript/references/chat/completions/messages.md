@@ -1,6 +1,6 @@
 # Messages
 
-## List
+## Get chat messages
 
 `client.chat.completions.messages.list(stringcompletionID, MessageListParamsquery?, RequestOptionsoptions?): CursorPage<ChatCompletionStoreMessage>`
 
@@ -101,5 +101,61 @@ for await (const chatCompletionStoreMessage of client.chat.completions.messages.
   'completion_id',
 )) {
   console.log(chatCompletionStoreMessage);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "content": "content",
+      "refusal": "refusal",
+      "role": "assistant",
+      "annotations": [
+        {
+          "type": "url_citation",
+          "url_citation": {
+            "end_index": 0,
+            "start_index": 0,
+            "title": "title",
+            "url": "url"
+          }
+        }
+      ],
+      "audio": {
+        "id": "id",
+        "data": "data",
+        "expires_at": 0,
+        "transcript": "transcript"
+      },
+      "function_call": {
+        "arguments": "arguments",
+        "name": "name"
+      },
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ],
+      "id": "id",
+      "content_parts": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

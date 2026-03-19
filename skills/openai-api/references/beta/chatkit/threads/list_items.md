@@ -1,4 +1,4 @@
-## List Items
+## List ChatKit thread items
 
 **get** `/chatkit/threads/{thread_id}/items`
 
@@ -436,4 +436,87 @@ List items that belong to a ChatKit thread.
 curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
     -H 'OpenAI-Beta: chatkit_beta=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
 ```

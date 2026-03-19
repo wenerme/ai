@@ -1,4 +1,4 @@
-## List
+## List container files
 
 `client.containers.files.list(stringcontainerID, FileListParamsquery?, RequestOptionsoptions?): CursorPage<FileListResponse>`
 
@@ -74,5 +74,27 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const fileListResponse of client.containers.files.list('container_id')) {
   console.log(fileListResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "container.file",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

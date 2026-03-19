@@ -1,4 +1,4 @@
-## Download Content
+## Retrieve video content
 
 `videos.download_content(strvideo_id, VideoDownloadContentParams**kwargs)  -> BinaryResponseContent`
 
@@ -35,6 +35,20 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
+response = client.videos.download_content(
+    video_id="video_123",
+)
+print(response)
+content = response.read()
+print(content)
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
 response = client.videos.download_content(
     video_id="video_123",
 )

@@ -1,4 +1,4 @@
-## Create
+## Create checkpoint permissions
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
@@ -59,4 +59,50 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/$FINE_TUNED_MODEL_CHECKPO
             "string"
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18:org:weather:B7R9VjQd/permissions \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+  -d '{"project_ids": ["proj_abGMw1llN8IrBb6SvvY5A1iH"]}'
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "checkpoint.permission",
+      "id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
+      "created_at": 1721764867,
+      "project_id": "proj_abGMw1llN8IrBb6SvvY5A1iH"
+    }
+  ],
+  "first_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
+  "last_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
+  "has_more": false
+}
 ```

@@ -25512,7 +25512,7 @@
 
 # Client Secrets
 
-## Create
+## Create client secret
 
 `client.realtime.clientSecrets.create(ClientSecretCreateParamsbody, RequestOptionsoptions?): ClientSecretCreateResponse`
 
@@ -27435,6 +27435,82 @@ const clientSecret = await client.realtime.clientSecrets.create();
 console.log(clientSecret.expires_at);
 ```
 
+#### Response
+
+```json
+{
+  "expires_at": 0,
+  "session": {
+    "client_secret": {
+      "expires_at": 0,
+      "value": "value"
+    },
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "noise_reduction": {
+          "type": "near_field"
+        },
+        "transcription": {
+          "language": "language",
+          "model": "string",
+          "prompt": "prompt"
+        },
+        "turn_detection": {
+          "type": "server_vad",
+          "create_response": true,
+          "idle_timeout_ms": 5000,
+          "interrupt_response": true,
+          "prefix_padding_ms": 0,
+          "silence_duration_ms": 0,
+          "threshold": 0
+        }
+      },
+      "output": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "speed": 0.25,
+        "voice": "ash"
+      }
+    },
+    "include": [
+      "item.input_audio_transcription.logprobs"
+    ],
+    "instructions": "instructions",
+    "max_output_tokens": 0,
+    "model": "string",
+    "output_modalities": [
+      "text"
+    ],
+    "prompt": {
+      "id": "id",
+      "variables": {
+        "foo": "string"
+      },
+      "version": "version"
+    },
+    "tool_choice": "none",
+    "tools": [
+      {
+        "description": "description",
+        "name": "name",
+        "parameters": {},
+        "type": "function"
+      }
+    ],
+    "tracing": "auto",
+    "truncation": "auto"
+  },
+  "value": "value"
+}
+```
+
 ## Domain Types
 
 ### Realtime Session Client Secret
@@ -28384,7 +28460,7 @@ console.log(clientSecret.expires_at);
 
 # Calls
 
-## Accept
+## Accept call
 
 `client.realtime.calls.accept(stringcallID, CallAcceptParamsbody, RequestOptionsoptions?): void`
 
@@ -29149,7 +29225,7 @@ const client = new OpenAI({
 await client.realtime.calls.accept('call_id', { type: 'realtime' });
 ```
 
-## Hangup
+## Hang up call
 
 `client.realtime.calls.hangup(stringcallID, RequestOptionsoptions?): void`
 
@@ -29174,7 +29250,7 @@ const client = new OpenAI({
 await client.realtime.calls.hangup('call_id');
 ```
 
-## Refer
+## Refer call
 
 `client.realtime.calls.refer(stringcallID, CallReferParamsbody, RequestOptionsoptions?): void`
 
@@ -29205,7 +29281,7 @@ const client = new OpenAI({
 await client.realtime.calls.refer('call_id', { target_uri: 'tel:+14155550123' });
 ```
 
-## Reject
+## Reject call
 
 `client.realtime.calls.reject(stringcallID, CallRejectParamsbody?, RequestOptionsoptions?): void`
 

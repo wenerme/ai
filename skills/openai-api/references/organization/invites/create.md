@@ -1,4 +1,4 @@
-## Create
+## Create invite
 
 **post** `/organization/invites`
 
@@ -110,4 +110,72 @@ curl https://api.openai.com/v1/organization/invites \
           "email": "email",
           "role": "reader"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "expires_at": 0,
+  "invited_at": 0,
+  "object": "organization.invite",
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "projects": [
+    {
+      "id": "id",
+      "role": "member"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/invites \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "email": "anotheruser@example.com",
+      "role": "reader",
+      "projects": [
+        {
+          "id": "project-xyz",
+          "role": "member"
+        },
+        {
+          "id": "project-abc",
+          "role": "owner"
+        }
+      ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.invite",
+  "id": "invite-def",
+  "email": "anotheruser@example.com",
+  "role": "reader",
+  "status": "pending",
+  "invited_at": 1711471533,
+  "expires_at": 1711471533,
+  "accepted_at": null,
+  "projects": [
+    {
+      "id": "project-xyz",
+      "role": "member"
+    },
+    {
+      "id": "project-abc",
+      "role": "owner"
+    }
+  ]
+}
 ```

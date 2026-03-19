@@ -1,6 +1,6 @@
 # Files
 
-## List
+## List files
 
 **get** `/files`
 
@@ -107,7 +107,69 @@ curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "created_at": 0,
+      "filename": "filename",
+      "object": "file",
+      "purpose": "assistants",
+      "status": "uploaded",
+      "expires_at": 0,
+      "status_details": "status_details"
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "file",
+      "bytes": 175,
+      "created_at": 1613677385,
+      "expires_at": 1677614202,
+      "filename": "salesOverview.pdf",
+      "purpose": "assistants",
+    },
+    {
+      "id": "file-abc456",
+      "object": "file",
+      "bytes": 140,
+      "created_at": 1613779121,
+      "expires_at": 1677614202,
+      "filename": "puppy.jsonl",
+      "purpose": "fine-tune",
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```
+
+## Upload file
 
 **post** `/files`
 
@@ -205,7 +267,48 @@ curl https://api.openai.com/v1/files \
     -F purpose=assistants
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="fine-tune" \
+  -F file="@mydata.jsonl"
+  -F expires_after[anchor]="created_at"
+  -F expires_after[seconds]=2592000
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Delete file
 
 **delete** `/files/{file_id}`
 
@@ -235,7 +338,35 @@ curl https://api.openai.com/v1/files/$FILE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "file"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files/file-abc123 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "deleted": true
+}
+```
+
+## Retrieve file
 
 **get** `/files/{file_id}`
 
@@ -318,7 +449,44 @@ curl https://api.openai.com/v1/files/$FILE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files/file-abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Retrieve file content
 
 **get** `/files/{file_id}/content`
 
@@ -333,6 +501,13 @@ Returns the contents of the specified file.
 ```http
 curl https://api.openai.com/v1/files/$FILE_ID/content \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/files/file-abc123/content \
+  -H "Authorization: Bearer $OPENAI_API_KEY" > file.jsonl
 ```
 
 ## Domain Types

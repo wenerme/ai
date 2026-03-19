@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill version.
 
 `client.skills.versions.delete(stringversion, VersionDeleteParamsparams, RequestOptionsoptions?): DeletedSkillVersion`
 
@@ -48,4 +48,15 @@ const deletedSkillVersion = await client.skills.versions.delete('version', {
 });
 
 console.log(deletedSkillVersion.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```

@@ -1,4 +1,4 @@
-## Pause
+## Pause fine-tuning
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
@@ -55,33 +55,33 @@ Pause a fine-tune job.
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `learning_rate_multiplier: optional "auto" or number`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `n_epochs: optional "auto" or number`
 
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
   - `model: string`
 
@@ -206,41 +206,41 @@ Pause a fine-tune job.
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `beta: optional "auto" or number`
 
           The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `learning_rate_multiplier: optional "auto" or number`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `n_epochs: optional "auto" or number`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
     - `reinforcement: optional ReinforcementMethod`
 
@@ -1197,61 +1197,61 @@ Pause a fine-tune job.
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `compute_multiplier: optional "auto" or number`
 
           Multiplier on amount of compute used for exploring search space during training.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `eval_interval: optional "auto" or number`
 
           The number of training steps between evaluation runs.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `eval_samples: optional "auto" or number`
 
           Number of evaluation samples to generate per training step.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `learning_rate_multiplier: optional "auto" or number`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `n_epochs: optional "auto" or number`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
 
@@ -1277,31 +1277,31 @@ Pause a fine-tune job.
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `learning_rate_multiplier: optional "auto" or number`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
         - `n_epochs: optional "auto" or number`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-          - `UnionMember0 = "auto"`
+          - `"auto"`
 
             - `"auto"`
 
-          - `UnionMember1 = number`
+          - `number`
 
 ### Example
 
@@ -1309,4 +1309,113 @@ Pause a fine-tune job.
 curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID/pause \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/pause \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "paused",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123"
+}
 ```

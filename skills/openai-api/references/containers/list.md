@@ -1,4 +1,4 @@
-## List
+## List containers
 
 **get** `/containers`
 
@@ -123,4 +123,69 @@ List Containers
 ```http
 curl https://api.openai.com/v1/containers \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "object",
+      "status": "status",
+      "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 0
+      },
+      "last_active_at": 0,
+      "memory_limit": "1g",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": [
+          "string"
+        ]
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+        "id": "cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863",
+        "object": "container",
+        "created_at": 1747844794,
+        "status": "running",
+        "expires_after": {
+            "anchor": "last_active_at",
+            "minutes": 20
+        },
+        "last_active_at": 1747844794,
+        "memory_limit": "4g",
+        "name": "My Container"
+    }
+  ],
+  "first_id": "container_123",
+  "last_id": "container_123",
+  "has_more": false
+}
 ```

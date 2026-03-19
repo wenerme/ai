@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve admin API key
 
 **get** `/organization/admin_api_keys/{key_id}`
 
@@ -71,4 +71,55 @@ Retrieve a single organization API key
 ```http
 curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "key_abc",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
+  "object": "organization.admin_api_key",
+  "owner": {
+    "id": "sa_456",
+    "created_at": 1711471533,
+    "name": "My Service Account",
+    "object": "organization.user",
+    "role": "owner",
+    "type": "user"
+  },
+  "redacted_value": "sk-admin...def",
+  "value": "sk-admin-1234abcd"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.admin_api_key",
+  "id": "key_abc",
+  "name": "Main Admin Key",
+  "redacted_value": "sk-admin...xyz",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "owner": {
+    "type": "user",
+    "object": "organization.user",
+    "id": "user_123",
+    "name": "John Doe",
+    "created_at": 1711471533,
+    "role": "owner"
+  }
+}
 ```

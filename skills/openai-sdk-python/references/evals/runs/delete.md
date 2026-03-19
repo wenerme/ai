@@ -1,4 +1,4 @@
-## Delete
+## Delete eval run
 
 `evals.runs.delete(strrun_id, RunDeleteParams**kwargs)  -> RunDeleteResponse`
 
@@ -36,4 +36,37 @@ run = client.evals.runs.delete(
     eval_id="eval_id",
 )
 print(run.run_id)
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "eval.run.deleted",
+  "run_id": "evalrun_677469f564d48190807532a852da3afb"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted = client.evals.runs.delete(
+  "eval_123abc",
+  "evalrun_abc456"
+)
+print(deleted)
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.deleted",
+  "deleted": true,
+  "run_id": "evalrun_abc456"
+}
 ```

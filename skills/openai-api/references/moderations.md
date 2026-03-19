@@ -1,6 +1,6 @@
 # Moderations
 
-## Create
+## Create moderation
 
 **post** `/moderations`
 
@@ -14,19 +14,19 @@ more in the [moderation guide](/docs/guides/moderation).
   Input (or inputs) to classify. Can be a single string, an array of strings, or
   an array of multi-modal input objects similar to other models.
 
-  - `UnionMember0 = string`
+  - `string`
 
     A string of text to classify for moderation.
 
-  - `UnionMember1 = array of string`
+  - `array of string`
 
     An array of strings to classify for moderation.
 
-  - `UnionMember2 = array of object { image_url, type }  or object { text, type }`
+  - `array of object { image_url, type }  or object { text, type }`
 
     An array of multi-modal inputs to the moderation model.
 
-    - `UnionMember0 = object { image_url, type }`
+    - `object { image_url, type }`
 
       An object describing an image to classify.
 
@@ -44,7 +44,7 @@ more in the [moderation guide](/docs/guides/moderation).
 
         - `"image_url"`
 
-    - `UnionMember1 = object { text, type }`
+    - `object { text, type }`
 
       An object describing text to classify.
 
@@ -64,7 +64,7 @@ more in the [moderation guide](/docs/guides/moderation).
   [the moderation guide](/docs/guides/moderation), and learn about
   available models [here](/docs/models#moderation).
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `ModerationModel = "omni-moderation-latest" or "omni-moderation-2024-09-26" or "text-moderation-latest" or "text-moderation-stable"`
 
@@ -309,6 +309,254 @@ curl https://api.openai.com/v1/moderations \
     -d '{
           "input": "I want to kill them."
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "model": "model",
+  "results": [
+    {
+      "categories": {
+        "harassment": true,
+        "harassment/threatening": true,
+        "hate": true,
+        "hate/threatening": true,
+        "illicit": true,
+        "illicit/violent": true,
+        "self-harm": true,
+        "self-harm/instructions": true,
+        "self-harm/intent": true,
+        "sexual": true,
+        "sexual/minors": true,
+        "violence": true,
+        "violence/graphic": true
+      },
+      "category_applied_input_types": {
+        "harassment": [
+          "text"
+        ],
+        "harassment/threatening": [
+          "text"
+        ],
+        "hate": [
+          "text"
+        ],
+        "hate/threatening": [
+          "text"
+        ],
+        "illicit": [
+          "text"
+        ],
+        "illicit/violent": [
+          "text"
+        ],
+        "self-harm": [
+          "text"
+        ],
+        "self-harm/instructions": [
+          "text"
+        ],
+        "self-harm/intent": [
+          "text"
+        ],
+        "sexual": [
+          "text"
+        ],
+        "sexual/minors": [
+          "text"
+        ],
+        "violence": [
+          "text"
+        ],
+        "violence/graphic": [
+          "text"
+        ]
+      },
+      "category_scores": {
+        "harassment": 0,
+        "harassment/threatening": 0,
+        "hate": 0,
+        "hate/threatening": 0,
+        "illicit": 0,
+        "illicit/violent": 0,
+        "self-harm": 0,
+        "self-harm/instructions": 0,
+        "self-harm/intent": 0,
+        "sexual": 0,
+        "sexual/minors": 0,
+        "violence": 0,
+        "violence/graphic": 0
+      },
+      "flagged": true
+    }
+  ]
+}
+```
+
+### Single string
+
+```http
+curl https://api.openai.com/v1/moderations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "input": "I want to kill them."
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "modr-AB8CjOTu2jiq12hp1AQPfeqFWaORR",
+  "model": "text-moderation-007",
+  "results": [
+    {
+      "flagged": true,
+      "categories": {
+        "sexual": false,
+        "hate": false,
+        "harassment": true,
+        "self-harm": false,
+        "sexual/minors": false,
+        "hate/threatening": false,
+        "violence/graphic": false,
+        "self-harm/intent": false,
+        "self-harm/instructions": false,
+        "harassment/threatening": true,
+        "violence": true
+      },
+      "category_scores": {
+        "sexual": 0.000011726012417057063,
+        "hate": 0.22706663608551025,
+        "harassment": 0.5215635299682617,
+        "self-harm": 2.227119921371923e-6,
+        "sexual/minors": 7.107352217872176e-8,
+        "hate/threatening": 0.023547329008579254,
+        "violence/graphic": 0.00003391829886822961,
+        "self-harm/intent": 1.646940972932498e-6,
+        "self-harm/instructions": 1.1198755256458526e-9,
+        "harassment/threatening": 0.5694745779037476,
+        "violence": 0.9971134662628174
+      }
+    }
+  ]
+}
+```
+
+### Image and text
+
+```http
+curl https://api.openai.com/v1/moderations \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "omni-moderation-latest",
+    "input": [
+      { "type": "text", "text": "...text to classify goes here..." },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "https://example.com/image.png"
+        }
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "modr-0d9740456c391e43c445bf0f010940c7",
+  "model": "omni-moderation-latest",
+  "results": [
+    {
+      "flagged": true,
+      "categories": {
+        "harassment": true,
+        "harassment/threatening": true,
+        "sexual": false,
+        "hate": false,
+        "hate/threatening": false,
+        "illicit": false,
+        "illicit/violent": false,
+        "self-harm/intent": false,
+        "self-harm/instructions": false,
+        "self-harm": false,
+        "sexual/minors": false,
+        "violence": true,
+        "violence/graphic": true
+      },
+      "category_scores": {
+        "harassment": 0.8189693396524255,
+        "harassment/threatening": 0.804985420696006,
+        "sexual": 1.573112165348997e-6,
+        "hate": 0.007562942636942845,
+        "hate/threatening": 0.004208854591835476,
+        "illicit": 0.030535955153511665,
+        "illicit/violent": 0.008925306722380033,
+        "self-harm/intent": 0.00023023930975076432,
+        "self-harm/instructions": 0.0002293869201073356,
+        "self-harm": 0.012598046106750154,
+        "sexual/minors": 2.212566909570261e-8,
+        "violence": 0.9999992735124786,
+        "violence/graphic": 0.843064871157054
+      },
+      "category_applied_input_types": {
+        "harassment": [
+          "text"
+        ],
+        "harassment/threatening": [
+          "text"
+        ],
+        "sexual": [
+          "text",
+          "image"
+        ],
+        "hate": [
+          "text"
+        ],
+        "hate/threatening": [
+          "text"
+        ],
+        "illicit": [
+          "text"
+        ],
+        "illicit/violent": [
+          "text"
+        ],
+        "self-harm/intent": [
+          "text",
+          "image"
+        ],
+        "self-harm/instructions": [
+          "text",
+          "image"
+        ],
+        "self-harm": [
+          "text",
+          "image"
+        ],
+        "sexual/minors": [
+          "text"
+        ],
+        "violence": [
+          "text",
+          "image"
+        ],
+        "violence/graphic": [
+          "text",
+          "image"
+        ]
+      }
+    }
+  ]
+}
 ```
 
 ## Domain Types

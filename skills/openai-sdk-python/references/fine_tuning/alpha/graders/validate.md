@@ -1,4 +1,4 @@
-## Validate
+## Validate grader
 
 `fine_tuning.alpha.graders.validate(GraderValidateParams**kwargs)  -> GraderValidateResponse`
 
@@ -1899,4 +1899,18 @@ response = client.fine_tuning.alpha.graders.validate(
     },
 )
 print(response.grader)
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
 ```

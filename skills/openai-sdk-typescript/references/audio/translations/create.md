@@ -1,4 +1,4 @@
-## Create
+## Create translation
 
 `client.audio.translations.create(TranslationCreateParamsbody, RequestOptionsoptions?): TranslationCreateResponse`
 
@@ -135,4 +135,39 @@ const translation = await client.audio.translations.create({
 });
 
 console.log(translation);
+```
+
+#### Response
+
+```json
+{
+  "text": "text"
+}
+```
+
+### Example
+
+```typescript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+    const translation = await openai.audio.translations.create({
+        file: fs.createReadStream("speech.mp3"),
+        model: "whisper-1",
+    });
+
+    console.log(translation.text);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "text": "Hello, my name is Wolfgang and I come from Germany. Where are you heading today?"
+}
 ```

@@ -1,6 +1,6 @@
 # Messages
 
-## List
+## List messages
 
 `client.beta.threads.messages.list(stringthreadID, MessageListParamsquery?, RequestOptionsoptions?): CursorPage<Message>`
 
@@ -300,7 +300,128 @@ for await (const message of client.beta.threads.messages.list('thread_id')) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "attachments": [
+        {
+          "file_id": "file_id",
+          "tools": [
+            {
+              "type": "code_interpreter"
+            }
+          ]
+        }
+      ],
+      "completed_at": 0,
+      "content": [
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
+      ],
+      "created_at": 0,
+      "incomplete_at": 0,
+      "incomplete_details": {
+        "reason": "content_filter"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.message",
+      "role": "user",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "thread_id": "thread_id"
+    }
+  ],
+  "first_id": "msg_abc123",
+  "has_more": false,
+  "last_id": "msg_abc123",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const threadMessages = await openai.beta.threads.messages.list(
+    "thread_abc123"
+  );
+
+  console.log(threadMessages.data);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "How does AI work? Explain it in simple terms.",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    },
+    {
+      "id": "msg_abc456",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "Hello, what is AI?",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc456",
+  "has_more": false
+}
+```
+
+## Create message
 
 `client.beta.threads.messages.create(stringthreadID, MessageCreateParamsbody, RequestOptionsoptions?): Message`
 
@@ -700,7 +821,93 @@ const message = await client.beta.threads.messages.create('thread_id', {
 console.log(message.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const threadMessages = await openai.beta.threads.messages.create(
+    "thread_abc123",
+    { role: "user", content: "How does AI work? Explain it in simple terms." }
+  );
+
+  console.log(threadMessages);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1713226573,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Modify message
 
 `client.beta.threads.messages.update(stringmessageID, MessageUpdateParamsparams, RequestOptionsoptions?): Message`
 
@@ -988,7 +1195,97 @@ const message = await client.beta.threads.messages.update('message_id', { thread
 console.log(message.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const message = await openai.beta.threads.messages.update(
+    "thread_abc123",
+    "msg_abc123",
+    {
+      metadata: {
+        modified: "true",
+        user: "abc123",
+      },
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "file_ids": [],
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  }
+}
+```
+
+## Retrieve message
 
 `client.beta.threads.messages.retrieve(stringmessageID, MessageRetrieveParamsparams, RequestOptionsoptions?): Message`
 
@@ -1269,7 +1566,93 @@ const message = await client.beta.threads.messages.retrieve('message_id', {
 console.log(message.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const message = await openai.beta.threads.messages.retrieve(
+    "msg_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(message);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Delete message
 
 `client.beta.threads.messages.delete(stringmessageID, MessageDeleteParamsparams, RequestOptionsoptions?): MessageDeleted`
 
@@ -1313,6 +1696,43 @@ const messageDeleted = await client.beta.threads.messages.delete('message_id', {
 });
 
 console.log(messageDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const deletedMessage = await openai.beta.threads.messages.delete(
+    "msg_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(deletedMessage);
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types

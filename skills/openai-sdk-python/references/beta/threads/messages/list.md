@@ -1,4 +1,4 @@
-## List
+## List messages
 
 `beta.threads.messages.list(strthread_id, MessageListParams**kwargs)  -> SyncCursorPage[Message]`
 
@@ -295,4 +295,117 @@ page = client.beta.threads.messages.list(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "attachments": [
+        {
+          "file_id": "file_id",
+          "tools": [
+            {
+              "type": "code_interpreter"
+            }
+          ]
+        }
+      ],
+      "completed_at": 0,
+      "content": [
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
+      ],
+      "created_at": 0,
+      "incomplete_at": 0,
+      "incomplete_details": {
+        "reason": "content_filter"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.message",
+      "role": "user",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "thread_id": "thread_id"
+    }
+  ],
+  "first_id": "msg_abc123",
+  "has_more": false,
+  "last_id": "msg_abc123",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+thread_messages = client.beta.threads.messages.list("thread_abc123")
+print(thread_messages.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "How does AI work? Explain it in simple terms.",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    },
+    {
+      "id": "msg_abc456",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "Hello, what is AI?",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc456",
+  "has_more": false
+}
 ```

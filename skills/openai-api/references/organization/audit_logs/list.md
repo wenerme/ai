@@ -1,4 +1,4 @@
-## List
+## List audit logs
 
 **get** `/organization/audit_logs`
 
@@ -1065,4 +1065,381 @@ List user actions and configuration changes within this organization.
 ```http
 curl https://api.openai.com/v1/organization/audit_logs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "actor": {
+        "api_key": {
+          "id": "id",
+          "service_account": {
+            "id": "id"
+          },
+          "type": "user",
+          "user": {
+            "id": "id",
+            "email": "email"
+          }
+        },
+        "session": {
+          "ip_address": "ip_address",
+          "user": {
+            "id": "id",
+            "email": "email"
+          }
+        },
+        "type": "session"
+      },
+      "effective_at": 0,
+      "type": "api_key.created",
+      "api_key.created": {
+        "id": "id",
+        "data": {
+          "scopes": [
+            "string"
+          ]
+        }
+      },
+      "api_key.deleted": {
+        "id": "id"
+      },
+      "api_key.updated": {
+        "id": "id",
+        "changes_requested": {
+          "scopes": [
+            "string"
+          ]
+        }
+      },
+      "certificate.created": {
+        "id": "id",
+        "name": "name"
+      },
+      "certificate.deleted": {
+        "id": "id",
+        "certificate": "certificate",
+        "name": "name"
+      },
+      "certificate.updated": {
+        "id": "id",
+        "name": "name"
+      },
+      "certificates.activated": {
+        "certificates": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "certificates.deactivated": {
+        "certificates": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "checkpoint.permission.created": {
+        "id": "id",
+        "data": {
+          "fine_tuned_model_checkpoint": "fine_tuned_model_checkpoint",
+          "project_id": "project_id"
+        }
+      },
+      "checkpoint.permission.deleted": {
+        "id": "id"
+      },
+      "external_key.registered": {
+        "id": "id",
+        "data": {}
+      },
+      "external_key.removed": {
+        "id": "id"
+      },
+      "group.created": {
+        "id": "id",
+        "data": {
+          "group_name": "group_name"
+        }
+      },
+      "group.deleted": {
+        "id": "id"
+      },
+      "group.updated": {
+        "id": "id",
+        "changes_requested": {
+          "group_name": "group_name"
+        }
+      },
+      "invite.accepted": {
+        "id": "id"
+      },
+      "invite.deleted": {
+        "id": "id"
+      },
+      "invite.sent": {
+        "id": "id",
+        "data": {
+          "email": "email",
+          "role": "role"
+        }
+      },
+      "ip_allowlist.config.activated": {
+        "configs": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "ip_allowlist.config.deactivated": {
+        "configs": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "ip_allowlist.created": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ],
+        "name": "name"
+      },
+      "ip_allowlist.deleted": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ],
+        "name": "name"
+      },
+      "ip_allowlist.updated": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ]
+      },
+      "login.failed": {
+        "error_code": "error_code",
+        "error_message": "error_message"
+      },
+      "login.succeeded": {},
+      "logout.failed": {
+        "error_code": "error_code",
+        "error_message": "error_message"
+      },
+      "logout.succeeded": {},
+      "organization.updated": {
+        "id": "id",
+        "changes_requested": {
+          "api_call_logging": "api_call_logging",
+          "api_call_logging_project_ids": "api_call_logging_project_ids",
+          "description": "description",
+          "name": "name",
+          "threads_ui_visibility": "threads_ui_visibility",
+          "title": "title",
+          "usage_dashboard_visibility": "usage_dashboard_visibility"
+        }
+      },
+      "project": {
+        "id": "id",
+        "name": "name"
+      },
+      "project.archived": {
+        "id": "id"
+      },
+      "project.created": {
+        "id": "id",
+        "data": {
+          "name": "name",
+          "title": "title"
+        }
+      },
+      "project.deleted": {
+        "id": "id"
+      },
+      "project.updated": {
+        "id": "id",
+        "changes_requested": {
+          "title": "title"
+        }
+      },
+      "rate_limit.deleted": {
+        "id": "id"
+      },
+      "rate_limit.updated": {
+        "id": "id",
+        "changes_requested": {
+          "batch_1_day_max_input_tokens": 0,
+          "max_audio_megabytes_per_1_minute": 0,
+          "max_images_per_1_minute": 0,
+          "max_requests_per_1_day": 0,
+          "max_requests_per_1_minute": 0,
+          "max_tokens_per_1_minute": 0
+        }
+      },
+      "role.assignment.created": {
+        "id": "id",
+        "principal_id": "principal_id",
+        "principal_type": "principal_type",
+        "resource_id": "resource_id",
+        "resource_type": "resource_type"
+      },
+      "role.assignment.deleted": {
+        "id": "id",
+        "principal_id": "principal_id",
+        "principal_type": "principal_type",
+        "resource_id": "resource_id",
+        "resource_type": "resource_type"
+      },
+      "role.created": {
+        "id": "id",
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_name": "role_name"
+      },
+      "role.deleted": {
+        "id": "id"
+      },
+      "role.updated": {
+        "id": "id",
+        "changes_requested": {
+          "description": "description",
+          "metadata": {},
+          "permissions_added": [
+            "string"
+          ],
+          "permissions_removed": [
+            "string"
+          ],
+          "resource_id": "resource_id",
+          "resource_type": "resource_type",
+          "role_name": "role_name"
+        }
+      },
+      "scim.disabled": {
+        "id": "id"
+      },
+      "scim.enabled": {
+        "id": "id"
+      },
+      "service_account.created": {
+        "id": "id",
+        "data": {
+          "role": "role"
+        }
+      },
+      "service_account.deleted": {
+        "id": "id"
+      },
+      "service_account.updated": {
+        "id": "id",
+        "changes_requested": {
+          "role": "role"
+        }
+      },
+      "user.added": {
+        "id": "id",
+        "data": {
+          "role": "role"
+        }
+      },
+      "user.deleted": {
+        "id": "id"
+      },
+      "user.updated": {
+        "id": "id",
+        "changes_requested": {
+          "role": "role"
+        }
+      }
+    }
+  ],
+  "first_id": "audit_log-defb456h8dks",
+  "has_more": true,
+  "last_id": "audit_log-hnbkd8s93s",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/audit_logs \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "audit_log-xxx_yyyymmdd",
+            "type": "project.archived",
+            "effective_at": 1722461446,
+            "actor": {
+                "type": "api_key",
+                "api_key": {
+                    "type": "user",
+                    "user": {
+                        "id": "user-xxx",
+                        "email": "user@example.com"
+                    }
+                }
+            },
+            "project.archived": {
+                "id": "proj_abc"
+            },
+        },
+        {
+            "id": "audit_log-yyy__20240101",
+            "type": "api_key.updated",
+            "effective_at": 1720804190,
+            "actor": {
+                "type": "session",
+                "session": {
+                    "user": {
+                        "id": "user-xxx",
+                        "email": "user@example.com"
+                    },
+                    "ip_address": "127.0.0.1",
+                    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                    "ja3": "a497151ce4338a12c4418c44d375173e",
+                    "ja4": "q13d0313h3_55b375c5d22e_c7319ce65786",
+                    "ip_address_details": {
+                      "country": "US",
+                      "city": "San Francisco",
+                      "region": "California",
+                      "region_code": "CA",
+                      "asn": "1234",
+                      "latitude": "37.77490",
+                      "longitude": "-122.41940"
+                    }
+                }
+            },
+            "api_key.updated": {
+                "id": "key_xxxx",
+                "data": {
+                    "scopes": ["resource_2.operation_2"]
+                }
+            },
+        }
+    ],
+    "first_id": "audit_log-xxx__20240101",
+    "last_id": "audit_log_yyy__20240101",
+    "has_more": true
+}
 ```

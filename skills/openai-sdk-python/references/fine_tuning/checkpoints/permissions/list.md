@@ -1,4 +1,4 @@
-## List
+## List checkpoint permissions
 
 `fine_tuning.checkpoints.permissions.list(strfine_tuned_model_checkpoint, PermissionListParams**kwargs)  -> SyncConversationCursorPage[PermissionListResponse]`
 
@@ -70,4 +70,23 @@ page = client.fine_tuning.checkpoints.permissions.list(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
 ```

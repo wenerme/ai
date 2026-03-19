@@ -1,4 +1,4 @@
-## List
+## List invites
 
 **get** `/organization/invites`
 
@@ -101,4 +101,64 @@ Returns a list of invites in the organization.
 ```http
 curl https://api.openai.com/v1/organization/invites \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "email": "email",
+      "expires_at": 0,
+      "invited_at": 0,
+      "object": "organization.invite",
+      "role": "owner",
+      "status": "accepted",
+      "accepted_at": 0,
+      "projects": [
+        {
+          "id": "id",
+          "role": "member"
+        }
+      ]
+    }
+  ],
+  "object": "list",
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "organization.invite",
+      "id": "invite-abc",
+      "email": "user@example.com",
+      "role": "owner",
+      "status": "accepted",
+      "invited_at": 1711471533,
+      "expires_at": 1711471533,
+      "accepted_at": 1711471533
+    }
+  ],
+  "first_id": "invite-abc",
+  "last_id": "invite-abc",
+  "has_more": false
+}
 ```

@@ -1,4 +1,4 @@
-## Delete
+## Delete a model response
 
 `responses.delete(strresponse_id)`
 
@@ -22,4 +22,24 @@ client = OpenAI(
 client.responses.delete(
     "resp_677efb5139a88190b512bc3fef8e535d",
 )
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.delete("resp_123")
+print(response)
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_6786a1bec27481909a17d673315b29f6",
+  "object": "response",
+  "deleted": true
+}
 ```

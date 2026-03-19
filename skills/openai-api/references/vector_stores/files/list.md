@@ -1,4 +1,4 @@
-## List
+## List vector store files
 
 **get** `/vector_stores/{vector_store_id}/files`
 
@@ -106,11 +106,11 @@ Returns a list of vector store files.
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
@@ -160,4 +160,73 @@ Returns a list of vector store files.
 curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
 ```

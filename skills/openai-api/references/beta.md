@@ -18,11 +18,11 @@
 
     State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = boolean`
+    - `boolean`
 
-    - `UnionMember2 = number`
+    - `number`
 
   - `tracing: object { enabled }`
 
@@ -38,7 +38,7 @@
 
 # Sessions
 
-## Cancel
+## Cancel chat session
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
@@ -152,11 +152,11 @@ Cancelling prevents new requests from using the issued client secret.
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = boolean`
+      - `boolean`
 
-      - `UnionMember2 = number`
+      - `number`
 
     - `tracing: object { enabled }`
 
@@ -179,7 +179,77 @@ curl https://api.openai.com/v1/chatkit/sessions/$SESSION_ID/cancel \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST \
+  https://api.openai.com/v1/chatkit/sessions/cksess_123/cancel \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cksess_123",
+  "object": "chatkit.session",
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "1"
+  },
+  "scope": {
+    "customer_id": "cust_456"
+  },
+  "max_requests_per_1_minute": 30,
+  "ttl_seconds": 900,
+  "status": "cancelled",
+  "cancelled_at": 1712345678
+}
+```
+
+## Create ChatKit session
 
 **post** `/chatkit/sessions`
 
@@ -203,11 +273,11 @@ Create a ChatKit session.
 
     State variables forwarded to the workflow. Keys may be up to 64 characters, values must be primitive types, and the map defaults to an empty object.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = boolean`
+    - `boolean`
 
-    - `UnionMember2 = number`
+    - `number`
 
   - `tracing: optional object { enabled }`
 
@@ -385,11 +455,11 @@ Create a ChatKit session.
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = boolean`
+      - `boolean`
 
-      - `UnionMember2 = number`
+      - `number`
 
     - `tracing: object { enabled }`
 
@@ -418,9 +488,92 @@ curl https://api.openai.com/v1/chatkit/sessions \
         }'
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/sessions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -d '{
+    "workflow": {
+      "id": "workflow_alpha",
+      "version": "2024-10-01"
+    },
+    "scope": {
+      "project": "alpha",
+      "environment": "staging"
+    },
+    "expires_after": 1800,
+    "max_requests_per_1_minute": 60,
+    "max_requests_per_session": 500
+  }'
+```
+
+#### Response
+
+```json
+{
+  "client_secret": "chatkit_token_123",
+  "expires_at": 1735689600,
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "2024-10-01"
+  },
+  "scope": {
+    "project": "alpha",
+    "environment": "staging"
+  },
+  "max_requests_per_1_minute": 60,
+  "max_requests_per_session": 500,
+  "status": "active"
+}
+```
+
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 **get** `/chatkit/threads/{thread_id}/items`
 
@@ -860,7 +1013,90 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 **get** `/chatkit/threads/{thread_id}`
 
@@ -948,7 +1184,68 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 **delete** `/chatkit/threads/{thread_id}`
 
@@ -983,7 +1280,17 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+## List ChatKit threads
 
 **get** `/chatkit/threads`
 
@@ -1111,6 +1418,58 @@ curl https://api.openai.com/v1/chatkit/threads \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
 ## Domain Types
 
 ### Chat Session
@@ -1215,11 +1574,11 @@ curl https://api.openai.com/v1/chatkit/threads \
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = boolean`
+      - `boolean`
 
-      - `UnionMember2 = number`
+      - `number`
 
     - `tracing: object { enabled }`
 
@@ -1419,11 +1778,11 @@ curl https://api.openai.com/v1/chatkit/threads \
 
     State variables forwarded to the workflow. Keys may be up to 64 characters, values must be primitive types, and the map defaults to an empty object.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = boolean`
+    - `boolean`
 
-    - `UnionMember2 = number`
+    - `number`
 
   - `tracing: optional object { enabled }`
 
@@ -2241,7 +2600,7 @@ curl https://api.openai.com/v1/chatkit/threads \
 
 # Assistants
 
-## List
+## List assistants
 
 **get** `/assistants`
 
@@ -2398,7 +2757,7 @@ Returns a list of assistants.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -2507,7 +2866,119 @@ curl https://api.openai.com/v1/assistants \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "instructions": "instructions",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "assistant",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "response_format": "auto",
+      "temperature": 1,
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "string"
+          ]
+        },
+        "file_search": {
+          "vector_store_ids": [
+            "string"
+          ]
+        }
+      },
+      "top_p": 1
+    }
+  ],
+  "first_id": "asst_abc123",
+  "has_more": false,
+  "last_id": "asst_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "asst_abc123",
+      "object": "assistant",
+      "created_at": 1698982736,
+      "name": "Coding Tutor",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc456",
+      "object": "assistant",
+      "created_at": 1698982718,
+      "name": "My Assistant",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc789",
+      "object": "assistant",
+      "created_at": 1698982643,
+      "name": null,
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    }
+  ],
+  "first_id": "asst_abc123",
+  "last_id": "asst_abc789",
+  "has_more": false
+}
+```
+
+## Create assistant
 
 **post** `/assistants`
 
@@ -2519,7 +2990,7 @@ Create an assistant with a model and instructions.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -2665,7 +3136,7 @@ Create an assistant with a model and instructions.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -3016,7 +3487,7 @@ Create an assistant with a model and instructions.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -3123,7 +3594,125 @@ curl https://api.openai.com/v1/assistants \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Code Interpreter
+
+```http
+curl "https://api.openai.com/v1/assistants" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+    "name": "Math Tutor",
+    "tools": [{"type": "code_interpreter"}],
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+### Files
+
+```http
+curl https://api.openai.com/v1/assistants \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+    "tools": [{"type": "file_search"}],
+    "tool_resources": {"file_search": {"vector_store_ids": ["vs_123"]}},
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009403,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Retrieve assistant
 
 **get** `/assistants/{assistant_id}`
 
@@ -3264,7 +3853,7 @@ Retrieves an assistant.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -3365,7 +3954,76 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Modify assistant
 
 **post** `/assistants/{assistant_id}`
 
@@ -3398,7 +4056,7 @@ Modifies an assistant.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -3527,7 +4185,7 @@ Modifies an assistant.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -3827,7 +4485,7 @@ Modifies an assistant.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -3933,7 +4591,86 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+      "tools": [{"type": "file_search"}],
+      "model": "gpt-4o"
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": []
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Delete assistant
 
 **delete** `/assistants/{assistant_id}`
 
@@ -3962,6 +4699,36 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
     -X DELETE \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "assistant.deleted"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X DELETE
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -4097,7 +4864,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -4226,7 +4993,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
   in your code. See the [Assistants API quickstart](/docs/assistants/overview) to learn how to
   integrate the Assistants API with streaming.
 
-  - `UnionMember0 = object { data, event, enabled }`
+  - `object { data, event, enabled }`
 
     Occurs when a new [thread](/docs/api-reference/threads/object) is created.
 
@@ -4281,7 +5048,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       Whether to enable input audio transcription.
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
@@ -4432,7 +5199,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -4537,7 +5304,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -4687,7 +5454,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.created"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
@@ -4838,7 +5605,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -4943,7 +5710,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5093,7 +5860,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.queued"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
@@ -5244,7 +6011,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -5349,7 +6116,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5499,7 +6266,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.in_progress"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
@@ -5650,7 +6417,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -5755,7 +6522,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5905,7 +6672,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.requires_action"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
@@ -6056,7 +6823,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -6161,7 +6928,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -6311,7 +7078,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.completed"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
@@ -6462,7 +7229,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -6567,7 +7334,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -6717,7 +7484,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.incomplete"`
 
-  - `UnionMember7 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) fails.
 
@@ -6868,7 +7635,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -6973,7 +7740,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -7123,7 +7890,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.failed"`
 
-  - `UnionMember8 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
@@ -7274,7 +8041,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -7379,7 +8146,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -7529,7 +8296,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelling"`
 
-  - `UnionMember9 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
@@ -7680,7 +8447,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -7785,7 +8552,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -7935,7 +8702,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelled"`
 
-  - `UnionMember10 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) expires.
 
@@ -8086,7 +8853,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -8191,7 +8958,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -8341,7 +9108,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.expired"`
 
-  - `UnionMember11 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
@@ -8636,7 +9403,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.created"`
 
-  - `UnionMember12 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
@@ -8931,7 +9698,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.in_progress"`
 
-  - `UnionMember13 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
@@ -9109,7 +9876,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.delta"`
 
-  - `UnionMember14 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
@@ -9404,7 +10171,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.completed"`
 
-  - `UnionMember15 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
@@ -9699,7 +10466,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.failed"`
 
-  - `UnionMember16 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
@@ -9994,7 +10761,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.cancelled"`
 
-  - `UnionMember17 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
@@ -10289,7 +11056,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.expired"`
 
-  - `UnionMember18 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is created.
 
@@ -10542,7 +11309,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.created"`
 
-  - `UnionMember19 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
@@ -10795,7 +11562,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.in_progress"`
 
-  - `UnionMember20 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
@@ -10991,7 +11758,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.delta"`
 
-  - `UnionMember21 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
@@ -11244,7 +12011,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.completed"`
 
-  - `UnionMember22 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
@@ -11611,7 +12378,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a [message](/docs/api-reference/messages/object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is created.
 
@@ -11864,7 +12631,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
@@ -12117,7 +12884,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.in_progress"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
@@ -12313,7 +13080,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.delta"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
@@ -12566,7 +13333,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.completed"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
@@ -12825,7 +13592,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
@@ -13120,7 +13887,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
@@ -13415,7 +14182,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.in_progress"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
@@ -13593,7 +14360,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.delta"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
@@ -13888,7 +14655,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.completed"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
@@ -14183,7 +14950,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.failed"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
@@ -14478,7 +15245,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.cancelled"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
@@ -14779,7 +15546,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
@@ -14930,7 +15697,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -15035,7 +15802,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -15185,7 +15952,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
@@ -15336,7 +16103,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -15441,7 +16208,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -15591,7 +16358,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.queued"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
@@ -15742,7 +16509,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -15847,7 +16614,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -15997,7 +16764,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.in_progress"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
@@ -16148,7 +16915,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -16253,7 +17020,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -16403,7 +17170,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.requires_action"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
@@ -16554,7 +17321,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -16659,7 +17426,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -16809,7 +17576,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.completed"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
@@ -16960,7 +17727,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -17065,7 +17832,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -17215,7 +17982,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.incomplete"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) fails.
 
@@ -17366,7 +18133,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -17471,7 +18238,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -17621,7 +18388,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.failed"`
 
-  - `UnionMember7 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
@@ -17772,7 +18539,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -17877,7 +18644,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -18027,7 +18794,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelling"`
 
-  - `UnionMember8 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
@@ -18178,7 +18945,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -18283,7 +19050,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -18433,7 +19200,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelled"`
 
-  - `UnionMember9 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) expires.
 
@@ -18584,7 +19351,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -18689,7 +19456,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -18898,7 +19665,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
 # Threads
 
-## Create
+## Create thread
 
 **post** `/threads`
 
@@ -19166,7 +19933,84 @@ curl https://api.openai.com/v1/threads \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create And Run
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Empty
+
+```http
+curl https://api.openai.com/v1/threads \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d ''
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699012949,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+### Messages
+
+```http
+curl https://api.openai.com/v1/threads \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "OpenAI-Beta: assistants=v2" \
+-d '{
+    "messages": [{
+      "role": "user",
+      "content": "Hello, what is AI?"
+    }, {
+      "role": "user",
+      "content": "How does AI work? Explain it in simple terms."
+    }]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+## Create thread and run
 
 **post** `/threads/runs`
 
@@ -19203,9 +20047,9 @@ Create a thread and run it in one request.
 
   The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 35 more`
+  - `"gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 35 more`
 
     The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
 
@@ -19299,7 +20143,7 @@ Create a thread and run it in one request.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -19593,7 +20437,7 @@ Create a thread and run it in one request.
   `required` means the model must call one or more tools before responding to the user.
   Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-  - `UnionMember0 = "none" or "auto" or "required"`
+  - `"none" or "auto" or "required"`
 
     `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -19886,7 +20730,7 @@ Create a thread and run it in one request.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -19991,7 +20835,7 @@ Create a thread and run it in one request.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -20151,7 +20995,283 @@ curl https://api.openai.com/v1/threads/runs \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "assistant_id": "asst_abc123",
+      "thread": {
+        "messages": [
+          {"role": "user", "content": "Explain deep learning to a 5 year old."}
+        ]
+      }
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699076792,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "queued",
+  "started_at": null,
+  "expires_at": 1699077392,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "You are a helpful assistant.",
+  "tools": [],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/threads/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_123",
+    "thread": {
+      "messages": [
+        {"role": "user", "content": "Hello"}
+      ]
+    },
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: thread.created
+data: {"id":"thread_123","object":"thread","created_at":1710348075,"metadata":{}}
+
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[], "metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[], "metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710348077,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}], "metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+{"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: done
+data: [DONE]
+```
+
+### Streaming with Functions
+
+```http
+curl https://api.openai.com/v1/threads/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_abc123",
+    "thread": {
+      "messages": [
+        {"role": "user", "content": "What is the weather like in San Francisco?"}
+      ]
+    },
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_weather",
+          "description": "Get the current weather in a given location",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city and state, e.g. San Francisco, CA"
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["celsius", "fahrenheit"]
+              }
+            },
+            "required": ["location"]
+          }
+        }
+      }
+    ],
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: thread.created
+data: {"id":"thread_123","object":"thread","created_at":1710351818,"metadata":{}}
+
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"","output":null}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"{\""}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"location"}}]}}}
+
+...
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"ahrenheit"}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"\"}"}}]}}}
+
+event: thread.run.requires_action
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Retrieve thread
 
 **get** `/threads/{thread_id}`
 
@@ -20214,7 +21334,57 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": []
+    }
+  }
+}
+```
+
+## Modify thread
 
 **post** `/threads/{thread_id}`
 
@@ -20306,7 +21476,62 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
     -d '{}'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "metadata": {
+        "modified": "true",
+        "user": "abc123"
+      }
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  },
+  "tool_resources": {}
+}
+```
+
+## Delete thread
 
 **delete** `/threads/{thread_id}`
 
@@ -20337,6 +21562,36 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.deleted"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X DELETE
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread.deleted",
+  "deleted": true
+}
+```
+
 ## Domain Types
 
 ### Assistant Response Format Option
@@ -20351,7 +21606,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -20458,7 +21713,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
   `required` means the model must call one or more tools before responding to the user.
   Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-  - `UnionMember0 = "none" or "auto" or "required"`
+  - `"none" or "auto" or "required"`
 
     `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -20547,7 +21802,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
 
 # Runs
 
-## List
+## List runs
 
 **get** `/threads/{thread_id}/runs`
 
@@ -20726,7 +21981,7 @@ Returns a list of runs belonging to a thread.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -20831,7 +22086,7 @@ Returns a list of runs belonging to a thread.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -20993,7 +22248,197 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "cancelled_at": 0,
+      "completed_at": 0,
+      "created_at": 0,
+      "expires_at": 0,
+      "failed_at": 0,
+      "incomplete_details": {
+        "reason": "max_completion_tokens"
+      },
+      "instructions": "instructions",
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "max_completion_tokens": 256,
+      "max_prompt_tokens": 256,
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "object": "thread.run",
+      "parallel_tool_calls": true,
+      "required_action": {
+        "submit_tool_outputs": {
+          "tool_calls": [
+            {
+              "id": "id",
+              "function": {
+                "arguments": "arguments",
+                "name": "name"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        "type": "submit_tool_outputs"
+      },
+      "response_format": "auto",
+      "started_at": 0,
+      "status": "queued",
+      "thread_id": "thread_id",
+      "tool_choice": "none",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": 1
+      },
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      },
+      "temperature": 0,
+      "top_p": 0
+    }
+  ],
+  "first_id": "run_abc123",
+  "has_more": false,
+  "last_id": "run_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "run_abc123",
+      "object": "thread.run",
+      "created_at": 1699075072,
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "status": "completed",
+      "started_at": 1699075072,
+      "expires_at": null,
+      "cancelled_at": null,
+      "failed_at": null,
+      "completed_at": 1699075073,
+      "last_error": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "incomplete_details": null,
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "file-abc123",
+            "file-abc456"
+          ]
+        }
+      },
+      "metadata": {},
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      },
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_prompt_tokens": 1000,
+      "max_completion_tokens": 1000,
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": null
+      },
+      "response_format": "auto",
+      "tool_choice": "auto",
+      "parallel_tool_calls": true
+    },
+    {
+      "id": "run_abc456",
+      "object": "thread.run",
+      "created_at": 1699063290,
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "status": "completed",
+      "started_at": 1699063290,
+      "expires_at": null,
+      "cancelled_at": null,
+      "failed_at": null,
+      "completed_at": 1699063291,
+      "last_error": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "incomplete_details": null,
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "file-abc123",
+            "file-abc456"
+          ]
+        }
+      },
+      "metadata": {},
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      },
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_prompt_tokens": 1000,
+      "max_completion_tokens": 1000,
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": null
+      },
+      "response_format": "auto",
+      "tool_choice": "auto",
+      "parallel_tool_calls": true
+    }
+  ],
+  "first_id": "run_abc123",
+  "last_id": "run_abc456",
+  "has_more": false
+}
+```
+
+## Create run
 
 **post** `/threads/{thread_id}/runs`
 
@@ -21178,7 +22623,7 @@ Create a run.
 
   The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -21307,7 +22752,7 @@ Create a run.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -21390,7 +22835,7 @@ Create a run.
   `required` means the model must call one or more tools before responding to the user.
   Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-  - `UnionMember0 = "none" or "auto" or "required"`
+  - `"none" or "auto" or "required"`
 
     `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -21667,7 +23112,7 @@ Create a run.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -21772,7 +23217,7 @@ Create a run.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -21932,7 +23377,270 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699063290,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "queued",
+  "started_at": 1699063290,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699063291,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/threads/thread_123/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_123",
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710330642,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710330642,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+### Streaming with Functions
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_abc123",
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_weather",
+          "description": "Get the current weather in a given location",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city and state, e.g. San Francisco, CA"
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["celsius", "fahrenheit"]
+              }
+            },
+            "required": ["location"]
+          }
+        }
+      }
+    ],
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710348077,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Retrieve run
 
 **get** `/threads/{thread_id}/runs/{run_id}`
 
@@ -22093,7 +23801,7 @@ Retrieves a run.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -22198,7 +23906,7 @@ Retrieves a run.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -22352,7 +24060,125 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699075072,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "started_at": 1699075072,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699075073,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+## Modify run
 
 **post** `/threads/{thread_id}/runs/{run_id}`
 
@@ -22524,7 +24350,7 @@ Modifies a run.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -22629,7 +24455,7 @@ Modifies a run.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -22785,7 +24611,141 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID \
     -d '{}'
 ```
 
-## Submit Tool Outputs
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "metadata": {
+      "user_id": "user_abc123"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699075072,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "started_at": 1699075072,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699075073,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "file-abc123",
+        "file-abc456"
+      ]
+    }
+  },
+  "metadata": {
+    "user_id": "user_abc123"
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+## Submit tool outputs to run
 
 **post** `/threads/{thread_id}/runs/{run_id}/submit_tool_outputs`
 
@@ -22964,7 +24924,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -23069,7 +25029,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -23229,7 +25189,219 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/submit_tool_outpu
         }'
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_123/runs/run_123/submit_tool_outputs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "tool_outputs": [
+      {
+        "tool_call_id": "call_001",
+        "output": "70 degrees and sunny."
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "run_123",
+  "object": "thread.run",
+  "created_at": 1699075592,
+  "assistant_id": "asst_123",
+  "thread_id": "thread_123",
+  "status": "queued",
+  "started_at": 1699075592,
+  "expires_at": 1699076192,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"]
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    }
+  ],
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/threads/thread_123/runs/run_123/submit_tool_outputs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "tool_outputs": [
+      {
+        "tool_call_id": "call_001",
+        "output": "70 degrees and sunny."
+      }
+    ],
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710352449,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"completed","cancelled_at":null,"completed_at":1710352475,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[{"id":"call_iWr0kQ2EaYMaxNdl0v3KYkx7","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}","output":"70 degrees and sunny."}}]},"usage":{"prompt_tokens":291,"completion_tokens":24,"total_tokens":315}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"The","annotations":[]}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" current"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" weather"}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" sunny"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"."}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710352477,"role":"assistant","content":[{"type":"text","text":{"value":"The current weather in San Francisco, CA is 70 degrees Fahrenheit and sunny.","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710352477,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":{"prompt_tokens":329,"completion_tokens":18,"total_tokens":347}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Cancel a run
 
 **post** `/threads/{thread_id}/runs/{run_id}/cancel`
 
@@ -23390,7 +25562,7 @@ Cancels a run that is `in_progress`.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -23495,7 +25667,7 @@ Cancels a run that is `in_progress`.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -23648,6 +25820,119 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/cancel \
     -X POST \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X POST
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699076126,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "cancelling",
+  "started_at": 1699076126,
+  "expires_at": 1699076726,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "You summarize books.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
 ```
 
 ## Domain Types
@@ -23829,7 +26114,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/cancel \
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -23934,7 +26219,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/cancel \
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `UnionMember0 = "none" or "auto" or "required"`
+    - `"none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -24082,7 +26367,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/cancel \
 
 # Steps
 
-## List
+## List run steps
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
@@ -24427,7 +26712,100 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "cancelled_at": 0,
+      "completed_at": 0,
+      "created_at": 0,
+      "expired_at": 0,
+      "failed_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.run.step",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "step_details": {
+        "message_creation": {
+          "message_id": "message_id"
+        },
+        "type": "message_creation"
+      },
+      "thread_id": "thread_id",
+      "type": "message_creation",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  ],
+  "first_id": "step_abc123",
+  "has_more": false,
+  "last_id": "step_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "step_abc123",
+      "object": "thread.run.step",
+      "created_at": 1699063291,
+      "run_id": "run_abc123",
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "type": "message_creation",
+      "status": "completed",
+      "cancelled_at": null,
+      "completed_at": 1699063291,
+      "expired_at": null,
+      "failed_at": null,
+      "last_error": null,
+      "step_details": {
+        "type": "message_creation",
+        "message_creation": {
+          "message_id": "msg_abc123"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      }
+    }
+  ],
+  "first_id": "step_abc123",
+  "last_id": "step_abc456",
+  "has_more": false
+}
+```
+
+## Retrieve run step
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
@@ -24746,6 +27124,83 @@ Retrieves a run step.
 curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps/$STEP_ID \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expired_at": 0,
+  "failed_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.run.step",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "step_details": {
+    "message_creation": {
+      "message_id": "message_id"
+    },
+    "type": "message_creation"
+  },
+  "thread_id": "thread_id",
+  "type": "message_creation",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "step_abc123",
+  "object": "thread.run.step",
+  "created_at": 1699063291,
+  "run_id": "run_abc123",
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "type": "message_creation",
+  "status": "completed",
+  "cancelled_at": null,
+  "completed_at": 1699063291,
+  "expired_at": null,
+  "failed_at": null,
+  "last_error": null,
+  "step_details": {
+    "type": "message_creation",
+    "message_creation": {
+      "message_id": "msg_abc123"
+    }
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  }
+}
 ```
 
 ## Domain Types
@@ -25863,7 +28318,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps/$STEP_ID \
 
 # Messages
 
-## List
+## List messages
 
 **get** `/threads/{thread_id}/messages`
 
@@ -26160,7 +28615,119 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "attachments": [
+        {
+          "file_id": "file_id",
+          "tools": [
+            {
+              "type": "code_interpreter"
+            }
+          ]
+        }
+      ],
+      "completed_at": 0,
+      "content": [
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
+      ],
+      "created_at": 0,
+      "incomplete_at": 0,
+      "incomplete_details": {
+        "reason": "content_filter"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.message",
+      "role": "user",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "thread_id": "thread_id"
+    }
+  ],
+  "first_id": "msg_abc123",
+  "has_more": false,
+  "last_id": "msg_abc123",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/messages \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "How does AI work? Explain it in simple terms.",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    },
+    {
+      "id": "msg_abc456",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "Hello, what is AI?",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc456",
+  "has_more": false
+}
+```
+
+## Create message
 
 **post** `/threads/{thread_id}/messages`
 
@@ -26558,7 +29125,87 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
         }'
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/messages \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "role": "user",
+      "content": "How does AI work? Explain it in simple terms."
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1713226573,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Modify message
 
 **post** `/threads/{thread_id}/messages/{message_id}`
 
@@ -26838,7 +29485,92 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
     -d '{}'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "metadata": {
+        "modified": "true",
+        "user": "abc123"
+      }
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "file_ids": [],
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  }
+}
+```
+
+## Retrieve message
 
 **get** `/threads/{thread_id}/messages/{message_id}`
 
@@ -27105,7 +29837,83 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Delete message
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
@@ -27136,6 +29944,35 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
     -X DELETE \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types

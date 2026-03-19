@@ -1,6 +1,6 @@
 # Files
 
-## List
+## List files
 
 `client.files.list(FileListParamsquery?, RequestOptionsoptions?): CursorPage<FileObject>`
 
@@ -113,7 +113,80 @@ for await (const fileObject of client.files.list()) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "created_at": 0,
+      "filename": "filename",
+      "object": "file",
+      "purpose": "assistants",
+      "status": "uploaded",
+      "expires_at": 0,
+      "status_details": "status_details"
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.files.list();
+
+  for await (const file of list) {
+    console.log(file);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "file",
+      "bytes": 175,
+      "created_at": 1613677385,
+      "expires_at": 1677614202,
+      "filename": "salesOverview.pdf",
+      "purpose": "assistants",
+    },
+    {
+      "id": "file-abc456",
+      "object": "file",
+      "bytes": 140,
+      "created_at": 1613779121,
+      "expires_at": 1677614202,
+      "filename": "puppy.jsonl",
+      "purpose": "fine-tune",
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```
+
+## Upload file
 
 `client.files.create(FileCreateParamsbody, RequestOptionsoptions?): FileObject`
 
@@ -265,7 +338,61 @@ const fileObject = await client.files.create({
 console.log(fileObject.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```typescript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.create({
+    file: fs.createReadStream("mydata.jsonl"),
+    purpose: "fine-tune",
+    expires_after: {
+      anchor: "created_at",
+      seconds: 2592000
+    }
+  });
+
+  console.log(file);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Delete file
 
 `client.files.delete(stringfileID, RequestOptionsoptions?): FileDeleted`
 
@@ -303,7 +430,43 @@ const fileDeleted = await client.files.delete('file_id');
 console.log(fileDeleted.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "file"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.delete("file-abc123");
+
+  console.log(file);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "deleted": true
+}
+```
+
+## Retrieve file
 
 `client.files.retrieve(stringfileID, RequestOptionsoptions?): FileObject`
 
@@ -395,7 +558,53 @@ const fileObject = await client.files.retrieve('file_id');
 console.log(fileObject.id);
 ```
 
-## Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.retrieve("file-abc123");
+
+  console.log(file);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Retrieve file content
 
 `client.files.content(stringfileID, RequestOptionsoptions?): Response`
 
@@ -426,6 +635,22 @@ console.log(response);
 
 const content = await response.blob();
 console.log(content);
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.content("file-abc123");
+
+  console.log(file);
+}
+
+main();
 ```
 
 ## Domain Types

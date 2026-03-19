@@ -1,4 +1,4 @@
-## Update
+## Update organization role
 
 **post** `/organization/roles/{role_id}`
 
@@ -61,4 +61,53 @@ curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_name": "API Group Manager",
+      "permissions": [
+          "api.groups.read",
+          "api.groups.write"
+      ],
+      "description": "Allows managing organization groups"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "description": "Allows managing organization groups",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false
+}
 ```

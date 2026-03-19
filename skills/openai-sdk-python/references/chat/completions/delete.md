@@ -1,4 +1,4 @@
-## Delete
+## Delete chat completion
 
 `chat.completions.delete(strcompletion_id)  -> ChatCompletionDeleted`
 
@@ -42,4 +42,36 @@ chat_completion_deleted = client.chat.completions.delete(
     "completion_id",
 )
 print(chat_completion_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chat.completion.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+completions = client.chat.completions.list()
+first_id = completions[0].id
+delete_response = client.chat.completions.delete(completion_id=first_id)
+print(delete_response)
+```
+
+#### Response
+
+```json
+{
+  "object": "chat.completion.deleted",
+  "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
+  "deleted": true
+}
 ```

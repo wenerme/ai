@@ -1,4 +1,4 @@
-## Archive
+## Archive project
 
 **post** `/organization/projects/{project_id}/archive`
 
@@ -50,4 +50,38 @@ Archives a project in the organization. Archived projects cannot be used or upda
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "proj_abc",
+    "object": "organization.project",
+    "name": "Project DEF",
+    "created_at": 1711471533,
+    "archived_at": 1711471533,
+    "status": "archived"
+}
 ```

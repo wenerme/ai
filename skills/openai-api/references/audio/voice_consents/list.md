@@ -1,4 +1,4 @@
-## List
+## List voice consents
 
 **get** `/audio/voice_consents`
 
@@ -55,4 +55,31 @@ Returns a list of voice consent recordings.
 ```http
 curl https://api.openai.com/v1/audio/voice_consents \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cons_1234",
+      "created_at": 0,
+      "language": "language",
+      "name": "name",
+      "object": "audio.voice_consent"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

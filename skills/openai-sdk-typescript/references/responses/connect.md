@@ -1,4 +1,4 @@
-## Connect
+## 
 
 `client.responses.connect(RequestOptionsoptions?): void`
 

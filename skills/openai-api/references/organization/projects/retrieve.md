@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve project
 
 **get** `/organization/projects/{project_id}`
 
@@ -49,4 +49,38 @@ Retrieves a project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "proj_abc",
+    "object": "organization.project",
+    "name": "Project example",
+    "created_at": 1711471533,
+    "archived_at": null,
+    "status": "active"
+}
 ```

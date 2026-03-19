@@ -1,4 +1,4 @@
-## Create
+## Create container
 
 **post** `/containers`
 
@@ -213,4 +213,77 @@ curl https://api.openai.com/v1/containers \
     -d '{
           "name": "name"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "My Container",
+        "memory_limit": "4g",
+        "skills": [
+          {
+            "type": "skill_reference",
+            "skill_id": "skill_4db6f1a2c9e73508b41f9da06e2c7b5f"
+          },
+          {
+            "type": "skill_reference",
+            "skill_id": "openai-spreadsheets",
+            "version": "latest"
+          }
+        ],
+        "network_policy": {
+          "type": "allowlist",
+          "allowed_domains": ["api.buildkite.com"]
+        }
+      }'
+```
+
+#### Response
+
+```json
+{
+    "id": "cntr_682e30645a488191b6363a0cbefc0f0a025ec61b66250591",
+    "object": "container",
+    "created_at": 1747857508,
+    "status": "running",
+    "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 20
+    },
+    "last_active_at": 1747857508,
+    "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": ["api.buildkite.com"]
+    },
+    "memory_limit": "4g",
+    "name": "My Container"
+}
 ```

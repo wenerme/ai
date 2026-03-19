@@ -1,4 +1,4 @@
-## Content
+## Retrieve vector store file content
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}/content`
 
@@ -44,4 +44,42 @@ Retrieve the parsed contents of a vector store file.
 curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files/$FILE_ID/content \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "text": "text",
+      "type": "type"
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.file_content.page"
+}
+```
+
+### Example
+
+```http
+curl \
+https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
+-H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "file_id": "file-abc123",
+  "filename": "example.txt",
+  "attributes": {"key": "value"},
+  "content": [
+    {"type": "text", "text": "..."},
+    ...
+  ]
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create container file
 
 `client.containers.files.create(stringcontainerID, FileCreateParamsbody, RequestOptionsoptions?): FileCreateResponse`
 
@@ -68,4 +68,18 @@ const client = new OpenAI({
 const file = await client.containers.files.create('container_id');
 
 console.log(file.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create assistant
 
 **post** `/assistants`
 
@@ -10,7 +10,7 @@ Create an assistant with a model and instructions.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -156,7 +156,7 @@ Create an assistant with a model and instructions.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -507,7 +507,7 @@ Create an assistant with a model and instructions.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -612,4 +612,122 @@ curl https://api.openai.com/v1/assistants \
           "temperature": 1,
           "top_p": 1
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Code Interpreter
+
+```http
+curl "https://api.openai.com/v1/assistants" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+    "name": "Math Tutor",
+    "tools": [{"type": "code_interpreter"}],
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+### Files
+
+```http
+curl https://api.openai.com/v1/assistants \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+    "tools": [{"type": "file_search"}],
+    "tool_resources": {"file_search": {"vector_store_ids": ["vs_123"]}},
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009403,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
 ```

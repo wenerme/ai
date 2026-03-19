@@ -1,4 +1,4 @@
-## Delete
+## Delete vector store file
 
 `client.vectorStores.files.delete(stringfileID, FileDeleteParamsparams, RequestOptionsoptions?): VectorStoreFileDeleted`
 
@@ -42,4 +42,41 @@ const vectorStoreFileDeleted = await client.vectorStores.files.delete('file_id',
 });
 
 console.log(vectorStoreFileDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.file.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const deletedVectorStoreFile = await openai.vectorStores.files.delete(
+    "file-abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(deletedVectorStoreFile);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  id: "file-abc123",
+  object: "vector_store.file.deleted",
+  deleted: true
+}
 ```

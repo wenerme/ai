@@ -1,4 +1,4 @@
-## Content
+## Retrieve file content
 
 `files.content(strfile_id)  -> BinaryResponseContent`
 
@@ -29,4 +29,13 @@ response = client.files.content(
 print(response)
 content = response.read()
 print(content)
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+content = client.files.content("file-abc123")
 ```

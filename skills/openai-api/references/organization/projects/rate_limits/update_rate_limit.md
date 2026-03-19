@@ -1,4 +1,4 @@
-## Update Rate Limit
+## Modify project rate limit
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
@@ -83,4 +83,44 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "max_requests_per_1_minute": 0,
+  "max_tokens_per_1_minute": 0,
+  "model": "model",
+  "object": "project.rate_limit",
+  "batch_1_day_max_input_tokens": 0,
+  "max_audio_megabytes_per_1_minute": 0,
+  "max_images_per_1_minute": 0,
+  "max_requests_per_1_day": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limits/rl_xxx \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "max_requests_per_1_minute": 500
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.rate_limit",
+    "id": "rl-ada",
+    "model": "ada",
+    "max_requests_per_1_minute": 600,
+    "max_tokens_per_1_minute": 150000,
+    "max_images_per_1_minute": 10
+  }
 ```

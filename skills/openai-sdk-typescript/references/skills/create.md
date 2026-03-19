@@ -1,4 +1,4 @@
-## Create
+## Create a new skill.
 
 `client.skills.create(SkillCreateParamsbody?, RequestOptionsoptions?): Skill`
 
@@ -64,4 +64,18 @@ const client = new OpenAI({
 const skill = await client.skills.create();
 
 console.log(skill.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

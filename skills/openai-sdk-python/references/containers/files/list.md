@@ -1,4 +1,4 @@
-## List
+## List container files
 
 `containers.files.list(strcontainer_id, FileListParams**kwargs)  -> SyncCursorPage[FileListResponse]`
 
@@ -74,4 +74,26 @@ page = client.containers.files.list(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "container.file",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
 ```

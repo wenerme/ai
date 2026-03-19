@@ -38,7 +38,7 @@
 
 # Sessions
 
-## Cancel
+## Cancel chat session
 
 `client.beta.chatkit.sessions.cancel(stringsessionID, RequestOptionsoptions?): ChatSession`
 
@@ -186,7 +186,80 @@ const chatSession = await client.beta.chatkit.sessions.cancel('cksess_123');
 console.log(chatSession.id);
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const chatSession = await client.beta.chatkit.sessions.cancel('cksess_123');
+
+console.log(chatSession.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "cksess_123",
+  "object": "chatkit.session",
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "1"
+  },
+  "scope": {
+    "customer_id": "cust_456"
+  },
+  "max_requests_per_1_minute": 30,
+  "ttl_seconds": 900,
+  "status": "cancelled",
+  "cancelled_at": 1712345678
+}
+```
+
+## Create ChatKit session
 
 `client.beta.chatkit.sessions.create(SessionCreateParamsbody, RequestOptionsoptions?): ChatSession`
 
@@ -431,9 +504,82 @@ const chatSession = await client.beta.chatkit.sessions.create({
 console.log(chatSession.id);
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const chatSession = await client.beta.chatkit.sessions.create({ user: 'user', workflow: { id: 'id' } });
+
+console.log(chatSession.id);
+```
+
+#### Response
+
+```json
+{
+  "client_secret": "chatkit_token_123",
+  "expires_at": 1735689600,
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "2024-10-01"
+  },
+  "scope": {
+    "project": "alpha",
+    "environment": "staging"
+  },
+  "max_requests_per_1_minute": 60,
+  "max_requests_per_session": 500,
+  "status": "active"
+}
+```
+
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 `client.beta.chatkit.threads.listItems(stringthreadID, ThreadListItemsParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ChatKitThreadUserMessageItem | ChatKitThreadAssistantMessageItem | ChatKitWidgetItem | 3 more>`
 
@@ -860,7 +1006,95 @@ for await (const thread of client.beta.chatkit.threads.listItems('cthr_123')) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const thread of client.beta.chatkit.threads.listItems('cthr_123')) {
+  console.log(thread);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 `client.beta.chatkit.threads.retrieve(stringthreadID, RequestOptionsoptions?): ChatKitThread`
 
@@ -956,7 +1190,72 @@ const chatkitThread = await client.beta.chatkit.threads.retrieve('cthr_123');
 console.log(chatkitThread.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const chatkitThread = await client.beta.chatkit.threads.retrieve('cthr_123');
+
+console.log(chatkitThread.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 `client.beta.chatkit.threads.delete(stringthreadID, RequestOptionsoptions?): ThreadDeleteResponse`
 
@@ -1002,7 +1301,29 @@ const thread = await client.beta.chatkit.threads.delete('cthr_123');
 console.log(thread.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const thread = await client.beta.chat_kit.threads.delete('cthr_123');
+
+console.log(thread.id);
+```
+
+## List ChatKit threads
 
 `client.beta.chatkit.threads.list(ThreadListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ChatKitThread>`
 
@@ -1120,6 +1441,63 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const chatkitThread of client.beta.chatkit.threads.list()) {
   console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const chatkitThread of client.beta.chatkit.threads.list()) {
+  console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
 }
 ```
 
@@ -2253,7 +2631,7 @@ for await (const chatkitThread of client.beta.chatkit.threads.list()) {
 
 # Assistants
 
-## List
+## List assistants
 
 `client.beta.assistants.list(AssistantListParamsquery?, RequestOptionsoptions?): CursorPage<Assistant>`
 
@@ -2522,7 +2900,129 @@ for await (const assistant of client.beta.assistants.list()) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "instructions": "instructions",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "assistant",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "response_format": "auto",
+      "temperature": 1,
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "string"
+          ]
+        },
+        "file_search": {
+          "vector_store_ids": [
+            "string"
+          ]
+        }
+      },
+      "top_p": 1
+    }
+  ],
+  "first_id": "asst_abc123",
+  "has_more": false,
+  "last_id": "asst_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myAssistants = await openai.beta.assistants.list({
+    order: "desc",
+    limit: "20",
+  });
+
+  console.log(myAssistants.data);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "asst_abc123",
+      "object": "assistant",
+      "created_at": 1698982736,
+      "name": "Coding Tutor",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc456",
+      "object": "assistant",
+      "created_at": 1698982718,
+      "name": "My Assistant",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc789",
+      "object": "assistant",
+      "created_at": 1698982643,
+      "name": null,
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    }
+  ],
+  "first_id": "asst_abc123",
+  "last_id": "asst_abc789",
+  "has_more": false
+}
+```
+
+## Create assistant
 
 `client.beta.assistants.create(AssistantCreateParamsbody, RequestOptionsoptions?): Assistant`
 
@@ -3208,7 +3708,144 @@ const assistant = await client.beta.assistants.create({ model: 'gpt-4o' });
 console.log(assistant.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Code Interpreter
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myAssistant = await openai.beta.assistants.create({
+    instructions:
+      "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+    name: "Math Tutor",
+    tools: [{ type: "code_interpreter" }],
+    model: "gpt-4o",
+  });
+
+  console.log(myAssistant);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+### Files
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myAssistant = await openai.beta.assistants.create({
+    instructions:
+      "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+    name: "HR Helper",
+    tools: [{ type: "file_search" }],
+    tool_resources: {
+      file_search: {
+        vector_store_ids: ["vs_123"]
+      }
+    },
+    model: "gpt-4o"
+  });
+
+  console.log(myAssistant);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009403,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Retrieve assistant
 
 `client.beta.assistants.retrieve(stringassistantID, RequestOptionsoptions?): Assistant`
 
@@ -3456,7 +4093,85 @@ const assistant = await client.beta.assistants.retrieve('assistant_id');
 console.log(assistant.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myAssistant = await openai.beta.assistants.retrieve(
+    "asst_abc123"
+  );
+
+  console.log(myAssistant);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Modify assistant
 
 `client.beta.assistants.update(stringassistantID, AssistantUpdateParamsbody, RequestOptionsoptions?): Assistant`
 
@@ -4021,7 +4736,97 @@ const assistant = await client.beta.assistants.update('assistant_id');
 console.log(assistant.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myUpdatedAssistant = await openai.beta.assistants.update(
+    "asst_abc123",
+    {
+      instructions:
+        "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+      name: "HR Helper",
+      tools: [{ type: "file_search" }],
+      model: "gpt-4o"
+    }
+  );
+
+  console.log(myUpdatedAssistant);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": []
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Delete assistant
 
 `client.beta.assistants.delete(stringassistantID, RequestOptionsoptions?): AssistantDeleted`
 
@@ -4057,6 +4862,41 @@ const client = new OpenAI({
 const assistantDeleted = await client.beta.assistants.delete('assistant_id');
 
 console.log(assistantDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "assistant.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const response = await openai.beta.assistants.delete("asst_abc123");
+
+  console.log(response);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -18975,7 +19815,7 @@ console.log(assistantDeleted.id);
 
 # Threads
 
-## Create
+## Create thread
 
 `client.beta.threads.create(ThreadCreateParamsbody?, RequestOptionsoptions?): Thread`
 
@@ -19248,7 +20088,99 @@ const thread = await client.beta.threads.create();
 console.log(thread.id);
 ```
 
-## Create And Run
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Empty
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const emptyThread = await openai.beta.threads.create();
+
+  console.log(emptyThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699012949,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+### Messages
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const messageThread = await openai.beta.threads.create({
+    messages: [
+      {
+        role: "user",
+        content: "Hello, what is AI?"
+      },
+      {
+        role: "user",
+        content: "How does AI work? Explain it in simple terms.",
+      },
+    ],
+  });
+
+  console.log(messageThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+## Create thread and run
 
 `client.beta.threads.createAndRun(ThreadCreateAndRunParamsbody, RequestOptionsoptions?): Run | Stream<AssistantStreamEvent>`
 
@@ -20323,7 +21255,304 @@ const run = await client.beta.threads.createAndRun({ assistant_id: 'assistant_id
 console.log(run.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.createAndRun({
+    assistant_id: "asst_abc123",
+    thread: {
+      messages: [
+        { role: "user", content: "Explain deep learning to a 5 year old." },
+      ],
+    },
+  });
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699076792,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "queued",
+  "started_at": null,
+  "expires_at": 1699077392,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "You are a helpful assistant.",
+  "tools": [],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const stream = await openai.beta.threads.createAndRun({
+      assistant_id: "asst_123",
+      thread: {
+        messages: [
+          { role: "user", content: "Hello" },
+        ],
+      },
+      stream: true
+  });
+
+  for await (const event of stream) {
+    console.log(event);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+event: thread.created
+data: {"id":"thread_123","object":"thread","created_at":1710348075,"metadata":{}}
+
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[], "metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[], "metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710348077,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}], "metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+{"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+
+event: done
+data: [DONE]
+```
+
+### Streaming with Functions
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const tools = [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA",
+            },
+            "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+          },
+          "required": ["location"],
+        },
+      }
+    }
+];
+
+async function main() {
+  const stream = await openai.beta.threads.createAndRun({
+    assistant_id: "asst_123",
+    thread: {
+      messages: [
+        { role: "user", content: "What is the weather like in San Francisco?" },
+      ],
+    },
+    tools: tools,
+    stream: true
+  });
+
+  for await (const event of stream) {
+    console.log(event);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+event: thread.created
+data: {"id":"thread_123","object":"thread","created_at":1710351818,"metadata":{}}
+
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"","output":null}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"{\""}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"location"}}]}}}
+
+...
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"ahrenheit"}}]}}}
+
+event: thread.run.step.delta
+data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"\"}"}}]}}}
+
+event: thread.run.requires_action
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Retrieve thread
 
 `client.beta.threads.retrieve(stringthreadID, RequestOptionsoptions?): Thread`
 
@@ -20394,7 +21623,66 @@ const thread = await client.beta.threads.retrieve('thread_id');
 console.log(thread.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myThread = await openai.beta.threads.retrieve(
+    "thread_abc123"
+  );
+
+  console.log(myThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": []
+    }
+  }
+}
+```
+
+## Modify thread
 
 `client.beta.threads.update(stringthreadID, ThreadUpdateParamsbody, RequestOptionsoptions?): Thread`
 
@@ -20492,7 +21780,68 @@ const thread = await client.beta.threads.update('thread_id');
 console.log(thread.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const updatedThread = await openai.beta.threads.update(
+    "thread_abc123",
+    {
+      metadata: { modified: "true", user: "abc123" },
+    }
+  );
+
+  console.log(updatedThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  },
+  "tool_resources": {}
+}
+```
+
+## Delete thread
 
 `client.beta.threads.delete(stringthreadID, RequestOptionsoptions?): ThreadDeleted`
 
@@ -20528,6 +21877,41 @@ const client = new OpenAI({
 const threadDeleted = await client.beta.threads.delete('thread_id');
 
 console.log(threadDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const response = await openai.beta.threads.delete("thread_abc123");
+
+  console.log(response);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -20736,7 +22120,7 @@ console.log(threadDeleted.id);
 
 # Runs
 
-## List
+## List runs
 
 `client.beta.threads.runs.list(stringthreadID, RunListParamsquery?, RequestOptionsoptions?): CursorPage<Run>`
 
@@ -21181,7 +22565,206 @@ for await (const run of client.beta.threads.runs.list('thread_id')) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "cancelled_at": 0,
+      "completed_at": 0,
+      "created_at": 0,
+      "expires_at": 0,
+      "failed_at": 0,
+      "incomplete_details": {
+        "reason": "max_completion_tokens"
+      },
+      "instructions": "instructions",
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "max_completion_tokens": 256,
+      "max_prompt_tokens": 256,
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "object": "thread.run",
+      "parallel_tool_calls": true,
+      "required_action": {
+        "submit_tool_outputs": {
+          "tool_calls": [
+            {
+              "id": "id",
+              "function": {
+                "arguments": "arguments",
+                "name": "name"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        "type": "submit_tool_outputs"
+      },
+      "response_format": "auto",
+      "started_at": 0,
+      "status": "queued",
+      "thread_id": "thread_id",
+      "tool_choice": "none",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": 1
+      },
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      },
+      "temperature": 0,
+      "top_p": 0
+    }
+  ],
+  "first_id": "run_abc123",
+  "has_more": false,
+  "last_id": "run_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const runs = await openai.beta.threads.runs.list(
+    "thread_abc123"
+  );
+
+  console.log(runs);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "run_abc123",
+      "object": "thread.run",
+      "created_at": 1699075072,
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "status": "completed",
+      "started_at": 1699075072,
+      "expires_at": null,
+      "cancelled_at": null,
+      "failed_at": null,
+      "completed_at": 1699075073,
+      "last_error": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "incomplete_details": null,
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "file-abc123",
+            "file-abc456"
+          ]
+        }
+      },
+      "metadata": {},
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      },
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_prompt_tokens": 1000,
+      "max_completion_tokens": 1000,
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": null
+      },
+      "response_format": "auto",
+      "tool_choice": "auto",
+      "parallel_tool_calls": true
+    },
+    {
+      "id": "run_abc456",
+      "object": "thread.run",
+      "created_at": 1699063290,
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "status": "completed",
+      "started_at": 1699063290,
+      "expires_at": null,
+      "cancelled_at": null,
+      "failed_at": null,
+      "completed_at": 1699063291,
+      "last_error": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "incomplete_details": null,
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "file-abc123",
+            "file-abc456"
+          ]
+        }
+      },
+      "metadata": {},
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      },
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_prompt_tokens": 1000,
+      "max_completion_tokens": 1000,
+      "truncation_strategy": {
+        "type": "auto",
+        "last_messages": null
+      },
+      "response_format": "auto",
+      "tool_choice": "auto",
+      "parallel_tool_calls": true
+    }
+  ],
+  "first_id": "run_abc123",
+  "last_id": "run_abc456",
+  "has_more": false
+}
+```
+
+## Create run
 
 `client.beta.threads.runs.create(stringthreadID, RunCreateParamsparams, RequestOptionsoptions?): Run | Stream<AssistantStreamEvent>`
 
@@ -22198,7 +23781,295 @@ const run = await client.beta.threads.runs.create('thread_id', { assistant_id: '
 console.log(run.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.create(
+    "thread_abc123",
+    { assistant_id: "asst_abc123" }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699063290,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "queued",
+  "started_at": 1699063290,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699063291,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const stream = await openai.beta.threads.runs.create(
+    "thread_123",
+    { assistant_id: "asst_123", stream: true }
+  );
+
+  for await (const event of stream) {
+    console.log(event);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710330641,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710330642,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710330642,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+### Streaming with Functions
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const tools = [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA",
+            },
+            "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+          },
+          "required": ["location"],
+        },
+      }
+    }
+];
+
+async function main() {
+  const stream = await openai.beta.threads.runs.create(
+    "thread_abc123",
+    {
+      assistant_id: "asst_abc123",
+      tools: tools,
+      stream: true
+    }
+  );
+
+  for await (const event of stream) {
+    console.log(event);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+event: thread.run.created
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"Hello","annotations":[]}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" today"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_001","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"?"}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_001","object":"thread.message","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710348077,"role":"assistant","content":[{"type":"text","text":{"value":"Hello! How can I assist you today?","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Retrieve run
 
 `client.beta.threads.runs.retrieve(stringrunID, RunRetrieveParamsparams, RequestOptionsoptions?): Run`
 
@@ -22626,7 +24497,136 @@ const run = await client.beta.threads.runs.retrieve('run_id', { thread_id: 'thre
 console.log(run.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.retrieve(
+    "run_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699075072,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "started_at": 1699075072,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699075073,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+## Modify run
 
 `client.beta.threads.runs.update(stringrunID, RunUpdateParamsparams, RequestOptionsoptions?): Run`
 
@@ -23063,7 +25063,151 @@ const run = await client.beta.threads.runs.update('run_id', { thread_id: 'thread
 console.log(run.id);
 ```
 
-## Submit Tool Outputs
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.update(
+    "run_abc123",
+    {
+      thread_id: "thread_abc123",
+      metadata: {
+        user_id: "user_abc123",
+      },
+    }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699075072,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "started_at": 1699075072,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699075073,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "file-abc123",
+        "file-abc456"
+      ]
+    }
+  },
+  "metadata": {
+    "user_id": "user_abc123"
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+## Submit tool outputs to run
 
 `client.beta.threads.runs.submitToolOutputs(stringrunID, RunSubmitToolOutputsParamsparams, RequestOptionsoptions?): Run | Stream<AssistantStreamEvent>`
 
@@ -23530,7 +25674,240 @@ const run = await client.beta.threads.runs.submitToolOutputs('run_id', {
 console.log(run.id);
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.submitToolOutputs(
+    "run_123",
+    {
+      thread_id: "thread_123",
+      tool_outputs: [
+        {
+          tool_call_id: "call_001",
+          output: "70 degrees and sunny.",
+        },
+      ],
+    }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_123",
+  "object": "thread.run",
+  "created_at": 1699075592,
+  "assistant_id": "asst_123",
+  "thread_id": "thread_123",
+  "status": "queued",
+  "started_at": 1699075592,
+  "expires_at": 1699076192,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"]
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    }
+  ],
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const stream = await openai.beta.threads.runs.submitToolOutputs(
+    "run_123",
+    {
+      thread_id: "thread_123",
+      tool_outputs: [
+        {
+          tool_call_id: "call_001",
+          output: "70 degrees and sunny.",
+        },
+      ],
+    }
+  );
+
+  for await (const event of stream) {
+    console.log(event);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+event: thread.run.step.completed
+data: {"id":"step_001","object":"thread.run.step","created_at":1710352449,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"completed","cancelled_at":null,"completed_at":1710352475,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[{"id":"call_iWr0kQ2EaYMaxNdl0v3KYkx7","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}","output":"70 degrees and sunny."}}]},"usage":{"prompt_tokens":291,"completion_tokens":24,"total_tokens":315}}
+
+event: thread.run.queued
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.in_progress
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: thread.run.step.created
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null}
+
+event: thread.run.step.in_progress
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null}
+
+event: thread.message.created
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.in_progress
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"in_progress","incomplete_details":null,"incomplete_at":null,"completed_at":null,"role":"assistant","content":[],"metadata":{}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"The","annotations":[]}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" current"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" weather"}}]}}
+
+...
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":" sunny"}}]}}
+
+event: thread.message.delta
+data: {"id":"msg_002","object":"thread.message.delta","delta":{"content":[{"index":0,"type":"text","text":{"value":"."}}]}}
+
+event: thread.message.completed
+data: {"id":"msg_002","object":"thread.message","created_at":1710352476,"assistant_id":"asst_123","thread_id":"thread_123","run_id":"run_123","status":"completed","incomplete_details":null,"incomplete_at":null,"completed_at":1710352477,"role":"assistant","content":[{"type":"text","text":{"value":"The current weather in San Francisco, CA is 70 degrees Fahrenheit and sunny.","annotations":[]}}],"metadata":{}}
+
+event: thread.run.step.completed
+data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710352477,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":{"prompt_tokens":329,"completion_tokens":18,"total_tokens":347}}
+
+event: thread.run.completed
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+
+event: done
+data: [DONE]
+```
+
+## Cancel a run
 
 `client.beta.threads.runs.cancel(stringrunID, RunCancelParamsparams, RequestOptionsoptions?): Run`
 
@@ -23956,6 +26333,129 @@ const client = new OpenAI({
 const run = await client.beta.threads.runs.cancel('run_id', { thread_id: 'thread_id' });
 
 console.log(run.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.cancel(
+    "run_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699076126,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "cancelling",
+  "started_at": 1699076126,
+  "expires_at": 1699076726,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "You summarize books.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "usage": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
 ```
 
 ## Domain Types
@@ -24410,7 +26910,7 @@ console.log(run.id);
 
 # Steps
 
-## List
+## List run steps
 
 `client.beta.threads.runs.steps.list(stringrunID, StepListParamsparams, RequestOptionsoptions?): CursorPage<RunStep>`
 
@@ -24762,7 +27262,108 @@ for await (const runStep of client.beta.threads.runs.steps.list('run_id', {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "cancelled_at": 0,
+      "completed_at": 0,
+      "created_at": 0,
+      "expired_at": 0,
+      "failed_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.run.step",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "step_details": {
+        "message_creation": {
+          "message_id": "message_id"
+        },
+        "type": "message_creation"
+      },
+      "thread_id": "thread_id",
+      "type": "message_creation",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  ],
+  "first_id": "step_abc123",
+  "has_more": false,
+  "last_id": "step_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const runStep = await openai.beta.threads.runs.steps.list(
+    "run_abc123",
+    { thread_id: "thread_abc123" }
+  );
+  console.log(runStep);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "step_abc123",
+      "object": "thread.run.step",
+      "created_at": 1699063291,
+      "run_id": "run_abc123",
+      "assistant_id": "asst_abc123",
+      "thread_id": "thread_abc123",
+      "type": "message_creation",
+      "status": "completed",
+      "cancelled_at": null,
+      "completed_at": 1699063291,
+      "expired_at": null,
+      "failed_at": null,
+      "last_error": null,
+      "step_details": {
+        "type": "message_creation",
+        "message_creation": {
+          "message_id": "msg_abc123"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579
+      }
+    }
+  ],
+  "first_id": "step_abc123",
+  "last_id": "step_abc456",
+  "has_more": false
+}
+```
+
+## Retrieve run step
 
 `client.beta.threads.runs.steps.retrieve(stringstepID, StepRetrieveParamsparams, RequestOptionsoptions?): RunStep`
 
@@ -25096,6 +27697,91 @@ const runStep = await client.beta.threads.runs.steps.retrieve('step_id', {
 });
 
 console.log(runStep.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expired_at": 0,
+  "failed_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.run.step",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "step_details": {
+    "message_creation": {
+      "message_id": "message_id"
+    },
+    "type": "message_creation"
+  },
+  "thread_id": "thread_id",
+  "type": "message_creation",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const runStep = await openai.beta.threads.runs.steps.retrieve(
+    "step_abc123",
+    { thread_id: "thread_abc123", run_id: "run_abc123" }
+  );
+  console.log(runStep);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "step_abc123",
+  "object": "thread.run.step",
+  "created_at": 1699063291,
+  "run_id": "run_abc123",
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "type": "message_creation",
+  "status": "completed",
+  "cancelled_at": null,
+  "completed_at": 1699063291,
+  "expired_at": null,
+  "failed_at": null,
+  "last_error": null,
+  "step_details": {
+    "type": "message_creation",
+    "message_creation": {
+      "message_id": "msg_abc123"
+    }
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  }
+}
 ```
 
 ## Domain Types
@@ -26645,7 +29331,7 @@ console.log(runStep.id);
 
 # Messages
 
-## List
+## List messages
 
 `client.beta.threads.messages.list(stringthreadID, MessageListParamsquery?, RequestOptionsoptions?): CursorPage<Message>`
 
@@ -26945,7 +29631,128 @@ for await (const message of client.beta.threads.messages.list('thread_id')) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "attachments": [
+        {
+          "file_id": "file_id",
+          "tools": [
+            {
+              "type": "code_interpreter"
+            }
+          ]
+        }
+      ],
+      "completed_at": 0,
+      "content": [
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
+      ],
+      "created_at": 0,
+      "incomplete_at": 0,
+      "incomplete_details": {
+        "reason": "content_filter"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.message",
+      "role": "user",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "thread_id": "thread_id"
+    }
+  ],
+  "first_id": "msg_abc123",
+  "has_more": false,
+  "last_id": "msg_abc123",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const threadMessages = await openai.beta.threads.messages.list(
+    "thread_abc123"
+  );
+
+  console.log(threadMessages.data);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "How does AI work? Explain it in simple terms.",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    },
+    {
+      "id": "msg_abc456",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "Hello, what is AI?",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc456",
+  "has_more": false
+}
+```
+
+## Create message
 
 `client.beta.threads.messages.create(stringthreadID, MessageCreateParamsbody, RequestOptionsoptions?): Message`
 
@@ -27345,7 +30152,93 @@ const message = await client.beta.threads.messages.create('thread_id', {
 console.log(message.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const threadMessages = await openai.beta.threads.messages.create(
+    "thread_abc123",
+    { role: "user", content: "How does AI work? Explain it in simple terms." }
+  );
+
+  console.log(threadMessages);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1713226573,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Modify message
 
 `client.beta.threads.messages.update(stringmessageID, MessageUpdateParamsparams, RequestOptionsoptions?): Message`
 
@@ -27633,7 +30526,97 @@ const message = await client.beta.threads.messages.update('message_id', { thread
 console.log(message.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const message = await openai.beta.threads.messages.update(
+    "thread_abc123",
+    "msg_abc123",
+    {
+      metadata: {
+        modified: "true",
+        user: "abc123",
+      },
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "file_ids": [],
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  }
+}
+```
+
+## Retrieve message
 
 `client.beta.threads.messages.retrieve(stringmessageID, MessageRetrieveParamsparams, RequestOptionsoptions?): Message`
 
@@ -27914,7 +30897,93 @@ const message = await client.beta.threads.messages.retrieve('message_id', {
 console.log(message.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const message = await openai.beta.threads.messages.retrieve(
+    "msg_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(message);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Delete message
 
 `client.beta.threads.messages.delete(stringmessageID, MessageDeleteParamsparams, RequestOptionsoptions?): MessageDeleted`
 
@@ -27958,6 +31027,43 @@ const messageDeleted = await client.beta.threads.messages.delete('message_id', {
 });
 
 console.log(messageDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const deletedMessage = await openai.beta.threads.messages.delete(
+    "msg_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(deletedMessage);
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types

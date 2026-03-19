@@ -1,6 +1,6 @@
 # Uploads
 
-## Create
+## Create upload
 
 **post** `/uploads`
 
@@ -196,7 +196,65 @@ curl https://api.openai.com/v1/uploads \
         }'
 ```
 
-## Complete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  },
+  "object": "upload"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/uploads \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "purpose": "fine-tune",
+    "filename": "training_examples.jsonl",
+    "bytes": 2147483648,
+    "mime_type": "text/jsonl",
+    "expires_after": {
+      "anchor": "created_at",
+      "seconds": 3600
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "upload_abc123",
+  "object": "upload",
+  "bytes": 2147483648,
+  "created_at": 1719184911,
+  "filename": "training_examples.jsonl",
+  "purpose": "fine-tune",
+  "status": "pending",
+  "expires_at": 1719127296
+}
+```
+
+## Complete upload
 
 **post** `/uploads/{upload_id}/complete`
 
@@ -348,7 +406,66 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
         }'
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  },
+  "object": "upload"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/uploads/upload_abc123/complete
+  -d '{
+    "part_ids": ["part_def456", "part_ghi789"]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "upload_abc123",
+  "object": "upload",
+  "bytes": 2147483648,
+  "created_at": 1719184911,
+  "filename": "training_examples.jsonl",
+  "purpose": "fine-tune",
+  "status": "completed",
+  "expires_at": 1719127296,
+  "file": {
+    "id": "file-xyz321",
+    "object": "file",
+    "bytes": 2147483648,
+    "created_at": 1719186911,
+    "expires_at": 1719127296,
+    "filename": "training_examples.jsonl",
+    "purpose": "fine-tune",
+  }
+}
+```
+
+## Cancel upload
 
 **post** `/uploads/{upload_id}/cancel`
 
@@ -480,6 +597,53 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  },
+  "object": "upload"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/uploads/upload_abc123/cancel
+```
+
+#### Response
+
+```json
+{
+  "id": "upload_abc123",
+  "object": "upload",
+  "bytes": 2147483648,
+  "created_at": 1719184911,
+  "filename": "training_examples.jsonl",
+  "purpose": "fine-tune",
+  "status": "cancelled",
+  "expires_at": 1719127296
+}
+```
+
 ## Domain Types
 
 ### Upload
@@ -596,7 +760,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
 
 # Parts
 
-## Create
+## Add upload part
 
 **post** `/uploads/{upload_id}/parts`
 
@@ -641,6 +805,35 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/parts \
     -H 'Content-Type: multipart/form-data' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -F 'data=@/path/to/data'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "upload.part",
+  "upload_id": "upload_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/uploads/upload_abc123/parts
+  -F data="aHR0cHM6Ly9hcGkub3BlbmFpLmNvbS92MS91cGxvYWRz..."
+```
+
+#### Response
+
+```json
+{
+  "id": "part_def456",
+  "object": "upload.part",
+  "created_at": 1719185911,
+  "upload_id": "upload_abc123"
+}
 ```
 
 ## Domain Types

@@ -1,4 +1,4 @@
-## List
+## List assistants
 
 **get** `/assistants`
 
@@ -155,7 +155,7 @@ Returns a list of assistants.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -262,4 +262,116 @@ Returns a list of assistants.
 curl https://api.openai.com/v1/assistants \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "instructions": "instructions",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "assistant",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "response_format": "auto",
+      "temperature": 1,
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "string"
+          ]
+        },
+        "file_search": {
+          "vector_store_ids": [
+            "string"
+          ]
+        }
+      },
+      "top_p": 1
+    }
+  ],
+  "first_id": "asst_abc123",
+  "has_more": false,
+  "last_id": "asst_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "asst_abc123",
+      "object": "assistant",
+      "created_at": 1698982736,
+      "name": "Coding Tutor",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc456",
+      "object": "assistant",
+      "created_at": 1698982718,
+      "name": "My Assistant",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc789",
+      "object": "assistant",
+      "created_at": 1698982643,
+      "name": null,
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    }
+  ],
+  "first_id": "asst_abc123",
+  "last_id": "asst_abc789",
+  "has_more": false
+}
 ```

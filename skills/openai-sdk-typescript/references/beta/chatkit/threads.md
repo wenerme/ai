@@ -1,6 +1,6 @@
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 `client.beta.chatkit.threads.listItems(stringthreadID, ThreadListItemsParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ChatKitThreadUserMessageItem | ChatKitThreadAssistantMessageItem | ChatKitWidgetItem | 3 more>`
 
@@ -427,7 +427,95 @@ for await (const thread of client.beta.chatkit.threads.listItems('cthr_123')) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const thread of client.beta.chatkit.threads.listItems('cthr_123')) {
+  console.log(thread);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 `client.beta.chatkit.threads.retrieve(stringthreadID, RequestOptionsoptions?): ChatKitThread`
 
@@ -523,7 +611,72 @@ const chatkitThread = await client.beta.chatkit.threads.retrieve('cthr_123');
 console.log(chatkitThread.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const chatkitThread = await client.beta.chatkit.threads.retrieve('cthr_123');
+
+console.log(chatkitThread.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 `client.beta.chatkit.threads.delete(stringthreadID, RequestOptionsoptions?): ThreadDeleteResponse`
 
@@ -569,7 +722,29 @@ const thread = await client.beta.chatkit.threads.delete('cthr_123');
 console.log(thread.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const thread = await client.beta.chat_kit.threads.delete('cthr_123');
+
+console.log(thread.id);
+```
+
+## List ChatKit threads
 
 `client.beta.chatkit.threads.list(ThreadListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ChatKitThread>`
 
@@ -687,6 +862,63 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const chatkitThread of client.beta.chatkit.threads.list()) {
   console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const chatkitThread of client.beta.chatkit.threads.list()) {
+  console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
 }
 ```
 

@@ -1,4 +1,4 @@
-## Create
+## Create a new immutable skill version.
 
 `skills.versions.create(strskill_id, VersionCreateParams**kwargs)  -> SkillVersion`
 
@@ -73,4 +73,18 @@ skill_version = client.skills.versions.create(
     skill_id="skill_123",
 )
 print(skill_version.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

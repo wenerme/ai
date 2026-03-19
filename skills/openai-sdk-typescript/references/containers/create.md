@@ -1,4 +1,4 @@
-## Create
+## Create container
 
 `client.containers.create(ContainerCreateParamsbody, RequestOptionsoptions?): ContainerCreateResponse`
 
@@ -222,4 +222,28 @@ const client = new OpenAI({
 const container = await client.containers.create({ name: 'name' });
 
 console.log(container.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
 ```

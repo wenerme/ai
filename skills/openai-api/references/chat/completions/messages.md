@@ -1,6 +1,6 @@
 # Messages
 
-## List
+## Get chat messages
 
 **get** `/chat/completions/{completion_id}/messages`
 
@@ -108,4 +108,88 @@ returned.
 ```http
 curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "content": "content",
+      "refusal": "refusal",
+      "role": "assistant",
+      "annotations": [
+        {
+          "type": "url_citation",
+          "url_citation": {
+            "end_index": 0,
+            "start_index": 0,
+            "title": "title",
+            "url": "url"
+          }
+        }
+      ],
+      "audio": {
+        "id": "id",
+        "data": "data",
+        "expires_at": 0,
+        "transcript": "transcript"
+      },
+      "function_call": {
+        "arguments": "arguments",
+        "name": "name"
+      },
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ],
+      "id": "id",
+      "content_parts": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chat/completions/chat_abc123/messages \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2-0",
+      "role": "user",
+      "content": "write a haiku about ai",
+      "name": null,
+      "content_parts": null
+    }
+  ],
+  "first_id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2-0",
+  "last_id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2-0",
+  "has_more": false
+}
 ```

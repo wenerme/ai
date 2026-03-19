@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve vector store file batch
 
 `vector_stores.file_batches.retrieve(strbatch_id, FileBatchRetrieveParams**kwargs)  -> VectorStoreFileBatch`
 
@@ -84,4 +84,55 @@ vector_store_file_batch = client.vector_stores.file_batches.retrieve(
     vector_store_id="vs_abc123",
 )
 print(vector_store_file_batch.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file_batch = client.vector_stores.file_batches.retrieve(
+  vector_store_id="vs_abc123",
+  batch_id="vsfb_abc123"
+)
+print(vector_store_file_batch)
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
 ```

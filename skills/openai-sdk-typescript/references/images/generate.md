@@ -1,4 +1,4 @@
-## Generate
+## Create image
 
 `client.images.generate(ImageGenerateParamsbody, RequestOptionsoptions?): ImagesResponse | Stream<ImageGenStreamEvent>`
 
@@ -290,4 +290,107 @@ const client = new OpenAI({
 const imagesResponse = await client.images.generate({ prompt: 'A cute baby sea otter' });
 
 console.log(imagesResponse);
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Generate image
+
+```typescript
+import OpenAI from "openai";
+import { writeFile } from "fs/promises";
+
+const client = new OpenAI();
+
+const img = await client.images.generate({
+  model: "gpt-image-1.5",
+  prompt: "A cute baby sea otter",
+  n: 1,
+  size: "1024x1024"
+});
+
+const imageBuffer = Buffer.from(img.data[0].b64_json, "base64");
+await writeFile("output.png", imageBuffer);
+```
+
+#### Response
+
+```json
+{
+  "created": 1713833628,
+  "data": [
+    {
+      "b64_json": "..."
+    }
+  ],
+  "usage": {
+    "total_tokens": 100,
+    "input_tokens": 50,
+    "output_tokens": 50,
+    "input_tokens_details": {
+      "text_tokens": 10,
+      "image_tokens": 40
+    }
+  }
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const stream = await client.images.generate({
+  model: "gpt-image-1.5",
+  prompt: "A cute baby sea otter",
+  n: 1,
+  size: "1024x1024",
+  stream: true,
+});
+
+for await (const event of stream) {
+  console.log(event);
+}
+```
+
+#### Response
+
+```json
+event: image_generation.partial_image
+data: {"type":"image_generation.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_generation.completed
+data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
 ```

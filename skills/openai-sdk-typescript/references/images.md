@@ -1,6 +1,6 @@
 # Images
 
-## Generate
+## Create image
 
 `client.images.generate(ImageGenerateParamsbody, RequestOptionsoptions?): ImagesResponse | Stream<ImageGenStreamEvent>`
 
@@ -294,7 +294,110 @@ const imagesResponse = await client.images.generate({ prompt: 'A cute baby sea o
 console.log(imagesResponse);
 ```
 
-## Edit
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Generate image
+
+```typescript
+import OpenAI from "openai";
+import { writeFile } from "fs/promises";
+
+const client = new OpenAI();
+
+const img = await client.images.generate({
+  model: "gpt-image-1.5",
+  prompt: "A cute baby sea otter",
+  n: 1,
+  size: "1024x1024"
+});
+
+const imageBuffer = Buffer.from(img.data[0].b64_json, "base64");
+await writeFile("output.png", imageBuffer);
+```
+
+#### Response
+
+```json
+{
+  "created": 1713833628,
+  "data": [
+    {
+      "b64_json": "..."
+    }
+  ],
+  "usage": {
+    "total_tokens": 100,
+    "input_tokens": 50,
+    "output_tokens": 50,
+    "input_tokens_details": {
+      "text_tokens": 10,
+      "image_tokens": 40
+    }
+  }
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const stream = await client.images.generate({
+  model: "gpt-image-1.5",
+  prompt: "A cute baby sea otter",
+  n: 1,
+  size: "1024x1024",
+  stream: true,
+});
+
+for await (const event of stream) {
+  console.log(event);
+}
+```
+
+#### Response
+
+```json
+event: image_generation.partial_image
+data: {"type":"image_generation.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_generation.completed
+data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
+```
+
+## Create image edit
 
 `client.images.edit(ImageEditParamsbody, RequestOptionsoptions?): ImagesResponse | Stream<ImageEditStreamEvent>`
 
@@ -592,7 +695,119 @@ const imagesResponse = await client.images.edit({
 console.log(imagesResponse);
 ```
 
-## Create Variation
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Edit image
+
+```typescript
+import fs from "fs";
+import OpenAI, { toFile } from "openai";
+
+const client = new OpenAI();
+
+const imageFiles = [
+    "bath-bomb.png",
+    "body-lotion.png",
+    "incense-kit.png",
+    "soap.png",
+];
+
+const images = await Promise.all(
+    imageFiles.map(async (file) =>
+        await toFile(fs.createReadStream(file), null, {
+            type: "image/png",
+        })
+    ),
+);
+
+const rsp = await client.images.edit({
+    model: "gpt-image-1.5",
+    image: images,
+    prompt: "Create a lovely gift basket with these four items in it",
+});
+
+// Save the image to a file
+const image_base64 = rsp.data[0].b64_json;
+const image_bytes = Buffer.from(image_base64, "base64");
+fs.writeFileSync("basket.png", image_bytes);
+```
+
+### Streaming
+
+```typescript
+import fs from "fs";
+import OpenAI, { toFile } from "openai";
+
+const client = new OpenAI();
+
+const imageFiles = [
+    "bath-bomb.png",
+    "body-lotion.png",
+    "incense-kit.png",
+    "soap.png",
+];
+
+const images = await Promise.all(
+    imageFiles.map(async (file) =>
+        await toFile(fs.createReadStream(file), null, {
+            type: "image/png",
+        })
+    ),
+);
+
+const stream = await client.images.edit({
+    model: "gpt-image-1.5",
+    image: images,
+    prompt: "Create a lovely gift basket with these four items in it",
+    stream: true,
+});
+
+for await (const event of stream) {
+    console.log(event);
+}
+```
+
+#### Response
+
+```json
+event: image_edit.partial_image
+data: {"type":"image_edit.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_edit.completed
+data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
+```
+
+## Create image variation
 
 `client.images.createVariation(ImageCreateVariationParamsbody, RequestOptionsoptions?): ImagesResponse`
 
@@ -770,6 +985,72 @@ const imagesResponse = await client.images.createVariation({
 });
 
 console.log(imagesResponse.created);
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const image = await openai.images.createVariation({
+    image: fs.createReadStream("otter.png"),
+  });
+
+  console.log(image.data);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "created": 1589478378,
+  "data": [
+    {
+      "url": "https://..."
+    },
+    {
+      "url": "https://..."
+    }
+  ]
+}
 ```
 
 ## Domain Types

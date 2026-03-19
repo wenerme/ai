@@ -1,6 +1,6 @@
 # Skills
 
-## Create
+## Create a new skill.
 
 `skills.create(SkillCreateParams**kwargs)  -> Skill`
 
@@ -69,7 +69,21 @@ skill = client.skills.create()
 print(skill.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## List all skills for the current project.
 
 `skills.list(SkillListParams**kwargs)  -> SyncCursorPage[Skill]`
 
@@ -143,7 +157,29 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a skill by its ID.
 
 `skills.retrieve(strskill_id)  -> Skill`
 
@@ -204,7 +240,21 @@ skill = client.skills.retrieve(
 print(skill.id)
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Update the default version pointer for a skill.
 
 `skills.update(strskill_id, SkillUpdateParams**kwargs)  -> Skill`
 
@@ -270,7 +320,21 @@ skill = client.skills.update(
 print(skill.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Delete a skill by its ID.
 
 `skills.delete(strskill_id)  -> DeletedSkill`
 
@@ -307,6 +371,16 @@ deleted_skill = client.skills.delete(
     "skill_123",
 )
 print(deleted_skill.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```
 
 ## Domain Types
@@ -415,7 +489,7 @@ print(deleted_skill.id)
 
 # Content
 
-## Retrieve
+## Download a skill zip bundle by its ID.
 
 `skills.content.retrieve(strskill_id)  -> BinaryResponseContent`
 
@@ -450,7 +524,7 @@ print(data)
 
 # Versions
 
-## Create
+## Create a new immutable skill version.
 
 `skills.versions.create(strskill_id, VersionCreateParams**kwargs)  -> SkillVersion`
 
@@ -527,7 +601,21 @@ skill_version = client.skills.versions.create(
 print(skill_version.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## List skill versions for a skill.
 
 `skills.versions.list(strskill_id, VersionListParams**kwargs)  -> SyncCursorPage[SkillVersion]`
 
@@ -605,7 +693,29 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a specific skill version.
 
 `skills.versions.retrieve(strversion, VersionRetrieveParams**kwargs)  -> SkillVersion`
 
@@ -671,7 +781,21 @@ skill_version = client.skills.versions.retrieve(
 print(skill_version.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
 
 `skills.versions.delete(strversion, VersionDeleteParams**kwargs)  -> DeletedSkillVersion`
 
@@ -717,6 +841,17 @@ deleted_skill_version = client.skills.versions.delete(
     skill_id="skill_123",
 )
 print(deleted_skill_version.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```
 
 ## Domain Types
@@ -829,7 +964,7 @@ print(deleted_skill_version.id)
 
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 `skills.versions.content.retrieve(strversion, ContentRetrieveParams**kwargs)  -> BinaryResponseContent`
 

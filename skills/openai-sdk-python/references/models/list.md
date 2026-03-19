@@ -1,4 +1,4 @@
-## List
+## List models
 
 `models.list()  -> SyncPage[Model]`
 
@@ -42,4 +42,57 @@ client = OpenAI(
 page = client.models.list()
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.list()
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
+}
 ```

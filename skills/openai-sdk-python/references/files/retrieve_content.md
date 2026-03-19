@@ -1,4 +1,4 @@
-## Retrieve Content
+## Retrieve file content
 
 `files.retrieve_content(strfile_id)  -> FileContent`
 
@@ -27,4 +27,19 @@ file_content = client.files.retrieve_content(
     "file_id",
 )
 print(file_content)
+```
+
+#### Response
+
+```json
+"string"
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+content = client.files.content("file-abc123")
 ```

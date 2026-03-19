@@ -1,6 +1,6 @@
 # Voice Consents
 
-## List
+## List voice consents
 
 **get** `/audio/voice_consents`
 
@@ -59,7 +59,34 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cons_1234",
+      "created_at": 0,
+      "language": "language",
+      "name": "name",
+      "object": "audio.voice_consent"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Create voice consent
 
 **post** `/audio/voice_consents`
 
@@ -100,7 +127,30 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -F 'recording=@/path/to/recording'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "created_at": 0,
+  "language": "language",
+  "name": "name",
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "name=John Doe" \
+  -F "language=en-US" \
+  -F "recording=@$HOME/consent_recording.wav;type=audio/x-wav"
+```
+
+## Retrieve voice consent
 
 **get** `/audio/voice_consents/{consent_id}`
 
@@ -141,7 +191,26 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "created_at": 0,
+  "language": "language",
+  "name": "name",
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Update voice consent
 
 **post** `/audio/voice_consents/{consent_id}`
 
@@ -192,7 +261,31 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "created_at": 0,
+  "language": "language",
+  "name": "name",
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe"
+  }'
+```
+
+## Delete voice consent
 
 **delete** `/audio/voice_consents/{consent_id}`
 
@@ -220,4 +313,22 @@ Deletes a voice consent recording.
 curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "deleted": true,
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

@@ -1269,7 +1269,7 @@
 
 # Jobs
 
-## Create
+## Create fine-tuning job
 
 `client.fineTuning.jobs.create(JobCreateParamsbody, RequestOptionsoptions?): FineTuningJob`
 
@@ -3830,7 +3830,259 @@ const fineTuningJob = await client.fineTuning.jobs.create({
 console.log(fineTuningJob.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.create({
+    training_file: "file-abc123"
+  });
+
+  console.log(fineTune);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+      }
+    }
+  },
+  "metadata": null
+}
+```
+
+### Epochs
+
+```typescript
+import OpenAI from "openai";
+import { SupervisedMethod, SupervisedHyperparameters } from "openai/resources/fine-tuning/methods";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.create({
+    training_file: "file-abc123",
+    model: "gpt-4o-mini",
+    method: {
+      type: "supervised",
+      supervised: {
+        hyperparameters: {
+          n_epochs: 2
+        }
+      }
+    }
+  });
+
+  console.log(fineTune);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": 2
+  },
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": 2
+      }
+    }
+  },
+  "metadata": null,
+  "error": {
+    "code": null,
+    "message": null,
+    "param": null
+  },
+  "finished_at": null,
+  "seed": 683058546,
+  "trained_tokens": null,
+  "estimated_finish": null,
+  "integrations": [],
+  "user_provided_suffix": null,
+  "usage_metrics": null,
+  "shared_with_openai": false
+}
+```
+
+### Validation file
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.create({
+    training_file: "file-abc123",
+    validation_file: "file-abc123"
+  });
+
+  console.log(fineTune);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123",
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+      }
+    }
+  },
+  "metadata": null
+}
+```
+
+## List fine-tuning jobs
 
 `client.fineTuning.jobs.list(JobListParamsquery?, RequestOptionsoptions?): CursorPage<FineTuningJob>`
 
@@ -5152,7 +5404,143 @@ for await (const fineTuningJob of client.fineTuning.jobs.list()) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message",
+        "param": "param"
+      },
+      "fine_tuned_model": "fine_tuned_model",
+      "finished_at": 0,
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      },
+      "model": "model",
+      "object": "fine_tuning.job",
+      "organization_id": "organization_id",
+      "result_files": [
+        "file-abc123"
+      ],
+      "seed": 0,
+      "status": "validating_files",
+      "trained_tokens": 0,
+      "training_file": "training_file",
+      "validation_file": "validation_file",
+      "estimated_finish": 0,
+      "integrations": [
+        {
+          "type": "wandb",
+          "wandb": {
+            "project": "my-wandb-project",
+            "entity": "entity",
+            "name": "name",
+            "tags": [
+              "custom-tag"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "foo": "string"
+      },
+      "method": {
+        "type": "supervised",
+        "dpo": {
+          "hyperparameters": {
+            "batch_size": "auto",
+            "beta": "auto",
+            "learning_rate_multiplier": "auto",
+            "n_epochs": "auto"
+          }
+        },
+        "reinforcement": {
+          "grader": {
+            "input": "input",
+            "name": "name",
+            "operation": "eq",
+            "reference": "reference",
+            "type": "string_check"
+          },
+          "hyperparameters": {
+            "batch_size": "auto",
+            "compute_multiplier": "auto",
+            "eval_interval": "auto",
+            "eval_samples": "auto",
+            "learning_rate_multiplier": "auto",
+            "n_epochs": "auto",
+            "reasoning_effort": "default"
+          }
+        },
+        "supervised": {
+          "hyperparameters": {
+            "batch_size": "auto",
+            "learning_rate_multiplier": "auto",
+            "n_epochs": "auto"
+          }
+        }
+      }
+    }
+  ],
+  "has_more": true,
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.fineTuning.jobs.list();
+
+  for await (const fineTune of list) {
+    console.log(fineTune);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "fine_tuning.job",
+      "id": "ftjob-abc123",
+      "model": "gpt-4o-mini-2024-07-18",
+      "created_at": 1721764800,
+      "fine_tuned_model": null,
+      "organization_id": "org-123",
+      "result_files": [],
+      "status": "queued",
+      "validation_file": null,
+      "training_file": "file-abc123",
+      "metadata": {
+        "key": "value"
+      }
+    },
+    { ... },
+    { ... }
+  ], "has_more": true
+}
+```
+
+## Retrieve fine-tuning job
 
 `client.fineTuning.jobs.retrieve(stringfineTuningJobID, RequestOptionsoptions?): FineTuningJob`
 
@@ -6463,7 +6851,147 @@ const fineTuningJob = await client.fineTuning.jobs.retrieve('ft-AF1WoRqd3aJAHsqc
 console.log(fineTuningJob.id);
 ```
 
-## List Events
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.retrieve("ftjob-abc123");
+
+  console.log(fineTune);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "davinci-002",
+  "created_at": 1692661014,
+  "finished_at": 1692661190,
+  "fine_tuned_model": "ft:davinci-002:my-org:custom_suffix:7q8mpxmy",
+  "organization_id": "org-123",
+  "result_files": [
+      "file-abc123"
+  ],
+  "status": "succeeded",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "hyperparameters": {
+      "n_epochs": 4,
+      "batch_size": 1,
+      "learning_rate_multiplier": 1.0
+  },
+  "trained_tokens": 5768,
+  "integrations": [],
+  "seed": 0,
+  "estimated_finish": 0,
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "n_epochs": 4,
+        "batch_size": 1,
+        "learning_rate_multiplier": 1.0
+      }
+    }
+  }
+}
+```
+
+## List fine-tuning events
 
 `client.fineTuning.jobs.listEvents(stringfineTuningJobID, JobListEventsParamsquery?, RequestOptionsoptions?): CursorPage<FineTuningJobEvent>`
 
@@ -6548,7 +7076,74 @@ for await (const fineTuningJobEvent of client.fineTuning.jobs.listEvents(
 }
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "level": "info",
+      "message": "message",
+      "object": "fine_tuning.job.event",
+      "data": {},
+      "type": "message"
+    }
+  ],
+  "has_more": true,
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.fineTuning.list_events(id="ftjob-abc123", limit=2);
+
+  for await (const fineTune of list) {
+    console.log(fineTune);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "fine_tuning.job.event",
+      "id": "ft-event-ddTJfwuMVpfLXseO0Am0Gqjm",
+      "created_at": 1721764800,
+      "level": "info",
+      "message": "Fine tuning job successfully completed",
+      "data": null,
+      "type": "message"
+    },
+    {
+      "object": "fine_tuning.job.event",
+      "id": "ft-event-tyiGuB72evQncpH87xe505Sv",
+      "created_at": 1721764800,
+      "level": "info",
+      "message": "New fine-tuned model created: ft:gpt-4o-mini:openai::7p4lURel",
+      "data": null,
+      "type": "message"
+    }
+  ],
+  "has_more": true
+}
+```
+
+## Cancel fine-tuning
 
 `client.fineTuning.jobs.cancel(stringfineTuningJobID, RequestOptionsoptions?): FineTuningJob`
 
@@ -7857,7 +8452,124 @@ const fineTuningJob = await client.fineTuning.jobs.cancel('ft-AF1WoRqd3aJAHsqc9N
 console.log(fineTuningJob.id);
 ```
 
-## Pause
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.cancel("ftjob-abc123");
+
+  console.log(fineTune);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "cancelled",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123"
+}
+```
+
+## Pause fine-tuning
 
 `client.fineTuning.jobs.pause(stringfineTuningJobID, RequestOptionsoptions?): FineTuningJob`
 
@@ -9166,7 +9878,124 @@ const fineTuningJob = await client.fineTuning.jobs.pause('ft-AF1WoRqd3aJAHsqc9NY
 console.log(fineTuningJob.id);
 ```
 
-## Resume
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.pause("ftjob-abc123");
+
+  console.log(fineTune);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "paused",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123"
+}
+```
+
+## Resume fine-tuning
 
 `client.fineTuning.jobs.resume(stringfineTuningJobID, RequestOptionsoptions?): FineTuningJob`
 
@@ -10473,6 +11302,123 @@ const client = new OpenAI({
 const fineTuningJob = await client.fineTuning.jobs.resume('ft-AF1WoRqd3aJAHsqc9NY7iL8F');
 
 console.log(fineTuningJob.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const fineTune = await openai.fineTuning.jobs.resume("ftjob-abc123");
+
+  console.log(fineTune);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123"
+}
 ```
 
 ## Domain Types
@@ -11868,7 +12814,7 @@ console.log(fineTuningJob.id);
 
 # Checkpoints
 
-## List
+## List fine-tuning checkpoints
 
 `client.fineTuning.jobs.checkpoints.list(stringfineTuningJobID, CheckpointListParamsquery?, RequestOptionsoptions?): CursorPage<FineTuningJobCheckpoint>`
 
@@ -11957,6 +12903,36 @@ for await (const fineTuningJobCheckpoint of client.fineTuning.jobs.checkpoints.l
 }
 ```
 
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "fine_tuned_model_checkpoint": "fine_tuned_model_checkpoint",
+      "fine_tuning_job_id": "fine_tuning_job_id",
+      "metrics": {
+        "full_valid_loss": 0,
+        "full_valid_mean_token_accuracy": 0,
+        "step": 0,
+        "train_loss": 0,
+        "train_mean_token_accuracy": 0,
+        "valid_loss": 0,
+        "valid_mean_token_accuracy": 0
+      },
+      "object": "fine_tuning.job.checkpoint",
+      "step_number": 0
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
 ## Domain Types
 
 ### Fine Tuning Job Checkpoint
@@ -12013,7 +12989,7 @@ for await (const fineTuningJobCheckpoint of client.fineTuning.jobs.checkpoints.l
 
 # Permissions
 
-## Retrieve
+## List checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.retrieve(stringfineTunedModelCheckpoint, PermissionRetrieveParamsquery?, RequestOptionsoptions?): PermissionRetrieveResponse`
 
@@ -12099,7 +13075,26 @@ const permission = await client.fineTuning.checkpoints.permissions.retrieve(
 console.log(permission.first_id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## List checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.list(stringfineTunedModelCheckpoint, PermissionListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<PermissionListResponse>`
 
@@ -12176,7 +13171,26 @@ for await (const permissionListResponse of client.fineTuning.checkpoints.permiss
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## Create checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.create(stringfineTunedModelCheckpoint, PermissionCreateParamsbody, RequestOptionsoptions?): Page<PermissionCreateResponse>`
 
@@ -12238,7 +13252,26 @@ for await (const permissionCreateResponse of client.fineTuning.checkpoints.permi
 }
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## Delete checkpoint permission
 
 `client.fineTuning.checkpoints.permissions.delete(stringpermissionID, PermissionDeleteParamsparams, RequestOptionsoptions?): PermissionDeleteResponse`
 
@@ -12293,11 +13326,21 @@ const permission = await client.fineTuning.checkpoints.permissions.delete(
 console.log(permission.id);
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "checkpoint.permission"
+}
+```
+
 # Alpha
 
 # Graders
 
-## Run
+## Run grader
 
 `client.fineTuning.alpha.graders.run(GraderRunParamsbody, RequestOptionsoptions?): GraderRunResponse`
 
@@ -13329,7 +14372,124 @@ const response = await client.fineTuning.alpha.graders.run({
 console.log(response.metadata);
 ```
 
-## Validate
+#### Response
+
+```json
+{
+  "metadata": {
+    "errors": {
+      "formula_parse_error": true,
+      "invalid_variable_error": true,
+      "model_grader_parse_error": true,
+      "model_grader_refusal_error": true,
+      "model_grader_server_error": true,
+      "model_grader_server_error_details": "model_grader_server_error_details",
+      "other_error": true,
+      "python_grader_runtime_error": true,
+      "python_grader_runtime_error_details": "python_grader_runtime_error_details",
+      "python_grader_server_error": true,
+      "python_grader_server_error_type": "python_grader_server_error_type",
+      "sample_parse_error": true,
+      "truncated_observation_error": true,
+      "unresponsive_reward_error": true
+    },
+    "execution_time": 0,
+    "name": "name",
+    "sampled_model_name": "sampled_model_name",
+    "scores": {
+      "foo": "bar"
+    },
+    "token_usage": 0,
+    "type": "type"
+  },
+  "model_grader_token_usage_per_model": {
+    "foo": "bar"
+  },
+  "reward": 0,
+  "sub_rewards": {
+    "foo": "bar"
+  }
+}
+```
+
+### Score text alignment
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const result = await openai.fineTuning.alpha.graders.run({
+  grader: {
+    type: "score_model",
+    name: "Example score model grader",
+    input: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text: "Score how close the reference answer is to the model answer on a 0-1 scale. Return only the score.\n\nReference answer: {{item.reference_answer}}\n\nModel answer: {{sample.output_text}}",
+          },
+        ],
+      },
+    ],
+    model: "gpt-5-mini",
+    sampling_params: { temperature: 1, top_p: 1, seed: 42 },
+  },
+  item: { reference_answer: "fuzzy wuzzy was a bear" },
+  model_sample: "fuzzy wuzzy was a bear",
+});
+console.log(result);
+```
+
+#### Response
+
+```json
+{
+  "reward": 1.0,
+  "metadata": {
+    "name": "Example score model grader",
+    "type": "score_model",
+    "errors": {
+      "formula_parse_error": false,
+      "sample_parse_error": false,
+      "truncated_observation_error": false,
+      "unresponsive_reward_error": false,
+      "invalid_variable_error": false,
+      "other_error": false,
+      "python_grader_server_error": false,
+      "python_grader_server_error_type": null,
+      "python_grader_runtime_error": false,
+      "python_grader_runtime_error_details": null,
+      "model_grader_server_error": false,
+      "model_grader_refusal_error": false,
+      "model_grader_parse_error": false,
+      "model_grader_server_error_details": null
+    },
+    "execution_time": 4.365238428115845,
+    "scores": {},
+    "token_usage": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    },
+    "sampled_model_name": "gpt-4o-2024-08-06"
+  },
+  "sub_rewards": {},
+  "model_grader_token_usage_per_model": {
+    "gpt-4o-2024-08-06": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+## Validate grader
 
 `client.fineTuning.alpha.graders.validate(GraderValidateParamsbody, RequestOptionsoptions?): GraderValidateResponse`
 
@@ -15227,4 +16387,18 @@ const response = await client.fineTuning.alpha.graders.validate({
 });
 
 console.log(response.grader);
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
 ```

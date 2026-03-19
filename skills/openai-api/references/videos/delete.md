@@ -1,4 +1,4 @@
-## Delete
+## Delete video
 
 **delete** `/videos/{video_id}`
 
@@ -30,4 +30,14 @@ Permanently delete a completed or failed video and its stored assets.
 curl https://api.openai.com/v1/videos/$VIDEO_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
 ```

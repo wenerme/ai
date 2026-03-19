@@ -1,4 +1,4 @@
-## List
+## List group users
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -81,4 +81,52 @@ Lists the users assigned to a group.
 ```http
 curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.user",
+      "role": "owner"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.user",
+            "id": "user_abc123",
+            "name": "Ada Lovelace",
+            "email": "ada@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
 ```

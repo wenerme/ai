@@ -1,4 +1,4 @@
-## Create
+## Create ChatKit session
 
 `client.beta.chatkit.sessions.create(SessionCreateParamsbody, RequestOptionsoptions?): ChatSession`
 
@@ -241,4 +241,77 @@ const chatSession = await client.beta.chatkit.sessions.create({
 });
 
 console.log(chatSession.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const chatSession = await client.beta.chatkit.sessions.create({ user: 'user', workflow: { id: 'id' } });
+
+console.log(chatSession.id);
+```
+
+#### Response
+
+```json
+{
+  "client_secret": "chatkit_token_123",
+  "expires_at": 1735689600,
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "2024-10-01"
+  },
+  "scope": {
+    "project": "alpha",
+    "environment": "staging"
+  },
+  "max_requests_per_1_minute": 60,
+  "max_requests_per_session": 500,
+  "status": "active"
+}
 ```

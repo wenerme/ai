@@ -1,4 +1,4 @@
-## List
+## List containers
 
 `client.containers.list(ContainerListParamsquery?, RequestOptionsoptions?): CursorPage<ContainerListResponse>`
 
@@ -114,5 +114,37 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const containerListResponse of client.containers.list()) {
   console.log(containerListResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "object",
+      "status": "status",
+      "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 0
+      },
+      "last_active_at": 0,
+      "memory_limit": "1g",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": [
+          "string"
+        ]
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

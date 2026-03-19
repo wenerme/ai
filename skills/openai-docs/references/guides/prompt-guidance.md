@@ -4,6 +4,10 @@ GPT-5.4, our newest mainline model, is designed to balance long-running task per
 
 GPT-5.4 is designed for production-grade assistants and agents that need strong multi-step reasoning, evidence-rich synthesis, and reliable performance over long contexts. It is especially effective when prompts clearly specify the output contract, tool-use expectations, and completion criteria. In practice, the biggest gains come from choosing the right reasoning effort for the task, using explicit grounding and citation rules, and giving the model a precise definition of what "done" looks like. This guide focuses on prompt patterns and migration practices that preserve those efficiency wins. For model capabilities, API parameters, and broader migration guidance, see [our latest model guide](https://developers.openai.com/api/docs/guides/latest-model).
 
+When troubleshooting cases where GPT-5.4 treats an intermediate update as the
+  final answer, verify your integration preserves the assistant message `phase`
+  field correctly. See [Phase parameter](#phase-parameter) for details.
+
 ## Understand GPT-5.4 behavior
 
 ### Where GPT-5.4 is strongest
@@ -413,9 +417,11 @@ For bbox tasks, be explicit about coordinate conventions and add drift tests.
 
 For long-running or tool-heavy agents, the runtime contract matters as much as the prompt contract.
 
-**Phase parameter**
+#### Phase parameter
 
-To better support preamble messages with GPT-5.4, the Responses API includes a `phase` field designed to prevent early stopping on longer-running tasks and other misbehaviors.
+For GPT-5.4, `gpt-5.3-codex`, and later Responses models, the `phase` field can
+help in the small number of long-running or tool-heavy flows where preambles or
+other intermediate assistant updates are mistaken for the final answer.
 
 - `phase` is optional at the API level, but it is highly recommended. Best-effort inference may exist server-side, but explicit round-tripping of `phase` is strictly better.
 - Use `phase` for long-running or tool-heavy agents that may emit commentary before tool calls or before a final answer.
@@ -423,7 +429,7 @@ To better support preamble messages with GPT-5.4, the Responses API includes a `
 - Do not add `phase` to user messages.
 - If you use `previous_response_id`, that is usually the simplest path, since OpenAI can often recover prior state without manually replaying assistant items.
 - If you replay assistant history yourself, preserve the original `phase` values.
-- Missing or dropped `phase` can cause preambles to be interpreted as final answers and degrade behavior on longer, multi-step tasks.
+- Missing or dropped `phase` can cause preambles to be interpreted as final answers and degrade behavior on those multi-step tasks.
 
 ### Preserve behavior in long sessions
 

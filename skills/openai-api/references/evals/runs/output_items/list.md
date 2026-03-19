@@ -1,4 +1,4 @@
-## List
+## Get eval run output items
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
@@ -208,4 +208,152 @@ Get a list of output items for an evaluation run.
 ```http
 curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "datasource_item": {
+        "foo": "bar"
+      },
+      "datasource_item_id": 0,
+      "eval_id": "eval_id",
+      "object": "eval.run.output_item",
+      "results": [
+        {
+          "name": "name",
+          "passed": true,
+          "score": 0,
+          "sample": {
+            "foo": "bar"
+          },
+          "type": "type"
+        }
+      ],
+      "run_id": "run_id",
+      "sample": {
+        "error": {
+          "code": "code",
+          "message": "message"
+        },
+        "finish_reason": "finish_reason",
+        "input": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "max_completion_tokens": 0,
+        "model": "model",
+        "output": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "seed": 0,
+        "temperature": 0,
+        "top_p": 0,
+        "usage": {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      },
+      "status": "status"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs/erun_67abd54d60ec8190832b46859da808f7/output_items \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "eval.run.output_item",
+      "id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+      "created_at": 1743092076,
+      "run_id": "evalrun_67abd54d60ec8190832b46859da808f7",
+      "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "status": "pass",
+      "datasource_item_id": 5,
+      "datasource_item": {
+        "input": "Stock Markets Rally After Positive Economic Data Released",
+        "ground_truth": "Markets"
+      },
+      "results": [
+        {
+          "name": "String check-a2486074-d803-4445-b431-ad2262e85d47",
+          "sample": null,
+          "passed": true,
+          "score": 1.0
+        }
+      ],
+      "sample": {
+        "input": [
+          {
+            "role": "developer",
+            "content": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          },
+          {
+            "role": "user",
+            "content": "Stock Markets Rally After Positive Economic Data Released",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "content": "Markets",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "finish_reason": "stop",
+        "model": "gpt-4o-mini-2024-07-18",
+        "usage": {
+          "total_tokens": 325,
+          "completion_tokens": 2,
+          "prompt_tokens": 323,
+          "cached_tokens": 0
+        },
+        "error": null,
+        "temperature": 1.0,
+        "max_completion_tokens": 2048,
+        "top_p": 1.0,
+        "seed": 42
+      }
+    }
+  ],
+  "first_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "last_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "has_more": true
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create a conversation
 
 `client.conversations.create(ConversationCreateParamsbody?, RequestOptionsoptions?): Conversation`
 
@@ -3211,4 +3211,41 @@ const client = new OpenAI({
 const conversation = await client.conversations.create();
 
 console.log(conversation.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const conversation = await client.conversations.create({
+  metadata: { topic: "demo" },
+  items: [
+    { type: "message", role: "user", content: "Hello!" }
+  ],
+});
+console.log(conversation);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```

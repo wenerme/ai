@@ -1,4 +1,4 @@
-## List
+## List vector stores
 
 `client.vectorStores.list(VectorStoreListParamsquery?, RequestOptionsoptions?): CursorPage<VectorStore>`
 
@@ -133,5 +133,99 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const vectorStore of client.vectorStores.list()) {
   console.log(vectorStore.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "file_counts": {
+        "cancelled": 0,
+        "completed": 0,
+        "failed": 0,
+        "in_progress": 0,
+        "total": 0
+      },
+      "last_active_at": 0,
+      "metadata": {
+        "foo": "string"
+      },
+      "name": "name",
+      "object": "vector_store",
+      "status": "expired",
+      "usage_bytes": 0,
+      "expires_after": {
+        "anchor": "last_active_at",
+        "days": 1
+      },
+      "expires_at": 0
+    }
+  ],
+  "first_id": "vs_abc123",
+  "has_more": false,
+  "last_id": "vs_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStores = await openai.vectorStores.list();
+  console.log(vectorStores);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "vs_abc123",
+      "object": "vector_store",
+      "created_at": 1699061776,
+      "name": "Support FAQ",
+      "description": "Contains commonly asked questions and answers, organized by topic.",
+      "bytes": 139920,
+      "file_counts": {
+        "in_progress": 0,
+        "completed": 3,
+        "failed": 0,
+        "cancelled": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "vs_abc456",
+      "object": "vector_store",
+      "created_at": 1699061776,
+      "name": "Support FAQ v2",
+      "description": null,
+      "bytes": 139920,
+      "file_counts": {
+        "in_progress": 0,
+        "completed": 3,
+        "failed": 0,
+        "cancelled": 0,
+        "total": 3
+      }
+    }
+  ],
+  "first_id": "vs_abc123",
+  "last_id": "vs_abc456",
+  "has_more": false
 }
 ```

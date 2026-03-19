@@ -1,6 +1,6 @@
 # Graders
 
-## Run
+## Run grader
 
 **post** `/fine_tuning/alpha/graders/run`
 
@@ -1033,7 +1033,210 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/run \
         }'
 ```
 
-## Validate
+#### Response
+
+```json
+{
+  "metadata": {
+    "errors": {
+      "formula_parse_error": true,
+      "invalid_variable_error": true,
+      "model_grader_parse_error": true,
+      "model_grader_refusal_error": true,
+      "model_grader_server_error": true,
+      "model_grader_server_error_details": "model_grader_server_error_details",
+      "other_error": true,
+      "python_grader_runtime_error": true,
+      "python_grader_runtime_error_details": "python_grader_runtime_error_details",
+      "python_grader_server_error": true,
+      "python_grader_server_error_type": "python_grader_server_error_type",
+      "sample_parse_error": true,
+      "truncated_observation_error": true,
+      "unresponsive_reward_error": true
+    },
+    "execution_time": 0,
+    "name": "name",
+    "sampled_model_name": "sampled_model_name",
+    "scores": {
+      "foo": "bar"
+    },
+    "token_usage": 0,
+    "type": "type"
+  },
+  "model_grader_token_usage_per_model": {
+    "foo": "bar"
+  },
+  "reward": 0,
+  "sub_rewards": {
+    "foo": "bar"
+  }
+}
+```
+
+### Score text alignment
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "grader": {
+      "type": "score_model",
+      "name": "Example score model grader",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Score how close the reference answer is to the model answer on a 0-1 scale. Return only the score.\n\nReference answer: {{item.reference_answer}}\n\nModel answer: {{sample.output_text}}"
+            }
+          ]
+        }
+      ],
+      "model": "gpt-5-mini",
+      "sampling_params": {
+        "temperature": 1,
+        "top_p": 1,
+        "seed": 42
+      }
+    },
+    "item": {
+      "reference_answer": "fuzzy wuzzy was a bear"
+    },
+    "model_sample": "fuzzy wuzzy was a bear"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "reward": 1.0,
+  "metadata": {
+    "name": "Example score model grader",
+    "type": "score_model",
+    "errors": {
+      "formula_parse_error": false,
+      "sample_parse_error": false,
+      "truncated_observation_error": false,
+      "unresponsive_reward_error": false,
+      "invalid_variable_error": false,
+      "other_error": false,
+      "python_grader_server_error": false,
+      "python_grader_server_error_type": null,
+      "python_grader_runtime_error": false,
+      "python_grader_runtime_error_details": null,
+      "model_grader_server_error": false,
+      "model_grader_refusal_error": false,
+      "model_grader_parse_error": false,
+      "model_grader_server_error_details": null
+    },
+    "execution_time": 4.365238428115845,
+    "scores": {},
+    "token_usage": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    },
+    "sampled_model_name": "gpt-4o-2024-08-06"
+  },
+  "sub_rewards": {},
+  "model_grader_token_usage_per_model": {
+    "gpt-4o-2024-08-06": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### Score an image caption
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "grader": {
+      "type": "score_model",
+      "name": "Image caption grader",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Score how well the provided caption matches the image on a 0-1 scale. Only return the score.\n\nCaption: {{sample.output_text}}"
+            },
+            {
+              "type": "input_image",
+              "image_url": "https://example.com/dog-catching-ball.png",
+              "file_id": null,
+              "detail": "high"
+            }
+          ]
+        }
+      ],
+      "model": "gpt-5-mini",
+      "sampling_params": {
+        "temperature": 0.2
+      }
+    },
+    "item": {
+      "expected_caption": "A golden retriever jumps to catch a tennis ball"
+    },
+    "model_sample": "A dog leaps to grab a tennis ball mid-air"
+  }'
+```
+
+### Score an audio response
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "grader": {
+      "type": "score_model",
+      "name": "Audio clarity grader",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Listen to the clip and return a confidence score from 0 to 1 that the speaker said: {{item.target_phrase}}"
+            },
+            {
+              "type": "input_audio",
+              "input_audio": {
+                "data": "{{item.audio_clip_b64}}",
+                "format": "mp3"
+              }
+            }
+          ]
+        }
+      ],
+      "model": "gpt-audio",
+      "sampling_params": {
+        "temperature": 0.2,
+        "top_p": 1,
+        "seed": 123
+      }
+    },
+    "item": {
+      "target_phrase": "Please deliver the package on Tuesday",
+      "audio_clip_b64": "<base64-encoded mp3>"
+    },
+    "model_sample": "Please deliver the package on Tuesday"
+  }'
+```
+
+## Validate grader
 
 **post** `/fine_tuning/alpha/graders/validate`
 
@@ -2944,4 +3147,49 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
             "type": "string_check"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grader": {
+      "type": "string_check",
+      "name": "Example string check grader",
+      "input": "{{sample.output_text}}",
+      "reference": "{{item.label}}",
+      "operation": "eq"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "type": "string_check",
+    "name": "Example string check grader",
+    "input": "{{sample.output_text}}",
+    "reference": "{{item.label}}",
+    "operation": "eq"
+  }
+}
 ```

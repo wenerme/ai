@@ -1,4 +1,4 @@
-## Create
+## Add group user
 
 **post** `/organization/groups/{group_id}/users`
 
@@ -39,4 +39,35 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
     -d '{
           "user_id": "user_id"
         }'
+```
+
+#### Response
+
+```json
+{
+  "group_id": "group_id",
+  "object": "group.user",
+  "user_id": "user_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user",
+    "user_id": "user_abc123",
+    "group_id": "group_01J1F8ABCDXYZ"
+}
 ```

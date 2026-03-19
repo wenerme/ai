@@ -1,4 +1,4 @@
-## Generate
+## Create image
 
 **post** `/images/generations`
 
@@ -30,7 +30,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
   The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `ImageModel = "gpt-image-1.5" or "dall-e-2" or "dall-e-3" or 2 more`
 
@@ -270,4 +270,98 @@ curl https://api.openai.com/v1/images/generations \
           "style": "vivid",
           "user": "user-1234"
         }'
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Generate image
+
+```http
+curl https://api.openai.com/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-image-1.5",
+    "prompt": "A cute baby sea otter",
+    "n": 1,
+    "size": "1024x1024"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "created": 1713833628,
+  "data": [
+    {
+      "b64_json": "..."
+    }
+  ],
+  "usage": {
+    "total_tokens": 100,
+    "input_tokens": 50,
+    "output_tokens": 50,
+    "input_tokens_details": {
+      "text_tokens": 10,
+      "image_tokens": 40
+    }
+  }
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-image-1.5",
+    "prompt": "A cute baby sea otter",
+    "n": 1,
+    "size": "1024x1024",
+    "stream": true
+  }' \
+  --no-buffer
+```
+
+#### Response
+
+```json
+event: image_generation.partial_image
+data: {"type":"image_generation.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_generation.completed
+data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
 ```

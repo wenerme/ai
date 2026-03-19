@@ -1,6 +1,6 @@
 # Translations
 
-## Create
+## Create translation
 
 `audio.translations.create(TranslationCreateParams**kwargs)  -> TranslationCreateResponse`
 
@@ -130,10 +130,39 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 translation = client.audio.translations.create(
-    file=b"raw file contents",
+    file=b"Example data",
     model="whisper-1",
 )
 print(translation)
+```
+
+#### Response
+
+```json
+{
+  "text": "text"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+audio_file = open("speech.mp3", "rb")
+transcript = client.audio.translations.create(
+  model="whisper-1",
+  file=audio_file
+)
+```
+
+#### Response
+
+```json
+{
+  "text": "Hello, my name is Wolfgang and I come from Germany. Where are you heading today?"
+}
 ```
 
 ## Domain Types

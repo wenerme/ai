@@ -1,4 +1,4 @@
-## Create
+## Create completion
 
 **post** `/completions`
 
@@ -12,9 +12,9 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "gpt-3.5-turbo-instruct" or "davinci-002" or "babbage-002"`
+  - `"gpt-3.5-turbo-instruct" or "davinci-002" or "babbage-002"`
 
     ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
@@ -30,13 +30,13 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   Note that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = array of string`
+  - `array of string`
 
-  - `UnionMember2 = array of number`
+  - `array of number`
 
-  - `UnionMember3 = array of array of number`
+  - `array of array of number`
 
 - `best_of: optional number`
 
@@ -101,9 +101,9 @@ Returns a completion object, or a sequence of completion objects if the request 
   Up to 4 sequences where the API will stop generating further tokens. The
   returned text will not contain the stop sequence.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = array of string`
+  - `array of string`
 
 - `stream: optional boolean`
 
@@ -285,4 +285,128 @@ curl https://api.openai.com/v1/completions \
           "top_p": 1,
           "user": "user-1234"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "text_offset": [
+          0
+        ],
+        "token_logprobs": [
+          0
+        ],
+        "tokens": [
+          "string"
+        ],
+        "top_logprobs": [
+          {
+            "foo": 0
+          }
+        ]
+      },
+      "text": "text"
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "text_completion",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### No streaming
+
+```http
+curl https://api.openai.com/v1/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "VAR_completion_model_id",
+    "prompt": "Say this is a test",
+    "max_tokens": 7,
+    "temperature": 0
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
+  "object": "text_completion",
+  "created": 1589478378,
+  "model": "VAR_completion_model_id",
+  "system_fingerprint": "fp_44709d6fcb",
+  "choices": [
+    {
+      "text": "\n\nThis is indeed a test",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 5,
+    "completion_tokens": 7,
+    "total_tokens": 12
+  }
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "VAR_completion_model_id",
+    "prompt": "Say this is a test",
+    "max_tokens": 7,
+    "temperature": 0,
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-7iA7iJjj8V2zOkCGvWF2hAkDWBQZe",
+  "object": "text_completion",
+  "created": 1690759702,
+  "choices": [
+    {
+      "text": "This",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": null
+    }
+  ],
+  "model": "gpt-3.5-turbo-instruct"
+  "system_fingerprint": "fp_44709d6fcb",
+}
 ```

@@ -1,4 +1,4 @@
-## Reject
+## Reject call
 
 `realtime.calls.reject(strcall_id, CallRejectParams**kwargs)`
 

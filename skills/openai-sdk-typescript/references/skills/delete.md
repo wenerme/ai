@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill by its ID.
 
 `client.skills.delete(stringskillID, RequestOptionsoptions?): DeletedSkill`
 
@@ -34,4 +34,14 @@ const client = new OpenAI({
 const deletedSkill = await client.skills.delete('skill_123');
 
 console.log(deletedSkill.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```

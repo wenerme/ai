@@ -1,6 +1,6 @@
 # Versions
 
-## Create
+## Create a new immutable skill version.
 
 `client.skills.versions.create(stringskillID, VersionCreateParamsbody?, RequestOptionsoptions?): SkillVersion`
 
@@ -74,7 +74,21 @@ const skillVersion = await client.skills.versions.create('skill_123');
 console.log(skillVersion.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## List skill versions for a skill.
 
 `client.skills.versions.list(stringskillID, VersionListParamsquery?, RequestOptionsoptions?): CursorPage<SkillVersion>`
 
@@ -153,7 +167,29 @@ for await (const skillVersion of client.skills.versions.list('skill_123')) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a specific skill version.
 
 `client.skills.versions.retrieve(stringversion, VersionRetrieveParamsparams, RequestOptionsoptions?): SkillVersion`
 
@@ -221,7 +257,21 @@ const skillVersion = await client.skills.versions.retrieve('version', { skill_id
 console.log(skillVersion.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
 
 `client.skills.versions.delete(stringversion, VersionDeleteParamsparams, RequestOptionsoptions?): DeletedSkillVersion`
 
@@ -271,6 +321,17 @@ const deletedSkillVersion = await client.skills.versions.delete('version', {
 });
 
 console.log(deletedSkillVersion.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```
 
 ## Domain Types
@@ -383,7 +444,7 @@ console.log(deletedSkillVersion.id);
 
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 `client.skills.versions.content.retrieve(stringversion, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

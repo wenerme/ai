@@ -1,6 +1,6 @@
 # Realtime
 
-## Connect
+## 
 
 `realtime.connect(RealtimeConnectParams**kwargs)`
 
@@ -25672,7 +25672,7 @@ client.realtime.connect()
 
 # Client Secrets
 
-## Create
+## Create client secret
 
 `realtime.client_secrets.create(ClientSecretCreateParams**kwargs)  -> ClientSecretCreateResponse`
 
@@ -27612,6 +27612,82 @@ client_secret = client.realtime.client_secrets.create()
 print(client_secret.expires_at)
 ```
 
+#### Response
+
+```json
+{
+  "expires_at": 0,
+  "session": {
+    "client_secret": {
+      "expires_at": 0,
+      "value": "value"
+    },
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "noise_reduction": {
+          "type": "near_field"
+        },
+        "transcription": {
+          "language": "language",
+          "model": "string",
+          "prompt": "prompt"
+        },
+        "turn_detection": {
+          "type": "server_vad",
+          "create_response": true,
+          "idle_timeout_ms": 5000,
+          "interrupt_response": true,
+          "prefix_padding_ms": 0,
+          "silence_duration_ms": 0,
+          "threshold": 0
+        }
+      },
+      "output": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "speed": 0.25,
+        "voice": "ash"
+      }
+    },
+    "include": [
+      "item.input_audio_transcription.logprobs"
+    ],
+    "instructions": "instructions",
+    "max_output_tokens": 0,
+    "model": "string",
+    "output_modalities": [
+      "text"
+    ],
+    "prompt": {
+      "id": "id",
+      "variables": {
+        "foo": "string"
+      },
+      "version": "version"
+    },
+    "tool_choice": "none",
+    "tools": [
+      {
+        "description": "description",
+        "name": "name",
+        "parameters": {},
+        "type": "function"
+      }
+    ],
+    "tracing": "auto",
+    "truncation": "auto"
+  },
+  "value": "value"
+}
+```
+
 ## Domain Types
 
 ### Realtime Session Client Secret
@@ -28574,7 +28650,7 @@ print(client_secret.expires_at)
 
 # Calls
 
-## Accept
+## Accept call
 
 `realtime.calls.accept(strcall_id, CallAcceptParams**kwargs)`
 
@@ -29345,7 +29421,7 @@ client.realtime.calls.accept(
 )
 ```
 
-## Hangup
+## Hang up call
 
 `realtime.calls.hangup(strcall_id)`
 
@@ -29372,7 +29448,7 @@ client.realtime.calls.hangup(
 )
 ```
 
-## Refer
+## Refer call
 
 `realtime.calls.refer(strcall_id, CallReferParams**kwargs)`
 
@@ -29404,7 +29480,7 @@ client.realtime.calls.refer(
 )
 ```
 
-## Reject
+## Reject call
 
 `realtime.calls.reject(strcall_id, CallRejectParams**kwargs)`
 
@@ -29435,7 +29511,7 @@ client.realtime.calls.reject(
 )
 ```
 
-## Create
+## Create call
 
 `realtime.calls.create(CallCreateParams**kwargs)  -> BinaryResponseContent`
 

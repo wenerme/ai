@@ -1,4 +1,4 @@
-## Create
+## Upload certificate
 
 **post** `/organization/certificates`
 
@@ -71,4 +71,48 @@ curl https://api.openai.com/v1/organization/certificates \
     -d '{
           "content": "content"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "certificate_details": {
+    "content": "content",
+    "expires_at": 0,
+    "valid_at": 0
+  },
+  "created_at": 0,
+  "name": "name",
+  "object": "certificate",
+  "active": true
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/certificates \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "My Example Certificate",
+  "certificate": "-----BEGIN CERTIFICATE-----\\nMIIDeT...\\n-----END CERTIFICATE-----"
+}'
+```
+
+#### Response
+
+```json
+{
+  "object": "certificate",
+  "id": "cert_abc",
+  "name": "My Example Certificate",
+  "created_at": 1234567,
+  "certificate_details": {
+    "valid_at": 12345667,
+    "expires_at": 12345678
+  }
+}
 ```

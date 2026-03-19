@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill by its ID.
 
 `skills.delete(strskill_id)  -> DeletedSkill`
 
@@ -35,4 +35,14 @@ deleted_skill = client.skills.delete(
     "skill_123",
 )
 print(deleted_skill.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```

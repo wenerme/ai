@@ -1,4 +1,4 @@
-## List Files
+## List vector store files in a batch
 
 `vector_stores.file_batches.list_files(strbatch_id, FileBatchListFilesParams**kwargs)  -> SyncCursorPage[VectorStoreFile]`
 
@@ -165,4 +165,77 @@ page = client.vector_stores.file_batches.list_files(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_files = client.vector_stores.file_batches.list_files(
+  vector_store_id="vs_abc123",
+  batch_id="vsfb_abc123"
+)
+print(vector_store_files)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
 ```

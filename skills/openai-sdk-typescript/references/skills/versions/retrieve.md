@@ -1,4 +1,4 @@
-## Retrieve
+## Get a specific skill version.
 
 `client.skills.versions.retrieve(stringversion, VersionRetrieveParamsparams, RequestOptionsoptions?): SkillVersion`
 
@@ -64,4 +64,18 @@ const client = new OpenAI({
 const skillVersion = await client.skills.versions.retrieve('version', { skill_id: 'skill_123' });
 
 console.log(skillVersion.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

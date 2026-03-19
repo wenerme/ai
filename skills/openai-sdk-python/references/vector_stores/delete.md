@@ -1,4 +1,4 @@
-## Delete
+## Delete vector store
 
 `vector_stores.delete(strvector_store_id)  -> VectorStoreDeleted`
 
@@ -35,4 +35,36 @@ vector_store_deleted = client.vector_stores.delete(
     "vector_store_id",
 )
 print(vector_store_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted_vector_store = client.vector_stores.delete(
+  vector_store_id="vs_abc123"
+)
+print(deleted_vector_store)
+```
+
+#### Response
+
+```json
+{
+  id: "vs_abc123",
+  object: "vector_store.deleted",
+  deleted: true
+}
 ```

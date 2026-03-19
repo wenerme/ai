@@ -1,4 +1,4 @@
-## Create
+## Create vector store file batch
 
 **post** `/vector_stores/{vector_store_id}/file_batches`
 
@@ -18,11 +18,11 @@ Create a vector store file batch.
   with a maximum length of 64 characters. Values are strings with a maximum
   length of 512 characters, booleans, or numbers.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = number`
+  - `number`
 
-  - `UnionMember2 = boolean`
+  - `boolean`
 
 - `chunking_strategy: optional FileChunkingStrategyParam`
 
@@ -80,11 +80,11 @@ Create a vector store file batch.
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `chunking_strategy: optional FileChunkingStrategyParam`
 
@@ -188,4 +188,67 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json \
+    -H "OpenAI-Beta: assistants=v2" \
+    -d '{
+      "files": [
+        {
+          "file_id": "file-abc123",
+          "attributes": {"category": "finance"}
+        },
+        {
+          "file_id": "file-abc456",
+          "chunking_strategy": {
+            "type": "static",
+            "max_chunk_size_tokens": 1200,
+            "chunk_overlap_tokens": 200
+          }
+        }
+      ]
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
 ```

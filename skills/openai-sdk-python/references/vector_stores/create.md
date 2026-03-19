@@ -1,4 +1,4 @@
-## Create
+## Create vector store
 
 `vector_stores.create(VectorStoreCreateParams**kwargs)  -> VectorStore`
 
@@ -181,4 +181,65 @@ client = OpenAI(
 )
 vector_store = client.vector_stores.create()
 print(vector_store.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "last_active_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "name",
+  "object": "vector_store",
+  "status": "expired",
+  "usage_bytes": 0,
+  "expires_after": {
+    "anchor": "last_active_at",
+    "days": 1
+  },
+  "expires_at": 0
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store = client.vector_stores.create(
+  name="Support FAQ"
+)
+print(vector_store)
+```
+
+#### Response
+
+```json
+{
+  "id": "vs_abc123",
+  "object": "vector_store",
+  "created_at": 1699061776,
+  "name": "Support FAQ",
+  "description": "Contains commonly asked questions and answers, organized by topic.",
+  "bytes": 139920,
+  "file_counts": {
+    "in_progress": 0,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 3
+  }
+}
 ```

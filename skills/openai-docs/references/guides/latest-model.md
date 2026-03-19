@@ -433,7 +433,9 @@ If you use `previous_response_id`, that is usually the simplest path because
   prior assistant state is preserved. If you replay assistant history manually,
   preserve each original `phase` value.
 
-Missing or dropped `phase` can cause preambles to be treated as final answers, which can degrade quality on multi-step tasks. For additional guidance and examples, see the [GPT-5.4 prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-4_prompting_guide#phase).
+Missing or dropped `phase` can cause preambles to be treated as final answers
+in those workflows. For additional guidance and examples, see the [GPT-5.4
+prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance#phase-parameter).
 
 Round-trip assistant phase values
 

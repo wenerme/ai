@@ -1,4 +1,4 @@
-## List
+## List checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.list(stringfineTunedModelCheckpoint, PermissionListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<PermissionListResponse>`
 
@@ -72,5 +72,24 @@ for await (const permissionListResponse of client.fineTuning.checkpoints.permiss
   'ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )) {
   console.log(permissionListResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```

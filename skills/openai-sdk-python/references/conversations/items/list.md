@@ -1,4 +1,4 @@
-## List
+## List items
 
 `conversations.items.list(strconversation_id, ItemListParams**kwargs)  -> SyncConversationCursorPage[ConversationItem]`
 
@@ -3108,4 +3108,61 @@ page = client.conversations.items.list(
 )
 page = page.data[0]
 print(page)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+items = client.conversations.items.list("conv_123", limit=10)
+print(items.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_abc",
+  "has_more": false
+}
 ```

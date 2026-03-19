@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve run step
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
@@ -317,4 +317,81 @@ Retrieves a run step.
 curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps/$STEP_ID \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expired_at": 0,
+  "failed_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.run.step",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "step_details": {
+    "message_creation": {
+      "message_id": "message_id"
+    },
+    "type": "message_creation"
+  },
+  "thread_id": "thread_id",
+  "type": "message_creation",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "step_abc123",
+  "object": "thread.run.step",
+  "created_at": 1699063291,
+  "run_id": "run_abc123",
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "type": "message_creation",
+  "status": "completed",
+  "cancelled_at": null,
+  "completed_at": 1699063291,
+  "expired_at": null,
+  "failed_at": null,
+  "last_error": null,
+  "step_details": {
+    "type": "message_creation",
+    "message_creation": {
+      "message_id": "msg_abc123"
+    }
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  }
+}
 ```

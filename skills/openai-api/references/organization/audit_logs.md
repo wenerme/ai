@@ -1,6 +1,6 @@
 # Audit Logs
 
-## List
+## List audit logs
 
 **get** `/organization/audit_logs`
 
@@ -1069,7 +1069,384 @@ curl https://api.openai.com/v1/organization/audit_logs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Costs
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "actor": {
+        "api_key": {
+          "id": "id",
+          "service_account": {
+            "id": "id"
+          },
+          "type": "user",
+          "user": {
+            "id": "id",
+            "email": "email"
+          }
+        },
+        "session": {
+          "ip_address": "ip_address",
+          "user": {
+            "id": "id",
+            "email": "email"
+          }
+        },
+        "type": "session"
+      },
+      "effective_at": 0,
+      "type": "api_key.created",
+      "api_key.created": {
+        "id": "id",
+        "data": {
+          "scopes": [
+            "string"
+          ]
+        }
+      },
+      "api_key.deleted": {
+        "id": "id"
+      },
+      "api_key.updated": {
+        "id": "id",
+        "changes_requested": {
+          "scopes": [
+            "string"
+          ]
+        }
+      },
+      "certificate.created": {
+        "id": "id",
+        "name": "name"
+      },
+      "certificate.deleted": {
+        "id": "id",
+        "certificate": "certificate",
+        "name": "name"
+      },
+      "certificate.updated": {
+        "id": "id",
+        "name": "name"
+      },
+      "certificates.activated": {
+        "certificates": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "certificates.deactivated": {
+        "certificates": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "checkpoint.permission.created": {
+        "id": "id",
+        "data": {
+          "fine_tuned_model_checkpoint": "fine_tuned_model_checkpoint",
+          "project_id": "project_id"
+        }
+      },
+      "checkpoint.permission.deleted": {
+        "id": "id"
+      },
+      "external_key.registered": {
+        "id": "id",
+        "data": {}
+      },
+      "external_key.removed": {
+        "id": "id"
+      },
+      "group.created": {
+        "id": "id",
+        "data": {
+          "group_name": "group_name"
+        }
+      },
+      "group.deleted": {
+        "id": "id"
+      },
+      "group.updated": {
+        "id": "id",
+        "changes_requested": {
+          "group_name": "group_name"
+        }
+      },
+      "invite.accepted": {
+        "id": "id"
+      },
+      "invite.deleted": {
+        "id": "id"
+      },
+      "invite.sent": {
+        "id": "id",
+        "data": {
+          "email": "email",
+          "role": "role"
+        }
+      },
+      "ip_allowlist.config.activated": {
+        "configs": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "ip_allowlist.config.deactivated": {
+        "configs": [
+          {
+            "id": "id",
+            "name": "name"
+          }
+        ]
+      },
+      "ip_allowlist.created": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ],
+        "name": "name"
+      },
+      "ip_allowlist.deleted": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ],
+        "name": "name"
+      },
+      "ip_allowlist.updated": {
+        "id": "id",
+        "allowed_ips": [
+          "string"
+        ]
+      },
+      "login.failed": {
+        "error_code": "error_code",
+        "error_message": "error_message"
+      },
+      "login.succeeded": {},
+      "logout.failed": {
+        "error_code": "error_code",
+        "error_message": "error_message"
+      },
+      "logout.succeeded": {},
+      "organization.updated": {
+        "id": "id",
+        "changes_requested": {
+          "api_call_logging": "api_call_logging",
+          "api_call_logging_project_ids": "api_call_logging_project_ids",
+          "description": "description",
+          "name": "name",
+          "threads_ui_visibility": "threads_ui_visibility",
+          "title": "title",
+          "usage_dashboard_visibility": "usage_dashboard_visibility"
+        }
+      },
+      "project": {
+        "id": "id",
+        "name": "name"
+      },
+      "project.archived": {
+        "id": "id"
+      },
+      "project.created": {
+        "id": "id",
+        "data": {
+          "name": "name",
+          "title": "title"
+        }
+      },
+      "project.deleted": {
+        "id": "id"
+      },
+      "project.updated": {
+        "id": "id",
+        "changes_requested": {
+          "title": "title"
+        }
+      },
+      "rate_limit.deleted": {
+        "id": "id"
+      },
+      "rate_limit.updated": {
+        "id": "id",
+        "changes_requested": {
+          "batch_1_day_max_input_tokens": 0,
+          "max_audio_megabytes_per_1_minute": 0,
+          "max_images_per_1_minute": 0,
+          "max_requests_per_1_day": 0,
+          "max_requests_per_1_minute": 0,
+          "max_tokens_per_1_minute": 0
+        }
+      },
+      "role.assignment.created": {
+        "id": "id",
+        "principal_id": "principal_id",
+        "principal_type": "principal_type",
+        "resource_id": "resource_id",
+        "resource_type": "resource_type"
+      },
+      "role.assignment.deleted": {
+        "id": "id",
+        "principal_id": "principal_id",
+        "principal_type": "principal_type",
+        "resource_id": "resource_id",
+        "resource_type": "resource_type"
+      },
+      "role.created": {
+        "id": "id",
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_name": "role_name"
+      },
+      "role.deleted": {
+        "id": "id"
+      },
+      "role.updated": {
+        "id": "id",
+        "changes_requested": {
+          "description": "description",
+          "metadata": {},
+          "permissions_added": [
+            "string"
+          ],
+          "permissions_removed": [
+            "string"
+          ],
+          "resource_id": "resource_id",
+          "resource_type": "resource_type",
+          "role_name": "role_name"
+        }
+      },
+      "scim.disabled": {
+        "id": "id"
+      },
+      "scim.enabled": {
+        "id": "id"
+      },
+      "service_account.created": {
+        "id": "id",
+        "data": {
+          "role": "role"
+        }
+      },
+      "service_account.deleted": {
+        "id": "id"
+      },
+      "service_account.updated": {
+        "id": "id",
+        "changes_requested": {
+          "role": "role"
+        }
+      },
+      "user.added": {
+        "id": "id",
+        "data": {
+          "role": "role"
+        }
+      },
+      "user.deleted": {
+        "id": "id"
+      },
+      "user.updated": {
+        "id": "id",
+        "changes_requested": {
+          "role": "role"
+        }
+      }
+    }
+  ],
+  "first_id": "audit_log-defb456h8dks",
+  "has_more": true,
+  "last_id": "audit_log-hnbkd8s93s",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/audit_logs \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "audit_log-xxx_yyyymmdd",
+            "type": "project.archived",
+            "effective_at": 1722461446,
+            "actor": {
+                "type": "api_key",
+                "api_key": {
+                    "type": "user",
+                    "user": {
+                        "id": "user-xxx",
+                        "email": "user@example.com"
+                    }
+                }
+            },
+            "project.archived": {
+                "id": "proj_abc"
+            },
+        },
+        {
+            "id": "audit_log-yyy__20240101",
+            "type": "api_key.updated",
+            "effective_at": 1720804190,
+            "actor": {
+                "type": "session",
+                "session": {
+                    "user": {
+                        "id": "user-xxx",
+                        "email": "user@example.com"
+                    },
+                    "ip_address": "127.0.0.1",
+                    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                    "ja3": "a497151ce4338a12c4418c44d375173e",
+                    "ja4": "q13d0313h3_55b375c5d22e_c7319ce65786",
+                    "ip_address_details": {
+                      "country": "US",
+                      "city": "San Francisco",
+                      "region": "California",
+                      "region_code": "CA",
+                      "asn": "1234",
+                      "latitude": "37.77490",
+                      "longitude": "-122.41940"
+                    }
+                }
+            },
+            "api_key.updated": {
+                "id": "key_xxxx",
+                "data": {
+                    "scopes": ["resource_2.operation_2"]
+                }
+            },
+        }
+    ],
+    "first_id": "audit_log-xxx__20240101",
+    "last_id": "audit_log_yyy__20240101",
+    "has_more": true
+}
+```
+
+## Costs
 
 **get** `/organization/costs`
 
@@ -1424,9 +1801,79 @@ curl https://api.openai.com/v1/organization/costs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.costs.result",
+                    "amount": {
+                        "value": 0.06,
+                        "currency": "usd"
+                    },
+                    "line_item": null,
+                    "project_id": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
 # Admin API Keys
 
-## List
+## List all organization and project API keys.
 
 **get** `/organization/admin_api_keys`
 
@@ -1523,7 +1970,74 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "key_abc",
+      "created_at": 1711471533,
+      "last_used_at": 1711471534,
+      "name": "Administration Key",
+      "object": "organization.admin_api_key",
+      "owner": {
+        "id": "sa_456",
+        "created_at": 1711471533,
+        "name": "My Service Account",
+        "object": "organization.user",
+        "role": "owner",
+        "type": "user"
+      },
+      "redacted_value": "sk-admin...def",
+      "value": "sk-admin-1234abcd"
+    }
+  ],
+  "first_id": "key_abc",
+  "has_more": false,
+  "last_id": "key_xyz",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "organization.admin_api_key",
+      "id": "key_abc",
+      "name": "Main Admin Key",
+      "redacted_value": "sk-admin...def",
+      "created_at": 1711471533,
+      "last_used_at": 1711471534,
+      "owner": {
+        "type": "service_account",
+        "object": "organization.service_account",
+        "id": "sa_456",
+        "name": "My Service Account",
+        "created_at": 1711471533,
+        "role": "member"
+      }
+    }
+  ],
+  "first_id": "key_abc",
+  "last_id": "key_abc",
+  "has_more": false
+}
+```
+
+## Create admin API key
 
 **post** `/organization/admin_api_keys`
 
@@ -1600,7 +2114,62 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "key_abc",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
+  "object": "organization.admin_api_key",
+  "owner": {
+    "id": "sa_456",
+    "created_at": 1711471533,
+    "name": "My Service Account",
+    "object": "organization.user",
+    "role": "owner",
+    "type": "user"
+  },
+  "redacted_value": "sk-admin...def",
+  "value": "sk-admin-1234abcd"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "New Admin Key"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.admin_api_key",
+  "id": "key_xyz",
+  "name": "New Admin Key",
+  "redacted_value": "sk-admin...xyz",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "owner": {
+    "type": "user",
+    "object": "organization.user",
+    "id": "user_123",
+    "name": "John Doe",
+    "created_at": 1711471533,
+    "role": "owner"
+  },
+  "value": "sk-admin-1234abcd"
+}
+```
+
+## Retrieve admin API key
 
 **get** `/organization/admin_api_keys/{key_id}`
 
@@ -1675,7 +2244,58 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "key_abc",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
+  "object": "organization.admin_api_key",
+  "owner": {
+    "id": "sa_456",
+    "created_at": 1711471533,
+    "name": "My Service Account",
+    "object": "organization.user",
+    "role": "owner",
+    "type": "user"
+  },
+  "redacted_value": "sk-admin...def",
+  "value": "sk-admin-1234abcd"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.admin_api_key",
+  "id": "key_abc",
+  "name": "Main Admin Key",
+  "redacted_value": "sk-admin...xyz",
+  "created_at": 1711471533,
+  "last_used_at": 1711471534,
+  "owner": {
+    "type": "user",
+    "object": "organization.user",
+    "id": "user_123",
+    "name": "John Doe",
+    "created_at": 1711471533,
+    "role": "owner"
+  }
+}
+```
+
+## Delete admin API key
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
@@ -1703,9 +2323,37 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "id": "key_abc",
+  "deleted": true,
+  "object": "organization.admin_api_key.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "id": "key_abc",
+  "object": "organization.admin_api_key.deleted",
+  "deleted": true
+}
+```
+
 # Usage
 
-## Get Audio Speeches
+## Audio speeches
 
 **get** `/organization/usage/audio_speeches`
 
@@ -2084,7 +2732,77 @@ curl https://api.openai.com/v1/organization/usage/audio_speeches \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Audio Transcriptions
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/audio_speeches?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.audio_speeches.result",
+                    "characters": 45,
+                    "num_model_requests": 1,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Audio transcriptions
 
 **get** `/organization/usage/audio_transcriptions`
 
@@ -2463,7 +3181,77 @@ curl https://api.openai.com/v1/organization/usage/audio_transcriptions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Code Interpreter Sessions
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/audio_transcriptions?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.audio_transcriptions.result",
+                    "seconds": 20,
+                    "num_model_requests": 1,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Code interpreter sessions
 
 **get** `/organization/usage/code_interpreter_sessions`
 
@@ -2824,7 +3612,73 @@ curl https://api.openai.com/v1/organization/usage/code_interpreter_sessions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Completions
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/code_interpreter_sessions?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.code_interpreter_sessions.result",
+                    "num_sessions": 1,
+                    "project_id": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Completions
 
 **get** `/organization/usage/completions`
 
@@ -3211,7 +4065,83 @@ curl https://api.openai.com/v1/organization/usage/completions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Embeddings
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/completions?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.completions.result",
+                    "input_tokens": 1000,
+                    "output_tokens": 500,
+                    "input_cached_tokens": 800,
+                    "input_audio_tokens": 0,
+                    "output_audio_tokens": 0,
+                    "num_model_requests": 5,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null,
+                    "batch": null,
+                    "service_tier": null
+                }
+            ]
+        }
+    ],
+    "has_more": true,
+    "next_page": "page_AAAAAGdGxdEiJdKOAAAAAGcqsYA="
+}
+```
+
+## Embeddings
 
 **get** `/organization/usage/embeddings`
 
@@ -3590,7 +4520,77 @@ curl https://api.openai.com/v1/organization/usage/embeddings \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Images
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/embeddings?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.embeddings.result",
+                    "input_tokens": 16,
+                    "num_model_requests": 2,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Images
 
 **get** `/organization/usage/images`
 
@@ -3997,7 +4997,79 @@ curl https://api.openai.com/v1/organization/usage/images \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Moderations
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/images?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.images.result",
+                    "images": 2,
+                    "num_model_requests": 2,
+                    "size": null,
+                    "source": null,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Moderations
 
 **get** `/organization/usage/moderations`
 
@@ -4376,7 +5448,77 @@ curl https://api.openai.com/v1/organization/usage/moderations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Get Vector Stores
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/moderations?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.moderations.result",
+                    "input_tokens": 16,
+                    "num_model_requests": 2,
+                    "project_id": null,
+                    "user_id": null,
+                    "api_key_id": null,
+                    "model": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
+```
+
+## Vector stores
 
 **get** `/organization/usage/vector_stores`
 
@@ -4735,4 +5877,70 @@ Get vector stores usage details for the organization.
 ```http
 curl https://api.openai.com/v1/organization/usage/vector_stores \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "end_time": 0,
+      "object": "bucket",
+      "result": [
+        {
+          "input_tokens": 0,
+          "num_model_requests": 0,
+          "object": "organization.usage.completions.result",
+          "output_tokens": 0,
+          "api_key_id": "api_key_id",
+          "batch": true,
+          "input_audio_tokens": 0,
+          "input_cached_tokens": 0,
+          "model": "model",
+          "output_audio_tokens": 0,
+          "project_id": "project_id",
+          "service_tier": "service_tier",
+          "user_id": "user_id"
+        }
+      ],
+      "start_time": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "page"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/organization/usage/vector_stores?start_time=1730419200&limit=1" \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "page",
+    "data": [
+        {
+            "object": "bucket",
+            "start_time": 1730419200,
+            "end_time": 1730505600,
+            "results": [
+                {
+                    "object": "organization.usage.vector_stores.result",
+                    "usage_bytes": 1024,
+                    "project_id": null
+                }
+            ]
+        }
+    ],
+    "has_more": false,
+    "next_page": null
+}
 ```

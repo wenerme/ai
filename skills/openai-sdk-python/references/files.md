@@ -1,6 +1,6 @@
 # Files
 
-## List
+## List files
 
 `files.list(FileListParams**kwargs)  -> SyncCursorPage[FileObject]`
 
@@ -110,7 +110,71 @@ page = page.data[0]
 print(page)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "created_at": 0,
+      "filename": "filename",
+      "object": "file",
+      "purpose": "assistants",
+      "status": "uploaded",
+      "expires_at": 0,
+      "status_details": "status_details"
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.list()
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "file",
+      "bytes": 175,
+      "created_at": 1613677385,
+      "expires_at": 1677614202,
+      "filename": "salesOverview.pdf",
+      "purpose": "assistants",
+    },
+    {
+      "id": "file-abc456",
+      "object": "file",
+      "bytes": 140,
+      "created_at": 1613779121,
+      "expires_at": 1677614202,
+      "filename": "puppy.jsonl",
+      "purpose": "fine-tune",
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```
+
+## Upload file
 
 `files.create(FileCreateParams**kwargs)  -> FileObject`
 
@@ -253,13 +317,59 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 file_object = client.files.create(
-    file=b"raw file contents",
+    file=b"Example data",
     purpose="assistants",
 )
 print(file_object.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.create(
+  file=open("mydata.jsonl", "rb"),
+  purpose="fine-tune",
+  expires_after={
+    "anchor": "created_at",
+    "seconds": 2592000
+  }
+)
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Delete file
 
 `files.delete(strfile_id)  -> FileDeleted`
 
@@ -298,7 +408,36 @@ file_deleted = client.files.delete(
 print(file_deleted.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "file"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.delete("file-abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "deleted": true
+}
+```
+
+## Retrieve file
 
 `files.retrieve(strfile_id)  -> FileObject`
 
@@ -391,7 +530,46 @@ file_object = client.files.retrieve(
 print(file_object.id)
 ```
 
-## Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.retrieve("file-abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
+```
+
+## Retrieve file content
 
 `files.content(strfile_id)  -> BinaryResponseContent`
 
@@ -424,7 +602,16 @@ content = response.read()
 print(content)
 ```
 
-## Retrieve Content
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+content = client.files.content("file-abc123")
+```
+
+## Retrieve file content
 
 `files.retrieve_content(strfile_id)  -> FileContent`
 
@@ -453,6 +640,21 @@ file_content = client.files.retrieve_content(
     "file_id",
 )
 print(file_content)
+```
+
+#### Response
+
+```json
+"string"
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+content = client.files.content("file-abc123")
 ```
 
 ## Domain Types

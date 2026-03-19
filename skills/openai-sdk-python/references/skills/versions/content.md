@@ -1,6 +1,6 @@
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 `skills.versions.content.retrieve(strversion, ContentRetrieveParams**kwargs)  -> BinaryResponseContent`
 

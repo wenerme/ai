@@ -1,4 +1,4 @@
-## Update
+## Update the default version pointer for a skill.
 
 `skills.update(strskill_id, SkillUpdateParams**kwargs)  -> Skill`
 
@@ -62,4 +62,18 @@ skill = client.skills.update(
     default_version="default_version",
 )
 print(skill.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

@@ -1,4 +1,4 @@
-## Content
+## Retrieve vector store file content
 
 `vector_stores.files.content(strfile_id, FileContentParams**kwargs)  -> SyncPage[FileContentResponse]`
 
@@ -39,4 +39,20 @@ page = client.vector_stores.files.content(
 )
 page = page.data[0]
 print(page.text)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "text": "text",
+      "type": "type"
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.file_content.page"
+}
 ```

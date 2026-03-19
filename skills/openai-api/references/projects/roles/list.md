@@ -1,4 +1,4 @@
-## List
+## List project roles
 
 **get** `/projects/{project_id}/roles`
 
@@ -81,4 +81,59 @@ Lists the roles configured for a project.
 ```http
 curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "description": "description",
+      "name": "name",
+      "object": "role",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "role",
+            "id": "role_01J1F8PROJ",
+            "name": "API Project Key Manager",
+            "description": "Allows managing API keys for the project",
+            "permissions": [
+                "api.organization.projects.api_keys.read",
+                "api.organization.projects.api_keys.write"
+            ],
+            "resource_type": "api.project",
+            "predefined_role": false
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
 ```

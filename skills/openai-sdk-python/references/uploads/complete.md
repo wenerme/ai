@@ -1,4 +1,4 @@
-## Complete
+## Complete upload
 
 `uploads.complete(strupload_id, UploadCompleteParams**kwargs)  -> Upload`
 
@@ -151,4 +151,30 @@ upload = client.uploads.complete(
     part_ids=["string"],
 )
 print(upload.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
 ```

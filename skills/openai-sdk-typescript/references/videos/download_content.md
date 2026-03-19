@@ -1,4 +1,4 @@
-## Download Content
+## Retrieve video content
 
 `client.videos.downloadContent(stringvideoID, VideoDownloadContentParamsquery?, RequestOptionsoptions?): Response`
 
@@ -36,6 +36,21 @@ import OpenAI from 'openai';
 const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
+
+const response = await client.videos.downloadContent('video_123');
+
+console.log(response);
+
+const content = await response.blob();
+console.log(content);
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
 
 const response = await client.videos.downloadContent('video_123');
 

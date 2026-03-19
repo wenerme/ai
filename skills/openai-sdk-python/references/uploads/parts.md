@@ -1,6 +1,6 @@
 # Parts
 
-## Create
+## Add upload part
 
 `uploads.parts.create(strupload_id, PartCreateParams**kwargs)  -> UploadPart`
 
@@ -55,9 +55,20 @@ client = OpenAI(
 )
 upload_part = client.uploads.parts.create(
     upload_id="upload_abc123",
-    data=b"raw file contents",
+    data=b"Example data",
 )
 print(upload_part.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "upload.part",
+  "upload_id": "upload_id"
+}
 ```
 
 ## Domain Types

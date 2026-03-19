@@ -1,4 +1,4 @@
-## Create
+## Add upload part
 
 `client.uploads.parts.create(stringuploadID, PartCreateParamsbody, RequestOptionsoptions?): UploadPart`
 
@@ -58,4 +58,15 @@ const uploadPart = await client.uploads.parts.create('upload_abc123', {
 });
 
 console.log(uploadPart.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "upload.part",
+  "upload_id": "upload_id"
+}
 ```

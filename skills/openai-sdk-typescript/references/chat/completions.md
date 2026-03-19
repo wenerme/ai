@@ -1,6 +1,6 @@
 # Completions
 
-## Create
+## Create chat completion
 
 `client.chat.completions.create(ChatCompletionCreateParamsbody, RequestOptionsoptions?): ChatCompletion | Stream<ChatCompletionChunk>`
 
@@ -1633,7 +1633,582 @@ const chatCompletion = await client.chat.completions.create({
 console.log(chatCompletion);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "content": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ],
+        "refusal": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "content": "content",
+        "refusal": "refusal",
+        "role": "assistant",
+        "annotations": [
+          {
+            "type": "url_citation",
+            "url_citation": {
+              "end_index": 0,
+              "start_index": 0,
+              "title": "title",
+              "url": "url"
+            }
+          }
+        ],
+        "audio": {
+          "id": "id",
+          "data": "data",
+          "expires_at": 0,
+          "transcript": "transcript"
+        },
+        "function_call": {
+          "arguments": "arguments",
+          "name": "name"
+        },
+        "tool_calls": [
+          {
+            "id": "id",
+            "function": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "chat.completion",
+  "service_tier": "auto",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "developer", content: "You are a helpful assistant." }],
+    model: "VAR_chat_model_id",
+    store: true,
+  });
+
+  console.log(completion.choices[0]);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT",
+  "object": "chat.completion",
+  "created": 1741569952,
+  "model": "gpt-5.4",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today?",
+        "refusal": null,
+        "annotations": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 19,
+    "completion_tokens": 10,
+    "total_tokens": 29,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default"
+}
+```
+
+### Image input
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const response = await openai.chat.completions.create({
+    model: "gpt-5.4",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "What's in this image?" },
+          {
+            type: "image_url",
+            image_url: {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+            },
+          }
+        ],
+      },
+    ],
+  });
+  console.log(response.choices[0]);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
+  "object": "chat.completion",
+  "created": 1741570283,
+  "model": "gpt-5.4",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The image shows a wooden boardwalk path running through a lush green field or meadow. The sky is bright blue with some scattered clouds, giving the scene a serene and peaceful atmosphere. Trees and shrubs are visible in the background.",
+        "refusal": null,
+        "annotations": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1117,
+    "completion_tokens": 46,
+    "total_tokens": 1163,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default"
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    model: "VAR_chat_model_id",
+    messages: [
+      {"role": "developer", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Hello!"}
+    ],
+    stream: true,
+  });
+
+  for await (const chunk of completion) {
+    console.log(chunk.choices[0].delta.content);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
+
+....
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
+```
+
+### Functions
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const messages = [{"role": "user", "content": "What's the weather like in Boston today?"}];
+  const tools = [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_weather",
+          "description": "Get the current weather in a given location",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city and state, e.g. San Francisco, CA",
+              },
+              "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+            },
+            "required": ["location"],
+          },
+        }
+      }
+  ];
+
+  const response = await openai.chat.completions.create({
+    model: "gpt-5.4",
+    messages: messages,
+    tools: tools,
+    tool_choice: "auto",
+  });
+
+  console.log(response);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1699896916,
+  "model": "gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_abc123",
+            "type": "function",
+            "function": {
+              "name": "get_current_weather",
+              "arguments": "{\n\"location\": \"Boston, MA\"\n}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 17,
+    "total_tokens": 99,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  }
+}
+```
+
+### Logprobs
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: "Hello!" }],
+    model: "VAR_chat_model_id",
+    logprobs: true,
+    top_logprobs: 2,
+  });
+
+  console.log(completion.choices[0]);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "created": 1702685778,
+  "model": "gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today?"
+      },
+      "logprobs": {
+        "content": [
+          {
+            "token": "Hello",
+            "logprob": -0.31725305,
+            "bytes": [72, 101, 108, 108, 111],
+            "top_logprobs": [
+              {
+                "token": "Hello",
+                "logprob": -0.31725305,
+                "bytes": [72, 101, 108, 108, 111]
+              },
+              {
+                "token": "Hi",
+                "logprob": -1.3190403,
+                "bytes": [72, 105]
+              }
+            ]
+          },
+          {
+            "token": "!",
+            "logprob": -0.02380986,
+            "bytes": [
+              33
+            ],
+            "top_logprobs": [
+              {
+                "token": "!",
+                "logprob": -0.02380986,
+                "bytes": [33]
+              },
+              {
+                "token": " there",
+                "logprob": -3.787621,
+                "bytes": [32, 116, 104, 101, 114, 101]
+              }
+            ]
+          },
+          {
+            "token": " How",
+            "logprob": -0.000054669687,
+            "bytes": [32, 72, 111, 119],
+            "top_logprobs": [
+              {
+                "token": " How",
+                "logprob": -0.000054669687,
+                "bytes": [32, 72, 111, 119]
+              },
+              {
+                "token": "<|end|>",
+                "logprob": -10.953937,
+                "bytes": null
+              }
+            ]
+          },
+          {
+            "token": " can",
+            "logprob": -0.015801601,
+            "bytes": [32, 99, 97, 110],
+            "top_logprobs": [
+              {
+                "token": " can",
+                "logprob": -0.015801601,
+                "bytes": [32, 99, 97, 110]
+              },
+              {
+                "token": " may",
+                "logprob": -4.161023,
+                "bytes": [32, 109, 97, 121]
+              }
+            ]
+          },
+          {
+            "token": " I",
+            "logprob": -3.7697225e-6,
+            "bytes": [
+              32,
+              73
+            ],
+            "top_logprobs": [
+              {
+                "token": " I",
+                "logprob": -3.7697225e-6,
+                "bytes": [32, 73]
+              },
+              {
+                "token": " assist",
+                "logprob": -13.596657,
+                "bytes": [32, 97, 115, 115, 105, 115, 116]
+              }
+            ]
+          },
+          {
+            "token": " assist",
+            "logprob": -0.04571125,
+            "bytes": [32, 97, 115, 115, 105, 115, 116],
+            "top_logprobs": [
+              {
+                "token": " assist",
+                "logprob": -0.04571125,
+                "bytes": [32, 97, 115, 115, 105, 115, 116]
+              },
+              {
+                "token": " help",
+                "logprob": -3.1089056,
+                "bytes": [32, 104, 101, 108, 112]
+              }
+            ]
+          },
+          {
+            "token": " you",
+            "logprob": -5.4385737e-6,
+            "bytes": [32, 121, 111, 117],
+            "top_logprobs": [
+              {
+                "token": " you",
+                "logprob": -5.4385737e-6,
+                "bytes": [32, 121, 111, 117]
+              },
+              {
+                "token": " today",
+                "logprob": -12.807695,
+                "bytes": [32, 116, 111, 100, 97, 121]
+              }
+            ]
+          },
+          {
+            "token": " today",
+            "logprob": -0.0040071653,
+            "bytes": [32, 116, 111, 100, 97, 121],
+            "top_logprobs": [
+              {
+                "token": " today",
+                "logprob": -0.0040071653,
+                "bytes": [32, 116, 111, 100, 97, 121]
+              },
+              {
+                "token": "?",
+                "logprob": -5.5247097,
+                "bytes": [63]
+              }
+            ]
+          },
+          {
+            "token": "?",
+            "logprob": -0.0008108172,
+            "bytes": [63],
+            "top_logprobs": [
+              {
+                "token": "?",
+                "logprob": -0.0008108172,
+                "bytes": [63]
+              },
+              {
+                "token": "?\n",
+                "logprob": -7.184561,
+                "bytes": [63, 10]
+              }
+            ]
+          }
+        ]
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 9,
+    "completion_tokens": 9,
+    "total_tokens": 18,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "system_fingerprint": null
+}
+```
+
+## List Chat Completions
 
 `client.chat.completions.list(ChatCompletionListParamsquery?, RequestOptionsoptions?): CursorPage<ChatCompletion>`
 
@@ -2025,7 +2600,123 @@ for await (const chatCompletion of client.chat.completions.list()) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": {
+            "content": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0,
+                "top_logprobs": [
+                  {
+                    "token": "token",
+                    "bytes": [
+                      0
+                    ],
+                    "logprob": 0
+                  }
+                ]
+              }
+            ],
+            "refusal": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0,
+                "top_logprobs": [
+                  {
+                    "token": "token",
+                    "bytes": [
+                      0
+                    ],
+                    "logprob": 0
+                  }
+                ]
+              }
+            ]
+          },
+          "message": {
+            "content": "content",
+            "refusal": "refusal",
+            "role": "assistant",
+            "annotations": [
+              {
+                "type": "url_citation",
+                "url_citation": {
+                  "end_index": 0,
+                  "start_index": 0,
+                  "title": "title",
+                  "url": "url"
+                }
+              }
+            ],
+            "audio": {
+              "id": "id",
+              "data": "data",
+              "expires_at": 0,
+              "transcript": "transcript"
+            },
+            "function_call": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "tool_calls": [
+              {
+                "id": "id",
+                "function": {
+                  "arguments": "arguments",
+                  "name": "name"
+                },
+                "type": "function"
+              }
+            ]
+          }
+        }
+      ],
+      "created": 0,
+      "model": "model",
+      "object": "chat.completion",
+      "service_tier": "auto",
+      "system_fingerprint": "system_fingerprint",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get chat completion
 
 `client.chat.completions.retrieve(stringcompletionID, RequestOptionsoptions?): ChatCompletion`
 
@@ -2390,7 +3081,115 @@ const chatCompletion = await client.chat.completions.retrieve('completion_id');
 console.log(chatCompletion.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "content": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ],
+        "refusal": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "content": "content",
+        "refusal": "refusal",
+        "role": "assistant",
+        "annotations": [
+          {
+            "type": "url_citation",
+            "url_citation": {
+              "end_index": 0,
+              "start_index": 0,
+              "title": "title",
+              "url": "url"
+            }
+          }
+        ],
+        "audio": {
+          "id": "id",
+          "data": "data",
+          "expires_at": 0,
+          "transcript": "transcript"
+        },
+        "function_call": {
+          "arguments": "arguments",
+          "name": "name"
+        },
+        "tool_calls": [
+          {
+            "id": "id",
+            "function": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "chat.completion",
+  "service_tier": "auto",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+## Update chat completion
 
 `client.chat.completions.update(stringcompletionID, ChatCompletionUpdateParamsbody, RequestOptionsoptions?): ChatCompletion`
 
@@ -2769,7 +3568,115 @@ const chatCompletion = await client.chat.completions.update('completion_id', {
 console.log(chatCompletion.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "content": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ],
+        "refusal": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "content": "content",
+        "refusal": "refusal",
+        "role": "assistant",
+        "annotations": [
+          {
+            "type": "url_citation",
+            "url_citation": {
+              "end_index": 0,
+              "start_index": 0,
+              "title": "title",
+              "url": "url"
+            }
+          }
+        ],
+        "audio": {
+          "id": "id",
+          "data": "data",
+          "expires_at": 0,
+          "transcript": "transcript"
+        },
+        "function_call": {
+          "arguments": "arguments",
+          "name": "name"
+        },
+        "tool_calls": [
+          {
+            "id": "id",
+            "function": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "chat.completion",
+  "service_tier": "auto",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+## Delete chat completion
 
 `client.chat.completions.delete(stringcompletionID, RequestOptionsoptions?): ChatCompletionDeleted`
 
@@ -2812,6 +3719,16 @@ const client = new OpenAI({
 const chatCompletionDeleted = await client.chat.completions.delete('completion_id');
 
 console.log(chatCompletionDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chat.completion.deleted"
+}
 ```
 
 ## Domain Types
@@ -5280,7 +6197,7 @@ console.log(chatCompletionDeleted.id);
 
 # Messages
 
-## List
+## Get chat messages
 
 `client.chat.completions.messages.list(stringcompletionID, MessageListParamsquery?, RequestOptionsoptions?): CursorPage<ChatCompletionStoreMessage>`
 
@@ -5381,5 +6298,61 @@ for await (const chatCompletionStoreMessage of client.chat.completions.messages.
   'completion_id',
 )) {
   console.log(chatCompletionStoreMessage);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "content": "content",
+      "refusal": "refusal",
+      "role": "assistant",
+      "annotations": [
+        {
+          "type": "url_citation",
+          "url_citation": {
+            "end_index": 0,
+            "start_index": 0,
+            "title": "title",
+            "url": "url"
+          }
+        }
+      ],
+      "audio": {
+        "id": "id",
+        "data": "data",
+        "expires_at": 0,
+        "transcript": "transcript"
+      },
+      "function_call": {
+        "arguments": "arguments",
+        "name": "name"
+      },
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ],
+      "id": "id",
+      "content_parts": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

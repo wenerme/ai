@@ -1,6 +1,6 @@
 # Assistants
 
-## List
+## List assistants
 
 **get** `/assistants`
 
@@ -157,7 +157,7 @@ Returns a list of assistants.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -266,7 +266,119 @@ curl https://api.openai.com/v1/assistants \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "instructions": "instructions",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "assistant",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ],
+      "response_format": "auto",
+      "temperature": 1,
+      "tool_resources": {
+        "code_interpreter": {
+          "file_ids": [
+            "string"
+          ]
+        },
+        "file_search": {
+          "vector_store_ids": [
+            "string"
+          ]
+        }
+      },
+      "top_p": 1
+    }
+  ],
+  "first_id": "asst_abc123",
+  "has_more": false,
+  "last_id": "asst_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "asst_abc123",
+      "object": "assistant",
+      "created_at": 1698982736,
+      "name": "Coding Tutor",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc456",
+      "object": "assistant",
+      "created_at": 1698982718,
+      "name": "My Assistant",
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    },
+    {
+      "id": "asst_abc789",
+      "object": "assistant",
+      "created_at": 1698982643,
+      "name": null,
+      "description": null,
+      "model": "gpt-4o",
+      "instructions": null,
+      "tools": [],
+      "tool_resources": {},
+      "metadata": {},
+      "top_p": 1.0,
+      "temperature": 1.0,
+      "response_format": "auto"
+    }
+  ],
+  "first_id": "asst_abc123",
+  "last_id": "asst_abc789",
+  "has_more": false
+}
+```
+
+## Create assistant
 
 **post** `/assistants`
 
@@ -278,7 +390,7 @@ Create an assistant with a model and instructions.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -424,7 +536,7 @@ Create an assistant with a model and instructions.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -775,7 +887,7 @@ Create an assistant with a model and instructions.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -882,7 +994,125 @@ curl https://api.openai.com/v1/assistants \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Code Interpreter
+
+```http
+curl "https://api.openai.com/v1/assistants" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+    "name": "Math Tutor",
+    "tools": [{"type": "code_interpreter"}],
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+### Files
+
+```http
+curl https://api.openai.com/v1/assistants \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+    "tools": [{"type": "file_search"}],
+    "tool_resources": {"file_search": {"vector_store_ids": ["vs_123"]}},
+    "model": "gpt-4o"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009403,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Retrieve assistant
 
 **get** `/assistants/{assistant_id}`
 
@@ -1023,7 +1253,7 @@ Retrieves an assistant.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -1124,7 +1354,76 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Modify assistant
 
 **post** `/assistants/{assistant_id}`
 
@@ -1157,7 +1456,7 @@ Modifies an assistant.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
@@ -1286,7 +1585,7 @@ Modifies an assistant.
 
   **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     `auto` is the default value
 
@@ -1586,7 +1885,7 @@ Modifies an assistant.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -1692,7 +1991,86 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+      "tools": [{"type": "file_search"}],
+      "model": "gpt-4o"
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": []
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+## Delete assistant
 
 **delete** `/assistants/{assistant_id}`
 
@@ -1721,6 +2099,36 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
     -X DELETE \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "assistant.deleted"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X DELETE
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -1856,7 +2264,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -1985,7 +2393,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
   in your code. See the [Assistants API quickstart](/docs/assistants/overview) to learn how to
   integrate the Assistants API with streaming.
 
-  - `UnionMember0 = object { data, event, enabled }`
+  - `object { data, event, enabled }`
 
     Occurs when a new [thread](/docs/api-reference/threads/object) is created.
 
@@ -2040,7 +2448,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       Whether to enable input audio transcription.
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
@@ -2191,7 +2599,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -2296,7 +2704,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -2446,7 +2854,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.created"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
@@ -2597,7 +3005,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -2702,7 +3110,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -2852,7 +3260,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.queued"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
@@ -3003,7 +3411,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -3108,7 +3516,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -3258,7 +3666,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.in_progress"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
@@ -3409,7 +3817,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -3514,7 +3922,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -3664,7 +4072,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.requires_action"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
@@ -3815,7 +4223,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -3920,7 +4328,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -4070,7 +4478,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.completed"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
@@ -4221,7 +4629,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -4326,7 +4734,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -4476,7 +4884,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.incomplete"`
 
-  - `UnionMember7 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) fails.
 
@@ -4627,7 +5035,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -4732,7 +5140,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -4882,7 +5290,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.failed"`
 
-  - `UnionMember8 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
@@ -5033,7 +5441,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -5138,7 +5546,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5288,7 +5696,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelling"`
 
-  - `UnionMember9 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
@@ -5439,7 +5847,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -5544,7 +5952,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5694,7 +6102,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelled"`
 
-  - `UnionMember10 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) expires.
 
@@ -5845,7 +6253,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -5950,7 +6358,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -6100,7 +6508,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.expired"`
 
-  - `UnionMember11 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
@@ -6395,7 +6803,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.created"`
 
-  - `UnionMember12 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
@@ -6690,7 +7098,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.in_progress"`
 
-  - `UnionMember13 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
@@ -6868,7 +7276,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.delta"`
 
-  - `UnionMember14 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
@@ -7163,7 +7571,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.completed"`
 
-  - `UnionMember15 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
@@ -7458,7 +7866,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.failed"`
 
-  - `UnionMember16 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
@@ -7753,7 +8161,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.cancelled"`
 
-  - `UnionMember17 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
@@ -8048,7 +8456,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.expired"`
 
-  - `UnionMember18 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is created.
 
@@ -8301,7 +8709,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.created"`
 
-  - `UnionMember19 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
@@ -8554,7 +8962,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.in_progress"`
 
-  - `UnionMember20 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
@@ -8750,7 +9158,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.delta"`
 
-  - `UnionMember21 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
@@ -9003,7 +9411,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.completed"`
 
-  - `UnionMember22 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
@@ -9370,7 +9778,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a [message](/docs/api-reference/messages/object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is created.
 
@@ -9623,7 +10031,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
@@ -9876,7 +10284,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.in_progress"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
@@ -10072,7 +10480,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.delta"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
@@ -10325,7 +10733,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.message.completed"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
@@ -10584,7 +10992,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
@@ -10879,7 +11287,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
@@ -11174,7 +11582,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.in_progress"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
@@ -11352,7 +11760,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.delta"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
@@ -11647,7 +12055,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.completed"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
@@ -11942,7 +12350,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.failed"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
@@ -12237,7 +12645,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.step.cancelled"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
@@ -12538,7 +12946,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
   Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
-  - `UnionMember0 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
@@ -12689,7 +13097,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -12794,7 +13202,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -12944,7 +13352,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.created"`
 
-  - `UnionMember1 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
@@ -13095,7 +13503,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -13200,7 +13608,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -13350,7 +13758,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.queued"`
 
-  - `UnionMember2 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
@@ -13501,7 +13909,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -13606,7 +14014,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -13756,7 +14164,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.in_progress"`
 
-  - `UnionMember3 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
@@ -13907,7 +14315,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -14012,7 +14420,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -14162,7 +14570,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.requires_action"`
 
-  - `UnionMember4 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
@@ -14313,7 +14721,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -14418,7 +14826,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -14568,7 +14976,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.completed"`
 
-  - `UnionMember5 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
@@ -14719,7 +15127,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -14824,7 +15232,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -14974,7 +15382,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.incomplete"`
 
-  - `UnionMember6 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) fails.
 
@@ -15125,7 +15533,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -15230,7 +15638,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -15380,7 +15788,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.failed"`
 
-  - `UnionMember7 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
@@ -15531,7 +15939,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -15636,7 +16044,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -15786,7 +16194,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelling"`
 
-  - `UnionMember8 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
@@ -15937,7 +16345,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -16042,7 +16450,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -16192,7 +16600,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
       - `"thread.run.cancelled"`
 
-  - `UnionMember9 = object { data, event }`
+  - `object { data, event }`
 
     Occurs when a [run](/docs/api-reference/runs/object) expires.
 
@@ -16343,7 +16751,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
 
         **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-        - `UnionMember0 = "auto"`
+        - `"auto"`
 
           `auto` is the default value
 
@@ -16448,7 +16856,7 @@ curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `UnionMember0 = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 

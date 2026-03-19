@@ -1,6 +1,6 @@
 # Models
 
-## List
+## List models
 
 **get** `/models`
 
@@ -39,7 +39,58 @@ curl https://api.openai.com/v1/models \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/models \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
+}
+```
+
+## Retrieve model
 
 **get** `/models/{model}`
 
@@ -80,7 +131,36 @@ curl https://api.openai.com/v1/models/$MODEL \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created": 0,
+  "object": "model",
+  "owned_by": "owned_by"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/models/VAR_chat_model_id \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "VAR_chat_model_id",
+  "object": "model",
+  "created": 1686935002,
+  "owned_by": "openai"
+}
+```
+
+## Delete a fine-tuned model
 
 **delete** `/models/{model}`
 
@@ -106,6 +186,34 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 curl https://api.openai.com/v1/models/$MODEL \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "object": "model",
+  "deleted": true
+}
 ```
 
 ## Domain Types

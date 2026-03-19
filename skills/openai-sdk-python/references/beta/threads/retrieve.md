@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve thread
 
 `beta.threads.retrieve(strthread_id)  -> Thread`
 
@@ -68,4 +68,55 @@ thread = client.beta.threads.retrieve(
     "thread_id",
 )
 print(thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+my_thread = client.beta.threads.retrieve("thread_abc123")
+print(my_thread)
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": []
+    }
+  }
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create a conversation
 
 **post** `/conversations`
 
@@ -474,11 +474,11 @@ Create a conversation.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -1106,11 +1106,11 @@ Create a conversation.
 
       Text, image, or file output of the function tool call.
 
-      - `UnionMember0 = string`
+      - `string`
 
         A JSON string of the output of the function tool call.
 
-      - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+      - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
         An array of content outputs (text, image, file) for the function tool call.
 
@@ -1337,17 +1337,17 @@ Create a conversation.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -1398,19 +1398,19 @@ Create a conversation.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -1706,7 +1706,7 @@ Create a conversation.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -1838,9 +1838,9 @@ Create a conversation.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -3219,4 +3219,44 @@ Create a conversation.
 curl https://api.openai.com/v1/conversations \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "metadata": {"topic": "demo"},
+    "items": [
+      {
+        "type": "message",
+        "role": "user",
+        "content": "Hello!"
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```

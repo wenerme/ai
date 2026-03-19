@@ -1,4 +1,4 @@
-## Update
+## Modify user
 
 **post** `/organization/users/{user_id}`
 
@@ -63,4 +63,41 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
     -d '{
           "role": "owner"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role": "owner"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.user",
+    "id": "user_abc",
+    "name": "First Last",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
 ```

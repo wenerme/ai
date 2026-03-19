@@ -1,6 +1,6 @@
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 `containers.files.content.retrieve(strfile_id, ContentRetrieveParams**kwargs)  -> BinaryResponseContent`
 

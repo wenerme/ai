@@ -1,6 +1,6 @@
 # Runs
 
-## List
+## Get eval runs
 
 `client.evals.runs.list(stringevalID, RunListParamsquery?, RequestOptionsoptions?): CursorPage<RunListResponse>`
 
@@ -2332,7 +2332,171 @@ for await (const runListResponse of client.evals.runs.list('eval_id')) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "data_source": {
+        "source": {
+          "content": [
+            {
+              "item": {
+                "foo": "bar"
+              },
+              "sample": {
+                "foo": "bar"
+              }
+            }
+          ],
+          "type": "file_content"
+        },
+        "type": "jsonl"
+      },
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "eval_id": "eval_id",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "eval.run",
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 0,
+          "model_name": "model_name",
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "testing_criteria"
+        }
+      ],
+      "report_url": "report_url",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 0
+      },
+      "status": "status"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const runs = await openai.evals.runs.list("egroup_67abd54d9b0081909a86353f6fb9317a");
+console.log(runs);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "eval.run",
+      "id": "evalrun_67e0c7d31560819090d60c0780591042",
+      "eval_id": "eval_67e0c726d560819083f19a957c4c640b",
+      "report_url": "https://platform.openai.com/evaluations/eval_67e0c726d560819083f19a957c4c640b",
+      "status": "completed",
+      "model": "o3-mini",
+      "name": "bulk_with_negative_examples_o3-mini",
+      "created_at": 1742784467,
+      "result_counts": {
+        "total": 1,
+        "errored": 0,
+        "failed": 0,
+        "passed": 1
+      },
+      "per_model_usage": [
+        {
+          "model_name": "o3-mini",
+          "invocation_count": 1,
+          "prompt_tokens": 563,
+          "completion_tokens": 874,
+          "total_tokens": 1437,
+          "cached_tokens": 0
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "testing_criteria": "Push Notification Summary Grader-1808cd0b-eeec-4e0b-a519-337e79f4f5d1",
+          "passed": 1,
+          "failed": 0
+        }
+      ],
+      "data_source": {
+        "type": "completions",
+        "source": {
+          "type": "file_content",
+          "content": [
+            {
+              "item": {
+                "notifications": "\n- New message from Sarah: \"Can you call me later?\"\n- Your package has been delivered!\n- Flash sale: 20% off electronics for the next 2 hours!\n"
+              }
+            }
+          ]
+        },
+        "input_messages": {
+          "type": "template",
+          "template": [
+            {
+              "type": "message",
+              "role": "developer",
+              "content": {
+                "type": "input_text",
+                "text": "\n\n\n\nYou are a helpful assistant that takes in an array of push notifications and returns a collapsed summary of them.\nThe push notification will be provided as follows:\n<push_notifications>\n...notificationlist...\n</push_notifications>\n\nYou should return just the summary and nothing else.\n\n\nYou should return a summary that is concise and snappy.\n\n\nHere is an example of a good summary:\n<push_notifications>\n- Traffic alert: Accident reported on Main Street.- Package out for delivery: Expected by 5 PM.- New friend suggestion: Connect with Emma.\n</push_notifications>\n<summary>\nTraffic alert, package expected by 5pm, suggestion for new friend (Emily).\n</summary>\n\n\nHere is an example of a bad summary:\n<push_notifications>\n- Traffic alert: Accident reported on Main Street.- Package out for delivery: Expected by 5 PM.- New friend suggestion: Connect with Emma.\n</push_notifications>\n<summary>\nTraffic alert reported on main street. You have a package that will arrive by 5pm, Emily is a new friend suggested for you.\n</summary>\n"
+              }
+            },
+            {
+              "type": "message",
+              "role": "user",
+              "content": {
+                "type": "input_text",
+                "text": "<push_notifications>{{item.notifications}}</push_notifications>"
+              }
+            }
+          ]
+        },
+        "model": "o3-mini",
+        "sampling_params": null
+      },
+      "error": null,
+      "metadata": {}
+    }
+  ],
+  "first_id": "evalrun_67e0c7d31560819090d60c0780591042",
+  "last_id": "evalrun_67e0c7d31560819090d60c0780591042",
+  "has_more": true
+}
+```
+
+## Create eval run
 
 `client.evals.runs.create(stringevalID, RunCreateParamsbody, RequestOptionsoptions?): RunCreateResponse`
 
@@ -6799,7 +6963,185 @@ const run = await client.evals.runs.create('eval_id', {
 console.log(run.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const run = await openai.evals.runs.create(
+  "eval_67e579652b548190aaa83ada4b125f47",
+  {
+    name: "gpt-4o-mini",
+    data_source: {
+      type: "completions",
+      input_messages: {
+        type: "template",
+        template: [
+          {
+            role: "developer",
+            content: "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          },
+          {
+            role: "user",
+            content: "{{item.input}}"
+          }
+        ]
+      },
+      sampling_params: {
+        temperature: 1,
+        max_completions_tokens: 2048,
+        top_p: 1,
+        seed: 42
+      },
+      model: "gpt-4o-mini",
+      source: {
+        type: "file_content",
+        content: [
+          {
+            item: {
+              input: "Tech Company Launches Advanced Artificial Intelligence Platform",
+              ground_truth: "Technology"
+            }
+          }
+        ]
+      }
+    }
+  }
+);
+console.log(run);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67e57965b480819094274e3a32235e4c",
+  "eval_id": "eval_67e579652b548190aaa83ada4b125f47",
+  "report_url": "https://platform.openai.com/evaluations/eval_67e579652b548190aaa83ada4b125f47&run_id=evalrun_67e57965b480819094274e3a32235e4c",
+  "status": "queued",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Get an eval run
 
 `client.evals.runs.retrieve(stringrunID, RunRetrieveParamsparams, RequestOptionsoptions?): RunRetrieveResponse`
 
@@ -9104,7 +9446,233 @@ const run = await client.evals.runs.retrieve('run_id', { eval_id: 'eval_id' });
 console.log(run.id);
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const run = await openai.evals.runs.retrieve(
+  "evalrun_67abd54d60ec8190832b46859da808f7",
+  { eval_id: "eval_67abd54d9b0081909a86353f6fb9317a" }
+);
+console.log(run);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
+  "status": "queued",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Central Bank Increases Interest Rates Amid Inflation Concerns",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Summit Addresses Climate Change Strategies",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Major Retailer Reports Record-Breaking Holiday Sales",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "National Team Qualifies for World Championship Finals",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Stock Markets Rally After Positive Economic Data Released",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Manufacturer Announces Merger with Competitor",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Breakthrough in Renewable Energy Technology Unveiled",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "World Leaders Sign Historic Climate Agreement",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Professional Athlete Sets New Record in Championship Event",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Financial Institutions Adapt to New Regulatory Requirements",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Tech Conference Showcases Advances in Artificial Intelligence",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Markets Respond to Oil Price Fluctuations",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Cooperation Strengthened Through New Treaty",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Sports League Announces Revised Schedule for Upcoming Season",
+            "ground_truth": "Sports"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Cancel eval run
 
 `client.evals.runs.cancel(stringrunID, RunCancelParamsparams, RequestOptionsoptions?): RunCancelResponse`
 
@@ -11409,7 +11977,233 @@ const response = await client.evals.runs.cancel('run_id', { eval_id: 'eval_id' }
 console.log(response.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const canceledRun = await openai.evals.runs.cancel(
+  "evalrun_67abd54d60ec8190832b46859da808f7",
+  { eval_id: "eval_67abd54d9b0081909a86353f6fb9317a" }
+);
+console.log(canceledRun);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
+  "status": "canceled",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Central Bank Increases Interest Rates Amid Inflation Concerns",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Summit Addresses Climate Change Strategies",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Major Retailer Reports Record-Breaking Holiday Sales",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "National Team Qualifies for World Championship Finals",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Stock Markets Rally After Positive Economic Data Released",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Manufacturer Announces Merger with Competitor",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Breakthrough in Renewable Energy Technology Unveiled",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "World Leaders Sign Historic Climate Agreement",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Professional Athlete Sets New Record in Championship Event",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Financial Institutions Adapt to New Regulatory Requirements",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Tech Conference Showcases Advances in Artificial Intelligence",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Markets Respond to Oil Price Fluctuations",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Cooperation Strengthened Through New Treaty",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Sports League Announces Revised Schedule for Upcoming Season",
+            "ground_truth": "Sports"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Delete eval run
 
 `client.evals.runs.delete(stringrunID, RunDeleteParamsparams, RequestOptionsoptions?): RunDeleteResponse`
 
@@ -11449,6 +12243,40 @@ const client = new OpenAI({
 const run = await client.evals.runs.delete('run_id', { eval_id: 'eval_id' });
 
 console.log(run.run_id);
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "eval.run.deleted",
+  "run_id": "evalrun_677469f564d48190807532a852da3afb"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const deleted = await openai.evals.runs.delete(
+  "eval_123abc",
+  "evalrun_abc456"
+);
+console.log(deleted);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.deleted",
+  "deleted": true,
+  "run_id": "evalrun_abc456"
+}
 ```
 
 ## Domain Types
@@ -12072,7 +12900,7 @@ console.log(run.run_id);
 
 # Output Items
 
-## List
+## Get eval run output items
 
 `client.evals.runs.outputItems.list(stringrunID, OutputItemListParamsparams, RequestOptionsoptions?): CursorPage<OutputItemListResponse>`
 
@@ -12280,7 +13108,161 @@ for await (const outputItemListResponse of client.evals.runs.outputItems.list('r
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "datasource_item": {
+        "foo": "bar"
+      },
+      "datasource_item_id": 0,
+      "eval_id": "eval_id",
+      "object": "eval.run.output_item",
+      "results": [
+        {
+          "name": "name",
+          "passed": true,
+          "score": 0,
+          "sample": {
+            "foo": "bar"
+          },
+          "type": "type"
+        }
+      ],
+      "run_id": "run_id",
+      "sample": {
+        "error": {
+          "code": "code",
+          "message": "message"
+        },
+        "finish_reason": "finish_reason",
+        "input": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "max_completion_tokens": 0,
+        "model": "model",
+        "output": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "seed": 0,
+        "temperature": 0,
+        "top_p": 0,
+        "usage": {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      },
+      "status": "status"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const outputItems = await openai.evals.runs.outputItems.list(
+  "egroup_67abd54d9b0081909a86353f6fb9317a",
+  "erun_67abd54d60ec8190832b46859da808f7"
+);
+console.log(outputItems);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "eval.run.output_item",
+      "id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+      "created_at": 1743092076,
+      "run_id": "evalrun_67abd54d60ec8190832b46859da808f7",
+      "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "status": "pass",
+      "datasource_item_id": 5,
+      "datasource_item": {
+        "input": "Stock Markets Rally After Positive Economic Data Released",
+        "ground_truth": "Markets"
+      },
+      "results": [
+        {
+          "name": "String check-a2486074-d803-4445-b431-ad2262e85d47",
+          "sample": null,
+          "passed": true,
+          "score": 1.0
+        }
+      ],
+      "sample": {
+        "input": [
+          {
+            "role": "developer",
+            "content": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          },
+          {
+            "role": "user",
+            "content": "Stock Markets Rally After Positive Economic Data Released",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "content": "Markets",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "finish_reason": "stop",
+        "model": "gpt-4o-mini-2024-07-18",
+        "usage": {
+          "total_tokens": 325,
+          "completion_tokens": 2,
+          "prompt_tokens": 323,
+          "cached_tokens": 0
+        },
+        "error": null,
+        "temperature": 1.0,
+        "max_completion_tokens": 2048,
+        "top_p": 1.0,
+        "seed": 42
+      }
+    }
+  ],
+  "first_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "last_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "has_more": true
+}
+```
+
+## Get an output item of an eval run
 
 `client.evals.runs.outputItems.retrieve(stringoutputItemID, OutputItemRetrieveParamsparams, RequestOptionsoptions?): OutputItemRetrieveResponse`
 
@@ -12465,4 +13447,145 @@ const outputItem = await client.evals.runs.outputItems.retrieve('output_item_id'
 });
 
 console.log(outputItem.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "datasource_item": {
+    "foo": "bar"
+  },
+  "datasource_item_id": 0,
+  "eval_id": "eval_id",
+  "object": "eval.run.output_item",
+  "results": [
+    {
+      "name": "name",
+      "passed": true,
+      "score": 0,
+      "sample": {
+        "foo": "bar"
+      },
+      "type": "type"
+    }
+  ],
+  "run_id": "run_id",
+  "sample": {
+    "error": {
+      "code": "code",
+      "message": "message"
+    },
+    "finish_reason": "finish_reason",
+    "input": [
+      {
+        "content": "content",
+        "role": "role"
+      }
+    ],
+    "max_completion_tokens": 0,
+    "model": "model",
+    "output": [
+      {
+        "content": "content",
+        "role": "role"
+      }
+    ],
+    "seed": 0,
+    "temperature": 0,
+    "top_p": 0,
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const outputItem = await openai.evals.runs.outputItems.retrieve(
+  "outputitem_67abd55eb6548190bb580745d5644a33",
+  {
+    eval_id: "eval_67abd54d9b0081909a86353f6fb9317a",
+    run_id: "evalrun_67abd54d60ec8190832b46859da808f7",
+  }
+);
+console.log(outputItem);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.output_item",
+  "id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "created_at": 1743092076,
+  "run_id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "status": "pass",
+  "datasource_item_id": 5,
+  "datasource_item": {
+    "input": "Stock Markets Rally After Positive Economic Data Released",
+    "ground_truth": "Markets"
+  },
+  "results": [
+    {
+      "name": "String check-a2486074-d803-4445-b431-ad2262e85d47",
+      "sample": null,
+      "passed": true,
+      "score": 1.0
+    }
+  ],
+  "sample": {
+    "input": [
+      {
+        "role": "developer",
+        "content": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      },
+      {
+        "role": "user",
+        "content": "Stock Markets Rally After Positive Economic Data Released",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      }
+    ],
+    "output": [
+      {
+        "role": "assistant",
+        "content": "Markets",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      }
+    ],
+    "finish_reason": "stop",
+    "model": "gpt-4o-mini-2024-07-18",
+    "usage": {
+      "total_tokens": 325,
+      "completion_tokens": 2,
+      "prompt_tokens": 323,
+      "cached_tokens": 0
+    },
+    "error": null,
+    "temperature": 1.0,
+    "max_completion_tokens": 2048,
+    "top_p": 1.0,
+    "seed": 42
+  }
+}
 ```

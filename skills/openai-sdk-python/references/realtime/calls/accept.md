@@ -1,4 +1,4 @@
-## Accept
+## Accept call
 
 `realtime.calls.accept(strcall_id, CallAcceptParams**kwargs)`
 

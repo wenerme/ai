@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve user
 
 **get** `/organization/users/{user_id}`
 
@@ -49,4 +49,38 @@ Retrieves a user by their identifier.
 ```http
 curl https://api.openai.com/v1/organization/users/$USER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.user",
+    "id": "user_abc",
+    "name": "First Last",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
 ```

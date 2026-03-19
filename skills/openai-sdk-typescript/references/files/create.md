@@ -1,4 +1,4 @@
-## Create
+## Upload file
 
 `client.files.create(FileCreateParamsbody, RequestOptionsoptions?): FileObject`
 
@@ -148,4 +148,58 @@ const fileObject = await client.files.create({
 });
 
 console.log(fileObject.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```typescript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.create({
+    file: fs.createReadStream("mydata.jsonl"),
+    purpose: "fine-tune",
+    expires_after: {
+      anchor: "created_at",
+      seconds: 2592000
+    }
+  });
+
+  console.log(file);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
 ```

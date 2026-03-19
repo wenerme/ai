@@ -1,4 +1,4 @@
-## Create
+## Create eval
 
 `evals.create(EvalCreateParams**kwargs)  -> EvalCreateResponse`
 
@@ -775,4 +775,140 @@ eval = client.evals.create(
     }],
 )
 print(eval.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source_config": {
+    "schema": {
+      "foo": "bar"
+    },
+    "type": "custom"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "Chatbot effectiveness Evaluation",
+  "object": "eval",
+  "testing_criteria": [
+    {
+      "input": [
+        {
+          "content": "string",
+          "role": "user",
+          "type": "message"
+        }
+      ],
+      "labels": [
+        "string"
+      ],
+      "model": "model",
+      "name": "name",
+      "passing_labels": [
+        "string"
+      ],
+      "type": "label_model"
+    }
+  ]
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+eval_obj = client.evals.create(
+  name="Sentiment",
+  data_source_config={
+    "type": "stored_completions",
+    "metadata": {"usecase": "chatbot"}
+  },
+  testing_criteria=[
+    {
+      "type": "label_model",
+      "model": "o3-mini",
+      "input": [
+        {"role": "developer", "content": "Classify the sentiment of the following statement as one of 'positive', 'neutral', or 'negative'"},
+        {"role": "user", "content": "Statement: {{item.input}}"}
+      ],
+      "passing_labels": ["positive"],
+      "labels": ["positive", "neutral", "negative"],
+      "name": "Example label grader"
+    }
+  ]
+)
+print(eval_obj)
+```
+
+#### Response
+
+```json
+{
+  "object": "eval",
+  "id": "eval_67b7fa9a81a88190ab4aa417e397ea21",
+  "data_source_config": {
+    "type": "stored_completions",
+    "metadata": {
+      "usecase": "chatbot"
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object"
+        },
+        "sample": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "item",
+        "sample"
+      ]
+  },
+  "testing_criteria": [
+    {
+      "name": "Example label grader",
+      "type": "label_model",
+      "model": "o3-mini",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Classify the sentiment of the following statement as one of positive, neutral, or negative"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "Statement: {{item.input}}"
+          }
+        }
+      ],
+      "passing_labels": [
+        "positive"
+      ],
+      "labels": [
+        "positive",
+        "neutral",
+        "negative"
+      ]
+    }
+  ],
+  "name": "Sentiment",
+  "created_at": 1740110490,
+  "metadata": {
+    "description": "An eval for sentiment analysis"
+  }
+}
 ```

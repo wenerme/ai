@@ -1,4 +1,4 @@
-## List
+## List all skills for the current project.
 
 `skills.list(SkillListParams**kwargs)  -> SyncCursorPage[Skill]`
 
@@ -70,4 +70,26 @@ client = OpenAI(
 page = client.skills.list()
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
 ```

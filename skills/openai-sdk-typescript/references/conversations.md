@@ -1,6 +1,6 @@
 # Conversations
 
-## Create
+## Create a conversation
 
 `client.conversations.create(ConversationCreateParamsbody?, RequestOptionsoptions?): Conversation`
 
@@ -3215,7 +3215,44 @@ const conversation = await client.conversations.create();
 console.log(conversation.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const conversation = await client.conversations.create({
+  metadata: { topic: "demo" },
+  items: [
+    { type: "message", role: "user", content: "Hello!" }
+  ],
+});
+console.log(conversation);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Retrieve a conversation
 
 `client.conversations.retrieve(stringconversationID, RequestOptionsoptions?): Conversation`
 
@@ -3264,7 +3301,39 @@ const conversation = await client.conversations.retrieve('conv_123');
 console.log(conversation.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const conversation = await client.conversations.retrieve("conv_123");
+console.log(conversation);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Update a conversation
 
 `client.conversations.update(stringconversationID, ConversationUpdateParamsbody, RequestOptionsoptions?): Conversation`
 
@@ -3324,7 +3393,42 @@ const conversation = await client.conversations.update('conv_123', { metadata: {
 console.log(conversation.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const updated = await client.conversations.update(
+  "conv_123",
+  { metadata: { topic: "project-x" } }
+);
+console.log(updated);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "project-x"}
+}
+```
+
+## Delete a conversation
 
 `client.conversations.delete(stringconversationID, RequestOptionsoptions?): ConversationDeletedResource`
 
@@ -3360,6 +3464,36 @@ const client = new OpenAI({
 const conversationDeletedResource = await client.conversations.delete('conv_123');
 
 console.log(conversationDeletedResource.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const deleted = await client.conversations.delete("conv_123");
+console.log(deleted);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -3805,7 +3939,7 @@ console.log(conversationDeletedResource.id);
 
 # Items
 
-## Create
+## Create items
 
 `client.conversations.items.create(stringconversationID, ItemCreateParamsparams, RequestOptionsoptions?): ConversationItemList`
 
@@ -10059,7 +10193,89 @@ const conversationItemList = await client.conversations.items.create('conv_123',
 console.log(conversationItemList.first_id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const items = await client.conversations.items.create(
+  "conv_123",
+  {
+    items: [
+      {
+        type: "message",
+        role: "user",
+        content: [{ type: "input_text", text: "Hello!" }],
+      },
+      {
+        type: "message",
+        role: "user",
+        content: [{ type: "input_text", text: "How are you?" }],
+      },
+    ],
+  }
+);
+console.log(items.data);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    },
+    {
+      "type": "message",
+      "id": "msg_def",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "How are you?"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_def",
+  "has_more": false
+}
+```
+
+## List items
 
 `client.conversations.items.list(stringconversationID, ItemListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ConversationItem>`
 
@@ -13154,7 +13370,64 @@ for await (const conversationItem of client.conversations.items.list('conv_123')
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const items = await client.conversations.items.list("conv_123", { limit: 10 });
+console.log(items.data);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_abc",
+  "has_more": false
+}
+```
+
+## Retrieve an item
 
 `client.conversations.items.retrieve(stringitemID, ItemRetrieveParamsparams, RequestOptionsoptions?): ConversationItem`
 
@@ -16227,7 +16500,51 @@ const conversationItem = await client.conversations.items.retrieve('msg_abc', {
 console.log(conversationItem);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const item = await client.conversations.items.retrieve(
+  "conv_123",
+  "msg_abc"
+);
+console.log(item);
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
+```
+
+## Delete an item
 
 `client.conversations.items.delete(stringitemID, ItemDeleteParamsparams, RequestOptionsoptions?): Conversation`
 
@@ -16282,6 +16599,41 @@ const conversation = await client.conversations.items.delete('msg_abc', {
 });
 
 console.log(conversation.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const conversation = await client.conversations.items.delete(
+  "conv_123",
+  "msg_abc"
+);
+console.log(conversation);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```
 
 ## Domain Types

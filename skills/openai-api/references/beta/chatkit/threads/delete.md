@@ -1,4 +1,4 @@
-## Delete
+## Delete ChatKit thread
 
 **delete** `/chatkit/threads/{thread_id}`
 
@@ -31,4 +31,14 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -X DELETE \
     -H 'OpenAI-Beta: chatkit_beta=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
 ```

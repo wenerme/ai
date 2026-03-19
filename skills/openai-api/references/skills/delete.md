@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill by its ID.
 
 **delete** `/skills/{skill_id}`
 
@@ -26,4 +26,14 @@ Delete a skill by its ID.
 curl https://api.openai.com/v1/skills/$SKILL_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```

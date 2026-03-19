@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill version.
 
 `skills.versions.delete(strversion, VersionDeleteParams**kwargs)  -> DeletedSkillVersion`
 
@@ -44,4 +44,15 @@ deleted_skill_version = client.skills.versions.delete(
     skill_id="skill_123",
 )
 print(deleted_skill_version.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```

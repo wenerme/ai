@@ -12,41 +12,41 @@
 
     Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `beta: optional "auto" or number`
 
     The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `learning_rate_multiplier: optional "auto" or number`
 
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `n_epochs: optional "auto" or number`
 
     The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
 ### Dpo Method
 
@@ -62,41 +62,41 @@
 
       Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `beta: optional "auto" or number`
 
       The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `learning_rate_multiplier: optional "auto" or number`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `n_epochs: optional "auto" or number`
 
       The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
 ### Reinforcement Hyperparameters
 
@@ -108,61 +108,61 @@
 
     Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `compute_multiplier: optional "auto" or number`
 
     Multiplier on amount of compute used for exploring search space during training.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `eval_interval: optional "auto" or number`
 
     The number of training steps between evaluation runs.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `eval_samples: optional "auto" or number`
 
     Number of evaluation samples to generate per training step.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `learning_rate_multiplier: optional "auto" or number`
 
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `n_epochs: optional "auto" or number`
 
     The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
 
@@ -1133,61 +1133,61 @@
 
       Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `compute_multiplier: optional "auto" or number`
 
       Multiplier on amount of compute used for exploring search space during training.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `eval_interval: optional "auto" or number`
 
       The number of training steps between evaluation runs.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `eval_samples: optional "auto" or number`
 
       Number of evaluation samples to generate per training step.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `learning_rate_multiplier: optional "auto" or number`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `n_epochs: optional "auto" or number`
 
       The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
 
@@ -1211,31 +1211,31 @@
 
     Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `learning_rate_multiplier: optional "auto" or number`
 
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
   - `n_epochs: optional "auto" or number`
 
     The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
-    - `UnionMember1 = number`
+    - `number`
 
 ### Supervised Method
 
@@ -1251,28 +1251,28 @@
 
       Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `learning_rate_multiplier: optional "auto" or number`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`
 
     - `n_epochs: optional "auto" or number`
 
       The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
-      - `UnionMember0 = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
-      - `UnionMember1 = number`
+      - `number`

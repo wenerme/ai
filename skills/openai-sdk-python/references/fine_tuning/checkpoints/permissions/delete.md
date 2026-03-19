@@ -1,4 +1,4 @@
-## Delete
+## Delete checkpoint permission
 
 `fine_tuning.checkpoints.permissions.delete(strpermission_id, PermissionDeleteParams**kwargs)  -> PermissionDeleteResponse`
 
@@ -46,4 +46,14 @@ permission = client.fine_tuning.checkpoints.permissions.delete(
     fine_tuned_model_checkpoint="ft:gpt-4o-mini-2024-07-18:org:weather:B7R9VjQd",
 )
 print(permission.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "checkpoint.permission"
+}
 ```

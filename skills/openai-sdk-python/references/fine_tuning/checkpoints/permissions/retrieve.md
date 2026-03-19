@@ -1,4 +1,4 @@
-## Retrieve
+## List checkpoint permissions
 
 `fine_tuning.checkpoints.permissions.retrieve(strfine_tuned_model_checkpoint, PermissionRetrieveParams**kwargs)  -> PermissionRetrieveResponse`
 
@@ -79,4 +79,23 @@ permission = client.fine_tuning.checkpoints.permissions.retrieve(
     fine_tuned_model_checkpoint="ft-AF1WoRqd3aJAHsqc9NY7iL8F",
 )
 print(permission.first_id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
 ```

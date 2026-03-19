@@ -1,6 +1,6 @@
 # Models
 
-## List
+## List models
 
 `client.models.list(RequestOptionsoptions?): Page<Model>`
 
@@ -47,7 +47,68 @@ for await (const model of client.models.list()) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.models.list();
+
+  for await (const model of list) {
+    console.log(model);
+  }
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
+}
+```
+
+## Retrieve model
 
 `client.models.retrieve(stringmodel, RequestOptionsoptions?): Model`
 
@@ -97,7 +158,45 @@ const model = await client.models.retrieve('gpt-4o-mini');
 console.log(model.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created": 0,
+  "object": "model",
+  "owned_by": "owned_by"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const model = await openai.models.retrieve("VAR_chat_model_id");
+
+  console.log(model);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "VAR_chat_model_id",
+  "object": "model",
+  "created": 1686935002,
+  "owned_by": "openai"
+}
+```
+
+## Delete a fine-tuned model
 
 `client.models.delete(stringmodel, RequestOptionsoptions?): ModelDeleted`
 
@@ -131,6 +230,41 @@ const client = new OpenAI({
 const modelDeleted = await client.models.delete('ft:gpt-4o-mini:acemeco:suffix:abc123');
 
 console.log(modelDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const model = await openai.models.delete("ft:gpt-4o-mini:acemeco:suffix:abc123");
+  
+  console.log(model);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "object": "model",
+  "deleted": true
+}
 ```
 
 ## Domain Types

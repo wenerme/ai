@@ -1,6 +1,6 @@
 # Calls
 
-## Accept
+## Accept call
 
 **post** `/realtime/calls/{call_id}/accept`
 
@@ -93,9 +93,9 @@ handle it.
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -268,9 +268,9 @@ handle it.
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -321,9 +321,9 @@ handle it.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -331,9 +331,9 @@ handle it.
 
   The Realtime model used for this session.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+  - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
     The Realtime model used for this session.
 
@@ -394,7 +394,7 @@ handle it.
     prompt. The substitution values can either be strings, or other
     Response input types like images or files.
 
-    - `UnionMember0 = string`
+    - `string`
 
     - `ResponseInputText = object { text, type }`
 
@@ -735,7 +735,7 @@ handle it.
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `UnionMember0 = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -776,7 +776,20 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
         }'
 ```
 
-## Hangup
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "type": "realtime",
+        "model": "gpt-realtime",
+        "instructions": "You are Alex, a friendly concierge for Example Corp.",
+      }'
+```
+
+## Hang up call
 
 **post** `/realtime/calls/{call_id}/hangup`
 
@@ -795,7 +808,14 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Refer
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Refer call
 
 **post** `/realtime/calls/{call_id}/refer`
 
@@ -823,7 +843,16 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
         }'
 ```
 
-## Reject
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"target_uri": "tel:+14155550123"}'
+```
+
+## Reject call
 
 **post** `/realtime/calls/{call_id}/reject`
 
@@ -846,4 +875,13 @@ Decline an incoming SIP call by returning a SIP status code to the caller.
 curl https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"status_code": 486}'
 ```

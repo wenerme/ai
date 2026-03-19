@@ -1,4 +1,4 @@
-## Delete
+## Delete thread
 
 `client.beta.threads.delete(stringthreadID, RequestOptionsoptions?): ThreadDeleted`
 
@@ -34,4 +34,39 @@ const client = new OpenAI({
 const threadDeleted = await client.beta.threads.delete('thread_id');
 
 console.log(threadDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const response = await openai.beta.threads.delete("thread_abc123");
+
+  console.log(response);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread.deleted",
+  "deleted": true
+}
 ```

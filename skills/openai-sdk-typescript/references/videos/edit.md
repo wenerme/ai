@@ -1,4 +1,4 @@
-## Edit
+## Create a new video generation job by editing a source video or existing generated video.
 
 `client.videos.edit(VideoEditParamsbody, RequestOptionsoptions?): Video`
 
@@ -148,4 +148,27 @@ const client = new OpenAI({
 const video = await client.videos.edit({ prompt: 'x', video: fs.createReadStream('path/to/file') });
 
 console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
 ```

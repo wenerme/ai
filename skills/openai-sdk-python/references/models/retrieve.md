@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve model
 
 `models.retrieve(strmodel)  -> Model`
 
@@ -47,4 +47,35 @@ model = client.models.retrieve(
     "gpt-4o-mini",
 )
 print(model.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created": 0,
+  "object": "model",
+  "owned_by": "owned_by"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.retrieve("VAR_chat_model_id")
+```
+
+#### Response
+
+```json
+{
+  "id": "VAR_chat_model_id",
+  "object": "model",
+  "created": 1686935002,
+  "owned_by": "openai"
+}
 ```

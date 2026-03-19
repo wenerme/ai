@@ -1,4 +1,4 @@
-## Delete
+## Delete a conversation
 
 `conversations.delete(strconversation_id)  -> ConversationDeletedResource`
 
@@ -35,4 +35,34 @@ conversation_deleted_resource = client.conversations.delete(
     "conv_123",
 )
 print(conversation_deleted_resource.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted = client.conversations.delete("conv_123")
+print(deleted)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```

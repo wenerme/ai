@@ -1,4 +1,4 @@
-## Get Character
+## Fetch a character.
 
 `client.videos.getCharacter(stringcharacterID, RequestOptionsoptions?): VideoGetCharacterResponse`
 
@@ -38,4 +38,14 @@ const client = new OpenAI({
 const response = await client.videos.getCharacter('char_123');
 
 console.log(response.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

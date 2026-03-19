@@ -1,4 +1,4 @@
-## List
+## List users
 
 **get** `/organization/users`
 
@@ -67,4 +67,54 @@ Lists all of the users in the organization.
 ```http
 curl https://api.openai.com/v1/organization/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.user",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/users?after=user_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.user",
+            "id": "user_abc",
+            "name": "First Last",
+            "email": "user@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "first_id": "user-abc",
+    "last_id": "user-xyz",
+    "has_more": false
+}
 ```

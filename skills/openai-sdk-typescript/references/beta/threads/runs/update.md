@@ -1,4 +1,4 @@
-## Update
+## Modify run
 
 `client.beta.threads.runs.update(stringrunID, RunUpdateParamsparams, RequestOptionsoptions?): Run`
 
@@ -433,4 +433,148 @@ const client = new OpenAI({
 const run = await client.beta.threads.runs.update('run_id', { thread_id: 'thread_id' });
 
 console.log(run.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "cancelled_at": 0,
+  "completed_at": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "incomplete_details": {
+    "reason": "max_completion_tokens"
+  },
+  "instructions": "instructions",
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "max_completion_tokens": 256,
+  "max_prompt_tokens": 256,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": {
+    "submit_tool_outputs": {
+      "tool_calls": [
+        {
+          "id": "id",
+          "function": {
+            "arguments": "arguments",
+            "name": "name"
+          },
+          "type": "function"
+        }
+      ]
+    },
+    "type": "submit_tool_outputs"
+  },
+  "response_format": "auto",
+  "started_at": 0,
+  "status": "queued",
+  "thread_id": "thread_id",
+  "tool_choice": "none",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": 1
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  },
+  "temperature": 0,
+  "top_p": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const run = await openai.beta.threads.runs.update(
+    "run_abc123",
+    {
+      thread_id: "thread_abc123",
+      metadata: {
+        user_id: "user_abc123",
+      },
+    }
+  );
+
+  console.log(run);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "run_abc123",
+  "object": "thread.run",
+  "created_at": 1699075072,
+  "assistant_id": "asst_abc123",
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "started_at": 1699075072,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1699075073,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": null,
+  "incomplete_details": null,
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "file-abc123",
+        "file-abc456"
+      ]
+    }
+  },
+  "metadata": {
+    "user_id": "user_abc123"
+  },
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 456,
+    "total_tokens": 579
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_prompt_tokens": 1000,
+  "max_completion_tokens": 1000,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "response_format": "auto",
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
 ```

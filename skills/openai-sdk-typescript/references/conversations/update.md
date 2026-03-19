@@ -1,4 +1,4 @@
-## Update
+## Update a conversation
 
 `client.conversations.update(stringconversationID, ConversationUpdateParamsbody, RequestOptionsoptions?): Conversation`
 
@@ -56,4 +56,39 @@ const client = new OpenAI({
 const conversation = await client.conversations.update('conv_123', { metadata: { foo: 'string' } });
 
 console.log(conversation.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const updated = await client.conversations.update(
+  "conv_123",
+  { metadata: { topic: "project-x" } }
+);
+console.log(updated);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "project-x"}
+}
 ```

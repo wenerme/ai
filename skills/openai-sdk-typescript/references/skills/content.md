@@ -1,6 +1,6 @@
 # Content
 
-## Retrieve
+## Download a skill zip bundle by its ID.
 
 `client.skills.content.retrieve(stringskillID, RequestOptionsoptions?): Response`
 

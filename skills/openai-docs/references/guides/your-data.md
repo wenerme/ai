@@ -116,7 +116,7 @@ Images and files may be uploaded as inputs to `/v1/responses` (including when us
 
 #### Web Search
 
-Web Search is ZDR eligible, but Web Search is not HIPAA eligible and is not covered by a BAA.
+Web Search is ZDR eligible. Web Search with live internet access is not HIPAA eligible and is not covered by a BAA. Web Search in offline/cache-only mode (`external_web_access: false`) is HIPAA eligible and covered by a BAA when used with an API key from a ZDR-enabled project within a ZDR organization. This HIPAA/BAA guidance applies only to the Responses API `web_search` tool. Note: Preview variants (`web_search_preview`) ignore this parameter and behave as if `external_web_access` is `true`. We recommend using `web_search`.
 
 ## Data residency controls
 
@@ -150,7 +150,7 @@ Data residency is configured per-project within your API Organization.
 
 To configure data residency for regional storage, select the appropriate region from the dropdown when creating a new project.
 
-For requests to projects with data residency configured, add the domain prefix as defined in the table below to each request. For regions where the prefix is marked as optional, including the prefix may help improve response latency for your requests.
+For requests to projects with data residency configured, add the domain prefix as defined in the table below to each request.
 
 ### Which models and features are eligible for data residency?
 
@@ -158,18 +158,18 @@ The following models and API services are eligible for data residency today for 
 
 **Table 1: Regional data residency capabilities**
 
-| Region                      | Regional storage | Regional processing | Requires modified abuse monitoring or ZDR | Default modes of entry      | Domain prefix                |
-| --------------------------- | ---------------- | ------------------- | ----------------------------------------- | --------------------------- | ---------------------------- |
-| US                          | ✅               | ✅                  | ❌                                        | Text, Audio, Voice, Image   | us.api.openai.com (required) |
-| Europe (EEA \+ Switzerland) | ✅               | ✅                  | ✅                                        | Text, Audio, Voice, Image\* | eu.api.openai.com (required) |
-| Australia                   | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | au.api.openai.com (optional) |
-| Canada                      | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | ca.api.openai.com (optional) |
-| Japan                       | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | jp.api.openai.com (optional) |
-| India                       | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | in.api.openai.com (optional) |
-| Singapore                   | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | sg.api.openai.com (optional) |
-| South Korea                 | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | kr.api.openai.com (optional) |
-| United Kingdom              | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | gb.api.openai.com (required) |
-| United Arab Emirates        | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | ae.api.openai.com (required) |
+| Region                      | Regional storage | Regional processing | Requires modified abuse monitoring or ZDR | Default modes of entry      | Domain prefix     |
+| --------------------------- | ---------------- | ------------------- | ----------------------------------------- | --------------------------- | ----------------- |
+| US                          | ✅               | ✅                  | ❌                                        | Text, Audio, Voice, Image   | us.api.openai.com |
+| Europe (EEA \+ Switzerland) | ✅               | ✅                  | ✅                                        | Text, Audio, Voice, Image\* | eu.api.openai.com |
+| Australia                   | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | au.api.openai.com |
+| Canada                      | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | ca.api.openai.com |
+| Japan                       | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | jp.api.openai.com |
+| India                       | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | in.api.openai.com |
+| Singapore                   | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | sg.api.openai.com |
+| South Korea                 | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | kr.api.openai.com |
+| United Kingdom              | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | gb.api.openai.com |
+| United Arab Emirates        | ✅               | ❌                  | ✅                                        | Text, Audio, Voice, Image\* | ae.api.openai.com |
 
 \* Image support in these regions requires approval for enhanced Zero Data Retention or enhanced Modified Abuse Monitoring.
 

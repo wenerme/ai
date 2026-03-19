@@ -1,4 +1,4 @@
-## Deactivate
+## Deactivate certificates for project
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
@@ -82,4 +82,72 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/de
             "cert_abc"
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deactivate \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "data": ["cert_abc", "cert_def"]
+}'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.project.certificate.deactivation",
+  "data": [
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_abc",
+      "name": "My Example Certificate",
+      "active": false,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_def",
+      "name": "My Example Certificate 2",
+      "active": false,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+  ],
+}
 ```

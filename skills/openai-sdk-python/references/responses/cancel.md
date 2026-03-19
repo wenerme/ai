@@ -1,4 +1,4 @@
-## Cancel
+## Cancel a response
 
 `responses.cancel(strresponse_id)  -> Response`
 
@@ -7780,4 +7780,192 @@ response = client.responses.cancel(
     "resp_677efb5139a88190b512bc3fef8e535d",
 )
 print(response.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "incomplete_details": {
+    "reason": "max_output_tokens"
+  },
+  "instructions": "string",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "gpt-5.1",
+  "object": "response",
+  "output": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "file_id",
+              "filename": "filename",
+              "index": 0,
+              "type": "file_citation"
+            }
+          ],
+          "text": "text",
+          "type": "output_text",
+          "logprobs": [
+            {
+              "token": "token",
+              "bytes": [
+                0
+              ],
+              "logprob": 0,
+              "top_logprobs": [
+                {
+                  "token": "token",
+                  "bytes": [
+                    0
+                  ],
+                  "logprob": 0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message",
+      "phase": "commentary"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1,
+  "tool_choice": "none",
+  "tools": [
+    {
+      "name": "name",
+      "parameters": {
+        "foo": "bar"
+      },
+      "strict": true,
+      "type": "function",
+      "defer_loading": true,
+      "description": "description"
+    }
+  ],
+  "top_p": 1,
+  "background": true,
+  "completed_at": 0,
+  "conversation": {
+    "id": "id"
+  },
+  "max_output_tokens": 0,
+  "max_tool_calls": 0,
+  "output_text": "output_text",
+  "previous_response_id": "previous_response_id",
+  "prompt": {
+    "id": "id",
+    "variables": {
+      "foo": "string"
+    },
+    "version": "version"
+  },
+  "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_retention": "in-memory",
+  "reasoning": {
+    "effort": "none",
+    "generate_summary": "auto",
+    "summary": "auto"
+  },
+  "safety_identifier": "safety-identifier-1234",
+  "service_tier": "auto",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "low"
+  },
+  "top_logprobs": 0,
+  "truncation": "auto",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  },
+  "user": "user-1234"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.cancel("resp_123")
+print(response)
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
+  "object": "response",
+  "created_at": 1741386163,
+  "status": "cancelled",
+  "background": true,
+  "completed_at": null,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-4o-2024-08-06",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_67cb71b3c2b0819084d481baaaf148f206981a8637e6bc44",
+      "status": "in_progress",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Silent circuits hum,  \nThoughts emerge in data streams—  \nDigital dawn breaks.",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": null,
+  "user": null,
+  "metadata": {}
+}
 ```

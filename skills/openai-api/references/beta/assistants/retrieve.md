@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve assistant
 
 **get** `/assistants/{assistant_id}`
 
@@ -139,7 +139,7 @@ Retrieves an assistant.
 
     **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       `auto` is the default value
 
@@ -238,4 +238,73 @@ Retrieves an assistant.
 curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/assistants/asst_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
 ```

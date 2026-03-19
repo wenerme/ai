@@ -1,4 +1,4 @@
-## List
+## List input items
 
 `client.responses.inputItems.list(stringresponseID, InputItemListParamsquery?, RequestOptionsoptions?): CursorPage<ResponseItem>`
 
@@ -2862,5 +2862,64 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const responseItem of client.responses.inputItems.list('response_id')) {
   console.log(responseItem);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "user",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.inputItems.list("resp_123");
+console.log(response.data);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Tell me a three sentence bedtime story about a unicorn."
+        }
+      ]
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc123",
+  "has_more": false
 }
 ```

@@ -1,4 +1,4 @@
-## Update
+## Modify thread
 
 **post** `/threads/{thread_id}`
 
@@ -88,4 +88,59 @@ curl https://api.openai.com/v1/threads/$THREAD_ID \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/threads/thread_abc123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+      "metadata": {
+        "modified": "true",
+        "user": "abc123"
+      }
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  },
+  "tool_resources": {}
+}
 ```

@@ -1,4 +1,4 @@
-## Retrieve
+## List checkpoint permissions
 
 `client.fineTuning.checkpoints.permissions.retrieve(stringfineTunedModelCheckpoint, PermissionRetrieveParamsquery?, RequestOptionsoptions?): PermissionRetrieveResponse`
 
@@ -82,4 +82,23 @@ const permission = await client.fineTuning.checkpoints.permissions.retrieve(
 );
 
 console.log(permission.first_id);
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
 ```

@@ -1,4 +1,4 @@
-## Update
+## Update the default version pointer for a skill.
 
 `client.skills.update(stringskillID, SkillUpdateParamsbody, RequestOptionsoptions?): Skill`
 
@@ -62,4 +62,18 @@ const client = new OpenAI({
 const skill = await client.skills.update('skill_123', { default_version: 'default_version' });
 
 console.log(skill.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

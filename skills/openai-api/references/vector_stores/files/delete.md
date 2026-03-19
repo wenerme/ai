@@ -1,4 +1,4 @@
-## Delete
+## Delete vector store file
 
 **delete** `/vector_stores/{vector_store_id}/files/{file_id}`
 
@@ -29,4 +29,34 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files/$FILE_ID \
     -X DELETE \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.file.deleted"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X DELETE
+```
+
+#### Response
+
+```json
+{
+  id: "file-abc123",
+  object: "vector_store.file.deleted",
+  deleted: true
+}
 ```

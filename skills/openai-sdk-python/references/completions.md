@@ -1,6 +1,6 @@
 # Completions
 
-## Create
+## Create completion
 
 `completions.create(CompletionCreateParams**kwargs)  -> Completion`
 
@@ -289,6 +289,131 @@ for completion in client.completions.create(
     prompt="This is a test.",
 ):
   print(completion)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "text_offset": [
+          0
+        ],
+        "token_logprobs": [
+          0
+        ],
+        "tokens": [
+          "string"
+        ],
+        "top_logprobs": [
+          {
+            "foo": 0
+          }
+        ]
+      },
+      "text": "text"
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "text_completion",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### No streaming
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.completions.create(
+  model="VAR_completion_model_id",
+  prompt="Say this is a test",
+  max_tokens=7,
+  temperature=0
+)
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
+  "object": "text_completion",
+  "created": 1589478378,
+  "model": "VAR_completion_model_id",
+  "system_fingerprint": "fp_44709d6fcb",
+  "choices": [
+    {
+      "text": "\n\nThis is indeed a test",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 5,
+    "completion_tokens": 7,
+    "total_tokens": 12
+  }
+}
+```
+
+### Streaming
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+for chunk in client.completions.create(
+  model="VAR_completion_model_id",
+  prompt="Say this is a test",
+  max_tokens=7,
+  temperature=0,
+  stream=True
+):
+  print(chunk.choices[0].text)
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-7iA7iJjj8V2zOkCGvWF2hAkDWBQZe",
+  "object": "text_completion",
+  "created": 1690759702,
+  "choices": [
+    {
+      "text": "This",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": null
+    }
+  ],
+  "model": "gpt-3.5-turbo-instruct"
+  "system_fingerprint": "fp_44709d6fcb",
+}
 ```
 
 ## Domain Types

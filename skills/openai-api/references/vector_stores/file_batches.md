@@ -1,6 +1,6 @@
 # File Batches
 
-## Create
+## Create vector store file batch
 
 **post** `/vector_stores/{vector_store_id}/file_batches`
 
@@ -20,11 +20,11 @@ Create a vector store file batch.
   with a maximum length of 64 characters. Values are strings with a maximum
   length of 512 characters, booleans, or numbers.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = number`
+  - `number`
 
-  - `UnionMember2 = boolean`
+  - `boolean`
 
 - `chunking_strategy: optional FileChunkingStrategyParam`
 
@@ -82,11 +82,11 @@ Create a vector store file batch.
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `chunking_strategy: optional FileChunkingStrategyParam`
 
@@ -192,7 +192,70 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches \
     -d '{}'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json \
+    -H "OpenAI-Beta: assistants=v2" \
+    -d '{
+      "files": [
+        {
+          "file_id": "file-abc123",
+          "attributes": {"category": "finance"}
+        },
+        {
+          "file_id": "file-abc456",
+          "chunking_strategy": {
+            "type": "static",
+            "max_chunk_size_tokens": 1200,
+            "chunk_overlap_tokens": 200
+          }
+        }
+      ]
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Retrieve vector store file batch
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}`
 
@@ -270,7 +333,54 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATC
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches/vsfb_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Cancel vector store file batch
 
 **post** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/cancel`
 
@@ -349,7 +459,55 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATC
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## List Files
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X POST
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 12,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 15,
+  }
+}
+```
+
+## List vector store files in a batch
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/files`
 
@@ -459,11 +617,11 @@ Returns a list of vector store files in a batch.
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
@@ -513,6 +671,75 @@ Returns a list of vector store files in a batch.
 curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATCH_ID/files \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
 ```
 
 ## Domain Types

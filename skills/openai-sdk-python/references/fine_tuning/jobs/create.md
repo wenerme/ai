@@ -1,4 +1,4 @@
-## Create
+## Create fine-tuning job
 
 `fine_tuning.jobs.create(JobCreateParams**kwargs)  -> FineTuningJob`
 
@@ -2563,4 +2563,383 @@ fine_tuning_job = client.fine_tuning.jobs.create(
     training_file="file-abc123",
 )
 print(fine_tuning_job.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.fine_tuning.jobs.create(
+  training_file="file-abc123",
+  model="gpt-4o-mini"
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+      }
+    }
+  },
+  "metadata": null
+}
+```
+
+### Epochs
+
+```python
+from openai import OpenAI
+from openai.types.fine_tuning import SupervisedMethod, SupervisedHyperparameters
+
+client = OpenAI()
+
+client.fine_tuning.jobs.create(
+  training_file="file-abc123",
+  model="gpt-4o-mini",
+  method={
+    "type": "supervised",
+    "supervised": SupervisedMethod(
+      hyperparameters=SupervisedHyperparameters(
+        n_epochs=2
+      )
+    )
+  }
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": 2
+  },
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": 2
+      }
+    }
+  },
+  "metadata": null,
+  "error": {
+    "code": null,
+    "message": null,
+    "param": null
+  },
+  "finished_at": null,
+  "seed": 683058546,
+  "trained_tokens": null,
+  "estimated_finish": null,
+  "integrations": [],
+  "user_provided_suffix": null,
+  "usage_metrics": null,
+  "shared_with_openai": false
+}
+```
+
+### DPO
+
+```python
+from openai import OpenAI
+from openai.types.fine_tuning import DpoMethod, DpoHyperparameters
+
+client = OpenAI()
+
+client.fine_tuning.jobs.create(
+  training_file="file-abc",
+  validation_file="file-123",
+  model="gpt-4o-mini",
+  method={
+    "type": "dpo",
+    "dpo": DpoMethod(
+      hyperparameters=DpoHyperparameters(beta=0.1)
+    )
+  }
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc",
+  "model": "gpt-4o-mini",
+  "created_at": 1746130590,
+  "fine_tuned_model": null,
+  "organization_id": "org-abc",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": "file-123",
+  "training_file": "file-abc",
+  "method": {
+    "type": "dpo",
+    "dpo": {
+      "hyperparameters": {
+        "beta": 0.1,
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  },
+  "metadata": null,
+  "error": {
+    "code": null,
+    "message": null,
+    "param": null
+  },
+  "finished_at": null,
+  "hyperparameters": null,
+  "seed": 1036326793,
+  "estimated_finish": null,
+  "integrations": [],
+  "user_provided_suffix": null,
+  "usage_metrics": null,
+  "shared_with_openai": false
+}
+```
+
+### Reinforcement
+
+```python
+from openai import OpenAI
+from openai.types.fine_tuning import ReinforcementMethod, ReinforcementHyperparameters
+from openai.types.graders import StringCheckGrader
+
+client = OpenAI()
+
+client.fine_tuning.jobs.create(
+  training_file="file-abc",
+  validation_file="file-123",
+  model="o4-mini",
+  method={
+    "type": "reinforcement",
+    "reinforcement": ReinforcementMethod(
+      grader=StringCheckGrader(
+        name="Example string check grader",
+        type="string_check",
+        input="{{item.label}}",
+        operation="eq",
+        reference="{{sample.output_text}}"
+      ),
+      hyperparameters=ReinforcementHyperparameters(
+          reasoning_effort="medium",
+      )
+    )
+  }, 
+  seed=42,
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "o4-mini",
+  "created_at": 1721764800,
+  "finished_at": null,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "validating_files",
+  "validation_file": "file-123",
+  "training_file": "file-abc",
+  "trained_tokens": null,
+  "error": {},
+  "user_provided_suffix": null,
+  "seed": 950189191,
+  "estimated_finish": null,
+  "integrations": [],
+  "method": {
+    "type": "reinforcement",
+    "reinforcement": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "compute_multiplier": "auto",
+        "reasoning_effort": "medium"
+      },
+      "grader": {
+        "type": "string_check",
+        "name": "Example string check grader",
+        "input": "{{sample.output_text}}",
+        "reference": "{{item.label}}",
+        "operation": "eq"
+      },
+      "response_format": null
+    }
+  },
+  "metadata": null,
+  "usage_metrics": null,
+  "shared_with_openai": false
+}
+      
+```
+
+### Validation file
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.fine_tuning.jobs.create(
+  training_file="file-abc123",
+  validation_file="file-def456",
+  model="gpt-4o-mini"
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123",
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+      }
+    }
+  },
+  "metadata": null
+}
 ```

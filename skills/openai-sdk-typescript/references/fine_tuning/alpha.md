@@ -2,7 +2,7 @@
 
 # Graders
 
-## Run
+## Run grader
 
 `client.fineTuning.alpha.graders.run(GraderRunParamsbody, RequestOptionsoptions?): GraderRunResponse`
 
@@ -1034,7 +1034,124 @@ const response = await client.fineTuning.alpha.graders.run({
 console.log(response.metadata);
 ```
 
-## Validate
+#### Response
+
+```json
+{
+  "metadata": {
+    "errors": {
+      "formula_parse_error": true,
+      "invalid_variable_error": true,
+      "model_grader_parse_error": true,
+      "model_grader_refusal_error": true,
+      "model_grader_server_error": true,
+      "model_grader_server_error_details": "model_grader_server_error_details",
+      "other_error": true,
+      "python_grader_runtime_error": true,
+      "python_grader_runtime_error_details": "python_grader_runtime_error_details",
+      "python_grader_server_error": true,
+      "python_grader_server_error_type": "python_grader_server_error_type",
+      "sample_parse_error": true,
+      "truncated_observation_error": true,
+      "unresponsive_reward_error": true
+    },
+    "execution_time": 0,
+    "name": "name",
+    "sampled_model_name": "sampled_model_name",
+    "scores": {
+      "foo": "bar"
+    },
+    "token_usage": 0,
+    "type": "type"
+  },
+  "model_grader_token_usage_per_model": {
+    "foo": "bar"
+  },
+  "reward": 0,
+  "sub_rewards": {
+    "foo": "bar"
+  }
+}
+```
+
+### Score text alignment
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const result = await openai.fineTuning.alpha.graders.run({
+  grader: {
+    type: "score_model",
+    name: "Example score model grader",
+    input: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text: "Score how close the reference answer is to the model answer on a 0-1 scale. Return only the score.\n\nReference answer: {{item.reference_answer}}\n\nModel answer: {{sample.output_text}}",
+          },
+        ],
+      },
+    ],
+    model: "gpt-5-mini",
+    sampling_params: { temperature: 1, top_p: 1, seed: 42 },
+  },
+  item: { reference_answer: "fuzzy wuzzy was a bear" },
+  model_sample: "fuzzy wuzzy was a bear",
+});
+console.log(result);
+```
+
+#### Response
+
+```json
+{
+  "reward": 1.0,
+  "metadata": {
+    "name": "Example score model grader",
+    "type": "score_model",
+    "errors": {
+      "formula_parse_error": false,
+      "sample_parse_error": false,
+      "truncated_observation_error": false,
+      "unresponsive_reward_error": false,
+      "invalid_variable_error": false,
+      "other_error": false,
+      "python_grader_server_error": false,
+      "python_grader_server_error_type": null,
+      "python_grader_runtime_error": false,
+      "python_grader_runtime_error_details": null,
+      "model_grader_server_error": false,
+      "model_grader_refusal_error": false,
+      "model_grader_parse_error": false,
+      "model_grader_server_error_details": null
+    },
+    "execution_time": 4.365238428115845,
+    "scores": {},
+    "token_usage": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    },
+    "sampled_model_name": "gpt-4o-2024-08-06"
+  },
+  "sub_rewards": {},
+  "model_grader_token_usage_per_model": {
+    "gpt-4o-2024-08-06": {
+      "prompt_tokens": 190,
+      "total_tokens": 324,
+      "completion_tokens": 134,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+## Validate grader
 
 `client.fineTuning.alpha.graders.validate(GraderValidateParamsbody, RequestOptionsoptions?): GraderValidateResponse`
 
@@ -2932,4 +3049,18 @@ const response = await client.fineTuning.alpha.graders.validate({
 });
 
 console.log(response.grader);
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
 ```

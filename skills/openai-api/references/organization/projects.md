@@ -1,6 +1,6 @@
 # Projects
 
-## List
+## List projects
 
 **get** `/organization/projects`
 
@@ -71,7 +71,57 @@ curl https://api.openai.com/v1/organization/projects \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project",
+      "status": "active",
+      "archived_at": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects?after=proj_abc&limit=20&include_archived=false \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "proj_abc",
+            "object": "organization.project",
+            "name": "Project example",
+            "created_at": 1711471533,
+            "archived_at": null,
+            "status": "active"
+        }
+    ],
+    "first_id": "proj-abc",
+    "last_id": "proj-xyz",
+    "has_more": false
+}
+```
+
+## Create project
 
 **post** `/organization/projects`
 
@@ -150,7 +200,44 @@ curl https://api.openai.com/v1/organization/projects \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Project ABC"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "proj_abc",
+    "object": "organization.project",
+    "name": "Project ABC",
+    "created_at": 1711471533,
+    "archived_at": null,
+    "status": "active"
+}
+```
+
+## Retrieve project
 
 **get** `/organization/projects/{project_id}`
 
@@ -203,7 +290,41 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "proj_abc",
+    "object": "organization.project",
+    "name": "Project example",
+    "created_at": 1711471533,
+    "archived_at": null,
+    "status": "active"
+}
+```
+
+## Modify project
 
 **post** `/organization/projects/{project_id}`
 
@@ -266,7 +387,31 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
         }'
 ```
 
-## Archive
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Project DEF"
+  }'
+```
+
+## Archive project
 
 **post** `/organization/projects/{project_id}/archive`
 
@@ -320,6 +465,40 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project",
+  "status": "active",
+  "archived_at": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "proj_abc",
+    "object": "organization.project",
+    "name": "Project DEF",
+    "created_at": 1711471533,
+    "archived_at": 1711471533,
+    "status": "archived"
+}
+```
+
 ## Domain Types
 
 ### Project
@@ -360,7 +539,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
 
 # Users
 
-## List
+## List project users
 
 **get** `/organization/projects/{project_id}/users`
 
@@ -429,7 +608,57 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.project.user",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.user",
+            "id": "user_abc",
+            "name": "First Last",
+            "email": "user@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "first_id": "user-abc",
+    "last_id": "user-xyz",
+    "has_more": false
+}
+```
+
+## Create project user
 
 **post** `/organization/projects/{project_id}/users`
 
@@ -501,7 +730,44 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.project.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc",
+      "role": "member"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user",
+    "id": "user_abc",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
+```
+
+## Retrieve project user
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
@@ -556,7 +822,41 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.project.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user",
+    "id": "user_abc",
+    "name": "First Last",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
+```
+
+## Modify project user
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
@@ -625,7 +925,44 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.project.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role": "owner"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user",
+    "id": "user_abc",
+    "name": "First Last",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
+```
+
+## Delete project user
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
@@ -656,6 +993,34 @@ archived (archived projects have no users).
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.user.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user.deleted",
+    "id": "user_abc",
+    "deleted": true
+}
 ```
 
 ## Domain Types
@@ -698,7 +1063,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 
 # Service Accounts
 
-## List
+## List project service accounts
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
@@ -765,7 +1130,55 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.service_account",
+            "id": "svc_acct_abc",
+            "name": "Service Account",
+            "role": "owner",
+            "created_at": 1711471533
+        }
+    ],
+    "first_id": "svc_acct_abc",
+    "last_id": "svc_acct_xyz",
+    "has_more": false
+}
+```
+
+## Create project service account
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
@@ -826,7 +1239,56 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "api_key": {
+    "id": "id",
+    "created_at": 0,
+    "name": "name",
+    "object": "organization.project.service_account.api_key",
+    "value": "value"
+  },
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "member"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_accounts \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Production App"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Production App",
+    "role": "member",
+    "created_at": 1711471533,
+    "api_key": {
+        "object": "organization.project.service_account.api_key",
+        "value": "sk-abcdefghijklmnop123",
+        "name": "Secret Key",
+        "created_at": 1711471533,
+        "id": "key_abc"
+    }
+}
+```
+
+## Retrieve project service account
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
@@ -877,7 +1339,39 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Service Account",
+    "role": "owner",
+    "created_at": 1711471533
+}
+```
+
+## Delete project service account
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
@@ -908,6 +1402,34 @@ is archived (archived projects have no service accounts).
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.service_account.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account.deleted",
+    "id": "svc_acct_abc",
+    "deleted": true
+}
 ```
 
 ## Domain Types
@@ -946,7 +1468,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
 
 # API Keys
 
-## List
+## List project API keys
 
 **get** `/organization/projects/{project_id}/api_keys`
 
@@ -1087,7 +1609,86 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_used_at": 0,
+      "name": "name",
+      "object": "organization.project.api_key",
+      "owner": {
+        "service_account": {
+          "id": "id",
+          "created_at": 0,
+          "name": "name",
+          "object": "organization.project.service_account",
+          "role": "owner"
+        },
+        "type": "user",
+        "user": {
+          "id": "id",
+          "added_at": 0,
+          "email": "email",
+          "name": "name",
+          "object": "organization.project.user",
+          "role": "owner"
+        }
+      },
+      "redacted_value": "redacted_value"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.api_key",
+            "redacted_value": "sk-abc...def",
+            "name": "My API Key",
+            "created_at": 1711471533,
+            "last_used_at": 1711471534,
+            "id": "key_abc",
+            "owner": {
+                "type": "user",
+                "user": {
+                    "object": "organization.project.user",
+                    "id": "user_abc",
+                    "name": "First Last",
+                    "email": "user@example.com",
+                    "role": "owner",
+                    "added_at": 1711471533
+                }
+            }
+        }
+    ],
+    "first_id": "key_abc",
+    "last_id": "key_xyz",
+    "has_more": false
+}
+```
+
+## Retrieve project API key
 
 **get** `/organization/projects/{project_id}/api_keys/{key_id}`
 
@@ -1212,7 +1813,70 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_used_at": 0,
+  "name": "name",
+  "object": "organization.project.api_key",
+  "owner": {
+    "service_account": {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    },
+    "type": "user",
+    "user": {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.project.user",
+      "role": "owner"
+    }
+  },
+  "redacted_value": "redacted_value"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.api_key",
+    "redacted_value": "sk-abc...def",
+    "name": "My API Key",
+    "created_at": 1711471533,
+    "last_used_at": 1711471534,
+    "id": "key_abc",
+    "owner": {
+        "type": "user",
+        "user": {
+            "object": "organization.project.user",
+            "id": "user_abc",
+            "name": "First Last",
+            "email": "user@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    }
+}
+```
+
+## Delete project API key
 
 **delete** `/organization/projects/{project_id}/api_keys/{key_id}`
 
@@ -1243,6 +1907,34 @@ a service account.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.api_key.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.api_key.deleted",
+    "id": "key_abc",
+    "deleted": true
+}
 ```
 
 ## Domain Types
@@ -1355,7 +2047,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_I
 
 # Rate Limits
 
-## List Rate Limits
+## List project rate limits
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
@@ -1438,7 +2130,60 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update Rate Limit
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "max_requests_per_1_minute": 0,
+      "max_tokens_per_1_minute": 0,
+      "model": "model",
+      "object": "project.rate_limit",
+      "batch_1_day_max_input_tokens": 0,
+      "max_audio_megabytes_per_1_minute": 0,
+      "max_images_per_1_minute": 0,
+      "max_requests_per_1_day": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=rl_xxx&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+          "object": "project.rate_limit",
+          "id": "rl-ada",
+          "model": "ada",
+          "max_requests_per_1_minute": 600,
+          "max_tokens_per_1_minute": 150000,
+          "max_images_per_1_minute": 10
+        }
+    ],
+    "first_id": "rl-ada",
+    "last_id": "rl-ada",
+    "has_more": false
+}
+```
+
+## Modify project rate limit
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
@@ -1525,9 +2270,49 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
     -d '{}'
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "max_requests_per_1_minute": 0,
+  "max_tokens_per_1_minute": 0,
+  "model": "model",
+  "object": "project.rate_limit",
+  "batch_1_day_max_input_tokens": 0,
+  "max_audio_megabytes_per_1_minute": 0,
+  "max_images_per_1_minute": 0,
+  "max_requests_per_1_day": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limits/rl_xxx \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "max_requests_per_1_minute": 500
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.rate_limit",
+    "id": "rl-ada",
+    "model": "ada",
+    "max_requests_per_1_minute": 600,
+    "max_tokens_per_1_minute": 150000,
+    "max_images_per_1_minute": 10
+  }
+```
+
 # Groups
 
-## List
+## List project groups
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -1604,7 +2389,53 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "created_at": 0,
+      "group_id": "group_id",
+      "group_name": "group_name",
+      "object": "project.group",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "project.group",
+            "project_id": "proj_abc123",
+            "group_id": "group_01J1F8ABCDXYZ",
+            "group_name": "Support Team",
+            "created_at": 1711471533
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Add project group
 
 **post** `/organization/projects/{project_id}/groups`
 
@@ -1660,7 +2491,43 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "group_id": "group_01J1F8ABCDXYZ",
+      "role": "role_01J1F8PROJ"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.group",
+    "project_id": "proj_abc123",
+    "group_id": "group_01J1F8ABCDXYZ",
+    "group_name": "Support Team",
+    "created_at": 1711471533
+}
+```
+
+## Remove project group
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
@@ -1692,9 +2559,35 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "project.group.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "project.group.deleted",
+    "deleted": true
+}
+```
+
 # Certificates
 
-## List
+## List project certificates
 
 **get** `/organization/projects/{project_id}/certificates`
 
@@ -1787,7 +2680,63 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Activate
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_abc",
+      "name": "My Example Certificate",
+      "active": true,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+  ],
+  "first_id": "cert_abc",
+  "last_id": "cert_abc",
+  "has_more": false
+}
+```
+
+## Activate certificates for project
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
@@ -1874,7 +2823,75 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/ac
         }'
 ```
 
-## Deactivate
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activate \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "data": ["cert_abc", "cert_def"]
+}'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.project.certificate.activation",
+  "data": [
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_abc",
+      "name": "My Example Certificate",
+      "active": true,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_def",
+      "name": "My Example Certificate 2",
+      "active": true,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+  ],
+}
+```
+
+## Deactivate certificates for project
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
@@ -1958,4 +2975,72 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/de
             "cert_abc"
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deactivate \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "data": ["cert_abc", "cert_def"]
+}'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.project.certificate.deactivation",
+  "data": [
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_abc",
+      "name": "My Example Certificate",
+      "active": false,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+    {
+      "object": "organization.project.certificate",
+      "id": "cert_def",
+      "name": "My Example Certificate 2",
+      "active": false,
+      "created_at": 1234567,
+      "certificate_details": {
+        "valid_at": 12345667,
+        "expires_at": 12345678
+      }
+    },
+  ],
+}
 ```

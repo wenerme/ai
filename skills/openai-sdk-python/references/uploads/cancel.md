@@ -1,4 +1,4 @@
-## Cancel
+## Cancel upload
 
 `uploads.cancel(strupload_id)  -> Upload`
 
@@ -137,4 +137,30 @@ upload = client.uploads.cancel(
     "upload_abc123",
 )
 print(upload.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
 ```

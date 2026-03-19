@@ -1,6 +1,6 @@
 # Messages
 
-## List
+## List messages
 
 `beta.threads.messages.list(strthread_id, MessageListParams**kwargs)  -> SyncCursorPage[Message]`
 
@@ -299,7 +299,120 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assistant_id": "assistant_id",
+      "attachments": [
+        {
+          "file_id": "file_id",
+          "tools": [
+            {
+              "type": "code_interpreter"
+            }
+          ]
+        }
+      ],
+      "completed_at": 0,
+      "content": [
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
+      ],
+      "created_at": 0,
+      "incomplete_at": 0,
+      "incomplete_details": {
+        "reason": "content_filter"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "object": "thread.message",
+      "role": "user",
+      "run_id": "run_id",
+      "status": "in_progress",
+      "thread_id": "thread_id"
+    }
+  ],
+  "first_id": "msg_abc123",
+  "has_more": false,
+  "last_id": "msg_abc123",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+thread_messages = client.beta.threads.messages.list("thread_abc123")
+print(thread_messages.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "How does AI work? Explain it in simple terms.",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    },
+    {
+      "id": "msg_abc456",
+      "object": "thread.message",
+      "created_at": 1699016383,
+      "assistant_id": null,
+      "thread_id": "thread_abc123",
+      "run_id": null,
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": {
+            "value": "Hello, what is AI?",
+            "annotations": []
+          }
+        }
+      ],
+      "attachments": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc456",
+  "has_more": false
+}
+```
+
+## Create message
 
 `beta.threads.messages.create(strthread_id, MessageCreateParams**kwargs)  -> Message`
 
@@ -701,7 +814,88 @@ message = client.beta.threads.messages.create(
 print(message.id)
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+thread_message = client.beta.threads.messages.create(
+  "thread_abc123",
+  role="user",
+  content="How does AI work? Explain it in simple terms.",
+)
+print(thread_message)
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1713226573,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Modify message
 
 `beta.threads.messages.update(strmessage_id, MessageUpdateParams**kwargs)  -> Message`
 
@@ -987,7 +1181,94 @@ message = client.beta.threads.messages.update(
 print(message.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+message = client.beta.threads.messages.update(
+  message_id="msg_abc12",
+  thread_id="thread_abc123",
+  metadata={
+    "modified": "true",
+    "user": "abc123",
+  },
+)
+print(message)
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "file_ids": [],
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  }
+}
+```
+
+## Retrieve message
 
 `beta.threads.messages.retrieve(strmessage_id, MessageRetrieveParams**kwargs)  -> Message`
 
@@ -1264,7 +1545,87 @@ message = client.beta.threads.messages.retrieve(
 print(message.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "assistant_id": "assistant_id",
+  "attachments": [
+    {
+      "file_id": "file_id",
+      "tools": [
+        {
+          "type": "code_interpreter"
+        }
+      ]
+    }
+  ],
+  "completed_at": 0,
+  "content": [
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
+  ],
+  "created_at": 0,
+  "incomplete_at": 0,
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread.message",
+  "role": "user",
+  "run_id": "run_id",
+  "status": "in_progress",
+  "thread_id": "thread_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+message = client.beta.threads.messages.retrieve(
+  message_id="msg_abc123",
+  thread_id="thread_abc123",
+)
+print(message)
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1699017614,
+  "assistant_id": null,
+  "thread_id": "thread_abc123",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "How does AI work? Explain it in simple terms.",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+```
+
+## Delete message
 
 `beta.threads.messages.delete(strmessage_id, MessageDeleteParams**kwargs)  -> MessageDeleted`
 
@@ -1304,6 +1665,39 @@ message_deleted = client.beta.threads.messages.delete(
     thread_id="thread_id",
 )
 print(message_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted_message = client.beta.threads.messages.delete(
+  message_id="msg_abc12",
+  thread_id="thread_abc123",
+)
+print(deleted_message)
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types

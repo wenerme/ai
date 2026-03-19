@@ -1,4 +1,4 @@
-## Search
+## Search vector store
 
 `client.vectorStores.search(stringvectorStoreID, VectorStoreSearchParamsbody, RequestOptionsoptions?): Page<VectorStoreSearchResponse>`
 
@@ -230,5 +230,34 @@ for await (const vectorStoreSearchResponse of client.vectorStores.search('vs_abc
   query: 'string',
 })) {
   console.log(vectorStoreSearchResponse.file_id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "foo": "string"
+      },
+      "content": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ],
+      "file_id": "file_id",
+      "filename": "filename",
+      "score": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.search_results.page",
+  "search_query": [
+    "string"
+  ]
 }
 ```

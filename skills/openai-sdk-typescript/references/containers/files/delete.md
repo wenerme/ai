@@ -1,4 +1,4 @@
-## Delete
+## Delete a container file
 
 `client.containers.files.delete(stringfileID, FileDeleteParamsparams, RequestOptionsoptions?): void`
 

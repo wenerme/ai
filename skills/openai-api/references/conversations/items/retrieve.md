@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve an item
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
@@ -564,11 +564,11 @@ Get a single item from a conversation with the given IDs.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -1335,17 +1335,17 @@ Get a single item from a conversation with the given IDs.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -1396,19 +1396,19 @@ Get a single item from a conversation with the given IDs.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -1704,7 +1704,7 @@ Get a single item from a conversation with the given IDs.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -1836,9 +1836,9 @@ Get a single item from a conversation with the given IDs.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -3104,4 +3104,42 @@ Get a single item from a conversation with the given IDs.
 ```http
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
 ```

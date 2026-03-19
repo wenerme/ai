@@ -1,4 +1,4 @@
-## Delete
+## Delete a conversation
 
 **delete** `/conversations/{conversation_id}`
 
@@ -26,4 +26,31 @@ Delete a conversation. Items in the conversation will not be deleted.
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```

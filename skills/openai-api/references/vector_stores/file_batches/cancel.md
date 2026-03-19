@@ -1,4 +1,4 @@
-## Cancel
+## Cancel vector store file batch
 
 **post** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/cancel`
 
@@ -75,4 +75,52 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATC
     -X POST \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -X POST
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 12,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 15,
+  }
+}
 ```

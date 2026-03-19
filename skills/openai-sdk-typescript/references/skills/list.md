@@ -1,4 +1,4 @@
-## List
+## List all skills for the current project.
 
 `client.skills.list(SkillListParamsquery?, RequestOptionsoptions?): CursorPage<Skill>`
 
@@ -72,5 +72,27 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const skill of client.skills.list()) {
   console.log(skill.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

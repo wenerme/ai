@@ -1,6 +1,6 @@
 # Videos
 
-## Create
+## Create video
 
 `client.videos.create(VideoCreateParamsbody, RequestOptionsoptions?): Video`
 
@@ -192,7 +192,58 @@ const video = await client.videos.create({ prompt: 'x' });
 console.log(video.id);
 ```
 
-## Edit
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+const video = await openai.videos.create({ prompt: 'A calico cat playing a piano on stage' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
+```
+
+## Create a new video generation job by editing a source video or existing generated video.
 
 `client.videos.edit(VideoEditParamsbody, RequestOptionsoptions?): Video`
 
@@ -344,7 +395,30 @@ const video = await client.videos.edit({ prompt: 'x', video: fs.createReadStream
 console.log(video.id);
 ```
 
-## Extend
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create an extension of a completed video.
 
 `client.videos.extend(VideoExtendParamsbody, RequestOptionsoptions?): Video`
 
@@ -510,7 +584,30 @@ const video = await client.videos.extend({
 console.log(video.id);
 ```
 
-## Create Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create a character from an uploaded video.
 
 `client.videos.createCharacter(VideoCreateCharacterParamsbody, RequestOptionsoptions?): VideoCreateCharacterResponse`
 
@@ -563,7 +660,17 @@ const response = await client.videos.createCharacter({
 console.log(response.id);
 ```
 
-## Get Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## Fetch a character.
 
 `client.videos.getCharacter(stringcharacterID, RequestOptionsoptions?): VideoGetCharacterResponse`
 
@@ -605,7 +712,17 @@ const response = await client.videos.getCharacter('char_123');
 console.log(response.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## List videos
 
 `client.videos.list(VideoListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Video>`
 
@@ -756,7 +873,67 @@ for await (const video of client.videos.list()) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "string",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const video of openai.videos.list()) {
+  console.log(video.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
+```
+
+## Retrieve video
 
 `client.videos.retrieve(stringvideoID, RequestOptionsoptions?): Video`
 
@@ -890,7 +1067,42 @@ const video = await client.videos.retrieve('video_123');
 console.log(video.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.retrieve('video_123');
+
+console.log(video.id);
+```
+
+## Delete video
 
 `client.videos.delete(stringvideoID, RequestOptionsoptions?): VideoDeleteResponse`
 
@@ -936,7 +1148,29 @@ const video = await client.videos.delete('video_123');
 console.log(video.id);
 ```
 
-## Remix
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.delete('video_123');
+
+console.log(video.id);
+```
+
+## Remix video
 
 `client.videos.remix(stringvideoID, VideoRemixParamsbody, RequestOptionsoptions?): Video`
 
@@ -1076,7 +1310,58 @@ const video = await client.videos.remix('video_123', { prompt: 'x' });
 console.log(video.id);
 ```
 
-## Download Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.remix('video_123', { prompt: 'Extend the scene with the cat taking a bow to the cheering audience' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
+```
+
+## Retrieve video content
 
 `client.videos.downloadContent(stringvideoID, VideoDownloadContentParamsquery?, RequestOptionsoptions?): Response`
 
@@ -1114,6 +1399,21 @@ import OpenAI from 'openai';
 const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
+
+const response = await client.videos.downloadContent('video_123');
+
+console.log(response);
+
+const content = await response.blob();
+console.log(content);
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
 
 const response = await client.videos.downloadContent('video_123');
 

@@ -1,4 +1,4 @@
-## Delete
+## Delete chat completion
 
 **delete** `/chat/completions/{completion_id}`
 
@@ -33,4 +33,32 @@ created with the `store` parameter set to `true` can be deleted.
 curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chat.completion.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "chat.completion.deleted",
+  "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
+  "deleted": true
+}
 ```

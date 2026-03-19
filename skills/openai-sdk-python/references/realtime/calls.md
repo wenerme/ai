@@ -1,6 +1,6 @@
 # Calls
 
-## Accept
+## Accept call
 
 `realtime.calls.accept(strcall_id, CallAcceptParams**kwargs)`
 
@@ -771,7 +771,7 @@ client.realtime.calls.accept(
 )
 ```
 
-## Hangup
+## Hang up call
 
 `realtime.calls.hangup(strcall_id)`
 
@@ -798,7 +798,7 @@ client.realtime.calls.hangup(
 )
 ```
 
-## Refer
+## Refer call
 
 `realtime.calls.refer(strcall_id, CallReferParams**kwargs)`
 
@@ -830,7 +830,7 @@ client.realtime.calls.refer(
 )
 ```
 
-## Reject
+## Reject call
 
 `realtime.calls.reject(strcall_id, CallRejectParams**kwargs)`
 
@@ -861,7 +861,7 @@ client.realtime.calls.reject(
 )
 ```
 
-## Create
+## Create call
 
 `realtime.calls.create(CallCreateParams**kwargs)  -> BinaryResponseContent`
 

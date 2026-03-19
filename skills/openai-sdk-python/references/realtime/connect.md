@@ -1,4 +1,4 @@
-## Connect
+## 
 
 `realtime.connect(RealtimeConnectParams**kwargs)`
 

@@ -1,4 +1,4 @@
-## Update
+## Modify thread
 
 `beta.threads.update(strthread_id, ThreadUpdateParams**kwargs)  -> Thread`
 
@@ -93,4 +93,60 @@ thread = client.beta.threads.update(
     thread_id="thread_id",
 )
 print(thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+my_updated_thread = client.beta.threads.update(
+  "thread_abc123",
+  metadata={
+    "modified": "true",
+    "user": "abc123"
+  }
+)
+print(my_updated_thread)
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  },
+  "tool_resources": {}
+}
 ```

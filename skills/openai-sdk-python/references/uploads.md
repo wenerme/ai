@@ -1,6 +1,6 @@
 # Uploads
 
-## Create
+## Create upload
 
 `uploads.create(UploadCreateParams**kwargs)  -> Upload`
 
@@ -206,7 +206,33 @@ upload = client.uploads.create(
 print(upload.id)
 ```
 
-## Complete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
+## Complete upload
 
 `uploads.complete(strupload_id, UploadCompleteParams**kwargs)  -> Upload`
 
@@ -361,7 +387,33 @@ upload = client.uploads.complete(
 print(upload.id)
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
+## Cancel upload
 
 `uploads.cancel(strupload_id)  -> Upload`
 
@@ -502,6 +554,32 @@ upload = client.uploads.cancel(
 print(upload.id)
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
+```
+
 ## Domain Types
 
 ### Upload
@@ -618,7 +696,7 @@ print(upload.id)
 
 # Parts
 
-## Create
+## Add upload part
 
 `uploads.parts.create(strupload_id, PartCreateParams**kwargs)  -> UploadPart`
 
@@ -673,9 +751,20 @@ client = OpenAI(
 )
 upload_part = client.uploads.parts.create(
     upload_id="upload_abc123",
-    data=b"raw file contents",
+    data=b"Example data",
 )
 print(upload_part.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "upload.part",
+  "upload_id": "upload_id"
+}
 ```
 
 ## Domain Types

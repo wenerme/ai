@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve model
 
 `client.models.retrieve(stringmodel, RequestOptionsoptions?): Model`
 
@@ -46,4 +46,42 @@ const client = new OpenAI({
 const model = await client.models.retrieve('gpt-4o-mini');
 
 console.log(model.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created": 0,
+  "object": "model",
+  "owned_by": "owned_by"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const model = await openai.models.retrieve("VAR_chat_model_id");
+
+  console.log(model);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "VAR_chat_model_id",
+  "object": "model",
+  "created": 1686935002,
+  "owned_by": "openai"
+}
 ```

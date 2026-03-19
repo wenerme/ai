@@ -1,6 +1,6 @@
 # Models
 
-## List
+## List models
 
 `models.list()  -> SyncPage[Model]`
 
@@ -46,7 +46,60 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.list()
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
+}
+```
+
+## Retrieve model
 
 `models.retrieve(strmodel)  -> Model`
 
@@ -97,7 +150,38 @@ model = client.models.retrieve(
 print(model.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created": 0,
+  "object": "model",
+  "owned_by": "owned_by"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.retrieve("VAR_chat_model_id")
+```
+
+#### Response
+
+```json
+{
+  "id": "VAR_chat_model_id",
+  "object": "model",
+  "created": 1686935002,
+  "owned_by": "openai"
+}
+```
+
+## Delete a fine-tuned model
 
 `models.delete(strmodel)  -> ModelDeleted`
 
@@ -132,6 +216,35 @@ model_deleted = client.models.delete(
     "ft:gpt-4o-mini:acemeco:suffix:abc123",
 )
 print(model_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.delete("ft:gpt-4o-mini:acemeco:suffix:abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "object": "model",
+  "deleted": true
+}
 ```
 
 ## Domain Types

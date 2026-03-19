@@ -1,4 +1,4 @@
-## Content
+## Retrieve vector store file content
 
 `client.vectorStores.files.content(stringfileID, FileContentParamsparams, RequestOptionsoptions?): Page<FileContentResponse>`
 
@@ -42,5 +42,21 @@ for await (const fileContentResponse of client.vectorStores.files.content('file-
   vector_store_id: 'vs_abc123',
 })) {
   console.log(fileContentResponse.text);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "text": "text",
+      "type": "type"
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.file_content.page"
 }
 ```

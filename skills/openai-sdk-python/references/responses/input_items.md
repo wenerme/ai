@@ -1,6 +1,6 @@
 # Input Items
 
-## List
+## List input items
 
 `responses.input_items.list(strresponse_id, InputItemListParams**kwargs)  -> SyncCursorPage[ResponseItem]`
 
@@ -2878,6 +2878,65 @@ page = client.responses.input_items.list(
 )
 page = page.data[0]
 print(page)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "user",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.input_items.list("resp_123")
+print(response.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "msg_abc123",
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Tell me a three sentence bedtime story about a unicorn."
+        }
+      ]
+    }
+  ],
+  "first_id": "msg_abc123",
+  "last_id": "msg_abc123",
+  "has_more": false
+}
 ```
 
 ## Domain Types

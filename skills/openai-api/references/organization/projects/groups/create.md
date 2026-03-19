@@ -1,4 +1,4 @@
-## Create
+## Add project group
 
 **post** `/organization/projects/{project_id}/groups`
 
@@ -52,4 +52,40 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
           "group_id": "group_id",
           "role": "role"
         }'
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "group_id": "group_01J1F8ABCDXYZ",
+      "role": "role_01J1F8PROJ"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.group",
+    "project_id": "proj_abc123",
+    "group_id": "group_01J1F8ABCDXYZ",
+    "group_name": "Support Team",
+    "created_at": 1711471533
+}
 ```

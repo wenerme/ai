@@ -1,4 +1,4 @@
-## List
+## List models
 
 **get** `/models`
 
@@ -35,4 +35,55 @@ Lists the currently available models, and provides basic information about each 
 ```http
 curl https://api.openai.com/v1/models \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/models \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
+}
 ```

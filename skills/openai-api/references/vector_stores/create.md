@@ -1,4 +1,4 @@
-## Create
+## Create vector store
 
 **post** `/vector_stores`
 
@@ -176,4 +176,65 @@ curl https://api.openai.com/v1/vector_stores \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "last_active_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "name",
+  "object": "vector_store",
+  "status": "expired",
+  "usage_bytes": 0,
+  "expires_after": {
+    "anchor": "last_active_at",
+    "days": 1
+  },
+  "expires_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "name": "Support FAQ"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "vs_abc123",
+  "object": "vector_store",
+  "created_at": 1699061776,
+  "name": "Support FAQ",
+  "description": "Contains commonly asked questions and answers, organized by topic.",
+  "bytes": 139920,
+  "file_counts": {
+    "in_progress": 0,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 3
+  }
+}
 ```

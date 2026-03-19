@@ -1,6 +1,6 @@
 # Conversations
 
-## Create
+## Create a conversation
 
 **post** `/conversations`
 
@@ -476,11 +476,11 @@ Create a conversation.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -1108,11 +1108,11 @@ Create a conversation.
 
       Text, image, or file output of the function tool call.
 
-      - `UnionMember0 = string`
+      - `string`
 
         A JSON string of the output of the function tool call.
 
-      - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+      - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
         An array of content outputs (text, image, file) for the function tool call.
 
@@ -1339,17 +1339,17 @@ Create a conversation.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -1400,19 +1400,19 @@ Create a conversation.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -1708,7 +1708,7 @@ Create a conversation.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -1840,9 +1840,9 @@ Create a conversation.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -3223,7 +3223,47 @@ curl https://api.openai.com/v1/conversations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "metadata": {"topic": "demo"},
+    "items": [
+      {
+        "type": "message",
+        "role": "user",
+        "content": "Hello!"
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Retrieve a conversation
 
 **get** `/conversations/{conversation_id}`
 
@@ -3263,7 +3303,36 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Update a conversation
 
 **post** `/conversations/{conversation_id}`
 
@@ -3320,7 +3389,40 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "metadata": {"topic": "project-x"}
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "project-x"}
+}
+```
+
+## Delete a conversation
 
 **delete** `/conversations/{conversation_id}`
 
@@ -3348,6 +3450,33 @@ Delete a conversation. Items in the conversation will not be deleted.
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -3793,7 +3922,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
 
 # Items
 
-## Create
+## Create items
 
 **post** `/conversations/{conversation_id}/items`
 
@@ -4296,11 +4425,11 @@ Create items in a conversation with the given ID.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -4928,11 +5057,11 @@ Create items in a conversation with the given ID.
 
       Text, image, or file output of the function tool call.
 
-      - `UnionMember0 = string`
+      - `string`
 
         A JSON string of the output of the function tool call.
 
-      - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+      - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
         An array of content outputs (text, image, file) for the function tool call.
 
@@ -5159,17 +5288,17 @@ Create items in a conversation with the given ID.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -5220,19 +5349,19 @@ Create items in a conversation with the given ID.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -5528,7 +5657,7 @@ Create items in a conversation with the given ID.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -5660,9 +5789,9 @@ Create items in a conversation with the given ID.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -7538,11 +7667,11 @@ Create items in a conversation with the given ID.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -8309,17 +8438,17 @@ Create items in a conversation with the given ID.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -8370,19 +8499,19 @@ Create items in a conversation with the given ID.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -8678,7 +8807,7 @@ Create items in a conversation with the given ID.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -8810,9 +8939,9 @@ Create items in a conversation with the given ID.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -10108,7 +10237,89 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
         }'
 ```
 
-## List
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123/items \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "items": [
+      {
+        "type": "message",
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "Hello!"}
+        ]
+      },
+      {
+        "type": "message",
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "How are you?"}
+        ]
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    },
+    {
+      "type": "message",
+      "id": "msg_def",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "How are you?"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_def",
+  "has_more": false
+}
+```
+
+## List items
 
 **get** `/conversations/{conversation_id}/items`
 
@@ -10703,11 +10914,11 @@ List all items for a conversation with the given ID.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -11474,17 +11685,17 @@ List all items for a conversation with the given ID.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -11535,19 +11746,19 @@ List all items for a conversation with the given ID.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -11843,7 +12054,7 @@ List all items for a conversation with the given ID.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -11975,9 +12186,9 @@ List all items for a conversation with the given ID.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -13263,7 +13474,61 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/conversations/conv_123/items?limit=10" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_abc",
+  "has_more": false
+}
+```
+
+## Retrieve an item
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
@@ -13829,11 +14094,11 @@ Get a single item from a conversation with the given IDs.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -14600,17 +14865,17 @@ Get a single item from a conversation with the given IDs.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -14661,19 +14926,19 @@ Get a single item from a conversation with the given IDs.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -14969,7 +15234,7 @@ Get a single item from a conversation with the given IDs.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -15101,9 +15366,9 @@ Get a single item from a conversation with the given IDs.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -16371,7 +16636,45 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
+```
+
+## Delete an item
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
@@ -16412,6 +16715,35 @@ Delete an item from a conversation with the given IDs.
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```
 
 ## Domain Types
@@ -16947,11 +17279,11 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -17718,17 +18050,17 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -17779,19 +18111,19 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -18087,7 +18419,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -18219,9 +18551,9 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -20017,11 +20349,11 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -20788,17 +21120,17 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -20849,19 +21181,19 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -21157,7 +21489,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -21289,9 +21621,9 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 

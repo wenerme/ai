@@ -1,4 +1,4 @@
-## Create
+## Create video
 
 `videos.create(VideoCreateParams**kwargs)  -> Video`
 
@@ -189,4 +189,55 @@ video = client.videos.create(
     prompt="x",
 )
 print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.create(
+    prompt="A calico cat playing a piano on stage",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
 ```

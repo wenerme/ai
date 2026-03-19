@@ -1,4 +1,4 @@
-## Hangup
+## Hang up call
 
 `realtime.calls.hangup(strcall_id)`
 

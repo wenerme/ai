@@ -1,4 +1,4 @@
-## Delete
+## Delete a container
 
 `client.containers.delete(stringcontainerID, RequestOptionsoptions?): void`
 

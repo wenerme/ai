@@ -1,6 +1,6 @@
 # Roles
 
-## List
+## List organization roles
 
 **get** `/organization/roles`
 
@@ -81,7 +81,62 @@ curl https://api.openai.com/v1/organization/roles \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "description": "description",
+      "name": "name",
+      "object": "role",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/roles?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "role",
+            "id": "role_01J1F8ROLE01",
+            "name": "API Group Manager",
+            "description": "Allows managing organization groups",
+            "permissions": [
+                "api.groups.read",
+                "api.groups.write"
+            ],
+            "resource_type": "api.organization",
+            "predefined_role": false
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Create organization role
 
 **post** `/organization/roles`
 
@@ -147,7 +202,56 @@ curl https://api.openai.com/v1/organization/roles \
         }'
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_name": "API Group Manager",
+      "permissions": [
+          "api.groups.read",
+          "api.groups.write"
+      ],
+      "description": "Allows managing organization groups"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "description": "Allows managing organization groups",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false
+}
+```
+
+## Update organization role
 
 **post** `/organization/roles/{role_id}`
 
@@ -212,7 +316,56 @@ curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
     -d '{}'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_name": "API Group Manager",
+      "permissions": [
+          "api.groups.read",
+          "api.groups.write"
+      ],
+      "description": "Allows managing organization groups"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "description": "Allows managing organization groups",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false
+}
+```
+
+## Delete organization role
 
 **delete** `/organization/roles/{role_id}`
 
@@ -244,4 +397,32 @@ Deletes a custom role from the organization.
 curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "role.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "role.deleted",
+    "id": "role_01J1F8ROLE01",
+    "deleted": true
+}
 ```

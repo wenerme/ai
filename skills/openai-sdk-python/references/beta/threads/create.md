@@ -1,4 +1,4 @@
-## Create
+## Create thread
 
 `beta.threads.create(ThreadCreateParams**kwargs)  -> Thread`
 
@@ -270,4 +270,85 @@ client = OpenAI(
 )
 thread = client.beta.threads.create()
 print(thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Empty
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+empty_thread = client.beta.threads.create()
+print(empty_thread)
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699012949,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+### Messages
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+message_thread = client.beta.threads.create(
+  messages=[
+    {
+      "role": "user",
+      "content": "Hello, what is AI?"
+    },
+    {
+      "role": "user",
+      "content": "How does AI work? Explain it in simple terms."
+    },
+  ]
+)
+
+print(message_thread)
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {}
+}
 ```

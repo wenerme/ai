@@ -2,6 +2,13 @@
 
 OpenAI provides a few ways to manage conversation state, which is important for preserving information across multiple messages or turns in a conversation.
 
+
+  When troubleshooting cases where GPT-5.4 treats an intermediate update as
+    the final answer, verify your integration preserves the assistant message
+    `phase` field correctly. See [Phase
+    parameter](https://developers.openai.com/api/docs/guides/prompt-guidance#phase-parameter) for details.
+
+
 ## Manually manage conversation state
 
 While each text generation request is independent and stateless, you can still implement **multi-turn conversations** by providing additional messages as parameters to your text generation request. Consider a knock-knock joke:

@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve container file
 
 `containers.files.retrieve(strfile_id, FileRetrieveParams**kwargs)  -> FileRetrieveResponse`
 
@@ -60,4 +60,18 @@ file = client.containers.files.retrieve(
     container_id="container_id",
 )
 print(file.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
 ```

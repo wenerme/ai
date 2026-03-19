@@ -1,4 +1,4 @@
-## Search
+## Search vector store
 
 **post** `/vector_stores/{vector_store_id}/search`
 
@@ -14,9 +14,9 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   A query string for a search
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = array of string`
+  - `array of string`
 
 - `filters: optional ComparisonFilter or CompoundFilter`
 
@@ -63,17 +63,17 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
       The value to compare against the attribute key; supports string, number, or boolean types.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = number`
+      - `number`
 
-      - `UnionMember2 = boolean`
+      - `boolean`
 
-      - `UnionMember3 = array of string or number`
+      - `array of string or number`
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
   - `CompoundFilter = object { filters, type }`
 
@@ -124,19 +124,19 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
-          - `UnionMember3 = array of string or number`
+          - `array of string or number`
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
-      - `UnionMember1 = unknown`
+      - `unknown`
 
     - `type: "and" or "or"`
 
@@ -184,11 +184,11 @@ Search a vector store for relevant chunks based on a query and file attributes f
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `content: array of object { text, type }`
 
@@ -242,4 +242,86 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/search \
     -d '{
           "query": "string"
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "foo": "string"
+      },
+      "content": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ],
+      "file_id": "file_id",
+      "filename": "filename",
+      "score": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.search_results.page",
+  "search_query": [
+    "string"
+  ]
+}
+```
+
+### Example
+
+```http
+curl -X POST \
+https://api.openai.com/v1/vector_stores/vs_abc123/search \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"query": "What is the return policy?", "filters": {...}}'
+```
+
+#### Response
+
+```json
+{
+  "object": "vector_store.search_results.page",
+  "search_query": "What is the return policy?",
+  "data": [
+    {
+      "file_id": "file_123",
+      "filename": "document.pdf",
+      "score": 0.95,
+      "attributes": {
+        "author": "John Doe",
+        "date": "2023-01-01"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Relevant chunk"
+        }
+      ]
+    },
+    {
+      "file_id": "file_456",
+      "filename": "notes.txt",
+      "score": 0.89,
+      "attributes": {
+        "author": "Jane Smith",
+        "date": "2023-01-02"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Sample text content from the vector store."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "next_page": null
+}
 ```

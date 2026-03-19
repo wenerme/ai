@@ -1,6 +1,6 @@
 # Images
 
-## Generate
+## Create image
 
 `images.generate(ImageGenerateParams**kwargs)  -> ImagesResponse`
 
@@ -271,7 +271,109 @@ for image in client.images.generate(
   print(image)
 ```
 
-## Edit
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Generate image
+
+```python
+import base64
+from openai import OpenAI
+client = OpenAI()
+
+img = client.images.generate(
+    model="gpt-image-1.5",
+    prompt="A cute baby sea otter",
+    n=1,
+    size="1024x1024"
+)
+
+image_bytes = base64.b64decode(img.data[0].b64_json)
+with open("output.png", "wb") as f:
+    f.write(image_bytes)
+```
+
+#### Response
+
+```json
+{
+  "created": 1713833628,
+  "data": [
+    {
+      "b64_json": "..."
+    }
+  ],
+  "usage": {
+    "total_tokens": 100,
+    "input_tokens": 50,
+    "output_tokens": 50,
+    "input_tokens_details": {
+      "text_tokens": 10,
+      "image_tokens": 40
+    }
+  }
+}
+```
+
+### Streaming
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+stream = client.images.generate(
+    model="gpt-image-1.5",
+    prompt="A cute baby sea otter",
+    n=1,
+    size="1024x1024",
+    stream=True
+)
+
+for event in stream:
+    print(event)
+```
+
+#### Response
+
+```json
+event: image_generation.partial_image
+data: {"type":"image_generation.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_generation.completed
+data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
+```
+
+## Create image edit
 
 `images.edit(ImageEditParams**kwargs)  -> ImagesResponse`
 
@@ -540,13 +642,116 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 for image in client.images.edit(
-    image=b"raw file contents",
+    image=b"Example data",
     prompt="A cute baby sea otter wearing a beret",
 ):
   print(image)
 ```
 
-## Create Variation
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Edit image
+
+```python
+import base64
+from openai import OpenAI
+client = OpenAI()
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+result = client.images.edit(
+    model="gpt-image-1.5",
+    image=[
+        open("body-lotion.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+        open("soap.png", "rb"),
+    ],
+    prompt=prompt
+)
+
+image_base64 = result.data[0].b64_json
+image_bytes = base64.b64decode(image_base64)
+
+# Save the image to a file
+with open("gift-basket.png", "wb") as f:
+    f.write(image_bytes)
+```
+
+### Streaming
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+stream = client.images.edit(
+    model="gpt-image-1.5",
+    image=[
+        open("body-lotion.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+        open("soap.png", "rb"),
+    ],
+    prompt=prompt,
+    stream=True
+)
+
+for event in stream:
+    print(event)
+```
+
+#### Response
+
+```json
+event: image_edit.partial_image
+data: {"type":"image_edit.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_edit.completed
+data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
+```
+
+## Create image variation
 
 `images.create_variation(ImageCreateVariationParams**kwargs)  -> ImagesResponse`
 
@@ -718,9 +923,70 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 images_response = client.images.create_variation(
-    image=b"raw file contents",
+    image=b"Example data",
 )
 print(images_response.created)
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.images.create_variation(
+  image=open("image_edit_original.png", "rb"),
+  n=2,
+  size="1024x1024"
+)
+```
+
+#### Response
+
+```json
+{
+  "created": 1589478378,
+  "data": [
+    {
+      "url": "https://..."
+    },
+    {
+      "url": "https://..."
+    }
+  ]
+}
 ```
 
 ## Domain Types

@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve project service account
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
@@ -47,4 +47,36 @@ Retrieves a service account in the project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Service Account",
+    "role": "owner",
+    "created_at": 1711471533
+}
 ```

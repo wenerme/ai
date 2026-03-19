@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve ChatKit thread
 
 **get** `/chatkit/threads/{thread_id}`
 
@@ -84,4 +84,65 @@ Retrieve a ChatKit thread by its identifier.
 curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H 'OpenAI-Beta: chatkit_beta=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
 ```

@@ -1,6 +1,6 @@
 # Containers
 
-## List
+## List containers
 
 **get** `/containers`
 
@@ -127,7 +127,72 @@ curl https://api.openai.com/v1/containers \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "object",
+      "status": "status",
+      "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 0
+      },
+      "last_active_at": 0,
+      "memory_limit": "1g",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": [
+          "string"
+        ]
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+        "id": "cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863",
+        "object": "container",
+        "created_at": 1747844794,
+        "status": "running",
+        "expires_after": {
+            "anchor": "last_active_at",
+            "minutes": 20
+        },
+        "last_active_at": 1747844794,
+        "memory_limit": "4g",
+        "name": "My Container"
+    }
+  ],
+  "first_id": "container_123",
+  "last_id": "container_123",
+  "has_more": false
+}
+```
+
+## Create container
 
 **post** `/containers`
 
@@ -344,7 +409,80 @@ curl https://api.openai.com/v1/containers \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "My Container",
+        "memory_limit": "4g",
+        "skills": [
+          {
+            "type": "skill_reference",
+            "skill_id": "skill_4db6f1a2c9e73508b41f9da06e2c7b5f"
+          },
+          {
+            "type": "skill_reference",
+            "skill_id": "openai-spreadsheets",
+            "version": "latest"
+          }
+        ],
+        "network_policy": {
+          "type": "allowlist",
+          "allowed_domains": ["api.buildkite.com"]
+        }
+      }'
+```
+
+#### Response
+
+```json
+{
+    "id": "cntr_682e30645a488191b6363a0cbefc0f0a025ec61b66250591",
+    "object": "container",
+    "created_at": 1747857508,
+    "status": "running",
+    "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 20
+    },
+    "last_active_at": 1747857508,
+    "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": ["api.buildkite.com"]
+    },
+    "memory_limit": "4g",
+    "name": "My Container"
+}
+```
+
+## Retrieve container
 
 **get** `/containers/{container_id}`
 
@@ -431,7 +569,56 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "id": "cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863",
+    "object": "container",
+    "created_at": 1747844794,
+    "status": "running",
+    "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 20
+    },
+    "last_active_at": 1747844794,
+    "memory_limit": "4g",
+    "name": "My Container"
+}
+```
+
+## Delete a container
 
 **delete** `/containers/{container_id}`
 
@@ -449,9 +636,26 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "id": "cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863",
+    "object": "container.deleted",
+    "deleted": true
+}
+```
+
 # Files
 
-## List
+## List container files
 
 **get** `/containers/{container_id}/files`
 
@@ -538,7 +742,58 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "object",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "cfile_682e0e8a43c88191a7978f477a09bdf5",
+            "object": "container.file",
+            "created_at": 1747848842,
+            "bytes": 880,
+            "container_id": "cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04",
+            "path": "/mnt/data/88e12fa445d32636f190a0b33daed6cb-tsconfig.json",
+            "source": "user"
+        }
+    ],
+    "first_id": "cfile_682e0e8a43c88191a7978f477a09bdf5",
+    "has_more": false,
+    "last_id": "cfile_682e0e8a43c88191a7978f477a09bdf5"
+}
+```
+
+## Create container file
 
 **post** `/containers/{container_id}/files`
 
@@ -598,7 +853,43 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "object",
+  "path": "path",
+  "source": "source"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F file="@example.txt"
+```
+
+#### Response
+
+```json
+{
+  "id": "cfile_682e0e8a43c88191a7978f477a09bdf5",
+  "object": "container.file",
+  "created_at": 1747848842,
+  "bytes": 880,
+  "container_id": "cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04",
+  "path": "/mnt/data/88e12fa445d32636f190a0b33daed6cb-tsconfig.json",
+  "source": "user"
+}
+```
+
+## Retrieve container file
 
 **get** `/containers/{container_id}/files/{file_id}`
 
@@ -647,7 +938,42 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "object",
+  "path": "path",
+  "source": "source"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/container_123/files/file_456 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "id": "cfile_682e0e8a43c88191a7978f477a09bdf5",
+    "object": "container.file",
+    "created_at": 1747848842,
+    "bytes": 880,
+    "container_id": "cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04",
+    "path": "/mnt/data/88e12fa445d32636f190a0b33daed6cb-tsconfig.json",
+    "source": "user"
+}
+```
+
+## Delete a container file
 
 **delete** `/containers/{container_id}/files/{file_id}`
 
@@ -667,9 +993,26 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863/files/cfile_682e0e8a43c88191a7978f477a09bdf5 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "id": "cfile_682e0e8a43c88191a7978f477a09bdf5",
+    "object": "container.file.deleted",
+    "deleted": true
+}
+```
+
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 **get** `/containers/{container_id}/files/{file_id}/content`
 
@@ -686,4 +1029,17 @@ Retrieve Container File Content
 ```http
 curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID/content \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/container_123/files/cfile_456/content \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+<binary content of the file>
 ```

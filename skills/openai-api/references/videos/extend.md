@@ -1,4 +1,4 @@
-## Extend
+## Create an extension of a completed video.
 
 **post** `/videos/extensions`
 
@@ -66,9 +66,9 @@ Create an extension of a completed video.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -139,4 +139,27 @@ curl https://api.openai.com/v1/videos/extensions \
             "id": "video_123"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
 ```

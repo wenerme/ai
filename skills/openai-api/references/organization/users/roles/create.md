@@ -1,4 +1,4 @@
-## Create
+## Assign organization role to user
 
 **post** `/organization/users/{user_id}/roles`
 
@@ -99,4 +99,70 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
     -d '{
           "role_id": "role_id"
         }'
+```
+
+#### Response
+
+```json
+{
+  "object": "user.role",
+  "role": {
+    "id": "id",
+    "description": "description",
+    "name": "name",
+    "object": "role",
+    "permissions": [
+      "string"
+    ],
+    "predefined_role": true,
+    "resource_type": "resource_type"
+  },
+  "user": {
+    "id": "id",
+    "added_at": 0,
+    "email": "email",
+    "name": "name",
+    "object": "organization.user",
+    "role": "owner"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/users/user_abc123/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_id": "role_01J1F8ROLE01"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "user.role",
+    "user": {
+        "object": "organization.user",
+        "id": "user_abc123",
+        "name": "Ada Lovelace",
+        "email": "ada@example.com",
+        "role": "owner",
+        "added_at": 1711470000
+    },
+    "role": {
+        "object": "role",
+        "id": "role_01J1F8ROLE01",
+        "name": "API Group Manager",
+        "description": "Allows managing organization groups",
+        "permissions": [
+            "api.groups.read",
+            "api.groups.write"
+        ],
+        "resource_type": "api.organization",
+        "predefined_role": false
+    }
+}
 ```

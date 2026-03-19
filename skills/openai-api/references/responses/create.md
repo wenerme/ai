@@ -1,4 +1,4 @@
-## Create
+## Create a model response
 
 **post** `/responses`
 
@@ -560,11 +560,11 @@ as input for the model's response.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -1192,11 +1192,11 @@ as input for the model's response.
 
         Text, image, or file output of the function tool call.
 
-        - `UnionMember0 = string`
+        - `string`
 
           A JSON string of the output of the function tool call.
 
-        - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+        - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
           An array of content outputs (text, image, file) for the function tool call.
 
@@ -1423,17 +1423,17 @@ as input for the model's response.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -1484,19 +1484,19 @@ as input for the model's response.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -1792,7 +1792,7 @@ as input for the model's response.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -1924,9 +1924,9 @@ as input for the model's response.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3299,9 +3299,9 @@ as input for the model's response.
   characteristics, and price points. Refer to the [model guide](/docs/models)
   to browse and compare available models.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
+  - `"gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
     - `"gpt-5.4"`
 
@@ -3514,7 +3514,7 @@ as input for the model's response.
     prompt. The substitution values can either be strings, or other
     Response input types like images or files.
 
-    - `UnionMember0 = string`
+    - `string`
 
     - `ResponseInputText = object { text, type }`
 
@@ -4083,17 +4083,17 @@ as input for the model's response.
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
-          - `UnionMember3 = array of string or number`
+          - `array of string or number`
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
       - `CompoundFilter = object { filters, type }`
 
@@ -4144,19 +4144,19 @@ as input for the model's response.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-          - `UnionMember1 = unknown`
+          - `unknown`
 
         - `type: "and" or "or"`
 
@@ -4452,7 +4452,7 @@ as input for the model's response.
       specifies uploaded file IDs to make available to your code, along with an
       optional `memory_limit` setting.
 
-      - `UnionMember0 = string`
+      - `string`
 
         The container ID.
 
@@ -4584,9 +4584,9 @@ as input for the model's response.
 
       The image generation model to use. Default: `gpt-image-1`.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
         The image generation model to use. Default: `gpt-image-1`.
 
@@ -5187,7 +5187,7 @@ as input for the model's response.
     response will not be carried over to the next response. This makes it simple
     to swap out system (or developer) messages in new responses.
 
-    - `UnionMember0 = string`
+    - `string`
 
       A text input to the model, equivalent to a text input with the
       `developer` role.
@@ -5661,11 +5661,11 @@ as input for the model's response.
             with a maximum length of 64 characters. Values are strings with a maximum
             length of 512 characters, booleans, or numbers.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
-            - `UnionMember2 = boolean`
+            - `boolean`
 
           - `file_id: optional string`
 
@@ -6293,11 +6293,11 @@ as input for the model's response.
 
           Text, image, or file output of the function tool call.
 
-          - `UnionMember0 = string`
+          - `string`
 
             A JSON string of the output of the function tool call.
 
-          - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+          - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
             An array of content outputs (text, image, file) for the function tool call.
 
@@ -6524,17 +6524,17 @@ as input for the model's response.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
               - `CompoundFilter = object { filters, type }`
 
@@ -6585,19 +6585,19 @@ as input for the model's response.
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                      - `UnionMember2 = boolean`
+                      - `boolean`
 
-                      - `UnionMember3 = array of string or number`
+                      - `array of string or number`
 
-                        - `UnionMember0 = string`
+                        - `string`
 
-                        - `UnionMember1 = number`
+                        - `number`
 
-                  - `UnionMember1 = unknown`
+                  - `unknown`
 
                 - `type: "and" or "or"`
 
@@ -6893,7 +6893,7 @@ as input for the model's response.
               specifies uploaded file IDs to make available to your code, along with an
               optional `memory_limit` setting.
 
-              - `UnionMember0 = string`
+              - `string`
 
                 The container ID.
 
@@ -7025,9 +7025,9 @@ as input for the model's response.
 
               The image generation model to use. Default: `gpt-image-1`.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -8384,9 +8384,9 @@ as input for the model's response.
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
+    - `"gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
       - `"gpt-5.4"`
 
@@ -8826,11 +8826,11 @@ as input for the model's response.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -9607,17 +9607,17 @@ as input for the model's response.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -9668,19 +9668,19 @@ as input for the model's response.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -9976,7 +9976,7 @@ as input for the model's response.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -10108,9 +10108,9 @@ as input for the model's response.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -11487,17 +11487,17 @@ as input for the model's response.
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
-            - `UnionMember2 = boolean`
+            - `boolean`
 
-            - `UnionMember3 = array of string or number`
+            - `array of string or number`
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
         - `CompoundFilter = object { filters, type }`
 
@@ -11548,19 +11548,19 @@ as input for the model's response.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-            - `UnionMember1 = unknown`
+            - `unknown`
 
           - `type: "and" or "or"`
 
@@ -11856,7 +11856,7 @@ as input for the model's response.
         specifies uploaded file IDs to make available to your code, along with an
         optional `memory_limit` setting.
 
-        - `UnionMember0 = string`
+        - `string`
 
           The container ID.
 
@@ -11988,9 +11988,9 @@ as input for the model's response.
 
         The image generation model to use. Default: `gpt-image-1`.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
           The image generation model to use. Default: `gpt-image-1`.
 
@@ -12539,7 +12539,7 @@ as input for the model's response.
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -12896,4 +12896,882 @@ curl https://api.openai.com/v1/responses \
           "top_p": 1,
           "user": "user-1234"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "incomplete_details": {
+    "reason": "max_output_tokens"
+  },
+  "instructions": "string",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "gpt-5.1",
+  "object": "response",
+  "output": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "file_id",
+              "filename": "filename",
+              "index": 0,
+              "type": "file_citation"
+            }
+          ],
+          "logprobs": [
+            {
+              "token": "token",
+              "bytes": [
+                0
+              ],
+              "logprob": 0,
+              "top_logprobs": [
+                {
+                  "token": "token",
+                  "bytes": [
+                    0
+                  ],
+                  "logprob": 0
+                }
+              ]
+            }
+          ],
+          "text": "text",
+          "type": "output_text"
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message",
+      "phase": "commentary"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1,
+  "tool_choice": "none",
+  "tools": [
+    {
+      "name": "name",
+      "parameters": {
+        "foo": "bar"
+      },
+      "strict": true,
+      "type": "function",
+      "defer_loading": true,
+      "description": "description"
+    }
+  ],
+  "top_p": 1,
+  "background": true,
+  "completed_at": 0,
+  "conversation": {
+    "id": "id"
+  },
+  "max_output_tokens": 0,
+  "max_tool_calls": 0,
+  "output_text": "output_text",
+  "previous_response_id": "previous_response_id",
+  "prompt": {
+    "id": "id",
+    "variables": {
+      "foo": "string"
+    },
+    "version": "version"
+  },
+  "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_retention": "in-memory",
+  "reasoning": {
+    "effort": "none",
+    "generate_summary": "auto",
+    "summary": "auto"
+  },
+  "safety_identifier": "safety-identifier-1234",
+  "service_tier": "auto",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "low"
+  },
+  "top_logprobs": 0,
+  "truncation": "auto",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  },
+  "user": "user-1234"
+}
+```
+
+### Text input
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "input": "Tell me a three sentence bedtime story about a unicorn."
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ccd2bed1ec8190b14f964abc0542670bb6a6b452d3795b",
+  "object": "response",
+  "created_at": 1741476542,
+  "status": "completed",
+  "completed_at": 1741476543,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_67ccd2bf17f0819081ff3bb2cf6508e60bb6a6b452d3795b",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "In a peaceful grove beneath a silver moon, a unicorn named Lumina discovered a hidden pool that reflected the stars. As she dipped her horn into the water, the pool began to shimmer, revealing a pathway to a magical realm of endless night skies. Filled with wonder, Lumina whispered a wish for all who dream to find their own hidden magic, and as she glanced back, her hoofprints sparkled like stardust.",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 36,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 87,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 123
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### Image input
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "input": [
+      {
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "what is in this image?"},
+          {
+            "type": "input_image",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
+  "object": "response",
+  "created_at": 1741476777,
+  "status": "completed",
+  "completed_at": 1741476778,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_67ccd3acc8d48190a77525dc6de64b4104becb25c45c1d41",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 328,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 52,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 380
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### File input
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "input": [
+      {
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "what is in this file?"},
+          {
+            "type": "input_file",
+            "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_686eef60237881a2bd1180bb8b13de430e34c516d176ff86",
+  "object": "response",
+  "created_at": 1752100704,
+  "status": "completed",
+  "completed_at": 1752100705,
+  "background": false,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "id": "msg_686eef60d3e081a29283bdcbc4322fd90e34c516d176ff86",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "The file seems to contain excerpts from a letter to the shareholders of Berkshire Hathaway Inc., likely written by Warren Buffett. It covers several topics:\n\n1. **Communication Philosophy**: Buffett emphasizes the importance of transparency and candidness in reporting mistakes and successes to shareholders.\n\n2. **Mistakes and Learnings**: The letter acknowledges past mistakes in business assessments and management hires, highlighting the importance of correcting errors promptly.\n\n3. **CEO Succession**: Mention of Greg Abel stepping in as the new CEO and continuing the tradition of honest communication.\n\n4. **Pete Liegl Story**: A detailed account of acquiring Forest River and the relationship with its founder, highlighting trust and effective business decisions.\n\n5. **2024 Performance**: Overview of business performance, particularly in insurance and investment activities, with a focus on GEICO's improvement.\n\n6. **Tax Contributions**: Discussion of significant tax payments to the U.S. Treasury, credited to shareholders' reinvestments.\n\n7. **Investment Strategy**: A breakdown of Berkshire\u2019s investments in both controlled subsidiaries and marketable equities, along with a focus on long-term holding strategies.\n\n8. **American Capitalism**: Reflections on America\u2019s economic development and Berkshire\u2019s role within it.\n\n9. **Property-Casualty Insurance**: Insights into the P/C insurance business model and its challenges and benefits.\n\n10. **Japanese Investments**: Information about Berkshire\u2019s investments in Japanese companies and future plans.\n\n11. **Annual Meeting**: Details about the upcoming annual gathering in Omaha, including schedule changes and new book releases.\n\n12. **Personal Anecdotes**: Light-hearted stories about family and interactions, conveying Buffett's personable approach.\n\n13. **Financial Performance Data**: Tables comparing Berkshire\u2019s annual performance to the S&P 500, showing impressive long-term gains.\n\nOverall, the letter reinforces Berkshire Hathaway's commitment to transparency, investment in both its businesses and the wider economy, and emphasizes strong leadership and prudent financial management."
+        }
+      ],
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 8438,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 398,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 8836
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### Web search
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "tools": [{ "type": "web_search_preview" }],
+    "input": "What was a positive news story from today?"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ccf18ef5fc8190b16dbee19bc54e5f087bb177ab789d5c",
+  "object": "response",
+  "created_at": 1741484430,
+  "status": "completed",
+  "completed_at": 1741484431,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "type": "web_search_call",
+      "id": "ws_67ccf18f64008190a39b619f4c8455ef087bb177ab789d5c",
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "msg_67ccf190ca3881909d433c50b1f6357e087bb177ab789d5c",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "As of today, March 9, 2025, one notable positive news story...",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "start_index": 442,
+              "end_index": 557,
+              "url": "https://.../?utm_source=chatgpt.com",
+              "title": "..."
+            },
+            {
+              "type": "url_citation",
+              "start_index": 962,
+              "end_index": 1077,
+              "url": "https://.../?utm_source=chatgpt.com",
+              "title": "..."
+            },
+            {
+              "type": "url_citation",
+              "start_index": 1336,
+              "end_index": 1451,
+              "url": "https://.../?utm_source=chatgpt.com",
+              "title": "..."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "domains": [],
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": "US",
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 328,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 356,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 684
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### File search
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "tools": [{
+      "type": "file_search",
+      "vector_store_ids": ["vs_1234567890"],
+      "max_num_results": 20
+    }],
+    "input": "What are the attributes of an ancient brown dragon?"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ccf4c55fc48190b71bd0463ad3306d09504fb6872380d7",
+  "object": "response",
+  "created_at": 1741485253,
+  "status": "completed",
+  "completed_at": 1741485254,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "type": "file_search_call",
+      "id": "fs_67ccf4c63cd08190887ef6464ba5681609504fb6872380d7",
+      "status": "completed",
+      "queries": [
+        "attributes of an ancient brown dragon"
+      ],
+      "results": null
+    },
+    {
+      "type": "message",
+      "id": "msg_67ccf4c93e5c81909d595b369351a9d309504fb6872380d7",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The attributes of an ancient brown dragon include...",
+          "annotations": [
+            {
+              "type": "file_citation",
+              "index": 320,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 576,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 815,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 815,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 1030,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 1030,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 1156,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            },
+            {
+              "type": "file_citation",
+              "index": 1225,
+              "file_id": "file-4wDz5b167pAf72nx1h9eiN",
+              "filename": "dragons.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "file_search",
+      "filters": null,
+      "max_num_results": 20,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 0.0
+      },
+      "vector_store_ids": [
+        "vs_1234567890"
+      ]
+    }
+  ],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 18307,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 348,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 18655
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "instructions": "You are a helpful assistant.",
+    "input": "Hello!",
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+event: response.created
+data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+
+event: response.in_progress
+data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]}}
+
+event: response.content_part.added
+data: {"type":"response.content_part.added","item_id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","output_index":0,"content_index":0,"part":{"type":"output_text","text":"","annotations":[]}}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","item_id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","output_index":0,"content_index":0,"delta":"Hi"}
+
+...
+
+event: response.output_text.done
+data: {"type":"response.output_text.done","item_id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","output_index":0,"content_index":0,"text":"Hi there! How can I assist you today?"}
+
+event: response.content_part.done
+data: {"type":"response.content_part.done","item_id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","output_index":0,"content_index":0,"part":{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}}
+
+event: response.output_item.done
+data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}}
+
+event: response.completed
+data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
+```
+
+### Functions
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "input": "What is the weather like in Boston today?",
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"]
+            }
+          },
+          "required": ["location", "unit"]
+        }
+      }
+    ],
+    "tool_choice": "auto"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ca09c5efe0819096d0511c92b8c890096610f474011cc0",
+  "object": "response",
+  "created_at": 1741294021,
+  "status": "completed",
+  "completed_at": 1741294022,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-5.4",
+  "output": [
+    {
+      "type": "function_call",
+      "id": "fc_67ca09c6bedc8190a7abfec07b1a1332096610f474011cc0",
+      "call_id": "call_unLAR8MvFNptuiZK6K6HCy5k",
+      "name": "get_current_weather",
+      "arguments": "{\"location\":\"Boston, MA\",\"unit\":\"celsius\"}",
+      "status": "completed"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "function",
+      "description": "Get the current weather in a given location",
+      "name": "get_current_weather",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "The city and state, e.g. San Francisco, CA"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "celsius",
+              "fahrenheit"
+            ]
+          }
+        },
+        "required": [
+          "location",
+          "unit"
+        ]
+      },
+      "strict": true
+    }
+  ],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 291,
+    "output_tokens": 23,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 314
+  },
+  "user": null,
+  "metadata": {}
+}
+```
+
+### Reasoning
+
+```http
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "o3-mini",
+    "input": "How much wood would a woodchuck chuck?",
+    "reasoning": {
+      "effort": "high"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67ccd7eca01881908ff0b5146584e408072912b2993db808",
+  "object": "response",
+  "created_at": 1741477868,
+  "status": "completed",
+  "completed_at": 1741477869,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "o1-2024-12-17",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_67ccd7f7b5848190a6f3e95d809f6b44072912b2993db808",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The classic tongue twister...",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": "high",
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 81,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1035,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 1116
+  },
+  "user": null,
+  "metadata": {}
+}
 ```

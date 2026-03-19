@@ -1,6 +1,6 @@
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 `beta.chatkit.threads.list_items(strthread_id, ThreadListItemsParams**kwargs)  -> SyncConversationCursorPage[Data]`
 
@@ -424,7 +424,95 @@ page = page.data[0]
 print(page)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.beta.chatkit.threads.list_items(
+    thread_id="cthr_123",
+)
+page = page.data[0]
+print(page)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 `beta.chatkit.threads.retrieve(strthread_id)  -> ChatKitThread`
 
@@ -521,7 +609,72 @@ chatkit_thread = client.beta.chatkit.threads.retrieve(
 print(chatkit_thread.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chatkit_thread = client.beta.chatkit.threads.retrieve(
+    "cthr_123",
+)
+print(chatkit_thread.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 `beta.chatkit.threads.delete(strthread_id)  -> ThreadDeleteResponse`
 
@@ -568,7 +721,29 @@ thread = client.beta.chatkit.threads.delete(
 print(thread.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+thread = client.beta.chat_kit.threads.delete(
+    "cthr_123",
+)
+print(thread.id)
+```
+
+## List ChatKit threads
 
 `beta.chatkit.threads.list(ThreadListParams**kwargs)  -> SyncConversationCursorPage[ChatKitThread]`
 
@@ -684,6 +859,61 @@ client = OpenAI(
 page = client.beta.chatkit.threads.list()
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.beta.chatkit.threads.list()
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
 ```
 
 ## Domain Types

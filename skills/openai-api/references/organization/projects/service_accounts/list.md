@@ -1,4 +1,4 @@
-## List
+## List project service accounts
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
@@ -63,4 +63,52 @@ Returns a list of service accounts in the project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.service_account",
+            "id": "svc_acct_abc",
+            "name": "Service Account",
+            "role": "owner",
+            "created_at": 1711471533
+        }
+    ],
+    "first_id": "svc_acct_abc",
+    "last_id": "svc_acct_xyz",
+    "has_more": false
+}
 ```

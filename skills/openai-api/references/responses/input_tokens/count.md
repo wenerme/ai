@@ -1,4 +1,4 @@
-## Count
+## Get input token counts
 
 **post** `/responses/input_tokens`
 
@@ -29,11 +29,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   Text, image, or file inputs to the model, used to generate a response
 
-  - `UnionMember0 = string`
+  - `string`
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `UnionMember1 = array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
+  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -501,11 +501,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -1133,11 +1133,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Text, image, or file output of the function tool call.
 
-        - `UnionMember0 = string`
+        - `string`
 
           A JSON string of the output of the function tool call.
 
-        - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+        - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
           An array of content outputs (text, image, file) for the function tool call.
 
@@ -1364,17 +1364,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -1425,19 +1425,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -1733,7 +1733,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -1865,9 +1865,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3628,17 +3628,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
-          - `UnionMember3 = array of string or number`
+          - `array of string or number`
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
       - `CompoundFilter = object { filters, type }`
 
@@ -3689,19 +3689,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-          - `UnionMember1 = unknown`
+          - `unknown`
 
         - `type: "and" or "or"`
 
@@ -3997,7 +3997,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       specifies uploaded file IDs to make available to your code, along with an
       optional `memory_limit` setting.
 
-      - `UnionMember0 = string`
+      - `string`
 
         The container ID.
 
@@ -4129,9 +4129,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The image generation model to use. Default: `gpt-image-1`.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
         The image generation model to use. Default: `gpt-image-1`.
 
@@ -4640,4 +4640,34 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 curl https://api.openai.com/v1/responses/input_tokens \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "input_tokens": 123,
+  "object": "response.input_tokens"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/responses/input_tokens \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+      "model": "gpt-5",
+      "input": "Tell me a joke."
+    }'
+```
+
+#### Response
+
+```json
+{
+  "object": "response.input_tokens",
+  "input_tokens": 11
+}
 ```

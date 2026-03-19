@@ -1,4 +1,4 @@
-## Update
+## Modify assistant
 
 `client.beta.assistants.update(stringassistantID, AssistantUpdateParamsbody, RequestOptionsoptions?): Assistant`
 
@@ -561,4 +561,94 @@ const client = new OpenAI({
 const assistant = await client.beta.assistants.update('assistant_id');
 
 console.log(assistant.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const myUpdatedAssistant = await openai.beta.assistants.update(
+    "asst_abc123",
+    {
+      instructions:
+        "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+      name: "HR Helper",
+      tools: [{ type: "file_search" }],
+      model: "gpt-4o"
+    }
+  );
+
+  console.log(myUpdatedAssistant);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_123",
+  "object": "assistant",
+  "created_at": 1699009709,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": []
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
 ```

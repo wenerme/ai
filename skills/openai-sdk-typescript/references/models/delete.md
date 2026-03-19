@@ -1,4 +1,4 @@
-## Delete
+## Delete a fine-tuned model
 
 `client.models.delete(stringmodel, RequestOptionsoptions?): ModelDeleted`
 
@@ -32,4 +32,39 @@ const client = new OpenAI({
 const modelDeleted = await client.models.delete('ft:gpt-4o-mini:acemeco:suffix:abc123');
 
 console.log(modelDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const model = await openai.models.delete("ft:gpt-4o-mini:acemeco:suffix:abc123");
+  
+  console.log(model);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "object": "model",
+  "deleted": true
+}
 ```

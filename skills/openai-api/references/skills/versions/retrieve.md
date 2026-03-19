@@ -1,4 +1,4 @@
-## Retrieve
+## Get a specific skill version.
 
 **get** `/skills/{skill_id}/versions/{version}`
 
@@ -51,4 +51,18 @@ Get a specific skill version.
 ```http
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

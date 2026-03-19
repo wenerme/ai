@@ -1,4 +1,4 @@
-## Update
+## Update chat completion
 
 **post** `/chat/completions/{completion_id}`
 
@@ -370,4 +370,165 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
             "foo": "string"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "content": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ],
+        "refusal": [
+          {
+            "token": "token",
+            "bytes": [
+              0
+            ],
+            "logprob": 0,
+            "top_logprobs": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "content": "content",
+        "refusal": "refusal",
+        "role": "assistant",
+        "annotations": [
+          {
+            "type": "url_citation",
+            "url_citation": {
+              "end_index": 0,
+              "start_index": 0,
+              "title": "title",
+              "url": "url"
+            }
+          }
+        ],
+        "audio": {
+          "id": "id",
+          "data": "data",
+          "expires_at": 0,
+          "transcript": "transcript"
+        },
+        "function_call": {
+          "arguments": "arguments",
+          "name": "name"
+        },
+        "tool_calls": [
+          {
+            "id": "id",
+            "function": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "chat.completion",
+  "service_tier": "auto",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"metadata": {"foo": "bar"}}'
+```
+
+#### Response
+
+```json
+{
+  "object": "chat.completion",
+  "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
+  "model": "gpt-4o-2024-08-06",
+  "created": 1738960610,
+  "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
+  "tool_choice": null,
+  "usage": {
+    "total_tokens": 31,
+    "completion_tokens": 18,
+    "prompt_tokens": 13
+  },
+  "seed": 4944116822809979520,
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "system_fingerprint": "fp_50cad350e4",
+  "input_user": null,
+  "service_tier": "default",
+  "tools": null,
+  "metadata": {
+    "foo": "bar"
+  },
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "content": "Mind of circuits hum,  \nLearning patterns in silence—  \nFuture's quiet spark.",
+        "role": "assistant",
+        "tool_calls": null,
+        "function_call": null
+      },
+      "finish_reason": "stop",
+      "logprobs": null
+    }
+  ],
+  "response_format": null
+}
 ```

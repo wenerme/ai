@@ -1,4 +1,4 @@
-## Create
+## Create a new skill.
 
 **post** `/skills`
 
@@ -10,11 +10,11 @@ Create a new skill.
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember0 = array of string`
+  - `array of string`
 
     Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember1 = string`
+  - `string`
 
     Skill zip file to upload.
 
@@ -58,5 +58,19 @@ Create a new skill.
 curl https://api.openai.com/v1/skills \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files=[null]
+    -F files='["Example data"]'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

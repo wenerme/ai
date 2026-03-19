@@ -1,4 +1,4 @@
-## List Events
+## List fine-tuning events
 
 `fine_tuning.jobs.list_events(strfine_tuning_job_id, JobListEventsParams**kwargs)  -> SyncCursorPage[FineTuningJobEvent]`
 
@@ -78,4 +78,65 @@ page = client.fine_tuning.jobs.list_events(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "level": "info",
+      "message": "message",
+      "object": "fine_tuning.job.event",
+      "data": {},
+      "type": "message"
+    }
+  ],
+  "has_more": true,
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.fine_tuning.jobs.list_events(
+  fine_tuning_job_id="ftjob-abc123",
+  limit=2
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "fine_tuning.job.event",
+      "id": "ft-event-ddTJfwuMVpfLXseO0Am0Gqjm",
+      "created_at": 1721764800,
+      "level": "info",
+      "message": "Fine tuning job successfully completed",
+      "data": null,
+      "type": "message"
+    },
+    {
+      "object": "fine_tuning.job.event",
+      "id": "ft-event-tyiGuB72evQncpH87xe505Sv",
+      "created_at": 1721764800,
+      "level": "info",
+      "message": "New fine-tuned model created: ft:gpt-4o-mini:openai::7p4lURel",
+      "data": null,
+      "type": "message"
+    }
+  ],
+  "has_more": true
+}
 ```

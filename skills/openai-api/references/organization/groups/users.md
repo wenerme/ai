@@ -1,6 +1,6 @@
 # Users
 
-## List
+## List group users
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -85,7 +85,55 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.user",
+      "role": "owner"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.user",
+            "id": "user_abc123",
+            "name": "Ada Lovelace",
+            "email": "ada@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Add group user
 
 **post** `/organization/groups/{group_id}/users`
 
@@ -128,7 +176,38 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "group_id": "group_id",
+  "object": "group.user",
+  "user_id": "user_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user",
+    "user_id": "user_abc123",
+    "group_id": "group_01J1F8ABCDXYZ"
+}
+```
+
+## Remove group user
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
@@ -158,4 +237,30 @@ Removes a user from a group.
 curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "group.user.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user.deleted",
+    "deleted": true
+}
 ```

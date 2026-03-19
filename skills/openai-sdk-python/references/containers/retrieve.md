@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve container
 
 `containers.retrieve(strcontainer_id)  -> ContainerRetrieveResponse`
 
@@ -95,4 +95,28 @@ container = client.containers.retrieve(
     "container_id",
 )
 print(container.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
 ```

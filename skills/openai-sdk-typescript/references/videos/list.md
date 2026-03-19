@@ -1,4 +1,4 @@
-## List
+## List videos
 
 `client.videos.list(VideoListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Video>`
 
@@ -146,5 +146,65 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const video of client.videos.list()) {
   console.log(video.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "string",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const video of openai.videos.list()) {
+  console.log(video.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
 }
 ```

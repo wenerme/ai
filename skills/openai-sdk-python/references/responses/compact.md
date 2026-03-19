@@ -1,4 +1,4 @@
-## Compact
+## Compact a response
 
 `responses.compact(ResponseCompactParams**kwargs)  -> CompactedResponse`
 
@@ -6079,4 +6079,141 @@ compacted_response = client.responses.compact(
     model="gpt-5.4",
 )
 print(compacted_response.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "response.compaction",
+  "output": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "file_id",
+              "filename": "filename",
+              "index": 0,
+              "type": "file_citation"
+            }
+          ],
+          "text": "text",
+          "type": "output_text",
+          "logprobs": [
+            {
+              "token": "token",
+              "bytes": [
+                0
+              ],
+              "logprob": 0,
+              "top_logprobs": [
+                {
+                  "token": "token",
+                  "bytes": [
+                    0
+                  ],
+                  "logprob": 0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message",
+      "phase": "commentary"
+    }
+  ],
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+compacted_response = client.responses.compact(
+    model="gpt-5.1-codex-max",
+    input=[
+    {
+        "role": "user",
+        "content": "Create a simple landing page for a dog petting cafe.",
+    },
+    # All items returned from previous requests are included here, like reasoning, message, function call, etc.
+    {
+        "id": "msg_001",
+        "type": "message",
+        "status": "completed",
+        "content": [
+        {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Below is a single file, ready-to-use landing page for a dog petting café:...",
+        },
+        ],
+        "role": "assistant",
+    },
+    ]
+)
+# Pass the compacted_response.output as input to the next request
+print(compacted_response)
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_001",
+  "object": "response.compaction",
+  "created_at": 1764967971,
+  "output": [
+    {
+      "id": "msg_000",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Create a simple landing page for a dog petting cafe."
+        }
+      ],
+      "role": "user"
+    },
+    {
+      "id": "cmp_001",
+      "type": "compaction",
+      "encrypted_content": "gAAAAABpM0Yj-...="
+    }
+  ],
+  "usage": {
+    "input_tokens": 139,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 438,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 577
+  }
+}
 ```

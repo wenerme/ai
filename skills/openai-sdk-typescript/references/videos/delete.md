@@ -1,4 +1,4 @@
-## Delete
+## Delete video
 
 `client.videos.delete(stringvideoID, RequestOptionsoptions?): VideoDeleteResponse`
 
@@ -38,6 +38,28 @@ import OpenAI from 'openai';
 const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
+
+const video = await client.videos.delete('video_123');
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
 
 const video = await client.videos.delete('video_123');
 

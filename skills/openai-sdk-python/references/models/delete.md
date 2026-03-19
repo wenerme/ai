@@ -1,4 +1,4 @@
-## Delete
+## Delete a fine-tuned model
 
 `models.delete(strmodel)  -> ModelDeleted`
 
@@ -33,4 +33,33 @@ model_deleted = client.models.delete(
     "ft:gpt-4o-mini:acemeco:suffix:abc123",
 )
 print(model_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.models.delete("ft:gpt-4o-mini:acemeco:suffix:abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "object": "model",
+  "deleted": true
+}
 ```

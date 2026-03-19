@@ -1,6 +1,6 @@
 # Transcription Sessions
 
-## Create
+## Create transcription session
 
 **post** `/realtime/transcription_sessions`
 
@@ -63,9 +63,9 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+    - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -149,9 +149,9 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+    - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -215,4 +215,62 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "client_secret": {
+    "expires_at": 0,
+    "value": "value"
+  },
+  "input_audio_format": "input_audio_format",
+  "input_audio_transcription": {
+    "language": "language",
+    "model": "string",
+    "prompt": "prompt"
+  },
+  "modalities": [
+    "text"
+  ],
+  "turn_detection": {
+    "prefix_padding_ms": 0,
+    "silence_duration_ms": 0,
+    "threshold": 0,
+    "type": "type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "sess_BBwZc7cFV3XizEyKGDCGL",
+  "object": "realtime.transcription_session",
+  "modalities": ["audio", "text"],
+  "turn_detection": {
+    "type": "server_vad",
+    "threshold": 0.5,
+    "prefix_padding_ms": 300,
+    "silence_duration_ms": 200
+  },
+  "input_audio_format": "pcm16",
+  "input_audio_transcription": {
+    "model": "gpt-4o-transcribe",
+    "language": null,
+    "prompt": ""
+  },
+  "client_secret": null
+}
 ```

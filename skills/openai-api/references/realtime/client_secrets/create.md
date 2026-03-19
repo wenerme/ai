@@ -1,4 +1,4 @@
-## Create
+## Create client secret
 
 **post** `/realtime/client_secrets`
 
@@ -124,9 +124,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -299,9 +299,9 @@ Returns the created client secret and the effective session object. The client s
           during the session once the model has responded with audio at least once.
           We recommend `marin` and `cedar` for best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             - `"alloy"`
 
@@ -352,9 +352,9 @@ Returns the created client secret and the effective session object. The client s
       limit output tokens, or `inf` for the maximum available tokens for a
       given model. Defaults to `inf`.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -362,9 +362,9 @@ Returns the created client secret and the effective session object. The client s
 
       The Realtime model used for this session.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
         The Realtime model used for this session.
 
@@ -425,7 +425,7 @@ Returns the created client secret and the effective session object. The client s
         prompt. The substitution values can either be strings, or other
         Response input types like images or files.
 
-        - `UnionMember0 = string`
+        - `string`
 
         - `ResponseInputText = object { text, type }`
 
@@ -766,7 +766,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `UnionMember0 = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -880,9 +880,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -1112,9 +1112,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -1286,9 +1286,9 @@ Returns the created client secret and the effective session object. The client s
           `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
           best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
             session once the model has responded with audio at least once. Current
@@ -1337,9 +1337,9 @@ Returns the created client secret and the effective session object. The client s
       limit output tokens, or `inf` for the maximum available tokens for a
       given model. Defaults to `inf`.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -1347,9 +1347,9 @@ Returns the created client secret and the effective session object. The client s
 
       The Realtime model used for this session.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
         The Realtime model used for this session.
 
@@ -1410,7 +1410,7 @@ Returns the created client secret and the effective session object. The client s
         prompt. The substitution values can either be strings, or other
         Response input types like images or files.
 
-        - `UnionMember0 = string`
+        - `string`
 
         - `ResponseInputText = object { text, type }`
 
@@ -1751,7 +1751,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `UnionMember0 = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -1871,9 +1871,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -1944,4 +1944,147 @@ curl https://api.openai.com/v1/realtime/client_secrets \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "expires_at": 0,
+  "session": {
+    "client_secret": {
+      "expires_at": 0,
+      "value": "value"
+    },
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "noise_reduction": {
+          "type": "near_field"
+        },
+        "transcription": {
+          "language": "language",
+          "model": "string",
+          "prompt": "prompt"
+        },
+        "turn_detection": {
+          "type": "server_vad",
+          "create_response": true,
+          "idle_timeout_ms": 5000,
+          "interrupt_response": true,
+          "prefix_padding_ms": 0,
+          "silence_duration_ms": 0,
+          "threshold": 0
+        }
+      },
+      "output": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "speed": 0.25,
+        "voice": "ash"
+      }
+    },
+    "include": [
+      "item.input_audio_transcription.logprobs"
+    ],
+    "instructions": "instructions",
+    "max_output_tokens": 0,
+    "model": "string",
+    "output_modalities": [
+      "text"
+    ],
+    "prompt": {
+      "id": "id",
+      "variables": {
+        "foo": "string"
+      },
+      "version": "version"
+    },
+    "tool_choice": "none",
+    "tools": [
+      {
+        "description": "description",
+        "name": "name",
+        "parameters": {},
+        "type": "function"
+      }
+    ],
+    "tracing": "auto",
+    "truncation": "auto"
+  },
+  "value": "value"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/client_secrets \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "expires_after": {
+      "anchor": "created_at",
+      "seconds": 600
+    },
+    "session": {
+      "type": "realtime",
+      "model": "gpt-realtime",
+      "instructions": "You are a friendly assistant."
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "value": "ek_68af296e8e408191a1120ab6383263c2",
+  "expires_at": 1756310470,
+  "session": {
+    "type": "realtime",
+    "object": "realtime.session",
+    "id": "sess_C9CiUVUzUzYIssh3ELY1d",
+    "model": "gpt-realtime",
+    "output_modalities": [
+      "audio"
+    ],
+    "instructions": "You are a friendly assistant.",
+    "tools": [],
+    "tool_choice": "auto",
+    "max_output_tokens": "inf",
+    "tracing": null,
+    "truncation": "auto",
+    "prompt": null,
+    "expires_at": 0,
+    "audio": {
+      "input": {
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        },
+        "transcription": null,
+        "noise_reduction": null,
+        "turn_detection": {
+          "type": "server_vad",
+        }
+      },
+      "output": {
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        },
+        "voice": "alloy",
+        "speed": 1.0
+      }
+    },
+    "include": null
+  }
+}
 ```

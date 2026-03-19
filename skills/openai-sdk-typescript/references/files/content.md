@@ -1,4 +1,4 @@
-## Content
+## Retrieve file content
 
 `client.files.content(stringfileID, RequestOptionsoptions?): Response`
 
@@ -29,4 +29,20 @@ console.log(response);
 
 const content = await response.blob();
 console.log(content);
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.content("file-abc123");
+
+  console.log(file);
+}
+
+main();
 ```

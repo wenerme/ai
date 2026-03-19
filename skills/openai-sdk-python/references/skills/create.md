@@ -1,4 +1,4 @@
-## Create
+## Create a new skill.
 
 `skills.create(SkillCreateParams**kwargs)  -> Skill`
 
@@ -65,4 +65,18 @@ client = OpenAI(
 )
 skill = client.skills.create()
 print(skill.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

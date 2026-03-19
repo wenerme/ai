@@ -1,4 +1,4 @@
-## Create
+## Create items
 
 **post** `/conversations/{conversation_id}/items`
 
@@ -501,11 +501,11 @@ Create items in a conversation with the given ID.
         with a maximum length of 64 characters. Values are strings with a maximum
         length of 512 characters, booleans, or numbers.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = number`
+        - `number`
 
-        - `UnionMember2 = boolean`
+        - `boolean`
 
       - `file_id: optional string`
 
@@ -1133,11 +1133,11 @@ Create items in a conversation with the given ID.
 
       Text, image, or file output of the function tool call.
 
-      - `UnionMember0 = string`
+      - `string`
 
         A JSON string of the output of the function tool call.
 
-      - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+      - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
         An array of content outputs (text, image, file) for the function tool call.
 
@@ -1364,17 +1364,17 @@ Create items in a conversation with the given ID.
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
-              - `UnionMember2 = boolean`
+              - `boolean`
 
-              - `UnionMember3 = array of string or number`
+              - `array of string or number`
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
           - `CompoundFilter = object { filters, type }`
 
@@ -1425,19 +1425,19 @@ Create items in a conversation with the given ID.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-              - `UnionMember1 = unknown`
+              - `unknown`
 
             - `type: "and" or "or"`
 
@@ -1733,7 +1733,7 @@ Create items in a conversation with the given ID.
           specifies uploaded file IDs to make available to your code, along with an
           optional `memory_limit` setting.
 
-          - `UnionMember0 = string`
+          - `string`
 
             The container ID.
 
@@ -1865,9 +1865,9 @@ Create items in a conversation with the given ID.
 
           The image generation model to use. Default: `gpt-image-1`.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -3743,11 +3743,11 @@ Create items in a conversation with the given ID.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -4514,17 +4514,17 @@ Create items in a conversation with the given ID.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -4575,19 +4575,19 @@ Create items in a conversation with the given ID.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -4883,7 +4883,7 @@ Create items in a conversation with the given ID.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -5015,9 +5015,9 @@ Create items in a conversation with the given ID.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -6311,4 +6311,86 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
             }
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/conversations/conv_123/items \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "items": [
+      {
+        "type": "message",
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "Hello!"}
+        ]
+      },
+      {
+        "type": "message",
+        "role": "user",
+        "content": [
+          {"type": "input_text", "text": "How are you?"}
+        ]
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    },
+    {
+      "type": "message",
+      "id": "msg_def",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "How are you?"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_def",
+  "has_more": false
+}
 ```

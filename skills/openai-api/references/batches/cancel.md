@@ -1,4 +1,4 @@
-## Cancel
+## Cancel batch
 
 **post** `/batches/{batch_id}/cancel`
 
@@ -193,4 +193,102 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 curl https://api.openai.com/v1/batches/$BATCH_ID/cancel \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completion_window": "completion_window",
+  "created_at": 0,
+  "endpoint": "endpoint",
+  "input_file_id": "input_file_id",
+  "object": "batch",
+  "status": "validating",
+  "cancelled_at": 0,
+  "cancelling_at": 0,
+  "completed_at": 0,
+  "error_file_id": "error_file_id",
+  "errors": {
+    "data": [
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
+    ],
+    "object": "object"
+  },
+  "expired_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "finalizing_at": 0,
+  "in_progress_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "output_file_id": "output_file_id",
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/batches/batch_abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -X POST
+```
+
+#### Response
+
+```json
+{
+  "id": "batch_abc123",
+  "object": "batch",
+  "endpoint": "/v1/chat/completions",
+  "errors": null,
+  "input_file_id": "file-abc123",
+  "completion_window": "24h",
+  "status": "cancelling",
+  "output_file_id": null,
+  "error_file_id": null,
+  "created_at": 1711471533,
+  "in_progress_at": 1711471538,
+  "expires_at": 1711557933,
+  "finalizing_at": null,
+  "completed_at": null,
+  "failed_at": null,
+  "expired_at": null,
+  "cancelling_at": 1711475133,
+  "cancelled_at": null,
+  "request_counts": {
+    "total": 100,
+    "completed": 23,
+    "failed": 1
+  },
+  "metadata": {
+    "customer_id": "user_123456789",
+    "batch_description": "Nightly eval job",
+  }
+}
 ```

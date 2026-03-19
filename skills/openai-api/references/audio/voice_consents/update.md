@@ -1,4 +1,4 @@
-## Update
+## Update voice consent
 
 **post** `/audio/voice_consents/{consent_id}`
 
@@ -47,4 +47,28 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -d '{
           "name": "name"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "created_at": 0,
+  "language": "language",
+  "name": "name",
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe"
+  }'
 ```

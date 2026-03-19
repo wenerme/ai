@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve container
 
 **get** `/containers/{container_id}`
 
@@ -83,4 +83,53 @@ Retrieve Container
 ```http
 curl https://api.openai.com/v1/containers/$CONTAINER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+    "id": "cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863",
+    "object": "container",
+    "created_at": 1747844794,
+    "status": "running",
+    "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 20
+    },
+    "last_active_at": 1747844794,
+    "memory_limit": "4g",
+    "name": "My Container"
+}
 ```

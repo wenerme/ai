@@ -1,4 +1,4 @@
-## Create
+## Create vector store file
 
 `vector_stores.files.create(strvector_store_id, FileCreateParams**kwargs)  -> VectorStoreFile`
 
@@ -184,4 +184,58 @@ vector_store_file = client.vector_stores.files.create(
     file_id="file_id",
 )
 print(vector_store_file.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file = client.vector_stores.files.create(
+  vector_store_id="vs_abc123",
+  file_id="file-abc123"
+)
+print(vector_store_file)
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "usage_bytes": 1234,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
 ```

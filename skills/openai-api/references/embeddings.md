@@ -1,6 +1,6 @@
 # Embeddings
 
-## Create
+## Create embeddings
 
 **post** `/embeddings`
 
@@ -32,7 +32,7 @@ Creates an embedding vector representing the input text.
 
   ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `EmbeddingModel = "text-embedding-ada-002" or "text-embedding-3-small" or "text-embedding-3-large"`
 
@@ -114,6 +114,66 @@ curl https://api.openai.com/v1/embeddings \
           "encoding_format": "float",
           "user": "user-1234"
         }'
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "embedding": [
+        0
+      ],
+      "index": 0,
+      "object": "embedding"
+    }
+  ],
+  "model": "model",
+  "object": "list",
+  "usage": {
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/embeddings \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": "The food was delicious and the waiter...",
+    "model": "text-embedding-ada-002",
+    "encoding_format": "float"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "embedding",
+      "embedding": [
+        0.0023064255,
+        -0.009327292,
+        .... (1536 floats total for ada-002)
+        -0.0028842222,
+      ],
+      "index": 0
+    }
+  ],
+  "model": "text-embedding-ada-002",
+  "usage": {
+    "prompt_tokens": 8,
+    "total_tokens": 8
+  }
+}
 ```
 
 ## Domain Types

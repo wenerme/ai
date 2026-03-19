@@ -1,4 +1,4 @@
-## Create
+## Create voice consent
 
 **post** `/audio/voice_consents`
 
@@ -37,4 +37,27 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -F language=language \
     -F name=name \
     -F 'recording=@/path/to/recording'
+```
+
+#### Response
+
+```json
+{
+  "id": "cons_1234",
+  "created_at": 0,
+  "language": "language",
+  "name": "name",
+  "object": "audio.voice_consent"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/voice_consents \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "name=John Doe" \
+  -F "language=en-US" \
+  -F "recording=@$HOME/consent_recording.wav;type=audio/x-wav"
 ```

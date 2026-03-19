@@ -1,4 +1,4 @@
-## Delete
+## Delete ChatKit thread
 
 `client.beta.chatkit.threads.delete(stringthreadID, RequestOptionsoptions?): ThreadDeleteResponse`
 
@@ -40,6 +40,28 @@ const client = new OpenAI({
 });
 
 const thread = await client.beta.chatkit.threads.delete('cthr_123');
+
+console.log(thread.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const thread = await client.beta.chat_kit.threads.delete('cthr_123');
 
 console.log(thread.id);
 ```

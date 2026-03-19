@@ -1,4 +1,4 @@
-## Generate
+## Create image
 
 `images.generate(ImageGenerateParams**kwargs)  -> ImagesResponse`
 
@@ -267,4 +267,106 @@ for image in client.images.generate(
     prompt="A cute baby sea otter",
 ):
   print(image)
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Generate image
+
+```python
+import base64
+from openai import OpenAI
+client = OpenAI()
+
+img = client.images.generate(
+    model="gpt-image-1.5",
+    prompt="A cute baby sea otter",
+    n=1,
+    size="1024x1024"
+)
+
+image_bytes = base64.b64decode(img.data[0].b64_json)
+with open("output.png", "wb") as f:
+    f.write(image_bytes)
+```
+
+#### Response
+
+```json
+{
+  "created": 1713833628,
+  "data": [
+    {
+      "b64_json": "..."
+    }
+  ],
+  "usage": {
+    "total_tokens": 100,
+    "input_tokens": 50,
+    "output_tokens": 50,
+    "input_tokens_details": {
+      "text_tokens": 10,
+      "image_tokens": 40
+    }
+  }
+}
+```
+
+### Streaming
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+stream = client.images.generate(
+    model="gpt-image-1.5",
+    prompt="A cute baby sea otter",
+    n=1,
+    size="1024x1024",
+    stream=True
+)
+
+for event in stream:
+    print(event)
+```
+
+#### Response
+
+```json
+event: image_generation.partial_image
+data: {"type":"image_generation.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_generation.completed
+data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
 ```

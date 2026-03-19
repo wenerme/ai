@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve invite
 
 **get** `/organization/invites/{invite_id}`
 
@@ -79,4 +79,48 @@ Retrieves an invite.
 ```http
 curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "expires_at": 0,
+  "invited_at": 0,
+  "object": "organization.invite",
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "projects": [
+    {
+      "id": "id",
+      "role": "member"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/invites/invite-abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.invite",
+    "id": "invite-abc",
+    "email": "user@example.com",
+    "role": "owner",
+    "status": "accepted",
+    "invited_at": 1711471533,
+    "expires_at": 1711471533,
+    "accepted_at": 1711471533
+}
 ```

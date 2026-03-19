@@ -1,6 +1,6 @@
 # Conversations
 
-## Create
+## Create a conversation
 
 `conversations.create(ConversationCreateParams**kwargs)  -> Conversation`
 
@@ -3225,7 +3225,44 @@ conversation = client.conversations.create()
 print(conversation.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+conversation = client.conversations.create(
+  metadata={"topic": "demo"},
+  items=[
+    {"type": "message", "role": "user", "content": "Hello!"}
+  ]
+)
+print(conversation)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Retrieve a conversation
 
 `conversations.retrieve(strconversation_id)  -> Conversation`
 
@@ -3275,7 +3312,39 @@ conversation = client.conversations.retrieve(
 print(conversation.id)
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+conversation = client.conversations.retrieve("conv_123")
+print(conversation)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
+```
+
+## Update a conversation
 
 `conversations.update(strconversation_id, ConversationUpdateParams**kwargs)  -> Conversation`
 
@@ -3337,7 +3406,42 @@ conversation = client.conversations.update(
 print(conversation.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+updated = client.conversations.update(
+  "conv_123",
+  metadata={"topic": "project-x"}
+)
+print(updated)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "project-x"}
+}
+```
+
+## Delete a conversation
 
 `conversations.delete(strconversation_id)  -> ConversationDeletedResource`
 
@@ -3374,6 +3478,36 @@ conversation_deleted_resource = client.conversations.delete(
     "conv_123",
 )
 print(conversation_deleted_resource.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "conversation.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted = client.conversations.delete("conv_123")
+print(deleted)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation.deleted",
+  "deleted": true
+}
 ```
 
 ## Domain Types
@@ -3819,7 +3953,7 @@ print(conversation_deleted_resource.id)
 
 # Items
 
-## Create
+## Create items
 
 `conversations.items.create(strconversation_id, ItemCreateParams**kwargs)  -> ConversationItemList`
 
@@ -10100,7 +10234,87 @@ conversation_item_list = client.conversations.items.create(
 print(conversation_item_list.first_id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+items = client.conversations.items.create(
+  "conv_123",
+  items=[
+    {
+      "type": "message",
+      "role": "user",
+      "content": [{"type": "input_text", "text": "Hello!"}],
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [{"type": "input_text", "text": "How are you?"}],
+    }
+  ],
+)
+print(items.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    },
+    {
+      "type": "message",
+      "id": "msg_def",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "How are you?"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_def",
+  "has_more": false
+}
+```
+
+## List items
 
 `conversations.items.list(strconversation_id, ItemListParams**kwargs)  -> SyncConversationCursorPage[ConversationItem]`
 
@@ -13212,7 +13426,64 @@ page = page.data[0]
 print(page)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+items = client.conversations.items.list("conv_123", limit=10)
+print(items.data)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_abc",
+  "has_more": false
+}
+```
+
+## Retrieve an item
 
 `conversations.items.retrieve(stritem_id, ItemRetrieveParams**kwargs)  -> ConversationItem`
 
@@ -16299,7 +16570,48 @@ conversation_item = client.conversations.items.retrieve(
 print(conversation_item)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+item = client.conversations.items.retrieve("conv_123", "msg_abc")
+print(item)
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
+```
+
+## Delete an item
 
 `conversations.items.delete(stritem_id, ItemDeleteParams**kwargs)  -> Conversation`
 
@@ -16350,6 +16662,38 @@ conversation = client.conversations.items.delete(
     conversation_id="conv_123",
 )
 print(conversation.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+conversation = client.conversations.items.delete("conv_123", "msg_abc")
+print(conversation)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```
 
 ## Domain Types

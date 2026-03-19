@@ -1,4 +1,4 @@
-## Create Variation
+## Create image variation
 
 `client.images.createVariation(ImageCreateVariationParamsbody, RequestOptionsoptions?): ImagesResponse`
 
@@ -176,4 +176,70 @@ const imagesResponse = await client.images.createVariation({
 });
 
 console.log(imagesResponse.created);
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const image = await openai.images.createVariation({
+    image: fs.createReadStream("otter.png"),
+  });
+
+  console.log(image.data);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "created": 1589478378,
+  "data": [
+    {
+      "url": "https://..."
+    },
+    {
+      "url": "https://..."
+    }
+  ]
+}
 ```

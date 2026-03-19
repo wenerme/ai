@@ -1,4 +1,4 @@
-## Create Character
+## Create a character from an uploaded video.
 
 **post** `/videos/characters`
 
@@ -26,4 +26,14 @@ curl https://api.openai.com/v1/videos/characters \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -F name=x \
     -F 'video=@/path/to/video'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

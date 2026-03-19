@@ -1,4 +1,4 @@
-## Update
+## Modify certificate
 
 **post** `/organization/certificates/{certificate_id}`
 
@@ -69,4 +69,47 @@ curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
     -d '{
           "name": "name"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "certificate_details": {
+    "content": "content",
+    "expires_at": 0,
+    "valid_at": 0
+  },
+  "created_at": 0,
+  "name": "name",
+  "object": "certificate",
+  "active": true
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
+-H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Renamed Certificate"
+}'
+```
+
+#### Response
+
+```json
+{
+  "object": "certificate",
+  "id": "cert_abc",
+  "name": "Renamed Certificate",
+  "created_at": 1234567,
+  "certificate_details": {
+    "valid_at": 12345667,
+    "expires_at": 12345678
+  }
+}
 ```

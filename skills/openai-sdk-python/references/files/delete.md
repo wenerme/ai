@@ -1,4 +1,4 @@
-## Delete
+## Delete file
 
 `files.delete(strfile_id)  -> FileDeleted`
 
@@ -35,4 +35,33 @@ file_deleted = client.files.delete(
     "file_id",
 )
 print(file_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "file"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.delete("file-abc123")
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "deleted": true
+}
 ```

@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve video
 
 `client.videos.retrieve(stringvideoID, RequestOptionsoptions?): Video`
 
@@ -126,6 +126,41 @@ import OpenAI from 'openai';
 const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
+
+const video = await client.videos.retrieve('video_123');
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
 
 const video = await client.videos.retrieve('video_123');
 

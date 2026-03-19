@@ -1,4 +1,4 @@
-## Retrieve
+## Get a skill by its ID.
 
 `skills.retrieve(strskill_id)  -> Skill`
 
@@ -57,4 +57,18 @@ skill = client.skills.retrieve(
     "skill_123",
 )
 print(skill.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

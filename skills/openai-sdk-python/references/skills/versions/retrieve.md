@@ -1,4 +1,4 @@
-## Retrieve
+## Get a specific skill version.
 
 `skills.versions.retrieve(strversion, VersionRetrieveParams**kwargs)  -> SkillVersion`
 
@@ -62,4 +62,18 @@ skill_version = client.skills.versions.retrieve(
     skill_id="skill_123",
 )
 print(skill_version.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

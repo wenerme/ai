@@ -1,4 +1,4 @@
-## Create
+## Create eval run
 
 **post** `/evals/{eval_id}/runs`
 
@@ -1184,17 +1184,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -1245,19 +1245,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -1553,7 +1553,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -1685,9 +1685,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3375,17 +3375,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -3436,19 +3436,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -3744,7 +3744,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -3876,9 +3876,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -4501,4 +4501,142 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
             "type": "jsonl"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"gpt-4o-mini","data_source":{"type":"completions","input_messages":{"type":"template","template":[{"role":"developer","content":"Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"} , {"role":"user","content":"{{item.input}}"}]} ,"sampling_params":{"temperature":1,"max_completions_tokens":2048,"top_p":1,"seed":42},"model":"gpt-4o-mini","source":{"type":"file_content","content":[{"item":{"input":"Tech Company Launches Advanced Artificial Intelligence Platform","ground_truth":"Technology"}}]}}'
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67e57965b480819094274e3a32235e4c",
+  "eval_id": "eval_67e579652b548190aaa83ada4b125f47",
+  "report_url": "https://platform.openai.com/evaluations/eval_67e579652b548190aaa83ada4b125f47&run_id=evalrun_67e57965b480819094274e3a32235e4c",
+  "status": "queued",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
 ```

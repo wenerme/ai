@@ -1,4 +1,4 @@
-## List
+## List groups
 
 **get** `/organization/groups`
 
@@ -63,4 +63,49 @@ Lists all groups in the organization.
 ```http
 curl https://api.openai.com/v1/organization/groups \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "is_scim_managed": true,
+      "name": "name"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "group",
+            "id": "group_01J1F8ABCDXYZ",
+            "name": "Support Team",
+            "created_at": 1711471533,
+            "is_scim_managed": false
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
 ```

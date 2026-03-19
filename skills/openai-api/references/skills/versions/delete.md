@@ -1,4 +1,4 @@
-## Delete
+## Delete a skill version.
 
 **delete** `/skills/{skill_id}/versions/{version}`
 
@@ -34,4 +34,15 @@ Delete a skill version.
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```

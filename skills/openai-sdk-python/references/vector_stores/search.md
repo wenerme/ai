@@ -1,4 +1,4 @@
-## Search
+## Search vector store
 
 `vector_stores.search(strvector_store_id, VectorStoreSearchParams**kwargs)  -> SyncPage[VectorStoreSearchResponse]`
 
@@ -229,4 +229,33 @@ page = client.vector_stores.search(
 )
 page = page.data[0]
 print(page.file_id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "foo": "string"
+      },
+      "content": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ],
+      "file_id": "file_id",
+      "filename": "filename",
+      "score": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.search_results.page",
+  "search_query": [
+    "string"
+  ]
+}
 ```

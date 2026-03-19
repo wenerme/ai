@@ -1,6 +1,6 @@
 # Containers
 
-## List
+## List containers
 
 `containers.list(ContainerListParams**kwargs)  -> SyncCursorPage[ContainerListResponse]`
 
@@ -116,7 +116,39 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "object",
+      "status": "status",
+      "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 0
+      },
+      "last_active_at": 0,
+      "memory_limit": "1g",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": [
+          "string"
+        ]
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create container
 
 `containers.create(ContainerCreateParams**kwargs)  -> ContainerCreateResponse`
 
@@ -341,7 +373,31 @@ container = client.containers.create(
 print(container.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+## Retrieve container
 
 `containers.retrieve(strcontainer_id)  -> ContainerRetrieveResponse`
 
@@ -440,7 +496,31 @@ container = client.containers.retrieve(
 print(container.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+## Delete a container
 
 `containers.delete(strcontainer_id)`
 
@@ -468,7 +548,7 @@ client.containers.delete(
 
 # Files
 
-## List
+## List container files
 
 `containers.files.list(strcontainer_id, FileListParams**kwargs)  -> SyncCursorPage[FileListResponse]`
 
@@ -546,7 +626,29 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "container.file",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create container file
 
 `containers.files.create(strcontainer_id, FileCreateParams**kwargs)  -> FileCreateResponse`
 
@@ -617,7 +719,21 @@ file = client.containers.files.create(
 print(file.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Retrieve container file
 
 `containers.files.retrieve(strfile_id, FileRetrieveParams**kwargs)  -> FileRetrieveResponse`
 
@@ -681,7 +797,21 @@ file = client.containers.files.retrieve(
 print(file.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Delete a container file
 
 `containers.files.delete(strfile_id, FileDeleteParams**kwargs)`
 
@@ -712,7 +842,7 @@ client.containers.files.delete(
 
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 `containers.files.content.retrieve(strfile_id, ContentRetrieveParams**kwargs)  -> BinaryResponseContent`
 

@@ -1,4 +1,4 @@
-## List
+## List all skills for the current project.
 
 **get** `/skills`
 
@@ -83,4 +83,26 @@ List all skills for the current project.
 ```http
 curl https://api.openai.com/v1/skills \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
 ```

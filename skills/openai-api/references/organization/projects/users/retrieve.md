@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve project user
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
@@ -51,4 +51,38 @@ Retrieves a user in the project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "added_at": 0,
+  "email": "email",
+  "name": "name",
+  "object": "organization.project.user",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.user",
+    "id": "user_abc",
+    "name": "First Last",
+    "email": "user@example.com",
+    "role": "owner",
+    "added_at": 1711471533
+}
 ```

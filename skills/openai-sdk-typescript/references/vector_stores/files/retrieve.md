@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve vector store file
 
 `client.vectorStores.files.retrieve(stringfileID, FileRetrieveParamsparams, RequestOptionsoptions?): VectorStoreFile`
 
@@ -136,4 +136,61 @@ const vectorStoreFile = await client.vectorStores.files.retrieve('file-abc123', 
 });
 
 console.log(vectorStoreFile.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStoreFile = await openai.vectorStores.files.retrieve(
+    "file-abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(vectorStoreFile);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
 ```

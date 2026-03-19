@@ -1,4 +1,4 @@
-## Create Character
+## Create a character from an uploaded video.
 
 `videos.create_character(VideoCreateCharacterParams**kwargs)  -> VideoCreateCharacterResponse`
 
@@ -43,7 +43,17 @@ client = OpenAI(
 )
 response = client.videos.create_character(
     name="x",
-    video=b"raw file contents",
+    video=b"Example data",
 )
 print(response.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

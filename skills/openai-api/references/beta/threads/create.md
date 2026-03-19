@@ -1,4 +1,4 @@
-## Create
+## Create thread
 
 **post** `/threads`
 
@@ -264,4 +264,81 @@ curl https://api.openai.com/v1/threads \
     -X POST \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Empty
+
+```http
+curl https://api.openai.com/v1/threads \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d ''
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699012949,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+### Messages
+
+```http
+curl https://api.openai.com/v1/threads \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "OpenAI-Beta: assistants=v2" \
+-d '{
+    "messages": [{
+      "role": "user",
+      "content": "Hello, what is AI?"
+    }, {
+      "role": "user",
+      "content": "How does AI work? Explain it in simple terms."
+    }]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {}
+}
 ```

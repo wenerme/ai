@@ -1,4 +1,4 @@
-## Create
+## Create session
 
 **post** `/realtime/sessions`
 
@@ -57,9 +57,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -91,7 +91,7 @@ Returns the created Realtime session object, plus an ephemeral key.
     prompt. The substitution values can either be strings, or other
     Response input types like images or files.
 
-    - `UnionMember0 = string`
+    - `string`
 
     - `ResponseInputText = object { text, type }`
 
@@ -214,7 +214,7 @@ Returns the created Realtime session object, plus an ephemeral key.
   `auto` will create a trace for the session with default values for the
   workflow name, group id, and metadata.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     Default tracing mode for the session.
 
@@ -249,7 +249,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `UnionMember0 = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -314,9 +314,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed during
   the session once the model has responded with audio at least once.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+  - `"alloy" or "ash" or "ballad" or 7 more`
 
     - `"alloy"`
 
@@ -424,9 +424,9 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -507,9 +507,9 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -565,9 +565,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -625,7 +625,7 @@ Returns the created Realtime session object, plus an ephemeral key.
   `auto` will create a trace for the session with default values for the
   workflow name, group id, and metadata.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     Default tracing mode for the session.
 
@@ -689,4 +689,111 @@ curl https://api.openai.com/v1/realtime/sessions \
             "value": "value"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "audio": {
+    "input": {
+      "format": {
+        "rate": 24000,
+        "type": "audio/pcm"
+      },
+      "noise_reduction": {
+        "type": "near_field"
+      },
+      "transcription": {
+        "language": "language",
+        "model": "string",
+        "prompt": "prompt"
+      },
+      "turn_detection": {
+        "prefix_padding_ms": 0,
+        "silence_duration_ms": 0,
+        "threshold": 0,
+        "type": "type"
+      }
+    },
+    "output": {
+      "format": {
+        "rate": 24000,
+        "type": "audio/pcm"
+      },
+      "speed": 0,
+      "voice": "ash"
+    }
+  },
+  "expires_at": 0,
+  "include": [
+    "item.input_audio_transcription.logprobs"
+  ],
+  "instructions": "instructions",
+  "max_output_tokens": 0,
+  "model": "model",
+  "object": "object",
+  "output_modalities": [
+    "text"
+  ],
+  "tool_choice": "tool_choice",
+  "tools": [
+    {
+      "description": "description",
+      "name": "name",
+      "parameters": {},
+      "type": "function"
+    }
+  ],
+  "tracing": "auto",
+  "turn_detection": {
+    "prefix_padding_ms": 0,
+    "silence_duration_ms": 0,
+    "threshold": 0,
+    "type": "type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/sessions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-realtime",
+    "modalities": ["audio", "text"],
+    "instructions": "You are a friendly assistant."
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "sess_001",
+  "object": "realtime.session",
+  "model": "gpt-realtime-2025-08-25",
+  "modalities": ["audio", "text"],
+  "instructions": "You are a friendly assistant.",
+  "voice": "alloy",
+  "input_audio_format": "pcm16",
+  "output_audio_format": "pcm16",
+  "input_audio_transcription": {
+      "model": "whisper-1"
+  },
+  "turn_detection": null,
+  "tools": [],
+  "tool_choice": "none",
+  "temperature": 0.7,
+  "max_response_output_tokens": 200,
+  "speed": 1.1,
+  "tracing": "auto",
+  "client_secret": {
+    "value": "ek_abc123", 
+    "expires_at": 1234567890
+  }
+}
 ```

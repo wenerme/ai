@@ -1,4 +1,4 @@
-## Create Character
+## Create a character from an uploaded video.
 
 `client.videos.createCharacter(VideoCreateCharacterParamsbody, RequestOptionsoptions?): VideoCreateCharacterResponse`
 
@@ -49,4 +49,14 @@ const response = await client.videos.createCharacter({
 });
 
 console.log(response.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create thread
 
 `client.beta.threads.create(ThreadCreateParamsbody?, RequestOptionsoptions?): Thread`
 
@@ -269,4 +269,96 @@ const client = new OpenAI({
 const thread = await client.beta.threads.create();
 
 console.log(thread.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Empty
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const emptyThread = await openai.beta.threads.create();
+
+  console.log(emptyThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699012949,
+  "metadata": {},
+  "tool_resources": {}
+}
+```
+
+### Messages
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const messageThread = await openai.beta.threads.create({
+    messages: [
+      {
+        role: "user",
+        content: "Hello, what is AI?"
+      },
+      {
+        role: "user",
+        content: "How does AI work? Explain it in simple terms.",
+      },
+    ],
+  });
+
+  console.log(messageThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {},
+  "tool_resources": {}
+}
 ```

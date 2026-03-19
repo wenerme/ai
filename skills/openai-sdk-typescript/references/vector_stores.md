@@ -1,6 +1,6 @@
 # Vector Stores
 
-## List
+## List vector stores
 
 `client.vectorStores.list(VectorStoreListParamsquery?, RequestOptionsoptions?): CursorPage<VectorStore>`
 
@@ -138,7 +138,101 @@ for await (const vectorStore of client.vectorStores.list()) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "file_counts": {
+        "cancelled": 0,
+        "completed": 0,
+        "failed": 0,
+        "in_progress": 0,
+        "total": 0
+      },
+      "last_active_at": 0,
+      "metadata": {
+        "foo": "string"
+      },
+      "name": "name",
+      "object": "vector_store",
+      "status": "expired",
+      "usage_bytes": 0,
+      "expires_after": {
+        "anchor": "last_active_at",
+        "days": 1
+      },
+      "expires_at": 0
+    }
+  ],
+  "first_id": "vs_abc123",
+  "has_more": false,
+  "last_id": "vs_abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStores = await openai.vectorStores.list();
+  console.log(vectorStores);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "vs_abc123",
+      "object": "vector_store",
+      "created_at": 1699061776,
+      "name": "Support FAQ",
+      "description": "Contains commonly asked questions and answers, organized by topic.",
+      "bytes": 139920,
+      "file_counts": {
+        "in_progress": 0,
+        "completed": 3,
+        "failed": 0,
+        "cancelled": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "vs_abc456",
+      "object": "vector_store",
+      "created_at": 1699061776,
+      "name": "Support FAQ v2",
+      "description": null,
+      "bytes": 139920,
+      "file_counts": {
+        "in_progress": 0,
+        "completed": 3,
+        "failed": 0,
+        "cancelled": 0,
+        "total": 3
+      }
+    }
+  ],
+  "first_id": "vs_abc123",
+  "last_id": "vs_abc456",
+  "has_more": false
+}
+```
+
+## Create vector store
 
 `client.vectorStores.create(VectorStoreCreateParamsbody, RequestOptionsoptions?): VectorStore`
 
@@ -326,7 +420,72 @@ const vectorStore = await client.vectorStores.create();
 console.log(vectorStore.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "last_active_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "name",
+  "object": "vector_store",
+  "status": "expired",
+  "usage_bytes": 0,
+  "expires_after": {
+    "anchor": "last_active_at",
+    "days": 1
+  },
+  "expires_at": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStore = await openai.vectorStores.create({
+    name: "Support FAQ"
+  });
+  console.log(vectorStore);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vs_abc123",
+  "object": "vector_store",
+  "created_at": 1699061776,
+  "name": "Support FAQ",
+  "description": "Contains commonly asked questions and answers, organized by topic.",
+  "bytes": 139920,
+  "file_counts": {
+    "in_progress": 0,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 3
+  }
+}
+```
+
+## Retrieve vector store
 
 `client.vectorStores.retrieve(stringvectorStoreID, RequestOptionsoptions?): VectorStore`
 
@@ -443,7 +602,62 @@ const vectorStore = await client.vectorStores.retrieve('vector_store_id');
 console.log(vectorStore.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "last_active_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "name",
+  "object": "vector_store",
+  "status": "expired",
+  "usage_bytes": 0,
+  "expires_after": {
+    "anchor": "last_active_at",
+    "days": 1
+  },
+  "expires_at": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStore = await openai.vectorStores.retrieve(
+    "vs_abc123"
+  );
+  console.log(vectorStore);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vs_abc123",
+  "object": "vector_store",
+  "created_at": 1699061776
+}
+```
+
+## Modify vector store
 
 `client.vectorStores.update(stringvectorStoreID, VectorStoreUpdateParamsbody, RequestOptionsoptions?): VectorStore`
 
@@ -589,7 +803,75 @@ const vectorStore = await client.vectorStores.update('vector_store_id');
 console.log(vectorStore.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "last_active_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "name",
+  "object": "vector_store",
+  "status": "expired",
+  "usage_bytes": 0,
+  "expires_after": {
+    "anchor": "last_active_at",
+    "days": 1
+  },
+  "expires_at": 0
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStore = await openai.vectorStores.update(
+    "vs_abc123",
+    {
+      name: "Support FAQ"
+    }
+  );
+  console.log(vectorStore);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vs_abc123",
+  "object": "vector_store",
+  "created_at": 1699061776,
+  "name": "Support FAQ",
+  "description": "Contains commonly asked questions and answers, organized by topic.",
+  "bytes": 139920,
+  "file_counts": {
+    "in_progress": 0,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 3
+  }
+}
+```
+
+## Delete vector store
 
 `client.vectorStores.delete(stringvectorStoreID, RequestOptionsoptions?): VectorStoreDeleted`
 
@@ -627,7 +909,43 @@ const vectorStoreDeleted = await client.vectorStores.delete('vector_store_id');
 console.log(vectorStoreDeleted.id);
 ```
 
-## Search
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const deletedVectorStore = await openai.vectorStores.delete(
+    "vs_abc123"
+  );
+  console.log(deletedVectorStore);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  id: "vs_abc123",
+  object: "vector_store.deleted",
+  deleted: true
+}
+```
+
+## Search vector store
 
 `client.vectorStores.search(stringvectorStoreID, VectorStoreSearchParamsbody, RequestOptionsoptions?): Page<VectorStoreSearchResponse>`
 
@@ -859,6 +1177,35 @@ for await (const vectorStoreSearchResponse of client.vectorStores.search('vs_abc
   query: 'string',
 })) {
   console.log(vectorStoreSearchResponse.file_id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "foo": "string"
+      },
+      "content": [
+        {
+          "text": "text",
+          "type": "text"
+        }
+      ],
+      "file_id": "file_id",
+      "filename": "filename",
+      "score": 0
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.search_results.page",
+  "search_query": [
+    "string"
+  ]
 }
 ```
 
@@ -1127,7 +1474,7 @@ for await (const vectorStoreSearchResponse of client.vectorStores.search('vs_abc
 
 # Files
 
-## List
+## List vector store files
 
 `client.vectorStores.files.list(stringvectorStoreID, FileListParamsquery?, RequestOptionsoptions?): CursorPage<VectorStoreFile>`
 
@@ -1294,7 +1641,83 @@ for await (const vectorStoreFile of client.vectorStores.files.list('vector_store
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStoreFiles = await openai.vectorStores.files.list(
+    "vs_abc123"
+  );
+  console.log(vectorStoreFiles);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```
+
+## Create vector store file
 
 `client.vectorStores.files.create(stringvectorStoreID, FileCreateParamsbody, RequestOptionsoptions?): VectorStoreFile`
 
@@ -1482,7 +1905,67 @@ const vectorStoreFile = await client.vectorStores.files.create('vs_abc123', { fi
 console.log(vectorStoreFile.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const myVectorStoreFile = await openai.vectorStores.files.create(
+    "vs_abc123",
+    {
+      file_id: "file-abc123"
+    }
+  );
+  console.log(myVectorStoreFile);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "usage_bytes": 1234,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
+```
+
+## Update vector store file attributes
 
 `client.vectorStores.files.update(stringfileID, FileUpdateParamsparams, RequestOptionsoptions?): VectorStoreFile`
 
@@ -1637,7 +2120,34 @@ const vectorStoreFile = await client.vectorStores.files.update('file-abc123', {
 console.log(vectorStoreFile.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+## Retrieve vector store file
 
 `client.vectorStores.files.retrieve(stringfileID, FileRetrieveParamsparams, RequestOptionsoptions?): VectorStoreFile`
 
@@ -1777,7 +2287,64 @@ const vectorStoreFile = await client.vectorStores.files.retrieve('file-abc123', 
 console.log(vectorStoreFile.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStoreFile = await openai.vectorStores.files.retrieve(
+    "file-abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(vectorStoreFile);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
+```
+
+## Delete vector store file
 
 `client.vectorStores.files.delete(stringfileID, FileDeleteParamsparams, RequestOptionsoptions?): VectorStoreFileDeleted`
 
@@ -1823,7 +2390,44 @@ const vectorStoreFileDeleted = await client.vectorStores.files.delete('file_id',
 console.log(vectorStoreFileDeleted.id);
 ```
 
-## Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.file.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const deletedVectorStoreFile = await openai.vectorStores.files.delete(
+    "file-abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(deletedVectorStoreFile);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  id: "file-abc123",
+  object: "vector_store.file.deleted",
+  deleted: true
+}
+```
+
+## Retrieve vector store file content
 
 `client.vectorStores.files.content(stringfileID, FileContentParamsparams, RequestOptionsoptions?): Page<FileContentResponse>`
 
@@ -1867,6 +2471,22 @@ for await (const fileContentResponse of client.vectorStores.files.content('file-
   vector_store_id: 'vs_abc123',
 })) {
   console.log(fileContentResponse.text);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "text": "text",
+      "type": "type"
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.file_content.page"
 }
 ```
 
@@ -1992,7 +2612,7 @@ for await (const fileContentResponse of client.vectorStores.files.content('file-
 
 # File Batches
 
-## Create
+## Create vector store file batch
 
 `client.vectorStores.fileBatches.create(stringvectorStoreID, FileBatchCreateParamsbody, RequestOptionsoptions?): VectorStoreFileBatch`
 
@@ -2190,7 +2810,77 @@ const vectorStoreFileBatch = await client.vectorStores.fileBatches.create('vs_ab
 console.log(vectorStoreFileBatch.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const myVectorStoreFileBatch = await openai.vectorStores.fileBatches.create(
+    "vs_abc123",
+    {
+      files: [
+        {
+          file_id: "file-abc123",
+          attributes: { category: "finance" },
+        },
+        {
+          file_id: "file-abc456",
+          chunking_strategy: {
+            type: "static",
+            max_chunk_size_tokens: 1200,
+            chunk_overlap_tokens: 200,
+          },
+        },
+      ]
+    }
+  );
+  console.log(myVectorStoreFileBatch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Retrieve vector store file batch
 
 `client.vectorStores.fileBatches.retrieve(stringbatchID, FileBatchRetrieveParamsparams, RequestOptionsoptions?): VectorStoreFileBatch`
 
@@ -2282,7 +2972,62 @@ const vectorStoreFileBatch = await client.vectorStores.fileBatches.retrieve('vsf
 console.log(vectorStoreFileBatch.id);
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStoreFileBatch = await openai.vectorStores.fileBatches.retrieve(
+    "vsfb_abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(vectorStoreFileBatch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Cancel vector store file batch
 
 `client.vectorStores.fileBatches.cancel(stringbatchID, FileBatchCancelParamsparams, RequestOptionsoptions?): VectorStoreFileBatch`
 
@@ -2374,7 +3119,62 @@ const vectorStoreFileBatch = await client.vectorStores.fileBatches.cancel('batch
 console.log(vectorStoreFileBatch.id);
 ```
 
-## List Files
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const deletedVectorStoreFileBatch = await openai.vectorStores.fileBatches.cancel(
+    "vsfb_abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(deletedVectorStoreFileBatch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 12,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 15,
+  }
+}
+```
+
+## List vector store files in a batch
 
 `client.vectorStores.fileBatches.listFiles(stringbatchID, FileBatchListFilesParamsparams, RequestOptionsoptions?): CursorPage<VectorStoreFile>`
 
@@ -2544,6 +3344,83 @@ for await (const vectorStoreFile of client.vectorStores.fileBatches.listFiles('b
   vector_store_id: 'vector_store_id',
 })) {
   console.log(vectorStoreFile.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+async function main() {
+  const vectorStoreFiles = await openai.vectorStores.fileBatches.listFiles(
+    "vsfb_abc123",
+    { vector_store_id: "vs_abc123" }
+  );
+  console.log(vectorStoreFiles);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
 }
 ```
 

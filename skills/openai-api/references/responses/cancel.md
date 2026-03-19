@@ -1,4 +1,4 @@
-## Cancel
+## Cancel a response
 
 **post** `/responses/{response_id}/cancel`
 
@@ -90,7 +90,7 @@ the `background` parameter set to `true` can be cancelled.
     response will not be carried over to the next response. This makes it simple
     to swap out system (or developer) messages in new responses.
 
-    - `UnionMember0 = string`
+    - `string`
 
       A text input to the model, equivalent to a text input with the
       `developer` role.
@@ -564,11 +564,11 @@ the `background` parameter set to `true` can be cancelled.
             with a maximum length of 64 characters. Values are strings with a maximum
             length of 512 characters, booleans, or numbers.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
-            - `UnionMember2 = boolean`
+            - `boolean`
 
           - `file_id: optional string`
 
@@ -1196,11 +1196,11 @@ the `background` parameter set to `true` can be cancelled.
 
           Text, image, or file output of the function tool call.
 
-          - `UnionMember0 = string`
+          - `string`
 
             A JSON string of the output of the function tool call.
 
-          - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+          - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
             An array of content outputs (text, image, file) for the function tool call.
 
@@ -1427,17 +1427,17 @@ the `background` parameter set to `true` can be cancelled.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
               - `CompoundFilter = object { filters, type }`
 
@@ -1488,19 +1488,19 @@ the `background` parameter set to `true` can be cancelled.
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                      - `UnionMember2 = boolean`
+                      - `boolean`
 
-                      - `UnionMember3 = array of string or number`
+                      - `array of string or number`
 
-                        - `UnionMember0 = string`
+                        - `string`
 
-                        - `UnionMember1 = number`
+                        - `number`
 
-                  - `UnionMember1 = unknown`
+                  - `unknown`
 
                 - `type: "and" or "or"`
 
@@ -1796,7 +1796,7 @@ the `background` parameter set to `true` can be cancelled.
               specifies uploaded file IDs to make available to your code, along with an
               optional `memory_limit` setting.
 
-              - `UnionMember0 = string`
+              - `string`
 
                 The container ID.
 
@@ -1928,9 +1928,9 @@ the `background` parameter set to `true` can be cancelled.
 
               The image generation model to use. Default: `gpt-image-1`.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -3287,9 +3287,9 @@ the `background` parameter set to `true` can be cancelled.
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
+    - `"gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
 
       - `"gpt-5.4"`
 
@@ -3729,11 +3729,11 @@ the `background` parameter set to `true` can be cancelled.
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -4510,17 +4510,17 @@ the `background` parameter set to `true` can be cancelled.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -4571,19 +4571,19 @@ the `background` parameter set to `true` can be cancelled.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -4879,7 +4879,7 @@ the `background` parameter set to `true` can be cancelled.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -5011,9 +5011,9 @@ the `background` parameter set to `true` can be cancelled.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -6390,17 +6390,17 @@ the `background` parameter set to `true` can be cancelled.
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = number`
+            - `number`
 
-            - `UnionMember2 = boolean`
+            - `boolean`
 
-            - `UnionMember3 = array of string or number`
+            - `array of string or number`
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = number`
+              - `number`
 
         - `CompoundFilter = object { filters, type }`
 
@@ -6451,19 +6451,19 @@ the `background` parameter set to `true` can be cancelled.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-            - `UnionMember1 = unknown`
+            - `unknown`
 
           - `type: "and" or "or"`
 
@@ -6759,7 +6759,7 @@ the `background` parameter set to `true` can be cancelled.
         specifies uploaded file IDs to make available to your code, along with an
         optional `memory_limit` setting.
 
-        - `UnionMember0 = string`
+        - `string`
 
           The container ID.
 
@@ -6891,9 +6891,9 @@ the `background` parameter set to `true` can be cancelled.
 
         The image generation model to use. Default: `gpt-image-1`.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
           The image generation model to use. Default: `gpt-image-1`.
 
@@ -7442,7 +7442,7 @@ the `background` parameter set to `true` can be cancelled.
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -7791,4 +7791,190 @@ the `background` parameter set to `true` can be cancelled.
 curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
     -X POST \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "incomplete_details": {
+    "reason": "max_output_tokens"
+  },
+  "instructions": "string",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "gpt-5.1",
+  "object": "response",
+  "output": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "file_id",
+              "filename": "filename",
+              "index": 0,
+              "type": "file_citation"
+            }
+          ],
+          "logprobs": [
+            {
+              "token": "token",
+              "bytes": [
+                0
+              ],
+              "logprob": 0,
+              "top_logprobs": [
+                {
+                  "token": "token",
+                  "bytes": [
+                    0
+                  ],
+                  "logprob": 0
+                }
+              ]
+            }
+          ],
+          "text": "text",
+          "type": "output_text"
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message",
+      "phase": "commentary"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1,
+  "tool_choice": "none",
+  "tools": [
+    {
+      "name": "name",
+      "parameters": {
+        "foo": "bar"
+      },
+      "strict": true,
+      "type": "function",
+      "defer_loading": true,
+      "description": "description"
+    }
+  ],
+  "top_p": 1,
+  "background": true,
+  "completed_at": 0,
+  "conversation": {
+    "id": "id"
+  },
+  "max_output_tokens": 0,
+  "max_tool_calls": 0,
+  "output_text": "output_text",
+  "previous_response_id": "previous_response_id",
+  "prompt": {
+    "id": "id",
+    "variables": {
+      "foo": "string"
+    },
+    "version": "version"
+  },
+  "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_retention": "in-memory",
+  "reasoning": {
+    "effort": "none",
+    "generate_summary": "auto",
+    "summary": "auto"
+  },
+  "safety_identifier": "safety-identifier-1234",
+  "service_tier": "auto",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "low"
+  },
+  "top_logprobs": 0,
+  "truncation": "auto",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  },
+  "user": "user-1234"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
+  "object": "response",
+  "created_at": 1741386163,
+  "status": "cancelled",
+  "background": true,
+  "completed_at": null,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-4o-2024-08-06",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_67cb71b3c2b0819084d481baaaf148f206981a8637e6bc44",
+      "status": "in_progress",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Silent circuits hum,  \nThoughts emerge in data streams—  \nDigital dawn breaks.",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null
+  },
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": null,
+  "user": null,
+  "metadata": {}
+}
 ```

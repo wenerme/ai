@@ -16,9 +16,9 @@
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+    - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -3272,9 +3272,9 @@
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -3447,9 +3447,9 @@
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -3551,9 +3551,9 @@
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+      - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -3728,9 +3728,9 @@
     during the session once the model has responded with audio at least once.
     We recommend `marin` and `cedar` for best quality.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+    - `"alloy" or "ash" or "ballad" or 7 more`
 
       - `"alloy"`
 
@@ -4638,9 +4638,9 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               - `"alloy"`
 
@@ -4678,9 +4678,9 @@
         conversation. Set this to `none` to create an out-of-band response which
         will not add items to default conversation.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "auto" or "none"`
+        - `"auto" or "none"`
 
           Controls which conversation the response is added to. Currently supports
           `auto` and `none`, with `auto` as the default value. The `auto` value
@@ -5134,9 +5134,9 @@
         limit output tokens, or `inf` for the maximum available tokens for a
         given model. Defaults to `inf`.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -5174,7 +5174,7 @@
           prompt. The substitution values can either be strings, or other
           Response input types like images or files.
 
-          - `UnionMember0 = string`
+          - `string`
 
           - `ResponseInputText = object { text, type }`
 
@@ -5573,9 +5573,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -5748,9 +5748,9 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy" or "ash" or "ballad" or 7 more`
 
                 - `"alloy"`
 
@@ -5801,9 +5801,9 @@
           limit output tokens, or `inf` for the maximum available tokens for a
           given model. Defaults to `inf`.
 
-          - `UnionMember0 = number`
+          - `number`
 
-          - `UnionMember1 = "inf"`
+          - `"inf"`
 
             - `"inf"`
 
@@ -5811,9 +5811,9 @@
 
           The Realtime model used for this session.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+          - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
             The Realtime model used for this session.
 
@@ -5874,7 +5874,7 @@
             prompt. The substitution values can either be strings, or other
             Response input types like images or files.
 
-            - `UnionMember0 = string`
+            - `string`
 
             - `ResponseInputText = object { text, type }`
 
@@ -6215,7 +6215,7 @@
 
           Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-          - `UnionMember0 = "auto" or "disabled"`
+          - `"auto" or "disabled"`
 
             The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -6329,9 +6329,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -7093,9 +7093,9 @@
         `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
         best quality.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy" or "ash" or "ballad" or 7 more`
 
           The voice the model uses to respond. Voice cannot be changed during the
           session once the model has responded with audio at least once. Current
@@ -7137,9 +7137,9 @@
     Maximum number of output tokens for a single assistant response,
     inclusive of tool calls, that was used in this response.
 
-    - `UnionMember0 = number`
+    - `number`
 
-    - `UnionMember1 = "inf"`
+    - `"inf"`
 
       - `"inf"`
 
@@ -7779,9 +7779,9 @@
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -7872,9 +7872,9 @@
         during the session once the model has responded with audio at least once.
         We recommend `marin` and `cedar` for best quality.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy" or "ash" or "ballad" or 7 more`
 
           - `"alloy"`
 
@@ -7912,9 +7912,9 @@
     conversation. Set this to `none` to create an out-of-band response which
     will not add items to default conversation.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "auto" or "none"`
+    - `"auto" or "none"`
 
       Controls which conversation the response is added to. Currently supports
       `auto` and `none`, with `auto` as the default value. The `auto` value
@@ -8368,9 +8368,9 @@
     limit output tokens, or `inf` for the maximum available tokens for a
     given model. Defaults to `inf`.
 
-    - `UnionMember0 = number`
+    - `number`
 
-    - `UnionMember1 = "inf"`
+    - `"inf"`
 
       - `"inf"`
 
@@ -8408,7 +8408,7 @@
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -10563,9 +10563,9 @@
             `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
             best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               The voice the model uses to respond. Voice cannot be changed during the
               session once the model has responded with audio at least once. Current
@@ -10607,9 +10607,9 @@
         Maximum number of output tokens for a single assistant response,
         inclusive of tool calls, that was used in this response.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -11276,9 +11276,9 @@
             `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
             best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               The voice the model uses to respond. Voice cannot be changed during the
               session once the model has responded with audio at least once. Current
@@ -11320,9 +11320,9 @@
         Maximum number of output tokens for a single assistant response,
         inclusive of tool calls, that was used in this response.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -13048,9 +13048,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -13223,9 +13223,9 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy" or "ash" or "ballad" or 7 more`
 
                 - `"alloy"`
 
@@ -13276,9 +13276,9 @@
           limit output tokens, or `inf` for the maximum available tokens for a
           given model. Defaults to `inf`.
 
-          - `UnionMember0 = number`
+          - `number`
 
-          - `UnionMember1 = "inf"`
+          - `"inf"`
 
             - `"inf"`
 
@@ -13286,9 +13286,9 @@
 
           The Realtime model used for this session.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+          - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
             The Realtime model used for this session.
 
@@ -13349,7 +13349,7 @@
             prompt. The substitution values can either be strings, or other
             Response input types like images or files.
 
-            - `UnionMember0 = string`
+            - `string`
 
             - `ResponseInputText = object { text, type }`
 
@@ -13690,7 +13690,7 @@
 
           Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-          - `UnionMember0 = "auto" or "disabled"`
+          - `"auto" or "disabled"`
 
             The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -13804,9 +13804,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -14031,9 +14031,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -14206,9 +14206,9 @@
               during the session once the model has responded with audio at least once.
               We recommend `marin` and `cedar` for best quality.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+              - `"alloy" or "ash" or "ballad" or 7 more`
 
                 - `"alloy"`
 
@@ -14259,9 +14259,9 @@
           limit output tokens, or `inf` for the maximum available tokens for a
           given model. Defaults to `inf`.
 
-          - `UnionMember0 = number`
+          - `number`
 
-          - `UnionMember1 = "inf"`
+          - `"inf"`
 
             - `"inf"`
 
@@ -14269,9 +14269,9 @@
 
           The Realtime model used for this session.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+          - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
             The Realtime model used for this session.
 
@@ -14332,7 +14332,7 @@
             prompt. The substitution values can either be strings, or other
             Response input types like images or files.
 
-            - `UnionMember0 = string`
+            - `string`
 
             - `ResponseInputText = object { text, type }`
 
@@ -14673,7 +14673,7 @@
 
           Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-          - `UnionMember0 = "auto" or "disabled"`
+          - `"auto" or "disabled"`
 
             The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -14787,9 +14787,9 @@
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                   The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -16205,9 +16205,9 @@
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+      - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -16250,9 +16250,9 @@
     limit output tokens, or `inf` for the maximum available tokens for a
     given model. Defaults to `inf`.
 
-    - `UnionMember0 = number`
+    - `number`
 
-    - `UnionMember1 = "inf"`
+    - `"inf"`
 
       - `"inf"`
 
@@ -16269,9 +16269,9 @@
 
     The Realtime model used for this session.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+    - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
       The Realtime model used for this session.
 
@@ -16339,7 +16339,7 @@
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -16462,7 +16462,7 @@
     `auto` will create a trace for the session with default values for the
     workflow name, group id, and metadata.
 
-    - `UnionMember0 = "auto"`
+    - `"auto"`
 
       Default tracing mode for the session.
 
@@ -16587,9 +16587,9 @@
     voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
     `shimmer`, and `verse`.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+    - `"alloy" or "ash" or "ballad" or 7 more`
 
       The voice the model uses to respond. Voice cannot be changed during the
       session once the model has responded with audio at least once. Current
@@ -16702,9 +16702,9 @@
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -16877,9 +16877,9 @@
         during the session once the model has responded with audio at least once.
         We recommend `marin` and `cedar` for best quality.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy" or "ash" or "ballad" or 7 more`
 
           - `"alloy"`
 
@@ -16930,9 +16930,9 @@
     limit output tokens, or `inf` for the maximum available tokens for a
     given model. Defaults to `inf`.
 
-    - `UnionMember0 = number`
+    - `number`
 
-    - `UnionMember1 = "inf"`
+    - `"inf"`
 
       - `"inf"`
 
@@ -16940,9 +16940,9 @@
 
     The Realtime model used for this session.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+    - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
       The Realtime model used for this session.
 
@@ -17003,7 +17003,7 @@
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -17344,7 +17344,7 @@
 
     Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-    - `UnionMember0 = "auto" or "disabled"`
+    - `"auto" or "disabled"`
 
       The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -17882,9 +17882,9 @@
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -18070,9 +18070,9 @@
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+      - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -18367,9 +18367,9 @@
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -18503,7 +18503,7 @@
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `UnionMember0 = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -18914,9 +18914,9 @@
           during the session once the model has responded with audio at least once.
           We recommend `marin` and `cedar` for best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             - `"alloy"`
 
@@ -18954,9 +18954,9 @@
       conversation. Set this to `none` to create an out-of-band response which
       will not add items to default conversation.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "auto" or "none"`
+      - `"auto" or "none"`
 
         Controls which conversation the response is added to. Currently supports
         `auto` and `none`, with `auto` as the default value. The `auto` value
@@ -19410,9 +19410,9 @@
       limit output tokens, or `inf` for the maximum available tokens for a
       given model. Defaults to `inf`.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -19450,7 +19450,7 @@
         prompt. The substitution values can either be strings, or other
         Response input types like images or files.
 
-        - `UnionMember0 = string`
+        - `string`
 
         - `ResponseInputText = object { text, type }`
 
@@ -19821,9 +19821,9 @@
           `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
           best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
             session once the model has responded with audio at least once. Current
@@ -19865,9 +19865,9 @@
       Maximum number of output tokens for a single assistant response,
       inclusive of tool calls, that was used in this response.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -20536,9 +20536,9 @@
           `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
           best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
             session once the model has responded with audio at least once. Current
@@ -20580,9 +20580,9 @@
       Maximum number of output tokens for a single assistant response,
       inclusive of tool calls, that was used in this response.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -22462,9 +22462,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -22637,9 +22637,9 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               - `"alloy"`
 
@@ -22690,9 +22690,9 @@
         limit output tokens, or `inf` for the maximum available tokens for a
         given model. Defaults to `inf`.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -22700,9 +22700,9 @@
 
         The Realtime model used for this session.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+        - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
           The Realtime model used for this session.
 
@@ -22763,7 +22763,7 @@
           prompt. The substitution values can either be strings, or other
           Response input types like images or files.
 
-          - `UnionMember0 = string`
+          - `string`
 
           - `ResponseInputText = object { text, type }`
 
@@ -23104,7 +23104,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `UnionMember0 = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -23218,9 +23218,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -23451,9 +23451,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -23626,9 +23626,9 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               - `"alloy"`
 
@@ -23679,9 +23679,9 @@
         limit output tokens, or `inf` for the maximum available tokens for a
         given model. Defaults to `inf`.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -23689,9 +23689,9 @@
 
         The Realtime model used for this session.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+        - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
           The Realtime model used for this session.
 
@@ -23752,7 +23752,7 @@
           prompt. The substitution values can either be strings, or other
           Response input types like images or files.
 
-          - `UnionMember0 = string`
+          - `string`
 
           - `ResponseInputText = object { text, type }`
 
@@ -24093,7 +24093,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `UnionMember0 = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -24207,9 +24207,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -24440,9 +24440,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -24615,9 +24615,9 @@
             during the session once the model has responded with audio at least once.
             We recommend `marin` and `cedar` for best quality.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+            - `"alloy" or "ash" or "ballad" or 7 more`
 
               - `"alloy"`
 
@@ -24668,9 +24668,9 @@
         limit output tokens, or `inf` for the maximum available tokens for a
         given model. Defaults to `inf`.
 
-        - `UnionMember0 = number`
+        - `number`
 
-        - `UnionMember1 = "inf"`
+        - `"inf"`
 
           - `"inf"`
 
@@ -24678,9 +24678,9 @@
 
         The Realtime model used for this session.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+        - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
           The Realtime model used for this session.
 
@@ -24741,7 +24741,7 @@
           prompt. The substitution values can either be strings, or other
           Response input types like images or files.
 
-          - `UnionMember0 = string`
+          - `string`
 
           - `ResponseInputText = object { text, type }`
 
@@ -25082,7 +25082,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `UnionMember0 = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -25196,9 +25196,9 @@
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -25383,9 +25383,9 @@
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -25496,9 +25496,9 @@
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -25563,7 +25563,7 @@
 
 # Client Secrets
 
-## Create
+## Create client secret
 
 **post** `/realtime/client_secrets`
 
@@ -25689,9 +25689,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -25864,9 +25864,9 @@ Returns the created client secret and the effective session object. The client s
           during the session once the model has responded with audio at least once.
           We recommend `marin` and `cedar` for best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             - `"alloy"`
 
@@ -25917,9 +25917,9 @@ Returns the created client secret and the effective session object. The client s
       limit output tokens, or `inf` for the maximum available tokens for a
       given model. Defaults to `inf`.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -25927,9 +25927,9 @@ Returns the created client secret and the effective session object. The client s
 
       The Realtime model used for this session.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
         The Realtime model used for this session.
 
@@ -25990,7 +25990,7 @@ Returns the created client secret and the effective session object. The client s
         prompt. The substitution values can either be strings, or other
         Response input types like images or files.
 
-        - `UnionMember0 = string`
+        - `string`
 
         - `ResponseInputText = object { text, type }`
 
@@ -26331,7 +26331,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `UnionMember0 = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -26445,9 +26445,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -26677,9 +26677,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -26851,9 +26851,9 @@ Returns the created client secret and the effective session object. The client s
           `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
           best quality.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+          - `"alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
             session once the model has responded with audio at least once. Current
@@ -26902,9 +26902,9 @@ Returns the created client secret and the effective session object. The client s
       limit output tokens, or `inf` for the maximum available tokens for a
       given model. Defaults to `inf`.
 
-      - `UnionMember0 = number`
+      - `number`
 
-      - `UnionMember1 = "inf"`
+      - `"inf"`
 
         - `"inf"`
 
@@ -26912,9 +26912,9 @@ Returns the created client secret and the effective session object. The client s
 
       The Realtime model used for this session.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
         The Realtime model used for this session.
 
@@ -26975,7 +26975,7 @@ Returns the created client secret and the effective session object. The client s
         prompt. The substitution values can either be strings, or other
         Response input types like images or files.
 
-        - `UnionMember0 = string`
+        - `string`
 
         - `ResponseInputText = object { text, type }`
 
@@ -27316,7 +27316,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `UnionMember0 = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -27436,9 +27436,9 @@ Returns the created client secret and the effective session object. The client s
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -27509,6 +27509,149 @@ curl https://api.openai.com/v1/realtime/client_secrets \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "expires_at": 0,
+  "session": {
+    "client_secret": {
+      "expires_at": 0,
+      "value": "value"
+    },
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "noise_reduction": {
+          "type": "near_field"
+        },
+        "transcription": {
+          "language": "language",
+          "model": "string",
+          "prompt": "prompt"
+        },
+        "turn_detection": {
+          "type": "server_vad",
+          "create_response": true,
+          "idle_timeout_ms": 5000,
+          "interrupt_response": true,
+          "prefix_padding_ms": 0,
+          "silence_duration_ms": 0,
+          "threshold": 0
+        }
+      },
+      "output": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "speed": 0.25,
+        "voice": "ash"
+      }
+    },
+    "include": [
+      "item.input_audio_transcription.logprobs"
+    ],
+    "instructions": "instructions",
+    "max_output_tokens": 0,
+    "model": "string",
+    "output_modalities": [
+      "text"
+    ],
+    "prompt": {
+      "id": "id",
+      "variables": {
+        "foo": "string"
+      },
+      "version": "version"
+    },
+    "tool_choice": "none",
+    "tools": [
+      {
+        "description": "description",
+        "name": "name",
+        "parameters": {},
+        "type": "function"
+      }
+    ],
+    "tracing": "auto",
+    "truncation": "auto"
+  },
+  "value": "value"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/client_secrets \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "expires_after": {
+      "anchor": "created_at",
+      "seconds": 600
+    },
+    "session": {
+      "type": "realtime",
+      "model": "gpt-realtime",
+      "instructions": "You are a friendly assistant."
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "value": "ek_68af296e8e408191a1120ab6383263c2",
+  "expires_at": 1756310470,
+  "session": {
+    "type": "realtime",
+    "object": "realtime.session",
+    "id": "sess_C9CiUVUzUzYIssh3ELY1d",
+    "model": "gpt-realtime",
+    "output_modalities": [
+      "audio"
+    ],
+    "instructions": "You are a friendly assistant.",
+    "tools": [],
+    "tool_choice": "auto",
+    "max_output_tokens": "inf",
+    "tracing": null,
+    "truncation": "auto",
+    "prompt": null,
+    "expires_at": 0,
+    "audio": {
+      "input": {
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        },
+        "transcription": null,
+        "noise_reduction": null,
+        "turn_detection": {
+          "type": "server_vad",
+        }
+      },
+      "output": {
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        },
+        "voice": "alloy",
+        "speed": 1.0
+      }
+    },
+    "include": null
+  }
+}
 ```
 
 ## Domain Types
@@ -27628,9 +27771,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -27802,9 +27945,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
         `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
         best quality.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+        - `"alloy" or "ash" or "ballad" or 7 more`
 
           The voice the model uses to respond. Voice cannot be changed during the
           session once the model has responded with audio at least once. Current
@@ -27853,9 +27996,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
     limit output tokens, or `inf` for the maximum available tokens for a
     given model. Defaults to `inf`.
 
-    - `UnionMember0 = number`
+    - `number`
 
-    - `UnionMember1 = "inf"`
+    - `"inf"`
 
       - `"inf"`
 
@@ -27863,9 +28006,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
     The Realtime model used for this session.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+    - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
       The Realtime model used for this session.
 
@@ -27926,7 +28069,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
       prompt. The substitution values can either be strings, or other
       Response input types like images or files.
 
-      - `UnionMember0 = string`
+      - `string`
 
       - `ResponseInputText = object { text, type }`
 
@@ -28267,7 +28410,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
     Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-    - `UnionMember0 = "auto" or "disabled"`
+    - `"auto" or "disabled"`
 
       The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -28389,9 +28532,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -28482,7 +28625,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
 # Calls
 
-## Accept
+## Accept call
 
 **post** `/realtime/calls/{call_id}/accept`
 
@@ -28575,9 +28718,9 @@ handle it.
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -28750,9 +28893,9 @@ handle it.
       during the session once the model has responded with audio at least once.
       We recommend `marin` and `cedar` for best quality.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -28803,9 +28946,9 @@ handle it.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -28813,9 +28956,9 @@ handle it.
 
   The Realtime model used for this session.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+  - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
 
     The Realtime model used for this session.
 
@@ -28876,7 +29019,7 @@ handle it.
     prompt. The substitution values can either be strings, or other
     Response input types like images or files.
 
-    - `UnionMember0 = string`
+    - `string`
 
     - `ResponseInputText = object { text, type }`
 
@@ -29217,7 +29360,7 @@ handle it.
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `UnionMember0 = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -29258,7 +29401,20 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
         }'
 ```
 
-## Hangup
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "type": "realtime",
+        "model": "gpt-realtime",
+        "instructions": "You are Alex, a friendly concierge for Example Corp.",
+      }'
+```
+
+## Hang up call
 
 **post** `/realtime/calls/{call_id}/hangup`
 
@@ -29277,7 +29433,14 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Refer
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## Refer call
 
 **post** `/realtime/calls/{call_id}/refer`
 
@@ -29305,7 +29468,16 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
         }'
 ```
 
-## Reject
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"target_uri": "tel:+14155550123"}'
+```
+
+## Reject call
 
 **post** `/realtime/calls/{call_id}/reject`
 
@@ -29330,9 +29502,18 @@ curl https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"status_code": 486}'
+```
+
 # Sessions
 
-## Create
+## Create session
 
 **post** `/realtime/sessions`
 
@@ -29391,9 +29572,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -29425,7 +29606,7 @@ Returns the created Realtime session object, plus an ephemeral key.
     prompt. The substitution values can either be strings, or other
     Response input types like images or files.
 
-    - `UnionMember0 = string`
+    - `string`
 
     - `ResponseInputText = object { text, type }`
 
@@ -29548,7 +29729,7 @@ Returns the created Realtime session object, plus an ephemeral key.
   `auto` will create a trace for the session with default values for the
   workflow name, group id, and metadata.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     Default tracing mode for the session.
 
@@ -29583,7 +29764,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `UnionMember0 = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -29648,9 +29829,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed during
   the session once the model has responded with audio at least once.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+  - `"alloy" or "ash" or "ballad" or 7 more`
 
     - `"alloy"`
 
@@ -29758,9 +29939,9 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -29841,9 +30022,9 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+      - `"alloy" or "ash" or "ballad" or 7 more`
 
         - `"alloy"`
 
@@ -29899,9 +30080,9 @@ Returns the created Realtime session object, plus an ephemeral key.
   limit output tokens, or `inf` for the maximum available tokens for a
   given model. Defaults to `inf`.
 
-  - `UnionMember0 = number`
+  - `number`
 
-  - `UnionMember1 = "inf"`
+  - `"inf"`
 
     - `"inf"`
 
@@ -29959,7 +30140,7 @@ Returns the created Realtime session object, plus an ephemeral key.
   `auto` will create a trace for the session with default values for the
   workflow name, group id, and metadata.
 
-  - `UnionMember0 = "auto"`
+  - `"auto"`
 
     Default tracing mode for the session.
 
@@ -30025,9 +30206,116 @@ curl https://api.openai.com/v1/realtime/sessions \
         }'
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "audio": {
+    "input": {
+      "format": {
+        "rate": 24000,
+        "type": "audio/pcm"
+      },
+      "noise_reduction": {
+        "type": "near_field"
+      },
+      "transcription": {
+        "language": "language",
+        "model": "string",
+        "prompt": "prompt"
+      },
+      "turn_detection": {
+        "prefix_padding_ms": 0,
+        "silence_duration_ms": 0,
+        "threshold": 0,
+        "type": "type"
+      }
+    },
+    "output": {
+      "format": {
+        "rate": 24000,
+        "type": "audio/pcm"
+      },
+      "speed": 0,
+      "voice": "ash"
+    }
+  },
+  "expires_at": 0,
+  "include": [
+    "item.input_audio_transcription.logprobs"
+  ],
+  "instructions": "instructions",
+  "max_output_tokens": 0,
+  "model": "model",
+  "object": "object",
+  "output_modalities": [
+    "text"
+  ],
+  "tool_choice": "tool_choice",
+  "tools": [
+    {
+      "description": "description",
+      "name": "name",
+      "parameters": {},
+      "type": "function"
+    }
+  ],
+  "tracing": "auto",
+  "turn_detection": {
+    "prefix_padding_ms": 0,
+    "silence_duration_ms": 0,
+    "threshold": 0,
+    "type": "type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/sessions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-realtime",
+    "modalities": ["audio", "text"],
+    "instructions": "You are a friendly assistant."
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "sess_001",
+  "object": "realtime.session",
+  "model": "gpt-realtime-2025-08-25",
+  "modalities": ["audio", "text"],
+  "instructions": "You are a friendly assistant.",
+  "voice": "alloy",
+  "input_audio_format": "pcm16",
+  "output_audio_format": "pcm16",
+  "input_audio_transcription": {
+      "model": "whisper-1"
+  },
+  "turn_detection": null,
+  "tools": [],
+  "tool_choice": "none",
+  "temperature": 0.7,
+  "max_response_output_tokens": 200,
+  "speed": 1.1,
+  "tracing": "auto",
+  "client_secret": {
+    "value": "ek_abc123", 
+    "expires_at": 1234567890
+  }
+}
+```
+
 # Transcription Sessions
 
-## Create
+## Create transcription session
 
 **post** `/realtime/transcription_sessions`
 
@@ -30090,9 +30378,9 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+    - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -30176,9 +30464,9 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+    - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
@@ -30242,4 +30530,62 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "client_secret": {
+    "expires_at": 0,
+    "value": "value"
+  },
+  "input_audio_format": "input_audio_format",
+  "input_audio_transcription": {
+    "language": "language",
+    "model": "string",
+    "prompt": "prompt"
+  },
+  "modalities": [
+    "text"
+  ],
+  "turn_detection": {
+    "prefix_padding_ms": 0,
+    "silence_duration_ms": 0,
+    "threshold": 0,
+    "type": "type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "sess_BBwZc7cFV3XizEyKGDCGL",
+  "object": "realtime.transcription_session",
+  "modalities": ["audio", "text"],
+  "turn_detection": {
+    "type": "server_vad",
+    "threshold": 0.5,
+    "prefix_padding_ms": 300,
+    "silence_duration_ms": 200
+  },
+  "input_audio_format": "pcm16",
+  "input_audio_transcription": {
+    "model": "gpt-4o-transcribe",
+    "language": null,
+    "prompt": ""
+  },
+  "client_secret": null
+}
 ```

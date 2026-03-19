@@ -1,4 +1,4 @@
-## Reject
+## Reject call
 
 `client.realtime.calls.reject(stringcallID, CallRejectParamsbody?, RequestOptionsoptions?): void`
 

@@ -1,6 +1,6 @@
 # Files
 
-## List
+## List vector store files
 
 `vector_stores.files.list(strvector_store_id, FileListParams**kwargs)  -> SyncCursorPage[VectorStoreFile]`
 
@@ -166,7 +166,79 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_files = client.vector_stores.files.list(
+  vector_store_id="vs_abc123"
+)
+print(vector_store_files)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```
+
+## Create vector store file
 
 `vector_stores.files.create(strvector_store_id, FileCreateParams**kwargs)  -> VectorStoreFile`
 
@@ -354,7 +426,61 @@ vector_store_file = client.vector_stores.files.create(
 print(vector_store_file.id)
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file = client.vector_stores.files.create(
+  vector_store_id="vs_abc123",
+  file_id="file-abc123"
+)
+print(vector_store_file)
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "usage_bytes": 1234,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
+```
+
+## Update vector store file attributes
 
 `vector_stores.files.update(strfile_id, FileUpdateParams**kwargs)  -> VectorStoreFile`
 
@@ -507,7 +633,34 @@ vector_store_file = client.vector_stores.files.update(
 print(vector_store_file.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+## Retrieve vector store file
 
 `vector_stores.files.retrieve(strfile_id, FileRetrieveParams**kwargs)  -> VectorStoreFile`
 
@@ -643,7 +796,60 @@ vector_store_file = client.vector_stores.files.retrieve(
 print(vector_store_file.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file = client.vector_stores.files.retrieve(
+  vector_store_id="vs_abc123",
+  file_id="file-abc123"
+)
+print(vector_store_file)
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null
+}
+```
+
+## Delete vector store file
 
 `vector_stores.files.delete(strfile_id, FileDeleteParams**kwargs)  -> VectorStoreFileDeleted`
 
@@ -685,7 +891,40 @@ vector_store_file_deleted = client.vector_stores.files.delete(
 print(vector_store_file_deleted.id)
 ```
 
-## Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "vector_store.file.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted_vector_store_file = client.vector_stores.files.delete(
+    vector_store_id="vs_abc123",
+    file_id="file-abc123"
+)
+print(deleted_vector_store_file)
+```
+
+#### Response
+
+```json
+{
+  id: "file-abc123",
+  object: "vector_store.file.deleted",
+  deleted: true
+}
+```
+
+## Retrieve vector store file content
 
 `vector_stores.files.content(strfile_id, FileContentParams**kwargs)  -> SyncPage[FileContentResponse]`
 
@@ -726,6 +965,22 @@ page = client.vector_stores.files.content(
 )
 page = page.data[0]
 print(page.text)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "text": "text",
+      "type": "type"
+    }
+  ],
+  "has_more": true,
+  "next_page": "next_page",
+  "object": "vector_store.file_content.page"
+}
 ```
 
 ## Domain Types

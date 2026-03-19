@@ -1,6 +1,6 @@
 # Speech
 
-## Create
+## Create speech
 
 **post** `/audio/speech`
 
@@ -18,7 +18,7 @@ Returns the audio file content, or a stream of audio events.
 
   One of the available [TTS models](/docs/models#tts): `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`, or `gpt-4o-mini-tts-2025-12-15`.
 
-  - `UnionMember0 = string`
+  - `string`
 
   - `SpeechModel = "tts-1" or "tts-1-hd" or "gpt-4o-mini-tts" or "gpt-4o-mini-tts-2025-12-15"`
 
@@ -34,9 +34,9 @@ Returns the audio file content, or a stream of audio events.
 
   The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech#voice-options).
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "alloy" or "ash" or "ballad" or 7 more`
+  - `"alloy" or "ash" or "ballad" or 7 more`
 
     - `"alloy"`
 
@@ -109,6 +109,34 @@ curl https://api.openai.com/v1/audio/speech \
           "model": "string",
           "voice": "string"
         }'
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/speech \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o-mini-tts",
+    "input": "The quick brown fox jumped over the lazy dog.",
+    "voice": "alloy"
+  }' \
+  --output speech.mp3
+```
+
+### SSE Stream Format
+
+```http
+curl https://api.openai.com/v1/audio/speech \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o-mini-tts",
+    "input": "The quick brown fox jumped over the lazy dog.",
+    "voice": "alloy",
+    "stream_format": "sse"
+  }'
 ```
 
 ## Domain Types

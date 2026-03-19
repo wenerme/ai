@@ -1,6 +1,6 @@
 # Permissions
 
-## Retrieve
+## List checkpoint permissions
 
 `fine_tuning.checkpoints.permissions.retrieve(strfine_tuned_model_checkpoint, PermissionRetrieveParams**kwargs)  -> PermissionRetrieveResponse`
 
@@ -83,7 +83,26 @@ permission = client.fine_tuning.checkpoints.permissions.retrieve(
 print(permission.first_id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## List checkpoint permissions
 
 `fine_tuning.checkpoints.permissions.list(strfine_tuned_model_checkpoint, PermissionListParams**kwargs)  -> SyncConversationCursorPage[PermissionListResponse]`
 
@@ -157,7 +176,26 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## Create checkpoint permissions
 
 `fine_tuning.checkpoints.permissions.create(strfine_tuned_model_checkpoint, PermissionCreateParams**kwargs)  -> SyncPage[PermissionCreateResponse]`
 
@@ -216,7 +254,26 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "object": "checkpoint.permission",
+      "project_id": "project_id"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+## Delete checkpoint permission
 
 `fine_tuning.checkpoints.permissions.delete(strpermission_id, PermissionDeleteParams**kwargs)  -> PermissionDeleteResponse`
 
@@ -264,4 +321,14 @@ permission = client.fine_tuning.checkpoints.permissions.delete(
     fine_tuned_model_checkpoint="ft:gpt-4o-mini-2024-07-18:org:weather:B7R9VjQd",
 )
 print(permission.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "checkpoint.permission"
+}
 ```

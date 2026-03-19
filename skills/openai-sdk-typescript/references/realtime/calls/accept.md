@@ -1,4 +1,4 @@
-## Accept
+## Accept call
 
 `client.realtime.calls.accept(stringcallID, CallAcceptParamsbody, RequestOptionsoptions?): void`
 

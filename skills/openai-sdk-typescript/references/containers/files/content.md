@@ -1,6 +1,6 @@
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 `client.containers.files.content.retrieve(stringfileID, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

@@ -1,6 +1,6 @@
 # Threads
 
-## List Items
+## List ChatKit thread items
 
 **get** `/chatkit/threads/{thread_id}/items`
 
@@ -440,7 +440,90 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "attachments": [
+        {
+          "id": "id",
+          "mime_type": "mime_type",
+          "name": "name",
+          "preview_url": "preview_url",
+          "type": "image"
+        }
+      ],
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "created_at": 0,
+      "inference_options": {
+        "model": "model",
+        "tool_choice": {
+          "id": "id"
+        }
+      },
+      "object": "chatkit.thread_item",
+      "thread_id": "thread_id",
+      "type": "chatkit.user_message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthi_user_001",
+      "object": "chatkit.thread_item",
+      "type": "user_message",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "I need help debugging an onboarding issue."
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "cthi_assistant_002",
+      "object": "chatkit.thread_item",
+      "type": "assistant_message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Let's start by confirming the workflow version you deployed."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
+## Retrieve ChatKit thread
 
 **get** `/chatkit/threads/{thread_id}`
 
@@ -528,7 +611,68 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "cthr_def456",
+  "created_at": 1712345600,
+  "object": "chatkit.thread",
+  "status": {
+    "type": "active"
+  },
+  "title": "Demo feedback",
+  "user": "user_456"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cthr_abc123",
+  "object": "chatkit.thread",
+  "title": "Customer escalation",
+  "items": {
+    "data": [
+      {
+        "id": "cthi_user_001",
+        "object": "chatkit.thread_item",
+        "type": "user_message",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "I need help debugging an onboarding issue."
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "id": "cthi_assistant_002",
+        "object": "chatkit.thread_item",
+        "type": "assistant_message",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Let's start by confirming the workflow version you deployed."
+          }
+        ]
+      }
+    ],
+    "has_more": false
+  }
+}
+```
+
+## Delete ChatKit thread
 
 **delete** `/chatkit/threads/{thread_id}`
 
@@ -563,7 +707,17 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+## List ChatKit threads
 
 **get** `/chatkit/threads`
 
@@ -691,6 +845,58 @@ curl https://api.openai.com/v1/chatkit/threads \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
 ## Domain Types
 
 ### Chat Session
@@ -795,11 +1001,11 @@ curl https://api.openai.com/v1/chatkit/threads \
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = boolean`
+      - `boolean`
 
-      - `UnionMember2 = number`
+      - `number`
 
     - `tracing: object { enabled }`
 
@@ -999,11 +1205,11 @@ curl https://api.openai.com/v1/chatkit/threads \
 
     State variables forwarded to the workflow. Keys may be up to 64 characters, values must be primitive types, and the map defaults to an empty object.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = boolean`
+    - `boolean`
 
-    - `UnionMember2 = number`
+    - `number`
 
   - `tracing: optional object { enabled }`
 

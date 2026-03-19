@@ -1,4 +1,4 @@
-## Update
+## Update the default version pointer for a skill.
 
 **post** `/skills/{skill_id}`
 
@@ -57,4 +57,18 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
     -d '{
           "default_version": "default_version"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
 ```

@@ -1,4 +1,4 @@
-## Cancel
+## Cancel chat session
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
@@ -112,11 +112,11 @@ Cancelling prevents new requests from using the issued client secret.
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = boolean`
+      - `boolean`
 
-      - `UnionMember2 = number`
+      - `number`
 
     - `tracing: object { enabled }`
 
@@ -137,4 +137,74 @@ curl https://api.openai.com/v1/chatkit/sessions/$SESSION_ID/cancel \
     -X POST \
     -H 'OpenAI-Beta: chatkit_beta=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST \
+  https://api.openai.com/v1/chatkit/sessions/cksess_123/cancel \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "cksess_123",
+  "object": "chatkit.session",
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "1"
+  },
+  "scope": {
+    "customer_id": "cust_456"
+  },
+  "max_requests_per_1_minute": 30,
+  "ttl_seconds": 900,
+  "status": "cancelled",
+  "cancelled_at": 1712345678
+}
 ```

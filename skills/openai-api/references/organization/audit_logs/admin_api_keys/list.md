@@ -1,4 +1,4 @@
-## List
+## List all organization and project API keys.
 
 **get** `/organization/admin_api_keys`
 
@@ -93,4 +93,71 @@ List organization API keys
 ```http
 curl https://api.openai.com/v1/organization/admin_api_keys \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "key_abc",
+      "created_at": 1711471533,
+      "last_used_at": 1711471534,
+      "name": "Administration Key",
+      "object": "organization.admin_api_key",
+      "owner": {
+        "id": "sa_456",
+        "created_at": 1711471533,
+        "name": "My Service Account",
+        "object": "organization.user",
+        "role": "owner",
+        "type": "user"
+      },
+      "redacted_value": "sk-admin...def",
+      "value": "sk-admin-1234abcd"
+    }
+  ],
+  "first_id": "key_abc",
+  "has_more": false,
+  "last_id": "key_xyz",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "organization.admin_api_key",
+      "id": "key_abc",
+      "name": "Main Admin Key",
+      "redacted_value": "sk-admin...def",
+      "created_at": 1711471533,
+      "last_used_at": 1711471534,
+      "owner": {
+        "type": "service_account",
+        "object": "organization.service_account",
+        "id": "sa_456",
+        "name": "My Service Account",
+        "created_at": 1711471533,
+        "role": "member"
+      }
+    }
+  ],
+  "first_id": "key_abc",
+  "last_id": "key_abc",
+  "has_more": false
+}
 ```

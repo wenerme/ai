@@ -1,4 +1,4 @@
-## Extend
+## Create an extension of a completed video.
 
 `videos.extend(VideoExtendParams**kwargs)  -> Video`
 
@@ -158,7 +158,30 @@ client = OpenAI(
 video = client.videos.extend(
     prompt="x",
     seconds="4",
-    video=b"raw file contents",
+    video=b"Example data",
 )
 print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
 ```

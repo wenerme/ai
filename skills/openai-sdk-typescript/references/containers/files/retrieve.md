@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve container file
 
 `client.containers.files.retrieve(stringfileID, FileRetrieveParamsparams, RequestOptionsoptions?): FileRetrieveResponse`
 
@@ -60,4 +60,18 @@ const client = new OpenAI({
 const file = await client.containers.files.retrieve('file_id', { container_id: 'container_id' });
 
 console.log(file.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
 ```

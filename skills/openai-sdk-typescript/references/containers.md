@@ -1,6 +1,6 @@
 # Containers
 
-## List
+## List containers
 
 `client.containers.list(ContainerListParamsquery?, RequestOptionsoptions?): CursorPage<ContainerListResponse>`
 
@@ -119,7 +119,39 @@ for await (const containerListResponse of client.containers.list()) {
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "object",
+      "status": "status",
+      "expires_after": {
+        "anchor": "last_active_at",
+        "minutes": 0
+      },
+      "last_active_at": 0,
+      "memory_limit": "1g",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": [
+          "string"
+        ]
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create container
 
 `client.containers.create(ContainerCreateParamsbody, RequestOptionsoptions?): ContainerCreateResponse`
 
@@ -345,7 +377,31 @@ const container = await client.containers.create({ name: 'name' });
 console.log(container.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+## Retrieve container
 
 `client.containers.retrieve(stringcontainerID, RequestOptionsoptions?): ContainerRetrieveResponse`
 
@@ -443,7 +499,31 @@ const container = await client.containers.retrieve('container_id');
 console.log(container.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "object",
+  "status": "status",
+  "expires_after": {
+    "anchor": "last_active_at",
+    "minutes": 0
+  },
+  "last_active_at": 0,
+  "memory_limit": "1g",
+  "network_policy": {
+    "type": "allowlist",
+    "allowed_domains": [
+      "string"
+    ]
+  }
+}
+```
+
+## Delete a container
 
 `client.containers.delete(stringcontainerID, RequestOptionsoptions?): void`
 
@@ -469,7 +549,7 @@ await client.containers.delete('container_id');
 
 # Files
 
-## List
+## List container files
 
 `client.containers.files.list(stringcontainerID, FileListParamsquery?, RequestOptionsoptions?): CursorPage<FileListResponse>`
 
@@ -548,7 +628,29 @@ for await (const fileListResponse of client.containers.files.list('container_id'
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "container.file",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create container file
 
 `client.containers.files.create(stringcontainerID, FileCreateParamsbody, RequestOptionsoptions?): FileCreateResponse`
 
@@ -620,7 +722,21 @@ const file = await client.containers.files.create('container_id');
 console.log(file.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Retrieve container file
 
 `client.containers.files.retrieve(stringfileID, FileRetrieveParamsparams, RequestOptionsoptions?): FileRetrieveResponse`
 
@@ -684,7 +800,21 @@ const file = await client.containers.files.retrieve('file_id', { container_id: '
 console.log(file.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Delete a container file
 
 `client.containers.files.delete(stringfileID, FileDeleteParamsparams, RequestOptionsoptions?): void`
 
@@ -714,7 +844,7 @@ await client.containers.files.delete('file_id', { container_id: 'container_id' }
 
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 `client.containers.files.content.retrieve(stringfileID, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

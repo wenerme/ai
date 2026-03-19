@@ -1,4 +1,4 @@
-## List
+## List items
 
 `client.conversations.items.list(stringconversationID, ItemListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ConversationItem>`
 
@@ -3090,5 +3090,62 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const conversationItem of client.conversations.items.list('conv_123')) {
   console.log(conversationItem);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const items = await client.conversations.items.list("conv_123", { limit: 10 });
+console.log(items.data);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_abc",
+  "has_more": false
 }
 ```

@@ -1,6 +1,6 @@
 # Sessions
 
-## Cancel
+## Cancel chat session
 
 `beta.chatkit.sessions.cancel(strsession_id)  -> ChatSession`
 
@@ -149,7 +149,80 @@ chat_session = client.beta.chatkit.sessions.cancel(
 print(chat_session.id)
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chat_session = client.beta.chatkit.sessions.cancel(
+    "cksess_123",
+)
+print(chat_session.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "cksess_123",
+  "object": "chatkit.session",
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "1"
+  },
+  "scope": {
+    "customer_id": "cust_456"
+  },
+  "max_requests_per_1_minute": 30,
+  "ttl_seconds": 900,
+  "status": "cancelled",
+  "cancelled_at": 1712345678
+}
+```
+
+## Create ChatKit session
 
 `beta.chatkit.sessions.create(SessionCreateParams**kwargs)  -> ChatSession`
 
@@ -391,4 +464,80 @@ chat_session = client.beta.chatkit.sessions.create(
     },
 )
 print(chat_session.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "chatkit_configuration": {
+    "automatic_thread_titling": {
+      "enabled": true
+    },
+    "file_upload": {
+      "enabled": true,
+      "max_file_size": 0,
+      "max_files": 0
+    },
+    "history": {
+      "enabled": true,
+      "recent_threads": 0
+    }
+  },
+  "client_secret": "client_secret",
+  "expires_at": 0,
+  "max_requests_per_1_minute": 0,
+  "object": "chatkit.session",
+  "rate_limits": {
+    "max_requests_per_1_minute": 0
+  },
+  "status": "active",
+  "user": "user",
+  "workflow": {
+    "id": "id",
+    "state_variables": {
+      "foo": "string"
+    },
+    "tracing": {
+      "enabled": true
+    },
+    "version": "version"
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+chat_session = client.beta.chatkit.sessions.create(
+    user="user",
+    workflow={
+        "id": "id"
+    },
+)
+print(chat_session.id)
+```
+
+#### Response
+
+```json
+{
+  "client_secret": "chatkit_token_123",
+  "expires_at": 1735689600,
+  "workflow": {
+    "id": "workflow_alpha",
+    "version": "2024-10-01"
+  },
+  "scope": {
+    "project": "alpha",
+    "environment": "staging"
+  },
+  "max_requests_per_1_minute": 60,
+  "max_requests_per_session": 500,
+  "status": "active"
+}
 ```

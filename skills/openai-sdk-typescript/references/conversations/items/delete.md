@@ -1,4 +1,4 @@
-## Delete
+## Delete an item
 
 `client.conversations.items.delete(stringitemID, ItemDeleteParamsparams, RequestOptionsoptions?): Conversation`
 
@@ -53,4 +53,39 @@ const conversation = await client.conversations.items.delete('msg_abc', {
 });
 
 console.log(conversation.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const conversation = await client.conversations.items.delete(
+  "conv_123",
+  "msg_abc"
+);
+console.log(conversation);
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```

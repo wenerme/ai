@@ -1,4 +1,4 @@
-## Delete
+## Delete eval run
 
 `client.evals.runs.delete(stringrunID, RunDeleteParamsparams, RequestOptionsoptions?): RunDeleteResponse`
 
@@ -38,4 +38,38 @@ const client = new OpenAI({
 const run = await client.evals.runs.delete('run_id', { eval_id: 'eval_id' });
 
 console.log(run.run_id);
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "eval.run.deleted",
+  "run_id": "evalrun_677469f564d48190807532a852da3afb"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const deleted = await openai.evals.runs.delete(
+  "eval_123abc",
+  "evalrun_abc456"
+);
+console.log(deleted);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.deleted",
+  "deleted": true,
+  "run_id": "evalrun_abc456"
+}
 ```

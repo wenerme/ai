@@ -1,4 +1,4 @@
-## Create
+## Create completion
 
 `client.completions.create(CompletionCreateParamsbody, RequestOptionsoptions?): Completion | Stream<Completion>`
 
@@ -303,4 +303,140 @@ const client = new OpenAI({
 const completion = await client.completions.create({ model: 'string', prompt: 'This is a test.' });
 
 console.log(completion);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": {
+        "text_offset": [
+          0
+        ],
+        "token_logprobs": [
+          0
+        ],
+        "tokens": [
+          "string"
+        ],
+        "top_logprobs": [
+          {
+            "foo": 0
+          }
+        ]
+      },
+      "text": "text"
+    }
+  ],
+  "created": 0,
+  "model": "model",
+  "object": "text_completion",
+  "system_fingerprint": "system_fingerprint",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
+```
+
+### No streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const completion = await openai.completions.create({
+    model: "VAR_completion_model_id",
+    prompt: "Say this is a test.",
+    max_tokens: 7,
+    temperature: 0,
+  });
+
+  console.log(completion);
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
+  "object": "text_completion",
+  "created": 1589478378,
+  "model": "VAR_completion_model_id",
+  "system_fingerprint": "fp_44709d6fcb",
+  "choices": [
+    {
+      "text": "\n\nThis is indeed a test",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 5,
+    "completion_tokens": 7,
+    "total_tokens": 12
+  }
+}
+```
+
+### Streaming
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const stream = await openai.completions.create({
+    model: "VAR_completion_model_id",
+    prompt: "Say this is a test.",
+    stream: true,
+  });
+
+  for await (const chunk of stream) {
+    console.log(chunk.choices[0].text)
+  }
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "cmpl-7iA7iJjj8V2zOkCGvWF2hAkDWBQZe",
+  "object": "text_completion",
+  "created": 1690759702,
+  "choices": [
+    {
+      "text": "This",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": null
+    }
+  ],
+  "model": "gpt-3.5-turbo-instruct"
+  "system_fingerprint": "fp_44709d6fcb",
+}
 ```

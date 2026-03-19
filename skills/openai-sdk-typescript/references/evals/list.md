@@ -1,4 +1,4 @@
-## List
+## List evals
 
 `client.evals.list(EvalListParamsquery?, RequestOptionsoptions?): CursorPage<EvalListResponse>`
 
@@ -425,5 +425,141 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const evalListResponse of client.evals.list()) {
   console.log(evalListResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "data_source_config": {
+        "schema": {
+          "foo": "bar"
+        },
+        "type": "custom"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "name": "Chatbot effectiveness Evaluation",
+      "object": "eval",
+      "testing_criteria": [
+        {
+          "input": [
+            {
+              "content": "string",
+              "role": "user",
+              "type": "message"
+            }
+          ],
+          "labels": [
+            "string"
+          ],
+          "model": "model",
+          "name": "name",
+          "passing_labels": [
+            "string"
+          ],
+          "type": "label_model"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const evals = await openai.evals.list({ limit: 1 });
+console.log(evals);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "object": "eval",
+      "data_source_config": {
+        "type": "stored_completions",
+        "metadata": {
+          "usecase": "push_notifications_summarizer"
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "object"
+            },
+            "sample": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "item",
+            "sample"
+          ]
+        }
+      },
+      "testing_criteria": [
+        {
+          "name": "Push Notification Summary Grader",
+          "id": "Push Notification Summary Grader-9b876f24-4762-4be9-aff4-db7a9b31c673",
+          "type": "label_model",
+          "model": "o3-mini",
+          "input": [
+            {
+              "type": "message",
+              "role": "developer",
+              "content": {
+                "type": "input_text",
+                "text": "\nLabel the following push notification summary as either correct or incorrect.\nThe push notification and the summary will be provided below.\nA good push notificiation summary is concise and snappy.\nIf it is good, then label it as correct, if not, then incorrect.\n"
+              }
+            },
+            {
+              "type": "message",
+              "role": "user",
+              "content": {
+                "type": "input_text",
+                "text": "\nPush notifications: {{item.input}}\nSummary: {{sample.output_text}}\n"
+              }
+            }
+          ],
+          "passing_labels": [
+            "correct"
+          ],
+          "labels": [
+            "correct",
+            "incorrect"
+          ],
+          "sampling_params": null
+        }
+      ],
+      "name": "Push Notification Summary Grader",
+      "created_at": 1739314509,
+      "metadata": {
+        "description": "A stored completions eval for push notification summaries"
+      }
+    }
+  ],
+  "first_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "last_id": "eval_67aa884cf6688190b58f657d4441c8b7",
+  "has_more": true
 }
 ```

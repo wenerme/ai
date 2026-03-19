@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve an item
 
 `conversations.items.retrieve(stritem_id, ItemRetrieveParams**kwargs)  -> ConversationItem`
 
@@ -3083,4 +3083,45 @@ conversation_item = client.conversations.items.retrieve(
     conversation_id="conv_123",
 )
 print(conversation_item)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+item = client.conversations.items.retrieve("conv_123", "msg_abc")
+print(item)
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
 ```

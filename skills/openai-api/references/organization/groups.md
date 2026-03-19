@@ -1,6 +1,6 @@
 # Groups
 
-## List
+## List groups
 
 **get** `/organization/groups`
 
@@ -67,7 +67,52 @@ curl https://api.openai.com/v1/organization/groups \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "is_scim_managed": true,
+      "name": "name"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "group",
+            "id": "group_01J1F8ABCDXYZ",
+            "name": "Support Team",
+            "created_at": 1711471533,
+            "is_scim_managed": false
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Create group
 
 **post** `/organization/groups`
 
@@ -108,7 +153,41 @@ curl https://api.openai.com/v1/organization/groups \
         }'
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Support Team"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group",
+    "id": "group_01J1F8ABCDXYZ",
+    "name": "Support Team",
+    "created_at": 1711471533,
+    "is_scim_managed": false
+}
+```
+
+## Update group
 
 **post** `/organization/groups/{group_id}`
 
@@ -153,7 +232,40 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Escalations"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "group_01J1F8ABCDXYZ",
+    "name": "Escalations",
+    "created_at": 1711471533,
+    "is_scim_managed": false
+}
+```
+
+## Delete group
 
 **delete** `/organization/groups/{group_id}`
 
@@ -187,9 +299,37 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "group.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.deleted",
+    "id": "group_01J1F8ABCDXYZ",
+    "deleted": true
+}
+```
+
 # Users
 
-## List
+## List group users
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -274,7 +414,55 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.user",
+      "role": "owner"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.user",
+            "id": "user_abc123",
+            "name": "Ada Lovelace",
+            "email": "ada@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Add group user
 
 **post** `/organization/groups/{group_id}/users`
 
@@ -317,7 +505,38 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "group_id": "group_id",
+  "object": "group.user",
+  "user_id": "user_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user",
+    "user_id": "user_abc123",
+    "group_id": "group_01J1F8ABCDXYZ"
+}
+```
+
+## Remove group user
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
@@ -349,9 +568,35 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "group.user.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user.deleted",
+    "deleted": true
+}
+```
+
 # Roles
 
-## List
+## List group organization role assignments
 
 **get** `/organization/groups/{group_id}/roles`
 
@@ -450,7 +695,78 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8ROLE01",
+            "name": "API Group Manager",
+            "permissions": [
+                "api.groups.read",
+                "api.groups.write"
+            ],
+            "resource_type": "api.organization",
+            "predefined_role": false,
+            "description": "Allows managing organization groups",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Assign organization role to group
 
 **post** `/organization/groups/{group_id}/roles`
 
@@ -545,7 +861,71 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "group": {
+    "id": "id",
+    "created_at": 0,
+    "name": "name",
+    "object": "group",
+    "scim_managed": true
+  },
+  "object": "group.role",
+  "role": {
+    "id": "id",
+    "description": "description",
+    "name": "name",
+    "object": "role",
+    "permissions": [
+      "string"
+    ],
+    "predefined_role": true,
+    "resource_type": "resource_type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_id": "role_01J1F8ROLE01"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role",
+    "group": {
+        "object": "group",
+        "id": "group_01J1F8ABCDXYZ",
+        "name": "Support Team",
+        "created_at": 1711471533,
+        "scim_managed": false
+    },
+    "role": {
+        "object": "role",
+        "id": "role_01J1F8ROLE01",
+        "name": "API Group Manager",
+        "description": "Allows managing organization groups",
+        "permissions": [
+            "api.groups.read",
+            "api.groups.write"
+        ],
+        "resource_type": "api.organization",
+        "predefined_role": false
+    }
+}
+```
+
+## Unassign organization role from group
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
@@ -573,4 +953,30 @@ Unassigns an organization role from a group within the organization.
 curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role.deleted",
+    "deleted": true
+}
 ```

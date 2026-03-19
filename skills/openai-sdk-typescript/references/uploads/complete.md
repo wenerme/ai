@@ -1,4 +1,4 @@
-## Complete
+## Complete upload
 
 `client.uploads.complete(stringuploadID, UploadCompleteParamsbody, RequestOptionsoptions?): Upload`
 
@@ -151,4 +151,30 @@ const client = new OpenAI({
 const upload = await client.uploads.complete('upload_abc123', { part_ids: ['string'] });
 
 console.log(upload.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "object": "upload",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  }
+}
 ```

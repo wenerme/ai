@@ -1,4 +1,4 @@
-## Create Variation
+## Create image variation
 
 `images.create_variation(ImageCreateVariationParams**kwargs)  -> ImagesResponse`
 
@@ -170,7 +170,68 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 images_response = client.images.create_variation(
-    image=b"raw file contents",
+    image=b"Example data",
 )
 print(images_response.created)
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.images.create_variation(
+  image=open("image_edit_original.png", "rb"),
+  n=2,
+  size="1024x1024"
+)
+```
+
+#### Response
+
+```json
+{
+  "created": 1589478378,
+  "data": [
+    {
+      "url": "https://..."
+    },
+    {
+      "url": "https://..."
+    }
+  ]
+}
 ```

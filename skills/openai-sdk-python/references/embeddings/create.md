@@ -1,4 +1,4 @@
-## Create
+## Create embeddings
 
 `embeddings.create(EmbeddingCreateParams**kwargs)  -> CreateEmbeddingResponse`
 
@@ -116,4 +116,64 @@ create_embedding_response = client.embeddings.create(
     model="text-embedding-3-small",
 )
 print(create_embedding_response.data)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "embedding": [
+        0
+      ],
+      "index": 0,
+      "object": "embedding"
+    }
+  ],
+  "model": "model",
+  "object": "list",
+  "usage": {
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.embeddings.create(
+  model="text-embedding-ada-002",
+  input="The food was delicious and the waiter...",
+  encoding_format="float"
+)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "embedding",
+      "embedding": [
+        0.0023064255,
+        -0.009327292,
+        .... (1536 floats total for ada-002)
+        -0.0028842222,
+      ],
+      "index": 0
+    }
+  ],
+  "model": "text-embedding-ada-002",
+  "usage": {
+    "prompt_tokens": 8,
+    "total_tokens": 8
+  }
+}
 ```

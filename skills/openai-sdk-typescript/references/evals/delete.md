@@ -1,4 +1,4 @@
-## Delete
+## Delete an eval
 
 `client.evals.delete(stringevalID, RequestOptionsoptions?): EvalDeleteResponse`
 
@@ -32,4 +32,35 @@ const client = new OpenAI({
 const _eval = await client.evals.delete('eval_id');
 
 console.log(_eval.eval_id);
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "eval_id": "eval_abc123",
+  "object": "eval.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const deleted = await openai.evals.delete("eval_abc123");
+console.log(deleted);
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.deleted",
+  "deleted": true,
+  "eval_id": "eval_abc123"
+}
 ```

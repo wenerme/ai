@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve video
 
 `videos.retrieve(strvideo_id)  -> Video`
 
@@ -127,6 +127,41 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
+video = client.videos.retrieve(
+    "video_123",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
 video = client.videos.retrieve(
     "video_123",
 )

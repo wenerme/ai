@@ -1,4 +1,4 @@
-## Create
+## Create items
 
 `client.conversations.items.create(stringconversationID, ItemCreateParamsparams, RequestOptionsoptions?): ConversationItemList`
 
@@ -6250,4 +6250,86 @@ const conversationItemList = await client.conversations.items.create('conv_123',
 });
 
 console.log(conversationItemList.first_id);
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const items = await client.conversations.items.create(
+  "conv_123",
+  {
+    items: [
+      {
+        type: "message",
+        role: "user",
+        content: [{ type: "input_text", text: "Hello!" }],
+      },
+      {
+        type: "message",
+        role: "user",
+        content: [{ type: "input_text", text: "How are you?" }],
+      },
+    ],
+  }
+);
+console.log(items.data);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "type": "message",
+      "id": "msg_abc",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "Hello!"}
+      ]
+    },
+    {
+      "type": "message",
+      "id": "msg_def",
+      "status": "completed",
+      "role": "user",
+      "content": [
+        {"type": "input_text", "text": "How are you?"}
+      ]
+    }
+  ],
+  "first_id": "msg_abc",
+  "last_id": "msg_def",
+  "has_more": false
+}
 ```

@@ -1,6 +1,6 @@
 # Skills
 
-## Create
+## Create a new skill.
 
 `client.skills.create(SkillCreateParamsbody?, RequestOptionsoptions?): Skill`
 
@@ -68,7 +68,21 @@ const skill = await client.skills.create();
 console.log(skill.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## List all skills for the current project.
 
 `client.skills.list(SkillListParamsquery?, RequestOptionsoptions?): CursorPage<Skill>`
 
@@ -145,7 +159,29 @@ for await (const skill of client.skills.list()) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a skill by its ID.
 
 `client.skills.retrieve(stringskillID, RequestOptionsoptions?): Skill`
 
@@ -205,7 +241,21 @@ const skill = await client.skills.retrieve('skill_123');
 console.log(skill.id);
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Update the default version pointer for a skill.
 
 `client.skills.update(stringskillID, SkillUpdateParamsbody, RequestOptionsoptions?): Skill`
 
@@ -271,7 +321,21 @@ const skill = await client.skills.update('skill_123', { default_version: 'defaul
 console.log(skill.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Delete a skill by its ID.
 
 `client.skills.delete(stringskillID, RequestOptionsoptions?): DeletedSkill`
 
@@ -307,6 +371,16 @@ const client = new OpenAI({
 const deletedSkill = await client.skills.delete('skill_123');
 
 console.log(deletedSkill.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```
 
 ## Domain Types
@@ -415,7 +489,7 @@ console.log(deletedSkill.id);
 
 # Content
 
-## Retrieve
+## Download a skill zip bundle by its ID.
 
 `client.skills.content.retrieve(stringskillID, RequestOptionsoptions?): Response`
 
@@ -450,7 +524,7 @@ console.log(data);
 
 # Versions
 
-## Create
+## Create a new immutable skill version.
 
 `client.skills.versions.create(stringskillID, VersionCreateParamsbody?, RequestOptionsoptions?): SkillVersion`
 
@@ -524,7 +598,21 @@ const skillVersion = await client.skills.versions.create('skill_123');
 console.log(skillVersion.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## List skill versions for a skill.
 
 `client.skills.versions.list(stringskillID, VersionListParamsquery?, RequestOptionsoptions?): CursorPage<SkillVersion>`
 
@@ -603,7 +691,29 @@ for await (const skillVersion of client.skills.versions.list('skill_123')) {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a specific skill version.
 
 `client.skills.versions.retrieve(stringversion, VersionRetrieveParamsparams, RequestOptionsoptions?): SkillVersion`
 
@@ -671,7 +781,21 @@ const skillVersion = await client.skills.versions.retrieve('version', { skill_id
 console.log(skillVersion.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
 
 `client.skills.versions.delete(stringversion, VersionDeleteParamsparams, RequestOptionsoptions?): DeletedSkillVersion`
 
@@ -721,6 +845,17 @@ const deletedSkillVersion = await client.skills.versions.delete('version', {
 });
 
 console.log(deletedSkillVersion.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```
 
 ## Domain Types
@@ -833,7 +968,7 @@ console.log(deletedSkillVersion.id);
 
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 `client.skills.versions.content.retrieve(stringversion, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

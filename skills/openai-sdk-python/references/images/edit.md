@@ -1,4 +1,4 @@
-## Edit
+## Create image edit
 
 `images.edit(ImageEditParams**kwargs)  -> ImagesResponse`
 
@@ -267,8 +267,111 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 for image in client.images.edit(
-    image=b"raw file contents",
+    image=b"Example data",
     prompt="A cute baby sea otter wearing a beret",
 ):
   print(image)
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Edit image
+
+```python
+import base64
+from openai import OpenAI
+client = OpenAI()
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+result = client.images.edit(
+    model="gpt-image-1.5",
+    image=[
+        open("body-lotion.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+        open("soap.png", "rb"),
+    ],
+    prompt=prompt
+)
+
+image_base64 = result.data[0].b64_json
+image_bytes = base64.b64decode(image_base64)
+
+# Save the image to a file
+with open("gift-basket.png", "wb") as f:
+    f.write(image_bytes)
+```
+
+### Streaming
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+stream = client.images.edit(
+    model="gpt-image-1.5",
+    image=[
+        open("body-lotion.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+        open("soap.png", "rb"),
+    ],
+    prompt=prompt,
+    stream=True
+)
+
+for event in stream:
+    print(event)
+```
+
+#### Response
+
+```json
+event: image_edit.partial_image
+data: {"type":"image_edit.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_edit.completed
+data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
 ```

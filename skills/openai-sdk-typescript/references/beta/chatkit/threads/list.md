@@ -1,4 +1,4 @@
-## List
+## List ChatKit threads
 
 `client.beta.chatkit.threads.list(ThreadListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ChatKitThread>`
 
@@ -116,5 +116,62 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const chatkitThread of client.beta.chatkit.threads.list()) {
   console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const chatkitThread of client.beta.chatkit.threads.list()) {
+  console.log(chatkitThread.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
 }
 ```

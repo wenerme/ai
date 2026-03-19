@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve project API key
 
 **get** `/organization/projects/{project_id}/api_keys/{key_id}`
 
@@ -121,4 +121,67 @@ Retrieves an API key in the project.
 ```http
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_used_at": 0,
+  "name": "name",
+  "object": "organization.project.api_key",
+  "owner": {
+    "service_account": {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    },
+    "type": "user",
+    "user": {
+      "id": "id",
+      "added_at": 0,
+      "email": "email",
+      "name": "name",
+      "object": "organization.project.user",
+      "role": "owner"
+    }
+  },
+  "redacted_value": "redacted_value"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.api_key",
+    "redacted_value": "sk-abc...def",
+    "name": "My API Key",
+    "created_at": 1711471533,
+    "last_used_at": 1711471534,
+    "id": "key_abc",
+    "owner": {
+        "type": "user",
+        "user": {
+            "object": "organization.project.user",
+            "id": "user_abc",
+            "name": "First Last",
+            "email": "user@example.com",
+            "role": "owner",
+            "added_at": 1711471533
+        }
+    }
+}
 ```

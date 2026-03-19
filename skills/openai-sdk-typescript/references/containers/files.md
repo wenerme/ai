@@ -1,6 +1,6 @@
 # Files
 
-## List
+## List container files
 
 `client.containers.files.list(stringcontainerID, FileListParamsquery?, RequestOptionsoptions?): CursorPage<FileListResponse>`
 
@@ -79,7 +79,29 @@ for await (const fileListResponse of client.containers.files.list('container_id'
 }
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "bytes": 0,
+      "container_id": "container_id",
+      "created_at": 0,
+      "object": "container.file",
+      "path": "path",
+      "source": "source"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create container file
 
 `client.containers.files.create(stringcontainerID, FileCreateParamsbody, RequestOptionsoptions?): FileCreateResponse`
 
@@ -151,7 +173,21 @@ const file = await client.containers.files.create('container_id');
 console.log(file.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Retrieve container file
 
 `client.containers.files.retrieve(stringfileID, FileRetrieveParamsparams, RequestOptionsoptions?): FileRetrieveResponse`
 
@@ -215,7 +251,21 @@ const file = await client.containers.files.retrieve('file_id', { container_id: '
 console.log(file.id);
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "container_id": "container_id",
+  "created_at": 0,
+  "object": "container.file",
+  "path": "path",
+  "source": "source"
+}
+```
+
+## Delete a container file
 
 `client.containers.files.delete(stringfileID, FileDeleteParamsparams, RequestOptionsoptions?): void`
 
@@ -245,7 +295,7 @@ await client.containers.files.delete('file_id', { container_id: 'container_id' }
 
 # Content
 
-## Retrieve
+## Retrieve container file content
 
 `client.containers.files.content.retrieve(stringfileID, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

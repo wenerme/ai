@@ -1,4 +1,4 @@
-## Validate
+## Validate grader
 
 `client.fineTuning.alpha.graders.validate(GraderValidateParamsbody, RequestOptionsoptions?): GraderValidateResponse`
 
@@ -1896,4 +1896,18 @@ const response = await client.fineTuning.alpha.graders.validate({
 });
 
 console.log(response.grader);
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
 ```

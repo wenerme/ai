@@ -1,4 +1,4 @@
-## Create
+## Create a new immutable skill version.
 
 `client.skills.versions.create(stringskillID, VersionCreateParamsbody?, RequestOptionsoptions?): SkillVersion`
 
@@ -70,4 +70,18 @@ const client = new OpenAI({
 const skillVersion = await client.skills.versions.create('skill_123');
 
 console.log(skillVersion.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

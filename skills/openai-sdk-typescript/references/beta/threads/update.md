@@ -1,4 +1,4 @@
-## Update
+## Modify thread
 
 `client.beta.threads.update(stringthreadID, ThreadUpdateParamsbody, RequestOptionsoptions?): Thread`
 
@@ -94,4 +94,65 @@ const client = new OpenAI({
 const thread = await client.beta.threads.update('thread_id');
 
 console.log(thread.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "object": "thread",
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const updatedThread = await openai.beta.threads.update(
+    "thread_abc123",
+    {
+      metadata: { modified: "true", user: "abc123" },
+    }
+  );
+
+  console.log(updatedThread);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread",
+  "created_at": 1699014083,
+  "metadata": {
+    "modified": "true",
+    "user": "abc123"
+  },
+  "tool_resources": {}
+}
 ```

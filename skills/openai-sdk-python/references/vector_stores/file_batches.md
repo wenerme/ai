@@ -1,6 +1,6 @@
 # File Batches
 
-## Create
+## Create vector store file batch
 
 `vector_stores.file_batches.create(strvector_store_id, FileBatchCreateParams**kwargs)  -> VectorStoreFileBatch`
 
@@ -197,7 +197,71 @@ vector_store_file_batch = client.vector_stores.file_batches.create(
 print(vector_store_file_batch.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file_batch = client.vector_stores.file_batches.create(
+  vector_store_id="vs_abc123",
+  files=[
+    {
+      "file_id": "file-abc123",
+      "attributes": {"category": "finance"},
+    },
+    {
+      "file_id": "file-abc456",
+      "chunking_strategy": {
+        "type": "static",
+        "max_chunk_size_tokens": 1200,
+        "chunk_overlap_tokens": 200,
+      },
+    },
+  ],
+)
+print(vector_store_file_batch)
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Retrieve vector store file batch
 
 `vector_stores.file_batches.retrieve(strbatch_id, FileBatchRetrieveParams**kwargs)  -> VectorStoreFileBatch`
 
@@ -285,7 +349,58 @@ vector_store_file_batch = client.vector_stores.file_batches.retrieve(
 print(vector_store_file_batch.id)
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_file_batch = client.vector_stores.file_batches.retrieve(
+  vector_store_id="vs_abc123",
+  batch_id="vsfb_abc123"
+)
+print(vector_store_file_batch)
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 1,
+    "completed": 1,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 0,
+  }
+}
+```
+
+## Cancel vector store file batch
 
 `vector_stores.file_batches.cancel(strbatch_id, FileBatchCancelParams**kwargs)  -> VectorStoreFileBatch`
 
@@ -373,7 +488,58 @@ vector_store_file_batch = client.vector_stores.file_batches.cancel(
 print(vector_store_file_batch.id)
 ```
 
-## List Files
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "file_counts": {
+    "cancelled": 0,
+    "completed": 0,
+    "failed": 0,
+    "in_progress": 0,
+    "total": 0
+  },
+  "object": "vector_store.files_batch",
+  "status": "in_progress",
+  "vector_store_id": "vector_store_id"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted_vector_store_file_batch = client.vector_stores.file_batches.cancel(
+    vector_store_id="vs_abc123",
+    file_batch_id="vsfb_abc123"
+)
+print(deleted_vector_store_file_batch)
+```
+
+#### Response
+
+```json
+{
+  "id": "vsfb_abc123",
+  "object": "vector_store.file_batch",
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abc123",
+  "status": "in_progress",
+  "file_counts": {
+    "in_progress": 12,
+    "completed": 3,
+    "failed": 0,
+    "cancelled": 0,
+    "total": 15,
+  }
+}
+```
+
+## List vector store files in a batch
 
 `vector_stores.file_batches.list_files(strbatch_id, FileBatchListFilesParams**kwargs)  -> SyncCursorPage[VectorStoreFile]`
 
@@ -540,6 +706,79 @@ page = client.vector_stores.file_batches.list_files(
 )
 page = page.data[0]
 print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "last_error": {
+        "code": "server_error",
+        "message": "message"
+      },
+      "object": "vector_store.file",
+      "status": "in_progress",
+      "usage_bytes": 0,
+      "vector_store_id": "vector_store_id",
+      "attributes": {
+        "foo": "string"
+      },
+      "chunking_strategy": {
+        "static": {
+          "chunk_overlap_tokens": 0,
+          "max_chunk_size_tokens": 100
+        },
+        "type": "static"
+      }
+    }
+  ],
+  "first_id": "file-abc123",
+  "has_more": false,
+  "last_id": "file-abc456",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store_files = client.vector_stores.file_batches.list_files(
+  vector_store_id="vs_abc123",
+  batch_id="vsfb_abc123"
+)
+print(vector_store_files)
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    },
+    {
+      "id": "file-abc456",
+      "object": "vector_store.file",
+      "created_at": 1699061776,
+      "vector_store_id": "vs_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
 ```
 
 ## Domain Types

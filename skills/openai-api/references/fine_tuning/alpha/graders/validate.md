@@ -1,4 +1,4 @@
-## Validate
+## Validate grader
 
 **post** `/fine_tuning/alpha/graders/validate`
 
@@ -1909,4 +1909,49 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
             "type": "string_check"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "input": "input",
+    "name": "name",
+    "operation": "eq",
+    "reference": "reference",
+    "type": "string_check"
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grader": {
+      "type": "string_check",
+      "name": "Example string check grader",
+      "input": "{{sample.output_text}}",
+      "reference": "{{item.label}}",
+      "operation": "eq"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "grader": {
+    "type": "string_check",
+    "name": "Example string check grader",
+    "input": "{{sample.output_text}}",
+    "reference": "{{item.label}}",
+    "operation": "eq"
+  }
+}
 ```

@@ -1,4 +1,4 @@
-## Delete
+## Delete message
 
 `beta.threads.messages.delete(strmessage_id, MessageDeleteParams**kwargs)  -> MessageDeleted`
 
@@ -38,4 +38,37 @@ message_deleted = client.beta.threads.messages.delete(
     thread_id="thread_id",
 )
 print(message_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+deleted_message = client.beta.threads.messages.delete(
+  message_id="msg_abc12",
+  thread_id="thread_abc123",
+)
+print(deleted_message)
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```

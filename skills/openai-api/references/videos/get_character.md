@@ -1,4 +1,4 @@
-## Get Character
+## Fetch a character.
 
 **get** `/videos/characters/{character_id}`
 
@@ -27,4 +27,14 @@ Fetch a character.
 ```http
 curl https://api.openai.com/v1/videos/characters/$CHARACTER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
 ```

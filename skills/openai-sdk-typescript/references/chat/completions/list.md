@@ -1,4 +1,4 @@
-## List
+## List Chat Completions
 
 `client.chat.completions.list(ChatCompletionListParamsquery?, RequestOptionsoptions?): CursorPage<ChatCompletion>`
 
@@ -387,5 +387,121 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const chatCompletion of client.chat.completions.list()) {
   console.log(chatCompletion.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": {
+            "content": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0,
+                "top_logprobs": [
+                  {
+                    "token": "token",
+                    "bytes": [
+                      0
+                    ],
+                    "logprob": 0
+                  }
+                ]
+              }
+            ],
+            "refusal": [
+              {
+                "token": "token",
+                "bytes": [
+                  0
+                ],
+                "logprob": 0,
+                "top_logprobs": [
+                  {
+                    "token": "token",
+                    "bytes": [
+                      0
+                    ],
+                    "logprob": 0
+                  }
+                ]
+              }
+            ]
+          },
+          "message": {
+            "content": "content",
+            "refusal": "refusal",
+            "role": "assistant",
+            "annotations": [
+              {
+                "type": "url_citation",
+                "url_citation": {
+                  "end_index": 0,
+                  "start_index": 0,
+                  "title": "title",
+                  "url": "url"
+                }
+              }
+            ],
+            "audio": {
+              "id": "id",
+              "data": "data",
+              "expires_at": 0,
+              "transcript": "transcript"
+            },
+            "function_call": {
+              "arguments": "arguments",
+              "name": "name"
+            },
+            "tool_calls": [
+              {
+                "id": "id",
+                "function": {
+                  "arguments": "arguments",
+                  "name": "name"
+                },
+                "type": "function"
+              }
+            ]
+          }
+        }
+      ],
+      "created": 0,
+      "model": "model",
+      "object": "chat.completion",
+      "service_tier": "auto",
+      "system_fingerprint": "system_fingerprint",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      }
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

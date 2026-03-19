@@ -1,6 +1,6 @@
 # Batches
 
-## Create
+## Create batch
 
 `client.batches.create(BatchCreateParamsbody, RequestOptionsoptions?): Batch`
 
@@ -266,7 +266,116 @@ const batch = await client.batches.create({
 console.log(batch.id);
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "completion_window": "completion_window",
+  "created_at": 0,
+  "endpoint": "endpoint",
+  "input_file_id": "input_file_id",
+  "object": "batch",
+  "status": "validating",
+  "cancelled_at": 0,
+  "cancelling_at": 0,
+  "completed_at": 0,
+  "error_file_id": "error_file_id",
+  "errors": {
+    "data": [
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
+    ],
+    "object": "object"
+  },
+  "expired_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "finalizing_at": 0,
+  "in_progress_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "output_file_id": "output_file_id",
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const batch = await openai.batches.create({
+    input_file_id: "file-abc123",
+    endpoint: "/v1/chat/completions",
+    completion_window: "24h"
+  });
+
+  console.log(batch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "batch_abc123",
+  "object": "batch",
+  "endpoint": "/v1/chat/completions",
+  "errors": null,
+  "input_file_id": "file-abc123",
+  "completion_window": "24h",
+  "status": "validating",
+  "output_file_id": null,
+  "error_file_id": null,
+  "created_at": 1711471533,
+  "in_progress_at": null,
+  "expires_at": null,
+  "finalizing_at": null,
+  "completed_at": null,
+  "failed_at": null,
+  "expired_at": null,
+  "cancelling_at": null,
+  "cancelled_at": null,
+  "request_counts": {
+    "total": 0,
+    "completed": 0,
+    "failed": 0
+  },
+  "metadata": {
+    "customer_id": "user_123456789",
+    "batch_description": "Nightly eval job",
+  }
+}
+```
+
+## Retrieve batch
 
 `client.batches.retrieve(stringbatchID, RequestOptionsoptions?): Batch`
 
@@ -471,7 +580,112 @@ const batch = await client.batches.retrieve('batch_id');
 console.log(batch.id);
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "completion_window": "completion_window",
+  "created_at": 0,
+  "endpoint": "endpoint",
+  "input_file_id": "input_file_id",
+  "object": "batch",
+  "status": "validating",
+  "cancelled_at": 0,
+  "cancelling_at": 0,
+  "completed_at": 0,
+  "error_file_id": "error_file_id",
+  "errors": {
+    "data": [
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
+    ],
+    "object": "object"
+  },
+  "expired_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "finalizing_at": 0,
+  "in_progress_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "output_file_id": "output_file_id",
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const batch = await openai.batches.retrieve("batch_abc123");
+
+  console.log(batch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "batch_abc123",
+  "object": "batch",
+  "endpoint": "/v1/completions",
+  "errors": null,
+  "input_file_id": "file-abc123",
+  "completion_window": "24h",
+  "status": "completed",
+  "output_file_id": "file-cvaTdG",
+  "error_file_id": "file-HOWS94",
+  "created_at": 1711471533,
+  "in_progress_at": 1711471538,
+  "expires_at": 1711557933,
+  "finalizing_at": 1711493133,
+  "completed_at": 1711493163,
+  "failed_at": null,
+  "expired_at": null,
+  "cancelling_at": null,
+  "cancelled_at": null,
+  "request_counts": {
+    "total": 100,
+    "completed": 95,
+    "failed": 5
+  },
+  "metadata": {
+    "customer_id": "user_123456789",
+    "batch_description": "Nightly eval job",
+  }
+}
+```
+
+## Cancel batch
 
 `client.batches.cancel(stringbatchID, RequestOptionsoptions?): Batch`
 
@@ -676,7 +890,112 @@ const batch = await client.batches.cancel('batch_id');
 console.log(batch.id);
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "completion_window": "completion_window",
+  "created_at": 0,
+  "endpoint": "endpoint",
+  "input_file_id": "input_file_id",
+  "object": "batch",
+  "status": "validating",
+  "cancelled_at": 0,
+  "cancelling_at": 0,
+  "completed_at": 0,
+  "error_file_id": "error_file_id",
+  "errors": {
+    "data": [
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
+    ],
+    "object": "object"
+  },
+  "expired_at": 0,
+  "expires_at": 0,
+  "failed_at": 0,
+  "finalizing_at": 0,
+  "in_progress_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "output_file_id": "output_file_id",
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const batch = await openai.batches.cancel("batch_abc123");
+
+  console.log(batch);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "batch_abc123",
+  "object": "batch",
+  "endpoint": "/v1/chat/completions",
+  "errors": null,
+  "input_file_id": "file-abc123",
+  "completion_window": "24h",
+  "status": "cancelling",
+  "output_file_id": null,
+  "error_file_id": null,
+  "created_at": 1711471533,
+  "in_progress_at": 1711471538,
+  "expires_at": 1711557933,
+  "finalizing_at": null,
+  "completed_at": null,
+  "failed_at": null,
+  "expired_at": null,
+  "cancelling_at": 1711475133,
+  "cancelled_at": null,
+  "request_counts": {
+    "total": 100,
+    "completed": 23,
+    "failed": 1
+  },
+  "metadata": {
+    "customer_id": "user_123456789",
+    "batch_description": "Nightly eval job",
+  }
+}
+```
+
+## List batches
 
 `client.batches.list(BatchListParamsquery?, RequestOptionsoptions?): CursorPage<Batch>`
 
@@ -887,6 +1206,130 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const batch of client.batches.list()) {
   console.log(batch.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completion_window": "completion_window",
+      "created_at": 0,
+      "endpoint": "endpoint",
+      "input_file_id": "input_file_id",
+      "object": "batch",
+      "status": "validating",
+      "cancelled_at": 0,
+      "cancelling_at": 0,
+      "completed_at": 0,
+      "error_file_id": "error_file_id",
+      "errors": {
+        "data": [
+          {
+            "code": "code",
+            "line": 0,
+            "message": "message",
+            "param": "param"
+          }
+        ],
+        "object": "object"
+      },
+      "expired_at": 0,
+      "expires_at": 0,
+      "failed_at": 0,
+      "finalizing_at": 0,
+      "in_progress_at": 0,
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "output_file_id": "output_file_id",
+      "request_counts": {
+        "completed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "usage": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 0
+      }
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "batch_abc123",
+  "last_id": "batch_abc456"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.batches.list();
+
+  for await (const batch of list) {
+    console.log(batch);
+  }
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "batch_abc123",
+      "object": "batch",
+      "endpoint": "/v1/chat/completions",
+      "errors": null,
+      "input_file_id": "file-abc123",
+      "completion_window": "24h",
+      "status": "completed",
+      "output_file_id": "file-cvaTdG",
+      "error_file_id": "file-HOWS94",
+      "created_at": 1711471533,
+      "in_progress_at": 1711471538,
+      "expires_at": 1711557933,
+      "finalizing_at": 1711493133,
+      "completed_at": 1711493163,
+      "failed_at": null,
+      "expired_at": null,
+      "cancelling_at": null,
+      "cancelled_at": null,
+      "request_counts": {
+        "total": 100,
+        "completed": 95,
+        "failed": 5
+      },
+      "metadata": {
+        "customer_id": "user_123456789",
+        "batch_description": "Nightly job",
+      }
+    },
+    { ... },
+  ],
+  "first_id": "batch_abc123",
+  "last_id": "batch_abc456",
+  "has_more": true
 }
 ```
 

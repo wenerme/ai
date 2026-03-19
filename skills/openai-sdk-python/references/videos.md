@@ -1,6 +1,6 @@
 # Videos
 
-## Create
+## Create video
 
 `videos.create(VideoCreateParams**kwargs)  -> Video`
 
@@ -193,7 +193,58 @@ video = client.videos.create(
 print(video.id)
 ```
 
-## Edit
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.create(
+    prompt="A calico cat playing a piano on stage",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
+```
+
+## Create a new video generation job by editing a source video or existing generated video.
 
 `videos.edit(VideoEditParams**kwargs)  -> Video`
 
@@ -342,12 +393,35 @@ client = OpenAI(
 )
 video = client.videos.edit(
     prompt="x",
-    video=b"raw file contents",
+    video=b"Example data",
 )
 print(video.id)
 ```
 
-## Extend
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create an extension of a completed video.
 
 `videos.extend(VideoExtendParams**kwargs)  -> Video`
 
@@ -507,12 +581,35 @@ client = OpenAI(
 video = client.videos.extend(
     prompt="x",
     seconds="4",
-    video=b"raw file contents",
+    video=b"Example data",
 )
 print(video.id)
 ```
 
-## Create Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create a character from an uploaded video.
 
 `videos.create_character(VideoCreateCharacterParams**kwargs)  -> VideoCreateCharacterResponse`
 
@@ -557,12 +654,22 @@ client = OpenAI(
 )
 response = client.videos.create_character(
     name="x",
-    video=b"raw file contents",
+    video=b"Example data",
 )
 print(response.id)
 ```
 
-## Get Character
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## Fetch a character.
 
 `videos.get_character(strcharacter_id)  -> VideoGetCharacterResponse`
 
@@ -605,7 +712,17 @@ response = client.videos.get_character(
 print(response.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## List videos
 
 `videos.list(VideoListParams**kwargs)  -> SyncConversationCursorPage[Video]`
 
@@ -753,7 +870,65 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "string",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+page = client.videos.list()
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
+```
+
+## Retrieve video
 
 `videos.retrieve(strvideo_id)  -> Video`
 
@@ -888,7 +1063,42 @@ video = client.videos.retrieve(
 print(video.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.retrieve(
+    "video_123",
+)
+print(video.id)
+```
+
+## Delete video
 
 `videos.delete(strvideo_id)  -> VideoDeleteResponse`
 
@@ -935,7 +1145,29 @@ video = client.videos.delete(
 print(video.id)
 ```
 
-## Remix
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.delete(
+    "video_123",
+)
+print(video.id)
+```
+
+## Remix video
 
 `videos.remix(strvideo_id, VideoRemixParams**kwargs)  -> Video`
 
@@ -1075,7 +1307,59 @@ video = client.videos.remix(
 print(video.id)
 ```
 
-## Download Content
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "string",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.remix(
+    video_id="video_123",
+    prompt="Extend the scene with the cat taking a bow to the cheering audience",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
+```
+
+## Retrieve video content
 
 `videos.download_content(strvideo_id, VideoDownloadContentParams**kwargs)  -> BinaryResponseContent`
 
@@ -1112,6 +1396,20 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
+response = client.videos.download_content(
+    video_id="video_123",
+)
+print(response)
+content = response.read()
+print(content)
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
 response = client.videos.download_content(
     video_id="video_123",
 )

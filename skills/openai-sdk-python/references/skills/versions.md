@@ -1,6 +1,6 @@
 # Versions
 
-## Create
+## Create a new immutable skill version.
 
 `skills.versions.create(strskill_id, VersionCreateParams**kwargs)  -> SkillVersion`
 
@@ -77,7 +77,21 @@ skill_version = client.skills.versions.create(
 print(skill_version.id)
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## List skill versions for a skill.
 
 `skills.versions.list(strskill_id, VersionListParams**kwargs)  -> SyncCursorPage[SkillVersion]`
 
@@ -155,7 +169,29 @@ page = page.data[0]
 print(page.id)
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a specific skill version.
 
 `skills.versions.retrieve(strversion, VersionRetrieveParams**kwargs)  -> SkillVersion`
 
@@ -221,7 +257,21 @@ skill_version = client.skills.versions.retrieve(
 print(skill_version.id)
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
 
 `skills.versions.delete(strversion, VersionDeleteParams**kwargs)  -> DeletedSkillVersion`
 
@@ -267,6 +317,17 @@ deleted_skill_version = client.skills.versions.delete(
     skill_id="skill_123",
 )
 print(deleted_skill_version.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```
 
 ## Domain Types
@@ -379,7 +440,7 @@ print(deleted_skill_version.id)
 
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 `skills.versions.content.retrieve(strversion, ContentRetrieveParams**kwargs)  -> BinaryResponseContent`
 

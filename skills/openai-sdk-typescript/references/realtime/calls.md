@@ -1,6 +1,6 @@
 # Calls
 
-## Accept
+## Accept call
 
 `client.realtime.calls.accept(stringcallID, CallAcceptParamsbody, RequestOptionsoptions?): void`
 
@@ -765,7 +765,7 @@ const client = new OpenAI({
 await client.realtime.calls.accept('call_id', { type: 'realtime' });
 ```
 
-## Hangup
+## Hang up call
 
 `client.realtime.calls.hangup(stringcallID, RequestOptionsoptions?): void`
 
@@ -790,7 +790,7 @@ const client = new OpenAI({
 await client.realtime.calls.hangup('call_id');
 ```
 
-## Refer
+## Refer call
 
 `client.realtime.calls.refer(stringcallID, CallReferParamsbody, RequestOptionsoptions?): void`
 
@@ -821,7 +821,7 @@ const client = new OpenAI({
 await client.realtime.calls.refer('call_id', { target_uri: 'tel:+14155550123' });
 ```
 
-## Reject
+## Reject call
 
 `client.realtime.calls.reject(stringcallID, CallRejectParamsbody?, RequestOptionsoptions?): void`
 

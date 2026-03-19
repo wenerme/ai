@@ -1,4 +1,4 @@
-## Complete
+## Complete upload
 
 **post** `/uploads/{upload_id}/complete`
 
@@ -148,4 +148,63 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
             "string"
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "expires_at": 0,
+  "filename": "filename",
+  "purpose": "purpose",
+  "status": "pending",
+  "file": {
+    "id": "id",
+    "bytes": 0,
+    "created_at": 0,
+    "filename": "filename",
+    "object": "file",
+    "purpose": "assistants",
+    "status": "uploaded",
+    "expires_at": 0,
+    "status_details": "status_details"
+  },
+  "object": "upload"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/uploads/upload_abc123/complete
+  -d '{
+    "part_ids": ["part_def456", "part_ghi789"]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "upload_abc123",
+  "object": "upload",
+  "bytes": 2147483648,
+  "created_at": 1719184911,
+  "filename": "training_examples.jsonl",
+  "purpose": "fine-tune",
+  "status": "completed",
+  "expires_at": 1719127296,
+  "file": {
+    "id": "file-xyz321",
+    "object": "file",
+    "bytes": 2147483648,
+    "created_at": 1719186911,
+    "expires_at": 1719127296,
+    "filename": "training_examples.jsonl",
+    "purpose": "fine-tune",
+  }
+}
 ```

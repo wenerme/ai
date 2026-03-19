@@ -1,6 +1,6 @@
 # Invites
 
-## List
+## List invites
 
 **get** `/organization/invites`
 
@@ -105,7 +105,67 @@ curl https://api.openai.com/v1/organization/invites \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "email": "email",
+      "expires_at": 0,
+      "invited_at": 0,
+      "object": "organization.invite",
+      "role": "owner",
+      "status": "accepted",
+      "accepted_at": 0,
+      "projects": [
+        {
+          "id": "id",
+          "role": "member"
+        }
+      ]
+    }
+  ],
+  "object": "list",
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "organization.invite",
+      "id": "invite-abc",
+      "email": "user@example.com",
+      "role": "owner",
+      "status": "accepted",
+      "invited_at": 1711471533,
+      "expires_at": 1711471533,
+      "accepted_at": 1711471533
+    }
+  ],
+  "first_id": "invite-abc",
+  "last_id": "invite-abc",
+  "has_more": false
+}
+```
+
+## Create invite
 
 **post** `/organization/invites`
 
@@ -219,7 +279,75 @@ curl https://api.openai.com/v1/organization/invites \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "expires_at": 0,
+  "invited_at": 0,
+  "object": "organization.invite",
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "projects": [
+    {
+      "id": "id",
+      "role": "member"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/invites \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "email": "anotheruser@example.com",
+      "role": "reader",
+      "projects": [
+        {
+          "id": "project-xyz",
+          "role": "member"
+        },
+        {
+          "id": "project-abc",
+          "role": "owner"
+        }
+      ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.invite",
+  "id": "invite-def",
+  "email": "anotheruser@example.com",
+  "role": "reader",
+  "status": "pending",
+  "invited_at": 1711471533,
+  "expires_at": 1711471533,
+  "accepted_at": null,
+  "projects": [
+    {
+      "id": "project-xyz",
+      "role": "member"
+    },
+    {
+      "id": "project-abc",
+      "role": "owner"
+    }
+  ]
+}
+```
+
+## Retrieve invite
 
 **get** `/organization/invites/{invite_id}`
 
@@ -302,7 +430,51 @@ curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "expires_at": 0,
+  "invited_at": 0,
+  "object": "organization.invite",
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "projects": [
+    {
+      "id": "id",
+      "role": "member"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/invites/invite-abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.invite",
+    "id": "invite-abc",
+    "email": "user@example.com",
+    "role": "owner",
+    "status": "accepted",
+    "invited_at": 1711471533,
+    "expires_at": 1711471533,
+    "accepted_at": 1711471533
+}
+```
+
+## Delete invite
 
 **delete** `/organization/invites/{invite_id}`
 
@@ -330,6 +502,34 @@ Delete an invite. If the invite has already been accepted, it cannot be deleted.
 curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.invite.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.invite.deleted",
+    "id": "invite-abc",
+    "deleted": true
+}
 ```
 
 ## Domain Types

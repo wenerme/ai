@@ -1,6 +1,6 @@
 # Embeddings
 
-## Create
+## Create embeddings
 
 `client.embeddings.create(EmbeddingCreateParamsbody, RequestOptionsoptions?): CreateEmbeddingResponse`
 
@@ -113,6 +113,73 @@ const createEmbeddingResponse = await client.embeddings.create({
 });
 
 console.log(createEmbeddingResponse.data);
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "embedding": [
+        0
+      ],
+      "index": 0,
+      "object": "embedding"
+    }
+  ],
+  "model": "model",
+  "object": "list",
+  "usage": {
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-ada-002",
+    input: "The quick brown fox jumped over the lazy dog",
+    encoding_format: "float",
+  });
+
+  console.log(embedding);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "embedding",
+      "embedding": [
+        0.0023064255,
+        -0.009327292,
+        .... (1536 floats total for ada-002)
+        -0.0028842222,
+      ],
+      "index": 0
+    }
+  ],
+  "model": "text-embedding-ada-002",
+  "usage": {
+    "prompt_tokens": 8,
+    "total_tokens": 8
+  }
+}
 ```
 
 ## Domain Types

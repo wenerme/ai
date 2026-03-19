@@ -1,4 +1,4 @@
-## Create
+## Create a conversation
 
 `conversations.create(ConversationCreateParams**kwargs)  -> Conversation`
 
@@ -3221,4 +3221,41 @@ client = OpenAI(
 )
 conversation = client.conversations.create()
 print(conversation.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+conversation = client.conversations.create(
+  metadata={"topic": "demo"},
+  items=[
+    {"type": "message", "role": "user", "content": "Hello!"}
+  ]
+)
+print(conversation)
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```

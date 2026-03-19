@@ -1,4 +1,4 @@
-## List
+## List models
 
 `client.models.list(RequestOptionsoptions?): Page<Model>`
 
@@ -42,5 +42,66 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const model of client.models.list()) {
   console.log(model.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created": 0,
+      "object": "model",
+      "owned_by": "owned_by"
+    }
+  ],
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const list = await openai.models.list();
+
+  for await (const model of list) {
+    console.log(model);
+  }
+}
+main();
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "model-id-0",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner"
+    },
+    {
+      "id": "model-id-1",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "organization-owner",
+    },
+    {
+      "id": "model-id-2",
+      "object": "model",
+      "created": 1686935002,
+      "owned_by": "openai"
+    },
+  ]
 }
 ```

@@ -1,4 +1,4 @@
-## Count
+## Get input token counts
 
 `client.responses.inputTokens.count(InputTokenCountParamsbody?, RequestOptionsoptions?): InputTokenCountResponse`
 
@@ -4618,4 +4618,37 @@ const client = new OpenAI({
 const response = await client.responses.inputTokens.count();
 
 console.log(response.input_tokens);
+```
+
+#### Response
+
+```json
+{
+  "input_tokens": 123,
+  "object": "response.input_tokens"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.inputTokens.count({
+  model: "gpt-5",
+  input: "Tell me a joke.",
+});
+
+console.log(response.input_tokens);
+```
+
+#### Response
+
+```json
+{
+  "object": "response.input_tokens",
+  "input_tokens": 11
+}
 ```

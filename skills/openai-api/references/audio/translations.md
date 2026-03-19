@@ -1,6 +1,6 @@
 # Translations
 
-## Create
+## Create translation
 
 **post** `/audio/translations`
 
@@ -78,6 +78,32 @@ curl https://api.openai.com/v1/audio/translations \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -F 'file=@/path/to/file' \
     -F model=whisper-1
+```
+
+#### Response
+
+```json
+{
+  "text": "text"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/audio/translations \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: multipart/form-data" \
+  -F file="@/path/to/file/german.m4a" \
+  -F model="whisper-1"
+```
+
+#### Response
+
+```json
+{
+  "text": "Hello, my name is Wolfgang and I come from Germany. Where are you heading today?"
+}
 ```
 
 ## Domain Types

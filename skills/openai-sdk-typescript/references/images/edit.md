@@ -1,4 +1,4 @@
-## Edit
+## Create image edit
 
 `client.images.edit(ImageEditParamsbody, RequestOptionsoptions?): ImagesResponse | Stream<ImageEditStreamEvent>`
 
@@ -294,4 +294,116 @@ const imagesResponse = await client.images.edit({
 });
 
 console.log(imagesResponse);
+```
+
+#### Response
+
+```json
+{
+  "created": 0,
+  "background": "transparent",
+  "data": [
+    {
+      "b64_json": "b64_json",
+      "revised_prompt": "revised_prompt",
+      "url": "url"
+    }
+  ],
+  "output_format": "png",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "output_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 0
+    }
+  }
+}
+```
+
+### Edit image
+
+```typescript
+import fs from "fs";
+import OpenAI, { toFile } from "openai";
+
+const client = new OpenAI();
+
+const imageFiles = [
+    "bath-bomb.png",
+    "body-lotion.png",
+    "incense-kit.png",
+    "soap.png",
+];
+
+const images = await Promise.all(
+    imageFiles.map(async (file) =>
+        await toFile(fs.createReadStream(file), null, {
+            type: "image/png",
+        })
+    ),
+);
+
+const rsp = await client.images.edit({
+    model: "gpt-image-1.5",
+    image: images,
+    prompt: "Create a lovely gift basket with these four items in it",
+});
+
+// Save the image to a file
+const image_base64 = rsp.data[0].b64_json;
+const image_bytes = Buffer.from(image_base64, "base64");
+fs.writeFileSync("basket.png", image_bytes);
+```
+
+### Streaming
+
+```typescript
+import fs from "fs";
+import OpenAI, { toFile } from "openai";
+
+const client = new OpenAI();
+
+const imageFiles = [
+    "bath-bomb.png",
+    "body-lotion.png",
+    "incense-kit.png",
+    "soap.png",
+];
+
+const images = await Promise.all(
+    imageFiles.map(async (file) =>
+        await toFile(fs.createReadStream(file), null, {
+            type: "image/png",
+        })
+    ),
+);
+
+const stream = await client.images.edit({
+    model: "gpt-image-1.5",
+    image: images,
+    prompt: "Create a lovely gift basket with these four items in it",
+    stream: true,
+});
+
+for await (const event of stream) {
+    console.log(event);
+}
+```
+
+#### Response
+
+```json
+event: image_edit.partial_image
+data: {"type":"image_edit.partial_image","b64_json":"...","partial_image_index":0}
+
+event: image_edit.completed
+data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":100,"input_tokens":50,"output_tokens":50,"input_tokens_details":{"text_tokens":10,"image_tokens":40}}}
 ```

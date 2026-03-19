@@ -1,4 +1,4 @@
-## Delete
+## Delete file
 
 `client.files.delete(stringfileID, RequestOptionsoptions?): FileDeleted`
 
@@ -34,4 +34,40 @@ const client = new OpenAI({
 const fileDeleted = await client.files.delete('file_id');
 
 console.log(fileDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "file"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const file = await openai.files.delete("file-abc123");
+
+  console.log(file);
+}
+
+main();
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "deleted": true
+}
 ```

@@ -1,6 +1,6 @@
 # Evals
 
-## List
+## List evals
 
 **get** `/evals`
 
@@ -434,7 +434,140 @@ curl https://api.openai.com/v1/evals \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "data_source_config": {
+        "schema": {
+          "foo": "bar"
+        },
+        "type": "custom"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "name": "Chatbot effectiveness Evaluation",
+      "object": "eval",
+      "testing_criteria": [
+        {
+          "input": [
+            {
+              "content": "string",
+              "role": "user",
+              "type": "message"
+            }
+          ],
+          "labels": [
+            "string"
+          ],
+          "model": "model",
+          "name": "name",
+          "passing_labels": [
+            "string"
+          ],
+          "type": "label_model"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals?limit=1 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "object": "eval",
+      "data_source_config": {
+        "type": "stored_completions",
+        "metadata": {
+          "usecase": "push_notifications_summarizer"
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "object"
+            },
+            "sample": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "item",
+            "sample"
+          ]
+        }
+      },
+      "testing_criteria": [
+        {
+          "name": "Push Notification Summary Grader",
+          "id": "Push Notification Summary Grader-9b876f24-4762-4be9-aff4-db7a9b31c673",
+          "type": "label_model",
+          "model": "o3-mini",
+          "input": [
+            {
+              "type": "message",
+              "role": "developer",
+              "content": {
+                "type": "input_text",
+                "text": "\nLabel the following push notification summary as either correct or incorrect.\nThe push notification and the summary will be provided below.\nA good push notificiation summary is concise and snappy.\nIf it is good, then label it as correct, if not, then incorrect.\n"
+              }
+            },
+            {
+              "type": "message",
+              "role": "user",
+              "content": {
+                "type": "input_text",
+                "text": "\nPush notifications: {{item.input}}\nSummary: {{sample.output_text}}\n"
+              }
+            }
+          ],
+          "passing_labels": [
+            "correct"
+          ],
+          "labels": [
+            "correct",
+            "incorrect"
+          ],
+          "sampling_params": null
+        }
+      ],
+      "name": "Push Notification Summary Grader",
+      "created_at": 1739314509,
+      "metadata": {
+        "description": "A stored completions eval for push notification summaries"
+      }
+    }
+  ],
+  "first_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "last_id": "eval_67aa884cf6688190b58f657d4441c8b7",
+  "has_more": true
+}
+```
+
+## Create eval
 
 **post** `/evals`
 
@@ -1208,7 +1341,156 @@ curl https://api.openai.com/v1/evals \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source_config": {
+    "schema": {
+      "foo": "bar"
+    },
+    "type": "custom"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "Chatbot effectiveness Evaluation",
+  "object": "eval",
+  "testing_criteria": [
+    {
+      "input": [
+        {
+          "content": "string",
+          "role": "user",
+          "type": "message"
+        }
+      ],
+      "labels": [
+        "string"
+      ],
+      "model": "model",
+      "name": "name",
+      "passing_labels": [
+        "string"
+      ],
+      "type": "label_model"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Sentiment",
+        "data_source_config": {
+          "type": "stored_completions",
+          "metadata": {
+              "usecase": "chatbot"
+          }
+        },
+        "testing_criteria": [
+          {
+            "type": "label_model",
+            "model": "o3-mini",
+            "input": [
+              {
+                "role": "developer",
+                "content": "Classify the sentiment of the following statement as one of 'positive', 'neutral', or 'negative'"
+              },
+              {
+                "role": "user",
+                "content": "Statement: {{item.input}}"
+              }
+            ],
+            "passing_labels": [
+              "positive"
+            ],
+            "labels": [
+              "positive",
+              "neutral",
+              "negative"
+            ],
+            "name": "Example label grader"
+          }
+        ]
+      }'
+```
+
+#### Response
+
+```json
+{
+  "object": "eval",
+  "id": "eval_67b7fa9a81a88190ab4aa417e397ea21",
+  "data_source_config": {
+    "type": "stored_completions",
+    "metadata": {
+      "usecase": "chatbot"
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object"
+        },
+        "sample": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "item",
+        "sample"
+      ]
+  },
+  "testing_criteria": [
+    {
+      "name": "Example label grader",
+      "type": "label_model",
+      "model": "o3-mini",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Classify the sentiment of the following statement as one of positive, neutral, or negative"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "Statement: {{item.input}}"
+          }
+        }
+      ],
+      "passing_labels": [
+        "positive"
+      ],
+      "labels": [
+        "positive",
+        "neutral",
+        "negative"
+      ]
+    }
+  ],
+  "name": "Sentiment",
+  "created_at": 1740110490,
+  "metadata": {
+    "description": "An eval for sentiment analysis"
+  }
+}
+```
+
+## Get an eval
 
 **get** `/evals/{eval_id}`
 
@@ -1597,7 +1879,103 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source_config": {
+    "schema": {
+      "foo": "bar"
+    },
+    "type": "custom"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "Chatbot effectiveness Evaluation",
+  "object": "eval",
+  "testing_criteria": [
+    {
+      "input": [
+        {
+          "content": "string",
+          "role": "user",
+          "type": "message"
+        }
+      ],
+      "labels": [
+        "string"
+      ],
+      "model": "model",
+      "name": "name",
+      "passing_labels": [
+        "string"
+      ],
+      "type": "label_model"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval",
+  "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "data_source_config": {
+    "type": "custom",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "string"
+            },
+            "ground_truth": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "input",
+            "ground_truth"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
+    }
+  },
+  "testing_criteria": [
+    {
+      "name": "String check",
+      "id": "String check-2eaf2d8d-d649-4335-8148-9535a7ca73c2",
+      "type": "string_check",
+      "input": "{{item.input}}",
+      "reference": "{{item.ground_truth}}",
+      "operation": "eq"
+    }
+  ],
+  "name": "External Data Eval",
+  "created_at": 1739314509,
+  "metadata": {},
+}
+```
+
+## Update an eval
 
 **post** `/evals/{eval_id}`
 
@@ -2003,7 +2381,104 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
     -d '{}'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source_config": {
+    "schema": {
+      "foo": "bar"
+    },
+    "type": "custom"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "Chatbot effectiveness Evaluation",
+  "object": "eval",
+  "testing_criteria": [
+    {
+      "input": [
+        {
+          "content": "string",
+          "role": "user",
+          "type": "message"
+        }
+      ],
+      "labels": [
+        "string"
+      ],
+      "model": "model",
+      "name": "name",
+      "passing_labels": [
+        "string"
+      ],
+      "type": "label_model"
+    }
+  ]
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Updated Eval", "metadata": {"description": "Updated description"}}'
+```
+
+#### Response
+
+```json
+{
+  "object": "eval",
+  "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "data_source_config": {
+    "type": "custom",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "string"
+            },
+            "ground_truth": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "input",
+            "ground_truth"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
+    }
+  },
+  "testing_criteria": [
+    {
+      "name": "String check",
+      "id": "String check-2eaf2d8d-d649-4335-8148-9535a7ca73c2",
+      "type": "string_check",
+      "input": "{{item.input}}",
+      "reference": "{{item.ground_truth}}",
+      "operation": "eq"
+    }
+  ],
+  "name": "Updated Eval",
+  "created_at": 1739314509,
+  "metadata": {"description": "Updated description"},
+}
+```
+
+## Delete an eval
 
 **delete** `/evals/{eval_id}`
 
@@ -2027,6 +2502,34 @@ Delete an evaluation.
 curl https://api.openai.com/v1/evals/$EVAL_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "eval_id": "eval_abc123",
+  "object": "eval.deleted"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_abc123 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.deleted",
+  "deleted": true,
+  "eval_id": "eval_abc123"
+}
 ```
 
 ## Domain Types
@@ -2080,7 +2583,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
 
 # Runs
 
-## List
+## Get eval runs
 
 **get** `/evals/{eval_id}/runs`
 
@@ -3310,17 +3813,17 @@ Get a list of runs for an evaluation.
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
-                  - `UnionMember2 = boolean`
+                  - `boolean`
 
-                  - `UnionMember3 = array of string or number`
+                  - `array of string or number`
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
               - `CompoundFilter = object { filters, type }`
 
@@ -3371,19 +3874,19 @@ Get a list of runs for an evaluation.
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                      - `UnionMember2 = boolean`
+                      - `boolean`
 
-                      - `UnionMember3 = array of string or number`
+                      - `array of string or number`
 
-                        - `UnionMember0 = string`
+                        - `string`
 
-                        - `UnionMember1 = number`
+                        - `number`
 
-                  - `UnionMember1 = unknown`
+                  - `unknown`
 
                 - `type: "and" or "or"`
 
@@ -3679,7 +4182,7 @@ Get a list of runs for an evaluation.
               specifies uploaded file IDs to make available to your code, along with an
               optional `memory_limit` setting.
 
-              - `UnionMember0 = string`
+              - `string`
 
                 The container ID.
 
@@ -3811,9 +4314,9 @@ Get a list of runs for an evaluation.
 
               The image generation model to use. Default: `gpt-image-1`.
 
-              - `UnionMember0 = string`
+              - `string`
 
-              - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -4440,7 +4943,168 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "data_source": {
+        "source": {
+          "content": [
+            {
+              "item": {
+                "foo": "bar"
+              },
+              "sample": {
+                "foo": "bar"
+              }
+            }
+          ],
+          "type": "file_content"
+        },
+        "type": "jsonl"
+      },
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "eval_id": "eval_id",
+      "metadata": {
+        "foo": "string"
+      },
+      "model": "model",
+      "name": "name",
+      "object": "eval.run",
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 0,
+          "model_name": "model_name",
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "testing_criteria"
+        }
+      ],
+      "report_url": "report_url",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 0
+      },
+      "status": "status"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "eval.run",
+      "id": "evalrun_67e0c7d31560819090d60c0780591042",
+      "eval_id": "eval_67e0c726d560819083f19a957c4c640b",
+      "report_url": "https://platform.openai.com/evaluations/eval_67e0c726d560819083f19a957c4c640b",
+      "status": "completed",
+      "model": "o3-mini",
+      "name": "bulk_with_negative_examples_o3-mini",
+      "created_at": 1742784467,
+      "result_counts": {
+        "total": 1,
+        "errored": 0,
+        "failed": 0,
+        "passed": 1
+      },
+      "per_model_usage": [
+        {
+          "model_name": "o3-mini",
+          "invocation_count": 1,
+          "prompt_tokens": 563,
+          "completion_tokens": 874,
+          "total_tokens": 1437,
+          "cached_tokens": 0
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "testing_criteria": "Push Notification Summary Grader-1808cd0b-eeec-4e0b-a519-337e79f4f5d1",
+          "passed": 1,
+          "failed": 0
+        }
+      ],
+      "data_source": {
+        "type": "completions",
+        "source": {
+          "type": "file_content",
+          "content": [
+            {
+              "item": {
+                "notifications": "\n- New message from Sarah: \"Can you call me later?\"\n- Your package has been delivered!\n- Flash sale: 20% off electronics for the next 2 hours!\n"
+              }
+            }
+          ]
+        },
+        "input_messages": {
+          "type": "template",
+          "template": [
+            {
+              "type": "message",
+              "role": "developer",
+              "content": {
+                "type": "input_text",
+                "text": "\n\n\n\nYou are a helpful assistant that takes in an array of push notifications and returns a collapsed summary of them.\nThe push notification will be provided as follows:\n<push_notifications>\n...notificationlist...\n</push_notifications>\n\nYou should return just the summary and nothing else.\n\n\nYou should return a summary that is concise and snappy.\n\n\nHere is an example of a good summary:\n<push_notifications>\n- Traffic alert: Accident reported on Main Street.- Package out for delivery: Expected by 5 PM.- New friend suggestion: Connect with Emma.\n</push_notifications>\n<summary>\nTraffic alert, package expected by 5pm, suggestion for new friend (Emily).\n</summary>\n\n\nHere is an example of a bad summary:\n<push_notifications>\n- Traffic alert: Accident reported on Main Street.- Package out for delivery: Expected by 5 PM.- New friend suggestion: Connect with Emma.\n</push_notifications>\n<summary>\nTraffic alert reported on main street. You have a package that will arrive by 5pm, Emily is a new friend suggested for you.\n</summary>\n"
+              }
+            },
+            {
+              "type": "message",
+              "role": "user",
+              "content": {
+                "type": "input_text",
+                "text": "<push_notifications>{{item.notifications}}</push_notifications>"
+              }
+            }
+          ]
+        },
+        "model": "o3-mini",
+        "sampling_params": null
+      },
+      "error": null,
+      "metadata": {}
+    }
+  ],
+  "first_id": "evalrun_67e0c7d31560819090d60c0780591042",
+  "last_id": "evalrun_67e0c7d31560819090d60c0780591042",
+  "has_more": true
+}
+```
+
+## Create eval run
 
 **post** `/evals/{eval_id}/runs`
 
@@ -5626,17 +6290,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -5687,19 +6351,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -5995,7 +6659,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -6127,9 +6791,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -7817,17 +8481,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -7878,19 +8542,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -8186,7 +8850,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -8318,9 +8982,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -8945,7 +9609,145 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"gpt-4o-mini","data_source":{"type":"completions","input_messages":{"type":"template","template":[{"role":"developer","content":"Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"} , {"role":"user","content":"{{item.input}}"}]} ,"sampling_params":{"temperature":1,"max_completions_tokens":2048,"top_p":1,"seed":42},"model":"gpt-4o-mini","source":{"type":"file_content","content":[{"item":{"input":"Tech Company Launches Advanced Artificial Intelligence Platform","ground_truth":"Technology"}}]}}'
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67e57965b480819094274e3a32235e4c",
+  "eval_id": "eval_67e579652b548190aaa83ada4b125f47",
+  "report_url": "https://platform.openai.com/evaluations/eval_67e579652b548190aaa83ada4b125f47&run_id=evalrun_67e57965b480819094274e3a32235e4c",
+  "status": "queued",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Get an eval run
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
@@ -10141,17 +10943,17 @@ Get an evaluation run by ID.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -10202,19 +11004,19 @@ Get an evaluation run by ID.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -10510,7 +11312,7 @@ Get an evaluation run by ID.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -10642,9 +11444,9 @@ Get an evaluation run by ID.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -11253,7 +12055,227 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
+  "status": "queued",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Central Bank Increases Interest Rates Amid Inflation Concerns",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Summit Addresses Climate Change Strategies",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Major Retailer Reports Record-Breaking Holiday Sales",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "National Team Qualifies for World Championship Finals",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Stock Markets Rally After Positive Economic Data Released",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Manufacturer Announces Merger with Competitor",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Breakthrough in Renewable Energy Technology Unveiled",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "World Leaders Sign Historic Climate Agreement",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Professional Athlete Sets New Record in Championship Event",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Financial Institutions Adapt to New Regulatory Requirements",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Tech Conference Showcases Advances in Artificial Intelligence",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Markets Respond to Oil Price Fluctuations",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Cooperation Strengthened Through New Treaty",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Sports League Announces Revised Schedule for Upcoming Season",
+            "ground_truth": "Sports"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Cancel eval run
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
@@ -12449,17 +13471,17 @@ Cancel an ongoing evaluation run.
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -12510,19 +13532,19 @@ Cancel an ongoing evaluation run.
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -12818,7 +13840,7 @@ Cancel an ongoing evaluation run.
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -12950,9 +13972,9 @@ Cancel an ongoing evaluation run.
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -13562,7 +14584,228 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source": {
+    "source": {
+      "content": [
+        {
+          "item": {
+            "foo": "bar"
+          },
+          "sample": {
+            "foo": "bar"
+          }
+        }
+      ],
+      "type": "file_content"
+    },
+    "type": "jsonl"
+  },
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "eval_id": "eval_id",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "eval.run",
+  "per_model_usage": [
+    {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "invocation_count": 0,
+      "model_name": "model_name",
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  ],
+  "per_testing_criteria_results": [
+    {
+      "failed": 0,
+      "passed": 0,
+      "testing_criteria": "testing_criteria"
+    }
+  ],
+  "report_url": "report_url",
+  "result_counts": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 0,
+    "total": 0
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7/cancel \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run",
+  "id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
+  "status": "canceled",
+  "model": "gpt-4o-mini",
+  "name": "gpt-4o-mini",
+  "created_at": 1743092069,
+  "result_counts": {
+    "total": 0,
+    "errored": 0,
+    "failed": 0,
+    "passed": 0
+  },
+  "per_model_usage": null,
+  "per_testing_criteria_results": null,
+  "data_source": {
+    "type": "completions",
+    "source": {
+      "type": "file_content",
+      "content": [
+        {
+          "item": {
+            "input": "Tech Company Launches Advanced Artificial Intelligence Platform",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Central Bank Increases Interest Rates Amid Inflation Concerns",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Summit Addresses Climate Change Strategies",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Major Retailer Reports Record-Breaking Holiday Sales",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "National Team Qualifies for World Championship Finals",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Stock Markets Rally After Positive Economic Data Released",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Manufacturer Announces Merger with Competitor",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Breakthrough in Renewable Energy Technology Unveiled",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "World Leaders Sign Historic Climate Agreement",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Professional Athlete Sets New Record in Championship Event",
+            "ground_truth": "Sports"
+          }
+        },
+        {
+          "item": {
+            "input": "Financial Institutions Adapt to New Regulatory Requirements",
+            "ground_truth": "Business"
+          }
+        },
+        {
+          "item": {
+            "input": "Tech Conference Showcases Advances in Artificial Intelligence",
+            "ground_truth": "Technology"
+          }
+        },
+        {
+          "item": {
+            "input": "Global Markets Respond to Oil Price Fluctuations",
+            "ground_truth": "Markets"
+          }
+        },
+        {
+          "item": {
+            "input": "International Cooperation Strengthened Through New Treaty",
+            "ground_truth": "World"
+          }
+        },
+        {
+          "item": {
+            "input": "Sports League Announces Revised Schedule for Upcoming Season",
+            "ground_truth": "Sports"
+          }
+        }
+      ]
+    },
+    "input_messages": {
+      "type": "template",
+      "template": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": {
+            "type": "input_text",
+            "text": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"
+          }
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": {
+            "type": "input_text",
+            "text": "{{item.input}}"
+          }
+        }
+      ]
+    },
+    "model": "gpt-4o-mini",
+    "sampling_params": {
+      "seed": 42,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_completions_tokens": 2048
+    }
+  },
+  "error": null,
+  "metadata": {}
+}
+```
+
+## Delete eval run
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
@@ -13588,6 +14831,35 @@ Delete an eval run.
 curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "eval.run.deleted",
+  "run_id": "evalrun_677469f564d48190807532a852da3afb"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.deleted",
+  "deleted": true,
+  "run_id": "evalrun_abc456"
+}
 ```
 
 ## Domain Types
@@ -14217,7 +15489,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
 
 # Output Items
 
-## List
+## Get eval run output items
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
@@ -14429,7 +15701,155 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "datasource_item": {
+        "foo": "bar"
+      },
+      "datasource_item_id": 0,
+      "eval_id": "eval_id",
+      "object": "eval.run.output_item",
+      "results": [
+        {
+          "name": "name",
+          "passed": true,
+          "score": 0,
+          "sample": {
+            "foo": "bar"
+          },
+          "type": "type"
+        }
+      ],
+      "run_id": "run_id",
+      "sample": {
+        "error": {
+          "code": "code",
+          "message": "message"
+        },
+        "finish_reason": "finish_reason",
+        "input": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "max_completion_tokens": 0,
+        "model": "model",
+        "output": [
+          {
+            "content": "content",
+            "role": "role"
+          }
+        ],
+        "seed": 0,
+        "temperature": 0,
+        "top_p": 0,
+        "usage": {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      },
+      "status": "status"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs/erun_67abd54d60ec8190832b46859da808f7/output_items \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "eval.run.output_item",
+      "id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+      "created_at": 1743092076,
+      "run_id": "evalrun_67abd54d60ec8190832b46859da808f7",
+      "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "status": "pass",
+      "datasource_item_id": 5,
+      "datasource_item": {
+        "input": "Stock Markets Rally After Positive Economic Data Released",
+        "ground_truth": "Markets"
+      },
+      "results": [
+        {
+          "name": "String check-a2486074-d803-4445-b431-ad2262e85d47",
+          "sample": null,
+          "passed": true,
+          "score": 1.0
+        }
+      ],
+      "sample": {
+        "input": [
+          {
+            "role": "developer",
+            "content": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          },
+          {
+            "role": "user",
+            "content": "Stock Markets Rally After Positive Economic Data Released",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "content": "Markets",
+            "tool_call_id": null,
+            "tool_calls": null,
+            "function_call": null
+          }
+        ],
+        "finish_reason": "stop",
+        "model": "gpt-4o-mini-2024-07-18",
+        "usage": {
+          "total_tokens": 325,
+          "completion_tokens": 2,
+          "prompt_tokens": 323,
+          "cached_tokens": 0
+        },
+        "error": null,
+        "temperature": 1.0,
+        "max_completion_tokens": 2048,
+        "top_p": 1.0,
+        "seed": 42
+      }
+    }
+  ],
+  "first_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "last_id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "has_more": true
+}
+```
+
+## Get an output item of an eval run
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
@@ -14592,4 +16012,136 @@ Get an evaluation run output item by ID.
 ```http
 curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items/$OUTPUT_ITEM_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "datasource_item": {
+    "foo": "bar"
+  },
+  "datasource_item_id": 0,
+  "eval_id": "eval_id",
+  "object": "eval.run.output_item",
+  "results": [
+    {
+      "name": "name",
+      "passed": true,
+      "score": 0,
+      "sample": {
+        "foo": "bar"
+      },
+      "type": "type"
+    }
+  ],
+  "run_id": "run_id",
+  "sample": {
+    "error": {
+      "code": "code",
+      "message": "message"
+    },
+    "finish_reason": "finish_reason",
+    "input": [
+      {
+        "content": "content",
+        "role": "role"
+      }
+    ],
+    "max_completion_tokens": 0,
+    "model": "model",
+    "output": [
+      {
+        "content": "content",
+        "role": "role"
+      }
+    ],
+    "seed": 0,
+    "temperature": 0,
+    "top_p": 0,
+    "usage": {
+      "cached_tokens": 0,
+      "completion_tokens": 0,
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "status": "status"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7/output_items/outputitem_67abd55eb6548190bb580745d5644a33 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "eval.run.output_item",
+  "id": "outputitem_67e5796c28e081909917bf79f6e6214d",
+  "created_at": 1743092076,
+  "run_id": "evalrun_67abd54d60ec8190832b46859da808f7",
+  "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "status": "pass",
+  "datasource_item_id": 5,
+  "datasource_item": {
+    "input": "Stock Markets Rally After Positive Economic Data Released",
+    "ground_truth": "Markets"
+  },
+  "results": [
+    {
+      "name": "String check-a2486074-d803-4445-b431-ad2262e85d47",
+      "sample": null,
+      "passed": true,
+      "score": 1.0
+    }
+  ],
+  "sample": {
+    "input": [
+      {
+        "role": "developer",
+        "content": "Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      },
+      {
+        "role": "user",
+        "content": "Stock Markets Rally After Positive Economic Data Released",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      }
+    ],
+    "output": [
+      {
+        "role": "assistant",
+        "content": "Markets",
+        "tool_call_id": null,
+        "tool_calls": null,
+        "function_call": null
+      }
+    ],
+    "finish_reason": "stop",
+    "model": "gpt-4o-mini-2024-07-18",
+    "usage": {
+      "total_tokens": 325,
+      "completion_tokens": 2,
+      "prompt_tokens": 323,
+      "cached_tokens": 0
+    },
+    "error": null,
+    "temperature": 1.0,
+    "max_completion_tokens": 2048,
+    "top_p": 1.0,
+    "seed": 42
+  }
+}
 ```

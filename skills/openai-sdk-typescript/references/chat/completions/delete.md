@@ -1,4 +1,4 @@
-## Delete
+## Delete chat completion
 
 `client.chat.completions.delete(stringcompletionID, RequestOptionsoptions?): ChatCompletionDeleted`
 
@@ -41,4 +41,14 @@ const client = new OpenAI({
 const chatCompletionDeleted = await client.chat.completions.delete('completion_id');
 
 console.log(chatCompletionDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chat.completion.deleted"
+}
 ```

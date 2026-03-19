@@ -1,4 +1,4 @@
-## Retrieve
+## Get an eval
 
 `evals.retrieve(streval_id)  -> EvalRetrieveResponse`
 
@@ -402,4 +402,102 @@ eval = client.evals.retrieve(
     "eval_id",
 )
 print(eval.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "data_source_config": {
+    "schema": {
+      "foo": "bar"
+    },
+    "type": "custom"
+  },
+  "metadata": {
+    "foo": "string"
+  },
+  "name": "Chatbot effectiveness Evaluation",
+  "object": "eval",
+  "testing_criteria": [
+    {
+      "input": [
+        {
+          "content": "string",
+          "role": "user",
+          "type": "message"
+        }
+      ],
+      "labels": [
+        "string"
+      ],
+      "model": "model",
+      "name": "name",
+      "passing_labels": [
+        "string"
+      ],
+      "type": "label_model"
+    }
+  ]
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+eval_obj = client.evals.retrieve("eval_67abd54d9b0081909a86353f6fb9317a")
+print(eval_obj)
+```
+
+#### Response
+
+```json
+{
+  "object": "eval",
+  "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "data_source_config": {
+    "type": "custom",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "string"
+            },
+            "ground_truth": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "input",
+            "ground_truth"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
+    }
+  },
+  "testing_criteria": [
+    {
+      "name": "String check",
+      "id": "String check-2eaf2d8d-d649-4335-8148-9535a7ca73c2",
+      "type": "string_check",
+      "input": "{{item.input}}",
+      "reference": "{{item.ground_truth}}",
+      "operation": "eq"
+    }
+  ],
+  "name": "External Data Eval",
+  "created_at": 1739314509,
+  "metadata": {},
+}
 ```

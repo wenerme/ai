@@ -1,4 +1,4 @@
-## Create
+## Upload file
 
 `files.create(FileCreateParams**kwargs)  -> FileObject`
 
@@ -141,8 +141,54 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 file_object = client.files.create(
-    file=b"raw file contents",
+    file=b"Example data",
     purpose="assistants",
 )
 print(file_object.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "bytes": 0,
+  "created_at": 0,
+  "filename": "filename",
+  "object": "file",
+  "purpose": "assistants",
+  "status": "uploaded",
+  "expires_at": 0,
+  "status_details": "status_details"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+client.files.create(
+  file=open("mydata.jsonl", "rb"),
+  purpose="fine-tune",
+  expires_after={
+    "anchor": "created_at",
+    "seconds": 2592000
+  }
+)
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "file",
+  "bytes": 120000,
+  "created_at": 1677610602,
+  "expires_at": 1677614202,
+  "filename": "mydata.jsonl",
+  "purpose": "fine-tune",
+}
 ```

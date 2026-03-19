@@ -1,4 +1,4 @@
-## Update
+## Update vector store file attributes
 
 **post** `/vector_stores/{vector_store_id}/files/{file_id}`
 
@@ -20,11 +20,11 @@ Update attributes on a vector store file.
   with a maximum length of 64 characters. Values are strings with a maximum
   length of 512 characters, booleans, or numbers.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = number`
+  - `number`
 
-  - `UnionMember2 = boolean`
+  - `boolean`
 
 ### Returns
 
@@ -92,11 +92,11 @@ Update attributes on a vector store file.
     with a maximum length of 64 characters. Values are strings with a maximum
     length of 512 characters, booleans, or numbers.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = number`
+    - `number`
 
-    - `UnionMember2 = boolean`
+    - `boolean`
 
   - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
@@ -144,4 +144,56 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files/$FILE_ID \
             "foo": "string"
           }
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "last_error": {
+    "code": "server_error",
+    "message": "message"
+  },
+  "object": "vector_store.file",
+  "status": "in_progress",
+  "usage_bytes": 0,
+  "vector_store_id": "vector_store_id",
+  "attributes": {
+    "foo": "string"
+  },
+  "chunking_strategy": {
+    "static": {
+      "chunk_overlap_tokens": 0,
+      "max_chunk_size_tokens": 100
+    },
+    "type": "static"
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/vector_stores/{vector_store_id}/files/{file_id} \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"attributes": {"key1": "value1", "key2": 2}}'
+```
+
+#### Response
+
+```json
+{
+  "id": "file-abc123",
+  "object": "vector_store.file",
+  "usage_bytes": 1234,
+  "created_at": 1699061776,
+  "vector_store_id": "vs_abcd",
+  "status": "completed",
+  "last_error": null,
+  "chunking_strategy": {...},
+  "attributes": {"key1": "value1", "key2": 2}
+}
 ```

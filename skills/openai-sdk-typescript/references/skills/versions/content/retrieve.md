@@ -1,4 +1,4 @@
-## Retrieve
+## Download a skill version zip bundle.
 
 `client.skills.versions.content.retrieve(stringversion, ContentRetrieveParamsparams, RequestOptionsoptions?): Response`
 

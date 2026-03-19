@@ -1,4 +1,4 @@
-## Create
+## Create assistant
 
 `beta.assistants.create(AssistantCreateParams**kwargs)  -> Assistant`
 
@@ -685,4 +685,123 @@ assistant = client.beta.assistants.create(
     model="gpt-4o",
 )
 print(assistant.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "instructions": "instructions",
+  "metadata": {
+    "foo": "string"
+  },
+  "model": "model",
+  "name": "name",
+  "object": "assistant",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "response_format": "auto",
+  "temperature": 1,
+  "tool_resources": {
+    "code_interpreter": {
+      "file_ids": [
+        "string"
+      ]
+    },
+    "file_search": {
+      "vector_store_ids": [
+        "string"
+      ]
+    }
+  },
+  "top_p": 1
+}
+```
+
+### Code Interpreter
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+my_assistant = client.beta.assistants.create(
+    instructions="You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+    name="Math Tutor",
+    tools=[{"type": "code_interpreter"}],
+    model="gpt-4o",
+)
+print(my_assistant)
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
+```
+
+### Files
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+my_assistant = client.beta.assistants.create(
+    instructions="You are an HR bot, and you have access to files to answer employee questions about company policies.",
+    name="HR Helper",
+    tools=[{"type": "file_search"}],
+    tool_resources={"file_search": {"vector_store_ids": ["vs_123"]}},
+    model="gpt-4o"
+)
+print(my_assistant)
+```
+
+#### Response
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1699009403,
+  "name": "HR Helper",
+  "description": null,
+  "model": "gpt-4o",
+  "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": ["vs_123"]
+    }
+  },
+  "metadata": {},
+  "top_p": 1.0,
+  "temperature": 1.0,
+  "response_format": "auto"
+}
 ```

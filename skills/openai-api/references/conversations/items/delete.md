@@ -1,4 +1,4 @@
-## Delete
+## Delete an item
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
@@ -39,4 +39,33 @@ Delete an item from a conversation with the given IDs.
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "metadata": {},
+  "object": "conversation"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "conv_123",
+  "object": "conversation",
+  "created_at": 1741900000,
+  "metadata": {"topic": "demo"}
+}
 ```

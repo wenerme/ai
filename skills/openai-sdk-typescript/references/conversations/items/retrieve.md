@@ -1,4 +1,4 @@
-## Retrieve
+## Retrieve an item
 
 `client.conversations.items.retrieve(stringitemID, ItemRetrieveParamsparams, RequestOptionsoptions?): ConversationItem`
 
@@ -3069,4 +3069,48 @@ const conversationItem = await client.conversations.items.retrieve('msg_abc', {
 });
 
 console.log(conversationItem);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "content": [
+    {
+      "text": "text",
+      "type": "input_text"
+    }
+  ],
+  "role": "unknown",
+  "status": "in_progress",
+  "type": "message"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const item = await client.conversations.items.retrieve(
+  "conv_123",
+  "msg_abc"
+);
+console.log(item);
+```
+
+#### Response
+
+```json
+{
+  "type": "message",
+  "id": "msg_abc",
+  "status": "completed",
+  "role": "user",
+  "content": [
+    {"type": "input_text", "text": "Hello!"}
+  ]
+}
 ```

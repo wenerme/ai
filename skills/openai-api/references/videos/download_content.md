@@ -1,4 +1,4 @@
-## Download Content
+## Retrieve video content
 
 **get** `/videos/{video_id}/content`
 

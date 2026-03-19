@@ -1,4 +1,4 @@
-## Remix
+## Remix video
 
 **post** `/videos/{video_id}/remix`
 
@@ -52,9 +52,9 @@ Create a remix of a completed video using a refreshed prompt.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -121,4 +121,54 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/remix \
     -d '{
           "prompt": "x"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "string",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "seconds",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/videos/video_123/remix \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "Extend the scene with the cat taking a bow to the cheering audience"
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
 ```

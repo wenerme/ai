@@ -1,4 +1,4 @@
-## Create
+## Assign organization role to group
 
 **post** `/organization/groups/{group_id}/roles`
 
@@ -91,4 +91,68 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
     -d '{
           "role_id": "role_id"
         }'
+```
+
+#### Response
+
+```json
+{
+  "group": {
+    "id": "id",
+    "created_at": 0,
+    "name": "name",
+    "object": "group",
+    "scim_managed": true
+  },
+  "object": "group.role",
+  "role": {
+    "id": "id",
+    "description": "description",
+    "name": "name",
+    "object": "role",
+    "permissions": [
+      "string"
+    ],
+    "predefined_role": true,
+    "resource_type": "resource_type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_id": "role_01J1F8ROLE01"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role",
+    "group": {
+        "object": "group",
+        "id": "group_01J1F8ABCDXYZ",
+        "name": "Support Team",
+        "created_at": 1711471533,
+        "scim_managed": false
+    },
+    "role": {
+        "object": "role",
+        "id": "role_01J1F8ROLE01",
+        "name": "API Group Manager",
+        "description": "Allows managing organization groups",
+        "permissions": [
+            "api.groups.read",
+            "api.groups.write"
+        ],
+        "resource_type": "api.organization",
+        "predefined_role": false
+    }
+}
 ```

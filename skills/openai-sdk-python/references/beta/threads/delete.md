@@ -1,4 +1,4 @@
-## Delete
+## Delete thread
 
 `beta.threads.delete(strthread_id)  -> ThreadDeleted`
 
@@ -35,4 +35,34 @@ thread_deleted = client.beta.threads.delete(
     "thread_id",
 )
 print(thread_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.beta.threads.delete("thread_abc123")
+print(response)
+```
+
+#### Response
+
+```json
+{
+  "id": "thread_abc123",
+  "object": "thread.deleted",
+  "deleted": true
+}
 ```

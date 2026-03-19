@@ -1,4 +1,4 @@
-## List
+## List videos
 
 **get** `/videos`
 
@@ -60,9 +60,9 @@ List recently generated videos for the current project.
 
     The video generation model that produced the job.
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = "sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+    - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
 
       - `"sora-2"`
 
@@ -143,4 +143,58 @@ List recently generated videos for the current project.
 ```http
 curl https://api.openai.com/v1/videos \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "string",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "seconds",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/videos \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
 ```

@@ -1,4 +1,4 @@
-## Create
+## Create a new immutable skill version.
 
 **post** `/skills/{skill_id}/versions`
 
@@ -14,11 +14,11 @@ Create a new immutable skill version.
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember0 = array of string`
+  - `array of string`
 
     Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember1 = string`
+  - `string`
 
     Skill zip file to upload.
 
@@ -66,5 +66,19 @@ Create a new immutable skill version.
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files=[null]
+    -F files='["Example data"]'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
 ```

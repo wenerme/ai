@@ -1,4 +1,4 @@
-## Hangup
+## Hang up call
 
 `client.realtime.calls.hangup(stringcallID, RequestOptionsoptions?): void`
 

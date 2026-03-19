@@ -1,6 +1,6 @@
 # Service Accounts
 
-## List
+## List project service accounts
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
@@ -67,7 +67,55 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Create
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.service_account",
+            "id": "svc_acct_abc",
+            "name": "Service Account",
+            "role": "owner",
+            "created_at": 1711471533
+        }
+    ],
+    "first_id": "svc_acct_abc",
+    "last_id": "svc_acct_xyz",
+    "has_more": false
+}
+```
+
+## Create project service account
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
@@ -128,7 +176,56 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
         }'
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "id",
+  "api_key": {
+    "id": "id",
+    "created_at": 0,
+    "name": "name",
+    "object": "organization.project.service_account.api_key",
+    "value": "value"
+  },
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "member"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_accounts \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Production App"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Production App",
+    "role": "member",
+    "created_at": 1711471533,
+    "api_key": {
+        "object": "organization.project.service_account.api_key",
+        "value": "sk-abcdefghijklmnop123",
+        "name": "Secret Key",
+        "created_at": 1711471533,
+        "id": "key_abc"
+    }
+}
+```
+
+## Retrieve project service account
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
@@ -179,7 +276,39 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Service Account",
+    "role": "owner",
+    "created_at": 1711471533
+}
+```
+
+## Delete project service account
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
@@ -210,6 +339,34 @@ is archived (archived projects have no service accounts).
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.service_account.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account.deleted",
+    "id": "svc_acct_abc",
+    "deleted": true
+}
 ```
 
 ## Domain Types

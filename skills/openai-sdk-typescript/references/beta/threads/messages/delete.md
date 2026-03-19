@@ -1,4 +1,4 @@
-## Delete
+## Delete message
 
 `client.beta.threads.messages.delete(stringmessageID, MessageDeleteParamsparams, RequestOptionsoptions?): MessageDeleted`
 
@@ -42,4 +42,41 @@ const messageDeleted = await client.beta.threads.messages.delete('message_id', {
 });
 
 console.log(messageDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "thread.message.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const deletedMessage = await openai.beta.threads.messages.delete(
+    "msg_abc123",
+    { thread_id: "thread_abc123" }
+  );
+
+  console.log(deletedMessage);
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message.deleted",
+  "deleted": true
+}
 ```

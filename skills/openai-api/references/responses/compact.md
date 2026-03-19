@@ -1,4 +1,4 @@
-## Compact
+## Compact a response
 
 **post** `/responses/compact`
 
@@ -12,7 +12,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
   Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
-  - `UnionMember0 = "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 89 more`
+  - `"gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 89 more`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
@@ -200,17 +200,17 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     - `"gpt-5.1-codex-max"`
 
-  - `UnionMember1 = string`
+  - `string`
 
 - `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
 
   Text, image, or file inputs to the model, used to generate a response
 
-  - `UnionMember0 = string`
+  - `string`
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `UnionMember1 = array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
+  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -678,11 +678,11 @@ Learn when and how to compact long-running conversations in the [conversation st
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -1310,11 +1310,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Text, image, or file output of the function tool call.
 
-        - `UnionMember0 = string`
+        - `string`
 
           A JSON string of the output of the function tool call.
 
-        - `UnionMember1 = array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+        - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
           An array of content outputs (text, image, file) for the function tool call.
 
@@ -1541,17 +1541,17 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -1602,19 +1602,19 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -1910,7 +1910,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -2042,9 +2042,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3955,17 +3955,17 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
-                - `UnionMember0 = string`
+                - `string`
 
-                - `UnionMember1 = number`
+                - `number`
 
-                - `UnionMember2 = boolean`
+                - `boolean`
 
-                - `UnionMember3 = array of string or number`
+                - `array of string or number`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
-                  - `UnionMember1 = number`
+                  - `number`
 
             - `CompoundFilter = object { filters, type }`
 
@@ -4016,19 +4016,19 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
-                    - `UnionMember0 = string`
+                    - `string`
 
-                    - `UnionMember1 = number`
+                    - `number`
 
-                    - `UnionMember2 = boolean`
+                    - `boolean`
 
-                    - `UnionMember3 = array of string or number`
+                    - `array of string or number`
 
-                      - `UnionMember0 = string`
+                      - `string`
 
-                      - `UnionMember1 = number`
+                      - `number`
 
-                - `UnionMember1 = unknown`
+                - `unknown`
 
               - `type: "and" or "or"`
 
@@ -4324,7 +4324,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             specifies uploaded file IDs to make available to your code, along with an
             optional `memory_limit` setting.
 
-            - `UnionMember0 = string`
+            - `string`
 
               The container ID.
 
@@ -4456,9 +4456,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The image generation model to use. Default: `gpt-image-1`.
 
-            - `UnionMember0 = string`
+            - `string`
 
-            - `UnionMember1 = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -5114,11 +5114,11 @@ Learn when and how to compact long-running conversations in the [conversation st
           with a maximum length of 64 characters. Values are strings with a maximum
           length of 512 characters, booleans, or numbers.
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = number`
+          - `number`
 
-          - `UnionMember2 = boolean`
+          - `boolean`
 
         - `file_id: optional string`
 
@@ -6551,4 +6551,110 @@ curl https://api.openai.com/v1/responses/compact \
           "model": "gpt-5.4",
           "previous_response_id": "resp_123"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "object": "response.compaction",
+  "output": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "role": "unknown",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/responses/compact \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+      "model": "gpt-5.1-codex-max",
+      "input": [
+        {
+          "role": "user",
+          "content": "Create a simple landing page for a dog petting café."
+        },
+        {
+          "id": "msg_001",
+          "type": "message",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "annotations": [],
+              "logprobs": [],
+              "text": "Below is a single file, ready-to-use landing page for a dog petting café:..."
+            }
+          ],
+          "role": "assistant"
+        }
+      ]
+    }'
+```
+
+#### Response
+
+```json
+{
+  "id": "resp_001",
+  "object": "response.compaction",
+  "created_at": 1764967971,
+  "output": [
+    {
+      "id": "msg_000",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Create a simple landing page for a dog petting cafe."
+        }
+      ],
+      "role": "user"
+    },
+    {
+      "id": "cmp_001",
+      "type": "compaction",
+      "encrypted_content": "gAAAAABpM0Yj-...="
+    }
+  ],
+  "usage": {
+    "input_tokens": 139,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 438,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 577
+  }
+}
 ```

@@ -1,4 +1,4 @@
-## Delete
+## Delete video
 
 `videos.delete(strvideo_id)  -> VideoDeleteResponse`
 
@@ -39,6 +39,28 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
+video = client.videos.delete(
+    "video_123",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
 video = client.videos.delete(
     "video_123",
 )

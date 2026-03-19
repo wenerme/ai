@@ -1,4 +1,4 @@
-## List
+## List skill versions for a skill.
 
 `client.skills.versions.list(stringskillID, VersionListParamsquery?, RequestOptionsoptions?): CursorPage<SkillVersion>`
 
@@ -74,5 +74,27 @@ const client = new OpenAI({
 // Automatically fetches more pages as needed.
 for await (const skillVersion of client.skills.versions.list('skill_123')) {
   console.log(skillVersion.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
 }
 ```

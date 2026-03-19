@@ -1,6 +1,6 @@
 # Skills
 
-## Create
+## Create a new skill.
 
 **post** `/skills`
 
@@ -12,11 +12,11 @@ Create a new skill.
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember0 = array of string`
+  - `array of string`
 
     Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember1 = string`
+  - `string`
 
     Skill zip file to upload.
 
@@ -60,10 +60,24 @@ Create a new skill.
 curl https://api.openai.com/v1/skills \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files=[null]
+    -F files='["Example data"]'
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## List all skills for the current project.
 
 **get** `/skills`
 
@@ -150,7 +164,29 @@ curl https://api.openai.com/v1/skills \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "default_version": "default_version",
+      "description": "description",
+      "latest_version": "latest_version",
+      "name": "name",
+      "object": "skill"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a skill by its ID.
 
 **get** `/skills/{skill_id}`
 
@@ -201,7 +237,21 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Update the default version pointer for a skill.
 
 **post** `/skills/{skill_id}`
 
@@ -262,7 +312,21 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "default_version": "default_version",
+  "description": "description",
+  "latest_version": "latest_version",
+  "name": "name",
+  "object": "skill"
+}
+```
+
+## Delete a skill by its ID.
 
 **delete** `/skills/{skill_id}`
 
@@ -290,6 +354,16 @@ Delete a skill by its ID.
 curl https://api.openai.com/v1/skills/$SKILL_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
+}
 ```
 
 ## Domain Types
@@ -398,7 +472,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
 # Content
 
-## Retrieve
+## Download a skill zip bundle by its ID.
 
 **get** `/skills/{skill_id}/content`
 
@@ -417,7 +491,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/content \
 
 # Versions
 
-## Create
+## Create a new immutable skill version.
 
 **post** `/skills/{skill_id}/versions`
 
@@ -433,11 +507,11 @@ Create a new immutable skill version.
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember0 = array of string`
+  - `array of string`
 
     Skill files to upload (directory upload) or a single zip file.
 
-  - `UnionMember1 = string`
+  - `string`
 
     Skill zip file to upload.
 
@@ -485,10 +559,24 @@ Create a new immutable skill version.
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files=[null]
+    -F files='["Example data"]'
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## List skill versions for a skill.
 
 **get** `/skills/{skill_id}/versions`
 
@@ -579,7 +667,29 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "description": "description",
+      "name": "name",
+      "object": "skill.version",
+      "skill_id": "skill_id",
+      "version": "version"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Get a specific skill version.
 
 **get** `/skills/{skill_id}/versions/{version}`
 
@@ -634,7 +744,21 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "description": "description",
+  "name": "name",
+  "object": "skill.version",
+  "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
 
 **delete** `/skills/{skill_id}/versions/{version}`
 
@@ -670,6 +794,17 @@ Delete a skill version.
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
+  "version": "version"
+}
 ```
 
 ## Domain Types
@@ -782,7 +917,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
 # Content
 
-## Retrieve
+## Download a skill version zip bundle.
 
 **get** `/skills/{skill_id}/versions/{version}/content`
 

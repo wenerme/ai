@@ -1,4 +1,4 @@
-## Create
+## Create group
 
 **post** `/organization/groups`
 
@@ -37,4 +37,38 @@ curl https://api.openai.com/v1/organization/groups \
     -d '{
           "name": "x"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Support Team"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group",
+    "id": "group_01J1F8ABCDXYZ",
+    "name": "Support Team",
+    "created_at": 1711471533,
+    "is_scim_managed": false
+}
 ```
