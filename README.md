@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 74 skills available
+> 75 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -36,6 +36,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... |  |
 | `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... |  |
+| `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... |  |
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... |  |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... |  |
@@ -307,6 +308,16 @@ npx skills add wenerme/ai --skill codex-docs
 ```
 
 USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval modes, sandbox, execution policy, skills, AGENTS.md, slash commands, non-interactive/exec mode, multi-agent, MCP servers, GitHub Action, IDE extension, enterprise setup, or Codex SDK. Triggers on: codex, codex exec, codex cli, AGENTS.md (OpenAI), config.toml codex, codex skills, codex sandbox, codex rules.
+
+</details>
+<details>
+<summary><code>comfyui-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill comfyui-docs
+```
+
+ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader, KSampler, CLIPTextEncode, VAEDecode, ControlNet, LoRA, IPAdapter, etc), custom node development (Python API, data types, UI widgets, backend extension), workflow tutorials (text-to-image, image-to-image, inpainting, ControlNet, LoRA, SDXL, Flux, upscaling, video, audio, 3D), ComfyUI Manager, Registry (publishing/versioning nodes), Comfy CLI, API reference, cloud deployment, installation (Desktop/manual/Docker), interface guide, and troubleshooting. USE THIS SKILL WHEN the user asks about ComfyUI nodes, workflows, custom node development, ComfyUI API, or Stable Diffusion pipeline configuration.
 
 </details>
 <details>

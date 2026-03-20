@@ -108,6 +108,10 @@ update-gitea-docs:
 update-threejs-docs:
     bun scripts/sync-threejs-docs.ts
 
+# Sync ComfyUI docs from local Comfy-Org/docs clone
+update-comfyui-docs:
+    bun scripts/sync-comfyui-docs.ts
+
 # Sync Wails docs from local wailsapp/wails clone
 update-wails-docs:
     bun scripts/sync-wails-docs.ts
@@ -160,6 +164,7 @@ update:
     -just update-mikroorm-docs
     -just update-gitea-docs
     -just update-threejs-docs
+    -just update-comfyui-docs
     -just update-wails-docs
     -just update-biome-docs
     -just update-vite-docs

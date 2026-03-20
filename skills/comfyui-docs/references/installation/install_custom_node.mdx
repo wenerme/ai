@@ -1,0 +1,150 @@
+---
+title: "How to Install Custom Nodes in ComfyUI"
+description: "This guide will show you different methods to install custom nodes in ComfyUI"
+sidebarTitle: "Install Custom Nodes"
+icon: "puzzle-piece"
+---
+
+## What are Custom Nodes ?
+
+Custom nodes are extensions for ComfyUI that add new functionality like advanced image processing, machine learning fine-tuning, color adjustments, and more. These community-developed nodes can significantly expand ComfyUI's core capabilities.
+
+<Warning>
+Before installing custom nodes, it's important to review them carefully. Since ComfyUI is an open-source project, malicious plugins could potentially exploit custom nodes:
+1. Only install custom nodes from trusted authors and those commonly used by the community
+2. Understand the plugin's functionality before installing and avoid unknown sources to ensure system security
+3. Avoid installing obscure or suspicious plugins - unverified plugins may pose security risks that could lead to system compromise
+</Warning>
+
+All custom node installations require completing these two steps:
+
+1. Clone the node code to the `ComfyUI/custom_nodes` directory
+2. Install the required Python dependencies
+
+This guide covers three installation methods. Here's a comparison of their pros and cons. While [ComfyUI Manager](https://github.com/Comfy-Org/ComfyUI-Manager) isn't yet part of the core dependencies, it will be in the future. We still provide other installation guides to meet different needs.
+
+| Method                        | Advantages                                                    | Disadvantages                                                |
+| ---------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
+| **ComfyUI Manager** (Recommended) | 1. Automated installation<br/>2. Dependency handling<br/>3. GUI interface | Cannot directly search for nodes not registered in the registry |
+| **Git Clone**                | Can install nodes not registered in the registry               | 1. Requires Git knowledge<br/>2. Manual dependency handling<br/>3. Installation risks |
+| **Repository ZIP Download**   | 1. No Git required<br/>2. Manual control                      | 1. Manual dependency handling<br/>2. No version control<br/>3. Installation risks |
+
+Tip: Before installing custom nodes, check the plugin's README file to understand installation methods, usage, and requirements like specific models, dependency versions, and common issue solutions.
+
+## Method 1: ComfyUI Manager (Recommended)
+
+  <Steps>
+    <Step title="Click the `Manager` button in ComfyUI interface">
+     ![Click ComfyUI Manager](/images/installation/custom_nodes/install-custom-nodes-by-manager-1.jpg)
+    </Step>
+    <Step title="Select `Install Custom Nodes`">
+      ![Select Install Custom Nodes](/images/installation/custom_nodes/install-custom-nodes-by-manager-2.jpg)
+    </Step>
+    <Step title="Browse the custom nodes list">
+      <Warning>
+      Custom nodes listed in ComfyUI Manager aren't necessarily safe. Understand their functionality before installing and ensure you only install trusted plugins and those from popular authors to avoid potential device risks.
+      </Warning>
+
+      ![Enter node name in search box](/images/installation/custom_nodes/install-custom-nodes-by-manager-3.jpg)
+      ![Enter node name in search box](/images/installation/custom_nodes/install-custom-nodes-by-manager-4.jpg)
+      1. Nodes marked with `⚠️` may have dependency conflicts with other plugins
+      2. Author names marked with `✅` indicate their activity level on Github
+      3. Potential plugin risks are highlighted in red - ensure plugin safety before installing
+    </Step>
+    <Step title="Click the `Install` button for the desired node">
+      ![Click Install button for the node](/images/installation/custom_nodes/install-custom-nodes-by-manager-5.jpg)
+      Find the node you want to install and click the `Install` button.
+      ![Click Install button for the node](/images/installation/custom_nodes/install-custom-nodes-by-manager-6.jpg)
+      - At this step, if you select the `nightly` version, it will directly download the latest source code of the plugin from Github. However, if your Manager's `security_level` is set to `normal`, you will not be allowed to download the source code directly from Github because the code has not been scanned.
+      - If you select other versions such as `latest` or a stable version with a number, the code will be downloaded from https://registry.comfy.org/, which means the code has been reviewed and will not trigger a security check.
+      <Tip>
+        The `nightly` version is usually the latest version, but since it is downloaded directly from Github and has not been reviewed, there is a certain code risk. If you really need to install the `nightly` version, please set the Manager's `security_level` to `weak`.
+        The configuration file path is `ComfyUI/user/default/ComfyUI-Manager/config.ini`. Please note that this is not our recommended configuration and should only be used temporarily.
+      </Tip>
+    </Step>
+    <Step title="Wait for dependencies to install and restart ComfyUI">
+      Manager will automatically install dependencies and prompt you to restart ComfyUI when complete
+      ![Restart ComfyUI and refresh browser after installation](/images/installation/custom_nodes/install-custom-nodes-by-manager-7.jpg)
+      ![Restart ComfyUI and refresh browser after installation](/images/installation/custom_nodes/install-custom-nodes-by-manager-8.jpg)
+    </Step>
+    <Step title="Verify successful installation">
+    Check ComfyUI Manager after restart to confirm the plugin installed successfully and there are no `import failed` errors
+      ![Restart ComfyUI and refresh browser after installation](/images/installation/custom_nodes/install-custom-nodes-by-manager-9.jpg)
+    </Step>
+  </Steps>
+
+## Method 2: Manual Installation Using Git
+
+Suitable for new nodes not found in Manager or when specific versions are needed. Requires [Git](https://git-scm.com/) installed on your system.
+
+<Steps>
+  <Step title="Get the repository URL">
+    Click the "Code" button on GitHub and copy the HTTPS link
+  </Step>
+  <Step title="Navigate to custom_nodes directory">
+ ```bash
+ cd /path/to/ComfyUI/custom_nodes
+ ```
+  </Step>
+  <Step title="Clone the repository">
+ ```bash
+ git clone [repository URL]
+ ```
+  </Step>
+  <Step title="Install dependencies">
+  Dependencies must be installed in your ComfyUI environment - be careful not to mix with your system environment to avoid contamination
+   <Tabs>
+    <Tab title="Windows Portable">
+    For Windows portable version, install dependencies in the embedded Python environment
+      ```bash
+      python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\[node directory]\requirements.txt
+      ```
+    </Tab>
+    <Tab title="Manual Install">
+    Install dependencies in your ComfyUI environment
+      ```bash
+      cd [node directory]
+      pip install -r requirements.txt
+      ```
+    </Tab>
+  </Tabs>
+  </Step>
+  <Step title="Restart ComfyUI and refresh browser">
+    Restart ComfyUI and refresh your browser. Check startup logs for any `import failed` errors
+  </Step>
+</Steps>
+
+## Method 3: ZIP Download Installation
+Suitable for users who cannot use Git or Manager
+
+<Warning>
+We don't recommend this installation method as it loses version control capabilities
+</Warning>
+
+<Steps>
+  <Step title="Click `Code` → `Download ZIP` on GitHub">
+    Click `Code` → `Download ZIP` on the GitHub page
+    ![Click Code → Download ZIP on GitHub](/images/installation/custom_nodes/install-custom-nodes-by-zip.jpg)
+  </Step>
+  <Step title="Extract the ZIP file">
+    Extract the downloaded ZIP file
+  </Step>
+  <Step title="Copy extracted folder to `ComfyUI/custom_nodes/` directory">
+    Copy the extracted folder to `ComfyUI/custom_nodes/` directory
+  </Step>
+  <Step title="Install dependencies manually (same as Git method step 4)">
+    Restart ComfyUI and refresh browser
+  </Step>
+  <Step title="Verify successful installation">
+    Check ComfyUI Manager after restart to confirm the plugin installed successfully and there are no `import failed` errors
+  </Step>
+</Steps>
+
+## Custom Node Resources
+
+In ComfyUI, besides the basic node extension functionality, custom nodes can also include the following additional resources:
+- [Node Documentation](/custom-nodes/help_page): This feature supports all custom and basic nodes. You can use it to view node documentation, understand the purpose and usage of nodes, and contribute documentation via PRs to the author.
+- [Custom Node Workflow Templates](/custom-nodes/workflow_templates): Workflow templates provided by node authors as example workflows, which can be browsed and loaded from the ComfyUI templates.
+- [Multi-language Support](/custom-nodes/i18n)
+
+If you are a custom node developer, you can add these resources to make your custom node more user-friendly.

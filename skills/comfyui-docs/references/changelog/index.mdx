@@ -1,0 +1,1198 @@
+---
+title: "Changelog"
+description: "Track ComfyUI's latest features, improvements, and bug fixes. For detailed release notes, see the [Github releases](https://github.com/comfyanonymous/ComfyUI/releases) page."
+icon: "clock-rotate-left"
+---
+
+<Update label="v0.17.2" description="March 15, 2026">
+
+This release focuses on stability and bug fixes. For complete technical details, see the [full changelog](https://github.com/Comfy-Org/ComfyUI/compare/v0.17.1...v0.17.2) on GitHub.
+
+</Update>
+
+<Update label="v0.17.1" description="March 13, 2026">
+
+This is a patch release that includes various bug fixes and stability improvements. For full details on changes included in this release, see the complete changelog comparison between v0.17.0 and v0.17.1.
+
+</Update>
+
+<Update label="v0.17.0" description="March 13, 2026">
+
+**Architecture & Performance Improvements**
+- Implemented modular asset architecture with asynchronous two-phase scanner and background seeder for improved loading performance
+- Added Python fault handler for better debugging and stability
+- Enhanced memory usage optimization for KV cache models
+- Improved dynamic VRAM handling with better error management for AcceleratorError compatibility
+
+**Model Support & Enhancements**
+- Added support for Flux 2 Klein KV cache model through the FluxKVCache node
+- Enhanced model patching system with cleanup functions and pre-attention patches for Flux models
+- Added pre-attention and post-input patches to Qwen image model
+- Fixed text encoder LoRA loading for wrapped models
+- Improved batch processing with fixes for batch_size > 1 on various models
+
+**New Nodes & Features**
+- Added Painter node for enhanced image editing capabilities
+- Introduced Reve Image API nodes for expanded functionality
+- Updated workflow templates to version 0.9.21
+- Enhanced gradient stops formatting for better frontend compatibility
+
+**Bug Fixes & Stability**
+- Fixed audio extraction and truncation issues
+- Resolved model detection problems with deep clone pre-edited weights
+- Improved ComfyUI Manager installation guidance and updated to version 4.1b2
+- Enhanced package version reporting for better troubleshooting
+
+**Frontend Updates**
+- Updated frontend package to version 1.41.18 with various improvements and bug fixes
+- Updated comfy-kitchen to version 0.2.8 and comfy-aimdo to version 0.2.10
+
+</Update>
+
+<Update label="v0.16.4" description="March 7, 2026">
+
+**New Nodes & Features**
+- Added Math Expression node with simpleeval evaluation for mathematical operations in workflows
+- Introduced TencentSmartTopology API node for enhanced topology processing capabilities
+- Added Gemini 3.1 Flash-Lite model support to LLM node, expanding AI language model options
+
+**Bug Fixes & Performance**
+- Fixed fp16 audio encoder models compatibility issues
+- Resolved Text Encoder CPU execution when dynamic VRAM is enabled
+- Fixed requirements version conflicts
+- Enhanced memory management with compute stream synchronization before buffer freeing
+
+**Workflow Templates**
+- Updated workflow templates to version 0.9.11 with latest improvements
+
+</Update>
+
+<Update label="v0.16.3" description="March 5, 2026">
+
+**LTX Audio Model Improvements**
+- Fixed LTX2 vocoder conv_transpose1d with manual casting for improved audio processing stability
+- Resolved LTX audio VAE novram compatibility issues for better memory management during audio generation
+- Added causal_fix parameter to add_keyframe_index and append_keyframe functions, enhancing keyframe handling precision in video workflows
+
+</Update>
+<Update label="v0.16.2" description="March 5, 2026">
+
+**Core Updates**
+- Updated comfy-aimdo to version 0.2.7 for improved AI model operations
+- Enhanced CPU weight handling in VBAR caster for better performance across different hardware configurations
+
+**Workflow Templates**
+- Updated workflow templates to version 0.9.10 with latest improvements and optimizations
+- Code refactoring improvements for enhanced stability
+
+</Update>
+
+<Update label="v0.16.1" description="March 5, 2026">
+
+**API Nodes Updates**
+- Updated xAI models and pricing for improved cost management and model selection
+- Enabled Kling 3.0 Motion Control for enhanced video generation capabilities
+
+**Workflow Templates**
+- Updated workflow templates to version 0.9.8 with latest improvements and optimizations
+
+</Update>
+
+<Update label="v0.16.0" description="March 5, 2026">
+
+**New Nodes & Features**
+- Added ResolutionSelector node with aspect ratio presets for easier image dimension setup
+- Introduced CURVE type support for advanced parameter control
+- Added text preview support to jobs API for better workflow monitoring
+- Native LongCat-Image implementation for enhanced image processing capabilities
+
+**Model & Format Support**
+- Added ACE-Step 1.5 lycoris key alias mapping for LoKR compatibility
+- Support for SDPose-OOD models
+- Added SCAIL WanVideo model support
+- Support for zeta chroma weights loading
+- Added LTXAV 2.3 model support
+- Z-image pixel space support implementation
+
+**Memory & Performance**
+- Dynamic VRAM mode is now the default, improving memory efficiency
+- Implemented LoRA requantization for non-QuantizedTensor fp8
+- Enhanced dynamic offload heuristics for better performance
+- Updated comfy-aimdo to version 0.2.6 with improved allocator handling
+- Fixed dynamic VRAM conflicts with weight hooks and WSL compatibility
+
+**API & UI Improvements**
+- Added "IMAGE+TEXT" support in NanoBanana2 API node
+- Renamed Mahiro CFG to Similarity-Adaptive Guidance for clarity
+- Fixed GLSL node input dimension requirements
+- Enhanced VAEDecodeAudioTiled to properly use tile_size input
+
+**Bug Fixes**
+- Fixed WanVAE encoder/decoder confusion in feat_map processing
+- Resolved ACE-1.5 memory estimation issues with missing lm_metadata
+- Fixed context window step handling for substep sigmas
+- Prevented VideoFromComponents crashes when writing to BytesIO
+- Limited image tile overlap to prevent processing issues
+
+**Workflow Templates**
+- Updated workflow templates to version 0.9.7
+
+</Update>
+
+<Update label="v0.15.1" description="February 26, 2026">
+
+**Bug Fixes & Stability**
+- Fixed KeyError when prompt entries lack class_type key, preventing workflow crashes
+- Resolved GLSL node compatibility issues with pyopengl accelerate numpy textures
+- Fixed LTXAV text encoder minimum length and memory estimation problems
+- Disabled dynamic VRAM when using torch compiler to prevent conflicts
+
+**Model & API Updates**
+- Updated comfy aimdo to version 0.2.2 with improved fallback handling
+- Added WanVideo-based segmentation model FlowRVS support for advanced video processing
+- Added NanoBanana2 API node for expanded functionality
+- Fixed Aimdo fallback to prevent zero-copy sft issues
+
+**UI & Frontend**
+- Patched frontend to version 1.39.19, fixing progress text serialization in API nodes
+- Moved essentials_category to correct replacement nodes for better organization
+
+**New Features**
+- Added per-guide attention strength control in self-attention for fine-tuned workflow control
+- Updated workflow templates to version 0.9.4
+
+</Update>
+<Update label="v0.15.0" description="February 24, 2026">
+
+**New Nodes & Features**
+- Added BBox widget for precise bounding box selection in image workflows
+- Introduced 3-band equalizer node for audio processing workflows
+- Added basic text generation support with native models, initially supporting Gemma3 and Qwen 3
+- New GLSL shader node using PyOpenGL for advanced visual effects
+- Added ElevenLabs API nodes for text-to-speech functionality
+- New gradient-slider display mode for FLOAT inputs with improved UI
+- Added SplitImageToTileList and ImageMergeTileList nodes for tiled processing workflows
+
+**API Nodes**
+- Added price badge for Rodin Gen-2 node
+- Added KlingAvatar node for avatar generation
+- Added ByteDance Seedream-5 model support
+- Fixed Gemini image MIME type handling with glob matching
+- Forced Gemini to return uncompressed images for better quality
+
+**Performance & Bug Fixes**
+- Fixed FP8 dynamic VRAM workflow performance issues by limiting return of requants
+- Resolved non-contiguous audio waveform crashes in video save operations
+- Fixed LTXAV model loading issues including fp8 checkpoint support and embedding connector dtype problems
+- Improved PyOpenGL compatibility for versions < 3.1.4
+
+**UI Improvements**
+- Marked 429 widgets as advanced for collapsible UI
+- Added essentials_category for better node organization
+- Enhanced essential subgraph blueprints with improved categorization
+- Updated frontend to version 1.39.16
+
+**Model Support**
+- Enhanced text generation with tokenization improvements and minimum length enforcement
+- Updated LTXAV av embedding connectors integration
+- Temporary compatibility fixes for LTX 2.0 workflows during migration period
+
+</Update>
+
+<Update label="v0.14.2" description="February 18, 2026">
+
+**Bug Fixes**
+- Fixed issue with Gemini/Nano banana API nodes that sometimes returned blank images, improving reliability for AI-powered image generation workflows.
+</Update>
+<Update label="v0.14.1" description="February 17, 2026">
+
+**Bug Fixes**
+- Fixed anima LLM adapter forward when manual cast
+
+**New Model Support**
+- Added "viduq3-turbo" model support in API nodes
+- Added Recraft V4 nodes for enhanced creative workflows
+
+**Updates**
+- Updated workflow templates to v0.8.43
+
+
+</Update>
+<Update label="v0.8.1" description="January 8, 2026">
+
+**Model Support**
+- Added Gemma 12B support with quantized weights
+- Enhanced LTXAV text encoder with device selection support and reduced VRAM usage
+- Improved memory estimation for LTXAV text encoder
+
+**Performance Improvements**
+- Fixed FP8MM offloading performance issues
+- Added warning for outdated PyTorch versions with recommendation to upgrade to cu130 for performance boost
+- Updated comfy kitchen version requirements
+
+**Bug Fixes**
+- Fixed stable release workflow to properly pull latest comfy kitchen updates
+- Removed confusing load statistics from model patcher
+- Updated workflow templates to v0.7.69
+
+</Update>
+<Update label="v0.8.0" description="January 7, 2026">
+
+**New Models Support**
+- Added LTXV 2 model support
+- Added NVFP4 checkpoint support (fp4 matrix multiplication)
+- Added Sage Attention 3 support via CLI argument
+
+**API Improvements**
+- V3 API: Exposed DynamicCombo and Autogrow functionality
+- API nodes: Kling Omni 720p resolution support, WAN2.6 ReferenceToVideo
+- Tripo3D: Optimized face_limit parameter handling
+- Fixed URL encoding preservation for Vidu API signed URLs
+
+**Fixes**
+- Fixed upscale model CPU offloading
+- Fixed LTXV2 text encoder lowvram compatibility
+- Fixed fp8 processing issues
+- Fixed MPO format images to use first frame only
+- Conditional comfy-kitchen CUDA support based on PyTorch version
+
+**Other**
+- Added OOM memory summary for debugging
+- Mahiro CFG display name update
+- Workflow templates updated to v0.7.67
+- Code refactoring and cleanup (CLIP preprocessing, comfy-kitchen integration)
+</Update>
+<Update label="v0.7.0" description="December 31, 2025">
+**System Requirements**
+- PyTorch 2.4+ minimum version requirement
+
+**Fixes & Improvements**
+- Enabled async memory offload by default for AMD GPUs
+- Fixed ancestral sampler noise on CPU inference
+- Improved memory management error handling (pin/unpin operations)
+- Added VACE context handling in context windows
+
+**Updates**
+- ComfyUI Frontend updated to v1.35.9
+- ComfyUI Manager updated to v4.0.4
+- Workflow templates updated to v0.7.64
+
+**New Nodes**
+- Added ManualSigmas node for sampling control
+- Added Kling Motion Control node
+- ResizeByLongerSide now supports video processing
+
+**API Nodes**
+- Gemini API: Force enable prompt enhancement
+- Billing changed from dollars to credits
+- Deprecated "seededit", updated Seedream node display names
+
+**Technical**
+- Converted image processing nodes to V3 schema
+- Optimized Lumina/Z image model (removed unused components)
+</Update>
+<Update label="v0.6.0" description="December 24, 2025">
+
+**New Model Support**
+- Qwen Image Layered
+- NewBie Image Exp0.1
+
+**New Features**
+- Unified jobs API with /api/jobs endpoints for workflow monitoring
+
+**Improvements**
+- Disabled watermark generation by default in API nodes
+- Refactored trainer with resolution bucketing for better training efficiency
+- Enhanced AMD GPU support
+- Extended Kling O1 StartEndFrame node duration range
+- Updated Topaz 4k video upscaling functionality
+
+**Bug Fixes**
+- Fixed mask concatenation issues in ZImageFunControlNet in --gpu-only mode
+
+</Update>
+<Update label="v0.5.1" description="December 18, 2025">
+
+- Added GPT-Image-1.5 API nodes
+- Fixed V3 nodes processing regression
+- Improved SA-Solver accuracy
+
+</Update>
+
+<Update label="v0.5.0" description="December 17, 2025">
+
+**New Models & Features**
+- WanMove model for advanced motion processing
+- Qwen Edit 2511 with automatic detection
+- Z-Image Fun Control Union 2.0 with inpainting
+
+**API Nodes**
+- Kling Omni Image, TextToVideoWithAudio, ImageToVideoWithAudio
+- Wan2.6 model integration
+- Tripo3.0 for 3D model generation
+
+**Performance**
+- Improved memory estimation for Z-Image and SD3 models
+- Better GPU memory management for Qwen-Image VAE
+- Frontend updated to v1.34.9
+
+</Update>
+<Update label="v0.4.0" description="December 10, 2025">
+
+**Model Support**
+- Ovis Image
+- Kandinsky 5.0 (T2V/I2V/T2I variants)
+- Z-Image Alibaba PAI-Fun ControlNet support
+- Improved Z-Image FP16 compatibility 
+- Added PATCH method to CORS headers and chroma-radiance-x0 mode
+
+**Workflow &  Enhancements**
+- Context windows fixes and enhanced temporal processing
+- Kling API @image reference format
+- ComfyUI-Manager pip installation support
+
+**Frontend Improvements**
+- Improve frontend load/startup time significantly
+- Restored settings button in sidebar
+- GPU accelerated maskeditor rendering
+- Improve asset cards and queue progress panel designs
+- Add missing nodes warning UI to queue button and breadcrumb
+- Mobile fixes
+- various bug fixes
+
+**Major VRAM Optimizations** 
+- Temporal rolling VAE delivering massive VRAM reductions for video models (Hunyuan/Kandinsky)
+- Reduced LoRA memory reservations, especially beneficial for Flux2 workflows
+- Fixed Flux2 OOM errors with improved dequantization offload accounting
+- Enhanced LoRA computation speed with FP16 processing
+- Optimized text encoder GPU usage to prevent unnecessary CPU fallbacks
+
+**V3 Schema Migration**
+- Converted 3D, audio, freelunch, and mask nodes to V3 schema
+- Added MatchType, DynamicCombo, and Autogrow support for improved workflow flexibility
+
+**Bug Fixes & Compatibility**
+- Fixed text encoder regression when loaded directly on GPU
+- Resolved transformer_options clearing issue in Lumina models
+- Fixed Qwen Image LoRA training, HunyuanVideo 1.5 meanflow distil issues
+- Corrected EmptyAudio node input types for proper audio workflow integration
+- Enhanced VRAM calculation accuracy to prevent unwanted full offloading
+- Support for "transformer." LoRA prefix in Z-Image workflows
+- Improved scaled FP8 format compatibility with mixed quantization operations
+
+**Note: for Desktop users**
+- If you have not turned off the auto-update, please wait for the latest Desktop release, it will auto-update to the latest version.
+- If you are using the Desktop and **if you also turn off the auto-update**, the Desktop might not be able to auto-update for the latest version this time.
+- Please download the latest Desktop version from [here](https://www.comfy.org/download) to get the latest features.
+</Update>
+<Update label="v0.3.76" description="December 2, 2025">
+
+**Frontend UI/UX**
+- New UI: **Nodes 2.0** public beta
+- Linear mode beta version (You can enable it by setting a hot-key in keybinding.)
+- Subgraphs improvement and bug fixes
+- Improve missing node UX
+- New workflow progress panel
+- New Assets sidebar
+
+**3D feature**
+- Support panoramic image in the 3D node
+- Merge 3D animation node into 3D node
+
+**Lora Trainer**
+- Support multi-resolution for ComfyUI native LoRA trainer
+- Support Z-Image LoRA training
+
+**Performance & model support**
+- Support video tiny VAEs
+- Support z-image LoRA formats
+- Enable async offloading by default on Nvidia
+
+**Partner Nodes**
+- Veo3 First-Last-Frame Node
+- Add Kling v2.5 turbo to Kling FirstLastFrame node
+- Kling O1 model support
+
+</Update>
+
+<Update label="v0.3.75" description="November 26, 2025">
+
+**New Model Support**
+- Added Z Image model with optimized performance for image processing workflows
+
+**Bug Fixes**
+- Fixed LoRA functionality with mixed FP8 precision models
+- Enhanced Flux2 reference image memory estimation to reduce VRAM errors
+
+</Update>
+
+<Update label="v0.3.73" description="November 26, 2025">
+
+**Bug Fixes**
+- Fixed critical system crashes that could interrupt workflow execution
+- Optimized Flux 2 text encoder VRAM usage for better performance
+
+</Update>
+<Update label="v0.3.72" description="November 25, 2025">
+
+**New Model Support**
+- Added comprehensive Flux 2 model support including Flux 2 Pro API nodes
+- Enhanced HunyuanVideo workflows with new variants and improved display names
+
+**API & Security Improvements**
+- Improved API security with Content Security Policy headers
+- Fixed public API access issues and Gemini model support
+
+**Video Processing**
+- Added `get_frame_count` and `get_frame_rate` methods for better video workflow control
+
+**Performance Optimizations**
+- Optimized text encoder quantization with hardware-aware detection
+- Enhanced quantization support with better memory management
+
+**Developer Tools**
+- Added BlockInfo support for Chroma, Qwen-Image, and HunyuanVideo models
+
+**Frontend & Dependencies**
+- Updated frontend to v1.30.6
+- Bumped Transformers version
+
+</Update>
+<Update label="v0.3.71" description="November 21, 2025">
+
+**Model Compatibility & Enhancements**
+- **HunyuanVideo 1.5 Support**: Added compatibility for the latest version of HunyuanVideo models, expanding video generation capabilities
+- **LLAMA Text Encoder Improvements**: Added ability to disable final normalization in LLAMA-based text encoder models for better workflow customization
+- **HunyuanV3D Schema Migration**: Updated Hunyuan3D nodes to V3 schema for improved performance and compatibility
+
+**API Node Expansions**
+- **New Topaz API Nodes**: Added support for Topaz video enhancement workflows directly within ComfyUI
+- **Nano Banana Pro Integration**: Expanded API node collection with Nano Banana Pro for enhanced processing capabilities
+- **Kling Lip Sync Improvements**: Fixed audio format conversion issues in KlingLipSyncAudioToVideoNode, ensuring proper MP3 format handling
+
+**Image Processing & Workflow Improvements**
+- **Enhanced Image Batching**: Fixed ImageBatch node to handle images with different channel counts and automatically add alpha channels when needed
+- **Preview Node Refinement**: Renamed PreviewAny node to "Preview as Text" for clearer workflow organization
+- **Workflow Template Updates**: Enhanced server template handler to support multi-package distribution for better workflow management
+
+**Performance & System Optimizations**
+- **CUDA Optimization**: Disabled unnecessary workarounds on newer CUDNN versions for improved GPU performance
+- Fixed workflow naming issues and improved overall stability for complex processing pipelines
+
+</Update>
+
+<Update label="v0.3.70" description="November 19, 2025">
+
+**CUDA 12.6 Support & Distribution**
+- Added official CUDA 12.6 release workflow and portable download support for enhanced GPU compatibility
+- Updated README with corrected portable download links for streamlined installation
+
+**Model Compatibility & Fixes**
+- **HunYuan 3D 2.0 Support**: Fixed compatibility issues for improved 3D model generation workflows
+- **EasyCache Improvements**: Resolved input/output channel mismatches that affected certain model configurations
+- Enhanced block swap functionality by removing potentially harmful native custom node implementations
+
+**API Node Enhancements**
+- **New Gemini Models Added**: Expanded AI model options for text and multimodal generation workflows
+- Improved API node development infrastructure with updated PR templates and Python 3.10 minimum version requirements
+
+**Development & Infrastructure**
+- Enhanced pylint configuration for better code quality in custom node development
+- Improved release automation and distribution processes for more reliable updates
+
+</Update>
+
+<Update label="v0.3.69" description="November 18, 2025">
+
+**Memory & Performance Optimizations**
+- **Pinned Memory Enabled by Default** for NVIDIA and AMD GPUs
+- **Reduced VRAM Usage** for Flux, Qwen, and LTX-Video models
+- Smart model unloading that automatically frees memory when VRAM usage increases
+- Improved weight casting performance on offload streams
+
+**New Features**
+- **ScaleROPE Node Now Works with Flux Models**
+- Added left padding support to tokenizers
+- Added `create_time` field to `/history` and `/queue` endpoints
+
+**Bug Fixes**
+- Fixed custom node import errors for SingleStreamBlock/DoubleStreamBlock (temporary fix)
+- Fixed Qwen ControlNet regression
+- Enhanced quantized operations with offload support and stability improvements
+- Unified RoPE function implementation across models
+
+</Update>
+<Update label="v0.3.68" description="November 5, 2025">
+
+**Performance & Memory Optimizations**
+- Introduced **Mixed Precision Quantization System** for optimized model loading
+- Added **RAM Pressure Cache Mode** for intelligent memory management under resource constraints
+- Accelerated model offloading using pinned memory with automatic low-RAM hardware detection
+- Enhanced FP8 operations: reduced memory usage and fixed torch.compile performance regressions
+- Improved async offload speeds and resolved race conditions
+
+**New Nodes & Execution Features**
+- **ScaleROPE Node**: Rope scaling support for WAN and Lumina models
+- Enhanced subgraph execution allowing multiple runs within single workflows
+- Improved caching system with proper handling of bytes data and None outputs
+
+**API Node Enhancements**
+- Migrated API nodes to V3 client architecture: Luma, Minimax, Pixverse, Ideogram, StabilityAI, Pika, Recraft, Hypernetwork, OpenAI
+- Extended LTXV API nodes with 12s-20s duration options
+- Fixed img2img operations in DALL-E 2 node
+- Enhanced Rodin3D nodes to return proper relative paths
+
+**Updates**
+- Embedded documentation updated to v0.3.1
+- Workflow templates updated to v0.2.11
+- Fixed Windows pinned memory allocation issues
+
+</Update>
+<Update label="v0.3.67" description="October 28, 2025">
+
+**API Nodes**
+- **LTXV API Integration**: Added new LTXV API nodes for Lightricks LTX video generation
+- Network Client V2 upgrade with async operations and cancellation support
+- Converted Tripo and Gemini API nodes to V3 schema
+
+**Performance & Compatibility**
+- Improved AMD GPU support by only disabling cudnn on newer AMD GPUs
+- Fixed Windows-specific network issues in API nodes for better retry handling
+
+**Core Improvements**
+- Enhanced dependency-aware caching system that fixes --cache-none behavior with loops
+- Added support for multi-dimensional latents
+- Added custom node published subgraphs endpoint
+
+**Updates**
+- Frontend bumped to version 1.28.8
+- Template updates to version 0.2.4
+
+</Update>
+<Update label="v0.3.66" description="October 21, 2025">
+
+**Frontend Updates**
+- **Subgraph Widget Editing**: Edit subgraph parameters directly from new Parameters panel without entering the subgraph
+- **Template Modal Redesign**: New template browser with advanced filtering by model tags and categories
+
+**Performance Optimizations**
+- Iimproved workflow cancellation speed
+- Fixed VAE memory issue consuming 3x more on PyTorch 2.9 with NVIDIA GPUs  
+- Enhanced chroma radiance processing speed and fixed batch size issues above 1
+
+**API Nodes**
+- Added Veo 3.1 model support
+- Added TemporalScoreRescaling node for advanced temporal control in video workflows
+
+**Hardware & Compatibility**
+- Disabled FP8 operations for AMD gfx942 GPUs
+- Improved CUDA memory management in --fast autotune mode
+
+**Execution & Schema**
+- Converted ControlNet nodes to V3 schema
+- Enhanced EasyCache with proper batch_slice handling
+- Improved merge_nested_dicts functionality with proper input ordering
+- Added deprecation warnings for unused files
+</Update>
+<Update label="v0.3.65" description="October 14, 2025">
+
+**Node Schema Migration (V3)**
+- Migrated core node categories to V3 schema including model downscale, LoRA extraction, compositing, latent ops, SD3/SLG, Flux, upscale models, and HunyuanVideo nodes
+
+**Audio & Model Improvements**
+- Added MMaudio 16K VAE support for high-fidelity audio workflows
+- Fixed mono audio incorrectly saving as stereo
+- Refactored model sampling sigmas code and fixed FP8 scaled LoRA issues
+- Fixed loading of older Stable Diffusion checkpoints on newer NumPy versions
+
+**AMD GPU Optimizations**
+- Better memory estimation for SD/Flux VAE operations
+- Enabled RDNA4 PyTorch attention on ROCm 7.0+
+
+**API Node Updates**
+- Added price extractor and improvements to Kling/Pika API nodes
+- Enhanced Gemini Image API with aspect_ratio support
+
+**Updates**
+- Template v0.1.95, node docs v0.3.0
+- Fixed WAN2.2 cache VRAM leak
+
+</Update>
+<Update label="v0.3.64" description="October 8, 2025">
+
+**API Nodes**
+- Added Sora2 API node for OpenAI's video generation API
+
+</Update>
+<Update label="v0.3.63" description="October 6, 2025">
+
+**Model Compatibility Enhancements**
+- **HunyuanVAE Support**: Added support for the new HunyuanVAE, expanding model compatibility for advanced image generation workflows
+- **Epsilon Scaling Node**: Introduced new Epsilon Scaling node that reduces exposure bias in diffusion models by scaling predicted noise, improving generation quality (based on the paper [Elucidating the Exposure Bias in Diffusion Models](https://arxiv.org/abs/2308.15321))
+
+**Memory and Performance Optimizations**
+- **VAE Memory Leak Fix**: Fixed VRAM leak caused by Python call stack holding tensor references during VAE OOM exception handling, significantly improving tiled fallback reliability on low VRAM devices
+- **AMD Support**: Enabled TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL by default
+
+**API Node Updates**
+- **Kling 2.5 Turbo**: Added support for kling-2-5-turbo in both txt2video and img2video nodes, with proper mode configuration fixes
+- **API Node Fixes**: Improved Gemini node base64 handling and fixed indentation issues in Recraft API node functions
+
+**Node Schema Migration (V3)**
+- **Extensive V3 Conversion**: Migrated numerous node categories to V3 schema including audio encoder, GITS, differential diffusion, optimal steps, PAG, LT, IP2P, morphology, torch compile, EPS, Pixverse, TomeSD, edit model, Rodin, and Stable3D nodes for improved workflow compatibility
+
+**Developer Experience Improvements**
+- **Code Quality**: Added pylint support for comfy_api_nodes folder and updated example_node.py to use V3 schema, making custom node development more consistent
+- **Documentation Updates**: Enhanced AMD installation instructions with nightly PyTorch commands for Windows users
+
+**Frontend Updates**
+- **Subgraph Publish**: Allows publishing subgraphs to the node library
+- **Node Selection Toolbox Redesign**: Redesigned the node selection toolbox
+</Update>
+<Update label="v0.3.62" description="September 30, 2025">
+
+**API Node**
+- **Rodin3D-Gen2 Parameter Fix**
+- **Seedance Pro Model Support**
+</Update>
+
+<Update label="v0.3.61" description="September 30, 2025">
+
+**API Node**
+- **Rodin3D Gen-2**: Rodin's most powerful image-to-3D tool, is now live in ComfyUI!
+- **WAN Image-to-Image**: Wan2.5 Image-to-Image API node, support image editing.
+
+**Enhanced Audio Capabilities**
+- **New Audio Nodes**: Added new audio nodes for enhanced audio-driven workflows and multimodal content creation
+
+**Model Compatibility Fixes**
+- **Qwen2.5VL Template Handling**: Improved template management for Qwen2.5VL models when templates are already present in prompts
+- **HuMo View Operation**: Fixed .view() operation issues in HuMo models for more stable video generation
+
+**Memory and Performance Optimizations**
+- **Memory Leak Fix**: Resolved memory leaks by explicitly detaching model finalizers, improving long-running workflow stability
+- **Sampler CFG Enhancement**: Added 'input_cond' and 'input_uncond' parameters to sampler CFG function arguments for more flexible conditioning control
+</Update>
+
+<Update label="v0.3.60" description="September 23, 2025">
+
+**New Model Support**
+- **Wan2.2 Animate**: Support for Wan2.2 Animate video generation model with character replacement and motion transfer capabilities
+- **Qwen Image Edit 2509 Support**: Support for the updated Qwen Image Edit 2509 with multi-image editing, higher consistency, and native ControlNet support
+- **HuMo Models**: Added support for both 1.7B and 17B HuMo models that use audio to drive video generation while maintaining lip sync
+- **Chroma Radiance**: A model that performs image generation in pixel space, reducing losses during the image generation process
+- **Omnigen2 UMO LoRA**: Added support for Omnigen2 UMO LoRA models
+
+**API Node Additions**
+- **Kling v2.1 Support**: Added kling-v2-1 model to KlingStartEndFrame node
+- **Seedream4 Fixes**: Fixed the flag that ignores errors on partial success, making workflows more robust
+
+**Node Schema Migration (V3)**
+- **Core Node Updates**: Migrated multiple node categories to V3 schema including Minimax API, Cosmos, conditioning, CFG, and Canny nodes
+
+**Performance & Technical Improvements**
+- **FP8 Operations**: Enabled FP8 operations by default on gfx1200 hardware for faster processing
+- **LoRA Trainer Fixes**: Resolved bugs with FP8 model compatibility in LoRA training workflows
+
+**Frontend Updates**
+- **Frontend Version Update**: Updated to version 1.26.13
+
+</Update>
+<Update label="v0.3.59" description="September 10, 2025">
+
+**ByteDance Seedream 4.0 Integration**
+- **New Seedream Node**: Added ByteDanceSeedream (4.0) node.
+
+</Update>
+<Update label="v0.3.58" description="September 6, 2025">
+
+**New Model Support**
+- Hunyuan Image 2.1 regular model
+- Hunyuan 3D 2.1
+
+**New API Nodes**
+- Stable Audio 2.5 API
+- Seedance Video API
+</Update>
+<Update label="v0.3.57" description="September 4, 2025">
+
+**ByteDance USO Model Support**
+- **UXO Subject Identity LoRA Support**: It's a subject identity LoRA model based on FLUX architecture
+- **Related Workflow**: Please find the workflow in the template `Flux` -> `Flux.1 Dev USO Reference Image Generation`
+
+**Workflow Utilities**
+- **ImageScaleToMaxDimension Node**: New utility for intelligent image scaling
+- **SEEDS Noise System**: Updated noise decomposition with improved algorithms
+- **Enhanced Prompt Control**: Interrupt handler now accepts prompt_id parameters
+
+**Performance & Architecture**
+- **V3 Schema Migration**: Converted some core nodes to V3 schema
+- **Convolution AutoTuning**: Enabled automatic convolution optimization
+
+**New API Integration**
+- **ByteDance Image Nodes**: Added support for ByteDance image generation services
+- **Ideogram Character Reference**: Ideogram v3 API now supports character reference
+</Update>
+<Update label="v0.3.56" description="August 30, 2025">
+
+**Performance Enhancement**
+- **Reduced RAM Usage on Windows**
+</Update>
+
+<Update label="v0.3.55" description="August 29, 2025">
+
+**Wan2.2 S2V Workflow Enhancements & Model Support Expansion**
+
+This release focuses on Wan2.2 S2V related video workflow capabilities and model support expansion:
+
+**Wan2.2 S2V Workflow Control**
+- **WanSoundImageToVideoExtend Node**: New manual video extension node for audio-driven video workflows, giving creators precise control over generated video length and timing. This enables fine-tuned control over how audio content translates to video sequences.
+- **Audio-Video Synchronization**: Fixed critical issue where extending video past audio length caused workflow failures, ensuring reliable sound-to-video generation regardless of audio duration.
+- **Automatic Audio Trimming**: Video saves now automatically trim audio to match video length, eliminating audio-video sync issues in final output files.
+
+**Advanced Latent Processing**
+- **LatentCut Node**: New node for cutting latents at precise points, enabling more granular control over latent space manipulation in complex generation workflows. This is particularly useful for batch processing and temporal video workflows, such as removing specific frames from videos.
+
+**Wan2.2 5B Model Integration**
+- **Fun Control Model Support**: Added support for Wan2.2 5B fun control model.
+- **Fun Inpaint Model Support**: Integrated Wan2.2 5B fun inpaint model.
+
+</Update>
+<Update label="v0.3.54" description="August 28, 2025">
+
+**Node Model Patch Improvements**
+
+This focused update improves the core node model patching system that underpins ComfyUI's flexible architecture:
+
+**Core Infrastructure Enhancement**
+- **Node Model Patch Updates**: Enhanced nodes_model_patch.py with improvements to the underlying model patching mechanism, making ComfyUI extensions for Qwen-Image ControlNet easier
+
+**Workflow Benefits**
+- **Enhanced Stability**: Core model patching improvements contribute to more reliable node execution and model handling across different workflow configurations
+
+</Update>
+<Update label="v0.3.53" description="August 28, 2025">
+
+**Audio Workflow Integration & Enhanced Performance Optimizations**
+
+This release adds ComfyUI audio processing capabilities and includes performance improvements and model compatibility updates:
+
+**Audio Processing Updates**
+- **Wav2vec2 Audio Encoder**: Added native wav2vec2 implementation as an audio encoder model, enabling audio-to-embedding workflows for multimodal applications
+- **Audio Encoders Directory**: Added models/audio_encoders directory, which is the audio encoder directory for Wan2.2 S2V
+- **AudioEncoderOutput V3 Support**: Made AudioEncoderOutput compatible with V3 node schema, ensuring seamless integration with modern workflow architectures
+
+**Google Gemini API Integration**
+- **Gemini Image API Node**: Added new Google Gemini Image API node, the "nano-Nano-banana" image editing model API with high consistency
+
+**Video Generation Performance & Memory Optimizations**
+- **WAN 2.2 S2V Model Support**: Work-in-progress implementation of WAN 2.2 Sound-to-Video model with optimized memory usage and performance
+- **Enhanced S2V Performance**: Performance improvements for video generation longer than 120 frames, improving extended video workflows
+- **Better Memory Estimation**: Improved memory usage estimation for S2V workflows prevents out-of-memory errors during long video generation
+- **Negative Audio Handling**: Fixed negative audio input handling in S2V workflows to use proper zero values
+
+**Sampling & Node Enhancements**
+- **DPM++ 2M SDE Heun (RES) Sampler**: New advanced sampler by @Balladie provides additional sampling options for fine-tuned generation control
+- **LatentConcat Node**: New node for concatenating latent tensors, enabling advanced latent space manipulation workflows
+- **EasyCache/LazyCache Stability**: Fixed critical crashes when tensor properties (shape/dtype/device) change during sampling, ensuring workflow reliability
+
+**Model Compatibility Improvements**
+- **ControlNet Type Models**: Enhanced compatibility fixes for ControlNet-type models working with Qwen Edit and Kontext workflows
+- **Flux Memory Optimization**: Adjusted Flux model memory usage factors for better resource utilization
+
+**Infrastructure & Reliability**
+- **Template Updates**: Updated to versions 0.1.66 and 0.1.68
+- **Documentation Cleanup**: Removed incompletely implemented models from readme to avoid user confusion
+
+
+</Update>
+<Update label="v0.3.52" description="August 23, 2025">
+
+**Enhanced Model Support & Qwen Image ControlNet Integration**
+
+This release significantly expands ControlNet capabilities and improves model compatibility, making ComfyUI workflows more versatile and reliable:
+
+**Qwen ControlNet Ecosystem**
+- **Diffsynth ControlNet Support**: Added support for Qwen Diffsynth ControlNets with Canny and depth conditioning, enabling precise edge and depth-based image control
+- **InstantX Qwen ControlNet**: Integrated InstantX Qwen ControlNet for expanded creative control options
+- **Inpaint ControlNet/Model Patches**: Enhanced inpainting capabilities with dedicated Diffsynth inpaint ControlNet support
+
+**Node Architecture & API Evolution**
+- **V3 Architecture Migration**: String nodes, Google Veo API, and Ideogram API nodes upgraded to V3 architecture for better performance and consistency
+- **Enhanced API Nodes**: OpenAI Chat node renamed to "OpenAI ChatGPT" for clarity, Gemini Chat node now includes copy button functionality
+- **Improved Usability**: API nodes now provide better user experience with clearer labeling and enhanced interaction features
+
+**Workflow Reliability & Performance**
+- **LTXV Noise Mask Fix**: Resolved key frame noise mask dimension issues when real noise masks exist, ensuring stable video workflow execution
+- **3D Latent Conditioning Control**: Fixed conditioning masks on 3D latents, enabling proper depth-aware conditioning control in advanced workflows
+- **Invalid Filename Handling**: Improved workflow save functionality with proper handling of invalid filenames, preventing save failures
+- **EasyCache & LazyCache**: Implemented advanced caching systems for improved workflow execution performance
+
+**Platform & Development Improvements**
+- **Python 3.13 Support**: Full compatibility with Python 3.13, keeping ComfyUI current with latest Python developments
+- **Frontend Update**: Updated to v1.25.10 with improved navigation and user interface enhancements
+- **Elementwise Fusions**: Added performance optimizations through elementwise operations fusion
+- **Navigation Mode Rollback**: Rolled back navigation default to traditional legacy mode, avoiding user experience issues caused by default enabled standard navigation mode. Users can still enable standard navigation mode in settings
+
+</Update>
+
+<Update label="v0.3.51" description="August 20, 2025">
+
+**Model Support**
+- **Qwen-Image-Edit Model**: Native support for Qwen-Image-Edit
+- **FluxKontextMultiReferenceLatentMethod Node**: Multi-reference input node for Flux workflows
+- **WAN 2.2 Fun Camera Model Support**: Support for video generation through camera control
+- **Template Updates**: Upgraded to version 0.1.62, added Wan2.2 Fun Camera and Qwen Image Edit templates
+
+**Core Function Improvements**
+- **Context Windows Support**: Enhanced sampling code to support longer sequence generation tasks
+- **SDPA Backend Optimization**: Improved Scaled Dot Product Attention backend settings for better performance
+
+**Multimedia Node Support**
+- **Audio Recording Node**: New native audio recording node, now you can record audio directly in ComfyUI
+- **Audio Video Integration**: Complete audio-video dependency integration
+
+**API Node Support Updates**
+- **GPT-5 Series Models**: Support for the latest GPT-5 models
+- **Kling V2-1 and V2-1-Master**: Updated video generation model functionality
+- **Minimax Hailuo Video Node**: New video generation node
+- **Vidu Video Node**: Vidu API node support
+- **Google Model Updates**: Added new Google Gemini models
+- **OpenAI API Fix**: Fixed MIME type errors in OpenAI API node input images
+
+**Performance Optimization**
+- **Intel GPU Compatibility**: Fixed Intel integrated GPU compatibility issues
+- **PyTorch Compatibility**: Enhanced compatibility with older PyTorch versions
+- **Torch Compile Optimization**: Improved torch compile behavior
+- **Memory Management**: Optimized installation size and memory efficiency
+
+**Frontend Changes**
+- **Subgraph Support**: Subgraph functionality support
+- **Shortcut Panel**: Added bottom shortcut panel
+- **UI Layout Modifications**: Modified terminal entry layout, added template, log panel and other entries
+- **Standard Canvas Mode**: Added standard canvas mode, can be switched in `Lite Graph` > `Canvas` > `Canvas Navigation Mode`
+- **Mini Map**: Added workflow mini map
+- **Tab Preview**: Added workflow tab preview
+- **Top Tab Menu Layout Adjustments**
+
+</Update>
+
+<Update label="v0.3.50" description="August 13, 2025">
+
+**Model Integration & Performance Enhancements**
+
+This release expands ComfyUI's model ecosystem with enhanced Qwen support, async API capabilities, and stability improvements for complex workflows:
+
+**Qwen Model Ecosystem**
+- **Qwen Image Model Support**: Improved integration including proper LoRA loading and model merging capabilities for sophisticated vision workflows
+- **Qwen Model Merging Node**: New dedicated node for merging Qwen image models, allowing creators to combine different model strengths
+- **SimpleTuner Lycoris LoRA Support**: Extended compatibility with SimpleTuner-trained Lycoris LoRAs for Qwen-Image models
+
+**API & Performance Infrastructure**
+- **Async API Nodes**: Introduction of asynchronous API nodes, enabling non-blocking workflow execution for better performance
+- **Memory Handling**: Enhanced RepeatLatentBatch node now properly handles multi-dimensional latents, fixing workflow interruptions
+- **WAN 2.2 Fun Control Support**: Added support for WAN 2.2 fun control features, expanding creative control for video workflows
+
+**Hardware Optimization & Compatibility**
+- **AMD GPU Improvements**: Enhanced AMD Radeon support with improved FP16 accuracy handling and performance optimization
+- **RDNA3 Architecture Fixes**: Resolved issues with gfx1201 GPUs when using Flux models with PyTorch attention
+- **Updated PyTorch Support**: Bumped CUDA and ROCM PyTorch versions with testing on Python 3.13 and CUDA 12.9
+
+**Developer Experience Enhancements**
+- **Cleaner Logging**: Feature flags now only display in verbose mode, reducing console noise
+- **Audio Processing Safety**: Enhanced torchaudio import safety checks prevent crashes when audio dependencies are unavailable
+- **Kling API Improvements**: Fixed image type parameter handling in Kling Image API nodes
+
+**Workflow Benefits**
+- **Async Workflow Execution**: New async API capabilities enable more responsive workflows when integrating external services
+- **Model Flexibility**: Expanded Qwen support allows for more diverse vision-language workflows with improved LoRA compatibility
+- **Hardware Utilization**: AMD GPU optimizations and updated PyTorch support improve performance across hardware configurations
+- **Batch Processing**: Fixed RepeatLatentBatch ensures reliable operation with complex multi-dimensional data structures
+- **Video Control**: WAN 2.2 fun control features provide advanced creative control for video generation workflows
+
+</Update>
+<Update label="v0.3.49" description="August 5, 2025">
+
+**UI Experience & Model Support**
+
+This release brings user experience improvements and model support that enhance workflow creation and performance:
+
+**User Interface Enhancements**
+- **Recently Used Items API**: New API for tracking recently used items in the interface, streamlining workflow creation
+- **Workflow Navigation**: Enhanced user experience with better organization of commonly accessed elements
+
+**Model Integration**
+- **Qwen Vision Model Support**: Initial support for Qwen image models with configuration options
+- **Image Processing**: Enhanced Qwen model integration allows for more versatile image analysis and generation workflows
+
+**Video Generation**
+- **Veo3 Video Generation**: Added Veo3 video generation node with integrated audio support
+- **Audio-Visual Synthesis**: Capability combining video and audio generation in a single node
+
+**Performance & Stability Improvements**
+- **Memory Management**: Optimized conditional VRAM usage through improved casting and device transfer operations
+- **Device Consistency**: Fixes ensuring all conditioning data and context remain on correct devices
+- **ControlNet Stability**: Resolved ControlNet compatibility issues, restoring functionality for image control workflows
+
+**Developer & System Enhancements**
+- **Error Handling**: Added warnings and crash prevention when conditioning devices don't match
+- **Template Updates**: Multiple template version updates (0.1.47, 0.1.48, 0.1.51) maintaining compatibility
+
+**Workflow Benefits**
+- **Faster Iteration**: Recently used items API enables quicker workflow assembly and modification
+- **Enhanced Creativity**: Qwen vision models open new possibilities for image understanding and manipulation workflows
+- **Video Production**: Veo3 integration transforms ComfyUI into a comprehensive multimedia creation platform
+- **Reliability**: Memory optimizations and device management fixes ensure stable operation with complex workflows
+- **Performance**: Optimized VRAM usage allows for more ambitious projects on systems with limited resources
+
+</Update>
+<Update label="v0.3.48" description="August 2, 2025">
+
+**API Enhancement & Performance Optimizations**
+
+This release introduces backend improvements and performance optimizations that enhance workflow execution and node development:
+
+**ComfyAPI Core Framework**
+- **ComfyAPI Core v0.0.2**: Update to the core API framework, providing improved stability and extensibility
+- **Partial Execution Support**: New backend support for partial workflow execution, enabling efficient processing of multi-stage workflows
+
+**Video Processing Improvements**
+- **WAN Camera Memory Optimization**: Enhanced memory management for WAN-based camera workflows, reducing VRAM usage
+- **WanFirstLastFrameToVideo Fix**: Resolved issue preventing proper video generation when clip vision components are not available
+
+**Performance & Model Optimizations**
+- **VAE Nonlinearity Enhancement**: Replaced manual activation functions with optimized torch.silu in VAE operations
+- **WAN VAE Optimizations**: Fine-tuning optimizations for WAN VAE operations, improving processing speed and memory efficiency
+
+**Node Schema Evolution**
+- **V3 Node Schema Definition**: Implementation of next-generation node schema system
+- **Template Updates**: Multiple template version updates (0.1.44, 0.1.45) ensuring compatibility
+
+**Workflow Development Benefits**
+- **Video Workflows**: Improved stability and performance for video generation pipelines
+- **Memory Management**: Optimized memory usage patterns enable more complex workflows on systems with limited VRAM
+- **API Reliability**: Core API enhancements provide more stable foundation for custom node development
+- **Execution Flexibility**: New partial execution capabilities allow for more efficient debugging and development
+
+</Update>
+<Update label="v0.3.47" description="July 30, 2025">
+
+**Memory Optimization & Large Model Performance**
+
+This release focuses on memory optimizations for large model workflows, improving performance with WAN 2.2 models and VRAM management:
+
+**WAN 2.2 Model Optimizations**
+- **Reduced Memory Footprint**: Eliminated unnecessary memory clones in WAN 2.2 VAE operations, reducing memory usage
+- **5B I2V Model Support**: Memory optimization for WAN 2.2 5B image-to-video models, making these models more accessible
+
+**Enhanced VRAM Management**
+- **Windows Large Card Support**: Added reserved VRAM allocation for high-end graphics cards on Windows
+- **Memory Allocation**: Improved memory management for users working with multiple large models simultaneously
+
+**Workflow Performance Benefits**
+- **VAE Processing**: WAN 2.2 VAE operations now run more efficiently with reduced memory overhead
+- **Large Model Inference**: Enhanced stability when working with billion-parameter models
+- **Batch Processing**: Memory optimizations enable better handling of batch operations with large models
+
+</Update>
+
+<Update label="v0.3.46" description="July 28, 2025">
+
+**Hardware Acceleration & Audio Processing**
+
+This release expands hardware support and enhances audio processing capabilities:
+
+**Audio Processing Enhancements**
+- **PyAV Audio Backend**: Replaced torchaudio.load with PyAV for more reliable audio processing in video workflows
+- **Audio Integration**: Enhanced audio handling for multimedia generation workflows
+
+**Hardware Support**
+- **Iluvatar CoreX Support**: Added native support for Iluvatar CoreX accelerators
+- **Intel XPU Optimization**: XPU support improvements including async offload capabilities
+- **AMD ROCm Enhancements**: Enabled PyTorch attention by default for gfx1201 on Torch 2.8
+- **CUDA Memory Management**: Fixed CUDA malloc to only activate on CUDA-enabled PyTorch installations
+
+**Sampling Algorithm Improvements**
+- **Euler CFG++ Enhancement**: Separated denoised and noise estimation processes in Euler CFG++ sampler
+- **WAN Model Support**: Added support for WAN (Wavelet-based Attention Network) models
+
+**Training Features**
+- **Training Nodes**: Added algorithm support, gradient accumulation, and optional gradient checkpointing
+- **Training Flexibility**: Better memory management and performance optimization for custom model training
+
+**Node & Workflow Enhancements**
+- **Moonvalley V2V Node**: Added Moonvalley Marey V2V node with enhanced input validation
+- **Negative Prompt Updates**: Improved negative prompt handling for Moonvalley nodes
+- **History API Enhancement**: Added map_function parameter to get_history API
+
+**API & System Improvements**
+- **Frontend Version Tracking**: Added required_frontend_version parameter in /system_stats API response
+- **Device Information**: Enhanced XPU device name printing for better hardware identification
+- **Template Updates**: Multiple template updates (0.1.40, 0.1.41) ensuring compatibility
+
+**Developer Experience**
+- **Documentation Updates**: Enhanced README with examples and updated model integration guides
+- **Line Ending Fixes**: Improved cross-platform compatibility by standardizing line endings
+- **Code Cleanup**: Removed deprecated code and optimized components
+
+</Update>
+
+<Update label="v0.3.45" description="July 21, 2025">
+
+**Sampling & Training Improvements**
+
+This release introduces enhancements to sampling algorithms, training capabilities, and node functionality:
+
+**Sampling & Generation Features**
+- **SA-Solver Sampler**: New reconstructed SA-Solver sampling algorithm providing enhanced numerical stability
+- **Experimental CFGNorm Node**: Classifier-free guidance normalization for improved control over generation quality
+- **Nested Dual CFG Support**: Added nested style configuration to DualCFGGuider node
+- **SamplingPercentToSigma Node**: New utility node for precise sigma calculation from sampling percentages
+
+**Training Capabilities**
+- **Multi Image-Caption Dataset Support**: LoRA training node now handles multiple image-caption datasets simultaneously
+- **Training Loop Implementation**: Optimized training algorithms for improved convergence and stability
+- **Error Detection**: Added model detection error hints for LoRA operations
+
+**Platform & Performance Improvements**
+- **Async Node Support**: Full support for asynchronous node functions with earlier execution optimization
+- **Chroma Flexibility**: Un-hardcoded patch_size parameter in Chroma
+- **LTXV VAE Decoder**: Switched to improved default padding mode for better image quality
+- **Safetensors Memory Management**: Added workaround for mmap issues
+
+**API & Integration Enhancements**
+- **Custom Prompt IDs**: API now allows specifying prompt IDs for better workflow tracking
+- **Kling API Optimization**: Increased polling timeout to prevent user timeouts
+- **History Token Cleanup**: Removed sensitive tokens from history items
+- **Python 3.9 Compatibility**: Fixed compatibility issues ensuring broader platform support
+
+**Bug Fixes & Stability**
+- **MaskComposite Fixes**: Resolved errors when destination masks have 2 dimensions
+- **Fresca Input/Output**: Corrected input and output handling for Fresca model workflows
+- **Reference Bug Fixes**: Resolved incorrect reference bugs in Gemini node implementations
+- **Line Ending Standardization**: Automated detection and removal of Windows line endings
+
+**Developer Experience**
+- **Warning Systems**: Added torch import mistake warnings to catch common configuration issues
+- **Template Updates**: Multiple template version updates (0.1.36, 0.1.37, 0.1.39) for improved custom node development
+- **Documentation**: Enhanced fast_fp16_accumulation documentation
+
+</Update>
+
+<Update label="v0.3.44" description="July 8, 2025">
+
+**Sampling & Model Control Enhancements**
+
+This release delivers improvements to sampling algorithms and model control systems:
+
+**Sampling Capabilities**
+- **TCFG Node**: Enhanced classifier-free guidance control for more nuanced generation control
+- **ER-SDE Sampler**: Migrated from VE to VP algorithm with new sampler node
+- **Skip Layer Guidance (SLG)**: Implementation for precise layer-level control during inference
+
+**Development Tools**
+- **Custom Node Management**: New `--whitelist-custom-nodes` argument pairs with `--disable-all-custom-nodes`
+- **Performance Optimizations**: Dual CFG node now optimizes automatically when CFG is 1.0
+- **GitHub Actions Integration**: Automated release webhook notifications
+
+**Image Processing Improvements**
+- **Transform Nodes**: Added ImageRotate and ImageFlip nodes for enhanced image manipulation
+- **ImageColorToMask Fix**: Corrected mask value returns for more accurate color-based masking
+- **3D Model Support**: Upload 3D models to custom subfolders for better organization
+
+**Guidance & Conditioning Enhancements**
+- **PerpNeg Guider**: Updated with improved pre and post-CFG handling
+- **Latent Conditioning Fix**: Resolved issues with conditioning at index > 0 for multi-step workflows
+- **Denoising Steps**: Added denoising step support to several samplers
+
+**Platform Stability**
+- **PyTorch Compatibility**: Fixed contiguous memory issues with PyTorch nightly builds
+- **FP8 Fallback**: Automatic fallback to regular operations when FP8 operations encounter exceptions
+- **Audio Processing**: Removed deprecated torchaudio.save function dependencies
+
+**Model Integration**
+- **Moonvalley Nodes**: Added native support for Moonvalley model workflows
+- **Scheduler Reordering**: Simple scheduler now defaults first
+- **Template Updates**: Multiple template version updates (0.1.31-0.1.35)
+
+**Security & Safety**
+- **Safe Loading**: Added warnings when loading files unsafely
+- **File Validation**: Enhanced checkpoint loading safety measures
+
+</Update>
+
+<Update label="v0.3.43" description="June 30, 2025">
+
+**Model Support & Workflow Reliability**
+
+This release brings improvements to model compatibility and workflow stability:
+
+**Expanded Model Documentation**: Added support documentation for Flux Kontext and Omnigen 2 models
+**VAE Encoding Improvements**: Removed unnecessary random noise injection during VAE encoding
+**Memory Management Fix**: Resolved a memory estimation bug affecting Kontext model usage
+
+</Update>
+
+<Update label="v0.3.41" description="June 17, 2025">
+
+**Model Support Additions**
+- **Cosmos Predict2 Support**: Implementation for text-to-image (2B and 14B models) and image-to-video generation workflows
+- **Flux Compatibility**: Chroma Text Encoder now works with regular Flux models
+- **LoRA Training Integration**: New native LoRA training node using weight adapter scheme
+
+**Performance & Hardware Optimizations**
+- **AMD GPU Enhancements**: Enabled FP8 operations and PyTorch attention on AMD GPUs
+- **Apple Silicon Fixes**: Addressed FP16 attention issues on Apple devices
+- **Flux Model Stability**: Resolved black image generation issues with certain Flux models
+
+**Sampling Improvements**
+- **Rectified Flow Samplers**: Added SEEDS and multistep DPM++ SDE samplers with RF support
+- **ModelSamplingContinuousEDM**: New cosmos_rflow option for enhanced sampling control
+- **Memory Optimization**: Improved memory estimation for Cosmos models
+
+**Developer & Integration Features**
+- **SQLite Database Support**: Enhanced data management capabilities for custom nodes
+- **PyProject.toml Integration**: Automatic web folder registration from pyproject files
+- **Frontend Flexibility**: Support for semver suffixes and prerelease frontend versions
+- **Tokenizer Enhancements**: Configurable min_length settings with tokenizer_data
+
+**Quality of Life Improvements**
+- **Kontext Aspect Ratio Fix**: Resolved widget-only limitation
+- **SaveLora Consistency**: Standardized filename format across all save nodes
+- **Python Version Warnings**: Added alerts for outdated Python installations
+- **WebcamCapture Fixes**: Corrected IS_CHANGED signature
+
+</Update>
+
+<Update label="v0.3.40" description="June 5, 2025">
+
+**Workflow Tools & Performance Optimizations**
+
+This release brings new workflow utilities and performance optimizations:
+
+**Workflow Tools**
+- **ImageStitch Node**: Concatenate multiple images seamlessly in your workflows
+- **GetImageSize Node**: Extract image dimensions with batch processing support
+- **Regex Replace Node**: Advanced text manipulation capabilities for workflows
+
+**Model Compatibility**
+- **Tensor Handling**: Streamlined list processing makes multi-model workflows more reliable
+- **BFL API Optimization**: Refined support for Kontext models with cleaner node interfaces
+- **Performance Boost**: Fused multiply-add operations in chroma processing for faster generation
+
+**Developer Experience**
+- **Custom Node Support**: Added pyproject.toml support for better dependency management
+- **Help Menu Integration**: New help system in the Node Library sidebar
+- **API Documentation**: Enhanced API nodes documentation
+
+**Frontend & UI Enhancements**
+- **Frontend Updated to v1.21.7**: Stability fixes and performance improvements
+- **Custom API Base Support**: Better subpath handling for custom deployment configurations
+- **Security Hardening**: XSS vulnerability fixes
+
+**Bug Fixes & Stability**
+- **Pillow Compatibility**: Updated deprecated API calls
+- **ROCm Support**: Improved version detection for AMD GPU users
+- **Template Updates**: Enhanced project templates for custom node development
+
+</Update>

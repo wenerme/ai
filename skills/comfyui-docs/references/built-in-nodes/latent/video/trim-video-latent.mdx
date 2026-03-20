@@ -1,0 +1,57 @@
+---
+title: TrimVideoLatent Node
+description: Trim video frames in latent space
+sidebarTitle: TrimVideoLatent
+---
+
+![ComfyUI TrimVideoLatent Node](/images/built-in-nodes/latent/video/trim-video-latent.jpg)
+
+The TrimVideoLatent node is used to trim video frames in latent space (LATENT). It is commonly used when processing video latent sequences to remove unwanted frames from the beginning, achieving "forward trimming" of the video.
+
+Basic usage: Input the video latent data to be trimmed into samples, and set trim_amount to the number of frames to trim. The node will trim the specified number of frames from the beginning of the video and output the remaining latent sequence.
+Typical scenarios: Used in video generation, video editing and other scenarios to remove unwanted leading frames, or to work with other nodes to achieve video segment splicing and processing.
+
+## Parameters
+
+### Input Parameters
+| Parameter   | Type   | Required | Default | Description                           |
+| ----------- | ------ | -------- | ------- | ------------------------------------- |
+| samples     | LATENT | Yes      | None    | Input latent video data               |
+| trim_amount | INT    | Yes      | 0       | Number of frames to trim (from start) |
+
+### Output Parameters
+| Parameter | Type   | Description               |
+| --------- | ------ | ------------------------- |
+| samples   | LATENT | Trimmed video latent data |
+
+## Usage Example
+
+<Card title="Wan2.1 VACE Video Generation Workflow Example" icon="book" href="/tutorials/video/wan/vace">
+Wan2.1 VACE Video Generation Workflow Example
+</Card>
+
+### Source Code
+
+```python
+class TrimVideoLatent:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": { "samples": ("LATENT",),
+                              "trim_amount": ("INT", {"default": 0, "min": 0, "max": 99999}),
+                             }}
+
+    RETURN_TYPES = ("LATENT",)
+    FUNCTION = "op"
+
+    CATEGORY = "latent/video"
+
+    EXPERIMENTAL = True
+
+    def op(self, samples, trim_amount):
+        samples_out = samples.copy()
+
+        s1 = samples["samples"]
+        samples_out["samples"] = s1[:, :, trim_amount:]
+        return (samples_out,)
+
+```

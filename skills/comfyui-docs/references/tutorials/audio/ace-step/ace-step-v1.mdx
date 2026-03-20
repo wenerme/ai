@@ -1,0 +1,213 @@
+---
+title: "ComfyUI ACE-Step Native Example"
+description: "This guide will help you create dynamic music using the ACE-Step model in ComfyUI"
+sidebarTitle: "ACE-Step 1.0"
+---
+
+import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
+
+ACE-Step is an open-source foundational music generation model jointly developed by Chinese team StepFun and ACE Studio, aimed at providing music creators with efficient, flexible and high-quality music generation and editing tools.
+
+The model is released under the [Apache-2.0](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-license) license and is free for commercial use.
+
+As a powerful music generation foundation, ACE-Step provides rich extensibility. Through fine-tuning techniques like LoRA and ControlNet, developers can customize the model according to their actual needs.
+Whether it's audio editing, vocal synthesis, accompaniment production, voice cloning or style transfer applications, ACE-Step provides stable and reliable technical support.
+This flexible architecture greatly simplifies the development process of music AI applications, allowing more creators to quickly apply AI technology to music creation.
+
+Currently, ACE-Step has released related training code, including LoRA model training, and the corresponding ControlNet training code will be released in the future.
+You can visit their [Github](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-roadmap) to learn more details.
+
+<UpdateReminder/>
+
+## ACE-Step ComfyUI Text-to-Audio Generation Workflow Example
+
+### 1. Download Workflow and Related Models
+
+Click the button below to download the corresponding workflow file. Drag it into ComfyUI to load the workflow information. The workflow includes model download information.
+
+<a className="prose"  target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/audio/ace-step/ace_step_1_t2m.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Json Format Workflow File</p>
+</a>
+
+You can also manually download [ace_step_v1_3.5b.safetensors](https://huggingface.co/Comfy-Org/ACE-Step_ComfyUI_repackaged/blob/main/all_in_one/ace_step_v1_3.5b.safetensors) and save it to the `ComfyUI/models/checkpoints` folder
+
+### 2. Complete the Workflow Step by Step
+
+![Step Guide](/images/tutorial/audio/ace_step/ace_step_1_t2a_step_guide.jpg)
+1. Ensure the `Load Checkpoints` node has loaded the `ace_step_v1_3.5b.safetensors` model
+2. (Optional) In the `EmptyAceStepLatentAudio` node, you can set the duration of the music to be generated
+3. (Optional) In the `LatentOperationTonemapReinhard` node, you can adjust the `multiplier` to control the volume of the vocals (higher numbers result in more prominent vocals)
+4. (Optional) Input corresponding music styles etc. in the `tags` field of `TextEncodeAceStepAudio`
+5. (Optional) Input corresponding lyrics in the `lyrics` field of `TextEncodeAceStepAudio`
+6. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute the audio generation
+7. After the workflow completes,, you can preview the generated audio in the `Save Audio` node. You can click to play and listen to it, and the audio will also be saved to `ComfyUI/output/audio` (subdirectory determined by the `Save Audio` node).
+
+## ACE-Step ComfyUI Audio-to-Audio Workflow
+
+Similar to image-to-image workflows, you can input a piece of music and use the workflow below to resample and generate music. You can also adjust the difference from the original audio by controlling the `denoise` parameter in the `Ksampler`.
+ 
+### 1. Download Workflow File
+
+Click the button below to download the corresponding workflow file. Drag it into ComfyUI to load the workflow information.
+
+<a className="prose"  target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/audio/ace-step/ace_step_1_m2m_editing.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Json Format Workflow File</p>
+</a>
+
+Download the following audio file as the input audio:
+
+<a className="prose"   target='_blank' href="https://github.com/Comfy-Org/example_workflows/raw/refs/heads/main/audio/ace-step/input.mp3" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Example Audio File for Input</p>
+</a>
+
+
+### 2. Complete the Workflow Step by Step
+
+![ACE-Step Step Guide](/images/tutorial/audio/ace_step/ace_step_1_m2m_step_guide.jpg)
+
+1. Ensure the `Load Checkpoints` node has loaded the `ace_step_v1_3.5b.safetensors` model
+2. Upload the provided audio file in the `LoadAudio` node
+3. (Optional) Input corresponding music styles and lyrics in the `tags` and `lyrics` fields of `TextEncodeAceStepAudio`. Providing lyrics is very important for audio editing
+4. (Optional) Modify the `denoise` parameter in the `Ksampler` node to adjust the noise added during sampling to control similarity with the original audio (smaller values result in more similarity to the original audio; setting it to `1.00` is approximately equivalent to having no audio input)
+5. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute the audio generation
+6. After the workflow completes, you can preview the generated audio in the `Save Audio` node. You can click to play and listen to it, and the audio will also be saved to `ComfyUI/output/audio` (subdirectory determined by the `Save Audio` node).
+
+You can also implement the lyrics modification and editing functionality from the ACE-Step project page, modifying the original lyrics to change the audio effect.
+
+### 3. Additional Workflow Notes
+
+1. In the example workflow, you can change the `tags` in `TextEncodeAceStepAudio` from `male voice` to `female voice` to generate female vocals.
+2. You can also modify the `lyrics` in `TextEncodeAceStepAudio` to change the lyrics and thus the generated audio. Refer to the examples on the ACE-Step project page for more details.
+
+
+## ACE-Step Prompt Guide
+
+ACE currently uses two types of prompts: `tags` and `lyrics`.
+
+- `tags`: Mainly used to describe music styles, scenes, etc. Similar to prompts we use for other generations, they primarily describe the overall style and requirements of the audio, separated by English commas
+- `lyrics`: Mainly used to describe lyrics, supporting lyric structure tags such as [verse], [chorus], and [bridge] to distinguish different parts of the lyrics. You can also input instrument names for purely instrumental music
+
+You can find rich examples of `tags` and `lyrics` on the [ACE-Step model homepage](https://ace-step.github.io/). You can refer to these examples to try corresponding prompts. This document's prompt guide is organized based on the project to help you quickly try combinations to achieve your desired effect.
+
+### Tags (prompt)
+
+#### Mainstream Music Styles
+
+Use short tag combinations to generate specific music styles
+
+- electronic
+- rock
+- pop
+- funk
+- soul
+- cyberpunk
+- Acid jazz
+- electro
+- em (electronic music)
+- soft electric drums
+- melodic
+
+#### Scene Types
+
+Combine specific usage scenarios and atmospheres to generate music that matches the corresponding mood
+- background music for parties
+- radio broadcasts
+- workout playlists
+
+#### Instrumental Elements
+
+- saxophone
+- jazz
+- piano, violin
+
+#### Vocal Types
+
+- female voice
+- male voice
+- clean vocals
+
+#### Professional Terms
+Use some professional terms commonly used in music to precisely control music effects
+- 110 bpm (beats per minute is 110)
+- fast tempo
+- slow tempo
+
+- loops
+- fills
+- acoustic guitar
+- electric bass
+
+{/* - Variance control:
+  - variance=0.3 (controls the degree of difference between generated music and original style) */}
+
+{/* - Lyrics editing:
+  - edit lyrics: 'When I was young' -> 'When you were kid' (lyrics editing example) */}
+
+### Lyrics
+
+#### Lyric Structure Tags
+
+- [outro]
+- [verse]
+- [chorus]
+- [bridge]
+
+#### Multilingual Support
+
+- ACE-Step V1 supports multiple languages. When used, ACE-Step converts different languages into English letters and then generates music.
+- In ComfyUI, we haven't fully implemented the conversion of all languages to English letters. Currently, only [Japanese hiragana and katakana characters](https://github.com/comfyanonymous/ComfyUI/commit/5d3cc85e13833aeb6ef9242cdae243083e30c6fc) are implemented.
+So if you need to use multiple languages for music generation, you need to first convert the corresponding language to English letters, and then input the language code abbreviation at the beginning of the `lyrics`, such as Chinese `[zh]`, Korean `[ko]`, etc.
+
+For example:
+
+```
+[verse]
+
+[zh]wo3zou3guo4shen1ye4de5jie1dao4
+[zh]leng3feng1chui1luan4si1nian4de5piao4liang4wai4tao4
+[zh]ni3de5wei1xiao4xiang4xing1guang1hen3xuan4yao4
+[zh]zhao4liang4le5wo3gu1du2de5mei3fen1mei3miao3
+
+[chorus]
+
+[verse]​
+[ko]hamkke si-kkeuleo-un sesang-ui sodong-eul pihae​
+[ko]honja ogsang-eseo dalbich-ui eolyeompus-ileul balaboda​
+[ko]niga salang-eun lideum-i ganghan eum-ag gatdago malhaess-eo​
+[ko]han ta han tamada ma-eum-ui ondoga eolmana heojeonhanji ijge hae
+
+[bridge]
+[es]cantar mi anhelo por ti sin ocultar
+[es]como poesía y pintura, lleno de anhelo indescifrable
+[es]tu sombra es tan terca como el viento, inborrable
+[es]persiguiéndote en vuelo, brilla como cruzar una mar de nubes
+
+[chorus]
+[fr]que tu sois le vent qui souffle sur ma main
+[fr]un contact chaud comme la douce pluie printanière
+[fr]que tu sois le vent qui s'entoure de mon corps
+[fr]un amour profond qui ne s'éloignera jamais
+```
+
+Currently, ACE-Step supports 19 languages, but the following ten languages have better support:
+- English
+- Chinese: [zh]
+- Russian: [ru]
+- Spanish: [es]
+- Japanese: [ja]
+- German: [de]
+- French: [fr]
+- Portuguese: [pt]
+- Italian: [it]
+- Korean: [ko]
+
+<Note>
+The language tags above have not been fully tested at the time of writing this documentation. If any language tag is incorrect, please [submit an issue to our documentation repository](https://github.com/Comfy-Org/docs/issues) and we will make timely corrections.
+</Note>
+
+## ACE-Step Related Resources
+
+- [Project Page](https://ace-step.github.io/)
+- [Hugging Face](https://huggingface.co/ACE-Step/ACE-Step-v1-3.5B) 
+- [GitHub](https://github.com/ace-step/ACE-Step)
+- [Training Scripts](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-train)

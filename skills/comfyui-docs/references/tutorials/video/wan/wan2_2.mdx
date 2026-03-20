@@ -1,0 +1,309 @@
+---
+title: "Wan2.2 Video Generation ComfyUI Official Native Workflow Example"
+description: "Official usage guide for Alibaba Cloud Tongyi Wanxiang 2.2 video generation model in ComfyUI"
+sidebarTitle: Wan2.2
+---
+
+import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/S45XQXFOutM?si=Qvfco7Cyr_3akZ3Hv"
+  title="ComfyUI Selection Toolbox New Features"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+Wan 2.2 is a new generation multimodal generative model launched by WAN AI. This model adopts an innovative MoE (Mixture of Experts) architecture, consisting of high-noise and low-noise expert models. It can divide expert models according to denoising timesteps, thus generating higher quality video content.
+
+Wan 2.2 has three core features: cinematic-level aesthetic control, deeply integrating professional film industry aesthetic standards, supporting multi-dimensional visual control such as lighting, color, and composition; large-scale complex motion, easily restoring various complex motions and enhancing the smoothness and controllability of motion; precise semantic compliance, excelling in complex scenes and multi-object generation, better restoring users' creative intentions.
+The model supports multiple generation modes such as text-to-video and image-to-video, suitable for content creation, artistic creation, education and training, and other application scenarios.
+
+[Wan2.2 Prompt Guide](https://alidocs.dingtalk.com/i/nodes/EpGBa2Lm8aZxe5myC99MelA2WgN7R35y)
+
+## Model Highlights
+
+- **Cinematic-level Aesthetic Control**: Professional camera language, supports multi-dimensional visual control such as lighting, color, and composition
+- **Large-scale Complex Motion**: Smoothly restores various complex motions, enhances motion controllability and naturalness
+- **Precise Semantic Compliance**: Complex scene understanding, multi-object generation, better restoring creative intentions
+- **Efficient Compression Technology**: 5B version with high compression ratio VAE, memory optimization, supports mixed training
+
+## Wan2.2 Open Source Model Versions
+
+The Wan2.2 series models are based on the Apache 2.0 open source license and support commercial use. The Apache 2.0 license allows you to freely use, modify, and distribute these models, including for commercial purposes, as long as you retain the original copyright notice and license text.
+
+| Model Type | Model Name | Parameters | Main Function | Model Repository |
+|------------|------------|------------|---------------|-----------------|
+| Hybrid Model | Wan2.2-TI2V-5B | 5B | Hybrid version supporting both text-to-video and image-to-video, a single model meets two core task requirements | 🤗 [Wan2.2-TI2V-5B](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B) |
+| Image-to-Video | Wan2.2-I2V-A14B | 14B | Converts static images into dynamic videos, maintaining content consistency and smooth dynamic process | 🤗 [Wan2.2-I2V-A14B](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B) |
+| Text-to-Video | Wan2.2-T2V-A14B | 14B | Generates high-quality videos from text descriptions, with cinematic-level aesthetic control and precise semantic compliance | 🤗 [Wan2.2-T2V-A14B](https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B) |
+
+## ComfyOrg Wan2.2 Live Streams
+
+For ComfyUI Wan2.2 usage, we have conducted live streams, which you can view to learn how to use them.
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/Z0yo16LzReA?si=I-BlUfktxqt9URQk"
+  title="ComfyUI Wan2.2 Live Streams"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/z62QLQ3XqSA?si=yUenvPa9Q4-VX28M"
+  title="ComfyUI Wan2.2 Deep Dive"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/0fyZhXga8P8?si=PMv9xQLP32wP8Ni9"
+  title="ComfyUI Wan2.2 Deep Dive #2"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+
+This tutorial will use the [🤗 Comfy-Org/Wan_2.2_ComfyUI_Repackaged](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged) version.
+
+<UpdateReminder/>
+
+![Wan2.2 template](/images/tutorial/video/wan/wan2_2/template.jpg)
+
+## Wan2.2 TI2V 5B Hybrid Version Workflow Example
+
+<Tip>
+  The Wan2.2 5B version should fit well on 8GB vram with the ComfyUI native offloading.
+</Tip>
+
+### 1. Download Workflow File
+
+Please update your ComfyUI to the latest version, and through the menu `Workflow` -> `Browse Templates` -> `Video`, find "Wan2.2 5B video generation" to load the workflow.
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan_2_2_5B_t2v.mp4"
+></video>
+
+<a className="prose"  target='_blank'  href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_5B_ti2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow File</p>
+</a>
+
+<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=video_wan2_2_5B_ti2v&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
+### 2. Manually Download Models
+
+**Diffusion Model**
+- [wan2.2_ti2v_5B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors)
+
+**VAE**
+- [wan2.2_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors)
+
+**Text Encoder**   
+- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
+
+```
+ComfyUI/
+├───📂 models/
+│   ├───📂 diffusion_models/
+│   │   └───wan2.2_ti2v_5B_fp16.safetensors
+│   ├───📂 text_encoders/
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors 
+│   └───📂 vae/
+│       └── wan2.2_vae.safetensors
+```
+
+### 3. Follow the Steps
+![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_5b_t2v.jpg)
+
+1. Ensure the `Load Diffusion Model` node loads the `wan2.2_ti2v_5B_fp16.safetensors` model.
+2. Ensure the `Load CLIP` node loads the `umt5_xxl_fp8_e4m3fn_scaled.safetensors` model.
+3. Ensure the `Load VAE` node loads the `wan2.2_vae.safetensors` model.
+4. (Optional) If you need to perform image-to-video generation, you can use the shortcut Ctrl+B to enable the `Load image` node to upload an image.
+5. (Optional) In the `Wan22ImageToVideoLatent` node, you can adjust the size settings and the total number of video frames (`length`).
+6. (Optional) If you need to modify the prompts (positive and negative), please do so in the `CLIP Text Encoder` node at step 5.
+7. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute video generation.
+
+## Wan2.2 14B T2V Text-to-Video Workflow Example
+
+### 1. Workflow File
+
+Please update your ComfyUI to the latest version, and through the menu `Workflow` -> `Browse Templates` -> `Video`, find "Wan2.2 14B T2V" to load the workflow.
+
+Or update your ComfyUI to the latest version, then download the following video and drag it into ComfyUI to load the workflow.
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan_2_2_14B_t2v.mp4"
+></video>
+
+<a className="prose"  target='_blank'  href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_t2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow File</p>
+</a>
+
+<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=video_wan2_2_14B_t2v&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
+### 2. Manually Download Models
+
+**Diffusion Model**
+- [wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors)
+- [wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors)
+
+**VAE**
+- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors)
+
+**Text Encoder**   
+- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
+
+
+```
+ComfyUI/
+├───📂 models/
+│   ├───📂 diffusion_models/
+│   │   ├─── wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors
+│   │   └─── wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors
+│   ├───📂 text_encoders/
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors 
+│   └───📂 vae/
+│       └── wan_2.1_vae.safetensors
+```
+
+### 3. Follow the Steps
+![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_t2v.jpg)
+
+1. Ensure the first `Load Diffusion Model` node loads the `wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors` model.
+2. Ensure the second `Load Diffusion Model` node loads the `wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors` model.
+3. Ensure the `Load CLIP` node loads the `umt5_xxl_fp8_e4m3fn_scaled.safetensors` model.
+4. Ensure the `Load VAE` node loads the `wan_2.1_vae.safetensors` model.
+5. (Optional) In the `EmptyHunyuanLatentVideo` node, you can adjust the size settings and the total number of video frames (`length`).
+6. (Optional) If you need to modify the prompts (positive and negative), please do so in the `CLIP Text Encoder` node at step 5.
+7. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute video generation.
+
+## Wan2.2 14B I2V Image-to-Video Workflow Example
+
+### 1. Workflow File
+
+Please update your ComfyUI to the latest version, and through the menu `Workflow` -> `Browse Templates` -> `Video`, find "Wan2.2 14B I2V" to load the workflow.
+
+Or update your ComfyUI to the latest version, then download the following video and drag it into ComfyUI to load the workflow.
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan_2_2_14B_i2v.mp4"
+></video>
+
+<a className="prose"  target='_blank'  href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_i2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow File</p>
+</a>
+
+<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=video_wan2_2_14B_i2v&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
+You can use the following image as input:
+![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/input.jpg)
+
+### 2. Manually Download Models
+
+**Diffusion Model**
+- [wan2.2_i2v_high_noise_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors)
+- [wan2.2_i2v_low_noise_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors)
+
+**VAE**
+- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors)
+
+**Text Encoder**   
+- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
+
+```
+ComfyUI/
+├───📂 models/
+│   ├───📂 diffusion_models/
+│   │   ├─── wan2.2_i2v_low_noise_14B_fp16.safetensors
+│   │   └─── wan2.2_i2v_high_noise_14B_fp16.safetensors
+│   ├───📂 text_encoders/
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors 
+│   └───📂 vae/
+│       └── wan_2.1_vae.safetensors
+```
+### 3. Follow the Steps
+![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_i2v.jpg)
+
+1. Make sure the first `Load Diffusion Model` node loads the `wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors` model.
+2. Make sure the second `Load Diffusion Model` node loads the `wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors` model.
+3. Make sure the `Load CLIP` node loads the `umt5_xxl_fp8_e4m3fn_scaled.safetensors` model.
+4. Make sure the `Load VAE` node loads the `wan_2.1_vae.safetensors` model.
+5. In the `Load Image` node, upload the image to be used as the initial frame.
+6. If you need to modify the prompts (positive and negative), do so in the `CLIP Text Encoder` node at step 6.
+7. (Optional) In `EmptyHunyuanLatentVideo`, you can adjust the size settings and the total number of video frames (`length`).
+8. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute video generation.
+
+## Wan2.2 14B FLF2V Workflow Example
+
+The first and last frame workflow uses the same model locations as the I2V section.
+
+### 1. Workflow and Input Material Preparation
+
+Download the video or the JSON workflow below and open it in ComfyUI.
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan22_14B_flf2v.mp4"
+></video>
+
+<a className="prose"  target='_blank'  href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_flf2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow</p>
+</a>
+
+<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=video_wan2_2_14B_flf2v&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
+Download the following images as input materials:
+
+![Input Material](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan22_14B_flf2v_start_image.png)
+![Input Material](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/2.2/wan22_14B_flf2v_end_image.png)
+
+### 2. Follow the Steps
+
+![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_flf2v.jpg)
+
+1. Upload the image to be used as the starting frame in the first `Load Image` node.
+2. Upload the image to be used as the ending frame in the second `Load Image` node.
+3. Adjust the size settings in the `WanFirstLastFrameToVideo` node.
+    - By default, a relatively small size is set to prevent low VRAM users from consuming too many resources.
+    - If you have enough VRAM, you can try a resolution around 720P.
+4. Write appropriate prompts according to your first and last frames.
+5. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute video generation.
+
+## Community Resources
+
+### GGUF Versions
+
+- [bullerwins/Wan2.2-I2V-A14B-GGUF/](https://huggingface.co/bullerwins/Wan2.2-I2V-A14B-GGUF/)
+- [bullerwins/Wan2.2-T2V-A14B-GGUF](https://huggingface.co/bullerwins/Wan2.2-T2V-A14B-GGUF)
+- [QuantStack/Wan2.2 GGUFs](https://huggingface.co/collections/QuantStack/wan22-ggufs-6887ec891bdea453a35b95f3)
+
+**Custom Node**
+[City96/ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF)
+
+### WanVideoWrapper
+[Kijai/ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper)
+
+**Wan2.2 models**
+[Kijai/WanVideo_comfy_fp8_scaled](https://hf-mirror.com/Kijai/WanVideo_comfy_fp8_scaled)
+
+**Wan2.1 models**
+[Kijai/WanVideo_comfy/Lightx2v](https://huggingface.co/Kijai/WanVideo_comfy/tree/main/Lightx2v)
+
+**Lightx2v 4steps LoRA**
+- [Wan2.2-T2V-A14B-4steps-lora-rank64-V1](https://huggingface.co/lightx2v/Wan2.2-Lightning/tree/main/Wan2.2-T2V-A14B-4steps-lora-rank64-V1)
