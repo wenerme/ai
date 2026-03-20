@@ -38,6 +38,7 @@ Creates a response using the OpenResponses API with multiple consumption pattern
 | `user`               | `string`                                   | No       | End-user identifier                  |
 | `sessionId`          | `string`                                   | No       | Session identifier                   |
 | `store`              | `boolean`                                  | No       | Store request data                   |
+| `context`            | `ContextInput<ToolContextMap>`             | No       | Tool context keyed by tool name      |
 
 \*Either `model` or `models` is required.
 
@@ -146,6 +147,15 @@ getToolStream(): AsyncIterableIterator<ToolStreamEvent>
 
 Stream tool deltas and preliminary results.
 
+#### getContextUpdates()
+
+```typescript
+getContextUpdates(): AsyncGenerator<ToolContextMap<TTools>>
+```
+
+Stream context snapshots whenever a tool calls
+`setContext()`. Completes when tool execution finishes.
+
 #### cancel()
 
 ```typescript
@@ -175,6 +185,7 @@ Create a typed tool with Zod schema validation.
 | `inputSchema`    | `ZodObject`               | Yes      | Input parameter schema                 |
 | `outputSchema`   | `ZodType`                 | No       | Output schema                          |
 | `eventSchema`    | `ZodType`                 | No       | Event schema (triggers generator mode) |
+| `contextSchema`  | `ZodObject`               | No       | Context data this tool needs           |
 | `execute`        | `function \| false`       | Yes      | Execute function or false for manual   |
 | `nextTurnParams` | `NextTurnParamsFunctions` | No       | Parameters to modify next turn         |
 
@@ -194,14 +205,20 @@ type Tool =
 Regular tool with execute function:
 
 ```typescript
-interface ToolWithExecute<TInput, TOutput> {
+interface ToolWithExecute<
+  TInput, TOutput, TContext, TName
+> {
   type: ToolType.Function;
   function: {
-    name: string;
+    name: TName;
     description?: string;
     inputSchema: TInput;
     outputSchema?: TOutput;
-    execute: (params: z.infer<TInput>, context?: TurnContext) => Promise<z.infer<TOutput>>;
+    contextSchema?: ZodObject;
+    execute: (
+      params: z.infer<TInput>,
+      context: ToolExecuteContext<TName, TContext>,
+    ) => Promise<z.infer<TOutput>>;
   };
 }
 ```
@@ -211,15 +228,21 @@ interface ToolWithExecute<TInput, TOutput> {
 Generator tool with eventSchema:
 
 ```typescript
-interface ToolWithGenerator<TInput, TEvent, TOutput> {
+interface ToolWithGenerator<
+  TInput, TEvent, TOutput, TContext, TName
+> {
   type: ToolType.Function;
   function: {
-    name: string;
+    name: TName;
     description?: string;
     inputSchema: TInput;
     eventSchema: TEvent;
     outputSchema: TOutput;
-    execute: (params: z.infer<TInput>, context?: TurnContext) => AsyncGenerator<z.infer<TEvent>>;
+    contextSchema?: ZodObject;
+    execute: (
+      params: z.infer<TInput>,
+      context: ToolExecuteContext<TName, TContext>,
+    ) => AsyncGenerator<z.infer<TEvent>>;
   };
 }
 ```
@@ -252,6 +275,45 @@ interface TurnContext {
   numberOfTurns: number;
   turnRequest?: OpenResponsesRequest;
 }
+```
+
+### ToolExecuteContext
+
+Flat context passed to tool execute functions.
+Merges `TurnContext` fields with tool-specific context:
+
+```typescript
+type ToolExecuteContext<TName, TContext> =
+  TurnContext & {
+    tools: {
+      readonly [K in TName]: Readonly<TContext>;
+    };
+    setContext(partial: Partial<TContext>): void;
+  };
+```
+
+### ToolContextMap
+
+Context map for `callModel`'s `context` option,
+keyed by tool name:
+
+```typescript
+type ToolContextMap<T extends readonly Tool[]> = {
+  [K in T[number] as K['function']['name']]:
+    InferToolContext<K>;
+};
+```
+
+### ContextInput
+
+Context can be static, a sync function,
+or an async function:
+
+```typescript
+type ContextInput<T> =
+  | T
+  | ((turn: TurnContext) => T)
+  | ((turn: TurnContext) => Promise<T>);
 ```
 
 ### NextTurnParamsContext
@@ -463,19 +525,27 @@ export { fromChatMessages, toChatMessage, fromClaudeMessages, toClaudeMessage } 
 // Stop condition helpers
 export { stepCountIs, hasToolCall, maxTokensUsed, maxCost, finishReasonIs } from '@openrouter/sdk';
 
+// Context helpers
+export {
+  buildToolExecuteContext,
+  ToolContextStore,
+} from '@openrouter/sdk';
+
 // Types
 export type {
   CallModelInput,
+  ContextInput,
   Tool,
   ToolWithExecute,
   ToolWithGenerator,
   ManualTool,
+  ToolExecuteContext,
+  ToolContextMap,
   TurnContext,
   ParsedToolCall,
   ToolExecutionResult,
   StopCondition,
   StopWhen,
-  MaxToolRounds,
   InferToolInput,
   InferToolOutput,
   InferToolEvent,

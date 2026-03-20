@@ -246,9 +246,11 @@ for await (const toolCall of result.getToolCallsStream()) {
 }
 ```
 
-## TurnContext
+## Execute Context
 
-Tool execute functions receive a `TurnContext` with conversation state:
+Tool execute functions receive a flat context object as
+their second argument. It merges `TurnContext` fields
+with a `tools` map and a `setContext()` method:
 
 ```typescript
 const contextAwareTool = tool({
@@ -256,22 +258,163 @@ const contextAwareTool = tool({
   inputSchema: z.object({ data: z.string() }),
   outputSchema: z.object({ result: z.string() }),
   execute: async (params, context) => {
-    console.log('Turn number:', context?.numberOfTurns);
-    console.log('Message history:', context?.turnRequest?.input);
-    console.log('Model:', context?.turnRequest?.model);
+    // TurnContext fields are available directly
+    console.log('Turn:', context.numberOfTurns);
+    console.log('History:', context.turnRequest?.input);
+    console.log('Model:', context.turnRequest?.model);
 
-    return { result: `Processed on turn ${context?.numberOfTurns}` };
+    return {
+      result: `Processed on turn ${context.numberOfTurns}`,
+    };
   },
 });
 ```
 
-### TurnContext Properties
+### Context Properties
 
-| Property        | Type                                         | Description                                                   |
-| --------------- | -------------------------------------------- | ------------------------------------------------------------- |
-| `numberOfTurns` | `number`                                     | Current turn number (1-indexed)                               |
-| `turnRequest`   | `OpenResponsesRequest \| undefined`          | Current request object containing messages and model settings |
-| `toolCall`      | `OpenResponsesFunctionToolCall \| undefined` | The specific tool call being executed                         |
+| Property        | Type                                         | Description                             |
+| --------------- | -------------------------------------------- | --------------------------------------- |
+| `numberOfTurns` | `number`                                     | Current turn number (1-indexed)         |
+| `turnRequest`   | `OpenResponsesRequest \| undefined`          | Current request object                  |
+| `toolCall`      | `OpenResponsesFunctionToolCall \| undefined` | The tool call being executed            |
+| `tools`         | `{ [toolName]: Readonly<TContext> }`         | This tool's context data (read-only)    |
+| `setContext`    | `(partial: Partial<TContext>) => void`       | Mutate this tool's context in the store |
+
+## Tool Context
+
+Tools can declare a `contextSchema` to receive typed,
+persistent context data from the caller. Context is
+keyed by tool name and persists across turns.
+
+### Declaring contextSchema
+
+```typescript
+const weatherTool = tool({
+  name: 'get_weather',
+  description: 'Get weather for a location',
+  inputSchema: z.object({
+    location: z.string(),
+  }),
+  outputSchema: z.object({
+    temperature: z.number(),
+  }),
+  // Declare what context this tool needs
+  contextSchema: z.object({
+    apiKey: z.string(),
+    units: z.enum(['celsius', 'fahrenheit']),
+  }),
+  execute: async (params, context) => {
+    // Access this tool's context via the tools map
+    const { apiKey, units } = context.tools.get_weather;
+
+    const weather = await fetchWeather(
+      params.location,
+      apiKey,
+      units,
+    );
+    return { temperature: weather.temp };
+  },
+});
+```
+
+### Providing Context in callModel
+
+Pass context keyed by tool name:
+
+```typescript
+const result = openrouter.callModel({
+  model: 'openai/gpt-5-nano',
+  input: 'What is the weather in Tokyo?',
+  tools: [weatherTool, dbTool] as const,
+
+  // Static context — keyed by tool name
+  context: {
+    get_weather: { apiKey: 'sk-...', units: 'celsius' },
+    db_query: { connectionString: 'postgres://...' },
+  },
+});
+```
+
+### Dynamic Context
+
+Use an async function for one-time initialization
+that needs to fetch data:
+
+```typescript
+const result = openrouter.callModel({
+  model: 'openai/gpt-5-nano',
+  input: 'What is the weather?',
+  tools: [weatherTool] as const,
+
+  // Resolved once at turn 0 to seed the store
+  context: async () => ({
+    get_weather: {
+      apiKey: await fetchApiKey(),
+      units: 'celsius',
+    },
+  }),
+});
+```
+
+<Note>
+  `resolveContext` runs once at turn 0 to seed the
+  context store. For per-turn mutations, use
+  `setContext()` inside your tool's `execute` function.
+</Note>
+
+### Mutating Context with setContext
+
+Tools can update their own context using `setContext()`.
+Changes persist across turns via the shared store and
+are visible immediately — `context.tools[name]` is a
+live getter that always reads the latest values:
+
+```typescript
+const authTool = tool({
+  name: 'auth',
+  inputSchema: z.object({ action: z.string() }),
+  contextSchema: z.object({
+    token: z.string(),
+    refreshCount: z.number(),
+  }),
+  execute: async (params, context) => {
+    const { token } = context.tools.auth;
+
+    if (isExpired(token)) {
+      const newToken = await refreshToken(token);
+      // Mutate own context — persists to next turn
+      context.setContext({
+        token: newToken,
+        refreshCount:
+          context.tools.auth.refreshCount + 1,
+      });
+    }
+
+    return { success: true };
+  },
+});
+```
+
+### Observing Context Changes
+
+Use `getContextUpdates()` on `ModelResult` to observe
+context mutations in real time:
+
+```typescript
+const result = openrouter.callModel({
+  model: 'openai/gpt-5-nano',
+  input: 'Authenticate and fetch data',
+  tools: [authTool] as const,
+  context: {
+    auth: { token: 'initial', refreshCount: 0 },
+  },
+});
+
+for await (const snapshot of result.getContextUpdates()) {
+  console.log('Context changed:', snapshot);
+  // { auth: { token: 'new-token', refreshCount: 1 } }
+}
+```
 
 ## Tool Execution
 
