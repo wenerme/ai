@@ -1,19 +1,8 @@
 ---
-sidebar_label: 'Get started'
 description: 'Step-by-step guide to create your first BigQuery ClickPipe.'
-slug: /integrations/clickpipes/bigquery/get-started
 title: 'Creating your first BigQuery ClickPipe'
 doc_type: 'guide'
 ---
-
-import IntroClickPipe from '@site/docs/_snippets/clickpipes/bigquery/_intro.md';
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import cp_step1 from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_step1.png';
-import cp_step2 from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_step2.png';
-import cp_step3 from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_step3.png';
-import cp_step4 from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_step4.png';
-import cp_step5 from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_step5.png';
-import Image from '@theme/IdealImage';
 
 # Creating your first BigQuery ClickPipe {#creating-your-first-bigquery-clickpipe}
 

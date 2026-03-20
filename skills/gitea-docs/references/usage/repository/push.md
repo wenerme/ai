@@ -1,7 +1,5 @@
 ---
 date: "2020-07-06T16:00:00+02:00"
-slug: "push"
-sidebar_position: 15
 aliases:
   - /en-us/push-to-create
   - /en-us/push-options
@@ -18,7 +16,7 @@ When you push commits to a non-default branch for the first time,
 you will receive a link you can click on to visit the compare page of your branch compared to your main branch.
 From there, it's easy to create a pull request, even if you want to target another branch.
 
-![Gitea Push Hint](/gitea-push-hint.png)
+[Gitea Push Hint]
 
 ## Push Options
 

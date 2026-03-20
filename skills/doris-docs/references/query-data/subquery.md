@@ -246,11 +246,9 @@ where exists (
 
 If the `exists` clause in this SQL is directly implemented using `left semi join`, according to the semantics of `left semi join`, only rows from `t1` that satisfy `t1.c2 = t2.c2` will be output. However, rows that actually satisfy the condition `t1.c1 > 0` should also be output. To achieve this, the mechanism of `Mark Join` is introduced.
 
-:::info Note
+> **info**: Note
 
 `right semi join` is similar but differs in the left and right tables. Here, we use `left semi join` as an example.
-
-:::
 
 Example SQL is as follows:
 

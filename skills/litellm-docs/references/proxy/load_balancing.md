@@ -1,17 +1,11 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Proxy - Load Balancing
 Load balance multiple instances of the same model
 
 The proxy will handle routing requests (using LiteLLM's Router). **Set `rpm` in the config if you want maximize throughput**
 
-
-:::info
-
-For more details on routing strategies / params, see [Routing](../routing.md)
-
-:::
+> **info**: For more details on routing strategies / params, see [Routing](../routing.md)
 
 ## How Load Balancing Works
 
@@ -29,10 +23,8 @@ LiteLLM automatically distributes requests across multiple deployments of the sa
 | **latency-based-routing** | Routes to fastest responding deployment | Latency-critical applications |
 | **cost-based-routing** | Routes to deployment with lowest cost | Cost-sensitive applications |
 
-:::tip Deployment Priority
+> **tip**: Deployment Priority
 Use the `order` parameter to prioritize specific deployments. [See Deployment Ordering](#deployment-ordering-priority) for details.
-:::
-
 
 ## Quick Start - Load Balancing
 #### Step 1 - Set deployments on config
@@ -73,9 +65,7 @@ router_settings:
 
 Strictly enforce RPM/TPM limits set on deployments. When limits are exceeded, requests are blocked **before** reaching the LLM provider with a `429 Too Many Requests` error.
 
-:::info
-By default, `rpm` and `tpm` values are only used for **routing decisions** (picking deployments with capacity). With `enforce_model_rate_limits`, they become **hard limits**.
-:::
+> **info**: By default, `rpm` and `tpm` values are only used for **routing decisions** (picking deployments with capacity). With `enforce_model_rate_limits`, they become **hard limits**.
 
 ### Quick Start
 
@@ -129,10 +119,7 @@ router_settings:
   redis_password: your-password
 ```
 
-
-:::info
-Detailed information about [routing strategies can be found here](../routing)
-:::
+> **info**: Detailed information about [routing strategies can be found here](../routing)
 
 #### Step 2: Start Proxy with config
 
@@ -147,10 +134,6 @@ Here requests with model=gpt-3.5-turbo will be routed across multiple instances 
 👉 Key Change: `model="gpt-3.5-turbo"`
 
 **Check the `model_id` in Response Headers to make sure the requests are being load balanced**
-
-<Tabs>
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -171,9 +154,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -188,9 +168,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
 
-</Tabs>
 ### Test - Loadbalancing
 
 In this request, the following will occur:
@@ -211,7 +189,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 ```
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/6b8806b45f970cb2446654d2c379f8dcaa93ce3c/litellm/router.py#L2535)
-
 
 ## Load Balancing using multiple litellm instances (Kubernetes, Auto Scaling)
 
@@ -255,8 +232,6 @@ model_group_alias: {
 These aliases are shown on `/v1/models`, `/v1/model/info`, and `/v1/model_group/info` by default.
 
 litellm.Router() settings can be set under `router_settings`. You can set `model_group_alias`, `routing_strategy`, `num_retries`,`timeout` . See all Router supported params [here](https://github.com/BerriAI/litellm/blob/1b942568897a48f014fa44618ec3ce54d7570a46/litellm/router.py#L64)
-
-
 
 ### Usage
 
@@ -302,7 +277,6 @@ router_settings:
 ```python
 model_group_alias: Optional[Dict[str, Union[str, RouterModelGroupAliasItem]]] = {}
 
-
 class RouterModelGroupAliasItem(TypedDict):
     model: str
     hidden: bool  # if 'True', don't return on `/v1/models`, `/v1/model/info`, `/v1/model_group/info`
@@ -330,9 +304,7 @@ router_settings:
   enable_pre_call_checks: true  # 👈 Required for 'order' to work
 ```
 
-:::important
-The `order` parameter requires `enable_pre_call_checks: true` in `router_settings`.
-:::
+> **important**: The `order` parameter requires `enable_pre_call_checks: true` in `router_settings`.
 
 If `order=1` deployment is unavailable (e.g., rate-limited), the router falls back to `order=2` deployments.
 

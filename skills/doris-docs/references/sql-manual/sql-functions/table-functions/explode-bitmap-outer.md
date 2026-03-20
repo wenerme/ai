@@ -24,7 +24,6 @@ EXPLODE_BITMAP_OUTER(<bitmap>)
 - If `<bitmap>` is NULL, 1 row with NULL is returned.
 - If `<bitmap>` is empty, 1 row with NULL is returned.
 
-
 ## Usage Notes
 1. If the `<bitmap>` parameter is not of type [`BITMAP`](../../basic-element/sql-data-types/aggregate/BITMAP.md), an error will be reported.
 

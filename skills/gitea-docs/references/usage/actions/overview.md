@@ -1,7 +1,5 @@
 ---
 date: "2023-04-27T15:00:00+08:00"
-slug: "overview"
-sidebar_position: 1
 ---
 
 # Overview

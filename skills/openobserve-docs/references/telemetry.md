@@ -39,10 +39,8 @@ We use Segment, a platform for data collection and management, to collect usage 
 | time_zone                 | UTC offset of timezone                | 0                     |
 | host_name                 | Name of the host                      | ziox-router-6f9c6c549f|
 
-
 Note: This list may change upon new releases as new features are added.
 
 ## How do I disable telemetry collection
 
 You can set environment variable ZO_TELEMETRY=false to disable telemetry collection
-

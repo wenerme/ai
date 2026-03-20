@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /embeddings
 
@@ -60,18 +59,12 @@ litellm --config /path/to/config.yaml
 
 ### Test 
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/embeddings' \
 --header 'Authorization: Bearer sk-1234' \
 --header 'Content-Type: application/json' \
 --data '{"input": ["Academia.edu uses"], "model": "textembedding-gecko", "encoding_format": "base64"}'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI (python)">
 
 ```python
 from openai import OpenAI
@@ -86,8 +79,6 @@ client.embeddings.create(
   encoding_format="float"
 )
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain Embeddings">
 
 ```python
 from langchain_openai import OpenAIEmbeddings
@@ -101,16 +92,10 @@ query_result = embeddings.embed_query(text)
 print(f"VERTEX AI EMBEDDINGS")
 print(query_result[:5])
 ```
-</TabItem>
-</Tabs>
-
 
 ## Image Embeddings
 
 For models that support image embeddings, you can pass in a base64 encoded image string to the `input` param.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import embedding
@@ -122,9 +107,6 @@ os.environ["COHERE_API_KEY"] = ""
 response = embedding(model="cohere/embed-english-v3.0", input=["<base64 encoded image>"])
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Setup config.yaml 
 
 ```yaml
@@ -134,7 +116,6 @@ model_list:
       model: cohere/embed-english-v3.0
       api_key: os.environ/COHERE_API_KEY
 ```
-
 
 2. Start proxy
 
@@ -155,20 +136,14 @@ curl -X POST 'http://0.0.0.0:4000/v1/embeddings' \
   "input": ["<base64 encoded image>"]
 }'
 ```
-</TabItem>
-</Tabs>
 
 ## Input Params for `litellm.embedding()`
 
-
-:::info
-
-Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
+> **info**: Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
 
 [**See Reserved Params**](https://github.com/BerriAI/litellm/blob/2f5f85cb52f36448d1f8bbfbd3b8af8167d0c4c8/litellm/main.py#L3130)
 
 [**See Example**](#example)
-:::
 
 ### Required Fields
 
@@ -401,8 +376,6 @@ Set the `input_type` parameter to one of the following values:
 
 > **Warning:** Incorrect usage of `input_type` can lead to a significant drop in retrieval performance.
 
-
-
 All models listed [here](https://build.nvidia.com/explore/retrieval) are supported:
 
 | Model Name         | Function Call                                         |
@@ -416,7 +389,6 @@ All models listed [here](https://build.nvidia.com/explore/retrieval) are support
 | nvidia/llama-3.2-nv-embedqa-1b-v2 | `embedding(model="nvidia_nim/nvidia/llama-3.2-nv-embedqa-1b-v2", input)` |
 | snowflake/arctic-embed-l | `embedding(model="nvidia_nim/snowflake/arctic-embed-l", input)` |
 | baai/bge-m3 | `embedding(model="nvidia_nim/baai/bge-m3", input)` |
-
 
 ## HuggingFace Embedding Models
 LiteLLM supports all Feature-Extraction + Sentence Similarity Embedding models: https://huggingface.co/models?pipeline_tag=feature-extraction
@@ -467,7 +439,6 @@ response = embedding(
 | microsoft/codebert-base    | `embedding('huggingface/microsoft/codebert-base', input=input)`               | `os.environ['HUGGINGFACE_API_KEY']`                                             |
 | BAAI/bge-large-zh | `embedding('huggingface/BAAI/bge-large-zh', input=input)`         | `os.environ['HUGGINGFACE_API_KEY']`                                             |
 | any-hf-embedding-model | `embedding('huggingface/hf-embedding-model', input=input)`         | `os.environ['HUGGINGFACE_API_KEY']`                                             |
-
 
 ## Mistral AI Embedding Models
 All models listed here https://docs.mistral.ai/platform/endpoints are supported
@@ -526,9 +497,6 @@ All models listed [here](https://ai.google.dev/gemini-api/docs/models/gemini) ar
 
 **Supported MIME types:** `image/png`, `image/jpeg`, `audio/mpeg`, `audio/wav`, `video/mp4`, `video/quicktime`, `application/pdf`
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import embedding
 import os
@@ -545,9 +513,6 @@ response = embedding(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl -X POST http://localhost:4000/embeddings \
   -H "Authorization: Bearer sk-1234" \
@@ -561,11 +526,7 @@ curl -X POST http://localhost:4000/embeddings \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 **Optional:** `dimensions` maps to Gemini's `outputDimensionality`.
-
 
 ## Vertex AI Embedding Models
 
@@ -622,13 +583,9 @@ All models listed here https://docs.voyageai.com/embeddings/#models-and-specific
 
 ### Provider-specific Params
 
-
-:::info
-
-Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
+> **info**: Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
 
 [**See Reserved Params**](https://github.com/BerriAI/litellm/blob/2f5f85cb52f36448d1f8bbfbd3b8af8167d0c4c8/litellm/main.py#L3130)
-:::
 
 ### **Example**
 
@@ -641,9 +598,6 @@ Cohere v3 Models have a required parameter: `input_type`, it can be one of the f
 
 https://txt.cohere.com/introducing-embed-v3/
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import embedding
 os.environ["COHERE_API_KEY"] = "cohere key"
@@ -655,8 +609,6 @@ response = embedding(
     input_type="search_document" # 👈 PROVIDER-SPECIFIC PARAM
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **via config**
 
@@ -680,8 +632,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/embeddings' \
   "input_type": "search_document" # 👈 PROVIDER-SPECIFIC PARAM
 }'
 ```
-</TabItem>
-</Tabs>
 
 ## Nebius AI Studio Embedding Models
 
@@ -705,5 +655,4 @@ All supported models can be found here: https://studio.nebius.ai/models/embeddin
 |--------------------------|-----------------------------------------------------------------|
 | BAAI/bge-en-icl | `embedding(model="nebius/BAAI/bge-en-icl", input)`              | 
 | BAAI/bge-multilingual-gemma2 | `embedding(model="nebius/BAAI/bge-multilingual-gemma2", input)` | 
-| intfloat/e5-mistral-7b-instruct | `embedding(model="nebius/intfloat/e5-mistral-7b-instruct", input)`      | 
-
+| intfloat/e5-mistral-7b-instruct | `embedding(model="nebius/intfloat/e5-mistral-7b-instruct", input)`      |

@@ -53,7 +53,6 @@ The user executing this SQL command must have at least the following permissions
 |:------------------|:----------|:--------------------------------|
 | Select_priv       | Table     | SHOW CREATE TABLE belongs to table SELECT operation |
 
-
 ## Examples
 
 1. View the creation statement of a table

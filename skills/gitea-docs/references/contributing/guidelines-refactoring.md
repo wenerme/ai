@@ -1,7 +1,5 @@
 ---
 date: "2023-02-14T00:00:00+00:00"
-slug: "guidelines-refactoring"
-sidebar_position: 40
 aliases:
   - /en-us/guidelines-refactoring
 ---

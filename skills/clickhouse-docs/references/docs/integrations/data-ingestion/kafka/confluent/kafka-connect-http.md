@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'HTTP Sink Connector for Confluent Platform'
-sidebar_position: 4
-slug: /integrations/kafka/cloud/confluent/http
 description: 'Using HTTP Connector Sink with Kafka Connect and ClickHouse'
 title: 'Confluent HTTP Sink Connector'
 doc_type: 'guide'
@@ -9,21 +6,12 @@ keywords: ['Confluent HTTP Sink Connector', 'HTTP Sink ClickHouse', 'Kafka HTTP 
 ', 'ClickHouse HTTP integration', 'Confluent Cloud HTTP Sink']
 ---
 
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import createHttpSink from '@site/static/images/integrations/data-ingestion/kafka/confluent/create_http_sink.png';
-import httpAuth from '@site/static/images/integrations/data-ingestion/kafka/confluent/http_auth.png';
-import httpAdvanced from '@site/static/images/integrations/data-ingestion/kafka/confluent/http_advanced.png';
-import createMessageInTopic from '@site/static/images/integrations/data-ingestion/kafka/confluent/create_message_in_topic.png';
-
 # Confluent HTTP sink connector
 The HTTP Sink Connector is data type agnostic and thus doesn't need a Kafka schema as well as supporting ClickHouse specific data types such as Maps and Arrays. This additional flexibility comes at a slight increase in configuration complexity.
 
 Below we describe a simple installation, pulling messages from a single Kafka topic and inserting rows into a ClickHouse table.
 
-:::note
-  The HTTP Connector is distributed under the [Confluent Enterprise License](https://docs.confluent.io/kafka-connect-http/current/overview.html#license).
-:::
+> **note**: The HTTP Connector is distributed under the [Confluent Enterprise License](https://docs.confluent.io/kafka-connect-http/current/overview.html#license).
 
 ### Quick start steps {#quick-start-steps}
 
@@ -39,9 +27,7 @@ If you use the confluent-hub installation method, your local configuration files
 
 * **Confluent Cloud:** A fully managed version of HTTP Sink is available for those using Confluent Cloud for their Kafka hosting. This requires your ClickHouse environment to be accessible from Confluent Cloud.
 
-:::note
-  The following examples are using Confluent Cloud.
-:::
+> **note**: The following examples are using Confluent Cloud.
 
 #### 3. Create destination table in ClickHouse {#3-create-destination-table-in-clickhouse}
 
@@ -64,8 +50,6 @@ ORDER BY tuple()
 Create a Kafka topic and an instance of HTTP Sink Connector:
 <Image img={createHttpSink} size="sm" alt="Confluent Cloud interface showing how to create an HTTP Sink connector" border/>
 
-<br />
-
 Configure HTTP Sink Connector:
 * Provide the topic name you created
 * Authentication
@@ -74,12 +58,9 @@ Configure HTTP Sink Connector:
   * `Auth username` - ClickHouse username
   * `Auth password` - ClickHouse password
 
-:::note
-  This HTTP Url is error-prone. Ensure escaping is precise to avoid issues.
-:::
+> **note**: This HTTP Url is error-prone. Ensure escaping is precise to avoid issues.
 
 <Image img={httpAuth} size="lg" alt="Confluent Cloud interface showing authentication settings for the HTTP Sink connector" border/>
-<br/>
 
 * Configuration
   * `Input Kafka record value format`Depends on your source data but in most cases JSON or Avro. We assume `JSON` in the following settings.
@@ -96,8 +77,6 @@ Configure HTTP Sink Connector:
 #### 5. Testing the connectivity {#5-testing-the-connectivity}
 Create an message in a topic configured by your HTTP Sink
 <Image img={createMessageInTopic} size="md" alt="Confluent Cloud interface showing how to create a test message in a Kafka topic" border/>
-
-<br/>
 
 and verify the created message's been written to your ClickHouse instance.
 

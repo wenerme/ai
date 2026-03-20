@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Nebius AI Studio
 https://docs.nebius.com/studio/inference/quickstart
 
-:::tip
-
-**Litellm provides support to all models from Nebius AI Studio. To use a model, set `model=nebius/<any-model-on-nebius-ai-studio>` as a prefix for litellm requests. The full list of supported models is provided at https://studio.nebius.ai/ **
-
-:::
+> **tip**: **Litellm provides support to all models from Nebius AI Studio. To use a model, set `model=nebius/<any-model-on-nebius-ai-studio>` as a prefix for litellm requests. The full list of supported models is provided at https://studio.nebius.ai/ **
 
 ## API Key
 ```python
@@ -87,7 +82,6 @@ response = embedding(
 print(response)
 ```
 
-
 ## Usage with LiteLLM Proxy Server
 
 Here's how to call a Nebius AI Studio model with the LiteLLM Proxy Server
@@ -108,9 +102,9 @@ Here's how to call a Nebius AI Studio model with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -131,9 +125,9 @@ Here's how to call a Nebius AI Studio model with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -149,9 +143,9 @@ Here's how to call a Nebius AI Studio model with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
+  
 
 ## Supported Parameters
 

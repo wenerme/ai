@@ -156,4 +156,3 @@ where lineitem.o_orderkey = discount_orders.o_orderkey;
     UPDATE
 
 ## Best Practice
-

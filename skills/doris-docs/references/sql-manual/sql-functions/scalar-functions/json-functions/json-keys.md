@@ -19,7 +19,6 @@ JSON_KEYS(<json_object>[, <path>])
 ### Required Parameters
 - `<json_object>` JSON type, the JSON object from which keys need to be extracted.
 
-
 ### Optional Parameters
 - `<path>` String type, optional JSON path that specifies the JSON subdocument to check. If not provided, defaults to the root document.
 

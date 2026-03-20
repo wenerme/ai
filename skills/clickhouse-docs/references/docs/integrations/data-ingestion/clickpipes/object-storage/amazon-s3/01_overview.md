@@ -1,20 +1,8 @@
 ---
-sidebar_label: 'Overview'
 description: 'Seamlessly connect your object storage to ClickHouse Cloud.'
-slug: /integrations/clickpipes/object-storage/s3/overview
-sidebar_position: 1
 title: 'Integrating Amazon S3 with ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import S3svg from '@site/static/images/integrations/logos/amazon_s3_logo.svg';
-import DOsvg from '@site/static/images/integrations/logos/digitalocean.svg';
-import OVHpng from '@site/static/images/integrations/logos/ovh.png';
-import R2svg from '@site/static/images/integrations/logos/cloudflare.svg';
-import cp_advanced_settings from '@site/static/images/integrations/data-ingestion/clickpipes/cp_advanced_settings.png';
-import cp_iam from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/amazon-s3/cp_iam.png';
-import cp_credentials from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/amazon-s3/cp_credentials.png';
-import Image from '@theme/IdealImage';
 
 The S3 ClickPipe provides a fully-managed and resilient way to ingest data from Amazon S3 and S3-compatible object stores into ClickHouse Cloud. It supports both **one-time** and **continuous ingestion** with exactly-once semantics.
 
@@ -25,13 +13,11 @@ S3 ClickPipes can be deployed and managed manually using the ClickPipes UI, as w
 | Name                 | Logo                                                                                      | Details           |
 |----------------------|-------------------------------------------------------------------------------------------|-------------------|
 | **Amazon S3**            | <S3svg class="image" alt="Amazon S3 logo" style={{width: '2.5rem', height: 'auto'}}/>     | Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order) by default, but can be configured to [ingest files in any order](#continuous-ingestion-any-order). |
-| **Cloudflare R2** <br></br> _S3-compatible_ | <R2svg class="image" alt="Cloudflare R2 logo" style={{width: '2.5rem', height: 'auto'}}/> | Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
-| **DigitalOcean Spaces** <br></br> _S3-compatible_ | <DOsvg class="image" alt="Digital Ocean logo" style={{width: '2.5rem', height: 'auto'}}/> |  Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
-| **OVH Object Storage** <br></br> _S3-compatible_ | <Image img={OVHpng} alt="Cloud Storage logo" size="logo" border/>                         |  Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
+| **Cloudflare R2** </br> _S3-compatible_ | <R2svg class="image" alt="Cloudflare R2 logo" style={{width: '2.5rem', height: 'auto'}}/> | Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
+| **DigitalOcean Spaces** </br> _S3-compatible_ | <DOsvg class="image" alt="Digital Ocean logo" style={{width: '2.5rem', height: 'auto'}}/> |  Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
+| **OVH Object Storage** </br> _S3-compatible_ | <Image img={OVHpng} alt="Cloud Storage logo" size="logo" border/>                         |  Continuous ingestion requires [lexicographical order](#continuous-ingestion-lexicographical-order). Unordered mode isn't supported. |
 
-:::tip
-Due to differences in URL formats and API implementations across object storage service providers, not all S3-compatible services are supported out-of-the-box. If you're running into issues with a service that isn't listed above, please [reach out to our team](https://clickhouse.com/company/contact?loc=clickpipes).
-:::
+> **tip**: Due to differences in URL formats and API implementations across object storage service providers, not all S3-compatible services are supported out-of-the-box. If you're running into issues with a service that isn't listed above, please [reach out to our team](https://clickhouse.com/company/contact?loc=clickpipes).
 
 ## Supported formats {#supported-formats}
 
@@ -59,23 +45,17 @@ In this mode, the S3 ClickPipe does an initial load of **all files** in the spec
 
 #### Any order {#continuous-ingestion-any-order}
 
-:::note
-Unordered mode is **only** supported for Amazon S3 and is **not** supported for public buckets. It requires setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket.
-:::
+> **note**: Unordered mode is **only** supported for Amazon S3 and is **not** supported for public buckets. It requires setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket.
 
 It's possible to configure an S3 ClickPipe to ingest files that don't have an implicit order by setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket. This allows ClickPipes to listen for object created events and ingest any new files regardless of the file naming convention.
 
 In this mode, the S3 ClickPipe does an initial load of **all files** in the selected path, and then listens for `ObjectCreated:*` events in the queue that match the specified path. Any message for a previously seen file, file not matching the path, or event of a different type will be **ignored**.
 
-:::note
-Setting a prefix/postfix for events is optional. If you do, make sure it matches the path set for the clickpipe. S3 doesn't allow multiple overlapping notification rules for the same event types.
-:::
+> **note**: Setting a prefix/postfix for events is optional. If you do, make sure it matches the path set for the clickpipe. S3 doesn't allow multiple overlapping notification rules for the same event types.
 
 Files are ingested once the threshold configured in `max insert bytes` or `max file count` is reached, or after a configurable interval (by default, 30 seconds). It is **not possible** to start ingestion from a specific file or point in time — ClickPipes will always load all files in the selected path. If a DLQ is configured, failed messages will be reenqueued and reprocessed up to the number of times configured in the DLQ `maxReceiveCount` parameter.
 
-:::tip
-We strongly recommend configuring a **Dead-Letter-Queue (DLQ)** for the SQS queue, so it's easier to debug and retry failed messages.
-:::
+> **tip**: We strongly recommend configuring a **Dead-Letter-Queue (DLQ)** for the SQS queue, so it's easier to debug and retry failed messages.
 
 ##### SNS to SQS {#sns-to-sqs}
 
@@ -91,7 +71,7 @@ Object Storage ClickPipes follow the POSIX standard for file pattern matching. A
 |---------|-------------|---------|---------|
 | `?` | Matches exactly **one** character (excluding `/`) | `data-?.csv` | `data-1.csv`, `data-a.csv`, `data-x.csv` |
 | `*` | Matches **zero or more** characters (excluding `/`) | `data-*.csv` | `data-1.csv`, `data-001.csv`, `data-report.csv`, `data-.csv` |
-| `**` <br></br> Recursive | Matches **zero or more** characters (including `/`). Enables **recursive directory traversal**. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
+| `**` </br> Recursive | Matches **zero or more** characters (including `/`). Enables **recursive directory traversal**. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
 
 **Examples:**
 

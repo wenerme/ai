@@ -1,19 +1,9 @@
 ---
-slug: /cloud/billing/marketplace/aws-marketplace-committed-contract
 title: 'AWS Marketplace Committed Contract'
 description: 'Subscribe to ClickHouse Cloud through the AWS Marketplace (Committed Contract)'
 keywords: ['aws', 'amazon', 'marketplace', 'billing', 'committed', 'committed contract']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import mp_committed_spend_1 from '@site/static/images/cloud/reference/mp_committed_spend_1.png'
-import mp_committed_spend_2 from '@site/static/images/cloud/reference/mp_committed_spend_2.png'
-import mp_committed_spend_3 from '@site/static/images/cloud/reference/mp_committed_spend_3.png'
-import mp_committed_spend_4 from '@site/static/images/cloud/reference/mp_committed_spend_4.png'
-import mp_committed_spend_5 from '@site/static/images/cloud/reference/mp_committed_spend_5.png'
-import mp_committed_spend_6 from '@site/static/images/cloud/reference/mp_committed_spend_6.png'
-import mp_committed_spend_7 from '@site/static/images/cloud/reference/mp_committed_spend_7.png'
 
 Get started with ClickHouse Cloud on the [AWS Marketplace](https://aws.amazon.com/marketplace) via a committed contract.
 A committed contract, also known as a Private Offer, allows customers to commit to spending a certain amount on ClickHouse Cloud over a period of time.
@@ -23,9 +13,7 @@ A committed contract, also known as a Private Offer, allows customers to commit 
 - A Private Offer from ClickHouse based on specific contract terms.
 - To connect a ClickHouse organization to your committed spend offer, you must be an admin of that organization.
 
-:::note
-One AWS account can only subscribe to one “ClickHouse Cloud - Committed Contract” private offer which can only be linked to one ClickHouse organization.
-:::
+> **note**: One AWS account can only subscribe to one “ClickHouse Cloud - Committed Contract” private offer which can only be linked to one ClickHouse organization.
 
 Required permissions to view and accept your committed contract in AWS:
 

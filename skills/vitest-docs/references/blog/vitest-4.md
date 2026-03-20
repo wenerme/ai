@@ -29,7 +29,7 @@ head:
 
 _October 22, 2025_
 
-![Vitest 4 Announcement Cover Image](/og-vitest-4.jpg)
+[Vitest 4 Announcement Cover Image]
 
 ## The next Vitest major is here
 
@@ -58,7 +58,6 @@ With this release we are removing the `experimental` tag from [Browser Mode](/gu
 
 To define a provider, you now need to install a separate package: [`@vitest/browser-playwright`](https://npmx.dev/package/@vitest/browser-playwright), [`@vitest/browser-webdriverio`](https://npmx.dev/package/@vitest/browser-webdriverio), or [`@vitest/browser-preview`](https://npmx.dev/package/@vitest/browser-preview). This makes it simpler to work with custom options and doesn't require adding `/// <reference` comments anymore.
 
-::: code-group
 ```ts [playwright]
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright' // [!code ++]
@@ -127,7 +126,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 The context is no longer imported from `@vitest/browser/context` (but it will keep working until the next major version for better compatibility with tools that did not update yet), now just import from `vitest/browser`:
 
@@ -177,7 +175,7 @@ await expect.element(page.getByText('To')).toBeInViewport({ ratio: 0.5 })
 
 Vitest 4 supports generating [Playwright Traces](/guide/browser/trace-view). To enable tracing, you need to set the [`trace`](/config/browser/trace) option in the `test.browser` configuration or pass down `--browser.trace=on` option (`off`, `on-first-retry`, `on-all-retries`, `retain-on-failure` are also available).
 
-![Playwright Traces interface](/traces.png)
+[Playwright Traces interface]
 
 The traces are available in reporters as [annotations](/guide/test-annotations). For example, in the HTML reporter, you can find the link to the trace file in the test details. To open the trace file, you can use the [Playwright Trace Viewer](https://playwright.dev/docs/trace-viewer).
 

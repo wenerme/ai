@@ -48,7 +48,6 @@ export BLIS_NUM_THREADS=14
 
 And then run the binaries as normal.
 
-
 ### Intel specific issue
 
 Some might get the error message saying that `libimf.so` cannot be found.

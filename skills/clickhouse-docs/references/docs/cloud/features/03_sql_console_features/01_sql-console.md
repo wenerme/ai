@@ -1,47 +1,10 @@
 ---
 sidebar_title: 'SQL console'
-slug: /cloud/get-started/sql-console
 description: 'Run queries and create visualizations using the SQL Console.'
 keywords: ['sql console', 'sql client', 'cloud console', 'console']
 title: 'SQL console'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import table_list_and_schema from '@site/static/images/cloud/sqlconsole/table-list-and-schema.png';
-import view_columns from '@site/static/images/cloud/sqlconsole/view-columns.png';
-import abc from '@site/static/images/cloud/sqlconsole/abc.png';
-import inspecting_cell_content from '@site/static/images/cloud/sqlconsole/inspecting-cell-content.png';
-import sort_descending_on_column from '@site/static/images/cloud/sqlconsole/sort-descending-on-column.png';
-import filter_on_radio_column_equal_gsm from '@site/static/images/cloud/sqlconsole/filter-on-radio-column-equal-gsm.png';
-import add_more_filters from '@site/static/images/cloud/sqlconsole/add-more-filters.png';
-import filtering_and_sorting_together from '@site/static/images/cloud/sqlconsole/filtering-and-sorting-together.png';
-import create_a_query_from_sorts_and_filters from '@site/static/images/cloud/sqlconsole/create-a-query-from-sorts-and-filters.png';
-import creating_a_query from '@site/static/images/cloud/sqlconsole/creating-a-query.png';
-import run_selected_query from '@site/static/images/cloud/sqlconsole/run-selected-query.png';
-import run_at_cursor_2 from '@site/static/images/cloud/sqlconsole/run-at-cursor-2.png';
-import run_at_cursor from '@site/static/images/cloud/sqlconsole/run-at-cursor.png';
-import cancel_a_query from '@site/static/images/cloud/sqlconsole/cancel-a-query.png';
-import sql_console_save_query from '@site/static/images/cloud/sqlconsole/sql-console-save-query.png';
-import sql_console_rename from '@site/static/images/cloud/sqlconsole/sql-console-rename.png';
-import sql_console_share from '@site/static/images/cloud/sqlconsole/sql-console-share.png';
-import sql_console_edit_access from '@site/static/images/cloud/sqlconsole/sql-console-edit-access.png';
-import sql_console_add_team from '@site/static/images/cloud/sqlconsole/sql-console-add-team.png';
-import sql_console_edit_member from '@site/static/images/cloud/sqlconsole/sql-console-edit-member.png';
-import sql_console_access_queries from '@site/static/images/cloud/sqlconsole/sql-console-access-queries.png';
-import search_hn from '@site/static/images/cloud/sqlconsole/search-hn.png';
-import match_in_body from '@site/static/images/cloud/sqlconsole/match-in-body.png';
-import pagination from '@site/static/images/cloud/sqlconsole/pagination.png';
-import pagination_nav from '@site/static/images/cloud/sqlconsole/pagination-nav.png';
-import download_as_csv from '@site/static/images/cloud/sqlconsole/download-as-csv.png';
-import tabular_query_results from '@site/static/images/cloud/sqlconsole/tabular-query-results.png';
-import switch_from_query_to_chart from '@site/static/images/cloud/sqlconsole/switch-from-query-to-chart.png';
-import trip_total_by_week from '@site/static/images/cloud/sqlconsole/trip-total-by-week.png';
-import bar_chart from '@site/static/images/cloud/sqlconsole/bar-chart.png';
-import change_from_bar_to_area from '@site/static/images/cloud/sqlconsole/change-from-bar-to-area.png';
-import update_query_name from '@site/static/images/cloud/sqlconsole/update-query-name.png';
-import update_subtitle_etc from '@site/static/images/cloud/sqlconsole/update-subtitle-etc.png';
-import adjust_axis_scale from '@site/static/images/cloud/sqlconsole/adjust-axis-scale.png';
 
 # SQL Console
 
@@ -85,9 +48,7 @@ To sort a table in the SQL console, open a table and select the 'Sort' button in
 
 The SQL console also allows you to add multiple sorts to a table. Click the 'Sort' button again to add another sort. 
 
-:::note
-Sorts are applied in the order that they appear in the sort pane (top to bottom). To remove a sort, simply click the 'x' button next to the sort.
-:::
+> **note**: Sorts are applied in the order that they appear in the sort pane (top to bottom). To remove a sort, simply click the 'x' button next to the sort.
 
 ### Filtering a table {#filtering-a-table}
 
@@ -113,9 +74,7 @@ The SQL console can convert your sorts and filters directly into queries with on
 
 <Image img={create_a_query_from_sorts_and_filters} size="md" alt='Create a query from sorts and filters' />
 
-:::note
-Filters and sorts aren't mandatory when using the 'Create Query' feature.
-:::
+> **note**: Filters and sorts aren't mandatory when using the 'Create Query' feature.
 
 You can learn more about querying in the SQL console by reading the (link) query documentation.
 
@@ -154,9 +113,7 @@ Running the command at the current cursor position can be achieved in two ways:
 
 <Image img={run_at_cursor} size="md" alt='run at cursor' />
 
-:::note
-The command present at the cursor position will flash yellow on execution.
-:::
+> **note**: The command present at the cursor position will flash yellow on execution.
 
 ### Canceling a query {#canceling-a-query}
 
@@ -170,9 +127,7 @@ Saving queries allows you to easily find them later and share them with your tea
 
 To save a query, simply click the "Save" button immediately next to the "Run" button in the toolbar. Input the desired name and click "Save Query".
 
-:::note
-Using the shortcut `cmd / ctrl` + s will also save any work in the current query tab.
-:::
+> **note**: Using the shortcut `cmd / ctrl` + s will also save any work in the current query tab.
 
 <Image img={sql_console_save_query} size="md" alt='Save query' />
 

@@ -7,7 +7,6 @@ keywords: ['Part Intersects', 'system.replicas']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Why it occurs \{#why-it-occurs\}
 
@@ -51,10 +50,7 @@ SYSTEM RESTORE REPLICA table_name;  -- It will detach all partitions, re-create 
 SYSTEM SYNC REPLICA table_name; -- Wait for replicas to synchronize parts. Also it's recommended to check `system.detached_parts` on all replicas after recovery is finished.
 ```
 
-:::tip
-You should upgrade to the latest version of ClickHouse
-:::
-
+> **tip**: You should upgrade to the latest version of ClickHouse
 
 ## Additional resources \{#additional-resources\}
 

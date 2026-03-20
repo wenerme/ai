@@ -1,6 +1,5 @@
 # MMStar
 
-
 ## Overview
 
 MMStar is an elite vision-indispensable multimodal benchmark designed to ensure genuine visual dependency in evaluation. Each sample is carefully curated to require actual visual understanding, minimizing data leakage and testing advanced multimodal capabilities.
@@ -27,7 +26,6 @@ MMStar is an elite vision-indispensable multimodal benchmark designed to ensure 
 - Uses Chain-of-Thought (CoT) prompting with "ANSWER: [LETTER]" format
 - Results reported per category and overall
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ MMStar is an elite vision-indispensable multimodal benchmark designed to ensure 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
-
 
 ## Data Statistics
 
@@ -68,7 +65,6 @@ MMStar is an elite vision-indispensable multimodal benchmark designed to ensure 
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 114x66 - 3160x2136 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -156,5 +152,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

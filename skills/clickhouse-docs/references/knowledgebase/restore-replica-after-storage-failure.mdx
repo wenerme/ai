@@ -7,20 +7,14 @@ description: 'This article explains how to recover data when using replicated ta
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
-<br/>
-<br/>
-
-:::note
-This guide assumes that the `<path>` parameter in your config.xml file is set to:
+> **note**: This guide assumes that the `<path>` parameter in your config.xml file is set to:
 
 ```text
 <path>/var/lib/clickhouse/</path>
 ```
 
 If you have configured a different data path, replace all instances of `/var/lib/clickhouse` in the below commands with the actual value of your `<path>` setting.
-:::
 
 <VerticalStepper headerLevel="h2">
 
@@ -47,9 +41,7 @@ cd /var/lib/clickhouse
 { find metadata -type f; find metadata -type l; find metadata -type l | xargs readlink -f; } | tar -cPf backup.tar --files-from=-
 ```
 
-:::note
-This command ensures that both the **metadata files**, and the symlink architecture are preserved in the backup.
-:::
+> **note**: This command ensures that both the **metadata files**, and the symlink architecture are preserved in the backup.
 
 ## Restore the metadata on the faulty replica \{#restore-the-metadata-on-the-faulty-replica\}
 

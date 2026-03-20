@@ -35,15 +35,11 @@ declare module 'vitest' {
 }
 ```
 
-::: tip
-Importing `vitest` makes TypeScript think this is an ES module file, type declaration won't work without it.
-:::
+> **tip**: Importing `vitest` makes TypeScript think this is an ES module file, type declaration won't work without it.
 
 Extending the `Matchers` interface will add a type to `expect.extend`, `expect().*`, and `expect.*` methods at the same time.
 
-::: warning
-Don't forget to include the ambient declaration file in your `tsconfig.json`.
-:::
+> **warning**: Don't forget to include the ambient declaration file in your `tsconfig.json`.
 
 The return value of a matcher should be compatible with the following interface:
 
@@ -58,8 +54,7 @@ interface MatcherResult {
 }
 ```
 
-::: warning
-If you create an asynchronous matcher, don't forget to `await` the result (`await expect('foo').toBeFoo()`) in the test itself:
+> **warning**: If you create an asynchronous matcher, don't forget to `await` the result (`await expect('foo').toBeFoo()`) in the test itself:
 
 ```ts
 expect.extend({
@@ -70,7 +65,6 @@ expect.extend({
 
 await expect().toBeAsyncAssertion()
 ```
-:::
 
 The first argument inside a matcher's function is the received value (the one inside `expect(received)`). The rest are arguments passed directly to the matcher. Since version 4.1, Vitest exposes several types that can be used by your custom matcher:
 
@@ -135,9 +129,7 @@ Full name of the current test (including describe block).
 
 Contains a reference to [the `Test` runner task](/api/advanced/runner#tasks) when available.
 
-::: warning
-When using the global `expect` with concurrent tests, `this.task` is `undefined`. Use `context.expect` instead to ensure `task` is available in custom matchers.
-:::
+> **warning**: When using the global `expect` with concurrent tests, `this.task` is `undefined`. Use `context.expect` instead to ensure `task` is available in custom matchers.
 
 ## `testPath`
 
@@ -151,6 +143,4 @@ The name of the current [`environment`](/config/environment) (for example, `jsdo
 
 Was assertion called as a [`soft`](/api/expect#soft) one. You don't need to respect it, Vitest will always catch the error.
 
-::: tip
-These are not all of the available properties, only the most useful ones. The other state values are used by Vitest internally.
-:::
+> **tip**: These are not all of the available properties, only the most useful ones. The other state values are used by Vitest internally.

@@ -7,11 +7,7 @@ packages:
 
 # Agent.streamLegacy() (Legacy)
 
-:::warning
-
-**Deprecated**: This method is deprecated and only works with V1 models. For V2 models, use the new [`.stream()`](./stream) method instead. See the [migration guide](/guides/migrations/vnext-to-standard-apis) for details on upgrading.
-
-:::
+> **warning**: **Deprecated**: This method is deprecated and only works with V1 models. For V2 models, use the new [`.stream()`](./stream) method instead. See the [migration guide](/guides/migrations/vnext-to-standard-apis) for details on upgrading.
 
 The `.streamLegacy()` method is the legacy version of the agent streaming API, used for real-time streaming of responses from V1 model agents. This method accepts messages and optional streaming options.
 
@@ -528,11 +524,7 @@ await agent.streamLegacy('message for agent', {
 
 ## Migration to new API
 
-:::info
-
-The new `.stream()` method offers enhanced capabilities including AI SDK v5+ compatibility, better structured output handling, and improved callback system. See the [migration guide](/guides/migrations/vnext-to-standard-apis) for detailed migration instructions.
-
-:::
+> **info**: The new `.stream()` method offers enhanced capabilities including AI SDK v5+ compatibility, better structured output handling, and improved callback system. See the [migration guide](/guides/migrations/vnext-to-standard-apis) for detailed migration instructions.
 
 ### Quick Migration Example
 

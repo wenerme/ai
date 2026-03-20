@@ -943,7 +943,6 @@ The following example demonstrates how to pass image embeddings to the OpenAI se
         "uuid": image_url,  # Optional
     }
 
-
     # Additional examples for models that require extra fields
     model = "Qwen/Qwen2-VL-2B-Instruct"
     embeds = {

@@ -30,8 +30,6 @@ All exceptions can be imported from `litellm` - e.g. `from litellm import BadReq
 | N/A | MockException | Exception | Internal exception, raised by mock_completion class. Do not use directly | 
 | N/A | OpenAIError | openai.OpenAIError | Deprecated internal exception, inherits from openai.OpenAIError. |
 
-
-
 Base case we return APIConnectionError
 
 All our exceptions inherit from OpenAI's exception types, so any error-handling you have for that, should work out of the box with LiteLLM. 
@@ -232,7 +230,6 @@ Base case - we return `litellm.APIConnectionError` exception (inherits from open
 
 - "✓" indicates that the specified `custom_llm_provider` can raise the corresponding exception.
 - Empty cells indicate the lack of association or that the provider does not raise that particular exception type as indicated by the function.
-
 
 > For a deeper understanding of these exceptions, you can check out [this](https://github.com/BerriAI/litellm/blob/d7e58d13bf9ba9edbab2ab2f096f3de7547f35fa/litellm/utils.py#L1544) implementation for additional insights.
 

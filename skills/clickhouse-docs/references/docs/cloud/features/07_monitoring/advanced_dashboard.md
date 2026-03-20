@@ -2,21 +2,9 @@
 description: 'Advanced dashboard in ClickHouse Cloud'
 keywords: ['monitoring', 'observability', 'advanced dashboard', 'dashboard', 'observability
     dashboard']
-sidebar_label: 'Advanced dashboard'
-sidebar_position: 45
-slug: /cloud/manage/monitor/advanced-dashboard
 title: 'Advanced dashboard in ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import AdvancedDashboard from '@site/static/images/cloud/manage/monitoring/advanced_dashboard.png';
-import NativeAdvancedDashboard from '@site/static/images/cloud/manage/monitoring/native_advanced_dashboard.png';
-import EditVisualization from '@site/static/images/cloud/manage/monitoring/edit_visualization.png';
-import InsertedRowsSec from '@site/static/images/cloud/manage/monitoring/inserted_rows_max_parts_for_partition.png';
-import ResourceIntensiveQuery from '@site/static/images/cloud/manage/monitoring/resource_intensive_query.png';
-import SelectedRowsPerSecond from '@site/static/images/cloud/manage/monitoring/selected_rows_sec.png';
-
-import Image from '@theme/IdealImage';
 
 Monitoring your database system in a production environment is vital to
 understanding your deployment health so that you can prevent or solve outages.

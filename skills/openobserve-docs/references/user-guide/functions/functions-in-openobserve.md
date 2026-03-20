@@ -14,7 +14,7 @@ There are also inbuilt query functions like `match_all` etc which can be used fo
 To navigate to functions in OpenObserve, select preferred organization using organization selection control, then click on `Pipelines > Functions` menu, which will take you to functions list screen. This screen lists all the functions for selected organization.  
 
 <kbd>
-![Functions](./images/functions_list.webp)
+[Functions]
 </kbd>
 
 List screen details:
@@ -29,7 +29,6 @@ There are two ways to use function during query:
 - Function with row as input
 - Function with specified input columns/fields
 
-
 ## Function with row as input
 
 On logs search page, you can select existing function or write new function using vrl function editor to apply function on row. The returned results will be based on function being applied.
@@ -37,7 +36,7 @@ On logs search page, you can select existing function or write new function usin
 Please note that functions on rows can be used to experiment with result of function application on a specific stream , however applying functions at query time is costly operation .Hence if applicable, after exploration and desired outcome of function during query time , we encourage users to apply such function at ingest time by associating function with stream.
 
 <kbd>
-![Functions](./images/functions_logs.webp)
+[Functions]
 </kbd>
 
 ## Function with specified input columns/fields
@@ -84,4 +83,4 @@ The function outputs the record below:
 
 The function can be saved using save button on top of vrl function editor, additional one can select existing function to try.
 
-The same function can be associated with a stream to get applied at ingestion. 
+The same function can be associated with a stream to get applied at ingestion.

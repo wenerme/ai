@@ -1,6 +1,5 @@
 # POPE
 
-
 ## Overview
 
 POPE (Polling-based Object Probing Evaluation) is a benchmark specifically designed to evaluate object hallucination in Large Vision-Language Models (LVLMs). It tests models' ability to accurately identify objects present in images through yes/no questions.
@@ -29,7 +28,6 @@ POPE (Polling-based Object Probing Evaluation) is a benchmark specifically desig
 - "Popular" and "adversarial" subsets are more challenging
 - yes_ratio indicates model's tendency to answer "yes"
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ POPE (Polling-based Object Probing Evaluation) is a benchmark specifically desig
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `N/A` |
 | **Aggregation** | `f1` |
-
 
 ## Data Statistics
 
@@ -68,7 +65,6 @@ POPE (Polling-based Object Probing Evaluation) is a benchmark specifically desig
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 500x243 - 640x640 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -143,5 +139,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

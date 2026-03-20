@@ -30,7 +30,6 @@ The user whose LDAP cache information needs to be refreshed
 
 Users executing this SQL command must have at least the following privileges:
 
-
 | Privilege | Object | Notes                 |
 | :---------------- | :------------- | :---------------------------- |
 | ADMIN_PRIV        | User or Role | Only users or roles with the `ADMIN_PRIV` permission can refresh the LDAP cache information of all users. Otherwise, they can only refresh the LDAP cache information of the current user |
@@ -61,4 +60,3 @@ Users executing this SQL command must have at least the following privileges:
     ```sql
     REFRESH LDAP FOR jack;
     ```
-

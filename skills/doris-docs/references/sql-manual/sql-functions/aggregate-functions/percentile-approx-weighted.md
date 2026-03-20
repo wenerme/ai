@@ -79,7 +79,6 @@ FROM weighted_scores;
 +------------------+------------------+------------------+
 ```
 
-
 ```sql
 select percentile_approx_weighted(if(score>95,score,null), weight, 0.9) from weighted_scores;
 ```
@@ -107,5 +106,3 @@ If all input values are NULL, the function returns NULL.
 |                                                 NULL |
 +------------------------------------------------------+
 ```
-
-

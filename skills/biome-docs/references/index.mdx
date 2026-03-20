@@ -7,11 +7,9 @@ template: splash
 description: Format, lint, and more in a fraction of a second.
 editUrl: false
 next: false
-
 banner:
     content: |
       First minor of the year, <a href="/blog/biome-v2-4/"><b>Biome v2.4 is out!</b></a>
-
 hero:
   title: One toolchain for your web project
   tagline: Format, lint, and more in a fraction of a second.
@@ -29,24 +27,6 @@ hero:
       icon: external
       variant: secondary
 ---
-
-import { Card, CardGrid } from "@astrojs/starlight/components";
-import Inputf from "@/components/formatter/input.md";
-import Outputf from "@/components/formatter/output.md";
-import ProgressBarContainer from "@/playground/components/Progress.tsx";
-import Community from "@/components/generated/Community.astro";
-import { Icon } from "@astrojs/starlight/components";
-import arrow from "@/assets/svg/arrow-right.svg";
-import { Image } from "astro:assets";
-import "@/styles/_performance.css";
-import "@/styles/_installation.css";
-import "@/styles/_community.css";
-import Netlify from "@/components/Netlify.astro";
-import Sponsors from "@/components/Sponsors.astro";
-import LinterExample from "@/components/linter/example.md";
-import NumberOfRules from "@/components/generated/linter/NumberOfRules.astro";
-import AwardBanner from "@/components/AwardBanner.astro"
-import FeaturedUsers from "@/components/FeaturedUsers.astro"
 
 <div class="gradient"></div>
 
@@ -101,7 +81,6 @@ import FeaturedUsers from "@/components/FeaturedUsers.astro"
     ```
 </div>
 
-
 <div class="hero-code">
     <h2 class="head">Fix problems, learn best practice</h2>
 
@@ -123,7 +102,6 @@ import FeaturedUsers from "@/components/FeaturedUsers.astro"
 
 </div>
 
-
 <div class="hero-code">
     <h2 class="head">Everything all at once</h2>
 
@@ -140,34 +118,32 @@ import FeaturedUsers from "@/components/FeaturedUsers.astro"
 
 </div>
 
-
-
 <div class="card-cnt">
 
     <CardGrid>
-        <Card title="Fast" icon="rocket">
+        
             Built with Rust and an innovative architecture inspired by rust-analyzer.
-        </Card>
-        <Card title="Simple" icon="pencil">
+        
+        
             Zero configuration needed to get started. Extensive options available for
             when you need them.
-        </Card>
-        <Card title="Scalable" icon="random">
+        
+        
             Designed to handle codebases of any size. Focus on growing product instead
             of your tools.
-        </Card>
-        <Card title="Actionable & Informative" icon="information">
+        
+        
             Avoid obscure error messages, when we tell you something is wrong, we tell
             you exactly where the problem is and how to fix it.
-        </Card>
-        <Card title="Batteries Included" icon="add-document">
+        
+        
             Out of the box support for all the language features you use today. First
             class support for TypeScript and JSX.
-        </Card>
-        <Card title="Enterprise Support" icon="phone">
+        
+        
             We offer <a href="/enterprise/">commercial support</a> to organizations that
             need it through our community of contributors.
-        </Card>
+        
     </CardGrid>
 </div>
 <div class="installation-body">
@@ -208,19 +184,19 @@ import FeaturedUsers from "@/components/FeaturedUsers.astro"
         </div>
         <div class="community-links">
             <a href="https://biomejs.dev/chat" class="discord">
-                <Icon name="discord"/>
+                
                 <p>Discord</p>
             </a>
             <a href="https://github.com/biomejs/biome" class="github">
-                <Icon name="github"/>
+                
                 <p>GitHub</p>
             </a>
             <a href="https://bsky.app/profile/biomejs.dev" class="blueSky">
-                <Icon name="blueSky" />
+                
                 <p>BlueSky</p>
             </a>
             <a href="https://fosstodon.org/@biomejs" class="mastodon">
-                <Icon name="mastodon"/>
+                
                 <p>Mastodon</p>
             </a>
         </div>

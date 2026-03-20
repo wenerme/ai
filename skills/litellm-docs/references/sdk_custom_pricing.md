@@ -12,7 +12,6 @@ os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
 
-
 def test_completion_sagemaker():
     try:
         print("testing sagemaker")
@@ -30,9 +29,7 @@ def test_completion_sagemaker():
 
 ```
 
-
 ## Cost Per Token (e.g. Azure)
-
 
 ```python
 # !pip install boto3 
@@ -42,7 +39,6 @@ from litellm import completion, completion_cost
 os.environ["AZURE_API_KEY"] = ""
 os.environ["AZURE_API_BASE"] = ""
 os.environ["AZURE_API_VERSION"] = ""
-
 
 def test_completion_azure_model():
     try:

@@ -10,10 +10,8 @@
 
 Kudu Catalog accesses Kudu tables through the [Trino Connector](https://doris.apache.org/community/how-to-contribute/trino-connector-developer-guide/) compatibility framework using Trino Kudu Connector.
 
-:::note
-- This is an experimental feature, supported since version 3.0.1.
+> **note**: - This is an experimental feature, supported since version 3.0.1.
 - This feature does not depend on a Trino cluster environment and only uses the Trino compatibility plugin.
-:::
 
 ### Use Cases
 
@@ -169,6 +167,4 @@ When using Kudu Catalog, data types are mapped according to the following rules:
 | unixtime_micros  | timestamp(3)  | datetime(3)   |                                                                                      |
 | other            | UNSUPPORTED   | -             | Unsupported type                                                                     |
 
-:::tip
-For `binary` type, if you need to display in hexadecimal format, use the `HEX()` function to wrap the column name, for example: `SELECT HEX(binary_col) FROM table`.
-:::
+> **tip**: For `binary` type, if you need to display in hexadecimal format, use the `HEX()` function to wrap the column name, for example: `SELECT HEX(binary_col) FROM table`.

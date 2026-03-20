@@ -1,7 +1,6 @@
 ---
 { 'title': 'Reordering Join With Leading Hint', 'language': 'en',
   "description": "The Leading Hint feature allows users to manually specify the join order of tables in a query,"
-
 }
 ---
 
@@ -9,9 +8,8 @@
 
 The Leading Hint feature allows users to manually specify the join order of tables in a query, optimizing the performance of complex queries in specific scenarios. This article will describe in detail how to use Leading Hint to control the join order in Doris. For detailed usage instructions, please refer to the [leading hint](../../../query-acceleration/hints/leading-hint.md) document.
 
-:::caution Note
+> **caution**: Note
 Currently, Doris has good out-of-the-box capabilities. This means that in most scenarios, Doris will adaptively optimize performance in various scenarios, and users do not need to manually control hints for performance tuning. The content introduced in this chapter is mainly for professional tuners, and business personnel only need a simple understanding.
-:::
 
 ## Case 1: Adjusting the Left and Right Table Order
 
@@ -213,7 +211,7 @@ explain shape plan
 
 The above hint specification `/*+ leading(orders shuffle {lineitem shuffle part} shuffle {supplier broadcast nation} shuffle partsupp) */` mixes the two formats of leading and distribute hint. Leading is used to control the relative join order among the overall tables, while shuffle and broadcast are used to specify the shuffle method for specific joins. By combining the two, the connection order and connection method can be flexibly controlled, making it convenient to manually control the expected plan behavior of the user.
 
-:::caution Usage Suggestions
+> **caution**: Usage Suggestions
 
 -   It is recommended to use EXPLAIN to carefully analyze the execution plan to ensure that the Leading Hint can achieve the expected effect.
 -   When the Doris version is upgraded or the business data changes, the effect of the Leading Hint should be re-evaluated, and timely recording and adjustment should be made.

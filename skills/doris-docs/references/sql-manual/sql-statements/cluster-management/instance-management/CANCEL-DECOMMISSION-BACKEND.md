@@ -10,9 +10,7 @@
 
 This statement is used to cancel the decommissioning operation of a BE node.
 
-:::tip
-This statement is not supported in decoupling storage and computing mode.
-:::
+> **tip**: This statement is not supported in decoupling storage and computing mode.
 
 ## Syntax
 
@@ -42,9 +40,7 @@ be_identifier
 
 > The ID of the BE node.
 
-:::tip
-`<be_host>`, `<be_heartbeat_port>`, and `<backend_id>` can all be obtained by querying with the [SHOW BACKENDS](./SHOW-BACKENDS.md) statement.
-:::
+> **tip**: `<be_host>`, `<be_heartbeat_port>`, and `<backend_id>` can all be obtained by querying with the [SHOW BACKENDS](./SHOW-BACKENDS.md) statement.
 
 ## Access Control Requirements
 

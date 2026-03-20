@@ -6,8 +6,6 @@ packages:
   - "@mastra/core"
 ---
 
-import PropertiesTable from "@site/src/components/PropertiesTable";
-
 # chatRoute()
 
 Creates a chat route handler for streaming agent conversations using the AI SDK format. This function registers an HTTP `POST` endpoint that accepts messages, executes an agent, and streams the response back to the client in AI SDK-compatible format. You have to use it inside a [custom API route](/docs/server/custom-api-routes).
@@ -16,13 +14,11 @@ Use [`handleChatStream()`](/reference/ai-sdk/handle-chat-stream) if you need a f
 
 `chatRoute()` keeps the existing AI SDK v5/default behavior. If your app is typed against AI SDK v6, pass `version: 'v6'`.
 
-:::note Disconnect behavior
+> **note**: Disconnect behavior
 
 `chatRoute()` forwards the incoming request's `AbortSignal` to `agent.stream()`. If the client disconnects, Mastra aborts the in-flight generation.
 
 If you want the server to continue generation and persist the final response after disconnect, build a [custom API route](/docs/server/custom-api-routes#continue-generation-after-client-disconnect) around `agent.stream()` and call `consumeStream()` on the returned `MastraModelOutput`.
-
-:::
 
 ## Usage example
 

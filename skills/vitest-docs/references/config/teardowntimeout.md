@@ -1,6 +1,5 @@
 ---
 title: teardownTimeout | Config
-outline: deep
 ---
 
 # teardownTimeout <CRoot /> {#teardowntimeout}

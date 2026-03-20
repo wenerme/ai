@@ -2,7 +2,6 @@
 
 Here are our recommended steps for rotating your master key.
 
-
 **1. Backup your DB**
 In case of any errors during the encryption/de-encryption process, this will allow you to revert back to current state without issues.
 

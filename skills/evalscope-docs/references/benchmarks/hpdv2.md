@@ -1,6 +1,5 @@
 # HPD-v2
 
-
 ## Overview
 
 HPD-v2 (Human Preference Dataset v2) is a text-to-image benchmark that evaluates generated images based on human preferences. It uses the HPSv2.1 score metric trained on large-scale human preference data.
@@ -28,7 +27,6 @@ HPD-v2 (Human Preference Dataset v2) is a text-to-image benchmark that evaluates
 - Category tags available in metadata
 - Can evaluate existing images or generate new ones
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ HPD-v2 (Human Preference Dataset v2) is a text-to-image benchmark that evaluates
 | **Metrics** | `HPSv2.1Score` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -109,5 +106,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

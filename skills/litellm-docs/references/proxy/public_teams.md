@@ -4,7 +4,6 @@ Expose available teams to your users to join on signup.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/7871ea15035a48d2a118b7486c2f7598?sid=267cd0ab-d92b-42fa-b97a-9f385ef8930c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-
 ## Quick Start
 
 1. Create a team on LiteLLM
@@ -35,6 +34,3 @@ curl -L -X POST 'http://0.0.0.0:4000/team/member_add' \
     "member": [{"role": "user", "user_id": "my-test-user"}]
 }'
 ```
-
-
-

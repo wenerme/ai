@@ -1,7 +1,5 @@
 ---
 date: "2022-11-01T00:00:00+00:00"
-slug: "storage"
-sidebar_position: 3
 ---
 
 # Storage

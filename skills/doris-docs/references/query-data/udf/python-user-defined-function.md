@@ -14,19 +14,17 @@ Python UDF supports two execution modes:
 - **Scalar Mode**: Processes data row by row, suitable for simple transformations and calculations
 - **Vectorized Mode**: Processes data in batches, utilizing Pandas for high-performance computing
 
-:::tip Note
+> **tip**: Note
 **Environment Dependencies**: Before using Python UDF, you must pre-install **`pandas`** and **`pyarrow`** libraries in the Python environment on all BE nodes. These are mandatory dependencies for Doris Python UDF functionality. See [Python UDF Environment Configuration](python-user-defined-function#python-udfudafudtf-environment-configuration-and-multi-version-management).
 
 **Log Path**: The Python UDF Server runtime log is located at `output/be/log/python_udf_output.log`. Users can check the Python Server's operation status, function execution information, and debug errors in this log.
-:::
 
 ### Creating Python UDF
 
 Python UDF supports two creation modes: `Inline Mode` and `Module Mode`.
 
-:::caution Note
+> **caution**: Note
 If both the `file` parameter and `AS $$` inline Python code are specified, Doris will prioritize loading the **inline Python code** and run the Python UDF in inline mode.
-:::
 
 #### Inline Mode
 
@@ -156,11 +154,10 @@ Suitable for scenarios where the `.zip` package is stored on the BE node's local
 ```
 Suitable for scenarios where the `.zip` package is downloaded from object storage (such as S3, OSS, COS, etc.) or HTTP servers. Doris will automatically download and cache it locally.
 
-:::caution Note
+> **caution**: Note
 - When using remote download method, ensure all BE nodes can access the URL
 - First call will download the file, which may have some delay
 - Files will be cached, subsequent calls do not need to download again
-:::
 
 **Step 4: Set symbol Parameter**
 
@@ -355,8 +352,8 @@ DROP FUNCTION IF EXISTS py_is_prime(INT);
 | Parameter | Required | Default | Description |
 |------|---------|--------|------|
 | `type` | Yes | - | Fixed as `"PYTHON_UDF"` |
-| `symbol` | Yes | - | Python function entry name.<br>• **Inline Mode**: Write function name directly, such as `"evaluate"`<br>• **Module Mode**: Format is `[package_name.]module_name.func_name`, see module mode description |
-| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:<br>• `file://` - Local filesystem path<br>• `http://` - HTTP remote download<br>• `https://` - HTTPS remote download |
+| `symbol` | Yes | - | Python function entry name.• **Inline Mode**: Write function name directly, such as `"evaluate"`• **Module Mode**: Format is `[package_name.]module_name.func_name`, see module mode description |
+| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:• `file://` - Local filesystem path• `http://` - HTTP remote download• `https://` - HTTPS remote download |
 | `runtime_version` | Yes | - | Python runtime version, such as `"3.10.12"`, requires complete version number |
 | `always_nullable` | No | `true` | Whether to always return nullable results |
 
@@ -443,10 +440,8 @@ SELECT py_safe_divide(10.0, NULL);  -- Result: NULL
 
 Vectorized mode uses Pandas for batch data processing, offering better performance than scalar mode. In vectorized mode, function parameters are `pandas.Series` objects, and return values should also be `pandas.Series`.
 
-:::caution Note
+> **caution**: Note
 To ensure the system correctly recognizes vectorized mode, please use type annotations in function signatures (such as `a: pd.Series`) and directly operate on batch data structures in function logic. If vectorized types are not explicitly used, the system will fall back to Scalar Mode.
-:::
-
 ```python
 ## Vectorized Mode
 def add(a: pd.Series, b: pd.Series) -> pd.Series:
@@ -924,11 +919,10 @@ Core features of Python UDAF:
 - **Window Function Support**: Can be used with window functions (OVER clause) to implement advanced features like moving aggregations, ranking, etc.
 - **High Flexibility**: Can implement arbitrarily complex aggregation logic without being limited by built-in aggregate functions
 
-:::tip Note
+> **tip**: Note
 **Environment Dependencies**: Before using Python UDAF, you must pre-install **`pandas`** and **`pyarrow`** libraries in the Python environment on all BE nodes. These are mandatory dependencies for Doris Python UDAF functionality. See [Python UDAF Environment Configuration](python-user-defined-function#python-udfudafudtf-environment-configuration-and-multi-version-management).
 
 **Log Path**: The Python UDAF Server runtime log is located at `output/be/log/python_udf_output.log`. Users can check the Python Server's operation status, aggregate function execution information, and debug errors in this log.
-:::
 
 ### UDAF Basic Concepts
 
@@ -959,9 +953,8 @@ A complete Python UDAF class must implement the following methods:
 
 Python UDAF supports two creation modes: `Inline Mode` and `Module Mode`.
 
-:::tip Note
+> **tip**: Note
 If both the `file` parameter and `AS $$` inline Python code are specified, Doris will **prioritize loading inline Python code** and run the Python UDAF in inline mode.
-:::
 
 ##### Inline Mode
 
@@ -1179,7 +1172,6 @@ class VarianceUDAF:
         variance = (self.sum_sq / self.count) - (mean * mean)
         return variance
 
-
 class StdDevUDAF:
     """Calculate population standard deviation"""
     
@@ -1210,7 +1202,6 @@ class StdDevUDAF:
         mean = self.sum_val / self.count
         variance = (self.sum_sq / self.count) - (mean * mean)
         return math.sqrt(max(0, variance))
-
 
 class MedianUDAF:
     """Calculate median"""
@@ -1398,8 +1389,8 @@ DROP FUNCTION IF EXISTS py_variance(DOUBLE);
 | Parameter | Required | Default | Description |
 |------|---------|--------|------|
 | `type` | Yes | - | Fixed as `"PYTHON_UDF"` |
-| `symbol` | Yes | - | Python class name.<br>• **Inline Mode**: Write class name directly, such as `"SumUDAF"`<br>• **Module Mode**: Format is `[package_name.]module_name.ClassName` |
-| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:<br>• `file://` - Local filesystem path<br>• `http://` - HTTP remote download<br>• `https://` - HTTPS remote download |
+| `symbol` | Yes | - | Python class name.• **Inline Mode**: Write class name directly, such as `"SumUDAF"`• **Module Mode**: Format is `[package_name.]module_name.ClassName` |
+| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:• `file://` - Local filesystem path• `http://` - HTTP remote download• `https://` - HTTPS remote download |
 | `runtime_version` | Yes | - | Python runtime version, such as `"3.10.12"` |
 | `always_nullable` | No | `true` | Whether to always return nullable results |
 
@@ -1836,7 +1827,6 @@ A: The `merge` method is called in the following situations:
 
 Therefore, `merge` implementation must be correct, otherwise it will lead to incorrect results.
 
-
 ## Python UDTF
 
 Python UDTF (User Defined Table Function) is a custom table function extension mechanism provided by Apache Doris, allowing users to write custom table functions in Python to convert single-row data into multi-row output. Through Python UDTF, users can flexibly implement complex logic such as data splitting, expansion, and generation.
@@ -1847,11 +1837,10 @@ Core features of Python UDTF:
 - **Lateral View Support**: Used with `LATERAL VIEW` to implement data expansion and association
 - **Functional Programming**: Uses Python functions and `yield` statements, concise and intuitive
 
-:::tip Note
+> **tip**: Note
 **Environment Dependencies**: Before using Python UDTF, you must pre-install **`pandas`** and **`pyarrow`** libraries in the Python environment on all BE nodes. These are mandatory dependencies for Doris Python UDTF functionality. See [Python UDTF Environment Configuration](python-user-defined-function#python-udfudafudtf-environment-configuration-and-multi-version-management).
 
 **Log Path**: The Python UDTF Server runtime log is located at `output/be/log/python_udf_output.log`. Users can check the Python Server's operation status, aggregate function execution information, and debug errors in this log.
-:::
 
 ### UDTF Basic Concepts
 
@@ -1883,9 +1872,8 @@ Python UDTF functions must meet the following requirements:
 
 Python UDTF supports two creation modes: Inline Mode and Module Mode.
 
-:::caution Note
+> **caution**: Note
 If both the `file` parameter and `AS $$` inline Python code are specified, Doris will **prioritize loading inline Python code** and run the Python UDTF in inline mode.
-:::
 
 ##### Inline Mode
 
@@ -2135,7 +2123,6 @@ def split_lines_udtf(text):
             if line:  # Filter empty lines
                 yield (line,)
 
-
 def extract_emails_udtf(text):
     """Extract all email addresses from text"""
     if text:
@@ -2143,7 +2130,6 @@ def extract_emails_udtf(text):
         emails = re.findall(email_pattern, text)
         for email in emails:
             yield (email,)
-
 
 def parse_json_object_udtf(json_str):
     """Parse JSON object, output key-value pairs"""
@@ -2155,7 +2141,6 @@ def parse_json_object_udtf(json_str):
                     yield (key, str(value))
         except:
             pass
-
 
 def expand_json_array_udtf(json_str):
     """Expand objects in JSON array, output structured data"""
@@ -2172,7 +2157,6 @@ def expand_json_array_udtf(json_str):
                         yield (item_id, name, score)
         except:
             pass
-
 
 def ngram_udtf(text, n):
     """Generate N-gram phrases"""
@@ -2205,11 +2189,10 @@ Supports multiple deployment methods, specified through the `file` parameter for
 "file" = "https://s3.amazonaws.com/bucket/text_udtf.zip"
 ```
 
-:::caution Note
+> **caution**: Note
 - When using remote download method, ensure all BE nodes can access the URL
 - First call will download the file, which may have some delay
 - Files will be cached, subsequent calls do not need to download again
-:::
 
 **Step 4: Set symbol Parameter**
 
@@ -2383,15 +2366,15 @@ CREATE TABLES FUNCTION py_split(STRING, STRING) ...;
 |------|------|
 | `function_name` | Function name, follows SQL identifier naming rules |
 | `parameter_types` | Parameter type list, such as `INT`, `STRING`, `DOUBLE`, etc. |
-| `RETURNS ARRAY<...>` | Returned array type, defines output structure<br>• Single column: `ARRAY<type>`<br>• Multi-column: `ARRAY<STRUCT<col1:type1, col2:type2, ...>>` |
+| `RETURNS ARRAY<...>` | Returned array type, defines output structure• Single column: `ARRAY<type>`• Multi-column: `ARRAY<STRUCT<col1:type1, col2:type2, ...>>` |
 
 #### PROPERTIES Parameters
 
 | Parameter | Required | Default | Description |
 |------|---------|--------|------|
 | `type` | Yes | - | Fixed as `"PYTHON_UDF"` |
-| `symbol` | Yes | - | Python function name.<br>• **Inline Mode**: Write function name directly, such as `"split_string_udtf"`<br>• **Module Mode**: Format is `[package_name.]module_name.function_name` |
-| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:<br>• `file://` - Local filesystem path<br>• `http://` - HTTP remote download<br>• `https://` - HTTPS remote download |
+| `symbol` | Yes | - | Python function name.• **Inline Mode**: Write function name directly, such as `"split_string_udtf"`• **Module Mode**: Format is `[package_name.]module_name.function_name` |
+| `file` | No | - | Python `.zip` package path, only required for module mode. Supports three protocols:• `file://` - Local filesystem path• `http://` - HTTP remote download• `https://` - HTTPS remote download |
 | `runtime_version` | Yes | - | Python runtime version, such as `"3.10.12"` |
 | `always_nullable` | No | `true` | Whether to always return nullable results |
 
@@ -2822,12 +2805,11 @@ Python UDF, UDAF, and UDTF can all use third-party libraries. However, due to Do
        return np.sqrt(x)
    ```
 
-:::caution Note
+> **caution**: Note
 - **`pandas` and `pyarrow` are mandatory dependencies**, must be pre-installed in all Python environments, otherwise Python UDF/UDAF/UDTF cannot run
 - Must install same version dependencies on **all BE nodes**, otherwise some nodes will fail to execute
 - Installation path must match Python runtime environment used by corresponding UDF/UDAF/UDTF
 - Recommend using virtual environments or Conda to manage dependencies, avoid conflicts with system Python environment
-:::
 
 ### BE Configuration Parameters
 
@@ -2839,10 +2821,10 @@ Set the following parameters in the `be.conf` configuration file on all BE nodes
 |--------|------|--------|--------|------|
 | `enable_python_udf_support` | bool | `true` / `false` | `false` | Whether to enable Python UDF functionality |
 | `python_env_mode` | string | `conda` / `venv` | `""` | Python multi-version environment management method |
-| `python_conda_root_path` | string | Directory path | `""` | Root directory of Miniconda<br>Only effective when `python_env_mode = conda` |
-| `python_venv_root_path` | string | Directory path | `${DORIS_HOME}/lib/udf/python` | Root directory for venv multi-version management<br>Only effective when `python_env_mode = venv` |
-| `python_venv_interpreter_paths` | string | Path list (separated by `:`) | `""` | Directory list of available Python interpreters<br>Only effective when `python_env_mode = venv` |
-| `max_python_process_num` | int32 | Integer | `0` | Maximum number of processes in Python Server process pool<br>`0` means using CPU core count as default value, users can set other positive integers to override default value |
+| `python_conda_root_path` | string | Directory path | `""` | Root directory of MinicondaOnly effective when `python_env_mode = conda` |
+| `python_venv_root_path` | string | Directory path | `${DORIS_HOME}/lib/udf/python` | Root directory for venv multi-version managementOnly effective when `python_env_mode = venv` |
+| `python_venv_interpreter_paths` | string | Path list (separated by `:`) | `""` | Directory list of available Python interpretersOnly effective when `python_env_mode = venv` |
+| `max_python_process_num` | int32 | Integer | `0` | Maximum number of processes in Python Server process pool`0` means using CPU core count as default value, users can set other positive integers to override default value |
 
 ### Method 1: Using Conda to Manage Python Environment
 
@@ -2913,9 +2895,8 @@ Doris will search for Conda environments matching the `runtime_version` in UDF u
 
 #### 4. Create Conda Environment
 
-:::caution Note
+> **caution**: Note
 Doris Python UDF/UDAF/UDTF functionality **mandatorily depends on** `pandas` and `pyarrow` libraries, which **must** be pre-installed in all Python environments, otherwise UDF will not run normally.
-:::
 
 **Execute the following commands on all BE nodes**:
 
@@ -3015,9 +2996,8 @@ python_venv_root_path = /doris/python_envs
 
 #### 4. Create Venv Environment
 
-:::caution Note
+> **caution**: Note
 Doris Python UDF/UDAF/UDTF functionality **mandatorily depends on** `pandas` and `pyarrow` libraries, which **must** be pre-installed in all Python environments, otherwise UDF will not run normally.
-:::
 
 **Execute the following commands on all BE nodes**:
 
@@ -3088,12 +3068,11 @@ $$;
 | Already have Python system environment | Venv | No need to install additional Conda |
 
 #### 2. Environment Consistency Requirements
-:::caution Note
+> **caution**: Note
 All BE nodes must be configured with **exactly the same** Python environment, including:
 - Python version must be consistent
 - Installed dependency packages and their versions must be consistent
 - Environment directory paths must be consistent
-:::
 
 ### Notes
 
@@ -3159,7 +3138,6 @@ Verify on each BE node whether the environment is correct:
 /doris/python_envs/python3.9.18/bin/python --version
 /doris/python_envs/python3.9.18/bin/python -c "import pandas; print(pandas.__version__)"
 ```
-
 
 #### Display all Python versions shared by BE.
 ```sql

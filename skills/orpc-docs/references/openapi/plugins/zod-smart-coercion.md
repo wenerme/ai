@@ -7,13 +7,9 @@ description: A refined alternative to `z.coerce` that automatically converts inp
 
 A Plugin refined alternative to `z.coerce` that automatically converts inputs to the expected type without modifying the input schema.
 
-::: warning
-In Zod v4, this plugin only supports **discriminated unions**. Regular (non-discriminated) unions are **not** coerced automatically.
-:::
+> **warning**: In Zod v4, this plugin only supports **discriminated unions**. Regular (non-discriminated) unions are **not** coerced automatically.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/zod@latest
@@ -35,8 +31,6 @@ bun add @orpc/zod@latest
 deno add npm:@orpc/zod@latest
 ```
 
-:::
-
 ## Setup
 
 ```ts
@@ -51,9 +45,7 @@ const handler = new OpenAPIHandler(router, {
 })
 ```
 
-:::warning
-Do not use this plugin with [RPCHandler](/docs/rpc-handler) as it may negatively impact performance.
-:::
+> **warning**: Do not use this plugin with [RPCHandler](/docs/rpc-handler) as it may negatively impact performance.
 
 ## Safe and Predictable Conversion
 

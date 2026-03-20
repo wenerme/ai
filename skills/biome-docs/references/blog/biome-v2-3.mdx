@@ -13,8 +13,6 @@ cover:
 socialImage: "@/assets/social-logo.png"
 ---
 
-import Avatar from "@/components/Avatar.astro";
-
 We're excited to announce the release of Biome 2.3, bringing several features that have been highly requested by the community. This release marks a significant milestone in our journey to support the broader web ecosystem.
 
 Once you have upgraded to Biome v2.3.0, migrate your Biome configuration to the new version by running the `migrate` command:
@@ -44,9 +42,7 @@ To enable the feature, you'll have to opt in the new `html.experimentalFullSuppo
   }
 }
 ```
-:::note
-We plan to fade out this option and make it the default. The option will be removed once the HTML parser becomes stable and supports more language-specific features.
-:::
+> **note**: We plan to fade out this option and make it the default. The option will be removed once the HTML parser becomes stable and supports more language-specific features.
 
 ### Script and style indentation
 

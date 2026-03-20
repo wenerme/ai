@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Gemini Video Generation (Veo)
 
@@ -236,9 +235,6 @@ litellm --config config.yaml
 
 ### Making Requests
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 # Step 1: Generate video
 curl --location 'http://0.0.0.0:4000/v1/videos' \
@@ -260,9 +256,6 @@ curl --location 'http://localhost:4000/v1/videos/{video_id}/content' \
 --header 'x-litellm-api-key: sk-1234' \
 --output video.mp4
 ```
-
-</TabItem>
-<TabItem value="python" label="Python SDK">
 
 ```python
 import litellm
@@ -289,9 +282,6 @@ video_bytes = litellm.video_content(video_id=response.id)
 with open("video.mp4", "wb") as f:
     f.write(video_bytes)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Cost Tracking
 
@@ -406,4 +396,3 @@ response = video_generation(
 - [Vertex AI Video Generation](../vertex_ai/videos.md)
 - [Video Generation API Reference](/docs/videos)
 - [Veo Pass-through Endpoints](/docs/pass_through/google_ai_studio#example-4-video-generation-with-veo)
-

@@ -35,7 +35,6 @@ The user executing this SQL command must have at least the following permissions
 |:-----------|:------|:---------------|
 | CREATE_PRIV | Corresponding database | You need to have the create permission for the corresponding database |
 
-
 ## Precautions
 
 If you want to specify the default replica distribution strategy for the table under db, you need to specify `<replication_allocation>` (the `<replication_allocation>` attribute of table has a higher priority than db):
@@ -54,11 +53,9 @@ If you want to specify the default Storage Vault for the table under db, you nee
   )
   ```
 
-:::info Note
+> **info**: Note
 
 Setting db's `storage_vault_name` is supported since version 3.0.5
-
-:::
 
 ## Example
 

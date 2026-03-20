@@ -1,17 +1,10 @@
 ---
-slug: /best-practices/use-materialized-views
-sidebar_position: 10
-sidebar_label: 'Use materialized views'
 title: 'Use Materialized Views'
 description: 'Page describing Materialized Views'
 keywords: ['materialized views', 'medallion architecture']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import incremental_materialized_view from '@site/static/images/bestpractices/incremental_materialized_view.gif';
-import refreshable_materialized_view from '@site/static/images/bestpractices/refreshable_materialized_view.gif';
 
 ClickHouse supports two types of materialized views: [**incremental**](/materialized-view/incremental-materialized-view) and [**refreshable**](/materialized-view/refreshable-materialized-view). While both are designed to accelerate queries by pre-computing and storing results, they differ significantly in how and when the underlying queries are executed, what workloads they're suited for, and how data freshness is handled.
 

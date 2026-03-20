@@ -10,7 +10,7 @@
 
 Custom analyzers allow you to overcome the limitations of built-in tokenizers by combining character filters, tokenizers, and token filters according to specific needs. This fine-tunes how text is segmented into searchable terms, directly determining search relevance and data analysis accuracy—a foundational key to enhancing search experience and data value.
 
-![Custom Analyzer Overview](/images/analyzer.png)
+[Custom Analyzer Overview]
 
 ## Using Custom Analyzers
 

@@ -39,7 +39,6 @@ LogiQA is a benchmark for evaluating logical reasoning abilities, sourced from e
 | **Evaluation Split** | `test` |
 | **Train Split** | `validation` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -115,5 +114,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

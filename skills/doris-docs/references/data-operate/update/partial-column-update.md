@@ -20,13 +20,12 @@ Partial column update is a feature that enables you to update only specific colu
 
 Doris provides a feature to directly insert or update partial column data in the unique key model load update, bypassing the need to read the entire row first, thus significantly improving update efficiency.
 
-:::caution Note
+> **caution**: Note
 
 1. Version 2.0 only supports partial column updates in the Merge-on-Write implementation of the Unique Key.
 2. Starting from version 2.0.2, partial column updates are supported using INSERT INTO.
 3. Partial column updates are not supported on tables with synchronized materialized views.
 4. Partial column updates are not allowed on tables doing schema change.
-:::
 
 ### Usage Example
 
@@ -120,11 +119,10 @@ Currently, all rows in the same batch data writing task (whether a load task or 
 
 Previously, Doris's partial update feature required that every row in an import update the same columns. Now, Doris supports a more flexible partial update method that allows each row in a single import to update different columns (supported since 3.1.0).
 
-:::caution Note:
+> **caution**: Note:
 
 1. Flexible column updates are supported by Stream Load, Routine Load, and tools using Stream Load (e.g. Doris-Flink-Connector).
 2. The import file must be in JSON format when using flexible column updates.
-:::
 
 #### Applicable Scenarios
 
@@ -194,14 +192,13 @@ PROPERTIES (
 RESUME ROUTINE LOAD FOR db1.job1;
 ```
 
-:::caution Routine Load Limitations
+> **caution**: Routine Load Limitations
 When using `UPDATE_FLEXIBLE_COLUMNS` mode with Routine Load, the following restrictions apply:
 - The data format must be JSON (`"format" = "json"`)
 - The `jsonpaths` property cannot be specified
 - The `fuzzy_parse` option cannot be enabled
 - The `COLUMNS` clause cannot be used
 - The `WHERE` clause cannot be used
-:::
 
 #### Example
 
@@ -421,4 +418,3 @@ INSERT INTO order_tbl (order_id, order_status) values (1,'Shipped');
 The Aggregate Key model does not perform any additional processing during the write process, so the write performance is not affected and is the same as normal data load. However, the cost of aggregation during query is relatively high, and the typical aggregation query performance is 5-10 times lower than the Merge-on-Write implementation of the Unique Key model.
 
 Since the `REPLACE_IF_NOT_NULL` aggregation function only takes effect when the value is not NULL, users cannot change a field value to NULL.
-

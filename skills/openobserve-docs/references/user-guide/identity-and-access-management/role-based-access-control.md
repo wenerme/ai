@@ -26,8 +26,8 @@ OpenObserve uses OpenFGA, an authorization system, to manage role-based access c
 2. The OpenFGA server maintains role relationships and permissions in a database.
 3. When a user attempts to perform an action, OpenObserve queries OpenFGA to check whether the action is allowed.
 4. OpenFGA evaluates the role relationships and returns a **true** or **false** response:
-<br> **True**: The user can perform the action.
-<br> **False**: The user cannot perform the action.
+ **True**: The user can perform the action.
+ **False**: The user cannot perform the action.
 
 ## RBAC in OpenObserve  
 
@@ -69,7 +69,7 @@ Admins can create custom user roles in OpenObserve to define more granular acces
 5. Click the edit icon on the custom role to assign permission to specific features and assign users and service accounts to the custom role.
 6. Click **Save**.
 
-![Custom roles in OpenObserve](../../images/rbac1-custom_roles.png)
+[Custom roles in OpenObserve]
 
 ## Service Accounts  
 
@@ -88,7 +88,7 @@ A service account in OpenObserve is a non-human account used for API access, aut
 5. A **token** is generated for the service account.
 6. After the service account is created, assign the necessary **roles** and **permissions**. This step is required for the service account to make API calls and access specific services in OpenObserve.
 
-![Service accounts in OpenObserve](../../images/rbac2-service-account.png)
+[Service accounts in OpenObserve]
 
 **Note:**
 
@@ -107,32 +107,32 @@ User groups allow admins to manage permissions collectively.
 4. From the **Roles, Users,** and **Service Accounts** tabs, select the list of users and service accounts that need to be assigned with appropriate roles.
 5. Click **Save**.
 
-![User groups in OpenObserve](../../images/rbac3-user-groups.png)
+[User groups in OpenObserve]
 
 ## Users
 
 Users are organization members with assigned roles that determine their access and actions within OpenObserve. Their permissions depend on the role assigned to them, such as **Admin, Editor, Viewer, User,** or **Root User**.
 
-**Note:** As of February 2025, only the **root user** can invite new users to an **Organization** in OpenObserve. <br>
+**Note:** As of February 2025, only the **root user** can invite new users to an **Organization** in OpenObserve. 
 
-![users](../../images/rbac4-add-users-enterprise.png)
+[users]
 
 **To add a user to an organization**:
 
 1. Navigate to **IAM > Users**.
 2. Click **Add User**.
-3. Enter the user’s email address. <br>
-   ![Create User](../../images/create-user-IAM.png)
+3. Enter the user’s email address. 
+   [Create User]
 4. Select one of the predefined roles- **Admin**, **Editor**, **Viewer**, or **User**.
 5. Optionally, assign one or more custom roles to extend permissions.
 6. Click **Save**.
-7. If the user does not already exist, you will be prompted to set a password, first name, and last name. <br>
+7. If the user does not already exist, you will be prompted to set a password, first name, and last name. 
 If the entered email address already belongs to an existing user, the system will show a message:
-`User is already part of the organization`. <br>
-![Create User and Set Password](../../images/create-user-IAM-password.png)
+`User is already part of the organization`. 
+[Create User and Set Password]
 
-After you save the changes, the new user gets listed in the **Users** page.<br>
+After you save the changes, the new user gets listed in the **Users** page.
 Use the Actions column to edit and delete the user. 
 
-**Note:** In the **Cloud version**, any user can invite new users by entering their email addresses, separated by commas or semicolons, selecting a role, and clicking **Send Invite**. <br>
-![Invite_users_o2cloud](../../images/rbac-invite-users-o2cloud.png)
+**Note:** In the **Cloud version**, any user can invite new users by entering their email addresses, separated by commas or semicolons, selecting a role, and clicking **Send Invite**. 
+[Invite_users_o2cloud]

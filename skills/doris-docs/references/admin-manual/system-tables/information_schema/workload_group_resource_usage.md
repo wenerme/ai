@@ -12,9 +12,7 @@ Stores usage information for Workload Group resources.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

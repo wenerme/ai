@@ -1,18 +1,10 @@
 ---
 sidebar_title: 'Query API endpoints'
-slug: /cloud/features/query-api-endpoints
 description: 'Easily spin up REST API endpoints from your saved queries'
 keywords: ['api', 'query api endpoints', 'query endpoints', 'query rest api']
 title: 'Query API endpoints'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import {CardSecondary} from '@clickhouse/click-ui/bundled';
-import console_api_keys from '@site/static/images/cloud/guides/query-endpoints/console-api-keys.png';
-import edit_api_key from '@site/static/images/cloud/guides/query-endpoints/api-key-edit.png';
-import specific_locations from '@site/static/images/cloud/guides/query-endpoints/specific-locations.png';
-import Link from '@docusaurus/Link'
 
 # Query API endpoints {#query-api-endpoints}
 
@@ -52,7 +44,6 @@ Creating Query API endpoints requires an Admin Console Role and an API key with 
 
 </VerticalStepper>
 
-:::tip Guide
+> **tip**: Guide
 See the [Query API endpoints guide](/cloud/get-started/query-endpoints) for instructions on how to set up
 query API endpoints in a few easy steps
-:::

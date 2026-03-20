@@ -1,18 +1,11 @@
 ---
-slug: /parts
 title: 'Table parts'
 description: 'What are data parts in ClickHouse'
 keywords: ['part']
 doc_type: 'reference'
 ---
 
-import merges from '@site/static/images/managing-data/core-concepts/merges.png';
-import part from '@site/static/images/managing-data/core-concepts/part.png';
-import Image from '@theme/IdealImage';
-
 ## What are table parts in ClickHouse? {#what-are-table-parts-in-clickhouse}
-
-<br />
 
 The data from each table in the ClickHouse [MergeTree engine family](/engines/table-engines/mergetree-family) is organized on disk as a collection of immutable `data parts`.
 
@@ -36,8 +29,6 @@ A data part is created whenever a set of rows is inserted into the table. The fo
 
 <Image img={part} size="lg" />
 
-<br />
-
 When a ClickHouse server processes the example insert with 4 rows (e.g., via an [INSERT INTO statement](/sql-reference/statements/insert-into)) sketched in the diagram above, it performs several steps:
 
 ① **Sorting**: The rows are sorted by the table's sorting key `(town, street)`, and a [sparse primary index](/guides/best-practices/sparse-primary-indexes) is generated for the sorted rows.
@@ -57,8 +48,6 @@ Data parts are self-contained, including all metadata needed to interpret their 
 To manage the number of parts per table, a [background merge](/merges) job periodically combines smaller parts into larger ones until they reach a [configurable](/operations/settings/merge-tree-settings#max_bytes_to_merge_at_max_space_in_pool) compressed size (typically ~150 GB). Merged parts are marked as inactive and deleted after a [configurable](/operations/settings/merge-tree-settings#old_parts_lifetime) time interval. Over time, this process creates a hierarchical structure of merged parts, which is why it's called a MergeTree table:
 
 <Image img={merges} size="lg" />
-
-<br />
 
 To minimize the number of initial parts and the overhead of merges, database clients are [encouraged](https://clickhouse.com/blog/asynchronous-data-inserts-in-clickhouse#data-needs-to-be-batched-for-optimal-performance) to either insert tuples in bulk, e.g. 20,000 rows at once, or to use the [asynchronous insert mode](https://clickhouse.com/blog/asynchronous-data-inserts-in-clickhouse), in which ClickHouse buffers rows from multiple incoming INSERTs into the same table and creates a new part only after the buffer size exceeds a configurable threshold, or a timeout expires.
 

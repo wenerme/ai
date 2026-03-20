@@ -1,7 +1,5 @@
 ---
 title: 'How to query Apache Arrow with chDB'
-sidebar_label: 'Querying Apache Arrow'
-slug: /chdb/guides/apache-arrow
 description: 'In this guide, we will learn how to query Apache Arrow tables with chDB'
 keywords: ['chdb', 'Apache Arrow']
 doc_type: 'guide'
@@ -50,9 +48,7 @@ aws s3 cp \
   s3://ookla-open-data/parquet/performance/type=mobile/year=2023/quarter=2/2023-04-01_performance_mobile_tiles.parquet .
 ```
 
-:::note
-If you want to download more files, use `aws s3 ls` to get a list of all the files and then update the above command.
-:::
+> **note**: If you want to download more files, use `aws s3 ls` to get a list of all the files and then update the above command.
 
 Next, we'll import the Parquet module from the `pyarrow` package:
 

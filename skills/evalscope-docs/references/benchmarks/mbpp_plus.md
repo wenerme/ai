@@ -1,6 +1,5 @@
 # MBPP-Plus
 
-
 ## Overview
 
 MBPP Plus is a fortified version of the MBPP benchmark, created to improve evaluation reliability for basic Python programming synthesis. It addresses quality issues in the original dataset and significantly increases test coverage for each problem.
@@ -28,7 +27,6 @@ MBPP Plus is a fortified version of the MBPP benchmark, created to improve evalu
 - Default timeout is 20 seconds per problem
 - Stricter evaluation than original MBPP benchmark
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MBPP Plus is a fortified version of the MBPP benchmark, created to improve evalu
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -136,5 +133,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

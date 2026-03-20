@@ -24,7 +24,7 @@ Whether you’re looking to identify spans from a certain service, those exceedi
 
 Using span filters, you can filter your spans in the trace timeline viewer. The more filters you add, the more specific are the filtered spans.
 
-![Screenshot of span filtering](/media/docs/tempo/screenshot-grafana-tempo-span-filters-v10-1.png)
+[Screenshot of span filtering]
 
 You can add one or more of the following filters:
 
@@ -44,7 +44,7 @@ The more filters you add, the more specific data that you are filtering.
 1. Select a span to view the span details.
 1. Select **Span Filters** to display the available filters.
 
-![Locate span filters in trace view](/media/docs/grafana/data-sources/tempo-span-filters-find.gif)
+[Locate span filters in trace view]
 
 Query results in the span view update as you select filters.
 

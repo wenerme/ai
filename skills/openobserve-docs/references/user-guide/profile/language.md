@@ -10,7 +10,7 @@ OpenObserve supports multiple UI languages. You can switch the interface languag
 - OpenObserve’s UI language is user-specific. Any user accessing the instance can set their own preferred language from the profile menu, regardless of the language in which the instance was originally created.  
 - Changing the language does not affect logs, metrics, traces, or queries.
 
-![UI language in OpenObserve](../../images/ui-language.png)
+[UI language in OpenObserve]
 
 ## How to Change the UI Language
 

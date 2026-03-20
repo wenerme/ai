@@ -74,6 +74,6 @@ These metrics must exist in your Prometheus data source.
 
 To open a query in Prometheus with the span name of that row automatically set in the query, click a row in the **rate**, **error rate**, or **duration** columns.
 
-![Linked Prometheus data for Rate from within a service graph](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-service-graph-prom.png)
+[Linked Prometheus data for Rate from within a service graph]
 
 To open a query in Tempo with the span name of that row automatically set in the query, click a row in the **links** column.

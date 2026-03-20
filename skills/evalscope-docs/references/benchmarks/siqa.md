@@ -38,7 +38,6 @@ SIQA (Social Interaction QA) is a benchmark for evaluating social commonsense in
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -111,5 +110,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

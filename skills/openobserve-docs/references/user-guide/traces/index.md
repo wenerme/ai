@@ -2,4 +2,3 @@ Traces help you understand how requests flow across services, identify performan
 
 !!! note "Learn more"
     - ### [Traces in OpenObserve](../traces/traces/)
-

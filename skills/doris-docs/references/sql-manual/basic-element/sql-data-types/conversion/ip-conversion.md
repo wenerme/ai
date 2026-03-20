@@ -96,13 +96,12 @@ If the format doesn't conform, null is returned.
 
 ### FROM String
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Before version 4.0, Doris had more relaxed requirements for IPv6 address formats, for example:
 - Allowing multiple consecutive colons (like '1:1:::1')
 - Allowing double colons without actually abbreviating anything (like '1:1:1::1:1:1:1:1')
 
 Starting from version 4.0, these two non-standard formats will result in an error in strict mode or return null in non-strict mode.
-:::
 
 #### Strict Mode
 

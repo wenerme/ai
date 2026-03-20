@@ -1,28 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/mysql-logs
 title: 'Monitoring MySQL Logs with ClickStack'
-sidebar_label: 'MySQL Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring MySQL Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['MySQL', 'logs', 'OTEL', 'ClickStack', 'database monitoring', 'slow query']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import search_view from '@site/static/images/clickstack/mysql/search-view.png';
-import log_view from '@site/static/images/clickstack/mysql/log-view.png';
-import finish_import from '@site/static/images/clickstack/mysql/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/mysql/example-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring MySQL Logs with ClickStack {#mysql-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize MySQL error and slow query logs in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing MySQL {#existing-mysql}
 
@@ -65,9 +51,7 @@ log_queries_not_using_indexes = ON
 # general_log_file = /var/log/mysql/mysql-general.log
 ```
 
-:::note
-The slow query log captures queries that take longer than `long_query_time` seconds. Adjust this threshold based on your application's performance requirements. Setting it too low will generate excessive logs.
-:::
+> **note**: The slow query log captures queries that take longer than `long_query_time` seconds. Adjust this threshold based on your application's performance requirements. Setting it too low will generate excessive logs.
 
 After making these changes, restart MySQL:
 
@@ -169,9 +153,7 @@ This configuration:
 - Adds `source: mysql-error` and `source: mysql-slow` attributes for filtering in HyperDX
 - Routes logs to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-Two receivers are required because MySQL error logs and slow query logs have completely different formats. The `time_parser` uses `gotime` layout to handle MySQL's ISO8601 timestamp format with timezone offsets.
-:::
+> **note**: Two receivers are required because MySQL error logs and slow query logs have completely different formats. The `time_parser` uses `gotime` layout to handle MySQL's ISO8601 timestamp format with timezone offsets.
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -191,9 +173,7 @@ services:
       # ... other volumes ...
 ```
 
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the MySQL log files. Use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the MySQL log files. Use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -324,9 +304,7 @@ Once ClickStack is running:
 4. Set the time range to **2025-11-13 00:00:00 - 2025-11-16 00:00:00**
 5. You should see 40 logs total (30 error logs with `source:mysql-demo-error` + 10 slow queries with `source:mysql-demo-slow`)
 
-:::note
-If you don't see all 40 logs immediately, wait about a minute for the collector to finish processing. If logs still don't appear after waiting, run `docker restart clickstack-demo` and check again after another minute. This is a known issue with the OpenTelemetry filelog receiver when bulk-loading pre-existing files with `start_at: beginning`. Production deployments using `start_at: end` process logs as they're written in real-time and don't experience this issue.
-:::
+> **note**: If you don't see all 40 logs immediately, wait about a minute for the collector to finish processing. If logs still don't appear after waiting, run `docker restart clickstack-demo` and check again after another minute. This is a known issue with the OpenTelemetry filelog receiver when bulk-loading pre-existing files with `start_at: beginning`. Production deployments using `start_at: end` process logs as they're written in real-time and don't experience this issue.
 
 <Image img={search_view} alt="Search view"/>
 
@@ -334,7 +312,6 @@ If you don't see all 40 logs immediately, wait about a minute for the collector 
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-14 00:00:00 - 2025-11-15 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -363,9 +340,7 @@ The dashboard will be created with all visualizations pre-configured.
 
 <Image img={example_dashboard} alt="Example dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-11-14 00:00:00 - 2025-11-15 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-14 00:00:00 - 2025-11-15 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

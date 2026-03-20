@@ -1,7 +1,5 @@
 ---
 date: "2022-08-31T17:35:40+08:00"
-slug: "merge-message-templates"
-sidebar_position: 15
 aliases:
   - /en-us/merge-message-templates
 ---

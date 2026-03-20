@@ -7,7 +7,6 @@ keywords: ['Primary Key']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Checking your Primary Key \{#checking-your-primary-key\}
 
@@ -103,9 +102,7 @@ PrimaryKey
 
 Granules are the unit of data processing in ClickHouse, with each typically holding 8192 rows. For further details on granules and how they are filtered we recommend reading [this guide](/guides/best-practices/sparse-primary-indexes#mark-files-are-used-for-locating-granules).
 
-:::note
-Filtering on keys later in an ordering key will not be as efficient as filtering on those that are earlier in the tuple. For reasons why, see [here](/guides/best-practices/sparse-primary-indexes#secondary-key-columns-can-not-be-inefficient)
-:::
+> **note**: Filtering on keys later in an ordering key will not be as efficient as filtering on those that are earlier in the tuple. For reasons why, see [here](/guides/best-practices/sparse-primary-indexes#secondary-key-columns-can-not-be-inefficient)
 
 ## Multi-key filtering \{#multi-key-filtering\}
 
@@ -121,7 +118,6 @@ WHERE (code = '200') AND (timestamp >= '2025-01-01 00:00:00') AND (timestamp <= 
 └─────────┘
 
 1 row in set. Elapsed: 0.008 sec. Processed 712.70 thousand rows, 6.41 MB (88.92 million rows/s., 799.27 MB/s.)
-
 
 EXPLAIN indexes = 1
 SELECT count()

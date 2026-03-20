@@ -124,8 +124,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/memory-readonly-to-options .
 ```
 
-:::
-
 ### `Memory.query()` renamed to `Memory.recall()`
 
 The `Memory.query()` method has been renamed to `Memory.recall()`. The new method returns a simpler format with `{ messages: MastraDBMessage[] }` instead of multiple format variations. This change better describes the action of retrieving messages from memory and simplifies the API.
@@ -147,8 +145,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/memory-query-to-recall .
 ```
-
-:::
 
 ### `Memory.recall()` parameter changes
 
@@ -179,8 +175,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/memory-vector-search-param .
 ```
 
-:::
-
 ### `MastraMessageV2` type renamed to `MastraDBMessage`
 
 The `MastraMessageV2` type has been renamed to `MastraDBMessage` for clarity. This change better describes the purpose of this type as the database message format.
@@ -201,8 +195,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/memory-message-v2-type .
 ```
-
-:::
 
 ## Removed
 

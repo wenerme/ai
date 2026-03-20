@@ -165,5 +165,3 @@ Sends each log as an individual HTTP request in parallel when the batch is flush
 **When to use**: Endpoints that expect individual records, or when you need maximum compatibility.
 
 **Note**: This mode sends N HTTP requests per batch (more overhead). Consider using `ndjson` instead if your endpoint supports it.
-
-

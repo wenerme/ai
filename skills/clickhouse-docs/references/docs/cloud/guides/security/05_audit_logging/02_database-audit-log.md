@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Database audit log'
-slug: /cloud/security/audit-logging/database-audit-log
 title: 'Database audit log'
 description: 'This page describes how you can review the database audit log'
 doc_type: 'guide'
@@ -11,9 +9,8 @@ keywords: ['audit logging', 'database logs', 'compliance', 'security', 'monitori
 
 ClickHouse provides database audit logs by default. This page focuses on security relevant logs. For more information on data recorded by the system, refer to the docs for [system tables](/operations/system-tables/overview).
 
-:::tip Log retention
+> **tip**: Log retention
 Information is logged directly to the system tables and are retained for up to 30 days by default. This period can be longer or shorter and is affected by the frequency of merges in the system. Customers may take additional measures to store logs for longer or export logs to a security information and event management (SIEM) system for long term storage. Details below.
-:::
 
 ## Security relevant logs {#security-relevant-logs}
 

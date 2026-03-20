@@ -1,7 +1,5 @@
 ---
 date: "2022-12-01T00:00:00+00:00"
-slug: "incoming-email"
-sidebar_position: 130
 aliases:
   - /en-us/incoming-email
   - /incoming-email

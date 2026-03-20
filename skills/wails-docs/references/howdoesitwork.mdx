@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+
 ---
 
 # How does it work?
@@ -60,7 +60,6 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
 
 type App struct {
 	ctx context.Context
@@ -133,11 +132,9 @@ starts, it examines the struct instances listed in the `Bind` field in the optio
 public (starts with an uppercase letter) and will generate JavaScript versions of those methods that can be called
 by the frontend code.
 
-:::info Note
+> **info**: Note
 
 Wails requires that you pass in an _instance_ of the struct for it to bind it correctly
-
-:::
 
 In this example, we create a new `App` instance and then add this instance to the `Bind` option in `wails.Run`:
 
@@ -175,7 +172,6 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
 
 type App struct {
 	ctx context.Context
@@ -323,13 +319,11 @@ is passed to it.
 All data types are correctly translated between Go and JavaScript. Even structs. If you return a struct from a Go call,
 it will be returned to your frontend as a JavaScript class.
 
-:::info Note
+> **info**: Note
 
 Struct fields _must_ have a valid `json` tag to be included in the generated TypeScript.
 
 Anonymous nested structs are not supported at this time.
-
-:::
 
 It is possible to send structs back to Go. Any JavaScript map/class passed as an argument that
 is expecting a struct, will be converted to that struct type. To make this process a lot easier, in `dev` mode,

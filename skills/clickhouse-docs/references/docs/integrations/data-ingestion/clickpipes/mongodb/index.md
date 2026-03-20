@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Ingesting Data from MongoDB to ClickHouse'
 description: 'Describes how to seamlessly connect your MongoDB to ClickHouse Cloud.'
-slug: /integrations/clickpipes/mongodb
 title: 'Ingesting data from MongoDB to ClickHouse (using CDC)'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
@@ -10,27 +8,13 @@ integration:
    - category: 'clickpipes'
 ---
 
-import BetaBadge from '@theme/badges/BetaBadge';
-import cp_service from '@site/static/images/integrations/data-ingestion/clickpipes/cp_service.png';
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import mongodb_tile from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongodb-tile.png'
-import mongodb_connection_details from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongodb-connection-details.png'
-import select_destination_db from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/select-destination-db.png'
-import ch_permissions from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ch-permissions.jpg'
-import Image from '@theme/IdealImage';
-import ssh_tunnel from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ssh-tunnel.jpg'
-
 # Ingesting data from MongoDB to ClickHouse (using CDC)
 
 <BetaBadge/>
 
-:::info
-Ingesting data from MongoDB to ClickHouse Cloud via ClickPipes is in public beta.
-:::
+> **info**: Ingesting data from MongoDB to ClickHouse Cloud via ClickPipes is in public beta.
 
-:::note
-In the ClickHouse Cloud console and documentation, "table" and "collection" are used interchangeably for MongoDB.
-:::
+> **note**: In the ClickHouse Cloud console and documentation, "table" and "collection" are used interchangeably for MongoDB.
 
 You can use ClickPipes to ingest data from your MongoDB database into ClickHouse Cloud. The source MongoDB database can be hosted on-premises or in the cloud using services like MongoDB Atlas.
 
@@ -85,9 +69,7 @@ You can specify SSH tunneling details if your source MongoDB database isn't publ
 3. To use Key-based authentication, click on "Revoke and generate key pair" to generate a new key pair and copy the generated public key to your SSH server under `~/.ssh/authorized_keys`.
 4. Click on "Verify Connection" to verify the connection.
 
-:::note
-Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
-:::
+> **note**: Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
 
 Once the connection details are filled in, click `Next`.
 

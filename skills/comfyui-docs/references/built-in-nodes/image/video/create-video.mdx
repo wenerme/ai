@@ -1,11 +1,9 @@
 ---
 title: "Create Video - ComfyUI Built-in Node Documentation"
 description: "Create Video node is used for creating videos in ComfyUI."
-sidebarTitle: "Create Video"
-icon: "circle"
 ---
 
-![Create Video](/images/built-in-nodes/image/video/create-video.jpg)
+[Create Video]
 
 The CreateVideo node is used to combine a sequence of images into a video, with optional audio. You can control the playback speed by setting the frame rate (fps). This node is commonly used to export generated image sequences into standard video files for sharing and post-processing.
 
@@ -30,9 +28,7 @@ audio: Optional parameter, can add background music or voiceover. Can be left em
 
 ## Usage Examples
 
-<Card title="Wan VACE Video Generation Workflow" icon="book" href="/tutorials/video/wan/vace">
 Visit the video generation workflow to learn how to use Create Video node to merge image sequences into videos.
-</Card>
 
 ## Source Code
 
@@ -67,6 +63,3 @@ class CreateVideo(ComfyNodeABC):
             )
         ),)
 ```
-
-
-

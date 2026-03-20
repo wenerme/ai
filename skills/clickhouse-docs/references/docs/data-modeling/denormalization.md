@@ -1,14 +1,9 @@
 ---
-slug: /data-modeling/denormalization
 title: 'Denormalizing Data'
 description: 'How to use denormalization to improve query performance'
 keywords: ['data denormalization', 'denormalize', 'query optimization']
 doc_type: 'guide'
 ---
-
-import denormalizationDiagram from '@site/static/images/data-modeling/denormalization-diagram.png';
-import denormalizationSchema from '@site/static/images/data-modeling/denormalization-schema.png';
-import Image from '@theme/IdealImage';
 
 # Denormalizing Data
 
@@ -21,8 +16,6 @@ Denormalizing data involves intentionally reversing the normalization process to
 This process reduces the need for complex joins at query time and can significantly speed up read operations, making it ideal for applications with heavy read requirements and complex queries. However, it can increase the complexity of write operations and maintenance, as any changes to the duplicated data must be propagated across all instances to maintain consistency.
 
 <Image img={denormalizationDiagram} size="lg" alt="Denormalization in ClickHouse"/>
-
-<br />
 
 A common technique popularized by NoSQL solutions is to denormalize data in the absence of `JOIN` support, effectively storing all statistics or related rows on a parent row as columns and nested objects. For example, in an example schema for a blog, we can store all `Comments` as an `Array` of objects on their respective posts.
 
@@ -49,8 +42,6 @@ Achieving this in real-time is often unrealistic and requires significant engine
 
 1. Triggering the correct join statements when a table row changes. This should ideally not cause all objects for the join to be updated - rather just those that have been impacted. Modifying the joins to filter to the correct rows efficiently, and achieving this under high throughput, requires external tooling or engineering.
 1. Row updates in ClickHouse need to be carefully managed, introducing additional complexity.
-
-<br />
 
 A batch update process is thus more common, where all of the denormalized objects are periodically reloaded.
 

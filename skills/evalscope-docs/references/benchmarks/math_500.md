@@ -1,6 +1,5 @@
 # MATH-500
 
-
 ## Overview
 
 MATH-500 is a curated subset of 500 problems from the MATH benchmark, designed to evaluate the mathematical reasoning capabilities of language models. It covers five difficulty levels across various mathematical topics including algebra, geometry, number theory, and calculus.
@@ -28,7 +27,6 @@ MATH-500 is a curated subset of 500 problems from the MATH benchmark, designed t
 - Results can be broken down by difficulty level
 - Commonly used for math reasoning benchmarking due to manageable size
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MATH-500 is a curated subset of 500 problems from the MATH benchmark, designed t
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -125,5 +122,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,12 +1,8 @@
 ---
-sidebar_label: 'Export backups'
-slug: /cloud/manage/backups/export-backups-to-own-cloud-account
 title: 'Export Backups to your Own Cloud Account'
 description: 'Describes how to export backups to your own Cloud account'
 doc_type: 'guide'
 ---
-
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
 
 <EnterprisePlanFeatureBadge/>
 
@@ -15,9 +11,7 @@ For details of how ClickHouse Cloud backups work, including "full" vs. "incremen
 
 In this guide, we show examples of how to take full and incremental backups to AWS, GCP, Azure object storage as well as how to restore from the backups.
 
-:::note
-Any usage where backups are being exported to a different region in the same cloud provider will incur [data transfer](/cloud/manage/network-data-transfer) charges.  Currently we don't support cross cloud backups.
-:::
+> **note**: Any usage where backups are being exported to a different region in the same cloud provider will incur [data transfer](/cloud/manage/network-data-transfer) charges.  Currently we don't support cross cloud backups.
 
 ## Requirements {#requirements}
 
@@ -41,9 +35,7 @@ You will need the following details to export/restore backups to your own CSP st
 
 2. AWS access key and secret. AWS role based authentication is also supported and can be used in place of AWS access key and secret.
 
-:::note
-In order to use role based authentication, please follow the Secure s3 [setup](https://clickhouse.com/docs/cloud/security/secure-s3). In addition, you will need to add `s3:PutObject`, and `s3:DeleteObject` permissions to the IAM policy described [here.](https://clickhouse.com/docs/cloud/security/secure-s3#option-2-manually-create-iam-role)
-:::
+> **note**: In order to use role based authentication, please follow the Secure s3 [setup](https://clickhouse.com/docs/cloud/security/secure-s3). In addition, you will need to add `s3:PutObject`, and `s3:DeleteObject` permissions to the IAM policy described [here.](https://clickhouse.com/docs/cloud/security/secure-s3#option-2-manually-create-iam-role)
 
 ### Azure {#azure}
 
@@ -76,10 +68,8 @@ TO S3('https://testchbackups.s3.amazonaws.com/backups/<uuid>', '<key id>', '<key
 
 Where `uuid` is a unique identifier, used to differentiate a set of backups.
 
-:::note
-You will need to use a different UUID for each new backup in this subdirectory, otherwise you will get a `BACKUP_ALREADY_EXISTS` error.
+> **note**: You will need to use a different UUID for each new backup in this subdirectory, otherwise you will get a `BACKUP_ALREADY_EXISTS` error.
 For example, if you're taking daily backups, you will need to use a new UUID each day.  
-:::
 
 **Incremental Backup**
 

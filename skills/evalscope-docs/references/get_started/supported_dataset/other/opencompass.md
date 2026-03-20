@@ -20,75 +20,55 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
     </tr>
     <tr valign="top">
       <td>
-<details open>
-<summary><b>Word Definition</b></summary>
+
+<b>Word Definition</b>
 
 - WiC
 - SummEdits
 
-</details>
-
-<details open>
-<summary><b>Idiom Learning</b></summary>
+<b>Idiom Learning</b>
 
 - CHID
 
-</details>
-
-<details open>
-<summary><b>Semantic Similarity</b></summary>
+<b>Semantic Similarity</b>
 
 - AFQMC
 - BUSTM
 
-</details>
-
-<details open>
-<summary><b>Coreference Resolution</b></summary>
+<b>Coreference Resolution</b>
 
 - CLUEWSC
 - WSC
 - WinoGrande
 
-</details>
-
-<details open>
-<summary><b>Translation</b></summary>
+<b>Translation</b>
 
 - Flores
 - IWSLT2017
 
-</details>
-
-<details open>
-<summary><b>Multi-language Question Answering</b></summary>
+<b>Multi-language Question Answering</b>
 
 - TyDi-QA
 - XCOPA
 
-</details>
-
-<details open>
-<summary><b>Multi-language Summary</b></summary>
+<b>Multi-language Summary</b>
 
 - XLSum
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Knowledge Question Answering</b></summary>
+
+<b>Knowledge Question Answering</b>
 
 - BoolQ
 - CommonSenseQA
 - NaturalQuestions
 - TriviaQA
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Textual Entailment</b></summary>
+
+<b>Textual Entailment</b>
 
 - CMNLI
 - OCNLI
@@ -99,10 +79,7 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - RTE
 - ANLI
 
-</details>
-
-<details open>
-<summary><b>Commonsense Reasoning</b></summary>
+<b>Commonsense Reasoning</b>
 
 - StoryCloze
 - COPA
@@ -111,35 +88,25 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - PIQA
 - SIQA
 
-</details>
-
-<details open>
-<summary><b>Mathematical Reasoning</b></summary>
+<b>Mathematical Reasoning</b>
 
 - MATH
 - GSM8K
 
-</details>
-
-<details open>
-<summary><b>Theorem Application</b></summary>
+<b>Theorem Application</b>
 
 - TheoremQA
 - StrategyQA
 - SciBench
 
-</details>
-
-<details open>
-<summary><b>Comprehensive Reasoning</b></summary>
+<b>Comprehensive Reasoning</b>
 
 - BBH
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Junior High, High School, University, Professional Examinations</b></summary>
+
+<b>Junior High, High School, University, Professional Examinations</b>
 
 - C-Eval
 - AGIEval
@@ -149,14 +116,10 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - ARC
 - Xiezhi
 
-</details>
-
-<details open>
-<summary><b>Medical Examinations</b></summary>
+<b>Medical Examinations</b>
 
 - CMB
 
-</details>
       </td>
     </tr>
 </td>
@@ -179,8 +142,8 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
     </tr>
     <tr valign="top">
       <td>
-<details open>
-<summary><b>Reading Comprehension</b></summary>
+
+<b>Reading Comprehension</b>
 
 - C3
 - CMRC
@@ -191,30 +154,23 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - OpenBookQA
 - SQuAD2.0
 
-</details>
-
-<details open>
-<summary><b>Content Summary</b></summary>
+<b>Content Summary</b>
 
 - CSL
 - LCSTS
 - XSum
 - SummScreen
 
-</details>
-
-<details open>
-<summary><b>Content Analysis</b></summary>
+<b>Content Analysis</b>
 
 - EPRSTMT
 - LAMBADA
 - TNEWS
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Long Context Understanding</b></summary>
+
+<b>Long Context Understanding</b>
 
 - LEval
 - LongBench
@@ -222,11 +178,10 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - NarrativeQA
 - Qasper
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Safety</b></summary>
+
+<b>Safety</b>
 
 - CivilComments
 - CrowsPairs
@@ -234,17 +189,14 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - JigsawMultilingual
 - TruthfulQA
 
-</details>
-<details open>
-<summary><b>Robustness</b></summary>
+<b>Robustness</b>
 
 - AdvGLUE
 
-</details>
       </td>
       <td>
-<details open>
-<summary><b>Code</b></summary>
+
+<b>Code</b>
 
 - HumanEval
 - HumanEvalX
@@ -252,11 +204,9 @@ Refer to the [detailed explanation](https://github.com/open-compass/opencompass#
 - APPs
 - DS1000
 
-</details>
       </td>
     </tr>
 </td>
     </tr>
   </tbody>
 </table>
-

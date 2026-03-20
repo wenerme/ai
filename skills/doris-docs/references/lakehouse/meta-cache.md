@@ -14,9 +14,7 @@ This article details the types, strategies, and related parameter configurations
 
 For **data cache**, refer to the [data cache documentation](./data-cache.md).
 
-:::tip
-This document applies to versions after 2.1.6.
-:::
+> **tip**: This document applies to versions after 2.1.6.
 
 ## Cache Strategies
 
@@ -363,4 +361,3 @@ After setting the above parameters:
 - Changes in partition data files can be queried in real time.
 
 But this will increase the access pressure on external data sources (such as Hive Metastore and HDFS), which may cause unstable metadata access latency and other phenomena.
-

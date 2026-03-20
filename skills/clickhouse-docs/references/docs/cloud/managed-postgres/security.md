@@ -1,15 +1,9 @@
 ---
-slug: /cloud/managed-postgres/security
-sidebar_label: 'Security'
 title: 'Security'
 description: 'Security features for ClickHouse Managed Postgres including IP whitelisting, encryption, and Private Link'
 keywords: ['postgres security', 'ip whitelisting', 'encryption', 'tls', 'ssl', 'private link', 'backup retention']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import ipFilters from '@site/static/images/managed-postgres/ip-filters.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="security" />
 
@@ -31,13 +25,12 @@ You can specify:
 - **Anywhere** to allow all IP addresses (not recommended for production)
 - **Nowhere** to block all connections
 
-:::warning Production best practices
+> **warning**: Production best practices
 If no IP filters are configured, connections from all IP addresses are permitted. For production workloads, restrict access to known IP addresses or CIDR ranges. Consider limiting access to:
 - Your application servers
 - VPN gateway IP addresses
 - Bastion hosts for administrative access
 - CI/CD pipeline IPs for automated deployments
-:::
 
 ## Encryption {#encryption}
 
@@ -60,9 +53,7 @@ Backups and Write-Ahead Log (WAL) archives stored in object storage are also enc
 
 All backup data is stored in dedicated, isolated storage buckets with credentials scoped to each individual instance, ensuring that backup data remains secure and accessible only to authorized systems.
 
-:::info
-Encryption at rest is enabled by default for all Managed Postgres instances and can't be disabled. No additional configuration is required.
-:::
+> **info**: Encryption at rest is enabled by default for all Managed Postgres instances and can't be disabled. No additional configuration is required.
 
 ### Encryption in transit {#encryption-in-transit}
 
@@ -78,9 +69,8 @@ For more details on TLS configuration and connection options, see the [Connectio
 
 Private Link enables private connectivity between your Managed Postgres instance and your Virtual Private Cloud (VPC) without exposing traffic to the public internet. This provides an additional layer of network isolation and security.
 
-:::note Manual setup required
+> **note**: Manual setup required
 Private Link support is available but requires manual configuration by ClickHouse support. This feature is ideal for enterprise customers with strict network isolation requirements.
-:::
 
 ### Requesting Private Link setup {#requesting-private-link}
 

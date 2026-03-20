@@ -15,8 +15,6 @@ Suggestions for column types when creating a table:
 3. For selecting integer types of different lengths, follow the principle of sufficiency.
 4. For the lengths of VARCHAR and STRING types, also follow the principle of sufficiency.
 
-
-
 ## Limitations of aggregate model
 
 This section is about the limitations of the Aggregate Model.

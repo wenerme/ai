@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Anthropic Passthrough
 
@@ -16,10 +15,6 @@ Just replace `https://api.anthropic.com` with `LITELLM_PROXY_BASE_URL/anthropic`
 
 #### **Example Usage**
 
-
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl --request POST \
   --url http://0.0.0.0:4000/anthropic/v1/messages \
@@ -34,9 +29,6 @@ curl --request POST \
         ]
     }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Anthropic Python SDK">
 
 ```python
 from anthropic import Anthropic
@@ -58,9 +50,6 @@ response = client.messages.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 Supports **ALL** Anthropic Endpoints (including streaming).
 
@@ -102,7 +91,6 @@ curl http://0.0.0.0:4000/anthropic/v1/messages \
         ]
     }'
 ```
-
 
 ## Examples
 
@@ -191,7 +179,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
 ### **Example 3: Batch Messages**
 
-
 #### LiteLLM Proxy Call 
 
 ```bash
@@ -263,7 +250,7 @@ curl https://api.anthropic.com/v1/messages/batches \
 }'
 ```
 
-:::note Configuration Required for Batch Cost Tracking
+> **note**: Configuration Required for Batch Cost Tracking
 For batch passthrough cost tracking to work properly, you need to define the Anthropic model in your `proxy_config.yaml`:
 
 ```yaml
@@ -275,7 +262,6 @@ model_list:
 ```
 
 This ensures the polling mechanism can correctly identify the provider and retrieve batch status for cost calculation.
-:::
 
 ## Advanced
 
@@ -320,7 +306,6 @@ Expected Response
 
 3. Test it! 
 
-
 ```bash
 curl --request POST \
   --url http://0.0.0.0:4000/anthropic/v1/messages \
@@ -336,11 +321,7 @@ curl --request POST \
   }'
 ```
 
-
 ### Send `litellm_metadata` (tags, end-user cost tracking)
-
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```bash
 curl --request POST \
@@ -360,9 +341,6 @@ curl --request POST \
     }
   }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Anthropic Python SDK">
 
 ```python
 from anthropic import Anthropic
@@ -393,6 +371,3 @@ response = client.messages.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>

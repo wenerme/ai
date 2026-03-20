@@ -26,7 +26,6 @@ IPV4_NUM_TO_STRING(<ipv4_num>)
 |-----------|--------------------------------------------------|
 | `<ipv4_num>`      | Int type converted from ipv4  |
 
-
 ## Return Value
 Returns a string containing the corresponding IPv4 address in the format A.B.C.D (dot-separated numbers in decimal form), special case:
 - Will return `NULL` if the input parameter is negative or larger than `4294967295`(num value of `'255.255.255.255'`)
@@ -57,4 +56,3 @@ select num,ipv4_num_to_string(num) from ipv4_bi;
 | 4294967296 | NULL                      |
 +------------+---------------------------+
 ```
-

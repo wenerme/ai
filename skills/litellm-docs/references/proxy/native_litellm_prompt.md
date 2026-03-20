@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LiteLLM Prompt Management (GitOps)
 
@@ -11,10 +10,6 @@ Store prompts as `.prompt` files in your repository and use them directly with L
 - **BitBucket**: Store `.prompt` files in BitBucket repositories with team-based access control
 - **Gitlab**: Store `.prompt` files in Gitlab repositories with team-based access control
 ## Quick Start
-
-<Tabs>
-
-<TabItem value="sdk" label="SDK">
 
 **1. Create a .prompt file**
 
@@ -44,9 +39,6 @@ response = litellm.completion(
     prompt_variables={"user_message": "What is the capital of France?"}
 )
 ```
-
-</TabItem>
-<TabItem value="bitbucket" label="BITBUCKET">
 
 **1. Create a .prompt file in BitBucket**
 
@@ -89,9 +81,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="gitlab" label="GITLAB">
-
 **1. Create a .prompt file in a gitlab repo**
 
 Create `prompts/hello.prompt` in your gitlab repository:
@@ -132,10 +121,6 @@ response = litellm.completion(
     prompt_variables={"user_message": "What is the capital of France?"}
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 **1. Create a .prompt file**
 
@@ -197,9 +182,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### .prompt File Format
 

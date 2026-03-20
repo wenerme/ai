@@ -1,14 +1,9 @@
 ---
-slug: /data-modeling/schema-design
 title: 'Schema Design'
 description: 'Optimizing ClickHouse schema for query performance'
 keywords: ['schema', 'schema design', 'query optimization']
 doc_type: 'guide'
 ---
-
-import stackOverflowSchema from '@site/static/images/data-modeling/stackoverflow-schema.png';
-import schemaDesignIndices from '@site/static/images/data-modeling/schema-design-indices.png';
-import Image from '@theme/IdealImage';
 
 Understanding effective schema design is key to optimizing ClickHouse performance and includes choices that often involve trade-offs, with the optimal approach depending on the queries being served as well as factors such as data update frequency, latency requirements, and data volume. This guide provides an overview of schema design best practices and data modeling techniques for optimizing ClickHouse performance.
 
@@ -19,8 +14,6 @@ For the examples in this guide, we use a subset of the Stack Overflow dataset. T
 > The primary keys and relationships indicated aren't enforced through constraints (Parquet is file not table format) and purely indicate how the data is related and the unique keys it possesses.
 
 <Image img={stackOverflowSchema} size="lg" alt="Stack Overflow Schema"/>
-
-<br />
 
 The Stack Overflow dataset contains a number of related tables. In any data modeling task, we recommend users focus on loading their primary table first. This may not necessarily be the largest table but rather the one on which you expect to receive most analytical queries. This will allow you to familiarize yourself with the main ClickHouse concepts and types, especially important if coming from a predominantly OLTP background. This table may require remodeling as additional tables are added to fully exploit ClickHouse features and obtain optimal performance.
 
@@ -173,8 +166,6 @@ By applying these simple rules to our posts table, we can identify an optimal ty
 | `ParentId`               | No         | -                                                                      | 20696028       | Yes    | Consider Null to be an empty string                                                          | String                                   |
 | `CommunityOwnedDate`     | No         | 2008-08-12 04:59:35.017000000, 2024-04-01 05:36:41.380000000           | -              | Yes    | Consider default 1970-01-01 for Nulls. Millisecond granularity isn't required, use DateTime | DateTime                                 |
 | `ClosedDate`             | No         | 2008-09-04 20:56:44, 2024-04-06 18:49:25.393000000                     | -              | Yes    | Consider default 1970-01-01 for Nulls. Millisecond granularity isn't required, use DateTime | DateTime                                 |
-
-<br />
 
 The above gives us the following schema:
 

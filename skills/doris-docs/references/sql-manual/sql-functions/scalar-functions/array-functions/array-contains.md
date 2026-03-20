@@ -10,7 +10,6 @@
 
 <version since="1.2.0">
 
-
 </version>
 
 ## Description
@@ -212,4 +211,4 @@ SELECT id, inventors FROM test_array_index WHERE array_contains(inventors, 'x') 
 
 ### Keywords
 
-ARRAY, CONTAIN, CONTAINS, ARRAY_CONTAINS 
+ARRAY, CONTAIN, CONTAINS, ARRAY_CONTAINS

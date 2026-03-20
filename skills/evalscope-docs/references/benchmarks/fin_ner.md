@@ -1,6 +1,5 @@
 # FinNER
 
-
 ## Overview
 
 The FinNER dataset is a corpus of financial agreements from public U.S. Security and Exchange Commission (SEC) filings, annotated with Person, Organization, Location, and Miscellaneous entities to support information extraction for credit risk assessment.
@@ -26,7 +25,6 @@ The FinNER dataset is a corpus of financial agreements from public U.S. Security
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: PER, ORG, LOC, MISC
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The FinNER dataset is a corpus of financial agreements from public U.S. Security
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -171,8 +168,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -203,8 +199,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -234,5 +228,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

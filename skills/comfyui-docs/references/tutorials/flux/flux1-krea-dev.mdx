@@ -1,12 +1,9 @@
 ---
 title: "Flux.1 Krea Dev ComfyUI Workflow Tutorial"
 description: "Best open-source FLUX model developed by Black Forest Labs in collaboration with Krea, focusing on unique aesthetic style and natural details, avoiding AI look, providing exceptional realism and image quality."
-sidebarTitle: "Flux.1 Krea Dev"
 ---
 
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
-
-![Flux.1 Krea Dev Poster](/images/tutorial/flux/flux_1_krea_dev_poster.jpg)
+[Flux.1 Krea Dev Poster]
 
 [Flux.1 Krea Dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev) is an advanced text-to-image generation model developed in collaboration between Black Forest Labs (BFL) and Krea. This is currently the best open-source FLUX model, specifically designed for text-to-image generation.
 
@@ -21,8 +18,6 @@ import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 This model is released under the [flux-1-dev-non-commercial-license](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/blob/main/LICENSE.md)
 
 ## Flux.1 Krea Dev ComfyUI Workflow
-
-<UpdateReminder />
 
 #### 1. Workflow Files
 
@@ -48,9 +43,7 @@ If you want to pursue higher quality and have enough VRAM, you can try the origi
 
 - [flux1-krea-dev.safetensors](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/resolve/main/flux1-krea-dev.safetensors) 
 
-<Note>
 The `flux1-dev.safetensors` file requires agreeing to the [black-forest-labs/FLUX.1-Krea-dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/) agreement before downloading via browser.
-</Note>
 
 If you have used Flux related workflows before, the following models are the same and don't need to be downloaded again
 
@@ -78,13 +71,11 @@ ComfyUI/
 
 #### 3. Step-by-step Verification to Ensure Workflow Runs Properly
 
-<Tip>
     For low VRAM users, this model may not run smoothly on your device, you can wait for the community to provide FP8 or GGUF version.
-</Tip>
 
 Please refer to the image below to ensure all model files have been loaded correctly
 
-![ComfyUI Flux Krea Dev Workflow](/images/tutorial/flux/flux_1_krea_dev_guide.jpg)
+[ComfyUI Flux Krea Dev Workflow]
 
 1. Ensure that `flux1-krea-dev_fp8_scaled.safetensors` or `flux1-krea-dev.safetensors` is loaded in the `Load Diffusion Model` node
     - `flux1-krea-dev_fp8_scaled.safetensors` is recommended for low VRAM users

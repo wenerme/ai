@@ -39,7 +39,6 @@ MedMCQA is a large-scale multiple-choice question answering dataset designed to 
 | **Evaluation Split** | `validation` |
 | **Train Split** | `train` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -115,5 +114,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

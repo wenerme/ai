@@ -51,15 +51,12 @@ CANCEL ALTER TABLE { COLUMN | MATERIALIZED VIEW | ROLLUP } FROM <db_name>.<table
 >
 > You can obtain job IDs by using the `SHOW ALTER TABLE COLUMN` or `SHOW ALTER TABLE ROLLUP` command.
 
-
 ## Permission Control
 Users who execute this SQL command must have at least the following permissions:
-
 
 | Privilege | Object | Notes                    |
 | :---------------- | :------------- | :---------------------------- |
 | ALTER_PRIV        | Table   | CANCEL ALTER TABLE belongs to table ALTER operation |
-
 
 ## Notes
 - This command is an asynchronous operation, and the actual execution result needs to be confirmed by using `SHOW ALTER TABLE COLUMN` or `SHOW ALTER TABLE ROLLUP` to check the status of the task.
@@ -75,7 +72,6 @@ FROM db_name.table_name
 
 2. Cancel ALTER TABLE ROLLUP operation  
 
-
 ```sql
 CANCEL ALTER TABLE ROLLUP
 FROM db_name.table_name
@@ -83,12 +79,10 @@ FROM db_name.table_name
 
 3. Cancel ALTER TABLE ROLLUP operation in batches based on job ID
 
-
 ```sql
 CANCEL ALTER TABLE ROLLUP
 FROM db_name.table_name (jobid,...)
 ```
-
 
 4. Cancel ALTER CLUSTER operation
 

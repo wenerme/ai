@@ -66,8 +66,7 @@ With the **OpenTelemetry Collector** and **OpenObserve**, you can collect MySQL 
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your OpenObserve details.
 
-    ![OpenObserve Metrics Creds](../images/databases/otel-metrics-cred.png)
-
+    [OpenObserve Metrics Creds]
 
 ??? "Step 3: Run the Collector"
 
@@ -77,13 +76,12 @@ With the **OpenTelemetry Collector** and **OpenObserve**, you can collect MySQL 
     otelcol-contrib --config /path/to/config.yaml
     ```
 
-    ![Run the Collector](../images/databases/otel-collector.png)
+    [Run the Collector]
 
 ??? "Step 4: Visualize in OpenObserve"
 
     1. Open **OpenObserve → Streams** and select your metrics stream.  
-       ![Visualize Mysql Metrics](../images/databases/mysql-metrics.png)
-
+       [Visualize Mysql Metrics]
 
 ??? "Troubleshooting"
 
@@ -93,5 +91,4 @@ With the **OpenTelemetry Collector** and **OpenObserve**, you can collect MySQL 
     - **Firewall and Network Settings**: Verify that your network allows traffic on the MySQL port (default: `3306`).  
     - **Authentication Issues**: Confirm that the username and password configured in the OpenTelemetry Collector match your MySQL credentials.  
     - **Endpoint Validation**: If running MySQL on a remote server, make sure you are using the correct hostname/IP in the `endpoint` field of your collector configuration.  
-    - **Collector Logs**: Inspect the OpenTelemetry Collector logs for detailed error messages (`journalctl -u otel-collector -f` on Linux). These logs often indicate whether the issue is authentication, connectivity, or configuration related.  
-
+    - **Collector Logs**: Inspect the OpenTelemetry Collector logs for detailed error messages (`journalctl -u otel-collector -f` on Linux). These logs often indicate whether the issue is authentication, connectivity, or configuration related.

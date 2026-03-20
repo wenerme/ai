@@ -87,7 +87,6 @@ point2 and point3 are the same, returns NULL.
 SELECT ST_Angle(ST_Point(1, 0),ST_Point(0, 0),ST_Point(0, 0));
 ```
 
-
 ```text
 +----------------------------------------------------------------------+
 | st_angle(st_point(1.0, 0.0), st_point(0.0, 0.0), st_point(0.0, 0.0)) |

@@ -30,18 +30,16 @@ In previous versions, group_1 and group_2 would take effect on all BE nodes, eve
 In previous designs, once Business A created group_a, no new Workload Groups could be created because the cumulative resource values of all Workload Groups had already reached 100%. Additionally, since group_b was created by Business B—and Business A and Business B are completely independent business parties—Business A could neither access nor modify group_b.
 Even if the permission policies grant both parties access to Workload Groups, due to the complete independence of business logic, there may still be significant differences in their resource configuration requirements (e.g., high-concurrency queries of Business A and batch computing of Business B requiring different resource allocations). This makes it difficult for the old architecture to meet the needs of differentiated management.
 
-![wg_bind_cg](/images/wg_bind_cg1.png)
+[wg_bind_cg]
 
 ### Current Design
 In the current version, Workload Group supports binding to Compute Group, which means different Compute Groups can have different Workload Group configurations. As shown in the figure below:
 
-![wg_bind_cg](/images/wg_bind_cg2.png)
+[wg_bind_cg]
 
 ## Usage
 
-:::tip
-Doris provides a default Compute Group mechanism: when a new BE node is added without a specified assignment, it is automatically placed into the default Compute Group. Specifically, in a compute-storage separation architecture, the default Compute Group is named default_compute_group, whereas in an integrated compute-storage architecture, it is named default.
-:::
+> **tip**: Doris provides a default Compute Group mechanism: when a new BE node is added without a specified assignment, it is automatically placed into the default Compute Group. Specifically, in a compute-storage separation architecture, the default Compute Group is named default_compute_group, whereas in an integrated compute-storage architecture, it is named default.
 
 1. Create a Workload Group named group_a and bind it to the Compute Group named compute_group_a.
 ```

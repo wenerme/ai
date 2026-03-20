@@ -72,9 +72,9 @@ evalscope perf \
 
 Example output:
 
-![image.png](images/3af82a52-21c0-4ba1-914f-4dd75a34c0f7.png)
+[image.png]
 
-![image.png](images/28300221-861b-4338-bd8f-3bcd687c3ddc.png)
+[image.png]
 
 ### Local Model Service Performance Evaluation
 
@@ -101,9 +101,9 @@ For detailed parameter explanations, refer to [Performance Evaluation](https://e
 
 Example output:
 
-![image.png](./images/56d9113f-9ce6-4990-bb05-4f19e0a3d1a5.png)
+[image.png]
 
-![image.png](./images/d03843ea-4641-4119-b362-c6f7fdd8f700.png)
+[image.png]
 
 ## Model Capability Evaluation
 
@@ -274,7 +274,7 @@ evalscope app
 
 Select the evaluation report and click load to view the model's output for each question and overall accuracy:
 
-![image.png](./images/ba7d5810-387d-4207-bff1-92a102a698df.png)
+[image.png]
 
 ## Model Thinking Efficiency Evaluation
 
@@ -289,7 +289,7 @@ Next, we will measure the thinking efficiency of the Qwen-32B model using the [M
 
 Test results:
 
-![image.png](./images/d6ee0255-aaaf-42f9-b7b3-660a163920cd.png)
+[image.png]
 
 From the graph, we can conclude the following:
 

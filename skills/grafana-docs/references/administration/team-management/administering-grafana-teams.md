@@ -33,13 +33,13 @@ The role you use to sign in to Grafana determines how you see Teams lists.
 
 The following example shows a list as it appears to an `organization` administrator.
 
-![Team list view for org admin](/media/docs/grafana/screenshot-org-admin-team-list.png)
+[Team list view for org admin]
 
 ### Team administrator view
 
 The following example shows a list as it appears to a `team` administrator.
 
-![Team list view for team admin](/media/docs/grafana/screenshot-team-admin-team-list.png)
+[Team list view for team admin]
 
 ## Teams best practices
 

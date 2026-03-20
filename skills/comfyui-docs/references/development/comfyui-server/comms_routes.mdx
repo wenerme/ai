@@ -85,11 +85,11 @@ async def my_function(request):
     return web.json_response({})
 ```
 
-<Tip>Unless you know what you are doing, don't try to define `my_function` within a class. 
+Unless you know what you are doing, don't try to define `my_function` within a class. 
 The `@routes.post` decorator does a lot of work! Instead, define the function as above
-and then call a classmethod.</Tip>
+and then call a classmethod.
 
-<Tip>You can also define a `@routes.get` if you aren't changing anything.</Tip>
+You can also define a `@routes.get` if you aren't changing anything.
 
 The client can use this new route by sending a `FormData` object with code something like this,
 which would result in `the_data`, in the above code, containing `message` and `node_id` keys:

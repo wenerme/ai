@@ -12,7 +12,6 @@ Doris writes data through a structure similar to LSM-Tree, and continuously merg
 
 Appropriately adjusting the compaction strategy can greatly improve load and query efficiency. Doris provides the following compaction strategies for tuning:
 
-
 ## Vertical compaction
 
 Vertical compaction is a new compaction algorithm implemented in Doris 1.2.2, which is used to optimize compaction execution efficiency and resource overhead in large-scale and wide table scenarios. It can effectively reduce the memory overhead of compaction and improve the execution speed of compaction. The test results show that the memory consumption by vertical compaction is only 1/10 of the original compaction algorithm, and the compaction rate is increased by 15%.
@@ -23,7 +22,6 @@ BE configuration:
 - `enable_vertical_compaction = true` will turn on vertical compaction
 - `vertical_compaction_num_columns_per_group = 5` The number of columns contained in each column group, by testing, the efficiency and memory usage of a group of 5 columns by default is more friendly
 - `vertical_compaction_max_segment_size` is used to configure the size of the disk file after vertical compaction, the default value is 268435456 (bytes)
-
 
 ## Segment compaction
 

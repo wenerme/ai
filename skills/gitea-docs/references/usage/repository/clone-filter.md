@@ -1,7 +1,5 @@
 ---
 date: "2021-02-02"
-slug: "clone-filters"
-sidebar_position: 25
 aliases:
   - /en-us/clone-filters
   - /clone-filters

@@ -26,7 +26,6 @@ PAUSE MATERIALIZED VIEW JOB ON <mv_name>
 >
 > For more details, see Reserved Keywords.
 
-
 ## Access Control Requirements
 Users executing this SQL command must have at least the following privileges:
 
@@ -34,11 +33,9 @@ Users executing this SQL command must have at least the following privileges:
 | :--------- | :----- | :------------------------------------------- |
 | ALTER_PRIV | Materialized View  | PAUSE is an ALTER operation on a materialized view |
 
-
 ## Usage Notes
 
 - After you use this statement, you can use the RESUME materialized view statement to restore.
-
 
 ## Example
 
@@ -47,4 +44,3 @@ Users executing this SQL command must have at least the following privileges:
     ```sql
     PAUSE MATERIALIZED VIEW JOB ON mv1;
     ```
-

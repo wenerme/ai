@@ -1,13 +1,9 @@
 ---
-slug: /cloud/marketplace/marketplace-billing
 title: 'Marketplace Billing'
 description: 'Subscribe to ClickHouse Cloud through the AWS, GCP, and Azure marketplace.'
 keywords: ['aws', 'azure', 'gcp', 'google cloud', 'marketplace', 'billing']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import marketplace_signup_and_org_linking from '@site/static/images/cloud/manage/billing/marketplace/marketplace_signup_and_org_linking.png'
 
 You can subscribe to ClickHouse Cloud through the AWS, GCP, and Azure marketplaces. This allows you to pay for ClickHouse Cloud through your existing cloud provider billing.
 
@@ -44,9 +40,7 @@ You will need to subscribe to ClickHouse Cloud via the cloud provider marketplac
 
 You can confirm from the organization's billing page that billing is indeed now linked to the marketplace. Please contact [ClickHouse Cloud support](https://clickhouse.com/support/program) if you run into any issues.
 
-:::note
-Your existing services and organizations from any prior ClickHouse Cloud signups will remain and not be connected to the marketplace billing.
-:::
+> **note**: Your existing services and organizations from any prior ClickHouse Cloud signups will remain and not be connected to the marketplace billing.
 
 ### I subscribed to ClickHouse Cloud as a marketplace user. How can I unsubscribe?​ {#i-subscribed-to-clickhouse-cloud-as-a-marketplace-user-how-can-i-unsubscribe}
 
@@ -90,4 +84,4 @@ Yes. Multiple ClickHouse organizations can be configured to bill usage in arrear
 
 ### If my ClickHouse Organization is billed through a cloud marketplace committed spend agreement will I automatically move to PAYG billing when I run out of credits? {#automatically-move-to-PAYG-when-running-out-of-credit}
 
-If your marketplace committed spend contract is active and you run out of credits we will automatically move your organization to PAYG billing. However, when your existing contract expires, you will need to link a new marketplace contract to your organization or move your organization to direct billing via credit card. 
+If your marketplace committed spend contract is active and you run out of credits we will automatically move your organization to PAYG billing. However, when your existing contract expires, you will need to link a new marketplace contract to your organization or move your organization to direct billing via credit card.

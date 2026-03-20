@@ -28,7 +28,6 @@ Users executing this SQL command must have at least the following privileges:
 | :---------------- | :------------- | :---------------------------- |
 | ADMIN        | User or Role   | Only users or roles with the ADMIN privilege can perform the DROP operation. |
 
-
 ## Example
 
 Delete `test_rule1` and `test_rule2` blocking rules
@@ -36,4 +35,3 @@ Delete `test_rule1` and `test_rule2` blocking rules
 ```sql
 DROP SQL_BLOCK_RULE test_rule1, test_rule2;
 ```
-

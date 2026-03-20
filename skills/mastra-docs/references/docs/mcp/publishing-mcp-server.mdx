@@ -5,9 +5,6 @@ packages:
   - "@mastra/mcp"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Publishing an MCP server
 
 This example guides you through setting up a basic Mastra MCPServer using the stdio transport, building it, and preparing it for publishing to NPM.
@@ -22,7 +19,6 @@ pnpm add @mastra/mcp @mastra/core tsup
 
 ## Setting up an MCP server
 
-<Steps>
   <StepItem>
     Create a file for your stdio server, for example, `/src/mastra/stdio.ts`.
   </StepItem>
@@ -72,13 +68,11 @@ pnpm add @mastra/mcp @mastra/core tsup
 
     This will compile your server code into both ESM and CJS formats and make the ESM output file executable. On Unix-like systems, the `chmod +x` step makes the file directly executable. Windows users may need to use WSL or handle execution through Node.js directly.
   </StepItem>
-</Steps>
 
 ## Publishing to NPM
 
 To make your MCP server available for others (or yourself) to use via `npx` or as a dependency, you can publish it to NPM.
 
-<Steps>
   <StepItem>
     Ensure you have an NPM account and are logged in (`npm login`).
   </StepItem>
@@ -96,7 +90,6 @@ To make your MCP server available for others (or yourself) to use via `npx` or a
 
     For more details on publishing packages, refer to the [NPM documentation](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages).
   </StepItem>
-</Steps>
 
 ## Using a published MCP server
 

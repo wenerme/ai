@@ -23,23 +23,19 @@ properties (
 
 **Parameter description**
 
-
 | Property        | Data type | Default value | Value range     | Description                                                                                                                                                                                                                                                               |
 |-----------------|-----------|---------------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | max_concurrency | Integer   | 2147483647    | [0, 2147483647] | Optional, the maximum number of concurrent queries. The default value is the maximum integer value, meaning there is no limit on concurrency. When the number of running queries reaches the maximum concurrency, new queries will enter the queuing process.             |
 | max_queue_size  | Integer   | 0             | [0, 2147483647] | Optional, the length of the query queue. When the queue is full, new queries will be rejected. The default value is 0, meaning no queuing.                                                                                                                                |
 | queue_timeout   | Integer   | 0             | [0, 2147483647] | Optional, the maximum wait time for a query in the queue, in milliseconds. If the query exceeds this time in the queue, an exception will be thrown to the client. The default value is 0, meaning no queuing, and queries will immediately fail upon entering the queue. |
 
-
 If there is currently 1 FE in the cluster, the meaning of this configuration is as follows: The maximum number of concurrent queries in the cluster is limited to 10. When the maximum concurrency is reached, new queries will enter the queue, with the queue length limited to 20. The maximum wait time for a query in the queue is 3 seconds, and queries that exceed 3 seconds in the queue will return a failure directly to the client.
 
-:::tip
-The current queuing design does not take into account the number of FEs. The queuing parameters only take effect at the single FE level. For example:
+> **tip**: The current queuing design does not take into account the number of FEs. The queuing parameters only take effect at the single FE level. For example:
 
 In a Doris cluster, if a workload group is configured with max_concurrency = 1,
 If there is 1 FE in the cluster, the workload group will allow only one SQL query to run at a time in the cluster;
 If there are 3 FEs in the cluster, the maximum number of SQL queries in the cluster could be 3.
-:::
 
 ## Check the queue status
 

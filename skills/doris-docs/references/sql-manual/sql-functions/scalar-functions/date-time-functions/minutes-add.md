@@ -89,7 +89,6 @@ SELECT MINUTES_ADD(NULL, 10), MINUTES_ADD('2023-07-13 22:28:18', NULL) AS result
 | NULL                    | NULL   |
 +-------------------------+--------+
 
-
 -- Calculation result exceeds datetime range, throws error
 SELECT MINUTES_ADD('9999-12-31 23:59:59', 2) AS result;
 ERROR 1105 (HY000): errCode = 2, detailMessage = (10.16.10.3)[E-218]Operation minutes_add of 9999-12-31 23:59:59, 2 out of range

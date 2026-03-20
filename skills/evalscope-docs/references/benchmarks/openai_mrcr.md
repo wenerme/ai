@@ -1,6 +1,5 @@
 # OpenAI MRCR
 
-
 ## Overview
 
 MRCR (Memory-Recall with Contextual Retrieval) is OpenAI's benchmark for evaluating retrieval and recall capabilities in long-context scenarios. It tests whether models can correctly extract and use specific information (needles) embedded in long prompts.
@@ -30,7 +29,6 @@ MRCR (Memory-Recall with Contextual Retrieval) is OpenAI's benchmark for evaluat
 - Configurable via extra_params: max/min_context_size, needle_count, tokenizer
 - Uses tiktoken for accurate token counting
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ MRCR (Memory-Recall with Contextual Retrieval) is OpenAI's benchmark for evaluat
 | **Metrics** | `mrcr_score` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -164,5 +161,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

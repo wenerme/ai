@@ -20,11 +20,7 @@ By combining writable workflow streams with agent streaming, you gain fine-grain
 
 The `writer` argument is passed to a workflow step's `execute` function and can be used to emit custom events, data, or values into the active stream. This enables workflow steps to provide intermediate results or status updates while execution is still in progress.
 
-:::warning
-
-You must `await` the call to `writer.write(...)` or else you will lock the stream and get a `WritableStream is locked` error.
-
-:::
+> **warning**: You must `await` the call to `writer.write(...)` or else you will lock the stream and get a `WritableStream is locked` error.
 
 ```typescript {5,7,14} prettier:false
 import { createStep } from "@mastra/core/workflows";

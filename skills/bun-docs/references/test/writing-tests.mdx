@@ -113,7 +113,7 @@ test(
 );
 ```
 
-<Note>You cannot use both `retry` and `repeats` on the same test.</Note>
+You cannot use both `retry` and `repeats` on the same test.
 
 ### 🧟 Zombie Process Killer
 
@@ -436,9 +436,7 @@ Bun includes `expectTypeOf` for testing TypeScript types, compatible with Vitest
 
 ### expectTypeOf
 
-<Warning>
   These functions are no-ops at runtime - you need to run TypeScript separately to verify the type checks.
-</Warning>
 
 The `expectTypeOf` function provides type-level assertions that are checked by TypeScript's type checker. To test your types:
 

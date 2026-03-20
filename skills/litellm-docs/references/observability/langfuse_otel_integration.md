@@ -1,7 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
-import Image from '@theme/IdealImage';
 
 # 🪢 Langfuse OpenTelemetry Integration
 
@@ -225,23 +222,14 @@ This is automatically handled by the integration - you just need to provide the 
 
 Enable verbose logging to see detailed information:
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm._turn_on_debug()
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 export LITELLM_LOG="DEBUG"
 ```
-
-</TabItem>
-</Tabs>
 
 This will show:
 - Endpoint resolution logic
@@ -253,4 +241,4 @@ This will show:
 - [Langfuse Documentation](https://langfuse.com/docs)
 - [Langfuse OpenTelemetry Guide](https://langfuse.com/docs/integrations/opentelemetry)
 - [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
-- [LiteLLM Observability](https://docs.litellm.ai/docs/observability/) 
+- [LiteLLM Observability](https://docs.litellm.ai/docs/observability/)

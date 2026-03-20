@@ -426,11 +426,9 @@ app.patch('/profile', async request => {
 });
 ```
 
-:::info Exercise
+> **info**: Exercise
 
 Try implementing the tests for those endpoints now!
-
-:::
 
 ## Embeddables
 
@@ -579,11 +577,7 @@ app.post('/sign-up', async request => {
 });
 ```
 
-:::info
-
-This example only shows a very basic validation with Zod, which mirrors what MikroORM already handles - it will validate required properties and their types automatically. Check the [Property Validation](../property-validation.md) section for more details.
-
-:::
+> **info**: This example only shows a very basic validation with Zod, which mirrors what MikroORM already handles - it will validate required properties and their types automatically. Check the [Property Validation](../property-validation.md) section for more details.
 
 ## Rest of the Article endpoints
 
@@ -591,11 +585,7 @@ Let's implement the rest of the article endpoints. You need a public one for the
 
 With the information you already have, implementing those endpoints should be pretty straightforward. The detail endpoint is really simple, all it does is using the `findOneOrFail()` method to get the `Article` based on its `slug`.
 
-:::warning
-
-You should validate the request parameters before working with them! It's left out on purpose as it is outside of scope of this guide.
-
-:::
+> **warning**: You should validate the request parameters before working with them! It's left out on purpose as it is outside of scope of this guide.
 
 ```ts title='modules/article/routes.ts'
 app.get('/:slug', async request => {
@@ -803,11 +793,7 @@ await db.em.flush(); // calling flush have no effect, as the entity is not manag
 
 Let's now improve the first article endpoint - `em.findAndCount()` was used to get paginated results easily, but what if you want to customize the response? One way is with [Virtual entities](../virtual-entities.md). They don't represent any database table, instead, they dynamically resolve to an SQL query, allowing you to map any kind of results onto an entity.
 
-:::info
-
-Virtual entities are meant for read purposes, they don't have a primary key and therefore cannot be tracked for changes. If you want an actual database view instead, see the [View entities](#view-entities) section later in this chapter.
-
-:::
+> **info**: Virtual entities are meant for read purposes, they don't have a primary key and therefore cannot be tracked for changes. If you want an actual database view instead, see the [View entities](#view-entities) section later in this chapter.
 
 To define a virtual entity with `defineEntity`, provide an `expression` option. It can be a string (SQL query) or a callback returning an SQL query or a `QueryBuilder` instance. Only scalar properties are supported.
 
@@ -1124,11 +1110,7 @@ npx mikro-orm migration:up
 
 If you use `orm.schema.create()` or `orm.schema.update()` (e.g. in tests), views are created automatically — no extra step needed.
 
-:::info
-
-View entities are read-only — the ORM will not generate `INSERT`, `UPDATE`, or `DELETE` statements for them. The `expression` is a plain SQL string used as the view definition.
-
-:::
+> **info**: View entities are read-only — the ORM will not generate `INSERT`, `UPDATE`, or `DELETE` statements for them. The `expression` is a plain SQL string used as the view definition.
 
 ## Soft delete via `onFlush` event
 
@@ -1244,11 +1226,7 @@ const db = initORM({ allowGlobalContext: true });
 const users = await db.em.find(User, {});
 ```
 
-:::warning
-
-Do not use `allowGlobalContext` as a workaround for missing request context in production. It silences the validation error but does not fix the underlying problem — you will still face growing memory footprint and unstable API responses caused by a shared Identity Map. Use it only for simple scripts and tests where there is no concurrent access. For everything else, set up a proper request context via `RequestContext` helper, `@CreateRequestContext()` decorator, or `em.fork()`. See [Identity Map — Why is Request Context needed?](../identity-map.md#why-is-request-context-needed) for details.
-
-:::
+> **warning**: Do not use `allowGlobalContext` as a workaround for missing request context in production. It silences the validation error but does not fix the underlying problem — you will still face growing memory footprint and unstable API responses caused by a shared Identity Map. Use it only for simple scripts and tests where there is no concurrent access. For everything else, set up a proper request context via `RequestContext` helper, `@CreateRequestContext()` decorator, or `em.fork()`. See [Identity Map — Why is Request Context needed?](../identity-map.md#why-is-request-context-needed) for details.
 
 ### CRON jobs
 

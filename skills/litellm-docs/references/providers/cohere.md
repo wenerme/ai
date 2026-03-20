@@ -1,6 +1,4 @@
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Cohere
 
@@ -68,7 +66,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 **Cohere v1 Streaming:**
 
 ```python showLineNumbers
@@ -87,7 +84,6 @@ response = completion(
 for chunk in response:
     print(chunk)
 ```
-
 
 ## Usage with LiteLLM Proxy 
 
@@ -125,11 +121,7 @@ model_list:
 litellm --config /path/to/config.yaml
 ```
 
-
 ### 3. Test it
-
-<Tabs>
-<TabItem value="v1-curl" label="Cohere v1 - Curl Request">
 
 ```shell showLineNumbers
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -146,8 +138,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="v2-curl" label="Cohere v2 - Curl Request">
 
 ```shell showLineNumbers
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -164,8 +154,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="v1-openai" label="Cohere v1 - OpenAI SDK">
 
 ```python showLineNumbers
 import openai
@@ -184,8 +172,6 @@ response = client.chat.completions.create(model="command-a-03-2025", messages = 
 
 print(response)
 ```
-</TabItem>
-<TabItem value="v2-openai" label="Cohere v2 - OpenAI SDK">
 
 ```python showLineNumbers
 import openai
@@ -204,9 +190,6 @@ response = client.chat.completions.create(model="command-a-03-2025-v2", messages
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ## Supported Models
 | Model Name | Function Call |
@@ -218,7 +201,6 @@ print(response)
 | command-r | `litellm.completion('command-r', messages)` |
 | command-light | `litellm.completion('command-light', messages)` |  
 | command-nightly | `litellm.completion('command-nightly', messages)` |
-
 
 ## Embedding
 
@@ -242,7 +224,6 @@ v3 Models have a required parameter: `input_type`. LiteLLM defaults to `search_d
 - `input_type="clustering"`: Use this if you use the embeddings for text clustering
 
 https://txt.cohere.com/introducing-embed-v3/
-
 
 ```python
 from litellm import embedding
@@ -273,9 +254,6 @@ response = embedding(
 
 LiteLLM supports the v1 and v2 clients for Cohere rerank. By default, the `rerank` endpoint uses the v2 client, but you can specify the v1 client by explicitly calling `v1/rerank`
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK Usage">
-
 ```python
 from litellm import rerank
 import os
@@ -298,9 +276,6 @@ response = rerank(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM Proxy Usage">
 
 LiteLLM provides an cohere api compatible `/rerank` endpoint for Rerank calls.
 
@@ -346,6 +321,3 @@ curl http://0.0.0.0:4000/rerank \
     "top_n": 3
   }'
 ```
-
-</TabItem>
-</Tabs>

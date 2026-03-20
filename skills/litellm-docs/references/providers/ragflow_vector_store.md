@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # RAGFlow Vector Stores
 
@@ -45,9 +43,6 @@ print(f"Dataset name: {response.name}")
 
 #### 1. Configure your vector_store_registry
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: gpt-4o-mini
@@ -67,10 +62,6 @@ vector_store_registry:
         source: "Company documentation"
 ```
 
-</TabItem>
-
-<TabItem value="litellm-ui" label="LiteLLM UI">
-
 On the LiteLLM UI, Navigate to Experimental > Vector Stores > Create Vector Store. On this page you can create a vector store with a name, vector store id and credentials.
 
 <Image 
@@ -78,13 +69,7 @@ On the LiteLLM UI, Navigate to Experimental > Vector Stores > Create Vector Stor
   style={{width: '50%'}}
 />
 
-</TabItem>
-</Tabs>
-
 #### 2. Create a dataset via Proxy
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash
 curl http://localhost:4000/v1/vector_stores \
@@ -99,10 +84,6 @@ curl http://localhost:4000/v1/vector_stores \
     }
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -125,9 +106,6 @@ response = client.vector_stores.create(
 
 print(f"Created dataset: {response.id}")
 ```
-
-</TabItem>
-</Tabs>
 
 ## Configuration
 
@@ -160,9 +138,6 @@ response = litellm.vector_stores.create(
 
 RAGFlow supports various chunk methods for different document types:
 
-<Tabs>
-<TabItem value="naive" label="Naive (General)">
-
 ```python
 response = litellm.vector_stores.create(
     name="general-dataset",
@@ -179,10 +154,6 @@ response = litellm.vector_stores.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="book" label="Book">
-
 ```python
 response = litellm.vector_stores.create(
     name="book-dataset",
@@ -197,10 +168,6 @@ response = litellm.vector_stores.create(
     }
 )
 ```
-
-</TabItem>
-
-<TabItem value="qa" label="Q&A">
 
 ```python
 response = litellm.vector_stores.create(
@@ -217,10 +184,6 @@ response = litellm.vector_stores.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="paper" label="Paper">
-
 ```python
 response = litellm.vector_stores.create(
     name="paper-dataset",
@@ -235,9 +198,6 @@ response = litellm.vector_stores.create(
     }
 )
 ```
-
-</TabItem>
-</Tabs>
 
 ### Dataset with Ingestion Pipeline
 
@@ -346,4 +306,3 @@ Vector Stores:
 - [Vector Store Creation](../vector_stores/create.md)
 - [Using Vector Stores with Completions](../completion/knowledgebase.md)
 - [Vector Store Registry](../completion/knowledgebase.md#vectorstoreregistry)
-

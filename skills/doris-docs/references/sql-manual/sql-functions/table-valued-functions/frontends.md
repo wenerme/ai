@@ -43,7 +43,6 @@ FRONTENDS()
 | **ErrMsg**               | Any error messages reported by the frontend node.                                                       |
 | **Version**              | The version of the frontend node.                                                                       |
 
-
 ## Examples
 show frontends cluster information
 ```sql

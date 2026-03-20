@@ -66,7 +66,6 @@ mysql> SELECT ST_Y(ST_GeometryFromText("POINT (10 20 30)"));
 +-----------------------------------------------+
 ```
 
-
 NULL Input
 
 ```sql

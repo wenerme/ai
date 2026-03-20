@@ -21,4 +21,3 @@ Below is the list of supported AIGC benchmarks. Click on a benchmark name for de
 ../../benchmarks/general_t2i.md
 ../../benchmarks/hpdv2.md
 ../../benchmarks/tifa160.md
-:::

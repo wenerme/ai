@@ -48,13 +48,11 @@ DISTRIBUTED BY HASH(user_id) BUCKETS 10;
 
 ### Step 3: Load data using S3 Load
 
-:::caution Caution
+> **caution**: Caution
 When importing data from MinIO with S3 Load, note the following:
 
 - If MinIO is deployed in a local network without TLS, explicitly add `http://` in the endpoint, for example: `"s3.endpoint" = "http://localhost:9000"`.
 - The S3 SDK uses virtual-hosted style by default, while MinIO does not enable it by default. Add `"use_path_style" = "true"` to force path-style access.
-:::
-
 ```sql
 LOAD LABEL s3_load_2022_04_05
 (
@@ -139,13 +137,11 @@ DISTRIBUTED BY HASH(user_id) BUCKETS 10;
 
 ### Step 3: Load data using TVF
 
-:::caution Caution
+> **caution**: Caution
 When importing data from MinIO with TVF, note the following:
 
 - If MinIO is deployed in a local network without TLS, explicitly add `http://` in the endpoint, for example: `"s3.endpoint" = "http://localhost:9000"`.
 - The S3 SDK uses virtual-hosted style by default, while MinIO does not enable it by default. Add `"use_path_style" = "true"` to force path-style access.
-:::
-
 ```sql
 INSERT INTO test_s3load
 SELECT * FROM S3

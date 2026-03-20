@@ -1,6 +1,5 @@
 # MMLU-Pro
 
-
 ## Overview
 
 MMLU-Pro is an enhanced version of MMLU with increased difficulty and reasoning requirements. It features 10 answer choices instead of 4 and includes more challenging questions requiring deeper reasoning across 14 diverse domains.
@@ -28,7 +27,6 @@ MMLU-Pro is an enhanced version of MMLU with increased difficulty and reasoning 
 - Step-by-step reasoning encouraged
 - Evaluates on test split with validation for few-shot
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MMLU-Pro is an enhanced version of MMLU with increased difficulty and reasoning 
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -119,8 +116,7 @@ Options:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 The following are multiple choice questions (with answers) about {subject}. Think step by step and then finish your answer with 'ANSWER: [LETTER]' (without quotes) where [LETTER] is the correct letter choice.
@@ -134,8 +130,6 @@ Options:
 {choices}
 
 ```
-
-</details>
 
 ## Usage
 
@@ -171,5 +165,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

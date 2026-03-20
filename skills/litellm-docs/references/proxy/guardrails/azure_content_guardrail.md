@@ -1,11 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure Content Safety Guardrail
 
 LiteLLM supports Azure Content Safety guardrails via the [Azure Content Safety API](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview). 
-
 
 ## Supported Guardrails
 
@@ -46,7 +43,6 @@ guardrails:
 - `post_call` Run **after** LLM call, on **input & output**
 
 ### 2. Start LiteLLM Gateway 
-
 
 ```shell
 litellm --config config.yaml --detailed_debug
@@ -89,7 +85,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 - `haltOnBlocklistHit` - bool - Whether to halt the request if a blocklist hit is detected
 - `outputType` - Literal["FourSeverityLevels", "EightSeverityLevels"] - Output type for the Azure Content Safety Text Moderation guardrail. Learn more - https://learn.microsoft.com/en-us/azure/ai-services/content-safety/quickstart-text
 
-
 AzureHarmCategories:
 - Hate
 - SelfHarm
@@ -112,7 +107,6 @@ Both Azure Prompt Shield and Azure Text Moderation have a **10,000 character lim
 - If all chunks are safe, the request is allowed to proceed
 
 This applies to both `pre_call` and `post_call` hooks and ensures that long prompts are properly analyzed without breaking words or losing context. 
-
 
 ## Further Reading
 

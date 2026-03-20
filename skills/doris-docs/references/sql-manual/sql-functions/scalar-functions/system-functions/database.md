@@ -42,4 +42,3 @@ select database(),schema();
 | test       | test       |
 +------------+------------+
 ```
-

@@ -1,9 +1,6 @@
 ---
 title: Guides
-sidebar_label: Overview
 ---
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 **Guides** are focused references organized by the job you are trying to do with LiteLLM: make requests, use tools, handle media, manage context, or operate the gateway safely.
 

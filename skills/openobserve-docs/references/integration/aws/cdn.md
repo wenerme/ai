@@ -25,7 +25,7 @@ CloudFront access logs contain detailed request-level data. By streaming them to
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
     
     > Update the URL to have the stream name of your choice:
         ```
@@ -50,7 +50,7 @@ CloudFront access logs contain detailed request-level data. By streaming them to
     6. Select the cloudfront distribution to which you want to apply this configuration
     7. Create the real-time log configuration
 
-    ![Enable Real-Time Log Configuration in CloudFront](../images/aws-integrations/rds/create-config.png)
+    [Enable Real-Time Log Configuration in CloudFront]
 
 ??? "Step 4: Create a Firehose Delivery Stream to OpenObserve"
 

@@ -1,11 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Argilla 
 
 Argilla is a collaborative annotation tool for AI engineers and domain experts who need to build high-quality datasets for their projects.
-
 
 ## Getting Started
 
@@ -46,11 +43,7 @@ dataset.create()
 
 For further configuration, please refer to the [Argilla documentation](https://docs.argilla.io/latest/how_to_guides/dataset/).
 
-
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -78,10 +71,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 litellm_settings:
   callbacks: ["argilla"]
@@ -89,9 +78,6 @@ litellm_settings:
     user_input: "messages" # 👈 key= argilla field, value = either message (argilla.ChatField) | response (argilla.TextField)
     llm_output: "response"
 ```
-
-</TabItem>
-</Tabs>
 
 ## Example Output
 

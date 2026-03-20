@@ -16,7 +16,6 @@ Shows properties of specified catalog
 SHOW CATALOG <catalog_name>
 ```
 
-
 ## Required Parameters
 
 **1. `<catalog_name>`**

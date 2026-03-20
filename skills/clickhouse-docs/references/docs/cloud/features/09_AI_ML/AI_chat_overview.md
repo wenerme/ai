@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'ClickHouse Assistant agent'
-slug: /cloud/features/ai-ml/ask-ai
 title: 'ClickHouse Assistant agent in Cloud'
 description: 'Description of the ClickHouse Assistant chat functionality in ClickHouse Cloud'
 doc_type: 'reference'

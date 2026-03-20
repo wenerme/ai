@@ -37,7 +37,6 @@ The name of the table within the catalog that needs to be refreshed.
 |:---------------------------------------------------------------------------------------------|:--------|:------------------------------------------|
 | ADMIN_PRIV / SELECT_PRIV / LOAD_PRIV / ALTER_PRIV / CREATE_PRIV / SHOW_VIEW_PRIV / DROP_PRIV | Catalog | One of the above permissions is required. |
 
-
 ## Usage Notes
 When the Catalog is refreshed, the object-related Cache is forced to be invalidated. Including Partition Cache, Schema Cache, File Cache, etc.
 
@@ -63,5 +62,3 @@ When the Catalog is refreshed, the object-related Cache is forced to be invalida
     REFRESH TABLE db.table1;
     REFRESH TABLE table1;
     ```
-
-

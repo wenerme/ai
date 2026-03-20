@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # IBM Guardrails
 
@@ -231,4 +230,3 @@ If the score is above your `score_threshold`, the request gets blocked (if `bloc
 
 - [Control Guardrails per API Key](./quick_start#-control-guardrails-per-api-key)
 - [IBM FMS Guardrails on GitHub](https://github.com/foundation-model-stack/fms-guardrails-orchestr8)
-

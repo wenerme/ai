@@ -68,4 +68,3 @@ JSON_EXISTS_PATH (<json_object>, <path>)
     |                            NULL |
     +---------------------------------+
     ```
-

@@ -11,6 +11,4 @@ Instrument your applications with OpenTelemetry SDKs for distributed tracing and
 1. [Python](./python.md)
 1. [Go](./go.md)
 
-
 You can also follow the [Opentelemetry documentation](https://opentelemetry.io/docs/instrumentation/) for more info.
-

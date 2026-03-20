@@ -49,14 +49,14 @@ Following is a list of configuration options for Graphite.
 
 | Setting     | Description                                                                                                                                  |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**    | The display name for the data source. This is how you'll reference it in panels and queries. <br>Examples: `graphite-1`, `graphite-metrics`. |
+| **Name**    | The display name for the data source. This is how you'll reference it in panels and queries. Examples: `graphite-1`, `graphite-metrics`. |
 | **Default** | When enabled, sets this data source as the default for dashboard panels. It will be automatically selected when creating new panels.         |
 
 **HTTP:**
 
 | Setting             | Description                                                                                                                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **URL**             | Sets the HTTP protocol, IP, and port of your `graphite-web` or `graphite-api` installation. <br>Since the access method is set to _Server_, the URL must be accessible from the Grafana backend. |
+| **URL**             | Sets the HTTP protocol, IP, and port of your `graphite-web` or `graphite-api` installation. Since the access method is set to _Server_, the URL must be accessible from the Grafana backend. |
 | **Allowed cookies** | By default, Grafana removes forwarded cookies. Specify cookie names here to allow them to be forwarded to the data source.                                                                       |
 | **Timeout**         | Sets the HTTP request timeout in seconds.                                                                                                                                                        |
 

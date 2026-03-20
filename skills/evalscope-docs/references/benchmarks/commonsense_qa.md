@@ -38,7 +38,6 @@ CommonsenseQA is a benchmark for evaluating AI models' ability to answer questio
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -113,5 +112,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

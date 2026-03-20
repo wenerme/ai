@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI Video Generation
 
@@ -224,7 +223,6 @@ curl http://localhost:4000/v1/videos \
   }'
 ```
 
-
 ## Supported Models
 
 | Model Name | Description | Max Duration | Supported Sizes |
@@ -290,7 +288,6 @@ video_file = generate_and_download_video(
     "A cat playing with a ball of yarn in a sunny garden"
 )
 ```
-
 
 ## Video Editing with Reference Images
 

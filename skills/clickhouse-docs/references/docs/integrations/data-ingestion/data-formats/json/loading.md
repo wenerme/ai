@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Loading JSON'
-sidebar_position: 20
 title: 'Working with JSON'
-slug: /integrations/data-formats/json/loading
 description: 'Loading JSON'
 keywords: ['json', 'clickhouse', 'inserting', 'loading', 'inserting']
 score: 15
@@ -38,11 +35,10 @@ In this simple case, our structure is static, our column names are known, and th
 
 Whereas ClickHouse supports semi-structured data through a JSON type, where key names and their types can be dynamic, this is unnecessary here.
 
-:::note Prefer static schemas where possible
+> **note**: Prefer static schemas where possible
 In cases where your columns have fixed names and types, and new columns aren't expected, always prefer a statically defined schema in production.
 
 The JSON type is preferred for highly dynamic data, where the names and types of columns are subject to change. This type is also useful in prototyping and data exploration.
-:::
 
 A simple schema for this is shown below, where **JSON keys are mapped to column names**:
 
@@ -61,9 +57,8 @@ ENGINE = MergeTree
 ORDER BY (project, date)
 ```
 
-:::note Ordering keys
+> **note**: Ordering keys
 We have selected an ordering key here via the `ORDER BY` clause. For further details on ordering keys and how to choose them, see [here](/data-modeling/schema-design#choosing-an-ordering-key).
-:::
 
 ClickHouse can load data JSON in several formats, automatically inferring the type from the extension and contents. We can read JSON files for the above table using the [S3 function](/sql-reference/table-functions/s3):
 
@@ -84,9 +79,8 @@ Note how we're not required to specify the file format. Instead, we use a glob p
 SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/pypi/json/*.json.gz', JSONEachRow)
 ```
 
-:::note Compressed files
+> **note**: Compressed files
 The above files are also compressed. This is automatically detected and handled by ClickHouse.
-:::
 
 To load the rows in these files, we can use an [`INSERT INTO SELECT`](/sql-reference/statements/insert-into#inserting-the-results-of-select):
 

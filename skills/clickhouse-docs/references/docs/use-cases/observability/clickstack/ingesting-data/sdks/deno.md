@@ -1,24 +1,15 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/deno
-pagination_prev: null
-pagination_next: null
-sidebar_position: 6
 description: 'Deno SDK for ClickStack - The ClickHouse Observability Stack'
 title: 'Deno'
 doc_type: 'guide'
 keywords: ['Deno ClickStack SDK', 'Deno OpenTelemetry', 'ClickStack Deno integration', 'Deno observability', 'Deno logging SDK']
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This guide Integrates the following:
 
 - **Logs**
 
-:::note
-Currently only supports OpenTelemetry Logging. For tracing support, [see the following guide](https://dev.to/grunet/leveraging-opentelemetry-in-deno-45bj#a-minimal-interesting-example).
-:::
+> **note**: Currently only supports OpenTelemetry Logging. For tracing support, [see the following guide](https://dev.to/grunet/leveraging-opentelemetry-in-deno-45bj#a-minimal-interesting-example).
 
 ## Logging {#logging}
 
@@ -48,18 +39,11 @@ log.getLogger('my-otel-logger').info('Hello from Deno!');
 
 ### Run the application {#run-the-application}
 
-<Tabs groupId="service-type">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
-
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT=http://your-otel-collector:4318 \
 OTEL_SERVICE_NAME="<NAME_OF_YOUR_APP_OR_SERVICE>" \
 deno run --allow-net --allow-env --allow-read --allow-sys --allow-run app.ts
 ```
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source" >
 
 ```shell
 OTEL_EXPORTER_OTLP_HEADERS="authorization=<YOUR_INGESTION_API_KEY>" \
@@ -67,6 +51,3 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://your-otel-collector:4318 \
 OTEL_SERVICE_NAME="<NAME_OF_YOUR_APP_OR_SERVICE>" \
 deno run --allow-net --allow-env --allow-read --allow-sys --allow-run app.ts
 ```
-
-</TabItem>
-</Tabs>

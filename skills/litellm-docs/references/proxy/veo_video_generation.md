@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Veo Video Generation with Google AI Studio
 
@@ -24,9 +23,6 @@ litellm
 ```
 
 ### 3. Generate Video
-
-<Tabs>
-<TabItem value="python" label="Python">
 
 ```python
 import requests
@@ -107,10 +103,6 @@ filename = download_video(video_uri)
 print(f"Video saved as: {filename}")
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="Curl">
-
 ```bash
 # Step 1: Initiate video generation
 curl -X POST "http://localhost:4000/gemini/v1beta/models/veo-3.0-generate-preview:predictLongRunning" \
@@ -135,9 +127,6 @@ curl -X GET "http://localhost:4000/gemini/v1beta/files/VIDEO_ID:download?alt=med
   --output generated_video.mp4
 ```
 
-</TabItem>
-</Tabs>
-
 ## Complete Example
 
 For a full working example with error handling and logging, see our [Veo Video Generation Cookbook](https://github.com/BerriAI/litellm/blob/main/cookbook/veo_video_generation.py).
@@ -160,4 +149,3 @@ LiteLLM handles:
 ```bash
 export GEMINI_API_KEY="your_google_ai_studio_api_key"
 ```
-

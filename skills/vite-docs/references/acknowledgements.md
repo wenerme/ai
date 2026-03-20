@@ -4,10 +4,6 @@ description: Vite is built upon the shoulders of giants. Thank you to all the pr
 ---
 
 <script setup>
-import { computed } from 'vue'
-import { data } from './_data/acknowledgements.data'
-import { useSponsor, voidZero } from './.vitepress/theme/composables/sponsor'
-import VPSponsors from '@components/vitepress-default/VPSponsors.vue'
 
 const { data: sponsorData } = useSponsor()
 
@@ -93,9 +89,8 @@ Vite depends on these amazing open source projects:
   </tbody>
 </table>
 
-::: tip For package authors
+> **tip**: For package authors
 This section is automatically generated from the `author` and `funding` fields in each package's `package.json`. If you'd like to update how your package appears here, you can update these fields in your package.
-:::
 
 ## Development Tools
 

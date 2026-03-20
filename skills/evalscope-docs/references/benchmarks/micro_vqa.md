@@ -1,6 +1,5 @@
 # MicroVQA
 
-
 ## Overview
 
 MicroVQA is an expert-curated benchmark for multimodal reasoning in microscopy-based scientific research. It evaluates AI models' ability to understand and reason about microscopy images across various scientific domains.
@@ -27,7 +26,6 @@ MicroVQA is an expert-curated benchmark for multimodal reasoning in microscopy-b
 - Simple accuracy metric
 - Uses Chain-of-Thought (CoT) prompting
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ MicroVQA is an expert-curated benchmark for multimodal reasoning in microscopy-b
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ MicroVQA is an expert-curated benchmark for multimodal reasoning in microscopy-b
 | Images per Sample | min: 1, max: 8, mean: 1.9 |
 | Resolution Range | 78x70 - 2782x3533 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -175,5 +171,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

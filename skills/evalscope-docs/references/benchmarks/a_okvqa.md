@@ -1,6 +1,5 @@
 # A-OKVQA
 
-
 ## Overview
 
 A-OKVQA (Augmented OK-VQA) is a benchmark designed to evaluate commonsense reasoning and external world knowledge in visual question answering. It extends beyond basic VQA tasks that rely solely on image content, requiring models to leverage a broad spectrum of commonsense and factual knowledge about the world.
@@ -27,7 +26,6 @@ A-OKVQA (Augmented OK-VQA) is a benchmark designed to evaluate commonsense reaso
 - Uses Chain-of-Thought (CoT) prompting for better reasoning
 - Questions require reasoning beyond what is directly visible in images
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ A-OKVQA (Augmented OK-VQA) is a benchmark designed to evaluate commonsense reaso
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ A-OKVQA (Augmented OK-VQA) is a benchmark designed to evaluate commonsense reaso
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 305x229 - 640x640 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -140,5 +136,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

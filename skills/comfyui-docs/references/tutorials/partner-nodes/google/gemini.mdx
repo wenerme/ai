@@ -1,18 +1,11 @@
 ---
 title: "Google Gemini API Node ComfyUI Official Example"
 description: "This article will introduce how to use Google Gemini Partner nodes in ComfyUI to complete conversational functions"
-sidebarTitle: "Google Gemini"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Google Gemini is a powerful AI model developed by Google, supporting conversational and text generation functions. Currently, ComfyUI has integrated the Google Gemini API, allowing you to directly use the related nodes in ComfyUI to complete conversational functions.
 
 In this guide, we will walk you through completing the corresponding conversational functionality.
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Google Gemini Chat Workflow
 
@@ -30,11 +23,9 @@ style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', 
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![OpenAI Chat Step Guide](/images/tutorial/api_nodes/google/tripo_image_to_model_step_guide.jpg)
+[OpenAI Chat Step Guide]
 
-<Note>
 In the corresponding template, we have built a prompt for analyzing and generating role prompts, used to interpret your images into corresponding drawing prompts
-</Note>
 
 You can refer to the numbers in the image to complete the basic text-to-image workflow execution:  
 1. In the `Load Image` node, load the image you need AI to interpret

@@ -21,7 +21,6 @@ EXPLODE_NUMBERS(<int>)
 - Returns an integer column `[0, n)`, with column type `INT`.
 - If `<int>` is NULL or 0 or negative, 0 rows are returned.
 
-
 ## Examples
 0. Prepare data
     ```sql

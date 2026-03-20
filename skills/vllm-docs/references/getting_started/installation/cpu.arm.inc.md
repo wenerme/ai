@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+
 --8<-- [start:installation]
 
 vLLM offers basic model inferencing and serving on Arm CPU platform, with support for NEON, data types FP32, FP16 and BF16.

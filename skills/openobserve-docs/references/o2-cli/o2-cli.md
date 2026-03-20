@@ -20,7 +20,6 @@ keywords: >
 
 > **⚠️ Enterprise Requirement:** O2 CLI requires OpenObserve Enterprise edition. It will not work with the community version. For Enterprise access, visit [openobserve.ai/pricing](https://openobserve.ai/pricing).
 
-
 ## Overview
 
 [O2 CLI](https://github.com/openobserve/o2-cli/tree/main) is a command-line interface for managing OpenObserve resources directly, similar to AWS CLI or kubectl. It provides an imperative way to manage OpenObserve alongside the declarative Kubernetes Operator.
@@ -114,7 +113,6 @@ o2 list template
 o2 delete template old-template
 ```
 
-
 ## Configuration
 
 ### Profile Management
@@ -173,7 +171,6 @@ profiles:
 | Functions | ✅ | ✅ | ✅ | ✅ | ✅ | 5 files |
 | Alerts | ✅ | ✅ | ✅ | ✅ | ✅ | 2 files |
 
-
 ## Command Syntax
 
 O2 CLI supports **two syntaxes** — use whichever you prefer.
@@ -211,7 +208,6 @@ o2 function delete my-function
 ```
 
 > **Both syntaxes are equivalent and produce identical results.**
-
 
 ## Usage Examples
 
@@ -292,7 +288,6 @@ Available on all commands:
 | `--output` | `-o` | `table` | Output format: `table`, `json`, `yaml`, `wide` |
 | `--config` | | `~/.o2/config.yaml` | Custom config file path |
 
-
 ## Getting Help
 ```bash
 o2 --help
@@ -303,5 +298,3 @@ Find the detailed list of commands and troubleshooting guide [here](https://gith
 We welcome community input on upcoming features. Please share your use cases and requirements through:
 - GitHub Issues for feature requests [open an issue](https://github.com/openobserve/o2-cli/issues)
 - Community forums for discussions [Start the conversation →](https://short.openobserve.ai/community)
-
-

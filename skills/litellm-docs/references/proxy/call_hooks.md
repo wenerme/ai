@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Modify / Reject Incoming Requests
 
@@ -6,9 +5,7 @@ import Image from '@theme/IdealImage';
 - Reject data before making llm api calls / before returning the response 
 - Enforce 'user' param for all openai endpoint calls
 
-:::tip
-**Understanding Callback Hooks?** Check out our [Callback Guide](../observability/callbacks.md) to understand the differences between proxy-specific hooks like `async_pre_call_hook` and general logging hooks like `async_log_success_event`.
-:::
+> **tip**: **Understanding Callback Hooks?** Check out our [Callback Guide](../observability/callbacks.md) to understand the differences between proxy-specific hooks like `async_pre_call_hook` and general logging hooks like `async_log_success_event`.
 
 ## Which Hook Should I Use?
 
@@ -163,7 +160,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }'
 ```
 
-
 ## [BETA] *NEW* async_moderation_hook 
 
 Run a moderation check in parallel to the actual LLM API call. 
@@ -174,12 +170,7 @@ In your Custom Handler add a new `async_moderation_hook` function
 - This function runs in parallel to the actual LLM API call. 
 - If your `async_moderation_hook` raises an Exception, we will return that to the user. 
 
-
-:::info
-
-We might need to update the function schema in the future, to support multiple endpoints (e.g. accept a call_type). Please keep that in mind, while trying this feature
-
-:::
+> **info**: We might need to update the function schema in the future, to support multiple endpoints (e.g. accept a call_type). Please keep that in mind, while trying this feature
 
 See a complete example with our [Llama Guard content moderation hook](https://github.com/BerriAI/litellm/blob/main/enterprise/enterprise_hooks/llm_guard.py)
 
@@ -225,7 +216,6 @@ class MyCustomHandler(CustomLogger): # https://docs.litellm.ai/docs/observabilit
 
 proxy_handler_instance = MyCustomHandler()
 ```
-
 
 2. Add this file to your proxy config
 
@@ -280,7 +270,6 @@ Do this by returning a string. LiteLLM takes care of returning the response in t
 
 For non-chat/text completion endpoints, this response is returned as a 400 status code exception. 
 
-
 ### 1. Create Custom Handler 
 
 ```python
@@ -325,7 +314,6 @@ model_list:
 litellm_settings:
   callbacks: custom_callbacks.proxy_handler_instance # sets litellm.callbacks = [proxy_handler_instance]
 ```
-
 
 ### 3. Test it!
 

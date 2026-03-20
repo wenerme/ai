@@ -15,22 +15,18 @@ Doris Streamloader is a client tool designed for loading data into Apache Doris.
 - **Resilience and continuity:** in case of partial load failures, it can resume data loading from the point of failure.
 - **Automatic retry mechanism:** in case of loading failures, it can automatically retry a default number of times. If the loading remains unsuccessful, it will print the command for manual retry.
 
-
 ## Installation
 
 Source Code: https://github.com/apache/doris-streamloader/
 Binary File: https://doris.apache.org/download
 
-:::note
-The obtained result is the executable binary.
-:::
+> **note**: The obtained result is the executable binary.
 
 ## How to use
 
 ```shell
 
 doris-streamloader --source_file={FILE_LIST} --url={FE_OR_BE_SERVER_URL}:{PORT} --header={STREAMLOAD_HEADER} --db={TARGET_DATABASE} --table={TARGET_TABLE}
-
 
 ```
 
@@ -39,7 +35,6 @@ doris-streamloader --source_file={FILE_LIST} --url={FE_OR_BE_SERVER_URL}:{PORT} 
 - Single file
 
     E.g. Load a single file
-
 
     ```json
     
@@ -109,12 +104,9 @@ The parameters above are required, and the following parameters are optional:
 |--auto_retry_interval | Interval of auto retries | 60 | Remain as default. If the load failure is caused by a Doris downtime, it is recommended to set this parameter based on the restart interval of Doris. |
 |--log_filename | Path for log storage | "" | Logs are printed to the console by default. To print them to a log file, you can set the path, such as --log_filename="/var/log". |
 
-
-
 ## Result description
 
 A result will be returned no matter the data loading succeeds or fails. 
-
 
 |Parameter | Description |
 |---|---|
@@ -127,8 +119,6 @@ A result will be returned no matter the data loading succeeds or fails.
 | LoadBytes | Number of bytes loaded |
 | LoadTimeMs | Actual loading time |
 | LoadFiles | List of loaded files |
-
-
 
 Examples: 
 
@@ -181,7 +171,6 @@ Load Result: {
 
 ```
 
-
 ## Best practice
 
 ### Parameter suggestions
@@ -199,8 +188,6 @@ Load Result: {
 - `workers`: The more `workers`, the higher concurrency level, and thus the more versions. The recommended value for most cases is 8.
 - `max_byte_per_task`:  The larger `max_byte_per_task` , the larger data size in one single version, and thus the less versions. However, if this is excessively high, it could easily cause an `-238 TOO MANY SEGMENT ` error. For most cases, this can remain as default. 
 
-
-
 ### Recommended commands
 
 In most cases, you only need to set the required parameters and `workers`. 
@@ -208,7 +195,6 @@ In most cases, you only need to set the required parameters and `workers`.
 ```text
 ./doris-streamloader --source_file="demo.csv,demoFile*.csv,demoDir" --url="http://127.0.0.1:8030" --header="column_separator:," --db="demo" --table="test_load" --u="root" --workers=8
 ```
-
 
 ### FAQ
 

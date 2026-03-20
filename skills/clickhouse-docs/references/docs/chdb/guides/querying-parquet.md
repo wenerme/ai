@@ -1,7 +1,5 @@
 ---
 title: 'How to query Parquet files'
-sidebar_label: 'Querying Parquet files'
-slug: /chdb/guides/querying-parquet
 description: 'Learn how to query Parquet files with chDB.'
 keywords: ['chdb', 'parquet']
 doc_type: 'guide'

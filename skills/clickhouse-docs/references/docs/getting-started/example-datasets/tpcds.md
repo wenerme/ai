@@ -1,7 +1,5 @@
 ---
 description: 'The TPC-DS benchmark data set and queries.'
-sidebar_label: 'TPC-DS'
-slug: /getting-started/example-datasets/tpcds
 title: 'TPC-DS (2012)'
 doc_type: 'guide'
 keywords: ['example dataset', 'tpcds', 'benchmark', 'sample data', 'performance testing']

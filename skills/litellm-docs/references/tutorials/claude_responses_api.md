@@ -1,18 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Claude Code Quickstart
 
 This tutorial shows how to call Claude models through LiteLLM proxy from Claude Code.
 
-:::info 
-
-This tutorial is based on [Anthropic's official LiteLLM configuration documentation](https://docs.anthropic.com/en/docs/claude-code/llm-gateway#litellm-configuration). This integration allows you to use any LiteLLM supported model through Claude Code with centralized authentication, usage tracking, and cost controls.
-
-:::
-
-<br />
+> **info**: This tutorial is based on [Anthropic's official LiteLLM configuration documentation](https://docs.anthropic.com/en/docs/claude-code/llm-gateway#litellm-configuration). This integration allows you to use any LiteLLM supported model through Claude Code with centralized authentication, usage tracking, and cost controls.
 
 ### Video Walkthrough
 
@@ -64,9 +56,7 @@ export ANTHROPIC_API_KEY="your-anthropic-api-key"
 export LITELLM_MASTER_KEY="sk-1234567890"  # Generate a secure key
 ```
 
-:::tip
-Alternatively, you can store `ANTHROPIC_API_KEY` in a `.env` file in your proxy directory. LiteLLM will automatically load it when starting.
-:::
+> **tip**: Alternatively, you can store `ANTHROPIC_API_KEY` in a `.env` file in your proxy directory. LiteLLM will automatically load it when starting.
 
 ### 2. Start proxy
 
@@ -104,9 +94,7 @@ export ANTHROPIC_BASE_URL="http://0.0.0.0:4000"
 export ANTHROPIC_AUTH_TOKEN="$LITELLM_MASTER_KEY"
 ```
 
-:::tip
-LITELLM_MASTER_KEY gives claude access to all proxy models, whereas a virtual key would be limited to the models set in UI
-:::
+> **tip**: LITELLM_MASTER_KEY gives claude access to all proxy models, whereas a virtual key would be limited to the models set in UI
 
 #### Method 2: Provider-specific Pass-through Endpoint
 
@@ -155,9 +143,7 @@ claude --model 'claude-sonnet-4-5-20250929[1m]'
 /model claude-sonnet-4-5-20250929[1m]
 ```
 
-:::warning
-**Important:** When using `--model` with `[1m]` in the shell, you must use quotes to prevent the shell from interpreting the brackets.
-:::
+> **warning**: **Important:** When using `--model` with `[1m]` in the shell, you must use quotes to prevent the shell from interpreting the brackets.
 
 **How it works:**
 - Claude Code strips the `[1m]` suffix before sending to LiteLLM
@@ -195,9 +181,6 @@ Common issues and solutions:
 
 Expand your configuration to support multiple providers and models:
 
-<Tabs>
-<TabItem value="multi-provider" label="Multi-Provider Setup">
-
 ```yaml
 model_list:
   # Anthropic models
@@ -234,9 +217,6 @@ model_list:
       vertex_ai_location: "us-east-1"
       vertex_credentials: os.environ/VERTEX_FILE_PATH_ENV_VAR # os.environ["VERTEX_FILE_PATH_ENV_VAR"] = "/path/to/service_account.json" 
 
-
-
-
 litellm_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
 ```
@@ -260,8 +240,4 @@ claude --model claude-4-azure
 claude --model anthropic-vertex
 ```
 
-</TabItem>
-</Tabs>
-
 <Image img={require('../../img/release_notes/claude_code_demo.png')} style={{ width: '500px', height: 'auto' }} />
-

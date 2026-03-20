@@ -89,4 +89,3 @@ When you create a Scheduled Alert in SQL mode and apply the Multi-window Selecto
 
 ## Next Step
 [Learn how to use the Multi-window Selector in Scheduled Alerts](../how-to-access-multi-window-selector-scheduled-alerts).
-

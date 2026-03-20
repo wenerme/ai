@@ -30,7 +30,7 @@ To generate a HAR capture, follow the steps for your browser:
 1. Click the grey crossed circle button to clear any existing requests from the panel.
 1. Reproduce the issue while recording the network requests.
 1. Click the download button to download the HAR file.
-   <img width="1293" height="239" alt="image" src="https://github.com/user-attachments/assets/2ddd5bd4-d207-4c59-8143-f10009e0cb5d" />
+   [image]
 1. Upload the HAR file to your Grafana Support ticket for investigation.
 
 ## Firefox
@@ -41,7 +41,7 @@ To generate a HAR capture, follow the steps for your browser:
 1. In the upper left corner of the drawer, click the trash can icon to clear any existing requests from the recording.
 1. Reproduce the issue while recording the network requests.
 1. To save the HAR file, click the gear icon in the upper right hand corner of the panel and select **Save All As HAR**.
-   <img width="1837" height="196" alt="image" src="https://github.com/user-attachments/assets/785be5e4-10a2-4d16-838a-2b7bb97c8453" />
+   [image]
 1. Upload the HAR file to your Grafana Support ticket for investigation.
 
 ## Safari
@@ -55,7 +55,7 @@ To generate a HAR capture, follow the steps for your browser:
 1. In the upper right corner of the panel, click the trash can icon to clear any existing requests from the recording.
 1. Reproduce the issue while recording the network requests.
 1. Click the **Export** button to save the HAR file:
-   <img width="1915" height="219" alt="image" src="https://github.com/user-attachments/assets/2bda7bbd-43bf-4ecb-b8f9-f0be92c5a480" />
+   [image]
 1. Upload the HAR file to your Grafana Support ticket for investigation.
 
 ## Edge
@@ -68,5 +68,5 @@ To generate a HAR capture, follow the steps for your browser:
 1. Click the grey crossed circle button to clear any existing requests from the panel.
 1. Reproduce the issue while the network requests are recorded.
 1. Click the download button to save the HAR file:
-   <img width="916" height="305" alt="image" src="https://github.com/user-attachments/assets/54dfd40d-751f-47b4-9824-bc5be1f027fa" />
+   [image]
 1. Upload the HAR file to your Grafana Support ticket for investigation.

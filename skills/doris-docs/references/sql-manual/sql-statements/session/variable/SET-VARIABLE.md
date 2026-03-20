@@ -42,7 +42,6 @@ Users executing this SQL command must have at least the following privileges:
 | :--------- | :----- | :------------------------------------------- |
 | ADMIN_PRIV | Session  | set global variables need admin privilege |
 
-
 ## Usage Notes
 
 - Only ADMIN users can set variables to take effect globally
@@ -56,7 +55,6 @@ Users executing this SQL command must have at least the following privileges:
    SET time_zone = "Asia/Shanghai";
    ```
 
-
 - Set the global execution memory size
 
    ```
@@ -67,5 +65,3 @@ Users executing this SQL command must have at least the following privileges:
    ```
    SET @@your_variable_name = your_variable_value;
    ```
-
-

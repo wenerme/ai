@@ -7,13 +7,9 @@ description: Easily convert a Hey API generated client into an oRPC client to ta
 
 Easily convert a [Hey API](https://heyapi.dev/) generated client into an oRPC client to take full advantage of the oRPC ecosystem.
 
-::: warning
-[Hey API](https://heyapi.dev/) is still in an unstable stage. As a result, this integration may introduce breaking changes in the future to keep up with its ongoing development.
-:::
+> **warning**: [Hey API](https://heyapi.dev/) is still in an unstable stage. As a result, this integration may introduce breaking changes in the future to keep up with its ongoing development.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/hey-api@latest
@@ -35,8 +31,6 @@ bun add @orpc/hey-api@latest
 deno add npm:@orpc/hey-api@latest
 ```
 
-:::
-
 ## Generating an Hey API Client
 
 To generate a Hey API client, run the following command:
@@ -49,9 +43,7 @@ npx @hey-api/openapi-ts \
 
 This command uses the OpenAPI spec at `https://get.heyapi.dev/hey-api/backend` and outputs the generated client into the `src/client` directory.
 
-::: info
-For more information on Hey API, please refer to the [official documentation](https://heyapi.dev/).
-:::
+> **info**: For more information on Hey API, please refer to the [official documentation](https://heyapi.dev/).
 
 ## Converting to an oRPC Client
 

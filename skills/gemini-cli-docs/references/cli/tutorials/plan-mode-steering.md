@@ -5,7 +5,6 @@ structured environment with model steering's real-time feedback, you can guide
 Gemini CLI through the research and design phases to ensure the final
 implementation plan is exactly what you need.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This is an experimental feature currently under active development and
 > may need to be enabled under `/settings`.

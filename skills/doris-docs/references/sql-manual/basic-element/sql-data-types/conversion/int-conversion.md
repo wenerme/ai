@@ -132,9 +132,8 @@ If the source type is non-nullable, returns non-nullable type.
 
 ### Non-strict mode
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the result of overflow is no longer undefined value, but NULL.
-:::
 
 Returns NULL when overflow occurs.
 
@@ -162,9 +161,8 @@ If the source type is non-nullable, returns non-nullable type.
 
 ### Rule description
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, does not support casting date to tinyint and smallint anymore.
-:::
 
 * Does not support casting to tinyint and smallint, as overflow will definitely occur.
 
@@ -184,9 +182,8 @@ If the source type is non-nullable, returns non-nullable type.
 
 ### Rule description
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, does not support casting datetime to tinyint, smallint and int anymore.
-:::
 
 * Does not support casting to tinyint, smallint, int, as overflow will definitely occur;
 
@@ -230,9 +227,8 @@ Always returns nullable type.
 
 #### Rule description
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the result of overflow is no longer undefined value, but NULL.
-:::
 
 * Converts to NULL when overflow occurs;
 
@@ -309,9 +305,8 @@ If the source type is non-nullable, returns non-nullable type.
 
 ### Non-strict mode
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the result of overflow is no longer undefined value, but NULL.
-:::
 
 Converts to NULL when overflow occurs.
 

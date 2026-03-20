@@ -1,38 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/dashboards
 title: 'Visualizations and Dashboards with ClickStack'
-sidebar_label: 'Dashboards'
-pagination_prev: null
-pagination_next: null
 description: 'Visualizations and Dashboards with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'dashboards', 'visualization', 'monitoring', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import visualization_1 from '@site/static/images/use-cases/observability/hyperdx-visualization-1.png';
-import visualization_2 from '@site/static/images/use-cases/observability/hyperdx-visualization-2.png';
-import visualization_3 from '@site/static/images/use-cases/observability/hyperdx-visualization-3.png';
-import dashboard_1 from '@site/static/images/use-cases/observability/hyperdx-dashboard-1.png';
-import dashboard_2 from '@site/static/images/use-cases/observability/hyperdx-dashboard-2.png';
-import dashboard_3 from '@site/static/images/use-cases/observability/hyperdx-dashboard-3.png';
-import dashboard_4 from '@site/static/images/use-cases/observability/hyperdx-dashboard-4.png';
-import dashboard_5 from '@site/static/images/use-cases/observability/hyperdx-dashboard-5.png';
-import dashboard_filter from '@site/static/images/use-cases/observability/hyperdx-dashboard-filter.png';
-import dashboard_save from '@site/static/images/use-cases/observability/hyperdx-dashboard-save.png';
-import dashboard_search from '@site/static/images/use-cases/observability/hyperdx-dashboard-search.png';
-import dashboard_edit from '@site/static/images/use-cases/observability/hyperdx-dashboard-edit.png';
-import dashboard_clickhouse from '@site/static/images/use-cases/observability/hyperdx-dashboard-clickhouse.png';
-import dashboard_services from '@site/static/images/use-cases/observability/hyperdx-dashboard-services.png';
-import dashboard_kubernetes from '@site/static/images/use-cases/observability/hyperdx-dashboard-kubernetes.png';
-import edit_filters from '@site/static/images/clickstack/dashboards/edit-filters.png';
-import add_filter from '@site/static/images/clickstack/dashboards/add-filter.png';
-import saved_filters from '@site/static/images/clickstack/dashboards/saved-filters.png';
-import filtered_dashboard from '@site/static/images/clickstack/dashboards/filtered-dashboard.png';
-import filter_dropdown from '@site/static/images/clickstack/dashboards/filter-dropdown.png';
-import save_filter_values from '@site/static/images/clickstack/dashboards/save-filter-values.png';
-import drilldown from '@site/static/images/clickstack/dashboards/drilldown.png';
-import Tagging from '@site/docs/_snippets/_clickstack_tagging.mdx';
 
 ClickStack supports visualizing events, with built-in support for charting in ClickStack UI (HyperDX). These charts can be added to dashboards for sharing with other users.
 
@@ -44,9 +15,8 @@ The **Chart Explorer** interface in HyperDX allows you to visualize metrics, tra
 
 Each visualization begins by selecting a **data source**, followed by a **metric**, with optional **filter expressions** and **group by** fields. Conceptually, visualizations in HyperDX map to a SQL `GROUP BY` query under the hood — users define metrics to aggregate across selected dimensions.
 
-:::tip AI-powered chart generation
+> **tip**: AI-powered chart generation
 ClickStack also supports creating charts from natural language prompts using the [text-to-chart](/use-cases/observability/clickstack/text-to-chart) feature. Describe what you want to see, and ClickStack generates the visualization automatically.
-:::
 
 For example, you might chart the number of errors (`count()`) grouped by service name.
 
@@ -80,11 +50,9 @@ For example, filter by the service `frontend` by adding the filter `ServiceName:
 
 <Image img={visualization_3} alt="Simple visualization 2" size="lg"/>
 
-:::note
-Visualizations can be created from any data source — metrics, traces, or logs. ClickStack treats all of these as wide events. Any **numeric column** can be charted over time, and **string**, **date**, or **numeric** columns can be used for groupings.
+> **note**: Visualizations can be created from any data source — metrics, traces, or logs. ClickStack treats all of these as wide events. Any **numeric column** can be charted over time, and **string**, **date**, or **numeric** columns can be used for groupings.
 
 This unified approach allows you to build dashboards across telemetry types using a consistent, flexible model.
-:::
 
 </VerticalStepper>
 
@@ -219,9 +187,7 @@ To persist a filter selection as the dashboard default, choose **Save Query & Fi
 
 </VerticalStepper>
 
-:::note
-Custom dropdown filters are available on saved dashboards. For an example of this pattern in action, see the [Kubernetes dashboard](#kubernetes-dashboard), which provides built-in dropdown filters for Pod, Deployment, Node name, Namespace, and Cluster.
-:::
+> **note**: Custom dropdown filters are available on saved dashboards. For an example of this pattern in action, see the [Kubernetes dashboard](#kubernetes-dashboard), which provides built-in dropdown filters for Pod, Deployment, Node name, Namespace, and Cluster.
 
 ## Drilldown to search {#drilldown-to-search}
 
@@ -246,7 +212,7 @@ This dashboard provides visualizations for monitoring ClickHouse. To navigate to
 
 This dashboard uses tabs to separate monitoring of **Selects**, **Inserts**, and **ClickHouse Infrastructure**.
 
-:::note Required system table access
+> **note**: Required system table access
 This dashboard queries the ClickHouse [system tables](/operations/system-tables) to expose key metrics. The following grants are required:
 
 `GRANT SHOW COLUMNS, SELECT(CurrentMetric_MemoryTracking, CurrentMetric_S3Requests, ProfileEvent_OSCPUVirtualTimeMicroseconds, ProfileEvent_OSReadChars, ProfileEvent_OSWriteChars, ProfileEvent_S3GetObject, ProfileEvent_S3ListObjects, ProfileEvent_S3PutObject, ProfileEvent_S3UploadPart, event_time) ON system.metric_log`
@@ -256,7 +222,6 @@ This dashboard queries the ClickHouse [system tables](/operations/system-tables)
 `GRANT SHOW COLUMNS, SELECT(event_date, event_time, memory_usage, normalized_query_hash, query, query_duration_ms, query_kind, read_rows, tables, type, written_bytes, written_rows) ON system.query_log`
 
 `GRANT SHOW COLUMNS, SELECT(event_date, event_time, hostname, metric, value) ON system.transposed_metric_log`
-:::
 
 ### Services dashboard {#services-dashboard}
 

@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: noMissingVarFunction
 description: Learn more about noMissingVarFunction
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="CSS" icon="seti:css">
 ## Summary
 - Rule available since: `v1.9.2`
 - Diagnostic Category: [`lint/correctness/noMissingVarFunction`](/reference/diagnostics#diagnostic-category)
@@ -57,8 +53,6 @@ This rule has the following limitations:
   - `view-transition-name`
   - `will-change`
 
-
-
 ## Examples
 
 ### Invalid
@@ -70,7 +64,7 @@ a {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:3:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--foo</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span><br />  <br />    <strong>1 │ </strong>a &#123;<br />    <strong>2 │ </strong>  --foo: red;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  color: --foo;<br />   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>4 │ </strong>&#125;<br />    <strong>5 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:3:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--foo</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span>      <strong>1 │ </strong>a &#123;    <strong>2 │ </strong>  --foo: red;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  color: --foo;   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span>  </code></pre>
 
 ```css
 .parent {
@@ -81,7 +75,7 @@ a {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:4:12 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--foo</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span><br />  <br />    <strong>2 │ </strong>  --foo: red;<br />    <strong>3 │ </strong>  .child &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>    color: --foo;<br />   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>5 │ </strong>  &#125;<br />    <strong>6 │ </strong>&#125;<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:4:12 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--foo</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span>      <strong>2 │ </strong>  --foo: red;    <strong>3 │ </strong>  .child &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>    color: --foo;   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>  &#125;    <strong>6 │ </strong>&#125;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span>  </code></pre>
 
 ```css
 @property --bar {}
@@ -91,7 +85,7 @@ a {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:4:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--bar</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span><br />  <br />    <strong>3 │ </strong>a &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  color: --bar;<br />   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>5 │ </strong>&#125;<br />    <strong>6 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:4:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--bar</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span>      <strong>3 │ </strong>a &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  color: --bar;   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>&#125;    <strong>6 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span>  </code></pre>
 
 ```css
 :root {
@@ -103,7 +97,7 @@ a {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:6:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--baz</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span><br />  <br />    <strong>5 │ </strong>a &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>6 │ </strong>  --foo: --baz;<br />   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>7 │ </strong>&#125;<br />    <strong>8 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:6:10 <a href="https://biomejs.dev/linter/rules/no-missing-var-function">lint/correctness/noMissingVarFunction</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">CSS variables '</span><span style="color: Tomato;"><strong>--baz</strong></span><span style="color: Tomato;">' is used without the 'var()' function</span>      <strong>5 │ </strong>a &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>6 │ </strong>  --foo: --baz;   <strong>   │ </strong>         <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>7 │ </strong>&#125;    <strong>8 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">CSS variables should be used with the 'var()' function to ensure proper fallback behavior and browser compatibility.</span>  </code></pre>
 
 ### Valid
 
@@ -156,7 +150,3 @@ a {
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_css_analyze/src/lint/correctness/no_missing_var_function.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_css_analyze/tests/specs/correctness/noMissingVarFunction)
-
-</TabItem>
-</Tabs>
-

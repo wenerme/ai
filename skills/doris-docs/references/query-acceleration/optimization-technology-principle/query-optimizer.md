@@ -30,7 +30,7 @@ The optimizer's architecture is reasonably and modernly designed, making it very
 
 ## Principles of the Optimizer
 
-![Principles of the Optimizer](/images/cost-based-optimizer.jpg)
+[Principles of the Optimizer]
 
 The execution process of the optimizer is divided into the following steps:
 

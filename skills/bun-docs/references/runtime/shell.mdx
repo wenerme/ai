@@ -269,8 +269,6 @@ await $`
 `;
 ```
 
-<Note>
-
 Because Bun internally uses the special [`raw`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#raw_strings) property on the input template literal, using the backtick syntax for command substitution won't work:
 
 ```ts icon="file-code"
@@ -292,8 +290,6 @@ echo hi
 ```
 
 We instead recommend sticking to the `$(...)` syntax.
-
-</Note>
 
 ---
 
@@ -625,10 +621,8 @@ const branch = "--upload-pack=echo pwned";
 await $`git ls-remote origin ${branch}`;
 ```
 
-<Note>
   **Recommendation** — As is best practice in every language, always sanitize user-provided input before passing it as
   an argument to an external command. The responsibility for validating arguments rests with your application code.
-</Note>
 
 ---
 

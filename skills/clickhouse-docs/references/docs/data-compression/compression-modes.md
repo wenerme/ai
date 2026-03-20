@@ -1,23 +1,16 @@
 ---
-slug: /data-compression/compression-modes
-sidebar_position: 6
 title: 'Compression Modes'
 description: 'ClickHouse column compression modes'
 keywords: ['compression', 'codec', 'encoding', 'modes']
 doc_type: 'reference'
 ---
 
-import CompressionBlock from '@site/static/images/data-compression/ch_compression_block.png';
-import Image from '@theme/IdealImage';
-
 # Compression modes
 
 ClickHouse protocol supports **data blocks** compression with checksums.
 Use `LZ4` if not sure what mode to pick.
 ``
-:::tip
-Learn more about the [column compression codecs](/sql-reference/statements/create/table#column_compression_codec) available and specify them when creating your tables, or afterward.
-:::
+> **tip**: Learn more about the [column compression codecs](/sql-reference/statements/create/table#column_compression_codec) available and specify them when creating your tables, or afterward.
 
 ## Modes {#modes}
 

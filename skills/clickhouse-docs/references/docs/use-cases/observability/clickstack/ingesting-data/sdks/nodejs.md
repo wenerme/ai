@@ -1,16 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/nodejs
-pagination_prev: null
-pagination_next: null
-sidebar_position: 5
 description: 'Node.js SDK for ClickStack - The ClickHouse Observability Stack'
 title: 'Node.js'
 doc_type: 'guide'
 keywords: ['clickstack', 'sdk', 'logging', 'integration', 'application monitoring']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ClickStack uses the OpenTelemetry standard for collecting telemetry data (logs, metrics,
 traces and exceptions). Traces are auto-generated with automatic instrumentation, so manual
@@ -29,29 +22,17 @@ This guide integrates:
 
 Use the following command to install the [ClickStack OpenTelemetry package](https://www.npmjs.com/package/@hyperdx/node-opentelemetry).
 
-<Tabs groupId="install">
-<TabItem value="npm" label="NPM" default>
-
 ```shell 
 npm install @hyperdx/node-opentelemetry 
 ```
-
-</TabItem>
-<TabItem value="yarn" label="Yarn" default>
 
 ```shell  
 yarn add @hyperdx/node-opentelemetry 
 ```
 
-</TabItem>
-</Tabs>
-
 ### Initializing the SDK {#initializin-the-sdk}
 
 To initialize the SDK, you'll need to call the `init` function at the top of the entry point of your application.
-
-<Tabs groupId="initialize">
-<TabItem value="require" label="require" default>
 
 ```javascript
 const HyperDX = require('@hyperdx/node-opentelemetry');
@@ -63,9 +44,6 @@ HyperDX.init({
 });
 ```
 
-</TabItem>
-<TabItem value="import" label="import">
-
 ```javascript
 import * as HyperDX from '@hyperdx/node-opentelemetry';
 
@@ -76,9 +54,6 @@ HyperDX.init({
 });
 ```
 
-</TabItem>
-</Tabs>
-
 This will automatically capture tracing, metrics, and logs from your Node.js application.
 
 ### Setup log collection {#setup-log-collection}
@@ -88,9 +63,6 @@ such as `winston` or `pino`, you'll need to add a transport to your logger to
 send logs to ClickStack.  If you're using another type of logger,
 [reach out](mailto:support@clickhouse.com) or explore one of our platform
 integrations if applicable (such as [Kubernetes](/use-cases/observability/clickstack/integrations/kubernetes)).
-
-<Tabs groupId="logging">
-<TabItem value="Winston" label="Winston" default>
 
 If you're using `winston` as your logger, you'll need to add the following transport to your logger.
 
@@ -112,9 +84,6 @@ If you're using `winston` as your logger, you'll need to add the following trans
     export default logger;
 ```
 
-</TabItem>
-<TabItem value="Pino" label="Pino">
-
 If you're using `pino` as your logger, you'll need to add the following transport to your logger and specify a `mixin` to correlate logs with traces.
 
 ```typescript
@@ -135,24 +104,15 @@ const logger = pino(
 export default logger;
 ```
 
-</TabItem>
-
-<TabItem value="console.log" label="console.log">
 By default, `console.*` methods are supported out of the box. No additional configuration is required. 
 
 You can disable this by setting the `HDX_NODE_CONSOLE_CAPTURE` environment variable to 0 or by passing `consoleCapture: false` to the `init` function.
-
-</TabItem>
-</Tabs>
 
 ### Setup error collection {#setup-error-collection}
 
 The ClickStack SDK can automatically capture uncaught exceptions and errors in your application with full stack trace and code context. 
 
 To enable this, you'll need to add the following code to the end of your application's error handling middleware, or manually capture exceptions using the `recordException` function.
-
-<Tabs groupId="setup">
-<TabItem value="Express" label="Express" default>
 
 ```javascript 
 const HyperDX = require('@hyperdx/node-opentelemetry');
@@ -171,9 +131,6 @@ HyperDX.setupExpressErrorHandler(app);
 
 app.listen(3000);
 ```
-
-</TabItem>
-<TabItem value="Koa" label="Koa">
 
 ```javascript 
 const Koa = require("koa");
@@ -195,9 +152,6 @@ HyperDX.setupKoaErrorHandler(app);
 app.listen(3030);
 ```
 
-</TabItem>
-<TabItem value="Manual" label="Manual">
-
 ```javascript
 const HyperDX = require('@hyperdx/node-opentelemetry');
 
@@ -206,9 +160,6 @@ function myErrorHandler(error, req, res, next) {
     HyperDX.recordException(error);
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Troubleshooting {#troubleshooting}
 
@@ -316,31 +267,17 @@ The following libraries will be automatically instrumented (traced) by the SDK:
 Alternatively, you can auto-instrument your application without any code changes by using the `opentelemetry-instrument` CLI or using the
 Node.js `--require` flag. The CLI installation exposes a wider range of auto-instrumented libraries and frameworks.
 
-<Tabs groupId="cli">
-<TabItem value="npx" label="Using NPX" default>
-
-:::note Managed ClickStack
+> **note**: Managed ClickStack
 The `HYPERDX_API_KEY` can be omitted for Managed ClickStack.
-:::
-
 ```shell
 HYPERDX_API_KEY='<YOUR_INGESTION_KEY>' OTEL_SERVICE_NAME='<YOUR_APP_NAME>' npx opentelemetry-instrument index.js
 ```
 
-</TabItem>
-<TabItem value="custom" label="Custom Entry Point (ex. Nodemon, ts-node, etc.)">
-
-:::note Managed ClickStack
+> **note**: Managed ClickStack
 The `HYPERDX_API_KEY` can be omitted for Managed ClickStack.
-:::
-
 ```shell
 HYPERDX_API_KEY='<YOUR_INGESTION_KEY>' OTEL_SERVICE_NAME='<YOUR_APP_NAME>' ts-node -r '@hyperdx/node-opentelemetry/build/src/tracing' index.js
 ```
-
-</TabItem>
-
-<TabItem value="code_import" label="Code Import">
 
 ```javascript 
 // Import this at the very top of the first file loaded in your application
@@ -352,10 +289,6 @@ initSDK({
     additionalInstrumentations: [], // optional, default: []
 });
 ```
-
-</TabItem>
-
-</Tabs>
 
 _The `OTEL_SERVICE_NAME` environment variable is used to identify your service in the HyperDX app, it can be any name you want._
 

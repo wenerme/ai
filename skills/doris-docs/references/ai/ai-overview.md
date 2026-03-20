@@ -6,26 +6,6 @@
 }
 ---
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-
-
 As AI technologies continue to advance at an unprecedented pace, data infrastructure has become the cornerstone of modern AI applications. Apache Doris, a high-performance real-time analytical database, provides native integration of full-text search, vector search, AI functions, and MCP-based intelligent interaction. Together, these capabilities form a comprehensive AI data stack that spans storage, retrieval, and analysis.
 
 - [full-text search](text-search/overview.md)
@@ -49,7 +29,7 @@ Doris demonstrates outstanding advantages in these agent-facing analytical scena
 
 ## Hybrid Search and Analytics Processing
 
-![img](/images/vector-search/image-5.png)
+[img]
 
 Semi-structured and unstructured data are becoming first-class citizens in data analytics. Customer reviews, chat logs, production logs, vehicle signals, and other data have been deeply integrated into business decision-making processes. Traditional structured analytics solutions need to incorporate full-text retrieval and vector search capabilities, supporting semantic search while enabling multidimensional analysis and aggregation statistics on the same platform. Examples include:
 

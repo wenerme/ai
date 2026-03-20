@@ -24,7 +24,6 @@ You can use `PostgreSQL` or `MySQL` as metadata storage.
 
 The official helm chart (starting Feb 23rd 2024) uses `PostgreSQL` as metadata store by default. It installs a PostgreSQL cluster (1 primary + 1 replica) for you. cloudnative-pg operator is used to install/manage the PostgreSQL cluster.
 
-
 ### PostgreSQL
 
 You don't need to do anything if you are using the official helm chart and want to use bundled PostgreSQL. 

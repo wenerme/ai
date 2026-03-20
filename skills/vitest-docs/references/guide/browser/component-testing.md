@@ -1,6 +1,5 @@
 ---
 title: Component Testing | Guide
-outline: deep
 ---
 
 # Component Testing
@@ -26,14 +25,11 @@ Component testing in Vitest uses **Browser Mode** to run tests in real browser e
 
 Browser Mode is the recommended approach for component testing because it provides the most accurate testing environment. Unlike DOM simulation libraries, Browser Mode catches real-world issues that can affect your users.
 
-::: tip
-Browser Mode catches issues that DOM simulation libraries might miss, including:
+> **tip**: Browser Mode catches issues that DOM simulation libraries might miss, including:
 - CSS layout and styling problems
 - Real browser API behavior
 - Accurate event handling and propagation
 - Proper focus management and accessibility features
-
-:::
 
 ### Purpose of This Guide
 
@@ -171,9 +167,8 @@ Popular Testing Library packages that work well with Vitest:
 - [`@testing-library/svelte`](https://testing-library.com/docs/svelte-testing-library/intro) - Alternative to [`vitest-browser-svelte`](https://npmx.dev/package/vitest-browser-svelte)
 - [`@testing-library/vue`](https://testing-library.com/docs/vue-testing-library/intro) - Alternative to [`vitest-browser-vue`](https://npmx.dev/package/vitest-browser-vue)
 
-::: tip Migration Path
+> **tip**: Migration Path
 If your framework gets official Vitest support later, you can gradually migrate by replacing Testing Library's `render` function while keeping most of your test logic intact.
-:::
 
 ## Best Practices
 
@@ -295,9 +290,7 @@ test('UserProfile handles loading, success, and error states', async () => {
 })
 ```
 
-::: tip
-See more details on [using MSW in the browser](https://mswjs.io/docs/integrations/browser).
-:::
+> **tip**: See more details on [using MSW in the browser](https://mswjs.io/docs/integrations/browser).
 
 ### Testing Component Communication
 

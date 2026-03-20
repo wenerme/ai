@@ -1,8 +1,6 @@
 ---
 title: 'Scaling DB ClickPipes via OpenAPI'
 description: 'Doc for scaling DB ClickPipes via OpenAPI'
-slug: /integrations/clickpipes/postgres/scaling
-sidebar_label: 'Scaling'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
 integration:
@@ -10,9 +8,8 @@ integration:
   - category: 'clickpipes'
 ---
 
-:::caution Most users won't need this API
+> **caution**: Most users won't need this API
 Default configuration of DB ClickPipes is designed to handle the majority of workloads out of the box. If you think your workload requires scaling, open a [support case](https://clickhouse.com/support/program) and we'll guide you through the optimal settings for the use case.
-:::
 
 Scaling API may be useful for:
 - Large initial loads (over 4 TB)

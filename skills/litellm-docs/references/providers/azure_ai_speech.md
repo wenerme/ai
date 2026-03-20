@@ -6,7 +6,6 @@ Azure AI Speech is Azure's Cognitive Services text-to-speech API, separate from 
 - **Azure AI Speech** - More languages, neural voices, SSML support, speech customization
 - **Azure OpenAI TTS** - OpenAI models, integrated with Azure OpenAI services
 
-
 ## Overview
 
 | Property | Details |
@@ -217,7 +216,6 @@ curl http://0.0.0.0:4000/v1/audio/speech \
   }' \
   --output speech.mp3
 ```
-
 
 ## Sending Azure-Specific Params
 
@@ -454,4 +452,3 @@ except APIError as e:
 
 - [Azure Speech Service Documentation](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/)
 - [Text-to-Speech REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech)
-

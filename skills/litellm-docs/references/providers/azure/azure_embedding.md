@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure OpenAI Embeddings
 
@@ -32,7 +30,6 @@ print(response)
 
 h/t to [Mikko](https://www.linkedin.com/in/mikkolehtimaki/) for this integration
 
-
 ## **Usage - LiteLLM Proxy Server**
 
 Here's how to call Azure OpenAI models with the LiteLLM Proxy Server
@@ -57,9 +54,6 @@ model_list:
 
 ### 3. Test it
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/embeddings' \
   --header 'Content-Type: application/json' \
@@ -68,8 +62,6 @@ curl --location 'http://0.0.0.0:4000/embeddings' \
   "input": ["write a litellm poem"]
   }'
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -87,7 +79,3 @@ response = client.embeddings.create(
 print(response)
 
 ```
-</TabItem>
-</Tabs>
-
-

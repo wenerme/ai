@@ -1,22 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/claude-desktop
-sidebar_label: 'Integrate Claude Desktop'
 title: 'Set Up ClickHouse MCP Server with Claude Desktop'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to set up Claude Desktop with a ClickHouse MCP server.'
 keywords: ['AI', 'Librechat', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-import ClaudeDesktopConfig from '@site/static/images/use-cases/AI_ML/MCP/claude-desktop-config.png';
-import FindMCPServers from '@site/static/images/use-cases/AI_ML/MCP/find-mcp-servers.gif';
-import MCPPermission from '@site/static/images/use-cases/AI_ML/MCP/mcp-permission.png';
-import ClaudeConversation from '@site/static/images/use-cases/AI_ML/MCP/claude-conversation.png';
 
 # Using ClickHouse MCP server with Claude Desktop
 
@@ -88,22 +76,19 @@ For example, the ClickHouse MCP server configuration connecting to the ClickHous
 
 Once you've updated the config, you'll need to restart Claude Desktop for the changes to take effect. 
 
-:::warning
-Depending on how you installed `uv`, you might receive the following error when restarting Claude Desktop:
+> **warning**: Depending on how you installed `uv`, you might receive the following error when restarting Claude Desktop:
 
 ```text
 MCP mcp-clickhouse: spawn uv ENOENT
 ```
 
 If that happens, you'll need to update the `command` to have the full path to `uv`. e.g. if you've installed via Cargo, it will be `/Users/<username>/.cargo/bin/uv`
-:::
 
 ## Using ClickHouse MCP server {#using-clickhouse-mcp-server}
 
 Once you've restarted Claude Desktop, you can find the ClickHouse MCP server by clicking on the `Search and tools` icon:
 
 <Image img={FindMCPServers} alt="Find MCP servers" size="md" />
-<br/>
 
 You can then choose whether to disable all or some of the tools.
 

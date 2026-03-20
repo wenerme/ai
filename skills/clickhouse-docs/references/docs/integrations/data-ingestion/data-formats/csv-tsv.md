@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'CSV and TSV'
-slug: /integrations/data-formats/csv-tsv
 title: 'Working with CSV and TSV data in ClickHouse'
 description: 'Page describing how to work with CSV and TSV data in ClickHouse'
 keywords: ['CSV format', 'TSV format', 'comma separated values', 'tab separated values', 'data import']
@@ -42,10 +40,8 @@ FORMAT CSV
 
 Here, we use the `FORMAT CSV` clause so ClickHouse understands the file format. We can also load data directly from URLs using [url()](/sql-reference/table-functions/url.md) function or from S3 files using [s3()](/sql-reference/table-functions/s3.md) function.
 
-:::tip
-We can skip explicit format setting for `file()` and `INFILE`/`OUTFILE`.
+> **tip**: We can skip explicit format setting for `file()` and `INFILE`/`OUTFILE`.
 In that case, ClickHouse will automatically detect format based on file extension.
-:::
 
 ### CSV files with headers {#csv-files-with-headers}
 
@@ -68,9 +64,7 @@ clickhouse-client -q "INSERT INTO sometable FORMAT CSVWithNames" < data_small_he
 
 In this case, ClickHouse skips the first row while importing data from the file.
 
-:::tip
-Starting from [version](https://github.com/ClickHouse/ClickHouse/releases) 23.1, ClickHouse will automatically detect headers in CSV files when using the `CSV` format, so it isn't necessary to use `CSVWithNames` or `CSVWithNamesAndTypes`.
-:::
+> **tip**: Starting from [version](https://github.com/ClickHouse/ClickHouse/releases) 23.1, ClickHouse will automatically detect headers in CSV files when using the `CSV` format, so it isn't necessary to use `CSVWithNames` or `CSVWithNamesAndTypes`.
 
 ### CSV files with custom delimiters {#csv-files-with-custom-delimiters}
 
@@ -103,9 +97,7 @@ SELECT count(*) FROM file('data-small.csv', CSV)
 
 The [file](assets/data_small.csv) has 1k rows, but ClickHouse loaded only 990 since we've asked to skip the first 10.
 
-:::tip
-When using the `file()` function, with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file resides. Another option is to use [`clickhouse-local`](/operations/utilities/clickhouse-local.md) to explore files locally.
-:::
+> **tip**: When using the `file()` function, with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file resides. Another option is to use [`clickhouse-local`](/operations/utilities/clickhouse-local.md) to explore files locally.
 
 ### Treating NULL values in CSV files {#treating-null-values-in-csv-files}
 

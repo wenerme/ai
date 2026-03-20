@@ -196,11 +196,7 @@ This approach is particularly valuable when:
 - Optimizing costs by using different sampling rates for different request types
 - Maintaining separate trace streams for compliance or data residency requirements
 
-:::info
-
-Note that only a single config can be used for a specific execution. But a single config can send data to multiple exporters simultaneously.
-
-:::
+> **info**: Note that only a single config can be used for a specific execution. But a single config can send data to multiple exporters simultaneously.
 
 ### Dynamic Configuration Selection
 
@@ -320,11 +316,7 @@ This configuration sends traces to all three destinations simultaneously:
 - **DefaultExporter** for Studio
 - **CloudExporter** for Mastra Cloud dashboard
 
-:::info
-
-Remember: A single trace can be sent to multiple exporters. You don't need separate configs for each exporter unless you want different sampling rates or processors.
-
-:::
+> **info**: Remember: A single trace can be sent to multiple exporters. You don't need separate configs for each exporter unless you want different sampling rates or processors.
 
 ## Adding custom metadata
 
@@ -537,11 +529,7 @@ const result = await agent.generate([{ role: 'user', content: 'Sensitive operati
 })
 ```
 
-:::tip
-
-For more granular control over sensitive data, consider using the [Sensitive Data Filter](/docs/observability/tracing/processors/sensitive-data-filter) processor, which can redact specific fields (like passwords, tokens, and keys) while preserving the rest of the input/output.
-
-:::
+> **tip**: For more granular control over sensitive data, consider using the [Sensitive Data Filter](/docs/observability/tracing/processors/sensitive-data-filter) processor, which can redact specific fields (like passwords, tokens, and keys) while preserving the rest of the input/output.
 
 #### Child Spans and Metadata Extraction
 
@@ -806,9 +794,7 @@ const exporter = new LangfuseExporter({
 })
 ```
 
-:::note
-Async formatters add latency to span export. Keep async operations fast (under 100ms) to avoid slowing down your application. Consider using caching for frequently accessed data.
-:::
+> **note**: Async formatters add latency to span export. Keep async operations fast (under 100ms) to avoid slowing down your application. Consider using caching for frequently accessed data.
 
 ## Serialization options
 
@@ -1039,7 +1025,6 @@ In serverless environments like Vercel's fluid compute, AWS Lambda, or Cloudflar
 
 :::note[Storage requirements]
 Serverless environments have ephemeral filesystems. Use external storage instead of local file storage (`file:./mastra.db`). See the [Vercel deployment guide](/guides/deployment/vercel#observability) for a complete setup example.
-:::
 
 ### Using `flush()`
 

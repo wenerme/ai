@@ -1,29 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/systemd-logs
 title: 'Monitoring Systemd Logs with ClickStack'
-sidebar_label: 'Systemd/Journald Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Systemd and Journald Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['systemd', 'journald', 'journal', 'OTEL', 'ClickStack', 'system logs', 'systemctl']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/systemd/finish-import-systemd.png';
-import example_dashboard from '@site/static/images/clickstack/systemd/systemd-logs-dashboard.png';
-import search_view from '@site/static/images/clickstack/systemd/systemd-search-view.png';
-import log_view from '@site/static/images/clickstack/systemd/systemd-log-view.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Systemd Logs with ClickStack {#systemd-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize systemd journal logs in ClickStack using the OpenTelemetry Collector's journald receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing systems {#existing-systems}
 
@@ -135,11 +120,9 @@ EOF
 
 #### Deploy with Docker Compose {#deploy-docker-compose}
 
-:::note
-The `journald` receiver requires the `journalctl` binary to read journal files. The official `otel/opentelemetry-collector-contrib` image doesn't include `journalctl` by default.
+> **note**: The `journald` receiver requires the `journalctl` binary to read journal files. The official `otel/opentelemetry-collector-contrib` image doesn't include `journalctl` by default.
 
 For containerized deployments, you can either install the collector directly on the host or build a custom image with systemd utilities. See the [troubleshooting section](#journalctl-not-found) for details.
-:::
 
 This example shows deploying the OTel Collector alongside ClickStack:
 
@@ -259,9 +242,7 @@ docker run -d --name clickstack-demo \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-The demo uses the `filelog` receiver with text logs instead of `journald` to avoid requiring `journalctl` in the container.
-:::
+> **note**: The demo uses the `filelog` receiver with text logs instead of `journald` to avoid requiring `journalctl` in the container.
 
 #### Verify logs in HyperDX {#verify-demo-logs}
 
@@ -277,7 +258,6 @@ Once ClickStack is running:
 
 :::note[Timezone display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-15 00:00:00 - 2025-11-16 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location.
-:::
 
 </VerticalStepper>
 
@@ -311,9 +291,7 @@ The dashboard includes visualizations for:
 
 <Image img={example_dashboard} alt="Example dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-11-15 00:00:00 - 2025-11-16 00:00:00 (UTC)** (adjust based on your local timezone).
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-15 00:00:00 - 2025-11-16 00:00:00 (UTC)** (adjust based on your local timezone).
 
 </VerticalStepper>
 

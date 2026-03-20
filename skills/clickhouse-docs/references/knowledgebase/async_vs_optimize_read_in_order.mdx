@@ -6,13 +6,7 @@ tags: ['Settings', 'Performance and Optimizations']
 keywords: ['Synchronous', 'Asynchronous', 'Data Reading']
 ---
 
-import Image from "@theme/IdealImage";
-import sync_read from "@site/static/images/knowledgebase/sync_read.png";
-import async_read from "@site/static/images/knowledgebase/async_read.png";
-import optimize_read from "@site/static/images/knowledgebase/optimize_read.png";
-
 {frontMatter.description}
-{/* truncate */}
 
 ## Synchronous data reading \{#synchronous-data-reading\}
 
@@ -52,7 +46,6 @@ When ClickHouse sees that `optimize_read_in_order optimization` can be applied, 
 ```
 SELECT getSetting('max_threads');
 
-
 ┌─getSetting('max_threads')─┐
 │                        10 │
 └───────────────────────────┘
@@ -81,7 +74,6 @@ SETTINGS
     allow_asynchronous_read_from_io_pool_for_merge_tree = 1,
     max_streams_for_merge_tree_reading = 60;
 
-
 ┌─explain────────────────────────┐
 │ (Expression)                   │
 │ ExpressionTransform × 10       │
@@ -98,7 +90,6 @@ SELECT *
 FROM uk_price_paid
 SETTINGS
     max_threads = 20;
-
 
 ┌─explain──────────────────────┐
 │ (Expression)                 │
@@ -117,7 +108,6 @@ SETTINGS
     max_threads = 20,
     allow_asynchronous_read_from_io_pool_for_merge_tree = 1,
     max_streams_for_merge_tree_reading = 60;
-
 
 ┌─explain────────────────────────┐
 │ (Expression)                   │
@@ -140,7 +130,6 @@ SETTINGS
     allow_asynchronous_read_from_io_pool_for_merge_tree= 1,
     max_streams_for_merge_tree_reading= 60;
 
-
 ┌─explain───────────────────────────┐
 │ (Expression)                      │
 │ ExpressionTransform               │
@@ -152,7 +141,6 @@ SETTINGS
 │       MergeTreeInOrder × 20 0 → 1 │
 └───────────────────────────────────┘
 
-
 -- note that this is equivalent to disabling allow_asynchronous_read_from_io_pool_for_merge_tree
 
 EXPLAIN PIPELINE
@@ -163,7 +151,6 @@ SETTINGS
     max_threads = 20,
     allow_asynchronous_read_from_io_pool_for_merge_tree = 0,
     max_streams_for_merge_tree_reading = 0;
-
 
 ┌─explain───────────────────────────┐
 │ (Expression)                      │
@@ -190,7 +177,6 @@ SETTINGS
     max_streams_for_merge_tree_reading = 60,
     optimize_read_in_order = 0;
 
-
 ┌─explain──────────────────────────────┐
 │ (Expression)                         │
 │ ExpressionTransform                  │
@@ -204,6 +190,4 @@ SETTINGS
 │           MergeTreeThread × 60 0 → 1 │
 └──────────────────────────────────────┘
 
-
 ```
-

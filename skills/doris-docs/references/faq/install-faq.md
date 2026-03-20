@@ -279,9 +279,7 @@ cp fe-core/target/generated-sources/cup/org/apache/doris/analysis/action_table.d
 
 ### Q15. After upgrading to version 1.2, BE fails to start with NoClassDefFoundError issue
 
-:::note
-Java UDF dependency error is supported starting from Doris version 1.2
-:::
+> **note**: Java UDF dependency error is supported starting from Doris version 1.2
 
 If the following Java `NoClassDefFoundError` error occurs when starting BE after upgrading:
 
@@ -294,9 +292,7 @@ You need to download the Java UDF function dependency package `apache-doris-java
 
 ### Q16. After upgrading to version 1.2, BE startup shows Failed to initialize JNI issue
 
-:::note
-Java environment issue is supported starting from Doris version 1.2
-:::
+> **note**: Java environment issue is supported starting from Doris version 1.2
 
 If the following `Failed to initialize JNI` error occurs when starting BE after upgrading:
 

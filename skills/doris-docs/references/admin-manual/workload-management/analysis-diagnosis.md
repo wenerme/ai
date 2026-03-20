@@ -31,13 +31,10 @@ Currently, Doris's audit logs retain brief information about SQL execution, whic
 3. Optimize SQL queries with abnormal resource usage, such as rewriting SQL, optimizing table structures, adjusting parallelism to reduce the resource usage per SQL query.
 4. If the audit logs reveal that SQL resource usage is normal, monitoring and auditing can be used to check if the number of SQL queries executed during that time has increased compared to historical periods. If so, confirm with upstream businesses whether there has been an increase in upstream access traffic during the corresponding time periods, and decide whether to scale the cluster or implement queuing and rate limiting.
 
-
 ## Commonly Used SQL
-:::tip
-Note that the active_queries table records queries running on the FE, while the backend_active_tasks table records queries running on the BE. Not all queries are registered with the FE during execution; for example, stream loads are not registered with the FE. Therefore, it is normal to get no matching results when performing a LEFT JOIN between backend_active_tasks and active_queries.
+> **tip**: Note that the active_queries table records queries running on the FE, while the backend_active_tasks table records queries running on the BE. Not all queries are registered with the FE during execution; for example, stream loads are not registered with the FE. Therefore, it is normal to get no matching results when performing a LEFT JOIN between backend_active_tasks and active_queries.
 
 When a query is a SELECT query, the queryId recorded in both active_queries and backend_active_tasks is the same. When a query is a stream load, the queryId in the active_queries table is empty, while the queryId in backend_active_tasks is the ID of the stream load.
-:::
 
 1. View all current Workload Groups and display them in descending order of memory/CPU/I/O usage.
 ```

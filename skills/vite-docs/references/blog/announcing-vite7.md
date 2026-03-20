@@ -29,7 +29,7 @@ head:
 
 _June 24, 2025_
 
-![Vite 7 Announcement Cover Image](/og-image-announcing-vite7.webp)
+[Vite 7 Announcement Cover Image]
 
 We're happy to share the release of Vite 7! It has been 5 years since Evan You sent the first commit to the Vite repo, and nobody could have predicted how much the frontend ecosystem would change since then. Most modern frontend frameworks and tools are now working together, building on top of Vite's shared infrastructure. And they can innovate at a faster pace by sharing at a higher level. Vite is now being downloaded 31 million times a week, with a 14 million increase in the last seven months since the previous major release.
 

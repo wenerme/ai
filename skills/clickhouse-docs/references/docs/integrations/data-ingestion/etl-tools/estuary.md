@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Estuary'
-slug: /integrations/estuary
 description: 'Stream a variety of sources into ClickHouse with an Estuary integration'
 title: 'Connect Estuary with ClickHouse'
 doc_type: 'guide'
@@ -10,8 +8,6 @@ integration:
   - website: 'https://estuary.dev'
 keywords: ['estuary', 'data ingestion', 'etl', 'pipeline', 'data integration', 'clickpipes']
 ---
-
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Connect Estuary with ClickHouse
 

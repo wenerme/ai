@@ -1,11 +1,7 @@
 ---
 title: "Customizing ComfyUI Appearance"
 description: "Learn how to customize the appearance of ComfyUI using color palettes and advanced CSS options"
-sidebarTitle: "Appearance"
-icon: "paintbrush"
 ---
-
-import UserDirectory from "/snippets/install/user-directory.mdx"
 
 ComfyUI offers flexible appearance customization options that allow you to personalize the interface to your preferences.
 
@@ -13,7 +9,7 @@ ComfyUI offers flexible appearance customization options that allow you to perso
 
 The primary way to customize ComfyUI's appearance is through the built-in color palette system.
 
-![Color Palette](/images/interface/setting/appearance/color-palette.jpg)
+[Color Palette]
 
 This allows you to:
 
@@ -22,18 +18,14 @@ This allows you to:
 3. Load custom theme configuration from JSON file
 4. Delete custom theme configuration
 
-<Note>
   For appearance needs that cannot be satisfied by the color palette, you can perform advanced appearance customization through the [user.css](#advanced-customization-with-user-css) file
-</Note>
 
 ### How to Customize Color Themes
 
 The color palette allows you to modify many specific properties. Here are some of the most commonly customized elements, with colors represented in hexadecimal format:
 
-<Tip>
   1. The JSON comments below are for illustration only. Do not copy the content below for modification as it will cause the theme to malfunction.
   2. Since we are still iterating frequently, the content below may change with ComfyUI frontend updates. If you need to modify, please export the theme configuration from settings and then modify it.
-</Tip>
 
 ```json
 {
@@ -117,7 +109,7 @@ The color palette allows you to modify many specific properties. Here are some o
 - **Requirements**: ComfyUI frontend version 1.20.5 or newer
 - **Function**: Set a custom background image for the canvas to provide a more personalized workspace. You can upload images or use web images to set the background for the canvas.
 
-![Set Background Image](/images/interface/setting/appearance/set-as-bg.jpg)
+[Set Background Image]
 
 ## Node
 
@@ -125,7 +117,7 @@ The color palette allows you to modify many specific properties. Here are some o
 
 - **Function**: Set the opacity of nodes, where 0 represents completely transparent and 1 represents completely opaque.
 
-![Node Opacity](/images/interface/setting/appearance/node-opacity.jpg)
+[Node Opacity]
 
 ## Node Widget
 
@@ -134,7 +126,7 @@ The color palette allows you to modify many specific properties. Here are some o
 - **Range**: 8 - 24
 - **Function**: Set the font size in textarea widgets. Adjusts the text display size in text input boxes to improve readability.
 
-![Textarea Widget Font Size](/images/interface/setting/appearance/textarea-font-size.jpg)
+[Textarea Widget Font Size]
 
 ## Sidebar
 
@@ -156,7 +148,7 @@ The color palette allows you to modify many specific properties. Here are some o
   - **Connected**: The sidebar appears connected to the edge of the interface.
   - **Floating**: The sidebar appears as a floating panel with visual separation from the interface edge.
 
-![Sidebar Style](/images/interface/setting/appearance/sidbar_style.jpg)
+[Sidebar Style]
 
 ## Tree Explorer
 
@@ -164,7 +156,7 @@ The color palette allows you to modify many specific properties. Here are some o
 
 - **Function**: Set the padding of items in the tree explorer (sidebar panel), adjusting the spacing between items in the tree structure.
 
-![Tree Explorer Item Padding](/images/interface/setting/appearance/padding.jpg)
+[Tree Explorer Item Padding]
 
 ## Advanced Customization with user.css
 
@@ -181,8 +173,6 @@ For cases where the color palette doesn't provide enough control, you can use cu
 3. Restart ComfyUI or refresh the page to apply changes
 
 ### User Directory Location
-
-<UserDirectory/>
 
 After finding the above folder location, please copy the corresponding CSS file to the corresponding user directory, such as the default user folder being `ComfyUI/user/default`, then restart ComfyUI or refresh the page to apply changes.
 

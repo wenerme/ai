@@ -104,7 +104,6 @@ w & \text{if } w \leq \tau \\
 \end{cases}
 $$
 
-
 ### Four Correction Modes
 
 Combining granularity and control strategies, there are four correction modes (selected via `--rollout_importance_sampling_mode` parameter):
@@ -183,7 +182,6 @@ A larger ESS value (closer to 1) indicates more uniform importance sampling weig
 
 - `is_weight_mean`: Average importance sampling weight, ideal value is 1.0
 - `clipped_frac`: Fraction of samples that were truncated or masked
-
 
 ## Usage
 

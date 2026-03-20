@@ -147,11 +147,9 @@ await em.flush();
 console.log(article);
 ```
 
-:::info `em.clear()`
+> **info**: `em.clear()`
 
 If you carefully checked this snippet, you probably found that new mysterious [`em.clear()`](/api/core/class/EntityManager#clear) call. What does it do? It clears the context for the [`EntityManager`](/api/core/class/EntityManager), meaning it will detach all the entities it was managing. It will bring the [`EntityManager`](/api/core/class/EntityManager) to the same state as if you would create a fresh fork via [`em.fork()`](/api/core/class/EntityManager#fork). You won't usually need this in your app, but it is very handy for unit testing, to simulate new requests coming in. You may as well use forks explicitly if you want.
-
-:::
 
 ### Type inference with `defineEntity`
 
@@ -442,11 +440,9 @@ To get all entities stored in a `Collection`, you can use `getItems()` method. I
 
 Alternatively, you can use `toArray()` which will serialize the `Collection` to an array of DTOs. Modifying those will have no effect on the actual entity instances.
 
-:::tip `em.findOneOrFail()`
+> **tip**: `em.findOneOrFail()`
 
 So far you used `em.findOne()` which can return `null` if the entity is not found in the database. This results in extensive usage of the non-null assertion operator in TypeScript, which can get messy. A better solution is to use `em.findOneOrFail()`, which always returns the entity or throws an error, namely an instance of `NotFoundError` provided by the ORM.
-
-:::
 
 ```ts
 // clear the context to simulate fresh request

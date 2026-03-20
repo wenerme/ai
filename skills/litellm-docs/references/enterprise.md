@@ -1,17 +1,12 @@
-import Image from '@theme/IdealImage';
 
 # Enterprise
 
-:::info
-- ✨ SSO is free for up to 5 users. After that, an enterprise license is required. [Get Started with Enterprise here](https://www.litellm.ai/enterprise)
+> **info**: - ✨ SSO is free for up to 5 users. After that, an enterprise license is required. [Get Started with Enterprise here](https://www.litellm.ai/enterprise)
 - Who is Enterprise for? Companies giving access to 100+ users **OR** 10+ AI use-cases. If you're not sure, [get in touch with us](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions) to discuss your needs.
-:::
 
 For companies that need SSO, user management and professional support for LiteLLM Proxy
 
-:::info
-Get free 7-day trial key [here](https://www.litellm.ai/enterprise#trial)
-:::
+> **info**: Get free 7-day trial key [here](https://www.litellm.ai/enterprise#trial)
 
 ## Enterprise Features
 
@@ -21,23 +16,19 @@ Includes all enterprise features.
 
 [**Procurement available via AWS / Azure Marketplace**](./data_security.md#legalcompliance-faqs)
 
-
 This covers: 
 - [**Enterprise Features**](./proxy/enterprise)
 - ✅ **Feature Prioritization**
 - ✅ **Custom Integrations**
 - ✅ **Professional Support - Dedicated Slack/Teams channel**
 
-
 ## Self-Hosted
 
 Manage Yourself - you can deploy our Docker Image or build a custom image from our pip package, and manage your own infrastructure. In this case, we would give you a license key + provide support via a dedicated support channel. 
 
-
 ### What’s the cost of the Self-Managed Enterprise edition?
 
 Self-Managed Enterprise deployments require our team to understand your exact needs. [Get in touch with us to learn more](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
 
 ### How does deployment with Enterprise License work? 
 
@@ -48,7 +39,6 @@ LITELLM_LICENSE="eyJ..."
 ```
 
 **No data leaves your environment.** 
-
 
 ## Hosted LiteLLM Proxy
 
@@ -70,7 +60,6 @@ See our status page for [**live reliability**](https://status.litellm.ai/)
 ### Supported data regions for LiteLLM Cloud
 
 You can find [supported data regions litellm here](../docs/data_security#supported-data-regions-for-litellm-cloud)
-
 
 ## Frequently Asked Questions
 
@@ -101,14 +90,11 @@ Professional Support can assist with LLM/Provider integrations, deployment, upgr
 
 [Data Security / Legal / Compliance FAQs](./data_security.md)
 
-
 ### Pricing
 
 Pricing is based on usage. We can figure out a price that works for your team, on the call. 
 
 [**Contact Us to learn more**](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-
 
 ## **Screenshots**
 
@@ -123,7 +109,6 @@ Pricing is based on usage. We can figure out a price that works for your team, o
 ### 3. Track spend 
 
 <Image img={require('../img/litellm_hosted_usage_dashboard.png')} />
-
 
 ### 4. Configure load balancing 
 

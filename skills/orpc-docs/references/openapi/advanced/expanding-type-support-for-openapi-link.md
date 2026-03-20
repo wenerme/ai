@@ -13,10 +13,7 @@ To enable this functionality, you need to extend your [output](/docs/procedure#i
 
 **Why?** OpenAPI response data only represents JSON's native capabilities. We use schema coercion logic in contract's schemas to convert the data to the desired type.
 
-::: warning
-Beyond JSON limitations, outputs containing `Blob` or `File` types (outside the root level) also face [Bracket Notation](/docs/openapi/bracket-notation#limitations) limitations.
-:::
-
+> **warning**: Beyond JSON limitations, outputs containing `Blob` or `File` types (outside the root level) also face [Bracket Notation](/docs/openapi/bracket-notation#limitations) limitations.
 ```ts
 const contract = oc.output(z.object({
   date: z.coerce.date<Date>(), // [!code highlight]
@@ -47,9 +44,7 @@ const afterValidation = {
 }
 ```
 
-::: warning
-To support more types than those in [OpenAPI Handler](/docs/openapi/openapi-handler#supported-data-types), you must first extend the [OpenAPI JSON Serializer](/docs/openapi/advanced/openapi-json-serializer) first.
-:::
+> **warning**: To support more types than those in [OpenAPI Handler](/docs/openapi/openapi-handler#supported-data-types), you must first extend the [OpenAPI JSON Serializer](/docs/openapi/advanced/openapi-json-serializer) first.
 
 ## Setup
 

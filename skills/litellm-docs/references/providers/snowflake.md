@@ -1,5 +1,3 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Snowflake
@@ -10,7 +8,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc       | [Snowflake ↗](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-llm-rest-api)              |
 | Base URLs                  | `https://{account-id}.snowflakecomputing.com/api/v2/cortex/inference:complete`,`https://{account-id}.snowflakecomputing.com/api/v2/cortex/inference:embed`|
 | Supported OpenAI Endpoints | `/chat/completions`, `/completions`, `/embeddings`                                                        |
-
 
 ## Supported OpenAI Parameters
 ```
@@ -25,7 +22,6 @@ import TabItem from '@theme/TabItem';
 Snowflake does have API keys. Instead, you access the Snowflake API with your JWT token and account identifier.
 
 It is also possible to use [programmatic access tokens](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) (PAT). It can be defined by using 'pat/' prefix
-
 
 ```python
 import os 

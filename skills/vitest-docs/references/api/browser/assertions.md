@@ -6,13 +6,12 @@ title: Assertion API | Browser Mode
 
 Vitest provides a wide range of DOM assertions out of the box forked from [`@testing-library/jest-dom`](https://github.com/testing-library/jest-dom) library with the added support for locators and built-in retry-ability.
 
-::: tip TypeScript Support
+> **tip**: TypeScript Support
 If you are using [TypeScript](/guide/browser/#typescript) or want to have correct type hints in `expect`, make sure you have `vitest/browser` referenced somewhere. If you never imported from there, you can add a `reference` comment in any file that's covered by your `tsconfig.json`:
 
 ```ts
 /// <reference types="vitest/browser" />
 ```
-:::
 
 Tests in the browser might fail inconsistently due to their asynchronous nature. Because of this, it is important to have a way to guarantee that assertions succeed even if the condition is delayed (by a timeout, network request, or animation, for example). For this purpose, Vitest provides retriable assertions out of the box via the [`expect.poll`](/api/expect#poll) and `expect.element` APIs:
 
@@ -53,8 +52,7 @@ interface ExpectPollOptions {
 }
 ```
 
-::: tip
-`expect.element` is a shorthand for `expect.poll(() => element)` and works in exactly the same way.
+> **tip**: `expect.element` is a shorthand for `expect.poll(() => element)` and works in exactly the same way.
 
 `toHaveTextContent` and all other assertions are still available on a regular `expect` without a built-in retry-ability mechanism:
 
@@ -62,7 +60,6 @@ interface ExpectPollOptions {
 // will fail immediately if .textContent is not `'Error!'`
 expect(banner).toHaveTextContent('Error!')
 ```
-:::
 
 ## toBeDisabled
 
@@ -157,9 +154,7 @@ await expect.element(getByTestId('svg-element')).toBeInTheDocument()
 await expect.element(getByTestId('does-not-exist')).not.toBeInTheDocument()
 ```
 
-::: warning
-This matcher does not find detached elements. The element must be added to the document to be found by `toBeInTheDocument`. If you desire to search in a detached element, please use: [`toContainElement`](#tocontainelement).
-:::
+> **warning**: This matcher does not find detached elements. The element must be added to the document to be found by `toBeInTheDocument`. If you desire to search in a detached element, please use: [`toContainElement`](#tocontainelement).
 
 ## toBeInvalid
 
@@ -367,13 +362,11 @@ await expect.element(getByTestId('parent')).toContainHTML('data-testid')
 await expect.element(getByTestId('parent')).toContainHTML('</span>')
 ```
 
-::: warning
-Chances are you probably do not need to use this matcher. We encourage testing from the perspective of how the user perceives the app in a browser. That's why testing against a specific DOM structure is not advised.
+> **warning**: Chances are you probably do not need to use this matcher. We encourage testing from the perspective of how the user perceives the app in a browser. That's why testing against a specific DOM structure is not advised.
 
 It could be useful in situations where the code being tested renders html that was obtained from an external source, and you want to validate that html code was used as intended.
 
 It should not be used to check DOM structure that you control. Please, use [`toContainElement`](#tocontainelement) instead.
-:::
 
 ## toHaveAccessibleDescription
 
@@ -563,10 +556,7 @@ The list of class names may include strings and regular expressions. Regular
 expressions are matched against each individual class in the target element, and
 it is NOT matched against its full `class` attribute value as whole.
 
-::: warning
-Note that you cannot use `exact: true` option when only regular expressions are provided.
-:::
-
+> **warning**: Note that you cannot use `exact: true` option when only regular expressions are provided.
 ```html
 <button data-testid="delete-button" class="btn extra btn-danger">
   Delete item
@@ -628,13 +618,11 @@ function toHaveFormValues(expectedValues: Record<string, unknown>): Promise<void
 
 This allows you to check if a form or fieldset contains form controls for each given name, and having the specified value.
 
-::: tip
-It is important to stress that this matcher can only be invoked on a [form](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement) or a [fieldset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement) element.
+> **tip**: It is important to stress that this matcher can only be invoked on a [form](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement) or a [fieldset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement) element.
 
 This allows it to take advantage of the [`.elements`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements) property in `form` and `fieldset` to reliably fetch all form controls within them.
 
 This also avoids the possibility that users provide a container that contains more than one `form`, thereby intermixing form controls that are not related, and could even conflict with one another.
-:::
 
 This matcher abstracts away the particularities with which a form control value
 is obtained depending on the type of form control. For instance, `<input>`
@@ -990,8 +978,7 @@ await expect.element(getByTestId('link-invalid')).not.toHaveRole('link')
 await expect.element(getByTestId('link-invalid')).toHaveRole('generic')
 ```
 
-::: warning
-Roles are matched literally by string equality, without inheriting from the ARIA role hierarchy. As a result, querying a superclass role like `checkbox` will not include elements with a subclass role like `switch`.
+> **warning**: Roles are matched literally by string equality, without inheriting from the ARIA role hierarchy. As a result, querying a superclass role like `checkbox` will not include elements with a subclass role like `switch`.
 
 Also note that unlike `testing-library`, Vitest ignores all custom roles except the first valid one, following Playwright's behaviour:
 
@@ -1001,7 +988,6 @@ Also note that unlike `testing-library`, Vitest ignores all custom roles except 
 await expect.element(getByTestId('switch')).toHaveRole('switch') // ✅
 await expect.element(getByTestId('switch')).toHaveRole('alert') // ❌
 ```
-:::
 
 ## toHaveSelection
 
@@ -1016,11 +1002,8 @@ This is useful to check if text or part of the text is selected within an
 element. The element can be either an input of type text, a textarea, or any
 other element that contains text, such as a paragraph, span, div etc.
 
-::: warning
-The expected selection is a string, it does not allow to check for
+> **warning**: The expected selection is a string, it does not allow to check for
 selection range indices.
-:::
-
 ```html
 <div>
   <input type="text" value="text selected text" data-testid="text" />
@@ -1080,10 +1063,8 @@ function toMatchScreenshot(
 ): Promise<void>
 ```
 
-::: tip
-The `toMatchScreenshot` assertion can be configured globally in your
+> **tip**: The `toMatchScreenshot` assertion can be configured globally in your
 [Vitest config](/config/browser/expect#tomatchscreenshot).
-:::
 
 This assertion allows you to perform visual regression testing by comparing
 screenshots of elements or pages against stored reference images.
@@ -1095,7 +1076,7 @@ To help identify the changes, the assertion generates:
 - The expected reference screenshot
 - A diff image highlighting the differences (when possible)
 
-::: warning Screenshots Stability
+> **warning**: Screenshots Stability
 The assertion automatically retries taking screenshots until two consecutive
 captures yield the same result. This helps reduce flakiness caused by
 animations, loading states, or other dynamic content. You can control this
@@ -1112,14 +1093,10 @@ However, browser rendering can vary across:
 It is recommended to read the
 [Visual Regression Testing guide](/guide/browser/visual-regression-testing) to
 implement this testing strategy efficiently.
-:::
 
-::: tip
-When a screenshot comparison fails due to **intentional changes**, you can
+> **tip**: When a screenshot comparison fails due to **intentional changes**, you can
 update the reference screenshot by pressing the `u` key in watch mode, or by
 running tests with the `-u` or `--update` flags.
-:::
-
 ```html
 <button data-testid="button">Fancy Button</button>
 ```
@@ -1272,10 +1249,8 @@ The `"pixelmatch"` comparator uses [`@blazediff/core`](https://blazediff.dev/doc
 
   Anti-aliased pixels won't be shown (if detected).
 
-::: warning
-When both `allowedMismatchedPixels` and `allowedMismatchedPixelRatio` are set,
+> **warning**: When both `allowedMismatchedPixels` and `allowedMismatchedPixelRatio` are set,
 the more restrictive value is used.
 
 For example, if you allow 100 pixels or 2% ratio, and your image has 10,000
 pixels, the effective limit would be 100 pixels instead of 200.
-:::

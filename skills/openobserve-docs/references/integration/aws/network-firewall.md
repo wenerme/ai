@@ -24,7 +24,7 @@ AWS Network Firewall allows you to log network traffic data, including both flow
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the HTTP ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
     > Example ingestion URL:
     > ```
@@ -46,7 +46,7 @@ AWS Network Firewall allows you to log network traffic data, including both flow
 
     > NOTE: You can create multiple streams for different types of logs
     
-    ![Create a Kinesis Data Firehose Delivery Stream](../images/aws-integrations/firewall/firehose-streams.png)
+    [Create a Kinesis Data Firehose Delivery Stream]
 
 ??? "Step 3: Enable Logging in AWS Network Firewall"
 
@@ -54,7 +54,7 @@ AWS Network Firewall allows you to log network traffic data, including both flow
     2. Select your firewall → Navigate to the **Monitoring and Observability** tab → Enable Detailed Monitoring
     3. Click **Configure** button under **logging configuration**
         
-        ![Enable Logging in AWS Network Firewall](../images/aws-integrations/firewall/enable-monitoring.png)
+        [Enable Logging in AWS Network Firewall]
 
     4. Enable logging for alerts and Flow logs 
     5. Set the **Log destination type** to **Kinesis Data Firehose**
@@ -62,8 +62,7 @@ AWS Network Firewall allows you to log network traffic data, including both flow
         > NOTE: In case you created multiple firehose streams, select respective streams for each log type
     7. Save the configuration
 
-        ![Enable Logging in AWS Network Firewall](../images/aws-integrations/firewall/firewall-logging-config.png)
-
+        [Enable Logging in AWS Network Firewall]
 
 ??? "Step 4: Generate Traffic to Create Logs (Optional)"
 
@@ -80,9 +79,8 @@ AWS Network Firewall allows you to log network traffic data, including both flow
 
     1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-        ![AWS Network Firewall alert logs in Openobserve](../images/aws-integrations/firewall/alert-logs.png)
-        ![AWS Network Firewall flow logs in Openobserve](../images/aws-integrations/firewall/flow-logs.png)
-
+        [AWS Network Firewall alert logs in Openobserve]
+        [AWS Network Firewall flow logs in Openobserve]
 
 ??? "Troubleshooting"
 
@@ -99,5 +97,3 @@ AWS Network Firewall allows you to log network traffic data, including both flow
 
     - No alert logs are received
         - Confirm that your firewall policies include rules with the alert action. Only these rules generate alert logs. Without such rules, only flow logs will be produced.
-
-

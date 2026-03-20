@@ -53,7 +53,6 @@ The output report is as follows:
 
 ![image.png](https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/evalscope/doc/qwen_vl/perf.png)
 
-
 ## Model Capability Evaluation
 
 Next, we proceed with the model capability evaluation process.

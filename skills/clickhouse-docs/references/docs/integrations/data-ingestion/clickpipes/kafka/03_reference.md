@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Reference'
 description: 'Details supported formats, sources, delivery semantics, authentication and experimental features supported by Kafka ClickPipes'
-slug: /integrations/clickpipes/kafka/reference
-sidebar_position: 1
 title: 'Reference'
 doc_type: 'reference'
 keywords: ['kafka reference', 'clickpipes', 'data sources', 'avro', 'virtual columns']
@@ -10,15 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import Kafkasvg from '@site/static/images/integrations/logos/kafka.svg';
-import Confluentsvg from '@site/static/images/integrations/logos/confluent.svg';
-import Msksvg from '@site/static/images/integrations/logos/msk.svg';
-import Azureeventhubssvg from '@site/static/images/integrations/logos/azure_event_hubs.svg';
-import Warpstreamsvg from '@site/static/images/integrations/logos/warpstream.svg';
-import redpanda_logo from '@site/static/images/integrations/logos/logo_redpanda.png';
-import Image from '@theme/IdealImage';
-import ExperimentalBadge from '@site/src/theme/badges/ExperimentalBadge';
 
 # Reference
 

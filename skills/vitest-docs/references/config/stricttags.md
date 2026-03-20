@@ -1,6 +1,5 @@
 ---
 title: strictTags | Config
-outline: deep
 ---
 
 # strictTags <Version>4.1.0</Version> {#stricttags}
@@ -15,7 +14,6 @@ Note that Vitest will always throw an error if `--tags-filter` flag defines a ta
 
 For example, this test will throw an error because the tag `fortnend` has a typo (it should be `frontend`):
 
-::: code-group
 ```js [form.test.js]
 test('renders a form', { tags: ['fortnend'] }, () => {
   // ...
@@ -32,4 +30,3 @@ export default defineConfig({
   },
 })
 ```
-:::

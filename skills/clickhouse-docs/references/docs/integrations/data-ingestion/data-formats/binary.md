@@ -1,13 +1,9 @@
 ---
-sidebar_label: 'Binary and Native'
-slug: /integrations/data-formats/binary-native
 title: 'Using native and binary formats in ClickHouse'
 description: 'Page describing how to use native and binary formats in ClickHouse'
 keywords: ['binary formats', 'native format', 'rowbinary', 'rawblob', 'messagepack', 'protobuf', 'capn proto', 'data formats', 'performance', 'compression']
 doc_type: 'guide'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
 
 # Using native and binary formats in ClickHouse
 
@@ -41,9 +37,7 @@ DESCRIBE file('data.clickhouse', Native);
 └───────┴────────┴──────────────┴────────────────────┴─────────┴──────────────────┴────────────────┘
 ```
 
-:::tip
-When using the `file()` function, with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file resides. Another option is to use [`clickhouse-local`](/operations/utilities/clickhouse-local.md) to explore files locally.
-:::
+> **tip**: When using the `file()` function, with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file resides. Another option is to use [`clickhouse-local`](/operations/utilities/clickhouse-local.md) to explore files locally.
 
 In production, we use `FROM INFILE` to import data:
 

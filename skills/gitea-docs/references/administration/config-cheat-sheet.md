@@ -1,7 +1,5 @@
 ---
 date: "2025-10-26T00:00:00+00:00"
-slug: "config-cheat-sheet"
-sidebar_position: 30
 aliases:
   - /en-us/config-cheat-sheet
 ---
@@ -28,9 +26,7 @@ This document uses the following convention:
 * `$FOO_BAR`: it is an environment variable, Gitea may use its value but it can't be used in configuration file directly.
 * `{FOO_BAR}/something` or `{FooBar}/something`: the value defaults to use configuration option `FOO_BAR` or internal variable `FooBar`.
 
-:::info
-A full restart is required for Gitea configuration changes to take effect.
-:::
+> **info**: A full restart is required for Gitea configuration changes to take effect.
 
 ## Use environment variables to setup Gitea
 
@@ -820,13 +816,11 @@ Define allowed algorithms and their minimum key length (use -1 to disable a type
 
 ## Mailer (`mailer`)
 
-:::warning
-This section is for Gitea 1.18 and later. If you are using Gitea 1.17 or older,
+> **warning**: This section is for Gitea 1.18 and later. If you are using Gitea 1.17 or older,
 please refer to
 [Gitea 1.17 app.ini example](https://github.com/go-gitea/gitea/blob/release/v1.17/custom/conf/app.example.ini)
 and
 [Gitea 1.17 configuration document](https://github.com/go-gitea/gitea/blob/release/v1.17/docs/content/doc/advanced/config-cheat-sheet.en-us.md)
-:::
 
 - `ENABLED`: **false**: Enable to use a mail service.
 - `PROTOCOL`: **_empty_**: Mail server protocol. One of "smtp", "smtps", "smtp+starttls", "smtp+unix", "sendmail", "dummy". _Before 1.18, this was inferred from a combination of `MAILER_TYPE` and `IS_TLS_ENABLED`._
@@ -863,9 +857,7 @@ and
 
 ## Override Email Headers (`mailer.override_header`)
 
-:::warning
-This is empty by default, use it only if you know what you need it for.
-:::
+> **warning**: This is empty by default, use it only if you know what you need it for.
 
 examples would be:
 
@@ -1335,7 +1327,7 @@ ALLOW_DATA_URI_IMAGES = true
 - `ELEMENT`: The element this policy applies to. Must be non-empty.
 - `ALLOW_ATTR`: The attribute this policy allows. Must be non-empty.
 - `REGEXP`: A regex to match the contents of the attribute against. Must be present but may be empty for unconditional whitelisting of this attribute.
-- `ALLOW_DATA_URI_IMAGES`: **false** Allow data uri images (`<img src="data:image/png;base64,..."/>`).
+- `ALLOW_DATA_URI_IMAGES`: **false** Allow data uri images (``).
 
 Multiple sanitisation rules can be defined by adding unique subsections, e.g. `[markup.sanitizer.TeX-2]`.
 To apply a sanitisation rules only for a specify external renderer they must use the renderer name, e.g. `[markup.sanitizer.asciidoc.rule-1]`.

@@ -4,9 +4,7 @@ title: Migrations
 
 MikroORM has integrated support for migrations. It allows you to generate migrations based on the current schema difference.
 
-:::info
-
-To use migrations, you need to first install `@mikro-orm/migrations` package for SQL driver or `@mikro-orm/migrations-mongodb` for MongoDB, and register the `Migrator` extension in your ORM config.
+> **info**: To use migrations, you need to first install `@mikro-orm/migrations` package for SQL driver or `@mikro-orm/migrations-mongodb` for MongoDB, and register the `Migrator` extension in your ORM config.
 
 ```ts title='mikro-orm.config.ts'
 import { Migrator } from '@mikro-orm/migrations'; // or `@mikro-orm/migrations-mongodb`
@@ -16,8 +14,6 @@ export default defineConfig({
   extensions: [Migrator],
 })
 ```
-
-:::
 
 > Migrations are stored without an extension.
 
@@ -51,11 +47,7 @@ You can execute queries in the migration via `Migration.execute()` method, which
 
 While the purpose of migrations is mainly to alter your SQL schema, you can as well use them to modify your data, either by using `this.execute()`, or through an `EntityManager`:
 
-:::warning
-
-Using the `EntityManager` in migrations is possible, but discouraged, as it can lead to errors when your metadata change over time, since this will depend on your currently checked out app state, not on the time when the migration was generated. You should prefer using raw queries in your migrations.
-
-:::
+> **warning**: Using the `EntityManager` in migrations is possible, but discouraged, as it can lead to errors when your metadata change over time, since this will depend on your currently checked out app state, not on the time when the migration was generated. You should prefer using raw queries in your migrations.
 
 ```ts
 import { Migration } from '@mikro-orm/migrations';
@@ -395,21 +387,15 @@ migrations: {
 },
 ```
 
-:::caution Warning
+> **caution**: Warning
 
 When overriding the `migrations.fileName` strategy, keep in mind that your migration files need to be sortable, you should never start the filename with the custom `name` option as it could result in wrong order of execution.
-
-:::
 
 ## MongoDB support
 
 Migrations for MongoDB use a separate package: `@mikro-orm/migrations-mongodb`, and should be otherwise compatible with the current CLI commands. Use `this.getCollection()` or `this.getDb()` to manipulate the database.
 
-:::warning
-
-Avoid using entity class references in migrations. Entity definitions change over time, which can break older migrations. Use collection string names with `this.getCollection()` or the raw `Db` instance via `this.getDb()` instead.
-
-:::
+> **warning**: Avoid using entity class references in migrations. Entity definitions change over time, which can break older migrations. Use collection string names with `this.getCollection()` or the raw `Db` instance via `this.getDb()` instead.
 
 ### Available methods
 

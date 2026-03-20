@@ -12,9 +12,7 @@ There are two primary approaches:
 - **Normal Approach:** Throw errors directly (using `ORPCError` is recommended for clarity).
 - **Type‑Safe Approach:** Predefine error types so that clients can infer and handle errors in a type‑safe manner.
 
-:::warning
-The `ORPCError.data` property is sent to the client. Avoid including sensitive information.
-:::
+> **warning**: The `ORPCError.data` property is sent to the client. Avoid including sensitive information.
 
 ## Normal Approach
 
@@ -42,9 +40,7 @@ const example = os
   })
 ```
 
-::: danger
-Do not pass sensitive data in the `ORPCError.data` field.
-:::
+> **danger**: Do not pass sensitive data in the `ORPCError.data` field.
 
 ## Type‑Safe Error Handling
 
@@ -83,9 +79,7 @@ const example = base
   })
 ```
 
-:::danger
-Again, avoid including any sensitive data in the error data since it will be exposed to the client.
-:::
+> **danger**: Again, avoid including any sensitive data in the error data since it will be exposed to the client.
 
 Learn more about [Client Error Handling](/docs/client/error-handling).
 
@@ -123,6 +117,4 @@ const example = base
   })
 ```
 
-:::danger
-Remember: Since `ORPCError.data` is transmitted to the client, do not include any sensitive information.
-:::
+> **danger**: Remember: Since `ORPCError.data` is transmitted to the client, do not include any sensitive information.

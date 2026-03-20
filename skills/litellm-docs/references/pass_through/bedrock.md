@@ -293,7 +293,6 @@ print(response_body['content'][0]['text'])
 
 The proxy will automatically load balance your boto3 requests across all configured deployments.
 
-
 ## Examples
 
 Anything after `http://0.0.0.0:4000/bedrock` is treated as a provider-specific route, and handled accordingly.
@@ -304,8 +303,6 @@ Key Changes:
 |------------------------------------------------------|-----------------------------------|
 | `https://bedrock-runtime.{aws_region_name}.amazonaws.com`          | `http://0.0.0.0:4000/bedrock` (LITELLM_PROXY_BASE_URL="http://0.0.0.0:4000")      |
 | `AWS4-HMAC-SHA256..`                                 | `Bearer anything` (use `Bearer LITELLM_VIRTUAL_KEY` if Virtual Keys are setup on proxy)                    |
-
-
 
 ### **Example 1: Converse API**
 
@@ -443,7 +440,6 @@ curl -X POST "https://bedrock-agent-runtime.us-west-2.amazonaws.com/knowledgebas
 }'
 ```
 
-
 ## Advanced - Use with Virtual Keys 
 
 Pre-requisites
@@ -488,7 +484,6 @@ Expected Response
 ```
 
 3. Test it! 
-
 
 ```bash showLineNumbers
 curl -X POST 'http://0.0.0.0:4000/bedrock/model/cohere.command-r-v1:0/converse' \

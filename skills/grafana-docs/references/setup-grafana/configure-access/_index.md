@@ -117,7 +117,6 @@ Service accounts can only act in the organization they are created for. We recom
 
 The following video shows how to migrate from API keys to service accounts.
 {{< vimeo 742056367 >}}
-<br>
 
 #### Service account tokens
 

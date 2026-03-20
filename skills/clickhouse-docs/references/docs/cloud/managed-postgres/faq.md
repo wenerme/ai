@@ -1,13 +1,9 @@
 ---
-slug: /cloud/managed-postgres/faq
-sidebar_label: 'FAQ'
 title: 'Managed Postgres FAQ'
 description: 'Frequently asked questions about ClickHouse Managed Postgres'
 keywords: ['managed postgres faq', 'postgres questions', 'metrics', 'extensions', 'migration', 'terraform']
 doc_type: 'reference'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="faq" />
 
@@ -17,9 +13,7 @@ import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
 
 You can monitor CPU, memory, IOPS, and storage usage directly from the ClickHouse Cloud console in the **Monitoring** tab of your Managed Postgres instance.
 
-:::note
-Query Performance Insights for detailed query analysis is coming soon.
-:::
+> **note**: Query Performance Insights for detailed query analysis is coming soon.
 
 ## Backup and recovery {#backup-and-recovery}
 
@@ -45,9 +39,7 @@ Managed Postgres includes 100+ PostgreSQL extensions, including popular ones lik
 
 Yes, you can modify PostgreSQL and PgBouncer configuration parameters through the **Settings** tab in the console. For details on available parameters and how to change them, see the [Settings](/cloud/managed-postgres/settings) documentation.
 
-:::tip
-If you need a parameter that isn't currently available, contact [support](https://clickhouse.com/support/program) to request it.
-:::
+> **tip**: If you need a parameter that isn't currently available, contact [support](https://clickhouse.com/support/program) to request it.
 
 ## Database capabilities {#database-capabilities}
 
@@ -59,9 +51,7 @@ Yes. Managed Postgres provides full native PostgreSQL functionality, including s
 
 You have full superuser access to your Managed Postgres instance, which allows you to create roles and manage permissions using standard PostgreSQL commands.
 
-:::note
-Enhanced RBAC features with console integration are planned for this year.
-:::
+> **note**: Enhanced RBAC features with console integration are planned for this year.
 
 ## Upgrades {#upgrades}
 
@@ -79,6 +69,4 @@ Managed Postgres supports several migration approaches:
 - **Logical replication**: For larger databases requiring minimal downtime. See the [Logical replication](/cloud/managed-postgres/migrations/logical-replication) guide.
 - **PeerDB**: For CDC-based replication from other Postgres sources. See the [PeerDB migration](/cloud/managed-postgres/migrations/peerdb) guide.
 
-:::note
-A fully managed migration experience is coming soon.
-:::
+> **note**: A fully managed migration experience is coming soon.

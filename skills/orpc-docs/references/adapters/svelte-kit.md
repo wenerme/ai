@@ -9,8 +9,6 @@ description: Use oRPC inside an Svelte Kit project
 
 ## Server
 
-::: code-group
-
 ```ts [src/routes/rpc/[...rest]/+server.ts]
 import { error } from '@sveltejs/kit'
 import { RPCHandler } from '@orpc/server/fetch'
@@ -40,17 +38,11 @@ export const PATCH = handle
 export const DELETE = handle
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
 ## Optimize SSR
 
 To reduce HTTP requests and improve latency during SSR, you can utilize [Svelte's special `fetch`](https://svelte.dev/docs/kit/web-standards#Fetch-APIs) during SSR. Below is a quick setup, see [Optimize SSR](/docs/best-practices/optimize-ssr) for more details.
-
-::: code-group
 
 ```ts [src/lib/orpc.ts]
 import type { RouterClient } from '@orpc/server'
@@ -101,5 +93,3 @@ globalThis.$client = serverClient
 import './lib/orpc.server'
 // ...
 ```
-
-:::

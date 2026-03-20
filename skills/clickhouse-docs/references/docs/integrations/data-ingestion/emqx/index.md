@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'EMQX'
-sidebar_position: 1
-slug: /integrations/emqx
 description: 'Introduction to EMQX with ClickHouse'
 title: 'Integrating EMQX with ClickHouse'
 doc_type: 'guide'
@@ -10,34 +7,6 @@ integration:
   - category: 'data_ingestion'
 keywords: ['EMQX ClickHouse integration', 'MQTT ClickHouse connector', 'EMQX Cloud ClickHouse', 'IoT data ClickHouse', 'MQTT broker ClickHouse']
 ---
-
-import emqx_cloud_artitecture from '@site/static/images/integrations/data-ingestion/emqx/emqx-cloud-artitecture.png';
-import clickhouse_cloud_1 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_1.png';
-import clickhouse_cloud_2 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_2.png';
-import clickhouse_cloud_3 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_3.png';
-import clickhouse_cloud_4 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_4.png';
-import clickhouse_cloud_5 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_5.png';
-import clickhouse_cloud_6 from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_cloud_6.png';
-import emqx_cloud_sign_up from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_sign_up.png';
-import emqx_cloud_create_1 from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_create_1.png';
-import emqx_cloud_create_2 from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_create_2.png';
-import emqx_cloud_overview from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_overview.png';
-import emqx_cloud_auth from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_auth.png';
-import emqx_cloud_nat_gateway from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_nat_gateway.png';
-import emqx_cloud_data_integration from '@site/static/images/integrations/data-ingestion/emqx/emqx_cloud_data_integration.png';
-import data_integration_clickhouse from '@site/static/images/integrations/data-ingestion/emqx/data_integration_clickhouse.png';
-import data_integration_resource from '@site/static/images/integrations/data-ingestion/emqx/data_integration_resource.png';
-import data_integration_rule_1 from '@site/static/images/integrations/data-ingestion/emqx/data_integration_rule_1.png';
-import data_integration_rule_2 from '@site/static/images/integrations/data-ingestion/emqx/data_integration_rule_2.png';
-import data_integration_rule_action from '@site/static/images/integrations/data-ingestion/emqx/data_integration_rule_action.png';
-import data_integration_details from '@site/static/images/integrations/data-ingestion/emqx/data_integration_details.png';
-import work_flow from '@site/static/images/integrations/data-ingestion/emqx/work-flow.png';
-import mqttx_overview from '@site/static/images/integrations/data-ingestion/emqx/mqttx-overview.png';
-import mqttx_new from '@site/static/images/integrations/data-ingestion/emqx/mqttx-new.png';
-import mqttx_publish from '@site/static/images/integrations/data-ingestion/emqx/mqttx-publish.png';
-import rule_monitor from '@site/static/images/integrations/data-ingestion/emqx/rule_monitor.png';
-import clickhouse_result from '@site/static/images/integrations/data-ingestion/emqx/clickhouse_result.png';
-import Image from '@theme/IdealImage';
 
 # Integrating EMQX with ClickHouse
 

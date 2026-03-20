@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Fal AI
 
@@ -46,9 +45,6 @@ Get your API key from [fal.ai](https://fal.ai/).
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Generation"
 import litellm
 import os
@@ -64,10 +60,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="imagen4" label="Imagen 4">
 
 ```python showLineNumbers title="Google Imagen 4 Generation"
 import litellm
@@ -86,10 +78,6 @@ response = litellm.image_generation(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="recraft" label="Recraft v3">
-
 ```python showLineNumbers title="Recraft v3 with Style"
 import litellm
 import os
@@ -106,10 +94,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="async" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Generation"
 import litellm
@@ -132,10 +116,6 @@ async def generate_image():
 asyncio.run(generate_image())
 ```
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Parameters">
-
 ```python showLineNumbers title="Advanced FLUX Pro Generation"
 import litellm
 import os
@@ -156,9 +136,6 @@ response = litellm.image_generation(
 for image in response.data:
     print(f"Generated image: {image.url}")
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -201,9 +178,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make requests
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Generate via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -222,10 +196,6 @@ response = client.images.generate(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Generate via Proxy - LiteLLM SDK"
 import litellm
 
@@ -239,10 +209,6 @@ response = litellm.image_generation(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Generate via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/generations' \
 --header 'Content-Type: application/json' \
@@ -254,11 +220,6 @@ curl --location 'http://localhost:4000/v1/images/generations' \
     "size": "1024x1024"
 }'
 ```
-
-</TabItem>
-</Tabs>
-
-
 
 ## Using Model-Specific Parameters
 
@@ -312,4 +273,3 @@ Standard OpenAI-compatible parameters that work across all models:
 - [Model Gallery](https://fal.ai/models)
 - [API Reference](https://fal.ai/docs/api-reference)
 - [Pricing](https://fal.ai/pricing)
-

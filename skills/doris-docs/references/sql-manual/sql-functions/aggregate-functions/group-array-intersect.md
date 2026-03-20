@@ -64,4 +64,3 @@ select group_array_intersect(c_array_string) from group_array_intersect_test whe
 | []                                    |
 +---------------------------------------+
 ```
-

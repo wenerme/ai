@@ -29,7 +29,7 @@ head:
 
 _December 3, 2025_
 
-![Vite 8 Beta Announcement Cover Image](/og-image-announcing-vite8-beta.webp)
+[Vite 8 Beta Announcement Cover Image]
 
 TL;DR: The first beta of Vite 8, powered by [Rolldown](https://rolldown.rs/), is now available. Vite 8 ships significantly faster production builds and unlocks future improvement possibilities. You can try the new release by upgrading `vite` to version `8.0.0-beta.0` and reading the [migration guide](/guide/migration).
 
@@ -92,8 +92,6 @@ There are two available upgrade paths:
 
 If you use a framework or tool that uses Vite as dependency, for example Astro, Nuxt, or Vitest, you have to override the `vite` dependency in your `package.json`, which works slightly different depending on your package manager:
 
-:::code-group
-
 ```json [npm]
 {
   "overrides": {
@@ -127,8 +125,6 @@ If you use a framework or tool that uses Vite as dependency, for example Astro, 
   }
 }
 ```
-
-:::
 
 After adding these overrides, reinstall your dependencies and start your development server or build your project as usual.
 

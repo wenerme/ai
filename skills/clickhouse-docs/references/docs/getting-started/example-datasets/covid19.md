@@ -1,8 +1,6 @@
 ---
 description: 'COVID-19 Open-Data is a large, open-source database of COVID-19 epidemiological
   data and related factors like demographics, economics, and government responses'
-sidebar_label: 'COVID-19 open-data'
-slug: /getting-started/example-datasets/covid19
 title: 'COVID-19 Open-Data'
 keywords: ['COVID-19 data', 'epidemiological data', 'health dataset', 'example dataset', 'getting started']
 doc_type: 'guide'
@@ -14,9 +12,7 @@ The details are in GitHub [here](https://github.com/GoogleCloudPlatform/covid-19
 
 It's easy to insert this data into ClickHouse...
 
-:::note
-The following commands were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud). You can easily run them on a local install as well.
-:::
+> **note**: The following commands were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud). You can easily run them on a local install as well.
 
 1. Let's see what the data looks like:
 
@@ -263,6 +259,4 @@ The results look like
 │ 2020-04-03 │           145 │             39 │ increase  │
 ```
 
-:::note
-As mentioned in the [GitHub repo](https://github.com/GoogleCloudPlatform/covid-19-open-data), the dataset is no longer updated as of September 15, 2022.
-:::
+> **note**: As mentioned in the [GitHub repo](https://github.com/GoogleCloudPlatform/covid-19-open-data), the dataset is no longer updated as of September 15, 2022.

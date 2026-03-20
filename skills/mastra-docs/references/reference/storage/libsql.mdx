@@ -53,9 +53,7 @@ export const agent = new Agent({
 })
 ```
 
-:::warning
-File storage doesn't work with serverless platforms that have ephemeral file systems. For serverless deployments, use [Turso](https://turso.tech) or a different database engine.
-:::
+> **warning**: File storage doesn't work with serverless platforms that have ephemeral file systems. For serverless deployments, use [Turso](https://turso.tech) or a different database engine.
 
 Production with remote database:
 
@@ -76,9 +74,7 @@ storage: new LibSQLStore({
 })
 ```
 
-:::warning
-In-memory storage resets when the process changes. Only suitable for development.
-:::
+> **warning**: In-memory storage resets when the process changes. Only suitable for development.
 
 ## Options
 

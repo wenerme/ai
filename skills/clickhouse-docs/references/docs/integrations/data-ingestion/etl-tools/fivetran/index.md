@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Fivetran'
-slug: /integrations/fivetran
-sidebar_position: 2
 description: 'You can transform and model your data in ClickHouse using dbt'
 title: 'Fivetran and ClickHouse Cloud'
 doc_type: 'guide'
@@ -10,8 +7,6 @@ integration:
   - category: 'data_ingestion'
 keywords: ['fivetran', 'data movement', 'etl', 'clickhouse destination', 'automated data platform']
 ---
-
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Fivetran and ClickHouse Cloud
 
@@ -23,9 +18,7 @@ import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 [ClickHouse Cloud](https://clickhouse.com/cloud) is supported as a [Fivetran destination](https://fivetran.com/docs/destinations/clickhouse), allowing users to load data from various sources into ClickHouse.
 
-:::note
-[ClickHouse Cloud destination](https://fivetran.com/docs/destinations/clickhouse) is currently in private preview, please contact ClickHouse support in the case of any problems.
-:::
+> **note**: [ClickHouse Cloud destination](https://fivetran.com/docs/destinations/clickhouse) is currently in private preview, please contact ClickHouse support in the case of any problems.
 
 <div class='vimeo-container'>
   <iframe src="//www.youtube.com/embed/sWe5JHW3lAs"

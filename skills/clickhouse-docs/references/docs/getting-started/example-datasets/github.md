@@ -1,19 +1,11 @@
 ---
 description: 'Dataset containing all of the commits and changes for the ClickHouse
   repository'
-sidebar_label: 'Github repo'
-slug: /getting-started/example-datasets/github
 title: 'Writing Queries in ClickHouse using GitHub Data'
 keywords: ['Github']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import superset_github_lines_added_deleted from '@site/static/images/getting-started/example-datasets/superset-github-lines-added-deleted.png'
-import superset_commits_authors from '@site/static/images/getting-started/example-datasets/superset-commits-authors.png'
-import superset_authors_matrix from '@site/static/images/getting-started/example-datasets/superset-authors-matrix.png'
-import superset_authors_matrix_v2 from '@site/static/images/getting-started/example-datasets/superset-authors-matrix_v2.png'
 
 This dataset contains all of the commits and changes for the ClickHouse repository. It can be generated using the native `git-import` tool distributed with ClickHouse.
 

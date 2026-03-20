@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI Image Upscale Workflow"
 description: "This guide explains the concept of image upscaling in AI drawing and demonstrates how to implement an image upscaling workflow in ComfyUI"
-sidebarTitle: "Upscale"
 ---
 
 ## What is Image Upscaling?
@@ -17,20 +16,17 @@ This article covers one of many upscaling methods in ComfyUI. In this tutorial, 
 2. Performing basic image upscaling
 3. Combining text-to-image workflows with upscaling
 
-<Note>
 Looking for more advanced upscaling options? Check out our comprehensive [Image Upscaling Guide](/tutorials/utility/image-upscale) which covers various models and use cases including portrait enhancement, product photography, and more.
-</Note>
 
 ## Upscaling Workflow
 
 ### Model Installation
 
 Required ESRGAN models download:
-<Steps>
-<Step title="Visit OpenModelDB">
+
 Visit [OpenModelDB](https://openmodeldb.info/) to search and download upscaling models (e.g., RealESRGAN)
 
-![openmodeldb](/images/tutorial/basic/upscale/upscale_OpenModelDB.jpg)
+[openmodeldb]
 
 As shown:
 1. Filter models by image type using the category selector
@@ -38,32 +34,25 @@ As shown:
 
 We'll use the [4x-ESRGAN](https://openmodeldb.info/models/4x-ESRGAN) model for this tutorial. Click the `Download` button on the model detail page.
 
-![OpenModelDB_download](/images/tutorial/basic/upscale/upscale_OpenModelDB_download.jpg)
+[OpenModelDB_download]
 
-</Step>
-<Step title="Save Model Files in Directory">
 Save the model file (.pth) in `ComfyUI/models/upscale_models` directory
-</Step>
-</Steps>
-
 
 ### Workflow and Assets
 
 Download and drag the following image into ComfyUI to load the basic upscaling workflow:
 ![Upscale workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/image/basic/upscale_workflow.png)
 
-<Tip>
 Images containing workflow JSON in their metadata can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`.
-</Tip>
 
 Use this image in smaller size as input:
-![Upscale-input](/images/tutorial/basic/upscale/upscale-input.jpg)
+[Upscale-input]
 
 ### Complete the Workflow Step by Step
 
 Follow the steps in the diagram below to ensure the workflow runs correctly.
 
-![Upscale workflow](/images/tutorial/basic/upscale/upscale_simple_workflow.jpg)
+[Upscale workflow]
 
 1. Ensure `Load Upscale Model` loads `4x-ESRGAN.pth`
 2. Upload the input image to the `Load Image` node
@@ -76,18 +65,16 @@ The core components are the `Load Upscale Model` and `Upscale Image (Using Model
 After mastering basic upscaling, we can combine it with the [text-to-image](/tutorials/basic/text-to-image) workflow. For text-to-image basics, refer to the [text-to-image tutorial](/tutorials/basic/text-to-image).
 
 Download and drag this image into ComfyUI to load the combined workflow:
-![Text-to-image upscale workflow](/images/tutorial/basic/upscale/esrgan_example.png)
+[Text-to-image upscale workflow]
 
 This workflow connects the text-to-image output image directly to the upscaling nodes for final processing.
 
 ## Additional Tips
 
-<Tip>
 Model characteristics:
 - **RealESRGAN**: General-purpose upscaling
 - **BSRGAN**: Excels with text and sharp edges  
 - **SwinIR**: Preserves natural textures, ideal for landscapes
-</Tip>
 
 1. **Chained Upscaling**: Combine multiple upscale nodes (e.g., 2x → 4x) for ultra-high magnification
 2. **Hybrid Workflow**: Connect upscale nodes after generation for "generate+enhance" pipelines

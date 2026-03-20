@@ -23,8 +23,6 @@ Bun.listen({
 });
 ```
 
-<Accordion title="An API designed for speed">
-
 In Bun, a set of handlers are declared once per server instead of assigning callbacks to each socket, as with Node.js `EventEmitters` or the web-standard `WebSocket` API.
 
 ```ts server.ts icon="/icons/typescript.svg"
@@ -42,8 +40,6 @@ Bun.listen({
 ```
 
 For performance-sensitive servers, assigning listeners to each socket can cause significant garbage collector pressure and increase memory usage. By contrast, Bun only allocates one handler function for each event and shares it among all sockets. This is a small optimization, but it adds up.
-
-</Accordion>
 
 Contextual data can be attached to a socket in the `open` handler.
 
@@ -153,8 +149,6 @@ const socket = await Bun.connect({
 
 Both TCP servers and sockets can be hot reloaded with new handlers.
 
-<CodeGroup>
-
 ```ts server.ts icon="/icons/typescript.svg"
 const server = Bun.listen({
   /* config */
@@ -181,8 +175,6 @@ socket.reload({
   },
 });
 ```
-
-</CodeGroup>
 
 ---
 
@@ -231,9 +223,6 @@ queueMicrotask(() => {
 });
 ```
 
-<Note>
 **Corking**
 
 Support for corking is planned, but in the meantime backpressure must be managed manually with the `drain` handler.
-
-</Note>

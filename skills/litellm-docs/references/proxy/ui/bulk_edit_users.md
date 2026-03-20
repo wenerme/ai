@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bulk Edit Users
 
@@ -19,11 +17,3 @@ Assign existing users to a default team and default model access.
 ### 3. Click the bulk edit button
 
 <Image img={require('../../../img/success_bulk_edit.png')} />
-
-
-
-
-
-
-
-

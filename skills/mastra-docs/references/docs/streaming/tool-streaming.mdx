@@ -37,11 +37,7 @@ export const testAgent = new Agent({
 
 The `context.writer` object is available in a tool's `execute()` function and can be used to emit custom events, data, or values into the active stream. This enables tools to provide intermediate results or status updates while execution is still in progress.
 
-:::warning
-
-You must `await` the call to `writer.write()` or else you will lock the stream and get a `WritableStream is locked` error.
-
-:::
+> **warning**: You must `await` the call to `writer.write()` or else you will lock the stream and get a `WritableStream is locked` error.
 
 ```typescript {4,7,14}
 import { createTool } from '@mastra/core/tools'

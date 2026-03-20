@@ -1,26 +1,14 @@
 ---
 title: 'Getting started with open table formats'
-sidebar_label: 'Getting started'
-slug: /use-cases/data-lake/getting-started
-sidebar_position: 1
-pagination_prev: null
-pagination_next: use-cases/data_lake/guides/querying-directly
 description: 'A hands-on introduction to querying, accelerating, and writing back data in open table formats with ClickHouse.'
 keywords: ['data lake', 'lakehouse', 'getting started', 'iceberg', 'delta lake', 'hudi', 'paimon']
 doc_type: 'guide'
 ---
 
-import Image from '@theme/IdealImage';
-import iceberg_query_direct from '@site/static/images/datalake/iceberg-query-direct.png';
-import iceberg_query_engine from '@site/static/images/datalake/iceberg-query-engine.png';
-import iceberg_query from '@site/static/images/datalake/iceberg-query.png';
-import clickhouse_query from '@site/static/images/datalake/clickhouse-query.png';
-
 # Getting Started with Data Lakes {#data-lake-getting-started}
 
 :::note[TL;DR]
 A hands-on walkthrough of querying data lake tables, accelerating them with MergeTree, and writing results back to Iceberg. All steps use public datasets and work on both Cloud and OSS.
-:::
 
 Screenshots in this guide are from the [ClickHouse Cloud](https://console.clickhouse.cloud) SQL console. All queries work on both Cloud and self-managed deployments.
 
@@ -107,9 +95,7 @@ SHOW TABLES FROM my_lake;
 SELECT count(*) FROM my_lake.`<database>.<table>`
 ```
 
-:::note
-Backticks are required around `<database>.<table>` because ClickHouse doesn't natively support more than one namespace.
-:::
+> **note**: Backticks are required around `<database>.<table>` because ClickHouse doesn't natively support more than one namespace.
 
 **Learn more:** [Connecting to a data catalog](/use-cases/data-lake/getting-started/connecting-catalogs) walks through a full Unity Catalog setup with Delta and Iceberg examples.
 

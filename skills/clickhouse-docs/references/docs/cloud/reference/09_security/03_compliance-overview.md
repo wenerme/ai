@@ -1,13 +1,9 @@
 ---
 title: 'Compliance overview'
-slug: /cloud/security/compliance-overview
 description: 'Overview of ClickHouse Cloud security and compliance certifications including SOC 2, ISO 27001, U.S. DPF, and HIPAA'
 doc_type: 'reference'
 keywords: ['ClickHouse Cloud', 'SOC 2 Type II', 'ISO 27001', 'HIPAA', 'U.S. DPF', 'PCI']
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge';
 
 # Security and compliance reports
 ClickHouse evaluates the security and compliance needs of our customers and is continuously expanding the program as additional reports are requested. For additional information or to download the reports visit our [Trust Center](https://trust.clickhouse.com).
@@ -46,4 +42,4 @@ In addition to the items above, ClickHouse maintains internal compliance program
 
 ## Payment compliance {#payment-compliance}
 
-ClickHouse provides a secure method to pay by credit card that is compliant with [PCI SAQ A v4.0](https://www.pcisecuritystandards.org/document_library/). 
+ClickHouse provides a secure method to pay by credit card that is compliant with [PCI SAQ A v4.0](https://www.pcisecuritystandards.org/document_library/).

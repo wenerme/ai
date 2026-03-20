@@ -27,13 +27,9 @@ BITMAP_HASH(<expr>)
 Returns a Bitmap containing the 32-bit hash value of the parameter `<expr>`.
 - If the parameter has a NULL value, it returns Empty Bitmap
 
-::: note
-
-The hash algorithm used is MurMur3.  
+> **note**: The hash algorithm used is MurMur3.  
 MurMur3 is a high-performance, low-collision hashing algorithm that produces values close to a random distribution and can pass chi-squared distribution tests. Note that the hash values computed may differ across different hardware platforms and seed values.  
 For more details on the performance of this algorithm, see the [Smhasher](http://rurban.github.io/smhasher/) benchmark.
-
-:::
 
 ## Examples
 

@@ -12,7 +12,6 @@ Create a new index on a table. The table name and index name must be specified. 
 
 ## Syntax
 
-
 ```sql
 CREATE INDEX [IF NOT EXISTS] <index_name> 
              ON <table_name> (<column_name> [, ...])

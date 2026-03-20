@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # PANW Prisma AIRS
 
@@ -9,7 +8,6 @@ LiteLLM supports PANW Prisma AIRS (AI Runtime Security) guardrails via the [Pris
 - **Sensitive content masking** — automatically mask PII, credit cards, SSNs instead of blocking
 - **MCP tool call scanning** — scan tool name and arguments on direct MCP tool invocations
 - **Configurable fail-open / fail-closed** — choose between maximum security or high availability
-
 
 ## Quick Start
 
@@ -63,7 +61,6 @@ litellm --config config.yaml --detailed_debug
 
 ### 4. Test Request
 
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -106,7 +103,6 @@ On success, the guardrail name appears in the `x-litellm-applied-guardrails` res
 | `post_call` | After LLM call | Response output |
 | `pre_mcp_call` | Before MCP tool execution | MCP tool input |
 | `during_mcp_call` | Parallel with MCP tool execution | MCP tool input |
-
 
 ### Configuration Parameters
 
@@ -180,10 +176,8 @@ guardrails:
 
 ### Content Masking
 
-:::warning Important: Masking is Controlled by PANW Security Profile
+> **warning**: Important: Masking is Controlled by PANW Security Profile
 The actual masking behavior (what content gets masked and how) is controlled by your PANW Prisma AIRS security profile in Strata Cloud Manager. The LiteLLM flags (`mask_request_content`, `mask_response_content`) only control whether to apply the masked content and allow the request to continue, or block entirely.
-:::
-
 ```yaml
 guardrails:
   - guardrail_name: "panw-with-masking"
@@ -285,7 +279,6 @@ Tool invocations are sent to AIRS as structured `tool_event` payloads containing
 **What is scanned:** LLM-driven `tool_calls` (name + arguments) and MCP request-side invocations when `mcp_tool_name` (or fallback `name`) is present. Response-side OpenAI-compatible `tool_calls` are also scanned when surfaced into `apply_guardrail()`.
 
 **What is not scanned:** Tool definitions in `inputs["tools"]` and post-MCP tool results (no `post_mcp_call` hook exists yet).
-
 
 ### Current Limitations
 

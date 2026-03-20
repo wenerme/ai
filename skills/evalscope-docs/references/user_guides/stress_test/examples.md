@@ -242,7 +242,6 @@ Add the following parameters before starting the test:
 
 ![wandb sample](https://modelscope.oss-cn-beijing.aliyuncs.com/resource/wandb_sample.png)
 
-
 ### Using SwanLab
 
 Please install SwanLab using the following command:
@@ -258,7 +257,6 @@ Add the following parameters before starting the test:
 ```  
 
 ![swanlab sample](https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/evalscope/swanlab.png)
-
 
 ### Using ClearML
 Please install ClearML using the following command:
@@ -279,7 +277,6 @@ Add the following parameters before starting the test:
 ```
 
 ![clearml sample](https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/evalscope/doc/clearml_vis.jpg)
-
 
 ## Debugging Requests
 Use the `--debug` option to output the requests and responses.

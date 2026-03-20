@@ -2,7 +2,6 @@
 title: 'What are the 3rd-party dependencies for running ClickHouse?'
 toc_hidden: true
 toc_priority: 10
-slug: /faq/general/dependencies
 description: 'ClickHouse is self-contained and has no runtime dependencies'
 doc_type: 'reference'
 keywords: ['dependencies', '3rd-party']
@@ -14,6 +13,4 @@ ClickHouse doesn't have any runtime dependencies. It is distributed as a single 
 
 This unique architecture choice differentiates it from other systems, that often have dedicated frontend, backend, or aggregation nodes, as it makes the deployment, cluster management, and monitoring easier.
 
-:::info
-Many years ago, ClickHouse used to require ZooKeeper for coordination of distributed clusters. It is no longer needed, and while we support using ZooKeeper, it's no longer recommended.
-:::
+> **info**: Many years ago, ClickHouse used to require ZooKeeper for coordination of distributed clusters. It is no longer needed, and while we support using ZooKeeper, it's no longer recommended.

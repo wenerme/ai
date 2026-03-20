@@ -1,6 +1,5 @@
 ---
 title: testTimeout | Config
-outline: deep
 ---
 
 # testTimeout

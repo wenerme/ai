@@ -1,22 +1,13 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # GigaChat
 https://developers.sber.ru/docs/ru/gigachat/api/overview
 
 GigaChat is Sber AI's large language model, Russia's leading LLM provider.
 
-:::tip
+> **tip**: **We support ALL GigaChat models, just set `model=gigachat/<any-model-on-gigachat>` as a prefix when sending litellm requests**
 
-**We support ALL GigaChat models, just set `model=gigachat/<any-model-on-gigachat>` as a prefix when sending litellm requests**
-
-:::
-
-:::warning
-
-GigaChat API uses self-signed SSL certificates. You must pass `ssl_verify=False` in your requests.
-
-:::
+> **warning**: GigaChat API uses self-signed SSL certificates. You must pass `ssl_verify=False` in your requests.
 
 ## Supported Features
 
@@ -219,9 +210,6 @@ litellm --config config.yaml
 
 ### 3. Test it
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -235,8 +223,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -251,8 +237,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Supported Models
 
@@ -272,9 +256,7 @@ print(response)
 | gigachat/Embeddings-2 | 512 | 1024 | Updated embeddings |
 | gigachat/EmbeddingsGigaR | 4096 | 2560 | High-dimensional embeddings |
 
-:::note
-Available models may vary depending on your API access level (personal or business).
-:::
+> **note**: Available models may vary depending on your API access level (personal or business).
 
 ## Limitations
 

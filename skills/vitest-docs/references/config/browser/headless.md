@@ -1,6 +1,5 @@
 ---
 title: browser.headless | Config
-outline: deep
 ---
 
 # browser.headless

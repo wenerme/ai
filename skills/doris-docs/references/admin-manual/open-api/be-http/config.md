@@ -73,7 +73,6 @@ None
 
 ## Examples
 
-
 ```
 curl "http://127.0.0.1:8040/api/show_config"
 ```
@@ -86,4 +85,3 @@ curl -X POST "http://127.0.0.1:8040/api/update_config?agent_task_trace_threshold
 ```
 curl -X POST "http://127.0.0.1:8040/api/update_config?agent_task_trace_threshold_sec=2&enable_merge_on_write_correctness_check=true&persist=true"
 ```
-

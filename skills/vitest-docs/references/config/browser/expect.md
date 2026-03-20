@@ -1,6 +1,5 @@
 ---
 title: browser.expect | Config
-outline: deep
 ---
 
 # browser.expect
@@ -13,12 +12,9 @@ Default options for the
 [`toMatchScreenshot` assertion](/api/browser/assertions.html#tomatchscreenshot).
 These options will be applied to all screenshot assertions.
 
-::: tip
-Setting global defaults for screenshot assertions helps maintain consistency
+> **tip**: Setting global defaults for screenshot assertions helps maintain consistency
 across your test suite and reduces repetition in individual tests. You can still
 override these defaults at the assertion level when needed for specific test cases.
-:::
-
 ```ts
 import { defineConfig } from 'vitest/config'
 
@@ -234,13 +230,12 @@ The `reference` and `actual` images are decoded using the appropriate codec (cur
 - **Total length**: `width × height × 4` bytes
 - **Alpha channel**: always present. Images without transparency have alpha values set to `255` (fully opaque)
 
-::: tip Performance Considerations
+> **tip**: Performance Considerations
 The `createDiff` option indicates whether a diff image is needed. During [stable screenshot detection](/guide/browser/visual-regression-testing#how-visual-tests-work), Vitest calls comparators with `createDiff: false` to avoid unnecessary work.
 
 **Respect this flag to keep your tests fast**.
-:::
 
-::: warning Handle Missing Options
+> **warning**: Handle Missing Options
 The `options` parameter in `toMatchScreenshot()` is optional, so users might not provide all your comparator options. Always make them optional with default values:
 
 ```ts
@@ -252,4 +247,3 @@ myCustomComparator: (
   // ...comparison logic
 }
 ```
-:::

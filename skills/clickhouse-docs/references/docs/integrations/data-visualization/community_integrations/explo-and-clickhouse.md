@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Explo'
-sidebar_position: 131
-slug: /integrations/explo
 keywords: ['clickhouse', 'Explo', 'connect', 'integrate', 'ui']
 description: 'Explo is an easy-to-use, open source UI tool for asking questions about your data.'
 title: 'Connecting Explo to ClickHouse'
@@ -10,26 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'data_visualization'
 ---
-
-import Image from '@theme/IdealImage';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import explo_01 from '@site/static/images/integrations/data-visualization/explo_01.png';
-import explo_02 from '@site/static/images/integrations/data-visualization/explo_02.png';
-import explo_03 from '@site/static/images/integrations/data-visualization/explo_03.png';
-import explo_04 from '@site/static/images/integrations/data-visualization/explo_04.png';
-import explo_05 from '@site/static/images/integrations/data-visualization/explo_05.png';
-import explo_06 from '@site/static/images/integrations/data-visualization/explo_06.png';
-import explo_07 from '@site/static/images/integrations/data-visualization/explo_07.png';
-import explo_08 from '@site/static/images/integrations/data-visualization/explo_08.png';
-import explo_09 from '@site/static/images/integrations/data-visualization/explo_09.png';
-import explo_10 from '@site/static/images/integrations/data-visualization/explo_10.png';
-import explo_11 from '@site/static/images/integrations/data-visualization/explo_11.png';
-import explo_12 from '@site/static/images/integrations/data-visualization/explo_12.png';
-import explo_13 from '@site/static/images/integrations/data-visualization/explo_13.png';
-import explo_14 from '@site/static/images/integrations/data-visualization/explo_14.png';
-import explo_15 from '@site/static/images/integrations/data-visualization/explo_15.png';
-import explo_16 from '@site/static/images/integrations/data-visualization/explo_16.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting Explo to ClickHouse
 
@@ -44,9 +21,8 @@ In this guide you will connect your data from ClickHouse to Explo and visualize 
 
 <p/>
 
-:::tip Add some data
+> **tip**: Add some data
 If you don't have a dataset to work with you can add one of the examples.  This guide uses the [UK Price Paid](/getting-started/example-datasets/uk-price-paid.md) dataset, so you might choose that one.  There are several others to look at in the same documentation category.
-:::
 
 ## 1. Gather your connection details {#1-gather-your-connection-details}
 <ConnectionDetails />

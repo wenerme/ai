@@ -1,14 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Setting Team Budgets
-
 
 # Pre-Requisites
 
 - You must set up a Postgres database (e.g. Supabase, Neon, etc.)
-
 
 ## Default Budget for Auto-Generated JWT Teams
 
@@ -32,16 +28,11 @@ litellm_settings:
 ```
 Track spend, set budgets for your Internal Team
 
-
 ## Setting Monthly Team Budgets
 
 ### 1. Create a team 
 - Set `max_budget=000000001` ($ value the team is allowed to spend)
 - Set `budget_duration="1d"` (How frequently the budget should update)
-
-<Tabs>
-
-<TabItem value="API" label="API">
 
 Create a new team and set `max_budget` and `budget_duration`
 ```shell
@@ -65,15 +56,8 @@ Response
  "budget_reset_at": "2024-06-14T22:48:36.594000Z"
 }  
 ```
-</TabItem>
 
-<TabItem value="UI" label="Admin UI">
 <Image img={require('../../img/create_team_gif_good.gif')} />
-
-</TabItem>
-
-
-</Tabs>
 
 Possible values for `budget_duration`
 
@@ -85,14 +69,9 @@ Possible values for `budget_duration`
 | `budget_duration="1d"` | every 1 day |
 | `budget_duration="30d"` | every 1 month |
 
-
 ### 2. Create a key for the `team`
 
 Create a key for Team=`QA Prod Bot` and `team_id="de35b29e-6ca8-4f47-b804-2b79d07aa99a"` from Step 1 
-
-<Tabs>
-
-<TabItem value="api" label="API">
 
 💡 **The Budget for Team="QA Prod Bot" budget will apply to this team**
 
@@ -108,20 +87,12 @@ Response
 ```shell
 {"team_id":"de35b29e-6ca8-4f47-b804-2b79d07aa99a", "key":"sk-5qtncoYjzRcxMM4bDRktNQ"}
 ```
-</TabItem>
 
-<TabItem value="UI" label="Admin UI">
 <Image img={require('../../img/create_key_in_team.gif')} />
-</TabItem>
-
-</Tabs>
 
 ### 3. Test It
 
 Use the key from step 2 and run this Request twice
-<Tabs>
-
-<TabItem value="api" label="API">
 
 ```shell
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -151,12 +122,7 @@ On the 2nd response - expect to see the following exception
 }
 ```
 
-</TabItem>
-
-<TabItem value="UI" label="Admin UI">
 <Image img={require('../../img/test_key_budget.gif')} />
-</TabItem>
-</Tabs>
 
 ## Advanced
 

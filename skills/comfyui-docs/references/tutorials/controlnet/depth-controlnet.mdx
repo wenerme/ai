@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI Depth ControlNet Usage Example"
 description: "This guide will introduce you to the basic concepts of Depth ControlNet and demonstrate how to generate corresponding images in ComfyUI"
-sidebarTitle: "Depth ControlNet"
 ---
 
 ## Introduction to Depth Maps and Depth ControlNet
@@ -31,10 +30,8 @@ Please download the workflow image below and drag it into ComfyUI to load the wo
 
 ![Depth Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/controlnet/depth_controlnet.png)
 
-<Tip>
 Images with workflow JSON in their metadata can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`.
 This image already includes download links for the corresponding models, and dragging it into ComfyUI will automatically prompt for downloads.
-</Tip>
 
 Please download the image below, which we will use as input:
 
@@ -42,9 +39,7 @@ Please download the image below, which we will use as input:
 
 ### 2. Model Installation
 
-<Note>
 If your network cannot successfully complete the automatic download of the corresponding models, please try manually downloading the models below and placing them in the specified directories:
-</Note>
 
 - [architecturerealmix_v11.safetensors](https://civitai.com/api/download/models/431755?type=Model&format=SafeTensor&size=full&fp=fp16)
 - [control_v11f1p_sd15_depth_fp16.safetensors](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors?download=true)
@@ -60,7 +55,7 @@ ComfyUI/
 
 ### 3. Step-by-Step Workflow Execution
 
-![ComfyUI Workflow - Depth ControlNet Flow Diagram](/images/tutorial/controlnet/flow_diagram_depth.jpg)
+[ComfyUI Workflow - Depth ControlNet Flow Diagram]
 
 1. Ensure that `Load Checkpoint` can load **architecturerealmix_v11.safetensors**
 2. Ensure that `Load ControlNet` can load **control_v11f1p_sd15_depth_fp16.safetensors**

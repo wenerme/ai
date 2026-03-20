@@ -33,13 +33,11 @@ Users executing this SQL command must have at least the following privileges:
 | :--------- | :----- | :------------------------------------------- |
 | Any_PRIV | Session  | Any privilege can show variables |
 
-
 ## Return Value
 | Variable_name | Value   | Default_Value                    | Changed |
 |:--------------|:--------|:---------------------------------|:--------|
 | variable name1      | value1 | default value1 |   0/1      |
 | variable name2      | value2 | default value2 |   0/1      |
-
 
 ## Usage Notes
 
@@ -53,9 +51,7 @@ Users executing this SQL command must have at least the following privileges:
   - Use the like statement to match with variable_name.
   - The % percent wildcard can be used anywhere in the matching pattern
 
-
 ## Example
-
 
 - The default here is to match the Variable_name, here is the exact match
 
@@ -63,17 +59,14 @@ Users executing this SQL command must have at least the following privileges:
     show variables like 'max_connections';
     ```
 
-
 - Matching through the percent sign (%) wildcard can match multiple items
 
     ```sql
     show variables like '%connec%';
     ```
 
-
 - Use the Where clause for matching queries
 
     ```sql
     show variables where variable_name = 'version';
     ```
-

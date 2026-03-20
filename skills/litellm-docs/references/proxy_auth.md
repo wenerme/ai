@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # SDK Proxy Authentication (OAuth2/JWT Auto-Refresh)
 
@@ -17,9 +16,6 @@ When your LiteLLM Proxy is protected by an OAuth2/OIDC provider (Azure AD, Keycl
 ## Quick Start
 
 ### Azure AD
-
-<Tabs>
-<TabItem value="default" label="DefaultAzureCredential">
 
 Uses the [DefaultAzureCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential) chain (environment variables, managed identity, Azure CLI, etc.):
 
@@ -40,9 +36,6 @@ response = litellm.completion(
     messages=[{"role": "user", "content": "Hello!"}]
 )
 ```
-
-</TabItem>
-<TabItem value="client-secret" label="ClientSecretCredential">
 
 Use a specific Azure AD app registration:
 
@@ -68,9 +61,6 @@ response = litellm.completion(
     messages=[{"role": "user", "content": "Hello!"}]
 )
 ```
-
-</TabItem>
-</Tabs>
 
 **Required package:** `pip install azure-identity`
 

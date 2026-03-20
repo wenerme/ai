@@ -10,7 +10,6 @@ By default Vitest runs every test file in an isolated environment based on the [
 
 This greatly increases test times, which might not be desirable for projects that don't rely on side effects and properly cleanup their state (which is usually true for projects with `node` environment). In this case disabling isolation will improve the speed of your tests. To do that, you can provide `--no-isolate` flag to the CLI or set [`test.isolate`](/config/isolate) property in the config to `false`.
 
-::: code-group
 ```bash [CLI]
 vitest --no-isolate
 ```
@@ -23,7 +22,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 You can also disable isolation for specific files only by using `projects`:
 
@@ -52,13 +50,10 @@ export default defineConfig({
 })
 ```
 
-:::tip
-If you are using `vmThreads` pool, you cannot disable isolation. Use `threads` pool instead to improve your tests performance.
-:::
+> **tip**: If you are using `vmThreads` pool, you cannot disable isolation. Use `threads` pool instead to improve your tests performance.
 
 For some projects, it might also be desirable to disable parallelism to improve startup time. To do that, provide `--no-file-parallelism` flag to the CLI or set [`test.fileParallelism`](/config/fileparallelism) property in the config to `false`.
 
-::: code-group
 ```bash [CLI]
 vitest --no-file-parallelism
 ```
@@ -71,7 +66,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ## Limiting Directory Search
 
@@ -97,7 +91,6 @@ By default Vitest runs tests in `pool: 'forks'`. While `'forks'` pool is better 
 
 You can try to improve test run time by switching `pool` option in configuration:
 
-::: code-group
 ```bash [CLI]
 vitest --pool=threads
 ```
@@ -110,7 +103,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ## Sharding
 
@@ -132,7 +124,7 @@ Collect the results stored in `.vitest-reports` directory from each machine and 
 vitest run --merge-reports
 ```
 
-::: details GitHub Actions example
+> **details**: GitHub Actions example
 This setup is also used at https://github.com/vitest-tests/test-sharding.
 
 ```yaml
@@ -219,10 +211,7 @@ jobs:
 
 If your tests create file-based attachments (for example via `context.annotate` or custom artifacts), upload and restore [`attachmentsDir`](/config/attachmentsdir) in the merge job as shown above.
 
-:::
-
-:::tip
-Test sharding can also become useful on high CPU-count machines.
+> **tip**: Test sharding can also become useful on high CPU-count machines.
 
 Vitest will run only a single Vite server in its main thread. Rest of the threads are used to run test files.
 In a high CPU-count machine the main thread can become a bottleneck as it cannot handle all the requests coming from the threads. For example in 32 CPU machine the main thread is responsible to handle load coming from 31 test threads.
@@ -241,5 +230,3 @@ wait # https://man7.org/linux/man-pages/man2/waitpid.2.html
 
 vitest run --merge-reports
 ```
-
-:::

@@ -7,4 +7,3 @@ Supports AIGC evaluation, currently including text-to-image consistency, image a
 
 t2i.md
 image_edit.md
-:::

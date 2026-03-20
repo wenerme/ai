@@ -1,6 +1,5 @@
 # MathVista
 
-
 ## Overview
 
 MathVista is a comprehensive benchmark for mathematical reasoning in visual contexts. It combines newly created datasets with existing benchmarks to evaluate models on diverse visual mathematical reasoning tasks across multiple domains.
@@ -29,7 +28,6 @@ MathVista is a comprehensive benchmark for mathematical reasoning in visual cont
 - Uses numeric equivalence checking for answer comparison
 - Chain-of-Thought (CoT) prompting for multiple-choice questions
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MathVista is a comprehensive benchmark for mathematical reasoning in visual cont
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `testmini` |
-
 
 ## Data Statistics
 
@@ -59,7 +56,6 @@ MathVista is a comprehensive benchmark for mathematical reasoning in visual cont
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 187x18 - 5236x3491 |
 | Formats | jpeg, mpo, png, webp |
-
 
 ## Sample Example
 
@@ -142,5 +138,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

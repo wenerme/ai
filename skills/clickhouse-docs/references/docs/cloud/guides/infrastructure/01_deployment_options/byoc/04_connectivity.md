@@ -1,14 +1,9 @@
 ---
 title: 'Connect to ClickHouse'
-slug: /cloud/reference/byoc/connect
-sidebar_label: 'Connect to ClickHouse'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'connect to clickhouse', 'load balancer', 'privatelink']
 description: 'Connect to your BYOC ClickHouse services via public, private, or PrivateLink endpoints'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc_connect_1 from '@site/static/images/cloud/reference/byoc-connect-1.png';
 
 This page describes the different ways to connect to your ClickHouse services in BYOC. You can choose from public load balancers, private load balancers, or PrivateLink/Private Service Connect endpoints based on your security and networking requirements.
 

@@ -1,13 +1,9 @@
 ---
-slug: /materialized-view/refreshable-materialized-view
 title: 'Refreshable materialized view'
 description: 'How to use materialized views to speed up queries'
 keywords: ['refreshable materialized view', 'refresh', 'materialized views', 'speed up queries', 'query optimization']
 doc_type: 'guide'
 ---
-
-import refreshableMaterializedViewDiagram from '@site/static/images/materialized-view/refreshable-materialized-view-diagram.png';
-import Image from '@theme/IdealImage';
 
 [Refreshable materialized views](/sql-reference/statements/create/view#refreshable-materialized-view) are conceptually similar to materialized views in traditional OLTP databases, storing the result of a specified query for quick retrieval and reducing the need to repeatedly execute resource-intensive queries. Unlike ClickHouse's [incremental materialized views](/materialized-view/incremental-materialized-view), this requires the periodic execution of the query over the full dataset - the results of which are stored in a target table for querying. This result set should, in theory, be smaller than the original dataset, allowing the subsequent query to execute faster.
 
@@ -229,9 +225,7 @@ LEFT JOIN (
 
 The view will execute immediately and every hour thereafter as configured to ensure updates to the source table are reflected. Importantly, when the query re-runs, the result set is atomically and transparently updated.
 
-:::note
-The syntax here is identical to an incremental materialized view, except we include a [`REFRESH`](/sql-reference/statements/create/view#refreshable-materialized-view) clause:
-:::
+> **note**: The syntax here is identical to an incremental materialized view, except we include a [`REFRESH`](/sql-reference/statements/create/view#refreshable-materialized-view) clause:
 
 ### IMDb {#imdb}
 

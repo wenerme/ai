@@ -1,6 +1,5 @@
 # HumanEval
 
-
 ## Overview
 
 HumanEval is a benchmark for evaluating the code generation capabilities of language models. It consists of 164 hand-written Python programming problems with function signatures, docstrings, and comprehensive test cases.
@@ -27,7 +26,6 @@ HumanEval is a benchmark for evaluating the code generation capabilities of lang
 - Default timeout is 4 seconds per problem
 - Code is extracted from markdown code blocks if present
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ HumanEval is a benchmark for evaluating the code generation capabilities of lang
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -129,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Apache Flink'
-sidebar_position: 1
-slug: /integrations/apache-flink
 description: 'Introduction to Apache Flink with ClickHouse'
 keywords: ['clickhouse', 'Apache Flink', 'migrating', 'data', 'stream processing']
 title: 'Flink Connector'
@@ -10,11 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_ingestion'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import TOCInline from '@theme/TOCInline';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Flink Connector
 
@@ -45,16 +37,11 @@ The connector is split into two artifacts to support both Flink 1.17+ and Flink 
 | 1.18.1        | flink-connector-clickhouse-1.17  | 0.9.5                          | Java 11+      |
 | 1.17.2        | flink-connector-clickhouse-1.17  | 0.9.5                          | Java 11+      |
 
-:::note
-The connector has not been tested against Flink versions earlier than 1.17.2
-:::
+> **note**: The connector has not been tested against Flink versions earlier than 1.17.2
 
 ## Installation & setup {#installation--setup}
 ### Import as a dependency {#import-as-a-dependency}
 #### For Flink 2.0+ {#flink-2}
-
-<Tabs>
-<TabItem value="Maven" label="Maven" default>
 
 ```maven
 <dependency>
@@ -64,27 +51,18 @@ The connector has not been tested against Flink versions earlier than 1.17.2
     <classifier>all</classifier>
 </dependency>
 ```
-</TabItem>
-<TabItem value="Gradle" label="Gradle">
 
 ```gradle
 dependencies {
     implementation("com.clickhouse.flink:flink-connector-clickhouse-2.0.0:{{ stable_version }}")
 }
 ```
-</TabItem>
-<TabItem value="SBT" label="SBT">
 
 ```sbt
 libraryDependencies += "com.clickhouse.flink" % "flink-connector-clickhouse-2.0.0" % {{ stable_version }} classifier "all"
 ```
 
-</TabItem>
-</Tabs>
-
 #### For Flink 1.17+ {#flink-117}
-<Tabs>
-<TabItem value="Maven" label="Maven" default>
 
 ```maven
 <dependency>
@@ -94,23 +72,16 @@ libraryDependencies += "com.clickhouse.flink" % "flink-connector-clickhouse-2.0.
     <classifier>all</classifier>
 </dependency>
 ```
-</TabItem>
-<TabItem value="Gradle" label="Gradle">
 
 ```gradle
 dependencies {
     implementation("com.clickhouse.flink:flink-connector-clickhouse-1.17:{{ stable_version }}")
 }
 ```
-</TabItem>
-<TabItem value="SBT" label="SBT">
 
 ```sbt
 libraryDependencies += "com.clickhouse.flink" % "flink-connector-clickhouse-1.17" % {{ stable_version }} classifier "all"
 ```
-
-</TabItem>
-</Tabs>
 
 ### Download the binary {#download-the-binary}
 
@@ -130,9 +101,6 @@ You can find all available released JAR files in the [Maven Central Repository](
 ### Snippet {#datastream-snippet}
 
 Let's say you want to insert raw CSV data into ClickHouse:
-
-<Tabs groupId="raw_csv_java_example">
-<TabItem value="Java" label="Java" default>
 
 ```java
 public static void main(String[] args) {
@@ -172,9 +140,6 @@ public static void main(String[] args) {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 More examples and snippets can be found in our tests:
 - [flink-connector-clickhouse-1.17](https://github.com/ClickHouse/flink-connector-clickhouse/tree/main/flink-connector-clickhouse-1.17/src/test/java/org/apache/flink/connector/clickhouse/sink)
 - [flink-connector-clickhouse-2.0.0](https://github.com/ClickHouse/flink-connector-clickhouse/tree/main/flink-connector-clickhouse-2.0.0/src/test/java/org/apache/flink/connector/clickhouse/sink)
@@ -204,16 +169,11 @@ For more detailed instructions, see the [Example Guide](https://github.com/Click
 
 `options` and `serverSettings` should be passed to the client as `Map<String, String>`. An empty map for either will use client or server defaults, respectively.
 
-:::note
-All available Java client options are listed in [ClientConfigProperties.java](https://github.com/ClickHouse/clickhouse-java/blob/main/client-v2/src/main/java/com/clickhouse/client/api/ClientConfigProperties.java) and [this documentation page](https://clickhouse.com/docs/integrations/language-clients/java/client#configuration).
+> **note**: All available Java client options are listed in [ClientConfigProperties.java](https://github.com/ClickHouse/clickhouse-java/blob/main/client-v2/src/main/java/com/clickhouse/client/api/ClientConfigProperties.java) and [this documentation page](https://clickhouse.com/docs/integrations/language-clients/java/client#configuration).
 
 All available server session settings are listed in [this documentation page](https://clickhouse.com/docs/operations/settings/settings).
-:::
 
 For example:
-
-<Tabs groupId="client_options_example">
-<TabItem value="Java" label="Java" default>
 
 ```java
 Map<String, String> javaClientOptions = Map.of(
@@ -238,8 +198,6 @@ ClickHouseClientConfig clickHouseClientConfig = new ClickHouseClientConfig(
     false // enableJsonSupportAsString
 );
 ```
-</TabItem>
-</Tabs>
 
 #### Sink options {#sink-options}
 
@@ -331,9 +289,7 @@ ClickHouseAsyncSink<String> csvSink = new ClickHouseAsyncSink<>(
 csvSink.setClickHouseFormat(ClickHouseFormat.CSV);
 ```
 
-:::note
-By default, the connector will use either [RowBinaryWithDefaults](https://clickhouse.com/docs/interfaces/formats/RowBinaryWithDefaults) or [RowBinary](https://clickhouse.com/docs/interfaces/formats/RowBinary) if `setSupportDefault` in `ClickHouseClientConfig` is explicitly set to true or false, respectively.
-:::
+> **note**: By default, the connector will use either [RowBinaryWithDefaults](https://clickhouse.com/docs/interfaces/formats/RowBinaryWithDefaults) or [RowBinary](https://clickhouse.com/docs/interfaces/formats/RowBinary) if `setSupportDefault` in `ClickHouseClientConfig` is explicitly set to true or false, respectively.
 
 ## Metrics {#metrics}
 

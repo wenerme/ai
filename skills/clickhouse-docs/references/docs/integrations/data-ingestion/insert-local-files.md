@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Insert Local Files'
-sidebar_position: 2
 title: 'Insert Local Files'
-slug: /integrations/data-ingestion/insert-local-files
 description: 'Learn about Insert Local Files'
 show_related_blogs: true
 doc_type: 'guide'
@@ -66,9 +63,7 @@ clickhouse-client \
 " < comments.tsv
 ```
 
-:::note
-The `input` function is useful here as it allows us to convert the data as it's being inserted into the `hackernews` table. The argument to `input` is the format of the incoming raw data, and you will see this in many of the other table functions (where you specify a schema for the incoming data).
-:::
+> **note**: The `input` function is useful here as it allows us to convert the data as it's being inserted into the `hackernews` table. The argument to `input` is the format of the incoming raw data, and you will see this in many of the other table functions (where you specify a schema for the incoming data).
 
 4. That's it! The data is up in ClickHouse:
 

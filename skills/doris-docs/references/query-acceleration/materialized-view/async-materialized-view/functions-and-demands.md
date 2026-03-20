@@ -113,7 +113,6 @@ Determines whether to refresh immediately after materialized view creation.
   SELECT FROM lineitem;
   ```
 
-
 - **`ON COMMIT` Automatic Trigger**
 
   :::tip
@@ -208,7 +207,6 @@ INSERT INTO partsupp VALUES
 (2, 3, 10, 11.01, 'supply3');
 ```
 
-
 #### Refresh mechanism example 1
 
 In the following example, the refresh timing is set to `BUILD IMMEDIATE` (refresh immediately after creation), the refresh method is set to `REFRESH AUTO` (attempt incremental refresh), which only refreshes partitions that have changed since the last materialization. If incremental refresh is not possible, it will perform a full refresh of all partitions.
@@ -233,10 +231,7 @@ FROM
 #### Refresh mechanism example 2
 In the following example, the refresh timing is set to delayed refresh (`BUILD DEFERRED`), the refresh method is set to full refresh (`REFRESH COMPLETE`), and the trigger timing is set to scheduled refresh (`ON SCHEDULE`). The first refresh time is `2024-12-01 20:30:00`, and it will refresh every day thereafter. If `BUILD DEFERRED` is specified as `BUILD IMMEDIATE`, the materialized view will refresh immediately upon creation. After that, it will refresh every day starting from `2024-12-01 20:30:00`.
 
-:::tip
-The time specified in STARTS must be later than the current time.
-:::
-
+> **tip**: The time specified in STARTS must be later than the current time.
 ```sql
 CREATE MATERIALIZED VIEW mv_1_1
 BUILD DEFERRED
@@ -251,7 +246,6 @@ FROM
 orders   
 LEFT JOIN lineitem ON l_orderkey = o_orderkey;
 ```
-
 
 #### Refresh mechanism example 3
 In this example, the refresh timing is set to immediate refresh upon creation (`BUILD IMMEDIATE`), the refresh method is set to full refresh (`REFRESH COMPLETE`), and the trigger method is set to trigger refresh (`ON COMMIT`). When data in the `orders` or `lineitem` tables changes, it will automatically trigger the refresh of the materialized view.
@@ -270,7 +264,6 @@ FROM
 orders   
 LEFT JOIN lineitem ON l_orderkey = o_orderkey;
 ```
-
 
 ### Partition Configuration
 In the following example, when creating a partitioned materialized view, it is necessary to specify `PARTITION BY`. For expressions referencing partition fields, only the `date_trunc` function and identifiers are allowed. The following statement meets the requirements: the partition field references only the `date_trunc` function. The refresh method for partitioned materialized views is generally set to `AUTO`, which attempts incremental refresh, refreshing only the partitions that have changed since the last materialized refresh. If incremental refresh is not possible, it will refresh all partitions.
@@ -307,7 +300,6 @@ FROM
   orders   
 LEFT JOIN lineitem ON l_orderkey = o_orderkey;
 ```
-
 
 #### Base Table with Multiple Partition Columns
 
@@ -358,13 +350,11 @@ AS
 SELECT k1, year, region FROM hive1;
 ```
 
-
 #### Using Partial Partitions from the Base Table
 
 Some base tables have many partitions, but the materialized view only focuses on the "hot" data from a recent period. This feature allows for that.
 
 The base table creation statement is as follows:
-
 
 ```sql
 CREATE TABLE t1 (
@@ -381,7 +371,6 @@ PARTITION p28 VALUES [("2024-03-28"),("2024-03-29"))
 )
 DISTRIBUTED BY HASH(k1) BUCKETS 2;
 ```
-
 
 The materialized view creation statement is as follows, indicating that the materialized view only focuses on the data from the most recent day. If the current time is `2024-03-28 xx:xx:xx`, the materialized view will only have one partition `[("2024-03-28"),("2024-03-29")]`:
 
@@ -400,20 +389,16 @@ AS
 SELECT FROM t1;
 ```
 
-
 If the time passes another day, and the current time is `2024-03-29 xx:xx:xx`, `t1` will add a new partition `[("2024-03-29"),("2024-03-30")]`. If the materialized view is refreshed at this time, after the refresh is complete, the materialized view will only have one partition `[("2024-03-29"),("2024-03-30")]`.
 
 Additionally, when the partition field is of string type, the materialized view property `partition_date_format` can be set, for example, `%Y-%m-%d`.
 
 #### Partition Aggregation
-:::tip
-Range partitioning is supported since Doris 2.1.5
-:::
+> **tip**: Range partitioning is supported since Doris 2.1.5
 
 When the data in the base table is aggregated, the amount of data in each partition may significantly decrease. In this case, a partition aggregation strategy can be adopted to reduce the number of partitions in the materialized view.
 
 Assuming the base table creation statement is as follows:
-
 
 ```sql
 CREATE TABLE t1 (
@@ -431,7 +416,6 @@ PARTITION p_20200201 VALUES [("2020-02-01"),("2020-02-02"))
 DISTRIBUTED BY HASH(k1) BUCKETS 2;
 ```
 
-
 If the materialized view creation statement is as follows, the materialized view will contain two partitions: `[("2020-01-01","2020-02-01")]` and `[("2020-02-01","2020-03-01")]`.
 
 ```sql
@@ -444,7 +428,6 @@ DISTRIBUTED BY RANDOM BUCKETS 2
 AS
 SELECT FROM t1;
 ```
-
 
 If the materialized view creation statement is as follows, the materialized view will only contain one partition: `[("2020-01-01","2021-01-01")]`.
 
@@ -921,19 +904,17 @@ group by
 
 ```
 
-:::caution Notice
+> **caution**: Notice
 Currently, partition compensation is supported, but compensation with conditional UNION ALLis not yet available.
 
 For example, if a materialized view contains a WHEREclause—such as adding the filter WHERE l_shipdate > '2023-10-19'in the example above—while
 the query condition is WHERE l_shipdate > '2023-10-18', this scenario currently cannot be compensated via UNION ALL. Support for this case is planned for a future release.
-:::
 
-:::info Note
+> **info**: Note
 Starting from version 3.1.0
 The partition compensation rewrite feature supports the following types of partitioned tables: internal tables, Hive, Iceberg, and Paimon.
 
 This means that the partition compensation mechanism can only be triggered when a partitioned materialized view is built on partitioned tables of the aforementioned types.
-:::
 
 ### Nested Materialized View Rewriting
 
@@ -1001,7 +982,6 @@ Note:
 1. The more layers of nested materialized views, the longer transparent rewriting will take. It is recommended that nested materialized views do not exceed 3 layers.
 
 2. Nested materialized view transparent rewriting is disabled by default. See the related settings below for how to enable it.
-
 
 ### Aggregate Query Using Non-Aggregate Materialized View Rewrite
 If the query is an aggregate query and the materialized view does not contain aggregates,
@@ -1074,8 +1054,6 @@ To view materialized view transparent rewriting hits, used for viewing and debug
     explain memo plan <query_sql>
     ```
 
-
-
 ## Maintaining Materialized Views
 
 ### Permission Requirements
@@ -1122,7 +1100,6 @@ REPLACE WITH MATERIALIZED VIEW mv9_0
 PROPERTIES('swap' = 'false');
 ```
 
-
 ### Dropping Materialized Views
 ```sql
 DROP MATERIALIZED VIEW mv_1;
@@ -1148,7 +1125,6 @@ For more details, see [RESUME MATERIALIZED VIEW](../../../sql-manual/sql-stateme
 ### Canceling Materialized View Refresh Tasks
 
 For more details, see [CANCEL MATERIALIZED VIEW TASK](../../../sql-manual/sql-statements/table-and-view/async-materialized-view/CANCEL-MATERIALIZED-VIEW-TASK)
-
 
 ### Querying Materialized View Information
 
@@ -1245,7 +1221,7 @@ NeedRefreshPartitions: ["p_20231023_20231024","p_20231019_20231020","p_20231020_
 
 - RefreshMode: COMPLETE means all partitions were refreshed, PARTIAL means some partitions were refreshed, NOT_REFRESH means no partitions needed refreshing.
 
-:::info Note
+> **info**: Note
 
 - Currently, the default storage and display count for tasks is 100. This can be modified by configuring max_persistence_task_count in the fe.conf file. When exceeding this limit, older task records will be discarded. If the value is set to < 1, task persistence will be disabled. After modifying the configuration, a restart of the FE service is required for the changes to take effect.
 

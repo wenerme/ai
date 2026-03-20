@@ -32,7 +32,7 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     1. Select the appropriate organization from the dropdown in the top-right corner.
     2. Select **Management** > **Sensitive Data Redaction**. 
     
-    ![Sensitive Data Redaction](../../images/sensitive-data-redaction.png)
+    [Sensitive Data Redaction]
 
     This opens the Sensitive Data Redaction interface, where you can view, create, and manage regex patterns available to the selected organization.
 
@@ -52,7 +52,6 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     - Regex patterns can only be applied to fields with UTF8 data type.
     - The stream must have ingested data before you can apply regex patterns. Empty streams will not show field options for pattern association.
 
-
 ## Create regex patterns
 
 **To create a regex pattern:**
@@ -65,8 +64,8 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     2. In the stream selection dropdown, select the stream. 
     3. Select an appropriate time range and click **Run Query**. 
     This shows the records for the selected time range. 
-    <br>
-    ![Identify PII for regex application](../../images/identify-pii-for-regex-application.png)
+    
+    [Identify PII for regex application]
 
     **Look for common sensitive patterns.**
 
@@ -77,7 +76,7 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     | **Authentication** | API keys, tokens, passwords | `headers`, `auth_data`, `debug_info` |
     | **Network Data** | IP addresses, MAC addresses | `client_ip`, `network_info` |
 
-    **Example Sensitive Data in Logs:**<br>
+    **Example Sensitive Data in Logs:**
     ```json
     {
     "message": "User John Doe with email john.doe@company.com logged in from IP 192.168.1.100. SSN: 123-45-6789. Credit Card: 4111-1111-1111-1111",
@@ -88,7 +87,7 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     ### Step 2: Create and test regex patterns
     To create regex patterns, naviagte to **Management** > **Sensitive Data Redaction** > **Create Pattern**. 
     
-    ![Create regex](../../images/create-regex-pattern.png)
+    [Create regex]
  
     In the pattern creation form, enter the following details: 
 
@@ -111,25 +110,25 @@ The **Sensitive Data Redaction** feature helps prevent accidental exposure of se
     | **IP Address** | `\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b` | `192.168.1.100` |
     | **Password Field** | `(?i)password[\"':\s=]+[\"']?([^\"'\s,}]+)` | `password: "secret123"` |
 
-    **Example** <br>
+    **Example** 
     The following screenshots illustrate the pattern creation process:
 
     1. Review the logs that include PII.
-    <br>
+    
     The `message` field in the `pii_test_stream` contains names, email addresses, IP addresses, SSNs, and credit card numbers.
-    <br>
-    ![Stream with PII](../../images/stream-with-pii.png)
+    
+    [Stream with PII]
     2. Create and test the regex patterns.
-    <br>
+    
     **Full Name**: 
-    ![Full name regex](../../images/full-name-regex.png)
-    <br>
+    [Full name regex]
+    
     **Email Addresses**:
-    ![Email regex](../../images/email-regex.png)
+    [Email regex]
 
 ## Apply regex patterns 
 Once your patterns are created and tested, you can apply them to specific fields in a stream to redact or drop sensitive data during ingestion or at query time.
-<br>
+
 **To apply a pattern to a field:**
 
 ??? "Step 1: Go to the stream field"
@@ -138,21 +137,21 @@ Once your patterns are created and tested, you can apply them to specific fields
     2. Locate the stream where you want to apply regex patterns and select **Stream Details** from the **Actions** column.
     3. In the **Stream Settings** tab, locate the field that contains sensitive data. 
 
-    ![Field with sesitive data](../../images/stream-settings-sensitive-fields.png)
+    [Field with sesitive data]
 
 ??? "Step 2: Add pattern" 
     ### Step 2: Add pattern
     1. Select **Add Pattern** for the target field. This opens the pattern panel, where you can view already applied patterns and add new ones.
-    ![Add regex pattern](../../images/stream-settings-add-regex.png)
+    [Add regex pattern]
     2. From the **All Patterns** section, select a pattern you want to apply. 
-    ![Select regex pattern](../../images/select-regex.png) 
-    <br>
+    [Select regex pattern] 
+    
     After selecting a pattern, a detail view appears.
-    ![Regex selection](../../images/regex-selection-view.png)
+    [Regex selection]
 
 ??? "Step 3: Choose whether to Redact, Hash, or Drop"
     ### Step 3: Choose whether to Redact, Hash, or Drop
-    ![Regex pattern execution action- redact or drop](../../images/redact-or-drop-during-regex-pattern-execution.png)
+    [Regex pattern execution action- redact or drop]
     
     When applying a regex pattern, you must choose one of the following actions in the pattern details screen:
 
@@ -165,7 +164,6 @@ Once your patterns are created and tested, you can apply them to specific fields
     
     - Replaces the matched sensitive value with a **searchable hash** while keeping its position within the field.  
 
-
     **Drop**:
 
     - Removes the entire field from the log record if the regex pattern matches.  
@@ -177,7 +175,7 @@ Once your patterns are created and tested, you can apply them to specific fields
     ### Step 4: Choose when the action needs to be executed
     In the pattern details screen, select when the chosen action (redact, hash, or drop) should be executed, at ingestion time, query time, or both.
 
-    ![Regex pattern execution time](../../images/regex-pattern-execution-time.png)
+    [Regex pattern execution time]
 
     **Ingestion**: 
 
@@ -198,27 +196,25 @@ Once your patterns are created and tested, you can apply them to specific fields
     ### Step 5: Add pattern and update changes
 
     1. To add the regex pattern to Applied Patterns, click **Add Pattern**. 
-    ![Add regex pattern](../../images/add-regex-pattern.png)
+    [Add regex pattern]
     2. Select **Update Changes**.
 
 ??? "Step 6: (Optional) Apply multiple patterns"
 
     You can apply multiple patterns to the same field, as shown below:
-    ![apply-multiple-reg-pattern](../../images/apply-multiple-reg-pattern.png) 
+    [apply-multiple-reg-pattern] 
     All applied patterns will appear in the left-hand panel with check marks.
 
 ??? "Step 7: Save configuration" 
     ### Step 7: Save configuration
     When finished, click **Update Changes** to save the configuration. This activates the regex rules for the selected field.
 
-
 ## Test Redact, Hash and Drop operations
-
 
 ??? "Test 1: Redact at ingestion time"
     ### Redact at ingestion time
     **Pattern Configuration**:
-    ![redact-at-ingestion-time-test-config](../../images/redact-at-ingestion-time-test-config.png)
+    [redact-at-ingestion-time-test-config]
 
     **Test Steps**:
 
@@ -232,7 +228,7 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![redact-at-ingestion-time-result](../../images/redact-at-ingestion-time-result.png)
+    [redact-at-ingestion-time-result]
 
     **Key points:**
 
@@ -240,11 +236,10 @@ Once your patterns are created and tested, you can apply them to specific fields
     - The rest of the message field remains intact.
     - This is the actual stored value on disk.
 
-
 ??? "Test 2: Drop at ingestion time"
     ### Drop at ingestion time
     **Pattern Configuration**:
-    ![drop-at-query-time-test-config](../../images/drop-at-ingestion-time-test-config.png)
+    [drop-at-query-time-test-config]
 
     **Test Steps:**
 
@@ -258,7 +253,7 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![drop-at-ingestion-time-result](../../images/drop-at-ingestion-time-result.png)
+    [drop-at-ingestion-time-result]
 
     **Key points:** 
 
@@ -269,7 +264,7 @@ Once your patterns are created and tested, you can apply them to specific fields
 ??? "Test 3: Hash at ingestion time"
     ### Hash at ingestion time
     **Pattern Configuration**:
-    ![config-hash-pattern-ingestion-time](../../images/config-hash-pattern-ingestion-time.png)
+    [config-hash-pattern-ingestion-time]
 
     **Test Steps:**
 
@@ -282,12 +277,12 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![hashed-at-ingestion-time](../../images/hashed-at-ingestion-time.png)
+    [hashed-at-ingestion-time]
 
 ??? "Test 4: Redact at query time"
     ### Redact at query time
     **Pattern Configuration**:
-    ![redact-at-query-test-config](../../images/redact-at-query-test-config.png)
+    [redact-at-query-test-config]
 
     **Test Steps:**
 
@@ -302,7 +297,7 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![redact-at-query-time-result](../../images/redact-at-query-time-result.png)
+    [redact-at-query-time-result]
 
     **Key points:** 
 
@@ -310,11 +305,10 @@ Once your patterns are created and tested, you can apply them to specific fields
     - Email address appears as [REDACTED] in query results.
     - Useful for compliance while maintaining data for authorized access.
 
-
 ??? "Test 5: Drop at query time"
     ### Drop at query time
     **Pattern Configuration**:
-    ![Drop at Query Time- Test Config](../../images/drop-at-query-time-test-config.png)
+    [Drop at Query Time- Test Config]
 
     **Test Steps:**
 
@@ -328,7 +322,7 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![Drop at Query Time](../../images/drop-at-query-time-result.png)
+    [Drop at Query Time]
 
     **Key points:** 
 
@@ -339,7 +333,7 @@ Once your patterns are created and tested, you can apply them to specific fields
 ??? "Test 6: Hash at query time"
     ### Hash at query time
     **Pattern Configuration**:
-    ![config-hash-pattern-query-time](../../images/config-hash-pattern-query-time.png)
+    [config-hash-pattern-query-time]
 
     **Test Steps:**
 
@@ -352,11 +346,11 @@ Once your patterns are created and tested, you can apply them to specific fields
     4. Set the time range to include the test data.
     5. Click **Run Query**.
     6. Verify results:
-    ![hash-at-query-time](../../images/hashed-at-query-time.png)
+    [hash-at-query-time]
 
 ## Search hashed values using `match_all_hash`
 The `match_all_hash` user-defined function (UDF) complements the SDR Hash feature. It allows you to search for logs that contain the hashed equivalent of a specific sensitive value.
-When data is hashed using Sensitive Data Redaction, the original value is replaced with a searchable hash. You can use `match_all_hash()` to find all records that contain the hashed token, even though the original value no longer exists in storage. <br>
+When data is hashed using Sensitive Data Redaction, the original value is replaced with a searchable hash. You can use `match_all_hash()` to find all records that contain the hashed token, even though the original value no longer exists in storage. 
 **Example**: 
 ```sql
 match_all_hash('4111-1111-1111-1111')
@@ -365,12 +359,10 @@ This query returns all records where the SDR Hash of the provided value exists i
 In the example below, it retrieves the log entry containing
 [REDACTED:907fe4882defa795fa74d530361d8bfb], the hashed version of the given card number.
 
-![match-all-hash](../../images/match-all-hash.png)
-
+[match-all-hash]
 
 ## Import patterns from built-in library
 OpenObserve provides a built-in library of 147+ pre-configured regex patterns that can be imported directly into your organization. These patterns cover common sensitive data types and security-related formats, allowing you to quickly implement data protection without writing regex patterns from scratch.
-<br>
 
 **To import patterns from the built-in library:**
 
@@ -385,7 +377,7 @@ OpenObserve provides a built-in library of 147+ pre-configured regex patterns th
         - **URL Import**: Import patterns from a URL
     4. Select the **Built-in Patterns** tab.
 
-    ![Built-in Patterns Import Interface](../../images/built-in-patterns-import.png)
+    [Built-in Patterns Import Interface]
 
 ??? "Step 2: Browse and search patterns"
     ### Step 2: Browse and search patterns
@@ -393,9 +385,9 @@ OpenObserve provides a built-in library of 147+ pre-configured regex patterns th
     The built-in patterns library displays 147 patterns. You can:
     
     - **Search patterns**: Use the search bar to find patterns by name
-    ![Search patterns](../../images/search-patterns.png)
+    [Search patterns]
     - **Filter by tags**: Use the "Filter by Tag" dropdown to narrow patterns by category 
-    ![Filter by tags](../../images/filter-by-tags.png)
+    [Filter by tags]
     - **Refresh**: Click the **Refresh** button to pull the latest patterns from the GitHub repository
 
 ??? "Step 3: View pattern details"
@@ -412,7 +404,7 @@ OpenObserve provides a built-in library of 147+ pre-configured regex patterns th
         - **Rarity**: How commonly this pattern is used
         - **Valid Examples**: Sample data that matches this pattern
 
-    ![Pattern details view](../../images/pattern-detail-view.png)
+    [Pattern details view]
     
     This helps you verify the pattern will match your expected data format before importing.
 
@@ -420,16 +412,15 @@ OpenObserve provides a built-in library of 147+ pre-configured regex patterns th
     ### Step 4: Select and import patterns
     
     1. **Select patterns**: Check the box next to each pattern you want to import. You can select multiple patterns at once.
-    ![Select patterns](../../images/select-patterns.png)
+    [Select patterns]
     2. **Import**: Click the **Import** button in the top-right.
-    ![Import selected patterns](../../images/import-selected-patterns.png)
+    [Import selected patterns]
 
     After importing patterns, you can edit, export, and delete the patterns. 
-    ![Manage patterns](../../images/manage-patterns.png)
+    [Manage patterns]
 
     !!! warning "Duplicate handling" 
         The system does not allow you to import the same pattern more than once to avoid duplicates. 
-
 
 ## Limitations
 
@@ -443,6 +434,3 @@ OpenObserve provides a built-in library of 147+ pre-configured regex patterns th
 | -------------------------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------- |
 | The Add Pattern option is not visible in Stream Details. | The field is not of UTF8 type.        | Check the field type in the Stream Details view. Only UTF8 fields support regex patterns. |
 | Pattern does not apply.                                  | Configuration changes were not saved. | Ensure that you selected **Update Changes** after applying the pattern.                   |
-
-
-

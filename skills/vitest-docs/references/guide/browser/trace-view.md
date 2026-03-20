@@ -2,11 +2,7 @@
 
 Vitest Browser Mode supports generating Playwright's [trace files](https://playwright.dev/docs/trace-viewer#viewing-remote-traces). To enable tracing, you need to set the [`trace`](/config/browser/trace) option in the `test.browser` configuration.
 
-::: warning
-Generating trace files is only available when using the [Playwright provider](/config/browser/playwright).
-:::
-
-::: code-group
+> **warning**: Generating trace files is only available when using the [Playwright provider](/config/browser/playwright).
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
@@ -23,7 +19,6 @@ export default defineConfig({
 ```bash [CLI]
 vitest --browser.trace=on
 ```
-:::
 
 By default, Vitest will generate a trace file for each test. You can also configure it to only generate traces on test failures by setting `trace` to `'on-first-retry'`, `'on-all-retries'` or `'retain-on-failure'`. The files will be saved in `__traces__` folder next to your test files. The name of the trace includes the project name, the test name, the [`repeats`](/api/test#repeats) count and [`retry`](/api/test#retry) count:
 
@@ -111,8 +106,8 @@ This will start the Trace Viewer and load the specified trace file.
 
 Alternatively, you can open the Trace Viewer in your browser at https://trace.playwright.dev and upload the trace file there.
 
-<img alt="Trace Viewer showing the trace timeline and rendered component" img-light src="/trace-viewer-light.png">
-<img alt="Trace Viewer showing the trace timeline and rendered component" img-dark src="/trace-viewer-dark.png">
+[Trace Viewer showing the trace timeline and rendered component]
+[Trace Viewer showing the trace timeline and rendered component]
 
 ## Source Location
 
@@ -127,8 +122,4 @@ Keep in mind that plain assertions like `expect(value).toBe(...)` run in Node, n
 
 For anything not covered automatically, you can use `page.mark()` or `locator.mark()` to add your own trace groups — see [Trace markers](#trace-markers) above.
 
-::: warning
-
-Currently a source view of a trace can be only displayed properly when viewing it on the machine generated a trace with `playwright show-trace` CLI. This is expected to be fixed soon (see https://github.com/microsoft/playwright/pull/39307).
-
-:::
+> **warning**: Currently a source view of a trace can be only displayed properly when viewing it on the machine generated a trace with `playwright show-trace` CLI. This is expected to be fixed soon (see https://github.com/microsoft/playwright/pull/39307).

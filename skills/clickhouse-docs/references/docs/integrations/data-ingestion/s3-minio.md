@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'MinIO'
-sidebar_position: 6
-slug: /integrations/minio
 description: 'Page describing how to use MinIO with ClickHouse'
 title: 'Using MinIO'
 doc_type: 'guide'
@@ -12,8 +9,6 @@ keywords: ['s3', 'minio', 'object storage', 'data loading', 'compatible storage'
 ---
 
 # Using MinIO
-
-import SelfManaged from '@site/docs/_snippets/_self_managed_only_no_roadmap.md';
 
 <SelfManaged />
 
@@ -46,6 +41,4 @@ Also backed merge tree configuration is compatible too, with some minor changes 
 </clickhouse>
 ```
 
-:::tip
-Note the double slash in the endpoint tag, this is needed to designate the bucket root.
-:::
+> **tip**: Note the double slash in the endpoint tag, this is needed to designate the bucket root.

@@ -1,19 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/librechat
-sidebar_label: 'Integrate LibreChat'
 title: 'Set Up ClickHouse MCP Server with LibreChat and ClickHouse Cloud'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to set up LibreChat with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'Librechat', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-import LibreInterface from '@site/static/images/use-cases/AI_ML/MCP/librechat.png';
 
 # Using ClickHouse MCP server with LibreChat
 
@@ -29,7 +20,7 @@ You will need Docker to run LibreChat and the MCP server. To get Docker:
 2. Download Docker desktop for your operating system
 3. Install Docker by following the instructions for your operating system
 4. Open Docker Desktop and ensure it is running
-<br/>
+
 For more information, see the [Docker documentation](https://docs.docker.com/get-docker/).
 
 ## Clone the LibreChat repository {#clone-librechat-repo}
@@ -66,11 +57,10 @@ ANTHROPIC_API_KEY=user_provided
 
 Replace `user_provided` with your API key for the LLM provider you want to use.
 
-:::note Using a local LLM
+> **note**: Using a local LLM
 If you don't have an API key you can use a local LLM like Ollama. You'll see how 
 to do this later in step ["Install Ollama"](#add-local-llm-using-ollama). For now
 don't modify the .env file and continue with the next steps.
-:::
 
 ## Create a librechat.yaml file {#create-librechat-yaml-file}
 
@@ -228,10 +218,8 @@ What datasets do you have access to?
 
 </VerticalStepper>
 
-:::note
-If the MCP server option doesn't appear in the LibreChat UI,
+> **note**: If the MCP server option doesn't appear in the LibreChat UI,
 check that the proper permissions are set in your `librechat.yaml` file. 
-:::
 
 If `use` is set to `false` in the `mcpServers` section under `interface`, the MCP selection dropdown won't appear in chat:
 

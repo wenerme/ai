@@ -65,7 +65,6 @@ swift infer \
 
 To perform inference with a multimodal model, you can add tags like `<image>`, `<video>`, or `<audio>` in your query (representing the location of image representations in `inputs_embeds`). For example, you can input `<image><image>What is the difference between these two images?` or `<video>Describe this video.` Then, follow the prompts to input the corresponding image/video/audio.
 
-
 Here is an example of inference:
 ```
 <<< <image><image>What is the difference between these two images?
@@ -111,7 +110,6 @@ The above example provides streaming inference for both full parameters and LoRA
 - When inferring multimodal models using `--infer_backend vllm`, you need to input multiple images. You can set `--vllm_limit_mm_per_prompt` to resolve this, for example: `--vllm_limit_mm_per_prompt '{"image": 10, "video": 5}'`.
 - If you encounter OOM issues while inferring qwen2-vl/qwen2.5-vl, you can address this by setting `MAX_PIXELS`, `VIDEO_MAX_PIXELS`, and `FPS_MAX_FRAMES`. For more information, refer to [here](https://github.com/modelscope/ms-swift/blob/main/examples/app/mllm.sh).
 - SWIFT's built-in dialogue templates align with dialogue templates run using transformers. You can refer to [here](https://github.com/modelscope/ms-swift/blob/main/tests/test_align/test_template/test_vision.py) for testing. If there are any misalignments, please feel free to submit an issue or PR for correction.
-
 
 ### Using Web-UI
 
@@ -186,7 +184,6 @@ We also provide more demos for Python-based inference:
 - Agent Inference: Refer to [here](https://github.com/modelscope/ms-swift/blob/main/examples/infer/demo_agent.py).
 - Asynchronous Interface: For Python-based inference using `engine.infer_async`, refer to [here](https://github.com/modelscope/ms-swift/blob/main/examples/infer/demo.py).
 
-
 ## Deployment
 
 If you want to see the deployment of a model fine-tuned with LoRA, you can refer to the [Pre-training and Fine-tuning documentation](./Pre-training-and-Fine-tuning.md#deployment-fine-tuned-model).
@@ -215,7 +212,6 @@ curl http://localhost:8000/v1/chat/completions \
 "temperature": 0
 }'
 ```
-
 
 ### Server Side
 

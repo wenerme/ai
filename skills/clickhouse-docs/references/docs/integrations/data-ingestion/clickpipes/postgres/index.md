@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Ingesting data from Postgres to ClickHouse'
 description: 'Seamlessly connect your Postgres to ClickHouse Cloud.'
-slug: /integrations/clickpipes/postgres
 title: 'Ingesting Data from Postgres to ClickHouse (using CDC)'
 keywords: ['PostgreSQL', 'ClickPipes', 'CDC', 'change data capture', 'database replication']
 doc_type: 'guide'
@@ -9,17 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
-import cp_service from '@site/static/images/integrations/data-ingestion/clickpipes/cp_service.png';
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import postgres_tile from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/postgres-tile.png'
-import postgres_connection_details from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/postgres-connection-details.jpg'
-import ssh_tunnel from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ssh-tunnel.jpg'
-import select_replication_slot from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/select-replication-slot.jpg'
-import select_destination_db from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/select-destination-db.jpg'
-import ch_permissions from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/ch-permissions.jpg'
-import Image from '@theme/IdealImage';
 
 # Ingesting data from Postgres to ClickHouse (using CDC)
 
@@ -47,11 +34,7 @@ To get started, you first need to make sure that your Postgres database is set u
 
 9. [TimescaleDB](./postgres/source/timescale), if you're using the TimescaleDB extension on a managed service or self-hosted instance.
 
-:::warning
-
-Postgres Proxies like PgBouncer, RDS Proxy, Supabase Pooler, etc., aren't supported for CDC based replication. Please make sure to NOT use them for the ClickPipes setup and instead add connection details of the actual Postgres database.
-
-:::
+> **warning**: Postgres Proxies like PgBouncer, RDS Proxy, Supabase Pooler, etc., aren't supported for CDC based replication. Please make sure to NOT use them for the ClickPipes setup and instead add connection details of the actual Postgres database.
 
 Once your source Postgres database is set up, you can continue creating your ClickPipe.
 
@@ -103,11 +86,7 @@ You can specify SSH tunneling details if your source Postgres database isn't pub
 3. To use Key-based authentication, click on "Revoke and generate key pair" to generate a new key pair and copy the generated public key to your SSH server under `~/.ssh/authorized_keys`.
 4. Click on "Verify Connection" to verify the connection.
 
-:::note
-
-Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
-
-:::
+> **note**: Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
 
 Once the connection details are filled in, click on "Next".
 

@@ -12,9 +12,7 @@ By combining the data write-back function of Hive/Iceberg tables, you can quickl
 
 This document mainly introduces how to deploy and use the TPCH Connector to build test datasets.
 
-:::tip
-This feature is supported starting from Doris version 3.0.0.
-:::
+> **tip**: This feature is supported starting from Doris version 3.0.0.
 
 ## Compile TPCH Connector
 
@@ -103,9 +101,7 @@ mysql> SHOW TABLES;
 
 You can directly query these tables using the SELECT statement.
 
-:::tip
-The data in these pre-configured datasets is not actually stored but is generated in real-time during queries. Therefore, these pre-configured datasets are not suitable for direct Benchmark testing. They are suitable for writing datasets into other target tables (such as Doris internal tables, Hive, Iceberg, and all other data sources that Doris supports writing to) through `INSERT INTO SELECT`, and then performing performance testing on the target tables.
-:::
+> **tip**: The data in these pre-configured datasets is not actually stored but is generated in real-time during queries. Therefore, these pre-configured datasets are not suitable for direct Benchmark testing. They are suitable for writing datasets into other target tables (such as Doris internal tables, Hive, Iceberg, and all other data sources that Doris supports writing to) through `INSERT INTO SELECT`, and then performing performance testing on the target tables.
 
 ## Build TPCH Test Dataset
 
@@ -122,7 +118,4 @@ CREATE TABLE hive.tpch100.region   PROPERTIES("file_format" = "parquet") AS SELE
 CREATE TABLE hive.tpch100.supplier PROPERTIES("file_format" = "parquet") AS SELECT * FROM tpch.sf100.supplier  ;
 ```
 
-:::tip
-In a Doris cluster with 3 16C BE nodes, creating a TPCH 1000 Hive dataset takes about 25 minutes, and TPCH 10000 takes about 4 to 5 hours.
-:::
-
+> **tip**: In a Doris cluster with 3 16C BE nodes, creating a TPCH 1000 Hive dataset takes about 25 minutes, and TPCH 10000 takes about 4 to 5 hours.

@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # A2A Agent Cost Tracking
 

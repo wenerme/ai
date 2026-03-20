@@ -1,6 +1,5 @@
 # HellaSwag
 
-
 ## Overview
 
 HellaSwag is a benchmark for evaluating commonsense natural language inference, specifically testing a model's ability to complete sentences describing everyday situations. The dataset uses adversarial filtering to create challenging distractors that are grammatically correct but semantically implausible.
@@ -28,7 +27,6 @@ HellaSwag is a benchmark for evaluating commonsense natural language inference, 
 - Context combines `ctx_a` and `ctx_b` fields
 - Activity labels available in metadata for analysis
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ HellaSwag is a benchmark for evaluating commonsense natural language inference, 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -117,5 +114,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

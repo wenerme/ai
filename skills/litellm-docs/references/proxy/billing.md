@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Billing
 
@@ -69,11 +67,7 @@ Response Object:
 }
 ```
 
-
 ### 3. Start billing! 
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -90,8 +84,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai_python" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -110,8 +102,6 @@ response = client.chat.completions.create(model="gpt-4o", messages = [
 
 print(response)
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -143,11 +133,8 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 **See Results on Lago**
-
 
 <Image img={require('../../img/lago_2.png')}  style={{ width: '500px', height: 'auto' }} />
 
@@ -178,11 +165,6 @@ For:
 - Internal Users (id set when [creating keys](https://docs.litellm.ai/docs/proxy/virtual_keys#advanced---spend-tracking)) = 'user_id' 
 - Teams (id set when [creating keys](https://docs.litellm.ai/docs/proxy/virtual_keys#advanced---spend-tracking)) = 'team_id' 
 
-
-
-<Tabs>
-<TabItem value="customers" label="Customer Billing">
-
 1. Set 'LAGO_API_CHARGE_BY' to 'end_user_id'
 
   ```bash
@@ -191,8 +173,8 @@ For:
 
 2. Test it!
 
-  <Tabs>
-  <TabItem value="curl" label="Curl">
+  
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -209,8 +191,8 @@ For:
       }
   '
   ```
-  </TabItem>
-  <TabItem value="openai_sdk" label="OpenAI Python SDK">
+  
+  
 
   ```python
   import openai
@@ -230,8 +212,8 @@ For:
   print(response)
   ```
 
-  </TabItem>
-  <TabItem value="langchain" label="Langchain">
+  
+  
 
   ```python
   from langchain.chat_models import ChatOpenAI
@@ -267,11 +249,8 @@ For:
   print(response)
   ```
 
-  </TabItem>
-  </Tabs>
-
-</TabItem>
-<TabItem value="users" label="Internal User Billing">
+  
+  
 
 1. Set 'LAGO_API_CHARGE_BY' to 'user_id'
 
@@ -315,5 +294,3 @@ response = client.chat.completions.create(model="gpt-4o", messages = [
 
 print(response)
 ```
-</TabItem>
-</Tabs>

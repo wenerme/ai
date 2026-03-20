@@ -9,13 +9,11 @@ The configuration reference has detailed reference documentation
 for the option, but this page will give a high-level overview
 of how to specify keybindings in Ghostty.
 
-<Note>
 The CLI command `list-keybinds` can be used to list all the available keybinds for Ghostty.
 You can run this to see the default ones:
 ```sh
 ghostty +list-keybinds --default
 ```
-</Note>
 
 The basic syntax of a keybinding configuration is:
 
@@ -62,11 +60,9 @@ Valid modifiers are:
 - `alt` (alias: `opt`, `option`)
 - `super` (alias: `cmd`, `command`)
 
-<Note>
 The fn or "globe" key on keyboards are not supported as a
 modifier. This is a limitation of the operating systems and GUI toolkits
 that Ghostty uses.
-</Note>
 
 ### Trigger Prefixes
 
@@ -107,9 +103,7 @@ Ghostty will attempt to request these permissions. If the permissions are
 not granted, the keybind will not work. On macOS, you can find these
 permissions in System Preferences -> Privacy & Security -> Accessibility.
 
-<Note>
 The `global:` prefix is only available on macOS.
-</Note>
 
 #### `unconsumed:`
 

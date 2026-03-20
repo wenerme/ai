@@ -1,21 +1,9 @@
 ---
-sidebar_label: 'Using remoteSecure'
-slug: /cloud/migration/clickhouse-to-cloud
 title: 'Migrating between self-managed ClickHouse and ClickHouse Cloud'
 description: 'Page describing how to migrate between self-managed ClickHouse and ClickHouse Cloud'
 doc_type: 'guide'
 keywords: ['migration', 'ClickHouse Cloud', 'OSS', 'Migrate self-managed to Cloud']
 ---
-
-import Image from '@theme/IdealImage';
-import AddARemoteSystem from '@site/docs/_snippets/_add_remote_ip_access_list_detail.md';
-import self_managed_01 from '@site/static/images/integrations/migration/self-managed-01.png';
-import self_managed_02 from '@site/static/images/integrations/migration/self-managed-02.png';
-import self_managed_03 from '@site/static/images/integrations/migration/self-managed-03.png';
-import self_managed_04 from '@site/static/images/integrations/migration/self-managed-04.png';
-import self_managed_05 from '@site/static/images/integrations/migration/self-managed-05.png';
-import self_managed_06 from '@site/static/images/integrations/migration/self-managed-06.png';
-import CompatibilityNote from '@site/docs/_snippets/compatibility.mdx'
 
 # Migrating between self-managed ClickHouse and ClickHouse Cloud using remoteSecure
 
@@ -79,10 +67,7 @@ CREATE DATABASE db
 
 - Using the CREATE TABLE statement from the source, create the destination.
 
-:::tip
-Change the ENGINE to to ReplicatedMergeTree without any parameters when you run the CREATE statement. ClickHouse Cloud always replicates tables and provides the correct parameters. Keep the `ORDER BY`, `PRIMARY KEY`, `PARTITION BY`, `SAMPLE BY`, `TTL`, and `SETTINGS` clauses though.
-:::
-
+> **tip**: Change the ENGINE to to ReplicatedMergeTree without any parameters when you run the CREATE statement. ClickHouse Cloud always replicates tables and provides the correct parameters. Keep the `ORDER BY`, `PRIMARY KEY`, `PARTITION BY`, `SAMPLE BY`, `TTL`, and `SETTINGS` clauses though.
 ```sql
 CREATE TABLE db.table ...
 ```
@@ -96,17 +81,14 @@ INSERT INTO db.table SELECT * FROM
 remoteSecure('source-hostname', db, table, 'exporter', 'password-here')
 ```
 
-:::note
-If the source system isn't available from outside networks then you can push the data rather than pulling it, as the `remoteSecure` function works for both selects and inserts.  See the next option.
-:::
+> **note**: If the source system isn't available from outside networks then you can push the data rather than pulling it, as the `remoteSecure` function works for both selects and inserts.  See the next option.
 
 - Use the `remoteSecure` function to push the data to the ClickHouse Cloud service
 
 <Image img={self_managed_04} size='lg' alt='Migrating Self-managed ClickHouse'  />
 
-:::tip Add the remote system to your ClickHouse Cloud service IP Access List
+> **tip**: Add the remote system to your ClickHouse Cloud service IP Access List
 In order for the `remoteSecure` function to connect to your ClickHouse Cloud service the IP Address of the remote system will need to be allowed by the IP Access List.  Expand **Manage your IP Access List** below this tip for more information.
-:::
 
   <AddARemoteSystem />
 
@@ -178,9 +160,7 @@ On the destination create the database if it isn't there already:
 
 In order to pull data from the source to the destination the source service must allow connections. Temporarily disable the "IP Access List" functionality on the source service.
 
-:::tip
-If you will continue to use the source ClickHouse Cloud service then export the existing IP Access list to a JSON file before switching to allow access from anywhere; this will allow you to import the access list after the data is migrated.
-:::
+> **tip**: If you will continue to use the source ClickHouse Cloud service then export the existing IP Access list to a JSON file before switching to allow access from anywhere; this will allow you to import the access list after the data is migrated.
 
 Modify the allow list and allow access from **Anywhere** temporarily. See the [IP Access List](/cloud/security/setting-ip-filters) docs for details.
 

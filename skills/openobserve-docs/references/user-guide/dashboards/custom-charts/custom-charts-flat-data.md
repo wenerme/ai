@@ -9,7 +9,6 @@ The following step-by-step instructions can help you build a [custom chart that 
 
 Build a custom **heatmap chart** to understand which organization and search type combinations generate the most query load.
 
-
 ## Before you begin
 
 To build a custom chart, you need to bridge two things:
@@ -54,7 +53,7 @@ In this example, each row in [data[0]](what-are-custom-charts.md#the-data-object
 ## Step 3: Prepare the data (via SQL)
 
 In the [Add Panel](what-are-custom-charts.md#how-to-access-custom-charts) page, under **Fields**, select the desired stream type and stream name. 
-![custom-chart-flat-data-add-panel](../../../images/custom-chart-flat-data-add-panel.png)
+[custom-chart-flat-data-add-panel]
 
 Build a SQL query in the **Query Editor** to fetch and prepare the data:
 
@@ -83,7 +82,7 @@ ORDER BY
 
 Select a time range to fetch the relevant dataset for your chart.
 
-![custom-chart-flat-data-time-range-selection](../../../images/custom-chart-flat-data-time-range.png)
+[custom-chart-flat-data-time-range-selection]
 
 **Expected query result**
 
@@ -169,7 +168,7 @@ option = {
 
 Click **Apply** to generate the chart. 
 
-![custom-chart-flat-data-result](../../../images/custom-chart-flat-data-result.png)
+[custom-chart-flat-data-result]
 
 ### Understand the chart
 

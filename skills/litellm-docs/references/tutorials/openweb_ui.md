@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Open WebUI
 
@@ -14,12 +12,10 @@ This guide walks you through connecting Open WebUI to LiteLLM. Using LiteLLM wit
 
 - Make sure to setup LiteLLM with the [LiteLLM Getting Started Guide](https://docs.litellm.ai/docs/proxy/docker_quick_start)
 
-
 ## 1. Start LiteLLM & Open WebUI
 
 - Open WebUI starts running on [http://localhost:3000](http://localhost:3000)
 - LiteLLM starts running on [http://localhost:4000](http://localhost:4000)
-
 
 ## 2. Create a Virtual Key on LiteLLM
 
@@ -117,10 +113,6 @@ This video walks through on how we can map the openweb ui headers to LiteLLM use
 
 <iframe src="https://www.loom.com/embed/a1b6a4635fc0478ba4fd34cae16e2ffd?sid=791c2dcc-7e65-45be-bf7f-27d2601c123e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="840" height="500"></iframe>
 
-<br/>
-<br/>
-
-
 ## Render `thinking` content on Open WebUI
 
 Open WebUI requires reasoning/thinking content to be rendered with `<think></think>` tags. In order to render this for specific models, you can use the `merge_reasoning_content_in_choices` litellm parameter.
@@ -152,7 +144,6 @@ On the models dropdown select `thinking-anthropic-claude-3-7-sonnet`
 
 - Running LiteLLM and Open WebUI on Windows Localhost: A Comprehensive Guide [https://www.tanyongsheng.com/note/running-litellm-and-openwebui-on-windows-localhost-a-comprehensive-guide/](https://www.tanyongsheng.com/note/running-litellm-and-openwebui-on-windows-localhost-a-comprehensive-guide/)
 - [Run Guardrails Based on User-Agent Header](../proxy/guardrails/quick_start#-tag-based-guardrail-modes)
-
 
 ## Add Custom Headers to Spend Tracking
 

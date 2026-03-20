@@ -309,7 +309,7 @@ text. Non-string types will be converted to a string before escaping.
 
 ## `Bun.stringWidth()`
 
-<Note>~6,756x faster `string-width` alternative</Note>
+~6,756x faster `string-width` alternative
 
 Get the column count of a string as it would be displayed in a terminal.
 Supports ANSI escape codes, emoji, and wide characters.
@@ -350,8 +350,6 @@ npm/string-width    500 chars ascii             249,710 ns/iter (239,970 ns … 
 ```
 
 To make `Bun.stringWidth` fast, we've implemented it in Zig using optimized SIMD instructions, accounting for Latin1, UTF-16, and UTF-8 encodings. It passes `string-width`'s tests.
-
-<Accordion title="View full benchmark">
 
 As a reminder, 1 nanosecond (ns) is 1 billionth of a second. Here's a quick reference for converting between units:
 
@@ -419,8 +417,6 @@ npm/string-width 19,000 chars ansi+emoji+ascii   27.19 ms/iter   (26.89 ms … 2
 npm/string-width 95,000 chars ansi+emoji+ascii     3.68 s/iter        (3.66 s … 3.7 s)    3.69 s     3.7 s     3.7 s
 ```
 
-</Accordion>
-
 TypeScript definition:
 
 ```ts expandable
@@ -485,8 +481,6 @@ compressed; // => Uint8Array(30)
 ```
 
 Optionally, pass a parameters object as the second argument:
-
-<Accordion title="zlib compression options">
 
 ```ts expandable
 export type ZlibCompressionOptions = {
@@ -558,8 +552,6 @@ export type ZlibCompressionOptions = {
   strategy?: number;
 };
 ```
-
-</Accordion>
 
 ---
 
@@ -813,7 +805,7 @@ Bun.resolveSync("./foo.ts", import.meta.dir);
 
 ## `Bun.stripANSI()`
 
-<Note>~6-57x faster `strip-ansi` alternative</Note>
+~6-57x faster `strip-ansi` alternative
 
 `Bun.stripANSI(text: string): string`
 
@@ -882,7 +874,7 @@ npm/strip-ansi 212,992 chars long-ansi      1.36 ms/iter   1.38 ms
 
 ## `Bun.wrapAnsi()`
 
-<Note>Drop-in replacement for `wrap-ansi` npm package</Note>
+Drop-in replacement for `wrap-ansi` npm package
 
 `Bun.wrapAnsi(input: string, columns: number, options?: WrapAnsiOptions): string`
 

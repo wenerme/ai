@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Additional Options'
-sidebar_position: 3
 keywords: ['clickhouse', 'python', 'options', 'settings']
 description: 'Additional Options for ClickHouse Connect'
-slug: /integrations/language-clients/python/additional-options
 title: 'Additional Options'
 doc_type: 'reference'
 ---
@@ -24,9 +21,7 @@ common.get_setting('invalid_setting_action')
 'drop'
 ```
 
-:::note
-These common settings `autogenerate_session_id`, `product_name`, and `readonly` should _always_ be modified before creating a client with the `clickhouse_connect.get_client` method. Changing these settings after client creation doesn't affect the behavior of existing clients.
-:::
+> **note**: These common settings `autogenerate_session_id`, `product_name`, and `readonly` should _always_ be modified before creating a client with the `clickhouse_connect.get_client` method. Changing these settings after client creation doesn't affect the behavior of existing clients.
 
 The following global settings are currently defined:
 

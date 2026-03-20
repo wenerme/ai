@@ -30,13 +30,10 @@ NUMBERS(
 |-------------------|------------------------------------------|
 | **const_value**   | Specifies the constant value generated   |
 
-
-
 ## Return Value
 | Field      | Type    | Description                     |
 |----------------|---------|---------------------------------|
 | **number**     | BIGINT  | The value returned for each row |
-
 
 ## Examples
 ```sql

@@ -44,10 +44,8 @@ class MyCustomHandler(CustomLogger):
 
         return kwargs, responses
 
-
 customHandler = MyCustomHandler()
 ```
-
 
 2. Connect custom handler to LiteLLM
 
@@ -76,14 +74,11 @@ os.environ['OPENAI_API_KEY']=""
 litellm.callbacks = [customHandler]
 litellm.success_callback = ["langfuse"]
 
-
-
 ## sync 
 response = completion(model="gpt-3.5-turbo", messages=[{ "role": "user", "content": "Hi 👋 - i'm openai"}],
                               stream=True)
 for chunk in response: 
     continue
-
 
 ## async
 import asyncio 

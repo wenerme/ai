@@ -8,7 +8,6 @@
 
 ## Description
 
-
 The day_ceil function rounds up a specified date or time value to the start of the nearest specified day period. The period rule is defined by period (number of days) and origin (reference time). If origin is not specified, it defaults to 0001-01-01 00:00:00.
 
 Date calculation formula:

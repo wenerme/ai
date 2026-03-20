@@ -7,9 +7,7 @@ All-in-one document ingestion pipeline: **Upload → Chunk → Embed → Vector 
 | Logging | Yes |
 | Supported Providers | `openai`, `bedrock`, `vertex_ai`, `gemini`, `s3_vectors` |
 
-:::tip
-After ingesting documents, use [/rag/query](./rag_query.md) to search and generate responses with your ingested content.
-:::
+> **tip**: After ingesting documents, use [/rag/query](./rag_query.md) to search and generate responses with your ingested content.
 
 ## Quick Start
 
@@ -261,14 +259,13 @@ Response:
 | `embedding_model` | string | `amazon.titan-embed-text-v2:0` | Bedrock embedding model |
 | `aws_region_name` | string | `us-west-2` | AWS region |
 
-:::info Bedrock Auto-Creation
+> **info**: Bedrock Auto-Creation
 When `vector_store_id` is omitted, LiteLLM automatically creates:
 - S3 bucket for document storage
 - OpenSearch Serverless collection
 - IAM role with required permissions
 - Bedrock Knowledge Base
 - Data Source
-:::
 
 ### vector_store (Vertex AI)
 
@@ -283,12 +280,11 @@ When `vector_store_id` is omitted, LiteLLM automatically creates:
 | `wait_for_import` | boolean | `true` | Wait for import to complete |
 | `import_timeout` | integer | `600` | Timeout in seconds (if waiting) |
 
-:::info Vertex AI Prerequisites
+> **info**: Vertex AI Prerequisites
 1. Create a RAG corpus in Vertex AI console or via API
 2. Create a GCS bucket for file uploads
 3. Authenticate via `gcloud auth application-default login`
 4. Install: `pip install 'google-cloud-aiplatform>=1.60.0'`
-:::
 
 ### vector_store (AWS S3 Vectors)
 
@@ -304,7 +300,7 @@ When `vector_store_id` is omitted, LiteLLM automatically creates:
 | `aws_access_key_id` | string | env | AWS access key |
 | `aws_secret_access_key` | string | env | AWS secret key |
 
-:::info S3 Vectors Auto-Creation
+> **info**: S3 Vectors Auto-Creation
 When `index_name` is omitted, LiteLLM automatically creates:
 - S3 vector bucket (if it doesn't exist)
 - Vector index with auto-detected dimensions from your embedding model
@@ -312,7 +308,6 @@ When `index_name` is omitted, LiteLLM automatically creates:
 **Dimension Auto-Detection**: The vector dimension is automatically detected by making a test embedding request to your specified model. No need to manually specify dimensions!
 
 **Supported Embedding Models**: Works with any LiteLLM-supported embedding model (OpenAI, Cohere, Bedrock, Azure, etc.)
-:::
 
 **Example with auto-detection:**
 ```json
@@ -406,4 +401,3 @@ curl -X POST "http://localhost:4000/v1/rag/ingest" \
         }
     }"
 ```
-

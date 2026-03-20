@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Astrato'
-sidebar_position: 131
-slug: /integrations/astrato
 keywords: ['clickhouse', 'Power BI', 'connect', 'integrate', 'ui', 'data apps', 'data viz', 'embedded analytics', 'Astrato']
 description: 'Astrato brings true Self-Service BI to Enterprises & Data Businesses by putting analytics in the hands of every user, enabling them to build their own dashboards, reports and data apps, enabling the answering of data questions without IT help. Astrato accelerates adoption, speeds up decision-making, and unifies analytics, embedded analytics, data input, and data apps in one platform. Astrato unites action and analytics in one,  introduce live write-back, interact with ML models, accelerate your analytics with AI – go beyond dashboarding, thanks to pushdown SQL support in Astrato.'
 title: 'Connecting Astrato to ClickHouse'
@@ -10,20 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'data_visualization'
 ---
-
-import astrato_1_dataconnection from '@site/static/images/integrations/data-visualization/astrato_1_dataconnection.png';
-import astrato_2a_clickhouse_connection from '@site/static/images/integrations/data-visualization/astrato_2a_clickhouse_connection.png';
-import astrato_2b_clickhouse_connection from '@site/static/images/integrations/data-visualization/astrato_2b_clickhouse_connection.png';
-import astrato_3_user_access from '@site/static/images/integrations/data-visualization/astrato_3_user_access.png';
-import astrato_4a_clickhouse_data_view from '@site/static/images/integrations/data-visualization/astrato_4a_clickhouse_data_view.png';
-import astrato_4b_clickhouse_data_view_joins from '@site/static/images/integrations/data-visualization/astrato_4b_clickhouse_data_view_joins.png';
-import astrato_4c_clickhouse_completed_data_view from '@site/static/images/integrations/data-visualization/astrato_4c_clickhouse_completed_data_view.png';
-import astrato_5a_clickhouse_build_chart from '@site/static/images/integrations/data-visualization/astrato_5a_clickhouse_build_chart.png';
-import astrato_5b_clickhouse_view_sql from '@site/static/images/integrations/data-visualization/astrato_5b_clickhouse_view_sql.png';
-import astrato_5c_clickhouse_complete_dashboard from '@site/static/images/integrations/data-visualization/astrato_5c_clickhouse_complete_dashboard.png';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting Astrato to ClickHouse
 
@@ -66,9 +49,7 @@ When setting up your data connection, you'll need to know:
 
 -   A connection is created and a dataview is created.
 
-:::note
-if a duplicate is created, a timestamp is added to the data source name.
-:::
+> **note**: if a duplicate is created, a timestamp is added to the data source name.
 
 ## Creating a semantic model / data view {#creating-a-semantic-model--data-view}
 

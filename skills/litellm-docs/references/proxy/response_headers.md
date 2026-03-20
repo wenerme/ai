@@ -28,7 +28,6 @@ If the backend provider does not return these headers, the value will be `None`.
 
 These headers are useful for clients to understand the current rate limit status and adjust their request rate accordingly.
 
-
 ## Latency Headers
 | Header | Type | Description |
 |--------|------|-------------|
@@ -68,4 +67,3 @@ llm_provider-openai-version: 2020-10-01
 llm_provider-x-ratelimit-limit-requests: 30000
 llm_provider-x-ratelimit-limit-tokens: 150000000
 ```
-

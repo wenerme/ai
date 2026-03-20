@@ -1,22 +1,12 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/helm
 title: 'Helm'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 2
 description: 'Deploying ClickStack with Helm - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack Helm chart', 'Helm ClickHouse deployment', 'HyperDX Helm installation', 'Kubernetes observability stack', 'ClickStack Kubernetes deployment']
 ---
 
-import Image from '@theme/IdealImage';
-import hyperdx_24 from '@site/static/images/use-cases/observability/hyperdx-24.png';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import JSONSupport from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_json_support.md';
-
-:::warning Chart Migration
+> **warning**: Chart Migration
 If you're currently using the `hdx-oss-v2` chart, please migrate to the `clickstack` chart. The `hdx-oss-v2` chart is in maintenance mode and will no longer receive new features. All new development is focused on the `clickstack` chart, which provides the same functionality with improved naming and better organization.
-:::
 
 The helm chart for ClickStack can be found [here](https://github.com/ClickHouse/ClickStack-helm-charts) and is the **recommended** method for production deployments.
 
@@ -42,7 +32,6 @@ The chart supports standard Kubernetes best practices, including:
 * Production
 
 ## Deployment steps {#deployment-steps}
-<br/>
 
 <VerticalStepper headerLevel="h3">
 
@@ -85,9 +74,8 @@ kubectl port-forward \
   8080:3000
 ```
 
-:::tip Production Ingress Setup
+> **tip**: Production Ingress Setup
 For production deployments, configure ingress with TLS instead of port forwarding. See the [Ingress Configuration guide](/docs/use-cases/observability/clickstack/deployment/helm-configuration#ingress-setup) for detailed setup instructions.
-:::
 
 ### Navigate to the UI {#navigate-to-the-ui}
 
@@ -99,9 +87,8 @@ Create a user, providing a username and password which meets the requirements.
 
 On clicking `Create`, data sources will be created for the ClickHouse instance deployed with the Helm chart.
 
-:::note Overriding default connection
+> **note**: Overriding default connection
 You can override the default connection to the integrated ClickHouse instance. For details, see ["Using ClickHouse Cloud"](#using-clickhouse-cloud).
-:::
 
 ### Customizing values (optional) {#customizing-values}
 
@@ -185,9 +172,8 @@ hyperdx:
         key: API_KEY
 ```
 
-:::tip API Key Management
+> **tip**: API Key Management
 For detailed API key setup instructions including multiple configuration methods and pod restart procedures, see the [API Key Setup guide](/docs/use-cases/observability/clickstack/deployment/helm-configuration#api-key-setup).
-:::
 
 </VerticalStepper>
 
@@ -241,9 +227,8 @@ helm install my-clickstack clickstack/clickstack -f values.yaml
 # helm upgrade my-clickstack clickstack/clickstack -f values.yaml
 ```
 
-:::tip Advanced External Configurations
+> **tip**: Advanced External Configurations
 For production deployments with secret-based configuration, external OTEL collectors, or minimal setups, see the [Deployment Options guide](/docs/use-cases/observability/clickstack/deployment/helm-deployment-options).
-:::
 
 ## Production notes {#production-notes}
 
@@ -257,11 +242,10 @@ helm install my-clickstack clickstack/clickstack \
   --set otel.enabled=false
 ```
 
-:::tip Production Best Practices
+> **tip**: Production Best Practices
 For production deployments including high availability configuration, resource management, ingress/TLS setup, and cloud-specific configurations (GKE, EKS, AKS), see:
 - [Configuration Guide](/docs/use-cases/observability/clickstack/deployment/helm-configuration) - Ingress, TLS, and secrets management
 - [Cloud Deployments](/docs/use-cases/observability/clickstack/deployment/helm-cloud) - Cloud-specific settings and production checklist
-:::
 
 ## Task configuration {#task-configuration}
 
@@ -311,11 +295,10 @@ helm install my-clickstack clickstack/clickstack --debug --dry-run
 kubectl get pods -l app.kubernetes.io/name=clickstack
 ```
 
-:::tip Additional Troubleshooting Resources
+> **tip**: Additional Troubleshooting Resources
 For ingress-specific issues, TLS problems, or cloud deployment troubleshooting, see:
 - [Ingress Troubleshooting](/docs/use-cases/observability/clickstack/deployment/helm-configuration#troubleshooting-ingress) - Asset serving, path rewrites, browser issues
 - [Cloud Deployments](/docs/use-cases/observability/clickstack/deployment/helm-cloud#loadbalancer-dns-resolution-issue) - GKE OpAMP issues and cloud-specific problems
-:::
 
 <JSONSupport/>
 

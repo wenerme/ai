@@ -7,10 +7,10 @@ description: >-
 
 A stream in OpenObserve is sequence of events(logs/metrics/traces), sharing the same source for eg: logs from a specific application or from an enterprise.
 
-To navigate to streams in OpenObserve , select preferred organization using organization selection control, then click on ![Streams](../images/streams_menu.jpg) menu , which will take one to stream list screen. The screen lists all streams for selected organization.  
+To navigate to streams in OpenObserve , select preferred organization using organization selection control, then click on [Streams] menu , which will take one to stream list screen. The screen lists all streams for selected organization.  
 
 <kbd>
-![Streams](../images/streams_list.jpg)
+[Streams]
 </kbd>
 
 Streams screen details :
@@ -23,11 +23,10 @@ Streams screen details :
 1. Ingested data size for the stream in MB
 1. Stream details control to open stream details page
 
-
 To view details or to update stream settings click on stream details control on streams page
 
 <kbd> 
-![Stream Details](../images/stream_details.jpg)
+[Stream Details]
 </kbd>
 
 Streams details screen:

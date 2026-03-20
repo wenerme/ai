@@ -72,7 +72,6 @@ curl --request POST \
   }'
 ```
 
-
 ## Examples
 
 Anything after `http://0.0.0.0:4000/cohere` is treated as a provider-specific route, and handled accordingly.
@@ -83,7 +82,6 @@ Key Changes:
 |------------------------------------------------------|-----------------------------------|
 | `https://api.cohere.com`          | `http://0.0.0.0:4000/cohere` (LITELLM_PROXY_BASE_URL="http://0.0.0.0:4000")      |
 | `bearer $CO_API_KEY`                                 | `bearer anything` (use `bearer LITELLM_VIRTUAL_KEY` if Virtual Keys are setup on proxy)                    |
-
 
 ### **Example 1: Rerank endpoint**
 
@@ -167,7 +165,6 @@ curl --request POST \
 
 ### **Example 3: Embedding**
 
-
 ```bash
 curl --request POST \
   --url https://api.cohere.com/v1/embed \
@@ -195,7 +192,6 @@ curl --request POST \
     "input_type": "classification"
   }'
 ```
-
 
 ## Advanced - Use with Virtual Keys 
 
@@ -239,7 +235,6 @@ Expected Response
 ```
 
 3. Test it! 
-
 
 ```bash
 curl --request POST \

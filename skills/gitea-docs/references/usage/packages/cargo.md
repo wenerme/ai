@@ -1,7 +1,5 @@
 ---
 date: "2022-11-20T00:00:00+00:00"
-slug: "cargo"
-sidebar_position: 5
 ---
 
 # Cargo Package Registry

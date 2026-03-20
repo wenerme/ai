@@ -226,7 +226,6 @@ Detailed explanations on MATERIALIZATIONS:
 
 - **MaterializedViewRewriteFail**: Displays materialized views that failed to match the query, meaning the original SQL query could not match any existing materialized views and therefore could not be optimized using them.
 
-
 ### Dropping a Materialized View
 
 ```sql
@@ -475,7 +474,6 @@ Business Scenario: Matching prefix indexes.
    ```
 5. In the result of the explain command, you can see that `internal.test_db.test_table.mv_1` was chosen, indicating that the query hit the materialized view.
 
-
 ### Example 3: Pre-filtering and Expression Computation to Accelerate Queries
 
 Business Scenario: Pre-filtering data or accelerating expression computation.
@@ -561,7 +559,6 @@ Business Scenario: Pre-filtering data or accelerating expression computation.
    ```
 
 ## FAQ
-
 
 1. Why isn't the rewrite successful after creating a materialized view?
 

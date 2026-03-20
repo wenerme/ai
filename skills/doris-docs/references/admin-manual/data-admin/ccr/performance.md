@@ -57,4 +57,3 @@ Full synchronization time difference: 6 minutes 1 second
 
 ### Test Conclusion
 The **lag time** at each stage is maintained within `5 seconds`.
-

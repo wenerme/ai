@@ -1,29 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/nodejs-traces
 title: 'Monitoring Node.js Traces with ClickStack'
-sidebar_label: 'Node.js Traces'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Node.js application traces with ClickStack'
 doc_type: 'guide'
 keywords: ['Node.js', 'traces', 'OTEL', 'ClickStack', 'distributed tracing']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import search_view from '@site/static/images/clickstack/nodejs/traces-search-view.png';
-import trace_view from '@site/static/images/clickstack/nodejs/trace-view.png';
-import finish_import from '@site/static/images/clickstack/nodejs/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/nodejs/example-traces-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Node.js Traces with ClickStack {#nodejs-traces-clickstack}
 
 :::note[TL;DR]
 Capture distributed traces from Node.js applications in ClickStack using OpenTelemetry automatic instrumentation. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Node.js application {#existing-nodejs}
 
@@ -154,7 +139,6 @@ You should see a response like `{"partialSuccess":{}}` indicating the traces wer
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)**. The wide time range ensures you'll see the demo traces regardless of your location. Once you see the traces, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -181,9 +165,7 @@ To help you get started monitoring Node.js application performance, we provide a
 
 <Image img={example_dashboard} alt="Example dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

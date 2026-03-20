@@ -45,14 +45,10 @@ else {
 }
 ```
 
-:::info
-
-- `safe` works like `try/catch`, but can infer error types.
+> **info**: - `safe` works like `try/catch`, but can infer error types.
 - `safe` supports both tuple `[error, data, isDefined]` and object `{ error, data, isDefined }` styles.
 - `isDefinedError` checks if an error originates from `.errors`.
 - `isDefined` can replace `isDefinedError`
-
-:::
 
 ## Safe Client
 

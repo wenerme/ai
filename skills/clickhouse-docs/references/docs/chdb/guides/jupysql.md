@@ -1,14 +1,9 @@
 ---
 title: 'JupySQL and chDB'
-sidebar_label: 'JupySQL'
-slug: /chdb/guides/jupysql
 description: 'How to install chDB for Bun'
 keywords: ['chdb', 'JupySQL']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import PlayersPerRank from '@site/static/images/chdb/guides/players_per_rank.png';
 
 [JupySQL](https://jupysql.ploomber.io/en/latest/quick-start.html) is a Python library that lets you run SQL in Jupyter notebooks and the IPython shell.
 In this guide, we're going to learn how to query data using chDB and JupySQL.
@@ -44,9 +39,7 @@ Or in Jupyter Lab, by running:
 jupyter lab
 ```
 
-:::note
-If you're using Jupyter Lab, you'll need to create a notebook before following the rest of the guide.
-:::
+> **note**: If you're using Jupyter Lab, you'll need to create a notebook before following the rest of the guide.
 
 ## Downloading a dataset {#downloading-a-dataset}
 

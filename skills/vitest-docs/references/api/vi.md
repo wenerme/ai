@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # Vi
@@ -39,13 +39,11 @@ Substitutes all imported modules from provided `path` with another module. You c
 
 It is recommended to use `vi.mock` or `vi.hoisted` only inside test files. If Vite's [module runner](/config/experimental#experimental-vitemodulerunner) is disabled, they will not be hoisted. This is a performance optimisation to avoid ready unnecessary files.
 
-::: warning
-`vi.mock` works only for modules that were imported with the `import` keyword. It doesn't work with `require`.
+> **warning**: `vi.mock` works only for modules that were imported with the `import` keyword. It doesn't work with `require`.
 
 In order to hoist `vi.mock`, Vitest statically analyzes your files. It indicates that `vi` that was not directly imported from the `vitest` package (for example, from some utility file) cannot be used. Use `vi.mock` with `vi` imported from `vitest`, or enable [`globals`](/config/globals) config option.
 
 Vitest will not mock modules that were imported inside a [setup file](/config/setupfiles) because they are cached by the time a test file is running. You can call [`vi.resetModules()`](#vi-resetmodules) inside [`vi.hoisted`](#vi-hoisted) to clear all module caches before running a test file.
-:::
 
 If the `factory` function is defined, all imports will return its result. Vitest calls factory only once and caches results for all subsequent imports until [`vi.unmock`](#vi-unmock) or [`vi.doUnmock`](#vi-dounmock) is called.
 
@@ -92,8 +90,7 @@ If you are using TypeScript with `paths` aliases configured in `tsconfig.json` h
 In order to make it work, make sure to replace all aliased imports, with their corresponding relative paths.
 Eg. use `import('./path/to/module.js')` instead of `import('@/module')`.
 
-::: warning
-`vi.mock` is hoisted (in other words, _moved_) to **top of the file**. It means that whenever you write it (be it inside `beforeEach` or `test`), it will actually be called before that.
+> **warning**: `vi.mock` is hoisted (in other words, _moved_) to **top of the file**. It means that whenever you write it (be it inside `beforeEach` or `test`), it will actually be called before that.
 
 This also means that you cannot use any variables inside the factory that are defined outside the factory.
 
@@ -121,10 +118,8 @@ vi.mocked(namedExport).mockReturnValue(100)
 expect(namedExport()).toBe(100)
 expect(namedExport).toBe(mocks.namedExport)
 ```
-:::
 
-::: warning
-If you are mocking a module with default export, you will need to provide a `default` key within the returned factory function object. This is an ES module-specific caveat; therefore, `jest` documentation may differ as `jest` uses CommonJS modules. For example,
+> **warning**: If you are mocking a module with default export, you will need to provide a `default` key within the returned factory function object. This is an ES module-specific caveat; therefore, `jest` documentation may differ as `jest` uses CommonJS modules. For example,
 
 ```ts
 vi.mock('./path/to/module.js', () => {
@@ -135,7 +130,6 @@ vi.mock('./path/to/module.js', () => {
   }
 })
 ```
-:::
 
 If there is a `__mocks__` folder alongside a file that you are mocking, and the factory is not provided, Vitest will try to find a file with the same name in the `__mocks__` subfolder and use it as an actual module. If you are mocking a dependency, Vitest will try to find a `__mocks__` folder in the [root](/config/root) of the project (default is `process.cwd()`). You can tell Vitest where the dependencies are located through the [`deps.moduleDirectories`](/config/deps#deps-moduledirectories) config option.
 
@@ -169,9 +163,7 @@ vi.mock('../increment.js')
 axios.get(`/apples/${increment(1)}`)
 ```
 
-::: warning
-Beware that if you don't call `vi.mock`, modules **are not** mocked automatically. To replicate Jest's automocking behaviour, you can call `vi.mock` for each required module inside [`setupFiles`](/config/setupfiles).
-:::
+> **warning**: Beware that if you don't call `vi.mock`, modules **are not** mocked automatically. To replicate Jest's automocking behaviour, you can call `vi.mock` for each required module inside [`setupFiles`](/config/setupfiles).
 
 If there is no `__mocks__` folder or a factory provided, Vitest will import the original module and auto-mock all its exports. For the rules applied, see [algorithm](/guide/mocking/modules#automocking-algorithm).
 
@@ -190,16 +182,13 @@ function doMock<T>(
 
 The same as [`vi.mock`](#vi-mock), but it's not hoisted to the top of the file, so you can reference variables in the global file scope. The next [dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) of the module will be mocked.
 
-::: warning
-This will not mock modules that were imported before this was called. Don't forget that all static imports in ESM are always [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#hoisting), so putting this before static import will not force it to be called before the import:
+> **warning**: This will not mock modules that were imported before this was called. Don't forget that all static imports in ESM are always [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#hoisting), so putting this before static import will not force it to be called before the import:
 
 ```ts
 vi.doMock('./increment.js') // this will be called _after_ the import statement
 
 import { increment } from './increment.js'
 ```
-:::
-
 ```ts [increment.js]
 export function increment(number) {
   return number + 1
@@ -231,8 +220,7 @@ test('importing the next module imports mocked one', async () => {
 })
 ```
 
-::: tip
-In environments that support [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management), you can use `using` on the value returned from `vi.doMock()` to automatically call [`vi.doUnmock()`](#vi-dounmock) on the mocked module when the containing block is exited. This is especially useful when mocking a dynamically imported module for a single test case.
+> **tip**: In environments that support [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management), you can use `using` on the value returned from `vi.doMock()` to automatically call [`vi.doUnmock()`](#vi-dounmock) on the mocked module when the containing block is exited. This is especially useful when mocking a dynamically imported module for a single test case.
 
 ```ts
 it('uses a mocked version of my-module', () => {
@@ -247,7 +235,6 @@ it('uses the normal version of my-module again', () => {
   const myModule = await import('my-module') // not mocked
 })
 ```
-:::
 
 ### vi.mocked
 
@@ -406,9 +393,7 @@ test('module has old state', async () => {
 })
 ```
 
-::: warning
-Does not reset mocks registry. To clear mocks registry, use [`vi.unmock`](#vi-unmock) or [`vi.doUnmock`](#vi-dounmock).
-:::
+> **warning**: Does not reset mocks registry. To clear mocks registry, use [`vi.unmock`](#vi-unmock) or [`vi.doUnmock`](#vi-dounmock).
 
 ### vi.dynamicImportSettled
 
@@ -435,11 +420,9 @@ test('operations are resolved', async () => {
 })
 ```
 
-::: tip
-If during a dynamic import another dynamic import is initiated, this method will wait until all of them are resolved.
+> **tip**: If during a dynamic import another dynamic import is initiated, this method will wait until all of them are resolved.
 
 This method will also wait for the next `setTimeout` tick after the import is resolved so all synchronous operations should be completed by the time it's resolved.
-:::
 
 ## Mocking Functions and Objects
 
@@ -554,11 +537,9 @@ This restores all original implementations on spies created with [`vi.spyOn`](#v
 
 After the mock was restored, you can spy on it again.
 
-::: warning
-This method also does not affect mocks created during [automocking](/guide/mocking/modules#mocking-a-module).
+> **warning**: This method also does not affect mocks created during [automocking](/guide/mocking/modules#mocking-a-module).
 
 Note that unlike [`mock.mockRestore`](/api/mock#mockrestore), `vi.restoreAllMocks` will not clear mock history or reset the mock implementation
-:::
 
 ### vi.spyOn
 
@@ -614,8 +595,7 @@ const spy = vi.spyOn(cart, 'Apples')
 
 If you provide an arrow function, you will get [`<anonymous> is not a constructor` error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_constructor) when the mock is called.
 
-::: tip
-In environments that support [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management), you can use `using` instead of `const` to automatically call `mockRestore` on any mocked function when the containing block is exited. This is especially useful for spied methods:
+> **tip**: In environments that support [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management), you can use `using` instead of `const` to automatically call `mockRestore` on any mocked function when the containing block is exited. This is especially useful for spied methods:
 
 ```ts
 it('calls console.log', () => {
@@ -625,10 +605,8 @@ it('calls console.log', () => {
 })
 // console.log is restored here
 ```
-:::
 
-::: tip
-You can call [`vi.restoreAllMocks`](#vi-restoreallmocks) inside [`afterEach`](/api/hooks#aftereach) (or enable [`test.restoreMocks`](/config/restoremocks)) to restore all methods to their original implementations after every test. This will restore the original [object descriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty), so you won't be able to change method's implementation anymore, unless you spy again:
+> **tip**: You can call [`vi.restoreAllMocks`](#vi-restoreallmocks) inside [`afterEach`](/api/hooks#aftereach) (or enable [`test.restoreMocks`](/config/restoremocks)) to restore all methods to their original implementations after every test. This will restore the original [object descriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty), so you won't be able to change method's implementation anymore, unless you spy again:
 
 ```ts
 const cart = {
@@ -643,10 +621,8 @@ console.log(cart.getApples()) // 42
 spy.mockReturnValue(10)
 console.log(cart.getApples()) // still 42!
 ```
-:::
 
-::: tip
-It is not possible to spy on exported methods in [Browser Mode](/guide/browser/). Instead, you can spy on every exported method by calling `vi.mock("./file-path.js", { spy: true })`. This will mock every export but keep its implementation intact, allowing you to assert if the method was called correctly.
+> **tip**: It is not possible to spy on exported methods in [Browser Mode](/guide/browser/). Instead, you can spy on every exported method by calling `vi.mock("./file-path.js", { spy: true })`. This will mock every export but keep its implementation intact, allowing you to assert if the method was called correctly.
 
 ```ts
 import { calculator } from './src/calculator.ts'
@@ -660,7 +636,6 @@ expect(calculator).toHaveReturned(3)
 ```
 
 And while it is possible to spy on exports in `jsdom` or other Node.js environments, this might change in the future.
-:::
 
 ### vi.stubEnv {#vi-stubenv}
 
@@ -693,13 +668,11 @@ import.meta.env.NODE_ENV === undefined
 import.meta.env.MODE === 'development'
 ```
 
-:::tip
-You can also change the value by simply assigning it, but you won't be able to use `vi.unstubAllEnvs` to restore previous value:
+> **tip**: You can also change the value by simply assigning it, but you won't be able to use `vi.unstubAllEnvs` to restore previous value:
 
 ```ts
 import.meta.env.MODE = 'test'
 ```
-:::
 
 ### vi.unstubAllEnvs {#vi-unstuballenvs}
 
@@ -756,15 +729,13 @@ globalThis.innerWidth === 100
 window.innerWidth === 100
 ```
 
-:::tip
-You can also change the value by simply assigning it to `globalThis` or `window` (if you are using `jsdom` or `happy-dom` environment), but you won't be able to use `vi.unstubAllGlobals` to restore original value:
+> **tip**: You can also change the value by simply assigning it to `globalThis` or `window` (if you are using `jsdom` or `happy-dom` environment), but you won't be able to use `vi.unstubAllGlobals` to restore original value:
 
 ```ts
 globalThis.innerWidth = 100
 // if you are using jsdom or happy-dom
 window.innerWidth = 100
 ```
-:::
 
 ### vi.unstubAllGlobals {#vi-unstuballglobals}
 
@@ -1060,10 +1031,8 @@ Mocking `nextTick` is not supported when running Vitest inside `node:child_proce
 
 The implementation is based internally on [`@sinonjs/fake-timers`](https://github.com/sinonjs/fake-timers).
 
-::: tip
-`vi.useFakeTimers()` does not automatically mock `process.nextTick` and `queueMicrotask`.
+> **tip**: `vi.useFakeTimers()` does not automatically mock `process.nextTick` and `queueMicrotask`.
 But you can enable it by specifying the option in `toFake` argument: `vi.useFakeTimers({ toFake: ['nextTick', 'queueMicrotask'] })`.
-:::
 
 ### vi.setTimerTickMode <Version>4.1.0</Version> {#vi-settimertickmode}
 
@@ -1248,7 +1217,7 @@ import { value } from './some/module.js'
 + vi.hoisted(() => callFunctionWithSideEffect())
 ```
 
-::: warning IMPORTS ARE NOT AVAILABLE
+> **warning**: IMPORTS ARE NOT AVAILABLE
 Running code before the imports means that you cannot access imported variables because they are not defined yet:
 
 ```ts
@@ -1272,7 +1241,6 @@ await vi.hoisted(async () => {
 ```
 
 However, it is discourage to import anything inside of `vi.hoisted` because imports are already hoisted - if you need to execute something before the tests are running, just execute it in the imported module itself.
-:::
 
 This method returns the value that was returned from the factory. You can use that value in your `vi.mock` factories if you need easy access to locally defined variables:
 
@@ -1360,7 +1328,6 @@ test('example', () => {
 
 Example output:
 
-<!-- eslint-skip -->
 ```js
 FAIL  example.test.ts > example
 AssertionError: expected 'left' to deeply equal 'right'

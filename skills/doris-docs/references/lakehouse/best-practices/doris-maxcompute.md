@@ -125,11 +125,9 @@ Starting from version 4.1.0, Doris supports writing data back to MaxCompute. Thi
 - **Data Processing**: Leverage Doris's powerful computing capabilities to perform ETL processing on data, and store the processed data in MaxCompute.
 - **Cross-source Data Integration**: Consolidate data from multiple sources in Doris and write it to MaxCompute for unified management.
 
-:::note
-- This is an experimental feature, supported starting from version 4.1.0.
+> **note**: - This is an experimental feature, supported starting from version 4.1.0.
 - Supports writing to partitioned and non-partitioned tables.
 - Does not support writing to clustered tables, transactional tables, Delta Tables, and external tables.
-:::
 
 ### 01 INSERT INTO Append Write
 
@@ -183,12 +181,10 @@ Starting from version 4.1.0, Doris supports creating and deleting databases and 
 - **Unified Data Management**: Manage metadata from multiple data sources centrally in Doris, without switching to the MaxCompute console.
 - **Automated Data Pipelines**: Dynamically create target tables in ETL workflows to achieve end-to-end automation.
 
-:::note
-- This is an experimental feature, supported starting from version 4.1.0.
+> **note**: - This is an experimental feature, supported starting from version 4.1.0.
 - This feature is only available when the `mc.enable.namespace.schema` property is set to `true`.
 - Supports creating and deleting partitioned and non-partitioned tables.
 - Does not support creating clustered tables, transactional tables, Delta Tables, and external tables.
-:::
 
 ### 01 Create and Drop Database
 
@@ -206,9 +202,7 @@ CREATE DATABASE IF NOT EXISTS mc.mc_schema;
 DROP DATABASE IF EXISTS mc.mc_schema;
 ```
 
-:::caution
-For MaxCompute Database, dropping it will also delete all tables within it. Please proceed with caution.
-:::
+> **caution**: For MaxCompute Database, dropping it will also delete all tables within it. Please proceed with caution.
 
 ### 02 Create and Drop Table
 

@@ -13,7 +13,6 @@
 
     Service graph focuses on recent activity. When services are inactive for a period of time, they are removed from the graph to prevent unbounded growth and to keep the view relevant.
 
-
     !!! note "Where to find this"
 
         1. Sign in to OpenObserve.
@@ -22,7 +21,6 @@
 
         The topology loads automatically when recent trace activity is available.
         If there is no trace activity, the section displays a message indicating that no service graph data is available.
-
 
     ## What service graph displays
     Service graph displays the services in your system and the communication observed between them.
@@ -50,7 +48,6 @@
     ??? "Topology behaviour"
     ### Topology behaviour
     Service graph displays only recent activity. When a service produces no trace data for a set duration, it is removed from the topology. This design focuses attention on the active state of your system.
-
 
     ## Data source
     Service graph uses distributed traces as the single data source.  

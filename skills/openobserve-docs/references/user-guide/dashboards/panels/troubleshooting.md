@@ -2,22 +2,22 @@ This page provides instructions on the warning or error icons displayed on the p
 
 ??? "1. Error: When the query duration is modified due to the query range is restricted"
     ## Error: When the query duration is modified due to the query range is restricted   
-    ![When the query duration is modified due to the query range is restricted](../../../images/troubleshooting-panels-error-message.png) 
+    [When the query duration is modified due to the query range is restricted] 
 
     ### Cause
     This occurs when the time range of your query exceeds the limit set at the **Max Query Range (in hours)** field in the stream settings.   
     ### Resolution   
     1. Go to the **Streams** page.  
-    2. Find the stream you are working with and select **Stream Details** under the **Actions** column.<br>
-    ![Troubleshooting Errors](../../../images/troubleshooting-max-query-range.png) 
+    2. Find the stream you are working with and select **Stream Details** under the **Actions** column.
+    [Troubleshooting Errors] 
 
-    3. In the stream settings, update the **Max Query Range (in hours)** to a value that supports your query duration. <br>  
+    3. In the stream settings, update the **Max Query Range (in hours)** to a value that supports your query duration.   
 
 ??? "Warning: The data shown is cached and is different from the selected time range"
 
     ## Warning: The data shown is cached and is different from the selected time range 
 
-    ![The data shown is cached and is different from the selected time range](../../../images/troubleshooting-warning.png)
+    [The data shown is cached and is different from the selected time range]
 
     ### Cause
     This warning appears when the selected time range has changed, but the panel did not automatically refresh.  
@@ -28,7 +28,7 @@ This page provides instructions on the warning or error icons displayed on the p
 ??? "Warning: Limiting the displayed series to ensure optimal performance"
     ## Warning: Limiting the displayed series to ensure optimal performance
 
-    ![Limiting the displayed series to ensure optimal performance](../../../images/troubleshooting-warning-limit-displayed-series.png) 
+    [Limiting the displayed series to ensure optimal performance] 
 
     ### Cause
     When the `ZO_MAX_DASHBOARD_SERIES` variable is set, the panel will display only the specified number of series. A warning message will appear on the panel indicating that the displayed data has been limited for optimal performance.
@@ -45,7 +45,7 @@ This page provides instructions on the warning or error icons displayed on the p
     ```  
     Replace <number_of_series> with the maximum number of time series you want each panel to display.
 
-    **Example**  <br>
+    **Example**  
     If you set ZO_MAX_DASHBOARD_SERIES=50:
 
     - A panel with a single Y-axis will display up to 50 series.  
@@ -53,7 +53,7 @@ This page provides instructions on the warning or error icons displayed on the p
 
 ??? "Warning: The data shown is incomplete because the loading was interrupted"
     ## Warning: The data shown is incomplete because the loading was interrupted
-    ![partial-data-error](partial-data-error.png)
+    [partial-data-error]
 
     ### Cause
     This warning appears when the query execution was interrupted or cancelled. It results in the panel displaying partial or no data while indicating that the data is not fully loaded.

@@ -21,8 +21,6 @@ While rich in detail, native WebLogic logging was built for **manual inspection*
 
 By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** for parsing, you can transform these raw logs into structured, searchable, and actionable data.
 
-
-
 ??? "Prerequisites"
 
     - An **OpenObserve account** (self-hosted or cloud)  
@@ -30,14 +28,13 @@ By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** fo
     - Access to log files (`AdminServer.log`, `access.log`, etc.)  
     - **Fluent Bit installed** on the WebLogic host ([installation guide](https://docs.fluentbit.io/manual/installation))  
 
-
 ??? "Step 1: Collect OpenObserve Credentials"
 
     1. Move to **Data Sources** page.
     2. Under Custom tab → Logs → Fluentbit
     3. Copy the entire **output section** snippet for Fluent Bit.
     
-        ![Collect OpenObserve Credentials](../images/servers/weblogic/data-sources.png)
+        [Collect OpenObserve Credentials]
 
 ??? "Step 2: Configure Fluent Bit"
 
@@ -84,7 +81,6 @@ By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** fo
 
     Trigger WebLogic events (restart server, deploy app, etc.) to generate logs.
 
-
 ??? "Step 3: Verify Logs in OpenObserve"
 
     1. Navigate to **Streams → weblogic-logs** in OpenObserve.
@@ -97,7 +93,7 @@ By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** fo
         }
         ```
 
-    ![Verify Logs in OpenObserve](../images/servers/weblogic/weblogic-logs.png)
+    [Verify Logs in OpenObserve]
 
 ??? "Step 4: Parse Logs with VRL"
 
@@ -138,14 +134,12 @@ By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** fo
         }
         ```
 
-    ![Parse Logs with VRL](../images/servers/weblogic/vrl.png)
+    [Parse Logs with VRL]
     Next you can:
 
     * Search by **level**, **component**, or **message**
     * Build dashboards (e.g., error rates, slow components)
     * Configure alerts (e.g., trigger on `Error` in specific component)
-
-
 
 ## Troubleshooting
 

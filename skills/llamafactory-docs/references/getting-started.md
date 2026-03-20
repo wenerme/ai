@@ -1,6 +1,5 @@
 # Getting Started
 
-
 ## 训练方法
 
 |          方法          |     全参数训练      |    部分参数训练     |       LoRA         |       QLoRA        |
@@ -8,9 +7,6 @@
 |      指令监督微调       | :white_check_mark: |  |  | |
 |      奖励模型训练       |  |  |  | |
 |        DPO 训练        |  |  |  | |
-
-
-
 
 ## 软件依赖
 
@@ -24,13 +20,11 @@
 |       datasets        | 3.2.0  | 4.0.0  |
 |         peft          | 0.18.1 | 0.18.1 |
 
-
 |       可选项        | 至少     | 推荐     |
 |:----------------:|--------|--------|
 | CUDA(NVIDIA GPU) | 11.6   | 12.2   |
 |    deepspeed     | 0.18.4 | 0.18.4 |
 |   flash-attn(NVIDIA GPU)   | 2.5.6  | 2.7.2  |
-
 
 ## 如何使用
 
@@ -46,7 +40,6 @@ git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git
 cd LlamaFactory
 pip install -e .
 ```
-
 
 ### 数据准备
 

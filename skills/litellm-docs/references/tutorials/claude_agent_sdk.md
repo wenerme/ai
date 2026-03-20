@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Claude Agent SDK with LiteLLM
 
@@ -80,8 +79,6 @@ async with ClaudeSDKClient(options=options) as client:
                 if hasattr(content_block, 'text'):
                     print(content_block.text, end='', flush=True)
 ```
-
-
 
 ## Why Use LiteLLM with Agent SDK?
 

@@ -10,9 +10,8 @@
 
 Remote storage supports placing cold data in external storage (such as object storage, HDFS).
 
-:::warning Note
+> **warning**: Note
 The data in remote storage has only one copy, and the reliability of the data depends on the reliability of the remote storage. You need to ensure that the remote storage has erasure coding (EC) or multi-replica technology to ensure data reliability.
-:::
 
 ## Usage
 
@@ -37,9 +36,7 @@ PROPERTIES
 );
 ```
 
-:::tip
-When creating the S3 RESOURCE, a link verification to the S3 remote will be performed to ensure the correctness of the RESOURCE creation.
-:::
+> **tip**: When creating the S3 RESOURCE, a link verification to the S3 remote will be performed to ensure the correctness of the RESOURCE creation.
 
 *Step 2:* Create STORAGE POLICY.
 
@@ -70,9 +67,8 @@ PROPERTIES(
 );
 ```
 
-:::warning Note
+> **warning**: Note
 If the UNIQUE table is set with `"enable_unique_key_merge_on_write" = "true"`, this feature cannot be used.
-:::
 
 ### Saving Cold Data to HDFS
 
@@ -117,9 +113,8 @@ PROPERTIES(
 );
 ```
 
-:::warning Note
+> **warning**: Note
 If the UNIQUE table is set with `"enable_unique_key_merge_on_write" = "true"`, this feature cannot be used.
-:::
 
 ### Cooling Existing Tables to Remote Storage
 
@@ -137,11 +132,9 @@ For an existing PARTITION, set remote storage by associating the created STORAGE
 ALTER TABLE create_table_partition MODIFY PARTITION (*) SET("storage_policy"="test_policy");
 ```
 
-:::tip
-Note that if the user specifies different Storage Policies for the entire Table and some Partitions when creating the table, the Storage Policy set for the Partition will be ignored, and all Partitions of the table will use the table's Policy. If you need a Partition's Policy to differ from others, you can modify it using the method described above for associating a Storage Policy with an existing Partition.
+> **tip**: Note that if the user specifies different Storage Policies for the entire Table and some Partitions when creating the table, the Storage Policy set for the Partition will be ignored, and all Partitions of the table will use the table's Policy. If you need a Partition's Policy to differ from others, you can modify it using the method described above for associating a Storage Policy with an existing Partition.
 
 For more details, please refer to the Docs directory under [RESOURCE](../../sql-manual/sql-statements/cluster-management/compute-management/CREATE-RESOURCE), [POLICY](../../sql-manual/sql-statements/cluster-management/storage-management/CREATE-STORAGE-POLICY), [CREATE TABLE](../../sql-manual/sql-statements/table-and-view/table/CREATE-TABLE), [ALTER TABLE](../../sql-manual/sql-statements/table-and-view/table/ALTER-TABLE-COLUMN), etc.
-:::
 
 ### Configuring Compaction
 

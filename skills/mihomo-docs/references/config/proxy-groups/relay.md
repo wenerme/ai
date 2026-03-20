@@ -21,7 +21,6 @@ Proxy Groups:
 
     wireguard 目前不支持在 relay 中使用，也请使用[dialer-proxy](../proxies/index.md#dialer-proxy)
 
-
 流量去向为 Clash <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
 
 ## 关于 UDP

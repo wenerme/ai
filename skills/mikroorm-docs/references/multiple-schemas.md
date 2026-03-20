@@ -2,9 +2,6 @@
 title: Using Multiple Schemas
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 In MySQL, PostgreSQL, and SQLite (via ATTACH DATABASE) it is possible to define your entities in multiple schemas. In MySQL terminology, it is called database, but from an implementation point of view, it is a schema.
 
 > To use multiple schemas, your connection needs to have access to all of them (multiple connections are not supported in a single MikroORM instance).
@@ -128,18 +125,7 @@ Relative paths are resolved from the `baseDir` option (or current working direct
 
 Reference attached databases using the `schema` option:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -171,9 +157,9 @@ export class UserProfile extends UserProfileSchema.class {}
 UserProfileSchema.setClass(UserProfile);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -199,8 +185,8 @@ export const UserProfile = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 // Entity in the main database (schema is optional for main)
@@ -228,8 +214,8 @@ class UserProfile {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 // Entity in the main database (schema is optional for main)
@@ -257,8 +243,7 @@ class UserProfile {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Schema Generator Support
 

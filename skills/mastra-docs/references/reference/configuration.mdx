@@ -66,10 +66,7 @@ export const mastra = new Mastra({
 
 Event handlers for the internal pub/sub system. Maps event topics to handler functions that are called when events are published to those topics.
 
-:::warning
-This is used internally by Mastra's workflow engine. Most users won't need to configure this option.
-:::
-
+> **warning**: This is used internally by Mastra's workflow engine. Most users won't need to configure this option.
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
 
@@ -118,11 +115,7 @@ Custom ID generator function for creating unique identifiers. Mastra passes opti
 - `role?`: Message role when creating a message ID
 - `stepType?`: Workflow step type when creating a step ID
 
-:::warning
-
-This is used internally by Mastra for creating IDs for workflow runs, agent conversations, and other resources. Most users won't need to configure this option.
-
-:::
+> **warning**: This is used internally by Mastra for creating IDs for workflow runs, agent conversations, and other resources. Most users won't need to configure this option.
 
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
@@ -194,11 +187,7 @@ A registry of memory instances that can be referenced by agents. Memory gives ag
 
 Visit the [Memory documentation](/docs/memory/overview) to learn more.
 
-:::note
-
-Most users configure memory directly on agents. This top-level configuration is for defining reusable memory instances that can be shared across multiple agents.
-
-:::
+> **note**: Most users configure memory directly on agents. This top-level configuration is for defining reusable memory instances that can be shared across multiple agents.
 
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
@@ -257,11 +246,7 @@ Input/output processors for transforming agent inputs and outputs. Processors ru
 
 Visit the [Processors documentation](/docs/agents/processors) to learn more.
 
-:::note
-
-Most users configure processors directly on agents. This top-level configuration is for defining reusable processor instances that can be shared across multiple agents.
-
-:::
+> **note**: Most users configure processors directly on agents. This top-level configuration is for defining reusable processor instances that can be shared across multiple agents.
 
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
@@ -284,10 +269,7 @@ export const mastra = new Mastra({
 
 Pub/sub system for event-driven communication between components. Used internally by Mastra for workflow event processing and component communication.
 
-:::warning
-This is used internally by Mastra. Most users won't need to configure this option.
-:::
-
+> **warning**: This is used internally by Mastra. Most users won't need to configure this option.
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
 import { CustomPubSub } from './pubsub'
@@ -305,11 +287,7 @@ Scorers assess the quality of agent responses and workflow outputs. They provide
 
 Visit the [Scorers documentation](/docs/evals/overview) to learn more.
 
-:::note
-
-Most users configure scorers directly on agents. This top-level configuration is for defining reusable scorer instances that can be shared across multiple agents.
-
-:::
+> **note**: Most users configure scorers directly on agents. This top-level configuration is for defining reusable scorer instances that can be shared across multiple agents.
 
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
@@ -350,10 +328,7 @@ Tools are reusable functions that agents can use to interact with external syste
 
 Visit the [Tools documentation](/docs/agents/using-tools) to learn more.
 
-:::note
-Most users configure tools directly on agents. This top-level configuration is for defining reusable tools that can be shared across multiple agents.
-:::
-
+> **note**: Most users configure tools directly on agents. This top-level configuration is for defining reusable tools that can be shared across multiple agents.
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
 import { createTool } from '@mastra/core/tools'
@@ -385,10 +360,7 @@ Text-to-speech providers for voice synthesis capabilities. Register voice provid
 
 Visit the [Voice documentation](/docs/voice/overview) to learn more.
 
-:::note
-Most users configure voice directly on agents. This top-level configuration is for defining reusable voice providers that can be shared across multiple agents.
-:::
-
+> **note**: Most users configure voice directly on agents. This top-level configuration is for defining reusable voice providers that can be shared across multiple agents.
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
 import { OpenAIVoice } from '@mastra/voice-openai'
@@ -408,10 +380,7 @@ Vector stores for semantic search and embeddings. Used in RAG pipelines, similar
 
 Visit the [RAG documentation](/docs/rag/overview) to learn more.
 
-:::note
-Most users create vector stores directly when building RAG pipelines. This top-level configuration is for defining reusable vector store instances that can be shared across your application.
-:::
-
+> **note**: Most users create vector stores directly when building RAG pipelines. This top-level configuration is for defining reusable vector store instances that can be shared across your application.
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
 import { PineconeVector } from '@mastra/pinecone'

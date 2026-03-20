@@ -10,7 +10,6 @@
 
 Modify the properties of a Workload Group. Currently, only property modifications are supported; modifications to actions and conditions are not supported.
 
-
 ## Syntax
 
 ```sql
@@ -22,7 +21,6 @@ ALTER WORKLOAD POLICY <workload_policy_name> PROPERTIES( <properties> )
 `<workload_policy_name>` 
 
 Workload Policy's Name
-
 
 `<properties>`
 

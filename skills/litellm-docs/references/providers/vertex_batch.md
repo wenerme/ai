@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex Batch APIs
 
@@ -36,9 +35,6 @@ Create a file called `batch_requests.jsonl` with your requests:
 
 Upload your JSONL file. For `vertex_ai`, the file will be stored in your configured GCS bucket provided by `GCS_BUCKET_NAME`.
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python showLineNumbers title="upload_file.py"
 from openai import OpenAI
 
@@ -56,9 +52,6 @@ file_obj = oai_client.files.create(
 print(f"File uploaded with ID: {file_obj.id}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Upload File"
 curl --request POST \
   --url http://localhost:4000/v1/files \
@@ -67,9 +60,6 @@ curl --request POST \
   --form purpose=batch \
   --form file=@batch_requests.jsonl
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response:**
 
@@ -91,9 +81,6 @@ curl --request POST \
 
 Create a batch job using the uploaded file ID.
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python showLineNumbers title="create_batch.py"
 batch_input_file_id = file_obj.id # from step 2
 create_batch_response = oai_client.batches.create(
@@ -106,9 +93,6 @@ create_batch_response = oai_client.batches.create(
 print(f"Batch created with ID: {create_batch_response.id}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Create Batch Request"
 curl --request POST \
   --url http://localhost:4000/v1/batches \
@@ -120,9 +104,6 @@ curl --request POST \
     "completion_window": "24h"
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response:**
 
@@ -156,9 +137,6 @@ curl --request POST \
 
 Check the status of your batch job. The batch will progress through states: `validating` → `in_progress` → `completed`.
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python showLineNumbers title="retrieve_batch.py"
 retrieved_batch = oai_client.batches.retrieve(
     batch_id=create_batch_response.id, # Created batch id, e.g. 7814463557919047680
@@ -170,17 +148,11 @@ if retrieved_batch.status == "completed":
     print(f"Output file: {retrieved_batch.output_file_id}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Retrieve Batch Status"
 curl --request GET \
   --url 'http://localhost:4000/batches/7814463557919047680?provider=vertex_ai' \
   --header 'Authorization: Bearer sk-1234'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response (when completed):**
 
@@ -216,9 +188,6 @@ Once the batch is completed, retrieve the results using the `output_file_id` fro
 
 **Important:** The `output_file_id` must be URL encoded when used in the request path.
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python showLineNumbers title="get_file_content.py"
 import urllib.parse
 import json
@@ -241,18 +210,12 @@ for line in file_content.text.strip().split('\n'):
     print("---")
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Get File Content"
 # Note: The file ID must be URL encoded
 curl --request GET \
   --url 'http://localhost:4000/files/gs%253A%252F%252Fmy-batch-bucket%252Flitellm-vertex-files%252Fpublishers%252Fgoogle%252Fmodels%252Fgemini-2.5-flash-lite%252Fprediction-model-2025-09-19T21%253A26%253A51.569037Z%252Fpredictions.jsonl/content?provider=vertex_ai' \
   --header 'Authorization: Bearer sk-1234'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response:**
 

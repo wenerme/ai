@@ -1,18 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Using Audio Models
 
 How to send / receive audio to a `/chat/completions` endpoint
 
-
 ## Audio Output from a model
 
 Example for creating a human-like audio response to a prompt
-
-<Tabs>
-
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 ```python
 import os 
@@ -34,9 +28,6 @@ with open("dog.wav", "wb") as f:
     f.write(wav_bytes)
 ```
 
-</TabItem>
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
 1. Define an audio model on config.yaml
 
 ```yaml
@@ -55,7 +46,6 @@ litellm --config config.yaml
 ```
 
 3. Test it using the OpenAI Python SDK
-
 
 ```python
 import base64
@@ -86,18 +76,7 @@ with open("dog.wav", "wb") as f:
 
 ```
 
-
-
-
-</TabItem>
-</Tabs>
-
 ## Audio Input to a model
-
-
-<Tabs>
-
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 ```python
 import base64
@@ -130,11 +109,6 @@ completion = litellm.completion(
 print(completion.choices[0].message)
 ```
 
-</TabItem>
-
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
-
 1. Define an audio model on config.yaml
 
 ```yaml
@@ -154,7 +128,6 @@ litellm --config config.yaml
 
 3. Test it using the OpenAI Python SDK
 
-
 ```python
 import base64
 from openai import OpenAI
@@ -163,7 +136,6 @@ client = OpenAI(
     api_key="LITELLM_PROXY_KEY", # sk-1234
     base_url="LITELLM_PROXY_BASE" # http://0.0.0.0:4000
 )
-
 
 # Fetch the audio file and convert it to a base64 encoded string
 url = "https://openaiassets.blob.core.windows.net/$web/API/docs/audio/alloy.wav"
@@ -199,14 +171,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message)
 ```
 
-
-</TabItem>
-</Tabs>
-
 ## Checking if a model supports `audio_input` and `audio_output`
-
-<Tabs>
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 Use `litellm.supports_audio_output(model="")` -> returns `True` if model can generate audio output
 
@@ -219,10 +184,6 @@ assert litellm.supports_audio_input(model="gpt-4o-audio-preview") == True
 assert litellm.supports_audio_output(model="gpt-3.5-turbo") == False
 assert litellm.supports_audio_input(model="gpt-3.5-turbo") == False
 ```
-</TabItem>
-
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
 
 1. Define vision models on config.yaml
 
@@ -283,10 +244,6 @@ Expected Response
   ]
 }
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Response Format with Audio
 

@@ -1,13 +1,9 @@
 # Dynamic Assets
 
-:::info
-
-This does not work with vite v5.0.0+ and wails v2 due to changes in vite. 
+> **info**: This does not work with vite v5.0.0+ and wails v2 due to changes in vite. 
 Changes are planned in v3 to support similar functionality under vite v5.0.0+.
 If you need this feature, stay with vite v4.0.0+.
 See [issue 3240](https://github.com/wailsapp/wails/issues/3240) for details
-
-:::
 
 If you want to load or generate assets for your frontend dynamically, you can achieve that using the
 [AssetsHandler](../reference/options#assetshandler) option. The AssetsHandler is a generic `http.Handler` which will
@@ -145,9 +141,5 @@ Then we would see the following:
 </p>
 ```
 
-:::warning
-
-Exposing your filesystem in this way is a security risk. It is recommended that you properly manage access
+> **warning**: Exposing your filesystem in this way is a security risk. It is recommended that you properly manage access
 to your filesystem.
-
-:::

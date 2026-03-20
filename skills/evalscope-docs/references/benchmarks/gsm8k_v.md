@@ -1,6 +1,5 @@
 # GSM8K-V
 
-
 ## Overview
 
 GSM8K-V is a purely visual multi-image mathematical reasoning benchmark that systematically transforms each GSM8K math word problem into its visual counterpart. It enables clean within-item comparison across modalities for multimodal math evaluation.
@@ -28,7 +27,6 @@ GSM8K-V is a purely visual multi-image mathematical reasoning benchmark that sys
 - Step-by-step reasoning encouraged before final answer
 - Metadata includes original text question for comparison
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ GSM8K-V is a purely visual multi-image mathematical reasoning benchmark that sys
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ GSM8K-V is a purely visual multi-image mathematical reasoning benchmark that sys
 | Images per Sample | min: 2, max: 11, mean: 4.05 |
 | Resolution Range | 1024x1024 - 1024x1024 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -148,5 +144,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

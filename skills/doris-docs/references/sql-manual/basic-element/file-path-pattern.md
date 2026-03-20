@@ -72,12 +72,11 @@ Doris supports numeric range expansion using brace patterns `{start..end}`:
 | `{a,b,c}` | `{a,b,c}` | `a`, `b`, `c` (enumeration) |
 | `{1..3,5,7..9}` | `{1,2,3,5,7,8,9}` | Mixed ranges and values |
 
-:::caution Note
+> **caution**: Note
 - Doris tries to match as many files as possible. Invalid parts in brace expressions are silently skipped, and valid parts are still expanded. For example, `file_{a..b,-1..3,4..5}` will match `file_4` and `file_5` (the invalid `a..b` and negative range `-1..3` are skipped, but `4..5` is expanded normally).
 - If the entire range is negative (e.g., `{-1..2}`), the range is skipped. If mixed with valid ranges (e.g., `{-1..2,1..3}`), only the valid range `1..3` is expanded.
 - When using comma-separated values with ranges, only numbers are allowed. For example, in `{1..4,a}`, the non-numeric `a` will be ignored, resulting in `{1,2,3,4}`.
 - Pure enumeration patterns like `{a,b,c}` (without `..` ranges) are passed directly to glob matching and work as expected.
-:::
 
 ### Combining Patterns
 
@@ -133,9 +132,8 @@ SELECT * FROM S3(
 );
 ```
 
-:::caution Zero-Padded Directories
+> **caution**: Zero-Padded Directories
 For zero-padded directory names like `month=01`, `month=02`, use wildcards (`*`) instead of range patterns. The pattern `{01..12}` expands to `{1,2,...,12}` which won't match `month=01`.
-:::
 
 **Match numbered file splits (e.g., Spark output):**
 

@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/avgResample'
 title: 'avgResample'
 description: 'Example of using the Resample combinator with avg'
 keywords: ['avg', 'Resample', 'combinator', 'examples', 'avgResample']
-sidebar_label: 'avgResample'
 doc_type: 'reference'
 ---
 

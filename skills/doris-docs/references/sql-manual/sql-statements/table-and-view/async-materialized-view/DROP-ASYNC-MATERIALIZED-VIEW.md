@@ -16,7 +16,6 @@ syntax:
 DROP MATERIALIZED VIEW (IF EXISTS)? mvName=multipartIdentifier
 ```
 
-
 1. IF EXISTS:
    If the materialized view does not exist, do not throw an error. If this keyword is not declared and the materialized view does not exist, an error will be reported.
 
@@ -41,4 +40,3 @@ DROP MATERIALIZED VIEW IF EXISTS db1.mv1;
     DROP, ASYNC, MATERIALIZED, VIEW
 
 ## Best Practice
-

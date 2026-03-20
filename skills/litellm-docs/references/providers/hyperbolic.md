@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Hyperbolic
 
@@ -12,9 +11,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc | [Hyperbolic Documentation ↗](https://docs.hyperbolic.xyz) |
 | Base URL | `https://api.hyperbolic.xyz/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
-
-<br />
-<br />
 
 https://docs.hyperbolic.xyz
 
@@ -163,9 +159,6 @@ litellm --config config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Hyperbolic via Proxy - Non-streaming"
 from openai import OpenAI
 
@@ -205,10 +198,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Hyperbolic via Proxy - LiteLLM SDK"
 import litellm
 
@@ -240,10 +229,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Hyperbolic via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -264,9 +249,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 For more detailed information on using the LiteLLM Proxy, see the [LiteLLM Proxy documentation](../providers/litellm_proxy).
 

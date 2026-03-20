@@ -1,6 +1,5 @@
 # JNLPBA-Rare
 
-
 ## Overview
 
 The JNLPBA-Rare dataset is a specialized subset of the JNLPBA test set created to evaluate zero-shot performance on its least frequent entity types: RNA and cell line. It tests model ability to recognize rare biomedical entities.
@@ -26,7 +25,6 @@ The JNLPBA-Rare dataset is a specialized subset of the JNLPBA test set created t
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: RNA, CELL_LINE
 
-
 ## Properties
 
 | Property | Value |
@@ -38,7 +36,6 @@ The JNLPBA-Rare dataset is a specialized subset of the JNLPBA test set created t
 | **Metrics** | `precision`, `recall`, `f1_score`, `accuracy` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -136,8 +133,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -168,8 +164,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -199,5 +193,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

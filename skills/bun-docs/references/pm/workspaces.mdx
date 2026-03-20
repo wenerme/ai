@@ -41,10 +41,8 @@ In the root `package.json`, the `"workspaces"` key is used to indicate which sub
 }
 ```
 
-<Note>
   **Glob support** — Bun supports full glob syntax in `"workspaces"`, including negative patterns (e.g.
   `!**/excluded/**`). See [here](/runtime/glob#supported-glob-patterns) for a comprehensive list of supported syntax.
-</Note>
 
 ```json package.json icon="file-json"
 {
@@ -104,7 +102,6 @@ workspaces using the `catalog:` protocol. Updating the catalog automatically
 updates every package that references it. See
 [Catalogs](/pm/catalogs) for details.
 
-<Note>
 ⚡️ **Speed** — Installs are fast, even for big monorepos. Bun installs the [Remix](https://github.com/remix-run/remix) monorepo in about `500ms` on Linux.
 
 - 28x faster than `npm install`
@@ -112,4 +109,3 @@ updates every package that references it. See
 - 8x faster than `pnpm install`
 
 <Image src="https://user-images.githubusercontent.com/709451/212829600-77df9544-7c9f-4d8d-a984-b2cd0fd2aa52.png" />
-</Note>

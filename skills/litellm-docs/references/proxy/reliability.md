@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Fallbacks
 
@@ -8,7 +6,6 @@ If a call fails after num_retries, fallback to another model group.
 
 - Quick Start [load balancing](./load_balancing.md)
 - Quick Start [client side fallbacks](#client-side-fallbacks)
-
 
 Fallbacks are typically done from one `model_name` to another `model_name`. 
 
@@ -21,9 +18,6 @@ Key change:
 ```python
 fallbacks=[{"gpt-3.5-turbo": ["gpt-4"]}]
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -53,10 +47,6 @@ router = Router(
 
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -76,11 +66,6 @@ router_settings:
   fallbacks: [{"gpt-3.5-turbo": ["gpt-4"]}]
 ```
 
-
-</TabItem>
-</Tabs>
-
-
 ### 2. Start Proxy
 
 ```bash
@@ -90,10 +75,6 @@ litellm --config /path/to/config.yaml
 ### 3. Test Fallbacks
 
 Pass `mock_testing_fallbacks=true` in request body, to trigger fallbacks.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 
 ```python
 
@@ -109,9 +90,6 @@ response = router.completion(
   mock_testing_fallbacks=True,
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -130,12 +108,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
 ### Explanation
 
 Fallbacks are done in-order - ["gpt-3.5-turbo, "gpt-4", "gpt-4-32k"], will do 'gpt-3.5-turbo' first, then 'gpt-4', etc.
@@ -147,7 +119,6 @@ There are 3 types of fallbacks:
 - `context_window_fallbacks`: For litellm.ContextWindowExceededErrors - LiteLLM maps context window error messages across providers [**See Code**](https://github.com/BerriAI/litellm/blob/89a43c872a1e3084519fb9de159bf52f5447c6c4/litellm/utils.py#L8469)
 - `fallbacks`: For all remaining errors - e.g. litellm.RateLimitError
 
-
 ## Client Side Fallbacks
 
 Set fallbacks in the `.completion()` call for SDK and client-side for proxy. 
@@ -158,9 +129,6 @@ In this request the following will occur:
 3. The request to `model="gpt-3.5-turbo"` will succeed and the client making the request will get a response from gpt-3.5-turbo 
 
 👉 Key Change: `"fallbacks": ["gpt-3.5-turbo"]`
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -181,12 +149,6 @@ resp = router.completion(
 
 print(resp)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -210,9 +172,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -228,8 +187,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "fallbacks": ["gpt-3.5-turbo"]
 }'
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -264,13 +221,6 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-
-</Tabs>
-</TabItem>
-
-</Tabs>
-
 ### Control Fallback Prompts  
 
 Pass in messages/temperature/etc. per model in fallback (works for embedding/image generation/etc. as well).
@@ -286,9 +236,6 @@ fallbacks = [
   }
 ]
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -309,12 +256,6 @@ resp = router.completion(
 
 print(resp)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -341,9 +282,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -370,9 +308,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-<TabItem value="langchain" label="Langchain">
-
 ```python
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (
@@ -409,13 +344,6 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-</Tabs>
-
 ## Content Policy Violation Fallback
 
 Key change: 
@@ -423,9 +351,6 @@ Key change:
 ```python
 content_policy_fallbacks=[{"claude-2": ["my-fallback-model"]}]
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -459,8 +384,6 @@ response = router.completion(
   messages=[{"role": "user", "content": "Hey, how's it going?"}],
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 In your proxy config.yaml just add this line 👇
 
@@ -477,9 +400,6 @@ litellm --config /path/to/config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-</TabItem>
-</Tabs>
-
 ## Context Window Exceeded Fallback
 
 Key change: 
@@ -487,9 +407,6 @@ Key change:
 ```python
 context_window_fallbacks=[{"claude-2": ["my-fallback-model"]}]
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -523,8 +440,6 @@ response = router.completion(
   messages=[{"role": "user", "content": "Hey, how's it going?"}],
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 In your proxy config.yaml just add this line 👇
 
@@ -540,9 +455,6 @@ litellm --config /path/to/config.yaml
 
 # RUNNING on http://0.0.0.0:4000
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced
 ### Fallbacks + Retries + Timeouts + Cooldowns
@@ -668,7 +580,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
 #### **Content Policy Fallbacks**
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -706,16 +617,13 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
 ### Context Window Fallbacks (Pre-Call Checks + Fallbacks)
 
 **Before call is made** check if a call is within model context window with  **`enable_pre_call_checks: true`**.
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/c9e6b05cfb20dfb17272218e2555d6b496c47f6f/litellm/router.py#L2163)
 
-:::important
-**`enable_pre_call_checks` is required** for context-window enforcement. Without it, requests are sent to the provider regardless of input token count. Set `enable_pre_call_checks: true` in `router_settings` in your config.
-:::
+> **important**: **`enable_pre_call_checks` is required** for context-window enforcement. Without it, requests are sent to the provider regardless of input token count. Set `enable_pre_call_checks: true` in `router_settings` in your config.
 
 #### Custom max_input_tokens per deployment
 
@@ -744,10 +652,6 @@ If a request exceeds the limit, LiteLLM raises `ContextWindowExceededError` with
 **1. Setup config**
 
 For azure deployments, set the base model. Pick the base model from [this list](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), all the azure models start with azure/.
-
-
-<Tabs>
-<TabItem value="same-group" label="Same Group">
 
 Filter older instances of a model (e.g. gpt-3.5-turbo) with smaller context windows
 
@@ -801,10 +705,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="different-group" label="Context Window Fallbacks (Different Groups)">
 
 Fallback to larger models if current model is too small.
 
@@ -867,10 +767,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Content Policy Fallbacks
 
 Fallback across providers (e.g. from Azure OpenAI to Anthropic) if you hit content policy violation errors. 
@@ -893,12 +789,9 @@ litellm_settings:
   content_policy_fallbacks: [{"gpt-3.5-turbo-small": ["claude-opus"]}]
 ```
 
-
-
 ### Default Fallbacks 
 
 You can also set default_fallbacks, in case a specific model group is misconfigured / bad.
-
 
 ```yaml
 model_list:
@@ -1037,11 +930,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 
 ### Disable Fallbacks (Per Request/Key)
 
-
-<Tabs>
-
-<TabItem value="request" label="Per Request">
-
 You can disable fallbacks per key by setting `disable_fallbacks: true` in your request body.
 
 ```bash
@@ -1060,10 +948,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-
-<TabItem value="key" label="Per Key">
-
 You can disable fallbacks per key by setting `disable_fallbacks: true` in your key metadata.
 
 ```bash
@@ -1076,6 +960,3 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
     }
 }'
 ```
-
-</TabItem>
-</Tabs>

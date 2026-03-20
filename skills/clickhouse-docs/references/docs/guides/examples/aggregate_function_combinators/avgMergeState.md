@@ -1,14 +1,9 @@
 ---
-slug: '/examples/aggregate-function-combinators/avgMergeState'
 title: 'avgMergeState'
 description: 'Example of using the avgMergeState combinator'
 keywords: ['avg', 'MergeState', 'combinator', 'examples', 'avgMergeState']
-sidebar_label: 'avgMergeState'
 doc_type: 'reference'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # avgMergeState {#avgMergeState}
 
@@ -123,8 +118,7 @@ INSERT INTO raw_server_metrics (timestamp, server_id, region, datacenter, respon
 
 We'll write three queries for each of the levels:
 
-<Tabs>
-  <TabItem value="Service level" label="Service level" default>
+  
 ```sql
 SELECT
     server_id,
@@ -144,8 +138,8 @@ ORDER BY region, server_id;
 │       202 │ us-west    │             105 │
 └───────────┴────────────┴─────────────────┘
 ```
-  </TabItem>
-  <TabItem value="Regional level" label="Regional level">
+  
+  
 ```sql
 SELECT
     region,
@@ -162,8 +156,8 @@ ORDER BY datacenter, region;
 │ eu-central │ dc2        │                150 │
 └────────────┴────────────┴────────────────────┘
 ```
-  </TabItem>
-  <TabItem value="Datacenter level" label="Datacenter level">
+  
+  
 ```sql
 SELECT
     datacenter,
@@ -178,8 +172,7 @@ ORDER BY datacenter;
 │ dc2        │             150 │
 └────────────┴─────────────────┘
 ```
-  </TabItem>
-</Tabs>
+  
 
 We can insert more data:
 

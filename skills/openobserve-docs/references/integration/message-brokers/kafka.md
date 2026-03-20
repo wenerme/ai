@@ -31,7 +31,6 @@ Apache Kafka monitoring is essential for ensuring message broker performance, st
         bin/kafka-topics.sh --list --bootstrap-server localhost:9092
         ```
 
-
 ??? "Step 2: Install OpenTelemetry Collector Contrib"
 
     Download and install the latest **otelcol-contrib**.
@@ -47,7 +46,7 @@ Apache Kafka monitoring is essential for ensuring message broker performance, st
 
     1. In OpenObserve: go to **Data Sources → Custom → Metrics → Otel Collector **
     2. Copy the ingestion URL and Access Key
-    ![Get OpenObserve Ingestion URL and Access Key](../images/messagebroker/otel-metrics-source.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
 ??? "Step 4: Configure OpenTelemetry Collector"
 
@@ -87,7 +86,6 @@ Apache Kafka monitoring is essential for ensuring message broker performance, st
     * `OPENOBSERVE_TOKEN` → API token
     * `OPENOBSERVE_STREAM` → Stream name
 
-
 ??? "Step 5: Start OpenTelemetry Collector"
 
     1. Start and check status:
@@ -103,15 +101,13 @@ Apache Kafka monitoring is essential for ensuring message broker performance, st
 ??? "Step 6: Visualize in OpenObserve"
 
     1. Go to **Streams** → select metrics. Expand on any metric stream to see the events.
-    ![Visualize in OpenObserve](../images/messagebroker/kafka-metrics.png)
+    [Visualize in OpenObserve]
 
 !!! tip
 
     You can use **[prebuilt dashboards](https://openobserve-prod-website.s3.us-west-2.amazonaws.com/assets/kafka_dashboard_e2dc6c8569.json)** to quickly get started with Kafka monitoring. Browse and import dashboards from: [OpenObserve Community Dashboards](https://github.com/openobserve/dashboards)
 
-
 ## Troubleshooting
-
 
 -  Collector Fails to Start: `failed to build pipelines: unknown receiver kafkametrics`
     - Cause: Using an older `otelcol-contrib` version that doesn’t support the `kafkametrics` receiver.

@@ -3,9 +3,6 @@ title: "Guide: Building a research paper assistant with RAG"
 description: Guide on creating an AI research assistant that can analyze and answer questions about academic papers using RAG.
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Building a research paper assistant with RAG
 
 In this guide, you'll create an AI research assistant that can analyze academic papers and answer specific questions about their content using Retrieval Augmented Generation (RAG).
@@ -51,7 +48,6 @@ Your implementation will:
 
 Let's define the agent's behavior, connect it to your Mastra project, and create the vector store.
 
-<Steps>
   <StepItem title="Install additional dependencies">
     Install additional dependencies
 
@@ -153,13 +149,11 @@ Let's define the agent's behavior, connect it to your Mastra project, and create
     })
     ```
   </StepItem>
-</Steps>
 
 ## Processing documents
 
 In the following steps you'll fetch the research paper, split it into smaller chunks, generate embeddings for them, and store these chunks of information into the vector database.
 
-<Steps>
   <StepItem title="Load and Process the Paper">
     In this step the research paper is retrieved by providing an URL, then converted to a document object, and split into smaller, manageable chunks. By splitting into chunks the processing is faster and more efficient.
 
@@ -269,7 +263,6 @@ In the following steps you'll fetch the research paper, split it into smaller ch
 
     If the operation was successful you should see no output/errors in your terminal.
   </StepItem>
-</Steps>
 
 ## Test the assistant
 

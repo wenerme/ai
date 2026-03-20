@@ -22,7 +22,7 @@ Focused on this solution, this chapter contains the following 3 sections:
 
 The following figure illustrates the architecture of the log storage and analysis platform built on Apache Doris:
 
-![log storage and analysis platform architecture](/images/doris-overall-architecture.png)
+[log storage and analysis platform architecture]
 
 The architecture contains the following 3 parts:
 
@@ -83,7 +83,6 @@ Here is a typical example of a semi-structured log in JSON format. The top-level
   }
 }
 ```
-
 
 Apache Doris provides several aspects of support for Flexible Schema log data:
 
@@ -153,12 +152,11 @@ Refer to the following table to learn about the values of indicators in the exam
 | Percent of CPU resources reserved for data querying | 50% | Specify the value according to your actual needs. The default value is 50%. |
 | Estimated number of BE servers | 15.2 | Calculation formula: `Number of CPU cores for the peak write throughput / Number of CPU cores of a BE server /(1 - Percent of CPU resources reserved for data querying)` |
 | Rounded number of BE servers | 15  | Calculation formula: `MAX (Number of data copies, Estimated number of BE servers)` |
-| Estimated data storage space for each BE server (TB) | 5.7 | Calculation formula: `Estimated storage space for hot data / Estimated number of BE servers /(1 - 30%)`, where 30% represents the percent of reserved storage space.<br /><br />It is recommended to mount 4 to 12 data disks on each BE server to enhance I/O capabilities. |
+| Estimated data storage space for each BE server (TB) | 5.7 | Calculation formula: `Estimated storage space for hot data / Estimated number of BE servers /(1 - 30%)`, where 30% represents the percent of reserved storage space.It is recommended to mount 4 to 12 data disks on each BE server to enhance I/O capabilities. |
 
 ### Step 2: Deploy the cluster
 
 After estimating the resources, you need to deploy the cluster. It is recommended to deploy in both physical and virtual environments manually. For manual deployment, refer to [Manual Deployment](./install/deploy-manually/integrated-storage-compute-deploy-manually).
-
 
 ### Step 3: Optimize FE and BE configurations
 
@@ -187,7 +185,7 @@ You can find BE configuration fields in `be/conf/be.conf`. Refer to the followin
 | :--------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Storage    | `storage_root_path = /path/to/dir1;/path/to/dir2;...;/path/to/dir12` | Configure the storage path for hot data on disk directories. |
 | -          | `enable_file_cache = true`                                   | Enable file caching.                                         |
-| -          | `file_cache_path = [{"path": "/mnt/datadisk0/file_cache", "total_size":53687091200, "query_limit": "10737418240"},{"path": "/mnt/datadisk1/file_cache", "total_size":53687091200,"query_limit": "10737418240"}]` | Configure the cache path and related settings for cold data with the following specific configurations:<br/>`path`: cache path<br/>`total_size`: total size of the cache path in bytes, where 53687091200 bytes equals 50 GB<br/>`query_limit`: maximum amount of data that can be queried from the cache path in one query in bytes, where 10737418240 bytes equals 10 GB |
+| -          | `file_cache_path = [{"path": "/mnt/datadisk0/file_cache", "total_size":53687091200, "query_limit": "10737418240"},{"path": "/mnt/datadisk1/file_cache", "total_size":53687091200,"query_limit": "10737418240"}]` | Configure the cache path and related settings for cold data with the following specific configurations:`path`: cache path`total_size`: total size of the cache path in bytes, where 53687091200 bytes equals 50 GB`query_limit`: maximum amount of data that can be queried from the cache path in one query in bytes, where 10737418240 bytes equals 10 GB |
 | Write      | `write_buffer_size = 1073741824`                             | Increase the file size of the write buffer to reduce small files and random I/O operations, improving performance. |
 | Compaction | `max_cumu_compaction_threads = 8`                            | Set to CPU core count / 4, indicating that 1/4 of CPU resources are used for writing, 1/4 for background compaction, and 2/1 for queries and other operations. |
 | -          | `inverted_index_compaction_enable = true`                    | Enable inverted index compaction to reduce CPU consumption during compaction. |
@@ -196,14 +194,13 @@ You can find BE configuration fields in `be/conf/be.conf`. Refer to the followin
 | -          | `total_permits_for_compaction_score = 200000 ` | The parameter is used to control memory, under the memory time series strategy, the parameter itself can control memory. |
 | Cache      | `disable_storage_page_cache = true` `inverted_index_searcher_cache_limit = 30%` | Due to the large volume of log data and limited caching effect, switch from data caching to index caching. |
 | -          | `inverted_index_cache_stale_sweep_time_sec = 3600` `index_cache_entry_stay_time_after_lookup_s = 3600` | Maintain index caching in memory for up to 1 hour.           |
-| -          | `enable_inverted_index_cache_on_cooldown = true`<br />`enable_write_index_searcher_cache = false` | Enable automatic caching of cold data storage during index uploading. |
+| -          | `enable_inverted_index_cache_on_cooldown = true``enable_write_index_searcher_cache = false` | Enable automatic caching of cold data storage during index uploading. |
 | -          | `tablet_schema_cache_recycle_interval = 3600` `segment_cache_capacity = 20000` | Reduce memory usage by other caches.                         |
 | -          | `inverted_index_ram_dir_enable = true` | Reduce the IO overhead caused by writing to index files temporarily. |
 | Thread     | `pipeline_executor_size = 24` `doris_scanner_thread_pool_thread_num = 48` | Configure computing threads and I/O threads for a 32-core CPU in proportion to core count. |
 | -          | `scan_thread_nice_value = 5`                                 | Lower the priority of query I/O threads to ensure writing performance and timeliness. |
 | Other      | `string_type_length_soft_limit_bytes = 10485760`             | Increase the length limit of string-type data to 10 MB.      |
 | -          | `trash_file_expire_time_sec = 300` `path_gc_check_interval_second  = 900` `path_scan_interval_second = 900` | Accelerate the recycling of trash files.                     |
-
 
 For more information, refer to [BE Configuration](./admin-manual/config/be-config).
 
@@ -556,7 +553,7 @@ ORDER BY ts DESC LIMIT 10;
 
 Some third-party vendors offer visual log analysis development platforms based on Apache Doris, which include a log search and analysis interface similar to Kibana Discover. These platforms provide an intuitive and user-friendly exploratory log analysis interaction.
 
-![WebUI-a log search and analysis interface similar to Kibana](/images/WebUI-EN.jpeg)
+[WebUI-a log search and analysis interface similar to Kibana]
 
 - Support for full-text search and SQL modes
 

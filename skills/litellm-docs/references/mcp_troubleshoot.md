@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # MCP Troubleshooting Guide
 
@@ -50,8 +49,6 @@ Failures shown on the MCP creation form or within the MCP Tool Testing Playgroun
   img={require('../img/mcp_tool_testing_playground.png')}
   style={{width: '80%', display: 'block', margin: '0'}}
 />
-
-<br/>
 
 **Actions**
 - Capture LiteLLM proxy logs alongside MCP-server logs (see [Error Log Example](./mcp_troubleshoot#error-log-example-failed-mcp-call)) to inspect the request/response pair and stack traces.

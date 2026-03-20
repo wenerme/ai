@@ -67,4 +67,3 @@ Doris provides support for backup and restore operations. These features allow u
 
 7. **Single Concurrency**:
    Only one backup or restore task can run simultaneously under a single database.
-

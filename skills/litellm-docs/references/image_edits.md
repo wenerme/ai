@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /images/edits
 
@@ -20,13 +18,9 @@ LiteLLM provides image editing functionality that maps to OpenAI's `/images/edit
 
  #### ⚡️See all supported models and providers at [models.litellm.ai](https://models.litellm.ai/)
 
-
 ## Usage
 
 ### LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 #### Basic Image Edit
 ```python showLineNumbers title="OpenAI Image Edit"
@@ -197,10 +191,6 @@ for idx, image_obj in enumerate(response.data):
         f.write(base64.b64decode(image_obj.b64_json))
 ```
 
-</TabItem>
-
-<TabItem value="bfl" label="Black Forest Labs">
-
 #### Basic Image Edit
 ```python showLineNumbers title="Black Forest Labs Image Edit"
 import os
@@ -254,10 +244,6 @@ response = litellm.image_edit(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="vertex_ai" label="Vertex AI">
-
 #### Basic Image Edit (Gemini)
 ```python showLineNumbers title="Vertex AI Gemini Image Edit"
 import os
@@ -301,10 +287,6 @@ response = litellm.image_edit(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="openrouter" label="OpenRouter">
-
 #### Basic Image Edit
 ```python showLineNumbers title="OpenRouter Image Edit"
 import os
@@ -342,14 +324,7 @@ response = image_edit(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ### LiteLLM Proxy with OpenAI SDK
-
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="OpenAI Proxy Configuration"
@@ -447,10 +422,6 @@ curl -X POST "http://0.0.0.0:4000/v1/images/edits" \
   -F "size=1024x1024"
 ```
 
-</TabItem>
-
-<TabItem value="bfl" label="Black Forest Labs">
-
 1. Add Black Forest Labs image edit models to your `config.yaml`:
 ```yaml showLineNumbers title="Black Forest Labs Proxy Configuration"
 model_list:
@@ -475,10 +446,6 @@ curl -X POST "http://0.0.0.0:4000/v1/images/edits" \
   -F "image=@original_image.png" \
   -F "prompt=Add a sunset in the background"
 ```
-
-</TabItem>
-
-<TabItem value="vertex_ai" label="Vertex AI">
 
 1. Add Vertex AI image edit models to your `config.yaml`:
 ```yaml showLineNumbers title="Vertex AI Proxy Configuration"
@@ -525,10 +492,6 @@ curl -X POST "http://0.0.0.0:4000/v1/images/edits" \
   -F "size=1024x1024"
 ```
 
-</TabItem>
-
-<TabItem value="openrouter" label="OpenRouter">
-
 1. Add the OpenRouter image edit model to your `config.yaml`:
 ```yaml showLineNumbers title="OpenRouter Proxy Configuration"
 model_list:
@@ -553,9 +516,6 @@ curl -X POST "http://0.0.0.0:4000/v1/images/edits" \
   -F "size=1024x1024"
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Image Edit Parameters
 
 | Parameter | Type | Description | Required |
@@ -568,7 +528,6 @@ curl -X POST "http://0.0.0.0:4000/v1/images/edits" \
 | `size` | `str` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`. | Optional (defaults to `1024x1024`) |
 | `response_format` | `str` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. | Optional (defaults to `url`) |
 | `user` | `str` | A unique identifier representing your end-user. | Optional |
-
 
 ## Response Format
 

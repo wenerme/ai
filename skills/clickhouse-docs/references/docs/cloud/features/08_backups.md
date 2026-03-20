@@ -1,16 +1,9 @@
 ---
-sidebar_label: 'Backups'
-slug: /cloud/features/backups
 title: 'Backups'
 keywords: ['backups', 'cloud backups', 'restore']
 description: 'Provides an overview of backup features in ClickHouse Cloud'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
-import backup_chain from '@site/static/images/cloud/manage/backup-chain.png';
 
 Database backups provide a safety net by ensuring that if data is lost for any unforeseen reason, the service can be restored to a previous state from the last successful backup.
 This minimizes downtime and prevents business critical data from being permanently lost.
@@ -45,11 +38,9 @@ ClickHouse Cloud allows you to configure the schedule for your backups for **Sca
 - **Frequency**: The frequency allows you to specify the time duration between subsequent backups. For instance, a frequency of "every 12 hours" means that backups will be spaced 12 hours apart. Frequency can range from "every 6 hours" to "every 48 hours" in the following hourly increments: `6`, `8`, `12`, `16`, `20`, `24`, `36`, `48`.
 - **Start Time**: The start time for when you want to schedule backups each day. Specifying a start time implies that the backup "Frequency" will default to once every 24 hours.  Clickhouse Cloud will start the backup within an hour of the specified start time.
 
-:::note
-The custom schedule will override the default backup policy in ClickHouse Cloud for your given service.
+> **note**: The custom schedule will override the default backup policy in ClickHouse Cloud for your given service.
 
 In some rare scenarios, the backup scheduler won't respect the **Start Time** specified for backups. Specifically, this happens if there was a successful backup triggered < 24 hours from the time of the currently scheduled backup. This could happen due to a retry mechanism we have in place for backups. In such instances, the scheduler will skip over the backup for the current day, and will retry the backup the next day at the scheduled time.
-:::
 
 See ["Configure backup schedules"](/cloud/manage/backups/configurable-backups) for steps to configure your backups.
 
@@ -65,13 +56,12 @@ For details of how ClickHouse Cloud backups work, see the [backups](/cloud/manag
 In this guide, we walk through how you can export backups to your AWS, GCP, Azure object storage, as well as how to restore these backups in your account to a new ClickHouse Cloud service.
 We also share backup / restore commands that allow you to export backups to your bucket and restore them.
 
-:::note Cross-region backups
+> **note**: Cross-region backups
 Any usage where backups are being exported to a
 different region in the same cloud provider will incur [data transfer](/cloud/manage/network-data-transfer)
 charges.
 
 Currently, we don't support cross-cloud backups, nor backup / restore for services utilizing [Transparent Data Encryption (TDE)](/cloud/security/cmek#transparent-data-encryption-tde) or for regulated services.
-:::
 
 See ["Export backups to your own Cloud account"](/cloud/manage/backups/export-backups-to-own-cloud-account) for examples of how to take full and incremental backups to AWS, GCP, Azure object storage as well as how to restore from the backups.
 
@@ -94,8 +84,6 @@ You can use [SQL commands](/cloud/manage/backups/backup-restore-via-commands) to
 
 </VerticalStepper>
 
-:::warning
-ClickHouse Cloud won't manage the lifecycle of backups in customer buckets.
+> **warning**: ClickHouse Cloud won't manage the lifecycle of backups in customer buckets.
 Customers are responsible for ensuring that backups in their bucket are managed appropriately for adhering to compliance standards as well as managing cost.
 If the backups are corrupted, they won't be able to be restored.
-:::

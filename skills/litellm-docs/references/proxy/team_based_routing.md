@@ -1,11 +1,6 @@
 # [DEPRECATED] Team-based Routing
 
-:::info
-
-This is deprecated, please use [Tag Based Routing](./tag_routing.md) instead
-
-:::
-
+> **info**: This is deprecated, please use [Tag Based Routing](./tag_routing.md) instead
 
 ## Routing
 Route calls to different model groups based on the team-id
@@ -77,4 +72,3 @@ curl --location 'http://0.0.0.0:4000/v1/chat/completions' \
   "user": "usha"
 }'
 ```
-

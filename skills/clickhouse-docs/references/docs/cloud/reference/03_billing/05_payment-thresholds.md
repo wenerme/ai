@@ -1,24 +1,16 @@
 ---
-sidebar_label: 'Payment thresholds'
-slug: /cloud/billing/payment-thresholds
 title: 'Payment thresholds'
 description: 'Payment thresholds and automatic invoicing for ClickHouse Cloud.'
 keywords: ['billing', 'payment thresholds', 'automatic invoicing', 'invoice']
 doc_type: 'guide'
 ---
 
-import Image from '@theme/IdealImage';
-import billing_1 from '@site/static/images/cloud/reference/billing_payment_threshhold.png';
-import billing_2 from '@site/static/images/cloud/reference/billing_payment_threshhold_2.png';
-
 ## Payment thresholds {#threshholds}
 
 If you are a pay as you go customer and your amount due in a billing period for ClickHouse Cloud reaches $10,000 USD or the equivalent value, your payment method configured to your organization will be automatically charged. 
 
-:::tip
-This default payment threshold amount can be adjusted below $10,000.
+> **tip**: This default payment threshold amount can be adjusted below $10,000.
 If you wish to do so, [contact support](mailto:support@clickhouse.com).
-:::
 
 A failed charge will result in the suspension of your services after a 14 day grace period.
 If you receive multiple invoices within a billing period, all are due upon receipt and must be paid to keep your ClickHouse Cloud organization [compliant](/manage/clickhouse-cloud-billing-compliance).
@@ -39,6 +31,4 @@ As you can see from the above example - there was a threshold invoice sent durin
 If your organization reaches 90% of the payment threshold and is on-track to exceed the payment threshold mid-period, the billing contact email associated with the organization will receive an email notification.
 You will also receive an email notification as well as an invoice when you exceed the payment threshold.
 
-:::note
-Payment threshold notifications are not currently supported for PAYG orgs
-:::
+> **note**: Payment threshold notifications are not currently supported for PAYG orgs

@@ -1,6 +1,4 @@
 
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
 
 # Provider Files Endpoints
 
@@ -148,9 +146,6 @@ client.files.retrieve(file.id)  # No need to specify account
 client.batches.create(input_file_id=file.id)  # Routes correctly
 ```
 
-<Tabs>
-<TabItem value="proxy" label="LiteLLM PROXY Server">
-
 1. Setup config.yaml
 
 ```
@@ -247,9 +242,6 @@ content = client.files.content(file_id="file-abc123", extra_headers={"custom-llm
 print("content=", content)
 ```
 
-</TabItem>
-<TabItem value="sdk" label="SDK">
-
 **Upload a File**
 ```python
 from litellm
@@ -312,10 +304,6 @@ content = await litellm.afile_content(
 print("file content=", content.text)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## **Supported Providers**:
 
 ### [OpenAI](#quick-start)
@@ -328,8 +316,6 @@ print("file content=", content.text)
 
 ### [Anthropic](./providers/anthropic#files-api)
 
-:::note
-Anthropic Files API has a different purpose than OpenAI's. It's **not** for Batches or Fine-tuning—it's for uploading files once and referencing them by `file_id` in multiple messages, avoiding re-uploads. File API operations are free — file content used in Messages requests is priced as input tokens.
-:::
+> **note**: Anthropic Files API has a different purpose than OpenAI's. It's **not** for Batches or Fine-tuning—it's for uploading files once and referencing them by `file_id` in multiple messages, avoiding re-uploads. File API operations are free — file content used in Messages requests is priced as input tokens.
 
 ## [Swagger API Reference](https://litellm-api.up.railway.app/#/files)

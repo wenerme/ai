@@ -1,6 +1,5 @@
 ---
 title: Usage with JavaScript
-sidebar_label: Usage with Vanilla JS
 ---
 
 MikroORM can be used with vanilla JavaScript using the `defineEntity` helper or `EntitySchema`. Both approaches provide full functionality without requiring TypeScript or decorators.

@@ -73,4 +73,3 @@ mysql> SELECT * FROM person
 8 rows in set (0.12 sec)
 
 ```
-

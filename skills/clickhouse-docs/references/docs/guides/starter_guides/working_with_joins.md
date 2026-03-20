@@ -2,21 +2,8 @@
 title: 'Working with JOINs in ClickHouse'
 description: 'Starter guide on how to use JOINs in ClickHouse'
 keywords: ['JOINs', 'SQL', 'INNER JOIN', 'OUTER JOIN', 'CROSS JOIN', 'SEMI JOIN', 'ANTI JOIN', 'ANY JOIN', 'ASOF JOIN']
-sidebar_label: 'Working with JOINs in ClickHouse'
-slug: /guides/working-with-joins
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import imdb_schema from '@site/static/images/starter_guides/joins/imdb_schema.png';
-import inner_join from '@site/static/images/starter_guides/joins/inner_join.png';
-import outer_join from '@site/static/images/starter_guides/joins/outer_join.png';
-import cross_join from '@site/static/images/starter_guides/joins/cross_join.png';
-import semi_join from '@site/static/images/starter_guides/joins/semi_join.png';
-import anti_join from '@site/static/images/starter_guides/joins/anti_join.png';
-import any_join from '@site/static/images/starter_guides/joins/any_join.png';
-import asof_join from '@site/static/images/starter_guides/joins/asof_join.png';
-import asof_example from '@site/static/images/starter_guides/joins/asof_example.png';
 
 ClickHouse fully supports standard SQL joins, enabling efficient data analysis.
 In this guide, you'll explore some of the available commonly used join types and how to use them with the help of Venn diagrams and example queries on a normalized [IMDB](https://en.wikipedia.org/wiki/IMDb) dataset originating from the [relational dataset repository](https://relational.fit.cvut.cz/dataset/IMDb).
@@ -91,9 +78,7 @@ LIMIT 10;
 └────────────────────────────────────────┴───────────┘
 ```
 
-:::note
-The `INNER` keyword can be omitted.
-:::
+> **note**: The `INNER` keyword can be omitted.
 
 The behavior of the `INNER JOIN` can be extended or changed, by using one of the following other join types.
 
@@ -107,9 +92,7 @@ A `FULL OUTER JOIN` query combines the `LEFT` and `RIGHT OUTER JOIN` and returns
 
 <Image img={outer_join} alt="Outer Join" />
 
-:::note
-ClickHouse can be [configured](/operations/settings/settings#join_use_nulls) to return [NULL](/sql-reference/syntax/#null)s instead of default values (however, for [performance reasons](/sql-reference/data-types/nullable/#storage-features), that is less recommended).
-:::
+> **note**: ClickHouse can be [configured](/operations/settings/settings#join_use_nulls) to return [NULL](/sql-reference/syntax/#null)s instead of default values (however, for [performance reasons](/sql-reference/data-types/nullable/#storage-features), that is less recommended).
 
 This query finds all movies that have no genre by querying for all rows from the `movies` table that don’t have matches in the `genres` table, and therefore get (at query time) the default value 0 for the `movie_id` column:
 
@@ -139,9 +122,7 @@ LIMIT 10;
 └───────────────────────────────────────────┘
 ```
 
-:::note
-The `OUTER` keyword can be omitted.
-:::
+> **note**: The `OUTER` keyword can be omitted.
 
 ## CROSS JOIN {#cross-join}
 
@@ -440,9 +421,7 @@ quote_price:        32.15
 final_price:        9645
 ```
 
-:::note
-The `ON` clause of the `ASOF JOIN` is required and specifies an exact match condition next to the non-exact match condition of the `AND` clause.
-:::
+> **note**: The `ON` clause of the `ASOF JOIN` is required and specifies an exact match condition next to the non-exact match condition of the `AND` clause.
 
 ## Summary {#summary}
 

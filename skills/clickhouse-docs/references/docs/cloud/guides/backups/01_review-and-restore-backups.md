@@ -1,21 +1,9 @@
 ---
-sidebar_label: 'Review and restore backups'
-sidebar_position: 0
-slug: /cloud/manage/backups/overview
 title: 'Overview'
 keywords: ['backups', 'cloud backups', 'restore']
 description: 'Provides an overview of backups in ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge';
-import Image from '@theme/IdealImage';
-import backup_chain from '@site/static/images/cloud/manage/backup-chain.png';
-import backup_status_list from '@site/static/images/cloud/manage/backup-status-list.png';
-import backup_usage from '@site/static/images/cloud/manage/backup-usage.png';
-import backup_restore from '@site/static/images/cloud/manage/backup-restore.png';
-import backup_service_provisioning from '@site/static/images/cloud/manage/backup-service-provisioning.png';
 
 # Review and restore backups
 
@@ -44,9 +32,7 @@ Estimating the total cost for your backups requires you to set a schedule. We're
 - Desired retention
 - Cloud provider and region
 
-:::note
-Keep in mind that the estimated cost for backups will change as the size of the data in the service grows over time.
-:::
+> **note**: Keep in mind that the estimated cost for backups will change as the size of the data in the service grows over time.
 
 ## Restore a backup {#restore-a-backup}
 
@@ -86,9 +72,7 @@ The new service should be restored from a backup with the same IP Allow List as 
 
 **On the newly restored ClickHouse service (the system that hosts the restored data)**
 
-:::note
-You will need to reset the password for the new service in order to access it. You can do that from the service list **Settings** tab.
-:::
+> **note**: You will need to reset the password for the new service in order to access it. You can do that from the service list **Settings** tab.
 
 Add a read only user that can read the source table (`db.table` in this example):
 
@@ -119,9 +103,7 @@ Create the destination database:
 
 Using the `CREATE TABLE` statement from the source, create the destination:
 
-:::tip
-Change the `ENGINE` to `ReplicatedMergeTree` without any parameters when you run the `CREATE` statement. ClickHouse Cloud always replicates tables and provides the correct parameters.
-:::
+> **tip**: Change the `ENGINE` to `ReplicatedMergeTree` without any parameters when you run the `CREATE` statement. ClickHouse Cloud always replicates tables and provides the correct parameters.
 
   ```sql
   CREATE TABLE db.table ...
@@ -145,19 +127,15 @@ The `UNDROP` command is supported in ClickHouse Cloud through [Shared Catalog](h
 
 To prevent users from accidentally dropping tables, you can use [`GRANT` statements](/sql-reference/statements/grant) to revoke permissions for the [`DROP TABLE` command](/sql-reference/statements/drop#drop-table) for a specific user or role.
 
-:::note
-To prevent accidental deletion of data, please note that by default it isn't possible to drop tables >`1TB` in size in ClickHouse Cloud.
+> **note**: To prevent accidental deletion of data, please note that by default it isn't possible to drop tables >`1TB` in size in ClickHouse Cloud.
 Should you wish to drop tables greater than this threshold you can use setting `max_table_size_to_drop` to do so:
 
 ```sql
 DROP TABLE IF EXISTS table_to_drop
 SYNC SETTINGS max_table_size_to_drop=2000000000000 -- increases the limit to 2TB
 ```
-:::
 
-:::note
-Legacy Plans: For customers on legacy plans, default daily backups retained for 24 hours, are included in the storage cost.
-:::
+> **note**: Legacy Plans: For customers on legacy plans, default daily backups retained for 24 hours, are included in the storage cost.
 
 ## Backup durations {#backup-durations}
 
@@ -169,9 +147,7 @@ In our testing, we have seen that smaller backups of ~1 TB could take around 10-
 Backups less than 20 TB should complete within an hour, and backing up 50 TB of data should take about 2-3 hours.
 Backups get economies of scale at larger sizes, and we have seen backups of up to 1 PB for some internal services complete in about 10 hours.
 
-:::note
-Backups to external buckets may be slower than backups to ClickHouse buckets
-:::
+> **note**: Backups to external buckets may be slower than backups to ClickHouse buckets
 
 Restore durations are about the same as the backup durations.
 

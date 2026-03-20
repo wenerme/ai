@@ -7,17 +7,11 @@ description: Integrate oRPC with Sentry for error tracking and performance monit
 
 [Sentry](https://sentry.io/) is a powerful tool for error tracking and performance monitoring. This guide explains how to integrate oRPC with Sentry to capture errors and performance metrics in your applications.
 
-::: warning
-This guide assumes familiarity with [Sentry](https://sentry.io/). Review the official documentation if needed.
-:::
+> **warning**: This guide assumes familiarity with [Sentry](https://sentry.io/). Review the official documentation if needed.
 
-::: info
-This integration is based on the [OpenTelemetry Integration](/docs/integrations/opentelemetry), so you can refer to that guide for more details on setting up OpenTelemetry with oRPC.
-:::
+> **info**: This integration is based on the [OpenTelemetry Integration](/docs/integrations/opentelemetry), so you can refer to that guide for more details on setting up OpenTelemetry with oRPC.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/otel@latest
@@ -38,8 +32,6 @@ bun add @orpc/otel@latest
 ```sh [deno]
 deno add npm:@orpc/otel@latest
 ```
-
-:::
 
 ## Setup
 

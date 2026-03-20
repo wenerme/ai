@@ -134,13 +134,13 @@ evalscope app
 Clicking the link will bring up the following visualization interface, where you first need to select the evaluation report and then click load:
 
 <p align="center">
-  <img src="https://notebookshare.oss-cn-zhangjiakou.aliyuncs.com/resource/38b79d2d/overview.png" alt="alt text" width="80%">
+  [alt text]
 </p>
 
 Additionally, by selecting the corresponding sub-dataset, we can also view the model's output content:
 
 <p align="center">
-  <img src="https://notebookshare.oss-cn-zhangjiakou.aliyuncs.com/resource/a7d22b89/details.png" alt="alt text" width="80%">
+  [alt text]
 </p>
 
 ## Conclusion

@@ -36,7 +36,6 @@ using the `/theme` command within Gemini CLI:
     preview or highlight as you select.
 4.  Confirm your selection to apply the theme.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > If a theme is defined in your `settings.json` file (either by name or
 > by a file path), you must remove the `"theme"` setting from the file before
@@ -181,7 +180,6 @@ custom theme defined in `settings.json`.
 }
 ```
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > For your safety, Gemini CLI will only load theme files that
 > are located within your home directory. If you attempt to load a theme from
@@ -191,7 +189,7 @@ custom theme defined in `settings.json`.
 
 ### Example custom theme
 
-<img src="/docs/assets/theme-custom.png" alt="Custom theme example" width="600" />
+[Custom theme example]
 
 ### Using your custom theme
 
@@ -218,66 +216,66 @@ identify their source, for example: `shades-of-green (green-extension)`.
 
 ### ANSI
 
-<img src="/docs/assets/theme-ansi-dark.png" alt="ANSI theme" width="600">
+[ANSI theme]
 
 ### Atom One
 
-<img src="/docs/assets/theme-atom-one-dark.png" alt="Atom One theme" width="600">
+[Atom One theme]
 
 ### Ayu
 
-<img src="/docs/assets/theme-ayu-dark.png" alt="Ayu theme" width="600">
+[Ayu theme]
 
 ### Default
 
-<img src="/docs/assets/theme-default-dark.png" alt="Default theme" width="600">
+[Default theme]
 
 ### Dracula
 
-<img src="/docs/assets/theme-dracula-dark.png" alt="Dracula theme" width="600">
+[Dracula theme]
 
 ### GitHub
 
-<img src="/docs/assets/theme-github-dark.png" alt="GitHub theme" width="600">
+[GitHub theme]
 
 ### Holiday
 
-<img src="/docs/assets/theme-holiday-dark.png" alt="Holiday theme" width="600">
+[Holiday theme]
 
 ### Shades Of Purple
 
-<img src="/docs/assets/theme-shades-of-purple-dark.png" alt="Shades Of Purple theme" width="600">
+[Shades Of Purple theme]
 
 ### Solarized Dark
 
-<img src="/docs/assets/theme-solarized-dark.png" alt="Solarized Dark theme" width="600">
+[Solarized Dark theme]
 
 ## Light themes
 
 ### ANSI Light
 
-<img src="/docs/assets/theme-ansi-light.png" alt="ANSI Light theme" width="600">
+[ANSI Light theme]
 
 ### Ayu Light
 
-<img src="/docs/assets/theme-ayu-light.png" alt="Ayu Light theme" width="600">
+[Ayu Light theme]
 
 ### Default Light
 
-<img src="/docs/assets/theme-default-light.png" alt="Default Light theme" width="600">
+[Default Light theme]
 
 ### GitHub Light
 
-<img src="/docs/assets/theme-github-light.png" alt="GitHub Light theme" width="600">
+[GitHub Light theme]
 
 ### Google Code
 
-<img src="/docs/assets/theme-google-light.png" alt="Google Code theme" width="600">
+[Google Code theme]
 
 ### Solarized Light
 
-<img src="/docs/assets/theme-solarized-light.png" alt="Solarized Light theme" width="600">
+[Solarized Light theme]
 
 ### Xcode
 
-<img src="/docs/assets/theme-xcode-light.png" alt="Xcode Light theme" width="600">
+[Xcode Light theme]

@@ -14,7 +14,7 @@ Apache Doris provides Query Profile to expose query execution details. This arti
 - Reading methods: how to quickly locate operators that impact performance.
 
 # Query Profile Architecture
-![alt text](/images/profile/profile-image-0.png)
+[alt text]
 
 The core consists of FE `ProfileManager` and BE `AsyncReportThreadPool`.
 1. When a query starts, FE registers Profile-related data structures into `ProfileManager`.
@@ -127,7 +127,7 @@ Notes:
 - Profiles exist only on the FE that executed the SQL; they are not synchronized across FEs. Connect to the FE used by the query.
 - Import jobs are forwarded to FE Master for execution, so their Profiles must be fetched from the Master FE.
 
-![alt text](/images/profile/profile-image-1.png)
+[alt text]
 
 ### Via command line
 When FE Web UI is unavailable (e.g., security constraints), use CLI. First, `show query profile` to list the latest 20 profiles.
@@ -359,7 +359,7 @@ MergedProfile:
 The above is a trimmed MergedProfile. Doris query planning has a three-level structure: Query → Fragment → PlanNode, while the BE execution engine further introduces Pipeline → Operator.
 
 ### Query & Fragment & PlanNode
-![alt text](/images/profile/profile-image-2.png)
+[alt text]
 
 Arrows indicate data flow. The entire query plan is split into 4 Fragments (left blocks) and multiple PlanNodes (Fragment and its PlanNodes on the same horizontal line). PlanNodes include two SCAN_NODEs reading `customer` and `orders`, multiple DATA_STREAM_SINK and EXCHANGE nodes for inter-Fragment data transfer, HASH_JOIN to join scanned data, and two-phase aggregation (AGGREGATION and AGGREGATION(MERGE)). RESULT_SINK returns results to FE, preceded by TOP-N to limit rows.
 
@@ -367,7 +367,7 @@ Arrows indicate data flow. The entire query plan is split into 4 Fragments (left
 
 How does the QueryPlan translate to Pipelines and Operators? Take Fragments 1 and 2 (with AGGREGATION and HASH_JOIN) as examples.
 
-![alt text](/images/profile/profile-image-3.png)
+[alt text]
 
 During execution, Doris splits certain PlanNodes into one or more Operators.
 
@@ -393,7 +393,7 @@ CustomCounters are operator-specific. See the operator profile documentation for
 ### HashJoin
 With the basics established, reconstruct the Join execution via MergedProfile.
 
-![alt text](/images/profile/profile-image-4.png)
+[alt text]
 
 Parallelism was set to 2, so although the diagram shows one connected pair of Pipeline 1 and Pipeline 2, 4 PipelineTasks actually run (2 per pipeline).
 
@@ -427,7 +427,7 @@ Continuing with HASH_JOIN_OPERATOR: after ~949.860 ms of waiting, Probe begins. 
 
 The query aggregates: Count(o.o_orderkey) AS total_orders, Sum(o.o_totalprice) AS total_spent, and GROUP BY c.c_name.
 
-![alt text](/images/profile/profile-image-5.png)
+[alt text]
 
 Doris uses two-phase aggregation here.
 

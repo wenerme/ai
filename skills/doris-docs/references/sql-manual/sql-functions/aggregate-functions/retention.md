@@ -107,7 +107,6 @@ SELECT * from retention_test2;
 +------+------+-------+
 ```
 
-
 4. When performing calculations on an empty table, no data participates in aggregation, and NULL values are returned.
 
 ```sql

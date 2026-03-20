@@ -1,32 +1,18 @@
 ---
 title: 'Querying open table formats directly'
-sidebar_label: 'Direct querying'
-slug: /use-cases/data-lake/getting-started/querying-directly
-sidebar_position: 1
-pagination_prev: use-cases/data_lake/getting-started
-pagination_next: use-cases/data_lake/guides/connecting-catalogs
 description: 'Use ClickHouse table functions to read Iceberg, Delta Lake, Hudi, and Paimon tables in object storage without any prior setup.'
-toc_max_heading_level: 2
 keywords: ['data lake', 'lakehouse', 'iceberg', 'delta lake', 'hudi', 'paimon', 'table functions']
 doc_type: 'guide'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import ExperimentalBadge from '@theme/badges/ExperimentalBadge';
 
 ClickHouse provides table functions for querying data stored in open table formats directly in object storage. This does not require connecting to an external catalog - it queries the data in place, similar to how AWS Athena reads from S3.
 
 You pass the storage path and credentials directly in the function call, and ClickHouse handles the rest. All ClickHouse SQL syntax and functions are available, and queries benefit from ClickHouse's parallelized execution and [efficient native Parquet reader](https://clickhouse.com/blog/clickhouse-and-parquet-a-foundation-for-fast-lakehouse-analytics).
 
-:::note Server, local or chDB
+> **note**: Server, local or chDB
 The steps in this guide can be executed using an existing ClickHouse server installation. For ad hoc querying, you can instead use [clickhouse-local](/operations/utilities/clickhouse-local) and complete the same workflow without running a server. With minor adjustments, the process can also be performed using ClickHouse’s in process distribution, [chDB](/chdb).
-:::
 
 The following examples use the [hits](/getting-started/example-datasets/star-schema) dataset stored in each lakehouse format on S3. For each lake format, dedicated functions exist for each object store provider.
-
-<Tabs groupId="lake-format">
-<TabItem value="iceberg" label="Apache Iceberg" default>
 
 The [`iceberg`](/sql-reference/table-functions/iceberg) table function (alias for `icebergS3`) reads Iceberg tables directly from object storage. Variants exist for each storage backend: `icebergS3`, `icebergAzure`, `icebergHDFS`, and `icebergLocal`.
 
@@ -40,9 +26,8 @@ icebergAzure(connection_string|storage_account_url, container_name, blobpath, [,
 icebergLocal(path_to_table, [,format] [,compression_method])
 ```
 
-:::note GCS support
+> **note**: GCS support
 The S3 variant of the functions can be used for Google Cloud Storage (GCS).
-:::
 
 **Example:**
 
@@ -116,9 +101,8 @@ CREATE TABLE iceberg_table
     ENGINE = IcebergLocal(path_to_table, [,format] [,compression_method])
 ```
 
-:::note GCS support
+> **note**: GCS support
 The S3 variant of the table engine can be used for Google Cloud Storage (GCS).
-:::
 
 **Example:**
 
@@ -148,10 +132,6 @@ Peak memory usage: 10.53 GiB.
 
 For supported features including partition pruning, schema evolution, time travel, caching, and more, see the [support matrix](/use-cases/data-lake/support-matrix#format-support). For full reference, see the [`iceberg` table function](/sql-reference/table-functions/iceberg) and [`Iceberg` table engine](/engines/table-engines/integrations/iceberg) documentation.
 
-</TabItem>
-
-<TabItem value="delta" label="Delta Lake">
-
 The [`deltaLake`](/sql-reference/table-functions/deltalake) table function (alias for `deltaLakeS3`) reads Delta Lake tables from object storage. Variants exist for other backends: `deltaLakeAzure` and `deltaLakeLocal`.
 
 **Example syntax:**
@@ -164,9 +144,8 @@ deltaLakeAzure(connection_string|storage_account_url, container_name, blobpath, 
 deltaLakeLocal(path, [,format])
 ```
 
-:::note GCS support
+> **note**: GCS support
 The S3 variant of the functions can be used for Google Cloud Storage (GCS).
-:::
 
 **Example:**
 
@@ -204,9 +183,8 @@ deltaLakeCluster(cluster_name, url [,aws_access_key_id, aws_secret_access_key] [
 deltaLakeAzureCluster(cluster_name, connection_string|storage_account_url, container_name, blobpath, [,account_name], [,account_key] [,format] [,compression_method])
 ```
 
-:::note GCS support
+> **note**: GCS support
 The S3 variant of the functions can be used for Google Cloud Storage (GCS).
-:::
 
 **Example (ClickHouse Cloud):**
 
@@ -236,9 +214,8 @@ CREATE TABLE delta_table
     ENGINE = DeltaLake(url [,aws_access_key_id, aws_secret_access_key])
 ```
 
-:::note GCS support
+> **note**: GCS support
 This table engine can be used for Google Cloud Storage (GCS).
-:::
 
 **Example:**
 
@@ -268,9 +245,6 @@ Peak memory usage: 9.27 GiB.
 
 For supported features including storage backends, caching, and more, see the [support matrix](/use-cases/data-lake/support-matrix#format-support). For full reference, see the [`deltaLake` table function](/sql-reference/table-functions/deltalake) and [`DeltaLake` table engine](/engines/table-engines/integrations/deltalake) documentation.
 
-</TabItem>
-<TabItem value="hudi" label="Apache Hudi">
-
 The [`hudi`](/sql-reference/table-functions/hudi) table function reads Hudi tables from S3.
 
 **Syntax:**
@@ -299,9 +273,6 @@ CREATE TABLE hudi_table
 ```
 
 For supported features including storage backends and more, see the [support matrix](/use-cases/data-lake/support-matrix#format-support). For full reference, see the [`hudi` table function](/sql-reference/table-functions/hudi) and [`Hudi` table engine](/engines/table-engines/integrations/hudi) documentation.
-
-</TabItem>
-<TabItem value="paimon" label="Apache Paimon">
 
 <ExperimentalBadge/>
 
@@ -338,6 +309,3 @@ paimonHDFSCluster(cluster_name, path_to_table, [,format] [,compression_method])
 Paimon does not currently have a dedicated table engine in ClickHouse. Use the table functions above for querying Paimon tables.
 
 For supported features including storage backends and more, see the [support matrix](/use-cases/data-lake/support-matrix#format-support). For full reference, see the [`paimon` table function](/sql-reference/table-functions/paimon) documentation.
-
-</TabItem>
-</Tabs>

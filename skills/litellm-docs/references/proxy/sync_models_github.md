@@ -14,9 +14,6 @@ With auto-sync, LiteLLM automatically pulls the latest model data from GitHub's 
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/ba41acc1882d41b284bbddbb0e9c27ce?sid=bdae351e-2026-4e39-932b-fcb185ff612c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<br/>
-<br/>
-
 ## Quick Start
 
 **Manual sync:**

@@ -1,18 +1,10 @@
 ---
-slug: /migrations/postgresql/data-modeling-techniques
 title: 'Data modeling techniques'
 description: 'Part 3 of a guide on migrating from PostgreSQL to ClickHouse'
 keywords: ['postgres', 'postgresql']
 show_related_blogs: true
-sidebar_label: 'Part 3'
 doc_type: 'guide'
 ---
-
-import postgres_b_tree from '@site/static/images/migrations/postgres-b-tree.png';
-import postgres_sparse_index from '@site/static/images/migrations/postgres-sparse-index.png';
-import postgres_partitions from '@site/static/images/migrations/postgres-partitions.png';
-import postgres_projections from '@site/static/images/migrations/postgres-projections.png';
-import Image from '@theme/IdealImage';
 
 > This is **Part 3** of a guide on migrating from PostgreSQL to ClickHouse. Using a practical example, it demonstrates how to model data in ClickHouse if migrating from PostgreSQL.
 
@@ -268,12 +260,10 @@ We recommend using projections when:
   overhead of writing data twice. Test the impact on insertion speed and 
   [evaluate the storage overhead](/data-compression/compression-in-clickhouse).
 
-:::note
-Since version 25.5, ClickHouse supports the virtual column `_part_offset` in 
+> **note**: Since version 25.5, ClickHouse supports the virtual column `_part_offset` in 
 projections. This unlocks a more space-efficient way to store projections.
 
 For more details see ["Projections"](/data-modeling/projections)
-:::
 
 ## Denormalization {#denormalization}
 

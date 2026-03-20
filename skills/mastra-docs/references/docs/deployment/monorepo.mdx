@@ -5,9 +5,6 @@ packages:
   - "@mastra/deployer"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Deploy in a monorepo
 
 Deploying Mastra in a monorepo follows the same process as a standalone application. This guide covers monorepo-specific considerations. For the core build and deployment steps, see [Deploy a Mastra Server](/docs/deployment/mastra-server).
@@ -54,31 +51,29 @@ Use your monorepo tool to run the build command from the correct package. There'
 
 Examples:
 
-<Tabs>
-  <TabItem value="npm" label="npm">
+  
     ```bash
     npm run build --workspace=apps/api
     ```
-  </TabItem>
+  
 
-  <TabItem value="pnpm" label="pnpm">
+  
     ```bash
     pnpm --filter api run build
     ```
-  </TabItem>
+  
 
-  <TabItem value="yarn" label="yarn">
+  
     ```bash
     yarn workspace api build
     ```
-  </TabItem>
+  
 
-  <TabItem value="turborepo" label="Turborepo">
+  
     ```bash
     turbo run build --filter=api
     ```
-  </TabItem>
-</Tabs>
+  
 
 Your package's `build` script should run `mastra build`:
 
@@ -121,7 +116,7 @@ Most providers let you specify the root directory in their dashboard or configur
 
 The image below shows how to select `apps/api` as the project root when deploying to [Mastra Cloud](/docs/mastra-cloud/overview). While the interface may differ between providers, the configuration remains the same.
 
-![Deployment configuration](/img/monorepo/monorepo-mastra-cloud.jpg)
+[Deployment configuration]
 
 ## Dependency management
 

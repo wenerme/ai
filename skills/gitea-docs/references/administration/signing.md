@@ -1,7 +1,5 @@
 ---
 date: "2019-08-17T10:20:00+01:00"
-slug: "signing"
-sidebar_position: 50
 aliases:
   - /en-us/signing
 ---
@@ -21,10 +19,8 @@ A commit will be marked with a grey unlocked icon if no key can be
 found to verify it. If a commit is marked with a red unlocked icon,
 it is reported to be signed with a key with an id.
 
-:::note
-The signer of a commit does not have to be an author or
+> **note**: The signer of a commit does not have to be an author or
 committer of a commit.
-:::
 
 ## Automatic Signing
 
@@ -117,8 +113,7 @@ repositories, `SIGNING_KEY=default` could be used to provide different
 signing keys on a per-repository basis. However, this is clearly not an
 ideal UI and therefore subject to change.
 
-:::warning
-**Since 1.17**, Gitea runs git in its own home directory `[git].HOME_PATH` (default to `%(APP_DATA_PATH)/home`)
+> **warning**: **Since 1.17**, Gitea runs git in its own home directory `[git].HOME_PATH` (default to `%(APP_DATA_PATH)/home`)
 and uses its own config `{[git].HOME_PATH}/.gitconfig`.
 
 If you have your own customized git config for Gitea, you should set these configs in system git config (aka `/etc/gitconfig`)
@@ -127,11 +122,8 @@ or the Gitea internal git config `{[git].HOME_PATH}/.gitconfig`.
 Related home files for git command (like `.gnupg`) should also be put in Gitea's git home directory `[git].HOME_PATH`.
 
 If you like to keep the `.gnupg` directory outside of `{[git].HOME_PATH}/`, consider setting the `$GNUPGHOME` environment variable to your preferred location, otherwise Gitea will use the gpg keys only under `{[git].HOME_PATH}/.gnupg`.
-:::
 
-:::warning
-The default option and repository specific signing keys are not supported for ssh keys
-:::
+> **warning**: The default option and repository specific signing keys are not supported for ssh keys
 
 ### `INITIAL_COMMIT`
 

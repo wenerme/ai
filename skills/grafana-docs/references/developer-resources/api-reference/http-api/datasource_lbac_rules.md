@@ -33,7 +33,7 @@ Gets all existing LBAC rules for the data source with the given `uid`.
 
 | Action           | Scope                                                                                    |
 | ---------------- | ---------------------------------------------------------------------------------------- |
-| datasources:read | datasources:_<br>datasources:uid:_<br>datasources:uid:my_datasource (single data source) |
+| datasources:read | datasources:_datasources:uid:_datasources:uid:my_datasource (single data source) |
 
 ### Examples
 
@@ -82,8 +82,8 @@ Deleting a team from the list will remove the team's LBAC rules. You have to sub
 
 | Action                        | Scope                                                                                    |
 | ----------------------------- | ---------------------------------------------------------------------------------------- |
-| datasources:write             | datasources:_<br>datasources:uid:_<br>datasources:uid:my_datasource (single data source) |
-| datasources.permissions:write | datasources:_<br>datasources:uid:_<br>datasources:uid:my_datasource (single data source) |
+| datasources:write             | datasources:_datasources:uid:_datasources:uid:my_datasource (single data source) |
+| datasources.permissions:write | datasources:_datasources:uid:_datasources:uid:my_datasource (single data source) |
 
 ### Examples
 

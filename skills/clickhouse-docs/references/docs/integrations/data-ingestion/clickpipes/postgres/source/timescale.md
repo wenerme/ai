@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Timescale'
 description: 'Set up Postgres with the TimescaleDB extension as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/timescale
 title: 'Postgres with TimescaleDB source setup guide'
 keywords: ['TimescaleDB']
 doc_type: 'guide'
@@ -9,8 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
 
 # Postgres with TimescaleDB source setup guide
 
@@ -49,11 +45,9 @@ The steps to be follow depend on how your Postgres instance with TimescaleDB is 
 For other managed services, please raise a support ticket with your provider to help in enabling logical replication if 
 it isn't already.
 
-:::info
-Timescale Cloud doesn't support enabling logical replication, which is needed for Postgres pipes in CDC mode.
+> **info**: Timescale Cloud doesn't support enabling logical replication, which is needed for Postgres pipes in CDC mode.
 As a result, users of Timescale Cloud can only perform a one-time load of their data (`Initial Load Only`) with the
 Postgres ClickPipe.
-:::
 
 ## Configuration {#configuration}
 
@@ -63,9 +57,7 @@ issue. But during logical replication, instead of detecting changes in the hyper
 instead. The Postgres ClickPipe has logic to automatically remap changes from the chunk tables to the parent hypertable,
 but this requires additional steps.
 
-:::info
-If you'd like to only perform a one-time load of your data (`Initial Load Only`), please skip steps 2 onward.
-:::
+> **info**: If you'd like to only perform a one-time load of your data (`Initial Load Only`), please skip steps 2 onward.
 
 1. Create a dedicated user for ClickPipes:
 

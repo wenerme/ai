@@ -1,6 +1,5 @@
 ---
 title: css | Config
-outline: deep
 ---
 
 # css
@@ -9,9 +8,7 @@ outline: deep
 
 Configure if CSS should be processed. When excluded, CSS files will be replaced with empty strings to bypass the subsequent processing. CSS Modules will return a proxy to not affect runtime.
 
-::: warning
-This option is not applied to [browser tests](/guide/browser/).
-:::
+> **warning**: This option is not applied to [browser tests](/guide/browser/).
 
 ## css.include
 
@@ -20,9 +17,7 @@ This option is not applied to [browser tests](/guide/browser/).
 
 RegExp pattern for files that should return actual CSS and will be processed by Vite pipeline.
 
-:::tip
-To process all CSS files, use `/.+/`.
-:::
+> **tip**: To process all CSS files, use `/.+/`.
 
 ## css.exclude
 
@@ -47,6 +42,4 @@ If you decide to process CSS files, you can configure if class names inside CSS 
 - `scoped`: class names will be generated as usual, respecting `css.modules.generateScopedName` method, if you have one and CSS processing is enabled. By default, filename will be generated as `_${name}_${hash}`, where hash includes filename and content of the file.
 - `non-scoped`: class names will not be hashed.
 
-::: warning
-By default, Vitest exports a proxy, bypassing CSS Modules processing. If you rely on CSS properties on your classes, you have to enable CSS processing using `include` option.
-:::
+> **warning**: By default, Vitest exports a proxy, bypassing CSS Modules processing. If you rely on CSS properties on your classes, you have to enable CSS processing using `include` option.

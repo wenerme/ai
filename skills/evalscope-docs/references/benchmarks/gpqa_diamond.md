@@ -1,6 +1,5 @@
 # GPQA-Diamond
 
-
 ## Overview
 
 GPQA (Graduate-Level Google-Proof Q&A) Diamond is a challenging benchmark of 198 multiple-choice questions written by domain experts in biology, physics, and chemistry. The questions are designed to be extremely difficult, requiring PhD-level expertise to answer correctly.
@@ -28,7 +27,6 @@ GPQA (Graduate-Level Google-Proof Q&A) Diamond is a challenging benchmark of 198
 - Only uses train split (validation set is private)
 - Challenging benchmark for measuring expert-level reasoning
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ GPQA (Graduate-Level Google-Proof Q&A) Diamond is a challenging benchmark of 198
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -125,5 +122,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

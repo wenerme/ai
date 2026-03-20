@@ -1,6 +1,5 @@
 # OmniBench
 
-
 ## Overview
 
 OmniBench is a pioneering universal multimodal benchmark designed to rigorously evaluate MLLMs' capability to recognize, interpret, and reason across visual, acoustic, and textual inputs simultaneously.
@@ -27,7 +26,6 @@ OmniBench is a pioneering universal multimodal benchmark designed to rigorously 
 - Extra params: use_image (bool), use_audio (bool)
 - Supports textual alternatives for image/audio
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ OmniBench is a pioneering universal multimodal benchmark designed to rigorously 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -65,7 +62,6 @@ OmniBench is a pioneering universal multimodal benchmark designed to rigorously 
 | Total Audio Files | 1,142 |
 | Audio per Sample | min: 1, max: 1, mean: 1 |
 | Formats | mp3 |
-
 
 ## Sample Example
 
@@ -164,5 +160,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

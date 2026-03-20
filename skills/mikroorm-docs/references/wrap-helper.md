@@ -1,10 +1,6 @@
 ---
 title: The wrap() Helper
-sidebar_label: The wrap() Helper
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 The `wrap()` helper provides access to useful methods for working with entities. It returns a `WrappedEntity` instance that exposes methods for checking entity state, loading relations, serializing, and updating values.
 
@@ -32,18 +28,7 @@ There are two ways to access these helper methods:
 
 **1. Using `wrap()` helper** - keeps your entity class clean:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -60,9 +45,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -81,9 +64,6 @@ export const Book = defineEntity({
 wrap(book).assign({ title: 'New Title' });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts title="./entities/Book.ts"
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
@@ -104,9 +84,6 @@ export class Book {
 wrap(book).assign({ title: 'New Title' });
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Book.ts"
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
@@ -126,24 +103,10 @@ export class Book {
 // Access helpers via wrap()
 wrap(book).assign({ title: 'New Title' });
 ```
-
-</TabItem>
-</Tabs>
 
 **2. Extending `BaseEntity`** - methods available directly on the entity:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p, BaseEntity } from '@mikro-orm/core';
@@ -161,9 +124,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p, BaseEntity } from '@mikro-orm/core';
@@ -183,9 +144,6 @@ export const Book = defineEntity({
 book.assign({ title: 'New Title' });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts title="./entities/Book.ts"
 import { BaseEntity, Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
@@ -206,9 +164,6 @@ export class Book extends BaseEntity {
 book.assign({ title: 'New Title' });
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Book.ts"
 import { BaseEntity, Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
@@ -228,9 +183,6 @@ export class Book extends BaseEntity {
 // Access helpers directly
 book.assign({ title: 'New Title' });
 ```
-
-</TabItem>
-</Tabs>
 
 Choose based on whether you want to keep your entity interface clean (`wrap()`) or prefer the convenience of direct method access (`BaseEntity`).
 

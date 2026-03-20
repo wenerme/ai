@@ -1,6 +1,5 @@
 # IQuiz
 
-
 ## Overview
 
 IQuiz is a Chinese benchmark for evaluating AI models on intelligence quotient (IQ) and emotional quotient (EQ) questions. It tests logical reasoning, pattern recognition, and social-emotional understanding through multiple-choice questions.
@@ -29,7 +28,6 @@ IQuiz is a Chinese benchmark for evaluating AI models on intelligence quotient (
 - Evaluates on **test** split
 - Metadata includes difficulty level information
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ IQuiz is a Chinese benchmark for evaluating AI models on intelligence quotient (
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -131,5 +128,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

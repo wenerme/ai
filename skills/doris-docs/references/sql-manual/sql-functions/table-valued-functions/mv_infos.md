@@ -19,7 +19,6 @@ MV_INFOS("database"="<database>")
 **`<database>`**
 > Specify the cluster database name to be queried
 
-
 ## Return Value
 
 | Field                  | Type    | Description                                                         |

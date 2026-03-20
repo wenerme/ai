@@ -142,11 +142,10 @@ When a query combines full-text and secondary fields, apply the best operator fo
 
 #### AND and OR operator behavior
 
-**AND behavior** <br>
+**AND behavior** 
 
 - If both sides are indexable, Tantivy intersects the row sets from each index.
 - If one side is not indexable, the indexable side is still accelerated by Tantivy, and the other side is resolved in DataFusion.
-
 
 **Examples**
 ```sql linenums="1"
@@ -161,7 +160,7 @@ WHERE match_all('error') AND body LIKE '%error%';
 
 - If all branches of the OR are indexable, Tantivy unites the row sets efficiently.
 - If any branch is not indexable, the entire OR is not indexable. The query runs in DataFusion.
-<br>
+
 **Examples**
 ```sql linenums="1"
 -- Fast: both indexable
@@ -171,7 +170,7 @@ WHERE match_all('error') OR kubernetes_namespace_name = 'ziox';
 WHERE match_all('error') OR body LIKE '%error%';
 ```
 
-**NOT with grouped conditions** <br>
+**NOT with grouped conditions** 
 ```sql linenums="1"
 -- Exclude when either namespace = ziox OR body contains error
 WHERE NOT (kubernetes_namespace_name = 'ziox' OR match_all('error'));
@@ -186,9 +185,8 @@ When a subquery converts to a JOIN, OpenObserve combines data from two sources. 
 - The left table is the first table in the JOIN operation. It is the base table that the query starts with.
 - The right table is the second table in the JOIN operation. It provides additional data that is matched against the left table based on a join condition.
 
-
 The query engine reads rows from the left table, then for each row, it looks up matching rows in the right table using the join condition.
-<br>
+
 **Example:**
 ```sql linenums="1"
 SELECT t1.id FROM t1 JOIN t2 ON t1.id = t2.id
@@ -284,7 +282,6 @@ The `match_all()` function is supported in multi-stream queries with specific li
 #### Partitioned search with inverted index
 OpenObserve searches individual partitions using the inverted index when executing multi-stream queries. This behavior ensures that queries distribute efficiently across partitions and leverage indexing at the partition level.
 
-
 ## Index Optimizer
 
 ### What is the Index Optimizer?
@@ -297,12 +294,12 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
 #### Count Queries
 !!! note ""
     The optimizer accelerates queries that count total records.
-    <br>
+    
     **Example:**
     ```sql linenums="1"
     SELECT COUNT(*) FROM stream WHERE match_all('error')
     ```
-    <br>
+    
     **Requirements:**
 
     - All filters in the WHERE clause must be indexable by Tantivy
@@ -310,7 +307,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
 #### Histogram Queries
 !!! note ""
     The optimizer accelerates queries that generate histogram data grouped by time intervals.
-    <br>
+    
     **Example:**
     ```sql linenums="1"
     SELECT histogram(_timestamp, '1m') AS ts, COUNT(*) AS cnt 
@@ -318,7 +315,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
     WHERE match_all('error') 
     GROUP BY ts
     ```
-    <br>
+    
     **Requirements:**
 
     - All filters in the WHERE clause must be indexable by Tantivy
@@ -326,7 +323,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
 #### Top N Queries
 !!! note ""
     The optimizer accelerates queries that retrieve the top N results based on count, ordered in descending order.
-    <br>
+    
     **Example:**
     ```sql linenums="1"
     SELECT kubernetes_namespace_name, COUNT(*) AS cnt 
@@ -336,7 +333,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
     ORDER BY cnt DESC 
     LIMIT 10
     ```
-    <br>
+    
     **Requirements:**
 
     - All filters in the WHERE clause must be indexable by Tantivy
@@ -345,7 +342,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
 #### Distinct Queries
 !!! note ""
     The optimizer accelerates queries that retrieve distinct values for a field.
-    <br>
+    
     **Example:**
     ```sql linenums="1"
     SELECT kubernetes_namespace_name 
@@ -355,7 +352,7 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
     ORDER BY kubernetes_namespace_name ASC 
     LIMIT 10
     ```
-    <br>
+    
     **Requirements:**
     - All filters in the WHERE clause must be indexable by Tantivy
     - The field in the SELECT clause must be a secondary index field
@@ -363,7 +360,6 @@ The optimizer handles four query patterns: count, histogram, top N, and distinct
 
 !!! note "General Requirements"
     For all four query patterns, every filter condition in the WHERE clause must be indexable by Tantivy. Refer to the [Single-stream queries](#single-stream-queries) and [Multi-stream queries](#multi-stream-queries) sections for details on which operators and conditions are indexable.
-
 
 ## Tantivy result cache
 
@@ -400,4 +396,3 @@ To confirm whether a query used the Tantivy inverted index:
 
     - If `idx_took` is greater than `0`, the query used the inverted index.
     - If `idx_took` is `0`, the query did not use the inverted index.
-

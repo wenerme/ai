@@ -11,8 +11,6 @@ description: Use oRPC inside an Nuxt.js project
 
 You set up an oRPC server inside Nuxt using its [Server Routes](https://nuxt.com/docs/guide/directory-structure/server#server-routes).
 
-::: code-group
-
 ```ts [server/routes/rpc/[...].ts]
 import { RPCHandler } from '@orpc/server/fetch'
 import { onError } from '@orpc/server'
@@ -46,11 +44,7 @@ export default defineEventHandler(async (event) => {
 export { default } from './[...]'
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
 ## Client
 
@@ -75,15 +69,11 @@ export default defineNuxtPlugin(() => {
 })
 ```
 
-:::info
-You can learn more about client setup in [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: You can learn more about client setup in [Client-Side Clients](/docs/client/client-side).
 
 ## Optimize SSR
 
 To reduce HTTP requests and improve latency during SSR, you can utilize a [Server-Side Client](/docs/client/server-side) during SSR. Below is a quick setup, see [Optimize SSR](/docs/best-practices/optimize-ssr) for more details.
-
-::: code-group
 
 ```ts [app/plugins/orpc.client.ts]
 export default defineNuxtPlugin(() => {
@@ -119,5 +109,3 @@ export default defineNuxtPlugin((nuxt) => {
   }
 })
 ```
-
-:::

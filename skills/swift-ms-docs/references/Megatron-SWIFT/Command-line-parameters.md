@@ -67,7 +67,6 @@
   - Note: **Megatron-SWIFT training features prioritize support for padding_free format**. Unless there are special circumstances, please do not modify this value.
 - mlp_padding_free: Defaults to False. Used for padding_free optimization of mlp when padding_free is set to false. This can improve training speed and reduce memory usage while customizing attention_mask.
 
-
 **Learning Rate Parameters**:
 - lr_warmup_init: The initial value for learning rate warmup. The learning rate scheduler starts warming up from this value. Defaults to 0.
 - 🔥lr: The initial learning rate. The actual learning rate for each iteration will be determined based on the learning rate warmup and decay strategies. The default value is None; **for full-parameter training, the default is 1e-5, while for LoRA training, the default is 1e-4**.
@@ -78,7 +77,6 @@
 - 🔥min_lr: Minimum value of the learning rate, clipping any learning rate below this threshold to this value, default is 0.
 - lr_wsd_decay_style: The decay method for the WSD annealing phase. Defaults to 'exponential'.
 - lr_wsd_decay_iters: The number of iterations for learning rate decay. Defaults to None.
-
 
 **Regularization Parameters**:
 
@@ -121,7 +119,6 @@
 - dist_ckpt_optim_fully_reshardable: Make optimizer distributed checkpoint fully reshardable (TP/PP/EP/DP) as opposed to plain DP reshardability. Defaults to False.
 - distrib_optim_fully_reshardable_mem_efficient: During distributed optimizer checkpoint save and load, tries to use as little memory as possible by using Gloo (instead of NCCL) and only one rank for saving. Turn on only if experiencing host or device memory issues. Has effect only when `--dist-ckpt-optim-fully-reshardable` flag is set. Defaults to False.
 
-
 **Distributed Parameters**:
 For guidance on selecting parallelization strategies, please refer to the [Training Tips documentation](./Quick-start.md#training-tips).
 
@@ -149,7 +146,6 @@ For guidance on selecting parallelization strategies, please refer to the [Train
 - 🔥expert_model_parallel_size: The degree of expert parallelism, default is 1.
 - 🔥expert_tensor_parallel_size: expert tensor-parallel size. Default is 1.
 
-
 **Logging Parameters**:
 - report_to: Enabled logging backends. Defaults to `['tensorboard']`. Options are 'tensorboard', 'wandb', and 'swanlab'. Login for 'wandb' and 'swanlab' can use `WANDB_API_KEY` and `SWANLAB_API_KEY` environment variables.
 - 🔥logging_steps: Interval (in steps) for logging. Defaults to 5.
@@ -160,12 +156,10 @@ For guidance on selecting parallelization strategies, please refer to the [Train
 - swanlab_project: Swanlab project name. Defaults to 'megatron-swift'.
 - swanlab_exp_name: Swanlab experiment name. Defaults to the value of `--output_dir`.
 
-
 **Evaluation Parameters**:
 
 - 🔥eval_iters: Number of iterations for evaluation. Defaults to `-1`, in which case an appropriate value is automatically determined based on the size of the validation dataset. **If the validation dataset size is smaller than the global batch size, evaluation will not be performed.** When using streaming datasets, this value must be set manually.
 - 🔥eval_steps: Interval (in steps) for evaluation, i.e., how many steps to train before performing evaluation. Defaults to None, which is set to `save_steps`.
-
 
 **FP8 Parameters**:
 - fp8_format: The FP8 format scheme used for FP8 tensors in the forward and backward pass. Options are 'e4m3' and 'hybrid'. Default is None.
@@ -174,7 +168,6 @@ For guidance on selecting parallelization strategies, please refer to the [Train
 - fp8_amax_compute_algo: Algorithm for computing amax from history. Options are 'most_recent' and 'max'. Default is 'max'.
 - fp8_param_gather: Keep the compute parameter in FP8 (do not use any other intermediate dtype) and perform the parameter all-gather in FP8 format. Default is False.
   - Tips: Set this to True if you want to export weights in FP8 format; otherwise, set it to False.
-
 
 **Mixed Precision Parameters**:
 
@@ -202,7 +195,6 @@ For guidance on selecting parallelization strategies, please refer to the [Train
 
 - dsa_indexer_loss_coeff: Coefficient for the DSA indexer KL divergence loss. Set to 0 to disable indexer loss. Default is None.
 - dsa_indexer_use_sparse_loss: Whether to use sparse DSA indexer loss. If True, the indexer loss will be computed using the top-k indices. Default is False.
-
 
 **MTP Parameters**
 - mtp_num_layers: Number of Multi-Token Prediction (MTP) layers. MTP extends the prediction scope at each position to multiple future tokens. This MTP implementation uses D sequential modules to sequentially predict D additional tokens. Default is None. (requires "megatron-core>=0.14")
@@ -263,7 +255,6 @@ LoRA Training:
 - aligner_lr: Specifies the learning rate for the aligner module in multimodal models. Default is `None`, same as `learning_rate`.
 - gradient_checkpointing_kwargs: Arguments passed to `torch.utils.checkpoint`. For example: set `--gradient_checkpointing_kwargs '{"use_reentrant": false}'`. Defaults to `None`. This parameter only takes effect when `vit_gradient_checkpointing` is enabled.
 
-
 **Other Parameters**:
 
 - check_model: Check local model files for corruption or modifications and provide prompts. Defaults to True. **If in an offline environment, please set to False**.
@@ -277,7 +268,6 @@ LoRA Training:
 - problem_type: This parameter needs to be specified for classification models (i.e., `--task_type seq_cls`). Options are 'regression', 'single_label_classification', 'multi_label_classification'. Defaults to None. If the model is reward_model or num_labels is 1, this parameter is 'regression'; otherwise, it is 'single_label_classification'.
 - 🔥save_strategy: Saving strategy, options are 'steps' and 'epoch'. Defaults to 'steps'. When set to 'epoch', `save_steps` and `eval_steps` are automatically calculated to save at each epoch, so any user-provided values for these arguments are ignored.
 - callbacks: Custom trainer callbacks. Defaults to `[]`.
-
 
 ## Training Parameters
 
@@ -295,7 +285,6 @@ Megatron training parameters are inherited from Megatron parameters and basic pa
 - new_special_tokens: List of additional special tokens to be added. Default is `[]`. Example usage can be found [here](https://github.com/modelscope/ms-swift/blob/main/examples/megatron/lora/new_special_tokens.sh).
   - Note: You can also pass a `.txt` file path where each line contains one special token.
 
-
 ## RLHF Parameters
 
 In addition to inheriting the training parameters, the following parameters are also supported:
@@ -303,7 +292,6 @@ In addition to inheriting the training parameters, the following parameters are 
 - 🔥rlhf_type: Default is 'dpo'. Currently, 'dpo', 'grpo', 'kto', 'rm', and 'gkd' are available.
 - loss_scale: Overrides the `loss_scale` in [basic parameters](../Instruction/Command-line-parameters.md). Default is 'last_round'.
 - calculate_per_token_loss: Overrides the Megatron parameter. Default is False.
-
 
 ### DPO Parameters
 

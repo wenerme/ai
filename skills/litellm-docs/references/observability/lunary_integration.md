@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # 🌙 Lunary - GenAI Observability 
 
@@ -9,7 +8,6 @@ You can reach out to us anytime by [email](mailto:hello@lunary.ai) or directly [
 <video controls width='900' >
   <source src='https://lunary.ai/videos/demo-annotated.mp4'/>
 </video>
-
 
 ## Usage with LiteLLM Python SDK
 ### Pre-Requisites
@@ -68,7 +66,6 @@ chat = ChatLiteLLM(
 ]
 chat(messages)
 ```
-
 
 ### Usage with Prompt Templates
 
@@ -170,7 +167,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 ```
 
 You can find more details about the different ways of making requests to the LiteLLM proxy on [this page](https://docs.litellm.ai/docs/proxy/user_keys)
-
 
 ## Support & Talk to Founders
 

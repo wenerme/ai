@@ -41,7 +41,6 @@ Alpaca format:
 ```
 - Note: The instruction and input fields will be combined into the query field. If instruction and input are not empty strings, then `query = f'{instruction}\n{input}'`.
 
-
 ## Standard Dataset Format
 
 The following outlines the standard dataset format for ms-swift, where the "system" field is optional and uses the "default_system" defined in the template by default. The four dataset formats introduced earlier can also be processed by AutoPreprocessor into the standard dataset format.
@@ -184,7 +183,6 @@ Please refer to [Reranker training document](../BestPractices/Reranker.md#datase
 
 For multimodal datasets, the format is the same as the aforementioned tasks. The difference lies in the addition of several keys: `images`, `videos`, and `audios`, which represent the URLs or paths (preferably absolute paths) of multimodal resources. The tags `<image>`, `<video>`, and `<audio>` indicate where to insert images, videos, or audio. MS-Swift supports multiple images, videos, and audio files. These special tokens will be replaced during preprocessing, as referenced [here](https://github.com/modelscope/ms-swift/blob/main/swift/template/templates/qwen.py#L198). The four examples below respectively demonstrate the data format for plain text, as well as formats containing image, video, and audio data.
 
-
 Pre-training:
 ```jsonl
 {"messages": [{"role": "assistant", "content": "Pre-trained text goes here"}]}
@@ -228,7 +226,6 @@ When using this type of data, please note:
 - The handling of bounding box normalization varies across different models: for example, qwen2.5-vl uses absolute coordinates, while qwen2/3-vl and internvl2.5 require bounding box coordinates to be normalized to the thousandth scale.
   - Note: Qwen2.5-VL uses absolute coordinates, so you need to be careful with image resizing each time. If you use the dataset format from Option 1, you need to resize the images in advance (height and width must be multiples of 28) and scale the coordinates accordingly. If you use the dataset format from Option 2, ms-swift will handle image resizing for you. You can still use `MAX_PIXELS` or `--max_pixels` for image resizing (training only; for inference, you still need to handle image resizing yourself).
 
-
 2. Use ms-swift's grounding data format:
 
 ```
@@ -266,7 +263,6 @@ print(f'[LABELS] {template.safe_decode(encoded["labels"])}')
 print(f'images: {encoded["template_inputs"].images}')
 ```
 
-
 ### Agent Format
 Here are example data samples for a text-only Agent and a multimodal Agent:
 ```jsonl
@@ -291,7 +287,6 @@ Here are example data samples for a text-only Agent and a multimodal Agent:
 ## dataset_info.json
 
 You can refer to the ms-swift built-in [dataset_info.json](https://github.com/modelscope/ms-swift/blob/main/swift/dataset/data/dataset_info.json). This approach uses the AutoPreprocessor function to convert the dataset into a standard format. The dataset_info.json file contains a list of metadata about the dataset. Here are some examples:
-
 
 ```json
 [
@@ -354,7 +349,6 @@ The following parameters are supported:
 - preprocess_func: A preprocessing function or callable object, default is `AutoPreprocessor()`. This preprocessing function takes an `HfDataset` as input and returns an `HfDataset` in the standard format.
 - load_function: Defaults to `DatasetLoader.load`. If a custom loading function is needed, it should return an `HfDataset` in the standard format, allowing users maximum flexibility while bypassing the ms-swift dataset loading mechanism. This parameter usually does not need to be modified.
 
-
 Below are examples of registering datasets:
 
 ```python
@@ -376,7 +370,6 @@ Output the category [0/1]: 0 for different meanings, 1 for similar meanings.
             'response': response
         }
         return super().preprocess(row)
-
 
 register_dataset(
     DatasetMeta(

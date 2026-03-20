@@ -1,6 +1,5 @@
 # general_t2i
 
-
 ## Overview
 
 General Text-to-Image is a customizable benchmark adapter for evaluating text-to-image generation models with user-provided prompts and images.
@@ -28,7 +27,6 @@ General Text-to-Image is a customizable benchmark adapter for evaluating text-to
 - Automatically extracts subset name from file path
 - Can evaluate existing images via `image_path` field
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ General Text-to-Image is a customizable benchmark adapter for evaluating text-to
 | **Metrics** | `PickScore` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -83,5 +80,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

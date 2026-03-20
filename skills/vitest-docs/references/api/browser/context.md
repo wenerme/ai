@@ -8,10 +8,7 @@ Vitest exposes a context module via `vitest/browser` entry point. As of 2.0, it 
 
 ## `userEvent`
 
-::: tip
-The `userEvent` API is explained in detail at [Interactivity API](/api/browser/interactivity).
-:::
-
+> **tip**: The `userEvent` API is explained in detail at [Interactivity API](/api/browser/interactivity).
 ```ts
 /**
  * Handler for user interactions. The support is implemented by the browser provider (`playwright` or `webdriverio`).
@@ -42,10 +39,7 @@ export const userEvent: {
 
 ## `commands`
 
-::: tip
-This API is explained in detail at [Commands API](/api/browser/commands).
-:::
-
+> **tip**: This API is explained in detail at [Commands API](/api/browser/commands).
 ```ts
 /**
  * Available commands for the browser.
@@ -58,12 +52,9 @@ export const commands: BrowserCommands
 
 The `page` export provides utilities to interact with the current `page`.
 
-::: warning
-While it exposes some utilities from Playwright's `page`, it is not the same object. Since the browser context is evaluated in the browser, your tests don't have access to Playwright's `page` because it runs on the server.
+> **warning**: While it exposes some utilities from Playwright's `page`, it is not the same object. Since the browser context is evaluated in the browser, your tests don't have access to Playwright's `page` because it runs on the server.
 
 Use [Commands API](/api/browser/commands) if you need to have access to Playwright's `page` object.
-:::
-
 ```ts
 export const page: {
   /**
@@ -115,14 +106,11 @@ export const page: {
 }
 ```
 
-::: tip
-The `getBy*` API is explained at [Locators API](/api/browser/locators).
-:::
+> **tip**: The `getBy*` API is explained at [Locators API](/api/browser/locators).
 
-::: warning WARNING <Version>3.2.0</Version>
+> **warning**: WARNING <Version>3.2.0</Version>
 Note that `screenshot` will always return a base64 string if `save` is set to `false`.
 The `path` is also ignored in that case.
-:::
 
 ### mark
 
@@ -154,9 +142,7 @@ await page.mark('submit flow', async () => {
 })
 ```
 
-::: tip
-This method is useful only when [`browser.trace`](/config/browser/trace) is enabled.
-:::
+> **tip**: This method is useful only when [`browser.trace`](/config/browser/trace) is enabled.
 
 ### frameLocator
 
@@ -177,11 +163,10 @@ await frame.getByText('Hello World').click() // ✅
 await frame.click() // ❌ Not available
 ```
 
-::: danger IMPORTANT
+> **danger**: IMPORTANT
 At the moment, the `frameLocator` method is only supported by the `playwright` provider.
 
 The interactive methods (like `click` or `fill`) are always available on elements within the iframe, but assertions with `expect.element` require the iframe to have the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
-:::
 
 ## `cdp`
 
@@ -191,10 +176,7 @@ function cdp(): CDPSession
 
 The `cdp` export returns the current Chrome DevTools Protocol session. It is mostly useful to library authors to build tools on top of it.
 
-::: warning
-CDP session works only with `playwright` provider and only when using `chromium` browser. You can read more about it in playwright's [`CDPSession`](https://playwright.dev/docs/api/class-cdpsession) documentation.
-:::
-
+> **warning**: CDP session works only with `playwright` provider and only when using `chromium` browser. You can read more about it in playwright's [`CDPSession`](https://playwright.dev/docs/api/class-cdpsession) documentation.
 ```ts
 export const cdp: () => CDPSession
 ```
@@ -337,6 +319,4 @@ utils.configurePrettyDOM({
 })
 ```
 
-::: tip
-This feature is inspired by Testing Library's [`defaultIgnore`](https://testing-library.com/docs/dom-testing-library/api-configuration/#defaultignore) configuration.
-:::
+> **tip**: This feature is inspired by Testing Library's [`defaultIgnore`](https://testing-library.com/docs/dom-testing-library/api-configuration/#defaultignore) configuration.

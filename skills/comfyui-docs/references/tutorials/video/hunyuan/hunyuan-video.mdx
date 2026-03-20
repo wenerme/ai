@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Hunyuan Video Examples"
 description: "This guide shows how to use Hunyuan Text-to-Video and Image-to-Video workflows in ComfyUI"
-sidebarTitle: "Hunyuan Video"
 ---
-
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 <video
   controls
@@ -23,15 +20,11 @@ You can learn more through the official repositories: [Hunyuan Video](https://gi
 
 This guide will walk you through setting up both **Text-to-Video** and **Image-to-Video** workflows in ComfyUI.
 
-<Tip>
 The workflow images in this tutorial contain metadata with model download information. 
 
 Simply drag them into ComfyUI or use the menu `Workflows` -> `Open (ctrl+o)` to load the corresponding workflow, which will prompt you to download the required models.
 
 Alternatively, this guide provides direct model links if automatic downloads fail or you are not using the Desktop version. All models are available [here](https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/tree/main/split_files) for download.
-</Tip>
-
-<UpdateReminder/>
 
 ## Common Models for All Workflows
 
@@ -82,7 +75,7 @@ ComfyUI/
 
 ### 3. Steps to Run the Workflow
 
-![ComfyUI Hunyuan Video T2V Workflow](/images/tutorial/advanced/hunyuanvideo/flow_diagram_t2v.jpg)
+[ComfyUI Hunyuan Video T2V Workflow]
 
 1. Ensure the `DualCLIPLoader` node has loaded these models:
    - clip_name1: clip_l.safetensors
@@ -91,9 +84,7 @@ ComfyUI/
 3. Ensure the `Load VAE` node has loaded `hunyuan_video_vae_bf16.safetensors`
 4. Click the `Queue` button or use the shortcut `Ctrl(cmd) + Enter` to run the workflow
 
-<Tip>
 When the `length` parameter in the `EmptyHunyuanLatentVideo` node is set to 1, the model can generate a static image.
-</Tip>
 
 ## Hunyuan Image-to-Video Workflow
 
@@ -106,11 +97,11 @@ Currently, the Hunyuan Image-to-Video model has two versions:
 <div class="flex justify-between">
     <div class="text-center">
         <p>v1 "concat"</p>
-        <img src="https://comfyanonymous.github.io/ComfyUI_examples/hunyuan_video/hunyuan_video_image_to_video.webp" alt="HunyuanVideo v1" />
+        [HunyuanVideo v1]
     </div>
     <div class="text-center">
         <p>v2 "replace"</p>
-        <img src="https://comfyanonymous.github.io/ComfyUI_examples/hunyuan_video/hunyuan_video_image_to_video_v2.webp" alt="HunyuanVideo v2" />
+        [HunyuanVideo v2]
     </div>
 </div>
 
@@ -151,7 +142,7 @@ ComfyUI/
 
 #### 3. Steps to Run the Workflow
 
-![ComfyUI Hunyuan Video I2V v1 Workflow](/images/tutorial/advanced/hunyuanvideo/flow_diagram_i2v_v1.jpg)
+[ComfyUI Hunyuan Video I2V v1 Workflow]
 
 1. Ensure that `DualCLIPLoader` has loaded these models:
    - clip_name1: clip_l.safetensors
@@ -196,7 +187,7 @@ ComfyUI/
 
 #### 3. Steps to Run the Workflow
 
-![ComfyUI Hunyuan Video I2V v2 Workflow](/images/tutorial/advanced/hunyuanvideo/flow_diagram_i2v_v2.jpg)
+[ComfyUI Hunyuan Video I2V v2 Workflow]
 
 1. Ensure the `DualCLIPLoader` node has loaded these models:
    - clip_name1: clip_l.safetensors
@@ -211,7 +202,7 @@ ComfyUI/
 
 Here are some images and prompts we provide. Based on that content or make an adjustment to create your own video.
 
-![example](/images/tutorial/advanced/hunyuanvideo/humanoid_android_dressed_in_a_flowing.png)
+[example]
 
 ```
 Futuristic robot dancing ballet, dynamic motion, fast motion, fast shot, moving scene
@@ -219,7 +210,7 @@ Futuristic robot dancing ballet, dynamic motion, fast motion, fast shot, moving 
 
 ---
 
-![example](/images/tutorial/advanced/hunyuanvideo/samurai.png)
+[example]
 
 ```
 Samurai waving sword and hitting the camera. camera angle movement, zoom in, fast scene, super fast, dynamic
@@ -227,16 +218,15 @@ Samurai waving sword and hitting the camera. camera angle movement, zoom in, fas
 
 ---
 
-![example](/images/tutorial/advanced/hunyuanvideo/a_flying_car.png)
+[example]
 
 ```
 flying car fastly moving and flying through the city
 ```
 
-
 ---
 
-![example](/images/tutorial/advanced/hunyuanvideo/cyber_car_race.png)
+[example]
 
 ```
 cyberpunk car race in night city, dynamic, super fast, fast shot

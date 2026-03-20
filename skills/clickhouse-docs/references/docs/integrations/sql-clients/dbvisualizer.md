@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'DbVisualizer'
-slug: /integrations/dbvisualizer
 description: 'DbVisualizer is a database tool with extended support for ClickHouse.'
 title: 'Connecting DbVisualizer to ClickHouse'
 keywords: ['DbVisualizer', 'database visualization', 'SQL client', 'JDBC driver', 'database tool']
@@ -9,11 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'sql_client'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import dbvisualizer_driver_manager from '@site/static/images/integrations/sql-clients/dbvisualizer-driver-manager.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting DbVisualizer to ClickHouse
 
@@ -53,8 +46,7 @@ To connect a database with DbVisualizer, you must first create and setup a Datab
 
 8. If the result from Ping Server shows that the server can be reached, click **Connect** to connect to the database server.
 
-:::tip
-See [Fixing Connection Issues](https://www.dbvis.com/docs/ug/troubleshooting/fixing-connection-issues/) for some tips if you have problems connecting to the database.
+> **tip**: See [Fixing Connection Issues](https://www.dbvis.com/docs/ug/troubleshooting/fixing-connection-issues/) for some tips if you have problems connecting to the database.
 
 ## Learn more {#learn-more}
 

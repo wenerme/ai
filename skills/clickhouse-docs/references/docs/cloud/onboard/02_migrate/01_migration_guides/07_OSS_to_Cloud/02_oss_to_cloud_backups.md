@@ -1,22 +1,9 @@
 ---
-sidebar_label: 'Using BACKUP and RESTORE'
-slug: /cloud/migration/oss-to-cloud-backup-restore
 title: 'Migrating between self-managed ClickHouse and ClickHouse Cloud with BACKUP/RESTORE'
 description: 'Page describing how to migrate between self-managed ClickHouse and ClickHouse Cloud using BACKUP and RESTORE commands'
 doc_type: 'guide'
 keywords: ['migration', 'ClickHouse Cloud', 'OSS', 'Migrate self-managed to Cloud', 'BACKUP', 'RESTORE']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-import Image from '@theme/IdealImage';
-import create_service from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/create_service.png';
-import service_details from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/service_details.png';
-import open_console from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/open_console.png';
-import service_role_id from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/service_role_id.png';
-import create_new_role from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/create_new_role.png';
-import backup_s3_bucket from '@site/static/images/cloud/onboard/migrate/oss_to_cloud_via_backup/backup_in_s3_bucket.png';
 
 # Migrating from self-managed ClickHouse to ClickHouse Cloud using backup commands
 
@@ -41,7 +28,6 @@ for a ClickHouse cluster with two shards, and two replicas.
 :::note[Cluster required]
 This backup method requires a ClickHouse cluster because tables must be converted from the `MergeTree` engine to `ReplicatedMergeTree`.
 If you're running a single instance, follow the steps in ["Migrating between self-managed ClickHouse and ClickHouse Cloud using remoteSecure"](/cloud/migration/clickhouse-to-cloud) instead.
-:::
 
 ## OSS preparation {#oss-setup}
 

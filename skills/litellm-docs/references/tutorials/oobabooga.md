@@ -23,4 +23,4 @@ response = completion(
 print(response)
 ```
 
-Credits to [Shuai Shao](https://www.linkedin.com/in/shuai-sh/), for this tutorial. 
+Credits to [Shuai Shao](https://www.linkedin.com/in/shuai-sh/), for this tutorial.

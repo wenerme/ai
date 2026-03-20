@@ -20,7 +20,6 @@ SYNC;
 
 Any user or role can perform this operation.
 
-
 ## Examples
 
 Synchronize metadata:

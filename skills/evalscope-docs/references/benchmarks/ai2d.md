@@ -1,6 +1,5 @@
 # AI2D
 
-
 ## Overview
 
 AI2D (AI2 Diagrams) is a benchmark dataset for evaluating AI systems' ability to understand and reason about scientific diagrams. It contains over 5,000 diverse diagrams from science textbooks covering topics like the water cycle, food webs, and biological processes.
@@ -27,7 +26,6 @@ AI2D (AI2 Diagrams) is a benchmark dataset for evaluating AI systems' ability to
 - Uses Chain-of-Thought (CoT) prompting for reasoning
 - Requires understanding both textual labels and visual elements
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ AI2D (AI2 Diagrams) is a benchmark dataset for evaluating AI systems' ability to
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ AI2D (AI2 Diagrams) is a benchmark dataset for evaluating AI systems' ability to
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 177x131 - 1500x1500 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -130,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

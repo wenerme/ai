@@ -1,22 +1,4 @@
-<!---
-Copyright 2020 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Checks on a Pull Request
 
@@ -129,24 +111,14 @@ make fix-repo
 Additional checks concern PRs that add new models, mainly that:
 
 - All models added are in an Auto-mapping (performed by `utils/check_repo.py`)
-<!-- TODO Sylvain, add a check that makes sure the common tests are implemented.-->
+
 - All models are properly tested (performed by `utils/check_repo.py`)
-
-<!-- TODO Sylvain, add the following
-- All models are added to the main README, inside the main doc
-- All checkpoints used actually exist on the Hub
-
--->
 
 ### Check copies
 
 Since the Transformers library is very opinionated with respect to model code, and each model should fully be implemented in a single file without relying on other models, we have added a mechanism that checks whether a copy of the code of a layer of a given model stays consistent with the original. This way, when there is a bug fix, we can see all other impacted models and choose to trickle down the modification or break the copy.
 
-<Tip>
-
 If a file is a full copy of another file, you should register it in the constant `FULL_COPIES` of `utils/check_copies.py`.
-
-</Tip>
 
 This mechanism relies on comments of the form `# Copied from xxx`. The `xxx` should contain the whole path to the class of function which is being copied below. For instance, `RobertaSelfOutput` is a direct copy of the `BertSelfOutput` class, so you can see [here](https://github.com/huggingface/transformers/blob/2bd7a27a671fd1d98059124024f580f8f5c0f3b5/src/transformers/models/roberta/modeling_roberta.py#L289) it has a comment:
 
@@ -176,11 +148,7 @@ You can add several patterns separated by a comma. For instance here `CamemberFo
 
 If the order matters (because one of the replacements might conflict with a previous one), the replacements are executed from left to right.
 
-<Tip>
-
 If the replacements change the formatting (if you replace a short name by a very long name for instance), the copy is checked after applying the auto-formatter.
-
-</Tip>
 
 Another way when the patterns are just different casings of the same replacement (with an uppercased and a lowercased variants) is just to add the option `all-casing`. [Here](https://github.com/huggingface/transformers/blob/15082a9dc6950ecae63a0d3e5060b2fc7f15050a/src/transformers/models/mobilebert/modeling_mobilebert.py#L1237) is an example in `MobileBertForSequenceClassification` with the comment:
 

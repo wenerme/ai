@@ -6,9 +6,8 @@
 }
 ---
 
-:::tip Tips
+> **tip**: Tips
 This feature is supported since the Apache Doris 2.0 version
-:::
 
 ## Description
 

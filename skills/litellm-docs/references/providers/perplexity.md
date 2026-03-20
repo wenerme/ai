@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Perplexity AI (pplx-api)
 https://www.perplexity.ai
@@ -43,16 +42,9 @@ for chunk in response:
 
 Requires v1.72.6+
 
-:::info
-
-See full guide on Reasoning with LiteLLM [here](../reasoning_content)
-
-:::
+> **info**: See full guide on Reasoning with LiteLLM [here](../reasoning_content)
 
 You can set the reasoning effort by setting the `reasoning_effort` parameter.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -66,8 +58,6 @@ response = completion(
 )
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 1. Setup config.yaml
 
@@ -100,9 +90,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models
 All models listed here https://docs.perplexity.ai/docs/model-cards are supported.  Just do `model=perplexity/<model-name>`.
 
@@ -115,22 +102,13 @@ All models listed here https://docs.perplexity.ai/docs/model-cards are supported
 | sonar | `completion(model="perplexity/sonar", messages)` | 
 | r1-1776 | `completion(model="perplexity/r1-1776", messages)` | 
 
-
-
-
-
-
 ## Agent API (Responses API)
 
 Requires v1.72.6+
 
-
 ### Using Presets
 
 Presets provide optimized defaults for specific use cases. Start with a preset for quick setup:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import responses
@@ -147,9 +125,6 @@ response = responses(
 
 print(response.output)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 1. Setup config.yaml
 
@@ -179,15 +154,9 @@ curl http://0.0.0.0:4000/v1/responses \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Using Third-Party Models
 
 Access models from OpenAI, Anthropic, Google, xAI, and other providers through Perplexity's unified API:
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 ```python
 from litellm import responses
@@ -205,9 +174,6 @@ response = responses(
 print(response.output)
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 from litellm import responses
 import os
@@ -223,9 +189,6 @@ response = responses(
 
 print(response.output)
 ```
-
-</TabItem>
-<TabItem value="google" label="Google">
 
 ```python
 from litellm import responses
@@ -243,9 +206,6 @@ response = responses(
 print(response.output)
 ```
 
-</TabItem>
-<TabItem value="xai" label="xAI">
-
 ```python
 from litellm import responses
 import os
@@ -261,9 +221,6 @@ response = responses(
 
 print(response.output)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Web Search Tool
 
@@ -357,7 +314,6 @@ response = responses(
 
 print(response.output)
 ```
-
 
 ### Reasoning Effort (Responses API)
 
@@ -484,7 +440,4 @@ print(f"Output: {response.output}")
 print(f"Usage: {response.usage}")
 ```
 
-:::info
-
-For more information about passing provider-specific parameters, [go here](../completion/provider_specific_params.md)
-:::
+> **info**: For more information about passing provider-specific parameters, [go here](../completion/provider_specific_params.md)

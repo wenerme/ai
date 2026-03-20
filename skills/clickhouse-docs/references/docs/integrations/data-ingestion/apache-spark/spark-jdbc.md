@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Spark JDBC'
-sidebar_position: 3
-slug: /integrations/apache-spark/spark-jdbc
 description: 'Introduction to Apache Spark with ClickHouse'
 keywords: ['clickhouse', 'Apache Spark', 'jdbc', 'migrating', 'data']
 title: 'Spark JDBC'
@@ -10,11 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_ingestion'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import TOCInline from '@theme/TOCInline';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Spark JDBC
 
@@ -27,9 +19,6 @@ use the [ClickHouse official JDBC connector](/integrations/language-clients/java
 <TOCInline toc={toc}></TOCInline>
 
 ## Read data {#read-data}
-
-<Tabs groupId="spark_apis">
-<TabItem value="Java" label="Java" default>
 
 ```java
 public static void main(String[] args) {
@@ -67,9 +56,6 @@ public static void main(String[] args) {
         spark.stop();
     }
 ```
-
-</TabItem>
-<TabItem value="Scala" label="Scala">
 
 ```java
 object ReadData extends App {
@@ -109,9 +95,6 @@ object ReadData extends App {
 }
 ```
 
-</TabItem>
-<TabItem value="Python" label="Python">
-
 ```python
 from pyspark.sql import SparkSession
 
@@ -144,9 +127,6 @@ df.show()
 
 ```
 
-</TabItem>
-<TabItem value="SparkSQL" label="Spark SQL">
-
 ```sql
    CREATE TEMPORARY VIEW jdbcTable
            USING org.apache.spark.sql.jdbc
@@ -161,13 +141,7 @@ df.show()
    SELECT * FROM jdbcTable;
 ```
 
-</TabItem>
-</Tabs>
-
 ## Write data {#write-data}
-
-<Tabs groupId="spark_apis">
-<TabItem value="Java" label="Java" default>
 
 ```java
  public static void main(String[] args) {
@@ -217,9 +191,6 @@ df.show()
         spark.stop();
     }
 ```
-
-</TabItem>
-<TabItem value="Scala" label="Scala">
 
 ```java
 object WriteData extends App {
@@ -273,9 +244,6 @@ object WriteData extends App {
 }
 ```
 
-</TabItem>
-<TabItem value="Python" label="Python">
-
 ```python
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
@@ -313,9 +281,6 @@ df.write \
 
 ```
 
-</TabItem>
-<TabItem value="SparkSQL" label="Spark SQL">
-
 ```sql
    CREATE TEMPORARY VIEW jdbcTable
            USING org.apache.spark.sql.jdbc
@@ -331,9 +296,6 @@ df.write \
                 SELECT * FROM resultTable;
                 
 ```
-
-</TabItem>
-</Tabs>
 
 ## Parallelism {#parallelism}
 

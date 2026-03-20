@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # HuggingFace Rerank
 
@@ -86,9 +84,6 @@ asyncio.run(async_rerank_example())
 
 ### 1. Configure your model in config.yaml
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: bge-reranker-base
@@ -106,9 +101,6 @@ model_list:
       api_key: your-custom-api-key
 ```
 
-</TabItem>
-</Tabs>
-
 ### 2. Start the proxy
 
 ```bash
@@ -119,9 +111,6 @@ litellm --config /path/to/config.yaml
 ```
 
 ### 3. Make rerank requests
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash
 curl http://localhost:4000/rerank \
@@ -139,10 +128,6 @@ curl http://localhost:4000/rerank \
     "top_n": 3
   }'
 ```
-
-</TabItem>
-
-<TabItem value="python-sdk" label="Python SDK">
 
 ```python
 import litellm
@@ -164,10 +149,6 @@ response = litellm.rerank(
 
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="requests" label="Using requests library">
 
 ```python
 import requests
@@ -193,11 +174,6 @@ data = {
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
 ```
-
-</TabItem>
-</Tabs>
-
-
 
 ## Configuration Options
 
@@ -225,8 +201,6 @@ litellm.rerank(
     # ... other params
 )
 ```
-
-
 
 ## Response Format
 
@@ -260,4 +234,3 @@ The response follows the standard rerank API format:
   }
 }
 ```
-

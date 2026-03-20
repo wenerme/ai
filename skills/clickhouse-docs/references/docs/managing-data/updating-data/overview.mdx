@@ -1,5 +1,4 @@
 ---
-slug: /updating-data/overview
 title: 'Overview'
 description: 'How to update data in ClickHouse'
 keywords: ['update', 'updating data', 'mutations', 'lightweight updates']
@@ -144,9 +143,7 @@ HAVING sum(Sign) > 0
 
 Unlike `ReplacingMergeTree`, `CollapsingMergeTree` allows you to modify sorting key values. It's well-suited for reversible operations with cancellation semantics, such as financial transactions or game state tracking.
 
-:::note
-The approach above for updating requires your application to maintain state client-side in order to insert the cancellation row. While this is most efficient from ClickHouse's perspective, it can be complex to work with at scale. Queries also need aggregation with sign multiplication to produce correct results.
-:::
+> **note**: The approach above for updating requires your application to maintain state client-side in order to insert the cancellation row. While this is most efficient from ClickHouse's perspective, it can be complex to work with at scale. Queries also need aggregation with sign multiplication to produce correct results.
 
 Read more: [CollapsingMergeTree](/engines/table-engines/mergetree-family/collapsingmergetree)
 
@@ -172,9 +169,7 @@ Use mutations when regulatory compliance requires guaranteed physical data remov
 
 Mutations are quite I/O-heavy, rewriting all parts that match the `WHERE` expression. There is no atomicity to this process—parts are substituted for mutated parts as soon as they are ready, and a `SELECT` query that starts executing during a mutation will see data from parts that have already been mutated along with data from parts that have not been mutated yet. You can track the state of progress via the [`system.mutations`](/operations/system-tables/mutations) table.
 
-:::warning
-Mutations are I/O intensive and should be used sparingly as they can impact cluster `SELECT` performance. If mutations queue faster than they process, query performance will degrade. Monitor the queue via `system.mutations`.
-:::
+> **warning**: Mutations are I/O intensive and should be used sparingly as they can impact cluster `SELECT` performance. If mutations queue faster than they process, query performance will degrade. Monitor the queue via `system.mutations`.
 
 Read more: [ALTER TABLE UPDATE](/sql-reference/statements/alter/update)
 
@@ -220,9 +215,7 @@ Both the mutation and subsequent `SELECT` queries need the `apply_mutations_on_f
 
 Note that a mutation is still used to update the data—it is just not materialized immediately. The mutation will still be applied in the background as an asynchronous process and incurs the same heavy overhead as a regular mutation. The expressions that can be used with this operation are also limited (see [details](/guides/developer/on-the-fly-mutations#support-for-subqueries-and-non-deterministic-functions)).
 
-:::warning
-On-the-fly mutations should only be used for a small number of operations—perhaps a few dozen at most. Keeper stores conditions in memory, so excessive use impacts cluster stability. Heavy Keeper load can cause session timeouts that affect unrelated tables.
-:::
+> **warning**: On-the-fly mutations should only be used for a small number of operations—perhaps a few dozen at most. Keeper stores conditions in memory, so excessive use impacts cluster stability. Heavy Keeper load can cause session timeouts that affect unrelated tables.
 
 Read more: [On-the-fly mutations](/guides/developer/on-the-fly-mutations)
 

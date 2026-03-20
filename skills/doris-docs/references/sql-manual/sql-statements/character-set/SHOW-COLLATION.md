@@ -27,8 +27,6 @@ SHOW COLLATION
 | Compiled | Whether the collation is compiled        |
 | Sortlen | Sort length         |
 
-
-
 ## Usage Notes
 
 In Doris, although it is compatible with the MySQL collation setting command, it does not actually take effect. When executed, utf8mb4_0900_bin will always be used as the comparison rule.
@@ -47,5 +45,3 @@ SHOW COLLATION;
 | utf8mb3_general_ci | utf8mb3 |   33 | Yes     | Yes      |       1 |
 +--------------------+---------+------+---------+----------+---------+
 ```
-
-

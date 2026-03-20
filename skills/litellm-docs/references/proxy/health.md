@@ -40,10 +40,7 @@ For detailed configuration and usage, see [Shared Health Check State](./shared_h
 #### Request
 Make a GET Request to `/health` on the proxy 
 
-:::info
-**This endpoint makes an LLM API call to each model to check if it is healthy.**
-:::
-
+> **info**: **This endpoint makes an LLM API call to each model to check if it is healthy.**
 ```shell
 curl --location 'http://0.0.0.0:4000/health' -H "Authorization: Bearer sk-1234"
 ```
@@ -116,7 +113,6 @@ DEFAULT_HEALTH_CHECK_PROMPT="this is a test prompt"
 
 ### Text Completion Models 
 
-
 To run `/completions` health checks, specify the mode as "completion" in your config for the relevant model.
 
 ```yaml
@@ -142,7 +138,6 @@ model_list:
     model_info:
       mode: audio_transcription
 ```
-
 
 ### Text to Speech Models 
 
@@ -189,7 +184,6 @@ model_list:
 ```
 
 Expected Response 
-
 
 ```bash
 {
@@ -260,11 +254,7 @@ model_list:
 
 You can enable model health checks being run in the background, to prevent each model from being queried too frequently via `/health`. 
 
-:::info
-
-**This makes an LLM API call to each model to check if it is healthy.**
-
-:::
+> **info**: **This makes an LLM API call to each model to check if it is healthy.**
 
 Here's how to use it: 
 1. in the config.yaml add:
@@ -384,7 +374,6 @@ connected"` instead of `"connected"` and the `"last_updated"` field will not be 
 
 Unprotected endpoint for checking if proxy is alive
 
-
 Example Request: 
 
 ```
@@ -408,7 +397,6 @@ curl -L -X GET 'http://0.0.0.0:4000/health/services?service=datadog'     -H 'Aut
 ```
 
 [**API Reference**](https://litellm-api.up.railway.app/#/health/health_services_endpoint_health_services_get)
-
 
 ## Advanced - Call specific models 
 
@@ -451,4 +439,3 @@ curl -X POST 'http://localhost:4000/chat/completions' \
 }
 '
 ```
-

@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'AWS PrivateLink for ClickPipes'
 description: 'Establish a secure connection between ClickPipes and a data source using AWS PrivateLink.'
-slug: /integrations/clickpipes/aws-privatelink
 title: 'AWS PrivateLink for ClickPipes'
 doc_type: 'guide'
 keywords: ['aws privatelink', 'ClickPipes security', 'vpc endpoint', 'private connectivity', 'vpc resource']
@@ -9,17 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-import cp_service from '@site/static/images/integrations/data-ingestion/clickpipes/cp_service.png';
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import cp_rpe_select from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_select.png';
-import cp_rpe_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_step0.png';
-import cp_rpe_step1 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_step1.png';
-import cp_rpe_step2 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_step2.png';
-import cp_rpe_step3 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_step3.png';
-import cp_rpe_settings0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_settings0.png';
-import cp_rpe_settings1 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_rpe_settings1.png';
-import Image from '@theme/IdealImage';
 
 # AWS PrivateLink for ClickPipes
 
@@ -48,9 +35,7 @@ ClickPipes reverse private endpoint can be configured with one of the following 
 
 ### VPC resource {#vpc-resource}
 
-:::info
-Cross-region isn't supported.
-:::
+> **info**: Cross-region isn't supported.
 
 Your VPC resources can be accessed in ClickPipes using [PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-access-resources.html). This approach doesn't require setting up a load balancer in front of your data source.
 
@@ -69,13 +54,11 @@ To set up PrivateLink with VPC resource:
 
 Resource gateway is the point that receives traffic for specified resources in your VPC.
 
-:::note
-Your resource gateway attached subnets are recommended to have sufficient IP addresses available.
+> **note**: Your resource gateway attached subnets are recommended to have sufficient IP addresses available.
 It's recommended to have at least `/26` subnet mask for each subnet.
 
 For each VPC endpoint (each Reverse Private Endpoint), AWS requires a consecutive block of 16 IP addresses per subnet. (`/28` subnet mask)
 If this requirement isn't met, Reverse Private Endpoint will transition to a failed state.
-:::
 
 You can create a resource gateway from the [AWS console](https://docs.aws.amazon.com/vpc/latest/privatelink/create-resource-gateway.html) or with the following command:
 
@@ -122,13 +105,11 @@ aws vpc-lattice create-resource-configuration \
     --resource-configuration-definition 'arnResource={arn=arn:aws:rds:us-east-1:123456789012:cluster:my-rds-cluster}'
 ```
 
-:::note
-You can't create a resource configuration for a publicly accessible cluster.
+> **note**: You can't create a resource configuration for a publicly accessible cluster.
 If your cluster is publicly accessible, you must modify the cluster
 to make it private before creating the resource configuration
 or use [IP allow list](/integrations/clickpipes#list-of-static-ips) instead.
 For more information, see the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/resource-configuration.html#resource-definition).
-:::
 
 The output will contain a Resource-Configuration ARN, which you will need for the next step. It will also contain a Resource-Configuration ID, which you will need to set up a ClickPipe connection with VPC resource.
 
@@ -136,13 +117,11 @@ The output will contain a Resource-Configuration ARN, which you will need for th
 
 Sharing your resource requires a Resource-Share. This is facilitated through the Resource Access Manager (RAM).
 
-:::note
-A Resource-Share can only be used for a single Reverse Private Endpoint and cannot be reused.
+> **note**: A Resource-Share can only be used for a single Reverse Private Endpoint and cannot be reused.
 If you need to use the same Resource-Configuration for multiple Reverse Private Endpoints, 
 you must create a separate Resource-Share for each endpoint.
 The Resource-Share remains in your AWS account after a Reverse Private Endpoint is deleted 
 and must be manually removed if no longer needed.
-:::
 
 You can put the Resource-Configuration into the Resource-Share through [AWS console](https://docs.aws.amazon.com/ram/latest/userguide/working-with-sharing-create.html) or by running the following command with ClickPipes account ID `072088201116` (arn:aws:iam::072088201116:root):
 
@@ -173,10 +152,8 @@ Cross-region isn't supported.
 It is a recommended option for ClickPipes for MSK.
 See the [getting started](https://docs.aws.amazon.com/msk/latest/developerguide/mvpc-getting-started.html) guide for more details.
 
-:::info
-Update your MSK cluster policy and add `072088201116` to the allowed principals to your MSK cluster.
+> **info**: Update your MSK cluster policy and add `072088201116` to the allowed principals to your MSK cluster.
 See AWS guide for [attaching a cluster policy](https://docs.aws.amazon.com/msk/latest/developerguide/mvpc-cluster-owner-action-policy.html) for more details.
-:::
 
 Follow our [MSK setup guide for ClickPipes](/knowledgebase/aws-privatelink-setup-for-msk-clickpipes) to learn how to set up the connection.
 
@@ -196,15 +173,11 @@ It's a preferred choice for:
 
 See the [getting started](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html) guide for more details.
 
-:::info
-Add ClickPipes account ID `072088201116` to the allowed principals to your VPC endpoint service.
+> **info**: Add ClickPipes account ID `072088201116` to the allowed principals to your VPC endpoint service.
 See AWS guide for [managing permissions](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions) for more details.
-:::
 
-:::info
-[Cross-region access](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#endpoint-service-cross-region)
+> **info**: [Cross-region access](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#endpoint-service-cross-region)
 can be configured for ClickPipes. Add [your ClickPipe region](#aws-privatelink-regions) to the allowed regions in your VPC endpoint service.
-:::
 
 ## Creating a ClickPipe with reverse private endpoint {#creating-clickpipe}
 
@@ -228,12 +201,10 @@ can be configured for ClickPipes. Add [your ClickPipe region](#aws-privatelink-r
 
 5. Select any of existing reverse private endpoints or create a new one.
 
-:::info
-If cross-region access is required for RDS, you need to create a VPC endpoint service and
+> **info**: If cross-region access is required for RDS, you need to create a VPC endpoint service and
 [this guide should provide](/knowledgebase/aws-privatelink-setup-for-clickpipes) a good starting point to set it up.
 
 For same-region access, creating a VPC Resource is the recommended approach.
-:::
 
 <Image img={cp_rpe_step1} alt="Select reverse private endpoint" size="lg" border/>
 

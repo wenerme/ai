@@ -2,9 +2,6 @@
 title: Type-Safe Relations
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Entity relations are mapped to entity references - instances of the entity that have at least the primary key available. This reference is stored in the identity map, so you will get the same object reference when fetching the same document from the database.
 
 ```ts
@@ -41,18 +38,7 @@ The `Reference` wrapper wraps an entity reference and provides methods to safely
 
 Use the `Ref<T>` type and `ref: true` option to define a reference property:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -69,9 +55,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -84,9 +68,6 @@ export const Book = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts title="./entities/Book.ts"
 import { Entity, Ref, ManyToOne, PrimaryKey, ref } from '@mikro-orm/core';
@@ -107,9 +88,6 @@ export class Book {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Book.ts"
 import { Entity, Ref, ManyToOne, PrimaryKey, ref } from '@mikro-orm/core';
 
@@ -128,9 +106,6 @@ export class Book {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Using References
 
@@ -204,18 +179,7 @@ const usersWithRelations = await em.find(User, {}, {
 
 Given the following `User` entity:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -233,9 +197,7 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -249,9 +211,6 @@ export const User = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts title="./entities/User.ts"
 import { Entity, PrimaryKey, ManyToOne, ManyToMany, Collection, Ref, ref } from '@mikro-orm/core';
@@ -275,9 +234,6 @@ export class User {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/User.ts"
 import { Entity, PrimaryKey, ManyToOne, ManyToMany, Collection, Ref, ref } from '@mikro-orm/core';
 
@@ -299,9 +255,6 @@ export class User {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Type-Safe Access with `$`
 
@@ -388,18 +341,7 @@ book.author = wrap(someAuthor).toReference();
 
 You can create references inside entity constructors using `rel()`:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p, rel } from '@mikro-orm/core';
@@ -419,9 +361,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p, rel } from '@mikro-orm/core';
@@ -437,9 +377,6 @@ export const Book = defineEntity({
 // Usage: create book with author reference
 const book = em.create(Book, { author: rel(Author, authorId) });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts title="./entities/Book.ts"
 import { Entity, ManyToOne, PrimaryKey, Ref, rel } from '@mikro-orm/core';
@@ -460,9 +397,6 @@ export class Book {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Book.ts"
 import { Entity, ManyToOne, PrimaryKey, Ref, rel } from '@mikro-orm/core';
 
@@ -481,9 +415,6 @@ export class Book {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 Another way is to use `toReference()` method available as part of the [`wrap()` helper](./wrap-helper.md):
 
@@ -503,18 +434,7 @@ console.log(book.author.id); // OK - PK is always available
 
 MikroORM detects the PK property by checking for `_id`, `uuid`, or `id` in that order. For custom PK names, use the `PrimaryKeyProp` symbol:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Author.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -532,9 +452,7 @@ AuthorSchema.setClass(Author);
 // PrimaryKeyProp is inferred automatically with defineEntity
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Author.ts"
 import { defineEntity, p, PrimaryKeyProp } from '@mikro-orm/core';
@@ -549,9 +467,6 @@ export const Author = defineEntity({
 // PrimaryKeyProp is inferred automatically with defineEntity
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts title="./entities/Author.ts"
 import { Entity, PrimaryKey, PrimaryKeyProp } from '@mikro-orm/core';
 
@@ -566,9 +481,6 @@ export class Author {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Author.ts"
 import { Entity, PrimaryKey, PrimaryKeyProp } from '@mikro-orm/core';
 
@@ -582,9 +494,6 @@ export class Author {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ```ts
 // Now works with custom PK name
@@ -594,18 +503,7 @@ console.log(book.author.myPrimaryKey);
 
 For MongoDB, both `id` (string) and `_id` (ObjectId) are available:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -623,9 +521,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts title="./entities/Book.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -639,9 +535,6 @@ export const Book = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts title="./entities/Book.ts"
 import { Entity, PrimaryKey, SerializedPrimaryKey, ManyToOne, Ref } from '@mikro-orm/core';
@@ -661,9 +554,6 @@ export class Book {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Book.ts"
 import { Entity, PrimaryKey, SerializedPrimaryKey, ManyToOne, Ref } from '@mikro-orm/core';
 
@@ -681,9 +571,6 @@ export class Book {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ```ts
 const book = await em.findOne(Book, 1);

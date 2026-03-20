@@ -1,20 +1,9 @@
 ---
-slug: /optimize/prewhere
-sidebar_label: 'PREWHERE optimization'
-sidebar_position: 21
 description: 'PREWHERE reduces I/O by avoiding reading unnecessary column data.'
 title: 'How does the PREWHERE optimization work?'
 doc_type: 'guide'
 keywords: ['prewhere', 'query optimization', 'performance', 'filtering', 'best practices']
 ---
-
-import visual01 from '@site/static/images/guides/best-practices/prewhere_01.gif';
-import visual02 from '@site/static/images/guides/best-practices/prewhere_02.gif';
-import visual03 from '@site/static/images/guides/best-practices/prewhere_03.gif';
-import visual04 from '@site/static/images/guides/best-practices/prewhere_04.gif';
-import visual05 from '@site/static/images/guides/best-practices/prewhere_05.gif';
-
-import Image from '@theme/IdealImage';
 
 # How does the PREWHERE optimization work?
 
@@ -28,7 +17,6 @@ We'll start by illustrating how a query on the [uk_price_paid_simple](/parts) ta
 
 <Image img={visual01} size="md" alt="Query processing without PREWHERE optimization"/>
 
-<br/><br/>
 ① The query includes a filter on the `town` column, which is part of the table's primary key, and therefore also part of the primary index.
 
 ② To accelerate the query, ClickHouse loads the table's primary index into memory.
@@ -49,7 +37,6 @@ The first three processing steps are the same as before:
 
 <Image img={visual02} size="md" alt="Query processing with PREWHERE optimization"/>
 
-<br/><br/>
 ① The query includes a filter on the `town` column, which is part of the table's primary key—and therefore also part of the primary index.
 
 ②  Similar to the run without the PREWHERE clause, to accelerate the query, ClickHouse loads the primary index into memory,
@@ -60,35 +47,31 @@ Now, thanks to the PREWHERE clause, the next step differs: Instead of reading al
 
 With each step, it only loads granules that contain at least one row that survived—i.e., matched—the previous filter. As a result, the number of granules to load and evaluate for each filter decreases monotonically:
 
-**Step 1: Filtering by town**<br/>
+**Step 1: Filtering by town**
 ClickHouse begins PREWHERE processing by ① reading the selected granules from the `town` column and checking which ones actually contain rows matching `London`.
 
 In our example, all selected granules do match, so ② the corresponding positionally aligned granules for the next filter column—`date`—are then selected for processing:
 
 <Image img={visual03} size="md" alt="Step 1: Filtering by town"/>
 
-<br/><br/>
-**Step 2: Filtering by date**<br/>
+**Step 2: Filtering by date**
 Next, ClickHouse ① reads the selected `date` column granules to evaluate the filter `date > '2024-12-31'`.
 
 In this case, two out of three granules contain matching rows, so ② only their positionally aligned granules from the next filter column—`price`—are selected for further processing:
 
 <Image img={visual04} size="md" alt="Step 2: Filtering by date"/>
 
-<br/><br/>
-**Step 3: Filtering by price**<br/>
+**Step 3: Filtering by price**
 Finally, ClickHouse ① reads the two selected granules from the `price` column to evaluate the last filter `price > 10_000`.
 
 Only one of the two granules contains matching rows, so ② just its positionally aligned granule from the `SELECT` column—`street`—needs to be loaded for further processing:
 
 <Image img={visual05} size="md" alt="Step 2: Filtering by price"/>
 
-<br/><br/>
 By the final step, only the minimal set of column granules, those containing matching rows, are loaded. This leads to lower memory usage, less disk I/O, and faster query execution.
 
-:::note PREWHERE reduces data read, not rows processed
+> **note**: PREWHERE reduces data read, not rows processed
 Note that ClickHouse processes the same number of rows in both the PREWHERE and non-PREWHERE versions of the query. However, with PREWHERE optimizations applied, not all column values need to be loaded for every processed row.
-:::
 
 ## PREWHERE optimization is automatically applied {#prewhere-optimization-is-automatically-applied}
 

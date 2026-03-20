@@ -50,18 +50,14 @@ When machine configurations are high, consider mixing FDB, FE, and Meta Service,
 
 This section provides a step-by-step guide to configure, deploy, and start the FoundationDB (FDB) service using the provided scripts `fdb_vars.sh` and `fdb_ctl.sh`. After [downloading the Doris release package](https://doris.apache.org/download), you can find these scripts in the `tools/fdb` directory.
 
-:::tip
-Doris currently relies on FDB version 7.1.x by default. If you have already installed FDB separately, please ensure it is version 7.1.x; otherwise, the Meta Service will fail to start.
-:::
+> **tip**: Doris currently relies on FDB version 7.1.x by default. If you have already installed FDB separately, please ensure it is version 7.1.x; otherwise, the Meta Service will fail to start.
 
 #### 5.1.1 Machine Requirements
 
 Typically, at least 3 machines equipped with SSDs are required to form a FoundationDB cluster with dual data replicas and allow for single machine failures.
 If SSDs are not available, at least standard cloud disks or local disks with a standard POSIX-compliant file system must be used for data storage. Otherwise, FoundationDB may fail to operate properly - for instance, storage solutions like JuiceFS should not be used as the underlying storage for FoundationDB.
 
-:::tip
-If only for development/testing purposes, a single machine is sufficient.
-:::
+> **tip**: If only for development/testing purposes, a single machine is sufficient.
 
 #### 5.1.2 `fdb_vars.sh` Configuration
 
@@ -69,10 +65,10 @@ If only for development/testing purposes, a single machine is sufficient.
 
 | Parameter | Description | Type | Example | Notes |
 |-----------|-------------|------|---------|-------|
-| `DATA_DIRS` | Specify the data directory for FoundationDB storage | Comma-separated list of absolute paths | `/mnt/foundationdb/data1,/mnt/foundationdb/data2,/mnt/foundationdb/data3` | - Ensure directories are created before running the script<br/>- SSD and separate directories are recommended for production environments |
-| `FDB_CLUSTER_IPS` | Define cluster IPs | String (comma-separated IP addresses) | `172.200.0.2,172.200.0.3,172.200.0.4` | - At least 3 IP addresses for production clusters<br/>- The first IP will be used as the coordinator<br/>- For high availability, place machines in different racks |
-| `FDB_HOME` | Define the main directory for FoundationDB | Absolute path | `/fdbhome` | - Default path is /fdbhome<br/>- Ensure this path is absolute |
-| `FDB_CLUSTER_ID` | Define the cluster ID | String | `SAQESzbh` | - Each cluster ID must be unique<br/>- Can be generated using `mktemp -u XXXXXXXX` |
+| `DATA_DIRS` | Specify the data directory for FoundationDB storage | Comma-separated list of absolute paths | `/mnt/foundationdb/data1,/mnt/foundationdb/data2,/mnt/foundationdb/data3` | - Ensure directories are created before running the script- SSD and separate directories are recommended for production environments |
+| `FDB_CLUSTER_IPS` | Define cluster IPs | String (comma-separated IP addresses) | `172.200.0.2,172.200.0.3,172.200.0.4` | - At least 3 IP addresses for production clusters- The first IP will be used as the coordinator- For high availability, place machines in different racks |
+| `FDB_HOME` | Define the main directory for FoundationDB | Absolute path | `/fdbhome` | - Default path is /fdbhome- Ensure this path is absolute |
+| `FDB_CLUSTER_ID` | Define the cluster ID | String | `SAQESzbh` | - Each cluster ID must be unique- Can be generated using `mktemp -u XXXXXXXX` |
 | `FDB_CLUSTER_DESC` | Define the description of the FDB cluster | String | `dorisfdb` | - It is recommended to change this to something meaningful for the deployment |
 
 ##### Optional Custom Settings

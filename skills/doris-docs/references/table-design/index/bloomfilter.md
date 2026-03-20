@@ -19,7 +19,7 @@ A BloomFilter consists of a very long binary bit array and a series of hash func
 
 The figure below shows an example of a BloomFilter with m=18 and k=3 (where m is the size of the bit array and k is the number of hash functions). Elements x, y, and z in the set are hashed by 3 different hash functions into the bit array. When querying element w, if any bit calculated by the hash functions is 0, then w is not in the set. Conversely, if all bits are 1, it only indicates that w may be in the set, but not definitely, due to possible hash collisions.
 
-![Bloom_filter.svg](/images/Bloom_filter.svg.png)
+[Bloom_filter.svg]
 
 Thus, if all bits at the calculated positions are 1, it only indicates that the element may be in the set, not definitely, due to possible hash collisions. This is the "false positive" nature of BloomFilter. Therefore, a BloomFilter-based index can only skip data that does not meet the conditions but cannot precisely locate data that does.
 
@@ -29,9 +29,7 @@ The Doris BloomFilter index is built on a per-page basis, with each data block s
 
 BloomFilter indexes can accelerate equality queries (including = and IN) and are effective for high cardinality fields, such as unique id fields like userid.
 
-:::tip
-
-BloomFilter has the following limitations:
+> **tip**: BloomFilter has the following limitations:
 
 1. It has no effect on queries other than in and =, such as !=, NOT IN, >, <, etc.
 2. It does not support BloomFilter indexing on columns of type Tinyint, Float, Double.
@@ -41,8 +39,6 @@ To check the effect of a BloomFilter index on a query, you can analyze relevant 
 
 - BlockConditionsFilteredBloomFilterTime is the time consumed by the BloomFilter index.
 - RowsBloomFilterFiltered is the number of rows filtered out by the BloomFilter. You can compare it with other Rows values to analyze the filtering effect of the BloomFilter index.
-
-:::
 
 ## Managing Indexes
 

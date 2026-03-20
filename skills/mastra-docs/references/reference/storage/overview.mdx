@@ -5,10 +5,6 @@ packages:
   - "@mastra/core"
 ---
 
-import { SchemaTable } from "@site/src/components/SchemaTable";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Storage overview
 
 Mastra storage is organized into domains. Each domain owns a set of tables or collections. Depending on your adapter and configuration, you may use all domains or only a subset.
@@ -32,8 +28,7 @@ The schema definitions below cover the built-in database-backed tables documente
 
 ## Core schema
 
-<Tabs>
-  <TabItem value="messages" label="Messages">
+  
     Stores conversation messages and their metadata. Each message belongs to a thread and contains the actual content along with metadata about the sender role and message type.
 
     <SchemaTable
@@ -129,9 +124,9 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
+  
 
-  <TabItem value="threads" label="Threads">
+  
     Groups related messages together and associates them with a resource. Contains metadata about the conversation.
 
     <SchemaTable
@@ -177,9 +172,9 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
+  
 
-  <TabItem value="resources" label="Resources">
+  
     Stores user-specific data for resource-scoped working memory. Each resource represents a user or entity, allowing working memory to persist across all conversation threads for that user.
 
     <SchemaTable
@@ -221,9 +216,9 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
+  
 
-  <TabItem value="workflows" label="Workflows">
+  
     When `suspend()` is called on a workflow, its state is saved in the following format. When `resume()` is called, that state is rehydrated.
 
     <SchemaTable
@@ -271,9 +266,9 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
+  
 
-  <TabItem value="evals" label="Evals">
+  
     Stores eval results from running metrics against agent outputs.
 
     <SchemaTable
@@ -345,9 +340,9 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
+  
 
-  <TabItem value="traces" label="Traces">
+  
     Captures OpenTelemetry traces for monitoring and debugging.
 
     <SchemaTable
@@ -441,5 +436,3 @@ The schema definitions below cover the built-in database-backed tables documente
   },
 ]}
     />
-  </TabItem>
-</Tabs>

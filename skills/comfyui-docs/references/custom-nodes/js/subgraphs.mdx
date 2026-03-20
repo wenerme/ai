@@ -133,9 +133,7 @@ app.registerExtension({
 
 When a `SubgraphInput` connects to a widget inside a subgraph, a copy of that widget appears on the parent subgraph node. This fires `widget-promoted`. Removing the connection fires `widget-demoted`.
 
-<Warning>
 Widget promotion behavior is still evolving and may change in future releases.
-</Warning>
 
 ```javascript
 import { app } from "../../scripts/app.js"
@@ -207,9 +205,7 @@ app.registerExtension({
 })
 ```
 
-<Tip>
 `onRemoved` can also fire during subgraph conversion, not just deletion. Guard teardown logic if you need to preserve state across restructuring.
-</Tip>
 
 ## See Also
 

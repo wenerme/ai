@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # PII, PHI Masking - Presidio
 
@@ -21,12 +19,9 @@ For this guardrail you need a deployed Presidio Analyzer and Presido Anonymizer 
 
 | Deployment Option | Details |
 |------------------|----------|
-| Deploy Presidio Docker Containers | - [Presidio Analyzer Docker Container](https://hub.docker.com/r/microsoft/presidio-analyzer)<br/>- [Presidio Anonymizer Docker Container](https://hub.docker.com/r/microsoft/presidio-anonymizer) |
+| Deploy Presidio Docker Containers | - [Presidio Analyzer Docker Container](https://hub.docker.com/r/microsoft/presidio-analyzer)- [Presidio Anonymizer Docker Container](https://hub.docker.com/r/microsoft/presidio-anonymizer) |
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="ui" label="LiteLLM UI">
 
 ### 1. Create a PII, PHI Masking Guardrail 
 
@@ -36,9 +31,6 @@ On the LiteLLM UI, navigate to Guardrails. Click "Add Guardrail". On this dropdo
   img={require('../../../img/presidio_1.png')}
   style={{width: '80%', display: 'block', margin: '0'}}
 />
-
-<br/>
-<br/>
 
 #### 1.2 Configure Entity Types
 
@@ -58,13 +50,7 @@ You can also configure a default language for PII analysis using the `presidio_l
 - `es` - Spanish  
 - `de` - German
 
-
 If not specified, English (`en`) will be used as the default language.
-
-</TabItem>
-
-
-<TabItem value="config" label="Config.yaml">
 
 Define your guardrails under the `guardrails` section
 
@@ -102,10 +88,6 @@ export PRESIDIO_ANONYMIZER_API_BASE="http://localhost:5001"
 litellm --config config.yaml --detailed_debug
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### 3. Test it! 
 
 #### 3.1 LiteLLM UI 
@@ -121,16 +103,11 @@ My credit card is 4111-1111-1111-1111 and my email is test@example.com.
   style={{width: '100%', display: 'block', margin: '0'}}
 />
 
-<br/>
-
 #### 3.2 Test in code
 
 In order to apply a guardrail for a request send `guardrails=["presidio-pii"]` in the request body. 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Masked PII call" value = "not-allowed">
 
 Expect this to mask `Jane Doe` since it's PII
 
@@ -177,10 +154,6 @@ Expected response on failure
 }
 ```
 
-</TabItem>
-
-<TabItem label="No PII Call " value = "allowed">
-
 ```shell title="No PII Request" showLineNumbers
 curl http://localhost:4000/chat/completions \
   -H "Content-Type: application/json" \
@@ -193,10 +166,6 @@ curl http://localhost:4000/chat/completions \
     "guardrails": ["presidio-pii"],
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Tracing Guardrail requests
 
@@ -296,9 +265,6 @@ For each entity type, you can specify one of the following actions:
 
 ### Test request with Entity Type Configuration
 
-<Tabs>
-<TabItem label="Masking PII entities" value="masked-entities">
-
 When using the masking configuration, entities will be replaced with placeholders:
 
 ```shell title="Masking PII Request" showLineNumbers
@@ -333,10 +299,6 @@ Example response with masked entities:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Blocking PII entities" value="blocked-entity">
-
 When using the blocking configuration, requests containing the configured entity types will be blocked completely with an exception:
 
 ```shell title="Blocking PII Request" showLineNumbers
@@ -363,9 +325,6 @@ When running this request, the proxy will raise a `BlockedPiiEntityError` except
 ```
 
 The exception includes the entity type that was blocked (`CREDIT_CARD` in this case) and the guardrail name that caused the blocking.
-
-</TabItem>
-</Tabs>
 
 ## Advanced
 
@@ -423,9 +382,6 @@ The request will be processed as follows:
 
 The Presidio API [supports passing the `language` param](https://microsoft.github.io/presidio/api-docs/api-docs.html#tag/Analyzer/paths/~1analyze/post). Here is how to set the `language` per request
 
-<Tabs>
-<TabItem label="curl" value = "curl">
-
 ```shell title="Language Parameter - curl" showLineNumbers
 curl http://localhost:4000/chat/completions \
   -H "Content-Type: application/json" \
@@ -439,11 +395,6 @@ curl http://localhost:4000/chat/completions \
     "guardrail_config": {"language": "es"}
   }'
 ```
-
-</TabItem>
-
-
-<TabItem label="OpenAI Python SDK" value = "python">
 
 ```python title="Language Parameter - Python" showLineNumbers
 import openai
@@ -470,10 +421,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-
-</TabItem>
-
-</Tabs>
 
 ###  Set default `language` in config.yaml
 
@@ -557,7 +504,6 @@ In this example, the request will use Spanish (`es`) for PII detection even thou
 
 ### Output parsing 
 
-
 LLM responses can sometimes contain the masked tokens. 
 
 For presidio 'replace' operations, LiteLLM can check the LLM response and replace the masked token with the user-submitted values. 
@@ -590,7 +536,6 @@ guardrails:
 
 ### Ad Hoc Recognizers
 
-
 Send ad-hoc recognizers to presidio `/analyze` by passing a json file to the proxy 
 
 [**Example** ad-hoc recognizer](https://github.com/BerriAI/litellm/blob/b69b7503db5aa039a49b7ca96ae5b34db0d25a3d/litellm/proxy/hooks/example_presidio_ad_hoc_recognizer.json)
@@ -620,7 +565,6 @@ export PRESIDIO_ANALYZER_API_BASE="http://localhost:5002"
 export PRESIDIO_ANONYMIZER_API_BASE="http://localhost:5001"
 ```
 
-
 You can see this working, when you run the proxy: 
 
 ```bash title="Run Proxy with Debug" showLineNumbers
@@ -643,17 +587,13 @@ Presidio PII Masking: Redacted pii message: <PERSON> AHV number is <AHV_NUMBER>.
 
 ### Logging Only
 
-
 Only apply PII Masking before logging to Langfuse, etc.
 
 Not on the actual llm api request / response.
 
-:::note
-This is currently only applied for 
+> **note**: This is currently only applied for 
 - `/chat/completion` requests
 - on 'success' logging
-
-:::
 
 1. Define mode: `logging_only` on your LiteLLM config.yaml 
 
@@ -679,7 +619,6 @@ export PRESIDIO_ANALYZER_API_BASE="http://localhost:5002"
 export PRESIDIO_ANONYMIZER_API_BASE="http://localhost:5001"
 ```
 
-
 2. Start proxy
 
 ```bash title="Start Proxy" showLineNumbers
@@ -702,7 +641,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
   ]
   }'
 ```
-
 
 **Expected Logged Response**
 

@@ -29,7 +29,7 @@ weight: 200
 
 # Manage and inspect variables
 
-In the **Variables** tab, you can [add](ref:add) variables and [manage](#manage-variables) existing variables. You can also [inspect](#inspect-variables) variables to identify any dependencies between them. <!--whether a variable is being referenced (or used) in other variables or dashboard.-->
+In the **Variables** tab, you can [add](ref:add) variables and [manage](#manage-variables) existing variables. You can also [inspect](#inspect-variables) variables to identify any dependencies between them. 
 
 ## Manage variables
 
@@ -43,16 +43,4 @@ You can take the following actions in the **Variables** tab:
 
 In addition to [managing variables](#manage-variables), the **Variables** tab lets you easily identify whether variables have any dependencies. To check, click **Show dependencies** at the bottom of the list, which opens the dependencies diagram:
 
-<!-- Update and comment this back in when the reference functionality is working again
-
-The variables page lets you easily identify whether a variable is being referenced (or used) in other variables or dashboard. In addition, you can also [add](ref:add) and [manage variables](#manage-variables) on this page.
-
-![Variables list](/static/img/docs/variables-templates/variables-list-7-4.png)
-
-Any variable that is referenced or used has a green check mark next to it, while unreferenced variables have a orange caution icon next to them.
-
-![Variables list](/static/img/docs/variables-templates/variable-not-referenced-7-4.png)
-
-In addition, all referenced variables have a dependency icon next to the green check mark. You can click on the icon to view the dependency map. The dependency map can be moved. You can zoom in out with mouse wheel or track pad equivalent.-->
-
-![Variables list](/static/img/docs/variables-templates/dependancy-map-7-4.png)
+[Variables list]

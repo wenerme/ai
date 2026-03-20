@@ -1,24 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/api-reference
 title: 'API reference'
-pagination_prev: null
-pagination_next: null
 description: 'ClickStack API reference for managing dashboards, alerts, and sources programmatically'
 doc_type: 'guide'
 keywords: ['ClickStack', 'observability', 'API', 'REST API', 'dashboards', 'alerts', 'HyperDX']
 ---
 
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import api_key from '@site/static/images/clickstack/api-key-personal.png';
-
 ClickStack exposes a REST API for programmatically managing dashboards, alerts, and data sources. The API is available for both **Managed ClickStack** (ClickHouse Cloud) and **ClickStack Open Source** deployments, though the endpoints and authentication differ between the two.
 
 ## API reference documentation {#api-docs}
-
-<Tabs>
-<TabItem value="managed" label="Managed ClickStack" default>
 
 For Managed ClickStack, the API is accessed through the **ClickHouse Cloud API**. The ClickStack endpoints are available in the [Cloud API specification](https://clickhouse.com/docs/cloud/manage/api/swagger#tag/ClickStack).
 
@@ -29,9 +18,6 @@ The following endpoints are available:
 | **Dashboards** | Create, list, get, update, and delete dashboards |
 | **Alerts** | Create, list, get, update, and delete alerts |
 | **Sources** | List data sources |
-
-</TabItem>
-<TabItem value="oss" label="Open Source ClickStack">
 
 For ClickStack Open Source, the full API specification is maintained in the [HyperDX repository](https://github.com/hyperdxio/hyperdx) and can be viewed interactively or downloaded as an OpenAPI spec:
 
@@ -48,13 +34,7 @@ The following endpoints are available:
 | **Sources** | List data sources |
 | **Webhooks** | List webhooks |
 
-</TabItem>
-</Tabs>
-
 ## Authentication {#authentication}
-
-<Tabs>
-<TabItem value="managed" label="Managed ClickStack" default>
 
 Managed ClickStack uses the **ClickHouse Cloud API key** for authentication via [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). To create and manage API keys, see [Managing API keys](/docs/cloud/manage/openapi).
 
@@ -68,9 +48,6 @@ curl --user $KEY_ID:$KEY_SECRET \
   https://api.clickhouse.cloud/v1/organizations/<ORG_ID>/services/<SERVICE_ID>/clickstack/dashboards
 ```
 
-</TabItem>
-<TabItem value="oss" label="Open Source ClickStack">
-
 ClickStack Open Source uses a **Bearer token** for authentication via a **Personal API Access Key**.
 
 To obtain an API key:
@@ -82,9 +59,7 @@ To obtain an API key:
 
 <Image img={api_key} alt="ClickStack API Key"/>
 
-:::note
-This is different from the **Ingestion API Key** found in Team Settings, which is used to authenticate telemetry data sent to the OpenTelemetry collector.
-:::
+> **note**: This is different from the **Ingestion API Key** found in Team Settings, which is used to authenticate telemetry data sent to the OpenTelemetry collector.
 
 The API server runs on port `8000` by default (separate from the UI on port `8080`). When using the all-in-one Docker image, ensure you map this port explicitly:
 
@@ -99,13 +74,7 @@ curl -H "Authorization: Bearer <YOUR_API_KEY>" \
   http://localhost:8000/api/v2/dashboards
 ```
 
-</TabItem>
-</Tabs>
-
 ## Base URL and request format {#base-url}
-
-<Tabs>
-<TabItem value="managed" label="Managed ClickStack" default>
 
 All Managed ClickStack API requests are sent to the ClickHouse Cloud API:
 
@@ -143,9 +112,6 @@ curl -X POST --user $KEY_ID:$KEY_SECRET \
   }' \
   https://api.clickhouse.cloud/v1/organizations/<ORG_ID>/services/<SERVICE_ID>/clickstack/alerts
 ```
-
-</TabItem>
-<TabItem value="oss" label="Open Source ClickStack">
 
 All Open Source ClickStack API requests are sent to the HyperDX API server on port `8000`:
 
@@ -210,6 +176,3 @@ curl -X POST \
   }' \
   http://localhost:8000/api/v2/charts/series
 ```
-
-</TabItem>
-</Tabs>

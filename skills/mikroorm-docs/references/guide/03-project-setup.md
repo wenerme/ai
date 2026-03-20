@@ -8,7 +8,7 @@ So far you were just toying around with your entities, let's start building some
 
 Let's create new file `app.ts` inside `src` directory, and export a `bootstrap` function from it, where you create the fastify app instance. Remember how you were forking the [`EntityManager`](/api/core/class/EntityManager) to get around the global context validation? For web servers, you can leverage middlewares, or in fastify hooks, to achieve unique request contexts automatically. MikroORM provides a handy helper called `RequestContext` which can be used to create the fork for each request. The [`EntityManager`](/api/core/class/EntityManager) is aware of this class and tries to get the right context from it automatically.
 
-:::info How does `RequestContext` helper work?
+> **info**: How does `RequestContext` helper work?
 
 Internally all [`EntityManager`](/api/core/class/EntityManager) methods that work with the Identity Map (e.g. [`em.find()`](/api/core/class/EntityManager#find) or [`em.getReference()`](/api/core/class/EntityManager#getReference)) first call `em.getContext()` to access the contextual fork. This method will first check if the code is running inside `RequestContext` handler and prefer the [`EntityManager`](/api/core/class/EntityManager) fork from it.
 
@@ -26,8 +26,6 @@ const res = await RequestContext.getEntityManager().find(Book, {});
 The `RequestContext.getEntityManager()` method then checks `AsyncLocalStorage` static instance used for creating new EM forks in the `RequestContext.create()` method.
 
 The [`AsyncLocalStorage`](https://nodejs.org/api/async_context.html#class-asynclocalstorage) class from Node.js core is the magician here. It allows us to track the context throughout the async calls. It allows us to decouple the [`EntityManager`](/api/core/class/EntityManager) fork creation (usually in a middleware as shown in the previous section) from its usage through the global [`EntityManager`](/api/core/class/EntityManager) instance.
-
-:::
 
 ```ts title='app.ts'
 import { MikroORM, RequestContext } from '@mikro-orm/core';
@@ -198,8 +196,6 @@ import { EntityManager, EntityRepository } from '@mikro-orm/sqlite'; // or any o
 
 You can also use `MikroORM`, `defineConfig` and `Options` exported from the driver package, it works similarly, providing the driver type without the need to use generics.
 
-:::
-
 ### What is `EntityRepository`
 
 Entity repositories are thin layers on top of [`EntityManager`](/api/core/class/EntityManager). They act as an extension point, so you can add custom methods, or even alter the existing ones. The default [`EntityRepository`](/api/core/class/EntityRepository) implementation just forwards the calls to the underlying [`EntityManager`](/api/core/class/EntityManager) instance.
@@ -289,7 +285,6 @@ Test Files  1 passed (1)
     Tests  1 passed (1)
   Start at  15:56:41
   Duration  876ms (transform 264ms, setup 0ms, collect 300ms, tests 147ms)
-
 
  PASS  Waiting for file changes...
      press h to show help, press q to quit
@@ -527,11 +522,9 @@ export class Migration20220913202829 extends Migration {
 
 To support undoing those changed, you can implement the `down` method, which throws an error by default.
 
-:::info Down migrations and SQLite
+> **info**: Down migrations and SQLite
 
 MikroORM will generate the down migrations automatically (although not for the initial migration, for security concerns), with one exception - the SQLite driver, due to its limited capabilities. If you use any other driver, a down migration will be generated (unless it's an initial migration).
-
-:::
 
 > You can also execute queries inside the `up()`/`down()` method via `this.execute('...')`, which will run queries in the same transaction as the rest of the migration. The `this.addSql('...)` method also accepts instances of knex. Knex instance can be accessed via `this.getKnex()`;
 
@@ -651,15 +644,13 @@ npx mikro-orm migration:list
 └─────────────────────────┴──────────────────────────┘
 ```
 
-:::info Migration snapshots
+> **info**: Migration snapshots
 
 Creating new migration will automatically save the target schema snapshot into the migrations folder. This snapshot will be then used if you try to create a new migration, instead of using the current database schema. This means that if you try to create new migration before you run the pending ones, you still get the right schema diff.
 
 > Snapshots should be versioned just like the regular migration files.
 
 Snapshotting can be disabled via `migrations.snapshot: false` in the ORM config.
-
-:::
 
 ### Running migrations automatically
 

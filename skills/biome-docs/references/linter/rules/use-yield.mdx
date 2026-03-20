@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: useYield
 description: Learn more about useYield
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JavaScript (and super languages)" icon="seti:javascript">
 ## Summary
 - Rule available since: `v1.0.0`
 - Diagnostic Category: [`lint/correctness/useYield`](/reference/diagnostics#diagnostic-category)
@@ -46,7 +42,7 @@ function* foo() {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:1 <a href="https://biomejs.dev/linter/rules/use-yield">lint/correctness/useYield</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This generator function doesn't contain </span><span style="color: Tomato;"><strong>yield</strong></span><span style="color: Tomato;">.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>function&#42; foo() &#123;<br />   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  return 10;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>&#125;<br />   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>4 │ </strong><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:1 <a href="https://biomejs.dev/linter/rules/use-yield">lint/correctness/useYield</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This generator function doesn't contain </span><span style="color: Tomato;"><strong>yield</strong></span><span style="color: Tomato;">.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>function&#42; foo() &#123;   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  return 10;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>&#125;   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>  </code></pre>
 
 ### Valid
 
@@ -71,7 +67,3 @@ function* foo() { }
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/correctness/use_yield.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/correctness/useYield)
-
-</TabItem>
-</Tabs>
-

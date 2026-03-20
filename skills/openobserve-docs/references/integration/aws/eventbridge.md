@@ -21,7 +21,6 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
 > - Built-in retry logic and failure handling
 > - Optional S3 backup for undelivered events
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -29,7 +28,6 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
     - AWS account with:
         - CloudTrail enabled for management events
         - IAM permissions to create EventBridge rules and Firehose streams
-
 
 ??? "Step 1: Ensure CloudTrail Management Events Are Enabled"
 
@@ -44,26 +42,23 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
 
     > CloudTrail acts as the *source* of API activity events across AWS.
 
-
 ??? "Step 2: Get OpenObserve Ingestion URL and Access Key"
 
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the HTTP ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
     > Example ingestion URL:
     > ```
     > https://<your-openobserve-domain>/aws/default/cloudtrail-events/_kinesis_firehose
     > ```
 
-
 ??? "Step 3: Create Firehose Delivery Stream to OpenObserve"
 
     1. In AWS Kinesis Firehose, Create delivery stream with Source: `Direct PUT` and Destination: `HTTP Endpoint`.
     2. Provide OpenObserve's HTTP Endpoint URL and Access Key, and set an S3 backup bucket.
     3. Give the stream a meaningful name and Create it.
-
 
 ??? "Step 4: Create EventBridge Rule to Forward CloudTrail Events"
 
@@ -81,7 +76,6 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
     4. Set the target to **Kinesis Firehose** and choose the delivery stream
     5. Click **Create rule**
 
-
 ??? "Step 5: Verify Logs in OpenObserve"
 
     1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
@@ -95,7 +89,6 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
       ...
     }
     ```
-
 
 ??? "Troubleshooting"
 
@@ -115,5 +108,3 @@ Monitor and analyze AWS API activity (e.g., EC2 starts, IAM changes, S3 access) 
     - OpenObserve:
         - Confirm the HTTP ingestion URL and access key are correct.
         - In the Logs view, select the correct stream and expand the time range to view recent data.
-
-

@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Getting Started Tutorial
 
@@ -70,9 +68,8 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-:::tip Already have pip installed?
+> **tip**: Already have pip installed?
 You can skip the curl install and run `litellm --setup` directly after `pip install 'litellm[proxy]'`.
-:::
 
 ---
 
@@ -80,27 +77,15 @@ You can skip the curl install and run `litellm --setup` directly after `pip inst
 
 Choose your install method. **Docker Compose** users complete their full setup inside the tab and are done. **Docker** and **pip** users continue with the steps below the tabs.
 
-<Tabs>
-
-<TabItem value="docker" label="Docker">
-
 ```bash
 docker pull docker.litellm.ai/berriai/litellm:main-latest
 ```
 
 [**See all docker images**](https://github.com/orgs/BerriAI/packages)
 
-</TabItem>
-
-<TabItem value="pip" label="LiteLLM CLI (pip package)">
-
 ```shell
 $ pip install 'litellm[proxy]'
 ```
-
-</TabItem>
-
-<TabItem value="docker-compose" label="Docker Compose (Proxy + DB)">
 
 Docker Compose bundles LiteLLM with a Postgres database. Follow the steps below — the proxy will be fully running by the end.
 
@@ -157,9 +142,7 @@ general_settings:
   database_url: "postgresql://llmproxy:dbpassword9090@db:5432/litellm"
 ```
 
-:::tip
-`database_url` enables virtual keys, spend tracking, and the UI. Replace it with your [Supabase](https://supabase.com/) or [Neon](https://neon.tech/) connection string if you prefer a managed database.
-:::
+> **tip**: `database_url` enables virtual keys, spend tracking, and the UI. Replace it with your [Supabase](https://supabase.com/) or [Neon](https://neon.tech/) connection string if you prefer a managed database.
 
 #### 2.3 — Create `prometheus.yml`
 
@@ -187,9 +170,7 @@ services:
       - "--config=/app/config.yaml" # ✅ must be uncommented
 ```
 
-:::warning
-All three files (`.env`, `config.yaml`, `prometheus.yml`) must be present before running `docker compose up`. See [Troubleshooting](#troubleshooting) if you run into issues.
-:::
+> **warning**: All three files (`.env`, `config.yaml`, `prometheus.yml`) must be present before running `docker compose up`. See [Troubleshooting](#troubleshooting) if you run into issues.
 
 ---
 
@@ -264,13 +245,8 @@ Navigate to **Virtual Keys** and click **+ Create New Key**:
 
 Virtual keys let you track spend, set rate limits, and control model access per user or team.
 
-</TabItem>
-
-</Tabs>
-
-:::note Docker Compose users
+> **note**: Docker Compose users
 Your setup is complete — the steps below are for **Docker** and **pip** users only.
-:::
 
 ---
 
@@ -300,14 +276,12 @@ You can read more about how model resolution works in the [Model Configuration](
     - **`api_base`** (`str`) - The API base for your azure deployment.
     - **`api_version`** (`str`) - The API Version to use when calling Azure's OpenAI API. Get the latest Inference API version [here](https://learn.microsoft.com/en-us/azure/ai-services/openai/api-version-deprecation?source=recommendations#latest-preview-api-releases).
 
-
 ---
 
 ### Useful Links
 - [**All Supported LLM API Providers (OpenAI/Bedrock/Vertex/etc.)**](../providers/)
 - [**Full Config.Yaml Spec**](./configs.md)
 - [**Pass provider-specific params**](../completion/provider_specific_params.md#proxy-usage)
-
 
 ## 2. Make a successful /chat/completion call 
 
@@ -316,11 +290,6 @@ LiteLLM Proxy is 100% OpenAI-compatible. Test your azure model via the `/chat/co
 ### 2.1 Start Proxy 
 
 Save your config.yaml from step 1. as `litellm_config.yaml`.
-
-<Tabs>
-
-
-<TabItem value="docker" label="Docker">
 
 ```bash
 docker run \
@@ -334,18 +303,9 @@ docker run \
 # RUNNING on http://0.0.0.0:4000
 ```
 
-</TabItem>
-
-<TabItem value="pip" label="LiteLLM CLI (pip package)">
-
 ```shell
 $ litellm --config /app/config.yaml --detailed_debug
 ```
-
-</TabItem>
-
-
-</Tabs>
 
 Confirm your config was loaded correctly — you should see this in the logs:
 
@@ -444,8 +404,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }
 ```
 
-
-
 ### Useful Links
 - [All Supported LLM API Providers (OpenAI/Bedrock/Vertex/etc.)](../providers/)
 - [Call LiteLLM Proxy via OpenAI SDK, Langchain, etc.](./user_keys.md#request-format)
@@ -459,9 +417,8 @@ Track spend and control model access via virtual keys for the proxy.
 
 ### Prerequisite — Set up a database
 
-:::note Docker Compose users
+> **note**: Docker Compose users
 Your Postgres container is already running — skip ahead to [Create Key w/ RPM Limit](#create-key-w-rpm-limit) below.
-:::
 
 **Docker / pip users** — you need a Postgres database (e.g. [Supabase](https://supabase.com/), [Neon](https://neon.tech/), or self-hosted). Add `general_settings` to your `config.yaml`:
 
@@ -582,7 +539,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 **Why did this call fail?**
 
 We set the virtual key's requests per minute (RPM) limit to 1. This has now been crossed.
-
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -755,7 +711,6 @@ model_list:
       aws_region_name: us-east-1
 ```
 
-
 ## Troubleshooting 
 
 ### `prometheus.yml` mount error — "not a directory"
@@ -809,9 +764,7 @@ litellm_settings:
     ssl_verify: false # 👈 KEY CHANGE
 ```
 
-
 ### (DB) All connection attempts failed 
-
 
 If you see:
 
@@ -858,7 +811,6 @@ On CloudSQL, this is:
 GRANT ALL PRIVILEGES ON DATABASE litellm TO your_username;
 ```
 
-
 **What is `litellm_settings`?**
 
 LiteLLM Proxy uses the [LiteLLM Python SDK](https://docs.litellm.ai/docs/routing) for handling LLM API calls. 
@@ -874,4 +826,4 @@ LiteLLM Proxy uses the [LiteLLM Python SDK](https://docs.litellm.ai/docs/routing
 
 - Our emails ✉️ ishaan@berri.ai / krrish@berri.ai
 
-[![Chat on WhatsApp](https://img.shields.io/static/v1?label=Chat%20on&message=WhatsApp&color=success&logo=WhatsApp&style=flat-square)](https://wa.link/huol9n) [![Chat on Discord](https://img.shields.io/static/v1?label=Chat%20on&message=Discord&color=blue&logo=Discord&style=flat-square)](https://discord.gg/wuPM9dRgDw) 
+[![Chat on WhatsApp](https://img.shields.io/static/v1?label=Chat%20on&message=WhatsApp&color=success&logo=WhatsApp&style=flat-square)](https://wa.link/huol9n) [![Chat on Discord](https://img.shields.io/static/v1?label=Chat%20on&message=Discord&color=blue&logo=Discord&style=flat-square)](https://discord.gg/wuPM9dRgDw)

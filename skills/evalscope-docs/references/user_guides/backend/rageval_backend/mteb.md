@@ -217,8 +217,6 @@ two_stage_task_cfg = {
         - `limits`: `Optional[int]` Limit on the number of samples, default is None; not recommended to set for retrieval tasks
         - `hub`: `str` Source of the dataset, can be "modelscope" or "huggingface"  
 
-
-
 ## Model Evaluation
 ```python
 from evalscope.run import run_task
@@ -239,7 +237,7 @@ The following is an example of the output:
 
 **One-Stage Evaluation**
 
-<details><summary>Outputs</summary>
+Outputs
 
 ```{code-block} json
 :caption: outputs/m3e-base/master/TNews.json
@@ -318,13 +316,10 @@ The following is an example of the output:
   "task_name": "TNews"
 }
 ```
-</details>
-
-<br>
 
 **Two-stage Evaluation**
 
-<details><summary>first stage</summary>
+first stage
 
 ```{code-block} json
 :caption: outputs/stage1/m3e-base/v1/T2Retrieval.json
@@ -489,9 +484,8 @@ The following is an example of the output:
 }
 
 ```
-</details>
 
-<details><summary>second stage</summary>
+second stage
 
 ```{code-block} json
 :caption: outputs/stage2/jina-reranker-v2-base-multilingual/master/T2Retrieval.json
@@ -655,8 +649,6 @@ The following is an example of the output:
   "task_name": "T2Retrieval"
 }
 ```
-
-</details>
 
 ## Custom Dataset Evaluation
 

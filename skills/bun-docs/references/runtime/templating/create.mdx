@@ -3,10 +3,8 @@ title: bun create
 description: Create a new Bun project from a React component, a `create-<template>` npm package, a GitHub repo, or a local template
 ---
 
-<Note>
   You don't need `bun create` to use Bun. You don't need any configuration at all. This command exists to make getting
   started a bit quicker and easier.
-</Note>
 
 ---
 
@@ -22,7 +20,6 @@ If you're looking to create a brand new empty project, use [`bun init`](/runtime
 bun create ./MyComponent.jsx # .tsx also supported
 ```
 
-<Frame>
   <video
     style={{ aspectRatio: "2062 / 1344", width: "100%", height: "100%", objectFit: "contain" }}
     loop
@@ -36,11 +33,8 @@ bun create ./MyComponent.jsx # .tsx also supported
       type="video/mp4"
     />
   </video>
-</Frame>
 
-<Note>
 🚀 **Create React App Successor** — `bun create <component>` provides everything developers loved about Create React App, but with modern tooling, faster builds, and backend support.
-</Note>
 
 #### How this works
 
@@ -148,21 +142,19 @@ Bun will perform the following steps:
 - Initialize a fresh Git repo. Opt out with the `--no-git` flag.
 - Run the template's configured `start` script, if defined.
 
-<Note>By default Bun will _not overwrite_ any existing files. Use the `--force` flag to overwrite existing files.</Note>
+By default Bun will _not overwrite_ any existing files. Use the `--force` flag to overwrite existing files.
 
 ## From a local template
 
-<Warning>
   Unlike remote templates, running `bun create` with a local template will delete the entire destination folder if it
   already exists! Be careful.
-</Warning>
 
 Bun's templater can be extended to support custom templates defined on your local file system. These templates should live in one of the following directories:
 
 - `$HOME/.bun-create/<name>`: global templates
 - `<project root>/.bun-create/<name>`: project-specific templates
 
-<Note>You can customize the global template path by setting the `BUN_CREATE_DIR` environment variable.</Note>
+You can customize the global template path by setting the `BUN_CREATE_DIR` environment variable.
 
 To create a local template, navigate to `$HOME/.bun-create` and create a new directory with the desired name of your template.
 
@@ -230,7 +222,7 @@ After cloning a template, `bun create` will automatically remove the `"bun-creat
 | `GITHUB_API_DOMAIN`                       | If you're using a GitHub enterprise or a proxy, you can customize the GitHub domain Bun pings for downloads                                          |
 | `GITHUB_TOKEN` (or `GITHUB_ACCESS_TOKEN`) | This lets `bun create` work with private repositories or if you get rate-limited. `GITHUB_TOKEN` is chosen over `GITHUB_ACCESS_TOKEN` if both exist. |
 
-<Accordion title={<span>How <code>bun create</code> works</span>}>
+How <code>bun create</code> works</span>}>
 
 When you run `bun create ${template} ${destination}`, here’s what happens:
 
@@ -265,5 +257,3 @@ ELSE IF local template
    - Rename `gitignore` to `.gitignore`. NPM automatically removes `.gitignore` files from appearing in packages.
    - If there are dependencies, this runs in a separate thread concurrently while node_modules are being installed
    - Using libgit2 if available was tested and performed 3x slower in microbenchmarks
-
-</Accordion>

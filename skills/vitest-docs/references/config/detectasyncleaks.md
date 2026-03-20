@@ -1,6 +1,5 @@
 ---
 title: detectAsyncLeaks | Config
-outline: deep
 ---
 
 # detectAsyncLeaks
@@ -9,9 +8,7 @@ outline: deep
 - **CLI:** `--detectAsyncLeaks`, `--detect-async-leaks`
 - **Default:** `false`
 
-::: warning
-Enabling this option will make your tests run much slower. Use only when debugging or developing tests.
-:::
+> **warning**: Enabling this option will make your tests run much slower. Use only when debugging or developing tests.
 
 Detect asynchronous resources leaking from the test file.
 Uses [`node:async_hooks`](https://nodejs.org/api/async_hooks.html) to track creation of async resources. If a resource is not cleaned up, it will be logged after tests have finished.

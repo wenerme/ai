@@ -7,9 +7,7 @@ title: /containers/files
 
 Manage files within Code Interpreter containers. Files are created automatically when code interpreter generates outputs (charts, CSVs, images, etc.).
 
-:::tip
-Looking for how to use Code Interpreter? See the [Code Interpreter Guide](/docs/guides/code_interpreter).
-:::
+> **tip**: Looking for how to use Code Interpreter? See the [Code Interpreter Guide](/docs/guides/code_interpreter).
 
 | Feature | Supported |
 |---------|-----------|
@@ -140,13 +138,7 @@ print(f"Deleted: {result.deleted}")
 
 ## LiteLLM AI Gateway (Proxy)
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 ### Upload File
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="upload_file.py"
 from openai import OpenAI
@@ -165,22 +157,13 @@ print(f"Uploaded: {file.id}")
 print(f"Path: {file.path}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="upload_file.sh"
 curl "http://localhost:4000/v1/containers/cntr_123.../files" \
     -H "Authorization: Bearer sk-1234" \
     -F file="@data.csv"
 ```
 
-</TabItem>
-</Tabs>
-
 ### List Files
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="list_files.py"
 from openai import OpenAI
@@ -198,21 +181,12 @@ for file in files.data:
     print(f"  - {file.id}: {file.filename}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="list_files.sh"
 curl "http://localhost:4000/v1/containers/cntr_123.../files" \
     -H "Authorization: Bearer sk-1234"
 ```
 
-</TabItem>
-</Tabs>
-
 ### Retrieve File Metadata
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="retrieve_file.py"
 from openai import OpenAI
@@ -231,21 +205,12 @@ print(f"File: {file.filename}")
 print(f"Size: {file.bytes} bytes")
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="retrieve_file.sh"
 curl "http://localhost:4000/v1/containers/cntr_123.../files/cfile_456..." \
     -H "Authorization: Bearer sk-1234"
 ```
 
-</TabItem>
-</Tabs>
-
 ### Download File Content
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="download_content.py"
 from openai import OpenAI
@@ -264,22 +229,13 @@ with open("output.png", "wb") as f:
     f.write(content.read())
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="download_content.sh"
 curl "http://localhost:4000/v1/containers/cntr_123.../files/cfile_456.../content" \
     -H "Authorization: Bearer sk-1234" \
     --output downloaded_file.png
 ```
 
-</TabItem>
-</Tabs>
-
 ### Delete File
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="delete_file.py"
 from openai import OpenAI
@@ -297,16 +253,10 @@ result = client.containers.files.delete(
 print(f"Deleted: {result.deleted}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="delete_file.sh"
 curl -X DELETE "http://localhost:4000/v1/containers/cntr_123.../files/cfile_456..." \
     -H "Authorization: Bearer sk-1234"
 ```
-
-</TabItem>
-</Tabs>
 
 ## Parameters
 

@@ -24,11 +24,9 @@ After disabling, Doris will stop writing to the `audit_log` table. The already w
 
 ## Viewing the Audit Log Table
 
-:::caution Note
+> **caution**: Note
 
 Before version 2.1.8, as the system version was upgraded, the audit log table fields may have increased. After upgrading, you need to add fields to the `audit_log` table using the `ALTER TABLE` command based on the fields in the audit log table.
-
-:::
 
 Starting from Doris version 2.1, Doris can write user behavior operations to the [`audit_log`](../admin-manual/system-tables/internal_schema/audit_log) table in the `__internal_schema` database by enabling the audit log feature.
 
@@ -67,4 +65,3 @@ FE configuration items can be modified by editing the `fe.conf` directory.
 | Configuration Item         | Description                                                                                                                                                                 |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `skip_audit_user_list`     | If you do not want operations of certain users to be recorded in the audit logs, you can modify this configuration (supported since version 3.0.01). For example, use the config to exclude `user1` and `user2` from audit log recording: `skip_audit_user_list=user1,user2`|
-

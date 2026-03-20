@@ -1,7 +1,5 @@
 ---
 date: "2020-02-09T20:00:00+02:00"
-slug: "install-with-docker-rootless"
-sidebar_position: 60
 aliases:
   - /en-us/install-with-docker-rootless
 ---
@@ -226,11 +224,9 @@ services:
 
 ## Startup
 
-:::note
-From July 2023 Compose V1 stopped receiving updates. It's also no longer available in new releases of Docker Desktop.
+> **note**: From July 2023 Compose V1 stopped receiving updates. It's also no longer available in new releases of Docker Desktop.
 
 Compose V2 is included with all currently supported versions of Docker Desktop. Please use V2 to do below operations.
-:::
 
 To start this setup based on `docker-compose`, execute `docker-compose up -d`,
 to launch Gitea in the background. Using `docker-compose ps` will show if Gitea
@@ -239,10 +235,8 @@ started properly. Logs can be viewed with `docker-compose logs`.
 To shut down the setup, execute `docker-compose down`. This will stop
 and kill the containers. The volumes will still exist.
 
-:::note
-If using a non-3000 port on http, change app.ini to match
+> **note**: If using a non-3000 port on http, change app.ini to match
 `LOCAL_ROOT_URL = http://localhost:3000/`.
-:::
 
 ## Install
 
@@ -261,9 +255,7 @@ files; for named volumes, this is done through another container or by direct ac
 
 ## Upgrading
 
-:::warning
-:exclamation::exclamation: **Make sure you have volumed data to somewhere outside Docker container** :exclamation::exclamation:
-:::
+> **warning**: :exclamation::exclamation: **Make sure you have volumed data to somewhere outside Docker container** :exclamation::exclamation:
 
 To upgrade your installation to the latest release:
 

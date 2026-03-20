@@ -1,7 +1,4 @@
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
 
 # Using your MCP
 
@@ -18,10 +15,6 @@ Follow this walkthrough to use your MCP on LiteLLM UI
 Replace `http://localhost:4000` with your LiteLLM Proxy base URL.
 
 Demo Video Using Responses API with LiteLLM Proxy: [Demo video here](https://www.loom.com/share/34587e618c5c47c0b0d67b4e4d02718f?sid=2caf3d45-ead4-4490-bcc1-8d6dd6041c02)
-
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash title="cURL Example" showLineNumbers
 curl --location 'http://localhost:4000/v1/responses' \
@@ -48,9 +41,6 @@ curl --location 'http://localhost:4000/v1/responses' \
     "tool_choice": "required"
 }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Python SDK">
 
 ```python title="Python SDK Example" showLineNumbers
 """
@@ -91,17 +81,11 @@ for chunk in response:
     print("response chunk: ", chunk)
 ```
 
-</TabItem>
-</Tabs>
-
 #### Specifying MCP Tools
 
 You can specify which MCP tools are available by using the `allowed_tools` parameter. This allows you to restrict access to specific tools within an MCP server.
 
 To get the list of allowed tools when using LiteLLM MCP Gateway, you can naigate to the LiteLLM UI on MCP Servers > MCP Tools > Click the Tool > Copy Tool Name.
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash title="cURL Example with allowed_tools" showLineNumbers
 curl --location 'http://localhost:4000/v1/responses' \
@@ -129,9 +113,6 @@ curl --location 'http://localhost:4000/v1/responses' \
     "tool_choice": "required"
 }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Python SDK">
 
 ```python title="Python SDK Example with allowed_tools" showLineNumbers
 import openai
@@ -165,9 +146,6 @@ response = client.responses.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Use with Cursor IDE
 

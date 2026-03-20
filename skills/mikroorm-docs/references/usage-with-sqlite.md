@@ -1,6 +1,5 @@
 ---
 title: Usage with SQLite
-sidebar_label: Usage with SQLite
 ---
 
 MikroORM supports SQLite through dedicated driver packages and a generic `SqliteDriver` that works with any SQLite library via [Kysely dialects](https://kysely.dev/docs/dialects).

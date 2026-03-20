@@ -1,6 +1,4 @@
 ---
-slug: /guides/developer/overview
-sidebar_label: 'Advanced guides overview'
 description: 'Overview of the advanced guides'
 title: 'Advanced Guides'
 keywords: ['ClickHouse advanced guides', 'developer guides', 'query optimization', 'materialized views', 'deduplication', 'time series', 'query execution']

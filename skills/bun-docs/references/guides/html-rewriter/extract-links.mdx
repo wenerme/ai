@@ -1,6 +1,5 @@
 ---
 title: Extract links from a webpage using HTMLRewriter
-sidebarTitle: Extract links using HTMLRewriter
 mode: center
 ---
 
@@ -37,7 +36,6 @@ await extractLinks("https://bun.com");
 
 When scraping websites, you often want to convert relative URLs (like `/docs`) to absolute URLs. Here's how to handle URL resolution:
 
-{/* prettier-ignore */}
 ```ts extract-links.ts icon="/icons/typescript.svg"
 async function extractLinksFromURL(url: string) {
   const response = await fetch(url);

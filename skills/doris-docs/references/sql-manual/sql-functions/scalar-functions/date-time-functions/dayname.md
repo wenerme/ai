@@ -56,7 +56,6 @@ select dayname('2023-10-01');
 | Sunday                |
 +-----------------------+
 
-
 ---Parameter is NULL, returns NULL
 select dayname(NULL);
 +---------------+

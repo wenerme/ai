@@ -1,26 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/redis-metrics
 title: 'Monitoring Redis Metrics with ClickStack'
-sidebar_label: 'Redis Metrics'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Redis Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['Redis', 'metrics', 'OTEL', 'ClickStack']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/import-redis-metrics-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/redis-metrics-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Redis Metrics with ClickStack {#redis-metrics-clickstack}
 
 :::note[TL;DR]
 Monitor Redis performance metrics in ClickStack using the OTel Redis receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Redis {#existing-redis}
 
@@ -128,14 +116,12 @@ This configuration:
 - `redis.connections.received` - Total connections received
 - `redis.connections.rejected` - Rejected connections
 
-:::note
-- You only define new receivers, processors, and pipelines in the custom config
+> **note**: - You only define new receivers, processors, and pipelines in the custom config
 - The `memory_limiter` and `batch` processors and `clickhouse` exporter are already defined in the base ClickStack configuration - you just reference them by name
 - The `resource` processor sets the required `service.name` attribute per OpenTelemetry semantic conventions
 - For production with authentication, store the password in an environment variable: `${env:REDIS_PASSWORD}`
 - Adjust `collection_interval` based on your needs (10s default; lower values increase data volume)
 - For multiple Redis instances, customize `service.name` to distinguish them (e.g., `"redis-cache"`, `"redis-sessions"`)
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -208,8 +194,6 @@ Once configured, log into HyperDX and verify metrics are flowing:
 2. Search for metrics starting with `redis.` (e.g., `redis.commands.processed`, `redis.memory.used`)
 3. You should see metric data points appearing at your configured collection interval
 
-<!-- <Image img={metrics_view} alt="Redis Metrics view"/> -->
-
 </VerticalStepper>
 
 ## Demo dataset {#demo-dataset}
@@ -265,14 +249,12 @@ Once loaded, the quickest way to see your metrics is through the pre-built dashb
 
 Proceed to the [Dashboards and visualization](#dashboards) section to import the dashboard and view all Redis Metrics at once.
 
-:::note
-The demo dataset time range is 2025-10-20 00:00:00 to 2025-10-21 05:00:00. Make sure your time range in HyperDX matches this window.
+> **note**: The demo dataset time range is 2025-10-20 00:00:00 to 2025-10-21 05:00:00. Make sure your time range in HyperDX matches this window.
 
 Look for these interesting patterns:
 - **06:00** - Cache warming (low hit rate climbing)
 - **14:30-14:45** - Traffic spike (high client connections, some rejections)
 - **20:00** - Memory pressure (key evictions begin)
-:::
 
 </VerticalStepper>
 
@@ -301,9 +283,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={example_dashboard} alt="Redis Metrics dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-10-20 05:00:00 - 2025-10-21 05:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-10-20 05:00:00 - 2025-10-21 05:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

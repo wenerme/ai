@@ -45,6 +45,4 @@ const example = base
   })
 ```
 
-:::info
-The `.meta` can be called multiple times; each call [spread merges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) the new metadata with the existing metadata or the initial metadata.
-:::
+> **info**: The `.meta` can be called multiple times; each call [spread merges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) the new metadata with the existing metadata or the initial metadata.

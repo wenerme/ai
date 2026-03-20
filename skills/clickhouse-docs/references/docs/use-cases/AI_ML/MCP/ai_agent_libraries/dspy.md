@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/DSPy
-sidebar_label: 'Integrate DSPy'
 title: 'How to build an AI Agent with DSPy and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how to build an AI agent with DSPy and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'DSPy']
 show_related_blogs: true
@@ -23,9 +19,8 @@ can interact with [ClickHouse's SQL playground](https://sql.clickhouse.com/) usi
 
 You can run the following steps either from your Python REPL or via script.
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/dspy/dspy.ipynb).
-:::
 
 <VerticalStepper headerLevel="h2">
 
@@ -48,10 +43,9 @@ import os
 os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter Anthropic API Key:")
 ```
 
-:::note Using another LLM provider
+> **note**: Using another LLM provider
 If you don't have an Anthropic API key, and want to use another LLM provider,
 you can find the instructions for setting up your credentials in the [DSPy docs](https://dspy.ai/#__tabbed_1_1)
-:::
 
 Next, define the credentials needed to connect to the ClickHouse SQL playground:
 

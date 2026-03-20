@@ -59,9 +59,7 @@ const anyError = getIssueMessage('anything', 'path')
 // Returns undefined if cannot find issue
 ```
 
-::: warning
-The `getIssueMessage` utility works with any data type but requires validation errors to follow the [standard schema issue format](https://github.com/standard-schema/standard-schema?tab=readme-ov-file#the-interface). It looks for issues in the `data.issues` property. If you use custom [validation errors](/docs/advanced/validation-errors), store them elsewhere, or modify the issue format, `getIssueMessage` may not work as expected.
-:::
+> **warning**: The `getIssueMessage` utility works with any data type but requires validation errors to follow the [standard schema issue format](https://github.com/standard-schema/standard-schema?tab=readme-ov-file#the-interface). It looks for issues in the `data.issues` property. If you use custom [validation errors](/docs/advanced/validation-errors), store them elsewhere, or modify the issue format, `getIssueMessage` may not work as expected.
 
 ## Usage Example
 

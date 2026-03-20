@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Google GenAI SDK with LiteLLM
 
@@ -31,22 +30,13 @@ The Google GenAI SDK (`@google/genai` for JS, `google-genai` for Python) provide
 
 ### 1. Install the SDK
 
-<Tabs>
-<TabItem value="js" label="JavaScript/TypeScript">
-
 ```bash
 npm install @google/genai
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
-
 ```bash
 pip install google-genai
 ```
-
-</TabItem>
-</Tabs>
 
 ### 2. Start LiteLLM Proxy
 
@@ -63,9 +53,6 @@ litellm --config config.yaml
 ```
 
 ### 3. Call the SDK through LiteLLM
-
-<Tabs>
-<TabItem value="js" label="JavaScript/TypeScript">
 
 ```javascript title="index.js" showLineNumbers
 const { GoogleGenAI } = require("@google/genai");
@@ -88,9 +75,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
-
 ```python title="main.py" showLineNumbers
 from google import genai
 
@@ -106,9 +90,6 @@ response = client.models.generate_content(
 print(response.text)
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl "http://localhost:4000/gemini/v1beta/models/gemini-2.5-flash:generateContent?key=sk-1234" \
   -H 'Content-Type: application/json' \
@@ -120,13 +101,7 @@ curl "http://localhost:4000/gemini/v1beta/models/gemini-2.5-flash:generateConten
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Streaming
-
-<Tabs>
-<TabItem value="js" label="JavaScript/TypeScript">
 
 ```javascript title="streaming.js" showLineNumbers
 const { GoogleGenAI } = require("@google/genai");
@@ -152,9 +127,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
-
 ```python title="streaming.py" showLineNumbers
 from google import genai
 
@@ -172,13 +144,7 @@ for chunk in response:
     print(chunk.text, end="")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Multi-turn Chat
-
-<Tabs>
-<TabItem value="js" label="JavaScript/TypeScript">
 
 ```javascript title="chat.js" showLineNumbers
 const { GoogleGenAI } = require("@google/genai");
@@ -205,9 +171,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
-
 ```python title="chat.py" showLineNumbers
 from google import genai
 
@@ -225,24 +188,13 @@ response2 = chat.send_message("How many pets is that in total?")
 print(response2.text)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Advanced: Use Any Model with the GenAI SDK
 
 By default, the GenAI SDK talks to Gemini models. But with LiteLLM's router, you can route GenAI SDK requests to **any provider** — Anthropic, OpenAI, Bedrock, etc.
 
 This works by using `model_group_alias` to map Gemini model names to your desired provider models. LiteLLM handles the format translation internally.
 
-:::info
-
-For this to work, point the SDK `baseUrl` to `http://localhost:4000` (without `/gemini`). This routes requests through LiteLLM's native Google endpoints, which go through the router and support model aliasing.
-
-:::
-
-<Tabs>
-<TabItem value="anthropic" label="Anthropic">
+> **info**: For this to work, point the SDK `baseUrl` to `http://localhost:4000` (without `/gemini`). This routes requests through LiteLLM's native Google endpoints, which go through the router and support model aliasing.
 
 Route `gemini-2.5-flash` requests to Claude Sonnet:
 
@@ -257,9 +209,6 @@ router_settings:
   model_group_alias: {"gemini-2.5-flash": "claude-sonnet"}
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI">
-
 Route `gemini-2.5-flash` requests to GPT-4o:
 
 ```yaml title="config.yaml" showLineNumbers
@@ -272,9 +221,6 @@ model_list:
 router_settings:
   model_group_alias: {"gemini-2.5-flash": "gpt-4o-model"}
 ```
-
-</TabItem>
-<TabItem value="bedrock" label="Bedrock">
 
 Route `gemini-2.5-flash` requests to Claude on Bedrock:
 
@@ -290,9 +236,6 @@ model_list:
 router_settings:
   model_group_alias: {"gemini-2.5-flash": "bedrock-claude"}
 ```
-
-</TabItem>
-<TabItem value="multi" label="Multi-Provider Load Balancing">
 
 Load balance across Anthropic and OpenAI:
 
@@ -311,13 +254,7 @@ router_settings:
   model_group_alias: {"gemini-2.5-flash": "my-model"}
 ```
 
-</TabItem>
-</Tabs>
-
 Then use the SDK with `baseUrl` pointing to LiteLLM (without `/gemini`):
-
-<Tabs>
-<TabItem value="js" label="JavaScript/TypeScript">
 
 ```javascript title="any_model.js" showLineNumbers
 const { GoogleGenAI } = require("@google/genai");
@@ -341,9 +278,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
-
 ```python title="any_model.py" showLineNumbers
 from google import genai
 
@@ -359,10 +293,6 @@ response = client.models.generate_content(
 )
 print(response.text)
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Pass-through vs Native Router Endpoints
 

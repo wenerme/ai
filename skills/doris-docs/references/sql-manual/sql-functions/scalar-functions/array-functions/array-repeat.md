@@ -22,7 +22,6 @@ ARRAY_REPEAT(element, count)
 
 - `count`: Integer type, specifies the length of the returned array.
 
-
 ## Return Value
 
 - Returns an array of type `ARRAY<T>`, where `T` is the type of `element`.

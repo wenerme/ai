@@ -1,25 +1,14 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Caching - In-Memory, Redis, s3, gcs, Redis Semantic Cache, Disk
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/main/litellm/caching/caching.py)
 
-:::info
-
-- For Proxy Server? Doc here: [Caching Proxy Server](https://docs.litellm.ai/docs/proxy/caching)
+> **info**: - For Proxy Server? Doc here: [Caching Proxy Server](https://docs.litellm.ai/docs/proxy/caching)
 
 - For OpenAI/Anthropic Prompt Caching, go [here](../completion/prompt_caching.md)
 
-
-:::
-
 ## Initialize Cache - In Memory, Redis, s3 Bucket, gcs Bucket, Redis Semantic, Disk Cache, Qdrant Semantic
-
-
-<Tabs>
-
-<TabItem value="redis" label="redis-cache">
 
 Install redis
 ```shell
@@ -105,17 +94,9 @@ Then simply initialize:
 litellm.cache = Cache(type="redis")
 ```
 
-:::info
-Use `REDIS_*` environment variables as the primary mechanism for configuring all Redis client library parameters. This approach automatically maps environment variables to Redis client kwargs and is the suggested way to toggle Redis settings.
-:::
+> **info**: Use `REDIS_*` environment variables as the primary mechanism for configuring all Redis client library parameters. This approach automatically maps environment variables to Redis client kwargs and is the suggested way to toggle Redis settings.
 
-:::warning
-If you need to pass non-string Redis parameters (integers, booleans, complex objects), avoid `REDIS_*` environment variables as they may fail during Redis client initialization. Instead, pass them directly as kwargs to the `Cache()` constructor.
-:::
-
-</TabItem>
-
-<TabItem value="gcs" label="gcs-cache">
+> **warning**: If you need to pass non-string Redis parameters (integers, booleans, complex objects), avoid `REDIS_*` environment variables as they may fail during Redis client initialization. Instead, pass them directly as kwargs to the `Cache()` constructor.
 
 Set environment variables
 
@@ -142,11 +123,6 @@ response2 = completion(
 
 # response1 == response2, response 1 is cached
 ```
-
-</TabItem>
-
-
-<TabItem value="s3" label="s3-cache">
 
 Install boto3
 ```shell
@@ -181,10 +157,6 @@ response2 = completion(
 # response1 == response2, response 1 is cached
 ```
 
-</TabItem>
-
-<TabItem value="azureblob" label="azure-blob-cache">
-
 Install azure-storage-blob and azure-identity
 ```shell
 pip install azure-storage-blob azure-identity
@@ -211,11 +183,6 @@ response2 = completion(
 
 # response1 == response2, response 1 is cached
 ```
-
-</TabItem>
-
-
-<TabItem value="redis-sem" label="redis-semantic cache">
 
 Install redisvl client
 ```shell
@@ -272,10 +239,6 @@ assert response1.id == response2.id
 # response1 == response2, response 1 is cached
 ```
 
-</TabItem>
-
-<TabItem value="qdrant-sem" label="qdrant-semantic cache">
-
 You can set up your own cloud Qdrant cluster by following this: https://qdrant.tech/documentation/quickstart-cloud/
 
 To set up a Qdrant cluster locally follow: https://qdrant.tech/documentation/quickstart/
@@ -329,10 +292,6 @@ assert response1.id == response2.id
 # response1 == response2, response 1 is cached
 ```
 
-</TabItem>
-
-<TabItem value="in-mem" label="in memory cache">
-
 ### Quick Start
 
 ```python
@@ -356,10 +315,6 @@ response2 = completion(
 # response1 == response2, response 1 is cached
 
 ```
-
-</TabItem>
-
-<TabItem value="disk" label="disk cache">
 
 ### Quick Start
 
@@ -395,10 +350,6 @@ response2 = completion(
 
 If you run the code two times, response1 will use the cache from the first run that was stored in a cache file.
 
-</TabItem>
-
-</Tabs>
-
 ## Switch Cache On / Off Per LiteLLM Call 
 
 LiteLLM supports 4 cache-controls:
@@ -409,8 +360,6 @@ LiteLLM supports 4 cache-controls:
 - `s-maxage`: *Optional(int)* Will only accept cached responses that are within user-defined range (in seconds).
 
 [Let us know if you need more](https://github.com/BerriAI/litellm/issues/1218)
-<Tabs>
-<TabItem value="no-cache" label="No-Cache">
 
 Example usage `no-cache` - When `True`, Will not return a cached response
 
@@ -427,10 +376,6 @@ response = litellm.completion(
     )
 ```
 
-</TabItem>
-
-<TabItem value="no-store" label="No-Store">
-
 Example usage `no-store` - When `True`, Will not cache the response. 
 
 ```python
@@ -446,9 +391,6 @@ response = litellm.completion(
     )
 ```
 
-</TabItem>
-
-<TabItem value="ttl" label="ttl">
 Example usage `ttl` - cache the response for 10 seconds
 
 ```python
@@ -464,9 +406,6 @@ response = litellm.completion(
     )
 ```
 
-</TabItem>
-
-<TabItem value="s-maxage" label="s-maxage">
 Example usage `s-maxage` - Will only accept cached responses for 60 seconds
 
 ```python
@@ -481,11 +420,6 @@ response = litellm.completion(
         cache={"s-maxage": 60},
     )
 ```
-
-</TabItem>
-
-
-</Tabs>
 
 ## Cache Context Manager - Enable, Disable, Update Cache
 Use the context manager for easily enabling, disabling & updating the litellm cache 

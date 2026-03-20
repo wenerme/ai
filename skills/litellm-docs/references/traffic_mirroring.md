@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # A/B Testing - Traffic Mirroring
 
@@ -13,9 +12,6 @@ This is useful for:
 ## Quick Start
 
 To enable traffic mirroring, add `silent_model` to the `litellm_params` of a deployment.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -47,9 +43,6 @@ response = await router.acompletion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 Add `silent_model` to your `config.yaml`:
 
 ```yaml
@@ -64,9 +57,6 @@ model_list:
       model: openai/gpt-4o
       api_key: os.environ/OPENAI_API_KEY
 ```
-
-</TabItem>
-</Tabs>
 
 ## How it works
 1. **Request Received**: A request is made to a model group (e.g. `primary-model`).

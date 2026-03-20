@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # MiniMax  
 
@@ -18,7 +17,6 @@ MiniMax offers three models through their Anthropic-compatible API:
 | **MiniMax-M2.1** | Powerful Multi-Language Programming with Enhanced Programming Experience (~60 tps) | $0.3/M tokens | $1.2/M tokens | $0.03/M tokens | $0.375/M tokens |
 | **MiniMax-M2.1-lightning** | Faster and More Agile (~100 tps) | $0.3/M tokens | $2.4/M tokens | $0.03/M tokens | $0.375/M tokens |
 | **MiniMax-M2** | Agentic capabilities, Advanced reasoning | $0.3/M tokens | $1.2/M tokens | $0.03/M tokens | $0.375/M tokens |
-
 
 ## Usage Examples
 
@@ -99,8 +97,6 @@ response = litellm.anthropic.messages.acreate(
     max_tokens=1000
 )
 ```
-
-
 
 ## Usage with LiteLLM Proxy 
 
@@ -270,7 +266,6 @@ for chunk in response:
     if chunk.choices[0].delta.content:
         print(chunk.choices[0].delta.content, end="")
 ```
-
 
 ## Usage with OpenAI SDK via LiteLLM Proxy
 
@@ -597,12 +592,9 @@ LiteLLM maps OpenAI-compatible voice names to MiniMax voice IDs:
 
 You can also use any MiniMax-native voice ID directly by passing it as the `voice` parameter.
 
-
 ### Streaming (WebSocket)
 
-:::note
-The current implementation uses MiniMax's HTTP endpoint. For WebSocket streaming support, please refer to MiniMax's official documentation at [https://platform.minimax.io/docs](https://platform.minimax.io/docs).
-:::
+> **note**: The current implementation uses MiniMax's HTTP endpoint. For WebSocket streaming support, please refer to MiniMax's official documentation at [https://platform.minimax.io/docs](https://platform.minimax.io/docs).
 
 ## Error Handling
 

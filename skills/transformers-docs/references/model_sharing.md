@@ -1,18 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Sharing
 
@@ -50,7 +36,7 @@ notebook_login()
 Each model repository features versioning, commit history, and diff visualization.
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/vis_diff.png"/>
+    
 </div>
 
 Versioning is based on [Git](https://git-scm.com/) and [Git Large File Storage (LFS)](https://git-lfs.github.com/), and it enables revisions, a way to specify a model version with a commit hash, tag or branch.
@@ -66,7 +52,7 @@ model = AutoModel.from_pretrained(
 Model repositories also support [gating](https://hf.co/docs/hub/models-gated) to control who can access a model. Gating is common for allowing a select group of users to preview a research model before it's made public.
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/gated-model.png"/>
+    
 </div>
 
 A model repository also includes an inference [widget](https://hf.co/docs/hub/models-widgets) for users to directly interact with a model on the Hub.
@@ -126,7 +112,7 @@ The Hub web interface is a no-code approach for uploading a model.
 1. Create a new repository by selecting [**New Model**](https://huggingface.co/new).
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/new_model_repo.png"/>
+    
 </div>
 
 Add some information about your model:
@@ -141,7 +127,7 @@ Add some information about your model:
 3. Select the **Files** tab and click on the **Add file** button to drag-and-drop a file to your repository. Add a commit message and click on **Commit changes to main** to commit the file.
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/upload_file.png"/>
+    
 </div>
 
 ## Model card

@@ -1,12 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Structured Outputs (JSON Mode)
 
 ## Quick Start 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -24,8 +20,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -46,11 +40,8 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     ]
   }'
 ```
-</TabItem>
-</Tabs>
 
 ## Check Model Support 
-
 
 ### 1. Check if model supports `response_format`
 
@@ -98,9 +89,6 @@ Works for:
 - Ollama Models
 - Databricks Models
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import os
 from litellm import completion 
@@ -129,8 +117,6 @@ print("Received={}".format(resp))
 
 events_list = EventsList.model_validate_json(resp.choices[0].message.content)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add openai model to config.yaml
 
@@ -229,12 +215,7 @@ curl -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Validate JSON Schema 
-
 
 Not all vertex models support passing the json_schema to them (e.g. `gemini-1.5-flash`). To solve this, LiteLLM supports client-side validation of the json schema. 
 
@@ -245,16 +226,11 @@ If `litellm.enable_json_schema_validation=True` is set, LiteLLM will validate th
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/671d8ac496b6229970c7f2a3bdedd6cb84f0746b/litellm/litellm_core_utils/json_validation_rule.py#L4)
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 # !gcloud auth application-default login - run this to add vertex credentials to your env
 import litellm, os
 from litellm import completion 
 from pydantic import BaseModel 
-
 
 messages=[
         {"role": "system", "content": "Extract the event information."},
@@ -277,8 +253,6 @@ resp = completion(
 
 print("Received={}".format(resp))
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Create config.yaml
 ```yaml
@@ -340,9 +314,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Gemini - Native JSON Schema Format (Gemini 2.0+)
 
 Gemini 2.0+ models automatically use the native `responseJsonSchema` parameter, which provides better compatibility with standard JSON Schema format.
@@ -354,9 +325,6 @@ Gemini 2.0+ models automatically use the native `responseJsonSchema` parameter, 
 - No `propertyOrdering` required
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -387,9 +355,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -416,9 +381,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     }
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Model Behavior
 

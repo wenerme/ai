@@ -1,6 +1,4 @@
 ---
-slug: /managing-data/truncate
-sidebar_label: 'Truncate table'
 title: 'Truncate Table'
 hide_title: false
 description: 'Truncate allows the data in a table or database to be removed, while preserving their existence.'
@@ -9,7 +7,5 @@ keywords: ['truncate', 'delete data', 'remove data', 'clear table', 'table maint
 ---
 
 Truncate allows the data in a table or database to be removed, while preserving their existence. This is a lightweight operation which can't be reversed.
-
-import Truncate from '@site/docs/sql-reference/statements/truncate.md';
 
 <Truncate/>

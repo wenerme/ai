@@ -227,7 +227,6 @@ CREATE TABLE `demo`.`tbl2` (
   "enable_unique_key_merge_on_write" = "true"
   );
 
-
 insert into tbl2(id, name, value) values(1, "Bob", 10), (2, "Alice", 20), (3, "Jack", 30);
 
 select * from tbl2 order by id;
@@ -238,7 +237,6 @@ select * from tbl2 order by id;
 |    2 | Alice |    20 |
 |    3 | Jack  |    30 |
 +------+-------+-------+
-
 
 set enable_unique_key_partial_update=true;
 set enable_insert_strict=false;
@@ -270,7 +268,6 @@ CREATE TABLE `demo`.`tbl3` (
   "replication_allocation" = "tag.location.default: 3",
   "enable_unique_key_merge_on_write" = "true"
   );
-
 
 insert into tbl3(id, name, score) values(1, "Doris", 100), (2, "Nereids", 200), (3, "Bob", 300);
 
@@ -315,7 +312,6 @@ select * from tbl3 order by id;
 Using bitmaps for audience analysis in user profiling involves creating a user dictionary, where each user is assigned a unique integer as their dictionary value. Aggregating these dictionary values can improve the performance of bitmap operations.
 
 For example, in an offline UV (Unique Visitors) and PV (Page Views) analysis scenario, consider a detailed user behavior table:
-
 
 ```sql
 CREATE TABLE `demo`.`dwd_dup_tbl` (

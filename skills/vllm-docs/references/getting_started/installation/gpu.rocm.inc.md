@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 MD051 -->
+
 --8<-- [start:installation]
 
 vLLM supports AMD GPUs with ROCm 6.3 or above. Pre-built wheels are available for ROCm 7.0.

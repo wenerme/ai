@@ -28,7 +28,6 @@ HIST(<expr>[, <num_buckets>])
 | `expr` | The expression to be calculated. Supported types: TinyInt, SmallInt, Integer, BigInt, LargeInt, Float, Double, Decimal, String. |
 | `num_buckets` | Optional. Limit the number of histogram buckets. The default value is 128. Supported type: Integer.|
 
-
 ## Return Value
 
 Returns a value of JSON type after histogram estimation. If all data in the group is NULL, returns NULL. If there is no valid data, returns a result with num_buckets = 0.

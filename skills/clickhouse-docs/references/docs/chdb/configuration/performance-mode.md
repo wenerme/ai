@@ -1,7 +1,5 @@
 ---
 title: 'Performance Mode (compat_mode)'
-sidebar_label: 'Performance Mode'
-slug: /chdb/configuration/performance-mode
 description: 'SQL-first performance mode that disables pandas compatibility overhead for maximum throughput'
 keywords: ['chdb', 'datastore', 'performance', 'mode', 'compat', 'sql-first', 'optimization']
 doc_type: 'guide'
@@ -81,9 +79,7 @@ use_performance_mode()
 use_pandas_compat()
 ```
 
-:::note
-Setting performance mode automatically sets the execution engine to `chdb`. You do not need to call `config.use_chdb()` separately.
-:::
+> **note**: Setting performance mode automatically sets the execution engine to `chdb`. You do not need to call `config.use_chdb()` separately.
 
 ---
 

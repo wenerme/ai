@@ -1,7 +1,5 @@
 ---
 title: 'Execution Engine Configuration'
-sidebar_label: 'Execution Engine'
-slug: /chdb/configuration/execution-engine
 description: 'Configure DataStore execution engine - auto, chdb, or pandas'
 keywords: ['chdb', 'datastore', 'execution', 'engine', 'chdb', 'pandas', 'auto']
 doc_type: 'guide'
@@ -303,6 +301,5 @@ result = ds.filter(ds['date'] >= '2024-01-01').to_df()
 config.use_performance_mode()
 ```
 
-:::tip Performance Mode
+> **tip**: Performance Mode
 If you are running heavy aggregation workloads and don't need exact pandas output compatibility (row order, MultiIndex, dtype corrections), consider using [Performance Mode](performance-mode.md). It automatically sets the engine to `chdb` and removes all pandas compatibility overhead.
-:::

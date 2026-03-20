@@ -1,6 +1,5 @@
 # TIFA-160
 
-
 ## Overview
 
 TIFA-160 is a text-to-image benchmark with 160 carefully curated prompts designed to evaluate the faithfulness and quality of generated images using automated VQA-based evaluation.
@@ -27,7 +26,6 @@ TIFA-160 is a text-to-image benchmark with 160 carefully curated prompts designe
 - Evaluates images from the **test** split
 - Part of the T2V-Eval-Prompts dataset collection
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ TIFA-160 is a text-to-image benchmark with 160 carefully curated prompts designe
 | **Metrics** | `PickScore` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -106,5 +103,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

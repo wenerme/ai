@@ -14,7 +14,7 @@ OpenTelemetry, also known as OTel, is a vendor-neutral open source Observability
 
 A major goal of OpenTelemetry is to enable easy instrumentation of your applications and systems, regardless of the programming language, infrastructure, and runtime environments used. The backend (storage) and the frontend (visualization) of telemetry data are intentionally left to other tools. Doris, as a storage backend integrated with OpenTelemetry, provides high-performance, low-cost, unified observability data storage and analysis capabilities. The overall architecture is as follows:
 
-<img src="/images/observability/otel_demo_doris.png" alt="Doris OpenTelemetry Integration" />  
+[Doris OpenTelemetry Integration]  
 
 ## Installation  
 
@@ -46,7 +46,6 @@ The core configuration of the OpenTelemetry Collector Doris Exporter is as follo
 
 For more configurations, refer to:  
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dorisexporter
-
 
 ## Usage Example
 
@@ -179,7 +178,6 @@ service:
 2025-08-18T00:05:00.017+0800	info	dorisexporter@v0.132.0/progress_reporter.go:63	[LOG] total 11 MB 18978 ROWS, total speed 0 MB/s 632 R/s, last 10 seconds speed 1 MB/s 1897 R/s  
 ```
 
-
 ### JSON Log Collection Example  
 
 This example demonstrates JSON log collection using GitHub Events Archive data.  
@@ -288,7 +286,6 @@ service:
 ./otelcol-contrib --config config/opentelemetry_json_log.yml
 ```
 
-
 ### Trace Collection Example  
 
 **1. OpenTelemetry Configuration**  
@@ -369,4 +366,3 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4317"  # OpenTelemetry Coll
 
 java -jar myproject-0.0.1-SNAPSHOT.jar
 ```
-

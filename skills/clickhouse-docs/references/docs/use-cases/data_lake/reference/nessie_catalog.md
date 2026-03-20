@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/data-lake/nessie-catalog
-sidebar_label: 'Nessie catalog'
 title: 'Nessie catalog'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data using ClickHouse and the Nessie Catalog.'
 keywords: ['Nessie', 'REST', 'Transactional', 'Data Lake', 'Iceberg', 'Git-like']
@@ -11,14 +7,10 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import ExperimentalBadge from '@theme/badges/ExperimentalBadge';
-
 <ExperimentalBadge/>
 
-:::note
-Integration with the Nessie Catalog works with Iceberg tables only.
+> **note**: Integration with the Nessie Catalog works with Iceberg tables only.
 This integration supports both AWS S3 and other cloud storage providers.
-:::
 
 ClickHouse supports integration with multiple catalogs (Unity, Glue, REST, Polaris, etc.). This guide will walk you through the steps to query your data using ClickHouse and the [Nessie](https://projectnessie.org/) catalog.
 
@@ -29,10 +21,8 @@ Nessie is an open-source transactional catalog for data lakes that provides:
 - **Open data lake** approach supporting Hive, Spark, Dremio, Trino, and more
 - **Production-ready** deployment on Docker or Kubernetes
 
-:::note
-As this feature is experimental, you will need to enable it using:
+> **note**: As this feature is experimental, you will need to enable it using:
 `SET allow_experimental_database_iceberg = 1;`
-:::
 
 ## Local Development Setup {#local-development-setup}
 
@@ -143,9 +133,7 @@ docker compose up -d
 docker-compose logs -f
 ```
 
-:::note
-The Nessie setup uses an in-memory version store and requires that sample data be loaded into the Iceberg tables first. Make sure the environment has created and populated the tables before attempting to query them through ClickHouse.
-:::
+> **note**: The Nessie setup uses an in-memory version store and requires that sample data be loaded into the Iceberg tables first. Make sure the environment has created and populated the tables before attempting to query them through ClickHouse.
 
 ### Connecting to Local Nessie Catalog {#connecting-to-local-nessie-catalog}
 
@@ -183,8 +171,7 @@ If your setup includes sample data (such as the taxi dataset), you should see ta
 └───────────────┘
 ```
 
-:::note
-If you don't see any tables, this usually means:
+> **note**: If you don't see any tables, this usually means:
 1. The environment hasn't created the sample tables yet
 2. The Nessie catalog service isn't fully initialized
 3. The sample data loading process hasn't completed
@@ -193,7 +180,6 @@ You can check the Nessie logs to see the catalog activity:
 ```bash
 docker-compose logs nessie
 ```
-:::
 
 To query a table (if available):
 
@@ -207,9 +193,8 @@ SELECT count(*) FROM `default.taxis`;
 └─────────┘
 ```
 
-:::note Backticks required
+> **note**: Backticks required
 Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
 
 To inspect the table DDL:
 

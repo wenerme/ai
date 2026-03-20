@@ -3,30 +3,18 @@ title: "Using Assistant UI | Frameworks"
 description: "Learn how to integrate Assistant UI with Mastra"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Using Assistant UI
 
 [Assistant UI](https://assistant-ui.com) is the TypeScript/React library for AI Chat. Built on shadcn/ui and Tailwind CSS, it enables developers to create beautiful, enterprise-grade chat experiences in minutes.
 
-:::info
+> **info**: For a full-stack integration approach where Mastra runs directly in your Next.js API routes, see the [Full-Stack Integration Guide](https://www.assistant-ui.com/docs/runtimes/mastra/full-stack-integration) on Assistant UI's documentation site.
 
-For a full-stack integration approach where Mastra runs directly in your Next.js API routes, see the [Full-Stack Integration Guide](https://www.assistant-ui.com/docs/runtimes/mastra/full-stack-integration) on Assistant UI's documentation site.
-
-:::
-
-:::tip
-
-Visit Mastra's [**"UI Dojo"**](https://ui-dojo.mastra.ai/) to see real-world examples of Assistant UI integrated with Mastra.
-
-:::
+> **tip**: Visit Mastra's [**"UI Dojo"**](https://ui-dojo.mastra.ai/) to see real-world examples of Assistant UI integrated with Mastra.
 
 ## Integration guide
 
 Run Mastra as a standalone server and connect your Next.js frontend (with Assistant UI) to its API endpoints.
 
-<Steps>
   <StepItem>
     Set up your directory structure. A possible directory structure could look like this:
 
@@ -169,6 +157,5 @@ Run Mastra as a standalone server and connect your Next.js frontend (with Assist
 
     You should now be able to chat with your agent in the browser.
   </StepItem>
-</Steps>
 
 Congratulations! You have successfully integrated Mastra with Assistant UI using a separate server approach. Your Assistant UI frontend now communicates with a standalone Mastra agent server.

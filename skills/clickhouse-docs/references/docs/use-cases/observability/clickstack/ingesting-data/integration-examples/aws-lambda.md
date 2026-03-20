@@ -1,19 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/aws-lambda
 title: 'Monitoring AWS Lambda Logs with ClickStack using Rotel'
-sidebar_label: 'AWS Lambda Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring AWS Lambda Logs with ClickStack using Rotel'
 doc_type: 'guide'
 keywords: ['AWS', 'Lambda', 'OTEL', 'ClickStack', 'logs', 'CloudWatch']
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import log_view from '@site/static/images/clickstack/lambda/lambda-log-view.png';
-import log from '@site/static/images/clickstack/lambda/lambda-log.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Monitoring AWS Lambda Logs with ClickStack using Rotel {#lambda-clickstack}
 
@@ -29,7 +19,6 @@ This guide shows you how to monitor AWS Lambda functions with ClickStack by usin
 This approach can significantly reduce your Lambda observability costs by bypassing CloudWatch Logs entirely.
 
 Time Required: 5-10 minutes
-:::
 
 ## Integration with existing Lambda functions {#existing-lambda}
 
@@ -186,9 +175,7 @@ For Parameter Store:
 }
 ```
 
-:::note
-AWS API calls for secret retrieval add 100-150ms to cold start latency. Secrets are retrieved in batches (up to 10) and only on initialization, so subsequent invocations aren't impacted.
-:::
+> **note**: AWS API calls for secret retrieval add 100-150ms to cold start latency. Secrets are retrieved in batches (up to 10) and only on initialization, so subsequent invocations aren't impacted.
 
 #### Test the integration {#test-integration}
 

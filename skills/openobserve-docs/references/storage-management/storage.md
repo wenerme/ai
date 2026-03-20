@@ -33,7 +33,6 @@ Stream data is stored in Parquet format. Parquet is columnar storage format opti
 
 Disk is default storage place for stream data. **Ensure that sufficient disk space is available for storing stream data.**
 
-
 ### Amazon S3
 
 To use Amazon S3 for storing stream data:
@@ -45,7 +44,6 @@ To use Amazon S3 for storing stream data:
   - Use AWS CLI credentials in `~/.aws/credentials`. 
   - Use EC2 instance metadata for instances with IAM roles, or assign IAM roles directly to ECS or Fargate tasks. These roles are accessed through the Instance Metadata Service (IMDS or IMDSv2). ECS is not recommended for stateful workloads.
   - Use IAM Roles for service Accounts in Amazon EKS. 
-
 
 ### MinIO
 To use MinIO for storing stream data, first create the bucket in MinIO.
@@ -59,7 +57,6 @@ Then set the following environment variables:
 | ZO_S3_SECRET_KEY     | -     | Secret key                                      |
 | ZO_S3_BUCKET_NAME    | -     | Bucket name                                     |
 | ZO_S3_PROVIDER       | minio | ...                                             |
-
 
 ### Openstack Swift
 To use OpenStack Swift for storing stream data, first create the bucket in Swift.
@@ -75,7 +72,6 @@ Then set the following environment variables:
 | ZO_S3_FEATURE_HTTP1_ONLY  | true  | 	Enables compatibility with Swift                                              |
 | ZO_S3_PROVIDER            | s3    | Enables S3-compatible API                           |
 | AWS_EC2_METADATA_DISABLED | true  | Disables EC2 metadata access, which is not supported by Swift |
-
 
 ### Google GCS
 To use GCS for storing stream data, first create the bucket in GCS.
@@ -200,7 +196,6 @@ ZO_S3_SECRET_KEY=YOUR_SECRET_KEY
 ```
 
 Refer to [Hetzner Cloud Object Storage documentation](https://docs.hetzner.com/storage/object-storage/) for more information about endpoints and regions.
-
 
 ## Metadata Storage
 

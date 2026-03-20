@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'SQL translation reference'
-slug: /migrations/redshift/sql-translation-reference
 description: 'SQL translation reference for Amazon Redshift to ClickHouse'
 keywords: ['Redshift']
 title: 'Amazon Redshift SQL translation guide'
@@ -50,7 +48,7 @@ Below we map the equivalent ClickHouse type for each Redshift type:
 | [`TIMETZ`](https://docs.aws.amazon.com/redshift/latest/dg/r_Datetime_types.html#r_Datetime_types-timetz)                             | [`DateTime`](/sql-reference/data-types/datetime), [`DateTime64`](/sql-reference/data-types/datetime64)                                                                                                                                                                                                                                                                                   |
 | [`VARBYTE`](https://docs.aws.amazon.com/redshift/latest/dg/r_VARBYTE_type.html) **                                                   | [`String`](/sql-reference/data-types/string) combined with [`Bit`](/sql-reference/functions/bit-functions) and [Encoding](/sql-reference/functions/encoding-functions/#hex) functions                                                                                                                                                                      |
 
-<sub><span>*</span> ClickHouse additionally supports unsigned integers with extended ranges i.e. <a href='http://clickhouse.com/docs/sql-reference/data-types/int-uint'>`UInt8`, `UInt32`, `UInt32` and `UInt64`</a>.</sub><br />
+<sub><span>*</span> ClickHouse additionally supports unsigned integers with extended ranges i.e. <a href='http://clickhouse.com/docs/sql-reference/data-types/int-uint'>`UInt8`, `UInt32`, `UInt32` and `UInt64`</a>.</sub>
 <sub><span>**</span>ClickHouse’s String type is unlimited by default but can be constrained to specific lengths using <a href='http://clickhouse.com/docs/sql-reference/statements/create/table#constraints'>Constraints</a>.</sub>
 
 ## DDL syntax {#compression}

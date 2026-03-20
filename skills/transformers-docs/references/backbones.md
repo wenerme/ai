@@ -1,25 +1,11 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Backbones
 
 Higher-level computer visions tasks, such as object detection or image segmentation, use several models together to generate a prediction. A separate model is used for the *backbone*, neck, and head. The backbone extracts useful features from an input image into a feature map, the neck combines and processes the feature maps, and the head uses them to make a prediction.
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Backbone.png"/>
+    
 </div>
 
 Load a backbone with [`~PreTrainedConfig.from_pretrained`] and use the `out_indices` parameter to determine which layer, given by the index, to extract a feature map from.
@@ -53,7 +39,7 @@ Set the `out_indices` parameter to the layer you'd like to get the feature map f
 When `out_indices` or `out_features` isn't used, the backbone returns the feature map from the last layer. The example code below uses `out_indices=(1,)` to get the feature map from the first layer.
 
 <div class="flex justify-center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Swin%20Stage%201.png"/>
+    
 </div>
 
 ```py

@@ -10,8 +10,6 @@
 
 Calculates the area of a closed region on the Earth's surface in square kilometers. The input parameter is a geometric object (such as a Geopolygon,GeoCircle,GeoMuitiPolygon ) representing a region on the Earth's surface.
 
-
-
 ## Sytax
 
 ```sql
@@ -128,7 +126,6 @@ mysql> SELECT ST_Area_Square_Km(NULL);
 +-------------------------+
 ```
 
-
 Compute circle area
 
 ```sql
@@ -168,4 +165,3 @@ SELECT ST_Area_Square_Km(ST_LineFromText("LINESTRING (1 1, 2 2)"));
 |                                                               0 |
 +-----------------------------------------------------------------+
 ```
-

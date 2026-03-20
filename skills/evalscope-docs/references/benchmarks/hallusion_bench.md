@@ -1,6 +1,5 @@
 # HallusionBench
 
-
 ## Overview
 
 HallusionBench is an advanced diagnostic benchmark designed to evaluate image-context reasoning and detect hallucination tendencies in Large Vision-Language Models (LVLMs). It specifically tests models' susceptibility to language hallucination and visual illusion.
@@ -30,7 +29,6 @@ HallusionBench is an advanced diagnostic benchmark designed to evaluate image-co
 - Requires simple YES/NO answers without explanation
 - Aggregation at subcategory, category, and overall levels
 
-
 ## Properties
 
 | Property | Value |
@@ -43,7 +41,6 @@ HallusionBench is an advanced diagnostic benchmark designed to evaluate image-co
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `image` |
 | **Aggregation** | `f1` |
-
 
 ## Data Statistics
 
@@ -61,7 +58,6 @@ HallusionBench is an advanced diagnostic benchmark designed to evaluate image-co
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 388x56 - 5291x4536 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -135,5 +131,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

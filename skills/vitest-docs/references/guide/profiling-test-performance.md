@@ -29,9 +29,7 @@ In cases where your test execution time is high, you can generate a profile of t
 - [`--heap-prof`](https://nodejs.org/api/cli.html#--heap-prof)
 - [`--prof`](https://nodejs.org/api/cli.html#--prof)
 
-:::warning
-The `--prof` option does not work with `pool: 'threads'` due to `node:worker_threads` limitations.
-:::
+> **warning**: The `--prof` option does not work with `pool: 'threads'` due to `node:worker_threads` limitations.
 
 To pass these options to Vitest's test runner, define `execArgv` in your Vitest configuration:
 
@@ -60,11 +58,9 @@ See [Profiling | Examples](https://github.com/vitest-dev/vitest/tree/main/exampl
 Profiling main thread is useful for debugging Vitest's Vite usage and [`globalSetup`](/config/globalsetup) files.
 This is also where your Vite plugins are running.
 
-:::tip
-See [Performance | Vite](https://vitejs.dev/guide/performance.html) for more tips about Vite specific profiling.
+> **tip**: See [Performance | Vite](https://vitejs.dev/guide/performance.html) for more tips about Vite specific profiling.
 
 We recommend [`vite-plugin-inspect`](https://github.com/antfu-collective/vite-plugin-inspect) for profiling your Vite plugin performance.
-:::
 
 To do this you'll need to pass arguments to the Node process that runs Vitest.
 
@@ -84,7 +80,6 @@ If these logs contain files that should not be loaded when your test is run, you
 You can also use [Vitest UI](/guide/ui) to debug slowness caused by barrel file.
 The example below shows how importing files without barrel file reduces amount of transformed files by ~85%.
 
-::: code-group
 ``` [File tree]
 ├── src
 │   └── utils
@@ -108,14 +103,13 @@ test('formatter works', () => {
   expect(formatter).not.toThrow()
 })
 ```
-:::
 
-<img src="/module-graph-barrel-file.png" alt="Vitest UI demonstrating barrel file issues" />
+[Vitest UI demonstrating barrel file issues]
 
 To see how files are transformed, you can open the "Module Info" view in the UI:
 
-<img alt="The module info view for an inlined module" img-light src="/ui/light-module-info.png">
-<img alt="The module info view for an inlined module" img-dark src="/ui/dark-module-info.png">
+[The module info view for an inlined module]
+[The module info view for an inlined module]
 
 ## File Import
 

@@ -1,6 +1,5 @@
 # HealthBench
 
-
 ## Overview
 
 HealthBench is a comprehensive benchmark designed to measure AI capabilities for health-related tasks. Built in partnership with 262 physicians from 60 countries, it includes 5,000 realistic health conversations with custom physician-created rubrics.
@@ -34,7 +33,6 @@ HealthBench is a comprehensive benchmark designed to measure AI capabilities for
 - Uses LLM judge with physician-designed rubric items
 - Aggregation: **clipped_mean** for robust scoring
 
-
 ## Properties
 
 | Property | Value |
@@ -47,7 +45,6 @@ HealthBench is a comprehensive benchmark designed to measure AI capabilities for
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `clipped_mean` |
-
 
 ## Data Statistics
 
@@ -176,5 +173,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

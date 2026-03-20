@@ -1,7 +1,5 @@
 ---
 date: "2021-10-13T16:00:00+02:00"
-slug: "guidelines-frontend"
-sidebar_position: 30
 aliases:
   - /en-us/guidelines-frontend
 ---

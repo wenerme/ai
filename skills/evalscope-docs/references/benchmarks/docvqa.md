@@ -1,6 +1,5 @@
 # DocVQA
 
-
 ## Overview
 
 DocVQA (Document Visual Question Answering) is a benchmark designed to evaluate AI systems' ability to answer questions based on document images such as scanned pages, forms, invoices, and reports. It requires understanding complex document layouts, structure, and visual elements beyond simple text extraction.
@@ -28,7 +27,6 @@ DocVQA (Document Visual Question Answering) is a benchmark designed to evaluate 
 - ANLS metric accounts for minor OCR/spelling variations
 - Multiple valid answers may be accepted for each question
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ DocVQA (Document Visual Question Answering) is a benchmark designed to evaluate 
 | **Metrics** | `anls` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ DocVQA (Document Visual Question Answering) is a benchmark designed to evaluate 
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 593x294 - 5367x7184 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -132,5 +128,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

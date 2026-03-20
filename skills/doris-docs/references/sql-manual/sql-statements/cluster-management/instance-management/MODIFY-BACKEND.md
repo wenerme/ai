@@ -16,9 +16,7 @@ This statement is used to modify the attributes of BE nodes. After modifying the
 | `disable_query` | Whether to disable queries, with the default value being `false`. After setting it to `true`, no new query requests will be scheduled to this BE node.                                                                                                                                                                                         |
 | `disable_load`  | Whether to disable load, with the default value being `false`. After setting it to `true`, no new import requests will be scheduled to this BE node.                                                                                                                                                                                           |
 
-:::tip
-This command is not supported in the decoupling storage and computing mode.
-:::
+> **tip**: This command is not supported in the decoupling storage and computing mode.
 
 ## Syntax
 
@@ -51,9 +49,7 @@ be_identifier
 
 > The ID of the BE node.
 
-:::tip
-`<be_host>`, `<be_heartbeat_port>`, and `<backend_id>` can all be obtained by querying with the [SHOW BACKENDS](./SHOW-BACKENDS.md) statement.
-:::
+> **tip**: `<be_host>`, `<be_heartbeat_port>`, and `<backend_id>` can all be obtained by querying with the [SHOW BACKENDS](./SHOW-BACKENDS.md) statement.
 
 ## Access Control Requirements
 

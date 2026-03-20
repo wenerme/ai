@@ -74,4 +74,3 @@ response = search(
     include_raw_content=True         # Include raw HTML content
 )
 ```
-

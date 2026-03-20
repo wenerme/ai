@@ -8,9 +8,8 @@
 
 This document describes the supported parameters when connecting to and accessing Paimon Catalog metadata services using the JDBC interface through the `CREATE CATALOG` statement.
 
-:::tip Note
+> **tip**: Note
 This is an experimental feature, supported since version 4.1.0.
-:::
 
 ## Parameter Overview
 

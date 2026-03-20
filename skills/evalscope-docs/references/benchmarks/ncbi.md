@@ -1,6 +1,5 @@
 # NCBI
 
-
 ## Overview
 
 The NCBI disease corpus is a manually annotated resource of PubMed abstracts designed for disease name recognition and normalization. It provides a gold standard for evaluating disease named entity recognition systems.
@@ -26,7 +25,6 @@ The NCBI disease corpus is a manually annotated resource of PubMed abstracts des
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: DISEASE (diseases, disorders, syndromes)
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The NCBI disease corpus is a manually annotated resource of PubMed abstracts des
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -139,8 +136,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -171,8 +167,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -202,5 +196,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

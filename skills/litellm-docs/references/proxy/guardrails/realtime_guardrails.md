@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Realtime API Guardrails
 
@@ -96,9 +95,6 @@ litellm --config proxy_config.yaml --port 4000
 
 Connect your client to the proxy instead of directly to OpenAI:
 
-<Tabs>
-<TabItem value="js" label="JavaScript">
-
 ```javascript
 const ws = new WebSocket(
   "ws://localhost:4000/v1/realtime?model=openai/gpt-4o-realtime-preview",
@@ -124,9 +120,6 @@ ws.onmessage = (e) => {
   }
 }
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python
 import asyncio
@@ -155,9 +148,6 @@ async def main():
 
 asyncio.run(main())
 ```
-
-</TabItem>
-</Tabs>
 
 ### What happens when a turn is blocked
 

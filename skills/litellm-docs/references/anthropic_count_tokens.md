@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /v1/messages/count_tokens
 
@@ -26,9 +25,6 @@ litellm --config /path/to/config.yaml
 
 ### 2. Count Tokens
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl -X POST "http://localhost:4000/v1/messages/count_tokens" \
   -H "Content-Type: application/json" \
@@ -40,9 +36,6 @@ curl -X POST "http://localhost:4000/v1/messages/count_tokens" \
     ]
   }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Python (httpx)">
 
 ```python
 import httpx
@@ -64,9 +57,6 @@ response = httpx.post(
 print(response.json())
 # {"input_tokens": 14}
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response:**
 

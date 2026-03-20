@@ -66,7 +66,6 @@ langfuse.flush()
 print("flushed langfuse request")
 ```
 
-
 ## Advanced - Use with Virtual Keys 
 
 Pre-requisites
@@ -110,7 +109,6 @@ Expected Response
 ```
 
 3. Test it! 
-
 
 ```python
 from langfuse import Langfuse

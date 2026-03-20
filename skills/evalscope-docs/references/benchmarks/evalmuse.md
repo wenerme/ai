@@ -1,6 +1,5 @@
 # EvalMuse
 
-
 ## Overview
 
 EvalMuse is a text-to-image benchmark that evaluates the quality and semantic alignment of generated images using fine-grained analysis with the FGA-BLIP2Score metric.
@@ -27,7 +26,6 @@ EvalMuse is a text-to-image benchmark that evaluates the quality and semantic al
 - Evaluates images from the **test** split
 - Can evaluate pre-generated images or generate new ones
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ EvalMuse is a text-to-image benchmark that evaluates the quality and semantic al
 | **Metrics** | `FGA_BLIP2Score` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -129,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

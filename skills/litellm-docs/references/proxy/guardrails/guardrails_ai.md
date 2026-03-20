@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Guardrails AI
 
@@ -54,22 +52,14 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-
 ## ✨ Control Guardrails per Project (API Key)
 
-:::info
-
-✨ This is an Enterprise only feature [Contact us to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Contact us to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 Use this to control what guardrails run per project. In this tutorial we only want the following guardrails to run for 1 project (API Key)
 - `guardrails`: ["aporia-pre-guard", "aporia-post-guard"]
 
 **Step 1** Create Key with guardrail settings
-
-<Tabs>
-<TabItem value="/key/generate" label="/key/generate">
 
 ```shell
 curl -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -81,9 +71,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
     }'
 ```
 
-</TabItem>
-<TabItem value="/key/update" label="/key/update">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/key/update' \
     --header 'Authorization: Bearer sk-1234' \
@@ -94,9 +81,6 @@ curl --location 'http://0.0.0.0:4000/key/update' \
         }
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Step 2** Test it with new key
 
@@ -114,6 +98,3 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-
-

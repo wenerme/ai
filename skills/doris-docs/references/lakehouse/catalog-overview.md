@@ -79,9 +79,7 @@ Behavior after setting:
 - For databases not included in `include_table_list` (such as `db3`), the full table list will still be fetched from the remote metadata service.
 - Incorrectly formatted entries in `include_table_list` (not in `db.tbl` format) will be ignored.
 
-:::tip
-This property can be used in combination with `include_database_list`. For example, first filter the required databases using `include_database_list`, then further specify the required tables using `include_table_list`.
-:::
+> **tip**: This property can be used in combination with `include_database_list`. For example, first filter the required databases using `include_database_list`, then further specify the required tables using `include_table_list`.
 
 ### Table Name Case Sensitivity
 
@@ -105,9 +103,7 @@ CREATE CATALOG hive_catalog PROPERTIES (
 );
 ```
 
-:::caution
-When `lower_case_table_names` is set to `1` or `2`, if tables with names that differ only in case exist in the remote metadata (such as `MyTable` and `mytable`), conflicts may occur. Doris will detect such conflicts and report an error.
-:::
+> **caution**: When `lower_case_table_names` is set to `1` or `2`, if tables with names that differ only in case exist in the remote metadata (such as `MyTable` and `mytable`), conflicts may occur. Doris will detect such conflicts and report an error.
 
 ### Database Name Case Sensitivity
 
@@ -132,13 +128,9 @@ CREATE CATALOG hive_catalog PROPERTIES (
 );
 ```
 
-:::caution
-When `lower_case_database_names` is set to `1` or `2`, if databases with names that differ only in case exist in the remote metadata (such as `MyDB` and `mydb`), conflicts may occur. Doris will detect such conflicts and report an error.
-:::
+> **caution**: When `lower_case_database_names` is set to `1` or `2`, if databases with names that differ only in case exist in the remote metadata (such as `MyDB` and `mydb`), conflicts may occur. Doris will detect such conflicts and report an error.
 
-:::info
-`lower_case_database_names` and `lower_case_table_names` can be set independently without affecting each other. For example, you can set database names to be case-sensitive (`0`) while setting table names to be case-insensitive (`2`).
-:::
+> **info**: `lower_case_database_names` and `lower_case_table_names` can be set independently without affecting each other. For example, you can set database names to be case-sensitive (`0`) while setting table names to be case-insensitive (`2`).
 
 ### Column Type Mapping
 

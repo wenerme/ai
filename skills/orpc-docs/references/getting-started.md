@@ -19,8 +19,6 @@ This guide covers the basics: defining procedures, handling errors, and integrat
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/server@latest @orpc/client@latest
 ```
@@ -40,8 +38,6 @@ bun add @orpc/server@latest @orpc/client@latest
 ```sh [deno]
 deno add npm:@orpc/server@latest npm:@orpc/client@latest
 ```
-
-:::
 
 ## Define App Router
 

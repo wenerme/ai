@@ -24,7 +24,6 @@ refs:
       destination: /docs/grafana/<GRAFANA_VERSION>/dashboards/use-dashboards/#time-units-and-relative-ranges
     - pattern: /docs/grafana-cloud/
       destination: /docs/grafana-cloud/visualizations/dashboards/use-dashboards/#time-units-and-relative-ranges
-
   configure-missing-series-evaluations-to-resolve:
     - pattern: /docs/grafana/
       destination: /docs/grafana/<GRAFANA_VERSION>/alerting/fundamentals/alert-rule-evaluation/stale-alert-instances/#configure-missing-series-evaluations-to-resolve

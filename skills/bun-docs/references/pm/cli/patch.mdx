@@ -3,8 +3,6 @@ title: "bun patch"
 description: "Persistently patch node_modules packages in a git-friendly way"
 ---
 
-import Patch from "/snippets/cli/patch.mdx";
-
 `bun patch` lets you persistently patch node_modules in a maintainable, git-friendly way.
 
 Sometimes, you need to make a small change to a package in `node_modules/` to fix a bug or add a feature. `bun patch` makes it easy to do this without vendoring the entire package and reuse the patch across multiple installs, multiple projects, and multiple machines.
@@ -33,12 +31,9 @@ bun patch react@17.0.2
 bun patch node_modules/react
 ```
 
-<Note>
 Don't forget to call `bun patch <pkg>`! This ensures the package folder in `node_modules/` contains a fresh copy of the package with no symlinks/hardlinks to Bun's cache.
 
 If you forget to do this, you might end up editing the package globally in the cache!
-
-</Note>
 
 #### Step 2. Test your changes locally
 

@@ -76,7 +76,6 @@ mysql> select unix_timestamp('2007-11-30 10:30:19');
 |                            1196389819 |
 +---------------------------------------+
 
-
 -- Match format to display timestamp for given datetime
 mysql> select unix_timestamp('2007-11-30 10:30-19', '%Y-%m-%d %H:%i-%s');
 +------------------------------------------------------------+

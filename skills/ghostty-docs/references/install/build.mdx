@@ -6,8 +6,6 @@ description: |-
   who want to contribute to Ghostty.
 ---
 
-<Tip>
-
 **Building Ghostty from source is not recommended for most users.**
 If you have access to a prebuilt binary or package, you should use that
 instead. See [the binaries and packages page](/docs/install/binary) to
@@ -18,8 +16,6 @@ If you intend to develop or package Ghostty, please also check out our
 and ["Packaging Ghostty"](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md)
 documents respectively. This page is more oriented towards end users who
 want or need to build Ghostty from source for personal use.
-
-</Tip>
 
 To build Ghostty, you need to first install [Zig](https://ziglang.org/).
 
@@ -57,8 +53,6 @@ see [macOS](#macos).
 
 Begin by **downloading Ghostty's source tarball**.
 
-<Warning>
-
 While you can compile Ghostty from source by checking out its Git repository,
 this is **not recommended** for anyone but Ghostty developers and contributors.
 This is because source tarballs contain various preprocessed files that make
@@ -69,8 +63,6 @@ If you intend to contribute to Ghostty, please consult the
 documents on how to build Ghostty in a development environment.
 While most of the steps are exactly the same, we will be assuming a source
 tarball-based build from now on for the sake of simplicity.
-
-</Warning>
 
 For stable releases, source tarballs and their accompanying checksums can be
 found at `release.files.ghostty.org` at the following paths, where `VERSION`
@@ -124,20 +116,12 @@ zig build -Doptimize=ReleaseFast
 On Linux, this will build a ready-to-use binary at `zig-out/bin/ghostty`.
 On macOS, this will build the app bundle at `zig-out/Ghostty.app`.
 
-<Tip>
-
 For Linux users: To install system-wide or on your user account, see
 [Installation Directory](#installation-directory).
-
-</Tip>
-
-<Tip>
 
 For a debug build, omit the `-Doptimize=ReleaseFast` flag. Debug builds
 are **extremely slow** (over 100x slower) than release builds, so only
 use them for development.
-
-</Tip>
 
 ## Linux
 
@@ -161,14 +145,10 @@ If you're using a Git checkout, you also need to install these dependencies:
 
 </Important>
 
-<Tip>
-
 If your distro has yet to package `gtk4-layer-shell` (e.g. Ubuntu 24.04, Debian
 12, Linux Mint 22.1, OpenSUSE, etc.), you need to allow Ghostty to compile
 `gtk4-layer-shell` from source by adding the flag `-fno-sys=gtk4-layer-shell`
 to `zig build`.
-
-</Tip>
 
 #### Alpine
 
@@ -379,10 +359,8 @@ the easiest way is via Homebrew:
 brew install gettext
 ```
 
-<Note>
   If you're using the **Nix development environment**, these dependencies are
   handled for you and you do not need to install them manually.
-</Note>
 
 ### Mac `.app`
 

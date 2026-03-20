@@ -76,4 +76,3 @@ select bitmap_and_count(bitmap_from_string('1,2,3'), bitmap_from_string('1,2'), 
 |    0 |
 +------+
 ```
-

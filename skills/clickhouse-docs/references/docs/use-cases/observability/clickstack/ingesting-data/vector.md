@@ -1,26 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/ingesting-data/vector
-pagination_prev: null
-pagination_next: null
 description: 'Data ingestion with Vector for ClickStack - The ClickHouse Observability Stack'
 title: 'Ingesting with Vector'
-toc_max_heading_level: 2
 doc_type: 'guide'
 keywords: ['clickstack', 'vector', 'traces', 'observability', 'telemetry']
 ---
-
-import Image from '@theme/IdealImage';
-import InstallingVector from '@site/docs/use-cases/observability/clickstack/ingesting-data/_snippets/_installing_vector.md';
-import VectorSampleData from '@site/docs/use-cases/observability/clickstack/ingesting-data/_snippets/_vector_sample_data.md';
-import ingestion_key from '@site/static/images/clickstack/clickstack-ingestion-key.png';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import create_vector_datasource from '@site/static/images/clickstack/create-vector-datasource.png';
-import create_vector_datasource_oss from '@site/static/images/clickstack/create-vector-datasource-oss.png';
-import nginx_logs_vector_search from '@site/static/images/clickstack/nginx-logs-vector-search.png';
-import launch_clickstack_vector from '@site/static/images/clickstack/launch-clickstack-vector.png';
-import play_ui from '@site/static/images/clickstack/play-ui-clickstack.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 [Vector](https://vector.dev) is a high-performance, vendor-neutral observability data pipeline. It is commonly used to collect, transform, and route logs and metrics from a wide range of sources, and is especially popular for log ingestion due to its flexibility and low resource footprint.
 
@@ -31,9 +14,6 @@ This guide focuses on onboarding data into ClickStack using Vector for both Clic
 The only strict requirement for ClickStack, whether using the open-source or managed deployment, is that the data includes a **timestamp column** (or equivalent time field), which can be declared when configuring the data source in the ClickStack UI.
 
 ## Sending data with Vector {#sending-data-with-vector}
-<br/>
-<Tabs groupId="vector-options">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 The following guide assumes you have already created a Managed ClickStack service and recorded your service credentials. If you haven't, follow the [Getting Started](/use-cases/observability/clickstack/getting-started/managed) guide for Managed ClickStack until promoted to configure Vector.
 
@@ -73,9 +53,8 @@ ENGINE = MergeTree
 ORDER BY (toStartOfMinute(time_local), status, remote_addr)
 ```
 
-:::note Nginx primary key
+> **note**: Nginx primary key
 The primary key above assumes typical access patterns in the ClickStack UI for Nginx logs, but may need to be adjusted depending on your workload in production environments.
-:::
 
 ### Add ClickHouse sink to vector configuration {#add-clickhouse-sink-to-config}
 
@@ -106,9 +85,7 @@ The ClickHouse sink also supports **Arrow stream encoding** (currently in beta).
 
 We recommend reviewing the available sink configuration options in the [Vector documentation](https://vector.dev/docs/reference/configuration/sinks/clickhouse):
 
-:::note
-The example above uses the default user for Managed ClickStack. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits.
-:::
+> **note**: The example above uses the default user for Managed ClickStack. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits.
 
 ### Navigate to the ClickStack UI {#navigate-to-clickstack-ui}
 
@@ -137,9 +114,6 @@ Navigate to the logs view to explore the data and begin using ClickStack.
 <Image img={nginx_logs_vector_search} alt="Nginx logs in CLickStack" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-<TabItem value="oss-clickstack" label="OpenSource ClickStack">
 
 <VerticalStepper headerLevel="h3">
 
@@ -179,9 +153,8 @@ ENGINE = MergeTree
 ORDER BY (toStartOfMinute(time_local), status, remote_addr)
 ```
 
-:::note Nginx primary key
+> **note**: Nginx primary key
 The primary key above assumes typical access patterns in the ClickStack UI for Nginx logs, but may need to be adjusted depending on your workload in production environments.
-:::
 
 ### Add ClickHouse sink to vector configuration {#add-clickhouse-config-to-sink-oss}
 
@@ -214,9 +187,7 @@ The ClickHouse sink also supports **Arrow stream encoding** (currently in beta).
 
 We recommend reviewing the available sink configuration options in the [Vector documentation](https://vector.dev/docs/reference/configuration/sinks/clickhouse):
 
-:::note
-The example above uses the `api` user for ClickStack Open Source. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits. The above configuration also assumes that Vector is running on the same host as ClickStack. In production deployments, this is likely to be different. We would recommend sending data over the secure HTTPS port 8443.
-:::
+> **note**: The example above uses the `api` user for ClickStack Open Source. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits. The above configuration also assumes that Vector is running on the same host as ClickStack. In production deployments, this is likely to be different. We would recommend sending data over the secure HTTPS port 8443.
 
 ### Navigate to the ClickStack UI {#navigate-to-clickstack-ui-oss}
 
@@ -246,15 +217,9 @@ Navigate to the logs view to explore the data and begin using ClickStack.
 
 </VerticalStepper>
 
-</TabItem>
-</Tabs>
-
 ## Example dataset with Vector {#example-dataset-with-vector}
 
 For a more complete example, we use an **Nginx log file** below.
-
-<Tabs groupId="example-dataset-options">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 The following guide assumes you have already created a Managed ClickStack service and recorded your service credentials. If you haven't, follow the [Getting Started](/use-cases/observability/clickstack/getting-started/managed) guide for Managed ClickStack until promoted to configure Vector.
 
@@ -302,9 +267,8 @@ ENGINE = MergeTree
 ORDER BY (toStartOfMinute(time_local), status, remote_addr)
 ```
 
-:::note Nginx primary key
+> **note**: Nginx primary key
 The primary key above assumes typical access patterns in the ClickStack UI for Nginx logs, but may need to be adjusted depending on your workload in production environments.
-:::
 
 ### Copy Vector configuration {#copy-vector-configuration}
 
@@ -346,9 +310,7 @@ sinks:
       password: "<CLICKHOUSE_PASSWORD>"
 ```
 
-:::note
-The example above uses the default user for Managed ClickStack. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits.
-:::
+> **note**: The example above uses the default user for Managed ClickStack. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits.
 
 ### Start Vector {#start-vector}
 
@@ -406,10 +368,6 @@ Navigate to the search view for `October 20th, 2025` to explore the data and beg
 
 </VerticalStepper>
 
-</TabItem>
-
-<TabItem value="oss-clickstack" label="Open Source ClickStack">
-
 The following guide assumes you have set up ClickStack Open Source with the [Getting Started guide](/use-cases/observability/clickstack/getting-started/oss).
 
 <VerticalStepper headerLevel="h3">
@@ -458,9 +416,8 @@ ENGINE = MergeTree
 ORDER BY (toStartOfMinute(time_local), status, remote_addr)
 ```
 
-:::note Nginx primary key
+> **note**: Nginx primary key
 The primary key above assumes typical access patterns in the ClickStack UI for Nginx logs, but may need to be adjusted depending on your workload in production environments.
-:::
 
 ### Copy Vector configuration {#copy-vector-configuration-nginx-oss}
 
@@ -504,9 +461,7 @@ sinks:
       password: "api"
 ```
 
-:::note
-The example above uses the `api` user for ClickStack Open Source. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits. The above configuration also assumes that Vector is running on the same host as ClickStack. In production deployments, this is likely to be different. We would recommend sending data over the secure HTTPS port 8443.
-:::
+> **note**: The example above uses the `api` user for ClickStack Open Source. For production deployments, we recommend [creating a dedicated ingestion user](/use-cases/observability/clickstack/ingesting-data/otel-collector#creating-an-ingestion-user) with appropriate permissions and limits. The above configuration also assumes that Vector is running on the same host as ClickStack. In production deployments, this is likely to be different. We would recommend sending data over the secure HTTPS port 8443.
 
 ### Start Vector {#start-vector-oss-nginx}
 
@@ -563,6 +518,3 @@ Navigate to the search view for `October 20th, 2025` to explore the data and beg
 <Image img={nginx_logs_vector_search} alt="HyperDX UI" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-</Tabs>

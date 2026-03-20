@@ -12,9 +12,7 @@ Store audit logs
 
 ## Database
 
-
 `__internal_schema`
-
 
 ## Table Information
 
@@ -50,7 +48,6 @@ Store audit logs
 | compute_group                 | string    | In storage and computation decouped mode, the compute group used by the execution statement. Supported since version 3.0.|
 | stmt              | text         | Statement text                                               |
 
-
 ## Description
 
 - `client_ip`: If a proxy service is used and the IP pass-through is not enabled, the proxy service IP may be recorded here instead of the real client IP.
@@ -59,5 +56,3 @@ Store audit logs
 - `scan_rows`: Indicates the number of rows scanned during query execution. Since Doris is a columnar storage database, it first scans the columns with predicate filters, and then scans other columns based on the filtered results. Therefore, the number of rows scanned for different columns is actually different. In fact, the number of rows scanned for predicate columns is greater than that for non-predicate columns, and this value reflects the number of rows scanned for predicate columns during query execution.
 - `scan_bytes_from_local_storage`: Indicates the size of data read from local disk, which is the size before compression. Data read from Doris' page cache is not counted, while data from the operating system's page cache is included in this statistic.
 - `scan_bytes_from_remote_storage`: Indicates the size of data read from remote storage, which is the size before compression.
-
-

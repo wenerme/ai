@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Lightdash'
-sidebar_position: 131
-slug: /integrations/lightdash
 keywords: ['clickhouse', 'lightdash', 'data visualization', 'BI', 'semantic layer', 'dbt', 'self-serve analytics', 'connect']
 description: 'Lightdash is a modern open-source BI tool built on top of dbt, enabling teams to explore and visualize data from ClickHouse through a semantic layer. Learn how to connect Lightdash to ClickHouse for fast, governed analytics powered by dbt.'
 title: 'Connecting Lightdash to ClickHouse'
@@ -10,16 +7,6 @@ integration:
   - support_level: 'partner'
   - category: 'data_visualization'
 ---
-
-import lightdash_01 from '@site/static/images/integrations/data-visualization/lightdash_01.png';
-import lightdash_02 from '@site/static/images/integrations/data-visualization/lightdash_02.png';
-import lightdash_03 from '@site/static/images/integrations/data-visualization/lightdash_03.png';
-import lightdash_04 from '@site/static/images/integrations/data-visualization/lightdash_04.png';
-import lightdash_05 from '@site/static/images/integrations/data-visualization/lightdash_05.png';
-import lightdash_06 from '@site/static/images/integrations/data-visualization/lightdash_06.png';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Lightdash
 
@@ -66,7 +53,6 @@ To connect ClickHouse, make sure your local `~/.dbt/profiles.yml` file contains 
 For example:
 
 <Image size="md" img={lightdash_01} alt="Example profiles.yml configuration for a lightdash-clickhouse project" border />
-<br/>
 
 ### Create a Lightdash project connected to ClickHouse {#creating-a-lightdash-project-connected-to-clickhouse}
 
@@ -97,7 +83,6 @@ You can now build dashboards, share insights, and even use **Ask AI** to generat
 In Lightdash, all **metrics** and **dimensions** are defined directly in your dbt model `.yml` files. This makes your business logic version-controlled, consistent, and fully transparent.
 
 <Image size="md" img={lightdash_03} alt="Example of metrics being defined in the .yml file" border />
-<br/>
 
 Defining these in YAML ensures your team is using the same definitions across dashboards and analyses. For example, you can create reusable metrics like `total_order_count`, `total_revenue`, or `avg_order_value` right next to your dbt models — no duplication required in the UI.
 
@@ -159,9 +144,8 @@ It’s powered by the same semantic layer you use in dbt, meaning every answer s
 
 <Image size="lg" img={lightdash_06} alt="Lightdash Ask AI interface showing natural language query powered by dbt metrics" border />
 
-:::tip
-Learn more about AI Agents here: [AI Agents → Lightdash Docs](https://docs.lightdash.com/guides/ai-agents?utm_source=clickhouse&utm_medium=partner&utm_campaign=integration_docs)
-:::
+> **tip**: Learn more about AI Agents here: [AI Agents → Lightdash Docs](https://docs.lightdash.com/guides/ai-agents?utm_source=clickhouse&utm_medium=partner&utm_campaign=integration_docs)
+
 </VerticalStepper>
 
 ## Learn more {#learn-more}

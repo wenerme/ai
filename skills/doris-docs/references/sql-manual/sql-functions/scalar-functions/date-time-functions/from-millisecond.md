@@ -72,9 +72,7 @@ select from_millisecond(NULL);
  select from_millisecond(-1);
 ERROR 1105 (HY000): errCode = 2, detailMessage = (10.16.10.3)[E-218]Operation from_millisecond of -1 out of range
 
-
 --Result exceeds maximum date, returns error
 select from_millisecond(999999999999999999);
 ERROR 1105 (HY000): errCode = 2, detailMessage = (10.16.10.3)[E-218]Operation from_millisecond of 999999999999999999 out of range
 ```
-

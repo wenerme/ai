@@ -6,25 +6,6 @@
 }
 ---
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-
 Early versions of Apache Doris focused on online analytical processing (OLAP), primarily for reporting and aggregation workloads—typical queries being multi-table JOIN and GROUP BY. In 2.x, Doris added text search via inverted indexes and introduced the Variant type for efficient JSON handling. In 3.x, storage-compute separation enabled leveraging object storage to significantly reduce storage costs. In 4.x, Doris steps into the AI era by introducing vector indexes and hybrid search (vector + text), positioning Doris as an enterprise AI analytics platform. This document explains how Doris implements vector indexing in 4.x and the engineering efforts made to reach state-of-the-art performance.
 
 We divide vector indexing into two stages: indexing and querying. The indexing stage focuses on 1) data sharding, 2) efficiently building high-quality indexes, and 3) index management. The querying stage has a single goal: improve query performance—eliminating redundant computation and unnecessary IO while optimizing concurrency.
@@ -34,12 +15,12 @@ Indexing performance is strongly tied to index hyperparameters: higher index qua
 
 On the 768D 10M dataset, Apache Doris achieves industry-leading ingestion performance.
 
-![alt text](/images/vector-search/image-1.png)
+[alt text]
 
 ### Multi-Level Sharding
 Internal tables in Apache Doris are inherently distributed. During query and ingestion, users interact with a single logical table, while the Doris kernel creates the required number of physical tablets based on the table definition. During ingestion, data is routed to the appropriate BE tablet by partition and bucket keys. Multiple tablets together form the logical table seen by users. Each ingestion request forms a transaction, creating a rowset (versioning unit) on the corresponding tablet. Each rowset contains several segments, and the segment is the actual data carrier; ANN indexes operate at the segment granularity.
 
-![Hierarchy from table to shards](/images/vector-search/image.png)
+[Hierarchy from table to shards]
 
 Vector indexes (e.g., HNSW) rely on key hyperparameters that directly determine index quality and query performance, and are typically tuned for specific data scales. Apache Doris’s multi-level sharding decouples “index parameters” from the “full table data scale”: users need not rebuild indexes as total data grows, but only tune parameters based on per-batch ingestion size. From our tests, HNSW suggested parameters under different batch sizes are:
 
@@ -98,7 +79,7 @@ These optimizations reduce instruction and memory costs and significantly boost 
 
 Search is latency sensitive. At tens of millions of records with high concurrency, P99 latency typically needs to be under 500 ms—raising the bar for the optimizer, execution engine, and index implementation. Out-of-the-box tests show Doris reaches performance comparable to mainstream dedicated vector databases. The chart below compares Doris against other systems on Performance768D10M; peer data comes from Zilliz’s open-source [VectorDBBench](https://github.com/zilliztech/VectorDBBench).
 
-![alt text](/images/vector-search/image-2.png)
+[alt text]
 
 > Note: The chart includes a subset of out-of-the-box results. OpenSearch and Elastic Cloud can improve query performance by optimizing the number of index files.
 
@@ -121,11 +102,11 @@ In the traditional path, Doris runs full optimization (parsing, semantic analysi
 Doris implements vector indexes as external (pluggable) indexes, which simplifies management and supports asynchronous builds, but introduces performance challenges such as avoiding redundant computation and IO. ANN indexes can return distances in addition to row IDs. Doris leverages this by short-circuiting distance expressions within the Scan operator via “virtual columns,” and the Ann Index Only Scan fully eliminates distance-related read IO.
 In the naive flow, Scan pushes predicates to the index, the index returns row IDs, and Scan then reads data pages and computes expressions before returning N rows upstream.
 
-![alt text](/images/vector-search/image-3.png)
+[alt text]
 
 With Index Only Scan applied, the flow becomes:
 
-![alt text](/images/vector-search/image-4.png)
+[alt text]
 
 For example, `SELECT l2_distance_approximate(embedding, [...]) AS dist FROM tbl ORDER BY dist LIMIT 100;` executes without touching data files.
 

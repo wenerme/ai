@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /completions
 
@@ -17,8 +16,6 @@ import TabItem from '@theme/TabItem';
 | Supported Providers | All Chat Completion Providers | |
 
 ### Usage
-<Tabs>
-<TabItem value="python" label="LiteLLM Python SDK">
 
 ```python
 from litellm import text_completion
@@ -29,9 +26,6 @@ response = text_completion(
     max_tokens=7
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy Server">
 
 1. Define models on config.yaml
 
@@ -53,9 +47,6 @@ model_list:
 litellm --config config.yaml
 ```
 
-<Tabs>
-<TabItem value="python" label="OpenAI Python SDK">
-
 ```python
 from openai import OpenAI
 
@@ -71,9 +62,6 @@ response = client.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/completions' \
@@ -85,11 +73,6 @@ curl --location 'http://0.0.0.0:4000/completions' \
         "max_tokens": 7
     }'
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 ## Input Params
 
@@ -121,12 +104,7 @@ LiteLLM accepts and translates the [OpenAI Text Completion params](https://platf
 ## Output Format
 Here's the exact JSON output format you can expect from completion calls:
 
-
 [**Follows OpenAI's output format**](https://platform.openai.com/docs/api-reference/completions/object)
-
-<Tabs>
-
-<TabItem value="non-streaming" label="Non-Streaming Response">
 
 ```python
 {
@@ -151,8 +129,6 @@ Here's the exact JSON output format you can expect from completion calls:
 }
 
 ```
-</TabItem>
-<TabItem value="streaming" label="Streaming Response">
 
 ```python
 {
@@ -173,15 +149,9 @@ Here's the exact JSON output format you can expect from completion calls:
 
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## **Supported Providers**
 
 | Provider    | Link to Usage      |
 |-------------|--------------------|
 | OpenAI      |   [Usage](../docs/providers/text_completion_openai)                 | 
-| Azure OpenAI|   [Usage](../docs/providers/azure)                 |  
-
-
+| Azure OpenAI|   [Usage](../docs/providers/azure)                 |

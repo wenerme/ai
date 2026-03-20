@@ -1,7 +1,5 @@
 ---
 date: "2021-05-13T00:00:00-00:00"
-slug: "repo-mirror"
-sidebar_position: 45
 aliases:
   - /en-us/repo-mirror
   - /repo-mirror
@@ -31,9 +29,7 @@ For an existing remote repository, you can set up pull mirroring as follows:
 
 The repository now gets mirrored periodically from the remote repository. You can force a sync by selecting **Synchronize Now** in the repository settings.
 
-:::warning
-:exclamation::exclamation: You can only set up pull mirroring for repos that don't exist yet on your instance. Once the repo is created, you can't convert it into a pull mirror anymore. :exclamation::exclamation:
-:::
+> **warning**: :exclamation::exclamation: You can only set up pull mirroring for repos that don't exist yet on your instance. Once the repo is created, you can't convert it into a pull mirror anymore. :exclamation::exclamation:
 
 ## Pushing to a remote repository
 
@@ -46,9 +42,7 @@ For an existing repository, you can set up push mirroring as follows:
 
 The repository now gets mirrored periodically to the remote repository. You can force a sync by selecting **Synchronize Now**. In case of an error a message displayed to help you resolve it.
 
-:::warning
-:exclamation::exclamation: This will force push to the remote repository. This will overwrite any changes in the remote repository! :exclamation::exclamation:
-:::
+> **warning**: :exclamation::exclamation: This will force push to the remote repository. This will overwrite any changes in the remote repository! :exclamation::exclamation:
 
 ### Setting up a push mirror from Gitea to GitHub
 

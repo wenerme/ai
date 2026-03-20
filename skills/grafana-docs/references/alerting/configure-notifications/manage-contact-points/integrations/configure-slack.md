@@ -109,7 +109,7 @@ You can automatically mention users, groups, or the entire channel when notifica
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mention users   | Mention one or more specific users in the notification. Set the `mentionUsers` field with a comma-separated list of user IDs (for example, `U024BE7LH,U024BE7LJ`). To find a user's ID, refer to [Slack's documentation on finding member IDs](https://api.slack.com/methods/users.list). |
 | Mention groups  | Mention one or more user groups in the notification. Set the `mentionGroups` field with a comma-separated list of group IDs. You can copy group IDs from the group's Slack profile URL.                                                                                                   |
-| Mention channel | Mention the entire channel or active members. Set the `mentionChannel` field to one of the following:<br>- Empty or omit the field to disable channel mentions<br>- `here` to mention every active channel member<br>- `channel` to mention every channel member                          |
+| Mention channel | Mention the entire channel or active members. Set the `mentionChannel` field to one of the following:- Empty or omit the field to disable channel mentions- `here` to mention every active channel member- `channel` to mention every channel member                          |
 
 ### Customize message content
 

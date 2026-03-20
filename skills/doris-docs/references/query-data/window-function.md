@@ -72,17 +72,15 @@ The processing of queries using analytic functions can be divided into three sta
 
 The processing order of the query is illustrated as follows:
 
-![processing order](/images/window-function-order.png)
+[processing order]
 
 ### Result Set Partitioning
 
 Partitions are created after defining groups using the PARTITION BY clause. Analytic functions allow users to divide the query result set into groups of rows called partitions.
 
-:::caution Note
+> **caution**: Note
 
 The term "partition" used in analytic functions is unrelated to the table partitioning feature. In this chapter, the term "partition" refers only to its meaning related to analytic functions.
-
-:::
 
 ### Window
 
@@ -98,7 +96,7 @@ Each calculation performed using analytic functions is based on the current row 
 
 For example ROWS BETWEEN 6 PRECEDING AND 6 FOLLOWING, a window can be used to define a centered moving average calculation that includes the current row, the 6 rows before the current row, and the 6 rows after the current row. This creates a sliding window containing 13 rows.
 
-![Current Row](/images/window-function-rows.jpg)
+[Current Row]
 
 ## Sorting Function
 
@@ -177,11 +175,10 @@ The results are as follows:
 
 In this example, the `NTILE(4)` function divides the students into 4 groups (buckets) based on their scores, with the number of students in each group being as uniform as possible.
 
-:::caution Notes
+> **caution**: Notes
 - If rows cannot be evenly distributed into buckets, some buckets may have one extra row.
 
 - The `NTILE` function works within each partition. If the `PARTITION BY` clause is used, data within each partition will be separately assigned to buckets.
-:::
 
 **3. Using NTILE with PARTITION BY**
 
@@ -330,11 +327,9 @@ The query result is as follows:
 12 rows in set (0.13 sec)
 ```
 
-:::caution Note
+> **caution**: Note
 
 In the output data, the AVG column for the first two rows does not calculate a three-day moving average because there are not enough preceding rows for the boundary data (the number of rows specified in SQL is 3).
-
-:::
 
 Additionally, it is possible to calculate window aggregate functions centered on the current row. For instance, this example calculates the centered moving average of monthly sales for products in the "Books" category in the year 2000, specifically averaging the total sales of the month before the current row, the current row, and the month after the current row.
 
@@ -360,11 +355,9 @@ GROUP BY
         MONTH(d_date)
 ```
 
-:::caution Note
+> **caution**: Note
 
 The centered moving averages for the starting and ending rows in the output data are calculated based on only two days because there are not enough rows before and after the boundary data.
-
-:::
 
 ## Reporting Function
 
@@ -491,7 +484,6 @@ The query results are as follows:
 +------+-------------+-------------+-------------------+-----------------------------------+
 8 rows in set (0.16 sec)
 ```
-
 
 ## Examples
 

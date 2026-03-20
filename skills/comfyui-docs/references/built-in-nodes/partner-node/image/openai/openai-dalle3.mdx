@@ -1,11 +1,9 @@
 ---
 title: "OpenAI DALL·E 3 - ComfyUI Native Node Documentation"
 description: "Node for generating high-quality images using OpenAI's DALL·E 3 model"
-sidebarTitle: "OpenAI DALL·E 3"
-icon: "circle"
 ---
 
-![ComfyUI Native OpenAI DALL·E 3 Node](/images/built-in-nodes/api_nodes/openai/openai-dall-e-3.jpg)
+[ComfyUI Native OpenAI DALL·E 3 Node]
 
 This node connects to OpenAI's DALL·E 3 API, allowing users to generate high-quality images through detailed text prompts. DALL·E 3 is OpenAI's image generation model that offers significantly improved image quality, more accurate prompt understanding, and better detail rendering compared to previous versions.
 
@@ -136,4 +134,4 @@ class OpenAIDalle3(ComfyNodeABC):
 
         img_tensor = validate_and_cast_response(response)
         return (img_tensor,)
-``` 
+```

@@ -12,9 +12,7 @@ View all user information.
 
 ## Database
 
-
 `mysql`
-
 
 ## Table Information
 
@@ -52,4 +50,3 @@ View all user information.
 | password_policy.password_lock_seconds  | varchar(32)    | Password lock time after triggering lock.           |
 | password_policy.failed_login_counter   | varchar(32)    | Login failure count.                                |
 | password_policy.lock_time              | varchar(32)    |                                                     |
-

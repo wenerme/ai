@@ -1,6 +1,3 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Google AI Studio SDK
@@ -14,13 +11,9 @@ Pass-through endpoints for Google AI Studio - call provider-specific endpoint, i
 | End-user Tracking | ❌ | [Tell us if you need this](https://github.com/BerriAI/litellm/issues/new) |
 | Streaming | ✅ | |
 
-
 Just replace `https://generativelanguage.googleapis.com` with `LITELLM_PROXY_BASE_URL/gemini`
 
 #### **Example Usage**
-
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```bash
 curl 'http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:countTokens?key=sk-anything' \
@@ -33,9 +26,6 @@ curl 'http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:countTokens?key=
         }]
 }'
 ```
-
-</TabItem>
-<TabItem value="js" label="Google GenAI JS SDK">
 
 ```javascript
 const { GoogleGenAI } = require("@google/genai");
@@ -78,9 +68,6 @@ main();
 // main_streaming();
 ```
 
-</TabItem>
-</Tabs>
-
 Supports **ALL** Google AI Studio Endpoints (including streaming).
 
 [**See All Google AI Studio Endpoints**](https://ai.google.dev/api)
@@ -119,7 +106,6 @@ http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:countTokens?key=anythi
 }'
 ```
 
-
 ## Examples
 
 Anything after `http://0.0.0.0:4000/gemini` is treated as a provider-specific route, and handled accordingly.
@@ -130,7 +116,6 @@ Key Changes:
 |------------------------------------------------------|-----------------------------------|
 | `https://generativelanguage.googleapis.com`          | `http://0.0.0.0:4000/gemini` (LITELLM_PROXY_BASE_URL="http://0.0.0.0:4000")      |
 | `key=$GOOGLE_API_KEY`                                 | `key=anything` (use `key=LITELLM_VIRTUAL_KEY` if Virtual Keys are setup on proxy)                    |
-
 
 ### **Example 1: Counting tokens**
 
@@ -194,7 +179,6 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:g
 
 ### **Example 3: Caching**
 
-
 ```bash
 curl -X POST "http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash-001:generateContent?key=anything" \
 -H 'Content-Type: application/json' \
@@ -229,13 +213,11 @@ curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5
     }'
 ```
 
-
 ## **Example 4: Video Generation with Veo**
 
 Generate videos using Google's Veo model through LiteLLM pass-through routes.
 
 [**→ Complete Veo Video Generation Guide**](../proxy/veo_video_generation.md)
-
 
 ## Advanced 
 
@@ -280,7 +262,6 @@ Expected Response
 
 3. Test it! 
 
-
 ```bash
 http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:countTokens?key=sk-1234ewknldferwedojwojw' \
 -H 'Content-Type: application/json' \
@@ -293,7 +274,6 @@ http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:countTokens?key=sk-123
 }'
 ```
 
-
 ### Send `tags` in request headers
 
 Use this if you want `tags` to be tracked in the LiteLLM DB and on logging callbacks.
@@ -303,9 +283,6 @@ Pass tags in request headers as a comma separated list. In the example below the
 ```
 tags: ["gemini-js-sdk", "pass-through-endpoint"]
 ```
-
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```bash
 curl 'http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:generateContent?key=sk-anything' \
@@ -319,9 +296,6 @@ curl 'http://0.0.0.0:4000/gemini/v1beta/models/gemini-1.5-flash:generateContent?
         }]
 }'
 ```
-
-</TabItem>
-<TabItem value="js" label="Google GenAI JS SDK">
 
 ```javascript
 const { GoogleGenAI } = require("@google/genai");
@@ -350,6 +324,3 @@ async function main() {
 
 main();
 ```
-
-</TabItem>
-</Tabs>

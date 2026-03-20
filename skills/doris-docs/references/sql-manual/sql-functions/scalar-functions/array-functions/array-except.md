@@ -217,4 +217,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = Can not find the compatibility 
 
 ### Keywords
 
-ARRAY, EXCEPT, ARRAY_EXCEPT 
+ARRAY, EXCEPT, ARRAY_EXCEPT

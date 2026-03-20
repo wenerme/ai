@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/data-lake/rest-catalog
-sidebar_label: 'REST catalog'
 title: 'REST catalog'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data using ClickHouse and the REST Catalog.'
 keywords: ['REST', 'Tabular', 'Data Lake', 'Iceberg']
@@ -11,14 +7,10 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import BetaBadge from '@theme/badges/BetaBadge';
-
 <BetaBadge/>
 
-:::note
-Integration with the REST Catalog works with Iceberg tables only.
+> **note**: Integration with the REST Catalog works with Iceberg tables only.
 This integration supports both AWS S3 and other cloud storage providers.
-:::
 
 ClickHouse supports integration with multiple catalogs (Unity, Glue, REST, Polaris, etc.). This guide will walk you through the steps to query your data using ClickHouse and the [REST Catalog](https://github.com/apache/iceberg/blob/main/open-api/rest-catalog-open-api.yaml/) specification.
 
@@ -27,10 +19,8 @@ The REST Catalog is a standardized API specification for Iceberg catalogs, suppo
 - **Managed services** like Tabular.io
 - **Self-hosted** REST catalog implementations
 
-:::note
-As this feature is beta, you will need to enable it using:
+> **note**: As this feature is beta, you will need to enable it using:
 `SET allow_database_iceberg = 1;`
-:::
 
 ## Local Development Setup {#local-development-setup}
 
@@ -84,9 +74,7 @@ docker compose up
 docker-compose logs -f
 ```
 
-:::note
-The REST catalog setup requires that sample data be loaded into the Iceberg tables first. Make sure the Spark environment has created and populated the tables before attempting to query them through ClickHouse. The availability of tables depends on the specific docker-compose setup and sample data loading scripts.
-:::
+> **note**: The REST catalog setup requires that sample data be loaded into the Iceberg tables first. Make sure the Spark environment has created and populated the tables before attempting to query them through ClickHouse. The availability of tables depends on the specific docker-compose setup and sample data loading scripts.
 
 ### Connecting to Local REST Catalog {#connecting-to-local-rest-catalog}
 
@@ -127,8 +115,7 @@ If your setup includes sample data (such as the taxi dataset), you should see ta
 └───────────────┘
 ```
 
-:::note
-If you don't see any tables, this usually means:
+> **note**: If you don't see any tables, this usually means:
 1. The Spark environment hasn't created the sample tables yet
 2. The REST catalog service isn't fully initialized
 3. The sample data loading process hasn't completed
@@ -137,7 +124,6 @@ You can check the Spark logs to see the table creation progress:
 ```bash
 docker-compose logs spark
 ```
-:::
 
 To query a table (if available):
 
@@ -151,9 +137,8 @@ SELECT count(*) FROM `default.taxis`;
 └─────────┘
 ```
 
-:::note Backticks required
+> **note**: Backticks required
 Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
 
 To inspect the table DDL:
 

@@ -1,19 +1,9 @@
 ---
-slug: /integrations/prometheus
-sidebar_label: 'Prometheus'
 title: 'Prometheus'
 description: 'Export ClickHouse metrics to Prometheus'
 keywords: ['prometheus', 'grafana', 'monitoring', 'metrics', 'exporter']
 doc_type: 'reference'
 ---
-
-import prometheus_grafana_metrics_endpoint from '@site/static/images/integrations/prometheus-grafana-metrics-endpoint.png';
-import prometheus_grafana_dropdown from '@site/static/images/integrations/prometheus-grafana-dropdown.png';
-import prometheus_grafana_chart from '@site/static/images/integrations/prometheus-grafana-chart.png';
-import prometheus_grafana_alloy from '@site/static/images/integrations/prometheus-grafana-alloy.png';
-import prometheus_grafana_metrics_explorer from '@site/static/images/integrations/prometheus-grafana-metrics-explorer.png';
-import prometheus_datadog from '@site/static/images/integrations/prometheus-datadog.png';
-import Image from '@theme/IdealImage';
 
 # Prometheus Integration
 
@@ -203,13 +193,9 @@ We provide instructions on using these options below, focusing on the details sp
 
 <Image img={prometheus_grafana_metrics_endpoint} size="md" alt="Configure Grafana Metrics Endpoint" border/>
 
-<br />
-
 Once configured, you should see the metrics in the drop-down that you can select to configure dashboards:
 
 <Image img={prometheus_grafana_dropdown} size="md" alt="Grafana Metrics Explorer Drop-down" border/>
-
-<br />
 
 <Image img={prometheus_grafana_chart} size="md" alt="Grafana Metrics Explorer Chart" border/>
 
@@ -218,8 +204,6 @@ Once configured, you should see the metrics in the drop-down that you can select
 If you're using Grafana Cloud, Alloy can be installed by navigating to the Alloy menu in Grafana and following the onscreen instructions:
 
 <Image img={prometheus_grafana_alloy} size="md" alt="Grafana Alloy" border/>
-
-<br />
 
 This should configure Alloy with a `prometheus.remote_write` component for sending data to a Grafana Cloud endpoint with an authentication token. Users then need to only modify the Alloy config (found in `/etc/alloy/config.alloy` for Linux) to include a scraper for the ClickHouse Cloud Prometheus Endpoint.
 
@@ -285,8 +269,6 @@ Once configured, you should see ClickHouse related metrics in your metrics explo
 
 <Image img={prometheus_grafana_metrics_explorer} size="md" alt="Grafana Metrics Explorer" border/>
 
-<br />
-
 Note the `honor_labels` configuration parameter needs to be set to `true` for the instance label to be properly populated.
 
 ## Integrating with Datadog {#integrating-with-datadog}
@@ -304,7 +286,5 @@ instances:
      username: username
      password: password
 ```
-
-<br />
 
 <Image img={prometheus_datadog} size="md" alt="Prometheus Datadog Integration" />

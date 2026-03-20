@@ -331,7 +331,6 @@ pip install evalscope[vlmeval]
 Reference: [Evaluating with VLMEvalKit Backend](../../user_guides/backend/vlmevalkit_backend.md)
 ````
 
-
 ### Multiple Choice Format (MCQ)
 
 #### 1. Data Preparation
@@ -422,7 +421,6 @@ Place this file in the `~/LMUData` path, and you can use the filename for evalua
 #### 2. Custom Evaluation Script
 
 The following is an example of a custom dataset. This example implements a custom evaluation script for question-answer format, which automatically loads the dataset, uses default prompts for Q&A, and finally calculates accuracy as the evaluation metric.
-
 
 ```python
 import os

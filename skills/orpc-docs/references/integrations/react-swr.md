@@ -7,13 +7,9 @@ description: Integrate oRPC with React SWR for efficient data fetching and cachi
 
 [SWR](https://swr.vercel.app/) is a React Hooks library for data fetching that provides features like caching, revalidation, and more. oRPC SWR integration is very lightweight and straightforward - there's no extra overhead.
 
-::: warning
-This documentation assumes you are already familiar with [SWR](https://swr.vercel.app/). If you need a refresher, please review the official SWR documentation before proceeding.
-:::
+> **warning**: This documentation assumes you are already familiar with [SWR](https://swr.vercel.app/). If you need a refresher, please review the official SWR documentation before proceeding.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/experimental-react-swr@latest
@@ -35,11 +31,7 @@ bun add @orpc/experimental-react-swr@latest
 deno add npm:@orpc/experimental-react-swr@latest
 ```
 
-:::
-
-::: warning
-The `experimental-` prefix indicates that this integration is still in development and may change in the future.
-:::
+> **warning**: The `experimental-` prefix indicates that this integration is still in development and may change in the future.
 
 ## Setup
 
@@ -67,7 +59,7 @@ orpc.planet.find.key({ input: { id: 123 } })
 //
 ```
 
-::: details Avoiding Key Conflicts?
+> **details**: Avoiding Key Conflicts?
 
 You can easily avoid key conflicts by passing a unique base key when creating your utils:
 
@@ -80,8 +72,6 @@ const postORPC = createSWRUtils(postClient, {
   path: ['post']
 })
 ```
-
-:::
 
 ## Data Fetching
 

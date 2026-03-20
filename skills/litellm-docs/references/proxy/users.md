@@ -1,9 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Budgets, Rate Limits
 
-:::info **Budget Setup Options**
+> **info**: **Budget Setup Options**
 **Personal budgets**: Create virtual keys without team_id for individual spending limits
 
 **Team budgets**: Add team_id to virtual keys to utilize a team's shared budget
@@ -13,12 +12,10 @@ import TabItem from '@theme/TabItem';
 **Agent budgets**: Set rate limits (tpm/rpm) and session-level caps (iterations, dollar budget) on agents [**Jump**](#agents)
 
 ***If a key belongs to a team, the team budget is applied, not the user's personal budget.***
-:::
 
 Requirements: 
 
 - Need to a postgres database (e.g. [Supabase](https://supabase.com/), [Neon](https://neon.tech/), etc) [**See Setup**](./virtual_keys.md#setup)
-
 
 ## Set Budgets
 
@@ -66,10 +63,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 You can:
 - Add budgets to Teams
 
-:::info
-
-**Step-by step tutorial on setting, resetting budgets on Teams here (API or using Admin UI)**
-
+> **info**: **Step-by step tutorial on setting, resetting budgets on Teams here (API or using Admin UI)**
 
 #### **Add budgets to teams**
 ```shell 
@@ -130,7 +124,6 @@ curl 'http://0.0.0.0:4000/team/new' \
 
 Use this when you want to budget a users spend within a Team 
 
-
 #### Step 1. Create User
 
 Create a user with `user_id=ishaan`
@@ -179,7 +172,6 @@ We use the `key` from this response in Step 4
 
 Use the key from step 3 for this request. After 2-3 requests expect to see The following error `ExceededBudget: Crossed spend within team` 
 
-
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
     --header 'Authorization: Bearer sk-RV-l2BJEZ_LYNChSx2EueQ' \
@@ -195,18 +187,13 @@ curl --location 'http://localhost:4000/chat/completions' \
 }'
 ```
 
-
 ### Internal User
 
 Apply a budget across all calls an internal user (key owner) can make on the proxy. 
 
-:::info
-
-For keys, with a 'team_id' set, the team budget is used instead of the user's personal budget.
+> **info**: For keys, with a 'team_id' set, the team budget is used instead of the user's personal budget.
 
 To apply a budget to a user within a team, use team member budgets.
-
-:::
 
 LiteLLM exposes a `/user/new` endpoint to create budgets for this.
 
@@ -310,7 +297,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-
 Expected Response from `/chat/completions` when key has crossed budget
 ```shell
 {
@@ -333,19 +319,13 @@ curl 'http://0.0.0.0:4000/key/generate' \
 }'
 ```
 
-
 ### ✨ Virtual Key (Model Specific)
 
 Apply model specific budgets on a key. Example: 
 - Budget for `gpt-4o` is $0.0000001, for time period `1d` for `key = "sk-12345"`
 - Budget for `gpt-4o-mini` is $10, for time period `30d` for `key = "sk-12345"`
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://www.litellm.ai/#pricing)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://www.litellm.ai/#pricing)
 
 The spec for `model_max_budget` is **[`Dict[str, GenericBudgetInfo]`](#genericbudgetinfo)**
 
@@ -358,15 +338,11 @@ curl 'http://0.0.0.0:4000/key/generate' \
 }'
 ```
 
-
 #### Make a test request
 
 We expect the first request to succeed, and the second request to fail since we cross the budget for `gpt-4o` on the Virtual Key
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Successful Call " value = "allowed">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -383,9 +359,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-
-</TabItem>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since we cross the budget `model=gpt-4o` on the Virtual Key
 
@@ -418,10 +391,6 @@ Expected response on failure
 }
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Agents
 
 Set budgets and rate limits on agents registered with LiteLLM's [Agent Gateway](../a2a.md). You can control:
@@ -429,9 +398,6 @@ Set budgets and rate limits on agents registered with LiteLLM's [Agent Gateway](
 - **Per-session rate limits**: `session_tpm_limit` and `session_rpm_limit` applied per session
 - **Per-session iteration cap**: `max_iterations` in agent `litellm_params`
 - **Per-session budget cap**: `max_budget_per_session` in agent `litellm_params`
-
-<Tabs>
-<TabItem value="agent-rate-limits" label="Agent Rate Limits">
 
 Set `tpm_limit` and `rpm_limit` on the agent to cap total throughput across all sessions.
 
@@ -452,9 +418,6 @@ curl -X POST 'http://localhost:4000/v1/agents' \
   }'
 ```
 
-</TabItem>
-<TabItem value="session-rate-limits" label="Session Rate Limits">
-
 Set `session_tpm_limit` and `session_rpm_limit` to cap throughput per individual session.
 
 ```bash
@@ -473,9 +436,6 @@ curl -X POST 'http://localhost:4000/v1/agents' \
     "session_rpm_limit": 50
   }'
 ```
-
-</TabItem>
-<TabItem value="session-budgets" label="Session Budgets">
 
 Set `max_iterations` and `max_budget_per_session` in agent `litellm_params` to cap individual sessions. Requires `require_trace_id_on_calls_by_agent` so LiteLLM can track calls per session.
 
@@ -503,12 +463,7 @@ When a session exceeds the limit, requests receive a **429 Too Many Requests** r
 
 See the [Agent Iteration Budgets](../a2a_iteration_budgets) guide for full details.
 
-</TabItem>
-</Tabs>
-
-:::info
-
-You can also update rate limits on existing agents using `PATCH /v1/agents/{agent_id}`:
+> **info**: You can also update rate limits on existing agents using `PATCH /v1/agents/{agent_id}`:
 
 ```bash
 curl -X PATCH 'http://localhost:4000/v1/agents/<agent_id>' \
@@ -521,9 +476,6 @@ curl -X PATCH 'http://localhost:4000/v1/agents/<agent_id>' \
     "session_rpm_limit": 50
   }'
 ```
-
-:::
-
 
 ### Customers
 
@@ -584,9 +536,6 @@ Reset budgets across keys/internal users/teams/customers
 
 `budget_duration`: Budget is reset at the end of specified duration. If not set, budget is never reset. You can set duration as seconds ("30s"), minutes ("30m"), hours ("30h"), days ("30d").
 
-<Tabs>
-<TabItem value="users" label="Internal Users">
-
 ```bash
 curl 'http://0.0.0.0:4000/user/new' \
 --header 'Authorization: Bearer <your-master-key>' \
@@ -596,8 +545,6 @@ curl 'http://0.0.0.0:4000/user/new' \
   "budget_duration": "30s", # 👈 KEY CHANGE
 }'
 ```
-</TabItem>
-<TabItem value="keys" label="Keys">
 
 ```bash
 curl 'http://0.0.0.0:4000/key/generate' \
@@ -609,9 +556,6 @@ curl 'http://0.0.0.0:4000/key/generate' \
 }'
 ```
 
-</TabItem>
-<TabItem value="teams" label="Teams">
-
 ```bash
 curl 'http://0.0.0.0:4000/team/new' \
 --header 'Authorization: Bearer <your-master-key>' \
@@ -621,8 +565,6 @@ curl 'http://0.0.0.0:4000/team/new' \
   "budget_duration": "30s", # 👈 KEY CHANGE
 }'
 ```
-</TabItem>
-</Tabs>
 
 **Note:** By default, the server checks for resets every 10 minutes, to minimize DB calls.
 
@@ -663,12 +605,7 @@ general_settings:
 
 This setting applies globally to all TPM rate limit checks (keys, users, teams, etc.).
 
-
-<Tabs>
-<TabItem value="per-team" label="Per Team">
-
 Use `/team/new` or `/team/update`, to persist rate limits across multiple keys for a team.
-
 
 ```shell
 curl --location 'http://0.0.0.0:4000/team/new' \
@@ -688,9 +625,6 @@ curl --location 'http://0.0.0.0:4000/team/new' \
     "team_id": "my-prod-team",
 }
 ```
-
-</TabItem>
-<TabItem value="per-team-model" label="Per Team Per Model">
 
 **Set rate limits per model for a team**
 
@@ -745,11 +679,7 @@ curl --location 'http://0.0.0.0:4000/team/update' \
 
 [**See Swagger**](https://litellm-api.up.railway.app/#/team%20management/new_team_team_new_post)
 
-</TabItem>
-<TabItem value="per-user" label="Per Internal User">
-
 Use `/user/new` or `/user/update`, to persist rate limits across multiple keys for internal users.
-
 
 ```shell
 curl --location 'http://0.0.0.0:4000/user/new' \
@@ -770,9 +700,6 @@ curl --location 'http://0.0.0.0:4000/user/new' \
 }
 ```
 
-</TabItem>
-<TabItem value="per-key" label="Per Key">
-
 Use `/key/generate`, if you want them for just that key.
 
 ```shell
@@ -791,9 +718,6 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
     "user_id": "78c2c8fc-c233-43b9-b0c3-eb931da27b84"  // 👈 auto-generated
 }
 ```
-
-</TabItem>
-<TabItem value="per-key-model" label="Per API Key Per model">
 
 **Set rate limits per model per api key**
 
@@ -833,7 +757,6 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-
 **Expected headers**
 
 ```shell
@@ -845,9 +768,6 @@ These headers indicate:
 
 - 1 request remaining for the GPT-4 model for key=`sk-ulGNRXWtv7M0lFnnsQk0wQ`
 - 179 tokens remaining for the GPT-4 model for key=`sk-ulGNRXWtv7M0lFnnsQk0wQ`
-
-</TabItem>
-<TabItem value="per-agent" label="Per Agent">
 
 Set rate limits on agents registered with the [Agent Gateway](../a2a.md).
 
@@ -871,14 +791,7 @@ curl -X POST 'http://0.0.0.0:4000/v1/agents' \
 
 You can also set **max_iterations** (call count cap) and **max_budget_per_session** (dollar cap) per session via `litellm_params`. See [Agent Iteration Budgets](../a2a_iteration_budgets) for details.
 
-</TabItem>
-<TabItem value="per-end-user" label="For customers">
-
-:::info 
-
-You can also create a budget id for a customer on the UI, under the 'Rate Limits' tab.
-
-:::
+> **info**: You can also create a budget id for a customer on the UI, under the 'Rate Limits' tab.
 
 Use this to set rate limits for `user` passed to `/chat/completions`, without needing to create a key for every user
 
@@ -896,7 +809,6 @@ curl --location 'http://0.0.0.0:4000/budget/new' \
 }'
 ```
 
-
 #### Step 2. Create `Customer` with Budget
 
 We use `budget_id="free-tier"` from Step 1 when creating this new customers
@@ -910,7 +822,6 @@ curl --location 'http://0.0.0.0:4000/customer/new' \
     "budget_id": "free-tier"
 }'
 ```
-
 
 #### Step 3. Pass `user_id` id in `/chat/completions` requests
 
@@ -931,10 +842,6 @@ curl --location 'http://localhost:4000/chat/completions' \
     ]
 }'
 ```
-
-
-</TabItem>
-</Tabs>
 
 ## Set default budget for ALL internal users 
 
@@ -1003,7 +910,6 @@ Expected Response:
 
 ### Multi-instance rate limiting
 
-
 **Important Notes:**
 - **Rate limits do not apply to proxy admin users.** 
 - When testing rate limits, use internal user roles (non-admin) to ensure limits are enforced as expected.
@@ -1012,7 +918,6 @@ Changes:
 - This moves to using async_increment instead of async_set_cache when updating current requests/tokens. 
 - The in-memory cache is synced with redis every 0.01s, to avoid calling redis for every request. 
 - In testing, this was found to be 2x faster than the previous implementation, and reduced drift between expected and actual fails to at most 10 requests at high-traffic (100 RPS across 3 instances). 
-
 
 ## Grant Access to new model 
 
@@ -1044,7 +949,6 @@ curl --location 'http://localhost:4000/user/new' \
 			"max_budget": 0}'
 ```
 
-
 ## Create new keys for existing internal user
 
 Just include user_id in the `/key/generate` request.
@@ -1055,7 +959,6 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
 --header 'Content-Type: application/json' \
 --data '{"models": ["azure-models"], "user_id": "krrish@berri.ai"}'
 ```
-
 
 ## API Specification 
 

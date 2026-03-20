@@ -1,11 +1,5 @@
 ---
 title: 'Writing data to open table formats'
-sidebar_label: 'Writing to data lakes'
-slug: /use-cases/data-lake/getting-started/writing-data
-sidebar_position: 4
-toc_max_heading_level: 3
-pagination_prev: use-cases/data_lake/guides/accelerating-analytics
-pagination_next: null
 description: 'Write data from ClickHouse back to Iceberg tables in object storage for long-term storage and downstream consumption.'
 keywords: ['data lake', 'lakehouse', 'write', 'iceberg', 'reverse ETL', 'INSERT INTO', 'IcebergS3']
 doc_type: 'guide'
@@ -18,9 +12,7 @@ In the previous guides, you queried open table formats in place and loaded data 
 
 In both cases, `INSERT INTO SELECT` lets you move data from ClickHouse tables into Iceberg tables stored in object storage.
 
-:::note
-Writing to open table formats is currently supported for **Iceberg tables only**. Partial support for Delta Lake tables is under development. Tables must not be managed by a catalog.
-:::
+> **note**: Writing to open table formats is currently supported for **Iceberg tables only**. Partial support for Delta Lake tables is under development. Tables must not be managed by a catalog.
 
 ## Prepare a source dataset {#prepare-source}
 

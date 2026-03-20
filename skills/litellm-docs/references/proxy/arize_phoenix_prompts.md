@@ -93,7 +93,6 @@ prompt_variables = {
 # Result: "Hello Alice, question: What is ML?"
 ```
 
-
 ## Combine with Additional Messages
 
 ```python
@@ -108,7 +107,6 @@ response = litellm.completion(
     ]
 )
 ```
-
 
 ## Error Handling
 
@@ -131,4 +129,3 @@ except Exception as e:
 
 - [LiteLLM GitHub Issues](https://github.com/BerriAI/litellm/issues)
 - [Arize Phoenix Docs](https://docs.arize.com/phoenix)
-

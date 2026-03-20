@@ -139,4 +139,3 @@ curl -X POST "http://localhost:4000/cost/estimate" \
 - [Provider Margins](/docs/proxy/provider_margins) - Add fees or margins to LLM costs
 - [Provider Discounts](/docs/proxy/provider_discounts) - Apply discounts to provider costs
 - [Cost Tracking](/docs/proxy/cost_tracking) - Track and monitor LLM spend
-

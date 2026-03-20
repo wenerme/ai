@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Milvus - Vector Store
 
@@ -13,9 +12,6 @@ You need three things:
 3. A Milvus collection with vector fields
 
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### Basic Search
 
@@ -96,10 +92,6 @@ response = vector_stores.search(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ### Setup Config
 
 Add this to your config.yaml:
@@ -139,9 +131,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/vector_stores/my-collection-name/search' \
   "query": "What is the capital of France?"
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Required Parameters
 
@@ -295,8 +284,7 @@ Give the key access to the virtual index and the embedding model.
 
 To use the passthrough API, you need a simple REST client. Copy this `milvus_rest_client.py` file to your project:
 
-<details>
-<summary>Click to expand milvus_rest_client.py</summary>
+Click to expand milvus_rest_client.py
 
 ```python
 """
@@ -307,7 +295,6 @@ Based on: https://milvus.io/api-reference/restful/v2.6.x/
 import requests
 from typing import List, Dict, Any, Optional
 
-
 class DataType:
     """Milvus data types"""
 
@@ -316,7 +303,6 @@ class DataType:
     VARCHAR = "VarChar"
     BOOL = "Bool"
     FLOAT = "Float"
-
 
 class CollectionSchema:
     """Collection schema builder"""
@@ -348,7 +334,6 @@ class CollectionSchema:
         """Convert schema to dict for API"""
         return {"fields": self.fields}
 
-
 class IndexParams:
     """Index parameters builder"""
 
@@ -370,7 +355,6 @@ class IndexParams:
     def to_list(self):
         """Convert to list for API"""
         return self.indexes
-
 
 class MilvusRESTClient:
     """
@@ -541,8 +525,6 @@ class MilvusRESTClient:
         result = self._make_request("/v2/vectordb/entities/search", payload)
         return result.get("data", [])
 ```
-
-</details>
 
 #### 1. Create a collection with schema
 
@@ -778,4 +760,3 @@ When you search:
 4. Results come back with distance scores
 
 The embedding model can be any model supported by LiteLLM - Azure OpenAI, OpenAI, Bedrock, etc.
-

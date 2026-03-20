@@ -134,7 +134,6 @@ Set parameter `seq_kd=True`, when on-policy is not triggered, use teacher model 
 
 - The student model learns from **annotated sequences in the dataset**
 
-
 ## Parameter Settings
 
 We can perform GKD training by setting the following parameters:
@@ -143,10 +142,10 @@ We can perform GKD training by setting the following parameters:
 
 | Parameter | Type | Default | Range | Description |
 |------|------|--------|---------|------|
-| `--teacher_model` | str | None | - | Teacher model path or model ID<br>*Can be omitted when using `teacher_model_server` |
-| `--beta` | float | 0.5 | [0.0, 1.0] | Divergence interpolation coefficient<br>• 0.0: Forward KL <br>• 0.5: JSD (balanced)<br>• 1.0: Reverse KL |
-| `--lmbda` | float | 0.5 | [0.0, 1.0] | On-Policy learning trigger probability<br>• 0.0: Pure Offline<br>• 0.5: Mixed strategy (**recommended**)<br>• 1.0: Pure On-Policy |
-| `--seq_kd` | bool | False | True/False | Whether to use teacher-generated sequences<br>• False: Use dataset when not on-policy<br>• True: Use teacher generation when not on-policy |
+| `--teacher_model` | str | None | - | Teacher model path or model ID*Can be omitted when using `teacher_model_server` |
+| `--beta` | float | 0.5 | [0.0, 1.0] | Divergence interpolation coefficient• 0.0: Forward KL • 0.5: JSD (balanced)• 1.0: Reverse KL |
+| `--lmbda` | float | 0.5 | [0.0, 1.0] | On-Policy learning trigger probability• 0.0: Pure Offline• 0.5: Mixed strategy (**recommended**)• 1.0: Pure On-Policy |
+| `--seq_kd` | bool | False | True/False | Whether to use teacher-generated sequences• False: Use dataset when not on-policy• True: Use teacher generation when not on-policy |
 | `--temperature` | float | 0.9 | > 0 | Generation sampling temperature, controls randomness |
 | `--sft_alpha` | float | 0 | >= 0 | Mix in a proportion of SFT loss; applied to non-student-generated completions |
 | `--max_completion_length` | int | 512 | > 0 | Maximum number of tokens during generation |
@@ -157,7 +156,7 @@ By default, GKD computes KL divergence over the full vocabulary. For models with
 
 | Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `--gkd_logits_topk` | int | None | Number of Top-K logits<br>• None: Use full vocabulary (default)<br>• Positive integer: Only use the K tokens with highest teacher probability for KL computation |
+| `--gkd_logits_topk` | int | None | Number of Top-K logits• None: Use full vocabulary (default)• Positive integer: Only use the K tokens with highest teacher probability for KL computation |
 
 **Top-K Mode Principle**:
 
@@ -193,7 +192,7 @@ When `gkd_logits_topk` is set, you can use an external teacher model API service
 
 | Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `--teacher_model_server` | str | None | Teacher model service URL<br>e.g., `http://localhost:8000` |
+| `--teacher_model_server` | str | None | Teacher model service URLe.g., `http://localhost:8000` |
 | `--gkd_logits_topk` | int | **Required** | Must be set when using external API; corresponds to the top_logprobs returned by the API |
 
 **Supported Backends**:
@@ -250,7 +249,6 @@ Training script reference [here](https://github.com/modelscope/ms-swift/tree/mai
 
 Training script using Teacher Server reference [here](https://github.com/modelscope/ms-swift/tree/main/examples/train/rlhf/gkd/teacher_server.sh).
 
-
 ### Solution 2: Teacher Model Pre-sampling
 
 For teacher model sampling (`seq_kd=True`), **pre-sampling** is recommended: first use the teacher model to offline generate high-quality data, then train.
@@ -284,7 +282,6 @@ swift rlhf \
 ```
 
 Training script reference [here](https://github.com/modelscope/ms-swift/tree/main/examples/train/multimodal/rlhf/gkd/fast.sh)
-
 
 ## On-Policy Distillation
 We can achieve the [On-Policy Distillation](https://thinkingmachines.ai/blog/on-policy-distillation/) training described in the Thinking Machines Lab blog by setting the following parameters:

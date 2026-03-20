@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+
 --8<-- [start:installation]
 
 vLLM supports basic model inferencing and serving on x86 CPU platform, with data types FP32, FP16 and BF16.

@@ -1,18 +1,12 @@
 ---
 title: 'Java'
-sidebar_position: 1
 keywords: ['clickhouse', 'java', 'jdbc', 'client', 'integrate', 'r2dbc']
 description: 'Options for connecting to ClickHouse from Java'
-slug: /integrations/java
 doc_type: 'reference'
 integration:
   - support_level: 'core'
   - category: 'language_client'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
 
 # Java clients overview
 
@@ -83,12 +77,10 @@ Java Client was developed far back in 2015. Its codebase became very hard to mai
 
 [ClickHouse Data Types](/sql-reference/data-types)
 
-:::note
-- AggregatedFunction - :warning: doesn't support `SELECT * FROM table ...`
+> **note**: - AggregatedFunction - :warning: doesn't support `SELECT * FROM table ...`
 - Decimal - `SET output_format_decimal_trailing_zeros=1` in 21.9+ for consistency
 - Enum - can be treated as both string and integer
 - UInt64 - mapped to `long` in client-v1
-:::
 
 ### Features {#features}
 

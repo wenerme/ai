@@ -23,7 +23,6 @@ litellm /path/to/config.yaml
 
 The discount will be automatically applied to all cost calculations for the configured providers.
 
-
 ## How Discounts Work
 
 - Discounts are applied **after** all other cost calculations (tokens, caching, tools, etc.)
@@ -49,4 +48,3 @@ You can apply discounts to all LiteLLM supported providers. Common examples:
 - `openrouter` - OpenRouter
 
 See the full list of providers in the [LlmProviders](https://github.com/BerriAI/litellm/blob/main/litellm/types/utils.py) enum.
-

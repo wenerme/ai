@@ -19,7 +19,7 @@ Follow these steps to create and configure **Cipher Keys** in OpenObserve:
     1. From the top navigation bar, click the gear icon to open the **Management** page.  
     2. Select **Cipher Keys**.
 
-    ![cipher-keys](../../images/cipher-keys.png)
+    [cipher-keys]
     
 
 ??? "Step 2: Create a New Cipher Key"
@@ -30,11 +30,11 @@ Follow these steps to create and configure **Cipher Keys** in OpenObserve:
         - **Name:** The key name must be **unique**. Characters such as colon, question mark, slash, hash, and spaces are not allowed.   
         - **Key Store Type:** Choose where the encryption key will be stored:
 
-            - **OpenObserve (Local)**: Stores the encryption key directly in OpenObserve’s database. If you select **OpenObserve**, paste your encryption key in the **Secrets** field. [Learn how you can encrypt the key before storing it in the OpenObserve database for additional security](#cipher-key-storage-in-openobserve). <br>
-            ![Cipher Key Store Type- Local](../../images/cipher-keys-o2local.png)
+            - **OpenObserve (Local)**: Stores the encryption key directly in OpenObserve’s database. If you select **OpenObserve**, paste your encryption key in the **Secrets** field. [Learn how you can encrypt the key before storing it in the OpenObserve database for additional security](#cipher-key-storage-in-openobserve). 
+            [Cipher Key Store Type- Local]
 
-            - **Akeyless**: Allow using Akeyless as an external key management system to store keys. If you select Akeyless, enter the Base URL of the Akeyless API, Access ID, Authentication details - Access Key or Lightweight directory access protocol (LDAP), and Secret Types - [Static](https://docs.akeyless.io/docs/static-secrets) or [Distributed Fragments Cryptography (DFC)](https://docs.akeyless.io/docs/zero-knowledge). <br>
-            ![Cipher Keys Storage Type- akeyless](../../images/cipher-keys-akeyless.png) 
+            - **Akeyless**: Allow using Akeyless as an external key management system to store keys. If you select Akeyless, enter the Base URL of the Akeyless API, Access ID, Authentication details - Access Key or Lightweight directory access protocol (LDAP), and Secret Types - [Static](https://docs.akeyless.io/docs/static-secrets) or [Distributed Fragments Cryptography (DFC)](https://docs.akeyless.io/docs/zero-knowledge). 
+            [Cipher Keys Storage Type- akeyless] 
 
     3. Click **Continue**. 
 
@@ -44,12 +44,12 @@ Follow these steps to create and configure **Cipher Keys** in OpenObserve:
 
     - **Simple**: Choose if encryption is done using Advanced Encryption Standard (AES). From the dropdown, select the algorithm as `AES-256 SIV`.  
     - **Tink KeySet**: Choose if the encryption is done using Google Tink.
-    <br>
+    
 
-    ![Cipher keys encryption mechanism](../../images/cipher-keys-encryption-mechanism.png)
+    [Cipher keys encryption mechanism]
 
     After you have filled in all the details, click **Save**. Your new **Cipher Key** is now available to use in OpenObserve.
-    ![cipher-keys-page](../../images/cipher-keys-page.png)
+    [cipher-keys-page]
 
 ---
 
@@ -72,11 +72,11 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
       - `encrypted_field`: The field containing the encrypted value.
       - `cipher_key_name`: The name of the **Cipher Key** used during encryption.
 
-    **Example** <br>
+    **Example** 
     **Sample Encrypted Dataset**: The following log entries exist in the `customer_feedback_encrypt` stream: 
-    ![Cipher keys encrypted data](../../images/cipher-keys-encrypted-data.png)
+    [Cipher keys encrypted data]
 
-    **1. Decrypt a single field** <br>
+    **1. Decrypt a single field** 
 
     ```sql
     SELECT
@@ -84,10 +84,10 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
     FROM "customer_feedback_encrypt"
     ```
     This returns the decrypted value of the `name_encrypted` field. 
-    <br>
-    ![decrypt a single field](../../images/decrypt-single-field.png)
+    
+    [decrypt a single field]
 
-    **2. Decrypt multiple fields** <br>
+    **2. Decrypt multiple fields** 
     ```sql
     SELECT
       decrypt(name_encrypted, 'customer_feedback_key') AS name,
@@ -95,9 +95,8 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
     FROM "customer_feedback_encrypt"
     ```
     This returns decrypted values for both `name_encrypted` and `feedback_encrypted`. 
-    <br>
-    ![Decrypt multiple fields](../../images/decrypt-multiple-fields.png)
-
+    
+    [Decrypt multiple fields]
 
 ---
 ??? "Use the `decrypt_path` function"
@@ -113,7 +112,6 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
         - `encrypted_field`: A JSON object or nested data structure that contains encrypted values at various paths. 
         - `cipher_key_name`: The name of the Cipher Key used during encryption.
         - `path`: A dot-delimited string that specifies the location of the encrypted value within the nested JSON structure. Use '.' to return the entire decrypted object.
-
 
     **Example:**
 
@@ -144,8 +142,8 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
     ```
 
     **Sample Encrypted Dataset**: The following records exist in encrypted format in the `customer_feedback_nested` stream. Each record has multiple encrypted fields at different nesting levels:
-    <br>
-    ![Nested Dataset](../../images/nested-dataset.png)
+    
+    [Nested Dataset]
 
     **1. Decrypt a top-level field**
     The `feedback_text` field contains an encrypted plain-text value. To retrieve its original value, use `decrypt_path()` with the path set to '.'.
@@ -154,9 +152,9 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
       decrypt_path(feedback_text, 'customer_feedback_key', '.') AS feedback_text_decrypted
     FROM "customer_feedback_nested"
     ```
-    <br>
+    
 
-    ![Decrypt a top-level field](../../images/decrypt-path-top-level.png)
+    [Decrypt a top-level field]
 
     **2. Decrypt a nested field**
     To retrieve the decrypted value of `name`, you can write the query as shown below: 
@@ -165,12 +163,12 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
       decrypt_path(metadata, 'customer_feedback_key', 'user.name') AS name
     FROM "customer_feedback_nested"
     ```
-    <br>
+    
 
-    ![Decrypt a nested field](../../images/decrypt-a-nested-field.png)
+    [Decrypt a nested field]
 
     !!! Info "Path Examples for `decrypt_path()`"
-        The `decrypt_path()` function allows you to specify exact JSON paths to selectively decrypt fields.  <br>
+        The `decrypt_path()` function allows you to specify exact JSON paths to selectively decrypt fields.  
         The following examples show how to define the path in the decrypt_path() function for different JSON structures, including nested arrays and objects.
 
         - Decrypt tokens in an array of sessions
@@ -185,7 +183,7 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
         ]
         }
         ```
-        **Path**: `sessions.*.token` <br>
+        **Path**: `sessions.*.token` 
         This path decrypts the token field in each object within the sessions array.
 
         - Decrypt nested fields in a multi-level array
@@ -203,12 +201,10 @@ To retrieve original values from encrypted logs, use the `decrypt()` and `decryp
         ]
         }
         ```
-        **Path:** `data.*.details.*.secure` <br>
+        **Path:** `data.*.details.*.secure` 
         This path decrypts every secure field in each nested details array within the data array.
 
-
 ---
-
 
 ## Use `decrypt` and `decrypt_path` with Filter Clauses
 You can use the `decrypt()` and `decrypt_path()` functions inside `WHERE` clauses to filter logs based on decrypted values. This enables querying on encrypted fields without storing or exposing the decrypted content.
@@ -218,15 +214,15 @@ You can use the `decrypt()` and `decrypt_path()` functions inside `WHERE` clause
 ```
 Select name_encrypted from "customer_feedback_encrypt" where decrypt(name_encrypted,'customer_feedback_key') = 'John';
 ```
-<br> 
-![Decrypt Function With Where Clause](../../images/decrypt-where.png)
+ 
+[Decrypt Function With Where Clause]
 
 - **With the LIKE clause**: This query will decrypt the `user_data` field using the `user_data_decryption_key` and return results where the decrypted data contains the substring '`John`': 
 ```
 SELECT user_id FROM user_activity_stream WHERE decrypt(user_data, 'user_data_decryption_key') LIKE '%John%';
 ```
-<br>
-![Decrypt Function With Like Clause](../../images/decrypt-like.png)
+
+[Decrypt Function With Like Clause]
 
 !!! Note
     - The time the data was ingested does not affect decryption.   
@@ -234,7 +230,7 @@ SELECT user_id FROM user_activity_stream WHERE decrypt(user_data, 'user_data_dec
 
 ## Manage Cipher Keys
 
-![manage-cipher-keys](../../images/cipher-keys-manage.png) <br>
+[manage-cipher-keys] 
 To update or delete a Cipher Key, click the edit or delete icon under the **Actions** column, respectively.
 
 ## Cipher Key Storage in OpenObserve 
@@ -262,7 +258,6 @@ When using **OpenObserve** as the encryption key (secret) storage option, you ca
     - For DFC without an Initialization Vector (IV), the system accepts any IV value except an empty one. An empty IV will trigger an error.  
     - For DFC with an IV, the IV used for encryption must match exactly. A mismatch will result in an error during key creation or update.
 
-
 **While using `decrypt` function in Log search**: 
 
 - **Data is Not Encrypted (Plain Text):** If the data is in plain text and not encrypted, the system will return the data as-is. Ensure that the data is encrypted if you intend to use the `decrypt()` function.  
@@ -272,6 +267,4 @@ When using **OpenObserve** as the encryption key (secret) storage option, you ca
 ## Limitation
 
 - **Cipher Key Usage (March 2025):** **Cipher Keys** are currently used for decryption, and OpenObserve is working to expand their functionality to support encryption as well.   
-- **decrypt() Function Scope (March 2025)**: As of now, the `decrypt()` function is limited to log search. OpenObserve is in the process of extending its capabilities to additional areas for broader application. 
-
-
+- **decrypt() Function Scope (March 2025)**: As of now, the `decrypt()` function is limited to log search. OpenObserve is in the process of extending its capabilities to additional areas for broader application.

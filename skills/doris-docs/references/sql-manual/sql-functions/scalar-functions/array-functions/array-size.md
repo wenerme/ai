@@ -34,4 +34,3 @@ Return the number of elements in an array.
 
 - If the input `arr` is `NULL`, returns `NULL`
   - `ARRAY_SIZE(NULL)` -> `NULL`
-

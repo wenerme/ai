@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/upsonic
-sidebar_label: 'Integrate Upsonic'
 title: 'How to build an AI Agent with Upsonic and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how build an AI Agent with Upsonic and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'Upsonic']
 show_related_blogs: true
@@ -15,9 +11,8 @@ doc_type: 'guide'
 In this guide you'll learn how to build a [Upsonic](https://github.com/Upsonic/Upsonic/tree/master) AI agent that can interact with 
 [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/upsonic/upsonic.ipynb).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.
@@ -90,14 +85,12 @@ class DatabaseMCP:
     ]
     env=env
 
-
 database_agent = Agent(
     name="Data Analyst",
     role="ClickHouse specialist.",
     goal="Query ClickHouse database and tables and answer questions",
     model=OpenAIResponsesModel(model_name="gpt-5-mini-2025-08-07")
 )
-
 
 task = Task(
     description="Tell me what happened in the UK property market in the 2020s. Use ClickHouse.",

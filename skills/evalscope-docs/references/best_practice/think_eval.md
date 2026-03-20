@@ -132,12 +132,12 @@ run_task(model_config, output_dir='outputs', max_tokens=max_tokens, count=count)
 
 The output will look like this, showing the model's token efficiency, thinking length, and number of sub-thought chains for each difficulty level:
 
-![DeepSeek-R1-Distill-Qwen-7B Thinking Efficiency](./images/DeepSeek-R1-Distill-Qwen-7B_math_500_metrics.png)
+[DeepSeek-R1-Distill-Qwen-7B Thinking Efficiency]
 *Figure 1: DeepSeek-R1-Distill-Qwen-7B Thinking Efficiency*
 
 Using the same method, we also evaluated four other reasoning models—QwQ-32B, QwQ-32B-Preview, DeepSeek-R1, DeepSeek-R1-Distill-Qwen-32B—and one non-reasoning model, Qwen2.5-Math-7B-Instruct (treating all tokens in the model output as part of the thought process), to observe the performance of different types of models. The specific results are summarized as follows:
 
-![Comparison of Thinking Efficiency of 6 Models](./images/model_comparison_metrics_6models.png)
+[Comparison of Thinking Efficiency of 6 Models]
 *Figure 2: Comparison of Thinking Efficiency of 6 Models*
 
 Analyzing these line charts, we can draw some interesting conclusions:
@@ -164,8 +164,6 @@ Analyzing these line charts, we can draw some interesting conclusions:
 3. **On the Calculation of the Token Efficiency Metric**:
     - In the implementation process, we relied on an additional Judge model to assess the correctness of the model's reasoning steps. Referencing the work of ProcessBench[^4], this task is quite challenging for existing models and typically requires a strong model to make judgments.
     - If the Judge model makes incorrect judgments, it may affect the accuracy of the token efficiency metric, which means careful consideration is needed when selecting the Judge model.
-
-:::
 
 ## Conclusion
 

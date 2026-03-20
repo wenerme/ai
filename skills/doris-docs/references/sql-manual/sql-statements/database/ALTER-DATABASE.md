@@ -88,8 +88,6 @@ After renaming the database, use the REVOKE and GRANT commands to modify the cor
     ALTER DATABASE example_db SET PROPERTIES("storage_vault_name" = "");
   ```
 
-:::info Note
+> **info**: Note
 
 Setting db's `storage_vault_name` is supported since version 3.0.5
-
-:::

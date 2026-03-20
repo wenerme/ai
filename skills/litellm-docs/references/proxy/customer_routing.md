@@ -1,11 +1,6 @@
 # [DEPRECATED] Region-based Routing
 
-:::info
-
-This is deprecated, please use [Tag Based Routing](./tag_routing.md) instead
-
-:::
-
+> **info**: This is deprecated, please use [Tag Based Routing](./tag_routing.md) instead
 
 Route specific customers to eu-only models.
 
@@ -92,4 +87,4 @@ x-litellm-model-region: "eu" # 👈 CONFIRMS REGION-BASED ROUTING WORKED
 
 **What happens if there are no available models for that region?**
 
-Since the router filters out models not in the specified region, it will return back as an error to the user, if no models in that region are available. 
+Since the router filters out models not in the specified region, it will return back as an error to the user, if no models in that region are available.

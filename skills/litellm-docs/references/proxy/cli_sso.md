@@ -2,7 +2,6 @@
 
 Use the litellm cli to authenticate to the LiteLLM Gateway. This is great if you're trying to give a large number of developers self-serve access to the LiteLLM Gateway.
 
-
 ## Demo
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/87c5d243cde642ff942783024ff037e3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -25,8 +24,6 @@ Or add it to your proxy startup command:
 ```bash
 EXPERIMENTAL_UI_LOGIN="True" litellm --config config.yaml
 ```
-
-:::
 
 ### Configuration
 
@@ -54,14 +51,11 @@ LITELLM_CLI_JWT_EXPIRATION_HOURS=48 EXPERIMENTAL_UI_LOGIN="True" litellm --confi
 
 :::note[Experimental UI Session]
 When `EXPERIMENTAL_UI_LOGIN` is enabled, the **browser UI login** session uses a fixed 10-minute expiry (not configurable). `LITELLM_UI_SESSION_DURATION` applies only to non-experimental flows.
-:::
 
-:::tip
-You can check your current token's age and expiration status using:
+> **tip**: You can check your current token's age and expiration status using:
 ```bash
 litellm-proxy whoami
 ```
-:::
 
 ### Steps
 

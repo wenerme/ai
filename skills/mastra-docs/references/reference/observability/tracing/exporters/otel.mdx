@@ -5,8 +5,6 @@ packages:
   - "@mastra/otel-exporter"
 ---
 
-import PropertiesTable from "@site/src/components/PropertiesTable";
-
 # OtelExporter
 
 Sends Tracing data to any OpenTelemetry-compatible observability platform using standardized GenAI semantic conventions.
@@ -362,9 +360,7 @@ Tags are stored as a JSON-stringified array in the `mastra.tags` span attribute 
 }
 ```
 
-:::note
-While the OpenTelemetry specification supports native array attributes, many backends (Jaeger, Zipkin, Tempo) have limited array support. JSON strings ensure consistent behavior across all observability platforms.
-:::
+> **note**: While the OpenTelemetry specification supports native array attributes, many backends (Jaeger, Zipkin, Tempo) have limited array support. JSON strings ensure consistent behavior across all observability platforms.
 
 ## Related
 

@@ -17,7 +17,6 @@ Workload management is a very important feature of Doris, playing a critical rol
 
 - Circuit Breaker: During query planning phase or execution phase, tasks can be automatically cancelled based on conditions such as the estimated number of partitions to be read, the amount of data to be scanned, the allocated memory size, and the execution time. This avoids unreasonable tasks from occupying too many system resources.
 
-
 ## Resource Isolation Methods
 
 Doris can divide resource in the following three ways:
@@ -38,10 +37,8 @@ The following table records the characteristics and advantageous scenarios of di
 
 ## Soft Limit and Hard Limit
 
-
 - Hard Limit: The hard limit refers to the absolute upper limit of resource usage that tenants cannot exceed. Once the hard limit is reached, resource requests for the excess part will be rejected. Hard limit are generally used to prevent the depletion of resources within the cluster or resource preemption between different businesses, ensuring the stability and performance of the cluster.
 
 - Soft Limit: The soft limit is a resource limit that can be exceeded, usually representing the recommended upper limit of resource usage. When the system is not busy, if a tenant requests more resources than the soft limit, it can borrow resources from other groups. When the system is busy and there is resource contention, if a tenant requests resources exceeding the soft limit, it will not be able to obtain additional resources.
 
 When using the Resource Group / Compute Group method to partition resources, only the hard limit mode is supported. When using the Workload Group method to partition resources, both the soft limit and hard limit of Workload Group are supported. The soft limit of Workload Group is usually used for sudden resource control, such as temporary query peaks or short-term increases in data writing.
-

@@ -7,7 +7,6 @@ keywords: ['Parquet', 'Cannot Append Data']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Resolving "Cannot Append Data in Parquet Format" Error in ClickHouse \{#resolving-cannot-append-data-in-parquet-format-error-in-clickhouse\}
 
@@ -18,7 +17,6 @@ Typically the error is reported as:
 `DB::Exception: Cannot append data in format Parquet to file, because this format doesn't support appends. (CANNOT_APPEND_TO_FILE)`
 
 Suppose you create a table that uses the `File` table engine with the Parquet format.
-
 
 ```sql
 CREATE TABLE parquet_test
@@ -71,6 +69,4 @@ Run it using `clickhouse-client`:
 
 And now you will see two files in `data/default/parquet_test` (and a new file for each subsequent insert).
 
-:::note
-The `engine_file_allow_create_multiple_files` setting applies to other data formats that are not appendable, like JSON and ORC.
-:::
+> **note**: The `engine_file_allow_create_multiple_files` setting applies to other data formats that are not appendable, like JSON and ORC.

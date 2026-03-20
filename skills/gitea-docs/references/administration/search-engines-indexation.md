@@ -1,7 +1,5 @@
 ---
 date: "2019-12-31T13:55:00+05:00"
-slug: "search-engines-indexation"
-sidebar_position: 60
 aliases:
   - /en-us/search-engines-indexation
 ---

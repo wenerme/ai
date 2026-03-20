@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Adding a New Guardrail Integration
 
@@ -53,7 +52,6 @@ from .my_guardrail import MyGuardrail
 if TYPE_CHECKING:
     from litellm.types.guardrails import Guardrail, LitellmParams
 
-
 def initialize_guardrail(litellm_params: "LitellmParams", guardrail: "Guardrail"):
     import litellm
     
@@ -67,7 +65,6 @@ def initialize_guardrail(litellm_params: "LitellmParams", guardrail: "Guardrail"
     
     litellm.logging_callback_manager.add_litellm_callback(_my_guardrail_callback)
     return _my_guardrail_callback
-
 
 guardrail_initializer_registry = {
     SupportedGuardrailIntegrations.MY_GUARDRAIL.value: initialize_guardrail,
@@ -128,6 +125,3 @@ curl --location 'http://localhost:4000/chat/completions' \
 ## Testing
 
 Add unit tests inside `test_litellm/` folder.
-
-
-

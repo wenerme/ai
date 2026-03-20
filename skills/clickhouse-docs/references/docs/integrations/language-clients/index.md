@@ -1,5 +1,4 @@
 ---
-slug: /integrations/language-clients
 title: 'Language Clients'
 description: 'Table of contents page for Language Clients.'
 keywords: ['Language Clients', 'C++', 'Go', 'JavaScript', 'Java', 'Python', 'Rust']

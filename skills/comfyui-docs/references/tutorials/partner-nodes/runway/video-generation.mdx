@@ -1,11 +1,7 @@
 ---
 title: "Runway API Node Video Generation ComfyUI Official Example"
 description: "This article will introduce how to use Runway nodes in ComfyUI for video generation workflows"
-sidebarTitle: "Runway Video Generation"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Runway is a company focused on generative AI, providing powerful video generation capabilities. Currently, ComfyUI has integrated the Runway API, allowing you to directly use the related nodes in ComfyUI for video generation.
 
@@ -13,9 +9,6 @@ Currently, ComfyUI natively integrates the following Runway video generation mod
 - Runway Gen3a turbo
 - Runway Gen4 turbo
 - Runway First Last Frame to video
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Gen3a turbo Image-to-Video Workflow
 
@@ -39,7 +32,7 @@ Download the image below as input image
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Runway gen3a turbo image to video Step Guide](/images/tutorial/api_nodes/runway/runway_gen3a_turbo_image_to_video_step_guide.jpg)
+[ComfyUI Runway gen3a turbo image to video Step Guide]
 
 You can refer to the numbers in the image to complete the basic image-to-video workflow execution:  
 1. In the `Load Image` node, load the provided input image
@@ -69,7 +62,7 @@ Download the image below as input image
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Runway gen4 turbo image to video Step Guide](/images/tutorial/api_nodes/runway/runway_gen4_turbo_image_to_video_step_guide.jpg)
+[ComfyUI Runway gen4 turbo image to video Step Guide]
 
 You can refer to the numbers in the image to complete the basic image-to-video workflow execution:  
 
@@ -79,7 +72,6 @@ You can refer to the numbers in the image to complete the basic image-to-video w
 4. After waiting for the API to return results, you can view the generated video in the `Save Video` node (right-click to save). The corresponding video will also be saved to the `ComfyUI/output/` directory.
 
 ## First-Last Frame Video Generation Workflow
-
 
 ### 1. Workflow File Download
 
@@ -102,7 +94,7 @@ Download the images below as input images
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Runway gen4 turbo image to video Step Guide](/images/tutorial/api_nodes/runway/runway_first_last_frame_step_guide.jpg)
+[ComfyUI Runway gen4 turbo image to video Step Guide]
 
 You can refer to the numbers in the image to complete the basic first-last frame to video workflow execution:  
 

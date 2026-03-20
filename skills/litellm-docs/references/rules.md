@@ -2,7 +2,6 @@
 
 Use this to fail a request based on the input or output of an llm api call. 
 
-
 ```python
 import litellm 
 import os 
@@ -28,7 +27,6 @@ response = litellm.completion(model="gpt-3.5-turbo", messages=[{"role": "user",
 
 * `litellm.post_call_rules = []` - List of functions to iterate over before making the api call. Each function is expected to return either True (allow call) or False (fail call).
 
-
 ## Expected format of rule 
 
 ```python
@@ -43,7 +41,6 @@ def my_custom_rule(input: str) -> bool: # receives the model response
 
 #### Outputs
 * `bool`: Return True (allow call) or False (fail call)
-
 
 ## Example Rules 
 
@@ -67,7 +64,6 @@ response = litellm.completion(model="gpt-3.5-turbo", messages=[{"role": "user", 
 ```
 
 ### Example 2: Fallback to uncensored model if llm refuses to answer
-
 
 ```python
 import litellm 

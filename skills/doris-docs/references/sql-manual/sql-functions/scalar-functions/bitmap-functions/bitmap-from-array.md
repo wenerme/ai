@@ -41,7 +41,6 @@ SELECT bitmap_to_string(bitmap_from_array(array(1, 0, 1, 1, 0, 1, 0))) AS bs;
 +------+
 ```
 
-
 ```sql
 SELECT bitmap_to_string(bitmap_from_array(NULL)) AS bs;
 ```

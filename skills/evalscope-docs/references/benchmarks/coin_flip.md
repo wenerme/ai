@@ -41,7 +41,6 @@ CoinFlip is a symbolic reasoning benchmark that tests LLMs' ability to track bin
 | **Train Split** | `validation` |
 | **Aggregation** | `f1` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -92,14 +91,12 @@ Reasoning:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of how to solve similar problems:
 
 {fewshot}
-
 
 Solve the following coin flip problem step by step. The last line of your response should be of the form "ANSWER: [ANSWER]" (without quotes) where [ANSWER] is the answer to the problem.
 
@@ -110,8 +107,6 @@ Remember to put your answer on its own line at the end in the form "ANSWER: [ANS
 Reasoning:
 
 ```
-
-</details>
 
 ## Usage
 
@@ -142,5 +137,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

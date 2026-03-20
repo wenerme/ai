@@ -3,7 +3,6 @@ title: Single Sign-On (SSO)
 description: >-
   Enable SSO in OpenObserve with Dex using LDAP or OIDC providers like Google. Supports enterprise RBAC, role mapping, and secure user auth setup.
 ---
-<!-- search: SSO, Single Sign-On-->
 
 !!! info "Availability"
     This feature is available in Enterprise Edition and Cloud. Not available in Open Source.
@@ -76,7 +75,6 @@ In addition to that you would also want to use ingress to expose dex external to
     - type: ldap
     - host: Address of the LDAP server (openldap:389).
     - insecureNoSSL: Set to true for plain LDAP without TLS.
-
 
 2. Bind Credentials
     - bindDN: Distinguished Name (DN) of the LDAP user for binding.
@@ -151,7 +149,6 @@ For ldap configuration the example uses organizational units (OUs) for users and
 **To create OU for Teams:**
 Follow the same structure as the Users OU, but for creating a "teams" OU.
 
-
 **Adding a User**
 
 To add User Ashish:
@@ -207,7 +204,6 @@ Editor Role:
     - `cn: editor` - Common name of the group.
     - `uniqueMember: uid=prabhat,ou=users,dc=example,dc=com`- Specifies that the user "prabhat" is a member of this group.
 
-
 The LDAP configuration outlined above demonstrates a structured approach to organizing an enterprise's directory services. It starts with broad categorizations (Users and Teams OUs) and then delves into finer details (individual users and specific roles within teams). Such a structured LDAP setup is essential for efficient management of user identities, roles, and access control within an organization, and it seamlessly integrates with OpenObserve and Dex for robust SSO functionality.
 
 #### OIDC
@@ -257,8 +253,4 @@ connectors:
       email: email
       name: name
 
-```     
-
-
-
-
+```

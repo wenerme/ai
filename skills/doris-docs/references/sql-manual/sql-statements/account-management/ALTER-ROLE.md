@@ -43,4 +43,3 @@ The user executing this SQL command must have at least the following privileges:
 ```sql
 ALTER ROLE role1 COMMENT "this is my first role";
 ```
-

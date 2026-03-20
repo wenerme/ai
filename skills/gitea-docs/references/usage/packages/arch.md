@@ -1,7 +1,5 @@
 ---
 date: "2023-05-15T00:00:00+00:00"
-slug: "arch"
-sidebar_position: 5
 ---
 
 # Arch package registry
@@ -116,7 +114,6 @@ DELETE https://gitea.example.com/api/packages/{owner}/arch/{repository}/{package
 | `architecture`    | The package architecture. |
 | `package_name`    | The package name. |
 | `package_version` | The package version. |
-
 
 Example request using HTTP Basic authentication:
 

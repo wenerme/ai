@@ -182,7 +182,6 @@ parsers.conf:
     rule         "start_state"   "/(^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})(.*)/"  "cont"
     rule         "cont"          "/(^(?![0-9]{4}-[0-9]{2}-[0-9]{2}))(.*)/"     "cont"
 
-
 [PARSER]
     name        fe_log
     format      regex
@@ -268,13 +267,11 @@ Below is a sample of the data. Normally, each piece of data is on a single line,
 }
 ```
 
-
 **2. Table Creation**
 
 ```
 CREATE DATABASE log_db;
 USE log_db;
-
 
 CREATE TABLE github_events
 (

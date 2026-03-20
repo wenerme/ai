@@ -22,7 +22,7 @@ Capture and forward AWS VPC Flow Logs to OpenObserve via Kinesis Firehose for re
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
     
     > Update the URL to have the stream name of your choice:
         ```
@@ -35,7 +35,7 @@ Capture and forward AWS VPC Flow Logs to OpenObserve via Kinesis Firehose for re
     2. Provide OpenObserve's HTTP Endpoint URL and Access Key, and set an S3 backup bucket.
     3. Give the stream a meaningful name and Create it.
 
-    ![Create Firehose Delivery Stream](../images/aws-integrations/vpc-flow/firehose-stream.png){: style="height:800px"}
+    [Create Firehose Delivery Stream]{: style="height:800px"}
    
 ??? "Step 3: Enable VPC Flow Logs"
 
@@ -47,14 +47,13 @@ Capture and forward AWS VPC Flow Logs to OpenObserve via Kinesis Firehose for re
         - Log format: `All fields`
     3. Create the flow log
 
-        ![Create Flow Log](../images/aws-integrations/vpc-flow/vpc-flowlog.png){: style="height:800px"}
+        [Create Flow Log]{: style="height:800px"}
 
 ??? "Step 4: Verify Logs in OpenObserve"
 
     1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-        ![Verify Logs in OpenObserve](../images/aws-integrations/vpc-flow/logs-stream.png)
-
+        [Verify Logs in OpenObserve]
 
 ??? "Troubleshooting"
 
@@ -63,5 +62,3 @@ Capture and forward AWS VPC Flow Logs to OpenObserve via Kinesis Firehose for re
     - Ensure Firehose is `ACTIVE` and logs are reaching it
     - Check S3 bucket for failed deliveries
     - Confirm URL and Access Key are correct
-
-

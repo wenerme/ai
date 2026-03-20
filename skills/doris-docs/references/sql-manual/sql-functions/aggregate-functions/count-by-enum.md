@@ -64,7 +64,6 @@ Description: The return value is a JSON array string, and the order of internal 
 * null: Count of NULL values
 * all: Total count, including both NULL and non-NULL values.
 
-
 ## Example
 
 ```sql
@@ -89,7 +88,6 @@ INSERT into count_by_enum_test (id, f1, f2, f3) values
                                                     (4, "M", NULL, "United States"),
                                                     (5, "M", NULL, "England");
 ```
-
 
 ```sql
 SELECT * from count_by_enum_test;

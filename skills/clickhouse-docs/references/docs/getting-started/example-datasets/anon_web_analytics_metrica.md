@@ -1,8 +1,6 @@
 ---
 description: 'Dataset consisting of two tables containing anonymized web analytics
   data with hits and visits'
-sidebar_label: 'Anonymized web analytics'
-slug: /getting-started/example-datasets/metrica
 keywords: ['web analytics data', 'anonymized data', 'website traffic data', 'example dataset', 'getting started']
 title: 'Anonymized web analytics'
 doc_type: 'guide'
@@ -139,6 +137,4 @@ FORMAT PrettyCompact"
 
 Additional examples of queries to these tables can be found among the ClickHouse [stateful tests](https://github.com/ClickHouse/ClickHouse/blob/d7129855757f38ceec3e4ecc6dafacdabe9b178f/tests/queries/1_stateful/00172_parallel_join.sql).
 
-:::note
-The test suite uses a database name `test`, and the tables are named `hits` and `visits`.  You can rename your database and tables, or edit the SQL from the test file.
-:::
+> **note**: The test suite uses a database name `test`, and the tables are named `hits` and `visits`.  You can rename your database and tables, or edit the SQL from the test file.

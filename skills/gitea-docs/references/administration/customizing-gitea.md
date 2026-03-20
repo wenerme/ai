@@ -1,7 +1,5 @@
 ---
 date: "2017-04-15T14:56:00+02:00"
-slug: "customizing-gitea"
-sidebar_position: 100
 aliases:
   - /en-us/customizing-gitea
 ---
@@ -37,9 +35,7 @@ is set under the "Configuration" tab on the site administration page.
 
 - [List of Environment Variables](../administration/environment-variables.md)
 
-:::note
-Gitea must perform a full restart to see configuration changes.
-:::
+> **note**: Gitea must perform a full restart to see configuration changes.
 
 ## Serving custom public files
 
@@ -380,9 +376,7 @@ Google Analytics, Matomo (previously Piwik), and other analytics services can be
 
 Place custom files in corresponding sub-folder under `custom/options`.
 
-:::note
-The files should not have a file extension, e.g. `Labels` rather than `Labels.txt`
-:::
+> **note**: The files should not have a file extension, e.g. `Labels` rather than `Labels.txt`
 
 ### gitignores
 
@@ -449,10 +443,8 @@ Locales may change between versions, so keeping track of your customized locales
 
 To add a custom Readme, add a markdown formatted file (without an `.md` extension) to `$GITEA_CUSTOM/options/readme`
 
-:::note
-Readme templates support **variable expansion**.
+> **note**: Readme templates support **variable expansion**.
 currently there are `{Name}` (name of repository), `{Description}`, `{CloneURL.SSH}`, `{CloneURL.HTTPS}` and `{OwnerName}`
-:::
 
 ### Reactions
 

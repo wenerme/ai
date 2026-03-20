@@ -25,7 +25,7 @@ The **Destinations** section provides three configuration options. Select a dest
         1. In OpenObserve, go to **Management > Templates**.
         2. Click **Add Template** to create a new template. 
         3. In the template creation screen:
-          ![Alert Destination -Webhook](../../images/webhook-template-for-alert.png)
+          [Alert Destination -Webhook]
 
             - Enter a name for the template.
             - Select **Webhook** as the template type.
@@ -44,7 +44,7 @@ The **Destinations** section provides three configuration options. Select a dest
     1. Go to **Management > Alert Destinations**. 
     2. In the **Add Destination** page, click **Webhook**.
     3. Fill in the following details:
-      ![Add Destinations](../../images/webook-as-alert-destination.png) 
+      [Add Destinations] 
 
         - **Name**: Enter a descriptive name for the Webhook destination. For example, SlackNotifications. Note that characters such as `,`, `:`, `?`, `/`, `#`, and `spaces` are not allowed.
         - **Template**: Choose a predefined alert message template from the dropdown menu.
@@ -80,8 +80,8 @@ The **Destinations** section provides three configuration options. Select a dest
         5. In the **App Passwords** page, enter a name for your app, such as SMTP, and click **Create**.
         6. Copy the generated App Password and store it securely. You will need it during configuration.
 
-        **Test Your Gmail SMTP Configuration** <br>
-        Use an online tool such as [Mailmeteor’s SMTP Test Tool](https://mailmeteor.com/smtp-test) to verify your configuration. <br>To test:
+        **Test Your Gmail SMTP Configuration** 
+        Use an online tool such as [Mailmeteor’s SMTP Test Tool](https://mailmeteor.com/smtp-test) to verify your configuration. To test:
 
         1. Go to Mailmeteor's SMTP Test Tool and select the email provider.
         2. The tool fills in the SMTP server as `smtp.gmail.com` and port `587`.
@@ -119,7 +119,7 @@ The **Destinations** section provides three configuration options. Select a dest
         1. In OpenObserve, go to **Management > Templates**.
         2. Click **Add Template** to create a new email template. 
         3. In the template creation screen:
-          ![Alert Destination](../../images/email-template-for-alert.png)
+          [Alert Destination]
 
             - Select **Email** as the template type.
             - Enter a name for the template.
@@ -147,7 +147,7 @@ The **Destinations** section provides three configuration options. Select a dest
       After the user is added, they become eligible to receive email alerts.
     
     ### Steps to configure emails as alert destination 
-    ![Alert Destination](../../images/alert-email-destination.png)
+    [Alert Destination]
 
       1. Go to **Management** > **Alert Destinations**. 
       2. In the **Add Destination** page, click **Email**.
@@ -175,7 +175,7 @@ The **Destinations** section provides three configuration options. Select a dest
     ??? "2. Create the alert template"
         When you configure an Action as the alert destination, OpenObserve passes the alert data to your Real-time Action script through a template.
         The template defines the structure of the alert payload that your Python script will receive as the `data` argument in its `main()` function.
-        <br>
+        
         **Note:** Unlike email or webhook templates (which are meant for human-readable or HTTP payload formatting), this template is meant to be machine-readable.
         Hence, it should be a valid JSON object that matches how your script expects to read alert fields.
         
@@ -199,12 +199,11 @@ The **Destinations** section provides three configuration options. Select a dest
         Your Python script can then parse these fields directly.
 
     ### Steps to configure actions as alert destination
-    ![Action Destination](../../images/action-as-destination.png)
+    [Action Destination]
 
       1. Go to **Management > Alert Destinations**. 
       2. In the **Add Destination** page, click **Actions**.
       3. Enter the name of the destination.
       4. Select the template. 
       5. Select the real-time action. 
-      6. Click **Save**. 
-     
+      6. Click **Save**.

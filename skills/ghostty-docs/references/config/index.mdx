@@ -26,12 +26,10 @@ be surprised!
 
 Ghostty is configured using a text-based configuration file.
 
-<Note>
   In the future, we plan to also support native GUIs for
   configuration in line with our native UI philosophy. This will
   be in addition to the text-based configuration. Presently, the
   text-based configuration is the only way to configure Ghostty.
-</Note>
 
 ### File Location
 
@@ -124,11 +122,9 @@ The configuration can be reloaded at runtime by pressing
 the default keybindings, but it is possible to define your
 own via the `reload_config` action.
 
-<Note>
 Some configuration options cannot be reloaded at runtime;
 others may only apply to newly created terminals. See the
 specific configuration option for details.
-</Note>
 
 ## Offline Reference Documentation
 
@@ -136,10 +132,8 @@ There are multiple places to find documentation on the configuration
 options besides the website. All locations are identical (they're all
 generated from the same source).
 
-<Tip>
 The online reference documentation
 [is available here](/docs/config/reference).
-</Tip>
 
 1. There are HTML and Markdown formatted docs in the
    `$prefix/share/ghostty/docs` directory. This directory is created
@@ -163,9 +157,7 @@ The online reference documentation
    [public config files](https://github.com/search?q=path%3Aghostty%2Fconfig&type=code)
    of many Ghostty users for examples and inspiration.
 
-<Note>
 You may see strange looking blank configurations like `font-family =`. This
 is a valid syntax to specify the default behavior (no value). The
 `+show-config` outputs it so it's clear that key is defaulting and also
 to have something to attach the doc comment to.
-</Note>

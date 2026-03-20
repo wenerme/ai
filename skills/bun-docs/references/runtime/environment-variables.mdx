@@ -20,8 +20,6 @@ BAR=world
 
 Variables can also be set via the command line.
 
-<CodeGroup>
-
 ```sh Linux/macOS icon="terminal"
 FOO=helloworld bun run dev
 ```
@@ -33,10 +31,6 @@ set FOO=helloworld && bun run dev
 # Using PowerShell
 $env:FOO="helloworld"; bun run dev
 ```
-
-</CodeGroup>
-
-<Accordion title="Cross-platform solution with Windows">
 
 For a cross-platform solution, you can use [bun shell](/runtime/shell). For example, the `bun exec` command.
 
@@ -51,8 +45,6 @@ On Windows, `package.json` scripts called with `bun run` will automatically use 
   "dev": "NODE_ENV=development bun --watch app.ts",
 },
 ```
-
-</Accordion>
 
 Or programmatically by assigning a property to `process.env`.
 

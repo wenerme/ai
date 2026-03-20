@@ -7,7 +7,6 @@ keywords: ['Expensive Queries', 'Memory Usage']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Using the `system.query_log` table \{#using-the-systemquery_log-table\}
 
@@ -18,7 +17,6 @@ A couple of comments about this query:
 - the results are computed from the past day (`now() - toIntervalDay(1))`) but you can easily modify the time interval
 - it assumes you have a cluster named `default`, which is the name of your cluster in [ClickHouse Cloud](https://console.clickhouse.cloud). Change `default` to the name of your cluster
 - if you do not have a cluster, see the query listed at the end of this article
-
 
 ```sql
 SELECT
@@ -51,9 +49,7 @@ The response looks like:
 └──────────┴─────────┴───────────────────────────────────────────────────────────────┴──────────┴───────────────────────┘
 ```
 
-:::note
-If you do not have a `system.query_log` table, then you likely do not have query logging enabled. View the details of the [`query_log` setting](https://clickhouse.com/docs/operations/server-configuration-parameters/settings#server_configuration_parameters-query-log) for details on how to enable it.
-:::
+> **note**: If you do not have a `system.query_log` table, then you likely do not have query logging enabled. View the details of the [`query_log` setting](https://clickhouse.com/docs/operations/server-configuration-parameters/settings#server_configuration_parameters-query-log) for details on how to enable it.
 
 If you do not have a cluster, use can just query your one `system.query_log` table directly:
 

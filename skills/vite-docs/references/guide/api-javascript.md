@@ -29,15 +29,13 @@ server.printUrls()
 server.bindCLIShortcuts({ print: true })
 ```
 
-::: tip NOTE
+> **tip**: NOTE
 When using `createServer` and `build` in the same Node.js process, both functions rely on `process.env.NODE_ENV` to work properly, which also depends on the `mode` config option. To prevent conflicting behavior, set `process.env.NODE_ENV` or the `mode` of the two APIs to `development`. Otherwise, you can spawn a child process to run the APIs separately.
-:::
 
-::: tip NOTE
+> **tip**: NOTE
 When using [middleware mode](/config/server-options.html#server-middlewaremode) combined with [proxy config for WebSocket](/config/server-options.html#server-proxy), the parent http server should be provided in `middlewareMode` to bind the proxy correctly.
 
-<details>
-<summary>Example</summary>
+Example
 
 ```ts twoslash
 import http from 'http'
@@ -65,9 +63,6 @@ const vite = await createServer({
 // @noErrors: 2339
 parentServer.use(vite.middlewares)
 ```
-
-</details>
-:::
 
 ## `InlineConfig`
 
@@ -189,9 +184,7 @@ interface ViteDevServer {
 }
 ```
 
-:::info
-`waitForRequestsIdle` is meant to be used as a escape hatch to improve DX for features that can't be implemented following the on-demand nature of the Vite dev server. It can be used during startup by tools like Tailwind to delay generating the app CSS classes until the app code has been seen, avoiding flashes of style changes. When this function is used in a load or transform hook, and the default HTTP1 server is used, one of the six http channels will be blocked until the server processes all static imports. Vite's dependency optimizer currently uses this function to avoid full-page reloads on missing dependencies by delaying loading of pre-bundled dependencies until all imported dependencies have been collected from static imported sources. Vite may switch to a different strategy in a future major release, setting `optimizeDeps.crawlUntilStaticImports: false` by default to avoid the performance hit in large applications during cold start.
-:::
+> **info**: `waitForRequestsIdle` is meant to be used as a escape hatch to improve DX for features that can't be implemented following the on-demand nature of the Vite dev server. It can be used during startup by tools like Tailwind to delay generating the app CSS classes until the app code has been seen, avoiding flashes of style changes. When this function is used in a load or transform hook, and the default HTTP1 server is used, one of the six http channels will be blocked until the server processes all static imports. Vite's dependency optimizer currently uses this function to avoid full-page reloads on missing dependencies by delaying loading of pre-bundled dependencies until all imported dependencies have been collected from static imported sources. Vite may switch to a different strategy in a future major release, setting `optimizeDeps.crawlUntilStaticImports: false` by default to avoid the performance hit in large applications during cold start.
 
 ## `build`
 
@@ -312,7 +305,7 @@ function mergeConfig(
 
 Deeply merge two Vite configs. `isRoot` represents the level within the Vite config which is being merged. For example, set `false` if you're merging two `build` options.
 
-::: tip NOTE
+> **tip**: NOTE
 `mergeConfig` accepts only config in object form. If you have a config in callback form, you should call it before passing into `mergeConfig`.
 
 You can use the `defineConfig` helper to merge a config in callback form with another config:
@@ -332,8 +325,6 @@ export default defineConfig((configEnv) =>
   mergeConfig(configAsCallback(configEnv), configAsObject),
 )
 ```
-
-:::
 
 ## `searchForWorkspaceRoot`
 

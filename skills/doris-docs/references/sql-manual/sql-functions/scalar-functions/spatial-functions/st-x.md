@@ -31,7 +31,6 @@ The X value in the geometric coordinates, of type double-precision floating-poin
 
 ## Example
 
-
 Extract X coordinate of a valid point
 
 ```sql
@@ -80,7 +79,6 @@ mysql> SELECT ST_X(NULL);
 +------------+
 ```
 
-
 Longitude out of range
 
 ```sql
@@ -102,4 +100,3 @@ mysql> SELECT ST_X(ST_Point(44.7, 156.7));
 |                        NULL |
 +-----------------------------+
 ```
-

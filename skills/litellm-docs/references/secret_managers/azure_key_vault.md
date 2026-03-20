@@ -1,14 +1,10 @@
 # Azure Key Vault
 
-:::info
-
-✨ **This is an Enterprise Feature**
+> **info**: ✨ **This is an Enterprise Feature**
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
 
 ## Usage with LiteLLM Proxy Server
 
@@ -44,4 +40,3 @@ litellm --config /path/to/config.yaml
 ```
 
 [Quick Test Proxy](../proxy/quick_start#using-litellm-proxy---curl-request-openai-package-langchain-langchain-js)
-

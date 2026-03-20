@@ -1,9 +1,7 @@
 ---
 date: "2025-04-05T00:00:00+08:00"
-slug: "markdown"
 aliases:
   - /markdown
-sidebar_position: 4
 ---
 
 # Markdown
@@ -28,10 +26,9 @@ For a deeper history about CommonMark, its spec, and its reason for existence, s
 
 Some Gitea's markdown rendering behaviors can be fine-tuned by global config options, see the `[markdown]` config section in the `app.example.ini`
 
-
 ## Link path resolving
 
-When rendering links for `<a href>`, `<img src>` and `<video src>`, Gitea resolves the link paths in the rendering context.
+When rendering links for `<a href>`, `` and `<video src>`, Gitea resolves the link paths in the rendering context.
 
 - If the link is an absolute path with scheme, the link is kept as-is.
 - If the link is an URL path, it is resolved with the base path of current rendering context.
@@ -58,7 +55,6 @@ For example, when rendering a markdown file in `/owner-name/repo-name/src/branch
   5) Raw relative: `sub/file?raw=1` will resolve to `/owner-name/repo-name/src/branch/main/dir/sub/file?raw=1`,
     which will redirect to `/owner-name/repo-name/raw/branch/main/dir/sub/file`.
   6) explicit root: Link `/:root/any-path` is always resolved to `$ROOT_URL/any-path` without any further processing.
-
 
 ## Issue and pull-request reference
 

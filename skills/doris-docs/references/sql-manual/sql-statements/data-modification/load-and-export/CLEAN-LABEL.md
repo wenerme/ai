@@ -36,7 +36,6 @@ The user executing this SQL command must have at least the following privileges:
 |:----------------------|:-----------|:----------------------------------------------|
 | ALTER_PRIV            | Database   | Requires modification access to the database. |
 
-
 ## Examples
 
 - Clean label label1 from database db1
@@ -50,4 +49,3 @@ The user executing this SQL command must have at least the following privileges:
    ```sql
    CLEAN LABEL FROM db1;
    ```
-

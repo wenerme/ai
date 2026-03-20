@@ -97,4 +97,3 @@ The user who executes this SQL command must have at least the following permissi
      | test_view      | VIEW       | NONE           | NONE                          |
      +----------------+------------+----------------+-------------------------------+
      ```
-

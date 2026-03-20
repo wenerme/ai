@@ -20,10 +20,9 @@ getApplesSpy.mock.calls.length === 1
 
 You should use mock assertions (e.g., [`toHaveBeenCalled`](/api/expect#tohavebeencalled)) on [`expect`](/api/expect) to assert mock results. This API reference describes available properties and methods to manipulate mock behavior.
 
-::: warning IMPORTANT
+> **warning**: IMPORTANT
 Vitest spies inherit implementation's [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length) property when initialized, but it doesn't override it if the implementation was changed later:
 
-::: code-group
 ```ts [vi.fn]
 const fn = vi.fn((arg1) => {})
 fn.length // == 1
@@ -44,13 +43,10 @@ fn.length // == 2
 fn.mockImplementation(() => {})
 fn.length // == 2
 ```
-:::
 
-::: tip
-The custom function implementation in the types below is marked with a generic `<T>`.
-:::
+> **tip**: The custom function implementation in the types below is marked with a generic `<T>`.
 
-::: warning Class Support {#class-support}
+> **warning**: Class Support {#class-support}
 Shorthand methods like `mockReturnValue`, `mockReturnValueOnce`, `mockResolvedValue` and others cannot be used on a mocked class. Class constructors have [unintuitive behaviour](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) regarding the return value:
 
 ```ts {2,7}
@@ -89,7 +85,6 @@ mock.mockImplementation(class {
   }
 })
 ```
-:::
 
 ## getMockImplementation
 
@@ -472,7 +467,7 @@ fn.mock.calls === [
 ]
 ```
 
-:::warning Objects are Stored by Reference
+> **warning**: Objects are Stored by Reference
 Note that Vitest always stores objects by reference in all properies of the `mock` state. This means that if the properties were changed by your code, then some assertions like [`.toHaveBeenCalledWith`](/api/expect#tohavebeencalledwith) will not pass:
 
 ```ts
@@ -501,7 +496,6 @@ const fn = vi.fn((arg) => {
 
 expect(calledArguments[0]).toEqual({ value: 0 })
 ```
-:::
 
 ## mock.lastCall
 
@@ -679,8 +673,7 @@ const instances: ReturnType<T>[]
 
 This property is an array containing all instances that were created when the mock was called with the `new` keyword. Note that this is the actual context (`this`) of the function, not a return value.
 
-::: warning
-If the mock was instantiated with `new MyClass()`, then `mock.instances` will be an array with one value:
+> **warning**: If the mock was instantiated with `new MyClass()`, then `mock.instances` will be an array with one value:
 
 ```js
 const MyClass = vi.fn()
@@ -698,4 +691,3 @@ const a = new Spy()
 Spy.mock.instances[0] !== a
 Spy.mock.results[0] === a
 ```
-:::

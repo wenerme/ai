@@ -1,7 +1,4 @@
 ---
-slug: /optimize/skipping-indexes/examples
-sidebar_label: 'Data Skipping Indexes - Examples'
-sidebar_position: 2
 description: 'Consolidated Skip Index Examples'
 title: 'Data Skipping Index Examples'
 doc_type: 'guide'
@@ -112,9 +109,7 @@ SELECT * FROM events WHERE value IN (7, 42, 99);
 
 ## N-gram Bloom filter (ngrambf\_v1) for substring search *(Deprecated)* {#n-gram-bloom-filter-ngrambf-v1-for-substring-search}
 
-:::note
-The usage of `ngrambf_v1` indexes for full-text search is deprecated in ClickHouse versions `>= 26.2` in favor of `text` indexes (see [here](/engines/table-engines/mergetree-family/textindexes) for further details).
-:::
+> **note**: The usage of `ngrambf_v1` indexes for full-text search is deprecated in ClickHouse versions `>= 26.2` in favor of `text` indexes (see [here](/engines/table-engines/mergetree-family/textindexes) for further details).
 
 The `ngrambf_v1` index splits strings into n-grams. It works well for `LIKE '%...%'` queries. It supports String/FixedString/Map (via mapKeys/mapValues), as well as tunable size, hash count, and seed. See the documentation for [N-gram bloom filter](/engines/table-engines/mergetree-family/mergetree#n-gram-bloom-filter) for further details.
 
@@ -152,9 +147,7 @@ See [parameter docs](/engines/table-engines/mergetree-family/mergetree#n-gram-bl
 
 ## Token Bloom filter (tokenbf\_v1) for word-based search *(Deprecated)* {#token-bloom-filter-tokenbf-v1-for-word-based-search}
 
-:::note
-The usage of `tokenbf_v1` indexes for full-text search is deprecated in ClickHouse versions `>= 26.2` in favor of `text` indexes (see [here](/engines/table-engines/mergetree-family/textindexes) for further details).
-:::
+> **note**: The usage of `tokenbf_v1` indexes for full-text search is deprecated in ClickHouse versions `>= 26.2` in favor of `text` indexes (see [here](/engines/table-engines/mergetree-family/textindexes) for further details).
 
 `tokenbf_v1` indexes tokens separated by non-alphanumeric characters. You should use it with [`hasToken`](/sql-reference/functions/string-search-functions#hasToken), `LIKE` word patterns or equals/IN. It supports `String`/`FixedString`/`Map` types.
 
@@ -223,9 +216,8 @@ This [worked minmax example](/best-practices/use-data-skipping-indices-where-app
 * Most blocks likely contain at least one matching value (blocks will be read regardless)  
 * Filtering on high-cardinality columns with no correlation to data ordering
 
-:::note Important considerations
+> **note**: Important considerations
 If a value appears even once in a data block, ClickHouse must read the entire block. Test indexes with realistic datasets and adjust granularity and type-specific parameters based on actual performance measurements.
-:::
 
 ## Temporarily ignore or force indexes {#temporarily-ignore-or-force-indexes}
 

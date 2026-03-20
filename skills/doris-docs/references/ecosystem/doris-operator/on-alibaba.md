@@ -95,9 +95,8 @@ Currently, Alibaba Cloud is gradually pushing the ability to enable privileged m
 The Doris BE node startup requires some special environment parameters, such as Modify the number of virtual memory areas `sysctl -w vm.max_map_count=2000000`  
 Setting this parameter inside the container requires modifying the host configuration, so regular K8s clusters need to enable privileged mode in the pod. Operator adds `InitContainer` to the BE pod through `systemInitialization` to perform such operations.
 
-:::tip Tip  
+> **tip**: Tip  
 **If the current cluster cannot use privileged mode, the BE node cannot be started**. You can choose ACK container service + host to deploy the cluster.
-:::
 
 ### Service
 
@@ -137,4 +136,3 @@ Therefore, when deploying the Doris cluster, serviceType disables the NodePort m
     1. serviceType is ClusterIP (default policy)
     2. You can create a load balancing service through the Alibaba Cloud console interface: Container Compute Service ACS -> Cluster List -> Cluster -> Service, and use the `Create` button.
     3. Select the newly created LB in the interface for creating `service`, which will be bound to `service` and will also be deregistered when the `service` is deregistered. However, this `service` is not controlled by Doris Operator.
-

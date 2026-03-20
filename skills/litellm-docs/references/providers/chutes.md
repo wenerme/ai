@@ -10,8 +10,6 @@
 | Base URL | `https://llm.chutes.ai/v1/` |
 | Supported Operations | [`/chat/completions`](#sample-usage), Embeddings |
 
-<br />
-
 ## What is Chutes?
 
 Chutes is a powerful AI deployment and serving platform that provides:

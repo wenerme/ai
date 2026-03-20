@@ -17,7 +17,6 @@ ALTER STORAGE POLICY  '<policy_name>' PROPERTIE ("<key>"="<value>"[, ... ]);
 
 ## Required Parameters
 
-
 1.`<policy_name>`  
 > The name of the storage policy. This is the unique identifier of the storage policy you want to modify, and an existing policy name must be specified. 
 

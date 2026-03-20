@@ -38,11 +38,9 @@ The system employs different strategies based on the strict mode setting:
 | Non-NULL          | "abc"               | NULL                          | OFF         | NULL    |
 | Non-NULL          | 1                   | 1                             | ON/OFF      | Loaded Successfully |
 
-:::tip
-1. The column in the table allows NULL values
+> **tip**: 1. The column in the table allows NULL values
 
 2. Both `abc` and `2000` become NULL after conversion to TinyInt due to type or precision issues. When strict mode is ON, such data will be filtered out. When OFF, NULL will be loaded.
-:::
 
 **2. Example with Decimal(1,0) type:**
 
@@ -53,13 +51,11 @@ The system employs different strategies based on the strict mode setting:
 | Non-NULL          | aaa                 | NULL                         | OFF         | NULL    |
 | Non-NULL          | 1 or 10             | 1 or 10                      | ON/OFF      | Loaded Successfully |
 
-:::tip
-1. The column in the table allows NULL values
+> **tip**: 1. The column in the table allows NULL values
 
 2. `abc` becomes NULL after conversion to Decimal due to type issues. When strict mode is ON, such data will be filtered out. When OFF, NULL will be loaded.
 
 3. Although `10` exceeds the range, since its type meets decimal requirements, strict mode does not affect it.
-:::
 
 ### Enable Strict Mode
 
@@ -182,6 +178,4 @@ PROPERTIES
 SET insert_max_filter_ratio = 0.1;
 INSERT INTO test_table FROM S3/HDFS/LOCAL();```
 
-:::tip
-For Insert Into statements, `insert_max_filter_ratio` only takes effect when `enable_insert_strict = false`, and only applies to `INSERT INTO FROM S3/HDFS/LOCAL()` syntax. The default value is 1.0, which means that all abnormal data are allowed to be filtered.
-:::
+> **tip**: For Insert Into statements, `insert_max_filter_ratio` only takes effect when `enable_insert_strict = false`, and only applies to `INSERT INTO FROM S3/HDFS/LOCAL()` syntax. The default value is 1.0, which means that all abnormal data are allowed to be filtered.

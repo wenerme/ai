@@ -2,8 +2,7 @@
 
 `TestCollection` represents a collection of top-level [suites](/api/advanced/test-suite) and [tests](/api/advanced/test-case) in a suite or a module. It also provides useful methods to iterate over itself.
 
-::: info
-Most methods return an iterator instead of an array for better performance in case you don't need every item in the collection. If you prefer working with array, you can spread the iterator: `[...children.allSuites()]`.
+> **info**: Most methods return an iterator instead of an array for better performance in case you don't need every item in the collection. If you prefer working with array, you can spread the iterator: `[...children.allSuites()]`.
 
 Also note that the collection itself is an iterator:
 
@@ -12,15 +11,12 @@ for (const child of module.children) {
   console.log(child.type, child.name)
 }
 ```
-:::
 
 ## size
 
 The number of tests and suites in the collection.
 
-::: warning
-This number includes only tests and suites at the top-level, it doesn't include nested suites and tests.
-:::
+> **warning**: This number includes only tests and suites at the top-level, it doesn't include nested suites and tests.
 
 ## at
 

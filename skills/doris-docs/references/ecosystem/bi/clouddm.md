@@ -16,15 +16,14 @@ Install CloudDM. You can download and install CloudDM from https://www.cdmgr.com
 
 ## Add data source
 
-:::info Note
+> **info**: Note
 CloudDM version should be 2.8.0.0 or above.
-:::
 
 1. Log in to CloudDM.
 2. Click **DataSources** > **Add DataSources**.
 3. Select **Doris** for the Type.
 
-   ![add datasource](/images/clouddm1-en.png)
+   [add datasource]
 
 4. Enter the following required information to connect to the Doris instance. 
    - Client Address: The FE query port of the Doris cluster, for example: hostID:9030. 
@@ -41,12 +40,12 @@ CloudDM version should be 2.8.0.0 or above.
 
 5. Click **Query Settings** in the top navigation bar. Then enable **Data Management**. 
 
-   ![enable data manage](/images/clouddm2-en.png)
+   [enable data manage]
 
 6. Access data.     
    In the database connection navigation panel on the left, you can view the added Doris connection. Then you can start to manage the data through **CloudDM**.
 
-   ![connect to data source](/images/clouddm3-en.png)
+   [connect to data source]
 
 ## Function support
 - Query Client

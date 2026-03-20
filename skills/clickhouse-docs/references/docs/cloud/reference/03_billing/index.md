@@ -1,5 +1,4 @@
 ---
-slug: /cloud/manage/billing
 title: 'Billing'
 description: 'Table of contents page for billing.'
 keywords: ['billing', 'payment thresholds', 'trouble shooting', 'marketplace']

@@ -500,7 +500,6 @@ An advanced Custom Resource for managing complex remote data destinations beyond
 - Load balancing across multiple instances
 - Data replication and fan-out patterns
 
-
 ### Community Feedback
 
 We welcome community input on these upcoming features. Please share your use cases and requirements through:

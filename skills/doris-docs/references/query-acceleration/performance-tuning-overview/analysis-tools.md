@@ -145,6 +145,3 @@ Commonly used system tools can assist in identifying performance bottlenecks dur
 ## Summary
 
 Effective performance analysis tools are crucial for quickly identifying performance bottlenecks. Doris provides Explain and Profile, offering powerful support for analyzing issues with execution plans and identifying which operations consume the most time during execution. Additionally, proficient use of system-level analysis tools can greatly assist in locating performance bottlenecks.
-
-
-

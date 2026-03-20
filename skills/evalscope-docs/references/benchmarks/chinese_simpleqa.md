@@ -1,6 +1,5 @@
 # Chinese-SimpleQA
 
-
 ## Overview
 
 Chinese SimpleQA is a Chinese question-answering dataset designed to evaluate the performance of language models on simple factual questions. It tests the model's ability to understand and generate correct answers in Chinese across various knowledge domains.
@@ -27,7 +26,6 @@ Chinese SimpleQA is a Chinese question-answering dataset designed to evaluate th
 - Metrics: is_correct, is_incorrect, is_not_attempted
 - Evaluates factual accuracy without requiring exact match
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ Chinese SimpleQA is a Chinese question-answering dataset designed to evaluate th
 | **Metrics** | `is_correct`, `is_incorrect`, `is_not_attempted` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -127,5 +124,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

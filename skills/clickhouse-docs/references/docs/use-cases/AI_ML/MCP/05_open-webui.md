@@ -1,29 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/open-webui
-sidebar_label: 'Integrate Open WebUI'
 title: 'Set Up ClickHouse MCP Server with Open WebUI and ClickHouse Cloud'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to set up Open WebUI with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'Open WebUI', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-
-import Endpoints from '@site/static/images/use-cases/AI_ML/MCP/0_endpoints.png';
-import Settings from '@site/static/images/use-cases/AI_ML/MCP/1_settings.png';
-import ToolsPage from '@site/static/images/use-cases/AI_ML/MCP/2_tools_page.png';
-import AddTool from '@site/static/images/use-cases/AI_ML/MCP/3_add_tool.png';
-import ToolsAvailable from '@site/static/images/use-cases/AI_ML/MCP/4_tools_available.png';
-import ListOfTools from '@site/static/images/use-cases/AI_ML/MCP/5_list_of_tools.png';
-import Connections from '@site/static/images/use-cases/AI_ML/MCP/6_connections.png';
-import AddConnection from '@site/static/images/use-cases/AI_ML/MCP/7_add_connection.png';
-import OpenAIModels from '@site/static/images/use-cases/AI_ML/MCP/8_openai_models_more.png';
-import Conversation from '@site/static/images/use-cases/AI_ML/MCP/9_conversation.png';
 
 # Using ClickHouse MCP server with Open WebUI
 

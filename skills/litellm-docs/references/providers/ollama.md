@@ -1,18 +1,13 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Ollama 
 LiteLLM supports all models from [Ollama](https://github.com/ollama/ollama)
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/liteLLM_Ollama.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
-:::info 
-
-We recommend using [ollama_chat](#using-ollama-apichat) for better responses.
-
-:::
+> **info**: We recommend using [ollama_chat](#using-ollama-apichat) for better responses.
 
 ## Pre-requisites
 Ensure you have your ollama server running
@@ -91,9 +86,6 @@ response = completion(
 
 To use ollama tool calling, pass `tools=[{..}]` to `litellm.completion()` 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import litellm 
@@ -129,16 +121,12 @@ tools = [
 
 messages = [{"role": "user", "content": "What's the weather like in Boston today?"}]
 
-
 response = completion(
   model="ollama_chat/llama3.1",
   messages=messages,
   tools=tools
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml 
 
@@ -199,16 +187,10 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
   "stream": true
 }'
 ```
-</TabItem>
-</Tabs>
-
 
 ## Using Ollama FIM on `/v1/completions`
 
 LiteLLM supports calling Ollama's `/api/generate` endpoint on `/v1/completions` requests. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm 
@@ -222,8 +204,6 @@ response = completion(
 )
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml 
 
@@ -260,8 +240,6 @@ response = client.completions.create(
 )
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Using ollama `api/chat` 
 In order to send ollama requests to `POST /api/chat` on your ollama server, set the model prefix to `ollama_chat`
@@ -299,11 +277,7 @@ Ollama supported models: https://github.com/ollama/ollama
 | Nous-Hermes 13B     | `completion(model='ollama/nous-hermes:13b', messages, api_base="http://localhost:11434", stream=True)` | 
 | Wizard Vicuna Uncensored | `completion(model='ollama/wizard-vicuna', messages, api_base="http://localhost:11434", stream=True)` |
 
-
 ### JSON Schema support 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -315,8 +289,6 @@ response = completion(
 )
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml 
 
@@ -366,8 +338,6 @@ completion = client.beta.chat.completions.parse(
 
 math_reasoning = completion.choices[0].message.parsed
 ```
-</TabItem>
-</Tabs>
 
 ## Ollama Vision Models
 | Model Name       | Function Call                        |
@@ -408,12 +378,9 @@ response = litellm.completion(
 print(response)
 ```
 
-
-
 ## LiteLLM/Ollama Docker Image 
 
 For Ollama LiteLLM Provides a Docker Image for an OpenAI API compatible server for local LLMs - llama2, mistral, codellama
-
 
 [![Chat on WhatsApp](https://img.shields.io/static/v1?label=Chat%20on&message=WhatsApp&color=success&logo=WhatsApp&style=flat-square)](https://wa.link/huol9n) [![Chat on Discord](https://img.shields.io/static/v1?label=Chat%20on&message=Discord&color=blue&logo=Discord&style=flat-square)](https://discord.gg/wuPM9dRgDw) 
 ### An OpenAI API compatible server for local LLMs - llama2, mistral, codellama
@@ -433,7 +400,6 @@ docker run --name ollama litellm/ollama
 #### Test the server container
 On the docker container run the `test.py` file using `python3 test.py`
 
-
 ### Making a request to this server
 ```python
 import openai
@@ -443,7 +409,6 @@ api_base = f"http://0.0.0.0:4000" # base url for server
 openai.api_base = api_base
 openai.api_key = "temp-key"
 print(openai.api_base)
-
 
 print(f'LiteLLM: response from proxy with streaming')
 response = openai.chat.completions.create(

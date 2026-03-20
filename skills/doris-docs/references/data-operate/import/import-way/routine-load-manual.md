@@ -46,7 +46,7 @@ In Doris, after creating a Routine Load job, a persistent import job is generate
 
 The specific process of Routine Load import is shown in the following diagram:
 
-![Routine Load](/images/routine-load.png)
+[Routine Load]
 
 1. Client submits a request to FE to create a Routine Load job. FE generates a persistent import job (Routine Load Job) through the Routine Load Manager.
 
@@ -178,9 +178,8 @@ FROM KAFKA(
     "property.kafka_default_offsets" = "OFFSET_BEGINNING"
 );
 ```
-:::info Note
+> **info**: Note
 If you need to import JSON objects from the root node of a JSON file, jsonpaths needs to be specified as `$.`, for example: `PROPERTIES("jsonpaths"="$.")`.
-:::
 
 ### View Import Status
 
@@ -344,7 +343,6 @@ Module descriptions for creating import jobs:
 
 **02 BE Configuration Parameters**
 
-
 | Parameter Name                     | Default Value | Dynamic Configuration | Description                                                                                                             |
 |------------------------------|--------|----------|------------------------------------------------------------------------------------------------------------------|
 | max_consumer_num_per_group   | 3      | Yes       | Maximum number of consumers a subtask can generate for consumption. |
@@ -386,13 +384,13 @@ Specific module corresponding parameters are as follows:
 
 | Sub-module                | Parameter                                                         | Description                                                         |
 | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| COLUMNS TERMINATED BY | <column_separator>                                           | Used to specify the column separator. Default is `\t`. For example, to specify comma as the separator, use the following command: `COLUMN TERMINATED BY ","`<br/>For null value handling, note the following:<p>- Null values need to be represented by `\n`. The data `a,\n,b` indicates that the middle column is a null value</p> <p>- Empty strings ('') are directly left empty. The data `a,,b` indicates that the middle column is an empty string</p> |
-| COLUMNS               | <column_name>                                                | Used to specify corresponding column names. For example, to specify import columns `(k1, k2, k3)`, use the following command: `COLUMNS(k1, k2, k3)`<br/>The COLUMNS clause can be omitted in the following cases:<p>- Columns in CSV correspond one-to-one with columns in the table</p> <p>- Key columns in JSON have the same names as columns in the table</p> |   
-| &nbsp;&nbsp;               | <column_mapping>      | During import, column mapping can be used for column filtering and transformation. For example, if the target column needs to be derived from a certain column of the data source during import, and target column k4 is calculated from column k3 using the formula k3+1, use the following command: `COLUMNS(k1, k2, k3, k4 = k3 + 1)`<br/>For details, refer to [Data Transformation](../../import/load-data-convert) |                                                              |
+| COLUMNS TERMINATED BY | <column_separator>                                           | Used to specify the column separator. Default is `\t`. For example, to specify comma as the separator, use the following command: `COLUMN TERMINATED BY ","`For null value handling, note the following:<p>- Null values need to be represented by `\n`. The data `a,\n,b` indicates that the middle column is a null value</p> <p>- Empty strings ('') are directly left empty. The data `a,,b` indicates that the middle column is an empty string</p> |
+| COLUMNS               | <column_name>                                                | Used to specify corresponding column names. For example, to specify import columns `(k1, k2, k3)`, use the following command: `COLUMNS(k1, k2, k3)`The COLUMNS clause can be omitted in the following cases:<p>- Columns in CSV correspond one-to-one with columns in the table</p> <p>- Key columns in JSON have the same names as columns in the table</p> |   
+| &nbsp;&nbsp;               | <column_mapping>      | During import, column mapping can be used for column filtering and transformation. For example, if the target column needs to be derived from a certain column of the data source during import, and target column k4 is calculated from column k3 using the formula k3+1, use the following command: `COLUMNS(k1, k2, k3, k4 = k3 + 1)`For details, refer to [Data Transformation](../../import/load-data-convert) |                                                              |
 | WHERE                 | <where_expr>                                                 | Specifying where_expr allows filtering of imported data sources based on conditions. For example, to only import data where age > 30, use the following command: `WHERE age > 30` |
 | PARTITION             | <partition_name>                                             | Specifies which partitions in the target table to import. If not specified, it will automatically import to the corresponding partition. For example, to import to partitions p1 and p2 of the target table, use the following command: `PARTITION(p1, p2)` |
 | DELETE ON             | <delete_expr>                                                | In MERGE import mode, use delete_expr to mark which columns need to be deleted. For example, to delete columns where age > 30 during MERGE, use the following command: `DELETE ON age > 30` |
-| ORDER BY              | <order_by_column>                                            | Only effective for Unique Key model. Used to specify the Sequence Column in imported data to ensure data order. For example, when importing a Unique Key table, to specify the Sequence Column as create_time, use the following command: `ORDER BY create_time`<br/>For a description of the Sequence Column in the Unique Key model, refer to the documentation [Data Update/Sequence Column](../../../data-operate/update/update-of-unique-model) |
+| ORDER BY              | <order_by_column>                                            | Only effective for Unique Key model. Used to specify the Sequence Column in imported data to ensure data order. For example, when importing a Unique Key table, to specify the Sequence Column as create_time, use the following command: `ORDER BY create_time`For a description of the Sequence Column in the Unique Key model, refer to the documentation [Data Update/Sequence Column](../../../data-operate/update/update-of-unique-model) |
 
 **job_properties Clause**
 
@@ -421,7 +419,7 @@ Specific parameter options for the job_properties clause are as follows:
 | load_to_single_tablet     | Supports importing data to only one tablet of the corresponding partition per task. Default value is false. This parameter is only allowed when importing data to olap tables with random bucketing. |
 | partial_columns           | Specifies whether to enable partial column update. Default value is false. This parameter is only allowed when the table model is Unique and uses Merge on Write. Multi-table streaming does not support this parameter. For details, refer to [Partial Column Update](../../../data-operate/update/partial-column-update.md) |
 | unique_key_update_mode    | Specifies the update mode for Unique Key tables. Optional values: <ul><li>`UPSERT` (default): Standard full-row insert or update operation.</li><li>`UPDATE_FIXED_COLUMNS`: Partial column update, all rows update the same columns. Equivalent to `partial_columns=true`.</li><li>`UPDATE_FLEXIBLE_COLUMNS`: Flexible partial column update, each row can update different columns. Requires JSON format and table must have `enable_unique_key_skip_bitmap_column=true`. Cannot be used with `jsonpaths`, `fuzzy_parse`, `COLUMNS` clause, or `WHERE` clause.</li></ul>For details, refer to [Partial Column Update](../../../data-operate/update/partial-column-update#flexible-partial-column-update) |
-| partial_update_new_key_behavior | Handling method for newly inserted rows when performing partial column updates on Unique Merge on Write tables. Two types: `APPEND`, `ERROR`.<br/>- `APPEND`: Allow insertion of new row data<br/>- `ERROR`: Import fails and reports an error when inserting new rows |
+| partial_update_new_key_behavior | Handling method for newly inserted rows when performing partial column updates on Unique Merge on Write tables. Two types: `APPEND`, `ERROR`.- `APPEND`: Allow insertion of new row data- `ERROR`: Import fails and reports an error when inserting new rows |
 | max_filter_ratio          | Maximum allowed filtering rate within the sampling window. Must be between greater than or equal to 0 and less than or equal to 1. Default value is 1.0, meaning any error rows can be tolerated. The sampling window is `max_batch_rows * 10`. If the error rows/total rows in the sampling window is greater than `max_filter_ratio`, the routine job will be paused, requiring manual intervention to check data quality issues. Rows filtered by where conditions are not counted as error rows. |
 | enclose                   | Specifies the enclosing character. When CSV data fields contain row or column separators, a single-byte character can be specified as an enclosing character for protection. For example, if the column separator is "," and the enclosing character is "'", for data "a,'b,c'", "b,c" will be parsed as one field. |
 | escape                    | Specifies the escape character. Used to escape characters in fields that are the same as the enclosing character. For example, if data is "a,'b,'c'", the enclosing character is "'", hoping "b,'c to be parsed as one field, you need to specify a single-byte escape character, such as "\", and modify the data to "a,'b,\'c'". |

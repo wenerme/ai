@@ -1,11 +1,9 @@
 ---
 position: 1
-slug: /clickhouse-operator/reference/api-reference
 title: 'ClickHouse Operator API reference'
 keywords: ['kubernetes']
 description: 'This document provides detailed API reference for the ClickHouse Operator custom resources.'
 doc_type: 'reference'
-sidebar_label: 'API reference'
 ---
 
 # ClickHouse Operator API reference
@@ -268,7 +266,7 @@ Container image specification.
 
 | Field        | Type     | Required | Default                                                                              | Description                 |
 |--------------|----------|----------|--------------------------------------------------------------------------------------|-----------------------------|
-| `repository` | `string` | No       | ClickHouse: `clickhouse/clickhouse-server`<br/>Keeper: `clickhouse/clickhouse-keeper` | Container image repository. |
+| `repository` | `string` | No       | ClickHouse: `clickhouse/clickhouse-server`Keeper: `clickhouse/clickhouse-keeper` | Container image repository. |
 | `tag`        | `string` | No       | `latest`                                                                             | Image tag.                  |
 
 ### ClusterTLSSpec {#clustertlsspec}
@@ -327,9 +325,7 @@ Reference to a Secret or ConfigMap key containing a password.
 | `secret`       | `*SecretKeySelector`    | No       | -           | Select password from a Secret key. Mutually exclusive with `configMap`.                                                                                                                                                                                        |
 | `configMap`    | `*ConfigMapKeySelector` | No       | -           | Select password from a ConfigMap key. Mutually exclusive with `secret`.                                                                                                                                                                                        |
 
-:::note
-You must specify either `secret` OR `configMap`, not both.
-:::
+> **note**: You must specify either `secret` OR `configMap`, not both.
 
 #### Example with Secret (Recommended) {#defaultpasswordselector-example-secret}
 

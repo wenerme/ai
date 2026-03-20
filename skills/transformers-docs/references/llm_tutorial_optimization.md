@@ -1,13 +1,4 @@
-<!--Copyright 2023 The HuggingFace Team. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
--->
+
 
 # Optimizing LLMs for Speed and Memory
 
@@ -366,8 +357,6 @@ Let's go over each component in more detail
 Self-attention puts each token in relation to each other's tokens.
 As an example, the $\text{Softmax}(\mathbf{QK}^T)$ matrix of the text input sequence *"Hello", "I", "love", "you"* could look as follows:
 
-![](/blog/assets/163_optimize_llm/self_attn_tokens.png)
-
 Each word token is given a probability mass at which it attends all other word tokens and, therefore is put into relation with all other word tokens. E.g. the word *"love"* attends to the word *"Hello"* with 5%, to *"I"* with 30%, and to itself with 65%.
 
 A LLM based on self-attention, but without position embeddings would have great difficulties in understanding the positions of the text inputs to each other.
@@ -411,8 +400,6 @@ $\mathbf{R}_{\theta, i - j}$ thereby represents a rotational matrix. $\theta$ is
 - [**PaLM**](https://huggingface.co/papers/2204.02311)
 
 As an alternative, *ALiBi* proposes a much simpler relative position encoding scheme. The relative distance that input tokens have to each other is added as a negative integer scaled by a pre-defined value `m` to each query-key entry of the $\mathbf{QK}^T$ matrix right before the softmax computation.
-
-![](/blog/assets/163_optimize_llm/alibi.png)
 
 As shown in the [ALiBi](https://huggingface.co/papers/2108.12409) paper, this simple relative positional encoding allows the model to retain a high performance even at very long text input sequences.
 
@@ -520,11 +507,7 @@ Using the key-value cache has two advantages:
 
 > One should *always* make use of the key-value cache as it leads to identical results and a significant speed-up for longer input sequences. Transformers has the key-value cache enabled by default when making use of the text pipeline or the [`generate` method](https://huggingface.co/docs/transformers/main_classes/text_generation). We have an entire guide dedicated to caches [here](./kv_cache).
 
-<Tip warning={true}>
-
 Note that, despite our advice to use key-value caches, your LLM output may be slightly different when you use them. This is a property of the matrix multiplication kernels themselves -- you can read more about it [here](https://github.com/huggingface/transformers/issues/25420#issuecomment-1775317535).
-
-</Tip>
 
 #### 3.2.1 Multi-round conversation
 

@@ -1,6 +1,5 @@
 ---
 title: Folder-based Discovery
-sidebar_label: Folder-based Discovery
 ---
 
 Instead of explicitly listing all entities, you can use glob patterns to discover entities automatically based on file naming conventions.
@@ -61,7 +60,7 @@ const orm = await MikroORM.init({
 });
 ```
 
-:::note Brace expansion
+> **note**: Brace expansion
 
 Native Node.js glob does not support brace expansion patterns like `src/{entities,modules}/*.ts`. If you need this feature, use `tinyglobby` directly:
 
@@ -72,8 +71,6 @@ export default defineConfig({
   entities: await glob(['src/{entities,modules}/*.ts']),
 });
 ```
-
-:::
 
 ## Debugging discovery
 

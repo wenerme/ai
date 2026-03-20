@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'C#'
-sidebar_position: 6
 keywords: ['clickhouse', 'cs', 'c#', '.net', 'dotnet', 'csharp', 'client', 'driver', 'connect', 'integrate']
-slug: /integrations/csharp
 description: 'The official C# client for connecting to ClickHouse.'
 title: 'ClickHouse C# Driver'
 doc_type: 'guide'
@@ -11,10 +8,6 @@ integration:
   - category: 'language_client'
   - website: 'https://github.com/ClickHouse/clickhouse-cs'
 ---
-
-import Image from '@theme/IdealImage';
-import cloud_connect_button from '@site/static/images/_snippets/cloud-connect-button.png';
-import connection_details_csharp from '@site/static/images/_snippets/connection-details-csharp.png';
 
 # ClickHouse C# client
 
@@ -113,11 +106,9 @@ Below is a full list of all the settings, their default values, and their effect
 | UseSession | `bool` | `false` | `UseSession` | Enable stateful sessions; serializes requests |
 | SessionId | `string` | `null` | `SessionId` | Session ID; auto-generates GUID if null and UseSession is true |
 
-:::note
-The `UseSession` flag enables persistence of the server session, allowing use of `SET` statements and temporary tables. Sessions will be reset after 60 seconds of inactivity (default timeout). Session lifetime can be extended by setting session settings via ClickHouse statements or the server configuration.
+> **note**: The `UseSession` flag enables persistence of the server session, allowing use of `SET` statements and temporary tables. Sessions will be reset after 60 seconds of inactivity (default timeout). Session lifetime can be extended by setting session settings via ClickHouse statements or the server configuration.
 
 The `ClickHouseConnection` class normally allows for parallel operation (multiple threads can run queries concurrently). However, enabling `UseSession` flag will limit that to one active query per connection at any moment of time (this is a server-side limitation).
-:::
 
 ### Security {#security}
 
@@ -147,11 +138,9 @@ The `ClickHouseConnection` class normally allows for parallel operation (multipl
 | CustomSettings | `IDictionary<string, object>` | Empty | `set_*` prefix | ClickHouse server settings, see note below |
 | Roles | `IReadOnlyList<string>` | Empty | `Roles` | Comma-separated ClickHouse roles (e.g., `Roles=admin,reader`) |
 
-:::note
-When using a connection string to set custom settings, use the `set_` prefix, e.g. "set_max_threads=4". When using a ClickHouseClientSettings object, don't use the `set_` prefix.
+> **note**: When using a connection string to set custom settings, use the `set_` prefix, e.g. "set_max_threads=4". When using a ClickHouseClientSettings object, don't use the `set_` prefix.
 
 For a full list of available settings, see [here](https://clickhouse.com/docs/operations/settings/settings).
-:::
 
 ---
 
@@ -300,9 +289,7 @@ var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
 var client = new ClickHouseClient("Host=localhost", factory, "ClickHouse");
 ```
 
-:::note
-`ClickHouseClient` is designed to be long-lived and shared across your application. Create it once (typically as a singleton) and reuse it for all database operations. The client manages HTTP connection pooling internally.
-:::
+> **note**: `ClickHouseClient` is designed to be long-lived and shared across your application. Create it once (typically as a singleton) and reuse it for all database operations. The client manages HTTP connection pooling internally.
 
 ---
 
@@ -380,11 +367,9 @@ var options = new InsertOptions
 };
 ```
 
-:::note
-* The client automatically fetches table structure via `SELECT * FROM <table> WHERE 1=0` before inserting. Provided values must match the target column types.
+> **note**: * The client automatically fetches table structure via `SELECT * FROM <table> WHERE 1=0` before inserting. Provided values must match the target column types.
 * When `MaxDegreeOfParallelism > 1`, batches are uploaded in parallel. Sessions are not compatible with parallel insertion; either disable sessions or set `MaxDegreeOfParallelism = 1`.
 * Use `RowBinaryFormat.RowBinaryWithDefaults` in `InsertOptions.Format` if you want the server to apply DEFAULT values for columns not provided.
-:::
 
 ---
 
@@ -431,9 +416,7 @@ SELECT * FROM table WHERE val = {tuple_in_tuple:Tuple(UInt8, Tuple(String, UInt8
 INSERT INTO table VALUES ({val1:Int32}, {val2:Array(UInt8)})
 ```
 
-:::note
-SQL 'bind' parameters are passed as HTTP URI query parameters, so using too many of them may result in a "URL too long" exception. Use `InsertBinaryAsync` for bulk data insertion to avoid this limitation.
-:::
+> **note**: SQL 'bind' parameters are passed as HTTP URI query parameters, so using too many of them may result in a "URL too long" exception. Use `InsertBinaryAsync` for bulk data insertion to avoid this limitation.
 
 ---
 
@@ -454,9 +437,7 @@ var reader = await client.ExecuteReaderAsync(
 );
 ```
 
-:::tip
-If you're specifying a custom `QueryId`, ensure it is unique for every call. A random GUID is a good choice.
-:::
+> **tip**: If you're specifying a custom `QueryId`, ensure it is unique for every call. A random GUID is a good choice.
 
 ---
 
@@ -495,9 +476,7 @@ using var response = await client.InsertRawStreamAsync(
 );
 ```
 
-:::note
-See the [format settings documentation](/docs/operations/settings/formats) for options to control data ingestion behavior.
-:::
+> **note**: See the [format settings documentation](/docs/operations/settings/formats) for options to control data ingestion behavior.
 
 ---
 
@@ -555,8 +534,7 @@ public class MyService
 }
 ```
 
-:::warning
-**Do not create `ClickHouseConnection` directly** in production code. Each direct instantiation creates a new HTTP client and connection pool, which can lead to socket exhaustion under load:
+> **warning**: **Do not create `ClickHouseConnection` directly** in production code. Each direct instantiation creates a new HTTP client and connection pool, which can lead to socket exhaustion under load:
 
 ```csharp
 // DON'T DO THIS - creates new connection pool each time
@@ -565,7 +543,6 @@ await conn.OpenAsync();
 ```
 
 Instead, always use `ClickHouseDataSource` or share a single `ClickHouseClient` instance.
-:::
 
 ---
 
@@ -640,13 +617,9 @@ while (reader.Read())
 | ADO.NET / ORMs | Use `ClickHouseDataSource` (creates connections that share the same pool) |
 | DI environments | Register `ClickHouseClient` or `ClickHouseDataSource` as singleton with `IHttpClientFactory` |
 
-:::important
-When using a custom `HttpClient` or `HttpClientFactory`, ensure that the `PooledConnectionIdleTimeout` is set to a value smaller than the server's `keep_alive_timeout`, in order to avoid errors due to half-closed connections. The default `keep_alive_timeout` for Cloud deployments is 10 seconds.
-:::
+> **important**: When using a custom `HttpClient` or `HttpClientFactory`, ensure that the `PooledConnectionIdleTimeout` is set to a value smaller than the server's `keep_alive_timeout`, in order to avoid errors due to half-closed connections. The default `keep_alive_timeout` for Cloud deployments is 10 seconds.
 
-:::warning
-Avoid creating multiple `ClickHouseClient` or standalone `ClickHouseConnection` instances without a shared `HttpClient`. Each instance creates its own connection pool.
-:::
+> **warning**: Avoid creating multiple `ClickHouseClient` or standalone `ClickHouseConnection` instances without a shared `HttpClient`. Each instance creates its own connection pool.
 
 ---
 
@@ -692,9 +665,7 @@ settings.CustomSettings["wait_for_async_insert"] = 1; // Recommended: wait for f
 | `wait_for_async_insert=1` | Insert returns after data is flushed to disk. Errors are returned to the client. | **Recommended** for most workloads |
 | `wait_for_async_insert=0` | Insert returns immediately when data is buffered. No guarantee data will be persisted. | Only when data loss is acceptable |
 
-:::warning
-With `wait_for_async_insert=0`, errors only surface during flush and can't be traced back to the original insert. The client also provides no backpressure, risking server overload.
-:::
+> **warning**: With `wait_for_async_insert=0`, errors only surface during flush and can't be traced back to the original insert. The client also provides no backpressure, risking server overload.
 
 **Key settings:**
 
@@ -802,9 +773,7 @@ await using var reader = await cmd3.ExecuteReaderAsync();
 | Decimal128(S) | `decimal` / `ClickHouseDecimal` |
 | Decimal256(S) | `decimal` / `ClickHouseDecimal` |
 
-:::note
-Decimal type conversion is controlled via the UseCustomDecimals setting.
-:::
+> **note**: Decimal type conversion is controlled via the UseCustomDecimals setting.
 
 ---
 
@@ -823,9 +792,7 @@ Decimal type conversion is controlled via the UseCustomDecimals setting.
 | String | `string` |
 | FixedString(N) | `string` |
 
-:::note
-By default, both `String` and `FixedString(N)` columns are returned as `string`. Set `ReadStringsAsByteArrays=true` in your connection string to read them as `byte[]` instead. This is useful when storing binary data that may not be valid UTF-8.
-:::
+> **note**: By default, both `String` and `FixedString(N)` columns are returned as `string`. Set `ReadStringsAsByteArrays=true` in your connection string to read them as `byte[]` instead. This is useful when storing binary data that may not be valid UTF-8.
 
 ---
 
@@ -917,9 +884,7 @@ var settings = new ClickHouseClientSettings("Host=localhost")
 | Variant(T1, T2, ...) | See note |
 | QBit(T, dimension) | `T[]` |
 
-:::note
-The Dynamic and Variant types will be converted to the corresponding type for the actual underlying type in each row.
-:::
+> **note**: The Dynamic and Variant types will be converted to the corresponding type for the actual underlying type in each row.
 
 ---
 
@@ -935,9 +900,7 @@ The Dynamic and Variant types will be converted to the corresponding type for th
 | MultiPolygon | `Polygon[]` |
 | Geometry | See note |
 
-:::note
-The Geometry type is a Variant type that can hold any of the geometry types. It will be converted to the corresponding type.
-:::
+> **note**: The Geometry type is a Variant type that can hold any of the geometry types. It will be converted to the corresponding type.
 
 ---
 
@@ -1440,9 +1403,7 @@ ClickHouseDiagnosticsOptions.IncludeSqlInActivityTags = true;
 ClickHouseDiagnosticsOptions.StatementMaxLength = 500;
 ```
 
-:::warning
-Enabling `IncludeSqlInActivityTags` may expose sensitive data in your traces. Use with caution in production environments.
-:::
+> **warning**: Enabling `IncludeSqlInActivityTags` may expose sensitive data in your traces. Use with caution in production environments.
 
 ## TLS configuration {#tls-configuration}
 
@@ -1489,11 +1450,9 @@ var settings = new ClickHouseClientSettings
 using var client = new ClickHouseClient(settings);
 ```
 
-:::note 
-Important considerations when providing a custom HttpClient
+> **note**: Important considerations when providing a custom HttpClient
 - **Automatic decompression**: You must enable `AutomaticDecompression` if compression isn't disabled (compression is enabled by default).
 - **Idle timeout**: Set `PooledConnectionIdleTimeout` smaller than the server's `keep_alive_timeout` (10 seconds for ClickHouse Cloud) to avoid connection errors from half-open connections.
-:::
 
 ## ORM support {#orm-support}
 

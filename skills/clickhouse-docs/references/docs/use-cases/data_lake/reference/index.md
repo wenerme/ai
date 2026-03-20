@@ -1,9 +1,5 @@
 ---
 description: 'Reference guides for connecting ClickHouse to data lake catalogs including AWS Glue, Unity, REST, Lakekeeper, Nessie, and OneLake.'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 2
-slug: /use-cases/data-lake/reference
 title: 'Catalog guides'
 keywords: ['data lake', 'lakehouse', 'catalog', 'glue', 'unity', 'rest', 'lakekeeper', 'nessie', 'OneLake']
 doc_type: 'landing-page'

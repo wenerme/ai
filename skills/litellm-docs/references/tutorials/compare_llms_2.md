@@ -1,7 +1,5 @@
-import Image from '@theme/IdealImage';
 
 # Comparing LLMs on a Test Set using LiteLLM
-
 
 <div class="cell markdown" id="L-W4C3SgClxl">
 
@@ -13,7 +11,7 @@ given test set using litellm
 
 ## Output at the end of this tutorial:
 <Image img={require('../../img/compare_llms.png')} />
-<br></br>
+</br>
 
 </div>
 
@@ -37,7 +35,6 @@ questions = [
     "does LiteLLM support VertexAI",
     "how do I set my keys on replicate llama2?",
 ]
-
 
 # set your prompt
 prompt = """

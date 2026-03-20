@@ -1,8 +1,5 @@
 ---
-sidebar_position: 1
-sidebar_label: 'Creating tables'
 title: 'Creating tables in ClickHouse'
-slug: /guides/creating-tables
 description: 'Learn about Creating Tables in ClickHouse'
 keywords: ['creating tables', 'CREATE TABLE', 'table creation', 'database guide', 'MergeTree engine']
 doc_type: 'guide'
@@ -40,14 +37,12 @@ In the example above, `my_first_table` is a `MergeTree` table with four columns:
 - `timestamp`: a `DateTime` value, which represents an instant in time
 - `metric`: a 32-bit floating point number
 
-:::note
-The table engine determines:
+> **note**: The table engine determines:
 - How and where the data is stored
 - Which queries are supported
 - Whether or not the data is replicated
 
 There are many engines to choose from, but for a simple table on a single-node ClickHouse server, [MergeTree](/engines/table-engines/mergetree-family/mergetree.md) is your likely choice.
-:::
 
 ## A brief intro to primary keys {#a-brief-intro-to-primary-keys}
 
@@ -67,6 +62,4 @@ then the key becomes the tuple specified in the `ORDER BY` clause. If you specif
 The primary key is also the sorting key, which is a tuple of `(user_id, timestamp)`.  Therefore, the data stored in each
 column file will be sorted by `user_id`, then `timestamp`.
 
-:::tip
-For more details, check out the [Modeling Data training module](https://learn.clickhouse.com/visitor_catalog_class/show/1328860/?utm_source=clickhouse&utm_medium=docs) in ClickHouse Academy.
-:::
+> **tip**: For more details, check out the [Modeling Data training module](https://learn.clickhouse.com/visitor_catalog_class/show/1328860/?utm_source=clickhouse&utm_medium=docs) in ClickHouse Academy.

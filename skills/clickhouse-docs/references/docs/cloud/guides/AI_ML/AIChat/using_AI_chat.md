@@ -1,25 +1,10 @@
 ---
-slug: /use-cases/AI_ML/AIChat
-sidebar_label: 'Use ClickHouse Assistant chat in ClickHouse Cloud'
 title: 'Use ClickHouse Assistant chat in ClickHouse Cloud'
-pagination_prev: null
-pagination_next: null
 description: 'Guide to enabling and using the AI Chat feature in ClickHouse Cloud Console'
 keywords: ['AI', 'ClickHouse Cloud', 'Chat', 'SQL Console', 'Agent', 'Docs AI']
 show_related_blogs: true
-sidebar_position: 2
 doc_type: 'guide'
 ---
-
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-import img_open from '@site/static/images/use-cases/AI_ML/AIChat/1_open_chat.png';
-import img_consent from '@site/static/images/use-cases/AI_ML/AIChat/2_consent.png';
-import img_modes from '@site/static/images/use-cases/AI_ML/AIChat/3_modes.png';
-import img_thinking from '@site/static/images/use-cases/AI_ML/AIChat/4_thinking.png';
-import img_history from '@site/static/images/use-cases/AI_ML/AIChat/5_history.png';
-import img_result_actions from '@site/static/images/use-cases/AI_ML/AIChat/6_result_actions.png';
-import img_new_tab from '@site/static/images/use-cases/AI_ML/AIChat/7_open_in_editor.png';
 
 # Use ClickHouse Assistant chat in ClickHouse Cloud
 

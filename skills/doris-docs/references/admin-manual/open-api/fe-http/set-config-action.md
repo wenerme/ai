@@ -35,7 +35,6 @@ None
 	If persist is set to true and reset_persist is not set or reset_persist is true, the configuration in the `fe_custom.conf` file will be cleared before this modified configuration is written to `fe_custom.conf`.  
 	If persist is set to true and reset_persist is false, this modified configuration item will be incrementally added to `fe_custom.conf`.
 
-
 ## Request body
 
 None

@@ -12,9 +12,7 @@ This table is solely for the purpose of maintaining compatibility with MySQL beh
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Mistral AI API
 https://docs.mistral.ai/api/
@@ -43,8 +42,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
-
 ## Usage with LiteLLM Proxy 
 
 ### 1. Set Mistral Models on config.yaml
@@ -65,10 +62,6 @@ litellm --config config.yaml
 
 ### 3. Test it
 
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -83,8 +76,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -103,8 +94,6 @@ response = client.chat.completions.create(model="mistral-small-latest", messages
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -133,16 +122,10 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Supported Models
 
-:::info
-All models listed here https://docs.mistral.ai/platform/endpoints are supported. We actively maintain the list of models, pricing, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
-
-:::
-
+> **info**: All models listed here https://docs.mistral.ai/platform/endpoints are supported. We actively maintain the list of models, pricing, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
 
 | Model Name     | Function Call                                                | Reasoning Support |
 |----------------|--------------------------------------------------------------|-------------------|
@@ -263,9 +246,6 @@ response = completion(
 
 You can also use reasoning capabilities through the LiteLLM proxy:
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -280,8 +260,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
       "reasoning_effort": "medium"
     }'
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -303,8 +281,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ### Important Notes
 
@@ -397,12 +373,9 @@ response = embedding(
 print(response)
 ```
 
-
 ## Supported Models
 All models listed here https://docs.mistral.ai/platform/endpoints are supported
 
 | Model Name               | Function Call                                                                                                                                                      |
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Mistral Embeddings | `embedding(model="mistral/mistral-embed", input)` | 
-
-
+| Mistral Embeddings | `embedding(model="mistral/mistral-embed", input)` |

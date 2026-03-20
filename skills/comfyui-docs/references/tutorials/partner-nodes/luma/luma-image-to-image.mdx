@@ -1,32 +1,21 @@
 ---
 title: "Luma Image to Image API Node ComfyUI Official Example"
 description: "This guide covers how to use the Luma Image to Image Partner node in ComfyUI"
-sidebarTitle: "Luma Image to Image"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 The [Luma Image to Image](/built-in-nodes/partner-node/image/luma/luma-image-to-image) node allows you to modify existing images based on text prompts using Luma AI technology, while preserving certain features and structures from the original image.
 
 In this guide, we'll show you how to set up an image-to-image workflow using this node.
 
-<ReqHint/>
-<UpdateReminder/>
-
 ## Luma Image to Image Node Documentation
 
 Check the following documentation for detailed node parameter settings:
 
-<Card title="Luma Image to Image Node Documentation" icon="book" href="/built-in-nodes/partner-node/image/luma/luma-image-to-image">
 Luma Image to Image API Node Documentation
-</Card>
 
 ## Luma Image to Image API Node Workflow
 
-<Tip>
 This feature works well for changing objects and shapes. However, it may not be ideal for color changes. We recommend using lower weight values, around 0.0 to 0.1.
-</Tip>
 
 ### 1. Download Workflow File
 
@@ -40,7 +29,7 @@ Download this image to use as input:
 
 ### 2. Complete the Workflow Steps
 
-![Luma Image to Image Workflow Steps](/images/tutorial/api_nodes/luma/luma_i2i_step_guide.jpg)
+[Luma Image to Image Workflow Steps]
 
 Follow these numbered steps:
 1. Click **Upload** on the `Load Image` node to upload your input image
@@ -51,4 +40,4 @@ Follow these numbered steps:
 
 ### 3. Results with Different `image_weight` Values
 
-![Weight Comparison](/images/tutorial/api_nodes/luma/i2i_image_weight.jpg)
+[Weight Comparison]

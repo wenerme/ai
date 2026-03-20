@@ -54,4 +54,3 @@ SELECT TO_DATE(NULL) AS result;
 | NULL   |
 +--------+
 ```
-

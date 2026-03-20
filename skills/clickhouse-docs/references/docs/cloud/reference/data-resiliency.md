@@ -1,23 +1,16 @@
 ---
-slug: /cloud/data-resiliency
-sidebar_label: 'Data resiliency'
 title: 'Disaster recovery'
 description: 'This guide provides an overview of disaster recovery.'
 doc_type: 'reference'
 keywords: ['ClickHouse Cloud', 'data resiliency', 'disaster recovery']
 ---
 
-import Image from '@theme/IdealImage';
-import restore_backup from '@site/static/images/cloud/guides/restore_backup.png';
-
 # Data resiliency {#clickhouse-cloud-data-resiliency}
 
 This page covers the disaster recovery recommendations for ClickHouse Cloud, and guidance for customers to recover from an outage.
 ClickHouse Cloud doesn't currently support automatic failover, or automatic syncing across multiple geographical regions.
 
-:::tip
-Customers should perform periodic backup restore testing to understand the specific RTO for their service size and configuration.
-:::
+> **tip**: Customers should perform periodic backup restore testing to understand the specific RTO for their service size and configuration.
 
 ## Definitions {#definitions}
 
@@ -46,9 +39,7 @@ Enterprise Tier customers can [export backups](/cloud/manage/backups/export-back
 Cross-cloud backup export support is coming soon.
 Applicable data transfer charges will apply for cross-region, and cross-cloud backups.
 
-:::note
-This feature isn't currently available in PCI/ HIPAA services
-:::
+> **note**: This feature isn't currently available in PCI/ HIPAA services
 
 3. **Configurable backups**
 
@@ -76,10 +67,8 @@ We recommend testing with your own database or sample data to get better estimat
 Restore durations are similar to back up durations for similar size.
 As mentioned above, we recommend testing with your own database to have an idea of how long it will take to restore the backup.
 
-:::note
-There is currently NO support for automatic failover between 2 ClickHouse Cloud instances whether in the same or different region.
+> **note**: There is currently NO support for automatic failover between 2 ClickHouse Cloud instances whether in the same or different region.
 There is currently NO automatic syncing of data between different ClickHouse Cloud services in the same or different regions .i.e. Active-Active replication
-:::
 
 ## Recovery process {#recovery-process}
 
@@ -118,9 +107,7 @@ This may involve:
 - Updating environment variables or secrets
 - Restarting application services to establish new connections
 
-:::note
-Backup / restore to an external bucket is currently not supported for services utilizing [Transparent Data Encryption (TDE)](/cloud/security/cmek#transparent-data-encryption-tde).
-:::
+> **note**: Backup / restore to an external bucket is currently not supported for services utilizing [Transparent Data Encryption (TDE)](/cloud/security/cmek#transparent-data-encryption-tde).
 
 ## Additional options {#additional-options}
 

@@ -798,12 +798,12 @@ If moving the folder under another folder:
 
 | Action           | Scope                                                 |
 | ---------------- | ----------------------------------------------------- |
-| `folders:create` | `folders:uid:<destination folder UID>`<br>`folders:*` |
+| `folders:create` | `folders:uid:<destination folder UID>``folders:*` |
 
 If moving the folder under root:
 | Action | Scope |
 | -------------- | ------------- |
-| `folders:create` | `folders:uid:general`<br>`folders:*` |
+| `folders:create` | `folders:uid:general``folders:*` |
 
 JSON body schema:
 

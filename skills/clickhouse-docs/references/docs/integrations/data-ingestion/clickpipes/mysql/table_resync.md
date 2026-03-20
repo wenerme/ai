@@ -1,8 +1,6 @@
 ---
 title: 'Resyncing Specific Tables'
 description: 'Resyncing specific tables in a MySQL ClickPipe'
-slug: /integrations/clickpipes/mysql/table_resync
-sidebar_label: 'Resync table'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
 integration:

@@ -1,21 +1,15 @@
 ---
-slug: /data-modeling/backfilling
 title: 'Backfilling Data'
 description: 'How to use backfill large datasets in ClickHouse'
 keywords: ['materialized views', 'backfilling', 'inserting data', 'resilient data load']
 doc_type: 'guide'
 ---
 
-import nullTableMV from '@site/static/images/data-modeling/null_table_mv.png';
-import Image from '@theme/IdealImage';
-
 # Backfilling Data
 
 Whether new to ClickHouse or responsible for an existing deployment, you will invariably need to backfill tables with historical data. In some cases, this is relatively simple but can become more complex when materialized views need to be populated. This guide documents some processes for this task that you can apply to your use case.
 
-:::note
-This guide assumes users are already familiar with the concept of [Incremental Materialized Views](/materialized-view/incremental-materialized-view) and [data loading using table functions such as s3 and gcs](/integrations/s3). We also recommend users read our guide on [optimizing insert performance from object storage](/integrations/s3/performance), the advice of which can be applied to inserts throughout this guide.
-:::
+> **note**: This guide assumes users are already familiar with the concept of [Incremental Materialized Views](/materialized-view/incremental-materialized-view) and [data loading using table functions such as s3 and gcs](/integrations/s3). We also recommend users read our guide on [optimizing insert performance from object storage](/integrations/s3/performance), the advice of which can be applied to inserts throughout this guide.
 
 ## Example dataset {#example-dataset}
 
@@ -64,9 +58,7 @@ SETTINGS describe_compact_output = 1
 └────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-:::note
-The full PyPI dataset, consisting of over 1 trillion rows, is available in our public demo environment [clickpy.clickhouse.com](https://clickpy.clickhouse.com). For further details on this dataset, including how the demo exploits materialized views for performance and how the data is populated daily, see [here](https://github.com/ClickHouse/clickpy).
-:::
+> **note**: The full PyPI dataset, consisting of over 1 trillion rows, is available in our public demo environment [clickpy.clickhouse.com](https://clickpy.clickhouse.com). For further details on this dataset, including how the demo exploits materialized views for performance and how the data is populated daily, see [here](https://github.com/ClickHouse/clickpy).
 
 ## Backfilling scenarios {#backfilling-scenarios}
 
@@ -206,9 +198,8 @@ ALTER TABLE pypi_downloads_v2 MOVE PARTITION () TO pypi_downloads
 0 rows in set. Elapsed: 0.389 sec.
 ```
 
-:::note Partition names
+> **note**: Partition names
 The above `MOVE PARTITION` call uses the partition name `()`. This represents the single partition for this table (which isn't partitioned). For tables that are partitioned, you will need to invoke multiple `MOVE PARTITION` calls - one for each partition. The name of the current partitions can be established from the [`system.parts`](/operations/system-tables/parts) table e.g. `SELECT DISTINCT partition FROM system.parts WHERE (table = 'pypi_v2')`.
-:::
 
 We can now confirm `pypi` and `pypi_downloads` contain the complete data. `pypi_downloads_v2` and `pypi_v2` can be safely dropped.
 
@@ -253,9 +244,7 @@ FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/pypi/2024-12-
 --continued to all files loaded OR MOVE PARTITION call is performed
 ```
 
-:::note
-ClickPipes uses this approach when loading data from object storage, automatically creating duplicates of the target table and its materialized views and avoiding the need for the user to perform the above steps. By also using multiple worker threads, each handling different subsets (via glob patterns) and with its own duplicate tables, data can be loaded quickly with exactly-once semantics. For those interested, further details can be found [in this blog](https://clickhouse.com/blog/supercharge-your-clickhouse-data-loads-part3).
-:::
+> **note**: ClickPipes uses this approach when loading data from object storage, automatically creating duplicates of the target table and its materialized views and avoiding the need for the user to perform the above steps. By also using multiple worker threads, each handling different subsets (via glob patterns) and with its own duplicate tables, data can be loaded quickly with exactly-once semantics. For those interested, further details can be found [in this blog](https://clickhouse.com/blog/supercharge-your-clickhouse-data-loads-part3).
 
 ## Scenario 1: Backfilling data with existing data ingestion {#scenario-1-backfilling-data-with-existing-data-ingestion}
 
@@ -301,9 +290,7 @@ WHERE timestamp < '2024-12-17 09:00:00'
 
 0 rows in set. Elapsed: 500.152 sec. Processed 2.74 billion rows, 364.40 GB (5.47 million rows/s., 728.59 MB/s.)
 ```
-:::note
-Filtering on timestamp columns in Parquet can be very efficient. ClickHouse will only read the timestamp column to identify the full data ranges to load, minimizing network traffic. Parquet indices, such as min-max, can also be exploited by the ClickHouse query engine.
-:::
+> **note**: Filtering on timestamp columns in Parquet can be very efficient. ClickHouse will only read the timestamp column to identify the full data ranges to load, minimizing network traffic. Parquet indices, such as min-max, can also be exploited by the ClickHouse query engine.
 
 Once this insert is complete, we can move the associated partitions.
 
@@ -315,17 +302,15 @@ ALTER TABLE pypi_downloads_v2 MOVE PARTITION () TO pypi_downloads
 
 If the historical data is an isolated bucket, the above time filter isn't required. If a time or monotonic column is unavailable, isolate your historical data.
 
-:::note Just use ClickPipes in ClickHouse Cloud
+> **note**: Just use ClickPipes in ClickHouse Cloud
 If you're using ClickHouse Cloud you should use ClickPipes for restoring historical backups if the data can be isolated in its own bucket (and a filter isn't required). In addition to reducing the load time by parallelizing the load with multiple workers, ClickPipes automates the above process and creates duplicate tables for both the main table and materialized views.
-:::
 
 ## Scenario 2: Adding materialized views to existing tables {#scenario-2-adding-materialized-views-to-existing-tables}
 
 It isn't uncommon for new materialized views to need to be added to a setup for which significant data has been populated and data is being inserted. A timestamp or monotonically increasing column, which can be used to identify a point in the stream, is useful here and avoids pauses in data ingestion. In the examples below, we assume both cases, preferring approaches that avoid pauses in ingestion.
 
-:::note Avoid POPULATE
+> **note**: Avoid POPULATE
 We don't recommend using the [`POPULATE`](/sql-reference/statements/create/view#materialized-view) command for backfilling materialized views for anything other than small datasets where ingest is paused. This operator can miss rows inserted into its source table, with the materialized view created after the populate hash is finished. Furthermore, this populate runs against all data and is vulnerable to interruptions or memory limits on large datasets.
-:::
 
 ### Timestamp or Monotonically increasing column available {#timestamp-or-monotonically-increasing-column-available}
 
@@ -393,9 +378,7 @@ Ok.
 Peak memory usage: 543.71 MiB.
 ```
 
-:::note
-In the above example our target table is a [SummingMergeTree](/engines/table-engines/mergetree-family/summingmergetree). In this case we can simply use our original aggregation query. For more complex use cases which exploit the [AggregatingMergeTree](/engines/table-engines/mergetree-family/aggregatingmergetree), you will use `-State` functions for the aggregates. An example of this can be found in this [integration guide](/integrations/s3/performance#be-aware-of-merges).
-:::
+> **note**: In the above example our target table is a [SummingMergeTree](/engines/table-engines/mergetree-family/summingmergetree). In this case we can simply use our original aggregation query. For more complex use cases which exploit the [AggregatingMergeTree](/engines/table-engines/mergetree-family/aggregatingmergetree), you will use `-State` functions for the aggregates. An example of this can be found in this [integration guide](/integrations/s3/performance#be-aware-of-merges).
 
 In our case, this is a relatively lightweight aggregation that completes in under 3s and uses less than 600MiB of memory. For more complex or longer-running aggregations, you can make this process more resilient by using the earlier duplicate table approach i.e. create a shadow target table, e.g., `pypi_downloads_per_day_v2`, insert into this, and attach its resulting partitions to `pypi_downloads_per_day`.
 
@@ -417,8 +400,6 @@ The [Null table engine](/engines/table-engines/special/null) provides a storage 
 Importantly, any materialized views attached to the table engine still execute over blocks of data as its inserted - sending their results to a target table. These blocks are of a configurable size. While larger blocks can potentially be more efficient (and faster to process), they consume more resources (principally memory). Use of this table engine means we can build our materialized view incrementally i.e. a block at a time, avoiding the need to hold the entire aggregation in memory.
 
 <Image img={nullTableMV} size="md" alt="Denormalization in ClickHouse"/>
-
-<br />
 
 Consider the following example:
 
@@ -443,9 +424,7 @@ GROUP BY
 
 Here, we create a Null table, `pypi_v2,` to receive the rows that will be used to build our materialized view. Note how we limit the schema to only the columns we need. Our materialized view performs an aggregation over rows inserted into this table (one block at a time), sending the results to our target table, `pypi_downloads_per_day`.
 
-:::note
-We have used `pypi_downloads_per_day` as our target table here. For additional resiliency, users could create a duplicate table, `pypi_downloads_per_day_v2`, and use this as the target table of the view, as shown in previous examples. On completion of the insert, partitions in `pypi_downloads_per_day_v2` could, in turn, be moved to `pypi_downloads_per_day.` This would allow recovery in the case our insert fails due to memory issues or server interruptions i.e. we just truncate `pypi_downloads_per_day_v2`, tune settings, and retry.
-:::
+> **note**: We have used `pypi_downloads_per_day` as our target table here. For additional resiliency, users could create a duplicate table, `pypi_downloads_per_day_v2`, and use this as the target table of the view, as shown in previous examples. On completion of the insert, partitions in `pypi_downloads_per_day_v2` could, in turn, be moved to `pypi_downloads_per_day.` This would allow recovery in the case our insert fails due to memory issues or server interruptions i.e. we just truncate `pypi_downloads_per_day_v2`, tune settings, and retry.
 
 To populate this materialized view, we simply insert the relevant data to backfill into `pypi_v2` from `pypi.`
 
@@ -467,9 +446,7 @@ Several factors will determine the performance and resources used in the above s
 - **Insert Block Size** -  data is processed in a loop where it is pulled, parsed, and formed into in-memory insert blocks based on the [partitioning key](/engines/table-engines/mergetree-family/custom-partitioning-key). These blocks are sorted, optimized, compressed, and written to storage as new [data parts](/parts). The size of the insert block, controlled by settings [`min_insert_block_size_rows`](/operations/settings/settings#min_insert_block_size_rows) and [`min_insert_block_size_bytes`](/operations/settings/settings#min_insert_block_size_bytes) (uncompressed), impacts memory usage and disk I/O. Larger blocks use more memory but create fewer parts, reducing I/O and background merges. These settings represent minimum thresholds (whichever is reached first triggers a flush).
 - **Materialized view block size** - As well as the above mechanics for the main insert, prior to insertion into materialized views, blocks are also squashed for more efficient processing. The size of these blocks is determined by the settings [`min_insert_block_size_bytes_for_materialized_views`](/operations/settings/settings#min_insert_block_size_bytes_for_materialized_views) and [`min_insert_block_size_rows_for_materialized_views`](/operations/settings/settings#min_insert_block_size_rows_for_materialized_views). Larger blocks allow more efficient processing at the expense of greater memory usage. By default, these settings revert to the values of the source table settings [`min_insert_block_size_rows`](/operations/settings/settings#min_insert_block_size_rows) and [`min_insert_block_size_bytes`](/operations/settings/settings#min_insert_block_size_bytes), respectively.
 
-:::note
-**Tip for trivial INSERT SELECT queries**: For simple `INSERT INTO t1 SELECT * FROM t2` queries without complex transformations, consider enabling `optimize_trivial_insert_select=1`. This setting (disabled by default since version 24.7) automatically adjusts the SELECT parallelism to match `max_insert_threads`, reducing resource usage and the number of parts created. This is particularly useful for bulk data migrations between tables.
-:::
+> **note**: **Tip for trivial INSERT SELECT queries**: For simple `INSERT INTO t1 SELECT * FROM t2` queries without complex transformations, consider enabling `optimize_trivial_insert_select=1`. This setting (disabled by default since version 24.7) automatically adjusts the SELECT parallelism to match `max_insert_threads`, reducing resource usage and the number of parts created. This is particularly useful for bulk data migrations between tables.
 
 For improving performance, you can follow the guidelines outlined in the [Tuning Threads and Block Size for Inserts](/integrations/s3/performance#tuning-threads-and-block-size-for-inserts) section of the [Optimizing for S3 Insert and Read Performance guide](/integrations/s3/performance). It shouldn't be necessary to also modify `min_insert_block_size_bytes_for_materialized_views` and `min_insert_block_size_rows_for_materialized_views` to improve performance in most cases. If these are modified, use the same best practices as discussed for `min_insert_block_size_rows` and `min_insert_block_size_bytes`.
 

@@ -2,9 +2,6 @@
 title: Inheritance Mapping
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 ## Mapped Superclasses
 
 A mapped superclass is an abstract or concrete class that provides persistent entity state and mapping information for its subclasses, but which is not itself an entity. Typically, the purpose of such a mapped superclass is to define state and mapping information that is common to multiple entity classes.
@@ -15,17 +12,7 @@ Mapped superclasses, just as regular, non-mapped classes, can appear in the midd
 
 > Also note that you can't use generics to define any relations. This means that you cannot have a generic type argument in the base entity that would be used as a target of some relation.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const p = defineEntity.properties;
@@ -62,9 +49,9 @@ export class Person extends PersonSchema.class {}
 PersonSchema.setClass(Person);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 const p = defineEntity.properties;
@@ -102,8 +89,8 @@ export type IEmployee = InferEntity<typeof Employee>;
 export type IToothbrush = InferEntity<typeof Toothbrush>;
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 // do not use @Entity decorator on base classes (mapped superclasses)
@@ -146,8 +133,7 @@ export class Toothbrush {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 The DDL for the corresponding database schema would look something like this (this is for SQLite):
 
@@ -168,17 +154,7 @@ As you can see from this DDL snippet, there is only a single table for the entit
 
 [Single Table Inheritance](https://martinfowler.com/eaaCatalog/singleTableInheritance.html) is an inheritance mapping strategy where all classes of a hierarchy are mapped to a single database table. In order to distinguish which row represents which type in the hierarchy a so-called discriminator column is used.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const PersonSchema = defineEntity({
@@ -202,9 +178,9 @@ export class Person extends PersonSchema.class {}
 PersonSchema.setClass(Person);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const Person = defineEntity({
@@ -225,8 +201,8 @@ export const Employee = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({
@@ -243,8 +219,7 @@ export class Employee extends Person {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 Things to note:
 
@@ -258,17 +233,7 @@ Things to note:
 
 As noted above, the discriminator map can be auto-generated. In that case, you might want to control the tokens that will be used in the map. To do so, you can use `discriminatorValue` on the child entities:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const PersonSchema = defineEntity({
@@ -293,9 +258,9 @@ export class Person extends PersonSchema.class {}
 PersonSchema.setClass(Person);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const Person = defineEntity({
@@ -317,8 +282,8 @@ export const Employee = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({
@@ -337,8 +302,7 @@ export class Employee extends Person {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Explicit discriminator column
 
@@ -351,17 +315,7 @@ On the other hand, it is perfectly fine to define the column explicitly. Doing s
 
 Following example shows how you can define the discriminator explicitly, as well as a version where root entity is abstract class.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BasePersonSchema = defineEntity({
@@ -394,9 +348,9 @@ export class BasePerson extends BasePersonSchema.class {}
 BasePersonSchema.setClass(BasePerson);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const BasePerson = defineEntity({
@@ -426,8 +380,8 @@ export const Employee = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({
@@ -452,22 +406,11 @@ export class Employee extends Person {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 If you want to use `discriminatorValue` with abstract entities, you need to mark the entity as `abstract: true` so it can be skipped from the discriminator map:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BasePersonSchema = defineEntity({
@@ -501,9 +444,9 @@ export class BasePerson extends BasePersonSchema.class {}
 BasePersonSchema.setClass(BasePerson);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const BasePerson = defineEntity({
@@ -534,8 +477,8 @@ export const Employee = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({
@@ -560,8 +503,7 @@ export class Employee extends Person {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Design-time considerations
 
@@ -601,17 +543,7 @@ If you need a relationship that can point to multiple unrelated entity types (ea
 
 Use `inheritance: 'tpt'` on the root entity of the hierarchy:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const PersonSchema = defineEntity({
@@ -644,9 +576,9 @@ export class Person extends PersonSchema.class {}
 PersonSchema.setClass(Person);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const Person = defineEntity({
@@ -676,8 +608,8 @@ export const Customer = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({ inheritance: 'tpt' })
@@ -708,8 +640,7 @@ export class Customer extends Person {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Generated Schema
 
@@ -791,17 +722,7 @@ const employees = await em.find(Employee, { department: 'Engineering' });
 
 TPT supports deep inheritance hierarchies. Each level adds another table and join:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const PersonSchema = defineEntity({
@@ -834,9 +755,9 @@ export class Person extends PersonSchema.class {}
 PersonSchema.setClass(Person);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const Person = defineEntity({
@@ -866,8 +787,8 @@ export const Manager = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity({ inheritance: 'tpt' })
@@ -892,8 +813,7 @@ export class Manager extends Employee {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 This generates three tables with a chain of foreign keys:
 

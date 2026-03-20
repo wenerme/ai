@@ -72,4 +72,3 @@ Hopefully we can also count on your support for the coming year. If you would li
 * [Sponsor us](https://github.com/biomejs/biome/tree/main#funding). Ask your company to sponsor us: Biome is so fast that it can reduce your company's CI times, improve developer productivity, and save money. Sponsorships also create exposure for your company.
 * [Hire us](https://biomejs.dev/enterprise/). Is Biome missing anything that prevents your company from adopting it? You can make it happen by hiring us! Any company that hires a contributor to work on Biome for 3 months or more automatically applies for sponsorship benefits.
 * [Improve our documentation](https://github.com/biomejs/website/). Write guides or recipes, or help to keep our translations up-to-date for non-English speakers.
-

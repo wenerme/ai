@@ -1,6 +1,5 @@
 ---
 title: 'Postgres Generated Columns: Gotchas and Best Practices'
-slug: /integrations/clickpipes/postgres/generated_columns
 description: 'Page describing important considerations to keep in mind when using PostgreSQL generated columns in tables that are being replicated'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']

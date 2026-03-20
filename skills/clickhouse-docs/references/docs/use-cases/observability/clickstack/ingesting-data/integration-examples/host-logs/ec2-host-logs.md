@@ -1,32 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/host-logs/ec2
 title: 'Monitoring EC2 Host Logs with ClickStack'
-sidebar_label: 'EC2 Host Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring EC2 Host Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['EC2', 'AWS', 'host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'cloud metadata']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import search_view from '@site/static/images/clickstack/host-logs/ec2/search-view.png';
-import log_view from '@site/static/images/clickstack/host-logs/ec2/log-view.png';
-import search_view_demo from '@site/static/images/clickstack/host-logs/ec2/search-view-demo.png';
-import log_view_demo from '@site/static/images/clickstack/host-logs/ec2/log-view-demo.png';
-import logs_dashboard from '@site/static/images/clickstack/host-logs/host-logs-dashboard.png';
-import finish_import from '@site/static/images/clickstack/host-logs/import-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Monitoring EC2 Host Logs with ClickStack {#ec2-host-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize EC2 system logs in ClickStack using the OpenTelemetry Collector with automatic EC2 metadata enrichment (instance ID, region, AZ, instance type). Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing EC2 instance {#existing-ec2}
 
@@ -34,7 +16,6 @@ This section covers installing OpenTelemetry Collector on your EC2 instances to 
 
 :::note[Running ClickStack on the same EC2 instance?]
 If ClickStack is running on the same EC2 instance whose logs you want to monitor, you can use the all-in-one approach similar to the [Generic Host Logs guide](/use-cases/observability/clickstack/integrations/host-logs). Mount `/var/log` into the ClickStack container and add the `resourcedetection` processor to your custom config to automatically capture EC2 metadata. This guide focuses on the more common distributed architecture for production deployments.
-:::
 
 If you would like to test the EC2 host logs integration before configuring your production instance, you can test with our preconfigured setup and sample data in the ["Demo dataset"](/use-cases/observability/clickstack/integrations/host-logs/ec2#demo-dataset) section.
 
@@ -64,9 +45,7 @@ You should see your instance ID, region, and instance type. If these commands fa
 - IMDSv2 isn't blocked by security groups or network ACLs
 - You're running these commands from the EC2 instance itself
 
-:::note
-EC2 metadata is available at `http://169.254.169.254` from within the instance. The OpenTelemetry `resourcedetection` processor uses this endpoint to automatically enrich logs with cloud context.
-:::
+> **note**: EC2 metadata is available at `http://169.254.169.254` from within the instance. The OpenTelemetry `resourcedetection` processor uses this endpoint to automatically enrich logs with cloud context.
 
 #### Verify syslog files exist {#verify-syslog}
 
@@ -107,9 +86,6 @@ sudo mkdir -p /etc/otelcol-contrib
 ```
 
 Choose the configuration based on your Linux distribution:
-
-<Tabs groupId="os-type">
-<TabItem value="modern-linux" label="Modern Linux (Ubuntu 24.04+)" default>
 
 ```yaml
 sudo tee /etc/otelcol-contrib/config.yaml > /dev/null << 'EOF'
@@ -164,9 +140,6 @@ service:
 EOF
 ```
 
-</TabItem>
-<TabItem value="legacy-linux" label="Legacy Linux (Amazon Linux 2, RHEL, older Ubuntu)">
-
 ```yaml
 sudo tee /etc/otelcol-contrib/config.yaml > /dev/null << 'EOF'
 receivers:
@@ -219,10 +192,6 @@ service:
 EOF
 ```
 
-</TabItem>
-</Tabs>
-<br/>
-
 **Replace the following in the configuration:**
 - `YOUR_CLICKSTACK_HOST`: The hostname or IP address where ClickStack is running
 - For local testing, you can use an SSH tunnel (see the [Troubleshooting section](#troubleshooting))
@@ -244,7 +213,6 @@ The `resourcedetection` processor automatically adds these attributes to every l
 - `host.id`: EC2 instance ID (e.g., "i-1234567890abcdef0")
 - `host.type`: Instance type (e.g., "t3.medium")
 - `host.name`: Instance hostname
-:::
 
 #### Set ClickStack API key {#set-api-key}
 
@@ -268,7 +236,6 @@ CLICKSTACK_API_KEY="your-api-key-here" /usr/local/bin/otelcol-contrib --config /
 
 :::note[For production use]
 Configure the collector to run as a systemd service so it starts automatically on boot and restarts on failure. See the [OpenTelemetry Collector documentation](https://opentelemetry.io/docs/collector/deployment/) for details.
-:::
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -379,9 +346,7 @@ service:
 EOF
 ```
 
-:::note
-For demo purposes, we manually add EC2 metadata using the `resource` processor. In production with real EC2 instances, use the `resourcedetection` processor which automatically queries the EC2 metadata API.
-:::
+> **note**: For demo purposes, we manually add EC2 metadata using the `resource` processor. In production with real EC2 instances, use the `resourcedetection` processor which automatically queries the EC2 metadata API.
 
 #### Run ClickStack with demo configuration {#run-demo}
 
@@ -411,7 +376,6 @@ Once the collector is running:
 
 :::note[Timezone display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 You should see logs with simulated EC2 context including:
 - Instance ID: `i-0abc123def456789`
@@ -451,9 +415,7 @@ You can filter dashboard visualizations by EC2 context:
 - `host.type:t3.medium` - Filter by instance type
 - `host.id:i-0abc123def456` - Logs from specific instance
 
-:::note
-For the demo dataset, set the time range to **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

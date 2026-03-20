@@ -21,10 +21,8 @@ import { random } from "./random.ts" with { type: "macro" };
 console.log(`Your random number is ${random()}`);
 ```
 
-<Note>
   Macros are indicated using import attribute syntax. If you haven't seen this syntax before, it's a Stage 3 TC39
   proposal that lets you attach additional metadata to import statements.
-</Note>
 
 Now we'll bundle this file with `bun build`. The bundled file will be printed to stdout.
 
@@ -237,8 +235,6 @@ export function getGitCommitHash() {
 
 When we build it, the `getGitCommitHash` is replaced with the result of calling the function:
 
-<CodeGroup>
-
 ```ts input
 import { getGitCommitHash } from "./getGitCommitHash.ts" with { type: "macro" };
 
@@ -249,12 +245,8 @@ console.log(`The current Git commit hash is ${getGitCommitHash()}`);
 console.log(`The current Git commit hash is 3ee3259104e4507cf62c160f0ff5357ec4c7a7f8`);
 ```
 
-</CodeGroup>
-
-<Info>
   You're probably thinking "Why not just use `process.env.GIT_COMMIT_HASH`?" Well, you can do that too. But can you do
   this with an environment variable?
-</Info>
 
 ### Make fetch() requests at bundle-time
 
@@ -287,8 +279,6 @@ export async function extractMetaTags(url: string) {
 ```
 
 The `extractMetaTags` function is erased at bundle-time and replaced with the result of the function call. This means that the fetch request happens at bundle-time, and the result is embedded in the bundle. Also, the branch throwing the error is eliminated since it's unreachable.
-
-<CodeGroup>
 
 ```jsx input
 import { extractMetaTags } from "./meta.ts" with { type: "macro" };
@@ -324,5 +314,3 @@ export const Head = () => {
   );
 };
 ```
-
-</CodeGroup>

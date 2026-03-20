@@ -86,8 +86,7 @@ To make your model compatible with the Transformers modeling backend, it needs:
 2. `MyAttention` must use `ALL_ATTENTION_FUNCTIONS` to call attention.
 3. `MyModel` must contain `_supports_attention_backend = True`.
 
-<details class="code">
-<summary>modeling_my_model.py</summary>
+modeling_my_model.py
 
 ```python
 
@@ -130,8 +129,6 @@ class MyModel(PreTrainedModel):
     _supports_attention_backend = True
 ```
 
-</details>
-
 Here is what happens in the background when this model is loaded:
 
 1. The config is loaded.
@@ -142,8 +139,7 @@ That's it!
 
 For your model to be compatible with vLLM's tensor parallel and/or pipeline parallel features, you must add `base_model_tp_plan` and/or `base_model_pp_plan` to your model's config class:
 
-<details class="code">
-<summary>configuration_my_model.py</summary>
+configuration_my_model.py
 
 ```python
 
@@ -164,8 +160,6 @@ class MyConfig(PretrainedConfig):
         "norm": (["hidden_states"], ["hidden_states"]),
     }
 ```
-
-</details>
 
 - `base_model_tp_plan` is a `dict` that maps fully qualified layer name patterns to tensor parallel styles (currently only `"colwise"` and `"rowwise"` are supported).
 - `base_model_pp_plan` is a `dict` that maps direct child layer names to `tuple`s of `list`s of `str`s:
@@ -253,8 +247,7 @@ hf scan-cache --dir ~/.cache/huggingface/hub
 
 Use the Hugging Face CLI to interactively [delete downloaded model](https://huggingface.co/docs/huggingface_hub/guides/manage-cache#clean-your-cache) from the cache:
 
-<details>
-<summary>Commands</summary>
+Commands
 
 ```console
 # The `delete-cache` command requires extra dependencies to work with the TUI.
@@ -281,8 +274,6 @@ Press <space> to select, <enter> to validate and <ctrl+c> to quit without modifi
 Start deletion.
 Done. Deleted 1 repo(s) and 0 revision(s) for a total of 438.9M.
 ```
-
-</details>
 
 #### Using a proxy
 

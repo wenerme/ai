@@ -7,10 +7,8 @@ description: Details on using RPCLink in oRPC clients.
 
 RPCLink enables communication with an [RPCHandler](/docs/rpc-handler) or any API that follows the [RPC Protocol](/docs/advanced/rpc-protocol) using HTTP/Fetch.
 
-:::warning
-This documentation is focused on the [HTTP Adapter](/docs/adapters/http).
+> **warning**: This documentation is focused on the [HTTP Adapter](/docs/adapters/http).
 Other adapters may remove or change options to keep things simple.
-:::
 
 ## Overview
 
@@ -70,18 +68,13 @@ const result = await client.planet.list(
 )
 ```
 
-:::info
-If a property in `ClientContext` is required, oRPC enforces its inclusion when calling procedures.
-:::
+> **info**: If a property in `ClientContext` is required, oRPC enforces its inclusion when calling procedures.
 
 ## Custom Request Method
 
 By default, RPCLink sends requests via `POST`. You can override this to use methods like `GET` (for browser or CDN caching) based on your requirements.
 
-::: warning
-By default, [RPCHandler](/docs/rpc-handler) in the [HTTP Adapter](/docs/adapters/http) enabled [StrictGetMethodPlugin](/docs/rpc-handler#default-plugins) which blocks GET requests except for procedures explicitly allowed. Please refer to [StrictGetMethodPlugin](/docs/plugins/strict-get-method) for more details.
-:::
-
+> **warning**: By default, [RPCHandler](/docs/rpc-handler) in the [HTTP Adapter](/docs/adapters/http) enabled [StrictGetMethodPlugin](/docs/rpc-handler#default-plugins) which blocks GET requests except for procedures explicitly allowed. Please refer to [StrictGetMethodPlugin](/docs/plugins/strict-get-method) for more details.
 ```ts twoslash
 import { RPCLink } from '@orpc/client/fetch'
 
@@ -116,7 +109,7 @@ const link = new RPCLink<ClientContext>({
 })
 ```
 
-::: details Automatically use method specified in contract?
+> **details**: Automatically use method specified in contract?
 
 By using `inferRPCMethodFromContractRouter`, the `RPCLink` automatically uses the method specified in the contract when sending requests.
 
@@ -129,9 +122,7 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-A normal [router](/docs/router) works as a contract router as long as it does not include a [lazy router](/docs/router#lazy-router). For more advanced use cases, refer to the [Router to Contract](/docs/contract-first/router-to-contract) guide.
-:::
+> **info**: A normal [router](/docs/router) works as a contract router as long as it does not include a [lazy router](/docs/router#lazy-router). For more advanced use cases, refer to the [Router to Contract](/docs/contract-first/router-to-contract) guide.
 
 ## Lazy URL
 
@@ -176,6 +167,4 @@ sequenceDiagram
   P1 ->> A1: error/output
 ```
 
-::: tip
-Interceptors can be used to intercept and modify the lifecycle at various stages.
-:::
+> **tip**: Interceptors can be used to intercept and modify the lifecycle at various stages.

@@ -1,7 +1,5 @@
 ---
 title: 'Working with JSON in ClickHouse'
-sidebar_label: 'Working with JSON'
-slug: /integrations/clickpipes/mongodb/quickstart
 description: 'Common patterns for working with JSON data replicated from MongoDB to ClickHouse via ClickPipes'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
@@ -216,9 +214,7 @@ SELECT sum(doc.shipping.cost::Float32) AS shipping_cost FROM t1;
 └───────────────┘
 ```
 
-:::note
-Casting from dynamic type to the underlying data type (determined by `dynamicType`) is very performant, as ClickHouse already stores the value in its underlying type internally.
-:::
+> **note**: Casting from dynamic type to the underlying data type (determined by `dynamicType`) is very performant, as ClickHouse already stores the value in its underlying type internally.
 
 ## Flattening JSON {#flattening-json}
 

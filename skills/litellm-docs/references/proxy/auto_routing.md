@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Auto Routing
 
@@ -129,7 +127,6 @@ The `router.json` file supports the following structure:
   - **score_threshold**: Minimum similarity score to trigger this route (0.0-1.0)
   - **metadata**: Additional metadata for the route
 
-
 ## LiteLLM Proxy Server
 
 ### Setup
@@ -145,10 +142,6 @@ Configure the following required fields:
 #### Route Configuration
 
 <Image alt="Auto Router Setup" img={require('../../img/auto_router2.png')} style={{ borderRadius: '8px', marginBottom: '1em', maxWidth: '100%' }} />
-
-<br />
-
-<br />
 
 Click **Add Route** to create a new routing rule. Each route consists of utterances that are matched against input messages to determine the target model.
 
@@ -166,13 +159,9 @@ Configure each route with:
 - **Description** - A human-readable description of what this route handles
 - **Score Threshold** - The minimum similarity score (0.0-1.0) required to trigger this route
 
-
 ### Usage
 
 Once added developers need to select the model=`auto_router1` in the `model` field of the LLM API request.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -194,9 +183,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl Request">
 
 ```shell
 curl -X POST http://localhost:4000/v1/chat/completions \
@@ -207,10 +193,6 @@ curl -X POST http://localhost:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "how to code a program in python"}]
 }'
 ```
-</TabItem>
-</Tabs>
-
-
 
 ## How It Works
 
@@ -404,4 +386,3 @@ The router scores each request across 7 dimensions:
 | Question Complexity | Multiple question marks | Increases complexity |
 
 **Special behavior:** If 2+ reasoning markers are detected in the user message, the request automatically routes to the REASONING tier regardless of the weighted score.
-

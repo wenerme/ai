@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure AI Foundry Agents
 
@@ -115,9 +114,6 @@ async for chunk in response:
 
 #### 1. Configure your model in config.yaml
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
   - model_name: azure-agent-1
@@ -137,9 +133,6 @@ model_list:
       api_key: os.environ/AZURE_AD_TOKEN
 ```
 
-</TabItem>
-</Tabs>
-
 #### 2. Start the LiteLLM Proxy
 
 ```bash showLineNumbers title="Start LiteLLM Proxy"
@@ -147,9 +140,6 @@ litellm --config config.yaml
 ```
 
 #### 3. Make requests to your Azure AI Foundry Agents
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Basic Agent Request"
 curl http://localhost:4000/v1/chat/completions \
@@ -181,10 +171,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Using OpenAI SDK with LiteLLM Proxy"
 from openai import OpenAI
@@ -234,9 +220,6 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Environment Variables
 
 | Variable | Description |
@@ -283,9 +266,6 @@ print(response2.choices[0].message.content)  # Should mention "Alice"
 
 Azure AI Foundry Agents support additional parameters that can be passed to customize the agent invocation.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python showLineNumbers title="Using Agent-specific parameters"
 from litellm import completion
 
@@ -303,9 +283,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration with Parameters"
 model_list:
   - model_name: azure-agent-analyst
@@ -317,9 +294,6 @@ model_list:
       client_secret: os.environ/AZURE_CLIENT_SECRET
       instructions: "Be concise and focus on key insights"
 ```
-
-</TabItem>
-</Tabs>
 
 ### Available Parameters
 

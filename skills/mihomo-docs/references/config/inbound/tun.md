@@ -257,4 +257,4 @@ UDP NAT 过期时间，以秒为单位，默认为 300(5 分钟)
 
 从上到下分别为 `system/gvisor/lwip`,仅供参考，平台为 linux,Windows 和 MacOS 可能会有差异
 
-![iperf](../../assets/image/tun/iperf.png)
+[iperf]

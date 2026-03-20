@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock AgentCore
 
@@ -11,11 +10,7 @@ Call Bedrock AgentCore in the OpenAI Request/Response format.
 | Provider Route on LiteLLM | `bedrock/agentcore/{AGENT_RUNTIME_ARN}` |
 | Provider Doc | [AWS Bedrock AgentCore ↗](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agentcore_InvokeAgentRuntime.html) |
 
-:::info
-
-This documentation is for **AgentCore Agents** (agent runtimes). If you want to use AgentCore MCP servers with LiteLLM, see the [MCP AWS SigV4 Auth](https://docs.litellm.ai/docs/mcp_aws_sigv4) guide for setup instructions.
-
-:::
+> **info**: This documentation is for **AgentCore Agents** (agent runtimes). If you want to use AgentCore MCP servers with LiteLLM, see the [MCP AWS SigV4 Auth](https://docs.litellm.ai/docs/mcp_aws_sigv4) guide for setup instructions.
 
 ## Quick Start
 
@@ -78,9 +73,6 @@ for chunk in response:
 
 #### 1. Configure your model in config.yaml
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
   - model_name: agentcore-runtime-1
@@ -98,9 +90,6 @@ model_list:
       aws_region_name: us-east-1
 ```
 
-</TabItem>
-</Tabs>
-
 #### 2. Start the LiteLLM Proxy
 
 ```bash showLineNumbers title="Start LiteLLM Proxy"
@@ -108,9 +97,6 @@ litellm --config config.yaml
 ```
 
 #### 3. Make requests to your AgentCore runtimes
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Basic AgentCore Request"
 curl http://localhost:4000/v1/chat/completions \
@@ -142,10 +128,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Using OpenAI SDK with LiteLLM Proxy"
 from openai import OpenAI
@@ -195,15 +177,9 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Provider-specific Parameters
 
 AgentCore supports additional parameters that can be passed to customize the runtime invocation.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Using AgentCore-specific parameters"
 from litellm import completion
@@ -221,9 +197,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration with Parameters"
 model_list:
   - model_name: agentcore-runtime-prod
@@ -234,9 +207,6 @@ model_list:
       aws_region_name: us-west-2
       qualifier: production
 ```
-
-</TabItem>
-</Tabs>
 
 ### Available Parameters
 
@@ -249,4 +219,3 @@ model_list:
 
 - [AWS Bedrock AgentCore Documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agentcore_InvokeAgentRuntime.html)
 - [LiteLLM Authentication to Bedrock](https://docs.litellm.ai/docs/providers/bedrock#boto3---authentication)
-

@@ -1,6 +1,5 @@
 ---
 title: ComfyUI-Manager Installation
-sidebarTitle: Install
 description: How to install ComfyUI-Manager for different setups
 ---
 
@@ -58,8 +57,6 @@ For users with a [manual installation](/installation/manual_install), the new Co
 
 The following version updates only support pip installations. Versions installed via custom nodes do not support switching to the new UI.
 
-<Tabs>
-<Tab title="Non-Desktop users">
 To use the new UI:
 ```bash
 python main.py --enable-manager
@@ -70,16 +67,11 @@ To use the legacy UI:
 python main.py --enable-manager --enable-manager-legacy-ui
 ```
 
-</Tab>
-<Tab title="Desktop users">
 Desktop users can switch to the legacy UI in **Server Settings → UI Settings → Use legacy manager interface**
-![Switch to legacy UI](/images/manager/manager_use_legacy_manager_ui.png)
-</Tab>
-</Tabs>
+[Switch to legacy UI]
 
 ## Legacy installation methods
 
-<Accordion title="Method 1: Git clone (general installation)">
 To install ComfyUI-Manager in addition to an existing installation of ComfyUI:
 
 1. Navigate to `ComfyUI/custom_nodes` directory in terminal
@@ -93,15 +85,11 @@ To install ComfyUI-Manager in addition to an existing installation of ComfyUI:
    pip install -r requirements.txt
    ```
 4. Restart ComfyUI
-</Accordion>
 
-<Accordion title="Method 2: Portable version (Windows)">
 1. Install [Git for Windows](https://git-scm.com/download/win) (standalone version, select "use windows default console window")
 2. Download [install-manager-for-portable-version.bat](https://github.com/ltdrdata/ComfyUI-Manager/raw/main/scripts/install-manager-for-portable-version.bat) into your `ComfyUI_windows_portable` directory
 3. Double-click the batch file to install
-</Accordion>
 
-<Accordion title="Method 3: comfy-cli (recommended for new installations)">
 comfy-cli provides various features to manage ComfyUI from the CLI.
 
 **Prerequisites**: Python 3, Git
@@ -123,9 +111,7 @@ comfy install
 ```
 
 See also: [comfy-cli documentation](/comfy-cli/getting-started)
-</Accordion>
 
-<Accordion title="Method 4: Linux + venv">
 **Prerequisites**: python-is-python3, python3-venv, git
 
 1. Download [install-comfyui-venv-linux.sh](https://github.com/comfy-org/ComfyUI-Manager/raw/main/scripts/install-comfyui-venv-linux.sh) into an empty install directory
@@ -135,11 +121,8 @@ See also: [comfy-cli documentation](/comfy-cli/getting-started)
    ./install-comfyui-venv-linux.sh
    ```
 3. Execute ComfyUI with `./run_gpu.sh` or `./run_cpu.sh`
-</Accordion>
 
-<Warning>
 **Installation precautions:**
 - ComfyUI-Manager files must be accurately located in the path `ComfyUI/custom_nodes/comfyui-manager`
 - Do not decompress directly into `ComfyUI/custom_nodes` (files like `__init__.py` should not be in that directory)
 - Do not install in paths like `ComfyUI/custom_nodes/ComfyUI-Manager/ComfyUI-Manager` or `ComfyUI/custom_nodes/ComfyUI-Manager-main`
-</Warning>

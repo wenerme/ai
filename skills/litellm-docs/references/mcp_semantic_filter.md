@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # MCP Semantic Tool Filter
 
@@ -67,9 +66,6 @@ litellm_settings:
 
 Use MCP tools normally with the Responses API or Chat Completions. The semantic filter runs automatically:
 
-<Tabs>
-<TabItem value="responses" label="Responses API">
-
 ```bash title="Responses API with Semantic Filtering" showLineNumbers
 curl --location 'http://localhost:4000/v1/responses' \
 --header 'Content-Type: application/json' \
@@ -94,9 +90,6 @@ curl --location 'http://localhost:4000/v1/responses' \
 }'
 ```
 
-</TabItem>
-<TabItem value="chat" label="Chat Completions">
-
 ```bash title="Chat Completions with Semantic Filtering" showLineNumbers
 curl --location 'http://localhost:4000/v1/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -114,9 +107,6 @@ curl --location 'http://localhost:4000/v1/chat/completions' \
   ]
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Response Headers
 

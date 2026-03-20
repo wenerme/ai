@@ -12,9 +12,7 @@ This table is solely used for compatibility with MySQL behavior. It is always em
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

@@ -12,20 +12,20 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
     ### Step 1: Open the pipeline editor
     1. Log in to OpenObserve.
     2. In the left navigation panel, select **Pipelines**. By default, the system opens the **Pipelines** tab. 
-    ![Pipelines tab](../../images/pipelines-tab.png)
+    [Pipelines tab]
     3. Click **Add Pipeline** at the top-right corner.
-    ![Open the pipeline editor](../../images/pipeline-editor.png)
+    [Open the pipeline editor]
 ??? "Step 2: Enter a pipeline name"
     ### Step 2: Enter a pipeline name
     Enter a unique name in the input box at the top of the editor.
-    ![scheduled-pipeline-name](../../images/scheduled-pipeline-name.png)
+    [scheduled-pipeline-name]
 ??? "Step 3: Configure the Source node (Query)"
     ### Step 3: Configure the Source node (Query)
     Scheduled pipelines do not use a **Stream** node as the source. They always begin with a **Query** node.
 
     1. From the **Source** section, drag the **Query** node into the editor.  
     2. The **Associate Query** panel opens. The panel contains the following sections, **Build Query**, **SQL Query** editor, **Output**, **Set Variables**. 
-    ![Associate Query](../../images/associate-query.png) 
+    [Associate Query] 
     3. In the **Build Query** section: 
 
         1. Select the **Stream Type**.  
@@ -33,7 +33,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
     4. Edit or write your SQL query in the **SQL query** editor.  
     5. Select the time range from the time range selector at the top-right corner. 
     5. Click **Run query** to preview data in the **Output** panel.  
-    ![output-preview](../../images/query-output.png)
+    [output-preview]
     6. In the **Set Variables** section configures how the pipeline runs using the following settings: 
 
         - **Enable Cron**: Switch from interval-based scheduling to cron-based scheduling.  
@@ -44,7 +44,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
         > See the [Pipelines overview](https://openobserve.ai/docs/user-guide/pipelines/pipelines/) page to learn more about frequency, period, and cron.
         > See the [Configurable Delay in Scheduled Pipelines](https://openobserve.ai/docs/user-guide/pipelines/configurable-delay-in-scheduled-pipelines/) page to learn how to configure delay in scheduled-pipelines.
 
-        ![variables](../../images/scheduled-variables.png)
+        [variables]
 
     7. After configuring the query and variables, click **Validate and Close**. This adds the Query node to the editor.
 
@@ -53,7 +53,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
 
     1. From the **Transform** section, drag either a **Condition** or **Function** node into the editor.
     2. If you add a Condition node:
-        ![condition-node](../../images/schedule-condition-node.png)
+        [condition-node]
 
         1. In the **Associate Conditions** screen, select the field name in the **Column** drop-down list. This list displays the fields detected in the source stream.
         2. Select an operator from the **Operator** drop-down list.
@@ -69,7 +69,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
     3. If you add a Function node:
 
         Use a Function node to transform events using a VRL function.
-        > A Function does not require predefined fields. You can use it even if the source stream has no schema. <br>
+        > A Function does not require predefined fields. You can use it even if the source stream has no schema. 
         !!! note "To create a new function:"
 
             1. Enable **Create new function** toggle.
@@ -94,7 +94,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
     A destination defines where the processed events are written. You can forward data to another stream or to an external system.
 
     **To add a stream destination:** 
-    ![stream-destination](../../images/schedule-stream-destination.png)
+    [stream-destination]
 
     1. Drag a **Stream** node into the editor.
     2. In the **Associate Stream** panel, configure the destination stream.
@@ -108,7 +108,6 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
         Example: `static_text_{fieldname}_postfix`  
         Static text before and after the braces is optional.
 
-
     **To add an external destination:** 
 
     1. Drag a **Remote** node into the editor.
@@ -117,17 +116,16 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
 
     > For detailed steps on configuring external destinations, see the [Remote Destination](https://openobserve.ai/docs/user-guide/pipelines/remote-destination/) guide. 
 
-
 ??? "Step 6: Connect the nodes"
     ### Step 6: Connect the nodes
     Use the connection icon to link Source > Transform > Destination. 
     To remove a link, select the link and press delete on your keyboard. 
-    ![connect-nodes](../../images/schedule-connect-nodes.png)
+    [connect-nodes]
 
 ??? "Step 7: Save the pipeline"
     ### Step 7: Save the pipeline
     Click **Save**. The pipeline becomes active immediately.
-    ![scheduled-pipeline-list-view](../../images/scheduled-pipeline-list-view.png)
+    [scheduled-pipeline-list-view]
 
 ## Use the scheduled pipeline
 
@@ -139,7 +137,7 @@ Use this guide to create and run scheduled pipelines. Scheduled pipelines run at
     It processes data only when the schedule triggers, using the configured frequency, period, and delay.
 ??? "Step 2: Verify output"
     ### Step 2: Verify output
-    ![view-result](../../images/view-scheduled-result.png)
+    [view-result]
 
     1. Go to **Logs**.
     2. From the stream selection dropdown, select the stream you added as destination. 

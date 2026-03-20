@@ -1,20 +1,16 @@
 # Open Telemetry Support <Experimental /> {#open-telemetry-support}
 
-::: tip FEEDBACK
+> **tip**: FEEDBACK
 Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9222).
-:::
 
-::: tip Example Project
+> **tip**: Example Project
 [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/opentelemetry)
-:::
 
 [OpenTelemetry](https://opentelemetry.io/) traces can be a useful tool to debug the performance and behavior of your application inside tests.
 
 If enabled, Vitest integration generates spans that are scoped to your test's worker.
 
-::: warning
-OpenTelemetry initialization increases the startup time of every test unless Vitest runs without [isolation](/config/isolate). You can see it as the `vitest.runtime.traces` span inside `vitest.worker.start`.
-:::
+> **warning**: OpenTelemetry initialization increases the startup time of every test unless Vitest runs without [isolation](/config/isolate). You can see it as the `vitest.runtime.traces` span inside `vitest.worker.start`.
 
 To start using OpenTelemetry in Vitest, specify an SDK module path via [`experimental.openTelemetry.sdkPath`](/config/experimental#experimental-opentelemetry) and set `experimental.openTelemetry.enabled` to `true`. Vitest will automatically instrument the whole process and each individual test worker.
 
@@ -28,7 +24,6 @@ Before previewing your application traces, install required packages and specify
 npm i @opentelemetry/sdk-node @opentelemetry/auto-instrumentations-node @opentelemetry/exporter-trace-otlp-proto
 ```
 
-::: code-group
 ```js{12} [otel.js]
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
@@ -57,11 +52,9 @@ export default defineConfig({
   },
 })
 ```
-:::
 
-::: danger FAKE TIMERS
+> **danger**: FAKE TIMERS
 If you are using fake timers, it is important to reset them before the test ends, otherwise traces might not be tracked properly.
-:::
 
 Vitest doesn't process the `sdkPath` module, so it is important that the SDK can be imported within your Node.js environment. It is ideal to use the `.js` extension for this file. Using another extension will slow down your tests and may require providing additional Node.js arguments.
 
@@ -94,7 +87,6 @@ To capture traces from the browser runtime, provide a browser-compatible SDK via
 npm i @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-proto
 ```
 
-::: code-group
 ```js [otel-browser.js]
 import {
   BatchSpanProcessor,
@@ -131,11 +123,9 @@ export default defineConfig({
   },
 })
 ```
-:::
 
-::: warning ASYNC CONTEXT
+> **warning**: ASYNC CONTEXT
 Unlike Node.js, browsers do not have automatic async context propagation. Vitest handles this internally for test execution, but custom spans in deeply nested async code may not propagate context automatically.
-:::
 
 ## View Traces
 
@@ -143,7 +133,7 @@ To generate traces, run Vitest as usual. You can run Vitest in either watch mode
 
 You can view traces using any of the open source or commercial products that support OpenTelemetry API. If you did not use OpenTelemetry before, we recommend starting with [Jaeger](https://www.jaegertracing.io/docs/2.11/getting-started/#all-in-one) because it is really easy to setup.
 
-<img src="/otel-jaeger.png" alt="an example of open telemetry result in jaeger" />
+[an example of open telemetry result in jaeger]
 
 ## `@opentelemetry/api`
 

@@ -45,17 +45,11 @@ The following sections provide detailed explanations on how to visualize and int
 
 ### Infinite scroll
 
-<!-- vale Grafana.GoogleWill = NO -->
-
 When you reach the bottom of the list of logs, you will see the message `Scroll to load more`. If you continue scrolling and the displayed logs are within the selected time interval, Grafana will load more logs. When the sort order is "newest first" you receive older logs, and when the sort order is "oldest first" you get newer logs.
-
-<!-- vale Grafana.GoogleWill = YES -->
 
 ### Visualization options
 
 You have the option to customize the display of logs and choose which columns to show. Following is a list of available options.
-
-<!-- vale Grafana.Spelling = NO -->
 
 | Option                                | Description                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -71,8 +65,6 @@ You have the option to customize the display of logs and choose which columns to
 | Font size                             | Small font (default), Large font.                                                                                                                                                                                                                                                                                                                                                   |
 | Unescaped newlines                    | Only displayed if the logs contain unescaped new lines. Click to unescape and display as new lines.                                                                                                                                                                                                                                                                                 |
 | Download logs                         | Plain text (txt), JavaScript Object Notation (JSON), Comma-separated values (CSV)                                                                                                                                                                                                                                                                                                   |
-
-<!-- vale Grafana.Spelling = YES -->
 
 ### Download log lines
 

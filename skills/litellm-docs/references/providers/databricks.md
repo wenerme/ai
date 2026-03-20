@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Databricks
 
 LiteLLM supports all models on Databricks
 
-:::tip
-
-**We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
 
 ## Authentication
 
@@ -106,9 +101,6 @@ LiteLLM automatically redacts sensitive information (tokens, secrets, API keys) 
 
 ## Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ### ENV VAR
 ```python
 import os 
@@ -132,9 +124,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -147,8 +136,6 @@ response = completion(
         user_agent: "mycompany/1.0.0"  # Optional: for partner attribution
   ```
 
-
-
 2. Start the proxy 
 
   ```bash
@@ -157,9 +144,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -185,9 +172,9 @@ response = completion(
   print(response)
   ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -207,14 +194,9 @@ response = completion(
         ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
-
-</TabItem>
-
-</Tabs>
+  
 
 ## Passing additional params - max_tokens, temperature 
 See all litellm.completion supported params [here](../completion/input.md#translated-openai-params)
@@ -248,7 +230,6 @@ response = completion(
         temperature: 0.5
 ```
 
-
 ## Usage - Thinking / `reasoning_content`
 
 LiteLLM translates OpenAI's `reasoning_effort` to Anthropic's `thinking` parameter. [Code](https://github.com/BerriAI/litellm/blob/23051d89dd3611a81617d84277059cd88b2df511/litellm/llms/anthropic/chat/transformation.py#L298)
@@ -259,13 +240,9 @@ LiteLLM translates OpenAI's `reasoning_effort` to Anthropic's `thinking` paramet
 | "medium"         | "budget_tokens": 2048 |
 | "high"           | "budget_tokens": 4096 |
 
-
 Known Limitations:
 - Support for passing thinking blocks back to Claude [Issue](https://github.com/BerriAI/litellm/issues/9790)
  
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -282,10 +259,6 @@ resp = completion(
 )
 
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -315,10 +288,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low"
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 
@@ -385,11 +354,7 @@ exposes these via `response.choices[0].message.provider_specific_fields["citatio
 
 You can also pass the `thinking` parameter to Anthropic models.
 
-
 You can also pass the `thinking` parameter to Anthropic models.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -406,9 +371,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -420,21 +382,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
-
 ## Supported Databricks Chat Completion Models 
 
-:::tip
-
-**We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
-
-:::
-
+> **tip**: **We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
 
 | Model Name                 | Command                                                          |
 |----------------------------|------------------------------------------------------------------|
@@ -448,13 +398,11 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 | databricks-mpt-30b-instruct    | `completion(model='databricks/databricks-mpt-30b-instruct', messages=messages)`   | 
 | databricks-mpt-7b-instruct    | `completion(model='databricks/databricks-mpt-7b-instruct', messages=messages)`   | 
 
-
 ## Embedding Models
 
 ### Passing Databricks specific params - 'instruction'
 
 For embedding models, databricks lets you pass in an additional param 'instruction'. [Full Spec](https://github.com/BerriAI/litellm/blob/43353c28b341df0d9992b45c6ce464222ebd7984/litellm/llms/databricks.py#L164)
-
 
 ```python
 # !pip install litellm
@@ -486,12 +434,7 @@ response = litellm.embedding(
 
 ## Supported Databricks Embedding Models 
 
-:::tip
-
-**We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
-
-:::
-
+> **tip**: **We support ALL Databricks models, just set `model=databricks/<any-model-on-databricks>` as a prefix when sending litellm requests**
 
 | Model Name                 | Command                                                          |
 |----------------------------|------------------------------------------------------------------|

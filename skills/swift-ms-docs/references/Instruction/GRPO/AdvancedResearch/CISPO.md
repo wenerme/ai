@@ -20,7 +20,6 @@ When handling long reasoning chains, this clipping approach can lead to the foll
 
 **Gradient Suppression of Critical Tokens**: In complex reasoning tasks, certain critical low-probability tokens (such as *However, Recheck, Wait, Aha*) are crucial for triggering deep thinking and reasoning error correction. These tokens have low probability in the old policy $\pi_{\theta_{\text{old}}}$. When the new policy attempts to increase their probability, it results in a large policy ratio $r_t(\theta)$, and GRPO's clipping mechanism will discard these tokens.
 
-
 ### CISPO's Solution
 
 The core idea of CISPO is to clip the importance sampling weights while preserving gradient updates. Specifically, CISPO's loss function is:
@@ -35,7 +34,6 @@ where $r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_
 - Clip the importance sampling weights: $\min(r_t(\theta), \epsilon_{\text{high}})$
 - **Detach operation**: The clipped weights do not participate in gradient computation and serve as constant coefficients
 - Gradients come from the $\log \pi_\theta(a_t|s_t)$ term, ensuring all tokens contribute gradients
-
 
 ## Implementation Details
 

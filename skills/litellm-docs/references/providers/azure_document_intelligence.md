@@ -122,9 +122,7 @@ When you call `litellm.ocr()` via SDK or `/ocr` via Proxy:
 - Configurable via `AZURE_OPERATION_POLLING_TIMEOUT` environment variable
 - Uses sync (`time.sleep()`) or async (`await asyncio.sleep()`) based on call type
 
-:::info
-**Typical processing time**: 2-10 seconds depending on document size and complexity
-:::
+> **info**: **Typical processing time**: 2-10 seconds depending on document size and complexity
 
 ## Supported Models
 
@@ -133,12 +131,6 @@ Azure Document Intelligence offers several prebuilt models optimized for differe
 ### prebuilt-layout (Recommended)
 
 Best for general document OCR with structure preservation.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Layout Model - SDK"
 import litellm
@@ -155,9 +147,6 @@ response = litellm.ocr(
     }
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy Config">
 
 ```yaml showLineNumbers title="proxy_config.yaml"
 model_list:
@@ -177,9 +166,6 @@ curl -X POST http://localhost:4000/ocr \
   -d '{"model": "azure-layout", "document": {"type": "document_url", "document_url": "https://example.com/doc.pdf"}}'
 ```
 
-</TabItem>
-</Tabs>
-
 **Features:**
 - Text extraction with markdown formatting
 - Table detection and extraction
@@ -191,9 +177,6 @@ curl -X POST http://localhost:4000/ocr \
 ### prebuilt-read
 
 Optimized for reading text from documents - fastest and most cost-effective.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Read Model - SDK"
 import litellm
@@ -210,9 +193,6 @@ response = litellm.ocr(
     }
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy Config">
 
 ```yaml showLineNumbers title="proxy_config.yaml"
 model_list:
@@ -232,9 +212,6 @@ curl -X POST http://localhost:4000/ocr \
   -d '{"model": "azure-read", "document": {"type": "document_url", "document_url": "https://example.com/doc.pdf"}}'
 ```
 
-</TabItem>
-</Tabs>
-
 **Features:**
 - Fast text extraction
 - Optimized for reading-heavy documents
@@ -245,9 +222,6 @@ curl -X POST http://localhost:4000/ocr \
 ### prebuilt-document
 
 General-purpose document analysis with key-value pairs.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Document Model - SDK"
 import litellm
@@ -264,9 +238,6 @@ response = litellm.ocr(
     }
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy Config">
 
 ```yaml showLineNumbers title="proxy_config.yaml"
 model_list:
@@ -285,9 +256,6 @@ curl -X POST http://localhost:4000/ocr \
   -H "Authorization: Bearer your-api-key" \
   -d '{"model": "azure-document", "document": {"type": "document_url", "document_url": "https://example.com/doc.pdf"}}'
 ```
-
-</TabItem>
-</Tabs>
 
 **Pricing:** $10 per 1,000 pages
 
@@ -405,4 +373,3 @@ print(f"Cost: ${response._hidden_params.get('response_cost', 0)}")
 - [Pricing Details](https://azure.microsoft.com/en-us/pricing/details/ai-document-intelligence/)
 - [Supported File Formats](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-model-overview)
 - [LiteLLM OCR Documentation](https://docs.litellm.ai/docs/ocr)
-

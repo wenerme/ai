@@ -1,15 +1,10 @@
 
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Arize AI
 
 AI Observability and Evaluation Platform
 
 <Image img={require('../../img/arize.png')} />
-
-
 
 ## Pre-Requisites
 Make an account on [Arize AI](https://app.arize.com/auth/login)
@@ -93,9 +88,6 @@ Supported parameters:
 - `arize_space_key` *(deprecated, use `arize_space_id` instead)*
 - `arize_space_id`
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 import os
@@ -116,9 +108,6 @@ response = litellm.completion(
   arize_space_id=os.getenv("ARIZE_SPACE_ID"),
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -144,9 +133,6 @@ litellm --config /path/to/config.yaml
 
 3. Test it!
 
-<Tabs>
-<TabItem value="curl" label="CURL">
-
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -158,8 +144,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
   "arize_space_id": "ARIZE_SPACE_ID"
 }'
 ```
-</TabItem>
-<TabItem value="openai_python" label="OpenAI Python">
 
 ```python
 import openai
@@ -185,10 +169,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-</TabItem>
-</Tabs>
 
 ## Support & Talk to Founders
 

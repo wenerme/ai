@@ -38,7 +38,6 @@ MaritimeBench is a benchmark for evaluating AI models on maritime-related multip
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -119,5 +118,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

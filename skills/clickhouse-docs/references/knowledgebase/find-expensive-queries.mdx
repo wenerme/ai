@@ -2,13 +2,11 @@
 title: How to Identify the Most Expensive Queries in ClickHouse
 description: Learn how to use the `query_log` table in ClickHouse to identify the most memory and CPU-intensive queries across distributed nodes.
 date: 2023-03-26
-slug: find-expensive-queries
 tags: ['Performance and Optimizations']
 keywords: ['Expensive Queries']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Answer \{#answer\}
 
@@ -51,9 +49,7 @@ The response looks like:
 └─────────────┴─────────────────────┴──────────────────────────────────────┴────────────┴─────────────┴────────────┴───────────────────────┘
 ```
 
-:::note
-The `initial_query_id` represents the ID of the initial query for distributed query execution launched from the node receiving the request. The `query_id` contains the ID of the child query executed on a different node. See [this article](https://clickhouse.com/docs/knowledgebase/find-expensive-queries#initial_query_id-vs-query_id) for more details.
-:::
+> **note**: The `initial_query_id` represents the ID of the initial query for distributed query execution launched from the node receiving the request. The `query_id` contains the ID of the child query executed on a different node. See [this article](https://clickhouse.com/docs/knowledgebase/find-expensive-queries#initial_query_id-vs-query_id) for more details.
 
 You can use the query ID to extract more details about the query. Let's research our longest running query above (the first one):
 
@@ -115,7 +111,6 @@ WHERE initial_query_id = 'a7262fa2-bd8b-4b51-a359-621ccf282417'
 ORDER BY memory_usage DESC
 LIMIT 10 FORMAT Pretty;
 ```
-
 
 we will get:
 ```
@@ -179,7 +174,6 @@ returns all the child queries executed on the remote nodes (remote to the node w
 └────────────────────────┴─────────────┴─────────────────────┴──────────────────────────────────────┴──────────────────────────────────────┴────────────┴─────────┴───────────┴───────────────────────┘
 └────────────────────────┴─────────────┴─────────────────────┴──────────────────────────────────────┴──────────────────────────────────────┴────────────┴─────────┴───────────┴───────────────────────┘
 ```
-
 
 conversely, `query_id = initial_query_id` will return only the queries executed on the local node where the distributed query was first thrown at:
 

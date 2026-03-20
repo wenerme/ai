@@ -1,17 +1,11 @@
 ---
 title: "How to Troubleshoot and Solve ComfyUI Issues"
 description: "Common ComfyUI issues, solutions, and how to report bugs effectively"
-icon: "lightbulb"
-sidebarTitle: "Overview"
 ---
 
-<Tip>
    We receive a lot of feedback issues, and we find that most of the issues submitted are related to custom nodes. So please ensure that you have read the [custom node troubleshooting guide](/troubleshooting/custom-node-issues) before submitting an error report to ensure that the issue is not caused by ComfyUI core issues.
-</Tip>
 
-<Card title="Custom Node Troubleshooting Guide" icon="puzzle-piece" href="/troubleshooting/custom-node-issues">
   Check how to troubleshoot issues caused by custom nodes.
-</Card>
 
 ## Common Issues & Quick Fixes
 
@@ -89,29 +83,21 @@ python main.py --cache-classic   # Use the old style (aggressive) caching.
 
 For comprehensive desktop installation troubleshooting, see the [Desktop Installation Guide](/installation/desktop/windows).
 
-<Tabs>
-<Tab title="Windows">
 - **Unsupported device**: ComfyUI Desktop Windows only supports NVIDIA GPUs with CUDA. Use [ComfyUI Portable](/installation/comfyui_portable_windows) or [manual installation](/installation/manual_install) for other GPUs
 - **Installation fails**: Run installer as administrator, ensure at least 15GB disk space
 - **Maintenance page**: Check [mirror settings](/installation/desktop/windows#mirror-settings) if downloads fail
 - **Missing models**: Models are not copied during migration, only linked. Verify model paths
-</Tab>
-<Tab title="macOS">
+
 - **"App is damaged"**: Allow app in Security & Privacy settings
 - **Performance issues**: Grant Full Disk Access in Privacy settings
 - **Crashes**: Check Console app for crash reports
-</Tab>
-<Tab title="Linux">
+
 - **Missing libraries**: Install dependencies with package manager
 - **LD_LIBRARY_PATH errors**: PyTorch library path issues (see below)
-</Tab>
-</Tabs>
 
 ### Manual Installation Issues
 
-<Note>
 The documentation may be slightly out of date. If an issue occurs, please manually verify whether a newer stable version of pytorch or any of the listed libraries exists. Refer to resources like the [pytorch installation matrix](https://pytorch.org/get-started/locally/) or the [ROCm website](https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html#using-a-wheels-package).
-</Note>
 
 **Python version conflicts:**
 ```bash
@@ -312,7 +298,6 @@ TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1 python main.py --use-pytorch-cross-att
 PYTORCH_TUNABLEOP_ENABLED=1 python main.py
 ```
 
-
 ### Apple Silicon (M1/M2/M3) Issues
 
 **MPS backend setup:**
@@ -387,11 +372,6 @@ pip install torch==2.3.1.post0+cxx11.abi torchvision==0.18.1.post0+cxx11.abi tor
 
 When reporting any issue, include:
 
-<Steps>
-<Step title="System Information">
-
-<Tabs>
-<Tab title="From ComfyUI Interface">
 **System Information (can be found in the About page in settings):**
 - Operating System (Windows 11, macOS 14.1, Ubuntu 22.04, etc.)
 - ComfyUI version (check About page in settings)
@@ -400,11 +380,10 @@ When reporting any issue, include:
 - GPU model and driver version
 - Installation method (Desktop, Portable, Manual, comfy-cli)
 
-![About page in settings](/images/troubleshooting/menu-about.jpg)
-</Tab>
-<Tab title="From Command Line">
-   <Tabs>
-      <Tab title="Windows">
+[About page in settings]
+
+   
+      
       ```bash
       # System info
       systeminfo | findstr /C:"OS Name" /C:"OS Version"
@@ -417,8 +396,8 @@ When reporting any issue, include:
       python -c "import torch; print(f'PyTorch: {torch.__version__}')"
       python -c "import torch; print(f'CUDA Available: {torch.cuda.is_available()}')"
       ```
-      </Tab>
-      <Tab title="macOS/Linux">
+      
+      
       ```bash
       # System info
       uname -a
@@ -431,19 +410,13 @@ When reporting any issue, include:
       python -c "import torch; print(f'PyTorch: {torch.__version__}')"
       python -c "import torch; print(f'CUDA Available: {torch.cuda.is_available()}')"
       ```
-      </Tab>
-   </Tabs>
-</Tab>
-</Tabs>
-</Step>
+      
+   
 
-<Step title="Desktop App issues">
 **For Desktop App issues, also include:**
 - Log files from: `C:\Users\<username>\AppData\Roaming\ComfyUI\logs` (Windows)
 - Config files from: `C:\Users\<username>\AppData\Roaming\ComfyUI` (Windows)
-</Step>
 
-<Step title="Problem Details">
 **Problem Details:**
 - Clear description of the issue
 - Steps to reproduce the problem
@@ -454,15 +427,11 @@ When reporting any issue, include:
 - Full error text from console/terminal
 - Browser console errors (F12 → Console tab)
 - Any crash logs or error dialogs
-</Step>
 
-<Step title="Additional Context">
 **Additional Context:**
 - List of installed custom nodes
 - Workflow file (.json) that reproduces the issue
 - Recent changes (new installations, updates, etc.)
-</Step>
-</Steps>
 
 ## Community Resources
 

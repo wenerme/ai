@@ -1,16 +1,10 @@
 # CyberArk Conjur
 
-import Image from '@theme/IdealImage';
-
-:::info
-
-✨ **This is an Enterprise Feature**
+> **info**: ✨ **This is an Enterprise Feature**
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
 
 | Feature | Support | Description |
 |---------|----------|-------------|
@@ -187,9 +181,7 @@ This typically occurs when your CyberArk Conjur instance uses a self-signed cert
 CYBERARK_SSL_VERIFY="false"
 ```
 
-:::warning
-Disabling SSL verification is insecure and should only be used for testing or development environments with self-signed certificates. For production, configure your certificate chain properly or use certificate-based authentication with `CYBERARK_CLIENT_CERT` and `CYBERARK_CLIENT_KEY`.
-:::
+> **warning**: Disabling SSL verification is insecure and should only be used for testing or development environments with self-signed certificates. For production, configure your certificate chain properly or use certificate-based authentication with `CYBERARK_CLIENT_CERT` and `CYBERARK_CLIENT_KEY`.
 
 ## Video Walkthrough
 

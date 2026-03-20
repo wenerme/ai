@@ -50,15 +50,13 @@ And so does this (note the change in quotes):
 console.log("Hello, world!")
 ```
 
-:::note
-Most shells interpret backticks as command invocations, which conflicts with
+> **note**: Most shells interpret backticks as command invocations, which conflicts with
 GritQL's code snippets. So when using the `biome search` command, it's best to
 put _single quotes_ around your Grit queries:
 
 ```shell
 biome search '`console.log($message)`' # find all `console.log` invocations
 ```
-:::
 
 ## Variables
 
@@ -124,9 +122,7 @@ JsIfStatement() as $stmt where {
 
 You can discover node names for your code by exploring the syntax tree in the [Biome Playground](https://biomejs.dev/playground/). A complete list of all available nodes is also available in the `.ungram` files in the [`xtask/codegen`](https://github.com/biomejs/biome/tree/main/xtask/codegen) directory of the Biome repository.
 
-:::caution
-Biome's grammar can change between versions, especially for new languages. This may cause node names to change, which could break your patterns. Be prepared to update your queries when upgrading Biome.
-:::
+> **caution**: Biome's grammar can change between versions, especially for new languages. This may cause node names to change, which could break your patterns. Be prepared to update your queries when upgrading Biome.
 
 ## JSON Patterns
 

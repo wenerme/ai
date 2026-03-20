@@ -1,18 +1,12 @@
 ---
 title: 'Azure Private Preview'
-slug: /cloud/reference/byoc/onboarding/azure-private-preview
-sidebar_label: 'Azure (Private Preview)'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'azure']
 description: 'Onboard ClickHouse BYOC on Azure using the Terraform module and cross-tenant authentication'
 doc_type: 'reference'
 ---
 
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-
 <PrivatePreviewBadge/>
-:::note
-BYOC on Azure is in **private preview**. To participate, [contact the ClickHouse team](https://clickhouse.com/cloud/bring-your-own-cloud).
-:::
+> **note**: BYOC on Azure is in **private preview**. To participate, [contact the ClickHouse team](https://clickhouse.com/cloud/bring-your-own-cloud).
 
 ## Overview {#overview}
 

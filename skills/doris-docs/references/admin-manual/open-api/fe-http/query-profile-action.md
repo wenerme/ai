@@ -53,7 +53,6 @@ Gets information about select queries for all fe nodes in the cluster.
   
     Optional, if true, returns query information for all fe nodes, if false, returns query information for the current fe node. The default is true.
 
-
 ### Response
 
 ```json
@@ -83,13 +82,9 @@ Gets information about select queries for all fe nodes in the cluster.
 }
 ```
 
-:::info Note
+> **info**: Note
 
 Since Doris Version 1.2, Admin and Root users can view all queries. Regular users can only view their own submitted queries.
-
-:::
-
-
 
 ### Examples
 
@@ -164,7 +159,7 @@ After executing the Query within the same Session, the query id can be obtained 
 }
 ```
 
-:::note Info
+> **note**: Info
 
 Since Doris version 1.2, admin and root user can view all queries. Ordinary users can only view the Query sent by themselves. If the specified trace id does not exist or has no permission, it will return Bad Request:
 
@@ -176,8 +171,6 @@ Since Doris version 1.2, admin and root user can view all queries. Ordinary user
     "count": 0
 }
 ```
-:::
-
 
 ## Get the sql and text profile for the specified query
 
@@ -225,7 +218,7 @@ Get the sql and profile text for the specified query id.
 }
 ```
 
-:::note Info
+> **note**: Info
 
 Since Doris version 1.2, admin and root user can view all queries. Ordinary users can only view the Query sent by themselves. If the specified trace id does not exist or has no permission, it will return Bad Request:
 
@@ -238,8 +231,6 @@ Since Doris version 1.2, admin and root user can view all queries. Ordinary user
 }
 ```
 
-:::
-    
 ### Examples
 
 1. get sql.
@@ -262,11 +253,7 @@ Since Doris version 1.2, admin and root user can view all queries. Ordinary user
 
 `GET /rest/v2/manager/query/profile/fragments/{query_id}`
 
-:::caution
-
-Since 2.1.1, this API is deprecated. You can still download profile from http://<fe_ip>:<fe_http_port>/QueryProfile
-
-:::
+> **caution**: Since 2.1.1, this API is deprecated. You can still download profile from http://<fe_ip>:<fe_http_port>/QueryProfile
 
 ### Description
 
@@ -306,7 +293,7 @@ Get the fragment name, instance id, host ip/port and execution time for the spec
 }
 ```
 
-:::note Info
+> **note**: Info
 
 Since Doris version 1.2, admin and root user can view all queries. Ordinary users can only view the Query sent by themselves. If the specified trace id does not exist or has no permission, it will return Bad Request:
 
@@ -318,9 +305,7 @@ Since Doris version 1.2, admin and root user can view all queries. Ordinary user
     "count": 0
 }
 ```
-:::
 
-    
 ### Examples
 
 ```json
@@ -409,7 +394,7 @@ Get the tree profile information of the specified query id, same as `show query 
 }
 ```
 
-:::note Info
+> **note**: Info
 
 Since Doris version 1.2, admin and root user can view all queries. Ordinary users can only view the Query sent by themselves. If the specified trace id does not exist or has no permission, it will return Bad Request:
 
@@ -421,9 +406,6 @@ Since Doris version 1.2, admin and root user can view all queries. Ordinary user
     "count": 0
 }
 ```
-:::
-
-
 
 ## Current running queries
 

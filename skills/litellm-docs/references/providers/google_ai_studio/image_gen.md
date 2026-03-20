@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Google AI Studio Image Generation
 
@@ -30,9 +29,6 @@ Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Generation"
 import litellm
 import os
@@ -48,10 +44,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="async" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Generation"
 import litellm
@@ -76,10 +68,6 @@ async def generate_image():
 asyncio.run(generate_image())
 ```
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Parameters">
-
 ```python showLineNumbers title="Advanced Image Generation with Parameters"
 import litellm
 import os
@@ -100,9 +88,6 @@ response = litellm.image_generation(
 for image in response.data:
     print(f"Generated image URL: {image.url}")
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -131,9 +116,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make requests with OpenAI Python SDK
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Google AI Studio Image Generation via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -154,10 +136,6 @@ response = client.images.generate(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Google AI Studio Image Generation via Proxy - LiteLLM SDK"
 import litellm
 
@@ -172,10 +150,6 @@ response = litellm.image_generation(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Google AI Studio Image Generation via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/generations' \
 --header 'Content-Type: application/json' \
@@ -187,9 +161,6 @@ curl --location 'http://localhost:4000/v1/images/generations' \
     "size": "1024x1024"
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Parameters
 

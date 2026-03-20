@@ -12,8 +12,6 @@ The EXPLAIN statement displays Doris's query execution plan for a given query. D
 
 To improve performance, it's essential to analyze the current plan. This article teaches how to use the EXPLAIN statement for optimization.
 
-
-
 ## Syntax
 
 ```plain text
@@ -32,7 +30,6 @@ To improve performance, it's essential to analyze the current plan. This article
 
 > Whether to display detailed information is determined by the `VERBOSE` specification. With `VERBOSE`, comprehensive details are shown, including specifics on each operator, the tuple IDs they use, and detailed descriptions for each tuple. Without it, concise information is provided.
 
-
 ## Return Results
 
 ### Basic Concepts
@@ -50,7 +47,6 @@ To better understand the information displayed by `EXPLAIN`, let's introduce a f
 The result of the Doris `EXPLAIN` statement is a complete PLAN. Within the PLAN, FRAGMENTS are ordered from back to front based on the execution sequence. Within each FRAGMENT, operators (PLAN NODES) are also ordered from back to front based on the execution sequence.
 
 An example is provided below:
-
 
 ```sql
 +--------------------------------------------------+
@@ -109,9 +105,7 @@ An example is provided below:
 
 Operators are linked to their child nodes with dashed lines. When an operator has multiple children, they are arranged vertically, representing a right-to-left order. In the example above, operator 6 (VHASH JOIN) has operator 5 (EXCHANGE) as its left child and operator 4 (EXCHANGE) as its right child.
 
-
 ### Fragment Field Descriptions
-
 
 | Name               | Description                                                  |
 | :----------------- | :----------------------------------------------------------- |
@@ -119,20 +113,14 @@ Operators are linked to their child nodes with dashed lines. When an operator ha
 | HAS_COLO_PLAN_NODE | Indicates if the fragment contains colocate operators        |
 | Sink               | The method of fragment data output, see the table below for details |
 
-
-
 **Sink Methods**
-
-
 
 | Name               | Description                                                  |
 | :----------------- | :----------------------------------------------------------- |
-| STREAM DATA SINK   | Outputs data to the next Fragment. It includes two lines of information.<br />First line: The downstream EXCHANGE NODE to which data is sent.<br />Second line: The method of data distribution. <br />  - UNPARTITIONED means each downstream instance receives the full data set. This typically occurs in broadcast joins or when single-instance logic is required, such as global limit or order by.<br /> - RANDOM means each downstream instance receives a random subset of data without repetition.<br /> - HASH_PARTITIONED uses the listed slots as keys to hash and send data shards to the same downstream instance. This is often used upstream of partition hash joins or the second stage of two-phase aggregations. |
+| STREAM DATA SINK   | Outputs data to the next Fragment. It includes two lines of information.First line: The downstream EXCHANGE NODE to which data is sent.Second line: The method of data distribution.   - UNPARTITIONED means each downstream instance receives the full data set. This typically occurs in broadcast joins or when single-instance logic is required, such as global limit or order by. - RANDOM means each downstream instance receives a random subset of data without repetition. - HASH_PARTITIONED uses the listed slots as keys to hash and send data shards to the same downstream instance. This is often used upstream of partition hash joins or the second stage of two-phase aggregations. |
 | RESULT SINK        | Sends result data to the FE. The first line indicates the protocol used for data transmission, currently supporting MySQL and arrow protocols. |
 | OLAP TABLE SINK    | Writes data to an OLAP table.                                |
 | MultiCastDataSinks | A multicast operator that contains multiple STREAM DATA SINKs. Each STREAM DATA SINK sends the full data set to its downstream. |
-
-
 
 ### Tuple Information Description
 
@@ -149,14 +137,10 @@ TupleDescriptor{id=0, tbl=t1}
 
 #### TupleDescriptor
 
-
-
 | Name | Description                                                  |
 | :--- | :----------------------------------------------------------- |
 | id   | The id of the tuple descriptor                               |
 | tbl  | The corresponding table of the tuple, or `null` if not applicable  |
-
-
 
 #### SlotDescriptor
 
@@ -201,11 +185,7 @@ TupleDescriptor{id=0, tbl=t1}
 | TOP-N                 | Sort and return top N results operator                       |
 | TABLE FUNCTION NODE   | Table function operator (lateral view)                       |
 
-
-
 #### Common Fields
-
-
 
 | Name                    | Description                                                  |
 | :---------------------- | :----------------------------------------------------------- |
@@ -218,24 +198,16 @@ TupleDescriptor{id=0, tbl=t1}
 | distribute expr lists   | The original data distribution method for the child nodes of the current node |
 | Expression's slot id    | The specific slot corresponding to the slot id can be found in the tuple list in verbose mode. This list provides information such as slot type and nullable attributes. Represented as `[#5]` after the expression. |
 
-
-
 #### AGGREGATE
-
-
 
 | Name                | Description                                                  |
 | :------------------ | :----------------------------------------------------------- |
-| (Aggregation Phase) | The aggregation phase is represented by two terms.<br /> The first term can be either update (local aggregation) or merge (global aggregation).<br /> The second term indicates whether the current data is serialized (serialize) or has completed final calculations (finalize). |
+| (Aggregation Phase) | The aggregation phase is represented by two terms. The first term can be either update (local aggregation) or merge (global aggregation). The second term indicates whether the current data is serialized (serialize) or has completed final calculations (finalize). |
 | STREAMING           | Only local aggregation operators in multi-stage aggregation truncation have this flag. Indicates that the current aggregation node may use STREAMING mode, where input data is passed directly to the next stage of aggregation without actual computation. |
 | output              | The output of the current aggregation operator. All local pre-aggregation functions are prefixed with partial. |
 | group by            | The key for aggregation                                      |
 
-
-
 #### ANALYTIC
-
-
 
 | Name         | Description                                                  |
 | :----------- | :----------------------------------------------------------- |
@@ -244,21 +216,13 @@ TupleDescriptor{id=0, tbl=t1}
 | order by     | Sorting expression and order within the window               |
 | window       | Window range                                                 |
 
-
-
 #### ASSERT NUMBER OF ROWS
-
-
 
 | Name | Description                                                |
 | :--- | :--------------------------------------------------------- |
 | EQ   | The downstream output must match this row count constraint |
 
-
-
 #### HASH JOIN
-
-
 
 | Name                  | Description                                                  |
 | :-------------------- | :----------------------------------------------------------- |
@@ -272,10 +236,7 @@ TupleDescriptor{id=0, tbl=t1}
 | hash output slot ids  | List of output slots after hash join execution, but before other join conditions are applied |
 | isMarkJoin            | Indicates whether it is a mark join                          |
 
-
 #### NESTED LOOP JOIN
-
-
 
 | Name                 | Description                  |
 | :------------------- | :--------------------------- |
@@ -287,11 +248,7 @@ TupleDescriptor{id=0, tbl=t1}
 | output slot ids      | List of final output slots   |
 | isMarkJoin           | Whether it is a mark join    |
 
-
-
 #### PartitionTopN
-
-
 
 | Name                 | Description                                                  |
 | :------------------- | :----------------------------------------------------------- |
@@ -300,32 +257,20 @@ TupleDescriptor{id=0, tbl=t1}
 | partition limit      | Limit on the number of rows within each partition            |
 | partition topn phase | Current phase: TWO_PHASE_GLOBAL_PTOPN for global phase after shuffling by partition key, TWO_PHASE_LOCAL_PTOPN for local phase before shuffling by partition key |
 
-
-
 #### REPEAT_NODE
-
-
 
 | Name   | Description                                                  |
 | :----- | :----------------------------------------------------------- |
 | repeat | Number of repetitions for each row and corresponding slot ids for aggregation columns |
 | exprs  | List of expressions for output data after repetition         |
 
-
-
 #### DataGenScanNode
-
-
 
 | Name                 | Description         |
 | :------------------- | :------------------ |
 | table value function | Table function name |
 
-
-
 #### EsScanNode
-
-
 
 | Name              | Description                    |
 | :---------------- | :----------------------------- |
@@ -334,11 +279,7 @@ TupleDescriptor{id=0, tbl=t1}
 | REMOTE_PREDICATES | Filters executed within ES     |
 | ES index/type     | ES index and type for querying |
 
-
-
 #### HIVE_SCAN_NODE
-
-
 
 | Name          | Description                                |
 | :------------ | :----------------------------------------- |
@@ -352,11 +293,7 @@ TupleDescriptor{id=0, tbl=t1}
 | numNodes      | Number of BEs used by the current operator |
 | pushdown agg  | Aggregations pushed down to scan           |
 
-
-
 #### HUDI_SCAN_NODE
-
-
 
 | Name                 | Description                                |
 | :------------------- | :----------------------------------------- |
@@ -371,11 +308,7 @@ TupleDescriptor{id=0, tbl=t1}
 | pushdown agg         | Aggregations pushed down to scan           |
 | hudiNativeReadSplits | Number of splits read using native method  |
 
-
-
 #### ICEBERG_SCAN_NODE
-
-
 
 | Name                     | Description                                |
 | :----------------------- | :----------------------------------------- |
@@ -389,8 +322,6 @@ TupleDescriptor{id=0, tbl=t1}
 | numNodes                 | Number of BEs used by the current operator |
 | pushdown agg             | Aggregations pushed down to scan           |
 | icebergPredicatePushdown | Filters pushed down to iceberg API         |
-
-
 
 #### PAIMON_SCAN_NODE
 
@@ -407,10 +338,7 @@ TupleDescriptor{id=0, tbl=t1}
 | pushdown agg           | Aggregations pushed down to scan           |
 | paimonNativeReadSplits | Number of splits read using native method  |
 
-
 #### NESTED LOOP JOIN
-
-
 
 | Name                 | Description                  |
 | :------------------- | :--------------------------- |
@@ -422,11 +350,7 @@ TupleDescriptor{id=0, tbl=t1}
 | output slot ids      | List of final output slots   |
 | isMarkJoin           | Whether it is a mark join    |
 
-
-
 #### PartitionTopN
-
-
 
 | Name                 | Description                                                  |
 | :------------------- | :----------------------------------------------------------- |
@@ -435,32 +359,20 @@ TupleDescriptor{id=0, tbl=t1}
 | partition limit      | Limit on the number of rows within each partition            |
 | partition topn phase | Current phase: TWO_PHASE_GLOBAL_PTOPN for global phase after shuffling by partition key, TWO_PHASE_LOCAL_PTOPN for local phase before shuffling by partition key |
 
-
-
 #### REPEAT_NODE
-
-
 
 | Name   | Description                                                  |
 | :----- | :----------------------------------------------------------- |
 | repeat | Number of repetitions for each row and corresponding slot ids for aggregation columns |
 | exprs  | List of expressions for output data after repetition         |
 
-
-
 #### DataGenScanNode
-
-
 
 | Name                 | Description         |
 | :------------------- | :------------------ |
 | table value function | Table function name |
 
-
-
 #### EsScanNode
-
-
 
 | Name              | Description                    |
 | :---------------- | :----------------------------- |
@@ -469,11 +381,7 @@ TupleDescriptor{id=0, tbl=t1}
 | REMOTE_PREDICATES | Filters executed within ES     |
 | ES index/type     | ES index and type for querying |
 
-
-
 #### HIVE_SCAN_NODE
-
-
 
 | Name          | Description                                |
 | :------------ | :----------------------------------------- |
@@ -487,11 +395,7 @@ TupleDescriptor{id=0, tbl=t1}
 | numNodes      | Number of BEs used by the current operator |
 | pushdown agg  | Aggregations pushed down to scan           |
 
-
-
 #### HUDI_SCAN_NODE
-
-
 
 | Name                 | Description                                |
 | :------------------- | :----------------------------------------- |
@@ -506,11 +410,7 @@ TupleDescriptor{id=0, tbl=t1}
 | pushdown agg         | Aggregations pushed down to scan           |
 | hudiNativeReadSplits | Number of splits read using native method  |
 
-
-
 #### ICEBERG_SCAN_NODE
-
-
 
 | Name                     | Description                                |
 | :----------------------- | :----------------------------------------- |
@@ -525,11 +425,7 @@ TupleDescriptor{id=0, tbl=t1}
 | pushdown agg             | Aggregations pushed down to scan           |
 | icebergPredicatePushdown | Filters pushed down to iceberg API         |
 
-
-
 #### PAIMON_SCAN_NODE
-
-
 
 | Name                   | Description                                |
 | :--------------------- | :----------------------------------------- |
@@ -546,18 +442,12 @@ TupleDescriptor{id=0, tbl=t1}
 
 #### JdbcScanNode
 
-
-
 | Name  | Description                  |
 | :---- | :--------------------------- |
 | TABLE | JDBC-side table name to scan |
 | QUERY | Query used for scanning      |
 
-
-
 #### OlapScanNode
-
-
 
 | Name           | Description                                                  |
 | :------------- | :----------------------------------------------------------- |
@@ -573,52 +463,32 @@ TupleDescriptor{id=0, tbl=t1}
 | numNodes       | Number of BEs assigned to the current scan.                  |
 | pushAggOp      | Results are returned by reading zonemap metadata. Supports MIN, MAX, COUNT aggregation information. |
 
-
-
 #### UNION
-
-
 
 | Name           | Description                                                  |
 | :------------- | :----------------------------------------------------------- |
 | constant exprs | List of constant expressions to be included in the output.   |
 | child exprs    | Children's outputs projected through this expression list as input to the set operator. |
 
-
-
 #### EXCEPT
-
-
 
 | Name        | Description                                                  |
 | :---------- | :----------------------------------------------------------- |
 | child exprs | Children's outputs projected through this expression list as input to the set operator. |
-
-
 
 #### INTERSECT
 
-
-
 | Name        | Description                                                  |
 | :---------- | :----------------------------------------------------------- |
 | child exprs | Children's outputs projected through this expression list as input to the set operator. |
 
-
-
 #### SORT
-
-
 
 | Name     | Description                          |
 | :------- | :----------------------------------- |
 | order by | Sorting key and specific sort order. |
 
-
-
 #### TABLE FUNCTION NODE
-
-
 
 | Name                  | Description                                               |
 | :-------------------- | :-------------------------------------------------------- |
@@ -626,11 +496,7 @@ TupleDescriptor{id=0, tbl=t1}
 | lateral view tuple id | Tuple ID corresponding to newly generated columns.        |
 | output slot id        | List of slot IDs for columns output after column pruning. |
 
-
-
 #### TOP-N
-
-
 
 | Name          | Description                                            |
 | :------------ | :----------------------------------------------------- |

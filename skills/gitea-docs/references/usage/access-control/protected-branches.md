@@ -1,7 +1,5 @@
 ---
 date: "2025-11-20T00:00:00-07:00"
-slug: "protected-branches"
-sidebar_position: 44
 aliases:
   - /en-us/protected-branches
   - /en-us/protected-branch

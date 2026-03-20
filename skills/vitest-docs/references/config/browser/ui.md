@@ -1,6 +1,5 @@
 ---
 title: browser.ui | Config
-outline: deep
 ---
 
 # browser.ui

@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Advanced Inserting'
-sidebar_position: 5
 keywords: ['clickhouse', 'python', 'insert', 'advanced']
 description: 'Advanced Inserting with ClickHouse Connect'
-slug: /integrations/language-clients/python/advanced-inserting
 title: 'Advanced Inserting'
 doc_type: 'reference'
 ---
@@ -74,9 +71,7 @@ ClickHouse Connect provides specialized insert methods for common data formats:
 - `insert_arrow` -- Insert a PyArrow Table. ClickHouse Connect passes the Arrow table unmodified to the ClickHouse server for processing, so only the `database` and `settings` arguments are available in addition to `table` and `arrow_table`.
 - `insert_df_arrow` -- Insert an arrow-backed Pandas DataFrame or a Polars DataFrame. ClickHouse Connect will automatically determine if the DataFrame is a Pandas or Polars type. If Pandas, validation will be performed to ensure that each column's dtype backend is Arrow-based and an error will be raised if any aren't.
 
-:::note
-A NumPy array is a valid Sequence of Sequences and can be used as the `data` argument to the main `insert` method, so a specialized method isn't required.
-:::
+> **note**: A NumPy array is a valid Sequence of Sequences and can be used as the `data` argument to the main `insert` method, so a specialized method isn't required.
 
 #### Pandas DataFrame insert {#pandas-dataframe-insert}
 
@@ -167,9 +162,7 @@ print(*results.result_rows, sep="\n")
 
 In this example, all three datetime objects represent different points in time because they have different timezones. Each will be correctly converted to its corresponding Unix timestamp and stored in ClickHouse.
 
-:::note
-When using pytz, you must use the `localize()` method to attach timezone information to a naive datetime. Passing `tzinfo=` directly to the datetime constructor will use incorrect historical offsets. For UTC, `tzinfo=pytz.UTC` works correctly. See [pytz docs](https://pythonhosted.org/pytz/#localized-times-and-date-arithmetic) for more info.
-:::
+> **note**: When using pytz, you must use the `localize()` method to attach timezone information to a naive datetime. Passing `tzinfo=` directly to the datetime constructor will use incorrect historical offsets. For UTC, `tzinfo=pytz.UTC` works correctly. See [pytz docs](https://pythonhosted.org/pytz/#localized-times-and-date-arithmetic) for more info.
 
 #### Timezone-naive datetime objects {#timezone-naive-datetime-objects}
 

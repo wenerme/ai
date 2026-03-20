@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Moonshot AI
 
@@ -12,9 +11,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc | [Moonshot AI ↗](https://platform.moonshot.ai/) |
 | Base URL | `https://api.moonshot.ai/` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
-
-<br />
-<br />
 
 https://platform.moonshot.ai/
 
@@ -112,9 +108,6 @@ litellm --config config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Moonshot via Proxy - Non-streaming"
 from openai import OpenAI
 
@@ -154,10 +147,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Moonshot via Proxy - LiteLLM SDK"
 import litellm
 
@@ -189,10 +178,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Moonshot via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -213,9 +198,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 For more detailed information on using the LiteLLM Proxy, see the [LiteLLM Proxy documentation](../providers/litellm_proxy).
 

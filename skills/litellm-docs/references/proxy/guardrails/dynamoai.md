@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # DynamoAI Guardrails
 
@@ -50,9 +49,6 @@ litellm --config config.yaml --detailed_debug
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
-<Tabs>
-<TabItem label="Successful Call" value="allowed">
-
 ```shell showLineNumbers title="Successful Request"
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -69,10 +65,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 **Response: HTTP 200 Success**
 
 Content passes all policy checks and is allowed through.
-
-</TabItem>
-
-<TabItem label="Blocked Call" value="not-allowed">
 
 ```shell showLineNumbers title="Blocked Request"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -99,9 +91,6 @@ curl -i http://localhost:4000/v1/chat/completions \
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced Configuration
 
@@ -211,4 +200,3 @@ The guardrail handles errors gracefully:
 For more information about DynamoAI:
 - Website: [https://dynamo.ai](https://dynamo.ai)
 - Documentation: Contact DynamoAI for API documentation
-

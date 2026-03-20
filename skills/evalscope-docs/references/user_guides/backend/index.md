@@ -4,7 +4,6 @@
 opencompass_backend.md
 vlmevalkit_backend.md
 rageval_backend/index.md
-:::
 
 EvalScope supports multiple evaluation backends to integrate various tools for different evaluation tasks, detailed as follows:
 
@@ -15,7 +14,6 @@ EvalScope supports multiple evaluation backends to integrate various tools for d
 
 +++
 Initiate lightweight OpenCompass evaluation tasks through EvalScope, supporting various LLM evaluation tasks.
-:::
 
 :::{grid-item-card} VLMEvalKit
 :link: vlmeval
@@ -23,7 +21,6 @@ Initiate lightweight OpenCompass evaluation tasks through EvalScope, supporting 
 
 +++
 Initiate lightweight VLMEvalKit evaluation tasks through EvalScope, supporting various VLM evaluation tasks.
-:::
 
 :::{grid-item-card} RAGEval
 :link: rageval
@@ -31,5 +28,5 @@ Initiate lightweight VLMEvalKit evaluation tasks through EvalScope, supporting v
 
 +++
 Support for RAG and Multimodal RAG Evaluation: Supports independent evaluation of the retrieval module, as well as end-to-end generation evaluation.
-:::
+
 ::::

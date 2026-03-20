@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # CompactifAI
 https://docs.compactif.ai/
@@ -53,9 +52,6 @@ os.environ["COMPACTIFAI_API_KEY"] = "your-api-key"
 
 ## Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -71,9 +67,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 ```yaml
 model_list:
   - model_name: llama-2-compressed
@@ -81,9 +74,6 @@ model_list:
       model: compactifai/cai-llama-3-1-8b-slim
       api_key: os.environ/COMPACTIFAI_API_KEY
 ```
-
-</TabItem>
-</Tabs>
 
 ## Streaming
 

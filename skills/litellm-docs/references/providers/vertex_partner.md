@@ -1,6 +1,3 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Vertex AI - Anthropic, DeepSeek, Model Garden
@@ -30,9 +27,6 @@ import TabItem from '@theme/TabItem';
 
 #### Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -53,8 +47,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -97,16 +89,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-
 #### Usage - `thinking` / `reasoning_content`
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -118,10 +101,6 @@ resp = completion(
 )
 
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -151,10 +130,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "thinking": {"type": "enabled", "budget_tokens": 1024}
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 
@@ -242,9 +217,6 @@ ModelResponse(
 
 #### Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -259,8 +231,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -298,9 +268,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## VertexAI Meta/Llama API
  
 | Model Name       | Function Call                        |
@@ -315,9 +282,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | meta/llama-4-maverick-17b-16e-instruct-maas | `completion('vertex_ai/meta/llama-4-maverick-17b-16e-instruct-maas',messages)` |
 
 #### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -338,8 +302,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -382,9 +344,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## VertexAI Mistral API
 
 [**Supported OpenAI Params**](https://github.com/BerriAI/litellm/blob/e0f3cd580cb85066f7d36241a03c30aa50a8a31d/litellm/llms/openai.py#L137)
@@ -410,9 +369,6 @@ Overview
 
 #### Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -432,8 +388,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -476,18 +430,11 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 #### Usage - Codestral FIM
 
 Call Codestral on VertexAI via the OpenAI [`/v1/completion`](https://platform.openai.com/docs/api-reference/completions/create) endpoint for FIM tasks. 
 
 Note: You can also call Codestral via `/chat/completion`.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -517,8 +464,6 @@ response = text_completion(
 
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -563,10 +508,6 @@ curl -X POST 'http://0.0.0.0:4000/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## VertexAI AI21 Models
  
 | Model Name       | Function Call                        |
@@ -575,9 +516,6 @@ curl -X POST 'http://0.0.0.0:4000/completions' \
 | jamba-1.5-large@001   | `completion(model='vertex_ai/jamba-1.5-large@001', messages)` |
 
 #### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -598,8 +536,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -642,10 +578,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## VertexAI Qwen API
 
 | Property | Details |
@@ -661,9 +593,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | vertex_ai/qwen/qwen3-235b-a22b-instruct-2507-maas | `completion('vertex_ai/qwen/qwen3-235b-a22b-instruct-2507-maas', messages)` |
 
 #### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -684,8 +613,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -728,10 +655,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## VertexAI GPT-OSS Models
 
 | Property | Details |
@@ -746,9 +669,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | vertex_ai/openai/gpt-oss-20b-maas | `completion('vertex_ai/openai/gpt-oss-20b-maas', messages)` |
 
 #### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -769,8 +689,6 @@ response = completion(
 )
 print("\nModel Response", response)
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -808,15 +726,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
 #### Usage - `reasoning_effort`
 
 GPT-OSS models support the `reasoning_effort` parameter for enhanced reasoning capabilities.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -829,10 +741,6 @@ response = completion(
     vertex_ai_location="us-central1",
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -863,6 +771,3 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low"
   }'
 ```
-
-</TabItem>
-</Tabs>

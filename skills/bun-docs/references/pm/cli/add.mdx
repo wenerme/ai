@@ -3,8 +3,6 @@ title: "bun add"
 description: "Add packages to your project with Bun's fast package manager"
 ---
 
-import Add from "/snippets/cli/add.mdx";
-
 To add a particular package:
 
 ```bash terminal icon="terminal"
@@ -21,7 +19,7 @@ bun add zod@latest
 
 ## `--dev`
 
-<Note>**Alias** — `--development`, `-d`, `-D`</Note>
+**Alias** — `--development`, `-d`, `-D`
 
 To add a package as a dev dependency (`"devDependencies"`):
 
@@ -48,7 +46,7 @@ bun add --peer @types/bun
 
 ## `--exact`
 
-<Note>**Alias** — `-E`</Note>
+**Alias** — `-E`
 
 To add a package and pin to the resolved version, use `--exact`. This will resolve the version of the package and add it to your `package.json` with an exact version number instead of a version range.
 
@@ -79,10 +77,8 @@ bun add --help
 
 ## `--global`
 
-<Note>
   **Note** — This would not modify package.json of your current project folder. **Alias** - `bun add --global`, `bun add
   -g`, `bun install --global` and `bun install -g`
-</Note>
 
 To install a package globally, use the `-g`/`--global` flag. This will not modify the `package.json` of your current project. Typically this is used for installing command-line tools.
 
@@ -102,8 +98,6 @@ cowsay "Bun!"
                 ||     ||
 ```
 
-<Accordion title="Configuring global installation behavior">
-
 ```toml bunfig.toml icon="settings"
 [install]
 # where `bun add --global` installs packages
@@ -112,8 +106,6 @@ globalDir = "~/.bun/install/global"
 # where globally-installed package bins are linked
 globalBinDir = "~/.bun/bin"
 ```
-
-</Accordion>
 
 ## Trusted dependencies
 
@@ -139,9 +131,7 @@ To add a dependency from a public or private git repository:
 bun add git@github.com:moment/moment.git
 ```
 
-<Note>
   To install private repositories, your system needs the appropriate SSH credentials to access the repository.
-</Note>
 
 Bun supports a variety of protocols, including [`github`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#github-urls), [`git`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#git-urls-as-dependencies), `git+ssh`, `git+https`, and many more.
 

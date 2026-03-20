@@ -12,9 +12,7 @@ Used to view currently executing queries
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

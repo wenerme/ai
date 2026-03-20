@@ -19,7 +19,6 @@ orms['dummy']= DummyLengthRewardFunction
 **Accessing Other Columns in the Dataset**
 For example, if the reward function needs to access the solution column from the dataset, as well as the current training step and the total number of steps for calculation, there are two ways to retrieve these values:
 
-
 Explicitly define the column name in the __call__ parameters:
 ```python
     def __call__(completions, solution, trainer_state, **kwargs):

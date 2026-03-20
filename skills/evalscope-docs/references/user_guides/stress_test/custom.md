@@ -61,7 +61,6 @@ from evalscope.utils.logger import get_logger
 
 logger = get_logger()
 
-
 @register_api('custom')
 class CustomPlugin(DefaultApiPlugin):
     """Custom API plugin (recommended to inherit from DefaultApiPlugin for OpenAI-compatible APIs)."""
@@ -185,7 +184,6 @@ from evalscope.perf.arguments import Arguments
 from evalscope.perf.plugin.datasets.base import DatasetPluginBase
 from evalscope.perf.plugin.registry import register_dataset
 
-
 @register_dataset('custom')
 class CustomDatasetPlugin(DatasetPluginBase):
     """Reads the dataset and returns prompts."""
@@ -203,7 +201,6 @@ class CustomDatasetPlugin(DatasetPluginBase):
                     yield [{'role': 'user', 'content': prompt}]
                 else:
                     yield prompt
-
 
 if __name__ == '__main__':
     from evalscope.perf.arguments import Arguments

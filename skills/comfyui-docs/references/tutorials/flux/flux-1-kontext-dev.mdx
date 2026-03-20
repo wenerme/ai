@@ -1,11 +1,7 @@
 ---
 title: "ComfyUI Flux Kontext Dev Native Workflow Example"
 description: "ComfyUI Flux Kontext Dev Native Workflow Example."
-sidebarTitle: "Flux.1 Kontext Dev"
 ---
-
-import PromptTechniques from "/snippets/tutorials/flux/prompt-techniques.mdx";
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 <iframe
   className="w-full aspect-video rounded-xl"
@@ -35,8 +31,6 @@ While the previously released API version offers the highest fidelity and speed,
 
 Currently in ComfyUI, you can use all these versions, where [Pro and Max versions](/tutorials/partner-nodes/black-forest-labs/flux-1-kontext) can be called through API nodes, while the Dev open source version please refer to the instructions in this guide.
 
-<UpdateReminder/>
-
 ## Model Download
 
 To run the workflows in this guide successfully, you first need to download the following model files. You can also directly get the model download links from the corresponding workflows, which already contain the model file download information.
@@ -45,9 +39,7 @@ To run the workflows in this guide successfully, you first need to download the 
 
 - [flux1-dev-kontext_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors)
 
-<Tip>
 If you want to use the original weights, you can visit Black Forest Labs' related repository to obtain and use the original model weights.
-</Tip>
 
 **VAE**
 - [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)
@@ -90,7 +82,7 @@ Download the following files and drag them into ComfyUI to load the correspondin
 
 ### 2. Complete the workflow step by step
 
-![Workflow Step Guide](/images/tutorial/flux/flux_1_kontext_dev_basic_step_guide.jpg)
+[Workflow Step Guide]
 You can refer to the numbers in the image to complete the workflow run:
 
 1. In the `Load Diffusion Model` node, load the `flux1-dev-kontext_fp8_scaled.safetensors` model
@@ -99,5 +91,3 @@ You can refer to the numbers in the image to complete the workflow run:
 4. In the `Load Image(from output)` node, load the provided input image
 5. In the `CLIP Text Encode` node, modify the prompts, only English is supported
 6. Click the `Queue` button, or use the shortcut `Ctrl(cmd) + Enter` to run the workflow
-
-<PromptTechniques/>

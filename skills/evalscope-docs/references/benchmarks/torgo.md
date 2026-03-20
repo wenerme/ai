@@ -1,6 +1,5 @@
 # TORGO
 
-
 ## Overview
 
 TORGO is a specialized database of dysarthric speech designed for evaluating ASR systems on speakers with motor speech disorders. It contains aligned acoustic and articulatory data from speakers with cerebral palsy (CP) or amyotrophic lateral sclerosis (ALS).
@@ -29,7 +28,6 @@ TORGO is a specialized database of dysarthric speech designed for evaluating ASR
 - Requires `jellyfish` package for SemScore metric
 - Supports batch scoring for efficiency
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ TORGO is a specialized database of dysarthric speech designed for evaluating ASR
 | **Metrics** | `cer`, `wer`, `sem_score` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -66,7 +63,6 @@ TORGO is a specialized database of dysarthric speech designed for evaluating ASR
 | Total Audio Files | 5,553 |
 | Audio per Sample | min: 1, max: 1, mean: 1 |
 | Formats | wav |
-
 
 ## Sample Example
 
@@ -141,5 +137,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

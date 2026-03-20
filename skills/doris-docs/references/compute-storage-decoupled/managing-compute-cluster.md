@@ -47,7 +47,6 @@ Use the `SHOW COMPUTE GROUPS` command to view all compute groups in the current 
 - Regular users can only view compute groups for which they have usage permissions (USAGE_PRIV)
 - If a user doesn't have usage permissions for any compute groups, an empty result will be returned
 
-
 ```sql
 SHOW COMPUTE GROUPS;
 ```
@@ -113,7 +112,7 @@ To view all available compute groups in the current repository:
 SHOW COMPUTE GROUPS;
 ```
 
-:::info Note
+> **info**: Note
 
 - If the current user has an Admin role, for example: `CREATE USER jack IDENTIFIED BY '123456' DEFAULT ROLE "admin"`, then:
   - They can set the default compute group for themselves and other users;
@@ -124,9 +123,6 @@ SHOW COMPUTE GROUPS;
   - They cannot view all compute groups, as this operation requires `GRANT ADMIN` privileges.
 - If the current user has not configured a default compute group, the existing system will trigger an error when performing data read/write operations. To resolve this issue, the user can execute the `use @cluster` command to specify the compute group used by the current context, or use the `SET PROPERTY` statement to set the default compute group.
 - If the current user has configured a default compute group, but that cluster is subsequently deleted, an error will also be triggered during data read/write operations. The user can execute the `use @cluster` command to re-specify the compute group used by the current context, or use the `SET PROPERTY` statement to update the default cluster settings.
-
-:::
-
 
 ## Switching Compute Groups
 
@@ -150,12 +146,8 @@ Cloud rebalance is a load balancing operation in Doris's compute-storage decoupl
 
 #### Balance Strategy Types
 
-:::caution
-
-The `balance_type` feature is supported starting from Doris 3.1.3 and Doris 4.0.2.  
+> **caution**: The `balance_type` feature is supported starting from Doris 3.1.3 and Doris 4.0.2.  
 Prior to these versions, only the FE global configuration `enable_cloud_warm_up_for_rebalance` was available to control whether warm up tasks are executed during rebalance.
-
-:::
 
 The following table describes three strategy types, using the example of adding nodes to a Compute Group:
 
@@ -213,8 +205,6 @@ Execute `SHOW COMPUTE GROUPS;`. The `properties` column in the result contains C
    ```bash
    curl "http://feip:fe_http_port/metrics" | grep '_balance_num'
    ```
-
-
 
 ## Renaming Compute Group
 

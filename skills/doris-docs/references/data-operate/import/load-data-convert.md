@@ -107,15 +107,9 @@ The following are processing flows for three different data formats:
 
 #### Load CSV Format Data
 
-![](/images/load-data-convert-csv-en.png)
-
 #### Load JSON Format Data with Specified jsonpaths
 
-![](/images/load-data-convert-json1-en.png)
-
 #### Load JSON Format Data without Specified jsonpaths
-
-![](/images/load-data-convert-json2-en.png)
 
 ### Load JSON Data with Specified jsonpaths
 Assume the following source data (column headers are for illustration only, no actual headers exist):
@@ -761,7 +755,6 @@ mysql> select * from example_table;
 +------+------+------+------+
 ```
 
-
 ## Pre-filtering
 
 Pre-filtering is the process of filtering out unwanted raw data before column mapping and transformation. This feature is only supported in Broker Load and Routine Load.
@@ -913,7 +906,6 @@ mysql> select * from example_table;
 ## Post-filtering
 
 Post-filtering is the process of filtering the final results after column mapping and transformation.
-
 
 ### Filtering Without Column Mapping and Transformation
 

@@ -7,15 +7,11 @@ description: Use oRPC inside an Next.js project
 
 [Next.js](https://nextjs.org/) is a leading React framework for server-rendered apps. oRPC works with both the [App Router](https://nextjs.org/docs/app/getting-started/installation) and [Pages Router](https://nextjs.org/docs/pages/getting-started/installation). For additional context, refer to the [HTTP Adapter](/docs/adapters/http) guide.
 
-::: info
-oRPC also provides out-of-the-box support for [Server Action](/docs/server-action) with no additional configuration required.
-:::
+> **info**: oRPC also provides out-of-the-box support for [Server Action](/docs/server-action) with no additional configuration required.
 
 ## Server
 
 You set up an oRPC server inside Next.js using its [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers).
-
-::: code-group
 
 ```ts [app/rpc/[[...rest]]/route.ts]
 import { RPCHandler } from '@orpc/server/fetch'
@@ -46,13 +42,9 @@ export const PATCH = handleRequest
 export const DELETE = handleRequest
 ```
 
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
-
-::: details Pages Router Support?
+> **details**: Pages Router Support?
 
 ```ts [pages/api/rpc/[[...rest]].ts]
 import { RPCHandler } from '@orpc/server/node'
@@ -87,8 +79,7 @@ export default async (req, res) => {
 }
 ```
 
-::: warning
-Next.js [body parser](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#custom-config) may handle common request body types, and oRPC will use the parsed body if available. However, it doesn't support features like [Bracket Notation](/docs/openapi/bracket-notation), and in case you upload a file with `application/json`, it may be parsed as plain JSON instead of a `File`. To avoid these issues, disable the body parser:
+> **warning**: Next.js [body parser](https://nextjs.org/docs/pages/building-your-application/routing/api-routes#custom-config) may handle common request body types, and oRPC will use the parsed body if available. However, it doesn't support features like [Bracket Notation](/docs/openapi/bracket-notation), and in case you upload a file with `application/json`, it may be parsed as plain JSON instead of a `File`. To avoid these issues, disable the body parser:
 
 ```ts
 export const config = {
@@ -97,8 +88,6 @@ export const config = {
   },
 }
 ```
-
-:::
 
 ## Client
 
@@ -120,15 +109,11 @@ const link = new RPCLink({
 })
 ```
 
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
 
 ## Optimize SSR
 
 To reduce HTTP requests and improve latency during SSR, you can utilize a [Server-Side Client](/docs/client/server-side) during SSR. Below is a quick setup, see [Optimize SSR](/docs/best-practices/optimize-ssr) for more details.
-
-::: code-group
 
 ```ts [lib/orpc.ts]
 import type { RouterClient } from '@orpc/server'
@@ -189,5 +174,3 @@ import '../lib/orpc.server' // for pre-rendering
 
 // Rest of the code
 ```
-
-:::

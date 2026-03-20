@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Provider specific Wildcard routing 
 
@@ -8,9 +7,6 @@ import TabItem from '@theme/TabItem';
 Use this if you want to **proxy all models from a specific provider without defining them on the config.yaml**
 
 ## Step 1. Define provider specific routing 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -42,9 +38,6 @@ router = Router(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 **Step 1** - define provider specific routing on config.yaml
 ```yaml
 model_list:
@@ -62,8 +55,6 @@ model_list:
       model: "openai/fo::*:static::*"
       api_key: os.environ/OPENAI_API_KEY
 ```
-</TabItem>
-</Tabs>
 
 ## [PROXY-Only] Step 2 - Run litellm proxy 
 
@@ -73,8 +64,7 @@ $ litellm --config /path/to/config.yaml
 
 ## Step 3 - Test it 
 
-<Tabs>  
-<TabItem value="sdk" label="SDK">
+  
 
 ```python
 from litellm import Router
@@ -93,9 +83,6 @@ print(resp)
 resp = completion(model="fo::hi::static::hi", messages=[{"role": "user", "content": "Hello, Claude!"}])
 print(resp)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 Test with `anthropic/` - all models with `anthropic/` prefix will get routed to `anthropic/*`
 ```bash
@@ -135,9 +122,5 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## [[PROXY-Only] Control Wildcard Model Access](./proxy/model_access#-control-access-on-wildcard-models)

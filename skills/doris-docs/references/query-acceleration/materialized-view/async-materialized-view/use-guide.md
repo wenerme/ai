@@ -20,14 +20,12 @@
     
     - The more general the materialized view definition (e.g., without WHERE conditions and more aggregation dimensions), the lower the query acceleration effect, but the better the generality and reusability of the materialization, meaning lower construction costs.
 
-:::caution Note
+> **caution**: Note
 - **Control of Materialized View Quantity:** More materialized views are not necessarily better. Constructing and refreshing materialized views requires resources. Materialized views participate in transparent rewriting, and the CBO cost model needs time to select the optimal materialized view. In theory, the more materialized views, the longer the transparent rewriting time.
 
 - **Regularly Check the Usage Status of Materialized Views:** If not used, they should be deleted in time.
 
 - **Base Table Data Update Frequency:** If the base table data of the materialized view is frequently updated, it may not be suitable to use materialized views, as this will cause the materialized view to frequently become invalid and not usable for transparent rewriting (direct query). If you need to use such materialized views for transparent rewriting, you need to allow a certain timeliness delay in the queried data and can set a `grace_period`. See the applicable introduction of `grace_period` for details.
-:::
-
 
 ## Principles for Choosing Materialized View Refresh Methods
 
@@ -111,7 +109,6 @@ CREATE TABLE IF NOT EXISTS partsupp (
 DUPLICATE KEY(ps_partkey, ps_suppkey)
 DISTRIBUTED BY HASH(ps_partkey) BUCKETS 3;
 
-
 INSERT INTO partsupp VALUES     
 (2, 3, 9, 10.01, 'supply1'),     
 (4, 3, 9, 10.01, 'supply2'),     
@@ -169,9 +166,8 @@ GROUP BY
 ```
 
 ## Partitioned Materialized Views Retaining Only Recent Partition Data
-:::tip Note
+> **tip**: Note
 This feature has been supported since Apache Doris version 2.1.1.
-:::
 
 Materialized views can be configured to retain data only from the most recent partitions, automatically deleting expired partition data during each refresh.
 This can be achieved by setting the following properties for the materialized view:
@@ -185,7 +181,6 @@ partition_sync_limit, partition_sync_time_unit, and partition_sync_date_format.
 
 Example:
 The materialized view defined below will only retain data from the last 3 days. If there's no data in the recent 3 days, querying this materialized view directly will return no results.
-
 
 ```sql
 CREATE MATERIALIZED VIEW latest_partition_mv
@@ -214,7 +209,6 @@ l_linestatus,
 ps_partkey,
 date_trunc(l_ordertime, 'day');
 ```
-
 
 ## How to Use Materialized Views to Accelerate Queries
 
@@ -543,7 +537,6 @@ JOIN region r ON n.n_regionkey = r.r_regionkey
 GROUP BY n_name, month;
 ```
 
-
 Using asynchronous materialized views for layered modeling:
 
 Build DWD layer (detailed data), process order detail wide table
@@ -688,7 +681,7 @@ ORDER BY
 revenue DESC;
 ```
 
-:::tip Note
+> **tip**: Note
 Doris currently cannot detect data changes in external tables other than Hive. When external table data is inconsistent, using materialized views may result in data inconsistency. The following switch indicates: whether materialized views participating in transparent rewriting are allowed to include external tables, default false. If you accept data inconsistency or ensure external table data consistency through periodic refresh, you can set this switch to true.
 Set whether materialized views containing external tables can be used for transparent rewriting, default not allowed, if you can accept data inconsistency or can ensure data consistency yourself, you can enable
 
@@ -702,7 +695,6 @@ Enable getting row count from file list for statistics
 View external table statistics to confirm if they are complete
 
 ``SHOW TABLE STATS external_table_name;``
-:::
 
 ### Scenario Four: Improving Write Efficiency, Reducing Resource Contention
 In high-throughput data write scenarios, system stability and efficient data processing are equally important. Through the flexible refresh strategies of asynchronous materialized views, users can choose appropriate refresh methods based on specific scenarios, thereby reducing write pressure and avoiding resource contention.

@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/helm-deployment-options
 title: 'Helm deployment options'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 3
 description: 'Advanced deployment configurations for ClickStack with Helm'
 doc_type: 'guide'
 keywords: ['ClickStack deployment options', 'external ClickHouse', 'external OTEL', 'minimal deployment', 'Helm configuration']

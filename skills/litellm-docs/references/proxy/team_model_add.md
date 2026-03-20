@@ -1,20 +1,15 @@
 # ✨ Allow Teams to Add Models
 
-:::info
-
-This is an Enterprise feature.
+> **info**: This is an Enterprise feature.
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
 
 Allow team to add a their own models/key for that project - so any OpenAI call they make uses their OpenAI key.
 
 Useful for teams that want to call their own finetuned models.
 
 ## Specify Team ID in `/model/add` endpoint
-
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/model/new' \
@@ -83,4 +78,3 @@ curl -L -X GET 'http://localhost:4000/team/info?team_id=e59e2671-a064-436a-a0fa-
     },
 }
 ```
-

@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # MCP Overview
 
@@ -17,14 +15,13 @@ LiteLLM Proxy provides an MCP Gateway that allows you to use a fixed endpoint fo
 ## Overview
 | Feature | Description |
 |---------|-------------|
-| MCP Operations | • List Tools<br/>• Call Tools <br/>• Prompts <br/>• Resources |
-| Supported MCP Transports | • Streamable HTTP<br/>• SSE<br/>• Standard Input/Output (stdio) |
-| LiteLLM Permission Management | • By Key<br/>• By Team<br/>• By Organization |
+| MCP Operations | • List Tools• Call Tools • Prompts • Resources |
+| Supported MCP Transports | • Streamable HTTP• SSE• Standard Input/Output (stdio) |
+| LiteLLM Permission Management | • By Key• By Team• By Organization |
 
-:::caution MCP protocol update
-Starting in LiteLLM v1.80.18, the LiteLLM MCP protocol version is `2025-11-25`.<br/> 
+> **caution**: MCP protocol update
+Starting in LiteLLM v1.80.18, the LiteLLM MCP protocol version is `2025-11-25`. 
 LiteLLM namespaces multiple MCP servers by prefixing each tool name with its MCP server name, so newly created servers now must use names that comply with SEP-986—noncompliant names cannot be added anymore. Existing servers that still violate SEP-986 only emit warnings today, but future MCP-side rollouts may block those names entirely, so we recommend updating any legacy server names proactively before MCP enforcement makes them unusable.
-:::
 
 ## Adding your MCP
 
@@ -67,9 +64,6 @@ If `supported_db_objects` is not set, all object types are loaded from the datab
 
 For diagnosing connectivity problems after setup, see the [MCP Troubleshooting Guide](./mcp_troubleshoot.md).
 
-<Tabs>
-<TabItem value="ui" label="LiteLLM UI">
-
 On the LiteLLM UI, Navigate to "MCP Servers" and click "Add New MCP Server".
 
 On this form, you should enter your MCP Server URL and the transport you want to use.
@@ -84,26 +78,17 @@ LiteLLM supports the following MCP transports:
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-<br/>
-<br/>
-
 ### Add HTTP MCP Server
 
 This video walks through adding and using an HTTP MCP server on LiteLLM UI and using it in Cursor IDE.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/e2aebce78e8d46beafeb4bacdde31f14" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<br/>
-<br/>
-
 ### Add SSE MCP Server
 
 This video walks through adding and using an SSE MCP server on LiteLLM UI and using it in Cursor IDE.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/07e04e27f5e74475b9cf8ef8247d2c3e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-<br/>
-<br/>
 
 ### Add STDIO MCP Server
 
@@ -113,9 +98,6 @@ For stdio MCP servers, select "Standard Input/Output (stdio)" as the transport t
   img={require('../img/add_stdio_mcp.png')}
   style={{width: '80%', display: 'block', margin: '0'}}
 />
-
-<br/>
-<br/>
 
 ### OAuth Configuration & Overrides
 
@@ -131,8 +113,6 @@ LiteLLM attempts [OAuth 2.0 Authorization Server Discovery](https://datatracker.
 - **Provide explicit client credentials** – If the MCP provider does not offer dynamic client registration or you prefer to manage the client yourself, fill in `client_id`, `client_secret`, and the desired `scopes`.
 - **Override discovery URLs** – In some environments, LiteLLM might not be able to reach the provider's metadata endpoints. Use the optional `authorization_url`, `token_url`, and `registration_url` fields to point LiteLLM directly to the correct endpoints.
 
-<br/>
-
 ### AWS SigV4 Authentication
 
 For MCP servers hosted on [AWS Bedrock AgentCore](https://docs.aws.amazon.com/bedrock/latest/userguide/agentcore.html), select **AWS SigV4** as the authentication type. LiteLLM will sign every outgoing MCP request with your AWS credentials using [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -146,8 +126,6 @@ Fill in your AWS region, service name (defaults to `bedrock-agentcore`), and opt
 
 [**See full SigV4 setup guide**](./mcp_aws_sigv4.md)
 
-<br/>
-
 ### Static Headers
 
 Sometimes your MCP server needs specific headers on every request. Maybe it's an API key, maybe it's a custom header the server expects. Instead of configuring auth, you can just set them directly.
@@ -159,15 +137,10 @@ Sometimes your MCP server needs specific headers on every request. Maybe it's an
 
 These headers get sent with every request to the server. That's it.
 
-
 **When to use this:**
 - Your server needs custom headers that don't fit the standard auth patterns
 - You want full control over exactly what headers are sent
 - You're debugging and need to quickly add headers without changing auth configuration
-
-</TabItem>
-
-<TabItem value="config" label="config.yaml">
 
 Add your MCP servers directly in your `config.yaml` file:
 
@@ -332,7 +305,6 @@ mcp_servers:
       FASTMCP_LOG_LEVEL: "INFO"
 ```
 
-
 ### MCP Aliases
 
 You can define aliases for your MCP servers in the `litellm_settings` section. This allows you to:
@@ -356,10 +328,6 @@ litellm_settings:
 - **Consistent naming**: Standardize alias patterns across your organization
 - **Easy migration**: Change server names without breaking existing tool references
 
-</TabItem>
-</Tabs>
-
-
 ## Converting OpenAPI Specs to MCP Servers
 
 LiteLLM can convert OpenAPI specifications into MCP servers, exposing any REST API as MCP tools without writing custom server code.
@@ -372,8 +340,7 @@ LiteLLM supports OAuth 2.0 for MCP servers -- both interactive (PKCE) flows for 
 
 See the **[MCP OAuth guide](./mcp_oauth.md)** for setup instructions, sequence diagrams, and a test server.
 
-<details>
-<summary>Detailed OAuth reference (click to expand)</summary>
+Detailed OAuth reference (click to expand)
 
 LiteLLM v 1.77.6 added support for OAuth 2.0 Client Credentials for MCP servers.
 
@@ -455,18 +422,12 @@ sequenceDiagram
 
 See the official [MCP Authorization Flow](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-flow-steps) for additional reference.
 
-</details>
-
-
 ## Forwarding Custom Headers to MCP Servers
 
 LiteLLM supports forwarding additional custom headers from MCP clients to backend MCP servers using the `extra_headers` configuration parameter. This allows you to pass custom authentication tokens, API keys, or other headers that your MCP server requires.
 
 **Configuration**
 
-
-<Tabs>
-<TabItem value="config" label="config.yaml">
 Configure `extra_headers` in your MCP server configuration to specify which header names should be forwarded:
 
 ```yaml title="config.yaml with extra_headers" showLineNumbers
@@ -478,15 +439,12 @@ mcp_servers:
     extra_headers: ["custom_key", "x-custom-header", "Authorization"]
     description: "GitHub MCP server with custom header forwarding"
 ```
-</TabItem>
-<TabItem value="clientside" label="Dynamically on Client Side">
 
 Use this when giving users access to a [group of MCP servers](#grouping-mcps-access-groups).
 
 **Format:** `x-mcp-{server_alias}-{header_name}: value`
 
 This allows you to use different authentication for different MCP servers.
-
 
 **Examples:**
 - `x-mcp-github-authorization: Bearer ghp_xxxxxxxxx` - GitHub MCP server with Bearer token
@@ -517,7 +475,6 @@ config = {
 # Create a client that connects to all servers
 client = Client(config)
 
-
 async def main():
     async with client:
         tools = await client.list_tools()
@@ -534,26 +491,15 @@ if __name__ == "__main__":
 
 ```
 
-
-
 **Benefits:**
 - **Server-specific authentication**: Each MCP server can use different auth methods
 - **Better security**: No need to share the same auth token across all servers
 - **Flexible header names**: Support for different auth header types (authorization, x-api-key, etc.)
 - **Clean separation**: Each server's auth is clearly identified
 
-
-
-</TabItem>
-</Tabs>
-
-
 #### Client Usage
 
 When connecting from MCP clients, include the custom headers that match the `extra_headers` configuration:
-
-<Tabs>
-<TabItem value="fastmcp" label="Python FastMCP">
 
 ```python title="FastMCP Client with Custom Headers" showLineNumbers
 from fastmcp import Client
@@ -592,10 +538,6 @@ async def main():
 asyncio.run(main())
 ```
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 ```json title="Cursor MCP Configuration with Custom Headers" showLineNumbers
 {
   "mcpServers": {
@@ -612,10 +554,6 @@ asyncio.run(main())
 }
 ```
 
-</TabItem>
-
-<TabItem value="http" label="HTTP Client">
-
 ```bash title="cURL with Custom Headers" showLineNumbers
 curl --location 'http://localhost:4000/github_mcp/mcp' \
 --header 'Content-Type: application/json' \
@@ -630,16 +568,12 @@ curl --location 'http://localhost:4000/github_mcp/mcp' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 #### How It Works
 
 1. **Configuration**: Define `extra_headers` in your MCP server config with the header names you want to forward
 2. **Client Headers**: Include the corresponding headers in your MCP client requests
 3. **Header Forwarding**: LiteLLM automatically forwards matching headers to the backend MCP server
 4. **Authentication**: The backend MCP server receives both the configured auth headers and the custom headers
-
 
 ### Passing Request Headers to STDIO env Vars
 
@@ -734,10 +668,8 @@ asyncio.run(main())
 
 When calling your LiteLLM Proxy's `/v1/responses` endpoint to use MCP tools, **always use `server_url: "litellm_proxy"`** in the tools array. This tells the proxy to use its configured MCP servers.
 
-:::important Do not use the full proxy URL
+> **important**: Do not use the full proxy URL
 Using `server_url: "https://your-proxy.com/mcp"` is incorrect when the request is already going to the proxy. The proxy needs the literal value `litellm_proxy` to route to its configured MCP servers.
-:::
-
 ```bash title="Correct: Using litellm_proxy" showLineNumbers
 curl --location 'https://your-proxy.com/v1/responses' \
 --header 'Content-Type: application/json' \
@@ -791,7 +723,6 @@ To pass custom headers (e.g., API keys, auth tokens) to specific MCP servers, us
 
 Use this if you want to pass a client side authentication token to LiteLLM to then pass to your MCP to auth to your MCP.
 
-
 ### New Server-Specific Auth Headers (Recommended)
 
 You can specify MCP auth tokens using server-specific headers in the format `x-mcp-{server_alias}-{header_name}`. This allows you to use different authentication for different MCP servers.
@@ -805,9 +736,6 @@ You can specify MCP auth tokens using server-specific headers in the format `x-m
 ### Legacy Auth Header (Deprecated)
 
 You can also specify your MCP auth token using the header `x-mcp-auth`. This will be forwarded to all MCP servers and is deprecated in favor of server-specific headers.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI API">
 
 #### Connect via OpenAI Responses API with Server-Specific Auth
 
@@ -864,10 +792,6 @@ curl --location 'https://api.openai.com/v1/responses' \
 }'
 ```
 
-</TabItem>
-
-<TabItem value="litellm" label="LiteLLM Proxy">
-
 #### Connect via LiteLLM Proxy Responses API with Server-Specific Auth
 
 Use this when calling LiteLLM Proxy for LLM API requests to `/v1/responses` endpoint with server-specific authentication:
@@ -923,10 +847,6 @@ curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 }'
 ```
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 #### Connect via Cursor IDE with Server-Specific Auth
 
 Use tools directly from Cursor IDE with LiteLLM MCP and include server-specific authentication:
@@ -976,10 +896,6 @@ Use tools directly from Cursor IDE with LiteLLM MCP and include your MCP authent
 }
 ```
 
-</TabItem>
-
-<TabItem value="http" label="Streamable HTTP">
-
 #### Connect via Streamable HTTP Transport with Server-Specific Auth
 
 Connect to LiteLLM MCP using HTTP transport with server-specific authentication:
@@ -1013,10 +929,6 @@ x-mcp-auth: Bearer YOUR_MCP_AUTH_TOKEN
 
 This URL can be used with any MCP client that supports HTTP transport. The `x-mcp-auth` header will be forwarded to your MCP server for authentication.
 
-</TabItem>
-
-<TabItem value="fastmcp" label="Python FastMCP">
-
 #### Connect via Python FastMCP Client with Server-Specific Auth
 
 Use the Python FastMCP client to connect to your LiteLLM MCP server with server-specific authentication:
@@ -1042,7 +954,6 @@ transport = StreamableHttpTransport(
 # Initialize the client with the transport
 client = Client(transport=transport)
 
-
 async def main():
     # Connection is established here
     print("Connecting to LiteLLM MCP server with server-specific authentication...")
@@ -1063,7 +974,6 @@ async def main():
             # Call the tool with appropriate arguments
             result = await client.call_tool(tool_name, arguments={})
             print(f"Tool result: {result}")
-
 
 # Run the example
 if __name__ == "__main__":
@@ -1094,7 +1004,6 @@ transport = StreamableHttpTransport(
 # Initialize the client with the transport
 client = Client(transport=transport)
 
-
 async def main():
     # Connection is established here
     print("Connecting to LiteLLM MCP server with authentication...")
@@ -1116,14 +1025,10 @@ async def main():
             result = await client.call_tool(tool_name, arguments={})
             print(f"Tool result: {result}")
 
-
 # Run the example
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-
-</TabItem>
-</Tabs>
 
 ### Customize the MCP Auth Header Name
 
@@ -1133,7 +1038,6 @@ By default, LiteLLM uses `x-mcp-auth` to pass your credentials to MCP servers. Y
 ```bash title="Environment Variable" showLineNumbers
 export LITELLM_MCP_CLIENT_SIDE_AUTH_HEADER_NAME="authorization"
 ```
-
 
 2. Set the `mcp_client_side_auth_header_name` in the general settings on the config.yaml file
 
@@ -1177,9 +1081,8 @@ curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 
 ## Use MCP tools with `/chat/completions`
 
-:::tip Works with all providers
+> **tip**: Works with all providers
 This flow is **provider-agnostic**: the same MCP tool definition works for _every_ LLM backend behind LiteLLM (OpenAI, Azure OpenAI, Anthropic, Amazon Bedrock, Vertex, self-hosted deployments, etc.).
-:::
 
 LiteLLM Proxy also supports MCP-aware tooling on the classic `/v1/chat/completions` endpoint. Provide the MCP tool definition directly in the `tools` array and LiteLLM will fetch and transform the MCP server's tools into OpenAI-compatible function calls. When `require_approval` is set to `"never"`, the proxy automatically executes the returned tool calls and feeds the results back into the model before returning the assistant response.
 
@@ -1205,7 +1108,6 @@ curl --location '<your-litellm-proxy-base-url>/v1/chat/completions' \
 
 If you omit `require_approval` or set it to any value other than `"never"`, the MCP tool calls are returned to the client so that you can review and execute them manually, matching the upstream OpenAI behavior.
 
-
 ## LiteLLM Proxy - Walk through MCP Gateway
 LiteLLM exposes an MCP Gateway for admins to add all their MCP servers to LiteLLM. The key benefits of using LiteLLM Proxy with MCP are:
 
@@ -1225,7 +1127,6 @@ LiteLLM Python SDK acts as a MCP bridge to utilize MCP tools with all LiteLLM su
 - **Call** MCP Tools: OpenAI clients can call MCP tools
   - `litellm.experimental_mcp_client.call_openai_tool` to call an OpenAI tool on an MCP server
 
-
 ### 1. List Available MCP Tools
 
 In this example we'll use `litellm.experimental_mcp_client.load_mcp_tools` to list all available MCP tools on any MCP server. This method can be used in two ways:
@@ -1235,9 +1136,6 @@ In this example we'll use `litellm.experimental_mcp_client.load_mcp_tools` to li
 - `format="openai"` - Return MCP tools converted to OpenAI API compatible tools. Allows using with OpenAI endpoints.
   - Returns: `openai.types.chat.ChatCompletionToolParam`
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 ```python title="MCP Client List Tools" showLineNumbers
 # Create server parameters for stdio connection
 from mcp import ClientSession, StdioServerParameters
@@ -1245,7 +1143,6 @@ from mcp.client.stdio import stdio_client
 import os
 import litellm
 from litellm import experimental_mcp_client
-
 
 server_params = StdioServerParameters(
     command="python3",
@@ -1271,10 +1168,6 @@ async with stdio_client(server_params) as (read, write):
         )
         print("LLM RESPONSE: ", json.dumps(llm_response, indent=4, default=str))
 ```
-
-</TabItem>
-
-<TabItem value="openai" label="OpenAI SDK + LiteLLM Proxy">
 
 In this example we'll walk through how you can use the OpenAI SDK pointed to the LiteLLM proxy to call MCP tools. The key difference here is we use the OpenAI SDK to make the LLM API request
 
@@ -1315,9 +1208,6 @@ async with stdio_client(server_params) as (read, write):
         )
         print("LLM RESPONSE: ", llm_response)
 ```
-</TabItem>
-</Tabs>
-
 
 ### 2. List and Call MCP Tools
 
@@ -1334,9 +1224,6 @@ The first llm response returns a list of OpenAI tools. We take the first tool ca
 - Calls the MCP Tool on the MCP server
 - Returns the result of the MCP Tool call
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 ```python title="MCP Client List and Call Tools" showLineNumbers
 # Create server parameters for stdio connection
 from mcp import ClientSession, StdioServerParameters
@@ -1344,7 +1231,6 @@ from mcp.client.stdio import stdio_client
 import os
 import litellm
 from litellm import experimental_mcp_client
-
 
 server_params = StdioServerParameters(
     command="python3",
@@ -1398,9 +1284,6 @@ async with stdio_client(server_params) as (read, write):
             "FINAL LLM RESPONSE: ", json.dumps(llm_response, indent=4, default=str)
         )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="OpenAI SDK + LiteLLM Proxy">
 
 In this example we'll walk through how you can use the OpenAI SDK pointed to the LiteLLM proxy to call MCP tools. The key difference here is we use the OpenAI SDK to make the LLM API request
 
@@ -1466,9 +1349,6 @@ async with stdio_client(server_params) as (read, write):
         )
         print("FINAL RESPONSE: ", final_response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## FAQ
 

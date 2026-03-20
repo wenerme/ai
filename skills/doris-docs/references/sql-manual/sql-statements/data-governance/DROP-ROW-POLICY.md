@@ -10,7 +10,6 @@
 
 Delete row security policy. For details about row security policies, please refer to the "Security Policies" chapter
 
-
 ## Syntax
 
 ```sql

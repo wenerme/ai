@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/sumIf'
 title: 'sumIf'
 description: 'Example of using the sumIf combinator'
 keywords: ['sum', 'if', 'combinator', 'examples', 'sumIf']
-sidebar_label: 'sumIf'
 doc_type: 'reference'
 ---
 

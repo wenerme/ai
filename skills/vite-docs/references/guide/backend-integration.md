@@ -1,10 +1,9 @@
 # Backend Integration
 
-:::tip Note
+> **tip**: Note
 If you want to serve the HTML using a traditional backend (e.g. Rails, Laravel) but use Vite for serving assets, check for existing integrations listed in [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
 
 If you need a custom integration, you can follow the steps in this guide to configure it manually.
-:::
 
 1. In your Vite config, configure the entry and enable build manifest:
 
@@ -39,7 +38,7 @@ If you need a custom integration, you can follow the steps in this guide to conf
 2. For development, inject the following in your server's HTML template (substitute `http://localhost:5173` with the local URL Vite is running at):
 
    ```html
-   <!-- if development -->
+   
    <script type="module" src="http://localhost:5173/@vite/client"></script>
    <script type="module" src="http://localhost:5173/main.js"></script>
    ```
@@ -194,18 +193,18 @@ If you need a custom integration, you can follow the steps in this guide to conf
    function is for illustration and isn't provided by Vite.
 
    ```html
-   <!-- if production -->
+   
 
-   <!-- for cssFile of manifest[name].css -->
+   
    <link rel="stylesheet" href="/{{ cssFile }}" />
 
-   <!-- for chunk of importedChunks(manifest, name) -->
-   <!-- for cssFile of chunk.css -->
+   
+   
    <link rel="stylesheet" href="/{{ cssFile }}" />
 
    <script type="module" src="/{{ manifest[name].file }}"></script>
 
-   <!-- for chunk of importedChunks(manifest, name) -->
+   
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
@@ -224,7 +223,7 @@ If you need a custom integration, you can follow the steps in this guide to conf
    <link rel="stylesheet" href="assets/foo-5UjPuW-k.css" />
    <link rel="stylesheet" href="assets/shared-ChJ_j-JJ.css" />
    <script type="module" src="assets/foo-BRBmoGS9.js"></script>
-   <!-- optional -->
+   
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```
 
@@ -233,7 +232,7 @@ If you need a custom integration, you can follow the steps in this guide to conf
    ```html
    <link rel="stylesheet" href="assets/shared-ChJ_j-JJ.css" />
    <script type="module" src="assets/bar-gkvgaI9m.js"></script>
-   <!-- optional -->
+   
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```
 

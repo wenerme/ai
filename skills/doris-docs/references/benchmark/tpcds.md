@@ -16,8 +16,7 @@ This document mainly introduces the performance of Doris on the TPC-DS 1000G tes
 
 On 99 queries on the TPC-DS standard test data set, we conducted a comparison test based on Apache Doris 2.1.7-rc03 and Apache Doris 2.0.15.1 versions.
 
-
-![Doris on TPC-DS 1000G test set](/images/tpcds_2.1.png)
+[Doris on TPC-DS 1000G test set]
 
 ## 1. Hardware Environment
 
@@ -27,7 +26,6 @@ On 99 queries on the TPC-DS standard test data set, we conducted a comparison te
 | CPU                | Intel Xeon (Ice Lake) Platinum 8369B 32C |
 | Memory             | 128G                                     |
 | Disk               | Enterprise SSD (PL0)                     |
-
 
 ## 2. Software Environment
 
@@ -240,7 +238,6 @@ sh bin/create-tpcds-tables.sh -s 1000
 ```
 Or copy the table creation statement in [create-tpcds-tables](https://github.com/apache/doris/blob/master/tools/tpcds-tools/ddl/create-tpcds-tables-sf1000) and execute it in Doris.
 
-
 ### 7.4 Import Data
 
 Please perform data import with the following command:
@@ -248,7 +245,6 @@ Please perform data import with the following command:
 ```shell
 sh bin/load-tpcds-data.sh
 ```
-
 
 ### 7.5 Query Test
 

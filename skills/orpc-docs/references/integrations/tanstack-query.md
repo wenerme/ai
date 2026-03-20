@@ -7,13 +7,9 @@ description: Seamlessly integrate oRPC with Tanstack Query
 
 [Tanstack Query](https://tanstack.com/query/latest) is a robust solution for asynchronous state management. oRPC Tanstack Query integration is very lightweight and straightforward - supporting all libraries that Tanstack Query supports (React, Vue, Angular, Solid, Svelte, etc.).
 
-::: warning
-This documentation assumes you are already familiar with [Tanstack Query](https://tanstack.com/query/latest). If you need a refresher, please review the official Tanstack Query documentation before proceeding.
-:::
+> **warning**: This documentation assumes you are already familiar with [Tanstack Query](https://tanstack.com/query/latest). If you need a refresher, please review the official Tanstack Query documentation before proceeding.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/tanstack-query@latest
@@ -34,8 +30,6 @@ bun add @orpc/tanstack-query@latest
 ```sh [deno]
 deno add npm:@orpc/tanstack-query@latest
 ```
-
-:::
 
 ## Setup
 
@@ -67,7 +61,7 @@ orpc.planet.find.queryOptions({ input: { id: 123 } })
 //
 ```
 
-::: details Avoiding Query/Mutation Key Conflicts?
+> **details**: Avoiding Query/Mutation Key Conflicts?
 
 You can easily avoid key conflicts by passing a unique base key when creating your utils:
 
@@ -80,8 +74,6 @@ const postORPC = createTanstackQueryUtils(postClient, {
   path: ['post']
 })
 ```
-
-:::
 
 ## Query Options
 
@@ -133,10 +125,7 @@ const query = useQuery(orpc.live.experimental_liveOptions({
 
 Use `.infiniteOptions` to configure infinite queries. Use it with hooks like `useInfiniteQuery`, `useSuspenseInfiniteQuery`, or `prefetchInfiniteQuery`.
 
-::: info
-The `input` parameter must be a function that accepts the page parameter and returns the query input. Be sure to define the type for `pageParam` if it can be `null` or `undefined`.
-:::
-
+> **info**: The `input` parameter must be a function that accepts the page parameter and returns the query input. Be sure to define the type for `pageParam` if it can be `null` or `undefined`.
 ```ts
 const query = useInfiniteQuery(orpc.planet.list.infiniteOptions({
   input: (pageParam: number | undefined) => ({ limit: 10, offset: pageParam }),
@@ -206,8 +195,6 @@ const planet = await orpc.planet.find.call({ id: 123 })
 
 In reactive libraries like Vue or Solid, **TanStack Query** supports passing computed values as options. The exact usage varies by framework, so refer to the documentation for [Vue](https://tanstack.com/query/latest/docs/framework/vue/reactivity) or [Solid](https://tanstack.com/query/latest/docs/framework/solid/reference/useQuery#reactive-options) for details.
 
-::: code-group
-
 ```ts [Options as Function]
 const query = useQuery(
   () => orpc.planet.find.queryOptions({
@@ -223,8 +210,6 @@ const query = useQuery(computed(
   })
 ))
 ```
-
-:::
 
 ## Default Options
 
@@ -269,8 +254,7 @@ const customQuery = useQuery(orpc.planet.find.queryOptions({
 
 ## Client Context
 
-::: warning
-oRPC excludes [client context](/docs/client/rpc-link#using-client-context) from query keys. Manually override query keys if needed to prevent unwanted query deduplication. Use built-in `retry` option instead of the [oRPC Client Retry Plugin](/docs/plugins/client-retry).
+> **warning**: oRPC excludes [client context](/docs/client/rpc-link#using-client-context) from query keys. Manually override query keys if needed to prevent unwanted query deduplication. Use built-in `retry` option instead of the [oRPC Client Retry Plugin](/docs/plugins/client-retry).
 
 ```ts
 const query = useQuery(orpc.planet.find.queryOptions({
@@ -280,8 +264,6 @@ const query = useQuery(orpc.planet.find.queryOptions({
   // additional options...
 }))
 ```
-
-:::
 
 ## Error Handling
 
@@ -305,9 +287,7 @@ if (mutation.error && isDefinedError(mutation.error)) {
 }
 ```
 
-::: info
-For more details, see our [type-safe error handling guide](/docs/error-handling#type‐safe-error-handling).
-:::
+> **info**: For more details, see our [type-safe error handling guide](/docs/error-handling#type‐safe-error-handling).
 
 ## `skipToken` for Disabling Queries
 
@@ -364,10 +344,7 @@ const link = new RPCLink<ClientContext>({
 
 To avoid issues like refetching on mount or waterfall issues, your app may need to use [TanStack Query Hydration](https://tanstack.com/query/latest/docs/framework/react/guides/ssr). For seamless integration with oRPC, extend the default serializer using the [RPC JSON Serializer](/docs/advanced/rpc-json-serializer) to support all oRPC types.
 
-::: info
-You can use any custom serializers, but if you're using oRPC, you should use its built-in serializers.
-:::
-
+> **info**: You can use any custom serializers, but if you're using oRPC, you should use its built-in serializers.
 ```ts
 import { StandardRPCJsonSerializer } from '@orpc/client/standard'
 
@@ -401,11 +378,9 @@ const queryClient = new QueryClient({
 })
 ```
 
-::: details Next.js Example?
+> **details**: Next.js Example?
 
 This feature is not limited to React or Next.js. You can use it with any library that supports TanStack Query hydration.
-
-::: code-group
 
 ```ts [lib/serializer.ts]
 import { StandardRPCJsonSerializer } from '@orpc/client/standard'
@@ -524,5 +499,3 @@ export function ListPlanets() {
   )
 }
 ```
-
-:::

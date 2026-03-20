@@ -1,6 +1,5 @@
 ---
 title: browser.locators | Config
-outline: deep
 ---
 
 # browser.locators

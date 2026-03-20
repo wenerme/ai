@@ -56,7 +56,6 @@ curl http://localhost:4000/chat/completions \
 ```
 `-H "Authorization: Bearer YOUR_LITELLM_MASTER_KEY" ` is only required if you have set a LiteLLM master key
 
-
 ## Supported features
 
 Scaleway provider supports all features in [Generative APIs reference documentation ↗](https://www.scaleway.com/en/developers/api/generative-apis/), such as streaming, structured outputs and tool calling.

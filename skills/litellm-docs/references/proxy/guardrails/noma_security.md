@@ -1,18 +1,15 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Noma Security
 
 Use [Noma Security](https://noma.security/) to protect your LLM applications with comprehensive AI content moderation and safety guardrails.
 
-:::warning Deprecated: `guardrail: noma` (Legacy)
+> **warning**: Deprecated: `guardrail: noma` (Legacy)
 `guardrail: noma` is deprecated and users should migrate to `guardrail: noma_v2`.
 The legacy `guardrail: noma` API will no longer be supported after March 31, 2026.
 
 For easier migration of existing integrations, keep `guardrail: noma` and set `use_v2: true`.
 With `use_v2: true`, requests route to `noma_v2`; `monitor_mode` and `block_failures` still apply, while `anonymize_input` is ignored.
-:::
 
 ## Noma v2 guardrails (Recommended)
 
@@ -152,9 +149,6 @@ litellm --config config.yaml --detailed_debug
 
 ### 3. Test request
 
-<Tabs>
-<TabItem label="Unsuccessful call" value="not-allowed">
-
 Expect this to fail since the request contains harmful content:
 
 ```shell showLineNumbers title="Curl Request"
@@ -180,10 +174,6 @@ Expected response on failure:
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Successful Call" value="allowed">
 
 ```shell showLineNumbers title="Curl Request"
 curl -i http://0.0.0.0:4000/v1/chat/completions \
@@ -221,9 +211,6 @@ Expected response:
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Params
 
@@ -336,9 +323,6 @@ guardrails:
 
 Use `extra_body` to pass additional parameters to the Noma Security API call, such as dynamically setting the application ID for specific requests.
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python">
-
 ```python
 import openai
 client = openai.OpenAI(
@@ -360,9 +344,6 @@ response = client.chat.completions.create(
     }
 )
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl">
 
 ```shell
 curl 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -384,8 +365,6 @@ curl 'http://0.0.0.0:4000/v1/chat/completions' \
     }
 }'
 ```
-</TabItem>
-</Tabs>
 
 This allows you to override the default `application_id` parameter for specific requests, which is useful for tracking usage across different applications or components.
 

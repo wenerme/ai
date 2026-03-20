@@ -19,8 +19,6 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 The Get started with Grafana Alerting - Dynamic routing tutorial is a continuation of the [Get started with Grafana Alerting - Templating](http://www.grafana.com/tutorials/alerting-get-started-pt4/) tutorial.
 
 {{< youtube id="hSejnv1cdYY" >}}
@@ -31,11 +29,6 @@ In this tutorial you will learn how to:
 
 - Leverage notification policies for **dynamic routing based on query values**: Use notification policies to route alerts based on dynamically generated labels, in a way that critical alerts reach the on-call team and less urgent ones go to a general monitoring channel.
 
-<!-- INTERACTIVE page intro.md END -->
-<!-- INTERACTIVE page step1.md START -->
-
-<!-- INTERACTIVE ignore START -->
-
 ## Before you begin
 
 - **Interactive learning environment**
@@ -45,8 +38,6 @@ In this tutorial you will learn how to:
   - If you opt to run a Grafana stack locally, ensure you have the following applications installed:
     - Docker Compose (included in Docker for Desktop for macOS and Windows)
     - Git
-
-<!-- INTERACTIVE ignore END -->
 
 ### Set up the Grafana stack
 
@@ -66,57 +57,57 @@ To observe data using the Grafana stack, download and run the following files.
 
 1. Build the Grafana stack:
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    ```
    docker compose build
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose build
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
 1. Bring up the containers:
 
-    <!-- INTERACTIVE ignore START -->
+    
 
    ```
    docker compose up -d
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose up -d
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
    The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
- <!-- INTERACTIVE ignore START -->
+ 
 
 {{< admonition type="note" >}}
 If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 {{< /admonition >}}
 
-   <!-- INTERACTIVE ignore END -->
+   
 
 {{< docs/ignore >}}
 
@@ -125,9 +116,6 @@ NOTE:
 If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-<!-- INTERACTIVE page step2.md START -->
 
 ## Use case: monitoring and alerting for system health with Prometheus and Grafana
 
@@ -164,10 +152,6 @@ Use templates to dynamically populate a custom label that matches a notification
 
 We'll automatically determine the environment associated with each firing alert by inspecting system metrics (e.g., CPU, memory) and extracting keywords using regular expressions with the Go templating language.
 
-<!-- INTERACTIVE page step2.md END -->
-
-<!-- INTERACTIVE page step3.md START -->
-
 ## Step 1: Create Notification Policies
 
 Notification policies route alert instances to contact points via label matchers. Since we know what labels our application returns (e.g., `job`, `instance`, `deployment`), we can use them to match alert rules and define appropriate notification routing.
@@ -201,9 +185,6 @@ Although our application doesn't explicitly include an `environment` label, we c
    - Feel free to use a different contact point.
 
 Now that the labels are defined, we can create alert rules for CPU and memory metrics. These alert rules will use the labels from the collected and stored metrics in Prometheus.
-
-<!-- INTERACTIVE page step3.md END -->
-<!-- INTERACTIVE page step4.md START -->
 
 ## Step 2: Create alert rules to monitor CPU and memory usage
 
@@ -240,9 +221,6 @@ Make it short and descriptive, as this will appear in your alert notification. F
 ### Add folders and labels
 
 In this section we add a [templated label based on query value](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/templates/examples/#based-on-query-value) to map to the notification policies.
-
-<!-- INTERACTIVE page step4.md END -->
-<!-- INTERACTIVE page step5.md START -->
 
 1. In **Folder**, click _+ New folder_ and enter a name. For example: `app-metrics` . This folder contains our alerts.
 1. Click **+ Add labels**.
@@ -294,9 +272,6 @@ Select who should receive a notification when an alert rule fires.
 
 Now that the CPU and memory alert rules are set up, they are linked to the notification policies through the custom label matcher we added. The value of the label dynamically changes based on the environment template, using `$labels.instance`. This ensures that the label value will be set to production, staging, or development, depending on the environment.
 
-<!-- INTERACTIVE page step5.md END -->
-<!-- INTERACTIVE page step6.md START -->
-
 ## Done! Your alerts are now dynamically routed
 
 Based on your query's `instance` label values (which contain keywords like _prod_ or _staging_ ), Grafana dynamically assigns the value `production`, `staging` or `development` to the custom **environment** label using the template. This dynamic label then matches the label matchers in your notification policies, which route alerts to the correct contact points.
@@ -317,25 +292,17 @@ $labels.deployment
 
 The template should be flexible enough to capture the target keywords (e.g., prod, staging) by adjusting which label the[`$labels`](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/templates/reference/#labels) is referencing.
 
-<!-- INTERACTIVE page step6.md END -->
-
-<!-- INTERACTIVE page finish.md START -->
-
 ## Conclusion
 
 By using notification policies, you can route alerts based on query values, directing them to the appropriate teams.
 
 ## Learn more in [Grafana Alerting - Link alerts to visualizations](http://www.grafana.com/tutorials/alerting-get-started-pt6/)
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 
 In [Grafana Alerting - Link alerts to visualizations](http://www.grafana.com/tutorials/alerting-get-started-pt6/) you will create alerts using Prometheus data and link them to your graphs.
 
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
@@ -348,5 +315,3 @@ Explore related topics covered in this tutorial:
 - Understand how alert routing works in [Get started with Grafana Alerting - Alert routing](http://www.grafana.com/tutorials/alerting-get-started-pt2/).
 - Learn how templating works in [Get started with Grafana Alerting - Templating](http://www.grafana.com/tutorials/alerting-get-started-pt4/).
   - More [examples on templating labels](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/templates/examples/).
-
-<!-- INTERACTIVE page finish.md END -->

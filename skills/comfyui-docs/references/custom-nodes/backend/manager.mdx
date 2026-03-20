@@ -3,11 +3,6 @@ title: "Publishing to the Manager"
 ---
 
 {/*
-description: "Understand how to publish a custom node to the ComfyUI Manager database."
-*/}
-
-
-{/*
 ## What is a custom node?
 
 One of the great powers of Comfy is that its node-based approach allows you to develop new workflows by plugging together the nodes provided in different ways. The built-in nodes provide a wide range of functionality, but you may find that you need a feature not provided by a core node. 
@@ -41,23 +36,17 @@ and then submit a Pull Request on the **ComfyUI Manager** git, in which you have
 
 When a user installs the node, **ComfyUI Manager** will:
 
-<Steps>
-<Step title="Git Clone">
 git clone the repository, 
-</Step>
-<Step title="Install Python Dependencies">
+
 install the pip dependencies listed in the custom node repository under `requirements.txt` (if present), 
 ```
 pip install -r requirements.txt
 ```
-<Tip>As is always the case with `pip`, it is possible that your node requirements will be in conflict with other
-custom nodes. Don't make your `requirements.txt` any more restrictive than they need to be.</Tip>
-</Step>
-<Step title="Run Install Script">
+As is always the case with `pip`, it is possible that your node requirements will be in conflict with other
+custom nodes. Don't make your `requirements.txt` any more restrictive than they need to be.
+
 execute `install.py`, if it is present in the custom node repository.
-<Tip>`install.py` is executed from the root path of the custom node</Tip>
-</Step>
-</Steps>
+`install.py` is executed from the root path of the custom node
 
 ### ComfyUI Manager files
 
@@ -66,10 +55,10 @@ a custom node. These are all optional.
 
 - `requirements.txt` - Python dependencies as mentioned above
 - `install.py`, `uninstall.py` - executed when the custom node is installed or uninstalled
-<Tip>Users can just delete the directory, so you can't rely on `uninstall.py` being run</Tip>
+Users can just delete the directory, so you can't rely on `uninstall.py` being run
 - `disable.py`, `enable.py` - executed when a custom node is disabled or re-enabled 
-<Tip>`enable.py` is only run when a disabled node is re-enabled - it should just reverse anything done in `disable.py`</Tip>
-<Tip>Disabled custom node subdirectory have `.disabled` appended to their names, and Comfy ignores these modules</Tip>
+`enable.py` is only run when a disabled node is re-enabled - it should just reverse anything done in `disable.py`
+Disabled custom node subdirectory have `.disabled` appended to their names, and Comfy ignores these modules
 - `node_list.json` - only required if the custom nodes pattern of NODE_CLASS_MAPPINGS is not conventional.
 
 See the [ComfyUI Manager guide](https://github.com/ltdrdata/ComfyUI-Manager?tab=readme-ov-file#custom-node-support-guide) for official details.

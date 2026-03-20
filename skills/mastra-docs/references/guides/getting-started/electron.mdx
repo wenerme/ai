@@ -43,11 +43,7 @@ Open `src/renderer/index.html` and update the `<meta http-equiv="Content-Securit
 />
 ```
 
-:::info
-
-For production deployments you'll need to adjust this to match your actual server URL.
-
-:::
+> **info**: For production deployments you'll need to adjust this to match your actual server URL.
 
 ### Edit `main.css`
 
@@ -112,11 +108,7 @@ export const mastra = new Mastra({
 })
 ```
 
-:::info
-
-CORS is required because the Electron renderer loads from a different origin than the Mastra server. For production deployments, restrict the origin to your application's actual origin.
-
-:::
+> **info**: CORS is required because the Electron renderer loads from a different origin than the Mastra server. For production deployments, restrict the origin to your application's actual origin.
 
 ## Add the chat UI
 

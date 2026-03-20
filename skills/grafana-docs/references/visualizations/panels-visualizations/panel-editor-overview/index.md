@@ -31,7 +31,7 @@ weight: 20
 
 In the panel editor, you can update all the elements of a visualization including the data source, queries, time range, and visualization display options.
 
-![Panel editor](/media/docs/grafana/panels-visualizations/screenshot-panel-editor-v12.4.png)
+[Panel editor]
 
 This following sections describe the areas of the Grafana panel editor.
 

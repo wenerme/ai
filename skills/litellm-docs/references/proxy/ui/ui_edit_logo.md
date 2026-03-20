@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Customize UI Logo
 

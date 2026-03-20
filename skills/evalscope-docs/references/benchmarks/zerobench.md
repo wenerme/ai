@@ -1,6 +1,5 @@
 # ZeroBench
 
-
 ## Overview
 
 ZeroBench is a challenging visual reasoning benchmark for Large Multimodal Models (LMMs). It consists of 100 high-quality, manually curated questions covering numerous domains, reasoning types, and image types designed to be beyond current model capabilities.
@@ -28,7 +27,6 @@ ZeroBench is a challenging visual reasoning benchmark for Large Multimodal Model
 - Includes subquestions split for detailed analysis
 - Uses image compression to handle large images
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ ZeroBench is a challenging visual reasoning benchmark for Large Multimodal Model
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `zerobench` |
 | **Train Split** | `zerobench_subquestions` |
-
 
 ## Data Statistics
 
@@ -59,7 +56,6 @@ ZeroBench is a challenging visual reasoning benchmark for Large Multimodal Model
 | Images per Sample | min: 1, max: 3, mean: 1.08 |
 | Resolution Range | 512x297 - 5559x4070 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -99,8 +95,6 @@ ZeroBench is a challenging visual reasoning benchmark for Large Multimodal Model
 ```text
 {question}
 
-
-
 Let's think step by step and give the final answer in curly braces,
 like this: {{final answer}}"
 
@@ -135,5 +129,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

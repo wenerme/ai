@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Logging
 
@@ -19,8 +17,6 @@ Log Proxy input, output, and exceptions using:
 - Azure Sentinel
 - DynamoDB
 - etc.
-
-
 
 ## Getting the LiteLLM Call ID
 
@@ -55,17 +51,11 @@ A number of these headers could be useful for troubleshooting, but the
 `x-litellm-call-id` is the one that is most useful for tracking a request across
 components in your system, including in logging tools.
 
-
 ## Logging Features
-
 
 ### Redact Messages, Response Content
 
 Set `litellm.turn_off_message_logging=True` This will prevent the messages and responses from being logged to your logging provider, but request metadata - e.g. spend, will still be tracked. Useful for privacy/compliance when handling sensitive data.
-
-<Tabs>
-
-<TabItem value="global" label="Global">
 
 **1. Setup config.yaml**
 ```yaml
@@ -93,16 +83,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-
-
-</TabItem>
-<TabItem value="dynamic" label="Per Request">
-
-:::info
-
-Dynamic request message redaction is in BETA. 
-
-:::
+> **info**: Dynamic request message redaction is in BETA. 
 
 Pass in a request header to enable message redaction for a request.
 
@@ -139,9 +120,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 **3. Check Logging Tool + Spend Logs**
 
 **Logging Tool**
@@ -151,7 +129,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 **Spend Logs**
 
 <Image img={require('../../img/message_redaction_spend_logs.png')} />
-
 
 ### Redacting UserAPIKeyInfo 
 
@@ -170,7 +147,6 @@ litellm_settings:
 If you have `litellm.turn_on_message_logging` turned on, you can override it for specific requests by
 setting a request header `LiteLLM-Disable-Message-Redaction: true`.
 
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
     --header 'Content-Type: application/json' \
@@ -186,24 +162,16 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-
 ### Turn off all tracking/logging
 
 For some use cases, you may want to turn off all tracking/logging. You can do this by passing `no-log=True` in the request body.
 
-:::info
-
-Disable this by setting `global_disable_no_log_param:true` in your config.yaml file.
+> **info**: Disable this by setting `global_disable_no_log_param:true` in your config.yaml file.
 
 ```yaml
 litellm_settings:
   global_disable_no_log_param: True
 ```
-:::
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -225,9 +193,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     "no-log": true # 👈 Key Change
 }'
 ```
-
-</TabItem>
-<TabItem value="OpenAI" label="OpenAI">
 
 ```python
 import openai
@@ -253,9 +218,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 **Expected Console Log**  
 
 ```
@@ -264,20 +226,13 @@ LiteLLM.Info: "no-log request, skipping logging"
 
 ### ✨ Dynamically Disable specific callbacks
 
-:::info
-
-This is an enterprise feature.
+> **info**: This is an enterprise feature.
 
 [Proceed with LiteLLM Enterprise](https://www.litellm.ai/enterprise)
-
-:::
 
 For some use cases, you may want to disable specific callbacks for a request. You can do this by passing `x-litellm-disable-callbacks: <callback_name>` in the request headers.
 
 Send the list of callbacks to disable in the request header `x-litellm-disable-callbacks`.
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -294,9 +249,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-<TabItem value="OpenAI" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -322,10 +274,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### ✨ Conditional Logging by Virtual Keys, Teams
 
 Use this to:
@@ -333,10 +281,6 @@ Use this to:
 2. Set different logging providers for different virtual keys/teams
 
 [👉 **Get Started** - Team/Key Based Logging](team_logging)
-
-
-
-
 
 ## What gets logged?
 
@@ -394,10 +338,6 @@ Expected output on Langfuse
 
 ### Logging Metadata to Langfuse
 
-<Tabs>
-
-<TabItem value="Curl" label="Curl Request">
-
 Pass `metadata` as part of the request body
 
 ```shell
@@ -419,9 +359,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 Set `extra_body={"metadata": { }}` to `metadata` you want to pass
 
@@ -453,9 +390,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -493,18 +427,9 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Custom Tags
 
 Set `tags` as part of your request body
-
-
-<Tabs>
-
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -531,9 +456,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 Pass `metadata` as part of the request body
 
@@ -555,8 +477,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -594,11 +514,6 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
-
-
 ### LiteLLM Tags - `cache_hit`, `cache_key`
 
 Use this if you want to control which LiteLLM-specific fields are logged as tags by the LiteLLM proxy. By default LiteLLM Proxy logs no LiteLLM-specific fields
@@ -612,7 +527,6 @@ Use this if you want to control which LiteLLM-specific fields are logged as tags
 | `user_api_key_user_id`    | The unique ID associated with a user's API key.                                         | `user_123`, `user_456`                  |
 | `user_api_key_user_email` | The email associated with a user's API key.                                             | `user@example.com`, `admin@example.com` |
 | `user_api_key_team_alias` | An alias for a team associated with an API key.                                         | `team_alpha`, `dev_team`                |
-
 
 **Usage**
 
@@ -638,10 +552,6 @@ litellm_settings:
 
 Use this when you want to view the RAW curl request sent from LiteLLM to the LLM API 
 
-<Tabs>
-
-<TabItem value="Curl" label="Curl Request">
-
 Pass `metadata` as part of the request body
 
 ```shell
@@ -660,9 +570,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 Set `extra_body={"metadata": {"log_raw_request": True }}` to `metadata` you want to pass
 
@@ -691,9 +598,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -728,9 +632,6 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 **Expected Output on Langfuse**
 
 You will see `raw_request` in your Langfuse Metadata. This is the RAW CURL command sent from LiteLLM to your LLM API provider
@@ -739,20 +640,12 @@ You will see `raw_request` in your Langfuse Metadata. This is the RAW CURL comma
 
 ## OpenTelemetry
 
-:::info 
-
-[Optional] Customize OTEL Service Name and OTEL TRACER NAME by setting the following variables in your environment
+> **info**: [Optional] Customize OTEL Service Name and OTEL TRACER NAME by setting the following variables in your environment
 
 ```shell
 OTEL_TRACER_NAME=<your-trace-name>     # default="litellm"
 OTEL_SERVICE_NAME=<your-service-name>` # default="litellm"
 ```
-
-:::
-
-<Tabs>
-
-<TabItem value="Console Exporter" label="Log to console">
 
 **Step 1:** Set callbacks and env vars
 
@@ -826,10 +719,6 @@ This is the Span from OTEL Logging
 }
 ```
 
-</TabItem>
-
-<TabItem value="Honeycomb" label="Log to Honeycomb">
-
 #### Quick Start - Log to Honeycomb
 
 **Step 1:** Set callbacks and env vars
@@ -873,10 +762,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }'
 ```
 
-</TabItem>
-
-<TabItem value="traceloop" label="Log to Traceloop Cloud">
-
 #### Quick Start - Log to Traceloop
 
 **Step 1:**
@@ -918,10 +803,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
     }'
 ```
-
-</TabItem>
-
-<TabItem value="otel-col" label="Log to OTEL HTTP Collector">
 
 #### Quick Start - Log to OTEL Collector
 
@@ -965,10 +846,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
     }'
 ```
-
-</TabItem>
-
-<TabItem value="otel-col-grpc" label="Log to OTEL GRPC Collector">
 
 #### Quick Start - Log to OTEL GRPC Collector
 
@@ -1014,10 +891,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
     }'
 ```
-
-</TabItem>
-
-</Tabs>
 
 ** 🎉 Expect to see this trace logged in your OTEL collector**
 
@@ -1092,11 +965,7 @@ Use this if you want to forward the traceparent headers to your self hosted LLMs
 
 Set `forward_traceparent_to_llm_provider: True` in your `config.yaml`. This will forward the `traceparent` header to your LLM API
 
-:::warning
-
-Only use this for self hosted LLMs, this can cause Bedrock, VertexAI calls to fail
-
-:::
+> **warning**: Only use this for self hosted LLMs, this can cause Bedrock, VertexAI calls to fail
 
 ```yaml
 litellm_settings:
@@ -1107,20 +976,13 @@ litellm_settings:
 
 Log LLM Logs to [Google Cloud Storage Buckets](https://cloud.google.com/storage?hl=en)
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 | Property                     | Details                                                        |
 | ---------------------------- | -------------------------------------------------------------- |
 | Description                  | Log LLM Input/Output to cloud storage buckets                  |
 | Load Test Benchmarks         | [Benchmarks](https://docs.litellm.ai/docs/benchmarks)          |
 | Google Docs on Cloud Storage | [Google Cloud Storage](https://cloud.google.com/storage?hl=en) |
-
-
 
 #### Usage
 
@@ -1167,7 +1029,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
 #### Expected Logs on GCS Buckets
 
 <Image img={require('../../img/gcs_bucket.png')} />
@@ -1175,7 +1036,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 #### Fields Logged on GCS Buckets
 
 [**The standard logging object is logged on GCS Bucket**](../proxy/logging_spec)
-
 
 #### Getting `service_account.json` from Google Cloud Console
 
@@ -1186,18 +1046,11 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 5. Click on 'Keys' -> Add Key -> Create New Key -> JSON
 6. Save the JSON file and add the path to `GCS_PATH_SERVICE_ACCOUNT`
 
-
-
 ## Google Cloud Storage - PubSub Topic
 
 Log LLM Logs/SpendLogs to [Google Cloud Storage PubSub Topic](https://cloud.google.com/pubsub/docs/reference/rest)
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 | Property    | Details                                                            |
 | ----------- | ------------------------------------------------------------------ |
@@ -1206,7 +1059,6 @@ Log LLM Logs/SpendLogs to [Google Cloud Storage PubSub Topic](https://cloud.goog
 When to use `gcs_pubsub`?
 
 - If your LiteLLM Database has crossed 1M+ spend logs and you want to send `SpendLogs` to a PubSub Topic that can be consumed by GCS BigQuery
-
 
 #### Usage
 
@@ -1273,9 +1125,7 @@ litellm_settings:
 ```shell
 CONFIDENT_API_KEY=<your-api-key>
 ```
-:::info
-You can obtain your `CONFIDENT_API_KEY` by logging into [Confident AI](https://app.confident-ai.com/project) platform. 
-:::
+> **info**: You can obtain your `CONFIDENT_API_KEY` by logging into [Confident AI](https://app.confident-ai.com/project) platform. 
 
 3. Start your proxy server:
 ```shell
@@ -1412,13 +1262,11 @@ if both team alias and key alias are enabled then the path becomes
 
 ## AWS SQS
 
-
 | Property             | Details                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------- |
 | Description          | Log LLM Input/Output to AWS SQS Queue                                                 |
 | AWS Docs on SQS      | [AWS SQS](https://aws.amazon.com/sqs/)                                                |
 | Fields Logged to SQS | LiteLLM [Standard Logging Payload is logged for each LLM call](../proxy/logging_spec) |
-
 
 Log LLM Logs to [AWS Simple Queue Service (SQS)](https://aws.amazon.com/sqs/)
 
@@ -1490,24 +1338,16 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }'
 ```
 
-
 ## Azure Blob Storage
 
 Log LLM Logs to [Azure Data Lake Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction)
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 | Property                        | Details                                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | Description                     | Log LLM Input/Output to Azure Blob Storage (Bucket)                                                             |
 | Azure Docs on Data Lake Storage | [Azure Data Lake Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) |
-
-
 
 #### Usage
 
@@ -1564,7 +1404,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
 #### Expected Logs on Azure Data Lake Storage
 
 <Image img={require('../../img/azure_blob.png')} />
@@ -1573,7 +1412,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 [**The standard logging object is logged on Azure Data Lake Storage**](../proxy/logging_spec)
 
-
 ## [Datadog](../observability/datadog)
 
 👉 Go here for using [Datadog LLM Observability](../observability/datadog) with LiteLLM Proxy
@@ -1581,7 +1419,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ## [Azure Sentinel](../observability/azure_sentinel)
 
 👉 Go here for using [Azure Sentinel](../observability/azure_sentinel) with LiteLLM Proxy
-
 
 ## Lunary
 #### Step1: Install dependencies and set your environment variables 
@@ -1635,8 +1472,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 ## MLflow
 
 👉 Follow the tutorial [here](../observability/mlflow) to get started with mlflow on LiteLLM Proxy Server
-
-
 
 ## Custom Callback Class [Async]
 
@@ -2058,18 +1893,12 @@ ModelResponse(
   Send LiteLLM logs to a custom API endpoint
 </p>
 
-:::info
-
-This is an Enterprise only feature [Get Started with Enterprise here](https://github.com/BerriAI/litellm/tree/main/enterprise)
-
-:::
+> **info**: This is an Enterprise only feature [Get Started with Enterprise here](https://github.com/BerriAI/litellm/tree/main/enterprise)
 
 | Property       | Details                                                                                                                                                    |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Description    | Log LLM Input/Output to a custom API endpoint                                                                                                              |
 | Logged Payload | `List[StandardLoggingPayload]` LiteLLM logs a list of [`StandardLoggingPayload` objects](https://docs.litellm.ai/docs/proxy/logging_spec) to your endpoint |
-
-
 
 Use this if you:
 
@@ -2101,7 +1930,6 @@ litellm_settings:
 ```shell showLineNumbers title=".env"
 GENERIC_LOGGER_ENDPOINT="https://webhook-test.com/30343bc33591bc5e6dc44217ceae3e0a"
 
-
 # Optional: Set headers to be sent to the custom API endpoint
 GENERIC_LOGGER_HEADERS="Authorization=Bearer <your-api-key>"
 # if multiple headers, separate by commas
@@ -2131,8 +1959,6 @@ curl -i --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-
-
 ## Langsmith
 
 1. Set `success_callback: ["langsmith"]` on litellm config.yaml
@@ -2150,7 +1976,6 @@ environment_variables:
 
   LANGSMITH_BASE_URL: "https://api.smith.langchain.com" # (Optional - only needed if you have a custom Langsmith instance)
 ```
-
 
 2. Start Proxy
 
@@ -2176,7 +2001,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ```
 Expect to see your log on Langfuse
 <Image img={require('../../img/langsmith_new.png')} />
-
 
 ## Arize AI
 
@@ -2224,7 +2048,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ```
 Expect to see your log on Langfuse
 <Image img={require('../../img/langsmith_new.png')} />
-
 
 ## Langtrace
 
@@ -2274,11 +2097,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Log LLM I/O on [www.rungalileo.io](https://www.rungalileo.io/)
 
-:::info
-
-Beta Integration
-
-:::
+> **info**: Beta Integration
 
 **Required Env Variables**
 
@@ -2602,7 +2421,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }'
 ```
 
-
 <!-- ## (BETA) Moderation with Azure Content Safety
 
 Note: This page is for logging callbacks and this is a moderation service. Commenting until we found a better location for this.
@@ -2687,7 +2505,6 @@ litellm_settings:
       Violence: 4
 ```
 
-:::info
-`thresholds` are not required by default, but you can tune the values to your needs.
+> **info**: `thresholds` are not required by default, but you can tune the values to your needs.
 Default values is `4` for all categories
 ::: -->

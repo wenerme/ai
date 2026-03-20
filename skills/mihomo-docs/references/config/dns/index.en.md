@@ -109,7 +109,6 @@ dns:
     - MATCH,fake-ip # fake-ip or real-ip
 ```
 
-
 ## fake-ip-ttl
 
 Configure the TTL returned by fakeip queries; do not modify it unless absolutely necessary.

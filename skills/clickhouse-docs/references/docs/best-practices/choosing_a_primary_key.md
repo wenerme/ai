@@ -1,17 +1,10 @@
 ---
-slug: /best-practices/choosing-a-primary-key
-sidebar_position: 10
-sidebar_label: 'Choosing a primary key'
 title: 'Choosing a Primary Key'
 description: 'Page describing how to choose a primary key in ClickHouse'
 keywords: ['primary key']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import create_primary_key from '@site/static/images/bestpractices/create_primary_key.gif';
-import primary_key from '@site/static/images/bestpractices/primary_key.gif';
 
 > We interchangeably use the term "ordering key" to refer to the "primary key" on this page. Strictly, [these differ in ClickHouse](/engines/table-engines/mergetree-family/mergetree#choosing-a-primary-key-that-differs-from-the-sorting-key), but for the purposes of this document, readers can use them interchangeably, with the ordering key referring to the columns specified in the table `ORDER BY`.
 
@@ -21,12 +14,11 @@ Choosing an effective primary key in ClickHouse is crucial for query performance
 
 1. When selecting an ordering key, prioritize columns frequently used in query filters (i.e. the `WHERE` clause), especially those that exclude large numbers of rows.
 2. Columns highly correlated with other data in the table are also beneficial, as contiguous storage improves compression ratios and memory efficiency during `GROUP BY` and `ORDER BY` operations.
-<br/>
+
 Some simple rules can be applied to help choose an ordering key. The following can sometimes be in conflict, so consider these in order. **You can identify a number of keys from this process, with 4-5 typically sufficient**:
 
-:::note Important
+> **note**: Important
 Ordering keys must be defined on table creation and can't be added. Additional ordering can be added to a table after (or before) data insertion through a feature known as projections. Be aware these result in data duplication. Further details [here](/sql-reference/statements/alter/projection).
-:::
 
 ## Example {#example}
 
@@ -167,9 +159,7 @@ Additionally, we visualize how the sparse index prunes all row blocks that can't
 
 <Image img={primary_key} size="lg" alt="Primary key" />
 
-:::note
-All columns in a table will be sorted based on the value of the specified ordering key, regardless of whether they're included in the key itself. For instance, if `CreationDate` is used as the key, the order of values in all other columns will correspond to the order of values in the `CreationDate` column. Multiple ordering keys can be specified - this will order with the same semantics as an `ORDER BY` clause in a `SELECT` query.
-:::
+> **note**: All columns in a table will be sorted based on the value of the specified ordering key, regardless of whether they're included in the key itself. For instance, if `CreationDate` is used as the key, the order of values in all other columns will correspond to the order of values in the `CreationDate` column. Multiple ordering keys can be specified - this will order with the same semantics as an `ORDER BY` clause in a `SELECT` query.
 
 A complete advanced guide on choosing primary keys can be found [here](/guides/best-practices/sparse-primary-indexes).
 

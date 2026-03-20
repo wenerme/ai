@@ -46,7 +46,6 @@ Notes:
 | Progress              | Job progress. Only displayed in RUNNING state. Progress is shown in M/N format. N is the total number of replicas involved in the Schema Change. M is the number of replicas for which historical data conversion has been completed. |
 | Timeout                | Job timeout in seconds.                                       |
 
-
 ## Examples
 
 1. Display the execution status of all modification column tasks for the default database.

@@ -16,8 +16,5 @@ To migrate data from other OLAP systems to Doris, you have several options:
 
 Additionally, the following third-party migration tools are available:
 
-
-:::info NOTE
+> **info**: NOTE
 If you know of other migration tools that could be added to this list, please contact dev@doris.apache.org
-:::
-

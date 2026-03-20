@@ -1,7 +1,5 @@
 ---
 date: "2017-07-21T12:00:00+02:00"
-slug: "linux-service"
-sidebar_position: 40
 aliases:
   - /en-us/linux-service
 ---

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Team/Key Based Logging
 
@@ -21,14 +19,9 @@ Team 3 -> Disabled Logging (for GDPR compliance)
 - `langsmith`
 - `arize`
 
-
 ## [BETA] Team Logging
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 ### UI Usage
 
@@ -40,9 +33,6 @@ Create a team called "AI Agents"
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-<br />
-
-
 2. Create a Key for the Team
 
 We will create a key for the team "AI Agents". The team logging settings will be used for all keys created for the team.
@@ -51,9 +41,6 @@ We will create a key for the team "AI Agents". The team logging settings will be
   img={require('../../img/team_logging2.png')}
   style={{width: '80%', display: 'block', margin: '2rem auto', border: '1px solid #E5E7EB'}}
 />
-
-<br />
-
 
 3. Make a test LLM API Request 
 
@@ -64,8 +51,6 @@ Use the new key to make a test LLM API Request, we expect to see the logs on you
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-<br />
-
 4. Check Logs on your Logging Provider 
 
 Navigate to your configured logging provider and check if you received the logs from step 2.
@@ -74,8 +59,6 @@ Navigate to your configured logging provider and check if you received the logs 
   img={require('../../img/team_logging4.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-
-<br />
 
 ### API Usage
 ### Set Callbacks Per Team
@@ -117,7 +100,6 @@ curl -X POST 'http:/localhost:4000/team/dbe2f686-a686-4896-864a-4c3924458709/cal
 
 All keys created for team `dbe2f686-a686-4896-864a-4c3924458709` will log to langfuse project specified on [Step 1. Set callback for team](#1-set-callback-for-team)
 
-
 ```shell
 curl --location 'http://0.0.0.0:4000/key/generate' \
     --header 'Authorization: Bearer sk-1234' \
@@ -126,7 +108,6 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
         "team_id": "dbe2f686-a686-4896-864a-4c3924458709"
 }'
 ```
-
 
 #### 3. Make `/chat/completion` request for team
 
@@ -143,7 +124,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 ```
 
 Expect this to be logged on the langfuse project specified on [Step 1. Set callback for team](#1-set-callback-for-team)
-
 
 ### Disable Logging for a Team
 
@@ -207,8 +187,6 @@ curl -X GET 'http://localhost:4000/team/dbe2f686-a686-4896-864a-4c3924458709/cal
 - [`POST /team/{team_id}/callback` Add a success/failure callback to a team](https://litellm-api.up.railway.app/#/team%20management/add_team_callbacks_team__team_id__callback_post)
 - [`GET /team/{team_id}/callback` - Get the success/failure callbacks and variables for a team](https://litellm-api.up.railway.app/#/team%20management/get_team_callbacks_team__team_id__callback_get)
 
-
-
 ## Team Logging - `config.yaml`
 
 Turn on/off logging and caching for a specific team id. 
@@ -241,22 +219,16 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
 
 All requests made with these keys will log data to their team-specific logging. 
 
-
 ## [BETA] Key Based Logging 
 
 Use the `/key/generate` or `/key/update` endpoints to add logging callbacks to a specific key.
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 **How key based logging works:**
 
 - If **Key has no callbacks** configured, it will use the default callbacks specified in the config.yaml file
 - If **Key has callbacks** configured, it will use the callbacks specified in the key
-
 
 ### UI Usage 
 
@@ -268,8 +240,6 @@ When creating a key, you can configure the specific logging settings for the key
   img={require('../../img/key_logging.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-<br />
-
 
 2. Make a test LLM API Request 
 
@@ -280,8 +250,6 @@ Use the new key to make a test LLM API Request, we expect to see the logs on you
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-<br />
-
 3. Check Logs on your Logging Provider 
 
 Navigate to your configured logging provider and check if you received the logs from step 2.
@@ -291,14 +259,7 @@ Navigate to your configured logging provider and check if you received the logs 
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-<br />
-
 ### API Usage
-
-
-
-<Tabs>
-<TabItem label="Langfuse" value="langfuse">
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -321,9 +282,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
 ```
 
 <iframe width="840" height="500" src="https://www.youtube.com/embed/8iF0Hvwk0YU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-</TabItem>
-<TabItem label="GCS Bucket" value="gcs_bucket">
 
 1. Create Virtual Key to log to a specific GCS Bucket
 
@@ -370,10 +328,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
     }'
   ```
 
-</TabItem>
-
-<TabItem label="Langsmith" value="langsmith">
-
 1. Create Virtual Key to log to a specific Langsmith Project
 
   ```bash
@@ -415,9 +369,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
     }'
   ```
 
-</TabItem>
-</Tabs>
-
 ---
 
 Help us improve this feature, by filing a [ticket here](https://github.com/BerriAI/litellm/issues)
@@ -433,9 +384,6 @@ curl -X POST "http://localhost:4000/key/health" \
   -H "Authorization: Bearer <your-key>" \
   -H "Content-Type: application/json"
 ```
-
-<Tabs>
-<TabItem label="Response when key is configured correctly" value="Response when key is configured correctly">
 
 Response when logging callbacks are setup correctly:
 
@@ -454,10 +402,6 @@ A key is **healthy** when the logging callbacks are setup correctly.
 }
 ```
 
-</TabItem>
-
-<TabItem label="Response when key is configured incorrectly" value="Response when key is configured incorrectly">
-
 Response when logging callbacks are not setup correctly
 
 A key is **unhealthy** when the logging callbacks are not setup correctly.
@@ -474,9 +418,6 @@ A key is **unhealthy** when the logging callbacks are not setup correctly.
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Disable/Enable Message redaction
 
@@ -548,8 +489,3 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-
-
-
-

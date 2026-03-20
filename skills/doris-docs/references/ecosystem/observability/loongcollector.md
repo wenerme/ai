@@ -61,7 +61,6 @@ Configuration | Description
 `Convert.TagFieldsRename` | Rename one or more fields from tags
 `Convert.ProtocolFieldsRename` | Rename protocol fields, protocol field options can only be: contents, tags, time
 
-
 ## Usage Examples
 
 ### TEXT Log Collection Example
@@ -192,7 +191,6 @@ flushers:
     LogProgressInterval: 10
 ```
 
-
 **4. Running LoongCollector**
 
 ```
@@ -201,7 +199,6 @@ nohup ./loongcollector > stdout.log 2> stderr.log &
 # By default, speed information is logged every 10 seconds, including data volume since startup (MB and ROWS), total speed (MB/s and R/s), and speed for the last 10 seconds
 total 11 MB 18978 ROWS, total speed 0 MB/s 632 R/s, last 10 seconds speed 1 MB/s 1897 R/s
 ```
-
 
 ### JSON Log Collection Example
 
@@ -248,7 +245,6 @@ Below is a sample of the data. Normally, each piece of data is on a single line,
   "created_at": "2024-04-01T23:00:00Z"
 }
 ```
-
 
 **2. Table Creation**
 

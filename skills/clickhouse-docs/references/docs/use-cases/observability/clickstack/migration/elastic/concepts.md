@@ -1,23 +1,10 @@
 ---
-slug: /use-cases/observability/clickstack/migration/elastic/concepts
 title: 'Equivalent concepts in ClickStack and Elastic'
-pagination_prev: null
-pagination_next: null
-sidebar_label: 'Equivalent concepts'
-sidebar_position: 1
 description: 'Equivalent concepts - ClickStack and Elastic'
 show_related_blogs: true
 keywords: ['Elasticsearch']
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import elasticsearch from '@site/static/images/use-cases/observability/elasticsearch.png';
-import clickhouse from '@site/static/images/use-cases/observability/clickhouse.png';
-import clickhouse_execution from '@site/static/images/use-cases/observability/clickhouse-execution.png';
-import elasticsearch_execution from '@site/static/images/use-cases/observability/elasticsearch-execution.png';
-import elasticsearch_transforms from '@site/static/images/use-cases/observability/es-transforms.png';
-import clickhouse_mvs from '@site/static/images/use-cases/observability/ch-mvs.png';
 
 ## Elastic Stack vs ClickStack {#elastic-vs-clickstack}
 
@@ -88,9 +75,8 @@ Both systems offer a REST API, but ClickHouse also provides a **native protocol*
 
 The concept of sharding is fundamental to Elasticsearch's scalability model. Each ① [**index**](https://www.elastic.co/blog/what-is-an-elasticsearch-index) is broken into **shards**, each of which is a physical Lucene index stored as segments on disk. A shard can have one or more physical copies called replica shards for resilience. For scalability, shards and replicas can be distributed over several nodes. A single shard ② consists of one or more immutable segments. A segment is the basic indexing structure of Lucene, the Java library providing the indexing and search features on which Elasticsearch is based.
 
-:::note Insert processing in Elasticsearch
+> **note**: Insert processing in Elasticsearch
 Ⓐ Newly inserted documents Ⓑ first go into an in-memory indexing buffer that is flushed by default once per second. A routing formula is used to determine the target shard for flushed documents, and a new segment is written for the shard on disk. To improve query efficiency and enable the physical deletion of deleted or updated documents, segments are continuously merged in the background into larger segments until they reach a max size of 5 GB. It is, however, possible to force a merge into larger segments.
-:::
 
 Elasticsearch recommends sizing shards to around [50 GB or 200 million documents](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/size-shards) due to [JVM heap and metadata overhead](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/size-shards#each-shard-has-overhead). There's also a hard limit of [2 billion documents per shard](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/size-shards#troubleshooting-max-docs-limit). Elasticsearch parallelizes queries across shards, but each shard is processed using a **single thread**, making over-sharding both costly and counterproductive. This inherently tightly couples sharding to scaling, with more shards (and nodes) required to scale performance.
 
@@ -110,9 +96,8 @@ ClickHouse also supports sharding, but its model is designed to favor **vertical
 
 Processing within a ClickHouse shard is **fully parallelized**, and users are encouraged to scale vertically to avoid the network costs associated with moving data across nodes. 
 
-:::note Insert processing in ClickHouse
+> **note**: Insert processing in ClickHouse
 Inserts in ClickHouse are **synchronous by default** — the write is acknowledged only after commit — but can be configured for **asynchronous inserts** to match Elastic-like buffering and batching. If [asynchronous data inserts](https://clickhouse.com/blog/asynchronous-data-inserts-in-clickhouse) are used, Ⓐ newly inserted rows first go into an Ⓑ in-memory insert buffer that is flushed by default once every 200 milliseconds. If multiple shards are used, a [distributed table](/engines/table-engines/special/distributed) is used for routing newly inserted rows to their target shard. A new part is written for the shard on disk.
-:::
 
 ### Distribution and replication {#distribution-and-replication}
 
@@ -122,9 +107,8 @@ Elasticsearch uses a **primary-secondary** model for replication. When data is w
 
 Conversely, ClickHouse employs **eventual consistency** by default, coordinated by **Keeper** - a lightweight alternative to ZooKeeper. Writes can be sent to any replica directly or via a [**distributed table**](/engines/table-engines/special/distributed), which automatically selects a replica. Replication is asynchronous - changes are propagated to other replicas after the write is acknowledged. For stricter guarantees, ClickHouse [supports **sequential consistency**](/migrations/postgresql/appendix#sequential-consistency), where writes are acknowledged only after being committed across replicas, though this mode is rarely used due to its performance impact. Distributed tables unify access across multiple shards, forwarding `SELECT` queries to all shards and merging the results. For `INSERT` operations, they balance the load by evenly routing data across shards. ClickHouse's replication is highly flexible: any replica (a copy of a shard) can accept writes, and all changes are asynchronously synchronized to others. This architecture allows uninterrupted query serving during failures or maintenance, with resynchronization handled automatically - eliminating the need for primary-secondary enforcement at the data layer.
 
-:::note ClickHouse Cloud
+> **note**: ClickHouse Cloud
 In **ClickHouse Cloud**, the architecture introduces a shared-nothing compute model where a single **shard is backed by object storage**. This replaces traditional replica-based high availability, allowing the shard to be **read and written by multiple nodes simultaneously**. The separation of storage and compute enables elastic scaling without explicit replica management.
-:::
 
 In summary:
 
@@ -170,7 +154,7 @@ On a single node, execution lanes split data into independent ranges allowing co
 Query execution is further parallelized by:
 1. **SIMD vectorization**: operations on columnar data use [CPU SIMD instructions](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data) (e.g., [AVX512](https://en.wikipedia.org/wiki/AVX-512)), allowing batch processing of values.
 2. **Cluster-level parallelism**: in distributed setups, each node performs query processing locally. [Partial aggregation states](https://clickhouse.com/blog/aggregate-functions-combinators-in-clickhouse-for-arrays-maps-and-states#working-with-aggregation-states) are streamed to the initiating node and merged. If the query's `GROUP BY` keys align with the sharding keys, merging can be [minimized or avoided entirely](/operations/settings/settings#distributed_group_by_no_merge).
-<br/>
+
 This model enables efficient scaling across cores and nodes, making ClickHouse well-suited for large-scale analytics. The use of *partial aggregation states* allows intermediate results from different threads and nodes to be merged without loss of accuracy.
 
 Elasticsearch, by contrast, assigns one thread per shard for most aggregations, regardless of how many CPU cores are available. These threads return shard-local top-N results, which are merged at the coordinating node. This approach can underutilize system resources and introduce potential inaccuracies in global aggregations, particularly when frequent terms are distributed across multiple shards. Accuracy can be improved by increasing the `shard_size` parameter, but this comes at the cost of higher memory usage and query latency.
@@ -197,9 +181,8 @@ Elasticsearch supports **hot-warm-cold-frozen** storage architectures, where dat
 
 ClickHouse supports **tiered storage** through native table engines like `MergeTree`, which can automatically move older data between different **volumes** (e.g., SSD to HDD to object storage) based on custom rules. This can mimic Elastic's hot-warm-cold approach — but without the complexity of managing multiple node roles or clusters.
 
-:::note ClickHouse Cloud
+> **note**: ClickHouse Cloud
 In **ClickHouse Cloud**, this becomes even more seamless: all data is stored on **object storage (e.g. S3)**, and compute is decoupled. Data can remain in object storage until queried, at which point it is fetched and cached locally (or in a distributed cache) — offering the same cost profile as Elastic's frozen tier, with better performance characteristics. This approach means no data needs to be moved between storage tiers, making hot-warm architectures redundant.
-:::
 
 ### Rollups vs incremental aggregates {#rollups-vs-incremental-aggregates}
 

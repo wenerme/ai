@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/docker-compose
 title: 'Docker Compose'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 3
 description: 'Deploying ClickStack Open Source with Docker Compose - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack Docker Compose', 'Docker Compose ClickHouse', 'HyperDX Docker deployment', 'ClickStack deployment guide', 'OpenTelemetry Docker Compose']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import hyperdx_logs from '@site/static/images/use-cases/observability/hyperdx-logs.png';
-import JSONSupport from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_json_support.md';
 
 All ClickStack Open Source components are distributed separately as individual Docker images:
 
@@ -41,7 +32,6 @@ These ports enable integrations with a variety of telemetry sources and make the
 * When deploying ClickStack but hosting ClickHouse separately e.g. using ClickHouse Cloud.
 
 ## Deployment steps {#deployment-steps}
-<br/>
 
 <VerticalStepper headerLevel="h3">
 
@@ -62,9 +52,8 @@ Create a user, providing a username and password which meets the requirements.
 
 On clicking `Create` data sources will be created for the ClickHouse instance deployed with Docker Compose.
 
-:::note Overriding default connection
+> **note**: Overriding default connection
 You can override the default connection to the integrated ClickHouse instance. For details, see ["Using ClickHouse Cloud"](#using-clickhouse-cloud).
-:::
 
 <Image img={hyperdx_login} alt="HyperDX UI" size="lg"/>
 

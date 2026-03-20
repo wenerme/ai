@@ -1,19 +1,12 @@
 ---
-sidebar_label: "GitHub Copilot"
----
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
 
 # GitHub Copilot
 
 This tutorial shows you how to integrate GitHub Copilot with LiteLLM Proxy, allowing you to route requests through LiteLLM's unified interface.
 
-:::info 
-
-This tutorial is based on [Sergio Pino's excellent guide](https://dev.to/spino327/calling-github-copilot-models-from-openhands-using-litellm-proxy-1hl4) for calling GitHub Copilot models through LiteLLM Proxy. This integration allows you to use any LiteLLM supported model through GitHub Copilot's interface.
-
-:::
+> **info**: This tutorial is based on [Sergio Pino's excellent guide](https://dev.to/spino327/calling-github-copilot-models-from-openhands-using-litellm-proxy-1hl4) for calling GitHub Copilot models through LiteLLM Proxy. This integration allows you to use any LiteLLM supported model through GitHub Copilot's interface.
 
 ## Benefits of using GitHub Copilot with LiteLLM
 
@@ -100,9 +93,6 @@ Restart VS Code and test GitHub Copilot. Your requests will now be routed throug
 
 You can route GitHub Copilot requests to any provider by configuring different models in your LiteLLM Proxy config:
 
-<Tabs>
-<TabItem value="anthropic" label="Anthropic">
-
 Route requests to Claude Sonnet:
 
 ```yaml showLineNumbers title="config.yaml"
@@ -116,9 +106,6 @@ general_settings:
   master_key: sk-1234567890
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI">
-
 Route requests to GPT-4o:
 
 ```yaml showLineNumbers title="config.yaml"
@@ -131,9 +118,6 @@ model_list:
 general_settings:
   master_key: sk-1234567890
 ```
-
-</TabItem>
-<TabItem value="bedrock" label="Bedrock">
 
 Route requests to Claude on Bedrock:
 
@@ -149,9 +133,6 @@ model_list:
 general_settings:
   master_key: sk-1234567890
 ```
-
-</TabItem>
-<TabItem value="multi-provider" label="Multi-Provider Load Balancing">
 
 All deployments with the same model_name will be load balanced. In this example we load balance between OpenAI and Anthropic:
 
@@ -173,9 +154,6 @@ general_settings:
   master_key: sk-1234567890
 ```
 
-</TabItem>
-</Tabs>
-
 With this configuration, GitHub Copilot will automatically route requests through LiteLLM to your configured provider(s) with load balancing and fallbacks.
 
 ## Troubleshooting
@@ -188,4 +166,4 @@ If you encounter issues:
 
 ## Credits
 
-This tutorial is based on the work by [Sergio Pino](https://dev.to/spino327) from his original article: [Calling GitHub Copilot models from OpenHands using LiteLLM Proxy](https://dev.to/spino327/calling-github-copilot-models-from-openhands-using-litellm-proxy-1hl4). Thank you for the foundational work! 
+This tutorial is based on the work by [Sergio Pino](https://dev.to/spino327) from his original article: [Calling GitHub Copilot models from OpenHands using LiteLLM Proxy](https://dev.to/spino327/calling-github-copilot-models-from-openhands-using-litellm-proxy-1hl4). Thank you for the foundational work!

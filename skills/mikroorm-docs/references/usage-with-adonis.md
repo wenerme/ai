@@ -1,6 +1,5 @@
 ---
 title: Using MikroORM with AdonisJS
-sidebar_label: Usage with AdonisJS
 ---
 
 This guide covers integrating MikroORM with [AdonisJS](https://adonisjs.com/), replacing the default Lucid ORM with MikroORM's Unit of Work and Identity Map patterns. For a complete working example, see the [adonis-example-app](https://github.com/mikro-orm/adonis-example-app) repository.

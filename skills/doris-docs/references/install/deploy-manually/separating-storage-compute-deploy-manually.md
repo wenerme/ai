@@ -28,10 +28,7 @@ After completing the prerequisite checks and planning, such as environment check
 
 This section provides step-by-step instructions for configuring, deploying, and starting the FoundationDB (FDB) service using the `fdb_vars.sh` and `fdb_ctl.sh` scripts. You can download the [doris tools](http://apache-doris-releases.oss-accelerate.aliyuncs.com/apache-doris-3.0.2-tools.tar.gz) and retrieve the `fdb_vars.sh` and `fdb_ctl.sh` from the `fdb` directory.
 
-:::tip
-Doris currently relies on FDB version 7.1.x by default. If you have already installed FDB separately, please ensure it is version 7.1.x; otherwise, the Meta Service will fail to start.
-:::
-
+> **tip**: Doris currently relies on FDB version 7.1.x by default. If you have already installed FDB separately, please ensure it is version 7.1.x; otherwise, the Meta Service will fail to start.
 
 1. Machine Requirements
 
@@ -49,13 +46,11 @@ Doris currently relies on FDB version 7.1.x by default. If you have already inst
    | FDB_CLUSTER_ID    | Defines the cluster ID             | String                        | SAQESzbh                                                     | - The ID must be unique for each cluster - Use `mktemp -u XXXXXXXX` to generate it |
    | FDB_CLUSTER_DESC  | Defines the description of the FDB cluster | String                        | dorisfdb                                                     | - It is recommended to change this to something meaningful for the deployment |
 
-
    You can also specify the following optional custom configurations:
 
    | Parameter         | Description                        | Type                         | Example                                                      | Notes                                                         |
    | ----------------- | ---------------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------- |
    | MEMORY_LIMIT_GB   | Defines the FDB memory limit       | Integer                       | 32                                                           | - Set the memory limit based on the available system memory    |
-
 
 3. Deploy FDB Cluster
 
@@ -138,7 +133,6 @@ If not, this document provides a simple deployment guide for MinIO:
 
    Example, the last line of the file is the value to be filled in the `fdb_cluster` field in the doris_cloud.conf file:
 
-
    ```shell
    cat /etc/foundationdb/fdb.cluster
    
@@ -170,11 +164,9 @@ If not, this document provides a simple deployment guide for MinIO:
 
 ## Step 4: Independent Deployment of Data Recycling Function (Optional)
 
-:::info Information
+> **info**: Information
 
 Meta Service itself has metadata management and recycling functions, and these two functions can be deployed independently. If you want to deploy them independently, refer to this section.
-
-:::
 
 1. Create a new working directory (e.g., `recycler`) and copy the contents of the `ms` directory to the new directory:
 

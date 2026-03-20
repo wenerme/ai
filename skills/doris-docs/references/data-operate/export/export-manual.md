@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS tbl (
 DISTRIBUTED BY HASH(c1) BUCKETS 20
 PROPERTIES("replication_num" = "1");
 
-
 insert into tbl values
     (1, 'doris', 18),
     (2, 'nereids', 20),
@@ -386,7 +385,4 @@ The specific BE node IP can be viewed in the `OutfileInfo` column in the `SHOW E
 ]
 ```
 
-:::caution
-This function is not applicable to the production environment, and please ensure the permissions of the export directory and data security on your own.
-:::
-
+> **caution**: This function is not applicable to the production environment, and please ensure the permissions of the export directory and data security on your own.

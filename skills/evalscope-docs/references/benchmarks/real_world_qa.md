@@ -1,6 +1,5 @@
 # RealWorldQA
 
-
 ## Overview
 
 RealWorldQA is a benchmark contributed by XAI designed to evaluate multimodal AI models' understanding of real-world spatial and physical environments. It uses authentic images from everyday scenarios to test practical visual comprehension.
@@ -28,7 +27,6 @@ RealWorldQA is a benchmark contributed by XAI designed to evaluate multimodal AI
 - Simple accuracy metric for evaluation
 - Tests models on practical, real-world scenarios
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ RealWorldQA is a benchmark contributed by XAI designed to evaluate multimodal AI
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ RealWorldQA is a benchmark contributed by XAI designed to evaluate multimodal AI
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 626x418 - 1536x1405 |
 | Formats | webp |
-
 
 ## Sample Example
 
@@ -130,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

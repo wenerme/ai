@@ -1,6 +1,5 @@
 ---
 title: printConsoleTrace | Config
-outline: deep
 ---
 
 # printConsoleTrace

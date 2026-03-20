@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Web Fetch
 
@@ -14,8 +13,7 @@ The web fetch tool allows LLMs to retrieve full content from specified web pages
 | **Purpose** | Retrieve content from specific URLs | Search the internet for information |
 | **Input** | You provide exact URLs to fetch | You provide search queries/questions |
 | **Output** | Full page content from specified URLs | Search results with relevant information |
-| **Use Cases** | - Analyzing specific articles<br/>- Comparing content from known websites<br/>- Extracting data from particular pages | - Finding current news/events<br/>- Researching topics<br/>- Getting real-time information |
-
+| **Use Cases** | - Analyzing specific articles- Comparing content from known websites- Extracting data from particular pages | - Finding current news/events- Researching topics- Getting real-time information |
 
 **Example Web Fetch**: "Fetch the content from https://example.com/pricing and summarize it"  
 **Example Web Search**: "What are the latest AI developments this week?"
@@ -25,7 +23,6 @@ The web fetch tool allows LLMs to retrieve full content from specified web pages
 
 **Supported Tool Types:**
 - `web_fetch_20250910` - Web content retrieval tool with usage limits, domain filtering, and citation support
-
 
 ## Quick Start
 
@@ -127,9 +124,7 @@ Web fetch is available on the following Anthropic API models:
 - `claude-3-5-sonnet-latest` (Claude Sonnet 3.5 v2 - deprecated)
 - `claude-3-5-haiku-latest` (Claude Haiku 3.5)
 
-:::note
-The web fetch tool currently does not support websites dynamically rendered via JavaScript.
-:::
+> **note**: The web fetch tool currently does not support websites dynamically rendered via JavaScript.
 
 ## Usage Examples
 
@@ -296,4 +291,3 @@ The web fetch tool supports the following parameters:
   "max_content_tokens": 100000
 }
 ```
-

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex AI Video Generation (Veo)
 
@@ -127,7 +126,6 @@ import json
 with open("/path/to/service_account.json", "r", encoding="utf-8") as f:
     vertex_credentials = f.read()
 
-
 async def workflow():
     response = await avideo_generation(
         model="vertex_ai/veo-3.1-generate-preview",
@@ -182,9 +180,6 @@ model_list:
 
 Start the proxy and make requests:
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 # Step 1: Generate video
 curl --location 'http://0.0.0.0:4000/videos' \
@@ -206,9 +201,6 @@ curl --location 'http://localhost:4000/v1/videos/{video_id}/content' \
 --output video.mp4
 ```
 
-</TabItem>
-<TabItem value="python" label="Python SDK">
-
 ```python
 import litellm
 
@@ -229,9 +221,6 @@ if status.status == "completed":
     with open("veo_city.mp4", "wb") as f:
         f.write(content)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Cost Tracking
 
@@ -265,4 +254,3 @@ print(response.usage)  # {"duration_seconds": 5.0}
 - [Azure Video Generation](../azure/videos.md)
 - [Gemini Video Generation](../gemini/videos.md)
 - [Video Generation API Reference](/docs/videos)
-

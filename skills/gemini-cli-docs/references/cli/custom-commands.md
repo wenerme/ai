@@ -30,7 +30,6 @@ separator (`/` or `\`) being converted to a colon (`:`).
 - A file at `<project>/.gemini/commands/git/commit.toml` becomes the namespaced
   command `/git:commit`.
 
-<!-- prettier-ignore -->
 > [!TIP]
 > After creating or modifying `.toml` command files, run
 > `/commands reload` to pick up your changes without restarting the CLI.

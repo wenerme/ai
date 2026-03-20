@@ -1,7 +1,5 @@
 ---
 date: "2018-11-23:00:00+02:00"
-slug: "external-renderers"
-sidebar_position: 60
 aliases:
   - /en-us/external-renderers
 ---

@@ -1,5 +1,4 @@
 ---
-slug: /faq/general/columnar-database
 title: 'What is a columnar database?'
 toc_hidden: true
 toc_priority: 101
@@ -7,10 +6,6 @@ description: 'This page describes what a columnar database is'
 keywords: ['columnar database', 'column-oriented database', 'OLAP database', 'analytical database', 'data warehousing']
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import RowOriented from '@site/static/images/row-oriented.gif';
-import ColumnOriented from '@site/static/images/column-oriented.gif';
 
 # What is a columnar database? {#what-is-a-columnar-database}
 

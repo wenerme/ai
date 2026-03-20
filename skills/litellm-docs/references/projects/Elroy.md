@@ -4,7 +4,6 @@ Elroy is a scriptable AI assistant that remembers and sets goals.
 
 Interact through the command line, share memories via MCP, or build your own tools using Python.
 
-
 [![Static Badge][github-shield]][github-url]
 [![Discord][discord-shield]][discord-url]
 

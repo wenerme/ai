@@ -95,9 +95,7 @@ const getting = base
 
 Every [procedure](/docs/procedure) built from `base` now uses these customized validation errors.
 
-:::warning
-Middleware applied before `.input`/`.output` catches validation errors by default, but this behavior can be configured.
-:::
+> **warning**: Middleware applied before `.input`/`.output` catches validation errors by default, but this behavior can be configured.
 
 ## Type‑Safe Validation Errors
 

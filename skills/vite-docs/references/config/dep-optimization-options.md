@@ -18,7 +18,7 @@ If neither of these fit your needs, you can specify custom entries using this op
 
 Dependencies to exclude from pre-bundling.
 
-:::warning CommonJS
+> **warning**: CommonJS
 CommonJS dependencies should not be excluded from optimization. If an ESM dependency is excluded from optimization, but has a nested CommonJS dependency, the CommonJS dependency should be added to `optimizeDeps.include`. Example:
 
 ```js twoslash
@@ -30,8 +30,6 @@ export default defineConfig({
   },
 })
 ```
-
-:::
 
 ## optimizeDeps.include <NonInheritBadge />
 
@@ -100,9 +98,7 @@ This option is deprecated. As of Vite 5.1, pre-bundling of dependencies during b
 
 To disable the optimizer completely, use `optimizeDeps.noDiscovery: true` to disallow automatic discovery of dependencies and leave `optimizeDeps.include` undefined or empty.
 
-:::warning
-Optimizing dependencies during build time was an **experimental** feature. Projects trying out this strategy also removed `@rollup/plugin-commonjs` using `build.commonjsOptions: { include: [] }`. If you did so, a warning will guide you to re-enable it to support CJS only packages while bundling.
-:::
+> **warning**: Optimizing dependencies during build time was an **experimental** feature. Projects trying out this strategy also removed `@rollup/plugin-commonjs` using `build.commonjsOptions: { include: [] }`. If you did so, a warning will guide you to re-enable it to support CJS only packages while bundling.
 
 ## optimizeDeps.needsInterop <NonInheritBadge />
 

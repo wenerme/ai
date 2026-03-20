@@ -73,6 +73,3 @@ There are the following points to note:
 - Default node pools(not recommended)  
 
   Enable the resource pool used in EKS autonomous mode. When creating a node pool, you can choose a custom EC2 instance type and adjust the instance's CPU, memory and other resources. When configuring the node pool, you can add a startup script for the EC2 instance to adjust the system parameters. However, this type of resource pool requires autonomous mode and reduces the freedom to manage the cluster. For details on the specific modification operations, please refer to: [Cluster Environment OS Checking](../../install/preparation/os-checking.md)
-
-
-

@@ -85,7 +85,7 @@ $$
 
 Assume `block_size` 16, sliding window size 32, request length 112, then for the above example model, we need to allocate 11 blocks (0-6 for full, 7-8 for sw group 1, 9-10 for sw group 2).
 
-![Allocation Result](../assets/design/hybrid_kv_cache_manager/basic_grouping_example.png)
+[Allocation Result]
 
 Here, "/" denotes no block needed (sliding‑window layers don't need slots for early tokens).
 
@@ -169,7 +169,7 @@ For full attention layers, blocks are allocated for all tokens in the request. F
 
 To find the longest cache hit prefix of a request, we enumerate from left (the first block) to right (the last block), checking whether the block is cached, and exit when cache misses. For example, we will return the first 7 tokens (0-6) as the cache hit prefix in the below example (blue blocks are cached):
 
-![Prefix Caching of Full Attention](../assets/design/hybrid_kv_cache_manager/full_attn.png)
+[Prefix Caching of Full Attention]
 
 ### Case 1: sliding window attention only models
 
@@ -178,7 +178,7 @@ For sliding window attention layers, a naive implementation for memory allocatio
 For a new request, the cache hit prefix only requires the last `sliding_window_size - 1` tokens being cached.
 Let's say `sliding_window_size = 4` and `block_size = 1`, and the request is a 15-token prompt (blue blocks are cached):
 
-![Prefix Caching of Sliding Window Attention](../assets/design/hybrid_kv_cache_manager/sw_attn.png)
+[Prefix Caching of Sliding Window Attention]
 
 There are 3 possible cache hit prefixes:
 
@@ -209,7 +209,7 @@ The prefix caching support of the mamba model is work in progress. Once implemen
 
 ### Overview
 
-![Overview of Hybrid KV Cache Manager](../assets/design/hybrid_kv_cache_manager/overview.png)
+[Overview of Hybrid KV Cache Manager]
 
 The `KVCacheManager` is organized into 3 layers:
 
@@ -239,7 +239,7 @@ And for a request, we allocate 11 blocks with `block_id` 0-6 to group 0, 7-8 to 
 
 With such an example, the physical memory is divided into 10 buffers (`KVCacheTensor` 0 - `KVCacheTensor` 9). Each buffer is shared by 3 layers (e.g., `KVCacheTensor` 0 is shared by full.0 from group 0, sw.0 from group 1, and sw.10 from group 2) and is divided into pieces with size `block_size * kv_hidden_size`. The KV cache of these 3 attention layers are saved to different pieces of the buffer based on the allocated `block_ids`:
 
-![Example Memory Layout](../assets/design/hybrid_kv_cache_manager/memory_layout.png)
+[Example Memory Layout]
 
 !!! note
     One logic "block" is mapped to 10 pieces in the 10 buffers of the physical memory.

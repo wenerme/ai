@@ -2,9 +2,6 @@
 title: Query Conditions
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 When you want to make complex queries, you can easily end up with a lot of boilerplate code full of curly brackets:
 
 ```ts
@@ -170,15 +167,7 @@ PosgreSQL allows to execute queries (pg-query) on the type pg-vector. The pg-vec
 
 Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/current/functions-textsearch.html) for possible queries.
 
-<Tabs
-groupId="postgres-full-text"
-defaultValue="as-column"
-values={[
-{label: 'Using a column', value: 'as-column'},
-{label: 'Using an index', value: 'in-query'},
-]
-}>
-  <TabItem value="as-column">
+  
 
 ```ts title="./entities/Book.ts"
 import { FullTextType, WeightedFullTextValue } from '@mikro-orm/postgresql';
@@ -208,8 +197,8 @@ export class Book {
 
 And to find results: `repository.findOne({ searchableTitle: { $fulltext: 'query' } })`.
 
-  </TabItem>
-  <TabItem value="in-query">
+  
+  
 
 ```ts title="./entities/Book.ts"
 @Entity()
@@ -224,8 +213,7 @@ export class Book {
 
 And to find results: `repository.findOne({ title: { $fulltext: 'query' } })`
 
-  </TabItem>
-</Tabs>
+  
 
 ### MySQL, MariaDB
 

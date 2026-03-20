@@ -1,31 +1,9 @@
 ---
 title: 'Azure Private Link'
-sidebar_label: 'Azure Private Link'
-slug: /cloud/security/azure-privatelink
 description: 'How to set up Azure Private Link'
 keywords: ['azure', 'private link', 'privatelink']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge';
-import azure_pe from '@site/static/images/cloud/security/azure-pe.png';
-import azure_privatelink_pe_create from '@site/static/images/cloud/security/azure-privatelink-pe-create.png';
-import azure_private_link_center from '@site/static/images/cloud/security/azure-private-link-center.png';
-import azure_pe_create_basic from '@site/static/images/cloud/security/azure-pe-create-basic.png';
-import azure_pe_resource from '@site/static/images/cloud/security/azure-pe-resource.png';
-import azure_pe_create_vnet from '@site/static/images/cloud/security/azure-pe-create-vnet.png';
-import azure_pe_create_dns from '@site/static/images/cloud/security/azure-pe-create-dns.png';
-import azure_pe_create_tags from '@site/static/images/cloud/security/azure-pe-create-tags.png';
-import azure_pe_create_review from '@site/static/images/cloud/security/azure-pe-create-review.png';
-import azure_pe_ip from '@site/static/images/cloud/security/azure-pe-ip.png';
-import azure_pe_view from '@site/static/images/cloud/security/azure-pe-view.png';
-import azure_pe_resource_id from '@site/static/images/cloud/security/azure-pe-resource-id.png';
-import azure_pe_resource_guid from '@site/static/images/cloud/security/azure-pe-resource-guid.png';
-import azure_pl_dns_wildcard from '@site/static/images/cloud/security/azure-pl-dns-wildcard.png';
-import azure_pe_remove_private_endpoint from '@site/static/images/cloud/security/azure-pe-remove-private-endpoint.png';
-import azure_privatelink_pe_filter from '@site/static/images/cloud/security/azure-privatelink-pe-filter.png';
-import azure_privatelink_pe_dns from '@site/static/images/cloud/security/azure-privatelink-pe-dns.png';
 
 # Azure Private Link
 
@@ -37,9 +15,7 @@ This guide shows how to use Azure Private Link to provide private connectivity v
 
 Azure supports cross-region connectivity via Private Link. This enables you to establish connections between VNets located in different regions where you have ClickHouse services deployed.
 
-:::note
-Additional charges may be applied to inter-region traffic. Please check the latest Azure documentation.
-:::
+> **note**: Additional charges may be applied to inter-region traffic. Please check the latest Azure documentation.
 
 **Please complete the following steps to enable Azure Private Link:**
 
@@ -49,9 +25,7 @@ Additional charges may be applied to inter-region traffic. Please check the late
 1. Add the Private Endpoint Resource ID to your services allow list
 1. Access your ClickHouse Cloud service using Private Link
 
-:::note
-ClickHouse Cloud Azure PrivateLink has switched from using resourceGUID to Resource ID filters. You can still use resourceGUID, as it is backward-compatible, but we recommend switching to Resource ID filters. To migrate, simply create a new endpoint using the Resource ID, attach it to the service, and remove the old resourceGUID-based one.
-:::
+> **note**: ClickHouse Cloud Azure PrivateLink has switched from using resourceGUID to Resource ID filters. You can still use resourceGUID, as it is backward-compatible, but we recommend switching to Resource ID filters. To migrate, simply create a new endpoint using the Resource ID, attach it to the service, and remove the old resourceGUID-based one.
 
 ## Attention {#attention}
 ClickHouse attempts to group your services to reuse the same published [Private Link service](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview) within the Azure region. However, this grouping isn't guaranteed, especially if you spread your services across multiple ClickHouse organizations.
@@ -106,13 +80,11 @@ Make a note of the `endpointServiceId`. You'll use it in the next step.
 
 ## Create a private endpoint in Azure {#create-private-endpoint-in-azure}
 
-:::important
-This section covers ClickHouse-specific details for configuring ClickHouse via Azure Private Link. Azure-specific steps are provided as a reference to guide you on where to look, but they may change over time without notice from the Azure cloud provider. Please consider Azure configuration based on your specific use case.  
+> **important**: This section covers ClickHouse-specific details for configuring ClickHouse via Azure Private Link. Azure-specific steps are provided as a reference to guide you on where to look, but they may change over time without notice from the Azure cloud provider. Please consider Azure configuration based on your specific use case.  
 
 Please note that ClickHouse isn't responsible for configuring the required Azure private endpoints and DNS records.  
 
 For any issues related to Azure configuration tasks, contact Azure Support directly.
-:::
 
 In this section, we're going to create a Private Endpoint in Azure. You can use either the Azure Portal or Terraform.
 
@@ -281,9 +253,7 @@ Please follow this guide to [link the virtual network to your private DNS zone](
 
 **Option 2: Using Terraform**
 
-:::note
-There are various ways to configure DNS. Please set up DNS according to your specific use case.
-:::
+> **note**: There are various ways to configure DNS. Please set up DNS according to your specific use case.
 
 You need to point "DNS name", taken from [Obtain Azure connection alias for Private Link](#obtain-azure-connection-alias-for-private-link) step, to Private Endpoint IP address. This ensures that services/components within your VPC/Network can resolve it properly.
 
@@ -377,9 +347,7 @@ By default, a ClickHouse Cloud service isn't available over a Private Link conne
 
 In the ClickHouse Cloud console, open the service that you would like to connect via PrivateLink then navigate to **Settings**. Enter the `Resource ID` obtained from the [previous](#obtaining-private-endpoint-resourceid) step.
 
-:::note
-If you want to allow access from an existing PrivateLink connection, use the existing endpoint drop-down menu.
-:::
+> **note**: If you want to allow access from an existing PrivateLink connection, use the existing endpoint drop-down menu.
 
 <Image img={azure_privatelink_pe_filter} size="lg" alt="Private Endpoints Filter" border />
 

@@ -22,7 +22,7 @@ clone, they are either ignored or converted into [OSC 9] sequences.
 
 ### Change Progress State (OSC 9;4)
 
-<VTSequence sequence={["OSC", "9", ";", "4", ";", "Ps", "ST"]} /><br/>
+<VTSequence sequence={["OSC", "9", ";", "4", ";", "Ps", "ST"]} />
 <VTSequence sequence={["OSC", "9", ";", "4", ";", "Ps", ";", "Pv", "ST"]} />
 
 Change the current progress state based on the value of `s` and `v`.
@@ -54,4 +54,3 @@ The new state and value chiefly depends on the value of `s`:
 > to update the progress state regularly as a keep-alive signal. There is
 > sadly no standardization around this, but we recommend at least updating
 > once per second.
-

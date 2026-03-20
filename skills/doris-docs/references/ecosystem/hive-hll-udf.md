@@ -29,7 +29,6 @@
  Note:
  HLL statistics are approximate calculations with an error rate of around 1% to 2%.
 
-
 ## Usage
 
 ### Create a Hive table and insert test data
@@ -96,10 +95,8 @@ add jar hdfs://hostname:port/hive-udf.jar;
 create temporary function to_hll as 'org.apache.doris.udf.ToHllUDAF' USING JAR 'hdfs://hostname:port/hive-udf.jar';
 create temporary function hll_union as 'org.apache.doris.udf.HllUnionUDAF' USING JAR 'hdfs://hostname:port/hive-udf.jar';
 
-
 -- Create UDF functions
 create temporary function hll_cardinality as 'org.apache.doris.udf.HllCardinalityUDF' USING JAR 'hdfs://node:9000/hive-udf.jar';
-
 
 -- Example: Use the to_hll UDAF to aggregate and generate HLL, and write it to the Hive HLL table
 insert into hive_hll_table
@@ -224,4 +221,3 @@ select k3, hll_cardinality(hll_union(hll_from_base64(uuid))) from hive.hive_test
 | c    |                                                 2 |
 +------+---------------------------------------------------+
 ```
-

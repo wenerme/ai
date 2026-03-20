@@ -33,8 +33,6 @@ USING (<filter>);
 
 > RESTRICTIVE combines a set of policies with AND, PERMISSIVE combines a set of policies with OR
 
-
-
 > Equivalent to the filter condition of a query statement, for example: id=1
 
 ## Optional Parameters

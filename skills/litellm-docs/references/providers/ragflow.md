@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # RAGFlow
 
@@ -12,7 +11,6 @@ Litellm supports Ragflow's chat completions APIs
 - ✅ Both chat and agent endpoints
 - ✅ Multiple credential sources (params, env vars, litellm_params)
 - ✅ OpenAI-compatible API format
-
 
 ## API Key
 
@@ -38,7 +36,6 @@ RAGFlow provides OpenAI-compatible APIs with unique path structures that include
 The model name format embeds the endpoint type and ID:
 - Chat: `ragflow/chat/{chat_id}/{model_name}`
 - Agent: `ragflow/agent/{agent_id}/{model_name}`
-
 
 ## Sample Usage - Chat Endpoint
 
@@ -149,9 +146,6 @@ export RAGFLOW_API_BASE="http://localhost:9380"
 
 ### 2. Start the proxy
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: ragflow-chat-gpt4
@@ -166,22 +160,13 @@ model_list:
       api_base: os.environ/RAGFLOW_API_BASE
 ```
 
-</TabItem>
-<TabItem value="cli" label="CLI">
-
 ```bash
 $ litellm --config /path/to/config.yaml
 
 # Server running on http://0.0.0.0:4000
 ```
 
-</TabItem>
-</Tabs>
-
 ### 3. Test it
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -194,9 +179,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-<TabItem value="Python" label="Python SDK">
 
 ```python
 from openai import OpenAI
@@ -214,9 +196,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## API Base URL Handling
 
@@ -236,9 +215,4 @@ If you encounter errors:
 2. **Missing api_base**: Provide `api_base` via parameter, environment variable, or litellm_params
 3. **Connection errors**: Verify your RAGFlow server is running and accessible at the provided `api_base`
 
-:::info
-
-For more information about passing provider-specific parameters, [go here](../completion/provider_specific_params.md)
-
-:::
-
+> **info**: For more information about passing provider-specific parameters, [go here](../completion/provider_specific_params.md)

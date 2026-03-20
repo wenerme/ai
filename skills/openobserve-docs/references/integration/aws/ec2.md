@@ -10,14 +10,11 @@ Monitor AWS EC2 instances with comprehensive server monitoring, collecting syste
 ## Overview
 Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserve for infrastructure monitoring, performance tracking, and log analysis using the OpenObserve Collector (based on OpenTelemetry).
 
-
 ## Steps to Integrate
-
 
 ??? "Prerequisites"
       - OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../../getting-started/#self-hosted-installation))
       - AWS EC2 Linux instance with SSH access
-
 
 ??? "Step 1: Connect to EC2 Instance"
 
@@ -26,22 +23,16 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
       ssh -i /path/to/your-key.pem ec2-user@your-instance-public-dns
       ```
 
-
 ??? "Step 2: Install OpenObserve Collector"
-
 
       1. In OpenObserve: Data Sources → Linux → Copy curl command
       2. Execute the command on your EC2 instance.
 
-
-      ![Install OpenObserve Collector](../images/aws-integrations/get_auth_token_linux.png)
-
+      [Install OpenObserve Collector]
 
 ??? "Step 3: Configure the OpenTelemetry Collector"
 
-
       The OpenObserve Collector is pre-configured during installation, but you can customize it for your specific needs.
-
 
       1. View the current configuration:
       ```bash
@@ -57,11 +48,7 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
       sudo systemctl restart otel-collector
       ```
 
-
-
-
 ??? "Step 4: Generate Test Data (Optional)"
-
 
       Run `stress-ng` or `logger` to create test metrics and logs if needed:
       ```bash
@@ -69,48 +56,33 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
       logger "Test log message"
       ```
 
-
 ??? "Step 5: Verify Ingestion"
-
 
       **Logs**:
    
       Go to **Logs** in Openobserve → select **stream** → set **time range** → **Run Query** to check for EC2 logs.
 
-
-      ![Check Log Ingestion](../images/aws-integrations/view_logs.png)
-
+      [Check Log Ingestion]
 
       **Metrics**
 
-
       Go to **Metrics** in Openobserve → select **stream** → set **time range** → **Run Query** to check for EC2 metrics.
-
-
-
 
 ??? "Troubleshooting"
 
-
       **Otel Misconfiguration Issues**
 
-
       - If you're not seeing logs or metrics in OpenObserve, check the collector logs for errors:
-
 
       ```bash
       sudo journalctl -u otel-collector -f | grep Error
       ```
 
-
       - Look for issues such as misconfigurations, permission problems, or connectivity errors.
-
 
       **File Permission Issues**
 
-
       The collector may encounter "permission denied" errors when trying to access specific system logs:
-
 
       - Check the permissions of the log files: `sudo ls -l /var/log/`
       - If you see permission issues, update the permissions:
@@ -119,18 +91,12 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
       sudo chmod 644 /var/log/cloud-init.log /var/log/cloud-init-output.log /var/log/tallylog
       ```
 
-
       **Restart the Collector Service**
-
 
       - After making configuration changes or adjusting file permissions, restart the collector: `sudo systemctl restart otel-collector`
       - Verify that the collector is running without issues: `sudo systemctl status otel-collector`
 
-
-
-
       **No Data Appearing in OpenObserve**
-
 
       - Verify that the OpenObserve endpoint and authentication token are correct in the configuration file.
       - Check that the EC2 instance has internet connectivity to reach the OpenObserve API.

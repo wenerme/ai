@@ -1,6 +1,5 @@
 # τ-bench
 
-
 ## Overview
 
 τ-bench (Tau Bench) is a benchmark for evaluating conversational AI agents that interact with users through domain-specific API tools and policy guidelines. It simulates dynamic, multi-turn conversations where a language model acts as both the user and the agent.
@@ -29,7 +28,6 @@
 - Uses **pass@k** aggregation for robustness evaluation
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/tau_bench.html)
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_hat_k` |
-
 
 ## Data Statistics
 
@@ -99,5 +96,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

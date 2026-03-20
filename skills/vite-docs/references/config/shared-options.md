@@ -53,7 +53,7 @@ export default defineConfig({
 })
 ```
 
-::: tip NOTE
+> **tip**: NOTE
 For TypeScript users, make sure to add the type declarations in the `vite-env.d.ts` file to get type checks and Intellisense.
 
 Example:
@@ -62,8 +62,6 @@ Example:
 // vite-env.d.ts
 declare const __APP_VERSION__: string
 ```
-
-:::
 
 ## plugins
 
@@ -102,9 +100,8 @@ When aliasing to file system paths, always use absolute paths. Relative alias va
 
 More advanced custom resolution can be achieved through [plugins](/guide/api-plugin).
 
-::: warning Using with SSR
+> **warning**: Using with SSR
 If you have configured aliases for [SSR externalized dependencies](/guide/ssr.md#ssr-externals), you may want to alias the actual `node_modules` packages. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.io/aliases/) support aliasing via the `npm:` prefix.
-:::
 
 ### Object Format (`Record<string, string>`)
 
@@ -144,9 +141,8 @@ When `find` is a regular expression, the `replacement` can use [replacement patt
 
 If you have duplicated copies of the same dependency in your app (likely due to hoisting or linked packages in monorepos), use this option to force Vite to always resolve listed dependencies to the same copy (from project root).
 
-:::warning SSR + ESM
+> **warning**: SSR + ESM
 For SSR builds, deduplication does not work for ESM build outputs configured from `build.rollupOptions.output`. A workaround is to use CJS build outputs until ESM has better plugin support for module loading.
-:::
 
 ## resolve.conditions <NonInheritBadge />
 
@@ -319,9 +315,8 @@ export default defineConfig({
 })
 ```
 
-::: tip Importing files
+> **tip**: Importing files
 Since the same code is prepended to files in different directories, relative paths won't resolve correctly. Use absolute paths or [aliases](#resolve-alias) instead.
-:::
 
 ## css.preprocessorMaxWorkers
 
@@ -348,9 +343,8 @@ Whether to enable sourcemaps during dev.
 
 Selects the engine used for CSS processing. Check out [Lightning CSS](../guide/features.md#lightning-css) for more information.
 
-::: info Duplicate `@import`s
+> **info**: Duplicate `@import`s
 Note that postcss (postcss-import) has a different behavior with duplicated `@import` from browsers. See [postcss/postcss-import#462](https://github.com/postcss/postcss-import/issues/462).
-:::
 
 ## css.lightningcss
 
@@ -523,7 +517,7 @@ See [here](/guide/env-and-mode#env-files) for more about environment files.
 
 Env variables starting with `envPrefix` will be exposed to your client source code via `import.meta.env`.
 
-:::warning SECURITY NOTES
+> **warning**: SECURITY NOTES
 `envPrefix` should not be set as `''`, which will expose all your env variables and cause unexpected leaking of sensitive information. Vite will throw an error when detecting `''`.
 
 If you would like to expose an unprefixed variable, you can use [define](#define) to expose it:
@@ -533,8 +527,6 @@ define: {
   'import.meta.env.ENV_VARIABLE': JSON.stringify(process.env.ENV_VARIABLE)
 }
 ```
-
-:::
 
 ## appType
 

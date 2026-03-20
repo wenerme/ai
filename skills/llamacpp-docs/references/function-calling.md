@@ -23,8 +23,7 @@ Function calling is supported for all models (see https://github.com/ggml-org/ll
 
 - Multiple/parallel tool calling is supported on some models but disabled by default, enable it by passing `"parallel_tool_calls": true` in the completion endpoint payload.
 
-<details>
-<summary>Show some common templates and which format handler they use</summary>
+Show some common templates and which format handler they use
 
 | Template | Format |
 |----------|--------|
@@ -271,13 +270,9 @@ Function calling is supported for all models (see https://github.com/ggml-org/ll
 
 This table can be generated with:
 
-<!-- TODO @ngxson : we should update this, since minja dependency has been removed -->
-
 ```bash
 ./build/bin/test-chat ../minja/build/tests/*.jinja 2>/dev/null
 ```
-
-</details>
 
 # Usage - need tool-aware Jinja template
 
@@ -363,7 +358,6 @@ curl http://localhost:8080/v1/chat/completions -d '{
     ]
 }'
 
-
 curl http://localhost:8080/v1/chat/completions -d '{
     "model": "gpt-3.5-turbo",
     "messages": [
@@ -390,8 +384,7 @@ curl http://localhost:8080/v1/chat/completions -d '{
 }'
 ```
 
-<details>
-<summary>Show output</summary>
+Show output
 
 ```json
 {
@@ -422,5 +415,3 @@ curl http://localhost:8080/v1/chat/completions -d '{
 "id": "chatcmpl-Htbgh9feMmGM0LEH2hmQvwsCxq3c6Ni8"
 }
 ```
-
-</details>

@@ -116,11 +116,6 @@ Use the following:
 rate(http_requests_total[$__rate_interval])
 ```
 
-<!-- The value of `$__rate_interval` is defined as
-*max(`$__interval` + *Scrape interval*, 4 \* *Scrape interval*)*,
-where _Scrape interval_ is the "Min step" setting (also known as `query*interval`, a setting per PromQL query) if any is set.
-Otherwise, Grafana uses the Prometheus data source's `scrape interval` setting. -->
-
 The value of `$__rate_interval` is calculated as:
 
 ```

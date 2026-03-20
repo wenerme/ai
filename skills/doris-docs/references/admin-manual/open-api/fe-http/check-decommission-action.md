@@ -60,7 +60,3 @@ Return a list of nodes that can be decommissioned
     	"count": 0
     }
     ```
-
-
-
-

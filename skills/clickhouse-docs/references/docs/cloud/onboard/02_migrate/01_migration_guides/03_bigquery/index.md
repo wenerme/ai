@@ -1,8 +1,5 @@
 ---
-slug: /migrations/bigquery
 title: 'BigQuery'
-pagination_prev: null
-pagination_next: null
 description: 'Landing page for the BigQuery migrations section'
 keywords: ['BigQuery', 'migration']
 doc_type: 'landing-page'

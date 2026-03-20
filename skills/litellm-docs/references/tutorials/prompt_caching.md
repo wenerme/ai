@@ -1,13 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Auto-Inject Prompt Caching Checkpoints
 
 Reduce costs by up to 90% by using LiteLLM to auto-inject prompt caching checkpoints.
 
 <Image img={require('../../img/auto_prompt_caching.png')}  style={{ width: '800px', height: 'auto' }} />
-
 
 ## How it works
 
@@ -193,9 +190,6 @@ LiteLLM adds `cache_control` to the last content block of the targeted message (
 
 You can configure cache control injection in the proxy configuration file.
 
-<Tabs>
-<TabItem value="litellm config.yaml" label="litellm config.yaml">
-
 ```yaml showLineNumbers title="litellm config.yaml"
 model_list:
   - model_name: anthropic-auto-inject-cache-system-message
@@ -206,16 +200,9 @@ model_list:
         - location: message
           role: system
 ```
-</TabItem>
-
-<TabItem value="UI" label="LiteLLM UI">
 
 On the LiteLLM UI, you can specify the `cache_control_injection_points` in the `Advanced Settings` tab when adding a model.
 <Image img={require('../../img/ui_auto_prompt_caching.png')}/>
-
-</TabItem>
-</Tabs>
-
 
 ## Detailed Example
 
@@ -283,6 +270,3 @@ When the model provider processes this request, it will recognize the caching di
 ## Related Documentation
 
 - [Manual Prompt Caching](../completion/prompt_caching.md) - Learn how to manually add `cache_control` directives to your messages
-
-
-

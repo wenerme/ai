@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/groupArrayDistinct'
 title: 'groupArrayDistinct'
 description: 'Example of using the groupArrayDistinct combinator'
 keywords: ['groupArray', 'Distinct', 'combinator', 'examples', 'groupArrayDistinct']
-sidebar_label: 'groupArrayDistinct'
 doc_type: 'reference'
 ---
 

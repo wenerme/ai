@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Anthropic
 LiteLLM supports all anthropic models.
@@ -17,7 +16,6 @@ LiteLLM supports all anthropic models.
 - `claude-2.1`
 - `claude-instant-1.2`
 
-
 | Property | Details |
 |-------|-------|
 | Description | Claude is a highly performant, trustworthy, and intelligent AI platform built by Anthropic. Claude excels at tasks involving language, reasoning, analysis, coding, and more. Also available via Azure Foundry. |
@@ -25,7 +23,6 @@ LiteLLM supports all anthropic models.
 | Provider Doc | [Anthropic ↗](https://docs.anthropic.com/en/docs/build-with-claude/overview), [Azure Foundry Claude ↗](https://learn.microsoft.com/en-us/azure/ai-services/foundry-models/claude) |
 | API Endpoint for Provider | https://api.anthropic.com (or Azure Foundry endpoint: `https://<resource-name>.services.ai.azure.com/anthropic`) |
 | Supported Endpoints | `/chat/completions`, `/v1/messages` (passthrough) |
-
 
 ## Supported OpenAI Parameters
 
@@ -47,14 +44,10 @@ Check this in code, [here](../completion/input.md#translated-openai-params)
 "reasoning_effort",
 ```
 
-:::info
-
-**Notes:**
+> **info**: **Notes:**
 - Anthropic API fails requests when `max_tokens` are not passed. Due to this litellm passes `max_tokens=4096` when no `max_tokens` are passed.
 - `response_format` is fully supported for Claude Sonnet 4.5 and Opus 4.1 models (see [Structured Outputs](#structured-outputs) section)
 - `reasoning_effort` is automatically mapped to `output_config={"effort": ...}` for Claude 4.6 and Opus 4.5 models (see [Effort Parameter](./anthropic_effort.md))
-
-:::
 
 ## **Structured Outputs**
 
@@ -68,9 +61,6 @@ LiteLLM supports Anthropic's [structured outputs feature](https://platform.claud
   - `opus-4-5` or `opus-4.5` (all Opus 4.5 variants)
   
 ### Example Usage
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
 
 ```python
 from litellm import completion
@@ -99,9 +89,6 @@ response = completion(
 print(response.choices[0].message.content)
 # Output: {"country": "France", "capital": "Paris"}
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 
@@ -147,15 +134,10 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-When using structured outputs with supported models, LiteLLM automatically:
+> **info**: When using structured outputs with supported models, LiteLLM automatically:
 - Converts OpenAI's `response_format` to Anthropic's `output_schema`
 - Adds the `anthropic-beta: structured-outputs-2025-11-13` header
 - Creates a tool with the schema and forces the model to use it
-:::
 
 ## API Keys
 
@@ -167,7 +149,7 @@ os.environ["ANTHROPIC_API_KEY"] = "your-api-key"
 # os.environ["LITELLM_ANTHROPIC_DISABLE_URL_SUFFIX"] = "true" # [OPTIONAL] Disable automatic URL suffix appending
 ```
 
-:::tip Azure Foundry Support
+> **tip**: Azure Foundry Support
 
 Claude models are also available via Microsoft Azure Foundry. Use the `azure/` prefix instead of `anthropic/` and configure Azure authentication. See the [Azure Anthropic documentation](../providers/azure/azure_anthropic) for details.
 
@@ -180,8 +162,6 @@ response = completion(
     messages=[{"role": "user", "content": "Hello!"}]
 )
 ```
-
-:::
 
 ### Custom API Base
 
@@ -205,9 +185,8 @@ With `LITELLM_ANTHROPIC_DISABLE_URL_SUFFIX=true`:
 
 ### Azure AI Foundry (Alternative Method)
 
-:::tip Recommended Method
+> **tip**: Recommended Method
 For full Azure support including Azure AD authentication, use the dedicated [Azure Anthropic provider](./azure/azure_anthropic) with `azure_ai/` prefix.
-:::
 
 As an alternative, you can use the `anthropic/` provider directly with your Azure endpoint since Azure exposes Claude using Anthropic's native API.
 
@@ -223,9 +202,7 @@ response = completion(
 print(response)
 ```
 
-:::info
-**Finding your Azure endpoint:** Go to Azure AI Foundry → Your deployment → Overview. Your base URL will be `https://<resource-name>.services.ai.azure.com/anthropic`
-:::
+> **info**: **Finding your Azure endpoint:** Go to Azure AI Foundry → Your deployment → Overview. Your base URL will be `https://<resource-name>.services.ai.azure.com/anthropic`
 
 ## Usage
 
@@ -240,7 +217,6 @@ messages = [{"role": "user", "content": "Hey! how's it going?"}]
 response = completion(model="claude-opus-4-20250514", messages=messages)
 print(response)
 ```
-
 
 ## Usage - Streaming
 Just set `stream=True` when calling completion.
@@ -270,9 +246,6 @@ export ANTHROPIC_API_KEY="your-api-key"
 
 ### 2. Start the proxy 
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: claude-4 ### RECEIVED MODEL NAME ###
@@ -284,8 +257,6 @@ model_list:
 ```bash
 litellm --config /path/to/config.yaml
 ```
-</TabItem>
-<TabItem value="config-all" label="config - default all Anthropic Model">
 
 Use this if you want to make requests to `claude-3-haiku-20240307`,`claude-3-opus-20240229`,`claude-2.1` without defining them on the config.yaml
 
@@ -324,23 +295,13 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
-</TabItem>
-<TabItem value="cli" label="cli">
-
 ```bash
 $ litellm --model claude-opus-4-20250514
 
 # Server running on http://0.0.0.0:4000
 ```
-</TabItem>
-</Tabs>
 
 ### 3. Test it
-
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -356,8 +317,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -377,8 +336,6 @@ response = client.chat.completions.create(model="claude-3", messages = [
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -407,8 +364,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Supported Models
 
@@ -438,12 +393,9 @@ print(response)
 
 Use Anthropic Prompt Caching
 
-
 [Relevant Anthropic API Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
 
-:::note
-
-Here's what a sample Raw Request from LiteLLM for Anthropic Context Caching looks like: 
+> **note**: Here's what a sample Raw Request from LiteLLM for Anthropic Context Caching looks like: 
 
 ```bash
 POST Request Sent from LiteLLM:
@@ -479,16 +431,10 @@ https://api.anthropic.com/v1/messages \
 ```
 
 **Note:** Anthropic no longer requires the `anthropic-beta: prompt-caching-2024-07-31` header. Prompt caching now works automatically when you use `cache_control` in your messages.
-::: 
 
 ### Caching - Large Context Caching 
 
-
 This example demonstrates basic Prompt Caching usage, caching the full text of the legal agreement as a prefix while keeping the user instruction uncached.
-
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
 
 ```python 
 response = await litellm.acompletion(
@@ -516,18 +462,12 @@ response = await litellm.acompletion(
 )
 
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
-:::info
-
-LiteLLM Proxy is OpenAI compatible
+> **info**: LiteLLM Proxy is OpenAI compatible
 
 This is an example using the OpenAI Python SDK sending a request to LiteLLM Proxy
 
 Assuming you have a model=`anthropic/claude-3-5-sonnet-20240620` on the [litellm proxy config.yaml](#usage-with-litellm-proxy)
-
-:::
 
 ```python 
 import openai
@@ -535,7 +475,6 @@ client = openai.AsyncOpenAI(
     api_key="anything",            # litellm proxy api key
     base_url="http://0.0.0.0:4000" # litellm proxy base url
 )
-
 
 response = await client.chat.completions.create(
     model="anthropic/claude-3-5-sonnet-20240620",
@@ -563,17 +502,11 @@ response = await client.chat.completions.create(
 
 ```
 
-</TabItem>
-</Tabs>
-
 ### Caching - Tools definitions
 
 In this example, we demonstrate caching tool definitions.
 
 The cache_control parameter is placed on the final tool
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
 
 ```python 
 import litellm
@@ -604,18 +537,12 @@ response = await litellm.acompletion(
     ]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
-:::info
-
-LiteLLM Proxy is OpenAI compatible
+> **info**: LiteLLM Proxy is OpenAI compatible
 
 This is an example using the OpenAI Python SDK sending a request to LiteLLM Proxy
 
 Assuming you have a model=`anthropic/claude-3-5-sonnet-20240620` on the [litellm proxy config.yaml](#usage-with-litellm-proxy)
-
-:::
 
 ```python 
 import openai
@@ -650,10 +577,6 @@ response = await client.chat.completions.create(
     ]
 )
 ```
-
-</TabItem>
-</Tabs>
-
 
 ### Caching - Continuing Multi-Turn Convo
 
@@ -663,9 +586,6 @@ The cache_control parameter is placed on the system message to designate it as p
 
 The conversation history (previous messages) is included in the messages array. The final turn is marked with cache-control, for continuing in followups. The second-to-last user message is marked for caching with the cache_control parameter, so that this checkpoint can read from the previous cache.
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
-
 ```python 
 import litellm
 
@@ -713,18 +633,12 @@ response = await litellm.acompletion(
     ]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
-:::info
-
-LiteLLM Proxy is OpenAI compatible
+> **info**: LiteLLM Proxy is OpenAI compatible
 
 This is an example using the OpenAI Python SDK sending a request to LiteLLM Proxy
 
 Assuming you have a model=`anthropic/claude-3-5-sonnet-20240620` on the [litellm proxy config.yaml](#usage-with-litellm-proxy)
-
-:::
 
 ```python 
 import openai
@@ -777,9 +691,6 @@ response = await client.chat.completions.create(
     ]
 )
 ```
-
-</TabItem>
-</Tabs>
 
 ## **Function/Tool Calling**
 
@@ -826,7 +737,6 @@ assert isinstance(
 
 ```
 
-
 ### Forcing Anthropic Tool Use
 
 If you want Claude to use a specific tool to answer the user’s question
@@ -845,9 +755,6 @@ response = completion(
 
 You can disable tool calling by setting the `tool_choice` to `"none"`.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -859,8 +766,6 @@ response = completion(
 )
 
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 1. Setup config.yaml
 
@@ -893,23 +798,12 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "tool_choice": "none"
   }'
 ```
-</TabItem>
-</Tabs>
-
-
 
 ### MCP Tool Calling 
 
 Here's how to use MCP tool calling with Anthropic:
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
-
 LiteLLM supports MCP tool calling with Anthropic in the OpenAI Responses API format.
-
-<Tabs>
-<TabItem value="openai_format" label="OpenAI Format">
-
 
 ```python
 import os 
@@ -933,9 +827,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="anthropic_format" label="Anthropic Format">
-
 ```python
 import os 
 from litellm import completion
@@ -957,12 +848,6 @@ response = completion(
 
 print(response)
 ```
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 
@@ -982,9 +867,6 @@ litellm --config /path/to/config.yaml
 
 3. Test it! 
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Format">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -995,9 +877,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "tools": [{"type": "mcp", "server_label": "deepwiki", "server_url": "https://mcp.deepwiki.com/mcp", "require_approval": "never"}]
   }'
 ```
-
-</TabItem>
-<TabItem value="anthropic" label="Anthropic Format">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1016,11 +895,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-</TabItem>
-</Tabs>
-
 ### Parallel Function Calling 
 
 Here's how to pass the result of a function call back to an anthropic model: 
@@ -1030,7 +904,6 @@ from litellm import completion
 import os 
 
 os.environ["ANTHROPIC_API_KEY"] = "sk-ant.."
-
 
 litellm.set_verbose = True
 
@@ -1132,10 +1005,6 @@ response = completion(
 
 ### Anthropic Hosted Tools (Computer, Text Editor, Web Search, Memory)
 
-
-<Tabs>
-<TabItem value="computer" label="Computer">
-
 ```python
 from litellm import completion
 
@@ -1165,12 +1034,6 @@ resp = completion(
 print(resp)
 ```
 
-</TabItem>
-<TabItem value="text_editor" label="Text Editor">
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -1189,9 +1052,6 @@ resp = completion(
 
 print(resp)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1220,15 +1080,8 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "tools": [{"type": "text_editor_20250124", "name": "str_replace_editor"}]
   }'
 ```
-</TabItem>
-</Tabs>
 
-</TabItem>
-<TabItem value="web_search" label="Web Search">
-
-:::info
-Live from v1.70.1+
-:::
+> **info**: Live from v1.70.1+
 
 LiteLLM maps OpenAI's `search_context_size` param to Anthropic's `max_uses` param.
 
@@ -1237,14 +1090,6 @@ LiteLLM maps OpenAI's `search_context_size` param to Anthropic's `max_uses` para
 | Low | 1 | 
 | Medium | 5 | 
 | High | 10 | 
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Format">
 
 ```python
 from litellm import completion
@@ -1268,8 +1113,6 @@ resp = completion(
 
 print(resp)
 ```
-</TabItem>
-<TabItem value="anthropic" label="Anthropic Format">
 
 ```python
 from litellm import completion
@@ -1290,12 +1133,6 @@ resp = completion(
 
 print(resp)
 ```
-</TabItem>
-
-</Tabs>
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1313,10 +1150,6 @@ litellm --config /path/to/config.yaml
 ```
 
 3. Test it! 
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Format">
-
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1336,8 +1169,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     }
   }'
 ```
-</TabItem>
-<TabItem value="anthropic" label="Anthropic Format">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1354,22 +1185,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-</TabItem>
-</Tabs>
-
-</TabItem>
-
-<TabItem value="memory" label="Memory">
-
-:::info
-The Anthropic Memory tool is currently in beta.
-:::
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
+> **info**: The Anthropic Memory tool is currently in beta.
 ```python
 from litellm import completion
 
@@ -1389,9 +1205,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 1. Setup config.yaml
 
@@ -1421,14 +1234,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "tools": [{"type": "memory_20250818", "name": "memory"}]
     }'
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-
-</Tabs>
-
-
 
 ## Usage - Vision 
 
@@ -1443,7 +1248,6 @@ def encode_image(image_path):
 
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
-
 
 image_path = "../proxy/cached_logo.jpg"
 # Getting the base64 string
@@ -1478,8 +1282,7 @@ LiteLLM translates OpenAI's `reasoning_effort` to Anthropic's `thinking` paramet
 | "medium"         | "budget_tokens": 2048 |
 | "high"           | "budget_tokens": 4096 |
 
-:::note
-For Claude Opus 4.6, all `reasoning_effort` values (`low`, `medium`, `high`) are mapped to `thinking: {type: "adaptive"}`. To use explicit thinking budgets, pass the native `thinking` parameter directly:
+> **note**: For Claude Opus 4.6, all `reasoning_effort` values (`low`, `medium`, `high`) are mapped to `thinking: {type: "adaptive"}`. To use explicit thinking budgets, pass the native `thinking` parameter directly:
 
 ```python
 from litellm import completion
@@ -1490,11 +1293,6 @@ resp = completion(
     thinking={"type": "enabled", "budget_tokens": 1024},
 )
 ```
-:::
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -1505,10 +1303,6 @@ resp = completion(
 )
 
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1537,10 +1331,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low"
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 
@@ -1602,11 +1392,7 @@ ModelResponse(
 
 You can also pass the `thinking` parameter to Anthropic models.
 
-
 You can also pass the `thinking` parameter to Anthropic models.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 response = litellm.completion(
@@ -1615,9 +1401,6 @@ response = litellm.completion(
   thinking={"type": "enabled", "budget_tokens": 1024},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1630,13 +1413,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 #### Adaptive Thinking (Claude Opus 4.6)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 response = litellm.completion(
@@ -1645,9 +1422,6 @@ response = litellm.completion(
   thinking={"type": "adaptive"},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1660,13 +1434,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 #### Enabled Thinking with Budget
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 response = litellm.completion(
@@ -1675,9 +1443,6 @@ response = litellm.completion(
   thinking={"type": "enabled", "budget_tokens": 5000},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -1689,9 +1454,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "thinking": {"type": "enabled", "budget_tokens": 5000}
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## **Passing Extra Headers to Anthropic API**
 
@@ -1767,13 +1529,9 @@ Human: How do I boil water?
 Assistant:
 ```
 
-
 ## Usage - PDF
 
 Pass base64 encoded PDF files to Anthropic models using the `file` content type with a `file_data` field.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### **using base64**
 ```python
@@ -1814,8 +1572,6 @@ response = completion(
 
 print(response.choices[0])
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config 
 
@@ -1862,17 +1618,12 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 
 ```
-</TabItem>
-</Tabs>
 
 ## [BETA] Citations API 
 
 Pass `citations: {"enabled": true}` to Anthropic, to get citations on your document responses. 
 
 Note: This interface is in BETA. If you have feedback on how citations should be returned, please [tell us here](https://github.com/BerriAI/litellm/issues/7970#issuecomment-2644437943)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -1907,9 +1658,6 @@ citations = resp.choices[0].message.provider_specific_fields["citations"]
 
 assert citations is not None
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1962,16 +1710,11 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Files API
 
 Upload files once and reference them by `file_id` in multiple requests—no need to re-upload content each time.
 
-:::info
-The `file_id` obtained from Anthropic only works with Anthropic Claude models. You cannot use it with other providers (OpenAI, Bedrock, etc.).
-:::
+> **info**: The `file_id` obtained from Anthropic only works with Anthropic Claude models. You cannot use it with other providers (OpenAI, Bedrock, etc.).
 
 - **Max file size:** 500 MB | **Total storage:** 100 GB per org
 - **Pricing:** File API operations are free. File content used in Messages requests is priced as input tokens.
@@ -2019,9 +1762,7 @@ response = litellm.completion(
 | Delete | `litellm.file_delete(file_id, custom_llm_provider="anthropic")` |
 | Download | `litellm.file_content(file_id, custom_llm_provider="anthropic")` |
 
-:::note
-Download only works for files created by the [code execution tool](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool), not uploaded files.
-:::
+> **note**: Download only works for files created by the [code execution tool](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool), not uploaded files.
 
 ### Supported Formats
 
@@ -2061,9 +1802,6 @@ response = litellm.completion(
 
 LiteLLM translates the OpenAI `user` param to Anthropic's `metadata[user_id]` param.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = completion(
     model="claude-3-5-sonnet-20240620",
@@ -2071,8 +1809,6 @@ response = completion(
     user="user_123",
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -2103,16 +1839,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Usage - Agent Skills
 
 LiteLLM supports using Agent Skills with the API
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 response = completion(
@@ -2135,8 +1864,6 @@ response = completion(
     }
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -2185,8 +1912,5 @@ curl --location 'http://localhost:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 The container and its "id" will be present in "provider_specific_fields" in streaming/non-streaming response

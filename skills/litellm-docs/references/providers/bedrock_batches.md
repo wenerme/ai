@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock Batches
 
@@ -99,9 +98,6 @@ Specify `target_model_names: "<model-name>"` to enable LiteLLM managed files and
 
 model-name should be the same as the model-name in the request.jsonl
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python showLineNumbers title="bedrock_batch.py"
 from openai import OpenAI
 
@@ -119,9 +115,6 @@ batch_input_file = client.files.create(
 print(batch_input_file)
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Upload File"
 curl http://localhost:4000/v1/files \
     -H "Authorization: Bearer sk-1234" \
@@ -130,17 +123,11 @@ curl http://localhost:4000/v1/files \
     -F extra_body='{"target_model_names": "bedrock-batch-claude"}'
 ```
 
-</TabItem>
-</Tabs>
-
 **Where is the file written?**:
 
 The file is written to S3 bucket specified in your config and prepared for Bedrock batch inference.
 
 ### 3. Create the batch
-
-<Tabs>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="bedrock_batch.py"
 ...
@@ -154,9 +141,6 @@ batch = client.batches.create(
 print(batch)
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Create Batch Request"
 curl http://localhost:4000/v1/batches \
     -H "Authorization: Bearer sk-1234" \
@@ -169,15 +153,9 @@ curl http://localhost:4000/v1/batches \
     }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### 4. Retrieve batch results
 
 Once the batch job is completed, download the results from S3:
-
-<Tabs>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="bedrock_batch.py"
 ...
@@ -202,9 +180,6 @@ if batch_status.status == "completed":
         print(f"Output: {record.get('modelOutput', {})}")
 ```
 
-</TabItem>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Download Batch Results"
 # First retrieve batch to get output_file_id
 curl http://localhost:4000/v1/batches/batch_abc123 \
@@ -216,9 +191,6 @@ curl http://localhost:4000/v1/files/{output_file_id}/content \
     -H "custom-llm-provider: bedrock" \
     -o batch_output.jsonl
 ```
-
-</TabItem>
-<TabItem value="litellm-direct" label="LiteLLM Direct">
 
 ```python showLineNumbers title="bedrock_batch.py"
 import litellm
@@ -234,9 +206,6 @@ result = file_content(
 # Process results
 print(result.text)
 ```
-
-</TabItem>
-</Tabs>
 
 **Output Format:**
 
@@ -293,8 +262,6 @@ model_list:
 ```bash
 export AWS_S3_ENCRYPTION_KEY_ID=arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
 ```
-
-
 
 ## Further Reading
 

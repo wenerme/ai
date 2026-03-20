@@ -1,19 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/clickhouse-embedded
 title: 'Embedded in ClickHouse'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 6
 description: 'Using ClickStack embedded in ClickHouse Server - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack embedded', 'ClickHouse embedded', 'ClickStack ClickHouse server', 'built-in observability']
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import authenticate from '@site/static/images/clickstack/deployment/embedded/authenticate.png';
-import inferred_source from '@site/static/images/clickstack/deployment/embedded/inferred-source.png';
 
 ClickStack is bundled directly into the ClickHouse server binary. This means you can access the ClickStack UI (HyperDX) from your ClickHouse instance without deploying any additional components. This deployment is similar to the public demo at [play-clickstack.clickhouse.com](https://play-clickstack.clickhouse.com), but running against your own ClickHouse instance and data.
 
@@ -34,9 +24,6 @@ This embedded version is **not designed for production use**. The following feat
 
 ## Deployment steps {#deployment-steps}
 
-<Tabs groupId="install-method">
-<TabItem value="docker" label="Docker" default>
-
 <VerticalStepper headerLevel="h3">
 
 ### Start ClickHouse {#start-clickhouse-docker}
@@ -47,13 +34,12 @@ Pull and run the ClickHouse server image with a password set:
 docker run --rm -it -p 8123:8123 -e CLICKHOUSE_PASSWORD=password clickhouse/clickhouse-server:head-alpine
 ```
 
-:::tip Running without a password
+> **tip**: Running without a password
 If you prefer to run without a password, you must explicitly enable default access management:
 
 ```shell
 docker run --rm -it -p 8123:8123 -e CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 clickhouse/clickhouse-server:head-alpine
 ```
-:::
 
 ### Open the ClickStack UI {#open-clickstack-ui-docker}
 
@@ -75,9 +61,6 @@ If you don't have data yet, see [Ingesting data](/use-cases/observability/clicks
 
 </VerticalStepper>
 
-</TabItem>
-<TabItem value="binary" label="Binary">
-
 <VerticalStepper headerLevel="h3">
 
 ### Start ClickHouse {#start-clickhouse-binary}
@@ -88,8 +71,7 @@ Download and start ClickHouse:
 curl https://clickhouse.com/ | sh
 ```
 
-<details>
-<summary>Optional: Enable system log tables</summary>
+Optional: Enable system log tables
 
 To explore ClickHouse's own internal logs and metrics, create a configuration snippet in your working directory before starting the server:
 
@@ -130,8 +112,6 @@ With this enabled, you can create a **Log Source** pointing to `system.query_log
 | **Timestamp Column** | `event_time` |
 | **Default Select** | `event_time, query_kind, query, databases, tables, initial_user, projections, memory_usage, written_rows, read_rows, query_duration_ms` |
 
-</details>
-
 Start the server:
 
 ```shell
@@ -151,9 +131,6 @@ If you don't have data yet, see [Ingesting data](/use-cases/observability/clicks
 <Image img={inferred_source} alt="Create Source" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-</Tabs>
 
 ## Next steps {#next-steps}
 

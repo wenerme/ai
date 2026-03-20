@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # [Beta] Guardrail Policies
 
@@ -13,9 +11,6 @@ Use policies to group guardrails and control which ones run for specific teams, 
 - Inherit from existing policies and override what you need
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="config" label="config.yaml">
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -50,9 +45,6 @@ policy_attachments:
     scope: "*"  # apply to all requests
 ```
 
-</TabItem>
-<TabItem value="ui" label="UI (LiteLLM Dashboard)">
-
 **Step 1: Create a Policy**
 
 Go to **Policies** tab and click **+ Create New Policy**. Fill in the policy name, description, and select guardrails to add.
@@ -67,9 +59,6 @@ Go to **Policies** tab and click **+ Create New Policy**. Fill in the policy nam
 
 ![Click Create Policy to save](https://colony-recorder.s3.amazonaws.com/files/2026-02-11/1d1ae8a8-daa5-451b-9fa2-c5b607ff6220/ascreenshot_218c2dd259714be4aa3c4e1894c96878_text_export.jpeg)
 
-</TabItem>
-</Tabs>
-
 Response headers show what ran:
 
 ```
@@ -79,14 +68,9 @@ x-litellm-applied-guardrails: pii_masking,prompt_injection
 
 ## Add guardrails for a specific team
 
-:::info
-✨ Enterprise only feature for team/key-based policy attachments. [Get a free trial](https://www.litellm.ai/enterprise#trial)
-:::
+> **info**: ✨ Enterprise only feature for team/key-based policy attachments. [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 You have a global baseline, but want to add extra guardrails for a specific team.
-
-<Tabs>
-<TabItem value="config" label="config.yaml">
 
 ```yaml showLineNumbers title="config.yaml"
 policies:
@@ -111,9 +95,6 @@ policy_attachments:
       - finance  # team alias from /team/new
 ```
 
-</TabItem>
-<TabItem value="ui" label="UI (LiteLLM Dashboard)">
-
 **Option 1: Create a team-scoped attachment**
 
 Go to **Policies** > **Attachments** tab and click **+ Create New Attachment**. Select the policy and the teams to scope it to.
@@ -132,16 +113,11 @@ Go to **Teams** > click on a team > **Settings** tab > under **Policies**, selec
 
 <Image img={require('../../../img/policy_team_attach.png')} />
 
-</TabItem>
-</Tabs>
-
 Now the `finance` team gets `pii_masking` + `strict_compliance_check` + `audit_logger`, while everyone else just gets `pii_masking`.
 
 ## Remove guardrails for a specific team
 
-:::info
-✨ Enterprise only feature for team/key-based policy attachments. [Get a free trial](https://www.litellm.ai/enterprise#trial)
-:::
+> **info**: ✨ Enterprise only feature for team/key-based policy attachments. [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 You have guardrails running globally, but want to disable some for a specific team (e.g., internal testing).
 
@@ -271,15 +247,9 @@ Tags are read from key and team `metadata.tags`. For example, a key created with
 
 Debug which policies and guardrails apply for a given context. Use this to verify your policy configuration before deploying.
 
-<Tabs>
-<TabItem value="ui" label="UI (LiteLLM Dashboard)">
-
 Go to **Policies** > **Test** tab. Enter a team alias, key alias, model, or tags and click **Test** to see which policies match and what guardrails would be applied.
 
 <Image img={require('../../../img/policy_test_matching.png')} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -X POST "http://localhost:4000/policies/resolve" \
@@ -305,9 +275,6 @@ Response:
     ]
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Policy Flow Builder
 

@@ -104,6 +104,4 @@ export class ExamplePlugin<T extends Context> implements StandardHandlerPlugin<T
 
 The `order` property controls plugin loading order, not interceptor execution order. To ensure your interceptor runs earlier, set a higher order value and use `.unshift` to add your interceptor, or use `.push` if you want your interceptor to run later.
 
-::: warning
-In most cases, you **should not** define the `order` property unless you need your interceptors to always run before or after other interceptors. The `order` value should be less than `1_000_000` to avoid conflicts with built-in plugins.
-:::
+> **warning**: In most cases, you **should not** define the `order` property unless you need your interceptors to always run before or after other interceptors. The `order` value should be less than `1_000_000` to avoid conflicts with built-in plugins.

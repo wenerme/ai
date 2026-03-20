@@ -1,6 +1,5 @@
 # RefCOCO
 
-
 ## Overview
 
 RefCOCO is a dataset for training and evaluating models on Referring Expression Comprehension (REC). It contains images, object bounding boxes, and free-form natural-language expressions that uniquely describe target objects within MSCOCO images.
@@ -31,7 +30,6 @@ RefCOCO is a dataset for training and evaluating models on Referring Expression 
 - Bounding boxes output as normalized coordinates [x1/W, y1/H, x2/W, y2/H]
 - Requires pycocoevalcap for caption metrics
 
-
 ## Properties
 
 | Property | Value |
@@ -43,7 +41,6 @@ RefCOCO is a dataset for training and evaluating models on Referring Expression 
 | **Metrics** | `IoU`, `ACC@0.1`, `ACC@0.3`, `ACC@0.5`, `ACC@0.7`, `ACC@0.9`, `Center_ACC`, `Bleu_1`, `Bleu_2`, `Bleu_3`, `Bleu_4`, `METEOR`, `ROUGE_L`, `CIDEr` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `N/A` |
-
 
 ## Data Statistics
 
@@ -70,7 +67,6 @@ RefCOCO is a dataset for training and evaluating models on Referring Expression 
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 300x176 - 640x640 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -160,5 +156,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

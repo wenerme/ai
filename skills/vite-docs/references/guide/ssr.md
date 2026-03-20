@@ -1,16 +1,14 @@
 # Server-Side Rendering (SSR)
 
-:::tip Note
+> **tip**: Note
 SSR specifically refers to front-end frameworks (for example React, Preact, Vue, and Svelte) that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. If you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
 
 The following guide also assumes prior experience working with SSR in your framework of choice, and will only focus on Vite-specific integration details.
-:::
 
-:::warning Low-level API
+> **warning**: Low-level API
 This is a low-level API meant for library and framework authors. If your goal is to create an application, make sure to check out the higher-level SSR plugins and tools at [Awesome Vite SSR section](https://github.com/vitejs/awesome-vite#ssr) first. That said, many applications are successfully built directly on top of Vite's native low-level API.
 
 Currently, Vite is working on an improved SSR API with the [Environment API](https://github.com/vitejs/vite/discussions/16358). Check out the link for more details.
-:::
 
 ## Example Projects
 
@@ -45,7 +43,7 @@ The `index.html` will need to reference `entry-client.js` and include a placehol
 <script type="module" src="/src/entry-client.js"></script>
 ```
 
-You can use any placeholder you prefer instead of `<!--ssr-outlet-->`, as long as it can be precisely replaced.
+You can use any placeholder you prefer instead of ``, as long as it can be precisely replaced.
 
 ## Conditional Logic
 
@@ -229,9 +227,8 @@ If a dependency needs to be transformed by Vite's pipeline, for example, because
 
 For linked dependencies, they are not externalized by default to take advantage of Vite's HMR. If this isn't desired, for example, to test dependencies as if they aren't linked, you can add it to [`ssr.external`](../config/ssr-options.md#ssr-external).
 
-:::warning Working with Aliases
+> **warning**: Working with Aliases
 If you have configured aliases that redirect one package to another, you may want to alias the actual `node_modules` packages instead to make it work for SSR externalized dependencies. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.io/aliases/) support aliasing via the `npm:` prefix.
-:::
 
 ## SSR-specific Plugin Logic
 
@@ -260,9 +257,8 @@ export function mySSRPlugin() {
 
 The options object in `load` and `transform` is optional, Rollup is not currently using this object but may extend these hooks with additional metadata in the future.
 
-:::tip Note
+> **tip**: Note
 Before Vite 2.7, this was informed to plugin hooks with a positional `ssr` param instead of using the `options` object. All major frameworks and plugins are updated but you may find outdated posts using the previous API.
-:::
 
 ## SSR Target
 
@@ -283,6 +279,5 @@ By default package entry resolution will use the conditions set in [`resolve.con
 
 The CLI commands `$ vite dev` and `$ vite preview` can also be used for SSR apps. You can add your SSR middlewares to the development server with [`configureServer`](/guide/api-plugin#configureserver) and to the preview server with [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver).
 
-:::tip Note
+> **tip**: Note
 Use a post hook so that your SSR middleware runs _after_ Vite's middlewares.
-:::

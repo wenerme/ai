@@ -1,16 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/aws_lambda
-pagination_prev: null
-pagination_next: null
-sidebar_position: 6
 description: 'AWS Lambda for ClickStack - The ClickHouse Observability Stack'
 title: 'AWS Lambda'
 doc_type: 'guide'
 keywords: ['ClickStack', 'observability', 'aws-lambda', 'lambda-layers']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 **This guide Integrates:**
 
@@ -44,46 +37,25 @@ If your Lambda is already instrumented with an OpenTelemetry SDK, you can skip t
 1. In the Layers section click "Add a layer"
 2. Select specify an ARN and choose the correct ARN based on language,  ensure you replace the `<region>` with your region (ex. `us-east-2`):
 
-<Tabs groupId="install-language-options">
-<TabItem value="javascript" label="Javascript" default>
-
 ```shell
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-nodejs-0_7_0:1
 ```
-
-</TabItem>
-<TabItem value="python" label="Python" default>
 
 ```shell copy
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-python-0_7_0:1
 ```
 
-</TabItem>
-
-<TabItem value="java" label="Java" default>
-
 ```shell copy
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-javaagent-0_6_0:1
 ```
-
-</TabItem>
-
-<TabItem value="ruby" label="Ruby" default>
 
 ```shell copy
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-ruby-0_1_0:1
 ```
 
-</TabItem>
-
-</Tabs>
-
 _The latest releases of the layers can be found in the [OpenTelemetry Lambda Layers GitHub repository](https://github.com/open-telemetry/opentelemetry-lambda/releases)._
 
 3. Configure the following environment variables in your Lambda function under "Configuration" > "Environment variables".
-
-<Tabs groupId="install-language-env">
-<TabItem value="javascript" label="Javascript" default>
 
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
@@ -91,9 +63,6 @@ AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler
 OTEL_PROPAGATORS=tracecontext
 OTEL_TRACES_SAMPLER=always_on
 ```
-
-</TabItem>
-<TabItem value="python" label="Python" default>
 
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
@@ -102,10 +71,6 @@ OTEL_PROPAGATORS=tracecontext
 OTEL_TRACES_SAMPLER=always_on
 ```
 
-</TabItem>
-
-<TabItem value="java" label="Java" default>
-
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler
@@ -113,20 +78,12 @@ OTEL_PROPAGATORS=tracecontext
 OTEL_TRACES_SAMPLER=always_on
 ```
 
-</TabItem>
-
-<TabItem value="ruby" label="Ruby" default>
-
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler
 OTEL_PROPAGATORS=tracecontext
 OTEL_TRACES_SAMPLER=always_on
 ```
-
-</TabItem>
-
-</Tabs>
 
 ### Installing the OpenTelemetry collector Lambda layer {#installing-the-otel-collector-layer}
 
@@ -137,30 +94,15 @@ The collector Lambda layer allows you to forward logs, metrics, and traces from 
 1. In the Layers section click "Add a layer"
 2. Select specify an ARN and choose the correct ARN based on architecture,  ensure you replace the `<region>` with your region (ex. `us-east-2`):
 
-<Tabs groupId="install-language-layer">
-
-<TabItem value="x86_64" label="x86_64" default>
-
 ```shell
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-collector-amd64-0_8_0:1
 ```
-
-</TabItem>
-
-<TabItem value="arm64" label="arm64" default>
 
 ```shell
 arn:aws:lambda:<region>:184161586896:layer:opentelemetry-collector-arm64-0_8_0:1
 ```
 
-</TabItem>
-
-</Tabs>
-
 3. Add the following `collector.yaml` file to your project to configure the collector to send to ClickStack:
-
-<Tabs groupId="service-type">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
 
 ```yaml
 # collector.yaml
@@ -196,10 +138,6 @@ service:
       processors: [batch, decouple]
       exporters: [otlphttp]
 ```
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source" >
 
 ```yaml
 # collector.yaml
@@ -237,9 +175,6 @@ service:
       processors: [batch, decouple]
       exporters: [otlphttp]
 ```
-
-</TabItem>
-</Tabs>
 
 4. Add the following environment variable:
 
@@ -276,9 +211,6 @@ To debug collector issues, you can enable debug logs by modifying your collector
 configuration file to add the `logging` exporter and setting the telemetry 
 log level to `debug` to enable more verbose logging from the collector lambda layer.
 
-<Tabs groupId="service-type">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
-
 ```yaml
 # collector.yaml
 receivers:
@@ -314,10 +246,6 @@ service:
       processors: [batch, decouple]
       exporters: [otlphttp, logging]
 ```
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source">
 
 ```yaml
 # collector.yaml
@@ -356,6 +284,3 @@ service:
       processors: [batch, decouple]
       exporters: [otlphttp, logging]
 ```
-
-</TabItem>
-</Tabs>

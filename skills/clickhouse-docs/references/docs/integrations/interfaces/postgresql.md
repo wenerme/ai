@@ -1,21 +1,14 @@
 ---
 description: 'Documentation for the PostgreSQL wire protocol interface in ClickHouse'
-sidebar_label: 'PostgreSQL Interface'
-sidebar_position: 20
-slug: /interfaces/postgresql
 title: 'PostgreSQL Interface'
 doc_type: 'reference'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
 
 # PostgreSQL Interface
 
 <CloudNotSupportedBadge/>
 
-:::tip
-Check out our [Managed Postgres](/docs/cloud/managed-postgres) service. Backed by NVMe storage that is physically collocated with compute, it delivers up to 10x faster performance for workloads that are disk-bound compared to alternatives using network-attached storage like EBS and allows you to replicate your Postgres data to ClickHouse using the Postgres CDC connector in ClickPipes.
-:::
+> **tip**: Check out our [Managed Postgres](/docs/cloud/managed-postgres) service. Backed by NVMe storage that is physically collocated with compute, it delivers up to 10x faster performance for workloads that are disk-bound compared to alternatives using network-attached storage like EBS and allows you to replicate your Postgres data to ClickHouse using the Postgres CDC connector in ClickPipes.
 
 ClickHouse supports the PostgreSQL wire protocol, which allows you to use Postgres clients to connect to ClickHouse. In a sense, ClickHouse can pretend to be a PostgreSQL instance - allowing you to connect a PostgreSQL client application to ClickHouse that isn't already directly supported by ClickHouse (for example, Amazon Redshift).
 
@@ -47,9 +40,7 @@ For example:
 psql -p 9005 -h 127.0.0.1 -U alice default
 ```
 
-:::note
-The `psql` client requires a login with a password, so you won't be able connect using the `default` user with no password. Either assign a password to the `default` user, or login as a different user.
-:::
+> **note**: The `psql` client requires a login with a password, so you won't be able connect using the `default` user with no password. Either assign a password to the `default` user, or login as a different user.
 
 The `psql` client prompts for the password:
 
@@ -65,9 +56,7 @@ default=>
 
 And that's it! You now have a PostgreSQL client connected to ClickHouse, and all commands and queries are executed on ClickHouse.
 
-:::note
-The PostgreSQL protocol currently only supports plain-text passwords.
-:::
+> **note**: The PostgreSQL protocol currently only supports plain-text passwords.
 
 ## Using SSL {#using-ssl}
 

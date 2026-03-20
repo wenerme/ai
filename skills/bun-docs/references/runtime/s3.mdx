@@ -7,9 +7,7 @@ Production servers often read, upload, and write files to S3-compatible object s
 
 ### Bun's S3 API is fast
 
-<Frame caption="Left: Bun v1.1.44. Right: Node.js v23.6.0">
-  <img src="/images/bun-s3-node.gif" alt="Bun's S3 API is fast" />
-</Frame>
+  [Bun's S3 API is fast]
 
 Bun provides fast, native bindings for interacting with S3-compatible object storage services. Bun's S3 API is designed to be simple and feel similar to fetch's `Response` and `Blob` APIs (like Bun's local filesystem APIs).
 
@@ -407,11 +405,9 @@ const supabase = new S3Client({
 
 When using a S3 Virtual Hosted-Style endpoint, you need to set the `virtualHostedStyle` option to `true`.
 
-<Note>
   - If you don’t specify an endpoint, Bun will automatically determine the AWS S3 endpoint using the provided region and
   bucket. - If no region is specified, Bun defaults to us-east-1. - If you explicitly provide an endpoint, you don’t
   need to specify a bucket name.
-</Note>
 
 ```ts s3.ts icon="/icons/typescript.svg" highlight={17, 25}
 import { S3Client } from "bun";

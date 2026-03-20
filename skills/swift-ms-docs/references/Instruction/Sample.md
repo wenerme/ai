@@ -55,7 +55,6 @@ class CustomPRM:
     def __call__(self, infer_requests: List[InferRequest],  ground_truths: List[str], **kwargs) -> List[Union[float, List[float]]]:
         ...
 
-
 prms = {'custom': CustomPRM}
 ```
 

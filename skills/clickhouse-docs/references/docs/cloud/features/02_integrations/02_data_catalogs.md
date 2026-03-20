@@ -1,15 +1,9 @@
 ---
-sidebar_label: 'Data Catalogs'
-slug: /manage/data-catalogs
 title: 'Data Catalogs'
 description: 'Data catalog integrations for ClickHouse Cloud'
 doc_type: 'landing-page'
 keywords: ['data catalogs', 'cloud features', 'data lake', 'iceberg', 'integrations']
 ---
-
-import data_catalogs_ui from '@site/static/images/cloud/features/data-catalogs-ui.png';
-import Image from '@theme/IdealImage';
-import BetaBadge from '@theme/badges/BetaBadge';
 
 <BetaBadge/>
 

@@ -29,6 +29,4 @@ export default defineConfig({
 })
 ```
 
-::: warning
-Options are scoped to their environment. For example, put jsdom options under the `jsdom` key and happy-dom options under the `happyDOM` key. This lets you mix multiple environments within the same project.
-:::
+> **warning**: Options are scoped to their environment. For example, put jsdom options under the `jsdom` key and happy-dom options under the `happyDOM` key. This lets you mix multiple environments within the same project.

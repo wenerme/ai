@@ -12,7 +12,6 @@ The `frontends_disks` table function generates a temporary table that allows you
 
 This function can be used in the `FROM` clause.
 
-
 ## Syntax
 ```sql
 FRONTENDS_DISKS()
@@ -23,7 +22,6 @@ FRONTENDS_DISKS()
 | Privilege  | Object | Notes |
 | :--------- |:-------|:------|
 | SELECT_PRIV | internal.information_schema | All users have permissions to this database by default |
-
 
 ## Return Value
 
@@ -63,7 +61,6 @@ The field meanings are as follows:
 | `Available`  | TEXT    | The amount of disk space that is available for use.                                          |
 | `UseRate`    | TEXT    | The percentage of disk space that is used.                                                  |
 | `MountOn`    | TEXT    | The mount point of the disk in the file system.                                              |
-
 
 ## example
 ```sql

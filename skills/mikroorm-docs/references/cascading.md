@@ -1,6 +1,5 @@
 ---
 title: Cascading persist, merge and remove
-sidebar_label: Cascading
 ---
 
 > Cascade merging is no longer configurable (and is kept enabled for all relations).

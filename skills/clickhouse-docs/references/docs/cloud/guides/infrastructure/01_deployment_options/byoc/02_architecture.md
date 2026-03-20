@@ -1,14 +1,9 @@
 ---
 title: 'Architecture'
-slug: /cloud/reference/byoc/architecture
-sidebar_label: 'Architecture'
 keywords: ['BYOC', 'cloud', 'bring your own cloud']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc1 from '@site/static/images/cloud/reference/byoc-1.png';
 
 ## Glossary {#glossary}
 
@@ -22,11 +17,7 @@ BYOC separates the **ClickHouse control plane**, which runs in the ClickHouse VP
 
 In your **Customer BYOC VPC**, ClickHouse provisions a Kubernetes cluster (for example, Amazon EKS) that runs the ClickHouse data plane. As shown in the diagram, this includes the ClickHouse cluster itself, the ClickHouse operator, and supporting services such as ingress, DNS, certificate management, and state exporters and scrapers. A dedicated monitoring stack (Prometheus, Grafana, AlertManager, and Thanos) also runs within your VPC, ensuring that metrics and alerts originate from and remain in your environment.
 
-<br />
-
 <Image img={byoc1} size="lg" alt="BYOC Architecture" background='black'/>
-
-<br />
 
 The main cloud resources ClickHouse Cloud will deploy in your account are:
 

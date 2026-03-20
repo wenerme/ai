@@ -1,6 +1,5 @@
 ---
 title: browser.isolate | Config
-outline: deep
 ---
 
 # browser.isolate <Deprecated />
@@ -11,6 +10,5 @@ outline: deep
 
 Run every test in a separate iframe.
 
-::: danger DEPRECATED
+> **danger**: DEPRECATED
 This option is deprecated. Use [`isolate`](/config/isolate) instead.
-:::

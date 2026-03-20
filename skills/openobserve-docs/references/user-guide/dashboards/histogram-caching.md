@@ -9,7 +9,6 @@ To avoid scanning the same data repeatedly, OpenObserve uses **histogram caching
 
 ### Why caching is needed
 Most dashboard queries overlap in time when refreshed.
-<br>
 
 **For example**:
 
@@ -43,7 +42,7 @@ In this query:
 - `y_axis_1` represents the count of log entries for each interval.
 
 When run repeatedly over relative time ranges, only the new data beyond the last cached timestamp is scanned, while older intervals are reused.
-![dashboard-query-example](../../images/dashboard-query-example.png)
+[dashboard-query-example]
 
 ## Inspecting caching behavior
 You can observe histogram caching in your browser’s developer tools by viewing the query metadata and response stream.
@@ -58,7 +57,6 @@ Open the dashboard panel that already contains a runnable query.
 4. Select the latest request.
 5. Open the **Response** tab to see the event stream returned by the server.
 
-
 ### Key metadata fields
 | Field name            | Meaning                                  | Typical observation                               |
 | --------------------- | ---------------------------------------- | ------------------------------------------------- |
@@ -70,7 +68,6 @@ Open the dashboard panel that already contains a runnable query.
 | `search_response_hits`  | Actual rows returned                     | Sorted consistently with order metadata           |
 | `progress`              | Query progress percentage                | Moves from `0` to `100`                               |
 
-
 ### Understanding cache ratios
 
 `cached_ratio` indicates how much of a query’s output is reused.
@@ -80,7 +77,7 @@ Open the dashboard panel that already contains a runnable query.
 - Partial value (`40`–`70`) > partial reuse for extended ranges
 - Slightly less than `100` > recent data freshly scanned for accuracy
 
-![cached-ration-dashboard](../../images/cached-ratio-dashboard.png)
+[cached-ration-dashboard]
 
 ## Histogram caching scenarios
 

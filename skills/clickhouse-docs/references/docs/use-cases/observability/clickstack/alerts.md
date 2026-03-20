@@ -1,28 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/alerts
 title: 'Alerts with ClickStack'
-sidebar_label: 'Alerts'
-pagination_prev: null
-pagination_next: null
 description: 'Alerts with ClickStack'
 doc_type: 'guide'
 keywords: ['ClickStack', 'observability', 'alerts', 'search-alerts', 'notifications', 'thresholds', 'slack', 'email', 'pagerduty', 'error-monitoring', 'performance-monitoring', 'user-events']
 ---
-
-import Image from '@theme/IdealImage';
-import search_alert from '@site/static/images/use-cases/observability/search_alert.png';
-import edit_chart_alert from '@site/static/images/use-cases/observability/edit_chart_alert.png';
-import add_chart_alert from '@site/static/images/use-cases/observability/add_chart_alert.png';
-import create_chart_alert from '@site/static/images/use-cases/observability/create_chart_alert.png';
-import alerts_search_view from '@site/static/images/use-cases/observability/alerts_search_view.png';
-import add_new_webhook from '@site/static/images/use-cases/observability/add_new_webhook.png';
-import add_webhook_dialog from '@site/static/images/use-cases/observability/add_webhook_dialog.png';
-import manage_alerts from '@site/static/images/use-cases/observability/manage_alerts.png';
-import alerts_view from '@site/static/images/use-cases/observability/alerts_view.png';
-import multiple_search_alerts from '@site/static/images/use-cases/observability/multiple_search_alerts.png';
-import remove_chart_alert from '@site/static/images/use-cases/observability/remove_chart_alert.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ClickStack includes built-in support for alerting, enabling teams to detect and respond to issues in real time across logs, metrics, and traces.
 
@@ -79,9 +60,7 @@ You can create a chart-based alert directly from a saved dashboard, powered by f
 
 When a metric crosses a defined threshold, an alert triggers automatically, allowing you to monitor KPIs, latencies, or other key metrics over time.
 
-:::note
-For an alert to be created for a visualization on a dashboard, the dashboard must be saved.
-:::
+> **note**: For an alert to be created for a visualization on a dashboard, the dashboard must be saved.
 
 To add a dashboard alert:
 
@@ -137,9 +116,8 @@ ClickStack alerts integrate out of the box with the following service types:
 - **PagerDuty**: route incidents for on-call teams via the PagerDuty API.
 - **Webhook**: connect alerts to any custom system or workflow via a generic webhook.
 
-:::note ClickHouse Cloud only integrations
+> **note**: ClickHouse Cloud only integrations
 The Slack API and PagerDuty integrations are only supported in ClickHouse Cloud.
-:::
 
 Depending on the service type, you will need to provide different details. Specifically:
 

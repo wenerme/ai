@@ -1,6 +1,4 @@
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Model Access Groups
 
@@ -56,10 +54,6 @@ model_list:
       access_groups: ["beta-models"] # 👈 Model Access Group
 ```
 
-<Tabs>
-
-<TabItem value="key" label="Key Access Groups">
-
 **Create key with access group**
 
 ```bash showLineNumbers title="Create Key with Access Group"
@@ -71,9 +65,6 @@ curl --location 'http://localhost:4000/key/generate' \
 ```
 
 Test Key 
-
-<Tabs>
-<TabItem label="Allowed Access" value = "allowed">
 
 ```bash showLineNumbers title="Test Key - Allowed Access"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -87,15 +78,7 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-<TabItem label="Disallowed Access" value = "not-allowed">
-
-:::info
-
-Expect this to fail since gpt-4o is not in the `beta-models` access group
-
-:::
+> **info**: Expect this to fail since gpt-4o is not in the `beta-models` access group
 
 ```bash showLineNumbers title="Test Key - Disallowed Access"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -108,14 +91,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-<TabItem value="team" label="Team Access Groups">
 
 Create Team
 
@@ -135,11 +110,7 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
 --data '{"team_id": "0ac97648-c194-4c90-8cd6-40af7b0d2d2a"}
 ```
 
-
 Test Key
-
-<Tabs>
-<TabItem label="Allowed Access" value = "allowed">
 
 ```bash showLineNumbers title="Test Team Key - Allowed Access"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -153,15 +124,7 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-<TabItem label="Disallowed Access" value = "not-allowed">
-
-:::info
-
-Expect this to fail since gpt-4o is not in the `beta-models` access group
-
-:::
+> **info**: Expect this to fail since gpt-4o is not in the `beta-models` access group
 
 ```bash showLineNumbers title="Test Team Key - Disallowed Access"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -175,33 +138,19 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-</Tabs>
-
-
 ### ✨ Control Access on Wildcard Models
 
 Control access to all models with a specific prefix (e.g. `openai/*`). 
 
 Use this to also give users access to all models, except for a few that you don't want them to use (e.g. `openai/o1-*`). 
 
-:::info
-
-Setting model access groups on wildcard models is an Enterprise feature. 
+> **info**: Setting model access groups on wildcard models is an Enterprise feature. 
 
 See pricing [here](https://litellm.ai/#pricing)
 
 Get a trial key [here](https://litellm.ai/#trial)
-:::
-
 
 1. Setup config.yaml
-
 
 ```yaml showLineNumbers title="config.yaml - Wildcard Models"
 model_list:
@@ -232,9 +181,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
 
 3. Test the key
 
-<Tabs>
-<TabItem label="Successful Request" value = "success">
-
 ```bash showLineNumbers title="Test Wildcard Access - Allowed"
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -246,8 +192,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-</TabItem>
-<TabItem value="bad-request" label="Rejected Request">
 
 ```bash showLineNumbers title="Test Wildcard Access - Rejected"
 curl -i http://localhost:4000/v1/chat/completions \
@@ -261,16 +205,12 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Managing Access Groups via API
 
-:::warning Database Models Only
+> **warning**: Database Models Only
 Access group management APIs only work with models stored in the database (added via `/model/new`). 
 
 Models defined in `config.yaml` cannot be managed through these APIs and must be configured directly in the config file.
-:::
 
 Use the access group management endpoints to dynamically create, update, and delete access groups without restarting the proxy.
 
@@ -431,7 +371,7 @@ You can also manage access groups through the LiteLLM Admin UI.
 
 When adding a model to the database, assign it to an access group using the "Model Access Group" field:
 
-![Add Model with Access Group](../../img/add_model_access.png)
+[Add Model with Access Group]
 
 In this example, `gpt-4` is added to the `production-models` access group.
 
@@ -439,7 +379,7 @@ In this example, `gpt-4` is added to the `production-models` access group.
 
 When creating an API key, specify the access group in the "Models" field:
 
-![Create Key with Access Group](../../img/add_model_key.png)
+[Create Key with Access Group]
 
 The key will have access to all models in the `production-models` group.
 
@@ -500,4 +440,3 @@ curl -X POST 'http://localhost:4000/v1/chat/completions' \
   }
 }
 ```
-

@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Go'
-sidebar_position: 1
 keywords: ['clickhouse', 'go', 'client', 'golang']
-slug: /integrations/go
 description: 'The Go clients for ClickHouse allows you to connect to ClickHouse using either the Go standard database/sql interface or an optimized native interface.'
 title: 'ClickHouse Go'
 doc_type: 'reference'
@@ -10,8 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'language_client'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_native.md';
 
 # ClickHouse Go
 
@@ -1311,12 +1306,9 @@ if err = conn.QueryRow(ctx, "SELECT * FROM example").Scan(&col1, &col2); err != 
 
 Due to Go's lack of a built-in Decimal type, we recommend using the third-party package [github.com/shopspring/decimal](https://github.com/shopspring/decimal) to work with Decimal types natively without modifying your original queries.
 
-:::note
-You may be tempted to use Float instead to avoid third-party dependencies. However, be aware that [Float types in ClickHouse aren't recommended when accurate values are required](https://clickhouse.com/docs/sql-reference/data-types/float).
+> **note**: You may be tempted to use Float instead to avoid third-party dependencies. However, be aware that [Float types in ClickHouse aren't recommended when accurate values are required](https://clickhouse.com/docs/sql-reference/data-types/float).
 
 If you still choose to use Go's built-in Float type on the client side, you must explicitly convert Decimal to Float using the [toFloat64() function](https://clickhouse.com/docs/sql-reference/functions/type-conversion-functions#toFloat64) or [its variants](https://clickhouse.com/docs/sql-reference/functions/type-conversion-functions#toFloat64OrZero) in your ClickHouse queries. Be aware that this conversion may result in loss of precision.
-:::
-
 ```go
 if err = conn.Exec(ctx, `
     CREATE TABLE example (

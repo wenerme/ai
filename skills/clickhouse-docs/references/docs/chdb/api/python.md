@@ -1,7 +1,5 @@
 ---
 title: 'chDB Python API Reference'
-sidebar_label: 'Python API'
-slug: /chdb/api/python
 description: 'Complete Python API reference for chDB'
 keywords: ['chdb', 'embedded', 'clickhouse-lite', 'python', 'api', 'reference']
 doc_type: 'reference'
@@ -30,8 +28,8 @@ chdb.query(sql, output_format='CSV', path='', udf_path='')
 | Parameter       | Type  | Default    | Description                                                                                                                                                                                                                                                                                                     |
 |-----------------|-------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `sql`           | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                                                     |
-| `output_format` | str   | `"CSV"`    | Output format for results. Supported formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"Arrow"` - Apache Arrow format<br/>• `"Parquet"` - Parquet format<br/>• `"DataFrame"` - Pandas DataFrame<br/>• `"ArrowTable"` - PyArrow Table<br/>• `"Debug"` - Enable verbose logging |
-| `path`          | str   | `""`       | Database file path. Defaults to in-memory database.<br/>Can be a file path or `":memory:"` for in-memory database                                                                                                                                                                                               |
+| `output_format` | str   | `"CSV"`    | Output format for results. Supported formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"Arrow"` - Apache Arrow format• `"Parquet"` - Parquet format• `"DataFrame"` - Pandas DataFrame• `"ArrowTable"` - PyArrow Table• `"Debug"` - Enable verbose logging |
+| `path`          | str   | `""`       | Database file path. Defaults to in-memory database.Can be a file path or `":memory:"` for in-memory database                                                                                                                                                                                               |
 | `udf_path`      | str   | `""`       | Path to User-Defined Functions directory                                                                                                                                                                                                                                                                        |
 
 **Returns**
@@ -100,8 +98,8 @@ chdb.sql(sql, output_format='CSV', path='', udf_path='')
 | Parameter       | Type  | Default    | Description                                                                                                                                                                                                                                                                                              |
 |-----------------|-------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `sql`           | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                                              |
-| `output_format` | str   | `"CSV"`    | Output format for results. Supported formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"Arrow"` - Apache Arrow format<br/>• `"Parquet"` - Parquet format<br/>• `"DataFrame"` - Pandas DataFrame<br/>• `"ArrowTable"` - PyArrow Table<br/>• `"Debug"` - Enable verbose logging |
-| `path`          | str   | `""`       | Database file path. Defaults to in-memory database.<br/>Can be a file path or `":memory:"` for in-memory database                                                                                                                                                                                         |
+| `output_format` | str   | `"CSV"`    | Output format for results. Supported formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"Arrow"` - Apache Arrow format• `"Parquet"` - Parquet format• `"DataFrame"` - Pandas DataFrame• `"ArrowTable"` - PyArrow Table• `"Debug"` - Enable verbose logging |
+| `path`          | str   | `""`       | Database file path. Defaults to in-memory database.Can be a file path or `":memory:"` for in-memory database                                                                                                                                                                                         |
 | `udf_path`      | str   | `""`       | Path to User-Defined Functions directory                                                                                                                                                                                                                                                                 |
 
 **Returns**
@@ -292,7 +290,7 @@ For a complete parameter list, see `clickhouse local --help --verbose`
 
 | Return Type  | Description                                                                                                                                                                                                                                        |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Connection` | Database connection object that supports:<br/>• Creating cursors with `Connection.cursor()`<br/>• Direct queries with `Connection.query()`<br/>• Streaming queries with `Connection.send_query()`<br/>• Context manager protocol for automatic cleanup |
+| `Connection` | Database connection object that supports:• Creating cursors with `Connection.cursor()`• Direct queries with `Connection.query()`• Streaming queries with `Connection.send_query()`• Context manager protocol for automatic cleanup |
 
 **Raises**
 
@@ -300,10 +298,8 @@ For a complete parameter list, see `clickhouse local --help --verbose`
 |----------------|---------------------------------|
 | `RuntimeError` | If connection to database fails |
 
-:::warning
-Only one connection per process is supported.
+> **warning**: Only one connection per process is supported.
 Creating a new connection will close any existing connection.
-:::
 
 **Examples**
 
@@ -373,7 +369,7 @@ class chdb.session.Session(path=None)
 | `"file::memory:?verbose&log-level=test"`           | In-memory database with query params |
 | `"///path/to/test.db?param1=value1&param2=value2"` | Absolute path with query params      |
 
-:::note Connection string args handling
+> **note**: Connection string args handling
 Connection strings containing query params like “[file:test.db?param1=value1&param2=value2](file:test.db?param1=value1&param2=value2)”
 “param1=value1” will be passed to ClickHouse engine as start up args.
 
@@ -381,12 +377,10 @@ For more details, see `clickhouse local –help –verbose`
 
 Some special args handling:
 - “mode=ro” would be “–readonly=1” for clickhouse (read-only mode)
-:::
 
-:::warning Important
+> **warning**: Important
 - There can be only one session at a time. If you want to create a new session, you need to close the existing one.
 - Creating a new session will close the existing one.
-:::
 
 ---
 
@@ -405,10 +399,8 @@ of the session state.
 cleanup()
 ```
 
-:::note
-This method will never raise an exception, making it safe to call in
+> **note**: This method will never raise an exception, making it safe to call in
 finally blocks or destructors.
-:::
 
 **Examples**
 
@@ -439,14 +431,11 @@ further queries.
 close()
 ```
 
-:::note
-This method is automatically called when the session is used as a context manager
+> **note**: This method is automatically called when the session is used as a context manager
 or when the session object is destroyed.
-:::
 
-:::warning Important
+> **warning**: Important
 Any attempt to use the session after calling `close()` will result in an error.
-:::
 
 **Examples**
 
@@ -477,7 +466,7 @@ query(sql, fmt='CSV', udf_path='')
 | Parameter  | Type  | Default    | Description                                                                                                                                                                                                                                                                                                                  |
 |------------|-------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `sql`      | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                                                                  |
-| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"TabSeparated"` - Tab-separated values<br/>• `"Pretty"` - Pretty-printed table format<br/>• `"JSONCompact"` - Compact JSON format<br/>• `"Arrow"` - Apache Arrow format<br/>• `"Parquet"` - Parquet format |
+| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"TabSeparated"` - Tab-separated values• `"Pretty"` - Pretty-printed table format• `"JSONCompact"` - Compact JSON format• `"Arrow"` - Apache Arrow format• `"Parquet"` - Parquet format |
 | `udf_path` | str   | `""`       | Path to user-defined functions. If not specified, uses the UDF path from session initialization                                                                                                                                                                                                                              |
 
 **Returns**
@@ -494,17 +483,14 @@ The exact return type depends on the format parameter:
 | `RuntimeError` | If the session is closed or invalid |
 | `ValueError`   | If the SQL query is malformed       |
 
-:::note
-The “Debug” format isn't supported and will be automatically converted
+> **note**: The “Debug” format isn't supported and will be automatically converted
 to “CSV” with a warning.
 For debugging, use connection string parameters instead.
-:::
 
-:::warning Warning
+> **warning**: Warning
 This method executes the query synchronously and loads all results into
 memory. For large result sets, consider using [`send_query()`](#chdb-session-session-send_query) for
 streaming results.
-:::
 
 **Examples**
 
@@ -562,7 +548,7 @@ send_query(sql, fmt='CSV') → StreamingResult
 | Parameter  | Type  | Default    | Description                                                                                                                                                                                                                                                                    |
 |------------|-------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `sql`      | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                    |
-| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"TabSeparated"` - Tab-separated values<br/>• `"JSONCompact"` - Compact JSON format<br/>• `"Arrow"` - Apache Arrow format<br/>• `"Parquet"` - Parquet format |
+| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"TabSeparated"` - Tab-separated values• `"JSONCompact"` - Compact JSON format• `"Arrow"` - Apache Arrow format• `"Parquet"` - Parquet format |
 
 **Returns**
 
@@ -577,14 +563,10 @@ send_query(sql, fmt='CSV') → StreamingResult
 | `RuntimeError` | If the session is closed or invalid |
 | `ValueError`   | If the SQL query is malformed       |
 
-:::note
-The “Debug” format isn't supported and will be automatically converted
+> **note**: The “Debug” format isn't supported and will be automatically converted
 to “CSV” with a warning. For debugging, use connection string parameters instead.
-:::
 
-:::warning
-The returned StreamingResult object should be consumed promptly or stored appropriately, as it maintains a connection to the database.
-:::
+> **warning**: The returned StreamingResult object should be consumed promptly or stored appropriately, as it maintains a connection to the database.
 
 **Examples**
 
@@ -635,7 +617,7 @@ sql(sql, fmt='CSV', udf_path='')
 | Parameter  | Type  | Default    | Description                                                                                                                                                                                                                                                                                                                  |
 |------------|-------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `sql`      | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                                                                  |
-| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"TabSeparated"` - Tab-separated values<br/>• `"Pretty"` - Pretty-printed table format<br/>• `"JSONCompact"` - Compact JSON format<br/>• `"Arrow"` - Apache Arrow format<br/>• `"Parquet"` - Parquet format |
+| `fmt`      | str   | `"CSV"`    | Output format for results. Available formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"TabSeparated"` - Tab-separated values• `"Pretty"` - Pretty-printed table format• `"JSONCompact"` - Compact JSON format• `"Arrow"` - Apache Arrow format• `"Parquet"` - Parquet format |
 | `udf_path` | str   | `""`       | Path to user-defined functions. If not specified, uses the UDF path from session initialization                                                                                                                                                                                                                              |
 
 **Returns**
@@ -652,17 +634,14 @@ The exact return type depends on the format parameter:
 | `RuntimeError` | If the session is closed or invalid |
 | `ValueError`   | If the SQL query is malformed       |
 
-:::note
-The “Debug” format isn't supported and will be automatically converted
+> **note**: The “Debug” format isn't supported and will be automatically converted
 to “CSV” with a warning. For debugging, use connection string parameters
 instead.
-:::
 
-:::warning Warning
+> **warning**: Warning
 This method executes the query synchronously and loads all results into
 memory.
 For large result sets, consider using [`send_query()`](#chdb-session-session-send_query) for streaming results.
-:::
 
 **Examples**
 
@@ -757,7 +736,7 @@ For a complete parameter list, see `clickhouse local --help --verbose`
 
 | Return Type  | Description                                                                                                                                                                                                                                        |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Connection` | Database connection object that supports:<br/>• Creating cursors with `Connection.cursor()`<br/>• Direct queries with `Connection.query()`<br/>• Streaming queries with `Connection.send_query()`<br/>• Context manager protocol for automatic cleanup |
+| `Connection` | Database connection object that supports:• Creating cursors with `Connection.cursor()`• Direct queries with `Connection.query()`• Streaming queries with `Connection.send_query()`• Context manager protocol for automatic cleanup |
 
 **Raises**
 
@@ -765,10 +744,9 @@ For a complete parameter list, see `clickhouse local --help --verbose`
 |----------------|---------------------------------|
 | `RuntimeError` | If connection to database fails |
 
-:::warning Warning
+> **warning**: Warning
 Only one connection per process is supported.
 Creating a new connection will close any existing connection.
-:::
 
 **Examples**
 
@@ -822,14 +800,11 @@ connection becomes invalid and can't be used for further operations.
 close() → None
 ```
 
-:::note
-This method is idempotent - calling it multiple times is safe.
-:::
+> **note**: This method is idempotent - calling it multiple times is safe.
 
-:::warning Warning
+> **warning**: Warning
 Any ongoing streaming queries will be cancelled when the connection
 is closed. Ensure all important data is processed before closing.
-:::
 
 **Examples**
 
@@ -871,10 +846,8 @@ cursor() → Cursor
 |--------------|-----------------------------------------|
 | `Cursor`     | A cursor object for database operations |
 
-:::note
-Creating a new cursor will replace any existing cursor associated
+> **note**: Creating a new cursor will replace any existing cursor associated
 with this connection. Only one cursor per connection is supported.
-:::
 
 **Examples**
 
@@ -913,7 +886,7 @@ query(query: str, format: str = 'CSV') → Any
 | Parameter  | Type  | Default    | Description                                                                                                                                                                                                                                                                                   |
 |------------|-------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `query`    | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                                   |
-| `format`   | str   | `"CSV"`    | Output format for results. Supported formats:<br/>• `"CSV"` - Comma-separated values (string)<br/>• `"JSON"` - JSON format (string)<br/>• `"Arrow"` - Apache Arrow format (bytes)<br/>• `"Dataframe"` - Pandas DataFrame (requires pandas)<br/>• `"Arrowtable"` - PyArrow Table (requires pyarrow) |
+| `format`   | str   | `"CSV"`    | Output format for results. Supported formats:• `"CSV"` - Comma-separated values (string)• `"JSON"` - JSON format (string)• `"Arrow"` - Apache Arrow format (bytes)• `"Dataframe"` - Pandas DataFrame (requires pandas)• `"Arrowtable"` - PyArrow Table (requires pyarrow) |
 
 **Returns**
 
@@ -931,10 +904,9 @@ query(query: str, format: str = 'CSV') → Any
 | `RuntimeError` | If query execution fails                          |
 | `ImportError`  | If required packages for format aren't installed |
 
-:::warning Warning
+> **warning**: Warning
 This method loads the entire result set into memory. For large
 results, consider using [`send_query()`](#chdb-state-sqlitelike-connection-send_query) for streaming.
-:::
 
 **Examples**
 
@@ -984,13 +956,13 @@ send_query(query: str, format: str = 'CSV') → StreamingResult
 | Parameter  | Type  | Default    | Description                                                                                                                                                                                                                                                                  |
 |------------|-------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `query`    | str   | *required* | SQL query string to execute                                                                                                                                                                                                                                                  |
-| `format`   | str   | `"CSV"`    | Output format for results. Supported formats:<br/>• `"CSV"` - Comma-separated values<br/>• `"JSON"` - JSON format<br/>• `"Arrow"` - Apache Arrow format (enables record_batch() method)<br/>• `"dataframe"` - Pandas DataFrame chunks<br/>• `"arrowtable"` - PyArrow Table chunks |
+| `format`   | str   | `"CSV"`    | Output format for results. Supported formats:• `"CSV"` - Comma-separated values• `"JSON"` - JSON format• `"Arrow"` - Apache Arrow format (enables record_batch() method)• `"dataframe"` - Pandas DataFrame chunks• `"arrowtable"` - PyArrow Table chunks |
 
 **Returns**
 
 | Return Type       | Description                                                                                                                                                                                                                              |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `StreamingResult` | A streaming iterator for query results that supports:<br/>• Iterator protocol (for loops)<br/>• Context manager protocol (with statements)<br/>• Manual fetching with fetch() method<br/>• PyArrow RecordBatch streaming (Arrow format only) |
+| `StreamingResult` | A streaming iterator for query results that supports:• Iterator protocol (for loops)• Context manager protocol (with statements)• Manual fetching with fetch() method• PyArrow RecordBatch streaming (Arrow format only) |
 
 **Raises**
 
@@ -999,9 +971,7 @@ send_query(query: str, format: str = 'CSV') → StreamingResult
 | `RuntimeError` | If query execution fails                          |
 | `ImportError`  | If required packages for format aren't installed |
 
-:::note
-Only the “Arrow” format supports the `record_batch()` method on the returned StreamingResult.
-:::
+> **note**: Only the “Arrow” format supports the `record_batch()` method on the returned StreamingResult.
 
 **Examples**
 
@@ -1155,10 +1125,8 @@ record_batch(rows_per_batch: int = 1000000) → pa.RecordBatchReader
 |-------------|-------------|
 | `pa.RecordBatchReader` | PyArrow RecordBatchReader for iterating over batches |
 
-:::note
-This method is only available when the streaming query was initiated
+> **note**: This method is only available when the streaming query was initiated
 with `format="Arrow"`. Using it with other formats will raise an error.
-:::
 
 **Examples**
 
@@ -1224,10 +1192,8 @@ used for further operations.
 close() → None
 ```
 
-:::note
-This method is idempotent - calling it multiple times is safe.
+> **note**: This method is idempotent - calling it multiple times is safe.
 The cursor is also automatically closed when the connection is closed.
-:::
 
 **Examples**
 
@@ -1318,11 +1284,9 @@ This method commits any pending database transaction. In ClickHouse,
 most operations are auto-committed, but this method is provided for
 DB-API 2.0 compatibility.
 
-:::note
-ClickHouse typically auto-commits operations, so explicit commits
+> **note**: ClickHouse typically auto-commits operations, so explicit commits
 are usually not necessary. This method is provided for compatibility
 with standard DB-API 2.0 workflow.
-:::
 
 **Syntax**
 
@@ -1356,11 +1320,9 @@ Currently, only name and type_code are provided, with other fields set to None.
 |-------------|-------------|
 | `list` | List of 7-tuples describing each column, or empty list if no SELECT query has been executed |
 
-:::note
-This follows the DB-API 2.0 specification for cursor.description.
+> **note**: This follows the DB-API 2.0 specification for cursor.description.
 Only the first two elements (name and type_code) contain meaningful
 data in this implementation.
-:::
 
 **Examples**
 
@@ -1405,14 +1367,11 @@ execute(query: str) → None
 |-----------|-----------|
 | `Exception` | If query execution fails or result parsing fails |
 
-:::note
-This method follows DB-API 2.0 specifications for `cursor.execute()`.
+> **note**: This method follows DB-API 2.0 specifications for `cursor.execute()`.
 After execution, use `fetchone()`, `fetchmany()`, or `fetchall()` to
 retrieve results.
-:::
 
-:::note
-The method automatically converts ClickHouse data types to appropriate
+> **note**: The method automatically converts ClickHouse data types to appropriate
 Python types:
 
 - Int/UInt types → int
@@ -1421,7 +1380,6 @@ Python types:
 - DateTime → datetime.datetime
 - Date → datetime.date
 - Bool → bool
-:::
 
 **Examples**
 
@@ -1468,11 +1426,10 @@ fetchall() → tuple
 |-------------|-------------|
 | `tuple` | Tuple containing all remaining row tuples from the result set. Returns empty tuple if no rows are available |
 
-:::warning Warning
+> **warning**: Warning
 This method loads all remaining rows into memory at once. For large
 result sets, consider using [`fetchmany()`](#chdb-state-sqlitelike-cursor-fetchmany) to process results
 in batches.
-:::
 
 **Examples**
 
@@ -1516,10 +1473,8 @@ fetchmany(size: int = 1) → tuple
 |-------------|-------------------------------------------------------------------------------------------------|
 | `tuple`     | Tuple containing up to 'size' row tuples. May contain fewer rows if the result set is exhausted |
 
-:::note
-This method follows DB-API 2.0 specifications. It will return fewer
+> **note**: This method follows DB-API 2.0 specifications. It will return fewer
 than ‘size’ rows if the result set is exhausted.
-:::
 
 **Examples**
 
@@ -1561,11 +1516,9 @@ fetchone() → tuple | None
 |-------------------|-----------------------------------------------------------------------------|
 | `Optional[tuple]` | Next row as a tuple of column values, or None if no more rows are available |
 
-:::note
-This method follows DB-API 2.0 specifications. Column values are
+> **note**: This method follows DB-API 2.0 specifications. Column values are
 automatically converted to appropriate Python types based on
 ClickHouse column types.
-:::
 
 **Examples**
 
@@ -1617,14 +1570,11 @@ chdb.state.sqlitelike.to_arrowTable(res)
 |---------------|-------------------------------------------------|
 | `ImportError` | If pyarrow or pandas packages aren't installed |
 
-:::note
-This function requires both pyarrow and pandas to be installed.
+> **note**: This function requires both pyarrow and pandas to be installed.
 Install them with: `pip install pyarrow pandas`
-:::
 
-:::warning Warning
+> **warning**: Warning
 Empty results return an empty PyArrow Table with no schema.
-:::
 
 **Examples**
 
@@ -1674,10 +1624,8 @@ chdb.state.sqlitelike.to_df(r)
 |---------------|-------------------------------------------------|
 | `ImportError` | If pyarrow or pandas packages aren't installed |
 
-:::note
-This function uses multi-threading for the Arrow to Pandas conversion
+> **note**: This function uses multi-threading for the Arrow to Pandas conversion
 to improve performance on large datasets.
-:::
 
 **See also**
 - [`to_arrowTable()`](#chdb-state-sqlitelike-to_arrowtable) - For PyArrow Table format conversion
@@ -1856,10 +1804,8 @@ class chdb.dbapi.connections.Connection(path=None)
 ...     version = cur.fetchone()
 ```
 
-:::note
-ClickHouse doesn't support traditional transactions, so commit() and rollback()
+> **note**: ClickHouse doesn't support traditional transactions, so commit() and rollback()
 operations are no-ops but provided for DB-API compliance.
-:::
 
 ---
 
@@ -1894,10 +1840,8 @@ Commit the current transaction.
 commit()
 ```
 
-:::note
-This is a no-op for chDB/ClickHouse as it doesn’t support traditional
+> **note**: This is a no-op for chDB/ClickHouse as it doesn’t support traditional
 transactions. Provided for DB-API 2.0 compliance.
-:::
 
 ---
 
@@ -2062,10 +2006,8 @@ Get the last query response.
 |--------------|---------------------------------------------|
 | -            | The raw response from the last query() call |
 
-:::note
-This property is updated each time query() is called directly.
+> **note**: This property is updated each time query() is called directly.
 It doesn't reflect queries executed through cursors.
-:::
 
 ---
 
@@ -2079,10 +2021,8 @@ Roll back the current transaction.
 rollback()
 ```
 
-:::note
-This is a no-op for chDB/ClickHouse as it doesn’t support traditional
+> **note**: This is a no-op for chDB/ClickHouse as it doesn’t support traditional
 transactions. Provided for DB-API 2.0 compliance.
-:::
 
 ---
 
@@ -2123,10 +2063,8 @@ class chdb.dbapi.cursors.Cursor(connection)
 >>> cur.close()
 ```
 
-:::note
-See [DB-API 2.0 Cursor Objects](https://www.python.org/dev/peps/pep-0249/#cursor-objects)
+> **note**: See [DB-API 2.0 Cursor Objects](https://www.python.org/dev/peps/pep-0249/#cursor-objects)
 for complete specification details.
-:::
 
 ---
 
@@ -2153,17 +2091,14 @@ callproc(procname, args=())
 |--------------|------------------------------------------|
 | `sequence`   | The original args parameter (unmodified) |
 
-:::note
-chDB/ClickHouse doesn't support stored procedures in the traditional sense.
+> **note**: chDB/ClickHouse doesn't support stored procedures in the traditional sense.
 This method is provided for DB-API 2.0 compliance but doesn't perform
 any actual operation. Use execute() for all SQL operations.
-:::
 
-:::warning Compatibility
+> **warning**: Compatibility
 This is a placeholder implementation. Traditional stored procedure
 features like OUT/INOUT parameters, multiple result sets, and server
 variables aren't supported by the underlying ClickHouse engine.
-:::
 
 ---
 
@@ -2282,10 +2217,8 @@ executemany(query, args)
 ... )
 ```
 
-:::note
-This method improves performance for multiple-row INSERT and UPDATE operations
+> **note**: This method improves performance for multiple-row INSERT and UPDATE operations
 by optimizing the query execution process.
-:::
 
 ---
 
@@ -2311,10 +2244,9 @@ fetchall()
 |--------------------------------------------------------|----------------------------------------|
 | [`ProgrammingError`](#chdb-dbapi-err-programmingerror) | If execute() hasn't been called first |
 
-:::warning Warning
+> **warning**: Warning
 This method can consume large amounts of memory for big result sets.
 Consider using `fetchmany()` for large datasets.
-:::
 
 **Example**
 
@@ -2439,9 +2371,7 @@ mogrify(query, args=None)
 "SELECT * FROM users WHERE id = 123"
 ```
 
-:::note
-This method follows the extension to DB-API 2.0 used by Psycopg.
-:::
+> **note**: This method follows the extension to DB-API 2.0 used by Psycopg.
 
 ---
 
@@ -2461,10 +2391,8 @@ nextset()
 |--------------|---------------------------------------------------------------|
 | `None`       | Always returns None as multiple result sets aren't supported |
 
-:::note
-chDB/ClickHouse doesn't support multiple result sets from a single query.
+> **note**: chDB/ClickHouse doesn't support multiple result sets from a single query.
 This method is provided for DB-API 2.0 compliance but always returns None.
-:::
 
 ---
 
@@ -2484,10 +2412,8 @@ setinputsizes(*args)
 |------------|-------|-----------------------------------------|
 | `*args`    | -     | Parameter size specifications (ignored) |
 
-:::note
-This method does nothing but is required by DB-API 2.0 specification.
+> **note**: This method does nothing but is required by DB-API 2.0 specification.
 chDB automatically handles parameter sizing internally.
-:::
 
 ---
 
@@ -2507,10 +2433,8 @@ setoutputsizes(*args)
 |------------|-------|--------------------------------------|
 | `*args`    | -     | Column size specifications (ignored) |
 
-:::note
-This method does nothing but is required by DB-API 2.0 specification.
+> **note**: This method does nothing but is required by DB-API 2.0 specification.
 chDB automatically handles output sizing internally.
-:::
 
 ---
 
@@ -2551,10 +2475,8 @@ Each exception class represents a specific category of database errors:
 | `ProgrammingError`  | SQL syntax errors and API misuse                            |
 | `NotSupportedError` | Unsupported features or operations                          |
 
-:::note
-These exception classes are compliant with Python DB API 2.0 specification
+> **note**: These exception classes are compliant with Python DB API 2.0 specification
 and provide consistent error handling across different database operations.
-:::
 
 **See also**
 - [Python Database API Specification v2.0](https://peps.python.org/pep-0249/)
@@ -2638,10 +2560,8 @@ Common scenarios include:
 - Transaction-related problems
 - Database-specific constraints violations
 
-:::note
-This serves as the parent class for more specific database error types
+> **note**: This serves as the parent class for more specific database error types
 such as [`DataError`](#chdb-dbapi-err-dataerror), [`OperationalError`](#chdb-dbapi-err-operationalerror), etc.
-:::
 
 ---
 
@@ -2655,9 +2575,7 @@ This is the base class for all error exceptions in chdb, excluding warnings.
 It serves as the parent class for all database error conditions that prevent
 successful completion of operations.
 
-:::note
-This exception hierarchy follows the Python DB API 2.0 specification.
-:::
+> **note**: This exception hierarchy follows the Python DB API 2.0 specification.
 
 **See also**
 - [`Warning`](#chdb-dbapi-err-warning) - For non-fatal warnings that don’t prevent operation completion
@@ -2720,10 +2638,8 @@ implementation, such as:
 |----------------------------------------------------|----------------------------------------------------------------------------|
 | [`InterfaceError`](#chdb-dbapi-err-interfaceerror) | When database interface encounters errors unrelated to database operations |
 
-:::note
-These errors are typically programming errors or configuration issues
+> **note**: These errors are typically programming errors or configuration issues
 that can be resolved by fixing the client code or configuration.
-:::
 
 ---
 
@@ -2748,16 +2664,13 @@ errors that aren't caused by the application, such as:
 |-----------|-----------|
 | [`InternalError`](#chdb-dbapi-err-internalerror) | When database encounters internal inconsistencies |
 
-:::warning Warning
+> **warning**: Warning
 Internal errors may indicate serious database problems that require
 database administrator attention. These errors are typically not
 recoverable through application-level retry logic.
-:::
 
-:::note
-These errors are generally outside the control of the application
+> **note**: These errors are generally outside the control of the application
 and may require database restart or repair operations.
-:::
 
 ---
 
@@ -2796,10 +2709,8 @@ NotSupportedError: Transactions are not supported
 NotSupportedError: WITH clause not supported in this database version
 ```
 
-:::note
-Check database documentation and driver capabilities to avoid
+> **note**: Check database documentation and driver capabilities to avoid
 these errors. Consider graceful fallbacks where possible.
-:::
 
 ---
 
@@ -2826,15 +2737,12 @@ and aren't necessarily under the control of the programmer, including:
 |--------------------------------------------------------|---------------------------------------------------------|
 | [`OperationalError`](#chdb-dbapi-err-operationalerror) | When database operations fail due to operational issues |
 
-:::note
-These errors are typically transient and may be resolved by retrying
+> **note**: These errors are typically transient and may be resolved by retrying
 the operation or addressing system-level issues.
-:::
 
-:::warning Warning
+> **warning**: Warning
 Some operational errors may indicate serious system problems that
 require administrative intervention.
-:::
 
 ---
 
@@ -2892,10 +2800,8 @@ This is the base class for all chdb-related exceptions. It inherits from
 Python’s built-in Exception class and serves as the root of the exception
 hierarchy for database operations.
 
-:::note
-This exception class follows the Python DB API 2.0 specification
+> **note**: This exception class follows the Python DB API 2.0 specification
 for database exception handling.
-:::
 
 ---
 
@@ -2913,9 +2819,7 @@ Common scenarios include:
 - Precision loss in numeric conversions
 - Character set conversion warnings
 
-:::note
-This follows the Python DB API 2.0 specification for warning exceptions.
-:::
+> **note**: This follows the Python DB API 2.0 specification for warning exceptions.
 
 ---
 
@@ -3249,18 +3153,15 @@ with dbapi.connect("test.chdb") as conn:
 5. **Parameter Binding**: Use parameterized queries when possible
 6. **Memory Management**: Avoid `fetchall()` for very large datasets
 
-:::note
-- chDB’s DB-API 2.0 interface is compatible with most Python database tools
+> **note**: - chDB’s DB-API 2.0 interface is compatible with most Python database tools
 - The interface provides Level 1 thread safety (threads may share modules but not connections)
 - Connection strings support the same parameters as chDB sessions
 - All standard DB-API 2.0 exceptions are supported
-:::
 
-:::warning Warning
+> **warning**: Warning
 - Always close cursors and connections to avoid resource leaks
 - Large result sets should be processed in batches
 - Parameter binding syntax follows format style: `%s`
-:::
 
 ## User-Defined Functions (UDF) {#user-defined-functions}
 
@@ -3333,10 +3234,8 @@ chdb.udf.generate_udf(func_name, args, return_type, udf_body)
 | `return_type` | str   | ClickHouse return type for the function     |
 | `udf_body`    | str   | Python source code body of the UDF function |
 
-:::note
-This function is typically called by the @chdb_udf decorator and shouldn't
+> **note**: This function is typically called by the @chdb_udf decorator and shouldn't
 be called directly by users.
-:::
 
 ---
 
@@ -3475,12 +3374,10 @@ chdb.utils.infer_data_type(values: List[Any]) → str
 |-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `str`       | A string representing the inferred data type. Possible return values are: ”int8”, “int16”, “int32”, “int64”, “int128”, “int256”, “uint8”, “uint16”,“uint32”, “uint64”, “uint128”, “uint256”, “decimal128”, “decimal256”, “float32”, “float64”, or “string”. | 
 
-:::note
-- If all values in the list are None, the function returns “string”.
+> **note**: - If all values in the list are None, the function returns “string”.
 - If any value in the list is a string, the function immediately returns “string”.
 - The function assumes that numeric values can be represented as integers,
   decimals, or floats based on their range and precision.
-:::
 
 ---
 
@@ -3625,12 +3522,10 @@ Query failed: Table 'non_existent_table' doesn't exist
 Syntax error: Syntax error near 'FROM'
 ```
 
-:::note
-This exception is automatically raised by chdb.query() and related
+> **note**: This exception is automatically raised by chdb.query() and related
 functions when the underlying ClickHouse engine reports an error.
 You should catch this exception when handling potentially failing
 queries to provide appropriate error handling in your application.
-:::
 
 ## Version Information {#version-information}
 

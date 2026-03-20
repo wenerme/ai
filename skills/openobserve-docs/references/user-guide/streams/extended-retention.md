@@ -10,7 +10,7 @@ This feature is helpful when you want to preserve logs, metrics, or traces relat
 For example, logs from a known incident that occurred last month, you can configure extended retention for those specific time ranges.
 
 ## How to apply extended retention
-![Streams Extended Retention](../../images/extended-retention.png)
+[Streams Extended Retention]
 
 1. From the **Streams** page, select the **Explore** icon from the **Actions** column. 
 2. Navigate to [**Stream Details**](../../user-guide/streams/stream-details.md#access-the-stream-details).  

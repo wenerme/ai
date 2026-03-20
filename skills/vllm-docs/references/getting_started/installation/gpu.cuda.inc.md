@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 MD051 -->
+
 --8<-- [start:installation]
 
 vLLM contains pre-compiled C++ and CUDA (12.8) binaries.

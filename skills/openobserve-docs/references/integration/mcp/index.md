@@ -139,7 +139,6 @@ claude mcp add o2-prod https://instance/api/production/mcp -t http --header "...
 claude mcp add o2-dev https://instance/api/development/mcp -t http --header "..."
 ```
 
-
 ### Use Cases
 
 - **Interactive Data Analysis**
@@ -153,8 +152,6 @@ The system integrates seamlessly with CI/CD pipelines and automation workflows, 
 
 - **AI-Powered Troubleshooting**
 AI can assist with debugging and root-cause analysis by analyzing error patterns in production, explaining the causes of latency spikes, and finding correlations between traces and logs.
-
-
 
 ## Troubleshooting
 
@@ -192,7 +189,6 @@ AI can assist with debugging and root-cause analysis by analyzing error patterns
 
 - [Claude Code Setup Guide](claude.md) - Detailed setup instructions
 - [MCP Protocol Specification](https://modelcontextprotocol.io/) - Official MCP docs
-
 
 ## Support
 

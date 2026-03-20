@@ -1,20 +1,9 @@
 ---
-sidebar_label: 'Holistics'
-slug: /integrations/holistics
 keywords: ['clickhouse', 'Holistics', 'AI', 'integrate', 'bi', 'data visualization']
 description: 'Holistics is an AI-powered platform for self-service BI and embedded analytics that helps everyone make better decisions with governed, easily accessible metrics.'
 title: 'Connect ClickHouse to Holistics'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
-import holistics_01 from '@site/static/images/integrations/data-visualization/holistics_01.png';
-import holistics_02 from '@site/static/images/integrations/data-visualization/holistics_02.png';
-import holistics_03 from '@site/static/images/integrations/data-visualization/holistics_03.png';
-import holistics_04 from '@site/static/images/integrations/data-visualization/holistics_04.png';
-import holistics_05 from '@site/static/images/integrations/data-visualization/holistics_05.png';
-import holistics_06 from '@site/static/images/integrations/data-visualization/holistics_06.png';
 
 # Connecting ClickHouse to Holistics
 

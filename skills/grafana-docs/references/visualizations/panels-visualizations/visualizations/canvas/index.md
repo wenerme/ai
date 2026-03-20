@@ -144,7 +144,6 @@ A button click will only trigger an API call when [inline editing](#inline-editi
 
 The following options let you configure basic, unauthenticated API calls:
 
-<!-- prettier-ignore-start -->
 | Option  | Description  |
 | ------- | ------------ |
 | Endpoint | Enter the endpoint URL. |
@@ -154,8 +153,6 @@ The following options let you configure basic, unauthenticated API calls:
 | Header parameters | Enter as many **Key**, **Value** pairs as you need. |
 | Success message | Enter a message that will appear if the API call is successful. If you leave the field empty, the default message "API call was successful" appears. |
 | Payload | Enter the body of the API call. |
-
-<!-- prettier-ignore-end -->
 
 ### Add custom images to elements
 
@@ -186,7 +183,7 @@ To create a connection, follow these steps:
 1. Toggle on the **Inline editing** switch.
 1. Hover the cursor over an element you want to connect to display the connection anchors:
 
-   ![Element with connection anchors displayed](/media/docs/grafana/panels-visualizations/screenshot-connection-anchors-v11.3.png)
+   [Element with connection anchors displayed]
 
 1. Drag the cursor from a connection anchor on that element to one on another element.
 
@@ -298,7 +295,7 @@ The **Layer** options let you add elements to the canvas and control its appeara
 
 Use the **Add item** button to open the [element type](#element-types) drop-down list. Elements are listed in the reverse order that you add them to the canvas:
 
-![Canvas elements added in the Layer options](/media/docs/grafana/panels-visualizations/screenshot-canvas-elements-v11.3.png)
+[Canvas elements added in the Layer options]
 
 By default, elements have numbered names, like "Element 1", and those numbers correspond to the order in which the elements were added, but you can [change the default names](#rename-an-element).
 
@@ -354,13 +351,11 @@ The following options allow you to control the appearance of the element you've 
 
 You can change element type by making a new selection in the drop-down list:
 
-![Cursor on the element type selection drop-down](/media/docs/grafana/panels-visualizations/screenshot-element-type-select-v11.3.png)
+[Cursor on the element type selection drop-down]
 
 #### Element
 
 This section is named based on the element type. Control the appearance of text on the element with the following options:
-
-<!-- prettier-ignore-start -->
 
 | Option         | Description                                               |
 | -------------- | --------------------------------------------------------- |
@@ -372,10 +367,6 @@ This section is named based on the element type. Control the appearance of text 
 | Text size      | Set the text size. Leave the field empty to allow Grafana to automatically set the text size. |
 | API      | Buttons only. Configure API options. For more information, refer to [Button API options](#button-api-options).   |
 
-<!--prettier-ignore-end -->
-
-<!-- prettier-ignore-start -->
-
 Icons don't have text, so they have different options:
 
 | Option         | Description                                               |
@@ -383,21 +374,15 @@ Icons don't have text, so they have different options:
 | SVG Path     | Choose whether the icon SVG file source is **Fixed** or **Field**. If you selected **Fixed**, choose a provided option or [add a custom icon](#add-a-custom-icon). If you selected **Field**, choose a field. |
 | Fill color     | Choose a fill color for the icon.   |
 
-<!--prettier-ignore-end -->
-
 #### Layout
 
 Control the placement of elements on the canvas with the following options:
 
-<!-- prettier-ignore-start -->
-
 | Option          | Description     |
 | --------------- | --------------- |
 | Quick placement | Select an alignment option to automatically place the element. Choose from:<ul><li>Align left</li><li>Align horizontal centers</li><li>Align right</li><li>Align top</li><li>Align vertical centers</li><li>Align bottom</li></ul> |
-| Constraints     | Set element constraints. Choose from: **Left**, **Right**, **Left & Right**, **Center**, and **Scale**.<br></br>Use the **Scale** option to ensure that elements are automatically resized when the panel size changes. |
+| Constraints     | Set element constraints. Choose from: **Left**, **Right**, **Left & Right**, **Center**, and **Scale**.</br>Use the **Scale** option to ensure that elements are automatically resized when the panel size changes. |
 | Position        | Use these settings to manually set the position of an element. Set any or all of the following options: **top**, **left**, **width**, **height**, and **rotation**. |
-
-<!-- prettier-ignore-end -->
 
 #### Background (element)
 

@@ -136,7 +136,6 @@ mysql> select date_sub('2023-01-01', INTERVAL NULL DAY);
 | NULL                                      |
 +-------------------------------------------+
 
-
 -- For compound units, accept all non-numeric characters as separators.
 select DATE_SUB('2025-10-23 10:10:10', INTERVAL '   *1@#$2' DAY_HOUR);
 +----------------------------------------------------------------+
@@ -172,7 +171,6 @@ select DATE_SUB('2025-10-23 10:10:10', INTERVAL '1:2:3.4' SECOND_MICROSECOND);
 -- return an error
 select DATE_SUB('2025-10-10 1:2:3', INTERVAL '922337203685477580' DAY_MICROSECOND);
 -- ERROR 1105 (HY000): errCode = 2, detailMessage = (10.16.10.3)[E-218]Operation day_microsecond_add of 2025-10-10 01:02:03, -922337203685477580 out of range
-
 
 -- Exceeds minimum date
 mysql> select date_sub('0000-01-01', INTERVAL 1 DAY);

@@ -13,7 +13,6 @@ Apache Cassandra is a highly scalable, distributed NoSQL database designed for a
 
 To effectively monitor Cassandra, we will set up OpenTelemetry (OTel) to collect both metrics and logs. OpenTelemetry’s JMX receiver helps gather JVM and Cassandra-specific metrics, while file-based log collection ensures log visibility. The collected logs and metrics will then be forwarded to Openobserve.
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -95,7 +94,7 @@ To effectively monitor Cassandra, we will set up OpenTelemetry (OTel) to collect
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with values from OpenObserve’s **Data Sources → Metrics/Logs → Otel Collector**.
 
-    ![OpenObserve Cassandra Creds](../images/databases/otel-metrics-cred.png)
+    [OpenObserve Cassandra Creds]
 
 ??? "Step 4: Restart the OpenTelemetry Collector"
 
@@ -113,10 +112,9 @@ To effectively monitor Cassandra, we will set up OpenTelemetry (OTel) to collect
 
     1. Go to **OpenObserve → Streams**.  
     2. Explore metrics such as node health, read/write latency, and JVM performance.  
-        ![Visualize Cassandra Metrics](../images/databases/cassandra-metrics.png)
+        [Visualize Cassandra Metrics]
     3. Explore logs to debug errors, failed queries, etc. 
-        ![Visualize Cassandra Logs](../images/databases/cassandra-logs.png) 
-
+        [Visualize Cassandra Logs] 
 
 ## Troubleshooting
 
@@ -131,4 +129,4 @@ To effectively monitor Cassandra, we will set up OpenTelemetry (OTel) to collect
 ??? "No Data in OpenObserve"
     - Double-check exporter endpoint and token.  
     - Ensure Collector can reach OpenObserve.  
-    - Inspect Collector logs for errors.  
+    - Inspect Collector logs for errors.

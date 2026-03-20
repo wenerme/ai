@@ -35,27 +35,27 @@ Alternatively, select **Edit Panel** from the dropdown menu on an existing panel
     - To select a Y-axis field, hover over a field and click the **+Y** icon. 
     For example, `k8s_container_name`.
     > Note: You can select more than one Y-axis fields.  
-    <br>
-    ![Select Y-axis](../../../images/trellis-layout-panel-creation.png)
+    
+    [Select Y-axis]
     - To select a **Breakdown** field, hover over a field and click the **+B** icon. 
     Choose a groupable field. For example, `k8s_app_instance`.
-    <br>
-    ![Select Breakdown](../../../images/select-breakdown.png)
+    
+    [Select Breakdown]
     This enables the **Trellis Layout** configuration options in the **Config** tab. 
 
-6. Click the **Config** tab, to configure **Trellis Layout**. <br> 
+6. Click the **Config** tab, to configure **Trellis Layout**.  
 7. Under **Trellis Layout**, choose how panels should be arranged:
 
     - **None**: No panel splitting 
-    ![Trellis Layout](../../../images/trellis-layout-config.png)
+    [Trellis Layout]
     - **Auto**: Automatically arranges the layout
-    ![Trellis Layout Auto](../../../images/trellis-layout-auto.png)
+    [Trellis Layout Auto]
     - **Vertical**: Stacks panels vertically
-    ![Trellis Layout Vertical](../../../images/trellis-layout-vertical.gif)
+    [Trellis Layout Vertical]
     - **Custom**: Allows you to specify the number of panels per row    
 
 8. If you choose **Custom**, enter a number in the **Columns Per Row** field to control how many charts appear in each row.
-![Trellis Layout Custom](../../../images/trellis-custom.png)
+[Trellis Layout Custom]
 9. Click **Apply** to view the updated layout.
 10. Click **Save** to preserve the changes.
 
@@ -63,10 +63,7 @@ Alternatively, select **Edit Panel** from the dropdown menu on an existing panel
 
 If your panel includes multiple Y-axis fields and a **Breakdown** field, use the **Group multi Y-axis for trellis** toggle to control how panels are created:
 
-**Disabled**: Creates separate panels for each combination of Y-axis field and breakdown value. <br>
-![Trellis Multiple Y-axis](../../../images/trellis-multiple-yaxis.png)
-**Enabled**: Creates one panel per breakdown value, showing multiple Y-axis series in each panel. <br>
-![Trellis Multiple Y-axis](../../../images/trellis-multiple-yaxis-grouping.png)
-
-
-
+**Disabled**: Creates separate panels for each combination of Y-axis field and breakdown value. 
+[Trellis Multiple Y-axis]
+**Enabled**: Creates one panel per breakdown value, showing multiple Y-axis series in each panel. 
+[Trellis Multiple Y-axis]

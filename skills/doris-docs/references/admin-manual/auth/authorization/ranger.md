@@ -62,41 +62,41 @@ Equivalent to the internal Doris authorization statement `grant select_priv on *
 - The global option can be found in the dropdown box at the same level as the catalog.
 - Only `*` can be entered in the input box.
 
-  ![Global Permissions](/images/ranger/global.png)
+  [Global Permissions]
 
 #### Catalog Permissions
 Equivalent to the internal Doris authorization statement `grant select_priv on hive.*.* to user1`;
 
-![Catalog Permissions](/images/ranger/catalog.png)
+[Catalog Permissions]
 
 #### Database Permissions
 Equivalent to the internal Doris authorization statement `grant select_priv on hive.db1.* to user1`;
 
-![Database Permissions](/images/ranger/database.png)
+[Database Permissions]
 
 #### Table Permissions
 > Here, the term "table" generally refers to tables, views, and asynchronous materialized views.
 
 Equivalent to the internal Doris authorization statement `grant select_priv on hive.db1.tbl1 to user1`;
 
-![Table Permissions](/images/ranger/table.png)
+[Table Permissions]
 
 #### Column Permissions
 Equivalent to the internal Doris authorization statement `grant select_priv(col1,col2) on hive.db1.tbl1 to user1`;
 
-![Column Permissions](/images/ranger/column.png)
+[Column Permissions]
 
 #### Resource Permissions
 Equivalent to the internal Doris authorization statement `grant usage_priv on resource 'resource1' to user1`;
 - The resource option can be found in the dropdown box at the same level as the catalog.
 
-![Resource Permissions](/images/ranger/resource.png)
+[Resource Permissions]
 
 #### Workload Group Permissions
 Equivalent to the internal Doris authorization statement `grant usage_priv on workload group 'group1' to user1`;
 - The workload group option can be found in the dropdown box at the same level as the catalog.
 
-![ Workload Group Permissions](/images/ranger/group1.png)
+[ Workload Group Permissions]
 
 #### Compute Group Permissions
 
@@ -105,7 +105,7 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on wo
 Equivalent to the internal Doris authorization statement `grant usage_priv on compute group 'group1' to user1`;
 - The compute group option can be found in the dropdown box at the same level as the catalog.
 
-![compute group](/images/ranger/compute-group.png)
+[compute group]
 
 #### Storage Vault Permissions
 
@@ -114,8 +114,7 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on co
 Equivalent to the internal Doris authorization statement `grant usage_priv on storage vault 'vault1' to user1`;
 - The storage vault option can be found in the dropdown box at the same level as the catalog.
 
-![storage vault](/images/ranger/storage-vault.png)
-
+[storage vault]
 
 ### Row-Level Permissions Example
 
@@ -124,7 +123,7 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on st
 1. Refer to the permission example to grant `user1` the select permission on the `internal.db1.user` table.
 2. In Ranger, add a Row Level Filter policy
 
-   ![Row Policy Example](/images/ranger/ranger-row-policy.jpeg)
+   [Row Policy Example]
 
 3. Log in to Doris with `user1`. Execute `select * from internal.db1.user`, and only see the data that meets the condition `id > 3` and `age = 2`.
 
@@ -135,7 +134,7 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on st
 1. Refer to the permission example to grant `user1` the select permission on the `internal.db1.user` table.
 2. In Ranger, add a Masking policy
 
-   ![Data Mask Example](/images/ranger/ranger-data-mask.png)
+   [Data Mask Example]
 
 3. Log in to Doris with `user1`. Execute `select * from internal.db1.user`, and see the phone number is masked according to the specified rule.
 
@@ -167,7 +166,7 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on st
 3. After creating the service, only the 'admin' user has permission by default` Root 'user does not have permission
 
    As shown in the image, when creating the service, add the configuration `default.policy.users`. If you need to configure multiple users with full permissions, separate them with `,`.
-   ![default policy](/images/ranger/default-policy.png)
+   [default policy]
 4. After using Ranger for authentication, is internal authorization still effective?
 
    No, it cannot be used, and roles cannot be created/deleted.
@@ -252,11 +251,11 @@ Equivalent to the internal Doris authorization statement `grant usage_priv on st
 
 After installation, open the Ranger WebUI, and you can see the Apache Doris plugin in the Service Manager interface:
 
-![ranger](/images/ranger/ranger1.png)
+[ranger]
 
 Click the `+` button next to the plugin to add a Doris service:
 
-![ranger2](/images/ranger/ranger2.png)
+[ranger2]
 
 The Config Properties section has the following parameters:
 

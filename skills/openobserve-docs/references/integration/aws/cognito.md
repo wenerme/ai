@@ -37,13 +37,12 @@ Monitor login attempts, user activity, and authentication behavior from Amazon C
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
     > Update the URL to have the stream name of your choice:
     > ```
     > https://<your-openobserve-domain>/aws/default/<stream_name>/_kinesis_firehose
     > ```
-
 
 ??? "Step 3: Create Firehose Delivery Stream"
 
@@ -64,17 +63,15 @@ Monitor login attempts, user activity, and authentication behavior from Amazon C
     4. Set the target to **Kinesis Firehose** and choose the delivery stream
     5. Click **Create rule**
 
-    ![Create EventBridge Rule to Capture Cognito Events](../images/aws-integrations/cognito/event-rule.png)
-
+    [Create EventBridge Rule to Capture Cognito Events]
 
 ??? "Step 5: Verify Logs in OpenObserve"
 
     1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-    ![Verify Cognito Logs](../images/aws-integrations/cognito/log-stream.png)
+    [Verify Cognito Logs]
 
 ??? "Troubleshooting"
-
 
     **No logs appearing?**
 
@@ -83,4 +80,3 @@ Monitor login attempts, user activity, and authentication behavior from Amazon C
     - Check if Firehose is delivering logs (see monitoring tab in Firehose)
     - Verify that the OpenObserve URL and Access Key are valid
     - Look for failed logs in your backup S3 bucket
-

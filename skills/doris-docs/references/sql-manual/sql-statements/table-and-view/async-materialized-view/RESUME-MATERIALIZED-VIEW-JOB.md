@@ -33,7 +33,6 @@ Users executing this SQL command must have at least the following privileges:
 | :--------- | :----- | :------------------------------------------- |
 | ALTER_PRIV | Materialized View  | RESUME is an ALTER operation on a materialized view |
 
-
 ## Usage Notes
 
 - This statement is generally used after the pause materialized view statement
@@ -45,4 +44,3 @@ Users executing this SQL command must have at least the following privileges:
     ```sql
     RESUME MATERIALIZED VIEW JOB ON mv1;
     ```
-

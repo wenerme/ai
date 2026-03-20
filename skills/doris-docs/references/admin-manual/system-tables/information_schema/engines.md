@@ -12,9 +12,7 @@ This table is solely used for compatibility with MySQL behavior. It is always em
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 
@@ -26,4 +24,3 @@ This table is solely used for compatibility with MySQL behavior. It is always em
 | TRANSACTIONS | varchar(3)  |             |
 | XA           | varchar(3)  |             |
 | SAVEPOINTS   | varchar(3)  |             |
-

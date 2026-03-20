@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+
 ---
 
 # Log
@@ -21,92 +21,92 @@ level will output all messages except `Trace` messages.
 
 Logs the given message as a raw message.
 
-Go: `LogPrint(ctx context.Context, message string)`<br/>
+Go: `LogPrint(ctx context.Context, message string)`
 JS: `LogPrint(message: string)`
 
 ### LogPrintf
 
 Logs the given message as a raw message.
 
-Go: `LogPrintf(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogPrintf(ctx context.Context, format string, args ...interface{})`
 
 ### LogTrace
 
 Logs the given message at the `Trace` log level.
 
-Go: `LogTrace(ctx context.Context, message string)`<br/>
+Go: `LogTrace(ctx context.Context, message string)`
 JS: `LogTrace(message: string)`
 
 ### LogTracef
 
 Logs the given message at the `Trace` log level.
 
-Go: `LogTracef(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogTracef(ctx context.Context, format string, args ...interface{})`
 
 ### LogDebug
 
 Logs the given message at the `Debug` log level.
 
-Go: `LogDebug(ctx context.Context, message string)`<br/>
+Go: `LogDebug(ctx context.Context, message string)`
 JS: `LogDebug(message: string)`
 
 ### LogDebugf
 
 Logs the given message at the `Debug` log level.
 
-Go: `LogDebugf(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogDebugf(ctx context.Context, format string, args ...interface{})`
 
 ### LogInfo
 
 Logs the given message at the `Info` log level.
 
-Go: `LogInfo(ctx context.Context, message string)`<br/>
+Go: `LogInfo(ctx context.Context, message string)`
 JS: `LogInfo(message: string)`
 
 ### LogInfof
 
 Logs the given message at the `Info` log level.
 
-Go: `LogInfof(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogInfof(ctx context.Context, format string, args ...interface{})`
 
 ### LogWarning
 
 Logs the given message at the `Warning` log level.
 
-Go: `LogWarning(ctx context.Context, message string)`<br/>
+Go: `LogWarning(ctx context.Context, message string)`
 JS: `LogWarning(message: string)`
 
 ### LogWarningf
 
 Logs the given message at the `Warning` log level.
 
-Go: `LogWarningf(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogWarningf(ctx context.Context, format string, args ...interface{})`
 
 ### LogError
 
 Logs the given message at the `Error` log level.
 
-Go: `LogError(ctx context.Context, message string)`<br/>
+Go: `LogError(ctx context.Context, message string)`
 JS: `LogError(message: string)`
 
 ### LogErrorf
 
 Logs the given message at the `Error` log level.
 
-Go: `LogErrorf(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogErrorf(ctx context.Context, format string, args ...interface{})`
 
 ### LogFatal
 
 Logs the given message at the `Fatal` log level.
 
-Go: `LogFatal(ctx context.Context, message string)`<br/>
+Go: `LogFatal(ctx context.Context, message string)`
 JS: `LogFatal(message: string)`
 
 ### LogFatalf
 
 Logs the given message at the `Fatal` log level.
 
-Go: `LogFatalf(ctx context.Context, format string, args ...interface{})`<br/>
+Go: `LogFatalf(ctx context.Context, format string, args ...interface{})`
 
 ### LogSetLogLevel
 
@@ -120,7 +120,7 @@ Sets the log level. In JavaScript, the number relates to the following log level
 | 4     | Warning   |
 | 5     | Error     |
 
-Go: `LogSetLogLevel(ctx context.Context, level logger.LogLevel)`<br/>
+Go: `LogSetLogLevel(ctx context.Context, level logger.LogLevel)`
 JS: `LogSetLogLevel(level: number)`
 
 ## Using a Custom Logger

@@ -117,9 +117,8 @@ Note that this feature has a performance cost and is [discouraged by the TypeScr
 - [`jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource)
 - [`experimentalDecorators`](https://www.typescriptlang.org/tsconfig#experimentalDecorators)
 
-::: tip `skipLibCheck`
+> **tip**: `skipLibCheck`
 Vite starter templates have `"skipLibCheck": "true"` by default to avoid typechecking dependencies, as they may choose to only support specific versions and configurations of TypeScript. You can learn more at [vuejs/vue-cli#5688](https://github.com/vuejs/vue-cli/pull/5688).
-:::
 
 ### Client Types
 
@@ -135,7 +134,7 @@ Vite's default types are for its Node.js API. To shim the environment of client-
 
 Note that if [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types) is specified, only these packages will be included in the global scope (instead of all visible ”@types” packages). This is recommended since TS 5.9.
 
-::: details Using triple-slash directive
+> **details**: Using triple-slash directive
 
 Alternatively, you can add a `d.ts` declaration file:
 
@@ -143,16 +142,13 @@ Alternatively, you can add a `d.ts` declaration file:
 /// <reference types="vite/client" />
 ```
 
-:::
-
 `vite/client` provides the following type shims:
 
 - Asset imports (e.g. importing an `.svg` file)
 - Types for the Vite-injected [constants](./env-and-mode#env-variables) on `import.meta.env`
 - Types for the [HMR API](./api-hmr) on `import.meta.hot`
 
-::: tip
-To override the default typing, add a type definition file that contains your typings. Then, add the type reference before `vite/client`.
+> **tip**: To override the default typing, add a type definition file that contains your typings. Then, add the type reference before `vite/client`.
 
 For example, to make the default import of `*.svg` a React component:
 
@@ -175,8 +171,6 @@ For example, to make the default import of `*.svg` a React component:
   /// <reference types="vite/client" />
   ```
 
-:::
-
 ## HTML
 
 HTML files stand [front-and-center](/guide/#index-html-and-project-root) of a Vite project, serving as the entry points for your application, making it simple to build single-page and [multi-page applications](/guide/build.html#multi-page-app).
@@ -191,7 +185,7 @@ Assets referenced by HTML elements such as `<script type="module" src>` and `<li
 
 - `<audio src>`
 - `<embed src>`
-- `<img src>` and `<img srcset>`
+- `` and ``
 - `<image href>` and `<image xlink:href>`
 - `<input src>`
 - `<link href>` and `<link imagesrcset>`
@@ -347,9 +341,8 @@ import './foo.css' // will be injected into the page
 import otherStyles from './bar.css?inline' // will not be injected
 ```
 
-::: tip NOTE
+> **tip**: NOTE
 Default and named imports from CSS files (e.g `import style from './foo.css'`) are removed since Vite 5. Use the `?inline` query instead.
-:::
 
 ### Lightning CSS
 
@@ -686,16 +679,13 @@ init({
 
 In the production build, `.wasm` files smaller than `assetInlineLimit` will be inlined as base64 strings. Otherwise, they will be treated as a [static asset](./assets) and fetched on-demand.
 
-::: tip NOTE
+> **tip**: NOTE
 [ES Module Integration Proposal for WebAssembly](https://github.com/WebAssembly/esm-integration) is not currently supported.
 Use [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) or other community plugins to handle this.
-:::
 
-::: warning For SSR build, Node.js compatible runtimes are only supported
+> **warning**: For SSR build, Node.js compatible runtimes are only supported
 
 Due to the lack of a universal way to load a file, the internal implementation for `.wasm?init` relies on `node:fs` module. This means that this feature will only work in Node.js compatible runtimes for SSR builds.
-
-:::
 
 ### Accessing the WebAssembly Module
 
@@ -778,17 +768,13 @@ When [`html.cspNonce`](/config/shared-options#html-cspnonce) is set, Vite adds a
 
 The nonce value of a meta tag with `property="csp-nonce"` will be used by Vite whenever necessary during both dev and after build.
 
-:::warning
-Ensure that you replace the placeholder with a unique value for each request. This is important to prevent bypassing a resource's policy, which can otherwise be easily done.
-:::
+> **warning**: Ensure that you replace the placeholder with a unique value for each request. This is important to prevent bypassing a resource's policy, which can otherwise be easily done.
 
 ### [`data:`](<https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#scheme-source:~:text=schemes%20(not%20recommended).-,data%3A,-Allows%20data%3A>)
 
 By default, during build, Vite inlines small assets as data URIs. Allowing `data:` for related directives (e.g. [`img-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src), [`font-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src)), or, disabling it by setting [`build.assetsInlineLimit: 0`](/config/build-options#build-assetsinlinelimit) is necessary.
 
-:::warning
-Do not allow `data:` for [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src). It will allow injection of arbitrary scripts.
-:::
+> **warning**: Do not allow `data:` for [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src). It will allow injection of arbitrary scripts.
 
 ## License
 
@@ -845,7 +831,7 @@ Vite automatically generates `<link rel="modulepreload">` directives for entry c
 In real world applications, Rollup often generates "common" chunks - code that is shared between two or more other chunks. Combined with dynamic imports, it is quite common to have the following scenario:
 
 <script setup>
-import graphSvg from '../images/graph.svg?raw'
+
 </script>
 <svg-image :svg="graphSvg" />
 

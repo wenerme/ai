@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: useIterableCallbackReturn
 description: Learn more about useIterableCallbackReturn
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JavaScript (and super languages)" icon="seti:javascript">
 ## Summary
 - Rule available since: `v2.0.0`
 - Diagnostic Category: [`lint/suspicious/useIterableCallbackReturn`](/reference/diagnostics#diagnostic-category)
@@ -71,7 +67,7 @@ A return value is disallowed in the method `forEach`.
 });
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:4 <a href="https://biomejs.dev/linter/rules/use-iterable-callback-return">lint/suspicious/useIterableCallbackReturn</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This </span><span style="color: Tomato;"><strong>callback</strong></span><span style="color: Tomato;"> passed to </span><span style="color: Tomato;"><strong>map() iterable method</strong></span><span style="color: Tomato;"> should always </span><span style="color: Tomato;"><strong>return</strong></span><span style="color: Tomato;"> a value.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>[].map(() =&gt; &#123;<br />   <strong>   │ </strong>   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong>    // Missing return value<br />    <strong>3 │ </strong>&#125;);<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add a </span><span style="color: lightgreen;"><strong>return</strong></span><span style="color: lightgreen;"> with a value to this callback.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:4 <a href="https://biomejs.dev/linter/rules/use-iterable-callback-return">lint/suspicious/useIterableCallbackReturn</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This </span><span style="color: Tomato;"><strong>callback</strong></span><span style="color: Tomato;"> passed to </span><span style="color: Tomato;"><strong>map() iterable method</strong></span><span style="color: Tomato;"> should always </span><span style="color: Tomato;"><strong>return</strong></span><span style="color: Tomato;"> a value.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>[].map(() =&gt; &#123;   <strong>   │ </strong>   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    // Missing return value    <strong>3 │ </strong>&#125;);    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add a </span><span style="color: lightgreen;"><strong>return</strong></span><span style="color: lightgreen;"> with a value to this callback.</span>  </code></pre>
 
 ```js
 [].forEach(() => {
@@ -85,7 +81,7 @@ A return value is disallowed in the method `forEach`.
 });
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:4 <a href="https://biomejs.dev/linter/rules/use-iterable-callback-return">lint/suspicious/useIterableCallbackReturn</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This </span><span style="color: Tomato;"><strong>callback</strong></span><span style="color: Tomato;"> passed to </span><span style="color: Tomato;"><strong>filter() iterable method</strong></span><span style="color: Tomato;"> should always </span><span style="color: Tomato;"><strong>return</strong></span><span style="color: Tomato;"> a value.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>[].filter(() =&gt; &#123;<br />   <strong>   │ </strong>   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong>    // Missing required return value<br />    <strong>3 │ </strong>&#125;);<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add a </span><span style="color: lightgreen;"><strong>return</strong></span><span style="color: lightgreen;"> with a value to this callback.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:4 <a href="https://biomejs.dev/linter/rules/use-iterable-callback-return">lint/suspicious/useIterableCallbackReturn</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This </span><span style="color: Tomato;"><strong>callback</strong></span><span style="color: Tomato;"> passed to </span><span style="color: Tomato;"><strong>filter() iterable method</strong></span><span style="color: Tomato;"> should always </span><span style="color: Tomato;"><strong>return</strong></span><span style="color: Tomato;"> a value.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>[].filter(() =&gt; &#123;   <strong>   │ </strong>   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    // Missing required return value    <strong>3 │ </strong>&#125;);    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add a </span><span style="color: lightgreen;"><strong>return</strong></span><span style="color: lightgreen;"> with a value to this callback.</span>  </code></pre>
 
 ### Valid
 
@@ -143,7 +139,3 @@ When `checkForEach` is `false` (default), the above code will not trigger any di
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/suspicious/use_iterable_callback_return.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/suspicious/useIterableCallbackReturn)
-
-</TabItem>
-</Tabs>
-

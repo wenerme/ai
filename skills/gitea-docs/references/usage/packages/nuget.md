@@ -1,7 +1,5 @@
 ---
 date: "2021-07-20T00:00:00+00:00"
-slug: "nuget"
-sidebar_position: 80
 ---
 
 # NuGet Package Registry

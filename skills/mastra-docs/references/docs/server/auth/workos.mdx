@@ -7,9 +7,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # WorkOS
 
 The `@mastra/auth-workos` package provides authentication for Mastra using WorkOS. It verifies incoming requests using WorkOS access tokens and integrates with the Mastra server using the `auth` option.
@@ -28,13 +25,9 @@ WORKOS_API_KEY=sk_live_...
 WORKOS_CLIENT_ID=client_...
 ```
 
-:::note
-
-You can find your API key and Client ID in the WorkOS Dashboard under API Keys and Applications respectively.
+> **note**: You can find your API key and Client ID in the WorkOS Dashboard under API Keys and Applications respectively.
 
 For detailed setup instructions, refer to the [WorkOS documentation](https://workos.com/docs) for your specific platform.
-
-:::
 
 ## Installation
 
@@ -100,11 +93,7 @@ const workosAuth = new MastraAuthWorkos({
 })
 ```
 
-:::info
-
-Visit [MastraAuthWorkos](/reference/auth/workos) for all available configuration options.
-
-:::
+> **info**: Visit [MastraAuthWorkos](/reference/auth/workos) for all available configuration options.
 
 ## Client-side setup
 
@@ -137,11 +126,7 @@ export const authenticateWithWorkos = async (code: string, clientId: string) => 
 }
 ```
 
-:::note
-
-Refer to the [WorkOS User Management documentation](https://workos.com/docs/authkit/vanilla/nodejs) for more authentication methods and configuration options.
-
-:::
+> **note**: Refer to the [WorkOS User Management documentation](https://workos.com/docs/authkit/vanilla/nodejs) for more authentication methods and configuration options.
 
 ## Configuring `MastraClient`
 
@@ -160,20 +145,15 @@ export const createMastraClient = (accessToken: string) => {
 }
 ```
 
-:::info
-
-The access token must be prefixed with `Bearer` in the Authorization header.
+> **info**: The access token must be prefixed with `Bearer` in the Authorization header.
 
 Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
-
-:::
 
 ### Making authenticated requests
 
 Once `MastraClient` is configured with the WorkOS access token, you can send authenticated requests:
 
-<Tabs>
-  <TabItem value="react" label="React">
+  
     ```typescript title="src/api/agents.ts"
     import { WorkOS } from '@workos-inc/node'
     import { MastraClient } from '@mastra/client-js'
@@ -201,9 +181,9 @@ Once `MastraClient` is configured with the WorkOS access token, you can send aut
       return response.text
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="cURL">
+  
     ```bash
     curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
       -H "Content-Type: application/json" \
@@ -212,5 +192,3 @@ Once `MastraClient` is configured with the WorkOS access token, you can send aut
         "messages": "Weather in London"
       }'
     ```
-  </TabItem>
-</Tabs>

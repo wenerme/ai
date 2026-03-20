@@ -1,7 +1,5 @@
 ---
 date: "2016-12-01T16:00:00+02:00"
-slug: "localization"
-sidebar_position: 70
 aliases:
   - /en-us/localization
 ---

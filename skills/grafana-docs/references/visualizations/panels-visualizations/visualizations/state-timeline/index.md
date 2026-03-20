@@ -24,7 +24,7 @@ A state timeline visualization displays data in a way that shows state changes o
 
 For example, if you're monitoring the CPU usage of a server, you can use a state timeline to visualize the different states, such as “LOW,” “NORMAL,” “HIGH,” or “CRITICAL,” over time. Each state is represented by a different color and the lengths represent the duration of time that the server remained in that state:
 
-![A state timeline visualization showing CPU usage](/media/docs/grafana/panels-visualizations/screenshot-state-timeline-v11.4.png)
+[A state timeline visualization showing CPU usage]
 
 The state timeline visualization is useful when you need to monitor and analyze changes in states or statuses of various entities over time. You can use one when you need to:
 
@@ -91,7 +91,7 @@ If your query results aren't in a table format like the preceding examples, espe
 
 You can also create a state timeline visualization using time series data. To do this, add [thresholds](#thresholds), which turn the time series into discrete colored state regions.
 
-![State timeline with time series](/media/docs/grafana/panels-visualizations/screenshot-state-timeline-time-series-v11.4.png)
+[State timeline with time series]
 
 ## Pan and zoom panel time range
 
@@ -109,8 +109,6 @@ You can also create a state timeline visualization using time series data. To do
 
 Use these options to refine the visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description                                                                                     |
 | ------ | ----------------------------------------------------------------------------------------------- |
 | Merge equal consecutive values  | Controls whether Grafana merges identical values if they are next to each other. |
@@ -122,8 +120,6 @@ Use these options to refine the visualization.
 | Fill opacity | Controls value alignment inside state regions. |
 | [Connect null values](#connect-null-values) | Choose how null values, which are gaps in the data, appear on the graph. |
 | [Disconnect null values](#disconnect-values) | Choose whether to set a threshold above which values in the data should be disconnected. |
-
-<!-- prettier-ignore-end -->
 
 #### Page size (enable pagination)
 

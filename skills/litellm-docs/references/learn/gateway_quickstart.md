@@ -1,10 +1,7 @@
 ---
 title: Gateway Quickstart
-sidebar_label: Gateway Quickstart
 description: Start LiteLLM Gateway, add models and keys, then connect applications and SDKs to one shared endpoint.
 ---
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 Use this path if you need one shared OpenAI-compatible endpoint for a team or platform.
 

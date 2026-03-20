@@ -2471,8 +2471,8 @@ z.object({})
 
   NOTE: the shape of the JSON is considered experimental, and the shape of the JSON might change in the future.
 
-  <details>
-  <summary>Example of output when running `biome format` command</summary>
+  
+  Example of output when running `biome format` command
   ```json
   {
     "summary": {
@@ -2525,7 +2525,7 @@ z.object({})
     "command": "format"
   }
   ```
-  </details>
+  
 
 - Added new `--staged` flag to the `check`, `format` and `lint` subcommands.
 
@@ -5314,7 +5314,6 @@ New rules are incubated in the nursery group. Once stable, we promote them to a 
 - Fix [#258](https://github.com/biomejs/biome/issues/258), fix [noUselessFragments](https://biomejs.dev/linter/rules/no-useless-fragments/) the case where the rule removing an assignment. Contributed by @denbezrukov
 - Fix [#266](https://github.com/biomejs/biome/issues/266), where
   `complexity/useLiteralKeys` emitted a code action with an invalid AST. Contributed by @ematipico
-
 
 - Fix [#105](https://github.com/biomejs/biome/issues/105), removing false positives reported by [noUnusedVariables](https://biomejs.dev/linter/rules/no-unused-variables/).
 

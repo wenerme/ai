@@ -1,7 +1,5 @@
 ---
 title: "Embedding models"
-sidebar_position: 2
-sidebar_label: "Embeddings"
 description: "Use embedding models through Mastra's model router for semantic search and RAG."
 ---
 
@@ -90,15 +88,11 @@ const agent = new Agent({
 });
 ```
 
-:::info
-
-The `embedder` field accepts:
+> **info**: The `embedder` field accepts:
 
 - `EmbeddingModelId` (string with autocomplete)
 - `EmbeddingModel<string>` (AI SDK v1)
 - `EmbeddingModelV2<string>` (AI SDK v2)
-
-:::
 
 ## Usage with RAG
 

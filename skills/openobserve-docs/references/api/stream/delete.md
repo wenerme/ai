@@ -30,8 +30,8 @@ Content-Type: application/json
 Delete a complete stream and all associated data.
 
 #### Request
-**Method**: `DELETE` <br>
-**Path**: `/api/{org_id}/streams/{stream_name}?type=logs&delete_all=true` <br>
+**Method**: `DELETE` 
+**Path**: `/api/{org_id}/streams/{stream_name}?type=logs&delete_all=true` 
 **Parameters**:
 | Name | Type | Location | Required | Description |
 |------|------|----------|----------|-------------|
@@ -95,7 +95,7 @@ Delete stream data within a specific time period with job tracking.
 
 #### Request
 **Method:** `DELETE`
-<br>
+
 **Path:** `/api/{org_id}/streams/{stream_name}/data_by_time_range?start=<start_ts>&end=<end_ts>`
 
 #### Parameters
@@ -145,7 +145,7 @@ Check the status of a time-range deletion job.
 
 #### Request
 **Method:** `GET`
-<br>
+
 **Path:** `/api/{org_id}/streams/{stream_name}/data_by_time_range/status/{id}`
 
 #### Parameters
@@ -279,7 +279,7 @@ curl -X GET \
 Delete cached query results for a stream.
 #### Request
 **Method:** `DELETE`
-<br>
+
 **Path:** `/api/{org_id}/streams/{stream_name}/cache/results?type=<stream_type>&ts=<timestamp>`
 
 ### Parameters

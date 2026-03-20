@@ -61,11 +61,7 @@ and more, as well as making chat and HTTP requests to the proxy server.
 
 You can use the CLI to authenticate to the LiteLLM Gateway. This is great if you're trying to give a large number of developers self-serve access to the LiteLLM Gateway.
 
-:::info
-
-For an indepth guide, see [CLI Authentication](./cli_sso).
-
-:::
+> **info**: For an indepth guide, see [CLI Authentication](./cli_sso).
 
 ### Prerequisites
 
@@ -83,8 +79,6 @@ Or add it to your proxy startup command:
 ```bash
 EXPERIMENTAL_UI_LOGIN="True" litellm --config config.yaml
 ```
-
-:::
 
 ### Steps
 

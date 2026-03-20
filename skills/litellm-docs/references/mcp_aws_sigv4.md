@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # MCP - AWS SigV4 Auth
 
@@ -14,9 +12,6 @@ LiteLLM's `aws_sigv4` auth type handles this automatically: every outgoing MCP r
 
 ## Quick Start
 
-<Tabs>
-<TabItem value="ui" label="LiteLLM UI">
-
 1. Navigate to **MCP Servers** and click **Add New MCP Server**
 2. Set the transport to **Streamable HTTP**
 3. Select **AWS SigV4** as the authentication type
@@ -26,8 +21,6 @@ LiteLLM's `aws_sigv4` auth type handles this automatically: every outgoing MCP r
   img={require('../img/mcp_aws_sigv4_ui.png')}
   style={{width: '80%', display: 'block', margin: '0'}}
 />
-
-<br/>
 
 | Field | Required | Description |
 |-------|----------|-------------|
@@ -40,9 +33,6 @@ LiteLLM's `aws_sigv4` auth type handles this automatically: every outgoing MCP r
 Once created, LiteLLM will sign every outgoing MCP request with SigV4. The server's tools appear automatically in the MCP Tools list.
 
 **Editing credentials:** When editing an existing SigV4 server, leave credential fields blank to keep the current values. Only fields you fill in will be updated.
-
-</TabItem>
-<TabItem value="config" label="config.yaml">
 
 ### 1. Set AWS credentials
 
@@ -72,7 +62,7 @@ mcp_servers:
     aws_service_name: "bedrock-agentcore"
 ```
 
-:::info URL encoding
+> **info**: URL encoding
 
 The AgentCore runtime ARN must be URL-encoded in the `url` field. For example:
 
@@ -86,16 +76,11 @@ becomes:
 arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A123456789012%3Aruntime%2Fmy-mcp-server
 ```
 
-:::
-
 ### 3. Start the proxy
 
 ```bash
 litellm --config config.yaml
 ```
-
-</TabItem>
-</Tabs>
 
 ## Use the MCP tools
 

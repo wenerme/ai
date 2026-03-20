@@ -11,7 +11,6 @@ Monitor PostgreSQL databases with comprehensive PostgreSQL database monitoring f
 
 The PostgreSQL database monitoring integration enables monitoring of PostgreSQL database performance metrics through OpenTelemetry. This PostgreSQL integration streams database telemetry data from PostgreSQL to OpenObserve, providing insights into PostgreSQL database health, query performance, and operational metrics for effective database monitoring and troubleshooting.
 
-
 ## Steps to Integrate
 ??? "Prerequisites"
 
@@ -28,7 +27,7 @@ The PostgreSQL database monitoring integration enables monitoring of PostgreSQL 
     ```sql
     CREATE ROLE myuser WITH LOGIN PASSWORD 'mypassword';
     ```
-    ![Set up PostgreSQL Access](../../images/postgresql-set-up-access.png)
+    [Set up PostgreSQL Access]
 
     Replace `myuser` and `mypassword` with credentials suitable for your environment. You will use these values in later steps to authenticate the OpenTelemetry Collector.
 
@@ -149,7 +148,7 @@ The PostgreSQL database monitoring integration enables monitoring of PostgreSQL 
 
     - **Receivers**: The `postgresql` receiver collects data from your PostgreSQL instance. Ensure the endpoint, username, and password match the credentials you configured in Step 1.
     - **Processors**: The `memory_limiter` and `batch` processors manage and optimize data flow to exporters.
-    - **Exporters**: The `otlphttp/openobserve` exporter sends collected telemetry data to OpenObserve. Replace the endpoint and authorization values with your actual OpenObserve API endpoint and authentication token. <br>You can find these values in **Data Sources** > **Custom** > **Metrics** > **Otel Collector**.
+    - **Exporters**: The `otlphttp/openobserve` exporter sends collected telemetry data to OpenObserve. Replace the endpoint and authorization values with your actual OpenObserve API endpoint and authentication token. You can find these values in **Data Sources** > **Custom** > **Metrics** > **Otel Collector**.
 
 ??? "Step 4: Start OpenTelemetry Collector"
 
@@ -166,7 +165,6 @@ The PostgreSQL database monitoring integration enables monitoring of PostgreSQL 
 ??? "Step 5: View PostgreSQL Metrics in OpenObserve"
 
     After completing the setup, navigate **Streams** to view available data streams. If you do not see your data immediately, click **Refresh Stats**. Use the search functionality to find the desired stream.
-
 
 ??? "Troubleshooting"
 
@@ -221,4 +219,3 @@ The PostgreSQL database monitoring integration enables monitoring of PostgreSQL 
     ```
 
     This command returns `on`, confirming that SSL is successfully enabled.
-

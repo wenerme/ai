@@ -20,7 +20,6 @@ class ClevrPreprocessor(ResponsePreprocessor):
         row.update({'query': query})
         return super().preprocess(row)
 
-
 register_dataset(
     DatasetMeta(
         ms_dataset_id='AI-ModelScope/clevr_cogen_a_train',

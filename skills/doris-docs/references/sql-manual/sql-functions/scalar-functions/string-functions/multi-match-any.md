@@ -12,7 +12,6 @@
 
 `TINYINT multi_match_any(VARCHAR haystack, ARRAY<VARCHAR> patterns)`
 
-
 Checks whether the string `haystack` matches the regular expressions `patterns` in re2 syntax. returns 0 if none of the regular expressions are matched and 1 if any of the patterns matches.
 
 ### example

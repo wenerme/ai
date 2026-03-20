@@ -13,7 +13,6 @@ Query table function (table-valued-function, tvf) can be used to transparently t
 Supported by Doris version 2.1.3, currently only transparent query jdbc catalog is supported.
 You need to create the corresponding catalog in Doris first.
 
-
 ## Syntax
 
 ```sql
@@ -30,7 +29,6 @@ Each parameter in the query table function tvf is a `"key"="value"` pair.
 |------------|--------------------------------------------|
 | `catalog`  | Catalog name, which needs to be filled in according to the name of the catalog. |
 | `query`    | The query statement to be executed.       |
-
 
 ## Examples
 

@@ -2,9 +2,7 @@
 
 Manage OpenAI code interpreter containers (sessions) for executing code in isolated environments.
 
-:::tip
-Looking for how to use Code Interpreter? See the [Code Interpreter Guide](/docs/guides/code_interpreter).
-:::
+> **tip**: Looking for how to use Code Interpreter? See the [Code Interpreter Guide](/docs/guides/code_interpreter).
 
 | Feature | Supported | 
 |---------|-----------|
@@ -15,11 +13,7 @@ Looking for how to use Code Interpreter? See the [Code Interpreter Guide](/docs/
 | Spend Management | ✅ Budget tracking and rate limiting |
 | Supported Providers | `openai`|
 
-:::tip
-
-Containers provide isolated execution environments for code interpreter sessions. You can create, list, retrieve, and delete containers.
-
-:::
+> **tip**: Containers provide isolated execution environments for code interpreter sessions. You can create, list, retrieve, and delete containers.
 
 ## **LiteLLM Python SDK Usage**
 
@@ -461,14 +455,9 @@ print(f"Deleted: {result.deleted}")
 |-------------|----------------|-------|
 | OpenAI      | ✅ Supported   | Full support for all container operations |
 
-:::info
-
-Currently, only OpenAI supports container management for code interpreter sessions. Support for additional providers may be added in the future.
-
-:::
+> **info**: Currently, only OpenAI supports container management for code interpreter sessions. Support for additional providers may be added in the future.
 
 ## Related
 
 - [Container Files API](/docs/container_files) - Manage files within containers
 - [Code Interpreter Guide](/docs/guides/code_interpreter) - Using Code Interpreter with LiteLLM
-

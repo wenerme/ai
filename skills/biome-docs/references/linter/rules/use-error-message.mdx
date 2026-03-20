@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: useErrorMessage
 description: Learn more about useErrorMessage
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JavaScript (and super languages)" icon="seti:javascript">
 ## Summary
 - Rule available since: `v1.8.0`
 - Diagnostic Category: [`lint/suspicious/useErrorMessage`](/reference/diagnostics#diagnostic-category)
@@ -45,25 +41,25 @@ which leads to more readable and debuggable code.
 throw Error();
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:12 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw Error();<br />   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:12 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw Error();   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span>  </code></pre>
 
 ```js
 throw Error('');
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:12 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Error message should not be an empty string.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw Error('');<br />   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:12 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Error message should not be an empty string.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw Error('');   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span>  </code></pre>
 
 ```js
 throw new TypeError();
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:20 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw new TypeError();<br />   <strong>   │ </strong>                   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:20 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>throw new TypeError();   <strong>   │ </strong>                   <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span>  </code></pre>
 
 ```js
 const error = new AggregateError(errors);
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:33 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>const error = new AggregateError(errors);<br />   <strong>   │ </strong>                                <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:33 <a href="https://biomejs.dev/linter/rules/use-error-message">lint/suspicious/useErrorMessage</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Provide an error message for the error.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>const error = new AggregateError(errors);   <strong>   │ </strong>                                <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Providing meaningful error messages leads to more readable and debuggable code.</span>  </code></pre>
 
 ### Valid
 
@@ -86,7 +82,3 @@ const error = new AggregateError(errors, 'Promises rejected.');
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/suspicious/use_error_message.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/suspicious/useErrorMessage)
-
-</TabItem>
-</Tabs>
-

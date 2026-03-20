@@ -1,7 +1,5 @@
 ---
 date: "2024-07-10T09:23:00+02:00"
-slug: "secrets"
-sidebar_position: 50
 ---
 
 # Secrets

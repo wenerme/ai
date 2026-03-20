@@ -1,6 +1,5 @@
 ---
 title: dangerouslyIgnoreUnhandledErrors | Config
-outline: deep
 ---
 
 # dangerouslyIgnoreUnhandledErrors <CRoot />

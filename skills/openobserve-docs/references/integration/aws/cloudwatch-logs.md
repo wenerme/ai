@@ -27,13 +27,12 @@ This approach enables centralized log analysis, alerting, and visualization in O
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the ingestion HTTP URL and Access Key
 
-        ![Fetch OpenObserve Ingestion URL](../images/aws-integrations/vpc-flow/fetch-url.png)
+        [Fetch OpenObserve Ingestion URL]
 
     > Example format:
     > ```
     > https://<your-openobserve-domain>/aws/default/cloudwatch-logs/_kinesis_firehose
     > ```
-
 
 ??? "Step 2: Create a Kinesis Firehose Delivery Stream"
 
@@ -42,7 +41,7 @@ This approach enables centralized log analysis, alerting, and visualization in O
     3. Provide OpenObserve's HTTP Endpoint URL and Access Key, and set an S3 backup bucket.
     4. Give the stream a meaningful name and Create it.
 
-        ![Kinesis Firehose Delivery Stream](../images/aws-integrations/cloudwatch-logs/firehose-stream.png)
+        [Kinesis Firehose Delivery Stream]
 
 ??? "Step 3: Attach CloudWatch Logs to Firehose"
 
@@ -55,13 +54,13 @@ This approach enables centralized log analysis, alerting, and visualization in O
     5. Set a filter pattern (e.g., `""` to send all logs)
     6. Click **Start streaming**
 
-        ![Attach CloudWatch Logs to Firehose](../images/aws-integrations/cloudwatch-logs/subscription-filter.png)
+        [Attach CloudWatch Logs to Firehose]
 
 ??? "Step 4: Verify Logs in OpenObserve"
 
     1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-        ![Verify Logs in OpenObserve](../images/aws-integrations/cloudwatch-logs/cloudwatch-logs.png)
+        [Verify Logs in OpenObserve]
 
 ??? "Troubleshooting"
 

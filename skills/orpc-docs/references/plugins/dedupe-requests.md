@@ -27,16 +27,12 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
 
-::: tip
-By default, only `GET` requests are deduplicated.
+> **tip**: By default, only `GET` requests are deduplicated.
 
 If your application does not rely on running multiple mutation requests in parallel (in the same [call stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)), you can expand the filter to deduplicate **all** request types.
 This also helps prevent issues caused by users clicking actions too quickly and unintentionally sending duplicate mutation requests.
-:::
 
 ## Groups
 

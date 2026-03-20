@@ -1,18 +1,12 @@
 ---
 title: 'Parallel Snapshot In The MySQL ClickPipe'
 description: 'Doc for explaining parallel snapshot in the MySQL ClickPipe'
-slug: /integrations/clickpipes/mysql/parallel_initial_load
-sidebar_label: 'How parallel snapshot works'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import snapshot_params from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/snapshot_params.png'
-import partition_key from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/partition_key.png'
-import Image from '@theme/IdealImage';
 
 This document explains parallelized snapshot/initial load in the MySQL ClickPipe works and talks about the snapshot parameters that can be used to control it.
 
@@ -28,9 +22,7 @@ Once we've enabled the feature flag, you should see the below setting in the Cli
 
 The MySQL ClickPipe uses a column on your source table to logically partition the source tables. This column is called the **partition key column**. It is used to divide the source table into partitions, which can then be processed in parallel by the ClickPipe.
 
-:::warning
-The partition key column must be indexed in the source table to see a good performance boost. This can be seen by running `SHOW INDEX FROM <table_name>` in MySQL.
-:::
+> **warning**: The partition key column must be indexed in the source table to see a good performance boost. This can be seen by running `SHOW INDEX FROM <table_name>` in MySQL.
 
 ### Logical partitioning {#logical-partitioning-mysql-snapshot}
 

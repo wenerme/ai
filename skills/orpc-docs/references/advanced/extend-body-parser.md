@@ -75,6 +75,4 @@ const handler = new RPCHandler(router, {
 })
 ```
 
-::: warning
-The `adapterInterceptors` can be different based on the adapter you are using. The example above is for the Fetch adapter.
-:::
+> **warning**: The `adapterInterceptors` can be different based on the adapter you are using. The example above is for the Fetch adapter.

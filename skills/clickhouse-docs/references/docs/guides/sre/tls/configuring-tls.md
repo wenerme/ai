@@ -1,16 +1,9 @@
 ---
-slug: /guides/sre/tls/configuring-tls
-sidebar_label: 'Configuring TLS'
-sidebar_position: 20
 title: 'Configuring TLS'
 description: 'This guide provides simple and minimal settings to configure ClickHouse to use OpenSSL certificates to validate connections.'
 keywords: ['SSL configuration', 'TLS setup', 'OpenSSL certificates', 'secure connections', 'SRE guide']
 doc_type: 'guide'
 ---
-
-import SelfManaged from '@site/docs/_snippets/_self_managed_only_automated.md';
-import configuringSsl01 from '@site/static/images/guides/sre/configuring-ssl_01.png';
-import Image from '@theme/IdealImage';
 
 # Configuring TLS
 
@@ -18,11 +11,9 @@ import Image from '@theme/IdealImage';
 
 This guide provides simple and minimal settings to configure ClickHouse to use OpenSSL certificates to validate connections. For this demonstration, a self-signed Certificate Authority (CA) certificate and key are created with node certificates to make the connections with appropriate settings.
 
-:::note
-TLS implementation is complex and there are many options to consider to ensure a fully secure and robust deployment. This is a basic tutorial with basic TLS configuration examples. Consult with your PKI/security team to generate the correct certificates for your organization.
+> **note**: TLS implementation is complex and there are many options to consider to ensure a fully secure and robust deployment. This is a basic tutorial with basic TLS configuration examples. Consult with your PKI/security team to generate the correct certificates for your organization.
 
 Review this [basic tutorial on certificate usage](https://ubuntu.com/server/docs/security-certificates) for an introductory overview.
-:::
 
 <VerticalStepper headerLevel="h2">
 
@@ -36,14 +27,10 @@ This guide was written using Ubuntu 20.04 and ClickHouse installed on the follow
 |`chnode2` |192.168.1.222|
 |`chnode3` |192.168.1.223|
 
-:::note
-View the [Quick Start](/getting-started/install/install.mdx) for more details on how to install ClickHouse.
-:::
+> **note**: View the [Quick Start](/getting-started/install/install.mdx) for more details on how to install ClickHouse.
 
 ## Create TLS certificates {#2-create-tls-certificates}
-:::note
-Using self-signed certificates are for demonstration purposes only and shouldn't used in production. Certificate requests should be created to be signed by the organization and validated using the CA chain that will be configured in the settings. However, these steps can be used to configure and test settings, then can be replaced by the actual certificates that will be used.
-:::
+> **note**: Using self-signed certificates are for demonstration purposes only and shouldn't used in production. Certificate requests should be created to be signed by the organization and validated using the CA chain that will be configured in the settings. However, these steps can be used to configure and test settings, then can be replaced by the actual certificates that will be used.
 
 1. Generate a key that will be used for the new CA:
     ```bash
@@ -91,9 +78,7 @@ Using self-signed certificates are for demonstration purposes only and shouldn't
 
 ## Create and Configure a directory to store certificates and keys. {#3-create-and-configure-a-directory-to-store-certificates-and-keys}
 
-:::note
-This must be done on each node. Use appropriate certificates and keys on each host.
-:::
+> **note**: This must be done on each node. Use appropriate certificates and keys on each host.
 
 1. Create a folder in a directory accessible by ClickHouse in each node. We recommend the default configuration directory (e.g. `/etc/clickhouse-server`):
     ```bash
@@ -123,11 +108,9 @@ This must be done on each node. Use appropriate certificates and keys on each ho
 
 For this deployment environment, the following ClickHouse Keeper settings are used in each node. Each server will have its own `<server_id>`. (For example, `<server_id>1</server_id>` for node `chnode1`, and so on.)
 
-:::note
-Recommended port is `9281` for ClickHouse Keeper. However, the port is configurable and can be set if this port is in use already by another application in the environment.
+> **note**: Recommended port is `9281` for ClickHouse Keeper. However, the port is configurable and can be set if this port is in use already by another application in the environment.
 
 For a full explanation of all options, visit https://clickhouse.com/docs/operations/clickhouse-keeper/
-:::
 
 1. Add the following inside the `<clickhouse>` tag in ClickHouse server `config.xml`
 
@@ -257,19 +240,19 @@ The settings below are configured in the ClickHouse server `config.xml`
 3. Configure the `https` port and disable the `http` port on each node:
     ```xml
     <https_port>8443</https_port>
-    <!--<http_port>8123</http_port>-->
+    
     ```
 
 4. Configure the ClickHouse Native secure TCP port and disable the default non-secure port on each node:
     ```xml
     <tcp_port_secure>9440</tcp_port_secure>
-    <!--<tcp_port>9000</tcp_port>-->
+    
     ```
 
 5. Configure the `interserver https` port and disable the default non-secure port on each node:
     ```xml
     <interserver_https_port>9010</interserver_https_port>
-    <!--<interserver_http_port>9009</interserver_http_port>-->
+    
     ```
 
 6. Configure OpenSSL with certificates and paths
@@ -342,8 +325,8 @@ The settings below are configured in the ClickHouse server `config.xml`
 
 6. Disable default emulation ports for MySQL and PostgreSQL:
     ```xml
-    <!--mysql_port>9004</mysql_port-->
-    <!--postgresql_port>9005</postgresql_port-->
+    
+    
     ```
 
 ## Testing {#6-testing}
@@ -513,11 +496,8 @@ When running ClickHouse Keeper as a standalone process (rather than embedded wit
 
 Add the following `<openSSL>` section to the standalone ClickHouse Keeper configuration file on each node:
 
-:::note
-Each filename must be updated to match the node that it is being configured on.
+> **note**: Each filename must be updated to match the node that it is being configured on.
 For example, update the `<certificateFile>` entry to be `chnode2.crt` when configuring on the `chnode2` host.
-:::
-
 ```xml
 <openSSL>
     <server>
@@ -545,9 +525,7 @@ For example, update the `<certificateFile>` entry to be `chnode2.crt` when confi
 
 The `<server>` section is used for incoming client connections on the secure Keeper port (`tcp_port_secure`). The `<client>` section is used for outgoing connections between Keeper nodes during Raft replication.
 
-:::note
-The certificate paths above use `/etc/clickhouse-keeper/certs/` which is the typical path for standalone Keeper installations. If you installed Keeper using a different path, adjust accordingly. The certificates themselves are the same ones created in [step 2](#2-create-tls-certificates).
-:::
+> **note**: The certificate paths above use `/etc/clickhouse-keeper/certs/` which is the typical path for standalone Keeper installations. If you installed Keeper using a different path, adjust accordingly. The certificates themselves are the same ones created in [step 2](#2-create-tls-certificates).
 
 ## Summary {#summary}
 

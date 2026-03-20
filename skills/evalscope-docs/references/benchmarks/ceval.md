@@ -1,6 +1,5 @@
 # C-Eval
 
-
 ## Overview
 
 C-Eval is a comprehensive Chinese evaluation benchmark designed to assess the knowledge and reasoning abilities of language models in Chinese. It covers 52 subjects ranging from STEM to humanities and social sciences, with questions from middle school to professional examination levels.
@@ -28,7 +27,6 @@ C-Eval is a comprehensive Chinese evaluation benchmark designed to assess the kn
 - Results can be aggregated by subject or category
 - Use `subset_list` parameter to evaluate specific subjects
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ C-Eval is a comprehensive Chinese evaluation benchmark designed to assess the kn
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `val` |
 | **Train Split** | `dev` |
-
 
 ## Data Statistics
 
@@ -151,18 +148,14 @@ C-Eval is a comprehensive Chinese evaluation benchmark designed to assess the kn
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 以下是一些示例问题：
 
 {fewshot}
 
-
 ```
-
-</details>
 
 ## Usage
 
@@ -198,5 +191,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

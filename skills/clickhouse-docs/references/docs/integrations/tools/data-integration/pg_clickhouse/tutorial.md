@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Tutorial'
 description: 'Learn how to connect pg_clickhouse to ClickHouse and query a New York City taxi example dataset.'
-slug: '/integrations/pg_clickhouse/tutorial'
 title: 'pg_clickhouse Tutorial'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'FDW', 'foreign data wrapper', 'pg_clickhouse', 'extension', 'tutorial', 'taxi']
@@ -635,10 +633,8 @@ table.
     LIMIT 1000;
     ```
 
-:::note
-Generally, we avoid using `SELECT *` in PostgreSQL and ClickHouse. You
+> **note**: Generally, we avoid using `SELECT *` in PostgreSQL and ClickHouse. You
 should only retrieve the columns you actually need.
-:::
 
   [tutorial]: /tutorial "ClickHouse Advanced Tutorial"
   [psql]: https://www.postgresql.org/docs/current/app-psql.html

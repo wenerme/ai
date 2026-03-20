@@ -7,13 +7,9 @@ description: Integrate oRPC with Pino for structured logging and request trackin
 
 [Pino](https://getpino.io/) is a fast and lightweight JSON logger. This guide explains how to integrate oRPC with Pino to add structured logging, request tracking, and error monitoring to your applications.
 
-::: warning
-This guide assumes familiarity with [Pino](https://getpino.io/). Review the official documentation if needed.
-:::
+> **warning**: This guide assumes familiarity with [Pino](https://getpino.io/). Review the official documentation if needed.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/experimental-pino@latest pino@latest
@@ -34,8 +30,6 @@ bun add @orpc/experimental-pino@latest pino@latest
 ```sh [deno]
 deno add npm:@orpc/experimental-pino@latest npm:pino@latest
 ```
-
-:::
 
 ## Setup
 
@@ -59,18 +53,13 @@ const handler = new RPCHandler(router, {
 })
 ```
 
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
-::: tip
-For improved log readability during development, consider using [pino-pretty](https://github.com/pinojs/pino-pretty) to format your logs in a human-friendly way.
+> **tip**: For improved log readability during development, consider using [pino-pretty](https://github.com/pinojs/pino-pretty) to format your logs in a human-friendly way.
 
 ```bash
 npm run dev | npx pino-pretty
 ```
-
-:::
 
 ## Using the Logger in Your Code
 

@@ -31,17 +31,13 @@ const example = os
   .actionable() // Server Action compatibility
 ```
 
-:::info
-The `.handler` method is the only required step. All other chains are optional.
-:::
+> **info**: The `.handler` method is the only required step. All other chains are optional.
 
 ## Input/Output Validation
 
 oRPC supports [Zod](https://github.com/colinhacks/zod), [Valibot](https://github.com/fabian-hiller/valibot), [Arktype](https://github.com/arktypeio/arktype), and any other [Standard Schema](https://github.com/standard-schema/standard-schema?tab=readme-ov-file#what-schema-libraries-implement-the-spec) library for input and output validation.
 
-::: tip
-By explicitly specifying the `.output` or your `handler's return type`, you enable TypeScript to infer the output without parsing the handler's code. This approach can dramatically enhance both type-checking and IDE-suggestion speed.
-:::
+> **tip**: By explicitly specifying the `.output` or your `handler's return type`, you enable TypeScript to infer the output without parsing the handler's code. This approach can dramatically enhance both type-checking and IDE-suggestion speed.
 
 ### `type` Utility
 
@@ -69,9 +65,7 @@ const example = os
   .handler(async ({ context }) => { /* logic */ })
 ```
 
-::: info
-[Middleware](/docs/middleware) can be applied if the [current context](/docs/context#combining-initial-and-execution-context) meets the [middleware dependent context](/docs/middleware#dependent-context) requirements and does not conflict with the [current context](/docs/context#combining-initial-and-execution-context).
-:::
+> **info**: [Middleware](/docs/middleware) can be applied if the [current context](/docs/context#combining-initial-and-execution-context) meets the [middleware dependent context](/docs/middleware#dependent-context) requirements and does not conflict with the [current context](/docs/context#combining-initial-and-execution-context).
 
 ## Initial Configuration
 

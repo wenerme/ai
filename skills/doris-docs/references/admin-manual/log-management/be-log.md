@@ -66,7 +66,6 @@ The following configuration items are configured in the `be.conf` file.
 | `sys_log_custom_date_time_format` | `%Y-%m-%d %H:%M:%S` | | The default custom format for log date, only effective when `sys_log_enable_custom_date_time_forma` is `true` (supported since version 2.1.7) |
 | `sys_log_custom_date_time_ms_format` | `,{:03d}` | | The default time precision in the log date. This is only effective when `sys_log_enable_custom_date_time_format` is `true` (supported since version 2.1.7) |
 
-
 ## Enable DEBUG Log
 
 ### Static Configuration
@@ -136,4 +135,3 @@ In addition, there is an additional configuration parameter for container enviro
 | Configuration Item | Default Value | Options | Description |
 | --- | --- | --- | --- |
 | `enable_file_logger` | true | true, false | Whether to enable file logging. The default is `true`. When starting the BE process with the `--console` command, logs will be output to both the standard output stream and the normal log file. When set to `false`, logs will only be output to the standard output stream and will not generate log files. |
-

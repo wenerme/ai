@@ -1,6 +1,5 @@
 ---
 title: browser.instances | Config
-outline: deep
 ---
 
 # browser.instances
@@ -12,8 +11,7 @@ Defines multiple browser setups. Every config has to have at least a `browser` f
 
 You can specify most of the [project options](/config/) (not marked with a <CRoot /> icon) and some of the `browser` options like `browser.testerHtmlPath`.
 
-::: warning
-Every browser config inherits options from the root config:
+> **warning**: Every browser config inherits options from the root config:
 
 ```ts{3,9} [vitest.config.ts]
 export default defineConfig({
@@ -36,7 +34,6 @@ export default defineConfig({
 ```
 
 For more examples, refer to the ["Multiple Setups" guide](/guide/browser/multiple-setups).
-:::
 
 List of available `browser` options:
 

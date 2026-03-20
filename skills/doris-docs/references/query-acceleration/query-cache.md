@@ -13,10 +13,9 @@ Each execution re-scans identical tablets and re-computes identical aggregation 
 
 To address this, Apache Doris provides a **Query Cache** mechanism. It caches the intermediate aggregation results produced inside the pipeline execution engine and serves them directly to subsequent queries that share the same execution context, significantly reducing query latency.
 
-:::caution Important Limitations
+> **caution**: Important Limitations
 - Query Cache applies **only to aggregation queries** on **internal OLAP tables**. Non-aggregation queries (plain scans, joins, sorts, etc.) do not use Query Cache.
 - Query Cache **does not work on external tables** (Hive, JDBC, Iceberg, Hudi, Paimon, etc.).
-:::
 
 ## Working Principle
 
@@ -148,9 +147,7 @@ For caching needs on external tables, consider using [SQL Cache](./sql-cache-man
 |-----------|-------------|---------|
 | `query_cache_size` | Total memory capacity of the Query Cache on each BE, in MB | `512` |
 
-:::note
-The parameters `query_cache_max_size_mb` and `query_cache_elasticity_size_mb` in `be.conf` control the older SQL Result Cache, not the pipeline-level Query Cache described here. Do not confuse the two.
-:::
+> **note**: The parameters `query_cache_max_size_mb` and `query_cache_elasticity_size_mb` in `be.conf` control the older SQL Result Cache, not the pipeline-level Query Cache described here. Do not confuse the two.
 
 ## Usage Example
 

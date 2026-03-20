@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI_ML/AIChat/semantic-layer
-sidebar_label: 'Customizing ClickHouse Assistant chat with a semantic layer'
 title: 'Optimizing ClickHouse Assistant Agent Conversations with a Semantic Layer'
-pagination_prev: null
-pagination_next: null
 description: 'Guide to using AGENTS.md to provide custom business logic and data-specific instructions to the ClickHouse Assistant chat agent'
 keywords: ['AI', 'ClickHouse Cloud', 'Agent', 'AGENTS.md', 'Semantic Layer', 'Custom Instructions', 'System Prompt']
 show_related_blogs: true
@@ -91,9 +87,7 @@ Examples are the "pictures worth a thousand words." Rather than stuffing every e
 - Remove outdated or rarely-used rules
 - Ensure sufficient information to guide desired behavior
 
-:::tip
-Minimal doesn't necessarily mean short. You need enough detail to ensure the agent adheres to expected behavior, just avoid unnecessary verbosity.
-:::
+> **tip**: Minimal doesn't necessarily mean short. You need enough detail to ensure the agent adheres to expected behavior, just avoid unnecessary verbosity.
 
 ## Example: Calculated Metrics from raw data {#example-calculated-metrics}
 

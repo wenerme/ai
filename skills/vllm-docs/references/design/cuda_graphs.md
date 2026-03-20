@@ -71,11 +71,11 @@ See the following figures for a quick comparison between the previous and curren
 
 **Before:**
 
-![previous_design](../assets/design/cuda_graphs/previous_design.png)
+[previous_design]
 
 **After:**
 
-![new_design](../assets/design/cuda_graphs/current_design.png)
+[new_design]
 
 ### `BatchDescriptor`
 
@@ -119,7 +119,7 @@ with set_forward_context(
 Inside the `dispatch()` method, the dispatcher will search the proper CUDA Graphs runtime mode and existing dispatching keys for a return. We basically search the existing keys following the priority: `FULL`>`PIECEWISE`>`None`. If the dispatching key does not exist, default to return `NONE` mode for eager execution. The implementations can be found [here](https://github.com/vllm-project/vllm/blob/main/vllm/v1/cudagraph_dispatcher.py#L91).
 
 Here is a simplified illustration of the workflow at runtime in the model executor:
-![executor_runtime](../assets/design/cuda_graphs/executor_runtime.png)
+[executor_runtime]
 
 ### `CUDAGraphWrapper`
 
@@ -137,7 +137,7 @@ The above steps are based on the assumption that the CUDA Graphs wrapper would d
 The core mechanism of making a full CUDA Graphs and piecewise CUDA Graphs coexist and compatible is the nested CUDA Graphs wrapper design, building on top of piecewise compilation with only a single piecewise FX graph.  We wrap a FULL mode wrapper outside the entire model for the full CUDA Graphs functionality; meanwhile, each piecewise backend is wrapped via a `PIECEWISE` mode wrapper inside the compilation.
 
 The flow chart below should clearly describe how it works.
-![wrapper_flow](../assets/design/cuda_graphs/wrapper_flow.png)
+[wrapper_flow]
 
 Therefore, for a `FULL` runtime mode, it is safe to capture/replay a full CUDA Graph since the piecewise wrapper is not activated. The situation is similar for `PIECEWISE` mode, as there are no conflicts between the `FULL` mode wrapper and `PIECEWISE` mode wrappers.  For the `NONE` runtime mode, both `FULL` and `PIECEWISE` wrappers would not be activated, so we simply fall through to eager execution.
 

@@ -208,10 +208,8 @@ Bun.serve({
 });
 ```
 
-<Info>
   ⚡️ **Speed** — Bun automatically uses the [`sendfile(2)`](https://man7.org/linux/man-pages/man2/sendfile.2.html)
   system call when possible, enabling zero-copy file transfers in the kernel—the fastest way to send files.
-</Info>
 
 You can send part of a file using the [`slice(start, end)`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice) method on the `Bun.file` object. This automatically sets the `Content-Range` and `Content-Length` headers on the `Response` object.
 

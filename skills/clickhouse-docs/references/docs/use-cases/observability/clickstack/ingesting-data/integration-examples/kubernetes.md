@@ -1,15 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/kubernetes
-pagination_prev: null
-pagination_next: null
 description: 'Kubernetes integration for ClickStack - The ClickHouse Observability Stack'
 title: 'Kubernetes'
 doc_type: 'guide'
 keywords: ['clickstack', 'kubernetes', 'logs', 'observability', 'container monitoring']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ClickStack uses the OpenTelemetry (OTel) collector to collect logs, metrics, and Kubernetes events from Kubernetes clusters and forward them to ClickStack. We support the native OTel log format and require no additional vendor-specific configuration.
 
@@ -18,9 +12,7 @@ This guide integrates the following:
 - **Logs**
 - **Infra Metrics**
 
-:::note
-To send over application-level metrics or APM/traces, you'll need to add the corresponding language integration to your application as well.
-:::
+> **note**: To send over application-level metrics or APM/traces, you'll need to add the corresponding language integration to your application as well.
 
 The following guide assumes you have deployed a [ClickStack OTel collector as a gateway](/use-cases/observability/clickstack/ingesting-data/otel-collector), secured with an ingestion API key.
 
@@ -54,11 +46,7 @@ Download the DaemonSet manifest:
 curl -O https://raw.githubusercontent.com/ClickHouse/clickhouse-docs/refs/heads/main/docs/use-cases/observability/clickstack/example-datasets/_snippets/k8s_daemonset.yaml
 ```
 
-<Tabs groupId="daemonset-configs">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
-
-<details>
-<summary>`k8s_daemonset.yaml`</summary>
+`k8s_daemonset.yaml`
 
 ```yaml
 # daemonset.yaml
@@ -151,15 +139,7 @@ config:
           - otlphttp
 ```
 
-</details>
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source">
-
-<details>
-
-<summary>`k8s_daemonset.yaml`</summary>
+`k8s_daemonset.yaml`
 
 ```yaml
 # daemonset.yaml
@@ -259,11 +239,6 @@ config:
         exporters:
           - otlphttp
 ```
-
-</details>
-
-</TabItem>
-</Tabs>
 
 ### Creating the deployment configuration {#creating-the-deployment-configuration}
 
@@ -275,11 +250,7 @@ Download the deployment manifest:
 curl -O https://raw.githubusercontent.com/ClickHouse/clickhouse-docs/refs/heads/main/docs/use-cases/observability/clickstack/example-datasets/_snippets/k8s_deployment.yaml
 ```
 
-<Tabs groupId="deployment-configs">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
-
-<details>
-<summary>k8s_deployment.yaml</summary>
+k8s_deployment.yaml
 
 ```yaml
 # deployment.yaml
@@ -334,14 +305,7 @@ config:
           - otlphttp
 ```
 
-</details>
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source">
-
-<details>
-<summary>k8s_deployment.yaml</summary>
+k8s_deployment.yaml
 
 ```yaml
 # deployment.yaml
@@ -403,11 +367,6 @@ config:
         exporters:
           - otlphttp
 ```
-
-</details>
-
-</TabItem>
-</Tabs>
 
 ## Deploying the OpenTelemetry collector {#deploying-the-otel-collector}
 

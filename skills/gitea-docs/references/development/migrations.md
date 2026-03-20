@@ -1,7 +1,5 @@
 ---
 date: "2019-04-15T17:29:00+08:00"
-slug: "migrations-interfaces"
-sidebar_position: 55
 aliases:
   - /en-us/migrations-interfaces
 ---

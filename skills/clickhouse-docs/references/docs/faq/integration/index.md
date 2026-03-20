@@ -1,7 +1,4 @@
 ---
-slug: /faq/integration/
-sidebar_position: 1
-sidebar_label: 'Integrating ClickHouse with other systems'
 keywords: ['clickhouse', 'faq', 'questions', 'integrations']
 title: 'Questions about integrating ClickHouse and other systems'
 description: 'Landing page listing questions related to integrating ClickHouse with other systems'
@@ -18,6 +15,5 @@ doc_type: 'landing-page'
 - [Can ClickHouse read tables from PostgreSQL](/integrations/data-ingestion/dbms/postgresql/connecting-to-postgresql.md)
 - [What if I have a problem with encodings when connecting to Oracle via ODBC?](/faq/integration/oracle-odbc.md)
 
-:::info Don't see what you're looking for?
+> **info**: Don't see what you're looking for?
 Check out our [Knowledge Base](/knowledgebase/) and also browse the many helpful articles found here in the documentation.
-:::

@@ -1,6 +1,5 @@
 ---
 title: deps | Config
-outline: deep
 ---
 
 # deps
@@ -27,9 +26,7 @@ Be aware that only packages in `deps.optimizer?.[mode].include` option are bundl
 
 This options also inherits your `optimizeDeps` configuration (for web Vitest will extend `optimizeDeps`, for ssr - `ssr.optimizeDeps`). If you redefine `include`/`exclude` option in `deps.optimizer` it will extend your `optimizeDeps` when running tests. Vitest automatically removes the same options from `include`, if they are listed in `exclude`.
 
-::: tip
-You will not be able to edit your `node_modules` code for debugging, since the code is actually located in your `cacheDir` or `test.cache.dir` directory. If you want to debug with `console.log` statements, edit it directly or force rebundling with `deps.optimizer?.[mode].force` option.
-:::
+> **tip**: You will not be able to edit your `node_modules` code for debugging, since the code is actually located in your `cacheDir` or `test.cache.dir` directory. If you want to debug with `console.log` statements, edit it directly or force rebundling with `deps.optimizer?.[mode].force` option.
 
 ### deps.optimizer.{mode}.enabled
 
@@ -55,9 +52,7 @@ Should Vitest process assets (.png, .svg, .jpg, etc) files and resolve them like
 
 This module will have a default export equal to the path to the asset, if no query is specified.
 
-::: warning
-At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
-:::
+> **warning**: At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
 
 ### deps.client.transformCss
 
@@ -68,9 +63,7 @@ Should Vitest process CSS (.css, .scss, .sass, etc) files and resolve them like 
 
 If CSS files are disabled with [`css`](/config/css) options, this option will just silence `ERR_UNKNOWN_FILE_EXTENSION` errors.
 
-::: warning
-At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
-:::
+> **warning**: At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
 
 ### deps.client.transformGlobPattern
 
@@ -81,9 +74,7 @@ Regexp pattern to match external files that should be transformed.
 
 By default, files inside `node_modules` are externalized and not transformed, unless it's CSS or an asset, and corresponding option is not disabled.
 
-::: warning
-At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
-:::
+> **warning**: At the moment, this option only works with [`vmThreads`](/config/pool#vmthreads) and [`vmForks`](/config/pool#vmforks) pools.
 
 ## deps.interopDefault
 

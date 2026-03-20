@@ -67,7 +67,6 @@ The currently supported datasets include:
 | VCR_ZH_HARD_100, VCR_ZH_HARD_500, VCR_ZH_HARD_ALL                |                                                              |
 | Video-MME                                                         |                                                              |
 
-
 ````{note}
 For detailed information about the datasets, refer to the [VLMEvalKit Supported Multimodal Benchmark List](https://swift.readthedocs.io/en/latest/LLM/Supported-models-datasets.html). 
 
@@ -107,7 +106,6 @@ VLLM_USE_MODELSCOPE=True CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.opena
 ```{tip}
 If you encounter the error `ValueError: At most 1 image(s) may be provided in one request`, try setting the parameter `--limit-mm-per-prompt "image=5"` and you can set the image to a larger value.
 ```
-:::
 
 :::{tab-item} ms-swift Deployment
 
@@ -122,7 +120,6 @@ pip install ms-swift -U
 ```shell
 CUDA_VISIBLE_DEVICES=0 swift deploy --model Qwen/Qwen2.5-VL-3B-Instruct --port 8000
 ```
-:::
 
 :::{tab-item} LMDeploy Deployment
 
@@ -137,7 +134,6 @@ pip install lmdeploy -U
 ```shell
 CUDA_VISIBLE_DEVICES=0 lmdeploy serve api_server Qwen-VL-Chat --server-port 8000
 ```
-:::
 
 :::{tab-item} Ollama Deployment
 
@@ -146,8 +142,6 @@ Run ModelScope hosted models with Ollama in one click. Refer to the [documentati
 ```shell
 ollama run modelscope.cn/IAILabs/Qwen2.5-VL-7B-Instruct-GGUF
 ```
-
-:::
 
 ::::
 
@@ -181,7 +175,6 @@ eval_config:
   nproc: 16
   judge: exact_matching
 ```
-:::
 
 :::{tab-item} TaskConfig Dictionary
 
@@ -210,7 +203,6 @@ task_cfg_dict = TaskConfig(
         'judge': 'exact_matching'}
 )
 ```
-:::
 
 ::::
 
@@ -242,7 +234,6 @@ eval_config:
   work_dir: outputs
   nproc: 16
 ```
-:::
 
 :::{tab-item} TaskConfig Dictionary
 
@@ -266,7 +257,6 @@ task_cfg_dict = TaskConfig(
         'reuse': False}
  )
 ```
-:::
 
 ::::
 
@@ -299,7 +289,6 @@ task_cfg_dict = TaskConfig(
   - `nframe`: Integer, number of video frames for video datasets, default is `8`.
   - `fps`: Integer, frame rate for video datasets, default is `-1`, meaning use `nframe`; set greater than 0 to use `fps` to calculate the number of video frames.
   - `use_subtitle`: Boolean, whether to use subtitles for video datasets, default is `False`.
-
 
 ### (Optional) Deploy Judge Model
 Deploy a local language model as a judge / choice extractor, also using ms-swift to deploy the model service. For details, refer to: [ms-swift LLM Deployment Guide](https://swift.readthedocs.io/zh-cn/latest/LLM/VLLM%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E4%B8%8E%E9%83%A8%E7%BD%B2.html).

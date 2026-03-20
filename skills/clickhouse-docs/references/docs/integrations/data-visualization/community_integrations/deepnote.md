@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Deepnote'
-sidebar_position: 11
-slug: /integrations/deepnote
 keywords: ['clickhouse', 'Deepnote', 'connect', 'integrate', 'notebook']
 description: 'Efficiently query very large datasets, analyzing and modeling in the comfort of known notebook environment.'
 title: 'Connect ClickHouse to Deepnote'
@@ -11,13 +8,6 @@ integration:
   - category: 'data_visualization'
   - website: 'https://deepnote.com/launch?template=ClickHouse%20and%20Deepnote'
 ---
-
-import deepnote_01 from '@site/static/images/integrations/data-visualization/deepnote_01.png';
-import deepnote_02 from '@site/static/images/integrations/data-visualization/deepnote_02.png';
-import deepnote_03 from '@site/static/images/integrations/data-visualization/deepnote_03.png';
-import Image from '@theme/IdealImage';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
 
 # Connect ClickHouse to Deepnote
 

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Router Architecture (Fallbacks / Retries)
 
@@ -13,7 +11,6 @@ import TabItem from '@theme/TabItem';
 1. **User Sends Request**: The process begins when a user sends a request to the LiteLLM Router endpoint. All unified endpoints (`.completion`, `.embeddings`, etc) are supported by LiteLLM Router.
 
 2. **function_with_fallbacks**: The initial request is sent to the `function_with_fallbacks` function. This function wraps the initial request in a try-except block, to handle any exceptions - doing fallbacks if needed. This request is then sent to the `function_with_retries` function.
-
 
 3. **function_with_retries**: The `function_with_retries` function wraps the request in a try-except block and passes the initial request to a base litellm unified function (`litellm.completion`, `litellm.embeddings`, etc) to handle LLM API calling. `function_with_retries` handles any exceptions - doing retries on the model group if needed (i.e. if the request fails, it will retry on an available model within the model group). 
 

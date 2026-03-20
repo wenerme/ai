@@ -5,7 +5,7 @@ description: Hot Module Replacement (HMR) for Bun's development server
 
 Hot Module Replacement (HMR) allows you to update modules in a running application without needing a full page reload. This preserves the application state and improves the development experience.
 
-<Note>HMR is enabled by default when using Bun's full-stack development server.</Note>
+HMR is enabled by default when using Bun's full-stack development server.
 
 ## `import.meta.hot` API Reference
 
@@ -26,7 +26,6 @@ import.meta.hot.dispose(() => {
 });
 ```
 
-<Warning>
 For this to work, Bun forces these APIs to be called without indirection. That means the following do not work:
 
 ```ts title="index.ts" icon="/icons/typescript.svg"
@@ -49,11 +48,7 @@ import.meta.hot.accept();
 doSomething(import.meta.hot.data);
 ```
 
-</Warning>
-
-<Note>
 The HMR API is still a work in progress. Some features are missing. HMR can be disabled in `Bun.serve` by setting the development option to `{ hmr: false }`.
-</Note>
 
 ## API Methods
 
@@ -90,11 +85,9 @@ This creates a hot-reloading boundary for all of the files that `index.ts` impor
 
 This may be used in combination with `import.meta.hot.data` to transfer state from the previous module to the new one.
 
-<Info>
   When no modules call `import.meta.hot.accept()` (and there isn't React Fast Refresh or a plugin calling it for you),
   the page will reload when the file updates, and a console warning shows which files were invalidated. This warning is
   safe to ignore if it makes more sense to rely on full page reloads.
-</Info>
 
 ### With callback
 
@@ -111,9 +104,7 @@ import.meta.hot.accept(newModule => {
 });
 ```
 
-<Tip>
   Prefer using `import.meta.hot.accept()` without an argument as it usually makes your code easier to understand.
-</Tip>
 
 ### Accepting other modules
 
@@ -154,10 +145,8 @@ root.render(<App />); // re-use an existing root
 
 In production, `data` is inlined to be `{}`, meaning it cannot be used as a state holder.
 
-<Tip>
   The above pattern is recommended for stateful modules because Bun knows it can minify `{}.prop ??= value` into `value`
   in production.
-</Tip>
 
 ## import.meta.hot.dispose()
 
@@ -174,7 +163,7 @@ import.meta.hot.dispose(() => {
 });
 ```
 
-<Warning>This callback is not called on route navigation or when the browser tab closes.</Warning>
+This callback is not called on route navigation or when the browser tab closes.
 
 Returning a promise will delay module replacement until the module is disposed. All dispose callbacks are called in parallel.
 
@@ -196,10 +185,8 @@ import.meta.hot.prune(() => {
 });
 ```
 
-<Info>
   If `dispose` was used instead, the WebSocket would close and re-open on every hot update. Both versions of the code
   will prevent page reloads when imported files are updated.
-</Info>
 
 ## import.meta.hot.on() and off()
 
@@ -226,4 +213,4 @@ When a file is replaced, all of its event listeners are automatically removed.
 | `bun:ws:disconnect`    | when the HMR WebSocket connection is lost. This can indicate the development server is offline. |
 | `bun:ws:connect`       | when the HMR WebSocket connects or re-connects.                                                 |
 
-<Note>For compatibility with Vite, the above events are also available via `vite:*` prefix instead of `bun:*`.</Note>
+For compatibility with Vite, the above events are also available via `vite:*` prefix instead of `bun:*`.

@@ -13,9 +13,7 @@ throw 'error' // ✗ avoid
 throw new Error('error') // ✓ recommended
 ```
 
-:::info
-oRPC treats thrown `Error` instances as best practice by default, as recommended by the [JavaScript Standard Style](https://standardjs.com/rules.html#throw-new-error-old-style).
-:::
+> **info**: oRPC treats thrown `Error` instances as best practice by default, as recommended by the [JavaScript Standard Style](https://standardjs.com/rules.html#throw-new-error-old-style).
 
 ## Configuration
 
@@ -29,12 +27,9 @@ declare module '@orpc/server' { // or '@orpc/contract', or '@orpc/client'
 }
 ```
 
-:::info
-Avoid using `any` or `unknown` for `throwableError` because doing so prevents the client from inferring [type-safe errors](/docs/client/error-handling#using-safe-and-isdefinederror). Instead, use `null | undefined | {}` (equivalent to `unknown`) for stricter error type inference.
-:::
+> **info**: Avoid using `any` or `unknown` for `throwableError` because doing so prevents the client from inferring [type-safe errors](/docs/client/error-handling#using-safe-and-isdefinederror). Instead, use `null | undefined | {}` (equivalent to `unknown`) for stricter error type inference.
 
-:::tip
-If you configure `throwableError` as `null | undefined | {}`, adjust your code to check the `isSuccess` property instead of `error`:
+> **tip**: If you configure `throwableError` as `null | undefined | {}`, adjust your code to check the `isSuccess` property instead of `error`:
 
 ```ts
 const { error, data, isSuccess } = await safe(client('input'))
@@ -49,8 +44,6 @@ else {
   // handle success
 }
 ```
-
-:::
 
 ## Bonus
 

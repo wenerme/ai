@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure AI Studio
 
 LiteLLM supports all models on Azure AI Studio
 
-
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### ENV VAR
 ```python
@@ -34,9 +29,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -48,8 +40,6 @@ response = completion(
         api_base: os.environ/AZURE_AI_API_BASE
   ```
 
-
-
 2. Start the proxy 
 
   ```bash
@@ -58,9 +48,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -86,9 +76,9 @@ response = completion(
   print(response)
   ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -108,14 +98,9 @@ response = completion(
         ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
-
-</TabItem>
-
-</Tabs>
+  
 
 ## Passing additional params - max_tokens, temperature 
 See all litellm.completion supported params [here](../completion/input.md#translated-openai-params)
@@ -150,8 +135,6 @@ response = completion(
         temperature: 0.5
 ```
 
-
-
 2. Start the proxy 
 
   ```bash
@@ -160,9 +143,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -183,9 +166,9 @@ response = completion(
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -201,14 +184,11 @@ response = completion(
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
+  
 
 ## Function Calling 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -254,10 +234,6 @@ assert isinstance(
 
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
 -H "Content-Type: application/json" \
@@ -298,9 +274,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models
 
 LiteLLM supports **ALL** azure ai models. Here's a few examples:
@@ -315,9 +288,6 @@ LiteLLM supports **ALL** azure ai models. Here's a few examples:
 ## Usage - Azure Anthropic (Azure Foundry Claude)
 
 LiteLLM funnels Azure Claude deployments through the `azure_ai/` provider so Claude Opus models on Azure Foundry keep working with Tool Search, Effort, streaming, and the rest of the advanced feature set. Point `AZURE_AI_API_BASE` to `https://<resource>.services.ai.azure.com/anthropic` (LiteLLM appends `/v1/messages` automatically) and authenticate with `AZURE_AI_API_KEY` or an Azure AD token.
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python
 import os
@@ -339,9 +309,6 @@ for chunk in response:
     if chunk.choices[0].delta.content:
         print(chunk.choices[0].delta.content, end="", flush=True)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 **1. Set environment variables**
 
@@ -385,19 +352,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-
 ## Rerank Endpoint
 
 ### Usage
-
-
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK Usage">
 
 ```python
 from litellm import rerank
@@ -422,9 +379,6 @@ response = rerank(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM Proxy Usage">
 
 LiteLLM provides an cohere api compatible `/rerank` endpoint for Rerank calls.
 
@@ -471,7 +425,3 @@ curl http://0.0.0.0:4000/rerank \
     "top_n": 3
   }'
 ```
-
-</TabItem>
-</Tabs>
-

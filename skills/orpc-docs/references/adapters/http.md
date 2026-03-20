@@ -16,8 +16,6 @@ oRPC includes built-in HTTP support, making it easy to expose RPC endpoints in a
 | `fastify`    | [Fastify](https://fastify.dev/)                                                                                            |
 | `aws-lambda` | [AWS Lambda](https://aws.amazon.com/lambda/)                                                                               |
 
-::: code-group
-
 ```ts [node]
 import { createServer } from 'node:http' // or 'node:http2'
 import { RPCHandler } from '@orpc/server/node'
@@ -216,11 +214,7 @@ export const handler = awslambda.streamifyResponse<APIGatewayProxyEventV2>(async
 })
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
 ## Client Adapters
 
@@ -240,13 +234,9 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or another custom handler.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or another custom handler.
 
-::: info
-This only shows how to configure the http link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the http link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
 
 ## Event Iterator Options
 
@@ -270,13 +260,9 @@ const link = new OpenAPILink({
 })
 ```
 
-::: info
-These options are available for HTTP-based handlers and links only.
-:::
+> **info**: These options are available for HTTP-based handlers and links only.
 
-::: warning
-Link options apply when streaming from **client to server**, not server to client (as with handlers). In most cases, you don't need to configure these on the link.
-:::
+> **warning**: Link options apply when streaming from **client to server**, not server to client (as with handlers). In most cases, you don't need to configure these on the link.
 
 ### Initial Comment
 

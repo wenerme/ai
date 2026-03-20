@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Guardrail Testing Playground
 

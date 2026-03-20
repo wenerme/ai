@@ -1,22 +1,16 @@
 ---
 title: "Server Config"
 description: "Detailed description of ComfyUI server configuration options"
-icon: "server"
-sidebarTitle: "Server Config"
 ---
 
-<Note>
 Currently the `Server Config` settings menu only exists in the Desktop version, and this settings menu item does not exist in other versions
-</Note>
 
 ## Network
 
 ### Host: The IP address to listen on
 - **Function**: Sets the IP address the server binds to. Default `127.0.0.1` means only local access is allowed. If you need LAN access, you can set it to `0.0.0.0`
 
-<Tip>
   Although we provide LAN listening settings for the Desktop version, as a desktop application, it is not suitable for use as a server. We recommend that if you need to use ComfyUI as a public service within the LAN, please refer to the manual deployment tutorial to deploy the corresponding ComfyUI service.
-</Tip>
 
 ### Port: The port to listen on
 **Function**: The port number the server listens on. Desktop version defaults to port 8000, Web version typically uses port 8188
@@ -32,7 +26,6 @@ Currently the `Server Config` settings menu only exists in the Desktop version, 
 
 ### Maximum upload size (MB)
 **Function**: Limits the maximum size of single file uploads, in MB, default 100MB. Affects upload limits for images, models and other files
-
 
 ## CUDA
 

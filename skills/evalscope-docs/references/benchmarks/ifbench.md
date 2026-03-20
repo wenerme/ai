@@ -1,6 +1,5 @@
 # IFBench
 
-
 ## Overview
 
 IFBench is a benchmark designed to evaluate how reliably AI models follow novel, challenging, and diverse verifiable instructions, with a strong focus on out-of-domain generalization. Developed by AllenAI, it addresses overfitting and data contamination issues in existing benchmarks.
@@ -27,7 +26,6 @@ IFBench is a benchmark designed to evaluate how reliably AI models follow novel,
 - Requires emoji, syllapy, and spacy packages
 - Evaluates both strict and loose constraint satisfaction
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ IFBench is a benchmark designed to evaluate how reliably AI models follow novel,
 | **Metrics** | `prompt_level_strict`, `inst_level_strict`, `prompt_level_loose`, `inst_level_loose` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -155,5 +152,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

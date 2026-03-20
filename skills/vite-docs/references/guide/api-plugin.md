@@ -10,10 +10,8 @@ Vite strives to offer established patterns out of the box, so before creating a 
 
 When creating a plugin, you can inline it in your `vite.config.js`. There is no need to create a new package for it. Once you see that a plugin was useful in your projects, consider sharing it to help others [in the ecosystem](https://chat.vite.dev).
 
-::: tip
-When learning, debugging, or authoring plugins, we suggest including [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) in your project. It allows you to inspect the intermediate state of Vite plugins. After installing, you can visit `localhost:5173/__inspect/` to inspect the modules and transformation stack of your project. Check out install instructions in the [vite-plugin-inspect docs](https://github.com/antfu/vite-plugin-inspect).
-![vite-plugin-inspect](../images/vite-plugin-inspect.webp)
-:::
+> **tip**: When learning, debugging, or authoring plugins, we suggest including [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) in your project. It allows you to inspect the intermediate state of Vite plugins. After installing, you can visit `localhost:5173/__inspect/` to inspect the modules and transformation stack of your project. Check out install instructions in the [vite-plugin-inspect docs](https://github.com/antfu/vite-plugin-inspect).
+[vite-plugin-inspect]
 
 ## Conventions
 
@@ -76,9 +74,7 @@ export default defineConfig({
 
 ## Simple Examples
 
-:::tip
-It is common convention to author a Vite/Rolldown/Rollup plugin as a factory function that returns the actual plugin object. The function can accept options which allows users to customize the behavior of the plugin.
-:::
+> **tip**: It is common convention to author a Vite/Rolldown/Rollup plugin as a factory function that returns the actual plugin object. The function can accept options which allows users to customize the behavior of the plugin.
 
 ### Transforming Custom File Types
 
@@ -483,7 +479,7 @@ For plugin hooks that has access to the plugin context, Vite exposes additional 
 
 - `this.meta.viteVersion`: The current Vite version string (e.g. `"8.0.0"`).
 
-::: tip Detecting Rolldown powered Vite
+> **tip**: Detecting Rolldown powered Vite
 
 [`this.meta.rolldownVersion`](https://rolldown.rs/reference/Interface.PluginContextMeta#rolldownversion) is only available for Rolldown powered Vite (i.e. Vite 8+). You can use it to detect whether the current Vite instance is powered by Rolldown:
 
@@ -501,8 +497,6 @@ function versionCheckPlugin(): Plugin {
   }
 }
 ```
-
-:::
 
 ## Output Bundle Metadata
 
@@ -655,9 +649,7 @@ export default function myPlugin() {
 }
 ```
 
-::: tip
-[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) exports some utilities for hook filters like `exactRegex` and `prefixRegex`. These are also re-exported from `rolldown/filter` for convenience.
-:::
+> **tip**: [`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) exports some utilities for hook filters like `exactRegex` and `prefixRegex`. These are also re-exported from `rolldown/filter` for convenience.
 
 ## Client-server Communication
 
@@ -682,9 +674,8 @@ export default defineConfig({
 })
 ```
 
-::: tip NOTE
+> **tip**: NOTE
 We recommend **always prefixing** your event names to avoid collisions with other plugins.
-:::
 
 On the client side, use [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) to listen to the events:
 
@@ -733,10 +724,8 @@ export default defineConfig({
 
 Internally, vite infers the type of a payload from the `CustomEventMap` interface, it is possible to type custom events by extending the interface:
 
-:::tip Note
+> **tip**: Note
 Make sure to include the `.d.ts` extension when specifying TypeScript declaration files. Otherwise, Typescript may not know which file the module is trying to extend.
-:::
-
 ```ts [events.d.ts]
 import 'vite/types/customEvent.d.ts'
 

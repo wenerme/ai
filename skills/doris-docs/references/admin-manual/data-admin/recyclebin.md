@@ -22,7 +22,6 @@ SHOW CATALOG RECYCLE BIN [WHERE NAME [= "name" | LIKE "name_matcher"]];
 
 For more detailed syntax and best practices, please refer to the [SHOW-CATALOG-RECYCLE-BIN](../../sql-manual/sql-statements/recycle/SHOW-CATALOG-RECYCLE-BIN) command manual, You can also type `help SHOW CATALOG RECYCLE BIN` on the MySQL client command line for more help.
 
-
 ### Start Data Recovery
 
 To recover deleted data, you can use the following commands:

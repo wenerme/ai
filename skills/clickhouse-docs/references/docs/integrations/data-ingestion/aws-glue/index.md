@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Amazon Glue'
-sidebar_position: 1
-slug: /integrations/glue
 description: 'Integrate ClickHouse and Amazon Glue'
 keywords: ['clickhouse', 'amazon', 'aws', 'glue', 'migrating', 'data', 'spark']
 title: 'Integrating Amazon Glue with ClickHouse and Spark'
@@ -10,13 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_ingestion'
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import notebook_connections_config from '@site/static/images/integrations/data-ingestion/aws-glue/notebook-connections-config.png';
-import dependent_jars_path_option from '@site/static/images/integrations/data-ingestion/aws-glue/dependent_jars_path_option.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Integrating Amazon Glue with ClickHouse and Spark
 
@@ -29,9 +19,6 @@ import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 To integrate your Glue code with ClickHouse, you can use our official Spark connector in Glue via one of the following:
 - Installing the ClickHouse Glue connector from the AWS Marketplace (recommended).
 - Manually adding the Spark Connector's jars to your Glue job.
-
-<Tabs>
-<TabItem value="AWS Marketplace" label="AWS Marketplace" default>
 
 1. <h3 id="subscribe-to-the-connector">Subscribe to the Connector</h3>
 To access the connector in your account, subscribe to the ClickHouse AWS Glue Connector from AWS Marketplace.
@@ -47,12 +34,8 @@ In your Glue job, select the `Job details` tab, and expend the `Advanced propert
 
 <Image img={notebook_connections_config} size='md' alt='Glue Notebook connections config' force='true' />
 
-:::note
-The JARs used in the Glue connector are built for `Spark 3.3`, `Scala 2`, and `Python 3`. Make sure to select these versions when configuring your Glue job.
-:::
+> **note**: The JARs used in the Glue connector are built for `Spark 3.3`, `Scala 2`, and `Python 3`. Make sure to select these versions when configuring your Glue job.
 
-</TabItem>
-<TabItem value="Manual Installation" label="Manual Installation">
 To add the required jars manually, please follow the following:
 1. Upload the following jars to an S3 bucket - `clickhouse-jdbc-0.6.X-all.jar` and `clickhouse-spark-runtime-3.X_2.X-0.8.X.jar`.
 2. Make sure the Glue job has access to this bucket.
@@ -60,12 +43,7 @@ To add the required jars manually, please follow the following:
 
 <Image img={dependent_jars_path_option} size='md' alt='Glue Notebook JAR path options' force='true' />
 
-</TabItem>
-</Tabs>
-
 ## Examples {#example}
-<Tabs>
-<TabItem value="Scala" label="Scala" default>
 
 ```java
 import com.amazonaws.services.glue.GlueContext
@@ -126,16 +104,12 @@ object ClickHouseGlueExample {
     // Write to ClickHouse
     df.writeTo("clickhouse.default.cell_towers").append()
 
-
     // Read from ClickHouse
     val dfRead = spark.sql("select * from clickhouse.default.cell_towers")
     Job.commit()
   }
 }
 ```
-
-</TabItem>
-<TabItem value="Python" label="Python">
 
 ```python
 import sys
@@ -145,7 +119,6 @@ from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
 from pyspark.sql import Row
-
 
 ## @params: [JOB_NAME]
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
@@ -183,8 +156,5 @@ logger.info(str(df.take(10)))
 
 job.commit()
 ```
-
-</TabItem>
-</Tabs>
 
 For more details, please visit our [Spark documentation](/integrations/apache-spark).

@@ -64,17 +64,17 @@ Follow the steps shown in the image below to select and load evaluation reports:
 In the "Single Model" tab, you can perform in-depth analysis of a single model's performance.
 
 - **Dataset Overview**: Through sunburst charts and tables, intuitively display the model's overall performance across all evaluation datasets. Each layer of the sunburst chart represents datasets, categories, and subsets respectively, with sector size indicating sample volume and color depth representing score levels.
-  ![alt text](./images/report_overview.png)
+  [alt text]
 
 - **Dataset Details**: After selecting a specific dataset, you can view the model's scores on different metrics and subsets for that dataset. You can also further filter to view detailed input, model output (Generated), standard answer (Gold), and final score for each sample.
-  ![alt text](./images/single_dataset.png)
+  [alt text]
 
 ### Multi-Model Evaluation Result Comparison
 
 In the "Multi-Model" tab, you can horizontally compare the performance of multiple models.
 
 - **Model Overview**: Through radar charts and comparison tables, quickly understand the strengths and weaknesses of each model across different capability dimensions.
-  ![alt text](./images/model_compare.png)
+  [alt text]
 
 - **Model Comparison Details**: Select two models for "one-on-one" comparison, viewing their specific performance differences side-by-side on the same dataset and same questions.
   ![alt text](https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/evalscope/doc/model_compare_viz.jpg)
@@ -113,4 +113,4 @@ math&reasoning
 │   ├── ceval
 │   ├── race
 ```
-![alt text](./images/collection.png)
+[alt text]

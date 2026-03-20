@@ -93,9 +93,7 @@ const setting = os
 declare function auth(): { userId: number } | null
 ```
 
-::: info
-When you pass additional context to `next`, it will be merged with the existing context.
-:::
+> **info**: When you pass additional context to `next`, it will be merged with the existing context.
 
 ## Middleware Input
 
@@ -123,8 +121,7 @@ const pong = os
   })
 ```
 
-::: info
-You can adapt a middleware to accept a different input shape by using `.mapInput`.
+> **info**: You can adapt a middleware to accept a different input shape by using `.mapInput`.
 
 ```ts
 const canUpdate = os.middleware(async ({ context, next }, input: number) => {
@@ -134,8 +131,6 @@ const canUpdate = os.middleware(async ({ context, next }, input: number) => {
 // Transform middleware to accept a new input shape
 const mappedCanUpdate = canUpdate.mapInput((input: { id: number }) => input.id)
 ```
-
-:::
 
 ## Middleware Output
 
@@ -167,9 +162,7 @@ const concatMiddleware = aMiddleware
   .concat(anotherMiddleware)
 ```
 
-::: info
-If you want to concatenate two middlewares with different input types, you can use `.mapInput` to align their input types before concatenation.
-:::
+> **info**: If you want to concatenate two middlewares with different input types, you can use `.mapInput` to align their input types before concatenation.
 
 ## Built-in Middlewares
 

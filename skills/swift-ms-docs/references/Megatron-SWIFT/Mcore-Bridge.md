@@ -289,7 +289,6 @@ megatron export \
     --pipeline_model_parallel_size 2
 ```
 
-
 ## Using Code
 
 You need to create the following file (test.py), then run `CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 test.py`. Below is sample code for loading, exporting, and saving weights using Mcore-Bridge.

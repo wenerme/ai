@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Best practices'
 description: 'Details best practices to follow when working with Kafka ClickPipes'
-slug: /integrations/clickpipes/kafka/best-practices
-sidebar_position: 1
 title: 'Best practices'
 doc_type: 'guide'
 keywords: ['kafka best practices', 'clickpipes', 'compression', 'authentication', 'scaling']
@@ -86,10 +83,7 @@ Below is an example of the required IAM policy for Apache Kafka APIs for MSK:
 
 If you're authenticating to MSK with a IAM role ARN, you will need to add a trusted relationship between your ClickHouse Cloud instance so the role can be assumed.
 
-:::note
-Role-based access only works for ClickHouse Cloud instances deployed to AWS.
-:::
-
+> **note**: Role-based access only works for ClickHouse Cloud instances deployed to AWS.
 ```json
 {
     "Version": "2012-10-17",

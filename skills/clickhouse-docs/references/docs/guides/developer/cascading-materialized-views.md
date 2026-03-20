@@ -1,5 +1,4 @@
 ---
-slug: /guides/developer/cascading-materialized-views
 title: 'Cascading Materialized Views'
 description: 'How to use multiple materialized views from a source table.'
 keywords: ['materialized view', 'aggregation']
@@ -11,8 +10,6 @@ doc_type: 'guide'
 This example demonstrates how to create a materialized view, and then how to cascade a second materialized view on to the first. In this page, you will see how to do it, many of the possibilities, and the limitations. Different use cases can be answered by creating a Materialized view using a second Materialized view as the source.
 
 <iframe width="1024" height="576" src="https://www.youtube.com/embed/QDAJTKZT8y4?si=1KqPNHHfaKfxtPat" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<br />
 
 Example:
 
@@ -49,9 +46,7 @@ CREATE TABLE analytics.hourly_data
 ENGINE = Null
 ```
 
-:::note
-You can create a materialized view on a Null table. So the data written to the table will end up affecting the view, but the original raw data will still be discarded.
-:::
+> **note**: You can create a materialized view on a Null table. So the data written to the table will end up affecting the view, but the original raw data will still be discarded.
 
 ## Monthly aggregated table and materialized view {#monthly-aggregated-table-and-materialized-view}
 
@@ -121,13 +116,11 @@ GROUP BY
     year
 ```
 
-:::note
-A common misinterpretation when working with Materialized views is that data is read from the table, This isn't how `Materialized views` work; the data forwarded is the inserted block, not the final result in your table.
+> **note**: A common misinterpretation when working with Materialized views is that data is read from the table, This isn't how `Materialized views` work; the data forwarded is the inserted block, not the final result in your table.
 
 Let's imagine in this example that the engine used in `monthly_aggregated_data` is a CollapsingMergeTree, the data forwarded to our second Materialized view `year_aggregated_data_mv` won't be the final result of the collapsed table, it will forward the block of data with the fields defined as in the `SELECT ... GROUP BY`.
 
 If you're using CollapsingMergeTree, ReplacingMergeTree, or even SummingMergeTree and you plan to create a cascade Materialized view you need to understand the limitations described here.
-:::
 
 ## Sample data {#sample-data}
 

@@ -1,15 +1,9 @@
 ---
 description: 'Documentation for the SSH interface in ClickHouse'
 keywords: ['client', 'ssh', 'putty']
-sidebar_label: 'SSH Interface'
-sidebar_position: 60
-slug: /interfaces/ssh
 title: 'SSH Interface'
 doc_type: 'reference'
 ---
-
-import ExperimentalBadge from '@theme/badges/ExperimentalBadge';
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
 
 # SSH interface with PTY
 

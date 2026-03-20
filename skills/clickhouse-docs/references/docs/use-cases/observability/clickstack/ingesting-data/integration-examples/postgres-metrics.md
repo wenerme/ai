@@ -1,26 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/postgresql-metrics
 title: 'Monitoring PostgreSQL Metrics with ClickStack'
-sidebar_label: 'PostgreSQL Metrics'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring PostgreSQL Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'metrics', 'OTEL', 'ClickStack', 'database monitoring']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/postgres/import-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/postgres/postgres-metrics-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring PostgreSQL Metrics with ClickStack {#postgres-metrics-clickstack}
 
 :::note[TL;DR]
 Monitor PostgreSQL performance metrics in ClickStack using the OTel PostgreSQL receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing PostgreSQL {#existing-postgres}
 
@@ -86,9 +74,7 @@ service:
       exporters: [clickhouse]
 ```
 
-:::note
-The `tls: insecure: true` setting disables SSL verification for development/testing. For production PostgreSQL with SSL enabled, remove this line or configure proper certificates.
-:::
+> **note**: The `tls: insecure: true` setting disables SSL verification for development/testing. For production PostgreSQL with SSL enabled, remove this line or configure proper certificates.
 
 #### Deploy ClickStack with custom configuration {#deploy-clickstack}
 
@@ -124,7 +110,6 @@ For users who want to test the PostgreSQL metrics integration before configuring
 
 :::note[Database-level metrics only]
 This demo dataset includes database-level metrics only to keep the sample data lightweight. Table and index metrics are collected automatically when monitoring a real PostgreSQL database.
-:::
 
 <VerticalStepper headerLevel="h4">
 
@@ -180,7 +165,6 @@ Proceed to the [Dashboards and visualization](#dashboards) section to import the
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)**. Set your time range to **2025-11-09 00:00:00 - 2025-11-12 00:00:00** to ensure you see the demo metrics regardless of your location. Once you see the metrics, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -209,9 +193,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={example_dashboard} alt="PostgreSQL metrics dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

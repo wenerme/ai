@@ -1,28 +1,11 @@
 ---
-slug: /use-cases/observability/clickstack/production
 title: 'Going to Production'
-sidebar_label: 'Production'
-pagination_prev: null
-pagination_next: null
 description: 'Going to production with ClickStack'
 doc_type: 'guide'
-toc_max_heading_level: 2
 keywords: ['clickstack', 'production', 'deployment', 'best practices', 'operations']
 ---
 
-import Image from '@theme/IdealImage';
-import connect_cloud from '@site/static/images/use-cases/observability/connect-cloud.png';
-import hyperdx_cloud from '@site/static/images/use-cases/observability/hyperdx-cloud.png';
-import ingestion_key from '@site/static/images/use-cases/observability/ingestion-keys.png';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import ResourceEstimation from '@site/docs/use-cases/observability/clickstack/managing/_snippets/_resource_estimation.md';
-
 When deploying ClickStack in production, there are several additional considerations to ensure security, stability, and correct configuration. These vary depending on the distribution - Open Source or Managed - being used.
-
-<Tabs groupId="architectures">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 For production deployments, [Managed ClickStack](/use-cases/observability/clickstack/getting-started/managed) is recommended. It applies industry-standard [security practices](/cloud/security) by default - including enhanced encryption, authentication and connectivity, and managed access controls, as well as providing the following benefits:
 
@@ -67,10 +50,6 @@ Use [**Managed Warehouses**](/cloud/reference/warehouses) to create a **child se
 This approach ensures your existing workloads remain unaffected while allowing ClickStack to scale independently as observability data grows.
 
 For larger deployments or custom sizing guidance, please contact support for a more precise estimate.
-
-</TabItem>
-
-<TabItem value="oss-clickstack" label="ClickStack Open Source">
 
 ### Network and port security {#network-security}
 
@@ -185,6 +164,3 @@ Ensure the [Time To Live (TTL)](/use-cases/observability/clickstack/ttl) has bee
 ### MongoDB guidelines {#mongodb-guidelines}
 
 Follow the official [MongoDB security checklist](https://www.mongodb.com/docs/manual/administration/security-checklist/).
-
-</TabItem>
-</Tabs>

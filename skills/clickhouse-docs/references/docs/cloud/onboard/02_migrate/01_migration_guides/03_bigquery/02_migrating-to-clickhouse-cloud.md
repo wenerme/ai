@@ -1,25 +1,10 @@
 ---
 title: 'Migrating from BigQuery to ClickHouse Cloud'
-slug: /migrations/bigquery/migrating-to-clickhouse-cloud
 description: 'How to migrate your data from BigQuery to ClickHouse Cloud'
 keywords: ['BigQuery']
 show_related_blogs: true
-sidebar_label: 'Migration guide'
 doc_type: 'guide'
 ---
-
-import bigquery_2 from '@site/static/images/migrations/bigquery-2.png';
-import bigquery_3 from '@site/static/images/migrations/bigquery-3.png';
-import bigquery_4 from '@site/static/images/migrations/bigquery-4.png';
-import bigquery_5 from '@site/static/images/migrations/bigquery-5.png';
-import bigquery_6 from '@site/static/images/migrations/bigquery-6.png';
-import bigquery_7 from '@site/static/images/migrations/bigquery-7.png';
-import bigquery_8 from '@site/static/images/migrations/bigquery-8.png';
-import bigquery_9 from '@site/static/images/migrations/bigquery-9.png';
-import bigquery_10 from '@site/static/images/migrations/bigquery-10.png';
-import bigquery_11 from '@site/static/images/migrations/bigquery-11.png';
-import bigquery_12 from '@site/static/images/migrations/bigquery-12.png';
-import Image from '@theme/IdealImage';
 
 ## Why use ClickHouse Cloud over BigQuery? {#why-use-clickhouse-cloud-over-bigquery}
 
@@ -432,8 +417,6 @@ Peak memory usage: 323.37 MiB.
 **Which tags receive the most views:**
 
 _BigQuery_
-
-<br />
 
 <Image img={bigquery_9} size="sm" alt="BigQuery 1" border/>
 

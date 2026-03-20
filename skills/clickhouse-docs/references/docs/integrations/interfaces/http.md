@@ -1,15 +1,9 @@
 ---
 description: 'Documentation for the HTTP interface in ClickHouse, which provides REST
   API access to ClickHouse from any platform and programming language'
-sidebar_label: 'HTTP Interface'
-sidebar_position: 15
-slug: /interfaces/http
 title: 'HTTP Interface'
 doc_type: 'reference'
 ---
-
-import PlayUI from '@site/static/images/play.png';
-import Image from '@theme/IdealImage';
 
 # HTTP Interface
 
@@ -71,9 +65,7 @@ To query over HTTP/HTTPS there are three options:
 - using the POST method.
 - Send the beginning of the query in the 'query' parameter, and the rest using POST
 
-:::note
-The size of the URL is limited to 1 MiB by default, this can be changed with the `http_max_uri_size` setting.
-:::
+> **note**: The size of the URL is limited to 1 MiB by default, this can be changed with the `http_max_uri_size` setting.
 
 If successful, you receive the 200 response code and the result in the response body.
 If an error occurs, you receive the 500 response code and an error description text in the response body.
@@ -267,9 +259,7 @@ $ curl 'http://localhost:8123/?query=SELECT%20a%20FROM%20t'
 6
 ```
 
-:::note
-Data is output in a random order due to parallel query processing
-:::
+> **note**: Data is output in a random order due to parallel query processing
 
 To delete the table:
 
@@ -306,9 +296,7 @@ In order for ClickHouse to compress the response, append the `Accept-Encoding: c
 
 You can configure the data compression level using the [`http_zlib_compression_level`](../../operations/settings/settings.md#http_zlib_compression_level) setting for all compression methods.
 
-:::info
-Some HTTP clients might decompress data from the server by default (with `gzip` and `deflate`) and you might get decompressed data even if you use the compression settings correctly.
-:::
+> **info**: Some HTTP clients might decompress data from the server by default (with `gzip` and `deflate`) and you might get decompressed data even if you use the compression settings correctly.
 
 ## Examples {#examples-compression}
 
@@ -375,9 +363,7 @@ echo 'SELECT 1' | curl 'http://user:password@localhost:8123/' -d @-
 
 2. In the `user` and `password` URL parameters
 
-:::warning
-We don't recommend using this method as the parameter might be logged by web proxy and cached in the browser
-:::
+> **warning**: We don't recommend using this method as the parameter might be logged by web proxy and cached in the browser
 
 For example:
 
@@ -481,9 +467,7 @@ For example:
 curl -sS 'http://localhost:8123/?max_result_bytes=4000000&buffer_size=3000000&wait_end_of_query=1' -d 'SELECT toUInt8(number) FROM system.numbers LIMIT 9000000 FORMAT RowBinary'
 ```
 
-:::tip
-Use buffering to avoid situations where a query processing error occurred after the response code and HTTP headers were sent to the client. In this situation, an error message is written at the end of the response body, and on the client-side, the error can only be detected at the parsing stage.
-:::
+> **tip**: Use buffering to avoid situations where a query processing error occurred after the response code and HTTP headers were sent to the client. In this situation, an error message is written at the end of the response body, and on the client-side, the error can only be detected at the parsing stage.
 
 ## Setting a role with query parameters {#setting-role-with-query-parameters}
 
@@ -539,9 +523,7 @@ This behavior is independent of the format used, whether it's `Native`, `TSV`, o
 
 You can mitigate this problem by enabling `wait_end_of_query=1` ([Response Buffering](#response-buffering)). In this case, sending of the HTTP header is delayed until the entire query is resolved. This however, doesn't completely solve the problem because the result must still fit within the [`http_response_buffer_size`](../../operations/settings/settings.md#http_response_buffer_size), and other settings like [`send_progress_in_http_headers`](../../operations/settings/settings.md#send_progress_in_http_headers) can interfere with the delay of the header.
 
-:::tip
-The only way to catch all errors is to analyze the HTTP body before parsing it using the required format.
-:::
+> **tip**: The only way to catch all errors is to analyze the HTTP body before parsing it using the required format.
 
 Such exceptions in ClickHouse have consistent exception format as below irrespective of which format used (eg. `Native`, `TSV`, `JSON`, etc) when `http_write_exception_in_output_format=0` (default) . Which makes it easy to parse and extract error messages on the client side.
 
@@ -782,9 +764,7 @@ The configuration methods for different `type`s are discussed next.
 
 The following example defines the values of [`max_threads`](../../operations/settings/settings.md#max_threads) and [`max_final_threads`](../../operations/settings/settings.md#max_final_threads) settings, then queries the system table to check whether these settings were set successfully.
 
-:::note
-To keep the default `handlers` such as` query`, `play`,` ping`, add the `<defaults/>` rule.
-:::
+> **note**: To keep the default `handlers` such as` query`, `play`,` ping`, add the `<defaults/>` rule.
 
 For example:
 
@@ -848,9 +828,7 @@ curl -X POST 'http://localhost:8123/api/events?id=123' \
   -d '{"user": "john", "action": "login", "timestamp": "2024-01-01T10:00:00Z"}'
 ```
 
-:::note
-In one `predefined_query_handler` only one `query` is supported.
-:::
+> **note**: In one `predefined_query_handler` only one `query` is supported.
 
 ### dynamic_query_handler {#dynamic_query_handler}
 

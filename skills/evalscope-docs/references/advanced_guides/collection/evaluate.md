@@ -29,7 +29,7 @@ task_cfg = TaskConfig(
 )
 run_task(task_cfg=task_cfg)
 ```
-:::
+
 :::{tab-item} Using CLI Command
 ```bash
 evalscope eval \
@@ -42,7 +42,7 @@ evalscope eval \
   --eval-batch-size 5 \
   --generation-config '{"temperature":0.0}'
 ```
-:::
+
 ::::
 
 ## Usage Conventions
@@ -64,7 +64,6 @@ The system outputs reports from five "observation perspectives":
 - **micro_avg.**: Sum across samples then calculate overall accuracy (total correct / total samples). Subsets with more samples have greater influence.
 - **macro_avg.**: Simple average of scores for "members" (subsets) at this level, each member weighted equally regardless of sample count.
 - **weighted_avg.**: Weighted by defined leaf weights $w_i$ (weights are defined before sampling; sampling process doesn't change weight meaning).
-
 
 **Example Output**:
 ```text

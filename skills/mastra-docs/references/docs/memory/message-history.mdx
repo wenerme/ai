@@ -13,9 +13,7 @@ Message history is the most basic and important form of memory. It gives the LLM
 
 You can also retrieve message history to display past conversations in your UI.
 
-:::info
-Each message belongs to a thread (the conversation) and a resource (the user or entity it's associated with). See [Threads and resources](/docs/memory/storage#threads-and-resources) for more detail.
-:::
+> **info**: Each message belongs to a thread (the conversation) and a resource (the user or entity it's associated with). See [Threads and resources](/docs/memory/storage#threads-and-resources) for more detail.
 
 ## Getting started
 
@@ -57,8 +55,7 @@ export const agent = new Agent({
 
 When you call the agent, messages are automatically saved to the database. You can specify a `threadId`, `resourceId`, and optional `metadata`:
 
-<Tabs>
-  <TabItem value="generate" label="Generate">
+  
     ```typescript
     await agent.generate('Hello', {
       memory: {
@@ -71,9 +68,9 @@ When you call the agent, messages are automatically saved to the database. You c
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="stream" label="Stream">
+  
     ```typescript
     await agent.stream('Hello', {
       memory: {
@@ -86,14 +83,9 @@ When you call the agent, messages are automatically saved to the database. You c
       },
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
-:::info
-
-Threads and messages are created automatically when you call `agent.generate()` or `agent.stream()`, but you can also create them manually with [`createThread()`](/reference/memory/createThread) and [`saveMessages()`](/reference/memory/memory-class).
-
-:::
+> **info**: Threads and messages are created automatically when you call `agent.generate()` or `agent.stream()`, but you can also create them manually with [`createThread()`](/reference/memory/createThread) and [`saveMessages()`](/reference/memory/memory-class).
 
 You can use this history in two ways:
 
@@ -115,9 +107,7 @@ The `Memory` instance gives you access to functions for listing threads, recalli
 
 Use these methods to fetch threads and messages for displaying conversation history in your UI or for custom memory retrieval logic.
 
-:::warning
-The memory system doesn't enforce access control. Before running any query, verify in your application logic that the current user is authorized to access the `resourceId` being queried.
-:::
+> **warning**: The memory system doesn't enforce access control. Before running any query, verify in your application logic that the current user is authorized to access the `resourceId` being queried.
 
 ### Threads
 

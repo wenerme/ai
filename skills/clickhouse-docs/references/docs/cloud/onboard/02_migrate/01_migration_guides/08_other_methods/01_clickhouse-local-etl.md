@@ -1,21 +1,9 @@
 ---
-sidebar_label: 'Using clickhouse-local'
 keywords: ['clickhouse', 'migrate', 'migration', 'migrating', 'data', 'etl', 'elt', 'clickhouse-local', 'clickhouse-client']
-slug: /cloud/migration/clickhouse-local
 title: 'Migrating to ClickHouse using clickhouse-local'
 description: 'Guide showing how to migrate to ClickHouse using clickhouse-local'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-import AddARemoteSystem from '@site/docs/_snippets/_add_remote_ip_access_list_detail.md';
-import ch_local_01 from '@site/static/images/integrations/migration/ch-local-01.png';
-import ch_local_02 from '@site/static/images/integrations/migration/ch-local-02.png';
-import ch_local_03 from '@site/static/images/integrations/migration/ch-local-03.png';
-import ch_local_04 from '@site/static/images/integrations/migration/ch-local-04.png';
 
 # Migrating to ClickHouse using clickhouse-local
 
@@ -47,9 +35,6 @@ You need a host machine for `clickhouse-local` that has network access to both y
 
 On that host machine, download the appropriate build of `clickhouse-local` based on your computer's operating system:
 
-<Tabs groupId="os">
-<TabItem value="linux" label="Linux" >
-
 1. The simplest way to download `clickhouse-local` locally is to run the following command:
   ```bash
   curl https://clickhouse.com/ | sh
@@ -59,9 +44,6 @@ On that host machine, download the appropriate build of `clickhouse-local` based
   ```bash
   ./clickhouse-local
   ```
-
-</TabItem>
-<TabItem value="mac" label="macOS">
 
 1. The simplest way to download `clickhouse-local` locally is to run the following command:
   ```bash
@@ -73,17 +55,12 @@ On that host machine, download the appropriate build of `clickhouse-local` based
   ./clickhouse local
   ```
 
-</TabItem>
-</Tabs>
-
-:::info Important
+> **info**: Important
 The examples throughout this guide use the Linux commands for running `clickhouse-local` (`./clickhouse-local`).
 To run `clickhouse-local` on a Mac, use `./clickhouse local`.
-:::
 
-:::tip Add the remote system to your ClickHouse Cloud service IP Access List
+> **tip**: Add the remote system to your ClickHouse Cloud service IP Access List
 In order for the `remoteSecure` function to connect to your ClickHouse Cloud service, the IP address of the remote system needs to be allowed by the IP Access List.  Expand **Manage your IP Access List** below this tip for more information.
-:::
 
   <AddARemoteSystem />
 
@@ -108,9 +85,7 @@ for writing the data into a destination table on your ClickHouse cloud service.
   CREATE TABLE db.table ...
   ```
 
-:::note
-The schema of the ClickHouse Cloud destination table and schema of the source MySQL table must be aligned (the column names and order must be the same, and the column data types must be compatible).
-:::
+> **note**: The schema of the ClickHouse Cloud destination table and schema of the source MySQL table must be aligned (the column names and order must be the same, and the column data types must be compatible).
 
 ### On the clickhouse-local host machine: {#on-the-clickhouse-local-host-machine}
 
@@ -123,7 +98,5 @@ remoteSecure('HOSTNAME.clickhouse.cloud:9440', 'db.table', 'default', 'PASS')
 SELECT * FROM mysql('host:port', 'database', 'table', 'user', 'password');"
   ```
 
-:::note
-No data is stored locally on the `clickhouse-local` host machine. Instead, the data is read from the source MySQL table
+> **note**: No data is stored locally on the `clickhouse-local` host machine. Instead, the data is read from the source MySQL table
   and then immediately written to the destination table on the ClickHouse Cloud service.
-:::

@@ -1,28 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/cloudflare-logs
 title: 'Monitoring Cloudflare Logs with ClickStack'
-sidebar_label: 'Cloudflare Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Ingest Cloudflare Logpush data into ClickStack using ClickPipes for continuous log ingestion from S3'
 doc_type: 'guide'
 keywords: ['Cloudflare', 'logs', 'ClickStack', 'ClickPipes', 'S3', 'HTTP', 'Logpush']
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import clickpipe_s3 from '@site/static/images/clickstack/cloudflare/clickpipe-s3.png';
-import continuous_ingestion from '@site/static/images/clickstack/cloudflare/continuous-ingestion.png';
-import parse_information from '@site/static/images/clickstack/cloudflare/parse-information.png';
-import add_source from '@site/static/images/clickstack/cloudflare/add-source.png';
-import configure_optional from '@site/static/images/clickstack/cloudflare/configure-optional-fields.png';
-import save_source from '@site/static/images/clickstack/cloudflare/save-source.png';
-import search_view from '@site/static/images/clickstack/cloudflare/search-view.png';
-import log_view from '@site/static/images/clickstack/cloudflare/log-view.png';
-import import_dashboard from '@site/static/images/clickstack/cloudflare/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/cloudflare/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/cloudflare/example-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
 
 # Monitoring Cloudflare Logs with ClickStack {#cloudflare-clickstack}
 
@@ -30,7 +11,6 @@ import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTracke
 This guide shows you how to ingest Cloudflare logs into ClickStack using ClickPipes. Cloudflare Logpush writes logs to S3, and ClickPipes continuously ingests new files into ClickHouse. Unlike most ClickStack integration guides that use the OpenTelemetry Collector, this guide uses [ClickPipes](/integrations/clickpipes) to pull data directly from S3.
 
 A demo dataset is available if you want to explore the dashboards before configuring production ingestion.
-:::
 
 ## Overview {#overview}
 
@@ -52,7 +32,6 @@ https://YOUR_CLICKHOUSE_HOST:8443/?query=INSERT+INTO+cloudflare_http_logs+FORMAT
 Replace `YOUR_CLICKHOUSE_HOST` with your ClickHouse Cloud hostname and `BASE64_CREDENTIALS` with your Base64-encoded credentials (`echo -n 'default:YOUR_PASSWORD' | base64`).
 
 This is simpler to set up (no S3, SQS, or IAM configuration needed), but Cloudflare Logpush [cannot backfill historical data](https://developers.cloudflare.com/logs/logpush/) if delivery fails — so if ClickHouse is unavailable during a push, those logs are permanently lost.
-:::
 
 ## Integration with existing Cloudflare Logpush {#existing-cloudflare}
 
@@ -103,9 +82,7 @@ Click **Parse information**. ClickPipes samples your log files and auto-detects 
 
 Click **Complete Setup**.
 
-:::note
-When first created, ClickPipes performs an initial load of **all existing files** in the specified path before switching to continuous polling. If your bucket contains a large backlog of Cloudflare logs, this initial load may take some time.
-:::
+> **note**: When first created, ClickPipes performs an initial load of **all existing files** in the specified path before switching to continuous polling. If your bucket contains a large backlog of Cloudflare logs, this initial load may take some time.
 
 #### Configure HyperDX data source {#configure-source}
 
@@ -195,7 +172,6 @@ You should see log entries with request summaries, searchable Cloudflare attribu
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2026-02-24 00:00:00 - 2026-02-25 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -219,9 +195,7 @@ HyperDX displays timestamps in your browser's local timezone. The demo data span
 
 <Image img={example_dashboard} alt="Example dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2026-02-24 00:00:00 - 2026-02-25 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2026-02-24 00:00:00 - 2026-02-25 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

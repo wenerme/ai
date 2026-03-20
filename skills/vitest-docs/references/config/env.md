@@ -1,6 +1,5 @@
 ---
 title: env | Config
-outline: deep
 ---
 
 # env

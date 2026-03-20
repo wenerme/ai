@@ -1,18 +1,4 @@
-<!--Copyright 2025 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Building a compatible model backend for inference
 
@@ -30,8 +16,8 @@ This guide shows you how to implement a model in Transformers that works as a ba
    
    Expand the code below for an example.
 
-    <details>
-    <summary>modeling_my_model.py</summary>
+    
+    modeling_my_model.py
 
     ```python
     from transformers import PreTrainedModel
@@ -56,7 +42,7 @@ This guide shows you how to implement a model in Transformers that works as a ba
         _supports_attention_backend = True
     ```
 
-    </details>
+    
 
 3. Enable optional tensor or pipeline parallelism by adding the following keys to [`PreTrainedConfig`].
 
@@ -65,8 +51,8 @@ This guide shows you how to implement a model in Transformers that works as a ba
 
     Expand the code below for an example.
 
-    <details>
-    <summary>configuration_my_model.py</summary>
+    
+    configuration_my_model.py
 
     ```python
 
@@ -88,7 +74,7 @@ This guide shows you how to implement a model in Transformers that works as a ba
         }
     ```
 
-    </details>
+    
 
 ## Multimodal models
 
@@ -102,8 +88,7 @@ Multimodal models require additional changes beyond the [vision language model c
 
 Expand the code below for an example.
 
-<details>
-<summary>modeling_my_multimodal_model.py</summary>
+modeling_my_multimodal_model.py
 
 ```python
 class MyMultimodalProcessor(ProcessorMixin):
@@ -132,8 +117,6 @@ class MyMultimodalProcessor(ProcessorMixin):
             vision_data.update({"num_image_tokens": num_image_tokens, "num_image_patches": num_image_patches})
         return MultiModalData(**vision_data)
 ```
-
-</details>
 
 ## Resources
 

@@ -1,6 +1,5 @@
 # Agent Support
 
-
 ## Dataset Format
 
 ms-swift leverages agent-template to decouple Agent data formats from model implementations. With a unified dataset format, users can seamlessly switch between different models for training without any data modifications.
@@ -210,7 +209,6 @@ The specific effects of this configuration are as follows:
 - The `'Thought:'` and `'Final Answer:'` keywords and their subsequent content both have a loss weight of 1;
 - The `'Observation:'` field itself has a loss weight of 2, but the subsequent tool call result content has a loss weight of 0.
 
-
 2. Regular Expression Matching Example: Ignoring Empty Thought Blocks
 
 When training reasoning models, it may be necessary to exclude loss computation for empty thought blocks in the dataset, such as sequences like `'<think>\n\n</think>\n\n'`.
@@ -219,7 +217,6 @@ In such cases, use `--loss_scale ignore_empty_think` (see configuration file [ig
 
 The specific effect of this setting is:
 - Any string matching the regular expression `<think>\\s*</think>\\s*` is assigned a `loss_scale` of 0, meaning no loss is computed for these segments.
-
 
 Testing loss_scale using code:
 ```python
@@ -237,7 +234,6 @@ inputs = template.encode(data)
 print(template.safe_decode(inputs['labels']))
 # '[-100 * 14]abc<think>\n\n</think>\n\n123<|im_end|>\n'
 ```
-
 
 For more `loss_scale` plugin designs, please refer to the [Architecture](../Customization/Architecture.md) documentation.
 

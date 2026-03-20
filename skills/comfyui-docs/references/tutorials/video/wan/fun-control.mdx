@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.1 Fun Control Video Examples"
 description: "This guide demonstrates how to use Wan2.1 Fun Control in ComfyUI to generate videos with control videos"
-sidebarTitle: "Wan2.1 Fun Control"
 ---
-
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 ## About Wan2.1-Fun-Control
 
@@ -29,12 +26,8 @@ In this guide, we'll provide two workflows:
 1. A workflow using only native Comfy Core nodes
 2. A workflow using custom nodes
 
-<Tip>
 Due to current limitations in native nodes for video support, the native-only workflow ensures users can complete the process without installing custom nodes.
 However, we've found that providing a good user experience for video generation is challenging without custom nodes, so we're providing both workflow versions in this guide.
-</Tip>
-
-<UpdateReminder/>
 
 ## Model Installation
 
@@ -97,7 +90,7 @@ Please download the following image and video for input:
 
 ### 2. Complete the Workflow Step by Step
 
-![Wan2.1 Fun Control Workflow Steps](/images/tutorial/video/wan/fun_control_native_flow_diagram.png)
+[Wan2.1 Fun Control Workflow Steps]
 
 1. Ensure the `Load Diffusion Model` node has loaded `wan2.1_fun_control_1.3B_bf16.safetensors`
 2. Ensure the `Load CLIP` node has loaded `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
@@ -133,9 +126,7 @@ Download the image below and drag it into ComfyUI to load the workflow:
 
 ![Workflow File](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/wan2.1_fun_control/wan2.1_fun_control_use_custom_nodes.webp)
 
-<Note>
 Due to the large size of video files, you can also click [here](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/wan2.1_fun_control/wan2.1_fun_control_use_custom_nodes.json) to download the workflow file in JSON format.
-</Note>
 
 #### 1.2 Input Images and Videos Download
 Please download the following image and video for input:
@@ -149,7 +140,7 @@ Please download the following image and video for input:
 
 ### 2. Complete the Workflow Step by Step
 
-![Wan2.1 Fun Control Workflow Using Custom Nodes Steps](/images/tutorial/video/wan/fun_control_using_custom_nodes_flow_diagram.png)
+[Wan2.1 Fun Control Workflow Using Custom Nodes Steps]
 
 > The model part is essentially the same. If you've already experienced the native-only workflow, you can directly upload the corresponding images and run it.
 
@@ -174,7 +165,7 @@ Thanks to the ComfyUI community authors for their custom node packages:
 
 ## Usage Tips
 
-![Apply Multi Control Videos](/images/tutorial/video/wan/apply_multi_control_videos.jpg)
+[Apply Multi Control Videos]
 
 - A useful tip is that you can combine multiple image preprocessing techniques and then use the `Image Blend` node to achieve the goal of applying multiple control methods simultaneously.
 - You can use the `Video Combine` node from `ComfyUI-VideoHelperSuite` to save videos in mp4 format

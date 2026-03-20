@@ -29,7 +29,6 @@ SUB_BITMAP(<bitmap>, <position>, <cardinality_limit>)
 A subset Bitmap within the specified range and limit.
 - If the parameter is NULL, returns NULL
 
-
 ## Examples
 
 To get a subset of a Bitmap starting from position 0 with a cardinality limit of 3:

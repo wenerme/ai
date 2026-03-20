@@ -51,7 +51,6 @@ The pseudocode below shows the process by which the vLLM persistent batch notifi
 
             self.input_batch.refresh_metadata()
 
-
     # gpu_input_batch.py
 
     class InputBatch:
@@ -68,7 +67,6 @@ The pseudocode below shows the process by which the vLLM persistent batch notifi
                 logit_proc.update_state(batch_update)
 
             ...
-
 
     # vllm/v1/sample/logits_processor/interface.py
 
@@ -116,7 +114,6 @@ Note that the sampler will access the logits processors via `SamplingMetadata.lo
 
             ...
 
-
     # sampler.py
 
     class Sampler(nn.Module):
@@ -136,7 +133,6 @@ Note that the sampler will access the logits processors via `SamplingMetadata.lo
             ...
 
             # ...return sampler output data structure...
-
 
         def sample(self, logits, sampling_metadata)
 
@@ -183,13 +179,11 @@ The previous sections alluded to the interfaces which vLLM logits processors mus
     if TYPE_CHECKING:
         from vllm.config import VllmConfig
 
-
     class MoveDirectionality(Enum):
         # One-way i1->i2 req move within batch
         UNIDIRECTIONAL = auto()
         # Two-way i1<->i2 req swap within batch
         SWAP = auto()
-
 
     # (index, params, prompt_tok_ids, output_tok_ids) tuples for new
     # requests added to the batch.
@@ -201,7 +195,6 @@ The previous sections alluded to the interfaces which vLLM logits processors mus
 
     # Batch indices of any removed requests.
     RemovedRequest = int
-
 
     @dataclass(frozen=True)
     class BatchUpdate:
@@ -218,7 +211,6 @@ The previous sections alluded to the interfaces which vLLM logits processors mus
         removed: Sequence[RemovedRequest]
         moved: Sequence[MovedRequest]
         added: Sequence[AddedRequest]
-
 
     class LogitsProcessor(ABC):
 

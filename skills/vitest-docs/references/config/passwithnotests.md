@@ -1,6 +1,5 @@
 ---
 title: passWithNoTests | Config
-outline: deep
 ---
 
 # passWithNoTests <CRoot />

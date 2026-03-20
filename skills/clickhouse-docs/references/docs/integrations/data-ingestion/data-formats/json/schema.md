@@ -1,16 +1,10 @@
 ---
 title: 'Designing JSON schema'
-slug: /integrations/data-formats/json/schema
 description: 'How to optimally design JSON schemas'
 keywords: ['json', 'clickhouse', 'inserting', 'loading', 'formats', 'schema', 'structured', 'semi-structured']
 score: 20
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import json_column_per_type from '@site/static/images/integrations/data-ingestion/data-formats/json_column_per_type.png';
-import json_offsets from '@site/static/images/integrations/data-ingestion/data-formats/json_offsets.png';
-import shared_json_column from '@site/static/images/integrations/data-ingestion/data-formats/json_shared_column.png';
 
 # Designing your schema
 
@@ -86,9 +80,7 @@ Applying these rules:
 - The `tags` column is **dynamic**. We assume new arbitrary tags can be added to this object of any type and structure.
 - The `company` object is **static** and will always contain at most the 3 keys specified. The subkeys `name` and `catchPhrase` are of type `String`. The key `labels` is **dynamic**. We assume new arbitrary tags can be added to this object. Values will always be key-value pairs of type string.
 
-:::note
-Structures with hundreds or thousands of static keys can be considered dynamic, as it is rarely realistic to statically declare the columns for these. However, where possible [skip paths](#using-type-hints-and-skipping-paths) which aren't needed to save both storage and inference overhead.
-:::
+> **note**: Structures with hundreds or thousands of static keys can be considered dynamic, as it is rarely realistic to statically declare the columns for these. However, where possible [skip paths](#using-type-hints-and-skipping-paths) which aren't needed to save both storage and inference overhead.
 
 ## Handling static structures {#handling-static-structures}
 
@@ -274,9 +266,8 @@ FORMAT PrettyJSONEachRow
 1 row in set. Elapsed: 0.001 sec.
 ```
 
-:::note Differentiating empty and null
+> **note**: Differentiating empty and null
 If you need to differentiate between a value being empty and not provided, the [Nullable](/sql-reference/data-types/nullable) type can be used. This [should be avoided](/best-practices/select-data-types#avoid-nullable-columns) unless absolutely required, as it will negatively impact storage and query performance on these columns.
-:::
 
 ### Handling new columns {#handling-new-columns}
 
@@ -489,9 +480,8 @@ A strict schema has a number of benefits:
 
 This approach is useful for prototyping and data engineering tasks. For production, try use `JSON` only for dynamic sub structures where necessary.
 
-:::note Performance considerations
+> **note**: Performance considerations
 A single JSON column can be optimized by skipping (not storing) JSON paths that aren't required and by using [type hints](#using-type-hints-and-skipping-paths). Type hints allow the user to explicitly define the type for a sub-column, thereby skipping inference and indirection processing at query time. This can be used to deliver the same performance as if an explicit schema was used. See ["Using type hints and skipping paths"](#using-type-hints-and-skipping-paths) for further details.
-:::
 
 The schema for a single JSON column here is simple:
 
@@ -506,9 +496,7 @@ ENGINE = MergeTree
 ORDER BY json.username;
 ```
 
-:::note
-We provide a [type hint](#using-type-hints-and-skipping-paths) for the `username` column in the JSON definition as we use it in the ordering/primary key. This helps ClickHouse know this column won't be null and ensures it knows which `username` sub-column to use (there may be multiple for each type, so this is ambiguous otherwise).
-:::
+> **note**: We provide a [type hint](#using-type-hints-and-skipping-paths) for the `username` column in the JSON definition as we use it in the ordering/primary key. This helps ClickHouse know this column won't be null and ensures it knows which `username` sub-column to use (there may be multiple for each type, so this is ambiguous otherwise).
 
 Inserting rows into the above table can be achieved using the `JSONAsObject` format:
 

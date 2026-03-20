@@ -7,7 +7,6 @@ keywords: ['Active Mutations', 'Queued Mutations']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Question \{#question\}
 
@@ -27,8 +26,7 @@ SELECT
    GROUP BY host;
 ```
 
-:::note
-This query assumes you are running a cluster named `default`, which is the name of your cluster in ClickHouse Cloud. Replace `default` with the name of your cluster.
+> **note**: This query assumes you are running a cluster named `default`, which is the name of your cluster in ClickHouse Cloud. Replace `default` with the name of your cluster.
 
 If you do not have a cluster, use this command:
 
@@ -39,6 +37,5 @@ SELECT
    FROM system.mutations WHERE not is_done
    GROUP BY host;
 ```
-:::
 
 We also recommend reading this recent [blog on updates and deletes](https://clickhouse.com/blog/handling-updates-and-deletes-in-clickhouse).

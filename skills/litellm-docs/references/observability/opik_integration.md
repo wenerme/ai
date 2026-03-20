@@ -1,17 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Comet Opik - Logging + Evals
 Opik is an open source end-to-end [LLM Evaluation Platform](https://www.comet.com/site/products/opik/?utm_source=litelllm&utm_medium=docs&utm_content=intro_paragraph) that helps developers track their LLM prompts and responses during both development and production. Users can define and run evaluations to test their LLMs apps before deployment to check for hallucinations, accuracy, context retrevial, and more!
 
-
 <Image img={require('../../img/opik.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-:::
 
 ## Pre-Requisites
 
@@ -28,9 +23,6 @@ litellm.callbacks = ["opik"]
 ```
 
 Full examples:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -85,9 +77,6 @@ response = streaming_function("Why is tracking and evaluation of LLMs important?
 chunks = list(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 1. Setup config.yaml
 
 ```yaml
@@ -128,9 +117,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Opik-Specific Parameters
 
 These can be passed inside metadata with the `opik` key.
@@ -143,9 +129,6 @@ These can be passed inside metadata with the `opik` key.
 - `thread_id` - The thread id to group together multiple related traces.
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from opik import track
@@ -169,8 +152,6 @@ response = litellm.completion(
 )
 return response
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -194,11 +175,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
   }
 }'
 ``` 
-
-</TabItem>
-</Tabs>
-
-
 
 You can also pass the fields as part of the request header with a `opik_*` prefix:
 
@@ -228,7 +204,6 @@ In some cases, the requester may be unable or unaware of how to add Opik metadat
 
 When you create an API key in LiteLLM Proxy, you can attach Opik-specific metadata to the key itself. This metadata will be automatically applied to all requests made with that key, unless the request explicitly provides its own Opik metadata (which takes precedence).
 
-
 ### Usage
 
 **Step 1: Save Opik Metadata to the corresponding Api Key**
@@ -255,7 +230,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 ```
 
 All requests made with this key will automatically be tracked in the "TestProject" Opik project with the specified tags, without requiring the user to pass metadata in each request.
-
 
 ## Support & Talk to Founders
 

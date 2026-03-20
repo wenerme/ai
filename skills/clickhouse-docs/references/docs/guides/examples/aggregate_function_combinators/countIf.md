@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/countIf'
 title: 'countIf'
 description: 'Example of using the countIf combinator'
 keywords: ['count', 'if', 'combinator', 'examples', 'countIf']
-sidebar_label: 'countIf'
 doc_type: 'reference'
 ---
 

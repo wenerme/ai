@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # HiddenLayer Guardrails
 
@@ -69,8 +67,6 @@ litellm --config config.yaml --detailed_debug
 
 You can tag requests with `hl-project-id` (maps to the HiddenLayer project) and `hl-requester-id` (auditing metadata). LiteLLM forwards both headers to your detector.
 
-<Tabs>
-<TabItem label="Blocked request" value="not-allowed">
 This request leaks system instructions and should be blocked when prompt-injection detection is enabled in HiddenLayer.
 
 ```shell showLineNumbers title="Curl Request"
@@ -101,10 +97,6 @@ Expected response on failure
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Allowed request" value="allowed">
 
 ```shell showLineNumbers title="Curl Request"
 curl -i http://0.0.0.0:4000/v1/chat/completions \
@@ -143,9 +135,6 @@ Expected response
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 If HiddenLayer responds with `action: "Redact"`, the proxy automatically rewrites the offending input/output before continuing, so your application receives a sanitized payload.
 

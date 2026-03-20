@@ -1,6 +1,5 @@
 # MMLU
 
-
 ## Overview
 
 MMLU (Massive Multitask Language Understanding) is a comprehensive evaluation benchmark designed to measure knowledge acquired during pretraining. It covers 57 subjects across STEM, humanities, social sciences, and other domains, ranging from elementary to professional difficulty levels.
@@ -26,7 +25,6 @@ MMLU (Massive Multitask Language Understanding) is a comprehensive evaluation be
 - Results can be aggregated by subject or category (STEM, Humanities, Social Sciences, Other)
 - Use `subset_list` parameter to evaluate specific subjects
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ MMLU (Massive Multitask Language Understanding) is a comprehensive evaluation be
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `dev` |
-
 
 ## Data Statistics
 
@@ -186,5 +183,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

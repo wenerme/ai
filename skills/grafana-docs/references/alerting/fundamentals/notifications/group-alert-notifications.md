@@ -83,16 +83,6 @@ These timers reduce the number of notifications sent. By delaying the delivery o
 
 {{< figure src="/media/docs/alerting/alerting-timing-options-flowchart-v2.png" max-width="750px" alt="A basic sequence diagram of the the notification policy timers" caption="A basic sequence diagram of the notification policy timers" >}}
 
-<!--
-flowchart LR
-    A((First alert)) -///-> B
-    B[Group wait <br/>  notification] -///-> C
-    B -- no changes -///-> D
-    C[Group interval <br/>  notification] -- no changes -///-> D
-    C -- group changes -///-> C
-    D[Repeat interval <br/>  notification]
--->
-
 ### Group wait
 
 **Default**: 30 seconds
@@ -116,10 +106,10 @@ Consider a notification policy that:
 | 00:00              | `alertname=f1` `team=frontend` | `frontend`                | 1                   | Starts the group wait timer of the `frontend` group.                    |
 | 00:10              | `alertname=f2` `team=frontend` | `frontend`                | 2                   |                                                                         |
 | 00:20              | `alertname=b1` `team=backend`  | `backend`                 | 1                   | Starts the group wait timer of the `backend` group.                     |
-| 00:30<sup>\*</sup> |                                | `frontend`                | 2                   | Group wait elapsed. <br/> Send initial notification reporting 2 alerts. |
+| 00:30<sup>\*</sup> |                                | `frontend`                | 2                   | Group wait elapsed.  Send initial notification reporting 2 alerts. |
 | 00:35              | `alertname=b2` `team=backend`  | `backend`                 | 2                   |                                                                         |
 | 00:40              | `alertname=b3` `team=backend`  | `backend`                 | 3                   |                                                                         |
-| 00:50<sup>\*</sup> |                                | `backend`                 | 3                   | Group wait elapsed. <br/> Send initial notification reporting 3 alerts. |
+| 00:50<sup>\*</sup> |                                | `backend`                 | 3                   | Group wait elapsed.  Send initial notification reporting 3 alerts. |
 
 ### Group interval
 
@@ -138,8 +128,8 @@ Here are the related excerpts from the previous example:
 
 | Time               | Incoming alert instance | Notification policy group | Number of instances |                                                                                                         |
 | ------------------ | ----------------------- | ------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
-| 00:30<sup>\*</sup> |                         | `frontend`                | 2                   | Group wait elapsed and starts Group interval timer. <br/> Send initial notification reporting 2 alerts. |
-| 00:50<sup>\*</sup> |                         | `backend`                 | 3                   | Group wait elapsed and starts Group interval timer. <br/> Send initial notification reporting 3 alerts. |
+| 00:30<sup>\*</sup> |                         | `frontend`                | 2                   | Group wait elapsed and starts Group interval timer.  Send initial notification reporting 2 alerts. |
+| 00:50<sup>\*</sup> |                         | `backend`                 | 3                   | Group wait elapsed and starts Group interval timer.  Send initial notification reporting 3 alerts. |
 
 And below is the continuation of the example setting the Group interval timer to 5 minutes:
 
@@ -147,11 +137,11 @@ And below is the continuation of the example setting the Group interval timer to
 | ------------------ | ------------------------------ | ------------------------- | ------------------- | ---------------------------------------------------------------------------------------------- |
 | 01:30              | `alertname=f3` `team=frontend` | `frontend`                | 3                   |                                                                                                |
 | 02:30              | `alertname=f4` `team=frontend` | `frontend`                | 4                   |                                                                                                |
-| 05:30<sup>\*</sup> |                                | `frontend`                | 4                   | Group interval elapsed and resets timer. <br/> Send one notification reporting 4 alerts.       |
-| 05:50<sup>\*</sup> |                                | `backend`                 | 3                   | Group interval elapsed and resets timer. <br/> No group changes, and do not send notification. |
+| 05:30<sup>\*</sup> |                                | `frontend`                | 4                   | Group interval elapsed and resets timer.  Send one notification reporting 4 alerts.       |
+| 05:50<sup>\*</sup> |                                | `backend`                 | 3                   | Group interval elapsed and resets timer.  No group changes, and do not send notification. |
 | 08:00              | `alertname=f4` `team=backend`  | `backend`                 | 4                   |                                                                                                |
-| 10:30<sup>\*</sup> |                                | `frontend`                | 4                   | Group interval elapsed and resets timer. <br/> No group changes, and do not send notification. |
-| 10:50<sup>\*</sup> |                                | `backend`                 | 4                   | Group interval elapsed and resets timer. <br/> Send one notification reporting 4 alerts.       |
+| 10:30<sup>\*</sup> |                                | `frontend`                | 4                   | Group interval elapsed and resets timer.  No group changes, and do not send notification. |
+| 10:50<sup>\*</sup> |                                | `backend`                 | 4                   | Group interval elapsed and resets timer.  Send one notification reporting 4 alerts.       |
 
 **How it works**
 
@@ -185,14 +175,14 @@ Here are the related excerpts from the previous example:
 
 | Time               | Incoming alert instance | Notification policy group | Number of instances |                                                          |
 | ------------------ | ----------------------- | ------------------------- | ------------------- | -------------------------------------------------------- |
-| 05:30<sup>\*</sup> |                         | `frontend`                | 4                   | Group interval resets. <br/> Send the last notification. |
-| 10:50<sup>\*</sup> |                         | `backend`                 | 4                   | Group interval resets. <br/> Send the last notification. |
+| 05:30<sup>\*</sup> |                         | `frontend`                | 4                   | Group interval resets.  Send the last notification. |
+| 10:50<sup>\*</sup> |                         | `backend`                 | 4                   | Group interval resets.  Send the last notification. |
 
 And below is the continuation of the example setting the Repeat interval timer to 4 hours:
 
 | Time     | Incoming alert instance | Notification policy group | Number of instances |                                                                                                                                                             |
 | -------- | ----------------------- | ------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 04:05:30 |                         | `frontend`                | 4                   | Group interval resets. The time since the last notification was no longer than the repeat interval.                                                         |
-| 04:10:30 |                         | `frontend`                | 4                   | Group interval resets. The time since the last notification was longer than the repeat interval. <br/> Send one notification reminding the 4 firing alerts. |
+| 04:10:30 |                         | `frontend`                | 4                   | Group interval resets. The time since the last notification was longer than the repeat interval.  Send one notification reminding the 4 firing alerts. |
 | 04:10:50 |                         | `backend`                 | 4                   | Group interval resets. The time since the last notification was no longer than the repeat interval.                                                         |
-| 04:15:50 |                         | `backend`                 | 4                   | Group interval resets. The time since the last notification was longer than the repeat interval. <br/> Send one notification reminding the 4 firing alerts. |
+| 04:15:50 |                         | `backend`                 | 4                   | Group interval resets. The time since the last notification was longer than the repeat interval.  Send one notification reminding the 4 firing alerts. |

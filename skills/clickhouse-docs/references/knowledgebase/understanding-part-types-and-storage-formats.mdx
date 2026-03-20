@@ -7,10 +7,6 @@ keywords: ['compact parts', 'wide parts', 'full storage', 'packed storage', 'par
 ---
 
 {frontMatter.description}
-{/* truncate */}
-
-<br/>
-<br/>
 
 ClickHouse uses two independent concepts for organizing data within parts:
 
@@ -91,9 +87,8 @@ In ClickHouse Cloud, a part uses Packed storage if **any** of these conditions a
 - Row count < [`min_rows_for_full_part_storage`](/operations/settings/merge-tree-settings#min_rows_for_full_part_storage)
 - Merge level < [`min_level_for_full_part_storage`](/operations/settings/merge-tree-settings#min_level_for_full_part_storage)
 
-:::note Open source
+> **note**: Open source
 While the settings `min_bytes_for_full_part_storage`, `min_rows_for_full_part_storage`, and `min_level_for_full_part_storage` are defined in open source ClickHouse, they have no effect because the Packed storage implementation is only available in ClickHouse Cloud.
-:::
 
 The `min_level_for_full_part_storage` setting can be used to optimize both performance and costs in ClickHouse Cloud environments, particularly for tables that receive continuous inserts.
 The setting is available starting in ClickHouse version 25.10 and works in conjunction with `min_level_for_wide_part` to provide comprehensive control over part storage strategies.
@@ -111,9 +106,7 @@ This ensures that:
 - Level 1 parts continue using packed storage
 - Only parts at level 2 and above use full storage format
 
-:::tip
-Avoid this setting for tables that receive very large but infrequent writes where insufficient merges occur, as large initial writes may benefit from full part storage immediately.
-:::
+> **tip**: Avoid this setting for tables that receive very large but infrequent writes where insufficient merges occur, as large initial writes may benefit from full part storage immediately.
 
 ## Combining part types and storage formats
 
@@ -158,4 +151,3 @@ You will see something like this:
 4. │ Wide      │ Packed            │         10 │     187 │ 110.01 MiB               │ 1.30 KiB                 │
    └───────────┴───────────────────┴────────────┴─────────┴──────────────────────────┴──────────────────────────┘
 ```
-

@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'SAML SSO removal'
-slug: /cloud/security/saml-removal
 title: 'SAML SSO removal'
 description: 'How to remove SAML SSO with ClickHouse Cloud'
 doc_type: 'guide'
@@ -11,9 +9,7 @@ keywords: ['ClickHouse Cloud', 'SAML', 'SSO', 'single sign-on', 'IdP']
 
 Customers may need to remove a SAML integration from an organization for reasons such as changing an identity provider. SAML users are separate identities from other user types. Follow the instructions below to switch to another authentication method.
 
-:::warning
-This action can't be undone. Removing a SAML integration will invalidate SAML users such that they can't be recovered. Follow the instructions below carefully to ensure you retain access to the organization.
-:::
+> **warning**: This action can't be undone. Removing a SAML integration will invalidate SAML users such that they can't be recovered. Follow the instructions below carefully to ensure you retain access to the organization.
 
 ## Before you begin {#before-you-begin}
 
@@ -45,9 +41,7 @@ Click the organization name on the bottom left, then select `Users and Roles`. F
 
 Users should be fully logged out from any SAML connections before accepting the invitation. When accepting the invitation with Google or Microsoft social login, users should click the `Continue with Google` or `Continue with Microsoft` buttons. Users using email and password should go to https://console.clickhouse.cloud/?with=email to log in and accept the invitation.
 
-:::note
-The best route to ensure users aren't automatically redirected based on SAML configurations is to copy the link to accept the invitation and paste into a separate browser or private browsing/incognito session to accept the invitation.
-::: 
+> **note**: The best route to ensure users aren't automatically redirected based on SAML configurations is to copy the link to accept the invitation and paste into a separate browser or private browsing/incognito session to accept the invitation.
 
 ### Save queries and dashboards {#save-queries-and-dashboards}
 

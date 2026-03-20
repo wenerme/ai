@@ -29,7 +29,6 @@ PROPERTIES (
 
 `<property>` format is `<key>` = `<value>`，`<key>`'s specific optional values can be referred to [workload group](../../../../admin-manual/workload-management/workload-group.md).
 
-
 ## Examples
 
 1. Create a workload group named g1:

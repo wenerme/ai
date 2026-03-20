@@ -1,10 +1,6 @@
 ---
 title: Composite and Foreign Keys as Primary Key
-sidebar_label: Composite Primary Keys
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 > Support for composite keys was added in version 3.5
 
@@ -20,21 +16,7 @@ Primary keys need to have their values set before you call `em.persist(entity)`.
 
 Suppose you want to create a database of cars and use the model-name and year of production as primary keys:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-
-{label: 'defineEntity + class', value: 'define-entity-class'},
-
-{label: 'defineEntity', value: 'define-entity'},
-
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-
-{label: 'ts-morph', value: 'ts-morph'},
-]}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const CarSchema = defineEntity({
@@ -50,9 +32,7 @@ export class Car extends CarSchema.class {}
 CarSchema.setClass(Car);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Car = defineEntity({
@@ -65,9 +45,6 @@ export const Car = defineEntity({
 });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @Entity()
 export class Car {
@@ -89,9 +66,6 @@ export class Car {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class Car {
@@ -112,9 +86,6 @@ export class Car {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 Now you can use this entity:
 
@@ -155,21 +126,7 @@ The semantics of mapping identity through foreign entities are easy:
 
 We keep up the example of an Article with arbitrary attributes, the mapping looks like this:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-
-{label: 'defineEntity + class', value: 'define-entity-class'},
-
-{label: 'defineEntity', value: 'define-entity'},
-
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-
-{label: 'ts-morph', value: 'ts-morph'},
-]}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const ArticleSchema = defineEntity({
@@ -198,9 +155,7 @@ export class ArticleAttribute extends ArticleAttributeSchema.class {}
 ArticleAttributeSchema.setClass(ArticleAttribute);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Article = defineEntity({
@@ -222,9 +177,6 @@ export const ArticleAttribute = defineEntity({
   primaryKeys: ['article', 'attribute'],
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -264,9 +216,6 @@ export class ArticleAttribute {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class Article {
@@ -305,28 +254,11 @@ export class ArticleAttribute {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## Use-Case 2: Simple Derived Identity
 
 Sometimes you have the requirement that two objects are related by a `@OneToOne` association and that the dependent class should re-use the primary key of the class it depends on. One good example for this is a user-address relationship:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-
-{label: 'defineEntity + class', value: 'define-entity-class'},
-
-{label: 'defineEntity', value: 'define-entity'},
-
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-
-{label: 'ts-morph', value: 'ts-morph'},
-]}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const UserSchema = defineEntity({
@@ -352,9 +284,7 @@ export class Address extends AddressSchema.class {}
 AddressSchema.setClass(Address);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const User = defineEntity({
@@ -373,9 +303,6 @@ export const Address = defineEntity({
   primaryKeys: ['user'],
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -400,9 +327,6 @@ export class Address {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class User {
@@ -426,28 +350,11 @@ export class Address {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## Use-Case 3: Join-Table with Metadata
 
 In the classic order product shop example there is the concept of the order item which contains references to order and product and additional data such as the amount of products purchased and maybe even the current price.
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-
-{label: 'defineEntity + class', value: 'define-entity-class'},
-
-{label: 'defineEntity', value: 'define-entity'},
-
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-
-{label: 'ts-morph', value: 'ts-morph'},
-]}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const OrderSchema = defineEntity({
@@ -492,9 +399,7 @@ export class OrderItem extends OrderItemSchema.class {}
 OrderItemSchema.setClass(OrderItem);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Order = defineEntity({
@@ -529,9 +434,6 @@ export const OrderItem = defineEntity({
   primaryKeys: ['order', 'product'],
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -601,9 +503,6 @@ export class OrderItem {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class Order {
@@ -672,12 +571,7 @@ export class OrderItem {
 }
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-
-By default, a generated pivot table entity is used under the hood to represent the pivot table. You can provide your own implementation via `pivotEntity` option.
+> **info**: By default, a generated pivot table entity is used under the hood to represent the pivot table. You can provide your own implementation via `pivotEntity` option.
 
 The pivot table entity needs to have exactly two many-to-one properties, where first one needs to point to the owning entity and the second to the target entity of the many-to-many relation.
 
@@ -737,8 +631,6 @@ const em.nativeDelete(OrderItem, { order: 123, product: 321 });
 ```
 
 You can also define the 1:m properties targeting the pivot entity as in the previous example, and use that for modifying the collection, while using the M:N property for easier reading and filtering purposes.
-
-:::
 
 ## Using QueryBuilder with composite keys
 

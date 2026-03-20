@@ -2,9 +2,6 @@
 title: View Entities
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 View entities represent actual database views that are created and managed by MikroORM's schema generator. Unlike [virtual entities](./virtual-entities.md) which evaluate expressions at query time, view entities create persistent `CREATE VIEW` statements in your database.
 
 ## Virtual Entities vs View Entities
@@ -24,18 +21,7 @@ To define a view entity, set both `view: true` and provide an `expression`. The 
 
 ### Using String Expression
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/AuthorStats.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -60,9 +46,9 @@ export class AuthorStats extends AuthorStatsSchema.class {}
 AuthorStatsSchema.setClass(AuthorStats);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/AuthorStats.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -84,8 +70,8 @@ export const AuthorStats = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/AuthorStats.ts"
 @Entity({
@@ -109,8 +95,8 @@ export class AuthorStats {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/AuthorStats.ts"
 @Entity({
@@ -134,25 +120,13 @@ export class AuthorStats {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Using QueryBuilder Expression
 
 You can also use a callback that returns a QueryBuilder for type-safe view definitions:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/BookSummary.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -176,9 +150,9 @@ export class BookSummary extends BookSummarySchema.class {}
 BookSummarySchema.setClass(BookSummary);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/BookSummary.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -199,8 +173,8 @@ export const BookSummary = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/BookSummary.ts"
 @Entity({
@@ -223,8 +197,8 @@ export class BookSummary {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/BookSummary.ts"
 @Entity({
@@ -247,8 +221,7 @@ export class BookSummary {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Querying View Entities
 

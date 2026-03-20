@@ -22,7 +22,6 @@ However, the timing of data generation and updates for ABCD and ABE is not synch
 We additionally introduce two columns, s1 and s2, as sequence columns to control the updates of data from the two streams.
 s1 is used for version control of data in columns C and D; s2 is used for version control of data in column E. When importing or performing other update operations, the data from the two streams do not interfere with each other. Each stream completes its update operations based on its own sequence columns.
 
-
 ### Usage Example
 
 **1. Creating a table supporting sequence mapping**
@@ -258,4 +257,4 @@ MySQL > select * from upsert_test;
 
 8. If the sequence_mapping attribute is not included when creating a new table, it will not be supported to open it later 
 
-9. Fields that are not included will be automatically filled with default values or null during load data. When comparing values for the sequence columns, null values will be treated as the smallest value. 
+9. Fields that are not included will be automatically filled with default values or null during load data. When comparing values for the sequence columns, null values will be treated as the smallest value.

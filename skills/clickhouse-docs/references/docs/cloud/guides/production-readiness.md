@@ -1,6 +1,4 @@
 ---
-slug: /cloud/guides/production-readiness
-sidebar_label: 'Production readiness'
 title: 'ClickHouse Cloud production readiness guide'
 description: 'Guide for organizations transitioning from quick start to enterprise-ready ClickHouse Cloud deployments'
 keywords: ['production readiness', 'enterprise', 'saml', 'sso', 'terraform', 'monitoring', 'backup', 'disaster recovery']
@@ -19,7 +17,6 @@ This guide helps you transition from quick start to enterprise-ready ClickHouse 
 - Automate deployments with Terraform or the Cloud API
 - Connect monitoring to your alerting infrastructure (Prometheus, PagerDuty)
 - Validate backup procedures and document disaster recovery processes
-:::
 
 ## Introduction {#introduction}
 
@@ -41,9 +38,7 @@ This guide walks you through each area, helping you transition from a working Cl
 
 Establish separate environments to safely test changes before impacting production workloads. Most production incidents trace back to untested queries or configuration changes deployed directly to production systems.
 
-:::note
-**In ClickHouse Cloud, each environment is a separate service.** You'll provision distinct production, staging, and development services within your organization, each with its own compute resources, storage, and endpoint.
-:::
+> **note**: **In ClickHouse Cloud, each environment is a separate service.** You'll provision distinct production, staging, and development services within your organization, each with its own compute resources, storage, and endpoint.
 
 **Environment structure**: Maintain production (live workloads), staging (production-equivalent validation), and development (individual/team experimentation) environments.
 
@@ -73,9 +68,8 @@ Moving from console-based user management to enterprise authentication integrati
 
 [Social SSO](/cloud/security/manage-my-account): ClickHouse Cloud also supports social authentication providers (Google, Microsoft, GitHub) as an equally secure alternative to SAML SSO. Social SSO provides faster setup for organizations without existing SAML infrastructure while maintaining enterprise security standards.
 
-:::note Important limitation
+> **note**: Important limitation
 Users authenticated through SAML or social SSO are assigned the "Member" role by default and must be manually granted additional roles by an admin after their first login. Group-to-role mapping and automatic role assignment aren't currently supported.
-:::
 
 ### Access control design {#access-control-design}
 
@@ -143,9 +137,8 @@ Connecting ClickHouse Cloud to your existing monitoring infrastructure ensures v
 
 ClickHouse Cloud provides an advanced dashboard with real-time metrics including queries per second, memory usage, CPU usage, and storage rates. Access via Cloud console under Monitoring → Advanced dashboard. Create custom dashboards tailored to specific workload patterns or team resource consumption.
 
-:::note Common production gaps
+> **note**: Common production gaps
 Lack of proactive alerting integration with enterprise incident management systems and automated cost monitoring. Built-in dashboards provide visibility but automated alerting requires external integration.
-:::
 
 ### Production alerting setup {#production-alerting}
 

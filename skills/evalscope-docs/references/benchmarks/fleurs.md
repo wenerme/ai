@@ -1,6 +1,5 @@
 # FLEURS
 
-
 ## Overview
 
 FLEURS (Few-shot Learning Evaluation of Universal Representations of Speech) is a massively multilingual benchmark covering 102 languages for evaluating automatic speech recognition (ASR), spoken language understanding, and speech translation.
@@ -28,7 +27,6 @@ FLEURS (Few-shot Learning Evaluation of Universal Representations of Speech) is 
 - Language-specific text normalization applied during evaluation
 - Prompt: "Please recognize the speech and only output the recognized content"
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ FLEURS (Few-shot Learning Evaluation of Universal Representations of Speech) is 
 | **Metrics** | `wer` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -65,7 +62,6 @@ FLEURS (Few-shot Learning Evaluation of Universal Representations of Speech) is 
 | Total Audio Files | 2,411 |
 | Audio per Sample | min: 1, max: 1, mean: 1 |
 | Formats | wav |
-
 
 ## Sample Example
 
@@ -143,5 +139,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

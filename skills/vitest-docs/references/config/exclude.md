@@ -12,11 +12,9 @@ A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that sho
 
 Vitest uses the [`tinyglobby`](https://npmx.dev/package/tinyglobby) package to resolve the globs.
 
-::: warning
-This option does not affect coverage. If you need to remove certain files from the coverage report, use [`coverage.exclude`](/config/coverage#exclude).
+> **warning**: This option does not affect coverage. If you need to remove certain files from the coverage report, use [`coverage.exclude`](/config/coverage#exclude).
 
 This is the only option that doesn't override your configuration if you provide it with a CLI flag. All glob patterns added via `--exclude` flag will be added to the config's `exclude`.
-:::
 
 ## Example
 
@@ -34,8 +32,7 @@ export default defineConfig({
 })
 ```
 
-::: tip
-Although the CLI `exclude` option is additive, manually setting `exclude` in your config will replace the default value. To extend the default `exclude` patterns, use `configDefaults` from `vitest/config`:
+> **tip**: Although the CLI `exclude` option is additive, manually setting `exclude` in your config will replace the default value. To extend the default `exclude` patterns, use `configDefaults` from `vitest/config`:
 
 ```js{6}
 import { configDefaults, defineConfig } from 'vitest/config'
@@ -50,4 +47,3 @@ export default defineConfig({
   },
 })
 ```
-:::

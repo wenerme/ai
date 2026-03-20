@@ -12,9 +12,7 @@ This table is solely for the purpose of compatibility with MySQL behavior. It is
 
 ## Database
 
-
 `mysql`
-
 
 ## Table Information
 

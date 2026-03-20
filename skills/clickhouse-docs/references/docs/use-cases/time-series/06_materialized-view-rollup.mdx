@@ -1,13 +1,9 @@
 ---
 title: 'Build a rollup with materialized views for fast time-series analytics'
-slug: /knowledgebase/materialized-view-rollup-timeseries
 description: 'End-to-end example creating a raw events table, a rollup table, and a materialized view for low-latency analytics.'
 keywords: ['materialized view', 'rollup', 'aggregate', 'timeseries', 'tutorial']
 doc_type: 'guide'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 > This tutorial shows you how to maintain pre-aggregated roll-ups from a high-volume events table using [**materialized views**](/materialized-views).
 You’ll create three objects: a raw table, a rollup table, and the materialized view that writes into the rollup automatically.
@@ -104,8 +100,7 @@ INSERT INTO events_raw VALUES
 
 You can either **merge** states at read time, or **finalize** them:
 
-<Tabs groupId="finalize">
-  <TabItem value="merge" label="Merge at read time">
+  
 
 ```sql
 SELECT
@@ -122,8 +117,8 @@ GROUP BY ALL
 ORDER BY bucket_start, country, event_type;
 ```
 
-  </TabItem>
-  <TabItem value="finalize" label="Finalize with -Final">
+  
+  
 
 ```sql
 SELECT
@@ -141,14 +136,10 @@ ORDER BY bucket_start, country, event_type
 SETTINGS final = 1;  -- or use SELECT ... FINAL
 ```
 
-  </TabItem>
-</Tabs>
+  
 
-<br/>
-:::tip
-If you expect reads to always hit the rollup, you can create a **second materialized view** that writes *finalized* numbers to a “plain” `MergeTree` table at the same 1h grain.
+> **tip**: If you expect reads to always hit the rollup, you can create a **second materialized view** that writes *finalized* numbers to a “plain” `MergeTree` table at the same 1h grain.
 States give more flexibility while finalized numbers give slightly simpler reads.
-:::
 
 ## Filter on fields in the primary key for best performance \{#filtering-performance\}
 

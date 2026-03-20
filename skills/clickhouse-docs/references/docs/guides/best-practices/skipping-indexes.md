@@ -1,16 +1,9 @@
 ---
-slug: /optimize/skipping-indexes
-sidebar_label: 'Data skipping indexes'
-sidebar_position: 2
 description: 'Skip indexes enable ClickHouse to skip reading significant chunks of data that are guaranteed to have no matching values.'
 title: 'Understanding ClickHouse Data Skipping Indexes'
 doc_type: 'guide'
 keywords: ['skipping indexes', 'data skipping', 'performance', 'indexing', 'best practices']
 ---
-
-import simple_skip from '@site/static/images/guides/best-practices/simple_skip.png';
-import bad_skip from '@site/static/images/guides/best-practices/bad_skip.png';
-import Image from '@theme/IdealImage';
 
 # Understanding ClickHouse data skipping indexes
 
@@ -117,9 +110,7 @@ example, the debug log shows that the skip index dropped all but two granules:
 ```
 ## Skip index types {#skip-index-types}
 
-<!-- vale off -->
 ### minmax {#minmax}
-<!-- vale on -->
 
 This lightweight index type requires no parameters.  It stores the minimum and maximum values of the index expression
 for each block (if the expression is a tuple, it separately stores the values for each member of the element
@@ -127,18 +118,14 @@ of the tuple).  This type is ideal for columns that tend to be loosely sorted by
 
 This type of index only works correctly with a scalar or tuple expression -- the index will never be applied to expressions that return an array or map data type.
 
-<!-- vale off -->
 ### set {#set}
-<!-- vale on -->
 
 This lightweight index type accepts a single parameter of the max_size of the value set per block (0 permits
 an unlimited number of discrete values).  This set contains all values in the block (or is empty if the number of values exceeds the max_size).  This index type works well with columns with low cardinality within each set of granules (essentially, "clumped together") but higher cardinality overall.
 
 The cost, performance, and effectiveness of this index is dependent on the cardinality within blocks.  If each block contains a large number of unique values, either evaluating the query condition against a large index set will be very expensive, or the index won't be applied because the index is empty due to exceeding max_size.
 
-<!-- vale off -->
 ### text {#text}
-<!-- vale on -->
 
 For workloads that involve natural language or free-form text search (e.g., searching words or phrases in large text columns), ClickHouse provides a **text index** (a real inverted index).
 Text index supports efficient full-text search semantics and tokenized lookups. It is the recommended choice for full-text search queries because it provides deterministic token indexing and better performance for search functions such as `hasAnyToken`, `hasAllTokens` but also optimize all common text search functions.

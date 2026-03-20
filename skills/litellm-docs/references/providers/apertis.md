@@ -10,8 +10,6 @@
 | Base URL | `https://api.stima.tech/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
 
-<br />
-
 ## What is Apertis AI?
 
 Apertis AI is a unified API platform that lets developers:

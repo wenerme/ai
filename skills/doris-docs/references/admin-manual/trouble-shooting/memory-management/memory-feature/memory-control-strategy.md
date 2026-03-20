@@ -14,13 +14,13 @@ Doris MemoryReclamation is a memory reclaimer that triggers memory GC to reclaim
 
 ## Doris Allocator
 
-![Memory Management Overview](/images/memory-management-overview.png)
+[Memory Management Overview]
 
 Allocator applies for memory from the system and uses MemTracker to track the size of memory applications and releases during the application process. The large memory required for executing operators in batches will be managed by different data structures.
 
 During the query execution process, the allocation of large blocks of memory is mainly managed by Arena, HashTable, and PODArray data structures. Allocator serves as the unified memory interface of Arena, PODArray, and HashTable to achieve unified memory management and local memory reuse.
 
-![Memory Allocator](/images/memory-allocator.png)
+[Memory Allocator]
 
 Allocator uses a general memory allocator to apply for memory. In the choice of Jemalloc and TCMalloc, Doris previously used the Spin Lock of CentralFreeList in TCMalloc to account for 40% of the total query time in high-concurrency tests. Although turning off aggressive memory decommit can effectively improve performance, it will waste a lot of memory. For this reason, a separate thread has to be used to periodically recycle the TCMalloc cache. Jemalloc outperforms TCMalloc under high concurrency and is mature and stable. In Doris 1.2.2, Jemalloc was switched to. After tuning, the performance is on par with TCMalloc in most scenarios, and it uses less memory. The performance of high-concurrency scenarios is also significantly improved.
 
@@ -50,7 +50,7 @@ In addition, Doris will pre-allocate a batch of Free Blocks based on the number 
 
 Doris BE will periodically obtain the physical memory of the process and the current available memory of the system from the system, and collect snapshots of all query, load, and compaction task MemTracker. When the BE process memory exceeds the limit or the system has insufficient available memory, Doris will release the cache and terminate some queries or loads to release memory. This process is executed regularly by a separate GC thread.
 
-![Memory GC](/images/memory-gc.png)
+[Memory GC]
 
 Minor GC is triggered when the Doris BE process memory exceeds SoftMemLimit (81% of the total system memory by default) or the remaining available system memory is lower than the Warning watermark (usually no more than 3.2GB). At this time, the query will be paused when the Allocator allocates memory, and the data in the forced cache will be load and some Data Page Cache and expired Segment Cache will be released. If the released memory is less than 10% of the process memory, if query memory over-issuance is enabled, the query with a large memory over-issuance ratio will be canceled until 10% of the process memory is released or no query can be canceled, and then the system memory status acquisition interval and GC interval will be lowered. Other queries will continue to execute after the remaining memory is found.
 

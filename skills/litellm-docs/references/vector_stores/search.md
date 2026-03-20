@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /vector_stores/search - Search Vector Store
 
@@ -17,9 +16,6 @@ Search a vector store for relevant chunks based on a query and file attributes f
 ## Usage
 
 ### LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
 
 #### Non-streaming example
 ```python showLineNumbers title="Search Vector Store - Basic"
@@ -43,10 +39,6 @@ response = litellm.vector_stores.search(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Configuration">
-
 #### With filters and ranking options
 ```python showLineNumbers title="Search Vector Store - Advanced"
 import litellm
@@ -66,10 +58,6 @@ response = await litellm.vector_stores.asearch(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="multiple-queries" label="Multiple Queries">
-
 #### Searching with multiple queries
 ```python showLineNumbers title="Search Vector Store - Multiple Queries"
 import litellm
@@ -84,10 +72,6 @@ response = await litellm.vector_stores.asearch(
 )
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="openai-provider" label="OpenAI Provider">
 
 #### Using OpenAI provider explicitly
 ```python showLineNumbers title="Search Vector Store - OpenAI Provider"
@@ -104,10 +88,6 @@ response = await litellm.vector_stores.asearch(
 )
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="azure-ai-provider" label="Azure AI Provider">
 
 #### Using Azure AI Search
 ```python showLineNumbers title="Search Vector Store - Azure AI Provider"
@@ -134,10 +114,6 @@ print(response)
 
 [See full Azure AI vector store documentation](../providers/azure_ai_vector_stores.md)
 
-</TabItem>
-
-<TabItem value="milvus-provider" label="Milvus Provider">
-
 #### Using Milvus
 ```python showLineNumbers title="Search Vector Store - Milvus Provider"
 import litellm
@@ -163,10 +139,6 @@ print(response)
 ```
 
 [See full Milvus vector store documentation](../providers/milvus_vector_stores.md)
-
-</TabItem>
-
-<TabItem value="gemini-provider" label="Gemini Provider">
 
 #### Using Gemini File Search
 ```python showLineNumbers title="Search Vector Store - Gemini Provider"
@@ -199,13 +171,7 @@ print(response)
 
 [See full Gemini File Search documentation](../providers/gemini_file_search.md)
 
-</TabItem>
-</Tabs>
-
 ### LiteLLM Proxy Server
-
-<Tabs>
-<TabItem value="proxy-setup" label="Setup & Usage">
 
 1. Setup config.yaml
 
@@ -245,10 +211,6 @@ search_results = client.beta.vector_stores.search(
 print(search_results)
 ```
 
-</TabItem>
-
-<TabItem value="curl-proxy" label="curl">
-
 ```bash showLineNumbers title="Search Vector Store via curl"
 curl -L -X POST 'http://0.0.0.0:4000/v1/vector_stores/vs_abc123/search' \
 -H 'Content-Type: application/json' \
@@ -265,9 +227,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/vector_stores/vs_abc123/search' \
   "rewrite_query": true
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Setting Up Vector Stores
 

@@ -1,12 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # CopilotKit SDK with LiteLLM
 
 Use CopilotKit SDK with any LLM provider through LiteLLM Proxy.
 
 > **Note:** CopilotKit SDK integration with LiteLLM Proxy works with LiteLLM v1.81.7-nightly or higher.
-
 
 ## Quick Start
 
@@ -91,7 +89,6 @@ curl -X POST http://localhost:3000/api/copilotkit \
 |----------|-------|-------------|
 | `OPENAI_API_KEY` | `sk-12345` | Your LiteLLM API key |
 | `OPENAI_BASE_URL` | `http://localhost:4000/v1` | LiteLLM proxy URL |
-
 
 ## Related Resources
 

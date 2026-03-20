@@ -125,7 +125,6 @@ You must complete several setup steps before enabling Google Cloud telemetry.
       }
       ```
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This setting requires **Direct export** (in-process exporters)
 > and cannot be used when `useCollector` is `true`. If both are enabled,
@@ -189,11 +188,11 @@ visualize your telemetry.
 Find this dashboard under **Google Cloud Monitoring Dashboard Templates** as
 "**Gemini CLI Monitoring**".
 
-![Gemini CLI Monitoring Dashboard Overview](/docs/assets/monitoring-dashboard-overview.png)
+[Gemini CLI Monitoring Dashboard Overview]
 
-![Gemini CLI Monitoring Dashboard Metrics](/docs/assets/monitoring-dashboard-metrics.png)
+[Gemini CLI Monitoring Dashboard Metrics]
 
-![Gemini CLI Monitoring Dashboard Logs](/docs/assets/monitoring-dashboard-logs.png)
+[Gemini CLI Monitoring Dashboard Logs]
 
 To learn more, see
 [Instant insights: Gemini CLI’s pre-configured monitoring dashboards](https://cloud.google.com/blog/topics/developers-practitioners/instant-insights-gemini-clis-new-pre-configured-monitoring-dashboards/).
@@ -284,8 +283,7 @@ Session logs capture startup configuration and prompt submissions.
 
 Emitted at startup with the CLI configuration.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
 - `embedding_model` (string)
@@ -313,21 +311,16 @@ Emitted at startup with the CLI configuration.
 - `github_issue_number` (string, optional)
 - `github_custom_tracking_id` (string, optional)
 
-</details>
-
 ##### `gemini_cli.user_prompt`
 
 Emitted when you submit a prompt.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `prompt_length` (int)
 - `prompt_id` (string)
 - `prompt` (string; excluded if `telemetry.logPrompts` is `false`)
 - `auth_type` (string)
-
-</details>
 
 #### Approval mode
 
@@ -339,25 +332,19 @@ These logs track changes to and usage of different approval modes.
 
 Logs when you change the approval mode.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `from_mode` (string)
 - `to_mode` (string)
-
-</details>
 
 ##### `approval_mode_duration`
 
 Records time spent in an approval mode.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `mode` (string)
 - `duration_ms` (int)
-
-</details>
 
 ##### Execution
 
@@ -365,12 +352,9 @@ Records time spent in an approval mode.
 
 Logs when you execute a plan and switch from plan mode to active execution.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `approval_mode` (string)
-
-</details>
 
 #### Tools
 
@@ -380,8 +364,7 @@ Tool logs capture executions, truncation, and edit behavior.
 
 Emitted for each tool (function) call.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `function_name` (string)
 - `function_args` (string)
@@ -405,14 +388,11 @@ Emitted for each tool (function) call.
   - `user_removed_lines` (number)
   - `ask_user` (object)
 
-</details>
-
 ##### `gemini_cli.tool_output_truncated`
 
 Logs when tool output is truncated.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `tool_name` (string)
 - `original_content_length` (int)
@@ -421,36 +401,27 @@ Logs when tool output is truncated.
 - `lines` (int)
 - `prompt_id` (string)
 
-</details>
-
 ##### `gemini_cli.edit_strategy`
 
 Records the chosen edit strategy.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `strategy` (string)
-
-</details>
 
 ##### `gemini_cli.edit_correction`
 
 Records the result of an edit correction.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `correction` (string: "success" or "failure")
-
-</details>
 
 ##### `gen_ai.client.inference.operation.details`
 
 Provides detailed GenAI operation data aligned with OpenTelemetry conventions.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `gen_ai.request.model` (string)
 - `gen_ai.provider.name` (string)
@@ -468,8 +439,6 @@ Provides detailed GenAI operation data aligned with OpenTelemetry conventions.
 - `server.address` (string)
 - `server.port` (int)
 
-</details>
-
 #### Files
 
 File logs track operations performed by tools.
@@ -478,8 +447,7 @@ File logs track operations performed by tools.
 
 Emitted for each file creation, read, or update.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `tool_name` (string)
 - `operation` (string: "create", "read", or "update")
@@ -487,8 +455,6 @@ Emitted for each file creation, read, or update.
 - `mimetype` (string, optional)
 - `extension` (string, optional)
 - `programming_language` (string, optional)
-
-</details>
 
 #### API
 
@@ -498,22 +464,18 @@ API logs capture requests, responses, and errors from Gemini API.
 
 Request sent to Gemini API.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
 - `prompt_id` (string)
 - `role` (string: "user", "model", or "system")
 - `request_text` (string, optional)
 
-</details>
-
 ##### `gemini_cli.api_response`
 
 Response received from Gemini API.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
 - `status_code` (int or string)
@@ -529,14 +491,11 @@ Response received from Gemini API.
 - `finish_reasons` (array of strings)
 - `response_text` (string, optional)
 
-</details>
-
 ##### `gemini_cli.api_error`
 
 Logs when an API request fails.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `error.message` (string)
 - `model_name` (string)
@@ -547,18 +506,13 @@ Logs when an API request fails.
 - `status_code` (int or string, optional)
 - `role` (string, optional)
 
-</details>
-
 ##### `gemini_cli.malformed_json_response`
 
 Logs when a JSON response cannot be parsed.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
-
-</details>
 
 #### Model routing
 
@@ -568,32 +522,25 @@ These logs track how Gemini CLI selects and routes requests to models.
 
 Logs slash command execution.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `command` (string)
 - `subcommand` (string, optional)
 - `status` (string: "success" or "error")
 
-</details>
-
 ##### `gemini_cli.slash_command.model`
 
 Logs model selection via slash command.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model_name` (string)
-
-</details>
 
 ##### `gemini_cli.model_routing`
 
 Records model router decisions and reasoning.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `decision_model` (string)
 - `decision_source` (string)
@@ -603,8 +550,6 @@ Records model router decisions and reasoning.
 - `error_message` (string, optional)
 - `approval_mode` (string)
 
-</details>
-
 #### Chat and streaming
 
 These logs track chat context compression and streaming chunk errors.
@@ -613,64 +558,49 @@ These logs track chat context compression and streaming chunk errors.
 
 Logs chat context compression events.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `tokens_before` (int)
 - `tokens_after` (int)
-
-</details>
 
 ##### `gemini_cli.chat.invalid_chunk`
 
 Logs invalid chunks received in a stream.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `error_message` (string, optional)
-
-</details>
 
 ##### `gemini_cli.chat.content_retry`
 
 Logs retries due to content errors.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `attempt_number` (int)
 - `error_type` (string)
 - `retry_delay_ms` (int)
 - `model` (string)
 
-</details>
-
 ##### `gemini_cli.chat.content_retry_failure`
 
 Logs when all content retries fail.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `total_attempts` (int)
 - `final_error_type` (string)
 - `total_duration_ms` (int, optional)
 - `model` (string)
 
-</details>
-
 ##### `gemini_cli.conversation_finished`
 
 Logs when a conversation session ends.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `approvalMode` (string)
 - `turnCount` (int)
-
-</details>
 
 #### Resilience
 
@@ -680,48 +610,36 @@ Resilience logs record fallback mechanisms and recovery attempts.
 
 Logs switch to a flash model fallback.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `auth_type` (string)
-
-</details>
 
 ##### `gemini_cli.ripgrep_fallback`
 
 Logs fallback to standard grep.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `error` (string, optional)
-
-</details>
 
 ##### `gemini_cli.web_fetch_fallback_attempt`
 
 Logs web-fetch fallback attempts.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `reason` (string: "private_ip" or "primary_failed")
-
-</details>
 
 ##### `gemini_cli.agent.recovery_attempt`
 
 Logs attempts to recover from agent errors.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_name` (string)
 - `attempt_number` (int)
 - `success` (boolean)
 - `error_type` (string, optional)
-
-</details>
 
 #### Extensions
 
@@ -731,51 +649,39 @@ Extension logs track lifecycle events and settings changes.
 
 Logs when you install an extension.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `extension_name` (string)
 - `extension_version` (string)
 - `extension_source` (string)
 - `status` (string)
 
-</details>
-
 ##### `gemini_cli.extension_uninstall`
 
 Logs when you uninstall an extension.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `extension_name` (string)
 - `status` (string)
-
-</details>
 
 ##### `gemini_cli.extension_enable`
 
 Logs when you enable an extension.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `extension_name` (string)
 - `setting_scope` (string)
-
-</details>
 
 ##### `gemini_cli.extension_disable`
 
 Logs when you disable an extension.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `extension_name` (string)
 - `setting_scope` (string)
-
-</details>
 
 #### Agent runs
 
@@ -785,28 +691,22 @@ Agent logs track the lifecycle of agent executions.
 
 Logs when an agent run begins.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_id` (string)
 - `agent_name` (string)
-
-</details>
 
 ##### `gemini_cli.agent.finish`
 
 Logs when an agent run completes.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_id` (string)
 - `agent_name` (string)
 - `duration_ms` (int)
 - `turn_count` (int)
 - `terminate_reason` (string)
-
-</details>
 
 #### IDE
 
@@ -816,12 +716,9 @@ IDE logs capture connectivity events for the IDE companion.
 
 Logs IDE companion connections.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `connection_type` (string)
-
-</details>
 
 #### UI
 
@@ -831,13 +728,10 @@ UI logs track terminal rendering issues.
 
 Logs terminal control sequence overflows.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `sequence_length` (int)
 - `truncated_sequence` (string)
-
-</details>
 
 #### Miscellaneous
 
@@ -845,65 +739,50 @@ Logs terminal control sequence overflows.
 
 Logs when the conversation state is rewound.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `outcome` (string)
-
-</details>
 
 ##### `gemini_cli.conseca.verdict`
 
 Logs security verdicts from ConSeca.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `verdict` (string)
 - `decision` (string: "accept", "reject", or "modify")
 - `reason` (string, optional)
 - `tool_name` (string, optional)
 
-</details>
-
 ##### `gemini_cli.hook_call`
 
 Logs execution of lifecycle hooks.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `hook_name` (string)
 - `hook_type` (string)
 - `duration_ms` (int)
 - `success` (boolean)
 
-</details>
-
 ##### `gemini_cli.tool_output_masking`
 
 Logs when tool output is masked for privacy.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `tokens_before` (int)
 - `tokens_after` (int)
 - `masked_count` (int)
 - `total_prunable_tokens` (int)
 
-</details>
-
 ##### `gemini_cli.keychain.availability`
 
 Logs keychain availability checks.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `available` (boolean)
-
-</details>
 
 ### Metrics
 
@@ -925,26 +804,20 @@ Incremented once per CLI startup.
 
 Counts tool calls.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `function_name` (string)
 - `success` (boolean)
 - `decision` (string: "accept", "reject", "modify", or "auto_accept")
 - `tool_type` (string: "mcp" or "native")
 
-</details>
-
 ##### `gemini_cli.tool.call.latency`
 
 Measures tool call latency (in ms).
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `function_name` (string)
-
-</details>
 
 ##### API
 
@@ -952,25 +825,19 @@ Measures tool call latency (in ms).
 
 Counts all API requests.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
 - `status_code` (int or string)
 - `error_type` (string, optional)
 
-</details>
-
 ##### `gemini_cli.api.request.latency`
 
 Measures API request latency (in ms).
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
-
-</details>
 
 ##### Token usage
 
@@ -978,13 +845,10 @@ Measures API request latency (in ms).
 
 Counts input, output, thought, cache, and tool tokens.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `model` (string)
 - `type` (string: "input", "output", "thought", "cache", or "tool")
-
-</details>
 
 ##### Files
 
@@ -992,8 +856,7 @@ Counts input, output, thought, cache, and tool tokens.
 
 Counts file operations.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `operation` (string: "create", "read", or "update")
 - `lines` (int, optional)
@@ -1001,19 +864,14 @@ Counts file operations.
 - `extension` (string, optional)
 - `programming_language` (string, optional)
 
-</details>
-
 ##### `gemini_cli.lines.changed`
 
 Counts added or removed lines.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `function_name` (string, optional)
 - `type` (string: "added" or "removed")
-
-</details>
 
 ##### Chat and streaming
 
@@ -1021,13 +879,10 @@ Counts added or removed lines.
 
 Counts compression operations.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `tokens_before` (int)
 - `tokens_after` (int)
-
-</details>
 
 ##### `gemini_cli.chat.invalid_chunk.count`
 
@@ -1047,38 +902,29 @@ Counts requests where all retries failed.
 
 Counts model selections.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `slash_command.model.model_name` (string)
-
-</details>
 
 ##### `gemini_cli.model_routing.latency`
 
 Measures routing decision latency.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `routing.decision_model` (string)
 - `routing.decision_source` (string)
 - `routing.approval_mode` (string)
 
-</details>
-
 ##### `gemini_cli.model_routing.failure.count`
 
 Counts routing failures.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `routing.decision_source` (string)
 - `routing.error_message` (string)
 - `routing.approval_mode` (string)
-
-</details>
 
 ##### Agent runs
 
@@ -1086,35 +932,26 @@ Counts routing failures.
 
 Counts agent runs.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_name` (string)
 - `terminate_reason` (string)
-
-</details>
 
 ##### `gemini_cli.agent.duration`
 
 Measures agent run duration.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_name` (string)
-
-</details>
 
 ##### `gemini_cli.agent.turns`
 
 Counts turns per agent run.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `agent_name` (string)
-
-</details>
 
 ##### Approval mode
 
@@ -1122,12 +959,9 @@ Counts turns per agent run.
 
 Counts plan executions.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `approval_mode` (string)
-
-</details>
 
 ##### UI
 
@@ -1143,36 +977,27 @@ Gemini CLI provides detailed performance metrics for advanced monitoring.
 
 Measures startup time by phase.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `phase` (string)
 - `details` (map, optional)
-
-</details>
 
 ##### `gemini_cli.memory.usage`
 
 Measures heap and RSS memory.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `memory_type` (string: "heap_used", "heap_total", "external", "rss")
 - `component` (string, optional)
-
-</details>
 
 ##### `gemini_cli.cpu.usage`
 
 Measures CPU usage percentage.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `component` (string, optional)
-
-</details>
 
 ##### `gemini_cli.tool.queue.depth`
 
@@ -1182,14 +1007,11 @@ Measures tool execution queue depth.
 
 Breaks down tool time by phase.
 
-<details>
-<summary>Attributes</summary>
+Attributes
 
 - `function_name` (string)
 - `phase` (string: "validation", "preparation", "execution",
   "result_processing")
-
-</details>
 
 #### GenAI semantic convention
 
@@ -1208,8 +1030,7 @@ traces to debug tool interactions and optimize performance.
 
 Every trace captures rich metadata via standard span attributes.
 
-<details open>
-<summary>Standard span attributes</summary>
+Standard span attributes
 
 - `gen_ai.operation.name`: High-level operation (for example, `tool_call`,
   `llm_call`, `user_prompt`, `system_prompt`, `agent_call`, or
@@ -1229,8 +1050,6 @@ Every trace captures rich metadata via standard span attributes.
 - `gen_ai.usage.output_tokens`: Number of output tokens.
 - `gen_ai.system_instructions`: System instructions in JSON format.
 - `gen_ai.conversation.id`: The CLI session ID.
-
-</details>
 
 For more details on semantic conventions for events, see the
 [OpenTelemetry documentation](https://github.com/open-telemetry/semantic-conventions/blob/8b4f210f43136e57c1f6f47292eb6d38e3bf30bb/docs/gen-ai/gen-ai-events.md).

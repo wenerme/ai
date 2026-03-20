@@ -6,14 +6,9 @@
 }
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-:::note
-This feature is supported since version 4.0.2.
+> **note**: This feature is supported since version 4.0.2.
 
 This is an experimental feature.
-:::
 
 ## Use Cases
 
@@ -96,7 +91,7 @@ CREATE CATALOG [IF NOT EXISTS] catalog_name PROPERTIES (
 
 When the `use_arrow_flight` property is set to `true`, it is in Arrow Flight mode.
 
-![arrow-flight-mode](/images/Lakehouse/doris-catalog/arrow-flight-mode.png)
+[arrow-flight-mode]
 
 In this mode, during cross-cluster queries, FEs synchronize metadata such as Schema through HTTP protocol, and then BE nodes of the local cluster access the Remote Doris cluster through the Arrow Flight interface.
 
@@ -112,7 +107,7 @@ When the `use_arrow_flight` property is set to `false`, it is in Virtual Cluster
 
 > This mode currently only supports Doris clusters deployed in storage-compute coupled mode.
 
-![virtual-cluster-mode](/images/Lakehouse/doris-catalog/virtual-cluster-mode.png)
+[virtual-cluster-mode]
 
 In this mode, during cross-cluster queries, Backend nodes in the Remote Doris cluster are treated as virtual nodes for query planning.
 

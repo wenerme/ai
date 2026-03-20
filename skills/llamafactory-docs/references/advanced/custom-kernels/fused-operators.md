@@ -48,7 +48,6 @@ def _npu_swiglu_forward(self, hidden_state):
 
  在 LLaMA-Factory 中，通过 `NpuSwiGluKernel` 提供使能该融合算子的入口，只需要调用 `apply_kernel("npu_fused_swiglu", model=model)` 即可针对已适配的模型使能 npu SwiGLU 融合算子。对于未适配的模型，如有需要，您可根据示例以及[开发者文档](../../dev-guide/plugins/model-plugins/kernels.md)自行适配。
 
-
 ## NpuFusedRoPE
 RoPE（Rotary Positional Embedding，旋转式位置嵌入） 是一种位置编码技术，广泛应用于 Qwen 等 LLM 模型中，用于有效编码文本序列的位置信息。它结合了绝对位置编码的稳定性与相对位置编码的灵活性，同时具备优秀的长度泛化能力。传统 RoPE 算子通常在 LLM 等模型结构中通过自定义函数的形式实现。RoPE 融合算子将原计算流程合并为单个硬件优化算子，从而提升性能。
 
@@ -73,7 +72,6 @@ def _apply_rotary_pos_emb(q, k, cos, sin, position_ids=None, unsqueeze_dim=1):
 ```
 
  在 LLaMA-Factory 中，通过 `NpuRoPEKernel` 提供使能该融合算子的入口，只需要调用 `apply_kernel("npu_fused_rope", model=model)` 即可针对已适配的模型使能 npu RoPE 融合算子。对于未适配的模型，如有需要，您可根据示例以及[开发者文档](../../dev-guide/plugins/model-plugins/kernels.md)自行适配。
-
 
 ## NpuFusedMoE
 MoE（Mixture of Experts）模型通过稀疏激活扩展容量。在原生 Transformers 实现中，使用串行循环遍历专家，导致内核启动开销大、硬件利用率低。

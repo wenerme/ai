@@ -10,7 +10,6 @@
 
 <version since="2.0.0">
 
-
 </version>
 
 ## Description
@@ -172,4 +171,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = Can not find the compatibility 
 
 ### Keywords
 
-ARRAY, COMPACT, ARRAY_COMPACT 
+ARRAY, COMPACT, ARRAY_COMPACT

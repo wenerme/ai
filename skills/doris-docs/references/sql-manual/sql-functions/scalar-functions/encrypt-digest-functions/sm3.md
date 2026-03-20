@@ -18,7 +18,6 @@ SM3( <input> )
 
 ## Parameters
 
-
 | parameter | description |
 |-----------|-------------|
 | `<input>`   | The value of sm3 that needs to be calculated, accept string and binary types  |

@@ -10,8 +10,6 @@
 | Base URL | `https://api.synthetic.new/openai/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
 
-<br />
-
 ## What is Synthetic?
 
 Synthetic is a privacy-focused AI platform that provides access to open-source LLMs with the following guarantees:

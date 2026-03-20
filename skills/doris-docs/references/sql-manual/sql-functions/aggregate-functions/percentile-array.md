@@ -15,7 +15,6 @@ Key features:
 2. Batch Processing: Can calculate multiple percentiles in a single operation
 3. Scope: Best suited for handling small-scale datasets
 
-
 ## Syntax
 
 ```sql
@@ -33,7 +32,6 @@ PERCENTILE_ARRAY(<col>, <array_p>)
 
 Returns a DOUBLE type array containing the calculated percentile values.
 If there is no valid data in the group, returns an empty array.
-
 
 ## Examples
 

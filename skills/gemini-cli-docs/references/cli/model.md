@@ -5,7 +5,6 @@ used by Gemini CLI, giving you more control over your results. Use **Pro**
 models for complex tasks and reasoning, **Flash** models for high speed results,
 or the (recommended) **Auto** setting to choose the best model for your tasks.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > The `/model` command (and the `--model` flag) does not override the
 > model used by sub-agents. Consequently, even when using the `/model` flag you

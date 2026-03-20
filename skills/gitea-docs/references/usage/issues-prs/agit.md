@@ -1,7 +1,5 @@
 ---
 date: "	2022-09-01T20:50:42+0000"
-slug: "agit"
-sidebar_position: 12
 aliases:
   - /en-us/agit-setup
   - /agit-setup
@@ -12,9 +10,7 @@ aliases:
 
 In Gitea `1.13`, support for [AGit](https://git-repo.info/en/2020/03/agit-flow-and-git-repo/) was added. AGit enables users to create pull requests directly, even without write permissions of the repository, eliminating the need to fork it. This helps reduce the number of duplicated repositories and minimizes unnecessary disk usage.
 
-:::note
-Git version 2.29 or higher is required on the server side for this to work.
-:::
+> **note**: Git version 2.29 or higher is required on the server side for this to work.
 
 ## Creating PRs with AGit
 

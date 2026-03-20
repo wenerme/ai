@@ -70,8 +70,6 @@ refs:
       destination: /docs/grafana-cloud/alerting-and-irm/alerting/fundamentals/templates/
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 This tutorial is a continuation of the [Get started with Grafana Alerting - Grouping notifications](http://www.grafana.com/tutorials/alerting-get-started-pt3/) tutorial.
 
 {{< youtube id="9CSrQGKeZwQ" >}}
@@ -83,11 +81,6 @@ In this tutorial, you will learn:
 - How to create a notification template that integrates with alert rule annotations.
 - How to use a built-in notification template to group and format multiple alert instances.
 - How to preview alert notifications by leveraging alert instances in the notification template payload.
-
-<!-- INTERACTIVE page intro.md END -->
-<!-- INTERACTIVE page step1.md START -->
-
-<!-- INTERACTIVE ignore START -->
 
 {{< docs/ignore >}}
 
@@ -117,61 +110,59 @@ There are different ways you can follow along with this tutorial.
 
 ### Set up the Grafana stack (OSS users)
 
-<!-- INTERACTIVE ignore END -->
-
 To demonstrate the observation of data using the Grafana stack, download and run the following files.
 
 1. Clone the [tutorial environment repository](https://www.github.com/grafana/tutorial-environment).
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    git clone https://github.com/grafana/tutorial-environment.git
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Change to the directory where you cloned the repository:
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    cd tutorial-environment
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Run the Grafana stack:
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    ```
    docker compose up -d
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose up -d
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
    The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
    {{< /admonition >}}
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
@@ -180,9 +171,6 @@ To demonstrate the observation of data using the Grafana stack, download and run
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
    {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-<!-- INTERACTIVE page step2.md START -->
 
 ## How templating works
 
@@ -203,9 +191,6 @@ Notification templates allow you to customize how information is presented in ea
 This particular notification template pulls in summary and description annotations for each alert instance and organizes them into separate sections, such as "firing" and "resolved." This way, instead of getting a long list of individual alert notifications, users can receive one well-structured message with all the relevant details grouped together.
 
 This approach is helpful when you want to reduce notification noise, especially in situations where multiple instances of an alert are firing at the same time (e.g., high CPU usage across several instances). You can leverage templates to create a unified, easy-to-read notification that includes all the pertinent details.
-
-<!-- INTERACTIVE page step2.md END -->
-<!-- INTERACTIVE page step3.md START -->
 
 ## Step 1: Template labels and annotations
 
@@ -292,9 +277,6 @@ Now that we’ve configured an alert rule with dynamic templates for the **summa
 
 To make our alert notifications more concise and tailored to our needs, we’ll create a custom **notification template** that references the summary annotation we just set up. Notification templates are especially useful because they can be reused across multiple contact points, ensuring consistent alert messages.
 
-<!-- INTERACTIVE page step3.md END -->
-<!-- INTERACTIVE page step4.md START -->
-
 ## Step 2: Template notifications
 
 In this step, we use a built-in notification template to format alert notifications in a clear and organized way. Notification templates allow us to customize the structure of alert messages, making them easier to read and more relevant.
@@ -335,13 +317,9 @@ This template prints out alert instances into two sections: **firing alerts** an
 Note: Your notification template name (`{{define "<NAME>"}}`) must be unique. You cannot have two templates with the same name in the same notification template group or in different notification template groups.
 {{< /docs/ignore >}}
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="note" >}}
 Your notification template name (`{{define "<NAME>"}}`) must be unique. You cannot have two templates with the same name in the same notification template group or in different notification template groups.
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
 
 Here’s a breakdown of the template:
 
@@ -368,9 +346,6 @@ In the **Preview** area, you can see a sample of how the notification would look
 
 With the notification template ready, the next step is to apply it to your contact point to see it in action.
 
-<!-- INTERACTIVE page step4.md END -->
-<!-- INTERACTIVE page step5.md START -->
-
 ### Apply the template to your contact point
 
 1. Apply the template to your contact point.
@@ -382,9 +357,6 @@ With the notification template ready, the next step is to apply it to your conta
    - Click **Save**.
 1. Save your contact point.
 
-<!-- INTERACTIVE page step5.md END -->
-<!-- INTERACTIVE page step6.md START -->
-
 ### Receiving notifications
 
 Now that the template has been applied to the contact point, you should receive notifications in the specified contact point.
@@ -394,9 +366,6 @@ Note: you might need to pause the alert rule evaluation and resume it to trigger
 {{< figure src="/media/docs/alerting/templated-notification-cpu.png" max-width="1200px" caption="Templated email notification for CPU and memory usage" >}}
 
 In the screen capture, you can see how the notification template groups the alert instances into two sections: **firing alerts** and **resolved alerts**. Each section includes only the key details for each alert, ensuring the message remains concise and focused. Additionally, the summary and description annotations we created earlier are included, providing affected instance and CPU usage.
-
-<!-- INTERACTIVE page step6.md END -->
-<!-- INTERACTIVE page finish.md START -->
 
 ## Conclusion
 
@@ -413,20 +382,14 @@ To deepen your understanding of Grafana’s templating, explore the following re
 
 ## Learn more in [Grafana Alerting: Route alerts using dynamic labels](http://www.grafana.com/tutorials/alerting-get-started-pt5/)
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 
 In [Get started with Grafana Alerting: Route alerts using dynamic labels](http://www.grafana.com/tutorials/alerting-get-started-pt5/) you learn how to dynamically route alerts and link them to dashboards.
 
 {{< /admonition >}}
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 In [Get started with Grafana Alerting: Route alerts using dynamic labels](http://www.grafana.com/tutorials/alerting-get-started-pt5/) you learn how to dynamically route alerts and link them to dashboards.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page finish.md END -->

@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/copilotkit
-sidebar_label: 'Integrate CopilotKit'
 title: 'How to build an AI Agent with CopilotKit and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how to build an agentic application using data stored in ClickHouse with ClickHouse MCP and CopilotKit'
 keywords: ['ClickHouse', 'MCP', 'copilotkit']
 show_related_blogs: true
@@ -19,9 +15,8 @@ to query data from ClickHouse and generate charts based on the data.
 [CopilotKit](https://github.com/CopilotKit/CopilotKit) is used to build the UI 
 and provide a chat interface to the user.
 
-:::note Example code
+> **note**: Example code
 The code for this example can be found in the [examples repository](https://github.com/ClickHouse/examples/edit/main/ai/mcp/copilotkit).
-:::
 
 ## Prerequisites {#prerequisites}
 

@@ -18,11 +18,7 @@ Doris supports three table models: Duplicate, Unique, and Aggregate. Among them,
 
 The query performance of these table models, from best to worst, is: Duplicate > MOW > MOR == Aggregate. Therefore, under normal circumstances, if there are no special requirements, the Duplicate table is recommended for better query performance.
 
-:::tip
-
-When the business has no data update requirements but high demands for query performance, the [Duplicate table](../../../table-design/data-model/duplicate.md) is recommended.
-
-:::
+> **tip**: When the business has no data update requirements but high demands for query performance, the [Duplicate table](../../../table-design/data-model/duplicate.md) is recommended.
 
 ## Case 2: Bucket Column Selection
 
@@ -53,11 +49,7 @@ Therefore, during the Schema design phase, business personnel need to design rea
 select c2，count(*) cnt from t1 group by c2 order by cnt desc limit 10;
 ```
 
-:::tip
-
-Check whether the bucket column has data skew issues. If so, replace it with a field that has adequate hashing characteristics in business meaning as the bucket column.
-
-:::
+> **tip**: Check whether the bucket column has data skew issues. If so, replace it with a field that has adequate hashing characteristics in business meaning as the bucket column.
 
 It is clear that good prior design can significantly reduce the cost of locating and correcting issues when they occur. Therefore, it is strongly recommended that business personnel conduct rigorous design and checks during the Schema design phase to avoid introducing unnecessary costs.
 
@@ -87,11 +79,7 @@ PROPERTIES (
 ）;
 ```
 
-:::tip
-
-Set columns frequently used in business queries as key columns to accelerate the query process.
-
-:::
+> **tip**: Set columns frequently used in business queries as key columns to accelerate the query process.
 
 ## Case 4: Field Type Optimization
 
@@ -102,11 +90,7 @@ This characteristic provides important insights into the design and later optimi
 1. While meeting the expression and computation needs of business systems, priority should be given to fixed-length types, avoiding the use of variable-length types;
 2. At the same time, low-precision types should be adopted instead of high-precision types. Specific practices include using BIGINT to replace VARCHAR or STRING type fields and using FLOAT / INT / BIGINT to replace DECIMAL type fields. Reasonable design and optimization of such field types will greatly enhance business computation efficiency, thereby improving system performance.
 
-:::tip
-
-When defining Schema types, follow the principle of prioritizing fixed-length and low-precision types.
-
-:::
+> **tip**: When defining Schema types, follow the principle of prioritizing fixed-length and low-precision types.
 
 ## Summary
 

@@ -44,10 +44,7 @@ const example = os
 
 Using the `withEventMeta` helper, you can attach [additional event meta](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format) (such as an event ID or a retry interval) to each event.
 
-::: info
-When used with [Client Retry Plugin](/docs/plugins/client-retry) or [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource), the client will reconnect with the last event ID. This value is made available to your handler as `lastEventId`, allowing you to resume the stream seamlessly.
-:::
-
+> **info**: When used with [Client Retry Plugin](/docs/plugins/client-retry) or [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource), the client will reconnect with the last event ID. This value is made available to your handler as `lastEventId`, allowing you to resume the stream seamlessly.
 ```ts
 import { withEventMeta } from '@orpc/server'
 
@@ -69,10 +66,7 @@ const example = os
 
 To signal the end of the stream, simply use a `return` statement. When the handler returns, oRPC marks the stream as successfully completed.
 
-:::warning
-This behavior is exclusive to oRPC. Standard [SSE](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) clients, such as those using [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) will automatically reconnect when the connection closes.
-:::
-
+> **warning**: This behavior is exclusive to oRPC. Standard [SSE](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) clients, such as those using [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) will automatically reconnect when the connection closes.
 ```ts
 const example = os
   .handler(async function* ({ input, lastEventId }) {
@@ -137,8 +131,6 @@ const publish = os
 
 Unlike the [Publisher Helper](/docs/helpers/publisher), the `EventPublisher` is more lightweight with synchronous publishing and no resume support.
 
-::: code-group
-
 ```ts [Static Events]
 import { EventPublisher } from '@orpc/server'
 
@@ -181,5 +173,3 @@ const sendMessage = os
     publisher.publish(input.channel, { message: input.message }) // [!code highlight]
   })
 ```
-
-:::

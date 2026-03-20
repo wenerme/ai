@@ -53,4 +53,3 @@ ALTER, TABLE, COMMENT, ALTER TABLE
 ```
 
 ## Best Practice
-

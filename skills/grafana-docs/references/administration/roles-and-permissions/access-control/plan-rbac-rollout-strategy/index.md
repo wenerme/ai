@@ -245,7 +245,7 @@ If you want your `Viewers` to create reports, [update the `Viewer` basic role pe
   | Action           | Scope                           |
   | ---------------- | ------------------------------- |
   | `reports:create` | n/a                             |
-  | `reports:write`  | `reports:*` <br> `reports:id:*` |
+  | `reports:write`  | `reports:*`  `reports:id:*` |
   | `reports:read`   | `reports:*`                     |
   | `reports:send`   | `reports:*`                     |
 

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Store Model in DB Settings
 
@@ -17,9 +15,8 @@ Previously, the `store_model_in_db` setting had to be configured in `proxy_confi
 - **Enable or disable storing models in the database** – Control whether model definitions are cached in your database (useful for reducing config file size and improving scalability)
 - **Apply changes immediately** – No proxy restart needed; settings take effect for new model operations as soon as you save
 
-:::warning UI overrides config
+> **warning**: UI overrides config
 Settings changed in the UI **override** the values in your config file. For example, if `store_model_in_db` is set to `false` in `general_settings`, enabling it in the UI will still persist model definitions to the database. Use the UI when you want runtime control without redeploying.
-:::
 
 ## How Store Model in DB Works
 

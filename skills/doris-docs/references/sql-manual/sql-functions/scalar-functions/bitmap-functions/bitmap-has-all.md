@@ -64,7 +64,6 @@ The result will be:
 +------+
 ```
 
-
 ```sql
 select bitmap_has_all(bitmap_empty(), NULL) as res;
 ```

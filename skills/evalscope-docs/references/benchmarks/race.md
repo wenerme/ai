@@ -1,6 +1,5 @@
 # RACE
 
-
 ## Overview
 
 RACE (ReAding Comprehension from Examinations) is a large-scale reading comprehension benchmark collected from Chinese middle school and high school English examinations. It tests comprehensive reading comprehension abilities.
@@ -28,7 +27,6 @@ RACE (ReAding Comprehension from Examinations) is a large-scale reading comprehe
 - Two subsets available: `high` and `middle`
 - Evaluates on test split
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ RACE (ReAding Comprehension from Examinations) is a large-scale reading comprehe
 | **Default Shots** | 3-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -132,5 +129,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

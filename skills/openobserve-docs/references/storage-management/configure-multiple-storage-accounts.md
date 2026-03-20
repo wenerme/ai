@@ -24,7 +24,6 @@ Let us say, you want to store logs based on their importance:
 
 Follow these steps to configure multiple object storage accounts in OpenObserve:
 
-
 ### Prerequisites
 
 - At least two S3-compatible object storage accounts.
@@ -52,25 +51,25 @@ Set the `ZO_S3_STREAM_STRATEGY` environment variable to control how streams are 
 
 You can choose one of the following strategies:
 
-**Use Default Account** <br>
+**Use Default Account** 
 ```
 ZO_S3_STREAM_STRATEGY=""
 ```
 All streams are stored in the first configured account.
 
-**File Name Hashing** <br>
+**File Name Hashing** 
 ```
 ZO_S3_STREAM_STRATEGY="file_hash"
 ```
 The storage account is selected based on a hash of the file name.
 
-**Stream Name Hashing** <br>
+**Stream Name Hashing** 
 ```
 ZO_S3_STREAM_STRATEGY="stream_hash"
 ```
 The storage account is selected based on a hash of the stream name.
 
-**Static Stream-to-Account Mapping** <br>
+**Static Stream-to-Account Mapping** 
 ```
 ZO_S3_STREAM_STRATEGY="payments:acc1,operations:acc1,internal:acc2"
 ```

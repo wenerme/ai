@@ -10,8 +10,6 @@
 | Base URL | `https://api.poe.com/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
 
-<br />
-
 ## What is Poe?
 
 Poe is Quora's comprehensive AI platform that offers:

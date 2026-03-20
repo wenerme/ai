@@ -43,13 +43,11 @@ Enrichment tables are often used to add human-readable context or derived values
 
 - **Protocol number to protocol name**: Add a new field that maps `6` to `TCP` and `17` to `UDP` using a protocol lookup table.
 
-
-
 ## How to Create and Use an Enrichment Table
 
 ### Step 1: Identify the Field to Enrich
-Review your log data and identify a field that contains codes or labels with limited context. <br>
-**Example**  <br>
+Review your log data and identify a field that contains codes or labels with limited context. 
+**Example**  
 The `log_iostream` field in the logs has values such as:
 
 ```json
@@ -78,8 +76,8 @@ stderr,Standard Error – error or diagnostic logs
 3. Set a name such as log_stream_labels.
 4. Upload your CSV file.
 5. Click **Save**.
-<br>
-![Upload the Enrichment Table](../../images/upload-enrichment-table.png)
+
+[Upload the Enrichment Table]
 
 The enrichment table is now available for use in VRL.
 
@@ -95,7 +93,7 @@ record, err = get_enrichment_table_record("log_stream_labels", {"log_iostream": 
 ```
 
 !!! note "Explanation:"
-    **Line 1:** <br>
+    **Line 1:** 
 
     `record, err = get_enrichment_table_record("log_stream_labels", { "log_iostream": .log_iostream })`: 
 
@@ -104,19 +102,19 @@ record, err = get_enrichment_table_record("log_stream_labels", {"log_iostream": 
     - If a match is found, the corresponding row from the table is returned as record.
     - If no match is found or an error occurs, record will be empty and err will contain the error.
 
-    **Line 2:** <br>
+    **Line 2:** 
     `.stream_type_description = record.stream_type_description`:
 
     - This creates a new field called `stream_type_description` in your log event.
     - The value is taken from the `stream_type_description` column in the enrichment table row returned above.
     - If the enrichment table did not contain a matching entry, this field may not be added.
 
-    **Line 3:** <br>
+    **Line 3:** 
     `.`
 
     - This tells OpenObserve to return the modified log event, including the newly added field.
 
-**Optional** <br>
+**Optional** 
 If you prefer to replace the original value instead of adding a new field, you can do:
 
 ```js linenums="1"
@@ -126,9 +124,8 @@ record, err = get_enrichment_table_record("log_stream_labels", {"log_iostream": 
 ```
 ### Step 5: Run the Query and View the Results
 Click Run Query. A new field (such as stream_type_description) will appear in the results, containing the enriched meaning of the original value. 
-<br>
-![Use the Enrichment Table](../../images/use-enrichment-table.png)
 
+[Use the Enrichment Table]
 
 ## Use Enrichment Tables in Pipelines 
 In addition to enriching data at query time, you can apply the same enrichment logic during ingestion using **Pipelines**. This allows you to permanently transform log records as they arrive, ensuring that enriched fields are stored along with the original data.
@@ -150,8 +147,8 @@ To add more data to an existing enrichment table, enable the **Append data to ex
 3. In the **Update Enrichment Table** view, select the new CSV file that contains the additional data.
 4. Turn on the **Append data to existing Enrichment Table** toggle.
 5. Select **Save** to upload and append the new data to the existing table.
-<br>
-![Append Data to an Existing Table](../../images/enrichment-table-append.png)
+
+[Append Data to an Existing Table]
 
 ## Storage Limit
 The maximum size of an enrichment table is controlled by the environment variable `ZO_ENRICHMENT_TABLE_LIMIT`.

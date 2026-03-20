@@ -1,6 +1,5 @@
 ---
 title: Reporters | Guide
-outline: deep
 ---
 
 # Reporters
@@ -42,7 +41,6 @@ export default defineConfig({
 
 By default, Vitest's reporters will print their output to the terminal. When using the `json`, `html` or `junit` reporters, you can instead write your tests' output to a file by including an `outputFile` [configuration option](/config/outputfile) either in your Vite configuration file or via CLI.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=json --outputFile=./test-output.json
 ```
@@ -55,7 +53,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ## Combining Reporters
 
@@ -98,13 +95,10 @@ This example will write separate JSON and XML reports as well as printing a verb
 
 By default (i.e. if no reporter is specified), Vitest will display summary of running tests and their status at the bottom. Once a suite passes, its status will be reported on top of the summary.
 
-::: tip
-When Vitest detects it is running inside an AI coding agent, the [`agent`](#agent-reporter) reporter is used instead to reduce output and minimize token usage. You can override this by explicitly configuring the [`reporters`](/config/reporters) option.
-:::
+> **tip**: When Vitest detects it is running inside an AI coding agent, the [`agent`](#agent-reporter) reporter is used instead to reduce output and minimize token usage. You can override this by explicitly configuring the [`reporters`](/config/reporters) option.
 
 You can disable the summary by configuring the reporter:
 
-:::code-group
 ```ts [vitest.config.ts]
 export default defineConfig({
   test: {
@@ -114,7 +108,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example output for tests in progress:
 
@@ -167,7 +160,6 @@ In addition to this, the `verbose` reporter prints test error messages right awa
 
 This is the only terminal reporter that reports [annotations](/guide/test-annotations) when the test doesn't fail.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=verbose
 ```
@@ -181,7 +173,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example output:
 
@@ -215,7 +206,6 @@ An example with `--includeTaskLocation`:
 
 The tree reporter is same as `default` reporter, but it also displays each individual test after the suite has finished. Similar to `default` reporter, you can disable the summary by configuring the reporter.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=tree
 ```
@@ -229,7 +219,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example output for tests in progress with default `slowTestThreshold: 300`:
 
@@ -271,7 +260,6 @@ Example of final terminal output for a passing test suite:
 
 Prints a single dot for each completed test to provide minimal output while still showing all tests that have run. Details are only provided for failed tests, along with the summary for the suite.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=dot
 ```
@@ -283,7 +271,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example terminal output for a passing test suite:
 
@@ -300,7 +287,6 @@ Example terminal output for a passing test suite:
 
 Outputs a report of the test results in JUnit XML format. Can either be printed to the terminal or written to an XML file using the [`outputFile`](/config/outputfile) configuration option.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=junit
 ```
@@ -312,7 +298,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example of a JUnit XML report:
 ```xml
@@ -351,7 +336,6 @@ export default defineConfig({
 
 Generates a report of the test results in a JSON format compatible with Jest's `--json` option. Can either be printed to the terminal or written to a file using the [`outputFile`](/config/outputfile) configuration option.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=json
 ```
@@ -363,7 +347,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example of a JSON report:
 
@@ -413,9 +396,7 @@ Example of a JSON report:
 }
 ```
 
-::: info
-Since Vitest 3, the JSON reporter includes coverage information in `coverageMap` if coverage is enabled.
-:::
+> **info**: Since Vitest 3, the JSON reporter includes coverage information in `coverageMap` if coverage is enabled.
 
 ### HTML Reporter
 
@@ -423,7 +404,6 @@ Generates an HTML file to view test results through an interactive [GUI](/guide/
 
 Output file can be specified using the [`outputFile`](/config/outputfile) configuration option. If no `outputFile` option is provided, a new HTML file will be created.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=html
 ```
@@ -435,17 +415,13 @@ export default defineConfig({
   },
 })
 ```
-:::
 
-::: tip
-This reporter requires installed [`@vitest/ui`](/guide/ui) package.
-:::
+> **tip**: This reporter requires installed [`@vitest/ui`](/guide/ui) package.
 
 ### TAP Reporter
 
 Outputs a report following [Test Anything Protocol](https://testanything.org/) (TAP).
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=tap
 ```
@@ -457,7 +433,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example of a TAP report:
 ```bash
@@ -485,7 +460,6 @@ not ok 1 - __tests__/test-file-1.test.ts # time=14.00ms {
 
 Outputs a TAP flat report. Like the `tap` reporter, test results are formatted to follow TAP standards, but test suites are formatted as a flat list rather than a nested hierarchy.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=tap-flat
 ```
@@ -497,7 +471,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Example of a TAP flat report:
 ```bash
@@ -519,7 +492,6 @@ ok 2 - __tests__/test-file-1.test.ts > first test file > 4 - 2 should equal 2 # 
 
 Displays a list of hanging processes, if any are preventing Vitest from exiting safely. The `hanging-process` reporter does not itself display test results, but can be used in conjunction with another reporter to monitor processes while tests run. Using this reporter can be resource-intensive, so should generally be reserved for debugging purposes in situations where Vitest consistently cannot exit the process.
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=hanging-process
 ```
@@ -531,15 +503,14 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ### GitHub Actions Reporter {#github-actions-reporter}
 
 Output [workflow commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-error-message)
 to provide annotations for test failures. This reporter is automatically enabled when the `reporters` option is not configured and `process.env.GITHUB_ACTIONS === 'true'` (on GitHub Actions environment).
 
-<img alt="GitHub Actions" img-dark src="https://github.com/vitest-dev/vitest/assets/4232207/336cddc2-df6b-4b8a-8e72-4d00010e37f5">
-<img alt="GitHub Actions" img-light src="https://github.com/vitest-dev/vitest/assets/4232207/ce8447c1-0eab-4fe1-abef-d0d322290dca">
+[GitHub Actions]
+[GitHub Actions]
 
 If you configure reporters, you need to explicitly add `github-actions`.
 
@@ -582,8 +553,8 @@ export default defineConfig({
 
 The GitHub Actions reporter automatically generates a [Job Summary](https://github.blog/news-insights/product-news/supercharging-github-actions-with-job-summaries/) with an overview of your test results. The summary includes test file and test case statistics, and highlights flaky tests that required retries.
 
-<img alt="GitHub Actions Job Summary" img-dark src="/github-actions-job-summary-dark.png">
-<img alt="GitHub Actions Job Summary" img-light src="/github-actions-job-summary-light.png">
+[GitHub Actions Job Summary]
+[GitHub Actions Job Summary]
 
 The job summary is enabled by default and writes to the path specified by `$GITHUB_STEP_SUMMARY`. You can override it by using the `jobSummary.outputPath` option:
 
@@ -647,7 +618,6 @@ Outputs a minimal report optimized for AI coding assistants and LLM-based workfl
 
 This reporter is automatically enabled when no `reporters` option is configured and Vitest detects it is running inside an AI coding agent. If you configure custom reporters, you can explicitly add `agent`:
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=agent
 ```
@@ -659,7 +629,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ### Blob Reporter
 
@@ -680,15 +649,12 @@ npx vitest --merge-reports=reports --reporter=json --reporter=default
 Blob reporter output doesn't include file-based [attachments](/api/advanced/artifacts.html#testattachment).
 Make sure to merge [`attachmentsDir`](/config/attachmentsdir) separately alongside blob reports on CI when using this feature.
 
-::: tip
-Both `--reporter=blob` and `--merge-reports` do not work in watch mode.
-:::
+> **tip**: Both `--reporter=blob` and `--merge-reports` do not work in watch mode.
 
 ## Custom Reporters
 
 You can use third-party custom reporters installed from NPM by specifying their package name in the reporters' option:
 
-:::code-group
 ```bash [CLI]
 npx vitest --reporter=some-published-vitest-reporter
 ```
@@ -700,7 +666,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 Additionally, you can define your own [custom reporters](/guide/advanced/reporters) and use them by specifying their file path:
 

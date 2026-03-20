@@ -1,6 +1,5 @@
 # AIME-2026
 
-
 ## Overview
 
 AIME 2026 (American Invitational Mathematics Examination 2026) is a benchmark based on problems from the prestigious AIME competition, one of the most challenging high school mathematics contests in the United States. It tests advanced mathematical reasoning and problem-solving skills.
@@ -26,7 +25,6 @@ AIME 2026 (American Invitational Mathematics Examination 2026) is a benchmark ba
 - Answers should be formatted within `\boxed{}` for proper extraction
 - Uses LLM-as-judge for mathematical equivalence checking
 
-
 ## Properties
 
 | Property | Value |
@@ -38,7 +36,6 @@ AIME 2026 (American Invitational Mathematics Examination 2026) is a benchmark ba
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -107,5 +104,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

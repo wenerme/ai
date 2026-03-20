@@ -139,14 +139,14 @@ token data.
 const scalar_t* q_ptr = q + seq_idx * q_stride + head_idx * HEAD_SIZE;
 ```
 
-![query](../assets/design/paged_attention/query.png)
+[query]
 
 Each thread defines its own `q_ptr` which points to the assigned
 query token data on global memory. For example, if `VEC_SIZE` is 4
 and `HEAD_SIZE` is 128, the `q_ptr` points to data that contains
 total of 128 elements divided into 128 / 4 = 32 vecs.
 
-![q_vecs](../assets/design/paged_attention/q_vecs.png)
+[q_vecs]
 
 ```cpp
 __shared__ Q_vec q_vecs[THREAD_GROUP_SIZE][NUM_VECS_PER_THREAD];
@@ -183,7 +183,7 @@ key token at different iterations. As shown above, that `k_ptr`
 points to key token data based on `k_cache` at assigned block,
 assigned head and assigned token.
 
-![key](../assets/design/paged_attention/key.png)
+[key]
 
 The diagram above illustrates the memory layout for key data. It
 assumes that the `BLOCK_SIZE` is 16, `HEAD_SIZE` is 128, `x` is
@@ -196,7 +196,7 @@ iterations. Inside each rectangle, there are a total 32 vecs (128
 elements for one token) that will be processed by 2 threads (one
 thread group) separately.
 
-![k_vecs](../assets/design/paged_attention/k_vecs.png)
+[k_vecs]
 
 ```cpp
 K_vec k_vecs[NUM_VECS_PER_THREAD]
@@ -353,11 +353,11 @@ later steps. Now, it should store the normalized softmax result of
 
 ## Value
 
-![value](../assets/design/paged_attention/value.png)
+[value]
 
-![logits_vec](../assets/design/paged_attention/logits_vec.png)
+[logits_vec]
 
-![v_vec](../assets/design/paged_attention/v_vec.png)
+[v_vec]
 
 Now we need to retrieve the value data and perform dot multiplication
 with `logits`. Unlike query and key, there is no thread group

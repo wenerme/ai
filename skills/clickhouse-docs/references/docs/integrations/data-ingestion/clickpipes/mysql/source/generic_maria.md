@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Generic MariaDB'
 description: 'Set up any MariaDB instance as a source for ClickPipes'
-slug: /integrations/clickpipes/mysql/source/generic_maria
 title: 'Generic MariaDB source setup guide'
 doc_type: 'guide'
 keywords: ['generic mariadb', 'clickpipes', 'binary logging', 'ssl tls', 'self hosted']
@@ -12,11 +10,7 @@ integration:
 
 # Generic MariaDB source setup guide
 
-:::info
-
-If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
-
-:::
+> **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ## Enable binary log retention {#enable-binlog-retention}
 
@@ -58,11 +52,7 @@ If the source database is a replica, make sure to also turn on `log_slave_update
 
 You NEED to RESTART the MariaDB instance for the changes to take effect.
 
-:::note
-
-Column exclusion isn't supported for MariaDB \<= 10.4 because the `binlog_row_metadata` setting wasn't yet introduced.
-
-:::
+> **note**: Column exclusion isn't supported for MariaDB \<= 10.4 because the `binlog_row_metadata` setting wasn't yet introduced.
 
 ## Configure a database user {#configure-database-user}
 
@@ -87,11 +77,7 @@ Connect to your MariaDB instance as the root user and execute the following comm
     GRANT REPLICATION SLAVE ON *.* TO 'clickpipes_user'@'%';
     ```
 
-:::note
-
-Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
-
-:::
+> **note**: Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
 
 ## SSL/TLS configuration (recommended) {#ssl-tls-configuration}
 

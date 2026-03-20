@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Apache Beam'
-slug: /integrations/apache-beam
 description: 'You can ingest data into ClickHouse using Apache Beam'
 title: 'Integrating Apache Beam and ClickHouse'
 doc_type: 'guide'
@@ -9,8 +7,6 @@ integration:
   - category: 'data_ingestion'
 keywords: ['apache beam', 'stream processing', 'batch processing', 'jdbc connector', 'data pipeline']
 ---
-
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Integrating Apache Beam and ClickHouse
 
@@ -37,10 +33,9 @@ Add the following dependency to your package management framework:
 </dependency>
 ```
 
-:::important Recommended Beam version
+> **important**: Recommended Beam version
 The `ClickHouseIO` connector is recommended for use starting from Apache Beam version `2.59.0`.
 Earlier versions may not fully support the connector's functionality.
-:::
 
 The artifacts could be found in the [official maven repository](https://mvnrepository.com/artifact/org.apache.beam/beam-sdks-java-io-clickhouse).
 
@@ -122,7 +117,7 @@ public class Main {
 | `TableSchema.TypeName.ENUM16`      | `Schema.TypeName#STRING`   | ✅            |                                                                                                                                          |
 | `TableSchema.TypeName.BOOL`        | `Schema.TypeName#BOOLEAN`  | ✅            |                                                                                                                                          |
 | `TableSchema.TypeName.TUPLE`       | `Schema.TypeName#ROW`      | ✅            |                                                                                                                                          |
-| `TableSchema.TypeName.FIXEDSTRING` | `FixedBytes`               | ✅            | `FixedBytes` is a `LogicalType` representing a fixed-length <br/> byte array located at <br/> `org.apache.beam.sdk.schemas.logicaltypes` |
+| `TableSchema.TypeName.FIXEDSTRING` | `FixedBytes`               | ✅            | `FixedBytes` is a `LogicalType` representing a fixed-length  byte array located at  `org.apache.beam.sdk.schemas.logicaltypes` |
 |                                    | `Schema.TypeName#DECIMAL`  | ❌            |                                                                                                                                          |
 |                                    | `Schema.TypeName#MAP`      | ❌            |                                                                                                                                          |
 

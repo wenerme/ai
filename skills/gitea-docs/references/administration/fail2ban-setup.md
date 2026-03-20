@@ -1,7 +1,5 @@
 ---
 date: "2018-05-11T11:00:00+02:00"
-slug: "fail2ban-setup"
-sidebar_position: 16
 aliases:
   - /en-us/fail2ban-setup
 ---

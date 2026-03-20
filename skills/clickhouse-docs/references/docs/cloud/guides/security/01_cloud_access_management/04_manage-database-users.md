@@ -1,14 +1,9 @@
 ---
-sidebar_label: 'Manage database users'
-slug: /cloud/security/manage-database-users
 title: 'Manage database users'
 description: 'This page describes how administrators can add database users, manage assignments, and remove database users'
 doc_type: 'guide'
 keywords: ['database users', 'access management', 'security', 'permissions', 'user management']
 ---
-
-import Image from '@theme/IdealImage';
-import user_grant_permissions_options from '@site/static/images/cloud/security/cloud-access-management/user_grant_permissions_options.png';
 
 This guide demonstrates two ways to manage database users, within SQL console and directly within the database.
 
@@ -56,11 +51,9 @@ The user will be assigned the role associated with their email address whenever 
 
 Use the SHA256_hash method when [creating user accounts](/sql-reference/statements/create/user.md) to secure passwords. ClickHouse database passwords must contain a minimum of 12 characters and meet complexity requirements: upper case characters, lower case characters, numbers and/or special characters.
 
-:::tip Generate passwords securely
+> **tip**: Generate passwords securely
 Since users with less than administrative privileges can't set their own password, ask the user to hash their password using a generator
 such as [this one](https://tools.keycdn.com/sha256-online-generator) before providing it to the admin to setup the account. 
-:::
-
 ```sql
 CREATE USER userName IDENTIFIED WITH sha256_hash BY 'hash';
 ```
@@ -95,9 +88,7 @@ The illustration below shows the different ways a user could be granted permissi
 ### Initial settings {#initial-settings}
 Databases have an account named `default` that is added automatically and granted the default_role upon service creation. The user that creates the service is presented with the automatically generated, random password that is assigned to the `default` account when the service is created. The password isn't shown after initial setup, but may be changed by any user with Service Admin permissions in the console at a later time. This account or an account with Service Admin privileges within the console may set up additional database users and roles at any time.
 
-:::note
-To change the password assigned to the `default` account in the console, go to the Services menu on the left, access the service, go to the Settings tab and click the Reset password button.
-:::
+> **note**: To change the password assigned to the `default` account in the console, go to the Services menu on the left, access the service, go to the Settings tab and click the Reset password button.
 
 We recommend creating a new user account associated with a person and granting the user the default_role. This is so activities performed by users are identified to their user IDs and the `default` account is reserved for break-glass type activities. 
 

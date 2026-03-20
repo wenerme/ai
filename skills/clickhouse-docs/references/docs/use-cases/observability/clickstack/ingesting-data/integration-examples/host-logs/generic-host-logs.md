@@ -1,30 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/host-logs
 title: 'Monitoring Host Logs with ClickStack'
-sidebar_label: 'Generic Host Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Generic Host Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'server logs']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import log_view from '@site/static/images/clickstack/host-logs/log-view.png';
-import search_view from '@site/static/images/clickstack/host-logs/search-view.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import logs_dashboard from '@site/static/images/clickstack/host-logs/host-logs-dashboard.png';
-import finish_import from '@site/static/images/clickstack/host-logs/import-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Monitoring Host Logs with ClickStack {#host-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize host system logs (syslog, auth, kernel) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing hosts {#existing-hosts}
 
@@ -65,9 +49,6 @@ ClickStack allows you to extend the base OpenTelemetry Collector configuration b
 
 Create a file named `host-logs-monitoring.yaml` with the configuration for your system:
 
-<Tabs groupId="os-type">
-<TabItem value="modern-linux" label="Modern Linux (Ubuntu 24.04+)" default>
-
 ```yaml
 receivers:
   filelog/syslog:
@@ -105,9 +86,6 @@ service:
       exporters:
         - clickhouse
 ```
-
-</TabItem>
-<TabItem value="legacy-linux" label="Legacy Linux (Ubuntu 20.04, RHEL, CentOS)">
 
 ```yaml
 receivers:
@@ -147,9 +125,6 @@ service:
         - clickhouse
 ```
 
-</TabItem>
-<TabItem value="macos" label="macOS">
-
 ```yaml
 receivers:
   filelog/syslog:
@@ -187,9 +162,6 @@ service:
         - clickhouse
 ```
 
-</TabItem>
-</Tabs>
-<br/>
 All configurations:
 - Read syslog files from their standard locations
 - Parse the syslog format to extract structured fields (timestamp, hostname, unit/service, PID, message)
@@ -197,12 +169,10 @@ All configurations:
 - Add `source: host-logs` attribute for filtering in HyperDX
 - Route logs to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-- You only define new receivers and pipelines in the custom config
+> **note**: - You only define new receivers and pipelines in the custom config
 - The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration - you just reference them by name
 - The regex parser extracts systemd unit names, PIDs, and other metadata from the syslog format
 - This configuration uses `start_at: end` to avoid re-ingesting logs on collector restarts. For testing, change to `start_at: beginning` to see historical logs immediately.
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -240,9 +210,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the syslog files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the syslog files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -336,9 +304,7 @@ docker run --name clickstack-demo \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-**This mounts the log file directly into the container. This is done for testing purposes with static demo data.**
-:::
+> **note**: **This mounts the log file directly into the container. This is done for testing purposes with static demo data.**
 
 #### Verify logs in HyperDX {#verify-demo-logs}
 
@@ -353,7 +319,6 @@ Once ClickStack is running:
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -390,9 +355,7 @@ Key visualizations include:
 - Security events (failed logins, bans, blocks)
 - Service restart activity
 
-:::note
-For the demo dataset, set the time range to **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-11 00:00:00 - 2025-11-12 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

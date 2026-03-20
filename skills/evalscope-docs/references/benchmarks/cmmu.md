@@ -1,6 +1,5 @@
 # CMMU
 
-
 ## Overview
 
 CMMU is a novel Chinese multi-modal benchmark designed to evaluate domain-specific knowledge across seven foundational subjects: math, biology, physics, chemistry, geography, politics, and history. It tests multimodal understanding in Chinese educational contexts.
@@ -27,7 +26,6 @@ CMMU is a novel Chinese multi-modal benchmark designed to evaluate domain-specif
 - Numeric accuracy metric
 - Chain-of-thought prompting for reasoning
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ CMMU is a novel Chinese multi-modal benchmark designed to evaluate domain-specif
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
-
 
 ## Data Statistics
 
@@ -69,7 +66,6 @@ CMMU is a novel Chinese multi-modal benchmark designed to evaluate domain-specif
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 121x20 - 2327x1809 |
 | Formats | gif, jpeg, png |
-
 
 ## Sample Example
 
@@ -161,5 +157,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

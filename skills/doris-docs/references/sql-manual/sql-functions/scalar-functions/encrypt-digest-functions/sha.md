@@ -29,7 +29,6 @@ SHA1( <input> )
 
 Returns the sha1 value of the input string
 
-
 ## Examples
 
 ```sql

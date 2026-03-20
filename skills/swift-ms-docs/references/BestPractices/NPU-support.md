@@ -383,7 +383,4 @@ ASCEND_RT_VISIBLE_DEVICES=0 swift deploy \
 | Using SGLang as inference engine |
 | Enable ETP for LoRA training when using Megatron |
 
-
 ## NPU WeChat Group
-
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/wechat/npu.png" width="250">

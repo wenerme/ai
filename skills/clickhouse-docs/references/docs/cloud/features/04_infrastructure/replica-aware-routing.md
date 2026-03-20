@@ -1,12 +1,9 @@
 ---
 title: 'Replica-aware routing'
-slug: /manage/replica-aware-routing
 description: 'How to use Replica-aware routing to increase cache re-use'
 keywords: ['cloud', 'sticky endpoints', 'sticky', 'endpoints', 'sticky routing', 'routing', 'replica aware routing']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
 
 # Replica-aware routing
 

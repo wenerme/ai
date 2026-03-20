@@ -89,7 +89,6 @@ Specifies the [outbound interface](../general.md#outbound-interface) for the pro
 
 ## routing-mark
 
-
 !!! warning
     The routing-mark in the proxy group is deprecated, please use the [routing-mark](../proxies/index.md#routing-mark) in the proxy node.
 

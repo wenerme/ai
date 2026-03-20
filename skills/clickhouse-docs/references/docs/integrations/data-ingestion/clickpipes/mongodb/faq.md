@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'FAQ'
 description: 'Frequently asked questions about ClickPipes for MongoDB.'
-slug: /integrations/clickpipes/mongodb/faq
-sidebar_position: 2
 title: 'ClickPipes for MongoDB FAQ'
 doc_type: 'reference'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']

@@ -156,10 +156,8 @@ const result = await Bun.build({
 
 In the above example, Bun will wait until the first `onStart()` (sleeping for 10 seconds) has completed, as well as the second `onStart()` (writing the bundle time to a file).
 
-<Note>
   `onStart()` callbacks (like every other lifecycle callback) do not have the ability to modify the `build.config`
   object. If you want to mutate `build.config`, you must do so directly in the `setup()` function.
-</Note>
 
 ### onResolve
 
@@ -265,8 +263,6 @@ This allows you to delay execution of the `onLoad` callback until all other modu
 
 This is useful for returning contents of a module that depends on other modules.
 
-<Accordion title="Example: tracking and reporting unused exports">
-
 ```ts title="index.ts" icon="/icons/typescript.svg"
 import { plugin } from "bun";
 
@@ -307,11 +303,7 @@ plugin({
 });
 ```
 
-</Accordion>
-
-<Warning>
   The `.defer()` function currently has the limitation that it can only be called once per `onLoad` callback.
-</Warning>
 
 ## Native plugins
 
@@ -424,7 +416,7 @@ This lifecycle callback is run immediately before a file is parsed by Bun's bund
 
 As input, it receives the file's contents and can optionally return new source code.
 
-<Info>This callback can be called from any thread and so the napi module implementation must be thread-safe.</Info>
+This callback can be called from any thread and so the napi module implementation must be thread-safe.
 
 ### onEnd
 

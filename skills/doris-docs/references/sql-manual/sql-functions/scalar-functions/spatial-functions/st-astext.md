@@ -38,7 +38,6 @@ ST_ASTEXT has the following edge cases:
 
 ## Example
 
-
 Point object conversion
 ```sql
 SELECT ST_AsText(ST_Point(24.7, 56.7));
@@ -94,7 +93,6 @@ mysql> SELECT ST_AsText(ST_Circle(116.39748, 39.90882, 0.5));
 | CIRCLE ((116.39748 39.90882), 0.5)             |
 +------------------------------------------------+
 ```
-
 
 NULL input
 

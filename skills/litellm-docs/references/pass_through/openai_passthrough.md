@@ -110,4 +110,3 @@ messages = client.beta.threads.messages.list(
 # Delete the assistant when done
 client.beta.assistants.delete(assistant.id)
 ```
-

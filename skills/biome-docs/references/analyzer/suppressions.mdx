@@ -37,10 +37,7 @@ Let's break it down:
 
 If you're unsure of the exact category of a rule/action, you can refer to their documentation page and use their *diagnostic category*.
 
-:::note
-From here onwards, JavaScript is used to explain suppression comments, and the `lint` category is used.
-:::
-
+> **note**: From here onwards, JavaScript is used to explain suppression comments, and the `lint` category is used.
 
 ### Inline suppressions
 
@@ -86,9 +83,7 @@ c == d;
 f == g;
 ```
 
-:::note
-Range suppressions must have a matching `biome-ignore-end` suppression.
-:::
+> **note**: Range suppressions must have a matching `biome-ignore-end` suppression.
 
 Range suppressions can also overlap.  Consider the following example:
 
@@ -114,5 +109,3 @@ In the above code:
 - The `debugger` statement at line 8 **doesn't** raise diagnostics due to the suppression comment at line 2.
 - The `f == g` statement raises a diagnostic because the rule `noDoubleEquals` isn't suppressed anymore.
 - The comment `// biome-ignore-end lint/suspicious/noDebugger: reason` at line 10 terminates the suppression of `noDebugger` that was started by the suppression comment at line 2.
-
-

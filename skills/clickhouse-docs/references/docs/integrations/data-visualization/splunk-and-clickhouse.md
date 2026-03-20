@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Splunk'
-sidebar_position: 198
-slug: /integrations/splunk
 keywords: ['Splunk', 'integration', 'data visualization']
 description: 'Connect Splunk dashboards to ClickHouse'
 title: 'Connecting Splunk to ClickHouse'
@@ -11,26 +8,11 @@ integration:
   - category: 'data_visualization'
 ---
 
-import Image from '@theme/IdealImage';
-import splunk_1 from '@site/static/images/integrations/splunk/splunk-1.png';
-import splunk_2 from '@site/static/images/integrations/splunk/splunk-2.png';
-import splunk_3 from '@site/static/images/integrations/splunk/splunk-3.png';
-import splunk_4 from '@site/static/images/integrations/splunk/splunk-4.png';
-import splunk_5 from '@site/static/images/integrations/splunk/splunk-5.png';
-import splunk_6 from '@site/static/images/integrations/splunk/splunk-6.png';
-import splunk_7 from '@site/static/images/integrations/splunk/splunk-7.png';
-import splunk_8 from '@site/static/images/integrations/splunk/splunk-8.png';
-import splunk_9 from '@site/static/images/integrations/splunk/splunk-9.png';
-import splunk_10 from '@site/static/images/integrations/splunk/splunk-10.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
-
 # Connecting Splunk to ClickHouse
 
 <ClickHouseSupportedBadge/>
 
-:::tip
-Looking to store ClickHouse audit logs to Splunk? Follow the ["Storing ClickHouse Cloud Audit logs into Splunk"](/integrations/audit-splunk) guide.
-:::
+> **tip**: Looking to store ClickHouse audit logs to Splunk? Follow the ["Storing ClickHouse Cloud Audit logs into Splunk"](/integrations/audit-splunk) guide.
 
 Splunk is a popular technology for security and observability. It is also a powerful search and dashboarding engine. There are hundreds of Splunk apps available to address different use cases.
 
@@ -46,9 +28,7 @@ With this guide, you will be able to create a dashboard connected to ClickHouse 
 
 <Image img={splunk_1} size="lg" border alt="Splunk dashboard showing NYC taxi data visualizations" />
 
-:::note
-This guide uses the [New York City Taxi dataset](/getting-started/example-datasets/nyc-taxi). There are many other datasets that you can use from [our docs](http://localhost:3000/docs/getting-started/example-datasets).
-:::
+> **note**: This guide uses the [New York City Taxi dataset](/getting-started/example-datasets/nyc-taxi). There are many other datasets that you can use from [our docs](http://localhost:3000/docs/getting-started/example-datasets).
 
 ## Prerequisites {#prerequisites}
 
@@ -117,17 +97,13 @@ Create a new Connection to ClickHouse from Configuration -> Databases -> Connect
 
 <Image img={splunk_4} size="sm" border alt="Splunk DB Connect new connection button" />
 
-<br />
-
 Add ClickHouse host details and ensure "Enable SSL" is ticked:
 
 <Image img={splunk_5} size="md" border alt="Splunk connection configuration page for ClickHouse" />
 
 After saving the connection, you will have successfully connected to ClickHouse to Splunk!
 
-:::note
-If you receive an error, make sure that you have added the IP address of your Splunk instance to the ClickHouse Cloud IP Access List. See [the docs](/cloud/security/setting-ip-filters) for more info.
-:::
+> **note**: If you receive an error, make sure that you have added the IP address of your Splunk instance to the ClickHouse Cloud IP Access List. See [the docs](/cloud/security/setting-ip-filters) for more info.
 
 ## Run a SQL query {#run-a-sql-query}
 

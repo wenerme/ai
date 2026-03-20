@@ -22,7 +22,6 @@ Collect logs, metrics, and traces into OpenObserve from a variety of data source
 1. [Go](logs/go)
 1. [Curl](logs/curl)
 
-
 ### APIs
 
 Logs can also be ingested into OpenObserve Cloud / OpenObserve through one of the 3 HTTP APIs.
@@ -53,7 +52,6 @@ You can also use curl command to ingest logs:
 1. [Prometheus](metrics/prometheus)
 1. [Telegraf](metrics/telegraf)
 
-
 ## Traces
 
 1. [OTEL Collector](logs/otlp)
@@ -62,8 +60,3 @@ You can also use curl command to ingest logs:
 1. [Node.js](traces/nodejs)
 1. [Python](traces/python)
 1. [Go](traces/go)
-
-
-
-
-

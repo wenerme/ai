@@ -42,15 +42,11 @@ Code repository: https://github.com/apache/doris-spark-connector
 </dependency>
 ```
 
-:::tip
-
-Starting from version 24.0.0, the Doris Connector package naming rules have been adjusted:
+> **tip**: Starting from version 24.0.0, the Doris Connector package naming rules have been adjusted:
 
 1. Scala version information is no longer included.
 2. For Spark 2.x versions, use the package named `spark-doris-connector-spark-2` uniformly, which is compiled based on Scala 2.11 by default. If you need Scala 2.12 version, please compile it yourself.
 3. For Spark 3.x versions, use the package named `spark-doris-connector-spark-3.x` according to the specific Spark version. For Spark 3.0, you can use the `spark-doris-connector-spark-3.1` package.
-
-:::
 
 **Notes**
 
@@ -299,13 +295,8 @@ Starting from version 24.0.0, accessing Doris through Spark Catalog is supported
 | spark.sql.catalog.your_catalog_name.doris.password   | Yes      | Set Doris password.                                                                                                                                                  |
 | spark.sql.defaultCatalog                             | No       | Set Spark SQL default catalog.                                                                                                                                      |
 
-
-:::tip
-
-All connector parameters applicable to DataFrame and Spark SQL can be set for catalog.  
+> **tip**: All connector parameters applicable to DataFrame and Spark SQL can be set for catalog.  
 For example, if you want to write data in json format, you can set the option `spark.sql.catalog.your_catalog_name.doris.sink.properties.format` to `json`.
-
-:::
 
 #### DataFrame
 
@@ -392,18 +383,18 @@ Java version examples are provided under `samples/doris-demo/spark-demo/` for re
 | doris.request.connect.timeout.ms | 30000          | Connection timeout for requests sent to Doris                                                                                                                                                                      |
 | doris.request.read.timeout.ms    | 30000          | Read timeout for requests sent to Doris                                                                                                                                                                            |
 | doris.request.query.timeout.s    | 21600          | Query timeout for Doris, default value is 6 hours, -1 means no timeout limit.                                                                                                                                     |
-| doris.request.tablet.size        | 1              | Number of Doris Tablets corresponding to one RDD Partition.<br />The smaller this value, the more Partitions will be generated, thus improving Spark's parallelism, but also putting more pressure on Doris.      |
+| doris.request.tablet.size        | 1              | Number of Doris Tablets corresponding to one RDD Partition.The smaller this value, the more Partitions will be generated, thus improving Spark's parallelism, but also putting more pressure on Doris.      |
 | doris.read.field                 | --             | List of column names to read from Doris table, separated by commas                                                                                                                                                 |
-| doris.batch.size                 | 4064           | Maximum number of rows to read from BE at once. Increasing this value can reduce the number of connections established between Spark and Doris.<br />Thereby reducing the extra time overhead caused by network latency. |
+| doris.batch.size                 | 4064           | Maximum number of rows to read from BE at once. Increasing this value can reduce the number of connections established between Spark and Doris.Thereby reducing the extra time overhead caused by network latency. |
 | doris.exec.mem.limit             | 8589934592     | Memory limit for a single query. Default is 8GB, in bytes                                                                                                                                                          |
-| doris.write.fields               | --             | Specify the fields or field order to write to Doris table, separated by commas.<br />By default, all fields are written in the order of Doris table fields.                                                       |
+| doris.write.fields               | --             | Specify the fields or field order to write to Doris table, separated by commas.By default, all fields are written in the order of Doris table fields.                                                       |
 | doris.sink.batch.size            | 500000         | Maximum number of rows written to BE at once                                                                                                                                                                       |
 | doris.sink.max-retries           | 0              | Number of retries after writing to BE fails. Starting from version 1.3.0, the default value is 0, which means no retry by default. When this parameter is set to greater than 0, batch-level failure retry will be performed, and data of the size configured by `doris.sink.batch.size` will be cached in Spark Executor memory, which may require appropriately increasing memory allocation. |
 | doris.sink.retry.interval.ms     | 10000          | After configuring the number of retries, the interval between each retry, in ms.                                                                                                                                   |       
-| doris.sink.properties.format     | csv            | Data format for Stream Load.<br/>Supports 3 formats: csv, json, arrow <br/> [More parameter details](https://doris.apache.org/docs/data-operate/import/stream-load-manual/)                                       |
-| doris.sink.properties.*          | --             | Import parameters for Stream Load.<br/>For example:<br/>Specify column separator: `'doris.sink.properties.column_separator' = ','` etc.<br/> [More parameter details](https://doris.apache.org/docs/data-operate/import/stream-load-manual/) |
-| doris.sink.task.partition.size   | --             | Number of Partitions corresponding to Doris write task. After Spark RDD is filtered and other operations, the number of Partitions finally written may be relatively large, but the number of records corresponding to each Partition is relatively small, resulting in increased write frequency and waste of computing resources.<br/>The smaller this value is set, the lower the Doris write frequency can be, reducing Doris merge pressure. This parameter is used in conjunction with doris.sink.task.use.repartition. |
-| doris.sink.task.use.repartition  | false          | Whether to use repartition method to control the number of Doris write Partitions. The default value is false, using coalesce method to control (Note: If there is no Spark action operator before writing, it may reduce the overall calculation parallelism).<br/>If set to true, repartition method is used (Note: Although the final number of Partitions can be set, it will additionally increase shuffle overhead). |
+| doris.sink.properties.format     | csv            | Data format for Stream Load.Supports 3 formats: csv, json, arrow  [More parameter details](https://doris.apache.org/docs/data-operate/import/stream-load-manual/)                                       |
+| doris.sink.properties.*          | --             | Import parameters for Stream Load.For example:Specify column separator: `'doris.sink.properties.column_separator' = ','` etc. [More parameter details](https://doris.apache.org/docs/data-operate/import/stream-load-manual/) |
+| doris.sink.task.partition.size   | --             | Number of Partitions corresponding to Doris write task. After Spark RDD is filtered and other operations, the number of Partitions finally written may be relatively large, but the number of records corresponding to each Partition is relatively small, resulting in increased write frequency and waste of computing resources.The smaller this value is set, the lower the Doris write frequency can be, reducing Doris merge pressure. This parameter is used in conjunction with doris.sink.task.use.repartition. |
+| doris.sink.task.use.repartition  | false          | Whether to use repartition method to control the number of Doris write Partitions. The default value is false, using coalesce method to control (Note: If there is no Spark action operator before writing, it may reduce the overall calculation parallelism).If set to true, repartition method is used (Note: Although the final number of Partitions can be set, it will additionally increase shuffle overhead). |
 | doris.sink.batch.interval.ms     | 0              | Interval time for each batch Sink, in ms.                                                                                                                                                                          |
 | doris.sink.enable-2pc            | false          | Whether to enable two-phase commit. After enabling, transactions will be committed at the end of the job, and all transactions in pre-committed state will be rolled back when some tasks fail.                    |
 | doris.sink.auto-redirect         | true           | Whether to redirect StreamLoad requests. After enabling, StreamLoad will write through FE without explicitly obtaining BE information.                                                                             |
@@ -439,7 +430,6 @@ Java version examples are provided under `samples/doris-demo/spark-demo/` for re
 | doris.request.auth.user     | --            | Username to access Doris                     |
 | doris.request.auth.password | --            | Password to access Doris                     |
 | doris.filter.query          | --            | Expression to filter read data, this expression is transparently transmitted to Doris. Doris uses this expression to complete source data filtering. |
-
 
 ## Doris to Spark Column Type Mapping
 
@@ -484,11 +474,7 @@ Java version examples are provided under `samples/doris-demo/spark-demo/` for re
 | MapType        | MAP/JSON       |
 | StructType     | STRUCT/JSON    |
 
-:::tip
-
-Starting from version 24.0.0, the Bitmap type read return type is string, returning the string value "Read unsupported" by default.
-
-:::
+> **tip**: Starting from version 24.0.0, the Bitmap type read return type is string, returning the string value "Read unsupported" by default.
 
 ## FAQ
 

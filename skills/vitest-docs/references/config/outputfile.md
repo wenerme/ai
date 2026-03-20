@@ -1,6 +1,5 @@
 ---
 title: outputFile | Config
-outline: deep
 ---
 
 # outputFile <CRoot /> {#outputfile}

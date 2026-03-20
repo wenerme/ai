@@ -1,18 +1,4 @@
-<!--Copyright 2020 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Pipelines
 
@@ -86,7 +72,6 @@ from transformers import pipeline
 
 pipe = pipeline("text-classification")
 
-
 def data():
     while True:
         # This could come from a dataset, a database, a queue or HTTP request
@@ -95,7 +80,6 @@ def data():
         # to use multiple threads to preprocess data. You can still have 1 thread that
         # does the preprocessing while the main runs the big inference
         yield "This is a test"
-
 
 for out in pipe(data()):
     print(out)
@@ -125,14 +109,10 @@ for out in pipe(KeyDataset(dataset, "text"), batch_size=8, truncation="only_firs
     # as batches to the model
 ```
 
-<Tip warning={true}>
-
 However, this is not automatically a win for performance. It can be either a 10x speedup or 5x slowdown depending
 on hardware, data and the actual model being used.
 
 Example where it's mostly a speedup:
-
-</Tip>
 
 ```python
 from transformers import pipeline
@@ -141,14 +121,12 @@ from tqdm.auto import tqdm
 
 pipe = pipeline("text-classification", device=0)
 
-
 class MyDataset(Dataset):
     def __len__(self):
         return 5000
 
     def __getitem__(self, i):
         return "This is a test"
-
 
 dataset = MyDataset()
 
@@ -289,7 +267,6 @@ class MyPipeline(TextClassificationPipeline):
         # Your code goes here
         scores = scores * 100
         # And here
-
 
 my_pipeline = MyPipeline(model=model, tokenizer=tokenizer, ...)
 # or if you use *pipeline* function, then:

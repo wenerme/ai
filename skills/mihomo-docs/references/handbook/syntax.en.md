@@ -195,18 +195,3 @@ Match ports 114 to 514 and 810 to 1919, as well as port 65530.
 ```{.yaml linenums="1"}
 114-514/810-1919,65530
 ```
-<!-- 
-## Time Format
-
-Mihome supports two time formats: integer and duration.
-
-=== "Integer format"
-    ```{.yaml linenums="1"}
-    interval: 3600
-    ```
-
-=== "Duration format"
-    ```{.yaml linenums="1"}
-    interval: 1h
-    ```
--->

@@ -1,9 +1,5 @@
 ---
 
-
-sidebar_label: 'Integrating Kafka with ClickHouse'
-sidebar_position: 1
-slug: /integrations/kafka
 description: 'Introduction to Kafka with ClickHouse'
 title: 'Integrating Kafka with ClickHouse'
 keywords: ['Apache Kafka', 'event streaming', 'data pipeline', 'message broker', 'real-time data']
@@ -33,9 +29,7 @@ For a more detailed comparison between these options, see [Choosing an option](#
 
 [ClickPipes](../clickpipes/index.md) is a managed integration platform that makes ingesting data from a diverse set of sources as simple as clicking a few buttons. Because it is fully managed and purpose-built for production workloads, ClickPipes significantly lowers infrastructure and operational costs, removing the need for external data streaming and ETL tools.
 
-:::tip
-This is the recommended option if you're a ClickHouse Cloud user. ClickPipes is **fully managed** and purpose-built to deliver the **best performance** in Cloud environments.
-:::
+> **tip**: This is the recommended option if you're a ClickHouse Cloud user. ClickPipes is **fully managed** and purpose-built to deliver the **best performance** in Cloud environments.
 
 #### Main features {#clickpipes-for-kafka-main-features}
 
@@ -57,9 +51,7 @@ To get started using ClickPipes for Kafka, see the [reference documentation](/in
 
 Kafka Connect is an open-source framework that works as a centralized data hub for simple data integration between Kafka and other data systems. The [ClickHouse Kafka Connect Sink](https://github.com/ClickHouse/clickhouse-kafka-connect) connector provides a scalable and highly-configurable option to read data from Apache Kafka and other Kafka API-compatible brokers.
 
-:::tip
-This is the recommended option if you prefer **high configurability** or are already a Kafka Connect user.
-:::
+> **tip**: This is the recommended option if you prefer **high configurability** or are already a Kafka Connect user.
 
 #### Main features {#kafka-connect-sink-main-features}
 
@@ -75,9 +67,7 @@ To get started using the ClickHouse Kafka Connect Sink, see the [reference docum
 
 The [Kafka table engine](./kafka-table-engine.md) can be used to read data from and write data to Apache Kafka and other Kafka API-compatible brokers. This option is bundled with open-source ClickHouse and is available across all deployment types.
 
-:::tip
-This is the recommended option if you're self-hosting ClickHouse and need a **low entry barrier** option, or if you need to **write** data to Kafka.
-:::
+> **tip**: This is the recommended option if you're self-hosting ClickHouse and need a **low entry barrier** option, or if you need to **write** data to Kafka.
 
 #### Main features {#kafka-table-engine-main-features}
 
@@ -93,9 +83,9 @@ To get started using the Kafka table engine, see the [reference documentation](.
 
 | Product | Strengths | Weaknesses |
 |---------|-----------|------------|
-| **ClickPipes for Kafka** | • Scalable architecture for high throughput and low latency<br/>• Built-in monitoring and schema management<br/>• Private networking connections (via PrivateLink)<br/>• Supports SSL/TLS authentication and IAM authorization<br/>• Supports programmatic configuration (Terraform, API endpoints) | • Doesn't support pushing data to Kafka<br/>• At-least-once semantics |
-| **Kafka Connect Sink** | • Exactly-once semantics<br/>• Allows granular control over data transformation, batching and error handling<br/>• Can be deployed in private networks<br/>• Allows real-time replication from databases not yet supported in ClickPipes via Debezium | • Doesn't support pushing data to Kafka<br/>• Operationally complex to set up and maintain<br/>• Requires Kafka and Kafka Connect expertise |
-| **Kafka table engine** | • Supports [pushing data to Kafka](./kafka-table-engine.md/#clickhouse-to-kafka)<br/>• Operationally simple to set up | • At-least-once semantics<br/>• Limited horizontal scaling for consumers. Can't be scaled independently from the ClickHouse server<br/>• Limited error handling and debugging options<br/>• Requires Kafka expertise |
+| **ClickPipes for Kafka** | • Scalable architecture for high throughput and low latency• Built-in monitoring and schema management• Private networking connections (via PrivateLink)• Supports SSL/TLS authentication and IAM authorization• Supports programmatic configuration (Terraform, API endpoints) | • Doesn't support pushing data to Kafka• At-least-once semantics |
+| **Kafka Connect Sink** | • Exactly-once semantics• Allows granular control over data transformation, batching and error handling• Can be deployed in private networks• Allows real-time replication from databases not yet supported in ClickPipes via Debezium | • Doesn't support pushing data to Kafka• Operationally complex to set up and maintain• Requires Kafka and Kafka Connect expertise |
+| **Kafka table engine** | • Supports [pushing data to Kafka](./kafka-table-engine.md/#clickhouse-to-kafka)• Operationally simple to set up | • At-least-once semantics• Limited horizontal scaling for consumers. Can't be scaled independently from the ClickHouse server• Limited error handling and debugging options• Requires Kafka expertise |
 
 ### Other options {#other-options}
 

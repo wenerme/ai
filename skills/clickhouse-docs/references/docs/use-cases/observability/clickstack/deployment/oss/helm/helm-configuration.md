@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/helm-configuration
 title: 'Helm configuration'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 4
 description: 'Configuring API keys, secrets, and ingress for ClickStack Helm deployments'
 doc_type: 'guide'
 keywords: ['ClickStack configuration', 'Helm secrets', 'API key setup', 'ingress configuration', 'TLS setup']
@@ -44,9 +40,7 @@ After updating the API key, restart the pods to pick up the new configuration:
 kubectl rollout restart deployment my-clickstack-clickstack-app my-clickstack-clickstack-otel-collector
 ```
 
-:::note
-The chart automatically creates a Kubernetes secret (`<release-name>-app-secrets`) with your API key. No additional secret configuration is needed unless you want to use an external secret.
-:::
+> **note**: The chart automatically creates a Kubernetes secret (`<release-name>-app-secrets`) with your API key. No additional secret configuration is needed unless you want to use an external secret.
 
 ## Secret management {#secret-management}
 
@@ -105,9 +99,8 @@ hyperdx:
     host: "hyperdx.yourdomain.com"
 ```
 
-:::note Important configuration note
+> **note**: Important configuration note
 `hyperdx.frontendUrl` should match the ingress host and include the protocol (e.g., `https://hyperdx.yourdomain.com`). This ensures that all generated links, cookies, and redirects work correctly.
-:::
 
 ### Enabling TLS (HTTPS) {#enabling-tls}
 
@@ -213,9 +206,7 @@ hyperdx:
 - You can use a different domain, configure specific TLS settings, and apply custom annotations
 - The regex path rule allows you to route all OTLP signals (traces, metrics, logs) through a single rule
 
-:::note
-If you don't need to expose the OTEL collector externally, you can skip this configuration. For most users, the general ingress setup is sufficient.
-:::
+> **note**: If you don't need to expose the OTEL collector externally, you can skip this configuration. For most users, the general ingress setup is sufficient.
 
 ## Troubleshooting ingress {#troubleshooting-ingress}
 

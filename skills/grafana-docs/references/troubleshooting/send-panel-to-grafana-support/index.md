@@ -31,7 +31,7 @@ The panel that you send includes all query response data and all visualizations 
 
    If you enable iframes, the support dashboard includes the visualization that looks similar to the following image.
 
-   ![Support panel](/static/img/docs/troubleshooting/grafana-support-panel.png)
+   [Support panel]
 
 1. To send the panel data to Grafana Labs via Github:
 

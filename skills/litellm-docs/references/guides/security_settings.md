@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # SSL, HTTP Proxy Security Settings
 
@@ -15,111 +14,75 @@ LiteLLM uses HTTPX for network requests, unless otherwise specified.
 
 You can set a custom CA bundle file path using the `SSL_CERT_FILE` environmental variable or passing a string to the the ssl_verify setting.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm.ssl_verify = "client.pem"
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
   ssl_verify: "client.pem"
 ```
 
-</TabItem>  
-<TabItem value="env_var" label="Environment Variables">
+  
 
 ```bash
 export SSL_CERT_FILE="client.pem"
 ```
-</TabItem>
-</Tabs>
 
 ## 2. Disable SSL verification
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
 litellm.ssl_verify = False
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
   ssl_verify: false
 ```
 
-</TabItem>  
-<TabItem value="env_var" label="Environment Variables">
+  
 
 ```bash
 export SSL_VERIFY="False"
 ```
-</TabItem>
-</Tabs>
 
 ## 3. Lower security settings
 
 The `ssl_security_level` allows setting a lower security level for SSL connections.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm.ssl_security_level = "DEFAULT@SECLEVEL=1"
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
   ssl_security_level: "DEFAULT@SECLEVEL=1"
 ```
-</TabItem>
-<TabItem value="env_var" label="Environment Variables">
 
 ```bash
 export SSL_SECURITY_LEVEL="DEFAULT@SECLEVEL=1"
 ```
-</TabItem>
-</Tabs>
 
 ## 4. Certificate authentication
 
 The `SSL_CERTIFICATE` environmental variable or `ssl_certificate` attribute allows setting a client side certificate to authenticate the client to the server.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm.ssl_certificate = "/path/to/certificate.pem"
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
   ssl_certificate: "/path/to/certificate.pem"
 ```
-</TabItem>
-<TabItem value="env_var" label="Environment Variables">
 
 ```bash
 export SSL_CERTIFICATE="/path/to/certificate.pem"
 ```
-
-</TabItem>
-</Tabs>
 
 ## 5. Configure ECDH Curve for SSL/TLS Performance
 
@@ -127,31 +90,21 @@ The `ssl_ecdh_curve` setting allows you to configure the Elliptic Curve Diffie-H
 
 **Use Case:** Some OpenSSL 3.x systems enable PQC by default, which can slow down TLS handshakes. Setting the ECDH curve to `X25519` disables PQC and can significantly improve connection performance.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm.ssl_ecdh_curve = "X25519"  # Disables PQC for better performance
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
   ssl_ecdh_curve: "X25519"
 ```
 
-</TabItem>  
-<TabItem value="env_var" label="Environment Variables">
+  
 
 ```bash
 export SSL_ECDH_CURVE="X25519"
 ```
-
-</TabItem>
-</Tabs>
 
 **Common Valid Curves:**
 
@@ -166,9 +119,6 @@ export SSL_ECDH_CURVE="X25519"
 
 Both httpx and aiohttp libraries use `urllib.request.getproxies` from environment variables. Before client initialization, you may set proxy (and optional SSL_CERT_FILE) by setting the environment variables:
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 litellm.aiohttp_trust_env = True
@@ -177,16 +127,12 @@ litellm.aiohttp_trust_env = True
 ```bash
 export HTTPS_PROXY='http://username:password@proxy_uri:port'
 ```
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 export HTTPS_PROXY='http://username:password@proxy_uri:port'
 export AIOHTTP_TRUST_ENV='True'
 ```
-</TabItem>
-</Tabs>
+
 ## 7. Per-Service SSL Verification
 
 LiteLLM allows you to override SSL verification settings for specific services or provider calls. This is useful when different services (e.g., an internal guardrail vs. a public LLM provider) require different CA certificates.

@@ -66,9 +66,7 @@ GET /api/query_stats/default_cluster/test_query_db/baseall?summary=false
 
 * return statistics information
 
-
 ## Example
-
 
 2. use curl
 

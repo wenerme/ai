@@ -8,7 +8,7 @@
 
 Compute Group is a mechanism for physical isolation between different workloads in a storage-compute separation architecture. The basic principle of Compute Group is illustrated in the diagram below:
 
-![Compute Group workloads management in a storage-compute separation architecture](/images/compute_group_workload_management.png)
+[Compute Group workloads management in a storage-compute separation architecture]
 
 - One or more BE nodes can form a Compute Group.
 
@@ -24,10 +24,8 @@ While maintaining the strong isolation benefits like Resource Group, Compute Gro
 
 - Better isolation: Data availability is handled by the shared storage layer, so the failure of a BE node within any Compute Group will not cause data loading failures as it would in a Resource Group.
 
-:::caution Caution
+> **caution**: Caution
 Before 3.0.2, it was called Compute Cluster.
-:::
-
 
 ## Viewing All Compute Groups
 
@@ -36,7 +34,6 @@ Use the `SHOW COMPUTE GROUPS` command to view all compute groups in the current 
 - Users with `ADMIN` privileges can view all compute groups
 - Regular users can only view compute groups for which they have usage permissions (USAGE_PRIV)
 - If a user doesn't have usage permissions for any compute groups, an empty result will be returned
-
 
 ```sql
 SHOW COMPUTE GROUPS;
@@ -103,7 +100,7 @@ To view all available compute groups in the current repository:
 SHOW COMPUTE GROUPS;
 ```
 
-:::info Note
+> **info**: Note
 
 - If the current user has an Admin role, for example: `CREATE USER jack IDENTIFIED BY '123456' DEFAULT ROLE "admin"`, then:
   - They can set the default compute group for themselves and other users;
@@ -114,9 +111,6 @@ SHOW COMPUTE GROUPS;
   - They cannot view all compute groups, as this operation requires `GRANT ADMIN` privileges.
 - If the current user has not configured a default compute group, the existing system will trigger an error when performing data read/write operations. To resolve this issue, the user can execute the `use @cluster` command to specify the compute group used by the current context, or use the `SET PROPERTY` statement to set the default compute group.
 - If the current user has configured a default compute group, but that cluster is subsequently deleted, an error will also be triggered during data read/write operations. The user can execute the `use @cluster` command to re-specify the compute group used by the current context, or use the `SET PROPERTY` statement to update the default cluster settings.
-
-:::
-
 
 ## Switching Compute Groups
 

@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Overview'
-sidebar_position: 10
 title: 'Working with JSON'
-slug: /integrations/data-formats/json/overview
 description: 'Working with JSON in ClickHouse'
 keywords: ['json', 'clickhouse']
 score: 10
@@ -19,7 +16,6 @@ picture-in-picture"
 allowfullscreen>
 </iframe>
 
-<br/>
 ClickHouse provides several approaches for handling JSON, each with its respective pros and cons and usage. In this guide, we will cover how to load JSON and design your schema optimally. This guide consists of the following sections:
 
 - [Loading JSON](/integrations/data-formats/json/loading) - Loading and querying structured and semi-structured JSON in ClickHouse with simple schemas.

@@ -62,7 +62,6 @@ select day_floor("2023-07-13 22:28:18", 5);
 | 2023-07-10 00:00:00                 |
 +-------------------------------------+
 
-
 -- Datetime input with scale, return value has scale with all decimals as 0
 mysql> select day_floor("2023-07-13 22:28:18.123", 5);
 +-----------------------------------------+
@@ -70,7 +69,6 @@ mysql> select day_floor("2023-07-13 22:28:18.123", 5);
 +-----------------------------------------+
 | 2023-07-10 00:00:00.000                 |
 +-----------------------------------------+
-
 
 -- Input parameter without period, default to one day as period
 select day_floor("2023-07-13 22:28:18");

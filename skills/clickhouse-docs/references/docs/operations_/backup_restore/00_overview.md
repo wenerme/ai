@@ -1,15 +1,8 @@
 ---
 description: 'Overview of ClickHouse backup and restore'
-sidebar_label: 'Overview'
-slug: /operations/backup/overview
 title: 'Backup and Restore in ClickHouse'
 doc_type: 'reference'
 ---
-
-import GenericSettings from '@site/docs/operations_/backup_restore/_snippets/_generic_settings.md';
-import Syntax from '@site/docs/operations_/backup_restore/_snippets/_syntax.md';
-import AzureSettings from '@site/docs/operations_/backup_restore/_snippets/_azure_settings.md';
-import S3Settings from '@site/docs/operations_/backup_restore/_snippets/_s3_settings.md';
 
 > This section broadly covers backups and restores in ClickHouse. For a more 
 detailed description of each backup method, see the pages for specific methods
@@ -39,13 +32,11 @@ and cons, which are presented in this section of the docs. It is a good idea to
 use several approaches instead of just one such as to compensate for their various 
 shortcomings.
 
-:::note
-Keep in mind that if you backed something up and never tried to restore it, 
+> **note**: Keep in mind that if you backed something up and never tried to restore it, 
 chances are that the restore won't work properly when you actually need it (or at 
 least it will take longer than the business can tolerate). So whatever backup 
 approach you choose, make sure to automate the restore process as well, and practice
 it on a spare ClickHouse cluster regularly.
-:::
 
 The following pages detail the various backup and 
 restore methods available in ClickHouse:

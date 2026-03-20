@@ -66,8 +66,7 @@ By integrating **Aerospike with OpenTelemetry and OpenObserve**, you can:
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your OpenObserve details.
 
-    ![OpenObserve Redis Creds](../images/databases/otel-metrics-cred.png)
-
+    [OpenObserve Redis Creds]
 
 ??? "Step 3: Run the Collector"
 
@@ -77,15 +76,14 @@ By integrating **Aerospike with OpenTelemetry and OpenObserve**, you can:
     otelcol-contrib --config /path/to/config.yaml
     ```
 
-    ![Run the Collector](../images/databases/otel-collector.png)
+    [Run the Collector]
 
 ??? "Step 4: Visualize in OpenObserve"
 
     1. Open **OpenObserve → Streams** and select your metrics stream.  
-       ![Visualize Aerospike Metrics](../images/databases/aerospike-stream.png)  
+       [Visualize Aerospike Metrics]  
     2. Explore the metrics, run queries , create dashboards for insights
-        ![Visualize Aerospike Metrics](../images/databases/aerospike-metric-explore.png)  
-
+        [Visualize Aerospike Metrics]  
 
 ## Troubleshooting
 

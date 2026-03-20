@@ -93,9 +93,7 @@ const client = createRouterClient({ ping, pong }, {
 const result = await client.ping(undefined, { context: { cache: true } })
 ```
 
-:::info
-If `ClientContext` contains a required property, oRPC enforces that the client provides it when calling a procedure.
-:::
+> **info**: If `ClientContext` contains a required property, oRPC enforces that the client provides it when calling a procedure.
 
 ## Lifecycle
 
@@ -134,6 +132,4 @@ const base = os.$config({
 })
 ```
 
-:::info
-By default, oRPC executes middlewares based on their registration order relative to validation steps. Middlewares registered before `.input` run before input validation, and those registered after `.output` run before output validation.
-:::
+> **info**: By default, oRPC executes middlewares based on their registration order relative to validation steps. Middlewares registered before `.input` run before input validation, and those registered after `.output` run before output validation.

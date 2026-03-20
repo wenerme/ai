@@ -88,4 +88,3 @@ mysql> SELECT ST_Point(50, NULL);
 +--------------------+
 
 ```
-

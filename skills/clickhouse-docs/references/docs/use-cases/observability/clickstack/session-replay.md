@@ -1,22 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/session-replay
 title: 'Session Replay'
-sidebar_label: 'Session Replay'
-sidebar_position: 5
-pagination_prev: null
-pagination_next: null
 description: 'Capture and replay user sessions in ClickStack to debug frontend issues, understand user behavior, and correlate browser activity with backend logs and traces.'
 doc_type: 'guide'
 keywords: ['clickstack', 'session replay', 'browser sdk', 'frontend observability', 'user sessions', 'debugging']
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import session_replay from '@site/static/images/clickstack/session-replay/session-replay.png';
-import replay_search from '@site/static/images/clickstack/session-replay/replay-search-view.png';
-import trace_to_replay from '@site/static/images/clickstack/session-replay/trace-to-replay.png';
-import clickpy_trace from '@site/static/images/clickstack/session-replay/clickpy-trace.gif';
 
 Session replay in ClickStack captures and reconstructs user interactions in your web application, allowing you to visually replay exactly what a user saw and did during their session. Rather than video recording, the SDK records DOM changes, mouse movements, clicks, scrolls, keyboard inputs, console logs, network requests (XHR, Fetch, WebSocket), and JavaScript exceptions — then reconstructs the experience in the browser.
 
@@ -28,13 +15,7 @@ ClickStack is fully compatible with OpenTelemetry, so you can send browser telem
 
 The examples below use the ClickStack Browser SDK. Adding session replay to your application takes just three steps: install the package, initialize the SDK, and all user interactions are captured automatically — no further code changes required.
 
-:::tip
-Initialize the SDK in a place that's guaranteed to load when your app starts. For example, in a Next.js application, this could be your root `layout.js`. This ensures session recording begins immediately and captures the full user experience.
-:::
-
-<Tabs groupId="install">
-<TabItem value="npm" label="NPM" default>
-
+> **tip**: Initialize the SDK in a place that's guaranteed to load when your app starts. For example, in a Next.js application, this could be your root `layout.js`. This ensures session recording begins immediately and captures the full user experience.
 ```shell
 npm install @hyperdx/browser
 ```
@@ -51,9 +32,6 @@ HyperDX.init({
   advancedNetworkCapture: true,
 });
 ```
-
-</TabItem>
-<TabItem value="yarn" label="Yarn">
 
 ```shell
 yarn add @hyperdx/browser
@@ -72,9 +50,6 @@ HyperDX.init({
 });
 ```
 
-</TabItem>
-<TabItem value="script_tag" label="Script Tag">
-
 For applications not using a bundler, include the SDK directly via a script tag. This exposes the `HyperDX` global variable, which can be used in the same way as the NPM package.
 
 ```html
@@ -91,12 +66,7 @@ For applications not using a bundler, include the SDK directly via a script tag.
 </script>
 ```
 
-</TabItem>
-</Tabs>
-
-:::note
-The `tracePropagationTargets` option is key to connecting session replays with backend traces — set it to your API domain to enable full frontend-to-backend distributed tracing. For a complete list of SDK options including privacy controls, custom actions, React error boundaries, and source maps, see the [Browser SDK reference](/use-cases/observability/clickstack/sdks/browser).
-:::
+> **note**: The `tracePropagationTargets` option is key to connecting session replays with backend traces — set it to your API domain to enable full frontend-to-backend distributed tracing. For a complete list of SDK options including privacy controls, custom actions, React error boundaries, and source maps, see the [Browser SDK reference](/use-cases/observability/clickstack/sdks/browser).
 
 The Browser SDK also supports [masking inputs and text](/use-cases/observability/clickstack/sdks/browser#options) for privacy-sensitive applications, and [attaching user information](/use-cases/observability/clickstack/sdks/browser#attach-user-information-or-metadata) so you can search and filter sessions by user in the ClickStack UI.
 
@@ -118,7 +88,7 @@ When you select a network request or error in the session timeline, you can clic
 
 This works because the `tracePropagationTargets` configuration links browser spans to server spans via the `traceparent` header, creating a connected distributed trace from the user's click all the way to the database. For a detailed walkthrough of this in practice, including instrumenting both frontend and backend, see [Instrumenting your NextJS application with OpenTelemetry and ClickStack](https://clickhouse.com/blog/instrumenting-nextjs-opentelemetry-clickstack).
 
-<img src={clickpy_trace} alt="Drilling from a session replay into backend traces in ClickStack" />
+[Drilling from a session replay into backend traces in ClickStack]
 
 ### From trace to session {#trace-to-session}
 

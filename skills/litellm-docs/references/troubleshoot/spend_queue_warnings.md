@@ -36,8 +36,6 @@ Higher queue sizes store more items in memory - provision at least 8GB RAM for l
 
 Deploy multiple proxy instances with load balancing. This distributes the spend tracking load across multiple queues, reducing the pressure on any single instance's spend update queue.
 
-
-
 ## Related Configuration
 
 ```yaml

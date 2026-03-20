@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Profiling'
-sidebar_label: 'Profiling'
-slug: /chdb/debugging/profiling
 description: 'Measure DataStore performance with the built-in profiler'
 keywords: ['chdb', 'datastore', 'profiling', 'performance', 'timing', 'benchmark']
 doc_type: 'guide'

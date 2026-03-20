@@ -41,8 +41,6 @@ In Nixpkgs, Ghostty is available as a repackaging of the official `.dmg`
 under the package name `ghostty-bin`, not to be confused with `ghostty`,
 which is the GTK app [available for Nix on Linux](#nix).
 
-<Note>
-
 Unfortunately, Nix currently cannot compile Ghostty from source under macOS.
 
 The reason behind that is because Nixpkgs does not yet have the ecosystem
@@ -50,8 +48,6 @@ support required for it, chief among them include Swift 6 support, free,
 automatable and reproducible xcodebuild alternatives, etc. In the future,
 we may consider merging `ghostty-bin` into `ghostty` and provide
 from-source builds for both macOS and GTK apps.
-
-</Note>
 
 nix-darwin users can install Ghostty for either the entire system or
 for a single user through the usual method:
@@ -89,13 +85,11 @@ If your distribution isn't listed here, then please check out the
 there's any that you could install — otherwise, you must
 [build Ghostty from source](/docs/install/build).
 
-<Tip>
   **Interested in creating a package for your platform?** Check out the
   [packaging
   guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you
   need any help, feel free to make an issue. Once your package is ready, submit
   a pull request to add it to this page!
-</Tip>
 
 ### Alpine Linux
 
@@ -143,13 +137,9 @@ on the "Prereleases Builds" page.
 
 [Nixpkgs]: https://search.nixos.org/packages?from=0&size=50&sort=relevance&type=packages&query=ghostty
 
-<Note>
-
 The `ghostty` package on Nixpkgs should not be confused with
 [`ghostty-bin`](#nix-(macos-binary)), which is a repackaging of the
 official `.dmg` for use on macOS.
-
-</Note>
 
 #### NixOS
 
@@ -183,14 +173,10 @@ nix-shell -p ghostty --run ghostty
 
 #### Nix on other distros
 
-<Warning>
-
 Running Ghostty with Nix on non-NixOS systems will **fail to launch**
 without extra setup. This is because graphical programs compiled for Nixpkgs
 expect OpenGL drivers to be located in a different location than traditional
 distros, and will fail to find them if not manually worked around.
-
-</Warning>
 
 There are multiple ways to fix this, either by running Ghostty with a
 wrapper program like [`nixGL`] or [`nix-gl-host`] that sets up the correct
@@ -202,7 +188,6 @@ OpenGL driver paths, or use a more permanent solution like
 [`nix-system-graphics`]: https://github.com/soupglasses/nix-system-graphics
 
 Other than that, instructions are nearly identical to NixOS.
-
 
 ### openSUSE
 
@@ -224,13 +209,11 @@ Ghostty is available as [`ghostty`](https://snapcraft.io/ghostty) in the Snap St
 snap install ghostty --classic
 ```
 
-<Note>
 While the Snap at Snapcraft is currently maintained by an external maintainer,
 the Snap itself is built using Ghostty's own scripts, and we ensure that the
 Snap builds as a part of our CI regimen. We are currently working on formally
 transferring the Snap to the Ghostty project and making it one of the
 officially supported and distributed package formats for Linux.
-</Note>
 
 ### Solus
 
@@ -253,8 +236,6 @@ xbps-install ghostty
 The packages in this section provide binary installs for Ghostty but
 are not official packages within the associated distributions.
 
-<Warning>
-
 Community binaries carry a much higher risk compared to builds
 directly from the Ghostty project or from distro maintainers, since
 they have been compiled beforehand on a computer that might not be held
@@ -272,8 +253,6 @@ binary package, or the compile flags used in the build process.
 Overall, if you are fine with these risks, feel free to use these community
 builds. Otherwise, [compiling from source](/docs/install/build) is the much
 safer option.
-
-</Warning>
 
 ### Debian
 
@@ -336,4 +315,3 @@ chmod a+x Ghostty-${VERSION}-${ARCH}.appimage
 ```
 
 For comprehensive installation instructions, please refer the [installation guide](https://github.com/pkgforge-dev/ghostty-appimage#%EF%B8%8F-installation).
-

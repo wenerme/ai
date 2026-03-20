@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Working with Date/Time values in JDBC'
-sidebar_position: 4
 keywords: ['java', 'jdbc', 'driver', 'integrate', 'guide', 'Date', 'Time']
 description: 'Guide to using Date/Time values in JDBC'
-slug: /integrations/language-clients/java/jdbc_date_time_guide
 title: 'Date/Time values guide'
 doc_type: 'guide'
 integration:
@@ -54,14 +51,12 @@ Java and JDBC have different ways to set a timestamp:
 4. Use `Long` to write Unix timestamp milliseconds.
 5. Use `String` to do all conversions on the application side (which is not very portable).
 
-:::warning
-Prefer use of `java.time.ZoneId#of(java.lang.String)` when searching for a timezone by ID.
+> **warning**: Prefer use of `java.time.ZoneId#of(java.lang.String)` when searching for a timezone by ID.
 This method will throw an exception if the timezone is not found (`java.util.TimeZone#getTimeZone(java.lang.String)` will silently fall back to `GMT`).
 
 The correct way to get the `Tokyo` timezone is:
 
 `TimeZone.getTimeZone(ZoneId.of("Asia/Tokyo"))`
-:::
 
 ## Date {#date}
 
@@ -103,11 +98,9 @@ Using `java.sql.Time` is limited to the `LocalTime` range. Internally, `java.sql
 
 ### The `toTime` function {#totime-function}
 
-:::note
-- `toTime` always requires `Date`, `DateTime`, or another similar type. It does not accept strings. Related issue: https://github.com/ClickHouse/ClickHouse/issues/89896
+> **note**: - `toTime` always requires `Date`, `DateTime`, or another similar type. It does not accept strings. Related issue: https://github.com/ClickHouse/ClickHouse/issues/89896
 - It is aliased to [`toTimeWithFixedDate`](/sql-reference/functions/date-time-functions#toTimeWithFixedDate).
 - There is a timezone-related issue: https://github.com/ClickHouse/ClickHouse/pull/90310
-:::
 
 ## Timestamp {#timestamp}
 
@@ -176,9 +169,7 @@ The following table shows how values are converted when set with `PreparedStatem
 | `java.time.ZonedDateTime`  | Converted to Unix timestamp in nanoseconds and wrapped with `fromUnixTimestamp64Nano`. |
 | `java.sql.Timestamp`  | Converted to Unix timestamp in nanoseconds and wrapped with `fromUnixTimestamp64Nano`. |
 
-:::note
-The type of the column should be considered unknown. It is up to the application to decide what to pass to the prepared statement.
-:::
+> **note**: The type of the column should be considered unknown. It is up to the application to decide what to pass to the prepared statement.
 
 ### Reading values with `ResultSet#getObject` {#reading-values-getobject}
 

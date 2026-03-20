@@ -1,6 +1,5 @@
 ---
 title: Locators | Browser Mode
-outline: [2, 3]
 ---
 
 # Locators
@@ -9,11 +8,9 @@ A locator is a representation of an element or a number of elements. Every locat
 
 The locator API uses a fork of [Playwright's locators](https://playwright.dev/docs/api/class-locator) called [Ivya](https://npmx.dev/ivya). However, Vitest provides this API to every [provider](/config/browser/provider), not just playwright.
 
-::: tip
-This page covers API usage. To better understand locators and their usage, read [Playwright's "Locators" documentation](https://playwright.dev/docs/locators).
-:::
+> **tip**: This page covers API usage. To better understand locators and their usage, read [Playwright's "Locators" documentation](https://playwright.dev/docs/locators).
 
-::: tip Difference from `testing-library`
+> **tip**: Difference from `testing-library`
 Vitest's `page.getBy*` methods return a locator object, not a DOM element. This makes locator queries composable and allows Vitest to retry interactions and assertions when needed.
 
 Compared to testing-library queries:
@@ -34,7 +31,6 @@ const deleteButton = page
 await deleteButton.click()
 await expect.element(deleteButton).toBeEnabled()
 ```
-:::
 
 ## getByRole
 
@@ -47,9 +43,7 @@ function getByRole(
 
 Creates a way to locate an element by its [ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles), [ARIA attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes) and [accessible name](https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name).
 
-::: tip
-If you only query for a single element with `getByText('The name')` it's oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The accessible name query does not replace other queries such as `*ByAltText` or `*ByTitle`. While the accessible name can be equal to these attributes, it does not replace the functionality of these attributes.
-:::
+> **tip**: If you only query for a single element with `getByText('The name')` it's oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The accessible name query does not replace other queries such as `*ByAltText` or `*ByTitle`. While the accessible name can be equal to these attributes, it does not replace the functionality of these attributes.
 
 Consider the following DOM structure.
 
@@ -80,13 +74,11 @@ await page.getByRole('textbox', { name: 'Password' }).fill('admin')
 await page.getByRole('button', { name: /submit/i }).click()
 ```
 
-::: warning
-Roles are matched by string equality, without inheriting from the ARIA role hierarchy. As a result, querying a superclass role like `checkbox` will not include elements with a subclass role like `switch`.
+> **warning**: Roles are matched by string equality, without inheriting from the ARIA role hierarchy. As a result, querying a superclass role like `checkbox` will not include elements with a subclass role like `switch`.
 
 By default, many semantic elements in HTML have a role; for example, `<input type="radio">` has the "radio" role. Non-semantic elements in HTML do not have a role; `<div>` and `<span>` without added semantics return `null`. The `role` attribute can provide semantics.
 
 Providing roles via `role` or `aria-*` attributes to built-in elements that already have an implicit role is **highly discouraged** by ARIA guidelines.
-:::
 
 **Options**
 
@@ -311,9 +303,7 @@ page.getByPlaceholder('Username') // ✅
 page.getByPlaceholder('not found') // ❌
 ```
 
-::: warning
-It is generally better to rely on a label using [`getByLabelText`](#getbylabeltext) than a placeholder.
-:::
+> **warning**: It is generally better to rely on a label using [`getByLabelText`](#getbylabeltext) than a placeholder.
 
 **Options**
 
@@ -343,9 +333,7 @@ page.getByText(/about/i) // ✅
 page.getByText('about', { exact: true }) // ❌
 ```
 
-::: tip
-This locator is useful for locating non-interactive elements. If you need to locate an interactive element, like a button or an input, prefer [`getByRole`](#getbyrole).
-:::
+> **tip**: This locator is useful for locating non-interactive elements. If you need to locate an interactive element, like a button or an input, prefer [`getByRole`](#getbyrole).
 
 **Options**
 
@@ -400,9 +388,7 @@ page.getByTestId('custom-element') // ✅
 page.getByTestId('non-existing-element') // ❌
 ```
 
-::: warning
-It is recommended to use this only after the other locators don't work for your use case. Using `data-testid` attributes does not resemble how your software is used and should be avoided if possible.
-:::
+> **warning**: It is recommended to use this only after the other locators don't work for your use case. Using `data-testid` attributes does not resemble how your software is used and should be avoided if possible.
 
 **Options**
 
@@ -432,11 +418,8 @@ page.getByRole('textbox').nth(0) // ✅
 page.getByRole('textbox').nth(4) // ❌
 ```
 
-::: tip
-Before resorting to `nth`, you may find it useful to use chained locators to narrow down your search.
+> **tip**: Before resorting to `nth`, you may find it useful to use chained locators to narrow down your search.
 Sometimes there is no better way to distinguish than by element position; although this can lead to flake, it's better than nothing.
-:::
-
 ```tsx
 page.getByLabel('two').getByRole('input') // ✅ better alternative to page.getByRole('textbox').nth(3)
 page.getByLabel('one').getByRole('input') // ❌ too ambiguous
@@ -497,8 +480,7 @@ function or(locator: Locator): Locator
 
 This method creates a new locator that matches either one or both locators.
 
-::: warning
-Note that if locator matches more than a single element, calling another method might throw an error if it expects a single element:
+> **warning**: Note that if locator matches more than a single element, calling another method might throw an error if it expects a single element:
 
 ```tsx
 <>
@@ -510,7 +492,6 @@ page.getByRole('button')
   .or(page.getByRole('link'))
   .click() // ❌ matches multiple elements
 ```
-:::
 
 ## filter
 
@@ -541,8 +522,7 @@ We can narrow down the locator to only find the `article` with `Vitest` text ins
 page.getByRole('article').filter({ has: page.getByText('Vitest') }) // ✅
 ```
 
-::: warning
-Provided locator (`page.getByText('Vitest')` in the example) must be relative to the parent locator (`page.getByRole('article')` in the example). It will be queried starting with the parent locator, not the document root.
+> **warning**: Provided locator (`page.getByText('Vitest')` in the example) must be relative to the parent locator (`page.getByRole('article')` in the example). It will be queried starting with the parent locator, not the document root.
 
 Meaning, you cannot pass down a locator that queries the element outside of the parent locator:
 
@@ -551,17 +531,14 @@ page.getByText('Vitest').filter({ has: page.getByRole('article') }) // ❌
 ```
 
 This example will fail because the `article` element is outside the element with `Vitest` text.
-:::
 
-::: tip
-This method can be chained to narrow down the element even further:
+> **tip**: This method can be chained to narrow down the element even further:
 
 ```ts
 page.getByRole('article')
   .filter({ has: page.getByRole('button', { name: 'delete row' }) })
   .filter({ has: page.getByText('Vitest') })
 ```
-:::
 
 ### hasNot
 
@@ -587,9 +564,7 @@ page.getByRole('article')
   .filter({ hasNot: page.getByText('Vitest') }) // ❌
 ```
 
-::: warning
-Note that provided locator is queried against the parent, not the document root, just like [`has`](#has) option.
-:::
+> **warning**: Note that provided locator is queried against the parent, not the document root, just like [`has`](#has) option.
 
 ### hasText
 
@@ -838,10 +813,9 @@ const { path, base64 } = await button.screenshot({
 // bas64 - base64 encoded string of the screenshot
 ```
 
-::: warning WARNING <Version>3.2.0</Version>
+> **warning**: WARNING <Version>3.2.0</Version>
 Note that `screenshot` will always return a base64 string if `save` is set to `false`.
 The `path` is also ignored in that case.
-:::
 
 ### mark
 
@@ -863,9 +837,7 @@ await submitButton.click()
 await submitButton.mark('after submit')
 ```
 
-::: tip
-This method is useful only when [`browser.trace`](/config/browser/trace) is enabled.
-:::
+> **tip**: This method is useful only when [`browser.trace`](/config/browser/trace) is enabled.
 
 ### query
 
@@ -877,9 +849,7 @@ This method returns a single element matching the locator's selector or `null` i
 
 If multiple elements match the selector, this method will throw an error.  Use [`.elements()`](#elements) when you need all matching DOM Elements or [`.all()`](#all) if you need an array of locators matching the selector.
 
-::: danger
-This is an escape hatch for external APIs that do not support locators. Prefer using locator methods instead.
-:::
+> **danger**: This is an escape hatch for external APIs that do not support locators. Prefer using locator methods instead.
 
 Consider the following DOM structure:
 
@@ -917,15 +887,13 @@ If _no element_ matches the selector, an error is thrown. Consider using [`.quer
 
 If _multiple elements_ match the selector, an error is thrown. Use [`.elements()`](#elements) when you need all matching DOM Elements or [`.all()`](#all) if you need an array of locators matching the selector.
 
-::: danger
-This is an escape hatch for external APIs that do not support locators. Prefer using locator methods instead.
+> **danger**: This is an escape hatch for external APIs that do not support locators. Prefer using locator methods instead.
 
 It is called automatically when locator is used with `expect.element` every time the assertion is [retried](/api/browser/assertions):
 
 ```ts
 await expect.element(page.getByRole('button')).toBeDisabled()
 ```
-:::
 
 Consider the following DOM structure:
 
@@ -990,9 +958,8 @@ function findElement(
 ): Promise<HTMLElement | SVGElement>
 ```
 
-::: danger WARNING
+> **danger**: WARNING
 This is an escape hatch for cases where you need the raw DOM element — for example, to pass it to a third-party library like FormKit that doesn't accept Vitest locators. If you are interacting with the element yourself, use other [builtin methods](#methods) instead.
-:::
 
 This method returns an element matching the locator. Unlike [`.element()`](#element), this method will wait and retry until a matching element appears in the DOM, using increasing intervals (0, 20, 50, 100, 100, 500ms).
 
@@ -1057,8 +1024,7 @@ Internally, this method calls `.elements` and wraps every element using [`page.e
 
 The `selector` is a string that will be used to locate the element by the browser provider. Playwright will use a `playwright` locator syntax while `preview` and `webdriverio` will use CSS.
 
-::: danger
-You should not use this string in your test code. The `selector` string should only be used when working with the Commands API:
+> **danger**: You should not use this string in your test code. The `selector` string should only be used when working with the Commands API:
 
 ```ts [commands.ts]
 import type { BrowserCommand } from 'vitest/node'
@@ -1081,7 +1047,6 @@ test('works correctly', async () => {
   await commands.test(page.getByText('Hello')) // ✅
 })
 ```
-:::
 
 ### length
 
@@ -1110,10 +1075,7 @@ These locators can be useful if built-in locators are not enough. For example, w
 
 The locator factory needs to return a selector string or a locator itself.
 
-::: tip
-The selector syntax is identical to Playwright locators. Please, read [their guide](https://playwright.dev/docs/other-locators) to better understand how to work with them.
-:::
-
+> **tip**: The selector syntax is identical to Playwright locators. Please, read [their guide](https://playwright.dev/docs/other-locators) to better understand how to work with them.
 ```ts
 import { locators } from 'vitest/browser'
 

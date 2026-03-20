@@ -10,7 +10,6 @@
 
 This statement is used to set properties of the specified catalog.
 
-
 ## Syntax
 1) Rename the catalog
 
@@ -47,7 +46,6 @@ The key and value of the catalog properties that need to be modified / added
 **4. `<new catalog comment>`**
 
 Modified catalog comment
-
 
 ## Access Control Requirements
 | Privilege  | Object  | Notes                                     |
@@ -89,4 +87,3 @@ Modified catalog comment
       ```sql
       ALTER CATALOG hive MODIFY COMMENT "new catalog comment";
       ```
-

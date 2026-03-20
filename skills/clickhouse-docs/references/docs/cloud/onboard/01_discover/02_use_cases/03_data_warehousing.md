@@ -1,14 +1,9 @@
 ---
-slug: /cloud/get-started/cloud/use-cases/data_lake_and_warehouse
 title: 'Data Lakehouse'
 description: 'Build modern data warehousing architectures with ClickHouse Cloud combining the flexibility of data lakes with database performance'
 keywords: ['use cases', 'data lake and warehouse']
-sidebar_label: 'Data warehousing'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import datalakehouse_01 from '@site/static/images/cloud/onboard/discover/use_cases/datalakehouse_01.png';
 
 <iframe width="758" height="426" src="https://www.youtube.com/embed/mueG6z1mo8Y" title="Data lakehouses (in under 3 minutes)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

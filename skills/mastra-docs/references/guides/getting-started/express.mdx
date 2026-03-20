@@ -3,9 +3,6 @@ title: "Express | Frameworks"
 description: "Get started with Mastra and Express"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Integrate Mastra in your Express project
 
 In this guide, you'll build a tool-calling AI agent using Mastra and Express. Using the [Express server adapter](/reference/server/express-adapter), you can expose your agents as HTTP endpoints without writing the routing yourself or running a separate Mastra server.
@@ -21,23 +18,21 @@ If you already have an Express app, skip to the next step.
 
 Clone this [boilerplate repository](https://github.com/mastra-ai/express-ts-boilerplate) and install dependencies:
 
-<Tabs>
-  <TabItem value="https" label="HTTPS">
+  
     ```bash npm2yarn
     git clone https://github.com/mastra-ai/express-ts-boilerplate.git
     cd express-ts-boilerplate
     npm install
     ```
-  </TabItem>
+  
 
-  <TabItem value="ssh" label="SSH">
+  
     ```bash npm2yarn
     git clone git@github.com:mastra-ai/express-ts-boilerplate.git
     cd express-ts-boilerplate
     npm install
     ```
-  </TabItem>
-</Tabs>
+  
 
 ## Initialize Mastra
 

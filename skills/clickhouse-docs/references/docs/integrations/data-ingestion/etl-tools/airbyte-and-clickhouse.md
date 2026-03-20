@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Airbyte'
-sidebar_position: 11
 keywords: ['clickhouse', 'Airbyte', 'connect', 'integrate', 'etl', 'data integration']
-slug: /integrations/airbyte
 description: 'Stream data into ClickHouse using Airbyte data pipelines'
 title: 'Connect Airbyte to ClickHouse'
 doc_type: 'guide'
@@ -12,25 +9,11 @@ integration:
   - website: 'https://airbyte.com/'
 ---
 
-import Image from '@theme/IdealImage';
-import airbyte01 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_01.png';
-import airbyte02 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_02.png';
-import airbyte03 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_03.png';
-import airbyte04 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_04.png';
-import airbyte05 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_05.png';
-import airbyte06 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_06.png';
-import airbyte07 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_07.png';
-import airbyte08 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_08.png';
-import airbyte09 from '@site/static/images/integrations/data-ingestion/etl-tools/airbyte_09.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
-
 # Connect Airbyte to ClickHouse
 
 <PartnerBadge/>
 
-:::note
-Please note that the Airbyte source and destination for ClickHouse are currently in Alpha status and not suitable for moving large datasets (> 10 million rows)
-:::
+> **note**: Please note that the Airbyte source and destination for ClickHouse are currently in Alpha status and not suitable for moving large datasets (> 10 million rows)
 
 <a href="https://www.airbyte.com/" target="_blank">Airbyte</a> is an open-source data integration platform. It allows the creation of <a href="https://airbyte.com/blog/why-the-future-of-etl-is-not-elt-but-el" target="_blank">ELT</a> data pipelines and is shipped with more than 140 out-of-the-box connectors. This step-by-step tutorial shows how to connect Airbyte to ClickHouse as a destination and load a sample dataset.
 
@@ -76,15 +59,13 @@ In this section, we will display how to add a ClickHouse instance as a destinati
 
 4. Congratulations! you have now added ClickHouse as a destination in Airbyte.
 
-:::note
-In order to use ClickHouse as a destination, the user you'll use need to have the permissions to create databases, tables and insert rows. We recommend creating a dedicated user for Airbyte (eg. `my_airbyte_user`) with the following permissions:
+> **note**: In order to use ClickHouse as a destination, the user you'll use need to have the permissions to create databases, tables and insert rows. We recommend creating a dedicated user for Airbyte (eg. `my_airbyte_user`) with the following permissions:
 
 ```sql
 CREATE USER 'my_airbyte_user'@'%' IDENTIFIED BY 'your_password_here';
 
 GRANT CREATE ON * TO my_airbyte_user;
 ```
-:::
 
 ## Add a dataset as a source {#3-add-a-dataset-as-a-source}
 

@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.1 FLF2V Native Example"
 description: "This guide explains how to complete Wan2.1 FLF2V video generation examples in ComfyUI"
-sidebarTitle: "Wan2.1 FLF2V"
 ---
-
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Wan FLF2V (First-Last Frame Video Generation) is an open-source video generation model developed by the Alibaba Tongyi Wanxiang team. Its open-source license is [Apache 2.0](https://github.com/Wan-Video/Wan2.1?tab=Apache-2.0-1-ov-file).
 Users only need to provide two images as the starting and ending frames, and the model automatically generates intermediate transition frames, outputting a logically coherent and naturally flowing 720p high-definition video.
@@ -29,20 +26,16 @@ Users only need to provide two images as the starting and ending frames, and the
 - **Hugging Face Model Page**: [Hugging Face](https://huggingface.co/Wan-AI/Wan2.1-FLF2V-14B-720P)
 - **ModelScope Community**: [ModelScope](https://www.modelscope.cn/models/Wan-AI/Wan2.1-FLF2V-14B-720P)
 
-<UpdateReminder/>
-
 ## Wan2.1 FLF2V 720P ComfyUI Native Workflow Example
 
 ### 1. Download Workflow Files and Related Input Files
-<Tip>
+
 Since this model is trained on high-resolution images, using smaller sizes may not yield good results. In the example, we use a size of 720 * 1280, which may cause users with lower VRAM hard to run smoothly and will take a long time to generate.
 If needed, please adjust the video generation size for testing. A small generation size may not produce good output with this model, please notice that.
-</Tip>
 
 Please download the WebP file below, and drag it into ComfyUI to load the corresponding workflow. The workflow has embedded the corresponding model download file information.
 
 ![Wan2.1 FLF2V 720P f16 workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1_flf2v/wan2.1_flf2v_720_f16.webp)
-
 
 Please download the two images below, which we will use as the starting and ending frames of the video
 
@@ -59,9 +52,7 @@ All models involved in this guide can be found [here](https://huggingface.co/Com
 - FP16:[wan2.1_flf2v_720p_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp16.safetensors?download=true)
 - FP8:[wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors)
 
-<Tip>
 If you have previously tried Wan Video related workflows, you may already have the following files.
-</Tip>
 
 Choose one version from **Text encoders** for download,
 - [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)
@@ -72,7 +63,6 @@ Choose one version from **Text encoders** for download,
 
 **CLIP Vision**
 - [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors?download=true)
-
 
 File Storage Location
 ```
@@ -90,7 +80,7 @@ ComfyUI/
 
 ### 3. Complete Workflow Execution Step by Step
 
-![Wan2.1 FLF2V 720P Native Workflow Steps](/images/tutorial/video/wan/wan2.1_flf2v_14B_720P_step_guide.jpg)
+[Wan2.1 FLF2V 720P Native Workflow Steps]
 
 1. Ensure the `Load Diffusion Model` node has loaded `wan2.1_flf2v_720p_14B_fp16.safetensors` or `wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors`
 2. Ensure the `Load CLIP` node has loaded `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
@@ -101,4 +91,3 @@ ComfyUI/
 7. (Optional) Modify the positive and negative prompts, both Chinese and English are supported
 8. (**Important**) In `WanFirstLastFrameToVideo` we use 720*1280 as default size.because it's a 720P model, so using a small size will not yield good output. Please use size around 720*1280 for good generation.
 9. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute video generation
-

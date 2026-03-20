@@ -72,7 +72,6 @@ class RobertaModel(BertModel):
     super().__init__(config)
     self.embeddings = RobertaEmbeddings(config)
 
-
 # The model heads now only need to redefine the model inside to `RobertaModel`
 class RobertaForMaskedLM(BertForMaskedLM):
   def __init__(self, config):
@@ -196,7 +195,6 @@ The modular `Olmo2Attention` is shown below.
 ```py
 from ..llama.modeling_llama import eager_attention_forward
 from ..olmo.modeling_olmo import OlmoAttention, apply_rotary_pos_emb
-
 
 # Olmo2 attention is identical to OLMo attention except:
 # - Norm is applied to attention queries and keys.

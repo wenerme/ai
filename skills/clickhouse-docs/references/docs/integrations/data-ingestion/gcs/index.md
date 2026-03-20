@@ -1,23 +1,13 @@
 ---
-sidebar_label: 'Google Cloud Storage (GCS)'
-sidebar_position: 4
-slug: /integrations/gcs
 description: 'Google Cloud Storage (GCS) Backed MergeTree'
 title: 'Integrate Google Cloud Storage with ClickHouse'
 doc_type: 'guide'
 keywords: ['Google Cloud Storage ClickHouse', 'GCS ClickHouse integration', 'GCS backed MergeTree', 'ClickHouse GCS storage', 'Google Cloud ClickHouse']
 ---
 
-import BucketDetails from '@site/docs/_snippets/_GCS_authentication_and_bucket.md';
-import Image from '@theme/IdealImage';
-import GCS_examine_bucket_1 from '@site/static/images/integrations/data-ingestion/s3/GCS-examine-bucket-1.png';
-import GCS_examine_bucket_2 from '@site/static/images/integrations/data-ingestion/s3/GCS-examine-bucket-2.png';
-
 # Integrate Google Cloud Storage with ClickHouse
 
-:::note
-If you're using ClickHouse Cloud on [Google Cloud](https://cloud.google.com), this page doesn't apply as your services will already be using [Google Cloud Storage](https://cloud.google.com/storage). If you're looking to `SELECT` or `INSERT` data from GCS, please see the [`gcs` table function](/sql-reference/table-functions/gcs).
-:::
+> **note**: If you're using ClickHouse Cloud on [Google Cloud](https://cloud.google.com), this page doesn't apply as your services will already be using [Google Cloud Storage](https://cloud.google.com/storage). If you're looking to `SELECT` or `INSERT` data from GCS, please see the [`gcs` table function](/sql-reference/table-functions/gcs).
 
 ClickHouse recognizes that GCS represents an attractive storage solution if you're seeking to separate storage and compute. To help achieve this, support is provided for using GCS as the storage for a MergeTree engine. This will enable you to exploit the scalability and cost benefits of GCS, and the insert and query performance of the MergeTree engine.
 
@@ -184,9 +174,7 @@ For further information on tuning threads, see [Optimizing for Performance](../s
 
 ## Using Google Cloud Storage (GCS) {#gcs-multi-region}
 
-:::tip
-Object storage is used by default in ClickHouse Cloud, you don't need to follow this procedure if you're running in ClickHouse Cloud.
-:::
+> **tip**: Object storage is used by default in ClickHouse Cloud, you don't need to follow this procedure if you're running in ClickHouse Cloud.
 
 ### Plan the deployment {#plan-the-deployment}
 
@@ -219,9 +207,7 @@ Deploy ClickHouse on two hosts, in the sample configurations these are named `ch
 
 Place `chnode1` in one GCP region, and `chnode2` in a second.  In this guide `us-east1` and `us-east4` are used for the compute engine VMs, and also for GCS buckets.
 
-:::note
-Don't start `clickhouse server` until after it is configured.  Just install it.
-:::
+> **note**: Don't start `clickhouse server` until after it is configured.  Just install it.
 
 Refer to the [installation instructions](/getting-started/install/install.mdx) when performing the deployment steps on the ClickHouse server nodes.
 
@@ -297,9 +283,8 @@ All of the ClickHouse Keeper nodes have the same configuration file except for t
 
 ### Configure ClickHouse server {#configure-clickhouse-server}
 
-:::note best practice
+> **note**: best practice
 Some of the steps in this guide will ask you to place a configuration file in `/etc/clickhouse-server/config.d/`.  This is the default location on Linux systems for configuration override files.  When you put these files into that directory ClickHouse will merge the content with the default configuration.  By placing these files in the `config.d` directory you will avoid losing your configuration during an upgrade.
-:::
 
 #### Networking {#networking}
 By default, ClickHouse listens on the loopback interface, in a replicated setup networking between machines is necessary.  Listen on all interfaces:

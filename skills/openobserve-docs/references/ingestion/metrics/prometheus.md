@@ -23,6 +23,4 @@ basic_auth:
 
 You will then be able to explore the metrics in metrics explorer and build dashboards by querying using **SQL or PromQL**
 
-<img alt="image" src="https://github.com/user-attachments/assets/ea26c61e-abeb-49a0-b594-542ee03be0fa" />
-
-
+[image]

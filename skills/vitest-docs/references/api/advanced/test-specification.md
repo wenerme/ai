@@ -44,9 +44,7 @@ Instance of [`TestModule`](/api/advanced/test-module) associated with the specif
 
 The [`pool`](/config/pool) in which the test module will run.
 
-::: danger
-It's possible to have multiple pools in a single test project with [`typecheck.enabled`](/config/typecheck#typecheck-enabled). This means it's possible to have several specifications with the same `moduleId` but different `pool`. In later versions, the project will only support a single pool.
-:::
+> **danger**: It's possible to have multiple pools in a single test project with [`typecheck.enabled`](/config/typecheck#typecheck-enabled). This means it's possible to have several specifications with the same `moduleId` but different `pool`. In later versions, the project will only support a single pool.
 
 ## testLines
 
@@ -54,7 +52,6 @@ This is an array of lines in the source code where the test files are defined. T
 
 Note that if there is no test on at least one of the lines, the whole suite will fail. An example of a correct `testLines` configuration:
 
-::: code-group
 ```ts [script.js]
 const specification = project.createSpecification(
   resolve('./example.test.ts'),
@@ -73,7 +70,6 @@ describe('a group of tests', () => { // [!code error]
   test.skip('skipped test')
 })
 ```
-:::
 
 ## testNamePattern <Version>4.1.0</Version> {#testnamepattern}
 

@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Image Generation in Chat Completions, Responses API
 
 This guide covers how to generate images when using the `chat/completions`. Note - if you want this on Responses API please file a Feature Request [here](https://github.com/BerriAI/litellm/issues/new).
 
-:::info
-
-Requires LiteLLM v1.76.1+
-
-:::
+> **info**: Requires LiteLLM v1.76.1+
 
 Supported Providers:
 - Google AI Studio (`gemini`)
@@ -36,9 +31,6 @@ LiteLLM will standardize the `images` response in the assistant message for mode
 
 ## Quick Start 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python showLineNumbers title="Image generation with chat completion"
 from litellm import completion
 import os 
@@ -55,9 +47,6 @@ response = completion(
 print(response.choices[0].message.content)  # Text response
 print(response.choices[0].message.images)   # List of image objects
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -93,9 +82,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Response**
 
@@ -135,9 +121,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 
 ## Streaming Support
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python showLineNumbers title="Streaming image generation"
 from litellm import completion
 import os 
@@ -158,9 +141,6 @@ for chunk in response:
         break
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash showLineNumbers title="Streaming request"
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -176,9 +156,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Streaming Response**
 

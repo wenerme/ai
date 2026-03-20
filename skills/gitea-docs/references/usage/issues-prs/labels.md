@@ -1,7 +1,5 @@
 ---
 date: "2023-03-04T19:00:00+00:00"
-slug: "labels"
-sidebar_position: 13
 aliases:
   - /en-us/labels
 ---

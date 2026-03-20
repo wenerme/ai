@@ -1,18 +1,4 @@
-<!--Copyright 2026 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Monkey patching (experimental feature)
 
@@ -30,14 +16,12 @@ from transformers import AutoModelForCausalLM
 from transformers.models.llama.modeling_llama import LlamaAttention
 from transformers.monkey_patching import register_patch_mapping
 
-
 # Define your replacement class (must inherit from nn.Module)
 class CustomLlamaAttention(LlamaAttention):
     def forward(self, *args, **kwargs):
         # Your custom implementation
         print("Using custom attention!")
         return super().forward(*args, **kwargs)
-
 
 # Register the patch globally (only applies to transformers modeling modules)
 register_patch_mapping(mapping={"LlamaAttention": CustomLlamaAttention})
@@ -292,7 +276,6 @@ from transformers.models.qwen2_moe.modeling_qwen2_moe import apply_rotary_pos_em
 from transformers.monkey_patching import register_patch_mapping
 from transformers.utils.generic import TransformersKwargs
 
-
 class MoeMLP(nn.Module):
     def __init__(self, config):
         super().__init__()
@@ -308,7 +291,6 @@ class MoeMLP(nn.Module):
     def forward(self, x):
         down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
         return down_proj
-
 
 # Adapted from the original Qwen2MoeExperts
 class ModuleListExperts(nn.ModuleList):
@@ -334,7 +316,6 @@ class ModuleListExperts(nn.ModuleList):
             current_hidden_states = current_hidden_states * top_k_weights[token_idx, top_k_pos, None]
             final_hidden_states.index_add_(0, token_idx, current_hidden_states.to(final_hidden_states.dtype))
         return final_hidden_states
-
 
 # Adapted from the original Qwen2MoeAttention
 class FusedQKVAttention(nn.Module):
@@ -391,7 +372,6 @@ class FusedQKVAttention(nn.Module):
         attn_output = attn_output.reshape(*input_shape, -1).contiguous()
         attn_output = self.o_proj(attn_output)
         return attn_output, attn_weights
-
 
 # Registering monkey patches for the new attention and experts modules.
 register_patch_mapping(

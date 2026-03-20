@@ -39,4 +39,3 @@ Randomly shuffle the order of elements in an array.
 
 - With a fixed seed (reproducible results):
   - `ARRAY_SHUFFLE([1, 2, 3, 4], 0)` -> same order each time (e.g. `[1, 3, 2, 4]`)
-

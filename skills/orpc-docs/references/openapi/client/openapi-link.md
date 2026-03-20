@@ -9,8 +9,6 @@ OpenAPILink enables communication with an [OpenAPIHandler](/docs/openapi/openapi
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/openapi-client@latest
 ```
@@ -31,16 +29,11 @@ bun add @orpc/openapi-client@latest
 deno add npm:@orpc/openapi-client@latest
 ```
 
-:::
-
 ## Setup
 
 To use `OpenAPILink`, ensure you have a [contract router](/docs/contract-first/define-contract#contract-router) and that your server is set up with [OpenAPIHandler](/docs/openapi/openapi-handler) or any API that follows the [OpenAPI Specification](https://swagger.io/specification/).
 
-::: info
-A normal [router](/docs/router) works as a contract router as long as it does not include a [lazy router](/docs/router#lazy-router). For more advanced use cases, refer to the [Router to Contract](/docs/contract-first/router-to-contract) guide.
-:::
-
+> **info**: A normal [router](/docs/router) works as a contract router as long as it does not include a [lazy router](/docs/router#lazy-router). For more advanced use cases, refer to the [Router to Contract](/docs/contract-first/router-to-contract) guide.
 ```ts twoslash
 import { contract } from './shared/planet'
 // ---cut---
@@ -70,9 +63,7 @@ const link = new OpenAPILink(contract, {
 const client: JsonifiedClient<ContractRouterClient<typeof contract>> = createORPCClient(link)
 ```
 
-:::warning
-Due to JSON limitations, you must wrap your client with `JsonifiedClient` to ensure type safety. Alternatively, follow the [Expanding Type Support for OpenAPI Link](/docs/openapi/advanced/expanding-type-support-for-openapi-link) guide to preserve original types without the wrapper.
-:::
+> **warning**: Due to JSON limitations, you must wrap your client with `JsonifiedClient` to ensure type safety. Alternatively, follow the [Expanding Type Support for OpenAPI Link](/docs/openapi/advanced/expanding-type-support-for-openapi-link) guide to preserve original types without the wrapper.
 
 ## Limitations
 
@@ -81,9 +72,7 @@ Unlike [RPCLink](/docs/client/rpc-link), `OpenAPILink` has some constraints:
 - Payloads containing a `Blob` or `File` (outside the root level) must use `multipart/form-data` and serialized using [Bracket Notation](/docs/openapi/bracket-notation).
 - For `GET` requests, the payload must be sent as `URLSearchParams` and serialized using [Bracket Notation](/docs/openapi/bracket-notation).
 
-:::warning
-In these cases, both the request and response are subject to the limitations of [Bracket Notation Limitations](/docs/openapi/bracket-notation#limitations). Additionally, oRPC converts data to strings (exclude `null` and `undefined` will not be represented).
-:::
+> **warning**: In these cases, both the request and response are subject to the limitations of [Bracket Notation Limitations](/docs/openapi/bracket-notation#limitations). Additionally, oRPC converts data to strings (exclude `null` and `undefined` will not be represented).
 
 ## CORS policy
 
@@ -130,9 +119,7 @@ const result = await client.planet.list(
 )
 ```
 
-:::info
-If a property in `ClientContext` is required, oRPC enforces its inclusion when calling procedures.
-:::
+> **info**: If a property in `ClientContext` is required, oRPC enforces its inclusion when calling procedures.
 
 ## Lazy URL
 

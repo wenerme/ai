@@ -1,6 +1,5 @@
 ---
 title: hideSkippedTests | Config
-outline: deep
 ---
 
 # hideSkippedTests

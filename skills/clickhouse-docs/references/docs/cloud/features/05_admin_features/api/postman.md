@@ -1,29 +1,9 @@
 ---
-slug: /cloud/manage/postman
-sidebar_label: 'Programmatic API access with Postman'
 title: 'Programmatic API access with Postman'
 description: 'This guide will help you test the ClickHouse Cloud API using Postman'
 doc_type: 'guide'
 keywords: ['api', 'postman', 'rest api', 'cloud management', 'integration']
 ---
-
-import Image from '@theme/IdealImage';
-import postman1 from '@site/static/images/cloud/manage/postman/postman1.png';
-import postman2 from '@site/static/images/cloud/manage/postman/postman2.png';
-import postman3 from '@site/static/images/cloud/manage/postman/postman3.png';
-import postman4 from '@site/static/images/cloud/manage/postman/postman4.png';
-import postman6 from '@site/static/images/cloud/manage/postman/postman6.png';
-import postman7 from '@site/static/images/cloud/manage/postman/postman7.png';
-import postman8 from '@site/static/images/cloud/manage/postman/postman8.png';
-import postman9 from '@site/static/images/cloud/manage/postman/postman9.png';
-import postman10 from '@site/static/images/cloud/manage/postman/postman10.png';
-import postman11 from '@site/static/images/cloud/manage/postman/postman11.png';
-import postman12 from '@site/static/images/cloud/manage/postman/postman12.png';
-import postman13 from '@site/static/images/cloud/manage/postman/postman13.png';
-import postman14 from '@site/static/images/cloud/manage/postman/postman14.png';
-import postman15 from '@site/static/images/cloud/manage/postman/postman15.png';
-import postman16 from '@site/static/images/cloud/manage/postman/postman16.png';
-import postman17 from '@site/static/images/cloud/manage/postman/postman17.png';
 
 This guide will help you test the ClickHouse Cloud API using [Postman](https://www.postman.com/product/what-is-postman/). 
 The Postman Application is available for use within a web browser or can be downloaded to a desktop.

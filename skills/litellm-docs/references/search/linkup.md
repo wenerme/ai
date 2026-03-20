@@ -149,4 +149,3 @@ LiteLLM transforms this to the standard `SearchResponse` format:
 - `results[].name` → `SearchResult.title`
 - `results[].url` → `SearchResult.url`
 - `results[].content` → `SearchResult.snippet`
-

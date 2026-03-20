@@ -1,25 +1,12 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/temporal-metrics
 title: 'Monitoring Temporal Cloud with ClickStack'
-sidebar_label: 'Temporal Cloud Metrics'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Temporal Cloud Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['Temporal', 'metrics', 'OTEL', 'ClickStack']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import temporal_metrics from '@site/static/images/clickstack/temporal/temporal-metrics.png';
-import finish_import from '@site/static/images/clickstack/temporal/import-temporal-metrics-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/temporal/temporal-metrics-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
-:::note Warning
+> **note**: Warning
 OpenMetrics support in the Temporal platform is available in [Public Preview](https://docs.temporal.io/evaluate/development-production-features/release-stages#public-preview). Refer to [their documentation](https://docs.temporal.io/cloud/metrics/openmetrics) for more information.
-:::
 
 Temporal offers an abstraction for building simple, sophisticated, resilient applications.
 
@@ -27,7 +14,6 @@ Temporal offers an abstraction for building simple, sophisticated, resilient app
 
 :::note[TL;DR]
 Monitor Temporal Cloud metrics in ClickStack using the OTel Prometheus receiver. Includes a pre-built dashboard.
-:::
 
 ## Integration with existing Temporal Cloud {#existing-temporal}
 
@@ -45,9 +31,8 @@ This section covers configuring ClickStack by configuring the ClickStack OTel co
 
 Ensure you have a Temporal Cloud API key. This can be created by following the [Authentication guide](https://docs.temporal.io/production-deployment/cloud/metrics/openmetrics/api-reference#authentication) in the Temporal documentation.
 
-:::important Key file
+> **important**: Key file
 Ensure these credentials are stored in a file `temporal.key` in the same directory as the config file created below. This key should just be stored as text with no preceding or following spaces.
-:::
 
 #### Create custom OTel collector configuration {#custom-otel}
 
@@ -98,12 +83,10 @@ This configuration:
 - **Sets the required `service.name` resource attribute** per [OpenTelemetry semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/#service)
 - Routes metrics to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-- You only define new receivers, processors, and pipelines in the custom config
+> **note**: - You only define new receivers, processors, and pipelines in the custom config
 - The `memory_limiter` and `batch` processors and `clickhouse` exporter are already defined in the base ClickStack configuration - you just reference them by name
 - The `resource` processor sets the required `service.name` attribute per OpenTelemetry semantic conventions
 - For multiple Temporal cloud accounts, customize `service.name` to distinguish them (e.g., `"temporal-prod"`, `"temporal-dev"`)
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 

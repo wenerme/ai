@@ -25,7 +25,6 @@ YEARS_ADD(`<date_or_time_expr>`, `<years>`)
 | `<date_or_time_expr>` | Input datetime value, supports date/datetime/timestamptz types. For specific formats, please refer to [timestamptz conversion](../../../../sql-manual/basic-element/sql-data-types/conversion/timestamptz-conversion), [datetime conversion](../../../../sql-manual/basic-element/sql-data-types/conversion/datetime-conversion) and [date conversion](../../../../sql-manual/basic-element/sql-data-types/conversion/date-conversion) |
 | `<years>` | Number of years to add, type INT, negative numbers indicate subtraction, positive numbers indicate addition |
 
-
 ## Return Value
 
 Returns a result consistent with the input type (DATE or DATETIME or TIMESTAMPTZ), representing the adjusted date or time, the return value type is determined by the type of the first parameter:

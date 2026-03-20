@@ -1,21 +1,13 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Helicone - OSS LLM Observability Platform
 
-:::tip
-
-This is community maintained. Please make an issue if you run into a bug:
+> **tip**: This is community maintained. Please make an issue if you run into a bug:
 https://github.com/BerriAI/litellm
-
-:::
 
 [Helicone](https://helicone.ai/) is an open sourced observability platform providing key insights into your usage, spend, latency and more.
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="Python SDK">
 
 Use just 1 line of code to instantly log your responses **across all providers** with Helicone:
 
@@ -34,9 +26,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 Add Helicone to your LiteLLM proxy configuration:
 
@@ -60,9 +49,6 @@ Start the proxy:
 ```bash
 litellm --config config.yaml
 ```
-
-</TabItem>
-</Tabs>
 
 ## Integration Methods
 
@@ -88,8 +74,7 @@ Helicone can log requests across [all major LLM providers](https://helicone.ai/m
 
 Helicone's AI Gateway provides [advanced functionality](https://docs.helicone.ai) like caching, rate limiting, LLM security, and more.
 
-<Tabs>
-  <TabItem value="sdk" label="Python SDK">
+  
 
   Set Helicone as your base URL and pass authentication headers:
 
@@ -149,15 +134,13 @@ Helicone's AI Gateway provides [advanced functionality](https://docs.helicone.ai
   }
   ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Method 2: Using Callbacks
 
 Log requests to Helicone while using any LLM provider directly.
 
-<Tabs>
-  <TabItem value="sdk" label="Python SDK">
+  
 
   ```python
   import os
@@ -181,8 +164,8 @@ Log requests to Helicone while using any LLM provider directly.
   print(response)
   ```
 
-  </TabItem>
-  <TabItem value="proxy" label="LiteLLM Proxy">
+  
+  
 
   ```yaml title="config.yaml"
   model_list:
@@ -226,15 +209,13 @@ Log requests to Helicone while using any LLM provider directly.
   )
   ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Session Tracking and Tracing
 
 Track multi-step and agentic LLM interactions using session IDs and paths:
 
-<Tabs>
-  <TabItem value="sdk" label="Python SDK">
+  
 
   ```python
   import os
@@ -257,8 +238,8 @@ Track multi-step and agentic LLM interactions using session IDs and paths:
   print(response)
   ```
 
-  </TabItem>
-  <TabItem value="proxy" label="LiteLLM Proxy">
+  
+  
 
   ```python
   import openai
@@ -289,16 +270,14 @@ Track multi-step and agentic LLM interactions using session IDs and paths:
   )
   ```
 
-  </TabItem>
-</Tabs>
+  
 
 - `Helicone-Session-Id`: Unique identifier for the session to group related requests
 - `Helicone-Session-Path`: Hierarchical path to represent parent/child traces (e.g., "parent/child")
 
 ## Retry and Fallback Mechanisms
 
-<Tabs>
-  <TabItem value="sdk" label="Python SDK">
+  
 
   ```python
   import litellm
@@ -316,8 +295,8 @@ Track multi-step and agentic LLM interactions using session IDs and paths:
   )
   ```
 
-  </TabItem>
-  <TabItem value="proxy" label="LiteLLM Proxy">
+  
+  
 
   ```yaml title="config.yaml"
   model_list:
@@ -340,8 +319,7 @@ Track multi-step and agentic LLM interactions using session IDs and paths:
     OPENAI_API_KEY: "your-openai-key"
   ```
 
-  </TabItem>
-</Tabs>
+  
 
 > **Supported Headers** - For a full list of supported Helicone headers and their descriptions, please refer to the [Helicone documentation](https://docs.helicone.ai/features/advanced-usage/custom-properties).
 > By utilizing these headers and metadata options, you can gain deeper insights into your LLM usage, optimize performance, and better manage your AI workflows with Helicone and LiteLLM.

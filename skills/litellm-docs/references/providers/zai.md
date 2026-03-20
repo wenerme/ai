@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Z.AI (Zhipu AI)
 https://z.ai/
@@ -77,9 +76,6 @@ We support ALL Z.AI GLM models, just set `zai/` as a prefix when sending complet
 
 ## Using with LiteLLM Proxy
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -92,9 +88,6 @@ response = completion(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -132,6 +125,3 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-</Tabs>

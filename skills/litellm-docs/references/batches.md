@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /batches
 
@@ -20,10 +19,6 @@ Covers Batches, Files
 - List Batches
 
 - Retrieve the Specific Batch and File Content
-
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM PROXY Server">
 
 ```bash
 $ export OPENAI_API_KEY="sk-..."
@@ -63,7 +58,6 @@ curl http://localhost:4000/v1/batches/batch_abc123 \
     -H "Content-Type: application/json" \
 ```
 
-
 **List Batches**
 
 ```bash
@@ -71,9 +65,6 @@ curl http://localhost:4000/v1/batches \
     -H "Authorization: Bearer sk-1234" \
     -H "Content-Type: application/json" \
 ```
-
-</TabItem>
-<TabItem value="sdk" label="SDK">
 
 **Create File for Batch Completion**
 
@@ -168,11 +159,6 @@ print("file content = ", file_content)
 list_batches_response = litellm.list_batches(custom_llm_provider="openai", limit=2)
 print("list_batches_response=", list_batches_response)
 ```
-
-</TabItem>
-
-</Tabs>
-
 
 ## Multi-Account / Model-Based Routing
 
@@ -432,7 +418,6 @@ All batch and file endpoints support model-based routing:
 ### [Bedrock](./providers/bedrock_batches)
 ### [vLLM](./providers/vllm_batches)
 
-
 ## How Cost Tracking for Batches API Works
 
 LiteLLM tracks batch processing costs by logging two key events:
@@ -447,9 +432,5 @@ Cost calculation:
 - LiteLLM polls the batch status until completion
 - Upon completion, it aggregates usage and costs from all responses in the output file
 - Total `token` and `response_cost` reflect the combined metrics across all batch responses
-
-
-
-
 
 ## [Swagger API Reference](https://litellm-api.up.railway.app/#/batch)

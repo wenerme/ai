@@ -1,7 +1,5 @@
 ---
 date: "2018-05-07T13:00:00+02:00"
-slug: "comparison"
-sidebar_position: 5
 aliases:
   - /en-us/comparison
 ---

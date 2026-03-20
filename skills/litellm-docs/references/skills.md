@@ -7,11 +7,7 @@
 | Load Balancing | ✅ |
 | Supported Providers | `anthropic` |
 
-:::tip
-
-LiteLLM follows the [Anthropic Skills API](https://docs.anthropic.com/en/docs/build-with-claude/skills) for creating, managing, and using reusable AI capabilities.
-
-:::
+> **tip**: LiteLLM follows the [Anthropic Skills API](https://docs.anthropic.com/en/docs/build-with-claude/skills) for creating, managing, and using reusable AI capabilities.
 
 ## **LiteLLM Python SDK Usage**
 
@@ -442,10 +438,8 @@ This tells the API that `SKILL.md` belongs to the `test-skill` directory.
 }
 ```
 
-
 ## **Supported Providers**
 
 | Provider | Link to Usage |
 |----------|---------------|
 | Anthropic | [Usage](#quick-start---create-a-skill) |
-

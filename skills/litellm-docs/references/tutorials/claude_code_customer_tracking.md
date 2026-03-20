@@ -43,7 +43,6 @@ export ANTHROPIC_API_KEY=sk-1234
 export ANTHROPIC_CUSTOM_HEADERS="x-litellm-tags: project:acme,env:prod,team:backend"
 ```
 
-
 ## Quick Start
 
 ### 1. Set Environment Variables
@@ -96,4 +95,3 @@ Filter by customer ID to see all requests for that customer.
 - [Customer Budgets](../proxy/customers.md)
 - [Tag Budgets](../proxy/tag_budgets.md)
 - [Track Usage for Coding Tools](./cost_tracking_coding.md)
-

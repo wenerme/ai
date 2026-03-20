@@ -1,24 +1,9 @@
 ---
-sidebar_label: 'BladePipe'
-sidebar_position: 20
 keywords: ['clickhouse', 'BladePipe', 'connect', 'integrate', 'cdc', 'etl', 'data integration']
-slug: /integrations/bladepipe
 description: 'Stream data into ClickHouse using BladePipe data pipelines'
 title: 'Connect BladePipe to ClickHouse'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import bp_ck_1 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_1.png';
-import bp_ck_2 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_2.png';
-import bp_ck_3 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_3.png';
-import bp_ck_4 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_4.png';
-import bp_ck_5 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_5.png';
-import bp_ck_6 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_6.png';
-import bp_ck_7 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_7.png';
-import bp_ck_8 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_8.png';
-import bp_ck_9 from '@site/static/images/integrations/data-ingestion/etl-tools/bp_ck_9.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Connect BladePipe to ClickHouse
 
@@ -69,9 +54,7 @@ More sources are to be supported.
 ## Add MySQL as a source {#3-add-mysql-as-a-source}
 In this tutorial, we use a MySQL instance as the source, and explain the process of loading MySQL data to ClickHouse.
 
-:::note
-To use MySQL as a source, make sure that the user has the <a href="https://doc.bladepipe.com/dataMigrationAndSync/datasource_func/MySQL/privs_for_mysql" target="_blank">required permissions</a>. 
-:::
+> **note**: To use MySQL as a source, make sure that the user has the <a href="https://doc.bladepipe.com/dataMigrationAndSync/datasource_func/MySQL/privs_for_mysql" target="_blank">required permissions</a>. 
 
 1. In BladePipe, click "DataSource" > "Add DataSource".
 
@@ -102,11 +85,9 @@ To use MySQL as a source, make sure that the user has the <a href="https://doc.b
 
 ## Verify the data {#5-verify-the-data}
 1. Stop data write in MySQL instance and wait for ClickHouse to merge data.
-:::note
-Due to the unpredictable timing of ClickHouse's automatic merging, you can manually trigger a merging by running the `OPTIMIZE TABLE xxx FINAL;` command. Note that there is a chance that this manual merging may not always succeed.
+> **note**: Due to the unpredictable timing of ClickHouse's automatic merging, you can manually trigger a merging by running the `OPTIMIZE TABLE xxx FINAL;` command. Note that there is a chance that this manual merging may not always succeed.
 
 Alternatively, you can run the `CREATE VIEW xxx_v AS SELECT * FROM xxx FINAL;` command to create a view and perform queries on the view to ensure the data is fully merged.
-:::
 
 2. Create a <a href="https://doc.bladepipe.com/operation/job_manage/create_job/create_period_verification_correction_job" target="_blank">Verification DataJob</a>. Once the Verification DataJob is completed, review the results to confirm that the data in ClickHouse is the same as the data in MySQL.
    <Image img={bp_ck_9} size="lg" border alt="Verify data" />

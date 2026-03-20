@@ -106,8 +106,6 @@ const newUsers = [
 await mysql`INSERT INTO users ${mysql(newUsers)}`;
 ```
 
-<Accordion title="MySQL Connection String Formats">
-
 MySQL accepts various URL formats for connection strings:
 
 ```ts
@@ -125,10 +123,6 @@ new SQL("mysql://user:pass@localhost/db?ssl=true");
 new SQL("mysql://user:pass@/database?socket=/var/run/mysqld/mysqld.sock");
 ```
 
-</Accordion>
-
-<Accordion title="MySQL-Specific Features">
-
 MySQL databases support:
 
 - **Prepared statements**: Automatically created for parameterized queries with statement caching
@@ -138,8 +132,6 @@ MySQL databases support:
 - **SSL/TLS connections**: Configurable SSL modes similar to PostgreSQL
 - **Connection attributes**: Client information sent to server for monitoring
 - **Query pipelining**: Execute multiple prepared statements without waiting for responses
-
-</Accordion>
 
 ### SQLite
 
@@ -164,8 +156,6 @@ const sql2 = new SQL({
 // For simple filenames, specify adapter explicitly
 const sql3 = new SQL("myapp.db", { adapter: "sqlite" });
 ```
-
-<Accordion title="SQLite Connection String Formats">
 
 SQLite accepts various URL formats for connection strings:
 
@@ -194,13 +184,9 @@ new SQL("sqlite://data.db?mode=rw"); // Read-write mode (no create)
 new SQL("sqlite://data.db?mode=rwc"); // Read-write-create mode (default)
 ```
 
-    <Note>
+    
     Simple filenames without a protocol (like `"myapp.db"`) require explicitly specifying `{ adapter: "sqlite" }` to avoid ambiguity with PostgreSQL.
-    </Note>
-
-</Accordion>
-
-<Accordion title="SQLite-Specific Options">
+    
 
 SQLite databases support additional configuration options:
 
@@ -225,8 +211,6 @@ Query parameters in the URL are parsed to set these options:
 - `?mode=ro` → `readonly: true`
 - `?mode=rw` → `readonly: false, create: false`
 - `?mode=rwc` → `readonly: false, create: true` (default)
-
-</Accordion>
 
 ## Inserting data
 
@@ -392,7 +376,7 @@ await sql`SELECT * FROM products WHERE ids = ANY(${sql.array([1, 2, 3])})`;
 // Generates: SELECT * FROM products WHERE ids = ANY(ARRAY[1, 2, 3])
 ```
 
-<Note>`sql.array` is PostgreSQL-only. Multi-dimensional arrays and NULL elements may not be supported yet.</Note>
+`sql.array` is PostgreSQL-only. Multi-dimensional arrays and NULL elements may not be supported yet.
 
 ---
 
@@ -718,14 +702,10 @@ const sql = new SQL({
 });
 ```
 
-<Accordion title="SQLite Connection Notes">
-
 - **Connection Pooling**: SQLite doesn't use connection pooling as it's a file-based database. Each `SQL` instance represents a single connection.
 - **Transactions**: SQLite supports nested transactions through savepoints, similar to PostgreSQL.
 - **Concurrent Access**: SQLite handles concurrent access through file locking. Use WAL mode for better concurrency.
 - **Memory Databases**: Using `:memory:` creates a temporary database that exists only for the connection lifetime.
-
-</Accordion>
 
 ---
 
@@ -1037,8 +1017,6 @@ try {
 }
 ```
 
-<Accordion title="PostgreSQL-Specific Error Codes">
-
 ### PostgreSQL Connection Errors
 
 | Connection Errors                 | Description                                          |
@@ -1104,13 +1082,9 @@ try {
 | `ERR_POSTGRES_UNSAFE_TRANSACTION`        | Unsafe transaction operation detected |
 | `ERR_POSTGRES_INVALID_TRANSACTION_STATE` | Invalid transaction state             |
 
-</Accordion>
-
 ### SQLite-Specific Errors
 
 SQLite errors provide error codes and numbers that correspond to SQLite's standard error codes:
-
-<Accordion title="Common SQLite Error Codes">
 
 | Error Code          | errno | Description                                          |
 | ------------------- | ----- | ---------------------------------------------------- |
@@ -1146,8 +1120,6 @@ try {
   }
 }
 ```
-
-</Accordion>
 
 ---
 
@@ -1352,18 +1324,17 @@ try {
 
 ## Frequently Asked Questions
 
-<AccordionGroup>
-	<Accordion title="Why is this `Bun.sql` and not `Bun.postgres`?">
+	
 		The plan was to add more database drivers in the future. Now with MySQL support added, this unified API supports PostgreSQL, MySQL, and SQLite.
-	</Accordion>
-	<Accordion title="How do I know which database adapter is being used?">
+	
+	
 		The adapter is automatically detected from the connection string:
 
     	- URLs starting with `mysql://` or `mysql2://` use MySQL
     	- URLs matching SQLite patterns (`:memory:`, `sqlite://`, `file://`) use SQLite
     	- Everything else defaults to PostgreSQL
-    </Accordion>
-    <Accordion title="Are MySQL stored procedures supported?">
+    
+    
     	Yes, stored procedures are fully supported including OUT parameters and multiple result sets:
 
     	```ts
@@ -1373,8 +1344,8 @@ try {
     	// Get OUT parameter
     	const outParam = await mysql`SELECT @total_orders as total`;
     	```
-    </Accordion>
-    <Accordion title="Can I use MySQL-specific SQL syntax?">
+    
+    
     	Yes, you can use any MySQL-specific syntax:
 
     	```ts
@@ -1384,9 +1355,7 @@ try {
     	await mysql`DESCRIBE users`;
     	await mysql`EXPLAIN SELECT * FROM users WHERE id = ${id}`;
     	```
-    </Accordion>
-
-</AccordionGroup>
+    
 
 ---
 

@@ -23,7 +23,7 @@ OpenObserve acts as an all-in-one **Data Lake**, **Detection Engine**, and **Res
 6. **Visualization Layer:** **Dashboards** provide real-time situational awareness, visual trend analysis, and compliance reporting for SOC analysts.  
 7. **Response Layer:** Alerts automatically trigger **Incidents** within OpenObserve's native Incident Management module for triage, assignment, and state tracking.
 
-![OpenObserve SIEM architecture](./images/openobserve_siem.jpg)
+[OpenObserve SIEM architecture]
 
 ## **2. Ingestion & Integrations**
 

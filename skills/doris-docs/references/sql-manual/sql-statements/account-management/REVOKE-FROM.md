@@ -85,7 +85,6 @@ Specifies the compute group name. Supports `%` (matches any string) and `_` (mat
 
 Specifies the storage vault name. Supports `%` (matches any string) and `_` (matches any single character) wildcard characters.
 
-
 **7. `<user_identity>`**
 
 Specifies the user identity. The user must be a user created with the CREATE USER statement. The host part of the user identity can be a domain name, and the permission revocation time may have a delay of 1 minute for domain names.

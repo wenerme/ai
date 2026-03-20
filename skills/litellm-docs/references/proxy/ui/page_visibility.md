@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Control Page Visibility for Internal Users
 
@@ -9,7 +8,6 @@ Use this feature to simplify the UI and control which pages your internal users/
 ## Overview
 
 By default, all pages accessible to internal users are visible in the navigation sidebar. The page visibility control allows admins to restrict which pages internal users can see, creating a more focused and streamlined experience.
-
 
 ## Configure Page Visibility
 
@@ -118,4 +116,3 @@ curl -X PATCH 'http://localhost:4000/ui_settings/update' \
     "enabled_ui_pages_internal_users": null
   }'
 ```
-

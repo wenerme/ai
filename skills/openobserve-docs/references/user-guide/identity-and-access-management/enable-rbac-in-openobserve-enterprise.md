@@ -33,7 +33,7 @@ Helm Chart is a package manager for Kubernetes, and its configuration is stored 
 Ensure you have **Kubernetes** and the **OpenObserve Helm Chart** installed.
 
 **To enable RBAC using Helm Chart:** 
-<br><br>1. Set `openfga.enabled: true` in `values.yaml` file.<br> 
+1. Set `openfga.enabled: true` in `values.yaml` file. 
 Navigate to the `values.yaml` file in the OpenObserve Helm chart repository and update this configuration as follows:
 
 ```yml linenums="1"
@@ -77,7 +77,6 @@ kubectl get pods -n openobserve
 ```
 **Expected output:** All pods should be in the `Running` state.
 
-
 ### Option 2: Install OpenFGA Without Helm
 
 If you prefer not to use Helm, OpenFGA can be installed and run using other methods:
@@ -91,7 +90,7 @@ If you prefer not to use Helm, OpenFGA can be installed and run using other meth
 **Impportant Note:** 
 
 When installing OpenFGA using the alternative methods, you must run the OpenFGA and OpenObserve servers separately. Refer to the respective installation links for instructions on running the OpenFGA server. Ensure that you run the `openfga migrate` command before running the `openfga run` command. Check the [Quickstart guide](https://openobserve.ai/docs/quickstart/#openobserve-cloud) for steps to run the OpenObserve server.
-<br>If you are installing OpenFGA with Helm charts, deploying the Helm chart is sufficient.
+If you are installing OpenFGA with Helm charts, deploying the Helm chart is sufficient.
 
 ## Step 2: Configure OpenFGA Environment Variables
 
@@ -99,17 +98,15 @@ After the OpenFGA server is up and running, update the following environment var
 
 **Note:** If you enabled OpenFGA using Kubernetes with OpenObserve Helm charts, you do not need to set the `O2_OPENFGA_ENABLED` and `O2_OPENFGA_BASE_URL` environment variables manually. Setting OpenFGA in the `values.yaml` file is sufficient.
 
-
 #### **Required Environment Variables**
 | **Environment Variable** | **Default Value** | **Description** |
 |--------------------------|-------------------|----------------|
-| `O2_OPENFGA_ENABLED` | `false` | Determines whether OpenFGA is enabled. <br>Set this value to `true` to enable OpenFGA. |
-| `O2_OPENFGA_BASE_URL` | N/A | Enter the URL of the OpenFGA server. <br> **Example:** If the OpenFGA server is running locally on port `8080`, set this to: <br> `http://localhost:8080` |
-
+| `O2_OPENFGA_ENABLED` | `false` | Determines whether OpenFGA is enabled. Set this value to `true` to enable OpenFGA. |
+| `O2_OPENFGA_BASE_URL` | N/A | Enter the URL of the OpenFGA server.  **Example:** If the OpenFGA server is running locally on port `8080`, set this to:  `http://localhost:8080` |
 
 #### **Optional Environment Variables**
 | **Environment Variable** | **Default Value** | **Description** |
 |--------------------------|-------------------|----------------|
 | `O2_OPENFGA_STORE_NAME` | `openobserve` | Specifies the name of the OpenFGA store. Default value is sufficient. |
 | `O2_OPENFGA_PAGE_SIZE` | `100` | Defines the number of records inserted into the OpenFGA database at a time. |
-| `O2_OPENFGA_LIST_ONLY_PERMITTED` | `false` | If `O2_OPENFGA_LIST_ONLY_PERMITTED` is set to `true`, assigning only the `List` permission to a resource (such as **Alerts**) will not allow users to see its contents. <br> **Example:** If a user has the `List` permission for alerts, the **Alerts** page will appear empty, but no error will be shown. To allow users to see alerts, you must also assign them the `Get` permission. |
+| `O2_OPENFGA_LIST_ONLY_PERMITTED` | `false` | If `O2_OPENFGA_LIST_ONLY_PERMITTED` is set to `true`, assigning only the `List` permission to a resource (such as **Alerts**) will not allow users to see its contents.  **Example:** If a user has the `List` permission for alerts, the **Alerts** page will appear empty, but no error will be shown. To allow users to see alerts, you must also assign them the `Get` permission. |

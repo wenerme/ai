@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Plugin Configuration'
-sidebar_position: 3
-slug: /integrations/grafana/config
 description: 'Configuration options for the ClickHouse data source plugin in Grafana'
 title: 'Configuring ClickHouse data source in Grafana'
 doc_type: 'guide'
@@ -10,17 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_visualization'
 ---
-
-import Image from '@theme/IdealImage';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_native.md';
-import config_common from '@site/static/images/integrations/data-visualization/grafana/config_common.png';
-import config_http from '@site/static/images/integrations/data-visualization/grafana/config_http.png';
-import config_additional from '@site/static/images/integrations/data-visualization/grafana/config_additional.png';
-import config_logs from '@site/static/images/integrations/data-visualization/grafana/config_logs.png';
-import config_traces from '@site/static/images/integrations/data-visualization/grafana/config_traces.png';
-import alias_table_config_example from '@site/static/images/integrations/data-visualization/grafana/alias_table_config_example.png';
-import alias_table_select_example from '@site/static/images/integrations/data-visualization/grafana/alias_table_select_example.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Configuring ClickHouse data source in Grafana
 
@@ -85,9 +71,8 @@ You can add custom headers to the requests sent to your server.
 Headers can be either plain text or secure.
 All header keys are stored in plain text, while secure header values are saved in the secure config (similar to the `password` field).
 
-:::warning Secure Values over HTTP
+> **warning**: Secure Values over HTTP
 While secure header values are stored securely in the config, the value will still be sent over HTTP if secure connection is disabled.
-:::
 
 Example YAML for plain/secure headers:
 ```yaml

@@ -320,11 +320,7 @@ export const mastra = new Mastra({
 })
 ```
 
-:::note
-
-Use this pattern only when you intentionally want work to continue after the HTTP client is gone. If you want disconnects to cancel generation, keep using `chatRoute()` or forward the request `AbortSignal` yourself.
-
-:::
+> **note**: Use this pattern only when you intentionally want work to continue after the HTTP client is gone. If you want disconnects to cancel generation, keep using `chatRoute()` or forward the request `AbortSignal` yourself.
 
 ## Related
 

@@ -114,7 +114,6 @@ When the disk capacity is higher than High Watermark or even Flood Stage, many o
 
     If the BE can still be started, you can use `ADMIN CLEAN TRASH ON(BackendHost:BackendHeartBeatPort);` to actively clean up temporary files. **all trash files** and expired snapshot files will be cleaned up, **This will affect the operation of restoring data from the trash bin**.
 
-
     If you do not manually execute `ADMIN CLEAN TRASH`, the system will still automatically execute the cleanup within a few minutes to tens of minutes.There are two situations as follows: 
     * If the disk usage does not reach 90% of the **Flood Stage**, expired trash files and expired snapshot files will be cleaned up. At this time, some recent files will be retained without affecting the recovery of data. 
     * If the disk usage has reached 90% of the **Flood Stage**, **all trash files** and expired snapshot files will be cleaned up, **This will affect the operation of restoring data from the trash bin**.
@@ -148,4 +147,3 @@ When the disk capacity is higher than High Watermark or even Flood Stage, many o
     * Delete tablet metadata (refer to [Tablet metadata management tool](../../trouble-shooting/tablet-meta-tool)）
 
         ```./lib/meta_tool --operation=delete_header --root_path=/path/to/root_path --tablet_id=12345 --schema_hash= 352781111```
-

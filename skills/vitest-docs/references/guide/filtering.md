@@ -30,8 +30,7 @@ Since Vitest 3, you can also specify the test by filename and line number:
 $ vitest basic/foo.test.ts:10
 ```
 
-::: warning
-Note that Vitest requires the full filename for this feature to work. It can be relative to the current working directory or an absolute file path.
+> **warning**: Note that Vitest requires the full filename for this feature to work. It can be relative to the current working directory or an absolute file path.
 
 ```bash
 $ vitest basic/foo.js:10 # ✅
@@ -47,7 +46,6 @@ At the moment Vitest also doesn't support ranges:
 $ vitest basic/foo.test.ts:10, basic/foo.test.ts:25 # ✅
 $ vitest basic/foo.test.ts:10-25 # ❌
 ```
-:::
 
 ## Specifying a Timeout
 

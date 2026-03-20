@@ -1,15 +1,10 @@
 ---
-slug: /guides/developer/ttl
-sidebar_label: 'TTL (Time To Live)'
-sidebar_position: 2
 keywords: ['ttl', 'time to live', 'clickhouse', 'old', 'data']
 description: 'TTL (time-to-live) refers to the capability of having rows or columns moved, deleted, or rolled up after a certain interval of time has passed.'
 title: 'Manage Data with TTL (Time-to-live)'
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
 
 # Manage data with TTL (time-to-live)
 
@@ -21,9 +16,7 @@ TTL (time-to-live) refers to the capability of having rows or columns moved, del
 - Moving data between disks: after a certain amount of time, you can move data between storage volumes - useful for deploying a hot/warm/cold architecture
 - Data rollup: rollup your older data into various useful aggregations and computations before deleting it
 
-:::note
-TTL can be applied to entire tables or specific columns.
-:::
+> **note**: TTL can be applied to entire tables or specific columns.
 
 ## TTL syntax {#ttl-syntax}
 
@@ -45,11 +38,9 @@ ORDER BY tuple()
 - The y column has a time to live of 1 day from the timestamp column
 - When the interval lapses, the column expires. ClickHouse replaces the column value with the default value of its data type. If all the column values in the data part expire, ClickHouse deletes this column from the data part in the filesystem.
 
-:::note
-TTL rules can be altered or deleted. See the [Manipulations with Table TTL](/sql-reference/statements/alter/ttl.md) page for more details.
-:::
+> **note**: TTL rules can be altered or deleted. See the [Manipulations with Table TTL](/sql-reference/statements/alter/ttl.md) page for more details.
 
-:::tip Best practice
+> **tip**: Best practice
 When using table-level TTL to remove old rows, we recommend to **partition your table by the date or month** of the same time field used in your TTL expression.
 
 ClickHouse can drop entire partitions much more efficiently than deleting individual rows.
@@ -58,7 +49,6 @@ When your partition key aligns with your TTL expression, ClickHouse can drop who
 Choose your partition granularity based on your TTL period:
 - For TTL of days/weeks: partition by day using `toYYYYMMDD(date_field)`
 - For TTL of months/years: partition by month using `toYYYYMM(date_field)` or `toStartOfMonth(date_field)`
-:::
 
 ## Triggering TTL events {#triggering-ttl-events}
 
@@ -69,15 +59,13 @@ The deleting or aggregating of expired rows isn't immediate - it only occurs dur
 
 So by default, your TTL rules will be applied to your table at least once every 4 hours. Just modify the settings above if you need your TTL rules applied more frequently.
 
-:::note
-Not a great solution (or one that we recommend you use frequently), but you can also force a merge using `OPTIMIZE`:
+> **note**: Not a great solution (or one that we recommend you use frequently), but you can also force a merge using `OPTIMIZE`:
 
 ```sql
 OPTIMIZE TABLE example1 FINAL
 ```
 
 `OPTIMIZE` initializes an unscheduled merge of the parts of your table, and `FINAL` forces a reoptimization if your table is already a single part.
-:::
 
 ## Removing rows {#removing-rows}
 
@@ -154,9 +142,7 @@ Some notes on the `hits` table:
 
 <CloudNotSupportedBadge/>
 
-:::note
-If you're using ClickHouse Cloud, the steps in the lesson aren't applicable. You don't need to worry about moving old data around in ClickHouse Cloud.
-:::
+> **note**: If you're using ClickHouse Cloud, the steps in the lesson aren't applicable. You don't need to worry about moving old data around in ClickHouse Cloud.
 
 A common practice when working with large amounts of data is to move that data around as it gets older. Here are the steps for implementing a hot/warm/cold architecture in ClickHouse using the `TO DISK` and `TO VOLUME` clauses of the `TTL` command. (By the way, it doesn't have to be a hot and cold thing - you can use TTL to move data around for whatever use case you have.)
 

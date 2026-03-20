@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LiteLLM AI Gateway Prompt Management
 
@@ -18,7 +17,7 @@ Use the LiteLLM AI Gateway to create, manage and version your prompts.
    - **Type**: Prompt type (e.g., db)
    - **Actions**: Delete and manage prompt options (admin only)
 
-![Prompt Table](../../img/prompt_table.png)
+[Prompt Table]
 
 ## Create a Prompt
 
@@ -40,7 +39,7 @@ Respond as jack sparrow would
 
 This will instruct the model to respond in the style of Captain Jack Sparrow from Pirates of the Caribbean.
 
-![Add Prompt with Developer Message](../../img/add_prompt.png)
+[Add Prompt with Developer Message]
 
 ### Step 3: Add Prompt Messages
 
@@ -58,7 +57,7 @@ Give me a recipe for {{dish}}
 
 The UI will automatically detect variables in your prompt and display them in the **Detected variables** section.
 
-![Add Prompt with Variables](../../img/add_prompt_var.png)
+[Add Prompt with Variables]
 
 ### Step 5: Test Your Prompt
 
@@ -68,11 +67,11 @@ Before saving, you can test your prompt directly in the UI:
 2. Type a message in the chat interface to test the prompt
 3. The assistant will respond using your configured model, developer message, and substituted variables
 
-![Test Prompt with Variables](../../img/add_prompt_use_var1.png)
+[Test Prompt with Variables]
 
 The result will show the model's response with your variables substituted:
 
-![Prompt Test Results](../../img/add_prompt_use_var.png)
+[Prompt Test Results]
 
 ### Step 6: Save Your Prompt
 
@@ -86,9 +85,6 @@ Now that your prompt is published, you can use it in your application via the Li
 
 Call a prompt using just the prompt ID and model:
 
-<Tabs>
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Basic Prompt Call"
 curl -X POST 'http://localhost:4000/chat/completions' \
   -H 'Content-Type: application/json' \
@@ -98,9 +94,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
     "prompt_id": "your-prompt-id"
   }' | jq
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="basic_prompt.py"
 import openai
@@ -119,9 +112,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="javascript" label="JavaScript">
 
 ```javascript showLineNumbers title="basicPrompt.js"
 import OpenAI from 'openai';
@@ -143,15 +133,9 @@ async function main() {
 main();
 ```
 
-</TabItem>
-</Tabs>
-
 ### With Custom Messages
 
 Add custom messages to your prompt:
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers title="Prompt with Custom Messages"
 curl -X POST 'http://localhost:4000/chat/completions' \
@@ -168,9 +152,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
     ]
   }' | jq
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="prompt_with_messages.py"
 import openai
@@ -192,9 +173,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="javascript" label="JavaScript">
 
 ```javascript showLineNumbers title="promptWithMessages.js"
 import OpenAI from 'openai';
@@ -219,15 +197,9 @@ async function main() {
 main();
 ```
 
-</TabItem>
-</Tabs>
-
 ### With Prompt Variables
 
 Pass variables to your prompt template using `prompt_variables`:
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers title="Prompt with Variables"
 curl -X POST 'http://localhost:4000/chat/completions' \
@@ -241,9 +213,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
     }
   }' | jq
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="prompt_with_variables.py"
 import openai
@@ -265,9 +234,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="javascript" label="JavaScript">
 
 ```javascript showLineNumbers title="promptWithVariables.js"
 import OpenAI from 'openai';
@@ -292,9 +258,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-</Tabs>
-
 ## Prompt Versioning
 
 LiteLLM automatically versions your prompts each time you update them. This allows you to maintain a complete history of changes and roll back to previous versions if needed.
@@ -309,7 +272,7 @@ Click on any prompt ID in the prompts table to view its details page. This page 
 - **Last Updated**: Timestamp of the most recent update
 - **LiteLLM Parameters**: The raw JSON configuration
 
-![Prompt Details](../../img/edit_prompt.png)
+[Prompt Details]
 
 ### Update a Prompt
 
@@ -325,7 +288,7 @@ To update an existing prompt:
 4. Test your changes in the chat interface on the right
 5. Click the **Update** button to save the new version
 
-![Edit Prompt in Studio](../../img/edit_prompt2.png)
+[Edit Prompt in Studio]
 
 Each time you click **Update**, a new version is created (v1 → v2 → v3, etc.) while maintaining the same prompt ID.
 
@@ -337,7 +300,7 @@ To view all versions of a prompt:
 2. Click the **History** button in the top right
 3. A **Version History** panel will open on the right side
 
-![Version History Panel](../../img/edit_prompt3.png)
+[Version History Panel]
 
 The version history panel displays:
 - **Latest version** (marked with a "Latest" badge and "Active" status)
@@ -357,7 +320,7 @@ To view or restore an older version:
    - The model and parameters used
    - All variables defined at that time
 
-![View Older Version](../../img/edit_prompt4.png)
+[View Older Version]
 
 The selected version will be highlighted with an "Active" badge in the version history panel.
 
@@ -369,9 +332,6 @@ To restore an older version:
 ### Use Specific Versions in API Calls
 
 By default, API calls use the latest version of a prompt. To use a specific version, pass the `prompt_version` parameter:
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers title="Use Specific Prompt Version"
 curl -X POST 'http://localhost:4000/chat/completions' \
@@ -389,9 +349,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
     ]
   }' | jq
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python showLineNumbers title="prompt_version.py"
 import openai
@@ -414,9 +371,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="javascript" label="JavaScript">
 
 ```javascript showLineNumbers title="promptVersion.js"
 import OpenAI from 'openai';
@@ -441,11 +395,3 @@ async function main() {
 
 main();
 ```
-
-</TabItem>
-</Tabs>
-
-
-
-
-

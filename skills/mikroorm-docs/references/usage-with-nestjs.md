@@ -1,6 +1,5 @@
 ---
 title: Using MikroORM with NestJS framework
-sidebar_label: Usage with NestJS
 ---
 
 ## Installation

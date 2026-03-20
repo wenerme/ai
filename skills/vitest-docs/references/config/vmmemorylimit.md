@@ -1,6 +1,5 @@
 ---
 title: vmMemoryLimit | Config
-outline: deep
 ---
 
 # vmMemoryLimit
@@ -12,8 +11,7 @@ This option affects only `vmForks` and `vmThreads` pools.
 
 Specifies the memory limit for workers before they are recycled. This value heavily depends on your environment, so it's better to specify it manually instead of relying on the default.
 
-::: tip
-The implementation is based on Jest's [`workerIdleMemoryLimit`](https://jestjs.io/docs/configuration#workeridlememorylimit-numberstring).
+> **tip**: The implementation is based on Jest's [`workerIdleMemoryLimit`](https://jestjs.io/docs/configuration#workeridlememorylimit-numberstring).
 
 The limit can be specified in a number of different ways and whatever the result is `Math.floor` is used to turn it into an integer value:
 
@@ -28,8 +26,5 @@ The limit can be specified in a number of different ways and whatever the result
     - `MiB` - Mebibytes
     - `G` / `GB` - Gigabytes
     - `GiB` - Gibibytes
-:::
 
-::: warning
-Percentage based memory limit [does not work on Linux CircleCI](https://github.com/jestjs/jest/issues/11956#issuecomment-1212925677) workers due to incorrect system memory being reported.
-:::
+> **warning**: Percentage based memory limit [does not work on Linux CircleCI](https://github.com/jestjs/jest/issues/11956#issuecomment-1212925677) workers due to incorrect system memory being reported.

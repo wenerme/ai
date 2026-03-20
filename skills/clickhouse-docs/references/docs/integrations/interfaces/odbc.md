@@ -1,8 +1,5 @@
 ---
 description: 'Documentation for the ClickHouse ODBC driver'
-sidebar_label: 'ODBC Driver'
-sidebar_position: 35
-slug: /interfaces/odbc
 title: 'ODBC Driver'
 doc_type: 'reference'
 ---
@@ -21,12 +18,9 @@ available.
 The source code of the driver is available in the
 [ClickHouse-ODBC GitHub Repository](https://github.com/ClickHouse/clickhouse-odbc).
 
-:::tip
-For better compatibility, we strongly recommend updating your ClickHouse server to version 24.11 or later.
-:::
+> **tip**: For better compatibility, we strongly recommend updating your ClickHouse server to version 24.11 or later.
 
-:::note
-This driver is under active development. Some ODBC features may not yet be fully implemented. The current version
+> **note**: This driver is under active development. Some ODBC features may not yet be fully implemented. The current version
 focuses on providing essential connectivity and core ODBC functionality, with additional features planned for future
 releases.
 
@@ -34,7 +28,6 @@ Your feedback is highly valuable and helps guide the prioritization of new featu
 limitations, missing functionality, or unexpected behavior, please share your observations or feature requests through
 the issue tracker at
 [https://github.com/ClickHouse/clickhouse-odbc/issues](https://github.com/ClickHouse/clickhouse-odbc/issues)
-:::
 
 ## Installation on Windows {#installation-on-windows}
 You can find the latest version of the driver at

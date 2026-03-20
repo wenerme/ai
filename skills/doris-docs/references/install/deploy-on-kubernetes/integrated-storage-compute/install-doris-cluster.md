@@ -40,4 +40,3 @@ Expected output:
 NAME                  FESTATUS    BESTATUS    CNSTATUS   BROKERSTATUS
 doriscluster-sample   available   available
 ```
-

@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Retool Assist
 
@@ -22,9 +21,7 @@ This guide walks you through connecting [Retool Assist](https://docs.retool.com/
 
 ---
 
-:::info
-**Hosted Retool requires a public URL.** Retool Cloud runs on Retool's servers, so `localhost` will not work. You must expose your LiteLLM proxy via ngrok, Cloudflare Tunnel, or by deploying to a cloud provider.
-:::
+> **info**: **Hosted Retool requires a public URL.** Retool Cloud runs on Retool's servers, so `localhost` will not work. You must expose your LiteLLM proxy via ngrok, Cloudflare Tunnel, or by deploying to a cloud provider.
 
 ## Quick Reference
 
@@ -62,7 +59,6 @@ Retool Cloud runs on Retool's servers. You must expose your local LiteLLM proxy 
 ngrok http 4000
 ```
 - Copy the generated HTTPS URL (e.g. `https://abc123.ngrok-free.app`). This is your **Base URL** for Retool.
-
 
 ### Alternative
 

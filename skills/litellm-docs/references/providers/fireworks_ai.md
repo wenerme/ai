@@ -1,12 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Fireworks AI
 
-
-:::info
-**We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending completion requests**
-:::
+> **info**: **We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending completion requests**
 
 | Property | Details |
 |-------|-------|
@@ -15,7 +11,6 @@ import TabItem from '@theme/TabItem';
 | Provider Doc | [Fireworks AI ↗](https://docs.fireworks.ai/getting-started/introduction) |
 | Supported OpenAI Endpoints | `/chat/completions`, `/embeddings`, `/completions`, `/audio/transcriptions`, `/rerank` |
 
-
 ## Overview
 
 This guide explains how to integrate LiteLLM with Fireworks AI. You can connect to Fireworks AI in three main ways:
@@ -23,7 +18,6 @@ This guide explains how to integrate LiteLLM with Fireworks AI. You can connect 
 1. <b> Using Fireworks AI serverless models </b> – Easy connection to Fireworks-managed models.
 2. <b> Connecting to a model in your own Fireworks account </b> – Access models that are hosted within your Fireworks account.
 3. <b> Connecting via a direct-route deployment </b> – A more flexible, customizable connection to a specific Fireworks instance.
-
 
 ## API Key
 ```python
@@ -97,7 +91,6 @@ print(response)
 
 > **Note:** The above is for the chat interface, if you want to use the text completion interface it's model="text-completion-openai/accounts/fireworks/models/qwen2p5-coder-7b#accounts/gitlab/deployments/2fb7764c"
 
-
 ## Usage with LiteLLM Proxy 
 
 ### 1. Set Fireworks AI Models on config.yaml
@@ -118,10 +111,6 @@ litellm --config config.yaml
 
 ### 3. Test it
 
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -136,8 +125,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -157,8 +144,6 @@ response = client.chat.completions.create(model="fireworks-llama-v3-70b-instruct
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -187,17 +172,12 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Document Inlining 
 
 LiteLLM supports document inlining for Fireworks AI models. This is useful for models that are not vision models, but still need to parse documents/images/etc.
 
 LiteLLM will add `#transform=inline` to the url of the image_url, if the model is not a vision model.[**See Code**](https://github.com/BerriAI/litellm/blob/1ae9d45798bdaf8450f2dfdec703369f3d2212b7/litellm/llms/fireworks_ai/chat/transformation.py#L114)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -228,9 +208,6 @@ completion = litellm.completion(
 )
 print(completion)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -275,37 +252,22 @@ curl -L -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]}'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Disable Auto-add
 
 If you want to disable the auto-add of `#transform=inline` to the url of the image_url, you can set the `auto_add_transform_inline` to `False` in the `FireworksAIConfig` class.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 litellm.disable_add_transform_inline_image_block = True
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 litellm_settings:
     disable_add_transform_inline_image_block: true
 ```
 
-</TabItem>
-</Tabs>
-
 ## Reasoning Effort
 
 The `reasoning_effort` parameter is supported on select Fireworks AI models. Supported models include:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -323,9 +285,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -342,14 +301,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models - ALL Fireworks AI Models Supported!
 
-:::info
-We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending completion requests
-:::
+> **info**: We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending completion requests
 
 | Model Name               | Function Call                                                                                                                                                      |
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -363,9 +317,7 @@ We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when se
 
 ## Supported Embedding Models
 
-:::info
-We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending embedding requests
-:::
+> **info**: We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when sending embedding requests
 
 | Model Name            | Function Call                                                   |
 |-----------------------|-----------------------------------------------------------------|
@@ -375,13 +327,9 @@ We support ALL Fireworks AI models, just set `fireworks_ai/` as a prefix when se
 | fireworks_ai/thenlper/gte-large | `response = litellm.embedding(model="fireworks_ai/thenlper/gte-large", input=input_text)` |
 | fireworks_ai/thenlper/gte-base | `response = litellm.embedding(model="fireworks_ai/thenlper/gte-base", input=input_text)` |
 
-
 ## Audio Transcription
 
 ### Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import transcription
@@ -397,9 +345,6 @@ response = transcription(
 ```
 
 [Pass API Key/API Base in `.transcription`](../set_keys.md#passing-args-to-completion)
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -430,15 +375,9 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/audio/transcriptions' \
 -F 'response_format="verbose_json"' \
 ```
 
-</TabItem>
-</Tabs>
-
 ## Rerank
 
 ### Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import rerank
@@ -465,9 +404,6 @@ print(response)
 ```
 
 [Pass API Key/API Base in `.rerank`](../set_keys.md#passing-args-to-completion)
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -506,9 +442,6 @@ curl http://0.0.0.0:4000/rerank \
     "return_documents": true
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Supported Models
 

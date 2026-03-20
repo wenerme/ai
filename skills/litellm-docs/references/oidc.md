@@ -1,12 +1,7 @@
 # [BETA] OpenID Connect (OIDC)
 LiteLLM supports using OpenID Connect (OIDC) for authentication to upstream services . This allows you to avoid storing sensitive credentials in your configuration files.
 
-:::info
-
-This feature is in Beta
-
-:::
-
+> **info**: This feature is in Beta
 
 ## OIDC Identity Provider (IdP)
 
@@ -26,11 +21,7 @@ LiteLLM supports the following OIDC identity providers:
 
 If you would like to use a different OIDC provider, please open an issue on GitHub.
 
-:::tip
-
-Do not use the `file`, `env`, or `env_path` providers unless you know what you're doing, and you are sure none of the other providers will work for your use-case. Hint: they probably will.
-
-:::
+> **tip**: Do not use the `file`, `env`, or `env_path` providers unless you know what you're doing, and you are sure none of the other providers will work for your use-case. Hint: they probably will.
 
 ## OIDC Connect Relying Party (RP)
 
@@ -39,7 +30,6 @@ LiteLLM supports the following OIDC relying parties / clients:
 - Amazon Bedrock
 - Azure OpenAI
 - _(Coming soon) Google Cloud Vertex AI_
-
 
 ### Configuring OIDC
 
@@ -75,11 +65,7 @@ For the unofficial `env_path`, use the following format, where `SECRET_TOKEN` is
 oidc/env_path/SECRET_TOKEN
 ```
 
-:::tip
-
-If you are tempted to use oidc/env_path/AZURE_FEDERATED_TOKEN_FILE, don't do that. Instead, use `oidc/azure/`, as this will ensure continued support from LiteLLM if Azure changes their OIDC configuration and/or adds new features.
-
-:::
+> **tip**: If you are tempted to use oidc/env_path/AZURE_FEDERATED_TOKEN_FILE, don't do that. Instead, use `oidc/azure/`, as this will ensure continued support from LiteLLM if Azure changes their OIDC configuration and/or adds new features.
 
 ## Examples
 
@@ -169,12 +155,7 @@ This trust relationship restricts CircleCI to only assume the role on the main b
 
 For CircleCI (v1 and v2), you also need to add your organization's OIDC provider in your AWS IAM settings. See https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html for more information.
 
-:::tip
-
-You should _never_ need to create an IAM user. If you did, you're not using OIDC correctly. You should only be creating a role with permissions and a trust relationship to your OIDC provider.
-
-:::
-
+> **tip**: You should _never_ need to create an IAM user. If you did, you're not using OIDC correctly. You should only be creating a role with permissions and a trust relationship to your OIDC provider.
 
 ### Google Cloud Run -> Azure OpenAI
 
@@ -198,26 +179,11 @@ export AZURE_TENANT_ID="f3b1cf79-eba8-40c3-8120-cb26aca169c2" # Will be the same
 export AZURE_AUTHORITY_HOST="https://login.microsoftonline.com" # 👈 Optional, defaults to "https://login.microsoftonline.com"
 ```
 
-:::tip
+> **tip**: You can find `AZURE_CLIENT_ID` by visiting `https://login.microsoftonline.com/YOUR_DOMAIN_HERE/v2.0/.well-known/openid-configuration` and looking for the UUID in the `issuer` field.
 
-You can find `AZURE_CLIENT_ID` by visiting `https://login.microsoftonline.com/YOUR_DOMAIN_HERE/v2.0/.well-known/openid-configuration` and looking for the UUID in the `issuer` field.
+> **tip**: Don't set `AZURE_AUTHORITY_HOST` in your environment unless you need to override the default value. This way, if the default value changes in the future, you won't need to update your environment.
 
-:::
-
-
-:::tip
-
-Don't set `AZURE_AUTHORITY_HOST` in your environment unless you need to override the default value. This way, if the default value changes in the future, you won't need to update your environment.
-
-:::
-
-
-:::tip
-
-By default, Azure AD applications use the audience `api://AzureADTokenExchange`. We recommend setting the audience to something more specific to your application.
-
-:::
-
+> **tip**: By default, Azure AD applications use the audience `api://AzureADTokenExchange`. We recommend setting the audience to something more specific to your application.
 
 #### Azure AD Application Configuration
 

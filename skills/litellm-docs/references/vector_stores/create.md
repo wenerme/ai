@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /vector_stores - Create Vector Store
 
@@ -19,9 +18,6 @@ Create a vector store which can be used to store and search document chunks for 
 ## Usage
 
 ### LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
 
 #### Async example
 ```python showLineNumbers title="Create Vector Store - Basic"
@@ -44,10 +40,6 @@ response = litellm.vector_stores.create(
 )
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Configuration">
 
 #### With expiration and chunking strategy
 ```python showLineNumbers title="Create Vector Store - Advanced"
@@ -75,10 +67,6 @@ response = await litellm.vector_stores.acreate(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="openai-provider" label="OpenAI Provider">
-
 #### Using OpenAI provider explicitly
 ```python showLineNumbers title="Create Vector Store - OpenAI Provider"
 import litellm
@@ -95,13 +83,7 @@ response = await litellm.vector_stores.acreate(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ### LiteLLM Proxy Server
-
-<Tabs>
-<TabItem value="proxy-setup" label="Setup & Usage">
 
 1. Setup config.yaml
 
@@ -140,10 +122,6 @@ vector_store = client.beta.vector_stores.create(
 print(vector_store)
 ```
 
-</TabItem>
-
-<TabItem value="curl-proxy" label="curl">
-
 ```bash showLineNumbers title="Create Vector Store via curl"
 curl -L -X POST 'http://0.0.0.0:4000/v1/vector_stores' \
 -H 'Content-Type: application/json' \
@@ -169,13 +147,7 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/vector_stores' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### OpenAI SDK (Standalone)
-
-<Tabs>
-<TabItem value="openai-direct" label="Direct OpenAI Usage">
 
 ```python showLineNumbers title="OpenAI SDK Direct"
 from openai import OpenAI
@@ -188,9 +160,6 @@ vector_store = client.beta.vector_stores.create(
 )
 print(vector_store)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Request Format
 
@@ -313,4 +282,4 @@ response = await litellm.vector_stores.acreate(
     mock_response=mock_response
 )
 print(response)
-``` 
+```

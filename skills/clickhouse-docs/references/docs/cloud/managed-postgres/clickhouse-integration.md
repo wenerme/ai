@@ -1,18 +1,9 @@
 ---
-slug: /cloud/managed-postgres/clickhouse-integration
-sidebar_label: 'ClickHouse Integration'
 title: 'ClickHouse Integration'
 description: 'Replicate your Postgres data to ClickHouse using built-in CDC capabilities'
 keywords: ['postgres', 'clickhouse integration', 'cdc', 'replication', 'clickpipes', 'data sync']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import chIntegrationIntro from '@site/static/images/managed-postgres/clickhouse-integration-intro.png';
-import replicationServiceStep from '@site/static/images/managed-postgres/replication-service-step.png';
-import selectTablesStep from '@site/static/images/managed-postgres/select-tables-step.png';
-import integrationRunning from '@site/static/images/managed-postgres/integration-running.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="clickhouse-integration" />
 
@@ -22,9 +13,7 @@ To access this, click on **ClickHouse Integration** in the sidebar of your Postg
 
 <Image img={chIntegrationIntro} alt="ClickHouse integration landing page showing the integration option in the sidebar" size="md" border/>
 
-:::note
-Before you proceed, ensure that your Postgres service is accessible to the ClickPipes service. This should be the case by default, but if you've restricted IP access you may need to grant access to some source IPs from [this](/integrations/clickpipes#list-of-static-ips) list based on the region where your **ClickHouse service** is located.
-:::
+> **note**: Before you proceed, ensure that your Postgres service is accessible to the ClickPipes service. This should be the case by default, but if you've restricted IP access you may need to grant access to some source IPs from [this](/integrations/clickpipes#list-of-static-ips) list based on the region where your **ClickHouse service** is located.
 
 Click **Replicate data in ClickHouse** to start setting up your ClickPipe.
 

@@ -12,9 +12,7 @@ View the supported character sets. This table is only used for compatibility wit
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

@@ -7,17 +7,11 @@ description: Extends Event Iterator with durable event streams, automatic reconn
 
 Durable Iterator extends [Event Iterator](/docs/event-iterator) by offloading streaming to a separate service that provides durable event streams, automatic reconnections, and event recovery.
 
-::: info
-See the complete example in our [Cloudflare Worker Playground](/docs/playgrounds).
-:::
+> **info**: See the complete example in our [Cloudflare Worker Playground](/docs/playgrounds).
 
-::: info
-While not limited to [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/), it's currently the only supported implementation.
-:::
+> **info**: While not limited to [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/), it's currently the only supported implementation.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/experimental-durable-iterator@latest
@@ -39,17 +33,11 @@ bun add @orpc/experimental-durable-iterator@latest
 deno add npm:@orpc/experimental-durable-iterator@latest
 ```
 
-:::
-
-::: warning
-The `experimental-` prefix indicates that this feature is still in development and may change in the future.
-:::
+> **warning**: The `experimental-` prefix indicates that this feature is still in development and may change in the future.
 
 ## Durable Object
 
-::: warning
-This section requires you to be familiar with [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/). Please learn it first before continuing.
-:::
+> **warning**: This section requires you to be familiar with [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/). Please learn it first before continuing.
 
 ### Define your Durable Object
 
@@ -78,9 +66,7 @@ export class ChatRoom extends DurableIteratorObject<{ message: string }> {
 }
 ```
 
-::: info
-How to use `DurableIteratorObject` without extending it: [see here](https://github.com/middleapi/orpc/tree/main/packages/durable-iterator/src/durable-object/object.ts)
-:::
+> **info**: How to use `DurableIteratorObject` without extending it: [see here](https://github.com/middleapi/orpc/tree/main/packages/durable-iterator/src/durable-object/object.ts)
 
 ### Upgrade Durable Iterator Request
 
@@ -123,9 +109,7 @@ this.publishEvent({ message: 'Hello, world!' }, {
 })
 ```
 
-::: info
-When using [Resume Events After Connection Loss](#resume-events-after-connection-loss) feature, prefer `tags` or `targets` filtering over `exclude` for security. Since clients control their own identity, `exclude` should only be used for UI convenience, not security enforcement.
-:::
+> **info**: When using [Resume Events After Connection Loss](#resume-events-after-connection-loss) feature, prefer `tags` or `targets` filtering over `exclude` for security. Since clients control their own identity, `exclude` should only be used for UI convenience, not security enforcement.
 
 ### Resume Events After Connection Loss
 
@@ -145,8 +129,7 @@ export class YourDurableObject extends DurableIteratorObject<{ message: string }
 }
 ```
 
-::: warning
-This feature controls event IDs automatically, so custom event IDs will be ignored:
+> **warning**: This feature controls event IDs automatically, so custom event IDs will be ignored:
 
 ```ts
 import { withEventMeta } from '@orpc/experimental-durable-iterator'
@@ -154,16 +137,11 @@ import { withEventMeta } from '@orpc/experimental-durable-iterator'
 this.publishEvent(withEventMeta({ message: 'Hello, world!' }, { id: 'this-will-not-take-effect' }))
 ```
 
-:::
-
 ## Server Side
 
 Define two procedures: one for listening to chat room messages, and another for sending messages to all connected clients:
 
-::: info
-This example assumes your server and Durable Object run in the same environment. For different environments, send a fetch request to your Durable Object instead of invoking methods directly.
-:::
-
+> **info**: This example assumes your server and Durable Object run in the same environment. For different environments, send a fetch request to your Durable Object instead of invoking methods directly.
 ```ts
 import { DurableIterator } from '@orpc/experimental-durable-iterator'
 
@@ -198,7 +176,7 @@ const handler = new RPCHandler(router, {
 })
 ```
 
-::: warning CORS Policy
+> **warning**: CORS Policy
 The `DurableIteratorHandlerPlugin` adds an `x-orpc-durable-iterator` header to responses, indicating that the response contains a durable iterator. For cross-origin requests, you must configure CORS to expose this header to clients.
 
 ```ts
@@ -211,8 +189,6 @@ const handler = new RPCHandler(router, {
   ],
 })
 ```
-
-:::
 
 ## Client Side
 
@@ -234,9 +210,7 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-`DurableIteratorLinkPlugin` establishes a WebSocket connection to the Durable Object for each durable iterator and automatically reconnects if the connection is lost.
-:::
+> **info**: `DurableIteratorLinkPlugin` establishes a WebSocket connection to the Durable Object for each durable iterator and automatically reconnects if the connection is lost.
 
 ### Example
 
@@ -266,9 +240,7 @@ const link = new RPCLink({
 })
 ```
 
-::: warning
-Token refresh reuses the existing WebSocket connection if the refreshed token has identical `chn` (channel) and `tags`. Otherwise, the connection closes and a new one is established.
-:::
+> **warning**: Token refresh reuses the existing WebSocket connection if the refreshed token has identical `chn` (channel) and `tags`. Otherwise, the connection closes and a new one is established.
 
 ### Stopping the Durable Iterator
 
@@ -338,13 +310,9 @@ export const onMessage = base.handler(({ context }) => {
 })
 ```
 
-::: info
-Clients can only call methods defined in the `rpc` method, providing fine-grained access control.
-:::
+> **info**: Clients can only call methods defined in the `rpc` method, providing fine-grained access control.
 
-::: warning
-The `att` (attachment) data is visible to clients. Only include non-sensitive metadata like user IDs or preferences.
-:::
+> **warning**: The `att` (attachment) data is visible to clients. Only include non-sensitive metadata like user IDs or preferences.
 
 ### Client Side Usage
 
@@ -369,14 +337,11 @@ const echoResponse = await iterator.routerClient.echo({ text: 'Hello' })
 console.log(echoResponse) // "Echo: Hello"
 ```
 
-::: info
-[Retry Plugin](/docs/plugins/client-retry) is enabled for all RPC methods. Configure retry attempts using the context:
+> **info**: [Retry Plugin](/docs/plugins/client-retry) is enabled for all RPC methods. Configure retry attempts using the context:
 
 ```ts
 await iterator.singleClient({ message: 'Hello, world!' }, { context: { retry: 3 } })
 ```
-
-:::
 
 ## Contract First
 

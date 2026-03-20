@@ -250,8 +250,3 @@ The **Alerting HTTP API** provides specific endpoints for exporting alerting res
 | Mute timings             | GET /api/v1/provisioning/mute-timings/:name/export                   | [Export a mute timing in provisioning file format](ref:export_mute_timing).                  |
 
 These endpoints accept a `download` parameter to download a file containing the exported resources.
-
-<!-- prettier-ignore-start -->
-
-
-<!-- prettier-ignore-end -->

@@ -1,14 +1,9 @@
 ---
-slug: /best-practices/select-data-types
-sidebar_position: 10
-sidebar_label: 'Selecting data types'
 title: 'Selecting data types'
 description: 'Page describing how to choose data types in ClickHouse'
 keywords: ['data types']
 doc_type: 'reference'
 ---
-
-import NullableColumns from '@site/docs/best-practices/_snippets/_avoid_nullable_columns.md';
 
 One of the core reasons for ClickHouse's query performance is its efficient data compression. Less data on disk results in faster queries and inserts by minimizing I/O overhead. ClickHouse's column-oriented architecture naturally arranges similar data adjacently, enabling compression algorithms and codecs to reduce data size dramatically. To maximize these compression benefits, it's essential to carefully choose appropriate data types.
 
@@ -32,10 +27,7 @@ Some straightforward guidelines can significantly enhance the schema:
 
 ClickHouse offers built-in tools to streamline type optimization. For example, schema inference can automatically identify initial types. Consider the Stack Overflow dataset, publicly available in Parquet format. Running a simple schema inference via the [`DESCRIBE`](/sql-reference/statements/describe-table) command provides an initial non-optimized schema. 
 
-:::note
-By default, ClickHouse maps these to equivalent Nullable types. This is preferred as the schema is based on a sample of the rows only.
-:::
-
+> **note**: By default, ClickHouse maps these to equivalent Nullable types. This is preferred as the schema is based on a sample of the rows only.
 ```sql
 DESCRIBE TABLE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posts/*.parquet')
 SETTINGS describe_compact_output = 1
@@ -68,9 +60,7 @@ SETTINGS describe_compact_output = 1
 22 rows in set. Elapsed: 0.130 sec.
 ```
 
-:::note
-Note below we use the glob pattern *.parquet to read all files in the stackoverflow/parquet/posts folder.
-:::
+> **note**: Note below we use the glob pattern *.parquet to read all files in the stackoverflow/parquet/posts folder.
 
 By applying our early simple rules to our posts table, we can identify an optimal type for each column:
 
@@ -98,9 +88,8 @@ By applying our early simple rules to our posts table, we can identify an optima
 | `CommunityOwnedDate`     | No         | 2008-08-12 04:59:35.017000000, 2024-04-01 05:36:41.380000000           | -              | Yes    | Consider default 1970-01-01 for Nulls. Millisecond granularity isn't required, use DateTime | DateTime                                 |
 | `ClosedDate`             | No         | 2008-09-04 20:56:44, 2024-04-06 18:49:25.393000000                     | -              | Yes    | Consider default 1970-01-01 for Nulls. Millisecond granularity isn't required, use DateTime | DateTime                                 |
 
-:::note Tip
+> **note**: Tip
 Identifying the type for a column relies on understanding its numeric range and number of unique values. To find the range of all columns, and the number of distinct values, you can use the simple query `SELECT * APPLY min, * APPLY max, * APPLY uniq FROM table FORMAT Vertical`. We recommend performing this over a smaller subset of the data as this can be expensive.
-:::
 
 This results in the following optimized schema (with respect to types):
 

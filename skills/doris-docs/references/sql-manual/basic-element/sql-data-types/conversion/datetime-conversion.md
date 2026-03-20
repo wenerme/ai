@@ -283,13 +283,12 @@ Assume the current Doris time zone is UTC+8 (`+08:00`). For the effect of time z
 <alpha>          ::= "A" | … | "Z" | "a" | … | "z"
 ```
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the \<year> part only supports 2 or 4-digit input. Support for dates or times without separators is more strict, only supporting the 14-digit consecutive integer format, which is supported in strict mode and inherited by non-strict mode.
 
 In parsing each field, extra leading zeros that would exceed the length are no longer allowed. For example, `00012` is invalid for `<day> ::= <digit>{1,2}`.
 
 When encountering unexpected spaces, parsing will fail just like with other unexpected characters, rather than filling the result with already parsed fields.
-:::
 
 #### Rule Description
 
@@ -399,9 +398,8 @@ Assume the current Doris time zone is UTC+8 (`+08:00`). For the effect of time z
 
 All numeric types can be converted to DATETIME type.
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, DECIMAL types are converted according to their literal numeric representation. Boolean type conversion to time types is not supported. Parsing of the decimal part of numeric type inputs is supported.
-:::
 
 ### Strict Mode
 
@@ -587,7 +585,6 @@ If an overflow occurs, an error is reported.
 
 ##### Examples
 
-
 | Input TIMESTAMPTZ                  | Source Type         | Target Type        | Result DATETIME                  | Comment              |
 | ---------------------------- | ----------- | ----------- | ---------------------------- | -------------------- |
 | `2020-12-12 00:00:00.123+08:00`    | Timestamptz(3) | Datetime(6) | `2020-12-12 00:00:00.123000` | Increase precision                 |
@@ -610,7 +607,6 @@ When converting from higher precision to lower precision, there will be a carry 
 If an overflow occurs, NULL is returned.
 
 ##### Examples
-
 
 | Input TIMESTAMPTZ                  | Source Type         | Target Type        | Result DATETIME                  | Comment              |
 | ---------------------------- | ----------- | ----------- | ---------------------------- | -------------------- |

@@ -26,31 +26,26 @@ image_maps:
         y_coord: 17
         content: |
           **Dashboard options**
-
           Click the icon to open the edit pane. Edit mode only.
       - x_coord: 96
         y_coord: 25
         content: |
           **Feedback**
-
           Submit feedback on the new editing experience. Edit mode only.
       - x_coord: 96
         y_coord: 33
         content: |
           **Export**
-
           Click to display [export](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/share-dashboards-panels/#export-dashboards) options.
       - x_coord: 96
         y_coord: 41
         content: |
           **Content outline**
-
           Navigate a dashboard using the [Content outline](#navigate-using-the-content-outline).
       - x_coord: 96
         y_coord: 49
         content: |
           **Dashboard insights**
-
           View [dashboard analytics](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/assess-dashboard-usage/) including information about users, activity, and query counts.
 ---
 
@@ -260,8 +255,6 @@ You can only have one type of grouping at each level.
 Inside of those groupings however, you have to freedom to add different elements.
 Also, custom and auto grid panel layouts are supported for rows and tabs, so each grouping can have a different panel layout.
 
-<!-- {{< figure src="/media/docs/grafana/dashboards/screenshot-groupings-v12.4.png" alt="Dashboard with nested groupings" max-width="750px" >}} -->
-
 The following sections describe:
 
 - [Grouping configuration options](#grouping-configuration-options)
@@ -273,8 +266,6 @@ The following sections describe:
 
 The following table describes the options you can set for a row or tab:
 
-<!-- prettier-ignore-start -->
-
 | Option          | Description                                                                 |
 | ----------------| --------------------------------------------------------------------------- |
 | Title           | Title of the row or tab.                                                    |
@@ -283,8 +274,6 @@ The following table describes the options you can set for a row or tab:
 | Layout          | Select the layout. If the grouping contains another grouping, choose from **Rows** or **Tabs**. If the grouping contains panels, choose from **Custom** or **Auto grid**. For more information, refer to [Panel layouts](#panel-layouts) or [Grouping layouts](#grouping-layouts). |
 | Repeat options > [Repeat by variable](#configure-repeat-options) | Configure the dashboard to dynamically add panels, rows, or tabs based on the value of a variable. |
 | Show / hide rules > [Panel/Row/Tab visibility](#configure-showhide-rules) | Control whether or not panels, rows, or tabs are displayed based on variable values, a time range, or query results (panels only). |
-
-<!-- prettier-ignore-end -->
 
 ### Grouping layouts
 

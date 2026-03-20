@@ -27,7 +27,7 @@ A stream is a logical container that holds one type of observability data, such 
 
 === "Self-hosted"
     - By default, the **Add Stream** button is not visible on the **Streams** page.
-    - To enable the **Add Stream** button, set the following environment variable to `true`: <br>
+    - To enable the **Add Stream** button, set the following environment variable to `true`: 
         `ZO_ALLOW_USER_DEFINED_SCHEMAS`
     - After enabling the variable:
 
@@ -73,14 +73,13 @@ The following steps vary for **Cloud** and **Self-hosted** deployment:
         - (Optional) Use the **Add Fields** section if you wish to define fields for your stream:
             - **Field Name**: Name of the field
             - **Data Type**: Select from utf8, int64, uint64, float64, or boolean
-            - **Index Type**: Choose an indexing strategy (Secondary Index, Full Text Search, KeyValue Partition, Prefix Partition, or Hash Partition) <br>
+            - **Index Type**: Choose an indexing strategy (Secondary Index, Full Text Search, KeyValue Partition, Prefix Partition, or Hash Partition) 
             For detailed information about each field type and index strategy, see [Field and Index Types in Streams](data-type-and-index-type-in-streams.md)
   
         These fields create a User Defined Schema. Learn more about [user defined schema](../../user-guide/streams/schema-settings.md#user-defined-schema-uds).    
     5. Click **Create Stream**.
 
     The new stream appears on the Streams page. Ingest data into the stream to populate and start using it.
-
 
 === "Create streams in OpenObserve self-hosted"
     ### Create streams in OpenObserve self-hosted
@@ -96,7 +95,7 @@ The following steps vary for **Cloud** and **Self-hosted** deployment:
         - In the **Add Fields** section, you must define at least one field with:
             - **Field Name**: Name of the field
             - **Data Type**: Select from utf8, int64, uint64, float64, or boolean
-            - **Index Type**: Choose an indexing strategy (Secondary Index, Full Text Search, KeyValue Partition, Prefix Partition, or Hash Partition)<br>
+            - **Index Type**: Choose an indexing strategy (Secondary Index, Full Text Search, KeyValue Partition, Prefix Partition, or Hash Partition)
             For detailed information about each field type and index strategy, see [Field and Index Types in Streams](data-type-and-index-type-in-streams.md)
         This creates a user-defined schema at stream creation. Learn more about [user defined schema](../../user-guide/streams/schema-settings.md#user-defined-schema-uds).  
     
@@ -117,9 +116,9 @@ The following steps vary for **Cloud** and **Self-hosted** deployment:
 
 !!! Note
 
-    You can also create a stream during the first data ingestion, without using the UI. The organization must already exist before ingestion. <br>
+    You can also create a stream during the first data ingestion, without using the UI. The organization must already exist before ingestion. 
 
-    OpenObserve does not support organization creation as part of the ingestion process.<br>
+    OpenObserve does not support organization creation as part of the ingestion process.
     
     However, if the environment variable `ZO_CREATE_ORG_THROUGH_INGESTION` is set as `true`, only the `root` user can create organization through ingestion. By default, ZO_CREATE_ORG_THROUGH_INGESTION is set as `false` by default.
 
@@ -136,4 +135,3 @@ The following steps vary for **Cloud** and **Self-hosted** deployment:
 - [Stream Details](stream-details.md)
 - [Schema Settings](schema-settings.md)
 - [Extended Retention](extended-retention.md)
-

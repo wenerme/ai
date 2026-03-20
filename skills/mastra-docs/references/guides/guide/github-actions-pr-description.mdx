@@ -43,7 +43,7 @@ The workflow needs access to your model provider API key. Add it as a repository
 1. Click **New repository secret**
 1. Add your API key with the name `OPENAI_API_KEY` (or the appropriate key for your provider)
 
-   ![Screenshot of repository secrets in GitHub UI](/img/guides/github-action-repository-secrets.jpg)
+   [Screenshot of repository secrets in GitHub UI]
 
 The workflow references this secret as `${{ secrets.OPENAI_API_KEY }}` and makes it available to the Mastra agent at runtime.
 
@@ -183,11 +183,7 @@ jobs:
 - **`generate-description.ts`**: Reads `/tmp/pr_diff.txt`, calls the Mastra agent, and writes the generated description to `/tmp/pr_description.md`.
 - **`gh pr edit`**: Updates the pull request description using the contents of `/tmp/pr_description.md`.
 
-:::note
-
-The workflow excludes `package-lock.json` when generating the diff. Lockfiles are often large and noisy, and including them can overwhelm the agent's context window and make the resulting description harder to reason about.
-
-:::
+> **note**: The workflow excludes `package-lock.json` when generating the diff. Lockfiles are often large and noisy, and including them can overwhelm the agent's context window and make the resulting description harder to reason about.
 
 ### Create the workflow script
 

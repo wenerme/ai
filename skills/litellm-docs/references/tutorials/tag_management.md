@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # [Beta] Routing based on request metadata
 
@@ -23,7 +21,6 @@ Create a tag called `private-data` and only select the allowed models for reques
 
 <Image img={require('../../img/tag_create.png')}  style={{ width: '800px', height: 'auto' }} />
 
-
 ## 2. Test Tag Routing
 
 Now we will test the tag based routing rules.
@@ -34,11 +31,7 @@ This request will fail since we send `tags=private-data` but the model `gpt-4o` 
 
 <Image img={require('../../img/tag_invalid.png')}  style={{ width: '800px', height: 'auto' }} />
 
-<br />
-
 Here is an example sending the same request using the OpenAI Python SDK.
-<Tabs>
-<TabItem value="python" label="OpenAI Python SDK">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -59,9 +52,6 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-<TabItem value="curl" label="cURL">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -78,11 +68,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
-<br />
-
 ### 2.2 Valid model
 
 This request will succeed since we send `tags=private-data` and the model `us.anthropic.claude-3-7-sonnet-20250219-v1:0` is in the allowed models for the `private-data` tag.
@@ -90,9 +75,6 @@ This request will succeed since we send `tags=private-data` and the model `us.an
 <Image img={require('../../img/tag_valid.png')}  style={{ width: '800px', height: 'auto' }} />
 
 Here is an example sending the same request using the OpenAI Python SDK.
-
-<Tabs>
-<TabItem value="python" label="OpenAI Python SDK">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -113,9 +95,6 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-<TabItem value="curl" label="cURL">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -132,14 +111,8 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-
 ## Additional Tag Features
 - [Sending tags in request headers](https://docs.litellm.ai/docs/proxy/tag_routing#calling-via-request-header)
 - [Tag based routing](https://docs.litellm.ai/docs/proxy/tag_routing)
 - [Track spend per tag](cost_tracking#-custom-tags)
 - [Setup Budgets per Virtual Key, Team](users)
-

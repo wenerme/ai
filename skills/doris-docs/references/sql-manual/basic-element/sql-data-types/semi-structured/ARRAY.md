@@ -327,4 +327,3 @@ select array(null) < array(-1), array(null) > array(-1);
   |    3 | [7, 8, 9]    |
   +------+--------------+
   ```
-

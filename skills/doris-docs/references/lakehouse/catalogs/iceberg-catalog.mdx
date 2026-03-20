@@ -6,16 +6,11 @@
 }
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Doris supports accessing Iceberg table data through various metadata services. In addition to reading data, Doris also supports writing to Iceberg tables.
 
 [Quick start with Apache Doris and Apache Iceberg](../best-practices/doris-iceberg.md).
 
-:::tip
-Users can access Iceberg tables using Hive Metastore as metadata through the Hive Catalog. However, it is still recommended to use the Iceberg Catalog directly to avoid some compatibility issues.
-:::
+> **tip**: Users can access Iceberg tables using Hive Metastore as metadata through the Hive Catalog. However, it is still recommended to use the Iceberg Catalog directly to avoid some compatibility issues.
 
 ## Applicable Scenarios
 
@@ -193,7 +188,6 @@ Iceberg's metadata hierarchy is Catalog -> Namespace -> Table. Namespace can hav
      └────────┘     └────────┘
 ```
 
-
 Starting from version 3.1.2, for Iceberg Rest Catalog, Doris supports mapping of Nested Namespace.
 
 In the above example, tables will be mapped to Doris metadata according to the following logic:
@@ -209,10 +203,10 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
 ## Examples
 
 ### Hive Metastore
-<details>
-    <summary>3.1+ Version</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+
+    3.1+ Version
+    
+        
             Access HMS and HDFS services without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_hms_on_hdfs_catalog PROPERTIES (
@@ -246,8 +240,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'hadoop.kerberos.keytab' = '/keytabs/hive-presto-master.keytab'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_hms_on_s3_catalog PROPERTIES (
@@ -271,8 +265,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.role_arn' = 'arn:aws:iam::543815668950:role/role'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_hms_on_oss_catalog PROPERTIES (
@@ -308,8 +302,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG `iceberg_hms_on_cos_catalog` PROPERTIES (
@@ -344,8 +338,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'cos.access_key' = '<ak>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG test_iceberg_on_hms_obs_catalog PROPERTIES (
@@ -381,8 +375,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG `iceberg_hms_on_gcs_kerberos_new_catalog` PROPERTIES (
                 'type' = 'iceberg',
@@ -394,8 +388,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'fs.gcs.support'='true'
             );
             ```
-        </TabItem>
-        <TabItem value='Azure Blob' label='Azure Blob'>
+        
+        
             Supported since 3.1.3
             ```sql
             CREATE CATALOG iceberg_fs_on_azure_blob_catalog PROPERTIES (
@@ -408,8 +402,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'fs.azure.support'='true'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_iceberg_on_hms_minio_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -423,14 +417,12 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'minio.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
-<details >
-    <summary>2.1 & 3.0 Version</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    2.1 & 3.0 Version
+    
+        
             Access HMS and HDFS services without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_hms_on_hdfs_catalog PROPERTIES (
@@ -462,8 +454,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'hadoop.kerberos.keytab' = '/keytabs/hive-presto-master.keytab'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_hms_on_s3_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -475,8 +467,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_hms_on_oss_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -489,8 +481,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG `iceberg_hms_on_cos_catalog` PROPERTIES (
                 'type' = 'iceberg',
@@ -503,8 +495,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'cos.access_key' = '<ak>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG test_iceberg_on_hms_obs_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -517,8 +509,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_iceberg_on_hms_minio_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -530,16 +522,14 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.secret_key' = '<sk>'
             );
                 ```
-        </TabItem>
-    </Tabs>
-</details>
-
+        
+    
 
 ### AWS Glue
-<details>
-    <summary>3.1+ Version</summary>
-    <Tabs>
-        <TabItem value='S3' label='S3' default>
+
+    3.1+ Version
+    
+        
             AWS Glue and S3 storage services share the same authentication credentials.
             ```sql
             CREATE CATALOG `iceberg_glue_on_s3_catalog_` PROPERTIES (
@@ -579,13 +569,12 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'glue.role_arn' = '<role_arn>'                
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-<details >
-    <summary>2.1 & 3.0 Version</summary>
-    <Tabs>
-        <TabItem value='S3' label='S3' default>
+        
+    
+
+    2.1 & 3.0 Version
+    
+        
             AWS Glue and S3 storage services share the same authentication credentials.
 
             In non-EC2 environments, you need to use [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) to configure Credentials information and generate a credentials file in the ~/.aws directory.
@@ -598,16 +587,15 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'glue.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
+        
 
-    </Tabs>
-</details>
+    
 
 ### Aliyun DLF
-<details>
-    <summary>3.1+ Version</summary>
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+
+    3.1+ Version
+    
+        
             ```sql
             CREATE CATALOG iceberg_dlf_catalog_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -621,13 +609,12 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-<details >
-    <summary>2.1 & 3.0 Version</summary>
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+        
+    
+
+    2.1 & 3.0 Version
+    
+        
             ```sql
             CREATE CATALOG iceberg_dlf_catalog_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -640,19 +627,17 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-
+        
+    
 
 ### Iceberg Rest Catalog
-<details>
-    <summary>3.1+ Version</summary>
 
-    <Tabs>
-        <TabItem value='s3' label='S3' default>
-            <Tabs>
-                <TabItem value='s3-noauth' label='No Authentication' default>
+    3.1+ Version
+
+    
+        
+            
+                
                     ```sql
                     CREATE CATALOG iceberg_static_s3 PROPERTIES (
                         'type' = 'iceberg',
@@ -665,8 +650,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         's3.region' = 'ap-east-1'
                     );
                     ```
-                </TabItem>
-                <TabItem value='s3-oauth2' label='OAuth2 Authentication'>
+                
+                
                     ```sql
                     CREATE CATALOG polaris_oauth2_credential_static_s3 PROPERTIES (
                         'type' = 'iceberg',
@@ -683,8 +668,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         's3.region' = 'us-west-2'
                     );
                     ```
-                </TabItem>
-                <TabItem value='s3-vended' label='Vended Credentials'>
+                
+                
                     ```sql
                     CREATE CATALOG gravitino_vended_s3 PROPERTIES (
                         'type' = 'iceberg',
@@ -694,13 +679,13 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'iceberg.rest.vended-credentials-enabled' = 'true'
                     );
                     ```
-                </TabItem>
-            </Tabs>
-        </TabItem>
+                
+            
+        
 
-        <TabItem value='oss' label='OSS'>
-            <Tabs>
-                <TabItem value='oss-noauth' label='No Authentication' default>
+        
+            
+                
                     ```sql
                     CREATE CATALOG iceberg_static_oss PROPERTIES (
                         'type' = 'iceberg',
@@ -713,8 +698,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'oss.region' = 'cn-beijing'
                     );
                     ```
-                </TabItem>
-                <TabItem value='oss-oauth2' label='OAuth2 Authentication'>
+                
+                
                     ```sql
                     CREATE CATALOG polaris_oauth2_credential_static_oss PROPERTIES (
                         'type' = 'iceberg',
@@ -731,13 +716,13 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'oss.region' = 'cn-beijing'
                     );
                     ```
-                </TabItem>
-            </Tabs>
-        </TabItem>
+                
+            
+        
 
-        <TabItem value='cos' label='COS'>
-            <Tabs>
-                <TabItem value='cos-noauth' label='No Authentication' default>
+        
+            
+                
                     ```sql
                     CREATE CATALOG iceberg_static_cos PROPERTIES (
                         'type' = 'iceberg',
@@ -750,8 +735,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'cos.region' = 'ap-beijing'
                     );
                     ```
-                </TabItem>
-                <TabItem value='cos-oauth2' label='OAuth2 Authentication'>
+                
+                
                     ```sql
                     CREATE CATALOG polaris_oauth2_credential_static_cos PROPERTIES (
                         'type' = 'iceberg',
@@ -768,13 +753,13 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'cos.region' = 'ap-beijing'
                     );
                     ```
-                </TabItem>
-            </Tabs>
-        </TabItem>
+                
+            
+        
 
-        <TabItem value='obs' label='OBS'>
-            <Tabs>
-                <TabItem value='obs-noauth' label='No Authentication' default>
+        
+            
+                
                     ```sql
                     CREATE CATALOG iceberg_static_obs PROPERTIES (
                         'type' = 'iceberg',
@@ -787,8 +772,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'obs.region' = 'cn-north-4'
                     );
                     ```
-                </TabItem>
-                <TabItem value='obs-oauth2' label='OAuth2 Authentication'>
+                
+                
                     ```sql
                     CREATE CATALOG polaris_oauth2_credential_static_obs PROPERTIES (
                         'type' = 'iceberg',
@@ -805,13 +790,13 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'obs.region' = 'cn-north-4'
                     );
                     ```
-                </TabItem>
-            </Tabs>
-        </TabItem>
+                
+            
+        
 
-        <TabItem value='gcs' label='GCS'>
-            <Tabs>
-                <TabItem value='gcs-noauth' label='No Authentication' default>
+        
+            
+                
                     ```sql
                     CREATE CATALOG iceberg_static_gcs PROPERTIES (
                         'type' = 'iceberg',
@@ -823,8 +808,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         'gs.secret_key' = '<sk>'
                     );
                     ```
-                </TabItem>
-                <TabItem value='gcs-oauth2' label='OAuth2 Authentication'>
+                
+                
                     ```sql
                     CREATE CATALOG polaris_oauth2_credential_static_gcs PROPERTIES (
                         'type' = 'iceberg',
@@ -841,11 +826,11 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                         
                     );
                     ```
-                </TabItem>
-            </Tabs>
-        </TabItem>
+                
+            
+        
 
-        <TabItem value='hdfs' label='HDFS'>
+        
             ```sql
             CREATE CATALOG iceberg_static_hdfs PROPERTIES (
                 'type' = 'iceberg',
@@ -855,16 +840,13 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'fs.defaultFS' = 'hdfs://127.0.0.1:8020'
             );
             ```
-        </TabItem>
-    </Tabs>
+        
+    
 
-</details>
+    2.1 & 3.0 Version
 
-<details >
-    <summary>2.1 & 3.0 Version</summary>
-
-    <Tabs>
-        <TabItem value='S3' label='S3' default>
+    
+        
             ```sql
             CREATE CATALOG iceberg_static_s3 PROPERTIES (
                 'type' = 'iceberg',
@@ -877,8 +859,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.region' = 'ap-east-1'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_static_oss PROPERTIES (
                 'type' = 'iceberg',
@@ -891,8 +873,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.region' = 'cn-beijing'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_static_cos PROPERTIES (
                 'type' = 'iceberg',
@@ -905,8 +887,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.region' = 'ap-beijing'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_static_obs PROPERTIES (
                 'type' = 'iceberg',
@@ -919,8 +901,8 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 's3.region' = 'cn-north-4'
             );
             ```
-        </TabItem>
-        <TabItem value='HDFS' label='HDFS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_static_hdfs PROPERTIES (
                 'type' = 'iceberg',
@@ -930,21 +912,17 @@ Support for Nested Namespace needs to be explicitly enabled. For details, please
                 'fs.defaultFS' = 'hdfs://127.0.0.1:8020'
             );
             ```
-        </TabItem>
+        
 
-    </Tabs>
-
-</details>
+    
 
 ### Iceberg JDBC Catalog
-:::tip Note
+> **tip**: Note
 This is an experimental feature, supported since version 4.1.0.
-:::
 
-<details>
-    <summary>4.1+ Version</summary>
-    <Tabs>
-        <TabItem value='PostgreSQL' label='PostgreSQL' default>
+    4.1+ Version
+    
+        
             Using PostgreSQL as metadata storage with S3
             ```sql
             CREATE CATALOG iceberg_jdbc_postgresql PROPERTIES (
@@ -964,8 +942,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.region' = 'us-east-1'
             );
             ```
-        </TabItem>
-        <TabItem value='MySQL' label='MySQL'>
+        
+        
             Using MySQL as metadata storage with S3
             ```sql
             CREATE CATALOG iceberg_jdbc_mysql PROPERTIES (
@@ -985,8 +963,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.region' = 'us-east-1'
             );
             ```
-        </TabItem>
-        <TabItem value='SQLite' label='SQLite'>
+        
+        
             Using SQLite as metadata storage (suitable for testing environments)
             ```sql
             CREATE CATALOG iceberg_jdbc_sqlite PROPERTIES (
@@ -1004,15 +982,14 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.region' = 'us-east-1'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### FileSystem
-<details>
-    <summary>3.1+ Version</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+
+    3.1+ Version
+    
+        
             Access HDFS service without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_fs_on_hdfs_catalog PROPERTIES (
@@ -1036,8 +1013,8 @@ This is an experimental feature, supported since version 4.1.0.
             );
 
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_glue_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1058,8 +1035,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.role_arn' = 'arn:aws:iam::543815668950:role/role'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_cos_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1072,8 +1049,8 @@ This is an experimental feature, supported since version 4.1.0.
             );
 
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_oss_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1085,8 +1062,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG test_fs_on_obs_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1098,8 +1075,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_gcs_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1110,8 +1087,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'gs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_iceberg_fs_on_minio PROPERTIES (
                 'type' = 'iceberg',
@@ -1124,13 +1101,12 @@ This is an experimental feature, supported since version 4.1.0.
                 'minio.use_path_style' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-<details >
-    <summary>2.1 & 3.0 Version</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+        
+    
+
+    2.1 & 3.0 Version
+    
+        
             Access HDFS service without Kerberos authentication
             ```sql
             CREATE CATALOG iceberg_fs_on_hdfs_catalog PROPERTIES (
@@ -1153,8 +1129,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'hadoop.kerberos.keytab' = '/keytabs/hive-presto-master.keytab'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_s3_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1166,8 +1142,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_cos_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1179,8 +1155,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_oss_catalog PROPERTIES (
                 'type' = 'iceberg',
@@ -1192,8 +1168,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG iceberg_fs_on_gcs_catalog PROPERTIES (
                 'type'='iceberg',
@@ -1204,8 +1180,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'gs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_iceberg_fs_on_minio PROPERTIES (
                 'type' = 'iceberg',
@@ -1217,16 +1193,14 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-
+        
+    
 
 ### AWS S3 Tables
-<details>
-    <summary>3.1+ Version</summary>
-    <Tabs>
-        <TabItem value='S3 Tables Rest Catalog' label='S3 Tables Rest Catalog' default>
+
+    3.1+ Version
+    
+        
             Please refer to the [S3 Tables Integration](../best-practices/doris-aws-s3tables.md) documentation.
             ```sql
             CREATE CATALOG aws_s3_tables PROPERTIES (
@@ -1241,8 +1215,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'iceberg.rest.secret-access-key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='AWS Glue Rest Catalog' label='AWS Glue Rest Catalog' default>
+        
+        
             Please refer to the [S3 Tables Integration](../best-practices/doris-aws-s3tables.md) documentation.
             ```sql
             CREATE CATALOG glue_s3 PROPERTIES (
@@ -1257,8 +1231,8 @@ This is an experimental feature, supported since version 4.1.0.
                 'iceberg.rest.signing-region' = 'ap-east-1'
             );
             ```
-        </TabItem>
-        <TabItem value='FileSystem Catalog' label='FileSystem Catalog' default>
+        
+        
             Please refer to the [S3 Tables Integration](../best-practices/doris-aws-s3tables.md) documentation.
             ```sql
             CREATE CATALOG test_s3tables_write_insert PROPERTIES (
@@ -1271,15 +1245,11 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
+        
+    
 
-
-</details>
-
-<details >
-    <summary>3.0.6+ Version</summary>
-    <TabItem value='FileSystem Catalog' label='FileSystem Catalog' default>
+    3.0.6+ Version
+    
         Please refer to the [S3 Tables Integration](../best-practices/doris-aws-s3tables.md) documentation.
         ```sql
         CREATE CATALOG test_s3tables_catalog PROPERTIES (
@@ -1292,8 +1262,7 @@ This is an experimental feature, supported since version 4.1.0.
             's3.secret_key' = '<sk>'
         );
         ```
-    </TabItem>
-</details>
+    
 
 ## Query Operations
 
@@ -1742,9 +1711,7 @@ To drop a database:
 DROP DATABASE [IF EXISTS] iceberg.iceberg_db;
 ```
 
-:::caution
-For an Iceberg Database, you must first drop all tables under the database before you can drop the database itself; otherwise, an error will occur.
-:::
+> **caution**: For an Iceberg Database, you must first drop all tables under the database before you can drop the database itself; otherwise, an error will occur.
 
 ### Creating and Dropping Tables
 
@@ -2312,7 +2279,6 @@ EXECUTE publish_changes ("wap_id" = "branch-123")
 1. This operation does not support WHERE conditions
 2. The operation will fail if the specified `wap.id` does not exist
 
-
 ### rewrite_data_files
 
 The `rewrite_data_files` operation rewrites data files in an Iceberg table to achieve small file compaction, optimizing query performance and storage efficiency. This is a synchronous operation.
@@ -2480,7 +2446,7 @@ EXECUTE rollback_to_timestamp ("timestamp" = "<timestamp>")
 
 | Parameter | Type | Required | Description |
 | -------- | ---- | ---- | ---- |
-| `timestamp` | String | Yes | The point in time to roll back to. Supports two formats:<br />1. ISO datetime format: `yyyy-MM-dd HH:mm:ss.SSS` (e.g., `2024-01-01 10:30:00.000`)<br/>2. Millisecond timestamp (e.g., `1704067200000`) |
+| `timestamp` | String | Yes | The point in time to roll back to. Supports two formats:1. ISO datetime format: `yyyy-MM-dd HH:mm:ss.SSS` (e.g., `2024-01-01 10:30:00.000`)2. Millisecond timestamp (e.g., `1704067200000`) |
 
 **Return Value:**
 

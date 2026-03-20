@@ -1,24 +1,13 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Clientside LLM Credentials 
-
 
 ### Pass User LLM API Keys, Fallbacks
 Allow your end-users to pass their model list, api base, OpenAI API key (any LiteLLM supported provider) to make requests 
 
 **Note** This is not related to [virtual keys](./virtual_keys.md). This is for when you want to pass in your users actual LLM API keys. 
 
-:::info
-
-**You can pass a litellm.RouterConfig as `user_config`, See all supported params here https://github.com/BerriAI/litellm/blob/main/litellm/types/router.py **
-
-:::
-
-<Tabs>
-
-<TabItem value="openai-py" label="OpenAI Python">
+> **info**: **You can pass a litellm.RouterConfig as `user_config`, See all supported params here https://github.com/BerriAI/litellm/blob/main/litellm/types/router.py **
 
 #### Step 1: Define user model list & config
 ```python
@@ -58,7 +47,6 @@ user_config = {
     ]
 }
 
-
 ```
 
 #### Step 2: Send user_config in `extra_body`
@@ -83,10 +71,6 @@ response = client.chat.completions.create(model="user-azure-instance", messages 
 
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="openai-js" label="OpenAI JS">
 
 #### Step 1: Define user model list & config
 ```javascript
@@ -148,10 +132,6 @@ async function main() {
 main();
 ```
 
-</TabItem>
-
-</Tabs>
-
 ### Pass User LLM API Keys / API Base
 Allows your users to pass in their OpenAI API key/API base (any LiteLLM supported provider) to make requests 
 
@@ -177,7 +157,6 @@ Specify any/all auth params you want the user to be able to configure:
 
 (check [provider docs](../providers/) for provider-specific auth params - e.g. `vertex_project`)
 
-
 #### 2. Test it!
 
 ```python
@@ -200,8 +179,6 @@ print(response)
 ```
 
 More examples: 
-<Tabs>
-<TabItem value="openai-py" label="Azure Credentials">
 
 Pass in the litellm_params (E.g. api_key, api_base, etc.) via the `extra_body` parameter in the OpenAI client. 
 
@@ -228,10 +205,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo", messages = [
 print(response)
 ```
 
-
-</TabItem>
-<TabItem value="openai-js" label="OpenAI JS">
-
 For JS, the OpenAI client accepts passing params in the `create(..)` body as normal.
 
 ```javascript
@@ -252,8 +225,6 @@ async function main() {
 
 main();
 ```
-</TabItem>
-</Tabs>
 
 ### Pass provider-specific params (e.g. Region, Project ID, etc.)
 

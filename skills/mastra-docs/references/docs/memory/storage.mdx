@@ -9,9 +9,6 @@ packages:
   - "@mastra/pinecone"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Storage
 
 For agents to remember previous interactions, Mastra needs a storage adapter. Use one of the [supported providers](#supported-providers) and pass it to your Mastra instance.
@@ -36,7 +33,6 @@ url: 'file:/absolute/path/to/your/project/mastra.db'
 ```
 
 Relative paths like `file:./mastra.db` resolve based on each process's working directory, which may differ.
-:::
 
 This configures instance-level storage, which all agents share by default. You can also configure [agent-level storage](#agent-level-storage) for isolated data boundaries.
 
@@ -57,9 +53,7 @@ Each provider page includes installation instructions, configuration parameters,
 - [LanceDB](/reference/storage/lance)
 - [Microsoft SQL Server](/reference/storage/mssql)
 
-:::tip
-libSQL is the easiest way to get started because it doesn’t require running a separate database server.
-:::
+> **tip**: libSQL is the easiest way to get started because it doesn’t require running a separate database server.
 
 ## Configuration scope
 
@@ -137,9 +131,7 @@ export const agent = new Agent({
 })
 ```
 
-:::warning
-Agent-level storage isn't supported when using [Mastra Cloud Store](/docs/mastra-cloud/deployment#using-mastra-cloud-store). If you use Mastra Cloud Store, configure storage on the Mastra instance instead. This limitation doesn't apply if you bring your own database.
-:::
+> **warning**: Agent-level storage isn't supported when using [Mastra Cloud Store](/docs/mastra-cloud/deployment#using-mastra-cloud-store). If you use Mastra Cloud Store, configure storage on the Mastra instance instead. This limitation doesn't apply if you bring your own database.
 
 ## Threads and resources
 
@@ -150,8 +142,7 @@ Mastra organizes conversations using two identifiers:
 
 Both identifiers are required for agents to store information:
 
-<Tabs>
-  <TabItem value="generate" label="Generate">
+  
     ```typescript
     const response = await agent.generate('hello', {
       memory: {
@@ -160,9 +151,9 @@ Both identifiers are required for agents to store information:
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="stream" label="Stream">
+  
     ```typescript
     const stream = await agent.stream('hello', {
       memory: {
@@ -171,12 +162,9 @@ Both identifiers are required for agents to store information:
       },
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
-:::note
-[Studio](/docs/getting-started/studio) automatically generates a thread and resource ID for you. When calling `stream()` or `generate()` yourself, remember to provide these identifiers explicitly.
-:::
+> **note**: [Studio](/docs/getting-started/studio) automatically generates a thread and resource ID for you. When calling `stream()` or `generate()` yourself, remember to provide these identifiers explicitly.
 
 ### Thread title generation
 

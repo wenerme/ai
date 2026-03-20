@@ -3,29 +3,21 @@ title: Formatter
 description: How to use the Biome formatter.
 ---
 
-import PackageManagerBiomeCommand from "@/components/PackageManagerBiomeCommand.astro";
-
 Biome is an opinionated formatter that [supports multiple languages](/internals/language-support).
 It follows a similar [philosophy to Prettier](https://prettier.io/docs/en/option-philosophy.html),
 only supporting a few options to avoid debates over styles, turning into debates over Biome options.
 It deliberately [resists the urge to add new options](https://github.com/prettier/prettier/issues/40) to prevent [bike-shed discussions](https://en.wikipedia.org/wiki/Law_of_triviality) in teams so they can focus on what really matters instead.
-
 
 ## CLI
 
 The following command checks the formatting of the files in the `src` directory.
 It emits text differences if it finds code that is not formatted.
 
-<PackageManagerBiomeCommand command="format ./src" />
-
 If you want to **apply** the new formatting, pass the `--write` option:
-
-<PackageManagerBiomeCommand command="format --write ./src" />
 
 The command accepts a list of files and directories.
 
-:::caution
-If you pass a glob as a parameter, your shell will expand it.
+> **caution**: If you pass a glob as a parameter, your shell will expand it.
 The result of the expansion depends on your shell.
 For example, some shells don't support the recursive glob `**` or the alternation `{}` in the following command:
 
@@ -34,10 +26,8 @@ biome format ./src/**/*.test.{js,ts}
 ```
 
 Shell expansion has a performance cost and a limit on the number of files you can pass to the command.
-:::
 
 For more information about all the available options, check the [CLI reference](/reference/cli#biome-format).
-
 
 ## Options
 
@@ -89,7 +79,6 @@ The main language-agnostic options supported by the Biome formatter are:
 
 See the [configuration reference](/reference/configuration#formatter) for more details.
 
-
 ## Ignore Code
 
 There are times when the formatted code isn't ideal.
@@ -111,7 +100,6 @@ const expr1 =
     -1,
     0,
   ];
-
 
 const expr2 =
   [

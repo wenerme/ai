@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Generic MySQL'
 description: 'Set up any MySQL instance as a source for ClickPipes'
-slug: /integrations/clickpipes/mysql/source/generic
 title: 'Generic MySQL source setup guide'
 doc_type: 'guide'
 keywords: ['generic mysql', 'clickpipes', 'binary logging', 'ssl tls', 'mysql 8.x']
@@ -12,11 +10,7 @@ integration:
 
 # Generic MySQL source setup guide
 
-:::info
-
-If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
-
-:::
+> **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ## Enable binary log retention {#enable-binlog-retention}
 
@@ -89,11 +83,7 @@ expire_logs_days = 1
 
 You NEED to RESTART the MySQL instance for the changes to take effect.
 
-:::note
-
-Column exclusion and schema changes aren't supported for MySQL 5.7 and older versions. These features depend on table metadata not available in the binlog prior to [MySQL 8.0.1](https://dev.mysql.com/blog-archive/more-metadata-is-written-into-binary-log/).
-
-:::
+> **note**: Column exclusion and schema changes aren't supported for MySQL 5.7 and older versions. These features depend on table metadata not available in the binlog prior to [MySQL 8.0.1](https://dev.mysql.com/blog-archive/more-metadata-is-written-into-binary-log/).
 
 ## Configure a database user {#configure-database-user}
 
@@ -118,11 +108,7 @@ Connect to your MySQL instance as the root user and execute the following comman
     GRANT REPLICATION SLAVE ON *.* TO 'clickpipes_user'@'%';
     ```
 
-:::note
-
-Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
-
-:::
+> **note**: Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
 
 ## SSL/TLS configuration (recommended) {#ssl-tls-configuration}
 

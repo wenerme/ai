@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/maxSimpleState'
 title: 'maxSimpleState'
 description: 'Example of using the maxSimpleState combinator'
 keywords: ['max', 'state', 'simple', 'combinator', 'examples', 'maxSimpleState']
-sidebar_label: 'maxSimpleState'
 doc_type: 'reference'
 ---
 

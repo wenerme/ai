@@ -31,9 +31,7 @@ Use `chunk` to split documents into manageable pieces. Mastra supports multiple 
 - `latex`: LaTeX structure-aware splitting
 - `sentence`: Sentence-aware splitting
 
-:::note
-Each strategy accepts different parameters optimized for its chunking approach.
-:::
+> **note**: Each strategy accepts different parameters optimized for its chunking approach.
 
 Here's an example of how to use the `recursive` strategy:
 
@@ -71,9 +69,7 @@ const chunks = await doc.chunk({
 })
 ```
 
-:::note
-Metadata extraction may use LLM calls, so ensure your API key is set.
-:::
+> **note**: Metadata extraction may use LLM calls, so ensure your API key is set.
 
 We go deeper into chunking strategies in our [`chunk()` reference documentation](/reference/rag/chunk).
 
@@ -138,7 +134,6 @@ const { embeddings } = await embedMany({
 
 :::important[Vector Database Compatibility]
 When storing embeddings, the vector database index must be configured to match the output size of your embedding model. If the dimensions don't match, you may get errors or data corruption.
-:::
 
 ## Example: Complete pipeline
 

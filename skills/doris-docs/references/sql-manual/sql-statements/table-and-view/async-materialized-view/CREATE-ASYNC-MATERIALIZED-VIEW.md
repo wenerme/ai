@@ -12,7 +12,6 @@ Statement for creating an asynchronous materialized view. The column names and t
 
 ## Syntax
 
-
 ```sql
 CREATE MATERIALIZED VIEW 
 [ IF NOT EXISTS ] <materialized_view_name>
@@ -38,7 +37,6 @@ CREATE MATERIALIZED VIEW
 ```
 
 Where:
-
 
 ```sql
 columns_definition
@@ -89,9 +87,8 @@ refresh_trigger
 >
 > AUTO: Try to refresh incrementally, only refreshing partitions that have changed since the last materialized view refresh. If incremental refresh is not possible, all partitions will be refreshed.
 
-:::caution Note
+> **caution**: Note
 If a partitioned materialized view uses COMPLETE refresh mode, it will perform a full refresh of all partition data, effectively degenerating into a non-partitioned materialized view.
-:::
 
 **4. `<refresh_trigger>`**
 
@@ -139,15 +136,13 @@ Properties used by internal tables, most of which can be used by materialized vi
 | enable_nondeterministic_function | Whether the materialized view definition SQL is allowed to contain nondeterministic functions, such as current_date(), now(), random(), etc. If set to true, it allows the inclusion; otherwise, it does not. The default is not to allow. |
 | use_for_rewrite                  | Indicates whether this materialized view participates in transparent rewriting. If set to false, it does not participate in transparent rewriting. The default is true. In data modeling scenarios, if the materialized view is only used for direct queries, this property can be set so that the materialized view does not participate in transparent rewriting, thereby improving query response speed. |
 
-:::caution Note
+> **caution**: Note
 The DISTRIBUTED BY clause is mandatory before Apache Doris 2.1.10 - omitting it will cause an error.
 Since Apache Doris 2.1.10, if not specified, the default distribution becomes RANDOM.
-:::
 
-:::caution Note
+> **caution**: Note
 Before Apache Doris 2.1.10/3.0.6, the excluded_trigger_tables property only supported specifying base table names.
 Since these versions, it now supports fully qualified table names including Catalog and Database (e.g., internal.db1.table1).
-:::
 
 ## Access Control Requirements
 
@@ -178,7 +173,6 @@ The user executing this SQL command must have at least the following permissions
   > 6. If the materialized view definition SQL uses a Window function, the partition field must appear after the Partition By clause.
   > 7. Data changes should occur on the partitioned table; if they occur on a non-partitioned table, the materialized view requires a full build.
   > 8. If the materialized view uses a field from the NULL-generating side of a Join as a partition field, it cannot perform partitioned incremental updates. For example, for a LEFT OUTER JOIN, the partition field must be on the left side, not
-
 
 ## Examples
 1. Non-Partitioned Materialized View

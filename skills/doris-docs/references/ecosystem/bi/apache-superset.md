@@ -59,26 +59,15 @@ The URI parameters are explained below:
 
 2. Accessing the Superset.
 
-![](/images/ecomsystem/superset/OXIbbtkncoLHDUxjfdCcAmaenJm.png)
-
 3. After logging in, click Settings -> Database Connectors in the upper right corner.
-
-![](/images/ecomsystem/superset/ELzsb6xMaoqcAYxnVuzcP3hhnbg.png)
 
 4. Click Add Database. In the Connect a database pop-up window, select Apache Doris.
 
-![](/images/ecomsystem/superset/TQpibvPYEoyKltx34G5c8B5AnGg.png)
-
 5. Enter the SQLAlchemy URI in the connection information. After verifying the connection is correct, click Connect.
-
-![](/images/ecomsystem/superset/FndlbO7Fgo4ppixTFWIc0UQUnFb.png)
 
 6. Adding a data source is now complete.
 
-![](/images/ecomsystem/superset/GsClbUlmsooSdMx994tcjqm1nre.png)
-
 Next, we can build some visualizations in Superset!
-
 
 ## Building Visualizations in Superset
 
@@ -90,36 +79,22 @@ Suppose we need to analyze the time-varying curves of order amounts for differen
 
 1. Click Datasets to add a Dataset
 
-![](/images/ecomsystem/superset/C55Kbstx1ogXOtxadBccEavLnOf.png)
-
 2. Select the following in sequence, then click Create dataset and create chart in the lower right corner:
     - Database：Doris
     - Schema： tpch
     - Table：lineitem
 
-![](/images/ecomsystem/superset/AAlebfk9ro0SkCxLKXFcq2Scnov.png)
-
 3. Edit the lineitem Dataset
-
-![](/images/ecomsystem/superset/BHIObcQrboRQWSx4yatcoo4enxc.png)
 
 4. Click Metrics -> Add item to add a calculated metric.
     - Metric Key : Revenue
     - SQL expression :  `SUM(`l_extendedprice` * (1 - `l_discount`))`
 
-![](/images/ecomsystem/superset/DUOvbeQPdojk9YxAsbGcfKT2nOe.png)
-
 5. Go to Chart -> Add Chart, select lineitem for the dateset, and select Line Chart for the chart type.
-
-![](/images/ecomsystem/superset/KKndbObRCoVBDQxOgMNcJLYanUz.png)
 
 6. Drag l_shipdate to the X-axis and set the time granularity. Simultaneously, drag the Revenum custom metric and the data column l_shipmode to Meters and Dimensions respectively.
 
-![](/images/ecomsystem/superset/Aewqbeul9oFZekx3vOUcZ3ranAf.png)
-
 7. Click Update chart to view the dashboard content. Click Save to save the dashboard.
-
-![](/images/ecomsystem/superset/WwYLbzgatoYuLzx9jjmc1STOnwb.png)
 
 At this point, Superset has been successfully connected to Apache Doris, and data analysis and visualization dashboard creation have been implemented.
 

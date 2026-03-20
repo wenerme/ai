@@ -20,20 +20,20 @@ You can use an encryption key from AWS Key Management Service to encrypt secrets
 - Access to the Grafana [configuration](../../../configure-grafana/#configuration-file-location) file
 
 1. Create a symmetric API key either from the AWS Management Console or by using the AWS KMS API.
-   <br><br>For detailed instructions, refer to [Creating keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+   For detailed instructions, refer to [Creating keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 
 2. Retrieve the Key ID.
-   <br><br>In AWS terms, this can be a key ID, a key ARN (Amazon Resource Name), an alias name, or an alias ARN. For more information about how to retrieve a key ID from AWS, refer to [Finding the key ID and key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html).
+   In AWS terms, this can be a key ID, a key ARN (Amazon Resource Name), an alias name, or an alias ARN. For more information about how to retrieve a key ID from AWS, refer to [Finding the key ID and key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html).
 
 3. Create a [programmatic credential](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (access key ID and secret access key), which has permission to view the key that you created.
-   <br><br>In AWS, you can control access to your KMS keys by using [key policies](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html), [IAM policies](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html), and [grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html). You can also create [temporary credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html), which must provide a session token along with an access key ID and a secret access key.
+   In AWS, you can control access to your KMS keys by using [key policies](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html), [IAM policies](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html), and [grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html). You can also create [temporary credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html), which must provide a session token along with an access key ID and a secret access key.
 
 4. From within Grafana, turn on envelope encryption.
 5. Add your AWS KMS details to the Grafana configuration file; depending on your operating system, it is usually named `grafana.ini`:
-   <br><br>a. Add a new section to the configuration file, with a name in the format of `[security.encryption.awskms.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
-   <br><br>b. Fill in the section with the following values:
-   <br>
-   - `key_id`: a reference to a key stored in the KMS. This can be a key ID, a key Amazon Resource Name (ARN), an alias name, or an alias ARN. If you are using an alias, use the prefix `alias/`. To specify a KMS key in a different AWS account, use its ARN or alias. For more information about how to retrieve a key ID from AWS, refer to [Finding the key ID and key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html).<br>
+   a. Add a new section to the configuration file, with a name in the format of `[security.encryption.awskms.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
+   b. Fill in the section with the following values:
+   
+   - `key_id`: a reference to a key stored in the KMS. This can be a key ID, a key Amazon Resource Name (ARN), an alias name, or an alias ARN. If you are using an alias, use the prefix `alias/`. To specify a KMS key in a different AWS account, use its ARN or alias. For more information about how to retrieve a key ID from AWS, refer to [Finding the key ID and key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html).
      | `key_id` option | Example value |
      | --- | --- |
      | Key ID | `1234abcd-12ab-34cd-56ef-1234567890ab` |

@@ -41,7 +41,6 @@ Edge cases for ST_AZIMUTH:
 
 ## Example
 
-
 True west (from (1,0) to (0,0))
 
 ```sql
@@ -57,7 +56,6 @@ SELECT st_azimuth(ST_Point(1, 0),ST_Point(0, 0));
 ```
 
 True east (from (0,0) to (1,0))
-
 
 ```sql
 SELECT st_azimuth(ST_Point(0, 0),ST_Point(1, 0));
@@ -132,4 +130,3 @@ mysql> SELECT st_azimuth(ST_LineFromText("LINESTRING (0 0, 1 1)"), ST_Point(1, 0
 |                                                                 NULL |
 +----------------------------------------------------------------------+
 ```
-

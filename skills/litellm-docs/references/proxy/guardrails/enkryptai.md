@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # EnkryptAI Guardrails
 
@@ -72,9 +71,6 @@ litellm --config config.yaml --detailed_debug
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
-<Tabs>
-<TabItem label="Successful Call" value="allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -91,10 +87,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 **Response: HTTP 200 Success**
 
 Content passes all detector checks and is allowed through.
-
-</TabItem>
-
-<TabItem label="Unsuccessful Call" value="not-allowed">
 
 Expect this to fail if content violates detector policies:
 
@@ -137,9 +129,6 @@ curl -i http://localhost:4000/v1/chat/completions \
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Video Walkthrough
 
@@ -273,4 +262,3 @@ Set `block_on_violation: false` to continue processing even when violations are 
 For more information about EnkryptAI:
 - Documentation: [https://docs.enkryptai.com](https://docs.enkryptai.com)
 - Website: [https://enkryptai.com](https://enkryptai.com)
-

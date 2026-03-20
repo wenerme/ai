@@ -29,7 +29,7 @@ head:
 
 _January 17, 2025_
 
-![Vitest 3 Announcement Cover Image](/og-vitest-3.jpg)
+[Vitest 3 Announcement Cover Image]
 
 We released Vitest 2 half a year ago. We have seen huge adoption, from 4,8M to 7,7M weekly npm downloads. Our ecosystem is growing rapidly too. Among others, [Storybook new testing capabilities powered by our vscode extension and browser mode](https://storybook.js.org/docs/writing-tests/test-addon) and Matt Pocock is building [Evalite](https://www.evalite.dev/), a tool for evaluating AI-powered apps, on top of Vitest.
 
@@ -67,7 +67,7 @@ Alongside this change, we also redesign the public reporter API (the `reporters`
 You can follow the design process in [#7069](https://github.com/vitest-dev/vitest/pull/7069) PR. It was a hard fight trying to reverse-engineer the previous `onTaskUpdate` API to make this new elegant lifecycle possible.
 
 <div class="flex align-center justify-center">
-  <img src="/on-task-update.gif" alt="a gif from it's always sunny with a drawing board" />
+  [a gif from it's always sunny with a drawing board]
 </div>
 
 ## Inline Workspace
@@ -132,8 +132,8 @@ A big shutout to [@mzhubail](https://github.com/mzhubail) for implementing this 
 
 We have redesigned the public API available from `vitest/node` and are planning to remove the experimental tag in the next minor version. This release also includes brand new documentation covering all exposed methods.
 
-<img alt="Vitest API documentation" img-light src="/docs-api-light.png">
-<img alt="Vitest API documentation" img-dark src="/docs-api-dark.png">
+[Vitest API documentation]
+[Vitest API documentation]
 
 ## Breaking changes
 

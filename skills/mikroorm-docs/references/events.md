@@ -1,10 +1,6 @@
 ---
 title: Events and Lifecycle Hooks
-sidebar_label: Events and Hooks
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 There are two ways to hook into the lifecycle of an entity:
 
@@ -29,18 +25,6 @@ Both approaches support the same events. Hooks are executed before subscribers.
 | `afterDelete` | After an entity is deleted and removed from identity map |
 
 ## Defining Hooks
-
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-  ]}
->
-<TabItem value="define-entity-class">
 
 With `defineEntity + class`, use the `addHook` method to register hooks after the class is defined:
 
@@ -76,9 +60,6 @@ ArticleSchema.addHook('beforeUpdate', async (args: EventArgs<Article>) => {
 
 > You can also pass hooks inline via the `hooks` property in the `defineEntity` call, but `args.entity` will be typed as `any` there because the entity type is not yet known. Explicitly typing the parameter (e.g. `EventArgs<Article>`) won't work either, as it would create a circular reference. Use `addHook` after the class is defined to get full type safety.
 
-</TabItem>
-<TabItem value="define-entity">
-
 With `defineEntity` (no class), use the `addHook` method to register hooks after the entity is defined:
 
 ```ts title="./entities/Article.ts"
@@ -112,9 +93,6 @@ Article.addHook('beforeUpdate', async (args: EventArgs<IArticle>) => {
 
 > You can also pass hooks inline via the `hooks` property in the `defineEntity` call, but `args.entity` will be typed as `any` there because the entity type is not yet known. Explicitly typing the parameter (e.g. `EventArgs<IArticle>`) won't work either, as it would create a circular reference. Use `addHook` after the entity and its type alias are defined to get full type safety.
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 With decorators, mark entity methods with hook decorators like `@BeforeCreate()`, `@BeforeUpdate()`, etc.:
 
 ```ts title="./entities/Article.ts"
@@ -152,9 +130,6 @@ export class Article {
 
 Multiple methods can have the same hook decorator. Inside hook methods, `this` refers to the entity instance.
 
-</TabItem>
-<TabItem value="ts-morph">
-
 With decorators, mark entity methods with hook decorators like `@BeforeCreate()`, `@BeforeUpdate()`, etc.:
 
 ```ts title="./entities/Article.ts"
@@ -191,9 +166,6 @@ export class Article {
 ```
 
 Multiple methods can have the same hook decorator. Inside hook methods, `this` refers to the entity instance.
-
-</TabItem>
-</Tabs>
 
 ### Hook Method Signatures
 

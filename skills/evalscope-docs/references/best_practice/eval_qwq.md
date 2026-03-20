@@ -144,7 +144,7 @@ evalscope app --lang en
 
 Select the evaluation report and click to load it, allowing you to view the model's output for each question, as well as the overall accuracy:
 
-![QwQ-32B-Final](./images/qwq.png)
+[QwQ-32B-Final]
 
 ## Evaluating Thinking Efficiency
 
@@ -195,11 +195,11 @@ run_task(model_config, output_dir='outputs', max_tokens=max_tokens, count=count)
 
 The results will be displayed as shown in the following image:
 
-![QwQ-32B-Final](./images/QwQ-32B_math_500_metrics.png)
+[QwQ-32B-Final]
 
 We also tested the DeepSeek-R1-671B and DeepSeek-R1-Distill-Qwen-32B models, consolidating the results as illustrated below:
 
-![model_comparison_metrics_3models](./images/model_comparison_metrics_6models.png)
+[model_comparison_metrics_3models]
 
 Using the same methodology, we evaluated four additional reasoning models: QwQ-32B, QwQ-32B-Preview, DeepSeek-R1, DeepSeek-R1-Distill-Qwen-32B, and one non-reasoning model, Qwen2.5-Math-7B-Instruct (considering all tokens in the model output as part of the thought process) to observe the performance of different types of models. The specific results are summarized as follows:
 

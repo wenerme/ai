@@ -1,18 +1,4 @@
-<!--Copyright 2020 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Perplexity of fixed-length models
 
@@ -38,7 +24,7 @@ intuition about perplexity and its relationship to Bits Per Character (BPC) and 
 If we weren't limited by a model's context size, we would evaluate the model's perplexity by autoregressively
 factorizing a sequence and conditioning on the entire preceding subsequence at each step, as shown below.
 
-<img width="600" alt="Full decomposition of a sequence with unlimited context length" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/ppl_full.gif"/>
+[Full decomposition of a sequence with unlimited context length]
 
 When working with approximate models, however, we typically have a constraint on the number of tokens the model can
 process. The largest version of [GPT-2](model_doc/gpt2), for example, has a fixed length of 1024 tokens, so we
@@ -50,7 +36,7 @@ $k-1$ tokens that precede it rather than the entire context. When evaluating the
 sequence, a tempting but suboptimal approach is to break the sequence into disjoint chunks and add up the decomposed
 log-likelihoods of each segment independently.
 
-<img width="600" alt="Suboptimal PPL not taking advantage of full available context" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/ppl_chunked.gif"/>
+[Suboptimal PPL not taking advantage of full available context]
 
 This is quick to compute since the perplexity of each segment can be computed in one forward pass, but serves as a poor
 approximation of the fully-factorized perplexity and will typically yield a higher (worse) PPL because the model will
@@ -59,7 +45,7 @@ have less context at most of the prediction steps.
 Instead, the PPL of fixed-length models should be evaluated with a sliding-window strategy. This involves repeatedly
 sliding the context window so that the model has more context when making each prediction.
 
-<img width="600" alt="Sliding window PPL taking advantage of all available context" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/ppl_sliding.gif"/>
+[Sliding window PPL taking advantage of all available context]
 
 This is a closer approximation to the true decomposition of the sequence probability and will typically yield a more
 favorable score. The downside is that it requires a separate forward pass for each token in the corpus. A good

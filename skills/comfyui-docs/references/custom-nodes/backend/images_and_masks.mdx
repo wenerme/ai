@@ -6,7 +6,7 @@ When working with these datatypes, you will need to know about the `torch.Tensor
 Complete documentation is [here](https://pytorch.org/docs/stable/tensors.html), or 
 an introduction to the key concepts required for Comfy [here](./tensors).
 
-<Warning>If your node has a single output which is a tensor, remember to return `(image,)` not `(image)`</Warning>
+If your node has a single output which is a tensor, remember to return `(image,)` not `(image)`
 
 Most of the concepts below are illustrated in the [example code snippets](./snippets).
 
@@ -50,5 +50,4 @@ If your node receives a MASK as input, you would be wise to always check `len(ma
 
 A LATENT is a `dict`; the latent sample is referenced by the key `samples` and has shape `[B,C,H,W]`, with `C=4`.
 
-<Tip>LATENT is channel first, IMAGE is channel last</Tip>
-
+LATENT is channel first, IMAGE is channel last

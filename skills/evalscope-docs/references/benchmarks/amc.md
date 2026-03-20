@@ -1,6 +1,5 @@
 # AMC
 
-
 ## Overview
 
 AMC (American Mathematics Competitions) is a benchmark based on problems from the AMC 10/12 competitions from 2022-2024. These multiple-choice problems test mathematical problem-solving skills at the high school level and serve as qualifiers for the AIME competition.
@@ -28,7 +27,6 @@ AMC (American Mathematics Competitions) is a benchmark based on problems from th
 - Problems include original URLs for reference
 - Solutions available in metadata for verification
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ AMC (American Mathematics Competitions) is a benchmark based on problems from th
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `N/A` |
-
 
 ## Data Statistics
 
@@ -123,5 +120,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

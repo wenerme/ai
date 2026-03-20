@@ -42,7 +42,7 @@ With Graphite data sources, you can only create query variables. Grafana support
 
 The Graphite data source supports two variable syntaxes for use in the **Query** field.
 
-![Variable syntax example](/static/img/docs/v2/templated_variable_parameter.png)
+[Variable syntax example]
 
 Grafana allows two ways to reference variables in a query:
 

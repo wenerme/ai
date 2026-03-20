@@ -1,6 +1,5 @@
 ---
 title: mode | Config
-outline: deep
 ---
 
 # mode

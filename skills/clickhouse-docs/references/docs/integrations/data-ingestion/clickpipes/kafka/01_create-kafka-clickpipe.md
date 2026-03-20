@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Create your first Kafka ClickPipe'
 description: 'Step-by-step guide to creating your first Kafka ClickPipe.'
-slug: /integrations/clickpipes/kafka/create-your-first-kafka-clickpipe
-sidebar_position: 1
 title: 'Creating your first Kafka ClickPipe'
 doc_type: 'guide'
 keywords: ['create kafka clickpipe', 'kafka', 'clickpipes', 'data sources', 'setup guide']
@@ -10,16 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import cp_step1 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step1.png';
-import cp_step2 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step2.png';
-import cp_step3 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step3.png';
-import cp_step4a from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step4a.png';
-import cp_step5 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step5.png';
-import cp_overview from '@site/static/images/integrations/data-ingestion/clickpipes/cp_overview.png';
-import cp_table_settings from '@site/static/images/integrations/data-ingestion/clickpipes/cp_table_settings.png';
-import Image from '@theme/IdealImage';
 
 # Creating your first Kafka ClickPipe {#creating-your-first-kafka-clickpipe}
 

@@ -62,14 +62,14 @@ WHERE ARRAY_CONTAINS(CAST(v['tags'] AS ARRAY<TEXT>), 'Doris');
 VARIANT infers subcolumn types automatically. Supported types include:
 
 <table>
-<tr><td>Supported types<br/></td></tr>
-<tr><td>TinyInt<br/></td></tr>
-<tr><td>NULL (equivalent to JSON null)<br/></td></tr>
-<tr><td>BigInt (64 bit)<br/>Double<br/></td></tr>
-<tr><td>String (Text)<br/></td></tr>
-<tr><td>Jsonb<br/></td></tr>
-<tr><td>Variant (nested object)<br/></td></tr>
-<tr><td>Array&lt;T&gt; (one-dimensional only)<br/></td></tr>
+<tr><td>Supported types</td></tr>
+<tr><td>TinyInt</td></tr>
+<tr><td>NULL (equivalent to JSON null)</td></tr>
+<tr><td>BigInt (64 bit)Double</td></tr>
+<tr><td>String (Text)</td></tr>
+<tr><td>Jsonb</td></tr>
+<tr><td>Variant (nested object)</td></tr>
+<tr><td>Array&lt;T&gt; (one-dimensional only)</td></tr>
 </table>
 
 Simple INSERT example:
@@ -577,5 +577,3 @@ ClickBench (43 queries):
    - No. They are equivalent.
 2. Why doesn’t my query/index work?
    - Check whether you CAST paths to the correct types; whether the type was promoted to JSONB due to conflicts; or whether you mistakenly expect an index on the whole VARIANT instead of on subpaths.
-
-

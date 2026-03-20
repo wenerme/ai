@@ -91,8 +91,6 @@ refs:
 
 # Add variables
 
-<!-- vale Grafana.Spelling = NO -->
-
 The following table lists the types of variables shipped with Grafana.
 
 | Variable type     | Description                                                                                                                                                                             |
@@ -138,8 +136,6 @@ To create a variable, follow these steps:
    - [Interval](#add-an-interval-variable)
    - [Ad hoc filters](#add-ad-hoc-filters)
    - [Switch](#add-a-switch-variable)
-
-<!-- vale Grafana.Spelling = YES -->
 
 ### Variable best practices
 
@@ -295,9 +291,6 @@ The following example shows a more complex Graphite example, from the [Graphite 
 groupByNode(summarize(movingAverage(apps.$app.$server.counters.requests.count, 5), '$interval', 'sum', false), 2, 'sum')
 ```
 
-<!-- vale Grafana.WordList = NO -->
-<!-- vale Grafana.Spelling = NO -->
-
 ## Add ad hoc filters
 
 _Ad hoc filters_ are one of the most complex and flexible variable options available.
@@ -448,9 +441,6 @@ You can also use switch variables in panel titles and other dashboard elements:
 {{#if debug_mode}}Debug Mode: {{/if}}Application Metrics
 ```
 
-<!-- vale Grafana.Spelling = YES -->
-<!-- vale Grafana.WordList = YES -->
-
 ## Configure variable selection options
 
 **Selection Options** are a feature you can use to manage variable option selections. All selection options are optional, and they are off by default.
@@ -528,8 +518,6 @@ This applies to the following variable types:
 - Query
   - Infinity
   - PostgreSQL
-
-<!-- add links to data source docs -->
 
 ### Multi-property custom variables
 
@@ -824,11 +812,7 @@ The more layers of dependency you have in variables, the longer it takes to upda
 
 For example, if you have a series of four linked variables (country, region, server, metric) and you change a root variable value (country), then Grafana must run queries for all the dependent variables before it updates the visualizations in the dashboard.
 
-<!-- vale Grafana.WordList = NO -->
-
 ## Filter variables with regular expressions {#filter-variables-with-regex}
-
-<!-- vale Grafana.WordList = NO -->
 
 Using the **Regex** query option, you filter the list of options returned by the variable query or modify the options returned.
 

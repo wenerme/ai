@@ -1,5 +1,4 @@
 ---
-slug: /cloud/manage/marketplace/
 title: 'Marketplace'
 description: 'Marketplace Table of Contents page'
 keywords: ['Marketplace Billing', 'AWS', 'GCP']

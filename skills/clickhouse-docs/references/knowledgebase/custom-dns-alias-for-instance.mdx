@@ -8,10 +8,7 @@ hide_title: true
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
-<br/>
-<br/>
 # Custom DNS alias by setting up reverse proxy \{#custom-dns-alias\}
 
 > In this knowledgebase article, we will walk you through how you can set up a
@@ -20,9 +17,7 @@ proxy such as Nginx for ClickHouse native client.
 
 ## Create a self-signed certificate \{#create-certificate\}
 
-:::note
-This step is not needed if you are using signed certificates.
-:::
+> **note**: This step is not needed if you are using signed certificates.
 
 Create a self-signed certificate with the domain name of your choice.
 In this example we will use a domain name `xyz-customdomain.com` and
@@ -92,9 +87,7 @@ can download [here](https://letsencrypt.org/certs/isrgrootx1.pem).
 
 ## Update hosts file \{#update-hosts-file\}
 
-:::note
-The following step is not needed if you are using your own domain controllers
-:::
+> **note**: The following step is not needed if you are using your own domain controllers
 
 Add the following to your `/etc/hosts` file on the Nginx server:
 

@@ -5,9 +5,6 @@ packages:
   - "@mastra/mcp"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # MCP overview
 
 Mastra supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction), an open standard for connecting AI agents to external tools and resources. It serves as a universal plugin system, enabling agents to call tools regardless of language or hosting environment.
@@ -50,17 +47,11 @@ export const testMcpClient = new MCPClient({
 })
 ```
 
-:::info
+> **info**: Visit [MCPClient](/reference/tools/mcp-client) for a full list of configuration options.
 
-Visit [MCPClient](/reference/tools/mcp-client) for a full list of configuration options.
-
-:::
-
-:::tip Authentication
+> **tip**: Authentication
 
 For connecting to OAuth-protected MCP servers, see the [OAuth Authentication](/reference/tools/mcp-client#oauth-authentication) section.
-
-:::
 
 ## Using `MCPClient` with an agent
 
@@ -85,11 +76,7 @@ export const testAgent = new Agent({
 })
 ```
 
-:::info
-
-Visit [Agent Class](/reference/agents/agent) for a full list of configuration options.
-
-:::
+> **info**: Visit [Agent Class](/reference/agents/agent) for a full list of configuration options.
 
 ## Configuring `MCPServer`
 
@@ -112,17 +99,11 @@ export const testMcpServer = new MCPServer({
 })
 ```
 
-:::info
+> **info**: Visit [MCPServer](/reference/tools/mcp-server) for a full list of configuration options.
 
-Visit [MCPServer](/reference/tools/mcp-server) for a full list of configuration options.
-
-:::
-
-:::tip Authentication
+> **tip**: Authentication
 
 To protect your MCP server with OAuth, see the [OAuth Protection](/reference/tools/mcp-server#oauth-protection) section.
-
-:::
 
 ## Registering an `MCPServer`
 
@@ -153,11 +134,7 @@ export const mastra = new Mastra({
 
 Use the `.listTools()` method to fetch tools from all configured MCP servers. This is suitable when configuration (such as API keys) is static and consistent across users or requests. Call it once and pass the result to the `tools` property when defining your agent.
 
-:::info
-
-Visit [listTools()](/reference/tools/mcp-client#listtools) for more information.
-
-:::
+> **info**: Visit [listTools()](/reference/tools/mcp-client#listtools) for more information.
 
 ```typescript {6} title="src/mastra/agents/test-agent.ts"
 import { Agent } from '@mastra/core/agent'
@@ -206,18 +183,13 @@ async function handleRequest(userPrompt: string, userApiKey: string) {
 }
 ```
 
-:::info
-
-Visit [listToolsets()](/reference/tools/mcp-client#listtoolsets) for more information.
-
-:::
+> **info**: Visit [listToolsets()](/reference/tools/mcp-client#listtoolsets) for more information.
 
 ## Connecting to an MCP registry
 
 MCP servers can be discovered through registries. Here's how to connect to some popular ones using `MCPClient`:
 
-<Tabs>
-  <TabItem value="klavis" label="Klavis AI">
+  
     [Klavis AI](https://klavis.ai) provides hosted, enterprise-authenticated, high-quality MCP servers.
 
     ```typescript
@@ -240,9 +212,9 @@ MCP servers can be discovered through registries. Here's how to connect to some 
     Klavis AI offers enterprise-grade authentication and security for production deployments.
 
     For more details on how to integrate Mastra with Klavis, check out their [documentation](https://docs.klavis.ai/documentation/ai-platform-integration/mastra).
-  </TabItem>
+  
 
-  <TabItem value="mcp-run" label="mcp.run">
+  
     [mcp.run](https://www.mcp.run/) provides pre-authenticated, managed MCP servers. Tools are grouped into Profiles, each with a unique, signed URL.
 
     ```typescript
@@ -263,9 +235,9 @@ MCP servers can be discovered through registries. Here's how to connect to some 
     > ```bash title=".env"
     > MCP_RUN_SSE_URL=https://www.mcp.run/api/mcp/sse?nonce=...
     > ```
-  </TabItem>
+  
 
-  <TabItem value="composio" label="Composio.dev">
+  
     [Composio.dev](https://composio.dev) offers a registry of [SSE-based MCP servers](https://mcp.composio.dev). You can use the SSE URL generated for tools like Cursor directly.
 
     ```typescript
@@ -286,9 +258,9 @@ MCP servers can be discovered through registries. Here's how to connect to some 
     Authentication with services like Google Sheets often happens interactively through the agent conversation.
 
     _Note: Composio URLs are typically tied to a single user account, making them best suited for personal automation rather than multi-tenant applications._
-  </TabItem>
+  
 
-  <TabItem value="smithery" label="Smithery.ai">
+  
     [Smithery.ai](https://smithery.ai) provides a registry accessible via their CLI.
 
     ```typescript
@@ -332,9 +304,9 @@ MCP servers can be discovered through registries. Here's how to connect to some 
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="ampersand" label="Ampersand">
+  
     [Ampersand](https://withampersand.com?utm_source=mastra-docs) offers an [MCP Server](https://docs.withampersand.com/mcp) that allows you to connect your agent to 150+ integrations with SaaS products like Salesforce, Hubspot, and Zendesk.
 
     ```typescript
@@ -383,8 +355,7 @@ MCP servers can be discovered through registries. Here's how to connect to some 
     ```
 
     As an alternative to MCP, Ampersand's AI SDK also has an adapter for Mastra, so you can [directly import Ampersand tools](https://docs.withampersand.com/ai-sdk#use-with-mastra) for your agent to access.
-  </TabItem>
-</Tabs>
+  
 
 ## Related
 

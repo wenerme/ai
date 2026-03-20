@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'MongoDB Atlas'
 description: 'Step-by-step guide on how to set up MongoDB Atlas as a source for ClickPipes'
-slug: /integrations/clickpipes/mongodb/source/atlas
 title: 'MongoDB Atlas source setup guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
@@ -9,14 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import mongo_atlas_configuration from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-cluster-overview-configuration.png'
-import mngo_atlas_additional_settings from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-expand-additional-settings.png'
-import mongo_atlas_retention_hours from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-set-retention-hours.png'
-import mongo_atlas_add_user from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-add-new-database-user.png'
-import mongo_atlas_add_roles from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-database-user-privilege.png'
-import mongo_atlas_restrict_access from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/mongo-atlas-restrict-access.png'
-import Image from '@theme/IdealImage';
 
 # MongoDB Atlas source setup guide
 

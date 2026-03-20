@@ -1,10 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /v1/messages
 
 Use LiteLLM to call all your LLM APIs in the Anthropic `v1/messages` format. 
-
 
 ## Overview 
 
@@ -23,9 +21,6 @@ Use LiteLLM to call all your LLM APIs in the Anthropic `v1/messages` format.
 ---
 
 ### LiteLLM Python SDK 
-
-<Tabs>
-<TabItem value="anthropic" label="Anthropic">
 
 #### Non-streaming example
 ```python showLineNumbers title="Anthropic Example using LiteLLM Python SDK"
@@ -51,10 +46,6 @@ response = await litellm.anthropic.messages.acreate(
 async for chunk in response:
     print(chunk)
 ```
-
-</TabItem>
-
-<TabItem value="openai" label="OpenAI">
 
 #### Non-streaming example
 ```python showLineNumbers title="OpenAI Example using LiteLLM Python SDK"
@@ -89,10 +80,6 @@ async for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-
-<TabItem value="gemini" label="Google AI Studio">
-
 #### Non-streaming example
 ```python showLineNumbers title="Google Gemini Example using LiteLLM Python SDK"
 import litellm
@@ -125,10 +112,6 @@ response = await litellm.anthropic.messages.acreate(
 async for chunk in response:
     print(chunk)
 ```
-
-</TabItem>
-
-<TabItem value="vertex" label="Vertex AI">
 
 #### Non-streaming example
 ```python showLineNumbers title="Vertex AI Example using LiteLLM Python SDK"
@@ -167,10 +150,6 @@ async for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-
-<TabItem value="bedrock" label="AWS Bedrock">
-
 #### Non-streaming example
 ```python showLineNumbers title="AWS Bedrock Example using LiteLLM Python SDK"
 import litellm
@@ -208,9 +187,6 @@ async for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-</Tabs>
-
 Example response:
 ```json
 {
@@ -236,9 +212,6 @@ Example response:
 ```
 
 ### LiteLLM Proxy Server 
-
-<Tabs>
-<TabItem value="anthropic-proxy" label="Anthropic">
 
 1. Setup config.yaml
 
@@ -274,10 +247,6 @@ response = client.messages.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="openai-proxy" label="OpenAI">
-
 1. Setup config.yaml
 
 ```yaml
@@ -311,10 +280,6 @@ response = client.messages.create(
     max_tokens=100,
 )
 ```
-
-</TabItem>
-
-<TabItem value="gemini-proxy" label="Google AI Studio">
 
 1. Setup config.yaml
 
@@ -350,10 +315,6 @@ response = client.messages.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="vertex-proxy" label="Vertex AI">
-
 1. Setup config.yaml
 
 ```yaml
@@ -388,10 +349,6 @@ response = client.messages.create(
     max_tokens=100,
 )
 ```
-
-</TabItem>
-
-<TabItem value="bedrock-proxy" label="AWS Bedrock">
 
 1. Setup config.yaml
 
@@ -429,10 +386,6 @@ response = client.messages.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl-proxy" label="curl">
-
 ```bash showLineNumbers title="Example using LiteLLM Proxy Server"
 curl -L -X POST 'http://0.0.0.0:4000/v1/messages' \
 -H 'content-type: application/json' \
@@ -449,9 +402,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/messages' \
   "max_tokens": 100
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Request Format
 ---
@@ -526,7 +476,6 @@ Request body will be in the Anthropic messages API format. **litellm follows the
   Limits sampling to the top K options.
 - **top_p** (number):  
   Enables nucleus sampling with a cumulative probability cutoff. Valid range: `0 < top_p < 1`.
-
 
 ## Response Format
 ---

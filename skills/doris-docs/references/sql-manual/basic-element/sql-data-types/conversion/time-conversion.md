@@ -12,9 +12,8 @@ TIME type includes a type parameter `p`, which represents the number of decimal 
 
 ## FROM String
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Starting from version 4.0, TIME type parsing only supports the formats described in this document and no longer attempts secondary conversion through rules allowed by the Datetime type.
-:::
 
 ### Strict Mode
 
@@ -86,9 +85,8 @@ Two formats are supported: `<colon-format>` and `<numeric-format>`.
 
 ### Non-Strict Mode
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Starting from 4.0, DECIMAL type is converted according to its literal value representation. Supports parsing `<microsecond>` field to microseconds. Any format exceeding the boundary is considered an error and handled accordingly.
-:::
 
 Non-strict mode supports leading and trailing spaces, and error handling is different from strict mode.
 
@@ -171,9 +169,8 @@ Two formats are supported: `<colon-format>` and `<numeric-format>`.
 
 All numeric types can be converted to TIME type.
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Starting from version 4.0, Doris supports parsing the decimal part and supports converting any numeric type to Time type.
-:::
 
 ### Strict Mode
 
@@ -261,9 +258,8 @@ When the input cannot be parsed into a valid TIME value according to the rules, 
 
 ### From Datetime
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Starting from version 4.0, conversion from Datetime type to Time type is supported.
-:::
 
 The result is the time part of the input, and this conversion is always valid.
 

@@ -2,9 +2,6 @@
 title: Custom Types
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 You can define custom types by extending `Type` abstract class. It has several optional methods:
 
 - `convertToDatabaseValue(value: any, platform: Platform): any`
@@ -180,13 +177,7 @@ class MyType extends Type<MyClass, string> {
 
 Now let's use it together with the `IType`:
 
-<Tabs
-defaultValue="class"
-values={[
-{label: 'class', value: 'class'},
-{label: 'defineEntity', value: 'define-entity'},
-]} >
-  <TabItem value="class">
+  
 
 ```ts
 import { IType } from '@mikro-orm/core';
@@ -201,8 +192,8 @@ class MyEntity {
 }
 ```
 
-  </TabItem>
-  <TabItem value="define-entity">
+  
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -216,8 +207,7 @@ const MyEntity = defineEntity({
 });
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 This will make the `em.create()` properly disallow values other than MyClass, as well as convert the value type to `string` when serializing. Without the `IType`, there would be no error with `em.create()` and the serialization would result in `MyClass` on type level (but would be a `string` value on runtime):
 

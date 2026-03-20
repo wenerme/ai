@@ -62,7 +62,7 @@ biome format --changed --write
 
 For quite some time, users were confused by the difference between the commands `check` and `ci`because, until now, their behaviours have been very similar. From this version, the command `ci` can detect the GitHub CI environment and print annotation in the PRs.
 
-![Screenshot of a GitHub annotation printed by Biome](../../../assets/blog/roadmap-2024/github-annotation.png)
+[Screenshot of a GitHub annotation printed by Biome]
 
 It's possible that you would need to change your permissions of your workflow files in case you don't see the annotations:
 

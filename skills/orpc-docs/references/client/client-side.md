@@ -9,8 +9,6 @@ Call your [procedures](/docs/procedure) remotely as if they were local functions
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/client@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/client@latest
 ```sh [deno]
 deno add npm:@orpc/client@latest
 ```
-
-:::
 
 ## Creating a Client
 
@@ -62,9 +58,7 @@ const client: RouterClient<typeof router> = createORPCClient(link)
 const client: ContractRouterClient<typeof contract> = createORPCClient(link)
 ```
 
-:::tip
-You can export `RouterClient<typeof router>` and `ContractRouterClient<typeof contract>` from server instead.
-:::
+> **tip**: You can export `RouterClient<typeof router>` and `ContractRouterClient<typeof contract>` from server instead.
 
 ## Calling Procedures
 
@@ -100,9 +94,7 @@ export const orpc = {
 
 ## Utilities
 
-::: info
-These utilities can be used for any kind of oRPC client.
-:::
+> **info**: These utilities can be used for any kind of oRPC client.
 
 ### Infer Client Inputs
 

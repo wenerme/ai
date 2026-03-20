@@ -1,20 +1,8 @@
 ---
-sidebar_label: 'Get started'
 description: 'Step-by-step guide to create your first Azure Blob Storage (ABS) ClickPipe.'
-slug: /integrations/clickpipes/object-storage/azure-blob-storage/get-started
-sidebar_position: 1
 title: 'Create your first Azure Blob Storage ClickPipe'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import navigateToDatasources from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/01-navigate-to-datasources.png'
-import createClickpipe from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/02-create-clickpipe.png'
-import selectBlobStorage from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/03-select-blob-storage.png'
-import configurationDetails from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/04-configuration-details.png'
-import chooseDataFormat from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/05-choose-data-format.png'
-import parseInformation from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/06-parse-information.png'
-import permissions from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/azure-blob-storage/07-permissions.png'
 
 **Prerequisites**
 

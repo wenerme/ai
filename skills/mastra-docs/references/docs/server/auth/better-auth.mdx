@@ -5,9 +5,6 @@ packages:
   - "@mastra/auth-better-auth"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Better Auth
 
 The `@mastra/auth-better-auth` package provides authentication for Mastra using Better Auth. It verifies incoming requests using your Better Auth instance and integrates with the Mastra server via the `server.auth` option.
@@ -25,11 +22,7 @@ BETTER_AUTH_URL=http://localhost:3000
 DATABASE_URL=postgres://...
 ```
 
-:::note
-
-Better Auth recommends setting `baseURL` explicitly (or via `BETTER_AUTH_URL`) for security and stability.
-
-:::
+> **note**: Better Auth recommends setting `baseURL` explicitly (or via `BETTER_AUTH_URL`) for security and stability.
 
 If you haven't mounted Better Auth's handler yet (so your app can sign users in / create sessions), follow the [Better Auth installation guide](https://www.better-auth.com/docs/installation) to mount the `/api/auth/*` route (or your configured base path).
 
@@ -79,11 +72,7 @@ export const mastra = new Mastra({
 })
 ```
 
-:::info
-
-Visit [MastraAuthBetterAuth](/reference/auth/better-auth) for all available configuration options.
-
-:::
+> **info**: Visit [MastraAuthBetterAuth](/reference/auth/better-auth) for all available configuration options.
 
 ## Custom authorization
 
@@ -176,16 +165,11 @@ export const mastraClient = new MastraClient({
 })
 ```
 
-:::info
-
-Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
-
-:::
+> **info**: Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
 
 ### Making authenticated requests
 
-<Tabs>
-  <TabItem value="react" label="React">
+  
     ```tsx title="src/components/test-agent.tsx"
     import { mastraClient } from '../lib/mastra-client'
 
@@ -201,9 +185,9 @@ Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration opt
       return <button onClick={handleClick}>Test Agent</button>
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="cURL">
+  
     ```bash
     curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
       -H "Content-Type: application/json" \
@@ -212,8 +196,7 @@ Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration opt
         "messages": "Weather in London"
       }'
     ```
-  </TabItem>
-</Tabs>
+  
 
 ## Troubleshooting
 

@@ -1,6 +1,4 @@
 ---
-slug: /guides/developer/dynamic-column-selection
-sidebar_label: 'Dynamic column selection'
 title: 'Dynamic column selection'
 description: 'Use alternative query languages in ClickHouse'
 doc_type: 'guide'

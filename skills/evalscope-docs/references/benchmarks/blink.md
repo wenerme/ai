@@ -1,6 +1,5 @@
 # BLINK
 
-
 ## Overview
 
 BLINK is a benchmark designed to evaluate the core visual perception abilities of Multimodal Large Language Models (MLLMs). It transforms 14 classic computer vision tasks into 3,807 multiple-choice questions with single or multiple images and visual prompts.
@@ -27,7 +26,6 @@ BLINK is a benchmark designed to evaluate the core visual perception abilities o
 - Uses "ANSWER: [LETTER]" format for responses
 - Results can be analyzed across 14 different perception categories
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ BLINK is a benchmark designed to evaluate the core visual perception abilities o
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
-
 
 ## Data Statistics
 
@@ -76,7 +73,6 @@ BLINK is a benchmark designed to evaluate the core visual perception abilities o
 | Images per Sample | min: 1, max: 4, mean: 1.93 |
 | Resolution Range | 200x83 - 3072x4096 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -159,5 +155,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

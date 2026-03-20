@@ -1,7 +1,5 @@
 ---
 date: "2023-04-27T15:00:00+08:00"
-slug: "quickstart"
-sidebar_position: 10
 ---
 
 # Quick Start
@@ -59,7 +57,7 @@ You can obtain different levels of 'tokens' from the following places to create 
 - Organization level: The organization settings page, like `<your_gitea.com>/<org>/settings/actions/runners`.
 - Repository level: The repository settings page, like `<your_gitea.com>/<owner>/<repo>/settings/actions/runners`.
 
-![register runner](/images/usage/actions/register-runner.png)
+[register runner]
 
 After registering, a new file named `.runner` will appear in the current directory.
 This file stores the registration information.
@@ -74,7 +72,7 @@ Finally, it's time to start the runner:
 
 And you can see the new runner in the management page:
 
-![view runner](/images/usage/actions/view-runner.png)
+[view runner]
 
 You can find more information by visiting [Act runner](act-runner.mdxc).
 
@@ -84,7 +82,7 @@ Even if Actions is enabled for the Gitea instance, repositories still disable Ac
 
 To enable it, go to the settings page of your repository like `your_gitea.com/<owner>/repo/settings` and enable `Enable Repository Actions`.
 
-![enable actions](/images/usage/actions/enable-actions.png)
+[enable actions]
 
 The next steps may be rather complicated.
 You will need to study [the workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) for Actions and write the workflow files you want.
@@ -113,11 +111,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
 ```
 
-:::warning
-
-Certain actions may not function correctly within SHA256 repositories or when Gitea runs on subpath. This includes [actions/checkout](https://github.com/actions/checkout/issues/1843).
-
-:::
+> **warning**: Certain actions may not function correctly within SHA256 repositories or when Gitea runs on subpath. This includes [actions/checkout](https://github.com/actions/checkout/issues/1843).
 
 You can upload it as a file with the extension `.yaml` in the directory `.gitea/workflows/` of the repository, for example `.gitea/workflows/demo.yaml`.
 You might notice that this is fairly similar from the [Quickstart for GitHub Actions](https://docs.github.com/en/actions/quickstart).
@@ -133,6 +127,6 @@ Alternatively, you can remove all emojis from the demo file and try again.
 The line `on: [push]` indicates that the workflow will be triggered when you push commits to this repository.
 However, when you upload the YAML file, it also pushes a commit, so you should see a new task in the Actions tab.
 
-![view job](/images/usage/actions/view-job.png)
+[view job]
 
 Great job! You have successfully started working with Actions.

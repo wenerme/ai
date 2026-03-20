@@ -6,8 +6,6 @@ tableOfContents:
   maxHeadingLevel: 4
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
-
 This guide will help you to understand how to configure Biome.
 It explains the structure of a Biome configuration file and how Biome resolves its configuration.
 If you are already familiar with the configuration, you may want to take a look at the [configuration reference](/reference/configuration/), which details all the options available.
@@ -70,11 +68,8 @@ We disabled the formatter for JSON files.
 }
 ```
 
-:::note
-Biome refers to all variants of the JavaScript language as `javascript`.
+> **note**: Biome refers to all variants of the JavaScript language as `javascript`.
 This includes TypeScript, JSX and TSX.
-:::
-
 
 ## Configuration file resolution
 
@@ -111,21 +106,17 @@ Here's an example:
     - biome.json
 </FileTree>
 
-
 - Biome commands that run in `app/backend/package.json` will use the configuration file `app/backend/biome.json`;
 - Biome commands that run in `app/frontend/legacy/package.json` and `app/frontend/new/package.json`
 will use the configuration file `app/frontend/biome.json`;
 
-:::note
-Biome supports nested `biome.json` files. For more information, read [Use Biome in big projects](/guides/big-projects#use-multiple-configuration-files).
-:::
+> **note**: Biome supports nested `biome.json` files. For more information, read [Use Biome in big projects](/guides/big-projects#use-multiple-configuration-files).
 
 ## Specifying files to process
 
 You can control the files/folders to process using different strategies, either CLI, configuration and VCS.
 
-:::note
-By default, Biome always ignores some files that are said to be **protected files**.
+> **note**: By default, Biome always ignores some files that are said to be **protected files**.
 This means that no diagnostics will be ever emitted by Biome for those files.
 At the moment, the following files are protected:
 
@@ -133,7 +124,6 @@ At the moment, the following files are protected:
 - `npm-shrinkwrap.json`
 - `package-lock.json`
 - `yarn.lock`
-:::
 
 ### Include files via CLI
 
@@ -145,11 +135,9 @@ all the files in the `src` folder, because folders are recursively traversed.
 biome format file1.js src/
 ```
 
-:::caution
-Glob patterns used on the command line are not interpreted by Biome.
+> **caution**: Glob patterns used on the command line are not interpreted by Biome.
 They are expanded by your shell.
 Some shells don't support the recursive glob `**`.
-:::
 
 ### Control files via configuration
 
@@ -168,7 +156,6 @@ configuration file is [extended](/reference/configuration/#extends) by another.
 here are processed by the linter, the formatter and the assist, unless specified
 otherwise. For the individual tools, you can further refine the matching files
 using `<tool>.includes`.
-
 
 #### Include files via configuration
 
@@ -205,13 +192,11 @@ If we run the following command, no files are linted because files inside the
 biome lint test/
 ```
 
-:::caution
-The global `files.includes` has slightly different semantics than the more
+> **caution**: The global `files.includes` has slightly different semantics than the more
 specific `<tool>.includes` fields. Any file or folder that doesn't match
 `files.includes` is excluded from use by any of Biome's tools. This means that
 any tool-specific `includes` field can never match a file that doesn't also
 match `files.includes`.
-:::
 
 #### Exclude files via configuration
 
@@ -245,7 +230,6 @@ In the following example, we tell Biome to include all files, except:
 ```
 
 For more information on how interact with scanner and how it indexes your files, check the [relative reference page](/reference/configuration#interaction-with-the-scanner)
-
 
 ### Control files via VCS
 

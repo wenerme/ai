@@ -22,7 +22,7 @@ This page explains what Query Management is and shows how to use it.
         2. Go to **Management**. 
         3. In the side panel, select **Query Management**.   
           You will be taken to the **Running Queries** section.
-        ![Running Queries](../../images/query-management-running-queries.png)
+        [Running Queries]
 
     ## Viewing Modes
 
@@ -43,7 +43,7 @@ This page explains what Query Management is and shows how to use it.
     - **Total Exec. Duration**: Combined time spent executing all active queries.  
     - **Total Query Range**: Total log duration the queries are scanning.  
     - **Actions**: Cancel queries initiated by a user.
-    ![Running Queries](../../images/query-management-running-queries.png)
+    [Running Queries]
 
     The **All Queries** table displays the following fields: 
 
@@ -61,7 +61,7 @@ This page explains what Query Management is and shows how to use it.
         - **View Details** to inspect the query details.  
         - **Cancel** to stop the query immediately.
 
-    ![All Running Queries](../../images/query-management-all-queries.png)
+    [All Running Queries]
 
     ## Filters and Searches
 
@@ -72,8 +72,8 @@ This page explains what Query Management is and shows how to use it.
         - **Dashboards**: Queries coming from Dashboards.  
         - **UI**: Queries run manually by users from the Logs interface.  
         - **Others**: Queries triggered by Alerts or Reports.
-    <br>
-    ![Filter and Search in Running Queries](../../images/query-management-filter-search.png)
+    
+    [Filter and Search in Running Queries]
 
     - **Refresh Query Button**: Click to reload the page with the latest query data. Refer to the **Last Data Refresh Time** section to confirm whether the query results are up to date before refreshing.
 
@@ -85,7 +85,7 @@ This page explains what Query Management is and shows how to use it.
     1. In the **All Queries** view, locate the query you want to examine.  
     2. In the **Actions** column, click the icon to **view details**.
 
-    ![View Query Details](../../images/query-management-view-details.png)
+    [View Query Details]
 
     You will see a pop-up with full information about the query:
 
@@ -97,7 +97,7 @@ This page explains what Query Management is and shows how to use it.
     - The start time and end time selected by the user. This defines the **Query Range**.  
     - The **Execution Duration** and final **Query Range** calculated.  
     - Additional technical metrics, including the number of records scanned within the selected time range, the original size of the scanned files, and their compressed size in Parquet format.
-    ![Query Detailed View](../../images/query-management-view-query-details.png)
+    [Query Detailed View]
 
     ## How to Cancel a Query
 
@@ -116,23 +116,17 @@ This page explains what Query Management is and shows how to use it.
         The query is from a critical source. 
 
     You can cancel a query from the **User Summary** page as well as the **All Queries** view. 
-    <br>
+    
     **To cancel from User Summary**:
 
     1. Locate the user whose queries you want to stop.  
     2. Either select the checkbox and click **Cancel Query** at the bottom of the page, or click the red **X** icon in the **Actions** column.
-    ![Cancel Queries](../../images/query-management-cancel-queries.png)
+    [Cancel Queries]
 
-    <br>
+    
     **To cancel from All Queries**:
 
     1. Find the query you want to cancel.  
     2. In the **Actions** column, click the red `X` icon.
 
     After you confirm, the query is terminated immediately.
-
-
-
-
-
-

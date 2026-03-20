@@ -1,5 +1,4 @@
 # Create your first LLM playground
-import Image from '@theme/IdealImage';
 
 Create a playground to **evaluate multiple LLM Providers in less than 10 minutes**. If you want to see this in prod, check out our [website](https://litellm.ai/).
 
@@ -12,10 +11,7 @@ Create a playground to **evaluate multiple LLM Providers in less than 10 minutes
 
 **How will we do this?**: We'll build <u>the server</u> and connect it to our template frontend, ending up with a working playground UI by the end!
 
-:::info
-
- Before you start, make sure you have followed the [environment-setup](./installation) guide. Please note, that this tutorial relies on you having API keys from at least 1 model provider (E.g. OpenAI). 
-:::
+> **info**: Before you start, make sure you have followed the [environment-setup](./installation) guide. Please note, that this tutorial relies on you having API keys from at least 1 model provider (E.g. OpenAI). 
 
 ## 1. Quick start 
 
@@ -34,7 +30,6 @@ from litellm import completion
 os.environ["OPENAI_API_KEY"] = "openai key" ## REPLACE THIS
 os.environ["COHERE_API_KEY"] = "cohere key" ## REPLACE THIS
 os.environ["AI21_API_KEY"] = "ai21 key" ## REPLACE THIS
-
 
 messages = [{ "content": "Hello, how are you?","role": "user"}]
 
@@ -67,7 +62,6 @@ os.environ["OPENAI_API_KEY"] = "openai key" ## REPLACE THIS
 os.environ["COHERE_API_KEY"] = "cohere key" ## REPLACE THIS
 os.environ["AI21_API_KEY"] = "ai21 key" ## REPLACE THIS
 
-
 @app.route('/chat/completions', methods=["POST"])
 def api_completion():
     data = request.json
@@ -87,7 +81,6 @@ The complete code:
 import os
 from flask import Flask, jsonify, request
 from litellm import completion_with_retries 
-
 
 ## set ENV variables
 os.environ["OPENAI_API_KEY"] = "openai key" ## REPLACE THIS
@@ -158,10 +151,7 @@ git clone https://github.com/BerriAI/litellm_playground_fe_template.git
 
 Make sure our server from [step 2](#2-set-up-server) is still running at port 4000
 
-:::info
-
- If you used another port, no worries - just make sure you change [this line](https://github.com/BerriAI/litellm_playground_fe_template/blob/411bea2b6a2e0b079eb0efd834886ad783b557ef/app.py#L7) in your playground template's app.py
-:::
+> **info**: If you used another port, no worries - just make sure you change [this line](https://github.com/BerriAI/litellm_playground_fe_template/blob/411bea2b6a2e0b079eb0efd834886ad783b557ef/app.py#L7) in your playground template's app.py
 
 Now let's run our app: 
 
@@ -177,7 +167,6 @@ pip install streamlit
 
 This is what you should see: 
 <Image img={require('../../img/litellm_streamlit_playground.png')} alt="streamlit_playground" />
-
 
 # Congratulations 🚀 
 

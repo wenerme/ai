@@ -1,6 +1,5 @@
 # ZebraLogicBench
 
-
 ## Overview
 
 ZebraLogicBench is a comprehensive evaluation framework for assessing LLM reasoning performance on logic grid puzzles derived from constraint satisfaction problems (CSPs). It tests systematic logical reasoning abilities.
@@ -31,7 +30,6 @@ ZebraLogicBench is a comprehensive evaluation framework for assessing LLM reason
   - `avg_reason_lens`: Average reasoning length
 - Output must include reasoning and solution in JSON format
 
-
 ## Properties
 
 | Property | Value |
@@ -43,7 +41,6 @@ ZebraLogicBench is a comprehensive evaluation framework for assessing LLM reason
 | **Metrics** | `puzzle_acc`, `cell_acc`, `easy_puzzle_acc`, `hard_puzzle_acc`, `small_puzzle_acc`, `medium_puzzle_acc`, `large_puzzle_acc`, `xl_puzzle_acc`, `avg_reason_lens`, `no_answer_num` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -116,13 +113,11 @@ There are 3 houses, numbered 1 to 3 from left to right, as seen from across the 
 
 {question}
 
-
 # Instruction
 
 Now please solve the above puzzle. Present your reasoning and solution in the following json format:
 
 {json_template}
-
 
 ```
 
@@ -155,5 +150,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

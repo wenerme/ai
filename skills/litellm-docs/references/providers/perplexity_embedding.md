@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Perplexity Embeddings
 
@@ -16,9 +15,6 @@ os.environ['PERPLEXITYAI_API_KEY']
 
 ## Sample Usage - Embedding
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import embedding
 import os
@@ -31,9 +27,6 @@ response = embedding(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 1. Setup config.yaml
 
@@ -67,9 +60,6 @@ curl http://0.0.0.0:4000/v1/embeddings \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Parameters
 
 Perplexity embeddings support the following optional parameters:
@@ -80,9 +70,6 @@ Perplexity embeddings support the following optional parameters:
 | `encoding_format` | string | `"base64_int8"` (default) or `"base64_binary"` for compressed output. |
 
 ### Example with Parameters
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import embedding
@@ -98,9 +85,6 @@ response = embedding(
 print(f"Embedding dimensions: {len(response.data[0]['embedding'])}")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 ```bash
 curl http://0.0.0.0:4000/v1/embeddings \
   -H "Content-Type: application/json" \
@@ -111,9 +95,6 @@ curl http://0.0.0.0:4000/v1/embeddings \
     "dimensions": 512
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Models
 

@@ -2,12 +2,12 @@
 
 Retrieve traces within a specified time range.
 
-**Endpoint** <br>
+**Endpoint** 
 ```
 GET /api/{org_id}/{stream_name}/traces/latest
 ```
 
-**Parameters** <br>
+**Parameters** 
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -19,14 +19,14 @@ GET /api/{org_id}/{stream_name}/traces/latest
 | `size` | integer | Yes | Number of traces to return |
 | `filter` | string | No | Filter query for traces |
 
-**Example Request** <br>
+**Example Request** 
 ```bash
 curl -X GET \
   "https://your-openobserve-instance/api/org_id/stream_name/traces/latest?&filter=&start_time=1751443100969000&end_time=1751444000969000&from=0&size=25 \
   -H "Authorization: Basic <your-auth-token>"
 ```
 
-**Response Format**<br>
+**Response Format**
 ```json
 {
   "total": 1,
@@ -59,7 +59,7 @@ curl -X GET \
 }
 ```
 
-**Response Fields** <br>
+**Response Fields** 
 
 | Field | Description |
 |-------|-------------|
@@ -115,7 +115,7 @@ Common HTTP Status Codes:
 - `404 Not Found`: Stream or organization not found
 - `500 Internal Server Error`: Server error
 
-**Error Response Format** <br>
+**Error Response Format** 
 ```json
 {
   "error": {
@@ -146,6 +146,3 @@ Common HTTP Status Codes:
 1. **SQL Query Support**: Full SQL queries are not supported in traces; use filter queries instead.
 2. **Time Range Requirement**: Start time and end time are mandatory for all queries.
 3. **Result Size Limits**: Large result sets should be paginated using `from` and `size`.
-
-
-

@@ -91,7 +91,6 @@ The result will be:
 +---------------------------------------+-----------------------------------+
 ```
 
-
 ```sql
 select bitmap_to_string(to_bitmap(NULL)),bitmap_count(to_bitmap(NULL));
 ```

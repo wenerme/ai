@@ -1,6 +1,5 @@
 # OCRBench-v2
 
-
 ## Overview
 
 OCRBench v2 is a large-scale bilingual text-centric benchmark with the most comprehensive set of OCR tasks (4x more than OCRBench v1), covering 31 diverse scenarios including street scenes, receipts, formulas, diagrams, and more.
@@ -27,7 +26,6 @@ OCRBench v2 is a large-scale bilingual text-centric benchmark with the most comp
 - Requires: apted, distance, Levenshtein, lxml, Polygon3, zss packages
 - Simple accuracy metric
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ OCRBench v2 is a large-scale bilingual text-centric benchmark with the most comp
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -92,7 +89,6 @@ OCRBench v2 is a large-scale bilingual text-centric benchmark with the most comp
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 19x10 - 3912x21253 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -174,5 +170,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

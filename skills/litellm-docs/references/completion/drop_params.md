@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Drop Unsupported Params 
 
@@ -31,7 +30,6 @@ response = litellm.completion(
             )
 ```
 
-
 LiteLLM maps all supported openai params by provider + model (e.g. function calling is supported by anthropic on bedrock but not titan). 
 
 See `litellm.get_supported_openai_params("command-r")` [**Code**](https://github.com/BerriAI/litellm/blob/main/litellm/utils.py#L3584)
@@ -49,9 +47,6 @@ litellm_settings:
 
 Just drop_params when calling specific models 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python 
 import litellm 
 import os 
@@ -66,8 +61,6 @@ response = litellm.completion(
                 drop_params=True
             )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 - litellm_params:
@@ -76,17 +69,12 @@ response = litellm.completion(
     drop_params: true # 👈 KEY CHANGE
   model_name: my-model
 ```
-</TabItem>
-</Tabs>
 
 ## Specify params to drop 
 
 To drop specific params when calling a provider (E.g. 'logit_bias' for vllm)
 
 Use `additional_drop_params`
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm 
@@ -102,8 +90,6 @@ response = litellm.completion(
                 additional_drop_params=["response_format"]
             )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 - litellm_params:
@@ -112,17 +98,12 @@ response = litellm.completion(
     additional_drop_params: ["response_format"] # 👈 KEY CHANGE
   model_name: my-model
 ```
-</TabItem>
-</Tabs>
 
 **additional_drop_params**: List or null - Is a list of openai params you want to drop when making a call to the model.
 
 ### Nested Field Removal
 
 Drop nested fields within complex objects using JSONPath-like notation:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -140,9 +121,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 model_list:
   - model_name: my-bedrock-model
@@ -150,9 +128,6 @@ model_list:
       model: bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0
       additional_drop_params: ["tools[*].input_examples"]  # Remove from all tools
 ```
-
-</TabItem>
-</Tabs>
 
 **Supported syntax:**
 - `field` - Top-level field
@@ -171,11 +146,6 @@ model_list:
 
 Tell litellm to allow specific openai params in a request. Use this if you get a `litellm.UnsupportedParamsError` and want to allow a param. LiteLLM will pass the param as is to the model.
 
-
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 In this example we pass `allowed_openai_params=["tools"]` to allow the `tools` param.
 
 ```python showLineNumbers title="Pass allowed_openai_params to LiteLLM Python SDK"
@@ -188,8 +158,6 @@ await litellm.acompletion(
     allowed_openai_params=["tools"],
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 When using litellm proxy you can pass `allowed_openai_params` in two ways:
 
@@ -236,5 +204,3 @@ model_list:
       api_base: https://openai-prod-test.openai.azure.com/openai/deployments/o1/chat/completions?api-version=2025-01-01-preview
       allowed_openai_params: ["tools"]
 ```
-</TabItem>
-</Tabs>

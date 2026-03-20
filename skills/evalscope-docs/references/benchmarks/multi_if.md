@@ -1,6 +1,5 @@
 # Multi-IF
 
-
 ## Overview
 
 Multi-IF is a benchmark designed to evaluate LLM capabilities in multi-turn instruction following within a multilingual environment. It tests the ability to follow complex instructions across multiple conversation turns in different languages.
@@ -29,7 +28,6 @@ Multi-IF is a benchmark designed to evaluate LLM capabilities in multi-turn inst
   - `inst_level_strict/loose`: Strict/loose instruction-level accuracy
 - Requires: nltk, langdetect, emoji (for Chinese), pythainlp (for Thai)
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ Multi-IF is a benchmark designed to evaluate LLM capabilities in multi-turn inst
 | **Metrics** | `prompt_level_strict`, `inst_level_strict`, `prompt_level_loose`, `inst_level_loose` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -144,5 +141,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

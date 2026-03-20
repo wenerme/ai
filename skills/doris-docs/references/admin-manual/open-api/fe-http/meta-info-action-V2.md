@@ -15,7 +15,6 @@
 `GET /api/meta/namespaces/<ns>/databases/<db>/tables`
 `GET /api/meta/namespaces/<ns>/databases/<db>/tables/<tbl>/schema`
 
-
 ## Description
 
 Used to obtain metadata information about the cluster, including the database list, table list, and table schema.
@@ -53,4 +52,3 @@ None
     "count":0
 }
 ```
-

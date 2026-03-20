@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/streamlit-agent
-sidebar_label: 'Integrate Streamlit'
 title: 'How to build a ClickHouse-backed AI Agent with Streamlit'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how to build a web-based AI Agent with Streamlit and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'Streamlit', 'Agno', 'AI Agent']
 show_related_blogs: true
@@ -14,10 +10,9 @@ doc_type: 'guide'
 
 In this guide you'll learn how to build a web-based AI agent using [Streamlit](https://streamlit.io/) that can interact with [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse) and [Agno](https://github.com/agno-agi/agno).
 
-:::note Example application
+> **note**: Example application
 This example creates a full web application that provides a chat interface for querying ClickHouse data.
 You can find the source code for this example in the [examples repository](https://github.com/ClickHouse/examples/tree/main/ai/mcp/streamlit).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.
@@ -72,10 +67,9 @@ Set your Anthropic API key as an environment variable:
 export ANTHROPIC_API_KEY="your_api_key_here"
 ```
 
-:::note Using another LLM provider
+> **note**: Using another LLM provider
 If you don't have an Anthropic API key, and want to use another LLM provider,
 you can find the instructions for setting up your credentials in the [Agno "Integrations" docs](https://docs.agentops.ai/v2/integrations/ag2)
-:::
 
 ## Import required libraries {#import-libraries}
 

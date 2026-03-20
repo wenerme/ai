@@ -20,7 +20,6 @@ CANCEL MATERIALIZED VIEW TASK <task_id> ON <mv_name>
 **1. `<task_id>`**
 > Specifies the task id of materialized view.
 
-
 **2. `<mv_name>`**
 > Specifies the materialized view name.
 >
@@ -44,4 +43,3 @@ Users executing this SQL command must have at least the following privileges:
     ```sql
     CANCEL MATERIALIZED VIEW TASK 1 on mv1;
     ```
-

@@ -1,6 +1,5 @@
 ---
 title: typecheck | Config
-outline: deep
 ---
 
 # typecheck <Experimental /> {#typecheck}

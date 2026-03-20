@@ -7,13 +7,9 @@ description: Automatically converts input values to match schema types without m
 
 Automatically converts input values to match schema types without manually defining coercion logic.
 
-::: warning
-This plugin improves developer experience but impacts performance. For high-performance applications or complex schemas, manually defining coercion in your schema validation is more efficient.
-:::
+> **warning**: This plugin improves developer experience but impacts performance. For high-performance applications or complex schemas, manually defining coercion in your schema validation is more efficient.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/json-schema@latest
@@ -34,8 +30,6 @@ bun add @orpc/json-schema@latest
 ```sh [deno]
 deno add npm:@orpc/json-schema@latest
 ```
-
-:::
 
 ## Setup
 
@@ -67,8 +61,7 @@ The plugin converts values **safely** using these rules:
 4. **Smart unions:** Picks the best conversion for union types
 5. **Deep conversion:** Works inside nested objects and arrays
 
-::: info
-JavaScript native types such as BigInt, Date, RegExp, URL, Set, and Map are not natively supported by JSON Schema. To enable correct coercion, oRPC relies on the `x-native-type` metadata in your schema:
+> **info**: JavaScript native types such as BigInt, Date, RegExp, URL, Set, and Map are not natively supported by JSON Schema. To enable correct coercion, oRPC relies on the `x-native-type` metadata in your schema:
 
 - `x-native-type: 'bigint'` for BigInt
 - `x-native-type: 'date'` for Date
@@ -78,7 +71,6 @@ JavaScript native types such as BigInt, Date, RegExp, URL, Set, and Map are not 
 - `x-native-type: 'map'` for Map
 
 The built-in [JSON Schema Converters](/docs/openapi/openapi-specification#generating-specifications) handle these cases (except for some experimental converters). Since this approach is not part of the official JSON Schema specification, if you use a custom converter, you may need to add the appropriate `x-native-type` metadata to your schemas to ensure proper coercion.
-:::
 
 ## Conversion Rules
 
@@ -89,9 +81,7 @@ Support specific string values (case-insensitive):
 - `'true'`, `'on'` → `true`
 - `'false'`, `'off'` → `false`
 
-::: info
-HTML `<input type="checkbox">` elements submit `'on'` or `'off'` as values, so this conversion is especially useful for handling checkbox input in forms.
-:::
+> **info**: HTML `<input type="checkbox">` elements submit `'on'` or `'off'` as values, so this conversion is especially useful for handling checkbox input in forms.
 
 ### String → Number
 
@@ -142,9 +132,7 @@ Converts arrays to objects with numeric keys:
 
 - `['apple', 'banana']` → `{ 0: 'apple', 1: 'banana' }`
 
-::: info
-This is particularly useful for [Bracket Notation](/docs/openapi/bracket-notation) when you need objects with numeric keys.
-:::
+> **info**: This is particularly useful for [Bracket Notation](/docs/openapi/bracket-notation) when you need objects with numeric keys.
 
 ### Array → Map
 

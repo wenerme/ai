@@ -88,7 +88,6 @@ Users executing this SQL command must have at least the following permissions:
 
 - View data distribution for the entire table:
 
-
     ```sql
     SHOW DATA SKEW FROM test_show_data_skew;
     ```

@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Cerebras
 https://inference-docs.cerebras.ai/api-reference/chat-completions
 
-:::tip
-
-**We support ALL Cerebras models, just set `model=cerebras/<any-model-on-cerebras>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Cerebras models, just set `model=cerebras/<any-model-on-cerebras>` as a prefix when sending litellm requests**
 
 ## API Key
 ```python
@@ -77,7 +72,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 ## Usage with LiteLLM Proxy Server
 
 Here's how to call a Cerebras model with the LiteLLM Proxy Server
@@ -92,7 +86,6 @@ Here's how to call a Cerebras model with the LiteLLM Proxy Server
         api_key: api-key                 # api key to send your model
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -101,9 +94,9 @@ Here's how to call a Cerebras model with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -124,9 +117,9 @@ Here's how to call a Cerebras model with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -142,8 +135,3 @@ Here's how to call a Cerebras model with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
-
-  </Tabs>
-
-

@@ -9,7 +9,7 @@ This document provides an overview of the vLLM architecture.
 vLLM provides a number of entrypoints for interacting with the system. The
 following diagram shows the relationship between them.
 
-![Entrypoints Diagram](../assets/design/arch_overview/entrypoints.excalidraw.png)
+[Entrypoints Diagram]
 
 ### LLM Class
 
@@ -131,7 +131,7 @@ For example, a typical single-node deployment with 4 GPUs (`vllm serve -tp=4`) h
 - 1 API server + 1 engine core + 4 GPU workers = **6 processes**
 
 <figure markdown="1">
-![V1 Process Architecture - TP=4](../assets/design/arch_overview/v1_process_architecture_tp4.png)
+[V1 Process Architecture - TP=4]
 </figure>
 
 A data parallel deployment with 8 GPUs (`vllm serve -tp=2 -dp=4`) has:
@@ -139,7 +139,7 @@ A data parallel deployment with 8 GPUs (`vllm serve -tp=2 -dp=4`) has:
 - 4 API servers + 4 engine cores + 8 GPU workers + 1 DP coordinator = **17 processes**
 
 <figure markdown="1">
-![V1 Process Architecture - TP=2, DP=4](../assets/design/arch_overview/v1_process_architecture_tp2_dp4.png)
+[V1 Process Architecture - TP=2, DP=4]
 </figure>
 
 For CPU resource sizing recommendations, see
@@ -150,7 +150,7 @@ For CPU resource sizing recommendations, see
 The `LLMEngine` and `AsyncLLMEngine` classes are central to the functioning of
 the vLLM system, handling model inference and asynchronous request processing.
 
-![LLMEngine Diagram](../assets/design/arch_overview/llm_engine.excalidraw.png)
+[LLMEngine Diagram]
 
 ### LLMEngine
 
@@ -208,7 +208,7 @@ configurations affect the class we ultimately get.
 
 The following figure shows the class hierarchy of vLLM:
 
-![Class Hierarchy](../assets/design/hierarchy.png)
+[Class Hierarchy]
 
 There are several important design choices behind this class hierarchy:
 

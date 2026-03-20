@@ -1,13 +1,11 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Focus Export (Experimental)
 
-:::caution Experimental feature
+> **caution**: Experimental feature
 Focus Format export is under active development and currently considered experimental.
 Interfaces, schema mappings, and configuration options may change as we iterate based on user feedback.
 Please treat this integration as a preview and report any issues or suggestions to help us stabilize and improve the workflow.
-:::
 
 LiteLLM can emit usage data in the [FinOps FOCUS format](https://focus.finops.org/focus-specification/v1-2/) and push artifacts (for example Parquet files) to destinations such as Amazon S3. This enables downstream cost-analysis tooling to ingest a standardised dataset directly from LiteLLM.
 
@@ -90,4 +88,3 @@ During boot LiteLLM registers the Focus logger and a background job that runs ac
 ## Related Links
 
 - [Focus](https://focus.finops.org/)
-

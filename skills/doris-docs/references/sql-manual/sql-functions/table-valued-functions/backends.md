@@ -52,7 +52,6 @@ BACKENDS()
 | **CpuCores**                | The number of CPU cores on the backend node.                                                                           |
 | **Memory**                  | The amount of memory on the backend node.                                                                              |
 
-
 ## Examples
 show backends cluster information
 ```sql

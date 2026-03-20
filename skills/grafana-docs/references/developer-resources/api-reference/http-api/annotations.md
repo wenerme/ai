@@ -34,12 +34,10 @@ Annotations are saved in the Grafana database (sqlite, mysql or postgres). Annot
 
 See note in the [introduction](#annotations-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action             | Scope                                                                                                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `annotations:read` | <ul><li>`annotations:*`</li><li>`annotations:type:*`</li><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 
@@ -123,12 +121,10 @@ The format for `time` and `timeEnd` should be epoch numbers in millisecond resol
 
 See note in the [introduction](#annotations-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action               | Scope                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `annotations:create` | <ul><li>`annotations:*`</li><li>`annotations:type:*`</li><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Required JSON Body Fields**
 
@@ -218,12 +214,10 @@ Updates all properties of an annotation that matches the specified id. To only u
 
 See note in the [introduction](#annotations-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                                                                        |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `annotations:write` | <ul><li>`annotations:*`</li><li>`annotations:type:*`</li><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 
@@ -264,12 +258,10 @@ This operation currently supports updating of the `text`, `tags`, `time` and `ti
 
 See note in the [introduction](#annotations-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                                                                        |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `annotations:write` | <ul><li>`annotations:*`</li><li>`annotations:type:*`</li><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 
@@ -306,12 +298,10 @@ Deletes the annotation that matches the specified id.
 
 See note in the [introduction](#annotations-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action               | Scope                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `annotations:delete` | <ul><li>`annotations:*`</li><li>`annotations:type:*`</li><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 

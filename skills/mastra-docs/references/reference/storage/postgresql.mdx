@@ -236,9 +236,7 @@ const memoryStore = await storage.getStore('memory')
 const thread = await memoryStore?.getThreadById({ threadId: '...' })
 ```
 
-:::warning
-If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
-:::
+> **warning**: If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
 
 ### Using an Existing Pool
 
@@ -375,9 +373,7 @@ export const mastra = new Mastra({
 
 This pattern ensures only one `PostgresStore` instance is created regardless of how many times the module is reloaded during development. The same pattern can be applied to other storage providers like `LibSQLStore`.
 
-:::tip
-This singleton pattern is only necessary during local development with HMR. In production builds, modules are only loaded once.
-:::
+> **tip**: This singleton pattern is only necessary during local development with HMR. In production builds, modules are only loaded once.
 
 ## Usage example
 

@@ -29,7 +29,6 @@ Returns a BITMAP
 
 ## Examples
 
-
 ```sql
 select bitmap_to_string(bitmap_from_base64("invalid")) bts;
 ```

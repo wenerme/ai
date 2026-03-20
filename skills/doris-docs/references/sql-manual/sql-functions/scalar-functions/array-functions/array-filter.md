@@ -229,7 +229,6 @@ SELECT array_filter(x -> x > 0, 'not_an_array');
 ERROR 1105 (HY000): errCode = 2, detailMessage = lambda argument must be array but is 'not_an_array'
 ```
 
-
 **Nested higher-order function examples:**
 
 **Correct example: calling higher-order functions that return scalars in lambda**
@@ -254,4 +253,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = Can not find the compatibility 
 
 ### Keywords
 
-ARRAY, FILTER, ARRAY_FILTER 
+ARRAY, FILTER, ARRAY_FILTER

@@ -1,19 +1,9 @@
 ---
-sidebar_label: 'PCI onboarding'
-slug: /cloud/security/compliance/pci-onboarding
 title: 'PCI onboarding'
 description: 'Learn more about how to onboard to PCI compliant services'
 doc_type: 'guide'
 keywords: ['pci', 'compliance', 'payment security', 'data protection', 'security']
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge';
-
-import Image from '@theme/IdealImage';
-import pci1 from '@site/static/images/cloud/security/compliance/pci_1.png';
-import pci2 from '@site/static/images/cloud/security/compliance/pci_2.png';
-import pci3 from '@site/static/images/cloud/security/compliance/pci_3.png';
 
 <EnterprisePlanFeatureBadge feature="PCI compliance"/>
 
@@ -39,30 +29,18 @@ This page describes the process for enabling deployment of PCI compliant service
 2. Click **Organization details**.
 3. Toggle **Enable PCI** on.
 
-<br />
-
 <Image img={pci1} size="md" alt="Enable PCI" background='black'/>
-
-<br />
 
 4. Once enabled, PCI services can be deployed within the organization.
 
-<br />
-
 <Image img={pci2} size="md" alt="PCI enabled" background='black'/>
-
-<br />
 
 ### Deploy services to PCI compliant regions {#deploy-pci-regions}
 
 1. Select **New service** in the upper left corner of the home screen in the console
 2. Change the **Region type** to **HIPAA compliant**
 
-<br />
-
 <Image img={pci3} size="md" alt="Deploy to PCI region" background='black'/>
-
-<br />
 
 3. Enter a name for the service and enter the remaining information
 
@@ -83,6 +61,5 @@ If migration from standard to PCI compliant regions is required, follow these st
 5. Once the restoration is complete, run a few queries to verify the schemas and record counts are as expected.
 6. Delete the old service.
 
-:::info Restrictions
+> **info**: Restrictions
 Services must remain in the same cloud provider and geographic region. This process migrates the service to the compliant environment in the same cloud provider and region.
-:::

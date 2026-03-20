@@ -86,4 +86,3 @@ SELECT is_ipv4_string(NULL) as null_check;
 ### Keywords
 
 IS_IPV4_STRING
-

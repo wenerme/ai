@@ -7,9 +7,7 @@ description: A plugin for oRPC to batch requests and responses.
 
 The **Batch Requests Plugin** allows you to combine multiple requests and responses into a single batch, reducing the overhead of sending each one separately.
 
-::: info
-HTTP/2, HTTP/3, and later versions already support multiplexing, allowing multiple requests and responses over a single connection. Since these protocols are now widely adopted, the batch plugin may be less beneficial in most scenarios.
-:::
+> **info**: HTTP/2, HTTP/3, and later versions already support multiplexing, allowing multiple requests and responses over a single connection. Since these protocols are now widely adopted, the batch plugin may be less beneficial in most scenarios.
 
 ## Setup
 
@@ -28,9 +26,7 @@ const handler = new RPCHandler(router, {
 })
 ```
 
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler) or custom implementations. Note that this plugin uses its own protocol for batching requests and responses, which is different from the handler's native protocol.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler) or custom implementations. Note that this plugin uses its own protocol for batching requests and responses, which is different from the handler's native protocol.
 
 ### Client
 
@@ -56,9 +52,7 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
 
 ## Batch Mode
 

@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Quick Start'
-sidebar_position: 1
-slug: /integrations/grafana
 description: 'Introduction to using ClickHouse with Grafana'
 title: 'ClickHouse data source plugin for Grafana'
 show_related_blogs: true
@@ -12,15 +9,6 @@ integration:
   - website: 'https://grafana.com/grafana/plugins/grafana-clickhouse-datasource/'
 keywords: ['Grafana', 'data visualization', 'dashboard', 'plugin', 'data source']
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_native.md';
-import search from '@site/static/images/integrations/data-visualization/grafana/search.png';
-import install from '@site/static/images/integrations/data-visualization/grafana/install.png';
-import add_new_ds from '@site/static/images/integrations/data-visualization/grafana/add_new_ds.png';
-import quick_config from '@site/static/images/integrations/data-visualization/grafana/quick_config.png';
-import valid_ds from '@site/static/images/integrations/data-visualization/grafana/valid_ds.png';
-import Image from '@theme/IdealImage';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # ClickHouse data source plugin for Grafana
 

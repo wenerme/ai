@@ -1,8 +1,6 @@
 # Custom Callbacks
 
-:::info
-**For PROXY** [Go Here](../proxy/logging.md#custom-callback-class-async)
-::: 
+> **info**: **For PROXY** [Go Here](../proxy/logging.md#custom-callback-class-async)
 
 ## Callback Class
 You can create a custom callback class to precisely log events as they occur in litellm. 
@@ -43,7 +41,6 @@ response = completion(model="gpt-3.5-turbo", messages=[{ "role": "user", "conten
                               stream=True)
 for chunk in response: 
     continue
-
 
 ## async
 import asyncio 
@@ -150,7 +147,6 @@ class MyCustomHandler(CustomLogger):
     #### ASYNC #### 
     
 
-
     async def async_log_success_event(self, kwargs, response_obj, start_time, end_time):
         print(f"On Async Success")
 
@@ -205,10 +201,7 @@ asyncio.run(test_chat_openai())
 
 The kwargs dictionary contains all the details about your API call.
 
-:::info
-For the complete logging payload specification, see the [Standard Logging Payload Spec](https://docs.litellm.ai/docs/proxy/logging_spec).
-:::
-
+> **info**: For the complete logging payload specification, see the [Standard Logging Payload Spec](https://docs.litellm.ai/docs/proxy/logging_spec).
 ```python
 def custom_callback(kwargs, completion_response, start_time, end_time):
     # Access common data
@@ -288,4 +281,3 @@ class SafeHandler(CustomLogger):
         except Exception as e:
             print(f"Callback error: {e}")  # Log but don't break the flow
 ```
-

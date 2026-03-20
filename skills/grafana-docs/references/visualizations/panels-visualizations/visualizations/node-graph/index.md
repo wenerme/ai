@@ -26,7 +26,7 @@ Node graphs are useful when you need to visualize elements that are related to e
 
 Node graphs display useful information about each node, as well as the relationships between them, allowing you to visualize complex infrastructure maps, hierarchies, or execution diagrams.
 
-![Node graph visualization](/media/docs/grafana/panels-visualizations/screenshot-node-graph-v11.3.png 'Node graph')
+[Node graph visualization]
 
 The appearance of nodes and edges can also be customized in several ways including color, borders, and line style.
 
@@ -103,7 +103,7 @@ For example, you can have the percentage of errors represented by a red portion 
 Additional details can be displayed in a context menu which is displayed when you click on the node.
 There also can be additional links in the context menu that can target either other parts of Grafana or any external link.
 
-![Node context menu](/media/docs/grafana/panels-visualizations/screenshot-node-links-v11.3.png 'Node context menu')
+[Node context menu]
 
 #### Edges
 
@@ -141,13 +141,11 @@ The visualization maintains the layout algorithm selected in the panel editor, a
 
 For more information about layouts, refer to [Layout algorithm](#layout-algorithm).
 
-<!-- if you have the panel in grid layout and switch it to graph, is it switching to layered? -->
-
 ### Hidden nodes
 
 The number of nodes shown at a given time is limited to maintain a reasonable visualization performance. Nodes that are not currently visible are hidden behind clickable markers that show an approximate number of hidden nodes that are connected by a particular edge. You can click on the marker to expand the graph around that node.
 
-![Node graph exploration](/media/docs/grafana/panels-visualizations/node-graph-exploration-8.0-2.png 'Node graph exploration')
+[Node graph exploration]
 
 ## Configuration options
 

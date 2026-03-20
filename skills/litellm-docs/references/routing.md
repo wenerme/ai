@@ -1,6 +1,3 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Router - Load Balancing
@@ -12,12 +9,7 @@ LiteLLM manages:
 
 In production, litellm supports using Redis as a way to track cooldown server and usage (managing tpm/rpm limits).
 
-:::info
-
-If you want a server to load balance across different LLM APIs, use our [LiteLLM Proxy Server](./proxy/load_balancing.md)
-
-:::
-
+> **info**: If you want a server to load balance across different LLM APIs, use our [LiteLLM Proxy Server](./proxy/load_balancing.md)
 
 ## Load Balancing
 (s/o [@paulpierre](https://www.linkedin.com/in/paulpierre/) and [sweep proxy](https://docs.sweep.dev/blogs/openai-proxy) for their contributions to this implementation)
@@ -26,9 +18,6 @@ If you want a server to load balance across different LLM APIs, use our [LiteLLM
 ### Quick Start
 
 Loadbalance across multiple [azure](./providers/azure)/[bedrock](./providers/bedrock.md)/[provider](./providers/) deployments. LiteLLM will handle retrying in different regions if a call fails.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -89,14 +78,8 @@ response = await router.acompletion(model="gpt-4",
 
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
-:::info
-
-See detailed proxy loadbalancing/fallback docs [here](./proxy/reliability.md)
-
-:::
+> **info**: See detailed proxy loadbalancing/fallback docs [here](./proxy/reliability.md)
 
 1. Setup model_list with multiple deployments
 ```yaml
@@ -138,8 +121,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "mock_testing_rate_limit_error": true
 }'
 ```
-</TabItem>
-</Tabs>
 
 ### Available Endpoints
 - `router.completion()` - chat completions endpoint to call 100+ LLMs
@@ -156,9 +137,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 
 Router provides multiple strategies for routing your calls across multiple deployments. **We recommend using `simple-shuffle` (default) for best performance in production.**
 
-<Tabs>
-<TabItem value="simple-shuffle" label="(Default) Weighted Pick - RECOMMENDED">
-
 **Default and Recommended for Production** - Best performance with minimal latency overhead.
 
 Picks a deployment based on the provided **Requests per minute (rpm) or Tokens per minute (tpm)**
@@ -166,9 +144,6 @@ Picks a deployment based on the provided **Requests per minute (rpm) or Tokens p
 If `rpm` or `tpm` is not provided, it randomly picks a deployment
 
 You can also set a `weight` param, to specify which model should get picked when.
-
-<Tabs>
-<TabItem value="rpm" label="RPM-based shuffling">
 
 ##### **LiteLLM Proxy Config.yaml**
 
@@ -229,9 +204,6 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 ```
 
-</TabItem>
-<TabItem value="weight" label="Weight-based shuffling">
-
 ##### **LiteLLM Proxy Config.yaml**
 
 ```yaml
@@ -291,15 +263,8 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 ```
 
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="usage-based-v2" label="Rate-Limit Aware v2 (ASYNC)">
-
 > [!WARNING]  
 **Usage-based routing is not recommended for production due to performance impacts.** Use `simple-shuffle` (default) for optimal performance in high-traffic scenarios. Usage-based routing adds significant latency due to Redis operations for tracking usage across deployments.
-
 
 **🎉 NEW** This is an async implementation of usage-based-routing.
 
@@ -311,12 +276,8 @@ In production, we use Redis to track usage (TPM/RPM) across multiple deployments
 
 For Azure, [you get 6 RPM per 1000 TPM](https://stackoverflow.com/questions/77368844/what-is-the-request-per-minute-rate-limit-for-azure-openai-models-for-gpt-3-5-tu)
 
-<Tabs>
-<TabItem value="sdk" label="sdk">
-
 ```python
 from litellm import Router 
-
 
 model_list = [{ # list of model deployments 
 	"model_name": "gpt-3.5-turbo", # model alias 
@@ -360,8 +321,6 @@ response = await router.acompletion(model="gpt-3.5-turbo",
 
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="proxy">
 
 **1. Set strategy in config**
 
@@ -410,14 +369,6 @@ curl --location 'http://localhost:4000/v1/chat/completions' \
     "messages": [{"role": "user", "content": "Hey, how's it going?"}]
 }'
 ```
-
-</TabItem>
-</Tabs>
-
-
-</TabItem>
-<TabItem value="latency-based" label="Latency-Based">
-
 
 Picks the deployment with the lowest response time.
 
@@ -506,10 +457,6 @@ router_settings:
 	routing_strategy_args: {"lowest_latency_buffer": 0.5}
 ```
 
-</TabItem>
-
-<TabItem value="usage-based" label="Rate-Limit Aware">
-
 This will route to the deployment with the lowest TPM usage for that minute. 
 
 In production, we use Redis to track usage (TPM/RPM) across multiple deployments. 
@@ -518,10 +465,8 @@ If you pass in the deployment's tpm/rpm limits, this will also check against tha
 
 For Azure, your RPM = TPM/6. 
 
-
 ```python
 from litellm import Router 
-
 
 model_list = [{ # list of model deployments 
 	"model_name": "gpt-3.5-turbo", # model alias 
@@ -565,11 +510,6 @@ response = await router.acompletion(model="gpt-3.5-turbo",
 
 print(response)
 ```
-
-
-</TabItem>
-<TabItem value="least-busy" label="Least-Busy">
-
 
 Picks a deployment with the least number of ongoing calls, it's handling.
 
@@ -616,12 +556,7 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 ```
 
-</TabItem>
-
-<TabItem value="custom" label="Custom Routing Strategy">
-
 **Plugin a custom routing strategy to select deployments**
-
 
 Step 1. Define your custom routing strategy
 
@@ -729,12 +664,6 @@ for _ in range(10):
 	print("picked model=", _picked_model_id)
 ```
 
-
-
-</TabItem>
-
-<TabItem value="lowest-cost" label="Lowest Cost Routing (Async)">
-
 Picks a deployment based on the lowest cost
 
 How this works:
@@ -776,7 +705,6 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 
 ```
-
 
 #### Using Custom Input/Output pricing
 
@@ -827,9 +755,6 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 ```
 
-</TabItem>
-</Tabs>
-
 ## Traffic Mirroring / Silent Experiments
 
 Traffic mirroring allows you to "mimic" production traffic to a secondary (silent) model for evaluation purposes. The silent model's response is gathered in the background and does not affect the latency or result of the primary request.
@@ -841,9 +766,6 @@ Traffic mirroring allows you to "mimic" production traffic to a secondary (silen
 ### Deployment Ordering (Priority)
 
 Set `order` in `litellm_params` to prioritize deployments. Lower values = higher priority. When multiple deployments share the same `order`, the routing strategy picks among them.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -870,13 +792,7 @@ model_list = [
 router = Router(model_list=model_list, enable_pre_call_checks=True)  # 👈 Required for 'order' to work
 ```
 
-:::important
-The `order` parameter requires `enable_pre_call_checks=True` to be set on the Router.
-:::
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
+> **important**: The `order` parameter requires `enable_pre_call_checks=True` to be set on the Router.
 ```yaml
 model_list:
   - model_name: gpt-4
@@ -895,17 +811,11 @@ router_settings:
   enable_pre_call_checks: true  # 👈 Required for 'order' to work
 ```
 
-</TabItem>
-</Tabs>
-
 ### Weighted Deployments 
 
 Set `weight` on a deployment to pick one deployment more often than others. 
 
 This works across **simple-shuffle** routing strategy (this is the default, if no routing strategy is selected). 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -937,8 +847,6 @@ response = await router.acompletion(
 )
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -954,15 +862,11 @@ model_list:
 		weight: 2 # 👈 PICK THIS DEPLOYMENT 2x MORE OFTEN THAN o1-preview
 ```
 
-</TabItem>
-</Tabs>
-
 ### Max Parallel Requests (ASYNC)
 
 Used in semaphore for async requests on router. Limit the max concurrent calls made to a deployment. Useful in high-traffic scenarios. 
 
 If tpm/rpm is set, and no max parallel request limit given, we use the RPM or calculated RPM (tpm/1000/6) as the max parallel request limit. 
-
 
 ```python
 from litellm import Router 
@@ -980,7 +884,6 @@ model_list = [{
 
 router = Router(model_list=model_list, default_max_parallel_requests=20) # 👈 SET DEFAULT MAX PARALLEL REQUESTS 
 
-
 # deployment max parallel requests > default max parallel requests
 ```
 
@@ -989,9 +892,6 @@ router = Router(model_list=model_list, default_max_parallel_requests=20) # 👈 
 ### Cooldowns
 
 Set the limit for how many calls a model is allowed to fail in a minute, before being cooled down for a minute. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router
@@ -1011,9 +911,6 @@ response = router.completion(model="gpt-3.5-turbo", messages=messages)
 
 print(f"response: {response}")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set Global Value**
 
@@ -1040,9 +937,6 @@ model_list:
     cooldown_time: 0 # 👈 KEY CHANGE
 ```
 
-</TabItem>
-</Tabs>
-
 **Expected Response**
 
 ```
@@ -1051,26 +945,16 @@ No deployments available for selected model, Try again in 60 seconds. Passed mod
 
 #### **Disable cooldowns**
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import Router 
 
-
 router = Router(..., disable_cooldowns=True)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 router_settings:
 	disable_cooldowns: True
 ```
-
-</TabItem>
-</Tabs>
 
 ### How Cooldowns Work
 
@@ -1166,8 +1050,6 @@ flowchart TD
     style I fill:#ccffcc
 ```
 
-
-
 ### Retries
 
 For both async + sync functions, we support retrying failed requests. 
@@ -1220,10 +1102,6 @@ print(f"response: {response}")
 - Use `AllowedFailsPolicy` to set a custom number of `allowed_fails`/minute before cooling down a deployment
 
 [**See All Exception Types**](https://github.com/BerriAI/litellm/blob/ccda616f2f881375d4e8586c76fe4662909a7d22/litellm/types/router.py#L436)
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Example:
 
@@ -1288,9 +1166,6 @@ response = await router.acompletion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 router_settings: 
   retry_policy: {
@@ -1302,9 +1177,6 @@ router_settings:
 	"RateLimitErrorAllowedFails": 100 # Allow 100 RateLimitErrors before cooling down a deployment
   }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Caching
 
@@ -1339,18 +1211,13 @@ router = Router(model_list: Optional[list] = None,
 				 cache_responses=True)
 ```
 
-:::info
-When configuring Redis caching in router settings, use `cache_kwargs` to pass additional Redis parameters, especially for non-string values that may fail when set via `REDIS_*` environment variables.
-:::
+> **info**: When configuring Redis caching in router settings, use `cache_kwargs` to pass additional Redis parameters, especially for non-string values that may fail when set via `REDIS_*` environment variables.
 
 ## Pre-Call Checks (Context Window, EU-Regions)
 
 Enable pre-call checks to filter out:
 1. deployments with context window limit < messages for a call.
 2. deployments outside of eu-region
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 **1. Enable pre-call checks**
 ```python 
@@ -1359,7 +1226,6 @@ from litellm import Router
 router = Router(model_list=model_list, enable_pre_call_checks=True) # 👈 Set to True
 ```
 
-
 **2. Set Model List**
 
 For context window checks on azure deployments, set the base model. Pick the base model from [this list](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), all the azure models start with `azure/`. 
@@ -1367,7 +1233,6 @@ For context window checks on azure deployments, set the base model. Pick the bas
 For 'eu-region' filtering, Set 'region_name' of deployment. 
 
 **Note:** We automatically infer region_name for Vertex AI, Bedrock, and IBM WatsonxAI based on your litellm params. For Azure, set `litellm.enable_preview = True`.
-
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/d33e49411d6503cb634f9652873160cd534dec96/litellm/router.py#L2958)
 
@@ -1404,12 +1269,7 @@ model_list = [
 router = Router(model_list=model_list, enable_pre_call_checks=True) 
 ```
 
-
 **3. Test it!**
-
-
-<Tabs>
-<TabItem value="context-window-check" label="Context Window Check">
 
 ```python
 """
@@ -1457,8 +1317,6 @@ response = router.completion(
 
 print(f"response: {response}")
 ```
-</TabItem>
-<TabItem value="eu-region-check" label="EU Region Check">
 
 ```python
 """
@@ -1508,16 +1366,7 @@ print(f"response: {response}")
 print(f"response id: {response._hidden_params['model_id']}")
 ```
 
-</TabItem>
-</Tabs>
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
-:::info
-Go [here](./proxy/reliability.md#advanced---context-window-fallbacks) for how to do this on the proxy
-:::
-</TabItem>
-</Tabs>
+> **info**: Go [here](./proxy/reliability.md#advanced---context-window-fallbacks) for how to do this on the proxy
 
 ## Caching across model groups
 
@@ -1693,7 +1542,6 @@ response = router.completion(
 )
 ```
 
-
 #### Default litellm.completion/embedding params
 
 You can also set default params for litellm completion/embedding calls. Here's how to do that: 
@@ -1762,8 +1610,6 @@ response = router.completion(
 ## Deploy Router 
 
 If you want a server to load balance across different LLM APIs, use our [LiteLLM Proxy Server](./simple_proxy#load-balancing---multiple-instances-of-1-model)
-
-
 
 ## Debugging Router
 ### Basic Debugging

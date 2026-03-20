@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/local-mode-only
 title: 'Local Mode Only'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 5
 description: 'Deploying ClickStack with Local Mode Only - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['clickstack', 'deployment', 'setup', 'configuration', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_logs from '@site/static/images/use-cases/observability/hyperdx-logs.png';
-import hyperdx_2 from '@site/static/images/use-cases/observability/hyperdx-2.png';
-import JSONSupport from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_json_support.md';
 
 Similar to the [all-in-one image](/use-cases/observability/clickstack/deployment/docker-compose), this comprehensive Docker image bundles all ClickStack components:
 
@@ -30,7 +21,6 @@ Similar to the [all-in-one image](/use-cases/observability/clickstack/deployment
 * Development where HyperDX is used
 
 ## Deployment steps {#deployment-steps}
-<br/>
 
 <VerticalStepper headerLevel="h3">
 

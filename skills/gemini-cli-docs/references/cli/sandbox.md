@@ -271,7 +271,6 @@ $env:SANDBOX_SET_UID_GID="false"  # Disable UID/GID mapping
 DEBUG=1 gemini -s -p "debug command"
 ```
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > If you have `DEBUG=true` in a project's `.env` file, it won't affect
 > gemini-cli due to automatic exclusion. Use `.gemini/.env` files for

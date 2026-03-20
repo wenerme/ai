@@ -1,6 +1,5 @@
 ---
 position: 2
-slug: /clickhouse-operator/guides/configuration
 title: 'Configuration'
 keywords: ['kubernetes']
 description: 'This guide covers how to configure ClickHouse and Keeper clusters using the ClickHouse operator.'
@@ -88,9 +87,7 @@ spec:
         storage: 100Gi
 ```
 
-:::note
-Operator can modify existing PVC only if the underlying storage class supports volume expansion.
-:::
+> **note**: Operator can modify existing PVC only if the underlying storage class supports volume expansion.
 
 ## Pod configuration {#pod-configuration}
 
@@ -105,9 +102,7 @@ spec:
     nodeHostnameKey: kubernetes.io/hostname
 ```
 
-:::note
-Ensure your Kubernetes cluster has enough nodes in different zones to satisfy the spread constraints.
-:::
+> **note**: Ensure your Kubernetes cluster has enough nodes in different zones to satisfy the spread constraints.
 
 ### Manual configuration {#manual-configuration}
 
@@ -158,7 +153,6 @@ spec:
 
 ### Environment variables {#environment-variables}
 
-
 Add custom environment variables:
 
 ```yaml
@@ -182,10 +176,8 @@ spec:
       subPath: custom.xml
 ```
 
-:::note
-It is allowed to specify multiple volume mounts to the same `mountPath`.
+> **note**: It is allowed to specify multiple volume mounts to the same `mountPath`.
 Operator will create projected volume with all specified mounts.
-:::
 
 ### See [API Reference](../04_api_reference.mdx#containertemplatespec) for all supported Container template options.
 
@@ -212,9 +204,7 @@ It is expected that the Secret contains the following keys:
 - `tls.key` - PEM encoded private key
 - `ca.crt` - PEM encoded CA certificate chain
 
-:::note
-This format is compatible with cert-manager generated certificates.
-:::
+> **note**: This format is compatible with cert-manager generated certificates.
 
 ### ClickHouse-Keeper communication over TLS {#clickhouse-keeper-communication-over-tls}
 
@@ -250,9 +240,7 @@ spec:
         key: <password>
 ```
 
-:::note
-It isn't recommended to use ConfigMap to store plain text passwords.
-:::
+> **note**: It isn't recommended to use ConfigMap to store plain text passwords.
 
 Create the secret:
 
@@ -383,9 +371,7 @@ spec:
             errors: 100
 ```
 
-:::note
-The `extraUsersConfig` is stored in k8s ConfigMap object. Avoid plain text secrets there.
-:::
+> **note**: The `extraUsersConfig` is stored in k8s ConfigMap object. Avoid plain text secrets there.
 
 #### See [documentation](/operations/settings/settings-users) for all supported ClickHouse users configuration options.
 

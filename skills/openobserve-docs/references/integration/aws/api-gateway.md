@@ -11,7 +11,6 @@ This guide explains how to stream AWS API Gateway access logs into OpenObserve u
 
 API Gateway can send access logs directly to a Kinesis Firehose delivery stream. OpenObserve ingests these logs in real-time via an HTTP endpoint, allowing you to monitor API request rates, status codes, latency, and failure patterns.
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -25,7 +24,7 @@ API Gateway can send access logs directly to a Kinesis Firehose delivery stream.
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the ingestion URL and Access Key
 
-    ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
     > Update the URL to include your desired stream name:
     ```
@@ -55,8 +54,7 @@ API Gateway can send access logs directly to a Kinesis Firehose delivery stream.
         ```
     5. Save changes
 
-        ![Enable Access Logging in API Gateway](../images/aws-integrations/api-gateway/enable-access-log.png)
-
+        [Enable Access Logging in API Gateway]
 
 ??? "Step 4: Generate API Traffic (Optional)" 
 
@@ -66,7 +64,7 @@ API Gateway can send access logs directly to a Kinesis Firehose delivery stream.
 
     1. Go to **Logs** in Openobserve → select **stream** → set **time range** → **Run Query** to check for EC2 logs.
 
-    ![Verify Logs in OpenObserve](../images/aws-integrations/api-gateway/verify-logs.png)
+    [Verify Logs in OpenObserve]
 
 ??? "Troubleshooting"
 
@@ -77,4 +75,3 @@ API Gateway can send access logs directly to a Kinesis Firehose delivery stream.
     - Check the Firehose delivery stream status for delivery failures
     - Inspect your S3 bucket for failed log records
     - Confirm the OpenObserve URL and credentials are valid
-

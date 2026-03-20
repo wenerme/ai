@@ -90,11 +90,7 @@ const store = new CouchbaseVector({
 
 Creates a new vector index in Couchbase.
 
-:::note
-
-Index creation is asynchronous. After calling `createIndex`, allow time (typically 1–5 seconds for small datasets, longer for large ones) before querying. For production, implement polling to check index status rather than using fixed delays.
-
-:::
+> **note**: Index creation is asynchronous. After calling `createIndex`, allow time (typically 1–5 seconds for small datasets, longer for large ones) before querying. For production, implement polling to check index status rather than using fixed delays.
 
 <PropertiesTable
   content={[
@@ -122,11 +118,7 @@ Index creation is asynchronous. After calling `createIndex`, allow time (typical
 
 Adds or updates vectors and their metadata in the collection.
 
-:::note
-
-You can upsert data before or after creating the index. The `upsert` method doesn't require the index to exist. Couchbase allows multiple Search indexes over the same collection.
-
-:::
+> **note**: You can upsert data before or after creating the index. The `upsert` method doesn't require the index to exist. Couchbase allows multiple Search indexes over the same collection.
 
 <PropertiesTable
   content={[
@@ -159,11 +151,7 @@ You can upsert data before or after creating the index. The `upsert` method does
 
 Searches for similar vectors.
 
-:::warning
-
-The `filter` and `includeVector` parameters aren't currently supported. Filtering must be performed client-side after retrieving results, or by using the Couchbase SDK's Search capabilities directly. To retrieve the vector embedding, fetch the full document by ID using the Couchbase SDK.
-
-:::
+> **warning**: The `filter` and `includeVector` parameters aren't currently supported. Filtering must be performed client-side after retrieving results, or by using the Couchbase SDK's Search capabilities directly. To retrieve the vector embedding, fetch the full document by ID using the Couchbase SDK.
 
 <PropertiesTable
   content={[

@@ -2,8 +2,6 @@
 title: 'Working with arrays in ClickHouse'
 description: 'Starter guide on how to use arrays in ClickHouse'
 keywords: ['Arrays']
-sidebar_label: 'Working with arrays in ClickHouse'
-slug: /guides/working-with-arrays
 doc_type: 'guide'
 ---
 
@@ -81,8 +79,7 @@ SELECT [1::UInt8, 2.5::Float32, 3::UInt8] AS mixed_array, toTypeName([1, 2.5, 3]
 └─────────────┴────────────────┘
 ```
 
-<details>
-<summary>Creating arrays of different types</summary>
+Creating arrays of different types
 
 You can use the `use_variant_as_common_type` setting to change the default behavior described above.
 This allows you to use the [Variant](/sql-reference/data-types/variant) type as a result type for `if`/`multiIf`/`array`/`map` functions when there is no common type for argument types.
@@ -118,8 +115,6 @@ SETTINGS use_variant_as_common_type = 1;
 │ [1,'ClickHouse',['Another','Array']] │ [1,NULL,NULL] │ [NULL,'ClickHouse',NULL] │ [[],[],['Another','Array']] │
 └──────────────────────────────────────┴───────────────┴──────────────────────────┴─────────────────────────────┘
 ```
-
-</details>
 
 Use of the index with square brackets provides a convenient way to access array elements.
 In ClickHouse, it's important to know that the array index always starts from **1**.
@@ -238,9 +233,7 @@ You can find this dataset on the [SQL playground](https://sql.clickhouse.com/?qu
 We've selected this dataset as arrays are often well suited to working with time-series data and can assist in simplifying
 otherwise complex queries.
 
-:::tip
-Click the "play" button below to run the queries directly in the docs and see the result live.
-:::
+> **tip**: Click the "play" button below to run the queries directly in the docs and see the result live.
 
 ### groupArray {#grouparray}
 

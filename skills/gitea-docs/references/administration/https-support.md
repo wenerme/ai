@@ -1,7 +1,5 @@
 ---
 date: "2018-06-02T11:00:00+02:00"
-slug: "https-setup"
-sidebar_position: 12
 aliases:
   - /en-us/https-setup
 ---
@@ -88,6 +86,4 @@ After that, enable HTTPS by following one of these guides:
 - [apache2/httpd](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
 - [caddy](https://caddyserver.com/docs/tls)
 
-:::note
-Enabling HTTPS only at the proxy level is referred as [TLS Termination Proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy). The proxy server accepts incoming TLS connections, decrypts the contents, and passes the now unencrypted contents to Gitea. This is normally fine as long as both the proxy and Gitea instances are either on the same machine, or on different machines within private network (with the proxy is exposed to outside network). If your Gitea instance is separated from your proxy over a public network, or if you want full end-to-end encryption, you can also [enable HTTPS support directly in Gitea using built-in server](#using-the-built-in-server) and forward the connections over HTTPS instead.
-:::
+> **note**: Enabling HTTPS only at the proxy level is referred as [TLS Termination Proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy). The proxy server accepts incoming TLS connections, decrypts the contents, and passes the now unencrypted contents to Gitea. This is normally fine as long as both the proxy and Gitea instances are either on the same machine, or on different machines within private network (with the proxy is exposed to outside network). If your Gitea instance is separated from your proxy over a public network, or if you want full end-to-end encryption, you can also [enable HTTPS support directly in Gitea using built-in server](#using-the-built-in-server) and forward the connections over HTTPS instead.

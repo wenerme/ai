@@ -1,6 +1,5 @@
 # MMMU-PRO
 
-
 ## Overview
 
 MMMU-PRO is an enhanced multimodal benchmark designed to rigorously assess the genuine understanding capabilities of advanced AI models across multiple modalities. It builds upon the original MMMU benchmark with key improvements that make evaluation more challenging and realistic.
@@ -30,7 +29,6 @@ MMMU-PRO is an enhanced multimodal benchmark designed to rigorously assess the g
 - Uses Chain-of-Thought (CoT) prompting for reasoning
 - Rich metadata includes topic difficulty and subject information
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ MMMU-PRO is an enhanced multimodal benchmark designed to rigorously assess the g
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -95,7 +92,6 @@ MMMU-PRO is an enhanced multimodal benchmark designed to rigorously assess the g
 | Images per Sample | min: 1, max: 35, mean: 1.18 |
 | Resolution Range | 43x50 - 2560x2545 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -190,5 +186,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

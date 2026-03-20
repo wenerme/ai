@@ -17,6 +17,4 @@ const decodedBytes = decodeBase64url(encodedData)
 const decodedText = new TextDecoder().decode(decodedBytes) // 'Hello World'
 ```
 
-::: info
-The `decodeBase64url` accepts `undefined` or `null` as encoded value and returns `undefined` for invalid inputs, enabling seamless handling of optional data.
-:::
+> **info**: The `decodeBase64url` accepts `undefined` or `null` as encoded value and returns `undefined` for invalid inputs, enabling seamless handling of optional data.

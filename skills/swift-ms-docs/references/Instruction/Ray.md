@@ -55,7 +55,6 @@ class MyTrainer:
             self.forward_model2(generated)
             ...
 
-
 if __name__ == '__main__':
     ...
     MyTrainer(args).train()
@@ -80,7 +79,6 @@ class Model2:
     @RayHelper.function(group='model2')
     def forward_and_optimize(self):
         ...
-
 
 class Trainer:
     ...

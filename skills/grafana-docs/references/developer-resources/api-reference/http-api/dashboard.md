@@ -36,13 +36,11 @@ Creates a new dashboard.
 
 See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:create` | <ul><li>`folders:*`</li><li>`folders:uid:*`</li></ul>                                                   |
 | `dashboards:write`  | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Create Request**:
 
@@ -487,12 +485,10 @@ Updates an existing dashboard via the dashboard uid.
 
 See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:write`  | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Update Request**:
 
@@ -582,12 +578,10 @@ Gets a dashboard via the dashboard uid.
 
 See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action            | Scope                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:read` | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Get Request**:
 
@@ -661,12 +655,10 @@ Lists all dashboards in the given organization. You can control the maximum numb
 
 See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action            | Scope                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:read` | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Get Request**:
 
@@ -790,12 +782,10 @@ Deletes a dashboard via the dashboard uid.
 
 See note in the [introduction](#new-dashboard-apis) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:delete` | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Delete Request**:
 
@@ -950,13 +940,11 @@ Creates a new dashboard or updates an existing dashboard. When updating existing
 
 See note in the [introduction](#dashboard-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:create` | <ul><li>`folders:*`</li><li>`folders:uid:*`</li></ul>                                                   |
 | `dashboards:write`  | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request for new dashboard**:
 
@@ -1072,12 +1060,10 @@ Will return the dashboard given the dashboard unique identifier (uid). Informati
 
 See note in the [introduction](#dashboard-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action            | Scope                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:read` | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 
@@ -1131,12 +1117,10 @@ Will delete the dashboard given the specified unique identifier (uid).
 
 See note in the [introduction](#dashboard-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action              | Scope                                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------- |
 | `dashboards:delete` | <ul><li>`dashboards:*`</li><li>`dashboards:uid:*`</li><li>`folders:*`</li><li>`folders:uid:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example Request**:
 

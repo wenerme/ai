@@ -1,20 +1,14 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Langsmith - Logging LLM Input/Output
-
-
 
 An all-in-one developer platform for every step of the application lifecycle
 https://smith.langchain.com/
 
 <Image img={require('../../img/langsmith_new.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-::: 
 
 ## Pre-Requisites
 ```shell
@@ -23,9 +17,6 @@ pip install litellm
 
 ## Quick Start
 Use just 2 lines of code, to instantly log your responses **across all providers** with Langsmith
-
-<Tabs>
-<TabItem value="python" label="SDK">
 
 ```python
 litellm.callbacks = ["langsmith"]
@@ -52,8 +43,6 @@ response = litellm.completion(
   ]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 ```yaml
@@ -88,10 +77,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
   "max_completion_tokens": 250
 }'
 ```
-</TabItem>
-</Tabs>
-
-
 
 ## Advanced
 
@@ -100,9 +85,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 Set the size of the batch that Langsmith will process at a time, default is 512. 
 
 Set `langsmith_batch_size=1` when testing locally, to see logs land quickly.
-
-<Tabs>
-<TabItem value="python" label="SDK">
 
 ```python
 import litellm
@@ -124,8 +106,6 @@ response = litellm.completion(
 )
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 ```yaml
@@ -161,14 +141,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
   "max_completion_tokens": 250
 }'
 ```
-
-
-
-</TabItem>
-</Tabs>
-
-
-
 
 ### Set Langsmith fields
 

@@ -7,11 +7,7 @@
 | Load Balancing | ✅ |
 | Supported Providers | `mistral`, `azure_ai`, `vertex_ai` |
 
-:::tip
-
-LiteLLM follows the [Mistral API request/response for the OCR API](https://docs.mistral.ai/capabilities/vision/#optical-character-recognition-ocr)
-
-:::
+> **tip**: LiteLLM follows the [Mistral API request/response for the OCR API](https://docs.mistral.ai/capabilities/vision/#optical-character-recognition-ocr)
 
 ## **LiteLLM Python SDK Usage**
 ### Quick Start 
@@ -206,13 +202,9 @@ curl http://0.0.0.0:4000/v1/ocr \
 
 ## **Request/Response Format**
 
-:::info
-
-LiteLLM follows the **Mistral OCR API specification**. 
+> **info**: LiteLLM follows the **Mistral OCR API specification**. 
 
 See the [official Mistral OCR documentation](https://docs.mistral.ai/capabilities/vision/#optical-character-recognition-ocr) for complete details.
-
-:::
 
 ### Example Request
 
@@ -339,7 +331,6 @@ The response follows Mistral's OCR format with the following structure:
 | `document_annotation` | object | Optional document-level annotations |
 | `object` | string | Always `"ocr"` for OCR responses |
 
-
 ## **Supported Providers**
 
 | Provider    | Link to Usage      |
@@ -347,4 +338,3 @@ The response follows Mistral's OCR format with the following structure:
 | Mistral AI  |   [Usage](#quick-start)                 |
 | Azure AI    |   [Usage](../docs/providers/azure_ocr)                 |
 | Vertex AI   |   [Usage](../docs/providers/vertex_ocr)                 |
-

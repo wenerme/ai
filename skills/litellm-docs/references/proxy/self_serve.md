@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Internal User Self-Serve
 
@@ -8,15 +6,9 @@ import TabItem from '@theme/TabItem';
 
 1. Add user with permissions to a team on proxy 
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 Go to `Internal Users` -> `+New User`
 
 <Image img={require('../../img/add_internal_user.png')}  style={{ width: '800px', height: 'auto' }} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 Create a new Internal User on LiteLLM and assign them the role `internal_user`.
 
@@ -51,20 +43,11 @@ Internal User Roles:
   - `internal_user`: can login, view/create/delete their own keys, view their spend. **Cannot** add new users.
   - `internal_user_viewer`: can login, view their own keys, view their own spend. **Cannot** create/delete keys, add new users.
 
-</TabItem>
-</Tabs>
-
 2. Share invitation link with user 
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 Copy the invitation link with the user 
 
 <Image img={require('../../img/invitation_link.png')}  style={{ width: '800px', height: 'auto' }} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -X POST '<PROXY_BASE_URL>/invitation/new' \
@@ -99,29 +82,15 @@ http://0.0.0.0:4000/ui/onboarding?id=a2f0918f-43b0-4770-a664-96ddd192966e
 # <YOUR_PROXY_BASE_URL>/ui/onboarding?id=<id>
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-
-Use [Email Notifications](./email.md) to email users onboarding links 
-
-:::
+> **info**: Use [Email Notifications](./email.md) to email users onboarding links 
 
 3. User logs in via email + password auth
 
 <Image img={require('../../img/ui_clean_login.png')}  style={{ width: '500px', height: 'auto' }} />
 
-
-
-:::info 
-
-LiteLLM Enterprise: Enable [SSO login](./ui.md#setup-ssoauth-for-ui)
-
-:::
+> **info**: LiteLLM Enterprise: Enable [SSO login](./ui.md#setup-ssoauth-for-ui)
 
 4. User can now create their own keys
-
 
 <Image img={require('../../img/ui_self_serve_create_key.png')}  style={{ width: '800px', height: 'auto' }} />
 
@@ -132,23 +101,18 @@ LiteLLM Enterprise: Enable [SSO login](./ui.md#setup-ssoauth-for-ui)
 Set their role to `Admin Viewer` - this means they can only view usage, caching analytics
 
 <Image img={require('../../img/ui_invite_user.png')}  style={{ width: '800px', height: 'auto' }} />
-<br />
 
 2. Share invitation link with user
 
-
 <Image img={require('../../img/ui_invite_link.png')}  style={{ width: '800px', height: 'auto' }} />
-<br />
 
 3. User logs in via email + password auth
 
 <Image img={require('../../img/ui_clean_login.png')}  style={{ width: '500px', height: 'auto' }} />
-<br />
 
 4. User can now view Usage, Caching Analytics
 
 <Image img={require('../../img/ui_usage.png')}  style={{ width: '800px', height: 'auto' }} />
-
 
 ## Available Roles
 Here's the available UI roles for a LiteLLM Internal User: 
@@ -164,7 +128,6 @@ Here's the available UI roles for a LiteLLM Internal User:
 **Team Roles:**
   - `admin`: can add new members to the team, can control Team Permissions, can add team-only models (useful for onboarding a team's finetuned models).
   - `user`: can login, view their own keys, view their own spend. **Cannot** create/delete keys (controllable via Team Permissions), add new users.
-
 
 ## Auto-add SSO users to teams
 
@@ -214,7 +177,6 @@ Follow this [tutorial for auto-adding sso users to teams with Microsoft Entra ID
 
 [**Go Here**](./admin_ui_sso.md#debugging-sso-jwt-fields)
 
-
 ## Advanced
 ### Setting custom logout URLs
 
@@ -225,7 +187,6 @@ export PROXY_LOGOUT_URL="https://www.google.com"
 ```
 
 <Image img={require('../../img/ui_logout.png')}  style={{ width: '400px', height: 'auto' }} />
-
 
 ### Set default max budget for internal users 
 
@@ -249,15 +210,11 @@ This budget only applies to personal keys created by that user - seen under `Def
 
 This budget does not apply to keys created under non-default teams.
 
-
 ### Set max budget for teams
 
 [**Go Here**](./team_budgets.md)
 
 ### Default Team
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 Go to `Internal Users` -> `Default User Settings` and set the default team to the team you just created. 
 
@@ -265,13 +222,7 @@ Let's also set the default models to `no-default-models`. This means a user can 
 
 <Image img={require('../../img/default_user_settings_with_default_team.png')}  style={{ width: '1000px', height: 'auto' }} />
 
-</TabItem>
-<TabItem value="yaml" label="YAML">
-
-:::info
-Team must be created before setting it as the default team. 
-:::
-
+> **info**: Team must be created before setting it as the default team. 
 ```yaml
 litellm_settings:
   default_internal_user_params:    # Default Params used when a new user signs in Via SSO
@@ -282,22 +233,13 @@ litellm_settings:
           user_role: "user" # Optional[str], optional): Default role in the team. Values: "user" or "admin". Defaults to "user"
 ```
 
-</TabItem>
-</Tabs>
-
 ### Team Member Budgets
 
 Set a max budget for a team member. 
 
 You can do this when creating a new team, or by updating an existing team. 
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 <Image img={require('../../img/create_default_team.png')}  style={{ width: '600px', height: 'auto' }} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -X POST '<PROXY_BASE_URL>/team/new' \
@@ -310,23 +252,13 @@ curl -X POST '<PROXY_BASE_URL>/team/new' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Team Member Rate Limits
 
 Set a default tpm/rpm limit for an individual team member. 
 
 You can do this when creating a new team, or by updating an existing team. 
 
-
-<Tabs>
-<TabItem value="ui" label="UI">
-
 <Image img={require('../../img/create_team_member_rate_limits.png')}  style={{ width: '600px', height: 'auto' }} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -X POST '<PROXY_BASE_URL>/team/new' \
@@ -338,11 +270,6 @@ curl -X POST '<PROXY_BASE_URL>/team/new' \
     "team_member_tpm_limit": 1000
 }'
 ```
-
-</TabItem>
-</Tabs>
-
-
 
 ### Set default params for new teams
 
@@ -363,7 +290,6 @@ litellm_settings:
     budget_duration: 30d           # Optional[str], optional): 30 days budget_duration for the team
     models: ["gpt-3.5-turbo"]      # Optional[List[str]], optional): models to be used by the team
 ```
-
 
 ### Restrict Users from creating personal keys 
 
@@ -394,7 +320,6 @@ litellm_settings:
     max_budget: 100                # Optional[float], optional): $100 budget for the team
     budget_duration: 30d           # Optional[str], optional): 30 days budget_duration for the team
     models: ["gpt-3.5-turbo"]      # Optional[List[str]], optional): models to be used by the team
-
 
   upperbound_key_generate_params:    # Upperbound for /key/generate requests when self-serve flow is on
     max_budget: 100 # Optional[float], optional): upperbound of $100, for all /key/generate requests

@@ -1,14 +1,10 @@
 ---
 title: 'Managing data'
 description: 'Managing data for Observability'
-slug: /observability/managing-data
 keywords: ['observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import observability_14 from '@site/static/images/use-cases/observability/observability-14.png';
-import Image from '@theme/IdealImage';
 
 # Managing data
 
@@ -116,9 +112,8 @@ Peak memory usage: 4.99 MiB.
 
 This is in contrast to other techniques, which would require the use of an `INSERT INTO SELECT` and a rewrite of the data into the new target table.
 
-:::note Moving partitions
+> **note**: Moving partitions
 [Moving partitions between tables](/sql-reference/statements/alter/partition#move-partition-to-table) requires several conditions to be met, not least tables must have the same structure, partition key, primary key and indices/projections. Detailed notes on how to specify partitions in `ALTER` DDL can be found [here](/sql-reference/statements/alter/partition#how-to-set-partition-expression).
-:::
 
 Furthermore, data can be efficiently deleted by partition. This is far more resource-efficient than alternative techniques (mutations or lightweight deletes) and should be preferred.
 
@@ -139,9 +134,7 @@ ORDER BY c DESC
 └────────────┴─────────┘
 ```
 
-:::note
-This feature is exploited by TTL when the setting [`ttl_only_drop_parts=1`](/operations/settings/merge-tree-settings#ttl_only_drop_parts) is used. See [Data management with TTL](#data-management-with-ttl-time-to-live) for further details.
-:::
+> **note**: This feature is exploited by TTL when the setting [`ttl_only_drop_parts=1`](/operations/settings/merge-tree-settings#ttl_only_drop_parts) is used. See [Data management with TTL](#data-management-with-ttl-time-to-live) for further details.
 
 ### Applications {#applications}
 
@@ -184,9 +177,8 @@ SETTINGS ttl_only_drop_parts = 1
 
 By default, data with an expired TTL is removed when ClickHouse [merges data parts](/engines/table-engines/mergetree-family/mergetree#mergetree-data-storage). When ClickHouse detects that data is expired, it performs an off-schedule merge.
 
-:::note Scheduled TTLs
+> **note**: Scheduled TTLs
 TTLs aren't applied immediately but rather on a schedule, as noted above. The MergeTree table setting `merge_with_ttl_timeout` sets the minimum delay in seconds before repeating a merge with delete TTL. The default value is 14400 seconds (4 hours). But that is just the minimum delay, it can take longer until a TTL merge is triggered. If the value is too low, it will perform many off-schedule merges that may consume a lot of resources. A TTL expiration can be forced using the command `ALTER TABLE my_table MATERIALIZE TTL`.
-:::
 
 **Important: We recommend using the setting [`ttl_only_drop_parts=1`](/operations/settings/merge-tree-settings#ttl_only_drop_parts) ** (applied by the default schema). When this setting is enabled, ClickHouse drops a whole part when all rows in it are expired. Dropping whole parts instead of partial cleaning TTL-d rows (achieved through resource-intensive mutations when `ttl_only_drop_parts=0`) allows having shorter `merge_with_ttl_timeout` times and lower impact on system performance. If data is partitioned by the same unit at which you perform TTL expiration e.g. day, parts will naturally only contain data from the defined interval. This will ensure `ttl_only_drop_parts=1` can be efficiently applied.
 
@@ -207,9 +199,7 @@ ENGINE = MergeTree
 ORDER BY (ServiceName, Timestamp)
 ```
 
-:::note
-Specifying a column level TTL requires users to specify their own schema. This can't be specified in the OTel collector.
-:::
+> **note**: Specifying a column level TTL requires users to specify their own schema. This can't be specified in the OTel collector.
 
 ## Recompressing data {#recompressing-data}
 
@@ -243,9 +233,8 @@ ORDER BY (ServiceName, Timestamp)
 TTL Timestamp + INTERVAL 4 DAY RECOMPRESS CODEC(ZSTD(3))
 ```
 
-:::note Evaluate performance
+> **note**: Evaluate performance
 We recommend users always evaluate both the insert and query performance impact of different compression levels and algorithms. For example, delta codecs can be helpful in the compression of timestamps. However, if these are part of the primary key then filtering performance can suffer.
-:::
 
 Further details and examples on configuring TTL can be found [here](/engines/table-engines/mergetree-family/mergetree#table_engine-mergetree-multiple-volumes). Examples such as how TTLs can be added and modified for tables and columns, can be found [here](/engines/table-engines/mergetree-family/mergetree#table_engine-mergetree-ttl). For how TTLs enable storage hierarchies such as hot-warm architectures, see [Storage tiers](#storage-tiers).
 
@@ -253,9 +242,8 @@ Further details and examples on configuring TTL can be found [here](/engines/tab
 
 In ClickHouse, you may create storage tiers on different disks, e.g. hot/recent data on SSD and older data backed by S3. This architecture allows less expensive storage to be used for older data, which has higher query SLAs due to its infrequent use in investigations.
 
-:::note Not relevant to ClickHouse Cloud
+> **note**: Not relevant to ClickHouse Cloud
 ClickHouse Cloud uses a single copy of the data that is backed on S3, with SSD-backed node caches. Storage tiers in ClickHouse Cloud, therefore, aren't required.
-:::
 
 The creation of storage tiers requires users to create disks, which are then used to formulate storage policies, with volumes that can be specified during table creation. Data can be automatically moved between disks based on fill rates, part sizes, and volume priorities. Further details can be found [here](/engines/table-engines/mergetree-family/mergetree#table_engine-mergetree-multiple-volumes).
 

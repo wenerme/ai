@@ -2,7 +2,6 @@
 
 Set temporary budget increase for a LiteLLM Virtual Key. Use this if you get asked to increase the budget for a key temporarily.
 
-
 | Hierarchy | Supported | 
 |-----------|-----------|
 | LiteLLM Virtual Key | ✅ |
@@ -10,16 +9,11 @@ Set temporary budget increase for a LiteLLM Virtual Key. Use this if you get ask
 | Team | ❌ |
 | Organization | ❌ |
 
-:::note
-
-✨ Temporary Budget Increase is a LiteLLM Enterprise feature.
+> **note**: ✨ Temporary Budget Increase is a LiteLLM Enterprise feature.
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-:::
-
 
 1. Create a LiteLLM Virtual Key with budget
 
@@ -70,5 +64,3 @@ Expected Response Header:
 ```
 x-litellm-key-max-budget: 100.0000001
 ```
-
-

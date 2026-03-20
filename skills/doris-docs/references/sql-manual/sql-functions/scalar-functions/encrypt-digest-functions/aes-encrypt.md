@@ -30,7 +30,6 @@ AES_ENCRYPT( <str>, <key_str>[, <init_vector>][, <encryption_mode>])
 | `<init_vector>`     | It is the initial vector used in the algorithm. It is only effective under specific algorithms. If not specified, Doris uses the built-in vector                                                                                                                                                          |
 | `<encryption_mode>` | For encryption algorithms, optional values ​​are given in variables                                                                                                                                                                                       |
 
-
 ## Return Value
 
 Returns the encrypted binary data

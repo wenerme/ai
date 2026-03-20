@@ -1,11 +1,9 @@
-import Image from '@theme/IdealImage';
 
 # Role-based Access Controls (RBAC)
 
 Role-based access control (RBAC) is based on Organizations, Teams and Internal User Roles
 
 <Image img={require('../../img/litellm_user_heirarchy.png')} style={{ width: '100%', maxWidth: '4000px' }} />
-
 
 - `Organizations` are the top-level entities that contain Teams.
 - `Team` - A Team is a collection of multiple `Internal Users`
@@ -110,16 +108,14 @@ An internal user can create API keys (when allowed by team-specific permissions)
 - View their own spend and usage
 - Make API calls using their keys
 
-
 **Who should be an internal user:** Anyone who needs UI access for team/org specific operations **OR** for developers you plan to give multiple keys to.
 
 ---
 
 ### Internal User Viewer - Read-Only Access
 
-:::warning DEPRECATED
+> **warning**: DEPRECATED
 This role is deprecated in favor of team/org specific roles. Use `org_admin` or `team_admin` roles for better granular control over user permissions within organizations and teams.
-:::
 
 An internal user viewer can view their own information but cannot create or delete keys.
 
@@ -140,9 +136,7 @@ An internal user viewer can view their own information but cannot create or dele
 
 ## Organization/Team Specific Roles
 
-:::info 
-Organization/Team specific roles are premium features. You need to be a LiteLLM Enterprise user to use them. [Get a 7 day trial here](https://www.litellm.ai/#trial).
-:::
+> **info**: Organization/Team specific roles are premium features. You need to be a LiteLLM Enterprise user to use them. [Get a 7 day trial here](https://www.litellm.ai/#trial).
 
 These roles are scoped to specific organizations or teams. Users with these roles can only manage resources within their assigned organization or team.
 
@@ -184,10 +178,9 @@ A team admin manages a specific team. They're like a team lead who can add peopl
 - Modify team's budget / rate limits
 - Add/remove global proxy models to their team
 
-
 **Who should be a team admin:** Team leads who need to manage their team's API access without bothering IT.
 
-:::info How to create a team admin
+> **info**: How to create a team admin
 
 You need to be a LiteLLM Enterprise user to assign team admins. [Get a 7 day trial here](https://www.litellm.ai/#trial).
 
@@ -197,8 +190,6 @@ curl -X POST 'http://0.0.0.0:4000/team/member_add' \
     -H 'Content-Type: application/json' \
     -d '{"team_id": "team-123", "member": {"role": "admin", "user_id": "user@company.com"}}'
 ```
-
-:::
 
 ---
 
@@ -374,7 +365,6 @@ Expected Response
 }
 ```
 
-
 ### 2. Adding an `org_admin` to an Organization
 
 Create a user (ishaan@berri.ai) as an `org_admin` for the `marketing_department` Organization (from [step 1](#1-creating-a-new-organization))
@@ -439,7 +429,6 @@ Expected Response
   "organization_id": "ad15e8ca-12ae-46f4-8659-d02debef1b23",
 }
 ```
-
 
 ### 4. `Organization Admin` - Add a Team Admin
 
@@ -516,4 +505,3 @@ curl --location 'http://0.0.0.0:4000/team/update' \
         "rpm_limit": 1000
     }'
 ```
-

@@ -8,7 +8,6 @@
 | API Endpoint for Provider | https://api.topazlabs.com |
 | Supported OpenAI Endpoints | `/image/variations` |
 
-
 ## Quick Start
 
 ```python

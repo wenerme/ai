@@ -1,6 +1,5 @@
 # ScienceQA
 
-
 ## Overview
 
 ScienceQA is a multimodal benchmark consisting of multiple-choice science questions derived from elementary and high school curricula. It covers diverse subjects including natural science, social science, and language science, with questions accompanied by both image and text contexts.
@@ -29,7 +28,6 @@ ScienceQA is a multimodal benchmark consisting of multiple-choice science questi
 - Metadata includes solution explanations for analysis
 - Questions span grades from elementary to high school
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ ScienceQA is a multimodal benchmark consisting of multiple-choice science questi
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -59,7 +56,6 @@ ScienceQA is a multimodal benchmark consisting of multiple-choice science questi
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 170x77 - 750x625 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -140,5 +136,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

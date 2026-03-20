@@ -8,7 +8,6 @@
 
 ## Description
 
-
 SECOND_CEIL function rounds the input datetime value up to the nearest specified second period. If origin is specified, it uses that as the basis; otherwise, it defaults to 0001-01-01 00:00:00. The function supports processing DATETIME type.
 
 Date calculation formula:

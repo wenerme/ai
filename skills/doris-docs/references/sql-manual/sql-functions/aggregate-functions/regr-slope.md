@@ -10,7 +10,6 @@
 
 Returns the slope of the linear regression line for non-null pairs in a group.
 
-
 ## Syntax
 
 ```sql
@@ -57,7 +56,6 @@ SELECT REGR_SLOPE(y, x) FROM test_regr_slope;
 ```
 
 Calculate the linear regression slope of x and y.
-
 
 ```text
 +--------------------+

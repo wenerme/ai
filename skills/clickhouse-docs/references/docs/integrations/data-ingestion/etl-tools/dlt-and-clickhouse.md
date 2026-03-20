@@ -1,13 +1,9 @@
 ---
-sidebar_label: 'dlt'
 keywords: ['clickhouse', 'dlt', 'connect', 'integrate', 'etl', 'data integration']
 description: 'Load data into Clickhouse using dlt integration'
 title: 'Connect dlt to ClickHouse'
-slug: /integrations/data-ingestion/etl-tools/dlt-and-clickhouse
 doc_type: 'guide'
 ---
-
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Connect dlt to ClickHouse
 
@@ -33,9 +29,7 @@ Start by initializing a new `dlt` project as follows:
 dlt init chess clickhouse
 ```
 
-:::note
-This command will initialize your pipeline with chess as the source and ClickHouse as the destination.
-:::
+> **note**: This command will initialize your pipeline with chess as the source and ClickHouse as the destination.
 
 The above command generates several files and directories, including `.dlt/secrets.toml` and a requirements file for ClickHouse. You can install the necessary dependencies specified in the requirements file by executing it as follows:
 ```bash
@@ -80,13 +74,12 @@ secure = 1                               # Set to 1 if using HTTPS, else 0.
 dataset_table_separator = "___"          # Separator for dataset table names from dataset.
 ```
 
-:::note HTTP_PORT
+> **note**: HTTP_PORT
 The `http_port` parameter specifies the port number to use when connecting to the ClickHouse server's HTTP interface. This is different from default port 9000, which is used for the native TCP protocol.
 
 You must set `http_port` if you're not using external staging (i.e. you don't set the staging parameter in your pipeline). This is because the built-in ClickHouse local storage staging uses the <a href="https://github.com/ClickHouse/clickhouse-connect">clickhouse content</a> library, which communicates with ClickHouse over HTTP.
 
 Make sure your ClickHouse server is configured to accept HTTP connections on the port specified by `http_port`. For example, if you set `http_port = 8443`, then ClickHouse should be listening for HTTP requests on port 8443. If you're using external staging, you can omit the `http_port` parameter, since clickhouse-connect won't be used in this case.
-:::
 
 You can pass a database connection string similar to the one used by the `clickhouse-driver` library. The credentials above will look like this:
 

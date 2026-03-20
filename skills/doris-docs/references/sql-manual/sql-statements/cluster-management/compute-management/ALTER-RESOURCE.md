@@ -28,7 +28,6 @@ The `<property>` format is `<key>` = `<value>`, and modifying the `<value>` wher
 
 The modified properties parameters can be referenced in the [CREATE-RESOURCE](./CREATE-RESOURCE.md) section.
 
-
 ## Examples
 
 1. Modify the working directory of the Spark resource named spark0:

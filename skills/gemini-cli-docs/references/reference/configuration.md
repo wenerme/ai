@@ -25,7 +25,6 @@ overridden by higher numbers):
 Gemini CLI uses JSON settings files for persistent configuration. There are four
 locations for these files:
 
-<!-- prettier-ignore -->
 > [!TIP]
 > JSON-aware editors can use autocomplete and validation by pointing to
 > the generated schema at `schemas/settings.schema.json` in this repository.
@@ -84,8 +83,6 @@ contain other project-specific files related to Gemini CLI's operation, such as:
 
 Settings are organized into categories. All settings should be placed within
 their corresponding top-level category object in your `settings.json` file.
-
-<!-- SETTINGS-AUTOGEN:START -->
 
 #### `policyPaths`
 
@@ -1738,7 +1735,7 @@ their corresponding top-level category object in your `settings.json` file.
 - **`admin.skills.enabled`** (boolean):
   - **Description:** If false, disallows agent skills from being used.
   - **Default:** `true`
-  <!-- SETTINGS-AUTOGEN:END -->
+  
 
 #### `mcpServers`
 
@@ -1752,7 +1749,6 @@ for compatibility. At least one of `command`, `url`, or `httpUrl` must be
 provided. If multiple are specified, the order of precedence is `httpUrl`, then
 `url`, then `command`.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Avoid using underscores (`_`) in your server aliases (e.g., use
 > `my-server` instead of `my_server`). The underlying policy engine parses Fully

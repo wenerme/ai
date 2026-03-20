@@ -1,14 +1,9 @@
 ---
 title: 'Overview'
-slug: /cloud/reference/byoc/overview
-sidebar_label: 'Overview'
 keywords: ['BYOC', 'cloud', 'bring your own cloud']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc1 from '@site/static/images/cloud/reference/byoc-1.png';
 
 ## Overview {#overview}
 
@@ -18,9 +13,7 @@ At a high level, BYOC separates the ClickHouse control plane, which runs in the 
 
 > **If you would like access, please [contact us](https://clickhouse.com/cloud/bring-your-own-cloud).** Refer to our [Terms of Service](https://clickhouse.com/legal/agreements/terms-of-service) for additional information.
 
-:::note 
-BYOC is designed specifically for large-scale deployments, and requires customers to sign a committed contract.
-:::
+> **note**: BYOC is designed specifically for large-scale deployments, and requires customers to sign a committed contract.
 
 **Supported Cloud Service Providers:**
 * AWS (GA)

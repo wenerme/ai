@@ -42,6 +42,3 @@ Remove all elements equal to the given value from an array while preserving the 
 
 - No match
   - `ARRAY_REMOVE([1,2,3], 258)` -> `[1,2,3]`
-
-
-

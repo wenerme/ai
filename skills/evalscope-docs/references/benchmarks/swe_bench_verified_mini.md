@@ -1,6 +1,5 @@
 # SWE-bench_Verified_mini
 
-
 ## Overview
 
 SWE-bench Verified Mini is a compact subset of SWE-bench Verified, containing 50 carefully selected samples that maintain the same distribution of performance, test pass rates, and difficulty as the full dataset while requiring only 5GB of storage instead of 130GB.
@@ -27,7 +26,6 @@ SWE-bench Verified Mini is a compact subset of SWE-bench Verified, containing 50
 - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/swe_bench.html) for detailed setup
 - Good for rapid prototyping and initial model assessment
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ SWE-bench Verified Mini is a compact subset of SWE-bench Verified, containing 50
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -99,5 +96,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

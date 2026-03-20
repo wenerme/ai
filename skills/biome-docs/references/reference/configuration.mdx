@@ -3,8 +3,6 @@ title: Configuration
 description: How to customize and configure Biome with biome.json.
 ---
 
-{/** Make sure to update the redirect in `static/_redirects` when changing the configuration title --> **/}
-
 ## `$schema`
 
 Allows to pass a path to a JSON schema file.
@@ -49,7 +47,6 @@ When a configuration file is a "nested configuration", it must set `"root": fals
 This is required so Biome can orchestrate multiple files in CLI and editors at the same time.
 
 > Default: `true`
-
 
 ## `files`
 
@@ -102,9 +99,7 @@ This example specifies that:
 4. ... _except_ when it occurs in the folder named `test`, because _no_ files
    inside that folder are processed.
 
-:::note
-Using `!test` to completely exclude a directory is only supported in `files.includes`. In other places where `includes` is used (`linter.includes`, `formatter.includes`, etc.), you need to use `!/test/**` to exclude the directory.
-:::
+> **note**: Using `!test` to completely exclude a directory is only supported in `files.includes`. In other places where `includes` is used (`linter.includes`, `formatter.includes`, etc.), you need to use `!/test/**` to exclude the directory.
 
 This means that:
 
@@ -183,12 +178,10 @@ this limit will be ignored for performance reasons.
 
 ### `files.experimentalScannerIgnores`
 
-:::caution
-This option has been **deprecated** and may be removed in a future release.
+> **caution**: This option has been **deprecated** and may be removed in a future release.
 Please use the
 [_force-ignore syntax_](/reference/configuration/#interaction-with-the-scanner)
 with `files.includes` instead.
-:::
 
 An array of literal path segments that the scanner should ignore during the
 crawling. The ignored files won't be indexed, which means that these files won't
@@ -308,18 +301,15 @@ that any file that is not matched by `files.includes` can no longer be matched
 If `linter.includes` is not specified, all files matched by
 [`files.includes`](#filesincludes) are linted.
 
-:::note
-Due to a technical limitation, `linter.includes` also cannot match folders
+> **note**: Due to a technical limitation, `linter.includes` also cannot match folders
 while `files.includes` can. If you want to match all files inside a folder,
 you should explicitly add `/**` at the end.
-:::
 
 ### `linter.rules.recommended`
 
 Enables the recommended rules for all groups.
 
 > Default: `true`
-
 
 ### `linter.rules.[group]`
 
@@ -359,7 +349,6 @@ Here are the accepted values:
 - `"warn"`: all rules that belong to the group will emit a [diagnostic with warning severity](/reference/diagnostics#warning).
 - `"error"`: all rules that belong to the group will emit a [diagnostic with error severity](/reference/diagnostics#error).
 
-
 ### `linter.rules.[group].recommended`
 
 Enables the recommended rules for a single group.
@@ -386,7 +375,6 @@ Example:
 Enables Biome's assist.
 
 > Default: `true`
-
 
 ### `assist.includes`
 
@@ -455,11 +443,9 @@ that any file that is not matched by `files.includes` can no longer be matched
 If `assist.includes` is not specified, all files matched by
 [`files.includes`](#filesincludes) are linted.
 
-:::note
-Due to a technical limitation, `assist.includes` also cannot match folders
+> **note**: Due to a technical limitation, `assist.includes` also cannot match folders
 while `files.includes` can. If you want to match all files inside a folder,
 you should explicitly add `/**` at the end.
-:::
 
 ### `assist.actions.recommended`
 
@@ -567,17 +553,13 @@ that any file that is not matched by `files.includes` can no longer be matched
 If `formatter.includes` is not specified, all files matched by
 [`files.includes`](#filesincludes) are formatted.
 
-:::note
-Due to a technical limitation, `formatter.includes` also cannot match folders
+> **note**: Due to a technical limitation, `formatter.includes` also cannot match folders
 while `files.includes` can. If you want to match all files inside a folder,
 you should explicitly add `/**` at the end.
-:::
 
 ### `formatter.formatWithErrors`
 
 Allows to format a document that has syntax errors.
-
-
 
 ```json title="biome.json"
 {
@@ -595,14 +577,11 @@ The style of the indentation. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
 
-
 ### `formatter.indentWidth`
 
 How big the indentation should be.
 
-:::note
-This property is ignored when `indentStyle` is set to `tab`.
-:::
+> **note**: This property is ignored when `indentStyle` is set to `tab`.
 
 > Default: `2`
 
@@ -653,15 +632,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
-
 
 ### `formatter.useEditorconfig`
 
@@ -674,7 +650,6 @@ The config files `.editorconfig` and `biome.json` will follow the following rule
 - Nested `.editorconfig` files aren't supported currently.
 
 > Default: `false`
-
 
 ## `javascript`
 
@@ -695,7 +670,6 @@ Allows to support the unsafe/experimental parameter decorators.
 ```
 
 > Default: `false`
-
 
 ### `javascript.parser.jsxEverywhere`
 
@@ -780,7 +754,6 @@ It configures where the formatter prints semicolons:
 
 Example:
 
-
 ```json title="biome.json"
 {
   "javascript": {
@@ -810,7 +783,6 @@ Enables Biome's formatter for JavaScript (and its super languages) files.
 The style of the indentation for JavaScript (and its super languages) files. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
-
 
 ### `javascript.formatter.indentWidth`
 
@@ -863,7 +835,6 @@ Whether to expand arrays and objects on multiple lines.
 
 > Default: `"auto"`
 
-
 ### `javascript.formatter.operatorLinebreak`
 
 When breaking binary expressions into multiple lines, whether to break them before or after the binary operator.
@@ -895,14 +866,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
 
 ### `javascript.globals`
 
@@ -945,7 +914,6 @@ Enables Biome's linter for JavaScript (and its super languages) files.
 
 > Default: `true`
 
-
 ```json title="biome.json"
 {
   "javascript": {
@@ -955,7 +923,6 @@ Enables Biome's linter for JavaScript (and its super languages) files.
   }
 }
 ```
-
 
 ### `javascript.assist.enabled`
 
@@ -973,7 +940,6 @@ Enables Biome's assist for JavaScript (and its super languages) files.
 }
 ```
 
-
 ### `javascript.experimentalEmbeddedSnippetsEnabled`
 
 Enables parsing and formatting embedded language snippets in JavaScript (and its super languages) files.
@@ -988,7 +954,6 @@ Enables parsing and formatting embedded language snippets in JavaScript (and its
 }
 ```
 
-
 ## `json`
 
 Options applied to the JSON files.
@@ -996,8 +961,6 @@ Options applied to the JSON files.
 ### `json.parser.allowComments`
 
 Enables the parsing of comments in JSON files.
-
-
 
 ```json title="biome.json"
 {
@@ -1012,8 +975,6 @@ Enables the parsing of comments in JSON files.
 ### `json.parser.allowTrailingCommas`
 
 Enables the parsing of trailing commas in JSON files.
-
-
 
 ```json title="biome.json"
 {
@@ -1043,11 +1004,9 @@ Enables Biome's formatter for JSON (and its super languages) files.
 
 ### `json.formatter.indentStyle`
 
-
 The style of the indentation for JSON (and its super languages) files. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
-
 
 ### `json.formatter.indentWidth`
 
@@ -1104,14 +1063,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
 
 ### `json.linter.enabled`
 
@@ -1128,7 +1085,6 @@ Enables Biome's formatter for JSON (and its super languages) files.
   }
 }
 ```
-
 
 ### `json.assist.enabled`
 
@@ -1182,18 +1138,15 @@ Enables Biome's formatter for CSS files.
 
 ### `css.formatter.indentStyle`
 
-
 The style of the indentation for CSS files. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
-
 
 ### `css.formatter.indentWidth`
 
 How big the indentation should be for CSS files.
 
 > Default: `2`
-
 
 ```json title="biome.json"
 {
@@ -1214,8 +1167,6 @@ The type of line ending for CSS  files.
 
 > Default: `"lf"`
 
-
-
 ### `css.formatter.lineWidth`
 
 The amount of characters that can be written on a single line in CSS files.
@@ -1234,15 +1185,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
-
 
 ### `css.linter.enabled`
 
@@ -1279,7 +1227,6 @@ Enables Biome's assist for CSS files.
 
 Options applied to the GraphQL files.
 
-
 ### `graphql.formatter.enabled`
 
 Enables Biome's formatter for GraphQL files.
@@ -1288,11 +1235,9 @@ Enables Biome's formatter for GraphQL files.
 
 ### `graphql.formatter.indentStyle`
 
-
 The style of the indentation for GraphQL files. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
-
 
 ### `graphql.formatter.indentWidth`
 
@@ -1327,14 +1272,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
 
 ### `graphql.linter.enabled`
 
@@ -1348,12 +1291,9 @@ Enables Biome's assist for GraphQL files.
 
 > Default: `true`
 
-
-
 ## `grit`
 
 Options applied to the Grit files.
-
 
 ### `grit.formatter.enabled`
 
@@ -1363,11 +1303,9 @@ Enables Biome's formatter for Grit files.
 
 ### `grit.formatter.indentStyle`
 
-
 The style of the indentation for Grit files. It can be `"tab"` or `"space"`.
 
 > Default: `"tab"`
-
 
 ### `grit.formatter.indentWidth`
 
@@ -1402,14 +1340,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
 
 ### `grit.linter.enabled`
 
@@ -1445,11 +1381,9 @@ Enables Biome's assist for Grit files.
 
 ## `html`
 
-:::caution
-The HTML formatter is **disabled** by default because it is still experimental.
+> **caution**: The HTML formatter is **disabled** by default because it is still experimental.
 Breaking changes will be reduced to a minimum, however the introduction of fixes and features might change
 the behavior of the tools.
-:::
 
 ### `html.experimentalFullSupportEnabled`
 
@@ -1458,10 +1392,8 @@ embedded languages inside these files are consistent.
 
 When disabled, Biome will only extract the JavaScript/TypeScript parts of these files for analysis, while ignoring the rest of the content.
 
-:::note
-Enabling this option merely switches this behavior for these files, not plain `.html` files. To format HTML files, you also
+> **note**: Enabling this option merely switches this behavior for these files, not plain `.html` files. To format HTML files, you also
 need to enable `html.formatter.enabled`.
-:::
 
 ### `html.parser.interpolation`
 
@@ -1475,9 +1407,7 @@ Enables Biome's formatter for HTML files.
 
 > Default: `false`
 
-:::note
-This will be enabled by default when the HTML formatter is no longer experimental.
-:::
+> **note**: This will be enabled by default when the HTML formatter is no longer experimental.
 
 ### `html.formatter.indentStyle`
 
@@ -1527,7 +1457,6 @@ Whether to hug the closing bracket of multiline HTML tags to the end of the last
 Whether to account for whitespace sensitivity when formatting HTML (and its super languages).
 
 > Default: "css"
-
 
 - `"css"`: The formatter considers whitespace significant for elements that have an "inline" display style by default in browser's user agent style sheets.
 - `"strict"`: Leading and trailing whitespace in content is considered significant for all elements.
@@ -1579,14 +1508,12 @@ Whether to add a trailing newline at the end of the file.
 
 > Defaults to true.
 
-:::danger
-Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
+> **danger**: Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
 - https://thoughtbot.com/blog/no-newline-at-end-of-file
 - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
 - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
 
 Disable trailing newline at your own risk.
-:::
 
 ### `html.linter.enabled`
 
@@ -1599,7 +1526,6 @@ Enables Biome's linter for HTML files.
 Enables Biome's assist for HTML files.
 
 > Default: `true`
-
 
 ## `overrides`
 
@@ -1653,7 +1579,6 @@ For example, it's possible to modify the formatter `lineWidth`, `indentStyle` fo
 ### `overrides.<ITEM>.linter`
 
 Includes the options of the [top level linter](#linter) configuration, minus `ignore` and `include`.
-
 
 #### Examples
 
@@ -1719,11 +1644,9 @@ You can change the formatting behaviour of JavaScript files in certain folders:
 }
 ```
 
-
 ### `overrides.<ITEM>.json`
 
 Includes the options of the [top level json](#json) configuration. Lets you override JSON-specific settings for certain files.
-
 
 #### Examples
 
@@ -1789,10 +1712,8 @@ Some examples:
   where they are. E.g. `dist/test`, `src/test`.
 - `**/*.js` matches all files ending with the extension `.js` in all folders.
 
-:::caution
-Glob patterns can be used in a Biome configuration file, but they can also be
+> **caution**: Glob patterns can be used in a Biome configuration file, but they can also be
 specified from the command line. When you specify a glob on the command line,
 it is interpreted by your shell rather than by Biome. Shells may support
 slightly different syntax for globs. For instance, some shells do not support
 the recursive pattern `**`.
-:::

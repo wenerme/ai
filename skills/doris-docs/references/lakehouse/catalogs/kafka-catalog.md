@@ -10,10 +10,8 @@
 
 Kafka Catalog uses the Trino Kafka Connector through the [Trino Connector](https://doris.apache.org/community/how-to-contribute/trino-connector-developer-guide/) compatibility framework to access Kafka Topic data.
 
-:::note
-- This is an experimental feature, supported since version 3.0.1.
+> **note**: - This is an experimental feature, supported since version 3.0.1.
 - This feature does not depend on a Trino cluster environment; it only uses Trino-compatible plugins.
-:::
 
 ### Use Cases
 
@@ -177,9 +175,7 @@ CREATE CATALOG kafka PROPERTIES (
 | `trino.kafka.confluent-schema-registry.basic-auth.password` | No | - | Basic Auth password |
 | `trino.kafka.confluent-schema-registry-subject-mapping` | No | - | Subject name mapping, format: `<db1>.<tbl1>:<topic_name1>,<db2>.<tbl2>:<topic_name2>` |
 
-:::tip
-When using Schema Registry, Doris will automatically retrieve Topic schema information from Schema Registry, eliminating the need to manually create table structures.
-:::
+> **tip**: When using Schema Registry, Doris will automatically retrieve Topic schema information from Schema Registry, eliminating the need to manually create table structures.
 
 ### Subject Mapping
 
@@ -291,10 +287,8 @@ When using Kafka Catalog, data types are mapped according to the following rules
 | fixed | varbinary | string | |
 | null | - | - | |
 
-:::tip
-- For `bytes` type, use the `HEX()` function to display in hexadecimal format.
+> **tip**: - For `bytes` type, use the `HEX()` function to display in hexadecimal format.
 - The data types supported by Kafka Catalog depend on the serialization format used (JSON, Avro, Protobuf, etc.) and Schema Registry configuration.
-:::
 
 ## Kafka Internal Columns
 

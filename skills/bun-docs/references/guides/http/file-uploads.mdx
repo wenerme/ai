@@ -1,6 +1,5 @@
 ---
 title: Upload files via HTTP using FormData
-sidebarTitle: Upload files via HTTP using FormData
 mode: center
 ---
 
@@ -65,7 +64,6 @@ First we use the [`.formData()`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 Finally, we write the `Blob` to disk using [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
 
-{/* prettier-ignore */}
 ```ts index.ts icon="/icons/typescript.svg"
 const server = Bun.serve({
   port: 4000,

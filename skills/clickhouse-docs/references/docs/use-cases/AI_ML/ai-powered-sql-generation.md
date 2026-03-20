@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/ai-powered-sql-generation
-sidebar_label: 'AI-powered SQL generation'
 title: 'AI-powered SQL generation'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to use AI to generate SQL queries in ClickHouse Client or clickhouse-local.'
 keywords: ['AI', 'SQL generation']
 show_related_blogs: true
@@ -44,9 +40,7 @@ clickhouse client -mn \
 --user demo --password ''
 ```
 
-:::note
-We'll assume you have ClickHouse installed, but if not, refer to the [installation guide](https://clickhouse.com/docs/install)
-:::
+> **note**: We'll assume you have ClickHouse installed, but if not, refer to the [installation guide](https://clickhouse.com/docs/install)
 
 ## Asking ClickHouse questions in natural language {#asking-clickhouse-questions-in-natural-language}
 

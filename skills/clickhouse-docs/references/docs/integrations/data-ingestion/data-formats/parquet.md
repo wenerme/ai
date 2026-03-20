@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Parquet'
-sidebar_position: 3
-slug: /integrations/data-formats/parquet
 title: 'Working with Parquet in ClickHouse'
 description: 'Page describing how to work with Parquet in ClickHouse'
 doc_type: 'guide'
@@ -13,12 +10,10 @@ keywords: ['parquet', 'columnar format', 'data format', 'compression', 'apache p
 Parquet is an efficient file format to store data in a column-oriented way.
 ClickHouse provides support for both reading and writing Parquet files.
 
-:::tip
-When you reference a file path in a query, where ClickHouse attempts to read from will depend on the variant of ClickHouse that you're using.
+> **tip**: When you reference a file path in a query, where ClickHouse attempts to read from will depend on the variant of ClickHouse that you're using.
 
 If you're using [`clickhouse-local`](/operations/utilities/clickhouse-local.md) it will read from a location relative to where you launched ClickHouse Local.
 If you're using ClickHouse Server or ClickHouse Cloud via `clickhouse client`, it will read from a location relative to the `/var/lib/clickhouse/user_files/` directory on the server.
-:::
 
 ## Importing from Parquet {#importing-from-parquet}
 
@@ -53,10 +48,8 @@ LIMIT 3;
 └───────────────────────────┴────────────┴──────┘
 ```
 
-:::tip
-We can skip explicit format setting for `file()` and `INFILE`/`OUTFILE`.
+> **tip**: We can skip explicit format setting for `file()` and `INFILE`/`OUTFILE`.
 In that case, ClickHouse will automatically detect format based on file extension.
-:::
 
 ## Importing to an existing table {#importing-to-an-existing-table}
 
@@ -132,9 +125,7 @@ By default, ClickHouse is strict with column names, types, and values. But somet
 
 ## Exporting to Parquet format {#exporting-to-parquet-format}
 
-:::tip
-When using `INTO OUTFILE` with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file will be written to.
-:::
+> **tip**: When using `INTO OUTFILE` with ClickHouse Cloud you will need to run the commands in `clickhouse client` on the machine where the file will be written to.
 
 To export any table or query result to the Parquet file, we can use an `INTO OUTFILE` clause:
 

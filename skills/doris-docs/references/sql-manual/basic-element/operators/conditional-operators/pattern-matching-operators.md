@@ -42,7 +42,6 @@ Patterns can include special pattern matching characters:
 
 ### Example
 
-
 ```sql
 select "%a" like "\%_";
 ```
@@ -57,7 +56,6 @@ The result is as follows, because "%" is a special character, it needs to be esc
 +-----------------+
 ```
 
-
 ```sql
 select "%a" like "a%_" ESCAPE "a";
 ```
@@ -71,7 +69,6 @@ The difference from the previous example is that "a" is specified as the escape 
 |                          1 |
 +----------------------------+
 ```
-
 
 ### REGEXP (RLIKE)
 

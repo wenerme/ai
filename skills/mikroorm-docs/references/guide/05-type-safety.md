@@ -144,7 +144,7 @@ const article = await em.findOne(ArticleSchema, 1);
 const text = await article.text.load(); // loads the lazy text property
 ```
 
-:::info Using decorators
+> **info**: Using decorators
 
 If you use decorators with `reflect-metadata`, you'll need to explicitly set the `ref` option:
 
@@ -154,8 +154,6 @@ author!: Ref<User>;
 ```
 
 With `defineEntity`, the `.ref()` method handles this automatically.
-
-:::
 
 ## Strict partial loading with `fields`
 

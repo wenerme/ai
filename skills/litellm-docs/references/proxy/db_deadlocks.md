@@ -1,14 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # High Availability Setup (Resolve DB Deadlocks)
 
-:::tip Essential for Production
+> **tip**: Essential for Production
 
 This configuration is **required** for production deployments handling 1000+ requests per second. Without Redis configured, you may experience PostgreSQL connection exhaustion (`FATAL: sorry, too many clients already`).
-
-:::
 
 Resolve any Database Deadlocks you see in high traffic by using this setup
 
@@ -20,7 +16,6 @@ LiteLLM writes `UPDATE` and `UPSERT` queries to the DB. When using 10+ instances
 - All instances will write to a Redis queue instead of the DB. 
 - A single instance will acquire a lock on the DB and flush the redis queue to the DB. 
 
-
 ## How it works 
 
 ### Stage 1. Each instance writes updates to redis
@@ -31,7 +26,6 @@ Each instance will accumulate the spend updates for a key, user, team, etc and w
 <p style={{textAlign: 'left', color: '#666'}}>
 Each instance writes updates to redis
 </p>
-
 
 ### Stage 2. A single instance flushes the redis queue to the DB
 
@@ -46,12 +40,10 @@ A single instance will acquire a lock on the DB and flush all elements in the re
     - Release the lock
 - Note: Only 1 instance can acquire the lock at a time, this limits the number of instances that can write to the DB at once
 
-
 <Image img={require('../../img/deadlock_fix_2.png')}  style={{ width: '900px', height: 'auto' }} />
 <p style={{textAlign: 'left', color: '#666'}}>
 A single instance flushes the redis queue to the DB
 </p>
-
 
 ## Usage
 
@@ -81,7 +73,6 @@ litellm_settings:
 
 LiteLLM emits the following prometheus metrics to monitor the health/status of the in memory buffer and redis buffer. 
 
-
 | Metric Name                                         | Description                                                                 | Storage Type |
 |-----------------------------------------------------|-----------------------------------------------------------------------------|--------------|
 | `litellm_pod_lock_manager_size`                     | Indicates which pod has the lock to write updates to the database.         | Redis    |
@@ -89,7 +80,6 @@ LiteLLM emits the following prometheus metrics to monitor the health/status of t
 | `litellm_redis_daily_spend_update_queue_size`       | Number of items in the Redis daily spend update queue.  These are the aggregate spend logs for each user.                    | Redis        |
 | `litellm_in_memory_spend_update_queue_size`         | In-memory aggregate spend values for keys, users, teams, team members, etc.| In-Memory    |
 | `litellm_redis_spend_update_queue_size`             | Redis aggregate spend values for keys, users, teams, etc.                  | Redis        |
-
 
 ## Troubleshooting: Redis Connection Errors
 
@@ -115,4 +105,3 @@ litellm_settings:
 ```
 
 Adjust this value based on your expected concurrency and Redis server capacity.
-

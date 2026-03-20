@@ -1,18 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenCode Quickstart
 
 This tutorial shows how to connect OpenCode to your existing LiteLLM instance and switch between models.
 
-:::info 
-
-This integration allows you to use any LiteLLM supported model through OpenCode with centralized authentication, usage tracking, and cost controls.
-
-:::
-
-<br />
+> **info**: This integration allows you to use any LiteLLM supported model through OpenCode with centralized authentication, usage tracking, and cost controls.
 
 ### Video Walkthrough
 
@@ -29,29 +21,17 @@ This integration allows you to use any LiteLLM supported model through OpenCode 
 
 Choose your preferred installation method:
 
-<Tabs>
-<TabItem value="curl" label="One-line install (recommended)">
-
 ```bash
 curl -fsSL https://opencode.ai/install | bash
 ```
-
-</TabItem>
-<TabItem value="npm" label="NPM">
 
 ```bash
 npm install -g opencode-ai
 ```
 
-</TabItem>
-<TabItem value="homebrew" label="Homebrew">
-
 ```bash
 brew install sst/tap/opencode
 ```
-
-</TabItem>
-</Tabs>
 
 Verify installation:
 
@@ -96,9 +76,7 @@ Create `~/.config/opencode/opencode.json` (global config):
 }
 ```
 
-:::tip
-The keys in the "models" object (e.g., "gpt-4", "claude-3-5-sonnet-20241022") should match the `model_name` values from your LiteLLM configuration. The "name" field provides a friendly display name that will appear as an alias in OpenCode.
-:::
+> **tip**: The keys in the "models" object (e.g., "gpt-4", "claude-3-5-sonnet-20241022") should match the `model_name` values from your LiteLLM configuration. The "name" field provides a friendly display name that will appear as an alias in OpenCode.
 
 ### Step 3: Connect to LiteLLM Provider
 
@@ -169,9 +147,6 @@ You can customize model parameters like context limits:
 
 You can configure multiple LiteLLM instances or mix with other providers:
 
-<Tabs>
-<TabItem value="multi-litellm" label="Multiple LiteLLM Instances">
-
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
@@ -204,9 +179,6 @@ You can configure multiple LiteLLM instances or mix with other providers:
 }
 ```
 
-</TabItem>
-<TabItem value="mixed-providers" label="Mixed Providers">
-
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
@@ -238,9 +210,6 @@ You can configure multiple LiteLLM instances or mix with other providers:
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Example LiteLLM Configuration
 

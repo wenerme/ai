@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Replicate
 
 LiteLLM supports all models on Replicate
 
-
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### API KEYS
 ```python
@@ -32,9 +27,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -45,8 +37,6 @@ response = completion(
         api_key: os.environ/REPLICATE_API_KEY
   ```
 
-
-
 2. Start the proxy 
 
   ```bash
@@ -55,9 +45,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -83,9 +73,9 @@ response = completion(
   print(response)
   ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -105,10 +95,9 @@ response = completion(
         ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
+  
 
 ### Expected Replicate Call 
 
@@ -123,18 +112,11 @@ https://api.replicate.com/v1/models/meta/meta-llama-3-8b-instruct \
 -d '{'version': 'meta/meta-llama-3-8b-instruct', 'input': {'prompt': '<|start_header_id|>system<|end_header_id|>\n\nBe a good human!<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nWhat do you know about earth?<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n'}}'
 ```
 
-</TabItem>
-
-</Tabs>
-
 ## Advanced Usage - Prompt Formatting 
 
 LiteLLM has prompt template mappings for all `meta-llama` llama3 instruct models. [**See Code**](https://github.com/BerriAI/litellm/blob/4f46b4c3975cd0f72b8c5acb2cb429d23580c18a/litellm/llms/prompt_templates/factory.py#L1360)
 
 To apply a custom prompt template: 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python 
 import litellm
@@ -171,8 +153,6 @@ def test_replicate_custom_model():
 
 test_replicate_custom_model()
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 # Model-specific parameters
@@ -189,10 +169,6 @@ model_list:
       max_tokens: 4096
 ```
 
-</TabItem>
-
-</Tabs>
-
 ## Advanced Usage - Calling Replicate Deployments
 Calling a [deployed replicate LLM](https://replicate.com/deployments)
 Add the `replicate/deployments/` prefix to your model, so litellm will call the `deployments` endpoint. This will call `ishaan-jaff/ishaan-mistral` deployment on replicate
@@ -204,11 +180,9 @@ response = completion(
 )
 ```
 
-:::warning Replicate Cold Boots
+> **warning**: Replicate Cold Boots
 
 Replicate responses can take 3-5 mins due to replicate cold boots, if you're trying to debug try making the request with `litellm.set_verbose=True`. [More info on replicate cold boots](https://replicate.com/docs/how-does-replicate-work#cold-boots)
-
-:::
 
 ## Replicate Models
 liteLLM supports all replicate LLMs
@@ -225,7 +199,6 @@ Model Name                  | Function Call                                     
  daanelson/flan-t5-large    | `completion(model='replicate/daanelson/flan-t5-large:ce962b3f6792a57074a601d3979db5839697add2e4e02696b3ced4c022d4767f', messages)`    | `os.environ['REPLICATE_API_KEY']`    |
  custom-llm    | `completion(model='replicate/custom-llm-version-id', messages)`    | `os.environ['REPLICATE_API_KEY']`    |
   replicate deployment    | `completion(model='replicate/deployments/ishaan-jaff/ishaan-mistral', messages)`    | `os.environ['REPLICATE_API_KEY']`    |
-
 
 ## Passing additional params - max_tokens, temperature 
 See all litellm.completion supported params [here](https://docs.litellm.ai/docs/completion/input)

@@ -452,11 +452,7 @@ await em.transactional(() => {
 // flushes the inner EntityManager before commit
 ```
 
-:::warning
-
-If you are creating multiple transactions and want to run them in parallel, you should use a fresh fork, or the `clear: true` option, so your contexts cannot interfere with each other. If you use the default `clear: false`, the entity instances will be shared between the transactions, which can lead to unexpected results like reinsertion of a removed entity.
-
-:::
+> **warning**: If you are creating multiple transactions and want to run them in parallel, you should use a fresh fork, or the `clear: true` option, so your contexts cannot interfere with each other. If you use the default `clear: false`, the entity instances will be shared between the transactions, which can lead to unexpected results like reinsertion of a removed entity.
 
 Similarly, the changes done inside the transaction callback are propagated to the upper context, so you can use the same `EntityManager` instance in the callback and outside of it.
 

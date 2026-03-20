@@ -8,7 +8,6 @@
 
 # Statement Execution Action
 
-
 ## Request
 
 ```

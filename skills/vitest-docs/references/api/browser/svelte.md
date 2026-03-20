@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # vitest-browser-svelte
@@ -22,13 +22,11 @@ test('counter button increments the count', async () => {
 })
 ```
 
-::: warning
-This library takes inspiration from [`@testing-library/svelte`](https://github.com/testing-library/svelte-testing-library).
+> **warning**: This library takes inspiration from [`@testing-library/svelte`](https://github.com/testing-library/svelte-testing-library).
 
 If you have used `@testing-library/svelte` in your tests before, you can keep using it, however the `vitest-browser-svelte` package provides certain benefits unique to the Browser Mode that `@testing-library/svelte` lacks:
 
 `vitest-browser-svelte` returns APIs that interact well with built-in [locators](/api/browser/locators), [user events](/api/browser/interactivity) and [assertions](/api/browser/assertions): for example, Vitest will automatically retry the element until the assertion is successful, even if it was rerendered between the assertions.
-:::
 
 The package exposes two entry points: `vitest-browser-svelte` and `vitest-browser-svelte/pure`. They expose identical API, but the `pure` entry point doesn't add a handler to remove the component before the next test has started.
 
@@ -44,14 +42,12 @@ export function render<C extends Component>(
 
 The `render` function records a `svelte.render` trace mark, visible in the [Trace View](/guide/browser/trace-view).
 
-::: warning
-Synchronous usage of `render` is deprecated and will be removed in the next major version. Please always `await` the result:
+> **warning**: Synchronous usage of `render` is deprecated and will be removed in the next major version. Please always `await` the result:
 
 ```ts
 const screen = render(Component) // [!code --]
 const screen = await render(Component) // [!code ++]
 ```
-:::
 
 ### Options
 
@@ -106,9 +102,7 @@ await screen.getByRole('link', { name: 'Expand' }).click()
 
 The containing DOM node where your Svelte component is rendered. This is a regular DOM node, so you technically could call `container.querySelector` etc. to inspect the children.
 
-:::danger
-If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
-:::
+> **danger**: If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
 
 #### component
 
@@ -174,10 +168,7 @@ function unmount(): Promise<void>
 
 Unmount and destroy the Svelte component. Also records a `svelte.unmount` trace mark in the [Trace View](/guide/browser/trace-view). This is useful for testing what happens when your component is removed from the page (like testing that you don't leave event handlers hanging around causing memory leaks).
 
-::: warning
-Synchronous usage of `unmount` is deprecated and will be removed in the next major version. Please always `await` the result.
-:::
-
+> **warning**: Synchronous usage of `unmount` is deprecated and will be removed in the next major version. Please always `await` the result.
 ```ts
 import { render } from 'vitest-browser-svelte'
 
@@ -218,7 +209,6 @@ await expect.element(
 
 For simple snippets, you can use a wrapper component and "dummy" children to test them. Setting `data-testid` attributes can be helpful when testing slots in this manner.
 
-::: code-group
 ```ts [basic.test.js]
 import { render } from 'vitest-browser-svelte'
 import { expect, test } from 'vitest'
@@ -252,11 +242,9 @@ test('basic snippet', async () => {
   <span data-testid="child"></span>
 </Subject>
 ```
-:::
 
 For more complex snippets, e.g. where you want to check arguments, you can use Svelte's [`createRawSnippet`](https://svelte.dev/docs/svelte/svelte#createRawSnippet) API.
 
-::: code-group
 ```js [complex-snippet.test.js]
 import { render } from 'vitest-browser-svelte'
 import { createRawSnippet } from 'svelte'
@@ -288,7 +276,6 @@ test('renders greeting in message snippet', async () => {
   {@render message?.(greeting)}
 </p>
 ```
-:::
 
 ## See also
 

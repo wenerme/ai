@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/microsoft-agent-framework
-sidebar_label: 'Integrate Microsoft Agent Framework'
 title: 'How to build an AI Agent with Microsoft Agent Framework and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how build an AI Agent with Microsoft Agent Framework and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'Microsoft']
 show_related_blogs: true
@@ -15,9 +11,8 @@ doc_type: 'guide'
 In this guide you'll learn how to build a [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) AI agent that can interact with 
 [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/microsoft-agent-framework/microsoft-agent-framework.ipynb).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.
@@ -87,7 +82,6 @@ clickhouse_mcp_server = MCPStdioTool(
     ],
     env=env
 )
-
 
 async with ChatAgent(
     chat_client=OpenAIResponsesClient(model_id="gpt-5-mini-2025-08-07"),

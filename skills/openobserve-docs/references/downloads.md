@@ -4,7 +4,6 @@ Docker images can be downloaded from the [ECR](https://gallery.ecr.aws/zinclabs/
 
 Binaries can be downloaded from below links:
 
-
 |Date         |Release                                                                        |
 |-------------|-------------------------------------------------------------------------------|
 |Aug 15, 2024 | [v0.10.9](https://github.com/openobserve/openobserve/releases/tag/v0.10.9)    |     

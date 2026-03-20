@@ -56,8 +56,6 @@ The following datasets will be downloaded automatically when used:
 | winogrande         | OCNLI              |
 | openbookqa         | cmnli              |
 
-:::
-
 :::{tab-item} Download Using Links
 ```shell
 # Download from ModelScope
@@ -89,7 +87,7 @@ The included datasets are:
 | COPA                       | ARC_c                      | DRCD                       |
 
 The total size is approximately 1.7GB. After downloading and unzipping, place the dataset folder (i.e., the data folder) in the current working directory.
-:::
+
 ::::
 
 ## 3. Model Inference Service
@@ -111,7 +109,6 @@ pip install vllm -U
 ```shell
 VLLM_USE_MODELSCOPE=True CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-0.5B-Instruct --port 8000 --served-model-name Qwen2-0.5B-Instruct
 ```
-:::
 
 :::{tab-item} ms-swift
 Use ms-swift to deploy model services. For more details, please refer to the: [ms-swift Deployment Guide](https://swift.readthedocs.io/en/latest/Instruction/Inference-and-deployment.html).
@@ -126,15 +123,11 @@ pip install ms-swift -U
 CUDA_VISIBLE_DEVICES=0 swift deploy --model Qwen/Qwen2.5-0.5B-Instruct --port 8000
 ```
 
-<details><summary>ms-swift v2.x</summary>
+ms-swift v2.x
 
 ```shell
 CUDA_VISIBLE_DEVICES=0 swift deploy --model_type qwen2-0_5b-instruct --port 8000
 ```
-
-</details>
-
-:::
 
 :::{tab-item} LMDeploy
 Refer to [LMDeploy Tutorial](https://github.com/InternLM/lmdeploy/blob/main/docs/en/multi_modal/api_server_vl.md) for more details.
@@ -148,7 +141,6 @@ pip install lmdeploy -U
 ```shell
 LMDEPLOY_USE_MODELSCOPE=True CUDA_VISIBLE_DEVICES=0 lmdeploy serve api_server Qwen/Qwen2-0.5B-Instruct --server-port 8000
 ```
-:::
 
 :::{tab-item} Ollama
 ```{note}
@@ -196,10 +188,8 @@ The model will be automatically converted to a format supported by Ollama and su
 ```shell
 ollama create llama3 -f ./Modelfile
 ```
-:::
 
 ::::
-
 
 ## 4. Model Evaluation
 
@@ -223,7 +213,6 @@ task_cfg_dict = dict(
         },
     )
 ```
-:::
 
 :::{tab-item} YAML
 ```{code-block} yaml
@@ -241,7 +230,6 @@ eval_config:
       path: Qwen2-0.5B-Instruct                                   
       temperature: 0.0
 ```
-:::
 
 :::{tab-item} JSON
 ```{code-block} json
@@ -265,7 +253,7 @@ eval_config:
   }
 }
 ```
-:::
+
 ::::
 
 #### Parameter Descriptions

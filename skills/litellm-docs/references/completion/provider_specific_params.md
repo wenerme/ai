@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Provider-specific Params
 
@@ -11,8 +10,6 @@ You can pass those in 2 ways:
 - via provider-specific config variable (e.g. `litellm.OpenAIConfig()`). 
 
 ## SDK Usage
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 ```python
 import litellm, os
@@ -43,15 +40,11 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-<TabItem value="openai-text" label="OpenAI Text Completion">
-
 ```python
 import litellm, os
 
 # set env variables
 os.environ["OPENAI_API_KEY"] = "your-openai-key"
-
 
 ## SET MAX TOKENS - via completion() 
 response_1 = litellm.completion(
@@ -74,9 +67,6 @@ response_2_text = response_2.choices[0].message.content
 ## TEST OUTPUT
 assert len(response_2_text) > len(response_1_text)
 ```
-
-</TabItem>
-<TabItem value="azure-openai" label="Azure OpenAI">
 
 ```python
 import litellm, os
@@ -108,9 +98,6 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 import litellm, os 
 
@@ -138,10 +125,6 @@ response_2_text = response_2.choices[0].message.content
 ## TEST OUTPUT
 assert len(response_2_text) > len(response_1_text)
 ```
-
-</TabItem>
-
-<TabItem value="huggingface" label="Huggingface">
 
 ```python
 import litellm, os 
@@ -173,11 +156,6 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-
-<TabItem value="together_ai" label="TogetherAI">
-
-
 ```python
 import litellm, os 
 
@@ -206,10 +184,6 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-
-<TabItem value="ollama" label="Ollama">
-
 ```python
 import litellm, os 
 
@@ -234,10 +208,6 @@ response_2_text = response_2.choices[0].message.content
 ## TEST OUTPUT
 assert len(response_2_text) > len(response_1_text)
 ```
-
-</TabItem>
-
-<TabItem value="replicate" label="Replicate">
 
 ```python
 import litellm, os 
@@ -267,11 +237,6 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-
-<TabItem value="petals" label="Petals">
-
-
 ```python
 import litellm
 
@@ -298,10 +263,6 @@ response_2_text = response_2.choices[0].message.content
 ## TEST OUTPUT
 assert len(response_2_text) > len(response_1_text)
 ```
-
-</TabItem>
-
-<TabItem value="palm" label="Palm">
 
 ```python
 import litellm, os 
@@ -330,9 +291,6 @@ response_2_text = response_2.choices[0].message.content
 ## TEST OUTPUT
 assert len(response_2_text) > len(response_1_text)
 ```
-</TabItem>
-
-<TabItem value="ai21" label="AI21">
 
 ```python
 import litellm, os 
@@ -362,10 +320,6 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-
-<TabItem value="cohere" label="Cohere">
-
 ```python
 import litellm, os 
 
@@ -394,13 +348,7 @@ response_2_text = response_2.choices[0].message.content
 assert len(response_2_text) > len(response_1_text)
 ```
 
-</TabItem>
-
-</Tabs>
-
-
 [**Check out the tutorial!**](../tutorials/provider_specific_params.md)
-
 
 ## Proxy Usage 
 
@@ -443,9 +391,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 | **Gemini/Vertex AI** | `labels` | Resource labeling |
 | **Anthropic** | `metadata` | User identification |
 
-<Tabs>
-<TabItem value="bedrock" label="AWS Bedrock">
-
 ```python
 import litellm
 
@@ -455,9 +400,6 @@ response = litellm.completion(
     requestMetadata={"cost_center": "engineering"}
 )
 ```
-
-</TabItem>
-<TabItem value="gemini" label="Gemini/Vertex AI">
 
 ```python
 import litellm
@@ -469,9 +411,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 import litellm
 
@@ -481,6 +420,3 @@ response = litellm.completion(
     metadata={"user_id": "user123"}
 )
 ```
-
-</TabItem>
-</Tabs>

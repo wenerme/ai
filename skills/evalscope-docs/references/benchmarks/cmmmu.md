@@ -1,6 +1,5 @@
 # CMMMU
 
-
 ## Overview
 
 CMMU (Chinese Massive Multi-discipline Multimodal Understanding) includes manually collected multimodal questions from college exams, quizzes, and textbooks, covering six core disciplines in Chinese. It is the Chinese counterpart to MMMU.
@@ -27,7 +26,6 @@ CMMU (Chinese Massive Multi-discipline Multimodal Understanding) includes manual
 - Simple accuracy metric
 - Chinese language prompts used
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ CMMU (Chinese Massive Multi-discipline Multimodal Understanding) includes manual
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
-
 
 ## Data Statistics
 
@@ -92,7 +89,6 @@ CMMU (Chinese Massive Multi-discipline Multimodal Understanding) includes manual
 | Images per Sample | min: 1, max: 5, mean: 1.14 |
 | Resolution Range | 112x38 - 1500x3000 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -178,5 +174,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -2,7 +2,6 @@
 
 ## 1. DataEngine 简介
 
-
 `DataEngine` 是 LLaMA-Factory v1 数据处理的核心类，继承自 PyTorch 的 `Dataset`，负责各种插件的接入，其他功能（如数据格式转换、数据加载等）均通过插件的形式实现并接入 `DataEngine`。
 
 `DataEngine`接受一个唯一入参：`DataArguments` 实例，所有的元数据集信息均通过该参数配置传入。
@@ -19,7 +18,6 @@ class DataArguments:
         cutoff_len (int): 数据集截止长度，即数据集最大样本采样数量
     """
     ...
-
 
 class DataEngine(Dataset):
     """数据引擎（DataEngine）
@@ -145,7 +143,6 @@ class DataEngine(Dataset):
             AsyncIterable: 异步迭代器，按顺序产出样本
         """
         ...
-
 
 ```
 

@@ -5,18 +5,11 @@ packages:
   - "@mastra/daytona"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # DaytonaSandbox
 
 Executes commands in isolated [Daytona](https://www.daytona.io) cloud sandboxes. Supports multiple runtimes, resource configuration, volumes, snapshots, streaming output, sandbox reconnection, filesystem mounting (S3, GCS), and network isolation.
 
-:::info
-
-For interface details, see [WorkspaceSandbox interface](/reference/workspace/sandbox).
-
-:::
+> **info**: For interface details, see [WorkspaceSandbox interface](/reference/workspace/sandbox).
 
 ## Installation
 
@@ -26,25 +19,23 @@ npm install @mastra/daytona
 
 Set your Daytona API key in one of three ways.
 
-<Tabs>
-  <TabItem value="shell-export" label="Shell export">
+  
     ```bash
     export DAYTONA_API_KEY=your-api-key
     ```
-  </TabItem>
+  
 
-  <TabItem value="env-file" label=".env file">
+  
     ```bash
     DAYTONA_API_KEY=your-api-key
     ```
-  </TabItem>
+  
 
-  <TabItem value="constructor" label="Constructor">
+  
     ```typescript
     new DaytonaSandbox({ apiKey: 'your-api-key' })
     ```
-  </TabItem>
-</Tabs>
+  
 
 ## Usage
 

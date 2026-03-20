@@ -1,10 +1,6 @@
 ---
 title: Modeling Entity Relationships
-sidebar_label: Modeling Entity Relationships
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 There are 4 types of entity relationships in MikroORM:
 
@@ -23,18 +19,7 @@ Relations can be unidirectional and bidirectional. Unidirectional are defined on
 
 There are multiple ways how to define the relationship, all of the following is equivalent:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -51,9 +36,9 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -69,8 +54,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -85,8 +70,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -98,8 +83,7 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 You can also specify how operations on given entity should [cascade](./cascading.md) to the referred entity.
 
@@ -109,18 +93,7 @@ You can also specify how operations on given entity should [cascade](./cascading
 
 Again, all of the following is equivalent:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -137,9 +110,9 @@ export class Author extends AuthorSchema.class {}
 AuthorSchema.setClass(Author);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -155,8 +128,8 @@ export const Author = defineEntity({
 export type IAuthor = InferEntity<typeof Author>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -174,8 +147,8 @@ export class Author {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -187,8 +160,7 @@ export class Author {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 As you can see, OneToMany is the inverse side of ManyToOne (which is the owning side). More about how collections work can be found on [collections page](./collections.md).
 
@@ -202,18 +174,7 @@ This is a variant of ManyToOne, where there is always just one entity on both si
 
 ### Owning Side
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -235,9 +196,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -258,8 +219,8 @@ export const User = defineEntity({
 export type IUser = InferEntity<typeof User>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -280,8 +241,8 @@ export class User {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -302,23 +263,11 @@ export class User {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Inverse Side
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -336,9 +285,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -355,8 +304,8 @@ export const User = defineEntity({
 export type IUser = InferEntity<typeof User>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -371,8 +320,8 @@ export class User {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -387,8 +336,7 @@ export class User {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 As you can see, relationships can be also self-referencing (all of them. OneToOne also supports [Orphan Removal](./cascading.md#orphan-removal)).
 
@@ -400,18 +348,7 @@ Here are examples of how you can define ManyToMany relationship:
 
 ### Owning Side
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -431,9 +368,9 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -452,8 +389,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -475,8 +412,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -492,23 +429,11 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Inverse Side
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -526,9 +451,9 @@ export class BookTag extends BookTagSchema.class {}
 BookTagSchema.setClass(BookTag);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -545,8 +470,8 @@ export const BookTag = defineEntity({
 export type IBookTag = InferEntity<typeof BookTag>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -559,8 +484,8 @@ export class BookTag {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -573,8 +498,7 @@ export class BookTag {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 Again, more information about how collections work can be found on [collections page](./collections.md).
 
@@ -582,18 +506,7 @@ Again, more information about how collections work can be found on [collections 
 
 By default, ManyToOne and OneToOne relations reference the primary key of the target entity. You can use the `targetKey` option to reference a different unique column instead.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -623,9 +536,9 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p, Collection } from '@mikro-orm/core';
@@ -653,8 +566,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -685,8 +598,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -717,8 +630,7 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 The target column must have a unique constraint. The FK column type will automatically match the type of the referenced column.
 
@@ -730,18 +642,7 @@ If you use ESM in your TypeScript project with `reflect-metadata`, you might fal
 
 To get around them, use the `Rel` mapped type. It is an identity type, which disables the problematic inference from `reflect-metadata`, that causes ESM projects to fail.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -760,8 +661,8 @@ BookSchema.setClass(Book);
 
 > With `defineEntity`, circular dependencies are handled automatically, no need for `Rel` wrapper.
 
-  </TabItem>
-  <TabItem value="define-entity">
+  
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -779,8 +680,8 @@ export type IBook = InferEntity<typeof Book>;
 
 > With `defineEntity`, circular dependencies are handled automatically, no need for `Rel` wrapper.
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 import { Rel } from '@mikro-orm/core';
@@ -794,8 +695,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 import { Rel } from '@mikro-orm/core';
@@ -809,8 +710,7 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Custom foreign key constraint name
 
@@ -818,18 +718,7 @@ If you need a greater control on the underlying SQL schema, you can provide a cu
 
 This name overrides the one automatically generated by the current [NamingStrategy](./naming-strategy.md).
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -846,9 +735,9 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -864,8 +753,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -877,8 +766,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -890,25 +779,13 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Disabling foreign key constraint creation
 
 If you need to disable the creation of the underlying SQL foreign key constraint for a specific relation, you can set `createForeignKeyConstraint` to `false` on the relation on the owning side.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -925,9 +802,9 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, InferEntity, p } from '@mikro-orm/core';
@@ -943,8 +820,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -956,8 +833,8 @@ export class Book {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -969,8 +846,7 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 Note that if you globally disable the creation of all foreign key constraints by setting `createForeignKeyConstraints` to `false`, then no foreign key constraint is created whatsoever on any relation.
 
@@ -987,7 +863,7 @@ const orm = await MikroORM.init({
 
 Polymorphic relations allow a property to reference entities of multiple different types. This is useful when you have a relationship that can point to various entity types, such as a "like" that can be associated with either a "post" or a "comment".
 
-:::info Polymorphic Relations vs Single Table Inheritance
+> **info**: Polymorphic Relations vs Single Table Inheritance
 
 Polymorphic relations are different from [Single Table Inheritance (STI)](./inheritance-mapping.md#single-table-inheritance):
 
@@ -995,8 +871,6 @@ Polymorphic relations are different from [Single Table Inheritance (STI)](./inhe
 - **Polymorphic Relations**: Each entity type has its **own table**. The discriminator identifies which table the foreign key points to. No inheritance required. **No foreign key constraints** since the column can point to multiple tables, meaning no database-level referential integrity.
 
 Use STI when entities share common fields and behavior (inheritance). Use polymorphic relations when you need flexible relationships between unrelated entity types.
-
-:::
 
 ### How it Works
 
@@ -1011,18 +885,7 @@ Unlike regular relations, polymorphic relations do not create foreign key constr
 
 To define a polymorphic relation, pass an array of entity types to the `@ManyToOne()` decorator:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -1066,9 +929,9 @@ export class UserLike extends UserLikeSchema.class {}
 UserLikeSchema.setClass(UserLike);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, p, type InferEntity } from '@mikro-orm/core';
@@ -1109,8 +972,8 @@ export const UserLike = defineEntity({
 export interface IUserLike extends InferEntity<typeof UserLike> {}
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -1156,8 +1019,8 @@ export class UserLike {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -1201,8 +1064,7 @@ export class UserLike {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Configuration Options
 
@@ -1335,18 +1197,7 @@ Multiple entity types share the same pivot table, distinguished by the discrimin
 
 To define a polymorphic M:N relation, use the `discriminator` option on `@ManyToMany()`:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -1392,9 +1243,9 @@ export class Video extends VideoSchema.class {}
 VideoSchema.setClass(Video);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, p, type InferEntity } from '@mikro-orm/core';
@@ -1437,8 +1288,8 @@ export const Video = defineEntity({
 export interface IVideo extends InferEntity<typeof Video> {}
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -1498,8 +1349,8 @@ export class Video {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 @Entity()
@@ -1556,8 +1407,7 @@ export class Video {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 #### Configuration Options
 
@@ -1580,17 +1430,7 @@ The polymorphic FK column name is derived from the discriminator property name (
 
 You can specify custom discriminator values using the `discriminatorMap` option. This is useful when you want shorter or more meaningful type identifiers:
 
-<Tabs
-  groupId="entity-def-style"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -1628,9 +1468,9 @@ export class Product extends ProductSchema.class {}
 ProductSchema.setClass(Product);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const Article = defineEntity({
@@ -1660,8 +1500,8 @@ export const Product = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 @Entity()
@@ -1703,8 +1543,7 @@ export class Product {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 The `discriminatorMap` should be defined identically on all entities sharing the same pivot table. Values must be entity class names (strings) - entity class references cannot be used due to JavaScript circular import limitations.
 

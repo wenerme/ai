@@ -1,7 +1,5 @@
 ---
 date: "2018-05-10T16:00:00+02:00"
-slug: "issue-pull-request-templates"
-sidebar_position: 15
 aliases:
   - /en-us/issue-pull-request-templates
 ---

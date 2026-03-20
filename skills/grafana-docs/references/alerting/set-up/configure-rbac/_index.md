@@ -66,10 +66,10 @@ Permissions for managing Grafana-managed alert rules.
 
 | Action               | Applicable scope               | Description                                                                                                                                                                                                                                       |
 | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `alert.rules:create` | `folders:*`<br>`folders:uid:*` | Create Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder and `datasources:query` in the scope of data sources the user can query.                               |
-| `alert.rules:read`   | `folders:*`<br>`folders:uid:*` | Read Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder.                                                                                                         |
-| `alert.rules:write`  | `folders:*`<br>`folders:uid:*` | Update Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder. To allow query modifications add `datasources:query` in the scope of data sources the user can query. |
-| `alert.rules:delete` | `folders:*`<br>`folders:uid:*` | Delete Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder.                                                                                                       |
+| `alert.rules:create` | `folders:*``folders:uid:*` | Create Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder and `datasources:query` in the scope of data sources the user can query.                               |
+| `alert.rules:read`   | `folders:*``folders:uid:*` | Read Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder.                                                                                                         |
+| `alert.rules:write`  | `folders:*``folders:uid:*` | Update Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder. To allow query modifications add `datasources:query` in the scope of data sources the user can query. |
+| `alert.rules:delete` | `folders:*``folders:uid:*` | Delete Grafana alert rules in a folder and its subfolders. Combine this permission with `folders:read` in a scope that includes the folder.                                                                                                       |
 
 ### External alert rules
 
@@ -77,8 +77,8 @@ Permissions for managing alert rules in external data sources that support alert
 
 | Action                       | Applicable scope                       | Description                                                                                    |
 | ---------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `alert.rules.external:read`  | `datasources:*`<br>`datasources:uid:*` | Read alert rules in data sources that support alerting (Prometheus, Mimir, and Loki).          |
-| `alert.rules.external:write` | `datasources:*`<br>`datasources:uid:*` | Create, update, and delete alert rules in data sources that support alerting (Mimir and Loki). |
+| `alert.rules.external:read`  | `datasources:*``datasources:uid:*` | Read alert rules in data sources that support alerting (Prometheus, Mimir, and Loki).          |
+| `alert.rules.external:write` | `datasources:*``datasources:uid:*` | Create, update, and delete alert rules in data sources that support alerting (Mimir and Loki). |
 
 ### Alert instances and silences
 
@@ -89,9 +89,9 @@ Permissions for managing alert instances and silences in Grafana.
 | `alert.instances:read`   | n/a                            | Read alerts and silences in the current organization.                                |
 | `alert.instances:create` | n/a                            | Create silences in the current organization.                                         |
 | `alert.instances:write`  | n/a                            | Update and expire silences in the current organization.                              |
-| `alert.silences:read`    | `folders:*`<br>`folders:uid:*` | Read all general silences and rule-specific silences in a folder and its subfolders. |
-| `alert.silences:create`  | `folders:*`<br>`folders:uid:*` | Create rule-specific silences in a folder and its subfolders.                        |
-| `alert.silences:write`   | `folders:*`<br>`folders:uid:*` | Update and expire rule-specific silences in a folder and its subfolders.             |
+| `alert.silences:read`    | `folders:*``folders:uid:*` | Read all general silences and rule-specific silences in a folder and its subfolders. |
+| `alert.silences:create`  | `folders:*``folders:uid:*` | Create rule-specific silences in a folder and its subfolders.                        |
+| `alert.silences:write`   | `folders:*``folders:uid:*` | Update and expire rule-specific silences in a folder and its subfolders.             |
 
 ### External alert instances
 
@@ -99,8 +99,8 @@ Permissions for managing alert instances in external data sources.
 
 | Action                           | Applicable scope                       | Description                                                       |
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------------------- |
-| `alert.instances.external:read`  | `datasources:*`<br>`datasources:uid:*` | Read alerts and silences in data sources that support alerting.   |
-| `alert.instances.external:write` | `datasources:*`<br>`datasources:uid:*` | Manage alerts and silences in data sources that support alerting. |
+| `alert.instances.external:read`  | `datasources:*``datasources:uid:*` | Read alerts and silences in data sources that support alerting.   |
+| `alert.instances.external:write` | `datasources:*``datasources:uid:*` | Manage alerts and silences in data sources that support alerting. |
 
 ### Contact points
 
@@ -109,15 +109,15 @@ Permissions for managing contact points (notification receivers).
 | Action                                       | Applicable scope                                        | Description                                                                                                                 |
 | -------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `alert.notifications.receivers:list`         | n/a                                                     | List contact points in the current organization.                                                                            |
-| `alert.notifications.receivers:read`         | `receivers:*`<br>`receivers:uid:*`                      | Read contact points.                                                                                                        |
-| `alert.notifications.receivers.secrets:read` | `receivers:*`<br>`receivers:uid:*`                      | Export contact points with decrypted secrets.                                                                               |
+| `alert.notifications.receivers:read`         | `receivers:*``receivers:uid:*`                      | Read contact points.                                                                                                        |
+| `alert.notifications.receivers.secrets:read` | `receivers:*``receivers:uid:*`                      | Export contact points with decrypted secrets.                                                                               |
 | `alert.notifications.receivers:create`       | n/a                                                     | Create a new contact points. The creator is automatically granted full access to the created contact point.                 |
-| `alert.notifications.receivers:write`        | `receivers:*`<br>`receivers:uid:*`                      | Update existing contact points.                                                                                             |
-| `alert.notifications.receivers:delete`       | `receivers:*`<br>`receivers:uid:*`                      | Update and delete existing contact points.                                                                                  |
+| `alert.notifications.receivers:write`        | `receivers:*``receivers:uid:*`                      | Update existing contact points.                                                                                             |
+| `alert.notifications.receivers:delete`       | `receivers:*``receivers:uid:*`                      | Update and delete existing contact points.                                                                                  |
 | `alert.notifications.receivers:test`         | n/a                                                     | Test contact points to verify their configuration. Deprecated. Use "alert.notifications.receivers.test:create"              |
-| `alert.notifications.receivers.test:create`  | `receivers:*`<br>`receivers:uid:*`<br>`receivers:uid:-` | Test contact points to verify their configuration. Use scope `receivers:uid:-` to grant permission to test new integrations |
-| `receivers.permissions:read`                 | `receivers:*`<br>`receivers:uid:*`                      | Read permissions for contact points.                                                                                        |
-| `receivers.permissions:write`                | `receivers:*`<br>`receivers:uid:*`                      | Manage permissions for contact points.                                                                                      |
+| `alert.notifications.receivers.test:create`  | `receivers:*``receivers:uid:*``receivers:uid:-` | Test contact points to verify their configuration. Use scope `receivers:uid:-` to grant permission to test new integrations |
+| `receivers.permissions:read`                 | `receivers:*``receivers:uid:*`                      | Read permissions for contact points.                                                                                        |
+| `receivers.permissions:write`                | `receivers:*``receivers:uid:*`                      | Manage permissions for contact points.                                                                                      |
 
 ### Notification policies
 
@@ -164,8 +164,8 @@ Permissions for managing notification resources in external data sources.
 
 | Action                               | Applicable scope                       | Description                                                                                                      |
 | ------------------------------------ | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `alert.notifications.external:read`  | `datasources:*`<br>`datasources:uid:*` | Read templates, contact points, notification policies, and mute timings in data sources that support alerting.   |
-| `alert.notifications.external:write` | `datasources:*`<br>`datasources:uid:*` | Manage templates, contact points, notification policies, and mute timings in data sources that support alerting. |
+| `alert.notifications.external:read`  | `datasources:*``datasources:uid:*` | Read templates, contact points, notification policies, and mute timings in data sources that support alerting.   |
+| `alert.notifications.external:write` | `datasources:*``datasources:uid:*` | Manage templates, contact points, notification policies, and mute timings in data sources that support alerting. |
 
 ### Provisioning
 

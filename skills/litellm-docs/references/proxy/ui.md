@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Quick Start
 
@@ -76,9 +74,8 @@ For detailed information on model management, see [Model Management](./model_man
 
 For information on sharing models and agents, see [AI Hub](./ai_hub.md).
 
-:::tip Sync Model Pricing Data
+> **tip**: Sync Model Pricing Data
 [Sync model pricing data from GitHub](./sync_models_github.md) to keep your model cost information current.
-:::
 
 ## Disable Admin UI
 

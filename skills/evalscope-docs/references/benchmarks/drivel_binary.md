@@ -38,7 +38,6 @@ Drivelology Binary Classification evaluates models' ability to identify "drivelo
 | **Evaluation Split** | `test` |
 | **Aggregation** | `f1` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -81,14 +80,11 @@ Drivelology Binary Classification evaluates models' ability to identify "drivelo
 {question}
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 {question}
 ```
-
-</details>
 
 ## Usage
 
@@ -119,5 +115,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,12 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI
 LiteLLM supports OpenAI Chat + Embedding calls.
 
-:::tip
-**We recommend using `litellm.responses()` / Responses API** for the latest OpenAI models (GPT-5, gpt-5-codex, o3-mini, etc.)
-:::
+> **tip**: **We recommend using `litellm.responses()` / Responses API** for the latest OpenAI models (GPT-5, gpt-5-codex, o3-mini, etc.)
 
 ### Required API Keys
 
@@ -29,7 +26,7 @@ response = completion(
 )
 ```
 
-:::info Metadata passthrough (preview)
+> **info**: Metadata passthrough (preview)
 When `litellm.enable_preview_features = True`, LiteLLM forwards only the values inside `metadata` to OpenAI.
 
 ```python
@@ -39,7 +36,6 @@ completion(
     metadata= {"custom_meta_key": "value"},
 )
 ```
-:::
 
 ### Usage - LiteLLM Proxy Server
 
@@ -53,9 +49,6 @@ export OPENAI_API_KEY=""
 
 ### 2. Start the proxy 
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -67,8 +60,6 @@ model_list:
       model: text-completion-openai/gpt-3.5-turbo-instruct # The `text-completion-openai/` prefix will call openai.completions.create
       api_key: os.environ/OPENAI_API_KEY
 ```
-</TabItem>
-<TabItem value="config-*" label="config.yaml - proxy all OpenAI models">
 
 Use this to add all openai models with one API Key. **WARNING: This will not do any load balancing**
 This means requests to `gpt-4`, `gpt-3.5-turbo` , `gpt-4-turbo-preview` will all go through this route 
@@ -80,23 +71,14 @@ model_list:
       model: openai/*           # set `openai/` to use the openai route
       api_key: os.environ/OPENAI_API_KEY
 ```
-</TabItem>
-<TabItem value="cli" label="CLI">
 
 ```bash
 $ litellm --model gpt-3.5-turbo
 
 # Server running on http://0.0.0.0:4000
 ```
-</TabItem>
-
-</Tabs>
 
 ### 3. Test it
-
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -112,8 +94,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -133,8 +113,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo", messages = [
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -163,9 +141,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ### Optional Keys - OpenAI Organization, OpenAI API Base
 
@@ -232,7 +207,6 @@ os.environ["OPENAI_BASE_URL"] = "https://your_host/v1"     # OPTIONAL
 | gpt-4-32k-0314        | `response = completion(model="gpt-4-32k-0314", messages=messages)` |
 | gpt-4-32k-0613        | `response = completion(model="gpt-4-32k-0613", messages=messages)` |
 
-
 These also support the `OPENAI_BASE_URL` environment variable, which can be used to specify a custom API endpoint.
 
 ### OpenAI Web Search Models
@@ -243,9 +217,6 @@ OpenAI has two ways to use web search, depending on the endpoint:
 |----------|----------|--------|---------------|
 | **Search Models** | `/chat/completions` | `gpt-5-search-api`, `gpt-4o-search-preview`, `gpt-4o-mini-search-preview` | Pass `web_search_options` parameter |
 | **Web Search Tool** | `/responses` | `gpt-5`, `gpt-4.1`, `gpt-4o`, and other regular models | Pass `web_search_preview` tool |
-
-<Tabs>
-<TabItem value="sdk-completion" label="SDK - /chat/completions">
 
 ```python showLineNumbers
 from litellm import completion
@@ -259,9 +230,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="sdk-responses" label="SDK - /responses">
-
 ```python showLineNumbers
 from litellm import responses
 
@@ -274,9 +242,6 @@ response = responses(
     }]
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -292,9 +257,6 @@ model_list:
       model: openai/gpt-5
       api_key: os.environ/OPENAI_API_KEY
 ```
-
-</TabItem>
-</Tabs>
 
 For full details, see the [Web Search guide](../completion/web_search.md).
 
@@ -340,9 +302,6 @@ response = completion(
 
 OpenAI has a new `file` message type that allows you to pass in a PDF file and have it parsed into a structured output. [Read more](https://platform.openai.com/docs/guides/pdf-files?api-mode=chat&lang=python)
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import base64
 from litellm import completion
@@ -376,10 +335,6 @@ completion = completion(
 
 print(completion.choices[0].message.content)
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -419,9 +374,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## OpenAI Fine Tuned Models
 
 | Model Name                | Function Call                                                          |
@@ -436,8 +388,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 
 GPT-5 models return reasoning content when called via the Responses API. You can call these models via the `/chat/completions` endpoint by using the `openai/responses/` prefix.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
 ```python
 response = litellm.completion(
     model="openai/responses/gpt-5-mini", # tells litellm to call the model via the Responses API
@@ -445,9 +395,7 @@ response = litellm.completion(
     reasoning_effort="low",
 )
 ```
-</TabItem>
 
-<TabItem value="proxy" label="PROXY">
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -458,8 +406,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "reasoning_effort": "low"
 }'
 ```
-</TabItem>
-</Tabs>
 
 Expected Response:
 ```json
@@ -505,8 +451,6 @@ By default, `reasoning_effort` accepts a string value (`"none"`, `"minimal"`, `"
 
 To opt-in to the `summary` feature, you can pass `reasoning_effort` as a dictionary. **Note:** The `summary` field requires your OpenAI organization to have verification status. Using `summary` without verification will result in a 400 error from OpenAI.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
 ```python
 # Option 1: String format (default - no summary)
 response = litellm.completion(
@@ -522,9 +466,7 @@ response = litellm.completion(
     reasoning_effort={"effort": "high", "summary": "auto"}  # "auto", "detailed", or "concise" (not all supported by all models)
 )
 ```
-</TabItem>
 
-<TabItem value="proxy" label="PROXY">
 ```bash
 # Option 1: String format (default - no summary)
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -547,8 +489,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "reasoning_effort": {"effort": "high", "summary": "auto"}
 }'
 ```
-</TabItem>
-</Tabs>
 
 **Summary field options:**
 - `"auto"`: System automatically determines the appropriate summary level based on the model
@@ -594,8 +534,6 @@ The `verbosity` parameter controls the length and detail of responses from GPT-5
 - **`"medium"`**: Default - balanced output length
 - **`"high"`**: Use when you need thorough explanations or extensive code refactoring
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
 ```python
 import litellm
 
@@ -613,9 +551,7 @@ response = litellm.completion(
     verbosity="high"
 )
 ```
-</TabItem>
 
-<TabItem value="proxy" label="PROXY">
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -626,9 +562,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "verbosity": "low"
 }'
 ```
-</TabItem>
-</Tabs>
-
 
 ## OpenAI Chat Completion to Responses API Bridge
 
@@ -636,7 +569,7 @@ LiteLLM offers a chat completion to Responses API bridge. This lets you use the 
 
 This is useful when you want to use [Responses API](https://platform.openai.com/docs/api-reference/responses) specific features (like built-in tools, web search preview, or code interpreter).
 
-:::tip gpt-5.4 + reasoning_effort + function tools
+> **tip**: gpt-5.4 + reasoning_effort + function tools
 
 LiteLLM drops `reasoning_effort` from `gpt-5.4` requests to `litellm.completion()` that include tools, since that combination is supported in the Responses API.
 
@@ -650,8 +583,6 @@ response = litellm.completion(
     reasoning_effort="low",
 )
 ```
-
-:::
 
 ### When to use the `openai/responses/` prefix
 
@@ -693,9 +624,6 @@ response = litellm.completion(
 
 ### Examples
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 **Using a model with `mode: responses` (automatic):**
 
 ```python
@@ -733,9 +661,6 @@ response = litellm.completion(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -777,10 +702,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## OpenAI Audio Transcription
 
 LiteLLM supports OpenAI Audio Transcription endpoint.
@@ -792,9 +713,6 @@ Supported models:
 | `whisper-1`    | `response = completion(model="whisper-1", file=audio_file)`     |
 | `gpt-4o-transcribe` | `response = completion(model="gpt-4o-transcribe", file=audio_file)` |
 | `gpt-4o-mini-transcribe` | `response = completion(model="gpt-4o-mini-transcribe", file=audio_file)` |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import transcription
@@ -808,9 +726,6 @@ response = transcription(model="gpt-4o-transcribe", file=audio_file)
 
 print(f"response: {response}")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -842,13 +757,6 @@ curl --location 'http://0.0.0.0:8000/v1/audio/transcriptions' \
 --form 'model="gpt-4o-transcribe"'
 ```
 
-
-
-</TabItem>
-</Tabs>
-
-
-
 ## Advanced
 
 ### Getting OpenAI API Response Headers 
@@ -856,9 +764,6 @@ curl --location 'http://0.0.0.0:8000/v1/audio/transcriptions' \
 Set `litellm.return_response_headers = True` to get raw response headers from OpenAI
 
 You can expect to always get the `_response_headers` field from `litellm.completion()`, `litellm.embedding()` functions
-
-<Tabs>
-<TabItem value="litellm.completion" label="litellm.completion">
 
 ```python
 litellm.return_response_headers = True
@@ -876,9 +781,6 @@ response = completion(
 print(f"response: {response}")
 print("_response_headers=", response._response_headers)
 ```
-</TabItem>
-
-<TabItem value="litellm.completion - streaming" label="litellm.completion + stream">
 
 ```python
 litellm.return_response_headers = True
@@ -899,9 +801,6 @@ print("response_headers=", response._response_headers)
 for chunk in response:
     print(chunk)
 ```
-</TabItem>
-
-<TabItem value="litellm.embedding" label="litellm.embedding">
 
 ```python
 litellm.return_response_headers = True
@@ -916,8 +815,6 @@ embedding_response_headers = embedding_response._response_headers
 print("embedding_response_headers=", embedding_response_headers)
 ```
 
-</TabItem>
-</Tabs>
 Expected Response Headers from OpenAI
 
 ```json
@@ -1059,7 +956,6 @@ response = litellm.acompletion(
 )
 ```
 
-
 ### Using OpenAI Proxy with LiteLLM
 ```python
 import os 
@@ -1072,7 +968,6 @@ os.environ["OPENAI_API_KEY"] = ""
 # either set .env or litellm.api_base
 # os.environ["OPENAI_BASE_URL"] = "https://your_host/v1"
 litellm.api_base = "https://your_host/v1"
-
 
 messages = [{ "content": "Hello, how are you?","role": "user"}]
 

@@ -40,7 +40,6 @@ We provide a series of scripts to demonstrate SWIFT's quantization export capabi
 - Support for more model series: Supports quantization exports for [BERT](https://github.com/modelscope/ms-swift/tree/main/examples/export/quantize/bert) and [Reward Model](https://github.com/modelscope/ms-swift/tree/main/examples/export/quantize/reward_model).
 - Models exported with SWIFT's quantization support inference acceleration using vllm/sglang/lmdeploy; they also support further SFT/RLHF using QLoRA.
 
-
 ## Push Model
 
 SWIFT supports re-pushing trained/quantized models to ModelScope/Hugging Face. By default, it pushes to ModelScope, but you can specify `--use_hf true` to push to Hugging Face.

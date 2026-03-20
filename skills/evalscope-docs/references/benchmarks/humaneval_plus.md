@@ -1,6 +1,5 @@
 # HumanEvalPlus
 
-
 ## Overview
 
 HumanEval Plus is a rigorous extension of OpenAI's HumanEval benchmark, designed to address high false-positive rates in code generation evaluation. It augments the original test cases with tens of thousands of automatically generated inputs to expose edge-case bugs and functional errors.
@@ -28,7 +27,6 @@ HumanEval Plus is a rigorous extension of OpenAI's HumanEval benchmark, designed
 - Default timeout is 300 seconds to accommodate extensive test suites
 - Uses custom Docker image with numpy pre-installed
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ HumanEval Plus is a rigorous extension of OpenAI's HumanEval benchmark, designed
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -130,5 +127,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,27 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/nginx
 title: 'Monitoring Nginx Logs with ClickStack'
-sidebar_label: 'Nginx Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Nginx with ClickStack'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/finish-nginx-logs-import.png';
-import example_dashboard from '@site/static/images/clickstack/nginx-logs-dashboard.png';
-import log_view from '@site/static/images/clickstack/log-view.png';
-import search_view from '@site/static/images/clickstack/nginx-logs-search-view.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
 
 # Monitoring Nginx Logs with ClickStack {#nginx-clickstack}
 
 :::note[TL;DR]
 Collect and visualize Nginx access logs (JSON format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Nginx {#existing-nginx}
 
@@ -111,12 +97,10 @@ This configuration:
 - Adds source: Nginx attribute for filtering in HyperDX
 - Routes logs to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-- You only define new receivers and pipelines in the custom config
+> **note**: - You only define new receivers and pipelines in the custom config
 - The processors (memory_limiter, transform, batch) and exporters (clickhouse) are already defined in the base ClickStack configuration - you just reference them by name
 - The time_parser operator extracts timestamps from Nginx's time_local field to preserve original log timing
 - The pipelines route data from your receivers to the ClickHouse exporter via the existing processors
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -154,9 +138,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the nginx log files. In production, use read-only mounts (:ro) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the nginx log files. In production, use read-only mounts (:ro) and follow the principle of least privilege.
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -252,7 +234,6 @@ Here's what you should see in your search view:
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans 2025-10-20 11:00:00 - 2025-10-21 11:00:00 UTC. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 <Image img={search_view} alt="Log view"/>
 
@@ -280,9 +261,7 @@ To help you get started monitoring nginx with ClickStack, we provide essential v
 
 #### The dashboard will be created with all visualizations pre-configured {#created-dashboard}
 
-:::note
-For the demo dataset, set the time range to **2025-10-20 11:00:00 - 2025-10-21 11:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-10-20 11:00:00 - 2025-10-21 11:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 <Image img={example_dashboard} alt="Example Dashboard"/>
 

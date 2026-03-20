@@ -89,4 +89,3 @@ mysql> select hour(NULL);
 |       NULL |
 +------------+
 ```
-

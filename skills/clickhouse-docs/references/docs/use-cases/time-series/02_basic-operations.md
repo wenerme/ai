@@ -1,8 +1,6 @@
 ---
 title: 'Basic operations - Time-series'
-sidebar_label: 'Basic operations'
 description: 'Basic time-series operations in ClickHouse.'
-slug: /use-cases/time-series/basic-operations
 keywords: ['time-series', 'basic operations', 'data ingestion', 'querying', 'filtering', 'grouping', 'aggregation']
 show_related_blogs: true
 doc_type: 'guide'

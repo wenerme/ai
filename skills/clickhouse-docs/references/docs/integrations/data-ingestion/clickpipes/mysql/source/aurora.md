@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Amazon Aurora MySQL'
 description: 'Step-by-step guide on how to set up Amazon Aurora MySQL as a source for ClickPipes'
-slug: /integrations/clickpipes/mysql/source/aurora
 title: 'Aurora MySQL source setup guide'
 doc_type: 'guide'
 keywords: ['aurora mysql', 'clickpipes', 'binlog retention', 'gtid mode', 'aws']
@@ -9,18 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-import rds_backups from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/rds/rds-backups.png';
-import parameter_group_in_blade from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/parameter_group_in_blade.png';
-import security_group_in_rds_mysql from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/rds/security-group-in-rds-mysql.png';
-import edit_inbound_rules from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/edit_inbound_rules.png';
-import aurora_config from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/aurora_config.png';
-import binlog_format from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_format.png';
-import binlog_row_image from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_row_image.png';
-import binlog_row_metadata from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_row_metadata.png';
-import edit_button from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/edit_button.png';
-import enable_gtid from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/enable_gtid.png';
-import Image from '@theme/IdealImage';
 
 # Aurora MySQL source setup guide
 
@@ -40,9 +26,7 @@ We recommend setting the **Backup retention period** to a reasonably long value,
 
 ### 2. Increase the binlog retention interval {#binlog-retention-interval}
 
-:::warning
-If ClickPipes tries to resume replication and the required binlog files have been purged due to the configured binlog retention value, the ClickPipe will enter an errored state and a resync is required.
-:::
+> **warning**: If ClickPipes tries to resume replication and the required binlog files have been purged due to the configured binlog retention value, the ClickPipe will enter an errored state and a resync is required.
 
 By default, Aurora MySQL purges the binary log as soon as possible (i.e., _lazy purging_). We recommend increasing the binlog retention interval to at least **72 hours** to ensure availability of binary log files for replication under failure scenarios. To set an interval for binary log retention ([`binlog retention hours`](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/mysql-stored-proc-configuring.html#mysql_rds_set_configuration-usage-notes.binlog-retention-hours)), use the [`mysql.rds_set_configuration`](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/mysql-stored-proc-configuring.html#mysql_rds_set_configuration) procedure:
 
@@ -58,18 +42,14 @@ If this configuration isn't set or is set to a low interval, it can lead to gaps
 
 The parameter group can be found when you click on your MySQL instance in the RDS Console, and then navigate to the **Configuration** tab.
 
-:::tip
-If you have a MySQL cluster, the parameters below can be found in the [DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.CreatingCluster.html) parameter group instead of the DB instance group.
-:::
+> **tip**: If you have a MySQL cluster, the parameters below can be found in the [DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.CreatingCluster.html) parameter group instead of the DB instance group.
 
 <Image img={aurora_config} alt="Where to find parameter group in Aurora" size="lg" border/>
 
-<br/>
 Click the parameter group link, which will take you to its dedicated page. You should see an **Edit** button in the top right.
 
 <Image img={edit_button} alt="Edit parameter group" size="lg" border/>
 
-<br/>
 The following parameters need to be set as follows:
 
 1. `binlog_format` to `ROW`.
@@ -84,14 +64,11 @@ The following parameters need to be set as follows:
 
 <Image img={binlog_row_image} alt="Binlog row image" size="lg" border/>
 
-<br/>
 Then, click on **Save Changes** in the top right corner. You may need to reboot your instance for the changes to take effect — a way of knowing this is if you see `Pending reboot` next to the parameter group link in the **Configuration** tab of the Aurora instance.
 
 ## Enable GTID mode (recommended) {#gtid-mode}
 
-:::tip
-The MySQL ClickPipe also supports replication without GTID mode. However, enabling GTID mode is recommended for better performance and easier troubleshooting.
-:::
+> **tip**: The MySQL ClickPipe also supports replication without GTID mode. However, enabling GTID mode is recommended for better performance and easier troubleshooting.
 
 [Global Transaction Identifiers (GTIDs)](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids.html) are unique IDs assigned to each committed transaction in MySQL. They simplify binlog replication and make troubleshooting more straightforward. We **recommend** enabling GTID mode, so that the MySQL ClickPipe can use GTID-based replication.
 

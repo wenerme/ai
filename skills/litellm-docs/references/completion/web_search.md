@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Web Search
 
@@ -7,7 +6,7 @@ Use web search with litellm
 
 | Feature | Details |
 |---------|---------|
-| Supported Endpoints | - `/chat/completions` <br/> - `/responses` |
+| Supported Endpoints | - `/chat/completions`  - `/responses` |
 | Supported Providers | `openai`, `xai`, `vertex_ai`, `anthropic`, `gemini`, `perplexity` |
 | LiteLLM Cost Tracking | ✅ Supported |
 | LiteLLM Version | `v1.71.0+` |
@@ -24,26 +23,22 @@ Each provider uses their own search backend:
 | **Anthropic** (`claude-3-5-sonnet`) | Anthropic's web search | Real-time web data |
 | **Perplexity** | Perplexity's search engine | AI-powered search and reasoning |
 
-:::warning Important: Only Search Models Support `web_search_options`
+> **warning**: Important: Only Search Models Support `web_search_options`
 For OpenAI, only dedicated search models support the `web_search_options` parameter:
 - `gpt-4o-search-preview`
 - `gpt-4o-mini-search-preview`
 - `gpt-5-search-api`
 
 **Regular models like `gpt-5`, `gpt-4.1`, `gpt-4o` do not support `web_search_options`**
-:::
 
-:::tip The `web_search_options` parameter is optional
+> **tip**: The `web_search_options` parameter is optional
 Search models (like `gpt-4o-search-preview`) **automatically search the web** even without the `web_search_options` parameter.
 
 Use `web_search_options` when you need to:
 - Adjust `search_context_size` (`"low"`, `"medium"`, `"high"`)
 - Specify `user_location` for localized results
-:::
 
-:::info
-**Anthropic Web Search Models**: Claude models that support web search: `claude-3-5-sonnet-latest`, `claude-3-5-sonnet-20241022`, `claude-3-5-haiku-latest`, `claude-3-5-haiku-20241022`, `claude-3-7-sonnet-20250219`
-:::
+> **info**: **Anthropic Web Search Models**: Claude models that support web search: `claude-3-5-sonnet-latest`, `claude-3-5-sonnet-20241022`, `claude-3-5-haiku-latest`, `claude-3-5-haiku-20241022`, `claude-3-7-sonnet-20250219`
 
 ## OpenAI Web Search: Two Approaches
 
@@ -54,16 +49,12 @@ OpenAI offers two distinct ways to use web search depending on the endpoint and 
 | **Search Models** | `/chat/completions` | `gpt-5-search-api`, `gpt-4o-search-preview`, `gpt-4o-mini-search-preview` | Pass `web_search_options` parameter |
 | **Web Search Tool** | `/responses` | `gpt-5`, `gpt-4.1`, `gpt-4o`, and other regular models | Pass `web_search_preview` tool |
 
-:::tip Search models search automatically
+> **tip**: Search models search automatically
 Search models like `gpt-5-search-api` **automatically search the web** even without the `web_search_options` parameter. Use `web_search_options` to set `search_context_size` (`"low"`, `"medium"`, `"high"`) or specify `user_location` for localized results.
-:::
 
 ## `/chat/completions` (litellm.completion)
 
 ### Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import completion
@@ -81,9 +72,6 @@ response = completion(
     }
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -158,13 +146,8 @@ response = client.chat.completions.create(
     }
 )
 ```
-</TabItem>
-</Tabs>
 
 ### Search context size
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 **OpenAI (using web_search_options)**
 ```python showLineNumbers
@@ -247,8 +230,6 @@ response = completion(
     }
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -273,23 +254,14 @@ response = client.chat.completions.create(
     }
 )
 ```
-</TabItem>
-</Tabs>
-
-
 
 ## `/responses` (litellm.responses)
 
 Use the `web_search_preview` tool with models like `gpt-5`, `gpt-4.1`, `gpt-4o`, etc.
 
-:::info
-Search-dedicated models like `gpt-5-search-api` and `gpt-4o-search-preview` do **not** support the `/responses` endpoint. Use them with `/chat/completions` + `web_search_options` instead (see above).
-:::
+> **info**: Search-dedicated models like `gpt-5-search-api` and `gpt-4o-search-preview` do **not** support the `/responses` endpoint. Use them with `/chat/completions` + `web_search_options` instead (see above).
 
 ### Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import responses
@@ -302,9 +274,6 @@ response = responses(
     }]
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -348,13 +317,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
-</TabItem>
-</Tabs>
 
 ### Search context size
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import responses
@@ -369,8 +333,6 @@ response = responses(
     }]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -393,15 +355,10 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
-</TabItem>
-</Tabs>
 
 ## Configuring Web Search in config.yaml
 
 You can set default web search options directly in your proxy config file:
-
-<Tabs>
-<TabItem value="default" label="Default Web Search">
 
 ```yaml
 model_list:
@@ -428,9 +385,6 @@ You can configure LiteLLM's router to optionally drop models that do not support
       supports_web_search: False <---- KEY CHANGE!
 ```
 In this example, LiteLLM will still route LLM requests to both deployments, but for WebSearch, will solely route to OpenAI.
-
-</TabItem>
-<TabItem value="custom" label="Custom Search Context">
 
 ```yaml
 model_list:
@@ -460,15 +414,9 @@ model_list:
         search_context_size: "medium"
 ```
 
-</TabItem>
-</Tabs>
-
 **Note:** When `web_search_options` is set in the config, it applies to all requests to that model. Users can still override these settings by passing `web_search_options` in their API requests.
 
 ## Checking if a model supports web search
-
-<Tabs>
-<TabItem label="SDK" value="sdk">
 
 Use `litellm.supports_web_search(model="model_name")` -> returns `True` if model can perform web searches
 
@@ -489,9 +437,6 @@ assert litellm.supports_web_search(model="gemini-2.0-flash") == True
 # Check Google AI Studio models
 assert litellm.supports_web_search(model="gemini/gemini-2.0-flash") == True
 ```
-</TabItem>
-
-<TabItem label="PROXY" value="proxy">
 
 1. Define models in config.yaml
 
@@ -593,6 +538,3 @@ Expected Response
   ]
 }
 ```
-
-</TabItem>
-</Tabs>

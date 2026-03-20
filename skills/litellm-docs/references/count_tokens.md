@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Token Counting
 
@@ -114,9 +113,6 @@ print(result.tokenizer_type)  # "local_tokenizer"
 
 ### OpenAI Format — `/v1/responses/input_tokens`
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl -X POST "http://localhost:4000/v1/responses/input_tokens" \
   -H "Content-Type: application/json" \
@@ -126,9 +122,6 @@ curl -X POST "http://localhost:4000/v1/responses/input_tokens" \
     "input": "Hello, how are you?"
   }'
 ```
-
-</TabItem>
-<TabItem value="python" label="Python (httpx)">
 
 ```python
 import httpx
@@ -148,9 +141,6 @@ response = httpx.post(
 print(response.json())
 # {"input_tokens": 7}
 ```
-
-</TabItem>
-</Tabs>
 
 **Response:**
 ```json

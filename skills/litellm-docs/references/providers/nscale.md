@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Nscale (EU Sovereign)
 
 https://docs.nscale.com/docs/inference/chat
 
-:::tip
-
-**We support ALL Nscale models, just set `model=nscale/<any-model-on-nscale>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Nscale models, just set `model=nscale/<any-model-on-nscale>` as a prefix when sending litellm requests**
 
 | Property | Details |
 |-------|-------|
@@ -28,7 +23,6 @@ os.environ["NSCALE_API_KEY"] = ""  # your Nscale API key
 
 Explore our full list of text and multimodal AI models — all available at highly competitive pricing:
 📚 [Full List of Models](https://docs.nscale.com/docs/inference/serverless-models/current)  
-
 
 ## Key Features
 - **EU Sovereign**: Full data sovereignty and compliance with European regulations
@@ -113,9 +107,6 @@ litellm --config config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Nscale via Proxy - Non-streaming"
 from openai import OpenAI
 
@@ -134,10 +125,6 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Nscale via Proxy - LiteLLM SDK"
 import litellm
 
@@ -152,10 +139,6 @@ response = litellm.completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Nscale via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -166,9 +149,6 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Getting Started
 1. Create an account at [console.nscale.com](https://console.nscale.com)
 2. Claim free credit
@@ -177,4 +157,4 @@ curl http://localhost:4000/v1/chat/completions \
 
 ## Additional Resources
 - [Nscale Documentation](https://docs.nscale.com/docs/getting-started/overview)
-- [Blog: Sovereign Serverless](https://www.nscale.com/blog/sovereign-serverless-how-we-designed-full-isolation-without-sacrificing-performance) 
+- [Blog: Sovereign Serverless](https://www.nscale.com/blog/sovereign-serverless-how-we-designed-full-isolation-without-sacrificing-performance)

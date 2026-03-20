@@ -1,6 +1,5 @@
 # MuSR
 
-
 ## Overview
 
 MuSR (Multistep Soft Reasoning) is a benchmark for evaluating complex reasoning abilities through narrative-based problems. It includes murder mysteries, object placements, and team allocation scenarios requiring multi-step inference.
@@ -28,7 +27,6 @@ MuSR (Multistep Soft Reasoning) is a benchmark for evaluating complex reasoning 
 - Simple accuracy metric
 - Challenging benchmark requiring careful reading
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MuSR (Multistep Soft Reasoning) is a benchmark for evaluating complex reasoning 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -127,5 +124,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

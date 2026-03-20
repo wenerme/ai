@@ -139,4 +139,3 @@ PROPERTIES (
 ```sql
 insert into doris_bitmap_table select k1, k2, k3, bitmap_from_base64(uuid) from hive.test.hive_bitmap_table;
 ```
-

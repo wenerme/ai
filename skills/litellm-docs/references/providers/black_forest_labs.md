@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Black Forest Labs Image Generation
 
@@ -40,9 +39,6 @@ Get your API key from [Black Forest Labs](https://blackforestlabs.ai/).
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Generation"
 import os
 import litellm
@@ -59,10 +55,6 @@ response = litellm.image_generation(
 # BFL returns URLs
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="async" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Generation"
 import os
@@ -83,10 +75,6 @@ async def generate_image():
 asyncio.run(generate_image())
 ```
 
-</TabItem>
-
-<TabItem value="size" label="Custom Size">
-
 ```python showLineNumbers title="Image Generation with Custom Size"
 import os
 import litellm
@@ -103,10 +91,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="ultra" label="Ultra High-Res">
 
 ```python showLineNumbers title="Ultra High Resolution with flux-pro-1.1-ultra"
 import os
@@ -125,10 +109,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Parameters">
 
 ```python showLineNumbers title="Advanced Image Generation with BFL Parameters"
 import os
@@ -149,9 +129,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -194,9 +171,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make image generation requests
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Black Forest Labs via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -216,10 +190,6 @@ response = client.images.generate(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Black Forest Labs via Proxy - cURL"
 curl -X POST 'http://localhost:4000/v1/images/generations' \
   -H 'Content-Type: application/json' \
@@ -230,9 +200,6 @@ curl -X POST 'http://localhost:4000/v1/images/generations' \
     "size": "1024x1024"
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Parameters
 

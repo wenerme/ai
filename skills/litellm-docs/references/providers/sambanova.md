@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # SambaNova
 [https://cloud.sambanova.ai/](http://cloud.sambanova.ai?utm_source=litellm&utm_medium=external&utm_campaign=cloud_signup)
 
-:::tip
-
-**We support ALL Sambanova models, just set `model=sambanova/<any-model-on-sambanova>` as a prefix when sending litellm requests. For the complete supported model list, visit https://docs.sambanova.ai/cloud/docs/get-started/supported-models **
-
-:::
+> **tip**: **We support ALL Sambanova models, just set `model=sambanova/<any-model-on-sambanova>` as a prefix when sending litellm requests. For the complete supported model list, visit https://docs.sambanova.ai/cloud/docs/get-started/supported-models **
 
 ## API Key
 ```python
@@ -68,7 +63,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 ## Usage with LiteLLM Proxy Server
 
 Here's how to call a Sambanova model with the LiteLLM Proxy Server
@@ -83,7 +77,6 @@ Here's how to call a Sambanova model with the LiteLLM Proxy Server
         api_key: api-key                 # api key to send your model
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -92,9 +85,9 @@ Here's how to call a Sambanova model with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -115,9 +108,9 @@ Here's how to call a Sambanova model with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -133,9 +126,9 @@ Here's how to call a Sambanova model with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
+  
 
 ## SambaNova - Tool Calling
 
@@ -262,7 +255,6 @@ response = litellm.completion(
 
 print(response.choices[0].message.content)
 ```
-
 
 ## SambaNova - Structured Output
 

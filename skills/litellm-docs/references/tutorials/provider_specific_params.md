@@ -30,5 +30,4 @@ For every provider on LiteLLM, we've gotten their specific params (following the
 
 All provider configs are typed and have docstrings, so you should see them autocompleted for you in VSCode with an explanation of what it means. 
 
-Here's an example of setting max tokens through provider configs. 
-
+Here's an example of setting max tokens through provider configs.

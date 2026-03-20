@@ -46,8 +46,6 @@ None
     ```
 ## Examples
 
-
     ```
     curl http://127.0.0.1:8040/api/check_rpc_channel/127.0.0.1/8060/1024000
     ```
-

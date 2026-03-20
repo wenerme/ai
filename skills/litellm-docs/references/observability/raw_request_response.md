@@ -1,15 +1,9 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Raw Request/Response Logging
 
-
 ## Logging
 See the raw request/response sent by LiteLLM in your logging provider (OTEL/Langfuse/etc.).
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 # pip install langfuse 
@@ -40,33 +34,20 @@ response = litellm.completion(
 )
 ```
 
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-
 ```yaml
 litellm_settings:
   log_raw_request_response: True
 ```
 
-
-</TabItem>
-</Tabs>
-
 **Expected Log**
 
 <Image img={require('../../img/raw_request_log.png')}/>
-
 
 ## Return Raw Response Headers 
 
 Return raw response headers from llm provider. 
 
 Currently only supported for openai. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -84,9 +65,6 @@ response = litellm.completion(
 
 print(response._hidden_params)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -115,9 +93,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 

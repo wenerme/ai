@@ -10,7 +10,6 @@
 
 <version since="2.0.0">
 
-
 </version>
 
 ## Description
@@ -197,4 +196,4 @@ Ensure that all input array element types are compatible, especially for nested 
 
 ### Keywords
 
-ARRAY, CONCAT, ARRAY_CONCAT 
+ARRAY, CONCAT, ARRAY_CONCAT

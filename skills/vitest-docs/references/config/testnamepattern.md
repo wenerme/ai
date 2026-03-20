@@ -1,6 +1,5 @@
 ---
 title: testNamePattern | Config
-outline: deep
 ---
 
 # testNamePattern <CRoot /> {#testnamepattern}

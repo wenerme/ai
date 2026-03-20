@@ -1,18 +1,9 @@
 ---
-sidebar_label: 'SQL Server CDC for ClickHouse'
-sidebar_position: 13
 keywords: ['clickhouse', 'Streamkap', 'CDC', 'sql server', 'connect', 'integrate', 'etl', 'data integration', 'change data capture']
-slug: /integrations/data-ingestion/etl-tools/sql-server-clickhouse
 description: 'Streaming Data from SQL Server to ClickHouse for Fast Analytics'
 title: 'Streaming Data from SQL Server to ClickHouse for Fast Analytics'
 doc_type: 'guide'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import image1 from '@site/static/images/integrations/data-ingestion/etl-tools/image1.png';
-import image2 from '@site/static/images/integrations/data-ingestion/etl-tools/image2.png';
-import image3 from '@site/static/images/integrations/data-ingestion/etl-tools/image3.png';
 
 # Streaming Data from SQL Server to ClickHouse for Fast Analytics: Step-by-Step Guide
 

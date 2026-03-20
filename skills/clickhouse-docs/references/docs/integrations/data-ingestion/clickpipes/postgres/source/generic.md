@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Generic Postgres'
 description: 'Set up any Postgres instance as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/generic
 title: 'Generic Postgres Source Setup Guide'
 doc_type: 'guide'
 keywords: ['postgres', 'clickpipes', 'logical replication', 'pg_hba.conf', 'wal level']
@@ -12,11 +10,7 @@ integration:
 
 # Generic Postgres source setup guide
 
-:::info
-
-If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
-
-:::
+> **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ClickPipes supports Postgres version 12 and later.
 
@@ -128,11 +122,7 @@ You can reload the Postgres instance for the changes to take effect:
 SELECT pg_reload_conf();
 ```
 
-:::note
-
-For better recommendation of this value you can contact the ClickPipes team.
-
-:::
+> **note**: For better recommendation of this value you can contact the ClickPipes team.
 
 ## What's next? {#whats-next}
 

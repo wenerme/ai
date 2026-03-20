@@ -160,5 +160,3 @@ The comment for the catalog to be created.
        "driver_class" = "com.oceanbase.jdbc.Driver"
 	);
     ```
-
-

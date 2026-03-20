@@ -1,7 +1,4 @@
 ---
-sidebar_position: 1
-slug: /tips-and-tricks/community-wisdom
-sidebar_label: 'Community wisdom'
 doc_type: 'landing-page'
 keywords: [
   'database tips',

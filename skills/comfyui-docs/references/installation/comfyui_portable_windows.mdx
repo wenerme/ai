@@ -1,12 +1,7 @@
 ---
 title: "ComfyUI(portable) Windows"
 description: "This tutorial will guide you on how to download and start using ComfyUI Portable and run the corresponding programs"
-icon: "box"
-sidebarTitle: "Portable(Windows)"
 ---
-
-import FirstGeneration from "/snippets/install/first-generation.mdx"
-import AddExternalModels from "/snippets/install/add-external-models.mdx"
 
 **ComfyUI Portable** is a standalone packaged complete ComfyUI Windows version that has integrated an independent **Python (python_embeded)** required for ComfyUI to run. You only need to extract it to use it. Currently, the portable version supports running through **Nvidia GPU** or **CPU**.
 
@@ -16,22 +11,18 @@ This guide section will walk you through installing ComfyUI Portable.
 
 You can get the latest ComfyUI Portable download link by clicking the link below
 
-<CardGroup cols={2}>
-  <Card title="Standard portable for Nvidia GPUs" icon="download" href="https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia.7z">
-  </Card>
-  <Card title="Experimental portable for AMD GPUs" icon="microchip" href="https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_amd.7z">
-  </Card>
-</CardGroup>
+  
+  
+  
+  
 
 ### Alternative downloads for Nvidia GPUs
 
-<CardGroup cols={2}>
-  <Card title="Portable with pytorch cuda 12.8 and python 3.12" icon="download" href="https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia_cu128.7z">
-  </Card>
-  <Card title="Portable with pytorch cuda 12.6 and python 3.12" icon="download" href="https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia_cu126.7z">
+  
+  
+  
     Supports Nvidia 10 series and older GPUs
-  </Card>
-</CardGroup>
+  
 
 ### Alternative downloads
 
@@ -58,7 +49,7 @@ ComfyUI_windows_portable
 Double click either `run_nvidia_gpu.bat` or `run_cpu.bat` depending on your computer's configuration to launch ComfyUI. 
 You will see the command running as shown in the image below
 
-![ComfyUI Portable Command Prompt](/images/comfyui-portable-cmd.png)
+[ComfyUI Portable Command Prompt]
 
 When you see something similar to the image
 ```
@@ -66,11 +57,7 @@ To see the GUI go to: http://127.0.0.1:8188
 ```
 At this point, your ComfyUI service has started. Normally, ComfyUI will automatically open your default browser and navigate to `http://127.0.0.1:8188`. If it doesn't open automatically, please manually open your browser and visit this address.
 
-<Warning>During use, please do not close the corresponding command line window, otherwise ComfyUI will stop running</Warning>
-
-<AddExternalModels/>
-
-<FirstGeneration/>
+During use, please do not close the corresponding command line window, otherwise ComfyUI will stop running
 
 ## Additional ComfyUI Portable Instructions
 
@@ -106,4 +93,3 @@ To see the GUI go to: http://[::]:8188
 ```
 
 You can press `WIN + R` and type `cmd` to open the command prompt, then enter `ipconfig` to view your local IP address. Other devices can then access ComfyUI by entering `http://your-local-IP:8188` in their browser.
-

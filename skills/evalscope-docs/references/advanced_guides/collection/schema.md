@@ -42,7 +42,6 @@ $$
 \boldsymbol{\alpha_i} = \mathbf{p_i}, \quad \sum_{i=1}^{n} \boldsymbol{\alpha_i} = 1
 $$
 
-
 ## Minimal Python Example
 ```python
 from evalscope.collections import CollectionSchema, DatasetInfo
@@ -55,7 +54,6 @@ simple_schema = CollectionSchema(
     ],
 )
 ```
-
 
 ## Nested & Multi-Capability Example
 ```python
@@ -102,7 +100,6 @@ loaded = CollectionSchema.from_json('outputs/complex_schema.json')
 - `args` must match corresponding dataset adapter fields; incorrect fields will be ignored or trigger warnings.
 - Cramming too many capabilities into one Schema hinders iteration; split into multiple versions for comparison.
 
-
 ## Reference Cases
 
 ### Case A: Enterprise RAG Assistant Index
@@ -118,7 +115,6 @@ schema = CollectionSchema(name='rag_index', datasets=[
     DatasetInfo(name='ifeval', weight=0.4, task_type='instruction_following', tags=['rag']),
 ])
 ```
-
 
 ### Case B: Code Completion & Analysis Index
 - **Pain Point**: General leaderboards cannot comprehensively reflect code understanding and generation capabilities.

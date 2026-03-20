@@ -1,6 +1,5 @@
 # VisuLogic
 
-
 ## Overview
 
 VisuLogic is a benchmark for evaluating visual reasoning capabilities of Multimodal Large Language Models (MLLMs), independent of textual reasoning. It features carefully constructed visual reasoning tasks that are inherently difficult to articulate using language alone.
@@ -30,7 +29,6 @@ VisuLogic is a benchmark for evaluating visual reasoning capabilities of Multimo
 - Uses Chain-of-Thought (CoT) prompting with "ANSWER: [LETTER]" format
 - Results grouped by reasoning skill category
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ VisuLogic is a benchmark for evaluating visual reasoning capabilities of Multimo
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -71,7 +68,6 @@ VisuLogic is a benchmark for evaluating visual reasoning capabilities of Multimo
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 288x125 - 700x825 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -153,5 +149,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

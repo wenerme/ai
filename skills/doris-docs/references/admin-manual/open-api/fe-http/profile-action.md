@@ -10,11 +10,9 @@
 
 ## Request
 
-:::caution Note:
+> **caution**: Note:
 
 Admin privileges (admin_priv) are required to use this API. We recommend using [query profile action](./query-profile-action.md) to view profiles instead.
-
-:::
 
 `GET /api/profile`
 `GET /api/profile/text`
@@ -174,4 +172,3 @@ None
       ,sum(SR_FEE) as ctr_total_return
       ...
     ```
-

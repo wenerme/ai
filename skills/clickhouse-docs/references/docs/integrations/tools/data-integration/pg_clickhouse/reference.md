@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Reference'
 description: 'Complete reference documentation for pg_clickhouse'
-slug: '/integrations/pg_clickhouse/reference'
 title: 'pg_clickhouse Reference Documentation'
 doc_type: 'reference'
 keywords: ['PostgreSQL', 'Postgres', 'FDW', 'foreign data wrapper', 'pg_clickhouse', 'extension']
@@ -232,7 +230,7 @@ the foreign tables. Columns will be defined using the [supported data
 types](#data-types) and, were detectable, the options supported by [CREATE
 FOREIGN TABLE](#create-foreign-table).
 
-:::tip Imported Identifier Case Preservation
+> **tip**: Imported Identifier Case Preservation
 
  `IMPORT FOREIGN SCHEMA` runs `quote_identifier()` on the table and column
  names it imports, which double-quotes identifiers with uppercase characters
@@ -272,7 +270,6 @@ FOREIGN TABLE](#create-foreign-table).
 
  To create objects with different names or all lowercase (and therefore
  case-insensitive) names, use [CREATE FOREIGN TABLE](#create-foreign-table).
-:::
 
 ### CREATE FOREIGN TABLE {#create-foreign-table}
 
@@ -574,14 +571,12 @@ try=# EXECUTE avg_durations_between_dates('2025-12-09', '2025-12-13');
 (5 rows)
 ```
 
-:::warning
-Parameterized execution prevents the [http driver](#create-server) from
+> **warning**: Parameterized execution prevents the [http driver](#create-server) from
 properly converting DateTime time zones on ClickHouse versions prior to 25.8,
 when the [underlying bug] was [fixed]. Note that sometimes PostgreSQL will use
 a parameterized query plan even without using `PREPARE`. For any queries on
 that require accurate time zone conversion, and where upgrading to 25.8 or
 later is not an option, use the [binary driver](#create-server), instead.
-:::
 
 pg_clickhouse pushes down the aggregations, as usual, as seen in the
 [EXPLAIN](#explain) verbose output:
@@ -936,10 +931,8 @@ But reading them as [BYTEA] will not:
 (4 rows)
 ```
 
-:::tip
-As a rule, only use [TEXT] columns for encoded strings and use [BYTEA] columns
+> **tip**: As a rule, only use [TEXT] columns for encoded strings and use [BYTEA] columns
 only for binary data, and never switch between them.
-:::
 
 ## Function and Operator Reference {#function-and-operator-reference}
 

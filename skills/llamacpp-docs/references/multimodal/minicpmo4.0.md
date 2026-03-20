@@ -4,7 +4,6 @@
 
 Download [MiniCPM-o-4](https://huggingface.co/openbmb/MiniCPM-o-4) PyTorch model from huggingface to "MiniCPM-o-4" folder.
 
-
 ### Build llama.cpp
 Readme modification time: 20250206
 
@@ -22,7 +21,6 @@ cmake -B build
 cmake --build build --config Release
 ```
 
-
 ### Usage of MiniCPM-o 4
 
 Convert PyTorch model to gguf files (You can also download the converted [gguf](https://huggingface.co/openbmb/MiniCPM-o-4-gguf) by us)
@@ -35,7 +33,6 @@ python ./convert_hf_to_gguf.py ../MiniCPM-o-4/model
 # quantize int4 version
 ./build/bin/llama-quantize ../MiniCPM-o-4/model/ggml-model-f16.gguf ../MiniCPM-o-4/model/ggml-model-Q4_K_M.gguf Q4_K_M
 ```
-
 
 Inference on Linux or Mac
 ```bash

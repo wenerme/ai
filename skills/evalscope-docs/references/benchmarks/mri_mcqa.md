@@ -38,7 +38,6 @@ MRI-MCQA is a specialized benchmark composed of multiple-choice questions relate
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -112,5 +111,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

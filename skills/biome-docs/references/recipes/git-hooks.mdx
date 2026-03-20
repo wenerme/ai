@@ -8,7 +8,6 @@ For example, you can format and lint the staged files before committing or pushi
 Several tools exist to simplify the management of Git Hooks.
 In the following sections we introduce some of them and how they can be used with Biome.
 
-
 ## Lefthook
 
 [Lefthook](https://github.com/evilmartians/lefthook) provides a fast, cross-platform, and dependency-free hook manager.
@@ -57,7 +56,6 @@ If you wish more control over which files are handled, you should use `glob`.
 `--no-errors-on-unmatched` silents possible errors in case *no files are processed*.
 
 Once configured, run `lefthook install` to set up the hooks.
-
 
 ## Husky
 
@@ -111,7 +109,6 @@ Here's some example of commands that you could find useful when running the Git 
 
 Remember to use the CLI option `--no-errors-on-unmatched` in your command, to silent possible errors in case *no files are processed*.
 
-
 ### git-format-staged
 
 In contrast to other tools such as _lefthook_, _pre-commit_, and _lint-staged_,
@@ -132,7 +129,6 @@ Some examples of configuration:
   ```shell title=".husky/pre-commit"
   git-format-staged --formatter 'biome check --write --files-ignore-unknown=true --no-errors-on-unmatched \"{}\"' .
   ```
-
 
 ## pre-commit
 
@@ -183,7 +179,6 @@ repos:
 
 The pre-commit option `files` is optional,
 because Biome is able to ignore unknown files (using the option `--files-ignore-unknown=true`).
-
 
 ## Shell script
 

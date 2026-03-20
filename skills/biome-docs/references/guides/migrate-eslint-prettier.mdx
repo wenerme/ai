@@ -3,8 +3,6 @@ title: Migrate from ESLint and Prettier
 description: Learn how you can ease your migration from ESLint and Prettier
 ---
 
-import PackageManagerBiomeCommand from "@/components/PackageManagerBiomeCommand.astro";
-
 Biome provides dedicated commands to ease the migration from ESLint and Prettier.
 
 If you don't want to know the details, just run the following commands:
@@ -71,8 +69,6 @@ And the following Biome configuration:
 
 Run the following command to migrate your ESLint configuration to Biome.
 
-<PackageManagerBiomeCommand command="migrate eslint --write"/>
-
 The subcommand overwrites your initial Biome configuration.
 For example, it disables `recommended`.
 This results in the following Biome configuration:
@@ -118,17 +114,13 @@ For now, `biome migrate eslint` doesn't support configuration written in YAML.
 By default, Biome doesn't migrate inspired rules.
 You can use the CLI flag `--include-inspired` to migrate them.
 
-<PackageManagerBiomeCommand command="migrate eslint --write --include-inspired"/>
-
 Note that you are unlikely to get exactly the same behavior as ESLint because Biome has chosen not to implement some rule options or to deviate slightly from the original implementation.
 
 Since ESLint takes VCS ignore files into account,
 we recommend that you enable Biome's [VCS integration](/guides/integrate-in-vcs).
 
-:::caution
-Some plugins or shared configurations may export an object with a cyclic reference.
+> **caution**: Some plugins or shared configurations may export an object with a cyclic reference.
 Biome may fail to load such a configuration.
-:::
 
 ## Migrate from Prettier
 
@@ -153,8 +145,6 @@ Given the following Prettier configuration:
 ```
 
 Run the following command to migrate your Prettier configuration to Biome.
-
-<PackageManagerBiomeCommand command="migrate prettier --write"/>
 
 This results in the following Biome configuration:
 

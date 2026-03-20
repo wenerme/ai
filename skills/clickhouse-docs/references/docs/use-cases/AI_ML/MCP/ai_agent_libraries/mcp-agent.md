@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/mcp-agent
-sidebar_label: 'Integrate mcp-agent'
 title: 'How to build an AI Agent with mcp-agent and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how build an AI Agent with mcp-agent and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'mcp-agent']
 show_related_blogs: true
@@ -15,9 +11,8 @@ doc_type: 'guide'
 In this guide you'll learn how to build a [mcp-agent](https://github.com/lastmile-ai/mcp-agent) AI agent that can interact with 
 [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/mcp-agent/mcp-agent.ipynb).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.

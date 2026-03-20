@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Google Cloud SQL'
 description: 'Set up Google Cloud SQL Postgres instance as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/google-cloudsql
 title: 'Google Cloud SQL Postgres Source Setup Guide'
 doc_type: 'guide'
 keywords: ['google cloud sql', 'postgres', 'clickpipes', 'logical decoding', 'firewall']
@@ -10,23 +8,9 @@ integration:
    - category: 'clickpipes'
 ---
 
-import edit_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/edit.png';
-import cloudsql_logical_decoding1 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/cloudsql_logical_decoding1.png';
-import cloudsql_logical_decoding2 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/cloudsql_logical_decoding2.png';
-import cloudsql_logical_decoding3 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/cloudsql_logical_decoding3.png';
-import connections from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/connections.png';
-import connections_networking from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/connections_networking.png';
-import firewall1 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/firewall1.png';
-import firewall2 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/google-cloudsql/firewall2.png';
-import Image from '@theme/IdealImage';
-
 # Google Cloud SQL Postgres source setup guide
 
-:::info
-
-If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
-
-:::
+> **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ## Supported Postgres versions {#supported-postgres-versions}
 
@@ -96,11 +80,7 @@ Connect to your Cloud SQL Postgres through the admin user and run the below comm
 
 Please follow the below steps to add ClickPipes IPs to your network.
 
-:::note
-
-If your are using SSH Tunneling, then you need to add the [ClickPipes IPs](../../index.md#list-of-static-ips) to the firewall rules of the Jump Server/Bastion.
-
-:::
+> **note**: If your are using SSH Tunneling, then you need to add the [ClickPipes IPs](../../index.md#list-of-static-ips) to the firewall rules of the Jump Server/Bastion.
 
 1. Go to **Connections** section
 

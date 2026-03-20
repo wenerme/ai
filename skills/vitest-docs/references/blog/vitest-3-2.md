@@ -29,7 +29,7 @@ head:
 
 _June 2, 2025_
 
-![Vitest 3.2 Announcement Cover Image](/og-vitest-3-2.png)
+[Vitest 3.2 Announcement Cover Image]
 
 Vitest 3.2 focuses on improvements to Browser Mode and TypeScript support. This release also includes some new useful methods, config options and deprecates the `workspace` config in favour of `projects`.
 
@@ -41,13 +41,11 @@ We also decided to deprecate the `workspace` name because it clashes with other 
 
 This option will be removed completely in a future major, replaced by `projects`. Until then, Vitest will print a warning if workspace feature is used.
 
-<!--@include: ../guide/examples/projects-workspace.md-->
-
 ## Annotation API
 
 The new [annotation API](/guide/test-annotations) allows you to annotate any test with a custom message and attachment. These annotations are visible in the UI, HTML, junit, tap and GitHub Actions reporters. Vitest will also print related annotation in the CLI if the test fails.
 
-<img src="/annotation-api-cute-puppy-example.png" alt="an example of annotation with a cute puppy" />
+[an example of annotation with a cute puppy]
 
 ## Scoped Fixtures
 
@@ -74,7 +72,7 @@ The `worker` fixture is initiated once per worker, but note that by default Vite
 
 You can now set a custom [color](/config/name) when using `projects`:
 
-::: details Config Example
+> **details**: Config Example
 ```ts{6-9,14-17}
 export default defineConfig({
   test: {
@@ -104,9 +102,8 @@ export default defineConfig({
   },
 })
 ```
-:::
 
-<img src="/v3-2-custom-colors.png" alt="an example of project names with custom backgrounds" />
+[an example of project names with custom backgrounds]
 
 ## Custom Browser Locators API
 
@@ -273,7 +270,7 @@ The new [`sequence.groupOrder`](/config/sequence#sequence-grouporder) option con
 - If you don’t set this option, all projects run in parallel.
 - If several projects use the same group order, they will run at the same time.
 
-::: details Example
+> **details**: Example
 Consider this example:
 
 ```ts
@@ -320,7 +317,6 @@ Tests in these projects will run in this order:
 
  1. flaky |> runs after slow and fast alone
 ```
-:::
 
 ----
 

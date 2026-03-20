@@ -57,8 +57,7 @@ After a user submits an import task, the Frontend (FE) generates a corresponding
 
 During execution, the BE nodes pull data from the Broker, perform necessary transformations, and then import the data into the system. Once all BE nodes have completed the import, the FE makes the final determination on whether the import was successful.
 
-![Broker Load](/images/broker-load.png)
-
+[Broker Load]
 
 As seen in the diagram, BE nodes rely on Broker processes to read data from corresponding remote storage systems. The introduction of Broker processes primarily aims to accommodate different remote storage systems. Users can develop their own Broker processes according to established standards. These Broker processes, which can be developed using Java, offer better compatibility with various storage systems in the big data ecosystem. The separation of Broker processes from BE nodes ensures error isolation between the two, enhancing the stability of the BE.
 
@@ -318,10 +317,9 @@ SET
 
 This represents fetching columns named (tmp_c1, tmp_c2) in the parquet or orc file and mapping them to the (id, name) columns in the Doris table. If no set is specified, the columns in the file header will be used for mapping.
 
-:::info Note
+> **info**: Note
 
 If ORC files are generated directly using certain Hive versions, the column headers in the ORC file may not be the Hive metadata, but (_col0, _col1, _col2, ...), which may lead to the Invalid Column Name error. In this case, mapping using SET is necessary.
-:::
 
 **5. Import Error: `Failed to get S3 FileSystem for bucket is null/empty`**
 
@@ -339,10 +337,9 @@ For example, if the cluster has 10 BEs:
 
 Expected Maximum Import File Data Volume = 14400s * 10M/s * 10 = 1440000M ≈ 1440G
 
-:::info Note
+> **info**: Note
 
 In general, user environments may not reach speeds of 10M/s, so it is recommended to split files exceeding 500G before importing.
-:::
 
 ### S3 Load URL style
 
@@ -504,9 +501,8 @@ WITH BROKER "broker_name"
 
 Typically, users need to specify an existing Broker Name through the `WITH BROKER "broker_name"` clause in the operation command. The Broker Name is a name designated by the user when adding a Broker process through the `ALTER SYSTEM ADD BROKER` command. One name usually corresponds to one or more Broker processes. Doris will select an available Broker process based on the name. Users can view the Brokers that currently exist in the cluster through the `SHOW BROKER` command.
 
-:::info Note
+> **info**: Note
 The Broker Name is merely a user-defined name and does not represent the type of Broker.
-:::
 
 **Authentication Information**
 Different Broker types and access methods require different authentication information. The authentication information is usually provided in the Property Map in a Key-Value format after `WITH BROKER "broker_name"`.
@@ -704,9 +700,8 @@ Only the rows where k1 = 1 in the original data and k1 > k2 after transformation
   );
   ```
 
-:::tip Tip
+> **tip**: Tip
 The time contains "%3A". In HDFS paths, colons ":" are not allowed, so all colons are replaced with "%3A".
-:::
 
 There are the following files under the path:
 
@@ -812,9 +807,8 @@ The `jsonpaths` can also be used in conjunction with the column list and `SET (c
     "hadoop.username"="user"
   );
   ```
-:::info Note
+> **info**: Note
 If you need to load the JSON object at the root node of a JSON file, the jsonpaths should be specified as $., e.g., `PROPERTIES("jsonpaths"="$.")`"
-:::
 
 ### Load from other brokers
 

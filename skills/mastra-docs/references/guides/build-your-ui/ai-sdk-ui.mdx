@@ -3,22 +3,13 @@ title: "Using AI SDK UI | Frameworks"
 description: "Learn how Mastra leverages the AI SDK UI library and how you can leverage it further with Mastra"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Using AI SDK UI
 
 [AI SDK UI](https://sdk.vercel.ai) is a library of React utilities and components for building AI-powered interfaces. In this guide, you'll learn how to use `@mastra/ai-sdk` to convert Mastra's output to AI SDK-compatible formats, enabling you to use its hooks and components in your frontend.
 
-:::note
-Migrating from AI SDK v4 to v5? See the [migration guide](/guides/migrations/ai-sdk-v4-to-v5).
-:::
+> **note**: Migrating from AI SDK v4 to v5? See the [migration guide](/guides/migrations/ai-sdk-v4-to-v5).
 
-:::tip
-
-Want to see more examples? Visit Mastra's [**UI Dojo**](https://ui-dojo.mastra.ai/) or the [Next.js quickstart guide](/guides/getting-started/next-js).
-
-:::
+> **tip**: Want to see more examples? Visit Mastra's [**UI Dojo**](https://ui-dojo.mastra.ai/) or the [Next.js quickstart guide](/guides/getting-started/next-js).
 
 ## Getting started
 
@@ -47,16 +38,11 @@ Once you have your API routes set up, you can use them in the [`useChat()`](#use
 
 Run Mastra as a standalone server and connect your frontend (e.g. using Vite + React) to its API endpoints. You'll be using Mastra's [custom API routes](/docs/server/custom-api-routes) feature for this.
 
-:::info
-
-Mastra's [**UI Dojo**](https://ui-dojo.mastra.ai/) is an example of this setup.
-
-:::
+> **info**: Mastra's [**UI Dojo**](https://ui-dojo.mastra.ai/) is an example of this setup.
 
 You can use [`chatRoute()`](/reference/ai-sdk/chat-route), [`workflowRoute()`](/reference/ai-sdk/workflow-route), and [`networkRoute()`](/reference/ai-sdk/network-route) to create API routes that stream Mastra content in AI SDK-compatible format. Once implemented, you can use these API routes in [`useChat()`](#usechat).
 
-<Tabs>
-  <TabItem value="chatRoute" label="chatRoute()">
+  
     This example shows how to set up a chat route at the `/chat` endpoint that uses an agent with the ID `weatherAgent`.
 
     ```typescript title="src/mastra/index.ts"
@@ -76,9 +62,9 @@ You can use [`chatRoute()`](/reference/ai-sdk/chat-route), [`workflowRoute()`](/
     ```
 
     You can also use dynamic agent routing, see the [`chatRoute()` reference documentation](/reference/ai-sdk/chat-route) for more details.
-  </TabItem>
+  
 
-  <TabItem value="workflowRoute" label="workflowRoute()">
+  
     This example shows how to set up a workflow route at the `/workflow` endpoint that uses a workflow with the ID `weatherWorkflow`.
 
     ```typescript title="src/mastra/index.ts"
@@ -106,9 +92,9 @@ You can use [`chatRoute()`](/reference/ai-sdk/chat-route), [`workflowRoute()`](/
     See [Workflow Streaming](/docs/streaming/workflow-streaming) for more details.
 
     :::
-  </TabItem>
+  
 
-  <TabItem value="networkRoute" label="networkRoute()">
+  
     This example shows how to set up a network route at the `/network` endpoint that uses an agent with the ID `weatherAgent`.
 
     ```typescript title="src/mastra/index.ts"
@@ -128,8 +114,7 @@ You can use [`chatRoute()`](/reference/ai-sdk/chat-route), [`workflowRoute()`](/
     ```
 
     You can also use dynamic network routing, see the [`networkRoute()` reference documentation](/reference/ai-sdk/network-route) for more details.
-  </TabItem>
-</Tabs>
+  
 
 ### Framework-agnostic
 
@@ -137,16 +122,13 @@ If you don't want to run Mastra's server and instead use frameworks like Next.js
 
 They return a `ReadableStream` that you can wrap with [`createUIMessageStreamResponse()`](https://ai-sdk.dev/docs/reference/ai-sdk-ui/create-ui-message-stream-response).
 
-:::tip AI SDK v6 compatibility
+> **tip**: AI SDK v6 compatibility
 
 The framework-agnostic handlers keep the existing AI SDK v5/default behavior. If your app is typed against AI SDK v6, pass `version: 'v6'`. For best TypeScript inference with `handleChatStream()` and `handleNetworkStream()`, pass `messages` as `UIMessage[]` from your installed `ai` version.
 
-:::
-
 The examples below show you how to use them with Next.js App Router.
 
-<Tabs>
-  <TabItem value="handleChatStream" label="handleChatStream()">
+  
     This example shows how to set up a chat route at the `/chat` endpoint that uses an agent with the ID `weatherAgent`.
 
     ```typescript title="app/chat/route.ts"
@@ -164,9 +146,9 @@ The examples below show you how to use them with Next.js App Router.
       return createUIMessageStreamResponse({ stream })
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="handleWorkflowStream" label="handleWorkflowStream()">
+  
     This example shows how to set up a workflow route at the `/workflow` endpoint that uses a workflow with the ID `weatherWorkflow`.
 
     ```typescript title="app/workflow/route.ts"
@@ -184,9 +166,9 @@ The examples below show you how to use them with Next.js App Router.
       return createUIMessageStreamResponse({ stream })
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="handleNetworkStream" label="handleNetworkStream()">
+  
     This example shows how to set up a network route at the `/network` endpoint that uses an agent with the ID `routingAgent`.
 
     ```typescript title="app/network/route.ts"
@@ -204,8 +186,7 @@ The examples below show you how to use them with Next.js App Router.
       return createUIMessageStreamResponse({ stream })
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 ### `useChat()`
 
@@ -274,8 +255,7 @@ export default function Page() {
 
 Below are two approaches to implementing the backend:
 
-<Tabs>
-  <TabItem value="mastra-server" label="Mastra Server">
+  
     ```ts title="src/mastra/index.ts"
     import { Mastra } from '@mastra/core/mastra'
     import { registerApiRoute } from '@mastra/core/server'
@@ -316,9 +296,9 @@ Below are two approaches to implementing the backend:
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="nextjs" label="Next.js">
+  
     ```ts title="app/completion/route.ts"
     import { handleChatStream } from '@mastra/ai-sdk'
     import { createUIMessageStreamResponse } from 'ai'
@@ -351,8 +331,7 @@ Below are two approaches to implementing the backend:
       return createUIMessageStreamResponse({ stream })
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 ## Custom UI
 
@@ -392,8 +371,7 @@ The tool part cycles through states:
 
 Here's an example of rendering a weather tool's output as a custom `WeatherCard` component.
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Define a tool with an `outputSchema` so the frontend knows the shape of the data to render.
 
     ```typescript title="src/mastra/tools/weather-tool.ts" {10-17}
@@ -430,9 +408,9 @@ Here's an example of rendering a weather tool's output as a custom `WeatherCard`
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Check for `tool-{toolKey}` parts in the message and render a custom component based on the tool's state and output.
 
     ```typescript title="src/components/chat.tsx" {24-35}
@@ -480,21 +458,15 @@ Here's an example of rendering a weather tool's output as a custom `WeatherCard`
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
-:::tip
-
-The tool part type follows the pattern `tool-{toolKey}`, where `toolKey` is the key used when registering the tool with the agent. For example, if you register tools as `tools: { weatherTool }`, the part type will be `tool-weatherTool`.
-
-:::
+> **tip**: The tool part type follows the pattern `tool-{toolKey}`, where `toolKey` is the key used when registering the tool with the agent. For example, if you register tools as `tools: { weatherTool }`, the part type will be `tool-weatherTool`.
 
 ### Rendering workflow data
 
 When using `workflowRoute()` or `handleWorkflowStream()`, Mastra emits `data-workflow` parts that contain the workflow's execution state, including step statuses and outputs.
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Define a workflow with multiple steps that will emit `data-workflow` parts as it executes.
 
     ```typescript title="src/mastra/workflows/activities-workflow.ts"
@@ -567,9 +539,9 @@ When using `workflowRoute()` or `handleWorkflowStream()`, Mastra emits `data-wor
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Check for `data-workflow` parts and render each step's status and output using the `WorkflowDataPart` type for type safety.
 
     ```typescript title="src/components/workflow-chat.tsx" {3,5,45-47}
@@ -646,8 +618,7 @@ When using `workflowRoute()` or `handleWorkflowStream()`, Mastra emits `data-wor
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 For more details on workflow streaming, see [Workflow Streaming](/docs/streaming/workflow-streaming).
 
@@ -655,8 +626,7 @@ For more details on workflow streaming, see [Workflow Streaming](/docs/streaming
 
 When using `networkRoute()` or `handleNetworkStream()`, Mastra emits `data-network` parts that contain the agent network's execution state, including which agents were called and their outputs.
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Register agents with Mastra and expose the routing agent via `networkRoute()` to stream network execution events to the frontend.
 
     ```typescript title="src/mastra/index.ts"
@@ -675,9 +645,9 @@ When using `networkRoute()` or `handleNetworkStream()`, Mastra emits `data-netwo
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Check for `data-network` parts and render each agent's execution step using the `NetworkDataPart` type for type safety.
 
     ```typescript title="src/components/network-chat.tsx" {3,5,42-44}
@@ -751,8 +721,7 @@ When using `networkRoute()` or `handleNetworkStream()`, Mastra emits `data-netwo
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 For more details on agent networks, see [Agent Networks](/docs/agents/networks).
 
@@ -762,14 +731,8 @@ Use `writer.custom()` within a tool's `execute()` function to emit custom data p
 
 Custom event types must start with `data-` to be recognized as data parts.
 
-:::warning
+> **warning**: You must `await` the `writer.custom()` call, otherwise you may encounter a `WritableStream is locked` error.
 
-You must `await` the `writer.custom()` call, otherwise you may encounter a `WritableStream is locked` error.
-
-:::
-
-<Tabs>
-  <TabItem value="backend" label="Backend">
     Use `writer.custom()` inside the tool's `execute()` function to emit custom `data-` prefixed events at different stages of execution.
 
     ```typescript title="src/mastra/tools/task-tool.ts" {18-24,30-36}
@@ -817,9 +780,9 @@ You must `await` the `writer.custom()` call, otherwise you may encounter a `Writ
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Filter message parts for your custom event type and render a progress indicator that updates as new events arrive.
 
     ```typescript title="src/components/task-chat.tsx" {31-41,45}
@@ -882,8 +845,7 @@ You must `await` the `writer.custom()` call, otherwise you may encounter a `Writ
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 ### Tool streaming
 
@@ -971,8 +933,7 @@ export function ChatAdditional() {
 
 Two examples on how to implement the backend portion of it.
 
-<Tabs>
-  <TabItem value="mastra-server" label="Mastra Server">
+  
     Add a `chatRoute()` to your Mastra configuration like shown above. Then, add a server-level middleware:
 
     ```typescript title="src/mastra/index.ts"
@@ -1006,9 +967,9 @@ Two examples on how to implement the backend portion of it.
     You can access this data in your tools via the `requestContext` parameter. See the [Request Context documentation](/docs/server/request-context) for more details.
 
     :::
-  </TabItem>
+  
 
-  <TabItem value="nextjs" label="Next.js">
+  
     ```typescript title="app/chat-extra/route.ts"
     import { handleChatStream } from '@mastra/ai-sdk'
     import { RequestContext } from '@mastra/core/request-context'
@@ -1037,8 +998,7 @@ Two examples on how to implement the backend portion of it.
       return createUIMessageStreamResponse({ stream })
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 ### Workflow suspend/resume with user approval
 
@@ -1051,8 +1011,7 @@ The workflow uses:
 - `resumeData` - Contains the user's response when the workflow resumes
 - `bail()` - Exits the workflow early (e.g., when user rejects)
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Create a workflow step that suspends for approval. The step checks `resumeData` to determine if it's resuming, and calls `suspend()` on first execution.
 
     ```typescript title="src/mastra/workflows/approval-workflow.ts"
@@ -1128,9 +1087,9 @@ The workflow uses:
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Detect when the workflow is suspended and send resume data with `runId`, `step`, and `resumeData`.
 
     ```typescript title="src/components/approval-workflow.tsx"
@@ -1229,8 +1188,7 @@ The workflow uses:
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 Key points:
 
@@ -1250,8 +1208,7 @@ The pattern uses:
 - `agent.stream()` - Stream the agent's response
 - `stream.fullStream.pipeTo(context.writer)` - Pipe the agent's stream to the tool's writer
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Create a tool that calls an agent and pipes its stream to the tool's writer.
 
     ```typescript title="src/mastra/tools/nested-agent-tool.ts"
@@ -1298,9 +1255,9 @@ The pattern uses:
       tools: { nestedAgentTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Handle `data-tool-agent` parts to display the nested agent's streamed output.
 
     ```typescript title="src/components/nested-agent-chat.tsx"
@@ -1355,8 +1312,7 @@ The pattern uses:
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 Key points:
 
@@ -1375,8 +1331,7 @@ The pattern uses:
 - `writer` in workflow step - Pipe the agent's `fullStream` to the step's writer
 - `text` and `data-workflow` parts - The frontend receives streaming text alongside step progress
 
-<Tabs>
-  <TabItem value="backend" label="Backend">
+  
     Create a workflow step that streams an agent's response by piping to the step's `writer`.
 
     ```typescript title="src/mastra/workflows/weather-workflow.ts"
@@ -1438,9 +1393,9 @@ The pattern uses:
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="frontend" label="Frontend">
+  
     Render both `text` parts (streaming agent output) and `data-workflow` parts (step progress).
 
     ```typescript title="src/components/weather-workflow.tsx"
@@ -1522,8 +1477,7 @@ The pattern uses:
       )
     }
     ```
-  </TabItem>
-</Tabs>
+  
 
 Key points:
 

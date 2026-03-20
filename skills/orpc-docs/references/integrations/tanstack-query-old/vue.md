@@ -9,8 +9,6 @@ This guide shows how to integrate oRPC with Tanstack Query for Vue. For an intro
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/vue-query@latest @tanstack/vue-query@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/vue-query@latest @tanstack/vue-query@latest
 ```sh [deno]
 deno add npm:@orpc/vue-query@latest npm:@tanstack/vue-query@latest
 ```
-
-:::
 
 ## Setup
 

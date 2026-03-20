@@ -1,16 +1,10 @@
 ---
-slug: /best-practices/minimize-optimize-joins
-sidebar_position: 10
-sidebar_label: 'Minimize and optimize JOINs'
 title: 'Minimize and optimize JOINs'
 description: 'Page describing best practices for JOINs'
 keywords: ['JOIN', 'Parallel Hash JOIN']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import joins from '@site/static/images/bestpractices/joins-speed-memory.png';
 
 ClickHouse supports a wide variety of JOIN types and algorithms, and JOIN performance has improved significantly in recent releases. However, JOINs are inherently more expensive than querying from a single, denormalized table. Denormalization shifts computational work from query time to insert or pre-processing time, which often results in significantly lower latency at runtime. For real-time or latency-sensitive analytical queries, **denormalization is strongly recommended**.
 
@@ -38,9 +32,8 @@ Follow these best practices to improve JOIN performance:
 * **Avoid disk-spilling JOINs**: Intermediate states of JOINs (e.g. hash tables) can become so big that they no longer fit into main memory. In this situation, ClickHouse will return an out-of-memory error by default. Some join algorithms (see below), for example [`grace_hash`](https://clickhouse.com/blog/clickhouse-fully-supports-joins-hash-joins-part2), [`partial_merge`](https://clickhouse.com/blog/clickhouse-fully-supports-joins-full-sort-partial-merge-part3) and [`full_sorting_merge`](https://clickhouse.com/blog/clickhouse-fully-supports-joins-full-sort-partial-merge-part3), are able to spill intermediate states to disk and continue query execution. These join algorithms should nevertheless be used with care as disk access can significantly slow down join processing. We instead recommend optimizing the JOIN query in other ways to reduce the size of intermediate states.
 * **Default values as no-match markers in outer JOINs**: Left/right/full outer joins include all values from the left/right/both tables. If no join partner is found in the other table for some value, ClickHouse replaces the join partner by a special marker. The SQL standard mandates that databases use NULL as such a marker. In ClickHouse, this requires wrapping the result column in Nullable, creating an additional memory and performance overhead. As an alternative, you can configure the setting `join_use_nulls = 0` and use the default value of the result column data type as the marker.
 
-:::note Use dictionaries carefully
+> **note**: Use dictionaries carefully
 When using dictionaries for JOINs in ClickHouse, it's important to understand that dictionaries, by design, don't allow duplicate keys. During data loading, any duplicate keys are silently deduplicated—only the last loaded value for a given key is retained. This behavior makes dictionaries ideal for one-to-one or many-to-one relationships where only the latest or authoritative value is needed. However, using a dictionary for a one-to-many or many-to-many relationship (e.g. joining roles to actors where an actor can have multiple roles) will result in silent data loss, as all but one of the matching rows will be discarded. As a result, dictionaries aren't suitable for scenarios requiring full relational fidelity across multiple matches.
-:::
 
 ## Choosing the correct JOIN Algorithm {#choosing-the-right-join-algorithm}
 
@@ -54,9 +47,7 @@ ClickHouse supports several JOIN algorithms that trade off between speed and mem
 
 <Image img={joins} size="md" alt="Joins — speed vs memory"/>
 
-:::note
-Each algorithm has varying support for JOIN types. A full list of supported join types for each algorithm can be found [here](/guides/joining-tables#choosing-a-join-algorithm).
-:::
+> **note**: Each algorithm has varying support for JOIN types. A full list of supported join types for each algorithm can be found [here](/guides/joining-tables#choosing-a-join-algorithm).
 
 You can let ClickHouse choose the best algorithm by setting `join_algorithm = 'auto'` (the default), or explicitly control it based on your workload. If you need to select a join algorithm to optimize for performance or memory overhead, we recommend [this guide](/guides/joining-tables#choosing-a-join-algorithm).
 

@@ -18,29 +18,23 @@ Go to [Comfy Registry](https://registry.comfy.org), and create a publisher accou
 
 Your publisher id is found after the `@` symbol on your profile page.
 
-<img
-  className="block"
-  src="/images/publisherid.png"
-  alt="Hero Dark"
-/>
+[Hero Dark]
 
 ### Create a Registry Publishing API Key
 
-<Note>
   **Important:** This API key is specifically for **publishing custom nodes to the Registry and ComfyUI-Manager**. If you're looking to use paid API nodes in your workflows instead, see [API Nodes Overview](/tutorials/partner-nodes/overview).
-</Note>
 
 Go [here](https://registry.comfy.org/nodes) and click on the publisher you want to create an API key for. This key will be used to publish custom nodes to the Registry (which powers ComfyUI-Manager) via the CLI or GitHub Actions. 
 
-![Create key for Specific Publisher](/images/pat-1.png)
+[Create key for Specific Publisher]
 
 Name the API key and save it somewhere safe. If you lose it, you'll have to create a new key.
 
-![Create API Key](/images/pat-2.png)
+[Create API Key]
 
 ### Add Metadata
 
-<Tip>Have you installed the comfy-cli? [Do that first](/comfy-cli/getting-started).</Tip>
+Have you installed the comfy-cli? [Do that first](/comfy-cli/getting-started).
 
 ```bash
 comfy node init
@@ -87,29 +81,20 @@ API Key for publisher '<publisher id>': ****************************************
 See it here: https://registry.comfy.org/publisherId/your-node
 ```
 
-<Warning>
   Keep in mind that the API key is hidden by default.
-</Warning>
-<Warning>
+
   When copy-pasting, your API key might have an additional \x16 at the back when using CTRL+V (for Windows), eg: ************************************************\x16. 
 
   It is recommended to copy-paste your API key via right-clicking instead.
-</Warning>
-
 
 ### Option 2: Github Actions
 
 Automatically publish your node through github actions.
 
-<Steps>
-<Step title="Set up a Github Secret">
-
 Go to Settings -> Secrets and Variables -> Actions -> Under Secrets Tab and Repository secrets -> New Repository Secret.
 
 Create a secret called `REGISTRY_ACCESS_TOKEN` and store your API key as the value. 
 
-</Step>
-<Step title="Create a Github Action">
 Copy the code below and paste it here `/.github/workflows/publish_action.yml`
 
 ```bash
@@ -135,15 +120,8 @@ jobs:
           personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }} ## Add your own personal access token to your Github Repository secrets and reference it here.
 ```
 
-<Warning>If your working branch is named something besides `main`, such as `master`, add the name under the branches section.</Warning>
-</Step>
-<Step title="Test the Github Action">
+If your working branch is named something besides `main`, such as `master`, add the name under the branches section.
 
 Push an update to your `pyproject.toml`'s version number. You should see your updated node on the registry.
 
-<Tip>The github action will automatically run every time you push an update to your `pyproject.toml` file</Tip>
-
-</Step>
-
-
-</Steps>
+The github action will automatically run every time you push an update to your `pyproject.toml` file

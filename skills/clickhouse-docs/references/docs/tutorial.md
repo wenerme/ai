@@ -1,9 +1,6 @@
 ---
-slug: /tutorial
-sidebar_label: 'Advanced tutorial'
 title: 'Advanced tutorial'
 description: 'Learn how to ingest and query data in ClickHouse using a New York City taxi example dataset.'
-sidebar_position: 0.5
 keywords: ['clickhouse', 'install', 'tutorial', 'dictionary', 'dictionaries', 'example', 'advanced', 'taxi', 'new york', 'nyc']
 show_related_blogs: true
 doc_type: 'guide'
@@ -160,8 +157,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```sql
     SELECT round(avg(tip_amount), 2) FROM trips
     ```
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
     
     ```response
@@ -171,7 +168,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```
 
     </p>
-    </details>
+    
 
 - Calculate the average cost based on the number of passengers:
     ```sql
@@ -182,8 +179,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     GROUP BY passenger_count
     ```
     
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
 
     The `passenger_count` ranges from 0 to 9:
@@ -204,7 +201,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```
 
     </p>
-    </details>
+    
 
 - Calculate the daily number of pickups per neighborhood:
     ```sql
@@ -217,8 +214,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     ORDER BY pickup_date ASC
     ```
 
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
 
     ```response
@@ -235,7 +232,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```
 
     </p>
-    </details>
+    
 
 - Calculate the length of each trip in minutes, then group the results by trip length:
     ```sql
@@ -250,8 +247,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     GROUP BY trip_minutes
     ORDER BY trip_minutes DESC
     ```
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
     
     ```response
@@ -265,7 +262,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     │   1.1022105210705808 │ 13.778947368421052 │  2.042105263157895 │     95 │         1435 │
     ```
     </p>
-    </details>
+    
 
 - Show the number of pickups in each neighborhood broken down by hour of the day:
     ```sql
@@ -278,8 +275,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     GROUP BY pickup_ntaname, pickup_hour
     ORDER BY pickup_ntaname, pickup_hour
     ```
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
 
     ```response
@@ -321,7 +318,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```
 
     </p>
-    </details>
+    
     
 7. Retrieve  rides to LaGuardia or JFK airports:
     ```sql
@@ -343,8 +340,8 @@ Run some queries to analyze the data. Explore the following examples or try your
     ORDER BY pickup_datetime
     ```
 
-    <details>
-    <summary>Expected output</summary>
+    
+    Expected output
     <p>
 
     ```response
@@ -361,7 +358,7 @@ Run some queries to analyze the data. Explore the following examples or try your
     ```
 
     </p>
-    </details>
+    
 
 ## Create a dictionary {#create-a-dictionary}
 

@@ -1,20 +1,9 @@
 ---
-slug: /cloud/guides/sql-console/manage-sql-console-role-assignments
-sidebar_label: 'Manage SQL console role assignments'
 title: 'Manage SQL console role assignments'
 description: 'Guide showing how to manage SQL console role assignments'
 doc_type: 'guide'
 keywords: ['sql console', 'role assignments', 'access management', 'permissions', 'security']
 ---
-
-import Image from '@theme/IdealImage';
-import step_1 from '@site/static/images/cloud/guides/sql_console/service_level_access/1_service_settings.png'
-import step_2 from '@site/static/images/cloud/guides/sql_console/service_level_access/2_service_settings.png'
-import step_3 from '@site/static/images/cloud/guides/sql_console/service_level_access/3_service_settings.png'
-import step_4 from '@site/static/images/cloud/guides/sql_console/service_level_access/4_service_settings.png'
-import step_5 from '@site/static/images/cloud/guides/sql_console/service_level_access/5_service_settings.png'
-import step_6 from '@site/static/images/cloud/guides/sql_console/service_level_access/6_service_settings.png'
-import step_7 from '@site/static/images/cloud/guides/sql_console/service_level_access/7_service_settings.png'
 
 # Configuring SQL console role assignments
 

@@ -1,17 +1,12 @@
 ---
 title: 'Resyncing a Database ClickPipe'
 description: 'Doc for resyncing a database ClickPipe'
-slug: /integrations/clickpipes/postgres/resync
-sidebar_label: 'Resync ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import resync_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/resync_button.png'
-import Image from '@theme/IdealImage';
 
 ### What does Resync do? {#what-postgres-resync-do}
 
@@ -31,10 +26,8 @@ Here are a few scenarios:
 2. Specifically for Clickhouse, maybe you needed to change the ORDER BY keys on the target tables. You can Resync to re-populate data into the new table with the right sorting key.
 3. The replication slot of the ClickPipe is invalidated: Resync creates a new ClickPipe and a new slot on the source database.
 
-:::note
-You can resync multiple times, however please account for the load on the source database when you resync,
+> **note**: You can resync multiple times, however please account for the load on the source database when you resync,
 since initial load with parallel threads is involved each time.
-:::
 
 ### Resync ClickPipe Guide {#guide-postgres-resync}
 

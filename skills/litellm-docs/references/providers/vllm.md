@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # VLLM
 
@@ -11,7 +10,6 @@ LiteLLM supports all models on VLLM.
 | Provider Route on LiteLLM | `hosted_vllm/` (for OpenAI compatible server), `vllm/` ([DEPRECATED] for vLLM sdk usage) |
 | Provider Doc | [vLLM ↗](https://docs.vllm.ai/en/latest/index.html) |
 | Supported Endpoints | `/chat/completions`, `/embeddings`, `/completions`, `/rerank`, `/audio/transcriptions` |
-
 
 # Quick Start
 
@@ -36,7 +34,6 @@ response = litellm.completion(
 print(response)
 ```
 
-
 ## Usage -  LiteLLM Proxy Server (calling OpenAI compatible endpoint)
 
 Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
@@ -59,9 +56,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -82,9 +79,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -100,14 +97,14 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
+  
 
   ## Reasoning Effort
 
-  <Tabs>
-  <TabItem value="sdk" label="SDK">
+  
+  
 
   ```python
   from litellm import completion
@@ -120,8 +117,8 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
   )
   print(response)
   ```
-  </TabItem>
-  <TabItem value="proxy" label="PROXY">
+  
+  
 
   1. Setup config.yaml
 
@@ -147,14 +144,10 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
     -d '{"model": "gpt-oss-120b", "messages": [{"role": "user", "content": "whats 2 + 2"}], "reasoning_effort": "high"}'
   ```
 
-  </TabItem>
-  </Tabs>
-
+  
+  
 
 ## Embeddings
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import embedding   
@@ -162,14 +155,10 @@ import os
 
 os.environ["HOSTED_VLLM_API_BASE"] = "http://localhost:8000"
 
-
 embedding = embedding(model="hosted_vllm/facebook/opt-125m", input=["Hello world"])
 
 print(embedding)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -200,13 +189,7 @@ curl -L -X POST 'http://0.0.0.0:4000/embeddings' \
 
 [See OpenAI SDK/Langchain/etc. examples](../proxy/user_keys.md#embeddings)
 
-</TabItem>
-</Tabs>
-
 ## Rerank
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import rerank
@@ -261,9 +244,6 @@ async def test_async_rerank():
 asyncio.run(test_async_rerank())
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Setup config.yaml
 
 ```yaml
@@ -304,15 +284,9 @@ curl -L -X POST 'http://0.0.0.0:4000/rerank' \
 
 [See OpenAI SDK/Langchain/etc. examples](../rerank.md#litellm-proxy-usage)
 
-</TabItem>
-</Tabs>
-
 ## Send Video URL to VLLM
 
 Example Implementation from VLLM [here](https://github.com/vllm-project/vllm/pull/10020)
-
-<Tabs>
-<TabItem value="files_message" label="(Unified) Files Message">
 
 Use this to send a video url to VLLM + Gemini in the same format, using OpenAI's `files` message type.
 
@@ -329,9 +303,6 @@ There are two ways to send a video url to VLLM:
 ```
 {"type": "file", "file": {"file_data": f"data:video/mp4;base64,{video_data_base64}"}}
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -371,9 +342,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -416,13 +384,6 @@ curl -X POST http://0.0.0.0:4000/chat/completions \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-</TabItem>
-<TabItem value="video_url" label="(VLLM-specific) Video Message">
-
 Use this to send a video url to VLLM in it's native message format (`video_url`).
 
 There are two ways to send a video url to VLLM:
@@ -438,9 +399,6 @@ There are two ways to send a video url to VLLM:
 ```
 {"type": "video_url", "video_url": {"url": f"data:video/mp4;base64,{video_data_base64}"}}
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -468,9 +426,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -509,14 +464,6 @@ curl -X POST http://0.0.0.0:4000/chat/completions \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-</TabItem>
-</Tabs>
-
-
 ## (Deprecated) for `vllm pip package` 
 ### Using - `litellm.completion`
 
@@ -534,7 +481,6 @@ response = litellm.completion(
 
 print(response)
 ```
-
 
 ### Batch Completion
 
@@ -571,7 +517,6 @@ def default_pt(messages):
 ```
 
 [Code for how prompt templates work in LiteLLM](https://github.com/BerriAI/litellm/blob/main/litellm/llms/prompt_templates/factory.py)
-
 
 #### Models we already have Prompt Templates for
 
@@ -616,4 +561,3 @@ test_vllm_custom_model()
 ```
 
 [Implementation Code](https://github.com/BerriAI/litellm/blob/6b3cb1898382f2e4e80fd372308ea232868c78d1/litellm/utils.py#L1414)
-

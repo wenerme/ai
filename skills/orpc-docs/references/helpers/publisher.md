@@ -9,8 +9,6 @@ The Publisher is a helper that enables you to listen to and publish events to su
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/experimental-publisher@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/experimental-publisher@latest
 ```sh [deno]
 deno add npm:@orpc/experimental-publisher@latest
 ```
-
-:::
 
 ## Basic Usage
 
@@ -62,22 +58,17 @@ const publish = os
   })
 ```
 
-::: tip
-The publisher supports both static and dynamic event names.
+> **tip**: The publisher supports both static and dynamic event names.
 
 ```ts
 const publisher = new MemoryPublisher<Record<string, { message: string }>>()
 ```
 
-:::
-
 ## Resume Feature
 
 The resume feature uses `lastEventId` to determine where to resume from after a disconnection.
 
-::: warning
-By default, most adapters have this feature disabled.
-:::
+> **warning**: By default, most adapters have this feature disabled.
 
 ### Server Implementation
 
@@ -93,7 +84,7 @@ const live = os
   })
 ```
 
-::: warning Event ID Management
+> **warning**: Event ID Management
 The publisher automatically manages event ids when resume is enabled. This means:
 
 - Event ids you provide when publishing will be ignored
@@ -118,8 +109,6 @@ const publish = os
     await publisher.publish('something-updated', withEventMeta({ id: input.id }, { id: 'this-will-be-ignored' }))
   })
 ```
-
-:::
 
 ### Client Implementation
 
@@ -155,9 +144,7 @@ while (true) {
 | `UpstashRedisPublisher`  | ✅             | Adapter for [Upstash Redis](https://github.com/upstash/redis-js)                             |
 | `PublisherDurableObject` | ✅             | Adapter for [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/) |
 
-::: info
-If you'd like to add a new publisher adapter, please open an issue.
-:::
+> **info**: If you'd like to add a new publisher adapter, please open an issue.
 
 ### Memory Publisher
 
@@ -173,9 +160,7 @@ const publisher = new MemoryPublisher<{
 })
 ```
 
-::: info
-Resume support is disabled by default in `MemoryPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
-:::
+> **info**: Resume support is disabled by default in `MemoryPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
 
 ### IORedis Publisher
 
@@ -198,9 +183,7 @@ const publisher = new IORedisPublisher<{
 
 This adapter requires two Redis instances: one for executing short-lived commands and another for subscribing to events.
 
-::: info
-Resume support is disabled by default in `IORedisPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
-:::
+> **info**: Resume support is disabled by default in `IORedisPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
 
 ### Upstash Redis Publisher
 
@@ -221,9 +204,7 @@ const publisher = new UpstashRedisPublisher<{
 })
 ```
 
-::: info
-Resume support is disabled by default in `UpstashRedisPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
-:::
+> **info**: Resume support is disabled by default in `UpstashRedisPublisher`. Enable it by setting `resumeRetentionSeconds` to an appropriate value.
 
 ### Cloudflare Durable Object
 
@@ -255,8 +236,7 @@ export default {
 }
 ```
 
-::: warning
-You must enable the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag in your workers to support request abort signals, which are necessary for properly cleaning up subscriptions.
+> **warning**: You must enable the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag in your workers to support request abort signals, which are necessary for properly cleaning up subscriptions.
 
 ```json
 {
@@ -266,8 +246,4 @@ You must enable the [`enable_request_signal`](https://developers.cloudflare.com/
 }
 ```
 
-:::
-
-::: info
-Resume support is disabled by default in `PublisherDurableObject`. Enable it by setting `resume.retentionSeconds` to an appropriate value.
-:::
+> **info**: Resume support is disabled by default in `PublisherDurableObject`. Enable it by setting `resume.retentionSeconds` to an appropriate value.

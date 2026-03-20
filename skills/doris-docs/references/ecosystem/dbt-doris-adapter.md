@@ -20,7 +20,6 @@ git: https://github.com/apache/doris/tree/master/extension/dbt-doris
 | >=1.2.5 | >=3.8,<=3.10| >=1.5.0  | <=0.3    |
 | >=1.2.5 | >=3.9       | >=1.8.0  | >=0.4    |
 
-
 ## dbt-doris adapter Instructions
 
 ### dbt-doris adapter install
@@ -53,7 +52,6 @@ Users need to prepare the following information to init dbt project
 | username |         | doris username                                                                                                                            |
 | password |         | doris password                                                                                                                            |
 | threads  | 1       | Parallelism in dbt-doris (setting a parallelism that does not match the cluster capability will increase the risk of dbt running failure) |
-
 
 ### dbt-doris adapter run
 For dbt run documentation, please refer to [here](https://docs.getdbt.com/docs/get-started/run-your-dbt-projects).
@@ -150,9 +148,6 @@ The details of the above configuration items are as follows:
 | `buckets`           | Bucket size                                                | Optional  |
 | `properties`        | Doris table properties                                     | Optional  |
 
-
-
-
 #### Incremental
 
 Based on the incremental model results of the last run of dbt, records are incrementally inserted or updated into the table.
@@ -212,8 +207,6 @@ The details of the above configuration items are as follows:
 | `distributed_by`           | Table distributed column                                          | Optional  |
 | `buckets`                  | Bucket size                                                       | Optional  |
 | `properties`               | Doris table properties                                            | Optional  |
-
-
 
 ### dbt-doris adapter seed
 

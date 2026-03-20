@@ -1,16 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/browser
-pagination_prev: null
-pagination_next: null
-sidebar_position: 0
 description: 'Browser SDK for ClickStack - The ClickHouse Observability Stack'
 title: 'Browser JS'
 doc_type: 'guide'
 keywords: ['ClickStack', 'browser-sdk', 'javascript', 'session-replay', 'frontend']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 The ClickStack browser SDK allows you to instrument your frontend application to
 send events to ClickStack. This allows you to view network 
@@ -28,11 +21,6 @@ This guide integrates the following:
 - **Exceptions**
 
 ## Getting started {#getting-started}
-
-<br/>
-
-<Tabs groupId="install">
-<TabItem value="package_import" label="Package Import" default>
 
 **Install via package import (Recommended)**
 
@@ -56,9 +44,6 @@ HyperDX.init({
 });
 ```
 
-</TabItem>
-<TabItem value="script_tag" label="Script Tag">
-
 **Install via Script Tag (Alternative)**
 
 You can also include and install the script via a script tag as opposed to
@@ -78,9 +63,6 @@ This is recommended if your site isn't currently built using a bundler.
   });
 </script>
 ```
-
-</TabItem>
-</Tabs>
 
 ### Options {#options}
 

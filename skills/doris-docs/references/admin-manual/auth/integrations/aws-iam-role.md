@@ -21,16 +21,12 @@
 ### What is AWS IAM Assume Role?
 AWS Assume Role is a secure identity transfer mechanism that allows a trusted entity (such as an IAM user, EC2 instance, or external account) to temporarily obtain the permissions of a target role through STS (Security Token Service). The process is as follows:
 
-![](/images/integrations/aws_iam_role_flow_en.png)
-
 ### Advantages of using AWS IAM Assume Role for access:
 - Dynamic token mechanism (valid for 15 minutes to 12 hours) instead of permanent keys
 - Cross-account security isolation through External IDs, auditable by AWS backend services
 - Role-based principle of least privilege
 
 ### AWS IAM Assume Role authentication process for accessing an S3 bucket:
-
-![](/images/integrations/iam_role_access_bucket.png)
 
 #### Phase 1: Source User Authentication
 1. **Permission Policy Check**  
@@ -63,8 +59,6 @@ AWS Assume Role is a secure identity transfer mechanism that allows a trusted en
 
 ## 3、How Doris Uses the AWS IAM Assume Role Authentication Mechanism
 1. Doris uses the AWS IAM Assume Role feature by binding the AWS EC2 instances deployed by the FE and BE processes to the source account. The main process is shown in the following figure:
-
-![](/images/integrations/doris_iam_role.png)
 
 2. After configuration is complete, the Doris FE/BE processes automatically obtain the EC2 instance profile and perform the Assume Role operation to access the bucket. During capacity expansion, the BE node will automatically detect whether the new EC2 instance is successfully bound to the IAM role to prevent mismatches;
 

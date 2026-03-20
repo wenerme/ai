@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure AI Image Editing
 
@@ -38,9 +37,6 @@ Get your API key and endpoint from [Azure AI Studio](https://ai.azure.com/).
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic-edit" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Editing"
 import os
 import base64
@@ -68,10 +64,6 @@ img_bytes = base64.b64decode(img_base64)
 path = Path("edited_image.png")
 path.write_bytes(img_bytes)
 ```
-
-</TabItem>
-
-<TabItem value="async-edit" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Editing"
 import os
@@ -105,10 +97,6 @@ async def edit_image():
 asyncio.run(edit_image())
 ```
 
-</TabItem>
-
-<TabItem value="advanced-edit" label="Advanced Parameters">
-
 ```python showLineNumbers title="Advanced Image Editing with Parameters"
 import os
 import base64
@@ -136,9 +124,6 @@ img_bytes = base64.b64decode(img_base64)
 path = Path("advanced_edited_image.png")
 path.write_bytes(img_bytes)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -169,9 +154,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make image editing requests with OpenAI Python SDK
 
-<Tabs>
-<TabItem value="openai-edit-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Azure AI Image Editing via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -194,10 +176,6 @@ path = Path("proxy_edited_image.png")
 path.write_bytes(img_bytes)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-edit-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Azure AI Image Editing via Proxy - LiteLLM SDK"
 import litellm
 
@@ -216,10 +194,6 @@ path = Path("proxy_edited_image.png")
 path.write_bytes(img_bytes)
 ```
 
-</TabItem>
-
-<TabItem value="curl-edit" label="cURL">
-
 ```bash showLineNumbers title="Azure AI Image Editing via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/edits' \
 --header 'Authorization: Bearer sk-1234' \
@@ -227,9 +201,6 @@ curl --location 'http://localhost:4000/v1/images/edits' \
 --form 'prompt="Convert this image to a vintage sepia tone with old-fashioned effects"' \
 --form 'image=@"path/to/your/image.png"'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Parameters
 

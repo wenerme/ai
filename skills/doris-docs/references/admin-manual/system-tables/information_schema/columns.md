@@ -12,9 +12,7 @@ View all column information.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

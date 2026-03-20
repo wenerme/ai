@@ -30,7 +30,6 @@ IPV6_NUM_TO_STRING(<ipv6_num>)
 Returns the string of the ipv6 address in text format.
 - If the input string is not the binary encoding of a valid IPv6 address, `NULL` is returned.
 
-
 ## Example
 ```sql
 select ipv6_num_to_string(unhex('2A0206B8000000000000000000000011')) as addr, ipv6_num_to_string("-23vno12i34nlfwlsj");

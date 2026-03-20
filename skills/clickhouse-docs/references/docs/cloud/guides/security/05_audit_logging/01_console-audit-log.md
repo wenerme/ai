@@ -1,16 +1,9 @@
 ---
-sidebar_label: 'Console audit log'
-slug: /cloud/security/audit-logging/console-audit-log
 title: 'Console audit log'
 description: 'This page describes how you can review the cloud audit log'
 doc_type: 'guide'
 keywords: ['audit log']
 ---
-
-import Image from '@theme/IdealImage';
-import activity_log_1 from '@site/static/images/cloud/security/activity_log1.png';
-import activity_log_2 from '@site/static/images/cloud/security/activity_log2.png';
-import activity_log_3 from '@site/static/images/cloud/security/activity_log3.png';
 
 # Console audit log {#console-audit-log}
 
@@ -26,8 +19,6 @@ In ClickHouse Cloud, navigate to your organization details.
 
 <Image img={activity_log_1} size="md" alt="ClickHouse Cloud activity tab" border />
 
-<br/>
-
 ## Select audit {#select-audit}
 
 Select the **Audit** tab on the left menu to see what changes have been made to your ClickHouse Cloud organization - including who made the change and when it occurred.
@@ -40,8 +31,6 @@ The **Activity** page displays a table containing a list of events logged about 
 - **Time:** The timestamp of the event
 
 <Image img={activity_log_2} size="md" alt="ClickHouse Cloud Activity Table" border />
-
-<br/>
 
 ## Use the search bar {#use-search-bar}
 

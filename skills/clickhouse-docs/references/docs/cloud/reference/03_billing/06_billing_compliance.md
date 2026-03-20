@@ -1,14 +1,9 @@
 ---
-sidebar_label: 'ClickHouse Cloud billing compliance'
-slug: /manage/clickhouse-cloud-billing-compliance
 title: 'ClickHouse Cloud billing compliance'
 description: 'Page describing ClickHouse Cloud billing compliance'
 keywords: ['billing compliance', 'pay-as-you-go']
 doc_type: 'guide'
 ---
-
-import billing_compliance from '@site/static/images/cloud/manage/billing_compliance.png';
-import Image from '@theme/IdealImage';
 
 # ClickHouse Cloud billing compliance
 

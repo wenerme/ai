@@ -28,7 +28,6 @@ and any setup done by `.zprofile`. The idea here is that any expensive
 initialization only needs done once at login, and subsequent shells can reuse
 everything from the setup process.
 
-<Note>
 Zsh is used as an example but almost any shell can be used in its place and
 have the same behavior, with the exception of bash. Bash will **only** read
 `.bashrc` if the shell is both interactive and non-login. Since macOS moved from
@@ -37,7 +36,6 @@ overlooked, resulting in developers placing their shell setup entirely in
 `.profile` as `.bashrc` would rarely be run, specifically not by starting a new
 terminal. Now that zsh is the new default, `.zprofile` and `.zshrc` are both
 called starting an interactive non-login shell.
-</Note>
 
 macOS differs in that the GUI used to login to the system does not run
 `.zprofile` as it has its own method of loading in system level global

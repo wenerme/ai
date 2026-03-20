@@ -11,10 +11,9 @@ This document explains the function and application of the `query_recommendation
 ## Overview
 OpenObserve continuously analyzes user queries across streams to identify optimization opportunities. These suggestions are stored in the `query_recommendations` stream under the `_meta` organization. The recommendations focus on improving performance by suggesting secondary indexes when patterns in field access indicate consistent and potentially costly lookups.
 
-
 !!! note "Where to find it"
     The query recommendations are published into the `query_recommendations` stream under the `_meta` organization.
-    ![select-query-recommendations](../../images/select-query-recommendations.png)
+    [select-query-recommendations]
 
 !!! note "Who can access it"
     All Enterprise Edition users with access to the `_meta` organization can access the `query_recommendations` stream. 
@@ -38,7 +37,6 @@ The following scenarios can trigger a recommendation:
 | **Enable secondary index for col `field`** | Queries frequently use equality or membership operators (`=`, `IN`, or `str_match`) on a field that is not indexed. | Adding a secondary index on such fields can significantly reduce query latency.                                    |
 | **Use full text search**                   | Queries frequently use pattern-based operators (`LIKE` or regex match) on a field.                                  | This pattern suggests that the field would perform better with full-text search enabled.                           |
 
-
 !!! note "Additional details"
     - Fields used as partition keys are excluded from recommendations.  
     - The engine estimates distinct value counts for the most active streams to help decide whether indexing will be effective.  
@@ -50,7 +48,7 @@ The following scenarios can trigger a recommendation:
 3. From the stream selection dropdown, select the `query_recommendations` stream. 
 4. Select the desired time range. 
 5. Click **Run query**. 
-![use-query-recommendations](../../images/use-query-recommendations.png)
+[use-query-recommendations]
 
 ## Field descriptions
 | Field                 | Description                                                                 |
@@ -71,19 +69,16 @@ The following scenarios can trigger a recommendation:
 ## Examples and how to interpret recommendations
 The examples below show how OpenObserve surfaces query patterns and recommends indexing or operator changes based on the above logic.
 
-**Example 1** <br>
-![example-1-query-recommendations](../../images/example-1-query-recommendations.png)
+**Example 1** 
+[example-1-query-recommendations]
 This recommendation indicates that across the last 360000000 hours of query data, the job field in the `default` stream was queried with an equality (`=`) operator 1220 times out of 1220 total queries. Since all queries used this field with the `=` operator, a secondary index could improve performance.
 
 !!! note "Interpretation"
     Add a secondary index on the `job` field in the `default` stream for improved performance.
 
-<br>
-
-**Example 2** <br>
-![example-2-query-recommendations](../../images/example-2-query-recommendations.png)
+**Example 2** 
+[example-2-query-recommendations]
 This recommendation is for the `status` field in the `alert_test` stream. All 5 queries used `status` with an equality operator. Although the number is small, the uniform pattern indicates a potential for future optimization.
 
 !!! note "Interpretation"
     Consider indexing status if query volume increases or performance becomes a concern.
-

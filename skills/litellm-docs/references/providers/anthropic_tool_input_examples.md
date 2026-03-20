@@ -2,15 +2,13 @@
 
 Provide concrete examples of valid tool inputs to help Claude understand how to use your tools more effectively. This is particularly useful for complex tools with nested objects, optional parameters, or format-sensitive inputs.
 
-:::info
-Tool input examples is a beta feature. LiteLLM automatically detects tools with the `input_examples` field and adds the appropriate beta header based on your provider:
+> **info**: Tool input examples is a beta feature. LiteLLM automatically detects tools with the `input_examples` field and adds the appropriate beta header based on your provider:
 
 - **Anthropic API & Microsoft Foundry**: `advanced-tool-use-2025-11-20`
 - **Amazon Bedrock**: `advanced-tool-use-2025-11-20` (Claude Opus 4.5 only)
 - **Google Cloud Vertex AI**: Not supported
 
 You don't need to manually specify beta headers—LiteLLM handles this automatically.
-:::
 
 ## When to Use Input Examples
 
@@ -22,9 +20,7 @@ Input examples are most helpful for:
 - **Enum values**: Illustrating valid enum choices in context
 - **Edge cases**: Showing how to handle special cases
 
-:::tip
-**Prioritize descriptions first!** Clear, detailed tool descriptions are more important than examples. Use `input_examples` as a supplement for complex tools where descriptions alone may not be sufficient.
-:::
+> **tip**: **Prioritize descriptions first!** Clear, detailed tool descriptions are more important than examples. Use `input_examples` as a supplement for complex tools where descriptions alone may not be sufficient.
 
 ## Quick Start
 
@@ -252,9 +248,7 @@ Input examples work with all Claude models that support the `advanced-tool-use-2
 - Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`)
 - Claude Opus 4.1 (`claude-opus-4-1-20250805`)
 
-:::note
-On Google Cloud's Vertex AI and Amazon Bedrock, only Claude Opus 4.5 supports tool input examples.
-:::
+> **note**: On Google Cloud's Vertex AI and Amazon Bedrock, only Claude Opus 4.5 supports tool input examples.
 
 ## Best Practices
 
@@ -442,4 +436,3 @@ Skip input examples if:
 - [Anthropic Tool Search](./anthropic_tool_search.md) - Dynamically discover and load tools on-demand
 - [Anthropic Programmatic Tool Calling](./anthropic_programmatic_tool_calling.md) - Call tools from code execution
 - [Anthropic Provider](./anthropic.md) - General Anthropic provider documentation
-

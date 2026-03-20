@@ -1,6 +1,5 @@
 ---
 title: "ComfyUI Native HiDream-I1 Text-to-Image Workflow Example"
-sidebarTitle: "HiDream-I1"
 description: "This guide will walk you through completing a ComfyUI native HiDream-I1 text-to-image workflow example"
 ---
 
@@ -37,9 +36,7 @@ HiDream-ai provides three versions of the HiDream-I1 model to meet different nee
 
 In this example, we will use the repackaged version from ComfyOrg. You can find all the model files we'll use in this example in the [HiDream-I1_ComfyUI](https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/) repository.
 
-<Tip>
 Before starting, please update your ComfyUI version to ensure it's at least after this [commit](https://github.com/comfyanonymous/ComfyUI/commit/9ad792f92706e2179c58b2e5348164acafa69288) to make sure your ComfyUI has native support for HiDream
-</Tip>
 
 ## HiDream-I1 Workflow
 
@@ -53,11 +50,9 @@ If you don't know which version to choose, please refer to the following suggest
 
 For the **dev** and **fast** versions, negative prompts are not needed, so please set the `cfg` parameter to `1.0` during sampling. We have noted the corresponding parameter settings in the relevant workflows.
 
-<Tip>
 The full versions of all three versions require a lot of VRAM - you may need more than 27GB of VRAM to run them smoothly. In the corresponding workflow tutorials,
 we will use the **fp8** version as a demonstration example to ensure that most users can run it smoothly.
 However, we will still provide download links for different versions of the model in the corresponding examples, and you can choose the appropriate file based on your VRAM situation.
-</Tip>
 
 ### Model Installation 
 
@@ -112,7 +107,7 @@ Please download the image below and drag it into ComfyUI to load the correspondi
 
 #### 3. Complete the Workflow Step by Step
 
-![HiDream-I1 Full Version Flow Diagram](/images/tutorial/advanced/hidream/hidream_i1_full_flow_diagram.jpg)
+[HiDream-I1 Full Version Flow Diagram]
 
 Complete the workflow execution step by step
 1. Make sure the `Load Diffusion Model` node is using the `hidream_i1_full_fp8.safetensors` file
@@ -149,7 +144,7 @@ Please download the image below and drag it into ComfyUI to load the correspondi
 
 #### 3. Complete the Workflow Step by Step
 
-![HiDream-I1 Dev Version Flow Diagram](/images/tutorial/advanced/hidream/hidream_i1_dev_flow_diagram.jpg)
+[HiDream-I1 Dev Version Flow Diagram]
 Complete the workflow execution step by step
 1. Make sure the `Load Diffusion Model` node is using the `hidream_i1_dev_fp8.safetensors` file
 2. Make sure the four corresponding text encoders in `QuadrupleCLIPLoader` are loaded correctly
@@ -185,7 +180,7 @@ Please download the image below and drag it into ComfyUI to load the correspondi
 
 #### 3. Complete the Workflow Step by Step
 
-![HiDream-I1 Fast Version Flow Diagram](/images/tutorial/advanced/hidream/hidream_i1_fast_flow_diagram.jpg)
+[HiDream-I1 Fast Version Flow Diagram]
 
 Complete the workflow execution step by step
 1. Make sure the `Load Diffusion Model` node is using the `hidream_i1_fast_fp8.safetensors` file

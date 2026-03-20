@@ -21,11 +21,10 @@ The OpenObserve plugin for Grafana is an optional integration. It enables OpenOb
 !!! note "Quick start"
     If you are familiar with the Grafana plugin installation process, proceed to download the plugin from [here](https://zincsearch-releases.s3.us-west-2.amazonaws.com/zo_gp/zo_gp.tar.gz) and move to [this](#use-grafana-plugin) step. 
 
-
 ## Install the OpenObserve plugin in Grafana
 
 ??? "Prerequisite"
-    **Storage Requirements** <br>
+    **Storage Requirements** 
     Grafana requires persistent storage for two things: configuration and data.
 
     - Configuration can be stored in a ConfigMap or Secret.
@@ -33,7 +32,7 @@ The OpenObserve plugin for Grafana is an optional integration. It enables OpenOb
     Most Grafana installations run on a single node with SQLite.
   
 
-    **Deployment method** <br>
+    **Deployment method** 
     In Kubernetes, you deploy applications using either a Deployment or StatefulSet. Since Grafana needs persistent storage for its data, your choice depends on which database you use:
 
     - **SQLite** stores data files inside the pod itself. Use a `StatefulSet` to preserve this data when the pod restarts.
@@ -61,7 +60,6 @@ The OpenObserve plugin for Grafana is an optional integration. It enables OpenOb
 
     - In `Line 4`, you must update the `root_url` with the root URL of your Grafana installation. This is the URL that you will use to access grafana. For example, `https://grafana.yourdomain.com`. 
     - In `Line 9`, you must specify that Grafana should use the unsigned plugin `openobserve`.You will install this plugin using the `init container` in the `statefulset`.
-
 
 ??? "Step 2: Create a Kubernetes secret"
     Once you have created the file, you can create a Kubernetes secret using the below command.
@@ -171,7 +169,7 @@ The OpenObserve plugin for Grafana is an optional integration. It enables OpenOb
 
 ??? "Step 1: Set up data source" 
     From the Grafana interface, go to the **Data Sources** section and search for `openobserve`. 
-    ![openobserve-plugin](../images/openobserve-plugin.png)
+    [openobserve-plugin]
 
 ??? "Step 2: Add OpenObserve data source server details"
     1. In the data source configuration screen, update the following fields: 
@@ -179,33 +177,16 @@ The OpenObserve plugin for Grafana is an optional integration. It enables OpenOb
         - In the **HTTP** section, add the **URL**. 
         - In the **Auth** section, enable **Basic Auth** toggle. 
         - Under **Basic Auth Details**, add the User ID and password. 
-    2. Click **Save and Test** to save the changes. <br>
-    ![openobserve-data-source-config](../images/openobserve-data-source-config.png)
+    2. Click **Save and Test** to save the changes. 
+    [openobserve-data-source-config]
     If everything is correct you should see a success message.
 
 ??? "Step 3: Explore logs"
     1. Click the **Explore** menu and select `openobserve` as the data source.
     2. Select appropriate organization, stream, and time range. 
-    3. Click **Run Query**. <br>
+    3. Click **Run Query**. 
     You should now be able to see the results.
-    ![alt text](../images/explore-logs-openobserve-plugin.png)
-
+    [alt text]
 
 !!! note "Note"
     If you want to explore metrics from OpenObserve in Grafana, you can set up OpenObserve as a Prometheus-compatible data source using an endpoint like [https://api.openobserve.ai/api/org_name/prometheus](https://api.openobserve.ai/api/org_name/prometheus). You do not need the plugin for this, as Grafana supports Prometheus natively.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

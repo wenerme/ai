@@ -1,6 +1,5 @@
 # ArenaHard
 
-
 ## Overview
 
 ArenaHard is a challenging benchmark that evaluates language models through competitive pairwise comparison. Models are judged against a GPT-4 baseline on difficult tasks requiring reasoning, understanding, and generation capabilities.
@@ -28,7 +27,6 @@ ArenaHard is a challenging benchmark that evaluates language models through comp
 - Reports win rate and Elo-based scores
 - Note: Style-controlled win rate not currently supported
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ ArenaHard is a challenging benchmark that evaluates language models through comp
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `elo` |
-
 
 ## Data Statistics
 
@@ -108,5 +105,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

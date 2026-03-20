@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.2 Fun Inp Start-End Frame Video Generation Example"
 description: "This article introduces how to use ComfyUI to complete the Wan2.2 Fun Inp start-end frame video generation example"
-sidebarTitle: "Wan2.2 Fun Inp"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 **Wan2.2-Fun-Inp** is a start-end frame controlled video generation model launched by Alibaba PAI team. It supports inputting **start and end frame images** to generate intermediate transition videos, providing creators with greater creative control. The model is released under the **Apache 2.0 license** and supports commercial use.
 
@@ -32,8 +29,6 @@ Below are the relevant model weights and code repositories:
 ></iframe>
 
 ## Wan2.2 Fun Inp Start-End Frame Video Generation Workflow Example
-
-<UpdateReminder/>
 
 This workflow provides two versions:
 1. A version using [Wan2.2-Lightning](https://huggingface.co/lightx2v/Wan2.2-Lightning) 4-step LoRA from lightx2v for accelerated video generation
@@ -100,11 +95,9 @@ ComfyUI/
 
 ### 3. Workflow Guide
 
-![Workflow Step Image](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_fun_inp.jpg)
+[Workflow Step Image]
 
-<Note>
   This workflow uses LoRA. Please make sure the corresponding Diffusion model and LoRA are matched.
-</Note>
 
 1. **High noise** model and **LoRA** loading
    - Ensure the `Load Diffusion Model` node loads the `wan2.2_fun_inpaint_high_noise_14B_fp8_scaled.safetensors` model

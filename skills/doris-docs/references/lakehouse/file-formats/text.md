@@ -81,4 +81,3 @@ SET enable_text_validate_utf8 = false
 This will ignore the UTF-8 encoding check, allowing you to read this content. Note that this parameter is only used to skip the check, and non-UTF-8 encoded content will still be displayed as garbled text.
 
 This parameter has been supported since version 3.0.4.
-

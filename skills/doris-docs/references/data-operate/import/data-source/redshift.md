@@ -101,9 +101,9 @@ PARTITION BY (order_date) INCLUDE
 
 Exported files are organized into **subdirectories by partition** on S3:
 
-![redshift_out](/images/data-operate/redshift_out.png)
+[redshift_out]
 
-![redshift_out2](/images/data-operate/redshift_out2.png)
+[redshift_out2]
 
 ## 3. Load Data to Doris
 

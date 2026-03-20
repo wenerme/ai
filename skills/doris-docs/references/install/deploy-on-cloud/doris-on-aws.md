@@ -10,11 +10,7 @@ To facilitate a quick experience of Doris on AWS, we have provided a CloudFormat
 
 Alternatively, you can also purchase AWS resources independently and deploy the cluster manually using standard methods.
 
-:::tip
-
-Currently, such deployment is not supported in the compute-storage decoupled mode.
-
-:::
+> **tip**: Currently, such deployment is not supported in the compute-storage decoupled mode.
 
 ## What's AWS CloudFormation?
 
@@ -24,10 +20,7 @@ CloudFormation enables users to create a "stack of resources" in just one step. 
 
 Currently, Doris provides the Doris CloudFormation Template, which allows users to quickly create a cluster of the relevant Doris version on AWS by directly using this template, enabling them to experience the latest Doris features.
 
-:::caution
-
-**Note: ** The template for building Doris clusters based on CloudFormation currently only supports the regions of us-east-1, us-west-1, and us-west-2. Doris on AWS CloudFormation is primarily intended for testing or experiencing purposes, and should not be used in production environments.
-:::
+> **caution**: **Note: ** The template for building Doris clusters based on CloudFormation currently only supports the regions of us-east-1, us-west-1, and us-west-2. Doris on AWS CloudFormation is primarily intended for testing or experiencing purposes, and should not be used in production environments.
 
 ##  Precautions for Use
 
@@ -41,7 +34,7 @@ Currently, Doris provides the Doris CloudFormation Template, which allows users 
 
 **1. On the AWS console, navigate to CloudFormation and click on "Create stack".**
 
-![Start Deployment](/images/start-deployment.jpeg)
+[Start Deployment]
 
 Select the "Amazon S3 URL Template source" option, and fill in the "Amazon S3 URL" field with the following template link:
 
@@ -49,11 +42,11 @@ https://sdb-cloud-third-party.s3.amazonaws.com/doris-cf/cloudformation_doris.tem
 
 **2. Configure the specific parameters of the template**
 
-![Configure the specific parameter](/images/configure-specific-parameters-1.jpeg)
+[Configure the specific parameter]
 
-![Configure the specific parameter](/images/configure-specific-parameters-2.jpeg)
+[Configure the specific parameter]
 
-![Configure the specific parameter](/images/configure-specific-parameters-3.jpeg)
+[Configure the specific parameter]
 
 The main parameters are described as follows:
 
@@ -85,15 +78,15 @@ The main parameters are described as follows:
 
 **1. The display after successful deployment is as follows:**
 
-![How to Connect to the Database](/images/how-to-connect-to-the-database.jpeg)
+[How to Connect to the Database]
 
 **2. Next, find the connection address for FE as follows. In this example, you can view the address as 172.16.0.97 from the FE Outputs.**
 
-![find the connection address for FE ](/images/find-connection-address-for-fe-1.jpeg)
+[find the connection address for FE ]
 
-![find the connection address for FE ](/images/find-connection-address-for-fe-2.jpeg)
+[find the connection address for FE ]
 
-![find the connection address for FE ](/images/find-connection-address-for-fe-3.jpeg)
+[find the connection address for FE ]
 
 **3. To connect to the deployed Doris Cluster, here are some default values after deploying Doris using CloudFormation:**
 

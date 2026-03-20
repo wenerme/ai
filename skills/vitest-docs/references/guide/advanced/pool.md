@@ -1,8 +1,6 @@
 # Custom Pool <Badge type="danger">advanced</Badge> {#custom-pool}
 
-::: warning
-This is an advanced, experimental and very low-level API. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
-:::
+> **warning**: This is an advanced, experimental and very low-level API. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
 
 Vitest runs tests in a pool. By default, there are several pool runners:
 
@@ -12,9 +10,7 @@ Vitest runs tests in a pool. By default, there are several pool runners:
 - `browser` to run tests using browser providers
 - `typescript` to run typechecking on tests
 
-::: tip
-See [`vitest-pool-example`](https://npmx.dev/package/vitest-pool-example) for example of a custom pool runner implementation.
-:::
+> **tip**: See [`vitest-pool-example`](https://npmx.dev/package/vitest-pool-example) for example of a custom pool runner implementation.
 
 ## Usage
 

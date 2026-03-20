@@ -80,10 +80,8 @@ liteLLM supports `non-streaming` and `streaming` requests to all models on https
 
 Example Empower Usage - Note: liteLLM supports all models deployed on Empower
 
-
 ### Empower LLMs - Automatic Tool Using models
 | Model Name                        | Function Call                                                          | Required OS Variables           |
 |-----------------------------------|------------------------------------------------------------------------|---------------------------------|
 | empower/empower-functions  | `completion('empower/empower-functions', messages)`            | `os.environ['TOGETHERAI_API_KEY']` |
 | empower/empower-functions-small  | `completion('empower/empower-functions-small', messages)`            | `os.environ['TOGETHERAI_API_KEY']` |
-

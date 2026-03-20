@@ -1,6 +1,5 @@
 ---
 title: Working with Entity Manager
-sidebar_label: Entity Manager
 ---
 
 ## Persist and Flush

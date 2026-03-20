@@ -10,9 +10,8 @@ JDBC Catalog supports connecting to databases that are compatible with the JDBC 
 
 This document introduces the general configuration and usage of the JDBC Catalog. For different JDBC sources, please refer to the respective documentation.
 
-:::info Note
+> **info**: Note
 The JDBC Catalog feature in Doris relies on the Java layer to read and process data, and its overall performance can be affected by the JDK version. Some internal libraries in older versions of the JDK (such as JDK 8) are less efficient and may lead to higher resource consumption. If higher performance is required, it is recommended to use Doris 3.0, which is compiled with JDK 17 by default and offers better overall performance.
-:::
 
 ## Applicable Scenarios
 
@@ -146,9 +145,9 @@ For predicate conditions, the semantics or behavior in Doris and external data s
 
     | Data Source   | Blacklist | Whitelist | Description     |
     | ---------- | ----- | --- | --------- |
-    | MySQL      | - `DATE_TRUNC`<br>- `MONEY_FORMAT`<br>- `NEGTIVE`  |  | MySQL can also set additional blacklist items through the FE configuration item `jdbc_mysql_unsupported_pushdown_functions`, e.g.: `jdbc_mysql_unsupported_pushdown_functions==func1,func2` |
-    | Clickhouse | | - `FROM_UNIXTIME`<br>- `UNIX_TIMESTAMP` |       |
-    | Oracle     |  | - `NVL`<br>- `IFNULL`   |          |
+    | MySQL      | - `DATE_TRUNC`- `MONEY_FORMAT`- `NEGTIVE`  |  | MySQL can also set additional blacklist items through the FE configuration item `jdbc_mysql_unsupported_pushdown_functions`, e.g.: `jdbc_mysql_unsupported_pushdown_functions==func1,func2` |
+    | Clickhouse | | - `FROM_UNIXTIME`- `UNIX_TIMESTAMP` |       |
+    | Oracle     |  | - `NVL`- `IFNULL`   |          |
 
 - Function rewrite rules
 
@@ -281,7 +280,6 @@ When using the `CALL EXECUTE_STMT()` command, Doris directly sends the user-writ
 ## Appendix
 
 ### Case Sensitivity Settings
-
 
 By default, database and table names in Doris are case-sensitive, while column names are case-insensitive. This behavior can be modified through configuration parameters. Additionally, the case sensitivity rules for database, table, and column names in some JDBC data sources may differ from those in Doris. This discrepancy can cause naming conflicts during name mapping via the JDBC Catalog. The following section explains how to resolve such issues.
 

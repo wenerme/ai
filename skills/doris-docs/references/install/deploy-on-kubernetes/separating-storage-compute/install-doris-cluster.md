@@ -140,6 +140,3 @@ After the cluster has successfully started, configure an available object storag
    SET {vaultName} AS DEFAULT STORAGE VAULT;
    ```
    Here, {vaultName} is the name of the Vault you wish to use, for example, s3_vault as created in the example above.
-
-
-

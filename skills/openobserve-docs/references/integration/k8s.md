@@ -13,7 +13,7 @@ Kubernetes monitoring differs from traditional server-based monitoring. Kubernet
 
 OpenTelemetry provides a unified way to collect Kubernetes telemetry data, and OpenObserve makes it easy to ingest, store, visualize, and analyze Kubernetes metrics, logs, and traces for comprehensive Kubernetes monitoring and container observability with minimal setup.  
 
-![Integration Architechture for monitoring K8s in OpenObserve](./images/k8s/architechture.png)
+[Integration Architechture for monitoring K8s in OpenObserve]
 
 The integration includes:
 
@@ -30,7 +30,6 @@ The integration includes:
     - `kubectl` configured for your cluster  
     - OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../getting-started/#self-hosted-installation))
 
-
 ??? "Step 1: Install Cert-Manager"
 
     Cert-Manager manages TLS certificates in Kubernetes and is required by the OpenTelemetry Operator.  
@@ -40,7 +39,6 @@ The integration includes:
     ```
     > Wait about 2 minutes for the webhook to be ready before continuing.
 
-
 ??? "Step 2: Add the OpenObserve Helm Repository"
 
     ```bash
@@ -49,7 +47,6 @@ The integration includes:
     ```
 
     This makes OpenObserve components available for deployment.
-
 
 ??? "Step 3: Install Prometheus Operator CRDs"
 
@@ -62,7 +59,6 @@ The integration includes:
     kubectl create -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/refs/heads/main/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
     ```
 
-
 ??? "Step 4: Install the OpenTelemetry Operator"
 
     ```bash
@@ -70,7 +66,6 @@ The integration includes:
     ```
 
     The operator manages the OpenTelemetry Collector and CRDs for telemetry pipelines.
-
 
 ??? "Step 5: Create Namespace for OpenObserve Collector"
 
@@ -138,13 +133,9 @@ The integration includes:
 ??? "Step 8: Verify logs in OpenObserve"
 
     1. Go to **Logs** in Openobserve → select **stream** `K8s_events` → set **time range** → **Run Query** to check for EC2 logs.
-        ![K8s event logs in Openobserve](./images/k8s/k8s-events.png)
+        [K8s event logs in Openobserve]
     2. Go to **Metrics** section in Stream page, you will find bunch of K8s metrics
-        ![K8s metrics in Openobserve](./images/k8s/k8s-metrics.png)
-
-
-
-
+        [K8s metrics in Openobserve]
 
 !!! tip "Pre-Built Dashboards"
     You can [import dashboards from the OpenObserve community repository](https://github.com/openobserve/dashboards/tree/main/Kubernetes(openobserve-collector)) for quick insights:
@@ -154,9 +145,7 @@ The integration includes:
     * **Events Dashboard** – system events and severities  
     * **Node (Pods) Dashboard** – node-level pod performance  
 
-    ![Example Dashboard](./images/k8s/community-dashboard.png)
-
-
+    [Example Dashboard]
 
 ## Troubleshooting
 
@@ -174,4 +163,3 @@ The integration includes:
 
 * Confirm pod annotations are applied
 * Make sure language-specific auto-instrumentation images are available
-

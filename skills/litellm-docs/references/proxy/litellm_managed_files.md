@@ -1,20 +1,13 @@
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
-import Image from '@theme/IdealImage';
+
 
 # [BETA] LiteLLM Managed Files
 
 - Reuse the same file across different providers.
 - Prevent users from seeing files they don't have access to on `list` and `retrieve` calls. 
 
-:::info
-
-This is a free LiteLLM Enterprise feature.
+> **info**: This is a free LiteLLM Enterprise feature.
 
 Available via the `litellm` docker image. If you are using the pip package, you must install [`litellm-enterprise`](https://pypi.org/project/litellm-enterprise/).
-
-:::
-
 
 | Property | Value | Comments |
 | --- | --- | --- |
@@ -67,7 +60,6 @@ from openai import OpenAI
 
 client = OpenAI(base_url="http://0.0.0.0:4000", api_key="sk-1234", max_retries=0)
 
-
 # Download and save the PDF locally 
 url = (
     "https://storage.googleapis.com/cloud-samples-data/generative-ai/pdf/2403.05530.pdf"
@@ -90,9 +82,6 @@ print(f"file id={file.id}")
 
 #### **Use the same file id across different providers**
 
-<Tabs>
-<TabItem value="openai" label="OpenAI">
-
 ```python
 completion = client.chat.completions.create(
     model="gpt-4o-mini-openai",
@@ -114,10 +103,6 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message)
 ```
-
-
-</TabItem>
-<TabItem value="vertex" label="Vertex AI">
 
 ```python
 completion = client.chat.completions.create(
@@ -142,9 +127,6 @@ print(completion.choices[0].message)
 
 ```
 
-</TabItem>
-</Tabs>
-
 ### Complete Example
 
 ```python   
@@ -153,7 +135,6 @@ import requests
 from openai import OpenAI
 
 client = OpenAI(base_url="http://0.0.0.0:4000", api_key="sk-1234", max_retries=0)
-
 
 # Download and save the PDF locally
 url = (
@@ -195,7 +176,6 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message)
-
 
 ### OPENAI CALL ### 
 completion = client.chat.completions.create(
@@ -294,9 +274,6 @@ print(finetuning_input_file) # file.id = "litellm_proxy/..." = {"model_name": {"
 
 ### 5. User retrieves a file 
 
-<Tabs>
-<TabItem value="has_access" label="User created file">
-
 ```python
 from openai import OpenAI
 
@@ -308,9 +285,6 @@ file = client.files.retrieve(
 
 print(file) # File retrieved successfully
 ```
-
-</TabItem>
-<TabItem value="no_access" label="User did not create file">
 
 ```python
 ```python
@@ -326,12 +300,6 @@ except Exception as e:
     print(e) # User does not have access to this file
 
 ```
-
-</TabItem>
-</Tabs>
-
-
-
 
 ## Supported Endpoints
 
@@ -411,13 +379,7 @@ When a file is deleted, LiteLLM deletes the mapping from the postgres DB, and th
 
 No, as of `v1.71.2` users can only view/edit/delete files they have created.
 
-
-
 ## Architecture
-
-
-
-
 
 <Image img={require('../../img/managed_files_arch.png')}  style={{ width: '800px', height: 'auto' }} />
 

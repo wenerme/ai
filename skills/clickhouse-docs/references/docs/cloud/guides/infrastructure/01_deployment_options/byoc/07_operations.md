@@ -1,7 +1,5 @@
 ---
 title: 'BYOC Operations and Maintenance'
-slug: /cloud/reference/byoc/operations
-sidebar_label: 'Operations and Maintenance'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'operations', 'maintenance']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
@@ -40,9 +38,7 @@ The Kubernetes cluster (EKS for AWS, GKE for GCP) that hosts your ClickHouse ser
 - Pods are gracefully drained and migrated to the new nodes
 - Old nodes are terminated only after pods have been successfully migrated
 
-:::note
-Kubernetes node upgrades may cause brief pod restarts during the migration process. ClickHouse Cloud uses pod disruption budgets and graceful shutdowns to minimize impact on your workloads.
-:::
+> **note**: Kubernetes node upgrades may cause brief pod restarts during the migration process. ClickHouse Cloud uses pod disruption budgets and graceful shutdowns to minimize impact on your workloads.
 
 ### Upgrade Schedule {#upgrade-schedule}
 

@@ -1,14 +1,8 @@
 # ✨ [BETA] LiteLLM Managed Files with Finetuning
 
-
-:::info
-
-This is a free LiteLLM Enterprise feature.
+> **info**: This is a free LiteLLM Enterprise feature.
 
 Available via the `litellm[proxy]` package or any `litellm` docker image.
-
-:::
-
 
 | Property | Value | Comments |
 | --- | --- | --- |
@@ -23,7 +17,6 @@ Use this to:
 
 - Create Finetuning jobs across OpenAI/Azure/Vertex AI in the OpenAI format (no additional `custom_llm_provider` param required). 
 - Control finetuning model access by key/user/team (same as chat completion models)
-
 
 ## (Proxy Admin) Usage
 
@@ -52,7 +45,6 @@ curl -L -X POST 'https://{PROXY_BASE_URL}/key/generate' \
 -d '{"models": ["gpt-4.1-openai"]}'
 ```
 
-
 You can now use the virtual key to access the finetuning models (See Developer flow).
 
 ## (Developer) Usage
@@ -60,7 +52,6 @@ You can now use the virtual key to access the finetuning models (See Developer f
 Here's how to create a LiteLLM managed file and execute Finetuning CRUD operations with the file. 
 
 ### 1. Create request.jsonl 
-
 
 ```json showLineNumbers title="request.jsonl"
 {"messages": [{"role": "system", "content": "Clippy is a factual chatbot that is also sarcastic."}, {"role": "user", "content": "What's the capital of France?"}, {"role": "assistant", "content": "Paris, as if everyone doesn't know that already."}]}
@@ -90,7 +81,6 @@ finetuning_input_file = client.files.create(
 print(finetuning_input_file)
 
 ```
-
 
 **Where is the file written?**:
 
@@ -137,8 +127,6 @@ cancel_ft_job = client.fine_tuning.jobs.cancel(
 )
 ```
 
-
-
 ## E2E Example
 
 ```python showLineNumbers title="create_finetuning_job.py"
@@ -149,7 +137,6 @@ client = OpenAI(
     api_key="sk-...",
     max_retries=0
 )
-
 
 # Upload file
 finetuning_input_file = client.files.create(

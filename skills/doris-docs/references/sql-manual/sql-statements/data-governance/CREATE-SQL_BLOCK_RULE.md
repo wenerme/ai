@@ -54,7 +54,6 @@ PROPERTIES (
 > - global: Whether the rule is effective for all users. The default is false. If it is not set to true, the rule needs to be applied to a specific user through the `set property` command.
 > - enable: Whether the blocking rule is enabled. The default is true.
 
-
 ## Access Control Requirements
 
 The user executing this SQL command must have at least the following permissions:
@@ -78,14 +77,12 @@ The user executing this SQL command must have at least the following permissions
 
    When we execute the SQL defined in the rule, it will return an exception error, as shown below:
 
-
    ```sql
    mysql> select * from order_analysis;
    ERROR 1064 (HY000): errCode = 2, detailMessage = sql match regex sql block rule: order_analysis_rule
    ```
 
 2. Create a rule that prevents scanning more than 30 partitions of the same table and restricts the query data volume to no more than 10 billion rows
-
 
    ```sql
    CREATE SQL_BLOCK_RULE test_rule2 
@@ -100,7 +97,6 @@ The user executing this SQL command must have at least the following permissions
 
 3. SQL matching is based on regular expressions. If you want to match more patterns of SQL, you need to write the corresponding regular expressions. For example, ignoring spaces in SQL and preventing queries on tables starting with "order", as shown below:
 
-
    ```sql
    CREATE SQL_BLOCK_RULE test_rule3
    PROPERTIES(
@@ -112,7 +108,6 @@ The user executing this SQL command must have at least the following permissions
 
 4. Create a rule that is only applicable to specific users
 
-
    ```sql
    CREATE SQL_BLOCK_RULE test_rule4
    PROPERTIES(
@@ -123,7 +118,6 @@ The user executing this SQL command must have at least the following permissions
    ```
 
    Apply the rule to user jack
-
 
    ```sql
    SET PROPERTY FOR 'jack' 'sql_block_rules' = 'test_rule4';

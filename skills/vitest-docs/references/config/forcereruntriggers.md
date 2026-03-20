@@ -1,6 +1,5 @@
 ---
 title: forceRerunTriggers | Config
-outline: deep
 ---
 
 # forceRerunTriggers <CRoot />
@@ -19,6 +18,4 @@ test('execute a script', async () => {
 })
 ```
 
-::: tip
-Make sure that your files are not excluded by [`server.watch.ignored`](https://vitejs.dev/config/server-options.html#server-watch).
-:::
+> **tip**: Make sure that your files are not excluded by [`server.watch.ignored`](https://vitejs.dev/config/server-options.html#server-watch).

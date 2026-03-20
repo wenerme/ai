@@ -2,16 +2,8 @@
 title: 'Using JOINs in ClickHouse'
 description: 'How to join tables in ClickHouse'
 keywords: ['joins', 'join tables']
-slug: /guides/joining-tables
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import joins_1 from '@site/static/images/guides/joins-1.png';
-import joins_2 from '@site/static/images/guides/joins-2.png';
-import joins_3 from '@site/static/images/guides/joins-3.png';
-import joins_4 from '@site/static/images/guides/joins-4.png';
-import joins_5 from '@site/static/images/guides/joins-5.png';
 
 ClickHouse has [full `JOIN` support](https://clickhouse.com/blog/clickhouse-fully-supports-joins-part1), with a wide selection of join algorithms. To maximize performance, we recommend following the join optimization suggestions listed in this guide.
 
@@ -128,21 +120,13 @@ Peak memory usage: 250.66 MiB.
 
 ClickHouse supports a number of [join algorithms](https://clickhouse.com/blog/clickhouse-fully-supports-joins-part1). These algorithms typically trade memory usage for performance. The following provides an overview of the ClickHouse join algorithms based on their relative memory consumption and execution time:
 
-<br />
-
 <Image img={joins_2} size="lg" alt="speed by memory for joins"/>
-
-<br />
 
 These algorithms dictate the manner in which a join query is planned and executed. By default, ClickHouse uses the direct or the hash join algorithm based on the used join type and strictness and engine of the joined tables. Alternatively, ClickHouse can be configured to adaptively choose and dynamically change the join algorithm to use at runtime, depending on resource availability and usage: When `join_algorithm=auto`, ClickHouse tries the hash join algorithm first, and if that algorithm's memory limit is violated, the algorithm is switched on the fly to partial merge join. You can observe which algorithm was chosen via trace logging. ClickHouse also allows you to specify the desired join algorithm themselves via the `join_algorithm` setting.
 
 The supported `JOIN` types for each join algorithm are shown below and should be considered prior to optimization:
 
-<br />
-
 <Image img={joins_3} size="lg" alt="join features"/>
-
-<br />
 
 A full detailed description of each `JOIN` algorithm can be found [here](https://clickhouse.com/blog/clickhouse-fully-supports-joins-hash-joins-part2), including their pros, cons, and scaling properties.
 
@@ -152,11 +136,7 @@ Selecting the appropriate join algorithms depends on whether you're looking to o
 
 If your key optimization metric is performance and you're looking to execute the join as fast as possible, you can use the following decision tree for choosing the right join algorithm:
 
-<br />
-
 <Image img={joins_4} size="lg" alt="join flowchart"/>
-
-<br />
 
 - **(1)** If the data from the right-hand side table can be pre-loaded into an in-memory low-latency key-value data structure, e.g. a dictionary, and if the join key matches the key attribute of the underlying key-value storage, and if `LEFT ANY JOIN` semantics are adequate - then the **direct join** is applicable and offers the fastest approach.
 
@@ -176,11 +156,7 @@ Which one of the three non-memory-bound algorithms is the fastest depends on the
 
 If you want to optimize a join for the lowest memory usage instead of the fastest execution time, then you can use this decision tree instead:
 
-<br />
-
 <Image img={joins_5} size="lg" alt="Join memory optimization decision tree" />
-
-<br />
 
 - **(1)** If your table's physical row order matches the join key sort order, then the memory usage of the **full sorting merge join** is as low as it gets. With the additional benefit of good join speed because the sorting phase is [disabled](https://clickhouse.com/blog/clickhouse-fully-supports-joins-full-sort-partial-merge-part3#utilizing-physical-row-order).
 - **(2)** The **grace hash join** can be tuned for very low memory usage by [configuring](https://github.com/ClickHouse/ClickHouse/blob/23.5/src/Core/Settings.h#L759) a high number of [buckets](https://clickhouse.com/blog/clickhouse-fully-supports-joins-hash-joins-part2#description-2) at the expense of join speed. The **partial merge join** intentionally uses a low amount of main memory. The **full sorting merge join** with external sorting enabled generally uses more memory than the partial merge join (assuming the row order doesn't match the key sort order), with the benefit of significantly better join execution time.

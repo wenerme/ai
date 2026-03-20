@@ -1,15 +1,8 @@
 ---
 description: 'Details backup/restore to or from a local disk'
-sidebar_label: 'Local disk / S3 disk'
-slug: /operations/backup/disk
 title: 'Backup and Restore in ClickHouse'
 doc_type: 'guide'
 ---
-
-import GenericSettings from '@site/docs/operations_/backup_restore/_snippets/_generic_settings.md';
-import S3Settings from '@site/docs/operations_/backup_restore/_snippets/_s3_settings.md';
-import ExampleSetup from '@site/docs/operations_/backup_restore/_snippets/_example_setup.md';
-import Syntax from '@site/docs/operations_/backup_restore/_snippets/_syntax.md';
 
 # BACKUP / RESTORE to disk {#backup-to-a-local-disk}
 
@@ -93,13 +86,11 @@ BACKUP TABLE data TO Disk('s3_plain', 'cloud_backup');
 RESTORE TABLE data AS data_restored FROM Disk('s3_plain', 'cloud_backup');
 ```
 
-:::note
-- This disk shouldn't be used for `MergeTree` itself, only for `BACKUP`/`RESTORE`
+> **note**: - This disk shouldn't be used for `MergeTree` itself, only for `BACKUP`/`RESTORE`
 - If your tables are backed by S3 storage and the types of the disks are different, 
 it doesn't use `CopyObject` calls to copy parts to the destination bucket, instead,
 it downloads and uploads them, which is very inefficient. In this case prefer using
 the `BACKUP ... TO S3(<endpoint>)` syntax for this use-case.
-:::
 
 ## Usage examples of backup/restore to local disk {#usage-examples}
 
@@ -131,12 +122,10 @@ RESTORE TABLE test_db.test_table FROM Disk('backups', '1.zip')
    └──────────────────────────────────────┴──────────┘
 ```
 
-:::note
-The above `RESTORE` would fail if the table `test.table` contains data.
+> **note**: The above `RESTORE` would fail if the table `test.table` contains data.
 The setting `allow_non_empty_tables=true` allows `RESTORE TABLE` to insert data
 into non-empty tables. This will mix earlier data in the table with the data extracted from the backup.
 This setting can therefore cause data duplication in the table, and should be used with caution.
-:::
 
 To restore the table with data already in it, run:
 
@@ -160,10 +149,7 @@ The backup archive for this backup has the following structure:
         └── test_table.sql
 ```
 
-<!-- TO DO: 
-Explanation here about the backup format. See Issue 24a
-https://github.com/ClickHouse/clickhouse-docs/issues/3968
---> 
+ 
 
 Formats other than zip can be used. See ["Backups as tar archives"](#backups-as-tar-archives)
 below for further details.
@@ -176,10 +162,8 @@ made since the base backup, so the base backup must be kept available to
 restore from any incremental backup. The base backup destination can be set with setting
 `base_backup`.
 
-:::note
-Incremental backups depend on the base backup. The base backup must be kept available 
+> **note**: Incremental backups depend on the base backup. The base backup must be kept available 
 to be able to restore from an incremental backup.
-:::
 
 To make an incremental backup of a table, first make a base backup:
 
@@ -205,13 +189,10 @@ FROM Disk('backups', 'incremental-a.zip');
 Backups written to disk can have a password applied to the file.
 The password can be specified using the `password` setting.
 
-:::note
-Password protection is only supported for ZIP archives (`.zip`, `.zipx`).
+> **note**: Password protection is only supported for ZIP archives (`.zip`, `.zipx`).
 The backup path must end with `.zip` or `.zipx` for the password to be accepted.
 Using a password with any other format - including tar archives and non-archive paths - will
 result in a `BAD_ARGUMENTS` error: `Password is not applicable, backup cannot be encrypted`.
-:::
-
 ```sql
 BACKUP TABLE test_db.test_table
 TO Disk('backups', 'password-protected.zip')
@@ -267,10 +248,6 @@ The supported compression file suffixes are:
 The compression method and level of compression can be specified using
 setting `compression_method` and `compression_level` respectively.
 
-<!-- TO DO:
-More information needed on these settings and why you would want to do this 
--->
-
 ```sql
 BACKUP TABLE test_db.test_table
 TO Disk('backups', 'filename.zip')
@@ -284,9 +261,7 @@ If specific partitions associated with a table need to be restored, these can be
 Let's create a simple partitioned table into four parts, insert some data into it and then
 take a backup of only the first and fourth partitions:
 
-<details>
-
-<summary>Setup</summary>
+Setup
 
 ```sql
 CREATE IF NOT EXISTS test_db;
@@ -325,8 +300,6 @@ ORDER BY partition_key;
 4. │             4 │       1 │
    └───────────────┴─────────┘
 ```
-
-</details>
 
 Run the following command to back up partitions 1 and 4:
 

@@ -2,9 +2,8 @@
 
 Guide for upgrading LiteLLM Proxy when installed via pip in a virtual environment.
 
-:::info Important
+> **info**: Important
 Always activate your virtual environment before running any `litellm` or `prisma` commands. All commands in this guide assume you're working inside an activated venv.
-:::
 
 ## How pip/venv Upgrades Work
 

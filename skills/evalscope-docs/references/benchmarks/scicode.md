@@ -1,6 +1,5 @@
 # SciCode
 
-
 ## Overview
 
 SciCode is a challenging benchmark designed to evaluate language model capabilities in generating code for solving realistic scientific research problems. It covers 16 subdomains from 5 major domains: Physics, Math, Material Science, Biology, and Chemistry.
@@ -30,7 +29,6 @@ SciCode is a challenging benchmark designed to evaluate language model capabilit
 - Configure `provide_background` to include scientific context
 - Uses custom Docker image: `scicode-benchmark:latest`
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ SciCode is a challenging benchmark designed to evaluate language model capabilit
 | **Metrics** | `main_problem_pass_rate`, `subproblem_pass_rate` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -354,5 +351,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

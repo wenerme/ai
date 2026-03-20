@@ -16,8 +16,6 @@ The Download Manager is a background service that runs on each querier node. Its
 - When new data is ingested
 - When a user initiates a search query 
 
-
-
 ## When the Download Manager Is Triggered
 
 === "Ingestion"
@@ -81,7 +79,6 @@ The classification is based on the file’s **latest timestamp**, which represen
     **Description:** Number of threads to use for downloading files from the Priority Queue.  
     **Note:** A thread here refers to a background worker process used to perform downloads.
 
-
 ## File Assignment Examples 
 The following examples illustrate how files are assigned to the priority or normal queue based on their latest timestamps.
 
@@ -111,7 +108,6 @@ The following examples illustrate how files are assigned to the priority or norm
             - Covers Logs From: 2025-05-29 13:00 – 2025-05-29 13:40  
             - Latest Timestamp: 2025-05-29 13:40  
             - Queue Assignment: Priority Queue  
-
 
         After receiving the broadcast, the querier uses the Download Manager to fetch these files and assigns queues based on timestamps. 
 
@@ -147,14 +143,12 @@ The following examples illustrate how files are assigned to the priority or norm
         !!! Note 
             The querier does not begin processing the search query until all required files, regardless of whether they were downloaded via the Priority or Normal Queue.
 
-
 ## Frequently Asked Questions 
 
-**Q. My query includes both recent and old data. Do I get results faster with the new system?** <br>
+**Q. My query includes both recent and old data. Do I get results faster with the new system?** 
 **A.** Yes. Files within the configured priority window are downloaded immediately. This helps reduce total wait time, even though the query waits for all required files.
 
-
-**Q. If the query waits for older files anyway, what is the point of downloading files from the priority window first?** <br>
+**Q. If the query waits for older files anyway, what is the point of downloading files from the priority window first?** 
 **A.** The system downloads files in parallel:
 
 - Files in the priority queue are handled with higher urgency.
@@ -162,7 +156,5 @@ The following examples illustrate how files are assigned to the priority or norm
 
 This improves responsiveness and prevents blocking.
 
-
-**Q. I searched for the last 15 minutes. Does the new system help me?** <br>
+**Q. I searched for the last 15 minutes. Does the new system help me?** 
 **A.** Yes. If your requested files fall within the priority window, they are downloaded through the Priority Queue ahead of others. Your query completes faster, even if the system is busy.
-

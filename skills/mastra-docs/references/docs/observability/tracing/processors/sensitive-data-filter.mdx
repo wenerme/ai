@@ -58,11 +58,7 @@ With the default configuration, the filter redacts these common sensitive field 
 - `refresh`
 - `ssn`
 
-:::note
-
-Field matching is case-insensitive and normalizes separators. For example, `api-key`, `api_key`, and `Api Key` are all treated as `apikey`.
-
-:::
+> **note**: Field matching is case-insensitive and normalizes separators. For example, `api-key`, `api_key`, and `Api Key` are all treated as `apikey`.
 
 ## How it works
 
@@ -241,11 +237,7 @@ export const mastra = new Mastra({
 })
 ```
 
-:::warning
-
-Only disable sensitive data filtering in controlled environments. Never disable it when sending traces to external services or shared storage.
-
-:::
+> **warning**: Only disable sensitive data filtering in controlled environments. Never disable it when sending traces to external services or shared storage.
 
 ## Common use cases
 

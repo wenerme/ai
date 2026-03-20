@@ -12,7 +12,6 @@ Cancel background tasks for index building.
 
 ## Syntax
 
-
 ```sql
 CANCEL BUILD INDEX ON <table_name> [ job_list ]
 ```

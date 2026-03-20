@@ -1,8 +1,5 @@
 ---
-slug: /guides/sre/keeper/clickhouse-keeper
 
-sidebar_label: 'Configuring ClickHouse Keeper'
-sidebar_position: 10
 keywords: ['Keeper', 'ZooKeeper', 'clickhouse-keeper']
 description: 'ClickHouse Keeper, or clickhouse-keeper, replaces ZooKeeper and provides replication and coordination.'
 title: 'ClickHouse Keeper'
@@ -10,8 +7,6 @@ doc_type: 'guide'
 ---
 
 # ClickHouse Keeper (clickhouse-keeper)
-
-import SelfManaged from '@site/docs/_snippets/_self_managed_only_automated.md';
 
 <SelfManaged />
 
@@ -25,9 +20,7 @@ By default, ClickHouse Keeper provides the same guarantees as ZooKeeper: lineari
 
 ClickHouse Keeper supports Access Control Lists (ACLs) the same way as [ZooKeeper](https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ZooKeeperAccessControl) does. ClickHouse Keeper supports the same set of permissions and has the identical built-in schemes: `world`, `auth` and `digest`. The digest authentication scheme uses the pair `username:password`, the password is encoded in Base64.
 
-:::note
-External integrations aren't supported.
-:::
+> **note**: External integrations aren't supported.
 
 ### Configuration {#configuration}
 
@@ -101,15 +94,11 @@ The main parameters for each `<server>` are:
 - `port` — Port where this server listens for connections.
 - `can_become_leader` — Set to `false` to set up the server as a `learner`. If omitted, the value is `true`.
 
-:::note
-In the case of a change in the topology of your ClickHouse Keeper cluster (e.g., replacing a server), please make sure to keep the mapping of `server_id` to `hostname` consistent and avoid shuffling or reusing an existing `server_id` for different servers (e.g., it can happen if your rely on automation scripts to deploy ClickHouse Keeper)
+> **note**: In the case of a change in the topology of your ClickHouse Keeper cluster (e.g., replacing a server), please make sure to keep the mapping of `server_id` to `hostname` consistent and avoid shuffling or reusing an existing `server_id` for different servers (e.g., it can happen if your rely on automation scripts to deploy ClickHouse Keeper)
 
 If the host of a Keeper instance can change, we recommend to define and use a hostname instead of raw IP addresses. Changing hostname is equal to removing and adding the server back which in some cases can be impossible to do (e.g. not enough Keeper instances for quorum).
-:::
 
-:::note
-`async_replication` is disabled by default to avoid breaking backwards compatibility. If you have all your Keeper instances in a cluster running a version supporting `async_replication` (v23.9+), we recommend enabling it because it can improve performance without any downsides.
-:::
+> **note**: `async_replication` is disabled by default to avoid breaking backwards compatibility. If you have all your Keeper instances in a cluster running a version supporting `async_replication` (v23.9+), we recommend enabling it because it can improve performance without any downsides.
 
 Examples of configuration for quorum with three nodes can be found in [integration tests](https://github.com/ClickHouse/ClickHouse/tree/master/tests/integration) with `test_keeper_` prefix. Example configuration for server #1:
 
@@ -457,10 +446,8 @@ The following features are available:
 | `create_if_not_exists` | Support for `CreateIfNotExists` request, which will try to create a node if it doesn't exist. If it exists, no changes are applied and `ZOK` is returned | `1`     |
 | `remove_recursive`     | Support for `RemoveRecursive` request, which removes the node along with its subtree                                                                     | `1`     |
 
-:::note
-Some of the feature flags are enabled by default from version 25.7.   
+> **note**: Some of the feature flags are enabled by default from version 25.7.   
 The recommended way of upgrading Keeper to 25.7+ is to first upgrade to version 24.9+.
-:::
 
 ### Migration from ZooKeeper {#migration-from-zookeeper}
 
@@ -478,8 +465,7 @@ clickhouse-keeper-converter --zookeeper-logs-dir /var/lib/zookeeper/version-2 --
 
 4. Copy snapshot to ClickHouse server nodes with a configured `keeper` or start ClickHouse Keeper instead of ZooKeeper. The snapshot must persist on all nodes, otherwise, empty nodes can be faster and one of them can become a leader.
 
-:::note
-`keeper-converter` tool isn't available from the Keeper standalone binary.
+> **note**: `keeper-converter` tool isn't available from the Keeper standalone binary.
 If you have ClickHouse installed, you can use the binary directly:
 
 ```bash
@@ -487,7 +473,6 @@ clickhouse keeper-converter ...
 ```
 
 Otherwise, you can [download the binary](/getting-started/quick-start/oss#download-the-binary) and run the tool as described above without installing ClickHouse.
-:::
 
 ### Recovering after losing quorum {#recovering-after-losing-quorum}
 
@@ -594,9 +579,7 @@ Same logic applies for snapshots, all but the latest snapshots will be stored on
 
 ### Changing disk setup {#changing-disk-setup}
 
-:::important
-Before applying a new disk setup, manually back up all Keeper logs and snapshots.
-:::
+> **important**: Before applying a new disk setup, manually back up all Keeper logs and snapshots.
 
 If a tiered disk setup is defined (using separate disks for the latest files), Keeper will try to automatically move files to the correct disks on startup.
 The same guarantee is applied as before; until the file is completely moved to the new disk, it's not deleted from the old one, so multiple restarts
@@ -633,10 +616,8 @@ The limit is controlled with these two configs:
 
 If the default values are too big, you can reduce the memory usage by reducing these two configs.
 
-:::note
-You can use `pfev` command to check amount of logs read from each cache and from a file.
+> **note**: You can use `pfev` command to check amount of logs read from each cache and from a file.
 You can also use metrics from Prometheus endpoint to track the current size of both caches.
-:::
 
 ## Prometheus {#prometheus}
 
@@ -993,9 +974,7 @@ example for server 1:
         <replica>replica_1</replica>
     </macros>
 ```
-:::note
-Notice that we define macros for `shard` and `replica`, but that `{uuid}` isn't defined here, it is built-in and there is no need to define.
-:::
+> **note**: Notice that we define macros for `shard` and `replica`, but that `{uuid}` isn't defined here, it is built-in and there is no need to define.
 
 2. Create a Database
 
@@ -1139,9 +1118,7 @@ The default replication path can be defined beforehand by macros and using also 
 <default_replica_path>/clickhouse/tables/{shard}/db_uuid/{uuid}</default_replica_path>
 <default_replica_name>{replica}</default_replica_name>
 ```
-:::tip
-You can also define a macro `{database}` on each node if nodes are used for certain databases.
-:::
+> **tip**: You can also define a macro `{database}` on each node if nodes are used for certain databases.
 
 2. Create table without explicit parameters:
 ```sql
@@ -1206,10 +1183,8 @@ SELECT * FROM system.zookeeper
 WHERE path = '/clickhouse/tables/1/db_uuid/9e8a3cc2-0dec-4438-81a7-c3e63ce2a1cf/replicas';
 ```
 
-:::note
-Database must be `Atomic`, if upgrading from a previous version, the
+> **note**: Database must be `Atomic`, if upgrading from a previous version, the
 `default` database is likely of `Ordinary` type.
-:::
 
 To check:
 
@@ -1244,11 +1219,9 @@ Query id: b047d459-a1d2-4016-bcf9-3e97e30e49c2
 ClickHouse Keeper partially supports ZooKeeper [`reconfig`](https://zookeeper.apache.org/doc/r3.5.3-beta/zookeeperReconfig.html#sc_reconfig_modifying)
 command for dynamic cluster reconfiguration if `keeper_server.enable_reconfiguration` is turned on.
 
-:::note
-If this setting is turned off, you may reconfigure the cluster by altering the replica's `raft_configuration`
+> **note**: If this setting is turned off, you may reconfigure the cluster by altering the replica's `raft_configuration`
 section manually. Make sure you the edit files on all replicas as only the leader will apply changes.
 Alternatively, you can send a `reconfig` query through any ZooKeeper-compatible client.
-:::
 
 A virtual node `/keeper/config` contains last committed cluster configuration in the following format:
 

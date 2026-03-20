@@ -45,7 +45,6 @@ pip install swebench==4.1.0
 
 **Tip**: Properly configuring Docker is a prerequisite for running SWE-bench evaluations. Please ensure the Docker service is running normally after installation.
 
-
 ### Run Evaluation
 
 ```{note}
@@ -57,7 +56,6 @@ When running swe_bench tasks for the first time, the system needs to build/downl
 **Recommendation**: Please ensure sufficient disk space and time budget. It is recommended to choose an environment with good network conditions for the first run.
 ```
 Run the following code to start evaluation. Below is an example using the qwen-plus model for evaluation.
-
 
 ```python
 import os

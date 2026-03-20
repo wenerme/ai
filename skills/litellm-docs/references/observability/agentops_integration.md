@@ -1,11 +1,7 @@
 # 🖇️ AgentOps - LLM Observability Platform
 
-:::tip
-
-This is community maintained. Please make an issue if you run into a bug:
+> **tip**: This is community maintained. Please make an issue if you run into a bug:
 https://github.com/BerriAI/litellm
-
-:::
 
 [AgentOps](https://docs.agentops.ai) is an observability platform that enables tracing and monitoring of LLM calls, providing detailed insights into your AI operations.
 
@@ -80,4 +76,4 @@ litellm.success_callback = ["agentops"]
 
 For issues or questions, please refer to:
 - [AgentOps Documentation](https://docs.agentops.ai)
-- [LiteLLM Documentation](https://docs.litellm.ai) 
+- [LiteLLM Documentation](https://docs.litellm.ai)

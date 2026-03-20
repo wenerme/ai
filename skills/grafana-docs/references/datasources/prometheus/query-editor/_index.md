@@ -28,7 +28,7 @@ The Prometheus query editor has two modes:
 - [Builder mode](#builder-mode)
 - [Code mode](#code-mode)
 
-![Query editor mode](/media/docs/prometheus/builder-code-v11-mode.png)
+[Query editor mode]
 
 Grafana synchronizes both modes, allowing you to switch between them. Grafana also displays a warning message if it detects an issue with the query while switching modes.
 

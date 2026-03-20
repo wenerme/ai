@@ -5,9 +5,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Datasets overview
 
 **Added in:** `@mastra/core@1.4.0`
@@ -49,11 +46,7 @@ const existing = await datasets.get({ id: 'dataset-id' })
 const { datasets: all } = await datasets.list()
 ```
 
-:::info
-
-Visit the [`DatasetsManager` reference](/reference/datasets/datasets-manager) for the full list of methods.
-
-:::
+> **info**: Visit the [`DatasetsManager` reference](/reference/datasets/datasets-manager) for the full list of methods.
 
 ## Creating a dataset
 
@@ -192,11 +185,7 @@ const items = await dataset.listItems({ version: 2 })
 
 You can also pin experiments to a version, see [running experiments](/docs/observability/datasets/running-experiments).
 
-:::info
-
-Visit the [`Dataset` reference](/reference/datasets/dataset) for the full list of methods and parameters.
-
-:::
+> **info**: Visit the [`Dataset` reference](/reference/datasets/dataset) for the full list of methods and parameters.
 
 ## Studio
 

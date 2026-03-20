@@ -13,16 +13,16 @@ Quick BI is a data warehouse-based business intelligence tool that helps enterpr
 1. Login Quick BI and create a workspace.
 2. Click Data Source under the current workspace.
 
-   ![create workspace](/images/bi-quickbi-en-1.png)
+   [create workspace]
 
 3. Select Apache Doris in the already created data source and fill in the corresponding Apache Doris connection information.
 
-   ![Doris information](/images/bi-quickbi-en-2.png)
+   [Doris information]
 
 4. Once the connection is successful, you can see the data source we created in the data source list.
 
-   ![data source](/images/bi-quickbi-en-3.png)
+   [data source]
 
 5. Create a dataset in the data source we created, using the TPC-H dataset as an example. After the dataset is created, you can set the corresponding report.
 
-   ![Doris table](/images/bi-quickbi-en-4.png)
+   [Doris table]

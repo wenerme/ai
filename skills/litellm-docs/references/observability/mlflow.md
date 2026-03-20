@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # 🔁 MLflow - OSS LLM Observability and Evaluation
 
@@ -8,9 +7,7 @@ import Image from '@theme/IdealImage';
 
 MLflow’s integration with LiteLLM supports advanced observability compatible with OpenTelemetry.
 
-
 <Image img={require('../../img/mlflow_tracing.png')} />
-
 
 ## Getting Started
 
@@ -104,13 +101,11 @@ response = litellm.completion(
 
 <Image img={require('../../img/mlflow_tool_calling_tracing.png')} />
 
-
 ## Evaluation
 
 MLflow LiteLLM integration allow you to run qualitative assessment against LLM to evaluate or/and monitor your GenAI application.
 
 Visit [Evaluate LLMs Tutorial](../tutorials/eval_suites.md) for the complete guidance on how to run evaluation suite with LiteLLM and MLflow.
-
 
 ## Exporting Traces to OpenTelemetry collectors
 
@@ -136,7 +131,6 @@ from mlflow.entities import SpanType
 
 # Enable MLflow auto-tracing for LiteLLM
 mlflow.litellm.autolog()
-
 
 class CustomAgent:
     # Use @mlflow.trace to instrument Python functions.
@@ -201,12 +195,6 @@ MLFLOW_EXPERIMENT_ID="xxxx"
 
 You can add custom tags to your requests for improved trace organization and filtering in MLflow. Tags help you categorize and search your traces by job ID, task name, or any custom metadata.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
     --header 'Content-Type: application/json' \
@@ -224,9 +212,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-<TabItem value="openai-python" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -253,9 +238,6 @@ response = client.chat.completions.create(
     }
 )
 ```
-
-</TabItem>
-</Tabs>
 
 ## Support
 

@@ -1,14 +1,9 @@
 ---
-sidebar_label: 'Vector with Kafka'
-sidebar_position: 3
-slug: /integrations/kafka/kafka-vector
 description: 'Using Vector with Kafka and ClickHouse'
 title: 'Using Vector with Kafka and ClickHouse'
 doc_type: 'guide'
 keywords: ['kafka', 'vector', 'log collection', 'observability', 'integration']
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
 
 ## Using Vector with Kafka and ClickHouse {#using-vector-with-kafka-and-clickhouse}
 

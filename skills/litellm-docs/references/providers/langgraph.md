@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LangGraph
 
@@ -61,9 +60,6 @@ for chunk in response:
 
 #### 1. Configure your model in config.yaml
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
   - model_name: langgraph-agent
@@ -72,9 +68,6 @@ model_list:
       api_base: http://localhost:2024
 ```
 
-</TabItem>
-</Tabs>
-
 #### 2. Start the LiteLLM Proxy
 
 ```bash showLineNumbers title="Start LiteLLM Proxy"
@@ -82,9 +75,6 @@ litellm --config config.yaml
 ```
 
 #### 3. Make requests to your LangGraph agent
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Basic Request"
 curl http://localhost:4000/v1/chat/completions \
@@ -110,10 +100,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Using OpenAI SDK with LiteLLM Proxy"
 from openai import OpenAI
@@ -154,9 +140,6 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Environment Variables
 
 | Variable | Description |
@@ -173,7 +156,6 @@ for chunk in stream:
 | `stream` | boolean | Enable streaming responses |
 | `api_base` | string | LangGraph server URL |
 | `api_key` | string | Optional API key |
-
 
 ## Setting Up a Local LangGraph Server
 
@@ -230,8 +212,6 @@ curl -s --request POST \
     }
   }'
 ```
-
-
 
 ## LiteLLM A2A Gateway
 
@@ -294,4 +274,3 @@ The agent responds with its capabilities. You can now interact with your LangGra
 - [LangGraph GitHub](https://github.com/langchain-ai/langgraph)
 - [A2A Agent Gateway](../a2a.md)
 - [A2A Cost Tracking](../a2a_cost_tracking.md)
-

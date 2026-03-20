@@ -11,7 +11,7 @@ This works with any of the following:
 - `new Date()`
 - `new Intl.DateTimeFormat().format()`
 
-<Note>Timers are not impacted yet, but may be in a future release of Bun.</Note>
+Timers are not impacted yet, but may be in a future release of Bun.
 
 ## setSystemTime
 
@@ -56,9 +56,7 @@ test("unlike in jest", () => {
 });
 ```
 
-<Warning>
   **Timers** — Note that we have not implemented builtin support for mocking timers yet, but this is on the roadmap.
-</Warning>
 
 ## Reset the system time
 
@@ -126,4 +124,4 @@ test("Welcome to New York!", () => {
 });
 ```
 
-<Info>Unlike in Jest, you can set the timezone multiple times at runtime and it will work.</Info>
+Unlike in Jest, you can set the timezone multiple times at runtime and it will work.

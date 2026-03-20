@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Gemini File Search
 
@@ -35,9 +34,6 @@ export GOOGLE_API_KEY="your-api-key"
 
 ### Basic RAG Ingest
 
-<Tabs>
-<TabItem value="python" label="Python SDK">
-
 ```python
 import litellm
 
@@ -55,10 +51,6 @@ response = await litellm.aingest(
 print(f"Vector Store ID: {response['vector_store_id']}")
 print(f"File ID: {response['file_id']}")
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```bash
 curl -X POST "http://localhost:4000/v1/rag/ingest" \
@@ -79,13 +71,7 @@ curl -X POST "http://localhost:4000/v1/rag/ingest" \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Search Vector Store
-
-<Tabs>
-<TabItem value="python" label="Python SDK">
 
 ```python
 import litellm
@@ -103,10 +89,6 @@ for result in response["data"]:
     print(f"Content: {result['content'][0]['text']}")
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM Proxy">
-
 ```bash
 curl -X POST "http://localhost:4000/v1/vector_stores/fileSearchStores/your-store-id/search" \
   -H "Authorization: Bearer sk-1234" \
@@ -117,9 +99,6 @@ curl -X POST "http://localhost:4000/v1/vector_stores/fileSearchStores/your-store
     "max_num_results": 5
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced Features
 
@@ -411,4 +390,3 @@ await litellm.vector_stores.asearch(...)
 - [LiteLLM RAG Ingest API](/docs/rag_ingest)
 - [LiteLLM Vector Store Search](/docs/vector_stores/search)
 - [Using Vector Stores with Chat](/docs/completion/knowledgebase)
-

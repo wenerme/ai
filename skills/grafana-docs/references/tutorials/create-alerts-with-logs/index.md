@@ -26,8 +26,6 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 # How to create alert rules with log data
 
 Loki stores your logs and only indexes labels for each log stream. Using Loki with Grafana Alerting is a powerful way to keep track of what’s happening in your environment. You can create metric alert rules based on content in your log lines to notify your team. What’s even better is that you can add label data from the log message directly into your alert notification.
@@ -38,13 +36,9 @@ In this tutorial, you'll:
 - Create an alert rule based on a Loki query (LogQL).
 - Create a Webhook contact point to send alert notifications to.
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials/alerting-get-started-pt2/) you can advance your skills by exploring alert instances and notification routing.
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
@@ -52,13 +46,7 @@ In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials
 
 {{< /docs/ignore >}}
 
-<!-- INTERACTIVE page intro.md END -->
-
-<!-- INTERACTIVE page step1.md START -->
-
 ## Before you begin
-
-<!-- INTERACTIVE ignore START -->
 
 There are different ways you can follow along with this tutorial.
 
@@ -72,8 +60,6 @@ There are different ways you can follow along with this tutorial.
   - Alternatively, you can [try out this example in our interactive learning environment](https://killercoda.com/grafana-labs/course/grafana/alerting-loki-logs). It's a fully configured environment with all the dependencies already installed.
 
 ## Set up the Grafana stack
-
-<!-- INTERACTIVE ignore END -->
 
 To demonstrate the observation of data using the Grafana stack, download and run the following files.
 
@@ -91,25 +77,17 @@ To demonstrate the observation of data using the Grafana stack, download and run
 
 The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="note" >}}
 
 If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
 {{< /admonition >}}
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 > If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-
-<!-- INTERACTIVE page step2.md START -->
 
 ## Generate sample logs
 
@@ -136,17 +114,11 @@ If you don't see the sample logs in Explore:
 - If the file exists, verify that promtail container is running.
 - In Grafana Explore, check that the time range is only for the last 5 minutes.
 
-<!-- INTERACTIVE page step2.md END -->
-
-<!-- INTERACTIVE page step3.md START -->
-
 ## Create a contact point
 
 Besides being an open-source observability tool, Grafana has its own built-in alerting service. This means that you can receive notifications whenever there is an event of interest in your data, and even see these events graphed in your visualizations.
 
 In this step, we set up a new contact point. This contact point uses the [webhook integration](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/webhook-notifier/). This contact point uses the _webhooks_ integration. In order to make this work, we also need an endpoint for our webhook integration to receive the alert. We can use [Webhook.site](https://webhook.site/) to quickly set up that test endpoint. This way we can make sure that our alert is actually sending a notification somewhere.
-
-<!-- INTERACTIVE ignore START -->
 
 1. In your browser, **sign in** to your Grafana Cloud account.
 
@@ -154,7 +126,6 @@ In this step, we set up a new contact point. This contact point uses the [webhoo
 
 1. In another tab, go to [Webhook.site](https://webhook.site/).
 1. Copy Your unique URL.
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
@@ -180,10 +151,6 @@ Next, let's configure a contact point in Grafana's Alerting UI to send notificat
 1. Return to Grafana and click **Save contact point**.
 
 We have created a dummy Webhook endpoint and created a new Alerting contact point in Grafana. Now, we can create an alert rule and link it to this new integration.
-
-<!-- INTERACTIVE page step3.md END -->
-
-<!-- INTERACTIVE page step4.md START -->
 
 ## Create an alert rule
 
@@ -213,12 +180,12 @@ In this section, we use the default options for Grafana-managed alert rule creat
    2023-04-22T02:49:32.562825+00:00 level=info method=GET url=test.com status=200 duration=171ms
    ```
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    If you're using your own logs, modify the LogQL query to match your own log message. Refer to the Loki docs to understand the [pattern parser](https://grafana.com/docs/loki/latest/logql/log_queries/#pattern).
    {{% / admonition %}}
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
    If you're using your own logs, modify the LogQL query to match your own log message. Refer to the Loki docs to understand the [pattern parser](https://grafana.com/docs/loki/latest/logql/log_queries/#pattern).
@@ -255,32 +222,18 @@ Choose the contact point where you want to receive your alert notifications.
 1. Under **Contact point**, select **Webhook** from the drop-down menu.
 1. Click **Save rule and exit** at the top right corner.
 
-<!-- INTERACTIVE page step4.md END -->
-
-<!-- INTERACTIVE page step5.md START -->
-
 ## Trigger the alert rule
 
 Since the Python script continues to generate log data that matches the alert rule condition, once the evaluation interval has concluded, you should receive an alert notification in the Webhook endpoint.
 
 {{< figure src="/media/docs/alerting/alerting-webhook-firing-alert.png" max-width="1200px" caption="Firing alert notification details" >}}
 
-<!-- INTERACTIVE page step5.md END -->
-
-<!-- INTERACTIVE page finish.md START -->
-
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials/alerting-get-started-pt2/) you can advance your skills by exploring alert instances and notification routing.
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
 > In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials/alerting-get-started-pt2/) you can advance your skills by exploring alert instances and notification routing.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page finish.md END -->

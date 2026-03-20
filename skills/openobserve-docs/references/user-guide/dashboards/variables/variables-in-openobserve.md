@@ -15,7 +15,6 @@ Use variables to:
 - Switch between values
 - Support multi-value selections when needed
 
-
 ## Create a Variable
 **Use case:** Create a variable that will automatically fetch values from a specific field in your log data. This allows dashboard viewers to select a value from a dropdown menu to filter the panels accordingly.
 
@@ -26,7 +25,7 @@ To create a variable:
 3. Select **Variables** from the left navigation.
 4. Click **Add Variable**.
 5. Configure the variable with the following values:
-    ![Configure Variable](../../../images/variables-query.png)
+    [Configure Variable]
 
     - **Type of Variable**: Query Values
     - **Name**: pod
@@ -64,11 +63,11 @@ To apply the variable to a panel:
     - Set the appropriate **Operator**. For example, `=`.
     - In the **Value** field, type the variable name using the dollar symbol. For example, `$pod`.
 
-6. Click **Save** to save the panel. <br>
-![Add variable to a panel](../../../images/query-variable-result.png)
+6. Click **Save** to save the panel. 
+[Add variable to a panel]
 
 The panel is now dynamically filtered using the **Pod** variable. When users select a value from the **Pod** dropdown on the dashboard, the panel updates to display data for that pod only.
-![Variable in Dashboard](../../../images/query-variable-results.png)
+[Variable in Dashboard]
 
 ## Advanced Configuration
 After creating and applying a variable, you can further refine its behavior using advanced settings.
@@ -101,7 +100,6 @@ Available options:
 
 To configure this select one of the options under **By Default Select** when adding or editing a variable.
 
-
 ### Hide on Dashboard
 
 If enabled, the variable dropdown will not be shown in the dashboard interface. This is useful for variables that are meant to work in the background or should not be modified by users.
@@ -125,7 +123,6 @@ When creating variables, you can enable support for multiple selections.
 - **Multi-Select**: Multiple values can be selected at once.
 
 To enable multi-select, toggle the **Allow multiple selection** switch when configuring the variable.
-
 
 ## Variable Input Behavior
 
@@ -168,9 +165,6 @@ zo3-nats
 !!! Note
     If the input string is not present in the fetched list but exists in the data, you can still select it as a custom value. However, if the input does not match any values in the data, the panel will return no results.
 
-
-
-
 The type-ahead input feature allows users to search for a value by typing in the dropdown and select.
 
 - If the value exists within the fetched list (as per the [**Max Record Limit**](#default-max-record-size)), it will appear in the filtered results and can be selected directly.
@@ -178,4 +172,4 @@ The type-ahead input feature allows users to search for a value by typing in the
 
 ## Next Steps
 
-- Learn about different [types of variables](../variable-types/). 
+- Learn about different [types of variables](../variable-types/).

@@ -76,7 +76,6 @@ When selecting an observability platform, consider openness, including whether i
 - **ClickHouse** is an open-source project maintained by ClickHouse Inc., available across clouds. While it supports OpenTelemetry and Grafana, its acquisition of an observability company raises concerns about future neutrality.
 - **Cloud Logging Services** are tied to their respective clouds, not open source, and differ between vendors, limiting consistent experiences and migration flexibility.
 
-
 ### 4. **Ease of Use: Includes Manageability and Usability**
 
 Due to the volume of data, observability platforms usually adopt distributed architectures. Ease of deployment, scaling, upgrades, and other management tasks significantly affects scalability. The interface provided by the system determines developer efficiency and user experience.
@@ -85,7 +84,6 @@ Due to the volume of data, observability platforms usually adopt distributed arc
 - **Doris** provides an interactive analysis interface similar to Kibana and integrates natively with Grafana and Kibana (comming soon). Its SQL is standard and MySQL-compatible, making it developer- and analyst-friendly. Doris has a simple architecture that’s easy to deploy and maintain, supports online scaling without service interruption, automatic load balancing, and includes a visual Cluster Manager.
 - **ClickHouse** provides SQL interfaces but uses its own syntax. Maintenance is challenging due to exposed concepts like local tables vs. distributed tables and lack of automatic rebalancing during scaling. Typically, developing a custom cluster management system is required.
 - **Cloud Logging Services** offer SaaS convenience—users don't manage infrastructure and enjoy ease of use.
-
 
 Based on the above analysis, **Doris** achieves high-performance ingestion and queries while keeping costs low. Its SQL interface is easy to use, and its architecture is simple to maintain and scale. It also ensures consistent experiences across multiple clouds, making it an optimal choice for building an observability platform.
 
@@ -103,7 +101,7 @@ A Doris-based observability platform consists of three core components:
 - **Data Storage and Analysis Engine**: Doris provides unified, high-performance, low-cost storage for observability data and exposes powerful search and analysis capabilities via SQL interfaces.
 - **Query Analysis and Visualization**: Integrates with popular observability visualization tools such as Grafana and Kibana (from the ELK stack), offering intuitive interfaces for searching, analyzing, alerting, and achieving real-time monitoring and rapid response.
 
-![doris-observabiltiy-architecture](/images/observability/observability_architecture_doris.png)
+[doris-observabiltiy-architecture]
 
 ### Key Features and Advantages
 
@@ -137,23 +135,21 @@ The observed business system simulates an [e-commerce website] (https://opentele
 
 The Load Generator tool sends continuous requests to the entry service, generating vast volumes of observability data (Logs, Traces, Metrics). These data are collected using OpenTelemetry SDKs in various languages, sent to the OpenTelemetry Collector, preprocessed by Processors, and finally written into Doris via the OpenTelemetry Doris Exporter. Observability visualization tools such as Grafana connects to Doris through the MySQL interface, providing visualized query and analysis capabilities.
 
-
 <a href="https://youtu.be/LrR4SNyAlg8">
-  <img src="/images/observability/otel_demo_doris.png" alt="Doris OpenTelemetry Demo" />
+  [Doris OpenTelemetry Demo]
 </a>
 
 Grafana connects to Doris via MySQL datasource, offering unified visualization and analysis of Logs, Traces, and Metrics, including cross-analysis between Logs and Traces.
 
 - **Log**
-	![log-visualization](/images/observability/log-visualization.png)
+	[log-visualization]
 
 - **Trace**
-	![log-visualization](/images/observability/trace-visualization.png)
+	[log-visualization]
 
 - **Metrics**
-	![metrics-visualization](/images/observability/metrics-visualization.png)
+	[metrics-visualization]
 
 While Grafana's log visualization and analysis capabilities are relatively basic compared to Kibana, third-party vendors have implemented Kibana-like Discover features. These will soon be integrated into Grafana's Doris datasource, enhancing unified observability visualization. Future enhancements will include Elasticsearch protocol compatibility, enabling native Kibana connections to Doris. For ELK users, replacing Elasticsearch with Doris maintains existing logging and visualization habits while significantly reducing costs and improving efficiency.
 
-![studio-visualization](/images/observability/studio-discover.jpeg)
-
+[studio-visualization]

@@ -1,6 +1,5 @@
 ---
 title: projects | Config
-outline: deep
 ---
 
 # projects <CRoot />

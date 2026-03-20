@@ -3,32 +3,20 @@ title: "Using CopilotKit | Frameworks"
 description: "Learn how to integrate CopilotKit with Mastra"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Using CopilotKit
 
 [CopilotKit](https://www.copilotkit.ai/) provides React components to quickly integrate customizable AI copilots into your application. Combined with Mastra, you can build sophisticated AI apps featuring bidirectional state synchronization and interactive UIs.
 
 Visit the [CopilotKit documentation](https://docs.copilotkit.ai/) to learn more about CopilotKit concepts, components, and advanced usage patterns.
 
-:::info
+> **info**: For a full-stack integration approach where Mastra runs directly in your Next.js API routes, see the [CopilotKit Quickstart](https://docs.copilotkit.ai/mastra/quickstart) guide.
 
-For a full-stack integration approach where Mastra runs directly in your Next.js API routes, see the [CopilotKit Quickstart](https://docs.copilotkit.ai/mastra/quickstart) guide.
-
-:::
-
-:::tip
-
-Visit Mastra's [**"UI Dojo"**](https://ui-dojo.mastra.ai/) to see real-world examples of CopilotKit integrated with Mastra.
-
-:::
+> **tip**: Visit Mastra's [**"UI Dojo"**](https://ui-dojo.mastra.ai/) to see real-world examples of CopilotKit integrated with Mastra.
 
 ## Integration guide
 
 Run Mastra as a standalone server and connect your Next.js frontend (with CopilotKit) to its API endpoints.
 
-<Steps>
   <StepItem>
     Set up your directory structure. A possible directory structure could look like this:
 
@@ -182,7 +170,6 @@ Run Mastra as a standalone server and connect your Next.js frontend (with Copilo
 
     You should now be able to chat with your agent in the browser.
   </StepItem>
-</Steps>
 
 Congratulations! You have successfully integrated Mastra with CopilotKit using a separate server approach. Your CopilotKit frontend now communicates with a standalone Mastra agent server.
 
@@ -190,11 +177,7 @@ Congratulations! You have successfully integrated Mastra with CopilotKit using a
 
 When deploying your Mastra server with CopilotKit, you must exclude `@copilotkit/runtime` from the bundle. This package contains dependencies that aren't compatible with bundling and will cause 500 errors if included.
 
-:::note
-
-This issue doesn't occur during development with `mastra dev` since it doesn't require bundling. However, anyone running `mastra build` for deployment will encounter this issue.
-
-:::
+> **note**: This issue doesn't occur during development with `mastra dev` since it doesn't require bundling. However, anyone running `mastra build` for deployment will encounter this issue.
 
 Add the `@copilotkit/runtime` package to your bundler externals configuration:
 

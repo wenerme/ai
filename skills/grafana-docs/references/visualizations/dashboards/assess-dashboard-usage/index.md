@@ -130,7 +130,6 @@ To disable the presence indicator, edit the [configuration](ref:configuration) f
 ```ini
 [analytics.views]
 
-
 # Disables the presence indicator
 recent_users_age = 0
 ```

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+
 ---
 
 # Options
@@ -148,30 +148,30 @@ func main() {
 
 The text shown in the window's title bar.
 
-Name: Title<br/>
+Name: Title
 Type: `string`
 
 ### Width
 
 The initial width of the window.
 
-Name: Width<br/>
-Type: `int`<br/>
+Name: Width
+Type: `int`
 Default: 1024.
 
 ### Height
 
 The initial height of the window.
 
-Name: Height<br/>
-Type: `int`<br/>
+Name: Height
+Type: `int`
 Default: 768
 
 ### DisableResize
 
 By default, the main window is resizable. Setting this to `true` will keep it a fixed size.
 
-Name: DisableResize<br/>
+Name: DisableResize
 Type: `bool`
 
 ### Fullscreen
@@ -188,7 +188,7 @@ Defines how the window should present itself at startup.
 | Maximised  | ✅  | ✅  | ✅  |
 | Minimised  | ✅  | ❌  | ✅  |
 
-Name: WindowStartState<br/>
+Name: WindowStartState
 Type: `options.WindowStartState`
 
 ### Frameless
@@ -196,7 +196,7 @@ Type: `options.WindowStartState`
 When set to `true`, the window will have no borders or title bar.
 Also see [Frameless Windows](../guides/frameless.mdx).
 
-Name: Frameless<br/>
+Name: Frameless
 Type: `bool`
 
 ### MinWidth
@@ -204,7 +204,7 @@ Type: `bool`
 This sets the minimum width for the window. If the value given in `Width` is less than this value,
 the window will be set to `MinWidth` by default.
 
-Name: MinWidth<br/>
+Name: MinWidth
 Type: `int`
 
 ### MinHeight
@@ -212,7 +212,7 @@ Type: `int`
 This sets the minimum height for the window. If the value given in `Height` is less than this value,
 the window will be set to `MinHeight` by default.
 
-Name: MinHeight<br/>
+Name: MinHeight
 Type: `int`
 
 ### MaxWidth
@@ -220,7 +220,7 @@ Type: `int`
 This sets the maximum width for the window. If the value given in `Width` is more than this value,
 the window will be set to `MaxWidth` by default.
 
-Name: MaxWidth<br/>
+Name: MaxWidth
 Type: `int`
 
 ### MaxHeight
@@ -228,7 +228,7 @@ Type: `int`
 This sets the maximum height for the window. If the value given in `Height` is more than this value,
 the window will be set to `MaxHeight` by default.
 
-Name: MaxHeight<br/>
+Name: MaxHeight
 Type: `int`
 
 ### StartHidden
@@ -236,7 +236,7 @@ Type: `int`
 When set to `true`, the application will be hidden until [WindowShow](../reference/runtime/window.mdx#windowshow)
 is called.
 
-Name: StartHidden<br/>
+Name: StartHidden
 Type: `bool`
 
 ### HideWindowOnClose
@@ -245,7 +245,7 @@ By default, closing the window will close the application. Setting this to `true
 
 hide the window instead.
 
-Name: HideWindowOnClose<br/>
+Name: HideWindowOnClose
 Type: `bool`
 
 ### BackgroundColour
@@ -253,15 +253,15 @@ Type: `bool`
 This value is the default background colour of the window.
 Example: options.NewRGBA(255,0,0,128) - Red at 50% transparency
 
-Name: BackgroundColour<br/>
-Type: `*options.RGBA`<br/>
+Name: BackgroundColour
+Type: `*options.RGBA`
 Default: white
 
 ### AlwaysOnTop
 
 Indicates that the window should stay above other windows when losing focus.
 
-Name: AlwaysOnTop<br/>
+Name: AlwaysOnTop
 Type: `bool`
 
 ### Assets
@@ -299,7 +299,7 @@ Not all features of an `http.Request` are currently supported, please see the fo
 [^1]: This requires WebKit2GTK 2.36+ support and your app needs to be build with the build tag `webkit2_36` to activate support for this feature. This also bumps the minimum requirement of WebKit2GTK to 2.36 for your app.
 [^2]: This requires WebKit2GTK 2.40+ support and your app needs to be build with the build tag `webkit2_40` to activate support for this feature. This also bumps the minimum requirement of WebKit2GTK to 2.40 for your app.
 
-Name: AssetServer<br/>
+Name: AssetServer
 Type: `*assetserver.Options`
 
 #### Assets
@@ -311,7 +311,7 @@ the request handling will fallback to the [Handler](#handler) and tries to serve
 
 If set to nil, all GET requests will be forwarded to [Handler](#handler).
 
-Name: Assets<br/>
+Name: Assets
 Type: `fs.FS`
 
 #### Handler
@@ -325,19 +325,15 @@ If not defined, the result is the following in cases where the Handler would hav
 - GET request: `http.StatusNotFound`
 - Other request: `http.StatusMethodNotAllowed`
 
-:::info
-
-This does not work with vite v5.0.0+ and wails v2 due to changes in vite.
+> **info**: This does not work with vite v5.0.0+ and wails v2 due to changes in vite.
 Changes are planned in v3 to support similar functionality under vite v5.0.0+.
 If you need this feature, stay with vite v4.0.0+.
 See [issue 3240](https://github.com/wailsapp/wails/issues/3240) for details
 
-:::
-
 NOTE: When used in combination with a Frontend DevServer there might be limitations, eg. Vite serves the index.html
 on every path, that does not contain a file extension.
 
-Name: AssetsHandler<br/>
+Name: AssetsHandler
 Type: `http.Handler`
 
 #### Middleware
@@ -349,44 +345,40 @@ handler used by the AssetServer as an argument.
 
 If not defined, the default AssetServer request chain is executed.
 
-Name: Middleware<br/>
+Name: Middleware
 Type: `assetserver.Middleware`
 
 ### Menu
 
 The menu to be used by the application. More details about Menus in the [Menu Reference](../reference/runtime/menu.mdx).
 
-:::note
+> **note**: On Mac, if no menu is specified, a default menu will be created.
 
-On Mac, if no menu is specified, a default menu will be created.
-
-:::
-
-Name: Menu<br/>
+Name: Menu
 Type: `*menu.Menu`
 
 ### Logger
 
 The logger to be used by the application. More details about logging in the [Log Reference](../reference/runtime/log.mdx).
 
-Name: Logger<br/>
-Type: `logger.Logger`<br/>
+Name: Logger
+Type: `logger.Logger`
 Default: Logs to Stdout
 
 ### LogLevel
 
 The default log level. More details about logging in the [Log Reference](../reference/runtime/log.mdx).
 
-Name: LogLevel<br/>
-Type: `logger.LogLevel`<br/>
+Name: LogLevel
+Type: `logger.LogLevel`
 Default: `Info` in dev mode, `Error` in production mode
 
 ### LogLevelProduction
 
 The default log level for production builds. More details about logging in the [Log Reference](../reference/runtime/log.mdx).
 
-Name: LogLevelProduction<br/>
-Type: `logger.LogLevel`<br/>
+Name: LogLevelProduction
+Type: `logger.LogLevel`
 Default: `Error`
 
 ### OnStartup
@@ -394,7 +386,7 @@ Default: `Error`
 This callback is called after the frontend has been created, but before `index.html` has been loaded. It is given
 the application context.
 
-Name: OnStartup<br/>
+Name: OnStartup
 Type: `func(ctx context.Context)`
 
 ### OnDomReady
@@ -402,7 +394,7 @@ Type: `func(ctx context.Context)`
 This callback is called after the frontend has loaded `index.html` and its resources. It is given
 the application context.
 
-Name: OnDomReady<br/>
+Name: OnDomReady
 Type: `func(ctx context.Context)`
 
 ### OnShutdown
@@ -410,7 +402,7 @@ Type: `func(ctx context.Context)`
 This callback is called after the frontend has been destroyed, just before the application terminates. It is given
 the application context.
 
-Name: OnShutdown<br/>
+Name: OnShutdown
 Type: `func(ctx context.Context)`
 
 ### OnBeforeClose
@@ -436,21 +428,21 @@ func (b *App) beforeClose(ctx context.Context) (prevent bool) {
 }
 ```
 
-Name: OnBeforeClose<br/>
+Name: OnBeforeClose
 Type: `func(ctx context.Context) bool`
 
 ### CSSDragProperty
 
 Indicates the CSS property to use to identify which elements can be used to drag the window. Default: `--wails-draggable`.
 
-Name: CSSDragProperty<br/>
+Name: CSSDragProperty
 Type: `string`
 
 ### CSSDragValue
 
 Indicates what value the `CSSDragProperty` style should have to drag the window. Default: `drag`.
 
-Name: CSSDragValue<br/>
+Name: CSSDragValue
 Type: `string`
 
 ### EnableDefaultContextMenu
@@ -463,22 +455,17 @@ When this option is enabled, by default the context-menu will only be shown for 
 
 | CSS Style                      | Behavior                                                                                                                                           |
 |--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--default-contextmenu: auto;` | (**default**) will show the default context menu only if :<br/> contentEditable is true OR text has been selected OR element is input or textarea  |
+| `--default-contextmenu: auto;` | (**default**) will show the default context menu only if : contentEditable is true OR text has been selected OR element is input or textarea  |
 | `--default-contextmenu: show;` | will always show the default context menu                                                                                                          |
 | `--default-contextmenu: hide;` | will always hide the default context menu                                                                                                          |
 
 This rule is inherited like any normal CSS rule, so nesting works as expected.
 
-:::note
-This filtering functionality is only enabled in production, so in development and in debug build, the full context-menu is always available everywhere.
-:::
+> **note**: This filtering functionality is only enabled in production, so in development and in debug build, the full context-menu is always available everywhere.
 
-:::warning
-This filtering functionality is NOT a security measure, the developer should expect that the full context-menu could be leaked anytime which could contain commands like (Download image, Reload, Save webpage), if this is a concern, the developer SHOULD NOT enable the default context-menu.
-:::
+> **warning**: This filtering functionality is NOT a security measure, the developer should expect that the full context-menu could be leaked anytime which could contain commands like (Download image, Reload, Save webpage), if this is a concern, the developer SHOULD NOT enable the default context-menu.
 
-
-Name: EnableDefaultContextMenu<br/>
+Name: EnableDefaultContextMenu
 Type: `bool`
 
 ### EnableFraudulentWebsiteDetection
@@ -487,28 +474,28 @@ EnableFraudulentWebsiteDetection enables scan services for fraudulent content, s
 These services might send information from your app like URLs navigated to and possibly other content to cloud
 services of Apple and Microsoft.
 
-Name: EnableFraudulentWebsiteDetection<br/>
+Name: EnableFraudulentWebsiteDetection
 Type: `bool`
 
 ### DisablePanicRecovery
 
 DisablePanicRecovery disables the automatic recovery from panics in message processing. By default, Wails will recover from panics in message processing and log the error. If you want to handle panics yourself, set this to `true`.
 
-Name: DisablePanicRecovery<br/>
+Name: DisablePanicRecovery
 Type: `bool`
 
 ### Bind
 
 A slice of struct instances defining methods that need to be bound to the frontend.
 
-Name: Bind<br/>
+Name: Bind
 Type: `[]interface{}`
 
 ### EnumBind
 
 A slice of Enum arrays that need to be bound to the frontend.
 
-Name: EnumBind<br/>
+Name: EnumBind
 Type: `[]interface{}`
 
 ### ErrorFormatter
@@ -516,49 +503,49 @@ Type: `[]interface{}`
 A function that determines how errors are formatted when returned by a JS-to-Go
 method call. The returned value will be marshalled as JSON.
 
-Name: ErrorFormatter<br/>
+Name: ErrorFormatter
 Type: `func (error) any`
 
 ### SingleInstanceLock
 
 Enables single instance locking. This means that only one instance of your application can be running at a time.
 
-Name: SingleInstanceLock<br/>
+Name: SingleInstanceLock
 Type: `*options.SingleInstanceLock`
 
 #### UniqueId
 
 This id is used to generate the mutex name on Windows and macOS and the dbus name on Linux. Use a UUID to ensure that the id is unique.
 
-Name: UniqueId<br/>
+Name: UniqueId
 Type: `string`
 
 #### OnSecondInstanceLaunch
 
 Callback that is called when a second instance of your app is launched.
 
-Name: OnSecondInstanceLaunch<br/>
+Name: OnSecondInstanceLaunch
 Type: `func(secondInstanceData SecondInstanceData)`
 
 ### Drag and Drop
 
 Defines the behavior of drag and drop events on the window.
 
-Name: DragAndDrop<br/>
+Name: DragAndDrop
 Type: `options.DragAndDrop`
 
 #### EnableFileDrop
 
 EnableFileDrop enables wails' drag and drop functionality that returns the dropped in files' absolute paths.
 
-When it is set to `true` the [runtime methods](../reference/runtime/draganddrop.mdx) can be used. <br/>
+When it is set to `true` the [runtime methods](../reference/runtime/draganddrop.mdx) can be used. 
 Or you can listen for the `wails:file-drop` event with [runtime EventsOn method](../reference/runtime/events.mdx#eventson) both on the
 Javascript and GO side to implement any functionality you would like.
 
 The event returns the coordinates of the drop and a file path slice.
 
-Name: EnableFileDrop<br/>
-Type: `bool`<br/>
+Name: EnableFileDrop
+Type: `bool`
 Default: `false`
 
 #### DisableWebViewDrop
@@ -567,31 +554,31 @@ Disables the webview's drag and drop functionality.
 
 It can be used to prevent accidental opening of dragged in files in the webview, when there is no need for drag and drop.
 
-Name: DisableWebViewDrop<br/>
-Type: `bool`<br/>
+Name: DisableWebViewDrop
+Type: `bool`
 Default: `false`
 
 #### CSSDropProperty
 
 CSS property to test for drag and drop target elements.
 
-Name: CSSDropProperty<br/>
-Type: `string`<br/>
+Name: CSSDropProperty
+Type: `string`
 Default: `--wails-drop-target`
 
 #### CSSDropValue
 
 The CSS Value that the CSSDropProperty must have to be a valid drop target. Default "drop"
 
-Name: CSSDropValue<br/>
-Type: `string`<br/>
+Name: CSSDropValue
+Type: `string`
 Default: `drop`
 
 ### Windows
 
 This defines [Windows specific options](#windows).
 
-Name: Windows<br/>
+Name: Windows
 Type: `*windows.Options`
 
 #### WebviewIsTransparent
@@ -600,7 +587,7 @@ Setting this to `true` will make the webview background transparent when an alph
 This means that if you use `rgba(0,0,0,0)` for `background-color` in your CSS, the host window will show through.
 Often combined with [WindowIsTranslucent](#WindowIsTranslucent) to make frosty-looking applications.
 
-Name: WebviewIsTransparent<br/>
+Name: WebviewIsTransparent
 Type: `bool`
 
 #### WindowIsTranslucent
@@ -613,7 +600,7 @@ method for translucency, which can be slow. For Windows 11 versions after build 
 newer translucency types that are much faster. By default, the type of translucency used will be determined
 by Windows. To configure this, use the [BackdropType](#BackdropType) option.
 
-Name: WindowIsTranslucent<br/>
+Name: WindowIsTranslucent
 Type: `bool`
 
 #### ContentProtection
@@ -624,20 +611,16 @@ On Windows it calls SetWindowDisplayAffinity with `WDA_EXCLUDEFROMCAPTURE`.
 For Windows 10 version 2004 and later the window will be completely removed from capture.
 Older Windows versions will call SetWindowDisplayAffinity with `WDA_MONITOR`, capturing a black window.
 
-Name: ContentProtection<br/>
+Name: ContentProtection
 Type: `bool`
 
 #### BackdropType
 
-:::note
-
-Requires Windows 11 build 22621 or later.
-
-:::
+> **note**: Requires Windows 11 build 22621 or later.
 
 Sets the translucency type of the window. This is only applicable if [WindowIsTranslucent](#WindowIsTranslucent) is set to `true`.
 
-Name: BackdropType<br/>
+Name: BackdropType
 Type `windows.BackdropType`
 
 The value can be one of the following:
@@ -652,14 +635,14 @@ The value can be one of the following:
 
 #### ZoomFactor
 
-Name: ZoomFactor<br/>
+Name: ZoomFactor
 Type: `float64`
 
 This defines the zoom factor for the WebView2. This is the option matching the Edge user activated zoom in or out.
 
 #### IsZoomControlEnabled
 
-Name: IsZoomControlEnabled<br/>
+Name: IsZoomControlEnabled
 Type: `bool`
 
 This enables the zoom factor to be changed by the user. Please note that the zoom factor can be set in the options while
@@ -669,14 +652,14 @@ disallowing the user to change it at runtime (f.e. for a kiosk application or si
 
 Setting this to `true` will disable pinch zoom gestures.
 
-Name: DisablePinchZoom<br/>
+Name: DisablePinchZoom
 Type: `bool`
 
 #### DisableWindowIcon
 
 Setting this to `true` will remove the icon in the top left corner of the title bar.
 
-Name: DisableWindowIcon<br/>
+Name: DisableWindowIcon
 Type: `bool`
 
 #### DisableFramelessWindowDecorations
@@ -685,14 +668,14 @@ Setting this to `true` will remove the window decorations in [Frameless](#Framel
 'Aero Shadow' and no 'Rounded Corners' shown for the window. Please note that 'Rounded Corners' are only supported on
 Windows 11.
 
-Name: DisableFramelessWindowDecorations<br/>
+Name: DisableFramelessWindowDecorations
 Type: `bool`
 
 #### WebviewUserDataPath
 
 This defines the path where the WebView2 stores the user data. If empty `%APPDATA%\[BinaryName.exe]` will be used.
 
-Name: WebviewUserDataPath<br/>
+Name: WebviewUserDataPath
 Type: `string`
 
 #### WebviewBrowserPath
@@ -705,7 +688,7 @@ Important information about distribution of fixed version runtime:
 - [Known issues for fixed version](https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution#known-issues-for-fixed-version)
 - [The path of fixed version of the WebView2 Runtime should not contain \Edge\Application\.](https://docs.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.1245.22#createcorewebview2environmentwithoptions)
 
-Name: WebviewBrowserPath<br/>
+Name: WebviewBrowserPath
 Type: `string`
 
 #### Theme
@@ -720,21 +703,17 @@ This defines the theme that the application should use:
 | Dark          | The application will use a dark theme exclusively                                                                                             |
 | Light         | The application will use a light theme exclusively                                                                                            |
 
-Name: Theme<br/>
+Name: Theme
 Type: `windows.Theme`
 
 #### CustomTheme
 
-:::note
-
-Minimum Windows Version: Windows 10/11 2009/21H2 Build 22000
-
-:::
+> **note**: Minimum Windows Version: Windows 10/11 2009/21H2 Build 22000
 
 Allows you to specify custom colours for TitleBar, TitleText and Border for both light and dark mode, as well as
 when the window is active or inactive.
 
-Name: CustomTheme<br/>
+Name: CustomTheme
 Type: `windows.CustomTheme`
 
 ##### CustomTheme type
@@ -786,7 +765,7 @@ Example:
 
 A struct of strings used by the webview2 installer if a valid webview2 runtime is not found.
 
-Name: Messages<br/>
+Name: Messages
 Type: `*windows.Messages`
 
 Customise this for any language you choose to support.
@@ -796,56 +775,56 @@ Customise this for any language you choose to support.
 ResizeDebounceMS is the amount of time to debounce redraws of webview2 when resizing the window.
 The default value (0) will perform redraws as fast as it can.
 
-Name: ResizeDebounceMS<br/>
+Name: ResizeDebounceMS
 Type: `uint16`
 
 #### OnSuspend
 
 If set, this function will be called when Windows initiates a switch to low power mode (suspend/hibernate)
 
-Name: OnSuspend<br/>
+Name: OnSuspend
 Type: `func()`
 
 #### OnResume
 
 If set, this function will be called when Windows resumes from low power mode (suspend/hibernate)
 
-Name: OnResume<br/>
+Name: OnResume
 Type: `func()`
 
 #### WebviewGpuIsDisabled
 
 Setting this to `true` will disable GPU hardware acceleration for the webview.
 
-Name: WebviewGpuIsDisabled<br/>
+Name: WebviewGpuIsDisabled
 Type: `bool`
 
 #### EnableSwipeGestures
 
 Setting this to `true` will enable swipe gestures for the webview.
 
-Name: EnableSwipeGestures<br/>
+Name: EnableSwipeGestures
 Type: `bool`
 
 #### WindowClassName
 
 Class name for the window. If empty, 'wailsWindow' will be used.
 
-Name: WindowClassName<br/>
+Name: WindowClassName
 Type: `string`
 
 ### Mac
 
 This defines [Mac specific options](#mac).
 
-Name: Mac<br/>
+Name: Mac
 Type: `*mac.Options`
 
 #### TitleBar
 
 The TitleBar struct provides the ability to configure the look and feel of the title bar.
 
-Name: TitleBar<br/>
+Name: TitleBar
 Type: [`*mac.TitleBar`](#titlebar-struct)
 
 ##### Titlebar struct
@@ -876,9 +855,9 @@ Preconfigured titlebar settings are available:
 
 | Setting                     | Example                                        |
 | --------------------------- | ---------------------------------------------- |
-| `mac.TitleBarDefault()`     | ![](/img/reference/titlebar-default.webp)      |
-| `mac.TitleBarHidden()`      | ![](/img/reference/titlebar-hidden.webp)       |
-| `mac.TitleBarHiddenInset()` | ![](/img/reference/titlebar-hidden-inset.webp) |
+| `mac.TitleBarDefault()`     |       |
+| `mac.TitleBarHidden()`      |        |
+| `mac.TitleBarHiddenInset()` |  |
 
 Example:
 
@@ -894,7 +873,7 @@ Click [here](https://github.com/lukakerr/NSWindowStyles) for some inspiration on
 
 Appearance is used to set the style of your app in accordance with Apple's [NSAppearance](https://developer.apple.com/documentation/appkit/nsappearancename?language=objc) names.
 
-Name: Appearance<br/>
+Name: Appearance
 Type: [`mac.AppearanceType`](#appearance-type)
 
 ##### Appearance type
@@ -926,7 +905,7 @@ Setting this to `true` will make the webview background transparent when an alph
 This means that if you use `rgba(0,0,0,0)` for `background-color` in your CSS, the host window will show through.
 Often combined with [WindowIsTranslucent](#WindowIsTranslucent) to make frosty-looking applications.
 
-Name: WebviewIsTransparent<br/>
+Name: WebviewIsTransparent
 Type: `bool`
 
 #### WindowIsTranslucent
@@ -934,7 +913,7 @@ Type: `bool`
 Setting this to `true` will make the window background translucent. Often combined
 with [WebviewIsTransparent](#WebviewIsTransparent) to make frosty-looking applications.
 
-Name: WindowIsTranslucent<br/>
+Name: WindowIsTranslucent
 Type: `bool`
 
 #### ContentProtection
@@ -943,28 +922,28 @@ Prevents window contents from being captured by other applications.
 
 On MacOS it sets the NSWindow's sharingType to NSWindowSharingNone, removing the window from capture entirely.
 
-Name: ContentProtection<br/>
+Name: ContentProtection
 Type: `bool`
 
 #### OnFileOpen
 
 Callback that is called when a file is opened with the application.
 
-Name: OnFileOpen<br/>
+Name: OnFileOpen
 Type: `func(filePath string)`
 
 #### OnUrlOpen
 
 Callback that is called when a URL is opened with the application.
 
-Name: OnUrlOpen<br/>
+Name: OnUrlOpen
 Type: `func(filePath string)`
 
 #### Preferences
 
 The Preferences struct provides the ability to configure the Webview preferences.
 
-Name: Preferences<br/>
+Name: Preferences
 Type: [`*mac.Preferences`](#preferences-struct)
 
 ##### Preferences struct
@@ -1001,7 +980,7 @@ Mac: &mac.Options{
 
 This configuration lets you set the title, message and icon for the "About" menu item in the app menu created by the "AppMenu" role.
 
-Name: About<br/>
+Name: About
 Type: [`*mac.AboutInfo`](#about-struct)
 
 ##### About struct
@@ -1064,14 +1043,14 @@ When clicked, that will open an about message box:
 
 This defines [Linux specific options](#linux).
 
-Name: Linux<br/>
+Name: Linux
 Type: `*linux.Options`
 
 #### Icon
 
 Sets up the icon representing the window. This icon is used when the window is minimized (also known as iconified).
 
-Name: Icon<br/>
+Name: Icon
 Type: `[]byte`
 
 Some window managers or desktop environments may also place it in the window frame, or display it in other contexts.
@@ -1087,15 +1066,15 @@ Scaling is postponed until the last minute, when the desired final size is known
 
 Setting this to `true` will make the window background translucent. Some window managers may ignore it, or result in a black window.
 
-Name: WindowIsTranslucent<br/>
+Name: WindowIsTranslucent
 Type: `bool`
 
 #### WebviewGpuPolicy
 
 This option is used for determining the webview's hardware acceleration policy.
 
-Name: WebviewGpuPolicy<br/>
-Type: [`options.WebviewGpuPolicy`](#webviewgpupolicy-type)<br/>
+Name: WebviewGpuPolicy
+Type: [`options.WebviewGpuPolicy`](#webviewgpupolicy-type)
 Default: `WebviewGpuPolicyAlways`
 
 ##### WebviewGpuPolicy type
@@ -1114,21 +1093,21 @@ This name should not be localized, [see the docs](https://docs.gtk.org/glib/func
 When a .desktop file is created this value helps with window grouping and desktop icons when the .desktop file's `Name`
 property differs form the executable's filename.
 
-Name: ProgramName<br/>
-Type: string<br/>
+Name: ProgramName
+Type: string
 
 ### Debug
 
 This defines [Debug specific options](#Debug) that apply to debug builds.
 
-Name: Debug<br/>
+Name: Debug
 Type: `options.Debug`
 
 #### OpenInspectorOnStartup
 
 Setting this to `true` will open the WebInspector on startup of the application.
 
-Name: OpenInspectorOnStartup<br/>
+Name: OpenInspectorOnStartup
 Type: `bool`
 
 ### BindingsAllowedOrigins
@@ -1137,5 +1116,5 @@ Comma-separated list of additional allowed origins for JS ↔ Go bindings.
 Supports “*” wildcards in hostnames for subdomain matching.
 Example: `"https://*.myapp.com, https://example.com"`
 
-Name: BindingsAllowedOrigins<br/>
-Type: `string`<br/>
+Name: BindingsAllowedOrigins
+Type: `string`

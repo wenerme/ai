@@ -1,17 +1,11 @@
 ---
-slug: /use-cases/data-lake/polaris-catalog
-sidebar_label: 'Polaris catalog'
 title: 'Polaris catalog'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data using ClickHouse and the Snowflake Polaris catalog.'
 keywords: ['Polaris', 'Snowflake', 'Data Lake']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
 
 <BetaBadge/>
 
@@ -20,10 +14,8 @@ etc.). In this guide, we will walk you through the steps to query your data
 using ClickHouse and the [Apache Polaris Catalog](https://polaris.apache.org/releases/1.1.0/getting-started/using-polaris/#setup).
 Apache Polaris supports Iceberg tables and Delta Tables (via Generic Tables). This integration only supports Iceberg tables at this time.
 
-:::note
-As this feature is experimental, you will need to enable it using:
+> **note**: As this feature is experimental, you will need to enable it using:
 `SET allow_experimental_database_unity_catalog = 1;`
-:::
 
 ## Prerequisites {#prerequisites}
 
@@ -71,9 +63,7 @@ To query a table:
 SELECT count(*) FROM `polaris_db.my_iceberg_table`;
 ```
 
-:::note
-Backticks are required, for example, `schema.table`.
-:::
+> **note**: Backticks are required, for example, `schema.table`.
 
 To inspect the table DDL:
 

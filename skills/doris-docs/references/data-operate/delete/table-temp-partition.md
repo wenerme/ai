@@ -151,11 +151,9 @@ ALTER TABLE tbl1 REPLACE PARTITION (p1, p2) WITH TEMPORARY PARTITION (tp1);
 
 - `use_temp_partition_name` defaults to false, but since the number of partitions to be replaced is different from the number of replacing partitions, this parameter is invalid. After replacement, the partition name is tp1, and p1 and p2 no longer exist.
 
-:::tip
-**Explanation of the replace operation:**
+> **tip**: **Explanation of the replace operation:**
 
 After the partition replacement is successful, the replaced partitions will be deleted and cannot be recovered.
-:::
 
 ## Import Temporary Partition
 

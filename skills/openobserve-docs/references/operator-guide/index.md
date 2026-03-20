@@ -7,4 +7,3 @@ Learn more:
 - [Etcd maintenance](etcd)
 - [Etcd restore](etcd_restore)
 - [Nginx proxy](nginx_proxy)
-

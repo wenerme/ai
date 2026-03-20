@@ -1,10 +1,7 @@
 ---
 title: "Qwen-Image-Edit ComfyUI Native Workflow Example"
 description: "Qwen-Image-Edit is the image editing version of Qwen-Image, further trained based on the 20B model, supporting precise text editing and dual semantic/appearance editing capabilities."
-sidebarTitle: "Qwen-Image-Edit"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 **Qwen-Image-Edit** is the image editing version of Qwen-Image. It is further trained based on the 20B Qwen-Image model, successfully extending Qwen-Image's unique text rendering capabilities to editing tasks, enabling precise text editing. In addition, Qwen-Image-Edit feeds the input image into both Qwen2.5-VL (for visual semantic control) and the VAE Encoder (for visual appearance control), thus achieving dual semantic and appearance editing capabilities.
 
@@ -32,8 +29,6 @@ Features include:
  </iframe>
 
 ## Qwen-Image-Edit ComfyUI Native Workflow Example
-
-<UpdateReminder />
 
 ### 1. Workflow File
 
@@ -88,7 +83,7 @@ Model Storage Location
 
 ### 3. Follow the Steps to Complete the Workflow
 
-![Steps Diagram](/images/tutorial/image/qwen/qwen_image_edit.jpg)
+[Steps Diagram]
 
 1. Model Loading
     - Ensure the `Load Diffusion Model` node loads `qwen_image_edit_fp8_e4m3fn.safetensors`

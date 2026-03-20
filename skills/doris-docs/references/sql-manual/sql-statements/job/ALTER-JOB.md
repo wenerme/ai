@@ -31,7 +31,6 @@ DO <Insert_Command>
 **1. `<Insert_Command>`**
 > Modify the SQL executed by the job.
 
-
 ## Access Control Requirements
 
 The user executing this SQL command must have at least the following privileges:

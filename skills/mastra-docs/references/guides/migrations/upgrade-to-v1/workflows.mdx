@@ -28,8 +28,6 @@ You can use Mastra's codemod CLI to update your imports automatically:
 npx @mastra/codemod@latest v1/mastra-plural-apis .
 ```
 
-:::
-
 ### `RuntimeContext` to `RequestContext` in step context
 
 The parameter name `runtimeContext` has been changed to `requestContext` in workflow step execution context. This change aligns with the global rename for clarity.
@@ -55,8 +53,6 @@ You can use Mastra's codemod CLI to update your imports automatically:
 npx @mastra/codemod@latest v1/runtime-context .
 ```
 
-:::
-
 ### `createRunAsync` to `createRun`
 
 The `createRunAsync()` method has been renamed to `createRun()`. This change simplifies the API by removing the redundant "Async" suffix since all run creation is asynchronous.
@@ -75,8 +71,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/workflow-create-run-async .
 ```
-
-:::
 
 ### `runCount` to `retryCount` (deprecated)
 
@@ -100,8 +94,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/workflow-run-count .
 ```
-
-:::
 
 ### `getInitData` returns unknown
 
@@ -127,8 +119,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/workflow-get-init-data .
 ```
 
-:::
-
 ### `getWorkflowRuns` to `listWorkflowRuns`
 
 The `getWorkflowRuns()` method has been renamed to `listWorkflowRuns()`. This change aligns with the convention that `list*` methods return collections.
@@ -147,8 +137,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/workflow-list-runs .
 ```
-
-:::
 
 ### Inputs are validated by default
 
@@ -228,9 +216,7 @@ This change simplifies the API - rather than creating a `WritableStream` wrapper
 + });
 ```
 
-:::note
-
-The `writer` parameter passed to step `execute` functions isn't affected by this change. It remains a `ToolStream` that extends `WritableStream<unknown>` and provides `.write()` and `.custom()` methods:
+> **note**: The `writer` parameter passed to step `execute` functions isn't affected by this change. It remains a `ToolStream` that extends `WritableStream<unknown>` and provides `.write()` and `.custom()` methods:
 
 ```ts
 createStep({
@@ -242,8 +228,6 @@ createStep({
   },
 })
 ```
-
-:::
 
 ### `setState()` is now async and the data passed is validated
 
@@ -275,8 +259,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/workflow-stream-vnext .
 ```
-
-:::
 
 ### `suspend()` and `setState()` aren't available in step condition functions parameters
 

@@ -1,7 +1,5 @@
 ---
 description: '2.5 billion rows of climate data for the last 120 yrs'
-sidebar_label: 'NOAA Global Historical Climatology Network '
-slug: /getting-started/example-datasets/noaa
 title: 'NOAA Global Historical Climatology Network'
 doc_type: 'guide'
 keywords: ['example dataset', 'noaa', 'weather data', 'sample data', 'climate']

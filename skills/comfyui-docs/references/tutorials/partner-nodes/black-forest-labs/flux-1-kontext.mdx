@@ -1,12 +1,7 @@
 ---
 title: "ComfyUI Flux.1 Kontext Pro Image API Node Official Example"
 description: "This guide will show you how to use the Flux.1 Kontext Pro Image Partner node in ComfyUI to perform image editing"
-sidebarTitle: "Flux.1 Kontext"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import PromptTechniques from "/snippets/tutorials/flux/prompt-techniques.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 FLUX.1 Kontext is a professional image-to-image editing model developed by Black Forest Labs, focusing on intelligent understanding of image context and precise editing.
 It can perform various editing tasks without complex descriptions, including object modification, style transfer, background replacement, character consistency editing, and text editing.
@@ -18,9 +13,6 @@ Currently, ComfyUI has supported two models of Flux.1 Kontext:
 * **Kontext Max** pushes the limits on typography, prompt precision, and speed.
 
 In this guide, we will briefly introduce how to use the Flux.1 Kontext Partner nodes to perform image editing through corresponding workflows.
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Flux.1 Kontext Multiple Image Input Workflow
 
@@ -40,7 +32,7 @@ Download the following images for input or use your own images:
 
 ### 2. Complete the Workflow Step by Step
 
-![ComfyUI Flux.1 Kontext Pro Image API Node Workflow Steps](/images/tutorial/api_nodes/bfl/flux_1_kontext_multiple_image_input_guide.jpg)
+[ComfyUI Flux.1 Kontext Pro Image API Node Workflow Steps]
 
 You can follow the numbered steps in the image to complete the workflow:
 
@@ -52,9 +44,7 @@ You can follow the numbered steps in the image to complete the workflow:
 3. Click the `Run` button or use the shortcut `Ctrl(cmd) + Enter` to execute the image editing
 4. After waiting for the API to return results, you can view the edited image in the `Save Image` node, and the corresponding image will also be saved to the `ComfyUI/output/` directory
 
-<Tip>
    The subsequent two workflows only differ in the Partner nodes used. In fact, you only need to modify based on the multiple image input workflow, with no significant differences
-</Tip>
 
 ## Flux.1 Kontext Pro Image API Node Workflow
 
@@ -70,7 +60,7 @@ Download the image below for input or use your own image:
 
 ### 2. Complete the Workflow Step by Step
 
-![ComfyUI Flux.1 Kontext Pro Image API Node Workflow Steps](/images/tutorial/api_nodes/bfl/flux_1_kontext_pro_image_step_guide.jpg)
+[ComfyUI Flux.1 Kontext Pro Image API Node Workflow Steps]
 
 You can follow the numbered steps in the image to complete the workflow:
 1. Load the image you want to edit in the `Load Image` node
@@ -92,12 +82,10 @@ Download the image below for input or use your own image for demonstration:
 
 ### 2. Complete the Workflow Step by Step
 
-![ComfyUI Flux.1 Kontext Max Image API Node Workflow Steps](/images/tutorial/api_nodes/bfl/flux_1_kontext_max_image_step_guide.jpg)
+[ComfyUI Flux.1 Kontext Max Image API Node Workflow Steps]
 
 You can follow the numbered steps in the image to complete the workflow:
 1. Load the image you want to edit in the `Load Image` node
 2. (Optional) Modify the necessary parameters in `Flux.1 Kontext Max Image`
 3. Click the `Run` button or use the shortcut `Ctrl(cmd) + Enter` to execute the image editing
 4. After waiting for the API to return results, you can view the edited image in the `Save Image` node, and the corresponding image will also be saved to the `ComfyUI/output/` directory
-
-<PromptTechniques/>

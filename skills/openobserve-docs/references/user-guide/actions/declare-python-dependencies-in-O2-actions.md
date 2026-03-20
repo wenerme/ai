@@ -35,7 +35,6 @@ Click the following tabs to know more.
     - **Pro**: Smaller ZIP size.  
     - **Con**: Action startup might be slower because dependencies are installed at runtime.
 
-
 === "dependencies Folder"
 
     Pre-install all needed libraries into a dependencies folder using the uv package manager.

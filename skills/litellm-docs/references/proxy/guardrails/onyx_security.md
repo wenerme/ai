@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Onyx Security
 
@@ -46,8 +44,6 @@ litellm --config config.yaml --detailed_debug
 
 ### 4. Test request
 
-<Tabs>
-<TabItem label="Blocked request" value="not-allowed">
 This request should be blocked since it contains prompt injection
 
 ```shell showLineNumbers title="Curl Request"
@@ -73,10 +69,6 @@ Expected response on failure
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Allowed request" value="allowed">
 
 ```shell showLineNumbers title="Curl Request"
 curl -i http://0.0.0.0:4000/v1/chat/completions \
@@ -114,9 +106,6 @@ Expected response
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Params
 

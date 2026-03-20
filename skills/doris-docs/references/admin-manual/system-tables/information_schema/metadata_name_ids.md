@@ -12,9 +12,7 @@ View ID Information of Objects
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

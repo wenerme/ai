@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Literal AI - Log, Evaluate, Monitor
 

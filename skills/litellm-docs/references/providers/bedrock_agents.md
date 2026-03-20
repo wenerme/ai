@@ -1,10 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock Agents
 
 Call Bedrock Agents in the OpenAI Request/Response format.
-
 
 | Property | Details |
 |----------|---------|
@@ -29,7 +27,6 @@ bedrock/agent/{AGENT_ID}/{ALIAS_ID}
 - `bedrock/agent/ABCD1234/LIVE`
 
 You can find these IDs in your AWS Bedrock console under Agents.
-
 
 ### LiteLLM Python SDK
 
@@ -71,13 +68,9 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-
 ### LiteLLM Proxy
 
 #### 1. Configure your model in config.yaml
-
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
 
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
@@ -96,9 +89,6 @@ model_list:
       aws_region_name: us-east-1
 ```
 
-</TabItem>
-</Tabs>
-
 #### 2. Start the LiteLLM Proxy
 
 ```bash showLineNumbers title="Start LiteLLM Proxy"
@@ -106,9 +96,6 @@ litellm --config config.yaml
 ```
 
 #### 3. Make requests to your Bedrock Agents
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Basic Agent Request"
 curl http://localhost:4000/v1/chat/completions \
@@ -140,10 +127,6 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Using OpenAI SDK with LiteLLM Proxy"
 from openai import OpenAI
@@ -193,15 +176,9 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Provider-specific Parameters
 
 Any non-openai parameters will be passed to the agent as custom parameters.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Using custom parameters"
 from litellm import completion
@@ -218,9 +195,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
   - model_name: bedrock-agent-1
@@ -232,15 +206,7 @@ model_list:
       invocationId: my-test-invocation-id
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
-
 ## Further Reading
 
 - [AWS Bedrock Agents Documentation](https://aws.amazon.com/bedrock/agents/)
 - [LiteLLM Authentication to Bedrock](https://docs.litellm.ai/docs/providers/bedrock#boto3---authentication)
-

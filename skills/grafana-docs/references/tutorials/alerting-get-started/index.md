@@ -20,8 +20,6 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 In this tutorial, we walk you through the process of setting up your first alert in just a few minutes. You'll witness your alert in action with real-time data, as well as sending alert notifications.
 
 {{< youtube id="YVhKNbQNNss" >}}
@@ -32,25 +30,17 @@ In this tutorial you will:
 - Set up an alert rule.
 - Receive firing and resolved alert notifications in a public webhook.
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 
 After you have completed Part 1, don’t forget to explore the advanced but essential alerting topics in [Multi-dimensional alerts and how to route them](http://www.grafana.com/tutorials/alerting-get-started-pt2/).
 
 {{< /admonition >}}
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 > After you have completed Part 1, don’t forget to explore the advanced but essential alerting topics in [Multi-dimensional alerts and how to route them](http://www.grafana.com/tutorials/alerting-get-started-pt2/).
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page intro.md END -->
-<!-- INTERACTIVE page step1.md START -->
-<!-- INTERACTIVE ignore START -->
 
 ## Before you begin
 
@@ -72,61 +62,59 @@ There are different ways you can follow along with this tutorial.
 
 ### Set up the Grafana stack (OSS users)
 
-<!-- INTERACTIVE ignore END -->
-
 To demonstrate the observation of data using the Grafana stack, download and run the following files.
 
 1. Clone the [tutorial environment repository](https://www.github.com/grafana/tutorial-environment).
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    git clone https://github.com/grafana/tutorial-environment.git
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Change to the directory where you cloned the repository:
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    cd tutorial-environment
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Run the Grafana stack:
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    ```
    docker compose up -d
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose up -d
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
    The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
    {{< /admonition >}}
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
@@ -135,9 +123,6 @@ To demonstrate the observation of data using the Grafana stack, download and run
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
    {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-<!-- INTERACTIVE page step2.md START -->
 
 ## Create a contact point
 
@@ -169,10 +154,6 @@ Next, let's configure a contact point in Grafana's Alerting UI to send notificat
 1. Return to Grafana and click **Save contact point**.
 
 We have created a dummy Webhook endpoint and created a new Alerting contact point in Grafana. Now, we can create an alert rule and link it to this new integration.
-
-<!-- INTERACTIVE page step2.md END -->
-
-<!-- INTERACTIVE page step3.md START -->
 
 ## Create an alert
 
@@ -228,10 +209,6 @@ Choose the contact point where you want to receive your alert notifications.
 1. Under **Contact point**, select **Webhook** from the drop-down menu.
 1. Click **Save rule and exit** at the top right corner.
 
-<!-- INTERACTIVE page step3.md END -->
-
-<!-- INTERACTIVE page step4.md START -->
-
 ## Trigger and resolve an alert
 
 Now that the alert rule has been configured, you should receive alert [notifications](http://grafana.com/docs/grafana/next/alerting/fundamentals/alert-rule-evaluation/state-and-health/#notifications) in the contact point whenever alerts trigger and get resolved.
@@ -258,13 +235,7 @@ To edit the Alert rule:
 
 By incrementing the threshold, the condition is no longer met, and after the evaluation interval has concluded (1 minute approx.), you should receive an alert notification with status **“Resolved”**.
 
-<!-- INTERACTIVE page step4.md END -->
-
-<!-- INTERACTIVE page finish.md START -->
-
 ## Learn more in [Grafana Alerting: Multi-dimensional alerts and how to route them](http://www.grafana.com/tutorials/alerting-get-started-pt2/)
-
-<!-- INTERACTIVE ignore START -->
 
 {{< admonition type="tip" >}}
 
@@ -272,12 +243,8 @@ In [Grafana Alerting: Multi-dimensional alerts and how to route them](http://www
 
 {{< /admonition >}}
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 In [Grafana Alerting: Multi-dimensional alerts and how to route them](http://www.grafana.com/tutorials/alerting-get-started-pt2/) you'll learn to use alert instances and route notifications by labels to contacts.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page finish.md END -->

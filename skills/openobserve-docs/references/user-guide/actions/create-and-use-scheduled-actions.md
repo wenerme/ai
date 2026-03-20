@@ -15,13 +15,12 @@ Scheduled Actions run based on time, making them suitable for:
 - Routine or periodic tasks. For instance, hourly, daily, weekly.  
 - Background jobs that interact with OpenObserve. For instance, ingest logs.
 
->The following example demonstrates a periodic log pusher. <br>
+>The following example demonstrates a periodic log pusher. 
 >The action script:
 >
 >- Establishes a connection to OpenObserve using environment variables.
 >- Pushes a test log event to the `default` organization and `default` stream.
 >- Runs at a scheduled time defined by the cron expression.
-
 
 ## Create a Scheduled Action
 
@@ -56,7 +55,7 @@ Scheduled Actions run based on time, making them suitable for:
         ```
         Note that you must use the base64 encoded version of the cluster token.   
         > **Where to Get the Base64 Token**
-        > <br>
+        > 
         > To find the base64-encoded version of `username:password`:
         >
         >1. From the left navigation menu, select **Data Sources**.
@@ -209,12 +208,11 @@ Scheduled Actions run based on time, making them suitable for:
         main()
     ```
 
-
 ??? "Step 1: Go to Actions"
 
     1. From the left navigation menu, select **Actions**.  
-    2. Click **Add Action**. <br>
-    ![actions page](../../images/scheduled-actions-0.png)
+    2. Click **Add Action**. 
+    [actions page]
 
 ??? "Step 2: Enter Name, Description, and Type"
 
@@ -226,7 +224,7 @@ Scheduled Actions run based on time, making them suitable for:
 
     Ensure that the zip file has `main.py`, optional helper functions, and the `pyproject.toml` file or `dependencies` folder with necessary dependencies. [Learn more about declaring dependencies when creating Action script in Python.](../declare-python-dependencies-in-O2-actions/)
 
-    ![upload action script](../../images/scheduled-actions-1.png)
+    [upload action script]
 
 ??? "Step 4: Set the Schedule" 
 
@@ -237,7 +235,7 @@ Scheduled Actions run based on time, making them suitable for:
     
     Let's say, you want the action runner to execute this action at 12:30 PM on the 1st day of every month. In this case, select **Cron Job** and enter the cron expression as: `30 12 1 * *`
 
-    ![set the schedule](../../images/scheduled-actions-2.png)
+    [set the schedule]
 
     Other Cron Expression Examples:
 
@@ -251,8 +249,8 @@ Scheduled Actions run based on time, making them suitable for:
     - Once a Scheduled Action is saved, you cannot change the schedule later. Double-check your schedule before submitting.
 
 ??? "Step 5: Select a Service Account"
-    Ensure that you select the service account with appropriate permission. <br>
-    ![select service account](../../images/scheduled-actions-3.png)
+    Ensure that you select the service account with appropriate permission. 
+    [select service account]
 
 ??? "Step 6: Add Environment Variables (optional)"
 
@@ -269,7 +267,7 @@ Scheduled Actions run based on time, making them suitable for:
     ```
     Since `ORIGIN_CLUSTER_URL` and `ORIGIN_CLUSTER_TOKEN` are available by default, define other variables in the **Environment Variables** section.   
 
-    ![add env vars](../../images/scheduled-actions-4.png)
+    [add env vars]
 
 ??? "Step 7: Save the Scheduled Action"
     Click **Save** to complete the configuration. The Scheduled Action is now ready for execution.
@@ -289,4 +287,4 @@ In the above example, when the schedule hits and the script executes successfull
 }
 
 ```  
-![result of scheduled action](../../images/scheduled-actions-5.png)
+[result of scheduled action]

@@ -2,18 +2,12 @@
 title: Upgrade to Biome v2
 description: Learn how to upgrade to Biome v2
 ---
-import PackageManagerCommand from "@/components/PackageManagerCommand.astro";
-import PackageManagerBiomeCommand from "@/components/PackageManagerBiomeCommand.astro";
-import EditorSettings from "@/components/EditorSettings.astro";
-import {FileTree, Steps} from '@astrojs/starlight/components';
-
 
 If you have a project that uses Biome v1, and you want to upgrade to v2, this guide will provide all the information
 you need.
 
 ## Upgrade via CLI
 
-<Steps>
     <ol>
         <li>
 
@@ -27,15 +21,12 @@ you need.
         </li>
         <li>
             Run the `migrate` command to update the configuration:
-            <PackageManagerBiomeCommand command="migrate --write" />
+            
         </li>
         <li>
             You're all set! The `migrate` command should have updated your configuration to *mitigate* possible [breaking changes](#breaking-changes). Do check the output of the command however; in some cases it’s possible that you need to perform some manual steps. If so, the migrate command will point them out to you.
         </li>
     </ol>
-</Steps>
-
-
 
 ## Breaking changes
 

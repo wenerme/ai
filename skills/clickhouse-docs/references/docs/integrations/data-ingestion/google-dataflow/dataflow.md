@@ -1,14 +1,9 @@
 ---
-sidebar_label: 'Integrating Dataflow with ClickHouse'
-slug: /integrations/google-dataflow/dataflow
-sidebar_position: 1
 description: 'You can ingest data into ClickHouse using Google Dataflow'
 title: 'Integrating Google Dataflow with ClickHouse'
 doc_type: 'guide'
 keywords: ['Google Dataflow ClickHouse', 'Dataflow ClickHouse integration', 'Apache Beam ClickHouse', 'ClickHouseIO connector', 'Google Cloud ClickHouse integration']
 ---
-
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Integrating Google Dataflow with ClickHouse
 

@@ -28,7 +28,6 @@ The return value type is the same as the input `compressed_str` type.
 Special cases:
 - Returns NULL if `compressed_str` is not binary data obtained from `COMPRESS`.
 
-
 ## Examples
 
 ``` sql

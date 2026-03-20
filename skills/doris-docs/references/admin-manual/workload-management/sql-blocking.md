@@ -129,7 +129,6 @@ It should be noted that since the calculation of the number of rows scanned is d
 #### Prevent Scanning Data from Exceeding the Specified Number of Partitions
 Scanning too many partitions can significantly increase the CPU consumption of BE. Additionally, if the query is on an external table, it is more likely to incur significant network overhead and metadata retrieval overhead. In daily use, this is often due to forgetting to write filtering conditions on partition columns or writing them incorrectly. To prevent such queries from damaging the cluster, you can set an upper limit on the number of partitions scanned by a single query on a single table.
 
-
 ```sql
 CREATE SQL_BLOCK_RULE rule_part_num 
 PROPERTIES
@@ -144,7 +143,6 @@ It should be noted that the calculation of the number of scanned partitions is c
 
 #### Prevent Scanning Data with Excessive Bucket Counts
 Scanning too many buckets can significantly increase the BE's CPU consumption. To prevent such queries from harming the cluster, you can set an upper limit on the number of partitions a single query can scan on a single table.
-
 
 ```sql
 CREATE SQL_BLOCK_RULE rule_teblet_num 
@@ -164,7 +162,6 @@ It is important to note that the calculation of the number of scanned buckets is
 For various reasons, such as high computational complexity or long planning time, you may want to block queries that use certain patterns.
 
 For example, to block the `abs` function. You can use the following regular expression block rule to achieve this purpose.
-
 
 ```sql
 CREATE SQL_BLOCK_RULE rule_abs
@@ -308,7 +305,6 @@ show variables like '%parallel_fragment_exec_instance_num%';
 #### 2. Big Query Circuit Breaker Test
 Test to circuit break queries that run longer than 3s. Below is an audit log of a successful run of ckbench's q29, showing that this SQL took 4.5s to complete.
 
-
 ```sql
 mySQL [hits]>SELECT REGEXP_REPLACE(Referer, '^https?://(?:www\.)?([^/]+)/.*$', '\1') AS k, AVG(length(Referer)) AS l, COUNT(*) AS c, MIN(Referer) FROM hits WHERE Referer <> '' GROUP BY k HAVING COUNT(*) > 100000 ORDER BY l DESC LIMIT 25;
 +-----------------------------------------------------------------------+------------------+----------+---------------------------------------------------------------------------------------------------------------------+
@@ -342,4 +338,3 @@ Upon re-executing the SQL, you can see that the SQL execution will directly repo
 mySQL [hits]>SELECT REGEXP_REPLACE(Referer, '^https?://(?:www\.)?([^/]+)/.*$', '\1') AS k, AVG(length(Referer)) AS l, COUNT(*) AS c, MIN(Referer) FROM hits WHERE Referer <> '' GROUP BY k HAVING COUNT(*) > 100000 ORDER BY l DESC LIMIT 25;
 ERROR 1105 (HY000): errCode = 2, detailMessage = (127.0.0.1)[CANCELLED]query cancelled by workload Policy,id:12345
 ```
-

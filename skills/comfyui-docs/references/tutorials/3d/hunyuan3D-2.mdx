@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Hunyuan3D-2 Examples"
 description: "This guide will demonstrate how to use Hunyuan3D-2 in ComfyUI to generate 3D assets."
-sidebarTitle: "Hunyuan3D-2"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 # Hunyuan3D 2.0 Introduction
 
@@ -16,7 +13,6 @@ Hunyuan3D 2.0 adopts a two-stage generation approach, first generating a geometr
 
 1. **Geometry Generation Model (Hunyuan3D-DiT)**: Based on a flow diffusion Transformer architecture, it generates untextured geometric models that precisely match input conditions.
 2. **Texture Generation Model (Hunyuan3D-Paint)**: Combines geometric conditions and multi-view diffusion techniques to add high-resolution textures to models, supporting PBR materials.
-
 
 **Key Advantages**
 
@@ -31,7 +27,6 @@ This example includes three workflows:
 - Using Hunyuan3D-2mv-turbo with multiple view inputs to generate 3D models
 - Using Hunyuan3D-2 with a single view input to generate 3D models
 
-<Tip>
 ComfyUI now natively supports Hunyuan3D-2mv, but does not yet support texture and material generation. Please make sure you have updated to the latest version of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) before starting.
 
 The workflow example PNG images in this tutorial contain workflow JSON in their metadata:
@@ -39,13 +34,10 @@ The workflow example PNG images in this tutorial contain workflow JSON in their 
 - Or use the menu `Workflows` -> `Open (ctrl+o)`
 
 This will load the corresponding workflow and prompt you to download the required models. The generated `.glb` format models will be output to the `ComfyUI/output/mesh` folder.
-</Tip>
 
 ## ComfyUI Hunyuan3D-2mv Workflow Example
 
 In the Hunyuan3D-2mv workflow, we'll use multi-view images to generate a 3D model. Note that multiple view images are not mandatory in this workflow - you can use only the `front` view image to generate a 3D model.
-
-<UpdateReminder/>
 
 <a className="prose" target='_blank' href="https://cloud.comfy.org/?template=3d_hunyuan3d_multiview_to_model&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
     <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
@@ -62,10 +54,7 @@ Download the images below we will use them as input images.
 ![input image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/3d/hunyuan3d-2/hunyuan3d_2mv_elf/left.png)
 ![input image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/3d/hunyuan3d-2/hunyuan3d_2mv_elf/back.png)
 
-
-<Tip>
 In this example, the input images have already been preprocessed to remove excess background. In actual use, you can use custom nodes like [ComfyUI_essentials](https://github.com/cubiq/ComfyUI_essentials) to automatically remove excess background.
-</Tip>
 
 ### 2. Manual Model Installation
 
@@ -82,7 +71,7 @@ ComfyUI/
 
 ### 3. Steps to Run the Workflow
 
-![ComfyUI hunyuan3d_2mv](/images/tutorial/3d/hunyuan3d-2mv/hunyuan3d_2mv.jpg)
+[ComfyUI hunyuan3d_2mv]
 
 1. Ensure that the Image Only Checkpoint Loader(img2vid model) has loaded our downloaded and renamed `hunyuan3d-dit-v2-mv.safetensors` model
 2. Load the corresponding view images in each of the `Load Image` nodes
@@ -106,10 +95,8 @@ Please download the images below and drag into ComfyUI to load the workflow.
 
 Download the images below we will use them as input images.
 
-
 ![input image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/3d/hunyuan3d-2/hunyuan3d_2mv_turbo/front.png)
 ![input image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/3d/hunyuan3d-2/hunyuan3d_2mv_turbo/right.png)
-
 
 ### 2. Manual Model Installation
 
@@ -126,7 +113,7 @@ ComfyUI/
 
 ### 3. Steps to Run the Workflow
 
-![ComfyUI hunyuan3d_2mv_turbo](/images/tutorial/3d/hunyuan3d-2mv/hunyuan3d_2mv_turbo.jpg)
+[ComfyUI hunyuan3d_2mv_turbo]
 
 1. Ensure that the `Image Only Checkpoint Loader(img2vid model)` node has loaded our renamed `hunyuan3d-dit-v2-mv-turbo.safetensors` model
 2. Load the corresponding view images in each of the `Load Image` nodes
@@ -164,7 +151,7 @@ ComfyUI/
 
 ### 3. Steps to Run the Workflow
 
-![ComfyUI hunyuan3d_2](/images/tutorial/3d/hunyuan3d-2mv/hunyuan3d_2_non_multiview.jpg)
+[ComfyUI hunyuan3d_2]
 
 1. Ensure that the `Image Only Checkpoint Loader(img2vid model)` node has loaded our renamed `hunyuan3d-dit-v2.safetensors` model
 2. Load the image in the `Load Image` node

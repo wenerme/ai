@@ -2,14 +2,7 @@
 
 This tutorial shows you how to integrate the Qwen Code CLI with LiteLLM Proxy, allowing you to route requests through LiteLLM's unified interface.
 
-
-:::info 
-
-This integration is supported from LiteLLM v1.73.3-nightly and above.
-
-:::
-
-<br />
+> **info**: This integration is supported from LiteLLM v1.73.3-nightly and above.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/d7059b059c0f425fb0b8839418adffd6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -24,8 +17,6 @@ When you use qwen-code with LiteLLM you get the following benefits:
 **Proxy Admin Benefits:**
 - Centralized Management: Control access to all models through a single LiteLLM proxy instance without giving your developers API Keys to each provider.
 - Budget Controls: Set spending limits and track costs across all qwen-code usage.
-
-
 
 ## Prerequisites
 
@@ -78,18 +69,11 @@ The CLI will now use LiteLLM Proxy as the backend, giving you access to LiteLLM'
 - Cost tracking
 - Model routing and fallbacks
 
-
 ## Advanced
 
 ### Use Anthropic, OpenAI, Bedrock, etc. models on qwen-code
 
 In order to use non-qwen models on qwen-code, you need to set a `model_group_alias` in the LiteLLM Proxy config. This tells LiteLLM that requests with model = `qwen-code` should be routed to your desired model from any provider.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="anthropic" label="Anthropic">
 
 Route `qwen-code` requests to Claude Sonnet:
 
@@ -104,9 +88,6 @@ router_settings:
   model_group_alias: {"qwen-code": "claude-sonnet-4-20250514"}
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI">
-
 Route `qwen-code` requests to GPT-4o:
 
 ```yaml showLineNumbers title="proxy_config.yaml"
@@ -119,9 +100,6 @@ model_list:
 router_settings:
   model_group_alias: {"qwen-code": "gpt-4o-model"}
 ```
-
-</TabItem>
-<TabItem value="bedrock" label="Bedrock">
 
 Route `qwen-code` requests to Claude on Bedrock:
 
@@ -137,9 +115,6 @@ model_list:
 router_settings:
   model_group_alias: {"qwen-code": "bedrock-claude"}
 ```
-
-</TabItem>
-<TabItem value="multi-provider" label="Multi-Provider Load Balancing">
 
 All deployments with model_name=`anthropic-claude` will be load balanced. In this example we load balance between Anthropic and Bedrock.
 
@@ -160,14 +135,7 @@ router_settings:
   model_group_alias: {"qwen-code": "anthropic-claude"}
 ```
 
-</TabItem>
-</Tabs>
-
 With this configuration, when you use `qwen-code` in the CLI, LiteLLM will automatically route your requests to the configured provider(s) with load balancing and fallbacks.
-
-
-
-
 
 ## Troubleshooting
 

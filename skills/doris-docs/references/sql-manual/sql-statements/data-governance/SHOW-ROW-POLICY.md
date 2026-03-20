@@ -37,7 +37,6 @@ The user executing this SQL command must have at least the following privileges:
 
 1. View all security policies
 
-
   ```sql
   SHOW ROW POLICY;
   ```

@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Remote MCP server'
-slug: /cloud/features/ai-ml/remote-mcp
 title: 'Remote MCP in Cloud'
 description: 'Description of the remote MCP functionality in ClickHouse Cloud'
 doc_type: 'reference'

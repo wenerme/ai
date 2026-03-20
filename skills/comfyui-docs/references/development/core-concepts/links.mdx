@@ -1,26 +1,23 @@
 ---
 title: "Links"
 description: "Understand connection links in ComfyUI"
-icon: "share-nodes"
 ---
 
-<Note>
 As ComfyUI is still in rapid iteration and development, we are continuously improving it every day. Therefore, some operations mentioned in this article may change or be omitted. Please refer to the actual interface. If you find changes in actual operations, it may be due to our iterative updates. You can also fork [this repo](https://github.com/Comfy-Org/docs) and help us improve this documentation.
-</Note>
 
 ## Links connect nodes
 
 In the terminology of ComfyUI, the lines or curves between nodes are called **_links_**. They're also known as **_connections_** or wires. Links can be displayed in several ways, such as curves, right angles, straight lines, or completely hidden.
 
-![Link styles](/images/interface/link/link_styles.jpg)
+[Link styles]
 
 You can modify the link style in **Setup Menu** --> **Display (Lite Graph)** --> **Graph** --> **Link Render Mode**.
 
-![Canvas Menu](/images/interface/link/render_mode.jpg)
+[Canvas Menu]
 
 You can also temporarily hide links in the **Canvas Menu**.
 
-![Canvas Menu](/images/interface/link/canvas_menu.jpg)
+[Canvas Menu]
 
 Link display is crucial. Depending on the situation, it may be necessary to see all links. Especially when learning, sharing, or even just understanding workflows, the visibility of links enables users to follow the flow of data through the graph. For packaged workflows that aren't intended to be altered, it might make sense to hide the links to reduce clutter.
 
@@ -28,11 +25,11 @@ Link display is crucial. Depending on the situation, it may be necessary to see 
 
 If legibility of the graph structure is important, then link wires can be manually routed in the 2D space of the graph with a tiny node called **Reroute**. Its purpose is to position the beginning and/or end points of link wires to ensure visibility. We can design a workflow so that link wires don't pass behind nodes, don't cross other link wires, and so on.
 
-![ComfyUI Reroute node](/images/interface/link/reroute.jpg)
+[ComfyUI Reroute node]
 
 We are also continuously improving the native reroute functionality in litegraph. We recommend using this feature in the future to reorganize connections.
 
-![ComfyUI Native Reroute](/images/interface/link/native_reroute.jpg)
+[ComfyUI Native Reroute]
 
 ## Color-coding
 
@@ -40,7 +37,7 @@ The data type of node properties is indicated by color coding of input/output po
 
 Common data types:
 
-![ComfyUI Node Data Types](/images/concepts/node/data_type.jpg)
+[ComfyUI Node Data Types]
 
 | Data type                          | Color                                                                                                              |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------|

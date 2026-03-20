@@ -270,4 +270,3 @@ response = await litellm.aquery(
 
 print(response.choices[0].message.content)
 ```
-

@@ -1,19 +1,10 @@
 ---
-sidebar_label: 'DynamoDB'
-sidebar_position: 10
-slug: /integrations/dynamodb
 description: 'ClickPipes allows you to connect ClickHouse to DynamoDB.'
 keywords: ['DynamoDB']
 title: 'CDC from DynamoDB to ClickHouse'
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
-import dynamodb_kinesis_stream from '@site/static/images/integrations/data-ingestion/dbms/dynamodb/dynamodb-kinesis-stream.png';
-import dynamodb_s3_export from '@site/static/images/integrations/data-ingestion/dbms/dynamodb/dynamodb-s3-export.png';
-import dynamodb_map_columns from '@site/static/images/integrations/data-ingestion/dbms/dynamodb/dynamodb-map-columns.png';
-import Image from '@theme/IdealImage';
 
 # CDC from DynamoDB to ClickHouse
 

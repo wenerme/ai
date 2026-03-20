@@ -1,6 +1,5 @@
 # Minerva-Math
 
-
 ## Overview
 
 Minerva-Math is a benchmark designed to evaluate advanced mathematical and quantitative reasoning capabilities of language models. It consists of 272 challenging problems sourced primarily from MIT OpenCourseWare courses, covering university and graduate-level STEM subjects.
@@ -28,7 +27,6 @@ Minerva-Math is a benchmark designed to evaluate advanced mathematical and quant
 - Problems may require domain-specific knowledge (physics, chemistry, etc.)
 - Designed to test the upper limits of model reasoning capabilities
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ Minerva-Math is a benchmark designed to evaluate advanced mathematical and quant
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -109,5 +106,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

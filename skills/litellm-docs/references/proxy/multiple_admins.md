@@ -1,6 +1,3 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
 
 
 # ✨ Audit Logs
@@ -10,7 +7,6 @@ import Image from '@theme/IdealImage';
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-
 As a Proxy Admin, you can check if and when a entity (key, team, user, model) was created, updated, deleted, or regenerated, along with who performed the action. This is useful for auditing and compliance.
 
 LiteLLM tracks changes to the following entities and actions:
@@ -18,11 +14,7 @@ LiteLLM tracks changes to the following entities and actions:
 - **Entities:** Keys, Teams, Users, Models
 - **Actions:** Create, Update, Delete, Regenerate
 
-:::tip
-
-Requires Enterprise License, Get in touch with us [here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **tip**: Requires Enterprise License, Get in touch with us [here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 ## Usage
 
@@ -54,7 +46,6 @@ On the LiteLLM UI, navigate to Logs -> Audit Logs. You should see the audit log 
   img={require('../../img/key_delete.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-
 
 ## Advanced
 
@@ -106,7 +97,6 @@ curl -X POST 'http://0.0.0.0:4000/team/update' \
 
 ## API SPEC of Audit Log 
 
-
 ### `id`
 - **Type:** `String`
 - **Description:** This is the unique identifier for each audit log entry. It is automatically generated as a UUID (Universally Unique Identifier) by default.
@@ -130,7 +120,6 @@ curl -X POST 'http://0.0.0.0:4000/team/update' \
 ### `table_name`
 - **Type:** `String`
 - **Description:** This field stores the name of the table that was affected by the audited action. It can be one of the following values: `LiteLLM_TeamTable`, `LiteLLM_UserTable`, `LiteLLM_VerificationToken`
-
 
 ### `object_id`
 - **Type:** `String`

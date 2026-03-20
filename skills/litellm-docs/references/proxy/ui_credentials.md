@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Adding LLM Credentials
 
@@ -22,13 +20,11 @@ Select your LLM provider, enter your API Key and click "Add Credential"
 
 <Image img={require('../../img/ui_add_cred_2.png')} />
 
-
 ### 3. Use credentials when adding a model
 
 Go to Add Model -> Existing Credentials -> Select your credential in the dropdown
 
 <Image img={require('../../img/ui_cred_3.png')} />
-
 
 ## Create a Credential from an existing model
 
@@ -52,8 +48,5 @@ Models attached to a reusable credential are automatically tracked in the Usage 
 
 ## Frequently Asked Questions
 
-
 How are credentials stored?
 Credentials in the DB are encrypted/decrypted using `LITELLM_SALT_KEY`, if set. If not, then they are encrypted using `LITELLM_MASTER_KEY`. These keys should be kept secret and not shared with others.
-
-

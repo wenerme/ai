@@ -134,7 +134,7 @@ run_task(task_cfg=generate_testset_task_cfg)
 
 Using examples generated from the project's `README.md` documentation as follows:
 
-<details><summary>Click to view the automatically generated dataset</summary>
+Click to view the automatically generated dataset
 
 ``` json
 [
@@ -232,7 +232,6 @@ Using examples generated from the project's `README.md` documentation as follows
     }
 ]
 ```
-</details>
 
 ### Configuration for Evaluation Task
 ```python
@@ -280,7 +279,6 @@ The output evaluation results are as follows:
 
 Evaluation Results
 ```
-
 
 ## Multi-Modal Text-Image RAG Evaluation
 

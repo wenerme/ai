@@ -1,6 +1,5 @@
 ---
 title: Why Browser Mode | Browser Mode
-outline: deep
 ---
 
 # Why Browser Mode

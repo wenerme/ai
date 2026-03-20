@@ -25,11 +25,11 @@ This guide explains how to monitor the health and performance of each node in yo
     By default, `root` users and `Admins` with access to the `_meta` organization can access the **Nodes** page. RBAC cannot grant access to other user roles. 
 
 ## Nodes interface
-**For Single-Cluster Setup**<br> 
-![nodes-single-cluster](../../images/nodes-single-cluster.png)
+**For Single-Cluster Setup** 
+[nodes-single-cluster]
 
-**For Super-Cluster Setup**<br>
-![nodes-multi-cluster](../../images/nodes-super-cluster.png)
+**For Super-Cluster Setup**
+[nodes-multi-cluster]
 
 ## Node types
 
@@ -59,10 +59,10 @@ Each node displays the following metrics in a tabular format with progress bars 
 - **Status**: Shows the current status of each node using color indicators:  
   
     - **Offline** (Red): Node has missed heartbeats and is considered down. Access the Kubernetes cluster or the AWS environment (wherever the system is hosted) and troubleshoot or fix the issue directly from there.
-    ![nodes-status-offline](../../images/nodes-status-offline.png)
+    [nodes-status-offline]
     - **Prepare** (Orange): Node is starting up or initializing. No action needed unless it stays in this state too long.
     - **Online** (Green): Node is healthy and active.
-    ![nodes-status-online](../../images/nodes-status-online.png)
+    [nodes-status-online]
 
 ## Use refresh, search, and filters 
 
@@ -77,7 +77,7 @@ Each node displays the following metrics in a tabular format with progress bars 
     - **TCP Connections**: Filter by connection state or count.  
         To apply filters, click **Apply Filters**. To reset all filters, select **Clear All**.
 
-![nodes-search-filter](../../images/nodes-search-filter.png)  
+[nodes-search-filter]  
 
 ## Monitor and troubleshoot node health
 Use the following signals to monitor node health and take action when needed:

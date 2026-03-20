@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Class Reference'
-sidebar_label: 'Class Reference'
-slug: /chdb/datastore/class-reference
 description: 'Complete API reference for DataStore, ColumnExpr, LazyGroupBy, and LazySeries classes'
 keywords: ['chdb', 'datastore', 'class', 'reference', 'api', 'columnexpr', 'lazygroupby']
 doc_type: 'reference'

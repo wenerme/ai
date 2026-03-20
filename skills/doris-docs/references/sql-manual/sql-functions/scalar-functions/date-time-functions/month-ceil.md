@@ -8,7 +8,6 @@
 
 ## Description
 
-
 The month_ceil function rounds the input datetime value up to the nearest specified month interval. If origin is specified, it uses that as the baseline; otherwise, it defaults to 0001-01-01 00:00:00.
 
 Date calculation formula:

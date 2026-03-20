@@ -55,11 +55,7 @@ for await (const chunk of stream.fullStream) {
 }
 ```
 
-:::note
-
-Agent approval uses snapshots to capture request state. Configure a [storage provider](/docs/memory/storage) on your Mastra instance or you'll see a "snapshot not found" error.
-
-:::
+> **note**: Agent approval uses snapshots to capture request state. Configure a [storage provider](/docs/memory/storage) on your Mastra instance or you'll see a "snapshot not found" error.
 
 ## How approval works
 
@@ -142,9 +138,7 @@ if (output.finishReason === 'suspended') {
 | Decline method | `declineToolCall({ runId })` | `declineToolCallGenerate({ runId, toolCallId })` |
 | Result | Stream to iterate | Full output object |
 
-:::note
-`toolCallId` is optional on all four methods. Pass it when multiple tool calls may be pending at the same time (common in supervisor agents). When omitted, the agent resumes the most recent suspended tool call.
-:::
+> **note**: `toolCallId` is optional on all four methods. Pass it when multiple tool calls may be pending at the same time (common in supervisor agents). When omitted, the agent resumes the most recent suspended tool call.
 
 ## Tool-level approval
 

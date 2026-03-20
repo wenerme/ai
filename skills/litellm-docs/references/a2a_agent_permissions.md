@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Agent Permission Management
 
@@ -24,9 +22,6 @@ This example shows how to create a key with agent permissions and test access.
 
 ### 1. Get Your Agent ID
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 1. Go to **Agents** in the sidebar
 2. Click into the agent you want
 3. Copy the **Agent ID**
@@ -35,9 +30,6 @@ This example shows how to create a key with agent permissions and test access.
   img={require('../img/agent_id.png')}
   style={{width: '80%', display: 'block', margin: '0', borderRadius: '8px'}}
 />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash title="List all agents" showLineNumbers
 curl "http://localhost:4000/v1/agents" \
@@ -54,13 +46,7 @@ Response:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ### 2. Create a Key with Agent Permissions
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 1. Go to **Keys** → **Create Key**
 2. Expand **Agent Settings**
@@ -70,9 +56,6 @@ Response:
   img={require('../img/agent_key.png')}
   style={{width: '80%', display: 'block', margin: '0', borderRadius: '8px'}}
 />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash title="Create key with agent permissions" showLineNumbers
 curl -X POST "http://localhost:4000/key/generate" \
@@ -84,9 +67,6 @@ curl -X POST "http://localhost:4000/key/generate" \
     }
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### 3. Test Access
 
@@ -122,9 +102,6 @@ Restrict all keys belonging to a team to only access specific agents.
 
 ### 1. Create a Team with Agent Permissions
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 1. Go to **Teams** → **Create Team**
 2. Expand **Agent Settings**
 3. Select the agents you want to allow for this team
@@ -133,9 +110,6 @@ Restrict all keys belonging to a team to only access specific agents.
   img={require('../img/agent_key.png')}
   style={{width: '80%', display: 'block', margin: '0', borderRadius: '8px'}}
 />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash title="Create team with agent permissions" showLineNumbers
 curl -X POST "http://localhost:4000/team/new" \
@@ -157,13 +131,7 @@ Response:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ### 2. Create a Key for the Team
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 1. Go to **Keys** → **Create Key**
 2. Select the **Team** from the dropdown
@@ -173,9 +141,6 @@ Response:
   style={{width: '80%', display: 'block', margin: '0', borderRadius: '8px'}}
 />
 
-</TabItem>
-<TabItem value="api" label="API">
-
 ```bash title="Create key for team" showLineNumbers
 curl -X POST "http://localhost:4000/key/generate" \
   -H "Authorization: Bearer sk-master-key" \
@@ -184,9 +149,6 @@ curl -X POST "http://localhost:4000/key/generate" \
     "team_id": "team-abc-123"
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### 3. Test Access
 
@@ -240,20 +202,11 @@ flowchart TD
 
 ## Viewing Permissions
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 1. Go to **Keys** or **Teams**
 2. Click into the key/team you want to view
 3. Agent permissions are displayed in the info view
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash title="Get key info" showLineNumbers
 curl "http://localhost:4000/key/info?key=sk-your-key" \
   -H "Authorization: Bearer sk-master-key"
 ```
-
-</TabItem>
-</Tabs>

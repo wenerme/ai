@@ -32,7 +32,7 @@ where c_nation = "china"
 
 The main component of the execution plan for this query is a Join, as illustrated below:
 
-![Join Runtime Filter](/images/join-runtime-filter-1.jpg)
+[Join Runtime Filter]
 
 Without JRF: The Scan node scans the orders table, reading 100 million rows of data. The Join node then performs a Hash Probe on these 100 million rows to generate the Join result.
 
@@ -52,7 +52,7 @@ where c_nation = "china" and o_custkey in (c001, c003)
 
 The optimized execution plan is illustrated below:
 
-![join-runtime-filter-2](/images/join-runtime-filter-2.jpg)
+[join-runtime-filter-2]
 
 By adding a filter condition on the orders table, the actual number of orders participating in the Join is reduced from 100 million to 400,000, significantly improving query speed.
 
@@ -68,7 +68,7 @@ In the current version of Doris, we select a node to serve as the Runtime Filter
 
 The process of generating the Global JRF is illustrated below:
 
-![Global JRF](/images/global-JRF.jpg)
+[Global JRF]
 
 ### Filter Types
 

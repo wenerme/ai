@@ -13,7 +13,6 @@ OpenObserve performance optimization can be divided primarily into 2 areas:
 - WRITE Performance (Log Ingestion, Data Ingestion)
 - READ Performance (Log Search, Query Performance, Aggregations, Dashboards)
 
-
 ## Ingestion
 
 OpenObserve stores data in parquet format compressed using zstd to reduce the storage requirements. In distributed mode OpenObserve stores data in Object storage solutions like s3 (and compatible stores. Azure blob is supported too) that are highly cost effective and scalable and allow you to reduce storage cost significantly.
@@ -259,13 +258,6 @@ To learn more, visit the [Steaming Aggregation](https://openobserve.ai/docs/user
 ## Mini-partition
 OpenObserve uses a mini-partition to return the first set of results faster. The mini-partition is a smaller slice of the first partition and is controlled by the environment variable `ZO_MINI_SEARCH_PARTITION_DURATION_SECS`, which defines the mini-partition duration in seconds. The default value is sixty seconds.
 
-
-
-
-
-
-
-
 ## Large Number of Fields
 
 Each log entry may contain anywhere from a minimum of 1 field (e.g. `_timestamp`) up to thousands of fields. By default, the **Logs UI** runs a query like:
@@ -324,4 +316,3 @@ By enabling User-Defined Schemas (via `ZO_ALLOW_USER_DEFINED_SCHEMAS=true`), you
 **Example:** If you have 5,000 fields and select only 50 as part of the UDS, queries will now only consider these 50 fields directly, greatly improving performance. The remaining 4,950 fields will be combined into a single `_raw` field (a string), which won’t be searchable.  
 
 If you later need one of the fields from the `_raw` data to be searchable, simply add it to the UDS in the stream’s settings. After doing so, this field will become searchable going forward.
-

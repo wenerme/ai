@@ -10,8 +10,6 @@
 | Base URL | `https://nano-gpt.com/api/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage), [`/completions`](#text-completion), [`/embeddings`](#embeddings) |
 
-<br />
-
 ## What is NanoGPT?
 
 NanoGPT is a flexible AI API service that offers:

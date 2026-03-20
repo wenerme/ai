@@ -1,21 +1,10 @@
 ---
 sidebar_title: 'Query API Endpoints'
-slug: /cloud/get-started/query-endpoints
 description: 'Easily spin up REST API endpoints from your saved queries'
 keywords: ['api', 'query api endpoints', 'query endpoints', 'query rest api']
 title: 'Query API Endpoints'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import endpoints_testquery from '@site/static/images/cloud/sqlconsole/endpoints-testquery.png';
-import endpoints_savequery from '@site/static/images/cloud/sqlconsole/endpoints-savequery.png';
-import endpoints_configure from '@site/static/images/cloud/sqlconsole/endpoints-configure.png';
-import endpoints_completed from '@site/static/images/cloud/sqlconsole/endpoints-completed.png';
-import endpoints_curltest from '@site/static/images/cloud/sqlconsole/endpoints-curltest.png';
-import endpoints_monitoring from '@site/static/images/cloud/sqlconsole/endpoints-monitoring.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Setting up query API endpoints
 
@@ -29,9 +18,8 @@ Before proceeding, ensure you have:
 
 You can follow this guide to [create an API key](/cloud/manage/openapi) if you don't yet have one.
 
-:::note Minimum permissions
+> **note**: Minimum permissions
 To query an API endpoint, the API key needs `Member` organization role with `Query Endpoints` service access. The database role is configured when you create the endpoint.
-:::
 
 <VerticalStepper headerLevel="h3">
 
@@ -42,11 +30,10 @@ If you have a saved query, you can skip this step.
 Open a new query tab. For demonstration purposes, we'll use the [youtube dataset](/getting-started/example-datasets/youtube-dislikes), which contains approximately 4.5 billion records.
 Follow the steps in section ["Create table"](/getting-started/example-datasets/youtube-dislikes#create-the-table) to create the table on your Cloud service and insert data to it.
 
-:::tip `LIMIT` the number of rows
+> **tip**: `LIMIT` the number of rows
 The example dataset tutorial inserts a lot of data - 4.65 billion rows which can take some time to insert.
 For the purposes of this guide we recommend to use the `LIMIT` clause to insert a smaller amount of data,
 for example 10 million rows.
-:::
 
 As an example query, we'll return the top 10 uploaders by average views per video in a user-inputted `year` parameter.
 
@@ -196,7 +183,7 @@ POST /query-endpoints/{queryEndpointId}/run
 | Version                 | Supported Formats                                                                                                                                            |
 |-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Version 2**           | All ClickHouse-supported formats                                                                                                                             |
-| **Version 1 (limited)** | TabSeparated <br/> TabSeparatedWithNames <br/> TabSeparatedWithNamesAndTypes <br/> JSON <br/> JSONEachRow <br/> CSV <br/> CSVWithNames <br/> CSVWithNamesAndTypes |
+| **Version 1 (limited)** | TabSeparated  TabSeparatedWithNames  TabSeparatedWithNamesAndTypes  JSON  JSONEachRow  CSV  CSVWithNames  CSVWithNamesAndTypes |
 
 ---
 
@@ -247,17 +234,12 @@ SELECT database, name AS num_tables FROM system.tables LIMIT 3;
 
 #### Version 1 {#version-1}
 
-<Tabs>
-<TabItem value="cURL" label="cURL" default>
-
 ```bash
 curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run' \
 --user '<openApiKeyId:openApiKeySecret>' \
 -H 'Content-Type: application/json' \
 -d '{ "format": "JSONEachRow" }'
 ```
-</TabItem>
-<TabItem value="JavaScript" label="JavaScript" default>
 
 ```javascript
 fetch(
@@ -299,13 +281,8 @@ fetch(
   }
 }
 ```
-</TabItem>
-</Tabs>
 
 #### Version 2 {#version-2}
-
-<Tabs>
-<TabItem value="GET" label="GET (cURL)" default>
 
 ```bash
 curl 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?format=JSONEachRow' \
@@ -319,17 +296,12 @@ curl 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/ru
 {"database":"INFORMATION_SCHEMA","num_tables":"REFERENTIAL_CONSTRAINTS"}
 ```
 
-</TabItem>
-<TabItem value="cURL" label="POST (cURL)">
-
 ```bash
 curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?format=JSONEachRow' \
 --user '<openApiKeyId:openApiKeySecret>' \
 -H 'Content-Type: application/json' \
 -H 'x-clickhouse-endpoint-version: 2'
 ```
-</TabItem>
-<TabItem value="JavaScript" label="JavaScript" default>
 
 ```javascript
 fetch(
@@ -353,8 +325,6 @@ fetch(
 {"database":"INFORMATION_SCHEMA","num_tables":"KEY_COLUMN_USAGE"}
 {"database":"INFORMATION_SCHEMA","num_tables":"REFERENTIAL_CONSTRAINTS"}
 ```
-</TabItem>
-</Tabs>
 
 ### Request with query variables and version 2 on JSONCompactEachRow format {#request-with-query-variables-and-version-2-on-jsoncompacteachrow-format}
 
@@ -363,9 +333,6 @@ fetch(
 ```sql
 SELECT name, database FROM system.tables WHERE match(name, {tableNameRegex: String}) AND database = {database: String};
 ```
-
-<Tabs>
-<TabItem value="GET" label="GET (cURL)" default>
 
 ```bash
 curl 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?format=JSONCompactEachRow&param_tableNameRegex=query.*&param_database=system' \
@@ -379,9 +346,6 @@ curl 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/ru
 ["query_views_log", "system"]
 ```
 
-</TabItem>
-<TabItem value="cURL" label="POST (cURL)">
-
 ```bash
 curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?format=JSONCompactEachRow' \
 --user '<openApiKeyId:openApiKeySecret>' \
@@ -389,9 +353,6 @@ curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoin
 -H 'x-clickhouse-endpoint-version: 2' \
 -d '{ "queryVariables": { "tableNameRegex": "query.*", "database": "system" } }'
 ```
-</TabItem>
-
-<TabItem value="JavaScript" label="JavaScript" default>
 
 ```javascript
 fetch(
@@ -421,8 +382,6 @@ fetch(
 ["query_log", "system"]
 ["query_views_log", "system"]
 ```
-</TabItem>
-</Tabs>
 
 ### Request with array in the query variables that inserts data into a table {#request-with-array-in-the-query-variables-that-inserts-data-into-a-table}
 
@@ -443,9 +402,6 @@ ORDER BY tuple()
 INSERT INTO default.t_arr VALUES ({arr: Array(Array(Array(UInt32)))});
 ```
 
-<Tabs>
-<TabItem value="cURL" label="cURL" default>
-
 ```bash
 curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run' \
 --user '<openApiKeyId:openApiKeySecret>' \
@@ -457,9 +413,6 @@ curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoin
   }
 }'
 ```
-
-</TabItem>
-<TabItem value="JavaScript" label="JavaScript" default>
 
 ```javascript
 fetch(
@@ -487,9 +440,6 @@ fetch(
 OK
 ```
 
-</TabItem>
-</Tabs>
-
 ### Request with ClickHouse settings `max_threads` set to 8 {#request-with-clickhouse-settings-max_threads-set-to-8}
 
 **Query API Endpoint SQL:**
@@ -498,17 +448,11 @@ OK
 SELECT * FROM system.tables;
 ```
 
-<Tabs>
-<TabItem value="GET" label="GET (cURL)" default>
-
 ```bash
 curl 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?max_threads=8' \
 --user '<openApiKeyId:openApiKeySecret>' \
 -H 'x-clickhouse-endpoint-version: 2'
 ```
-
-</TabItem>
-<TabItem value="cURL" label="POST (cURL)">
 
 ```bash
 curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoint id>/run?max_threads=8,' \
@@ -516,9 +460,6 @@ curl -X POST 'https://console-api.clickhouse.cloud/.api/query-endpoints/<endpoin
 -H 'Content-Type: application/json' \
 -H 'x-clickhouse-endpoint-version: 2' \
 ```
-
-</TabItem>
-<TabItem value="JavaScript" label="JavaScript">
 
 ```javascript
 fetch(
@@ -537,9 +478,6 @@ fetch(
   .catch((error) => console.error("Error:", error));
 ```
 
-</TabItem>
-</Tabs>
-
 ### Request and parse the response as a stream` {#request-and-parse-the-response-as-a-stream}
 
 **Query API Endpoint SQL:**
@@ -547,9 +485,6 @@ fetch(
 ```sql
 SELECT name, database FROM system.tables;
 ```
-
-<Tabs>
-<TabItem value="TypeScript" label="TypeScript" default>
 
 ```typescript
 async function fetchAndLogChunks(
@@ -608,9 +543,6 @@ fetchAndLogChunks(endpointUrl, openApiKeyId, openApiKeySecret).catch((err) =>
 ...
 > Stream ended.
 ```
-
-</TabItem>
-</Tabs>
 
 ### Insert a stream from a file into a table {#insert-a-stream-from-a-file-into-a-table}
 

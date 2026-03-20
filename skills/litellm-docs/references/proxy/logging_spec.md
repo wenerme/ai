@@ -93,7 +93,6 @@ Inherits from `StandardLoggingUserAPIKeyMetadata` and adds:
 | `cold_storage_object_key` | `Optional[str]` | S3/GCS object key for cold storage retrieval |
 | `guardrail_information` | `Optional[list[StandardLoggingGuardrailInformation]]` | Guardrail information |
 
-
 ## StandardLoggingVectorStoreRequest
 
 | Field | Type | Description |
@@ -104,7 +103,6 @@ Inherits from `StandardLoggingUserAPIKeyMetadata` and adds:
 | vector_store_search_response | Optional[VectorStoreSearchResponse] | OpenAI format vector store search response |
 | start_time | Optional[float] | Start time of the vector store request |
 | end_time | Optional[float] | End time of the vector store request |
-
 
 ## StandardLoggingAdditionalHeaders
 

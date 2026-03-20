@@ -116,7 +116,6 @@ Judge whether the Document meets the requirements based on the Query and the Ins
 
 </think>
 
-
 ```
 
 - Default instruction:

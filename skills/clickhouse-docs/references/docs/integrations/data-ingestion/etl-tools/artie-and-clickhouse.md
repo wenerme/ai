@@ -1,20 +1,9 @@
 ---
-sidebar_label: 'Artie'
-sidebar_position: 12
 keywords: ['clickhouse', 'Artie', 'connect', 'integrate', 'cdc', 'etl', 'data integration', 'real-time', 'streaming']
-slug: /integrations/artie
 description: 'Stream data into ClickHouse using Artie CDC streaming platform'
 title: 'Connect Artie to ClickHouse'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import artie_signup from '@site/static/images/integrations/data-ingestion/etl-tools/artie/artie_signup.png';
-import artie_edit_pipeline from '@site/static/images/integrations/data-ingestion/etl-tools/artie/artie_edit_pipeline.png';
-import analytics from '@site/static/images/integrations/data-ingestion/etl-tools/artie/analytics.png';
-import monitor from '@site/static/images/integrations/data-ingestion/etl-tools/artie/monitor.png';
-import schema_notification from '@site/static/images/integrations/data-ingestion/etl-tools/artie/schema_notification.png';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
 
 # Connect Artie to ClickHouse
 

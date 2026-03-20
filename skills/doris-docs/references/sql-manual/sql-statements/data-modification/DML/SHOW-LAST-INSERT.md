@@ -50,4 +50,3 @@ illustrate:
     SHOW, LASR ,INSERT
 
 ## Best Practice
-

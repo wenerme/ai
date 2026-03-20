@@ -28,9 +28,8 @@ However, the performance of community plugins is out of Vite's control, which ma
 
    You can inspect the duration it takes to transform a file using `vite --debug plugin-transform` or [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect). Note that as asynchronous operations tend to provide inaccurate timings, you should treat the numbers as a rough estimate, but it should still reveal the more expensive operations.
 
-::: tip Profiling
+> **tip**: Profiling
 You can run `vite --profile`, visit the site, and press `p + enter` in your terminal to record a `.cpuprofile`. A tool like [speedscope](https://www.speedscope.app) can then be used to inspect the profile and identify the bottlenecks. You can also [share the profiles](https://chat.vite.dev) with the Vite team to help us identify performance issues.
-:::
 
 ## Reduce Resolve Operations
 
@@ -51,9 +50,8 @@ Hence, it's usually better to be explicit with your import paths, e.g. `import '
 
 If you're a plugin author, make sure to only call [`this.resolve`](https://rollupjs.org/plugin-development/#this-resolve) when needed to reduce the number of checks above.
 
-::: tip TypeScript
+> **tip**: TypeScript
 If you are using TypeScript, enable `"moduleResolution": "bundler"` and `"allowImportingTsExtensions": true` in your `tsconfig.json`'s `compilerOptions` to use `.ts` and `.tsx` extensions directly in your code.
-:::
 
 ## Avoid Barrel Files
 

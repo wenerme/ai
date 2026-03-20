@@ -23,7 +23,7 @@ UNICODE_NORMALIZE(<str>, <mode>)
 | Parameter | Description |
 |-----------|-------------|
 | `<str>` | The input string to be normalized. Type: VARCHAR |
-| `<mode>` | The normalization mode, must be a constant string (case-insensitive). Supported modes:<br/>- `NFC`: Canonical Decomposition, followed by Canonical Composition<br/>- `NFD`: Canonical Decomposition<br/>- `NFKC`: Compatibility Decomposition, followed by Canonical Composition<br/>- `NFKD`: Compatibility Decomposition<br/>- `NFKC_CF`: NFKC followed by Case Folding |
+| `<mode>` | The normalization mode, must be a constant string (case-insensitive). Supported modes:- `NFC`: Canonical Decomposition, followed by Canonical Composition- `NFD`: Canonical Decomposition- `NFKC`: Compatibility Decomposition, followed by Canonical Composition- `NFKD`: Compatibility Decomposition- `NFKC_CF`: NFKC followed by Case Folding |
 
 ## Return Value
 

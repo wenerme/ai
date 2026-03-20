@@ -13,10 +13,6 @@ cover:
 socialImage: "@/assets/social-logo.png"
 ---
 
-import Avatar from "@/components/Avatar.astro";
-import EditorSettings from "@/components/EditorSettings.astro";
-import Contributor from "@/components/Contributor.astro";
-
 Biome v2.4 is the first minor release of the year! After more than ten patches from v2.3, today we bring to you a new version that contains many new features!
 
 Once you have upgraded to Biome v2.4.0, migrate your Biome configuration to the new version by running the `migrate` command:
@@ -75,9 +71,7 @@ To enable these features, add this to your configuration:
 }
 ```
 
-:::note
-Snippets with interpolations are not yet supported.
-:::
+> **note**: Snippets with interpolations are not yet supported.
 
 ### Editor inline configuration
 
@@ -416,8 +410,7 @@ This option is available globally and for each language-specific formatter confi
 
 CLI flags are also available: `--formatter-trailing-newline`, `--javascript-formatter-trailing-newline`, `--json-formatter-trailing-newline`, etc.
 
-:::caution
-Setting `trailingNewline` to `false` can cause issues in certain environments and tools. Many POSIX-compliant tools and text editors expect files to end with a newline character. Removing the trailing newline may result in:
+> **caution**: Setting `trailingNewline` to `false` can cause issues in certain environments and tools. Many POSIX-compliant tools and text editors expect files to end with a newline character. Removing the trailing newline may result in:
 
 - Warnings or errors from compilers and interpreters
 - Issues with shell scripts that may not process the last line correctly
@@ -425,7 +418,6 @@ Setting `trailingNewline` to `false` can cause issues in certain environments an
 - Incompatibility with coding standards that require POSIX-compliant text files
 
 We recommend keeping the default value of `true` unless you have a specific requirement to remove trailing newlines.
-:::
 
 ### Top-Level Suppression Comments
 

@@ -57,9 +57,7 @@ Parameter to enable φ weighting:
 
 Note: If using a constant μ, set `chord_mu_peak` and `chord_mu_valley` to the same value.
 
-<details>
-<summary>Code implementation of μ scheduling and loss computation</summary>
+Code implementation of μ scheduling and loss computation
 See the `GRPOTrainer` method `_compute_chord_loss`.
-</details>
 
 Training reference script: https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/internal/chord.sh

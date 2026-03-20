@@ -1,58 +1,21 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/remote-demo-data
 title: 'Remote Demo Dataset'
-sidebar_position: 2
-pagination_prev: null
-pagination_next: null
 description: 'Getting started with ClickStack and a remote demo dataset'
 doc_type: 'guide'
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']
 ---
 
-import Image from '@theme/IdealImage';
-import demo_connection from '@site/static/images/use-cases/observability/hyperdx-demo/demo_connection.png';
-import edit_demo_connection from '@site/static/images/use-cases/observability/hyperdx-demo/edit_demo_connection.png';
-import edit_demo_source from '@site/static/images/use-cases/observability/hyperdx-demo/edit_demo_source.png';
-import step_2 from '@site/static/images/use-cases/observability/hyperdx-demo/step_2.png';
-import step_3 from '@site/static/images/use-cases/observability/hyperdx-demo/step_3.png';
-import step_4 from '@site/static/images/use-cases/observability/hyperdx-demo/step_4.png';
-import step_5 from '@site/static/images/use-cases/observability/hyperdx-demo/step_5.png';
-import step_6 from '@site/static/images/use-cases/observability/hyperdx-demo/step_6.png';
-import step_7 from '@site/static/images/use-cases/observability/hyperdx-demo/step_7.png';
-import step_8 from '@site/static/images/use-cases/observability/hyperdx-demo/step_8.png';
-import step_9 from '@site/static/images/use-cases/observability/hyperdx-demo/step_9.png';
-import step_10 from '@site/static/images/use-cases/observability/hyperdx-demo/step_10.png';
-import step_11 from '@site/static/images/use-cases/observability/hyperdx-demo/step_11.png';
-import step_12 from '@site/static/images/use-cases/observability/hyperdx-demo/step_12.png';
-import step_13 from '@site/static/images/use-cases/observability/hyperdx-demo/step_13.png';
-import step_14 from '@site/static/images/use-cases/observability/hyperdx-demo/step_14.png';
-import step_15 from '@site/static/images/use-cases/observability/hyperdx-demo/step_15.png';
-import step_16 from '@site/static/images/use-cases/observability/hyperdx-demo/step_16.png';
-import step_17 from '@site/static/images/use-cases/observability/hyperdx-demo/step_17.png';
-import step_18 from '@site/static/images/use-cases/observability/hyperdx-demo/step_18.png';
-import step_19 from '@site/static/images/use-cases/observability/hyperdx-demo/step_19.png';
-import step_20 from '@site/static/images/use-cases/observability/hyperdx-demo/step_20.png';
-import step_21 from '@site/static/images/use-cases/observability/hyperdx-demo/step_21.png';
-import step_22 from '@site/static/images/use-cases/observability/hyperdx-demo/step_22.png';
-import step_23 from '@site/static/images/use-cases/observability/hyperdx-demo/step_23.png';
-import step_24 from '@site/static/images/use-cases/observability/hyperdx-demo/step_24.png';
-import demo_sources from '@site/static/images/use-cases/observability/hyperdx-demo//demo_sources.png';
-import edit_connection from '@site/static/images/use-cases/observability/edit_connection.png';
-import DemoArchitecture from '@site/docs/use-cases/observability/clickstack/example-datasets/_snippets/_demo.md';
-
 **The following guide assumes you have deployed Open Source ClickStack using the [instructions for the all-in-one image](/use-cases/observability/clickstack/getting-started/oss), or [Local Mode Only](/use-cases/observability/clickstack/deployment/local-mode-only) and completed initial user creation. Alternatively, you can skip all local setup and simply connect to our ClickStack hosted demo [play-clickstack.clickhouse.com](https://play-clickstack.clickhouse.com) which uses this dataset.**
 
 This guide uses a sample dataset hosted on the public ClickHouse playground at [sql.clickhouse.com](https://sql.clickhouse.com), which you can connect to from your local ClickStack deployment.
 
-:::warning Not supported with Managed ClickStack
+> **warning**: Not supported with Managed ClickStack
 Remote databases aren't supported when using Managed ClickStack. This dataset is therefore not supported. 
-:::
 
 It contains approximately 40 hours of data captured from the ClickHouse version of the official OpenTelemetry (OTel) demo. The data is replayed nightly with timestamps adjusted to the current time window, allowing users to explore system behavior using HyperDX's integrated logs, traces, and metrics.
 
-:::note Data variations
+> **note**: Data variations
 Because the dataset is replayed from midnight each day, the exact visualizations may vary depending on when you explore the demo.
-:::
 
 ## Demo scenario {#demo-scenario}
 
@@ -76,9 +39,8 @@ This demo uses a [ClickStack maintained fork](https://github.com/ClickHouse/open
 
 ### Connect to the demo server {#connect-to-the-demo-server}
 
-:::note Local-Only mode
+> **note**: Local-Only mode
 This step can be skipped if you clicked `Connect to Demo Server` when deploying in Local Mode. If using this mode, sources will be prefixed with `Demo_` e.g. `Demo_Logs`
-:::
 
 Navigate to `Team Settings` and click `Edit` for the `Local Connection`:
 
@@ -95,17 +57,14 @@ Rename the connection to `Demo` and complete the subsequent form with the follow
 
 ### Modify the sources {#modify-sources}
 
-:::note Local-Only mode
+> **note**: Local-Only mode
 This step can be skipped if you clicked `Connect to Demo Server` when deploying in Local Mode. If using this mode, sources will be prefixed with `Demo_` e.g. `Demo_Logs`
-:::
 
 Scroll up to `Sources` and modify each of the sources - `Logs`, `Traces`, `Metrics`, and `Sessions` - to use the `otel_v2` database. 
 
 <Image img={edit_demo_source} alt="Edit Demo Source" size="lg"/>
 
-:::note
-You may need to reload the page to ensure the full list of databases is listed in each source.
-:::
+> **note**: You may need to reload the page to ensure the full list of databases is listed in each source.
 
 ### Adjust the time frame {#adjust-the-timeframe}
 
@@ -115,9 +74,7 @@ Adjust the time to show all data from the previous `1 day` using the time picker
 
 You may a small difference in the number of errors in the overview bar chart, with a small increase in red in several consecutive bars.
 
-:::note
-The location of the bars will differ depending on when you query the dataset.
-:::
+> **note**: The location of the bars will differ depending on when you query the dataset.
 
 ### Filter to errors {#filter-to-errors}
 
@@ -236,8 +193,6 @@ We have established:
 - This caused increases in resource consumption
 - The issue prevented visa payments from completing - or at least causing them to take a long time to complete.
 
-<br/>
-
 Select `Chart Explorer` from the left menu. Complete the following values to chart the time taken for payments to complete by chart type:
 
 - `Data Source`: `Traces`
@@ -245,8 +200,6 @@ Select `Chart Explorer` from the left menu. Complete the following values to cha
 - `SQL Column`: `Duration`
 - `Where`: `ServiceName: payment`
 - `Timespan`: `Last 1 day`
-
-<br/>
 
 Clicking `▶️` will show how the performance of payments degraded over time. 
 

@@ -205,16 +205,12 @@ Keep your graphs simple and focused on answering the question that you are askin
 
 #### Dashboards should reduce cognitive load, not add to it
 
-<!-- vale Grafana.GoogleWill = NO -->
-
 _Cognitive load_ is basically how hard you need to think about something in order to figure it out. Make your dashboard easy to interpret. Other users and future you (when you're trying to figure out what broke at 2 AM) will appreciate it.
 
 Ask yourself:
 
 - Can I tell what exactly each graph represents? Is it obvious, or do I have to think about it?
 - If I show this to someone else, how long will it take them to figure it out? Will they get lost?
-
-<!-- vale Grafana.GoogleWill = YES -->
 
 #### Have a monitoring strategy
 

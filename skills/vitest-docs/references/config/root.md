@@ -1,6 +1,5 @@
 ---
 title: root | Config
-outline: deep
 ---
 
 # root

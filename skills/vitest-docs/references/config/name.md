@@ -31,7 +31,6 @@ The displayed colors depend on your terminal’s color scheme. In the UI, colors
 
 ## Example
 
-::: code-group
 ```js [string]
 import { defineConfig } from 'vitest/config'
 
@@ -53,7 +52,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 This property is mostly useful if you have several projects as it helps distinguish them in your terminal:
 
@@ -76,17 +74,13 @@ export default defineConfig({
 })
 ```
 
-::: tip
-Vitest automatically assigns a name when none is provided. Resolution order:
+> **tip**: Vitest automatically assigns a name when none is provided. Resolution order:
 
 - If the project is specified by a config file or directory, Vitest uses the package.json's `name` field.
 - If there is no `package.json`, Vitest falls back to the project folder's basename.
 - If the project is defined inline in the `projects` array (an object), Vitest assigns a numeric name equal to that project's array index (0-based).
-:::
 
-::: warning
-Note that projects cannot have the same name. Vitest will throw an error during the config resolution.
-:::
+> **warning**: Note that projects cannot have the same name. Vitest will throw an error during the config resolution.
 
 You can also assign different names to different browser [instances](/config/browser/instances):
 
@@ -108,8 +102,6 @@ export default defineConfig({
 })
 ```
 
-::: tip
-Browser instances inherit their parent project's name with the browser name appended in parentheses. For example, a project named `browser` with a chromium instance will be shown as `browser (chromium)`.
+> **tip**: Browser instances inherit their parent project's name with the browser name appended in parentheses. For example, a project named `browser` with a chromium instance will be shown as `browser (chromium)`.
 
 If the parent project has no name, or instances are defined at the root level (not inside a named project), the instance name defaults to the browser value (e.g. `chromium`). To override this behavior, set an explicit `name` on the instance.
-:::

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Image URL Handling 
 
@@ -15,7 +13,6 @@ For those, LiteLLM will:
 3. Else, will download the base64 
 4. Send the provider a base64 string. 
 
-
 LiteLLM also caches this result, in-memory to reduce latency for subsequent calls. 
 
-The limit for an in-memory cache is 1MB. 
+The limit for an in-memory cache is 1MB.

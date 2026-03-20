@@ -38,9 +38,7 @@ None
     ```
 ## Examples
 
-
     ```
     curl "http://127.0.0.1:8040/api/checksum?tablet_id=1&version=1&schema_hash=-1"
     
     ```
-

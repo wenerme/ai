@@ -1,5 +1,4 @@
 ---
-slug: /cloud/security/connectivity/private-networking
 title: 'Private networking'
 hide_title: true
 description: 'Table of contents page for the ClickHouse Cloud private networking section'

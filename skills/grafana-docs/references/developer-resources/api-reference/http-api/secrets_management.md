@@ -72,12 +72,10 @@ Creates a new secure value.
 
 See note in the [introduction](#secrets-management-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action                       | Scope                                     |
 | ---------------------------- | ----------------------------------------- |
 | `secret.securevalues:create` | <ul><li>`secret.securevalues:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example create request**:
 
@@ -153,12 +151,10 @@ List all secure values in a namespace.
 
 See note in the [introduction](#secrets-management-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action                       | Scope                                     |
 | ---------------------------- | ----------------------------------------- |
 | `secret.securevalues:read`   | <ul><li>`secret.securevalues:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example list request**:
 
@@ -222,12 +218,10 @@ Get the details of a specific secure value. It will not return the secret value.
 
 See note in the [introduction](#secrets-management-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action                       | Scope                                     |
 | ---------------------------- | ----------------------------------------- |
 | `secret.securevalues:read`   | <ul><li>`secret.securevalues:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example get request**:
 
@@ -290,12 +284,10 @@ Replace an existing secure value with a new specification.
 
 See note in the [introduction](#secrets-management-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action                      | Scope                                     |
 | --------------------------- | ----------------------------------------- |
 | `secret.securevalues:write` | <ul><li>`secret.securevalues:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example update request**:
 
@@ -363,12 +355,10 @@ Permanently delete a secure value. This also deletes the underlying stored secre
 
 See note in the [introduction](#secrets-management-api) for an explanation.
 
-<!-- prettier-ignore-start -->
 | Action                       | Scope                                     |
 | ---------------------------- | ----------------------------------------- |
 | `secret.securevalues:delete` | <ul><li>`secret.securevalues:*`</li></ul> |
 { .no-spacing-list }
-<!-- prettier-ignore-end -->
 
 **Example delete request**:
 

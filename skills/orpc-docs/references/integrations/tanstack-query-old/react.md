@@ -9,8 +9,6 @@ This guide shows how to integrate oRPC with Tanstack Query for React. For an int
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/react-query@latest @tanstack/react-query@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/react-query@latest @tanstack/react-query@latest
 ```sh [deno]
 deno add npm:@orpc/react-query@latest npm:@tanstack/react-query@latest
 ```
-
-:::
 
 ## Setup
 

@@ -40,7 +40,7 @@ OpenObserve provides two approaches to monitor Linux systems:
     ```
     curl -O https://raw.githubusercontent.com/openobserve/agents/main/linux/install.sh && chmod +x install.sh && sudo ./install.sh https://your-openobserve-instance.com/api/default/ YOUR_API_KEY
     ```
-    ![linux integration](../images/linux-integration.png)
+    [linux integration]
     
 
     What the OpenObserve Collector Does:
@@ -205,4 +205,3 @@ Here are some essential configurations to enhance your Linux monitoring:
     - **Configuration Errors**: Validate your config.yaml syntax and check OpenTelemetry Collector logs.
     - **Export Failures**: Verify your endpoint URL and API key are correct.
     - **Resource Constraints**: Adjust batch settings if the OpenTelemetry Collector terminates unexpectedly.
-    

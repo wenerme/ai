@@ -12,9 +12,7 @@ This statement is used to perform a schema change operation on an existing table
 
 Doris has the concept of materialized index after table construction. After successful table construction, it is the base table and the materialized index is the base index. rollup index can be created based on the base table. Both base index and rollup index are materialized indexes. If rollup_index_name is not specified during the schema change operation, the operation is based on the base table by default.
 
-:::tip
-Doris 1.2.0 supports light schema change for light scale structure changes, and addition and subtraction operations for value columns can be completed more quickly and synchronously. You can manually specify "light_schema_change" = 'true' when creating a table. This parameter is enabled by default for versions 2.0.0 and later.
-:::
+> **tip**: Doris 1.2.0 supports light schema change for light scale structure changes, and addition and subtraction operations for value columns can be completed more quickly and synchronously. You can manually specify "light_schema_change" = 'true' when creating a table. This parameter is enabled by default for versions 2.0.0 and later.
 
 ### Grammar:
 
@@ -72,12 +70,9 @@ ALTER TABLE [database.]table table_name ADD COLUMN column_name column_type [KEY 
   ADD COLUMN new_col INT KEY DEFAULT "0" FIRST;
   ```
 
-:::tip 
-- If you add a value column to the aggregation model, you need to specify agg_type
+> **tip**: - If you add a value column to the aggregation model, you need to specify agg_type
 - For non-aggregated models (such as DUPLICATE KEY), if you add a key column, you need to specify the KEY keyword
 - You cannot add columns that already exist in the base index to the rollup index (you can recreate a rollup index if necessary)
-:::
-
 
 **2. Add multiple columns to the specified index**
 
@@ -106,11 +101,9 @@ ALTER TABLE [database.]table table_name ADD COLUMN (column_name1 column_type [KE
   ADD COLUMN (new_col1 INT key DEFAULT "0" , new_col2 INT DEFAULT "0");
   ```
 
-:::tip
-  - If you add a value column to the aggregation model, you need to specify agg_type
+> **tip**: - If you add a value column to the aggregation model, you need to specify agg_type
   - If you add a key column to the aggregation model, you need to specify the KEY keyword
   - You cannot add columns that already exist in the base index to the rollup index (you can recreate a rollup index if necessary) 
-:::
 
 **3. Delete a column from the specified index**
 
@@ -129,11 +122,9 @@ ALTER TABLE [database.]table table_name ADD COLUMN (column_name1 column_type [KE
   ALTER TABLE example_db.my_table DROP COLUMN col1;
   ```
 
-:::tip
-  - Cannot drop partition column
+> **tip**: - Cannot drop partition column
   - The aggregate model cannot delete KEY columns
   - If the column is removed from the base index, it will also be removed if it is included in the rollup index 
-:::
 
 **4. Modify the column type and column position of the specified index**
 
@@ -177,8 +168,7 @@ ALTER TABLE [database.]table table_name MODIFY COLUMN column_name column_type [K
   MODIFY COLUMN k3 VARCHAR(50) KEY NULL COMMENT 'to 50';
   ```
 
-:::tip
-  - If you modify the value column in the aggregation model, you need to specify agg_type
+> **tip**: - If you modify the value column in the aggregation model, you need to specify agg_type
   - If you modify the key column for non-aggregate types, you need to specify the KEY keyword
   - Only the type of the column can be modified, and other attributes of the column remain as they are (that is, other attributes need to be explicitly written in the statement according to the   original attributes, see example 8)
   - Partitioning and bucketing columns cannot be modified in any way
@@ -193,7 +183,6 @@ ALTER TABLE [database.]table table_name MODIFY COLUMN column_name column_type [K
     - Convert FLOAT to DOUBLE
     - INT is converted to DATE (if the INT type data is illegal, the conversion fails, and the original data remains unchanged)
     - All can be converted to STRING except DATE and DATETIME, but STRING cannot be converted to any other type 
-:::
 
 **5. Reorder the column at the specified index**
 
@@ -272,12 +261,10 @@ ALTER TABLE [database.]table table_name MODIFY COLUMN column_name column_type [K
   +-------+------------+------+-------+---------+-------+
   ```
 
-:::tip
-  - All columns in index are written out
+> **tip**: - All columns in index are written out
   - the value column comes after the key column
   - You can adjust the key column only within the range of the key column. The same applies to the value column
-:::
-  
+
 ## Keywords
 
 ```text

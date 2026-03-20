@@ -8,9 +8,7 @@ Anyone using the following models with /chat/completions:
 
 ## Key Change
 
-:::info
-From v1.77.0, LiteLLM will return the List of images in `response.choices[0].message.images` instead of a single image in `response.choices[0].message.image`.
-:::
+> **info**: From v1.77.0, LiteLLM will return the List of images in `response.choices[0].message.images` instead of a single image in `response.choices[0].message.image`.
 
 Gemini models now support image generation through chat completions. Images are returned in `response.choices[0].message.images` with base64 data URLs.
 
@@ -25,7 +23,6 @@ response = completion(
     messages=[{"role": "user", "content": "Generate an image of a cat"}],
     modalities=["image", "text"],
 )
-
 
 base_64_image_data = response.choices[0].message.content
 ```
@@ -217,4 +214,3 @@ curl -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
   }
 }
 ```
-

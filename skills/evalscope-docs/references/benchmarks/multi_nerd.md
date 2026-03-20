@@ -1,6 +1,5 @@
 # MultiNERD
 
-
 ## Overview
 
 MultiNERD is a large-scale, multilingual, and multi-genre dataset for fine-grained Named Entity Recognition, automatically generated from Wikipedia and Wikinews. It covers 10 languages and 15 distinct entity categories.
@@ -26,7 +25,6 @@ MultiNERD is a large-scale, multilingual, and multi-genre dataset for fine-grain
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: PER, ORG, LOC, ANIM, BIO, CEL, DIS, EVE, FOOD, INST, MEDIA, MYTH, PLANT, TIME, VEHI
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ MultiNERD is a large-scale, multilingual, and multi-genre dataset for fine-grain
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -153,8 +150,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -185,8 +181,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -216,5 +210,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

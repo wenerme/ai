@@ -2,7 +2,7 @@
 LiteLLM supports all the text / chat / vision / embedding models from [OpenRouter](https://openrouter.ai/docs)
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_OpenRouter.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ## Usage
@@ -231,9 +231,7 @@ See all available image models on [OpenRouter's model list](https://openrouter.a
 | `quality` | `image_config.image_size` | `low`/`standard` → `1K`, `medium` → `2K`, `high`/`hd` → `4K` |
 | `n` | `n` | Number of images |
 
-:::note
-`quality=high` (4K) is only supported by `google/gemini-3-pro-image-preview` and `google/gemini-3.1-flash-image-preview`. The `google/gemini-2.5-flash-image` model supports up to `medium` (2K).
-:::
+> **note**: `quality=high` (4K) is only supported by `google/gemini-3-pro-image-preview` and `google/gemini-3.1-flash-image-preview`. The `google/gemini-2.5-flash-image` model supports up to `medium` (2K).
 
 ### Usage
 

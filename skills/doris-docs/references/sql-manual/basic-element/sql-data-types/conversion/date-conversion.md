@@ -271,13 +271,12 @@ Assume the current Doris time zone is UTC+8 (`+08:00`). For the effect of time z
 <alpha>          ::= "A" | … | "Z" | "a" | … | "z"
 ```
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the \<year> part only supports 2 or 4 digit numeric input. For date or time input without separators, stricter rules apply: only the 14-digit continuous integer format is supported—this is enforced in strict mode and inherited by non-strict mode.
 
 Parsing of each field no longer allows exceeding the length due to extra leading zeros. For example, `00012` for `<day> ::= <digit>{1,2}` is invalid.
 
 If an unexpected whitespace is encountered, parsing will fail just as it would with any other unexpected character, rather than using already parsed fields to fill the result.
-:::
 
 #### Rule Description
 
@@ -347,9 +346,8 @@ For any input string that satisfies the above BNF definition, Doris will fill in
 
 ##### Carry
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, when parsing DATE type, the part other than \<date> does not produce any carry or numeric impact.
-:::
 
 No carry occurs.
 
@@ -359,9 +357,8 @@ No carry occurs.
 
 * **Domain error**: If the `<date>` part is invalid (i.e., does not result in a valid Gregorian calendar date), the return value is NULL.
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, when parsing DATE type, if parts other than \<date> have domain errors, they do not affect the result.
-:::
 
 #### Examples
 
@@ -387,9 +384,8 @@ Assume the current Doris time zone is UTC+8 (`+08:00`). For the effect of time z
 
 Supports conversion from all numeric types to DATE type.
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since 4.0, DECIMAL type is converted according to its literal numeric value. Conversion from Boolean to time types is not supported. Parsing of fractional parts in numeric input is supported.
-:::
 
 ### Strict Mode
 

@@ -1,11 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Session Logs
 
 Group requests into sessions. This allows you to group related requests together.
-
 
 <Image img={require('../../img/ui_session_logs.png')}/>
 
@@ -14,9 +11,6 @@ Group requests into sessions. This allows you to group related requests together
 ### `/chat/completions`
 
 To group multiple requests into a single session, pass the same `litellm_session_id` in the metadata for each request. Here's how to do it:
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 **Request 1**
 Create a new session with a unique ID and make the first request. The session ID will be used to track all related requests.
@@ -67,9 +61,6 @@ response2 = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-<TabItem value="langchain" label="Langchain">
-
 **Request 1**
 Initialize a new session with a unique ID and create a chat model instance for making requests. The session ID is embedded in the model's configuration.
 
@@ -100,9 +91,6 @@ Use the same chat model instance to make another request, automatically maintain
 # Second request using same chat object and session ID
 response2 = chat.invoke("Now write a poem about that robot")
 ```
-
-</TabItem>
-<TabItem value="curl" label="Curl">
 
 **Request 1**
 Generate a new session ID and make the initial API call. The session ID in the metadata will be used to track this conversation.
@@ -150,9 +138,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-<TabItem value="litellm" label="LiteLLM Python SDK">
-
 **Request 1**
 Start a new session by creating a unique ID and making the initial request. This session ID will be used to group related requests together.
 
@@ -191,15 +176,9 @@ response2 = litellm.completion(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ### `/responses`
 
 For the `/responses` endpoint, use `previous_response_id` to group requests into a session. The `previous_response_id` is returned in the response of each request.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 **Request 1**
 Make the initial request and store the response ID for linking follow-up requests.
@@ -233,9 +212,6 @@ response2 = client.responses.create(
     previous_response_id=response_id  # Link to previous request
 )
 ```
-
-</TabItem>
-<TabItem value="curl" label="Curl">
 
 **Request 1**
 Make the initial request. The response will include an ID that can be used to link follow-up requests.
@@ -271,9 +247,6 @@ curl http://localhost:4000/v1/responses \
     }'
 ```
 
-</TabItem>
-<TabItem value="litellm" label="LiteLLM Python SDK">
-
 **Request 1**
 Make the initial request and store the response ID for linking follow-up requests.
 
@@ -305,6 +278,3 @@ response2 = litellm.responses(
     previous_response_id=response_id  # Link to previous request
 )
 ```
-
-</TabItem>
-</Tabs>

@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # MCP Guardrails
 
@@ -29,7 +27,6 @@ guardrails:
         PHONE_NUMBER: "MASK"   # Will mask phone numbers
       default_on: true
 ```
-
 
 ### Usage Examples
 

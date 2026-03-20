@@ -24,11 +24,11 @@ AWS WAF logs include detailed information about requests evaluated against your 
     1. Go to **AWS Console → WAF & Shield**
     2. Select the WebACL you want to log
     3. In the sidebar, click **Logging and metrics → Enable logging**
-        ![Enable WAF Logging to S3](../images/aws-integrations/waf/acl-logging.png)
+        [Enable WAF Logging to S3]
 
     4. Choose your target S3 bucket (must be in the same region as the WebACL)
 
-        ![Enable WAF Logging to S3](../images/aws-integrations/waf/enable-logging.png)
+        [Enable WAF Logging to S3]
 
     > Make sure your S3 bucket has proper permissions to receive logs from AWS WAF.
 
@@ -37,7 +37,7 @@ AWS WAF logs include detailed information about requests evaluated against your 
     1. In OpenObserve: go to **Data Sources → Recommended → AWS**
     2. Copy the HTTP ingestion URL and Access Key
     
-        ![Get OpenObserve Ingestion URL and Access Key](../images/aws-integrations/vpc-flow/fetch-url.png)
+        [Get OpenObserve Ingestion URL and Access Key]
 
     > Example ingestion URL:
     > ```
@@ -54,22 +54,21 @@ AWS WAF logs include detailed information about requests evaluated against your 
         - **Access Key**
         - **Source S3 Bucket (WAF Logs)**
         - **Backup S3 Bucket (Optional)**
-        ![Deploy CloudFormation Stack](../images/aws-integrations/waf/stack-details.png)
+        [Deploy CloudFormation Stack]
     5. Complete the stack creation process
     6. Ensure the IAM roles, Lambda function, Kinesis Firehose, and S3 configurations are created successfully.
-        ![Deploy CloudFormation Stack](../images/aws-integrations/waf/cloudformation-success.png){: style="height:600px"}
+        [Deploy CloudFormation Stack]{: style="height:600px"}
 
     > NOTE: Due to AWS limitations, the S3 trigger for Lambda must be added manually after stack creation.
     
-    ![Deploy CloudFormation Stack](../images/aws-integrations/waf/add-triggers.png)
-
+    [Deploy CloudFormation Stack]
 
 ??? "Step 4: Verify Log Ingestion in OpenObserve"
 
     1. Go to **OpenObserve → Logs**
     2. Select your stream and click **Run Query**
     
-    ![Verify Log Ingestion in OpenObserve](../images/aws-integrations/waf/verify-logs.png)
+    [Verify Log Ingestion in OpenObserve]
 
     > You can also import a [sample AWS WAF dashboard JSON](https://github.com/openobserve/dashboards/tree/main/AWS_WAF) to visualize top IPs, blocked requests, and more.
 
@@ -88,5 +87,3 @@ AWS WAF logs include detailed information about requests evaluated against your 
         - Check that your OpenObserve ingestion URL includes the correct stream  
         - Validate that your access key is correct  
         - Confirm that the HTTP endpoint is reachable and accepts Firehose POST requests
-
-

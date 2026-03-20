@@ -178,4 +178,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = Can not find the compatibility 
 
 ### Keywords
 
-ARRAY, CUM, SUM, CUM_SUM, ARRAY_CUM_SUM 
+ARRAY, CUM, SUM, CUM_SUM, ARRAY_CUM_SUM

@@ -1,14 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Timeouts
 
 The timeout set in router is for the entire length of the call, and is passed down to the completion() call level as well. 
 
 ### Global Timeouts
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -21,9 +17,6 @@ router = Router(model_list=model_list,
 print(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 router_settings:
     timeout: 30 # sets a 30s timeout for the entire call
@@ -35,9 +28,6 @@ router_settings:
 $ litellm --config /path/to/config.yaml
 ```
 
-</TabItem>
-</Tabs>
-
 ### Custom Timeouts & Stream Timeouts (Per Model)
 
 For each model, you can set `timeout` and `stream_timeout` under `litellm_params`:
@@ -47,8 +37,6 @@ For each model, you can set `timeout` and `stream_timeout` under `litellm_params
 
 - **`stream_timeout`** → maximum time to wait for the *first chunk* (i.e., first token) in a streaming response.  
   Use this to abort “hanging” providers (e.g., Bedrock slow start) and retry another model.
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -79,9 +67,6 @@ async def router_acompletion():
 asyncio.run(router_acompletion())
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -103,25 +88,17 @@ model_list:
 
 ```
 
-
 **Start Proxy**
 
 ```shell
 $ litellm --config /path/to/config.yaml
 ```
 
-
-</TabItem>
-</Tabs>
-
-
 ### Setting Dynamic Timeouts - Per Request
 
 LiteLLM supports setting a `timeout` per request 
 
 **Example Usage**
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import Router 
@@ -136,12 +113,6 @@ response = router.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
      --header 'Content-Type: application/json' \
@@ -154,12 +125,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         "timeout": 1
      }'
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
-
 
 client = openai.OpenAI(
     api_key="anything",
@@ -177,12 +145,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
 
 ## Testing timeout handling 
 

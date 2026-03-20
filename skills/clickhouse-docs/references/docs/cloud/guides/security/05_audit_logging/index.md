@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Audit logging'
-slug: /cloud/security/audit_logging
 title: 'Audit logging'
 hide_title: true
 description: 'Table of contents page for the ClickHouse Cloud audit logging section'

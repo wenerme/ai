@@ -12,7 +12,6 @@ The LanceDB storage implementation provides a high-performance storage solution 
 
 :::warning[Observability Not Supported]
 LanceDB storage **doesn't support the observability domain**. Traces from the `DefaultExporter` can't be persisted to LanceDB, and Mastra Studio's observability features won't work with LanceDB as your only storage provider. To enable observability, use [composite storage](/reference/storage/composite#specialized-storage-for-observability) to route observability data to a supported provider like ClickHouse or PostgreSQL.
-:::
 
 ## Installation
 
@@ -108,9 +107,7 @@ const memoryStore = await storage.getStore('memory')
 const thread = await memoryStore?.getThreadById({ threadId: '...' })
 ```
 
-:::warning
-If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
-:::
+> **warning**: If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
 
 ### Deployment Options
 

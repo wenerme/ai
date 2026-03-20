@@ -10,7 +10,7 @@
 
 Performance tuning is a systematic process that requires a comprehensive methodology and implementation framework for systematic diagnosis and optimization. With the strong support of [diagnostic tools](diagnostic-tools.md) and [analysis tools](analysis-tools.md), the Doris system can efficiently diagnose, analyze, locate, and resolve performance issues. The complete four-step process for tuning is as follows:
 
-![Tuning process](/images/query-tuning-steps.jpg)
+[Tuning process]
 
 ## Step 1: Use Performance Diagnostic Tools to Identify Slow Queries
 
@@ -49,9 +49,7 @@ Taking multi-table analysis queries as an example, you can analyze the Profile t
 
 For detailed tuning examples, please refer to the documentation on [Execution Tuning](../tuning/tuning-execution/adjustment-of-runtimefilter-wait-time.md).
 
-:::tip
-When analyzing specific performance issues, it is recommended to first check the plan and then tune the execution. Start by using the Explain tool to confirm the execution plan, and then use the Profile tool to locate and tune execution performance. Reversing the order may lead to inefficiencies and hinder the rapid identification of performance issues.
-:::
+> **tip**: When analyzing specific performance issues, it is recommended to first check the plan and then tune the execution. Start by using the Explain tool to confirm the execution plan, and then use the Profile tool to locate and tune execution performance. Reversing the order may lead to inefficiencies and hinder the rapid identification of performance issues.
 
 ## Summary
 

@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/argMaxIf'
 title: 'argMaxIf'
 description: 'Example of using the argMaxIf combinator'
 keywords: ['argMax', 'if', 'combinator', 'examples', 'argMaxIf']
-sidebar_label: 'argMaxIf'
 doc_type: 'reference'
 ---
 

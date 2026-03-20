@@ -141,8 +141,8 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
       PVC is used to store the model cache and it is optional, you can use hostPath or other storage options
 
-      <details>
-      <summary>Yaml</summary>
+      
+      Yaml
 
       ```yaml
       apiVersion: v1
@@ -160,7 +160,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
         volumeMode: Filesystem
       ```
 
-      </details>
+      
 
       Secret is optional and only required for accessing gated models, you can skip this step if you are not using gated models
 
@@ -181,8 +181,8 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
       NVIDIA GPU:
 
-      <details>
-      <summary>Yaml</summary>
+      
+      Yaml
 
       ```yaml
       apiVersion: apps/v1
@@ -254,14 +254,14 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
                 periodSeconds: 5
       ```
 
-      </details>
+      
 
       AMD GPU:
 
       You can refer to the `deployment.yaml` below if using AMD ROCm GPU like MI300X.
 
-      <details>
-      <summary>Yaml</summary>
+      
+      Yaml
 
       ```yaml
       apiVersion: apps/v1
@@ -331,7 +331,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
                 mountPath: /dev/shm
       ```
 
-      </details>
+      
 
       You can get the full example with steps and sample yaml files from <https://github.com/ROCm/k8s-device-plugin/tree/master/example/vllm-serve>.
 
@@ -339,8 +339,8 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
       Next, create a Kubernetes Service file to expose the `mistral-7b` deployment:
 
-      <details>
-      <summary>Yaml</summary>
+      
+      Yaml
 
       ```yaml
       apiVersion: v1
@@ -361,7 +361,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
         type: ClusterIP
       ```
 
-      </details>
+      
 
 3. Deploy and Test
 

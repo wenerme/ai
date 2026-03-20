@@ -5,9 +5,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Running experiments
 
 **Added in:** `@mastra/core@1.4.0`
@@ -89,8 +86,7 @@ The scorer receives each item's `input` and `groundTruth`. LLM-based judges can 
 
 Scorers automatically run after each item's target execution. Pass scorer instances or registered scorer IDs:
 
-<Tabs>
-  <TabItem value="ids" label="Scorer IDs">
+  
     ```typescript
     // Reference scorers registered on the Mastra instance
     const summary = await dataset.startExperiment({
@@ -100,9 +96,9 @@ Scorers automatically run after each item's target execution. Pass scorer instan
       scorers: ['accuracy', 'fluency'],
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="instances" label="Scorer instances">
+  
     ```typescript
     import { createAnswerRelevancyScorer } from '@mastra/evals/scorers/prebuilt'
 
@@ -115,8 +111,7 @@ Scorers automatically run after each item's target execution. Pass scorer instan
       scorers: [relevancy],
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
 Each item's results include per-scorer scores:
 
@@ -129,11 +124,7 @@ for (const item of summary.results) {
 }
 ```
 
-:::info
-
-Visit the [Scorers overview](/docs/evals/overview) for details on available and custom scorers.
-
-:::
+> **info**: Visit the [Scorers overview](/docs/evals/overview) for details on available and custom scorers.
 
 ## Async experiments
 
@@ -272,11 +263,7 @@ for (const result of results) {
 - `completedWithErrors` is `true` when the experiment finished but some items failed.
 - Items cancelled via `signal` appear in `skippedCount`.
 
-:::info
-
-Visit the [`startExperiment` reference](/reference/datasets/startExperiment) for the full parameter and return type documentation.
-
-:::
+> **info**: Visit the [`startExperiment` reference](/reference/datasets/startExperiment) for the full parameter and return type documentation.
 
 ## Studio
 

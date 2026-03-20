@@ -8,7 +8,6 @@
 
 # Logout Action
 
-
 ## Request
 
 ```

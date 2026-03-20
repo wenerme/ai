@@ -1,30 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/kafka-logs
 title: 'Monitoring Kafka Logs with ClickStack'
-sidebar_label: 'Kafka Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Kafka Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['Kafka', 'logs', 'OTEL', 'ClickStack', 'broker monitoring', 'Log4j']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import log_view from '@site/static/images/clickstack/kafka/logs/log-view.png';
-import search_view from '@site/static/images/clickstack/kafka/logs/search-view.png';
-import finish_import from '@site/static/images/clickstack/kafka/logs/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/kafka/logs/example-dashboard.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Kafka Logs with ClickStack {#kafka-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize Kafka broker logs (Log4j format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Kafka {#existing-kafka}
 
@@ -59,9 +43,7 @@ Kafka's default Log4j pattern produces lines like:
 [2026-03-09 14:23:45,123] INFO [KafkaServer id=0] started (kafka.server.KafkaServer)
 ```
 
-:::note
-For Docker-based Kafka deployments (e.g., `confluentinc/cp-kafka`), the default Log4j configuration only includes a console appender — there is no file appender, so logs are written to stdout only. To use the `filelog` receiver, you'll need to redirect logs to a file, either by adding a file appender to `log4j.properties` or by piping stdout (e.g., `| tee /var/log/kafka/server.log`).
-:::
+> **note**: For Docker-based Kafka deployments (e.g., `confluentinc/cp-kafka`), the default Log4j configuration only includes a console appender — there is no file appender, so logs are written to stdout only. To use the `filelog` receiver, you'll need to redirect logs to a file, either by adding a file appender to `log4j.properties` or by piping stdout (e.g., `| tee /var/log/kafka/server.log`).
 
 #### Create a custom OTel collector configuration for Kafka {#custom-otel}
 
@@ -114,11 +96,9 @@ service:
         - clickhouse
 ```
 
-:::note
-- You only define new receivers and pipelines in the custom config. The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration — you just reference them by name.
+> **note**: - You only define new receivers and pipelines in the custom config. The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration — you just reference them by name.
 - The `multiline` configuration ensures stack traces are captured as a single log entry.
 - This configuration uses `start_at: beginning` to read all existing logs when the collector starts. For production deployments, change to `start_at: end` to avoid re-ingesting logs on collector restarts.
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -127,9 +107,6 @@ To enable custom collector configuration in your existing ClickStack deployment,
 1. Mount the custom config file at `/etc/otelcol-contrib/custom.config.yaml`
 2. Set the environment variable `CUSTOM_OTELCOL_CONFIG_FILE=/etc/otelcol-contrib/custom.config.yaml`
 3. Mount your Kafka log directory so the collector can read them
-
-<Tabs groupId="deployMethod">
-<TabItem value="docker-compose" label="Docker Compose" default>
 
 Update your ClickStack deployment configuration:
 ```yaml
@@ -145,9 +122,6 @@ services:
       # ... other volumes ...
 ```
 
-</TabItem>
-<TabItem value="docker-run" label="Docker Run (All-in-One Image)">
-
 If you're using the all-in-one image with docker, run:
 ```bash
 docker run --name clickstack \
@@ -158,12 +132,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-</TabItem>
-</Tabs>
-
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the Kafka log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the Kafka log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verify Logs in HyperDX {#verifying-logs}
 

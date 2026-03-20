@@ -28,7 +28,6 @@ SHOW [ TEMPORARY ] PARTITIONS
 
 The name of the table for which partition information needs to be viewed must be specified.
 
-
 ## Optional Parameters
 **1. `TEMPORARY`**
 
@@ -79,11 +78,8 @@ The maximum number of rows returned.
 | SyncWithBaseTables       | boolean  | Whether the partition is synchronized with the data of the base table.                                                                                        |
 | UnsyncTables             | varchar  | Whether the partition is a partition of an unsynchronized table.                                                                                              |
 
-
 ## Access Control Requirements
 The SHOW permission for the table to be viewed is required.
-
-
 
 ## Examples
 
@@ -137,4 +133,3 @@ SHOW PARTITIONS FROM t_agg ORDER BY PartitionId DESC LIMIT 1;
 | 169866      | p2025         | 1              | 2024-11-05 14:13:56 | NORMAL | idp_create_time | [types: [DATETIMEV2]; keys: [2025-01-01 00:00:00]; ..types: [DATETIMEV2]; keys: [2026-01-01 00:00:00]; ) | idp_es_id       | 3       | 1              | HDD           | 9999-12-31 23:59:59 |                     | NULL                     | 0.000    | false      | tag.location.default: 1 | true      | true               | NULL         |
 +-------------+---------------+----------------+---------------------+--------+-----------------+----------------------------------------------------------------------------------------------------------+-----------------+---------+----------------+---------------+---------------------+---------------------+--------------------------+----------+------------+-------------------------+-----------+--------------------+--------------+
 ```
-

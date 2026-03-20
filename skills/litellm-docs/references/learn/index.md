@@ -1,10 +1,6 @@
 ---
 title: Learn LiteLLM
-sidebar_label: Learn
-slug: /learn
 ---
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 LiteLLM gives you one OpenAI-compatible interface for 100+ LLM providers. Start with the path that matches your setup.
 

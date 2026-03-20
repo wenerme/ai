@@ -12,7 +12,6 @@ In the storage-and-compute-separated version, specify the compute cluster to use
 
 ## Syntax
 
-
 ```sql
 USE { [ <catalog_name>. ]<database_name>[ @<compute_group_name> ] | @<compute_group_name> }
 ```
@@ -57,7 +56,6 @@ mysql -utest -h175.40.1.1 -P9030
 use @compute_cluster;
 ERROR 5042 (42000): errCode = 2, detailMessage = USAGE denied to user test'@'127.0.0.1' for compute group 'compute_cluster'
 ```
-
 
 ## Notes
 

@@ -20,7 +20,7 @@ th {
 | Dataset | Online | Offline | Data Path |
 | ------- | ------ | ------- | --------- |
 | ShareGPT | ✅ | ✅ | `wget https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json` |
-| ShareGPT4V (Image) | ✅ | ✅ | `wget https://huggingface.co/datasets/Lin-Chen/ShareGPT4V/resolve/main/sharegpt4v_instruct_gpt4-vision_cap100k.json`<br>Note that the images need to be downloaded separately. For example, to download COCO's 2017 Train images:<br>`wget http://images.cocodataset.org/zips/train2017.zip` |
+| ShareGPT4V (Image) | ✅ | ✅ | `wget https://huggingface.co/datasets/Lin-Chen/ShareGPT4V/resolve/main/sharegpt4v_instruct_gpt4-vision_cap100k.json`Note that the images need to be downloaded separately. For example, to download COCO's 2017 Train images:`wget http://images.cocodataset.org/zips/train2017.zip` |
 | ShareGPT4Video (Video) | ✅ | ✅ | `git clone https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video` |
 | BurstGPT | ✅ | ✅ | `wget https://github.com/HPMLL/BurstGPT/releases/download/v1.1/BurstGPT_without_fails_2.csv` |
 | Sonnet (deprecated) | ✅ | ✅ | Local file: `benchmarks/sonnet.txt` |
@@ -58,8 +58,7 @@ Legend:
 
 ### 🚀 Online Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 First start serving your model:
 
@@ -377,7 +376,7 @@ The `--burstiness` parameter mathematically controls request arrival patterns us
     - `burstiness = 1.0`: Natural Poisson traffic (CV = 1.0) - realistic simulation  
     - `burstiness = 5.0`: Uniform traffic (CV ≈ 0.45) - controlled load testing
 
-![Load Pattern Examples](../assets/contributing/load-pattern-examples.png)
+[Load Pattern Examples]
 
 *Figure: Load pattern examples for each use case. Top row: Request arrival timelines showing cumulative requests over time. Bottom row: Inter-arrival time distributions showing traffic variability patterns. Each column represents a different use case with its specific parameter settings and resulting traffic characteristics.*
 
@@ -423,12 +422,9 @@ Using KV cache metrics for load pattern configuration:
 - For Realistic Testing: Monitor memory usage when approaching theoretical limits to understand sustainable request rates
 - Request rate guidance: Use the KV cache size to estimate sustainable request rates for your specific workload and sequence lengths
 
-</details>
-
 ### 📈 Offline Throughput Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 ```bash
 vllm bench throughput \
@@ -563,12 +559,9 @@ vllm bench throughput \
   --random-mm-bucket-config '{(256, 256, 1): 0.7, (720, 1280, 1): 0.3}'
 ```
 
-</details>
-
 ### 🛠️ Structured Output Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Benchmark the performance of structured output generation (JSON, grammar, regex).
 
@@ -635,12 +628,9 @@ python3 benchmarks/benchmark_serving_structured_output.py \
   --num-prompts 1000
 ```
 
-</details>
-
 ### 📚 Long Document QA Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Benchmark the performance of long document question-answering with prefix caching.
 
@@ -687,12 +677,9 @@ python3 benchmarks/benchmark_long_document_qa_throughput.py \
   --repeat-mode interleave
 ```
 
-</details>
-
 ### 🗂️ Prefix Caching Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Benchmark the efficiency of automatic prefix caching.
 
@@ -736,12 +723,9 @@ vllm bench serve \
   --prefix-repetition-output-len 128
 ```
 
-</details>
-
 ### 🧪 Hashing Benchmarks
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Two helper scripts live in `benchmarks/` to compare hashing options used by prefix caching and related utilities. They are standalone (no server required) and help choose a hash algorithm before enabling prefix caching in production.
 
@@ -765,12 +749,9 @@ uv pip install xxhash cbor2
 
 If an algorithm’s dependency is missing, the script will skip it and continue.
 
-</details>
-
 ### ⚡ Request Prioritization Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Benchmark the performance of request prioritization in vLLM.
 
@@ -797,12 +778,9 @@ python3 benchmarks/benchmark_prioritization.py \
   --n 2
 ```
 
-</details>
-
 ### 👁️ Multi-Modal Benchmark
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Benchmark the performance of multi-modal requests in vLLM.
 
@@ -929,14 +907,11 @@ How sampling works:
 This should be seen as an edge case, and if this behavior can be avoided by setting `--random-mm-limit-mm-per-prompt` to a large number. Note that this might result in errors due to engine config `--limit-mm-per-prompt`.
 - The resulting request contains synthetic image data in `multi_modal_data` (OpenAI Chat format). When `random-mm` is used with the OpenAI Chat backend, prompts remain text and MM content is attached via `multi_modal_data`.
 
-</details>
-
 ### 🔬 Multimodal Processor Benchmark
 
 Benchmark per-stage latency of the multimodal (MM) input processor pipeline, including the encoder forward pass. This is useful for profiling preprocessing bottlenecks in vision-language models.
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 The benchmark measures the following stages for each request:
 
@@ -997,14 +972,11 @@ vllm bench mm-processor \
 
 See [`vllm bench mm-processor`](../cli/bench/mm_processor.md) for the full argument reference.
 
-</details>
-
 ### Embedding Benchmark
 
 Benchmark the performance of embedding requests in vLLM.
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 #### Text Embeddings
 
@@ -1095,14 +1067,11 @@ vllm bench serve \
   --dataset-path lmarena-ai/VisionArena-Chat
 ```
 
-</details>
-
 ### Reranker Benchmark
 
 Benchmark the performance of rerank requests in vLLM.
 
-<details class="admonition abstract" markdown="1">
-<summary>Show more</summary>
+Show more
 
 Unlike generative models which use Completions API or Chat Completions API,
 you should set `--backend vllm-rerank` and `--endpoint /v1/rerank` to use the Reranker API.
@@ -1139,5 +1108,3 @@ with an embedding model, also set `--no_reranker`. Because in this case the quer
 treated as an individual prompt by the server, here we send `random_batch_size - 1` documents
 to account for the extra prompt which is the query. The token accounting to report the
 throughput numbers correctly is also adjusted.
-
-</details>

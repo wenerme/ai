@@ -11,8 +11,6 @@ Supervisor agents using `Agent.stream()` and `Agent.generate()` are the recommen
 
 `.network()` is deprecated and will be removed in a future release. While existing code will continue to work until then, no new features will be added to it. Migrate to supervisor agents as soon as possible.
 
-:::
-
 ## Replace `.network()` with `.stream()` or `.generate()`
 
 The core change is replacing `.network()` calls with `.stream()` (for streaming) or `.generate()` (for non-streaming). The agent configuration stays the same -- you still define `agents`, `workflows`, `tools`, and `memory` on the agent. The difference is how you call it and how you process the results.

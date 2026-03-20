@@ -1,11 +1,9 @@
 ---
 title: "PixVerse Text to Video - ComfyUI Built-in Node Documentation"
 description: "A node that converts text descriptions into videos using PixVerse AI technology"
-sidebarTitle: "PixVerse Text to Video"
-icon: "circle"
 ---
 
-![ComfyUI Built-in PixVerse Text to Video Node](/images/built-in-nodes/api_nodes/pixverse/pixverse-text-to-video.jpg)
+[ComfyUI Built-in PixVerse Text to Video Node]
 
 The PixVerse Text to Video node connects to PixVerse's text-to-video API, allowing users to generate high-quality videos from text descriptions. Users can customize their creations by adjusting various parameters like video quality, duration, and motion mode.
 
@@ -39,7 +37,6 @@ The PixVerse Text to Video node connects to PixVerse's text-to-video API, allowi
 | Output | Type  | Description     |
 | ------ | ----- | --------------- |
 | VIDEO  | video | Generated video |
-
 
 ## Source Code
 
@@ -175,4 +172,4 @@ class PixverseTextToVideoNode(ComfyNodeABC):
         vid_response = requests.get(response_poll.Resp.url)
         return (VideoFromFile(BytesIO(vid_response.content)),)
 
-``` 
+```

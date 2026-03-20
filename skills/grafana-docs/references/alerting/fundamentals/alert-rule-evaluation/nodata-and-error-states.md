@@ -97,8 +97,8 @@ A Grafana-managed alert instance can be in any of the following states, dependin
 | **Pending**              | The state of an alert that has breached the threshold but for less than the [pending period](ref:pending-period).                                                                                        |
 | **Alerting**             | The state of an alert that has breached the threshold for longer than the [pending period](ref:pending-period).                                                                                          |
 | **Recovering**           | The state of a firing alert when the threshold is no longer breached, but for less than the [keep firing for](ref:keep-firing) period.                                                                   |
-| **Error<sup>\*</sup>**   | The state of an alert when an error or timeout occurred evaluating the alert rule. <br/> You can customize the behavior of the [Error state](#error-state), which by default triggers a different alert. |
-| **No Data<sup>\*</sup>** | The state of an alert whose query returns no data or all values are null. <br/> You can customize the behavior of the [No Data state](#no-data-state), which by default triggers a different alert.      |
+| **Error<sup>\*</sup>**   | The state of an alert when an error or timeout occurred evaluating the alert rule.  You can customize the behavior of the [Error state](#error-state), which by default triggers a different alert. |
+| **No Data<sup>\*</sup>** | The state of an alert whose query returns no data or all values are null.  You can customize the behavior of the [No Data state](#no-data-state), which by default triggers a different alert.      |
 
 {{< figure src="/media/docs/alerting/alert-state-diagram2.png" caption="Alert instance state diagram" alt="A diagram of the distinct alert instance states and transitions." max-width="750px" >}}
 

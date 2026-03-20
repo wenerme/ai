@@ -19,7 +19,7 @@ The applicable scenarios for synchronous materialized views are as follows:
 
 For queries that frequently and repeatedly use the results of the same subqueries, synchronous materialized views can significantly improve performance. Doris will automatically maintain the data of materialized views to ensure data consistency between the base table and the materialized view table, without requiring additional manual maintenance costs. During a query, the system will automatically match the optimal materialized view and directly read data from it.
 
-:::tip Precautions
+> **tip**: Precautions
 - In Doris 2.0 and *later* versions, materialized views have some enhanced functions. It is recommended that users confirm in the test environment whether the expected queries can hit the materialized views they want to create before using materialized views in the formal production environment.
 - It is not recommended to create multiple materialized views with similar forms on the same table, as this may lead to conflicts among multiple materialized views and thus cause query hit failures.
   :::
@@ -75,4 +75,4 @@ Through the above steps, we can use synchronous materialized views to optimize q
 
 ## Summary
 
-By creating synchronous materialized views, we can significantly improve the query speed for relevant aggregation analysis. Single-table materialized views not only enable us to conduct statistical analysis quickly but also flexibly support the query needs for detailed data, which is a very powerful feature in Doris. 
+By creating synchronous materialized views, we can significantly improve the query speed for relevant aggregation analysis. Single-table materialized views not only enable us to conduct statistical analysis quickly but also flexibly support the query needs for detailed data, which is a very powerful feature in Doris.

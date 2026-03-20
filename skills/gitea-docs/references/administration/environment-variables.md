@@ -1,7 +1,5 @@
 ---
 date: "2017-04-08T11:34:00+02:00"
-slug: "environment-variables"
-sidebar_position: 10
 aliases:
   - /en-us/environment-variables
 ---

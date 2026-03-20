@@ -30,4 +30,3 @@ mysql >select true xor false,true xor true;
 
 ## Keywords
 	XOR
-

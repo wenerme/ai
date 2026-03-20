@@ -1,6 +1,5 @@
 ---
 title: Detect when code is executed with Bun
-sidebarTitle: Detect Bun
 mode: center
 ---
 
@@ -16,10 +15,8 @@ if (process.versions.bun) {
 
 Alternatively, you can check for the existence of the `Bun` global. This is similar to how you'd check for the existence of the `window` variable to detect when code is being executed in a browser.
 
-<Note>
   This approach will result in a type error in TypeScript unless `@types/bun` is installed. You can install it with `bun
   add -d @types/bun`.
-</Note>
 
 ```ts
 if (typeof Bun !== "undefined") {

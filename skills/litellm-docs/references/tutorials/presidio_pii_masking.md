@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Presidio PII Masking with LiteLLM - Complete Tutorial
 
@@ -162,9 +160,6 @@ Let's test the PII masking with various types of sensitive data.
 
 ### Test 1: Basic PII Detection
 
-<Tabs>
-<TabItem label="Request with PII" value="pii-request">
-
 ```bash
 curl -X POST http://localhost:4000/chat/completions \
   -H "Content-Type: application/json" \
@@ -181,19 +176,11 @@ curl -X POST http://localhost:4000/chat/completions \
   }'
 ```
 
-</TabItem>
-
-<TabItem label="What LLM Receives" value="masked">
-
 The LLM will receive the masked version:
 
 ```
 My name is <PERSON>, my email is <EMAIL_ADDRESS>, and my credit card is <CREDIT_CARD>
 ```
-
-</TabItem>
-
-<TabItem label="Response" value="response">
 
 ```json
 {
@@ -210,9 +197,6 @@ My name is <PERSON>, my email is <EMAIL_ADDRESS>, and my credit card is <CREDIT_
   "model": "gpt-3.5-turbo"
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Test 2: Medical Information (PHI)
 

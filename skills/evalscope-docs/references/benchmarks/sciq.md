@@ -38,7 +38,6 @@ SciQ is a crowdsourced science exam question dataset covering Physics, Chemistry
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -112,5 +111,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

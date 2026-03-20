@@ -18,8 +18,7 @@ Vite took a different approach. It split the work into two parts:
 This meant dev server startup was nearly instant, regardless of application size. When you edited a file, Vite used [Hot Module Replacement](./features.md#hot-module-replacement) (HMR) over native ESM to update just that module in the browser, without a full page reload or waiting for a rebuild.
 
 <script setup>
-import bundlerSvg from '../images/bundler.svg?raw'
-import esmSvg from '../images/esm.svg?raw'
+
 </script>
 <svg-image :svg="bundlerSvg" />
 

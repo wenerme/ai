@@ -144,4 +144,4 @@ SELECT BOOL_XOR('invalid type');
 ```
 ```text
 ERROR 1105 (HY000): errCode = 2, detailMessage = bool_xor requires a boolean or numeric argument
-``` 
+```

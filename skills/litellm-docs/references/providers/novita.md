@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Novita AI
 
@@ -11,8 +9,6 @@ import TabItem from '@theme/TabItem';
 | Provider Doc | [Novita AI Docs ↗](https://novita.ai/docs/guides/introduction) |
 | API Endpoint for Provider | https://api.novita.ai/v3/openai |
 | Supported OpenAI Endpoints | `/chat/completions`, `/completions` |
-
-<br />
 
 ## API Keys
 
@@ -43,11 +39,7 @@ os.environ["NOVITA_API_KEY"] = "your-api-key"
 - response_format
 - separate_reasoning
 
-
 ## Sample Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -62,9 +54,6 @@ response = completion(
 content = response.get('choices', [{}])[0].get('message', {}).get('content')
 print(content)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -95,10 +84,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }
 '
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Tool Calling
 
@@ -146,9 +131,6 @@ assert isinstance(
 
 ## JSON Mode
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion 
 import json 
@@ -171,9 +153,6 @@ completion(
 
 print(json.loads(completion.choices[0].message.content))
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -205,10 +184,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }
 '
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Chat Models
 

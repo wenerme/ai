@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Qualifire
 
@@ -65,9 +63,6 @@ litellm --config config.yaml --detailed_debug
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
-
 Expect this to fail since it contains a prompt injection attempt:
 
 ```shell showLineNumbers title="Curl Request"
@@ -102,10 +97,6 @@ Expected response on failure:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call" value = "allowed">
-
 ```shell showLineNumbers title="Curl Request"
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -118,9 +109,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "guardrails": ["qualifire-guard"]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Using Pre-configured Evaluations
 

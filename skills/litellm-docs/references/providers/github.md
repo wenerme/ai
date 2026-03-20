@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Github
 https://github.com/marketplace/models
 
-:::tip
-
-**We support ALL Github models, just set `model=github/<any-model-on-github>` as a prefix when sending litellm requests**
+> **tip**: **We support ALL Github models, just set `model=github/<any-model-on-github>` as a prefix when sending litellm requests**
 Ignore company prefix: meta/Llama-3.2-11B-Vision-Instruct becomes model=github/Llama-3.2-11B-Vision-Instruct
-
-:::
 
 ## API Key
 ```python
@@ -50,8 +45,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
-
 ## Usage with LiteLLM Proxy 
 
 ### 1. Set Github Models on config.yaml
@@ -74,9 +67,6 @@ litellm --config config.yaml
 
 Make request to litellm proxy
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -91,8 +81,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -111,8 +99,6 @@ response = client.chat.completions.create(model="github-Llama-3.2-11B-Vision-Ins
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -141,10 +127,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
-
 
 ## Supported Models - ALL Github Models Supported!
 We support ALL Github models, just set `github/` as a prefix when sending completion requests
@@ -176,9 +158,6 @@ def get_current_weather(location, unit="fahrenheit"):
         return json.dumps({"location": "Paris", "temperature": "22", "unit": "celsius"})
     else:
         return json.dumps({"location": location, "temperature": "unknown"})
-
-
-
 
 # Step 1: send the conversation and available functions to the model
 messages = [
@@ -223,7 +202,6 @@ response = litellm.completion(
 print("Response\n", response)
 response_message = response.choices[0].message
 tool_calls = response_message.tool_calls
-
 
 # Step 2: check if the model wanted to call a function
 if tool_calls:

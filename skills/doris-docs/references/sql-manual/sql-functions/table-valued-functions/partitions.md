@@ -27,7 +27,6 @@ PARTITIONS(
 | **`<database>`** | Specify the cluster database name to be queried. |
 | **`<table>`**    | Specify the cluster table name to be queried.    |
 
-
 ## Return Value
 | Field                     | Description                                                                 |
 |---------------------------|-----------------------------------------------------------------------------|
@@ -51,8 +50,6 @@ PARTITIONS(
 | IsMutable                 | Whether the partition is mutable                                             |
 | SyncWithBaseTables        | Whether the partition is synchronized with the base table (for async materialized views) |
 | UnsyncTables              | Which base table is unsynchronized (for async materialized view partitions)   |
-
-
 
 ## Examples
 View the partition list of example_table under test in the internal catalog
@@ -96,4 +93,3 @@ select PartitionId from partitions("catalog"="internal","database"="test","table
 |       43209 |
 +-------------+
 ```
-

@@ -216,7 +216,6 @@ In production, it is recommended to deploy at least 3 nodes. After deploying the
 
    - `TabletNum` represents the number of shards on the node. Newly added nodes will undergo data balancing, and the `TabletNum` will gradually become more evenly distributed.
 
-
 ## Step 4: Verify Cluster Integrity
 
 1. **Log in to the Database**

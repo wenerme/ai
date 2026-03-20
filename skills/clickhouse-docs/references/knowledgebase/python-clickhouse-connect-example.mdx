@@ -7,15 +7,12 @@ keywords: ['Python', 'ClickHouse Cloud']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 This is a step by step example on how to start using Python with ClickHouse Cloud service. 
 
-:::note
-Keep in mind that Python versions and libraries dependencies are constantly evolving. Make also sure to use the latest supported versions of both the driver and Python environment when trying this.
+> **note**: Keep in mind that Python versions and libraries dependencies are constantly evolving. Make also sure to use the latest supported versions of both the driver and Python environment when trying this.
 
 At the time of writing this article, we're using the [clickhouse-connect](https://github.com/ClickHouse/clickhouse-connect) driver version `0.5.23` and python `3.11.2` respectively.
-:::
 
 ## Steps \{#steps\}
 
@@ -120,7 +117,5 @@ query: [SELECT max(key), avg(metric) FROM new_table] returns:
 [(2000, -50.9035)]
 ```
 
-:::tip
-If using an older Python version (e.g. `3.9.6`) you might be getting an `ImportError` related to `urllib3` library.
+> **tip**: If using an older Python version (e.g. `3.9.6`) you might be getting an `ImportError` related to `urllib3` library.
 In that case either upgrade your Python environment to a newer version or pin the `urllib3` version to `1.26.15` in your requirements.txt file.
-:::

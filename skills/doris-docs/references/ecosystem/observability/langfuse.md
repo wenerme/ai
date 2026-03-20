@@ -18,7 +18,6 @@ Langfuse is an open-source LLM engineering platform that provides comprehensive 
 
 This document provides detailed instructions on how to deploy a Langfuse solution using Apache Doris as the analytics backend, fully leveraging Doris's powerful OLAP analytics capabilities to process large-scale LLM application data.
 
-
 ## System Architecture
 
 The Langfuse on Doris solution uses a microservices architecture with the following core components:
@@ -33,12 +32,8 @@ The Langfuse on Doris solution uses a microservices architecture with the follow
 | Doris Fe        | 9030 8030 | Doris Frontend, part of the Doris architecture, responsible for receiving user requests, query parsing and planning, metadata management, and node management                      |
 | Doris Be        | 8040 8050 | Doris Backends, part of the Doris architecture, responsible for data storage and query plan execution. Data is split into shards and stored with multiple replicas in BE nodes. |
 
-::: note
-
-When deploying Apache Doris, you can choose between integrated compute-storage architecture or disaggregated compute-storage architecture based on your hardware environment and business requirements.
+> **note**: When deploying Apache Doris, you can choose between integrated compute-storage architecture or disaggregated compute-storage architecture based on your hardware environment and business requirements.
 For Langfuse deployment, Docker Doris is not recommended for production environments. The FE and BE components included in Docker are intended for users to quickly experience the Langfuse on Doris capabilities.
-
-:::
 
 ```mermaid
 flowchart TB
@@ -97,9 +92,8 @@ flowchart TB
     - Langfuse services can access the relevant ports of the Doris cluster
     - Clients can access the Langfuse Web service port
 
-:::tip Deployment Recommendation
+> **tip**: Deployment Recommendation
 It is recommended to use Docker to deploy Langfuse service components (Web, Worker, Redis, PostgreSQL), but Doris is recommended to be deployed separately for better performance and stability. Please refer to the official documentation for detailed Doris deployment guide.
-:::
 
 ## Configuration Parameters
 
@@ -147,7 +141,6 @@ Langfuse services require multiple environment variables to support the proper o
 |---------|--------|------|
 | `LANGFUSE_ENABLE_BACKGROUND_MIGRATIONS` | `false` | Disable background migrations (must be disabled when using Doris) |
 | `LANGFUSE_AUTO_DORIS_MIGRATION_DISABLED` | `false` | Enable Doris auto migration |
-
 
 ## Docker Compose Deployment
 
@@ -211,7 +204,6 @@ langfuse-web        selectdb/langfuse-web:latest      "dumb-init -- ./web/…"  
 langfuse-worker     selectdb/langfuse-worker:latest   "dumb-init -- ./work…"   langfuse-worker   2 minutes ago   Up About a minute (healthy)   0.0.0.0:3030->3030/tcp, :::3030->3030/tcp
 ```
 
-
 #### 4. Service Initialization
 
 After deployment is complete, access and initialize the service as follows:
@@ -225,7 +217,6 @@ After deployment is complete, access and initialize the service as follows:
 3. Create a new organization and project
 4. Obtain the project's API Keys (Public Key and Secret Key)
 5. Configure the authentication information required for SDK integration
-
 
 # Examples
 
@@ -242,10 +233,8 @@ os.environ["LANGFUSE_SECRET_KEY"] = "sk-lf-******-******"
 os.environ["LANGFUSE_PUBLIC_KEY"] = "pk-lf-******-******" 
 os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 
-
 # use OpenAI client
 client = OpenAI()
-
 
 # ask a question
 question = "What are the key features of the Doris observability solution? Please answer concisely."
@@ -260,8 +249,6 @@ completion = client.chat.completions.create(
 response = completion.choices[0].message.content
 print(f"response: {response}")
 ```
-
-![](/images/ecomsystem/langfuse/langfuse_2.png)
 
 ## Using LangChain SDK
 
@@ -293,7 +280,6 @@ try:
 except Exception as e:
     print(f"Error during chain execution: {e}")
 ```
-![](/images/ecomsystem/langfuse/langfuse_2.png)
 
 ## Using LlamaIndex SDK
 
@@ -310,14 +296,11 @@ os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 
 langfuse = get_client()
 
-
 # Initialize LlamaIndex instrumentation
 LlamaIndexInstrumentor().instrument()
 
-
 # Set up the OpenAI class with the required model
 llm = OpenAI(model="gpt-4o")
-
 
 # ask a question
 question = "What are the key features of the Doris observability solution? Please answer concisely."
@@ -327,5 +310,3 @@ with langfuse.start_as_current_span(name="llama-index-trace"):
     response = llm.complete(question)
     print(f"response: {response}")
 ```
-
-![](/images/ecomsystem/langfuse/langfuse_3.png)

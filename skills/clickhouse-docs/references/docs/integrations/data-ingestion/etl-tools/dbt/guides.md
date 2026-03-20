@@ -1,23 +1,9 @@
 ---
-sidebar_label: 'Guides'
-slug: /integrations/dbt/guides
-sidebar_position: 4
 description: 'Guides for using dbt with ClickHouse'
 keywords: ['clickhouse', 'dbt', 'guides']
 title: 'Guides'
 doc_type: 'guide'
 ---
-
-import TOCInline from '@theme/TOCInline';
-import Image from '@theme/IdealImage';
-import dbt_01 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_01.png';
-import dbt_02 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_02.png';
-import dbt_03 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_03.png';
-import dbt_04 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_04.png';
-import dbt_05 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_05.png';
-import dbt_06 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_06.png';
-import dbt_07 from '@site/static/images/integrations/data-ingestion/etl-tools/dbt/dbt_07.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Guides
 
@@ -99,9 +85,7 @@ CREATE TABLE imdb.roles
 ) ENGINE = MergeTree ORDER BY (actor_id, movie_id);
 ```
 
-:::note
-The column `created_at` for the table `roles`, which defaults to a value of `now()`. We use this later to identify incremental updates to our models - see [Incremental Models](#creating-an-incremental-materialization).
-:::
+> **note**: The column `created_at` for the table `roles`, which defaults to a value of `now()`. We use this later to identify incremental updates to our models - see [Incremental Models](#creating-an-incremental-materialization).
 
 We use the `s3` function to read the source data from public endpoints to insert data. Run the following commands to populate the tables:
 
@@ -808,8 +792,6 @@ Performs the following steps:
 1. Create a staging (temporary) table with the same structure as the incremental model relation: `CREATE TABLE {staging} AS {target}`.
 2. Insert only new records (produced by SELECT) into the staging table.
 3. Replace only new partitions (present in the staging table) into the target table.
-
-<br />
 
 This approach has the following advantages:
 

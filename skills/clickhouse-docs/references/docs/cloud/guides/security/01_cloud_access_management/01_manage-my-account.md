@@ -1,13 +1,9 @@
 ---
-sidebar_label: 'Manage my account'
-slug: /cloud/security/manage-my-account
 title: 'Manage my account'
 description: 'This page describes how you can accept invitations, manage MFA settings, and reset passwords'
 doc_type: 'guide'
 keywords: ['account management', 'user profile', 'security', 'cloud console', 'settings']
 ---
-
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
 
 ## Accept an invitation {#accept-invitation}
 
@@ -15,9 +11,8 @@ You may use multiple methods to accept an invitation to join an organization. If
 
 If this isn't your first organization, either sign in with your existing organization then accept the invitation from the lower left hand side of the page OR accept the invitation from your email and sign in with your existing account. 
 
-:::note SAML Users
+> **note**: SAML Users
 Organizations using SAML have a unique login per ClickHouse organization. Use the direct link provided by your administrator to log in.
-:::
 
 ### Email and password {#email-and-password}
 
@@ -109,4 +104,4 @@ If you lost your MFA device AND recovery code or you lost your MFA device and ne
 
 **Submit a ticket**: If you're in an organization that has other administrative users, even if you're attempting to access a single user organization, ask a member of your organization assigned the Admin role to log into the organization and submit a support ticket to reset your MFA on your behalf. Once we verify the request is authenticated, we will reset your MFA and notify the Admin. Sign in as usual without MFA and go to your profile settings to enroll a new factor if you wish.
 
-**Reset via email**: If you're the only user in the organization, submit a support case via email (support@clickhouse.com) using the email address associated with your account. Once we verify the request is coming from the correct email, we will reset your MFA AND password. Access your email to access the password reset link. Set up a new password then go to your profile settings to enroll a new factor if you wish. 
+**Reset via email**: If you're the only user in the organization, submit a support case via email (support@clickhouse.com) using the email address associated with your account. Once we verify the request is coming from the correct email, we will reset your MFA AND password. Access your email to access the password reset link. Set up a new password then go to your profile settings to enroll a new factor if you wish.

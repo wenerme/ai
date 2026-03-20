@@ -28,8 +28,6 @@ After creating the table, the properties of the table type are confirmed and can
 
 * **Update partial columns**, please refer to the documentation for [Partial Column Updates in Unique Key Model](../../data-operate/update/update-of-aggregate-model) and [Partial Column Updates in Aggregate Model](../../data-operate/update/update-of-aggregate-model) for relevant usage advice.
 
-
-
 ## Sort Key
 
 In Doris, data is stored in a columnar format, and a table can be divided into Key columns and Value columns. The Key columns are used for grouping and sorting, while the Value columns are used for aggregation. Key columns can consist of one or more fields, and when creating a table, data is sorted and stored according to the columns of Aggregate Key, Unique Key, and Duplicate Key models.

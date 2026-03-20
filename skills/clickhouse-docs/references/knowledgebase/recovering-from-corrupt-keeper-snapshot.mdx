@@ -7,10 +7,6 @@ description: 'Article describing how to recover from a corrupt Keeper snapshot: 
 ---
 
 {frontMatter.description}
-{/* truncate */}
-
-<br/>
-<br/>
 
 Corrupt or bad ClickHouse Keeper snapshots can cause significant system instability, such as metadata inconsistencies, read-only states for tables, resource exhaustion, or failed backups. This article covers:
 
@@ -30,9 +26,7 @@ Snapshots are stored as files on the local filesystem of Keeper nodes. By defaul
 
 For multi-node clusters, each Keeper node has its own snapshot directory.
 
-:::note
-Consistency within snapshots across nodes is critical for recovery.
-:::
+> **note**: Consistency within snapshots across nodes is critical for recovery.
 
 ## Key symptoms and manifestations of corrupt Keeper snapshots {#symptoms}
 
@@ -57,8 +51,8 @@ Before diagnosing snapshot corruption, check **Keeper logs** for specific error 
 
 | **Log Type** | **What to Look For** |
 |---|---|
-| **Snapshot corruption errors** | • `Aborting because of failure to load from latest snapshot with index`<br/>• `Failure to load from latest snapshot with index {}: {}. Manual intervention is necessary for recovery`<br/>• `Failed to preprocess stored log at index {}, aborting to avoid inconsistent state`<br/>• Snapshot serialization/loading failures during startup |
-| **Other Keeper issues** | • `Coordination::Exception`<br/>• `Zookeeper::Session Timeout`<br/>• Synchronization or election issues<br/>• Log compaction race conditions |
+| **Snapshot corruption errors** | • `Aborting because of failure to load from latest snapshot with index`• `Failure to load from latest snapshot with index {}: {}. Manual intervention is necessary for recovery`• `Failed to preprocess stored log at index {}, aborting to avoid inconsistent state`• Snapshot serialization/loading failures during startup |
+| **Other Keeper issues** | • `Coordination::Exception`• `Zookeeper::Session Timeout`• Synchronization or election issues• Log compaction race conditions |
 
 ## Recovering from corrupt Keeper snapshots {#recovery-strategies}
 
@@ -86,7 +80,6 @@ Follow the steps below to restore an existing backup:
 
 :::tip[Backup regularly]
 If backups are outdated, you may incur a loss of recent metadata changes. For this reason, we recommend backing up regularly.
-:::
 
 ---
 
@@ -105,7 +98,6 @@ Follow the steps below to roll back to an older snapshot:
 
 :::warning[Metadata desynchronization risk]
 There is a risk of metadata desynchronization if snapshots and logs are missing or incomplete.
-:::
 
 ---
 
@@ -141,11 +133,9 @@ SYSTEM SYNC REPLICA [db.]table_name;
 
 :::info[How it works]
 `SYSTEM RESTORE REPLICA` detaches all existing parts, recreates metadata in Keeper (as if it's a new empty table), then reattaches all parts. This avoids re-downloading data over the network.
-:::
 
 :::warning[Prerequisites]
 This only works if local data parts are intact. If data is also corrupted, use strategy #5 (rebuild cluster) instead.
-:::
 
 ---
 
@@ -193,11 +183,9 @@ SYSTEM SYNC REPLICA [db.]table_name;
 
 :::warning[Execute on all affected replicas]
 If the corruption affects multiple replicas, repeat these steps on each one sequentially.
-:::
 
 :::tip[For entire database]
 If using a Replicated database, you can use `SYSTEM DROP REPLICA ... FROM DATABASE db_name` instead.
-:::
 
 **Alternative: Using force_restore_data flag**
 
@@ -232,4 +220,3 @@ Follow the steps below to rebuild the Keeper cluster:
 
 :::warning[Time-intensive process]
 This process is time-intensive and carries a risk of prolonged outage. Total data reconstruction is required.
-:::

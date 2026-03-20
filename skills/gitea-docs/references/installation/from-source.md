@@ -1,7 +1,5 @@
 ---
 date: "2016-12-01T16:00:00+02:00"
-slug: "install-from-source"
-sidebar_position: 30
 aliases:
   - /en-us/install-from-source
 ---
@@ -18,11 +16,9 @@ Next, [install Node.js with npm](https://nodejs.org/en/download/) which is
 required to build the JavaScript and CSS files. The minimum supported Node.js
 version is @minNodeVersion@ and the latest LTS version is recommended.
 
-:::note
-Go version @minGoVersion@ or higher is required. However, it is recommended to
+> **note**: Go version @minGoVersion@ or higher is required. However, it is recommended to
 obtain the same version as our continuous integration, see the advice given in
 [Hacking on Gitea](development/hacking-on-gitea.md)
-:::
 
 ## Download
 

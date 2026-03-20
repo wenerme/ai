@@ -66,8 +66,6 @@ pkg.name;
 
 If a `.json` file is passed as an entrypoint to the bundler, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```json Input
 {
   "name": "John Doe",
@@ -83,8 +81,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ### `jsonc`
 
@@ -105,9 +101,7 @@ var config = {
 };
 ```
 
-<Note>
   Bun automatically uses the `jsonc` loader for `tsconfig.json`, `jsconfig.json`, `package.json`, and `bun.lock` files.
-</Note>
 
 ### `toml`
 
@@ -135,8 +129,6 @@ config.logLevel;
 
 If a `.toml` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```toml Input
 name = "John Doe"
 age = 35
@@ -150,8 +142,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ### `yaml`
 
@@ -179,8 +169,6 @@ var config = {
 
 If a `.yaml` or `.yml` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```yaml Input
 name: John Doe
 age: 35
@@ -194,8 +182,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ### `json5`
 
@@ -223,8 +209,6 @@ var config = {
 
 If a `.json5` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```json5 Input
 {
   // Configuration
@@ -241,8 +225,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ### `text`
 
@@ -269,8 +251,6 @@ console.log(contents);
 
 If a `.txt` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the file contents.
 
-<CodeGroup>
-
 ```txt Input
 Hello, world!
 ```
@@ -278,8 +258,6 @@ Hello, world!
 ```ts Output
 export default "Hello, world!";
 ```
-
-</CodeGroup>
 
 ### `napi`
 
@@ -325,12 +303,10 @@ The html loader processes HTML files and bundles any referenced assets. It will:
 
 - Bundle and hash referenced JavaScript files (`<script src="...">`)
 - Bundle and hash referenced CSS files (`<link rel="stylesheet" href="...">`)
-- Hash referenced images (`<img src="...">`)
+- Hash referenced images (``)
 - Preserve external URLs (by default, anything starting with `http://` or `https://`)
 
 For example, given this HTML file:
-
-<CodeGroup>
 
 ```html src/index.html
 <!DOCTYPE html>
@@ -343,11 +319,7 @@ For example, given this HTML file:
 </html>
 ```
 
-</CodeGroup>
-
 It will output a new HTML file with the bundled assets:
-
-<CodeGroup>
 
 ```html dist/output.html
 <!DOCTYPE html>
@@ -359,8 +331,6 @@ It will output a new HTML file with the bundled assets:
   </body>
 </html>
 ```
-
-</CodeGroup>
 
 Under the hood, it uses [`lol-html`](https://github.com/cloudflare/lol-html) to extract script and link tags as entrypoints, and other assets as external.
 
@@ -385,8 +355,6 @@ Currently, the list of selectors is:
 - `video[poster]`
 - `video[src]`
 
-<Note>
-
 **HTML Loader Behavior in Different Contexts**
 
 The `html` loader behaves differently depending on how it's used:
@@ -396,8 +364,6 @@ The `html` loader behaves differently depending on how it's used:
 2. **Runtime:** When you run `bun run server.ts` (where `server.ts` imports an HTML file), Bun bundles assets on-the-fly during development, enabling features like hot module replacement.
 
 3. **Full-stack Build:** When you run `bun build --target=bun server.ts` (where `server.ts` imports an HTML file), the import resolves to a manifest object that `Bun.serve` uses to efficiently serve pre-bundled assets in production.
-
-</Note>
 
 ### `css`
 
@@ -454,13 +420,11 @@ If a value is specified for `publicPath`, the import will use value as a prefix 
 | `"/assets"`                  | `/assets/logo.svg`                 |
 | `"https://cdn.example.com/"` | `https://cdn.example.com/logo.svg` |
 
-<Note>
   The location and file name of the copied file is determined by the value of [`naming.asset`](/bundler#naming).
-</Note>
+
 This loader is copied into the `outdir` as-is. The name of the copied file is determined using the value of
 `naming.asset`.
 
-<Accordion title="Fixing TypeScript import errors">
 If you're using TypeScript, you may get an error like this:
 
 ```ts
@@ -478,5 +442,3 @@ declare module "*.svg" {
 ```
 
 This tells TypeScript that any default imports from `.svg` should be treated as a string.
-
-</Accordion>

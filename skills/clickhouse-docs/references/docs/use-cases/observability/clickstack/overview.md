@@ -1,20 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/overview
 title: 'ClickStack - The ClickHouse Observability Stack'
-sidebar_label: 'Overview'
-pagination_prev: null
-pagination_next: use-cases/observability/clickstack/getting-started/index
 description: 'Overview for ClickStack - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['clickstack', 'observability', 'logs', 'monitoring', 'platform']
 ---
-
-import Image from '@theme/IdealImage';
-import oss_simple_architecture from '@site/static/images/use-cases/observability/clickstack-simple-oss-architecture.png';
-import managed_simple_architecture from '@site/static/images/use-cases/observability/clickstack-simple-managed-architecture.png';
-import landing_image from '@site/static/images/use-cases/observability/hyperdx-landing.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <Image img={landing_image} alt="Landing page" size="lg"/>
 
@@ -88,9 +77,6 @@ ClickStack is fully open source and can be deployed anywhere. The schema is flex
 
 The ClickStack architecture varies depending on how it is deployed. There are important architectural distinctions between **ClickStack Open Source**, where all components are self-managed, and **Managed ClickStack**, where ClickHouse and the HyperDX UI are hosted and operated in ClickHouse Cloud. While the core components remain the same in both models, the responsibility for hosting, scaling, and securing each component differs.
 
-<Tabs groupId="architectures">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
-
 <Image img={managed_simple_architecture} alt="Managed ClickStack architecture" size="md" />
 
 Managed ClickStack runs entirely within **ClickHouse Cloud**, providing a fully managed observability backend while preserving the same ClickStack data model and user experience.
@@ -122,11 +108,6 @@ This deployment model allows teams to focus entirely on observability workflows 
 
 For users deploying ClickStack in production, Managed ClickStack is the recommended option. See the [Getting started guide](/use-cases/observability/clickstack/getting-started/managed) for instructions on deploying ClickStack with ClickHouse Cloud.
 
-<br/>
-</TabItem>
-
-<TabItem value="oss-clickstack" label="Open Source ClickStack" default>
-
 <Image img={oss_simple_architecture} alt="OSS Simple architecture" size="md" />
 
 Open Source ClickStack consists of three core components:
@@ -145,7 +126,3 @@ In addition to these three components, ClickStack uses a **MongoDB instance** to
 A full architectural diagram and deployment details can be found in the [Architecture section](/use-cases/observability/clickstack/architecture).
 
 For users interesting in deploying Open Source ClickStack to production, we recommend reading the ["Production"](/use-cases/observability/clickstack/production) guide.
-
-<br/>
-</TabItem>
-</Tabs>

@@ -1,10 +1,7 @@
 ---
 title: "How to Troubleshoot and Solve ComfyUI Issues"
 description: "Troubleshoot and fix problems caused by custom nodes and extensions"
-icon: "puzzle-piece"
-sidebarTitle: "Custom Node Issues"
 ---
-
 
 Here is the overall approach for troubleshooting custom node issues:
 
@@ -14,7 +11,7 @@ Here is the overall approach for troubleshooting custom node issues:
     B -- Yes --> C[Issue caused by custom nodes]
     B -- No --> D[Issue not caused by custom nodes, refer to other troubleshooting docs]
     C --> E{<a href="#1-troubleshooting-the-custom-nodes’-frontend-extensions">Check frontend extensions first</a>?}
-    E -- Yes --> F[<a href="#1-troubleshooting-the-custom-nodes’-frontend-extensions">Troubleshoot in ComfyUI frontend</a><br/><li>Only need reload the frontend</li>]
+    E -- Yes --> F[<a href="#1-troubleshooting-the-custom-nodes’-frontend-extensions">Troubleshoot in ComfyUI frontend</a><li>Only need reload the frontend</li>]
     E -- No --> G[<a href="#2-general-custom-node-troubleshooting">Use general binary search method</a><li>Need to restart ComfyUI multiple times</li>]
     F --> H[Use binary search to locate problematic node]
     G --> H
@@ -33,18 +30,15 @@ or run the server manually:
 cd path/to/your/comfyui
 python main.py --disable-all-custom-nodes
 ```
-</Tab>
-<Tab title="Manual Install">
+
 ```bash
 cd ComfyUI
 python main.py --disable-all-custom-nodes
 ```
-</Tab>
-<Tab title="Portable">
-<Tabs>
-   <Tab title="Modify `.bat` file">
+
+   
    Open the folder where the portable version is located, and find the `run_nvidia_gpu.bat` or `run_cpu.bat` file
-   ![Modify .bat file](/images/troubleshooting/Portable-disable-custom-nodes.jpg)
+   [Modify .bat file]
    1. Copy `run_nvidia_gpu.bat` or `run_cpu.bat` file and rename it to `run_nvidia_gpu_disable_custom_nodes.bat`
    2. Open the copied file with Notepad
    3. Add the `--disable-all-custom-nodes` parameter to the file, or copy the parameters below into a `.txt` file and rename the file to `run_nvidia_gpu_disable_custom_nodes.bat`
@@ -54,21 +48,18 @@ python main.py --disable-all-custom-nodes
    ```
    4. Save the file and close it
    5. Double-click the file to run it. If everything is normal, you should see ComfyUI start and custom nodes disabled
-   </Tab>
-   <Tab title="Through Command Line">
-   ![ComfyUI troubleshooting](/images/troubleshooting/portable-disable-custom-nodes-cml-1.jpg)
+   
+   
+   [ComfyUI troubleshooting]
    1. Enter the folder where the portable version is located
    2. Open the terminal by right-clicking the menu → Open terminal
-   ![ComfyUI troubleshooting](/images/troubleshooting/portable-disable-custom-nodes-cml-2.jpg)
+   [ComfyUI troubleshooting]
    3. Ensure that the folder name is the current directory of the portable version
    4. Enter the following command to start ComfyUI through the portable python and disable custom nodes
    ```
    .\python_embeded\python.exe -s ComfyUI\main.py --disable-all-custom-nodes
    ```
-   </Tab>
-</Tabs>
-</Tab>
-</Tabs>
+   
 
 **Results:**
 - ✅ **Issue disappears**: A custom node is causing the problem → Continue to Step 2
@@ -102,14 +93,13 @@ flowchart TD
 
 In this document, we categorize custom nodes into two types for troubleshooting:
 
-![Custom node types](/images/troubleshooting/custom_node_type.jpg)
+[Custom node types]
 - A: Custom nodes with frontend extensions
 - B: Regular custom nodes
 
 Let's first understand the potential issues and causes for different types of custom nodes:
 
-<Tabs>
-   <Tab title="Custom Nodes with Frontend Extensions">
+   
    For custom nodes, we can prioritize troubleshooting those with frontend extensions, as they cause the most issues. Their main conflicts arise from incompatibilities with ComfyUI frontend version updates.
    
    Common issues include:
@@ -127,8 +117,8 @@ Let's first understand the potential issues and causes for different types of cu
    - Users updating ComfyUI without synchronously upgrading custom nodes, even though authors have released compatible versions
    - Authors stopping maintenance, leading to incompatibility between custom node extensions and the ComfyUI frontend
       
-   </Tab>
-   <Tab title="Regular Custom Nodes">
+   
+   
    If the problem isn't caused by custom nodes' frontend extensions, issues often relate to dependencies. Common problems include:
    - "Failed to import" errors in console/logs
    - Missing nodes still showing as missing after installation and restart
@@ -141,8 +131,7 @@ Let's first understand the potential issues and causes for different types of cu
    - Network issues preventing successful dependency installation
 
    When problems involve Python environment interdependencies and versions, troubleshooting becomes more complex and requires knowledge of Python environment management, including how to install and uninstall dependencies
-   </Tab>
-</Tabs>
+   
 
 ## Using Binary Search for Troubleshooting
 
@@ -150,40 +139,36 @@ Among these two different types of custom node issues, conflicts between custom 
 
 ### 1. Troubleshooting the Custom Nodes' Frontend Extensions
 
-<Steps>
-   <Step title="Disable All Third-Party Frontend Extensions">
-   ![Disable all plugin frontend extensions](/images/troubleshooting/disable_3rd_party.jpg)
+   
+   [Disable all plugin frontend extensions]
    After starting ComfyUI, find the `Extensions` menu in settings and follow the steps shown in the image to disable all third-party extensions
-   <Tip>
+   
       If you can't enter ComfyUI frontend, just skip the frontend extensions troubleshooting section and continue to [General Custom Node Troubleshooting Approach](#2-general-custom-node-troubleshooting-approach)
-   </Tip>
-   </Step>
-   <Step title="Restart ComfyUI">
+   
+   
+   
    After disabling frontend extensions for the first time, it's recommended to restart ComfyUI to ensure all frontend extensions are properly disabled
    - If the problem disappears, then it was caused by custom node frontend extensions, and we can proceed with binary search troubleshooting
    - If the problem persists, then it's not caused by frontend extensions - please refer to the other troubleshooting approaches in this document
-   </Step>
-   <Step title="Use Binary Search to Locate Problem Nodes">
+   
+   
    Use the method mentioned at the beginning of this document to troubleshoot, enabling half of the custom nodes at a time until you find the problematic node
-   ![Enable frontend extensions](/images/troubleshooting/enable_extensions.jpg)
+   [Enable frontend extensions]
    Refer to the image to enable half of the frontend extensions. Note that if extension names are similar, they likely come from the same custom node's frontend extensions
-   </Step>
-   <Step title="Follow-up Actions">
+   
+   
    If you find the problematic custom node, please refer to the problem fixing section of this document to resolve the custom node issues
-   </Step>
-</Steps>
+   
 
 Using this method, you don't need to restart ComfyUI multiple times - just reload ComfyUI after enabling/disabling custom node frontend extensions. Plus, your troubleshooting scope is limited to nodes with frontend extensions, which greatly narrows down the search range.
 
 ### 2. General Custom Node Troubleshooting
 
-
-<Steps>
-  <Step title="Use Binary Search to Locate Custom Nodes">
+  
       For the binary search localization method, in addition to manual search, we also have automated binary search using comfy-cli, as detailed below:
 
-      <Tabs>
-         <Tab title="Using Comfy CLI (Recommended)">
+      
+         
          Using Comfy CLI requires some command line experience. If you're not comfortable with it, use manual binary search instead.
          
          If you have [Comfy CLI](/comfy-cli/getting-started) installed, you can use the automated bisect tool to find the problematic node:
@@ -204,19 +189,19 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
 
          The bisect tool will automatically enable/disable nodes and guide you through the process.
 
-         </Tab>
-         <Tab title="Manual Binary Search">
-            <Warning>
+         
+         
+            
             Before starting, please **create a backup** of your custom_nodes folder in case something goes wrong.
-            </Warning>
+            
 
          If you prefer to do the process manually or don't have Comfy CLI installed, follow the steps below:
 
-         <Steps>
-            <Step title="Create Temporary Folders">
+         
+            
             Before starting, enter the `<YOUR_COMFYUI_FOLDER>\ComfyUI\` folder
-                  <Tabs>
-                     <Tab title="Windows">
+                  
+                     
                      - **Backup all custom nodes**: Copy and rename `custom_nodes` to `custom_nodes_backup`
                      - **Create a temporary folder**: Create a folder named `custom_nodes_temp`
                      
@@ -230,8 +215,8 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                      # Backup all content
                      xcopy "custom_nodes\*" "%USERPROFILE%\custom_nodes_backup\" /E /H /Y
                      ```
-                     </Tab>
-                     <Tab title="macOS/Linux">
+                     
+                     
                      Manually backup custom_nodes folder
                      Or use the following command line to backup:
                      ```bash
@@ -242,8 +227,8 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                      # Backup all content
                      cp -r custom_nodes/* ~/custom_nodes_backup/
                      ```
-                     </Tab>
-                     <Tab title="Cloud/Colab">
+                     
+                     
                      ```bash
                      # Create backup and temporary folder
                      mkdir /content/custom_nodes_backup
@@ -252,33 +237,33 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                      # Backup all content
                      cp -r /content/ComfyUI/custom_nodes/* /content/custom_nodes_backup/
                      ```
-                     </Tab>
-                  </Tabs>
-               </Step>
-               <Step title="List all custom nodes">
-                   <Tabs>
-                     <Tab title="Windows">
+                     
+                  
+               
+               
+                   
+                     
                      Since Windows has a visual interface, you can skip this step unless you're only using the command line
                      ```bash
                      dir custom_nodes
                      ```
-                     </Tab>
-                     <Tab title="macOS/Linux">
+                     
+                     
                      ```bash
                      ls custom_nodes/
                      ```
-                     </Tab>
-                     <Tab title="Cloud/Colab">
+                     
+                     
                      ```bash
                      ls /content/ComfyUI/custom_nodes/
                      ```
-                     </Tab>
-                  </Tabs>
-               </Step>
-               <Step title="Split nodes in half">
+                     
+                  
+               
+               
                Let's assume that you have 8 custom nodes. Move the first half to temporary storage:
-                  <Tabs>
-                  <Tab title="Windows">
+                  
+                  
                   ```bash
                   # Move first half (nodes 1-4) to temp
                   move "custom_nodes\node1" "%USERPROFILE%\custom_nodes_temp\"
@@ -286,8 +271,8 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                   move "custom_nodes\node3" "%USERPROFILE%\custom_nodes_temp\"
                   move "custom_nodes\node4" "%USERPROFILE%\custom_nodes_temp\"
                   ```
-                  </Tab>
-                  <Tab title="macOS/Linux">
+                  
+                  
                   ```bash
                   # Move first half (nodes 1-4) to temp
                   mv custom_nodes/node1 ~/custom_nodes_temp/
@@ -295,8 +280,8 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                   mv custom_nodes/node3 ~/custom_nodes_temp/
                   mv custom_nodes/node4 ~/custom_nodes_temp/
                   ```
-                  </Tab>
-                  <Tab title="Cloud/Colab">
+                  
+                  
                   ```bash
                   # Move first half (nodes 1-4) to temp
                   mv /content/ComfyUI/custom_nodes/node1 /content/custom_nodes_temp/
@@ -304,31 +289,30 @@ Using this method, you don't need to restart ComfyUI multiple times - just reloa
                   mv /content/ComfyUI/custom_nodes/node3 /content/custom_nodes_temp/
                   mv /content/ComfyUI/custom_nodes/node4 /content/custom_nodes_temp/
                   ```
-                  </Tab>
-                  </Tabs>
-               </Step>
-               <Step title="Test ComfyUI">
+                  
+                  
+               
+               
                Start ComfyUI normally
                   ```bash
                   python main.py
                   ```
-               </Step>
-               <Step title="Interpret results">
+               
+               
                   - **Issue persists**: Problem is in the remaining nodes (5-8)
                   - **Issue disappears**: Problem was in the moved nodes (1-4)
-               </Step>
-               <Step title="Narrow it down">
+               
+               
                   - If issue persists: Move half of remaining nodes (e.g., nodes 7-8) to temp
                   - If issue gone: Move half of temp nodes (e.g., nodes 3-4) back to custom_nodes
-               </Step>
-               <Step title="Repeat until you find the single problematic node">
+               
+               
                   - Repeat until you find the single problematic node
-               </Step>
-            </Steps>
-         </Tab>
-      </Tabs>
-   </Step>
-</Steps>
+               
+            
+         
+      
+   
 
 ## How to Fix the Issue
 
@@ -376,6 +360,4 @@ Contact the custom node developer:
 ### For Frontend Issues
 - **GitHub**: [ComfyUI Frontend Issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)
 
-<Note>
 For general installation, model, or performance issues, see our [troubleshooting overview](/troubleshooting/overview) and [model issues](/troubleshooting/model-issues) pages.
-</Note>

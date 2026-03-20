@@ -1,6 +1,5 @@
 # SWE-bench_Lite
 
-
 ## Overview
 
 SWE-bench Lite is a focused subset of SWE-bench containing 300 Issue-Pull Request pairs from 11 popular Python repositories. It provides a more accessible entry point for evaluating automated software engineering capabilities.
@@ -27,7 +26,6 @@ SWE-bench Lite is a focused subset of SWE-bench containing 300 Issue-Pull Reques
 - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/swe_bench.html) for detailed setup instructions
 - Popular benchmark variant for initial model comparison
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ SWE-bench Lite is a focused subset of SWE-bench containing 300 Issue-Pull Reques
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -99,5 +96,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

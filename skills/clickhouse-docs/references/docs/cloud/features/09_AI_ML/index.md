@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Overview'
-slug: /cloud/features/ai-ml
 title: 'AI/ML features in Cloud'
 description: 'Overview of what AI/ML features are offered in ClickHouse Cloud'
 doc_type: 'reference'

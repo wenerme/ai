@@ -1,13 +1,9 @@
 ---
-sidebar_label: 'Streaming and object storage'
-slug: /cloud/reference/billing/clickpipes/streaming-and-object-storage
 title: 'ClickPipes for streaming and object storage'
 description: 'Overview of billing for streaming and object storage ClickPipes'
 doc_type: 'reference'
 keywords: ['billing', 'clickpipes', 'streaming pricing', 'costs', 'pricing']
 ---
-
-import ClickPipesFAQ from '../../../_snippets/_clickpipes_faq.md'
 
 # ClickPipes for streaming and object storage {#clickpipes-for-streaming-object-storage}
 
@@ -67,7 +63,7 @@ The following examples assume a single M-sized replica, unless explicitly mentio
     <td>Streaming ClickPipe</td>
     <td>(0.25 x 0.20 x 24) + (0.04 x 100) = \$5.20</td>
     <td>(0.25 x 0.20 x 24) + (0.04 x 1000) = \$41.20</td>
-    <td>With 4 replicas: <br></br> (0.25 x 0.20 x 24 x 4) + (0.04 x 10000) = \$404.80</td>
+    <td>With 4 replicas: </br> (0.25 x 0.20 x 24 x 4) + (0.04 x 10000) = \$404.80</td>
   </tr>
   <tr>
     <td>Object Storage ClickPipe $^*$</td>

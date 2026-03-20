@@ -1,7 +1,5 @@
 ---
 date: "2023-03-08T00:00:00+00:00"
-slug: "rpm"
-sidebar_position: 105
 ---
 
 # RPM Package Registry

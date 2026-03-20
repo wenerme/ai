@@ -8,13 +8,9 @@
 
 The Cross-Cluster Replication (CCR) feature in Doris is primarily used for efficiently synchronizing data between multiple clusters, thereby enhancing business continuity and disaster recovery capabilities. CCR supports various operations in Doris, ensuring data consistency across different clusters. Below are the details of the main Doris operations supported by CCR.
 
-:::note
-
-1. The `-` in Doris Version indicates Doris version 2.0 and above, all versions of CCR. It is recommended to use Doris version 2.0.15 or 2.1.6 or later.
+> **note**: 1. The `-` in Doris Version indicates Doris version 2.0 and above, all versions of CCR. It is recommended to use Doris version 2.0.15 or 2.1.6 or later.
 2. Version requirements for CCR Syncer and Doris: Syncer Version >= Downstream Doris Version >= Upstream Doris Version. Therefore, upgrade Syncer first, then the downstream Doris, and finally the upstream Doris.
 3. CCR currently does not support the separation of storage and computation.
-
-:::
 
 ## Database
 
@@ -126,11 +122,7 @@ Column operations on Base Index in the table.
 | rename             | Supported | 2.1.8/3.0.4  | SQL                   | Same                   |                                    |
 | comment            | Supported | 2.1.8/3.0.4  | SQL                   | Same                   |                                    |
 
-:::note
-
-Adding/dropping value columns requires setting the property `"light_schema_change" = "true"` when creating the table.
-
-:::
+> **note**: Adding/dropping value columns requires setting the property `"light_schema_change" = "true"` when creating the table.
 
 Column operations on Rollup Index in the table.
 
@@ -210,11 +202,7 @@ Bloom Filter
 | alter view       | Supported | 2.1.8/3.0.4  | SQL         |                                    |
 | drop view        | Supported | 2.1.8/3.0.4  | SQL         |                                    |
 
-::: note
-
-Due to limitations in Doris implementation, column names/view names in views cannot be the same as database names.
-
-:::
+> **note**: Due to limitations in Doris implementation, column names/view names in views cannot be the same as database names.
 
 ## Materialized Views
 
@@ -224,7 +212,6 @@ Synchronizing materialized views
 | ----------------------------- | --------- | ------------- | ----------- | -------------------------------------------------------------- |
 | create materialized view      | Supported | 2.1.8/3.0.4  | Partial Sync | Can work when upstream and downstream have the same name; if different names, downstream needs to manually rebuild the view. |
 | drop materialized view        | Supported | 2.1.8/3.0.4  | SQL         |                                                              |
-
 
 Asynchronous materialized views
 

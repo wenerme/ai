@@ -38,7 +38,6 @@ BiomixQA is a curated biomedical question-answering dataset designed to evaluate
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -113,5 +112,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

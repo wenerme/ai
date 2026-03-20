@@ -66,7 +66,7 @@ class ImageSelector:
     FUNCTION = "choose_image"
 ```
 
-<Info>The basic structure of a custom node is described in detail [here](/custom-nodes/backend/server_overview). </Info>
+The basic structure of a custom node is described in detail [here](/custom-nodes/backend/server_overview). 
 
 A custom node is defined using a Python class, which must include these four things: `CATEGORY`, 
 which specifies where in the add new node menu the custom node will be located, 
@@ -75,9 +75,9 @@ which specifies where in the add new node menu the custom node will be located,
 `RETURN_TYPES`, which defines what outputs the node will produce, and `FUNCTION`, the name
 of the function that will be called when the node is executed.
 
-<Tip>Notice that the data type for input and output is `IMAGE` (singular) even though 
+Notice that the data type for input and output is `IMAGE` (singular) even though 
 we expect to receive a batch of images, and return just one. In Comfy, `IMAGE` means
-image batch, and a single image is treated as a batch of size 1.</Tip>
+image batch, and a single image is treated as a batch of size 1.
 
 ### The main function
 
@@ -127,7 +127,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
 }
 ```
 
-<Info>For a detailed explanation of how ComfyUI discovers and loads custom nodes, see the [node lifecycle documentation](/custom-nodes/backend/lifecycle).</Info>
+For a detailed explanation of how ComfyUI discovers and loads custom nodes, see the [node lifecycle documentation](/custom-nodes/backend/lifecycle).
 
 ## Add some options
 
@@ -207,11 +207,10 @@ All we've done is register an extension and add a listener for the message type 
 
 Stop the Comfy server, start it again, reload the webpage, and run your workflow.
 
-
 ### The complete example
 
 The complete example is available [here](https://gist.github.com/robinjhuang/fbf54b7715091c7b478724fc4dffbd03). You can download the example workflow [JSON file](https://github.com/Comfy-Org/docs/blob/main/public/workflow.json) or view it below:
 
 <div align="center">
-  <img src="/images/firstnodeworkflow.png" alt="Image Selector Workflow" width="100%" />
+  [Image Selector Workflow]
 </div>

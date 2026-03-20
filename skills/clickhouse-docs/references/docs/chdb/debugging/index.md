@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Debugging'
-sidebar_label: 'Overview'
-slug: /chdb/debugging
 description: 'Debug DataStore operations with explain(), profiling, and logging'
 keywords: ['chdb', 'datastore', 'debug', 'explain', 'profiling', 'logging']
 doc_type: 'guide'

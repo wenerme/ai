@@ -26,11 +26,7 @@ QUANTILE_STATE_TO_BASE64(<quantile_state_input>)
 The Base64 encoded string of the QUANTILE_STATE.
 Returns `NULL` if the QUANTILE_STATE is `NULL`.
 
-::: note
-
-Since the order of elements in QUANTILE_STATE cannot be guaranteed, the base64 result generated from the same QUANTILE_STATE content is not guaranteed to be always the same, but the QUANTILE_STATE decoded by quantile_state_from_base64 is guaranteed to be the same.
-
-:::
+> **note**: Since the order of elements in QUANTILE_STATE cannot be guaranteed, the base64 result generated from the same QUANTILE_STATE content is not guaranteed to be always the same, but the QUANTILE_STATE decoded by quantile_state_from_base64 is guaranteed to be the same.
 
 ## Examples
 

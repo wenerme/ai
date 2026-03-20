@@ -48,11 +48,7 @@ These dimensions, coupled with the detailed nature of performance profiles, make
 
 ### Flame graphs
 
-<!-- vale Grafana.We = NO -->
-
 Flame graphs help you visualize resource allocation and performance bottlenecks, and you even get suggested recommendations and performance fixes via AI-driven flame graph analysis, as well as line-level insights from our GitHub integration.
-
-<!-- vale Grafana.We = YES -->
 
 On views with a flame graph, you can use **Explain flame graph** to provide an AI flame graph analysis that explains the performance bottleneck, root cause, and recommended fix.
 For more information, refer to [Flame graph AI](https://grafana.com/docs/grafana-cloud/monitor-applications/profiles/flamegraph-ai/).

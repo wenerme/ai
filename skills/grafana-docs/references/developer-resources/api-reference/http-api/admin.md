@@ -43,7 +43,7 @@ See note in the [introduction](#admin-api) for an explanation.
 
 | Action        | Scope                                                                               |
 | ------------- | ----------------------------------------------------------------------------------- |
-| settings:read | settings:\*_<br>settings:auth.saml:_<br>settings:auth.saml:enabled (property level) |
+| settings:read | settings:\*_settings:auth.saml:_settings:auth.saml:enabled (property level) |
 
 **Example Request**:
 
@@ -218,7 +218,7 @@ See note in the [introduction](#admin-api) for an explanation.
 
 | Action         | Scope                                                                               |
 | -------------- | ----------------------------------------------------------------------------------- |
-| settings:write | settings:\*_<br>settings:auth.saml:_<br>settings:auth.saml:enabled (property level) |
+| settings:write | settings:\*_settings:auth.saml:_settings:auth.saml:enabled (property level) |
 
 **Example request:**
 

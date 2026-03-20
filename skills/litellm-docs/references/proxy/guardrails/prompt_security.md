@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Prompt Security
 
@@ -54,9 +52,6 @@ litellm --config config.yaml --detailed_debug
 
 ### 4. Test request 
 
-<Tabs>
-<TabItem label="Pre-call Guardrail Test" value = "pre-call-test">
-
 Test input validation with a prompt injection attempt:
 
 ```shell
@@ -84,10 +79,6 @@ Expected response on policy violation:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Post-call Guardrail Test" value = "post-call-test">
-
 Test output validation to prevent sensitive information leakage:
 
 ```shell
@@ -114,10 +105,6 @@ Expected response when model output violates policies:
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Successful Call" value = "allowed">
 
 Test with safe content that passes all guardrails:
 
@@ -159,9 +146,6 @@ Expected response:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## File Sanitization
 
 Prompt Security provides advanced file sanitization capabilities to detect and block malicious content in uploaded files, including images, PDFs, and documents.
@@ -185,9 +169,6 @@ When a message contains file content (encoded as base64 in data URLs), the guard
    - `allow`: Passes the file through unchanged
 
 ### File Upload Example
-
-<Tabs>
-<TabItem label="Image Upload" value="image-upload">
 
 ```shell
 curl -i http://0.0.0.0:4000/v1/chat/completions \
@@ -228,10 +209,6 @@ If the image contains malicious content:
 }
 ```
 
-</TabItem>
-
-<TabItem label="PDF Upload" value="pdf-upload">
-
 ```shell
 curl -i http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -271,9 +248,6 @@ If the PDF contains malicious scripts or harmful content:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 **Note**: File sanitization uses a job-based async API. The guardrail:
 - Submits the file and receives a `jobId`
 - Polls `/api/sanitizeFile?jobId={jobId}` until status is `done`
@@ -284,9 +258,6 @@ If the PDF contains malicious scripts or harmful content:
 When violations are detected but can be mitigated, Prompt Security can modify the content instead of blocking it entirely.
 
 ### Modification Example
-
-<Tabs>
-<TabItem label="Input Modification" value="input-mod">
 
 **Original Request:**
 ```json
@@ -314,10 +285,6 @@ When violations are detected but can be mitigated, Prompt Security can modify th
 
 The request proceeds with sensitive information masked.
 
-</TabItem>
-
-<TabItem label="Output Modification" value="output-mod">
-
 **Original LLM Response:**
 ```
 "Here's a sample API key: sk-1234567890abcdef. You can use this for testing."
@@ -329,9 +296,6 @@ The request proceeds with sensitive information masked.
 ```
 
 Sensitive data in the response is automatically redacted.
-
-</TabItem>
-</Tabs>
 
 ## Streaming Support
 

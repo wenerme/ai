@@ -22,14 +22,13 @@ Let's go through it.
 1. Navigate to [https://cloud.openobserve.ai](https://cloud.openobserve.ai)
 2. Use a social login to create an account or login
     
-    ![Sign in page](./images/quickstart/signin.png)
+    [Sign in page]
 
 3. Now head over to `Ingestion` section and grab `CURL` command
 
-![Ingestion](./images/quickstart/ingestion_credentials.png)
+[Ingestion]
 
 Now head over to [Load sample data](#load-sample-data) section
-
 
 ## Self hosted Installation
 
@@ -41,11 +40,9 @@ You would need ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PASSWORD environment variable
 
     Binaries can be downloaded from [releases](https://github.com/openobserve/openobserve/releases) page for appropriate platform.
 
-
         set ZO_ROOT_USER_EMAIL=root@example.com
         set ZO_ROOT_USER_PASSWORD=Complexpass#123
         openobserve.exe
-
 
     Now point your browser to [http://localhost:5080](http://localhost:5080) and login
 
@@ -57,7 +54,6 @@ You would need ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PASSWORD environment variable
     Once downloaded run it using below command:
 
         ZO_ROOT_USER_EMAIL="root@example.com" ZO_ROOT_USER_PASSWORD="Complexpass#123" ./openobserve
-
 
     Now point your browser to [http://localhost:5080](http://localhost:5080) and login
 
@@ -76,7 +72,6 @@ You would need ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PASSWORD environment variable
         docker run -v $PWD/data:/data -e ZO_DATA_DIR="/data" -p 5080:5080 \
             -e ZO_ROOT_USER_EMAIL="root@example.com" -e ZO_ROOT_USER_PASSWORD="Complexpass#123" \
             public.ecr.aws/zinclabs/openobserve:latest
-
 
     Now point your browser to [http://localhost:5080](http://localhost:5080) and login
 
@@ -138,15 +133,13 @@ curl -u user@domain.com:abqlg4b673465w46hR2905 -k https://api.openobserve.ai/api
 curl http://localhost:5080/api/default/default/_json -i -u "root@example.com:Complexpass#123"  -d "@k8slog_json.json"
 ```
 
-
 ## Search for data
 
 Point your browser to [http://cloud.openobserve.ai](http://cloud.openobserve.ai) (for OpenObserve Cloud) / [http://localhost:5080](http://localhost:5080) (for self hosted) and login
 
 1. Visit `logs` page
 1. Select the index `default` from drop down in the left
-![Logs page](./images/quickstart/logs_page.png)
+[Logs page]
 1. Type `match_all('error')` in search bar and click the search button on right.
 
 Click on the "syntax guide" button next to the search bar to see examples on how to search.
-

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Guardrail Load Balancing
 
@@ -43,9 +42,6 @@ When you define multiple guardrails with the **same `guardrail_name`**, LiteLLM 
 
 Define multiple guardrail entries with the **same `guardrail_name`** but different configurations:
 
-<Tabs>
-<TabItem value="bedrock" label="Bedrock Guardrails">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: gpt-4
@@ -77,10 +73,6 @@ guardrails:
       aws_region_name: "us-west-2"
 ```
 
-</TabItem>
-
-<TabItem value="custom" label="Custom Guardrails">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: gpt-4
@@ -101,10 +93,6 @@ guardrails:
       guardrail: custom_guardrail.PIIFilterB
       mode: "pre_call"
 ```
-
-</TabItem>
-
-<TabItem value="aporia" label="Aporia Guardrails">
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -130,9 +118,6 @@ guardrails:
       api_key: os.environ/APORIA_API_KEY_2
       api_base: os.environ/APORIA_API_BASE_2
 ```
-
-</TabItem>
-</Tabs>
 
 ### 2. Start LiteLLM Gateway
 
@@ -281,7 +266,6 @@ from litellm.integrations.custom_guardrail import CustomGuardrail
 from litellm.proxy._types import UserAPIKeyAuth
 from litellm.caching.caching import DualCache
 
-
 class PIIFilterA(CustomGuardrail):
     """PII Filter Instance A"""
     
@@ -295,7 +279,6 @@ class PIIFilterA(CustomGuardrail):
         print("PIIFilterA processing request")
         # Your PII filtering logic here
         return data
-
 
 class PIIFilterB(CustomGuardrail):
     """PII Filter Instance B"""
@@ -348,4 +331,3 @@ Selected guardrail deployment: bedrock/guardrail (guard-eu-west)
 - [Bedrock Guardrails](./bedrock.md)
 - [Custom Guardrails](./custom_guardrail.md)
 - [Load Balancing for LLM Calls](../load_balancing.md)
-

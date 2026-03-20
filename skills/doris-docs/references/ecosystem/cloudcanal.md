@@ -23,9 +23,7 @@ BladePipe presents a visual management interface, allowing you to easily create 
 | Hana                         | Yes              | Yes            | Yes       | Yes                       |
 | PolarDB-X                    | Yes              | Yes            | Yes       | Yes                       |
 
-:::info
-For more functions and parameter settings, please refer to [BladePipe Connections](https://doc.bladepipe.com/dataMigrationAndSync/connection/mysql2?target=Doris).
-:::
+> **info**: For more functions and parameter settings, please refer to [BladePipe Connections](https://doc.bladepipe.com/dataMigrationAndSync/connection/mysql2?target=Doris).
 
 ## Installation
 Follow the instructions in [Install Worker (Docker)](https://www.bladepipe.com/docs/productOP/byoc/installation/install_worker_docker) or [Install Worker (Binary)](https://www.bladepipe.com/docs/productOP/byoc/installation/install_worker_binary) to download and install a BladePipe Worker.
@@ -36,29 +34,28 @@ Taking a MySQL instance as an example, the following part describes how to move 
 ### Add DataSources
 1. Log in to the [BladePipe Cloud](https://cloud.bladepipe.com/). Click **DataSource** > **Add DataSource**.
 2. Select MySQL and Doris as the Type respectively, and fill in the setup form accordingly. 
-   ![Add DataSources-1](/images/bp-doris-1.png)
+   [Add DataSources-1]
 
 3. Click **Test Connection**. After successful connection, click **Add DataSource** to add the DataSource. 
-   ![Add DataSources-2](/images/bp-doris-2.png)
-
+   [Add DataSources-2]
 
 ### Create a DataJob
 1. Click DataJob > [Create DataJob](https://doc.bladepipe.com/operation/job_manage/create_job/create_full_incre_task).
 2. Select the source and target DataSources, and click **Test Connection** to ensure the connection to the source and target DataSources are both successful.
-  ![Create a DataJob-1](/images/bp-doris-3.png)
+  [Create a DataJob-1]
 
 1. Select **Incremental** for DataJob Type, together with the **Full Data** option.
-  ![Create a DataJob-2](/images/bp-doris-4.png)
+  [Create a DataJob-2]
 
 1. Select the tables to be replicated.
-  ![Create a DataJob-3](/images/bp-doris-5.png)
+  [Create a DataJob-3]
 
 1. Select the columns to be replicated.
-  ![Create a DataJob-4](/images/bp-doris-6.png)
+  [Create a DataJob-4]
 
 1. Confirm the DataJob creation.
 2. The DataJob runs automatically. BladePipe will automatically run the following DataTasks:   
   - **Schema Migration**: The schemas of the source tables will be migrated to the target instance.   
   - **Full Data**: All existing data of the source tables will be fully migrated to the target instance.   
   - **Incremental**: Ongoing data changes will be continuously synchronized to the target instance. 
-  ![Create a DataJob-5](/images/bp-doris-8.png)
+  [Create a DataJob-5]

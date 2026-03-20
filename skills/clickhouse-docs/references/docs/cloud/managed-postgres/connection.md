@@ -1,17 +1,9 @@
 ---
-slug: /cloud/managed-postgres/connection
-sidebar_label: 'Connection'
 title: 'Connecting to Managed Postgres'
 description: 'Connection strings, PgBouncer connection pooling, and TLS configuration for ClickHouse Managed Postgres'
 keywords: ['postgres connection', 'connection string', 'pgbouncer', 'tls', 'ssl']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import connectButton from '@site/static/images/managed-postgres/connect-button.png';
-import connectModal from '@site/static/images/managed-postgres/connect-modal.png';
-import tlsCaBundle from '@site/static/images/managed-postgres/tls-ca-bundle.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="connection" />
 
@@ -58,11 +50,10 @@ Managed Postgres includes a bundled [PgBouncer](https://www.pgbouncer.org/) inst
 
 To use connection pooling, click the **via PgBouncer** toggle at the top of the connection modal. The connection details will update to route your connections through the connection pooler instead of directly to PostgreSQL.
 
-:::tip When to use PgBouncer
+> **tip**: When to use PgBouncer
 Use PgBouncer when your application opens many short-lived connections. For long-running connections or applications that use PostgreSQL features incompatible with connection pooling (like prepared statements across transactions), connect directly.
 
 Moving data to ClickHouse using ClickPipes isn't supported via PgBouncer. 
-:::
 
 ## TLS configuration {#tls}
 

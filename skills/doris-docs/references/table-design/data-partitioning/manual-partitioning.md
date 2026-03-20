@@ -220,4 +220,3 @@ Query OK, 0 rows affected (0.13 sec)
 mysql> insert into null_range2 values (null);
 ERROR 5025 (HY000): Insert has filtered data in strict mode, tracking_url=......
 ```
-

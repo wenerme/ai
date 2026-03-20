@@ -1,6 +1,5 @@
 # SWE-bench_Verified
 
-
 ## Overview
 
 SWE-bench Verified is a human-validated subset of 500 samples from SWE-bench, designed to test systems' ability to automatically resolve real-world GitHub issues. Each sample represents a genuine bug fix or feature implementation from popular Python repositories.
@@ -28,7 +27,6 @@ SWE-bench Verified is a human-validated subset of 500 samples from SWE-bench, de
 - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/swe_bench.html) for detailed setup instructions
 - Supports both local image building and remote image pulling
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ SWE-bench Verified is a human-validated subset of 500 samples from SWE-bench, de
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -100,5 +97,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Connection Tips'
-sidebar_position: 3
-slug: /integrations/tableau/connection-tips
 keywords: ['clickhouse', 'tableau', 'online', 'mysql', 'connect', 'integrate', 'ui']
 description: 'Tableau connection tips when using ClickHouse official connector.'
 title: 'Connection tips'
@@ -10,9 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_visualization'
 ---
-
-import Image from '@theme/IdealImage';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Connection tips
 

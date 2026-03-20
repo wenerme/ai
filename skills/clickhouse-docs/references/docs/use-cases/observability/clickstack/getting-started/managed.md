@@ -1,26 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/managed
 title: 'Getting Started with Managed ClickStack'
-sidebar_label: 'Managed'
-pagination_prev: null
-pagination_next: use-cases/observability/clickstack/example-datasets/index
 description: 'Getting started with Managed ClickStack'
 doc_type: 'guide'
 keywords: ['Managed ClickStack', 'getting started', 'ClickHouse Cloud']
 ---
-
-import Image from '@theme/IdealImage';
-import signup_page from '@site/static/images/clickstack/getting-started/signup_page.png';
-import select_source from '@site/static/images/clickstack/getting-started/select_source.png';
-import otel_collector_start from '@site/static/images/clickstack/getting-started/otel_collector_start.png';
-import advanced_otel_collector from '@site/static/images/clickstack/getting-started/otel_collector_start.png';
-import clickstack_managed_ui from '@site/static/images/clickstack/getting-started/clickstack_managed_ui.png';
-import BetaBadge from '@theme/badges/BetaBadge';
-import SetupManagedIngestion from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_setup_managed_ingestion.md';
-import ProviderSelection from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_select_provider.md';
-import UseCaseSelector from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_select_usecase.md';
-import NavigateClickStackUI from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_navigate_managed.md';
-import service_connect from '@site/static/images/_snippets/service_connect.png';
 
 <BetaBadge/>
 
@@ -56,7 +39,6 @@ Once your service has been provisioned, ensure the the service is selected and c
 
 :::important[Record default credentials]
 If you haven't recorded your default credentials during the above steps, navigate to the service and select `Connect`, recording the password and HTTP/native endpoints. Store these admin credentials securely, which can be reused in further guides.
-:::
 
 <Image img={service_connect} size="lg" alt='Service Connect' border/>
 

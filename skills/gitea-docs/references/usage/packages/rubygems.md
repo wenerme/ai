@@ -1,7 +1,5 @@
 ---
 date: "2021-07-20T00:00:00+00:00"
-slug: "rubygems"
-sidebar_position: 110
 ---
 
 # RubyGems Package Registry

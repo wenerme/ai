@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Streaming + Async
 
@@ -92,9 +91,6 @@ litellm.REPEATED_STREAMING_CHUNK_LIMIT = 100 # # catch if model starts looping t
 
 LiteLLM provides error handling for this, by checking if a chunk is repeated 'n' times (Default is 100). If it exceeds that limit, it will raise a `litellm.InternalServerError`, to allow retry logic to happen. 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm 
 import os 
@@ -134,9 +130,6 @@ for chunk in response:
     continue # expect to raise InternalServerError 
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 Define this on your config.yaml on the proxy. 
 
 ```yaml
@@ -144,7 +137,4 @@ litellm_settings:
     REPEATED_STREAMING_CHUNK_LIMIT: 100 # this overrides the litellm default
 ```
 
-The proxy uses the litellm SDK. To validate this works, try the 'SDK' code snippet. 
-
-</TabItem>
-</Tabs>
+The proxy uses the litellm SDK. To validate this works, try the 'SDK' code snippet.

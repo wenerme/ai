@@ -15,9 +15,7 @@ Column statistics
 
 ## Database
 
-
 `__internal_schema`
-
 
 ## Table Information
 

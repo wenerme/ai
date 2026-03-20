@@ -12,9 +12,7 @@ View session variable information.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

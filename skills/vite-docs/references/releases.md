@@ -1,5 +1,5 @@
 <script setup>
-import SupportedVersions from './.vitepress/theme/components/SupportedVersions.vue';
+
 </script>
 
 # Releases
@@ -21,8 +21,6 @@ Vite does not have a fixed release cycle.
 In summary, the current supported Vite versions are:
 
 <SupportedVersions />
-
-<br>
 
 The supported version ranges are automatically determined by:
 

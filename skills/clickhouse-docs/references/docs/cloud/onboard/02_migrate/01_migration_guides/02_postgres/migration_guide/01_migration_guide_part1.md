@@ -1,15 +1,10 @@
 ---
-slug: /migrations/postgresql/dataset
 title: 'Migrating data'
 description: 'Dataset example to migrate from PostgreSQL to ClickHouse'
 keywords: ['Postgres']
 show_related_blogs: true
-sidebar_label: 'Part 1'
 doc_type: 'guide'
 ---
-
-import postgres_stackoverflow_schema from '@site/static/images/migrations/postgres-stackoverflow-schema.png';
-import Image from '@theme/IdealImage';
 
 > This is **Part 1** of a guide on migrating from PostgreSQL to ClickHouse. Using a practical example, it demonstrates how to efficiently carry out the migration with a real-time replication (CDC) approach. Many of the concepts covered are also applicable to manual bulk data transfers from PostgreSQL to ClickHouse.
 

@@ -78,7 +78,3 @@ If there is an error, it returns:
     
     ... File Content ...
     ```
-
-
-
-

@@ -55,14 +55,12 @@ Doris also supported `AWS Assume Role` for creating AWS S3 Repository, please re
 |:-------------------|:-----------------------------|:----------------------------------------------------|
 | ADMIN_PRIV         | Entire cluster management permissions | Only the root or superuser can create repositories  |
 
-
 ## Usage notes
 - If it is a read-only repository, restoration can only be performed on the repository. If not, both backup and restoration operations can be performed.
 - The properties (PROPERTIES) vary depending on whether it is S3 or HDFS, as shown in the example.
 - For ON LOCATION, if it is S3, the following should be the S3 Bucket Name.
 - When performing data migration, the same repository must be created in both the source and destination clusters so that the destination cluster can view the data snapshot from the source cluster's backup.
 - Any user can view the repositories that have been created by using the [SHOW REPOSITORIES](./SHOW-REPOSITORIES) command.
-
 
 ## Examples
 
@@ -143,4 +141,3 @@ PROPERTIES
     "s3.region" = "ap-beijing"
 );
 ```
-

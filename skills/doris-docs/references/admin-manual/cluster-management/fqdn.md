@@ -70,10 +70,8 @@ Next, follow the steps below:
 
    `ALTER SYSTEM MODIFY BACKEND "<backend_ip>:<HeartbeatPort>" HOSTNAME "<be_hostname>"`,If you don't know the number of HeartbeatPort, please use the command `show backends` to help find this port.
 
-
 ## Common problem
 
 - Configuration item enable_ fqdn_ Can the mode be changed freely?
 
   Cannot be changed arbitrarily. To change this configuration, follow the 'Enable FQDN for old cluster' procedure.
-

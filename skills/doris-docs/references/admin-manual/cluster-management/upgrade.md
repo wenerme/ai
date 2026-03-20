@@ -32,15 +32,13 @@ When performing an upgrade, pay attention to the following:
 
 ## Metadata Compatibility Testing
 
-:::caution Note
+> **caution**: Note
 
 In a production environment, it is recommended to configure at least three FE nodes for high availability. If there is only one FE node, metadata compatibility testing must be performed before upgrading. Metadata compatibility is critical as incompatibility may cause upgrade failures and data loss. It is recommended to conduct metadata compatibility tests before each upgrade, keeping in mind the following:
 
 - Perform metadata compatibility testing on a development machine or BE node whenever possible to avoid using FE nodes.
 
 - If testing must be conducted on an FE node, use a non-Master node and stop the original FE process.
-
-:::
 
 Before upgrading, conduct metadata compatibility testing to prevent failures caused by metadata incompatibility.
 
@@ -116,13 +114,11 @@ The detailed process for the upgrade is as follows:
 
 During the upgrade process, the principle of upgrading BE nodes first, followed by upgrading FE nodes, should be followed. When upgrading FE, upgrade the Observer FE and Follower FE nodes first, and then upgrade the Master FE node.
 
-:::caution Note
+> **caution**: Note
 
 In general, only the `/bin` and `/lib` directories under the FE directory and the `/bin` and `/lib` directories under the BE directory need to be upgraded.
 
 For versions 2.0.2 and later, a `custom_lib/` directory has been added under the FE and BE deployment paths (if it doesn't exist, it can be manually created). The `custom_lib/` directory is used to store some user-defined third-party jar files, such as `hadoop-lzo-*.jar`, `orai18n.jar`, etc. This directory does not need to be replaced during the upgrade.
-
-:::
 
 ### Step 1: Disable Replica Repair and Balance Functions
 
@@ -134,13 +130,12 @@ admin set frontend config("disable_colocate_balance" = "true");
 admin set frontend config("disable_tablet_scheduler" = "true");
 ```
 
-
 ### Step 2: Upgrade BE Nodes
 
-:::info Note:
+> **info**: Note:
 
 To ensure the safety of your data, please use 3 replicas to store your data to avoid data loss caused by upgrade mistakes or failures.
-:::
+
 1. In a multi-replica cluster, you can choose to stop the process on one BE node and perform a gradual upgrade:
 
    ```bash
@@ -224,4 +219,3 @@ admin set frontend config("disable_balance" = "false");
 admin set frontend config("disable_colocate_balance" = "false");
 admin set frontend config("disable_tablet_scheduler" = "false");
 ```
-

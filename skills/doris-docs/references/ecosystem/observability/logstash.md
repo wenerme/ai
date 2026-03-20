@@ -85,7 +85,6 @@ Configuration | Description
 `log_request` | Whether to output Doris Stream Load request and response metadata in logs for troubleshooting, default is false
 `log_speed_interval` | Time interval for outputting speed in logs, unit is seconds, default is 10, setting to 0 can disable this type of logging
 
-
 ## Usage Example
 
 ### TEXT Log Collection Example
@@ -95,7 +94,6 @@ This example demonstrates TEXT log collection using Doris FE logs as an example.
 **1. Data**
 
 FE log files are typically located at the fe/log/fe.log file under the Doris installation directory. They are typical Java program logs, including fields such as timestamp, log level, thread name, code location, and log content. Not only do they contain normal logs, but also exception logs with stacktraces, which are multiline. Log collection and storage need to combine the main log and stacktrace into a single log entry.
-
 
 ```
 2024-07-08 21:18:01,432 INFO (Statistics Job Appender|61) [StatisticsJobAppender.runAfterCatalogReady():70] Stats table not available, skip
@@ -252,7 +250,6 @@ ${LOGSTASH_HOME}/bin/logstash -f config/logstash_doris_log.conf
 [2024-07-08T22:35:38,285][INFO ][logstash.outputs.doris   ][main] total 11 MB 18978 ROWS, total speed 0 MB/s 632 R/s, last 10 seconds speed 1 MB/s 1897 R/s
 ```
 
-
 ### JSON Log Collection Example
 
 This example demonstrates JSON log collection using data from the GitHub events archive.
@@ -298,13 +295,11 @@ Below is a sample of the data. Normally, each piece of data is on a single line,
 }
 ```
 
-
 **2. Table Creation**
 
 ```
 CREATE DATABASE log_db;
 USE log_db;
-
 
 CREATE TABLE github_events
 (

@@ -1,6 +1,5 @@
 # DocMath
 
-
 ## Overview
 
 DocMath-Eval is a comprehensive benchmark focused on numerical reasoning within specialized domains. It requires models to comprehend long and specialized documents and perform numerical reasoning to answer questions.
@@ -27,7 +26,6 @@ DocMath-Eval is a comprehensive benchmark focused on numerical reasoning within 
 - Subsets: complong_testmini, compshort_testmini, simplong_testmini, simpshort_testmini
 - Answer format: "Therefore, the answer is (answer)"
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ DocMath-Eval is a comprehensive benchmark focused on numerical reasoning within 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -131,5 +128,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

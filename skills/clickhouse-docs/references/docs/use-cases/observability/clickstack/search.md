@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/search
 title: 'Search with ClickStack'
-sidebar_label: 'Search'
-pagination_prev: null
-pagination_next: null
 description: 'Search with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'search', 'logs', 'observability', 'full-text search']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_27 from '@site/static/images/use-cases/observability/hyperdx-27.png';
-import saved_search from '@site/static/images/use-cases/observability/clickstack-saved-search.png';
-import Tagging from '@site/docs/_snippets/_clickstack_tagging.mdx';
 
 ClickStack allows you to do a full-text search on your events (logs and traces). You can get started searching by just typing keywords that match your events. For example, if your log contains "Error", you can find it by just typing in "Error" in the search bar.
 

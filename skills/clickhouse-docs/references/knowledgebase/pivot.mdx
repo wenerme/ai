@@ -7,7 +7,6 @@ keywords: ['PIVOT', 'Aggregate Function Combinators']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Introduction \{#introduction\}
 
@@ -51,7 +50,6 @@ SELECT sumMap(value)
 FROM values;
 ```
 
-
 ```text
 ┌─sumMap(value)───────────────────┐
 │ {'ClickBench':2,'ClickHouse':7} │
@@ -72,7 +70,6 @@ SELECT maxMap(value)
 FROM values;
 ```
 
-
 ```text
 ┌─maxMap(value)───────────────────┐
 │ {'ClickBench':2,'ClickHouse':4} │
@@ -90,7 +87,6 @@ WITH values AS (
 SELECT avgMap(value)
 FROM values;
 ```
-
 
 ```text
 ┌─avgMap(value)─────────────────────┐

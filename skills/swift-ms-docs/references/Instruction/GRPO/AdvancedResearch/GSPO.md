@@ -55,7 +55,6 @@ Based on GRPO training, you can select different algorithms via the `--importanc
 - `importance_sampling_level sequence` (GSPO)
 - `importance_sampling_level sequence_token` (GSPO-token)
 
-
 Other hyperparameters in the paper
 ```bash
     --epsilon 3e-4 # from paper section 5.1

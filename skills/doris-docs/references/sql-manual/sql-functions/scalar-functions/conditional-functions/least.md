@@ -30,7 +30,6 @@ LEAST(<expr> [, ...])
 1. It is recommended to pass arguments of the same type. If argument types differ, the function will attempt to convert them to the same type. For conversion rules, refer to: [Type Conversion](../../../basic-element/sql-data-types/conversion/overview.md)
 2. If any argument is NULL, the result will be NULL.
 
-
 ## Examples
 1. Example 1
     ```sql

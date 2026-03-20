@@ -1,6 +1,5 @@
 # PolyMath
 
-
 ## Overview
 
 PolyMath is a multilingual mathematical reasoning benchmark covering 18 languages and 4 difficulty levels with 9,000 high-quality problem samples. It ensures difficulty comprehensiveness, language diversity, and high-quality translation for discriminative multilingual evaluation.
@@ -29,7 +28,6 @@ PolyMath is a multilingual mathematical reasoning benchmark covering 18 language
   - Provides balanced scoring across difficulty levels
 - Results reported per language and overall
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ PolyMath is a multilingual mathematical reasoning benchmark covering 18 language
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -192,5 +189,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

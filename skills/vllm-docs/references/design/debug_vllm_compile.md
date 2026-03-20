@@ -18,7 +18,7 @@ To improve performance, vLLM leverages torch.compile and CUDAGraphs to speed thi
 torch.compile generates optimized kernels for PyTorch code while CUDAGraphs eliminates overhead.
 Most notably, vLLM-compile is NOT torch.compile, it is a custom compiler built using internal PyTorch Compile APIs.
 
-![vLLM-compile diagram](../assets/design/debug_vllm_compile/design_diagram.png)
+[vLLM-compile diagram]
 
 - Given a model, we do a full graph capture via TorchDynamo that is dynamic on the batch size (number of tokens)
 - vLLM then optionally splits and/or specializes this graph and then uses TorchInductor to compile each graph into a compiled artifact.
@@ -73,7 +73,7 @@ Given one of the log files, the `tlparse` command outputs some HTML files
 (perhaps into e.g. `./tl_out/index.html`).
 Open it to see the logs. It'll look something like the following:
 
-![tlparse example](../assets/design/debug_vllm_compile/tlparse_inductor.png)
+[tlparse example]
 
 ## Turn off vLLM-torch.compile integration
 
@@ -148,7 +148,7 @@ This problem is easy to diagnose. Use tlparse and click on `compilation_metrics`
 it will tell you symbolic constraints on the batch size. If there is any constraint
 that restricts the batch sizes, then we've got a problem.
 
-![Bad tlparse example](../assets/design/debug_vllm_compile/dynamic_shapes.png)
+[Bad tlparse example]
 
 To avoid this, please either:
 
@@ -250,7 +250,7 @@ If Inductor is at fault, [file a bug to PyTorch](https://github.com/pytorch/pyto
 If you're feeling adventurous, you can debug the triton kernels in the Inductor output code
 (that you can locate via using tlparse).
 
-![tlparse example](../assets/design/debug_vllm_compile/tlparse_inductor.png)
+[tlparse example]
 
 You can also use `TORCH_LOGS=output_code <command>` to print the Inductor output code.
 

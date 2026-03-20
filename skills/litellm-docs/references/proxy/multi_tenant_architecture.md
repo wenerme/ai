@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Multi-Tenant Architecture with LiteLLM
 
@@ -12,12 +11,11 @@ LiteLLM provides a centralized solution that scales across multiple tenants, ena
 - **Track costs** at granular levels (organization → team → user → key)
 - **Scale seamlessly** as new teams and users are added
 
-:::info Open Source vs. Enterprise
+> **info**: Open Source vs. Enterprise
 - **Teams + Virtual Keys**: ✅ Available in open source
 - **Organizations + Org Admins**: ✨ Enterprise feature ([Get a 7 day trial](https://www.litellm.ai/#trial))
 
 You can implement multi-tenancy using **Teams** alone in the open source version, or add **Organizations** on top for additional hierarchy in the enterprise version.
-:::
 
 ## The Multi-Tenant Challenge
 
@@ -65,9 +63,7 @@ LiteLLM implements a hierarchical multi-tenant architecture with four levels:
 
 **Teams** can work independently or sit within organizations, representing logical groupings of users working together.
 
-:::tip
-Teams are available in **open source** and can be used as your primary multi-tenant boundary without needing Organizations. Organizations provide an additional layer of hierarchy for enterprise deployments.
-:::
+> **tip**: Teams are available in **open source** and can be used as your primary multi-tenant boundary without needing Organizations. Organizations provide an additional layer of hierarchy for enterprise deployments.
 
 - Each team has:
   - Team-specific budgets and rate limits
@@ -426,11 +422,10 @@ Each tenant (organization) is isolated:
 
 ## Getting Started
 
-:::info Enterprise vs. Open Source Setup
+> **info**: Enterprise vs. Open Source Setup
 The steps below show the **full enterprise hierarchy** with Organizations. 
 
 For **open source**, skip Steps 1-2 and start directly with **Step 3** (creating teams). Teams can function as your top-level tenant boundary without Organizations.
-:::
 
 ### Step 1: Set Up Organizations ✨ Enterprise
 

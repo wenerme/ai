@@ -5,7 +5,6 @@
 | Proxy | ✅ |  |
 | SDK | ⌛️ | Experimental access via `litellm._arealtime`. |
 
-
 ## Proxy Usage
 
 ### Add model to config 
@@ -83,8 +82,6 @@ ws.on("error", function handleError(error) {
 - `response.content_part.done`
 - `response.output_item.done`
 - `response.done`
-
-
 
 ## [Supported Session Params](https://github.com/BerriAI/litellm/blob/e87b536d038f77c2a2206fd7433e275c487179ee/litellm/llms/gemini/realtime/transformation.py#L155)
 

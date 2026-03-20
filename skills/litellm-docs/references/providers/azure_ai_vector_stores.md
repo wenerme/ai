@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure AI Search - Vector Store (Unified API)
 
@@ -13,9 +12,6 @@ You need three things:
 3. A search index with vector fields
 
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### Basic Search
 
@@ -89,10 +85,6 @@ response = vector_stores.search(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ### Setup Config
 
 Add this to your config.yaml:
@@ -127,9 +119,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/vector_stores/my-vector-index/search' \
   "query": "What is the capital of France?",
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Required Parameters
 
@@ -223,7 +212,6 @@ The vector dimensions must match your embedding model. For example:
 - `text-embedding-3-small`: 1536 dimensions
 - `text-embedding-ada-002`: 1536 dimensions
 
-
 ## Common Issues
 
 **"Failed to generate embedding for query"**
@@ -242,4 +230,3 @@ The `vector_store_id` doesn't match any index in your search service. Check:
 **"Field 'contentVector' not found"**
 
 Your index uses a different vector field name. Pass it via `azure_search_vector_field`.
-

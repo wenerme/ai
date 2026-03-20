@@ -1,10 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/migration/elastic/migrating-data
 title: 'Migrating data to ClickStack from Elastic'
-pagination_prev: null
-pagination_next: null
-sidebar_label: 'Migrating data'
-sidebar_position: 4
 description: 'Migrating data to ClickHouse Observability Stack from Elastic'
 show_related_blogs: true
 keywords: ['ClickStack']
@@ -18,10 +13,9 @@ When migrating from Elastic to ClickStack for observability use cases, we recomm
 1. **Minimal risk**: by running both systems concurrently, you maintain access to existing data and dashboards while validating ClickStack and familiarizing your users with the new system.
 2. **Natural data expiration**: most observability data has a limited retention period (typically 30 days or less), allowing for a natural transition as data expires from Elastic.
 3. **Simplified migration**: no need for complex data transfer tools or processes to move historical data between systems.
-<br/>
-:::note Migrating data
+
+> **note**: Migrating data
 We demonstrate an approach for migrating essential data from Elasticsearch to ClickHouse in the section ["Migrating data"](#migrating-data). This shouldn't be used for larger datasets as it is rarely performant - limited by the ability for Elasticsearch to export efficiently, with only JSON format supported.
-:::
 
 ### Implementation steps {#implementation-steps}
 
@@ -123,8 +117,7 @@ Create a table in ClickHouse for the index being migrated from Elasticsearch. Yo
 
 Consider the following Elasticsearch mapping for an index containing `syslog` data:
 
-<details>
-<summary>Elasticsearch mapping</summary>
+Elasticsearch mapping
 
 ```javascripton
 GET .ds-logs-system.syslog-default-2025.06.03-000001/_mapping
@@ -427,12 +420,10 @@ GET .ds-logs-system.syslog-default-2025.06.03-000001/_mapping
   }
 }
 ```
-</details>
 
 The equivalent ClickHouse table schema:
 
-<details>
-<summary>ClickHouse schema</summary>
+ClickHouse schema
 
 ```sql
 SET enable_json_type = 1;
@@ -510,8 +501,6 @@ ENGINE = MergeTree
 ORDER BY (`host.name`, `@timestamp`)
 ```
 
-</details>
-
 Note that:
 
 - Tuples are used to represent nested structures instead of dot notation
@@ -533,7 +522,7 @@ This strict schema has a number of benefits:
 - **Data validation** – enforcing a strict schema avoids the risk of column explosion, outside of specific structures. 
 - **Avoids risk of column explosion**: although the JSON type scales to potentially thousands of columns, where subcolumns are stored as dedicated columns, this can lead to a column file explosion where an excessive number of column files are created that impacts performance. To mitigate this, the underlying [Dynamic type](/sql-reference/data-types/dynamic) used by JSON offers a [`max_dynamic_paths`](/sql-reference/data-types/newjson#reading-json-paths-as-sub-columns) parameter, which limits the number of unique paths stored as separate column files. Once the threshold is reached, additional paths are stored in a shared column file using a compact encoded format, maintaining performance and storage efficiency while supporting flexible data ingestion. Accessing this shared column file is, however, not as performant. Note, however, that the JSON column can be used with [type hints](/integrations/data-formats/json/schema#using-type-hints-and-skipping-paths). "Hinted" columns will deliver the same performance as dedicated columns.
 - **Simpler introspection of paths and types**: although the JSON type supports [introspection functions](/sql-reference/data-types/newjson#introspection-functions) to determine the types and paths that have been inferred, static structures can be simpler to explore e.g. with `DESCRIBE`.
-<br/>
+
 Alternatively, you can simply create a table with one `JSON` column.
 
 ```sql
@@ -547,9 +536,7 @@ ENGINE = MergeTree
 ORDER BY (`json.host.name`, `json.@timestamp`)
 ```
 
-:::note
-We provide a type hint for the `host.name` and `timestamp` columns in the JSON definition as we use it in the ordering/primary key. This helps ClickHouse know this column won't be null and ensures it knows which sub-columns to use (there may be multiple for each type, so this is ambiguous otherwise).
-:::
+> **note**: We provide a type hint for the `host.name` and `timestamp` columns in the JSON definition as we use it in the ordering/primary key. This helps ClickHouse know this column won't be null and ensures it knows which sub-columns to use (there may be multiple for each type, so this is ambiguous otherwise).
 
 This latter approach, while simpler, is best for prototyping and data engineering tasks. For production, use `JSON` only for dynamic sub structures where necessary.
 
@@ -603,17 +590,17 @@ Note the use of the following flags for `elasticdump`:
 - `sourceOnly` flag ensuring we omit metadata fields in our response.
 - `searchAfter` flag to use the [`searchAfter` API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after) for efficient pagination of results.
 - `pit=true` to ensure consistent results between queries using the [point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time).
-<br/>
+
 Our ClickHouse client parameters here (aside from credentials):
 
 - `max_insert_block_size=1000` - ClickHouse client will send data once this number of rows is reached. Increasing improves throughput at the expense of time to formulate a block - thus increasing time till data appears in ClickHouse.
 - `min_insert_block_size_bytes=0` - Turns off server block squashing by bytes.
 - `min_insert_block_size_rows=1000` - Squashes blocks from clients on the server side. In this case, we set to `max_insert_block_size` so rows appear immediately. Increase to improve throughput.
 - `query="INSERT INTO logs_system_syslog FORMAT JSONAsRow"` - Inserting the data as [JSONEachRow format](/integrations/data-formats/json/other-formats). This is appropriate if sending to a well-defined schema such as `logs_system_syslog.`
-<br/>
+
 **You can expect throughput on the order of thousands of rows per second.**
 
-:::note Inserting into single JSON row
+> **note**: Inserting into single JSON row
 If inserting into a single JSON column (see the `syslog_json` schema above), the same insert command can be used. However, you must specify `JSONAsObject` as the format instead of `JSONEachRow` e.g.
 
 ```shell
@@ -623,7 +610,6 @@ clickhouse-client --host ${CLICKHOUSE_HOST} --secure --password ${CLICKHOUSE_PAS
 ```
 
 See ["Reading JSON as an object"](/integrations/data-formats/json/other-formats#reading-json-as-an-object) for further details.
-:::
 
 ### Transform data (optional) {#transform-data}
 

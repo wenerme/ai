@@ -1,10 +1,7 @@
-import Image from '@theme/IdealImage';
-
 
 # LiteLLM Proxy - 1K RPS Load test on locust 
 
 Tutorial on how to get to 1K+ RPS with LiteLLM Proxy on locust
-
 
 ## Pre-Testing Checklist
 - [ ] Ensure you're using the **latest `-stable` version** of litellm
@@ -29,10 +26,8 @@ Tutorial on how to get to 1K+ RPS with LiteLLM Proxy on locust
 
 **Note:**  we're currently migrating to aiohttp which has 10x higher throughput. We recommend using the `openai/` provider for load testing.
 
-:::tip Setting Up a Fake OpenAI Endpoint
+> **tip**: Setting Up a Fake OpenAI Endpoint
 You can use our hosted fake endpoint or self-host your own using [github.com/BerriAI/example_openai_endpoint](https://github.com/BerriAI/example_openai_endpoint).
-:::
-
 ```yaml
 model_list:
   - model_name: "fake-openai-endpoint"
@@ -41,7 +36,6 @@ model_list:
       api_base: https://exampleopenaiendpoint-production.up.railway.app/  # or your self-hosted endpoint
       api_key: "test"
 ```
-
 
 ## Load Test - Fake OpenAI Endpoint
 
@@ -111,11 +105,7 @@ Run a load test on 2 LLM deployments each with 10K RPM Quota. Expect to see ~20K
 
 1. Add 2 `gemini-vision` deployments on your config.yaml. Each deployment can handle 10K RPM. (We setup a fake endpoint with a rate limit of 1000 RPM on the `/v1/projects/bad-adroit-crow` route below )
 
-:::info
-
-All requests with `model="gemini-vision"` will be load balanced equally across the 2 deployments.
-
-:::
+> **info**: All requests with `model="gemini-vision"` will be load balanced equally across the 2 deployments.
 
 ```yaml
 model_list:
@@ -163,7 +153,6 @@ litellm_settings:
 
   <Image img={require('../img/locust_load_test2.png')} />
 
-
 ## Prometheus Metrics for debugging load tests
 
 Use the following [prometheus metrics to debug your load tests / failures](./proxy/prometheus)
@@ -172,8 +161,6 @@ Use the following [prometheus metrics to debug your load tests / failures](./pro
 |----------------------|--------------------------------------|
 | `litellm_deployment_failure_responses`              | Total number of failed LLM API calls for a specific LLM deployment. Labels: `"requested_model", "litellm_model_name", "model_id", "api_base", "api_provider", "hashed_api_key", "api_key_alias", "team", "team_alias", "exception_status", "exception_class"` |
 | `litellm_deployment_cooled_down`             | Number of times a deployment has been cooled down by LiteLLM load balancing logic. Labels: `"litellm_model_name", "model_id", "api_base", "api_provider", "exception_status"` |
-
-
 
 ## Machine Specifications for Running Locust
 
@@ -191,7 +178,6 @@ Use the following [prometheus metrics to debug your load tests / failures](./pro
 | Service | Spec | CPUs | Memory | Architecture | Version|
 | --- | --- | --- | --- | --- | --- | 
 | Server | `t2.large`. | `2vCPUs` | `8GB` | `x86` |
-
 
 ## Locust file used for testing 
 
@@ -217,7 +203,6 @@ class MyUser(HttpUser):
             with open("error.txt", "a") as error_log:
                 error_log.write(response.text + "\n")
     
-
 
     def on_start(self):
         self.api_key = os.getenv('API_KEY', 'sk-1234')

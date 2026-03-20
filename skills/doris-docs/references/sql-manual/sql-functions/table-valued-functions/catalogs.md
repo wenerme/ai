@@ -44,7 +44,6 @@ The field meanings are as follows:
 | `Property`   | TEXT    | The name of a property related to the catalog (e.g., a configuration setting).                                           |
 | `Value`      | TEXT    | The value of the corresponding property for the catalog. It provides specific details about the catalog's configuration. |
 
-
 ## Examples
 View all catalog information of the doris cluster
 ```sql

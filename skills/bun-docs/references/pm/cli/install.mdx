@@ -3,8 +3,6 @@ title: "bun install"
 description: "Install packages with Bun's fast package manager"
 ---
 
-import Install from "/snippets/cli/install.mdx";
-
 ## Basic Usage
 
 ```bash terminal icon="terminal"
@@ -15,16 +13,10 @@ bun install react@latest # specific tag
 
 The `bun` CLI contains a Node.js-compatible package manager designed to be a dramatically faster replacement for `npm`, `yarn`, and `pnpm`. It's a standalone tool that will work in pre-existing Node.js projects; if your project has a `package.json`, `bun install` can help you speed up your workflow.
 
-<Note>
-
 **⚡️ 25x faster** — Switch from `npm install` to `bun install` in any Node.js project to make your installations up to 25x faster.
 
-<Frame>
   ![Bun installation speed
   comparison](https://user-images.githubusercontent.com/709451/147004342-571b6123-17a9-49a2-8bfd-dcfc5204047e.png)
-</Frame>
-
-</Note>
 
 To install all dependencies of a project:
 
@@ -119,7 +111,6 @@ For more information on filtering with `bun install`, refer to [Package Manager 
 
 Bun supports npm's `"overrides"` and Yarn's `"resolutions"` in `package.json`. These are mechanisms for specifying a version range for _metadependencies_—the dependencies of your dependencies. Refer to [Package manager > Overrides and resolutions](/pm/overrides) for complete documentation.
 
-{/* prettier-ignore */}
 ```json package.json icon="file-json"
 {
   "name": "my-app",
@@ -332,7 +323,6 @@ concurrentScripts = 16 # (cpu count or GOMAXPROCS) x2
 # - configVersion = 1: "isolated" if using workspaces, otherwise "hoisted"
 # - configVersion = 0: "hoisted"
 linker = "hoisted"
-
 
 # minimum age config
 minimumReleaseAge = 259200 # seconds

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # SAP Generative AI Hub
 
@@ -21,7 +20,7 @@ Before you begin, ensure you have:
 3. **Service Key** created for your AI Core instance (this contains your credentials)
 4. **Resource Group** with deployed AI models (check with your SAP administrator)
 
-:::tip Where to Find Your Credentials
+> **tip**: Where to Find Your Credentials
 Your credentials come from the **Service Key** you create in SAP BTP Cockpit:
 
 1. Navigate to your **Subaccount** → **Instances and Subscriptions**
@@ -42,9 +41,8 @@ The service key JSON looks like this:
 }
 ```
 
-:::info Resource Group
+> **info**: Resource Group
 The resource group is typically configured separately in your AI Core deployment, not in the service key itself. You can set it via the `AICORE_RESOURCE_GROUP` environment variable (defaults to "default").
-:::
 
 ## Quick Start
 
@@ -57,9 +55,6 @@ pip install litellm
 ### Step 2: Set Your Credentials
 
 Choose **one** of these authentication methods:
-
-<Tabs>
-<TabItem value="service-key" label="Service Key JSON (Recommended)">
 
 The simplest approach - paste your entire service key as a single environment variable. The service key must be wrapped in a `credentials` object:
 
@@ -77,9 +72,6 @@ export AICORE_SERVICE_KEY='{
 export AICORE_RESOURCE_GROUP="default"
 ```
 
-</TabItem>
-<TabItem value="individual" label="Individual Variables">
-
 Alternatively, instead of using the service key above, you could set each credential separately:
 
 ```bash
@@ -89,9 +81,6 @@ export AICORE_CLIENT_SECRET="your-client-secret"
 export AICORE_RESOURCE_GROUP="default"
 export AICORE_BASE_URL="https://api.ai.<your-region>.aws.ml.hana.ondemand.com/v2"
 ```
-
-</TabItem>
-</Tabs>
 
 ### Step 3: Make Your First Request
 
@@ -337,9 +326,6 @@ The proxy will start on `http://localhost:4000` by default.
 
 ### Making Requests
 
-<Tabs>
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Test Request"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -349,9 +335,6 @@ curl http://localhost:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Hello"}]
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="OpenAI SDK"
 from openai import OpenAI
@@ -368,9 +351,6 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="LiteLLM SDK"
 import os
 import litellm
@@ -386,9 +366,6 @@ response = litellm.completion(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Features
 
@@ -467,9 +444,8 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-:::note SAP Platform Requirement
+> **note**: SAP Platform Requirement
 When using `json_object` type, SAP's orchestration service requires the word "json" to appear in your prompt. This ensures explicit intent for JSON formatting. For schema-validated output without this requirement, use `json_schema` instead (recommended).
-:::
 
 ### Multi-turn Conversations
 
@@ -526,9 +502,8 @@ print(response.data[0]["embedding"])  # Vector representation
 
 For the complete and up-to-date list of available models provided by SAP Gen AI Hub, please refer to the [SAP AI Core Generative AI Hub documentation](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/models-and-scenarios-in-generative-ai-hub).
 
-:::info Model Availability
+> **info**: Model Availability
 Model availability varies by SAP deployment region and your subscription. Contact your SAP administrator to confirm which models are available in your environment.
-:::
 
 ### Troubleshooting
 

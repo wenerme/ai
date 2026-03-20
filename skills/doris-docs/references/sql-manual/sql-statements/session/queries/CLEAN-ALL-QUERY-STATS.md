@@ -40,7 +40,6 @@ CLEAN [ { ALL| DATABASE | TABLE } ] QUERY STATS [ { [ FOR <db_name>] | [ { FROM 
 
 > If this parameter is set, the statistics of the corresponding table are cleared
 
-
 ## Access Control Requirements
 
 The user who executes this SQL command must have at least the following permissions:
@@ -50,7 +49,6 @@ The user who executes this SQL command must have at least the following permissi
 | ADMIN_PRIV | ALL      | If ALL is specified, the ADMIN permission is required     |
 | ALTER_PRIV | DATABASE | If the database is specified, the ALTER permission for the corresponding database is required |
 | ADMIN_PRIV | TABLE    | If you specify a table, you need alter permission for that table     |
-
 
 ## Examples
 
@@ -65,5 +63,3 @@ clean database query stats for test_query_db
 ```sql
 clean table query stats from test_query_db.baseall
 ```
-
-

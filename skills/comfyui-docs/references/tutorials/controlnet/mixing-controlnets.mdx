@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI Mixing ControlNet Examples"
 description: "In this example, we will demonstrate how to mix multiple ControlNets and learn to use multiple ControlNet models to control image generation"
-sidebarTitle: "Mixing ControlNet"
 ---
 
 In AI image generation, a single control condition often fails to meet the requirements of complex scenes. Mixing multiple ControlNets allows you to control different regions or aspects of an image simultaneously, achieving more precise control over image generation.
@@ -16,7 +15,7 @@ In certain scenarios, mixing ControlNets can leverage the characteristics of dif
 
 When mixing multiple ControlNets, each ControlNet influences the image generation process according to its applied area. ComfyUI enables multiple ControlNet conditions to be applied sequentially in a layered manner through chain connections in the `Apply ControlNet` node:
 
-![apply controlnet chain link](/images/tutorial/controlnet/apply_controlnet_chain_link.jpg)
+[apply controlnet chain link]
 
 ## ComfyUI ControlNet Regional Division Mixing Example
 
@@ -27,9 +26,7 @@ In this example, we will use a combination of **Pose ControlNet** and **Scribble
 Please download the workflow image below and drag it into ComfyUI to load the workflow:
 ![ComfyUI Workflow - Mixing ControlNet](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/controlnet/mixing_controlnets.png)
 
-<Tip>
 This workflow image contains Metadata, and can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`. The system will automatically detect and prompt to download the required models.
-</Tip>
 
 Input pose image (controls the character pose on the left):
 
@@ -41,9 +38,7 @@ Input scribble image (controls the cat and scooter on the right):
 
 ### 2. Manual Model Installation
 
-<Note>
 If your network cannot successfully complete the automatic download of the corresponding models, please try manually downloading the models below and placing them in the specified directories:
-</Note>
 
 - [awpainting_v14.safetensors](https://civitai.com/api/download/models/624939?type=Model&format=SafeTensor&size=full&fp=fp16)
 - [control_v11p_sd15_scribble_fp16.safetensors](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors?download=true)
@@ -64,7 +59,7 @@ ComfyUI/
 
 ### 3. Step-by-Step Workflow Execution
 
-![ComfyUI Workflow - Mixing ControlNet Flow Diagram](/images/tutorial/controlnet/flow_diagram_mixing_controlnet.jpg)
+[ComfyUI Workflow - Mixing ControlNet Flow Diagram]
 
 Follow these steps according to the numbered markers in the image:
 

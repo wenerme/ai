@@ -1,17 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Dynamic Callback Management
 
-:::info
-
-✨ This is an enterprise feature.
+> **info**: ✨ This is an enterprise feature.
 
 [Get started with LiteLLM Enterprise](https://www.litellm.ai/enterprise)
-
-:::
 
 LiteLLM's dynamic callback management enables teams to control logging behavior on a per-request basis without requiring central infrastructure changes. This is essential for organizations managing large-scale service ecosystems where:
 
@@ -26,8 +19,6 @@ Managing callbacks is a two-step process:
 
 1. **First, list your active callbacks** to see what's currently enabled
 2. **Then, disable specific callbacks** as needed for your requests
-
-
 
 ## 1. List Active Callbacks
 
@@ -78,9 +69,6 @@ Now that you know which callbacks are active, you can selectively disable them u
 
 Use the `x-litellm-disable-callbacks` header to disable specific callbacks for individual requests.
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
     --header 'Content-Type: application/json' \
@@ -96,9 +84,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-<TabItem value="OpenAI" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -124,15 +109,9 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Disable Multiple Callbacks
 
 You can disable multiple callbacks by providing a comma-separated list in the header. Use any combination of callback names from your `/callbacks/list` response.
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -149,9 +128,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-<TabItem value="OpenAI" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -176,9 +152,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Header Format and Case Sensitivity
 
@@ -265,10 +238,4 @@ With this configuration:
 - Users cannot disable any of these callbacks via headers
 - Complete audit trail is guaranteed for compliance requirements
 
-:::info
-
-**Default Behavior**: Dynamic callback disabling is **enabled by default** (`allow_dynamic_callback_disabling: true`). You must explicitly set it to `false` to enforce guaranteed logging.
-
-:::
-
-
+> **info**: **Default Behavior**: Dynamic callback disabling is **enabled by default** (`allow_dynamic_callback_disabling: true`). You must explicitly set it to `false` to enforce guaranteed logging.

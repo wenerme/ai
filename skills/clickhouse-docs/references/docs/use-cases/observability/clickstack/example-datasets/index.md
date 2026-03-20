@@ -1,8 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/sample-datasets
 title: 'Sample Datasets'
-pagination_prev: null
-pagination_next: null
 description: 'Getting started with ClickStack and sample datasets'
 doc_type: 'landing-page'
 keywords: ['ClickStack sample datasets', 'ClickStack demo data', 'observability sample data', 'ClickStack getting started', 'ClickStack examples']

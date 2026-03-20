@@ -1,21 +1,9 @@
 ---
-slug: /deployment-guides/parallel-replicas
 title: 'Parallel Replicas'
 keywords: ['parallel replica']
 description: 'In this guide, we will first discuss how ClickHouse distributes a query across multiple shards via distributed tables, and then how a query can leverage multiple replicas for its execution.'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import image_1 from '@site/static/images/deployment-guides/parallel-replicas-1.png'
-import image_2 from '@site/static/images/deployment-guides/parallel-replicas-2.png'
-import image_3 from '@site/static/images/deployment-guides/parallel-replicas-3.png'
-import image_4 from '@site/static/images/deployment-guides/parallel-replicas-4.png'
-import image_5 from '@site/static/images/deployment-guides/parallel-replicas-5.png'
-import image_6 from '@site/static/images/deployment-guides/parallel-replicas-6.png'
-import image_7 from '@site/static/images/deployment-guides/parallel-replicas-7.png'
-import image_8 from '@site/static/images/deployment-guides/parallel-replicas-8.png'
-import image_9 from '@site/static/images/deployment-guides/parallel-replicas-9.png'
 
 ## Introduction \{#introduction\}
 
@@ -299,11 +287,9 @@ tail latency.
 This feature has known limitations, of which the major ones are documented in
 this section.
 
-:::note
-If you find an issue which isn't one of the limitations given below, and
+> **note**: If you find an issue which isn't one of the limitations given below, and
 suspect parallel replica to be the cause, please open an issue on GitHub using
 the label `comp-parallel-replicas`.
-:::
 
 | Limitation                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -318,10 +304,10 @@ the label `comp-parallel-replicas`.
 
 | Setting                                            | Description                                                                                                                                                                                                                                                         |
 |----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `enable_parallel_replicas`                         | `0`: disabled<br/> `1`: enabled <br/>`2`: Force the usage of parallel replica, will throw an exception if not used.                                                                                                                                                 |
+| `enable_parallel_replicas`                         | `0`: disabled `1`: enabled `2`: Force the usage of parallel replica, will throw an exception if not used.                                                                                                                                                 |
 | `cluster_for_parallel_replicas`                    | The cluster name to use for parallel replication; if you're using ClickHouse Cloud, use `default`.                                                                                                                                                                 |
 | `max_parallel_replicas`                            | Maximum number of replicas to use for the query execution on multiple replicas, if a number lower than the number of replicas in the cluster is specified, nodes will be selected randomly. This value can also be overcommitted to account for horizontal scaling. |
-| `parallel_replicas_min_number_of_rows_per_replica` | Help limiting the number of replicas used based on the number of rows that need to be processed the number of replicas used is defined by: <br/> `estimated rows to read` / `min_number_of_rows_per_replica`.                                                       |
+| `parallel_replicas_min_number_of_rows_per_replica` | Help limiting the number of replicas used based on the number of rows that need to be processed the number of replicas used is defined by:  `estimated rows to read` / `min_number_of_rows_per_replica`.                                                       |
 | `enable_analyzer`                                  | Query execution with parallel replicas is supported only with enabled analyzer                                                                                                                                                                                      |
 
 ## Investigating issues with parallel replicas \{#investigating-issues-with-parallel-replicas\}
@@ -340,8 +326,8 @@ SELECT
 FROM clusterAllReplicas('default', system.events)
 WHERE event ILIKE '%ParallelReplicas%'
 ```
-<details>
-<summary>Response</summary>
+
+Response
 ```response title="Response"
 ┌─hostname()───────────────────────┬─event──────────────────────────────────────────┬─value─┬─description──────────────────────────────────────────────────────────────────────────────────────────┐
 │ c-crimson-vd-86-server-rdhnsx3-0 │ ParallelReplicasHandleRequestMicroseconds      │   438 │ Time spent processing requests for marks from replicas                                               │
@@ -388,7 +374,6 @@ WHERE event ILIKE '%ParallelReplicas%'
 │ c-crimson-vd-86-server-16j1ncj-0 │ ParallelReplicasAvailableCount                 │    12 │ Number of replicas available to execute a query with task-based parallel replicas                    │
 └──────────────────────────────────┴────────────────────────────────────────────────┴───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-</details>
 
 The [`system.text_log`](/docs/operations/system-tables/text_log) table also 
 contains information about the execution of queries using parallel replicas:
@@ -400,8 +385,7 @@ WHERE query_id = 'ad40c712-d25d-45c4-b1a1-a28ba8d4019c'
 ORDER BY event_time_microseconds ASC
 ```
 
-<details>
-<summary>Response</summary>
+Response
 ```response title="Response"
 ┌─message────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ (from 54.218.178.249:59198) SELECT * FROM session_events WHERE type='type2' LIMIT 10 SETTINGS allow_experimental_parallel_reading_from_replicas=2; (stage: Complete)                                                                                       │
@@ -462,7 +446,6 @@ Received from 3 replica
 │ Processed in 0.024095586 sec.                                                                                                                                                                                                                              │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-</details>
 
 Finally, you can also use the `EXPLAIN PIPELINE`. It highlights how ClickHouse 
 is going to execute a query and what resources are going to be used for the 

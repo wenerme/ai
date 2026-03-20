@@ -1,13 +1,9 @@
 ---
-slug: /guides/replacing-merge-tree
 title: 'ReplacingMergeTree'
 description: 'Using the ReplacingMergeTree engine in ClickHouse'
 keywords: ['replacingmergetree', 'inserts', 'deduplication']
 doc_type: 'guide'
 ---
-
-import postgres_replacingmergetree from '@site/static/images/migrations/postgres-replacingmergetree.png';
-import Image from '@theme/IdealImage';
 
 While transactional databases are optimized for transactional update and delete workloads, OLAP databases offer reduced guarantees for such operations. Instead, they optimize for immutable data inserted in batches for the benefit of significantly faster analytical queries. While ClickHouse offers update operations through mutations, as well as a lightweight means of deleting rows, its column-orientated structure means these operations should be scheduled with care, as described above. These operations are handled asynchronously, processed with a single thread, and require (in the case of updates) data to be rewritten on disk. They should thus not be used for high numbers of small changes.
 In order to process a stream of update and delete rows while avoiding the above usage patterns, we can use the ClickHouse table engine ReplacingMergeTree.
@@ -28,18 +24,12 @@ During this process, the following occurs during part merging:
 
 As a result of this merge process, we have four rows representing the final state:
 
-<br />
-
 <Image img={postgres_replacingmergetree} size="md" alt="ReplacingMergeTree process"/>
-
-<br />
 
 Note that deleted rows are never removed. They can be forcibly deleted with an `OPTIMIZE table FINAL CLEANUP`. This requires the experimental setting `allow_experimental_replacing_merge_with_cleanup=1`. This should only be issued under the following conditions:
 
 1. You can be sure that no rows with old versions (for those that are being deleted with the cleanup) will be inserted after the operation is issued. If these are inserted, they will be incorrectly retained, as the deleted rows will no longer be present.
 2. Ensure all replicas are in sync prior to issuing the cleanup. This can be achieved with the command:
-
-<br />
 
 ```sql
 SYSTEM SYNC REPLICA table
@@ -347,9 +337,7 @@ This behavior can be further tuned by setting min_age_to_force_merge_on_partitio
 
 ### Recommended settings {#recommended-settings}
 
-:::warning
-Tuning merge behavior is an advanced operation. We recommend consulting with ClickHouse support before enabling these settings in production workloads.
-:::
+> **warning**: Tuning merge behavior is an advanced operation. We recommend consulting with ClickHouse support before enabling these settings in production workloads.
 
 In most cases, setting min_age_to_force_merge_seconds to a low value—significantly less than the partition period—is preferred. This minimizes the number of parts and prevents unnecessary merging at query time with the FINAL operator.
 

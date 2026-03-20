@@ -154,9 +154,8 @@ spec:
 ```
 `${secretName}`: the name of the Secret containing the non-root administrative user credentials.
 
-:::tip Note
+> **tip**: Note
 After deployment, it is recommended to set a password for the root user. Once this is done, Doris Operator will switch to managing cluster nodes using the new non-root user. Avoid deleting this user after it has been created.
-:::
 
 ### Setting the Root User Password After Cluster Deployment
 If the root user password is not configured during initial deployment, a user with the [Node_priv](../../../admin-manual/auth/authentication-and-authorization.md#types-of-permissions) privilege must be provided to allow Doris Operator to continue managing cluster nodes automatically. It is not recommended to use the root user for this purpose. Instead, refer to the [User Creation and Privilege Assignment documentation](../../../sql-manual/sql-statements/account-management/CREATE-USER) to create a new user and assign the required privileges. After creating the user, configure the credentials using either environment variables or a Kubernetes Secret, and update the `DorisDisaggregatedCluster` resource accordingly.
@@ -208,10 +207,9 @@ Refer to the official [CREATE USER documentation](../../../sql-manual/sql-statem
     ```
   `${secretName}`: the name of the Secret containing the user credentials.
 
-:::tip Note
+> **tip**: Note
 - After configuring the root password and specifying a new user with node management privileges, Doris Operator will trigger a rolling restart of existing services in the cluster.
   :::
-
 
 ## Using Kerberos Authentication
 The Doris Operator has supported Kerberos authentication for Doris (versions 2.1.10, 3.0.6, and later) in Kubernetes since version 25.5.1. To enable Kerberos authentication in Doris, both the [krb5.conf file](https://web.mit.edu/kerberos/krb5-1.12/doc/admin/conf_files/krb5_conf.html) and [keytab files](https://web.mit.edu/Kerberos/krb5-1.16/doc/basic/keytab_def.html) are required.

@@ -19,8 +19,6 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 This tutorial is a continuation of the [Grafana Alerting - Create and receive your first alert](http://www.grafana.com/tutorials/alerting-get-started/) tutorial.
 
 In this guide, we dig into more complex yet equally fundamental elements of Grafana Alerting: **alert instances** and **notification policies**.
@@ -34,11 +32,6 @@ After introducing each component, you will learn how to:
 - Use labels to match alert instances and notification policies
 
 Learning about alert instances and notification policies is useful if you have more than one contact point in your organization, or if your alert rule returns a number of metrics that you want to handle separately by routing each alert instance to a specific contact point. The tutorial will introduce each concept, followed by how to apply both concepts in a real-world scenario.
-
-<!-- INTERACTIVE page intro.md END -->
-<!-- INTERACTIVE page step1.md START -->
-
-<!-- INTERACTIVE ignore START -->
 
 {{< docs/ignore >}}
 
@@ -66,61 +59,59 @@ There are different ways you can follow along with this tutorial.
 
 ### Set up the Grafana stack (OSS users)
 
-<!-- INTERACTIVE ignore END -->
-
 To demonstrate the observation of data using the Grafana stack, download and run the following files.
 
 1. Clone the [tutorial environment repository](https://www.github.com/grafana/tutorial-environment).
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    git clone https://github.com/grafana/tutorial-environment.git
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Change to the directory where you cloned the repository:
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```
    cd tutorial-environment
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
 1. Run the Grafana stack:
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    ```
    docker compose up -d
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose up -d
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
    The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
    {{< /admonition >}}
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
@@ -129,9 +120,6 @@ To demonstrate the observation of data using the Grafana stack, download and run
    If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
    {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-<!-- INTERACTIVE page step2.md START -->
 
 ## Alert instances
 
@@ -144,9 +132,6 @@ If the query returns more than one time-series, each time-series represents a di
 {{< figure alt="Screenshot displaying alert instances in the context of an alert rule, highlighting the specific alerts triggered by the rule and their respective statuses" src="/media/docs/alerting/alert-instance-flow.jpg" max-width="1200px" caption="Alert Instances in the Context of an Alert Rule" >}}
 
 In this scenario, each time-series is evaluated independently against the alert rule. It results in the creation of an alert instance for each time-series. The time-series corresponding to the desktop page views meets the threshold and, therefore, results in an alert instance in **Firing** state for which an alert notification is sent. The mobile alert instance state remains **Normal**.
-
-<!-- INTERACTIVE page step2.md END -->
-<!-- INTERACTIVE page step3.md START -->
 
 ## Notification policies
 
@@ -161,14 +146,9 @@ Key Characteristics:
 
 In the above diagram, alert instances and notification policies are matched by labels. For instance, the label `team=operations` matches the alert instance “**Pod stuck in CrashLoop**” and “**Disk Usage -80%**” to child policies that send alert notifications to a particular contact point (operations@grafana.com).
 
-<!-- INTERACTIVE page step3.md END -->
-<!-- INTERACTIVE page step4.md START -->
-
 ## Create notification policies
 
 Create a notification policy if you want to handle metrics returned by alert rules separately by routing each alert instance to a specific contact point.
-
-<!-- INTERACTIVE ignore START -->
 
 1. In your browser, **sign in** to your Grafana Cloud account.
 
@@ -191,8 +171,6 @@ Create a notification policy if you want to handle metrics returned by alert rul
 
 1. **Repeat the steps above to create a second child policy** to match another alert instance. For labels use: `device=mobile`. Use the Webhook integration for the contact point. Alternatively, experiment by using a different Webhook endpoint or a [different integration](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/#supported-contact-point-integrations).
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 1. Visit [http://localhost:3000](http://localhost:3000), where Grafana should be running
@@ -211,15 +189,12 @@ Create a notification policy if you want to handle metrics returned by alert rul
 
 {{< /docs/ignore >}}
 
-<!-- INTERACTIVE page step4.md END -->
-<!-- INTERACTIVE page step5.md START -->
-
 ## Create an alert rule that returns alert instances
 
 The alert rule that you are about to create is meant to monitor web traffic page views. The objective is to explore what an alert instance is and how to leverage routing individual alert instances by using label matchers and notification policies.
 
-   <!-- INTERACTIVE page step5.md END -->
-   <!-- INTERACTIVE page step6.md START -->
+   
+   
 
 ### Create an alert rule
 
@@ -257,9 +232,6 @@ It should return two series.`desktop` in Firing state, and `mobile` in Normal st
 
 {{< figure alt="Screenshot showing a preview of a query in Grafana that returns two alert instances, including the query results and relevant alert details" src="/media/docs/alerting/firing-instances.png" max-width="1200px" caption="Preview of a query returning two alert instances in Grafana." >}}
 
-<!-- INTERACTIVE page step6.md END -->
-<!-- INTERACTIVE page step7.md START -->
-
 ### Add folders and labels
 
 1. In **Folder**, click **+ New folder** and enter a name. For example: `web-traffic-alerts` . This folder contains our alert rules.
@@ -286,12 +258,12 @@ In this section, you can select how you want to route your alert instances. Sinc
 
    {{< figure alt="Screenshot showing a routing preview of matched notification policies, detailing how alerts are matched and routed to specific notification channels" src="/media/docs/alerting/get-started-alert-instace-routing-prev.png" max-width="1200px" caption="Routing preview of matched notification policies" >}}
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    Even if both labels match the policies, only the alert instance in Firing state produces an alert notification.
    {{</ admonition >}}
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
    Even if both labels match the policies, only the alert instance in Firing state produces an alert notification.
@@ -300,9 +272,6 @@ In this section, you can select how you want to route your alert instances. Sinc
 1. Click **Save rule and exit**.
 
 Now that we have set up the alert rule, it’s time to check the alert notification.
-
-<!-- INTERACTIVE page step7.md END -->
-<!-- INTERACTIVE page step8.md START -->
 
 ## Receive alert notifications
 
@@ -314,9 +283,6 @@ The alert notification details show that the alert instance corresponding to the
 
 Feel free to change the CSV data in the alert rule to trigger the routing of the alert instance that matches the label `device=mobile`.
 
-<!-- INTERACTIVE page step8.md END -->
-<!-- INTERACTIVE page finish.md START -->
-
 ## Summary
 
 In this tutorial, you have learned how Grafana Alerting can route individual alert instances using the labels generated by the data-source query and match these labels with notification policies, which in turn routes alert notifications to specific contact points.
@@ -325,20 +291,14 @@ If you run into any problems, you are welcome to post questions in our [Grafana 
 
 ## Learn more in [Grafana Alerting: Group alert notifications](http://www.grafana.com/tutorials/alerting-get-started-pt3/)
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 
 In [Get started with Grafana Alerting: Group alert notifications](http://www.grafana.com/tutorials/alerting-get-started-pt3/) you learn how to group alert notifications effectively.
 
 {{< /admonition >}}
 
-<!-- INTERACTIVE ignore END -->
-
 {{< docs/ignore >}}
 
 In [Get started with Grafana Alerting: Group alert notifications](http://www.grafana.com/tutorials/alerting-get-started-pt3/) you learn how to group alert notifications effectively.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page finish.md END -->

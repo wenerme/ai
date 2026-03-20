@@ -49,7 +49,6 @@ DROP [TEMPORARY] TABLE [IF EXISTS] [<db_name>.]<table_name> [FORCE];
 
 The user executing this SQL command must have at least the following permissions:
 
-
 | Privilege       | Object    | Notes                      |
 |:----------------|:----------|:---------------------------|
 | Drop_priv       | Table     | DROP TABLE belongs to the table DROP operation |

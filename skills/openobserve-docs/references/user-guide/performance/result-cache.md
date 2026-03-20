@@ -1,6 +1,6 @@
 ## Overview
-Previously, when a query was executed, the system used gRPC calls to check whether other nodes in the cluster already had cached results for that query. This required distributed coordination across all nodes.<br>
-OpenObserve now implements a local result caching system that improves query performance by storing query results on the same node where the query is executed. The caching system relies on **consistent hashing**, which ensures that identical queries are always routed to the same node. This deterministic routing enables each node to maintain and reuse its own cached results without requiring cross-node communication. <br>
+Previously, when a query was executed, the system used gRPC calls to check whether other nodes in the cluster already had cached results for that query. This required distributed coordination across all nodes.
+OpenObserve now implements a local result caching system that improves query performance by storing query results on the same node where the query is executed. The caching system relies on **consistent hashing**, which ensures that identical queries are always routed to the same node. This deterministic routing enables each node to maintain and reuse its own cached results without requiring cross-node communication. 
 The local cache reduces network overhead, improves response times, and ensures stable query performance across large deployments.
 
 ## How result cache works
@@ -36,13 +36,13 @@ When a query is executed, the node performs the following steps:
     - The system checks which parts of the requested time range already exist in cache and which do not.
     - It executes a new query only for the uncached portion of the time range.
     - The newly retrieved data is then merged with the cached data.
-    - The merged dataset is filtered to include records within the full query time range, then sorted and deduplicated before returning the output. <br>
-    Example: <br>
+    - The merged dataset is filtered to include records within the full query time range, then sorted and deduplicated before returning the output. 
+    Example: 
     If a user queries data for 9 AM to 11 AM and cache files are available for 9 AM to 10 AM, OpenObserve will query only the missing 10 AM to 11 AM data. It then merges this new result with the cached 9 AM to 10 AM data and returns the combined dataset to the user.
     The resulting dataset is then returned as the query output.
 
 ## Cache invalidation
-Cache invalidation ensures that query results remain accurate when underlying data changes. <br>
+Cache invalidation ensures that query results remain accurate when underlying data changes. 
 In OpenObserve, cache retrieval is handled locally by each node, but cache invalidation must still be coordinated across all nodes to maintain consistency. This is done using a dedicated background mechanism that relies on the `delete_result_cache` RPC. The `delete_result_cache` RPC is a remote procedure call (RPC) endpoint that allows nodes in the OpenObserve cluster to coordinate cache invalidation.
 
 ## Configuration

@@ -23,7 +23,6 @@ BITAND(<lhs>, <rhs>)
 ## Return Value
 Returns the result of the bitwise AND operation between the two integers.
 
-
 ## Examples
 1. Example 1
     ```sql

@@ -1,21 +1,12 @@
 ---
-sidebar_label: 'JDBC'
-sidebar_position: 4
 keywords: ['clickhouse', 'java', 'jdbc', 'driver', 'integrate']
 description: 'ClickHouse JDBC driver'
-slug: /integrations/language-clients/java/jdbc
 title: 'JDBC Driver'
 doc_type: 'reference'
 integration:
   - support_level: 'core'
   - category: 'language_client'
 ---
-
-import ClientVersionDropdown from '@theme/ClientVersionDropdown/ClientVersionDropdown';
-import Version from '@theme/ClientVersionDropdown/Version';
-import WideTableWrapper from '@site/src/components/WideTableWrapper/WideTableWrapper';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <ClientVersionDropdown versions={[
     {
@@ -28,11 +19,8 @@ import TabItem from '@theme/TabItem';
 
 <Version>
 
-:::note
-`clickhouse-jdbc` implements the standard JDBC interface using the latest java client.
+> **note**: `clickhouse-jdbc` implements the standard JDBC interface using the latest java client.
 We recommend using the latest java client directly if performance/direct access is critical.
-:::
-
 
 ## Environment requirements {#environment-requirements}
 
@@ -40,11 +28,10 @@ We recommend using the latest java client directly if performance/direct access 
 
 ### Setup {#setup}
 
-<Tabs groupId="jdbc-base-dependencies">
-    <TabItem value="maven" label="Maven" >
+    
 
         ```xml
-        <!-- https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc -->
+        
         <dependency>
             <groupId>com.clickhouse</groupId>
             <artifactId>clickhouse-jdbc</artifactId>
@@ -53,24 +40,22 @@ We recommend using the latest java client directly if performance/direct access 
         </dependency>
         ```
 
-    </TabItem>
-    <TabItem value="gradle-kt" label="Gradle (Kotlin)">
+    
+    
 
         ```kotlin
         // https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc
         implementation("com.clickhouse:clickhouse-jdbc:0.9.8:all")
         ```
-    </TabItem>
-    <TabItem value="gradle" label="Gradle">
+    
+    
 
         ```groovy
         // https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc
         implementation 'com.clickhouse:clickhouse-jdbc:0.9.8:all'
         ```
 
-    </TabItem>
-</Tabs>
-
+    
 
 If you are using JDBC driver within an application that requires jar to be added to the classpath, you need to add download the jar from:
 - [Maven Central](https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc) and add it to the classpath
@@ -78,21 +63,17 @@ If you are using JDBC driver within an application that requires jar to be added
     - use qualifier `all` to get the jar with all shaded dependencies included.
 - or from official repository [here](https://github.com/ClickHouse/clickhouse-java/releases)
 
-
 ## Configuration {#configuration}
 
 **Driver Class**: `com.clickhouse.jdbc.ClickHouseDriver`
 
-:::note
-`com.clickhouse.jdbc.ClickHouseDriver` is a facade class for the new and old JDBC implementations. It uses the new JDBC implementation by default. 
+> **note**: `com.clickhouse.jdbc.ClickHouseDriver` is a facade class for the new and old JDBC implementations. It uses the new JDBC implementation by default. 
 You can use the old JDBC implementation by setting the `clickhouse.jdbc.v1` **system** property to `true`. This property should be set before calling 
 Driver class. 
 
 Alternative way to switch between version is to use Driver classes of each version directly: 
 - `com.clickhouse.jdbc.Driver` is new JDBC implementation (V2). 
 - `com.clickhouse.jdbc.DriverV1` is old JDBC implementation (V1).
-
-:::
 
 **URL Syntax**: `jdbc:(ch|clickhouse)[:<protocol>]://endpoint[:port][/<database>][?param1=value1&param2=value2][#tag1,tag2,...]`, for example:
 
@@ -124,11 +105,9 @@ as is to the driver. Driver has some own properties that aren't part of the clie
 | `jdbc_sql_parser` | `JAVACC` | Configures which SQL parser to use. Choices: `ANTLR4`, `ANTLR4_PARAMS_PARSER`, `JAVACC`. |
 | `remember_last_set_roles` | `true` | Remember last set roles for the connection. |
 
-
-:::note Server Settings
+> **note**: Server Settings
 
 All server settings should be prefixed with `clickhouse_setting_` (same as for the client [configuration](/integrations/language-clients/java/client#server-settings)).
-
 
 ```java
 Properties config = new Properties();
@@ -140,7 +119,6 @@ config.put(ClientConfigProperties.serverSetting("allow_experimental_time_time64_
 
 Connection conn = Driver.connect("jdbc:ch:http://localhost:8123/", config);
 ```
-:::
 
 **Example configuration**:
 ```java
@@ -209,7 +187,6 @@ Following mapping applies to:
 There are few ways to change the mapping:
 - `ResultSet#getObject(columnIndex, class)` - method will try to convert value to `class` type. There are some conversion limitations. See each section for details.
 
-
 **Numeric Types**
 
 | ClickHouse Type             | JDBC Type                    | Java Class                  |
@@ -253,7 +230,6 @@ There are few ways to change the mapping:
 - `String` can be read only as `java.lang.String` or `byte[]`.
 - `FixedString` is read as is and will be padded with zeros to the length of the column. (For example `FixedString(10)` for `'John'` will be read as `'John\0\0\0\0\0\0\0\0\0'`.)
 
-
 **Enum Types**
 
 | ClickHouse Type             | JDBC Type                    | Java Class                  |
@@ -265,7 +241,6 @@ There are few ways to change the mapping:
 - Enum values can be read as numeric values using designtated getter method or `getObject(columnIndex, Integer.class)` method.
 - `Enum16` is mapped to short and Enum8 is mapped to byte internally. Reading `Enum16` as byte should be avoided because of data coruption risk.
 - Enum values can be set as string or numeric value in `PreparedStatement`. 
-
 
 **Date/Time Types**
 
@@ -285,7 +260,6 @@ There are few ways to change the mapping:
 - `Date`, `Date32`, `Time`, `Time64` isn't affected by the timezone of the server. 
 - `DateTime`, `DateTime64` is affected by the timezone of the server or session timezone. 
 - `DateTime` and `DateTime64` can be retrieved as `ZonedDateTime` by using `getObject(colIndex, ZonedDateTime.class)`.
-
 
 **Nested Types**
 
@@ -382,7 +356,6 @@ try (Connection conn = ...) {
 **Reading Tuples**
 
 The method `getObject(columnIndex)` will return `Object[]`. Tuples can be read as `java.sql.Array` by using `getObject(columnIndex, Array.class)` method.
-
 
 **Example**
 ```java
@@ -486,7 +459,6 @@ try (Connection conn = ...) {
 }
 ```
 
-
 **Geo Types**
 
 | ClickHouse Type             | JDBC Type                    | Java Class                  |
@@ -532,7 +504,6 @@ DataSource dataSource = new DataSource(url, properties);//DataSource or DriverMa
 try (Connection conn = dataSource.getConnection()) {
 ... // do something with the connection
 ```
-
 
 ## Supplying Credentials and Settings {#supplying-credentials-and-settings}
 
@@ -820,17 +791,13 @@ try (Connection conn = DriverManager.getConnection(url, properties)) {
 - V2 uses only `Schema` term to name databases. `Catalog` term is reserved for future use.
 - V2 returns `false` for `DatabaseMetaData.supportsTransactions()` and `DatabaseMetaData.supportsSavepoints()`. This will be changed in the future development.
 
-
 </Version>
 
 <Version>
 
-
 `clickhouse-jdbc` implements the standard JDBC interface. Being built on top of [clickhouse-client](/integrations/sql-clients/sql-console), it provides additional features like custom type mapping, transaction support, and standard synchronous `UPDATE` and `DELETE` statements, etc., so that it can be easily used with legacy applications and tools.
 
-:::note
-Latest JDBC (0.7.2) version uses Client-V1
-:::
+> **note**: Latest JDBC (0.7.2) version uses Client-V1
 
 `clickhouse-jdbc` API is synchronous, and generally, it has more overheads(e.g., SQL parsing and type mapping/conversion, etc.). Consider [clickhouse-client](/integrations/sql-clients/sql-console) when performance is critical or if you prefer a more direct way to access ClickHouse.
 
@@ -840,30 +807,29 @@ Latest JDBC (0.7.2) version uses Client-V1
 
 ### Setup {#v07-setup}
 
-<Tabs groupId="client-v1-compression-deps">
-    <TabItem value="maven" label="Maven">
+    
 
         ```xml
-        <!-- https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc -->
+        
         <dependency>
             <groupId>com.clickhouse</groupId>
             <artifactId>clickhouse-jdbc</artifactId>
             <version>0.7.2</version>
-            <!-- use uber jar with all dependencies included, change classifier to http for smaller jar -->
+            
             <classifier>shaded-all</classifier>
         </dependency>
         ```
 
-    </TabItem>
-    <TabItem value="gradle-kt" label="Gradle (Kotlin)">
+    
+    
 
         ```kotlin
         // https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc
         // use uber jar with all dependencies included, change classifier to http for smaller jar
         implementation("com.clickhouse:clickhouse-jdbc:0.7.2:shaded-all")
         ```
-    </TabItem>
-    <TabItem value="gradle" label="Gradle">
+    
+    
 
         ```groovy
         // https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc
@@ -871,16 +837,14 @@ Latest JDBC (0.7.2) version uses Client-V1
         implementation 'com.clickhouse:clickhouse-jdbc:0.7.2:shaded-all'
         ```
 
-    </TabItem>
-</Tabs>
+    
 
 Since version `0.5.0`, we're using Apache HTTP Client that's packed the Client. Since there isn't a shared version of the package, you need to add a logger as a dependency.
 
-<Tabs groupId="client-v1-compression-deps">
-    <TabItem value="maven" label="Maven" >
+    
 
         ```xml
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -888,23 +852,22 @@ Since version `0.5.0`, we're using Apache HTTP Client that's packed the Client. 
         </dependency>
         ```
 
-    </TabItem>
-    <TabItem value="gradle-kt" label="Gradle (Kotlin)">
+    
+    
 
         ```kotlin
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
         implementation("org.slf4j:slf4j-api:2.0.16")
         ```
-    </TabItem>
-    <TabItem value="gradle" label="Gradle">
+    
+    
 
         ```groovy
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
         implementation 'org.slf4j:slf4j-api:2.0.16'
         ```
 
-    </TabItem>
-</Tabs>
+    
 
 ## Configuration {#v07-configuration}
 
@@ -935,12 +898,10 @@ Note: please refer to [JDBC specific configuration](https://github.com/ClickHous
 
 JDBC Driver supports same data formats as client library does.
 
-:::note
-- AggregatedFunction - :warning: doesn't support `SELECT * FROM table ...`
+> **note**: - AggregatedFunction - :warning: doesn't support `SELECT * FROM table ...`
 - Decimal - `SET output_format_decimal_trailing_zeros=1` in 21.9+ for consistency
 - Enum - can be treated as both string and integer
 - UInt64 - mapped to `long` (in client-v1)
-:::
 
 ## Creating Connection {#v07-creating-connection}
 
@@ -970,9 +931,7 @@ try (Connection conn = dataSource.getConnection(...);
 
 ## Insert {#v07-insert}
 
-:::note
-- Use `PreparedStatement` instead of `Statement`
-:::
+> **note**: - Use `PreparedStatement` instead of `Statement`
 
 It's easier to use but slower performance compare to input function (see below):
 
@@ -1036,10 +995,7 @@ try (PreparedStatement ps = conn.prepareStatement("select date_time from mytable
 
 ## Handling `AggregateFunction` {#handling-aggregatefunction}
 
-:::note
-As of now, only `groupBitmap` is supported.
-:::
-
+> **note**: As of now, only `groupBitmap` is supported.
 ```java showLineNumbers
 // batch insert using input function
 try (ClickHouseConnection conn = newConnection(props);
@@ -1080,15 +1036,11 @@ try (PreparedStatement stmt = conn.prepareStatement(
 }
 ```
 
-<br/>
-
 ## Configuring HTTP library {#v07-configuring-http-library}
 
 The ClickHouse JDBC connector supports three HTTP libraries: [`HttpClient`](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html), [`HttpURLConnection`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/HttpURLConnection.html), and [Apache `HttpClient`](https://hc.apache.org/httpcomponents-client-5.2.x/).
 
-:::note
-`HttpClient` is only supported in JDK 11 or above.
-:::
+> **note**: `HttpClient` is only supported in JDK 11 or above.
 
 The JDBC driver uses `HttpClient` by default. You can change the HTTP library used by the ClickHouse JDBC connector by setting the following property:
 
@@ -1103,8 +1055,6 @@ Here is a full list of the corresponding values:
 | HTTP_CLIENT         | `HttpClient`        |
 | HTTP_URL_CONNECTION | `HttpURLConnection` |
 | APACHE_HTTP_CLIENT  | Apache `HttpClient` |
-
-<br/>
 
 ## Connect to ClickHouse with SSL {#connect-to-clickhouse-with-ssl}
 
@@ -1190,9 +1140,7 @@ After Setting those settings, you need to ensure that your client enables the Ke
 properties.setProperty("socket_keepalive", "true");
 ```
 
-:::note
-Currently, you must use Apache HTTP Client library when setting the socket keep-alive, as the other two HTTP client libraries supported by `clickhouse-java` don't allow setting socket options. For a detailed guide, see [Configuring HTTP library](#v07-configuring-http-library).
-:::
+> **note**: Currently, you must use Apache HTTP Client library when setting the socket keep-alive, as the other two HTTP client libraries supported by `clickhouse-java` don't allow setting socket options. For a detailed guide, see [Configuring HTTP library](#v07-configuring-http-library).
 
 Alternatively, you can add equivalent parameters to the JDBC URL.
 

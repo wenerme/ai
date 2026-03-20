@@ -1,20 +1,9 @@
 ---
-sidebar_position: 1
-sidebar_label: 'Automatic scaling'
-slug: /manage/scaling
 description: 'Configuring automatic scaling in ClickHouse Cloud'
 keywords: ['autoscaling', 'auto scaling', 'scaling', 'horizontal', 'vertical', 'bursts']
 title: 'Automatic Scaling'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import auto_scaling from '@site/static/images/cloud/manage/AutoScaling.png';
-import scaling_patch_request from '@site/static/images/cloud/manage/scaling-patch-request.png';
-import scaling_patch_response from '@site/static/images/cloud/manage/scaling-patch-response.png';
-import scaling_configure from '@site/static/images/cloud/manage/scaling-configure.png';
-import scaling_memory_allocation from '@site/static/images/cloud/manage/scaling-memory-allocation.png';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge'
 
 # Automatic scaling
 
@@ -22,9 +11,7 @@ Scaling is the ability to adjust available resources to meet client demands. Sca
 
 <ScalePlanFeatureBadge feature="Automatic vertical scaling"/>
 
-:::note
-Scale and Enterprise tiers supports both single and multi-replica services, whereas, Basic tier supports only single replica services. Single replica services are meant to be fixed in size and don't allow vertical or horizontal scaling. You can upgrade to the Scale or Enterprise tier to scale your services.
-:::
+> **note**: Scale and Enterprise tiers supports both single and multi-replica services, whereas, Basic tier supports only single replica services. Single replica services are meant to be fixed in size and don't allow vertical or horizontal scaling. You can upgrade to the Scale or Enterprise tier to scale your services.
 
 ## How scaling works in ClickHouse Cloud {#how-scaling-works-in-clickhouse-cloud}
 
@@ -37,14 +24,12 @@ For Enterprise tier services scaling works as follows:
   - Standard profiles (1:4) will support vertical autoscaling.
   - Custom profiles (`highMemory`) don't support vertical autoscaling or manual vertical scaling. However, these services can be scaled vertically by contacting support.
 
-:::note
-Scaling in ClickHouse Cloud happens in what we call a ["Make Before Break" (MBB)](/cloud/features/mbb) approach.
+> **note**: Scaling in ClickHouse Cloud happens in what we call a ["Make Before Break" (MBB)](/cloud/features/mbb) approach.
 This adds one or more replicas of the new size before removing the old replicas, preventing any loss of capacity during scaling operations.
 By eliminating the gap between removing existing replicas and adding new ones, MBB creates a more seamless and less disruptive scaling process.
 It is especially beneficial in scale-up scenarios, where high resource utilization triggers the need for additional capacity, since removing replicas prematurely would only exacerbate the resource constraints.
 As part of this approach, we wait up to an hour to let any existing queries complete on the older replicas before removing them.
 This balances the need for existing queries to complete, while at the same time ensuring that older replicas don't linger around for too long.
-:::
 
 ### Vertical auto scaling {#vertical-auto-scaling}
 
@@ -64,9 +49,7 @@ The **larger** of the CPU or memory recommendation is picked, and CPU and memory
 
 The scaling of ClickHouse Cloud Scale or Enterprise services can be adjusted by organization members with the **Admin** role.  To configure vertical autoscaling, go to the **Settings** tab for your service and adjust the minimum and maximum memory, along with CPU settings as shown below.
 
-:::note
-Single replica services can't be scaled for all tiers.
-:::
+> **note**: Single replica services can't be scaled for all tiers.
 
 <Image img={auto_scaling} size="lg" alt="Scaling settings page" border/>
 
@@ -76,11 +59,9 @@ You can also choose to set these values the same, essentially "pinning" the serv
 
 It's important to note that this will disable any auto scaling on the cluster, and your service won't be protected against increases in CPU or memory usage beyond these settings.
 
-:::note
-For Enterprise tier services, standard 1:4 profiles will support vertical autoscaling.
+> **note**: For Enterprise tier services, standard 1:4 profiles will support vertical autoscaling.
 Custom profiles won't support vertical autoscaling or manual vertical scaling at launch.
 However, these services can be scaled vertically by contacting support.
-:::
 
 ## Manual horizontal scaling {#manual-horizontal-scaling}
 
@@ -90,9 +71,7 @@ You can use ClickHouse Cloud [public APIs](https://clickhouse.com/docs/cloud/man
 
 **Scale** and **Enterprise** tiers also support single-replica services. Services once scaled out, can be scaled back in to a minimum of a single replica. Note that single replica services have reduced availability and aren't recommended for production usage.
 
-:::note
-Services can scale horizontally to a maximum of 20 replicas. If you need additional replicas, please contact our support team.
-:::
+> **note**: Services can scale horizontally to a maximum of 20 replicas. If you need additional replicas, please contact our support team.
 
 ### Horizontal scaling via API {#horizontal-scaling-via-api}
 
@@ -133,13 +112,10 @@ ClickHouse Cloud implements adaptive idling to prevent disruptions while optimiz
   - If server initialization time is between 30 and 60 minutes, the idle timeout is set to 30 minutes.
   - If server initialization time is more than 60 minutes, the idle timeout is set to 1 hour
 
-:::note
-The service may enter an idle state where it suspends refreshes of [refreshable materialized views](/materialized-view/refreshable-materialized-view), consumption from [S3Queue](/engines/table-engines/integrations/s3queue), and scheduling of new merges. Existing merge operations will complete before the service transitions to the idle state. To ensure continuous operation of refreshable materialized views and S3Queue consumption, disable the idle state functionality.
-:::
+> **note**: The service may enter an idle state where it suspends refreshes of [refreshable materialized views](/materialized-view/refreshable-materialized-view), consumption from [S3Queue](/engines/table-engines/integrations/s3queue), and scheduling of new merges. Existing merge operations will complete before the service transitions to the idle state. To ensure continuous operation of refreshable materialized views and S3Queue consumption, disable the idle state functionality.
 
-:::danger When not to use automatic idling
+> **danger**: When not to use automatic idling
 Use automatic idling only if your use case can handle a delay before responding to queries, because when a service is paused, connections to the service will time out. Automatic idling is ideal for services that are used infrequently and where a delay can be tolerated. It isn't recommended for services that power customer-facing features that are used frequently.
-:::
 
 ## Handling spikes in workload {#handling-bursty-workloads}
 

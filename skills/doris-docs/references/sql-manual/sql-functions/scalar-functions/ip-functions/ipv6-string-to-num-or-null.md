@@ -25,7 +25,6 @@ IPV6_STRING_TO_NUM_OR_NULL(<ipv6_string>)
 |-----------|--------------------------------------------------|
 | `<ipv6_string>`      | An IPv6 address of type String  |
 
-
 ## Return Value
 Returns an IPv6 address in binary format.
 - If an illegal IP address is entered, `NULL` is returned.
@@ -42,4 +41,3 @@ select hex(ipv6_string_to_num_or_null('1111::ffff')) as r1, hex(ipv6_string_to_n
 | 1111000000000000000000000000FFFF | 00000000000000000000FFFFC0A80001 | NULL |
 +----------------------------------+----------------------------------+------+
 ```
-

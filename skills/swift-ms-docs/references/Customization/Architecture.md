@@ -12,11 +12,9 @@ All AgentTemplates need to inherit from `BaseAgentTemplate` and implement severa
 - _format_tool_responses: Format the tool (also called tool_response) part `[{"role": "tool", "content": "..."}, {"role": "tool", "content": "..."}]`.
 - get_toolcall: Used during deployment to parse the tool name and parameters from the model output content, returning `List[Function]`.
 
-
 How to debug:
 ```python
 data = {"tools": "[{\"type\": \"function\", \"function\": {\"name\": \"realtime_aqi\", \"description\": \"天气预报。获取实时空气质量。当前空气质量，PM2.5，PM10信息\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\", \"description\": \"城市名，例如：上海\"}}, \"required\": [\"city\"]}}}]", "messages": [{"role": "user", "content": "北京和上海今天的天气情况"}, {"role": "tool_call", "content": "{\"name\": \"realtime_aqi\", \"arguments\": {\"city\": \"北京\"}}"}, {"role": "tool_call", "content": "{\"name\": \"realtime_aqi\", \"arguments\": {\"city\": \"上海\"}}"}, {"role": "tool_response", "content": "{\"city\": \"北京\", \"aqi\": \"10\", \"unit\": \"celsius\"}"}, {"role": "tool_response", "content": "{\"city\": \"上海\", \"aqi\": \"72\", \"unit\": \"fahrenheit\"}"}, {"role": "assistant", "content": "根据天气预报工具，北京今天的空气质量指数为10，属于良好水平；上海今天的空气质量指数为72，属于轻度污染水平。"}]}
-
 
 from swift import get_processor, get_template
 
@@ -175,7 +173,6 @@ class MathORM(ORM):
             rewards.append(float(res1.strip() == res2.strip()))
 
         return rewards
-
 
 orms = {
     'math': MathORM,

@@ -1,17 +1,12 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: noDeprecatedMediaType
 description: Learn more about noDeprecatedMediaType
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="CSS" icon="seti:css">
-:::caution
-This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-:::
+> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
+
 ## Summary
 - Rule available since: `v2.3.14`
 - Diagnostic Category: [`lint/nursery/noDeprecatedMediaType`](/reference/diagnostics#diagnostic-category)
@@ -50,13 +45,13 @@ For details on media types, see the
 @media tv {}
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:1:8 <a href="https://biomejs.dev/linter/rules/no-deprecated-media-type">lint/nursery/noDeprecatedMediaType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected deprecated media type: </span><span style="color: lightgreen;"><strong>tv</strong></span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>@media tv &#123;&#125;<br />   <strong>   │ </strong>       <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Deprecated media types are recognized but match nothing; prefer using media features or recommended media types.</span><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Recommended media types include:</span><br />  <br />  - all<br />  - print<br />  - screen<br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:1:8 <a href="https://biomejs.dev/linter/rules/no-deprecated-media-type">lint/nursery/noDeprecatedMediaType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected deprecated media type: </span><span style="color: lightgreen;"><strong>tv</strong></span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>@media tv &#123;&#125;   <strong>   │ </strong>       <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Deprecated media types are recognized but match nothing; prefer using media features or recommended media types.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Recommended media types include:</span>    - all  - print  - screen  </code></pre>
 
 ```css
 @media handheld and (min-width: 480px) {}
 ```
 
-<pre class="language-text"><code class="language-text">code-block.css:1:8 <a href="https://biomejs.dev/linter/rules/no-deprecated-media-type">lint/nursery/noDeprecatedMediaType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected deprecated media type: </span><span style="color: lightgreen;"><strong>handheld</strong></span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>@media handheld and (min-width: 480px) &#123;&#125;<br />   <strong>   │ </strong>       <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Deprecated media types are recognized but match nothing; prefer using media features or recommended media types.</span><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Recommended media types include:</span><br />  <br />  - all<br />  - print<br />  - screen<br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.css:1:8 <a href="https://biomejs.dev/linter/rules/no-deprecated-media-type">lint/nursery/noDeprecatedMediaType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected deprecated media type: </span><span style="color: lightgreen;"><strong>handheld</strong></span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>@media handheld and (min-width: 480px) &#123;&#125;   <strong>   │ </strong>       <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Deprecated media types are recognized but match nothing; prefer using media features or recommended media types.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Recommended media types include:</span>    - all  - print  - screen  </code></pre>
 
 ### Valid
 
@@ -108,7 +103,3 @@ Media types to allow (case-insensitive).
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_css_analyze/src/lint/nursery/no_deprecated_media_type.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_css_analyze/tests/specs/nursery/noDeprecatedMediaType)
-
-</TabItem>
-</Tabs>
-

@@ -214,7 +214,7 @@ resource "grafana_role" "my_new_role" {
 
 2. Run the command `terraform apply`.
 3. Go to Grafana's UI and check that the new role appears in the role picker:
-   ![Role Picker](/static/img/docs/enterprise/tf_custom_role.png)
+   [Role Picker]
 
 ## Provision role assignments
 
@@ -252,9 +252,9 @@ resource "grafana_role_assignment" "my_new_role_assignment" {
 1. Run the command `terraform apply`.
 
 1. Go to Grafana's UI and check that a user, team and service account have been created, and that the role has been assigned to them:
-   ![User Role Assignment](/static/img/docs/enterprise/tf_user_role_assignment.png)
-   ![Team Role Assignment](/static/img/docs/enterprise/tf_team_role_assignment.png)
-   ![Service Account Role Assignment](/static/img/docs/enterprise/tf_service_account_role_assignment.png)
+   [User Role Assignment]
+   [Team Role Assignment]
+   [Service Account Role Assignment]
 
 Note that instead of using a provisioned role, you can also look up the `uid` of an already existing fixed or custom role and use that instead.
 You can use the [API endpoint for listing roles](ref:api-rbac-create-and-manage-custom-roles) to look up role `uid`s.

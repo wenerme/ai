@@ -189,4 +189,4 @@ If you have firewalls, and want to just use the local copy of the model cost map
 export LITELLM_LOCAL_MODEL_COST_MAP="True"
 ```
 
-Note: this means you will need to upgrade to get updated pricing, and newer models. 
+Note: this means you will need to upgrade to get updated pricing, and newer models.

@@ -71,7 +71,7 @@ modelscope-registry.cn-beijing.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu
 modelscope-registry.us-west-1.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-cuda12.9.1-py311-torch2.8.0-vllm0.11.0-modelscope1.32.0-swift3.11.3
 ```
 
-<details><summary>Historical Mirrors</summary>
+Historical Mirrors
 
 ```
 # swift3.10.3
@@ -116,7 +116,6 @@ modelscope-registry.us-west-1.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu2
 # swift3.2.2
 modelscope-registry.us-west-1.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-cuda12.4.0-py311-torch2.5.1-modelscope1.25.0-swift3.2.2
 ```
-</details>
 
 More images can be found [here](https://modelscope.cn/docs/intro/environment-setup#%E6%9C%80%E6%96%B0%E9%95%9C%E5%83%8F).
 
@@ -130,7 +129,6 @@ More images can be found [here](https://modelscope.cn/docs/intro/environment-set
 | Ascend NPU           | Some models may encounter NAN or unsupported operators |
 | MPS                  |   Refer to [issue 4572](https://github.com/modelscope/ms-swift/issues/4572)                         |
 | CPU                  |                                                        |
-
 
 ## Running Environment
 
@@ -150,7 +148,6 @@ More images can be found [here](https://modelscope.cn/docs/intro/environment-set
 | lmdeploy     | >=0.5   | 0.10.1                 | Inference/Deployment                      |
 | evalscope    | >=1.0       |                     | Evaluation                                |
 | gradio       |              | 5.32.1              | Web-UI/App                                |
-
 
 For more optional dependencies, you can refer to [here](https://github.com/modelscope/ms-swift/blob/main/requirements/install_all.sh).
 

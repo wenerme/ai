@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI Text to Image Workflow"
 description: "This guide will help you understand the concept of text-to-image in AI art generation and complete a text-to-image workflow in ComfyUI"
-sidebarTitle: "Text to Image"
 ---
 
 This guide aims to introduce you to ComfyUI's text-to-image workflow and help you understand the functionality and usage of various ComfyUI nodes.
@@ -37,11 +36,9 @@ If you haven't installed it yet, please refer to the model installation section 
 
 Download the image below and **drag it into ComfyUI** to load the workflow:
 
-<img src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/text-to-image-workflow.png" alt="ComfyUI-Text to Image Workflow" />
+[ComfyUI-Text to Image Workflow]
 
-<Tip>
 Images containing workflow JSON in their metadata can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`.
-</Tip>
 
 ### 3. Loading the Model and Generating Your First Image
 
@@ -55,15 +52,15 @@ Follow these steps according to the image numbers:
 
 After the process completes, you should see the resulting image in the **Save Image** node interface, which you can right-click to save locally
 
-![ComfyUI First Image Generation Result](/images/tutorial/gettingstarted/first-image-generation-8-result.jpg)
+[ComfyUI First Image Generation Result]
 
-<Tip>If you're not satisfied with the result, try running the generation multiple times. Each time you run it, **KSampler** will use a different random seed based on the `seed` parameter, so each generation will produce different results</Tip>
+If you're not satisfied with the result, try running the generation multiple times. Each time you run it, **KSampler** will use a different random seed based on the `seed` parameter, so each generation will produce different results
 
 ### 4. Start Experimenting
 
 Try modifying the text in the **CLIP Text Encoder**
 
-![CLIP Text Encoder](/images/comfy_core/conditioning/clip_text_encode.jpg)
+[CLIP Text Encoder]
 
 The `Positive` connection to the KSampler node represents positive prompts, while the `Negative` connection represents negative prompts
 
@@ -144,11 +141,11 @@ If you want to learn more about diffusion models, you can read these papers:
 
 ## ComfyUI Text to Image Workflow Node Explanation
 
-![ComfyUI Text to Image Workflow Explanation](/images/tutorial/basic/text-image-workflow.jpg)
+[ComfyUI Text to Image Workflow Explanation]
 
 ### A. Load Checkpoint Node
 
-![Load Checkpoint](/images/comfy_core/loaders/load_checkpoint.jpg)
+[Load Checkpoint]
 
 This node is typically used to load the image generation model. A `checkpoint` usually contains three components: `MODEL (UNet)`, `CLIP`, and `VAE`
 
@@ -158,7 +155,7 @@ This node is typically used to load the image generation model. A `checkpoint` u
 
 ### B. Empty Latent Image Node
 
-![Empty Latent Image](/images/comfy_core/latent/empty_latent_image.jpg)
+[Empty Latent Image]
 
 Defines a latent space that outputs to the KSampler node. The Empty Latent Image node constructs a **pure noise latent space**
 
@@ -166,7 +163,7 @@ You can think of its function as defining the canvas size, which determines the 
 
 ### C. CLIP Text Encoder Node
 
-![CLIP Text Encoder](/images/comfy_core/conditioning/clip_text_encode.jpg)
+[CLIP Text Encoder]
 
 Used to encode prompts, which are your requirements for the image
 - The `Positive` condition input connected to the KSampler node represents positive prompts (elements you want in the image)
@@ -176,7 +173,7 @@ The prompts are encoded into semantic vectors by the `CLIP` component from the `
 
 ### D. KSampler Node
 
-![KSampler](/images/comfy_core/sampling/k_sampler.jpg)
+[KSampler]
 
 The **KSampler** is the core of the entire workflow, where the entire noise denoising process occurs, ultimately outputting a latent space image
 
@@ -210,13 +207,13 @@ Then, based on the number of denoising steps specified by the `steps` parameter,
 
 ### E. VAE Decode Node
 
-![VAE Decode](/images/comfy_core/latent/vae_decode.jpg)
+[VAE Decode]
 
 Converts the latent space image output from the **KSampler** into a pixel space image
 
 ### F. Save Image Node
 
-![Save Image](/images/comfy_core/image/save_image.jpg)
+[Save Image]
 
 Previews and saves the decoded image from latent space to the local `ComfyUI/output` folder
 
@@ -242,4 +239,3 @@ Model Limitations:
 - Detail Handling: Hands/complex lighting prone to distortion
 - Resolution Limits: Quality degrades for direct 1024x1024 generation
 - Prompt Dependency: Requires precise English descriptions for control
-

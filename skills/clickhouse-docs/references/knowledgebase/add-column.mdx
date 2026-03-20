@@ -7,7 +7,6 @@ keywords: ['Add Column']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Adding a Column to a Table \{#adding-a-column-to-a-table\}
 
@@ -83,7 +82,6 @@ If we query the `events` table, we'll see the following output:
 │ 2024-12-18 │ Alexey │              7 │
 └────────────┴────────┴────────────────┘
 ```
-
 
 ## Modifying a column's default value \{#modifying-a-columns-default-value\}
 
@@ -190,7 +188,6 @@ ADD COLUMN favoriteDatabase String DEFAULT 'ClickHouse' FIRST;
 ```
 
 And let's have a look at the table definition:
-
 
 ```sql
 SHOW CREATE TABLE events

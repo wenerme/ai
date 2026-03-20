@@ -1,12 +1,11 @@
 ---
 title: Features | Guide
-outline: deep
 ---
 
 # Features
 
 <script setup>
-import FeaturesList from '../.vitepress/components/FeaturesList.vue'
+
 </script>
 
 <FeaturesList class="!gap-1 text-lg" />
@@ -79,9 +78,7 @@ describe.concurrent('suite', () => {
 
 You can also use `.skip`, `.only`, and `.todo` with concurrent suites and tests. Read more in the [API Reference](/api/test#test-concurrent).
 
-::: warning
-When running concurrent tests, Snapshots and Assertions must use `expect` from the local [Test Context](/guide/test-context) to ensure the right test is detected.
-:::
+> **warning**: When running concurrent tests, Snapshots and Assertions must use `expect` from the local [Test Context](/guide/test-context) to ensure the right test is detected.
 
 ## Snapshot
 
@@ -127,14 +124,12 @@ expect(fn.mock.results[1].value).toBe('world')
 
 Vitest supports both [happy-dom](https://github.com/capricorn86/happy-dom) or [jsdom](https://github.com/jsdom/jsdom) for mocking DOM and browser APIs. They don't come with Vitest, you will need to install them separately:
 
-::: code-group
 ```bash [happy-dom]
 $ npm i -D happy-dom
 ```
 ```bash [jsdom]
 $ npm i -D jsdom
 ```
-:::
 
 After that, change the `environment` option in your config file:
 
@@ -214,8 +209,8 @@ describe('sort', () => {
 })
 ```
 
-<img alt="Benchmark report" img-dark src="https://github.com/vitest-dev/vitest/assets/4232207/6f0383ea-38ba-4f14-8a05-ab243afea01d">
-<img alt="Benchmark report" img-light src="https://github.com/vitest-dev/vitest/assets/4232207/efbcb427-ecf1-4882-88de-210cd73415f6">
+[Benchmark report]
+[Benchmark report]
 
 ## Type Testing <Badge type="warning">Experimental</Badge> {#type-testing}
 
@@ -269,7 +264,6 @@ By default, Vitest catches and reports all [unhandled rejections](https://develo
 
 You can disable this behaviour by catching them manually. Vitest assumes the callback is handled by you and won't report the error.
 
-::: code-group
 ```ts [setup.node.js]
 // in Node.js
 process.on('unhandledRejection', () => {
@@ -290,7 +284,6 @@ window.addEventListener('unhandledrejection', () => {
   // your own handler
 })
 ```
-:::
 
 Alternatively, you can also ignore reported errors with a [`dangerouslyIgnoreUnhandledErrors`](/config/dangerouslyignoreunhandlederrors) option. Vitest will still report them, but they won't affect the test result (exit code won't be changed).
 

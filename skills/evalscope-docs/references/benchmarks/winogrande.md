@@ -1,6 +1,5 @@
 # Winogrande
 
-
 ## Overview
 
 Winogrande is a large-scale benchmark for commonsense reasoning, specifically designed to test pronoun resolution in the Winograd Schema Challenge format. It contains 44K problems that require understanding of physical and social commonsense.
@@ -28,7 +27,6 @@ Winogrande is a large-scale benchmark for commonsense reasoning, specifically de
 - Simple accuracy metric for evaluation
 - Commonly used for commonsense reasoning assessment
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ Winogrande is a large-scale benchmark for commonsense reasoning, specifically de
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -115,5 +112,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

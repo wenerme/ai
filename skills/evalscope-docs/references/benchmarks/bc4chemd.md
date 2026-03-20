@@ -1,6 +1,5 @@
 # BC4CHEMD
 
-
 ## Overview
 
 The BC4CHEMD (BioCreative IV CHEMDNER) dataset is a corpus of 10,000 PubMed abstracts with 84,355 chemical entity mentions manually annotated by experts for chemical named entity recognition.
@@ -26,7 +25,6 @@ The BC4CHEMD (BioCreative IV CHEMDNER) dataset is a corpus of 10,000 PubMed abst
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: CHEMICAL (chemical and drug names)
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The BC4CHEMD (BioCreative IV CHEMDNER) dataset is a corpus of 10,000 PubMed abst
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -159,8 +156,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -191,8 +187,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -222,5 +216,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

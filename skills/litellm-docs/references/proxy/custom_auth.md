@@ -239,14 +239,11 @@ $ litellm --config /path/to/config.yaml
 
 Supported from v1.72.2+
 
-:::info 
-
-✨ Supporting Custom Auth + LiteLLM Virtual Keys is on LiteLLM Enterprise
+> **info**: ✨ Supporting Custom Auth + LiteLLM Virtual Keys is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-:::
 
 ### Usage
 
@@ -263,7 +260,6 @@ from typing import Union
 from fastapi import Request
 
 from litellm.proxy._types import UserAPIKeyAuth
-
 
 async def user_api_key_auth(
     request: Request, api_key: str
@@ -300,7 +296,6 @@ Flow:
 2. If custom auth fails, checks litellm api key auth
 3. If both fail, returns 401
 
-
 3. Test it! 
 
 ```bash
@@ -318,9 +313,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-
-
-
 #### Bubble up custom exceptions
 
 If you want to bubble up custom exceptions, you can do so by raising a `ProxyException`.
@@ -337,7 +329,6 @@ from typing import Union
 from fastapi import Request
 
 from litellm.proxy._types import UserAPIKeyAuth, ProxyException
-
 
 async def user_api_key_auth(
     request: Request, api_key: str

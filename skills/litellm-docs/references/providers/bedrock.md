@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # AWS Bedrock
 ALL Bedrock models (Anthropic, Meta, Deepseek, Mistral, Amazon, etc.) are Supported
@@ -13,26 +12,17 @@ ALL Bedrock models (Anthropic, Meta, Deepseek, Mistral, Amazon, etc.) are Suppor
 | Rerank Endpoint | `/rerank` |
 | Pass-through Endpoint | [Supported](../pass_through/bedrock.md) |
 
-
 LiteLLM requires `boto3` to be installed on your system for Bedrock requests
 ```shell
 pip install boto3>=1.28.57
 ```
 
-:::info
-
-For **Amazon Nova Models**: Bump to v1.53.5+
-
-:::
+> **info**: For **Amazon Nova Models**: Bump to v1.53.5+
 
 ## Authentication
 
-:::info
+> **info**: LiteLLM uses boto3 to handle authentication. All these options are supported - https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#credentials.
 
-LiteLLM uses boto3 to handle authentication. All these options are supported - https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#credentials.
-
-:::
- 
 LiteLLM supports API key authentication in addition to traditional boto3 authentication methods. For additional API key details, refer to [docs](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html).
 
 Option 1: use the AWS_BEARER_TOKEN_BEDROCK environment variable 
@@ -43,8 +33,6 @@ export AWS_BEARER_TOKEN_BEDROCK="your-api-key"
 
 Option 2: use the api_key parameter to pass in API key for completion, embedding, image_generation API calls.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
 ```python
 response = completion(
   model="bedrock/anthropic.claude-3-sonnet-20240229-v1:0",
@@ -52,8 +40,7 @@ response = completion(
   api_key="your-api-key"
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
+
 ```yaml
 model_list:
   - model_name: bedrock-claude-3-sonnet
@@ -61,15 +48,12 @@ model_list:
       model: bedrock/anthropic.claude-3-sonnet-20240229-v1:0
       api_key: os.environ/AWS_BEARER_TOKEN_BEDROCK
 ```
-</TabItem>
-</Tabs>
 
 ## Usage
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_Bedrock.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
-
 
 ```python
 import os
@@ -123,10 +107,6 @@ litellm --config /path/to/config.yaml
 ```
 ### 3. Test it
 
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -141,8 +121,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -162,8 +140,6 @@ response = client.chat.completions.create(model="bedrock-claude-v1", messages = 
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -192,13 +168,8 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Set temperature, top p, etc.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -215,8 +186,6 @@ response = completion(
   top_p=1
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -254,15 +223,9 @@ print(response)
 
 ```
 
-</TabItem>
-</Tabs>
-
 ## Pass provider-specific params 
 
 If you pass a non-openai param to litellm, we'll assume it's provider-specific and send it as a kwarg in the request body. [See more](../completion/input.md#provider-specific-params)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -278,8 +241,6 @@ response = completion(
   top_k=1 # 👈 PROVIDER-SPECIFIC PARAM
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -318,15 +279,9 @@ print(response)
 
 ```
 
-</TabItem>
-</Tabs>
-
 ## Usage - Request Metadata
 
 Attach metadata to Bedrock requests for logging and cost attribution.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -345,8 +300,6 @@ response = completion(
     }
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -377,15 +330,9 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Usage - Function Calling / Tool calling
 
 LiteLLM supports tool calling via Bedrock's Converse and Invoke API's.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -430,8 +377,6 @@ assert isinstance(
     response.choices[0].message.tool_calls[0].function.arguments, str
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -490,11 +435,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 
 ```
 
-
-</TabItem>
-</Tabs>
-
-
 ## Usage - Vision 
 
 ```python
@@ -505,13 +445,11 @@ os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
 
-
 def encode_image(image_path):
     import base64
 
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
-
 
 image_path = "../proxy/cached_logo.jpg"
 # Getting the base64 string
@@ -536,7 +474,6 @@ resp = litellm.completion(
 print(f"\nResponse: {resp}")
 ```
 
-
 ## Usage - 'thinking' / 'reasoning content'
 
 This is currently only supported for Anthropic's Claude 3.7 Sonnet + Deepseek R1 + GPT-OSS models.
@@ -554,9 +491,6 @@ Each object has the following fields:
 
 The `signature` is required by Anthropic on subsequent calls, if 'thinking' content is passed in (only required to use `thinking` with tool calling). [Learn more](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking#understanding-thinking-blocks)
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -564,7 +498,6 @@ from litellm import completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 resp = completion(
     model="bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0",
@@ -574,8 +507,6 @@ resp = completion(
 
 print(resp)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -605,10 +536,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low" # 👈 EITHER HERE OR ON CONFIG.YAML
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 
@@ -655,7 +582,6 @@ Same as [Anthropic API response](../providers/anthropic#usage---thinking--reason
 
 Same as [Anthropic API response](../providers/anthropic#usage---thinking--reasoning_content).
 
-
 ## Usage - Anthropic Beta Features
 
 LiteLLM supports Anthropic's beta features on AWS Bedrock through the `anthropic-beta` header. This enables access to experimental features like:
@@ -677,9 +603,6 @@ LiteLLM supports Anthropic's beta features on AWS Bedrock through the `anthropic
 | Interleaved Thinking | `interleaved-thinking-2025-05-14` | Claude 4 models | Enhanced thinking capabilities |
 | Extended Output | `output-128k-2025-02-19` | Claude 3.7 Sonnet | Up to 128K output tokens |
 | Developer Thinking | `dev-full-thinking-2025-05-14` | Claude 4 models | Raw thinking mode for developers |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 **Single Beta Feature**
 
@@ -741,9 +664,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 **Set on YAML Config**
 
 ```yaml
@@ -786,24 +706,11 @@ response = client.chat.completions.create(
 )
 ```
 
-:::info
-**For client-side header forwarding**: When using the proxy and sending `anthropic-beta` headers from the client (like the OpenAI SDK), you need to enable `forward_client_headers_to_llm_api: true` in your proxy's `general_settings`. This tells the proxy to extract headers from HTTP requests and forward them to the underlying LLM provider.
-:::
+> **info**: **For client-side header forwarding**: When using the proxy and sending `anthropic-beta` headers from the client (like the OpenAI SDK), you need to enable `forward_client_headers_to_llm_api: true` in your proxy's `general_settings`. This tells the proxy to extract headers from HTTP requests and forward them to the underlying LLM provider.
 
-</TabItem>
-</Tabs>
-
-:::info
-
-Beta features may require special access or permissions in your AWS account. Some features are only available in specific AWS regions. Check the [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-anthropic-claude-messages-request-response.html) for availability and access requirements.
-
-:::
-
+> **info**: Beta features may require special access or permissions in your AWS account. Some features are only available in specific AWS regions. Check the [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-anthropic-claude-messages-request-response.html) for availability and access requirements.
 
 ## Usage - Structured Output / JSON mode 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -833,8 +740,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -902,15 +807,10 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     }
   }'
 ```
-</TabItem>
-</Tabs>
 
 ## Usage - Latency Optimized Inference
 
 Valid from v1.65.1+
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -921,9 +821,6 @@ response = completion(
     performanceConfig={"latency": "optimized"},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -953,9 +850,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "performanceConfig": {"latency": "optimized"} # 👈 EITHER HERE OR ON CONFIG.YAML
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Usage - Service Tier
 
@@ -991,9 +885,6 @@ response = completion(
 
 ### Native Bedrock `serviceTier` parameter
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -1003,9 +894,6 @@ response = completion(
     serviceTier={"type": "priority"},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1038,8 +926,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
 ## Usage - Bedrock Guardrails
 
 Example of using [Bedrock Guardrails with LiteLLM](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-converse-api.html)
@@ -1053,13 +939,7 @@ LiteLLM supports selective content moderation using the `guarded_text` content t
 - Only the wrapped content is evaluated by Bedrock Guardrails
 - Regular content with `type: "text"` bypasses guardrail evaluation
 
-:::note
-If `guarded_text` is not used, the entire conversation history will be sent to the guardrail for evaluation, which can increase latency and costs.
-:::
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK">
-
+> **note**: If `guarded_text` is not used, the entire conversation history will be sent to the guardrail for evaluation, which can increase latency and costs.
 ```python
 from litellm import completion
 
@@ -1102,8 +982,6 @@ response_guard = completion(
     }
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy on request">
 
 ```python
 
@@ -1132,8 +1010,6 @@ extra_body={
 
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy-config" label="Proxy on config.yaml">
 
 1. Update config.yaml 
 
@@ -1194,8 +1070,6 @@ temperature=0.7
 
 print(response_guard)
 ```
-</TabItem>
-</Tabs>
 
 ## Usage - "Assistant Pre-fill"
 
@@ -1258,8 +1132,6 @@ Human: How do I boil water?
 Assistant:
 ```
 
-
-
 ## Usage - Streaming
 ```python
 import os
@@ -1304,18 +1176,13 @@ for chunk in response:
 
 LiteLLM supports Bedrock [cross-region inferencing](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) across all [supported bedrock models](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html).
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion 
 import os 
 
-
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 litellm.set_verbose = True #  👈 SEE RAW REQUEST 
 
@@ -1329,9 +1196,6 @@ response = completion(
 print("Final Response: {}".format(response))
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 #### 1. Setup config.yaml
 
 ```yaml
@@ -1344,7 +1208,6 @@ model_list:
       aws_region_name: os.environ/AWS_REGION_NAME
 ```
 
-
 #### 2. Start the proxy 
 
 ```bash
@@ -1352,10 +1215,6 @@ litellm --config /path/to/config.yaml
 ```
 
 #### 3. Test it
-
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -1371,8 +1230,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -1392,8 +1249,6 @@ response = client.chat.completions.create(model="bedrock-claude-haiku", messages
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -1423,38 +1278,21 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-</TabItem>
-</Tabs>
-
-
 ## Set 'converse' / 'invoke' route 
 
-:::info
-
-Supported from LiteLLM Version `v1.53.5`
-
-:::
+> **info**: Supported from LiteLLM Version `v1.53.5`
 
 LiteLLM defaults to the `invoke` route. LiteLLM uses the `converse` route for Bedrock models that support it.
 
 To explicitly set the route, do `bedrock/converse/<model>` or `bedrock/invoke/<model>`.
 
-
 E.g. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
 
 completion(model="bedrock/converse/us.amazon.nova-pro-v1:0")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -1463,13 +1301,9 @@ model_list:
       model: bedrock/converse/us.amazon.nova-pro-v1:0
 ```
 
-</TabItem>
-</Tabs>
-
 ## Alternate user/assistant messages
 
 Use `user_continue_message` to add a default user message, for cases (e.g. Autogen) where the client might not follow alternating user/assistant messages starting and ending with a user message. 
-
 
 ```yaml
 model_list:
@@ -1509,20 +1343,13 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 
 LiteLLM supports Document Understanding for Bedrock models - [AWS Bedrock Docs](https://docs.aws.amazon.com/nova/latest/userguide/modalities-document.html).
 
-:::info
-
-LiteLLM supports ALL Bedrock document types - 
+> **info**: LiteLLM supports ALL Bedrock document types - 
 
 E.g.: "pdf", "csv", "doc", "docx", "xls", "xlsx", "html", "txt", "md"
 
 You can also pass these as either `image_url` or `base64`
 
-:::
-
 ### url 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import supports_pdf_input, completion
@@ -1531,7 +1358,6 @@ from litellm.utils import supports_pdf_input, completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 # pdf url
 image_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -1555,7 +1381,6 @@ image_content = [
     },
 ]
 
-
 if not supports_pdf_input(model, None):
     print("Model does not support image input")
 
@@ -1565,8 +1390,6 @@ response = completion(
 )
 assert response is not None
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1605,13 +1428,8 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
 
 ### base64
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import supports_pdf_input, completion
@@ -1620,7 +1438,6 @@ from litellm.utils import supports_pdf_input, completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 # pdf url
 image_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -1641,7 +1458,6 @@ image_content = [
     },
 ]
 
-
 if not supports_pdf_input(model, None):
     print("Model does not support image input")
 
@@ -1651,8 +1467,6 @@ response = completion(
 )
 assert response is not None
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1689,9 +1503,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
-
 
 ### OpenAI GPT OSS
 
@@ -1699,9 +1510,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 |----------|---------|
 | Provider Route | `bedrock/converse/openai.gpt-oss-20b-1:0`, `bedrock/converse/openai.gpt-oss-120b-1:0` |
 | Provider Documentation | [Amazon Bedrock ↗](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python title="GPT OSS SDK Usage" showLineNumbers
 from litellm import completion
@@ -1726,10 +1534,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -1775,9 +1579,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## TwelveLabs Pegasus - Video Understanding
 
 TwelveLabs Pegasus 1.2 is a video understanding model that can analyze and describe video content. LiteLLM supports this model through Bedrock's `/invoke` endpoint.
@@ -1796,9 +1597,6 @@ TwelveLabs Pegasus 1.2 is a video understanding model that can analyze and descr
 - **S3 Integration**: Support for S3 video URLs with bucket owner specification
 
 ### Usage with S3 Video
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python title="TwelveLabs Pegasus SDK Usage" showLineNumbers
 from litellm import completion
@@ -1823,10 +1621,6 @@ response = completion(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -1871,9 +1665,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "temperature": 0.2
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage with Base64 Video
 
@@ -1928,7 +1719,6 @@ response = litellm.embedding(
 )
 ```
 
-
 ## Supported AWS Bedrock Models
 
 LiteLLM supports ALL Bedrock models. 
@@ -1966,7 +1756,6 @@ Here's an example of using a bedrock model with LiteLLM. For a complete list, re
 | TwelveLabs Pegasus 1.2 (US) | `completion(model='bedrock/us.twelvelabs.pegasus-1-2-v1:0', messages=messages, mediaSource={...})`   | `os.environ['AWS_ACCESS_KEY_ID']`, `os.environ['AWS_SECRET_ACCESS_KEY']`, `os.environ['AWS_REGION_NAME']` |
 | TwelveLabs Pegasus 1.2 (EU) | `completion(model='bedrock/eu.twelvelabs.pegasus-1-2-v1:0', messages=messages, mediaSource={...})`   | `os.environ['AWS_ACCESS_KEY_ID']`, `os.environ['AWS_SECRET_ACCESS_KEY']`, `os.environ['AWS_REGION_NAME']` |
 | Moonshot Kimi K2 Thinking | `completion(model='bedrock/moonshot.kimi-k2-thinking', messages=messages)` or `completion(model='bedrock/invoke/moonshot.kimi-k2-thinking', messages=messages)` | `os.environ['AWS_ACCESS_KEY_ID']`, `os.environ['AWS_SECRET_ACCESS_KEY']`, `os.environ['AWS_REGION_NAME']` |
-
 
 ## Bedrock Embedding
 
@@ -2025,11 +1814,9 @@ response = embedding(
 
 See [Bedrock Image Generation](./bedrock_image_gen) for using Stable Diffusion and Amazon Nova Canvas models on Bedrock.
 
-
 ## Rerank API
 
 See [Bedrock Rerank](./bedrock_rerank) for using Bedrock's Rerank API in the Cohere `/rerank` format.
-
 
 ## Bedrock Application Inference Profile 
 
@@ -2038,9 +1825,6 @@ Use Bedrock Application Inference Profile to track costs for projects on AWS.
 You can either pass it in the model name - `model="bedrock/arn:...` or as a separate `model_id="arn:..` param.
 
 ### Set via `model_id` 
-
-<Tabs>
-<TabItem label="SDK" value="sdk">
 
 ```python
 from litellm import completion
@@ -2058,9 +1842,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem label="PROXY" value="proxy">
 
 1. Setup config.yaml 
 
@@ -2101,9 +1882,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Boto3 - Authentication
 
 ### Passing credentials as parameters - Completion()
@@ -2125,9 +1903,6 @@ response = completion(
 
 This can be used to override existing headers (e.g. `Authorization`) when calling custom api endpoints
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import os
 import litellm
@@ -2145,9 +1920,6 @@ response = completion(
             extra_headers={"key": "value"}
 )
 ```
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml 
 
@@ -2190,10 +1962,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-
-</Tabs>
-
 ### SSO Login (AWS Profile)
 - Set `AWS_PROFILE` environment variable
 - Make bedrock completion call
@@ -2225,7 +1993,6 @@ response = completion(
 
 - Set `aws_role_name` and `aws_session_name`
 
-
 | LiteLLM Parameter | Boto3 Parameter | Description | Boto3 Documentation |
 |------------------|-----------------|-------------|-------------------|
 | `aws_access_key_id` | `aws_access_key_id` | AWS access key associated with an IAM user or role | [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) |
@@ -2251,9 +2018,6 @@ credential_process = aws_signing_helper credential-process \
 
 **Usage**: Reference the profile in LiteLLM:
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -2264,9 +2028,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 model_list:
   - model_name: bedrock-claude
@@ -2275,12 +2036,7 @@ model_list:
       aws_profile_name: "litellm-roles-anywhere"
 ```
 
-</TabItem>
-</Tabs>
-
 See the [IAM Roles Anywhere Getting Started Guide](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/getting-started.html) for trust anchor and profile setup.
-
-
 
 Make the bedrock completion call
 
@@ -2317,9 +2073,6 @@ Replace `<TARGET_ROLE_ARN>` with the ARN of the role you want to assume (e.g., `
 
 ---
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -2350,9 +2103,6 @@ response = completion(
             aws_session_name="my-test-session",
         )
 ```
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -2365,25 +2115,12 @@ model_list:
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY # [OPTIONAL - not required if using role]
 ```
 
-
-</TabItem>
-
-</Tabs>
-
 ### Passing an external BedrockRuntime.Client as a parameter - Completion()
   
 This is a deprecated flow. Boto3 is not async. And boto3.client does not let us make the http call through httpx. Pass in your aws params through the method above 👆. [See Auth Code](https://github.com/BerriAI/litellm/blob/55a20c7cce99a93d36a82bf3ae90ba3baf9a7f89/litellm/llms/bedrock_httpx.py#L284) [Add new auth flow](https://github.com/BerriAI/litellm/issues)
 
-:::warning
-
-
-
-
-
-Experimental - 2024-Jun-23:
+> **warning**: Experimental - 2024-Jun-23:
     `aws_access_key_id`, `aws_secret_access_key`, and `aws_session_token` will be extracted from boto3.client and be passed into the httpx client 
-
-:::
 
 Pass an external BedrockRuntime.Client object as a parameter to litellm.completion. Useful when using an AWS credentials profile, SSO session, assumed role session, or if environment variables are not available for auth.
 
@@ -2428,9 +2165,6 @@ response = completion(
 
 Use the `bedrock/converse_like/model` endpoint to call bedrock converse model via your internal proxy.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -2442,9 +2176,6 @@ response = completion(
     extra_headers={"test": "hello world"},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 
@@ -2481,9 +2212,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Expected Output URL**
 

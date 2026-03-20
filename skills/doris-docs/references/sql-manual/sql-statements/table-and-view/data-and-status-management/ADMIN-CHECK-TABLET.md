@@ -22,7 +22,6 @@ ADMIN CHECK TABLET ( <tablet_id> [,...] ) PROPERTIES("type" = "<type_value>")
 
 The ID of the tablet on which the specified check operation will be performed.
 
-
 ## Optional Parameters
 
 **1. `<type_value>`**
@@ -41,7 +40,6 @@ The final result of the statement will be reflected in the InconsistentNum colum
 |-----------------|----------|--------------------------------------|
 | InconsistentNum | Int      | Number of tablets with inconsistency |
 
-
 ## Access Control Requirements
 
 The user executing this SQL command must have at least the following privileges:
@@ -56,4 +54,3 @@ The user executing this SQL command must have at least the following privileges:
   ```sql
   admin check tablet (10000, 10001) PROPERTIES("type" = "consistency");
   ```
-  

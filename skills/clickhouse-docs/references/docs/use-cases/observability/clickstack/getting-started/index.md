@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started
 title: 'Getting Started with ClickStack'
-sidebar_label: 'Getting started'
-pagination_prev: null
-pagination_next: use-cases/observability/clickstack/getting-started/managed
 description: 'Getting started with ClickStack - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack', 'Managed ClickStack', 'getting started', 'Docker deployment', 'HyperDX UI', 'ClickHouse Cloud', 'local deployment']

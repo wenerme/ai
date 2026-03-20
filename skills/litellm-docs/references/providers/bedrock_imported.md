@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock Imported Models
 
@@ -14,9 +13,6 @@ This is a separate route, as the chat template is different.
 | Provider Route | `bedrock/deepseek_r1/{model_arn}` |
 | Provider Documentation | [Bedrock Imported Models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html), [Deepseek Bedrock Imported Model](https://aws.amazon.com/blogs/machine-learning/deploy-deepseek-r1-distilled-llama-models-with-amazon-bedrock-custom-model-import/) |
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -26,11 +22,6 @@ response = completion(
     messages=[{"role": "user", "content": "Tell me a joke"}],
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
-
 
 **1. Add to config**
 
@@ -67,10 +58,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Deepseek (not R1)
 
 | Property | Details |
@@ -78,13 +65,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | Provider Route | `bedrock/llama/{model_arn}` |
 | Provider Documentation | [Bedrock Imported Models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html), [Deepseek Bedrock Imported Model](https://aws.amazon.com/blogs/machine-learning/deploy-deepseek-r1-distilled-llama-models-with-amazon-bedrock-custom-model-import/) |
 
-
-
 Use this route to call Bedrock Imported Models that follow the `llama` Invoke Request / Response spec
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -95,11 +76,6 @@ response = completion(
     messages=[{"role": "user", "content": "Tell me a joke"}],
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
-
 
 **1. Add to config**
 
@@ -136,18 +112,12 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Qwen3 Imported Models
 
 | Property | Details |
 |----------|---------|
 | Provider Route | `bedrock/qwen3/{model_arn}` |
 | Provider Documentation | [Bedrock Imported Models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html), [Qwen3 Models](https://aws.amazon.com/about-aws/whats-new/2025/09/qwen3-models-fully-managed-amazon-bedrock/) |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -160,10 +130,6 @@ response = completion(
     temperature=0.7
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -200,9 +166,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Qwen2 Imported Models
 
 | Property | Details |
@@ -210,9 +173,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | Provider Route | `bedrock/qwen2/{model_arn}` |
 | Provider Documentation | [Bedrock Imported Models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) |
 | Note | Qwen2 and Qwen3 architectures are mostly similar. The main difference is in the response format: Qwen2 uses "text" field while Qwen3 uses "generation" field. |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -225,10 +185,6 @@ response = completion(
     temperature=0.7
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -264,9 +220,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
             ],
         }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### OpenAI-Compatible Imported Models (Qwen 2.5 VL, etc.)
 
@@ -453,9 +406,6 @@ Moonshot AI's Kimi K2 Thinking model is now available on Amazon Bedrock. This mo
 
 #### Basic Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python title="Moonshot Kimi K2 SDK Usage" showLineNumbers
 from litellm import completion
 import os
@@ -480,9 +430,6 @@ print(response.choices[0].message.content)
 if response.choices[0].message.reasoning_content:
     print("Reasoning:", response.choices[0].message.reasoning_content)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **1. Add to config**
 
@@ -522,9 +469,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "max_tokens": 200
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 #### Tool Calling Example
 

@@ -90,13 +90,13 @@ refs:
 In dashboards, a threshold is a value or limit you set for a metric that's reflected visually when it's met or exceeded. Thresholds are one way you can conditionally style and color your visualizations based on query results.
 
 Using thresholds, you can color grid lines and regions in a time series visualization:
-![Time series visualization with green, blue, and purple threshold lines and regions](/media/docs/grafana/panels-visualizations/screenshot-thresholds-lines-regions-v10.4.png)
+[Time series visualization with green, blue, and purple threshold lines and regions]
 
 You can color the background or value text in a stat visualization:
-![Stat visualization with three values in green and orange](/media/docs/grafana/panels-visualizations/screenshot-thresholds-value-v10.4.png)
+[Stat visualization with three values in green and orange]
 
 You can define regions and region colors in a state timeline:
-![State timeline with green, blue, and pink region thresholds](/media/docs/grafana/panels-visualizations/screenshot-thresholds-state-timeline-v10.4.png)
+[State timeline with green, blue, and pink region thresholds]
 
 You can also use thresholds to:
 

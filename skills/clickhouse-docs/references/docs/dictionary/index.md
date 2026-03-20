@@ -1,14 +1,9 @@
 ---
-slug: /dictionary
 title: 'Dictionary'
 keywords: ['dictionary', 'dictionaries']
 description: 'A dictionary provides a key-value representation of data for fast lookups.'
 doc_type: 'guide'
 ---
-
-import dictionaryUseCases from '@site/static/images/dictionary/dictionary-use-cases.png';
-import dictionaryLeftAnyJoin from '@site/static/images/dictionary/dictionary-left-any-join.png';
-import Image from '@theme/IdealImage';
 
 # Dictionary
 

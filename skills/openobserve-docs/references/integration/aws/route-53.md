@@ -27,7 +27,7 @@ Route 53 query logs capture DNS requests processed by public or private hosted z
     2. Select a hosted zone → Click **Enable query logging**
     3. Provide or create a **CloudWatch Log Group** (e.g., `/aws/route53/logs`)
     4. Save changes
-    ![Route 53 Logging Architecture](../images/aws-integrations/route-53/log-group.png)
+    [Route 53 Logging Architecture]
 
     > Optional: Set a **retention policy** on the log group in CloudWatch to manage storage.
 

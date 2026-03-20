@@ -37,10 +37,10 @@ This can be disabled if you prefer CSD or no decorations at all.
 
 <p align="center">
   <a href="/images/1-1-0/csd.png" target="_blank">
-    <img src="/images/1-1-0/csd.png" width="360" style={{maxWidth: "50%", marginInline: "5px"}} />
+    
   </a>
   <a href="/images/1-1-0/ssd.png" target="_blank">
-    <img src="/images/1-1-0/ssd.png" width="360" style={{maxWidth: "50%", marginInline: "5px"}} />
+    
   </a>
 </p>
 
@@ -115,11 +115,9 @@ text able to be copied. Otherwise, `ctrl+c` will be passed to the shell
 keybind = performable:ctrl+c=copy_to_clipboard
 ```
 
-<Note>
 Not all actions support `performable:`. Namely, many actions are always
 performed (e.g. `text`, `new_tab`, etc.). The performable prefix only
 applies to actions that have a meaningful "perform" state.
-</Note>
 
 ### macOS: Alpha Blending Improvements
 
@@ -155,10 +153,10 @@ blending, `linear` blending, and `linear-corrected` blending. You may have to
 zoom in to see the differences correctly.
 
 <p align="center">
-  <img src="/images/1-1-0/srgb_blending.png" width="180" style={{maxWidth: "20%", marginInline: "5px"}} />
-  <img src="/images/1-1-0/p3_blending.png"  width="180" style={{maxWidth: "20%", marginInline: "5px"}} />
-  <img src="/images/1-1-0/linear_blending.png" width="180" style={{maxWidth: "20%", marginInline: "5px"}} />
-  <img src="/images/1-1-0/linear-corrected_blending.png" width="180" style={{maxWidth: "20%", marginInline: "5px"}} />
+  
+  
+  
+  
 </p>
 
 This is currently only available on macOS, but work is underway which should
@@ -498,11 +496,9 @@ In each section, we try to sort improvements before bug fixes.
 
 ### Changes for Package Maintainers
 
-<Note>
 All of the build changes are minor and should not impact previously
 functional builds. Feel free to ignore these changes unless you're
 simply curious about them.
-</Note>
 
 - Build: `-Dstrip` can be used to control binary stripping. Previously,
   we automatically stripped release binaries. This can now be configured.

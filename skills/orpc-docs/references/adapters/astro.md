@@ -9,8 +9,6 @@ description: Use oRPC inside an Astro project
 
 ## Basic
 
-::: code-group
-
 ```ts [pages/rpc/[...rest].ts]
 import { RPCHandler } from '@orpc/server/fetch'
 import { onError } from '@orpc/server'
@@ -35,8 +33,4 @@ export const ALL: APIRoute = async ({ request }) => {
 }
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.

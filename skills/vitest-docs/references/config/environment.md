@@ -14,9 +14,7 @@ browser-like environment through either [`jsdom`](https://github.com/jsdom/jsdom
 or [`happy-dom`](https://github.com/capricorn86/happy-dom) instead.
 If you are building edge functions, you can use [`edge-runtime`](https://edge-runtime.vercel.app/packages/vm) environment
 
-::: tip
-You can also use [Browser Mode](/guide/browser/) to run integration or unit tests in the browser without mocking the environment.
-:::
+> **tip**: You can also use [Browser Mode](/guide/browser/) to run integration or unit tests in the browser without mocking the environment.
 
 To define custom options for your environment, use [`environmentOptions`](/config/environmentoptions).
 
@@ -81,14 +79,11 @@ export default <Environment>{
 }
 ```
 
-::: tip
-The `viteEnvironment` field corresponde to the environment defined by the [Vite Environment API](https://vite.dev/guide/api-environment#environment-api). By default, Vite exposes `client` (for the browser) and `ssr` (for the server) environments.
-:::
+> **tip**: The `viteEnvironment` field corresponde to the environment defined by the [Vite Environment API](https://vite.dev/guide/api-environment#environment-api). By default, Vite exposes `client` (for the browser) and `ssr` (for the server) environments.
 
 Vitest also exposes `builtinEnvironments` through `vitest/environments` entry, in case you just want to extend it. You can read more about extending environments in [our guide](/guide/environment).
 
-::: tip
-jsdom environment exposes `jsdom` global variable equal to the current [JSDOM](https://github.com/jsdom/jsdom) instance. If you want TypeScript to recognize it, you can add `vitest/jsdom` to your `tsconfig.json` when you use this environment:
+> **tip**: jsdom environment exposes `jsdom` global variable equal to the current [JSDOM](https://github.com/jsdom/jsdom) instance. If you want TypeScript to recognize it, you can add `vitest/jsdom` to your `tsconfig.json` when you use this environment:
 
 ```json [tsconfig.json]
 {
@@ -97,4 +92,3 @@ jsdom environment exposes `jsdom` global variable equal to the current [JSDOM](h
   }
 }
 ```
-:::

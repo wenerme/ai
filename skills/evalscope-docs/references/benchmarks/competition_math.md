@@ -1,6 +1,5 @@
 # Competition-MATH
 
-
 ## Overview
 
 Competition-MATH is a comprehensive benchmark of 12,500 challenging competition mathematics problems collected from AMC, AIME, and other prestigious math competitions. It is designed to evaluate the advanced mathematical reasoning capabilities of language models.
@@ -28,7 +27,6 @@ Competition-MATH is a comprehensive benchmark of 12,500 challenging competition 
 - Results can be analyzed by level and problem type
 - Uses math_parser for robust answer extraction
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ Competition-MATH is a comprehensive benchmark of 12,500 challenging competition 
 | **Default Shots** | 4-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -97,8 +94,7 @@ Please reason step by step, and put your final answer within \boxed{{}}.
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of how to solve similar problems:
@@ -110,8 +106,6 @@ Problem:
 Please reason step by step, and put your final answer within \boxed{{}}.
 
 ```
-
-</details>
 
 ## Usage
 
@@ -147,5 +141,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

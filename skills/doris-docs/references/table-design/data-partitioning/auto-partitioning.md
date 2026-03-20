@@ -233,9 +233,7 @@ There is no conflict between the two syntaxes, just set the corresponding clause
 
 ## Lifecycle Management
 
-:::info
-Doris supports the simultaneous use of automatic partitioning and dynamic partitioning for lifecycle management, but it is now not recommended.
-:::
+> **info**: Doris supports the simultaneous use of automatic partitioning and dynamic partitioning for lifecycle management, but it is now not recommended.
 
 In the AUTO RANGE PARTITION table, the property `partition.retention_count` is supported, which accepts a positive integer value as a parameter (denoted as `N`), indicating that **only the top `N` historical partitions with the largest partition values** are retained among all historical partitions. All current and future partitions are retained. Specifically:
 
@@ -258,7 +256,7 @@ properties(
 
 This represents keeping only the top 3 partitions with the largest date values in the history. Assuming the current date is `2025-10-21`, and inserting data for each day from `2025-10-16` to `2025-10-23`, after one recycling, as shown in the figure, the remaining partitions are as follows:
 
-![Recycle](/images/blogs/auto-partition-lifetime1.png)
+[Recycle]
 
 - p20251018000000
 - p20251019000000
@@ -271,15 +269,12 @@ This represents keeping only the top 3 partitions with the largest date values i
 
 Only AUTO RANGE PARTITION can be used together with the [Auto Bucket](./data-bucketing.md#auto-setting-bucket-number) feature. When using this feature, Doris assumes that the data import is incremental in time order, and each import only involves one partition. In other words, this usage is only recommended for tables that are incrementally imported batch by batch.
 
-:::warning Note!
+> **warning**: Note!
 If the data import method does not conform to the above pattern, and both auto partitioning and auto bucketing are used at the same time, there is a possibility that the number of buckets in the new partition is extremely unreasonable, which may greatly affect query performance.
-:::
 
 ## Partition Management
 
-:::tip
-Since 2.1.6, Doris supports the `partitions` table function and the `auto_partition_name` function, which can be used to easily find and manage partitions for data.
-:::
+> **tip**: Since 2.1.6, Doris supports the `partitions` table function and the `auto_partition_name` function, which can be used to easily find and manage partitions for data.
 
 When Auto Partition is enabled, partition names can be mapped to partitions using the `auto_partition_name` function.The `partitions` table function generates detailed partition information from partition names. Let's take the `DAILY_TRADE_VALUE` table as an example to see its current partition after we insert data:
 

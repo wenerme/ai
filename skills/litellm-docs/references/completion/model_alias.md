@@ -30,7 +30,6 @@ litellm.model_alias_map = model_alias_map
 import litellm 
 from litellm import completion 
 
-
 ## set ENV variables
 os.environ["OPENAI_API_KEY"] = "openai key"
 os.environ["REPLICATE_API_KEY"] = "cohere key"

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Prompt Management
 
@@ -53,9 +51,6 @@ The `prompt_integration` field determines where and how prompts are loaded:
 Each integration has its own configuration parameters and access control mechanisms.
 
 ### Supported Integrations
-
-<Tabs>
-<TabItem value="dotprompt" label="DotPrompt (File-based)">
 
 **Option 1: Using a prompt directory**
 
@@ -119,10 +114,6 @@ System: You are a helpful assistant.
 User: {{user_message}}
 ```
 
-</TabItem>
-
-<TabItem value="langfuse" label="Langfuse">
-
 ```yaml
 prompts:
   - prompt_id: "my_langfuse_prompt"
@@ -137,10 +128,6 @@ litellm_settings:
   langfuse_public_key: "os.environ/LANGFUSE_PUBLIC_KEY"  # Global setting
   langfuse_secret_key: "os.environ/LANGFUSE_SECRET_KEY"  # Global setting
 ```
-
-</TabItem>
-
-<TabItem value="bitbucket" label="BitBucket">
 
 ```yaml
 prompts:
@@ -174,10 +161,6 @@ System: You are a helpful assistant.
 User: {{user_message}}
 ```
 
-</TabItem>
-
-<TabItem value="gitlab" label="GitLab">
-
 ```yaml
 prompts:
   - prompt_id: "my_gitlab_prompt"
@@ -208,10 +191,6 @@ System: You are a helpful assistant.
 
 User: {{user_message}}
 ```
-
-</TabItem>
-
-<TabItem value="generic" label="Generic Prompt Management">
 
 ```yaml
 prompts:
@@ -259,9 +238,6 @@ A GET endpoint at `/beta/litellm_prompt_management` that returns:
 - Custom query parameters for filtering and access control
 
 **Learn more:** [Generic Prompt Management API Documentation](../adding_provider/generic_prompt_management_api)
-
-</TabItem>
-</Tabs>
 
 ### Complete Example
 
@@ -350,13 +326,7 @@ Each prompt in the `prompts` list requires:
 - For dynamic prompts that can be updated via API, use the `/prompts` endpoints instead
 - All supported integrations work with config-loaded prompts
 
-
 ## Quick Start
-
-
-<Tabs>
-
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os 
@@ -374,11 +344,6 @@ resp = litellm.completion(
     messages=[{"role": "user", "content": "<IGNORED>"}],
 )
 ```
-
-
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -403,9 +368,6 @@ litellm --config config.yaml --detailed_debug
 
 3. Test it! 
 
-<Tabs>
-<TabItem value="curl" label="CURL">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -423,8 +385,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="OpenAI Python SDK" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -452,13 +412,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
-
 **Expected Logs:**
 
 ```
@@ -474,18 +427,12 @@ https://api.openai.com/v1/ \
 
 You can do `langfuse/<litellm_model_name>`
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 litellm.completion(
     model="langfuse/gpt-3.5-turbo", # or `langfuse/anthropic/claude-3-5-sonnet`
     ...
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -495,9 +442,6 @@ model_list:
       prompt_id: <langfuse_prompt_id>
       api_key: os.environ/OPENAI_API_KEY
 ```
-
-</TabItem>
-</Tabs>
 
 ### Set the model in Langfuse
 
@@ -517,7 +461,6 @@ model_list:
 ## What is 'prompt_variables'?
 
 - `prompt_variables`: A dictionary of variables that will be used to replace parts of the prompt.
-
 
 ## What is 'prompt_id'?
 

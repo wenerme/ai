@@ -1,11 +1,9 @@
 ---
 title: "Kling Start-End Frame to Video - ComfyUI Built-in Node"
 description: "A node that creates smooth video transitions between start and end frames using Kling's AI technology"
-sidebarTitle: "Kling Start-End Frame to Video"
-icon: "circle"
 ---
 
-![ComfyUI Built-in Kling Start-End Frame to Video Node](/images/built-in-nodes/api_nodes/kwai_vgi/kling-start-end-frame-to-video.jpg)
+[ComfyUI Built-in Kling Start-End Frame to Video Node]
 
 The Kling Start-End Frame to Video node lets you create smooth video transitions between two images. It automatically generates all the intermediate frames to produce a fluid transformation.
 
@@ -52,7 +50,6 @@ The transition style and content can be guided using prompts, while negative pro
 
 [Node Source Code (Updated 2025-05-03)]
 ```python
-
 
 class KlingStartEndFrameNode(KlingImage2VideoNode):
     """
@@ -145,6 +142,5 @@ class KlingStartEndFrameNode(KlingImage2VideoNode):
             end_frame=end_frame,
             auth_token=auth_token,
         )
-
 
 ```

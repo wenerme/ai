@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Cloud SQL For MySQL '
 description: 'Step-by-step guide on how to set up Cloud SQL for MySQL as a source for ClickPipes'
-slug: /integrations/clickpipes/mysql/source/gcp
 title: 'Cloud SQL for MySQL source setup guide'
 keywords: ['google cloud sql', 'mysql', 'clickpipes', 'pitr', 'root ca certificate']
 doc_type: 'guide'
@@ -9,14 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-import gcp_pitr from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/gcp-mysql-pitr.png';
-import gcp_mysql_flags from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/gcp-mysql-flags.png';
-import gcp_mysql_ip from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/gcp-mysql-ip.png';
-import gcp_mysql_edit_button from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/gcp-mysql-edit-button.png';
-import gcp_mysql_cert from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/gcp-mysql-cert.png';
-import rootca from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/gcp/rootca.png';
-import Image from '@theme/IdealImage';
 
 # Cloud SQL for MySQL source setup guide
 

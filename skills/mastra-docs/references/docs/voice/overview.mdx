@@ -18,10 +18,6 @@ packages:
   - "@mastra/voice-speechify"
 ---
 
-import { AudioPlayback } from "@site/src/components/AudioPlayback";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Voice in Mastra
 
 Mastra's Voice system provides a unified interface for voice interactions, enabling text-to-speech (TTS), speech-to-text (STT), and real-time speech-to-speech (STS) capabilities in your applications.
@@ -54,8 +50,7 @@ Choose from multiple providers like OpenAI, ElevenLabs, and more.
 
 For detailed configuration options and advanced features, check out our [Text-to-Speech guide](./text-to-speech).
 
-<Tabs>
-  <TabItem value="openai" label="OpenAI">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { OpenAIVoice } from '@mastra/voice-openai'
@@ -81,9 +76,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [OpenAI Voice Reference](/reference/voice/openai) for more information on the OpenAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="azure" label="Azure">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { AzureVoice } from '@mastra/voice-azure'
@@ -108,9 +103,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Azure Voice Reference](/reference/voice/azure) for more information on the Azure voice provider.
-  </TabItem>
+  
 
-  <TabItem value="elevenlabs" label="ElevenLabs">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { ElevenLabsVoice } from '@mastra/voice-elevenlabs'
@@ -135,9 +130,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [ElevenLabs Voice Reference](/reference/voice/elevenlabs) for more information on the ElevenLabs voice provider.
-  </TabItem>
+  
 
-  <TabItem value="playai" label="PlayAI">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { PlayAIVoice } from '@mastra/voice-playai'
@@ -162,9 +157,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [PlayAI Voice Reference](/reference/voice/playai) for more information on the PlayAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="google" label="Google">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { GoogleVoice } from '@mastra/voice-google'
@@ -189,9 +184,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Google Voice Reference](/reference/voice/google) for more information on the Google voice provider.
-  </TabItem>
+  
 
-  <TabItem value="cloudflare" label="Cloudflare">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { CloudflareVoice } from '@mastra/voice-cloudflare'
@@ -216,9 +211,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Cloudflare Voice Reference](/reference/voice/cloudflare) for more information on the Cloudflare voice provider.
-  </TabItem>
+  
 
-  <TabItem value="deepgram" label="Deepgram">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { DeepgramVoice } from '@mastra/voice-deepgram'
@@ -243,9 +238,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Deepgram Voice Reference](/reference/voice/deepgram) for more information on the Deepgram voice provider.
-  </TabItem>
+  
 
-  <TabItem value="speechify" label="Speechify">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { SpeechifyVoice } from '@mastra/voice-speechify'
@@ -270,9 +265,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Speechify Voice Reference](/reference/voice/speechify) for more information on the Speechify voice provider.
-  </TabItem>
+  
 
-  <TabItem value="sarvam" label="Sarvam">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { SarvamVoice } from '@mastra/voice-sarvam'
@@ -297,9 +292,9 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Sarvam Voice Reference](/reference/voice/sarvam) for more information on the Sarvam voice provider.
-  </TabItem>
+  
 
-  <TabItem value="murf" label="Murf">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { MurfVoice } from '@mastra/voice-murf'
@@ -324,8 +319,7 @@ For detailed configuration options and advanced features, check out our [Text-to
     ```
 
     Visit the [Murf Voice Reference](/reference/voice/murf) for more information on the Murf voice provider.
-  </TabItem>
-</Tabs>
+  
 
 ### Speech to Text (STT)
 
@@ -333,12 +327,9 @@ Transcribe spoken content using various providers like OpenAI, ElevenLabs, and m
 
 You can download a sample audio file from [here](https://github.com/mastra-ai/realtime-voice-demo/raw/refs/heads/main/how_can_i_help_you.mp3).
 
-<br />
-
 <AudioPlayback audio="https://github.com/mastra-ai/realtime-voice-demo/raw/refs/heads/main/how_can_i_help_you.mp3" />
 
-<Tabs>
-  <TabItem value="openai" label="OpenAI">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { OpenAIVoice } from '@mastra/voice-openai'
@@ -364,9 +355,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [OpenAI Voice Reference](/reference/voice/openai) for more information on the OpenAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="azure" label="Azure">
+  
     ```typescript
     import { createReadStream } from 'fs'
     import { Agent } from '@mastra/core/agent'
@@ -393,9 +384,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [Azure Voice Reference](/reference/voice/azure) for more information on the Azure voice provider.
-  </TabItem>
+  
 
-  <TabItem value="elevenlabs" label="ElevenLabs">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { ElevenLabsVoice } from '@mastra/voice-elevenlabs'
@@ -421,9 +412,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [ElevenLabs Voice Reference](/reference/voice/elevenlabs) for more information on the ElevenLabs voice provider.
-  </TabItem>
+  
 
-  <TabItem value="google" label="Google">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { GoogleVoice } from '@mastra/voice-google'
@@ -449,9 +440,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [Google Voice Reference](/reference/voice/google) for more information on the Google voice provider.
-  </TabItem>
+  
 
-  <TabItem value="cloudflare" label="Cloudflare">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { CloudflareVoice } from '@mastra/voice-cloudflare'
@@ -477,9 +468,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [Cloudflare Voice Reference](/reference/voice/cloudflare) for more information on the Cloudflare voice provider.
-  </TabItem>
+  
 
-  <TabItem value="deepgram" label="Deepgram">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { DeepgramVoice } from '@mastra/voice-deepgram'
@@ -505,9 +496,9 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [Deepgram Voice Reference](/reference/voice/deepgram) for more information on the Deepgram voice provider.
-  </TabItem>
+  
 
-  <TabItem value="sarvam" label="Sarvam">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { SarvamVoice } from '@mastra/voice-sarvam'
@@ -533,16 +524,14 @@ You can download a sample audio file from [here](https://github.com/mastra-ai/re
     ```
 
     Visit the [Sarvam Voice Reference](/reference/voice/sarvam) for more information on the Sarvam voice provider.
-  </TabItem>
-</Tabs>
+  
 
 ### Speech to Speech (STS)
 
 Create conversational experiences with speech-to-speech capabilities. The unified API enables real-time voice interactions between users and AI agents.
 For detailed configuration options and advanced features, check out [Speech to Speech](./speech-to-speech).
 
-<Tabs>
-  <TabItem value="openai" label="OpenAI">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { playAudio, getMicrophoneStream } from '@mastra/node-audio'
@@ -570,9 +559,9 @@ For detailed configuration options and advanced features, check out [Speech to S
     ```
 
     Visit the [OpenAI Voice Reference](/reference/voice/openai-realtime) for more information on the OpenAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="google" label="Google">
+  
     ```typescript
     import { Agent } from '@mastra/core/agent'
     import { playAudio, getMicrophoneStream } from '@mastra/node-audio'
@@ -619,15 +608,13 @@ For detailed configuration options and advanced features, check out [Speech to S
     ```
 
     Visit the [Google Gemini Live Reference](/reference/voice/google-gemini-live) for more information on the Google Gemini Live voice provider.
-  </TabItem>
-</Tabs>
+  
 
 ## Voice configuration
 
 Each voice provider can be configured with different models and options. Below are the detailed configuration options for all supported providers:
 
-<Tabs>
-  <TabItem value="openai" label="OpenAI">
+  
     ```typescript
     // OpenAI Voice Configuration
     const voice = new OpenAIVoice({
@@ -648,9 +635,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [OpenAI Voice Reference](/reference/voice/openai) for more information on the OpenAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="azure" label="Azure">
+  
     ```typescript
     // Azure Voice Configuration
     const voice = new AzureVoice({
@@ -673,9 +660,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Azure Voice Reference](/reference/voice/azure) for more information on the Azure voice provider.
-  </TabItem>
+  
 
-  <TabItem value="elevenlabs" label="ElevenLabs">
+  
     ```typescript
     // ElevenLabs Voice Configuration
     const voice = new ElevenLabsVoice({
@@ -691,9 +678,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [ElevenLabs Voice Reference](/reference/voice/elevenlabs) for more information on the ElevenLabs voice provider.
-  </TabItem>
+  
 
-  <TabItem value="playai" label="PlayAI">
+  
     ```typescript
     // PlayAI Voice Configuration
     const voice = new PlayAIVoice({
@@ -709,9 +696,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [PlayAI Voice Reference](/reference/voice/playai) for more information on the PlayAI voice provider.
-  </TabItem>
+  
 
-  <TabItem value="google" label="Google">
+  
     ```typescript
     // Google Voice Configuration
     const voice = new GoogleVoice({
@@ -730,9 +717,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Google Voice Reference](/reference/voice/google) for more information on the Google voice provider.
-  </TabItem>
+  
 
-  <TabItem value="cloudflare" label="Cloudflare">
+  
     ```typescript
     // Cloudflare Voice Configuration
     const voice = new CloudflareVoice({
@@ -748,9 +735,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Cloudflare Voice Reference](/reference/voice/cloudflare) for more information on the Cloudflare voice provider.
-  </TabItem>
+  
 
-  <TabItem value="deepgram" label="Deepgram">
+  
     ```typescript
     // Deepgram Voice Configuration
     const voice = new DeepgramVoice({
@@ -769,9 +756,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Deepgram Voice Reference](/reference/voice/deepgram) for more information on the Deepgram voice provider.
-  </TabItem>
+  
 
-  <TabItem value="speechify" label="Speechify">
+  
     ```typescript
     // Speechify Voice Configuration
     const voice = new SpeechifyVoice({
@@ -787,9 +774,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Speechify Voice Reference](/reference/voice/speechify) for more information on the Speechify voice provider.
-  </TabItem>
+  
 
-  <TabItem value="sarvam" label="Sarvam">
+  
     ```typescript
     // Sarvam Voice Configuration
     const voice = new SarvamVoice({
@@ -804,9 +791,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Sarvam Voice Reference](/reference/voice/sarvam) for more information on the Sarvam voice provider.
-  </TabItem>
+  
 
-  <TabItem value="murf" label="Murf">
+  
     ```typescript
     // Murf Voice Configuration
     const voice = new MurfVoice({
@@ -821,9 +808,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Murf Voice Reference](/reference/voice/murf) for more information on the Murf voice provider.
-  </TabItem>
+  
 
-  <TabItem value="openai-realtime" label="OpenAI Realtime">
+  
     ```typescript
     // OpenAI Realtime Voice Configuration
     const voice = new OpenAIRealtimeVoice({
@@ -842,9 +829,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     For more information on the OpenAI Realtime voice provider, refer to the [OpenAI Realtime Voice Reference](/reference/voice/openai-realtime).
-  </TabItem>
+  
 
-  <TabItem value="google-gemini-live" label="Google Gemini Live">
+  
     ```typescript
     // Google Gemini Live Voice Configuration
     const voice = new GeminiLiveVoice({
@@ -858,9 +845,9 @@ Each voice provider can be configured with different models and options. Below a
     ```
 
     Visit the [Google Gemini Live Reference](/reference/voice/google-gemini-live) for more information on the Google Gemini Live voice provider.
-  </TabItem>
+  
 
-  <TabItem value="aisdk" label="AI SDK">
+  
     ```typescript
     // AI SDK Voice Configuration
     import { CompositeVoice } from '@mastra/core/voice'
@@ -882,8 +869,7 @@ Each voice provider can be configured with different models and options. Below a
       voice,
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
 ### Using Multiple Voice Providers
 

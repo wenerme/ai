@@ -1,7 +1,5 @@
 ---
 date: "2021-09-02T16:00:00+08:00"
-slug: "upgrade-from-gitea"
-sidebar_position: 100
 aliases:
   - /en-us/upgrade-from-gitea
 ---

@@ -15,9 +15,7 @@ The release of S3 Tables further simplifies Lakehouse architecture and brings mo
 
 Thanks to Amazon S3 Tables' high compatibility with the Iceberg API, Apache Doris can quickly integrate with S3 Tables. This article will demonstrate how to connect Apache Doris with S3 Tables and perform data analysis and processing.
 
-:::tip
-This feature is supported since Doris 3.1
-:::
+> **tip**: This feature is supported since Doris 3.1
 
 ## Usage Guide
 
@@ -25,11 +23,11 @@ This feature is supported since Doris 3.1
 
 S3 Table Bucket is the third type of Bucket launched by S3, on par with the previous General purpose bucket and Directory bucket.
 
-![AWS S3 Table Bucket](/images/Lakehouse/s3-table-bucket.png)
+[AWS S3 Table Bucket]
 
 Here we create a Table Bucket named doris-s3-table-bucket. After creation, we will get a Table Bucket represented by an ARN.
 
-![AWS S3 Table Bucket Create](/images/Lakehouse/s3-table-bucket-create.png)
+[AWS S3 Table Bucket Create]
 
 ### 02 Create Iceberg Catalog
 
@@ -200,4 +198,3 @@ scala> spark.sql("SELECT * FROM s3tablesbucket.my_namespace.`partition_table` ")
 |2024-01-03 08:00:00|1000|us-east|PART1|
 +-------------------+----+-------+-----+
 ```
-

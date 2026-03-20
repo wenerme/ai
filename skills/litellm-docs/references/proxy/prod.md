@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # ⚡ Best Practices for Production
 
@@ -45,12 +43,7 @@ Turn off FASTAPI's default info logs
 export LITELLM_LOG="ERROR"
 ```
 
-:::info
-
-Need Help or want dedicated support ? Talk to a founder [here]: (https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: Need Help or want dedicated support ? Talk to a founder [here]: (https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 ## 2. Recommended Machine Specifications
 
@@ -64,7 +57,6 @@ For optimal performance in production, we recommend the following minimum machin
 These specifications provide:
 - Sufficient compute power for handling concurrent requests
 - Adequate memory for request processing and caching
-
 
 ## 3. On Kubernetes — Match Uvicorn Workers to CPU Count [Suggested CMD]
 
@@ -91,7 +83,6 @@ export MAX_REQUESTS_BEFORE_RESTART=10000
 # Use Gunicorn for more stable worker recycling
 CMD ["--port", "4000", "--config", "./proxy_server_config.yaml", "--num_workers", "$(nproc)", "--run_gunicorn", "--max_requests_before_restart", "10000"]
 ```
-
 
 ## 4. Use Redis 'port','host', 'password'. NOT 'redis_url'
 
@@ -139,7 +130,6 @@ This disables the load_dotenv() functionality, which will automatically load you
 
 When running LiteLLM on a VPC (and inaccessible from the public internet), you can enable graceful degradation so that request processing continues even if the database is temporarily unavailable.
 
-
 **WARNING: Only do this if you're running LiteLLM on VPC, that cannot be accessed from the public internet.**
 
 #### Configuration
@@ -161,13 +151,11 @@ When `allow_requests_on_db_unavailable` is set to `true`, LiteLLM will handle er
 | Health/Readiness Check | ✅ Always returns 200 OK | The /health/readiness endpoint returns a 200 OK status to ensure that pods remain operational even when the database is unavailable.
 | LiteLLM Budget Errors or Model Errors | ❌ Request will be blocked | Triggered when the DB is reachable but the authentication token is invalid, lacks access, or exceeds budget limits. |
 
-
 [More information about what the Database is used for here](db_info)
 
 ## 7. Use Helm PreSync Hook for Database Migrations [BETA]
 
 To ensure only one service manages database migrations, use our [Helm PreSync hook for Database Migrations](https://github.com/BerriAI/litellm/blob/main/deploy/charts/litellm-helm/templates/migrations-job.yaml). This ensures migrations are handled during `helm upgrade` or `helm install`, while LiteLLM pods explicitly disable migrations.
-
 
 1. **Helm PreSync Hook**:
    - The Helm PreSync hook is configured in the chart to run database migrations during deployments.
@@ -191,7 +179,6 @@ To ensure only one service manages database migrations, use our [Helm PreSync ho
        value: "true"
    ```
 
-
 ## 8. Set LiteLLM Salt Key 
 
 If you plan on using the DB, set a salt key for encrypting/decrypting variables in the DB. 
@@ -206,28 +193,17 @@ export LITELLM_SALT_KEY="sk-1234"
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/036a6821d588bd36d170713dcf5a72791a694178/litellm/proxy/common_utils/encrypt_decrypt_utils.py#L15)
 
-
 ## 9. Use `prisma migrate deploy`
 
 Use this to handle db migrations across LiteLLM versions in production
-
-<Tabs>
-<TabItem value="env" label="ENV">
 
 ```bash
 USE_PRISMA_MIGRATE="True"
 ```
 
-</TabItem>
-
-<TabItem value="cli" label="CLI">
-
 ```bash
 litellm
 ```
-
-</TabItem>
-</Tabs>
 
 Benefits:
 
@@ -238,7 +214,6 @@ The migrate deploy command:
 - **Does not** reset the database or generate artifacts (such as Prisma Client)
 - **Does not** rely on a shadow database
 
-
 ### How does LiteLLM handle DB migrations in production?
 
 1. A new migration file is written to our `litellm-proxy-extras` package. [See all](https://github.com/BerriAI/litellm/tree/main/litellm-proxy-extras/litellm_proxy_extras/migrations)
@@ -246,7 +221,6 @@ The migrate deploy command:
 2. The core litellm pip package is bumped to point to the new `litellm-proxy-extras` package. This ensures, older versions of LiteLLM will continue to use the old migrations. [See code](https://github.com/BerriAI/litellm/blob/52b35cd8093b9ad833987b24f494586a1e923209/pyproject.toml#L58)
 
 3. When you upgrade to a new version of LiteLLM, the migration file is applied to the database. [See code](https://github.com/BerriAI/litellm/blob/52b35cd8093b9ad833987b24f494586a1e923209/litellm-proxy-extras/litellm_proxy_extras/utils.py#L42)
-
 
 ### Read-only File System
 
@@ -379,9 +353,7 @@ The proxy will log a warning about the UI but API endpoints will work normally.
 4. **Automatic Detection**: The UI is automatically detected as pre-restructured if it contains a `.litellm_ui_ready` marker file (created by the official Docker images)
 
 ## 10. Use a Separate Health Check App
-:::info
-The Separate Health Check App only runs when running via the the LiteLLM Docker Image and using Docker and setting the SEPARATE_HEALTH_APP env var to "1"
-:::
+> **info**: The Separate Health Check App only runs when running via the the LiteLLM Docker Image and using Docker and setting the SEPARATE_HEALTH_APP env var to "1"
 
 Using a separate health check app ensures that your liveness and readiness probes remain responsive even when the main application is under heavy load. 
 
@@ -413,11 +385,9 @@ Previously, `stopwaitsecs` was not set, defaulting to 10 seconds and causing in-
 
 Or [watch on Loom](https://www.loom.com/share/b08be303331246b88fdc053940d03281?sid=a145ec66-d55f-41f7-aade-a9f41fbe752d).
 
-
 ### High Level Architecture
 
 <Image alt="Separate Health App Architecture" img={require('../../img/separate_health_app_architecture.png')} style={{ borderRadius: '8px', marginBottom: '1em', maxWidth: '100%' }} />
-
 
 ## Extras
 ### Expected Performance in Production

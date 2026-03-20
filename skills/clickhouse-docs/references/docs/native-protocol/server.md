@@ -1,6 +1,4 @@
 ---
-slug: /native-protocol/server
-sidebar_position: 3
 title: 'Server packets'
 description: 'Native protocol server'
 doc_type: 'reference'
@@ -63,9 +61,7 @@ Can be continuous list of exceptions until `nested` is `false`.
 
 Progress of query execution periodically reported by server.
 
-:::tip
-Progress reported in **deltas**. For totals, accumulate it on client.
-:::
+> **tip**: Progress reported in **deltas**. For totals, accumulate it on client.
 
 | field       | type    | value    | description       |
 |-------------|---------|----------|-------------------|
@@ -100,9 +96,7 @@ No packet body.
 
 **Data block** with server log.
 
-:::tip
-Encoded as **data block** of columns, but is never compressed.
-:::
+> **tip**: Encoded as **data block** of columns, but is never compressed.
 
 | column     | type     |
 |------------|----------|
@@ -119,11 +113,9 @@ Encoded as **data block** of columns, but is never compressed.
 
 **Data block** with profile events.
 
-:::tip
-Encoded as **data block** of columns, but is never compressed.
+> **tip**: Encoded as **data block** of columns, but is never compressed.
 
 The `value` type is `UInt64` or `Int64`, depending on server revision.
-:::
 
 | column       | type            |
 |--------------|-----------------|

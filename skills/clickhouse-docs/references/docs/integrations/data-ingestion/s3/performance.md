@@ -1,27 +1,13 @@
 ---
-slug: /integrations/s3/performance
-sidebar_position: 2
-sidebar_label: 'Optimizing for performance'
 title: 'Optimizing for S3 Insert and Read Performance'
 description: 'Optimizing the performance of S3 read and insert'
 doc_type: 'guide'
 keywords: ['s3', 'performance', 'optimization', 'object storage', 'data loading']
 ---
 
-import Image from '@theme/IdealImage';
-import InsertMechanics from '@site/static/images/integrations/data-ingestion/s3/insert_mechanics.png';
-import Pull from '@site/static/images/integrations/data-ingestion/s3/pull.png';
-import Merges from '@site/static/images/integrations/data-ingestion/s3/merges.png';
-import ResourceUsage from '@site/static/images/integrations/data-ingestion/s3/resource_usage.png';
-import InsertThreads from '@site/static/images/integrations/data-ingestion/s3/insert_threads.png';
-import S3Cluster from '@site/static/images/integrations/data-ingestion/s3/s3Cluster.png';
-import HardwareSize from '@site/static/images/integrations/data-ingestion/s3/hardware_size.png';
-
 This section focuses on optimizing performance when reading and inserting data from S3 using the [s3 table functions](/sql-reference/table-functions/s3). 
 
-:::info
-**The lesson described in this guide can be applied to other object storage implementations with their own dedicated table functions such as [GCS](/sql-reference/table-functions/gcs) and [Azure Blob storage](/sql-reference/table-functions/azureBlobStorage).**
-:::
+> **info**: **The lesson described in this guide can be applied to other object storage implementations with their own dedicated table functions such as [GCS](/sql-reference/table-functions/gcs) and [Azure Blob storage](/sql-reference/table-functions/azureBlobStorage).**
 
 Before tuning threads and block sizes to improve insert performance, we recommend users understand the mechanics of S3 inserts. If you're familiar with the insert mechanics, or just want some quick tips, skip to our example [below](/integrations/s3/performance#example-dataset).
 
@@ -64,9 +50,7 @@ Note that the `min_insert_block_size_bytes` value denotes the uncompressed in-me
 
 The smaller the configured insert block size is, the more initial parts get created for a large data load, and the more background part merges are executed concurrently with the data ingestion. This can cause resource contention (CPU and memory) and require additional time (for reaching a [healthy](/operations/settings/merge-tree-settings#parts_to_throw_insert) (3000) number of parts) after the ingestion is finished. 
 
-:::important
-ClickHouse query performance will be negatively impacted if the part count exceeds the [recommended limits](/operations/settings/merge-tree-settings#parts_to_throw_insert).
-:::
+> **important**: ClickHouse query performance will be negatively impacted if the part count exceeds the [recommended limits](/operations/settings/merge-tree-settings#parts_to_throw_insert).
 
 ClickHouse will continuously [merge parts](https://clickhouse.com/blog/asynchronous-data-inserts-in-clickhouse#data-needs-to-be-batched-for-optimal-performance) into larger parts until they [reach](/operations/settings/merge-tree-settings#max_bytes_to_merge_at_max_space_in_pool) a compressed size of ~150 GiB. This diagram shows how a ClickHouse server merges parts:
 
@@ -185,9 +169,7 @@ FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow
 
 In our example we only return a few rows. If measuring the performance of `SELECT` queries, where large volumes of data are returned to the client, either utilize the [null format](/interfaces/formats/Null) for queries or direct results to the [`Null` engine](/engines/table-engines/special/null.md). This should avoid the client being overwhelmed with data and network saturation.
 
-:::info
-When reading from queries, the initial query can often appear slower than if the same query is repeated. This can be attributed to both S3's own caching but also the [ClickHouse Schema Inference Cache](/operations/system-tables/schema_inference_cache). This stores the inferred schema for files and means the inference step can be skipped on subsequent accesses, thus reducing query time.
-:::
+> **info**: When reading from queries, the initial query can often appear slower than if the same query is repeated. This can be attributed to both S3's own caching but also the [ClickHouse Schema Inference Cache](/operations/system-tables/schema_inference_cache). This stores the inferred schema for files and means the inference step can be skipped on subsequent accesses, thus reducing query time.
 
 ## Using threads for reads {#using-threads-for-reads}
 
@@ -299,9 +281,7 @@ SETTINGS max_threads = 92
 5 rows in set. Elapsed: 0.421 sec. Processed 59.82 million rows, 24.03 GB (142.08 million rows/s., 57.08 GB/s.)
 ```
 
-:::note
-Individual nodes can also be bottlenecked by network and S3 GET requests, preventing linear scaling of performance vertically.
-:::
+> **note**: Individual nodes can also be bottlenecked by network and S3 GET requests, preventing linear scaling of performance vertically.
 
 ### Horizontal scaling {#horizontal-scaling}
 

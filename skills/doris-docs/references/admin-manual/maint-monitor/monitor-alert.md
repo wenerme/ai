@@ -22,7 +22,7 @@ Welcome to provide better dashboard.
 
 Doris uses [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/) to collect and display input monitoring items.
 
-![Doris monitor dashboard overview](/images/dashboard_overview.png)
+[Doris monitor dashboard overview]
 
 1. Prometheus
 
@@ -99,12 +99,11 @@ jvm_heap_size_bytes{type="used"} 156375280
 
 The entire monitoring architecture is shown in the following figure:
 
-![Monitoring Architecture](/images/monitor_arch.png)
+[Monitoring Architecture]
 
 1. The yellow part is Prometheus related components. Prometheus Server is the main process of Prometheus. At present, Prometheus accesses the monitoring interface of Doris node by Pull, and then stores the time series data in the time series database TSDB (TSDB is included in the Prometheus process, and need not be deployed separately). Prometheus also supports building [Push Gateway](https://github.com/prometheus/pushgateway) to allow monitored data to be pushed to Push Gateway by Push by monitoring system, and then data from Push Gateway by Prometheus Server through Pull.
 2. [Alert Manager](https://github.com/prometheus/alertmanager) is a Prometheus alarm component, which needs to be deployed separately (no solution is provided yet, but can be built by referring to official documents). Through Alert Manager, users can configure alarm strategy, receive mail, short messages and other alarms.
 3. The green part is Grafana related components. Grafana Server is the main process of Grafana. After startup, users can configure Grafana through Web pages, including data source settings, user settings, Dashboard drawing, etc. This is also where end users view monitoring data.
-
 
 ## Start building
 
@@ -236,14 +235,13 @@ Prometheus
 
 8. So far, a simple Grafana has been built and configured. For more advanced usage, see [Official Documents](http://docs.grafana.org/)
 
-
 ## Dashboard
 
 Here we briefly introduce Doris Dashboard. The content of Dashboard may change with the upgrade of version. This document is not guaranteed to be the latest Dashboard description.
 
 1. Top Bar
 
-	![Doris Dashboard-Top Bar](/images/dashboard_navibar.png)
+	[Doris Dashboard-Top Bar]
 
 	* The upper left corner is the name of Dashboard.
 	* The upper right corner shows the current monitoring time range. You can choose different time ranges by dropping down. You can also specify a regular refresh page interval.
@@ -255,7 +253,7 @@ Here we briefly introduce Doris Dashboard. The content of Dashboard may change w
 
 2. Row.
 
-	![Doris Dashboard-Row](/images/dashboard_row.png)
+	[Doris Dashboard-Row]
 
 	In Grafana, the concept of Row is a set of graphs. As shown in the figure above, Overview and Cluster Overview are two different Rows. Row can be folded by clicking Row. Currently Dashboard has the following Rows (in continuous updates):
 
@@ -268,7 +266,7 @@ Here we briefly introduce Doris Dashboard. The content of Dashboard may change w
 
 3. Charts
 
-	![Doris Dashboard-Charts](/images/dashboard_panel.png)
+	[Doris Dashboard-Charts]
 
 	A typical icon is divided into the following parts:
 

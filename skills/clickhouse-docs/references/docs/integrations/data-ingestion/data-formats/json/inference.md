@@ -1,6 +1,5 @@
 ---
 title: 'JSON schema inference'
-slug: /integrations/data-formats/json/inference
 description: 'How to use JSON schema inference'
 keywords: ['json', 'schema', 'inference', 'schema inference']
 doc_type: 'guide'
@@ -61,9 +60,8 @@ This dataset is stored in a public S3 bucket at `s3://datasets-documentation/arx
 
 You can see that the dataset above contains nested JSON objects. While you should draft and version your schemas, inference allows types to be inferred from the data. This allows the schema DDL to be auto-generated, avoiding the need to build it manually and accelerating the development process.
 
-:::note Auto format detection
+> **note**: Auto format detection
 As well as detecting the schema, JSON schema inference will automatically infer the format of the data from the file extension and contents. The above file is detected as being NDJSON automatically as a result.
-:::
 
 Using the [s3 function](/sql-reference/table-functions/s3) with the `DESCRIBE` command shows the types that will be inferred.
 
@@ -89,15 +87,13 @@ SETTINGS describe_compact_output = 1
 │ authors_parsed │ Array(Array(Nullable(String)))                                          │
 └────────────────┴─────────────────────────────────────────────────────────────────────────┘
 ```
-:::note Avoid nulls
+> **note**: Avoid nulls
 You can see a lot of the columns are detected as Nullable. We [don't recommend using the Nullable](/sql-reference/data-types/nullable#storage-features) type when not absolutely needed. You can use [schema_inference_make_columns_nullable](/operations/settings/formats#schema_inference_make_columns_nullable) to control the behavior of when Nullable is applied.
-:::
 
 We can see that most columns have automatically been detected as `String`, with `update_date` column correctly detected as a `Date`. The `versions` column has been created as an `Array(Tuple(created String, version String))` to store a list of objects, with `authors_parsed` being defined as `Array(Array(String))` for nested arrays.
 
-:::note Controlling type detection
+> **note**: Controlling type detection
 The auto-detection of dates and datetimes can be controlled through the settings [`input_format_try_infer_dates`](/operations/settings/formats#input_format_try_infer_dates) and [`input_format_try_infer_datetimes`](/operations/settings/formats#input_format_try_infer_datetimes) respectively (both enabled by default). The inference of objects as tuples is controlled by the setting [`input_format_json_try_infer_named_tuples_from_objects`](/operations/settings/formats#input_format_json_try_infer_named_tuples_from_objects). Other settings which control schema inference for JSON, such as the auto-detection of numbers, can be found [here](/interfaces/schema-inference#text-formats).
-:::
 
 ## Querying JSON {#querying-json}
 
@@ -351,9 +347,8 @@ SETTINGS describe_compact_output = 1
 1 row in set. Elapsed: 0.081 sec.
 ```
 
-:::note Type coercion
+> **note**: Type coercion
 This type coercion can be controlled through a number of settings. The above example is dependent on the setting [`input_format_json_read_numbers_as_strings`](/operations/settings/formats#input_format_json_read_numbers_as_strings).
-:::
 
 However, some types are incompatible. Consider the following example:
 

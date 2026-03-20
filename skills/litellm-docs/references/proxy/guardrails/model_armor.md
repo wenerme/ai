@@ -1,11 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Google Cloud Model Armor
 
 LiteLLM supports Google Cloud Model Armor guardrails via the [Model Armor API](https://cloud.google.com/security-command-center/docs/model-armor-overview). 
-
 
 ## Supported Guardrails
 
@@ -44,7 +41,6 @@ guardrails:
 - `post_call` Run **after** LLM call, on **input & output**
 
 ### 2. Start LiteLLM Gateway 
-
 
 ```shell
 litellm --config config.yaml --detailed_debug
@@ -86,7 +82,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 - `fail_on_error` - bool - Whether to fail requests if Model Armor encounters errors. Default is `true`
 - `mask_request_content` - bool - Enable masking of sensitive content in requests. Default is `false`
 - `mask_response_content` - bool - Enable masking of sensitive content in responses. Default is `false`
-
 
 ## Further Reading
 

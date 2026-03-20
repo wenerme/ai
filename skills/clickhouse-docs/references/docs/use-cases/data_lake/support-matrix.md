@@ -1,17 +1,9 @@
 ---
 title: 'Support matrix'
-sidebar_label: 'Support matrix'
-slug: /use-cases/data-lake/support-matrix
-sidebar_position: 3
-pagination_prev: null
-pagination_next: null
 description: 'Comprehensive support matrices for ClickHouse open table format integrations and data catalog connections.'
 keywords: ['data lake', 'lakehouse', 'support', 'iceberg', 'delta lake', 'hudi', 'paimon', 'catalog', 'features']
 doc_type: 'reference'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 This page provides comprehensive support matrices for ClickHouse's data lake integrations. It covers the features available for each open table format, the catalogs ClickHouse can connect to, and the capabilities supported by each catalog.
 
@@ -20,9 +12,6 @@ This page provides comprehensive support matrices for ClickHouse's data lake int
 ClickHouse integrates with four open table formats: [Apache Iceberg](/engines/table-engines/integrations/iceberg), [Delta Lake](/engines/table-engines/integrations/deltalake), [Apache Hudi](/engines/table-engines/integrations/hudi), and [Apache Paimon](/sql-reference/table-functions/paimon). Select a format below to view its support matrix.
 
 **Legend:** ✅ Supported | ⚠️ Partial / Experimental | ❌ Not supported
-
-<Tabs groupId="format-matrix">
-<TabItem value="iceberg" label="Apache Iceberg" default>
 
 | Feature | Status | Notes |
 |---------|:-:|-------|
@@ -73,9 +62,6 @@ ClickHouse integrates with four open table formats: [Apache Iceberg](/engines/ta
 | Data caching | ✅ | Same mechanism as S3/Azure/HDFS storage engines. See [Data cache](/engines/table-engines/integrations/iceberg#data-cache). |
 | Metadata caching | ✅ | Manifest and metadata files cached in memory. Enabled by default via `use_iceberg_metadata_files_cache`. See [Metadata cache](/engines/table-engines/integrations/iceberg#metadata-cache). |
 
-</TabItem>
-<TabItem value="delta" label="Delta Lake">
-
 From version 25.6, ClickHouse reads Delta Lake tables using the Delta Lake Rust kernel, providing broader feature support; however, known issues occur when accessing data in Azure Blob Storage. For this reason the Kernel is disabled when reading data on Azure Blob Storage. We indicate below which features require this kernel.
 
 | Feature | Status | Notes |
@@ -107,9 +93,6 @@ From version 25.6, ClickHouse reads Delta Lake tables using the Delta Lake Rust 
 | **Caching** | | |
 | Data caching | ✅ | Same mechanism as S3/Azure/HDFS storage engines. See [Data cache](/engines/table-engines/integrations/deltalake#data-cache). |
 
-</TabItem>
-<TabItem value="hudi" label="Apache Hudi">
-
 | Feature | Status | Notes |
 |---------|:-:|-------|
 | **Storage backends** | | |
@@ -133,9 +116,6 @@ From version 25.6, ClickHouse reads Delta Lake tables using the Delta Lake Rust 
 | **Caching** | | |
 | Data caching | ❌ | Not supported |
 
-</TabItem>
-<TabItem value="paimon" label="Apache Paimon">
-
 | Feature | Status | Notes |
 |---------|:-:|-------|
 | **Storage backends** | | |
@@ -158,9 +138,6 @@ From version 25.6, ClickHouse reads Delta Lake tables using the Delta Lake Rust 
 | INSERT / DELETE / UPDATE | ❌ | Read-only integration |
 | **Caching** | | |
 | Data caching | ❌ | Not supported |
-
-</TabItem>
-</Tabs>
 
 ## Catalog support {#catalog-support}
 

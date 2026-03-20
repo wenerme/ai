@@ -2,9 +2,6 @@
 title: Entity Repository
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Entity Repositories are thin layers on top of `EntityManager`. They act as an extension point, so you can add custom methods, or even alter the existing ones. The default `EntityRepository` implementation just forwards the calls to underlying `EntityManager` instance.
 
 > `EntityRepository` class carries the entity type, so you do not have to pass it to every `find` or `findOne` calls.
@@ -25,11 +22,7 @@ console.log(books); // Book[]
 
 ## Custom Repository
 
-:::info
-
-You need to make sure you are working with correctly typed `EntityRepository` to have access to driver specific methods (like `createQueryBuilder()`). Use the one exported from your driver package.
-
-:::
+> **info**: You need to make sure you are working with correctly typed `EntityRepository` to have access to driver specific methods (like `createQueryBuilder()`). Use the one exported from your driver package.
 
 To use a custom repository, extend `EntityRepository<T>` class:
 
@@ -48,18 +41,7 @@ export class CustomAuthorRepository extends EntityRepository<Author> {
 
 And register the repository via the entity definition:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const AuthorSchema = defineEntity({
@@ -75,9 +57,7 @@ export class Author extends AuthorSchema.class {}
 AuthorSchema.setClass(Author);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Author = defineEntity({
@@ -90,9 +70,6 @@ export const Author = defineEntity({
 });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @Entity({ repository: () => CustomAuthorRepository })
 export class Author {
@@ -100,18 +77,12 @@ export class Author {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity({ repository: () => CustomAuthorRepository })
 export class Author {
   // ...
 }
 ```
-
-</TabItem>
-</Tabs>
 
 Note that you need to pass that repository reference inside a callback so you will not run into circular dependency issues when using entity references inside that repository.
 
@@ -121,18 +92,7 @@ Now you can access your custom repository via `em.getRepository()` method.
 
 To have the `em.getRepository()` method return correctly typed custom repository instead of the generic `EntityRepository<T>`, use the `EntityRepositoryType` symbol:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const AuthorSchema = defineEntity({
@@ -150,9 +110,7 @@ AuthorSchema.setClass(Author);
 const repo = em.getRepository(Author); // repo has type AuthorRepository
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Author = defineEntity({
@@ -169,9 +127,6 @@ const repo = em.getRepository(Author); // repo has type AuthorRepository
 
 With `defineEntity`, the `EntityRepositoryType` is inferred automatically from the `repository` option — no extra symbol needed.
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @Entity({ repository: () => AuthorRepository })
 export class Author {
@@ -183,9 +138,6 @@ export class Author {
 const repo = em.getRepository(Author); // repo has type AuthorRepository
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity({ repository: () => AuthorRepository })
 export class Author {
@@ -196,9 +148,6 @@ export class Author {
 
 const repo = em.getRepository(Author); // repo has type AuthorRepository
 ```
-
-</TabItem>
-</Tabs>
 
 > You can also register a custom base repository (for all entities where you do not specify `repository`) globally, via `MikroORM.init({ entityRepository: () => CustomBaseRepository })`.
 
@@ -257,18 +206,7 @@ export class AuthorRepository extends BaseRepository<Author> {
 
 Register it the same way as any custom repository, via the entity definition:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const AuthorSchema = defineEntity({
@@ -287,9 +225,7 @@ AuthorSchema.setClass(Author);
 // which has both BaseRepository methods and AuthorRepository methods.
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Author = defineEntity({
@@ -307,9 +243,6 @@ export const Author = defineEntity({
 
 With `defineEntity`, the `EntityRepositoryType` is inferred automatically.
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @Entity({ repository: () => AuthorRepository })
 export class Author {
@@ -322,9 +255,6 @@ export class Author {
 // which has both BaseRepository methods and AuthorRepository methods.
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity({ repository: () => AuthorRepository })
 export class Author {
@@ -336,9 +266,6 @@ export class Author {
 // em.getRepository(Author) now returns AuthorRepository,
 // which has both BaseRepository methods and AuthorRepository methods.
 ```
-
-</TabItem>
-</Tabs>
 
 Entities without a specific repository will still use the `BaseRepository` with its generic methods.
 
@@ -346,18 +273,7 @@ Entities without a specific repository will still use the `BaseRepository` with 
 
 If you use a common base entity, you can set the `EntityRepositoryType` there so all inheriting entities get the correct type by default:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BaseEntitySchema = defineEntity({
@@ -372,9 +288,7 @@ export class BaseEntity extends BaseEntitySchema.class {}
 BaseEntitySchema.setClass(BaseEntity);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const BaseEntity = defineEntity({
@@ -388,9 +302,6 @@ export const BaseEntity = defineEntity({
 
 With `defineEntity`, when you set `repository` globally via the ORM config, the repository type is resolved automatically for all entities — no `EntityRepositoryType` symbol needed.
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 import { EntityRepositoryType, PrimaryKey } from '@mikro-orm/core';
 
@@ -404,9 +315,6 @@ export abstract class BaseEntity {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 import { EntityRepositoryType, PrimaryKey } from '@mikro-orm/core';
 
@@ -419,9 +327,6 @@ export abstract class BaseEntity {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 Now `em.getRepository(AnyEntityExtendingBaseEntity)` returns `BaseRepository<T>` without needing to redeclare the symbol on every entity. Entities with entity-specific repositories can still override it.
 

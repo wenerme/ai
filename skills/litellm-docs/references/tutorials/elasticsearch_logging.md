@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Elasticsearch Logging with LiteLLM
 
@@ -77,9 +75,6 @@ pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
 
 ### 4. Configure LiteLLM
 
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy">
-
 Create a `config.yaml` file:
 
 ```yaml
@@ -102,9 +97,6 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4317"
 litellm --config config.yaml
 ```
 
-</TabItem>
-<TabItem value="python-sdk" label="Python SDK">
-
 Configure OpenTelemetry in your Python code:
 
 ```python
@@ -124,15 +116,9 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ### 5. Test the Integration
 
 Make a test request to verify logging is working:
-
-<Tabs>
-<TabItem value="curl-proxy" label="Test Proxy">
 
 ```bash
 curl -X POST "http://localhost:4000/v1/chat/completions" \
@@ -144,9 +130,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
   }'
 ```
 
-</TabItem>
-<TabItem value="python-test" label="Test Python SDK">
-
 ```python
 import litellm
 
@@ -157,9 +140,6 @@ response = litellm.completion(
 )
 print("Response:", response.choices[0].message.content)
 ```
-
-</TabItem>
-</Tabs>
 
 ### 6. Verify It's Working
 

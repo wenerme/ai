@@ -1,6 +1,5 @@
 # MultiPL-E MBPP
 
-
 ## Overview
 
 MultiPL-E MBPP is a multilingual code generation benchmark derived from MBPP (Mostly Basic Python Programming). It extends the original MBPP to 18 programming languages, enabling cross-lingual evaluation of code generation capabilities.
@@ -28,7 +27,6 @@ MultiPL-E MBPP is a multilingual code generation benchmark derived from MBPP (Mo
 - Timeout: 30 seconds per test case
 - See [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for setup
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MultiPL-E MBPP is a multilingual code generation benchmark derived from MBPP (Mo
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -161,5 +158,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -62,8 +62,6 @@ Once you’ve created a [dashboard](ref:dashboard), the following video shows yo
 
 Use the following options to refine your dashboard list visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Include current time range | Propagate the time range of the current dashboard to the dashboard list links. When you click a link, the linked dashboard opens with the indicated time range already set. |
@@ -77,8 +75,6 @@ Use the following options to refine your dashboard list visualization.
 | [Query](#query) | Search by dashboard name. This option is only applied when the **Search** switch is toggled on. |
 | [Folder](#folder) | Only dashboards from the selected folder are displayed in the dashboard list. This option is only applied when the **Search** switch is toggled on. |
 | [Tags](#tags) | Search by tags. This option is only applied when the **Search** switch is toggled on.  |
-
-<!-- prettier-ignore-end -->
 
 #### Query
 

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Using Claude Code Max Subscription
 
@@ -17,8 +15,6 @@ Route Claude Code Max subscription traffic through LiteLLM AI Gateway.
 - **Cost attribution** — Track spend per user, team, or key
 - **Budgets & rate limits** — Set spending caps and request limits
 - **Guardrails** — Apply content filtering and safety controls to all requests
-
-
 
 ## Quick Start Video
 
@@ -57,11 +53,9 @@ litellm_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
 ```
 
-:::info Why `forward_client_headers_to_llm_api`?
+> **info**: Why `forward_client_headers_to_llm_api`?
 
 This setting forwards the user's OAuth token (in the `Authorization` header) through LiteLLM to the Anthropic API, enabling per-user authentication with their Max subscription while LiteLLM handles tracking and controls.
-
-:::
 
 ## Step 2: Start LiteLLM Proxy
 

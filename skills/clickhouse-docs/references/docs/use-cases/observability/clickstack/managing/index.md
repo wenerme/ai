@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/managing
 title: 'Managing ClickStack'
-pagination_prev: null
-pagination_next: null
-sidebar_label: 'Managing ClickStack'
 description: 'Managing ClickStack'
 doc_type: 'guide'
 keywords: ['managing ClickStack', 'performance', 'materialized views', 'admin commands']

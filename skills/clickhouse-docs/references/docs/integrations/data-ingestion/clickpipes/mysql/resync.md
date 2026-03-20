@@ -1,17 +1,12 @@
 ---
 title: 'Resyncing a Database ClickPipe'
 description: 'Doc for resyncing a database ClickPipe'
-slug: /integrations/clickpipes/mysql/resync
-sidebar_label: 'Resync ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import resync_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/resync_button.png'
-import Image from '@theme/IdealImage';
 
 ### What does Resync do? {#what-mysql-resync-do}
 
@@ -31,9 +26,7 @@ Here are a few scenarios:
 1. You may need to perform major schema changes on the source tables which would break the existing ClickPipe and you would need to restart. You can just click Resync after performing the changes.
 2. Specifically for Clickhouse, maybe you needed to change the ORDER BY keys on the target tables. You can Resync to re-populate data into the new table with the right sorting key.
 
-:::note
-You can resync multiple times, however please account for the load on the source database when you resync.
-:::
+> **note**: You can resync multiple times, however please account for the load on the source database when you resync.
 
 ### Resync ClickPipe Guide {#guide-mysql-resync}
 

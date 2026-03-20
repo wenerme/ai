@@ -48,7 +48,7 @@ You can use these modes by themselves or in combination to create building block
 Adding another query adds a new query block.
 Refer to [Use query types together](#use-query-types-together) for more information.
 
-![The three query types: Search, TraceQL, and Service Graph](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-types.png)
+[The three query types: Search, TraceQL, and Service Graph]
 
 The three query types are:
 
@@ -63,7 +63,7 @@ The query builder is ideal for people who aren't familiar with or want to learn 
 
 Refer to the [Search using the TraceQL query builder documentation](traceql-search/) to learn more about creating queries using convenient drop-down menus.
 
-![The Search query builder](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-search-v11.png)
+[The Search query builder]
 
 ### TraceQL query editor
 
@@ -71,7 +71,7 @@ The **TraceQL** query editor lets you search by trace ID and write TraceQL queri
 
 Refer to the [TraceQL query editor documentation](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/datasources/tempo/query-editor/traceql-editor/) to learn more about constructing queries using a code-editor-like experience.
 
-![The TraceQL query editor](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-traceql-v11.png)
+[The TraceQL query editor]
 
 You can also search for a trace ID by entering it into the query field.
 
@@ -89,7 +89,7 @@ Using the service graph view, you can:
 
 For more information about the service graph, refer to [Service graph](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/datasources/tempo/service-graph/).
 
-![Screenshot of the Service Graph view](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-service-graph.png)
+[Screenshot of the Service Graph view]
 
 ## Use TraceQL panels in dashboards
 
@@ -102,7 +102,7 @@ To learn more about Grafana dashboards, refer to the [Use dashboards documentati
 The following options are available for the **Search** and **TraceQL** query types.
 You can modify these settings in the **Options** section.
 
-![Options section in the query editors](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-options.png)
+[Options section in the query editors]
 
 After changing any option, re-run the query to apply the updates.
 
@@ -145,7 +145,7 @@ The name changes in the queries and table list.
 
 Each query block has a set of icons in the right top corner.
 
-![The additional options toolbar](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-additional-options-toolbar.png)
+[The additional options toolbar]
 
 These icons include:
 
@@ -174,11 +174,7 @@ If you've configured a multi-stack Tempo data source, you can perform TraceQL qu
 Queries performed using the cross-tenant configured data source, in either **Explore** or inside of dashboards,
 are performed across all the tenants that you specified in the **X-Scope-OrgID** header.
 
-<!-- vale Grafana.Spelling = NO -->
-
 TraceQL queries that compare multiple spansets may not correctly return all traces in a cross-tenant query. For instance,
-
-<!-- vale Grafana.Quotes = YES -->
 
 ```
 { span.attr1 = "bar" } && { span.attr2 = "foo" }

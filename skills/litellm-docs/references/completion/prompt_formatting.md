@@ -66,7 +66,6 @@ Other providers either have fixed prompt templates (e.g. Anthropic), or format i
 
 Here's the code for how we format all providers. Let us know how we can improve this further
 
-
 | Provider | Model Name | Code |
 | -------- | -------- | -------- |
 | Anthropic | `claude-instant-1`, `claude-instant-1.2`, `claude-2` | [Code](https://github.com/BerriAI/litellm/blob/721564c63999a43f96ee9167d0530759d51f8d45/litellm/llms/anthropic.py#L84)

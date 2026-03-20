@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Using the HTTP interface'
-slug: /integrations/azure-data-factory/http-interface
 description: 'Using ClickHouse''s HTTP interface to bring data from Azure Data Factory into ClickHouse'
 keywords: ['azure data factory', 'azure', 'microsoft', 'data', 'http interface']
 title: 'Using ClickHouse HTTP Interface to bring Azure data into ClickHouse'
@@ -9,34 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'data_ingestion'
 ---
-
-import Image from '@theme/IdealImage';
-
-import azureHomePage                            from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-home-page.png';
-import azureNewResourceAnalytics                from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-new-resource-analytics.png';
-import azureNewDataFactory                      from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-new-data-factory.png';
-import azureNewDataFactoryConfirm               from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-new-data-factory-confirm.png';
-import azureNewDataFactorySuccess               from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-new-data-factory-success.png';
-import azureHomeWithDataFactory                 from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-home-with-data-factory.png';
-import azureDataFactoryPage                     from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-data-factory-page.png';
-import adfCreateLinkedServiceButton             from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-create-linked-service-button.png';
-import adfNewLinkedServiceSearch                from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-linked-service-search.png';
-import adfNewLinedServicePane                   from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-lined-service-pane.png';
-import adfNewLinkedServiceBaseUrlEmpty          from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-linked-service-base-url-empty.png';
-import adfNewLinkedServiceParams                from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-linked-service-params.png';
-import adfNewLinkedServiceExpressionFieldFilled from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-linked-service-expression-field-filled.png';
-import adfNewLinkedServiceCheckConnection       from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-linked-service-check-connection.png';
-import adfLinkedServicesList                    from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-linked-services-list.png';
-import adfNewDatasetItem                        from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-dataset-item.png';
-import adfNewDatasetPage                        from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-dataset-page.png';
-import adfNewDatasetProperties                  from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-dataset-properties.png';
-import adfNewDatasetQuery                       from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-dataset-query.png';
-import adfNewDatasetConnectionSuccessful        from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-dataset-connection-successful.png';
-import adfNewPipelineItem                       from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-pipeline-item.png';
-import adfNewCopyDataItem                       from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-new-copy-data-item.png';
-import adfCopyDataSource                        from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-copy-data-source.png';
-import adfCopyDataSinkSelectPost                from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-copy-data-sink-select-post.png';
-import adfCopyDataDebugSuccess                  from '@site/static/images/integrations/data-ingestion/azure-data-factory/adf-copy-data-debug-success.png';
 
 # Using ClickHouse HTTP interface in Azure data factory {#using-clickhouse-http-interface-in-azure-data-factory}
 
@@ -57,14 +27,12 @@ Azure, Azure Data Factory pushes the data to ClickHouse. This approach
 typically requires your ClickHouse instance to be accessible from the public
 internet.
 
-:::info
-It is possible to avoid exposing your ClickHouse instance to the internet by
+> **info**: It is possible to avoid exposing your ClickHouse instance to the internet by
 using Azure Data Factory's Self-hosted Integration Runtime. This setup allows
 data to be sent over a private network. However, it's beyond the scope of this
 article. You can find more information in the official guide:
 [Create and configure a self-hosted integration
 runtime](https://learn.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime?tabs=data-factory)
-:::
 
 ## Turning ClickHouse into a REST service {#turning-clickhouse-to-a-rest-service}
 
@@ -92,10 +60,8 @@ URL-encoded string to the query parameter in your ClickHouse endpoint:
 https://your-clickhouse-url.com?query=INSERT%20INTO%20my_table%20SETTINGS%20date_time_input_format%3D%27best_effort%27%2C%20input_format_json_read_objects_as_strings%3D1%20FORMAT%20JSONEachRow%0A
 ```
 
-:::info
-Azure Data Factory can handle this encoding automatically using its built-in
+> **info**: Azure Data Factory can handle this encoding automatically using its built-in
 `encodeUriComponent` function, so you don't have to do it manually.
-:::
 
 Now you can send JSON-formatted data to this URL. The data should match the
 structure of the target table. Here's a simple example using curl, assuming a
@@ -271,12 +237,10 @@ In this example, we won't use the full Environmental Sensors Dataset, but
 just a small subset available at the
 [Sensors Dataset Sample](https://datasets-documentation.s3.eu-west-3.amazonaws.com/environmental/sensors.csv).
 
-:::info
-To keep this guide focused, we won't go into the exact steps for creating the
+> **info**: To keep this guide focused, we won't go into the exact steps for creating the
 source dataset in Azure Data Factory. You can upload the sample data to any
 storage service of your choice — for example, Azure Blob Storage, Microsoft SQL
 Server, or even a different file format supported by Azure Data Factory.
-:::
 
 Upload the dataset to your Azure Blob Storage (or another preferred storage
 service), Then, in Azure Data Factory Studio, go to the Factory Resources pane.

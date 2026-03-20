@@ -1,7 +1,5 @@
 ---
 date: "2016-11-08T16:00:00+02:00"
-slug: /
-sidebar_position: 10
 
 ---
 
@@ -11,11 +9,7 @@ Gitea is a painless, self-hosted, all-in-one software development service. It in
 
 Gitea was originally forked from [Gogs](https://gogs.io) and almost all the code has been changed. See the [Gitea Announcement](https://blog.gitea.com/welcome-to-gitea/) blog post to read about the justification for a fork.
 
-:::warning
-
-Gitea does not send commits to upstream or cherry-pick commits from it, so there is no guarantee it will work if you upgrade from Gogs to Gitea. The recommended method is to migrate repositories from Gogs to Gitea.
-
-:::
+> **warning**: Gitea does not send commits to upstream or cherry-pick commits from it, so there is no guarantee it will work if you upgrade from Gogs to Gitea. The recommended method is to migrate repositories from Gogs to Gitea.
 
 ## Purpose
 

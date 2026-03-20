@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/langchain
-sidebar_label: 'Integrate Langchain'
 title: 'How to build a LangChain/LangGraph AI agent using ClickHouse MCP Server.'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how to build a LangChain/LangGraph AI agent that can interact with ClickHouse''s SQL playground using ClickHouse''s MCP Server.'
 keywords: ['ClickHouse', 'MCP', 'LangChain', 'LangGraph']
 show_related_blogs: true
@@ -15,9 +11,8 @@ doc_type: 'guide'
 In this guide, you'll learn how to build a [LangChain/LangGraph](https://github.com/langchain-ai/langgraph) AI agent that
 can interact with [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/langchain/langchain.ipynb).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.
@@ -50,10 +45,9 @@ os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter Anthropic API Key:")
 Enter Anthropic API Key: ········
 ```
 
-:::note Using another LLM provider
+> **note**: Using another LLM provider
 If you don't have an Anthropic API key, and want to use another LLM provider,
 you can find the instructions for setting up your credentials in the [Langchain Providers docs](https://python.langchain.com/docs/integrations/providers/)
-:::
 
 ## Initialize MCP Server {#initialize-mcp-and-agent}
 

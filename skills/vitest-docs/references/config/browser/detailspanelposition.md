@@ -1,6 +1,5 @@
 ---
 title: browser.detailsPanelPosition | Config
-outline: deep
 ---
 
 # browser.detailsPanelPosition
@@ -29,15 +28,12 @@ export default defineConfig({
 
 ## Example
 
-::: tabs
-== bottom
 <center>
-  <img alt="Vitest UI with details at the bottom" img-light src="/ui/light-ui-details-bottom.png">
-  <img alt="Vitest UI with details at the bottom" img-dark src="/ui/dark-ui-details-bottom.png">
+  [Vitest UI with details at the bottom]
+  [Vitest UI with details at the bottom]
 </center>
-== right
+
 <center>
-  <img alt="Vitest UI with details at the right side" img-light src="/ui/light-ui-details-right.png">
-  <img alt="Vitest UI with details at the right side" img-dark src="/ui/dark-ui-details-right.png">
+  [Vitest UI with details at the right side]
+  [Vitest UI with details at the right side]
 </center>
-:::

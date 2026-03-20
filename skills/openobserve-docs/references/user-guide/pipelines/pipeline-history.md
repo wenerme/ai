@@ -9,7 +9,7 @@ Pipeline History provides visibility into every pipeline run, including its exec
     Any user who has permission to view, update, or delete pipelines can also view pipeline history. This ensures that users responsible for managing or maintaining pipelines can monitor their performance and investigate failures without requiring elevated access.
 
 ## How to interpret the Pipeline History table
-![pipeline-history](../../images/pipeline-history.png)
+[pipeline-history]
 The table lists each pipeline run with key execution details.
 
 - **Pipeline Name**: Name of the executed pipeline.
@@ -28,9 +28,9 @@ The table lists each pipeline run with key execution details.
 - **Retries**: Number of times the scheduler retried the run after a failure. The maximum number of retries is defined by the environment variable `ZO_SCHEDULER_MAX_RETRIES`, which controls retry behavior for both pipelines and alerts.
 - **Actions**: When you select the Actions icon, the Pipeline Execution Details dialog opens and displays additional metadata for that specific execution:
 
-![actions-pipeline-history](../../images/actions-pipeline-history.png)
+[actions-pipeline-history]
 
 - **Query Time**: Time taken by the SQL query within the pipeline to execute. This helps measure query performance.
-- **Source Node**: Node responsible for executing the run. This helps identify where the execution occurred for debugging and performance monitoring.<br>
-Example: <br>
+- **Source Node**: Node responsible for executing the run. This helps identify where the execution occurred for debugging and performance monitoring.
+Example: 
 **Source Node**: `o2-openobserve-alertmanager-0`

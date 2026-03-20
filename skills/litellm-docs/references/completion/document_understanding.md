@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Using PDF Input
 
@@ -16,9 +15,6 @@ Works for:
 
 ### url 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm.utils import supports_pdf_input, completion
 
@@ -26,7 +22,6 @@ from litellm.utils import supports_pdf_input, completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 # pdf url
 file_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -44,7 +39,6 @@ file_content = [
     },
 ]
 
-
 if not supports_pdf_input(model, None):
     print("Model does not support image input")
 
@@ -54,8 +48,6 @@ response = completion(
 )
 assert response is not None
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -96,13 +88,8 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
 
 ### base64
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import supports_pdf_input, completion
@@ -111,7 +98,6 @@ from litellm.utils import supports_pdf_input, completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 # pdf url
 image_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -134,7 +120,6 @@ file_content = [
     },
 ]
 
-
 if not supports_pdf_input(model, None):
     print("Model does not support image input")
 
@@ -144,8 +129,6 @@ response = completion(
 )
 assert response is not None
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -186,16 +169,10 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
 
 ## Specifying format 
 
 To specify the format of the document, you can use the `format` parameter. 
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import supports_pdf_input, completion
@@ -204,7 +181,6 @@ from litellm.utils import supports_pdf_input, completion
 os.environ["AWS_ACCESS_KEY_ID"] = ""
 os.environ["AWS_SECRET_ACCESS_KEY"] = ""
 os.environ["AWS_REGION_NAME"] = ""
-
 
 # pdf url
 file_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -223,7 +199,6 @@ file_content = [
     },
 ]
 
-
 if not supports_pdf_input(model, None):
     print("Model does not support image input")
 
@@ -233,8 +208,6 @@ response = completion(
 )
 assert response is not None
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -276,17 +249,10 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
-
 
 ## Mistral Example
 
 Here is a sample payload for using the Mistral model for document understanding:
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import completion
@@ -314,9 +280,6 @@ response = completion(
 assert response is not None
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -342,22 +305,14 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
 }
 ```
-</TabItem>
-</Tabs>
 
 ## Checking if a model supports pdf input
-
-<Tabs>
-<TabItem label="SDK" value="sdk">
 
 Use `litellm.supports_pdf_input(model="bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0")` -> returns `True` if model can accept pdf input
 
 ```python
 assert litellm.supports_pdf_input(model="bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0") == True
 ```
-</TabItem>
-
-<TabItem label="PROXY" value="proxy">
 
 1. Define bedrock models on config.yaml
 
@@ -405,6 +360,3 @@ Expected Response
   ]
 }
 ```
-
-</TabItem>
-</Tabs>

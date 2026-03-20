@@ -1,7 +1,5 @@
 ---
 date: "2023-04-27T15:00:00+08:00"
-slug: "faq"
-sidebar_position: 200
 ---
 
 # Frequently Asked Questions
@@ -65,7 +63,6 @@ One thing to note is that if you choose to run jobs directly on the host instead
 For example, bash is not available on Windows in most cases, while act tries to use bash to run scripts by default.
 Therefore, you need to specify `powershell` as the default shell in your workflow file, see [defaults.run](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrun).
 
-
 ```yaml
 defaults:
   run:
@@ -123,7 +120,7 @@ Currently, the act runner attempts to match everyone in the labels and uses the 
 
 ## What is the difference between agent labels and custom labels for a runner?
 
-![labels](/images/usage/actions/labels.png)
+[labels]
 
 Agent labels are reported to the Gitea instance by the runner during registration.
 Custom labels, on the other hand, are added manually by a Gitea administrator or owners of the organization or repository (depending on the level of the runner).

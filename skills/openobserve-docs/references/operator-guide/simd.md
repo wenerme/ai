@@ -59,4 +59,3 @@ image:
 nodeSelector:
   feature.node.kubernetes.io/cpu-cpuid.AVX512F: "true"
 ```
-

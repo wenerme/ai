@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Email Notifications 
 
@@ -18,21 +16,16 @@ Send LiteLLM Proxy users emails for specific events.
 
 | Category | Details |
 |----------|---------|
-| Supported Events | • User added as a user on LiteLLM Proxy<br/>• Proxy API Key created for user<br/>• Proxy API Key rotated for user |
-| Supported Email Integrations | • Resend API<br/>• SMTP |
+| Supported Events | • User added as a user on LiteLLM Proxy• Proxy API Key created for user• Proxy API Key rotated for user |
+| Supported Email Integrations | • Resend API• SMTP |
 
 ## Usage
 
-:::info
-
-LiteLLM Cloud: This feature is enabled for all LiteLLM Cloud users, there's no need to configure anything.
-
-:::
+> **info**: LiteLLM Cloud: This feature is enabled for all LiteLLM Cloud users, there's no need to configure anything.
 
 ### 1. Configure email integration
 
-<Tabs>
-  <TabItem value="smtp" label="SMTP">
+  
 
 Get SMTP credentials to set this up
 
@@ -52,8 +45,8 @@ SMTP_SENDER_EMAIL="notifications@alerts.litellm.ai"
 SMTP_PASSWORD="xxxxx"
 ```
 
-  </TabItem>
-  <TabItem value="resend" label="Resend API">
+  
+  
 
 Add `resend_email` to your proxy config.yaml under `litellm_settings`
 
@@ -68,8 +61,8 @@ litellm_settings:
     callbacks: ["resend_email"]
 ```
 
-  </TabItem>
-  <TabItem value="sendgrid" label="SendGrid API">
+  
+  
 
 Add `sendgrid_email` to your proxy config.yaml under `litellm_settings`
 
@@ -85,8 +78,7 @@ litellm_settings:
   callbacks: ["sendgrid_email"]
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### 2. Create a new user
 
@@ -124,7 +116,6 @@ EMAIL_BUDGET_ALERT_TTL=86400
 ```
 
 ## Email Templates 
-
 
 ### 1. User added as a user on LiteLLM Proxy
 
@@ -182,11 +173,7 @@ This email is sent when you rotate an API key for a user on LiteLLM Proxy.
 
 On the LiteLLM Proxy UI, go to Virtual Keys > Click on a key > Click "Regenerate Key"
 
-:::info
-
-Ensure there is a `user_id` attached to the key. This would have been set when creating the key.
-
-:::
+> **info**: Ensure there is a `user_id` attached to the key. This would have been set when creating the key.
 
 <Image 
   img={require('../../img/email_regen.png')}
@@ -201,11 +188,7 @@ After regenerating the key, the user will receive an email notification with:
 
 ## Email Customization
 
-:::info
-
-Customizing Email Branding is an Enterprise Feature [Get in touch with us for a Free Trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: Customizing Email Branding is an Enterprise Feature [Get in touch with us for a Free Trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 LiteLLM allows you to customize various aspects of your email notifications. Below is a complete reference of all customizable fields:
 
@@ -213,13 +196,12 @@ LiteLLM allows you to customize various aspects of your email notifications. Bel
 |-------|-------------------|------|---------------|---------|-------------|
 | Logo URL | `EMAIL_LOGO_URL` | string | LiteLLM logo | `"https://your-company.com/logo.png"` | Public URL to your company logo |
 | Support Contact | `EMAIL_SUPPORT_CONTACT` | string | support@berri.ai | `"support@your-company.com"` | Email address for user support |
-| Email Signature | `EMAIL_SIGNATURE` | string (HTML) | Standard LiteLLM footer | `"<p>Best regards,<br/>Your Team</p><p><a href='https://your-company.com'>Visit us</a></p>"` | HTML-formatted footer for all emails |
+| Email Signature | `EMAIL_SIGNATURE` | string (HTML) | Standard LiteLLM footer | `"<p>Best regards,Your Team</p><p><a href='https://your-company.com'>Visit us</a></p>"` | HTML-formatted footer for all emails |
 | Invitation Subject | `EMAIL_SUBJECT_INVITATION` | string | "LiteLLM: New User Invitation" | `"Welcome to Your Company!"` | Subject line for invitation emails |
 | Key Creation Subject | `EMAIL_SUBJECT_KEY_CREATED` | string | "LiteLLM: API Key Created" | `"Your New API Key is Ready"` | Subject line for key creation emails |
 | Key Rotation Subject | `EMAIL_SUBJECT_KEY_ROTATED` | string | "LiteLLM: API Key Rotated" | `"Your API Key Has Been Rotated"` | Subject line for key rotation emails |
 | Include API Key | `EMAIL_INCLUDE_API_KEY` | boolean | true | `"false"` | Whether to include the actual API key in emails (set to false for enhanced security) |
 | Proxy Base URL | `PROXY_BASE_URL` | string | http://0.0.0.0:4000 | `"https://proxy.your-company.com"` | Base URL for the LiteLLM Proxy (used in email links) |
-
 
 ## HTML Support in Email Signature
 
@@ -238,7 +220,7 @@ The `EMAIL_SIGNATURE` field supports HTML formatting for rich, branded email foo
 
 Supported HTML features:
 - Text formatting (bold, italic, etc.)
-- Line breaks (`<br/>`)
+- Line breaks (``)
 - Links (`<a href='...'>`)
 - Paragraphs (`<p>`)
 - Basic inline styling
@@ -301,7 +283,7 @@ Users can always retrieve their keys from the LiteLLM Proxy dashboard.
 The `EMAIL_SIGNATURE` environment variable supports HTML formatting, allowing you to create rich, branded email footers. You can include:
 
 - Text formatting (bold, italic, etc.)
-- Line breaks using `<br/>`
+- Line breaks using ``
 - Links using `<a href='...'>`
 - Paragraphs using `<p>`
 - Company information and social media links

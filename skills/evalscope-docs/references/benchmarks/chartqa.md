@@ -1,6 +1,5 @@
 # ChartQA
 
-
 ## Overview
 
 ChartQA is a benchmark designed to evaluate question-answering capabilities over charts and data visualizations. It tests both visual reasoning and logical understanding of various chart types including bar charts, line graphs, and pie charts.
@@ -29,7 +28,6 @@ ChartQA is a benchmark designed to evaluate question-answering capabilities over
 - Answers should be in format "ANSWER: [ANSWER]"
 - Numerical answers may have tolerance for rounding differences
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ ChartQA is a benchmark designed to evaluate question-answering capabilities over
 | **Metrics** | `relaxed_acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -66,7 +63,6 @@ ChartQA is a benchmark designed to evaluate question-answering capabilities over
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 184x326 - 800x1796 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -139,5 +135,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -41,7 +41,7 @@ A stat visualization displays your data in single values of interest&mdash;such 
 
 For example, if you're monitoring the utilization of various services, you can use a stat visualization to show their latest usage:
 
-![A stat panel showing latest usage of various services](/media/docs/grafana/panels-visualizations/screenshot-stat-visualization-v11.3.png)
+[A stat panel showing latest usage of various services]
 
 Use a stat visualization when you need to:
 
@@ -81,7 +81,7 @@ The following tables are examples of the type of data you need for a stat visual
 
 The data is visualized as follows, with the last value displayed, along with a sparkline and [percentage change](#value-options):
 
-![A stat panel showing the latest number of high priority bugs](/media/docs/grafana/panels-visualizations/screenshot-stat-single-value-v11.3.png)
+[A stat panel showing the latest number of high priority bugs]
 
 #### Time-series data
 
@@ -95,7 +95,7 @@ The data is visualized as follows, with the last value displayed, along with a s
 
 The data is visualized as follows, with the mean value displayed for each room, along with the room name, sparkline, and unit of measurement:
 
-![A stat panel showing some statistics for each room in square meters](/media/docs/grafana/panels-visualizations/screenshot-stat-multiple-values-v11.3.png)
+[A stat panel showing some statistics for each room in square meters]
 
 By default, a stat displays one of the following:
 
@@ -116,7 +116,6 @@ You can use the [**Text mode**](#text-mode) to control how the text is displayed
 
 Use the following options to refine how your visualization displays its values:
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Show | Display a single value per column or series, or show values for each row. Choose from: <ul><li>**Calculate** - Display a calculated value based on all rows.</li><li>**All values** - Show a separate stat for every row. If you select this option, then you can also limit the number of rows to display.</li> |
@@ -124,13 +123,10 @@ Use the following options to refine how your visualization displays its values:
 | Limit | This option is displayed when you select **All values** as your **Show** option. Set the maximum number of rows to display. Default is 5,000. |
 | Fields | Select the fields displayed in the visualization. |
 
-<!-- prettier-ignore-end -->
-
 ### Stat styles
 
 The stat visualization automatically adjusts the layout depending on available width and height in the dashboard, but you can also use the following options to further style the visualization.
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Orientation | Select a stacking direction. Choose from: <ul><li>**Auto** - Grafana selects the ideal orientation.</li><li>**Horizontal** - Bars stretch horizontally, left to right.</li><li>**Vertical** - Bars stretch vertically, top to bottom.</li></ul> |
@@ -141,7 +137,6 @@ The stat visualization automatically adjusts the layout depending on available w
 | Text alignment | Select an alignment mode. Choose from: <ul><li>**Auto** - If only a single value is shown (no repeat), then the value is centered. If multiple series or rows are shown, then the value is left-aligned.</li><li>**Center** - Stat value is centered.</li></ul> |
 | Show percent change | Set whether percent change is displayed or not. Disabled by default. This option is applicable when the **Show** setting, under **Value options**, is set to **Calculate**. |
 | Percent change color mode | This option is only displayed when **Show percent change** is enabled. Choose from: <ul><li>**Standard** - Green if the percent change is positive, red if the percent change is negative.</li><li>**Inverted** - Red if the percent change is positive, green if the percent change is negative.</li><li>**Same as Value** - Use the same color as the value.</li></ul> |
-<!-- prettier-ignore-end -->
 
 #### Text mode
 

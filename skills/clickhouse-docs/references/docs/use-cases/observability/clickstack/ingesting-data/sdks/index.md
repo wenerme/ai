@@ -1,7 +1,4 @@
 ---
-slug: /use-cases/observability/clickstack/sdks
-pagination_prev: null
-pagination_next: null
 description: 'Language SDKs for ClickStack - The ClickHouse Observability Stack'
 title: 'Language SDKs'
 doc_type: 'guide'
@@ -23,11 +20,8 @@ In browser-based environments, SDKs may also be responsible for collecting **ses
 
 ## Supported languages {#supported-languages}
 
-:::note OpenTelemetry compatibility
+> **note**: OpenTelemetry compatibility
 While ClickStack offers its own language SDKs with enhanced telemetry and features, you can also use their existing OpenTelemetry SDKs seamlessly.
-:::
-
-<br/>
 
 | Language | Description | Link |
 |----------|-------------|------|
@@ -48,7 +42,6 @@ While ClickStack offers its own language SDKs with enhanced telemetry and featur
 
 :::Not required for Managed ClickStack
 The API key isn't required for managed ClickStack.
-:::
 
 In order to send data to ClickStack via the OTel collector, SDKs will need to specify an ingestion API key. This can either be set using an `init` function in the SDK or an `OTEL_EXPORTER_OTLP_HEADERS` environment variable:
 

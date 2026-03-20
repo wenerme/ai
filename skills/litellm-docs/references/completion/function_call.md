@@ -12,7 +12,6 @@ assert litellm.supports_function_calling(model="xai/grok-2-latest") == True
 assert litellm.supports_function_calling(model="ollama/llama2") == False
 ```
 
-
 ## Checking if a model supports parallel function calling 
 
 Use `litellm.supports_parallel_function_calling(model="")` -> returns `True` if model supports parallel function calling, `False` if not
@@ -26,7 +25,7 @@ Parallel function calling is the model's ability to perform multiple function ca
 
 ## Quick Start - gpt-3.5-turbo-1106
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/Parallel_function_calling.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 In this example we define a single function `get_current_weather`. 
@@ -34,7 +33,6 @@ In this example we define a single function `get_current_weather`.
 - Step 1: Send the model the `get_current_weather` with the user question
 - Step 2: Parse the output from the model response - Execute the `get_current_weather` with the model provided args
 - Step 3: Send the model the output from running the `get_current_weather` function
-
 
 ### Full Code - Parallel function calling with `gpt-3.5-turbo-1106`
 
@@ -57,7 +55,6 @@ def get_current_weather(location, unit="fahrenheit"):
         return json.dumps({"location": "Paris", "temperature": "22", "unit": "celsius"})
     else:
         return json.dumps({"location": location, "temperature": "unknown"})
-
 
 def test_parallel_function_call():
     try:
@@ -550,4 +547,3 @@ functions = [
 response = completion(model="claude-2", messages=messages, functions=functions)
 print(response)
 ```
-

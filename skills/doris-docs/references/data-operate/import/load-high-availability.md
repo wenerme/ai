@@ -102,4 +102,3 @@ In addition to the minimum write replica number option, Doris also adopts the fo
 2. Load Balancing: Distribute import tasks to different BE nodes to avoid excessive pressure on a single point.
 
 3. Transaction Mechanism: Ensure data consistency, automatically rollback in case of failure.
-

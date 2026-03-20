@@ -1,8 +1,6 @@
 # Call Gemini Realtime API with Audio Input/Output 
 
-:::info
-Requires LiteLLM Proxy v1.70.1+
-:::
+> **info**: Requires LiteLLM Proxy v1.70.1+
 
 1. Setup config.yaml for LiteLLM Proxy 
 
@@ -90,7 +88,6 @@ def play_base64_audio(base64_string, sample_rate=24000, channels=1):
     sd.play(audio_float, sample_rate)
     sd.wait()
 
-
 def combine_base64_audio(base64_strings):
     # Step 1: Decode base64 strings to binary
     binary_data = [base64.b64decode(s) for s in base64_strings]
@@ -133,4 +130,3 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-

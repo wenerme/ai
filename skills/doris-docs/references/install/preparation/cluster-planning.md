@@ -29,7 +29,6 @@ Doris instances communicate over the network, and their proper functioning requi
 | FE            | query_port              | 9030         | Client <-> FE                  | MySQL Server port on FE                                 |
 | FE            | edit_log_port           | 9010         | FE <-> FE                       | bdbje communication port on FE                         |
 
-
 ## Node Count Planning
 
 ### FE Node Count
@@ -49,4 +48,3 @@ In general, it is recommended to deploy at least 3 Follower nodes. In high-concu
 BE nodes are responsible for data storage and computation. In production environments, to ensure data reliability and fault tolerance, 3 copies of data are usually stored. Therefore, it is recommended to deploy at least 3 BE nodes.
 
 BE nodes support horizontal scaling, and by increasing the number of BE nodes, the query performance and concurrent processing capabilities of the cluster can be effectively improved.
-

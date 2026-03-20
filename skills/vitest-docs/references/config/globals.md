@@ -20,9 +20,7 @@ export default defineConfig({
 })
 ```
 
-::: tip
-Note that some libraries, e.g., `@testing-library/react`, rely on globals being present to perform auto cleanup.
-:::
+> **tip**: Note that some libraries, e.g., `@testing-library/react`, rely on globals being present to perform auto cleanup.
 
 To get TypeScript working with the global APIs, add `vitest/globals` to the `types` field in your `tsconfig.json`:
 

@@ -34,7 +34,6 @@ The user executing this SQL command must have at least the following permissions
 |:-----------|:------|:---------------|
 | DROP_PRIV | Corresponding database | You need to have delete permission on the corresponding database |
 
-
 ## Precautions
 
 If you execute DROP DATABASE FORCE, the system will not check whether there are any unfinished transactions in the database. The database will be deleted directly and cannot be restored. This operation is generally not recommended.

@@ -222,11 +222,9 @@ SELECT * FROM mc_ctl.mc_db.mc_tbl LIMIT 10;
 
 Starting from version 4.1.0, Doris supports write operations to MaxCompute tables. You can use standard INSERT statements to write data from other data sources directly to MaxCompute tables through Doris.
 
-:::note
-- This is an experimental feature, supported since version 4.1.0.
+> **note**: - This is an experimental feature, supported since version 4.1.0.
 - Supports writing to both partitioned and non-partitioned tables.
 - Does not support writing to clustered tables, transactional tables, Delta Tables, or external tables.
-:::
 
 ### INSERT INTO
 
@@ -270,11 +268,9 @@ CREATE TABLE mc_tbl AS SELECT * FROM other_table;
 
 Starting from version 4.1.0, Doris supports creating and dropping MaxCompute databases and tables.
 
-:::note
-- This is an experimental feature, supported since version 4.1.0.
+> **note**: - This is an experimental feature, supported since version 4.1.0.
 - Supports creating and dropping partitioned and non-partitioned tables.
 - Does not support creating clustered tables, transactional tables, Delta Tables, or external tables.
-:::
 
 > This feature is only available when the `mc.enable.namespace.schema` property is set to `true`.
 
@@ -299,9 +295,7 @@ Drop database:
 DROP DATABASE [IF EXISTS] mc.mc_schema;
 ```
 
-:::caution
-For MaxCompute Database, after deletion, all tables under it will also be deleted.
-:::
+> **caution**: For MaxCompute Database, after deletion, all tables under it will also be deleted.
 
 ### Creating and Dropping Tables
 

@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # [Beta] Service Accounts
 
@@ -14,7 +12,6 @@ Why use a service account key?
 
 Use the `/key/service-account/generate` endpoint to generate a service account key.
 
-
 ```bash
 curl -L -X POST 'http://localhost:4000/key/service-account/generate' \
 -H 'Authorization: Bearer sk-1234' \
@@ -25,7 +22,6 @@ curl -L -X POST 'http://localhost:4000/key/service-account/generate' \
 ```
 
 ## Example - require `user` param for all service account requests
-
 
 ### 1. Set settings for Service Accounts
 
@@ -42,11 +38,6 @@ general_settings:
 <Image img={require('../../img/create_service_account.png')} />
 
 ### 3. Test Service Account Key 
-
-<Tabs>
-
-<TabItem value="Unsuccessful call" label="Unsuccessful call">
-
 
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
@@ -75,11 +66,6 @@ Expected Response
   }
 }
 ```
-
-</TabItem>
-
-<TabItem value="Successful call" label="Successful call">
-
 
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
@@ -127,8 +113,3 @@ Expected Response
   "service_tier": null
 }
 ```
-
-</TabItem>
-
-</Tabs>
-

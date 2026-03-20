@@ -35,7 +35,7 @@ Each step can use either **functions** or **prompt objects** (LLM-based evaluati
 - Natural language understanding tasks
 - Nuanced context evaluation
 
-**What “prompt object” means:** Instead of a function, the step is an object with `description` + `createPrompt` (and `outputSchema` for `preprocess`/`analyze`). That object tells Mastra to run the judge LLM for the step and store the structured output in `results.<step>StepResult`.
+**What “prompt object” means:** Instead of a function, the step is an object with `description` + `createPrompt` (and `outputSchema` for `preprocess`/`analyze`). That object tells Mastra to run the judge LLM for the step and store the structured output in `results.StepResult`.
 
 You can mix and match approaches within a single scorer - for example, use a function for preprocessing data and an LLM for analyzing quality.
 
@@ -287,11 +287,7 @@ A custom scorer in Mastra uses `createScorer` with four core components:
 
 Together, these components allow you to define custom evaluation logic using LLMs as judges.
 
-:::info
-
-Visit [createScorer](/reference/evals/create-scorer) for the full API and configuration options.
-
-:::
+> **info**: Visit [createScorer](/reference/evals/create-scorer) for the full API and configuration options.
 
 ```typescript title="src/mastra/scorers/gluten-checker.ts"
 import { createScorer } from '@mastra/core/evals'

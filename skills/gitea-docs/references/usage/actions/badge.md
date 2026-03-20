@@ -1,7 +1,5 @@
 ---
 date: "2023-02-25T00:00:00+00:00"
-slug: "badge"
-sidebar_position: 110
 ---
 
 # Badge

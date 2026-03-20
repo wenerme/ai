@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Bedrock Knowledge Bases
 
@@ -51,9 +49,6 @@ print(response.choices[0].message.content)
 
 #### 1. Configure your vector_store_registry
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: claude-3-5-sonnet
@@ -71,10 +66,6 @@ vector_store_registry:
         source: "Company internal documentation"
 ```
 
-</TabItem>
-
-<TabItem value="litellm-ui" label="LiteLLM UI">
-
 On the LiteLLM UI, Navigate to Experimental > Vector Stores > Create Vector Store. On this page you can create a vector store with a name, vector store id and credentials.
 
 <Image 
@@ -82,13 +73,7 @@ On the LiteLLM UI, Navigate to Experimental > Vector Stores > Create Vector Stor
   style={{width: '50%'}}
 />
 
-</TabItem>
-</Tabs>
-
 #### 2. Make a request with vector_store_ids parameter
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash
 curl http://localhost:4000/v1/chat/completions \
@@ -105,10 +90,6 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -134,10 +115,6 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Filter Results
 
 Filter by metadata attributes.
@@ -147,9 +124,6 @@ Filter by metadata attributes.
 
 **AWS operators** (use directly):
 - `equals`, `notEquals`, `greaterThan`, `greaterThanOrEquals`, `lessThan`, `lessThanOrEquals`, `in`, `notIn`, `startsWith`, `listContains`, `stringContains`
-
-<Tabs>
-<TabItem value="single-filter" label="Single Filter">
 
 ```python
 response = await litellm.acompletion(
@@ -166,10 +140,6 @@ response = await litellm.acompletion(
     }]
 )
 ```
-
-</TabItem>
-
-<TabItem value="and-filters" label="AND">
 
 ```python
 response = await litellm.acompletion(
@@ -188,10 +158,6 @@ response = await litellm.acompletion(
 )
 ```
 
-</TabItem>
-
-<TabItem value="or-filters" label="OR">
-
 ```python
 response = await litellm.acompletion(
     model="anthropic/claude-3-5-sonnet",
@@ -209,10 +175,6 @@ response = await litellm.acompletion(
 )
 ```
 
-</TabItem>
-
-<TabItem value="advanced-filters" label="AWS Operators">
-
 ```python
 response = await litellm.acompletion(
     model="anthropic/claude-3-5-sonnet",
@@ -229,10 +191,6 @@ response = await litellm.acompletion(
     }]
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy-filters" label="Proxy">
 
 ```bash
 curl http://localhost:4000/v1/chat/completions \
@@ -253,9 +211,6 @@ curl http://localhost:4000/v1/chat/completions \
     }]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Accessing Search Results
 

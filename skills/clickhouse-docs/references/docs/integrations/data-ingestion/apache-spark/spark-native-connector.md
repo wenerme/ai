@@ -1,17 +1,9 @@
 ---
-sidebar_label: 'Spark Native Connector'
-sidebar_position: 2
-slug: /integrations/apache-spark/spark-native-connector
 description: 'Introduction to Apache Spark with ClickHouse'
 keywords: ['clickhouse', 'Apache Spark', 'migrating', 'data']
 title: 'Spark Connector'
 doc_type: 'guide'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import TOCInline from '@theme/TOCInline';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Spark connector
 
@@ -80,9 +72,6 @@ Both approaches ensure the ClickHouse connector is available in your Spark envir
 
 ### Import as a Dependency {#import-as-a-dependency}
 
-<Tabs>
-<TabItem value="Maven" label="Maven" default>
-
 ```maven
 <dependency>
   <groupId>com.clickhouse.spark</groupId>
@@ -115,9 +104,6 @@ Add the following repository if you want to use SNAPSHOT version.
 </repositories>
 ```
 
-</TabItem>
-<TabItem value="Gradle" label="Gradle">
-
 ```gradle
 dependencies {
   implementation("com.clickhouse.spark:clickhouse-spark-runtime-{{ spark_binary_version }}_{{ scala_binary_version }}:{{ stable_version }}")
@@ -133,16 +119,10 @@ repositries {
 }
 ```
 
-</TabItem>
-<TabItem value="SBT" label="SBT">
-
 ```sbt
 libraryDependencies += "com.clickhouse" % "clickhouse-jdbc" % {{ clickhouse_jdbc_version }} classifier "all"
 libraryDependencies += "com.clickhouse.spark" %% clickhouse-spark-runtime-{{ spark_binary_version }}_{{ scala_binary_version }} % {{ stable_version }}
 ```
-
-</TabItem>
-<TabItem value="Spark SQL/Shell CLI" label="Spark SQL/Shell CLI">
 
 When working with Spark's shell options (Spark SQL CLI, Spark Shell CLI, and Spark Submit command), the dependencies can be
 registered by passing the required jars:
@@ -162,9 +142,6 @@ If you want to avoid copying the JAR files to your Spark client node, you can us
 Note: For SQL-only use cases, [Apache Kyuubi](https://github.com/apache/kyuubi) is recommended
 for production.
 
-</TabItem>
-</Tabs>
-
 ### Download the library {#download-the-library}
 
 The name pattern of the binary JAR is:
@@ -177,8 +154,7 @@ You can find all available released JAR files
 in the [Maven Central Repository](https://repo1.maven.org/maven2/com/clickhouse/spark/)
 and all daily build SNAPSHOT JAR files in the [Sonatype OSS Snapshots Repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/clickhouse/).
 
-:::important
-It's essential to include the [clickhouse-jdbc JAR](https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc)
+> **important**: It's essential to include the [clickhouse-jdbc JAR](https://mvnrepository.com/artifact/com.clickhouse/clickhouse-jdbc)
 with the "all" classifier,
 as the connector relies on [clickhouse-http](https://mvnrepository.com/artifact/com.clickhouse/clickhouse-http-client)
 and [clickhouse-client](https://mvnrepository.com/artifact/com.clickhouse/clickhouse-client) — both of which are bundled
@@ -189,7 +165,6 @@ prefer not to use the full JDBC package.
 
 In any case, ensure that the package versions are compatible according to
 the [Compatibility Matrix](#compatibility-matrix).
-:::
 
 ## Register the catalog (required) {#register-the-catalog-required}
 
@@ -212,8 +187,7 @@ These settings could be set via one of the following:
 * Pass the configuration to your `spark-submit` command (or to your `spark-shell`/`spark-sql` CLI commands).
 * Add the configuration when initiating your context.
 
-:::important
-When working with a ClickHouse cluster, you need to set a unique catalog name for each instance.
+> **important**: When working with a ClickHouse cluster, you need to set a unique catalog name for each instance.
 For example:
 
 ```text
@@ -239,16 +213,11 @@ spark.sql.catalog.clickhouse2.option.ssl     true
 That way, you would be able to access clickhouse1 table `<ck_db>.<ck_table>` from Spark SQL by
 `clickhouse1.<ck_db>.<ck_table>`, and access clickhouse2 table `<ck_db>.<ck_table>` by `clickhouse2.<ck_db>.<ck_table>`.
 
-:::
-
 ## Using the TableProvider API (Format-based Access) {#using-the-tableprovider-api}
 
 In addition to the catalog-based approach, the ClickHouse Spark connector supports a **format-based access pattern** via the TableProvider API.
 
 ### Format-based Read Example {#format-based-read}
-
-<Tabs groupId="spark_apis">
-<TabItem value="Python" label="Python" default>
 
 ```python
 from pyspark.sql import SparkSession
@@ -271,9 +240,6 @@ df = spark.read \
 df.show()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 val df = spark.read
   .format("clickhouse")
@@ -289,9 +255,6 @@ val df = spark.read
 
 df.show()
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 Dataset<Row> df = spark.read()
@@ -309,13 +272,7 @@ Dataset<Row> df = spark.read()
 df.show();
 ```
 
-</TabItem>
-</Tabs>
-
 ### Format-based Write Example {#format-based-write}
-
-<Tabs groupId="spark_apis">
-<TabItem value="Python" label="Python" default>
 
 ```python
 # Write to ClickHouse using format API
@@ -333,9 +290,6 @@ df.write \
     .save()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 df.write
   .format("clickhouse")
@@ -350,9 +304,6 @@ df.write
   .mode("append")
   .save()
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 df.write()
@@ -369,9 +320,6 @@ df.write()
     .save();
 ```
 
-</TabItem>
-</Tabs>
-
 ### TableProvider Features {#tableprovider-features}
 
 The TableProvider API provides several powerful features:
@@ -383,9 +331,6 @@ When writing to a non-existent table, the connector automatically creates the ta
 - **Engine**: Defaults to `MergeTree()` if not specified. You can specify a different engine using the `engine` option (e.g., `ReplacingMergeTree()`, `SummingMergeTree()`, etc.)
 - **ORDER BY**: **Required** - You must explicitly specify the `order_by` option when creating a new table. The connector validates that all specified columns exist in the schema.
 - **Nullable Key Support**: Automatically adds `settings.allow_nullable_key=1` if ORDER BY contains nullable columns
-
-<Tabs groupId="spark_apis">
-<TabItem value="Python" label="Python" default>
 
 ```python
 # Table will be created automatically with explicit ORDER BY (required)
@@ -411,9 +356,6 @@ df.write \
     .save()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 // Table will be created automatically with explicit ORDER BY (required)
 df.write
@@ -437,9 +379,6 @@ df.write
   .mode("append")
   .save()
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 // Table will be created automatically with explicit ORDER BY (required)
@@ -465,14 +404,9 @@ df.write()
     .save();
 ```
 
-</TabItem>
-</Tabs>
-
-:::important
-**ORDER BY Required**: The `order_by` option is **required** when creating a new table via the TableProvider API. You must explicitly specify which columns to use for the ORDER BY clause. The connector validates that all specified columns exist in the schema and will throw an error if any columns are missing.
+> **important**: **ORDER BY Required**: The `order_by` option is **required** when creating a new table via the TableProvider API. You must explicitly specify which columns to use for the ORDER BY clause. The connector validates that all specified columns exist in the schema and will throw an error if any columns are missing.
 
 **Engine Selection**: The default engine is `MergeTree()`, but you can specify any ClickHouse table engine using the `engine` option (e.g., `ReplacingMergeTree()`, `SummingMergeTree()`, `AggregatingMergeTree()`, etc.).
-:::
 
 ### TableProvider Connection Options {#tableprovider-connection-options}
 
@@ -509,9 +443,7 @@ These options are used when the table doesn't exist and needs to be created:
 \* The `order_by` option is required when creating a new table. All specified columns must exist in the schema.  
 \** Automatically set to `1` if ORDER BY contains nullable columns and not explicitly provided.
 
-:::tip
-**Best Practice**: For ClickHouse Cloud, explicitly set `settings.allow_nullable_key=1` if your ORDER BY columns might be nullable, as ClickHouse Cloud requires this setting.
-:::
+> **tip**: **Best Practice**: For ClickHouse Cloud, explicitly set `settings.allow_nullable_key=1` if your ORDER BY columns might be nullable, as ClickHouse Cloud requires this setting.
 
 #### Writing Modes {#writing-modes}
 
@@ -520,13 +452,7 @@ The Spark connector (both TableProvider API and Catalog API) supports the follow
 - **`append`**: Add data to existing table
 - **`overwrite`**: Replace all data in the table (truncates table)
 
-:::important
-**Partition Overwrite Not Supported**: The connector doesn't currently support partition-level overwrite operations (e.g., `overwrite` mode with `partitionBy`). This feature is in progress. See [GitHub issue #34](https://github.com/ClickHouse/spark-clickhouse-connector/issues/34) for tracking this feature.
-:::
-
-<Tabs groupId="spark_apis">
-<TabItem value="Python" label="Python" default>
-
+> **important**: **Partition Overwrite Not Supported**: The connector doesn't currently support partition-level overwrite operations (e.g., `overwrite` mode with `partitionBy`). This feature is in progress. See [GitHub issue #34](https://github.com/ClickHouse/spark-clickhouse-connector/issues/34) for tracking this feature.
 ```python
 # Overwrite mode (truncates table first)
 df.write \
@@ -537,9 +463,6 @@ df.write \
     .mode("overwrite") \
     .save()
 ```
-
-</TabItem>
-<TabItem value="Scala" label="Scala">
 
 ```scala
 // Overwrite mode (truncates table first)
@@ -552,9 +475,6 @@ df.write
   .save()
 ```
 
-</TabItem>
-<TabItem value="Java" label="Java">
-
 ```java
 // Overwrite mode (truncates table first)
 df.write()
@@ -566,9 +486,6 @@ df.write()
     .save();
 ```
 
-</TabItem>
-</Tabs>
-
 ## Configuring ClickHouse Options {#configuring-clickhouse-options}
 
 Both the Catalog API and TableProvider API support configuring ClickHouse-specific options (not connector options). These are passed through to ClickHouse when creating tables or executing queries.
@@ -578,9 +495,6 @@ ClickHouse options allow you to configure ClickHouse-specific settings like `all
 ### Using TableProvider API {#using-tableprovider-api-options}
 
 With the TableProvider API, use the `settings.<key>` option format:
-
-<Tabs groupId="spark_apis">
-<TabItem value="Python" label="Python" default>
 
 ```python
 df.write \
@@ -595,9 +509,6 @@ df.write \
     .save()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 df.write
   .format("clickhouse")
@@ -611,9 +522,6 @@ df.write
   .save()
 ```
 
-</TabItem>
-<TabItem value="Java" label="Java">
-
 ```java
 df.write()
     .format("clickhouse")
@@ -626,9 +534,6 @@ df.write()
     .mode("append")
     .save();
 ```
-
-</TabItem>
-</Tabs>
 
 ### Using Catalog API {#using-catalog-api-options}
 
@@ -665,9 +570,6 @@ spark.sql.catalog.clickhouse.option.ssl_mode   NONE
 
 ## Read data {#read-data}
 
-<Tabs groupId="spark_apis">
-<TabItem value="Java" label="Java" default>
-
 ```java
 public static void main(String[] args) {
         // Create a Spark session
@@ -692,9 +594,6 @@ public static void main(String[] args) {
     }
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```java
 object NativeSparkRead extends App {
   val spark = SparkSession.builder
@@ -717,9 +616,6 @@ object NativeSparkRead extends App {
   spark.stop()
 }
 ```
-
-</TabItem>
-<TabItem value="Python" label="Python">
 
 ```python
 from pyspark.sql import SparkSession
@@ -750,9 +646,6 @@ df.show()
 
 ```
 
-</TabItem>
-<TabItem value="SparkSQL" label="Spark SQL">
-
 ```sql
    CREATE TEMPORARY VIEW jdbcTable
            USING org.apache.spark.sql.jdbc
@@ -767,18 +660,9 @@ df.show()
    SELECT * FROM jdbcTable;
 ```
 
-</TabItem>
-</Tabs>
-
 ## Write data {#write-data}
 
-:::important
-**Partition Overwrite Not Supported**: The Catalog API doesn't currently support partition-level overwrite operations (e.g., `overwrite` mode with `partitionBy`). This feature is in progress. See [GitHub issue #34](https://github.com/ClickHouse/spark-clickhouse-connector/issues/34) for tracking this feature.
-:::
-
-<Tabs groupId="spark_apis">
-<TabItem value="Java" label="Java" default>
-
+> **important**: **Partition Overwrite Not Supported**: The Catalog API doesn't currently support partition-level overwrite operations (e.g., `overwrite` mode with `partitionBy`). This feature is in progress. See [GitHub issue #34](https://github.com/ClickHouse/spark-clickhouse-connector/issues/34) for tracking this feature.
 ```java
  public static void main(String[] args) throws AnalysisException {
 
@@ -816,9 +700,6 @@ df.show()
     }
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```java
 object NativeSparkWrite extends App {
   // Create a Spark session
@@ -853,9 +734,6 @@ object NativeSparkWrite extends App {
   spark.stop()
 }
 ```
-
-</TabItem>
-<TabItem value="Python" label="Python">
 
 ```python
 from pyspark.sql import SparkSession
@@ -892,18 +770,12 @@ df.writeTo("clickhouse.default.example_table").append()
 
 ```
 
-</TabItem>
-<TabItem value="SparkSQL" label="Spark SQL">
-
 ```sql
     -- resultTable is the Spark intermediate df we want to insert into clickhouse.default.example_table
    INSERT INTO TABLE clickhouse.default.example_table
                 SELECT * FROM resultTable;
                 
 ```
-
-</TabItem>
-</Tabs>
 
 ## DDL operations {#ddl-operations}
 
@@ -912,10 +784,7 @@ ClickHouse.
 Spark SQL allows you to write queries exactly as you would in ClickHouse,
 so you can directly execute commands such as CREATE TABLE, TRUNCATE, and more - without modification, for instance:
 
-:::note
-When using Spark SQL, only one statement can be executed at a time.
-:::
-
+> **note**: When using Spark SQL, only one statement can be executed at a time.
 ```sql
 USE clickhouse; 
 ```
@@ -941,15 +810,11 @@ PySpark, or shell.
 
 ## Working with VariantType {#working-with-varianttype}
 
-:::note
-VariantType support is available in Spark 4.0+ and requires ClickHouse 25.3+ with experimental JSON/Variant types enabled.
-:::
+> **note**: VariantType support is available in Spark 4.0+ and requires ClickHouse 25.3+ with experimental JSON/Variant types enabled.
 
 The connector supports Spark's `VariantType` for working with semi-structured data. VariantType maps to ClickHouse's `JSON` and `Variant` types, allowing you to store and query flexible schema data efficiently.
 
-:::note
-This section focuses specifically on VariantType mapping and usage. For a complete overview of all supported data types, see the [Supported data types](#supported-data-types) section.
-:::
+> **note**: This section focuses specifically on VariantType mapping and usage. For a complete overview of all supported data types, see the [Supported data types](#supported-data-types) section.
 
 ### ClickHouse Type Mapping {#clickhouse-type-mapping}
 
@@ -961,9 +826,6 @@ This section focuses specifically on VariantType mapping and usage. For a comple
 ### Reading VariantType Data {#reading-varianttype-data}
 
 When reading from ClickHouse, `JSON` and `Variant` columns are automatically mapped to Spark's `VariantType`:
-
-<Tabs groupId="spark_apis">
-<TabItem value="Scala" label="Scala" default>
 
 ```scala
 // Read JSON column as VariantType
@@ -980,9 +842,6 @@ df.select(
 ).show()
 ```
 
-</TabItem>
-<TabItem value="Python" label="Python">
-
 ```python
 # Read JSON column as VariantType
 df = spark.sql("SELECT id, data FROM clickhouse.default.json_table")
@@ -997,9 +856,6 @@ df.select(
     to_json("data").alias("data_json")
 ).show()
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 // Read JSON column as VariantType
@@ -1016,15 +872,9 @@ df.select(
 ).show();
 ```
 
-</TabItem>
-</Tabs>
-
 ### Writing VariantType Data {#writing-varianttype-data}
 
 You can write VariantType data to ClickHouse using either JSON or Variant column types:
-
-<Tabs groupId="spark_apis">
-<TabItem value="Scala" label="Scala" default>
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -1059,9 +909,6 @@ spark.sql("""
 """)
 ```
 
-</TabItem>
-<TabItem value="Python" label="Python">
-
 ```python
 from pyspark.sql.functions import parse_json
 
@@ -1095,9 +942,6 @@ spark.sql("""
   )
 """)
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 import static org.apache.spark.sql.functions.*;
@@ -1134,9 +978,6 @@ spark.sql("CREATE TABLE clickhouse.default.mixed_data (" +
     "'order_by' = 'id'" +
     ")");
 ```
-
-</TabItem>
-</Tabs>
 
 ### Creating VariantType Tables with Spark SQL {#creating-varianttype-tables-spark-sql}
 
@@ -1229,9 +1070,6 @@ The following ClickHouse types can be used in `Variant()`:
 
 By default, JSON and Variant columns are read as `VariantType`. You can override this behavior to read them as strings:
 
-<Tabs groupId="spark_apis">
-<TabItem value="Scala" label="Scala" default>
-
 ```scala
 // Read JSON/Variant as strings instead of VariantType
 spark.conf.set("spark.clickhouse.read.jsonAs", "string")
@@ -1239,9 +1077,6 @@ spark.conf.set("spark.clickhouse.read.jsonAs", "string")
 val df = spark.sql("SELECT id, data FROM clickhouse.default.json_table")
 // data column will be StringType containing JSON strings
 ```
-
-</TabItem>
-<TabItem value="Python" label="Python">
 
 ```python
 # Read JSON/Variant as strings instead of VariantType
@@ -1251,9 +1086,6 @@ df = spark.sql("SELECT id, data FROM clickhouse.default.json_table")
 # data column will be StringType containing JSON strings
 ```
 
-</TabItem>
-<TabItem value="Java" label="Java">
-
 ```java
 // Read JSON/Variant as strings instead of VariantType
 spark.conf().set("spark.clickhouse.read.jsonAs", "string");
@@ -1261,9 +1093,6 @@ spark.conf().set("spark.clickhouse.read.jsonAs", "string");
 Dataset<Row> df = spark.sql("SELECT id, data FROM clickhouse.default.json_table");
 // data column will be StringType containing JSON strings
 ```
-
-</TabItem>
-</Tabs>
 
 ### Write Format Support {#write-format-support}
 
@@ -1280,9 +1109,7 @@ Configure the write format:
 spark.conf.set("spark.clickhouse.write.format", "json")  // Recommended for Variant types
 ```
 
-:::tip
-If you need to write to a ClickHouse `Variant` type, use JSON format. Arrow format only supports writing to `JSON` type.
-:::
+> **tip**: If you need to write to a ClickHouse `Variant` type, use JSON format. Arrow format only supports writing to `JSON` type.
 
 ### Best Practices {#varianttype-best-practices}
 
@@ -1294,9 +1121,6 @@ If you need to write to a ClickHouse `Variant` type, use JSON format. Arrow form
 6. **Column hints for performance**: When using JSON fields in ClickHouse, adding column hints improves query performance. Currently, adding column hints via Spark isn't supported. See [GitHub issue #497](https://github.com/ClickHouse/spark-clickhouse-connector/issues/497) for tracking this feature.
 
 ### Example: Complete Workflow {#varianttype-example-workflow}
-
-<Tabs groupId="spark_apis">
-<TabItem value="Scala" label="Scala" default>
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -1345,9 +1169,6 @@ val result = spark.sql("""
 result.show(false)
 ```
 
-</TabItem>
-<TabItem value="Python" label="Python">
-
 ```python
 from pyspark.sql.functions import parse_json, to_timestamp
 
@@ -1395,9 +1216,6 @@ result = spark.sql("""
 
 result.show(truncate=False)
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
 
 ```java
 import static org.apache.spark.sql.functions.*;
@@ -1448,15 +1266,11 @@ Dataset<Row> result = spark.sql("SELECT event_id, event_time, event_data " +
 result.show(false);
 ```
 
-</TabItem>
-</Tabs>
-
 ## Configurations {#configurations}
 
 The following are the adjustable configurations available in the connector.
 
-:::note
-**Using Configurations**: These are Spark-level configuration options that apply to both Catalog API and TableProvider API. They can be set in two ways:
+> **note**: **Using Configurations**: These are Spark-level configuration options that apply to both Catalog API and TableProvider API. They can be set in two ways:
 
 1. **Global Spark configuration** (applies to all operations):
    ```python
@@ -1478,9 +1292,6 @@ The following are the adjustable configurations available in the connector.
    ```
 
 Alternatively, set them in `spark-defaults.conf` or when creating the Spark session.
-:::
-
-<br/>
 
 | Key                                                | Default                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                     | Since |
 |----------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|

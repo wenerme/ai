@@ -12,11 +12,9 @@ ARRAY type is used to store and process array data, which can contain various ba
 
 ### FROM String
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Before version 4.0, parsing would fail for empty strings between delimiters, for example "[,,]" would return NULL.
 Starting from version 4.0, "[,,]" will return [null, null, null] in non-strict mode and report an error in strict mode.
-:::
-
 
 #### Strict Mode
 

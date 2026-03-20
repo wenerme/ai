@@ -146,13 +146,11 @@ SELECT * FROM large_table;
 
 Doris provides a cache warming feature that allows users to actively pull data from remote storage into the local cache. This feature supports the following three modes:
 
-
 - **Inter-Compute Group Warming**: Warm the cache data of Compute Group A to Compute Group B. Doris periodically collects hotspot information of tables/partitions accessed in each compute group over a period and selectively warms certain tables/partitions based on this information.
 - **Table Data Warming**: Specify to warm the data of Table A to the new compute group.
 - **Partition Data Warming**: Specify to warm the data of partition `p1` of Table A to the new compute group.
 
 For specific usage, please refer to the[WARM-UP SQL documentation](#).
-
 
 ## Cache Cleanup
 
@@ -167,9 +165,8 @@ Doris provides both synchronous and asynchronous cleanup methods:
 
 Doris collects cache hotspot information for each compute group every 10 minutes and stores it in an internal system table. You can view this hotspot information using query statements. Users can better plan their cache usage based on this information.
 
-:::info Note
+> **info**: Note
 Before version 3.0.4, the `SHOW CACHE HOTSPOT` statement could be used to query cache hotspot information statistics. Starting from version 3.0.4, the `SHOW CACHE HOTSPOT` statement is no longer supported for querying cache hotspot information statistics. Please directly query the system table `__internal_schema.cloud_cache_hotspot`.
-:::
 
 Users typically focus on cache usage information at two levels: compute groups and database tables. The following provides some commonly used query statements and examples.
 
@@ -315,8 +312,6 @@ Cache-related metrics in the SQL profile are found under SegmentIterator, includ
 
 You can view query performance analysis through [Query Performance Analysis](../../query-acceleration/performance-tuning-overview/analysis-tools#doris-profile).
 
-
-
 ## TTL Usage
 
 When creating a table, set the corresponding PROPERTY to use the TTL strategy for caching that table's data.
@@ -347,13 +342,11 @@ In the above table, all newly imported data will be retained in the cache for 30
 ALTER TABLE customer set ("file_cache_ttl_seconds"="3000");
 ```
 
-:::info Note
+> **info**: Note
 
 The modified TTL value will not take effect immediately and will have a certain delay.
 
 If no TTL is set when creating the table, users can also modify the table's TTL attribute by executing the ALTER statement.
-:::
-
 
 ## Practical Case
 

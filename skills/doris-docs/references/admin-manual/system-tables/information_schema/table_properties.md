@@ -12,9 +12,7 @@ Used to view attribute information of tables (including internal and external ta
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

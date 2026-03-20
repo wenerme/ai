@@ -9,7 +9,6 @@ Model Links
 Trained Model Link
 - [Simple-VL-8B](https://www.modelscope.cn/models/swift/Simple-VL-8B/summary)
 
-
 The training workflow builds upon the Qwen2.5-VL-7B-Instruct model architecture by replacing its internal large language model (LLM) component with the weights from Qwen3-8B , thereby enhancing the model's visual understanding capabilities. The process involves the following steps:
 
 1. Modify the original model’s configuration file config.json to align with Qwen3-8B.
@@ -18,12 +17,10 @@ The training workflow builds upon the Qwen2.5-VL-7B-Instruct model architecture 
     1. Stage 1 : Train only the vision-to-language alignment module (aligner), freezing the ViT and LLM components.
     2. Stage 2 : Unfreeze all modules and perform joint fine-tuning to improve overall performance.
 
-
 ## Model Modification
 
 ### Config File (config.json) Update
 Due to structural differences between Qwen2.5-7B-Instruct and Qwen3-8B (e.g., number of layers, hidden dimensions), create a new config.json based on the Qwen2.5-VL-7B-Instruct config and update the following parameters to match Qwen3-8B:
-
 
 ```
 Modified Parameters

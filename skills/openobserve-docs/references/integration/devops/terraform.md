@@ -110,7 +110,6 @@ Terraform doesn’t log to files by default. This integration enables detailed l
     - Run `terraform plan` or `terraform apply` to trigger log generation
     - Verify `tf.log` exists in the specified path
 
-
 ??? "Fluent Bit not forwarding logs?"
 
     - Confirm that the `Path` in `[INPUT]` matches your actual `tf.log` location

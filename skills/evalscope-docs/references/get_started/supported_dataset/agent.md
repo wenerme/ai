@@ -21,4 +21,3 @@ Below is the list of supported AGENT benchmarks. Click on a benchmark name for d
 ../../benchmarks/tau2_bench.md
 ../../benchmarks/tau_bench.md
 ../../benchmarks/tool_bench.md
-:::

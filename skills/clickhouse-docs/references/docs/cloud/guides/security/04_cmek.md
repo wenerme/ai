@@ -1,15 +1,9 @@
 ---
-sidebar_label: 'Data encryption'
-slug: /cloud/security/cmek
 title: 'Data encryption'
 description: 'Learn more about data encryption in ClickHouse Cloud'
 doc_type: 'guide'
 keywords: ['ClickHouse Cloud', 'encryption', 'CMEK', 'KMS key poller']
 ---
-
-import Image from '@theme/IdealImage';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
-import cmek_performance from '@site/static/images/_snippets/cmek-performance.png';
 
 # Data encryption
 
@@ -40,14 +34,11 @@ TDE must be enabled on service creation. Existing services can't be encrypted af
 
 ### Customer Managed Encryption Keys (CMEK) {#customer-managed-encryption-keys-cmek}
 
-:::warning
-Deleting a KMS key used to encrypt a ClickHouse Cloud service will cause your ClickHouse service to be stopped and its data will be unretrievable, along with existing backups. To prevent accidental data loss when rotating keys you may wish to maintain old KMS keys for a period of time prior to deletion. 
-:::
+> **warning**: Deleting a KMS key used to encrypt a ClickHouse Cloud service will cause your ClickHouse service to be stopped and its data will be unretrievable, along with existing backups. To prevent accidental data loss when rotating keys you may wish to maintain old KMS keys for a period of time prior to deletion. 
 
 Once a service is encrypted with TDE, customers may update the key to enable CMEK. The service will automatically restart after updating the TDE setting. During this process, the old KMS key decrypts the data encrypting key (DEK), and the new KMS key re-encrypts the DEK. This ensures that the service on restart will use the new KMS key for encryption operations moving forward. This process may take several minutes.
 
-<details>
-    <summary>Enable CMEK with AWS KMS</summary>
+    Enable CMEK with AWS KMS
     
 1. In ClickHouse Cloud, select the encrypted service
 2. Click on the Settings on the left
@@ -79,10 +70,8 @@ Once a service is encrypted with TDE, customers may update the key to enable CME
 12. Return to ClickHouse Cloud and paste the Key ARN in the Transparent Data Encryption section of the Service Settings
 13. Save the change
     
-</details>
 
-<details>
-    <summary>Enable CMEK with GCP KMS</summary>
+    Enable CMEK with GCP KMS
 
 1. In ClickHouse Cloud, select the encrypted service
 2. Click on the Settings on the left
@@ -98,7 +87,6 @@ Once a service is encrypted with TDE, customers may update the key to enable CME
 12. Return to ClickHouse Cloud and paste the Key Resource Path in the Transparent Data Encryption section of the Service Settings
 13. Save the change
     
-</details>
 
 #### Key rotation {#key-rotation}
 

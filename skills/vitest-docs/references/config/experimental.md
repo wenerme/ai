@@ -1,15 +1,13 @@
 ---
 title: experimental | Config
-outline: deep
 ---
 
 # experimental
 
 ## experimental.fsModuleCache <Version type="experimental">4.0.11</Version> {#experimental-fsmodulecache}
 
-::: tip FEEDBACK
+> **tip**: FEEDBACK
 Please leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9221).
-:::
 
 - **Type:** `boolean`
 - **Default:** `false`
@@ -18,9 +16,8 @@ Enabling this option allows Vitest to keep cached modules on the file system, ma
 
 You can delete the old cache by running [`vitest --clearCache`](/guide/cli#clearcache).
 
-::: warning BROWSER SUPPORT
+> **warning**: BROWSER SUPPORT
 At the moment, this option does not affect [the browser](/guide/browser/).
-:::
 
 You can debug if your modules are cached by running vitest with a `DEBUG=vitest:cache:fs` environment variable:
 
@@ -107,9 +104,8 @@ At the moment, Vitest ignores the [test.cache.dir](/config/cache) or [cacheDir](
 
 ## experimental.openTelemetry <Version type="experimental">4.0.11</Version> {#experimental-opentelemetry}
 
-::: tip FEEDBACK
+> **tip**: FEEDBACK
 Please leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9222).
-:::
 
 - **Type:**
 
@@ -131,9 +127,8 @@ interface OpenTelemetryOptions {
 
 This option controls [OpenTelemetry](https://opentelemetry.io/) support. Vitest imports the SDK file in the main thread and before every test file, if `enabled` is set to `true`.
 
-::: danger PERFORMANCE CONCERNS
+> **danger**: PERFORMANCE CONCERNS
 OpenTelemetry may significantly impact Vitest performance; enable it only for local debugging.
-:::
 
 You can use a [custom service](/guide/open-telemetry) together with Vitest to pinpoint which tests or files are slowing down your test suite.
 
@@ -141,7 +136,6 @@ For browser mode, see the [Browser Mode](/guide/open-telemetry#browser-mode) sec
 
 An `sdkPath` is resolved relative to the [`root`](/config/root) of the project and should point to a module that exposes a started SDK instance as a default export. For example:
 
-::: code-group
 ```js [otel.js]
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
@@ -170,17 +164,13 @@ export default defineConfig({
   },
 })
 ```
-:::
 
-::: warning
-It's important that Node can process `sdkPath` content because it is not transformed by Vitest. See [the guide](/guide/open-telemetry) on how to work with OpenTelemetry inside of Vitest.
-:::
+> **warning**: It's important that Node can process `sdkPath` content because it is not transformed by Vitest. See [the guide](/guide/open-telemetry) on how to work with OpenTelemetry inside of Vitest.
 
 ## experimental.importDurations <Version type="experimental">4.1.0</Version> {#experimental-importdurations}
 
-::: tip FEEDBACK
+> **tip**: FEEDBACK
 Please leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9224).
-:::
 
 - **Type:**
 
@@ -224,8 +214,8 @@ The `print` option controls CLI terminal output. The `limit` option controls how
 - Self: the time it took to import the module, excluding static imports;
 - Total: the time it took to import the module, including static imports. Note that this does not include `transform` time of the current module.
 
-<img alt="An example of import breakdown in the terminal" src="/reporter-import-breakdown.png" img-dark />
-<img alt="An example of import breakdown in the terminal" src="/reporter-import-breakdown-light.png" img-light />
+[An example of import breakdown in the terminal]
+[An example of import breakdown in the terminal]
 
 Note that if the file path is too long, Vitest will truncate it at the start until it fits 45 character limit.
 
@@ -270,15 +260,12 @@ Duration thresholds in milliseconds for coloring and warnings:
 - `warn`: Threshold for yellow/warning color (default: 100ms)
 - `danger`: Threshold for red/danger color and `failOnDanger` (default: 500ms)
 
-::: info
-[Vitest UI](/guide/ui#import-breakdown) shows a breakdown of imports automatically if at least one file took longer than the `danger` threshold to load.
-:::
+> **info**: [Vitest UI](/guide/ui#import-breakdown) shows a breakdown of imports automatically if at least one file took longer than the `danger` threshold to load.
 
 ## experimental.viteModuleRunner <Version type="experimental">4.1.0</Version> {#experimental-vitemodulerunner}
 
-::: tip FEEDBACK
+> **tip**: FEEDBACK
 Please leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9501).
-:::
 
 - **Type:** `boolean`
 - **Default:** `true`
@@ -296,11 +283,9 @@ Disabling this flag will disable _all_ file transforms:
 - your custom runner/pool/environment files are not processed
 - your config file is still processed by Vite (this happens before Vitest knows the `viteModuleRunner` flag)
 
-::: warning
-At the moment, Vitest still requires Vite for certain functionality like the module graph or watch mode.
+> **warning**: At the moment, Vitest still requires Vite for certain functionality like the module graph or watch mode.
 
 Also note that this option only works with `forks` or `threads` [pools](/config/pool).
-:::
 
 ### Module Runner
 
@@ -320,11 +305,9 @@ Some Vitest features rely on files being transformed. Vitest uses synchronous [N
 - [`vi.mock`](/api/vi#vi-mock)
 - [`vi.hoisted`](/api/vi#vi-hoisted)
 
-::: warning
-This means that Vitest requires at least Node 22.15 for those features to work. At the moment, they also do not work in Deno or Bun.
+> **warning**: This means that Vitest requires at least Node 22.15 for those features to work. At the moment, they also do not work in Deno or Bun.
 
 Vitest will only detect `vi.mock` and `vi.hoisted` inside of test files, they will not be hoisted inside imported modules.
-:::
 
 This could affect performance because Vitest needs to read the file and process it. If you do not use these features, you can disable the transforms by setting `experimental.nodeLoader` to `false`. Vitest only reads test files and setup files while looking for `vi.mock` or `vi.hoisted`. Using these in other files won't hoist them to the top of the file and can lead to unexpected behavior.
 
@@ -335,9 +318,8 @@ Some features will not work due to the nature of `viteModuleRunner`, including:
 - no `alias`: aliases are not applied because there is no transformation phase
 - `istanbul` coverage provider doesn't work because there is no transformation phase, use `v8` instead
 
-::: warning Coverage Support
+> **warning**: Coverage Support
 At the momemnt Vitest supports coverage via `v8` provider as long as files can be transformed into JavaScript. To transform TypeScript, Vitest uses [`module.stripTypeScriptTypes`](https://nodejs.org/api/module.html#modulestriptypescripttypescode-options) which is available in Node.js since v22.13. If you are using a custom [module loader](https://nodejs.org/api/module.html#customization-hooks), Vitest is not able to reuse it to transform files for analysis.
-:::
 
 With regards to mocking, it is also important to point out that ES modules do not support property override. This means that code like this won't work anymore:
 
@@ -378,7 +360,7 @@ This limitation exists because factories can be asynchronous. This should not be
 
 If you are using Node.js 22.18/23.6 or higher, TypeScript will be [transformed natively](https://nodejs.org/en/learn/typescript/run-natively) by Node.js.
 
-::: warning TypeScript with Node.js 22.6-22.18
+> **warning**: TypeScript with Node.js 22.6-22.18
 If you are using Node.js version between 22.6 and 22.18, you can also enable native TypeScript support via `--experimental-strip-types` flag:
 
 ```shell
@@ -408,7 +390,6 @@ export default defineConfig({
 ```
 
 If you are running tests in Deno, TypeScript files are processed by the runtime without any additional configurations.
-:::
 
 ## experimental.nodeLoader <Version type="experimental">4.1.0</Version> {#experimental-nodeloader}
 

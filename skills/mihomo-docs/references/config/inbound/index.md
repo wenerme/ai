@@ -142,7 +142,6 @@ listeners:
     #    - h3
     #  max-udp-relay-packet-size: 1500
 
-
 ```
 
 !!! note

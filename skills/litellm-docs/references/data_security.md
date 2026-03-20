@@ -48,7 +48,6 @@ For security inquiries, please contact us at support@berri.ai
 | SOC 2 Type II     | Certified. Report available upon request on Enterprise plan.                   |
 | ISO 27001          | Certified. Report available upon request on Enterprise                              |
 
-
 ## Supported Data Regions for LiteLLM Cloud
 
 LiteLLM supports the following data regions:
@@ -72,7 +71,6 @@ All data, user accounts, and infrastructure are completely separated between the
 - Proxy admins have the ability to invite other users / admins to their server to view their own usage data
 - LiteLLM Cloud does not sell or share any usage data with any third parties.
 
-
 ## Cookies Information, Security, and Privacy
 
 ### For Self-hosted LiteLLM Users:
@@ -86,7 +84,6 @@ All data, user accounts, and infrastructure are completely separated between the
 - The Admin UI accesses the cookie to authenticate your login session.
 - The cookie is stored as JWT and is not accessible to any other part of the system.
 - We (LiteLLM) do not access or share this cookie data for any other purpose.
-
 
 ### For LiteLLM Cloud Users:
 - LiteLLM uses minimal cookies, solely for the purpose of allowing Proxy users to access the LiteLLM Admin UI.
@@ -123,7 +120,6 @@ We'll review all reports promptly. Note that we don't currently offer a bug boun
 2. AWS Marketplace
 3. Azure Marketplace
 
-
 ### Vendor Information
 
 Legal Entity Name: Berrie AI Incorporated
@@ -147,7 +143,6 @@ Is logging of key events - auth, creation, update changes occurring?
 
 Does the Vendor have an established Cybersecurity incident management program? 
 - Yes, Incident Response Policy available upon request.
-
 
 Does the vendor have a vulnerability disclosure policy in place? [Yes](https://github.com/BerriAI/litellm?tab=security-ov-file#security-vulnerability-reporting-guidelines)
 

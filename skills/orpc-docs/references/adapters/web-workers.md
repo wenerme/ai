@@ -42,7 +42,7 @@ export const link = new RPCLink({
 })
 ```
 
-:::details Using Web Workers in Vite Applications?
+> **details**: Using Web Workers in Vite Applications?
 You can leverage [Vite Web Workers feature](https://vite.dev/guide/features.html#web-workers) for streamlined development:
 
 ```ts
@@ -54,8 +54,4 @@ export const link = new RPCLink({
 })
 ```
 
-:::
-
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).

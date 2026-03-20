@@ -1,13 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # 'Thinking' / 'Reasoning Content'
 
-:::info
-
-Requires LiteLLM v1.63.0+
-
-:::
+> **info**: Requires LiteLLM v1.63.0+
 
 Supported Providers:
 - Deepseek (`deepseek/`)
@@ -40,9 +35,6 @@ LiteLLM will standardize the `reasoning_content` in the response and `thinking_b
 
 ## Quick Start 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python showLineNumbers
 from litellm import completion
 import os 
@@ -59,9 +51,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -77,8 +66,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low"
 }'
 ```
-</TabItem>
-</Tabs>
 
 **Expected Response**
 
@@ -116,11 +103,9 @@ Here's how to use `thinking` blocks by Anthropic with tool calling.
 
 ### Important: OpenAI-Compatible API Limitations
 
-:::warning Compatibility Notice
+> **warning**: Compatibility Notice
 
 Anthropic extended thinking with tool calling is **not fully compatible** with OpenAI-compatible API clients. This is due to fundamental architectural differences between how OpenAI and Anthropic handle reasoning in multi-turn conversations.
-
-:::
 
 When using Anthropic models with `thinking` enabled and tool calling, you **must include `thinking_blocks`** from the previous assistant response when sending tool results back. Failure to do so will result in a `400 Bad Request` error.
 
@@ -131,15 +116,13 @@ When using Anthropic models with `thinking` enabled and tool calling, you **must
 | **OpenAI** (o1, o3) | Responses API (Stateful) | Server-side | Server stores reasoning internally; client sends `previous_response_id` |
 | **Anthropic** (Claude) | Messages API (Stateless) | Client-side | Client must store and resend `thinking_blocks` with every request |
 
-
 1. OpenAI's Chat Completions spec has **no field** for `thinking_blocks`
 2. OpenAI-compatible clients (LibreChat, Open WebUI, Vercel AI SDK, etc.) **ignore** the `thinking_blocks` field in responses
 3. When these clients reconstruct the assistant message for the next turn, the thinking blocks are lost
 4. Anthropic rejects the request because the assistant message doesn't start with a thinking block
 
-:::tip LiteLLM supports thinking_blocks
+> **tip**: LiteLLM supports thinking_blocks
 LiteLLM's `completion()` API **does support** sending `thinking_blocks` in assistant messages. If you're using LiteLLM directly (not through an OpenAI-compatible client), you can preserve and resend `thinking_blocks` and everything will work correctly.
-:::
 
 **Solutions:**
 
@@ -151,9 +134,6 @@ LiteLLM's `completion()` API **does support** sending `thinking_blocks` in assis
 ### LiteLLM Built-in Workaround
 
 LiteLLM can automatically handle this incompatibility when `modify_params=True` is set. If the client sends a request with `thinking` enabled but the assistant message with `tool_calls` is missing `thinking_blocks`, LiteLLM will automatically drop the `thinking` param for that turn to avoid the error.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 import litellm
@@ -178,9 +158,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml showLineNumbers title="config.yaml"
 litellm_settings:
   modify_params: true  # Enable automatic parameter modification
@@ -194,12 +171,7 @@ model_list:
         budget_tokens: 1024
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-When `modify_params=True` and LiteLLM drops the `thinking` param, the model will **not** use extended thinking for that specific turn. The conversation will continue normally, but without reasoning for that response.
-:::
+> **info**: When `modify_params=True` and LiteLLM drops the `thinking` param, the model will **not** use extended thinking for that specific turn. The conversation will continue normally, but without reasoning for that response.
 
 **Correct way to include `thinking_blocks`:**
 
@@ -214,9 +186,6 @@ assistant_message = {
 ```
 
 ---
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 litellm._turn_on_debug()
@@ -311,9 +280,6 @@ if tool_calls:
     )  # get a new response from the model where it can see the function response
     print("second response\n", second_response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -432,9 +398,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Switching between Anthropic + Deepseek models 
 
 Set `drop_params=True` to drop the 'thinking' blocks when swapping from Anthropic to Deepseek models. Suggest improvements to this approach [here](https://github.com/BerriAI/litellm/discussions/8927).
@@ -462,7 +425,6 @@ response = litellm.completion(
 
 ## Spec 
 
-
 These fields can be accessed via `response.choices[0].message.reasoning_content` and `response.choices[0].message.thinking_blocks`.
 
 - `reasoning_content` - str: The reasoning content from the model. Returned across all providers.
@@ -471,14 +433,9 @@ These fields can be accessed via `response.choices[0].message.reasoning_content`
   - `thinking` - str: The thinking from the model.
   - `signature` - str: The signature delta from the model.
 
-
-
 ## Pass `thinking` to Anthropic models
 
 You can also pass the `thinking` parameter to Anthropic models.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 response = litellm.completion(
@@ -487,9 +444,6 @@ response = litellm.completion(
   thinking={"type": "enabled", "budget_tokens": 1024},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -502,13 +456,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Checking if a model supports reasoning
-
-<Tabs>
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 Use `litellm.supports_reasoning(model="")` -> returns `True` if model supports reasoning and `False` if not.
 
@@ -522,9 +470,6 @@ assert litellm.supports_reasoning(model="deepseek/deepseek-chat") == True
 # Example models that do not support reasoning
 assert litellm.supports_reasoning(model="openai/gpt-3.5-turbo") == False 
 ```
-</TabItem>
-
-<TabItem label="LiteLLM Proxy Server" value="proxy">
 
 1. Define models that support reasoning in your `config.yaml`. You can optionally add `supports_reasoning: True` to the `model_info` if LiteLLM does not automatically detect it for your custom model.
 
@@ -588,7 +533,6 @@ Expected Response
 }
 ````
 
-
 </TabItem>
 </Tabs>
 
@@ -624,10 +568,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-
-<TabItem value="env" label="Environment Variable">
-
 ```bash
 # Set environment variable
 export LITELLM_REASONING_AUTO_SUMMARY=true
@@ -635,10 +575,6 @@ export LITELLM_REASONING_AUTO_SUMMARY=true
 # Or in your .env file
 LITELLM_REASONING_AUTO_SUMMARY=true
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy Config">
 
 ```yaml
 litellm_settings:
@@ -668,9 +604,6 @@ model_list:
       # Dict format - explicit control over effort and summary
       reasoning_effort: {"effort": "high", "summary": "detailed"}
 ```
-
-</TabItem>
-</Tabs>
 
 ### Manual Control (Recommended)
 

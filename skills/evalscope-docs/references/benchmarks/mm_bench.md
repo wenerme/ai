@@ -1,6 +1,5 @@
 # MMBench
 
-
 ## Overview
 
 MMBench is a systematically designed benchmark for evaluating vision-language models across 20 fine-grained ability dimensions. It uses a novel CircularEval strategy and provides both English and Chinese versions for cross-lingual evaluation.
@@ -28,7 +27,6 @@ MMBench is a systematically designed benchmark for evaluating vision-language mo
 - Two subsets: `cn` (Chinese) and `en` (English)
 - Results include category-level breakdown
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MMBench is a systematically designed benchmark for evaluating vision-language mo
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `dev` |
-
 
 ## Data Statistics
 
@@ -65,7 +62,6 @@ MMBench is a systematically designed benchmark for evaluating vision-language mo
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 106x56 - 512x512 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -149,5 +145,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

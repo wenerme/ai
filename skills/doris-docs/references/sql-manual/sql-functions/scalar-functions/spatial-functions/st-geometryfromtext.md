@@ -10,7 +10,6 @@
 
 Convert a WKT (Well Known Text) to the corresponding memory geometry
 
-
 ## Alias
 
 - ST_GEOMFROMTEXT
@@ -33,9 +32,8 @@ ST_GEOMETRYFROMTEXT( <wkt>)
 - `POLYGON` - A closed area defined by one or more rings, requiring at least three distinct points and closed ends.
 - `MULTIPOLYGON` - A collection of polygons, requiring polygons in a multipolygon can only share discrete points.
 
-:::info Note
+> **info**: Note
 Supported MULTIPOLYGON format parsing since Apache Doris 3.0.6
-:::
 
 ## Return Value
 

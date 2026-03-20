@@ -1,6 +1,5 @@
 # BFCL-v4
 
-
 ## Overview
 
 BFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark for evaluating agentic function-calling capabilities of LLMs. It tests web search, memory operations, and format sensitivity as building blocks for agentic applications.
@@ -28,7 +27,6 @@ BFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark 
 - Optional: Set `SERPAPI_API_KEY` for web search tasks
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/bfcl_v4.html)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ BFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -178,5 +175,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

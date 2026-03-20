@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Triton Inference Server
 
@@ -15,10 +14,6 @@ LiteLLM supports Embedding Models on Triton Inference Servers
 
 ## Triton `/generate` - Chat Completion 
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 Use the `triton/` prefix to route to triton server
 ```python
 from litellm import completion
@@ -30,9 +25,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -43,7 +35,6 @@ response = completion(
         api_base: https://your-triton-api-base/triton/generate
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -52,9 +43,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
     ```python
     import openai
@@ -74,9 +65,9 @@ response = completion(
 
     ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   `--header` is optional, only required if you're using litellm proxy with Virtual Keys
 
@@ -90,23 +81,15 @@ response = completion(
     }'
 
     ```
-  </TabItem>
+  
 
-  </Tabs>
-
-</TabItem>
-</Tabs>
+  
 
 ## Triton `/infer` - Chat Completion 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 
 Use the `triton/` prefix to route to triton server
 ```python
 from litellm import completion
-
 
 response = completion(
     model="triton/llama-3-8b-instruct",
@@ -115,9 +98,6 @@ response = completion(
     api_base="http://localhost:8000/infer",
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add models to your config.yaml
 
@@ -129,7 +109,6 @@ response = completion(
         api_base: https://your-triton-api-base/triton/infer
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -138,9 +117,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
     ```python
     import openai
@@ -160,9 +139,9 @@ response = completion(
 
     ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   `--header` is optional, only required if you're using litellm proxy with Virtual Keys
 
@@ -176,19 +155,11 @@ response = completion(
     }'
 
     ```
-  </TabItem>
+  
 
-  </Tabs>
-
-</TabItem>
-</Tabs>
-
-
+  
 
 ## Triton `/embeddings` - Embedding
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Use the `triton/` prefix to route to triton server
 ```python
@@ -202,9 +173,6 @@ response = await litellm.aembedding(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -215,7 +183,6 @@ response = await litellm.aembedding(
         api_base: https://your-triton-api-base/triton/embeddings
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -224,9 +191,9 @@ response = await litellm.aembedding(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
     ```python
     import openai
@@ -245,9 +212,9 @@ response = await litellm.aembedding(
 
     ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   `--header` is optional, only required if you're using litellm proxy with Virtual Keys
 
@@ -261,11 +228,3 @@ response = await litellm.aembedding(
     }'
 
     ```
-  </TabItem>
-
-  </Tabs>
-
-
-</TabItem>
-
-</Tabs>

@@ -7,9 +7,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # JSON Web Token
 
 The `MastraJwtAuth` class provides a lightweight authentication mechanism for Mastra using JSON Web Tokens (JWTs). It verifies incoming requests based on a shared secret and integrates with the Mastra server using the `auth` option.
@@ -51,11 +48,7 @@ export const mastra = new Mastra({
 })
 ```
 
-:::info
-
-Visit [MastraJwtAuth](/reference/auth/jwt) for all available configuration options.
-
-:::
+> **info**: Visit [MastraJwtAuth](/reference/auth/jwt) for all available configuration options.
 
 Inside [Studio](/docs/getting-started/studio), go to **Settings** and under **Headers** select the **"Add Header"** button. Enter `Authorization` as the header name and `Bearer <your-jwt>` as the value.
 
@@ -74,18 +67,13 @@ export const mastraClient = new MastraClient({
 })
 ```
 
-:::info
-
-Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
-
-:::
+> **info**: Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
 
 ### Making authenticated requests
 
 Once `MastraClient` is configured, you can send authenticated requests from your frontend application, or use `curl` for quick local testing:
 
-<Tabs>
-  <TabItem value="react" label="React">
+  
     ```tsx title="src/components/test-agent.tsx"
     import { mastraClient } from '../../lib/mastra-client'
 
@@ -101,9 +89,9 @@ Once `MastraClient` is configured, you can send authenticated requests from your
       return <button onClick={handleClick}>Test Agent</button>
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="cURL">
+  
     ```bash
     curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
       -H "Content-Type: application/json" \
@@ -112,5 +100,3 @@ Once `MastraClient` is configured, you can send authenticated requests from your
         "messages": "Weather in London"
       }'
     ```
-  </TabItem>
-</Tabs>

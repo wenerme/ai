@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Gray Swan Cygnal Guardrail
 
@@ -18,7 +17,6 @@ Cygnal returns a `violation` score between `0` and `1` (higher means more likely
     For existing customers, you should already have access to our [platform](https://platform.grayswan.ai).
 
     For new users, please register at this [page](https://hubs.ly/Q03-sX1J0) and we are more than happy to give you an onboarding!
-
 
 2. Configure environment variables for the LiteLLM proxy host:
 
@@ -80,7 +78,6 @@ Gray Swan can run during `pre_call`, `during_call`, and `post_call` stages. Comb
 | `during_call`| Parallel to call  | User input only       | Low-latency monitoring without blocking |
 | `post_call`  | After response    | Model Outputs         | Scan output for policy violations, leaked secrets, or IPI |
 
-
 When using `during_call` with `on_flagged_action: block` or `on_flagged_action: passthrough`:
 
 - **The LLM call runs in parallel** with the guardrail check using `asyncio.gather`
@@ -89,7 +86,6 @@ When using `during_call` with `on_flagged_action: block` or `on_flagged_action: 
 - This means you pay full LLM costs while returning an error/passthrough message to the user
 
 **Recommendation:** Use `pre_call` and `post_call` instead of `during_call` for `passthrough` (or `block`) `on_flagged_action` (see our recommended configuration above). Reserve `during_call` for `monitor` mode ONLY when you want low-latency logging without impacting the user experience.
-
 
 ---
 

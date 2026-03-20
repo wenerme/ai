@@ -139,8 +139,6 @@ print(f"Image generation cost: ${cost}")
 | Fallbacks | ✅ |
 | Load Balancing | ✅ |
 
-
-
 ## How It Works
 
 RunwayML uses an asynchronous task-based API pattern. LiteLLM handles the polling and response transformation automatically.
@@ -193,6 +191,4 @@ When you call `litellm.image_generation()` or `/v1/images/generations`:
 - Configurable via `RUNWAYML_POLLING_TIMEOUT` environment variable
 - Uses sync (`time.sleep()`) or async (`await asyncio.sleep()`) based on call type
 
-:::info
-**Typical processing time**: 10-30 seconds depending on image size and complexity
-:::
+> **info**: **Typical processing time**: 10-30 seconds depending on image size and complexity

@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI ControlNet Usage Example"
 description: "This guide will introduce you to the basic concepts of ControlNet and demonstrate how to generate corresponding images in ComfyUI"
-sidebarTitle: "ControlNet"
 ---
 
 Achieving precise control over image creation in AI image generation cannot be done with just one click.
@@ -17,20 +16,18 @@ These conditioning constraints make image generation more controllable, allowing
 
 Before ControlNet, we could only rely on the model to generate images repeatedly until we were satisfied with the results, which involved a lot of randomness.
 
-![Images generated with random seeds in ComfyUI](/images/tutorial/controlnet/generated_with_random_seed.jpg)
+[Images generated with random seeds in ComfyUI]
 
 With the advent of ControlNet, we can control image generation by introducing additional conditions. 
 For example, we can use a simple sketch to guide the image generation process, producing images that closely align with our sketch.
 
-![Sketch-controlled image generation in ComfyUI](/images/tutorial/controlnet/scribble_example.jpg)
+[Sketch-controlled image generation in ComfyUI]
 
 In this example, we will guide you through installing and using ControlNet models in [ComfyUI](https://github.com/comfyanonymous/ComfyUI), and complete a sketch-controlled image generation example.
 
 ![ComfyUI ControlNet Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/controlnet/scribble_controlnet.png)
 
-<Tip>
 The workflows for other types of ControlNet V1.1 models are similar to this example. You only need to select the appropriate model and upload the corresponding reference image based on your needs.
-</Tip>
 
 ## ControlNet Image Preprocessing Information
 
@@ -54,10 +51,8 @@ Please download the workflow image below and drag it into ComfyUI to load the wo
 
 ![ComfyUI Workflow - ControlNet](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/controlnet/scribble_controlnet.png)
 
-<Tip>
 Images with workflow JSON in their metadata can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`.
 This image already includes download links for the corresponding models, and dragging it into ComfyUI will automatically prompt for downloads.
-</Tip>
 
 Please download the image below, which we will use as input:
 
@@ -65,9 +60,7 @@ Please download the image below, which we will use as input:
 
 ### 2. Manual Model Installation
 
-<Note>
 If your network cannot successfully complete the automatic download of the corresponding models, please try manually downloading the models below and placing them in the specified directories:
-</Note>
 
 - [dreamCreationVirtual3DECommerce_v10.safetensors](https://civitai.com/api/download/models/731340?type=Model&format=SafeTensor&size=full&fp=fp16)
 - [vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors?download=true)
@@ -84,13 +77,11 @@ ComfyUI/
 │       └── control_v11p_sd15_scribble_fp16.safetensors
 ```
 
-<Note>
 In this example, you could also use the VAE model embedded in dreamCreationVirtual3DECommerce_v10.safetensors, but we're following the model author's recommendation to use a separate VAE model.
-</Note>
 
 ### 3. Step-by-Step Workflow Execution
 
-![ComfyUI Workflow - ControlNet Flow Diagram](/images/tutorial/controlnet/flow_diagram_scribble.png)
+[ComfyUI Workflow - ControlNet Flow Diagram]
 
 1. Ensure that `Load Checkpoint` can load **dreamCreationVirtual3DECommerce_v10.safetensors**
 2. Ensure that `Load VAE` can load **vae-ft-mse-840000-ema-pruned.safetensors**
@@ -101,13 +92,13 @@ In this example, you could also use the VAE model embedded in dreamCreationVirtu
 ## Related Node Explanations
 ### Load ControlNet Node Explanation
 
-![load controlnet](/images/comfy_core/loaders/load_controlnet_model.jpg)
+[load controlnet]
 
 Models located in `ComfyUI\models\controlnet` will be detected by ComfyUI and can be loaded through this node.
 
 ### Apply ControlNet Node Explanation
 
-![apply controlnet](/images/comfy_core/conditioning/controlnet/apply_controlnet.jpg)
+[apply controlnet]
 
 This node accepts the ControlNet model loaded by `load controlnet` and generates corresponding control conditions based on the input image.
 
@@ -132,13 +123,11 @@ This node accepts the ControlNet model loaded by `load controlnet` and generates
 | `negative`     | Negative conditioning data processed by ControlNet |
 
 You can use chain connections to apply multiple ControlNet models, as shown in the image below. You can also refer to the [Mixing ControlNet Models](/tutorials/controlnet/mixing-controlnets) guide to learn more about combining multiple ControlNet models.
-![apply controlnet chain link](/images/tutorial/controlnet/apply_controlnet_chain_link.jpg)
+[apply controlnet chain link]
 
-<Note>
 You might see the `Apply ControlNet(Old)` node in some early workflows, which is an early version of the ControlNet node. It is currently deprecated and not visible by default in search and node lists.
-![apply controlnet old](/images/comfy_core/conditioning/controlnet/apply_controlnet_old.jpg)
+[apply controlnet old]
 To enable it, go to **Settings** --> **comfy** --> **Node** and enable the `Show deprecated nodes in search` option. However, it's recommended to use the new node.
-</Note>
 
 ## Start Your Exploration
 

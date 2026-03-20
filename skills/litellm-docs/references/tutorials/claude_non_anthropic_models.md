@@ -1,16 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Use Claude Code with Non-Anthropic Models
 
 This tutorial shows how to use Claude Code with non-Anthropic models like OpenAI, Gemini, and other LLM providers through LiteLLM proxy.
 
-:::info 
-
-LiteLLM automatically translates between different provider formats, allowing you to use any supported LLM provider with Claude Code while maintaining the Anthropic Messages API format.
-
-:::
+> **info**: LiteLLM automatically translates between different provider formats, allowing you to use any supported LLM provider with Claude Code while maintaining the Anthropic Messages API format.
 
 ## Prerequisites
 
@@ -30,9 +24,6 @@ pip install 'litellm[proxy]'
 ### 1. Setup config.yaml
 
 Create a configuration file with your preferred non-Anthropic models:
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 ```yaml
 model_list:
@@ -56,9 +47,6 @@ export OPENAI_API_KEY="your-openai-api-key"
 export LITELLM_MASTER_KEY="sk-1234567890"  # Generate a secure key
 ```
 
-</TabItem>
-<TabItem value="gemini" label="Google AI Studio">
-
 ```yaml
 model_list:
   # Google Gemini
@@ -74,9 +62,6 @@ Set your environment variables:
 export GEMINI_API_KEY="your-gemini-api-key"
 export LITELLM_MASTER_KEY="sk-1234567890"  # Generate a secure key
 ```
-
-</TabItem>
-<TabItem value="vertex_ai" label="Vertex AI">
 
 ```yaml
 model_list:
@@ -104,9 +89,6 @@ export VERTEX_FILE_PATH_ENV_VAR="/path/to/service_account.json"
 export LITELLM_MASTER_KEY="sk-1234567890"  
 ```
 
-</TabItem>
-<TabItem value="multi" label="Azure OpenAI">
-
 ```yaml
 model_list:
   # Azure OpenAI
@@ -126,9 +108,6 @@ export AZURE_API_BASE="https://your-resource.openai.azure.com"
 export LITELLM_MASTER_KEY="sk-1234567890"
 ```
 
-</TabItem>
-</Tabs>
-
 ### 2. Start LiteLLM Proxy
 
 ```bash
@@ -141,9 +120,6 @@ litellm --config /path/to/config.yaml
 
 Test that your proxy is working correctly:
 
-<Tabs>
-<TabItem value="openai-test" label="OpenAI">
-
 ```bash
 curl -X POST http://0.0.0.0:4000/v1/messages \
 -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
@@ -155,9 +131,6 @@ curl -X POST http://0.0.0.0:4000/v1/messages \
 }'
 ```
 
-</TabItem>
-<TabItem value="gemini-test" label="Google AI Studio">
-
 ```bash
 curl -X POST http://0.0.0.0:4000/v1/messages \
 -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
@@ -169,9 +142,6 @@ curl -X POST http://0.0.0.0:4000/v1/messages \
 }'
 ```
 
-</TabItem>
-<TabItem value="vertex-test" label="Vertex AI">
-
 ```bash
 curl -X POST http://0.0.0.0:4000/v1/messages \
 -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
@@ -182,9 +152,6 @@ curl -X POST http://0.0.0.0:4000/v1/messages \
     "messages": [{"role": "user", "content": "What is the capital of France?"}]
 }'
 ```
-
-</TabItem>
-<TabItem value="azure-test" label="Azure OpenAI">
 
 ```bash
 curl -X POST http://0.0.0.0:4000/v1/messages \
@@ -197,9 +164,6 @@ curl -X POST http://0.0.0.0:4000/v1/messages \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### 4. Configure Claude Code
 
 Configure Claude Code to use your LiteLLM proxy:
@@ -209,9 +173,7 @@ export ANTHROPIC_BASE_URL="http://0.0.0.0:4000"
 export ANTHROPIC_AUTH_TOKEN="$LITELLM_MASTER_KEY"
 ```
 
-:::tip
-The `LITELLM_MASTER_KEY` gives Claude Code access to all proxy models. You can also create virtual keys in the LiteLLM UI to limit access to specific models.
-:::
+> **tip**: The `LITELLM_MASTER_KEY` gives Claude Code access to all proxy models. You can also create virtual keys in the LiteLLM UI to limit access to specific models.
 
 ### 5. Use Claude Code with Non-Anthropic Models
 
@@ -298,7 +260,6 @@ Access the UI at `http://0.0.0.0:4000/ui` to:
 - Set budget limits per user/key
 - Monitor costs across different providers
 - Create virtual keys with specific permissions
-
 
 ## Supported Providers
 

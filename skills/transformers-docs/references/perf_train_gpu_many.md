@@ -1,17 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Parallelism methods
 
@@ -70,7 +57,7 @@ DDP is recommended because it reduces communication overhead between GPUs, effic
 - Stage 3 partitions the optimizer, gradient, and parameters
 
 <div class="flex justify-center">
-     <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png"/>
+     
 </div>
 
 ## Model parallelism
@@ -106,7 +93,7 @@ Each data parallel rank treats the process as if there were only one GPU instead
 This approach optimizes parallel data processing by reducing idle GPU utilization.
 
 <div class="flex justify-center">
-     <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero-dp-pp.png"/>
+     
 </div>
 
 ### ZeRO data parallelism, pipeline parallelism, and model parallelism (3D parallelism)
@@ -120,5 +107,5 @@ Compute efficiency is enabled by ZeRO data parallelism where each GPU only store
 This approach is scalable to extremely large models with trillions of parameters.
 
 <div class="flex justify-center">
-     <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png"/>
+     
 </div>

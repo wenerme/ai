@@ -1,9 +1,6 @@
 ---
 description: 'Documentation for the ClickHouse C++ client library and integration
   with u-server framework'
-sidebar_label: 'C++'
-sidebar_position: 24
-slug: /interfaces/cpp
 title: 'C++ Client Library'
 doc_type: 'reference'
 ---
@@ -16,15 +13,13 @@ interface to ClickHouse using its native binary protocol.
 Build instructions, usage examples, and additional documentation are available in the project’s
 GitHub repository: [https://github.com/ClickHouse/clickhouse-cpp](https://github.com/ClickHouse/clickhouse-cpp). 
 
-:::note
-The library is under active development. While it already supports core ClickHouse functionality,
+> **note**: The library is under active development. While it already supports core ClickHouse functionality,
 some features and data types may not yet be fully implemented or supported.
 
 Your feedback is highly valuable and helps guide the prioritization of new features and
 improvements. If you encounter limitations, missing functionality, or unexpected behavior, please
 share your observations or feature requests through the issue tracker at 
 [https://github.com/ClickHouse/clickhouse-cpp/issues](https://github.com/ClickHouse/clickhouse-cpp/issues)
-:::
 
 ## Including the library into your project {#including-library-into-project}
 The simplest way to incorporate the library into your project is using CMake’s `FetchContent`

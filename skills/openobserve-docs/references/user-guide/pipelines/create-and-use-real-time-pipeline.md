@@ -12,13 +12,13 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
     ### Step 1: Open the pipeline editor
     1. Log in to OpenObserve.
     2. In the left navigation panel, select **Pipelines**. By default, the system opens the **Pipelines** tab. 
-    ![Pipelines tab](../../images/pipelines-tab.png)
+    [Pipelines tab]
     3. Click **Add Pipeline** at the top-right corner.
-    ![Open the pipeline editor](../../images/pipeline-editor.png)
+    [Open the pipeline editor]
 ??? "Step 2: Enter a pipeline name"
     ### Step 2: Enter a pipeline name
     Provide a unique name for the pipeline.
-    ![Pipeline name](../../images/pipeline-name.png)
+    [Pipeline name]
 
 ??? "Step 3: Configure the Source node"
     ### Step 3: Configure the Source node
@@ -30,9 +30,9 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
     - Choose one of the following options:
 
         - **Option A**: Select an existing stream. Choose a stream from the **Stream Name** dropdown.
-        ![Select an existing stream](../../images/select-existing-stream.png)
+        [Select an existing stream]
         - **Option B:** Create a new stream. Enable the **Create new Stream** toggle and create a new stream if necessary.
-        ![alt text](../../images/create-new-stream.png)
+        [alt text]
     3. Click **Save** to confirm the source node.
 
     !!! note "Important behavior"
@@ -44,7 +44,7 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
 
     1. From the **Transform** section, drag either a **Condition** or **Function** node into the editor.
     2. If you add a Condition node:
-        ![condition-node](../../images/condition-node.png)
+        [condition-node]
 
         1. In the **Associate Conditions** screen, select the field name in the **Column** drop-down list. This list displays the fields detected in the source stream.
         2. Select an operator from the **Operator** drop-down list.
@@ -52,7 +52,7 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
         4. Add more conditions if needed.
 
         !!! note "Important"
-            **Condition nodes require a stream schema.** <br>
+            **Condition nodes require a stream schema.** 
             If you create a new stream in **Step 3** and do not define any fields, the **Condition** editor does not display field names.
             To use conditions, add at least one field while creating the source stream or ingest sample data so that the schema is inferred.
         !!! note "Guidelines"
@@ -64,9 +64,9 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
     3. If you add a Function node:
 
         Use a Function node to transform events using a VRL function.
-        > A Function does not require predefined fields. You can use it even if the source stream has no schema. <br>
+        > A Function does not require predefined fields. You can use it even if the source stream has no schema. 
         !!! note "To create a new function:"
-            ![create-new-function](../../images/create-new-function.png)
+            [create-new-function]
 
             1. Enable **Create new function** toggle.
             2. In the **Associate Function** tab, enter the function name. 
@@ -82,7 +82,7 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
         !!! note "Guidelines"
             - **RBF (Run Before Flattening)**: Function executes before data structure is flattened. 
             - **RAF (Run After Flattening)**: Function executes after data structure is flattened. 
-            ![After flattening](../../images/after-flattening.png)
+            [After flattening]
 
     5. Click **Save** to confirm the transform node.
 
@@ -91,7 +91,7 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
     A destination defines where the processed events are written. You can forward data to another stream or to an external system.
 
     **To add a stream destination:** 
-    ![external-destination](../../images/external-destination.png)
+    [external-destination]
 
     1. Drag a **Stream** node into the editor.
     2. In the **Associate Stream** panel, configure the destination stream.
@@ -111,9 +111,8 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
             If you remove this default destination and only keep filtered routes, events that do not match any condition are dropped and are not written to the source stream.  
             Add at least one catch-all route back to the original stream if you want to preserve all events.
 
-
     **To add an external destination:** 
-    ![stream-destination](../../images/stream-destination.png)
+    [stream-destination]
 
     1. Drag a **Remote** node into the editor.
     2. In the **External Destination** panel, either select an existing destination or enable **Create new Destination** and fill in the required details such as name, URL, method, output format, and headers.
@@ -121,18 +120,16 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
 
     > For detailed steps on configuring external destinations, see the [Remote Destination](https://openobserve.ai/docs/user-guide/pipelines/remote-destination/) guide. 
 
-
 ??? "Step 6: Connect the nodes"
     ### Step 6: Connect the nodes
     Use the connection icon to link Source > Transform > Destination. 
     To remove a link, select the link and press delete on your keyboard. 
-    ![connect-nodes](../../images/connect-nodes.png)
+    [connect-nodes]
 
 ??? "Step 7: Save the pipeline"
     ### Step 7: Save the pipeline
     Click **Save**. The pipeline becomes active immediately.
-    ![Save pipeline](../../images/save-pipeline.png)
-
+    [Save pipeline]
 
 ## Use the real-time pipeline
 
@@ -144,7 +141,7 @@ Use this guide to create and run real-time pipelines. Real-time pipelines proces
 
 ??? "Step 2: Verify output"
     ### Step 2: Verify output
-    ![view-result](../../images/view-result.png)
+    [view-result]
 
     1. Go to **Logs**.
     2. From the stream selection dropdown, select the stream you added as destination. 

@@ -29,7 +29,7 @@ head:
 
 _March 12, 2026_
 
-![Vitest 4.1 Announcement Cover Image](/og-vitest-4-1.jpg)
+[Vitest 4.1 Announcement Cover Image]
 
 ## The next Vitest minor is here
 
@@ -149,8 +149,8 @@ Read more in the [`experimental.viteModuleRunner` docs](/config/experimental#exp
 Vitest 4.1 introduces [`browser.detailsPanelPosition`](/config/browser/detailspanelposition), letting you choose where the details panel appears in Browser UI.
 
 <center>
-  <img alt="Vitest UI with details at the bottom" img-light src="/ui/light-ui-details-bottom.png">
-  <img alt="Vitest UI with details at the bottom" img-dark src="/ui/dark-ui-details-bottom.png">
+  [Vitest UI with details at the bottom]
+  [Vitest UI with details at the bottom]
 
   <sup>An example of UI with the details panel at the bottom.</sup>
 </center>
@@ -177,8 +177,8 @@ You can also switch this directly from the UI via the new layout toggle button.
 Vitest 4.1 brings major improvements to the [Playwright Trace Viewer](/guide/browser/trace-view) integration in browser mode. Browser interactions like `click`, `fill`, and `expect.element` are now automatically grouped in the trace timeline and linked back to the exact line in your test file.
 
 <center>
-  <img alt="Trace Viewer showing the trace timeline and rendered component" img-light src="/trace-viewer-light.png">
-  <img alt="Trace Viewer showing the trace timeline and rendered component" img-dark src="/trace-viewer-dark.png">
+  [Trace Viewer showing the trace timeline and rendered component]
+  [Trace Viewer showing the trace timeline and rendered component]
 
   <sup>An example of trace view with `expect.element` assertion failure highlighted.</sup>
 </center>
@@ -259,9 +259,7 @@ test.afterAll(async ({ db }) => {
 })
 ```
 
-::: warning
-This change could be considered breaking. Previously Vitest passed down undocumented `Suite` as the first argument. The team decided that the usage was small enough to not disrupt the ecosystem.
-:::
+> **warning**: This change could be considered breaking. Previously Vitest passed down undocumented `Suite` as the first argument. The team decided that the usage was small enough to not disrupt the ecosystem.
 
 ## New `aroundAll` and `aroundEach` Hooks
 
@@ -349,7 +347,7 @@ The official [vscode extension](https://vitest.dev/vscode) received a large numb
 - The extension displays the module load time inline next to each import statement, if you are using Vitest 4.1.
 
 <center>
-  <img src="/vscode-import-breakdown.png" alt="An example of import breakdown in vscode">
+  [An example of import breakdown in vscode]
   <sup>An example of import breakdown in vscode.</sup>
 </center>
 
@@ -358,8 +356,8 @@ The official [vscode extension](https://vitest.dev/vscode) received a large numb
 The built-in [`github-actions` reporter](/guide/reporters#github-actions-reporter) now automatically generates a [Job Summary](https://github.blog/news-insights/product-news/supercharging-github-actions-with-job-summaries/) with an overview of your test results. The summary includes test file and test case statistics, and highlights flaky tests that required retries — with permalink URLs linking test names directly to the relevant source lines on GitHub.
 
 <center>
-  <img alt="GitHub Actions Job Summary" img-dark src="/github-actions-job-summary-dark.png">
-  <img alt="GitHub Actions Job Summary" img-light src="/github-actions-job-summary-light.png">
+  [GitHub Actions Job Summary]
+  [GitHub Actions Job Summary]
 
   <sup>An example of the job summary with flaky test details.</sup>
 </center>

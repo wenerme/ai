@@ -39,6 +39,3 @@ Sort array elements in descending order.
 
 - Multi-dimensional array sort
   - `ARRAY_REVERSE_SORT([[3, 4], [5, 6]])` -> `[[5, 6], [3, 4]]`
-
-
-

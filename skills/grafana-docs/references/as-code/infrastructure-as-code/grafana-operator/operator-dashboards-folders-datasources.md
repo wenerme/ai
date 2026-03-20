@@ -157,11 +157,11 @@ After you apply the configurations, verify that:
 
 - A new data source is visible in Grafana. In the following image, a data source named `InfluxDB` was created.
 
-  ![InfluxDB datasource](/static/img/docs/grafana-cloud/terraform/influxdb_datasource_tf.png)
+  [InfluxDB datasource]
 
 - A new dashboard and folder have been created in Grafana. In the following image, a dashboard named `InfluxDB Cloud Demos` was created inside the `Demos` folder.
 
-  ![InfluxDB dashboard](/static/img/docs/grafana-cloud/grizzly/grizzly-folder-dashboard-datasource.png)
+  [InfluxDB dashboard]
 
 ## Next steps
 

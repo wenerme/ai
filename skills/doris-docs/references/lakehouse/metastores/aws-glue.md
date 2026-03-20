@@ -161,7 +161,6 @@ CREATE CATALOG glue_s3 PROPERTIES (
 );
 ```
 
-
 ## Permission Policies
 
 Depending on usage scenarios, they can be divided into **read-only** and **read-write** policies.

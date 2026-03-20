@@ -1,8 +1,6 @@
 ---
 title: 'Date and time data types - Time-series'
-sidebar_label: 'Date and time data types'
 description: 'Time-series data types in ClickHouse.'
-slug: /use-cases/time-series/date-time-data-types
 keywords: ['time-series', 'DateTime', 'DateTime64', 'Date', 'Time', 'Time64', 'data types', 'temporal data', 'timestamp']
 show_related_blogs: true
 doc_type: 'reference'
@@ -71,11 +69,9 @@ very_precise_datetime: 2025-03-12 11:39:07.196724000
 
 For scenarios where you need to store time-of-day values without date components, ClickHouse provides the [`Time`](/sql-reference/data-types/time) and [`Time64`](/sql-reference/data-types/time64) types, which was introduced in version 25.6. These are useful for representing recurring schedules, daily patterns, or situations where separating date and time components makes sense.
 
-:::note
-Using `Time` and `Time64` requires enabling the setting: `SET enable_time_time64_type = 1;`
+> **note**: Using `Time` and `Time64` requires enabling the setting: `SET enable_time_time64_type = 1;`
 
 These types were introduced in version 25.6
-:::
 
 The `Time` type stores hours, minutes, and seconds with second precision. Internally stored as a signed 32-bit integer, it supports a range of `[-999:59:59, 999:59:59]`, allowing for values that exceed 24 hours. This can be useful when tracking elapsed time or performing arithmetic operations that result in values outside a single day.
 

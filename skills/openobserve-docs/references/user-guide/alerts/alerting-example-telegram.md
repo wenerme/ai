@@ -34,7 +34,7 @@ This guide explains how to configure [OpenObserve alerts]() to send notification
     2. Enter a name, for example `Telegram_alert`.
     3. Select **Web Hook**.
     4. In the Body, add the following JSON. Replace <YOUR_CHAT_ID> with your chat ID.
-    ![Create Template](alerting-telegram-template.png)
+    [Create Template]
     5. Save the template.
 
 ??? "Step 2: Create Alert Destination"
@@ -45,7 +45,7 @@ This guide explains how to configure [OpenObserve alerts]() to send notification
     5. Set **Method** to POST.
     6. Add the header: Content-Type = application/json
     7. Save the destination.
-    ![Create Alert Destination](alerting-telegram-destination.png)
+    [Create Alert Destination]
 
 ??? "Step 3: Create Alert"
     1. Go to **Alerts > Add Alert**.
@@ -56,22 +56,22 @@ This guide explains how to configure [OpenObserve alerts]() to send notification
         - Stream Name: select your stream. For example, default.
         - Alert Type: Scheduled
         - Condition: for example service_name = ingress-nginx
-        ![Config Alert](alerting-telegram-config.png)
+        [Config Alert]
         - Threshold: >= 1 time
         - Period: 1 minute
         - Frequency: 1 minute
         - Destination: select `Telegram_alert`
-        ![Config Alert](alerting-telegram-config-conditions.png)
+        [Config Alert]
         - In Row Template, define the row format, for example: `Alert was active at {_timestamp}`
     3. Save the alert.
 
 ??? "Step 4: Verify alert delivery"
     After you save the alert, wait until the condition is met.
     If configured correctly, you will receive a message in Telegram that looks similar to the following:
-    ![Verify alert delivery](alerting-telegram-alert-delivery.png)
+    [Verify alert delivery]
 
 ??? "Troubleshooting"
-    **Issue:** No message received in Telegram <br>
+    **Issue:** No message received in Telegram 
     **Solution:** Verify that the template body includes a valid `chat_id`. Without `chat_id`, Telegram cannot deliver the message.
 
     Example of a valid body:

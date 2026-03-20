@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Lakera AI
 
@@ -49,7 +47,6 @@ guardrails:
 
 ### 2. Start LiteLLM Gateway 
 
-
 ```shell
 litellm --config config.yaml --detailed_debug
 ```
@@ -57,9 +54,6 @@ litellm --config config.yaml --detailed_debug
 ### 3. Test request 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since `ishaan@berri.ai` in the request is PII
 
@@ -114,10 +108,6 @@ Expected response on failure
 
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell showLineNumbers title="Curl Request"
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -130,12 +120,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "guardrails": ["lakera-guard"]
   }'
 ```
-
-</TabItem>
-
-
-</Tabs>
-
 
 ## Supported Params 
 

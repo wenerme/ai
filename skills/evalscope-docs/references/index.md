@@ -1,6 +1,4 @@
-![EvalScope Logo](_static/images/evalscope_logo.png)
-
-<br>
+[EvalScope Logo]
 
 # Welcome to EvalScope Tutorial!
 
@@ -16,7 +14,6 @@ To help users get started quickly, we recommend the following process:
 
 We always welcome users' PRs and Issues to improve EvalScope.
 
-
 :::{toctree}
 :hidden:
 :caption: 🚀 Quick Start
@@ -28,7 +25,6 @@ get_started/visualization.md
 get_started/parameters.md
 get_started/supported_dataset/index.md
 get_started/faq.md
-:::
 
 :::{toctree}
 :hidden:
@@ -39,7 +35,6 @@ user_guides/aigc/index.md
 user_guides/arena.md
 user_guides/sandbox.md
 user_guides/service.md
-:::
 
 :::{toctree}
 :hidden:
@@ -48,31 +43,26 @@ advanced_guides/collection/index.md
 advanced_guides/custom_dataset/index.md
 advanced_guides/custom_model.md
 advanced_guides/add_benchmark.md
-:::
 
 :::{toctree}
 :hidden:
 :caption: 🧰 Extended Benchmarks
 
 third_party/index.md
-:::
 
 :::{toctree}
 :hidden:
 :caption: 📖 Best Practices
 
 best_practice/index.md
-:::
 
 :::{toctree}
 :hidden:
 :caption: 🧪 Benchmark Results
 experiments/benchmark/index.md
 experiments/speed_benchmark/index.md
-:::
 
 :::{toctree}
 :hidden:
 :caption: 🌟 Blog
 blog/index.md
-:::

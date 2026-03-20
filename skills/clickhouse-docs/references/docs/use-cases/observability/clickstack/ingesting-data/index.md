@@ -1,7 +1,4 @@
 ---
-slug: /use-cases/observability/clickstack/ingesting-data
-pagination_prev: null
-pagination_next: null
 description: 'Data ingestion for ClickStack - The ClickHouse Observability Stack'
 title: 'Ingesting data'
 doc_type: 'landing-page'

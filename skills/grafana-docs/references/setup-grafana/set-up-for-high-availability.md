@@ -28,7 +28,7 @@ Please refer to [Alerting high availability](#alerting-high-availability) for mo
 Grafana uses an embedded sqlite3 database to store users, dashboards, and other persistent data by default. For high availability, you must use a shared database to store this data. This shared database can be either MySQL or Postgres.
 
 <div class="text-center">
-  <img src="/static/img/docs/tutorials/grafana-high-availability.png"  max-width= "800px" class="center" />
+  
 </div>
 
 ## Architecture

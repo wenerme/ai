@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /realtime
 
@@ -17,10 +16,6 @@ Supported Providers:
 
 ### Add model to config 
 
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
-
 ```yaml
 model_list:
   - model_name: openai-gpt-4o-realtime-audio
@@ -30,8 +25,6 @@ model_list:
     model_info:
       mode: realtime
 ```
-</TabItem>
-<TabItem value="openai+azure" label="OpenAI + Azure">
 
 ```yaml
 model_list:
@@ -47,9 +40,6 @@ model_list:
       api_key: os.environ/OPENAI_API_KEY
 ```
 
-</TabItem>
-<TabItem value="xai" label="xAI Grok Voice Agent">
-
 ```yaml
 model_list:
   - model_name: grok-voice-agent
@@ -61,9 +51,6 @@ model_list:
 ```
 
 **[See full xAI Realtime documentation →](/docs/providers/xai_realtime)**
-
-</TabItem>
-</Tabs>
 
 ### Start proxy 
 

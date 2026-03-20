@@ -20,7 +20,7 @@ To access the Actions page in OpenObserve:
 1. Sign in to your OpenObserve account.
 2. Select the desired organization from the top navigation bar (if applicable).
 3. In the left navigation menu, click Actions.
-![Access Actions in OpenObserve](../../images/actions-go-to-actions-menu.png)
+[Access Actions in OpenObserve]
 
 ## Types of Actions  
 OpenObserve supports two types of Actions:

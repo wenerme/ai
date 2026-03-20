@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /responses/compact
 
@@ -31,9 +30,6 @@ print(response.output)
 
 ### LiteLLM Proxy
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Compact Request"
 curl http://localhost:4000/v1/responses/compact \
   -H "Content-Type: application/json" \
@@ -44,9 +40,6 @@ curl http://localhost:4000/v1/responses/compact \
     "instructions": "Be helpful"
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Compact with OpenAI SDK"
 import httpx
@@ -63,9 +56,6 @@ response = httpx.post(
 
 print(response.json())
 ```
-
-</TabItem>
-</Tabs>
 
 ## Request Parameters
 
@@ -101,4 +91,3 @@ print(response.json())
   }
 }
 ```
-

@@ -37,7 +37,7 @@ If you are a Grafana Cloud customer, please [open a support ticket in the Cloud 
 With enhanced LDAP integration, you can set up synchronization between LDAP groups and teams. This enables LDAP users that are members
 of certain LDAP groups to automatically be added or removed as members to certain teams in Grafana.
 
-![LDAP group synchronization](/static/img/docs/enterprise/team_members_ldap.png)
+[LDAP group synchronization]
 
 Grafana keeps track of all synchronized users in teams, and you can see which users have been synchronized from LDAP in the team members list, see `LDAP` label in screenshot.
 This mechanism allows Grafana to remove an existing synchronized user from a team when its LDAP group membership changes. This mechanism also allows you to manually add

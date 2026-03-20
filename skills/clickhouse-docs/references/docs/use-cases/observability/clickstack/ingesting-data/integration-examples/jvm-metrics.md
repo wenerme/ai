@@ -1,26 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/jvm-metrics
 title: 'Monitoring JVM Metrics with ClickStack'
-sidebar_label: 'JVM Metrics'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring JVM with ClickStack'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/jvm/jvm-metrics-import.png';
-import example_dashboard from '@site/static/images/clickstack/jvm/jvm-metrics-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
 
 # Monitoring JVM Metrics with ClickStack {#jvm-clickstack}
 
 :::note[TL;DR]
 Monitor JVM applications in ClickStack using the OpenTelemetry Java agent. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing JVM application {#existing-jvm}
 
@@ -105,15 +92,13 @@ java -jar my-application.jar
 - `http://localhost:4318` → Your ClickStack endpoint
 - `my-application.jar` → Your application's JAR file name
 
-:::tip
-The OpenTelemetry Java agent automatically collects these JVM metrics:
+> **tip**: The OpenTelemetry Java agent automatically collects these JVM metrics:
 
 - **Memory**: `jvm.memory.used`, `jvm.memory.limit`, `jvm.memory.committed`, `jvm.memory.used_after_last_gc`
 - **Garbage Collection**: `jvm.gc.duration`
 - **Threads**: `jvm.thread.count`
 - **Classes**: `jvm.class.count`, `jvm.class.loaded`, `jvm.class.unloaded`
 - **CPU**: `jvm.cpu.time`, `jvm.cpu.count`
-:::
 
 #### Verify metrics in HyperDX {#verifying-metrics}
 
@@ -189,7 +174,6 @@ You should see metrics for the demo service.
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-12-07 14:00:00 - 2025-12-08 14:00:00 (UTC)**. Set your time range to **2025-12-06 14:00:00 - 2025-12-09 14:00:00** to ensure you see the demo metrics regardless of your location. Once you see the metrics, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -218,9 +202,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={example_dashboard} alt="Kafka Metrics dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-12-07 14:00:00 - 2025-12-08 14:00:00 (UTC)**. Adjust based on your local timezone.
-:::
+> **note**: For the demo dataset, set the time range to **2025-12-07 14:00:00 - 2025-12-08 14:00:00 (UTC)**. Adjust based on your local timezone.
 
 </VerticalStepper>
 

@@ -1,7 +1,5 @@
 ---
 date: "2019-04-05T16:00:00+02:00"
-slug: "faq"
-sidebar_position: 5
 aliases:
   - /en-us/faq
 ---
@@ -114,7 +112,6 @@ In Gitea, an "active" user refers to a user that has activated their account via
 
 A "login prohibited" user is a user that is not allowed to log in to Gitea anymore
 
-
 ## What is Swagger?
 
 [Swagger](https://swagger.io/) is what Gitea uses for its API documentation.
@@ -146,9 +143,7 @@ You can configure `EMAIL_DOMAIN_WHITELIST` or `EMAIL_DOMAIN_BLOCKLIST` in your a
 
 You can configure `WHITELISTED_URIS` or `BLACKLISTED_URIS` under `[openid]` in your `app.ini`
 
-:::note
-Whitelisted takes precedence, so if it is non-blank then blacklisted is ignored.
-:::
+> **note**: Whitelisted takes precedence, so if it is non-blank then blacklisted is ignored.
 
 ### Issue only users
 

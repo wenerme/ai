@@ -1,13 +1,9 @@
 ---
-slug: /cloud/managed-postgres/upgrades
-sidebar_label: 'Upgrades'
 title: 'Upgrades'
 description: 'How PostgreSQL version upgrades work in ClickHouse Managed Postgres'
 keywords: ['managed postgres upgrades', 'postgres version', 'minor upgrade', 'major upgrade', 'maintenance window']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="upgrades" />
 

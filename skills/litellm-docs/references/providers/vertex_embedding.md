@@ -1,13 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex AI Embedding
 
 ## Usage - Embedding
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -21,10 +16,6 @@ response = embedding(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 1. Add model to config.yaml
 ```yaml
@@ -61,10 +52,6 @@ response = client.embeddings.create(
 print(response)
 ```
 
-
-</TabItem>
-</Tabs>
-
 #### Supported Embedding Models
 All models listed [here](https://github.com/BerriAI/litellm/blob/57f37f743886a0249f630a6792d49dffc2c5d9b7/model_prices_and_context_window.json#L835) are supported
 
@@ -92,10 +79,6 @@ All models listed [here](https://github.com/BerriAI/litellm/blob/57f37f743886a02
 
 #### Usage with OpenAI (Unified) Params
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.embedding(
     model="vertex_ai/text-embedding-004",
@@ -104,9 +87,6 @@ response = litellm.embedding(
     dimensions=1,
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 ```python
 import openai
@@ -124,9 +104,6 @@ response = client.embeddings.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ### Supported Vertex Specific Params
 
@@ -142,9 +119,6 @@ You can pass any vertex specific params to the embedding model. Just pass them t
 
 [Relevant Vertex AI doc with all embedding params](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api#request_body)
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.embedding(
     model="vertex_ai/text-embedding-004",
@@ -155,9 +129,6 @@ response = litellm.embedding(
     auto_truncate=True,
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 ```python
 import openai
@@ -177,17 +148,12 @@ response = client.embeddings.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## **BGE Embeddings**
 
 Use BGE (Baidu General Embedding) models deployed on Vertex AI.
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers title="Using BGE on Vertex AI"
 import litellm
@@ -201,10 +167,6 @@ response = litellm.embedding(
 
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM PROXY">
 
 1. Add model to config.yaml
 ```yaml showLineNumbers title="config.yaml"
@@ -253,9 +215,6 @@ model_list:
       vertex_location: us-central1 #optional
 ```
 
-</TabItem>
-</Tabs>
-
 ## **Multi-Modal Embeddings**
 
 ### Gemini Embedding 2 Preview (Multimodal)
@@ -267,9 +226,6 @@ model_list:
 - **GCS URLs:** `gs://bucket/path/to/file.png` (MIME type inferred from extension)
 
 **Supported MIME types:** `image/png`, `image/jpeg`, `audio/mpeg`, `audio/wav`, `video/mp4`, `video/quicktime`, `application/pdf`
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -297,9 +253,6 @@ response = embedding(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 ```yaml
 model_list:
   - model_name: vertex-gemini-embedding-2-preview
@@ -319,9 +272,6 @@ curl -X POST http://localhost:4000/embeddings \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### multimodalembedding@001 (Legacy)
 
 Known Limitations:
@@ -329,9 +279,6 @@ Known Limitations:
 - Only supports GCS or base64 encoded images / videos
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Using GCS Images
 
@@ -350,9 +297,6 @@ response = await litellm.aembedding(
     input="data:image/jpeg;base64,..." # will be sent as a base64 encoded image
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY (Unified Endpoint)">
 
 1. Add model to config.yaml
 ```yaml
@@ -375,11 +319,6 @@ $ litellm --config /path/to/config.yaml
 ```
 
 3. Make Request use OpenAI Python SDK, Langchain Python SDK
-
-
-<Tabs>
-
-<TabItem value="OpenAI SDK" label="OpenAI SDK">
 
 Requests with GCS Image / Video URI
 
@@ -413,10 +352,6 @@ response = client.embeddings.create(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="langchain" label="Langchain">
-
 Requests with GCS Image / Video URI
 ```python
 from langchain_openai import OpenAIEmbeddings
@@ -428,7 +363,6 @@ embeddings = OpenAIEmbeddings(
     base_url="http://0.0.0.0:4000",
     api_key="sk-1234",  # type: ignore
 )
-
 
 query_result = embeddings.embed_query(
     "gs://cloud-samples-data/vertex-ai/llm/prompts/landmark1.png"
@@ -450,21 +384,12 @@ embeddings = OpenAIEmbeddings(
     api_key="sk-1234",  # type: ignore
 )
 
-
 query_result = embeddings.embed_query(
     "data:image/jpeg;base64,..."
 )
 print(query_result)
 
 ```
-
-</TabItem>
-
-</Tabs>
-</TabItem>
-
-
-<TabItem value="proxy-vtx" label="LiteLLM PROXY (Vertex SDK)">
 
 1. Add model to config.yaml
 ```yaml
@@ -488,7 +413,6 @@ import vertexai
 from vertexai.vision_models import Image, MultiModalEmbeddingModel, Video
 from vertexai.vision_models import VideoSegmentConfig
 from google.auth.credentials import Credentials
-
 
 LITELLM_PROXY_API_KEY = "sk-1234"
 LITELLM_PROXY_BASE = "http://0.0.0.0:4000/vertex-ai"
@@ -540,14 +464,7 @@ print(f"Image Embedding: {embeddings.image_embedding}")
 print(f"Text Embedding: {embeddings.text_embedding}")
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Text + Image + Video Embeddings
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Text + Image 
 
@@ -576,10 +493,6 @@ response = await litellm.aembedding(
 )
 ```
 
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY (Unified Endpoint)">
-
 1. Add model to config.yaml
 ```yaml
 model_list:
@@ -601,7 +514,6 @@ $ litellm --config /path/to/config.yaml
 ```
 
 3. Make Request use OpenAI Python SDK, Langchain Python SDK
-
 
 Text + Image 
 
@@ -648,6 +560,3 @@ response = client.embeddings.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>

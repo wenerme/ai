@@ -1,18 +1,10 @@
 ---
-slug: /deployment-modes
-sidebar_label: 'Deployment modes'
 description: 'ClickHouse offers four deployment options that all use the same powerful database engine, just packaged differently to suit your specific needs.'
 title: 'Deployment modes'
 keywords: ['Deployment Modes', 'chDB']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import chServer from '@site/static/images/deployment-modes/ch-server.png';
-import chCloud from '@site/static/images/deployment-modes/ch-cloud.png';
-import chLocal from '@site/static/images/deployment-modes/ch-local.png';
-import chDB from '@site/static/images/deployment-modes/chdb.png';
-import Image from '@theme/IdealImage';
 
 ClickHouse is a versatile database system that can be deployed in several different ways depending on your needs. At its core, all deployment options **use the same powerful ClickHouse database engine** – what differs is how you interact with it and where it runs.
 
@@ -33,8 +25,6 @@ Each deployment mode has its own strengths and ideal use cases, which we'll expl
 ClickHouse Server represents the traditional client/server architecture and is ideal for production deployments. This deployment mode provides the full OLAP database capabilities with high throughput and low latency queries that ClickHouse is known for.
 
 <Image img={chServer} alt="ClickHouse Server" size="sm"/>
-
-<br/>
 
 When it comes to deployment flexibility, ClickHouse Server can be installed on your local machine for development or testing, deployed to major cloud providers like AWS, GCP, or Azure for cloud-based operations, or set up on your own on-premises hardware. For larger scale operations, it can be configured as a distributed cluster to handle increased load and provide high availability.
 

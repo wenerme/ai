@@ -1,8 +1,6 @@
 ---
 title: 'Storage efficiency - Time-series'
-sidebar_label: 'Storage efficiency'
 description: 'Improving time-series storage efficiency'
-slug: /use-cases/time-series/storage-efficiency
 keywords: ['time-series', 'storage efficiency', 'compression', 'data retention', 'TTL', 'storage optimization', 'disk usage']
 show_related_blogs: true
 doc_type: 'guide'

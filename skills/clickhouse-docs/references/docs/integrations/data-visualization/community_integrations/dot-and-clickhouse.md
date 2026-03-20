@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Dot'
-slug: /integrations/dot
 keywords: ['clickhouse', 'dot', 'ai', 'chatbot', 'mysql', 'integrate', 'ui', 'virtual assistant']
 description: 'AI Chatbot | Dot is an intelligent virtual data assistant that answers business data questions, retrieves definitions and relevant data assets, and can even assist with data modelling, powered by ClickHouse.'
 title: 'Dot'
@@ -9,11 +7,6 @@ integration:
    - support_level: 'community'
    - category: 'data_visualization'
 ---
-
-import Image from '@theme/IdealImage';
-import dot_01 from '@site/static/images/integrations/data-visualization/dot_01.png';
-import dot_02 from '@site/static/images/integrations/data-visualization/dot_02.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Dot
 
@@ -31,7 +24,6 @@ It connects directly to ClickHouse so you can ask data questions in natural lang
 ## Connecting Dot to ClickHouse {#connecting-dot-to-clickhouse}
 
 <Image size="md" img={dot_01} alt="Configuring ClickHouse connection in Dot (light mode)" border />
-<br/>
 
 1. In the Dot UI, go to **Settings → Connections**.  
 2. Click on **Add new connection** and select **ClickHouse**.  

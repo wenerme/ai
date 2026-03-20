@@ -10,8 +10,6 @@
 | Base URL | `https://api.abliteration.ai/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
 
-<br />
-
 ## Required Variables
 
 ```python showLineNumbers title="Environment Variables"

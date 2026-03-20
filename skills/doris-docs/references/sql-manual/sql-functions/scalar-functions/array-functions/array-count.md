@@ -10,8 +10,6 @@
 
 <version since="2.0.0">
 
-
-
 ## Description
 
 Applies a lambda expression to elements in an array and counts the number of elements whose return value is not 0.
@@ -187,4 +185,4 @@ SELECT array_count(x -> x % 2 = 0, [1, 2, 3, 4, 5, 6]);
 
 ### Keywords
 
-ARRAY, COUNT, ARRAY_COUNT 
+ARRAY, COUNT, ARRAY_COUNT

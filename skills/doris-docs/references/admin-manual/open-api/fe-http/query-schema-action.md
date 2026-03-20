@@ -8,7 +8,6 @@
 
 # Query Schema Action
 
-
 ## Request
 
 ```

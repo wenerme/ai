@@ -1,6 +1,5 @@
 # MMMU
 
-
 ## Overview
 
 MMMU (Massive Multi-discipline Multimodal Understanding) is a comprehensive benchmark designed to evaluate multimodal models on expert-level tasks requiring college-level subject knowledge and deliberate reasoning. It covers 30 subjects across 6 core disciplines.
@@ -28,7 +27,6 @@ MMMU (Massive Multi-discipline Multimodal Understanding) is a comprehensive benc
 - For open questions: "ANSWER: [ANSWER]" format expected
 - Evaluates on validation split (test set requires submission)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MMMU (Massive Multi-discipline Multimodal Understanding) is a comprehensive benc
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -93,7 +90,6 @@ MMMU (Massive Multi-discipline Multimodal Understanding) is a comprehensive benc
 | Images per Sample | min: 1, max: 5, mean: 1.09 |
 | Resolution Range | 70x67 - 2560x2133 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -148,7 +144,6 @@ Solve the following problem step by step. The last line of your response should 
 
 Remember to put your answer on its own line at the end in the form "ANSWER: [ANSWER]" (without quotes) where [ANSWER] is the answer to the problem, and you do not need to use a \boxed command.
 
-
 ```
 
 ## Usage
@@ -185,5 +180,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

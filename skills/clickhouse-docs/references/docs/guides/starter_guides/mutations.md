@@ -1,7 +1,4 @@
 ---
-slug: /guides/developer/mutations
-sidebar_label: 'Updating and deleting data'
-sidebar_position: 1
 keywords: ['UPDATE', 'DELETE', 'mutations']
 title: 'Updating and deleting ClickHouse data'
 description: 'Describes how to perform update and delete operations in ClickHouse'
@@ -14,11 +11,9 @@ doc_type: 'guide'
 Although ClickHouse is geared toward high volume analytic workloads, it is possible in some situations to modify or 
 delete existing data. These operations are labeled "mutations" and are executed using the `ALTER TABLE` command.
 
-:::tip
-If you need to perform frequent updates, consider using [deduplication](../developer/deduplication.md) in ClickHouse, which allows you to update 
+> **tip**: If you need to perform frequent updates, consider using [deduplication](../developer/deduplication.md) in ClickHouse, which allows you to update 
 and/or delete rows without generating a mutation event. Alternatively, use [lightweight updates](/docs/sql-reference/statements/update)
 or [lightweight deletes](/guides/developer/lightweight-delete)
-:::
 
 ## Updating data {#updating-data}
 
@@ -56,9 +51,7 @@ ALTER TABLE [<database>.]<table> UPDATE <column> = <expression> WHERE <filter_ex
      WHERE visitor_id ILIKE '%robot%'
      ```
 
-:::note
-It isn't possible to update columns that are part of the primary or sorting key.
-:::
+> **note**: It isn't possible to update columns that are part of the primary or sorting key.
 
 ## Deleting data {#deleting-data}
 
@@ -82,9 +75,7 @@ The `<filter_expr>` should return a UInt8 value for each row of data.
     ALTER TABLE clicks ON CLUSTER main_cluster DELETE WHERE visit_date < '2022-01-02 15:00:00' AND page_id = '573'
     ```
 
-:::note
-To delete all of the data in a table, it is more efficient to use the command `TRUNCATE TABLE [<database].]<table>` command.  This command can also be executed `ON CLUSTER`.
-:::
+> **note**: To delete all of the data in a table, it is more efficient to use the command `TRUNCATE TABLE [<database].]<table>` command.  This command can also be executed `ON CLUSTER`.
 
 View the [`DELETE` statement](/sql-reference/statements/delete.md) docs page for more details.
 

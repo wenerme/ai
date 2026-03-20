@@ -7,22 +7,22 @@ This page describes how to manage real-time and scheduled pipelines in OpenObser
 
 ## Pipeline management options
 You can filter, search, view, edit, pause, resume, or delete pipelines from a single interface.
-![pipeline management](../../images/manage_pipelines.png)
+[pipeline management]
 
 ??? "Filter pipelines"
     ## Filter pipelines
     Use the filter options **All**, **Real-Time**, and **Scheduled** to view only the type of pipelines you want to work with.
-    ![filter-pipeline](../../images/filter-pipeline.png)
+    [filter-pipeline]
 
 ??? "Search pipelines"
     ## Search pipelines
     Use the search bar to locate pipelines by name or attributes.
-    ![search-pipeline](../../images/search-pipeline.png)
+    [search-pipeline]
 
 ??? "Pipeline list view"
     ## Pipeline list view
     The pipeline list displays key information for each pipeline.
-    ![pipeline-list-view](../../images/pipeline-list-view.png)
+    [pipeline-list-view]
 
     - **Pipeline Name**: Identifies the pipeline.
     - **Type**: Indicates whether the pipeline is real-time or scheduled.
@@ -35,7 +35,7 @@ You can filter, search, view, edit, pause, resume, or delete pipelines from a si
 ??? "Actions tab"
     ## Actions tab
     Each pipeline row includes the following actions.
-    ![action-tab](../../images/action-tab.png)
+    [action-tab]
 
     - Start or pause pipeline
     - Edit pipeline
@@ -45,7 +45,7 @@ You can filter, search, view, edit, pause, resume, or delete pipelines from a si
 
     ### Pause and resume pipelines
 
-    You can pause both real-time and scheduled pipelines. <br>
+    You can pause both real-time and scheduled pipelines. 
 
     **Pausing a pipeline:**
 
@@ -59,11 +59,10 @@ You can filter, search, view, edit, pause, resume, or delete pipelines from a si
     - No dialog or additional options are shown.
     - Processing continues from the current moment.
 
-
     **Resuming a scheduled pipeline**: 
 
     Scheduled pipelines display a Resume Pipeline Ingestion dialog with two options.
-    ![Resume pipeline](../../images/resume-scheduled-pipeline.png)
+    [Resume pipeline]
 
       - **Continue from where it paused:**
 
@@ -83,9 +82,9 @@ You can filter, search, view, edit, pause, resume, or delete pipelines from a si
 
     ### Pipeline error
     If a pipeline encounters an error, an error icon appears in the **Actions** column.
-    ![pipeline-error](../../images/pipeline-error.png)
+    [pipeline-error]
     Selecting this icon opens a dialog that displays the full error summary.
-    ![pipeline-error-view](../../images/pipeline-error-view.png)
+    [pipeline-error-view]
 
 ??? "Pipeline history"
     ## Pipeline history
@@ -99,10 +98,9 @@ You can filter, search, view, edit, pause, resume, or delete pipelines from a si
 
 ??? "Sort columns"
     ## Sort columns
-    ![sort-columns](../../images/sort-columns.png)
+    [sort-columns]
 
     You can sort the Pipelines table by selecting any column header. The table supports ascending, descending, and alphabetical sorting depending on the data in that column.
-
 
 ## Related links
 - [Pipelines in OpenObserve](../pipelines/pipelines/)

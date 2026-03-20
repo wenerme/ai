@@ -49,7 +49,6 @@ megatron sft \
     --dataset_num_proc 8
 ```
 
-
 ### LoRA
 
 The LoRA training script is as follows:

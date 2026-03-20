@@ -23,7 +23,6 @@ ST_CIRCLE( <center_lng>, <center_lat>, <radius>)
 | `<center_lat>` |	Latitude of the circle's center, of type DOUBLE, with a valid range of [-180, 180] |
 | `<radius>` | 		Radius of the circle, of type DOUBLE, in meters |
 
-
 ## Retuen value
 
 Returns a circle on the Earth's spherical surface, of type GeoCircle. Its WKT representation is CIRCLE ((<center_lng> <center_lat>), <radius>), which contains the center coordinates and radius information.
@@ -60,7 +59,6 @@ mysql> SELECT ST_AsText(ST_Circle(0, 0, 5000));
 | CIRCLE ((0 0), 5000)             |
 +----------------------------------+
 ```
-
 
 Circle with radius 0 (degenerates to a point)
 

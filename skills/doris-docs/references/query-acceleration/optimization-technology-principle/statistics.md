@@ -368,11 +368,9 @@ DROP STATS table_name
 
 ### FE Configuration
 
-:::info Note
+> **info**: Note
 
 The following FE configuration options typically do not require special attention.
-
-:::
 
 | FE Configuration Option                    | Description                                                  | Default Value           |
 | ------------------------------------------ | ------------------------------------------------------------ | ----------------------- |
@@ -481,4 +479,3 @@ Automatic collection uses sampling and does not require full table scans, and th
 For some special tables, such as those with many partitions or large individual tablets, memory usage may be higher.
 
 It is recommended to plan the number of tablets reasonably when creating tables to avoid creating oversized tablets. If the tablet structure is not easily adjustable, consider enabling automatic collection or manually collecting statistics for large tables during off-peak hours to avoid impacting business operations. In the Doris 3.x series, we will optimize for such scenarios.
-

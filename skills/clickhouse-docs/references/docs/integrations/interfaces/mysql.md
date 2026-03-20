@@ -1,18 +1,9 @@
 ---
 description: 'Documentation for the MySQL protocol interface in ClickHouse, allowing
   MySQL clients to connect to ClickHouse'
-sidebar_label: 'MySQL Interface'
-sidebar_position: 25
-slug: /interfaces/mysql
 title: 'MySQL Interface'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import mysql0 from '@site/static/images/interfaces/mysql0.png';
-import mysql1 from '@site/static/images/interfaces/mysql1.png';
-import mysql2 from '@site/static/images/interfaces/mysql2.png';
-import mysql3 from '@site/static/images/interfaces/mysql3.png';
 
 # MySQL Interface
 
@@ -40,19 +31,13 @@ This can't be turned off and it can lead in rare edge cases to different behavio
 
 1. After creating your ClickHouse Cloud Service, click the `Connect` button.
 
-<br/>
-
 <Image img={mysql0} alt="Credentials screen - Prompt" size="md"/>
 
 2. Change the `Connect with` drop-down to `MySQL`. 
 
-<br/>
-
 <Image img={mysql1} alt="Credentials screen - MySQL selected" size="md" />
 
 3. Toggle the switch to enable the MySQL interface for this specific service. This will expose port `3306` for this service and prompt you with your MySQL connection screen that include your unique MySQL username. The password will be the same as the service's default user password.
-
-<br/>
 
 <Image img={mysql2} alt="Credentials screen - Enabled MySQL" size="md"/>
 
@@ -66,9 +51,7 @@ By default, there is a built-in `mysql4<subdomain>` user, which uses the same pa
 
 Because of this, we _highly recommend_ following the `mysql4<subdomain>_<username>` format when creating a new user intended to be used with the MySQL interface, where `<subdomain>` is a hint to identify your Cloud service, and `<username>` is an arbitrary suffix of your choice.
 
-:::tip
-For ClickHouse Cloud hostname like `foobar.us-east1.aws.clickhouse.cloud`, the `<subdomain>` part equals to `foobar`, and a custom MySQL username could look like `mysql4foobar_team1`.
-:::
+> **tip**: For ClickHouse Cloud hostname like `foobar.us-east1.aws.clickhouse.cloud`, the `<subdomain>` part equals to `foobar`, and a custom MySQL username could look like `mysql4foobar_team1`.
 
 You can create extra users to use with the MySQL interface if, for example, you need to apply extra settings.
 

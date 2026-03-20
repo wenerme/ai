@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Groq
 https://groq.com/
 
-:::tip
-
-**We support ALL Groq models, just set `model=groq/<any-model-on-groq>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Groq models, just set `model=groq/<any-model-on-groq>` as a prefix when sending litellm requests**
 
 ## API Key
 ```python
@@ -49,8 +44,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
-
 ## Usage with LiteLLM Proxy 
 
 ### 1. Set Groq Models on config.yaml
@@ -73,9 +66,6 @@ litellm --config config.yaml
 
 Make request to litellm proxy
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -90,8 +80,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -110,8 +98,6 @@ response = client.chat.completions.create(model="groq-llama3-8b-8192", messages 
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -140,10 +126,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
-
 
 ## Supported Models - ALL Groq Models Supported!
 We support ALL Groq models, just set `groq/` as a prefix when sending completion requests
@@ -178,9 +160,6 @@ def get_current_weather(location, unit="fahrenheit"):
         return json.dumps({"location": "Paris", "temperature": "22", "unit": "celsius"})
     else:
         return json.dumps({"location": location, "temperature": "unknown"})
-
-
-
 
 # Step 1: send the conversation and available functions to the model
 messages = [
@@ -226,7 +205,6 @@ print("Response\n", response)
 response_message = response.choices[0].message
 tool_calls = response_message.tool_calls
 
-
 # Step 2: check if the model wanted to call a function
 if tool_calls:
     # Step 3: call the function
@@ -266,9 +244,6 @@ if tool_calls:
 
 Groq's Llama 4 models support vision. Check out their [model list](https://console.groq.com/docs/vision) for more details.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import os
 from litellm import completion
@@ -297,9 +272,6 @@ response = completion(
 )
 
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add Groq models to config.yaml   
 
@@ -349,8 +321,6 @@ response = client.chat.completions.create(
 )
 
 ```
-</TabItem>
-</Tabs>
 
 ## Speech to Text - Whisper
 
@@ -368,4 +338,3 @@ transcript = litellm.transcription(
 
 print("response=", transcript)
 ```
-

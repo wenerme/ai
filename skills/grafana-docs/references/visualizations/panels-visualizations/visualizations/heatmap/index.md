@@ -95,8 +95,6 @@ The data is converted as follows:
 
 The following options control how data in the heatmap is calculated and grouped.
 
-<!-- prettier-ignore-start -->
-
 | Options | Description |
 | ------- | ----------- |
 | Calculate from data | This setting determines if the data is already a calculated heatmap (from the data source/transformer), or one that should be calculated in the panel. |
@@ -104,13 +102,9 @@ The following options control how data in the heatmap is calculated and grouped.
 | Y Bucket | This setting determines how the y-axis is split into buckets. Choose from **Size** or **Count**. |
 | Y Bucket scale | Select one of the following y-axis value scales:<ul><li>**Linear** - Linear scale.</li><li>**Logarithmic** - Choose a **Log base** of **2** or **10**.</li><li>**Symlog** - Symlog scale. Choose a **Log base** of **2** or **10** and enter a value for the **Linear threshold**.</li></ul> |
 
-<!-- prettier-ignore-end -->
-
 ### Y-Axis options
 
 The following options define the display of the y-axis.
-
-<!-- prettier-ignore-start -->
 
 | Options | Description |
 | ------- | ----------- |
@@ -122,8 +116,6 @@ The following options define the display of the y-axis.
 | Axis label | This setting configures the axis value. |
 | Tick alignment | Sets the alignment of the tick marks on the visualization. Choose from: **Auto**, **Top (LE)**, **Middle**, and **Bottom (GE)**. This option is only displayed when your **Calculate from data** setting is **No**. |
 | Reverse| When selected, the axis appears in reverse order. |
-
-<!-- prettier-ignore-end -->
 
 {{< docs/shared lookup="visualizations/multiple-y-axes.md" source="grafana" version="<GRAFANA_VERSION>" leveloffset="+3" >}}
 
@@ -165,8 +157,6 @@ By default, Grafana calculates cell colors based on minimum and maximum bucket v
 
 Use these settings to control the display of heatmap cells.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Unit | Unit configuration. |
@@ -174,8 +164,6 @@ Use these settings to control the display of heatmap cells.
 | Cell gap | Set how much space there is between cells. |
 | Hide cells with values <= | Enter a value. |
 | Hide cells with values >= | Enter a value. |
-
-<!-- prettier-ignore-end -->
 
 ### Tooltip options
 
@@ -203,7 +191,7 @@ Use an override to hide individual series from the tooltip.
 
 When you set the **Tooltip mode** to **Single**, this option is displayed. This option controls whether or not the tooltip includes the color scale that's also represented in the legend. When the color scale is included in the tooltip, it shows the hovered value on the scale:
 
-![Heatmap with a tooltip displayed showing the hovered value reflected in the color scale](/media/docs/grafana/panels-visualizations/screenshot-heatmap-tooltip-color-scale-v11.0.png)
+[Heatmap with a tooltip displayed showing the hovered value reflected in the color scale]
 
 ### Legend options
 

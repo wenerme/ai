@@ -1,7 +1,4 @@
 
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Image Generations
 
@@ -57,9 +54,6 @@ litellm --config /path/to/config.yaml
 
 ### Test 
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 curl -X POST 'http://0.0.0.0:4000/v1/images/generations' \
 -H 'Content-Type: application/json' \
@@ -72,16 +66,12 @@ curl -X POST 'http://0.0.0.0:4000/v1/images/generations' \
 }'
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI">
-
 ```python showLineNumbers
 from openai import OpenAI
 client = openai.OpenAI(
     api_key="sk-1234",
     base_url="http://0.0.0.0:4000"
 )
-
 
 image = client.images.generate(
     prompt="A cute baby sea otter",
@@ -90,17 +80,12 @@ image = client.images.generate(
 
 print(image)
 ```
-</TabItem>
-</Tabs>
 
 ## Input Params for `litellm.image_generation()`
 
-:::info
-
-Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
+> **info**: Any non-openai params, will be treated as provider-specific params, and sent in the request body as kwargs to the provider.
 
 [**See Reserved Params**](https://github.com/BerriAI/litellm/blob/2f5f85cb52f36448d1f8bbfbd3b8af8167d0c4c8/litellm/main.py#L4082)
-:::
 
 ### Required Fields
 
@@ -277,7 +262,6 @@ response = image_generation(
 ## Bedrock - Stable Diffusion
 Use this for stable diffusion on bedrock
 
-
 ### Usage
 ```python showLineNumbers
 import os
@@ -324,4 +308,4 @@ print(f"response: {response}")
 | Recraft | [Recraft Image Generation →](./providers/recraft#image-generation) |
 | OpenRouter | [OpenRouter Image Generation →](./providers/openrouter#image-generation) |
 | Xinference | [Xinference Image Generation →](./providers/xinference#image-generation) |
-| Nscale | [Nscale Image Generation →](./providers/nscale#image-generation) | 
+| Nscale | [Nscale Image Generation →](./providers/nscale#image-generation) |

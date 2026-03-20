@@ -1,6 +1,4 @@
 ---
-slug: /integrations/marimo
-sidebar_label: 'marimo'
 description: 'marimo is a next-generation Python notebook for interacting with data'
 title: 'Using marimo with ClickHouse'
 doc_type: 'guide'
@@ -9,17 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'sql_client'
 ---
-
-import Image from '@theme/IdealImage';
-import marimo_connect from '@site/static/images/integrations/sql-clients/marimo/clickhouse-connect.gif';
-import add_db_panel from '@site/static/images/integrations/sql-clients/marimo/panel-arrow.png';
-import add_db_details from '@site/static/images/integrations/sql-clients/marimo/add-db-details.png';
-import run_cell from '@site/static/images/integrations/sql-clients/marimo/run-cell.png';
-import choose_sql_engine from '@site/static/images/integrations/sql-clients/marimo/choose-sql-engine.png';
-import results from '@site/static/images/integrations/sql-clients/marimo/results.png';
-import dropdown_cell_chart from '@site/static/images/integrations/sql-clients/marimo/dropdown-cell-chart.png';
-import run_app_view from '@site/static/images/integrations/sql-clients/marimo/run-app-view.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Using marimo with ClickHouse
 

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /interactions
 
@@ -89,9 +88,6 @@ litellm --config /path/to/config.yaml
 
 ### Test Request
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Create Interaction"
 curl -X POST "http://localhost:4000/v1beta/interactions" \
   -H "Authorization: Bearer sk-1234" \
@@ -121,10 +117,6 @@ curl -N -X POST "http://localhost:4000/v1beta/interactions" \
 curl "http://localhost:4000/v1beta/interactions/{interaction_id}" \
   -H "Authorization: Bearer sk-1234"
 ```
-
-</TabItem>
-
-<TabItem value="google-sdk" label="Google GenAI SDK">
 
 Point the Google GenAI SDK to LiteLLM Proxy:
 
@@ -162,9 +154,6 @@ for chunk in client.interactions.create_stream(
 ):
     print(chunk)
 ```
-
-</TabItem>
-</Tabs>
 
 ## **Request/Response Format**
 

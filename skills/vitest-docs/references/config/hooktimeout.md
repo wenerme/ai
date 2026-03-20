@@ -1,6 +1,5 @@
 ---
 title: hookTimeout | Config
-outline: deep
 ---
 
 # hookTimeout

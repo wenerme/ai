@@ -1,12 +1,8 @@
 ---
 description: 'Overview of ClickHouse backup and restore'
-sidebar_label: 'S3 endpoint'
-slug: /operations/backup/s3_endpoint
 title: 'Backup and restore to/from an S3 endpoint'
 doc_type: 'guide'
 ---
-
-import Syntax from '@site/docs/operations_/backup_restore/_snippets/_syntax.md';
 
 # BACKUP / RESTORE to or from an S3 endpoint {#backup-to-a-local-disk}
 
@@ -24,10 +20,8 @@ via an S3 endpoint.
 In this example, we will create a backup to an S3 endpoint and then restore from it
 again.
 
-:::note
-For an explanation of the differences between a full backup and an incremental
+> **note**: For an explanation of the differences between a full backup and an incremental
 backup, see ["Backup types"](/operations/backup/overview/#backup-types)
-:::
 
 You will need the following information to use this method:
 
@@ -37,16 +31,14 @@ You will need the following information to use this method:
 | Access key ID     | `BKIOZLE2VYN3VXXTP9RC`                                       |
 | Secret access key | `40bwYnbqN7xU8bVePaUCh3+YEyGXu8UOMV9ANpwL`                   |
 
-:::tip
-Creating an S3 bucket is covered in section ["use S3 Object Storage as a ClickHouse disk"](/integrations/data-ingestion/s3/index.md#configuring-s3-for-clickhouse-use)
-:::
+> **tip**: Creating an S3 bucket is covered in section ["use S3 Object Storage as a ClickHouse disk"](/integrations/data-ingestion/s3/index.md#configuring-s3-for-clickhouse-use)
 
 The destination for a backup is specified as:
 
 ```sql
 S3('<s3 endpoint>/<directory>', '<access key id>', '<secret access key>', '<extra_credentials>')
 ```
-<br/>
+
 <VerticalStepper headerLevel="h4">
 
 #### Setup {#create-a-table}

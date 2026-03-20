@@ -28,9 +28,9 @@ You can use an encryption key from Hashicorp Vault to encrypt secrets in the Gra
 4. From within Grafana, turn on envelope encryption.
 
 5. Add your Hashicorp Vault details to the Grafana configuration file; depending on your operating system, is usually named `grafana.ini`:
-   <br><br>a. Add a new section to the configuration file, with a name in the format of `[security.encryption.hashicorpvault.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
-   <br><br>b. Fill in the section with the following values:
-   <br>
+   a. Add a new section to the configuration file, with a name in the format of `[security.encryption.hashicorpvault.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
+   b. Fill in the section with the following values:
+   
    - `token`: a periodic service token used to authenticate within Hashicorp Vault.
    - `url`: URL of the Hashicorp Vault server.
    - `transit_engine_path`: mount point of the transit engine.

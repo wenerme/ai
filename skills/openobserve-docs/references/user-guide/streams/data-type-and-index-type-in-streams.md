@@ -1,10 +1,9 @@
 This guide explains how to define and configure stream fields in OpenObserve, including supported field types and index options. 
 
-
 ## Define stream fields
 
 When creating a stream, each field requires three components:
-![define strean fields](../../images/stream-fields.png)
+[define strean fields]
 
 1. **Field Name**: A unique identifier for the field within the stream.
 2. **Data Type**: The data type that values in this field will use.
@@ -71,6 +70,3 @@ Each field may use one index type to accelerate queries. Once applied, it cannot
 - **Performance**: Distributes records evenly into fixed partitions.
 - **Storage impact**: Balanced partition sizes and predictable access.
 - **Avoid if**: The field has only a few distinct values.
-
-
-

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Custom Guardrail
 
@@ -71,7 +69,7 @@ class myCustomGuardrail(CustomGuardrail):
         return response.json()
 ```
 
-:::tip Advanced: Using Individual Event Hooks
+> **tip**: Advanced: Using Individual Event Hooks
 
 If you need more fine-grained control, you can implement individual event hooks instead of (or in addition to) `apply_guardrail`:
 
@@ -81,8 +79,6 @@ If you need more fine-grained control, you can implement individual event hooks 
 - `async_post_call_streaming_iterator_hook` - Pass the entire stream to the guardrail
 
 **[See examples of individual event hooks here](#advanced-individual-event-hooks)** | **[See detailed spec of methods here](#customguardrail-methods)**
-
-:::
 
 ### 2. Pass your custom guardrail class in LiteLLM `config.yaml`
 
@@ -109,16 +105,13 @@ guardrails:
       api_base: https://api.myguardrail.com
 ```
 
-:::info Mode Options
+> **info**: Mode Options
 
 - `during_call` - Default mode, runs `apply_guardrail` method (or `async_moderation_hook` if using individual hooks)
 - `pre_call` - Runs `async_pre_call_hook` for input modification
 - `post_call` - Runs `async_post_call_success_hook` for output validation
 
-:::
-
-<details>
-<summary>Advanced: Multiple modes with individual event hooks</summary>
+Advanced: Multiple modes with individual event hooks
 
 If you're using individual event hooks, you can configure multiple guardrails with different modes:
 
@@ -138,17 +131,11 @@ guardrails:
       mode: "post_call"                 # runs async_post_call_success_hook
 ```
 
-</details>
-
 ### 3. Start LiteLLM Gateway 
-
-<Tabs>
-<TabItem value="docker" label="Docker Run">
 
 Mount your `custom_guardrail.py` on the LiteLLM Docker container
 
 This mounts your `custom_guardrail.py` file from your local directory to the `/app` directory in the Docker container, making it accessible to the LiteLLM Gateway.
-
 
 ```shell
 docker run -d \
@@ -163,25 +150,13 @@ docker run -d \
   --detailed_debug \
 ```
 
-</TabItem>
-
-<TabItem value="py" label="litellm pip">
-
-
 ```shell
 litellm --config config.yaml --detailed_debug
 ```
 
-</TabItem>
-
-</Tabs>
-
 ### 4. Test it 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Blocked Request" value = "blocked">
 
 This request will be blocked if it violates your guardrail policy:
 
@@ -214,10 +189,6 @@ Expected response when blocked:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call" value = "allowed">
-
 This request passes the guardrail:
 
 ```shell
@@ -233,19 +204,11 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-</Tabs>
-
-<details>
-<summary>Advanced: Testing individual event hooks</summary>
+Advanced: Testing individual event hooks
 
 If you're using individual event hooks, you can test each mode separately:
 
 #### Test `"custom-pre-guard"`
-
-<Tabs>
-<TabItem label="Modify input" value = "not-allowed">
 
 Expect this to mask the word `litellm` before sending the request to the LLM API. [This runs the `async_pre_call_hook`](#advanced-individual-event-hooks)
 
@@ -265,10 +228,6 @@ curl -i  -X POST http://localhost:4000/v1/chat/completions \
 }'
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -282,14 +241,7 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-</Tabs>
-
 #### Test `"custom-during-guard"`
-
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since `litellm` is in the message content. [This runs the `async_moderation_hook`](#advanced-individual-event-hooks)
 
@@ -322,10 +274,6 @@ Expected response:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -339,14 +287,7 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-</Tabs>
-
 #### Test `"custom-post-guard"`
-
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since `coffee` will be in the response content. [This runs the `async_post_call_success_hook`](#advanced-individual-event-hooks)
 
@@ -379,10 +320,6 @@ Expected response:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i  -X POST http://localhost:4000/v1/chat/completions \
 -H "Content-Type: application/json" \
@@ -399,20 +336,9 @@ curl -i  -X POST http://localhost:4000/v1/chat/completions \
 }'
 ```
 
-</TabItem>
-
-</Tabs>
-
-</details>
-
 ## ✨ Pass additional parameters to guardrail
 
-:::info
-
-✨ This is an Enterprise only feature [Contact us to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Contact us to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 Use this to pass additional parameters to the guardrail API call. e.g. things like success threshold
 
@@ -459,9 +385,6 @@ class myCustomGuardrail(CustomGuardrail):
 
 LiteLLM Proxy allows you to pass `guardrails` in the request body, following the [`guardrails` spec](quick_start#spec-guardrails-parameter).
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python">
-
 ```python
 import openai
 client = openai.OpenAI(
@@ -483,9 +406,6 @@ response = client.chat.completions.create(
     }
 )
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl">
 
 ```shell
 curl 'http://0.0.0.0:4000/chat/completions' \
@@ -507,8 +427,6 @@ curl 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
 
 The `get_guardrail_dynamic_request_body_params` method will return:
 ```json
@@ -539,7 +457,6 @@ from litellm.caching.caching import DualCache
 from litellm.integrations.custom_guardrail import CustomGuardrail
 from litellm.proxy._types import UserAPIKeyAuth
 from litellm.types.utils import ModelResponseStream, CallTypes
-
 
 class myCustomGuardrail(CustomGuardrail):
     def __init__(
@@ -657,7 +574,6 @@ class myCustomGuardrail(CustomGuardrail):
 | `async_moderation_hook` | A hook that runs during the LLM API call| ✅ | INPUT | ❌ | ❌ | ✅ |
 | `async_post_call_success_hook` | A hook that runs after a successful LLM API call| ✅ | INPUT, OUTPUT | ❌ | ✅ | ✅ |
 | `async_post_call_streaming_iterator_hook` | A hook that processes streaming responses | ✅ | OUTPUT | ❌ | ✅ | ✅ |
-
 
 ## Frequently Asked Questions
 

@@ -1,15 +1,10 @@
 ---
 description: 'Data for billions of taxi and for-hire vehicle (Uber, Lyft, etc.) trips
   originating in New York City since 2009'
-sidebar_label: 'New York taxi data'
-slug: /getting-started/example-datasets/nyc-taxi
 title: 'New York Taxi Data'
 doc_type: 'guide'
 keywords: ['example dataset', 'nyc taxi', 'tutorial', 'sample data', 'getting started']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 The New York taxi data sample consists of 3+ billion taxi and for-hire vehicle (Uber, Lyft, etc.) trips originating in New York City since 2009. This getting started guide uses a 3m row sample.
 
@@ -19,10 +14,8 @@ The full dataset can be obtained in a couple of ways:
 - download prepared partitions
 - Alternatively you can query the full dataset in our demo environment at [sql.clickhouse.com](https://sql.clickhouse.com/?query=U0VMRUNUIGNvdW50KCkgRlJPTSBueWNfdGF4aS50cmlwcw&chart=eyJ0eXBlIjoibGluZSIsImNvbmZpZyI6eyJ0aXRsZSI6IlRlbXBlcmF0dXJlIGJ5IGNvdW50cnkgYW5kIHllYXIiLCJ4YXhpcyI6InllYXIiLCJ5YXhpcyI6ImNvdW50KCkiLCJzZXJpZXMiOiJDQVNUKHBhc3Nlbmdlcl9jb3VudCwgJ1N0cmluZycpIn19).
 
-:::note
-The example queries below were executed on a **Production** instance of ClickHouse Cloud. For more information see
+> **note**: The example queries below were executed on a **Production** instance of ClickHouse Cloud. For more information see
 ["Playground specifications"](/getting-started/playground#specifications).
-:::
 
 ## Create the table trips {#create-the-table-trips}
 
@@ -62,9 +55,6 @@ ClickHouse Cloud using the `s3` table function.
 
 The same data is stored in both S3 and GCS; choose either tab.
 
-<Tabs groupId="storageVendor">
-<TabItem value="s3" label="S3">
-
 The following command streams three files from an S3 bucket into the `trips_small` table (the `{0..2}` syntax is a wildcard for the values 0, 1, and 2):
 
 ```sql
@@ -92,8 +82,6 @@ FROM s3(
     'TabSeparatedWithNames'
 );
 ```
-</TabItem>
-<TabItem value="gcs" label="GCS" default>
 
 The following command streams three files from a GCS bucket into the `trips` table (the `{0..2}` syntax is a wildcard for the values 0, 1, and 2):
 
@@ -122,8 +110,6 @@ FROM gcs(
     'TabSeparatedWithNames'
 );
 ```
-</TabItem>
-</Tabs>
 
 ## Sample queries {#sample-queries}
 
@@ -183,9 +169,7 @@ ORDER BY passenger_count ASC
 
 ## Download of prepared partitions {#download-of-prepared-partitions}
 
-:::note
-The following steps provide information about the original dataset, and a method for loading prepared partitions into a self-managed ClickHouse server environment.
-:::
+> **note**: The following steps provide information about the original dataset, and a method for loading prepared partitions into a self-managed ClickHouse server environment.
 
 See https://github.com/toddwschneider/nyc-taxi-data and http://tech.marksblogg.com/billion-nyc-taxi-rides-redshift.html for the description of a dataset and instructions for downloading.
 
@@ -203,9 +187,7 @@ $ sudo service clickhouse-server restart
 $ clickhouse-client --query "select count(*) from datasets.trips_mergetree"
 ```
 
-:::info
-If you will run the queries described below, you have to use the full table name, `datasets.trips_mergetree`.
-:::
+> **info**: If you will run the queries described below, you have to use the full table name, `datasets.trips_mergetree`.
 
 ## Results on single server {#results-on-single-server}
 

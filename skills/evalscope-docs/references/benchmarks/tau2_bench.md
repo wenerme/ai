@@ -1,6 +1,5 @@
 # τ²-bench
 
-
 ## Overview
 
 τ²-bench (Tau Squared Bench) is an extension and enhancement of the original τ-bench. It evaluates conversational AI agents in domain-specific scenarios with expanded capabilities including telecom domain support.
@@ -29,7 +28,6 @@
 - Uses **pass@k** aggregation for robustness evaluation
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/tau2_bench.html)
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_hat_k` |
-
 
 ## Data Statistics
 
@@ -170,5 +167,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

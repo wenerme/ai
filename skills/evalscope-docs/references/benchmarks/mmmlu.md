@@ -1,6 +1,5 @@
 # MMMLU
 
-
 ## Overview
 
 MMMLU (Multilingual Massive Multitask Language Understanding) is a multilingual extension of the MMLU benchmark. It evaluates the multilingual knowledge and reasoning capabilities of language models across 14 languages, covering 57 subjects from the original MMLU benchmark.
@@ -28,7 +27,6 @@ MMMLU (Multilingual Massive Multitask Language Understanding) is a multilingual 
 - Results are grouped by language subset
 - Cross-lingual performance comparison supported
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MMMLU (Multilingual Massive Multitask Language Understanding) is a multilingual 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -142,5 +139,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

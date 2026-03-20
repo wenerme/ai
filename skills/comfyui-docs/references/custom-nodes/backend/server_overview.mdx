@@ -44,14 +44,14 @@ Here we have just one required input, named `image_in`, of type `IMAGE`, with no
 
 Note that unlike the next few attributes, this `INPUT_TYPES` is a `@classmethod`. This is so
 that the options in dropdown widgets (like the name of the checkpoint to be loaded) can be
-computed by Comfy at run time. We'll go into this more later. {/* TODO link when written */}
+computed by Comfy at run time. We'll go into this more later. 
 
 #### RETURN_TYPES
 
 A `tuple` of `str` defining the data types returned by the node. 
 If the node has no outputs this must still be provided `RETURN_TYPES = ()`
-<Warning>If you have exactly one output, remember the trailing comma: `RETURN_TYPES = ("IMAGE",)`. 
-This is required for Python to make it a `tuple`</Warning> 
+If you have exactly one output, remember the trailing comma: `RETURN_TYPES = ("IMAGE",)`. 
+This is required for Python to make it a `tuple` 
 
 #### RETURN_NAMES
 
@@ -95,7 +95,7 @@ number (and does not specify a seed - it's best practice to have a seed input in
 the user can control reproducibility and avoid unnecessary execution), or loads an input that may have
 changed externally, or sometimes ignores inputs (so doesn't need to execute just because those inputs changed).
 
-<Warning>Despite the name, IS_CHANGED should not return a `bool`</Warning> 
+Despite the name, IS_CHANGED should not return a `bool` 
 
 `IS_CHANGED` is passed the same arguments as the main function defined by `FUNCTION`, and can return any 
 Python object. This object is compared with the one returned in the previous run (if any) and the node
@@ -142,7 +142,7 @@ If a class method `VALIDATE_INPUTS` is defined, it will be called before the wor
 `VALIDATE_INPUTS` should return `True` if the inputs are valid, or a message (as a `str`) describing the error (which will prevent execution).
 
 #### Validating Constants
-<Warning>Note that `VALIDATE_INPUTS` will only receive inputs that are defined as constants within the workflow. Any inputs that are received from other nodes will *not* be available in `VALIDATE_INPUTS`.</Warning>
+Note that `VALIDATE_INPUTS` will only receive inputs that are defined as constants within the workflow. Any inputs that are received from other nodes will *not* be available in `VALIDATE_INPUTS`.
 
 `VALIDATE_INPUTS` is called with only the inputs that its signature requests (those returned by `inspect.getfullargspec(obj_class.VALIDATE_INPUTS).args`). Any inputs which are received in this way will *not* run through the default validation rules. For example, in the following snippet, the front-end will use the specified `min` and `max` values of the `foo` input, but the back-end will not enforce it. 
     

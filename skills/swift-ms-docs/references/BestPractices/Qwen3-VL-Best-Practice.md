@@ -10,7 +10,6 @@ pip install "ms-swift>=4.0"
 ```
 - About video data training hangs: Using the decord backend for video reading may cause the training process to hang, see [this issue](https://github.com/dmlc/decord/issues/269). You can use the torchcodec backend instead. For details, refer to the [qwen_vl_utils](https://github.com/QwenLM/Qwen3-VL/blob/50068df2334f309979ff05d75f1078c8309c63ed/qwen-vl-utils/src/qwen_vl_utils/vision_process.py#L390-L400) library.
 
-
 ## Inference
 Inference using transformers:
 
@@ -76,7 +75,6 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ['VIDEO_MAX_TOKEN_NUM'] = '128'
 os.environ['FPS_MAX_FRAMES'] = '16'
-
 
 from swift.infer_engine import TransformersEngine, InferRequest, RequestConfig
 engine = TransformersEngine('Qwen/Qwen3-VL-4B-Instruct')  # attn_impl='flash_attention_2'
@@ -153,7 +151,6 @@ Overall, this is a sweet, lighthearted video that showcases the innocence and im
 ```
 
 - For model-specific parameters, such as environment variables like `VIDEO_MAX_TOKEN_NUM`, please refer to the [Command Line Parameters Documentation](../Instruction/Command-line-parameters.md#qwen3_vl-qwen3_5).
-
 
 ## Training
 This section introduces how to train Qwen3-VL using ms-swift and Megatron-SWIFT. We recommend using ms-swift (i.e., transformers backend, which is more convenient and simple) for Dense models, and Megatron-SWIFT (i.e., megatron backend, which offers faster training speed; see benchmark [here](../Megatron-SWIFT/Quick-start.md#benchmark)) for MoE models.

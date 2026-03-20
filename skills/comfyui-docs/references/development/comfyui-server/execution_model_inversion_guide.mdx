@@ -13,7 +13,7 @@ Any code that monkey patched the execution model is likely to stop working. Note
 
 Prior to this PR, only nodes that were connected to outputs exclusively through a string of `"required"` inputs were actually validated. If you had custom nodes that were only ever connected to `"optional"` inputs, you previously wouldn't have been seeing that they failed validation.
 
-<Tip>If your nodes' outputs could already be connected to `"required"` inputs, it is unlikely that anything in this section applies to you. It will primarily apply to custom node authors who use custom types and exclusively use `"optional"` inputs.</Tip>
+If your nodes' outputs could already be connected to `"required"` inputs, it is unlikely that anything in this section applies to you. It will primarily apply to custom node authors who use custom types and exclusively use `"optional"` inputs.
 
 Here are some of the things that could cause you to fail validation along with recommended solutions:
 

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /guardrails/apply_guardrail
 
@@ -39,12 +38,8 @@ guardrails:
 3. Ensure your AWS credentials have Bedrock permissions
 4. Configure the guardrail in your LiteLLM config 
 
-
 ## Usage
 ---
-
-<Tabs>
-<TabItem value="presidio" label="Presidio PII Guardrail" default>
 
 In this example `mask_pii` is a Presidio guardrail configured on LiteLLM.
 
@@ -60,9 +55,6 @@ curl -X POST 'http://localhost:4000/guardrails/apply_guardrail' \
 }'
 ```
 
-</TabItem>
-<TabItem value="bedrock" label="Bedrock Guardrail">
-
 In this example `bedrock-content-guard` is a Bedrock guardrail configured on LiteLLM.
 
 ```bash showLineNumbers title="Example calling the endpoint"
@@ -77,10 +69,6 @@ curl -X POST 'http://localhost:4000/guardrails/apply_guardrail' \
 ```
 
 **Note**: For Bedrock guardrails, the `entities` parameter is not used as Bedrock handles content moderation based on its own policies.
-
-</TabItem>
-</Tabs>
-
 
 ## Request Format
 ---
@@ -117,17 +105,11 @@ The response will contain the processed text after applying the guardrail.
 
 #### Example Response
 
-<Tabs>
-<TabItem value="presidio" label="Presidio Response" default>
-
 ```json
 {
     "response_text": "My name is [REDACTED] and my email is [REDACTED]"
 }
 ```
-
-</TabItem>
-<TabItem value="bedrock" label="Bedrock Response">
 
 ```json
 {
@@ -136,9 +118,6 @@ The response will contain the processed text after applying the guardrail.
 ```
 
 **Note**: If Bedrock guardrail blocks the content, the endpoint will return an error with the blocking reason.
-
-</TabItem>
-</Tabs>
 
 #### Response Fields
 - **response_text** (string):  

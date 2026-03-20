@@ -1,35 +1,33 @@
 ---
 title: Bun Redis with Upstash
-sidebarTitle: Upstash with Bun
 mode: center
 ---
 
 [Upstash](https://upstash.com/) is a fully managed Redis database as a service. Upstash works with the Redis® API, which means you can use Bun's native Redis client to connect to your Upstash database.
 
-<Note>TLS is enabled by default for all Upstash Redis databases.</Note>
+TLS is enabled by default for all Upstash Redis databases.
 
 ---
 
-<Steps>
-  <Step title="Create a new project">
+  
     Create a new project by running `bun init`:
     
     ```sh terminal icon="terminal"
     bun init bun-upstash-redis
     cd bun-upstash-redis
     ```
-  </Step>
-  <Step title="Create an Upstash Redis database">
+  
+  
     Go to the [Upstash dashboard](https://console.upstash.com/) and create a new Redis database. After completing the [getting started guide](https://upstash.com/docs/redis/overall/getstarted), you'll see your database page with connection information.
 
     The database page displays two connection methods; HTTP and TLS. For Bun's Redis client, you need the **TLS** connection details. This URL starts with `rediss://`.
 
-    	<Frame>
-    		![Upstash Redis database page](/images/guides/upstash-1.png)
-    	</Frame>
+    	
+    		[Upstash Redis database page]
+    	
 
-  </Step>
-  <Step title="Connect using Bun's Redis client">
+  
+  
 		You can connect to Upstash by setting environment variables with Bun's default `redis` client.
 
     Set the `REDIS_URL` environment variable in your `.env` file using the Redis endpoint (not the REST URL):
@@ -55,8 +53,8 @@ mode: center
     const redis = new RedisClient(process.env.REDIS_URL); // [!code ++]
     ```
 
-  </Step>
-	<Step title="Use the Redis client">
+  
+	
 		You can now use the Redis client to interact with your Upstash Redis database:
 
     	```ts index.ts icon="/icons/typescript.svg"
@@ -82,6 +80,3 @@ mode: center
     	```
 
     	The Redis client automatically handles connections in the background. No need to manually connect or disconnect for basic operations.
-    </Step>
-
-</Steps>

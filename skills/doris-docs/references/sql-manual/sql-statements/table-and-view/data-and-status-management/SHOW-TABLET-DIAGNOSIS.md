@@ -10,7 +10,6 @@
 
 This statement is used to diagnose the specified tablet. The result will display information about the tablet along with any potential issues.
 
-
 ## Syntax
 
 ```sql

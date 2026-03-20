@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Sumo Logic
 
@@ -8,10 +7,8 @@ Send LiteLLM logs to Sumo Logic for observability, monitoring, and analysis.
 Sumo Logic is a cloud-native machine data analytics platform that provides real-time insights into your applications and infrastructure.
 https://www.sumologic.com/
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-:::
 
 ## Pre-Requisites
 
@@ -33,9 +30,6 @@ pip install litellm
 Use just 2 lines of code to instantly log your LLM responses to Sumo Logic.
 
 The Sumo Logic HTTP Source URL includes the authentication token, so no separate API key is required.
-
-<Tabs>
-<TabItem value="python" label="SDK">
 
 ```python
 litellm.callbacks = ["sumologic"]
@@ -62,9 +56,6 @@ response = litellm.completion(
   ]
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Setup config.yaml
 
@@ -104,9 +95,6 @@ curl -L -X POST 'http://0.0.0.0:4000/chat/completions' \
   ]
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## What Data is Logged?
 
@@ -197,9 +185,6 @@ callback_settings:
 
 Control how LiteLLM batches logs before sending to Sumo Logic:
 
-<Tabs>
-<TabItem value="python" label="SDK">
-
 ```python
 import litellm
 
@@ -213,9 +198,6 @@ litellm.callbacks = ["sumologic"]
 # Default flush_interval: 60 seconds
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
-
 ```yaml
 litellm_settings:
   callbacks: ["sumologic"]
@@ -223,9 +205,6 @@ litellm_settings:
 environment_variables:
   SUMOLOGIC_WEBHOOK_URL: os.environ/SUMOLOGIC_WEBHOOK_URL
 ```
-
-</TabItem>
-</Tabs>
 
 ### Compressed Data
 

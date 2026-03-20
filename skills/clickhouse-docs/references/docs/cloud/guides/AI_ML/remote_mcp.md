@@ -1,26 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/remote_mcp
-sidebar_label: 'Enable remote MCP server'
 title: 'Enable and connect ClickHouse Cloud Remote MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to enable and use the ClickHouse Cloud Remote MCP'
 keywords: ['AI', 'ClickHouse Cloud', 'MCP']
 show_related_blogs: true
-sidebar_position: 1
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-import img1 from '@site/static/images/use-cases/AI_ML/MCP/1connectmcpmodal.png';
-import img2 from '@site/static/images/use-cases/AI_ML/MCP/2enable_mcp.png';
-import img3 from '@site/static/images/use-cases/AI_ML/MCP/3oauth.png';
-import img4 from '@site/static/images/use-cases/AI_ML/MCP/4oauth_success.png';
-import img5 from '@site/static/images/use-cases/AI_ML/MCP/5connected_mcp_claude.png';
-import img6 from '@site/static/images/use-cases/AI_ML/MCP/6slash_mcp_claude.png';
-import img7 from '@site/static/images/use-cases/AI_ML/MCP/7usage_mcp.png';
 
 This guide shows you how to enable the ClickHouse Cloud Remote MCP Server and set it up for use with common developer tools.
 

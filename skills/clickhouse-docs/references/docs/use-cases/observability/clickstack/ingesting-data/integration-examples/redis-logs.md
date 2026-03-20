@@ -1,27 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/redis
 title: 'Monitoring Redis Logs with ClickStack'
-sidebar_label: 'Redis Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Redis Logs with ClickStack'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/redis/redis-import-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/redis/redis-logs-dashboard.png';
-import log_view from '@site/static/images/clickstack/redis/redis-log-view.png';
-import log from '@site/static/images/clickstack/redis/redis-log.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
 
 # Monitoring Redis Logs with ClickStack {#redis-clickstack}
 
 :::note[TL;DR]
 Collect and visualize Redis server logs in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Redis {#existing-redis}
 
@@ -115,12 +101,10 @@ This configuration:
 - Adds `source: redis` attribute for filtering in HyperDX
 - Routes logs to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-- You only define new receivers and pipelines in the custom config
+> **note**: - You only define new receivers and pipelines in the custom config
 - The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration - you just reference them by name
 - The `time_parser` operator extracts timestamps from Redis Logs to preserve original log timing
 - This configuration uses `start_at: beginning` to read all existing logs when the collector starts, allowing you to see logs immediately. For production deployments where you want to avoid re-ingesting logs on collector restarts, change to `start_at: end`.
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -158,9 +142,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the Redis log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the Redis log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -241,9 +223,7 @@ docker run --name clickstack-demo \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-**This mounts the log file directly into the container. This is done for testing purposes with static demo data.**
-:::
+> **note**: **This mounts the log file directly into the container. This is done for testing purposes with static demo data.**
 
 ## Verify logs in HyperDX {#verify-demo-logs}
 
@@ -255,7 +235,6 @@ Once ClickStack is running:
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-10-27 10:00:00 - 2025-10-28 10:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 <Image img={log_view} alt="Log view"/>
 
@@ -284,9 +263,7 @@ To help you get started monitoring Redis with ClickStack, we provide essential v
 
 #### The dashboard will be created with all visualizations pre-configured {#created-dashboard}
 
-:::note
-For the demo dataset, set the time range to **2025-10-27 10:00:00 - 2025-10-28 10:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-10-27 10:00:00 - 2025-10-28 10:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 <Image img={example_dashboard} alt="Example Dashboard"/>
 

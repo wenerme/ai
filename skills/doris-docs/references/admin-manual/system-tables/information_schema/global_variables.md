@@ -12,9 +12,7 @@ View Global Variables
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

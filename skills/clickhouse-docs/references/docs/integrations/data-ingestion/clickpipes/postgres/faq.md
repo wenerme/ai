@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'FAQ'
 description: 'Frequently asked questions about ClickPipes for Postgres.'
-slug: /integrations/clickpipes/postgres/faq
-sidebar_position: 2
 title: 'ClickPipes for Postgres FAQ'
 keywords: ['postgres faq', 'clickpipes', 'toast columns', 'replication slot', 'publications']
 doc_type: 'reference'
@@ -10,9 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import failover_slot from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/failover_slot.png'
-import Image from '@theme/IdealImage';
 
 # ClickPipes for Postgres FAQ
 
@@ -98,13 +92,10 @@ For more details, refer to:
 
 ### Can I update primary key columns in PostgreSQL? {#can-i-update-primary-key-columns-in-postgresql}
 
-:::warning
-Primary key updates in PostgreSQL can't be properly replayed in ClickHouse by default.
+> **warning**: Primary key updates in PostgreSQL can't be properly replayed in ClickHouse by default.
 
 This limitation exists because `ReplacingMergeTree` deduplication works based on the `ORDER BY` columns (which typically correspond to the primary key). When a primary key is updated in PostgreSQL, it appears as a new row with a different key in ClickHouse, rather than an update to the existing row. This can lead to both the old and new primary key values existing in your ClickHouse table.
-:::
-
-Note that updating primary key columns isn't a common practice in PostgreSQL database design, as primary keys are intended to be immutable identifiers. Most applications avoid primary key updates by design, making this limitation rarely encountered in typical use cases.
+> **Note**: that updating primary key columns isn't a common practice in PostgreSQL database design, as primary keys are intended to be immutable identifiers. Most applications avoid primary key updates by design, making this limitation rarely encountered in typical use cases.
 
 There is an experimental setting available that can enable primary key update handling, but it comes with significant performance implications and isn't recommended for production use without careful consideration.
 
@@ -225,15 +216,11 @@ You have two options when dealing with tables without primary keys:
    CREATE PUBLICATION clickpipes_publication FOR TABLE <...>, <...>;
    ```
 
-:::tip
-If you're creating a publication manually instead of letting ClickPipes manage it, we don't recommend creating a publication `FOR ALL TABLES`, this leads to more traffic from Postgres to ClickPipes (to sending changes for other tables not in the pipe) and reduces overall efficiency.
+> **tip**: If you're creating a publication manually instead of letting ClickPipes manage it, we don't recommend creating a publication `FOR ALL TABLES`, this leads to more traffic from Postgres to ClickPipes (to sending changes for other tables not in the pipe) and reduces overall efficiency.
 
 For manually created publications, please add any tables you want to the publication before adding them to the pipe.
-:::
 
-:::warning
-If you're replicating from a Postgres read replica/hot standby, you will need to create your own publication on the primary instance, which will automatically propagate to the standby. The ClickPipe won't be able to manage the publication in this case as you're unable to create publications on a standby.
-:::
+> **warning**: If you're replicating from a Postgres read replica/hot standby, you will need to create your own publication on the primary instance, which will automatically propagate to the standby. The ClickPipe won't be able to manage the publication in this case as you're unable to create publications on a standby.
 
 ### Recommended `max_slot_wal_keep_size` settings {#recommended-max_slot_wal_keep_size-settings}
 

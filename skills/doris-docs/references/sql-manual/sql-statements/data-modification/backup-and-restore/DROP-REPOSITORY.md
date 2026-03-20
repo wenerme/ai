@@ -26,7 +26,6 @@ DROP REPOSITORY <repo_name>;
 |:-------------------|:-----------------------------|:----------------------------------------------------|
 | ADMIN_PRIV         | Entire cluster management permissions | Only the root or superuser can create repositories  |
 
-
 ## Usage notes
 - Deleting the repository only removes its mapping in Doris and does not delete the actual repository data. After deletion, the repository can be mapped again by specifying the same LOCATION.
 

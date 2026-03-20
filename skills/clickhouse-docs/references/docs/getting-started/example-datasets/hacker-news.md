@@ -1,7 +1,5 @@
 ---
 description: 'Dataset containing 28 million rows of hacker news data.'
-sidebar_label: 'Hacker news'
-slug: /getting-started/example-datasets/hacker-news
 title: 'Hacker News dataset'
 doc_type: 'guide'
 keywords: ['example dataset', 'hacker news', 'sample data', 'text analysis', 'vector search']
@@ -471,10 +469,9 @@ INSERT INTO hackernews SELECT *
 FROM url('https://datasets-documentation.s3.eu-west-3.amazonaws.com/hackernews/hacknernews.parquet', 'Parquet')
 ```
 
-:::note Null keys with Parquet
+> **note**: Null keys with Parquet
 As a condition of the Parquet format, we have to accept that keys might be `NULL`,
 even though they aren't in the data.
-:::
 
 Run the following command to view the inferred schema:
 

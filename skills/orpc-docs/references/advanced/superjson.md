@@ -7,16 +7,11 @@ description: Replace the default oRPC RPC serializer with SuperJson.
 
 This guide explains how to replace the default oRPC RPC serializer with [SuperJson](https://github.com/blitz-js/superjson).
 
-:::info
-While the default oRPC serializer is faster and more efficient, SuperJson is widely adopted and may be preferred for compatibility.
-:::
+> **info**: While the default oRPC serializer is faster and more efficient, SuperJson is widely adopted and may be preferred for compatibility.
 
 ## SuperJson Serializer
 
-:::warning
-The `SuperJsonSerializer` supports only the data types that SuperJson handles, plus `AsyncIteratorObject` at the root level for [Event Iterator](/docs/event-iterator). It does not support all [RPC supported types](/docs/rpc-handler#supported-data-types).
-:::
-
+> **warning**: The `SuperJsonSerializer` supports only the data types that SuperJson handles, plus `AsyncIteratorObject` at the root level for [Event Iterator](/docs/event-iterator). It does not support all [RPC supported types](/docs/rpc-handler#supported-data-types).
 ```ts twoslash
 import { createORPCErrorFromJson, ErrorEvent, isORPCErrorJson, mapEventIterator, toORPCError } from '@orpc/client'
 import type { StandardRPCSerializer } from '@orpc/client/standard'

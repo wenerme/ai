@@ -8,7 +8,6 @@ GitHub: [LongWriter](https://github.com/THUDM/LongWriter)
 
 Technical Report: [Minimum Tuning to Unlock Long Output from LLMs with High Quality Data as the Key](https://arxiv.org/abs/2410.10210)
 
-
 ## Usage
 
 ### Installation
@@ -66,7 +65,6 @@ task_cfg = dict(stage=['infer', 'eval_l', 'eval_q'],
   - `generation_kwargs`: The generation configs.
   - `proc_num`: process number for inference and evaluation.
 
-
 2. Configuration with json (Optional):
 
 ```json
@@ -105,7 +103,6 @@ task_cfg = dict(stage=['infer', 'eval_l', 'eval_q'],
 ```
 Refer to [default_task.json](https://github.com/modelscope/evalscope/blob/main/evalscope/third_party/longbench_write/default_task.json) for more details.
 
-
 2. Configuration with yaml (Optional):
 
 ```yaml
@@ -138,13 +135,11 @@ eval_config:
 ```
 Refer to [default_task.yaml](https://github.com/modelscope/evalscope/blob/main/evalscope/third_party/longbench_write/default_task.yaml) for more details.
 
-
 ### Run Model Inference
 We recommend to use the [vLLM](https://github.com/vllm-project/vllm) to deploy the model.
 
 Environment:
 * A100(80G) x 1
-
 
 To start vLLM server, run the following command:
 ```shell
@@ -159,7 +154,6 @@ CUDA_VISIBLE_DEVICES=0 VLLM_USE_MODELSCOPE=True vllm serve --max-model-len=65536
 
 * Note: You can use multiple GPUs by setting `CUDA_VISIBLE_DEVICES=0,1,2,3` alternatively.
 
-
 ### Run Evaluation
 
 ```python
@@ -167,7 +161,6 @@ from evalscope.third_party.longbench_write import run_task
 
 run_task(task_cfg=task_cfg)
 ```
-
 
 ### Results and metrics
 See `eval_length.jsonl` and `eval_quality.jsonl` in the outputs dir.

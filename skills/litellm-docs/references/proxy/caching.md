@@ -1,12 +1,7 @@
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 # Caching
 
-:::note
-
-For OpenAI/Anthropic Prompt Caching, go [here](../completion/prompt_caching.md)
-
-:::
+> **note**: For OpenAI/Anthropic Prompt Caching, go [here](../completion/prompt_caching.md)
 
 Cache LLM Responses. LiteLLM's caching system stores and reuses LLM responses to save costs and
 reduce latency. When you make the same request twice, the cached response is returned instead of
@@ -23,10 +18,6 @@ calling the LLM API again.
 - GCS Bucket Cache
 
 ## Quick Start
-
-<Tabs>
-
-<TabItem value="redis" label="redis cache">
 
 Caching can be enabled by adding the `cache` key in the `config.yaml`
 
@@ -68,10 +59,6 @@ litellm.caching.caching:<hash>
 
 #### Redis Cluster
 
-<Tabs>
-
-<TabItem value="redis-cluster-config" label="Set on config.yaml">
-
 ```yaml
 model_list:
   - model_name: "*"
@@ -85,10 +72,6 @@ litellm_settings:
     redis_startup_nodes: [{ "host": "127.0.0.1", "port": "7001" }]
 ```
 
-</TabItem>
-
-<TabItem value="redis-env" label="Set on .env">
-
 You can configure redis cluster in your .env by setting `REDIS_CLUSTER_NODES` in your .env
 
 **Example `REDIS_CLUSTER_NODES`** value
@@ -97,9 +80,7 @@ You can configure redis cluster in your .env by setting `REDIS_CLUSTER_NODES` in
 REDIS_CLUSTER_NODES = "[{"host": "127.0.0.1", "port": "7001"}, {"host": "127.0.0.1", "port": "7003"}, {"host": "127.0.0.1", "port": "7004"}, {"host": "127.0.0.1", "port": "7005"}, {"host": "127.0.0.1", "port": "7006"}, {"host": "127.0.0.1", "port": "7007"}]"
 ```
 
-:::note
-
-Example python script for setting redis cluster nodes in .env:
+> **note**: Example python script for setting redis cluster nodes in .env:
 
 ```python
 # List of startup nodes
@@ -117,17 +98,7 @@ os.environ["REDIS_CLUSTER_NODES"] = json.dumps(startup_nodes)
 print("REDIS_CLUSTER_NODES", os.environ["REDIS_CLUSTER_NODES"])
 ```
 
-:::
-
-</TabItem>
-
-</Tabs>
-
 #### Redis Sentinel
-
-<Tabs>
-
-<TabItem value="redis-sentinel-config" label="Set on config.yaml">
 
 ```yaml
 model_list:
@@ -144,10 +115,6 @@ litellm_settings:
     sentinel_password: "password" # [OPTIONAL]
 ```
 
-</TabItem>
-
-<TabItem value="redis-env" label="Set on .env">
-
 You can configure redis sentinel in your .env by setting `REDIS_SENTINEL_NODES` in your .env
 
 **Example `REDIS_SENTINEL_NODES`** value
@@ -158,9 +125,7 @@ REDIS_SERVICE_NAME = "mymaster"
 REDIS_SENTINEL_PASSWORD = "password"
 ```
 
-:::note
-
-Example python script for setting redis cluster nodes in .env:
+> **note**: Example python script for setting redis cluster nodes in .env:
 
 ```python
 # List of startup nodes
@@ -170,12 +135,6 @@ sentinel_nodes = [["localhost", 26379]]
 os.environ["REDIS_SENTINEL_NODES"] = json.dumps(sentinel_nodes)
 print("REDIS_SENTINEL_NODES", os.environ["REDIS_SENTINEL_NODES"])
 ```
-
-:::
-
-</TabItem>
-
-</Tabs>
 
 #### TTL
 
@@ -210,16 +169,10 @@ using it vs. redis_host, port, etc.
 
 For GCP Memorystore Redis with IAM authentication, install the required dependency:
 
-:::info IAM authentication for redis is only supported via GCP and only on Redis Clusters for now.
-:::
-
+> **info**: IAM authentication for redis is only supported via GCP and only on Redis Clusters for now.
 ```shell
 pip install google-cloud-iam
 ```
-
-<Tabs>
-
-<TabItem value="gcp-iam-config" label="Set on config.yaml">
 
 For Redis Cluster with GCP IAM:
 
@@ -235,10 +188,6 @@ litellm_settings:
     ssl_cert_reqs: null
     ssl_check_hostname: false
 ```
-
-</TabItem>
-
-<TabItem value="gcp-iam-env" label="Set on .env">
 
 You can configure GCP IAM Redis authentication in your .env:
 
@@ -265,9 +214,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account-key.json"
 # No additional setup needed
 ```
 
-</TabItem>
-
-</Tabs> 
+ 
 #### Step 2: Add Redis Credentials to .env
 Set either `REDIS_URL` or the `REDIS_HOST` in your os environment, to enable caching.
 
@@ -282,9 +229,7 @@ Set either `REDIS_URL` or the `REDIS_HOST` in your os environment, to enable cac
   ```
 
 **Additional kwargs**  
-:::info
-Use `REDIS_*` environment variables to configure all Redis client library parameters. This is the suggested mechanism for toggling Redis settings as it automatically maps environment variables to Redis client kwargs.
-:::
+> **info**: Use `REDIS_*` environment variables to configure all Redis client library parameters. This is the suggested mechanism for toggling Redis settings as it automatically maps environment variables to Redis client kwargs.
 
 You can pass in any additional redis.Redis arg, by storing the variable + value in your os
 environment, like this:
@@ -300,9 +245,7 @@ REDIS_SSL_CERT_REQS = "None"
 REDIS_CONNECTION_POOL_KWARGS = '{"max_connections": 20}'
 ```
 
-:::warning
-**Note**: For non-string Redis parameters (like integers, booleans, or complex objects), avoid using `REDIS_*` environment variables as they may fail during Redis client initialization. Instead, use `cache_kwargs` in your router configuration for such parameters.
-:::
+> **warning**: **Note**: For non-string Redis parameters (like integers, booleans, or complex objects), avoid using `REDIS_*` environment variables as they may fail during Redis client initialization. Instead, use `cache_kwargs` in your router configuration for such parameters.
 
 [**See how it's read from the environment**](https://github.com/BerriAI/litellm/blob/4d7ff1b33b9991dcf38d821266290631d9bcd2dd/litellm/_redis.py#L40)
 
@@ -311,10 +254,6 @@ REDIS_CONNECTION_POOL_KWARGS = '{"max_connections": 20}'
 ```shell
 $ litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-
-<TabItem value="qdrant-semantic" label="Qdrant Semantic cache">
 
 Caching can be enabled by adding the `cache` key in the `config.yaml`
 
@@ -374,10 +313,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 **Expect to see `x-litellm-semantic-similarity` in the response headers when semantic caching is
 one**
 
-</TabItem>
-
-<TabItem value="s3" label="s3 cache">
-
 #### Step 1: Add `cache` to the config.yaml
 
 ```yaml
@@ -406,10 +341,6 @@ litellm_settings:
 ```shell
 $ litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-
-<TabItem value="gcs" label="gcs cache">
 
 #### Step 1: Add `cache` to the config.yaml
 
@@ -446,10 +377,6 @@ GCS_PATH_SERVICE_ACCOUNT="/path/to/service-account.json"
 ```shell
 $ litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-
-<TabItem value="redis-sem" label="redis semantic cache">
 
 Caching can be enabled by adding the `cache` key in the `config.yaml`
 
@@ -502,10 +429,6 @@ REDIS_<redis-kwarg-name> = ""
 $ litellm --config /path/to/config.yaml
 ```
 
-</TabItem>
-
-<TabItem value="local" label="In Memory Cache">
-
 #### Step 1: Add `cache` to the config.yaml
 
 ```yaml
@@ -520,10 +443,6 @@ litellm_settings:
 ```shell
 $ litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-
-<TabItem value="disk" label="Disk Cache">
 
 #### Step 1: Add `cache` to the config.yaml
 
@@ -541,17 +460,10 @@ litellm_settings:
 $ litellm --config /path/to/config.yaml
 ```
 
-</TabItem>
-
-</Tabs>
-
 ## Usage
 
 ### Basic
 
-<Tabs>
-<TabItem value="chat_completions" label="/chat/completions">
-
 Send the same request twice:
 
 ```shell
@@ -572,9 +484,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
    }'
 ```
 
-</TabItem>
-<TabItem value="embeddings" label="/embeddings">
-
 Send the same request twice:
 
 ```shell
@@ -592,9 +501,6 @@ curl --location 'http://0.0.0.0:4000/embeddings' \
   "input": ["write a litellm poem"]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Dynamic Cache Controls
 
@@ -611,9 +517,6 @@ Each cache parameter can be controlled on a per-request basis. Here are examples
 ### `ttl`
 
 Set how long (in seconds) to cache a response.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -634,10 +537,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -651,15 +550,9 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### `s-maxage`
 
 Only accept cached responses that are within the specified age (in seconds).
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -680,10 +573,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -697,15 +586,9 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### `no-cache`
 
 Force a fresh response, bypassing the cache.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -726,10 +609,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -743,15 +622,9 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### `no-store`
 
 Will not store the response in cache.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -772,10 +645,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -789,15 +658,9 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### `namespace`
 
 Store the response under a specific cache namespace.
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -818,10 +681,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -834,9 +693,6 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Set cache for proxy, but not on the actual llm api call
 
@@ -1013,9 +869,6 @@ litellm_settings:
 
 2. **Opting in to cache when cache is default off**
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
-
 ```python
 import os
 from openai import OpenAI
@@ -1036,10 +889,6 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -1052,11 +901,6 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-</Tabs>
-
 
 ## Redis max_connections
 

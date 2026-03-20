@@ -1,10 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/migration/elastic/intro
 title: 'Migrating to ClickStack from Elastic'
-pagination_prev: null
-pagination_next: null
-sidebar_label: 'Overview'
-sidebar_position: 0
 description: 'Overview for migrating to the ClickHouse Observability Stack from Elastic'
 show_related_blogs: true
 keywords: ['Elasticsearch']

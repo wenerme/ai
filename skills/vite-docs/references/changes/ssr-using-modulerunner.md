@@ -1,16 +1,14 @@
 # SSR Using `ModuleRunner` API
 
-::: tip Feedback
+> **tip**: Feedback
 Give us feedback at [Environment API feedback discussion](https://github.com/vitejs/vite/discussions/16358)
-:::
 
 `server.ssrLoadModule` has been replaced by importing from a [Module Runner](/guide/api-environment#modulerunner).
 
 Affected scope: `Vite Plugin Authors`
 
-::: warning Future Deprecation
+> **warning**: Future Deprecation
 `ModuleRunner` was first introduced in `v6.0`. The deprecation of `server.ssrLoadModule` is planned for a future major. To identify your usage, set `future.removeSsrLoadModule` to `"warn"` in your vite config.
-:::
 
 ## Motivation
 

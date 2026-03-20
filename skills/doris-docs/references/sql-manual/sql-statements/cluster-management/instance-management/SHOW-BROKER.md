@@ -16,7 +16,6 @@ This statement is used to view the status of the currently existing broker proce
 SHOW BROKER;
 ```
 
-
 ## Output
 | Column         | DateType | Note                                                           |
 |----------------|----------|----------------------------------------------------------------|
@@ -27,7 +26,6 @@ SHOW BROKER;
 | LastStartTime  | varchar  | Broker Process Last Start Time                                 |
 | LastUpdateTime | varchar  | Broker Process Last Update Time                                |
 | ErrMsg         | varchar  | Error message of the last failed startup of the Broker process |
-
 
 ## Access Control Requirements
 The user executing this statement needs to have the `ADMIN/OPERATOR` permission.

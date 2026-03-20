@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Together AI 
 LiteLLM supports all models on Together AI. 
@@ -26,7 +25,6 @@ completion(model="together_ai/togethercomputer/Llama-2-7B-32K-Instruct", message
 liteLLM supports `non-streaming` and `streaming` requests to all models on https://api.together.xyz/
 
 Example TogetherAI Usage - Note: liteLLM supports all models deployed on TogetherAI
-
 
 ### Llama LLMs - Chat
 | Model Name                        | Function Call                                                           | Required OS Variables              |
@@ -75,7 +73,6 @@ Example TogetherAI Usage - Note: liteLLM supports all models deployed on Togethe
 | Austism/chronos-hermes-13b          | `completion('together_ai/Austism/chronos-hermes-13b', messages)`          | `os.environ['TOGETHERAI_API_KEY']` |
 | upstage/SOLAR-0-70b-16bit           | `completion('together_ai/upstage/SOLAR-0-70b-16bit', messages)`           | `os.environ['TOGETHERAI_API_KEY']` |
 | WizardLM/WizardLM-70B-V1.0          | `completion('together_ai/WizardLM/WizardLM-70B-V1.0', messages)`          | `os.environ['TOGETHERAI_API_KEY']` |
-
 
 ## Prompt Templates
 
@@ -207,15 +204,9 @@ print(response)
 }
 ```
 
-
 ## Rerank 
 
 ### Usage
-
-
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM SDK Usage">
 
 ```python
 from litellm import rerank
@@ -239,9 +230,6 @@ response = rerank(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM Proxy Usage">
 
 LiteLLM provides an cohere api compatible `/rerank` endpoint for Rerank calls.
 
@@ -283,6 +271,3 @@ curl http://0.0.0.0:4000/rerank \
     "top_n": 3
   }'
 ```
-
-</TabItem>
-</Tabs>

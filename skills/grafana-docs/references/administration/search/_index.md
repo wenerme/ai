@@ -32,7 +32,7 @@ The command palette allows you to:
 - Change the theme to dark or light
 - Run Sift investigations
 
-![Command Palette screenshot](/media/docs/grafana/CommandPalette_doc_1.png)
+[Command Palette screenshot]
 
 To open the command palette, press `cmd+K` in macOS or `ctrl+k` in Linux/Windows. You can also click on the input located in the navigation bar.
 

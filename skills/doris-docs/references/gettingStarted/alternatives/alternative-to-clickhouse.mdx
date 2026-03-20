@@ -16,7 +16,7 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
     
         <div style={{ display:'flex', justifyContent:'space-between', flexDirection:'column' }}>
             <div style={{marginBottom:'1.25rem'}}>
-                <img alt='tencent-music' loading="lazy" width="331" height="40" decoding="async" data-nimg="1" style={{color:'transparent'}} src="/images/comparisons/tencent-music.png" />
+                
             </div>
             <div style={{marginBbottom:'1.25rem'}}>
             “Tencent Music's data platform has migrated from ClickHouse to Apache Doris, improving data timeliness and reducing maintenance costs. Doris' flexible ingestion methods and robust consistency protocol ensure high availability and reliability.”
@@ -37,7 +37,7 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
     
         <div style={{ display:'flex', justifyContent:'space-between', flexDirection:'column' }}>
             <div style={{marginBottom:'1.25rem'}}>
-                <img alt='tencent-music' loading="lazy" width="150" height="40" decoding="async" data-nimg="1" style={{color:'transparent'}} src="/images/comparisons/youzan.png" />
+                
             </div>
             <div style={{marginBbottom:'1.25rem'}}>
             “Apache Doris has faster query response times than ClickHouse in the vast majority of scenarios, especially in complex join scenarios, where its performance is significantly superior to that of ClickHouse.”
@@ -58,7 +58,7 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
     
         <div style={{ display:'flex', justifyContent:'space-between', flexDirection:'column' }}>
             <div style={{marginBottom:'1.25rem'}}>
-                <img alt='tencent-music' loading="lazy" width="120" height="40" decoding="async" data-nimg="1" style={{color:'transparent'}} src="/images/comparisons/kwai.png" />
+                
             </div>
             <div style={{marginBbottom:'1.25rem'}}>
             “By replacing ClickHouse with Doris, Kwai successfully upgraded to a lakehouse architecture, simplifying the data pipeline and eliminating the need for data import, as Doris can directly access data lake data.”
@@ -77,9 +77,7 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
 
 </div> 
 
-
 ## Apache Doris vs. ClickHouse
-
 
 <table border="1">
     <thead>
@@ -248,10 +246,9 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
         <p>The benchmark consists of a set of queries that test aggregation operations and single-table performance, without involving complex joins. This makes it especially useful for evaluating databases optimized for real-time analytics and large-scale data processing.</p>
     </div>
     <div>
-        <img alt="ClickBench  Benchmark" loading="lazy" width="1200" height="338" decoding="async" data-nimg="1" src="/images/comparisons/clickbench-ck.png" style={{color: 'transparent', marginTop:0}} />
+        [ClickBench  Benchmark]
     </div>
 </div>
-
 
 ### SSB-Flat SF100 Benchmark
 
@@ -262,13 +259,11 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
         <p>The SF100 indicates that the data scale is 100 times the base size, making it a significant test for evaluating query performance and system scalability.</p>
     </div>
     <div>
-        <img alt="ClickBench  Benchmark" loading="lazy" width="720" height="338" decoding="async" data-nimg="1" src="/images/comparisons/ssb-flat-sf100-benchmark-ck.png" style={{color: 'transparent', marginTop:0}} />
+        [ClickBench  Benchmark]
     </div>
 </div>
 
 ### TPC-H SF100 Benchmark
-
-
 
 <div style={{ display:'flex', justifyContent:'space-between', flexDirection:'row', paddingTop:'0.5rem',paddingBottom:'0.5rem'}}>
     <div style={{marginRight:'2rem'}}>
@@ -277,13 +272,11 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
         <p>**Note: Since ClickHouse failed to execute 7 queries, the total execution time refers to the time taken by Doris to run all 22 queries, and by ClickHouse to run only 15 queries.**</p>
     </div>
     <div>
-        <img alt="ClickBench  Benchmark" loading="lazy" width="1050" height="338" decoding="async" data-nimg="1" src="/images/comparisons/tpch-sf100-ck.png" style={{color: 'transparent', marginTop:0}} />
+        [ClickBench  Benchmark]
     </div>
 </div>
 
 ### TPC-DS 1TB Benchmark
-
-
 
 <div style={{ display:'flex', justifyContent:'space-between', flexDirection:'row', paddingTop:'0.5rem',paddingBottom:'0.5rem'}}>
     <div style={{marginRight:'2rem'}}>
@@ -293,14 +286,13 @@ Apache Doris and ClickHouse are both leading real-time analytical databases with
         <p>**Note：TPC-DS makes heavy use of correlated subqueries which are at the time of testing (September 2024) not supported by ClickHouse. As a result, about 50% of benchmark queries will fail with errors.**</p>
     </div>
     <div>
-        <img alt="ClickBench  Benchmark" loading="lazy" width="1300" height="338" decoding="async" data-nimg="1" src="/images/comparisons/tpc-ds-1tb-ck.png" style={{color: 'transparent', marginTop:0}} />
+        [ClickBench  Benchmark]
     </div>
 </div>
 
 ## More Migration Stories
 
 - [Less components, higher performance: Apache Doris instead of ClickHouse, MySQL, Presto, and HBase](https://doris.apache.org/blog/less-components-higher-performance-apache-doris-instead-of-clickhouse-mysql-presto-and-hbase)
-
 
 - [Migrating from ClickHouse to Apache Doris: What happened?](https://doris.apache.org/blog/migrating-from-clickhouse-to-apache-doris-what-happened)
 

@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # Hooks
@@ -74,9 +74,7 @@ afterEach(async () => {
 
 Here, the `afterEach` ensures that testing data is cleared after each test runs.
 
-::: tip
-You can also use [`onTestFinished`](#ontestfinished) during the test execution to cleanup any state after the test has finished running.
-:::
+> **tip**: You can also use [`onTestFinished`](#ontestfinished) during the test execution to cleanup any state after the test has finished running.
 
 ## beforeAll
 
@@ -158,9 +156,7 @@ Register a callback function that wraps around each test within the current suit
 
 The `runTest()` function runs `beforeEach` hooks, the test itself, fixtures accessed in the test, and `afterEach` hooks. Fixtures that are accessed in the `aroundEach` callback are initialized before `runTest()` is called and are torn down after the aroundEach teardown code completes, allowing you to safely use them in both setup and teardown phases.
 
-::: warning
-You **must** call `runTest()` within your callback. If `runTest()` is not called, the test will fail with an error.
-:::
+> **warning**: You **must** call `runTest()` within your callback. If `runTest()` is not called, the test will fail with an error.
 
 Optionally, you can provide a timeout (in milliseconds) for specifying how long to wait before terminating. The timeout applies independently to the setup phase (before `runTest()`) and teardown phase (after `runTest()`). The default is 10 seconds, and can be configured globally with [`hookTimeout`](/config/hooktimeout).
 
@@ -177,7 +173,7 @@ test('insert user', async () => {
 })
 ```
 
-::: tip When to use `aroundEach`
+> **tip**: When to use `aroundEach`
 Use `aroundEach` when your test needs to run **inside a context** that wraps around it, such as:
 - Wrapping tests in [AsyncLocalStorage](https://nodejs.org/api/async_context.html#class-asynclocalstorage) context
 - Wrapping tests with tracing spans
@@ -192,7 +188,6 @@ beforeEach(async () => {
   }
 })
 ```
-:::
 
 ### Multiple Hooks
 
@@ -268,9 +263,7 @@ Register a callback function that wraps around all tests within the current suit
 
 The `runSuite()` function runs all tests in the suite, including `beforeAll`/`afterAll`/`beforeEach`/`afterEach` hooks, `aroundEach` hooks, and fixtures.
 
-::: warning
-You **must** call `runSuite()` within your callback. If `runSuite()` is not called, the hook will fail with an error and all tests in the suite will be skipped.
-:::
+> **warning**: You **must** call `runSuite()` within your callback. If `runSuite()` is not called, the hook will fail with an error and all tests in the suite will be skipped.
 
 Optionally, you can provide a timeout (in milliseconds) for specifying how long to wait before terminating. The timeout applies independently to the setup phase (before `runSuite()`) and teardown phase (after `runSuite()`). The default is 10 seconds, and can be configured globally with [`hookTimeout`](/config/hooktimeout).
 
@@ -290,7 +283,7 @@ test('test 2', () => {
 })
 ```
 
-::: tip When to use `aroundAll`
+> **tip**: When to use `aroundAll`
 Use `aroundAll` when your suite needs to run **inside a context** that wraps around all tests, such as:
 - Wrapping an entire suite in [AsyncLocalStorage](https://nodejs.org/api/async_context.html#class-asynclocalstorage) context
 - Wrapping a suite with tracing spans
@@ -305,7 +298,6 @@ beforeAll(async () => {
   }
 })
 ```
-:::
 
 ### Multiple Hooks
 
@@ -359,9 +351,7 @@ describe('nested', () => {
 
 Vitest provides a few hooks that you can call _during_ the test execution to cleanup the state when the test has finished running.
 
-::: warning
-These hooks will throw an error if they are called outside of the test body.
-:::
+> **warning**: These hooks will throw an error if they are called outside of the test body.
 
 ### onTestFinished {#ontestfinished}
 
@@ -377,8 +367,7 @@ test('performs a query', () => {
 })
 ```
 
-::: warning
-If you are running tests concurrently, you should always use `onTestFinished` hook from the test context since Vitest doesn't track concurrent tests in global hooks:
+> **warning**: If you are running tests concurrently, you should always use `onTestFinished` hook from the test context since Vitest doesn't track concurrent tests in global hooks:
 
 ```ts {3,5}
 import { test } from 'vitest'
@@ -389,7 +378,6 @@ test.concurrent('performs a query', ({ onTestFinished }) => {
   db.query('SELECT * FROM users')
 })
 ```
-:::
 
 This hook is particularly useful when creating reusable logic:
 
@@ -430,9 +418,7 @@ test('performs a query', () => {
 })
 ```
 
-::: tip
-This hook is always called in reverse order and is not affected by [`sequence.hooks`](/config/sequence#sequence-hooks) option.
-:::
+> **tip**: This hook is always called in reverse order and is not affected by [`sequence.hooks`](/config/sequence#sequence-hooks) option.
 
 ### onTestFailed
 
@@ -450,8 +436,7 @@ test('performs a query', () => {
 })
 ```
 
-::: warning
-If you are running tests concurrently, you should always use `onTestFailed` hook from the test context since Vitest doesn't track concurrent tests in global hooks:
+> **warning**: If you are running tests concurrently, you should always use `onTestFailed` hook from the test context since Vitest doesn't track concurrent tests in global hooks:
 
 ```ts {3,5-7}
 import { test } from 'vitest'
@@ -464,4 +449,3 @@ test.concurrent('performs a query', ({ onTestFailed }) => {
   db.query('SELECT * FROM users')
 })
 ```
-:::

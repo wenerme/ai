@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # A2A Agent Authentication Headers
 
@@ -23,16 +22,10 @@ All three methods can be combined. **Static headers always win** on key conflict
 
 Admin-configured headers that are always sent to the backend agent. Use this for server-to-server tokens or internal credentials that clients should never see or override.
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 1. Go to **Agents** in the LiteLLM dashboard.
 2. Create or edit an agent.
 3. Open the **Authentication Headers** panel.
 4. Under **Static Headers**, click **Add Static Header** and fill in the header name and value.
-
-</TabItem>
-<TabItem value="api" label="REST API">
 
 ```bash
 curl -X POST http://localhost:4000/v1/agents \
@@ -61,9 +54,6 @@ curl -X PATCH http://localhost:4000/v1/agents/{agent_id} \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 **Client call — no special headers needed:**
 
 ```bash
@@ -84,16 +74,10 @@ The backend agent receives `Authorization: Bearer internal-server-token` without
 
 Admin specifies a list of header **names**. When the client sends a request that includes those headers, LiteLLM extracts their values and forwards them to the backend agent. The client controls the values; the admin controls which headers are eligible to be forwarded.
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 1. Go to **Agents** in the LiteLLM dashboard.
 2. Create or edit an agent.
 3. Open the **Authentication Headers** panel.
 4. Under **Forward Client Headers**, type header names and press **Enter** (e.g. `x-api-key`, `Authorization`).
-
-</TabItem>
-<TabItem value="api" label="REST API">
 
 ```bash
 curl -X POST http://localhost:4000/v1/agents \
@@ -105,9 +89,6 @@ curl -X POST http://localhost:4000/v1/agents \
     "extra_headers": ["x-api-key", "x-user-token"]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Client call — include the forwarded headers:**
 
@@ -121,9 +102,7 @@ curl -X POST http://localhost:4000/a2a/my-agent \
 
 The backend agent receives `x-api-key: user-secret-value`.
 
-:::note
-Header name matching is **case-insensitive**. If the client sends `X-API-Key` and `extra_headers` lists `x-api-key`, they match.
-:::
+> **note**: Header name matching is **case-insensitive**. If the client sends `X-API-Key` and `extra_headers` lists `x-api-key`, they match.
 
 ---
 
@@ -155,9 +134,8 @@ curl -X POST http://localhost:4000/a2a/my-agent \
 
 The `x-a2a-other-agent-authorization` header sent in the same request is **not** forwarded to `my-agent` — it is silently ignored.
 
-:::tip Matches both agent name and agent ID
+> **tip**: Matches both agent name and agent ID
 Both the human-readable name (e.g. `my-agent`) and the UUID (e.g. `abc123-...`) are valid. Use whichever is convenient for the client.
-:::
 
 ---
 
@@ -247,6 +225,4 @@ Both fields are returned in `GET /v1/agents` and `GET /v1/agents/{agent_id}`:
 }
 ```
 
-:::caution
-`static_headers` values are stored in the database and returned by the API. Treat them as you would any credential — do not store sensitive long-lived tokens here if your API is publicly accessible. Consider using short-lived tokens or environment-injected secrets instead.
-:::
+> **caution**: `static_headers` values are stored in the database and returned by the API. Treat them as you would any credential — do not store sensitive long-lived tokens here if your API is publicly accessible. Consider using short-lived tokens or environment-injected secrets instead.

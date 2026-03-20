@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Amazon Bedrock Mantle
 
@@ -7,11 +6,7 @@ import TabItem from '@theme/TabItem';
 
 Use this provider to call Bedrock Mantle models with accurate **AWS Bedrock pricing** instead of OpenAI pricing.
 
-:::tip
-
-**We support ALL Bedrock Mantle models, just set `model=bedrock_mantle/<model-id>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Bedrock Mantle models, just set `model=bedrock_mantle/<model-id>` as a prefix when sending litellm requests**
 
 ## API Key
 
@@ -34,9 +29,6 @@ os.environ['BEDROCK_MANTLE_REGION'] = "us-east-1"  # or use AWS_REGION
 
 ## Sample Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os
@@ -49,9 +41,6 @@ response = completion(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="streaming" label="Streaming">
 
 ```python
 from litellm import completion
@@ -69,9 +58,6 @@ for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-<TabItem value="async" label="Async">
-
 ```python
 import asyncio
 from litellm import acompletion
@@ -88,9 +74,6 @@ async def main():
 
 asyncio.run(main())
 ```
-
-</TabItem>
-</Tabs>
 
 ## Region Configuration
 

@@ -1,7 +1,4 @@
 ---
-slug: /best-practices/selecting-an-insert-strategy
-sidebar_position: 10
-sidebar_label: 'Selecting an insert strategy'
 title: 'Selecting an insert strategy'
 description: 'Page describing how to choose an insert strategy in ClickHouse'
 keywords: ['INSERT', 'asynchronous inserts', 'compression', 'batch inserts']
@@ -9,25 +6,16 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import Image from '@theme/IdealImage';
-import insert_process from '@site/static/images/bestpractices/insert_process.png';
-import async_inserts from '@site/static/images/bestpractices/async_inserts.png';
-import AsyncInserts from '@site/docs/best-practices/_snippets/_async_inserts.md';
-import BulkInserts from '@site/docs/best-practices/_snippets/_bulk_inserts.md';
-
 Efficient data ingestion forms the basis of high-performance ClickHouse deployments. Selecting the right insert strategy can dramatically impact throughput, cost, and reliability. This section outlines best practices, tradeoffs, and configuration options to help you make the right decision for your workload.
 
-:::note
-The following assumes you're pushing data to ClickHouse via a client. If you're pulling data into ClickHouse e.g. using built in table functions such as [s3](/sql-reference/table-functions/s3) and [gcs](/sql-reference/table-functions/gcs), we recommend our guide ["Optimizing for S3 Insert and Read Performance"](/integrations/s3/performance).
-:::
+> **note**: The following assumes you're pushing data to ClickHouse via a client. If you're pulling data into ClickHouse e.g. using built in table functions such as [s3](/sql-reference/table-functions/s3) and [gcs](/sql-reference/table-functions/gcs), we recommend our guide ["Optimizing for S3 Insert and Read Performance"](/integrations/s3/performance).
 
 ## Synchronous inserts by default {#synchronous-inserts-by-default}
 
 By default, inserts into ClickHouse are synchronous.  Each insert query immediately creates a storage part on disk, including metadata and indexes.
 
-:::note Use synchronous inserts if you can batch the data client side
+> **note**: Use synchronous inserts if you can batch the data client side
 If not, see [Asynchronous inserts](#asynchronous-inserts) below.
-:::
 
  We briefly review ClickHouse's MergeTree insert mechanics below:
 
@@ -100,9 +88,7 @@ ClickHouse supports several compression codecs during data transmission. Two com
 
 Best practice: Use LZ4 unless you have constrained bandwidth or incur data egress costs — then consider ZSTD.
 
-:::note
-In tests from the [FastFormats benchmark](https://clickhouse.com/blog/clickhouse-input-format-matchup-which-is-fastest-most-efficient), LZ4-compressed Native inserts reduced data size by more than 50%, cutting ingestion time from 150s to 131s for a 5.6 GiB dataset. Switching to ZSTD compressed the same dataset down to 1.69 GiB, but increased server-side processing time slightly.
-:::
+> **note**: In tests from the [FastFormats benchmark](https://clickhouse.com/blog/clickhouse-input-format-matchup-which-is-fastest-most-efficient), LZ4-compressed Native inserts reduced data size by more than 50%, cutting ingestion time from 150s to 131s for a 5.6 GiB dataset. Switching to ZSTD compressed the same dataset down to 1.69 GiB, but increased server-side processing time slightly.
 
 #### Compression reduces resource usage {#compression-reduces-resource-usage}
 

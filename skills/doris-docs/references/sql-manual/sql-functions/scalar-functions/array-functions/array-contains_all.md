@@ -63,4 +63,3 @@ mysql [(none)]>select array_contains_all([1,2,3,4], NULL);
 ### keywords
 
 ARRAY,CONTAIN,ARRAY_CONTAINS_ALL
-

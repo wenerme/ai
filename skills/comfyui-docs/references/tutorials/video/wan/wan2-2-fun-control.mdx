@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.2 Fun Control Video Generation Example"
 description: "This article introduces how to use ComfyUI to complete the Wan2.2 Fun Control video generation using control videos"
-sidebarTitle: "Wan2.2 Fun Control"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 **Wan2.2-Fun-Control** is a next-generation video generation and control model launched by Alibaba PAI team. Through innovative Control Codes mechanism combined with deep learning and multi-modal conditional inputs, it can generate high-quality videos that comply with preset control conditions. The model is released under the **Apache 2.0 license** and supports commercial use.
 
@@ -29,9 +26,6 @@ Below are the relevant model weights and code repositories:
 ></iframe>
 
 ## Wan2.2 Fun Control Video Generation Workflow Example
-
-<UpdateReminder/>
-
 
 This workflow provides two versions:
 1. A version using [Wan2.2-Lightning](https://huggingface.co/lightx2v/Wan2.2-Lightning) 4-step LoRA from lightx2v: may cause some loss in video dynamics but offers faster speed
@@ -105,14 +99,11 @@ ComfyUI/
 │       └── wan_2.1_vae.safetensors
 ```
 
-
 ### 3. Workflow Guide
 
-![Wan2.2 Fun Control Workflow Steps](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_fun_control.jpg)
+[Wan2.2 Fun Control Workflow Steps]
 
-<Note>
   This workflow uses LoRA. Please ensure the corresponding Diffusion model and LoRA are matched - high noise and low noise models and LoRAs need to be used correspondingly.
-</Note>
 
 1. **High noise** model and **LoRA** loading
    - Ensure the `Load Diffusion Model` node loads the `wan2.2_fun_control_high_noise_14B_fp8_scaled.safetensors` model

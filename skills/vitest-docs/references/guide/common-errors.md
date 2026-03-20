@@ -86,7 +86,7 @@ export default defineConfig({
 })
 ```
 
-::: tip Why `ssr.resolve.conditions` and not `resolve.conditions`?
+> **tip**: Why `ssr.resolve.conditions` and not `resolve.conditions`?
 Vitest follows Vite's configuration convention:
 - [`resolve.conditions`](https://vite.dev/config/shared-options#resolve-conditions) applies to Vite's `client` environment, which corresponds to Vitest's browser mode, jsdom, happy-dom, or custom environments with `viteEnvironment: 'client'`.
 - [`ssr.resolve.conditions`](https://vite.dev/config/ssr-options#ssr-resolve-conditions) applies to Vite's `ssr` environment, which corresponds to Vitest's node environment or custom environments with `viteEnvironment: 'ssr'`.
@@ -94,7 +94,6 @@ Vitest follows Vite's configuration convention:
 Since Vitest defaults to the `node` environment (which uses `viteEnvironment: 'ssr'`), module resolution uses `ssr.resolve.conditions`. This applies to both package exports and subpath imports.
 
 You can learn more about Vite environments and Vitest environments in [`environment`](/config/environment).
-:::
 
 ## Segfaults and Native Code Errors
 
@@ -107,7 +106,6 @@ Running [native NodeJS modules](https://nodejs.org/api/addons.html) in `pool: 't
 
 In these cases the native module is likely not built to be multi-thread safe. As a workaround, you can switch to `pool: 'forks'` which runs the test cases in multiple `node:child_process` instead of multiple `node:worker_threads`.
 
-::: code-group
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -120,7 +118,6 @@ export default defineConfig({
 ```bash [CLI]
 vitest --pool=forks
 ```
-:::
 
 ## Unhandled Promise Rejection
 

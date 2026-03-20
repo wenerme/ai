@@ -58,11 +58,7 @@ PROPERTIES (
 );
 ```
 
-:::tip
-
-When defining the schema column order, reference the high-frequency and high-priority columns in business query filtering to fully leverage Doris's prefix index acceleration function.
-
-:::
+> **tip**: When defining the schema column order, reference the high-frequency and high-priority columns in business query filtering to fully leverage Doris's prefix index acceleration function.
 
 ## Case 2: Using Inverted Indexes to Accelerate Queries
 
@@ -70,11 +66,7 @@ Doris supports inverted indexes as secondary indexes to accelerate business scen
 
 For typical usage scenarios, syntax, and cases, please refer to the [Table Index - Inverted Index](../../../table-design/index/inverted-index) section for a detailed introduction, so this chapter will not repeat the explanation.
 
-:::tip
-
-For full-text searches of text types and equal value or range queries on string, numeric, and datetime type fields, inverted indexes can be utilized to accelerate queries. Especially in certain situations, such as when the original table structure and key definition are not convenient to optimize, or the cost of re-importing table data is high, inverted indexes provide a flexible acceleration solution to optimize business execution performance.
-
-:::
+> **tip**: For full-text searches of text types and equal value or range queries on string, numeric, and datetime type fields, inverted indexes can be utilized to accelerate queries. Especially in certain situations, such as when the original table structure and key definition are not convenient to optimize, or the cost of re-importing table data is high, inverted indexes provide a flexible acceleration solution to optimize business execution performance.
 
 ## Summary
 

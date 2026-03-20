@@ -1,20 +1,9 @@
 ---
-slug: /optimize/query-parallelism
-sidebar_label: 'Query parallelism'
-sidebar_position: 20
 description: 'ClickHouse parallelizes query execution using processing lanes and the max_threads setting.'
 title: 'How ClickHouse executes a query in parallel'
 doc_type: 'guide'
 keywords: ['parallel processing', 'query optimization', 'performance', 'threading', 'best practices']
 ---
-
-import visual01 from '@site/static/images/guides/best-practices/query-parallelism_01.gif';
-import visual02 from '@site/static/images/guides/best-practices/query-parallelism_02.gif';
-import visual03 from '@site/static/images/guides/best-practices/query-parallelism_03.gif';
-import visual04 from '@site/static/images/guides/best-practices/query-parallelism_04.gif';
-import visual05 from '@site/static/images/guides/best-practices/query-parallelism_05.png';
-
-import Image from '@theme/IdealImage';
 
 # How ClickHouse executes a query in parallel
 
@@ -36,14 +25,12 @@ The selected data is then [dynamically](#load-balancing-across-processing-lanes)
 
 <Image img={visual02} size="md" alt="4 parallel processing lanes"/>
 
-<br/><br/>
 The number of `n` parallel processing lanes is controlled by the [`max_threads`](/operations/settings/settings#max_threads) setting, which by default matches the number of cores (threads) of a single CPU available to ClickHouse on the server. In the example above, we assume `4` cores. 
 
 On a machine with `8` cores, query processing throughput would roughly double (but memory usage would also increase accordingly), as more lanes process data in parallel:
 
 <Image img={visual03} size="md" alt="8 parallel processing lanes"/>
 
-<br/><br/>
 Efficient lane distribution is key to maximizing CPU utilization and reducing total query time.
 
 ### Processing queries on sharded tables {#processing-queries-on-sharded-tables}
@@ -52,14 +39,12 @@ When table data is distributed across multiple servers as [shards](/shards), eac
 
 <Image img={visual04} size="md" alt="Distributed lanes"/>
 
-<br/><br/>
 The server that initially receives the query collects all sub-results from the shards and combines them into the final global result.
 
 Distributing query load across shards allows horizontal scaling of parallelism, especially for high-throughput environments.
 
-:::note ClickHouse Cloud uses parallel replicas instead of shards
+> **note**: ClickHouse Cloud uses parallel replicas instead of shards
 In ClickHouse Cloud, this same parallelism is achieved through [parallel replicas](https://clickhouse.com/docs/deployment-guides/parallel-replicas), which function similarly to shards in shared-nothing clusters. Each ClickHouse Cloud replica—a stateless compute node—processes a portion of the data in parallel and contributes to the final result, just like an independent shard would.
-:::
 
 ## Monitoring query parallelism {#monitoring-query-parallelism}
 
@@ -215,9 +200,8 @@ For clusters with shared storage (e.g. ClickHouse Cloud):
 Additionally, there's a hard lower limit for read task size, controlled by:
 * [Merge_tree_min_read_task_size](https://clickhouse.com/docs/operations/settings/settings#merge_tree_min_read_task_size) + [merge_tree_min_bytes_per_task_for_remote_reading](https://clickhouse.com/docs/operations/settings/settings#merge_tree_min_bytes_per_task_for_remote_reading)
 
-:::warning Don't modify these settings
+> **warning**: Don't modify these settings
 We don't recommend modifying these settings in production. They're shown here solely to illustrate why `max_threads` doesn't always determine the actual level of parallelism.
-:::
 
 For demonstration purposes, let's inspect the physical plan with these settings overridden to force maximum concurrency:
 ```sql runnable=false

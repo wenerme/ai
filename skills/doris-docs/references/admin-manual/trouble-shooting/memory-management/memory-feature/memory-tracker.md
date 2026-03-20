@@ -30,7 +30,7 @@ Based on the usage, Memory Tracker is divided into two categories. The first cat
 
 The parent-child relationship between the two is only used for snapshot printing, and is associated with the label name, which is equivalent to a soft link. It does not rely on the parent-child relationship for simultaneous consumption, and the life cycle does not affect each other, reducing the cost of understanding and use. All memory trackers are stored in a set of maps, and provide methods such as printing snapshots of all memory tracker types, printing snapshots of tasks such as query/load/compaction, obtaining the group of queries/loads that currently use the most memory, and obtaining the group of queries/loads that currently use the most excessive memory.
 
-![Memory Tracker Implement](/images/memory-tracker-implement.png)
+[Memory Tracker Implement]
 
 ## Memory Tracker Statistics Missing
 

@@ -1,40 +1,16 @@
 ---
-slug: /use-cases/AI/qbit-vector-search
-sidebar_label: 'Vector search with QBit'
 title: 'An introduction to vector search and QBit'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how QBit enables runtime-adjustable precision tuning for vector search queries in ClickHouse.'
 keywords: ['QBit', 'vector search', 'AI', 'embeddings', 'ANN']
 show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import Image from '@theme/IdealImage';
-import diagram_1 from '@site/static/images/use-cases/AI_ML/QBit/diagram_1.jpg';
-import diagram_2 from '@site/static/images/use-cases/AI_ML/QBit/diagram_2.jpg';
-import diagram_3 from '@site/static/images/use-cases/AI_ML/QBit/diagram_3.jpg';
-import diagram_4 from '@site/static/images/use-cases/AI_ML/QBit/diagram_4.jpg';
-import diagram_5 from '@site/static/images/use-cases/AI_ML/QBit/diagram_5.jpg';
-import diagram_6 from '@site/static/images/use-cases/AI_ML/QBit/diagram_6.jpg';
-import diagram_7 from '@site/static/images/use-cases/AI_ML/QBit/diagram_7.jpg';
-import diagram_8 from '@site/static/images/use-cases/AI_ML/QBit/diagram_8.jpg';
-import diagram_9 from '@site/static/images/use-cases/AI_ML/QBit/diagram_9.jpg';
-import diagram_10 from '@site/static/images/use-cases/AI_ML/QBit/diagram_10.jpg';
-import diagram_11 from '@site/static/images/use-cases/AI_ML/QBit/diagram_11.jpg';
-import diagram_12 from '@site/static/images/use-cases/AI_ML/QBit/diagram_12.jpg';
-import diagram_13 from '@site/static/images/use-cases/AI_ML/QBit/diagram_13.jpg';
-import diagram_14 from '@site/static/images/use-cases/AI_ML/QBit/diagram_14.jpg';
-import diagram_15 from '@site/static/images/use-cases/AI_ML/QBit/diagram_15.jpg';
-import diagram_16 from '@site/static/images/use-cases/AI_ML/QBit/diagram_16.jpg';
-import diagram_17 from '@site/static/images/use-cases/AI_ML/QBit/diagram_17.jpg';
-
 :::note[In this guide, you will:]
 - Get introduced briefly to vector search
 - Learn about Approximate Nearest Neighbours (ANN) and Hierarchical Navigable Small World (HNSW)
 - Learn about Quantised Bit (QBit)
 - Use QBit to perform vector search using the DBPedia dataset
-:::
 
 ## Vector search primer {#vector-search-primer}
 
@@ -136,7 +112,6 @@ Because of this layered design, HNSW achieves logarithmic search complexity with
 :::warning[HNSW limitation]
 The main bottleneck is memory. ClickHouse uses the [usearch](https://github.com/unum-cloud/usearch) implementation of HNSW, which is an in-memory data structure that doesn't support splitting.
 As a result, larger datasets require proportionally more RAM.
-:::
 
 ### Comparison of approaches {#comparison-approaches}
 
@@ -160,11 +135,9 @@ This approach solves the main limitation of traditional quantisation. There's no
 :::tip[Benefit]
 **Most importantly, no upfront decisions are required.**
 Precision and performance can be adjusted dynamically at query time, allowing users to explore the balance between accuracy and speed with minimal friction.
-:::
 
-:::note Limitation
+> **note**: Limitation
 Although QBit speeds up vector search, its computational complexity remains O(n). In other words: if your dataset is small enough for an HNSW index to fit comfortably in RAM, that is still the fastest choice.
-:::
 
 ### The data type {#the-data-type}
 
@@ -196,9 +169,7 @@ Each group is stored in a separate `FixedString(N)` column: fixed-length strings
 
 **Example:** If we start with a vector of 8×Float64 elements, each group will contain 8 bits. Because a Float64 has 64 bits, we end up with 64 groups (one for each bit). Therefore, the internal layout of `QBit(Float64, 8)` looks like a Tuple of 64×FixedString(1) columns.
 
-:::tip
-If the original vector length doesn't divide evenly by 8, the structure is padded with invisible elements to make it align to 8. This ensures compatibility with FixedString, which operates strictly on full bytes.
-:::
+> **tip**: If the original vector length doesn't divide evenly by 8, the structure is padded with invisible elements to make it align to 8. This ensures compatibility with FixedString, which operates strictly on full bytes.
 
 ### The distance calculation {#the-distance-calculation}
 
@@ -252,9 +223,7 @@ BFloat16 is a Float32 truncated by half. It keeps the same sign bit and 8-bit ex
 
 Float64, however, is a different story. It uses an 11-bit exponent and a 52-bit mantissa, meaning it's not simply a Float32 with twice the bits. Its structure and exponent bias are completely different. Downcasting a Float64 to a smaller format like Float32 requires an actual IEEE-754 conversion, where each value is rounded to the nearest representable Float32. This rounding step is computationally expensive.
 
-:::tip
-If you're interested in a deep-dive of performance elements of QBit, see ["Let’s vectorize"](https://clickhouse.com/blog/qbit-vector-search#lets-vectorise)
-:::
+> **tip**: If you're interested in a deep-dive of performance elements of QBit, see ["Let’s vectorize"](https://clickhouse.com/blog/qbit-vector-search#lets-vectorise)
 
 ## Example with DBpedia {#example}
 
@@ -284,10 +253,8 @@ for i in $(seq 0 25); do
 done
 ```
 
-:::tip
-Inserting the data could take a while.
+> **tip**: Inserting the data could take a while.
 Time for a coffee break!
-:::
 
 Alternatively, individual SQL statements can be run as shown below to load each of the 25 Parquet files:
 
@@ -475,8 +442,7 @@ Peak memory usage: 327.04 MiB.
 
 **Performance:** 10 rows in set. Elapsed: 0.271 sec. Processed 8.46 million rows, 4.54 GB (31.19 million rows/s., 16.75 GB/s.) Peak memory usage: **739.82 MiB**.
 
-<details>
-<summary>Compare performance with brute-force search</summary>
+Compare performance with brute-force search
 
 ```sql
 SELECT 
@@ -622,7 +588,6 @@ avg_distance:         1.0882147550582886
 
 **Performance:** 10 rows in set. Elapsed: 1.157 sec. Processed 10.00 million rows, 32.76 GB (8.64 million rows/s., 28.32 GB/s.) Peak memory usage: **6.05 GiB**.
 
-</details>
 ### Key Insight {#key-insight}
 
 The results? Not just good. Surprisingly good. It's not obvious that floating points stripped of their entire mantissa and half their exponent still hold meaningful information.

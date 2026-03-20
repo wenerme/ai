@@ -47,7 +47,6 @@ All of the following Terraform configuration files should be saved in the same d
      cloud_access_policy_token = "<cloud-access-token>"
    }
 
-
    resource "grafana_cloud_stack" "my_stack" {
      provider = grafana.cloud
 
@@ -206,23 +205,23 @@ Once you apply the changes in the Terraform configurations, you should be able t
 
 - The new Grafana stack is created and visible in the Cloud Portal
 
-  ![Cloud Portal](/static/img/docs/grafana-cloud/terraform/cloud_portal_tf.png)
+  [Cloud Portal]
 
 - A service account key token is added in your Grafana instance. In the following image, the service account key token named "terraform serviceaccount key" was added by the [grafana_cloud_stack_service_account_token (Resource)](#create-a-cloud-stack).
 
-  ![API Key](/media/docs/grafana-cloud/screenshot-api_key_tf.png)
+  [API Key]
 
 - A new data source (InfluxDB in this example) is visible in the grafana instance.
 
-  ![InfluxDB data source](/media/docs/grafana-cloud/screenshot-influxdb_datasource_tf.png)
+  [InfluxDB data source]
 
 - A new folder in Grafana. In the following image, a folder named "Demos" was added by the [grafana_folder (Resource)](./#add-a-folder).
 
-  ![Folder](/media/docs/grafana-cloud/screenshot-folder_tf.png)
+  [Folder]
 
 - A new dashboard in the Grafana instance. In the following image a dashboard named "InfluxDB Cloud Demos" was created inside the "Demos" folder.
 
-  ![InfluxDB dashboard](/static/img/docs/grafana-cloud/terraform/influxdb_dashboard_tf.png)
+  [InfluxDB dashboard]
 
 ## Conclusion
 

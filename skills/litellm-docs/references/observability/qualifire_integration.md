@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Qualifire - LLM Evaluation, Guardrails & Observability
 
@@ -11,11 +10,7 @@ import Image from '@theme/IdealImage';
 - **Observability** - Complete tracing and logging for RAG pipelines, chatbots, and AI agents
 - **Prompt Management** - Centralized prompt management with versioning and no-code studio
 
-:::tip
-
-Looking for Qualifire Guardrails? Check out the [Qualifire Guardrails Integration](../proxy/guardrails/qualifire.md) for real-time content moderation, prompt injection detection, PII checks, and more.
-
-:::
+> **tip**: Looking for Qualifire Guardrails? Check out the [Qualifire Guardrails Integration](../proxy/guardrails/qualifire.md) for real-time content moderation, prompt injection detection, PII checks, and more.
 
 ## Pre-Requisites
 

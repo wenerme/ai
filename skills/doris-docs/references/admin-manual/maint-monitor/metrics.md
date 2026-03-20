@@ -45,7 +45,6 @@ The vast majority of monitoring metric types are Counter . That is the cumulativ
 
 The query error rate can be obtained by calculating the slope of `doris_fe_query_err`, presented as (error per second).
 
-
 ## FE Monitoring Metrics
 
 ### Process monitoring

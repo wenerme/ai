@@ -1,7 +1,5 @@
 ---
 date: "2019-11-28:00:00+02:00"
-slug: "template-repositories"
-sidebar_position: 44
 aliases:
   - /en-us/template-repositories
   - /template-repositories

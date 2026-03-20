@@ -27,7 +27,6 @@ The name of the catalog whose creation statement needs to be viewed.
 |:---------------------------------------------------------------------------------------------|:--------|:------------------------------------------|
 | ADMIN_PRIV / SELECT_PRIV / LOAD_PRIV / ALTER_PRIV / CREATE_PRIV / SHOW_VIEW_PRIV / DROP_PRIV | Catalog | One of the above permissions is required. |
 
-
 ## Example
 
 1. View the creating statement of the oracle catalog in doris
@@ -51,4 +50,3 @@ The name of the catalog whose creation statement needs to be viewed.
     ); |
     +---------+----------------------------------------------------------------------------------------------------------------------+
    ```
-

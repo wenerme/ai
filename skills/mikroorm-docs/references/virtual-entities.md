@@ -2,9 +2,6 @@
 title: Virtual Entities
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Virtual entities don't represent any database table. Instead, they dynamically resolve to an SQL query (or an aggregation in MongoDB), allowing to map any kind of results onto an entity. Such entities are meant for read purposes, they don't have a primary key and therefore cannot be tracked for changes.
 
 > If you need actual database views that are created and managed by the schema generator, see [View Entities](./view-entities.md) instead. View entities create `CREATE VIEW` statements and are tracked in migrations, while virtual entities evaluate their expression at query time.
@@ -15,18 +12,7 @@ To define a virtual entity, provide an `expression`, either as a string (SQL que
 
 > You need to use the virtual column names based on current naming strategy. Note the `authorName` property being represented as `author_name` column.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -57,9 +43,9 @@ export class BookWithAuthor extends BookWithAuthorSchema.class {}
 BookWithAuthorSchema.setClass(BookWithAuthor);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 import { type InferEntity, defineEntity, p } from '@mikro-orm/core';
@@ -89,8 +75,8 @@ export const BookWithAuthor = defineEntity({
 export type IBookWithAuthor = InferEntity<typeof BookWithAuthor>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 @Entity({
@@ -122,8 +108,8 @@ export class BookWithAuthor {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 @Entity({
@@ -155,23 +141,11 @@ export class BookWithAuthor {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 Or as a callback:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 const BookWithAuthorSchema = defineEntity({
@@ -194,9 +168,9 @@ export class BookWithAuthor extends BookWithAuthorSchema.class {}
 BookWithAuthorSchema.setClass(BookWithAuthor);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 export const BookWithAuthor = defineEntity({
@@ -216,8 +190,8 @@ export const BookWithAuthor = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 @Entity({
@@ -243,8 +217,8 @@ export class BookWithAuthor {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/BookWithAuthor.ts"
 @Entity({
@@ -270,8 +244,7 @@ export class BookWithAuthor {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 In MongoDB, you can use aggregations, although it is not very ergonomic due to their nature. Following example is a rough equivalent of the previous SQL ones.
 

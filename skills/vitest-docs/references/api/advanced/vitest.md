@@ -1,5 +1,4 @@
 ---
-outline: deep
 title: Vitest API
 ---
 
@@ -10,7 +9,7 @@ Vitest instance requires the current test mode. It can be either:
 - `test` when running runtime tests
 - `benchmark` when running benchmarks <Badge type="warning">experimental</Badge>
 
-::: details New in Vitest 4
+> **details**: New in Vitest 4
 Vitest 4 added several new APIs (they are marked with a "4.0.0+" badge) and removed deprecated APIs:
 
 - `invalidates`
@@ -23,7 +22,6 @@ Vitest 4 added several new APIs (they are marked with a "4.0.0+" badge) and remo
 - `globTestSpecs` (use [`globTestSpecifications`](#globtestspecifications) instead)
 - `globTestFiles` (use [`globTestSpecifications`](#globtestspecifications) instead)
 - `listFile` (use [`getRelevantTestSpecifications`](#getrelevanttestspecifications) instead)
-:::
 
 ## mode
 
@@ -39,9 +37,7 @@ Benchmark mode calls `bench` functions and throws an error, when it encounters `
 
 The root (or global) config. If projects are defined, they will reference this as `globalConfig`.
 
-::: warning
-This is Vitest config, it doesn't extend _Vite_ config. It only has resolved values from the `test` property.
-:::
+> **warning**: This is Vitest config, it doesn't extend _Vite_ config. It only has resolved values from the `test` property.
 
 ## vite
 
@@ -49,9 +45,7 @@ This is a global [`ViteDevServer`](https://vite.dev/guide/api-javascript#vitedev
 
 ## state <Badge type="warning">experimental</Badge>
 
-::: warning
-Public `state` is an experimental API (except `vitest.state.getReportedEntity`). Breaking changes might not follow SemVer, please pin Vitest's version when using it.
-:::
+> **warning**: Public `state` is an experimental API (except `vitest.state.getReportedEntity`). Breaking changes might not follow SemVer, please pin Vitest's version when using it.
 
 Global state stores information about the current tests. It uses the same API from `@vitest/runner` by default, but we recommend using the [Reported Tasks API](/api/advanced/reporters#reported-tasks) instead by calling `state.getReportedEntity()` on the `@vitest/runner` API:
 
@@ -131,9 +125,7 @@ declare module 'vitest' {
 }
 ```
 
-::: warning
-Technically, `provide` is a method of [`TestProject`](/api/advanced/test-project), so it is limited to the specific project. However, all projects inherit the values from the root project which makes `vitest.provide` universal way of passing down values to tests.
-:::
+> **warning**: Technically, `provide` is a method of [`TestProject`](/api/advanced/test-project), so it is limited to the specific project. However, all projects inherit the values from the root project which makes `vitest.provide` universal way of passing down values to tests.
 
 ## getProvidedContext
 
@@ -151,11 +143,9 @@ function getProjectByName(name: string): TestProject
 
 This method returns the project by its name. Similar to calling `vitest.projects.find`.
 
-::: warning
-In case the project doesn't exist, this method will return the root project - make sure to check the names again if the project you are looking for is the one returned.
+> **warning**: In case the project doesn't exist, this method will return the root project - make sure to check the names again if the project you are looking for is the one returned.
 
 If user didn't customize a name, the Vitest will assign an empty string as a name.
-:::
 
 ## globTestSpecifications
 
@@ -169,10 +159,7 @@ This method constructs new [test specifications](/api/advanced/test-specificatio
 
 This method automatically caches all test specifications. When you call [`getModuleSpecifications`](#getmodulespecifications) next time, it will return the same specifications unless [`clearSpecificationsCache`](#clearspecificationscache) was called before that.
 
-::: warning
-As of Vitest 3, it's possible to have multiple test specifications with the same module ID (file path) if `poolMatchGlob` has several pools or if `typecheck` is enabled. This possibility will be removed in Vitest 4.
-:::
-
+> **warning**: As of Vitest 3, it's possible to have multiple test specifications with the same module ID (file path) if `poolMatchGlob` has several pools or if `typecheck` is enabled. This possibility will be removed in Vitest 4.
 ```ts
 const specifications = await vitest.globTestSpecifications(['my-filter'])
 // [TestSpecification{ moduleId: '/tests/my-filter.test.ts' }]
@@ -189,12 +176,10 @@ function getRelevantTestSpecifications(
 
 This method resolves every test specification by calling [`project.globTestFiles`](/api/advanced/test-project#globtestfiles). It accepts string filters to match the test files - these are the same filters that [CLI supports](/guide/filtering#cli). If `--changed` flag was specified, the list will be filtered to include only files that changed. `getRelevantTestSpecifications` doesn't run any test files.
 
-::: warning
-This method can be slow because it needs to filter `--changed` flags. Do not use it if you just need a list of test files.
+> **warning**: This method can be slow because it needs to filter `--changed` flags. Do not use it if you just need a list of test files.
 
 - If you need to get the list of specifications for known test files, use [`getModuleSpecifications`](#getmodulespecifications) instead.
 - If you need to get the list of all possible test files, use [`globTestSpecifications`](#globtestspecifications).
-:::
 
 ## mergeReports
 
@@ -218,11 +203,9 @@ Execute test files without running test callbacks. `collect` returns unhandled e
 
 This method resolves tests specifications based on the config `include`, `exclude`, and `includeSource` values. Read more at [`project.globTestFiles`](/api/advanced/test-project#globtestfiles). If `--changed` flag was specified, the list will be filtered to include only files that changed.
 
-::: warning
-Note that Vitest doesn't use static analysis to collect tests. Vitest will run every test file in isolation, just like it runs regular tests.
+> **warning**: Note that Vitest doesn't use static analysis to collect tests. Vitest will run every test file in isolation, just like it runs regular tests.
 
 This makes this method very slow, unless you disable isolation before collecting tests.
-:::
 
 ## start
 
@@ -232,9 +215,7 @@ function start(filters?: string[]): Promise<TestRunResult>
 
 Initialize reporters, the coverage provider, and run tests. This method accepts string filters to match the test files - these are the same filters that [CLI supports](/guide/filtering#cli).
 
-::: warning
-This method should not be called if [`vitest.init()`](#init) is also invoked. Use [`runTestSpecifications`](#runtestspecifications) or [`rerunTestSpecifications`](#reruntestspecifications) instead if you need to run tests after Vitest was initialised.
-:::
+> **warning**: This method should not be called if [`vitest.init()`](#init) is also invoked. Use [`runTestSpecifications`](#runtestspecifications) or [`rerunTestSpecifications`](#reruntestspecifications) instead if you need to run tests after Vitest was initialised.
 
 This method is called automatically by [`startVitest`](/guide/advanced/tests) if `config.mergeReports` and `config.standalone` are not set.
 
@@ -248,9 +229,7 @@ Initialize reporters and the coverage provider. This method doesn't run any test
 
 Internally, this method is called only if [`--standalone`](/guide/cli#standalone) flag is enabled.
 
-::: warning
-This method should not be called if [`vitest.start()`](#start) is also invoked.
-:::
+> **warning**: This method should not be called if [`vitest.start()`](#start) is also invoked.
 
 This method is called automatically by [`startVitest`](/guide/advanced/tests) if `config.standalone` is set.
 
@@ -264,9 +243,7 @@ Returns a list of test specifications related to the module ID. The ID should al
 
 This method can return already cached specifications based on the `moduleId` and `pool`. But note that [`project.createSpecification`](/api/advanced/test-project#createspecification) always returns a new instance and it's not cached automatically. However, specifications are automatically cached when [`runTestSpecifications`](#runtestspecifications) is called.
 
-::: warning
-As of Vitest 3, this method uses a cache to check if the file is a test. To make sure that the cache is not empty, call [`globTestSpecifications`](#globtestspecifications) at least once.
-:::
+> **warning**: As of Vitest 3, this method uses a cache to check if the file is a test. To make sure that the cache is not empty, call [`globTestSpecifications`](#globtestspecifications) at least once.
 
 ## clearSpecificationsCache
 
@@ -287,9 +264,7 @@ function runTestSpecifications(
 
 This method runs every test based on the received [specifications](/api/advanced/test-specification). The second argument, `allTestsRun`, is used by the coverage provider to determine if it needs to include uncovered files in report.
 
-::: warning
-This method doesn't trigger `onWatcherRerun`, `onWatcherStart` and `onTestsRerun` callbacks. If you are rerunning tests based on the file change, consider using [`rerunTestSpecifications`](#reruntestspecifications) instead.
-:::
+> **warning**: This method doesn't trigger `onWatcherRerun`, `onWatcherStart` and `onTestsRerun` callbacks. If you are rerunning tests based on the file change, consider using [`rerunTestSpecifications`](#reruntestspecifications) instead.
 
 ## rerunTestSpecifications
 
@@ -337,11 +312,9 @@ Execute test files without running test callbacks. `collectTests` returns unhand
 
 This method works exactly the same as [`collect`](#collect), but you need to provide test specifications yourself.
 
-::: warning
-Note that Vitest doesn't use static analysis to collect tests. Vitest will run every test file in isolation, just like it runs regular tests.
+> **warning**: Note that Vitest doesn't use static analysis to collect tests. Vitest will run every test file in isolation, just like it runs regular tests.
 
 This makes this method very slow, unless you disable isolation before collecting tests.
-:::
 
 ## cancelCurrentRun
 
@@ -359,9 +332,7 @@ function setGlobalTestNamePattern(pattern: string | RegExp): void
 
 This methods overrides the global [test name pattern](/config/testnamepattern).
 
-::: warning
-This method doesn't start running any tests. To run tests with updated pattern, call [`runTestSpecifications`](#runtestspecifications).
-:::
+> **warning**: This method doesn't start running any tests. To run tests with updated pattern, call [`runTestSpecifications`](#runtestspecifications).
 
 ## getGlobalTestNamePattern <Version>4.0.0</Version> {#getglobaltestnamepattern}
 
@@ -379,9 +350,7 @@ function resetGlobalTestNamePattern(): void
 
 This methods resets the [test name pattern](/config/testnamepattern). It means Vitest won't skip any tests now.
 
-::: warning
-This method doesn't start running any tests. To run tests without a pattern, call [`runTestSpecifications`](#runtestspecifications).
-:::
+> **warning**: This method doesn't start running any tests. To run tests without a pattern, call [`runTestSpecifications`](#runtestspecifications).
 
 ## enableSnapshotUpdate
 
@@ -391,9 +360,7 @@ function enableSnapshotUpdate(): void
 
 Enable the mode that allows updating snapshots when running tests. Every test that runs after this method is called will update snapshots. To disable the mode, call [`resetSnapshotUpdate`](#resetsnapshotupdate).
 
-::: warning
-This method doesn't start running any tests. To update snapshots, run tests with [`runTestSpecifications`](#runtestspecifications).
-:::
+> **warning**: This method doesn't start running any tests. To update snapshots, run tests with [`runTestSpecifications`](#runtestspecifications).
 
 ## resetSnapshotUpdate
 
@@ -411,18 +378,13 @@ function invalidateFile(filepath: string): void
 
 This method invalidates the file in the cache of every project. It is mostly useful if you rely on your own watcher because Vite's cache persist in memory.
 
-::: danger
-If you disable Vitest's watcher but keep Vitest running, it is important to manually clear the cache with this method because there is no way to disable the cache. This method will also invalidate file's importers.
-:::
+> **danger**: If you disable Vitest's watcher but keep Vitest running, it is important to manually clear the cache with this method because there is no way to disable the cache. This method will also invalidate file's importers.
 
 ## import
 
-<!--@include: ./import-example.md-->
-
 Import a file using Vite module runner. The file will be transformed by Vite with the global config and executed in a separate context. Note that `moduleId` will be relative to the `config.root`.
 
-::: danger
-`project.import` reuses Vite's module graph, so importing the same module using a regular import will return a different module:
+> **danger**: `project.import` reuses Vite's module graph, so importing the same module using a regular import will return a different module:
 
 ```ts
 import * as staticExample from './example.js'
@@ -430,11 +392,8 @@ const dynamicExample = await vitest.import('./example.js')
 
 dynamicExample !== staticExample // ✅
 ```
-:::
 
-::: info
-Internally, Vitest uses this method to import global setups, custom coverage providers, and custom reporters, meaning all of them share the same module graph as long as they belong to the same Vite server.
-:::
+> **info**: Internally, Vitest uses this method to import global setups, custom coverage providers, and custom reporters, meaning all of them share the same module graph as long as they belong to the same Vite server.
 
 ## close
 
@@ -547,9 +506,7 @@ function createCoverageProvider(): Promise<CoverageProvider | null>
 
 Creates a coverage provider if `coverage` is enabled in the config. This is done automatically if you are running tests with [`start`](#start) or [`init`](#init) methods.
 
-::: warning
-This method will also clean all previous reports if [`coverage.clean`](/config/coverage#coverage-clean) is not set to `false`.
-:::
+> **warning**: This method will also clean all previous reports if [`coverage.clean`](/config/coverage#coverage-clean) is not set to `false`.
 
 ## enableCoverage <Version>4.0.0</Version> {#enablecoverage}
 
@@ -587,8 +544,7 @@ function experimental_parseSpecification(
 
 This function will collect all tests inside the file without running it. It uses rollup's `parseAst` function on top of Vite's `ssrTransform` to statically analyse the file and collect all tests that it can.
 
-::: warning
-If Vitest could not analyse the name of the test, it will inject a `dynamic: true` property to the test or a suite. The `id` will also have a postfix with `-dynamic` to not break tests that were collected properly.
+> **warning**: If Vitest could not analyse the name of the test, it will inject a `dynamic: true` property to the test or a suite. The `id` will also have a postfix with `-dynamic` to not break tests that were collected properly.
 
 Vitest always injects this property in tests with `for` or `each` modifier or tests with a dynamic name (like, `hello ${property}` or `'hello' + ${property}`). Vitest will still assign a name to the test, but it cannot be used to filter tests.
 
@@ -600,13 +556,10 @@ import { escapeTestName } from 'vitest/node'
 // turns into /hello, .+?/
 const escapedPattern = new RegExp(escapeTestName('hello, %s', true))
 ```
-:::
 
-::: warning
-Vitest will only collect tests defined in the file. It will never follow imports to other files.
+> **warning**: Vitest will only collect tests defined in the file. It will never follow imports to other files.
 
 Vitest collects all `it`, `test`, `suite` and `describe` definitions even if they were not imported from the `vitest` entry point.
-:::
 
 ## experimental_parseSpecifications <Version type="experimental">4.0.0</Version> <Experimental /> {#parsespecifications}
 
@@ -638,7 +591,7 @@ export function experimental_getSourceModuleDiagnostic(
 ): Promise<SourceModuleDiagnostic>
 ```
 
-::: details Types
+> **details**: Types
 ```ts
 export interface ModuleDefinitionLocation {
   line: number
@@ -678,10 +631,7 @@ export interface SourceModuleDiagnostic {
   untrackedModules: UntrackedModuleDefinitionDiagnostic[]
 }
 ```
-:::
 
 Returns module's diagnostic. If [`testModule`](/api/advanced/test-module) is not provided, `selfTime` and `totalTime` will be aggregated across all tests that were running the last time. If the module was not transformed or executed, the diagnostic will be empty.
 
-::: warning
-At the moment, the [browser](/guide/browser/) modules are not supported.
-:::
+> **warning**: At the moment, the [browser](/guide/browser/) modules are not supported.

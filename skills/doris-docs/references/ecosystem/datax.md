@@ -10,10 +10,9 @@
 
 The [DataX](https://github.com/alibaba/DataX) Doriswriter plugin supports synchronizing data from various data sources, such as MySQL, Oracle, and SQL Server, into Doris using the Stream Load method.
 
-:::info Note
+> **info**: Note
 This plugin needs to be used together with the DataX service.
 DataX supports multiple data sources. For more details, see here.
-:::
 
 ## Usage
 
@@ -97,7 +96,6 @@ Download the [source code](https://github.com/apache/doris/tree/master/extension
   - Mandatory: No
   - Default: None
 
-
 * **maxBatchRows**
   - Description: The maximum number of rows for each batch of imported data. Together with **batchSize**, it controls the number of imported record rows per batch. When each batch of data reaches one of the two thresholds, the data of this batch will start to be imported.
   - Mandatory: No
@@ -113,7 +111,6 @@ Download the [source code](https://github.com/apache/doris/tree/master/extension
   - Description: The number of retries after each batch of failed data imports.
   - Mandatory: No
   - Default: 3
-
 
 * **labelPrefix**
 

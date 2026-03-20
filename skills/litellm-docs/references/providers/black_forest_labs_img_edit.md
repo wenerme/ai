@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Black Forest Labs Image Editing
 
@@ -40,9 +39,6 @@ Get your API key from [Black Forest Labs](https://blackforestlabs.ai/).
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic-edit" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Editing"
 import os
 import litellm
@@ -60,10 +56,6 @@ response = litellm.image_edit(
 # BFL returns URLs
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="async-edit" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Editing"
 import os
@@ -85,10 +77,6 @@ async def edit_image():
 asyncio.run(edit_image())
 ```
 
-</TabItem>
-
-<TabItem value="inpainting" label="Inpainting (Fill)">
-
 ```python showLineNumbers title="Inpainting with Mask"
 import os
 import litellm
@@ -108,10 +96,6 @@ response = litellm.image_edit(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="outpainting" label="Outpainting (Expand)">
 
 ```python showLineNumbers title="Outpainting - Expand Image Borders"
 import os
@@ -134,10 +118,6 @@ response = litellm.image_edit(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Parameters">
-
 ```python showLineNumbers title="Advanced Image Editing with BFL Parameters"
 import os
 import litellm
@@ -158,9 +138,6 @@ response = litellm.image_edit(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -210,9 +187,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make image editing requests
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Black Forest Labs via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -232,10 +206,6 @@ response = client.images.edit(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Black Forest Labs via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/edits' \
 --header 'Authorization: Bearer sk-1234' \
@@ -243,9 +213,6 @@ curl --location 'http://localhost:4000/v1/images/edits' \
 --form 'prompt="Add a sunset in the background"' \
 --form 'image=@"path/to/your/image.png"'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Parameters
 

@@ -2,9 +2,6 @@
 title: Quick Start
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 In this guide, you will learn how to quickly bootstrap a simple project using MikroORM. For a deeper dive, check out the [Getting Started guide](./guide) which follows.
 
 > If you prefer to take a peek at an existing project, there are [several example repositories](./examples) available.
@@ -117,17 +114,7 @@ More info about `RequestContext` is described [here](./identity-map.md#request-c
 
 Now you can start defining your entities. MikroORM supports multiple approaches:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'decorators', value: 'decorators'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 The `defineEntity` helper with a class extension gives you clean named types and a natural place for custom methods:
 
@@ -148,8 +135,8 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-  <TabItem value="define-entity">
+  
+  
 
 The `defineEntity` helper provides full type inference without decorators:
 
@@ -169,8 +156,8 @@ export const Book = defineEntity({
 export type IBook = InferEntity<typeof Book>;
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 Decorators require additional setup - see the [Using Decorators guide](./using-decorators.md) for configuration details:
 
@@ -196,8 +183,7 @@ export class Book {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 For UUID primary keys, use `p.uuid()` with `defineEntity`, `@PrimaryKey({ type: 'uuid' })` with decorators, or `{ type: 'uuid', primary: true }` with `EntitySchema`.
 

@@ -7,7 +7,6 @@ Vector store files represent the individual files that live inside a vector stor
 | Logging | ✅ (full request/response logging) |
 | Supported Providers | `openai` |
 
-
 ## Supported operations
 
 | Operation | Description | OpenAI Python Client | LiteLLM Proxy |
@@ -19,10 +18,7 @@ Vector store files represent the individual files that live inside a vector stor
 | Retrieve vector store file content | Stream processed chunks | ❌ | ✅ |
 | Update vector store file attributes | Patch custom attributes | ❌ | ✅ |
 
-:::note
-Vector store support currently works **only with OpenAI vector stores and OpenAI-uploaded file IDs**.
-:::
-
+> **note**: Vector store support currently works **only with OpenAI vector stores and OpenAI-uploaded file IDs**.
 
 ## Create vector store file
 

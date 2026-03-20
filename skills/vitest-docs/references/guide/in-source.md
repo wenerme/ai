@@ -8,9 +8,7 @@ Vitest provides a way to run tests within your source code along side the implem
 
 This makes the tests share the same closure as the implementations and able to test against private states without exporting. Meanwhile, it also brings a closer feedback loop for development.
 
-::: warning
-This guide explains how to write tests inside your source code. If you need to write tests in separate test files, follow the ["Writing Tests" guide](/guide/#writing-tests).
-:::
+> **warning**: This guide explains how to write tests inside your source code. If you need to write tests in separate test files, follow the ["Writing Tests" guide](/guide/#writing-tests).
 
 ## Setup
 
@@ -72,7 +70,7 @@ export default defineConfig({
 
 ### Other Bundlers
 
-::: details Rolldown
+> **details**: Rolldown
 ```js [rolldown.config.js]
 import { defineConfig } from 'rolldown/config'
 
@@ -86,9 +84,8 @@ export default defineConfig({
 ```
 
 Learn more: [Rolldown](https://rolldown.rs/)
-:::
 
-::: details Rollup
+> **details**: Rollup
 ```js [rollup.config.js]
 import replace from '@rollup/plugin-replace' // [!code ++]
 
@@ -103,9 +100,8 @@ export default {
 ```
 
 Learn more: [Rollup](https://rollupjs.org/)
-:::
 
-::: details unbuild
+> **details**: unbuild
 ```js [build.config.js]
 import { defineBuildConfig } from 'unbuild'
 
@@ -118,9 +114,8 @@ export default defineBuildConfig({
 ```
 
 Learn more: [unbuild](https://github.com/unjs/unbuild)
-:::
 
-::: details webpack
+> **details**: webpack
 ```js [webpack.config.js]
 const webpack = require('webpack')
 
@@ -134,7 +129,6 @@ module.exports = {
 ```
 
 Learn more: [webpack](https://webpack.js.org/plugins/define-plugin/)
-:::
 
 ## TypeScript
 

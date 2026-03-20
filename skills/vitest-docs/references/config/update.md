@@ -1,6 +1,5 @@
 ---
 title: update | Config
-outline: deep
 ---
 
 # update <CRoot /> {#update}

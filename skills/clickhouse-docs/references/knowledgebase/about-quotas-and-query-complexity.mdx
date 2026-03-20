@@ -7,7 +7,6 @@ description: 'Quotas and Query Complexity are powerful ways to limit and restric
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## About Quotas and Query complexity \{#about-quotas-and-query-complexity\}
 
@@ -98,7 +97,6 @@ clickhouse-cloud :) CREATE ROLE role_with_quota
 
 -- 0 rows in set. Elapsed: 0.096 sec.
 
-
 -- grant select privileges
 clickhouse-cloud :) GRANT SELECT ON default.* TO role_with_quota;
 
@@ -110,7 +108,6 @@ clickhouse-cloud :) GRANT SELECT ON default.* TO role_with_quota;
 
 -- 0 rows in set. Elapsed: 0.100 sec.
 
-
 -- grant role to the user
 clickhouse-cloud :) GRANT role_with_quota TO user_with_quota
 
@@ -121,7 +118,6 @@ clickhouse-cloud :) GRANT role_with_quota TO user_with_quota
 -- Ok.
 
 -- 0 rows in set. Elapsed: 0.099 sec.
-
 
 -- create a quota that allows max 10 result rows in each 10 seconds interval and apply that to the role
 clickhouse-cloud :) CREATE QUOTA quota_max_10_result_rows_per_10_seconds FOR INTERVAL 10 second MAX result_rows = 10 TO role_with_quota
@@ -149,7 +145,6 @@ clickhouse-cloud :) SELECT user()
 
 -- 1 row in set. Elapsed: 0.002 sec.
 
-
 -- list grants
 clickhouse-cloud :) SHOW GRANTS
 
@@ -175,7 +170,6 @@ clickhouse-cloud :) select now()
 -- └─────────────────────┘
 
 -- 1 row in set. Elapsed: 0.001 sec.
-
 
 -- query ten rows
 clickhouse-cloud :) SELECT * FROM test_table LIMIT 10
@@ -210,13 +204,11 @@ clickhouse-cloud :) SELECT * FROM test_table LIMIT 1
 
 -- Query id: 48ae46ef-7b33-4765-affa-e47e889f48e5
 
-
 -- 0 rows in set. Elapsed: 0.094 sec.
 
 -- Received exception from server (version 23.8.1):
 -- Code: 201. DB::Exception: Received from dxqjx1s5lt.eu-west-1.aws.clickhouse.cloud:9440. DB::Exception: Quota for user `user_with_quota` for 10s has been exceeded: result_rows = 11/10. 
 -- Interval will end at 2023-10-25 14:37:50. Name of quota template: `quota_max_10_result_rows_per_10_seconds`. (QUOTA_EXCEEDED)
-
 
 -- check the time
 clickhouse-cloud :) select now()
@@ -233,7 +225,6 @@ clickhouse-cloud :) select now()
 ```
 
 Note that the user will need to wait another 5 seconds before can get a new 10 rows resultset "allowance".
-
 
 ## Using Query Complexity \{#using-query-complexity\}
 
@@ -252,7 +243,6 @@ clickhouse-cloud :) CREATE USER user_with_query_complexity IDENTIFIED WITH sha25
 
 -- 0 rows in set. Elapsed: 0.104 sec.
 
-
 -- create a role with query complexity SETTINGS that allows only one role in resultset
 clickhouse-cloud :) CREATE ROLE role_with_query_complexity SETTINGS max_result_rows=1;
 
@@ -263,7 +253,6 @@ clickhouse-cloud :) CREATE ROLE role_with_query_complexity SETTINGS max_result_r
 -- Ok.
 
 -- 0 rows in set. Elapsed: 0.097 sec.
-
 
 -- grant select privileges
 clickhouse-cloud :) GRANT SELECT ON default.* TO role_with_query_complexity;
@@ -276,7 +265,6 @@ clickhouse-cloud :) GRANT SELECT ON default.* TO role_with_query_complexity;
 
 -- 0 rows in set. Elapsed: 0.097 sec.
 
-
 -- grant role to the user
 clickhouse-cloud :) GRANT role_with_query_complexity TO user_with_query_complexity
 
@@ -288,7 +276,6 @@ clickhouse-cloud :) GRANT role_with_query_complexity TO user_with_query_complexi
 
 -- 0 rows in set. Elapsed: 0.096 sec.
 ```
-
 
 Now login as the user `user_with_query_complexity`:
 
@@ -306,7 +293,6 @@ clickhouse-cloud :) SELECT user();
 -- └────────────────────────────┘
 
 -- 1 row in set. Elapsed: 0.001 sec.
-
 
 -- list grants
 clickhouse-cloud :) SHOW GRANTS
@@ -336,7 +322,6 @@ clickhouse-cloud :) SELECT * FROM default.test_table LIMIT 1;
 
 -- 1 row in set. Elapsed: 0.002 sec.
 
-
 -- attempt to query with more than 1 row in resultset
 clickhouse-cloud :) SELECT * FROM default.test_table LIMIT 2;
 
@@ -354,4 +339,3 @@ clickhouse-cloud :) SELECT * FROM default.test_table LIMIT 2;
 ```
 
 Whenever attempting to get more than 1 row in resultset the query complexity constraint will kick in.
-

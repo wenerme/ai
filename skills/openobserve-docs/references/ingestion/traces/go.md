@@ -98,23 +98,20 @@ The server is now running, navigate to [http://localhost:8080/](http://localhost
 
 Refresh page couple of times to get more traces exported.
 
-![Traces Sample Configration](./images/go_app.png)
-
-
+[Traces Sample Configration]
 
 Traces are captured, you can check these captured traces [here](https://cloud.openobserve.ai/web/traces).
 
-
-![Traces Page](./images/traces_go.png)
+[Traces Page]
 
 Filter traces with your service name `otel1-gin-gonic`
 
-![Filter traces with service name](./images/filter_traces_go.png)
+[Filter traces with service name]
 
 Click on any trace to check trace data
 
-![Trace details](./images/trace_details_1.png)
+[Trace details]
 
 Trace can have multiple spans, each span represents single operation or task within that trace. Click on any span to check span details.
 
-![Trace details](./images/trace_details_2.png)
+[Trace details]

@@ -1,22 +1,14 @@
 ---
 description: 'Over 20 billion records of data from Sensor.Community, a contributors-driven
   global sensor network that creates Open Environmental Data.'
-sidebar_label: 'Environmental sensors data'
-slug: /getting-started/example-datasets/environmental-sensors
 title: 'Environmental Sensors Data'
 doc_type: 'guide'
 keywords: ['environmental sensors', 'Sensor.Community', 'air quality data', 'environmental data', 'getting started']
 ---
 
-import Image from '@theme/IdealImage';
-import no_events_per_day from '@site/static/images/getting-started/example-datasets/sensors_01.png';
-import sensors_02 from '@site/static/images/getting-started/example-datasets/sensors_02.png';
-
 [Sensor.Community](https://sensor.community/en/) is a contributors-driven global sensor network that creates Open Environmental Data. The data is collected from sensors all over the globe. Anyone can purchase a sensor and place it wherever they like. The APIs to download the data is in [GitHub](https://github.com/opendata-stuttgart/meta/wiki/APIs) and the data is freely available under the [Database Contents License (DbCL)](https://opendatacommons.org/licenses/dbcl/1-0/).
 
-:::important
-The dataset has over 20 billion records, so be careful just copying-and-pasting the commands below unless your resources can handle that type of volume. The commands below were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud).
-:::
+> **important**: The dataset has over 20 billion records, so be careful just copying-and-pasting the commands below unless your resources can handle that type of volume. The commands below were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud).
 
 1. The data is in S3, so we can use the `s3` table function to create a table from the files. We can also query the data in place. Let's look at a few rows before attempting to insert it into ClickHouse:
 

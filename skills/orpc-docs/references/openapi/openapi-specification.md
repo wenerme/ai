@@ -9,8 +9,6 @@ oRPC uses the [OpenAPI Specification](https://spec.openapis.org/oas/v3.1.0) to d
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/openapi@latest
 ```
@@ -31,17 +29,13 @@ bun add @orpc/openapi@latest
 deno add npm:@orpc/openapi@latest
 ```
 
-:::
-
 ## Generating Specifications
 
 oRPC supports OpenAPI 3.1.1 and integrates seamlessly with popular schema libraries like [Zod](https://zod.dev/), [Valibot](https://valibot.dev), and [ArkType](https://arktype.io/). You can generate specifications from either a [Router](/docs/router) or a [Contract](/docs/contract-first/define-contract):
 
-:::info
-Interested in support for additional schema libraries? [Let us know](https://github.com/middleapi/orpc/discussions/categories/ideas)!
-:::
+> **info**: Interested in support for additional schema libraries? [Let us know](https://github.com/middleapi/orpc/discussions/categories/ideas)!
 
-::: details Want to create your own JSON schema converter?
+> **details**: Want to create your own JSON schema converter?
 You can use any existing `X to JSON Schema` converter to add support for additional schema libraries. For example, if you want to use [Valibot](https://valibot.dev) with oRPC (if not supported), you can create a custom converter to convert Valibot schemas into JSON Schema.
 
 ```ts
@@ -62,10 +56,7 @@ export class ValibotToJsonSchemaConverter implements ConditionalSchemaConverter 
 }
 ```
 
-:::info
-It's recommended to use the built-in converters because the oRPC implementations handle many edge cases and supports every type that oRPC offers.
-:::
-
+> **info**: It's recommended to use the built-in converters because the oRPC implementations handle many edge cases and supports every type that oRPC offers.
 ```ts
 import { OpenAPIGenerator } from '@orpc/openapi'
 import {
@@ -110,9 +101,7 @@ const specFromRouter = await openAPIGenerator.generate(router, {
 })
 ```
 
-:::warning
-Features prefixed with `experimental_` are unstable and may lack some functionality.
-:::
+> **warning**: Features prefixed with `experimental_` are unstable and may lack some functionality.
 
 ## Common Schemas
 
@@ -149,13 +138,9 @@ const spec = await generator.generate(router, {
 })
 ```
 
-:::info
-
-- The `strategy` option determines which schema definition to use when input and output types differ (defaults to `input`). This is needed because we cannot use the same `$ref` for both input and output in this case.
+> **info**: - The `strategy` option determines which schema definition to use when input and output types differ (defaults to `input`). This is needed because we cannot use the same `$ref` for both input and output in this case.
 
 - `UndefinedError` is used for undefined errors, which is very useful when using [Type-Safe Error Handling](/docs/error-handling#type‐safe-error-handling).
-
-:::
 
 ## Filtering Procedures
 
@@ -249,9 +234,7 @@ const requireAuth = oo.spec(
 
 Any [procedure](/docs/procedure) that includes the use above `errors` or `middleware` will automatically have the defined `security` property applied
 
-:::info
-The `.spec` helper accepts a callback as its second argument, allowing you to override the entire operation object.
-:::
+> **info**: The `.spec` helper accepts a callback as its second argument, allowing you to override the entire operation object.
 
 ## `@orpc/zod`
 

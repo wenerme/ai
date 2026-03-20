@@ -33,7 +33,6 @@ PROPERTIES (
 
 Depending on the `<type>`, the parameters of PROPERTIES vary. Please refer to the example for details.
 
-
 ## Examples
 
 **1. Create a Spark resource named spark0 in yarn cluster mode.**

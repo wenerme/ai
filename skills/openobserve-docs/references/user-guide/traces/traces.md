@@ -9,7 +9,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
 
     !!! note "Where to find it"
         Select **Traces** from the left navigation in the OpenObserve UI. 
-        ![Traces](../../images/traces.png)
+        [Traces]
 
     ## Why traces matter
     When an application serves a request, such as placing an order, it often calls many different services behind the scenes. If something slows down or fails, it can be difficult to know where the problem happened. Traces solve this by recording the journey of a single request as it flows through your system.
@@ -24,8 +24,8 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
 
     ## How OpenObserve helps
     OpenObserve collects and stores spans from your services. It then reconstructs the request flow in the Traces UI, where you can see how the request moved across different services, how long each step took, and where issues may have occurred.
-    <br><br>
-    **Example: Retail Application** <br>
+    
+    **Example: Retail Application** 
     Imagine a customer clicks **place order** in your online shop. That single action triggers work across several services:
 
     ```bash
@@ -41,7 +41,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
     ```
     ## How this appears as a trace
     **Root span:** orders-service POST /checkout starts when the API receives the request and ends when the response is sent.
-    <br>
+    
 
     **Child spans:**
 
@@ -68,30 +68,30 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
     - Badges for the services involved
     - The first span determines the label.
     
-    ![trace-list](../../images/trace-list.png)
+    [trace-list]
 
     **Timeline:** Shows spans as color-coded horizontal bars. Parent spans contain child spans. Parent time includes the time of child spans, which may run in parallel.
-    ![Timeline](../../images/timeline.png)
+    [Timeline]
     **Service map:** Shows all services involved in the trace and how long each took.
-    ![Service map](../../images/service-map.png)
+    [Service map]
     **Span details:** Provide metadata such as file path, code line, service version, thread ID, and additional attributes. Events and error messages appear when available.
-    ![Span details](../../images/span-details.png)
+    [Span details]
 === "How-to"
-    <br>
+    
     The following configuration steps show how to set up OpenObserve for self-monitoring and for collecting traces from external applications.
 
     ## Configure for self-monitoring 
 
-    **Steps** <br>
+    **Steps** 
     ??? "Step 1: Navigate to Data Sources and collect authorization details"
         Go to **Data sources** > **Custom** > **Traces**.
-        ![opentelemetry-collector-for-traces](../../images/opentelemetry-collector-for-traces.png)
+        [opentelemetry-collector-for-traces]
         Note the following values:
 
         - HTTP Endpoint under OTLP HTTP
         - Authorization header value
 
-        ![Navigate to traces](../../images/navigate-to-traces.png)
+        [Navigate to traces]
 
     ??? "Step 2: Configure the environment variables"
         Set the following environment variables on the OpenObserve deployment:
@@ -123,7 +123,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
 
     ??? "Step 1: Navigate to Data Sources and collect authorization details"
         In your OpenObserve application, go to Data sources > Custom > Traces.
-        ![opentelemetry-collector-for-traces](../../images/opentelemetry-collector-for-traces.png)
+        [opentelemetry-collector-for-traces]
         From the **OTLP HTTP** section, copy the following data:
 
         - HTTP Endpoint
@@ -136,11 +136,11 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
         - TLS setting insecure or secure
 
     ??? "Step 2: Choose how you want to send the data"
-        ![opentelemetry-collector-for-traces](../../images/opentelemetry-collector-for-traces.png)
+        [opentelemetry-collector-for-traces]
 
         === "OpenTelemetry SDK"
             **You can send the data directly from the application using an OpenTelemetry SDK**
-            <br>
+            
             
 
             In this method, add the copied authorization values in the exporter setup within your code:
@@ -151,7 +151,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
             - For **gRPC**, add Authorization, organization, and stream-name.
             - Set **TLS** to secure or insecure to match the UI if you use gRPC.
         === "OpenTelemetry Collector"
-            You can also send data through the **OpenTelemetry Collector**. <br>
+            You can also send data through the **OpenTelemetry Collector**. 
             To configure this: 
 
             - Open your team's Collector config file.
@@ -181,7 +181,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
 
     ### What makes logs correlatable
     The spans are generated by the system or application that you are monitoring. They are created by its tracing library or agent, not by OpenObserve.
-    <br>
+    
     A span is active while your code is handling an operation. When a span is active, the logging component can read the following identifiers from it and add them to each log line.
     
     - trace_id
@@ -193,7 +193,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
         3. Choose log field names that fit your logging format. Examples include `trace_id` and `span_id` or `traceId` and `spanId`. Make a note of the exact names you used. You will map these field names in OpenObserve in the next step.
 
     ??? "Step 2: Tell OpenObserve how your log fields are named"
-        ![config-custom-trace-id](../../images/config-custom-trace-id.png)
+        [config-custom-trace-id]
         1. Open the OpenObserve UI.
         2. Go to **Management** > **Organization Parameters**. 
         3. Under **Log** details: 
@@ -215,7 +215,7 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
             3. Choose the time range and select **Run query**.
             4. Open a trace to view its timeline.
             5. Now choose any of these ways to reach the related logs:
-            ![traces-to-logs](../../images/traces-to-logs.png)
+            [traces-to-logs]
             **A. Use the header stream selector**:
 
             - In the trace header, open the stream dropdown next to View Logs.
@@ -241,11 +241,11 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
             3. Select the time range and select **Run query**.
             4. Expand a log record.
             5. Select **View Trace**.
-            ![view-trace-from-logs](../../images/view-trace-from-logs.png)
+            [view-trace-from-logs]
             6. The system shows the trace that matches the `trace_id`.
 
             **Note**: If no results appear after selecting **View Trace**, confirm that in your log stream the trace ID and span ID are available in the `trace_id` and `span_id` respectively. If not, ensure the custom trace ID and span ID fields are configured in the Organization parameter section under Management. 
-            ![config-traces-in-org-parameter](../../images/config-traces-in-org-parameter.png)
+            [config-traces-in-org-parameter]
 
     ## View a trace
     1. Go to **Traces**.
@@ -254,10 +254,9 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
     4. Click **Run query**. 
     5. From the query result, select the desired trace. 
 
-
     ## Use Trace Timeline and Service Map
     Use Trace Timeline and Service Map to inspect performance and find slow spans:
-    ![trace-timeline](../../images/trace-timeline.png)
+    [trace-timeline]
     1. Go to **Traces**. 
     2. From the stream selector, select the trace stream.
     3. Set a time range.
@@ -274,15 +273,15 @@ This document explains how to use OpenObserve to collect, view, and analyze dist
     3. Add a filter in the non-SQL editor to find spans with errors, for example, `span_status = "ERROR"`.4. Set a time range.
     5. Select **Run query**. 
     6. From the list of traces, open a trace. Traces should have an error badge.
-    ![error-badge-spans](../../images/error-badge-spans.png)
+    [error-badge-spans]
     7. In the span tree, click the span highlighted in red warning sign. 
-    ![warning-spans](../../images/warning-spans.png)
+    [warning-spans]
     8. The detailed span view opens, showing the complete context for that span.  
-    ![span-view](../../images/span-view.png)
+    [span-view]
     9. If log and trace correlation is configured, select **View Logs** in the span details panel to open the related logs for further investigation.   
     
     ## Explore the detailed span view
-    ![detailed-span-view](../../images/detailed-span-view.png)
+    [detailed-span-view]
 
     | Tab | What it shows | When to use |
     |-----|---------------|-------------|

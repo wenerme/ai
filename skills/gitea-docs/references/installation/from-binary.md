@@ -1,7 +1,5 @@
 ---
 date: "2017-06-19T12:00:00+02:00"
-slug: "install-from-binary"
-sidebar_position: 15
 aliases:
   - /en-us/install-from-binary
 ---
@@ -21,9 +19,7 @@ You can find the file matching your platform from the [downloads page](https://d
 
 **For Windows**, you will likely want `windows-4.0-amd64`. It's for all modern versions of Windows, but there is also a `386` platform available designed for older, 32-bit versions of Windows.
 
-:::info
-There is also a `gogit-windows` file available that was created to help with some [performance problems](https://github.com/go-gitea/gitea/pull/15482) reported by some Windows users on older systems/versions. You should consider using this file if you're experiencing performance issues, and let us know if it improves performance.
-:::
+> **info**: There is also a `gogit-windows` file available that was created to help with some [performance problems](https://github.com/go-gitea/gitea/pull/15482) reported by some Windows users on older systems/versions. You should consider using this file if you're experiencing performance issues, and let us know if it improves performance.
 
 **For macOS**, you should choose `darwin-arm64` if your hardware uses Apple Silicon, or `darwin-amd64` for Intel.
 
@@ -55,10 +51,8 @@ despite warnings like `This key is not certified with a trusted signature!`.
 
 ## Recommended server configuration
 
-:::note
-Many of the following directories can be configured using [Environment Variables](../administration/environment-variables.md) as well!
+> **note**: Many of the following directories can be configured using [Environment Variables](../administration/environment-variables.md) as well!
 Of note, configuring `GITEA_WORK_DIR` will tell Gitea where to base its working directory, as well as ease installation.
-:::
 
 ### Prepare environment
 
@@ -104,9 +98,7 @@ chown root:git /etc/gitea
 chmod 770 /etc/gitea
 ```
 
-:::note
-> `/etc/gitea` is temporarily set with write permissions for user `git` so that the web installer can write the configuration file. After the installation is finished, it is recommended to set permissions to read-only using:
-:::
+> **note**: > `/etc/gitea` is temporarily set with write permissions for user `git` so that the web installer can write the configuration file. After the installation is finished, it is recommended to set permissions to read-only using:
 
 >
 > ```sh
@@ -125,10 +117,7 @@ See the [command line documentation](../administration/command-line.md) for info
 
 ### Configure Gitea's working directory
 
-:::note
-If you plan on running Gitea as a Linux service, you can skip this step, as the service file allows you to set `WorkingDirectory`. Otherwise, consider setting this environment variable (semi-)permanently so that Gitea consistently uses the correct working directory.
-:::
-
+> **note**: If you plan on running Gitea as a Linux service, you can skip this step, as the service file allows you to set `WorkingDirectory`. Otherwise, consider setting this environment variable (semi-)permanently so that Gitea consistently uses the correct working directory.
 ```sh
 export GITEA_WORK_DIR=/var/lib/gitea/
 ```
@@ -138,7 +127,6 @@ export GITEA_WORK_DIR=/var/lib/gitea/
 ```sh
 cp gitea /usr/local/bin/gitea
 ```
-
 
 ### Adding shell autocompletion (from 1.25)
 
@@ -183,9 +171,7 @@ To restart your Gitea instance, we recommend to use SIGHUP signal. If you know y
 
 To gracefully stop the Gitea instance, a simple `kill $GITEA_PID` or `killall gitea` is enough.
 
-:::note
-We don't recommend to use the SIGKILL signal (`-9`); you may be forcefully stopping some of Gitea's internal tasks, and it will not gracefully stop (tasks in queues, indexers, etc.)
-:::
+> **note**: We don't recommend to use the SIGKILL signal (`-9`); you may be forcefully stopping some of Gitea's internal tasks, and it will not gracefully stop (tasks in queues, indexers, etc.)
 
 See below for troubleshooting instructions to repair broken repositories after
 an update of your Gitea version.
@@ -214,9 +200,6 @@ As of v1.8, there is a problem with the arm7 version of Gitea, and it doesn't ru
 
 It is recommended to switch to the arm6 version, which has been tested and shown to work on Raspberry Pis and similar devices.
 
-<!---
-please remove after fixing the arm7 bug
---->
 ### Git error after updating to a new version of Gitea
 
 If during the update, the binary file name has been changed to a new version of Gitea,

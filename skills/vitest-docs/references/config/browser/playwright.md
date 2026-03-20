@@ -53,19 +53,15 @@ export default defineConfig({
 })
 ```
 
-::: warning
-Unlike Playwright test runner, Vitest opens a _single_ page to run all tests that are defined in the same file. This means that isolation is restricted to a single test file, not to every individual test.
-:::
+> **warning**: Unlike Playwright test runner, Vitest opens a _single_ page to run all tests that are defined in the same file. This means that isolation is restricted to a single test file, not to every individual test.
 
 ## launchOptions
 
 These options are directly passed down to `playwright[browser].launch` command. You can read more about the command and available arguments in the [Playwright documentation](https://playwright.dev/docs/api/class-browsertype#browser-type-launch).
 
-::: warning
-Vitest will ignore `launch.headless` option. Instead, use [`test.browser.headless`](/config/browser/headless).
+> **warning**: Vitest will ignore `launch.headless` option. Instead, use [`test.browser.headless`](/config/browser/headless).
 
 Note that Vitest will push debugging flags to `launch.args` if [`--inspect`](/guide/cli#inspect) is enabled.
-:::
 
 ## connectOptions
 
@@ -73,13 +69,9 @@ These options are directly passed down to `playwright[browser].connect` command.
 
 Use `connectOptions.wsEndpoint` to connect to an existing Playwright server instead of launching browsers locally. This is useful for running browsers in Docker, in CI, or on a remote machine.
 
-::: warning
+> **warning**: Vitest forwards `launchOptions` to Playwright server via the `x-playwright-launch-options` header. This works only if the remote Playwright server supports this header, for example when using the `playwright run-server` CLI.
 
-Vitest forwards `launchOptions` to Playwright server via the `x-playwright-launch-options` header. This works only if the remote Playwright server supports this header, for example when using the `playwright run-server` CLI.
-
-:::
-
-::: details Example: Running a Playwright Server in Docker
+> **details**: Example: Running a Playwright Server in Docker
 To run browsers in a Docker container (see [Playwright Docker guide](https://playwright.dev/docs/docker#remote-connection)):
 
 Start a Playwright server using Docker Compose:
@@ -124,21 +116,16 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ## contextOptions
 
 Vitest creates a new context for every test file by calling [`browser.newContext()`](https://playwright.dev/docs/api/class-browsercontext). You can configure this behaviour by specifying [custom arguments](https://playwright.dev/docs/api/class-browser#browser-new-context).
 
-::: tip
-Note that the context is created for every _test file_, not every _test_ like in playwright test runner.
-:::
+> **tip**: Note that the context is created for every _test file_, not every _test_ like in playwright test runner.
 
-::: warning
-Vitest always sets `ignoreHTTPSErrors` to `true` in case your server is served via HTTPS and `serviceWorkers` to `'allow'` to support module mocking via [MSW](https://mswjs.io).
+> **warning**: Vitest always sets `ignoreHTTPSErrors` to `true` in case your server is served via HTTPS and `serviceWorkers` to `'allow'` to support module mocking via [MSW](https://mswjs.io).
 
 It is also recommended to use [`test.browser.viewport`](/config/browser/headless) instead of specifying it here as it will be lost when tests are running in headless mode.
-:::
 
 ## `actionTimeout`
 
@@ -163,9 +150,7 @@ await userEvent.click(page.getByRole('button'), {
 
 When enabled, Vitest uses Playwright's [persistent context](https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context) instead of a regular browser context. This allows browser state (cookies, localStorage, DevTools settings, etc.) to persist between test runs.
 
-::: warning
-This option is ignored when running tests in parallel (e.g. when headless with [`fileParallelism`](/config/fileparallelism) enalbed) since persistent context cannot be shared across parallel sessions.
-:::
+> **warning**: This option is ignored when running tests in parallel (e.g. when headless with [`fileParallelism`](/config/fileparallelism) enalbed) since persistent context cannot be shared across parallel sessions.
 
 - When set to `true`, the user data is stored in `./node_modules/.cache/vitest-playwright-user-data`
 - When set to a string, the value is used as the path to the user data directory

@@ -1,6 +1,5 @@
 # AA-LCR
 
-
 ## Overview
 
 AA-LCR (Artificial Analysis Long Context Retrieval) is a benchmark for evaluating long-context retrieval and reasoning capabilities of language models. It requires models to find and synthesize information across multiple documents.
@@ -28,7 +27,6 @@ AA-LCR (Artificial Analysis Long Context Retrieval) is a benchmark for evaluatin
 - Documents auto-downloaded if `text_dir` not specified
 - Judge prompt compares candidate answer against reference
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ AA-LCR (Artificial Analysis Long Context Retrieval) is a benchmark for evaluatin
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -136,5 +133,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

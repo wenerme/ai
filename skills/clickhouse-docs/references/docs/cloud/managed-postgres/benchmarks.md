@@ -1,25 +1,16 @@
 ---
-slug: /cloud/managed-postgres/benchmarks
-sidebar_label: 'Benchmarks'
 title: 'Performance benchmarks'
 description: 'Performance benchmarks comparing Postgres managed by ClickHouse with AWS Aurora, RDS, and other managed PostgreSQL services'
 keywords: ['postgres benchmarks', 'performance', 'pgbench', 'aurora', 'rds', 'tps', 'latency', 'nvme performance']
 doc_type: 'guide'
 ---
 
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import computeIntensive from '@site/static/images/managed-postgres/benchmarks/compute-intensive.png';
-import ioReadOnly from '@site/static/images/managed-postgres/benchmarks/io-intensive-readonly.png';
-import ioReadWrite from '@site/static/images/managed-postgres/benchmarks/io-intensive-readwrite.png';
-
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="benchmarks" />
 
-:::info TL;DR
+> **info**: TL;DR
 - **Benchmarked** Postgres managed by ClickHouse against AWS RDS (16k provisioned IOPS) and Aurora IO Optimized using standard [`pgbench`](https://www.postgresql.org/docs/current/pgbench.html) tests
 - **Performance**: ClickHouse's NVMe-backed Postgres delivers **4.3-9x faster performance** for IO-intensive workloads and **12% faster** for CPU-bound scenarios
 - **Ideal for fast-growing AI-driven workloads** that demand high transaction rates, low-latency data access, and predictable performance without IO bottlenecks
-:::
 
 ## Benchmark overview {#overview}
 

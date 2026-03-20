@@ -4,7 +4,6 @@ description: >-
 ---
 This guide provides step-by-step instructions for using the [Multi-window Selector](../multi-window-selector-scheduled-alerts-concept) feature in Scheduled Alerts.
 
-
 ## How to Access The Multi-window Selector
 
 You can apply the multi-window selector feature to both new and existing scheduled alerts in SQL mode. 
@@ -19,7 +18,7 @@ To access multi-window selector in new alerts:
 4. Under **Alert Setup**, select **Scheduled Alerts**.   
 5. Navigate to the **Multi-window Selector** section.
 
-![access multi-window](../../images/multi-window-period.png)
+[access multi-window]
 
 ### In Existing Alerts
 
@@ -29,7 +28,7 @@ To access multi-window selector in existing alerts:
 2. Click the edit icon.  
 3. In the **Update Alert** page, navigate to the **Multi-window Selector** section.
 
-![access multi-window in existing alerts](../../images/multi-window-in-existing-alerts.png)
+[access multi-window in existing alerts]
 
 ## Use Multi-window Selector 
 
@@ -67,13 +66,13 @@ Explanation of the above SQL query:
 - **Filters**: Only include events of type `purchase` that have retry count greater than zero.  
 - **Group by**: Each time bucket.
 
-![sql editor](../../images/multi-window-sql-editor.png)
+[sql editor]
 
 ### Step 2: Define the Period
 
 Specify the time range for which you want to evaluate the data (for example, the last 30 minutes).
 
-![period](../../images/multi-window-period.png)
+[period]
 
 ### Step 3: Select Multi-window
 
@@ -88,8 +87,8 @@ In this case, the alert manager will run **two SQL queries** at runtime:
 
 ### Step 4: Write the VRL Function 
 
-> **What input does the VRL function receive?**<br>
-> ​The output of your SQL query is the input to your VRL function.<br>
+> **What input does the VRL function receive?**
+> ​The output of your SQL query is the input to your VRL function.
 > When **Multi-window Selector** is used, OpenObserve passes the results of your SQL queries to your > VRL function as an **array of arrays**.
 >
 > Example: Let us say for the above two queries, we get the following query output:
@@ -121,7 +120,7 @@ In this case, the alert manager will run **two SQL queries** at runtime:
 > - `result[0]`: Current time window data  
 > - `result[1]`: Past time window data
 
-To start writing the VRL function for processing your SQL query results and performing the comparison, click the function toggle at the top of the SQL query editor.<br>
+To start writing the VRL function for processing your SQL query results and performing the comparison, click the function toggle at the top of the SQL query editor.
 
 **Key points to know before writing the VRL function:**  
 
@@ -131,8 +130,8 @@ This ensures that your VRL function receives a **multi-dimensional array** input
     - `result[0]` = current time window data  
     - `result[1]` = past time window data
 
-2. The **special variable `.` (dot)** holds this input. It contains the entire query result. To make this input easier to work with, we **assign it to a variable called `result`** and ensure it is treated as an array: <br>
-`result = array!(.)` <br>
+2. The **special variable `.` (dot)** holds this input. It contains the entire query result. To make this input easier to work with, we **assign it to a variable called `result`** and ensure it is treated as an array: 
+`result = array!(.)` 
 Note that `array!(.)` tells VRL to ensure the input is treated as an array. If the input is not an array, VRL will throw an error to alert you. Always use `array!(.)` for clarity and safety.
 
 **Tip**: Write and test your VRL function using the VRL playground in Logs page or [Vector.dev Playground](https://playground.vrl.dev/). 
@@ -215,7 +214,7 @@ if length(result) >= 2 {
 
 .
 ```
-![vrl editor](../../images/multi-window-vrl-editor.png)
+[vrl editor]
 
 **Understand the VRL Function Output**
 
@@ -260,7 +259,7 @@ Set the **Threshold** as **>= 1**
 
 Determines how often the alert manager runs the query throughout the day (e.g., every 30 minutes).
 
-![frequency](../../images/multi-window-frequency.png)
+[frequency]
 
 **Important:**
 
@@ -287,7 +286,7 @@ At 10:30 AM, OpenObserve alert manager executes SQL for:
 
 Specify where you want to receive the alert notification- email or webhook. 
 
-![add destination](../../images/multi-window-add-destination.png)
+[add destination]
 
 ### Step 8: Create Row Template
 
@@ -313,7 +312,7 @@ Details: Count difference: {{ diff }}
 
 ## FAQ
 
-**Q.** **What is a window in the Multi-window Selector?** <br>
+**Q.** **What is a window in the Multi-window Selector?** 
 **A.** A *window* is a specific time range of data. It depends on the period you set in the alert.
 If you set the period to 4 hours, each window will cover exactly 4 hours of data.
 
@@ -321,18 +320,17 @@ If you set the period to 4 hours, each window will cover exactly 4 hours of data
 - If you select **1 day ago** in the Multi-window selector, that window will cover the same 4-hour block, but from exactly one day earlier - **April 9th from 12:00 PM to 4:00 PM**.
 - If you select **4 days ago,** it will cover the same 4-hour block, but from 4 days earlier - **April 6th from 12:00 PM to 4:00 PM**.
 Every window you select is just a copy of the same time range (defined by the period), shifted back by the amount of time you choose.
-<br>
 
-**Q.** **Does the period control the window length?**<br>
+**Q.** **Does the period control the window length?**
 **A.** Yes. The period defines the duration of each window. If you set the period to 4 hours, then every window — whether it's the current window or any past window — will be exactly 4 hours long.
 
-**Q.** **Does the alert manager run multiple queries inside one window?** <br>
+**Q.** **Does the alert manager run multiple queries inside one window?** 
 **A.** No. For each evaluation, the alert manager runs:
 
 - One query for the current window
 - One separate query for each additional past window you select
 
-The alert manager does not run multiple queries within a single window. Each window is queried once at the time of evaluation.<br>
+The alert manager does not run multiple queries within a single window. Each window is queried once at the time of evaluation.
 **Note that the time of evaluation is decided by the frequency you set in the alert settings.**
 For example:
 
@@ -340,7 +338,7 @@ For example:
 - If you set frequency to every 12 hours, it runs the queries every 12 hours.
 So, frequency controls when the alert manager checks, and period controls what time range is checked at each evaluation.
 
-**Q.** **What happens if I forget to include `#ResultArray#` in my VRL function?** <br>
+**Q.** **What happens if I forget to include `#ResultArray#` in my VRL function?** 
 **A.** If you do not include `#ResultArray#`, your VRL function will receive a flat array:**  
 
 ``` linenums="1"
@@ -357,4 +355,3 @@ So, frequency controls when the alert manager checks, and period controls what t
 ]
 ```
 You cannot distinguish current window from past window data from the above array.
-

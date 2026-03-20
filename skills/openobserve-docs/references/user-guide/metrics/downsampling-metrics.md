@@ -19,7 +19,7 @@ Downsampling is configured using the following environment variables.:
 - `O2_METRICS_DOWNSAMPLING_RULES`: Specifies which data streams to target and how they should be downsampled using defined rules. You can add a comma-separated list of rules.
 > For example, `O2_METRICS_DOWNSAMPLING_RULES`: "o2_cpu_usage:avg:30d:5m, app_analytics:last:10d:10m"
 
-> Refer to the [Downsampling Rule](#downsampling-rule) section. <br> 
+> Refer to the [Downsampling Rule](#downsampling-rule) section.  
 
 #### Downsampling configuration for Helm Chart users
 
@@ -40,7 +40,6 @@ Set the same variables in your `terraform.tfvars` file:
 `O2_METRICS_DOWNSAMPLING_RULES`    = "up:avg:30d:5m"  
 ```
 > **Note**: **After setting the environment variables, make sure to redeploy the OpenObserve instance for the changes to apply.**
-
 
 ### Downsampling rule
 
@@ -70,12 +69,12 @@ Here:
 ```yaml
 O2_METRICS_DOWNSAMPLING_RULES: "o2_cpu_metrics:avg:30d:5m"
 ```
-Retains one average value every 5 minutes for `o2_cpu_metrics` data older than 30 days.<br>
+Retains one average value every 5 minutes for `o2_cpu_metrics` data older than 30 days.
 **Multiple rules**
 ```yaml
 O2_METRICS_DOWNSAMPLING_RULES: "o2_cpu_metrics:avg:30d:5m, o2_app_logs:last:10d:10m"
 ```
-Applies two rules: the first rule averages `o2_cpu_metrics` every 5 minutes after 30 days, and the second rule keeps the last value for `o2_app_logs` every 10 minutes after 10 days. <br>
+Applies two rules: the first rule averages `o2_cpu_metrics` every 5 minutes after 30 days, and the second rule keeps the last value for `o2_app_logs` every 10 minutes after 10 days. 
 **Rule with Regular Expression Pattern**
 ```yaml
 O2_METRICS_DOWNSAMPLING_RULES: "o2_cpu_.*:sum:10d:60m"
@@ -84,17 +83,17 @@ Targets all streams starting with `o2_cpu_`, and for each matching stream, retai
 
 ### Downsampling example
 
-**Scenario**<br>
+**Scenario**
 A system is recording CPU usage data every 10 seconds to the stream `o2_cpu_usage`, generating a large volume of high-resolution metrics. Over time, this data becomes too granular and expensive to store or query efficiently for historical analysis.
-<br>
-**Goal**<br>
+
+**Goal**
 Downsample data older than 30 days to retain one average for every 2-minute time block. Run the downsampling job every 3 minutes.
 
-**Configuration**<br>
+**Configuration**
 `O2_COMPACT_DOWNSAMPLING_INTERVAL` = "180"     
 `O2_METRICS_DOWNSAMPLING_RULES` = "o2_cpu_usage:avg:30d:2m"  
 
-**Input metrics**<br>
+**Input metrics**
 
 ```json
 
@@ -168,21 +167,20 @@ Downsample data older than 30 days to retain one average for every 2-minute time
 
 **Downsampling job runs and outputs**
 
-Job 1 runs at 00:03:00 and processes Time Block 1 <br>
+Job 1 runs at 00:03:00 and processes Time Block 1 
 Output:
 ```json  
 { "timestamp": "2024-03-01 00:00:00", "cpu_avg": 20.55 }  
 ```  
-Job 2 runs at 00:06:00 and processes Time Block 2 and Time Block 3<br>
+Job 2 runs at 00:06:00 and processes Time Block 2 and Time Block 3
 Output:
 ```json  
 { "timestamp": "2024-03-01 00:02:00", "cpu_avg": 21.75 }  
 { "timestamp": "2024-03-01 00:04:00", "cpu_avg": 20.66 }  
 ```  
-Job 3 runs at 00:09:00 and processes Time Block 4 <br>
+Job 3 runs at 00:09:00 and processes Time Block 4 
 Output:
 ```json  
 { "timestamp": "2024-03-01 00:06:00", "cpu_avg": 21.65 }  
 ```  
 **Note**: Time Block 5 is still in progress at 00:09:00. It will be processed at 00:12:00.
-

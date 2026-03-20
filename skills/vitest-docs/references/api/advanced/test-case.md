@@ -60,8 +60,7 @@ The ID looks like this:
              ^ test index
 ```
 
-::: tip
-You can generate file hash with `generateFileHash` function from `vitest/node` which is available since Vitest 3:
+> **tip**: You can generate file hash with `generateFileHash` function from `vitest/node` which is available since Vitest 3:
 
 ```ts
 import { generateFileHash } from 'vitest/node'
@@ -71,11 +70,8 @@ const hash = generateFileHash(
   undefined, // the project name or `undefined` is not set
 )
 ```
-:::
 
-::: danger
-Don't try to parse the ID. It can have a minus at the start: `-1223128da3_0_0_0`.
-:::
+> **danger**: Don't try to parse the ID. It can have a minus at the start: `-1223128da3_0_0_0`.
 
 ## location
 
@@ -192,9 +188,7 @@ interface TestResultSkipped {
 }
 ```
 
-::: tip
-If the test was skipped because another test has `only` flag, the `options.mode` will be equal to `skip`.
-:::
+> **tip**: If the test was skipped because another test has `only` flag, the `options.mode` will be equal to `skip`.
 
 If the test failed, the return value will be `TestResultFailed`:
 
@@ -226,9 +220,7 @@ interface TestResultPassed {
 }
 ```
 
-::: warning
-Note that the test with `passed` state can still have errors attached - this can happen if `retry` was triggered at least once.
-:::
+> **warning**: Note that the test with `passed` state can still have errors attached - this can happen if `retry` was triggered at least once.
 
 ## diagnostic
 
@@ -273,9 +265,7 @@ interface TestDiagnostic {
 }
 ```
 
-::: info
-`diagnostic()` will return `undefined` if the test was not scheduled to run yet.
-:::
+> **info**: `diagnostic()` will return `undefined` if the test was not scheduled to run yet.
 
 ## annotations
 

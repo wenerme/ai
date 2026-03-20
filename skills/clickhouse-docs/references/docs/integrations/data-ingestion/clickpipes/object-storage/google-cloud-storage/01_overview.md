@@ -1,17 +1,8 @@
 ---
-sidebar_label: 'Overview'
 description: 'Seamlessly connect your object storage to ClickHouse Cloud.'
-slug: /integrations/clickpipes/object-storage/gcs/overview
-sidebar_position: 1
 title: 'Integrating Google Cloud Storage with ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import cp_iam from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/amazon-s3/cp_iam.png';
-import cp_credentials from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/google-cloud-storage/cp_credentials.png';
-import gcs_subscription_input from '@site/static/images/integrations/data-ingestion/clickpipes/object-storage/google-cloud-storage/gcs_subscription_input.png';
-import cp_advanced_settings from '@site/static/images/integrations/data-ingestion/clickpipes/cp_advanced_settings.png';
-import Image from '@theme/IdealImage';
 
 The GCS ClickPipe provides a fully-managed and resilient way to ingest data from Google Cloud Storage (GCS). It supports both **one-time** and **continuous ingestion** with exactly-once semantics.
 
@@ -43,9 +34,7 @@ In this mode, the GCS ClickPipe does an initial load of **all files** in the spe
 
 #### Any order {#continuous-ingestion-any-order}
 
-:::note
-Unordered mode is **not** supported for public buckets. It requires **Service Account** authentication and a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) subscription connected to the bucket.
-:::
+> **note**: Unordered mode is **not** supported for public buckets. It requires **Service Account** authentication and a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) subscription connected to the bucket.
 
 It's possible to configure a GCS ClickPipe to ingest files that don't have an implicit order by setting up a [Google Cloud Pub/Sub](https://docs.cloud.google.com/storage/docs/pubsub-notifications) subscription that receives notifications from the bucket. This allows ClickPipes to listen for object created events and ingest any new files regardless of the file naming convention.
 
@@ -102,7 +91,6 @@ projects/${YOUR_PROJECT_ID}/subscriptions/${YOUR_SUBSCRIPTION_NAME}
 ```
 
 <Image img={gcs_subscription_input} alt="Unordered mode for GCS" size="lg" border/>
-<br/>
 
 ### File pattern matching {#file-pattern-matching}
 
@@ -114,7 +102,7 @@ Object Storage ClickPipes follow the POSIX standard for file pattern matching. A
 |---------|-------------|---------|---------|
 | `?` | Matches exactly **one** character (excluding `/`) | `data-?.csv` | `data-1.csv`, `data-a.csv`, `data-x.csv` |
 | `*` | Matches **zero or more** characters (excluding `/`) | `data-*.csv` | `data-1.csv`, `data-001.csv`, `data-report.csv`, `data-.csv` |
-| `**` <br></br> Recursive | Matches **zero or more** characters (including `/`). Enables recursive directory traversal. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
+| `**` </br> Recursive | Matches **zero or more** characters (including `/`). Enables recursive directory traversal. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
 
 **Examples:**
 

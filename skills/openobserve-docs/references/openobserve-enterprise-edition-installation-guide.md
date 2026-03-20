@@ -17,20 +17,16 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
     - **NATS** coordinates communication between ingestion and query nodes.
     - **Dex and OpenFGA** enable [Single Sign-On (SSO)](../user-guide/identity-and-access-management/sso/) and [Role-Based Access Control (RBAC)](../user-guide/identity-and-access-management/role-based-access-control/).
 
-
 ### Installation Steps
-
 
 === "Using Amazon EKS"
     Follow these steps to install OpenObserve Enterprise Edition on Amazon Elastic Kubernetes Service (EKS):
-
 
     ??? info "Prerequisites"
         Before you begin, ensure that the following are available:
 
         - An active AWS account with permissions to create EKS clusters, S3 buckets, IAM roles, and policies.
         - AWS CLI installed and configured using the `aws configure` command.
-
 
     ???  "Step 1: Create a Kubernetes Cluster Using `eksctl`"  
         > **Cluster Setup**: This step sets up the Kubernetes cluster using Amazon EKS. You can use any other Kubernetes service instead of EKS.
@@ -124,10 +120,8 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
         ```
         For more information, refer to the [RBAC and SSO guides](../user-guide/identity-and-access-management/role-based-access-control/).
 
-
         !!! Note
             The NATS coordinator service is deployed automatically by the OpenObserve Helm chart. You do not need to install or configure it separately.
-
 
     ???  "Step 6: Install PostgreSQL Using CloudNativePG"
         > **Metadata Storage**: OpenObserve uses PostgreSQL to store metadata such as dashboards, stream configurations, users, and the filelist table.
@@ -157,11 +151,11 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
     ???  "Step 9: Deploy OpenObserve Using Helm"
         > **Deployment**: This step installs OpenObserve into your Kubernetes cluster using the Helm chart.
 
-        1. Create the namespace: <br>
+        1. Create the namespace: 
         ```bash linenums="1" 
         kubectl create ns openobserve
         ```
-        2. Deploy OpenObserve: <br>
+        2. Deploy OpenObserve: 
         ```bash linenums="1"
         helm --namespace openobserve -f values.yaml install o2 openobserve/openobserve
         ```
@@ -222,7 +216,7 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
         
         3. **Install CloudNativePG Operator**
 
-            PostgreSQL is used for storing openobserve metadata. <br>
+            PostgreSQL is used for storing openobserve metadata. 
             To install CloudNativePG:
 
             ```sh linenums="1"
@@ -237,12 +231,11 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
 
             Ensure that the pods are running.
 
-
         4. **Azure Storage Setup**
 
             OpenObserve uses object storage to store telemetry data. Create a storage account and a container:
 
-             **Create storage account with unique name:** <br>
+             **Create storage account with unique name:** 
 
             ```sh linenums="1"
             az storage account create \
@@ -252,7 +245,7 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
               --sku Standard_LRS
             ```
 
-            **Create blob container:**<br>
+            **Create blob container:**
 
             ```sh linenums="1"
             az storage container create \
@@ -262,7 +255,7 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
             Get the storage access key:
             ```
 
-            **Retrieve storage access key:** <br>
+            **Retrieve storage access key:** 
 
             ```sh linenums="1"
             $SA_KEY = az storage account keys list \
@@ -276,8 +269,6 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
             echo "Storage Account Key: $SA_KEY"
             ```
             Store the storage account name and key securely. 
-
-
 
     ??? "Step 1: Add OpenObserve Helm Repository"
 
@@ -386,7 +377,6 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
         ```
         For more information, refer to the [RBAC and SSO guides](../user-guide/identity-and-access-management/role-based-access-control/).
 
-
     ??? "Step 4: Create Namespace and Install OpenObserve"
 
         **Create the OpenObserve namespace:**
@@ -443,20 +433,19 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
             - **Email**: The email you configured in `ZO_ROOT_USER_EMAIL`
             - **Password**: The password you configured in `ZO_ROOT_USER_PASSWORD`
 
-
     ??? "Troubleshooting"
 
-        1. NATS Clustering Issues <br>
-        Symptoms: Pods stuck in Init:0/1, "Waiting for NATS to be ready" messages. <br>
-        Cause: NATS trying to form a cluster but unable to establish connections <br>
-        Solution: Ensure all nodes are healthy and networking is properly configured. <br>
+        1. NATS Clustering Issues 
+        Symptoms: Pods stuck in Init:0/1, "Waiting for NATS to be ready" messages. 
+        Cause: NATS trying to form a cluster but unable to establish connections 
+        Solution: Ensure all nodes are healthy and networking is properly configured. 
         2. Volume Attachment Limit Errors
         Symptoms: "exceed max volume count" errors, pods stuck in Pending
         Cause: Too many persistent volumes for the VM size or single-node setup
-        Solution: Use larger VM sizes or disable persistence for non-critical components as shown in the single-node configuration. <br>
+        Solution: Use larger VM sizes or disable persistence for non-critical components as shown in the single-node configuration. 
         3. Storage Authentication Failures
-        Symptoms: "AuthenticationFailed" errors in pod logs. <br>
-        Cause: Incorrect or expired storage account key. <br>
+        Symptoms: "AuthenticationFailed" errors in pod logs. 
+        Cause: Incorrect or expired storage account key. 
         Solution: Regenerate storage account key:
         ```bash
         SA_KEY=$(az storage account keys list \
@@ -464,15 +453,15 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
           --account-name $STORAGE_ACCOUNT_NAME \
           --query '[0].value' -o tsv)
         ```
-        Then update the key in `values.yaml` and reinstall. <br>
-        4. Pod Scheduling Issues <br>
-        Symptoms: Pods stuck in Pending, insufficient resources. <br>
-        Cause: Node resource constraints or anti-affinity rules. <br>
-        Solution: Scale up your cluster or use larger VM sizes. <br>
-        5. Port-Forward Connection Issues <br>
-        Symptoms: "connection refused" when accessing [http://localhost:5080](http://localhost:5080). <br>
-        Cause: Router pod not fully ready. <br>
-        Solution: Wait for router pod to show 1/1 Running, then retry port-forward. <br>
+        Then update the key in `values.yaml` and reinstall. 
+        4. Pod Scheduling Issues 
+        Symptoms: Pods stuck in Pending, insufficient resources. 
+        Cause: Node resource constraints or anti-affinity rules. 
+        Solution: Scale up your cluster or use larger VM sizes. 
+        5. Port-Forward Connection Issues 
+        Symptoms: "connection refused" when accessing [http://localhost:5080](http://localhost:5080). 
+        Cause: Router pod not fully ready. 
+        Solution: Wait for router pod to show 1/1 Running, then retry port-forward. 
 
 === "Using Google GKE"
     Follow these steps to install OpenObserve Enterprise Edition on Google Kubernetes Engine (GKE):
@@ -545,7 +534,6 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
         kubectl get nodes
         ```
 
-
         **Create and Configure Google Cloud Storage Bucket**
 
         1. Create a bucket in the same region as the GKE cluster
@@ -593,7 +581,7 @@ This guide explains how to deploy [OpenObserve Enterprise Edition](https://openo
         ```
     ??? "Step 4: Configure `values.yaml`"
 
-        **Storage settings for Google Cloud Storage** <br>
+        **Storage settings for Google Cloud Storage** 
         Use the bucket you created and the interoperability credentials.
 
         ```yaml linenums="1"

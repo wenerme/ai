@@ -1,13 +1,8 @@
 # [BETA] LiteLLM Managed Files with Batches
 
-:::info
-
-This is a free LiteLLM Enterprise feature.
+> **info**: This is a free LiteLLM Enterprise feature.
 
 Available via the `litellm[proxy]` package or any `litellm` docker image.
-
-:::
-
 
 | Feature | Description | Comments |
 | --- | --- | --- |
@@ -15,14 +10,12 @@ Available via the `litellm[proxy]` package or any `litellm` docker image.
 | SDK | ❌ | Requires postgres DB for storing file ids |
 | Available across all [Batch providers](../batches#supported-providers) | ✅ |  |
 
-
 ## Overview
 
 Use this to:
 
 - Loadbalance across multiple Azure Batch deployments
 - Control batch model access by key/user/team (same as chat completion models)
-
 
 ## (Proxy Admin) Usage
 
@@ -59,7 +52,6 @@ curl -L -X POST 'https://{PROXY_BASE_URL}/key/generate' \
 -H 'Content-Type: application/json' \
 -d '{"models": ["gpt-4o-batch"]}'
 ```
-
 
 You can now use the virtual key to access the batch models (See Developer flow).
 
@@ -104,7 +96,6 @@ batch_input_file = client.files.create(
 )
 print(batch_input_file)
 ```
-
 
 **Where is the file written?**:
 
@@ -158,8 +149,6 @@ client.batches.list(limit=10, extra_query={"target_model_names": "gpt-4o-batch"}
 client.batches.cancel(batch_id)
 ```
 
-
-
 ## E2E Example
 
 ```python showLineNumbers title="create_batch.py"
@@ -199,7 +188,6 @@ batch_input_file = client.files.create(
     extra_body={"target_model_names": "gpt-4o-batch"}
 )
 print(batch_input_file) 
-
 
 # Create batch
 batch = client.batches.create( # UPDATE BATCH ID TO FILE ID 
@@ -264,11 +252,4 @@ No additional infrastructure is required.
 
 ## Could the batch be created at the eastus-01 deployment but a subsequent get of the batch could be routed to (a different) eastus2-01 deployment ?
 
-**A.** You can loadbalance b/w multiple models for the initial create batch. Once that's created - we return a file id, which encodes the model deployment used, so it's sticky and only sends any get/delete to that deployment. 
-
-
-
-
-
-
-
+**A.** You can loadbalance b/w multiple models for the initial create batch. Once that's created - we return a file id, which encodes the model deployment used, so it's sticky and only sends any get/delete to that deployment.

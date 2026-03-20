@@ -5,19 +5,11 @@ packages:
   - "@mastra/hono"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-import PropertiesTable from "@site/src/components/PropertiesTable";
-
 # Hono adapter
 
 The `@mastra/hono` package provides a server adapter for running Mastra with [Hono](https://hono.dev).
 
-:::info
-
-For general adapter concepts (constructor options, initialization flow, etc.), see [Server Adapters](/docs/server/server-adapters).
-
-:::
+> **info**: For general adapter concepts (constructor options, initialization flow, etc.), see [Server Adapters](/docs/server/server-adapters).
 
 ## Installation
 
@@ -138,11 +130,7 @@ app.get('/custom', c => {
 })
 ```
 
-:::tip
-
-Routes added before `init()` run without Mastra context. Add routes after `init()` to access the Mastra instance and request context.
-
-:::
+> **tip**: Routes added before `init()` run without Mastra context. Add routes after `init()` to access the Mastra instance and request context.
 
 ## Accessing context
 

@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/crewai
-sidebar_label: 'Integrate CrewAI'
 title: 'How to build an AI Agent with CrewAI and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how build an AI Agent with CrewAI and the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'CrewAI']
 show_related_blogs: true
@@ -15,9 +11,8 @@ doc_type: 'guide'
 In this guide you'll learn how to build a [CrewAI](https://docs.crewai.com/) AI agent that can interact with 
 [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
 
-:::note Example notebook
+> **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/crewai/crewai.ipynb).
-:::
 
 ## Prerequisites {#prerequisites}
 - You'll need to have Python installed on your system.

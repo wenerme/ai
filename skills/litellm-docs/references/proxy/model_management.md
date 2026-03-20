@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Model Management
 Add new models + Get model info without restarting proxy.
@@ -19,30 +18,17 @@ model_list:
 
 Retrieve detailed information about each model listed in the `/model/info` endpoint, including descriptions from the `config.yaml` file, and additional model info (e.g. max tokens, cost per input token, etc.) pulled from the model_info you set and the [litellm model cost map](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json). Sensitive details like API keys are excluded for security purposes.
 
-:::tip Sync Model Data
+> **tip**: Sync Model Data
 Keep your model pricing data up to date by [syncing models from GitHub](sync_models_github.md).
-:::
-
-<Tabs
-  defaultValue="curl"
-  values={[
-    { label: 'cURL', value: 'curl', },
-  ]}>
-  <TabItem value="curl">
-
 ```bash
 curl -X GET "http://0.0.0.0:4000/model/info" \
      -H "accept: application/json" \
 ```
-  </TabItem>
-</Tabs>
+  
 
 ## Add a New Model
 
 Add a new model to the proxy via the `/model/new` API, to add models without restarting the proxy.
-
-<Tabs>
-<TabItem value="API">
 
 ```bash
 curl -X POST "http://0.0.0.0:4000/model/new" \
@@ -50,8 +36,6 @@ curl -X POST "http://0.0.0.0:4000/model/new" \
     -H "Content-Type: application/json" \
     -d '{ "model_name": "azure-gpt-turbo", "litellm_params": {"model": "azure/gpt-3.5-turbo", "api_key": "os.environ/AZURE_API_KEY", "api_base": "my-azure-api-base"} }'
 ```
-</TabItem>
-<TabItem value="Yaml">
 
 ```yaml
 model_list:
@@ -64,10 +48,6 @@ model_list:
     model_info: 
       my_custom_key: my_custom_value # additional model metadata
 ```
-
-</TabItem>
-</Tabs>
-
 
 ### Model Parameters Structure
 
@@ -101,7 +81,6 @@ Keep in mind that as both endpoints are in [BETA], you may need to visit the ass
 - Add a New Model: [Issue #964](https://github.com/BerriAI/litellm/issues/964)
 
 Feedback on the beta endpoints is valuable and helps improve the API for all users.
-
 
 ## Add Additional Model Information 
 
@@ -143,7 +122,6 @@ curl -L -X GET 'http://0.0.0.0:4000/v1/model/info' \
 3. **Expected Response**
 
 Returned `model_info = Your custom model_info + (if exists) LITELLM MODEL INFO`
-
 
 [**How LiteLLM Model Info is found**](https://github.com/BerriAI/litellm/blob/9b46ec05b02d36d6e4fb5c32321e51e7f56e4a6e/litellm/proxy/proxy_server.py#L7460) 
 

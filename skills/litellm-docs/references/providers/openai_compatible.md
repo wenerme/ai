@@ -1,11 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI-Compatible Endpoints
 
-:::info
-
-Selecting `openai` as the provider routes your request to an OpenAI-compatible endpoint using the upstream  
+> **info**: Selecting `openai` as the provider routes your request to an OpenAI-compatible endpoint using the upstream  
 [official OpenAI Python API library](https://github.com/openai/openai-python/blob/main/README.md).
 
 This library **requires** an API key for all requests, either through the `api_key` parameter 
@@ -14,8 +11,6 @@ or the `OPENAI_API_KEY` environment variable.
 If you don't want to provide a fake API key in each request, consider using a provider that directly matches your 
 OpenAI-compatible endpoint, such as [`hosted_vllm`](/docs/providers/vllm) or [`llamafile`](/docs/providers/llamafile).
 
-:::
-
 To call models hosted behind an openai proxy, make 2 changes:
 
 1. For `/chat/completions`: Put `openai/` in front of your model name, so litellm knows you're trying to call an openai `/chat/completions` endpoint. 
@@ -23,7 +18,6 @@ To call models hosted behind an openai proxy, make 2 changes:
 1. For `/completions`: Put `text-completion-openai/` in front of your model name, so litellm knows you're trying to call an openai `/completions` endpoint. [NOT REQUIRED for `openai/` endpoints called via `/v1/completions` route].
 
 1. **Do NOT** add anything additional to the base url e.g. `/v1/embedding`. LiteLLM uses the openai-client to make these calls, and that automatically adds the relevant endpoints. 
-
 
 ## Usage - completion
 ```python
@@ -59,8 +53,6 @@ response = litellm.embedding(
 print(response)
 ```
 
-
-
 ## Usage with LiteLLM Proxy Server
 
 Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
@@ -92,9 +84,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -115,9 +107,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -133,10 +125,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
+  
 
 ### Advanced - Disable System Messages
 

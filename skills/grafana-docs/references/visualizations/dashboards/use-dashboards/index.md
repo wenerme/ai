@@ -30,134 +30,112 @@ image_maps:
         y_coord: 5
         content: |
           **Dashboard folder**
-
           Click the dashboard folder name to access the folder and perform other [folder management tasks](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/manage-dashboards/).
       - x_coord: 17
         y_coord: 5
         content: |
           **Dashboard title**
-
           Create your own dashboard titles or have Grafana create them for you using [generative AI features](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/manage-dashboards/#set-up-generative-ai-features-for-dashboards).
       - x_coord: 23
         y_coord: 5
         content: |
           **Mark as favorite**
-
           Mark the dashboard as one of your favorites to include it in your list of **Starred** dashboards in the main menu.
       - x_coord: 27
         y_coord: 5
         content: |
           **Public label**
-
           [Externally shared dashboards](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/share-dashboards-panels/shared-dashboards/), it's marked with the **Public** label.
       - x_coord: 84
         y_coord: 5
         content: |
           **Grafana Assistant**
-
           [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/introduction/) combines large language models with Grafana-integrated tools.
       - x_coord: 89
         y_coord: 5
         content: |
           **Invite new users**
-
           Invite new users to join your Grafana organization.
       - x_coord: 32
         y_coord: 23
         content: |
           **Variables**
-
           Use [variables](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/variables/), including ad hoc filters, to create more interactive and dynamic dashboards.
       - x_coord: 45
         y_coord: 23
         content: |
           **Dashboard links**
-
           Link to other dashboards, panels, and external websites. Learn more about [dashboard links](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/build-dashboards/manage-dashboard-links/).
       - x_coord: 59
         y_coord: 29
         content: |
           **Current dashboard time range and time picker**
-
           Select [relative time range](#relative-time-range) options or set custom [absolute time ranges](#absolute-time-range).
           You can also change the **Timezone** and **Fiscal year** settings by clicking the **Change time settings** button.
       - x_coord: 67
         y_coord: 29
         content: |
           **Time range zoom out**
-
           Click to zoom out the time range. Learn more about [common time range controls](#common-time-range-controls).
       - x_coord: 73
         y_coord: 29
         content: |
           **Refresh dashboard**
-
           Trigger queries and refresh dashboard data.
       - x_coord: 78
         y_coord: 29
         content: |
           **Auto refresh control**
-
           Select a dashboard auto refresh time interval.
       - x_coord: 85
         y_coord: 29
         content: |
           **Share dashboard**
-
           Access [dashboard sharing](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/share-dashboards-panels/) options.
       - x_coord: 98
         y_coord: 22.5
         content: |
           **Edit**
-
           Enter edit mode, so you can make changes and access dashboard settings.
       - x_coord: 98
         y_coord: 31
         content: |
           **Export**
-
           Access [dashboard exporting](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/share-dashboards-panels/#export-dashboards) options.
       - x_coord: 98
         y_coord: 39
         content: |
           **Content outline**
-
           The outline provides a tree-like structure that lets you quickly navigate the dashboard.
       - x_coord: 98
         y_coord: 47
         content: |
           **Dashboard insights**
-
           View [dashboard analytics](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/assess-dashboard-usage/) including information about users, activity, query counts.
       - x_coord: 11.5
         y_coord: 30
         content: |
           **Row title**
-
           A row is one way you can [group panels](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/build-dashboards/create-dashboard/#panel-groupings) in a dashboard.
       - x_coord: 20
         y_coord: 36
         content: |
           **Tab title**
-
           A tab is one way you can [group panels](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/build-dashboards/create-dashboard/#panel-groupings) in a dashboard.
       - x_coord: 21
         y_coord: 45
         content: |
           **Panel title**
-
           Create your own panel titles or have Grafana create them for you using [generative AI features](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/manage-dashboards/#set-up-generative-ai-features-for-dashboards).
       - x_coord: 27
         y_coord: 63
         content: |
           **Dashboard panel**
-
           The [panel](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/panels-visualizations/panel-overview/) is the primary building block of a dashboard.
       - x_coord: 19.5
         y_coord: 91
         content: |
           **Panel legend**
-
           Change series colors as well as y-axis and series visibility directly from the legend.
 ---
 
@@ -250,7 +228,7 @@ Grafana Alerting does not support the following syntaxes at this time:
 
 The dashboard and panel time controls have a common UI.
 
-![Common time controls](/media/docs/grafana/dashboards/screenshot-common-time-controls-11.2.png)
+[Common time controls]
 
 The following sections define common time range controls.
 
@@ -260,11 +238,11 @@ The current time range, also called the _time picker_, shows the time range curr
 
 Hover your cursor over the field to see the exact time stamps in the range and their source (such as the local browser).
 
-![Time picker](/media/docs/grafana/dashboards/screenshot-time-picker-11.2.png)
+[Time picker]
 
 Click the current time range to change it. You can change the current time using a _relative time range_, such as the last 15 minutes, or an _absolute time range_, such as `2020-05-14 00:00:00 to 2020-05-15 23:59:59`.
 
-![Current time range](/media/docs/grafana/dashboards/screenshot-current-time-range-11.2.png)
+[Current time range]
 
 #### Relative time range
 
@@ -323,8 +301,6 @@ Using a semi-relative time range, as time progresses, your dashboard will automa
 You can copy and paste the time range from a dashboard to **Explore** and vice versa, or from one dashboard to another.
 Click the **Copy time range to clipboard** icon to copy the current time range to the clipboard. Then paste the time range into **Explore** or another dashboard.
 
-<img class="no-shadow" src="/media/docs/grafana/dashboards/screenshot-copy-paste-time-range.png" max-width="900">
-
 You can also copy and paste a time range using the keyboard shortcuts `t+c` and `t+v` respectively.
 
 #### Zoom out
@@ -364,7 +340,7 @@ To filter dashboard data, follow these steps:
 
 1. Repeat this process as needed until you have all the filters you need.
 
-   ![Ad hoc filters](/media/docs/grafana/dashboards/screenshot-adhoc-filters-v11.3.png)
+   [Ad hoc filters]
 
 ### Edit or delete filters
 
@@ -374,7 +350,7 @@ To edit or delete filters, follow these steps:
 1. Do one of the following:
    - To edit the operator or value of a filter, click anywhere on the filter and update it.
 
-     ![Editing an ad hoc filter](/media/docs/grafana/dashboards/screenshot-edit-filters-v11.3.png)
+     [Editing an ad hoc filter]
 
    - To change the filter label, you must delete the filter and create a new one.
    - To delete a filter, click the **X** next to it.

@@ -282,9 +282,7 @@ router_settings:
 
 ### router_settings - Reference
 
-:::info
-
-Most values can also be set via `litellm_settings`. If you see overlapping values, settings on
+> **info**: Most values can also be set via `litellm_settings`. If you see overlapping values, settings on
 `router_settings` will override those on `litellm_settings`. :::
 
 ```yaml
@@ -367,7 +365,6 @@ router_settings:
 | search_tools | List[SearchToolTypedDict] | List of search tool configurations for Search API integration. Each tool specifies a search_tool_name and litellm_params with search_provider, api_key, api_base, etc. [Further Docs](../search/index.md) |
 | guardrail_list | List[GuardrailTypedDict] | List of guardrail configurations for guardrail load balancing. Enables load balancing across multiple guardrail deployments with the same guardrail_name. [Further Docs](./guardrails/guardrail_load_balancing.md) |
 
-
 ### environment variables - Reference
 
 | Name | Description |
@@ -401,8 +398,10 @@ router_settings:
 | AUTH_STRATEGY | Strategy used for authentication (e.g., OAuth, API key)
 | AUTO_REDIRECT_UI_LOGIN_TO_SSO | Flag to enable automatic redirect of UI login page to SSO when SSO is configured. Default is **false**
 | AUDIO_SPEECH_CHUNK_SIZE | Chunk size for audio speech processing. Default is 1024
-| ANTHROPIC_API_KEY | API key for Anthropic service
+| ANTHROPIC_API_KEY | API key for Anthropic service. Uses `x-api-key` header for authentication.
+| ANTHROPIC_AUTH_TOKEN | Alternative auth token for Anthropic service. Uses `Authorization: Bearer` header instead of `x-api-key`. Used as fallback when `ANTHROPIC_API_KEY` is not set.
 | ANTHROPIC_API_BASE | Base URL for Anthropic API. Default is https://api.anthropic.com
+| ANTHROPIC_BASE_URL | Alternative to `ANTHROPIC_API_BASE` for setting the Anthropic API base URL. Used as fallback when `ANTHROPIC_API_BASE` is not set.
 | ANTHROPIC_TOKEN_COUNTING_BETA_VERSION | Beta version header for Anthropic token counting API. Default is `token-counting-2024-11-01`
 | AWS_ACCESS_KEY_ID | Access Key ID for AWS services
 | AWS_BATCH_ROLE_ARN | ARN of the AWS IAM role for batch operations

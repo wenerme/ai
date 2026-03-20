@@ -4,9 +4,7 @@ title: Advanced API
 
 # Getting Started <Badge type="danger">advanced</Badge> {#getting-started}
 
-::: warning
-This guide lists advanced APIs to run tests via a Node.js script. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
-:::
+> **warning**: This guide lists advanced APIs to run tests via a Node.js script. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
 
 You can import any method from the `vitest/node` entry-point.
 
@@ -52,9 +50,7 @@ const vitest = await startVitest('test')
 console.log(vitest.state.getTestModules()) // [TestModule]
 ```
 
-::: tip
-The ["Running Tests"](/guide/advanced/tests#startvitest) guide has a usage example.
-:::
+> **tip**: The ["Running Tests"](/guide/advanced/tests#startvitest) guide has a usage example.
 
 ## createVitest
 
@@ -77,9 +73,7 @@ const vitest = await createVitest('test', {
 })
 ```
 
-::: tip
-The ["Running Tests"](/guide/advanced/tests#createvitest) guide has a usage example.
-:::
+> **tip**: The ["Running Tests"](/guide/advanced/tests#createvitest) guide has a usage example.
 
 ## resolveConfig
 
@@ -112,17 +106,13 @@ const { vitestConfig, viteConfig } = await resolveConfig({
 })
 ```
 
-::: info
-Due to how Vite's `createServer` works, Vitest has to resolve the config during the plugin's `configResolve` hook. Therefore, this method is not actually used internally and is exposed exclusively as a public API.
+> **info**: Due to how Vite's `createServer` works, Vitest has to resolve the config during the plugin's `configResolve` hook. Therefore, this method is not actually used internally and is exposed exclusively as a public API.
 
 If you pass down the config to the `startVitest` or `createVitest` APIs, Vitest will still resolve the config again.
-:::
 
-::: warning
-The `resolveConfig` doesn't resolve `projects`. To resolve projects configs, Vitest needs an established Vite server.
+> **warning**: The `resolveConfig` doesn't resolve `projects`. To resolve projects configs, Vitest needs an established Vite server.
 
 Also note that `viteConfig.test` will not be fully resolved. If you need Vitest config, use `vitestConfig` instead.
-:::
 
 ## parseCLI
 

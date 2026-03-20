@@ -7,10 +7,7 @@ description: Functions to cryptographically sign and verify data using HMAC-SHA2
 
 Signing helpers provide functions to cryptographically sign and verify data using HMAC-SHA256.
 
-::: info
-Signing is faster than [encryption](/docs/helpers/encryption) but users can view the original data.
-:::
-
+> **info**: Signing is faster than [encryption](/docs/helpers/encryption) but users can view the original data.
 ```ts twoslash
 import { getSignedValue, sign, unsign } from '@orpc/server/helpers'
 
@@ -27,6 +24,4 @@ const verifiedValue = await unsign(signedValue, secret) // 'user123'
 const extractedValue = getSignedValue(signedValue) // 'user123'
 ```
 
-::: info
-The `unsign` and `getSignedValue` helpers accept `undefined` or `null` as signed value and return `undefined` for invalid inputs, enabling seamless handling of optional data.
-:::
+> **info**: The `unsign` and `getSignedValue` helpers accept `undefined` or `null` as signed value and return `undefined` for invalid inputs, enabling seamless handling of optional data.

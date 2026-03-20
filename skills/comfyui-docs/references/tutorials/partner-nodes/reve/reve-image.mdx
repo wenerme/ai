@@ -1,11 +1,7 @@
 ---
 title: "Reve Image Create, Edit, and Remix in ComfyUI"
 description: "Learn how to use Reve Partner nodes in ComfyUI for high-quality image generation, editing, and remixing at up to 4K resolution"
-sidebarTitle: "Reve Image"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Reve is an image generation model available in ComfyUI through Partner Nodes. It supports text-to-image generation at up to **4K resolution**, image editing, and image remixing through three dedicated nodes.
 
@@ -17,21 +13,16 @@ Reve is an image generation model available in ComfyUI through Partner Nodes. It
 - **Image editing**: Modifies lighting conditions, color grading, and adds motion effects to existing images
 - **Image remixing**: Combines elements from reference images into a target image while preserving consistency
 
-<ReqHint/>
-<UpdateReminder/>
-
 ## Reve Create
 
 The Reve Image Create node generates images from text prompts. The model performs well with prompts describing fashion editorial styles, specific lighting conditions, natural textures, and motion.
 
-<CardGroup cols={2}>
-  <Card title="Try on Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_reve_image_create&utm_source=docs&utm_medium=inhouse_social&utm_campaign=reve_model_launch">
+  
     Run the Reve Image Create workflow on Comfy Cloud.
-  </Card>
-  <Card title="Download Workflow" icon="download" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_reve_image_create.json">
+  
+  
     Download the workflow JSON file for local use.
-  </Card>
-</CardGroup>
+  
 
 ### Example outputs
 
@@ -77,14 +68,12 @@ A minimalist wide shot of a vast white sand dune desert during golden hour. A wh
 
 The Reve Image Edit node modifies existing images based on text instructions. It supports editing lighting conditions, color grading, and adding motion effects.
 
-<CardGroup cols={2}>
-  <Card title="Try on Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_reve_image_edit&utm_source=docs&utm_medium=inhouse_social&utm_campaign=reve_model_launch">
+  
     Run the Reve Image Edit workflow on Comfy Cloud.
-  </Card>
-  <Card title="Download Workflow" icon="download" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_reve_image_edit.json">
+  
+  
     Download the workflow JSON file for local use.
-  </Card>
-</CardGroup>
+  
 
 ### Example outputs
 
@@ -110,14 +99,12 @@ Side profile shot of the subject, his hand is grabbing the sunglasses.
 
 The Reve Image Remix node uses elements from reference images as layers and applies them to a target image. This allows you to transfer specific visual properties such as shadows, color grading, or aesthetic styles between images.
 
-<CardGroup cols={2}>
-  <Card title="Try on Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_reve_image_remix&utm_source=docs&utm_medium=inhouse_social&utm_campaign=reve_model_launch">
+  
     Run the Reve Image Remix workflow on Comfy Cloud.
-  </Card>
-  <Card title="Download Workflow" icon="download" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_reve_image_remix.json">
+  
+  
     Download the workflow JSON file for local use.
-  </Card>
-</CardGroup>
+  
 
 ### Example outputs
 

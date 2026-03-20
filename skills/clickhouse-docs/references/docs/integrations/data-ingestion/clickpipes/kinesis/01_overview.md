@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'ClickPipes for Amazon Kinesis'
 description: 'Seamlessly connect your Amazon Kinesis data sources to ClickHouse Cloud.'
-slug: /integrations/clickpipes/kinesis
 title: 'Integrating Amazon Kinesis with ClickHouse Cloud'
 doc_type: 'guide'
 keywords: ['clickpipes', 'kinesis', 'streaming', 'aws', 'data ingestion', 'compression', 'gzip', 'zstd', 'lz4', 'snappy']
@@ -9,21 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import cp_service from '@site/static/images/integrations/data-ingestion/clickpipes/cp_service.png';
-import cp_step0 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step0.png';
-import cp_step1 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step1.png';
-import cp_step2_kinesis from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step2_kinesis.png';
-import cp_step3_kinesis from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step3_kinesis.png';
-import cp_step4a from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step4a.png';
-import cp_step4a3 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step4a3.png';
-import cp_step4b from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step4b.png';
-import cp_step5 from '@site/static/images/integrations/data-ingestion/clickpipes/cp_step5.png';
-import cp_success from '@site/static/images/integrations/data-ingestion/clickpipes/cp_success.png';
-import cp_remove from '@site/static/images/integrations/data-ingestion/clickpipes/cp_remove.png';
-import cp_destination from '@site/static/images/integrations/data-ingestion/clickpipes/cp_destination.png';
-import cp_overview from '@site/static/images/integrations/data-ingestion/clickpipes/cp_overview.png';
-import Image from '@theme/IdealImage';
 
 # Integrating Amazon Kinesis with ClickHouse Cloud
 ## Prerequisite {#prerequisite}
@@ -105,9 +88,7 @@ The following compression codecs are supported:
 
 Compression is detected automatically via magic bytes in each record. If no known compression signature is found, the record is treated as uncompressed. The detected compression type is also surfaced during schema inference, so the sample data preview in the UI will correctly show the decompressed data.
 
-:::note
-Auto-detection is safe for text-based formats like JSON and CSV, as printable ASCII characters will never collide with compression magic bytes.
-:::
+> **note**: Auto-detection is safe for text-based formats like JSON and CSV, as printable ASCII characters will never collide with compression magic bytes.
 
 ## Supported data types {#supported-data-types}
 

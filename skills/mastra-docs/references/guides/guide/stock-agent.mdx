@@ -3,10 +3,6 @@ title: "Guide: Building an AI stock agent"
 description: Guide on creating a stock agent in Mastra to fetch the last day's closing stock price for a given symbol.
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-import YouTube from "@site/src/components/YouTube-player";
-
 # Building an AI stock agent
 
 In this guide, you're going to create an agent that fetches the last day's closing stock price for a given symbol. You'll learn how to create a tool, add it to an agent, and use the agent to fetch stock prices.
@@ -23,7 +19,6 @@ In this guide, you're going to create an agent that fetches the last day's closi
 
 To create an agent in Mastra use the `Agent` class to define it and then register it with Mastra.
 
-<Steps>
   <StepItem>
     Create a new file `src/mastra/agents/stockAgent.ts` and define your agent:
 
@@ -52,13 +47,11 @@ To create an agent in Mastra use the `Agent` class to define it and then registe
     })
     ```
   </StepItem>
-</Steps>
 
 ## Creating the stock price tool
 
 The Stock Agent doesn't yet know anything about current stock prices. To change this, create a tool and add it to the agent.
 
-<Steps>
   <StepItem>
     Create a new file `src/mastra/tools/stockPrices.ts`. Inside, add a `stockPrices` tool that will fetch the last day's closing stock price for a given symbol:
 
@@ -109,13 +102,11 @@ The Stock Agent doesn't yet know anything about current stock prices. To change 
     })
     ```
   </StepItem>
-</Steps>
 
 ## Running the agent server
 
 Learn how to interact with your agent through Mastra's API.
 
-<Steps>
   <StepItem>
     You can run your agent as a service using the `mastra dev` command:
 
@@ -158,4 +149,3 @@ Learn how to interact with your agent through Mastra's API.
 
     This indicates that your agent successfully processed the request, used the `stockPrices` tool to fetch the stock price, and returned the result.
   </StepItem>
-</Steps>

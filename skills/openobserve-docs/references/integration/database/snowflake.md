@@ -29,7 +29,7 @@ The Snowflake data warehouse monitoring integration enables monitoring of Snowfl
     ```
 
     You can also create a role from Snowsight.
-    ![Create a role in Snowflake](../../images/snowflake-create-role.png)
+    [Create a role in Snowflake]
 
 ??? "Step 2: Copy the Account Name from Snowflake"
 
@@ -45,7 +45,7 @@ The Snowflake data warehouse monitoring integration enables monitoring of Snowfl
     GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE TO ROLE O2_ROLE;
     GRANT SELECT ON ALL TABLES IN SCHEMA SNOWFLAKE.ACCOUNT_USAGE TO ROLE O2_ROLE;
     ```
-    ![Grant Permissions to the Role](../../images/snowflake-provide-permission.png)
+    [Grant Permissions to the Role]
 
 ??? "Step 4: Install OpenTelemetry Collector on Ubuntu"
 
@@ -162,7 +162,6 @@ The Snowflake data warehouse monitoring integration enables monitoring of Snowfl
 
 ??? "Step 7: Confirm Metrics Ingestion in OpenObserve"
     To verify ingestion, go to **Streams**  and search for the stream by the stream name. 
-
 
 ??? "Troubleshooting"
     1. **Version Compatibility Issues**

@@ -48,6 +48,4 @@ for await (const chunk of stream) {
 }
 ```
 
-::: info
-Learn more about [RPCLink](/docs/client/rpc-link) and [Event Iterator](/docs/client/event-iterator).
-:::
+> **info**: Learn more about [RPCLink](/docs/client/rpc-link) and [Event Iterator](/docs/client/event-iterator).

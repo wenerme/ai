@@ -1,21 +1,15 @@
-import Image from '@theme/IdealImage';
 
 # PagerDuty Alerting
 
-:::info
-
-✨ PagerDuty Alerting is on LiteLLM Enterprise
+> **info**: ✨ PagerDuty Alerting is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
 
-:::
-
 Handles two types of alerts:
 - High LLM API Failure Rate. Configure X fails in Y seconds to trigger an alert.
 - High Number of Hanging LLM Requests. Configure X hangs in Y seconds to trigger an alert.
-
 
 ## Quick Start
 
@@ -45,9 +39,7 @@ general_settings:
     hanging_threshold_window_seconds: 10  # Window in seconds
 ```
 
-
 3. Test it 
-
 
 Start LiteLLM Proxy
 
@@ -101,6 +93,3 @@ curl -i --location 'http://0.0.0.0:4000/chat/completions' \
 ```
 
 <Image img={require('../../img/pagerduty_hanging.png')} />
-
-
-

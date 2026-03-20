@@ -1,6 +1,5 @@
 # HMMT25
 
-
 ## Overview
 
 HMMT February 2025 (MathArena) is a challenging evaluation benchmark derived from the Harvard-MIT Mathematics Tournament (HMMT) February 2025 competition, one of the most prestigious and difficult high school math contests globally.
@@ -27,7 +26,6 @@ HMMT February 2025 (MathArena) is a challenging evaluation benchmark derived fro
 - Numeric accuracy metric
 - Problems span multiple mathematical domains
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ HMMT February 2025 (MathArena) is a challenging evaluation benchmark derived fro
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -113,5 +110,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

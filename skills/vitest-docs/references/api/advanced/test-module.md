@@ -10,9 +10,8 @@ if (task.type === 'module') {
 }
 ```
 
-::: warning Extending Suite Methods
+> **warning**: Extending Suite Methods
 The `TestModule` class inherits all methods and properties from the [`TestSuite`](/api/advanced/test-suite). This guide will only list methods and properties unique to the `TestModule`.
-:::
 
 ## moduleId
 
@@ -65,9 +64,7 @@ describe('the validation works correctly', (task) => {
 })
 ```
 
-:::tip
-If metadata was attached during collection (outside of the `test` function), then it will be available in [`onTestModuleCollected`](./reporters#ontestmodulecollected) hook in the custom reporter.
-:::
+> **tip**: If metadata was attached during collection (outside of the `test` function), then it will be available in [`onTestModuleCollected`](./reporters#ontestmodulecollected) hook in the custom reporter.
 
 ## diagnostic
 
@@ -125,9 +122,8 @@ interface ImportDuration {
 
 This is a Vite's [`DevEnvironment`](https://vite.dev/guide/api-environment) that transforms all files inside of the test module.
 
-::: details History
+> **details**: History
 - `v4.0.15`: added as experimental
-:::
 
 ## toTestSpecification <Version>4.1.0</Version> {#totestspecification}
 

@@ -32,10 +32,8 @@ Beginning with version 0.9.0, Doris introduced an optimized replica management s
            +---------------+        +-----------------+
                    2. Waiting to be scheduled
 
-
 ```
 The figure above is a simplified workflow.
-
 
 ## Duplicate status
 
@@ -597,11 +595,9 @@ The meanings of each line are as follows:
 
 - num of balance scheduled: Number of balanced scheduling attempts
 
-:::info Note
+> **info**: Note
 
 The above states are only historical accumulative values. We also print these statistics regularly in the FE logs, where the values in parentheses represent the number of changes in each statistical value since the last printing dependence of the statistical information.
-
-:::
 
 ## Relevant configuration instructions
 

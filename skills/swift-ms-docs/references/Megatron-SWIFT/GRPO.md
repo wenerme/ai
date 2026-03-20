@@ -38,9 +38,9 @@ The following table compares the batch-related parameters between ms-swift and M
 |-------------------|--------------------------|-------------|
 | `per_device_train_batch_size` | `micro_batch_size` | Training batch size per GPU (completion-level) |
 | `gradient_accumulation_steps` | - | Gradient accumulation steps, already included in `global_batch_size` calculation in Megatron-SWIFT |
-| - | `global_batch_size` | Global batch size (completion-level)<br/>**Megatron-SWIFT**: `micro_batch_size × dp_size × gradient_accumulation_steps`<br/>**ms-swift**: `per_device_train_batch_size × world_size × gradient_accumulation_steps` |
+| - | `global_batch_size` | Global batch size (completion-level)**Megatron-SWIFT**: `micro_batch_size × dp_size × gradient_accumulation_steps`**ms-swift**: `per_device_train_batch_size × world_size × gradient_accumulation_steps` |
 | `num_generations` | `num_generations` | Number of completions generated per prompt |
-| `steps_per_generation` | `steps_per_generation` | Ratio of Rollout batch size to training batch size<br/>**Note**: In ms-swift, must be an integer multiple of `gradient_accumulation_steps` |
+| `steps_per_generation` | `steps_per_generation` | Ratio of Rollout batch size to training batch size**Note**: In ms-swift, must be an integer multiple of `gradient_accumulation_steps` |
 | `generation_batch_size` | `generation_batch_size` | Batch size during Rollout phase (completion-level), must be an integer multiple of `global_batch_size` |
 
 The following formulas are used to calculate batch sizes in Megatron GRPO:

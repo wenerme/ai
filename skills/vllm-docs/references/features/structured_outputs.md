@@ -182,11 +182,9 @@ Note that you can use reasoning with any provided structured outputs feature. Th
     ```python
     from pydantic import BaseModel
 
-
     class People(BaseModel):
         name: str
         age: int
-
 
     completion = client.chat.completions.create(
         model=model,

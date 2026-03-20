@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Custom Secret Manager
 
@@ -64,9 +63,6 @@ model_list:
 
 ### 3. Start LiteLLM Proxy
 
-<Tabs>
-<TabItem value="docker" label="Docker">
-
 Mount your custom secret manager file on the container:
 
 ```bash showLineNumbers
@@ -82,23 +78,13 @@ docker run -d \
   --detailed_debug
 ```
 
-</TabItem>
-
-<TabItem value="pip" label="Python Package">
-
 ```bash
 litellm --config config.yaml --detailed_debug
 ```
 
-</TabItem>
-</Tabs>
-
 ## Configuration Options
 
 Customize secret manager behavior in your `config.yaml`:
-
-<Tabs>
-<TabItem value="read_only" label="Read Keys Only">
 
 ```yaml showLineNumbers title="config.yaml"
 general_settings:
@@ -107,10 +93,6 @@ general_settings:
     custom_secret_manager: my_secret_manager.InMemorySecretManager
     hosted_keys: ["OPENAI_API_KEY", "ANTHROPIC_API_KEY"]  # Only check these keys
 ```
-
-</TabItem>
-
-<TabItem value="write_only" label="Store Virtual Keys">
 
 Store LiteLLM proxy virtual keys in your secret manager:
 
@@ -128,10 +110,6 @@ general_settings:
       Team: "AI"
 ```
 
-</TabItem>
-
-<TabItem value="read_and_write" label="Read + Write">
-
 ```yaml showLineNumbers title="config.yaml"
 general_settings:
   key_management_system: custom
@@ -142,9 +120,6 @@ general_settings:
     store_virtual_keys: true
     prefix_for_stored_virtual_keys: "litellm/"
 ```
-
-</TabItem>
-</Tabs>
 
 ### Available Settings
 
@@ -249,4 +224,3 @@ See [cookbook/litellm_proxy_server/secret_manager/my_secret_manager.py](https://
 - In-memory secret manager implementation  
 - Integration with LiteLLM Proxy  
 - Read, write, and delete operations
-

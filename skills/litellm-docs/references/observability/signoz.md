@@ -1,10 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # SigNoz LiteLLM Integration
 
 For more details on setting up observability for LiteLLM, check out the [SigNoz LiteLLM observability docs](https://signoz.io/docs/litellm-observability/).
-
 
 ## Overview
 
@@ -23,14 +21,7 @@ Instrumenting LiteLLM in your AI applications with telemetry ensures full observ
 
 LiteLLM can be monitored in two ways: using the **LiteLLM SDK** (directly embedded in your Python application code for programmatic LLM calls) or the **LiteLLM Proxy Server** (a standalone server that acts as a centralized gateway for managing and routing LLM requests across your infrastructure).
 
-<Tabs>
-<TabItem value="LiteLLM SDK" label="LiteLLM SDK" default>
-
 For more detailed info on instrumenting your LiteLLM SDK applications click [here](https://docs.litellm.ai/docs/observability/opentelemetry_integration).
-
-
-<Tabs>
-<TabItem value="No Code" label="No Code(Recommended)" default>
 
 No-code auto-instrumentation is recommended for quick setup with minimal code changes. It's ideal when you want to get observability up and running without modifying your application code and are leveraging standard instrumentor libraries.
 
@@ -110,11 +101,6 @@ opentelemetry-instrument <your_run_command>
 
 > 📌 Note: Using self-hosted SigNoz? Most steps are identical. To adapt this guide, update the endpoint and remove the ingestion key header as shown in [Cloud → Self-Hosted](https://signoz.io/docs/ingestion/cloud-vs-self-hosted/#cloud-to-self-hosted).
 
-
-</TabItem>
-
-<TabItem value="Code" label="Code" default>
-
 Code-based instrumentation gives you fine-grained control over your telemetry configuration. Use this approach when you need to customize resource attributes, sampling strategies, or integrate with existing observability infrastructure.
 
 **Step 1:** Install the necessary packages in your Python environment.
@@ -187,9 +173,7 @@ trace.set_tracer_provider(provider)
 - **`OTEL_EXPORTER_TRACES_ENDPOINT`** → SigNoz Cloud trace endpoint with appropriate [region](https://signoz.io/docs/ingestion/signoz-cloud/overview/#endpoint):`https://ingest.<region>.signoz.cloud:443/v1/traces`
 - **`SIGNOZ_INGESTION_KEY`** → Your SigNoz [ingestion key](https://signoz.io/docs/ingestion/signoz-cloud/keys/)
 
-
 > 📌 Note: Using self-hosted SigNoz? Most steps are identical. To adapt this guide, update the endpoint and remove the ingestion key header as shown in [Cloud → Self-Hosted](https://signoz.io/docs/ingestion/cloud-vs-self-hosted/#cloud-to-self-hosted).
-
 
 **Step 4**: Setup Logs
 
@@ -226,7 +210,6 @@ logger = logging.getLogger(__name__)
 
 > 📌 Note: Using self-hosted SigNoz? Most steps are identical. To adapt this guide, update the endpoint and remove the ingestion key header as shown in [Cloud → Self-Hosted](https://signoz.io/docs/ingestion/cloud-vs-self-hosted/#cloud-to-self-hosted).
 
-
 **Step 5**: Setup Metrics
 
 ```python
@@ -259,7 +242,6 @@ HTTPXClientInstrumentor().instrument()
 - **`SIGNOZ_INGESTION_KEY`** → Your SigNoz [ingestion key](https://signoz.io/docs/ingestion/signoz-cloud/keys/)
 
 > 📌 Note: Using self-hosted SigNoz? Most steps are identical. To adapt this guide, update the endpoint and remove the ingestion key header as shown in [Cloud → Self-Hosted](https://signoz.io/docs/ingestion/cloud-vs-self-hosted/#cloud-to-self-hosted).
-
 
 > 📌 Note: SystemMetricsInstrumentor provides system metrics (CPU, memory, etc.), and HTTPXClientInstrumentor provides outbound HTTP request metrics such as request duration. If you want to add custom metrics to your LiteLLM application, see [Python Custom Metrics](https://signoz.io/opentelemetry/python-custom-metrics/).
 
@@ -294,9 +276,6 @@ print(response)
 
 > 📌 Note: LiteLLM supports a [variety of model providers](https://docs.litellm.ai/docs/providers) for LLMs. In this example, we're using OpenAI. Before running this code, ensure that you have set the environment variable `OPENAI_API_KEY` with your generated API key.
 
-</TabItem>
-</Tabs>
-
 ## View Traces, Logs, and Metrics in SigNoz
 
 Your LiteLLM commands should now automatically emit traces, logs, and metrics.
@@ -330,10 +309,6 @@ When you click on any of these metrics in SigNoz, you'll see a detailed view of 
 You can also check out our custom LiteLLM SDK dashboard [here](https://signoz.io/docs/dashboards/dashboard-templates/litellm-sdk-dashboard/) which provides specialized visualizations for monitoring your LiteLLM usage in applications. The dashboard includes pre-built charts specifically tailored for LLM usage, along with import instructions to get started quickly.
 
 ![LiteLLM SDK Dashboard Template](https://signoz.io/img/docs/llm/litellm/litellm-sdk-dashboard.webp)
-
-</TabItem>
-
-<TabItem value="LiteLLM Proxy Server" label="LiteLLM Proxy Server" default>
 
 **Step 1:** Install the necessary packages in your Python environment.
 
@@ -371,7 +346,6 @@ export OTEL_LOGS_EXPORTER="otlp"
 
 > 📌 Note: Using self-hosted SigNoz? Most steps are identical. To adapt this guide, update the endpoint and remove the ingestion key header as shown in [Cloud → Self-Hosted](https://signoz.io/docs/ingestion/cloud-vs-self-hosted/#cloud-to-self-hosted).
 
-
 **Step 4:** Run the proxy server using the config file:
 
 ```bash
@@ -393,6 +367,3 @@ When you click on a trace in SigNoz, you'll see a detailed view of the trace, in
 You can also check out our custom LiteLLM Proxy dashboard [here](https://signoz.io/docs/dashboards/dashboard-templates/litellm-proxy-dashboard/) which provides specialized visualizations for monitoring your LiteLLM Proxy usage in applications. The dashboard includes pre-built charts specifically tailored for LLM usage, along with import instructions to get started quickly.
 
 ![LiteLLM Proxy Dashboard Template](https://signoz.io/img/docs/llm/litellm/litellm-proxy-dashboard.webp)
-
-</TabItem>
-</Tabs>

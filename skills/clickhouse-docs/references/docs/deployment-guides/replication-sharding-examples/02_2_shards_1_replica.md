@@ -1,27 +1,9 @@
 ---
-slug: /architecture/horizontal-scaling
-sidebar_label: 'Scaling'
-sidebar_position: 10
 title: 'Scaling'
 description: 'Page describing an example architecture designed to provide scalability'
 doc_type: 'guide'
 keywords: ['sharding', 'horizontal scaling', 'distributed data', 'cluster setup', 'data distribution']
 ---
-
-import Image from '@theme/IdealImage';
-import ReplicationShardingTerminology from '@site/docs/_snippets/_replication-sharding-terminology.md';
-import ShardingArchitecture from '@site/static/images/deployment-guides/replication-sharding-examples/sharding.png';
-import ConfigFileNote from '@site/docs/_snippets/_config-files.md';
-import KeeperConfigFileNote from '@site/docs/_snippets/_keeper-config-files.md';
-import ConfigExplanation from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_config_explanation.mdx';
-import ListenHost from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_listen_host.mdx';
-import ServerParameterTable from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_server_parameter_table.mdx';
-import KeeperConfig from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_keeper_config.mdx';
-import KeeperConfigExplanation from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_keeper_explanation.mdx';
-import VerifyKeeperStatus from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_verify_keeper_using_mntr.mdx';
-import DedicatedKeeperServers from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_dedicated_keeper_servers.mdx';
-import ExampleFiles from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_working_example.mdx';
-import CloudTip from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_cloud_tip.mdx';
 
 > In this example, you'll learn how to set up a simple ClickHouse cluster which
 scales. There are five servers configured. Two are used to shard the data. 
@@ -323,10 +305,8 @@ Set up of ClickHouse Keeper is explained in the next step of the tutorial.
 </zookeeper>
 ```
 
-:::note
-Although it is possible to run ClickHouse Keeper on the same server as ClickHouse Server,
+> **note**: Although it is possible to run ClickHouse Keeper on the same server as ClickHouse Server,
 in production environments we strongly recommend that ClickHouse Keeper runs on dedicated hosts.
-:::
 
 #### Macros configuration {#macros-config-explanation}
 
@@ -341,9 +321,7 @@ like `{shard}` and `{replica}` in queries.
 </macros>
 ```
 
-:::note
-These will be defined uniquely depending on the layout of the cluster.
-:::
+> **note**: These will be defined uniquely depending on the layout of the cluster.
 
 ### User configuration {#user-config}
 
@@ -398,9 +376,7 @@ Now modify each empty configuration file `users.xml` located at
 In this example, the default user is configured without a password for simplicity.
 In practice, this is discouraged.
 
-:::note
-In this example, each `users.xml` file is identical for all nodes in the cluster.
-:::
+> **note**: In this example, each `users.xml` file is identical for all nodes in the cluster.
 
 ## Configure ClickHouse Keeper {#configure-clickhouse-keeper-nodes}
 

@@ -167,8 +167,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
-
 ## Validation
 
 The endpoints perform the following validations:

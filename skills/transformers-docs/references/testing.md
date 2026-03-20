@@ -1,18 +1,4 @@
-<!--Copyright 2020 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Testing
 
@@ -313,17 +299,9 @@ And then run every test multiple times (50 by default):
 pytest --flake-finder --flake-runs=5 tests/test_failing_test.py
 ```
 
-<Tip>
-
 This plugin doesn't work with `-n` flag from `pytest-xdist`.
 
-</Tip>
-
-<Tip>
-
 There is another plugin `pytest-repeat`, but it doesn't work with `unittest`.
-
-</Tip>
 
 #### Run tests in a random order
 
@@ -613,7 +591,6 @@ the test, but then there is no way of running that test for just one set of argu
 import unittest
 from parameterized import parameterized
 
-
 class TestMathUnitTest(unittest.TestCase):
     @parameterized.expand(
         [
@@ -673,7 +650,6 @@ Here is the same example, this time using `pytest`'s `parametrize` marker:
 ```python
 # test_this2.py
 import pytest
-
 
 @pytest.mark.parametrize(
     "name, input, expected",
@@ -742,7 +718,6 @@ To start using those all you need is to make sure that the test resides in a sub
 ```python
 from transformers.testing_utils import TestCasePlus
 
-
 class PathExampleTest(TestCasePlus):
     def test_something_involving_local_locations(self):
         data_dir = self.tests_dir / "fixtures/tests_samples/wmt_en_ro"
@@ -753,7 +728,6 @@ If you don't need to manipulate paths via `pathlib` or you just need a path as a
 
 ```python
 from transformers.testing_utils import TestCasePlus
-
 
 class PathExampleTest(TestCasePlus):
     def test_something_involving_stringified_locations(self):
@@ -776,7 +750,6 @@ Here is an example of its usage:
 
 ```python
 from transformers.testing_utils import TestCasePlus
-
 
 class ExamplesTests(TestCasePlus):
     def test_whatever(self):
@@ -813,20 +786,12 @@ leave any data in there.
   - `after=True`: the temporary dir will always be deleted at the end of the test.
   - `after=False`: the temporary dir will always be left intact at the end of the test.
 
-<Tip>
-
 In order to run the equivalent of `rm -r` safely, only subdirs of the project repository checkout are allowed if
 an explicit `tmp_dir` is used, so that by mistake no `/tmp` or similar important part of the filesystem will
 get nuked. i.e. please always pass paths that start with `./`.
 
-</Tip>
-
-<Tip>
-
 Each test can register multiple temporary directories and they all will get auto-removed, unless requested
 otherwise.
-
-</Tip>
 
 ### Temporary sys.path override
 
@@ -1014,14 +979,11 @@ In order to test functions that write to `stdout` and/or `stderr`, the test can 
 ```python
 import sys
 
-
 def print_to_stdout(s):
     print(s)
 
-
 def print_to_stderr(s):
     sys.stderr.write(s)
-
 
 def test_result_and_stdout(capsys):
     msg = "Hello"
@@ -1043,7 +1005,6 @@ a case:
 def raise_exception(msg):
     raise ValueError(msg)
 
-
 def test_something_exception():
     msg = "Not a good value"
     error = ""
@@ -1060,10 +1021,8 @@ Another approach to capturing stdout is via `contextlib.redirect_stdout`:
 from io import StringIO
 from contextlib import redirect_stdout
 
-
 def print_to_stdout(s):
     print(s)
-
 
 def test_result_and_stdout():
     msg = "Hello"
@@ -1152,7 +1111,6 @@ If you want to test the impact of environment variables for a specific test you 
 ```python
 from transformers.testing_utils import mockenv
 
-
 class HfArgumentParserTest(unittest.TestCase):
     @mockenv(TRANSFORMERS_VERBOSITY="error")
     def test_env_override(self):
@@ -1164,7 +1122,6 @@ multiple local paths. A helper class `transformers.test_utils.TestCasePlus` come
 
 ```python
 from transformers.testing_utils import TestCasePlus
-
 
 class EnvExampleTest(TestCasePlus):
     def test_external_prog(self):

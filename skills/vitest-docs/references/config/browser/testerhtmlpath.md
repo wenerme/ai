@@ -1,6 +1,5 @@
 ---
 title: browser.testerHtmlPath | Config
-outline: deep
 ---
 
 # browser.testerHtmlPath

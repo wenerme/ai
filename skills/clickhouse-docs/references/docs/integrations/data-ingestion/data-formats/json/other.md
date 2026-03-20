@@ -1,6 +1,5 @@
 ---
 title: 'Other JSON approaches'
-slug: /integrations/data-formats/json/other-approaches
 description: 'Other approaches to modeling JSON'
 keywords: ['json', 'formats']
 doc_type: 'reference'
@@ -10,9 +9,8 @@ doc_type: 'reference'
 
 **The following are alternatives to modeling JSON in ClickHouse. These are documented for completeness and were applicable before the development of the JSON type and are thus generally not recommended or applicable in most use cases.**
 
-:::note Apply an object level approach
+> **note**: Apply an object level approach
 Different techniques may be applied to different objects in the same schema. For example, some objects can be best solved with a `String` type and others with a `Map` type. Note that once a `String` type is used, no further schema decisions need to be made. Conversely, it is possible to nest sub-objects within a `Map` key - including a `String` representing JSON - as we show below:
-:::
 
 ## Using the String type {#using-string}
 
@@ -213,9 +211,8 @@ Although `Map`s give a simple way to represent nested structures, they have some
 - Accessing sub-columns requires a special map syntax since the fields don't exist as columns. The entire object _is_ a column.
 - Accessing a subcolumn loads the entire `Map` value i.e. all siblings and their respective values. For larger maps, this can result in a significant performance penalty.
 
-:::note String keys
+> **note**: String keys
 When modelling objects as `Map`s, a `String` key is used to store the JSON key name. The map will therefore always be `Map(String, T)`, where `T` depends on the data.
-:::
 
 #### Primitive values {#primitive-values}
 

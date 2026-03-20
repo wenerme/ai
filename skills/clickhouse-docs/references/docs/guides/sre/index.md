@@ -1,5 +1,4 @@
 ---
-slug: /security-and-authentication
 title: 'Security and Authentication'
 description: 'Landing page for Security and Authentication'
 doc_type: 'landing-page'

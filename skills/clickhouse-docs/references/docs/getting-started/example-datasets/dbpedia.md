@@ -1,7 +1,5 @@
 ---
 description: 'Dataset containing 1 million articles from Wikipedia and their vector embeddings'
-sidebar_label: 'dbpedia dataset'
-slug: /getting-started/example-datasets/dbpedia-dataset
 title: 'dbpedia dataset'
 keywords: ['semantic search', 'vector similarity', 'approximate nearest neighbours', 'embeddings']
 doc_type: 'guide'
@@ -210,7 +208,6 @@ def get_embedding(text, model):
   text = text.replace("\n", " ")
   return openai_client.embeddings.create(input = [text], model=model, dimensions=1536).data[0].embedding
 
-
 while True:
     # Accept the search query from user
     print("Enter a search query :")
@@ -256,7 +253,6 @@ Generating the embedding for 'FIFA world cup 1990' and collecting 100 articles r
 
 Enter your question : Who won the golden boot
 Salvatore Schillaci of Italy won the Golden Boot at the 1990 FIFA World Cup.
-
 
 Enter a topic : Cricket world cup
 Generating the embedding for 'Cricket world cup' and collecting 100 articles related to it from ClickHouse...

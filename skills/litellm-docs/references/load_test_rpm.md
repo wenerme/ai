@@ -9,18 +9,13 @@ In our test:
 - Max Throughput / min on router = 200 requests per minute (2 deployments)
 - Load we'll send through router = 600 requests per minute
 
-:::info
-
-If you don't want to call a real LLM API endpoint, you can setup a fake openai server. [See code](#extra---setup-fake-openai-server)
-
-:::
+> **info**: If you don't want to call a real LLM API endpoint, you can setup a fake openai server. [See code](#extra---setup-fake-openai-server)
 
 ### Code 
 
 Let's hit the router with 600 requests per minute. 
 
 Copy this script 👇. Save it as `test_loadtest_router.py` AND run it with `python3 test_loadtest_router.py`
-
 
 ```python
 from litellm import Router 
@@ -56,8 +51,6 @@ model_list = [
 router_1 = Router(model_list=model_list, num_retries=0, enable_pre_call_checks=True, routing_strategy="simple-shuffle", redis_host=os.getenv("REDIS_HOST"), redis_port=os.getenv("REDIS_PORT"), redis_password=os.getenv("REDIS_PASSWORD"))
 router_2 = Router(model_list=model_list, num_retries=0, routing_strategy="simple-shuffle", enable_pre_call_checks=True, redis_host=os.getenv("REDIS_HOST"), redis_port=os.getenv("REDIS_PORT"), redis_password=os.getenv("REDIS_PASSWORD"))
 
-
-
 async def router_completion_non_streaming():
   try:
     client: Router = random.sample([router_1, router_2], 1)[0] # randomly pick b/w clients
@@ -88,7 +81,6 @@ def get_utc_datetime():
     else:
         return datetime.utcnow()  # type: ignore
 
-
 # Run the event loop to execute the async function
 async def parent_fn():
   for _ in range(10):
@@ -111,14 +103,9 @@ In our test:
 - Max Throughput / min on proxy = 200 requests per minute (2 deployments)
 - Load we'll send to proxy = 600 requests per minute
 
-
 So we'll send 600 requests per minute, but expect only 200 requests per minute to succeed.
 
-:::info
-
-If you don't want to call a real LLM API endpoint, you can setup a fake openai server. [See code](#extra---setup-fake-openai-server)
-
-:::
+> **info**: If you don't want to call a real LLM API endpoint, you can setup a fake openai server. [See code](#extra---setup-fake-openai-server)
 
 ### 1. Setup config 
 
@@ -213,7 +200,6 @@ def get_utc_datetime():
     else:
         return datetime.utcnow()  # type: ignore
 
-
 # Run the event loop to execute the async function
 async def parent_fn():
   for _ in range(10):
@@ -226,7 +212,6 @@ async def parent_fn():
 asyncio.run(parent_fn())
 
 ```
-
 
 ### Extra - Setup Fake OpenAI Server 
 
@@ -254,7 +239,6 @@ from slowapi.errors import RateLimitExceeded
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import PlainTextResponse
 
-
 class ProxyException(Exception):
     # NOTE: DO NOT MODIFY THIS
     # This is used to map exactly to OPENAI Exceptions
@@ -278,7 +262,6 @@ class ProxyException(Exception):
             "param": self.param,
             "code": self.code,
         }
-
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()

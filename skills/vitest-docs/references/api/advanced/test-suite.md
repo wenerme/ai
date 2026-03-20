@@ -61,8 +61,7 @@ The ID looks like this:
                ^ test index
 ```
 
-::: tip
-You can generate file hash with `generateFileHash` function from `vitest/node` which is available since Vitest 3:
+> **tip**: You can generate file hash with `generateFileHash` function from `vitest/node` which is available since Vitest 3:
 
 ```ts
 import { generateFileHash } from 'vitest/node'
@@ -72,11 +71,8 @@ const hash = generateFileHash(
   undefined, // the project name or `undefined` is not set
 )
 ```
-:::
 
-::: danger
-Don't try to parse the ID. It can have a minus at the start: `-1223128da3_0_0_0`.
-:::
+> **danger**: Don't try to parse the ID. It can have a minus at the start: `-1223128da3_0_0_0`.
 
 ## location
 
@@ -129,8 +125,7 @@ for (const task of suite.children) {
 }
 ```
 
-::: warning
-Note that `suite.children` will only iterate the first level of nesting, it won't go deeper. If you need to iterate over all tests or suites, use [`children.allTests()`](/api/advanced/test-collection#alltests) or [`children.allSuites()`](/api/advanced/test-collection#allsuites). If you need to iterate over everything, use recursive function:
+> **warning**: Note that `suite.children` will only iterate the first level of nesting, it won't go deeper. If you need to iterate over all tests or suites, use [`children.allTests()`](/api/advanced/test-collection#alltests) or [`children.allSuites()`](/api/advanced/test-collection#allsuites). If you need to iterate over everything, use recursive function:
 
 ```ts
 function visit(collection: TestCollection) {
@@ -145,7 +140,6 @@ function visit(collection: TestCollection) {
   }
 }
 ```
-:::
 
 ## ok
 
@@ -168,9 +162,7 @@ Checks the running state of the suite. Possible return values:
 - **passed**: every test inside this suite has passed.
 - **skipped**: this suite was skipped during collection.
 
-::: warning
-Note that [test module](/api/advanced/test-module) also has a `state` method that returns the same values, but it can also return an additional `queued` state if the module wasn't executed yet.
-:::
+> **warning**: Note that [test module](/api/advanced/test-module) also has a `state` method that returns the same values, but it can also return an additional `queued` state if the module wasn't executed yet.
 
 ## errors
 
@@ -188,9 +180,7 @@ describe('collection failed', () => {
 })
 ```
 
-::: warning
-Note that errors are serialized into simple objects: `instanceof Error` will always return `false`.
-:::
+> **warning**: Note that errors are serialized into simple objects: `instanceof Error` will always return `false`.
 
 ## meta <Version>3.1.0</Version> {#meta}
 
@@ -217,9 +207,7 @@ describe('the validation works correctly', { meta: { decorated: true } }, () => 
 
 Note that suite metadata will be inherited by tests since Vitest 4.1.
 
-:::tip
-If metadata was attached during collection (outside of the `test` function), then it will be available in [`onTestModuleCollected`](./reporters#ontestmodulecollected) hook in the custom reporter.
-:::
+> **tip**: If metadata was attached during collection (outside of the `test` function), then it will be available in [`onTestModuleCollected`](./reporters#ontestmodulecollected) hook in the custom reporter.
 
 ## toTestSpecification <Version>4.1.0</Version> {#totestspecification}
 

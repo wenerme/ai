@@ -58,7 +58,7 @@ To create a bar gauge visualization, you need a dataset querying at least one nu
 | ----- | ------ | ------ | ------ |
 | Row1  | 5      | 3      | 2      |
 
-![Bar gauge with single row of data](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-bargauge-example1.png)
+[Bar gauge with single row of data]
 
 The minimum and maximum range for the bar gauges is automatically pulled from the largest and smallest numeric values in the dataset. You can also manually define the minimum and maximum values as indicated in the [Standard options](#standard-options) section.
 
@@ -70,11 +70,11 @@ You can also define the minimum and maximum from the dataset provided.
 | ----- | ----- | --- | --- |
 | Row1  | 3     | 6   | 1   |
 
-![Bar gauge with single row of data including maximum and minimum](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-bargauge-example2.png)
+[Bar gauge with single row of data including maximum and minimum]
 
 If you don’t want to show gauges for the min and max values, you can configure only one field to be displayed as described in the [Value options](#value-options) section.
 
-![Bar gauge, single row of data with max and min displaying value](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-bargauge-example3.png)
+[Bar gauge, single row of data with max and min displaying value]
 
 Even if the min and max aren’t displayed, the visualization still pulls the range from the data set.
 
@@ -88,13 +88,13 @@ The bar gauge visualization also supports multiple records (rows) in the dataset
 | Row2  | 10     | 6      | 4      |
 | Row3  | 20     | 8      | 2      |
 
-![Bar gauge with multiple rows of data displaying last row](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-bargauge-example4.png)
+[Bar gauge with multiple rows of data displaying last row]
 
 By default, the visualization is configured to [calculate](#value-options) a single value per column or series and to display only the last set of data. However, it derives the minimum and maximum from the full dataset even if those values aren’t visible. In this example, that means only the last row of data is displayed in the gauges and the minimum and maximum values are defined as 2 and 20, pulled from the whole dataset.
 
 If you want to show one gauge per cell you can change the **Show** setting from **Calculate** to **All values** and each bar is labeled by concatenating the text column with each value's column name.
 
-![Bar gauge with multiple rows of data displaying all the values](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-bargauge-example5.png)
+[Bar gauge with multiple rows of data displaying all the values]
 
 For more information on these settings, refer to [Value options](#value-options).
 
@@ -110,8 +110,6 @@ For more information on these settings, refer to [Value options](#value-options)
 
 Use the following options to refine how your visualization displays the value:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Show | Set how Grafana displays your data. Choose from:<ul><li>**Calculate** - Show a calculated value based on all rows.</li><li>**All values** - Show a separate value for every row. If you select this option, then you can also limit the number of rows to display.</li></ul> |
@@ -119,13 +117,9 @@ Use the following options to refine how your visualization displays the value:
 | Limit | If you chose **All values** as your **Show** option, enter the maximum number of rows to display. The default is 5,000. |
 | Fields | Select the fields display in the panel. |
 
-<!-- prettier-ignore-end -->
-
 ### Bar gauge options
 
 Adjust how the gauge is displayed.
-
-<!-- prettier-ignore-start -->
 
 | Option | Description |
 | ------ | ----------- |
@@ -138,8 +132,6 @@ Adjust how the gauge is displayed.
 | Min width | Limit the minimum width of the bar column when the gauge is oriented vertically or is in **Auto** mode. Automatically shows the x-axis scroll bar when there's a large amount of data.<p>This option only applies when the **Bar size** mode is set to **Manual**.</p> |
 | Min height | Limit the minimum height of the bar row when the bar gauge is oriented horizontally or is in **Auto** mode. Automatically shows the y-axis scroll bar when there's a large amount of data. <p>This option only applies when the **Bar size** mode is set to **Manual**.</p> |
 | Max height | Limit the maximum height of the bar row when the bar gauge is oriented horizontally or is in **Auto** mode. Automatically shows the y-axis scroll bar when there's a large amount of data. <p>This option only applies when the **Bar size** mode is set to **Manual**.</p> |
-
-<!-- prettier-ignore-end -->
 
 ### Legend options
 

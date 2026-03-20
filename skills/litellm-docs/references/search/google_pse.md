@@ -98,4 +98,3 @@ response = search(
     fileType="pdf"                   # File type to restrict results to
 )
 ```
-

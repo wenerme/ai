@@ -130,4 +130,3 @@ mysql> SELECT * FROM struct_test;
 +------+--------------------------------------+
 5 rows in set (0.00 sec)
 ```
-

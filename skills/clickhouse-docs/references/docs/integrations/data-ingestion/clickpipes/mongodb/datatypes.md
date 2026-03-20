@@ -1,6 +1,5 @@
 ---
 title: 'Supported data types'
-slug: /integrations/clickpipes/mongodb/datatypes
 description: 'Page describing MongoDB ClickPipe datatype mapping from MongoDB to ClickHouse'
 doc_type: 'reference'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
@@ -29,6 +28,4 @@ MongoDB stores data records as BSON documents. In ClickPipes, you can configure 
 | Array                    | Dynamic                                | Arrays with homogeneous types become Array(Nullable(T)); arrays with mixed primitive types are promoted to the most general common type; arrays with complex incompatible types become Tuples |
 | Object                   | Dynamic                                | Each nested field is mapped recursively |
 
-:::info
-To learn more about ClickHouse's JSON data types, see [our documentation](https://clickhouse.com/docs/sql-reference/data-types/newjson).
-:::
+> **info**: To learn more about ClickHouse's JSON data types, see [our documentation](https://clickhouse.com/docs/sql-reference/data-types/newjson).

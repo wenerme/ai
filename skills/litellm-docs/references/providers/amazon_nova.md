@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Amazon Nova
 
@@ -21,9 +20,6 @@ export AMAZON_NOVA_API_KEY="your-api-key"
 
 ## Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import os
 from litellm import completion
@@ -41,9 +37,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ### 1. Setup config.yaml
 
@@ -75,9 +68,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models
 
 | Model Name | Usage | Context Window |
@@ -88,9 +78,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 | Nova Premier | `completion(model="amazon_nova/nova-premier-v1", messages=messages)` | 1M tokens |
 
 ## Usage - Streaming
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -111,9 +98,6 @@ for chunk in response:
     print(chunk.choices[0].delta.content or "", end="")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -129,13 +113,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Usage - Function Calling / Tool Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -174,9 +152,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -210,13 +185,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Set temperature, top_p, etc.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -236,9 +205,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -268,9 +234,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "top_p": 0.9
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Model Comparison
 

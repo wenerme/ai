@@ -22,7 +22,6 @@ nightly) or the release branch (for preview/stable).
 
 - **Platforms:** Tests must pass on **Linux and macOS**.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > Windows tests currently run with `continue-on-error: true`. While a
 > failure here doesn't block the release technically, it should be

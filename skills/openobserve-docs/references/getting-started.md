@@ -24,7 +24,6 @@ Get started with OpenObserve observability platform for logs, metrics, and trace
     - Custom configurations or integrations
     - On-premises deployment requirements
 
-
 ## Option 1: OpenObserve Cloud Setup
 
 ??? "Step 1: Create Your Account"
@@ -32,13 +31,13 @@ Get started with OpenObserve observability platform for logs, metrics, and trace
     1. Navigate to [https://cloud.openobserve.ai](https://cloud.openobserve.ai)
     2. Sign up using social login or create a new account
 
-        ![Sign in page](./images/quickstart/signin.png)
+        [Sign in page]
 
 ??? "Step 2: Get Your Ingestion Credentials"
 
     1. After logging in, navigate to the **Data Sources** section in the sidebar
 
-        ![Ingestion](./images/quickstart/ingestion_credentials.png)
+        [Ingestion]
 
     2. Copy the provided cURL command - it contains your unique credentials
     3. Your endpoint will look like: `https://api.openobserve.ai/api/[YOUR_ORG]/default/_json`
@@ -79,7 +78,6 @@ You'll need to set root user credentials (ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PA
 
 === "MacOS/Linux Binaries"
 
-
     1. Download the appropriate binary from our [downloads page](https://openobserve.ai/downloads)
     2. Make it executable: `chmod +x openobserve`
     3. Run with environment variables as shown:
@@ -102,7 +100,6 @@ You'll need to set root user credentials (ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PA
     
     - Enterprise: [https://gallery.ecr.aws/zinclabs/openobserve-enterprise](https://gallery.ecr.aws/zinclabs/openobserve-enterprise)
     - OSS : [https://gallery.ecr.aws/zinclabs/openobserve](https://gallery.ecr.aws/zinclabs/openobserve)
-
 
     **Linux/macOS:**
     ```bash
@@ -146,8 +143,6 @@ You'll need to set root user credentials (ZO_ROOT_USER_EMAIL and ZO_ROOT_USER_PA
     kubectl -n openobserve port-forward svc/openobserve 5080:5080
     ```
 
-
-
 ## Verify Installation
 
 After installation, verify OpenObserve is running:
@@ -161,7 +156,6 @@ After installation, verify OpenObserve is running:
     - **Cloud**: Use your account credentials
 
 3. You should see the OpenObserve dashboard
-
 
 ## Load Sample Data
 
@@ -209,7 +203,6 @@ Let's load some real-world log data to explore OpenObserve's features.
     - The JSON file was downloaded completely
     - OpenObserve is running and accessible
 
-
 ## Search Your Data
 
 Now let's explore the data you just loaded.
@@ -220,8 +213,7 @@ Now let's explore the data you just loaded.
     2. Click on **Logs** in the left sidebar
     3. Select **default** from the stream dropdown (top-left)
 
-    ![Logs page](./images/quickstart/logs_page.png)
-
+    [Logs page]
 
 ??? "Step 2: Try These Sample Searches"
 
@@ -232,13 +224,11 @@ Now let's explore the data you just loaded.
 
 *Congratulations! You now have OpenObserve running with sample data.*
 
-
 ## Next Steps - Send Your Own Data
 
 - **Application logs**: Use our [logging libraries](./ingestion/logs/otlp.md) for your applications
 - **Metrics**: Set up [Prometheus integration](./ingestion/metrics/prometheus.md) 
 - **Traces**: Configure [OpenTelemetry](./ingestion/traces/opentelemetry.md) for distributed tracing
-
 
 ## Troubleshooting Common Issues
 
@@ -267,4 +257,3 @@ Now let's explore the data you just loaded.
     - For large datasets, consider the high-availability deployment
 
 If you're still having issues, Join our [Slack Community](/marketing-opt-in/){:target="_blank" rel="noopener noreferrer"} for help
-

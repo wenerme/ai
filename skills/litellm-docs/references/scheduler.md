@@ -1,14 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # [BETA] Request Prioritization
 
-:::info 
-
-Beta feature. Use for testing only. 
+> **info**: Beta feature. Use for testing only. 
 
 [Help us improve this](https://github.com/BerriAI/litellm/issues)
-:::
 
 Prioritize LLM API requests in high-traffic.
 
@@ -22,7 +18,6 @@ Prioritize LLM API requests in high-traffic.
 Supported Router endpoints:
 - `acompletion` (`/v1/chat/completions` on Proxy)
 - `atext_completion` (`/v1/completions` on Proxy)
-
 
 ## Quick Start 
 
@@ -59,9 +54,6 @@ except Exception as e:
 
 To prioritize requests on LiteLLM Proxy add `priority` to the request.
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```curl 
 curl -X POST 'http://localhost:4000/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -76,9 +68,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
     "priority": 0 👈 SET VALUE HERE
 }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python
 import openai
@@ -103,9 +92,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced - Redis Caching 
 

@@ -106,13 +106,11 @@ go func() {
 }()
 ```
 
-:::warning Important
+> **warning**: Important
 
 - Call `ResetSignalHandlers()` in each goroutine where you need panic recovery
 - Call it immediately before the code that might panic, as WebKit may reset the handlers at any time
 - This is only necessary on Linux - the function is a no-op on other platforms
-
-:::
 
 ### Why This Happens
 

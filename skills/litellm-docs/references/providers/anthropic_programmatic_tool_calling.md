@@ -2,15 +2,13 @@
 
 Programmatic tool calling allows Claude to write code that calls your tools programmatically within a code execution container, rather than requiring round trips through the model for each tool invocation. This reduces latency for multi-tool workflows and decreases token consumption by allowing Claude to filter or process data before it reaches the model's context window.
 
-:::info
-Programmatic tool calling is currently in public beta. LiteLLM automatically detects tools with the `allowed_callers` field and adds the appropriate beta header based on your provider:
+> **info**: Programmatic tool calling is currently in public beta. LiteLLM automatically detects tools with the `allowed_callers` field and adds the appropriate beta header based on your provider:
 
 - **Anthropic API & Microsoft Foundry**: `advanced-tool-use-2025-11-20`
 - **Amazon Bedrock**: `advanced-tool-use-2025-11-20`
 - **Google Cloud Vertex AI**: Not supported
 
 This feature requires the code execution tool to be enabled.
-:::
 
 ## Model Compatibility
 
@@ -103,9 +101,7 @@ The `allowed_callers` field specifies which contexts can invoke a tool:
 - `["code_execution_20250825"]` - Only callable from within code execution
 - `["direct", "code_execution_20250825"]` - Callable both directly and from code execution
 
-:::tip
-We recommend choosing either `["direct"]` or `["code_execution_20250825"]` for each tool rather than enabling both, as this provides clearer guidance to Claude for how best to use the tool.
-:::
+> **tip**: We recommend choosing either `["direct"]` or `["code_execution_20250825"]` for each tool rather than enabling both, as this provides clearer guidance to Claude for how best to use the tool.
 
 ## The `caller` Field in Responses
 
@@ -169,9 +165,7 @@ response2 = litellm.completion(
 )
 ```
 
-:::warning
-When a tool is called programmatically and the container is waiting for your tool result, you must respond before the container expires. Monitor the `expires_at` field. If the container expires, Claude may treat the tool call as timed out and retry it.
-:::
+> **warning**: When a tool is called programmatically and the container is waiting for your tool result, you must respond before the container expires. Monitor the `expires_at` field. If the container expires, Claude may treat the tool call as timed out and retry it.
 
 ## Example Workflow
 
@@ -432,4 +426,3 @@ The following tools cannot currently be called programmatically:
 
 - [Anthropic Tool Search](./anthropic_tool_search.md) - Dynamically discover and load tools on-demand
 - [Anthropic Provider](./anthropic.md) - General Anthropic provider documentation
-

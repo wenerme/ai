@@ -322,7 +322,6 @@ To this end, we allow registration of default multimodal LoRAs to handle this au
         ]
         return tokenizer.apply_chat_template(chat, tokenize=False)
 
-
     llm = LLM(
         model=model_id,
         enable_lora=True,
@@ -348,7 +347,6 @@ To this end, we allow registration of default multimodal LoRAs to handle this au
             "audio": audio,
         }
     }
-
 
     outputs = llm.generate(
         inputs,

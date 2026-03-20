@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Contributing to Documentation
 
@@ -16,11 +15,6 @@ git clone https://github.com/BerriAI/litellm.git
 cd docs/my-website
 ```
 
-
-<Tabs>
-
-<TabItem value="yarn" label="Yarn">
-
 Installation
 ```
 npm install --global yarn
@@ -34,10 +28,6 @@ Run website
 yarn start
 ```
 
-</TabItem>
-
-<TabItem value="pnpm" label="pnpm">
-
 Installation
 ```
 npm install --global pnpm
@@ -50,11 +40,6 @@ Run website
 ```
 pnpm start
 ```
-
-</TabItem>
-
-</Tabs>
-
 
 Open docs here: [http://localhost:3000/](http://localhost:3000/)
 

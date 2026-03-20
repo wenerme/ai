@@ -1,20 +1,15 @@
 ---
-sidebar_label: 'Driver API'
-sidebar_position: 2
 keywords: ['clickhouse', 'python', 'driver', 'api', 'client']
 description: 'ClickHouse Connect Driver API'
-slug: /integrations/language-clients/python/driver-api
 title: 'ClickHouse Connect Driver API'
 doc_type: 'reference'
 ---
 
 # ClickHouse Connect driver API {#clickhouse-connect-driver-api}
 
-:::note
-Passing keyword arguments is recommended for most api methods given the number of possible arguments, most of which are optional.
+> **note**: Passing keyword arguments is recommended for most api methods given the number of possible arguments, most of which are optional.
 
 *Methods not documented here aren't considered part of the API, and may be removed or changed.*
-:::
 
 ## Client Initialization {#client-initialization}
 
@@ -159,9 +154,7 @@ for i in range(1000):
 
 ### Multi-threaded applications {#multi-threaded-applications}
 
-:::warning
-Client instances are **NOT thread-safe** when using session IDs. By default, clients have an auto-generated session ID, and concurrent queries within the same session will raise a `ProgrammingError`.
-:::
+> **warning**: Client instances are **NOT thread-safe** when using session IDs. By default, clients have an auto-generated session ID, and concurrent queries within the same session will raise a `ProgrammingError`.
 
 To share a client across threads safely:
 
@@ -181,7 +174,6 @@ def worker(thread_id):
     # All threads can now safely use the same client
     result = client.query(f"SELECT {thread_id}")
     print(f"Thread {thread_id}: {result.result_rows[0][0]}")
-
 
 threads = [threading.Thread(target=worker, args=(i,)) for i in range(10)]
 for t in threads:
@@ -275,9 +267,7 @@ WHERE date >= '2022-10-01 15:20:05'
   AND string ILIKE 'a string with a single quote\''
 ```
 
-:::warning
-Server-side binding is only supported (by the ClickHouse server) for `SELECT` queries. It doesn't work for `ALTER`, `DELETE`, `INSERT`, or other types of queries. This may change in the future; see https://github.com/ClickHouse/ClickHouse/issues/42092.
-:::
+> **warning**: Server-side binding is only supported (by the ClickHouse server) for `SELECT` queries. It doesn't work for `ALTER`, `DELETE`, `INSERT`, or other types of queries. This may change in the future; see https://github.com/ClickHouse/ClickHouse/issues/42092.
 
 #### Client-side binding {#client-side-binding}
 
@@ -323,8 +313,7 @@ WHERE metric >= 35200.44
   AND ip_address = '68.61.4.254''
 ```
 
-:::note
-To bind DateTime64 arguments (ClickHouse types with sub-second precision) requires one of two custom approaches:
+> **note**: To bind DateTime64 arguments (ClickHouse types with sub-second precision) requires one of two custom approaches:
 - Wrap the Python `datetime.datetime` value in the new DT64Param class, e.g.
   ```python
     query = 'SELECT {p1:DateTime64(3)}'  # Server-side binding with dictionary
@@ -339,7 +328,6 @@ To bind DateTime64 arguments (ClickHouse types with sub-second precision) requir
   
     parameters={'p1_64': dt_value, 'a1_64': [dt_value1, dt_value2]}
   ```
-:::
 
 ### Settings argument {#settings-argument-1}
 
@@ -633,9 +621,7 @@ This method returns a "query summary" dictionary as described under the "command
 
 For specialized insert methods that work with Pandas DataFrames, PyArrow Tables, and Arrow-backed DataFrames, see [Advanced Inserting (Specialized Insert Methods)](advanced-inserting.md#specialized-insert-methods).
 
-:::note
-A NumPy array is a valid Sequence of Sequences and can be used as the `data` argument to the main `insert` method, so a specialized method isn't required.
-:::
+> **note**: A NumPy array is a valid Sequence of Sequences and can be used as the `data` argument to the main `insert` method, so a specialized method isn't required.
 
 ### Examples {#examples}
 

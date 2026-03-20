@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/uniqArrayIf'
 title: 'uniqArrayIf'
 description: 'Example of using the uniqArrayIf combinator'
 keywords: ['uniq', 'array', 'if', 'combinator', 'examples', 'uniqArrayIf']
-sidebar_label: 'uniqArrayIf'
 doc_type: 'reference'
 ---
 
@@ -15,9 +13,7 @@ The [`Array`](/sql-reference/aggregate-functions/combinators#-array) and [`If`](
 function to count the number of unique values in arrays for rows where the 
 condition is true, using the `uniqArrayIf` aggregate combinator function.
 
-:::note
--`If` and -`Array` can be combined. However, `Array` must come first, then `If`.
-:::
+> **note**: -`If` and -`Array` can be combined. However, `Array` must come first, then `If`.
 
 This is useful when you want to count unique elements in an array based on 
 specific conditions without having to use `arrayJoin`.

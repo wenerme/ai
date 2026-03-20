@@ -123,4 +123,3 @@ length(CAST(123 AS varchar(65533)))
 ```
 
 You can see from the execution plan above that the system automatically performs a CAST conversion, converting the integer 123 to a string type. This is an example of implicit CAST.
-

@@ -1,15 +1,10 @@
 ---
 title: 'Introduction'
 description: 'Using ClickHouse as an observability solution'
-slug: /use-cases/observability/introduction
 keywords: ['observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import observability_1 from '@site/static/images/use-cases/observability/observability-1.png';
-import observability_2 from '@site/static/images/use-cases/observability/observability-2.png';
-import Image from '@theme/IdealImage';
 
 # Using ClickHouse for observability
 
@@ -21,11 +16,8 @@ ClickHouse alone isn't an out-of-the-box solution for Observability. It can, how
 
 <Image img={observability_1} alt="Simple OTel" size="md"/>
 
-<br />
-
-:::note Not just OpenTelemetry
+> **note**: Not just OpenTelemetry
 While our recommendation is to use the OpenTelemetry (OTel) project for data collection, similar architectures can be produced using other frameworks and tools e.g. Vector and Fluentd (see [an example](https://clickhouse.com/blog/kubernetes-logs-to-clickhouse-fluent-bit) with Fluent Bit). Alternative visualization tools also exist including Superset and Metabase.
-:::
 
 ## Why use ClickHouse? {#why-use-clickhouse}
 
@@ -81,9 +73,8 @@ We currently recommend ClickHouse for storing two types of observability data:
 
 - **Traces** - Traces capture the journey of requests as they traverse through different services in a distributed system, detailing the path and performance of these requests. The data in traces is highly structured, consisting of spans and traces that map out each step a request takes, including timing information. Traces provide valuable insights into system performance, helping identify bottlenecks, latency issues, and optimize the efficiency of microservices.
 
-:::note Metrics
+> **note**: Metrics
 While ClickHouse can be used to store metrics data, this pillar is less mature in ClickHouse with pending support for features such as support for the Prometheus data format and PromQL.
-:::
 
 ### Distributed tracing {#distributed-tracing}
 

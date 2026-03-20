@@ -1,6 +1,5 @@
 ---
 title: benchmark | Config
-outline: deep
 ---
 
 # benchmark <Experimental /> {#benchmark}

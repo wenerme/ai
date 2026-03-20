@@ -28,8 +28,8 @@ This example shows how to transform three slow Kubernetes monitoring panels into
 
 ??? "Step 1: Analyze your existing panels"
 
-    Analyze your slow dashboard panels to identify common patterns. <br>
-    ![Analyze your existing panels](../../images/analyze-summary-stream.png)
+    Analyze your slow dashboard panels to identify common patterns. 
+    [Analyze your existing panels]
 
     **SQL Query used in original Panel 0:**
 
@@ -99,7 +99,7 @@ This example shows how to transform three slow Kubernetes monitoring panels into
         service_name
     LIMIT 200000
     ```
-    **Key design decisions in the summary query** <br>
+    **Key design decisions in the summary query** 
 
     1. Preserve time information
 
@@ -149,23 +149,23 @@ This example shows how to transform three slow Kubernetes monitoring panels into
     2. From the **Source** section, add a **Query Node** and select **Edit**.  
     3. In the **Associate Query** screen, select the **Stream Type** and **Stream Name**.  
     4. Set **Frequency** as per your data freshness needs.  
-    <br>
-    ![Create the summary pipeline](../../images/create-summary-stream-pipeline.png)
+    
+    [Create the summary pipeline]
     5. In the Sql Query editor, enter the summary query. 
     6. Click **Run Query** to test the summary query. 
     7. Select **Validate and Close** to save the changes.
     8. From the **Destination** section, add a **Stream Node**.
-    <br>
-    ![Summary stream pipeline config](../../images/destination-node-config.png) 
+    
+    [Summary stream pipeline config] 
     9. Enter the destination stream name and select **Save**. 
     10. In the pipeline editor, connect the source node to the destination node.
     11. Enter a pipeline name and select **Save**. 
-    <br>
-    ![Summary pipeline](../../images/summary-pipeline.png)
+    
+    [Summary pipeline]
 
 ??? "Step 5: Update your panel queries"
-    Update your panels to use the summary stream. <br>
-    ![Update panel queries](../../images/panels-with-summary-stream.png)
+    Update your panels to use the summary stream. 
+    [Update panel queries]
 
     **SQL query used in updated Panel 0 with summary stream:**
 
@@ -220,24 +220,21 @@ This example shows how to transform three slow Kubernetes monitoring panels into
     **Summary Stream Pattern:** `FROM "summary_stream"`  
     **Why:** Change the source to read from the summary stream.
 
-
 ## Performance Benefits
 
 The following performance results are based on testing with a one-week time range:
 
 ??? "Original dashboard loads data in `36.68 seconds`:"
-    ![Original dashboard](../../images/perf-original-dashboard.png)
+    [Original dashboard]
 ??? "After updating the dashboard to use a summary stream, the load time reduced to `1.69 seconds`:"  
-    ![With summary stream](../../images/perf-with-summary-stream.png)
+    [With summary stream]
 ??? "When running the original dashboard with aggregation cache enabled, the load time reduced to `1.16 seconds`:"
-    ![With aggregation cache and streaming](../../images/perf-with-agg-cache.png)
-
+    [With aggregation cache and streaming]
 
 **Performance improvements:**
 
 - Summary streams reduced panel load time by approximately **95.39 percent** compared to the unoptimized dashboard.  
 - Aggregation cache further reduced load time by approximately **96.84 percent**.
-
 
 ## Best Practices
 
@@ -247,18 +244,15 @@ The following performance results are based on testing with a one-week time rang
 
     - Example: A pipeline runs every 5 minutes and scans the last 5 minutes of data. A run at 11:00 scans data from 10:55 to 11:00. If data with a timestamp of 10:58 arrives at 11:04, the run at 11:05 scans data from 11:00 to 11:05 and does not include the delayed 10:58 data.  
     - To include late-arriving data, configure the **Delay** field in the pipeline query editor. This field is in the **Set Variables** section at the bottom left of the editor. 
-        ![Data Delay Consideration](../../images/delay-summary-stream.png) 
+        [Data Delay Consideration] 
     - The delay value specifies how long the system waits after the scheduled time before running the query.  
     - Example: If the period is 5 minutes and the delay is 5 minutes, the pipeline scheduled for 11:05 runs at 11:10 and scans data from 10:55 to 11:00.  
     - Set the delay to a multiple of the pipeline period, such as 0, 5, or 10 minutes for a 5-minute period. This helps keep time ranges aligned and avoids overlaps or gaps in the processed data.
-
 
 ??? "2. Query Design"
     - Include only essential fields.  
     - Avoid unnecessary fields to reduce stream size and improve performance.  
     - Always use a `LIMIT` clause and adjust based on performance needs.
-
-
 
 ## Troubleshooting
 
@@ -289,7 +283,6 @@ The following performance results are based on testing with a one-week time rang
     - Compare `WHERE` clauses in both queries.  
     - Verify all required aggregation patterns are included.  
 
-
 ??? "3. Summary stream grows too large"
 
     **Possible causes:**
@@ -301,7 +294,6 @@ The following performance results are based on testing with a one-week time rang
     - Add or adjust the `LIMIT` value in the summary query.  
     - Apply more restrictive `WHERE` conditions.  
 
-
 ??? "4. Unable to confirm if the pipeline is running or failing"
 
     **Possible causes:**
@@ -312,4 +304,4 @@ The following performance results are based on testing with a one-week time rang
     **Solutions:**
 
     - Check the `errors` stream in the `_meta` organization for events related to pipeline execution failures.  
-    - If `ZO_USAGE_REPORTING_ENABLED` is set to `true`, monitor the `triggers` stream to verify execution status.  
+    - If `ZO_USAGE_REPORTING_ENABLED` is set to `true`, monitor the `triggers` stream to verify execution status.

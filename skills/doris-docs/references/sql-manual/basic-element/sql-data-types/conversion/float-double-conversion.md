@@ -8,9 +8,8 @@
 
 ## From string
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Since version 4.0, the result of overflow is no longer NULL, but +/-Infinity.
-:::
 
 ### Strict mode
 

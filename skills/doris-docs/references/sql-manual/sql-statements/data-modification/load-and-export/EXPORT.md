@@ -158,7 +158,6 @@ The `EXPORT` command is used to export data from a specified table to files at a
 | exportFinishTimeMs  | string | Millisecond value of export job end time, formatted as date time.    |
 | failMsg             | string | Error message when export job fails.                                 |
 
-
 ## Access Control
 
 Users executing this SQL command must have at least the following permissions:
@@ -166,7 +165,6 @@ Users executing this SQL command must have at least the following permissions:
 | Permission  | Object       | Description                           |
 |:------------|:-------------|:--------------------------------------|
 | SELECT_PRIV | Database     | Requires read permission on database and table. |
-
 
 ## Notes
 
@@ -190,7 +188,6 @@ If you want to export Table at Partition granularity, you can set Export propert
 - num(partition) = 40, parallelism = 3, then these 3 threads are responsible for 14, 13, 13 Partitions respectively.
 - num(partition) = 2, parallelism = 3, then Doris will automatically set Parallelism to 2, with each thread responsible for one Partition.
 
-
 ### Memory Limits
 
 Usually an Export job's query plan only has `scan-export` two parts, not involving computation logic that requires too much memory. So usually the default memory limit of 2GB can meet the requirements.
@@ -208,7 +205,6 @@ But in some scenarios, such as when a query plan needs to scan too many Tablets 
 - Currently during Export, only simple checks are performed on whether Tablets versions are consistent. It's recommended not to perform data import operations on the table during Export execution.
 
 - An Export Job allows exporting a maximum of 2000 partitions. You can add parameter `maximum_number_of_export_partitions` in `fe.conf` and restart FE to modify this setting.
-
 
 ## Examples
 

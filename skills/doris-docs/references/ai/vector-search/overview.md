@@ -9,25 +9,6 @@
 
 # Overview
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-
 In generative AI applications, relying solely on a large model's internal parameter “memory” has clear limitations: (1) the model’s knowledge becomes outdated and cannot cover the latest information; (2) directly asking the model to “generate” answers increases the risk of hallucinations. This gives rise to RAG (Retrieval-Augmented Generation). The key task of RAG is not to have the model fabricate answers from nothing, but to retrieve the Top-K most relevant information chunks from an external knowledge base and feed them to the model as grounding context.
 
 To achieve this, we need a mechanism to measure semantic relatedness between a user query and documents in the knowledge base. Vector representations are a standard tool: by encoding both queries and documents into semantic vectors, we can use vector similarity to measure relevance. With the advancement of pretrained language models, generating high-quality embeddings has become mainstream. Thus, the retrieval stage of RAG becomes a typical vector similarity search problem: from a large vector collection, find the K vectors most similar to the query (i.e., candidate knowledge pieces).
@@ -340,7 +321,7 @@ PROPERTIES (
 );
 ```
 
-![ANN-SQ-BUILD_COSTS](/images/ann-index-quantization-build-time.jpg)
+[ANN-SQ-BUILD_COSTS]
 
 ## Performance Tuning
 

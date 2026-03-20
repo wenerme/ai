@@ -1,6 +1,5 @@
 ---
 title: Test Context | Guide
-outline: deep
 ---
 
 # Test Context
@@ -209,8 +208,7 @@ const test = baseTest
   })
 ```
 
-::: warning
-The `onCleanup` function can only be called **once per fixture**. If you need multiple cleanup operations, either combine them into a single cleanup function, or split your fixture into multiple smaller fixtures:
+> **warning**: The `onCleanup` function can only be called **once per fixture**. If you need multiple cleanup operations, either combine them into a single cleanup function, or split your fixture into multiple smaller fixtures:
 
 ```ts
 // ❌ This will throw an error
@@ -240,7 +238,6 @@ const test = baseTest
 ```
 
 Splitting into separate fixtures is the recommended approach as it provides better isolation and makes dependencies explicit.
-:::
 
 #### Fixture Options
 
@@ -345,8 +342,7 @@ const test = baseTest
   })
 ```
 
-::: info
-With the object syntax, you need to provide types manually as a generic parameter since TypeScript cannot infer them from the `use()` callback:
+> **info**: With the object syntax, you need to provide types manually as a generic parameter since TypeScript cannot infer them from the `use()` callback:
 
 ```ts
 const test = baseTest.extend<{
@@ -361,7 +357,6 @@ const test = baseTest.extend<{
   baseUrl: 'http://localhost:3000'
 })
 ```
-:::
 
 #### Tuple Syntax for Options
 
@@ -419,8 +414,7 @@ test('only cache', ({ cache }) => {})
 test('needs database', ({ database }) => {})
 ```
 
-::: warning
-When using `test.extend()` with fixtures, you should always use the object destructuring pattern `{ database }` to access context both in fixture function and test function.
+> **warning**: When using `test.extend()` with fixtures, you should always use the object destructuring pattern `{ database }` to access context both in fixture function and test function.
 
 ```ts
 test('context must be destructured', (context) => { // [!code --]
@@ -431,7 +425,6 @@ test('context must be destructured', ({ database }) => { // [!code ++]
   expect(database).toBeDefined()
 })
 ```
-:::
 
 ### Extending Extended Tests
 
@@ -481,8 +474,7 @@ const test = baseTest
 
 By default, fixtures are initialized for each test. You can change this with the `scope` option to share fixtures across tests.
 
-::: warning
-By default any fixture without a scope is treated as a `test` fixture. This means that you cannot use it inside `worker` and `file` scopes. If you wish to access it there, consider specifying a scope manually:
+> **warning**: By default any fixture without a scope is treated as a `test` fixture. This means that you cannot use it inside `worker` and `file` scopes. If you wish to access it there, consider specifying a scope manually:
 
 ```ts
 test
@@ -503,7 +495,6 @@ test.describe('a nested suite', () => {
 Consider overriding it on the top level of the module, or by using [`injected`](#default-fixture-injected) option and providing the value in the project config.
 
 Also note that in [non-isolate](/config/isolate) mode overriding a `worker` fixture will affect the fixture value in all test files running after it was overridden.
-:::
 
 #### Test Scope (Default)
 
@@ -567,11 +558,9 @@ const test = baseTest
   })
 ```
 
-::: info
-By default, every file runs in a separate worker, so `file` and `worker` scopes work the same way. However, if you disable [isolation](/config/isolate), then the number of workers is limited by [`maxWorkers`](/config/maxworkers), and worker-scoped fixtures will be shared across files running in the same worker.
+> **info**: By default, every file runs in a separate worker, so `file` and `worker` scopes work the same way. However, if you disable [isolation](/config/isolate), then the number of workers is limited by [`maxWorkers`](/config/maxworkers), and worker-scoped fixtures will be shared across files running in the same worker.
 
 When running tests in `vmThreads` or `vmForks`, `scope: 'worker'` works the same way as `scope: 'file'` because each file has its own VM context.
-:::
 
 #### Scope Hierarchy
 
@@ -600,11 +589,9 @@ const test = baseTest
   })
 ```
 
-::: tip
-Only test-scoped fixtures have access to the [built-in test context](#built-in-test-context) (`task`, `expect`, `skip`, etc.). Worker and file fixtures run outside of any specific test, so test-specific properties are not available to them.
+> **tip**: Only test-scoped fixtures have access to the [built-in test context](#built-in-test-context) (`task`, `expect`, `skip`, etc.). Worker and file fixtures run outside of any specific test, so test-specific properties are not available to them.
 
 If you need the file path in a file-scoped fixture, use `expect.getState().testPath` instead.
-:::
 
 #### Type-Safe Scope Access <Version>3.2.0</Version> {#type-safe-scope-access}
 
@@ -642,7 +629,6 @@ This provides the same compile-time safety as the builder pattern, catching scop
 
 Since Vitest 3, you can provide different values in different [projects](/guide/projects). To enable this, pass `{ injected: true }` in the options. If the key is not specified in the [project configuration](/config/provide), the default value will be used.
 
-:::code-group
 ```ts [fixtures.test.ts]
 import { test as baseTest } from 'vitest'
 
@@ -686,15 +672,12 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 ### Overriding Fixture Values <Version>4.1.0</Version> {#overriding-fixture-values}
 
 You can override fixture values for a specific suite and its children using `test.override`. This is useful when you need different fixture values for different test scenarios.
 
-::: tip
-Vitest will automatically inherit the options, if they are not provided when overriding. Note that you cannot override fixture's `scope` or `auto` options.
-:::
+> **tip**: Vitest will automatically inherit the options, if they are not provided when overriding. Note that you cannot override fixture's `scope` or `auto` options.
 
 #### Builder Pattern (Recommended)
 
@@ -810,13 +793,9 @@ describe('level 1', () => {
 })
 ```
 
-::: warning
-Note that you cannot introduce new fixtures inside `test.override`. Extend the test context with `test.extend` instead.
-:::
+> **warning**: Note that you cannot introduce new fixtures inside `test.override`. Extend the test context with `test.extend` instead.
 
-::: info
-`test.scoped` is deprecated in favor of `test.override`. The `test.scoped` API still works but will be removed in a future version.
-:::
+> **info**: `test.scoped` is deprecated in favor of `test.override`. The `test.scoped` API still works but will be removed in a future version.
 
 ### Type-Safe Hooks
 
@@ -863,7 +842,7 @@ test.afterAll(async ({ database }) => {
 })
 ```
 
-::: warning IMPORTANT
+> **warning**: IMPORTANT
 Suite-level hooks (`beforeAll`, `afterAll`, `aroundAll`) **must be called on the `test` object returned from `test.extend()`** to have access to the extended fixtures. Using the global `beforeAll`/`afterAll`/`aroundAll` functions will not have access to your custom fixtures:
 
 ```ts
@@ -888,10 +867,8 @@ test.beforeAll(({ database }) => {
 ```
 
 This applies to all suite-level hooks: `beforeAll`, `afterAll`, and `aroundAll`.
-:::
 
-::: tip
-Suite-level hooks can only access [**file-scoped** and **worker-scoped** fixtures](#fixture-scopes). Test-scoped fixtures are not available in these hooks because they run outside the context of individual tests. If you try to access a test-scoped fixture in a suite-level hook, Vitest will throw an error.
+> **tip**: Suite-level hooks can only access [**file-scoped** and **worker-scoped** fixtures](#fixture-scopes). Test-scoped fixtures are not available in these hooks because they run outside the context of individual tests. If you try to access a test-scoped fixture in a suite-level hook, Vitest will throw an error.
 
 ```ts
 const test = baseTest
@@ -904,4 +881,3 @@ test.beforeAll(({ testFixture }) => {})
 // ✅ Works: file-scoped fixtures are available
 test.beforeAll(({ fileFixture }) => {})
 ```
-:::

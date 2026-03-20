@@ -9,14 +9,12 @@ This document explains in detail how to customise the multi-turn training workfl
 
 The figure below shows a typical multi-turn training process, where the model may perform several rollout rounds that include environment interaction, tool calls, and so on:
 
-![Multi-turn example](../../../../resources/grpo_multi_turn.png)
+[Multi-turn example]
 
 ## MultiTurnScheduler
 
 `MultiTurnScheduler` is an abstract base class that provides the default multi-turn dialogue-management logic.
 Its workflow is illustrated below:
-
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/multiturn_pipeline.png" width="300" />
 
 The scheduler is responsible for two core functions:
 - **Termination check** — decide whether the current turn of inference should stop via `check_finished`.
@@ -79,7 +77,7 @@ Arguments passed to `step` and `check_finished`:
 - **response_choice**: inference result of the current turn
 - **current_turn**: current turn index (starting from 1)
 
-<details><summary>Input example (click to expand)</summary>
+Input example (click to expand)
 
 ```python
 infer_request
@@ -113,10 +111,6 @@ ChatCompletionResponseChoice(
 """
 # response_choice.messages will be copied at the end of multi-turn inference.
 ```
-</details>
-
-<br>
-<br>
 
 The default `check_finished` logic stops inference in the following cases:
 - The model reply is truncated, i.e. exceeds `max_completion_length`.
@@ -146,8 +140,6 @@ A full multi-turn training script can be found [here](https://github.com/modelsc
 
 For multi-turn rollout we use `AsyncEngine` to perform efficient batched asynchronous sampling.
 AsyncEngine reduces compute bubbles in multi-turn inference:
-
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/asyncengine.png" width="400" />
 
 Use the `use_async_engine` argument in the `rollout` command to specify the engine type (async is the default).
 

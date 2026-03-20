@@ -1,30 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/mongodb-logs
 title: 'Monitoring MongoDB Logs with ClickStack'
-sidebar_label: 'MongoDB Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring MongoDB Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['MongoDB', 'logs', 'OTEL', 'ClickStack', 'database monitoring', 'slow query']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import log_view from '@site/static/images/clickstack/mongodb/log-view.png';
-import search_view from '@site/static/images/clickstack/mongodb/search-view.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/mongodb/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/mongodb/example-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring MongoDB Logs with ClickStack {#mongodb-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize MongoDB server logs (4.4+ JSON format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing MongoDB {#existing-mongodb}
 
@@ -129,10 +113,8 @@ service:
         - clickhouse
 ```
 
-:::note
-- You only define new receivers and pipelines in the custom config. The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration — you just reference them by name.
+> **note**: - You only define new receivers and pipelines in the custom config. The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration — you just reference them by name.
 - This configuration uses `start_at: beginning` to read all existing logs when the collector starts. For production deployments, change to `start_at: end` to avoid re-ingesting logs on collector restarts.
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -141,9 +123,6 @@ To enable custom collector configuration in your existing ClickStack deployment,
 1. Mount the custom config file at `/etc/otelcol-contrib/custom.config.yaml`
 2. Set the environment variable `CUSTOM_OTELCOL_CONFIG_FILE=/etc/otelcol-contrib/custom.config.yaml`
 3. Mount your MongoDB log directory so the collector can read them
-
-<Tabs groupId="deployMethod">
-<TabItem value="docker-compose" label="Docker Compose" default>
 
 Update your ClickStack deployment configuration:
 ```yaml
@@ -159,9 +138,6 @@ services:
       # ... other volumes ...
 ```
 
-</TabItem>
-<TabItem value="docker-run" label="Docker Run (All-in-One Image)">
-
 If you're using the all-in-one image with docker, run:
 ```bash
 docker run --name clickstack \
@@ -172,12 +148,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-</TabItem>
-</Tabs>
-
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the MongoDB log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the MongoDB log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verify Logs in HyperDX {#verifying-logs}
 

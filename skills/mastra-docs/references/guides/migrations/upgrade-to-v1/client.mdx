@@ -44,8 +44,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@beta v1/client-msg-function-args .
 ```
 
-:::
-
 ### `threadId` and `resourceId` to `memory` option
 
 The `threadId` and `resourceId` options have been removed from agent method calls. Use the `memory` option instead, which provides a cleaner API for memory configuration. This applies to both `@mastra/client-js` and `@mastra/react` packages.
@@ -133,8 +131,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/client-sdk-types .
 ```
 
-:::
-
 ### Pagination parameters from `offset/limit` to `page/perPage`
 
 All client SDK methods that used `offset/limit` now use `page/perPage`. This change provides a more intuitive pagination model aligned with web pagination patterns.
@@ -159,8 +155,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/client-offset-limit .
 ```
 
-:::
-
 ### `getMemoryThread` parameter structure
 
 The `getMemoryThread` method parameter structure has been updated. This change provides a more consistent API across memory methods.
@@ -179,8 +173,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/client-get-memory-thread .
 ```
-
-:::
 
 ### Unified `runById` API for workflow runs
 
@@ -248,8 +240,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/client-to-ai-sdk-format .
 ```
-
-:::
 
 ### Network memory methods
 

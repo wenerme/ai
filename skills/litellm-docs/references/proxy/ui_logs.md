@@ -1,15 +1,10 @@
 
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Getting Started with UI Logs
 
 View Spend, Token Usage, Key, Team Name for Each Request to LiteLLM
 
-
 <Image img={require('../../img/ui_request_logs.png')}/>
-
 
 ## Overview
 
@@ -18,8 +13,6 @@ View Spend, Token Usage, Key, Team Name for Each Request to LiteLLM
 | Success Logs | ✅ Yes |
 | Error Logs | ✅ Yes |
 | Request/Response Content Stored | ❌ No by Default, **opt in with `store_prompts_in_spend_logs`** |
-
-
 
 **By default LiteLLM does not track the request and response content.**
 
@@ -114,7 +107,6 @@ You can control how many logs are deleted per run using this environment variabl
 Set `SPEND_LOG_CLEANUP_BATCH_SIZE` to control how many logs are deleted per batch (default `1000`).
 
 For detailed architecture and how it works, see [Spend Logs Deletion](../proxy/spend_logs_deletion).
-
 
 ## What gets logged? 
 

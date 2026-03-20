@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+
 ---
 
 # Events
@@ -13,21 +13,21 @@ This method sets up a listener for the given event name. When an event of type `
 the callback is triggered. Any additional data sent with the emitted event will be passed to the callback. It returns
 a function to cancel the listener.
 
-Go: `EventsOn(ctx context.Context, eventName string, callback func(optionalData ...interface{})) func()`<br/>
+Go: `EventsOn(ctx context.Context, eventName string, callback func(optionalData ...interface{})) func()`
 JS: `EventsOn(eventName string, callback function(optionalData?: any)): () => void`
 
 ### EventsOff
 
 This method unregisters the listener for the given event name, optionally multiple listeners can be unregistered via `additionalEventNames`.
 
-Go: `EventsOff(ctx context.Context, eventName string, additionalEventNames ...string)`<br/>
+Go: `EventsOff(ctx context.Context, eventName string, additionalEventNames ...string)`
 JS: `EventsOff(eventName string, ...additionalEventNames)`
 
 ### EventsOffAll
 
 This method unregisters all event listeners.
 
-Go: `EventsOffAll(ctx context.Context)`<br/>
+Go: `EventsOffAll(ctx context.Context)`
 JS: `EventsOffAll()`
 
 ### EventsOnce
@@ -35,7 +35,7 @@ JS: `EventsOffAll()`
 This method sets up a listener for the given event name, but will only trigger once. It returns a function to cancel
 the listener.
 
-Go: `EventsOnce(ctx context.Context, eventName string, callback func(optionalData ...interface{})) func()`<br/>
+Go: `EventsOnce(ctx context.Context, eventName string, callback func(optionalData ...interface{})) func()`
 JS: `EventsOnce(eventName string, callback function(optionalData?: any)): () => void`
 
 ### EventsOnMultiple
@@ -43,12 +43,12 @@ JS: `EventsOnce(eventName string, callback function(optionalData?: any)): () => 
 This method sets up a listener for the given event name, but will only trigger a maximum of `counter` times. It returns
 a function to cancel the listener.
 
-Go: `EventsOnMultiple(ctx context.Context, eventName string, callback func(optionalData ...interface{}), counter int) func()`<br/>
+Go: `EventsOnMultiple(ctx context.Context, eventName string, callback func(optionalData ...interface{}), counter int) func()`
 JS: `EventsOnMultiple(eventName string, callback function(optionalData?: any), counter int): () => void`
 
 ### EventsEmit
 
 This method emits the given event. Optional data may be passed with the event. This will trigger any event listeners.
 
-Go: `EventsEmit(ctx context.Context, eventName string, optionalData ...interface{})`<br/>
+Go: `EventsEmit(ctx context.Context, eventName string, optionalData ...interface{})`
 JS: `EventsEmit(eventName: string, ...optionalData: any)`

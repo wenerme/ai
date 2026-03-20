@@ -22,7 +22,7 @@ Each step connects to the next in the workflow through defined schemas that keep
 
 Use `.then()` to run steps in order, allowing each step to access the result of the step before it.
 
-![Chaining steps with .then()](/img/workflows/workflows-control-flow-then.jpg)
+[Chaining steps with .then()]
 
 ```typescript {27-28} title="src/mastra/workflows/test-workflow.ts"
 const step1 = createStep({
@@ -60,7 +60,7 @@ export const testWorkflow = createWorkflow({
 
 Use `.parallel()` to run steps at the same time. All parallel steps must complete before the workflow continues to the next step. Each step's `id` is used when defining a following step's `inputSchema` and becomes the key on the `inputData` object used to access the previous step's values. The outputs of parallel steps can then be referenced or combined by a following step.
 
-![Concurrent steps with .parallel()](/img/workflows/workflows-control-flow-parallel.jpg)
+[Concurrent steps with .parallel()]
 
 ```typescript {39} title="src/mastra/workflows/test-workflow.ts"
 const step1 = createStep({
@@ -215,17 +215,13 @@ const writerStep = createStep({
 })
 ```
 
-:::info
-
-Visit [Choosing the right pattern](#choosing-the-right-pattern) to understand when to use `.parallel()` vs `.foreach()`.
-
-:::
+> **info**: Visit [Choosing the right pattern](#choosing-the-right-pattern) to understand when to use `.parallel()` vs `.foreach()`.
 
 ## Conditional logic with `.branch()`
 
 Use `.branch()` to choose which step to run based on a condition. All steps in a branch need the same `inputSchema` and `outputSchema` because branching requires consistent schemas so workflows can follow different paths.
 
-![Conditional branching with .branch()](/img/workflows/workflows-control-flow-branch.jpg)
+[Conditional branching with .branch()]
 
 ```typescript {30-33} title="src/mastra/workflows/test-workflow.ts" prettier:false
 const step1 = createStep({...})
@@ -347,7 +343,7 @@ export const testWorkflow = createWorkflow({
 
 When using `.then()`, `.parallel()`, or `.branch()`, it's sometimes necessary to transform the output of a previous step to match the input of the next. In these cases you can use `.map()` to access the `inputData` and transform it to create a suitable data shape for the next step.
 
-![Mapping with .map()](/img/workflows/workflows-data-mapping-map.jpg)
+[Mapping with .map()]
 
 ```typescript {9} title="src/mastra/workflows/test-workflow.ts" prettier:false
 const step1 = createStep({...});
@@ -418,7 +414,7 @@ Workflows support different looping methods that let you repeat steps until or w
 
 Use `.dountil()` to run a step repeatedly until a condition becomes true.
 
-![Repeating with .dountil()](/img/workflows/workflows-control-flow-dountil.jpg)
+[Repeating with .dountil()]
 
 ```typescript prettier:false {14} title="src/mastra/workflows/test-workflow.ts"
 const step1 = createStep({...});
@@ -442,7 +438,7 @@ export const testWorkflow = createWorkflow({})
 
 Use `.dowhile()` to run a step repeatedly while a condition remains true.
 
-![Repeating with .dowhile()](/img/workflows/workflows-control-flow-dowhile.jpg)
+[Repeating with .dowhile()]
 
 ```typescript prettier:false {14} title="src/mastra/workflows/test-workflow.ts"
 const step1 = createStep({...});
@@ -466,7 +462,7 @@ export const testWorkflow = createWorkflow({})
 
 Use `.foreach()` to run the same step for each item in an array. The input must be of type `array` so the loop can iterate over its values, applying the step's logic to each one. See [Choosing the right pattern](#choosing-the-right-pattern) for guidance on when to use `.foreach()` vs other methods.
 
-![Repeating with .foreach()](/img/workflows/workflows-control-flow-foreach.jpg)
+[Repeating with .foreach()]
 
 ```typescript prettier:false {15} title="src/mastra/workflows/test-workflow.ts"
 const step1 = createStep({

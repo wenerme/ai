@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Azure Flexible Server for Postgres'
 description: 'Set up Azure Flexible Server for Postgres as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/azure-flexible-server-postgres
 title: 'Azure Flexible Server for Postgres Source Setup Guide'
 keywords: ['azure', 'flexible server', 'postgres', 'clickpipes', 'wal level']
 doc_type: 'guide'
@@ -9,12 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-import server_parameters from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/azure-flexible-server-postgres/server_parameters.png';
-import wal_level from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/azure-flexible-server-postgres/wal_level.png';
-import restart from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/azure-flexible-server-postgres/restart.png';
-import firewall from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/azure-flexible-server-postgres/firewall.png';
-import Image from '@theme/IdealImage';
 
 # Azure flexible server for Postgres source setup guide
 

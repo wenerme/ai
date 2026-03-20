@@ -1,6 +1,5 @@
 # CCBench
 
-
 ## Overview
 
 CCBench (Chinese Culture Bench) is an extension of MMBench specifically designed to evaluate multimodal models' understanding of Chinese traditional culture. It covers various aspects of Chinese cultural heritage through visual question answering.
@@ -28,7 +27,6 @@ CCBench (Chinese Culture Bench) is an extension of MMBench specifically designed
 - Simple accuracy metric for scoring
 - Requires both visual perception and cultural knowledge
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ CCBench (Chinese Culture Bench) is an extension of MMBench specifically designed
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ CCBench (Chinese Culture Bench) is an extension of MMBench specifically designed
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 119x118 - 512x512 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -136,5 +132,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

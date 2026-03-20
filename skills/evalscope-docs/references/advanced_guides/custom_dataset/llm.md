@@ -124,7 +124,6 @@ Field descriptions and required fields:
   - messages: Required, array elements are {"role": "system"|"user"|"assistant", "content": "<text>"}; the last entry is recommended to be a user question
   - response: Required when evaluating with reference answers; can be omitted or left empty when evaluating without reference answers
 
-
 ### Reference Answer Q&A
 
 Below is how to configure the evaluation of reference answer Q&A tasks using the `Qwen2.5` model on `example.jsonl`.
@@ -152,7 +151,7 @@ task_cfg = TaskConfig(
 run_task(task_cfg=task_cfg)
 ```
 
-<details><summary>Click to view evaluation results</summary>
+Click to view evaluation results
 
 ```text
 +----------------+------------+-----------+----------+-------+---------+---------+
@@ -185,7 +184,6 @@ run_task(task_cfg=task_cfg)
 | Qwen2.5-0.5B-Instruct | general_qa | bleu-4    | example  |   12 | 0.0556 | default |
 +----------------+------------+-----------+----------+-------+---------+---------+ 
 ```
-</details>
 
 **Method 2: Evaluation based on LLM**
 
@@ -232,7 +230,7 @@ task_cfg = TaskConfig(
 run_task(task_cfg=task_cfg)
 ```
 
-<details><summary>Click to view evaluation results</summary>
+Click to view evaluation results
 
 ```text
 +----------------+------------+----------------+----------+-------+---------+---------+
@@ -241,7 +239,6 @@ run_task(task_cfg=task_cfg)
 | Qwen2.5-0.5B-Instruct | general_qa | AverageAccuracy | example  |   12 | 0.583 | default |
 +----------------+------------+----------------+----------+-------+---------+---------+ 
 ```
-</details>
 
 ### Reference-free Answer Q&A
 
@@ -289,7 +286,7 @@ task_cfg = TaskConfig(
 run_task(task_cfg=task_cfg)
 ```
 
-<details><summary>Click to view evaluation results</summary>
+Click to view evaluation results
 
 ```text
 +----------------+------------+----------------+----------+-------+---------+---------+
@@ -298,8 +295,6 @@ run_task(task_cfg=task_cfg)
 | Qwen2.5-0.5B-Instruct | general_qa | AverageAccuracy | example  |   12 | 0.6375 | default |
 +----------------+------------+----------------+----------+-------+---------+---------+
 ```
-
-</details>
 
 ## Function Calling Format (FC)
 
@@ -402,7 +397,6 @@ Simple example (example.jsonl, 3 lines):
 {"messages":[{"role":"system","content":"You are an assistant"},{"role":"user","content":"The weather is nice today, let's chat"}],"tools":[{"type":"function","function":{"name":"add","description":"Add two numbers together","parameters":{"type":"object","properties":{"a":{"type":"number","description":"The first number"},"b":{"type":"number","description":"The second number"}},"required":["a","b"],"additionalProperties":false}}}],"should_call_tool":false}
 {"messages":[{"role":"system","content":"You are an assistant"},{"role":"user","content":"Convert 37 degrees Celsius to Fahrenheit"}],"tools":[{"type":"function","function":{"name":"convert_temperature","description":"Convert Celsius to Fahrenheit","parameters":{"type":"object","properties":{"celsius":{"type":"number","description":"Temperature value in Celsius"}},"required":["celsius"],"additionalProperties":false}}}],"should_call_tool":true}
 ```
-
 
 Execution example:
 ```python

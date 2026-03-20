@@ -6,24 +6,6 @@
 }
 ---
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
 # HNSW and How to use it in Apache Doris
 
 HNSW (Malkov & Yashunin, 2016) has become the de facto standard for high‑performance online vector search thanks to its ability to achieve high recall and low latency with relatively modest resource consumption. Since Apache Doris 4.x, an ANN index based on HNSW has been supported. This document walks through the HNSW algorithm, key parameters, and engineering practices, and explains how to build and tune HNSW‑based ANN indexes in production Doris clusters.
@@ -43,7 +25,7 @@ However, this family of algorithms has two main issues:
 1. As the dataset grows, the number of iterations in the routing phase increases roughly following a power‑law.
 2. It is difficult to build a high‑quality proximity graph; local clusters and poor global connectivity are very common.
 
-![low_quality_pgraph](/images/vector-search/low_quality_pgraph.png)
+[low quality pgraph]
 
 The figure above intuitively shows the shape of a problematic proximity graph. Darker points represent nodes with poorer connectivity; some nodes barely have any neighbors at all, which makes them very hard to reach during search.
 
@@ -73,7 +55,7 @@ The reason NSW achieves polylogarithmic complexity is that the total number of d
 
 HNSW reduces the query time complexity to logarithmic by accelerating the zoom‑out phase.
 
-![hnsw](/images/vector-search/hnsw.png)
+[hnsw]
 
 More concretely, the “hierarchical” structure in HNSW is obtained by splitting the NSW graph into multiple layers based on the characteristic radius (typical edge length) of nodes.
 
@@ -386,7 +368,7 @@ NUM_PER_BATCH=1000000 python3.11 -m vectordbbench doris --host 127.0.0.1 --port 
 | **Index prop** | max_degree=128, ef_construction=512, hnsw_ef_search=128 | max_degree=128, ef_construction=512, hnsw_ef_search=156 |
 | **Recall@100** | 0.9931 | 0.9929 |
 | **Concurrency (Client)** | 10, 40, 80 | 10, 40, 80 |
-| **Result QPS** | 163.1567 (10)<br>606.6832 (40)<br>859.3842 (80) | 162.3002 (10)<br>542.3488 (40)<br>607.7951 (80) |
-| **Avg Latency (s)** | 0.06123 (10)<br>0.06579 (40)<br>0.09281 (80) | 0.06154 (10)<br>0.07351 (40)<br>0.13093 (80) |
-| **P95 Latency (s)** | 0.06560 (10)<br>0.07747 (40)<br>0.12967 (80) | 0.06726 (10)<br>0.08789 (40)<br>0.18719 (80) |
-| **P99 Latency (s)** | 0.06889 (10)<br>0.08618 (40)<br>0.14605 (80) | 0.06154 (10)<br>0.07351 (40)<br>0.13093 (80) |
+| **Result QPS** | 163.1567 (10)606.6832 (40)859.3842 (80) | 162.3002 (10)542.3488 (40)607.7951 (80) |
+| **Avg Latency (s)** | 0.06123 (10)0.06579 (40)0.09281 (80) | 0.06154 (10)0.07351 (40)0.13093 (80) |
+| **P95 Latency (s)** | 0.06560 (10)0.07747 (40)0.12967 (80) | 0.06726 (10)0.08789 (40)0.18719 (80) |
+| **P99 Latency (s)** | 0.06889 (10)0.08618 (40)0.14605 (80) | 0.06154 (10)0.07351 (40)0.13093 (80) |

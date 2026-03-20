@@ -1,5 +1,4 @@
 ---
-slug: /academic_overview
 title: 'Architecture Overview'
 description: 'Docs version of our 2024 VLDB paper'
 keywords: ['architecture']
@@ -7,23 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import useBrokenLinks from "@docusaurus/useBrokenLinks";
-import image_01 from '@site/static/images/managing-data/core-concepts/_vldb2024_1_Figure_0.png'
-import image_02 from '@site/static/images/managing-data/core-concepts/_vldb2024_2_Figure_0.png'
-import image_03 from '@site/static/images/managing-data/core-concepts/_vldb2024_2_Figure_5.png'
-import image_04 from '@site/static/images/managing-data/core-concepts/_vldb2024_3_Figure_7.png'
-import image_05 from '@site/static/images/managing-data/core-concepts/_vldb2024_4_Figure_6.png'
-import image_06 from '@site/static/images/managing-data/core-concepts/_vldb2024_5_Figure_8.png'
-import image_07 from '@site/static/images/managing-data/core-concepts/_vldb2024_6_Figure_0.png'
-import image_08 from '@site/static/images/managing-data/core-concepts/_vldb2024_7_Figure_1.png'
-import image_09 from '@site/static/images/managing-data/core-concepts/_vldb2024_8_Figure_7.png'
-import image_10 from '@site/static/images/managing-data/core-concepts/_vldb2024_10_Figure_14.png'
-import image_11 from '@site/static/images/managing-data/core-concepts/_vldb2024_10_Figure_0.png'
-import image_12 from '@site/static/images/managing-data/core-concepts/_vldb2024_10_Figure_12.png'
-import image_13 from '@site/static/images/managing-data/core-concepts/_vldb2024_10_Figure_13.png'
-import Image from '@theme/IdealImage';
-
-{/* needed as docusaurus can't resolve links to span ids, we need a custom span */}
 export function Anchor(props) {
     useBrokenLinks().collectAnchor(props.id);
     return <span style={{scrollMarginTop: "var(--ifm-navbar-height)"}} {...props}/>;

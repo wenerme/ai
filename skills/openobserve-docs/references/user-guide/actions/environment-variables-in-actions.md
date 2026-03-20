@@ -47,6 +47,6 @@ def main(data: List[Dict[str, Any]], logger: logging.Logger) -> List[Dict[str, A
     }]  
 ```  
 While creating or editing the Action, in the Environment Variables section, you can set:  
-`MIN_DISTINCT_THRESHOLD = 3` <br>
-![env var](../../images/actions-env-var.png)
+`MIN_DISTINCT_THRESHOLD = 3` 
+[env var]
 This ensures that your script only returns results if at least 3 distinct pod names are found.

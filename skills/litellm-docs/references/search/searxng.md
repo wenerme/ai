@@ -315,4 +315,3 @@ If you get HTML instead of JSON:
        - html
        - json
    ```
-

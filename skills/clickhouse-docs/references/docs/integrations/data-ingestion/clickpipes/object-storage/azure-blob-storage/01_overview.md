@@ -1,14 +1,8 @@
 ---
-sidebar_label: 'Overview'
 description: 'Seamlessly connect your object storage to ClickHouse Cloud.'
-slug: /integrations/clickpipes/object-storage/abs/overview
-sidebar_position: 1
 title: 'Integrating Azure Blob Storage with ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import cp_advanced_settings from '@site/static/images/integrations/data-ingestion/clickpipes/cp_advanced_settings.png';
-import Image from '@theme/IdealImage';
 
 The ABS ClickPipe provides a fully-managed and resilient way to ingest data from Azure Blob Storage into ClickHouse Cloud. It supports both **one-time** and **continuous ingestion** with exactly-once semantics.
 
@@ -48,7 +42,7 @@ Object Storage ClickPipes follow the POSIX standard for file pattern matching. A
 |---------|-------------|---------|---------|
 | `?` | Matches exactly **one** character (excluding `/`) | `data-?.csv` | `data-1.csv`, `data-a.csv`, `data-x.csv` |
 | `*` | Matches **zero or more** characters (excluding `/`) | `data-*.csv` | `data-1.csv`, `data-001.csv`, `data-report.csv`, `data-.csv` |
-| `**` <br></br> Recursive | Matches **zero or more** characters (including `/`). Enables recursive directory traversal. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
+| `**` </br> Recursive | Matches **zero or more** characters (including `/`). Enables recursive directory traversal. | `logs/**/error.log` | `logs/error.log`, `logs/2024/error.log`, `logs/2024/01/error.log` |
 
 **Examples:**
 
@@ -88,9 +82,7 @@ Containers must allow the [`s3:GetObject`](https://docs.aws.amazon.com/AmazonS3/
 
 ### Authentication {#authentication}
 
-:::note
-Microsoft Entra ID authentication (including Managed Identities) isn't currently supported.
-:::
+> **note**: Microsoft Entra ID authentication (including Managed Identities) isn't currently supported.
 
 Azure Blob Storage authentication uses a [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string), which supports both access keys and shared access signatures (SAS).
 
@@ -118,9 +110,7 @@ Generate a SAS token in the Azure Portal under **Storage Account > Shared access
 
 ABS ClickPipes use two distinct network paths for metadata discovery and data ingestion: the ClickPipes service and the ClickHouse Cloud service, respectively. If you want to configure an additional layer of network security (e.g., for compliance reasons), network access **must be configured for both paths**.
 
-:::warning
-IP-based access control **doesn't work** if your Azure Blob Storage container is in the same Azure region as your ClickHouse Cloud service. When both services are co-located, traffic is routed through Azure's internal network, rather than the public internet.
-:::
+> **warning**: IP-based access control **doesn't work** if your Azure Blob Storage container is in the same Azure region as your ClickHouse Cloud service. When both services are co-located, traffic is routed through Azure's internal network, rather than the public internet.
 
 * For **IP-based access control**, the [IP network rules](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security) for your Azure Storage firewall must allow the static IPs for the ClickPipes service region listed [here](/integrations/clickpipes#list-of-static-ips), as well as the [static IPs](/manage/data-sources/cloud-endpoints-api) for the ClickHouse Cloud service. To obtain the static IPs for your ClickHouse Cloud region, open a terminal and run:
 

@@ -9,8 +9,6 @@ This guide shows how to integrate oRPC with Tanstack Query for Svelte. For an in
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/svelte-query@latest @tanstack/svelte-query@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/svelte-query@latest @tanstack/svelte-query@latest
 ```sh [deno]
 deno add npm:@orpc/svelte-query@latest npm:@tanstack/svelte-query@latest
 ```
-
-:::
 
 ## Setup
 

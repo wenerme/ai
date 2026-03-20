@@ -60,11 +60,7 @@ The options in this section control the branding and theming of the report attac
   If **Current** is selected, the image in the report is in the instance theme of the report creator. If the report creator doesn't have a theme set, then the team, organization, or server theme is used. For more information refer to [Change Grafana UI theme](ref:change-ui-theme).
   Defaults to **Dark**.
 
-<!-- vale Grafana.WordList = NO -->
-
 ## Email branding
-
-<!-- vale Grafana.WordList = YES -->
 
 - **Company logo** - Company logo displayed in the report email. Configure it by specifying a URL or uploading a file. The maximum file size is 16 MB. If not set, defaults to the Grafana logo. If the specified URL isn't valid, the logo image appears as broken.
 - **Email footer** - Toggle to enable the report email footer. Select **Sent by** or **None**.

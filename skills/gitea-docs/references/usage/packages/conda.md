@@ -1,7 +1,5 @@
 ---
 date: "2022-12-28T00:00:00+00:00"
-slug: "conda"
-sidebar_position: 25
 ---
 
 # Conda Package Registry

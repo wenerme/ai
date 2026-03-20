@@ -138,7 +138,7 @@ It can be seen from the `explain shape plan` that the plan after being transpare
 
 By using async-materialized views, the query performance can be significantly improved, especially for complex join and aggregation queries. When using them, the following points need to be noted:
 
-:::tip Usage Suggestions
+> **tip**: Usage Suggestions
 - Pre-computed Results: Materialized views pre-compute and store the query results, avoiding the overhead of repeated computations for each query. This is especially effective for complex queries that need to be executed frequently.
 - Reducing Join Operations: Materialized views can combine the data of multiple tables into one view, reducing the join operations during queries and thus improving query efficiency.
 - Automatic Updates: When the data in the base tables changes, materialized views can be updated automatically to maintain data consistency. This ensures that the query results always reflect the latest data status.
@@ -147,4 +147,4 @@ By using async-materialized views, the query performance can be significantly im
 - Applicable Scenarios: Materialized views are suitable for scenarios where the data change frequency is low and the query frequency is high. For frequently changing data, real-time computation may be more appropriate.
   :::
 
-Reasonable utilization of async-materialized views can significantly improve the query performance of the database, especially in the case of complex queries and large data volumes. Meanwhile, factors such as storage and maintenance also need to be considered comprehensively to achieve a balance between performance and cost. 
+Reasonable utilization of async-materialized views can significantly improve the query performance of the database, especially in the case of complex queries and large data volumes. Meanwhile, factors such as storage and maintenance also need to be considered comprehensively to achieve a balance between performance and cost.

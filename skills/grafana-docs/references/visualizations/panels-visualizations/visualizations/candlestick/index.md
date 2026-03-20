@@ -184,7 +184,7 @@ When you set the **Tooltip mode** to **All**, the **Values sort order** option i
 Set the hover proximity (in pixels) to control how close the cursor must be to a data point to trigger the tooltip to display.
 The following screen recording shows this option in a time series visualization:
 
-![Adding a hover proximity limit for tooltips](/media/docs/grafana/gif-grafana-10-4-hover-proximity.gif)
+[Adding a hover proximity limit for tooltips]
 
 ### Legend options
 
@@ -197,8 +197,6 @@ The following screen recording shows this option in a time series visualization:
 ### Graph styles options
 
 The options under the **Graph styles** section let you control the general appearance of [additional fields](#additional-fields) in the visualization, excluding [color](#standard-options).
-
-<!-- prettier-ignore-start -->
 
 | Option                                      | Description                                                                                    |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -215,8 +213,6 @@ The options under the **Graph styles** section let you control the general appea
 | [Stack series](#stack-series)               | Set whether Grafana displays series on top of each other. |
 | [Bar alignment](#bar-alignment)             | Set the position of the bar relative to a data point. |
 | Bar width factor                            | Set the width of the bar relative to minimum space between data points. A factor of 0.5 means that the bars take up half of the available space between data points. A factor of 1.0 means that the bars take up all available space. |
-
-<!-- prettier-ignore-end -->
 
 #### Style
 
@@ -308,11 +304,11 @@ The stacking group option is only available as an override. For more information
 
 Set the position of the bar relative to a data point. In the examples below, **Show points** is set to **Always** which makes it easier to see the difference this setting makes. The points don't change, but the bars change in relationship to the points. Choose from the following:
 
-- **Before** ![Bar alignment before icon](/static/img/docs/time-series-panel/bar-alignment-before.png)
+- **Before** [Bar alignment before icon]
   The bar is drawn before the point. The point is placed on the trailing corner of the bar.
-- **Center** ![Bar alignment center icon](/static/img/docs/time-series-panel/bar-alignment-center.png)
+- **Center** [Bar alignment center icon]
   The bar is drawn around the point. The point is placed in the center of the bar. This is the default.
-- **After** ![Bar alignment after icon](/static/img/docs/time-series-panel/bar-alignment-after.png)
+- **After** [Bar alignment after icon]
   The bar is drawn after the point. The point is placed on the leading corner of the bar.
 
 ### Axis options

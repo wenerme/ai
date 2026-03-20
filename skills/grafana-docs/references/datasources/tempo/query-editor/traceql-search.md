@@ -25,7 +25,7 @@ To learn more about how to query by TraceQL, refer to the [TraceQL documentation
 
 The **Search** query builder, located on the **Explore** > **Query type** > **Search** in Grafana, provides drop-down lists and text fields to help you write a query.
 
-![The Search query builder](/media/docs/grafana/data-sources/tempo/query-editor/tempo-ds-query-builder-v11.png)
+[The Search query builder]
 
 ## Enable Search with the query builder
 

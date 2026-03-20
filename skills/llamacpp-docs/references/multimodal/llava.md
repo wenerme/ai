@@ -128,7 +128,6 @@ Then, you can convert the LLM using the `convert_hf_to_gguf.py` script, which ha
 
 For llava-1.5 and llava-1.6, you need to use `vicuna` chat template. Simply add `--chat-template vicuna` to activate this template.
 
-
 ## How to know if you are running in llava-1.5 or llava-1.6 mode
 
 When running llava-cli you will see a visual information right before the prompt is being processed:
@@ -138,6 +137,5 @@ When running llava-cli you will see a visual information right before the prompt
 
 **Llava-1.6 (anything above 576):**
 `encode_image_with_clip: image embedding created: 2880 tokens`
-
 
 Alternatively just pay notice to how many "tokens" have been used for your prompt, it will also show 1000+ tokens for llava-1.6

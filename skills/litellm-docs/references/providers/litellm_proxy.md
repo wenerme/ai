@@ -1,8 +1,6 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LiteLLM Proxy (LLM Gateway)
-
 
 | Property | Details |
 |-------|-------|
@@ -11,15 +9,12 @@ import TabItem from '@theme/TabItem';
 | Setup LiteLLM Gateway | [LiteLLM Gateway ↗](../simple_proxy) |
 | Supported Endpoints |`/chat/completions`, `/completions`, `/embeddings`, `/audio/speech`, `/audio/transcriptions`, `/images`, `/images/edits`, `/rerank` |
 
-
-
 ## Required Variables
 
 ```python
 os.environ["LITELLM_PROXY_API_KEY"] = "" # "sk-1234" your litellm proxy api key 
 os.environ["LITELLM_PROXY_API_BASE"] = "" # "http://localhost:4000" your litellm proxy api base
 ```
-
 
 ## Usage (Non Streaming)
 ```python
@@ -33,7 +28,6 @@ os.environ["LITELLM_PROXY_API_KEY"] = ""
 # either set .env or litellm.api_base
 # os.environ["LITELLM_PROXY_API_BASE"] = ""
 litellm.api_base = "your-openai-proxy-url"
-
 
 messages = [{ "content": "Hello, how are you?","role": "user"}]
 
@@ -171,7 +165,6 @@ response = litellm.rerank(
 )
 ```
 
-
 ## Integration with Other Libraries
 
 LiteLLM Proxy works seamlessly with Langchain, LlamaIndex, OpenAI JS, Anthropic SDK, Instructor, and more.
@@ -180,11 +173,7 @@ LiteLLM Proxy works seamlessly with Langchain, LlamaIndex, OpenAI JS, Anthropic 
 
 ## Send all SDK requests to LiteLLM Proxy
 
-:::info
-
-Requires v1.72.1 or higher.
-
-:::
+> **info**: Requires v1.72.1 or higher.
 
 Use this when calling LiteLLM Proxy from any library / codebase already using the LiteLLM SDK.
 
@@ -282,4 +271,3 @@ response = await litellm.acompletion(
     extra_body={"tags": ["user:ishaan", "department:engineering"]}
 )
 ```
-

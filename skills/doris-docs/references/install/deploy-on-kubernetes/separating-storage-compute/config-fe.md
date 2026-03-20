@@ -33,9 +33,8 @@ spec:
   feSpec:
     electionNumber: 3
 ```
-:::tip Note
+> **tip**: Note
 Once the disaggregated cluster is deployed, the `electionNumber` setting cannot be modified.
-:::
 
 ## Custom Startup Configuration
 The Doris Operator mounts the FE startup configuration using a Kubernetes ConfigMap. Follow these steps to configure it:
@@ -89,7 +88,7 @@ The Doris Operator mounts the FE startup configuration using a Kubernetes Config
     ```
    In the `DorisDisaggregatedCluster` resource, the `configMaps` field is an array, with each element's `name` representing the name of the ConfigMap in the current namespace.
 
-:::tip Tip
+> **tip**: Tip
 1. In Kubernetes deployments, it is not necessary to include `meta_service_endpoint` or `cluster_id` in the startup configuration, as the Doris Operator will automatically add this information.
 2. When customizing the startup configuration, `enable_fqdn_mode` must be set to true.
    :::
@@ -262,9 +261,8 @@ spec:
           requests:
             storage: 200Gi
 ```
-:::tip Tip
+> **tip**: Tip
 If the `mountPaths` array is empty, it indicates that the current storage configuration is using the template configuration.
-:::
 
 ### Disable Log Persistence
 If log persistence is not desired and logs should only be output to the standard output, configure as follows:

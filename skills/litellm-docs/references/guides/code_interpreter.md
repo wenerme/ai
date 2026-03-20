@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Code Interpreter
 
@@ -159,7 +158,6 @@ for file in files.data:
         f.write(content)
     print(f"Downloaded: {file.filename}")
 ```
-
 
 ## Related
 

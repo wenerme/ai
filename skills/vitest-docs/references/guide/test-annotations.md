@@ -1,6 +1,5 @@
 ---
 title: Test Annotations | Guide
-outline: deep
 ---
 
 # Test Annotations
@@ -20,9 +19,7 @@ test('hello world', async ({ annotate }) => {
 })
 ```
 
-::: warning
-The `annotate` function returns a Promise, so it needs to be awaited if you rely on it somehow. However, Vitest will also automatically await any non-awaited annotation before the test finishes.
-:::
+> **warning**: The `annotate` function returns a Promise, so it needs to be awaited if you rely on it somehow. However, Vitest will also automatically await any non-awaited annotation before the test finishes.
 
 Depending on your reporter, you will see these annotations differently.
 
@@ -69,8 +66,8 @@ The `verbose` reporter is the only terminal reporter that reports annotations wh
 
 The HTML reporter shows annotations the same way the UI does. You can see the annotation on the line where it was called. At the moment, if the annotation wasn't called in a test file, you cannot see it in the UI. We are planning to support a separate test summary view where it will be visible.
 
-<img alt="Vitest UI" img-light src="/annotations-html-light.png">
-<img alt="Vitest UI" img-dark src="/annotations-html-dark.png">
+[Vitest UI]
+[Vitest UI]
 
 ### junit
 
@@ -89,8 +86,8 @@ The `junit` reporter lists annotations inside the testcase's `properties` tag. T
 
 The `github-actions` reporter will print the annotation as a [notice message](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-a-notice-message) by default. You can configure the `type` by passing down the second argument as `notice`, `warning` or `error`. If type is none of these, Vitest will show the message as a notice.
 
-<img alt="GitHub Actions" img-light src="/annotations-gha-light.png">
-<img alt="GitHub Actions" img-dark src="/annotations-gha-dark.png">
+[GitHub Actions]
+[GitHub Actions]
 
 ### tap
 

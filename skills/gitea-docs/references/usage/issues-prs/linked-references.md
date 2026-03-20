@@ -1,7 +1,5 @@
 ---
 date: "2019-11-21T17:00:00-03:00"
-slug: "automatically-linked-references"
-sidebar_position: 15
 aliases:
   - /en-us/automatically-linked-references
 ---
@@ -188,7 +186,5 @@ _The last section is for repositories with external issue trackers that use alph
 
 _**-**: not applicable._
 
-:::note
-Automatic references between repositories with different types of issues (external vs. internal) are not fully supported
+> **note**: Automatic references between repositories with different types of issues (external vs. internal) are not fully supported
 and may render invalid links.
-:::

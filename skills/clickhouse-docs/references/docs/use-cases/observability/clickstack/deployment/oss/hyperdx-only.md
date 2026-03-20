@@ -1,19 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/hyperdx-only
 title: 'HyperDX Only'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 4
 description: 'Deploying HyperDX only'
 doc_type: 'guide'
 keywords: ['HyperDX standalone deployment', 'HyperDX ClickHouse integration', 'deploy HyperDX only', 'HyperDX Docker installation', 'ClickHouse visualization tool']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import hyperdx_logs from '@site/static/images/use-cases/observability/hyperdx-logs.png';
-import hyperdx_2 from '@site/static/images/use-cases/observability/hyperdx-2.png';
-import JSONSupport from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_json_support.md';
 
 This option is designed if you already have a running ClickHouse instance populated with observability or event data.
 
@@ -29,7 +19,6 @@ In this mode, data ingestion is left entirely to the user. You can ingest data i
 - Custom event pipelines
 
 ## Deployment steps {#deployment-steps}
-<br/>
 
 <VerticalStepper headerLevel="h3">
 
@@ -59,9 +48,8 @@ Connect to your own external ClickHouse cluster e.g. ClickHouse Cloud.
 
 If prompted to create a source, retain all default values and complete the `Table` field with the value `otel_logs`. All other settings should be auto-detected, allowing you to click `Save New Source`.
 
-:::note Creating a source
+> **note**: Creating a source
 Creating a source requires tables to exist in ClickHouse. If you don't have data, we recommend deploying the ClickStack OpenTelemetry collector to create tables.
-:::
 
 </VerticalStepper>
 

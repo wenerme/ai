@@ -1,7 +1,5 @@
 ---
 date: "2023-04-27T15:00:00+08:00"
-slug: "design"
-sidebar_position: 140
 ---
 
 # Design of Gitea Actions
@@ -75,7 +73,7 @@ More information about gRPC can be found on [its website](https://grpc.io/).
 Let's examine the overall network architecture.
 This will help you troubleshoot some problems and explain why it's a bad idea to register a runner with a loopback address of the Gitea instance.
 
-![network](/images/usage/actions/network.png)
+[network]
 
 There are four network connections marked in the picture, and the direction of the arrows indicates the direction of establishing the connections.
 

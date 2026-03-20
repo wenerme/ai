@@ -73,7 +73,7 @@ Tables are a highly flexible visualization designed to display data in columns a
 The table visualization can take multiple datasets and provide the option to switch between them.
 With this versatility, it's the preferred visualization for viewing multiple data types, aiding in your data analysis needs.
 
-![Basic table visualization](/media/docs/grafana/panels-visualizations/screenshot-basic-table-v11.3.png)
+[Basic table visualization]
 
 You can use a table visualization to show datasets such as:
 
@@ -175,9 +175,6 @@ Columns with filters applied have a blue filter displayed next to the title.
 
 To remove the filter, click the blue filter icon and then click **Clear filter**.
 
-<!-- vale Grafana.WordList = NO -->
-<!-- vale Grafana.Spelling = NO -->
-
 ### Apply ad hoc filters from the table
 
 In tables, you can apply ad hoc filters directly from the visualization with one click.
@@ -187,9 +184,6 @@ To display the filter icons, hover your cursor over the cell that has the value 
 {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-table-adhoc-filter-v12.2.png" max-width="500px" alt="Table with ad hoc filter icon displayed on a cell" >}}
 
 For more information about applying ad hoc filters this way, refer to [Dashboard drilldown with ad hoc filters](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/variables/add-template-variables/#dashboard-drilldown-with-ad-hoc-filters).
-
-<!-- vale Grafana.Spelling = YES -->
-<!-- vale Grafana.WordList = YES -->
 
 ## Sort columns
 
@@ -215,7 +209,6 @@ This option is only available when you're editing the panel.
 
 ### Table options
 
-<!-- prettier-ignore-start -->
 | Option               | Description                                               |
 | -------------------- | --------------------------------------------------------- |
 | Show table header    | Show or hide column names imported from your data source. |
@@ -229,7 +222,6 @@ This option is only available when you're editing the panel.
 | Column filter        | Temporarily change how column data is displayed. For example, show or hide specific values. For more information, refer to [Column filtering](#column-filtering). |
 | Wrap text            | Enables text wrapping for cell content. |
 | Wrap header text     | Enables text wrapping for column headers. |
-<!-- prettier-ignore-end -->
 
 ### Table footer options
 
@@ -272,7 +264,6 @@ Additional configuration is available for some cell types.
 
 If you want to apply a cell type to only some fields instead of all fields, you can do so using the **Cell options > Cell type** field override.
 
-<!-- prettier-ignore-start -->
 | Cell type                                 | Description                                                                                                                |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | [Auto](#auto)                             | A basic text and number cell. |
@@ -286,7 +277,6 @@ If you want to apply a cell type to only some fields instead of all fields, you 
 | [Markdown + HTML](#markdown--html)        | Displays rich markdown or HTML content. |
 | [Image](#image)                           | Displays an image when the value is a URL or a base64 encoded image. |
 | [Actions](#actions)                       | The cell displays a button that triggers a basic, unauthenticated API call when clicked. |
-<!-- prettier-ignore-end -->
 
 #### Auto
 
@@ -300,7 +290,7 @@ It has the following cell options:
 
 If thresholds, value mappings, or color schemes are set, the cell text is displayed in the appropriate color.
 
-![Table with colored text cell type](/media/docs/grafana/panels-visualizations/screenshot-table-colored-text-v11.3-2.png)
+[Table with colored text cell type]
 
 The colored text cell type has the following options:
 
@@ -310,15 +300,14 @@ The colored text cell type has the following options:
 
 If thresholds, value mappings, or color schemes are set, the cell background is displayed in the appropriate color.
 
-![Table with colored background cell type](/media/docs/grafana/panels-visualizations/screenshot-table-colored-bkgrnd-v11.3-2.png)
+[Table with colored background cell type]
 
 You can also set background cell color by row:
 
-![Table with background cell color applied to row](/media/docs/grafana/panels-visualizations/screenshot-table-colored-row-v11.3.png)
+[Table with background cell color applied to row]
 
 The colored background cell type has the following options:
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Background display mode | Choose between **Basic** and **Gradient**. |
@@ -326,9 +315,6 @@ The colored background cell type has the following options:
 | Cell value inspect | <p>Enables value inspection from table cells. When the switch is toggled on, clicking the inspect icon in a cell opens the **Inspect value** drawer which contains two tabs: **Plain text** and **Code editor**.</p><p>Grafana attempts to automatically detect the type of data in the cell and opens the drawer with the associated tab showing. However, you can switch back and forth between tabs.</p> |
 | Tooltip from field | Toggle on the **Tooltip from field** switch to use the values from another field (or column) in a tooltip. For more information, refer to the [Tooltip from field](#tooltip-from-field). |
 | Styling from field | Toggle on the **Styling from field** switch to apply the styling from another field (or column). The referenced field must contain CSS properties formatted in JSON object syntax (for example, `{"name":"John"}`). For more information, refer to the [Styling from field](#styling-from-field). |
-<!-- prettier-ignore-end -->
-
-<!-- The cell value inspect, tooltip from field, and styling from field descriptions above should be copied from docs/sources/shared/visualizations/cell-options.md -->
 
 #### Data links
 
@@ -341,14 +327,12 @@ With this cell type, cells can be displayed as a graphical gauge, with several d
 
 The gauge cell type has the following options:
 
-<!-- prettier-ignore-start -->
 | Option             | Description                                                                                                    |
 | ------------------ | -------------------------------------------------------------------------------------------------------------- |
 | Gauge display mode | Controls the type of gauge used. For more information, refer to the [Gauge display mode](#gauge-display-mode). |
 | Value display      | Controls how the value is displayed. For more information, refer to the [Value display](#value-display). |
 | Tooltip from field | Toggle on the **Tooltip from field** switch to use the values from another field (or column) in a tooltip. For more information, refer to [Tooltip from field](#tooltip-from-field). |
 | Styling from field | Toggle on the **Styling from field** switch to apply the styling from another field (or column). The referenced field must contain CSS properties formatted in JSON object syntax (for example, `{"name":"John"}`). For more information, refer to the [Styling from field](#styling-from-field). |
-<!-- prettier-ignore-end -->
 
 {{< admonition type="note" >}}
 The maximum and minimum values of the gauges are configured automatically from the smallest and largest values in your whole dataset.
@@ -359,37 +343,32 @@ If you don't want the max/min values to be pulled from the whole dataset, you ca
 
 You can set three gauge display modes.
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Basic | Shows a simple gauge with the threshold levels defining the color of gauge. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-gauge-mode-basic-v11.3.png" alt="Table cell with basic gauge mode" >}} |
 | Gradient | The threshold levels define a gradient. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-gauge-mode-gradient-v11.3.png" alt="Table cell with gradient gauge mode" >}} |
 | Retro LCD | The gauge is split up in small cells that are lit or unlit. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-gauge-mode-retro-v11.3.png" alt="Table cell with retro LCD gauge mode" >}} |
-<!-- prettier-ignore-end -->
 
 ##### Value display
 
 Labels displayed alongside of the gauges can be set to be colored by value, match the theme text color, or be hidden.
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Value color | Labels are colored by value. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-labels-value-color-v11.3.png" alt="Table with labels in value color" >}} |
 | Text color | Labels match the theme text color. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-labels-text-color-v11.3.png" alt="Table with labels in theme color" >}} |
 | Hidden | Labels are hidden. {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-labels-hidden-v11.3.png" alt="Table with labels hidden" >}} |
-<!-- prettier-ignore-end -->
 
 #### Sparkline
 
 This cell type shows values rendered as a sparkline.
 To show sparklines on data with multiple time series, use the [Time series to table transformation](ref:time-series-to-table-transformation) to process it into a format the table can show.
 
-![Table using sparkline cell type](/media/docs/grafana/panels-visualizations/screenshot-table-as-sparkline-v11.3.png)
+[Table using sparkline cell type]
 
 The sparkline cell type options are described in the following table.
 For more detailed information about all of the sparkline styling options (except **Hide value**), refer to the [time series graph styles documentation](ref:graph-styles).
 
-<!-- prettier-ignore-start -->
 | Option              | Description                                                                |
 | ------------------- | --------------------------------------------------------------------------------------------- |
 | Hide value          | Toggle the switch on or off to display or hide the cell value on the sparkline. |
@@ -405,7 +384,6 @@ For more detailed information about all of the sparkline styling options (except
 | Bar alignment       | Set the position of the bar relative to a data point. |
 | Tooltip from field | Toggle on the **Tooltip from field** switch to use the values from another field (or column) in a tooltip. For more information, refer to [Tooltip from field](#tooltip-from-field). |
 | Styling from field | Toggle on the **Styling from field** switch to apply the styling from another field (or column). The referenced field must contain CSS properties formatted in JSON object syntax (for example, `{"name":"John"}`). For more information, refer to the [Styling from field](#styling-from-field). |
-<!-- prettier-ignore-end -->
 
 #### JSON View
 
@@ -459,24 +437,21 @@ For more information, refer to [Tooltip from field](#tooltip-from-field).
 
 If you have a field value that is an image URL or a base64 encoded image, this cell type displays it as an image.
 
-![Table with image cell type](/media/docs/grafana/panels-visualizations/screenshot-table-cell-image-v11.3.png)
+[Table with image cell type]
 
 It has the following options:
 
-<!-- prettier-ignore-start -->
 | Option             | Description                                                                                                                   |
 | ------------------ |  ---------------------------------------------------------------------------------------------------------------------------- |
 | Alt text           | Set the alternative text of an image. The text will be available for screen readers and in cases when images can't be loaded. |
 | Title text         | Set the text that's displayed when the image is hovered over with a cursor. |
 | Tooltip from field | Toggle on the **Tooltip from field** switch to use the values from another field (or column) in a tooltip. For more information, refer to [Tooltip from field](#tooltip-from-field). |
-<!-- prettier-ignore-end -->
 
 #### Actions
 
 The cell displays a button that triggers a basic, unauthenticated API call when clicked.
 Configure the API call with the following options:
 
-<!-- prettier-ignore-start -->
 | Option             | Description  |
 | ------------------ | ------------ |
 | Endpoint           | Enter the endpoint URL. |
@@ -486,7 +461,6 @@ Configure the API call with the following options:
 | Header parameters  | Enter as many **Key**, **Value** pairs as you need. |
 | Payload            | Enter the body of the API call. |
 | Tooltip from field | Toggle on the **Tooltip from field** switch to use the values from another field (or column) in a tooltip. For more information, refer to [Tooltip from field](#tooltip-from-field). |
-<!-- prettier-ignore-end -->
 
 #### Tooltip from field
 

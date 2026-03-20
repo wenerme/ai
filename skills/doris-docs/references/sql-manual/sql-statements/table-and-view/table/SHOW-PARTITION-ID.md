@@ -37,4 +37,3 @@ The user who executes this SQL must have at least the following permissions:
     ```sql
     SHOW PARTITION 10002;
     ```
-

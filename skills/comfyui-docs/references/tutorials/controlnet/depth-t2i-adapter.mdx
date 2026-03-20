@@ -1,7 +1,6 @@
 ---
 title: "ComfyUI Depth T2I Adapter Usage Example"
 description: "This guide will introduce you to the basic concepts of Depth T2I Adapter and demonstrate how to generate corresponding images in ComfyUI"
-sidebarTitle: "Depth T2I Adapter"
 ---
 
 ## Introduction to T2I Adapter
@@ -51,10 +50,8 @@ Please download the workflow image below and drag it into ComfyUI to load the wo
 
 ![ComfyUI Workflow - Depth T2I Adapter](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/controlnet/depth-t2i-adapter.png)
 
-<Tip>
 Images with workflow JSON in their metadata can be directly dragged into ComfyUI or loaded using the menu `Workflows` -> `Open (ctrl+o)`.
 This image already includes download links for the corresponding models, and dragging it into ComfyUI will automatically prompt for downloads.
-</Tip>
 
 Please download the image below, which we will use as input:
 
@@ -62,9 +59,7 @@ Please download the image below, which we will use as input:
 
 ### 2. Model Installation
 
-<Note>
 If your network cannot successfully complete the automatic download of the corresponding models, please try manually downloading the models below and placing them in the specified directories:
-</Note>
 
 - [interiordesignsuperm_v2.safetensors](https://civitai.com/api/download/models/93152?type=Model&format=SafeTensor&size=full&fp=fp16)
 - [t2iadapter_depth_sd15v2.pth](https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_depth_sd15v2.pth?download=true)
@@ -80,7 +75,7 @@ ComfyUI/
 
 ### 3. Step-by-Step Workflow Execution
 
-![ComfyUI Workflow - Depth T2I Adapter Flow Diagram](/images/tutorial/controlnet/flow_diagram_depth_ti2_adapter.jpg)
+[ComfyUI Workflow - Depth T2I Adapter Flow Diagram]
 
 1. Ensure that `Load Checkpoint` can load **interiordesignsuperm_v2.safetensors**
 2. Ensure that `Load ControlNet` can load **t2iadapter_depth_sd15v2.pth**

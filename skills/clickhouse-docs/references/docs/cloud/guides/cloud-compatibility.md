@@ -1,6 +1,4 @@
 ---
-slug: /whats-new/cloud-compatibility
-sidebar_label: 'Cloud compatibility'
 title: 'Cloud Compatibility'
 description: 'This guide provides an overview of what to expect functionally and operationally in ClickHouse Cloud.'
 keywords: ['ClickHouse Cloud', 'compatibility']
@@ -85,9 +83,8 @@ User-defined functions in ClickHouse Cloud are in [private preview](https://clic
 
 #### Settings behavior {#udf-settings-behavior}
 
-:::warning Important
+> **warning**: Important
 UDFs in ClickHouse Cloud **don't inherit user-level settings**. They execute with default system settings.
-:::
 
 This means:
 - Session-level settings (set via `SET` statement) aren't propagated to UDF execution context

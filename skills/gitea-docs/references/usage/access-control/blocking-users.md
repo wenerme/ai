@@ -1,7 +1,5 @@
 ---
 date: "2024-01-31T00:00:00+00:00"
-slug: "blocking-user"
-sidebar_position: 25
 aliases:
   - /blocking-user
 ---

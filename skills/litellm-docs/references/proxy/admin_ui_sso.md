@@ -1,27 +1,16 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # ✨ SSO for Admin UI
 
-:::info
-From v1.76.0, SSO is now Free for up to 5 users.
-:::
+> **info**: From v1.76.0, SSO is now Free for up to 5 users.
 
-:::info
-
-✨ SSO is on LiteLLM Enterprise
+> **info**: ✨ SSO is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
 
-:::
-
 ### Usage (Google, Microsoft, Okta, etc.)
-
-<Tabs>
-<TabItem value="okta" label="Okta SSO">
 
 #### Step 1: Create an OIDC Application in Okta
 
@@ -65,9 +54,7 @@ GENERIC_USERINFO_ENDPOINT="https://<your-okta-domain>/oauth2/default/v1/userinfo
 PROXY_BASE_URL="https://<your-proxy-base-url>"
 ```
 
-:::tip
-You can find all OAuth endpoints at `https://<your-okta-domain>/.well-known/openid-configuration`
-:::
+> **tip**: You can find all OAuth endpoints at `https://<your-okta-domain>/.well-known/openid-configuration`
 
 #### Step 3a: Configure Access Policy (Custom Authorization Server only)
 
@@ -119,9 +106,6 @@ LiteLLM will automatically handle PKCE parameter generation and verification dur
 | `access_denied` | User not assigned to app | Assign the user in the Assignments tab |
 | `no_matching_policy` | Missing Access Policy (Custom Authorization Server only) | Create an Access Policy in the Authorization Server (see Step 3a) |
 
-</TabItem>
-<TabItem value="google" label="Google SSO">
-
 - Create a new Oauth 2.0 Client on https://console.cloud.google.com/ 
 
 **Required .env variables on your Proxy**
@@ -136,10 +120,6 @@ GOOGLE_CLIENT_SECRET=
     ```shell
     https://litellm-production-7002.up.railway.app/sso/callback
     ```
-
-</TabItem>
-
-<TabItem value="msft" label="Microsoft SSO">
 
 - Create a new App Registration on https://portal.azure.com/
 - Create a client Secret for your App Registration
@@ -177,7 +157,6 @@ Supported roles:
 - `proxy_admin` - Admin over the platform
 - `proxy_admin_viewer` - Can login, view all keys, view all spend (read-only)
 - `internal_user` - Normal user. Can login, view spend and depending on team-member permissions - view/create/delete their own keys.
-
 
 To set up app roles:
 1. Navigate to your App Registration on https://portal.azure.com/
@@ -221,10 +200,6 @@ After setting the environment variables, restart the proxy:
 ```bash
 litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-
-<TabItem value="Generic" label="Generic SSO Provider">
 
 A generic OAuth client that can be used to quickly create support for any OAuth provider with close to no code
 
@@ -306,10 +281,6 @@ GENERIC_USER_EXTRA_ATTRIBUTES="org_info.department,org_info.cost_center,metadata
     http://localhost:4000/sso/callback
     ```
 
-</TabItem>
-
-</Tabs>
-
 ### Default Login, Logout URLs
 
 Some SSO providers require a specific redirect url for login and logout. You can input the following values.
@@ -364,11 +335,7 @@ If you plan to change this ID, please update the user role via API `/user/update
 
 <Image img={require('../../img/litellm_ui_admin.png')} />
 
-:::info
-
-If you don't see all your keys this could be due to a cached token. So just re-login and it should work.
-
-:::
+> **info**: If you don't see all your keys this could be due to a cached token. So just re-login and it should work.
 
 ### Disable `Default Team` on Admin UI
 
@@ -503,14 +470,11 @@ If you need to access the UI via username/password when SSO is on navigate to `/
 
 <Image img={require('../../img/fallback_login.png')} />
 
-
 ### Debugging SSO JWT fields 
 
 If you need to inspect the JWT fields received from your SSO provider by LiteLLM, follow these instructions. This guide walks you through setting up a debug callback to view the JWT data during the SSO process.
 
-
 <Image img={require('../../img/debug_sso.png')}  style={{ width: '500px', height: 'auto' }} />
-<br />
 
 1. Add `/sso/debug/callback` as a redirect URL in your SSO provider 
 
@@ -519,7 +483,6 @@ If you need to inspect the JWT fields received from your SSO provider by LiteLLM
   ```bash showLineNumbers title="Redirect URL"
   http://<proxy_base_url>/sso/debug/callback
   ```
-
 
 2. Navigate to the debug login page on your browser 
 
@@ -531,11 +494,9 @@ If you need to inspect the JWT fields received from your SSO provider by LiteLLM
 
     This will initiate the standard SSO flow. You will be redirected to your SSO provider's login screen, and after successful authentication, you will be redirected back to LiteLLM's debug callback route.
 
-
 3. View the JWT fields 
 
 Once redirected, you should see a page called "SSO Debug Information". This page displays the JWT fields received from your SSO provider (as shown in the image above)
-
 
 ## Advanced
 
@@ -552,7 +513,6 @@ Centralize role management by defining user permissions in Azure Entra ID. LiteL
    - **Value**: `proxy_admin_viewer` (must match one of the LiteLLM role values exactly)
 4. Click **Apply** to save the role
 5. Repeat for each LiteLLM role you want to use
-
 
 **Supported LiteLLM role values** (see [full role documentation](./access_control.md#global-proxy-roles)):
 - `proxy_admin` - Full admin access
@@ -586,4 +546,3 @@ Centralize role management by defining user permissions in Azure Entra ID. LiteL
 <Image img={require('../../img/app_role3.png')} style={{ width: '900px', height: 'auto' }} />
 
 **Note:** The role from Entra ID will take precedence over any existing role in the LiteLLM database. This ensures your SSO provider is the authoritative source for user roles.
-

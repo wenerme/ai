@@ -12,7 +12,6 @@ Returns a specific format string.
 
 This function behaves the same as the MySQL [GET_FORMAT function](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_get-format).
 
-
 ## Syntax
 
 ```sql

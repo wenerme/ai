@@ -56,9 +56,7 @@ Then, add the `--changed` option to your command, to process only those files th
 biome check --changed
 ```
 
-:::caution
-Biome doesn't check what's changed, this means that even adding spaces or newlines to a file, will mark this file as "changed"
-:::
+> **caution**: Biome doesn't check what's changed, this means that even adding spaces or newlines to a file, will mark this file as "changed"
 
 Alternatively, you can use the option `--since` to specify an arbitrary branch. This option **takes precedence** over the option `vcs.defaultBranch`. For example, you might want to check your changes against the `next` branch:
 

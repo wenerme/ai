@@ -101,8 +101,6 @@ The data is converted as follows:
 
 Use these options to refine the visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description                                                                                     |
 | ------ | ----------------------------------------------------------------------------------------------- |
 | Show values  | Controls whether values are rendered inside the state regions. Choose from **Auto**, **Always**, and **Never**. **Auto** renders values if there is sufficient space. |
@@ -111,8 +109,6 @@ Use these options to refine the visualization.
 | Page size (enable pagination) | The **Page size** option lets you paginate the status history visualization to limit how many series are visible at once. This is useful when you have many series. |
 | Line width | Controls line width of state regions. |
 | Fill opacity | Controls value alignment inside state regions. |
-
-<!-- prettier-ignore-end -->
 
 ### Legend options
 

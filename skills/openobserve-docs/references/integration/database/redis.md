@@ -79,7 +79,7 @@ Monitor Redis effectively using the **OpenTelemetry Collector Redis receiver**, 
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your OpenObserve details.
 
-    ![OpenObserve Redis Creds](../images/databases/otel-metrics-cred.png)
+    [OpenObserve Redis Creds]
 
     > A full list of metrics collected is available in the [Redis receiver documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver).
 
@@ -91,13 +91,13 @@ Monitor Redis effectively using the **OpenTelemetry Collector Redis receiver**, 
     otelcol-contrib --config /path/to/config.yaml
     ```
 
-    ![Run the Collector](../images/databases/otel-collector.png)
+    [Run the Collector]
 
 ??? "Step 5: Visualize in OpenObserve"
 
     1. Open **OpenObserve → Streams** and select your metrics stream.  
-       ![Visualize Redis Metrics](../images/databases/redis-stream.png)  
-       ![Visualize Redis Metrics](../images/databases/redis-stream-explore.png)  
+       [Visualize Redis Metrics]  
+       [Visualize Redis Metrics]  
 
     2. Create dashboards to monitor Redis memory, connections, and operations.
 

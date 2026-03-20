@@ -1,16 +1,10 @@
-import Image from '@theme/IdealImage';
 
 # Arize Phoenix OSS
 
 Open source tracing and evaluation platform
 
-:::tip
-
-This is community maintained. Please make an issue if you run into a bug:
+> **tip**: This is community maintained. Please make an issue if you run into a bug:
 https://github.com/BerriAI/litellm
-
-:::
-
 
 ## Pre-Requisites
 Make an account on [Phoenix OSS](https://phoenix.arize.com)

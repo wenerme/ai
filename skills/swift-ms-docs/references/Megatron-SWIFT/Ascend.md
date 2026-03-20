@@ -142,7 +142,6 @@ Major changes include:
 6. Use `emb.word_embeddings.forward` for replacement and recovery operations (Modifications 6, 7)
 7. Pass the `self.language_model.embedding` instance when calling `_patch_word_embeddings`
 
-
 Modify the train_step function in the file swift/megatron/trainers/base.py
 
 Before modification:

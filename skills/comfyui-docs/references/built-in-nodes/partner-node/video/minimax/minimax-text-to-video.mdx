@@ -1,11 +1,9 @@
 ---
 title: "MiniMax Text to Video - ComfyUI Native Node Documentation"
 description: "A node that converts text descriptions into videos using MiniMax AI"
-sidebarTitle: "MiniMax Text to Video"
-icon: "circle"
 ---
 
-![ComfyUI Native MiniMax Text to Video Node](/images/built-in-nodes/api_nodes/minimax/minimax-text-to-video.jpg)
+[ComfyUI Native MiniMax Text to Video Node]
 
 The MiniMax Text to Video node connects to MiniMax's API to generate high-quality, smooth videos from text prompts. It supports different video generation models to create short video clips in various styles.
 
@@ -105,7 +103,6 @@ class MinimaxTextToVideoNode:
         if subject is not None:
             subject_url = upload_images_to_comfyapi(subject, max_images=1, auth_token=auth_token)[0]
             subject_reference = [SubjectReferenceItem(image=subject_url)]
-
 
         video_generate_operation = SynchronousOperation(
             endpoint=ApiEndpoint(

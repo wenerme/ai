@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Spend Tracking
 
@@ -10,9 +8,8 @@ LiteLLM automatically tracks spend for all known models. See our [model cost map
 
 Provider-specific cost tracking (e.g., [Vertex AI PayGo / priority pricing](../providers/vertex.md#paygo--priority-cost-tracking), [Bedrock service tiers](../providers/bedrock.md#usage---service-tier), [Azure base model mapping](./custom_pricing.md#set-base_model-for-cost-tracking-eg-azure-deployments)) is applied automatically when the response includes tier metadata.
 
-:::tip Keep Pricing Data Updated
+> **tip**: Keep Pricing Data Updated
 [Sync model pricing data from GitHub](./sync_models_github.md) to ensure accurate cost tracking.
-:::
 
 ### How to Track Spend with LiteLLM
 
@@ -21,9 +18,6 @@ Provider-specific cost tracking (e.g., [Vertex AI PayGo / priority pricing](../p
 👉 [Setup LiteLLM with a Database](https://docs.litellm.ai/docs/proxy/virtual_keys#setup)
 
 **Step2** Send `/chat/completions` request
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python title="Send Request with Spend Tracking" showLineNumbers
 import openai
@@ -51,10 +45,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
-
 Pass `metadata` as part of the request body
 
 ```shell title="Curl Request with Spend Tracking" showLineNumbers
@@ -75,9 +65,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python title="Langchain with Spend Tracking" showLineNumbers
 from langchain.chat_models import ChatOpenAI
@@ -115,21 +102,12 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 **Step3 - Verify Spend Tracked**
 That's IT. Now Verify your spend was tracked
-
-<Tabs>
-<TabItem value="curl" label="Response Headers">
 
 Expect to see `x-litellm-response-cost` in the response headers with calculated cost
 
 <Image img={require('../../img/response_cost_img.png')} />
-
-</TabItem>
-<TabItem value="db" label="DB + UI">
 
 The following spend gets tracked in Table `LiteLLM_SpendLogs`
 
@@ -154,18 +132,11 @@ Navigate to the Usage Tab on the LiteLLM UI (found on https://your-proxy-endpoin
 
 <Image img={require('../../img/admin_ui_spend.png')} />
 
-</TabItem>
-</Tabs>
-
 ### Allowing Non-Proxy Admins to access `/spend` endpoints
 
 Use this when you want non-proxy admins to access `/spend` endpoints
 
-:::info
-
-Schedule a [meeting with us to get your Enterprise License](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: Schedule a [meeting with us to get your Enterprise License](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 ##### Create Key
 
@@ -328,9 +299,8 @@ See our [Swagger API](https://litellm-api.up.railway.app/#/Budget%20%26%20Spend%
 
 ## Custom Tags
 
-:::tip See Full Request Tags Documentation
+> **tip**: See Full Request Tags Documentation
 For comprehensive documentation on all tag options including `x-litellm-tags` header, request body `tags`, and config-based tags, see the dedicated [Request Tags](./request_tags.md) page.
-:::
 
 Requirements:
 
@@ -341,9 +311,6 @@ Requirements:
 <Image img={require('../../img/claude_cli_tag_usage.png')} />
 
 ### Client-side spend tag
-
-<Tabs>
-<TabItem value="key" label="Set on Key">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -358,9 +325,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
 '
 ```
 
-</TabItem>
-<TabItem value="team" label="Set on Team">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/team/new' \
 -H 'Authorization: Bearer sk-1234' \
@@ -374,9 +338,6 @@ curl -L -X POST 'http://0.0.0.0:4000/team/new' \
 '
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
-
 Set `extra_body={"metadata": { }}` to `metadata` you want to pass
 
 ```python
@@ -385,7 +346,6 @@ client = openai.OpenAI(
     api_key="anything",
     base_url="http://0.0.0.0:4000"
 )
-
 
 response = client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -404,10 +364,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="openai js" label="OpenAI JS">
 
 ```js
 const openai = require("openai");
@@ -442,10 +398,6 @@ async function runOpenAI() {
 runOpenAI();
 ```
 
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
-
 Pass `metadata` as part of the request body
 
 ```shell
@@ -462,9 +414,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "metadata": {"tags": ["model-anthropic-claude-v2.1", "app-ishaan-prod"]}
 }'
 ```
-
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -499,9 +448,6 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Add custom headers to spend tracking
 
 You can add custom headers to the request to track spend and usage.
@@ -527,10 +473,6 @@ Use this to charge other teams, customers, users
 
 Use the `/global/spend/report` endpoint to get spend reports
 
-<Tabs>
-
-<TabItem value="per team" label="Spend Per Team">
-
 #### Example Request
 
 👉 Key Change: Specify `group_by=team`
@@ -541,10 +483,6 @@ curl -X GET 'http://localhost:4000/global/spend/report?start_date=2024-04-01&end
 ```
 
 #### Example Response
-
-<Tabs>
-
-<TabItem value="response" label="Expected Response">
 
 ```shell
 [
@@ -585,10 +523,6 @@ curl -X GET 'http://localhost:4000/global/spend/report?start_date=2024-04-01&end
     }
 ]
 ```
-
-</TabItem>
-
-<TabItem value="py-script" label="Script to Parse Response (Python)">
 
 ```python
 import requests
@@ -645,21 +579,9 @@ Output from script
 # Metadata:  [{'model': 'gpt-3.5-turbo', 'spend': 0.0005715000000000001, 'api_key': 'b94d5e0bc3a71a573917fe1335dc0c14728c7016337451af9714924ff3a729db', 'total_tokens': 423}]
 ```
 
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-<TabItem value="per customer" label="Spend Per Customer">
-
-:::info
-
-Customer [this is `user` passed to `/chat/completions` request](#how-to-track-spend-with-litellm)
+> **info**: Customer [this is `user` passed to `/chat/completions` request](#how-to-track-spend-with-litellm)
 
 - [LiteLLM API key](virtual_keys.md)
-
-:::
 
 #### Example Request
 
@@ -712,10 +634,6 @@ curl -X GET 'http://localhost:4000/global/spend/report?start_date=2024-04-01&end
 ]
 ```
 
-</TabItem>
-
-<TabItem value="per key" label="Spend for Specific API Key">
-
 👉 Key Change: Specify `api_key=sk-1234`
 
 ```shell
@@ -750,15 +668,7 @@ curl -X GET 'http://localhost:4000/global/spend/report?start_date=2024-04-01&end
 ]
 ```
 
-</TabItem>
-
-<TabItem value="per user" label="Spend for Internal User (Key Owner)">
-
-:::info
-
-Internal User (Key Owner): This is the value of `user_id` passed when calling [`/key/generate`](https://litellm-api.up.railway.app/#/key%20management/generate_key_fn_key_generate_post)
-
-:::
+> **info**: Internal User (Key Owner): This is the value of `user_id` passed when calling [`/key/generate`](https://litellm-api.up.railway.app/#/key%20management/generate_key_fn_key_generate_post)
 
 👉 Key Change: Specify `internal_user_id=ishaan`
 
@@ -828,10 +738,6 @@ curl -X GET 'http://localhost:4000/global/spend/report?start_date=2024-04-01&end
 ]
 ```
 
-</TabItem>
-
-</Tabs>
-
 ## 📊 Spend Logs API - Individual Transaction Logs
 
 The `/spend/logs` endpoint now supports a `summarize` parameter to control data format when using date filters.
@@ -867,21 +773,13 @@ curl -X GET "http://localhost:4000/spend/logs?start_date=2024-01-01&end_date=202
 
 Log specific key,value pairs as part of the metadata for a spend log
 
-:::info
-
-Logging specific key,value pairs in spend logs metadata is an enterprise feature.
-
-:::
+> **info**: Logging specific key,value pairs in spend logs metadata is an enterprise feature.
 
 Requirements: 
 
 - Virtual Keys & a database should be set up, see [virtual keys](https://docs.litellm.ai/docs/proxy/virtual_keys)
 
 #### Usage - /chat/completions requests with special spend logs metadata 
-
-
-<Tabs>
-<TabItem value="key" label="Set on Key">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -898,9 +796,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
 '
 ```
 
-</TabItem>
-<TabItem value="team" label="Set on Team">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/team/new' \
 -H 'Authorization: Bearer sk-1234' \
@@ -915,10 +810,6 @@ curl -L -X POST 'http://0.0.0.0:4000/team/new' \
 
 '
 ```
-
-</TabItem>
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 Set `extra_body={"metadata": { }}` to `metadata` you want to pass
 
@@ -975,11 +866,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-
-
-<TabItem value="openai js" label="OpenAI JS">
 
 ```js
 const openai = require('openai');
@@ -1052,10 +938,6 @@ async function runOpenAI() {
 runOpenAI();
 ```
 
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
-
 Pass `metadata` as part of the request body
 
 ```shell
@@ -1077,10 +959,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-</TabItem>
-
-<TabItem value="headers" label="Using Headers">
-
 Pass `x-litellm-spend-logs-metadata` as a request header with JSON string
 
 ```shell
@@ -1098,9 +976,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -1136,10 +1011,6 @@ response = chat(messages)
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
-
 
 #### Viewing Spend w/ custom metadata
 

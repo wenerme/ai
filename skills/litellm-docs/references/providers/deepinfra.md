@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # DeepInfra
 https://deepinfra.com/
 
-:::tip
-
-**We support ALL DeepInfra models, just set `model=deepinfra/<any-model-on-deepinfra>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL DeepInfra models, just set `model=deepinfra/<any-model-on-deepinfra>` as a prefix when sending litellm requests**
 
 ## Table of Contents
 
@@ -76,9 +71,6 @@ LiteLLM provides a Cohere API compatible `/rerank` endpoint for DeepInfra rerank
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import rerank
 import os
@@ -98,9 +90,6 @@ response = rerank(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add to config.yaml
 ```yaml
@@ -138,16 +127,12 @@ curl -L -X POST 'http://0.0.0.0:4000/rerank' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Supported Cohere Rerank API Params
 
 | Param              | Type        | Description                                     |
 | ------------------ | ----------- | ----------------------------------------------- |
 | `query`            | `str`       | The query to rerank the documents against       |
 | `documents`        | `list[str]` | The documents to rerank                         |
-
 
 ### Provider-specific parameters
 Pass any deepinfra specific parameters as a keyword argument to the rerank function, e.g.

@@ -37,16 +37,12 @@ The annotations list shows a list of available annotations you can use to view a
 
 The following options control the source query for the list of annotations:
 
-<!-- prettier-ignore-start -->
-
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | [Query filter](#query-filter) | Specify which annotations are included in the list.  |
 | [Time Range](#time-range) | Specify whether the list should be limited to the current time range. |
 | Tags | Filter the annotations by tags. You can add multiple tags to refine the list. Optionally, leave the tag list empty and filter in view mode by selecting tags that are listed as part of the results on the panel itself. |
 | Limit | Limit the number of results returned. |
-
-<!-- prettier-ignore-end -->
 
 #### Query filter
 
@@ -68,26 +64,18 @@ Choose from:
 
 These options control additional metadata included in the annotations list display:
 
-<!-- prettier-ignore-start -->
-
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | Show user | Show or hide which user created the annotation.  |
 | Show time | Show or hide the time the annotation creation time. |
 | Show tags | Show or hide the tags associated with an annotation. Note that you can use the tags to filter the annotations list. |
 
-<!-- prettier-ignore-end -->
-
 ### Link behavior options
 
 Use the following options to control the behavior of annotation links in the list:
-
-<!-- prettier-ignore-start -->
 
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | Link target | Set how to view the annotated data. Choose from:<ul><li>**Panel** - The link takes you directly to a full-screen view of the panel with the corresponding annotation.</li><li>**Dashboard** - Focuses the annotation in the context of a complete dashboard.</li></ul> |
 | Time before | Set the time range before the annotation. Use duration string values like `1h` for one hour and `10m` for 10 minutes. |
 | Time after | Set the time range after the annotation. |
-
-<!-- prettier-ignore-end -->

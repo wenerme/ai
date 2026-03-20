@@ -1,18 +1,10 @@
 ---
 description: 'Dataset with over 100 million records containing information about places on a map, such as shops, 
 restaurants, parks, playgrounds, and monuments.'
-sidebar_label: 'Foursquare places'
-slug: /getting-started/example-datasets/foursquare-places
 title: 'Foursquare places'
 keywords: ['visualizing']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import visualization_1 from '@site/static/images/getting-started/example-datasets/visualization_1.png';
-import visualization_2 from '@site/static/images/getting-started/example-datasets/visualization_2.png';
-import visualization_3 from '@site/static/images/getting-started/example-datasets/visualization_3.png';
-import visualization_4 from '@site/static/images/getting-started/example-datasets/visualization_4.png';
 
 ## Dataset {#dataset}
 

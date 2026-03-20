@@ -1,12 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Docker, Helm, Terraform
 
-:::info No Limits on LiteLLM OSS
+> **info**: No Limits on LiteLLM OSS
 There are **no limits** on the number of users, keys, or teams you can create on LiteLLM OSS.
-:::
 
 You can find the Dockerfile to build litellm proxy [here](https://github.com/BerriAI/litellm/blob/main/Dockerfile)
 
@@ -14,15 +11,9 @@ You can find the Dockerfile to build litellm proxy [here](https://github.com/Ber
 
 ## Quick Start
 
-:::info
-Facing issues with pulling the docker image? Email us at support@berri.ai.
-:::
+> **info**: Facing issues with pulling the docker image? Email us at support@berri.ai.
 
 To start using Litellm, run the following commands in a shell:
-
-<Tabs>
-
-<TabItem value="docker" label="Docker">
 
 ```
 docker pull docker.litellm.ai/berriai/litellm:main-latest
@@ -30,17 +21,9 @@ docker pull docker.litellm.ai/berriai/litellm:main-latest
 
 [**See all docker images**](https://github.com/orgs/BerriAI/packages)
 
-</TabItem>
-
-<TabItem value="pip" label="LiteLLM CLI (pip package)">
-
 ```shell
 $ pip install 'litellm[proxy]'
 ```
-
-</TabItem>
-
-<TabItem value="docker-compose" label="Docker Compose (Proxy + DB)">
 
 Use this docker compose to spin up the proxy with a postgres database running locally. 
 
@@ -62,9 +45,6 @@ echo 'LITELLM_SALT_KEY="sk-1234"' >> .env
 docker compose up
 ```
 
-</TabItem>
-</Tabs>
-
 ### Docker Run 
 
 #### Step 1. CREATE config.yaml 
@@ -80,8 +60,6 @@ model_list:
       api_key: os.environ/AZURE_API_KEY # runs os.getenv("AZURE_API_KEY")
       api_version: "2025-01-01-preview"
 ```
-
-
 
 #### Step 2. RUN Docker Image
 
@@ -128,7 +106,6 @@ Here's how you can run the docker image and start litellm on port 8002 with `num
 ```shell
 docker run docker.litellm.ai/berriai/litellm:main-stable --port 8002 --num_workers 8
 ```
-
 
 ### Use litellm as a base image
 
@@ -194,7 +171,6 @@ EXPOSE 4000/tcp
 ENTRYPOINT ["litellm"]
 CMD ["--port", "4000"]
 ```
-
 
 Example `requirements.txt`
 
@@ -296,18 +272,11 @@ spec:
             name: litellm-config-file
 ```
 
-:::info
-To avoid issues with predictability, difficulties in rollback, and inconsistent environments, use versioning or SHA digests (for example, `litellm:main-v1.30.3` or `litellm@sha256:12345abcdef...`) instead of `litellm:main-stable`.
-:::
-
+> **info**: To avoid issues with predictability, difficulties in rollback, and inconsistent environments, use versioning or SHA digests (for example, `litellm:main-v1.30.3` or `litellm@sha256:12345abcdef...`) instead of `litellm:main-stable`.
 
 ### Helm Chart
 
-:::info
-
-[BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
-
-:::
+> **info**: [BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
 
 Use this when you want to use litellm helm chart as a dependency for other charts. The `litellm-helm` OCI is hosted here [https://github.com/BerriAI/litellm/pkgs/container/litellm-helm](https://github.com/BerriAI/litellm/pkgs/container/litellm-helm)
 
@@ -345,12 +314,9 @@ Your LiteLLM Proxy Server is now running on `http://127.0.0.1:4000`.
 
 #### Make LLM API Requests
 
-:::info
-💡 Go here 👉 [to make your first LLM API Request](user_keys)
+> **info**: 💡 Go here 👉 [to make your first LLM API Request](user_keys)
 
 LiteLLM is compatible with several SDKs - including OpenAI SDK, Anthropic SDK, Mistral SDK, LLamaIndex, Langchain (Js, Python)
-
-:::
 
 ## Deployment Options
 
@@ -364,7 +330,7 @@ LiteLLM is compatible with several SDKs - including OpenAI SDK, Anthropic SDK, M
 ### Deploy with Database
 ##### Docker, Kubernetes, Helm Chart
 
-:::warning High Traffic Deployments (1000+ RPS)
+> **warning**: High Traffic Deployments (1000+ RPS)
 
 If you expect high traffic (1000+ requests per second), **Redis is required** to prevent database connection exhaustion and deadlocks.
 
@@ -382,15 +348,9 @@ litellm_settings:
 
 See [Resolve DB Deadlocks](/docs/proxy/db_deadlocks) for details.
 
-:::
-
 Requirements:
 - Need a postgres database (e.g. [Supabase](https://supabase.com/), [Neon](https://neon.tech/), etc) Set `DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<dbname>` in your env 
 - Set a `LITELLM_MASTER_KEY`, this is your Proxy Admin key - you can use this to create other keys (🚨 must start with `sk-`)
-
-<Tabs>
-
-<TabItem value="docker-deploy" label="Dockerfile">
 
 We maintain a [separate Dockerfile](https://github.com/BerriAI/litellm/pkgs/container/litellm-database) for reducing build time when running LiteLLM proxy with a connected Postgres Database 
 
@@ -411,9 +371,6 @@ docker run \
 ```
 
 Your LiteLLM Proxy Server is now running on `http://0.0.0.0:4000`.
-
-</TabItem>
-<TabItem value="kubernetes-deploy" label="Kubernetes">
 
 #### Step 1. Create deployment.yaml
 
@@ -511,17 +468,7 @@ kubectl port-forward service/litellm-service 4000:4000
 
 Your LiteLLM Proxy Server is now running on `http://0.0.0.0:4000`.
 
-</TabItem>
-
-<TabItem value="helm-deploy" label="Helm">
-
-
-
-:::info
-
-[BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
-
-:::
+> **info**: [BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
 
 Use this to deploy litellm using a helm chart. Link to [the LiteLLM Helm Chart](https://github.com/BerriAI/litellm/tree/main/deploy/charts/litellm-helm)
 
@@ -553,18 +500,9 @@ kubectl \
 
 Your LiteLLM Proxy Server is now running on `http://127.0.0.1:4000`.
 
-
 If you need to set your litellm proxy config.yaml, you can find this in [values.yaml](https://github.com/BerriAI/litellm/blob/main/deploy/charts/litellm-helm/values.yaml)
 
-</TabItem>
-
-<TabItem value="helm-oci" label="Helm OCI Registry (GHCR)">
-
-:::info
-
-[BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
-
-:::
+> **info**: [BETA] Helm Chart is BETA. If you run into an issues/have feedback please let us know [https://github.com/BerriAI/litellm/issues](https://github.com/BerriAI/litellm/issues)
 
 Use this when you want to use litellm helm chart as a dependency for other charts. The `litellm-helm` OCI is hosted here [https://github.com/BerriAI/litellm/pkgs/container/litellm-helm](https://github.com/BerriAI/litellm/pkgs/container/litellm-helm)
 
@@ -597,9 +535,6 @@ kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
 ```
 
 Your LiteLLM Proxy Server is now running on `http://127.0.0.1:4000`.
-
-</TabItem>
-</Tabs>
 
 ### Deploy with Redis
 Use Redis when you need litellm to load balance across multiple litellm containers
@@ -637,7 +572,6 @@ docker run docker.litellm.ai/berriai/litellm:main-stable --config your_config.ya
 
 The only change required is setting Redis on your `config.yaml`
 LiteLLM Proxy supports sharing rpm/tpm shared across multiple litellm instances, pass `redis_host`, `redis_password` and `redis_port` to enable this. (LiteLLM will use Redis to track rpm/tpm usage )
-
 
 ```yaml
 model_list:
@@ -685,7 +619,6 @@ docker pull docker.litellm.ai/berriai/litellm-non_root:main-stable
 ### 1. Custom server root path (Proxy base url)
 
 Refer to [Custom Root Path](./custom_root_ui) for more details.
-
 
 ### 2. SSL Certification 
 
@@ -752,7 +685,6 @@ docker run \
 
 Defaults to 5 seconds. Between requests, connections must receive new data within this period or be disconnected.
 
-
 Usage Example:
 In this example, we set the keepalive timeout to 75 seconds.
 
@@ -768,7 +700,6 @@ In this example, we set the keepalive timeout to 75 seconds.
 export KEEPALIVE_TIMEOUT=75
 docker run docker.litellm.ai/berriai/litellm:main-stable
 ```
-
 
 ### Restart Workers After N Requests
 
@@ -788,15 +719,11 @@ export MAX_REQUESTS_BEFORE_RESTART=10000
 docker run docker.litellm.ai/berriai/litellm:main-stable
 ```
 
-
 ### 5. config.yaml file on s3, GCS Bucket Object/url
 
 Use this if you cannot mount a config file on your deployment service (example - AWS Fargate, Railway etc)
 
 LiteLLM Proxy will read your config.yaml from an s3 Bucket or GCS Bucket 
-
-<Tabs>
-<TabItem value="gcs" label="GCS Bucket">
 
 Set the following .env vars 
 ```shell
@@ -817,10 +744,6 @@ docker run --name litellm-proxy \
    docker.litellm.ai/berriai/litellm-database:main-stable --detailed_debug
 ```
 
-</TabItem>
-
-<TabItem value="s3" label="s3">
-
 Set the following .env vars 
 ```shell
 LITELLM_CONFIG_BUCKET_NAME = "litellm-proxy"                    # your bucket name on s3 
@@ -837,8 +760,6 @@ docker run --name litellm-proxy \
    -p 4000:4000 \
    docker.litellm.ai/berriai/litellm-database:main-stable
 ```
-</TabItem>
-</Tabs>
 
 ### 6. Disable pulling live model prices
 
@@ -851,9 +772,6 @@ export LITELLM_LOCAL_MODEL_COST_MAP="True"
 This will use the local model prices file instead.
 
 ## Platform-specific Guide
-
-<Tabs>
-<TabItem value="AWS ECS" label="AWS ECS - Elastic Container Service">
 
 ### Terraform-based ECS Deployment
 
@@ -873,11 +791,6 @@ LiteLLM maintains a dedicated Terraform tutorial for deploying the proxy on ECS.
   ```
 
 3. Once `terraform apply` completes, do `./build.sh` to push the repository on ECR and update the ECS cluster. Use that endpoint (port `4000` by default) for API requests to your LiteLLM proxy.
-
-
-</TabItem>
-
-<TabItem value="AWS EKS" label="AWS EKS - Kubernetes">
 
 ### Kubernetes (AWS EKS)
 
@@ -926,11 +839,6 @@ Proxy Base URL =  `a472dc7c273fd47fd******.us-west-2.elb.amazonaws.com:4000`
 
 That's it, now you can start using LiteLLM Proxy
 
-</TabItem>
-
-
-<TabItem value="aws-stack" label="AWS Cloud Formation Stack">
-
 ### AWS Cloud Formation Stack
 LiteLLM AWS Cloudformation Stack - **Get the best LiteLLM AutoScaling Policy and Provision the DB for LiteLLM Proxy**
 
@@ -969,9 +877,6 @@ docker run --name litellm-proxy \
 
 Once the container is running, you can access the application by going to `http://<ec2-public-ip>:4000` in your browser.
 
-</TabItem>
-<TabItem value="google-cloud-run" label="Google Cloud Run">
-
 ### Google Cloud Run
 
 1. Fork this repo - [github.com/BerriAI/example_litellm_gcp_cloud_run](https://github.com/BerriAI/example_litellm_gcp_cloud_run)
@@ -995,20 +900,11 @@ curl https://litellm-7yjrj3ha2q-uc.a.run.app/v1/chat/completions \
    }'
 ```
 
-
-</TabItem>
-<TabItem value="render" label="Render deploy">
-
 ### Render 
 
 https://render.com/
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/805964b3c8384b41be180a61442389a3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-
-
-</TabItem>
-<TabItem value="railway" label="Railway">
 
 ### Railway 
 
@@ -1019,10 +915,6 @@ https://railway.app
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/S7P9sn?referralCode=t3ukrU)
 
 **Step 2:** Set `PORT` = 4000 on Railway Environment Variables
-
-</TabItem>
-</Tabs>
-
 
 ## Extras 
 
@@ -1064,7 +956,6 @@ Run the command `docker-compose up` or `docker compose up` as per your docker in
 
 > Use `-d` flag to run the container in detached mode (background) e.g. `docker compose up -d`
 
-
 Your LiteLLM container should be running now on the defined port e.g. `4000`.
 
 ### IAM-based Auth for RDS DB 
@@ -1090,7 +981,6 @@ export DATABASE_SCHEMA="schema-name" # skip to use the default "public" schema
 ```
 
 3. Run proxy with iam+rds
-
 
 ```bash
 litellm --config /path/to/config.yaml --iam_token_db_auth
@@ -1121,7 +1011,6 @@ Disallow: /
 **Q: Is Postgres the only supported database, or do you support other ones (like Mongo)?**
 
 A: We explored MySQL but that was hard to maintain and led to bugs for customers. Currently, PostgreSQL is our primary supported database for production deployments.
-
 
 **Q: If there is Postgres downtime, how does LiteLLM react? Does it fail-open or is there API downtime?**
 

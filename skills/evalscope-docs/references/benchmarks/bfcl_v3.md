@@ -1,6 +1,5 @@
 # BFCL-v3
 
-
 ## Overview
 
 BFCL (Berkeley Function Calling Leaderboard) v3 is the first comprehensive and executable function call evaluation benchmark for assessing LLMs' ability to invoke functions. It evaluates various forms of function calls, diverse scenarios, and executability.
@@ -29,7 +28,6 @@ BFCL (Berkeley Function Calling Leaderboard) v3 is the first comprehensive and e
 - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/bfcl_v3.html) for detailed setup
 - Results broken down by category (AST, Relevance, Multi-turn)
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ BFCL (Berkeley Function Calling Leaderboard) v3 is the first comprehensive and e
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -232,5 +229,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

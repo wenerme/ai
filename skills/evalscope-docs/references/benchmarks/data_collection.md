@@ -1,6 +1,5 @@
 # Data-Collection
 
-
 ## Overview
 
 Data-Collection is a flexible framework for mixing multiple evaluation datasets into a unified evaluation suite. It enables comprehensive model assessment using carefully selected samples from various benchmarks.
@@ -27,7 +26,6 @@ Data-Collection is a flexible framework for mixing multiple evaluation datasets 
 - Generates multi-level reports for detailed analysis
 - See [Collection Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/collection/index.html) for usage
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ Data-Collection is a flexible framework for mixing multiple evaluation datasets 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -82,5 +79,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

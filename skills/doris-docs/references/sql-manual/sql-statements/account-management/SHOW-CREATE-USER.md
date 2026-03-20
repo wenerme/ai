@@ -31,11 +31,9 @@ Users executing this SQL command must have at least the following privileges:
 | :---------------- | :------------- | :---------------------------- |
 | ADMIN_PRIV        | User or Role    | This `SHOW CREATE USER` operation can only be performed by users or roles with `ADMIN_PRIV` permissions. |
 
-
 ## Examples
 
 To view the creation statement of a specified user.
-
 
 ```sql
 SHOW CREATE USER '<user_identity>'

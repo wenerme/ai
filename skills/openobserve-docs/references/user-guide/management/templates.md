@@ -71,7 +71,6 @@ I need to join the multiple values of `k8s_pod_name` with a `,` if there are mul
 
 Actually we want it to show line by line like this:
 
-
 ```
 pod1 got 1 panic log
 pod2 got 2 panic log
@@ -104,7 +103,6 @@ Check this video to understand more
 
 Official slack docs at: [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks)
 
-
 ```json
 {
   "text": "For stream {stream_name} of organization {org_name} alert {alert_name} of type {alert_type} is active"
@@ -134,7 +132,6 @@ Check the video to understand more.
 ]
 ```
 
-
 ## WeCom
 
 ```json
@@ -154,7 +151,6 @@ Webhook URL, eg:
 
 `POST https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=9a39c951-1234-4382-8a6e-12345678`
 
-
 ## Feishu
 
 ```json
@@ -173,7 +169,6 @@ https://open.feishu.cn/document/ukTMukTMukTM/ucTM5YjL3ETO24yNxkjN?lang=zh-CN#383
 Webhook URL, eg:
 
 `POST https://open.feishu.cn/open-apis/bot/v2/hook/d91b7e97-1234-1234-1234-dfb0b9cc54d0`
-
 
 ## Matrix
 
@@ -272,7 +267,6 @@ Headers:
 ```
 
 ```json
-
 
 {
   "body": {

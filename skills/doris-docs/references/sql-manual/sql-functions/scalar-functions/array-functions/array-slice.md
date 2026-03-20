@@ -51,6 +51,3 @@ Return a subarray, supporting starting offset and length.
   - `ARRAY_SLICE([1,2,3], NULL, 2)` -> `NULL`
   - `ARRAY_SLICE([1,2,3], 2, NULL)` -> `NULL`
   - `ARRAY_SLICE(NULL, 2, 3)` -> `NULL`
-
-
-

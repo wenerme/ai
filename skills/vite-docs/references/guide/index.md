@@ -45,8 +45,6 @@ The supported template presets are:
 
 ## Scaffolding Your First Vite Project
 
-::: code-group
-
 ```bash [npm]
 $ npm create vite@latest
 ```
@@ -67,21 +65,16 @@ $ bun create vite
 $ deno init --npm vite
 ```
 
-:::
-
 Then follow the prompts!
 
 <ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~0yhj?via=vite" title="Scaffolding Your First Vite Project">Watch an interactive lesson on Scrimba</ScrimbaLink>
 
-::: tip Compatibility Note
+> **tip**: Compatibility Note
 Vite requires [Node.js](https://nodejs.org/en/) version 20.19+, 22.12+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
-:::
 
 :::: details Using create vite with command line options
 
 You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + Vue project, run:
-
-::: code-group
 
 ```bash [npm]
 # npm 7+, extra double-dash is needed:
@@ -103,8 +96,6 @@ $ bun create vite my-vue-app --template vue
 ```bash [Deno]
 $ deno init --npm vite my-vue-app --template vue
 ```
-
-:::
 
 See [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) for more details on each supported template: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `react-swc`, `react-swc-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`, `solid`, `solid-ts`, `qwik`, `qwik-ts`.
 
@@ -134,8 +125,6 @@ npm run dev
 
 In your project, you can install the `vite` CLI using:
 
-::: code-group
-
 ```bash [npm]
 $ npm install -D vite
 ```
@@ -156,8 +145,6 @@ $ bun add -D vite
 $ deno add -D npm:vite
 ```
 
-:::
-
 And create an `index.html` file like this:
 
 ```html
@@ -165,8 +152,6 @@ And create an `index.html` file like this:
 ```
 
 Then run the appropriate CLI command in your terminal:
-
-::: code-group
 
 ```bash [npm]
 $ npx vite
@@ -187,8 +172,6 @@ $ bunx vite
 ```bash [Deno]
 $ deno run -A npm:vite
 ```
-
-:::
 
 The `index.html` will be served on `http://localhost:5173`.
 
@@ -211,7 +194,6 @@ Note that Vite will also resolve [its config file (i.e. `vite.config.js`)](/conf
 
 In a project where Vite is installed, you can use the `vite` binary in your npm scripts, or run it directly with `npx vite`. Here are the default npm scripts in a scaffolded Vite project:
 
-<!-- prettier-ignore -->
 ```json [package.json]
 {
   "scripts": {
@@ -230,8 +212,6 @@ Learn more about the [Command Line Interface](./cli.md)
 
 If you can't wait for a new release to test the latest features, you can install a specific commit of Vite with https://pkg.pr.new:
 
-::: code-group
-
 ```bash [npm]
 $ npm install -D https://pkg.pr.new/vite@SHA
 ```
@@ -247,8 +227,6 @@ $ pnpm add -D https://pkg.pr.new/vite@SHA
 ```bash [Bun]
 $ bun add -D https://pkg.pr.new/vite@SHA
 ```
-
-:::
 
 Replace `SHA` with any of [Vite's commit SHAs](https://github.com/vitejs/vite/commits/main/). Note that only commits within the last month will work, as older commit releases are purged.
 
@@ -267,9 +245,8 @@ Then go to your Vite based project and run `pnpm link vite` (or the package mana
 
 To learn more about how and when Vite does releases, check out the [Releases](../releases.md) documentation.
 
-::: tip Dependencies using Vite
+> **tip**: Dependencies using Vite
 To replace the Vite version used by dependencies transitively, you should use [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) or [pnpm overrides](https://pnpm.io/9.x/package_json#pnpmoverrides).
-:::
 
 ## Community
 

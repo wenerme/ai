@@ -16,8 +16,6 @@ oRPC provides built-in WebSocket support for low-latency, bidirectional RPC.
 | `ws`        | [ws](https://github.com/websockets/ws) library (Node.js)                                                                 |
 | `bun-ws`    | [Bun Websocket Server](https://bun.sh/docs/api/websockets)                                                               |
 
-::: code-group
-
 ```ts [Websocket]
 import { RPCHandler } from '@orpc/server/websocket'
 import { onError } from '@orpc/server'
@@ -176,11 +174,7 @@ export class ChatRoom extends DurableObject {
 }
 ```
 
-:::
-
-::: info
-[Hibernation Plugin](/docs/plugins/hibernation) helps you fully leverage Hibernation APIs, making it especially useful for adapters like [Cloudflare Websocket Hibernation](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/).
-:::
+> **info**: [Hibernation Plugin](/docs/plugins/hibernation) helps you fully leverage Hibernation APIs, making it especially useful for adapters like [Cloudflare Websocket Hibernation](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/).
 
 ## Client Adapters
 
@@ -198,10 +192,6 @@ const link = new RPCLink({
 })
 ```
 
-::: tip
-Use [partysocket](https://www.npmjs.com/package/partysocket) library for manually/automatically reconnect logic.
-:::
+> **tip**: Use [partysocket](https://www.npmjs.com/package/partysocket) library for manually/automatically reconnect logic.
 
-:::info
-This only shows how to configure the WebSocket link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the WebSocket link. For full client examples, see [Client-Side Clients](/docs/client/client-side).

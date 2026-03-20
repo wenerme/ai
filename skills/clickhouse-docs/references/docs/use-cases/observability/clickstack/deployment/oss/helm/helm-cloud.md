@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/helm-cloud
 title: 'Helm cloud deployments'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 5
 description: 'Cloud-specific configurations for deploying ClickStack on GKE, EKS, and AKS'
 doc_type: 'guide'
 keywords: ['ClickStack GKE', 'ClickStack EKS', 'ClickStack AKS', 'Kubernetes cloud deployment', 'production deployment']

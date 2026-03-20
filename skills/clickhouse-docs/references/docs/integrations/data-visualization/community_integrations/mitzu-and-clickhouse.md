@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Mitzu'
-slug: /integrations/mitzu
 keywords: ['clickhouse', 'Mitzu', 'connect', 'integrate', 'ui']
 description: 'Mitzu is a no-code warehouse-native product analytics application.'
 title: 'Connecting Mitzu to ClickHouse'
@@ -9,21 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'data_visualization'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import mitzu_01 from '@site/static/images/integrations/data-visualization/mitzu_01.png';
-import mitzu_02 from '@site/static/images/integrations/data-visualization/mitzu_02.png';
-import mitzu_03 from '@site/static/images/integrations/data-visualization/mitzu_03.png';
-import mitzu_04 from '@site/static/images/integrations/data-visualization/mitzu_04.png';
-import mitzu_05 from '@site/static/images/integrations/data-visualization/mitzu_05.png';
-import mitzu_06 from '@site/static/images/integrations/data-visualization/mitzu_06.png';
-import mitzu_07 from '@site/static/images/integrations/data-visualization/mitzu_07.png';
-import mitzu_08 from '@site/static/images/integrations/data-visualization/mitzu_08.png';
-import mitzu_09 from '@site/static/images/integrations/data-visualization/mitzu_09.png';
-import mitzu_10 from '@site/static/images/integrations/data-visualization/mitzu_10.png';
-import mitzu_11 from '@site/static/images/integrations/data-visualization/mitzu_11.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting Mitzu to ClickHouse
 
@@ -40,10 +23,9 @@ In this guide, we're going to cover the following:
 - Warehouse-native product analytics
 - How to integrate Mitzu to ClickHouse
 
-:::tip Example datasets
+> **tip**: Example datasets
 If you don't have a data set to use for Mitzu, you can work with NYC Taxi Data.
 This dataset is available in ClickHouse Cloud or [can be loaded with these instructions](/getting-started/example-datasets/nyc-taxi).
-:::
 
 This guide is just a brief overview of how to use Mitzu. You can find more detailed information in the [Mitzu documentation](https://docs.mitzu.io/).
 
@@ -76,7 +58,6 @@ Once the connection is saved, select the `Event tables` tab and click the `Add t
 Use the checkboxes to select at least one table and click on the `Configure table` button. This will open a modal window where you can set the key columns for each table.
 
 <Image size="lg" img={mitzu_04} alt="Mitzu table selection interface showing database tables" border />
-<br/>
 
 > To run product analytics on your ClickHouse setup, you need to > specify a few key columns from your table.
 >
@@ -87,7 +68,7 @@ Use the checkboxes to select at least one table and click on the `Configure tabl
 > - Optional[**Event name**] - This column segments the events if the table contains multiple event types.
 
 <Image size="lg" img={mitzu_05} alt="Mitzu event catalog configuration showing column mapping options" border />
-<br/>
+
 Once all tables are configured, click on the `Save & update event catalog` button, and  Mitzu will find all events and their properties from the above-defined table. This step may take up to a few minutes, depending on the size of your dataset.
 
 ## 4. Run segmentation queries {#4-run-segmentation-queries}
@@ -98,12 +79,9 @@ The Explore page has a left-hand selection area for events, while the top sectio
 
 <Image size="lg" img={mitzu_06} alt="Mitzu segmentation query interface with event selection and time configuration" border />
 
-<br/>
-
-:::tip Filters and Breakdown
+> **tip**: Filters and Breakdown
 Filtering is done as you would expect: pick a property (ClickHouse column) and select the values from the dropdown that you want to filter.
 You can choose any event or user property for breakdowns (see below for how to integrate user properties).
-:::
 
 ## 5. Run funnel queries {#5-run-funnel-queries}
 
@@ -112,11 +90,8 @@ Get immediate conversion rate insights without writing a single line of SQL code
 
 <Image size="lg" img={mitzu_07} alt="Mitzu funnel analysis view showing conversion rates between steps" border />
 
-<br/>
-
-:::tip Visualize trends
+> **tip**: Visualize trends
 Pick `Funnel trends` to visualize funnel trends over time.
-:::
 
 ## 6. Run retention queries {#6-run-retention-queries}
 
@@ -125,23 +100,16 @@ Get immediate conversion rate insights without writing a single line of SQL code
 
 <Image size="lg" img={mitzu_08} alt="Mitzu retention analysis showing cohort retention rates" border />
 
-<br/>
-
-:::tip Cohort retention
+> **tip**: Cohort retention
 Pick `Weekly cohort retention` to visualize how your retention rates change over time.
-:::
 
 ## 7. Run journey queries {#7-run-journey-queries}
 Select up to 9 steps for a funnel. Choose the time window within which your users can finish the journey. The Mitzu journey chart gives you a visual map of every path users take through the selected events.
 
 <Image size="lg" img={mitzu_09} alt="Mitzu journey visualization showing user path flow between events" border />
-<br/>
 
-:::tip Break down steps
+> **tip**: Break down steps
 You can select a property for the segment `Break down` to distinguish users within the same step.
-:::
-
-<br/>
 
 ## 8. Run revenue queries {#8-run-revenue-queries}
 If revenue settings are configured, Mitzu can calculate the total MRR and subscription count based on your payment events.
@@ -154,11 +122,8 @@ Mitzu is SQL Native, which means it generates native SQL code from your chosen c
 
 <Image size="lg" img={mitzu_11} alt="Mitzu SQL code generation view showing native ClickHouse query" border />
 
-<br/>
-
-:::tip Continue your work in a BI tool
+> **tip**: Continue your work in a BI tool
 If you encounter a limitation with Mitzu UI, copy the SQL code and continue your work in a BI tool.
-:::
 
 ## Mitzu support {#mitzu-support}
 

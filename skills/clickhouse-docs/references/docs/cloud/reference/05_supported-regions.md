@@ -1,13 +1,9 @@
 ---
 title: 'Supported cloud regions'
-sidebar_label: 'Supported Cloud regions'
 keywords: ['aws', 'gcp', 'google cloud', 'azure', 'cloud', 'regions']
 description: 'Supported regions for ClickHouse Cloud'
-slug: /cloud/reference/supported-regions
 doc_type: 'reference'
 ---
-
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
 
 # Supported cloud regions
 
@@ -62,9 +58,7 @@ import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge
 - Japan East (Tokyo, Saitama)
 - UAE North (Dubai)
 
-:::note 
-Need to deploy to a region not currently listed? [Submit a request](https://clickhouse.com/pricing?modal=open). 
-:::
+> **note**: Need to deploy to a region not currently listed? [Submit a request](https://clickhouse.com/pricing?modal=open). 
 
 ## Private regions {#private-regions}
 

@@ -173,4 +173,3 @@ mysql> select * from test_s3load;
 +---------+-----------+------+
 10 rows in set (0.04 sec)
 ```
-

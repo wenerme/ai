@@ -25,7 +25,6 @@ URL_ENCODE(  <str>  )
 
 ##  Return Value
 
-
 UTF-8 encoding completes the URL encoding of the provided text
 
 ##  Example

@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # 🔭 DeepEval - Open-Source Evals with Tracing
 
@@ -24,7 +23,6 @@ import os
 import time
 import litellm
 
-
 os.environ['OPENAI_API_KEY']='<your-openai-api-key>'
 os.environ['CONFIDENT_API_KEY']='<your-confident-api-key>'
 
@@ -44,9 +42,7 @@ except Exception as e:
 print(response)
 ```
 
-:::info
-You can obtain your `CONFIDENT_API_KEY` by logging into [Confident AI](https://app.confident-ai.com/project) platform. 
-:::
+> **info**: You can obtain your `CONFIDENT_API_KEY` by logging into [Confident AI](https://app.confident-ai.com/project) platform. 
 
 ## Support & Talk with Deepeval team
 - [Confident AI Docs 📝](https://documentation.confident-ai.com)

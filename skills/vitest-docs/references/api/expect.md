@@ -35,9 +35,7 @@ Technically this example doesn't use [`test`](/api/test) function, so in the con
 
 Also, `expect` can be used statically to access matcher functions, described later, and more.
 
-::: warning
-`expect` has no effect on testing types, if the expression doesn't have a type error. If you want to use Vitest as [type checker](/guide/testing-types), use [`expectTypeOf`](/api/expect-typeof) or [`assertType`](/api/assert-type).
-:::
+> **warning**: `expect` has no effect on testing types, if the expression doesn't have a type error. If you want to use Vitest as [type checker](/guide/testing-types), use [`expectTypeOf`](/api/expect-typeof) or [`assertType`](/api/assert-type).
 
 ## assert
 
@@ -65,9 +63,7 @@ expect.assert(animal.__type === 'Dog')
 expect(animal.bark()).toBeUndefined()
 ```
 
-::: tip
-Note that `expect.assert` also supports other type-narrowing methods (like `assert.isDefined`, `assert.exists` and so on).
-:::
+> **tip**: Note that `expect.assert` also supports other type-narrowing methods (like `assert.isDefined`, `assert.exists` and so on).
 
 ## soft
 
@@ -97,9 +93,7 @@ test('expect.soft test', () => {
 })
 ```
 
-::: warning
-`expect.soft` can only be used inside the [`test`](/api/test) function.
-:::
+> **warning**: `expect.soft` can only be used inside the [`test`](/api/test) function.
 
 ## poll
 
@@ -123,8 +117,7 @@ test('element exists', async () => {
 })
 ```
 
-::: warning
-`expect.poll` makes every assertion asynchronous, so you need to await it. Since Vitest 3, if you forget to await it, the test will fail with a warning to do so.
+> **warning**: `expect.poll` makes every assertion asynchronous, so you need to await it. Since Vitest 3, if you forget to await it, the test will fail with a warning to do so.
 
 `expect.poll` doesn't work with several matchers:
 
@@ -139,7 +132,6 @@ expect(flakyValue).toMatchSnapshot()
 
 - `.resolves` and `.rejects` are not supported. `expect.poll` already awaits the condition if it's asynchronous.
 - `toThrow` and its aliases are not supported because the `expect.poll` condition is always resolved before the matcher gets the value
-:::
 
 ## not
 
@@ -383,10 +375,8 @@ test('getApplesCount has some unusual side effects...', () => {
 
 `toBeOneOf` asserts if a value matches any of the values in the provided array or set.
 
-::: warning EXPERIMENTAL
+> **warning**: EXPERIMENTAL
 Providing a `Set` is an experimental feature and may change in a future release.
-:::
-
 ```ts
 import { expect, test } from 'vitest'
 
@@ -413,9 +403,7 @@ test('optional properties can be null or undefined', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to ensure a value does NOT match any of the provided options.
-:::
+> **tip**: You can use `expect.not` with this matcher to ensure a value does NOT match any of the provided options.
 
 ## toBeTypeOf
 
@@ -433,8 +421,7 @@ test('stock is type of string', () => {
 })
 ```
 
-:::warning
-`toBeTypeOf` uses the native `typeof` operator under the hood with all its quirks, most notably that the value `null` has type `object`.
+> **warning**: `toBeTypeOf` uses the native `typeof` operator under the hood with all its quirks, most notably that the value `null` has type `object`.
 
 ```ts
 test('toBeTypeOf cannot check for null or array', () => {
@@ -442,7 +429,6 @@ test('toBeTypeOf cannot check for null or array', () => {
   expect([]).toBeTypeOf('object')
 })
 ```
-:::
 
 ## toBeInstanceOf
 
@@ -549,8 +535,7 @@ test('stocks are not the same', () => {
 })
 ```
 
-:::warning
-For `Error` objects, non-enumerable properties such as `name`, `message`, `cause` and `AggregateError.errors` are also compared. For `Error.cause`, the comparison is done asymmetrically:
+> **warning**: For `Error` objects, non-enumerable properties such as `name`, `message`, `cause` and `AggregateError.errors` are also compared. For `Error.cause`, the comparison is done asymmetrically:
 
 ```ts
 // success
@@ -561,7 +546,6 @@ expect(new Error('hi')).toEqual(new Error('hi', { cause: 'x' }))
 ```
 
 To test if something was thrown, use [`toThrow`](#tothrow) assertion.
-:::
 
 ## toStrictEqual
 
@@ -791,8 +775,7 @@ You can provide an optional argument to test that a specific error is thrown:
 - `string`: error message includes the substring
 - any other value: compare with thrown value using deep equality (similar to `toEqual`)
 
-:::tip
-You must wrap the code in a function, otherwise the error will not be caught, and test will fail.
+> **tip**: You must wrap the code in a function, otherwise the error will not be caught, and test will fail.
 
 This does not apply for async calls as [rejects](#rejects) correctly unwraps the promise:
 ```ts
@@ -801,7 +784,6 @@ test('expect rejects toThrow', async ({ expect }) => {
   await expect(promise).rejects.toThrow()
 })
 ```
-:::
 
 For example, if we want to test that `getFruitStock('pineapples')` throws, we could write:
 
@@ -835,8 +817,7 @@ test('throws on pineapples', () => {
 })
 ```
 
-:::tip
-To test async functions, use in combination with [rejects](#rejects).
+> **tip**: To test async functions, use in combination with [rejects](#rejects).
 
 ```js
 function getAsyncFruitStock() {
@@ -847,10 +828,8 @@ test('throws on pineapples', async () => {
   await expect(() => getAsyncFruitStock()).rejects.toThrow('empty')
 })
 ```
-:::
 
-:::tip
-You can also test non-Error values that are thrown:
+> **tip**: You can also test non-Error values that are thrown:
 
 ```ts
 test('throws non-Error values', () => {
@@ -858,7 +837,6 @@ test('throws non-Error values', () => {
   expect(() => { throw { message: 'error' } }).toThrow({ message: 'error' })
 })
 ```
-:::
 
 ## toMatchSnapshot
 
@@ -868,10 +846,7 @@ This ensures that a value matches the most recent snapshot.
 
 You can provide an optional `hint` string argument that is appended to the test name. Although Vitest always appends a number at the end of a snapshot name, short descriptive hints might be more useful than numbers to differentiate multiple snapshots in a single it or test block. Vitest sorts snapshots by name in the corresponding `.snap` file.
 
-:::tip
-  When a snapshot mismatches and causes the test to fail, if the mismatch is expected, you can press `u` key to update the snapshot once. Or you can pass `-u` or `--update` CLI options to make Vitest always update the tests.
-:::
-
+> **tip**: When a snapshot mismatches and causes the test to fail, if the mismatch is expected, you can press `u` key to update the snapshot once. Or you can pass `-u` or `--update` CLI options to make Vitest always update the tests.
 ```ts
 import { expect, test } from 'vitest'
 
@@ -1374,10 +1349,7 @@ test('spy function returns bananas on second call', async () => {
 
 Chai-style assertion that checks if a spy was called at least once. This is equivalent to `toHaveBeenCalled()`.
 
-::: tip
-This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.called`
-:::
-
+> **tip**: This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.called`
 ```ts
 import { expect, test, vi } from 'vitest'
 
@@ -1437,10 +1409,7 @@ test('spy called with arguments', () => {
 
 Chai-style assertion that checks if a spy was called exactly once. This is equivalent to `toHaveBeenCalledOnce()`.
 
-::: tip
-This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledOnce`
-:::
-
+> **tip**: This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledOnce`
 ```ts
 import { expect, test, vi } from 'vitest'
 
@@ -1477,10 +1446,7 @@ test('spy called once with arguments', () => {
 
 Chai-style assertion that checks if a spy was called exactly twice. This is equivalent to `toHaveBeenCalledTimes(2)`.
 
-::: tip
-This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledTwice`
-:::
-
+> **tip**: This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledTwice`
 ```ts
 import { expect, test, vi } from 'vitest'
 
@@ -1500,10 +1466,7 @@ test('spy called twice', () => {
 
 Chai-style assertion that checks if a spy was called exactly three times. This is equivalent to `toHaveBeenCalledTimes(3)`.
 
-::: tip
-This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledThrice`
-:::
-
+> **tip**: This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.been.calledThrice`
 ```ts
 import { expect, test, vi } from 'vitest'
 
@@ -1563,10 +1526,7 @@ test('spy nth called with', () => {
 
 Chai-style assertion that checks if a spy returned successfully at least once. This is equivalent to `toHaveReturned()`.
 
-::: tip
-This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.returned`
-:::
-
+> **tip**: This is a property assertion following sinon-chai conventions. Access it without parentheses: `expect(spy).to.have.returned`
 ```ts
 import { expect, test, vi } from 'vitest'
 
@@ -1705,9 +1665,8 @@ test('spy called after another', () => {
 })
 ```
 
-::: tip Migration Guide
+> **tip**: Migration Guide
 For a complete guide on migrating from Mocha+Chai+Sinon to Vitest, see the [Migration Guide](/guide/migration#mocha-chai-sinon).
-:::
 
 ## toSatisfy
 
@@ -1755,11 +1714,9 @@ test('buyApples returns new stock id', async () => {
 })
 ```
 
-:::warning
-If the assertion is not awaited, then you will have a false-positive test that will pass every time. To make sure that assertions are actually called, you may use [`expect.assertions(number)`](#expect-assertions).
+> **warning**: If the assertion is not awaited, then you will have a false-positive test that will pass every time. To make sure that assertions are actually called, you may use [`expect.assertions(number)`](#expect-assertions).
 
 Since Vitest 3, if a method is not awaited, Vitest will show a warning at the end of the test. In Vitest 4, the test will be marked as "failed" if the assertion is not awaited.
-:::
 
 ## rejects
 
@@ -1786,11 +1743,9 @@ test('buyApples throws an error when no id provided', async () => {
 })
 ```
 
-:::warning
-If the assertion is not awaited, then you will have a false-positive test that will pass every time. To make sure that assertions were actually called, you can use [`expect.assertions(number)`](#expect-assertions).
+> **warning**: If the assertion is not awaited, then you will have a false-positive test that will pass every time. To make sure that assertions were actually called, you can use [`expect.assertions(number)`](#expect-assertions).
 
 Since Vitest 3, if a method is not awaited, Vitest will show a warning at the end of the test. In Vitest 4, the test will be marked as "failed" if the assertion is not awaited.
-:::
 
 ## expect.assertions
 
@@ -1821,9 +1776,7 @@ test('all assertions are called', async () => {
   await doAsync(callback1, callback2)
 })
 ```
-::: warning
-When using `assertions` with async concurrent tests, `expect` from the local [Test Context](/guide/test-context) must be used to ensure the right test is detected.
-:::
+> **warning**: When using `assertions` with async concurrent tests, `expect` from the local [Test Context](/guide/test-context) must be used to ensure the right test is detected.
 
 ## expect.hasAssertions
 
@@ -1984,9 +1937,7 @@ test('basket includes fuji', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to negate the expected value.
-:::
+> **tip**: You can use `expect.not` with this matcher to negate the expected value.
 
 ## expect.objectContaining
 
@@ -2014,9 +1965,7 @@ test('basket has empire apples', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to negate the expected value.
-:::
+> **tip**: You can use `expect.not` with this matcher to negate the expected value.
 
 ## expect.stringContaining
 
@@ -2039,9 +1988,7 @@ test('variety has "Emp" in its name', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to negate the expected value.
-:::
+> **tip**: You can use `expect.not` with this matcher to negate the expected value.
 
 ## expect.stringMatching
 
@@ -2064,9 +2011,7 @@ test('variety ends with "re"', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to negate the expected value.
-:::
+> **tip**: You can use `expect.not` with this matcher to negate the expected value.
 
 ## expect.schemaMatching
 
@@ -2100,9 +2045,7 @@ test('email validation', () => {
 })
 ```
 
-:::tip
-You can use `expect.not` with this matcher to negate the expected value.
-:::
+> **tip**: You can use `expect.not` with this matcher to negate the expected value.
 
 ## expect.addSnapshotSerializer
 
@@ -2112,9 +2055,7 @@ This method adds custom serializers that are called when creating a snapshot. Th
 
 If you are adding custom serializers, you should call this method inside [`setupFiles`](/config/setupfiles). This will affect every snapshot.
 
-:::tip
-If you previously used Vue CLI with Jest, you might want to install [jest-serializer-vue](https://npmx.dev/package/jest-serializer-vue). Otherwise, your snapshots will be wrapped in a string, which cases `"` to be escaped.
-:::
+> **tip**: If you previously used Vue CLI with Jest, you might want to install [jest-serializer-vue](https://npmx.dev/package/jest-serializer-vue). Otherwise, your snapshots will be wrapped in a string, which cases `"` to be escaped.
 
 ## expect.extend
 
@@ -2144,9 +2085,7 @@ test('custom matchers', () => {
 })
 ```
 
-::: tip
-If you want your matchers to appear in every test, you should call this method inside [`setupFiles`](/config/setupfiles).
-:::
+> **tip**: If you want your matchers to appear in every test, you should call this method inside [`setupFiles`](/config/setupfiles).
 
 This function is compatible with Jest's `expect.extend`, so any library that uses it to create custom matchers will work with Vitest.
 
@@ -2163,13 +2102,9 @@ declare module 'vitest' {
 }
 ```
 
-::: warning
-Don't forget to include the ambient declaration file in your `tsconfig.json`.
-:::
+> **warning**: Don't forget to include the ambient declaration file in your `tsconfig.json`.
 
-:::tip
-If you want to know more, checkout [guide on extending matchers](/guide/extending-matchers).
-:::
+> **tip**: If you want to know more, checkout [guide on extending matchers](/guide/extending-matchers).
 
 ## expect.addEqualityTesters {#expect-addequalitytesters}
 

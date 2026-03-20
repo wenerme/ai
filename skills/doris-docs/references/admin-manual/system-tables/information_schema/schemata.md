@@ -12,9 +12,7 @@ View information related to the database.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

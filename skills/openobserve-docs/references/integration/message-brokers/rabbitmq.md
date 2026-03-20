@@ -11,7 +11,6 @@ This guide explains how to monitor **RabbitMQ** using the [OpenTelemetry Collect
 
 RabbitMQ is a lightweight, open-source message broker that supports the **AMQP protocol**. It powers distributed systems by handling messaging between producers and consumers.With OpenTelemetry and OpenObserve, you can collect, visualize, and alert on RabbitMQ metrics such as message throughput, consumer count, and queue depth.
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -59,7 +58,7 @@ RabbitMQ is a lightweight, open-source message broker that supports the **AMQP p
 
     1. In OpenObserve: go to **Data Sources → Custom → Metrics → Otel Collector**
     2. Copy the ingestion URL and Access Key  
-    ![Get OpenObserve Ingestion URL and Access Key](../images/messagebroker/otel-metrics-source.png)
+    [Get OpenObserve Ingestion URL and Access Key]
 
 ??? "Step 4: Configure OpenTelemetry Collector"
 
@@ -135,13 +134,11 @@ RabbitMQ is a lightweight, open-source message broker that supports the **AMQP p
 ??? "Step 7: Visualize in OpenObserve"
 
     1. Go to **Streams** → search for RabbitMQ metrics → explore metrics.
-    ![RabbitMQ Dashboard in OpenObserve](../images/messagebroker/rabbitmq-metrics.png)
-
+    [RabbitMQ Dashboard in OpenObserve]
 
 !!! tip
     
     You can import **[prebuilt dashboards](https://github.com/openobserve/dashboards)** for quick monitoring.  
-
 
 ## Troubleshooting
 
@@ -160,5 +157,3 @@ RabbitMQ is a lightweight, open-source message broker that supports the **AMQP p
 
 - **Connection refused**:
   Ensure ports `5672` (AMQP) and `15672` (Management API) are open.
-
-

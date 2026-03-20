@@ -22,7 +22,6 @@ This backend relies on the virtio-gpu, and VirglRenderer API Remoting
 | MacOS 26 | Not tested        |             |             |
 | Linux    | Under development | ggml-vulkan | not working | Working locally, CI running into deadlocks
 
-
 ## Architecture Overview
 
 The GGML-VirtGPU backend consists of three main components:

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LiveKit xAI Realtime Voice Agent
 
@@ -59,9 +58,6 @@ model = xai.realtime.RealtimeModel(
 ## Complete Example
 
 Here's a complete working example:
-
-<Tabs>
-<TabItem value="python" label="Python Client">
 
 ```python
 #!/usr/bin/env python3
@@ -125,10 +121,6 @@ if __name__ == "__main__":
     asyncio.run(run_voice_agent())
 ```
 
-</TabItem>
-
-<TabItem value="livekit" label="LiveKit Agent">
-
 ```python
 from livekit.agents import Agent, AgentSession, WorkerOptions, cli
 from livekit.plugins import xai
@@ -152,9 +144,6 @@ if __name__ == "__main__":
     )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Running the Example
 
 1. **Start LiteLLM Proxy** (if not already running):
@@ -177,11 +166,9 @@ Because they make up everything!
 ✅ Full response: Hello! Here's a joke for you: Why don't scientists trust atoms? Because they make up everything!
 ```
 
-
 ## Complete Working Example
 
 **[LiveKit Agent SDK Cookbook](https://github.com/BerriAI/litellm/tree/main/cookbook/livekit_agent_sdk)**
-
 
 ## Learn More
 

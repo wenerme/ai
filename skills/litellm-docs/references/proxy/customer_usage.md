@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Customer Usage
 
@@ -24,9 +22,6 @@ Customer Usage enables you to track spend and usage for individual customers (en
 
 Track customer spend by including a `user` field in your API requests or by passing a customer ID header. The customer ID will be automatically tracked and associated with all spend from that request.
 
-<Tabs>
-<TabItem value="body" label="Request Body" default>
-
 ### Using Request Body
 
 Make a `/chat/completions` call with the `user` field containing your customer ID:
@@ -46,9 +41,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     ]
   }'
 ```
-
-</TabItem>
-<TabItem value="header" label="Request Header">
 
 ### Using Request Headers
 
@@ -85,9 +77,6 @@ export ANTHROPIC_CUSTOM_HEADERS="x-litellm-customer-id: my-customer-id"
 ```
 
 Now all requests from Claude Code will automatically track spend under `my-customer-id`.
-
-</TabItem>
-</Tabs>
 
 The customer ID will be automatically upserted into the database with the new spend. If the customer ID already exists, spend will be incremented.
 

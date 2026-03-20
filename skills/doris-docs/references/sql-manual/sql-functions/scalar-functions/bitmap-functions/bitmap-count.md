@@ -51,4 +51,3 @@ select bitmap_count(bitmap_empty()) cnt;
 |    0 |
 +------+
 ```
-

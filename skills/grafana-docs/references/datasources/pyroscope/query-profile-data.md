@@ -31,7 +31,7 @@ Refer to the [Flame graph panel](https://grafana.com/docs/grafana/<GRAFANA_VERSI
 You can use Profiles Drilldown in Grafana Cloud or in your own Grafana instance.
 For more information, refer to [Access or install Profiles Drilldown](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/explore/simplified-exploration/profiles/access/).
 
-![Profiles Drilldown home screen](/media/docs/explore-profiles/explore-profiles-homescreen-v0.1.17.png)
+[Profiles Drilldown home screen]
 
 ### Use cases
 
@@ -57,7 +57,7 @@ The Pyroscope data source query editor gives you access to a profile type select
 
 Like Profiles Drilldown, the query editor also provides a flame graph to visualize data.
 
-![Query editor](/media/docs/pyroscope/query-editor/query-editor.png 'Query editor')
+[Query editor]
 
 To access the query editor:
 
@@ -76,10 +76,10 @@ To access the query editor:
 
    Grafana doesn't show any data if the profile type or app isn’t selected when a query runs.
 
-   ![Labels selector](/media/docs/pyroscope/query-editor/labels-selector.png 'Labels selector')
+   [Labels selector]
 
 1. Expand the **Options** section to view **Query Type** and **Group by**.
-   ![Options section](/media/docs/pyroscope/query-editor/options-section.png 'Options section')
+   [Options section]
 
 1. Select a query type to return the profile data. Data is shown in the [Flame Graph](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/panels-visualizations/visualizations/flame-graph/), metric data visualized in a graph, or both. You can only select both options in Explore. The panels used on dashboards allow only one visualization.
 
@@ -94,7 +94,7 @@ In conjunction with **Group by**, you can set a positive number in the **Limit**
 Profiles can be visualized in a flame graph.
 Refer to the [Flame Graph documentation](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/panels-visualizations/visualizations/flame-graph/) to learn about the visualization and its features.
 
-![Flame graph](/media/docs/pyroscope/query-editor/flame-graph.png 'Flame graph')
+[Flame graph]
 
 Pyroscope returns profiles aggregated over a selected time range.
 The absolute values in the flame graph grow as the time range gets bigger while keeping the relative values meaningful.
@@ -104,6 +104,6 @@ You can zoom in on the time range to get a higher granularity profile up to the 
 
 Metrics results represent the aggregated sum value over time of the selected profile type.
 
-![Metrics graph](/media/docs/pyroscope/query-editor/metric-graph.png 'Metrics graph')
+[Metrics graph]
 
 This allows you to quickly see any spikes in the value of the scraped profiles and zoom in to a particular time range.

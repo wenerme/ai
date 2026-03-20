@@ -4,15 +4,11 @@ title: Test Projects | Guide
 
 # Test Projects
 
-::: tip Sample Project
+> **tip**: Sample Project
 
 [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/projects) - [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/projects?initialPath=__vitest__/)
 
-:::
-
-::: warning
-This feature is also known as a `workspace`. The `workspace` is deprecated since 3.2 and replaced with the `projects` configuration. They are functionally the same.
-:::
+> **warning**: This feature is also known as a `workspace`. The `workspace` is deprecated since 3.2 and replaced with the `projects` configuration. They are functionally the same.
 
 Vitest provides a way to define multiple project configurations within a single Vitest process. This feature is particularly useful for monorepo setups but can also be used to run tests with different configurations, such as `resolve.alias`, `plugins`, or `test.browser` and more.
 
@@ -97,9 +93,7 @@ export default defineConfig({
 })
 ```
 
-::: warning
-Vitest does not treat the root `vitest.config` file as a project unless it is explicitly specified in the configuration. Consequently, the root configuration will only influence global options such as `reporters` and `coverage`. Note that Vitest will always run certain plugin hooks, like `apply`, `config`, `configResolved` or `configureServer`, specified in the root config file. Vitest also uses the same plugins to execute global setups and custom coverage provider.
-:::
+> **warning**: Vitest does not treat the root `vitest.config` file as a project unless it is explicitly specified in the configuration. Consequently, the root configuration will only influence global options such as `reporters` and `coverage`. Note that Vitest will always run certain plugin hooks, like `apply`, `config`, `configResolved` or `configureServer`, specified in the root config file. Vitest also uses the same plugins to execute global setups and custom coverage provider.
 
 You can also reference projects with their config files:
 
@@ -148,9 +142,7 @@ export default defineConfig({
 })
 ```
 
-::: warning
-All projects must have unique names; otherwise, Vitest will throw an error. If a name is not provided in the inline configuration, Vitest will assign a number. For project configurations defined with glob syntax, Vitest will default to using the "name" property in the nearest `package.json` file or, if none exists, the folder name.
-:::
+> **warning**: All projects must have unique names; otherwise, Vitest will throw an error. If a name is not provided in the inline configuration, Vitest will assign a number. For project configurations defined with glob syntax, Vitest will default to using the "name" property in the nearest `package.json` file or, if none exists, the folder name.
 
 Projects do not support all configuration properties. For better type safety, use the `defineProject` method instead of `defineConfig` within project configuration files:
 
@@ -182,7 +174,6 @@ To run tests, define a script in your root `package.json`:
 
 Now tests can be run using your package manager:
 
-::: code-group
 ```bash [npm]
 npm run test
 ```
@@ -195,11 +186,9 @@ pnpm run test
 ```bash [bun]
 bun run test
 ```
-:::
 
 If you need to run tests only inside a single project, use the `--project` CLI option:
 
-::: code-group
 ```bash [npm]
 npm run test --project e2e
 ```
@@ -212,12 +201,9 @@ pnpm run test --project e2e
 ```bash [bun]
 bun run test --project e2e
 ```
-:::
 
-::: tip
-CLI option `--project` can be used multiple times to filter out several projects:
+> **tip**: CLI option `--project` can be used multiple times to filter out several projects:
 
-::: code-group
 ```bash [npm]
 npm run test --project e2e --project unit
 ```
@@ -230,7 +216,6 @@ pnpm run test --project e2e --project unit
 ```bash [bun]
 bun run test --project e2e --project unit
 ```
-:::
 
 ## Configuration
 
@@ -283,7 +268,7 @@ export default defineConfig({
 })
 ```
 
-::: danger Unsupported Options
+> **danger**: Unsupported Options
 Some of the configuration options are not allowed in a project config. Most notably:
 
 - `coverage`: coverage is done for the whole process
@@ -292,4 +277,3 @@ Some of the configuration options are not allowed in a project config. Most nota
 - all other options that don't affect test runners
 
 All configuration options that are not supported inside a project configuration are marked with a <CRoot /> icon next to their name. They can only be defined once in the root config file.
-:::

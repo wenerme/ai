@@ -36,8 +36,6 @@ Users executing this SQL command must have at least the following privileges:
 - Only ADMIN users can unset variables to take effect globally
 - When restore a variable with `GLOBAL`,  it only affects your current using session and new open sessions. It does not affect other current open sessions.
 
-
-
 ## Example
 
 - Restore value of the time zone
@@ -46,13 +44,11 @@ Users executing this SQL command must have at least the following privileges:
    UNSET VARIABLE time_zone;
    ```
 
-
 - Restore the global execution memory size
 
    ```
    UNSET GLOBAL VARIABLE exec_mem_limit;
    ```
-
 
 - Restore all variables globally
 

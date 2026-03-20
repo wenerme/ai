@@ -1,6 +1,5 @@
 ---
 title: browser.screenshotFailures | Config
-outline: deep
 ---
 
 # browser.screenshotFailures

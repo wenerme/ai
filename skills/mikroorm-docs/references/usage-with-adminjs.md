@@ -1,6 +1,5 @@
 ---
 title: Using MikroORM with AdminJS
-sidebar_label: Usage with AdminJS
 ---
 
 ## Installation

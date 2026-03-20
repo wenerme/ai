@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # describe
@@ -297,10 +297,8 @@ describe.todo('unimplemented suite')
 
 - **Alias:** `suite.each`
 
-::: tip
-While `describe.each` is provided for Jest compatibility,
+> **tip**: While `describe.each` is provided for Jest compatibility,
 Vitest also has [`describe.for`](#describe-for) which simplifies argument types and aligns with [`test.for`](/api/test#test-for).
-:::
 
 Use `describe.each` if you have more than one test that depends on the same data.
 

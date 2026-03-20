@@ -2,9 +2,6 @@
 title: Defining Entities via defineEntity
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 The `defineEntity` helper is the recommended way to define entities programmatically without decorators. It is built on top of `EntitySchema`, leveraging TypeScript's type inference to generate entity types automatically.
 
 ## `defineEntity`
@@ -139,15 +136,7 @@ const properties = {
 
 ## MongoDB example
 
-<Tabs
-  groupId="entity-schema-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-  ]}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BookTagSchema = defineEntity({
@@ -164,9 +153,9 @@ export class BookTag extends BookTagSchema.class {}
 BookTagSchema.setClass(BookTag);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 export const BookTag = defineEntity({
@@ -182,8 +171,7 @@ export const BookTag = defineEntity({
 export type IBookTag = InferEntity<typeof BookTag>;
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Hooks example
 
@@ -194,15 +182,7 @@ Hooks can be registered in two ways:
 
 Both approaches accept functions (arrow functions, named functions, async functions). The entity instance is available via `args.entity`. See [Events and Lifecycle Hooks](./events.md) for the full list of available hooks and `EventArgs` details.
 
-<Tabs
-  groupId="entity-schema-hooks"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-  ]}
->
-  <TabItem value="define-entity-class">
+  
 
 Use `addHook` after the class is defined for full type safety:
 
@@ -234,9 +214,9 @@ BookTagSchema.addHook('beforeUpdate', (args: EventArgs<BookTag>) => {
 
 > You can also pass hooks inline via the `hooks` property, but `args.entity` will be typed as `any` there because the entity type is not yet known. Explicitly typing the parameter (e.g. `EventArgs<BookTag>`) won't work either, as it would create a circular reference. Use `addHook` after the class is defined to get full type safety.
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 Use `addHook` after the entity is defined for full type safety:
 
@@ -267,8 +247,7 @@ BookTag.addHook('beforeUpdate', (args: EventArgs<IBookTag>) => {
 
 > You can also pass hooks inline via the `hooks` property, but `args.entity` will be typed as `any` there because the entity type is not yet known. Explicitly typing the parameter (e.g. `EventArgs<IBookTag>`) won't work either, as it would create a circular reference. Use `addHook` after the entity and its type alias are defined to get full type safety.
 
-  </TabItem>
-</Tabs>
+  
 
 ## `EntitySchema` (low-level API)
 

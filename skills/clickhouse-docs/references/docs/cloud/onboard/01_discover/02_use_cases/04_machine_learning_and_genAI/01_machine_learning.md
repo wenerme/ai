@@ -1,15 +1,9 @@
 ---
-slug: /cloud/get-started/cloud/use-cases/AI_ML
 title: 'Machine learning'
 description: 'Learn how ClickHouse powers machine learning applications across the ML pipeline.'
 keywords: ['use cases', 'Machine Learning', 'Generative AI']
-sidebar_label: 'Machine learning'
 doc_type: 'guide'
 ---
-
-import machine_learning_data_layer from '@site/static/images/cloud/onboard/discover/use_cases/ml_data_layer.png'
-import online_feature_store from '@site/static/images/cloud/onboard/discover/use_cases/ml_data_layer.png'
-import Image from '@theme/IdealImage';
 
 ## The machine learning data layer {#machine-learning-data-layer}
 

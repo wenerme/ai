@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Supabase Postgres'
 description: 'Set up Supabase instance as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/supabase
 title: 'Supabase Source Setup Guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
@@ -10,19 +8,11 @@ integration:
   - category: 'clickpipes'
 ---
 
-import supabase_commands from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/supabase/supabase-commands.jpg'
-import supabase_connection_details from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/supabase/supabase-connection-details.jpg'
-import Image from '@theme/IdealImage';
-
 # Supabase source setup guide
 
 This is a guide on how to setup Supabase Postgres for usage in ClickPipes.
 
-:::note
-
-ClickPipes supports Supabase via IPv6 natively for seamless replication.
-
-:::
+> **note**: ClickPipes supports Supabase via IPv6 natively for seamless replication.
 
 ## Creating a user with permissions and replication slot {#creating-a-user-with-permissions-and-replication-slot}
 
@@ -70,15 +60,11 @@ Connect to your Supabase instance as an admin user and execute the following com
 
 ## Increase `max_slot_wal_keep_size` {#increase-max_slot_wal_keep_size}
 
-:::warning
-
-This step will restart your Supabase database and may cause a brief downtime.
+> **warning**: This step will restart your Supabase database and may cause a brief downtime.
 
 You can increase the `max_slot_wal_keep_size` parameter for your Supabase database to a higher value (at least 100GB or `102400`) by following the [Supabase Docs](https://supabase.com/docs/guides/database/custom-postgres-config#cli-supported-parameters)
 
 For better recommendation of this value you can contact the ClickPipes team.
-
-:::
 
 ## Connection details to use for Supabase {#connection-details-to-use-for-supabase}
 
@@ -88,11 +74,7 @@ Head over to your Supabase Project's `Project Settings` -> `Database` (under `Co
 
 <Image img={supabase_connection_details} size="lg" border alt="Locate Supabase Connection Details" border/>
 
-:::info
-
-The connection pooler isn't supported for CDC based replication, hence it needs to be disabled.
-
-:::
+> **info**: The connection pooler isn't supported for CDC based replication, hence it needs to be disabled.
 
 ## Note on RLS {#note-on-rls}
 The ClickPipes Postgres user must not be restricted by RLS policies, as it can lead to missing data. You can disable RLS policies for the user by running the below command:

@@ -3,7 +3,7 @@ title: Redis
 description: Use Bun's native Redis client with a Promise-based API
 ---
 
-<Note>Bun's Redis client supports Redis server versions 7.2 and up.</Note>
+Bun's Redis client supports Redis server versions 7.2 and up.
 
 Bun provides native bindings for working with Redis databases with a modern, Promise-based API. The interface is designed to be simple and performant, with built-in connection management, fully typed responses, and TLS support.
 
@@ -181,10 +181,8 @@ Bun provides native bindings for the [Redis
 Pub/Sub](https://redis.io/docs/latest/develop/pubsub/) protocol. **New in Bun
 1.2.23**
 
-<Warning>
   The Redis Pub/Sub feature is experimental. Although we expect it to be stable, we're currently actively looking for
   feedback and areas for improvement.
-</Warning>
 
 ### Basic Usage
 
@@ -227,7 +225,6 @@ and, in another, run your publisher:
 bun run publisher.ts
 ```
 
-<Note>
 The subscription mode takes over the `RedisClient` connection. A
 client with subscriptions can only call `RedisClient.prototype.subscribe()`. In
 other words, applications which need to message Redis need a separate
@@ -243,8 +240,6 @@ const subscriber = await redis.duplicate(); // [!code ++]
 await subscriber.subscribe("foo", () => {});
 await redis.set("bar", "baz");
 ```
-
-</Note>
 
 ### Publishing
 

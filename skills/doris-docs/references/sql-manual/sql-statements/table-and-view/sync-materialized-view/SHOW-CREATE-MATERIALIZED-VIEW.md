@@ -49,4 +49,3 @@ The user executing this SQL command must have at least the following permissions
    ```sql
    SHOW CREATE MATERIALIZED VIEW sync_agg_mv on lineitem;
    ```
-   

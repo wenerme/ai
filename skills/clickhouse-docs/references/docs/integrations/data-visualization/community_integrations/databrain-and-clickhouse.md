@@ -1,22 +1,9 @@
 ---
-sidebar_label: 'Databrain'
-sidebar_position: 131
-slug: /integrations/databrain
 keywords: ['clickhouse', 'Databrain', 'connect', 'integrate', 'ui', 'analytics', 'embedded', 'dashboard', 'visualization']
 description: 'Databrain is an embedded analytics platform that integrates seamlessly with ClickHouse for building customer facing dashboards, metrics, and data visualizations.'
 title: 'Connecting Databrain to ClickHouse'
 doc_type: 'guide'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import databrain_01 from '@site/static/images/integrations/data-visualization/databrain_01.png';
-import databrain_02 from '@site/static/images/integrations/data-visualization/databrain_02.png';
-import databrain_03 from '@site/static/images/integrations/data-visualization/databrain_03.png';
-import databrain_04 from '@site/static/images/integrations/data-visualization/databrain_04.png';
-import databrain_05 from '@site/static/images/integrations/data-visualization/databrain_05.png';
-import databrain_06 from '@site/static/images/integrations/data-visualization/databrain_06.png';
-import Image from '@theme/IdealImage';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting Databrain to ClickHouse
 
@@ -25,8 +12,6 @@ import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 [Databrain](https://usedatabrain.com) is an embedded analytics platform that enables you to build and share interactive dashboards, metrics, and data visualizations with your customers. Databrain connects to ClickHouse using the HTTPS interface, making it easy to visualize and analyze your ClickHouse data with a modern, user-friendly interface.
 
 <Image size="md" img={databrain_01} alt="Databrain dashboard interface showing ClickHouse data visualization" border />
-
-<br/>
 
 This guide will walk you through the steps to connect Databrain with your ClickHouse instance.
 
@@ -51,9 +36,7 @@ For ClickHouse Cloud users:
 2. Go to **Settings** → **Security**
 3. Add Databrain's IP addresses to the allow list
 
-:::tip
-Refer to [Databrain's IP whitelisting documentation](https://docs.usedatabrain.com/guides/datasources/allow-access-to-our-ip) for the current list of IP addresses to whitelist.
-:::
+> **tip**: Refer to [Databrain's IP whitelisting documentation](https://docs.usedatabrain.com/guides/datasources/allow-access-to-our-ip) for the current list of IP addresses to whitelist.
 
 ### 3. Add ClickHouse as a data source in Databrain {#3-add-clickhouse-as-a-data-source}
 

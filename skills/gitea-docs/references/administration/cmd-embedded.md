@@ -1,7 +1,5 @@
 ---
 date: "2020-01-25T21:00:00-03:00"
-slug: "cmd-embedded"
-sidebar_position: 20
 aliases:
   - /en-us/cmd-embedded
 ---
@@ -15,9 +13,7 @@ inside the `custom` directory (see [Customizing Gitea](../administration/customi
 To obtain a copy of the embedded resources ready for editing, the `embedded` command from the CLI
 can be used from the OS shell interface.
 
-:::note
-The embedded data extraction tool is included in Gitea versions 1.12 and above.
-:::
+> **note**: The embedded data extraction tool is included in Gitea versions 1.12 and above.
 
 ## Listing resources
 

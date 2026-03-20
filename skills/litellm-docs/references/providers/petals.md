@@ -2,7 +2,7 @@
 Petals: https://github.com/bigscience-workshop/petals
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_Petals.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ## Pre-Requisites
@@ -44,6 +44,4 @@ for chunk in response:
 | Model Name       | Function Call                              |
 |------------------|--------------------------------------------|
 | petals-team/StableBeluga | `completion('petals/petals-team/StableBeluga2', messages)` | 
-| huggyllama/llama-65b | `completion('petals/huggyllama/llama-65b', messages)` | 
-
-
+| huggyllama/llama-65b | `completion('petals/huggyllama/llama-65b', messages)` |

@@ -15,9 +15,7 @@ description: Seamlessly integrate oRPC with Tanstack Query
 | Solid   | ✅             | ✅                        |
 | Svelte  | ✅             | ✅                        |
 
-::: warning
-This documentation assumes you are already familiar with [Tanstack Query](https://tanstack.com/query/latest). If you need a refresher, please review the official Tanstack Query documentation before proceeding.
-:::
+> **warning**: This documentation assumes you are already familiar with [Tanstack Query](https://tanstack.com/query/latest). If you need a refresher, please review the official Tanstack Query documentation before proceeding.
 
 ## Query Options Utility
 
@@ -35,10 +33,7 @@ const query = useQuery(orpc.planet.find.queryOptions({
 
 Use `.infiniteOptions` to configure infinite queries. Use it with hooks like `useInfiniteQuery`, `useSuspenseInfiniteQuery`, or `prefetchInfiniteQuery`.
 
-::: info
-The `input` parameter must be a function that accepts the page parameter and returns the query input. Be sure to define the type for `pageParam` if it can be `null` or `undefined`.
-:::
-
+> **info**: The `input` parameter must be a function that accepts the page parameter and returns the query input. Be sure to define the type for `pageParam` if it can be `null` or `undefined`.
 ```ts
 const query = useInfiniteQuery(orpc.planet.list.infiniteOptions({
   input: (pageParam: number | undefined) => ({ limit: 10, offset: pageParam }),
@@ -66,10 +61,7 @@ mutation.mutate({ name: 'Earth' })
 
 Use `.key` to generate a `QueryKey` or `MutationKey`. This is useful for tasks such as revalidating queries, checking mutation status, etc.
 
-:::info
-The `.key` accepts partial deep input, there's no need to supply full input.
-:::
-
+> **info**: The `.key` accepts partial deep input, there's no need to supply full input.
 ```ts
 const queryClient = useQueryClient()
 

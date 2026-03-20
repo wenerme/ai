@@ -220,11 +220,9 @@ The Ghostty `systemd` user service can be stopped by running:
 systemctl stop --user app-com.mitchellh.ghostty.service
 ```
 
-<Caution>
   This will gracefully stop Ghostty, but Ghostty will close any windows and kill
   their running processes _without asking for confirmation_. This may cause data
   or state loss.
-</Caution>
 
 ### Relevant Files
 
@@ -248,13 +246,11 @@ $PREFIX/share/dbus-1/services/com.mitchellh.ghostty.service
 $PREFIX/lib/systemd/user/app-com.mitchellh.ghostty.service
 ```
 
-<Warning>
   If these files are not installed in the proper locations and configured
   correctly **Ghostty may fail to launch**. If they are installed in the proper
   location and Ghostty is still not launching, log out and log back in. If that
   doesn't work, try restarting your system. This should rarely be necessary, but
   it can happen depending on system configuration.
-</Warning>
 
 ### Dev Builds
 

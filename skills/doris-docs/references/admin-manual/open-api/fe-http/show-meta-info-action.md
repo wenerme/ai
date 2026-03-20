@@ -40,7 +40,6 @@ None
 
 ## Response
 
-
 * `SHOW_DB_SIZE`
 
     ```

@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Predibase
 
 LiteLLM supports all models on Predibase
 
-
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### API KEYS
 ```python
@@ -33,9 +28,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
   ```yaml
@@ -47,8 +39,6 @@ response = completion(
         tenant_id: os.environ/PREDIBASE_TENANT_ID
   ```
 
-
-
 2. Start the proxy 
 
   ```bash
@@ -57,9 +47,9 @@ response = completion(
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -85,9 +75,9 @@ response = completion(
   print(response)
   ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -107,23 +97,15 @@ response = completion(
         ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
-
-</TabItem>
-
-</Tabs>
+  
 
 ## Advanced Usage - Prompt Formatting 
 
 LiteLLM has prompt template mappings for all `meta-llama` llama3 instruct models. [**See Code**](https://github.com/BerriAI/litellm/blob/4f46b4c3975cd0f72b8c5acb2cb429d23580c18a/litellm/llms/prompt_templates/factory.py#L1360)
 
 To apply a custom prompt template: 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python 
 import litellm
@@ -160,8 +142,6 @@ def predibase_custom_model():
 
 predibase_custom_model()
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 # Model-specific parameters
@@ -177,10 +157,6 @@ model_list:
       eos_token: "</s>"
       max_tokens: 4096
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Passing additional params - max_tokens, temperature 
 See all litellm.completion supported params [here](https://docs.litellm.ai/docs/completion/input)

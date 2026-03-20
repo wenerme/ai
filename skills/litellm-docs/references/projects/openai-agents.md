@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI Agents SDK
 
@@ -43,9 +42,6 @@ litellm --config config.yaml
 
 ### 4. Use with Proxy
 
-<Tabs>
-<TabItem value="proxy" label="Via Proxy">
-
 ```python
 from agents import Agent, Runner
 from agents.extensions.models.litellm_model import LitellmModel
@@ -65,9 +61,6 @@ result = await Runner.run(agent, "What is LiteLLM?")
 print(result.final_output)
 ```
 
-</TabItem>
-<TabItem value="direct" label="Direct (No Proxy)">
-
 ```python
 from agents import Agent, Runner
 from agents.extensions.models.litellm_model import LitellmModel
@@ -85,9 +78,6 @@ agent = Agent(
 result = await Runner.run(agent, "What is LiteLLM?")
 print(result.final_output)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Track Usage
 

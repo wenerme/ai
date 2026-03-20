@@ -1,7 +1,5 @@
 ---
 date: "2021-07-20T00:00:00+00:00"
-slug: "pypi"
-sidebar_position: 100
 ---
 
 # PyPI Package Registry

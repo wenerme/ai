@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI (Text Completion)
 
@@ -38,9 +37,6 @@ export OPENAI_API_KEY=""
 
 ### 2. Start the proxy 
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -52,8 +48,6 @@ model_list:
       model: text-completion-openai/gpt-3.5-turbo-instruct # The `text-completion-openai/` prefix will call openai.completions.create
       api_key: os.environ/OPENAI_API_KEY
 ```
-</TabItem>
-<TabItem value="config-*" label="config.yaml - proxy all OpenAI models">
 
 Use this to add all openai models with one API Key. **WARNING: This will not do any load balancing**
 This means requests to `gpt-4`, `gpt-3.5-turbo` , `gpt-4-turbo-preview` will all go through this route 
@@ -65,23 +59,14 @@ model_list:
       model: openai/*           # set `openai/` to use the openai route
       api_key: os.environ/OPENAI_API_KEY
 ```
-</TabItem>
-<TabItem value="cli" label="CLI">
 
 ```bash
 $ litellm --model gpt-3.5-turbo-instruct
 
 # Server running on http://0.0.0.0:4000
 ```
-</TabItem>
-
-</Tabs>
 
 ### 3. Test it
-
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -97,8 +82,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -118,8 +101,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo-instruct", messag
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -148,9 +129,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ## OpenAI Text Completion Models / Instruct Models
 

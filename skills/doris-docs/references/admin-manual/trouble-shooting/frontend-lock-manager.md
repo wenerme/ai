@@ -8,9 +8,7 @@
 
 FE Lock Management is used to detect potential deadlocks and slow locks within the FE process, making it easier for users to identify and troubleshoot issues in production, as well as monitor lock usage.
 
-:::tip
-This feature is experimental and is supported starting from version 2.1.6.
-:::
+> **tip**: This feature is experimental and is supported starting from version 2.1.6.
 
 ## Deadlock Detection
 
@@ -99,4 +97,3 @@ The following are the slow lock detection-related parameters in the `fe.conf` co
 | Parameter Name                               | Description         | Default Value   |
 | --- | --- | --- |
 | max_lock_hold_threshold_seconds | Threshold for slow lock warnings (in seconds) | 10 |
-

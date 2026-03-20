@@ -33,7 +33,6 @@ from comfy_api.latest import ComfyExtension, io, ComfyAPI
 
 api = ComfyAPI()
 
-
 async def register_my_replacements():
     """Register all node replacements for this package."""
     
@@ -59,14 +58,12 @@ async def register_my_replacements():
         ],
     ))
 
-
 class MyExtension(ComfyExtension):
     async def on_load(self) -> None:
         await register_my_replacements()
 
     async def get_node_list(self) -> list[type[io.ComfyNode]]:
         return []  # No nodes defined here, just replacements
-
 
 async def comfy_entrypoint() -> MyExtension:
     return MyExtension()

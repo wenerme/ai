@@ -1,6 +1,5 @@
 # ProcessBench
 
-
 ## Overview
 
 ProcessBench is a benchmark for evaluating AI models on mathematical reasoning process verification. It tests the ability to identify errors in step-by-step mathematical solutions across various difficulty levels from GSM8K to OmniMath.
@@ -32,7 +31,6 @@ ProcessBench is a benchmark for evaluating AI models on mathematical reasoning p
 - Answers should be in \boxed{} format (paragraph index or -1)
 - Aggregation method: **F1** score
 
-
 ## Properties
 
 | Property | Value |
@@ -45,7 +43,6 @@ ProcessBench is a benchmark for evaluating AI models on mathematical reasoning p
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `f1` |
-
 
 ## Data Statistics
 
@@ -148,5 +145,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

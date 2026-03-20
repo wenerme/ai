@@ -48,7 +48,3 @@ Properties supported by property_list:
 ## Keywords
 
 CREATE, WORKLOAD, GROUP
-
-
-
-

@@ -1,12 +1,7 @@
 # Featherless AI
 https://featherless.ai/
 
-:::tip
-
-**We support ALL Featherless AI models, just set `model=featherless_ai/<any-model-on-featherless>` as a prefix when sending litellm requests. For the complete supported model list, visit https://featherless.ai/models **
-
-:::
-
+> **tip**: **We support ALL Featherless AI models, just set `model=featherless_ai/<any-model-on-featherless>` as a prefix when sending litellm requests. For the complete supported model list, visit https://featherless.ai/models **
 
 ## API Key
 ```python

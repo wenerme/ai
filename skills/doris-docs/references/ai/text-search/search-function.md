@@ -10,9 +10,7 @@
 
 The `SEARCH` function provides a concise DSL (domain‑specific language) for full‑text queries in Apache Doris from 4.0 version. It simplifies common text search patterns into a unified query entry that runs on inverted indexes for high performance.
 
-
 SEARCH is a boolean predicate function evaluated in the WHERE clause. It takes a SEARCH DSL string that describes text‑matching rules and pushes matchable predicates to inverted indexes.
-
 
 ## Syntax and Semantics
 

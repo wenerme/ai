@@ -96,4 +96,3 @@ Creating empty struct will report error, at least one parameter is required, con
 select struct();
 ERROR 1105 (HY000): errCode = 2, detailMessage = struct requires at least one argument, like: struct(1)
 ```
-

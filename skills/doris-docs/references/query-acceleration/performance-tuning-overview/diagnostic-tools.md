@@ -16,7 +16,7 @@ Currently, Doris considers SQL queries with execution times exceeding 5 seconds 
 
 The log module in Doris Manager provides a slow SQL filtering function. Users can view slow SQL by selecting the `fe.audit.log` on a specific FE node. By simply entering `slow_query` in the search box, the historical slow SQL information of the current system will be displayed on the page, as shown in the figure below:
 
-![Doris Manager Monitoring and Logging](/images/doris-manage-trace-log-2.png)
+[Doris Manager Monitoring and Logging]
 
 ## Audit Log
 

@@ -22,8 +22,7 @@ function setup(): UserEvent
 
 Creates a new user event instance. This is useful if you need to keep the state of keyboard to press and release buttons correctly.
 
-::: warning
-Unlike `@testing-library/user-event`, the default `userEvent` instance from `vitest/browser` is created once, not every time its methods are called! You can see the difference in how it works in this snippet:
+> **warning**: Unlike `@testing-library/user-event`, the default `userEvent` instance from `vitest/browser` is created once, not every time its methods are called! You can see the difference in how it works in this snippet:
 
 ```ts
 import { userEvent as vitestUserEvent } from 'vitest/browser'
@@ -37,7 +36,6 @@ await originalUserEvent.keyboard('{/Shift}') // DID NOT release shift because th
 ```
 
 This behaviour is more useful because we do not emulate the keyboard, we actually press the Shift, so keeping the original behaviour would cause unexpected issues when typing in the field.
-:::
 
 ## userEvent.click
 
@@ -210,9 +208,7 @@ import { page } from 'vitest/browser'
 await page.getByRole('tablist').wheel({ direction: 'right' })
 ```
 
-::: warning
-This method is intended for testing UI that explicitly listens to `wheel` events (e.g., custom zoom controls, horizontal tab scrolling, canvas interactions). If you need to scroll the page to bring an element into view, rely on the built-in automatic scrolling functionality provided by other `userEvent` methods or [locator actions](/api/browser/locators#methods) instead.
-:::
+> **warning**: This method is intended for testing UI that explicitly listens to `wheel` events (e.g., custom zoom controls, horizontal tab scrolling, canvas interactions). If you need to scroll the page to bring an element into view, rely on the built-in automatic scrolling functionality provided by other `userEvent` methods or [locator actions](/api/browser/locators#methods) instead.
 
 ## userEvent.fill
 
@@ -242,11 +238,9 @@ test('update input', async () => {
 
 This methods focuses the element, fills it and triggers an `input` event after filling. You can use an empty string to clear the field.
 
-::: tip
-This API is faster than using [`userEvent.type`](#userevent-type) or [`userEvent.keyboard`](#userevent-keyboard), but it **doesn't support** [user-event `keyboard` syntax](https://testing-library.com/docs/user-event/keyboard) (e.g., `{Shift}{selectall}`).
+> **tip**: This API is faster than using [`userEvent.type`](#userevent-type) or [`userEvent.keyboard`](#userevent-keyboard), but it **doesn't support** [user-event `keyboard` syntax](https://testing-library.com/docs/user-event/keyboard) (e.g., `{Shift}{selectall}`).
 
 We recommend using this API over [`userEvent.type`](#userevent-type) in situations when you don't need to enter special characters or have granular control over keypress events.
-:::
 
 References:
 
@@ -324,9 +318,7 @@ function type(
 ): Promise<void>
 ```
 
-::: warning
-If you don't rely on [special characters](https://testing-library.com/docs/user-event/keyboard) (e.g., `{shift}` or `{selectall}`), it is recommended to use [`userEvent.fill`](#userevent-fill) instead for better performance.
-:::
+> **warning**: If you don't rely on [special characters](https://testing-library.com/docs/user-event/keyboard) (e.g., `{shift}` or `{selectall}`), it is recommended to use [`userEvent.fill`](#userevent-fill) instead for better performance.
 
 The `type` method implements `@testing-library/user-event`'s [`type`](https://testing-library.com/docs/user-event/utility/#type) utility built on top of [`keyboard`](https://testing-library.com/docs/user-event/keyboard) API.
 
@@ -346,9 +338,7 @@ test('update input', async () => {
 })
 ```
 
-::: info
-Vitest doesn't expose `.type` method on the locator like `input.type` because it exists only for compatibility with the `userEvent` library. Consider using `.fill` instead as it is faster.
-:::
+> **info**: Vitest doesn't expose `.type` method on the locator like `input.type` because it exists only for compatibility with the `userEvent` library. Consider using `.fill` instead as it is faster.
 
 References:
 
@@ -405,12 +395,9 @@ function selectOptions(
 
 The `userEvent.selectOptions` allows selecting a value in a `<select>` element.
 
-::: warning
-If select element doesn't have [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) attribute, Vitest will select only the first element in the array.
+> **warning**: If select element doesn't have [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) attribute, Vitest will select only the first element in the array.
 
 Unlike `@testing-library`, Vitest doesn't support [listbox](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role) at the moment, but we plan to add support for it in the future.
-:::
-
 ```ts
 import { page, userEvent } from 'vitest/browser'
 
@@ -434,9 +421,7 @@ test('clears input', async () => {
 })
 ```
 
-::: warning
-`webdriverio` provider doesn't support selecting multiple elements because it doesn't provide API to do so.
-:::
+> **warning**: `webdriverio` provider doesn't support selecting multiple elements because it doesn't provide API to do so.
 
 References:
 
@@ -455,12 +440,9 @@ function hover(
 
 This method moves the cursor position to the selected element. Please refer to your provider's documentation for detailed explanation about how this method works.
 
-::: warning
-If you are using `webdriverio` provider, the cursor will move to the center of the element by default.
+> **warning**: If you are using `webdriverio` provider, the cursor will move to the center of the element by default.
 
 If you are using `playwright` provider, the cursor moves to "some" visible point of the element.
-:::
-
 ```ts
 import { page, userEvent } from 'vitest/browser'
 
@@ -490,10 +472,7 @@ function unhover(
 
 This works the same as [`userEvent.hover`](#userevent-hover), but moves the cursor to the `document.body` element instead.
 
-::: warning
-By default, the cursor position is in "some" visible place (in `playwright` provider) or in the center (in `webdriverio` provider) of the body element, so if the currently hovered element is already in the same position, this method will have no effect.
-:::
-
+> **warning**: By default, the cursor position is in "some" visible place (in `playwright` provider) or in the center (in `webdriverio` provider) of the body element, so if the currently hovered element is already in the same position, this method will have no effect.
 ```ts
 import { page, userEvent } from 'vitest/browser'
 
@@ -541,9 +520,7 @@ test('can upload a file', async () => {
 })
 ```
 
-::: warning
-`webdriverio` provider supports this command only in `chrome` and `edge` browsers. It also only supports string types at the moment.
-:::
+> **warning**: `webdriverio` provider supports this command only in `chrome` and `edge` browsers. It also only supports string types at the moment.
 
 References:
 
@@ -578,9 +555,7 @@ test('drag and drop works', async () => {
 })
 ```
 
-::: warning
-This API is not supported by the default `preview` provider.
-:::
+> **warning**: This API is not supported by the default `preview` provider.
 
 References:
 

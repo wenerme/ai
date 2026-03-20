@@ -1,18 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/ollama
-sidebar_label: 'Integrate Ollama'
 title: 'Set Up ClickHouse MCP Server with Ollama'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to set up Ollama with a ClickHouse MCP server.'
 keywords: ['AI', 'Ollama', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
 
 # Using ClickHouse MCP server with Ollama
 
@@ -43,9 +35,7 @@ Once it's downloaded, you can run the model like this:
 ollama run qwen3:8b
 ```
 
-:::note
-Only [models that have tool support](https://ollama.com/search?c=tools) will work with MCP Servers.
-:::
+> **note**: Only [models that have tool support](https://ollama.com/search?c=tools) will work with MCP Servers.
 
 We can list the models that we have downloaded like this:
 
@@ -149,9 +139,7 @@ export CLICKHOUSE_USER=demo
 export CLICKHOUSE_PASSWORD=""
 ```
 
-:::note
-In theory, you should be able to provide these variables under the `environment` key in the MCP configuration file, but we've found that this doesn't work.
-:::
+> **note**: In theory, you should be able to provide these variables under the `environment` key in the MCP configuration file, but we've found that this doesn't work.
 
 ## Running MCPHost {#running-mcphost}
 
@@ -167,9 +155,7 @@ Or, if you want to have it use a specific config file:
 mcphost --model ollama:qwen3 --config ~/.mcphost.json 
 ```
 
-:::warning
-If you don't provide `--model`, MCPHost will look in the environment variables for `ANTHROPIC_API_KEY` and will use the `anthropic:claude-sonnet-4-20250514` model.
-:::
+> **warning**: If you don't provide `--model`, MCPHost will look in the environment variables for `ANTHROPIC_API_KEY` and will use the `anthropic:claude-sonnet-4-20250514` model.
 
 We should see the following output:
 

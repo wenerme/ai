@@ -32,12 +32,12 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
     1. Go to **Streams**.  
     2. Click the **Metrics** tab.
     3. Navigate to the metrics stream. For example, `container_cpu_time`  
-    ![explore-metrics](../../../images/explore-metrics.png)
+    [explore-metrics]
     4.Click **Explore.**
-    ![click-explore-metrics](../../../images/click-explore-metrics.png)
+    [click-explore-metrics]
     This takes you to the **Logs** page and shows a time-series view:  
-    ![metrics-records](../../../images/metrics-records.png)
-    <br>
+    [metrics-records]
+    
     
     The two most important fields for charting are:
 
@@ -58,7 +58,6 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
     - A multi-series chart requires an array of datasets
 
     Knowing the expected structure helps you prepare the right PromQL query and the right JavaScript transformation.
-
 
 ??? "Step 3: Create a dashboard and select the metrics dataset"
     ### Step 3: Create a dashboard and select the metrics dataset
@@ -105,7 +104,7 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
     7. Open your browser developer tools. Right-click anywhere inside the dashboard and select **Inspect**.  
     7. Open the **Console** tab.  
     8. In the panel editor, click **Apply**.
-    ![view-raw-metrics-data](../../../images/view-raw-metrics-data.png)
+    [view-raw-metrics-data]
     You get to see the complete raw PromQL response.  
 
     !!! note "How to interpret it"  
@@ -176,7 +175,6 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
     - The `metric` object holds all identifying labels.
     - The values array holds the actual time-series data as `[timestamp, value]`.
 
-
     #### Transformation: Convert raw datapoints into chart-friendly points
     This is where you prepare the data for visualization. The chart that you want to build expects the data in a specific format, where each point is `[x, y]`. 
 
@@ -238,13 +236,13 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
     ### Step 6: Transform the data and render the chart
 
     Here is the complete JavaScript code example that combines all steps mentioned in Step 5. 
-    <br>
+    
 
     **PromQL query:**
     ```
     container_cpu_time{}
     ```
-    <br>
+    
 
     **JavaScript code:**
 
@@ -302,7 +300,7 @@ The example uses the `container_cpu_time` metric and builds a time-series line c
 
 ??? "Step 7: View the result"
     ### Step 7: View the result
-    ![view-custom-chart](../../../images/view-custom-chart.png)
+    [view-custom-chart]
     Select the time range from the time range selector and click **Apply** to render your chart.  
 
     Each unique metric label combination will appear as a separate line.

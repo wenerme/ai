@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Helicone
 
@@ -12,8 +11,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc | [Helicone Documentation ↗](https://docs.helicone.ai) |
 | Base URL | `https://ai-gateway.helicone.ai/` |
 | Supported Operations | [`/chat/completions`](#sample-usage), [`/completions`](#text-completion), [`/embeddings`](#embeddings) |
-
-<br />
 
 **We support [ALL models available](https://helicone.ai/models) through Helicone's AI Gateway. Use `helicone/` as a prefix when sending requests.**
 
@@ -116,7 +113,6 @@ response = litellm.completion(
 
 print(response)
 ```
-
 
 ## Retry and Fallback Mechanisms
 
@@ -265,4 +261,3 @@ Visit [Helicone Pricing](https://helicone.ai/pricing) for details.
 - [Helicone Dashboard](https://helicone.ai)
 - [Helicone GitHub](https://github.com/Helicone/helicone)
 - [API Reference](https://docs.helicone.ai/rest/ai-gateway/post-v1-chat-completions)
-

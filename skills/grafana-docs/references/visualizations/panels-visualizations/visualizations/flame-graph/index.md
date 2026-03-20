@@ -147,8 +147,6 @@ There are also action buttons on the left-most side of each row. The first butto
 
 The following table lists the features of the toolbar:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | [Search](#search) | Use the search field to find functions with a particular name. All the functions in the flame graph that match the search will remain colored while the rest of the functions appear in gray. |
@@ -157,8 +155,6 @@ The following table lists the features of the toolbar:
 | Grouping | Expand or collapse all groups to show all instances of a function or show the function grouped. |
 | Text align | Align text either to the left or to the right to show more important parts of the function name when it does not fit into the block. |
 | Visualization picker | Choose to show only the flame graph, only table, or both at the same time. |
-
-<!-- prettier-ignore-end -->
 
 ### Search
 
@@ -188,14 +184,10 @@ For more granular control over the display of fields, refer to [Configure field 
 
 You can customize the following standard options:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Unit | This option lets you choose which unit a field should use. For more information on unit options as well as creating custom units, refer to the [unit configuration documentation](ref:units). |
 | Decimals | Specify the number of decimals Grafana includes in the rendered value. |
-
-<!-- prettier-ignore-end -->
 
 ### Field overrides
 

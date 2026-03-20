@@ -1,14 +1,9 @@
 ---
 description: 'Get started with the Moose Stack - a code-first approach to building on top of ClickHouse with type-safe schemas and local development'
-sidebar_label: 'Moose OLAP (TypeScript / Python)'
-sidebar_position: 25
-slug: /interfaces/third-party/moose-olap
 title: 'Developing on ClickHouse with Moose OLAP'
 keywords: ['Moose']
 doc_type: 'guide'
 ---
-
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Developing on ClickHouse with Moose OLAP
 

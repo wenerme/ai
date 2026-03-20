@@ -1,6 +1,5 @@
 # OCRBench
 
-
 ## Overview
 
 OCRBench is a comprehensive evaluation benchmark designed to assess the OCR (Optical Character Recognition) capabilities of Large Multimodal Models. It covers five key OCR-related tasks with 1,000 manually verified question-answer pairs.
@@ -29,7 +28,6 @@ OCRBench is a comprehensive evaluation benchmark designed to assess the OCR (Opt
 - Different matching rules for HME100k (space-insensitive)
 - Comprehensive test of OCR capabilities in multimodal models
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ OCRBench is a comprehensive evaluation benchmark designed to assess the OCR (Opt
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -74,7 +71,6 @@ OCRBench is a comprehensive evaluation benchmark designed to assess the OCR (Opt
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 25x16 - 4961x7016 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -147,5 +143,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

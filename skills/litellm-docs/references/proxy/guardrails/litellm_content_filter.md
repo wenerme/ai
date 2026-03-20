@@ -1,6 +1,3 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
 
 
 # LiteLLM Content Filter (Built-in Guardrails)
@@ -58,9 +55,6 @@ Test examples:
 
 ### Step 1: Define Guardrails in config.yaml
 
-<Tabs>
-<TabItem label="Harmful Content Detection" value="harmful">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: gpt-3.5-turbo
@@ -92,10 +86,6 @@ guardrails:
           severity_threshold: "medium"
 ```
 
-</TabItem>
-
-<TabItem label="PII Protection" value="pii">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: gpt-3.5-turbo
@@ -125,10 +115,6 @@ guardrails:
           action: "BLOCK"
           description: "Sensitive internal information"
 ```
-
-</TabItem>
-
-<TabItem label="Combined" value="combined">
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -165,9 +151,6 @@ guardrails:
           action: "BLOCK"
 ```
 
-</TabItem>
-</Tabs>
-
 ### Step 2: Start LiteLLM Gateway
 
 ```shell
@@ -175,9 +158,6 @@ litellm --config config.yaml
 ```
 
 ### Step 3: Test Request
-
-<Tabs>
-<TabItem label="SSN Blocked" value="ssn-blocked">
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -205,10 +185,6 @@ curl -i http://localhost:4000/v1/chat/completions \
 }
 ```
 
-</TabItem>
-
-<TabItem label="Email Masked" value="email-masked">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -226,9 +202,6 @@ The request is sent to the LLM with the email masked:
 ```
 Contact me at [EMAIL_REDACTED]
 ```
-
-</TabItem>
-</Tabs>
 
 ## Configuration
 
@@ -396,16 +369,11 @@ for chunk in response:
 
 Content filter can analyze images by generating descriptions and applying filters to the text descriptions.
 
-:::warning
-
-This can introduce significant latency to the request - depending on the speed of the vision-capable model.
+> **warning**: This can introduce significant latency to the request - depending on the speed of the vision-capable model.
 
 This is because, each request containing images will be sent to the vision-capable model to generate a description.
 
-:::
-
 ### Configuration
-
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -546,11 +514,9 @@ Prebuilt categories use **keyword matching** to detect harmful content, bias, an
 | `denied_medical_advice` | Medical advice, diagnosis, treatment recommendations |
 | `denied_legal_advice` | Legal advice, representation, legal strategy |
 
-:::info Bias Detection Considerations
+> **info**: Bias Detection Considerations
 
 Bias detection is **complex and context-dependent**. Rule-based systems catch explicit discriminatory language but may generate false positives on legitimate discussions. Start with **high severity thresholds** and test thoroughly. For mission-critical bias detection, consider combining with AI-based guardrails (e.g., HiddenLayer, Lakera).
-
-:::
 
 ### Configuration
 
@@ -686,8 +652,6 @@ categories:
     severity_threshold: "low"  # Blocks all potentially problematic content
 ```
 
-
-
 ### 3. PII Protection
 Block or mask personally identifiable information before sending to LLMs:
 
@@ -798,5 +762,3 @@ patterns:
     pattern_name: "us_ssn"
     action: "BLOCK"
 ```
-
-

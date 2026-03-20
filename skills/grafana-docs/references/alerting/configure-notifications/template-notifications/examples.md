@@ -501,14 +501,14 @@ Use one of the following methods to include a dashboard link with the correct ti
    {{ define "custom.my_dashboard_url_annotation" -}}
    {{ range .Alerts -}}
 
-     {{/* StartsAt - 1h */}}
+     {}
      {{- $from := (.StartsAt.Add -3600000000000).UnixMilli }}
 
      {{- $to := "" }}
      {{- if eq .Status "resolved" }}
         {{- $to = (.EndsAt).UnixMilli }}
      {{- else -}}
-       {{/* Use current time if alert is firing */}}
+       {}
        {{- $to = (time.Now).UnixMilli }}
      {{- end -}}
 

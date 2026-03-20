@@ -19,17 +19,17 @@ Please refer to [quickstart](./quickstart.md) for single node deployments.
 
 Use this mode for light usage and testing or if HA is not a requirement for you. (You could still ingest and search over 2 TB on a single machine per day. On a mac M2 in our tests, you can ingest at ~31 MB/Second or 1.8 GB/Min or 2.6 TB/Day with default configuration). This is the default mode for running OpenObserve. Check [Quickstart](./quickstart.md) to find various ways to get this setup done.
 
-<img src="../images/arch-single-local.jpg" alt="Single node architecture using SQLite and local disk" width="60%"/>
+[Single node architecture using SQLite and local disk]
 
 ### SQLite and Object storage
 
-<img src="../images/arch-single-s3.jpg" alt="Single node architecture using SQLite and s3" width="60%"/>
+[Single node architecture using SQLite and s3]
 
 ## High Availability (HA) mode
 
 Local disk storage is not supported in HA mode. Please refer to [HA Deployment](./ha_deployment.md) for cluster mode deployment.
 
-<img src="../images/arch-ha.webp" alt="HA architecture using NATS and s3" width="80%"/>
+[HA architecture using NATS and s3]
 
 Router, Querier, Ingester, Compactor and AlertManager nodes both can be horizontally scaled to accommodate for higher traffic.
 
@@ -57,7 +57,7 @@ Ingester is used to receive ingest request and convert data into parquet format 
 
 The data ingestion flow is:
 
-<img src="../images/arch-sequence-ingester.svg" alt="Data Ingestion Flow" width="90%"/>
+[Data Ingestion Flow]
 
 1. receive data from HTTP / gRPC API request.
 1. parse data line by line.
@@ -88,7 +88,7 @@ Querier is used to query data. Queriers nodes are fully stateless.
 
 The data query flow is:
 
-<img src="../images/arch-sequence-querier.svg" alt="Query Flow" width="90%"/>
+[Query Flow]
 
 1. receive search request using http API. The node receiving the query request becomes `LEADER querier for the query`. Other queriers are `WORKER queriers for query`.
 1. `LEADER` parses and verifies SQL.

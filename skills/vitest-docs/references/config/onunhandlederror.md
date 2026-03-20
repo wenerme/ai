@@ -1,6 +1,5 @@
 ---
 title: onUnhandledError | Config
-outline: deep
 ---
 
 # onUnhandledError <CRoot /> <Version>4.0.0</Version>
@@ -17,9 +16,7 @@ A custom callback for filtering unhandled errors that should not be reported. Wh
 
 To report unhandled errors without affecting the test outcome, use the [`dangerouslyIgnoreUnhandledErrors`](/config/dangerouslyignoreunhandlederrors) option instead.
 
-::: tip
-This callback is called on the main thread, it doesn't have access to your test context.
-:::
+> **tip**: This callback is called on the main thread, it doesn't have access to your test context.
 
 ## Example
 

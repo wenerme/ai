@@ -1,6 +1,5 @@
 # GEdit-Bench
 
-
 ## Overview
 
 GEdit-Bench (Grounded Edit Benchmark) is an image editing benchmark grounded in real-world usage scenarios. It provides comprehensive evaluation of image editing models across diverse editing tasks with LLM-based judging.
@@ -28,7 +27,6 @@ GEdit-Bench (Grounded Edit Benchmark) is an image editing benchmark grounded in 
 - Overall score: geometric mean of SC and PQ scores
 - Configure language via `extra_params['language']` (en/cn)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ GEdit-Bench (Grounded Edit Benchmark) is an image editing benchmark grounded in 
 | **Metrics** | `Semantic Consistency`, `Perceptual Similarity` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -74,7 +71,6 @@ GEdit-Bench (Grounded Edit Benchmark) is an image editing benchmark grounded in 
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 384x640 - 416x672 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -155,5 +151,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -14,7 +14,6 @@ In this state, the cause of the service problem cannot be determined simply by u
 
 Doris Operator provides a `Debug` running mode. The following describes how to enter Debug mode for manual debugging when the service enters `CrashLoopBackOff`, and how to return to normal startup state after solving the problem.
 
-
 ### Start Debug mode
 
 When a pod of the service enters CrashLoopBackOff or cannot be started normally during normal operation, take the following steps to put the service into `Debug` mode and manually start the service to find the problem.
@@ -43,12 +42,11 @@ When the service locates the problem, it needs to exit the `Debug` operation. At
 $ kubectl delete pod ${pod_name} --namespace ${namespace}
 ```
 
-:::tip Tip  
+> **tip**: Tip  
 **After entering the pod, you need to modify the port information of the configuration file before you can manually start the corresponding Doris component.**
 
 - FE needs to modify the `query_port=9030` configuration with the default path: `/opt/apache-doris/fe/conf/fe.conf`.
 - BE needs to modify the `heartbeat_service_port=9050` configuration with the default path: `/opt/apache-doris/be/conf/be.conf`.  
-:::
 
 ## Upgrading doris cluster
 
@@ -335,7 +333,6 @@ When the Frontend (FE) service is unable to elect a leader and becomes unavailab
 3. Remove the annotation after recovery  
    Once the FE service is running normally, make sure to remove the annotation added in Step 2 to avoid unexpected behavior during future restarts.
 
-:::tip Note
+> **tip**: Note
 1. After adding the annotation, do not restart the Pod using kubectl delete pod, as this will remove the annotation. Instead, allow kubelet to restart it automatically or manually kill the process inside the container.
 2. Starting FE in `metadata_failure_recovery` mode can take a long time due to extensive log replay. Before proceeding, increase the FE service's [startup probe timeout](./install-config-cluster.md#startup-probe-timeout), and delete all FE Pods before initiating the recovery startup.
-:::

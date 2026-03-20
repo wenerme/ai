@@ -142,11 +142,11 @@ With data links, you can create links that include the series name or even the v
 
 The link itself is accessible in different ways depending on the visualization. For the time series visualization you need to click a data point or line:
 
-![Time series visualization with a data link displayed](/media/docs/grafana/panels-visualizations/screenshot-time-series-data-link-v10.3.png)
+[Time series visualization with a data link displayed]
 
 For visualizations like stat, gauge, or bar gauge you can click anywhere on the visualization to open the context menu:
 
-![Stat visualization with a data link displayed](/media/docs/grafana/panels-visualizations/screenshot-stat-data-link-v10.3.png)
+[Stat visualization with a data link displayed]
 
 If there's only one data link in the visualization, clicking anywhere on the visualization opens the link rather than the context menu.
 

@@ -1,7 +1,5 @@
 ---
 date: "2024-04-10T22:21:00+08:00"
-slug: "actions-variables"
-sidebar_position: 25
 ---
 
 # Variables

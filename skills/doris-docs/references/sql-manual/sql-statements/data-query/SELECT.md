@@ -389,4 +389,3 @@ Recursive CTE is currently not supported.
    
       - In the inner join condition, in addition to supporting equal-valued joins, it also supports unequal-valued joins. For performance reasons, it is recommended to use equal-valued joins.
       - Other joins only support equivalent joins
-

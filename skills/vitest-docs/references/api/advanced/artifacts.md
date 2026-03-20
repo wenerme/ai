@@ -1,13 +1,10 @@
 ---
-outline: deep
 title: Test Artifacts
 ---
 
 # Test Artifacts <Advanced /> <Version type="experimental">4.0.11</Version> <Experimental />
 
-::: warning
-This is an advanced API. As a user, you most likely want to use [test annotations](/guide/test-annotations) to add notes or context to your tests instead. This is primarily used internally and by library authors.
-:::
+> **warning**: This is an advanced API. As a user, you most likely want to use [test annotations](/guide/test-annotations) to add notes or context to your tests instead. This is primarily used internally and by library authors.
 
 Test artifacts allow attaching or recording structured data, files, or metadata during test execution. This is a low-level feature primarily designed for:
 
@@ -27,21 +24,16 @@ Vitest automatically manages attachment serialization (files are copied to [`att
 
 ### `recordArtifact` <Experimental /> {#recordartifact}
 
-::: warning
-`recordArtifact` is an experimental API. Breaking changes might not follow SemVer, please pin Vitest's version when using it.
+> **warning**: `recordArtifact` is an experimental API. Breaking changes might not follow SemVer, please pin Vitest's version when using it.
 
 The API surface may change based on feedback. We encourage you to try it out and share your experience with the team.
-:::
-
 ```ts
 function recordArtifact<Artifact extends TestArtifact>(task: Test, artifact: Artifact): Promise<Artifact>
 ```
 
 The `recordArtifact` function records an artifact during test execution and returns it. It expects a [task](/api/advanced/runner#tasks) as the first parameter and an object assignable to [`TestArtifact`](#testartifact) as the second.
 
-::: info
-Artifacts must be recorded before the task is reported. Any artifacts recorded after that will not be included in the task.
-:::
+> **info**: Artifacts must be recorded before the task is reported. Any artifacts recorded after that will not be included in the task.
 
 When an artifact is recorded on a test, it emits an `onTestArtifactRecord` runner event and a [`onTestCaseArtifactRecord` reporter event](/api/advanced/reporters#ontestcaseartifactrecord). To retrieve recorded artifacts from a test case, use the [`artifacts()`](/api/advanced/test-case#artifacts) method.
 
@@ -66,11 +58,9 @@ The `TestArtifactBase` interface is the base for all test artifacts.
 
 Extend this interface when creating custom test artifacts. Vitest automatically manages the `attachments` array and injects the `location` property to indicate where the artifact was created in your test code.
 
-::: danger
-When running with [`api.allowWrite`](/config/api#api-allowwrite) or [`browser.api.allowWrite`](/config/browser/api#api-allowwrite) disabled, Vitest empties the `attachments` array on every artifact before reporting it.
+> **danger**: When running with [`api.allowWrite`](/config/api#api-allowwrite) or [`browser.api.allowWrite`](/config/browser/api#api-allowwrite) disabled, Vitest empties the `attachments` array on every artifact before reporting it.
 
 If your custom artifact narrows the `attachments` type (e.g. to a tuple), include `| []` in the union so the type reflects what actually happens at runtime.
-:::
 
 ### `TestAttachment`
 

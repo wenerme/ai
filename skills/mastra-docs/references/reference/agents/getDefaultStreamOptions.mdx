@@ -7,11 +7,7 @@ packages:
 
 # Agent.getDefaultStreamOptionsLegacy()
 
-:::warning
-
-**Deprecated**: This method is deprecated and only works with V1 models. For V2 models, use the new [`.getDefaultOptions()`](./getDefaultOptions) method instead.
-
-:::
+> **warning**: **Deprecated**: This method is deprecated and only works with V1 models. For V2 models, use the new [`.getDefaultOptions()`](./getDefaultOptions) method instead.
 
 Agents can be configured with default streaming options for memory usage, output format, and iteration steps. The `.getDefaultStreamOptionsLegacy()` method returns these defaults, resolving them if they're functions. These options apply to all `streamLegacy()` calls unless overridden and are useful for inspecting an agent’s unknown defaults.
 

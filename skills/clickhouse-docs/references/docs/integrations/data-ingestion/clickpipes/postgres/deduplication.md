@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Deduplication strategies'
 description: 'Handle duplicates and deleted rows.'
-slug: /integrations/clickpipes/postgres/deduplication
 title: 'Deduplication strategies (using CDC)'
 keywords: ['deduplication', 'postgres', 'clickpipes', 'replacingmergetree', 'final']
 doc_type: 'guide'
@@ -9,9 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import clickpipes_initial_load from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/postgres-cdc-initial-load.png';
-import Image from '@theme/IdealImage';
 
 Updates and deletes replicated from Postgres to ClickHouse result in duplicated rows in ClickHouse due to its data storage structure and the replication process. This page covers why this happens and the strategies to use in ClickHouse to handle duplicates.
 

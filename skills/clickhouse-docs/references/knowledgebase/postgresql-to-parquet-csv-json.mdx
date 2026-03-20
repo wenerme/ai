@@ -7,7 +7,6 @@ keywords: ['PostgreSQL', 'Parquet', 'CSV', 'JSON']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## How to export PostgreSQL data to Parquet, CSV or JSON \{#how-to-export-postgresql-data-to-parquet-csv-or-json\}
 
@@ -54,9 +53,7 @@ We can pipe the output of this query to a file using `INTO OUTFILE`. Use `FORMAT
 INTO OUTFILE 'my_output_file.parquet'"
 ```
 
-:::note
-Because the name of the output file has a `.parquet` extension, ClickHouse assumes we want the Parquet format, so notice we omitted the `FORMAT Parquet` clause.
-:::
+> **note**: Because the name of the output file has a `.parquet` extension, ClickHouse assumes we want the Parquet format, so notice we omitted the `FORMAT Parquet` clause.
 
 ## Export PostgreSQL to CSV \{#export-postgresql-to-csv\}
 
@@ -92,8 +89,7 @@ To go from PostgreSQL to JSON, we just change the filename and ClickHouse will f
 INTO OUTFILE 'my_output_file.ndjson'"
 ```
 
-:::note
-You don't have to stop here - you can use `clickhouse-local` to pull data from PostgreSQL and send it to [all types of output formats](https://clickhouse.com/docs/sql-reference/formats/).
+> **note**: You don't have to stop here - you can use `clickhouse-local` to pull data from PostgreSQL and send it to [all types of output formats](https://clickhouse.com/docs/sql-reference/formats/).
 
 If ClickHouse can not determine the output type by the filename extension, or if you want to specifically choose a format, add the `FOMRAT` clause:
 
@@ -109,7 +105,6 @@ If ClickHouse can not determine the output type by the filename extension, or if
 INTO OUTFILE 'my_output_file.ndjson'
 FORMAT JSONEachRow"
 ```
-:::
 
 ## Stream PostgreSQL to another process
 

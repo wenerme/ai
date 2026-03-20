@@ -1,11 +1,8 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Onboard Users for AI Exploration
 
 v1.73.0 introduces the ability to assign new users to Default Teams. This makes it much easier to enable experimentation with LLMs within your company, by allowing users to sign in and create $10 keys for AI exploration. 
-
 
 ### 1. Create a team
 
@@ -24,7 +21,6 @@ Click on the team you just created, and update the team member permissions under
 This will allow all team members, to create keys. 
 
 <Image img={require('../../img/team_member_permissions.png')}  style={{ width: '600px', height: 'auto' }} />
-
 
 ### 3. Set team as default team
 

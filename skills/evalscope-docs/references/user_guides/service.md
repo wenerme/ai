@@ -19,7 +19,6 @@ The Flask service encapsulates EvalScope's core evaluation (eval) and stress tes
 
 ## Environment Setup
 
-
 ### Full Installation (Recommended)
 
 ```bash

@@ -1,6 +1,5 @@
 ---
 title: diff | Config
-outline: deep
 ---
 
 # diff
@@ -29,7 +28,6 @@ export default defineConfig({
 
 Or as a module:
 
-:::code-group
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -50,7 +48,6 @@ export default {
   omitAnnotationLines: true,
 } satisfies DiffOptions
 ```
-:::
 
 ## diff.expand
 

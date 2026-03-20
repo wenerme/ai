@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Pre-fix Assistant Messages
 
@@ -19,9 +18,6 @@ Supported by:
 
 ## Quick Start 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 import os 
@@ -37,8 +33,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -58,8 +52,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     ]
 }'
 ```
-</TabItem>
-</Tabs>
 
 **Expected Response**
 
@@ -95,9 +87,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 
 Call `litellm.get_model_info` to check if a model/provider supports `prefix`. 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import get_model_info
 
@@ -106,14 +95,9 @@ params = get_model_info(model="deepseek/deepseek-chat")
 assert params["supports_assistant_prefill"] is True
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 Call the `/model/info` endpoint to get a list of models + their supported params.
 
 ```bash
 curl -X GET 'http://0.0.0.0:4000/v1/model/info' \
 -H 'Authorization: Bearer $LITELLM_KEY' \
 ```
-</TabItem>
-</Tabs>

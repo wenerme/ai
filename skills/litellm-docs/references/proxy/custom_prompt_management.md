@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Custom Prompt Management
 
@@ -8,12 +6,10 @@ Connect LiteLLM to your prompt management system with custom hooks.
 
 ## Overview
 
-
 <Image 
   img={require('../../img/custom_prompt_management.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-
 
 ## How it works
 
@@ -80,9 +76,6 @@ litellm_settings:
 
 ### 3. Start LiteLLM Gateway
 
-<Tabs>
-<TabItem value="docker" label="Docker Run">
-
 Mount your `custom_logger.py` on the LiteLLM Docker container.
 
 ```shell
@@ -98,23 +91,13 @@ docker run -d \
   --detailed_debug \
 ```
 
-</TabItem>
-
-<TabItem value="py" label="litellm pip">
-
 ```shell
 litellm --config config.yaml --detailed_debug
 ```
 
-</TabItem>
-</Tabs>
-
 ### 4. Test Your Custom Prompt Manager
 
 When you pass `prompt_id="1234"`, the custom prompt manager will add a system message "Be a good Bot!" to your conversation:
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 from openai import OpenAI
@@ -134,9 +117,6 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
-</TabItem>
-
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -156,9 +136,6 @@ response = chat(messages)
 
 print(response.content)
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl">
 
 ```shell
 curl -X POST http://0.0.0.0:4000/v1/chat/completions \
@@ -170,8 +147,6 @@ curl -X POST http://0.0.0.0:4000/v1/chat/completions \
     "prompt_id": "1234"
 }'
 ```
-</TabItem>
-</Tabs>
 
 ### Using the LiteLLM SDK Directly
 
@@ -214,5 +189,3 @@ To:
     ]
 }
 ```
-
-

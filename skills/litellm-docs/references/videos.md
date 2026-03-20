@@ -11,11 +11,7 @@ Fallbacks | ✅ (Between supported models) |
 | Spend Management | ✅ Budget tracking and rate limiting |
 | Supported Providers | `openai`, `azure`, `gemini`, `vertex_ai`, `runwayml` |
 
-:::tip
-
-LiteLLM follows the [OpenAI Video Generation API specification](https://platform.openai.com/docs/guides/video-generation)
-
-:::
+> **tip**: LiteLLM follows the [OpenAI Video Generation API specification](https://platform.openai.com/docs/guides/video-generation)
 
 ## **LiteLLM Python SDK Usage**
 ### Quick Start 
@@ -564,13 +560,9 @@ print(f"Remix started. ID: {remix_response.id}")
 
 ## **Request/Response Format**
 
-:::info
-
-LiteLLM follows the **OpenAI Video Generation API specification**. 
+> **info**: LiteLLM follows the **OpenAI Video Generation API specification**. 
 
 See the [official OpenAI Video Generation documentation](https://platform.openai.com/docs/guides/video-generation) for complete details.
-
-:::
 
 ### Example Request
 
@@ -671,7 +663,6 @@ The response follows OpenAI's video generation format with the following structu
 | `size` | string | Video dimensions |
 | `seconds` | string | Video duration in seconds |
 | `usage` | object | Token usage and duration information |
-
 
 ## **Supported Providers**
 

@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Customize Prompt Templates on OpenAI-Compatible server 
 
@@ -29,7 +28,6 @@ This will return the most recent log (by default logs are stored in a local file
 As we can see, this is the formatting sent to huggingface: 
 
 <Image img={require('../../img/codellama_input.png')} />  
-
 
 This follows [our formatting](https://github.com/BerriAI/litellm/blob/9932371f883c55fd0f3142f91d9c40279e8fe241/litellm/llms/prompt_templates/factory.py#L10) for CodeLlama (based on the [Huggingface's documentation](https://huggingface.co/blog/codellama#conversational-instructions)). 
 

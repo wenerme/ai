@@ -7,8 +7,8 @@ hide:
 # Welcome to vLLM
 
 <figure markdown="span">
-  ![](./assets/logos/vllm-logo-text-light.png){ align="center" alt="vLLM Light" class="logo-light" width="60%" }
-  ![](./assets/logos/vllm-logo-text-dark.png){ align="center" alt="vLLM Dark" class="logo-dark" width="60%" }
+  { align="center" alt="vLLM Light" class="logo-light" width="60%" }
+  { align="center" alt="vLLM Dark" class="logo-dark" width="60%" }
 </figure>
 
 <p style="text-align:center">

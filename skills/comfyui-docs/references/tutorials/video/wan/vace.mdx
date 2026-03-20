@@ -1,15 +1,9 @@
 ---
 title: "ComfyUI Wan2.1 VACE Video Examples"
 description: "This article introduces how to complete Wan VACE video generation examples in ComfyUI"
-sidebarTitle: "Wan2.1 VACE"
 ---
 
-import CancelBypass from '/snippets/interface/cancel-bypass.mdx'
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
-
-<Warning>
 As we have made adjustments to the template and added related usage and instructions for CausVid LoRA, this document needs to be updated and requires some preparation time. Until then, please refer to the notes in the template for usage
-</Warning>
 
 ## About VACE
 
@@ -40,8 +34,6 @@ Related model weights and code repositories:
 - [Github](https://github.com/ali-vilab/VACE)
 - [VACE Project Homepage](https://ali-vilab.github.io/VACE-Page/)
 
-<UpdateReminder/>
-
 ## Model Download and Loading in Workflows
 
 Since the workflows covered in this document all use the same workflow template, we can first complete the model download and loading information introduction, then enable/disable different inputs through Bypassing different nodes to achieve different workflows.
@@ -51,9 +43,8 @@ The model download information is already embedded in the workflow information i
 **diffusion_models** 
 [wan2.1_vace_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)
 [wan2.1_vace_1.3B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors)
-<Tip>
+
 If you have used Wan Video related workflows before, you have already downloaded the following model files.
-</Tip>
 
 **VAE**
 - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)
@@ -78,7 +69,7 @@ File save location
 
 Since the models used in the workflows covered in this document are consistent, the workflows are also the same, and only the nodes are bypassed to enable/disable different inputs, please refer to the following image to ensure that the corresponding models are correctly loaded in different workflows.
 
-![Wan2.1 VACE Model Loading](/images/tutorial/video/wan/wan-vace-model-loading.jpg)
+[Wan2.1 VACE Model Loading]
 
 1. Make sure the `Load Diffusion Model` node has loaded `wan2.1_vace_14B_fp16.safetensors`
 2. Make sure the `Load CLIP` node has loaded `umt5_xxl_fp8_e4m3fn_scaled.safetensors` or `umt5_xxl_fp16.safetensors`
@@ -88,11 +79,9 @@ Since the models used in the workflows covered in this document are consistent, 
 
 ## VACE Text-to-Video Workflow
 
-<Tip>
 If you cannot load the workflow from mp4 file, please ensure that your ComfyUI front-end version is up to date version in [requirements.txt](https://github.com/comfyanonymous/ComfyUI/blob/master/requirements.txt) , make sure you can load the workflow from mp4 file.
 
 Currently 1.19.9 is the latest ComfyUI front-end version in the requirements.txt file.
-</Tip>
 
 ### 1. Workflow Download
 Download the video below and drag it into ComfyUI to load the corresponding workflow
@@ -105,7 +94,7 @@ Download the video below and drag it into ComfyUI to load the corresponding work
 
 ### 2. Complete the Workflow Step by Step
 
-![image](/images/tutorial/video/wan/wan-vace-t2v-step-guide.jpg)
+[image]
 
 Please follow the numbered steps in the image to ensure smooth workflow execution
 
@@ -115,13 +104,11 @@ Please follow the numbered steps in the image to ensure smooth workflow executio
 4. Click the `Run` button or use the shortcut `Ctrl(cmd) + Enter` to execute video generation
 5. Once generated, the video will automatically save to `ComfyUI/output/video` directory (subfolder location depends on `save video` node settings)
 
-<Tip>
 During testing with a 4090 GPU:
 - 720x1280 resolution, generating 81 frames takes about 40 minutes
 - 640x640 resolution, generating 49 frames takes about 7 minutes
 
 However, 720P video quality is better.
-</Tip>
 
 ## VACE Image-to-Video Workflow
 
@@ -142,7 +129,7 @@ Please download the image below as input
 
 ### 2. Complete the Workflow Step by Step
 
-![Workflow Steps](/images/tutorial/video/wan/wan-vace-i2v-step-guide.jpg)
+[Workflow Steps]
 
 Please follow the numbered steps in the image to ensure smooth workflow execution
 
@@ -152,9 +139,7 @@ Please follow the numbered steps in the image to ensure smooth workflow executio
 4. Click the `Run` button or use the shortcut `Ctrl(cmd) + Enter` to execute video generation
 5. Once generated, the video will automatically save to `ComfyUI/output/video` directory (subfolder location depends on `save video` node settings)
 
-<Tip>
 You may want to use nodes like getting image dimensions to set the resolution, but due to width and height step requirements of the corresponding nodes, you may get error messages if your image dimensions are not divisible by 16.
-</Tip>
 
 ### 3. Additional Workflow Notes
 
@@ -193,10 +178,9 @@ We will use the following materials as input:
   src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/v2v/original.mp4"
 ></video>
 
-
 ### 2. Complete the Workflow Step by Step
 
-![Workflow Steps](/images/tutorial/video/wan/wan-vace-v2v-step-guide.jpg)
+[Workflow Steps]
 
 Please follow the numbered steps in the image to ensure smooth workflow execution
 
@@ -212,7 +196,6 @@ Please follow the numbered steps in the image to ensure smooth workflow executio
 
 [To be updated]
 
-
 ## VACE First-Last Frame Video Generation
 
 [To be updated]
@@ -221,16 +204,10 @@ To ensure that the first and last frames are effective, the video `length` setti
 
 The corresponding `Batch_size` setting must satisfy `Batch_size = length - 2`
 
-
 ## Related Node Documentation
 
 Please refer to the documentation below to learn about related nodes
 
-
-<Card title="WanVaceToVideo Node Documentation" icon="book" href="/built-in-nodes/conditioning/video-models/wan-vace-to-video">
 WanVaceToVideo Node Documentation
-</Card>
 
-<Card title="TrimVideoLatent Node Documentation" icon="book" href="/built-in-nodes/latent/video/trim-video-latent">
 ComfyUI TrimVideoLatent Node Documentation
-</Card>

@@ -285,7 +285,6 @@ class MetaAsJsonType extends JsonType {
   }
 }
 
-
 class UrlType extends Type<URL, string | null | undefined> {
   #base = 'https://example.com/';
   

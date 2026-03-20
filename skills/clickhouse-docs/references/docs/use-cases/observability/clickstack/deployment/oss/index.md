@@ -1,8 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/oss
 title: 'Open Source Deployment Options'
-pagination_prev: null
-pagination_next: null
 description: 'Deploying Open Source ClickStack - The ClickHouse Observability Stack'
 doc_type: 'reference'
 keywords: ['ClickStack', 'observability', 'Open Source']

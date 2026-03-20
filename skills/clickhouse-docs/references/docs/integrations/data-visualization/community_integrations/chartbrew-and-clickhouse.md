@@ -1,8 +1,5 @@
 ---
 title: 'Connecting Chartbrew to ClickHouse'
-sidebar_label: 'Chartbrew'
-sidebar_position: 131
-slug: /integrations/chartbrew-and-clickhouse
 keywords: ['ClickHouse', 'Chartbrew', 'connect', 'integrate', 'visualization']
 description: 'Connect Chartbrew to ClickHouse to create real-time dashboards and client reports.'
 doc_type: 'guide'
@@ -10,20 +7,6 @@ integration:
    - support_level: 'community'
    - category: 'data_visualization'
 ---
-
-import chartbrew_01 from '@site/static/images/integrations/data-visualization/chartbrew_01.png';
-import chartbrew_02 from '@site/static/images/integrations/data-visualization/chartbrew_02.png';
-import chartbrew_03 from '@site/static/images/integrations/data-visualization/chartbrew_03.png';
-import chartbrew_04 from '@site/static/images/integrations/data-visualization/chartbrew_04.png';
-import chartbrew_05 from '@site/static/images/integrations/data-visualization/chartbrew_05.png';
-import chartbrew_06 from '@site/static/images/integrations/data-visualization/chartbrew_06.png';
-import chartbrew_07 from '@site/static/images/integrations/data-visualization/chartbrew_07.png';
-import chartbrew_08 from '@site/static/images/integrations/data-visualization/chartbrew_08.png';
-import chartbrew_09 from '@site/static/images/integrations/data-visualization/chartbrew_09.png';
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
-import Image from '@theme/IdealImage';
 
 # Connecting Chartbrew to ClickHouse
 
@@ -37,9 +20,8 @@ In this guide, you will connect Chartbrew to ClickHouse, run a SQL query, and cr
 
 <Image img={chartbrew_01} size="lg" alt="Chartbrew dashboard" />
 
-:::tip Add some data
+> **tip**: Add some data
 If you don't have a dataset to work with, you can add one of the examples. This guide uses the [UK Price Paid](/getting-started/example-datasets/uk-price-paid.md) dataset.
-:::
 
 ## 1. Gather your connection details {#1-gather-your-connection-details}
 

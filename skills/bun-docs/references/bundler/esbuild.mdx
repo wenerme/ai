@@ -7,22 +7,18 @@ Bun's bundler API is inspired heavily by esbuild. Migrating to Bun's bundler fro
 
 There are a few behavioral differences to note.
 
-<Note>
   **Bundling by default.** Unlike esbuild, Bun always bundles by default. This is why the `--bundle` flag isn't
   necessary in the Bun example. To transpile each file individually, use `Bun.Transpiler`.
-</Note>
 
-<Note>
   **It's just a bundler.** Unlike esbuild, Bun's bundler does not include a built-in development server or file watcher.
   It's just a bundler. The bundler is intended for use in conjunction with `Bun.serve` and other runtime APIs to achieve
   the same effect. As such, all options relating to HTTP/file watching are not applicable.
-</Note>
 
 ## Performance
 
 With a performance-minded API coupled with the extensively optimized Zig-based JS/TS parser, Bun's bundler is 1.75x faster than esbuild on esbuild's three.js benchmark.
 
-<Info>Bundling 10 copies of three.js from scratch, with sourcemaps and minification</Info>
+Bundling 10 copies of three.js from scratch, with sourcemaps and minification
 
 ## CLI API
 
@@ -41,10 +37,10 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 | esbuild                | bun build                  | Notes                                                                                                                                                                                                                                                                                                                                                               |
 | ---------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--bundle`             | n/a                        | Bun always bundles, use `--no-bundle` to disable this behavior.                                                                                                                                                                                                                                                                                                     |
-| `--define:K=V`         | `--define K=V`             | Small syntax difference; no colon.<br/>`esbuild --define:foo=bar`<br/>`bun build --define foo=bar`                                                                                                                                                                                                                                                                  |
-| `--external:<pkg>`     | `--external <pkg>`         | Small syntax difference; no colon.<br/>`esbuild --external:react`<br/>`bun build --external react`                                                                                                                                                                                                                                                                  |
+| `--define:K=V`         | `--define K=V`             | Small syntax difference; no colon.`esbuild --define:foo=bar``bun build --define foo=bar`                                                                                                                                                                                                                                                                  |
+| `--external:<pkg>`     | `--external <pkg>`         | Small syntax difference; no colon.`esbuild --external:react``bun build --external react`                                                                                                                                                                                                                                                                  |
 | `--format`             | `--format`                 | Bun supports `"esm"` and `"cjs"` currently, but more module formats are planned. esbuild defaults to `"iife"`.                                                                                                                                                                                                                                                      |
-| `--loader:.ext=loader` | `--loader .ext:loader`     | Bun supports a different set of built-in loaders than esbuild; see Bundler > Loaders for a complete reference. The esbuild loaders `dataurl`, `binary`, `base64`, `copy`, and `empty` are not yet implemented.<br/><br/>The syntax for `--loader` is slightly different.<br/>`esbuild app.ts --bundle --loader:.svg=text`<br/>`bun build app.ts --loader .svg:text` |
+| `--loader:.ext=loader` | `--loader .ext:loader`     | Bun supports a different set of built-in loaders than esbuild; see Bundler > Loaders for a complete reference. The esbuild loaders `dataurl`, `binary`, `base64`, `copy`, and `empty` are not yet implemented.The syntax for `--loader` is slightly different.`esbuild app.ts --bundle --loader:.svg=text``bun build app.ts --loader .svg:text` |
 | `--minify`             | `--minify`                 | No differences                                                                                                                                                                                                                                                                                                                                                      |
 | `--outdir`             | `--outdir`                 | No differences                                                                                                                                                                                                                                                                                                                                                      |
 | `--outfile`            | `--outfile`                | No differences                                                                                                                                                                                                                                                                                                                                                      |
@@ -114,16 +110,16 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 | `absWorkingDir`     | n/a                        | Always set to `process.cwd()`                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `alias`             | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `allowOverwrite`    | n/a                        | Always false                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `assetNames`        | `naming.asset`             | Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.<br/><br/>`ts<br/>Bun.build({<br/>  entrypoints: ["./index.tsx"],<br/>  naming: {<br/>    asset: "[name].[ext]",<br/>  },<br/>});<br/>`                                                                                                                                                                                                                                                                |
+| `assetNames`        | `naming.asset`             | Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.`tsBun.build({  entrypoints: ["./index.tsx"],  naming: {    asset: "[name].[ext]",  },});`                                                                                                                                                                                                                                                                |
 | `banner`            | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `bundle`            | n/a                        | Always true. Use `Bun.Transpiler` to transpile without bundling.                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `charset`           | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `chunkNames`        | `naming.chunk`             | Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.<br/><br/>`ts<br/>Bun.build({<br/>  entrypoints: ["./index.tsx"],<br/>  naming: {<br/>    chunk: "[name].[ext]",<br/>  },<br/>});<br/>`                                                                                                                                                                                                                                                                |
+| `chunkNames`        | `naming.chunk`             | Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.`tsBun.build({  entrypoints: ["./index.tsx"],  naming: {    chunk: "[name].[ext]",  },});`                                                                                                                                                                                                                                                                |
 | `color`             | n/a                        | Bun returns logs in the `logs` property of the build result.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `conditions`        | n/a                        | Not supported. Export conditions priority is determined by `target`.                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `define`            | `define`                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `drop`              | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `entryNames`        | `naming` or `naming.entry` | Bun supports a `naming` key that can either be a string or an object. Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.<br/><br/>`ts<br/>Bun.build({<br/>  entrypoints: ["./index.tsx"],<br/>  // when string, this is equivalent to entryNames<br/>  naming: "[name].[ext]",<br/><br/>  // granular naming options<br/>  naming: {<br/>    entry: "[name].[ext]",<br/>    asset: "[name].[ext]",<br/>    chunk: "[name].[ext]",<br/>  },<br/>});<br/>` |
+| `entryNames`        | `naming` or `naming.entry` | Bun supports a `naming` key that can either be a string or an object. Uses same templating syntax as esbuild, but `[ext]` must be included explicitly.`tsBun.build({  entrypoints: ["./index.tsx"],  // when string, this is equivalent to entryNames  naming: "[name].[ext]",  // granular naming options  naming: {    entry: "[name].[ext]",    asset: "[name].[ext]",    chunk: "[name].[ext]",  },});` |
 | `entryPoints`       | `entrypoints`              | Capitalization difference                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `external`          | `external`                 | No differences                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `footer`            | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -148,7 +144,7 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 | `mangleProps`       | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `mangleQuoted`      | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `metafile`          | n/a                        | Not supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `minify`            | `minify`                   | In Bun, `minify` can be a boolean or an object.<br/><br/>`ts<br/>await Bun.build({<br/>  entrypoints: ['./index.tsx'],<br/>  // enable all minification<br/>  minify: true<br/><br/>  // granular options<br/>  minify: {<br/>    identifiers: true,<br/>    syntax: true,<br/>    whitespace: true<br/>  }<br/>})<br/>`                                                                                                                                                               |
+| `minify`            | `minify`                   | In Bun, `minify` can be a boolean or an object.`tsawait Bun.build({  entrypoints: ['./index.tsx'],  // enable all minification  minify: true  // granular options  minify: {    identifiers: true,    syntax: true,    whitespace: true  }})`                                                                                                                                                               |
 | `minifyIdentifiers` | `minify.identifiers`       | See `minify`                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `minifySyntax`      | `minify.syntax`            | See `minify`                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `minifyWhitespace`  | `minify.whitespace`        | See `minify`                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -180,10 +176,8 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 
 Bun's plugin API is designed to be esbuild compatible. Bun doesn't support esbuild's entire plugin API surface, but the core functionality is implemented. Many third-party esbuild plugins will work out of the box with Bun.
 
-<Note>
   Long term, we aim for feature parity with esbuild's API, so if something doesn't work please file an issue to help us
   prioritize.
-</Note>
 
 Plugins in Bun and esbuild are defined with a builder object.
 
@@ -237,14 +231,13 @@ const myPlugin: BunPlugin = {
 
 ### onResolve
 
-<Tabs>
-  <Tab title="options">
+  
 
     - 🟢 `filter`
     - 🟢 `namespace`
 
-  </Tab>
-  <Tab title="arguments">
+  
+  
 
     - 🟢 `path`
     - 🟢 `importer`
@@ -253,8 +246,8 @@ const myPlugin: BunPlugin = {
     - 🔴 `kind`
     - 🔴 `pluginData`
 
-  </Tab>
-  <Tab title="results">
+  
+  
 
     - 🟢 `namespace`
     - 🟢 `path`
@@ -268,27 +261,25 @@ const myPlugin: BunPlugin = {
     - 🔴 `watchDirs`
     - 🔴 `watchFiles`
 
-  </Tab>
-</Tabs>
+  
 
 ### onLoad
 
-<Tabs>
-  <Tab title="options">
+  
 
     - 🟢 `filter`
     - 🟢 `namespace`
 
-  </Tab>
-  <Tab title="arguments">
+  
+  
   
     - 🟢 `path`
     - 🔴 `namespace`
     - 🔴 `suffix`
     - 🔴 `pluginData`
 
-  </Tab>
-  <Tab title="results">
+  
+  
 
     - 🟢 `contents`
     - 🟢 `loader`
@@ -299,6 +290,3 @@ const myPlugin: BunPlugin = {
     - 🔴 `warnings`
     - 🔴 `watchDirs`
     - 🔴 `watchFiles`
-
-  </Tab>
-</Tabs>

@@ -32,13 +32,13 @@ Doris provides two major categories of data update methods: **updating through d
 
 This is Doris's **recommended high-performance, high-concurrency** update method, primarily targeting the **Unique Key Model**. All load methods (Stream Load, Broker Load, Routine Load, `INSERT INTO`) naturally support `UPSERT` semantics. When new data is loaded, if its primary key already exists, Doris will overwrite the old row data with the new row data; if the primary key doesn't exist, it will insert a new row.
 
-![img](/images/update-overview/update-by-loading.png)
+[img]
 
 #### 1.2.2. Updating Through `UPDATE` DML Statements
 
 Doris supports standard SQL `UPDATE` statements, allowing users to update data based on conditions specified in the `WHERE` clause. This method is very flexible and supports complex update logic, such as cross-table join updates.
 
-![img](/images/update-overview/update-self.png)
+[img]
 
 ```sql
 -- Simple update
@@ -152,7 +152,7 @@ This mechanism ensures quick response to deletion operations while asynchronousl
 
 The following diagram shows how `DORIS_DELETE_SIGN` works:
 
-![img](/images/update-overview/delete_sign_en.png)
+[img]
 
 ### 2.4 Partial Column Update
 
@@ -206,7 +206,7 @@ Capturing change data (Binlog) from upstream business databases (such as MySQL, 
 - **Whole Database Synchronization**: Flink Doris Connector internally integrates Flink CDC, enabling automated, end-to-end whole database synchronization from upstream databases to Doris without manual table creation and field mapping configuration.
 - **Ensuring Consistency**: Utilizes the Unique Key Model's `UPSERT` capability to handle upstream `INSERT` and `UPDATE` operations, uses `DORIS_DELETE_SIGN` to handle `DELETE` operations, and combines with Sequence columns (such as timestamps in Binlog) to handle out-of-order data, perfectly replicating upstream database states and achieving millisecond-level data synchronization latency.
 
-![img](/images/update-overview/flink.png)
+[img]
 
 ### 3.2. Real-time Wide Table Joining
 
@@ -236,7 +236,7 @@ Following these best practices can help you use Doris's data update functionalit
 
 Doris 3.0 introduces an advanced compute-storage separation architecture, bringing ultimate elasticity and lower costs. In this architecture, since BE nodes are stateless, a global state needs to be maintained through MetaService during the Merge-on-Write process to resolve write-write conflicts between load/compaction/schema change operations. The MoW implementation of Unique Key Models relies on a distributed table lock based on Meta Service to ensure write operation consistency, as shown in the following diagram:
 
-![img](/images/update-overview/cloud-mow.png)
+[img]
 
 High-frequency loads and Compaction lead to frequent competition for table locks, so special attention should be paid to the following points:
 

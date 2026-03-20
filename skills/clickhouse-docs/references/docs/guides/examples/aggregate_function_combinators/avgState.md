@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/avgState'
 title: 'avgState'
 description: 'Example of using the avgState combinator'
 keywords: ['avg', 'state', 'combinator', 'examples', 'avgState']
-sidebar_label: 'avgState'
 doc_type: 'reference'
 ---
 

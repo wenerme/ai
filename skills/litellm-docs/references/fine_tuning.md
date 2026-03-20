@@ -1,14 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /fine_tuning
 
-
-:::info
-
-This is an Enterprise only endpoint [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: This is an Enterprise only endpoint [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 | Feature | Supported | Notes | 
 |-------|-------|-------|
@@ -17,7 +11,6 @@ This is an Enterprise only endpoint [Get Started with Enterprise here](https://c
 #### ⚡️See an exhaustive list of supported models and providers at [models.litellm.ai](https://models.litellm.ai/)
 | Cost Tracking | 🟡 | [Let us know if you need this](https://github.com/BerriAI/litellm/issues) |
 | Logging | ✅ | Works across all logging integrations |
-
 
 Add `finetune_settings` and `files_settings` to your litellm config.yaml to use the fine-tuning endpoints.
 ## Example config.yaml for `finetune_settings` and `files_settings`
@@ -54,9 +47,6 @@ files_settings:
 
 ## Create File for fine-tuning
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
-
 ```python
 client = AsyncOpenAI(api_key="sk-1234", base_url="http://0.0.0.0:4000") # base_url is your litellm proxy url
 
@@ -67,8 +57,6 @@ response = await client.files.create(
     purpose="fine-tune",
 )
 ```
-</TabItem>
-<TabItem value="curl" label="curl">
 
 ```shell
 curl http://localhost:4000/v1/files \
@@ -77,16 +65,8 @@ curl http://localhost:4000/v1/files \
     -F purpose="batch" \
     -F file="@mydata.jsonl"
 ```
-</TabItem>
-</Tabs>
 
 ## Create fine-tuning job
-
-<Tabs>
-<TabItem value="azure" label="Azure OpenAI">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 ft_job = await client.fine_tuning.jobs.create(
@@ -95,9 +75,6 @@ ft_job = await client.fine_tuning.jobs.create(
     extra_headers={"custom-llm-provider": "azure"}, # tell litellm proxy which provider to use
 )
 ```
-</TabItem>
-
-<TabItem value="curl" label="curl">
 
 ```shell
 curl http://localhost:4000/v1/fine_tuning/jobs \
@@ -109,17 +86,8 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
     "training_file": "file-abc123"
     }'
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-
-</Tabs>
 
 ### Request Body
-
-<Tabs>
-<TabItem value="params" label="Supported Params">
 
 * `model`
 
@@ -175,7 +143,6 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
     The ID of an uploaded file that contains validation data.
     - If provided, this data is used to generate validation metrics periodically during fine-tuning.
 
-
 * `integrations`
     **Type:** array or null  
     **Required:** No  
@@ -185,9 +152,6 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
     **Type:** integer or null  
     **Required:** No  
     The seed controls the reproducibility of the job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases. If a seed is not specified, one will be generated for you.
-
-</TabItem>
-<TabItem value="example" label="Example Request Body">
 
 ```json
 {
@@ -203,13 +167,8 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
   "seed": 42
 }
 ```
-</TabItem>
-</Tabs>
 
 ## Cancel fine-tuning job
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 # cancel specific fine tuning job
@@ -220,9 +179,6 @@ cancel_ft_job = await client.fine_tuning.jobs.cancel(
 
 print("response from cancel ft job={}".format(cancel_ft_job))
 ```
-</TabItem>
-
-<TabItem value="curl" label="curl">
 
 ```shell
 curl -X POST http://localhost:4000/v1/fine_tuning/jobs/ftjob-abc123/cancel \
@@ -230,15 +186,8 @@ curl -X POST http://localhost:4000/v1/fine_tuning/jobs/ftjob-abc123/cancel \
   -H "Content-Type: application/json" \
   -H "custom-llm-provider: azure"
 ```
-</TabItem>
-
-</Tabs>
 
 ## List fine-tuning jobs
-
-<Tabs>
-
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 list_ft_jobs = await client.fine_tuning.jobs.list(
@@ -247,9 +196,6 @@ list_ft_jobs = await client.fine_tuning.jobs.list(
 
 print("list of ft jobs={}".format(list_ft_jobs))
 ```
-</TabItem>
-
-<TabItem value="curl" label="curl">
 
 ```shell
 curl -X GET 'http://localhost:4000/v1/fine_tuning/jobs' \
@@ -257,10 +203,5 @@ curl -X GET 'http://localhost:4000/v1/fine_tuning/jobs' \
      -H "Authorization: Bearer sk-1234" \
      -H "custom-llm-provider: azure"
 ```
-</TabItem>
-
-</Tabs>
-
-
 
 ## [👉 Proxy API Reference](https://litellm-api.up.railway.app/#/fine-tuning)

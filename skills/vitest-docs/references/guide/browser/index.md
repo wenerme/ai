@@ -1,24 +1,20 @@
 ---
 title: Browser Mode | Guide
-outline: deep
 ---
 
 # Browser Mode {#browser-mode}
 
 This page provides information about the browser mode feature in the Vitest API, which allows you to run your tests in the browser natively, providing access to browser globals like window and document.
 
-::: tip
-If you are looking for documentation for `expect`, `vi` or any general API like test projects or type testing, refer to the ["Getting Started" guide](/guide/).
-:::
+> **tip**: If you are looking for documentation for `expect`, `vi` or any general API like test projects or type testing, refer to the ["Getting Started" guide](/guide/).
 
-<img alt="Vitest UI" img-light src="/ui-browser-1-light.png">
-<img alt="Vitest UI" img-dark src="/ui-browser-1-dark.png">
+[Vitest UI]
+[Vitest UI]
 
 ## Installation
 
 For easier setup, you can use `vitest init browser` command to install required dependencies and create browser configuration.
 
-::: code-group
 ```bash [npm]
 npx vitest init browser
 ```
@@ -31,7 +27,6 @@ pnpx vitest init browser
 ```bash [bun]
 bunx vitest init browser
 ```
-:::
 
 ### Manual Installation
 
@@ -39,7 +34,6 @@ You can also install packages manually. Vitest always requires a provider to be 
 
 If you want to just preview how your tests look, you can use the `preview` provider:
 
-::: code-group
 ```bash [npm]
 npm install -D vitest @vitest/browser-preview
 ```
@@ -52,18 +46,13 @@ pnpm add -D vitest @vitest/browser-preview
 ```bash [bun]
 bun add -D vitest @vitest/browser-preview
 ```
-:::
 
-::: warning
-However, to run tests in CI you need to install either [`playwright`](https://npmx.dev/package/playwright) or [`webdriverio`](https://npmx.dev/package/webdriverio). We also recommend switching to either one of them for testing locally instead of using the default `preview` provider since it relies on simulating events instead of using Chrome DevTools Protocol.
+> **warning**: However, to run tests in CI you need to install either [`playwright`](https://npmx.dev/package/playwright) or [`webdriverio`](https://npmx.dev/package/webdriverio). We also recommend switching to either one of them for testing locally instead of using the default `preview` provider since it relies on simulating events instead of using Chrome DevTools Protocol.
 
 If you don't already use one of these tools, we recommend starting with Playwright because it supports parallel execution, which makes your tests run faster.
 
-::: tabs key:provider
-== Playwright
 [Playwright](https://npmx.dev/package/playwright) is a framework for Web Testing and Automation.
 
-::: code-group
 ```bash [npm]
 npm install -D vitest @vitest/browser-playwright
 ```
@@ -76,11 +65,9 @@ pnpm add -D vitest @vitest/browser-playwright
 ```bash [bun]
 bun add -D vitest @vitest/browser-playwright
 ```
-== WebdriverIO
 
 [WebdriverIO](https://npmx.dev/package/webdriverio) allows you to run tests locally using the WebDriver protocol.
 
-::: code-group
 ```bash [npm]
 npm install -D vitest @vitest/browser-webdriverio
 ```
@@ -93,7 +80,6 @@ pnpm add -D vitest @vitest/browser-webdriverio
 ```bash [bun]
 bun add -D vitest @vitest/browser-webdriverio
 ```
-:::
 
 ## Configuration
 
@@ -117,15 +103,12 @@ export default defineConfig({
 })
 ```
 
-::: info
-Vitest assigns port `63315` to avoid conflicts with the development server, allowing you to run both in parallel. You can change that with the [`browser.api`](/config/browser/api) option.
+> **info**: Vitest assigns port `63315` to avoid conflicts with the development server, allowing you to run both in parallel. You can change that with the [`browser.api`](/config/browser/api) option.
 
 The CLI does not print the Vite server URL automatically. You can press "b" to print the URL when running in watch mode.
-:::
 
 If you have not used Vite before, make sure you have your framework's plugin installed and specified in the config. Some frameworks might require extra configuration to work - check their Vite related documentation to be sure.
 
-::: code-group
 ```ts [react]
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
@@ -235,7 +218,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 If you need to run some tests using Node-based runner, you can define a [`projects`](/guide/projects) option with separate configurations for different testing strategies:
 
@@ -324,9 +306,7 @@ Or you can provide browser options to CLI with dot notation:
 npx vitest --browser.headless
 ```
 
-::: warning
-Since Vitest 3.2, if you don't have the `browser` option in your config but specify the `--browser` flag, Vitest will fail because it can't assume that config is meant for the browser and not Node.js tests.
-:::
+> **warning**: Since Vitest 3.2, if you don't have the `browser` option in your config but specify the `--browser` flag, Vitest will fail because it can't assume that config is meant for the browser and not Node.js tests.
 
 By default, Vitest will automatically open the browser UI for development. Your tests will run inside an iframe in the center. You can configure the viewport by selecting the preferred dimensions, calling `page.viewport` inside the test, or setting default values in [the config](/config/browser/viewport).
 
@@ -361,9 +341,7 @@ npx vitest --browser.headless
 
 In this case, Vitest will run in headless mode using the Chrome browser.
 
-::: warning
-Headless mode is not available by default. You need to use either [`playwright`](https://npmx.dev/package/playwright) or [`webdriverio`](https://npmx.dev/package/webdriverio) providers to enable this feature.
-:::
+> **warning**: Headless mode is not available by default. You need to use either [`playwright`](https://npmx.dev/package/playwright) or [`webdriverio`](https://npmx.dev/package/webdriverio) providers to enable this feature.
 
 ## Examples
 
@@ -424,7 +402,6 @@ await userEvent.fill(page.getByLabelText(/username/i), 'Alice')
 await page.getByLabelText(/username/i).fill('Alice')
 ```
 
-::: code-group
 ```ts [vue]
 import { render } from 'vitest-browser-vue'
 import Component from './Component.vue'
@@ -523,7 +500,6 @@ test('greeting appears on click', async () => {
   await expect.element(greeting).toBeInTheDocument()
 })
 ```
-:::
 
 Vitest doesn't support all frameworks out of the box, but you can use external tools to run tests with these frameworks. We also encourage the community to create their own `vitest-browser` wrappers - if you have one, feel free to add it to the examples above.
 
@@ -534,11 +510,7 @@ For unsupported frameworks, we recommend using `testing-library` packages:
 
 You can also see more examples in [`browser-examples`](https://github.com/vitest-tests/browser-examples) repository.
 
-::: warning
-`testing-library` provides a package `@testing-library/user-event`. We do not recommend using it directly because it simulates events instead of actually triggering them - instead, use [`userEvent`](/api/browser/interactivity) imported from `vitest/browser` that uses Chrome DevTools Protocol or Webdriver (depending on the provider) under the hood.
-:::
-
-::: code-group
+> **warning**: `testing-library` provides a package `@testing-library/user-event`. We do not recommend using it directly because it simulates events instead of actually triggering them - instead, use [`userEvent`](/api/browser/interactivity) imported from `vitest/browser` that uses Chrome DevTools Protocol or Webdriver (depending on the provider) under the hood.
 ```tsx [solid]
 // based on @testing-library/solid API
 // https://testing-library.com/docs/solid-testing-library/api
@@ -582,7 +554,6 @@ test('renders a message', async () => {
   `)
 })
 ```
-:::
 
 ## Limitations
 
@@ -618,7 +589,6 @@ vi.mocked(module.method).mockImplementation(() => {
 
 However, the only way to mock exported _variables_ is to export a method that will change the internal value:
 
-::: code-group
 ```js [module.js]
 export let MODE = 'test'
 export function changeMode(newMode) {
@@ -632,4 +602,3 @@ import { changeMode, MODE } from './module.js'
 changeMode('production')
 expect(MODE).toBe('production')
 ```
-:::

@@ -27,7 +27,6 @@ INTERSECT_COUNT(<bitmap_column>, <column_to_filter>, <filter_values> [, ...])
 | `<column_to_filter>` | The dimension column used for filtering. Supported types: TinyInt, SmallInt, Integer, BigInt, LargeInt. |
 | `<filter_values>`  | The different values used to filter the dimension column. Supported types: TinyInt, SmallInt, Integer, BigInt, LargeInt. |
 
-
 ## Return Value  
 
 Returns the number of elements in the intersection of the given bitmaps.

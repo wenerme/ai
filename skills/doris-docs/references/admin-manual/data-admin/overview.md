@@ -47,4 +47,3 @@ Doris provides a recycle bin feature, offering users a quick way to recover rece
 
 ### Application Scenario Example:
 A team accidentally deleted an important table during routine operations. Using the recycle bin feature, they quickly recovered the deleted data, avoiding a complex backup recovery process while ensuring business continuity.
-

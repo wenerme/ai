@@ -1,6 +1,5 @@
 ---
 title: Build-time constants with --define
-sidebarTitle: Build-time constants
 mode: center
 ---
 
@@ -63,8 +62,6 @@ await Bun.build({
 
 Embed version and build metadata directly into your executable:
 
-<CodeGroup>
-
 ```ts src/version.ts icon="/icons/typescript.svg"
 // These constants are replaced at build time
 declare const BUILD_VERSION: string;
@@ -87,8 +84,6 @@ bun build --compile \
   --define GIT_COMMIT='"abc123"' \
   src/cli.ts --outfile mycli
 ```
-
-</CodeGroup>
 
 ### Feature flags
 

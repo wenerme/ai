@@ -1,7 +1,5 @@
 ---
 date: "2023-06-01T08:40:00+08:00"
-slug: "oauth2-provider"
-sidebar_position: 41
 aliases:
   - /en-us/oauth2-provider
 ---
@@ -22,14 +20,10 @@ An OAuth2 Application in Gitea requires the following configuration made in two 
 - Name (`/admin/applications/`)
 - Redirect URL (`/admin/applications/`)
 
-![](/development/gitea_oauth2_step1.png)
-
 ### Gitea Step 2
 - Client ID (`/admin/applications/oauth2/_id_`)
 - Client Secret (`/admin/applications/oauth2/_id_`)
 - Confidential client status (`/admin/applications/oauth2/_id_`)
-
-![](/development/gitea_oauth2_step2.png)
 
 ### Third Party Step 3
 
@@ -40,21 +34,15 @@ The third-party (Relaying Parties) application's request must include:
 
 An example of MinIO:
 
-![](/development/minio_oauth2.png)
-
-
 ### Gitea's User Approval Step 3
 
 For example, logging in with a Gitea account on MinIO...
-![](/development/minio_login.png)
 
 ...will display the approval popup after a successful login:
-![](/development/gitea_approval.png)
 
 By default, if the third party sets the scopes to `openid`, `email`, `profile`, and `groups`, and the user approves, the application gains full access to all of the user's public and private resources (repositories, issues, user information, etc.).
 
 > **NOTE:** At present, an admin who sets up the OAuth2 Application in Gitea must rely on the scopes sent by the third party and an approval decision by the informed user if restrictive access is expected. There is no way for the admin to set restrictive access via scopes during the application setup process.
-
 
 ## Granular Scopes
 
@@ -155,9 +143,7 @@ For public clients, a redirect URI of a loopback IP address such as `http://127.
 
 ### Confidential client
 
-:::note
-This example does not use PKCE.
-:::
+> **note**: This example does not use PKCE.
 
 1. Redirect the user to the authorization endpoint in order to get their consent for accessing the resources:
 
@@ -167,7 +153,7 @@ This example does not use PKCE.
 
    The `CLIENT_ID` can be obtained by registering an application in the settings. The `STATE` is a random string that will be sent back to your application after the user authorizes. The `state` parameter is optional, but should be used to prevent CSRF attacks.
 
-   ![Authorization Page](/authorize.png)
+   [Authorization Page]
 
    The user will now be asked to authorize your application. If they authorize it, the user will be redirected to the `REDIRECT_URL`, for example:
 
@@ -231,7 +217,7 @@ After you have generated this values, you can continue with your request.
 
    The `CLIENT_ID` can be obtained by registering an application in the settings. The `STATE` is a random string that will be sent back to your application after the user authorizes. The `state` parameter is optional, but should be used to prevent CSRF attacks.
 
-   ![Authorization Page](/authorize.png)
+   [Authorization Page]
 
    The user will now be asked to authorize your application. If they authorize it, the user will be redirected to the `REDIRECT_URL`, for example:
 

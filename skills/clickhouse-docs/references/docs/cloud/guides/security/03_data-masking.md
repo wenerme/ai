@@ -1,6 +1,4 @@
 ---
-slug: /cloud/guides/data-masking
-sidebar_label: 'Data masking'
 title: 'Data masking in ClickHouse'
 description: 'A guide to data masking in ClickHouse'
 keywords: ['data masking']
@@ -21,9 +19,7 @@ This guide shows you how you can mask data in ClickHouse using several approache
 
 ## Use masking policies (ClickHouse Cloud) {#masking-policies}
 
-:::note
-Masking policies are available in ClickHouse Cloud starting from version 25.12.
-:::
+> **note**: Masking policies are available in ClickHouse Cloud starting from version 25.12.
 
 The [`CREATE MASKING POLICY`](/sql-reference/statements/create/masking-policy) statement provides a native way to dynamically mask column values for specific users or roles at query time. Unlike other approaches, masking policies don't require creating separate views or storing masked data - the transformation happens transparently when users query the table.
 

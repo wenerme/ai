@@ -65,7 +65,6 @@ FROM test_boolean_agg;
 +----------------+----------------+----------------+----------------+
 ```
 
-
 BOOL_OR also accepts numeric types; non-zero values are treated as `TRUE`:
 ```sql
 CREATE TABLE test_numeric_or_null (

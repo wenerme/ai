@@ -256,7 +256,7 @@ This setup reproduces label flapping and shows how dynamic label values affect a
    Create a new label `severity` and set its value to the following:
 
    ```go
-   {{/* $values.B.Value refers to the numeric result from query B */}}
+   {}
    {{- if gt $values.B.Value 90.0 -}}P1
    {{- else if gt $values.B.Value 80.0 -}}P2
    {{- else if gt $values.B.Value 70.0 -}}P3

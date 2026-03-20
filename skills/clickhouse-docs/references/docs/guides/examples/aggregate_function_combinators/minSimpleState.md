@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/minSimpleState'
 title: 'minSimpleState'
 description: 'Example of using the minSimpleState combinator'
 keywords: ['min', 'state', 'simple', 'combinator', 'examples', 'minSimpleState']
-sidebar_label: 'minSimpleState'
 doc_type: 'reference'
 ---
 
@@ -159,10 +157,8 @@ We now get the expected result:
 └─────────────┴───────────────┴──────────┴──────────┘
 ```
 
-:::note
-With `SimpleState`, you don't need to use the `Merge` combinator to combine
+> **note**: With `SimpleState`, you don't need to use the `Merge` combinator to combine
 partial aggregation states.
-:::
 
 ## See also {#see-also}
 - [`min`](/sql-reference/aggregate-functions/reference/min)

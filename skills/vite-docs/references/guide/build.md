@@ -8,16 +8,12 @@ When it is time to deploy your app for production, simply run the `vite build` c
 
 By default, the production bundle assumes a modern browser that is included in the [Baseline](https://web-platform-dx.github.io/web-features/) Widely Available targets. The default browser support range is:
 
-<!-- Search for the `ESBUILD_BASELINE_WIDELY_AVAILABLE_TARGET` constant for more information -->
-
 - Chrome >=111
 - Edge >=111
 - Firefox >=114
 - Safari >=16.4
 
 You can specify custom targets via the [`build.target` config option](/config/build-options.md#build-target), where the lowest target is `es2015`. If a lower target is set, Vite will still require these minimum browser support ranges as it relies on [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta):
-
-<!-- Search for the `defaultEsbuildSupported` constant for more information -->
 
 - Chrome >=64
 - Firefox >=67
@@ -44,11 +40,9 @@ For advanced base path control, check out [Advanced Base Options](#advanced-base
 
 If you don't know the base path in advance, you may set a relative base path with `"base": "./"` or `"base": ""`. This will make all generated URLs to be relative to each file.
 
-:::warning Support for older browsers when using relative bases
+> **warning**: Support for older browsers when using relative bases
 
 `import.meta` support is required for relative bases. If you need to support [browsers that do not support `import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta), you can use [the `legacy` plugin](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy).
-
-:::
 
 ## Customizing the Build
 
@@ -142,8 +136,6 @@ When you are developing a browser-oriented library, you are likely spending most
 
 When it is time to bundle your library for distribution, use the [`build.lib` config option](/config/build-options.md#build-lib). Make sure to also externalize any dependencies that you do not want to bundle into your library, e.g. `vue` or `react`:
 
-::: code-group
-
 ```js twoslash [vite.config.js (single entry)]
 import { dirname, resolve } from 'node:path'
 import { defineConfig } from 'vite'
@@ -201,8 +193,6 @@ export default defineConfig({
 })
 ```
 
-:::
-
 The entry file would contain exports that can be imported by users of your package:
 
 ```js [lib/main.js]
@@ -226,8 +216,6 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 Recommended `package.json` for your lib:
-
-::: code-group
 
 ```json [package.json (single entry)]
 {
@@ -265,8 +253,6 @@ Recommended `package.json` for your lib:
 }
 ```
 
-:::
-
 ### CSS support
 
 If your library imports any CSS, it will be bundled as a single CSS file besides the built JS files, e.g. `dist/my-lib.css`. The name defaults to `build.lib.fileName`, but can also be changed with [`build.lib.cssFileName`](/config/build-options.md#build-lib).
@@ -290,23 +276,18 @@ You can export the CSS file in your `package.json` to be imported by users:
 }
 ```
 
-::: tip File Extensions
+> **tip**: File Extensions
 If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
-:::
 
-::: tip Environment Variables
+> **tip**: Environment Variables
 In library mode, all [`import.meta.env.*`](./env-and-mode.md) usage are statically replaced when building for production. However, `process.env.*` usage are not, so that consumers of your library can dynamically change it. If this is undesirable, you can use `define: { 'process.env.NODE_ENV': '"production"' }` for example to statically replace them, or use [`esm-env`](https://github.com/benmccann/esm-env) for better compatibility with bundlers and runtimes.
-:::
 
-::: warning Advanced Usage
+> **warning**: Advanced Usage
 Library mode includes a simple and opinionated configuration for browser-oriented and JS framework libraries. If you are building non-browser libraries, or require advanced build flows, you can use [tsdown](https://tsdown.dev/) or [Rolldown](https://rolldown.rs/) directly.
-:::
 
 ## Advanced Base Options
 
-::: warning
-This feature is experimental. [Give Feedback](https://github.com/vitejs/vite/discussions/13834).
-:::
+> **warning**: This feature is experimental. [Give Feedback](https://github.com/vitejs/vite/discussions/13834).
 
 For advanced use cases, the deployed assets and public files may be in different paths, for example to use different cache strategies.
 A user may choose to deploy in three different paths:

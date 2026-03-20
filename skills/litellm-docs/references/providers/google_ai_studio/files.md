@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # [BETA] Google AI Studio (Gemini) Files API
 
@@ -16,15 +15,11 @@ Useful to pass in large media files to Gemini's `/generateContent` endpoint.
 
 ## Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import base64
 import requests
 from litellm import completion, create_file
 import os
-
 
 ### UPLOAD FILE ### 
 
@@ -34,7 +29,6 @@ response = requests.get(url)
 response.raise_for_status()
 wav_data = response.content
 encoded_string = base64.b64encode(wav_data).decode('utf-8')
-
 
 file = create_file(
     file=wav_data,
@@ -46,7 +40,6 @@ file = create_file(
 print(f"file: {file}")
 
 assert file is not None
-
 
 ### GENERATE CONTENT ### 
 completion = completion(
@@ -74,9 +67,6 @@ completion = completion(
 
 print(completion.choices[0].message)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -112,7 +102,6 @@ response = requests.get(url)
 response.raise_for_status()
 wav_data = response.content
 encoded_string = base64.b64encode(wav_data).decode('utf-8')
-
 
 file = client.files.create(
     file=wav_data,
@@ -153,12 +142,6 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message)
 ```
 
-
-
-
-</TabItem>
-</Tabs>
-
 ## Azure Blob Storage Integration
 
 LiteLLM supports using Azure Blob Storage as a target storage backend for Gemini file uploads. This allows you to store files in Azure Data Lake Storage Gen2 instead of Google's managed storage.
@@ -187,11 +170,7 @@ Azure Blob Storage supports all Gemini-compatible file types:
 
 > **Note:** Only small files can be sent as inline data because the total request size limit is 20 MB.
 
-
 ### Step 3: Upload Files with Azure Blob Storage for Gemini
-
-<Tabs>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -262,9 +241,6 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="curl" label="cURL">
-
 ```bash
 # Upload file with Azure Blob Storage
 curl -X POST "http://0.0.0.0:4000/v1/files" \
@@ -299,10 +275,4 @@ curl -X POST "http://0.0.0.0:4000/v1/chat/completions" \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-Files uploaded to Azure Blob Storage are stored in your Azure account and can be accessed via the returned file ID. The file URL format is: `https://{account}.blob.core.windows.net/{container}/{path}`
-:::
-
+> **info**: Files uploaded to Azure Blob Storage are stored in your Azure account and can be accessed via the returned file ID. The file URL format is: `https://{account}.blob.core.windows.net/{container}/{path}`

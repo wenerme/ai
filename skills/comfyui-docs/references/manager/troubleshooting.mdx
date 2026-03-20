@@ -1,6 +1,5 @@
 ---
 title: Troubleshooting
-sidebarTitle: Troubleshooting
 description: Resolve common ComfyUI-Manager issues
 ---
 
@@ -61,9 +60,7 @@ ComfyUI-Manager files must be located in `ComfyUI/custom_nodes/comfyui-manager`.
 | Wrong folder name | Installed as `custom_nodes/ComfyUI-Manager-main` |
 | Compressed format | Installing from a compressed file without proper extraction |
 
-<Warning>
 If installed incorrectly, ComfyUI-Manager may appear to work but won't be recognized for updates and may cause duplicate installations. Remove it and reinstall properly via `git clone`.
-</Warning>
 
 ## Network issues
 
@@ -96,9 +93,7 @@ When running the `scan.sh` script:
 | `--skip-stat-update` | Skip updating github-stats.json |
 | `--skip-all` | Skip both update steps |
 
-<Tip>
 To avoid GitHub API rate limits, set your token: `export GITHUB_TOKEN=your_token_here`
-</Tip>
 
 If you want to specify a different path instead of `~/.tmp/default`, run `python scanner.py [path]` directly instead of `scan.sh`.
 
@@ -133,9 +128,7 @@ security_level = normal
 | **Middle** | Uninstall/Update, installation of custom nodes in default channel, restore/remove snapshot, restart |
 | **Low** | Update ComfyUI |
 
-<Tip>
 To install custom nodes via git URL or nightly versions, set `security_level = weak` in your `config.ini`.
-</Tip>
 
 ## Getting help
 

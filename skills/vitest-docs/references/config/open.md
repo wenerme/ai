@@ -1,6 +1,5 @@
 ---
 title: open | Config
-outline: deep
 ---
 
 # open <CRoot />

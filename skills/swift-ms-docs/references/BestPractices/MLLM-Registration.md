@@ -42,7 +42,6 @@ register_model_arch(
 
 class Qwen2_5OmniLoader(ModelLoader):
 
-
     def get_config(self, model_dir: str) -> PretrainedConfig:
         from transformers import Qwen2_5OmniConfig
         config = Qwen2_5OmniConfig.from_pretrained(model_dir, trust_remote_code=True)
@@ -78,7 +77,6 @@ class Qwen2_5OmniLoader(ModelLoader):
         model.config.keys_to_ignore_at_inference += ['hidden_states', 'attention_mask']
         model.config.talker_config.pad_token_id = None
         return model
-
 
 register_model(
     ModelMeta(
@@ -131,7 +129,6 @@ from swift.template.utils import Context, findall
 from swift.template.vision_utils import load_audio
 from swift.utils import Processor, get_env_args, get_logger, get_packed_seq_params, is_deepspeed_enabled, to_float_dtype
 
-
 logger = get_logger()
 
 class Qwen2_5OmniTemplate(Template):
@@ -157,7 +154,6 @@ class Qwen2_5OmniTemplate(Template):
         self.sampling_rate = get_env_args('sampling_rate', int, self.processor.feature_extractor.sampling_rate)
         # See grounding dataset customization documentation for `QWENVL_BBOX_FORMAT` meaning
         self.bbox_format = get_env_args('QWENVL_BBOX_FORMAT', str, 'legacy')
-
 
     def replace_tag(self, media_type: Literal['image', 'video', 'audio'], index: int,
                     inputs: StdTemplateInputs) -> List[Context]:
@@ -189,7 +185,6 @@ class Qwen2_5OmniTemplate(Template):
                 return ['<|vision_bos|><|audio_bos|><|VIDEO|><|audio_eos|><|vision_eos|>']
             else:
                 return ['<|vision_bos|><|VIDEO|><|vision_eos|>']
-
 
     def replace_ref(self, ref: str, index: int, inputs: StdTemplateInputs) -> List[Context]:
         """Replace generic tag for grounding tasks: `<ref-object>`"""
@@ -244,7 +239,6 @@ class Qwen2_5OmniTemplate(Template):
                 audio_seq_length = audio_chunk_indexes[j][1] - audio_chunk_indexes[j][0]
                 res += audio_token_id * audio_seq_length
         return res
-
 
     def _encode(self, inputs: StdTemplateInputs) -> Dict[str, Any]:
         """This determines how to convert text/images/audios/videos -> input_ids, labels, loss_scale, and multimodal content like pixel_values
@@ -443,7 +437,6 @@ class Qwen2_5OmniTemplate(Template):
             kwargs['use_audio_in_video'] = self.use_audio_in_video
         return super().generate(model, *args, **kwargs)
 
-
 register_template(
     TemplateMeta('my_qwen2_5_omni', prefix=[], prompt=['<|im_start|>user\n{{QUERY}}<|im_end|>\n<|im_start|>assistant\n'],
                  chat_sep=['<|im_end|>\n'], suffix=['<|im_end|>'],
@@ -530,7 +523,6 @@ def test_my_qwen2_5_omni():
     resp = resp_list[0].choices[0].message.content
     return input_ids, resp
 
-
 if __name__ == '__main__':
     # Enable debug mode, will print input_ids and generate_ids from `TransformersEngine.infer`
     os.environ['SWIFT_DEBUG'] = '1'
@@ -541,11 +533,9 @@ if __name__ == '__main__':
     assert response_hf == response_swift
 ```
 
-
 ## Start Training
 
 Train using Python code, which is usually easier to debug:
-
 
 ```python
 from swift import sft_main, SftArguments

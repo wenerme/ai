@@ -223,4 +223,3 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/wmt24pp.md
 ../../benchmarks/wnut2017.md
 ../../benchmarks/zebralogicbench.md
-:::

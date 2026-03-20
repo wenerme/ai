@@ -13,9 +13,7 @@ When a procedure [calls](/docs/client/server-side#using-the-call-utility) anothe
 
 Similarly, when using `.use(auth).router(router)`, some procedures inside `router` might already include the `auth` middleware.
 
-:::warning
-Redundant middleware execution can hurt performance, especially if the middleware is resource-intensive.
-:::
+> **warning**: Redundant middleware execution can hurt performance, especially if the middleware is resource-intensive.
 
 ## Solution
 
@@ -82,10 +80,7 @@ const router = os
 
 oRPC can automatically dedupe some middleware under specific conditions.
 
-::: info
-Deduplication occurs only if the router middlewares is a **subset** of the **leading** procedure middlewares and appears in the **same order**.
-:::
-
+> **info**: Deduplication occurs only if the router middlewares is a **subset** of the **leading** procedure middlewares and appears in the **same order**.
 ```ts
 const router = os.use(logging).use(dbProvider).router({
   // ✅ Deduplication occurs:
@@ -120,6 +115,4 @@ Disable middleware deduplication by setting `dedupeLeadingMiddlewares` to `false
 const base = os.$config({ dedupeLeadingMiddlewares: false })
 ```
 
-:::warning
-The deduplication behavior is safe unless you want to apply middleware multiple times.
-:::
+> **warning**: The deduplication behavior is safe unless you want to apply middleware multiple times.

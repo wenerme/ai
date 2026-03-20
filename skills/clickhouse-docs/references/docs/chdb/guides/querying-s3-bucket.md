@@ -1,7 +1,5 @@
 ---
 title: 'How to query data in an S3 bucket'
-sidebar_label: 'Querying data in S3'
-slug: /chdb/guides/querying-s3
 description: 'Learn how to query data in an S3 bucket with chDB.'
 keywords: ['chdb', 's3']
 doc_type: 'guide'
@@ -45,9 +43,7 @@ You can also use the code in a Python script or in your favorite notebook.
 Let's start by listing all the files in [an S3 bucket that contains Amazon reviews](/getting-started/example-datasets/amazon-reviews).
 To do this, we can use the [`s3` table function](/sql-reference/table-functions/s3) and pass in the path to a file or a wildcard to a set of files.
 
-:::tip
-If you pass just the bucket name it will throw an exception.
-:::
+> **tip**: If you pass just the bucket name it will throw an exception.
 
 We're also going to use the [`One`](/interfaces/formats/One) input format so that the file isn't parsed, instead a single row is returned per file and we can access the file via the `_file` virtual column and the path via the `_path` virtual column.
 
@@ -191,8 +187,6 @@ LIMIT 10
 """, 'PrettyCompact')
 ```
 
-:::note
-This query won't work because it's a public bucket!
-:::
+> **note**: This query won't work because it's a public bucket!
 
 An alternative way is to used [named collections](/operations/named-collections), but this approach isn't yet supported by chDB.

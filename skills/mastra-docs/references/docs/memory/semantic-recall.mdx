@@ -17,15 +17,13 @@ If you ask your friend what they did last weekend, they will search in their mem
 
 What semantic recall is, how it works, and how to configure it in Mastra → [YouTube (5 minutes)](https://youtu.be/UVZtK8cK8xQ)
 
-:::
-
 ## How semantic recall works
 
 Semantic recall is RAG-based search that helps agents maintain context across longer interactions when messages are no longer within [recent message history](./message-history).
 
 It uses vector embeddings of messages for similarity search, integrates with various vector stores, and has configurable context windows around retrieved messages.
 
-![Diagram showing Mastra Memory semantic recall](/img/semantic-recall.png)
+[Diagram showing Mastra Memory semantic recall]
 
 When it's enabled, new messages are used to query a vector DB for semantically similar messages.
 

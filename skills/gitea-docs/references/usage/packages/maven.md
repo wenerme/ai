@@ -1,7 +1,5 @@
 ---
 date: "2021-07-20T00:00:00+00:00"
-slug: "maven"
-sidebar_position: 60
 ---
 
 # Maven Package Registry

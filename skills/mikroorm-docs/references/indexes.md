@@ -2,25 +2,13 @@
 title: Indexes and Unique Constraints
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 MikroORM provides comprehensive support for defining indexes and unique constraints on your entities. This guide covers everything from basic usage to advanced database-specific features.
 
 ## Basic Index and Unique Constraint Definition
 
 Indexes can be defined using the `@Index()` decorator, and unique constraints using `@Unique()`. Both can be applied at the entity level (for composite indexes) or property level (for single-column indexes).
 
-<Tabs
-groupId="entity-def"
-defaultValue="reflect-metadata"
-values={[
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="reflect-metadata">
+  
 
 ```ts title="./entities/Author.ts"
 @Entity()
@@ -47,9 +35,6 @@ export class Author {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts title="./entities/Author.ts"
 @Entity()
 @Index({ properties: ['name', 'age'] })
@@ -75,22 +60,11 @@ export class Author {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## Custom Index Expressions
 
 For complex indexes that require custom SQL, you can use the `expression` option. This allows you to specify the exact `CREATE INDEX` statement.
 
-<Tabs
-groupId="entity-def"
-defaultValue="reflect-metadata"
-values={[
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-]
-}
->
-  <TabItem value="reflect-metadata">
+  
 
 ```ts title="./entities/Author.ts"
 @Entity()
@@ -115,9 +89,6 @@ export class Author {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Index Types
 
@@ -341,11 +312,9 @@ export class Event {
 
 **Database support:** MariaDB (Aria storage engine only), MSSQL
 
-:::note MariaDB Limitation
+> **note**: MariaDB Limitation
 
 In MariaDB, clustered indexes (`CLUSTERING=YES`) only work with the Aria storage engine. Using this option with InnoDB tables will have no effect (the option is silently ignored).
-
-:::
 
 ## Deferrable Unique Constraints (PostgreSQL)
 

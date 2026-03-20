@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure Video Generation
 
@@ -87,9 +86,6 @@ export AZURE_OPENAI_API_BASE="https://your-resource.openai.azure.com/"
 
 ### 2. Start the proxy 
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: azure-sora-2
@@ -99,23 +95,13 @@ model_list:
       api_base: os.environ/AZURE_OPENAI_API_BASE
 ```
 
-</TabItem>
-<TabItem value="cli" label="CLI">
-
 ```bash
 $ litellm --model azure/sora-2
 
 # Server running on http://0.0.0.0:4000
 ```
 
-</TabItem>
-
-</Tabs>
-
 ### 3. Test it
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/videos/generations' \
@@ -128,9 +114,6 @@ curl --location 'http://0.0.0.0:4000/videos/generations' \
     "size": "720x1280"
 }'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -150,9 +133,6 @@ response = client.videos.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models
 
 | Model Name | 
@@ -160,7 +140,6 @@ print(response)
 | sora-2 | 
 |sora-2-pro |
 |sora-2-pro-high-res|
-
 
 ## Logging & Observability
 
@@ -189,7 +168,6 @@ general_settings:
   alerting: ["datadog"]
   datadog_api_key: os.environ/DATADOG_API_KEY
 ```
-
 
 ## Video Generation Parameters
 

@@ -1,6 +1,5 @@
 ---
 title: Using MikroORM with Next.js
-sidebar_label: Usage with Next.js
 ---
 
 This guide covers integrating MikroORM with Next.js, addressing the unique challenges that arise from Next.js's bundler environment. For a complete working example, see the [nextjs-example-app](https://github.com/mikro-orm/nextjs-example-app) repository.

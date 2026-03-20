@@ -62,7 +62,7 @@ The silence period prevents duplicate notifications by temporarily pausing alert
 
 ## Multi-window alerts
 Compare current data against historical data to detect anomalies and trends.
-Raw numbers alone cannot reveal trends. Multi-window alerts provide context by comparing current results with past data to detect anomalies and performance shifts. <br>
+Raw numbers alone cannot reveal trends. Multi-window alerts provide context by comparing current results with past data to detect anomalies and performance shifts. 
 For example, 200 errors in 30 minutes is critical if you normally see 50, but normal if you typically see 180-210.
 
 ### Workflow:
@@ -83,9 +83,9 @@ After configuring windows, navigate to **Conditions** > **SQL mode** > **View Ed
 ---
 
 ## FAQ
-**Question**: If I set the frequency to 5 minutes and the current time is 23:03, when will the next runs happen? <br>
-**Answer**: OpenObserve aligns the next run to the nearest upcoming time that is divisible by the frequency, starting from the top of the hour in the configured timezone. This ensures that all runs occur at consistent and predictable intervals.<br>
-**Example**<br>
+**Question**: If I set the frequency to 5 minutes and the current time is 23:03, when will the next runs happen? 
+**Answer**: OpenObserve aligns the next run to the nearest upcoming time that is divisible by the frequency, starting from the top of the hour in the configured timezone. This ensures that all runs occur at consistent and predictable intervals.
+**Example**
 If the current time is 23:03, here is when the next run will occur for different frequencies:
 
 - Frequency 4 minutes > 23:04

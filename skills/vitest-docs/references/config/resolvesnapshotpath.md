@@ -1,6 +1,5 @@
 ---
 title: resolveSnapshotPath | Config
-outline: deep
 ---
 
 # resolveSnapshotPath <CRoot />

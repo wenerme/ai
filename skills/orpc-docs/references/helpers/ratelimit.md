@@ -9,8 +9,6 @@ The Rate Limit package provides flexible rate limiting for oRPC with multiple st
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/experimental-ratelimit@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/experimental-ratelimit@latest
 ```sh [deno]
 deno add npm:@orpc/experimental-ratelimit@latest
 ```
-
-:::
 
 ## Available Adapters
 
@@ -68,9 +64,7 @@ const limiter = new RedisRatelimiter({
 })
 ```
 
-::: info
-You can use any Redis client that supports Lua script evaluation by providing an `eval` function.
-:::
+> **info**: You can use any Redis client that supports Lua script evaluation by providing an `eval` function.
 
 ### Upstash Ratelimit Adapter
 
@@ -92,7 +86,7 @@ const ratelimit = new Ratelimit({
 const limiter = new UpstashRatelimiter(ratelimit)
 ```
 
-::: tip Edge Runtime Support
+> **tip**: Edge Runtime Support
 For Edge runtime like Vercel Edge or Cloudflare Workers, pass the `waitUntil` function to better handle background tasks:
 
 ```ts
@@ -100,8 +94,6 @@ const limiter = new UpstashRatelimiter(ratelimit, {
   waitUntil: ctx.waitUntil.bind(ctx),
 })
 ```
-
-:::
 
 ### Cloudflare Ratelimit Adapter
 
@@ -195,11 +187,10 @@ const result = await call(
 )
 ```
 
-::: info Automatic Deduplication
+> **info**: Automatic Deduplication
 The `createRatelimitMiddleware` automatically deduplicates rate limit checks when the same `limiter` and `key` combination is used multiple times in a request chain. This behavior follows the [Dedupe Middleware Best Practice](/docs/best-practices/dedupe-middleware). To disable deduplication, set the `dedupe: false` option.
-:::
 
-::: tip Conditional Limiter
+> **tip**: Conditional Limiter
 You can dynamically choose different limiters based on context:
 
 ```ts
@@ -224,8 +215,6 @@ const result = await call(
 )
 ```
 
-:::
-
 ## Handler Plugin
 
 The `RatelimitHandlerPlugin` automatically adds HTTP rate-limiting headers (`RateLimit-*` and `Retry-After`) to responses when used with middleware created by [`createRatelimitMiddleware`](#createratelimitmiddleware).
@@ -240,10 +229,6 @@ const handler = new RPCHandler(router, {
 })
 ```
 
-::: info
-You can combine this plugin with [Retry After Plugin](/docs/plugins/retry-after) to enable automatic client-side retries based on server rate-limiting headers.
-:::
+> **info**: You can combine this plugin with [Retry After Plugin](/docs/plugins/retry-after) to enable automatic client-side retries based on server rate-limiting headers.
 
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or other custom handlers.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or other custom handlers.

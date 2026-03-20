@@ -1,20 +1,12 @@
 # AWS Key Management V1
 
-:::info
-
-✨ **This is an Enterprise Feature**
+> **info**: ✨ **This is an Enterprise Feature**
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
-:::
-
-:::tip
-
-[BETA] AWS Key Management v2 is on the enterprise tier. Go [here for docs](../proxy/enterprise.md#beta-aws-key-manager---key-decryption)
-
-:::
+> **tip**: [BETA] AWS Key Management v2 is on the enterprise tier. Go [here for docs](../proxy/enterprise.md#beta-aws-key-manager---key-decryption)
 
 Use AWS KMS to storing a hashed copy of your Proxy Master Key in the environment. 
 
@@ -31,4 +23,3 @@ general_settings:
 ```
 
 [**See Decryption Code**](https://github.com/BerriAI/litellm/blob/a2da2a8f168d45648b61279d4795d647d94f90c9/litellm/utils.py#L10182)
-

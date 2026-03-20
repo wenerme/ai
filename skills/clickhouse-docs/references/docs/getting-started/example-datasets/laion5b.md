@@ -1,14 +1,9 @@
 ---
 description: 'Dataset containing 100 million vectors from the LAION 5B dataset'
-sidebar_label: 'LAION 5B dataset'
-slug: /getting-started/example-datasets/laion-5b-dataset
 title: 'LAION 5B dataset'
 keywords: ['semantic search', 'vector similarity', 'approximate nearest neighbours', 'embeddings']
 doc_type: 'guide'
 ---
-
-import search_results_image from '@site/static/images/getting-started/example-datasets/laion5b_visualization_1.png'
-import Image from '@theme/IdealImage';
 
 ## Introduction {#introduction}
 

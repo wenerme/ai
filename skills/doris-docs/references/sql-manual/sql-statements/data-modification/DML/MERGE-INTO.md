@@ -48,7 +48,6 @@ notMatchedClause ::=
 
 > Specifies the table to merge.
 
-
 **\<source\>**
 
 > Specifies the table or subquery to join with the target table.
@@ -187,7 +186,6 @@ MERGE INTO merge_into_target_base_table t1
 ```
 
 Display the new values in the target table (the source table is unchanged):
-
 
 ```sql
 SELECT * FROM merge_into_target_base_table;

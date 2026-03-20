@@ -32,9 +32,9 @@ You can use an encryption key from Azure Key Vault to encrypt secrets in the Gra
 6. From within Grafana, turn on envelope encryption.
 
 7. Add your Azure Key Vault details to the Grafana configuration file; depending on your operating system, is usually named `grafana.ini`:
-   <br><br>a. Add a new section to the configuration file, with a name in the format of `[security.encryption.azurekv.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
-   <br><br>b. Fill in the section with the following values:
-   <br>
+   a. Add a new section to the configuration file, with a name in the format of `[security.encryption.azurekv.<KEY-NAME>]`, where `<KEY-NAME>` is any name that uniquely identifies this key among other provider keys.
+   b. Fill in the section with the following values:
+   
    - `tenant_id`: the **Directory ID** (tenant) from the application that you registered.
    - `client_id`: the **Application ID** (client) from the application that you registered.
    - `client_secret`: the VALUE of the secret that you generated in your app. (Don't use the Secret ID).

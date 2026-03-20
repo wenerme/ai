@@ -1,20 +1,4 @@
-<!--
-  READ THIS IF YOU WANT TO ADD A NEW DEPLOYMENT PLATFORM.
 
-  Feel free to submit a PR that adds a new section with a link to your platform's
-  deployment guide, as long as it meets these criteria:
-
-  1. Users should be able to deploy their site for free.
-  2. Free tier offerings should host the site indefinitely and are not time-bound.
-     Offering a limited number of computation resource or site counts in exchange is fine.
-  3. The linked guides should not contain any malicious content.
-
-  New sections should be added last in the file. Please reference the existing sections at
-  the bottom of this file for examples of how to format the new section.
-
-  The Vite team may change the criteria and audit the current list from time to time.
-  If a section is removed, we will ping the original PR authors before doing so.
--->
 
 # Deploying a Static Site
 
@@ -35,9 +19,8 @@ The following guides are based on some shared assumptions:
 
 It is important to note that `vite preview` is intended for previewing the build locally and not meant as a production server.
 
-::: tip NOTE
+> **tip**: NOTE
 These guides provide instructions for performing a static deployment of your Vite site. Vite also supports Server-Side Rendering. SSR refers to front-end frameworks that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. Check out the [SSR Guide](./ssr) to learn about this feature. On the other hand, if you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
-:::
 
 ## Building the App
 

@@ -27,14 +27,14 @@ LOCAL(
 ## Required Parameters
 | Parameter         | Description                                                                                                                                                                                          | Remarks                                           |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| `file_path`       | The path of the file to be read, which is relative to the `user_files_secure_path` directory. The `user_files_secure_path` parameter is a [BE configuration item](../../../admin-manual/config/be-config.md). <br /> The path cannot include `..`, and glob syntax can be used for pattern matching, such as `logs/*.log`. |                                                   |
+| `file_path`       | The path of the file to be read, which is relative to the `user_files_secure_path` directory. The `user_files_secure_path` parameter is a [BE configuration item](../../../admin-manual/config/be-config.md).  The path cannot include `..`, and glob syntax can be used for pattern matching, such as `logs/*.log`. |                                                   |
 | `backend_id`      | The ID of the BE node where the file is located. It can be obtained via the `show backends` command.                                                                                                  | Before version 2.1.1, Doris only supports specifying a BE node to read local data files on that node. |
 | `format`          | The file format, which is required. Supported formats are `csv/csv_with_names/csv_with_names_and_types/json/parquet/orc`.                                                                             |                                                   |
 
 ## Optional Parameters
 | Parameter              | Description                                                                                                                                                                       | Remarks                                                                |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| `shared_storage`        | Defaults to false. If true, the specified file is located on shared storage (e.g., NAS). The shared storage must support POSIX file interfaces and be mounted on all BE nodes. <br /> When `shared_storage` is true, `backend_id` can be omitted. Doris may utilize all BE nodes to access the data. If `backend_id` is set, the data will be accessed only on the specified BE node. | Supported starting from version 2.1.2                                      |
+| `shared_storage`        | Defaults to false. If true, the specified file is located on shared storage (e.g., NAS). The shared storage must support POSIX file interfaces and be mounted on all BE nodes.  When `shared_storage` is true, `backend_id` can be omitted. Doris may utilize all BE nodes to access the data. If `backend_id` is set, the data will be accessed only on the specified BE node. | Supported starting from version 2.1.2                                      |
 | `column_separator`      | The column separator, optional, defaults to `\t`.                                                                                                                                 |                                                                       |
 | `line_delimiter`        | The line delimiter, optional, defaults to `\n`.                                                                                                                                   |                                                                       |
 | `compress_type`         | The compression type, optional. Supported types are `UNKNOWN/PLAIN/GZ/LZO/BZ2/LZ4FRAME/DEFLATE/SNAPPYBLOCK`. Defaults to `UNKNOWN`, and the type will be automatically inferred from the `uri` suffix. |                                                                       |
@@ -55,7 +55,6 @@ LOCAL(
 | :--------- |:-------|:------|
 | ADMIN_PRIV | global |       |
 
-
 ## Usage Notes
 
 - For more detailed usage of local tvf, please refer to [S3](./s3.md) tvf, The only difference between them is the way of accessing the storage system.
@@ -65,7 +64,6 @@ LOCAL(
   NAS shared storage allows to be mounted to multiple nodes at the same time. Each node can access files in the shared storage just like local files. Therefore, the NAS can be thought of as a local file system, accessed through local tvf.
 
   When setting `"shared_storage" = "true"`, Doris will think that the specified file can be accessed from any BE node. When a set of files is specified using wildcards, Doris will distribute requests to access files to multiple BE nodes, so that multiple nodes can be used to perform distributed file scanning and improve query performance.
-
 
 ## Examples
 

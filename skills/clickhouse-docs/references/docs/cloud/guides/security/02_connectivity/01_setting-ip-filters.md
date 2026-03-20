@@ -1,15 +1,9 @@
 ---
-sidebar_label: 'Setting IP filters'
-slug: /cloud/security/setting-ip-filters
 title: 'Setting IP filters'
 description: 'This page explains how to set IP filters in ClickHouse Cloud to control access to ClickHouse services.'
 doc_type: 'guide'
 keywords: ['IP filters', 'IP access list']
 ---
-
-import Image from '@theme/IdealImage';
-import ip_filtering_after_provisioning from '@site/static/images/cloud/security/ip-filtering-after-provisioning.png';
-import ip_filter_add_single_ip from '@site/static/images/cloud/security/ip-filter-add-single-ip.png';
 
 ## Setting IP filters {#setting-ip-filters}
 
@@ -17,7 +11,6 @@ IP access lists filter traffic to ClickHouse services or API keys by specifying 
 
 :::warning[Configure the IP access list for your service]
 When you create a ClickHouse Cloud service, the default setting for the IP allow list is 'Allow from anywhere.' We strongly recommend restricting access to specific IP addresses or ranges as soon as possible. Services set to `Allow from anywhere` may be periodically moved from an idle to an active state by internet crawlers and scanners that look for public IPs, which may result in unexpected costs.
-:::
 
 ## Prepare {#prepare}
 
@@ -27,13 +20,11 @@ Classless Inter-domain Routing (CIDR) notation, allows you to specify IP address
 
 ## Create or modify an IP access list {#create-or-modify-an-ip-access-list}
 
-:::note Applicable only to connections outside of PrivateLink
+> **note**: Applicable only to connections outside of PrivateLink
 IP access lists only apply to connections from the public internet, outside of [PrivateLink](/cloud/security/connectivity/private-networking).
 If you only want traffic from PrivateLink, set `DenyAll` in IP Allow list.
-:::
 
-<details>
-  <summary>IP access list for ClickHouse services</summary>
+  IP access list for ClickHouse services
 
   When you create a ClickHouse service, the default setting for the IP allow list is 'Allow from anywhere.'
   
@@ -45,9 +36,8 @@ If you only want traffic from PrivateLink, set `DenyAll` in IP Allow list.
 - Allow access from specific locations to the service
 - Deny all access to the service
   
-</details>
-<details>
-  <summary>IP access list for API keys</summary>
+
+  IP access list for API keys
 
   When you create an API key, the default setting for the IP allow list is 'Allow from anywhere.'
   
@@ -57,7 +47,6 @@ If you only want traffic from PrivateLink, set `DenyAll` in IP Allow list.
 - Allow access from specific locations to the service
 - Deny all access to the service
   
-</details>
 
 This screenshot shows an access list which allows traffic from a range of IP addresses, described as "NY Office range":
   

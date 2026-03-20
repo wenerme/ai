@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # IBM watsonx.ai
 
@@ -22,7 +21,7 @@ See [here](https://cloud.ibm.com/apidocs/watsonx-ai#api-authentication) for more
 ## Usage
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/liteLLM_IBM_Watsonx.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ```python showLineNumbers title="Chat Completion"
@@ -95,15 +94,9 @@ export WATSONX_PROJECT_ID=""
 
 ### 2. Start the proxy 
 
-<Tabs>
-<TabItem value="cli" label="CLI">
-
 ```bash
 $ litellm --model watsonx/meta-llama/llama-3-8b-instruct
 ```
-
-</TabItem>
-<TabItem value="config" label="config.yaml">
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -112,14 +105,8 @@ model_list:
       model: watsonx/meta-llama/llama-3-8b-instruct
       api_key: "os.environ/WATSONX_API_KEY"
 ```
-</TabItem>
-</Tabs>
 
 ### 3. Test it
-
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -134,8 +121,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
       ]
     }'
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI SDK">
 
 ```python showLineNumbers
 import openai
@@ -151,9 +136,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ## Supported Models
 
@@ -174,7 +156,6 @@ For all available models, see [watsonx.ai documentation](https://dataplatform.cl
 | Slate 125m | `embedding(model="watsonx/ibm/slate-125m-english-rtrvr", input=input)` |
 
 For all available embedding models, see [watsonx.ai embedding documentation](https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models-embed.html?context=wx).
-
 
 ## Advanced
 
@@ -226,5 +207,3 @@ response = client.chat.completions.create(
 ```
 
 See [IBM documentation](https://www.ibm.com/docs/en/watsonx/w-and-w/2.2.0?topic=keys-generating-zenapikey-authorization-tokens) for more information on generating Zen API keys.
-
-

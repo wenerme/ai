@@ -44,7 +44,6 @@ HaluEval is a large collection of generated and human-annotated hallucinated sam
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `data` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -129,5 +128,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

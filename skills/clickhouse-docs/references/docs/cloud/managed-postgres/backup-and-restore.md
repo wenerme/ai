@@ -1,15 +1,9 @@
 ---
-slug: /cloud/managed-postgres/backup-and-restore
-sidebar_label: 'Backup and restore'
 title: 'Backup and restore'
 description: 'Understand backup strategies and point-in-time recovery for ClickHouse Managed Postgres'
 keywords: ['backup', 'restore', 'point-in-time recovery', 'pitr', 'disaster recovery', 'postgres backup']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import backupAndRestore from '@site/static/images/managed-postgres/backup-and-restore.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="backup-and-restore" />
 

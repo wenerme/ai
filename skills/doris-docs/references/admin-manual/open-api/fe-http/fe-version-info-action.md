@@ -54,7 +54,6 @@ None.
     ```
 ## Examples
 
-
     ```
     GET /api/fe_version_info
     
@@ -80,4 +79,3 @@ None.
         "count":0
     }
     ```
-

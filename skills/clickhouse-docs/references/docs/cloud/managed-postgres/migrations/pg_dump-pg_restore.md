@@ -1,19 +1,9 @@
 ---
-slug: /cloud/managed-postgres/migrations/pg_dump-pg_restore
-sidebar_label: 'pg_dump and pg_restore'
 title: 'Migrate PostgreSQL data using pg_dump and pg_restore'
 description: 'Learn how to migrate your PostgreSQL data to ClickHouse Managed Postgres using pg_dump and pg_restore'
 keywords: ['postgres', 'postgresql', 'pg_dump', 'pg_restore', 'migration', 'data transfer', 'managed postgres']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import createPgForMigrate from '@site/static/images/managed-postgres/pg_dump_restore/create-pg-for-migration.png';
-import sourceSetup from '@site/static/images/managed-postgres/pg_dump_restore/source-setup.png';
-import dumpCommand from '@site/static/images/managed-postgres/pg_dump_restore/dump-command.png';
-import restoreCommand from '@site/static/images/managed-postgres/pg_dump_restore/restore-command.png';
-import targetSetup from '@site/static/images/managed-postgres/pg_dump_restore/target-setup.png';
 
 # Migrate to Managed Postgres using pg_dump and pg_restore {#pg-dump-pg-restore}
 This guide provides step-by-step instructions on how to migrate your PostgreSQL database to ClickHouse Managed Postgres using the `pg_dump` and `pg_restore` utilities.
@@ -48,9 +38,7 @@ Here:
 - `-f rds-dump` specifies the output directory for the dump files. Note that this directory will be created automatically and shouldn't exist beforehand.
 - You can also parallelize the dump process by adding the `--jobs` flag followed by the number of parallel jobs you want to run. For more details, refer to the [pg_dump documentation](https://www.postgresql.org/docs/current/app-pgdump.html).
 
-:::tip
-You can test this process once to get a sense of how long it takes and the size of the dump file.
-:::
+> **tip**: You can test this process once to get a sense of how long it takes and the size of the dump file.
 
 Here's what running this command looks like:
 <Image img={dumpCommand} alt="pg_dump Command Execution" size="xl" border />

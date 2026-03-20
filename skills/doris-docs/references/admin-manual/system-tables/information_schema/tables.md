@@ -12,9 +12,7 @@ Stores all table information.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

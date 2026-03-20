@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenTelemetry - Tracing LLMs with any observability tool
 
@@ -8,7 +6,7 @@ OpenTelemetry is a CNCF standard for observability. It connects to any observabi
 
 <Image img={require('../../img/traceloop_dash.png')} />
 
-:::note Change in v1.81.0
+> **note**: Change in v1.81.0
 
 From v1.81.0, the request/response will be set as attributes on the parent "Received Proxy Server Request" span by default. This allows you to see the request/response in the parent span in your observability tool.
 
@@ -20,8 +18,6 @@ To use the older behavior with nested "litellm_request" spans (which creates sep
 USE_OTEL_LITELLM_REQUEST_SPAN=true
 ```
 
-:::
-
 ## Getting Started
 
 Install the OpenTelemetry SDK:
@@ -32,30 +28,17 @@ pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
 
 Set the environment variables (different providers may require different variables):
 
-
-<Tabs>
-
-<TabItem value="traceloop" label="Log to Traceloop Cloud">
-
 ```shell
 OTEL_EXPORTER="otlp_http"
 OTEL_ENDPOINT="https://api.traceloop.com"
 OTEL_HEADERS="Authorization=Bearer%20<your-api-key>"
 ```
 
-</TabItem>
-
-<TabItem value="otel-col" label="Log to OTEL HTTP Collector">
-
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT="http://0.0.0.0:4318"
 OTEL_EXPORTER_OTLP_PROTOCOL=http/json
 OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"
 ```
-
-</TabItem>
-
-<TabItem value="otel-col-grpc" label="Log to OTEL GRPC Collector">
 
 ```shell
 OTEL_EXPORTER_OTLP_ENDPOINT="http://0.0.0.0:4318"
@@ -65,10 +48,6 @@ OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"
 
 > Note: OTLP gRPC requires `grpcio`. Install via `pip install "litellm[grpc]"` (or `grpcio`).
 
-</TabItem>
-
-<TabItem value="laminar" label="Log to Laminar">
-
 ```shell
 OTEL_EXPORTER="otlp_grpc"
 OTEL_ENDPOINT="https://api.lmnr.ai:8443"
@@ -76,10 +55,6 @@ OTEL_HEADERS="authorization=Bearer <project-api-key>"
 ```
 
 > Note: OTLP gRPC requires `grpcio`. Install via `pip install "litellm[grpc]"` (or `grpcio`).
-
-</TabItem>
-
-</Tabs>
 
 Use just 1 line of code, to instantly log your LLM responses **across all providers** with OpenTelemetry:
 

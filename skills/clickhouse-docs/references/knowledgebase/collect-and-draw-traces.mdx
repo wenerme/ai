@@ -6,16 +6,7 @@ keywords: ['query trace', 'OTel', 'Grafana']
 description: "This guide shows you how to collect and draw query traces with self-managed ClickHouse using either built-in methods or using Grafana. This is particularly useful when you're working with complex queries and need to understand the internal execution mechanics beyond what EXPLAIN provides."
 ---
 
-import Image from '@theme/IdealImage';
-import trace_visualizer from '@site/static/images/knowledgebase/trace-visualizer-example.png';
-import trace_visualization_grafana from '@site/static/images/knowledgebase/trace-visualization-grafana.png';
-import trace_visualization_diagram from '@site/static/images/knowledgebase/trace-visualization-diagram.png';
-
 {frontMatter.description}
-{/* truncate */}
-
-<br/>
-<br/>
 
 **Prerequisites**:
 - Familiarity with ClickHouse [config files](/operations/configuration-files)
@@ -72,9 +63,7 @@ Processing configuration file 'config.xml'.
 There is no file 'config.xml', will use embedded config.
 ```
 
-:::tip
-In standard installations this file is located at `/etc/clickhouse-server/config.xml`
-:::
+> **tip**: In standard installations this file is located at `/etc/clickhouse-server/config.xml`
 
 ## Enable OpenTelemetry tracing {#enable-otel-tracing}
 

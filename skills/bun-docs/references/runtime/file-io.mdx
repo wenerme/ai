@@ -3,11 +3,7 @@ title: File I/O
 description: Bun provides a set of optimized APIs for reading and writing files.
 ---
 
-<Note>
-
 The `Bun.file` and `Bun.write` APIs documented on this page are heavily optimized and represent the recommended way to perform file-system tasks using Bun. For operations that are not yet available with `Bun.file`, such as `mkdir` or `readdir`, you can use Bun's [nearly complete](/runtime/nodejs-compat#node-fs) implementation of the [`node:fs`](https://nodejs.org/api/fs.html) module.
-
-</Note>
 
 ---
 
@@ -98,8 +94,6 @@ The second argument is the data to be written. It can be any of the following:
 
 All possible permutations are handled using the fastest available system calls on the current platform.
 
-<Accordion title="See syscalls">
-
 | Output               | Input          | System call                   | Platform |
 | -------------------- | -------------- | ----------------------------- | -------- |
 | file                 | file           | copy_file_range               | Linux    |
@@ -112,8 +106,6 @@ All possible permutations are handled using the fastest available system calls o
 | file (exists)        | file           | fcopyfile                     | macOS    |
 | file                 | Blob or string | write                         | macOS    |
 | file                 | Blob or string | write                         | Linux    |
-
-</Accordion>
 
 To write a string to disk:
 
@@ -263,7 +255,7 @@ bun ./cat.ts ./path-to-file
 
 It runs 2x faster than GNU `cat` for large files on Linux.
 
-<Frame>![Cat screenshot](/images/cat.jpg)</Frame>
+[Cat screenshot]
 
 ---
 

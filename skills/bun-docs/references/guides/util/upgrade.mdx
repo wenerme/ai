@@ -1,6 +1,5 @@
 ---
 title: Upgrade Bun to the latest version
-sidebarTitle: Upgrade Bun
 mode: center
 ---
 
@@ -12,7 +11,7 @@ bun upgrade
 
 This downloads and installs the latest stable version of Bun, replacing the currently installed version.
 
-<Note>To see the current version of Bun, run `bun --version`.</Note>
+To see the current version of Bun, run `bun --version`.
 
 ---
 
@@ -39,7 +38,7 @@ Canary builds are automatically released on every commit to the `main` branch. T
 bun upgrade --canary
 ```
 
-<Warning>Canary builds are not recommended for production use. They may contain bugs or breaking changes.</Warning>
+Canary builds are not recommended for production use. They may contain bugs or breaking changes.
 
 ---
 
@@ -57,18 +56,16 @@ bun upgrade --stable
 
 To install a specific version of Bun, use the install script with a version tag:
 
-<Tabs>
-  <Tab title="macOS & Linux">
+  
     ```bash terminal icon="terminal"
     curl -fsSL https://bun.sh/install | bash -s "bun-v1.3.3"
     ```
-  </Tab>
-  <Tab title="Windows">
+  
+  
     ```powershell PowerShell icon="windows"
     iex "& {$(irm https://bun.sh/install.ps1)} -Version 1.3.3"
     ```
-  </Tab>
-</Tabs>
+  
 
 ---
 
@@ -76,14 +73,11 @@ To install a specific version of Bun, use the install script with a version tag:
 
 If you installed Bun via a package manager, use that package manager to upgrade instead of `bun upgrade` to avoid conflicts.
 
-<Tip>
-**Homebrew users** <br />
+**Homebrew users** 
 To avoid conflicts with Homebrew, use `brew upgrade bun` instead.
 
-**Scoop users** <br />
+**Scoop users** 
 To avoid conflicts with Scoop, use `scoop update bun` instead.
-
-</Tip>
 
 ---
 

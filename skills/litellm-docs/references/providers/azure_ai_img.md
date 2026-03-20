@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure AI Image Generation (Black Forest Labs - Flux)
 
@@ -39,9 +38,6 @@ Get your API key and endpoint from [Azure AI Studio](https://ai.azure.com/).
 
 ### Usage - LiteLLM Python SDK
 
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
-
 ```python showLineNumbers title="Basic Image Generation"
 import litellm
 import os
@@ -61,10 +57,6 @@ response = litellm.image_generation(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="flux11" label="FLUX 1.1 Pro">
-
 ```python showLineNumbers title="FLUX 1.1 Pro Image Generation"
 import litellm
 import os
@@ -83,10 +75,6 @@ response = litellm.image_generation(
 
 print(response.data[0].url)
 ```
-
-</TabItem>
-
-<TabItem value="flux2" label="FLUX 2 Pro">
 
 ```python showLineNumbers title="FLUX 2 Pro Image Generation"
 import litellm
@@ -109,10 +97,6 @@ response = litellm.image_generation(
 
 print(response.data[0].b64_json)  # FLUX 2 returns base64 encoded images
 ```
-
-</TabItem>
-
-<TabItem value="async" label="Async Usage">
 
 ```python showLineNumbers title="Async Image Generation"
 import litellm
@@ -140,10 +124,6 @@ async def generate_image():
 asyncio.run(generate_image())
 ```
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced Parameters">
-
 ```python showLineNumbers title="Advanced Image Generation with Parameters"
 import litellm
 import os
@@ -166,9 +146,6 @@ response = litellm.image_generation(
 for image in response.data:
     print(f"Generated image URL: {image.url}")
 ```
-
-</TabItem>
-</Tabs>
 
 ### Usage - LiteLLM Proxy Server
 
@@ -215,9 +192,6 @@ litellm --config /path/to/config.yaml
 
 #### 3. Make requests with OpenAI Python SDK
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Azure AI Image Generation via Proxy - OpenAI SDK"
 from openai import OpenAI
 
@@ -238,10 +212,6 @@ response = client.images.generate(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Azure AI Image Generation via Proxy - LiteLLM SDK"
 import litellm
 
@@ -256,10 +226,6 @@ response = litellm.image_generation(
 print(response.data[0].url)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Azure AI Image Generation via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/generations' \
 --header 'Content-Type: application/json' \
@@ -272,17 +238,11 @@ curl --location 'http://localhost:4000/v1/images/generations' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Image Editing
 
 FLUX 2 Pro supports image editing by passing an input image along with a prompt describing the desired modifications.
 
 ### Usage - LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="basic-edit" label="Basic Image Edit">
 
 ```python showLineNumbers title="Basic Image Editing with FLUX 2 Pro"
 import litellm
@@ -304,10 +264,6 @@ response = litellm.image_edit(
 
 print(response.data[0].b64_json)  # FLUX 2 returns base64 encoded images
 ```
-
-</TabItem>
-
-<TabItem value="async-edit" label="Async Image Edit">
 
 ```python showLineNumbers title="Async Image Editing"
 import litellm
@@ -332,13 +288,7 @@ async def edit_image():
 asyncio.run(edit_image())
 ```
 
-</TabItem>
-</Tabs>
-
 ### Usage - LiteLLM Proxy Server
-
-<Tabs>
-<TabItem value="curl-edit" label="cURL">
 
 ```bash showLineNumbers title="Image Edit via Proxy - cURL"
 curl --location 'http://localhost:4000/v1/images/edits' \
@@ -347,10 +297,6 @@ curl --location 'http://localhost:4000/v1/images/edits' \
 --form 'prompt="Add sunglasses to the person"' \
 --form 'image=@"input_image.png"'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk-edit" label="OpenAI SDK">
 
 ```python showLineNumbers title="Image Edit via Proxy - OpenAI SDK"
 from openai import OpenAI
@@ -368,9 +314,6 @@ response = client.images.edit(
 
 print(response.data[0].b64_json)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Parameters
 

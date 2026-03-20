@@ -26,7 +26,6 @@ cd ${Vector_HOME}
 make package-x86_64-unknown-linux-gnu
 ```
 
-
 ## Configuration Parameters
 
 Doris Sink supports extensive configuration options to meet data writing requirements in different scenarios:
@@ -345,7 +344,6 @@ Below is a sample data entry. The actual data is one entry per line; formatting 
 }
 ```
 
-
 **2. Create Doris Table**
 
 ```
@@ -467,4 +465,3 @@ Use the following command to start the Vector service:
 ```bash
 vector --config vector_config.toml
 ```
-

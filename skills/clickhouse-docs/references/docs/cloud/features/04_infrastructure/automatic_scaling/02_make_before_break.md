@@ -1,15 +1,9 @@
 ---
-sidebar_position: 1
-sidebar_label: 'Make Before Break (MBB)'
-slug: /cloud/features/mbb
 description: 'Page describing Make Before Break (MBB) operations in ClickHouse Cloud'
 keywords: ['Make Before Break', 'MBB', 'Scaling', 'ClickHouse Cloud']
 title: 'Make Before Break (MBB) operations in ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import mbb_diagram from '@site/static/images/cloud/features/mbb/vertical_scaling.png';
 
 ClickHouse Cloud performs cluster upgrades and cluster scaling utilizing a **Make Before Break** (MBB) approach.
 In this approach, new replicas are added to the cluster before removing old replicas from it.

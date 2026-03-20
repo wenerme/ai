@@ -139,11 +139,7 @@ Note that the config references the `User` entity which we haven't created yet. 
 
 ## First Entity
 
-:::info
-
-Check out the [Defining Entities](../defining-entities.md) section which provides many examples of various property types as well as different ways to define your entities.
-
-:::
+> **info**: Check out the [Defining Entities](../defining-entities.md) section which provides many examples of various property types as well as different ways to define your entities.
 
 Time to create your first entity - the `User`! Create a `user.entity.ts` file in `src/modules/user` with the following contents:
 
@@ -271,7 +267,7 @@ import config from './mikro-orm.config.js';
 const orm = await MikroORM.init(config);
 ```
 
-:::info Synchronous initialization
+> **info**: Synchronous initialization
 
 As opposed to the async [`MikroORM.init`](/api/core/class/MikroORM#init) method, you can prefer to use synchronous variant with the constructor: [`new MikroORM()`](/api/core/class/MikroORM#constructor).
 
@@ -284,8 +280,6 @@ This method has some limitations:
 - folder-based discovery not supported
 - ORM extensions are not auto-loaded
 - when metadata cache is enabled, `FileCacheAdapter` needs to be explicitly set in the config
-
-:::
 
 ## Working with Entity Manager
 
@@ -535,11 +529,7 @@ verify the EM ids are different: 3 4
 users are no longer the same, as they came from different EM: false
 ```
 
-:::info
-
-We just used `em.findOneOrFail()` instead of `em.findOne()`, as you may have guessed, its purpose is to always return a value, or throw otherwise.
-
-:::
+> **info**: We just used `em.findOneOrFail()` instead of `em.findOne()`, as you may have guessed, its purpose is to always return a value, or throw otherwise.
 
 You can see there is a select query to load the user. This is because you used a new fork, that is clean by default—it has an empty Identity Map, and therefore it needs to load the entity from the database. In the previous example, you already had it present by the time you were calling `em.findOne()`. You queried the entity by its primary key, and such a query will always first check the identity map and prefer the results from it instead of querying the database.
 
@@ -676,7 +666,7 @@ export default defineConfig({
 
 This is particularly useful for large projects with many entities. See [Folder-based Discovery](../folder-based-discovery.md) for details.
 
-:::tip ESM and TypeScript file resolution
+> **tip**: ESM and TypeScript file resolution
 
 When using folder-based discovery in an ESM project with test runners like Vitest, you may encounter an error like `TypeError: Unknown file extension ".ts"` (ERR_UNKNOWN_FILE_EXTENSION). This happens because the dynamic import of your entities fails to resolve TypeScript files - MikroORM performs these imports internally, and tools like Vitest cannot automatically transform them.
 
@@ -691,8 +681,6 @@ export default defineConfig({
 ```
 
 This tells MikroORM to use your application's import context instead of its own, allowing proper TypeScript file resolution.
-
-:::
 
 Check the [Defining Entities](../defining-entities.md) documentation for more examples of all entity definition approaches.
 

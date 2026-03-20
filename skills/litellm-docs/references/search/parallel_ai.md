@@ -72,4 +72,3 @@ response = search(
     max_chars_per_result=500         # Max characters per result
 )
 ```
-

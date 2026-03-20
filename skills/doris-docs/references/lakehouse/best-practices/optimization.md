@@ -100,9 +100,7 @@ If you find that `MergedBytes` is much larger than `RequestBytes`, it indicates 
 
 ## Parquet Page Cache
 
-:::info
-Supported since version 4.1.0.
-:::
+> **info**: Supported since version 4.1.0.
 
 Parquet Page Cache is a page-level caching mechanism for Parquet files. This feature integrates with Doris's existing Page Cache framework, significantly improving query performance by caching decompressed (or compressed) data pages in memory.
 

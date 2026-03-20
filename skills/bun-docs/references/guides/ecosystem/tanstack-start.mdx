@@ -1,6 +1,5 @@
 ---
 title: Use TanStack Start with Bun
-sidebarTitle: TanStack Start with Bun
 mode: center
 ---
 
@@ -8,16 +7,15 @@ mode: center
 
 ---
 
-<Steps>
-  <Step title="Create a new TanStack Start app">
+  
     Use the interactive CLI to create a new TanStack Start app.
 
     ```sh terminal icon="terminal"
     bunx @tanstack/cli create my-tanstack-app
     ```
 
-  </Step>
-  <Step title="Start the dev server">
+  
+  
     Change to the project directory and run the dev server with Bun.
 
     ```sh terminal icon="terminal"
@@ -27,8 +25,8 @@ mode: center
 
     This starts the Vite dev server with Bun.
 
-  </Step>
-  <Step title="Update scripts in package.json">
+  
+  
    Modify the scripts field in your `package.json` by prefixing the Vite CLI commands with `bun --bun`. This ensures that Bun executes the Vite CLI for common tasks like `dev`, `build`, and `preview`.
 
     ```json package.json icon="file-json"
@@ -41,8 +39,7 @@ mode: center
     }
     ```
 
-  </Step>
-</Steps>
+  
 
 ---
 
@@ -50,18 +47,17 @@ mode: center
 
 To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a custom Bun server for production deployments.
 
-<Tabs>
-  <Tab title="Nitro">
-    <Steps>
-      <Step title="Add Nitro to your project">
+  
+    
+      
         Add [Nitro](https://nitro.build/) to your project. This tool allows you to deploy your TanStack Start app to different platforms.
 
         ```sh terminal icon="terminal"
         bun add nitro
         ```
 
-      </Step>
-      <Step title={<span>Update your <code>vite.config.ts</code> file</span>}>
+      
+      Update your <code>vite.config.ts</code> file</span>}>
         Update your `vite.config.ts` file to include the necessary plugins for TanStack Start with Bun.
 
         ```ts vite.config.ts icon="/icons/typescript.svg"
@@ -79,12 +75,12 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
         export default config;
         ```
 
-        <Note>
+        
           The `bun` preset is optional, but it configures the build output specifically for Bun's runtime.
-        </Note>
+        
 
-      </Step>
-      <Step title="Update the start command">
+      
+      
         Make sure `build` and `start` scripts are present in your `package.json` file:
 
         ```json package.json icon="file-json"
@@ -98,20 +94,20 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
           }
         ```
 
-        <Note>
+        
           You do **not** need the custom `start` script when deploying to Vercel.
-        </Note>
+        
 
-      </Step>
-      <Step title="Deploy your app">
+      
+      
         Check out one of our guides to deploy your app to a hosting provider.
 
-        <Note>
+        
           When deploying to Vercel, you can either add the `"bunVersion": "1.x"` to your `vercel.json` file, or add it to the `nitro` config in your `vite.config.ts` file:
 
-          <Warning>
+          
             Do **not** use the `bun` Nitro preset when deploying to Vercel.
-          </Warning>
+          
 
           ```ts vite.config.ts icon="/icons/typescript.svg"
           export default defineConfig({
@@ -128,18 +124,18 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
             ],
           });
           ```
-        </Note>
-      </Step>
-    </Steps>
+        
+      
+    
 
-  </Tab>
-  <Tab title="Custom Server">
-    <Note>
+  
+  
+    
       This custom server implementation is based on [TanStack's Bun template](https://github.com/TanStack/router/blob/main/examples/react/start-bun/server.ts). It provides fine-grained control over static asset serving, including configurable memory management that preloads small files into memory for fast serving while serving larger files on-demand. This approach is useful when you need precise control over resource usage and asset loading behavior in production deployments.
-    </Note>
+    
 
-    <Steps>
-      <Step title="Create the production server">
+    
+      
         Create a `server.ts` file in your project root with the following custom server implementation:
 
         ```ts server.ts icon="/icons/typescript.svg" expandable
@@ -701,8 +697,8 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
         })
         ```
 
-      </Step>
-      <Step title="Update package.json scripts">
+      
+      
         Add a `start` script to run the custom server:
 
         ```json package.json icon="file-json"
@@ -714,8 +710,8 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
         }
         ```
 
-      </Step>
-      <Step title="Build and run">
+      
+      
         Build your application and start the server:
 
         ```sh terminal icon="terminal"
@@ -725,31 +721,30 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
 
         The server will start on port 3000 by default (configurable via `PORT` environment variable).
 
-      </Step>
-    </Steps>
+      
+    
 
-  </Tab>
-</Tabs>
+  
 
 <Columns cols={3}>
-  <Card title="Vercel" href="/guides/deployment/vercel" icon="/icons/ecosystem/vercel.svg">
+  
     Deploy on Vercel
-  </Card>
-  <Card title="Render" href="/guides/deployment/render" icon="/icons/ecosystem/render.svg">
+  
+  
     Deploy on Render
-  </Card>
-  <Card title="Railway" href="/guides/deployment/railway" icon="/icons/ecosystem/railway.svg">
+  
+  
     Deploy on Railway
-  </Card>
-  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="/icons/ecosystem/digitalocean.svg">
+  
+  
     Deploy on DigitalOcean
-  </Card>
-  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="/icons/ecosystem/aws.svg">
+  
+  
     Deploy on AWS Lambda
-  </Card>
-  <Card title="Google Cloud Run" href="/guides/deployment/google-cloud-run" icon="/icons/ecosystem/gcp.svg">
+  
+  
     Deploy on Google Cloud Run
-  </Card>
+  
 </Columns>
 
 ---
@@ -757,33 +752,15 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
 ## Templates
 
 <Columns cols={2}>
-  <Card
-    title="Todo App with Tanstack + Bun"
-    img="/images/templates/bun-tanstack-todo.png"
-    href="https://github.com/bun-templates/bun-tanstack-todo"
-    arrow="true"
-    cta="Go to template"
-  >
+  
     A Todo application built with Bun, TanStack Start, and PostgreSQL.
-  </Card>
-  <Card
-    title="Bun + TanStack Start Application"
-    img="/images/templates/bun-tanstack-basic.png"
-    href="https://github.com/bun-templates/bun-tanstack-basic"
-    arrow="true"
-    cta="Go to template"
-  >
+  
+  
     A TanStack Start template using Bun with SSR and file-based routing.
-  </Card>
-  <Card
-    title="Basic Bun + Tanstack Starter"
-    img="/images/templates/bun-tanstack-start.png"
-    href="https://github.com/bun-templates/bun-tanstack-start"
-    arrow="true"
-    cta="Go to template"
-  >
+  
+  
     The basic TanStack starter using the Bun runtime and Bun's file APIs.
-  </Card>
+  
 </Columns>
 
 ---

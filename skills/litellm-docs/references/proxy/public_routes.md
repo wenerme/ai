@@ -1,13 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Control Public & Private Routes
 
-:::info
-
-Requires a LiteLLM Enterprise License. [Get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions).
-
-:::
+> **info**: Requires a LiteLLM Enterprise License. [Get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions).
 
 Control which routes require authentication and which routes are publicly accessible.
 
@@ -67,10 +62,6 @@ general_settings:
 
 ### Testing
 
-<Tabs>
-
-<TabItem value="public" label="Test public_routes">
-
 ```shell
 curl --request POST \
   --url 'http://localhost:4000/spend/calculate' \
@@ -82,10 +73,6 @@ curl --request POST \
 ```
 
 This endpoint works without an `Authorization` header.
-
-</TabItem>
-
-<TabItem value="admin_only_routes" label="Test admin_only_routes">
 
 **Successful Request (Admin)**
 
@@ -117,10 +104,6 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
   }
 }
 ```
-
-</TabItem>
-
-<TabItem value="allowed_routes" label="Test allowed_routes">
 
 **Successful Request**
 
@@ -161,10 +144,6 @@ curl --location 'http://0.0.0.0:4000/embeddings' \
 }
 ```
 
-</TabItem>
-
-</Tabs>
-
 ## Advanced: Wildcard Patterns
 
 Use wildcard patterns to match multiple routes at once.
@@ -174,7 +153,6 @@ Use wildcard patterns to match multiple routes at once.
 | Pattern | Description | Example |
 |---------|-------------|---------|
 | `/path/*` | Matches any route starting with `/path/` | `/api/*` matches `/api/users`, `/api/users/123` |
-
 
 ### Examples
 
@@ -220,4 +198,3 @@ curl http://localhost:4000/public/health/detailed
 # This requires auth (doesn't match /public/*)
 curl http://localhost:4000/private/data
 ```
-

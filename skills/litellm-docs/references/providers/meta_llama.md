@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Meta Llama
 
@@ -18,11 +17,7 @@ os.environ["LLAMA_API_KEY"] = ""  # your Meta Llama API key
 
 ## Supported Models
 
-:::info
-All models listed here https://llama.developer.meta.com/docs/models/ are supported. We actively maintain the list of models, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
-
-:::
-
+> **info**: All models listed here https://llama.developer.meta.com/docs/models/ are supported. We actively maintain the list of models, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
 
 | Model ID | Input context length | Output context length | Input Modalities | Output Modalities |
 | --- | --- | --- | --- | --- |
@@ -171,7 +166,6 @@ print(response.choices[0].message.content)
 
 ## Usage - LiteLLM Proxy
 
-
 Add the following to your LiteLLM Proxy configuration file:
 
 ```yaml showLineNumbers title="config.yaml"
@@ -194,9 +188,6 @@ litellm --config config.yaml
 
 # RUNNING on http://0.0.0.0:4000
 ```
-
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="Meta Llama via Proxy - Non-streaming"
 from openai import OpenAI
@@ -237,10 +228,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Meta Llama via Proxy - LiteLLM SDK"
 import litellm
 
@@ -272,10 +259,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Meta Llama via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -296,8 +279,5 @@ curl http://localhost:4000/v1/chat/completions \
     "stream": true
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 For more detailed information on using the LiteLLM Proxy, see the [LiteLLM Proxy documentation](../providers/litellm_proxy).

@@ -1,19 +1,9 @@
 ---
 title: 'Private Networking Setup'
-slug: /cloud/reference/byoc/onboarding/network
-sidebar_label: 'Private Networking Setup'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'vpc peering', 'privatelink']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc_vpcpeering from '@site/static/images/cloud/reference/byoc-vpcpeering-1.png';
-import byoc_vpcpeering2 from '@site/static/images/cloud/reference/byoc-vpcpeering-2.png';
-import byoc_vpcpeering3 from '@site/static/images/cloud/reference/byoc-vpcpeering-3.png';
-import byoc_vpcpeering4 from '@site/static/images/cloud/reference/byoc-vpcpeering-4.png';
-import byoc_privatelink_1 from '@site/static/images/cloud/reference/byoc-privatelink-1.png';
-import byoc_privatelink_2 from '@site/static/images/cloud/reference/byoc-privatelink-2.png';
 
 ClickHouse BYOC supports various private networking options to enhance security and enable direct connectivity for your services. This guide walks you through the recommended approaches for securely connecting ClickHouse Cloud deployments in your own AWS or GCP account to other networks or services, such as your internal applications or analytics tools. We cover options such as VPC Peering, AWS PrivateLink, and GCP Private Service Connect, and outline the main steps and considerations for each.
 
@@ -109,13 +99,11 @@ After ClickHouse Support has enabled PrivateLink on their side, you need to crea
    - Select or create a security group for the endpoint
    - Click "Create Endpoint"
 
-:::important
-**DNS Requirements**: 
+> **important**: **DNS Requirements**: 
 - Enable "Private DNS names" when creating the VPC endpoint
 - Ensure your VPC has "DNS Hostnames" enabled (VPC Settings → DNS resolution and DNS hostnames)
 
 These settings are required for the PrivateLink DNS to function correctly.
-:::
 
 3. **Approve the Endpoint Connection**:
    - After creating the endpoint, you need to approve the connection request
@@ -158,9 +146,7 @@ Access to ClickHouse services via PrivateLink is controlled at two levels:
 1. **Istio Authorization Policy**: ClickHouse Cloud's service-level authorization policies
 2. **VPC Endpoint Security Group**: The security group attached to your VPC endpoint controls which resources in your VPC can use the endpoint
 
-:::note
-The private load balancer's "Enforce inbound rules on PrivateLink traffic" feature is disabled, so access is controlled by Istio authorization policies and your VPC endpoint's security group only.
-:::
+> **note**: The private load balancer's "Enforce inbound rules on PrivateLink traffic" feature is disabled, so access is controlled by Istio authorization policies and your VPC endpoint's security group only.
 
 ### PrivateLink DNS {#privatelink-dns}
 

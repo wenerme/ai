@@ -1,15 +1,9 @@
 ---
-slug: /use-cases/observability/oss-monitoring
 title: 'Self-managed monitoring'
-sidebar_label: 'Self-managed monitoring'
 description: 'Self-Managed Monitoring Guide'
 doc_type: 'guide'
 keywords: ['observability', 'monitoring', 'self-managed', 'metrics', 'system health']
 ---
-
-import ObservabilityIntegrations from '@site/docs/_snippets/_observability_integration_options.md';
-import DirectIntegrations from '@site/docs/_snippets/_direct_observability_integration_options.md';
-import CommunityMonitoring from '@site/docs/_snippets/_community_monitoring.md';
 
 # Self-managed monitoring {#cloud-monitoring}
 

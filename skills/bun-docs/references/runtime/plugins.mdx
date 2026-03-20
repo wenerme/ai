@@ -366,7 +366,6 @@ pub fn replace_foo_with_bar(handle: &mut OnBeforeParse) -> Result<()> {
   // Get the Loader for the file
   let loader = handle.output_loader();
 
-
   let output_source_code = input_source_code.replace("foo", "bar");
 
   handle.set_output_source_code(output_source_code, BunLoader::BUN_LOADER_JSX);

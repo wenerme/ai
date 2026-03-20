@@ -14,13 +14,11 @@ Enabling this flag makes Vitest run all tests in a [browser](/guide/browser/) by
 vitest --browser.enabled --browser.headless
 ```
 
-::: warning
-To enable [Browser Mode](/guide/browser/), you must also specify the [`provider`](/config/browser/provider) and at least one [`instance`](/config/browser/instances). Available providers:
+> **warning**: To enable [Browser Mode](/guide/browser/), you must also specify the [`provider`](/config/browser/provider) and at least one [`instance`](/config/browser/instances). Available providers:
 
 - [playwright](/config/browser/playwright)
 - [webdriverio](/config/browser/webdriverio)
 - [preview](/config/browser/preview)
-:::
 
 ## Example
 

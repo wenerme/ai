@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /audio/transcriptions
 
@@ -36,10 +35,6 @@ print(f"response: {response}")
 
 ### Add model to config 
 
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
-
 ```yaml showLineNumbers title="OpenAI Configuration"
 model_list:
 - model_name: whisper
@@ -52,8 +47,6 @@ model_list:
 general_settings:
   master_key: sk-1234
 ```
-</TabItem>
-<TabItem value="openai+azure" label="OpenAI + Azure">
 
 ```yaml showLineNumbers title="OpenAI + Azure Configuration"
 model_list:
@@ -76,9 +69,6 @@ general_settings:
   master_key: sk-1234
 ```
 
-</TabItem>
-</Tabs>
-
 ### Start proxy 
 
 ```bash showLineNumbers title="Start Proxy Server"
@@ -89,18 +79,12 @@ litellm --config /path/to/config.yaml
 
 ### Test 
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Test with cURL"
 curl --location 'http://0.0.0.0:8000/v1/audio/transcriptions' \
 --header 'Authorization: Bearer sk-1234' \
 --form 'file=@"/Users/krrishdholakia/Downloads/gettysburg.wav"' \
 --form 'model="whisper"'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Test with OpenAI Python SDK"
 from openai import OpenAI
@@ -109,15 +93,12 @@ client = openai.OpenAI(
     base_url="http://0.0.0.0:8000"
 )
 
-
 audio_file = open("speech.mp3", "rb")
 transcript = client.audio.transcriptions.create(
   model="whisper",
   file=audio_file
 )
 ```
-</TabItem>
-</Tabs>
 
 ## Supported Providers
 
@@ -135,9 +116,6 @@ transcript = client.audio.transcriptions.create(
 
 You can configure fallbacks for audio transcription to automatically retry with different models if the primary model fails.
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash showLineNumbers title="Test with cURL and Fallbacks"
 curl --location 'http://0.0.0.0:4000/v1/audio/transcriptions' \
 --header 'Authorization: Bearer sk-1234' \
@@ -145,9 +123,6 @@ curl --location 'http://0.0.0.0:4000/v1/audio/transcriptions' \
 --form 'model="groq/whisper-large-v3"' \
 --form 'fallbacks[]="openai/whisper-1"'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Test with OpenAI Python SDK and Fallbacks"
 from openai import OpenAI
@@ -165,15 +140,10 @@ transcript = client.audio.transcriptions.create(
     }
 )
 ```
-</TabItem>
-</Tabs>
 
 ### Testing Fallbacks
 
 You can test your fallback configuration using `mock_testing_fallbacks=true` to simulate failures:
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Test Fallbacks with Mock Testing"
 curl --location 'http://0.0.0.0:4000/v1/audio/transcriptions' \
@@ -183,9 +153,6 @@ curl --location 'http://0.0.0.0:4000/v1/audio/transcriptions' \
 --form 'fallbacks[]="openai/whisper-1"' \
 --form 'mock_testing_fallbacks=true'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Test Fallbacks with Mock Testing"
 from openai import OpenAI
@@ -204,5 +171,3 @@ transcript = client.audio.transcriptions.create(
     }
 )
 ```
-</TabItem>
-</Tabs>

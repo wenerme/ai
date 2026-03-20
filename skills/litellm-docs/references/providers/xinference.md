@@ -156,6 +156,3 @@ All models listed here https://inference.readthedocs.io/en/latest/models/builtin
 | jina-embeddings-v2-base-en  | `embedding(model="xinference/jina-embeddings-v2-base-en", input)`  |
 | jina-embeddings-v2-small-en | `embedding(model="xinference/jina-embeddings-v2-small-en", input)` |
 | multilingual-e5-large       | `embedding(model="xinference/multilingual-e5-large", input)`       |
-
-
-

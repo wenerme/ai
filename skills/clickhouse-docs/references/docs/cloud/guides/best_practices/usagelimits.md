@@ -1,6 +1,4 @@
 ---
-slug: /cloud/bestpractices/usage-limits
-sidebar_label: 'Service limits'
 title: 'Usage limits'
 description: 'Describes the recommended usage limits in ClickHouse Cloud'
 doc_type: 'reference'
@@ -13,12 +11,10 @@ databases, or parts can negatively impact performance. To prevent this, ClickHou
 Cloud enforces limits across several operational dimensions. 
 The details of these guardrails are listed below.
 
-:::tip
-If you've run up against one of these guardrails, it's possible that you're 
+> **tip**: If you've run up against one of these guardrails, it's possible that you're 
 implementing your use case in an unoptimized way. Contact our support team and 
 we will gladly help you refine your use case to avoid exceeding the guardrails 
 or look together at how we can increase them in a controlled manner. 
-:::
 
 | Dimension                     | Limit                                                                                             |
 |-------------------------------|---------------------------------------------------------------------------------------------------|
@@ -36,8 +32,6 @@ or look together at how we can increase them in a controlled manner.
 | **Query concurrency**         | 1000 (per replica)                                                                                |
 | **Batch ingest**              | anything > 1M will be split by the system in 1M row blocks                                        |
 
-:::note
-For Single Replica Services, the maximum number of databases is restricted to 
+> **note**: For Single Replica Services, the maximum number of databases is restricted to 
 100, and the maximum number of tables is restricted to 500. In addition, storage
 for Basic Tier Services is limited to 1 TB.
-:::

@@ -36,8 +36,6 @@ import { heapStats } from "bun:jsc";
 console.log(heapStats());
 ```
 
-<Accordion title="View example statistics">
-
 ```ts expandable icon="/icons/typescript.svg"
 {
   heapSize: 1657575,
@@ -141,8 +139,6 @@ console.log(heapStats());
 }
 ```
 
-</Accordion>
-
 JavaScript is a garbage-collected language, not reference counted. It's normal and correct for objects to not be freed immediately in all cases, though it's not normal for objects to never be freed.
 
 To force garbage collection to run manually:
@@ -168,22 +164,11 @@ To view the snapshot, open the `heap.json` file in Safari's Developer Tools (or 
 3. Click "JavaScript Allocations" in the menu on the left. It might not be visible until you click the pencil icon to show all the timelines
 4. Click "Import" and select your heap snapshot JSON
 
-<Frame>
-  <img
-    src="https://user-images.githubusercontent.com/709451/204428943-ba999e8f-8984-4f23-97cb-b4e3e280363e.png"
-    alt="Importing a heap snapshot"
-  />
-</Frame>
+  [Importing a heap snapshot]
 
 Once imported, you should see something like this:
 
-<Frame>
-  <img
-    alt="Viewing heap snapshot in Safari"
-    src="https://user-images.githubusercontent.com/709451/204429337-b0d8935f-3509-4071-b991-217794d1fb27.png"
-    caption="Viewing heap snapshot in Safari Dev Tools"
-  />
-</Frame>
+  [Viewing heap snapshot in Safari]
 
 > The [web debugger](/runtime/debugger#inspect) also offers the timeline feature which allows you to track and examine the memory usage of the running debug session.
 
@@ -279,7 +264,7 @@ Use `--heap-prof-md` to generate a markdown heap profile for CLI analysis:
 bun --heap-prof-md script.js
 ```
 
-<Note>If both `--heap-prof` and `--heap-prof-md` are specified, the markdown format is used.</Note>
+If both `--heap-prof` and `--heap-prof-md` are specified, the markdown format is used.
 
 ### Options
 

@@ -1,6 +1,5 @@
 ---
 title: silent | Config
-outline: deep
 ---
 
 # silent <CRoot /> {#silent}

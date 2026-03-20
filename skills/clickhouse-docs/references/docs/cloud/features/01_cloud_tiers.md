@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'ClickHouse Cloud tiers'
-slug: /cloud/manage/cloud-tiers
 title: 'ClickHouse Cloud Tiers'
 description: 'Cloud tiers available in ClickHouse Cloud'
 keywords: ['cloud tiers', 'service plans', 'cloud pricing tiers', 'cloud service levels']
@@ -164,10 +162,8 @@ This page discusses which tiers are right for your specific use case.
 - Cost-effective option that supports single-replica deployments.
 - Ideal for departmental use cases with smaller data volumes that don't have hard reliability guarantees.
 
-:::note
-Services in the basic tier are meant to be fixed in size and don't allow scaling, both automatic and manual. 
+> **note**: Services in the basic tier are meant to be fixed in size and don't allow scaling, both automatic and manual. 
 You can upgrade to the Scale or Enterprise tier to scale their services.
-:::
 
 ## Scale {#scale}
 
@@ -193,9 +189,7 @@ Caters to large-scale, mission critical deployments that have stringent security
 - Offers [HIPAA](/cloud/security/compliance-overview#hipaa-since-2024) and PCI compliance.
 - Exports Backups to the user's account.
 
-:::note 
-Single replica services across all three tiers are meant to be fixed in size (`8 GiB`, `12 GiB`)
-:::
+> **note**: Single replica services across all three tiers are meant to be fixed in size (`8 GiB`, `12 GiB`)
 
 ## Upgrading to a different tier {#upgrading-to-a-different-tier}
 

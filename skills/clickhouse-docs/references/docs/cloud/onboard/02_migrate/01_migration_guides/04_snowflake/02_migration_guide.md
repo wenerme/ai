@@ -1,15 +1,10 @@
 ---
-sidebar_label: 'Migration guide'
-slug: /migrations/snowflake
 description: 'Migrating from Snowflake to ClickHouse'
 keywords: ['Snowflake']
 title: 'Migrating from Snowflake to ClickHouse'
 show_related_blogs: false
 doc_type: 'guide'
 ---
-
-import migrate_snowflake_clickhouse from '@site/static/images/migrations/migrate_snowflake_clickhouse.png';
-import Image from '@theme/IdealImage';
 
 # Migrate from Snowflake to ClickHouse
 
@@ -99,11 +94,10 @@ SETTINGS input_format_null_as_default = 1, -- Ensure columns are inserted as def
 input_format_parquet_case_insensitive_column_matching = 1 -- Column matching between source data and target table should be case insensitive
 ```
 
-:::note Note on nested column structures
+> **note**: Note on nested column structures
 The `VARIANT` and `OBJECT` columns in the original Snowflake table schema will be output as JSON strings by default, forcing us to cast these when inserting them into ClickHouse.
 
 Nested structures such as `some_file` are converted to JSON strings on copy by Snowflake. Importing this data requires us to transform these structures to Tuples at insert time in ClickHouse, using the [JSONExtract function](/sql-reference/functions/json-functions#JSONExtract) as shown above.
-:::
 
 ## Test successful data export {#3-testing-successful-data-export}
 

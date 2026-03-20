@@ -1,10 +1,6 @@
 ---
 title: Separating Concerns using Embeddables
-sidebar_label: Embeddables
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 > Support for embeddables was added in version 4.0
 
@@ -16,18 +12,7 @@ Embeddables can contain properties with basic `@Property()` mapping, nested `@Em
 
 For the purposes of this tutorial, let's assume that you have a `User` class in your application, and you would like to store an address in the `User` class. The `Address` class will be modeled as an embeddable instead of simply adding the respective columns to the `User` class.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -39,7 +24,6 @@ const UserSchema = defineEntity({
     address: () => p.embedded(Address),
   },
 });
-
 
 const AddressSchema = defineEntity({
   name: 'Address',
@@ -59,9 +43,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { type InferEntity, defineEntity, p } from '@mikro-orm/core';
@@ -90,8 +74,8 @@ export const Address = defineEntity({
 export type IAddress = InferEntity<typeof Address>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -125,8 +109,8 @@ export class User {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -160,8 +144,7 @@ export class User {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 > When using ReflectMetadataProvider, you might need to provide the class in decorator options: `@Embedded(() => Address)` or `@Embedded({ entity: () => Address })`.
 
@@ -171,18 +154,7 @@ In terms of your database schema, MikroORM will automatically inline all columns
 
 In case all fields in the embeddable are nullable, you might want to initialize the embeddable, to avoid getting a null value instead of the embedded object.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -198,9 +170,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 const User = defineEntity({
@@ -213,24 +185,23 @@ const User = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded(() => Address)
 address = new Address();
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded()
 address = new Address();
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Column Prefixing
 
@@ -242,18 +213,7 @@ You can change this behaviour to meet your needs by changing the `prefix` attrib
 
 The following example shows you how to set your prefix to `myPrefix_`:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -268,9 +228,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 const User = defineEntity({
@@ -282,8 +242,8 @@ const User = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Entity()
@@ -295,8 +255,8 @@ export class User {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Entity()
@@ -308,26 +268,14 @@ export class User {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 You can also decide more precisely how the column name is determined with an explicit prefix. With the example below:
 
 - `relative` mode (default) **concatenates** the prefix with its parent's prefix (if any), naming them `contact_addr2_city`, `contact_addr2_street`, ...
 - `absolute` mode sets the prefix at the beginning of the **column**, naming them `addr_city`, `addr_street`, ...
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const ContactSchema = defineEntity({
@@ -338,7 +286,6 @@ const ContactSchema = defineEntity({
     address2: () => p.embedded(Address).prefix('addr2_').prefixMode('relative'),
   },
 });
-
 
 const UserSchema = defineEntity({
   name: 'User',
@@ -355,9 +302,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 export const Contact = defineEntity({
@@ -382,8 +329,8 @@ export const User = defineEntity({
 export type IUser = InferEntity<typeof User>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embeddable()
@@ -406,8 +353,8 @@ export class User {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embeddable()
@@ -430,8 +377,7 @@ export class User {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 The default behavior can be overridden in the ORM configuration:
 
@@ -445,18 +391,7 @@ MikroORM.init({
 
 To have MikroORM drop the prefix and use the value object's property name directly, set `prefix: false`:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -471,9 +406,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 const User = defineEntity({
@@ -485,41 +420,29 @@ const User = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded({ entity: () => Address, prefix: false })
 address!: Address;
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded({ prefix: false })
 address!: Address;
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Storing embeddables as objects
 
 You can also store the embeddable as an object instead of inlining its properties to the owning entity.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -534,9 +457,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 const User = defineEntity({
@@ -548,24 +471,23 @@ const User = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded({ entity: () => Address, object: true })
 address!: Address;
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded({ object: true })
 address!: Address;
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 In SQL drivers, this will use a JSON column to store the value.
 
@@ -577,18 +499,7 @@ In SQL drivers, this will use a JSON column to store the value.
 
 Embedded arrays are always stored as JSON. It is possible to use them inside nested embeddables.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -603,9 +514,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 const User = defineEntity({
@@ -617,24 +528,23 @@ const User = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded(() => Address, { array: true })
 addresses: Address[] = [];
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/User.ts"
 @Embedded()
 addresses: Address[] = [];
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Querying array embeddables
 
@@ -683,18 +593,7 @@ Array-level operators like `$contains`, `$contained`, and `$overlap` continue to
 
 You can also nest embeddables, both in inline mode and object mode:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/User.ts"
 const UserSchema = defineEntity({
@@ -705,7 +604,6 @@ const UserSchema = defineEntity({
     address: () => p.embedded(Address),
   },
 });
-
 
 const ProfileSchema = defineEntity({
   name: 'Profile',
@@ -734,9 +632,9 @@ export class User extends UserSchema.class {}
 UserSchema.setClass(User);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/User.ts"
 export const User = defineEntity({
@@ -772,8 +670,8 @@ export const Identity = defineEntity({
 export type IIdentity = InferEntity<typeof Identity>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -821,8 +719,8 @@ export class Identity {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -870,25 +768,13 @@ export class Identity {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Polymorphic embeddables
 
 It is also possible to use polymorphic embeddables. This means you can define multiple classes for a single embedded property and the right one will be used based on the discriminator column, similar to how single table inheritance work.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 import { defineEntity, p } from '@mikro-orm/core';
@@ -951,9 +837,9 @@ export class Owner extends OwnerSchema.class {}
 OwnerSchema.setClass(Owner);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts
 import { defineEntity, p, type InferEntity } from '@mikro-orm/core';
@@ -1008,8 +894,8 @@ export type IDog = InferEntity<typeof Dog>;
 export type IOwner = InferEntity<typeof Owner>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/core';
@@ -1073,8 +959,8 @@ export class Owner {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts
 import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/core';
@@ -1137,6 +1023,3 @@ export class Owner {
 
 }
 ```
-
-  </TabItem>
-</Tabs>

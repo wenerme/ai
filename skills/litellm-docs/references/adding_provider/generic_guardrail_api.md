@@ -427,4 +427,3 @@ async def apply_guardrail(request: GuardrailRequest):
 ## Questions?
 
 This is a **beta API**. We're actively improving it based on feedback. Open an issue or PR if you need additional capabilities.
-

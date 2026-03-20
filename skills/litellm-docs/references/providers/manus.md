@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Manus
 
@@ -77,9 +76,6 @@ litellm --config config.yaml
 
 ### Usage
 
-<Tabs>
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Create Task"
 # Create task
 curl -X POST http://localhost:4000/responses \
@@ -122,9 +118,6 @@ curl http://localhost:4000/responses/task_abc123 \
 }
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI SDK">
-
 ```python showLineNumbers title="Create Task and Poll"
 import openai
 import time
@@ -157,9 +150,6 @@ if response.status == "completed":
             print(message.content[0].text)
 ```
 
-</TabItem>
-</Tabs>
-
 ## How It Works
 
 Manus operates as an **asynchronous agent API**:
@@ -175,9 +165,8 @@ Manus operates as an **asynchronous agent API**:
 - `completed` - Task finished successfully
 - `error` - Task failed
 
-:::tip Production Usage
+> **tip**: Production Usage
 For production applications, use [webhooks](https://open.manus.im/docs/webhooks) instead of polling to get notified when tasks complete.
-:::
 
 ## Supported Parameters
 
@@ -242,9 +231,6 @@ print(f"Deleted: {deleted_file.deleted}")
 ```
 
 ### LiteLLM AI Gateway
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers title="Upload File"
 # Upload file
@@ -315,9 +301,6 @@ curl -X DELETE http://localhost:4000/v1/files/file_abc123 \
 }
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI SDK">
-
 ```python showLineNumbers title="Upload, Use, Retrieve, and Delete Files"
 import openai
 
@@ -358,9 +341,6 @@ print(f"File: {retrieved_file.filename}, {retrieved_file.bytes} bytes")
 deleted_file = client.files.delete(created_file.id)
 print(f"Deleted: {deleted_file.deleted}")
 ```
-
-</TabItem>
-</Tabs>
 
 ## Related Documentation
 

@@ -1,14 +1,9 @@
 ---
 title: 'DataStore - Pandas-Compatible API'
-sidebar_label: 'Overview'
-slug: /chdb/datastore
 description: 'DataStore provides a pandas-compatible API with SQL optimization for high-performance data analysis'
 keywords: ['chdb', 'datastore', 'pandas', 'dataframe', 'sql', 'lazy evaluation']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import data_store from '@site/static/images/chdb/datastore_architecture.png'
 
 # DataStore: Pandas-compatible API with SQL optimization
 

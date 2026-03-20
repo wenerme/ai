@@ -4,7 +4,6 @@ Gemini CLI can send system notifications to alert you when a session completes
 or when it needs your attention, such as when it's waiting for you to approve a
 tool call.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This is an experimental feature currently under active development and
 > may need to be enabled under `/settings`.

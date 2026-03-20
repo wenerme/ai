@@ -8,7 +8,6 @@
 
 ## Description
 
-
 HOUR_CEIL function rounds up the input datetime value to the nearest moment of the specified hour period. For example, if the period is 5 hours, the function adjusts the input time to the next hour mark within that period.
 
 Date calculation formula:
@@ -49,7 +48,6 @@ Returns a TIMESTAMPTZ, DATETIME or DATE type value representing the nearest peri
 - If origin or datetime has scale, the returned result has scale.
 - If the calculation result exceeds the maximum datetime range 9999-12-31 23:59:59, returns an error.
 - If the <origin> date and time is after the <period>, it will still be calculated according to the above formula, but the period k will be negative.
-
 
 ## Examples
 

@@ -1,6 +1,5 @@
 # LibriSpeech
 
-
 ## Overview
 
 LibriSpeech is a large-scale corpus of approximately 1,000 hours of read English speech derived from audiobooks. It is one of the most widely used benchmarks for evaluating automatic speech recognition (ASR) systems.
@@ -28,7 +27,6 @@ LibriSpeech is a large-scale corpus of approximately 1,000 hours of read English
 - Prompt: "Please recognize the speech and only output the recognized content"
 - Metadata includes audio ID and duration information
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ LibriSpeech is a large-scale corpus of approximately 1,000 hours of read English
 | **Metrics** | `wer` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test_clean` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ LibriSpeech is a large-scale corpus of approximately 1,000 hours of read English
 | Total Audio Files | 87 |
 | Audio per Sample | min: 1, max: 1, mean: 1 |
 | Formats | wav |
-
 
 ## Sample Example
 
@@ -127,5 +123,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

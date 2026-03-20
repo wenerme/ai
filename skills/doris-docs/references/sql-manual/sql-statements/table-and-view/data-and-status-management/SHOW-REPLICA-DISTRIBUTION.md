@@ -42,7 +42,6 @@ where_clause
 >
 > For more details, refer to the identifier requirements and reserved keywords.
 
-
 ## Optional Parameters
 
 **1. `<db_name>`**
@@ -65,7 +64,6 @@ where_clause
 >
 > For more details, refer to the identifier requirements and reserved keywords.
 
-
 ## Return Value
 
 | Column      | DataType | Note                                                                              |
@@ -85,7 +83,6 @@ The user executing this SQL command must have at least the following privileges:
 | Privilege  | Object   | Notes                                                                                                                            |
 |:-----------|:---------|:---------------------------------------------------------------------------------------------------------------------------------|
 | Admin_priv | Database | Required to execute administrative operations on the database, including managing tables, partitions, and system-level commands. |
-
 
 ## Examples
 

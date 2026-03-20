@@ -1,21 +1,16 @@
 ---
 title: 'ClickHouse Government'
-slug: /cloud/infrastructure/clickhouse-government
 keywords: ['government', 'fips', 'fedramp', 'gov cloud']
 description: 'Overview of ClickHouse Government offering'
 doc_type: 'reference'
 ---
 
-import Image from '@theme/IdealImage';
-import private_gov_architecture from '@site/static/images/cloud/reference/private-gov-architecture.png';
-
 ## Overview {#overview}
 
 ClickHouse Government is a self-deployed package consisting of the same proprietary version of ClickHouse that runs on ClickHouse Cloud and our ClickHouse Operator, configured for separation of compute and storage and hardened to meet the rigorous demands of government agencies and public sector organizations. 
 
-:::note Note
+> **note**: Note
 ClickHouse Government is designed for government agencies, public sector organizations, or cloud software companies selling to these agencies and organizations, providing full control and management over their dedicated infrastructure. Minimum deployment size is 2 TB. This option is only available by [contacting us](https://clickhouse.com/government).
-:::
 
 ## Benefits over open-source {#benefits-over-os}
 
@@ -31,11 +26,7 @@ The following features differentiate ClickHouse Government from self-managed ope
 
 ClickHouse Government is fully self-contained within your deployment environment, offering our cloud native separation of compute and storage. 
 
-<br />
-
 <Image img={private_gov_architecture} size="md" alt="ClickHouse Government Architecture" background='black'/>
-
-<br />
 
 ## Supported configurations {#supported-configurations}
 

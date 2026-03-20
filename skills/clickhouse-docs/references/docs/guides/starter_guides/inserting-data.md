@@ -2,14 +2,9 @@
 title: 'Inserting ClickHouse data'
 description: 'How to insert data into ClickHouse'
 keywords: ['INSERT', 'Batch Insert']
-sidebar_label: 'Inserting ClickHouse data'
-slug: /guides/inserting-data
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import postgres_inserts from '@site/static/images/guides/postgres-inserts.png';
-import Image from '@theme/IdealImage';
 
 ## Inserting into ClickHouse vs. OLTP databases {#inserting-into-clickhouse-vs-oltp-databases}
 
@@ -77,11 +72,9 @@ Before the buffer gets flushed, the data of other asynchronous insert queries fr
 The part created from the buffer flush will potentially contain the data from several asynchronous insert queries.
 Generally, these mechanics shift the batching of data from the client side to the server side (ClickHouse instance).
 
-:::note
-Note that the data isn't searchable by queries before being flushed to the database storage and that the buffer flush is configurable.
+> **note**: Note that the data isn't searchable by queries before being flushed to the database storage and that the buffer flush is configurable.
 
 Full details on configuring asynchronous inserts can be found [here](/optimize/asynchronous-inserts#enabling-asynchronous-inserts), with a deep dive [here](https://clickhouse.com/blog/asynchronous-data-inserts-in-clickhouse).
-:::
 
 ### Use official ClickHouse clients {#use-official-clickhouse-clients}
 
@@ -153,9 +146,8 @@ For loading data from Postgres, you can use:
 - The [PostgreSQL table engine](/integrations/postgresql#using-the-postgresql-table-engine) to read data directly as shown in previous examples. Typically appropriate if batch replication based on a known watermark, e.g., timestamp, is sufficient or if it's a one-off migration. This approach can scale to 10's of millions of rows. Users looking to migrate larger datasets should consider multiple requests, each dealing with a chunk of the data. Staging tables can be used for each chunk prior to its partitions being moved to a final table. This allows failed requests to be retried. For further details on this bulk-loading strategy, see here.
 - Data can be exported from PostgreSQL in CSV format. This can then be inserted into ClickHouse from either local files or via object storage using table functions.
 
-:::note Need help inserting large datasets?
+> **note**: Need help inserting large datasets?
 If you need help inserting large datasets or encounter any errors when importing data into ClickHouse Cloud, please contact us at support@clickhouse.com and we can assist.
-:::
 
 ## Inserting data from the command line {#inserting-data-from-command-line}
 
@@ -220,15 +212,13 @@ zcat < hacknernews.csv.gz | ./clickhouse client --query "INSERT INTO hackernews 
 
 As our data is compressed, we need to first decompress the file using a tool like `gzip`, `zcat`, or similar, and then pipe the decompressed data into `clickhouse-client` with the appropriate `INSERT` statement and `FORMAT`.
 
-:::note
-When inserting data with clickhouse-client in interactive mode, it is possible to let ClickHouse handle the decompression for you on insert using the `COMPRESSION` clause. ClickHouse can automatically detect the compression type from the file extension, but you can also specify it explicitly.
+> **note**: When inserting data with clickhouse-client in interactive mode, it is possible to let ClickHouse handle the decompression for you on insert using the `COMPRESSION` clause. ClickHouse can automatically detect the compression type from the file extension, but you can also specify it explicitly.
 
 The query to insert would then look like this: 
 
 ```bash
 clickhouse-client --query "INSERT INTO hackernews FROM INFILE 'hacknernews.csv.gz' COMPRESSION 'gzip' FORMAT CSV;"
 ```
-:::
 
 When the data has finished inserting you can run the following command to see the number of rows in the `hackernews` table:
 

@@ -10,9 +10,8 @@
 
 Determine whether two geometric shapes intersect, i.e., there is at least one common point (including boundary contact or internal overlap).
 
-:::info Note
+> **info**: Note
 Supported since Apache Doris 3.0.6.
-:::
 
 ## Sytax
 
@@ -41,7 +40,6 @@ ST_INTERSECTS has the following edge cases:
 - If the two shapes are only tangent at the boundary (with a unique common point), returns 1 (boundary contact is considered intersection)
 
 ## Example
-
 
 Point inside polygon (intersect, returns 1)
 
@@ -123,7 +121,6 @@ mysql> SELECT ST_INTERSECTS(  ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0)
 |                                                                                                                 1 |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
-
 
 Line is tangent to polygon boundary (intersect, returns 1)
 
@@ -236,7 +233,6 @@ mysql> SELECT ST_INTERSECTS(  ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0)
 ```
 
 Invalid polygon (returns NULL)
-
 
 ```sql
 mysql> SELECT ST_INTERSECTS(  ST_Polygon("POLYGON ((0 0, 1 1, 0 1, 1 0, 0 0))"),  ST_Point(0.5, 0.5));

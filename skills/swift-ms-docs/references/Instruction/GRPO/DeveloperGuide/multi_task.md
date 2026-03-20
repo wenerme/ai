@@ -10,7 +10,6 @@ We can add a column to the dataset that indicates the task type, and then use th
 ]
 ```
 
-
 We can set up different reward functions to handle math and code data separately. Note that the columns in the dataset will be passed to the reward function, so we can use the `task` column to distinguish between tasks.
 
 Below are examples of reward functions tailored for different tasks:

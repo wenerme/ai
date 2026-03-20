@@ -9,8 +9,6 @@ After defining your contract, the next step is to implement it in your server co
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/server@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/server@latest
 ```sh [deno]
 deno add npm:@orpc/server@latest
 ```
-
-:::
 
 ## The Implementer
 

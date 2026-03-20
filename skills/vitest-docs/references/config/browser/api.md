@@ -1,6 +1,5 @@
 ---
 title: browser.api | Config
-outline: deep
 ---
 
 # browser.api

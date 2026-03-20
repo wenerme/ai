@@ -120,7 +120,6 @@ llama_print_timings:        eval time =    1279.03 ms /    18 runs   (   71.06 m
 llama_print_timings:       total time =   34570.79 ms
 ```
 
-
 ## Some result on Android with `Snapdragon 778G` chip
 ### MobileVLM-1.7B case
 #### mtmd-cli release-b2005
@@ -352,7 +351,6 @@ The image is taken from the side of the llama, providing a clear view of the lla
 
 The background of the image features a grassy field, with a fence and a tree visible in the distance. The tree appears to be bare, suggesting that it might be during a time of year when most trees are dormant or have shed their leaves.
 
-
 llama_print_timings:        load time =    7015.35 ms
 llama_print_timings:      sample time =      10.61 ms /   256 runs   (    0.04 ms per token, 24119.09 tokens per second)
 llama_print_timings: prompt eval time =    2052.45 ms /   191 tokens (   10.75 ms per token,    93.06 tokens per second)
@@ -369,7 +367,6 @@ llama_print_timings:       total time =   14371.19 ms /   446 tokens
       - Optimize operator implementation (ARM CPU/NVIDIA GPU): such as depthwise conv, hardswish, hardsigmoid, etc.
 - [x] run MobileVLM on `Jetson Orin`
 - [ ] Support more model variants, such as `MobileVLM-3B`.
-
 
 ## contributor
 ```sh

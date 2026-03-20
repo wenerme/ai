@@ -1,6 +1,5 @@
 ---
 title: browser.commands | Config
-outline: deep
 ---
 
 # browser.commands

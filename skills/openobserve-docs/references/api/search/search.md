@@ -94,7 +94,6 @@ Description
 | scan_size  | int64     | 0             | unit: MB, it response the data size scale when execute the query. |
 | hits       | array     | -             | records for query, each record is a log row what you ingested. |
 
-
 ## SQL Syntax
 
 Please refer to [PostgreSQL](https://www.postgresql.org/docs/current/sql-syntax.html) for SQL Syntax.
@@ -110,7 +109,6 @@ Something need highlighted:
 ## Limitation
 
 - You should give a time range for each query or it will scan all data, it is a very expensive operate.
-
 
 ## Examples
 

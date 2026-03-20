@@ -124,11 +124,7 @@ Under the hood, `mounts` creates a [CompositeFilesystem](/docs/workspace/filesys
 
 You can mount multiple providers at different paths. Each mount path must be unique and non-overlapping.
 
-:::note
-
-`filesystem` and `mounts` are mutually exclusive — you can't use both in the same workspace. Use `filesystem` for a single provider without a sandbox, or `mounts` when you need to combine cloud storage with a sandbox.
-
-:::
+> **note**: `filesystem` and `mounts` are mutually exclusive — you can't use both in the same workspace. Use `filesystem` for a single provider without a sandbox, or `mounts` when you need to combine cloud storage with a sandbox.
 
 ### Filesystem only
 

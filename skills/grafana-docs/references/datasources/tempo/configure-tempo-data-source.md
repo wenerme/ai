@@ -34,7 +34,7 @@ To configure a Tempo data source, you need administrator rights to your Grafana 
 If you're provisioning a Tempo data source, then you also need administrative rights on the server hosting your Grafana instance.
 Refer to [Provision the data source](#provision-the-data-source) for next steps.
 
-![Provisioned data source warning](/media/docs/grafana/data-sources/tempo/tempo-data-source-provisioned-error.png)
+[Provisioned data source warning]
 
 ## Add or modify a data source
 
@@ -106,19 +106,19 @@ To use streaming, you need to:
 Streaming is available in Grafana and Grafana Cloud.
 You can activate streaming by turning the **Streaming** toggle to on in the Tempo data source.
 
-![Streaming section in Tempo data source](/media/docs/grafana/data-sources/tempo-data-source-streaming-v11.2.png)
+[Streaming section in Tempo data source]
 
 When streaming is active, it's shows as **Enabled** in **Explore**.
 To check the status, select Explore in the menu, select your Tempo data source, and expand the **Options** section.
 
-![The Explore screen shows the Tempo data source with streaming active](/media/docs/grafana/data-sources/tempo/tempo-query-stream-active.png)
+[The Explore screen shows the Tempo data source with streaming active]
 
 ## Trace to logs
 
 The **Trace to logs** setting configures [trace to logs](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/explore/trace-integration/) that's available when you integrate Grafana with Tempo.
 Trace to logs can also be used with other tracing data sources, such as Jaeger and Zipkin.
 
-![Trace to logs settings](/media/docs/grafana/data-sources/tempo/tempo-data-source-trace-to-logs.png)
+[Trace to logs settings]
 
 You can configure a custom query where you can use a [template language](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/variables/variable-syntax/) to interpolate variables from the trace or span.
 
@@ -162,7 +162,7 @@ There are two ways to configure the trace to metrics feature:
 
 Refer to the [Trace to metrics configuration options](#trace-tometrics-configuration-options) section to learn about the available options.
 
-![Trace to metrics settings in the Tempo data source](/media/docs/grafana/data-sources/tempo/tempo-data-source-trace-to-metrics.png)
+[Trace to metrics settings in the Tempo data source]
 
 ### Set up a simple configuration
 

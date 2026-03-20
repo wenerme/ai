@@ -3,8 +3,6 @@ title: "bun publish"
 description: Use `bun publish` to publish a package to the npm registry
 ---
 
-import Publish from "/snippets/cli/publish.mdx";
-
 `bun publish` will automatically pack your package into a tarball, strip catalog and workspace protocols from the `package.json` (resolving versions if necessary), and publish to the registry specified in your configuration files. Both `bunfig.toml` and `.npmrc` files are supported.
 
 ```sh terminal icon="terminal"
@@ -40,10 +38,8 @@ bun pm pack
 bun publish ./package.tgz
 ```
 
-<Note>
   `bun publish` will not run lifecycle scripts (`prepublishOnly/prepack/prepare/postpack/publish/postpublish`) if a
   tarball path is provided. Scripts will only be run if the package is packed by `bun publish`.
-</Note>
 
 ### `--access`
 
@@ -121,10 +117,8 @@ Provide a one-time password directly to the CLI. If the password is valid, this 
 bun publish --otp 123456
 ```
 
-<Note>
   `bun publish` respects the `NPM_CONFIG_TOKEN` environment variable which can be used when publishing in github actions
   or automated workflows.
-</Note>
 
 ---
 

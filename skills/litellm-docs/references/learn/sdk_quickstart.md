@@ -1,10 +1,7 @@
 ---
 title: SDK Quickstart
-sidebar_label: SDK Quickstart
 description: Make your first LiteLLM SDK call, then jump to the right docs for the next feature you need.
 ---
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 Use this path if you are integrating LiteLLM directly into application code.
 

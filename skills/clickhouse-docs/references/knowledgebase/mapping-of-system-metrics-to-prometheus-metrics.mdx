@@ -7,7 +7,6 @@ keywords: ['Metrics', 'system.dashboards', 'system.custom_metrics']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Mapping of metrics used in system.dashboards to Prometheus metrics in `system.custom_metrics` \{#mapping-of-metrics-used-in-systemdashboards-to-prometheus-metrics-in-systemcustom_metrics\}
 
@@ -62,7 +61,6 @@ Cloud overview | FS cache hit rate | ClickHouseProfileEvents_CachedReadBufferRea
 Cloud overview | Page cache hit rate | greatest(0, (sum(ClickHouseProfileEvents_OSReadChars) - sum(ClickHouseProfileEvents_OSReadBytes)) /  (sum(ClickHouseProfileEvents_OSReadChars) + sum(ClickHouseProfileEvents_ReadBufferFromS3Bytes)))
 Cloud overview | Network receive bytes/sec | ClickHouseProfileEvents_NetworkReceiveBytes
 Cloud overview | Network send bytes/sec | ClickHouseProfileEvents_NetworkSendBytes
-
 
 Related links:  
 https://clickhouse.com/docs/integrations/prometheus

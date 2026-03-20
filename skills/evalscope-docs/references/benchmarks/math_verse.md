@@ -1,6 +1,5 @@
 # MathVerse
 
-
 ## Overview
 
 MathVerse is an all-around visual math benchmark designed for equitable and in-depth evaluation of Multimodal Large Language Models (MLLMs). It contains 2,612 high-quality, multi-subject math problems with diagrams, transformed into 15K test samples across varying information modalities.
@@ -32,7 +31,6 @@ MathVerse is an all-around visual math benchmark designed for equitable and in-d
 - Uses LLM judge for answer verification
 - Results reported per problem version for detailed analysis
 
-
 ## Properties
 
 | Property | Value |
@@ -44,7 +42,6 @@ MathVerse is an all-around visual math benchmark designed for equitable and in-d
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `testmini` |
-
 
 ## Data Statistics
 
@@ -72,7 +69,6 @@ MathVerse is an all-around visual math benchmark designed for equitable and in-d
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 63x70 - 6840x3549 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -151,5 +147,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -10,7 +10,6 @@
 
 This statement is used to set the default storage vault in Doris. The default storage vault is used to store data for internal or system tables. If the default storage vault is not set, Doris will not be able to operate normally. Once a default storage vault is set, it cannot be removed.
 
-
 ## Syntax
 
 ```sql

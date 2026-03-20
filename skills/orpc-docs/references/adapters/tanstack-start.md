@@ -11,8 +11,6 @@ description: Use oRPC inside a TanStack Start project
 
 You set up an oRPC server inside TanStack Start using its [Server Routes](https://tanstack.com/start/latest/docs/framework/react/guide/server-routes).
 
-::: code-group
-
 ```ts [src/routes/api/rpc.$.ts]
 import { RPCHandler } from '@orpc/server/fetch'
 import { createFileRoute } from '@tanstack/react-router'
@@ -42,11 +40,7 @@ export const Route = createFileRoute('/api/rpc/$')({
 })
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, including [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or a custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, including [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or a custom handler.
 
 ## Client
 
@@ -67,15 +61,11 @@ const getClientLink = createIsomorphicFn()
   }))
 ```
 
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
 
 ## Optimize SSR
 
 To reduce HTTP requests and improve latency during SSR, you can utilize a [Server-Side Client](/docs/client/server-side) during SSR. Below is a quick setup, see [Optimize SSR](/docs/best-practices/optimize-ssr) for more details.
-
-::: code-group
 
 ```ts [src/lib/orpc.ts]
 import { createRouterClient } from '@orpc/server'
@@ -108,5 +98,3 @@ const getORPCClient = createIsomorphicFn()
 
 export const client: RouterClient<typeof router> = getORPCClient()
 ```
-
-:::

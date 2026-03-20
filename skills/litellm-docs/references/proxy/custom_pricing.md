@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Custom LLM Pricing
 
@@ -16,11 +15,7 @@ LiteLLM provides flexible cost tracking and pricing customization for all LLM pr
 
 By default, the response cost is accessible in the logging object via `kwargs["response_cost"]` on success (sync + async). [**Learn More**](../observability/custom_callback.md)
 
-:::info
-
-LiteLLM already has pricing for 100+ models in our [model cost map](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json). 
-
-:::
+> **info**: LiteLLM already has pricing for 100+ models in our [model cost map](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json). 
 
 ## Cost Per Second (e.g. Sagemaker)
 
@@ -122,13 +117,9 @@ For providers that support multiple pricing tiers (e.g., Vertex AI PayGo, Bedroc
 
 **Solution** ✅: Set both `input_cost_per_token` and `output_cost_per_token` to `0` (explicitly) to bypass all budget checks for that model.
 
-:::info
-
-When a model is configured with zero cost, LiteLLM will automatically skip ALL budget checks (user, team, team member, end-user, organization, and global proxy budget) for requests to that model.
+> **info**: When a model is configured with zero cost, LiteLLM will automatically skip ALL budget checks (user, team, team member, end-user, organization, and global proxy budget) for requests to that model.
 
 **Important**: Both costs must be **explicitly set to 0**. If costs are `null` or undefined, the model will be treated as having cost and budget checks will apply.
-
-:::
 
 ### Configuration Example
 
@@ -204,7 +195,6 @@ model_list:
       output_cost_per_audio_token: 0.00002
 ```
 
-
 ## Debugging 
 
 If you're custom pricing is not being used or you're seeing errors, please check the following:
@@ -233,4 +223,4 @@ acompletion(
 
 If these keys are not present, LiteLLM will not use your custom pricing. 
 
-If the problem persists, please file an issue on [GitHub](https://github.com/BerriAI/litellm/issues). 
+If the problem persists, please file an issue on [GitHub](https://github.com/BerriAI/litellm/issues).

@@ -16,7 +16,6 @@ Streaming Search allows OpenObserve to return query results through a single, pe
 
 OpenObserve splits the total time range into partitions, each covering a segment of time or data volume. For example, an 8-hour query with 8 GB of data may be split into 8 partitions, each processing 1 GB. These partitions are executed sequentially and contribute partial results to the final output.
 
-
 ### Mini-Partition
 Based on the environment variable `ZO_MINI_SEARCH_PARTITION_DURATION_SECS`, the first partition is divided into a mini-partition to return results faster. This is helpful when working with large time ranges.
 
@@ -43,7 +42,6 @@ This enables:
 
 > **Note:** The mini-partition output is included in the same `_search_stream` response. All data is delivered over a single HTTP/2 connection. You do not see a separate request for the mini-partition. 
 
-
 ## Without Streaming Search
 
 - OpenObserve splits the query time range into multiple partitions.
@@ -53,15 +51,15 @@ This enables:
 - Each request has its own connection, and there is no query-wide cache across partitions.
 - The browser must wait for multiple independent requests to complete, which can increase load times and perceived delay.
 
-**Performance Test: 2-week Dashboard Query** <br>
+**Performance Test: 2-week Dashboard Query** 
 
 Panel 1 triggers 7 `_search` requests and completes loading the data in 4.452 seconds.
-<br>
-![Without Streaming Search- panel 1](../../images/without-streaming-search-panel1.png) 
+
+[Without Streaming Search- panel 1] 
 
 Panel 2 triggers 57 `_search` requests and completes loading the data in 25.987 seconds.
-<br>
-![Without Streaming Search- panel 2](../../images/without-streaming-search-panel2.png)
+
+[Without Streaming Search- panel 2]
 
 ## With Streaming Search
 
@@ -75,12 +73,12 @@ Panel 2 triggers 57 `_search` requests and completes loading the data in 25.987 
 **Performance Test: 2-week Dashboard Query**
 
 Panel 1 triggers 1 `_search_stream` request and completes loading the data in 393 milliseconds. 
-<br>
-![With Streaming Search](../../images/with-streaming-search-panel1.png)
+
+[With Streaming Search]
 
 Panel 2 triggers 1 `_search_stream` request and completes loading the data in 1.29 seconds. 
-<br>
-![With Streaming Search](../../images/with-streaming-search-panel2.png)
+
+[With Streaming Search]
 
 ## Considerations
 

@@ -1,30 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/local-data
 title: 'Local Logs & Metrics'
-sidebar_position: 1
-pagination_prev: null
-pagination_next: null
-toc_max_heading_level: 2
 description: 'Getting started with ClickStack local and system data and metrics'
 doc_type: 'guide'
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']
 ---
 
-import Image from '@theme/IdealImage';
-import hyperdx_20 from '@site/static/images/use-cases/observability/hyperdx-20.png';
-import hyperdx_21 from '@site/static/images/use-cases/observability/hyperdx-21.png';
-import hyperdx_22 from '@site/static/images/use-cases/observability/hyperdx-22.png';
-import hyperdx_23 from '@site/static/images/use-cases/observability/hyperdx-23.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import select_service from '@site/static/images/clickstack/select_service.png';
-
 This getting started guide allows you to collect local logs and metrics from your system, sending them to ClickStack for visualization and analysis.
 
 **This example works on OSX and Linux systems only**
-
-<Tabs groupId="sample-logs">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 This guide assumes you have completed the [Getting Started Guide for Managed ClickStack](/use-cases/observability/clickstack/deployment/clickstack-clickhouse-cloud) and have the [connection credentials recorded](/use-cases/observability/clickstack/getting-started/managed#next-steps).
 
@@ -100,13 +83,12 @@ service:
 
 This configuration collects system logs and metrics for OSX and Linux systems, sending the results to ClickStack. The configuration extends the ClickStack collector by adding new receivers and pipelines—you reference the existing `clickhouse` exporter and processors (`memory_limiter`, `batch`) that are already configured in the base ClickStack collector.
 
-:::note Ingestion timestamps
+> **note**: Ingestion timestamps
 This configuration adjusts timestamps at ingest, assigning an updated time value to each event. You should ideally [preprocess or parse timestamps](/use-cases/observability/clickstack/ingesting-data/otel-collector#processing-filtering-transforming-enriching) using OTel processors or operators in their log files to ensure accurate event time is retained.
 
 With this example setup, if the receiver or file processor is configured to start at the beginning of the file, all existing log entries will be assigned the same adjusted timestamp - the time of processing rather than the original event time. Any new events appended to the file will receive timestamps approximating their actual generation time.
 
 To avoid this behavior, you can set the start position to `end` in the receiver configuration. This ensures only new entries are ingested and timestamped near their true arrival time.
-:::
 
 For more details on the OpenTelemetry (OTel) configuration structure, we recommend [the official guide](https://opentelemetry.io/docs/collector/configuration/).
 
@@ -165,9 +147,6 @@ From the subsequent menu you can select `Percentage` from the `Output format` dr
 <Image img={hyperdx_23} alt="Memory % of time" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-<TabItem value="oss-clickstack" label="ClickStack Open Source">
 
 <VerticalStepper>
 
@@ -241,13 +220,12 @@ service:
 
 This configuration collects system logs and metrics for OSX and Linux systems, sending the results to ClickStack. The configuration extends the ClickStack collector by adding new receivers and pipelines—you reference the existing `clickhouse` exporter and processors (`memory_limiter`, `batch`) that are already configured in the base ClickStack collector.
 
-:::note Ingestion timestamps
+> **note**: Ingestion timestamps
 This configuration adjusts timestamps at ingest, assigning an updated time value to each event. You should ideally [preprocess or parse timestamps](/use-cases/observability/clickstack/ingesting-data/otel-collector#processing-filtering-transforming-enriching) using OTel processors or operators in their log files to ensure accurate event time is retained.
 
 With this example setup, if the receiver or file processor is configured to start at the beginning of the file, all existing log entries will be assigned the same adjusted timestamp - the time of processing rather than the original event time. Any new events appended to the file will receive timestamps approximating their actual generation time.
 
 To avoid this behavior, you can set the start position to `end` in the receiver configuration. This ensures only new entries are ingested and timestamped near their true arrival time.
-:::
 
 For more details on the OpenTelemetry (OTel) configuration structure, we recommend [the official guide](https://opentelemetry.io/docs/collector/configuration/).
 
@@ -266,11 +244,10 @@ docker run -d --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note Root user
+> **note**: Root user
 We run the collector as the root user to access all system logs—this is necessary to capture logs from protected paths on Linux-based systems. However, this approach isn't recommended for production. In production environments, the OpenTelemetry Collector should be deployed as a local agent with only the minimal permissions required to access the intended log sources.
 
 Note that we mount the host's `/var/log` to `/host/var/log` inside the container to avoid conflicts with the container's own log files.
-:::
 
 ### Explore system logs {#navigate-to-the-hyperdx-ui-oss}
 
@@ -301,5 +278,3 @@ From the subsequent menu you can select `Percentage` from the `Output format` dr
 <Image img={hyperdx_23} alt="Memory % of time" size="lg"/>
 
 </VerticalStepper>
-</TabItem>
-</Tabs>

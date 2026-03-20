@@ -12,9 +12,7 @@ View All Current Connections
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

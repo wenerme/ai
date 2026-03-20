@@ -12,9 +12,7 @@ View user authorization information.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

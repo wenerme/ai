@@ -1,7 +1,5 @@
 ---
 date: "2020-03-19T19:27:00+02:00"
-slug: "install-on-kubernetes"
-sidebar_position: 80
 aliases:
   - /en-us/install-on-kubernetes
 ---

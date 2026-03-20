@@ -3,8 +3,6 @@ title: Bun Runtime
 description: Execute JavaScript/TypeScript files, package.json scripts, and executable packages with Bun's fast runtime.
 ---
 
-import Run from "/snippets/cli/run.mdx";
-
 The Bun Runtime is designed to start fast and run fast.
 
 Under the hood, Bun uses the [JavaScriptCore engine](https://developer.apple.com/documentation/javascriptcore), which is developed by Apple for Safari. In most cases, the startup and running performance is faster than V8, the engine used by Node.js and Chromium-based browsers. Its transpiler and runtime are written in Zig, a modern, high-performance language. On Linux, this translates into startup times [4x faster](https://twitter.com/jarredsumner/status/1499225725492076544) than Node.js.
@@ -48,7 +46,6 @@ To run a file in watch mode, use the `--watch` flag.
 bun --watch run index.tsx
 ```
 
-<Note>
 When using `bun run`, put Bun flags like `--watch` immediately after `bun`.
 
 ```bash
@@ -58,13 +55,9 @@ bun run dev --watch # ❌ don't do this
 
 Flags that occur at the end of the command will be ignored and passed through to the `"dev"` script itself.
 
-</Note>
-
 ## Run a `package.json` script
 
-<Note>
 Compare to `npm run <script>` or `yarn <script>`
-</Note>
 
 ```sh
 bun [bun flags] run <script> [script flags]
@@ -96,7 +89,7 @@ Done.
 
 Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On Windows, it uses [bun shell](/runtime/shell) to support bash-like syntax and many common commands.
 
-<Note>⚡️ The startup time for `npm run` on Linux is roughly 170ms; with Bun it is `6ms`.</Note>
+⚡️ The startup time for `npm run` on Linux is roughly 170ms; with Bun it is `6ms`.
 
 Scripts can also be run with the shorter command `bun <script>`, however if there is a built-in bun command with the same name, the built-in command takes precedence. In this case, use the more explicit `bun run <script>` command to execute your package script.
 

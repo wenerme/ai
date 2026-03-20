@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # vitest-browser-vue
@@ -24,13 +24,11 @@ test('counter button increments the count', async () => {
 })
 ```
 
-::: warning
-This library takes inspiration from [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library).
+> **warning**: This library takes inspiration from [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library).
 
 If you have used `@testing-library/vue` in your tests before, you can keep using it, however the `vitest-browser-vue` package provides certain benefits unique to the Browser Mode that `@testing-library/vue` lacks:
 
 `vitest-browser-vue` returns APIs that interact well with built-in [locators](/api/browser/locators), [user events](/api/browser/interactivity) and [assertions](/api/browser/assertions): for example, Vitest will automatically retry the element until the assertion is successful, even if it was rerendered between the assertions.
-:::
 
 The package exposes two entry points: `vitest-browser-vue` and `vitest-browser-vue/pure`. They expose identical API, but the `pure` entry point doesn't add a handler to remove the component before the next test has started.
 
@@ -45,14 +43,12 @@ export function render(
 
 The `render` function records a `vue.render` trace mark, visible in the [Trace View](/guide/browser/trace-view).
 
-::: warning
-Synchronous usage of `render` is deprecated and will be removed in the next major version. Please always `await` the result:
+> **warning**: Synchronous usage of `render` is deprecated and will be removed in the next major version. Please always `await` the result:
 
 ```ts
 const screen = render(Component) // [!code --]
 const screen = await render(Component) // [!code ++]
 ```
-:::
 
 ### Options
 
@@ -92,9 +88,7 @@ await screen.getByRole('link', { name: 'Expand' }).click()
 
 The containing DOM node where your Vue component is rendered. This is a regular DOM node, so you technically could call `container.querySelector` etc. to inspect the children.
 
-:::danger
-If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
-:::
+> **danger**: If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
 
 #### baseElement
 
@@ -102,9 +96,7 @@ The containing DOM node where your Vue component is rendered in the `container`.
 
 This is useful when the component you want to test renders something outside the container `div`, e.g. when you want to snapshot test your portal component which renders its HTML directly in the body.
 
-:::tip
-The queries returned by the `render` looks into `baseElement`, so you can use queries to test your portal component without the `baseElement`.
-:::
+> **tip**: The queries returned by the `render` looks into `baseElement`, so you can use queries to test your portal component without the `baseElement`.
 
 #### locator
 
@@ -143,10 +135,7 @@ Also records a `vue.rerender` trace mark in the [Trace View](/guide/browser/trac
 
 It is better if you test the component that's doing the prop updating to ensure that the props are being updated correctly to avoid relying on implementation details in your tests. That said, if you'd prefer to update the props of a rendered component in your test, this function can be used to update props of the rendered component.
 
-::: warning
-Synchronous usage of `rerender` is deprecated and will be removed in the next major version. Please always `await` the result.
-:::
-
+> **warning**: Synchronous usage of `rerender` is deprecated and will be removed in the next major version. Please always `await` the result.
 ```js
 import { render } from 'vitest-browser-vue'
 
@@ -164,9 +153,7 @@ function unmount(): void & PromiseLike<void>
 
 This will cause the rendered component to be unmounted. Also records a `vue.unmount` trace mark in the [Trace View](/guide/browser/trace-view). This is useful for testing what happens when your component is removed from the page (like testing that you don't leave event handlers hanging around causing memory leaks).
 
-::: warning
-Synchronous usage of `unmount` is deprecated and will be removed in the next major version. Please always `await` the result.
-:::
+> **warning**: Synchronous usage of `unmount` is deprecated and will be removed in the next major version. Please always `await` the result.
 
 #### emitted
 
@@ -177,9 +164,7 @@ function emitted<T = unknown[]>(eventName: string): undefined | T[]
 
 Returns the emitted events from the Component.
 
-::: warning
-Emitted values are an implementation detail not exposed directly to the user, so it is better to test how your emitted values are changing the displayed content by using [locators](/api/browser/locators) instead.
-:::
+> **warning**: Emitted values are an implementation detail not exposed directly to the user, so it is better to test how your emitted values are changing the displayed content by using [locators](/api/browser/locators) instead.
 
 ## cleanup
 

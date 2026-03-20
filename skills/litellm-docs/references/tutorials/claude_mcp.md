@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Use Claude Code with MCPs
 
@@ -11,11 +10,7 @@ Note: LiteLLM supports OAuth for MCP servers as well. [Learn more](https://docs.
 
 You can connect MCP servers to Claude Code via LiteLLM Proxy.
 
-
 1. Add the MCP server to your `config.yaml`
-
-<Tabs>
-<TabItem value="github" label="GitHub MCP">
 
 In this example, we'll add the Github MCP server to our `config.yaml`
 
@@ -29,9 +24,6 @@ mcp_servers:
     client_secret: os.environ/GITHUB_OAUTH_CLIENT_SECRET
 ```
 
-</TabItem>
-<TabItem value="atlassian" label="Atlassian MCP">
-
 In this example, we'll add the Atlassian MCP server to our `config.yaml`
 
 ```yaml title="config.yaml" showLineNumbers
@@ -42,12 +34,7 @@ mcp_servers:
     auth_type: oauth2
 ```
 
-</TabItem>
-</Tabs>
-
-:::important
-The server name under `mcp_servers:` (e.g. `atlassian_mcp`, `github_mcp`) **must match** the name used in the Claude Code URL path (`/mcp/<server_name>`). A mismatch will cause a 404 error during OAuth.
-:::
+> **important**: The server name under `mcp_servers:` (e.g. `atlassian_mcp`, `github_mcp`) **must match** the name used in the Claude Code URL path (`/mcp/<server_name>`). A mismatch will cause a 404 error during OAuth.
 
 2. Start LiteLLM Proxy
 
@@ -66,24 +53,15 @@ ngrok http 4000
 
 3. Add the MCP server to Claude Code
 
-<Tabs>
-<TabItem value="github" label="GitHub MCP">
-
 ```bash
 claude mcp add --transport http litellm-github https://your-ngrok-url.ngrok-free.dev/mcp/github_mcp \
   --header "x-litellm-api-key: Bearer sk-1234"
 ```
 
-</TabItem>
-<TabItem value="atlassian" label="Atlassian MCP">
-
 ```bash
 claude mcp add --transport http litellm-atlassian https://your-ngrok-url.ngrok-free.dev/mcp/atlassian_mcp \
   --header "x-litellm-api-key: Bearer sk-1234"
 ```
-
-</TabItem>
-</Tabs>
 
 **Parameter breakdown:**
 
@@ -96,9 +74,7 @@ claude mcp add --transport http litellm-atlassian https://your-ngrok-url.ngrok-f
 
 You can also add the MCP server directly to your `~/.claude.json` file instead of using `claude mcp add`. [See Claude Code docs](https://docs.anthropic.com/en/docs/claude-code/mcp).
 
-:::note
-For MCP servers that require OAuth (such as Atlassian), use `x-litellm-api-key` instead of `Authorization` for the LiteLLM virtual key. The `Authorization` header is reserved for the OAuth flow.
-:::
+> **note**: For MCP servers that require OAuth (such as Atlassian), use `x-litellm-api-key` instead of `Authorization` for the LiteLLM virtual key. The `Authorization` header is reserved for the OAuth flow.
 
 4. Authenticate via Claude Code
 
@@ -126,4 +102,4 @@ d. Start the OAuth flow
 
 e. Once completed, you should see this success message:
 
-<img src={require('../../img/oauth_2_success.png').default} alt="OAuth 2.0 Success" style={{ width: '500px', height: 'auto' }} />
+[OAuth 2.0 Success]

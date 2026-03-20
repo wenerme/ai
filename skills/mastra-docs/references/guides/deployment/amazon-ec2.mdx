@@ -3,18 +3,11 @@ title: "Deploy Mastra to Amazon EC2 | Deployment"
 description: "Learn how to deploy a Mastra application to Amazon EC2"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Deploy Mastra to Amazon EC2
 
 Deploy your Mastra server to Amazon EC2. This gives you full control over your server environment and supports long-running agents and workflows.
 
-:::info
-This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
-:::
+> **info**: This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
 
 ## Before you begin
 
@@ -31,23 +24,22 @@ For production, you'll also need:
 
 ## Deploy
 
-<Steps>
   <StepItem>
     Connect to your EC2 instance and clone your repository:
 
-    <Tabs>
-      <TabItem value="public" label="Public Repository">
+    
+      
         ```bash
         git clone https://github.com/<your-username>/<your-repository>.git
         ```
-      </TabItem>
+      
 
-      <TabItem value="private" label="Private Repository">
+      
         ```bash
         git clone git@github.com:<your-username>/<your-repository>.git
         ```
-      </TabItem>
-    </Tabs>
+      
+    
 
     Navigate to the repository directory:
 
@@ -116,7 +108,6 @@ For production, you'll also need:
   <StepItem>
     You can now call your Mastra endpoints over HTTP.
   </StepItem>
-</Steps>
 
 ## Next steps
 

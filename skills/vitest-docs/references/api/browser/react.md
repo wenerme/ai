@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # vitest-browser-react
@@ -20,13 +20,11 @@ test('counter button increments the count', async () => {
 })
 ```
 
-::: warning
-This library takes inspiration from [`@testing-library/react`](https://github.com/testing-library/react-testing-library).
+> **warning**: This library takes inspiration from [`@testing-library/react`](https://github.com/testing-library/react-testing-library).
 
 If you have used `@testing-library/react` in your tests before, you can keep using it, however the `vitest-browser-react` package provides certain benefits unique to the Browser Mode that `@testing-library/react` lacks:
 
 `vitest-browser-react` returns APIs that interact well with built-in [locators](/api/browser/locators), [user events](/api/browser/interactivity) and [assertions](/api/browser/assertions): for example, Vitest will automatically retry the element until the assertion is successful, even if it was rerendered between the assertions.
-:::
 
 The package exposes two entry points: `vitest-browser-react` and `vitest-browser-react/pure`. They expose almost identical API (`pure` also exposes `configure`), but the `pure` entry point doesn't add a handler to remove the component before the next test has started.
 
@@ -41,15 +39,13 @@ export function render(
 
 The `render` function records a `react.render` trace mark, visible in the [Trace View](/guide/browser/trace-view).
 
-:::warning
-Note that `render` is asynchronous, unlike in other packages. This is to support [`Suspense`](https://react.dev/reference/react/Suspense) correctly.
+> **warning**: Note that `render` is asynchronous, unlike in other packages. This is to support [`Suspense`](https://react.dev/reference/react/Suspense) correctly.
 
 ```tsx
 import { render } from 'vitest-browser-react'
 const screen = render(<Component />) // [!code --]
 const screen = await render(<Component />) // [!code ++]
 ```
-:::
 
 ### Options
 
@@ -111,9 +107,7 @@ await screen.getByRole('link', { name: 'Expand' }).click()
 
 The containing `div` DOM node of your rendered React Element (rendered using `ReactDOM.render`). This is a regular DOM node, so you technically could call `container.querySelector` etc. to inspect the children.
 
-:::danger
-If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
-:::
+> **danger**: If you find yourself using `container` to query for rendered elements then you should reconsider! The [locators](/api/browser/locators) are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
 
 #### baseElement
 
@@ -121,9 +115,7 @@ The containing DOM node where your React Element is rendered in the `container`.
 
 This is useful when the component you want to test renders something outside the container `div`, e.g. when you want to snapshot test your portal component which renders its HTML directly in the body.
 
-:::tip
-The queries returned by the `render` looks into `baseElement`, so you can use queries to test your portal component without the `baseElement`.
-:::
+> **tip**: The queries returned by the `render` looks into `baseElement`, so you can use queries to test your portal component without the `baseElement`.
 
 #### locator
 
@@ -242,8 +234,7 @@ test('returns logged in user', async () => {
 })
 ```
 
-:::warning
-When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component. To provide props to the `wrapper` component, consider a solution like this:
+> **warning**: When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component. To provide props to the `wrapper` component, consider a solution like this:
 
 ```jsx
 function createWrapper(Wrapper, props) {
@@ -258,7 +249,6 @@ await renderHook(() => {}, {
   wrapper: createWrapper(Wrapper, { value: 'foo' }),
 })
 ```
-:::
 
 `renderHook` returns a few useful methods and properties:
 

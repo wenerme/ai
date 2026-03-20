@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Lemonade
 
@@ -31,15 +30,11 @@ Lemonade is fully OpenAI-compatible and supports the following parameters:
 "tools"
 ```
 
-
 ## API Key Setup
 
 Lemonade can be configured with custom API URLs and doesn't require strict API key validation. Set the `LEMONADE_API_BASE` environment variable to modify the base URL.
 
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -186,6 +181,3 @@ print("Available models:", [model['id'] for model in models.get('data', [])])
 ## Support
 
 For more information regarding Lemonade please go to to the [Lemonade website](https://lemonade-server.ai/) or [Lemonade repository](https://github.com/lemonade-sdk/lemonade).
-
-</TabItem>
-</Tabs>

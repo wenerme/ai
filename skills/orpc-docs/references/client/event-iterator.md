@@ -49,10 +49,7 @@ for await (const event of iterator) {
 
 ## Error Handling
 
-::: info
-Unlike traditional SSE, the Event Iterator does not automatically retry on error. To enable automatic retries, refer to the [Client Retry Plugin](/docs/plugins/client-retry).
-:::
-
+> **info**: Unlike traditional SSE, the Event Iterator does not automatically retry on error. To enable automatic retries, refer to the [Client Retry Plugin](/docs/plugins/client-retry).
 ```ts
 const iterator = await client.streaming()
 
@@ -68,9 +65,7 @@ catch (error) {
 }
 ```
 
-::: info
-Errors thrown by the server can be instances of `ORPCError`.
-:::
+> **info**: Errors thrown by the server can be instances of `ORPCError`.
 
 ## Using `consumeEventIterator`
 
@@ -100,6 +95,4 @@ setTimeout(async () => {
 }, 1000)
 ```
 
-:::info
-This utility accepts both promises and event iterators. Passing a promise directly lets it infer correct error type.
-:::
+> **info**: This utility accepts both promises and event iterators. Passing a promise directly lets it infer correct error type.

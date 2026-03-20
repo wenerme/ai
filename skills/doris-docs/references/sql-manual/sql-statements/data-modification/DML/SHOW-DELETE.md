@@ -28,7 +28,6 @@ SHOW DELETE [FROM <db_name>]
 | `DeleteCondition` | The condition used for the delete operation, specifying which rows were deleted. |
 | `State`           | The status of the delete operation                                               |
 
-
 ## Example
 
 1. Go to the test database to view all historical delete tasks
@@ -55,4 +54,3 @@ SHOW DELETE [FROM <db_name>]
      | customer  | *             | 2025-03-14 15:45:19 | c_custkey EQ "18" | FINISHED |
      +-----------+---------------+---------------------+-------------------+----------+
      ```
-

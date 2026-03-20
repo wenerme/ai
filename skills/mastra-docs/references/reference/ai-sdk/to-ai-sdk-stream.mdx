@@ -7,8 +7,6 @@ packages:
   - "@mastra/core"
 ---
 
-import PropertiesTable from "@site/src/components/PropertiesTable";
-
 # toAISdkStream()
 
 Converts Mastra streams (agent, network, or workflow) to AI SDK-compatible streams. Use this function when you need to manually transform Mastra streams for use with AI SDK's `createUIMessageStream()` and `createUIMessageStreamResponse()`.
@@ -46,11 +44,7 @@ export async function POST(req: Request) {
 }
 ```
 
-:::tip
-
-Pass `messages` to `originalMessages` in `createUIMessageStream()` to avoid duplicated assistant messages in the UI. See [Troubleshooting: Repeated Assistant Messages](https://ai-sdk.dev/docs/troubleshooting/repeated-assistant-messages) for details.
-
-:::
+> **tip**: Pass `messages` to `originalMessages` in `createUIMessageStream()` to avoid duplicated assistant messages in the UI. See [Troubleshooting: Repeated Assistant Messages](https://ai-sdk.dev/docs/troubleshooting/repeated-assistant-messages) for details.
 
 ## Parameters
 

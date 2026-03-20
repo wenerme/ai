@@ -1,13 +1,9 @@
 ---
-slug: /cloud/managed-postgres/extensions
-sidebar_label: 'Extensions'
 title: 'PostgreSQL Extensions'
 description: 'Available PostgreSQL extensions in ClickHouse Managed Postgres'
 keywords: ['postgres extensions', 'postgis', 'pgvector', 'pg_cron', 'postgresql extensions']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="extensions" />
 

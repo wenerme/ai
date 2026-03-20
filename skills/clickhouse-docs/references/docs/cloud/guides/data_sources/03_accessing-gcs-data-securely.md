@@ -1,22 +1,9 @@
 ---
-slug: /cloud/data-sources/secure-gcs
-sidebar_label: 'Accessing GCS data securely'
 title: 'Accessing GCS data securely'
 description: 'This article demonstrates how ClickHouse Cloud customers can access their GCS data securely'
 keywords: ['GCS']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import IAM_and_admin from '@site/static/images/cloud/guides/accessing-data/GCS/IAM_and_admin.png';
-import create_service_account from '@site/static/images/cloud/guides/accessing-data/GCS/create_service_account.png';
-import create_and_continue from '@site/static/images/cloud/guides/accessing-data/GCS/create_and_continue.png';
-import storage_object_user_role from '@site/static/images/cloud/guides/accessing-data/GCS/storage_object_user.png';
-import note_service_account_email from '@site/static/images/cloud/guides/accessing-data/GCS/note_service_account_email.png';
-import cloud_storage_settings from '@site/static/images/cloud/guides/accessing-data/GCS/cloud_storage_settings.png';
-import create_key_for_service_account from '@site/static/images/cloud/guides/accessing-data/GCS/create_key_for_service_account.png';
-import create_key from '@site/static/images/cloud/guides/accessing-data/GCS/create_a_key.png';
-import clickpipes_hmac_key from '@site/static/images/cloud/guides/accessing-data/GCS/clickpipes_hmac_key.png';
 
 This guide demonstrates how to securely authenticate with Google Cloud Storage (GCS) and access your data from ClickHouse Cloud.
 
@@ -72,10 +59,8 @@ Grant the service account the `Storage Object User` role:
 
 This role provides read and write access to GCS objects
 
-:::tip
-For read-only access, use `Storage Object Viewer` instead
+> **tip**: For read-only access, use `Storage Object Viewer` instead
 For more granular control, you can create a custom role
-:::
 
 Click `Continue`, then `Done`
 
@@ -108,9 +93,8 @@ You can grant access at either the project level or individual bucket level.
 4. Select Storage Object User (or Storage Object Viewer for read-only)
 5. Click SAVE
 
-:::warning Security best practice
+> **warning**: Security best practice
 Grant access only to the specific buckets that ClickHouse needs to access, rather than project-wide permissions.
-:::
 
 ### Generate HMAC keys for the service account {#generate-hmac-keys-for-service-account}
 
@@ -140,11 +124,10 @@ Access Key: GOOG1EF4YBJVNFQ2YGCP3SLV4Y7CMFHW7HPC6EO7RITLJDDQ75639JK56SQVD
 Secret: nFy6DFRr4sM9OnV6BG4FtWVPR25JfqpmcdZ6w9nV
 ```
 
-:::danger Important
+> **danger**: Important
 Store these credentials securely.
 The secret can't be retrieved again after this screen is closed.
 You will need to generate new keys if you lose the secret.
-:::
 
 ## Use HMAC keys with ClickHouse Cloud {#use-hmac-keys-with-clickhouse-cloud}
 
@@ -184,10 +167,8 @@ When [setting up a GCS ClickPipe](/integrations/clickpipes/object-storage/gcs/ge
 
 <Image img={clickpipes_hmac_key} size="md" alt=""/>
 
-:::note
-Service account authentication isn't currently supported - you must use HMAC keys
+> **note**: Service account authentication isn't currently supported - you must use HMAC keys
 The GCS bucket URL must use the format: `https://storage.googleapis.com/<bucket>/<path>` (not `gs://`)
-:::
 
 The HMAC keys must be associated with a service account that has the `roles/storage.objectViewer` role, which includes:
 - `storage.objects.list`: to list objects in the bucket
@@ -222,9 +203,7 @@ Implement a key rotation schedule:
 - Verify functionality with new keys
 - Delete old HMAC keys
 
-:::tip
-Google Cloud doesn't enforce HMAC key expiration, so you must implement your own rotation policy.
-:::
+> **tip**: Google Cloud doesn't enforce HMAC key expiration, so you must implement your own rotation policy.
 
 ### Monitor access with Cloud Audit Logs {#monitor-access}
 

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI Codex
 
@@ -14,12 +12,7 @@ This guide walks you through connecting OpenAI Codex to LiteLLM. Using LiteLLM w
 
 ## Quickstart
 
-:::info
-
-Requires LiteLLM v1.66.3.dev5 and higher
-
-:::
-
+> **info**: Requires LiteLLM v1.66.3.dev5 and higher
 
 Make sure to set up LiteLLM with the [LiteLLM Getting Started Guide](../proxy/docker_quick_start.md).
 
@@ -27,27 +20,15 @@ Make sure to set up LiteLLM with the [LiteLLM Getting Started Guide](../proxy/do
 
 Install the OpenAI Codex CLI tool globally using npm:
 
-<Tabs>
-<TabItem value="npm" label="npm">
-
 ```bash showLineNumbers
 npm i -g @openai/codex
 ```
-
-</TabItem>
-<TabItem value="yarn" label="yarn">
 
 ```bash showLineNumbers
 yarn global add @openai/codex
 ```
 
-</TabItem>
-</Tabs>
-
 ## 2. Start LiteLLM Proxy
-
-<Tabs>
-<TabItem value="docker" label="Docker">
 
 ```bash showLineNumbers
 docker run \
@@ -57,15 +38,9 @@ docker run \
     --config /app/config.yaml
 ```
 
-</TabItem>
-<TabItem value="pip" label="LiteLLM CLI">
-
 ```bash showLineNumbers
 litellm --config /path/to/config.yaml
 ```
-
-</TabItem>
-</Tabs>
 
 LiteLLM should now be running on [http://localhost:4000](http://localhost:4000)
 

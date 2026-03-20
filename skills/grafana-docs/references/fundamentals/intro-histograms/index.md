@@ -43,7 +43,7 @@ and the bar height represents the frequency (such as count) of values that fell 
 This _histogram_ shows the value distribution of a couple of time series. You can easily see that
 most values land between 240-300 with a peak between 260-280.
 
-![Histogram example](/static/img/docs/v43/heatmap_histogram.png)
+[Histogram example]
 
 Here is an example showing height distribution of people.
 
@@ -59,7 +59,7 @@ A _heatmap_ is like a histogram, but over time, where each time slice represents
 
 In this example, you can clearly see what values are more common and how they trend over time.
 
-![Heatmap example](/static/img/docs/v43/heatmap_histogram_over_time.png)
+[Heatmap example]
 
 For more information about heatmap visualization options, refer to [Heatmap](ref:heatmap).
 

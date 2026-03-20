@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # UI - Router Settings for Keys and Teams
 

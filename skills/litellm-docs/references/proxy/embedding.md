@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Embeddings - `/embeddings`
 
@@ -56,12 +54,3 @@ curl --location 'http://0.0.0.0:4000/v1/embeddings' \
     "model": "sagemaker-embeddings",
 }'
 ```
-
-
-
-
-
-
-
-
-

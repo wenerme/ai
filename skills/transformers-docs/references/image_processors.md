@@ -1,18 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Image processors
 
@@ -120,24 +106,22 @@ processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
 images_processed = processor(images, return_tensors="pt", device="cuda")
 ```
 
-<details>
-<summary>Benchmarks</summary>
+Benchmarks
 
 The benchmarks are obtained from an [AWS EC2 g5.2xlarge](https://aws.amazon.com/ec2/instance-types/g5/) instance with a NVIDIA A10G Tensor Core GPU.
 
 <div class="flex">
-  <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/benchmark_results_full_pipeline_detr_fast_padded.png" />
+  
 </div>
 <div class="flex">
-  <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/benchmark_results_full_pipeline_detr_fast_batched_compiled.png" />
+  
 </div>
 <div class="flex">
-  <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/benchmark_results_full_pipeline_rt_detr_fast_single.png" />
+  
 </div>
 <div class="flex">
-  <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/benchmark_results_full_pipeline_rt_detr_fast_batched.png" />
+  
 </div>
-</details>
 
 ## Preprocess
 
@@ -201,11 +185,11 @@ plt.imshow(img.permute(1, 2, 0))
 
 <div class="flex gap-4">
   <div>
-    <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/vision-preprocess-tutorial.png" />
+    
     <figcaption class="mt-2 text-center text-sm text-gray-500">before</figcaption>
   </div>
   <div>
-    <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/preprocessed_image.png" />
+    
     <figcaption class="mt-2 text-center text-sm text-gray-500">after</figcaption>
   </div>
 </div>

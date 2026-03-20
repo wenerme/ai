@@ -1,17 +1,12 @@
 ---
 title: Using Query Builder
-sidebar_label: Query Builder
 ---
 
-:::info
-
-To have access to `createQueryBuilder()` method, you need to import `EntityManager` from your driver package.
+> **info**: To have access to `createQueryBuilder()` method, you need to import `EntityManager` from your driver package.
 
 ```ts
 import { EntityManager } from '@mikro-orm/mysql'; // or any other SQL driver package
 ```
-
-:::
 
 When you need to execute some SQL query without all the ORM stuff involved, you can either compose the query yourself, or use the `QueryBuilder` helper to construct the query for you:
 
@@ -774,7 +769,6 @@ const qb3 = em.createQueryBuilder(Author)
   .with('cte', sub, { materialized: false })
   .select('*').from('cte');
 ```
-
 
 ## Referring to column in update queries
 

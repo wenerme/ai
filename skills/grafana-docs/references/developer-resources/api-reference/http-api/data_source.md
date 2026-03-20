@@ -92,7 +92,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action           | Scope                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------------- |
-| datasources:read | datasources:\*<br>datasources:uid:\*<br>datasources:uid:kLtEtcRGk (single data source) |
+| datasources:read | datasources:\*datasources:uid:\*datasources:uid:kLtEtcRGk (single data source) |
 
 ### Examples
 
@@ -152,7 +152,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action           | Scope                                                                                          |
 | ---------------- | ---------------------------------------------------------------------------------------------- |
-| datasources:read | datasources:\*<br>datasources:name:\*<br>datasources:name:test_datasource (single data source) |
+| datasources:read | datasources:\*datasources:name:\*datasources:name:test_datasource (single data source) |
 
 ### Examples
 
@@ -212,7 +212,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action              | Scope                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------- |
-| datasources.id:read | datasources:\*<br>datasources:name:\*<br>datasources:name:test_datasource (single data source) |
+| datasources.id:read | datasources:\*datasources:name:\*datasources:name:test_datasource (single data source) |
 
 ### Examples
 
@@ -396,7 +396,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action            | Scope                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
-| datasources:write | datasources:\*<br>datasources:uid:\*<br>datasources:uid:kLtEtcRGk (single data source) |
+| datasources:write | datasources:\*datasources:uid:\*datasources:uid:kLtEtcRGk (single data source) |
 
 ### Examples
 
@@ -482,7 +482,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action             | Scope                                                                                  |
 | ------------------ | -------------------------------------------------------------------------------------- |
-| datasources:delete | datasources:\*<br>datasources:uid:\*<br>datasources:uid:kLtEtcRGk (single data source) |
+| datasources:delete | datasources:\*datasources:uid:\*datasources:uid:kLtEtcRGk (single data source) |
 
 ### Examples
 
@@ -521,7 +521,7 @@ See note in the [introduction](#data-source-api) for an explanation.
 
 | Action             | Scope                                                                                          |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
-| datasources:delete | datasources:\*<br>datasources:name:\*<br>datasources:name:test_datasource (single data source) |
+| datasources:delete | datasources:\*datasources:name:\*datasources:name:test_datasource (single data source) |
 
 ### Examples
 

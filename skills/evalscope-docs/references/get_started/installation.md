@@ -78,7 +78,6 @@ pip install -e .
    pip install '.[all]'
    ```
 
-
 ## Docker Image
 
 You can use the official ModelScope Docker images, which include the EvalScope library. Refer to [here](https://modelscope.cn/docs/intro/environment-setup#%E6%9C%80%E6%96%B0%E9%95%9C%E5%83%8F) for more information.

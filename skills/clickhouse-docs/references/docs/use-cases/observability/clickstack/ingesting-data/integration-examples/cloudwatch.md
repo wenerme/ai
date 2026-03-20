@@ -1,31 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/aws-cloudwatch-logs
 title: 'Monitoring AWS CloudWatch Logs with ClickStack'
-sidebar_label: 'AWS CloudWatch Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring AWS CloudWatch Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['AWS', 'CloudWatch', 'OTEL', 'ClickStack', 'logs']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/cloudwatch/finish-import.png';
-import example_dashboard from '@site/static/images/clickstack/cloudwatch/logs-dashboard.png';
-import log_search_view from '@site/static/images/clickstack/cloudwatch/log-search-view.png';
-import demo_search_view from '@site/static/images/clickstack/cloudwatch/demo-search-view.png';
-import error_log_overview from '@site/static/images/clickstack/cloudwatch/error-log-overview.png';
-import error_log_column_values from '@site/static/images/clickstack/cloudwatch/error-log-column-values.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring AWS CloudWatch Logs with ClickStack {#cloudwatch-clickstack}
 
 :::note[TL;DR]
 Forward AWS CloudWatch logs to ClickStack using the OpenTelemetry Collector's CloudWatch receiver. Supports named log groups and autodiscovery. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Overview {#overview}
 
@@ -48,9 +31,7 @@ If you would like to test the integration before configuring your production set
 - AWS account with CloudWatch log groups
 - AWS credentials with appropriate IAM permissions
 
-:::note
-Unlike file-based log integrations (nginx, Redis), CloudWatch requires running a separate OpenTelemetry Collector that polls the CloudWatch API. This collector can't run inside ClickStack's all-in-one image as it needs AWS credentials and API access.
-:::
+> **note**: Unlike file-based log integrations (nginx, Redis), CloudWatch requires running a separate OpenTelemetry Collector that polls the CloudWatch API. This collector can't run inside ClickStack's all-in-one image as it needs AWS credentials and API access.
 
 <VerticalStepper headerLevel="h4">
 
@@ -207,9 +188,7 @@ For more configuration options, see the [CloudWatch receiver documentation](http
 - `us-east-1` → Your AWS region
 - Log group names/prefixes → Your actual CloudWatch log groups
 
-:::note
-The CloudWatch receiver only fetches logs from recent time windows (based on `poll_interval`). When first started, it begins from the current time. Historical logs aren't retrieved by default.
-:::
+> **note**: The CloudWatch receiver only fetches logs from recent time windows (based on `poll_interval`). When first started, it begins from the current time. Historical logs aren't retrieved by default.
 
 #### Start the collector {#start-collector}
 
@@ -320,7 +299,6 @@ You should see logs from multiple CloudWatch log groups.
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-12-07 00:00:00 - 2025-12-08 00:00:00 (UTC)**. Set your time range to **2025-12-06 00:00:00 - 2025-12-09 00:00:00** to ensure you see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -349,9 +327,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={example_dashboard} alt="CloudWatch Logs dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-12-07 00:00:00 - 2025-12-08 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-12-07 00:00:00 - 2025-12-08 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

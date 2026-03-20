@@ -1,7 +1,5 @@
 ---
 description: 'Over 150M customer reviews of Amazon products'
-sidebar_label: 'Amazon customer reviews'
-slug: /getting-started/example-datasets/amazon-reviews
 title: 'Amazon Customer Review'
 doc_type: 'guide'
 keywords: ['Amazon reviews', 'customer reviews dataset', 'e-commerce data', 'example dataset', 'getting started']
@@ -9,10 +7,8 @@ keywords: ['Amazon reviews', 'customer reviews dataset', 'e-commerce data', 'exa
 
 This dataset contains over 150M customer reviews of Amazon products. The data is in snappy-compressed Parquet files in AWS S3 that total 49GB in size (compressed). Let's walk through the steps to insert it into ClickHouse.
 
-:::note
-The queries below were executed on a **Production** instance of ClickHouse Cloud. For more information see
+> **note**: The queries below were executed on a **Production** instance of ClickHouse Cloud. For more information see
 ["Playground specifications"](/getting-started/playground#specifications).
-:::
 
 ## Loading the dataset {#loading-the-dataset}
 
@@ -122,9 +118,7 @@ FROM s3Cluster('default',
 'https://datasets-documentation.s3.eu-west-3.amazonaws.com/amazon_reviews/amazon_reviews_*.snappy.parquet')
 ```
 
-:::tip
-In ClickHouse Cloud, the name of the cluster is `default`. Change `default` to the name of your cluster...or use the `s3` table function (instead of `s3Cluster`) if you don't have a cluster.
-:::
+> **tip**: In ClickHouse Cloud, the name of the cluster is `default`. Change `default` to the name of your cluster...or use the `s3` table function (instead of `s3Cluster`) if you don't have a cluster.
 
 5. That query doesn't take long - averaging about 300,000 rows per second. Within 5 minutes or so you should see all the rows inserted:
 
@@ -164,9 +158,7 @@ ORDER BY helpful_votes DESC
 LIMIT 10
 ```
 
-:::note
-This query is using a [projection](/data-modeling/projections) to speed up performance.
-:::
+> **note**: This query is using a [projection](/data-modeling/projections) to speed up performance.
 
 8. Here are the top 10 products in Amazon with the most reviews:
 

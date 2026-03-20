@@ -27,7 +27,6 @@ Reload tablet
 * `path`
     Path of file    
 
-
 ## Request body
 
 None
@@ -39,9 +38,7 @@ None
     ```
 ## Examples
 
-
     ```
     curl "http://127.0.0.1:8040/api/reload_tablet?tablet_id=123456&schema_hash=1111111&path=/abc"
 
     ```
-

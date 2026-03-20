@@ -31,7 +31,7 @@ refs:
 
 A pie chart is a graph that displays data as segments of a circle proportional to the whole, making it look like a sliced pie. Each slice corresponds to a value or measurement.
 
-![Pie chart visualizations](/media/docs/grafana/panels-visualizations/screenshot-pie-chart-v11.4.png)
+[Pie chart visualizations]
 
 The pie chart visualization is ideal when you have data that adds up to a total and you want to show the proportion of each value compared to other slices, as well as to the whole of the pie.
 
@@ -64,7 +64,7 @@ The easiest way to provide data for a pie chart visualization is in a dataset wi
 | ------ | ------ | ------ | -------- |
 | 5      | 3      | 2      | Sums10   |
 
-![Pie chart visualization with multiple values in a single row](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example1.png)
+[Pie chart visualization with multiple values in a single row]
 
 ### Example - Multiple rows
 
@@ -76,13 +76,13 @@ If you need to use numeric data that's in multiple rows, the default **Show** pa
 | 3     | Value2 |
 | 2     | Value3 |
 
-![Pie chart visualization with multiple row values showing the last one](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example2.png)
+[Pie chart visualization with multiple row values showing the last one]
 
 By default, the visualization is configured to [calculate](#value-options) a single value per column or series and to display only the last row of data.
 
 To allow values in multiple rows to be displayed, change the **Show** setting in the [Value options](#value-options) from **Calculate** to **All values**.
 
-![Pie chart visualization with multiple row values showing all values](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example3.png)
+[Pie chart visualization with multiple row values showing all values]
 
 ### Example - Multiple rows and columns
 
@@ -94,15 +94,15 @@ If your dataset contains multiple rows and columns with numeric data, by default
 | 10     | 6      | 4      | Sums20   |
 | 20     | 8      | 2      | Sums30   |
 
-![Pie chart visualization with multiple rows and columns showing the last one](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example4.png)
+[Pie chart visualization with multiple rows and columns showing the last one]
 
 If you want to display all the cells, change the **Show** setting in the [Value options](#value-options) from **Calculate** to **All values**. This also labels the elements by concatenating all the text fields (if you have any) with the column name.
 
-![Pie chart visualization with multiple rows and columns showing the all values](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example5.png)
+[Pie chart visualization with multiple rows and columns showing the all values]
 
 If you want to display only the values from a given field (or column), once the **Show** setting in the [Value options](#value-options) is set to **All values**, set the **Fields** option to the column you wish to sum in the display. The value labels are also concatenated as indicated before.
 
-![Pie chart visualization with multiple rows and columns showing values from one column](/media/docs/grafana/panels-visualizations/screenshot-grafana-12.1-pie-example6.png)
+[Pie chart visualization with multiple rows and columns showing values from one column]
 
 ## Configuration options
 
@@ -116,16 +116,12 @@ If you want to display only the values from a given field (or column), once the 
 
 Use the following options to refine the value in your visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Show | Set how much information to show. Choose from:<ul><li>**Calculate** - Reduces each value to a single value per series.</li><li>**All values** - Displays every value from a single series.</li></ul> |
 | Calculation | If you chose **Calculate** as your **Show** option, select a calculation to reduce each series. For information about available calculations, refer to [Calculation types](ref:calculation-types). |
 | Limit | If you chose **All values** as your **Show** option, enter a value to limit the number of values displayed. |
 | Fields | Select which field or fields to display in the visualization. Each field name is available on the list, or you can select one of the following options:<ul><li>**Numeric fields** - All fields with numerical values.</li><li>**All fields** - All fields that are not removed by transformations.</li><li>**Time** - All fields with time values.</li></ul> |
-
-<!-- prettier-ignore-end -->
 
 ### Pie chart options
 
@@ -135,7 +131,7 @@ Use these options to refine how your visualization looks.
 
 Select the pie chart display style. Choose from **Pie** or **Donut**.
 
-![Pie chart types](/media/docs/grafana/panels-visualizations/screenshot-pie-chart-types.png)
+[Pie chart types]
 
 #### Slice sorting
 
@@ -168,8 +164,6 @@ The following example shows a pie chart with **Name** and **Percent** labels dis
 
 Use these settings to define how the legend appears in your visualization. For more information about the legend, refer to [Configure a legend](ref:configure-legends).
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Visibility | Toggle the switch to turn the legend on or off. |
@@ -177,8 +171,6 @@ Use these settings to define how the legend appears in your visualization. For m
 | Placement | Select where to display the legend. Choose **Bottom** or **Right**. |
 | Width | Control how wide the legend is when placed on the right side of the visualization. This option is only displayed if you set the legend placement to **Right**. |
 | Legend values | Select values to display in the legend. You can select more than one:<ul><li>**Percent** - The percentage of the whole.</li><li>**Value** - The raw numerical value.</li></ul> |
-
-<!-- prettier-ignore-end -->
 
 ### Standard options
 

@@ -66,7 +66,7 @@ An Advisor report can contain the following tasks and action suggestions:
 - [Investigation needed](#investigation-needed)
 - [No action needed](#no-action-needed)
 
-![Action needed](/media/docs/grafana-advisor/advisor-g13.png)
+[Action needed]
 
 {{< admonition type="note" >}}
 

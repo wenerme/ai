@@ -1,5 +1,4 @@
 ---
-slug: /operations/utilities/static-files-disk-uploader
 title: 'clickhouse-static-files-disk-uploader'
 keywords: ['clickhouse-static-files-disk-uploader', 'utility', 'disk', 'uploader']
 description: 'Provides a description of the clickhouse-static-files-disk-uploader utility'
@@ -35,8 +34,6 @@ When using `clickhouse-static-files-disk-uploader`, you must obtain the metadata
 
 1. Run the following query specifying your target table and database:
 
-<br />
-
 ```sql
 SELECT data_paths
   FROM system.tables
@@ -44,8 +41,6 @@ SELECT data_paths
 ```
 
 2. This should return the path to the data directory for the specified table:
-
-<br />
 
 ```response
 ┌─data_paths────────────────────────────────────────────┐

@@ -39,7 +39,6 @@ PubMedQA is a biomedical question answering dataset designed to evaluate models'
 | **Evaluation Split** | `test` |
 | **Aggregation** | `f1` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -113,5 +112,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -10,9 +10,7 @@
 
 The UNHEX function converts a hexadecimal string back to the original string, serving as the inverse operation of the HEX function. This function converts every two hexadecimal characters (0-9, A-F, a-f) into one byte. The UNHEX_NULL function works identically but returns NULL instead of an empty string when encountering invalid input. These functions are useful when handling binary data, encrypted data, or data requiring hexadecimal representation.
 
-:::tip
-This function is supported since version 3.0.6.
-:::
+> **tip**: This function is supported since version 3.0.6.
 
 ## Syntax
 

@@ -7,16 +7,9 @@
 | Logging | ✅ |
 | Load Balancing | ❌ |
 
-:::tip
+> **tip**: LiteLLM follows the [Perplexity API request/response for the Search API](https://docs.perplexity.ai/api-reference/search-post)
 
-LiteLLM follows the [Perplexity API request/response for the Search API](https://docs.perplexity.ai/api-reference/search-post)
-
-:::
-
-:::info
-
-Supported from LiteLLM v1.78.7+
-:::
+> **info**: Supported from LiteLLM v1.78.7+
 
 ## **LiteLLM Python SDK Usage**
 ### Quick Start 
@@ -185,13 +178,9 @@ curl http://0.0.0.0:4000/v1/search/my-search \
 
 ## **Request/Response Format**
 
-:::info
-
-LiteLLM follows the **Perplexity Search API specification**. 
+> **info**: LiteLLM follows the **Perplexity Search API specification**. 
 
 See the [official Perplexity Search documentation](https://docs.perplexity.ai/api-reference/search-post) for complete details.
-
-:::
 
 ### Example Request
 
@@ -281,4 +270,3 @@ The response follows Perplexity's search format with the following structure:
 | SearchAPI.io | `SEARCHAPI_API_KEY` | `searchapi` |
 
 See the individual provider documentation for detailed setup instructions and provider-specific parameters.
-

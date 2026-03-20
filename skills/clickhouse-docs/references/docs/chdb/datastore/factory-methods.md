@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Factory Methods'
-sidebar_label: 'Factory Methods'
-slug: /chdb/datastore/factory-methods
 description: 'Create DataStore instances from files, databases, cloud storage, and data lakes'
 keywords: ['chdb', 'datastore', 'factory', 'from_file', 'from_s3', 'uri', 'mysql', 'postgresql']
 doc_type: 'reference'

@@ -9,7 +9,7 @@ OpenObserve provides comprehensive web server monitoring integrations to collect
 
 These web server monitoring integrations enable NGINX monitoring, access log analysis, server performance tracking, and application server observability for web applications.
 
-![servers](servers.png)
+[servers]
 
 ## Web Server Integration Guides
 

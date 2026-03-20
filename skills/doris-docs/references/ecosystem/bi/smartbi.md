@@ -18,20 +18,20 @@ you can visit  https://www.smartbi.com.cn to download and install Smartbi.
 
 1. Log into Smartbi and click Data Connections.
 
-   ![main page](/images/bi-smartbi-en-1.png)
+   [main page]
 
 2. After clicking the data connections, you can find a list of databases to be connected with and select the Doris database.
 
-   ![selectdb](/images/bi-smartbi-en-2.png)
+   [selectdb]
 
 3. After selecting the database, fill in the connection information of the Doris database
 
-   ![data source connection](/images/bi-smartbi-en-3.png)
+   [data source connection]
 
 4. If the information is correct and the network is connected, a message is displayed indicating that the Test passed.
 
-   ![test passed](/images/bi-smartbi-en-4.png)
+   [test passed]
 
 5. After the connection is successful, you can customize and set the required report information in the data analysis module Self-service dashboard.
 
-   ![data analysis](/images/bi-smartbi-en-5.png)
+   [data analysis]

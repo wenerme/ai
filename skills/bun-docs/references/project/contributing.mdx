@@ -25,8 +25,6 @@ This provides all dependencies in an isolated, reproducible environment without 
 
 Using your system's package manager, install Bun's dependencies:
 
-<CodeGroup>
-
 ```bash macOS (Homebrew)
 brew install automake ccache cmake coreutils gnu-sed go icu4c libiconv libtool ninja pkg-config rust ruby
 ```
@@ -47,13 +45,9 @@ sudo dnf install cargo clang21 llvm21 lld21 cmake git golang libtool ninja-build
 sudo zypper install go cmake ninja automake git icu rustup && rustup toolchain install stable
 ```
 
-</CodeGroup>
-
 > **Note**: The Zig compiler is automatically installed and updated by the build scripts. Manual installation is not required.
 
 Before starting, you will need to already have a release build of Bun installed, as we use our bundler to transpile and minify our code, as well as for code generation scripts.
-
-<CodeGroup>
 
 ```bash Native
 curl -fsSL https://bun.com/install | bash
@@ -67,8 +61,6 @@ npm install -g bun
 brew tap oven-sh/bun
 brew install bun
 ```
-
-</CodeGroup>
 
 ### Optional: Install `ccache`
 
@@ -97,8 +89,6 @@ Our build scripts will automatically detect and use `ccache` if available. You c
 
 Bun requires LLVM 21.1.8 (`clang` is part of LLVM). This version is enforced by the build system — mismatching versions will cause memory allocation failures at runtime. In most cases, you can install LLVM through your system package manager:
 
-<CodeGroup>
-
 ```bash macOS (Homebrew)
 brew install llvm@21
 ```
@@ -120,8 +110,6 @@ sudo dnf install llvm clang lld-devel
 sudo zypper install clang21 lld21 llvm21
 ```
 
-</CodeGroup>
-
 If none of the above solutions apply, you will have to install it [manually](https://github.com/llvm/llvm-project/releases/tag/llvmorg-21.1.8).
 
 Make sure Clang/LLVM 21 is in your path:
@@ -131,8 +119,6 @@ which clang-21
 ```
 
 If not, run this to manually add it:
-
-<CodeGroup>
 
 ```bash macOS (Homebrew)
 # use fish_add_path if you're using fish
@@ -145,11 +131,7 @@ export PATH="$(brew --prefix llvm@21)/bin:$PATH"
 export PATH="$PATH:/usr/lib/llvm21/bin"
 ```
 
-</CodeGroup>
-
-<Warning>
 ⚠️ Ubuntu distributions (\<= 20.04) may require installation of the C++ standard library independently. See the [troubleshooting section](#span-file-not-found-on-ubuntu) for more information.
-</Warning>
 
 ## Building Bun
 
@@ -289,10 +271,8 @@ Note that if you make changes to our [WebKit fork](https://github.com/oven-sh/We
 
 ### 'span' file not found on Ubuntu
 
-<Warning>
   ⚠️ Please note that the instructions below are specific to issues occurring on Ubuntu. It is unlikely that the same
   issues will occur on other Linux distributions.
-</Warning>
 
 The Clang compiler typically uses the `libstdc++` C++ standard library by default. `libstdc++` is the default C++ Standard Library implementation provided by the GNU Compiler Collection (GCC). While Clang may link against the `libc++` library, this requires explicitly providing the `-stdlib` flag when running Clang.
 

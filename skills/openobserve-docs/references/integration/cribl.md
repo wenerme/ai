@@ -23,23 +23,23 @@ description: Learn how to route, filter, and analyze logs and traces from Cribl 
     First configure an internal Cribl source to generate sample logs.
 
     1. Open **Cribl Stream UI** → navigate to **Worker Group → Routing → QuickConnect**.  
-        ![Cribl UI](images/cribl/quick-connect.png)
+        [Cribl UI]
 
     2. Select **Sources** from the left menu → **Add Source**.  
-        ![Add Source](images/cribl/add-source.png)
+        [Add Source]
 
     3. Choose **System → Internal** as the source type, and select **Cribl Internal**.  
-        ![Internal Source](images/cribl/cribl-internal.png)
+        [Internal Source]
 
     4. Provide a name (e.g., `cribl`) → Save & Start.  
-        ![Configured Source](images/cribl/configured-source.png)
+        [Configured Source]
 
     At this point, Cribl will generate test logs.
 
 ???  "Step 2: Configure a Webhook Destination in Cribl"
 
     1. In the Cribl UI, go to **Destinations** → **Add Destination**.Select **Webhook**.  
-        ![Webhook Destination](images/cribl/select-webhook.png)
+        [Webhook Destination]
 
     2. Configure the webhook:  
 
@@ -49,13 +49,13 @@ description: Learn how to route, filter, and analyze logs and traces from Cribl 
             http://<OPENOBSERVE_HOST>/api/default/cribl/_json
             ```
         - **HTTP Method:** `POST`
-            ![Webhook Config](images/cribl/webhook-configuration.png)    
+            [Webhook Config]    
         - **Authentication:**  
             - Type: **Basic**  
             - Username: `O2_USER`  
             - Password: `O2_PASSWORD`  
 
-        ![Auth Config](images/cribl/webhook-auth.png)  
+        [Auth Config]  
 
     3. Save and activate the destination.
 
@@ -64,21 +64,21 @@ description: Learn how to route, filter, and analyze logs and traces from Cribl 
     1. In Cribl, create a **Route**.  
     2. Connect the **Internal Source (cribl)** → **Webhook Destination (OpenObserve_Webhook)**.  
     3. Use **Passthru** for a simple route, then save.  
-        ![Route](images/cribl/connection-configuration.png)
+        [Route]
 
     > You can test the setup by sending sample logs. A success message indicates that OpenObserve received the data.  
-    ![Route Active](images/cribl/test-data.png)
+    [Route Active]
 
 ???  "Step 4: Monitor Data in OpenObserve"
 
     - Query Logs
         - Go to **Logs → Streams → cribl**. You should see logs ingested from Cribl.  
-        ![Logs](images/cribl/query-logs.png)
+        [Logs]
 
     - Query Traces
         - Go to **Traces → Streams → cribl**. You should see traces ingested from Cribl.  
-        ![Traces](images/cribl/query-traces.png)  
-        ![Traces View](images/cribl/traces-view.png)  
+        [Traces]  
+        [Traces View]  
 
 ## Troubleshooting
 
@@ -100,5 +100,4 @@ description: Learn how to route, filter, and analyze logs and traces from Cribl 
 
 ??? "Logs are ingested but not parsed correctly"
     - Confirm you’re using the `_json` endpoint in the Webhook URL.  
-    - Check if the incoming data structure matches what OpenObserve expects (JSON payload).  
-
+    - Check if the incoming data structure matches what OpenObserve expects (JSON payload).

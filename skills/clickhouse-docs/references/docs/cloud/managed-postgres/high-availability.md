@@ -1,21 +1,13 @@
 ---
-slug: /cloud/managed-postgres/high-availability
-sidebar_label: 'High availability'
 title: 'High availability'
 description: 'Configure standby replicas and replication modes for high availability in ClickHouse Managed Postgres'
 keywords: ['high availability', 'ha', 'standby', 'replication', 'failover', 'postgres ha']
 doc_type: 'guide'
 ---
 
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="high-availability" />
 
 Managed Postgres offers different levels of high availability to match your durability and performance requirements. You can add one or two standby replicas when provisioning your database, or adjust this configuration later from the **Settings** page as needed.
-
-{/* TODO(kaushik-ubi): Screenshot of high availability configuration view
-    Path: /static/images/cloud/managed-postgres/high-availability-config.png */}
 
 ## High availability options {#high-availability-options}
 

@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Generic MongoDB'
 description: 'Set up any MongoDB instance as a source for ClickPipes'
-slug: /integrations/clickpipes/mongodb/source/generic
 title: 'Generic MongoDB source setup guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
@@ -12,11 +10,7 @@ integration:
 
 # Generic MongoDB source setup guide
 
-:::info
-
-If you use MongoDB Atlas, please refer to the specific guide [here](./atlas).
-
-:::
+> **info**: If you use MongoDB Atlas, please refer to the specific guide [here](./atlas).
 
 ## Enable oplog retention {#enable-oplog-retention}
 
@@ -51,11 +45,7 @@ db.getSiblingDB("admin").createUser({
 })
 ```
 
-:::note
-
-Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
-
-:::
+> **note**: Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
 
 ## What's next? {#whats-next}
 

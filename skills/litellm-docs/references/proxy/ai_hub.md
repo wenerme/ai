@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # AI Hub
 
@@ -47,9 +45,7 @@ Go to the public url (`PROXY_BASE_URL/ui/model_hub_table`) and see available mod
 
 ## Agents
 
-:::info
-Agents are only available in v1.79.4-stable and above.
-:::
+> **info**: Agents are only available in v1.79.4-stable and above.
 
 Share pre-built agents (A2A spec) across your organization. Users can discover and use agents without rebuilding them.
 
@@ -59,13 +55,8 @@ Share pre-built agents (A2A spec) across your organization. Users can discover a
 
 Create an agent that follows the [A2A spec](https://a2a.dev/).
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 <Image img={require('../../img/add_agent.png')} />  
 
-</TabItem>
-<TabItem value="api" label="API">
 ```bash
 curl -X POST 'http://0.0.0.0:4000/v1/agents' \
 --header 'Authorization: Bearer <your-master-key>' \
@@ -128,15 +119,9 @@ curl -X POST 'http://0.0.0.0:4000/v1/agents' \
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ### 2. Make agent public
 
 Make the agent discoverable on the AI Hub.
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 Navigate to the Agents Tab on the AI Hub page 
 
@@ -145,9 +130,6 @@ Navigate to the Agents Tab on the AI Hub page
 Select the agents you want to make public and click on `Make Public` button.
 
 <Image img={require('../../img/make_agents_public.png')} />  
-
-</TabItem>
-<TabItem value="api" label="API">
 
 **Option 1: Make single agent public**
 
@@ -158,7 +140,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/agents/123e4567-e89b-12d3-a456-426614174000
 ```
 
 **Option 2: Make multiple agents public**
-
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/v1/agents/make_public' \
@@ -184,23 +165,11 @@ curl -X POST 'http://0.0.0.0:4000/v1/agents/make_public' \
 }
 ```
 
-</TabItem>
-
-</Tabs>
-
-
-
 ### 3. View public agents
 
 Users can now discover the agent via the public endpoint.
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 <Image img={require('../../img/public_agent_hub.png')} />  
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -X GET 'http://0.0.0.0:4000/public/agent_hub' \
@@ -235,10 +204,6 @@ curl -X GET 'http://0.0.0.0:4000/public/agent_hub' \
 ]
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## MCP Servers
 
 ### How to use
@@ -247,18 +212,11 @@ curl -X GET 'http://0.0.0.0:4000/public/agent_hub' \
 
 Go here for instructions: [MCP Overview](../mcp#adding-your-mcp)
 
-
 #### 2. Make MCP server public
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 Navigate to AI Hub page, and select the MCP tab (`PROXY_BASE_URL/ui/?login=success&page=mcp-server-table`)
 
 <Image img={require('../../img/mcp_server_on_ai_hub.png')} />  
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -L -X POST 'http://localhost:4000/v1/mcp/make_public' \
@@ -267,21 +225,11 @@ curl -L -X POST 'http://localhost:4000/v1/mcp/make_public' \
 -d '{"mcp_server_ids":["e856f9a3-abc6-45b1-9d06-62fa49ac293d"]}'
 ```
 
-</TabItem>
-</Tabs>
-
-
 #### 3. View public MCP servers
 
 Users can now discover the MCP server via the public endpoint (`PROXY_BASE_URL/ui/model_hub_table`)
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 <Image img={require('../../img/mcp_on_public_ai_hub.png')} />  
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash
 curl -L -X GET 'http://0.0.0.0:4000/public/mcp_hub' \
@@ -336,6 +284,3 @@ curl -L -X GET 'http://0.0.0.0:4000/public/mcp_hub' \
     }
 ]
 ```
-
-</TabItem>
-</Tabs>

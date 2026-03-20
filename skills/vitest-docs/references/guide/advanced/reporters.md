@@ -1,8 +1,6 @@
 # Extending Reporters <Badge type="danger">advanced</Badge> {#extending-reporters}
 
-::: warning
-This is an advanced API. If you just want to configure built-in reporters, read the ["Reporters"](/guide/reporters) guide.
-:::
+> **warning**: This is an advanced API. If you just want to configure built-in reporters, read the ["Reporters"](/guide/reporters) guide.
 
 You can import reporters from `vitest/node` and extend them to create your custom reporters.
 
@@ -18,9 +16,7 @@ export default class MyDefaultReporter extends DefaultReporter {
 }
 ```
 
-::: warning
-However, note that exposed reports are not considered stable and can change the shape of their API within a minor version.
-:::
+> **warning**: However, note that exposed reports are not considered stable and can change the shape of their API within a minor version.
 
 Of course, you can create your reporter from scratch. Just implement the [`Reporter`](/api/advanced/reporters) interface:
 

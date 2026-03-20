@@ -3,9 +3,6 @@ title: "Guide: Building a notes MCP server"
 description: "A step-by-step guide to creating a fully-featured MCP (Model Context Protocol) server for managing notes using the Mastra framework."
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Building a notes MCP server
 
 In this guide, you'll learn how to build a complete MCP (Model Context Protocol) server from scratch. This server will manage a collection of markdown notes and has these features:
@@ -24,7 +21,6 @@ In this guide, you'll learn how to build a complete MCP (Model Context Protocol)
 
 Before you can create an MCP server you first need to install additional dependencies and set up a boilerplate folder structure.
 
-<Steps>
   <StepItem>
     Add `@mastra/mcp` to your project:
 
@@ -93,13 +89,11 @@ Before you can create an MCP server you first need to install additional depende
             └── tools/
     ```
   </StepItem>
-</Steps>
 
 ## Creating the MCP server
 
 Let's add the MCP server!
 
-<Steps>
   <StepItem>
     In `src/mastra/mcp/server.ts`, define the MCP server instance:
 
@@ -406,7 +400,6 @@ Let's add the MCP server!
     })
     ```
   </StepItem>
-</Steps>
 
 ## Run the server
 

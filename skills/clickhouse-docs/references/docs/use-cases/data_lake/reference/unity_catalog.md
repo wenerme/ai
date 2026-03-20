@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/data-lake/unity-catalog
-sidebar_label: 'Unity catalog'
 title: 'Unity catalog'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data in S3 buckets using ClickHouse and the Unity Catalog.'
 keywords: ['Unity', 'Data Lake']
@@ -11,18 +7,14 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import BetaBadge from '@theme/badges/BetaBadge';
-
 <BetaBadge/>
 
 ClickHouse supports integration with multiple catalogs (Unity, Glue, Polaris, etc.). This guide will walk you through the steps to query your data managed by Databricks using ClickHouse and the [Unity Catalog](https://www.databricks.com/product/unity-catalog). 
 
 Databricks supports multiple data formats for their lakehouse. With ClickHouse, you can query Unity Catalog tables as both Delta and Iceberg.
 
-:::note
-As this feature is experimental, you will need to enable it using:
+> **note**: As this feature is experimental, you will need to enable it using:
 `SET allow_experimental_database_unity_catalog = 1;`
-:::
 
 ## Configuring Unity in Databricks {#configuring-unity-in-databricks}
 
@@ -119,9 +111,8 @@ To query a table:
 SELECT count(*) FROM `uniform.delta_hits`
 ```
 
-:::note Backticks required
+> **note**: Backticks required
 Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
 
 To inspect the table DDL:
 

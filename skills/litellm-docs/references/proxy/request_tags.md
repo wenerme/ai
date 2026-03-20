@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Request Tags for Spend Tracking
 
@@ -7,9 +6,8 @@ Add tags to model deployments to track spend by environment, AWS account, or any
 
 Tags appear in the `request_tags` field of LiteLLM spend logs.
 
-:::info Requirements
+> **info**: Requirements
 Virtual Keys & a database should be set up. See [Virtual Keys Setup](./virtual_keys.md).
-:::
 
 ## Config Setup
 
@@ -69,9 +67,6 @@ Format: Comma-separated string (spaces are automatically trimmed): `"tag1,tag2,t
 
 Pass tags directly in the request body. Both formats are supported:
 
-<Tabs>
-<TabItem value="direct" label="Direct tags Field">
-
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
   -H 'Authorization: Bearer sk-1234' \
@@ -82,10 +77,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "tags": ["team-api", "production", "us-east-1"]
   }'
 ```
-
-</TabItem>
-
-<TabItem value="metadata" label="Metadata Nested">
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -100,21 +91,13 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 The `tags` field must be an array of strings.
 
-:::info
-When tags are provided via header or request body, they override any tags configured in the model deployment. If both header and body tags are provided, body tags take precedence.
-:::
+> **info**: When tags are provided via header or request body, they override any tags configured in the model deployment. If both header and body tags are provided, body tags take precedence.
 
 ## Set Tags on Keys or Teams
 
 You can also set default tags at the API key or team level:
-
-<Tabs>
-<TabItem value="key" label="Set on Key">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -127,9 +110,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
   }'
 ```
 
-</TabItem>
-<TabItem value="team" label="Set on Team">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/team/new' \
   -H 'Authorization: Bearer sk-1234' \
@@ -140,9 +120,6 @@ curl -L -X POST 'http://0.0.0.0:4000/team/new' \
     }
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced: Custom Header Tracking
 

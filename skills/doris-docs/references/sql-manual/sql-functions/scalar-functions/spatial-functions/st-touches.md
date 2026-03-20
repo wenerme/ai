@@ -65,7 +65,6 @@ mysql> SELECT ST_TOUCHES(  ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))")
 +--------------------------------------------------------------------------------------+
 ```
 
-
 Lines touch at endpoints
 
 ```sql
@@ -88,7 +87,6 @@ mysql> SELECT ST_TOUCHES(  ST_Linefromtext("LINESTRING (0 0, 10 10)"),  ST_Linef
 +-------------------------------------------------------------------------------------------------------+
 ```
 
-
 Line is tangent to polygon boundary
 
 ```sql
@@ -104,7 +102,6 @@ mysql> SELECT ST_TOUCHES(  ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))")
 Line passes through the interior of the polygon (internal intersection, returns 0)
 
 ```sql
-
 
 mysql> SELECT ST_TOUCHES(  ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))"),  ST_Linefromtext("LINESTRING (5 5, 15 5)"));
 +-----------------------------------------------------------------------------------------------------------------+
@@ -179,7 +176,6 @@ mysql> SELECT ST_TOUCHES(ST_Polygon("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))"), 
 |                                                                    NULL |
 +-------------------------------------------------------------------------+
 ```
-
 
 Circle is tangent to line
 

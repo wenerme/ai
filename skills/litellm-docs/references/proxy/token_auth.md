@@ -1,20 +1,14 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OIDC - JWT-based Auth 
 
 Use JWT's to auth admins / users / projects into the proxy.
 
-:::info
-
-✨ JWT-based Auth  is on LiteLLM Enterprise
+> **info**: ✨ JWT-based Auth  is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
 
 ## Usage
 
@@ -45,9 +39,6 @@ model_list:
 
 ### Step 2. Create JWT with scopes 
 
-<Tabs>
-<TabItem value="admin" label="admin">
-
 Create a client scope called `litellm_proxy_admin` in your OpenID provider (e.g. Keycloak).
 
 Grant your user, `litellm_proxy_admin` scope when generating a JWT. 
@@ -62,8 +53,6 @@ curl --location ' 'https://demo.duendesoftware.com/connect/token'' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'scope=litellm_proxy_admin' # 👈 grant this scope
 ```
-</TabItem>
-<TabItem value="project" label="project">
 
 Create a JWT for your project on your OpenID provider (e.g. Keycloak).
 
@@ -75,13 +64,7 @@ curl --location ' 'https://demo.duendesoftware.com/connect/token'' \
 --data-urlencode 'grant_type=client_credential' \
 ```
 
-</TabItem>
-</Tabs>
-
 ### Step 3. Test your JWT 
-
-<Tabs>
-<TabItem value="key" label="/key/generate">
 
 ```bash
 curl --location '{proxy_base_url}/key/generate' \
@@ -89,8 +72,6 @@ curl --location '{proxy_base_url}/key/generate' \
 --header 'Content-Type: application/json' \
 --data '{}'
 ```
-</TabItem>
-<TabItem value="llm_call" label="/chat/completions">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -98,9 +79,6 @@ curl --location 'http://0.0.0.0:4000/v1/chat/completions' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1...' \
 --data '{"model": "azure-gpt-3.5", "messages": [ { "role": "user", "content": "What's the weather like in Boston today?" } ]}'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced
 
@@ -127,9 +105,6 @@ Use Kubernetes ServiceAccount tokens to authenticate workloads running in your c
 
 Set `JWT_PUBLIC_KEY_URL` to your cluster's OIDC discovery endpoint:
 
-<Tabs>
-<TabItem value="eks" label="Amazon EKS">
-
 ```bash
 # Get your EKS OIDC issuer URL
 aws eks describe-cluster --name <cluster-name> --query "cluster.identity.oidc.issuer" --output text
@@ -138,16 +113,10 @@ aws eks describe-cluster --name <cluster-name> --query "cluster.identity.oidc.is
 export JWT_PUBLIC_KEY_URL="https://oidc.eks.<region>.amazonaws.com/id/<id>/keys"
 ```
 
-</TabItem>
-<TabItem value="gke" label="Google GKE">
-
 ```bash
 # GKE uses Google's OIDC provider
 export JWT_PUBLIC_KEY_URL="https://container.googleapis.com/v1/projects/<project>/locations/<location>/clusters/<cluster>/jwks"
 ```
-
-</TabItem>
-<TabItem value="aks" label="Azure AKS">
 
 ```bash
 # Get your AKS OIDC issuer URL
@@ -157,17 +126,11 @@ az aks show --name <cluster-name> --resource-group <resource-group> --query "oid
 export JWT_PUBLIC_KEY_URL="<issuer-url>/openid/v1/jwks"
 ```
 
-</TabItem>
-<TabItem value="self-managed" label="Self-Managed">
-
 ```bash
 # For self-managed clusters, check your API server's --service-account-issuer flag
 # The JWKS endpoint is typically at:
 export JWT_PUBLIC_KEY_URL="https://<api-server>/openid/v1/jwks"
 ```
-
-</TabItem>
-</Tabs>
 
 #### Step 2: Configure LiteLLM
 
@@ -438,7 +401,6 @@ scope: "litellm-proxy-admin ..."
 
 ### Control model access with Teams
 
-
 1. Specify the JWT field that contains the team ids, that the user belongs to. 
 
 ```yaml
@@ -478,7 +440,6 @@ SSO for UI: [**See Walkthrough**](https://www.loom.com/share/8959be458edf41fd859
 
 OIDC Auth for API: [**See Walkthrough**](https://www.loom.com/share/00fe2deab59a426183a46b1e2b522200?sid=4ed6d497-ead6-47f9-80c0-ca1c4b6b4814)
 
-
 ### Flow
 
 - Validate if user id is in the DB (LiteLLM_UserTable)
@@ -505,7 +466,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 - The team ID in the header must exist in the JWT's `team_ids_jwt_field` list or match `team_id_jwt_field`
 - If an invalid team is specified, a 403 error is returned
 - If no header is provided, LiteLLM auto-selects the first team with access to the requested model
-
 
 ### Custom JWT Validate
 
@@ -562,8 +522,6 @@ general_settings:
   "error": "Invalid JWT token"
 }
 ```
-
-
 
 ### Allowed Routes 
 
@@ -627,7 +585,6 @@ Defaults (what the proxy uses if you don't override them in `litellm_jwtauth`):
 - `team_allowed_routes` (default): `openai_routes`, `info_routes` 
 - `public_allowed_routes` (default): `public_routes`
 
-
 Example: Allow team JWTs to call Anthropic `/v1/messages` (either by route group or by explicit route string):
 
 ```yaml
@@ -647,7 +604,6 @@ general_settings:
     team_ids_jwt_field: "team_ids"
     team_allowed_routes: ["/v1/messages", "info_routes"]
 ```
-
 
 ### Caching Public Keys 
 
@@ -700,7 +656,6 @@ curl --location 'http://0.0.0.0:4000/team/unblock' \
     "team_id": "litellm-test-client-id-new" # 👈 set team id
 }'
 ```
-
 
 ### Upsert Users + Allowed Email Domains 
 
@@ -790,7 +745,6 @@ Allow JWT tokens with supported roles to access the proxy.
 
 Let users and teams access the proxy, without needing to add them to the DB.
 
-
 Very important, set `enforce_rbac: true` to ensure that the RBAC system is enabled.
 
 **Note:** This is in beta and might change unexpectedly.
@@ -856,7 +810,6 @@ Supported internal roles:
 Control which models a JWT can access. Set `enforce_scope_based_access: true` to enforce scope-based access control.
 
 ### 1. Setup config.yaml with scope mappings.
-
 
 ```yaml
 model_list:
@@ -1146,5 +1099,3 @@ curl -X POST http://localhost:4000/jwt/key/mapping/delete \
 ## All JWT Params
 
 [**See Code**](https://github.com/BerriAI/litellm/blob/b204f0c01c703317d812a1553363ab0cb989d5b6/litellm/proxy/_types.py#L95)
-
-

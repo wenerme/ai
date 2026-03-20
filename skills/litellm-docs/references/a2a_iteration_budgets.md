@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Agent Iteration Budgets
 
@@ -109,9 +108,6 @@ When `max_budget_per_session` is set in agent `litellm_params`:
 
 Create an agent with max 25 iterations and a $5 budget cap:
 
-<Tabs>
-<TabItem value="ui" label="Via UI">
-
 1. Go to **Agents** → **Add Agent**
 2. Configure your agent (name, model, etc.)
 3. In **Agent Settings**, expand the **Tracing** section
@@ -120,9 +116,6 @@ Create an agent with max 25 iterations and a $5 budget cap:
 6. Set **Max Budget Per Session** to `5.00`
 7. Proceed to create a new key for the agent
 8. Click **Create Agent**
-
-</TabItem>
-<TabItem value="api" label="Via API">
 
 ```bash
 # 1. Create the agent with trace-id enforcement
@@ -151,9 +144,6 @@ curl -X POST 'http://localhost:4000/key/generate' \
     "key_alias": "my-research-agent-key"
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Making Calls with Session Tracking
 

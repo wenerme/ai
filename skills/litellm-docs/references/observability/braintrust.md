@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Braintrust - Evals + Logging
 
@@ -80,10 +78,6 @@ You can customize the span name in Braintrust logging by passing `span_name` in 
 You can customize the span id, root span name and span parents in Braintrust logging by passing `span_id`, `root_span_id` and `span_parents` in the metadata. 
 `span_parents` should be a string containing a list of span ids, joined by ,
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.completion(
   model="gpt-3.5-turbo",
@@ -117,9 +111,6 @@ response = litellm.completion(
   }
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Curl**
 
@@ -170,9 +161,6 @@ print(response)
 ```
 
 For more examples, [**Click Here**](../proxy/user_keys.md#chatcompletions)
-
-</TabItem>
-</Tabs>
 
 You can use `BRAINTRUST_API_BASE` to point to your self-hosted Braintrust data plane. Read more about this [here](https://www.braintrust.dev/docs/guides/self-hosting).
 

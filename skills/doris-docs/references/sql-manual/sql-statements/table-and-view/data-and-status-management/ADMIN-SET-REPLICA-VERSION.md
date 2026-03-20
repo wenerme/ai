@@ -25,7 +25,6 @@ ADMIN SET REPLICA VERSION PROPERTIES ("<key>"="<value>" [,...])
 | `tablet_id`  | Int        | The ID of the tablet whose replica version needs to be modified. |
 | `backend_id` | Int        | The ID of the BE node where the replica is located.              |
 
-
 ## Optional Parameters
 
 ** 1. `"<key>"="<value>"`**
@@ -36,7 +35,6 @@ ADMIN SET REPLICA VERSION PROPERTIES ("<key>"="<value>" [,...])
 | `last_success_version` | Int        | Sets the last successful version of the replica. |
 | `last_failed_version`  | Int        | Sets the last failed version of the replica.     |
 
-
 **Notes**
 
 - If the specified replica does not exist, the operation will be ignored.
@@ -46,7 +44,6 @@ ADMIN SET REPLICA VERSION PROPERTIES ("<key>"="<value>" [,...])
 - Record the original values before making modifications. After making changes, verify table read and write operations. If they fail, revert to the original values. However, reverting may also fail.
 
 - Do not perform this operation on a tablet that is currently writing data!
-
 
 ## Access Control Requirements
 

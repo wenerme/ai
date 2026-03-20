@@ -1,6 +1,5 @@
 ---
 title: restoreMocks | Config
-outline: deep
 ---
 
 # restoreMocks
@@ -22,6 +21,4 @@ export default defineConfig({
 })
 ```
 
-::: warning
-Be aware that this option may cause problems with async [concurrent tests](/api/test#test-concurrent). If enabled, the completion of one test will restore the implementation for all spies, including those currently being used by other tests in progress.
-:::
+> **warning**: Be aware that this option may cause problems with async [concurrent tests](/api/test#test-concurrent). If enabled, the completion of one test will restore the implementation for all spies, including those currently being used by other tests in progress.

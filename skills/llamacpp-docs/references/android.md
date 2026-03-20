@@ -4,7 +4,7 @@
 ## Build GUI binding using Android Studio
 
 Import the `examples/llama.android` directory into Android Studio, then perform a Gradle sync and build the project.
-![Project imported into Android Studio](./android/imported-into-android-studio.jpg)
+[Project imported into Android Studio]
 
 This Android binding supports hardware acceleration up to `SME2` for **Arm** and `AMX` for **x86-64** CPUs on Android and ChromeOS devices.
 It automatically detects the host's hardware to load compatible kernels. As a result, it runs seamlessly on both the latest premium devices and older devices that may lack modern CPU features or have limited RAM, without requiring any manual configuration.

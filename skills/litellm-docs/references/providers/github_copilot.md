@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # GitHub Copilot
 
 https://docs.github.com/en/copilot
 
-:::tip
-
-**We support GitHub Copilot Chat API with automatic authentication handling**
-
-:::
+> **tip**: **We support GitHub Copilot Chat API with automatic authentication handling**
 
 | Property | Details |
 |-------|-------|
@@ -114,9 +109,6 @@ litellm --config config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="GitHub Copilot via Proxy - Non-streaming"
 from openai import OpenAI
 
@@ -135,10 +127,6 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="GitHub Copilot via Proxy - LiteLLM SDK"
 import litellm
 
@@ -153,10 +141,6 @@ response = litellm.completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="GitHub Copilot via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -166,9 +150,6 @@ curl http://localhost:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Explain this error message"}]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Getting Started
 
@@ -208,4 +189,3 @@ extra_headers = {
     "user-agent": "GithubCopilot/1.155.0"        # User agent
 }
 ```
-

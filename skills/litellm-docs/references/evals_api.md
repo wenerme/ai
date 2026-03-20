@@ -33,7 +33,6 @@ client = OpenAI(
 )
 ```
 
-
 For async operations:
 
 ```python
@@ -438,4 +437,3 @@ delete_response = await client.evals.runs.delete(
 print(f"Deleted: {delete_response.deleted}")  # True
 print(f"Run ID: {delete_response.run_id}")
 ```
-

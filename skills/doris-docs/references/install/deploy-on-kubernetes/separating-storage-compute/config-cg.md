@@ -154,9 +154,8 @@ spec:
           mountPath: "/etc/doris"
     ```
 
-:::tip Note
+> **tip**: Note
 The startup configuration must be mounted at the `/etc/doris` directory.
-:::
 
 ## Persistent Storage Configuration
 In the default deployment, the BE service uses Kubernetes [`EmptyDir`](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) as its cache. EmptyDir is a non-persistent storage mode, meaning that cached data is lost after the service restarts, which can reduce query performance.
@@ -198,11 +197,10 @@ spec:
 ```
 In this configuration, a 300Gi persistent volume is mounted to the log directory using a custom storage configuration. Another 300Gi persistent volume is mounted to the directory used for WAL and StreamLoad imports. The cache directory is mounted with a 500Gi persistent volume created from a storage template.
 
-:::tip Note
+> **tip**: Note
 - If the mountPaths array is left empty, the current storage configuration is treated as a template. When users specify file_cache_path in the [startup configuration](#custom-startup-configuration), the operator automatically parses the directory path and mounts it.
 
 - It is recommended to configure four directories and mount four persistent volumes to maximize cloud disk performance.
-:::
 
 ### Disable Log Persistence
 If log persistence is not required and logs should only be output to the standard output, configure as follows:

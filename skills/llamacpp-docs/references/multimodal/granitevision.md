@@ -7,7 +7,6 @@ $ git clone https://huggingface.co/ibm-granite/granite-vision-3.2-2b
 $ export GRANITE_MODEL=./granite-vision-3.2-2b
 ```
 
-
 ### 1. Running llava surgery v2.
 First, we need to run the llava surgery script as shown below:
 
@@ -38,7 +37,6 @@ assert len(projector_tensors) > 0
 ```
 
 If you actually inspect the `.keys()` of the loaded tensors, you should see a lot of `vision_model` tensors in the `encoder_tensors`, and 5 tensors (`'multi_modal_projector.linear_1.bias'`, `'multi_modal_projector.linear_1.weight'`, `'multi_modal_projector.linear_2.bias'`, `'multi_modal_projector.linear_2.weight'`, `'image_newline'`) in the multimodal `projector_tensors`.
-
 
 ### 2. Creating the Visual Component GGUF
 Next, create a new directory to hold the visual components, and copy the llava.clip/projector files, as shown below.
@@ -123,7 +121,6 @@ $ python convert_image_encoder_to_gguf.py \
 
 This will create the first GGUF file at `$ENCODER_PATH/mmproj-model-f16.gguf`; we will refer to the absolute path of this file as the `$VISUAL_GGUF_PATH.`
 
-
 ### 3. Creating the LLM GGUF.
 The granite vision model contains a granite LLM as its language model. For now, the easiest way to get the GGUF for LLM is by loading the composite model in `transformers` and exporting the LLM so that it can be directly converted with the normal conversion path.
 
@@ -164,7 +161,6 @@ $ LLM_GGUF_PATH=$LLM_EXPORT_PATH/granite_llm.gguf
 $ python convert_hf_to_gguf.py --outfile $LLM_GGUF_PATH $LLM_EXPORT_PATH
 ```
 
-
 ### 4. Quantization
 If you want to quantize the LLM, you can do so with `llama-quantize` as you would any other LLM. For example:
 ```bash
@@ -173,7 +169,6 @@ $ LLM_GGUF_PATH=$LLM_EXPORT_PATH/granite_llm_q4_k_m.gguf
 ```
 
 Note that currently you cannot quantize the visual encoder because granite vision models use SigLIP as the visual encoder, which has tensor dimensions that are not divisible by 32.
-
 
 ### 5. Running the Model in Llama cpp
 Build llama cpp normally; you should have a target binary named `llama-mtmd-cli`, which you can pass two binaries to. As an example, we pass the the llama.cpp banner.

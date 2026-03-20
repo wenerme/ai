@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Pillar Security
 
@@ -11,7 +10,6 @@ Pillar Security integrates with [LiteLLM Proxy](https://docs.litellm.ai) via the
 - **Secret Detection**: Identify API keys, tokens, and credentials
 - **Content Moderation**: Filter harmful or inappropriate content
 - **Toxic Language**: Filter offensive or harmful language
-
 
 ## Quick Start
 
@@ -47,10 +45,9 @@ guardrails:
         plr_scanners: true
 ```
 
-:::warning Important
+> **warning**: Important
 - The `api_base` must be exactly `https://api.pillar.security/api/v1/integrations/litellm` — this is the only endpoint that supports the Generic Guardrail API integration.
 - The value `guardrail: generic_guardrail_api` must not be changed. This is the LiteLLM built-in guardrail type. However, you can customize the `guardrail_name` to any value you prefer.
-:::
 
 ### 3. Start LiteLLM Proxy
 
@@ -90,9 +87,8 @@ Pillar Security supports three execution modes for comprehensive protection:
 
 ### Why Dual Mode is Recommended
 
-:::tip Recommended
+> **tip**: Recommended
 Use `[pre_call, post_call]` for complete protection of both inputs and outputs.
-:::
 
 - **Complete Protection**: Guards both incoming prompts and outgoing responses
 - **Prompt Injection Defense**: Blocks malicious input before reaching the LLM
@@ -122,14 +118,9 @@ These parameters are passed via `additional_provider_specific_params`:
 | `plr_scanners` | bool | Include scanner details in response |
 | `plr_persist` | bool | Persist session data to Pillar dashboard |
 
-:::tip
-**Enable `plr_mask: true`** to automatically sanitize sensitive data (PII, secrets, payment card info) before it reaches the LLM. Masked content is replaced with placeholders while original data is preserved in Pillar's audit logs.
-:::
+> **tip**: **Enable `plr_mask: true`** to automatically sanitize sensitive data (PII, secrets, payment card info) before it reaches the LLM. Masked content is replaced with placeholders while original data is preserved in Pillar's audit logs.
 
 ## Configuration Examples
-
-<Tabs>
-<TabItem value="recommended" label="Recommended (Dual Mode)">
 
 **Best for:**
 - **Complete Protection**: Guards both incoming prompts and outgoing responses
@@ -164,9 +155,6 @@ litellm_settings:
   set_verbose: true
 ```
 
-</TabItem>
-<TabItem value="monitor" label="Monitor Mode">
-
 **Best for:**
 - **Logging Only**: Log all threats without blocking requests
 - **Analysis**: Understand threat patterns before enforcing blocks
@@ -197,9 +185,6 @@ general_settings:
   master_key: "your-secure-master-key-here"
 ```
 
-</TabItem>
-<TabItem value="input-only" label="Input-Only Protection">
-
 **Best for:**
 - **Input Protection**: Block malicious prompts before they reach the LLM
 - **Simple Setup**: Single guardrail configuration
@@ -229,9 +214,6 @@ general_settings:
   master_key: "your-secure-master-key-here"
 ```
 
-</TabItem>
-<TabItem value="lowlatency" label="Low Latency Parallel">
-
 **Best for:**
 - **Minimal Latency**: Run security scans in parallel with LLM calls
 - **Real-time Monitoring**: Threat detection without blocking
@@ -259,9 +241,6 @@ guardrails:
 general_settings:
   master_key: "your-secure-master-key-here"
 ```
-
-</TabItem>
-</Tabs>
 
 ## Response Detail Levels
 
@@ -324,9 +303,7 @@ When both `plr_scanners: true` and `plr_evidence: true`:
 
 Ideal for debugging, audit logs, or compliance exports.
 
-:::tip
-**Always set `plr_scanners: true` and `plr_evidence: true`** to see what Pillar detected. This is essential for troubleshooting and understanding security threats.
-:::
+> **tip**: **Always set `plr_scanners: true` and `plr_evidence: true`** to see what Pillar detected. This is essential for troubleshooting and understanding security threats.
 
 ## Session Tracking
 
@@ -357,9 +334,6 @@ export PILLAR_API_KEY=your-pillar-api-key
 ```
 
 ## Examples
-
-<Tabs>
-<TabItem value="safe" label="Safe Request">
 
 **Safe request**
 
@@ -394,9 +368,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
   ]
 }
 ```
-
-</TabItem>
-<TabItem value="injection" label="Prompt Injection">
 
 **Prompt injection detection request:**
 
@@ -446,9 +417,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
 }
 ```
 
-</TabItem>
-<TabItem value="secrets" label="Secret Detection">
-
 **Secret detection request:**
 
 ```bash
@@ -497,9 +465,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Next Steps
 

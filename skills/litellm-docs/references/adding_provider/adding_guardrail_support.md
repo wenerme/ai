@@ -68,7 +68,6 @@ if TYPE_CHECKING:
     from litellm.integrations.custom_guardrail import CustomGuardrail
     from litellm.types.utils import ModelResponse  # Or appropriate response type
 
-
 class MyEndpointHandler(BaseTranslation):
     """
     Handler for processing {Endpoint} with guardrails.
@@ -357,13 +356,11 @@ from litellm.llms.{provider}.{endpoint}.guardrail_translation.handler import (
 )
 from litellm.types.utils import CallTypes
 
-
 class MockGuardrail(CustomGuardrail):
     """Mock guardrail for testing"""
     
     async def apply_guardrail(self, text: str) -> str:
         return f"{text} [GUARDRAILED]"
-
 
 class TestHandlerDiscovery:
     """Test that the handler is properly discovered"""
@@ -371,7 +368,6 @@ class TestHandlerDiscovery:
     def test_handler_discovered(self):
         handler_class = get_guardrail_translation_mapping(CallTypes.my_endpoint)
         assert handler_class == MyEndpointHandler
-
 
 class TestInputProcessing:
     """Test input processing functionality"""
@@ -385,7 +381,6 @@ class TestInputProcessing:
         result = await handler.process_input_messages(data, guardrail)
         
         assert result["messages"][0]["content"] == "Hello [GUARDRAILED]"
-
 
 class TestOutputProcessing:
     """Test output processing functionality"""
@@ -409,4 +404,3 @@ For questions or issues:
 - Check existing handler implementations for examples
 - Review the base translation class documentation
 - Create an issue on GitHub with the `guardrails` label
-

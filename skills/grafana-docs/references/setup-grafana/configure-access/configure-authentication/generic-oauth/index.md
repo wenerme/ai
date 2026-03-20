@@ -198,7 +198,7 @@ Refer to the following table for information on what to configure based on how t
 | `attributes` map of the OAuth2 access token.                                                                                                                            | Set `email_attribute_name` configuration option. By default, Grafana searches for email under `email:primary` key. |
 | `upn` field of the OAuth2 access token.                                                                                                                                 | N/A                                                                                                                |
 | Another field of the OAuth2 access token.                                                                                                                               | Set `email_attribute_path` configuration option.                                                                   |
-| Email address marked as primary from the `/emails` endpoint of <br /> the OAuth2 provider (obtained by appending `/emails` to the URL <br /> configured with `api_url`) | N/A                                                                                                                |
+| Email address marked as primary from the `/emails` endpoint of  the OAuth2 provider (obtained by appending `/emails` to the URL  configured with `api_url`) | N/A                                                                                                                |
 
 ### Configure a refresh token
 

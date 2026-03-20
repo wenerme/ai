@@ -111,7 +111,6 @@ In our experiment, the total batch size is:
 num_processes * per_device_train_batch_size * gradient_accumulation_steps = 2 * 8 * 8 = 128
 ```
 
-
 Note that the single-GPU batch size is also closely related to GPU memory capacity, so set an appropriate value based on memory limits. Additionally, the total number of steps can be calculated as:
 
 $$

@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # Test
@@ -31,17 +31,13 @@ test('should work as expected', () => {
 })
 ```
 
-::: warning
-If the first argument is a function, its `name` property will be used as the name of the test. The function itself will not be called.
+> **warning**: If the first argument is a function, its `name` property will be used as the name of the test. The function itself will not be called.
 
 If test body is not provided, the test is marked as `todo`.
-:::
 
 When a test function returns a promise, the runner will wait until it is resolved to collect async expectations. If the promise is rejected, the test will fail.
 
-::: tip
-In Jest, `TestFunction` can also be of type `(done: DoneCallback) => void`. If this form is used, the test will not be concluded until `done` is called. You can achieve the same using an `async` function, see the [Migration guide Done Callback section](/guide/migration#done-callback).
-:::
+> **tip**: In Jest, `TestFunction` can also be of type `(done: DoneCallback) => void`. If this form is used, the test will not be concluded until `done` is called. You can achieve the same using an `async` function, see the [Migration guide Done Callback section](/guide/migration#done-callback).
 
 ## Test Options
 
@@ -82,8 +78,7 @@ They both work in exactly the same way. To use either one is purely a stylistic 
 
 Test timeout in milliseconds.
 
-::: warning
-Note that if you are providing timeout as the last argument, you cannot use options anymore:
+> **warning**: Note that if you are providing timeout as the last argument, you cannot use options anymore:
 
 ```ts
 import { test } from 'vitest'
@@ -109,7 +104,6 @@ test('heavy test', { skip: true, timeout: 10_000 }, () => {
   // ...
 })
 ```
-:::
 
 ### retry
 
@@ -176,8 +170,7 @@ it('user returns data from db', { tags: ['db', 'flaky'] }, () => {
 
 Attaches custom [metadata](/api/advanced/metadata) available in reporters.
 
-::: warning
-Vitest merges top-level properties inherited from suites or tags. However, it does not perform a deep merge of nested objects.
+> **warning**: Vitest merges top-level properties inherited from suites or tags. However, it does not perform a deep merge of nested objects.
 
 ```ts
 import { describe, test } from 'vitest'
@@ -207,7 +200,6 @@ describe(
 ```
 
 Prefer using non-nested meta, if possible.
-:::
 
 ### concurrent
 
@@ -310,9 +302,8 @@ describe('use scoped values', () => {
 
 - **Alias:** `it.scoped`
 
-::: danger DEPRECATED
+> **danger**: DEPRECATED
 `test.scoped` is deprecated in favor of [`test.override`](#test-override) and will be removed in a future major version.
-:::
 
 Alias of [`test.override`](#test-override)
 
@@ -410,9 +401,7 @@ In order to do that, run `vitest` with specific file containing the tests in que
 vitest interesting.test.ts
 ```
 
-::: warning
-Vitest detects when tests are running in CI and will throw an error if any test has `only` flag. You can configure this behaviour via [`allowOnly`](/config/allowonly) option.
-:::
+> **warning**: Vitest detects when tests are running in CI and will throw an error if any test has `only` flag. You can configure this behaviour via [`allowOnly`](/config/allowonly) option.
 
 ## test.concurrent
 
@@ -492,9 +481,7 @@ test.todo('unimplemented test', () => {
 })
 ```
 
-::: tip
-Vitest will automatically mark test as `todo` if test has no body.
-:::
+> **tip**: Vitest will automatically mark test as `todo` if test has no body.
 
 ## test.fails
 
@@ -516,10 +503,8 @@ This flag is useful to track difference in behaviour of your library over time. 
 
 - **Alias:** `it.each`
 
-::: tip
-While `test.each` is provided for Jest compatibility,
+> **tip**: While `test.each` is provided for Jest compatibility,
 Vitest also has [`test.for`](#test-for) with an additional feature to integrate [`TestContext`](/guide/test-context).
-:::
 
 Use `test.each` when you need to run the same test with different variables.
 You can inject parameters with [printf formatting](https://nodejs.org/api/util.html#util_util_format_format_args) in the test name in the order of the test function parameters.
@@ -617,9 +602,7 @@ test.each`
 })
 ```
 
-::: tip
-Vitest processes `$values` with Chai `format` method. If the value is too truncated, you can increase [chaiConfig.truncateThreshold](/config/chaiconfig#chaiconfig-truncatethreshold) in your config file.
-:::
+> **tip**: Vitest processes `$values` with Chai `format` method. If the value is too truncated, you can increase [chaiConfig.truncateThreshold](/config/chaiconfig#chaiconfig-truncatethreshold) in your config file.
 
 ## test.for
 
@@ -698,9 +681,7 @@ Scoped `aroundAll` hook that inherits types from [`test.extend`](#test-extend). 
 
 - **Type:** `(name: string | Function, fn: BenchFunction, options?: BenchOptions) => void`
 
-::: danger
-Benchmarking is experimental and does not follow SemVer.
-:::
+> **danger**: Benchmarking is experimental and does not follow SemVer.
 
 `bench` defines a benchmark. In Vitest terms, benchmark is a function that defines a series of operations. Vitest runs this function multiple times to display different performance results.
 

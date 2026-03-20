@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Aim Security
 
@@ -11,11 +9,8 @@ Go to [Aim Application](https://app.aim.security/inventory/custom-ai-apps) and c
 
 When prompted, select API option, and name your guard.
 
-
-:::note 
-In case you want to host your guard on-premise, you can enable this option
+> **note**: In case you want to host your guard on-premise, you can enable this option
 by [installing Aim Outpost](https://app.aim.security/settings/on-prem-deployment) prior to creating the guard.
-:::
 
 ### 2. Configure your Aim Guard policies
 
@@ -23,11 +18,9 @@ In the newly created guard's page, you can find a reference to the prompt policy
 
 You can decide which detections will be enabled, and set the threshold for each detection.
 
-:::info 
-When using LiteLLM with virtual keys, key-specific policies can be set directly in Aim's guards page by specifying the virtual key alias when creating the guard.
+> **info**: When using LiteLLM with virtual keys, key-specific policies can be set directly in Aim's guards page by specifying the virtual key alias when creating the guard.
 
 Only the aliases of your virtual keys (and not the actual key secrets) will be sent to Aim.
-:::
 
 ### 3. Add Aim Guardrail on your LiteLLM config.yaml 
 
@@ -61,18 +54,10 @@ litellm --config config.yaml
 
 ### 5. Make your first request
 
-:::note
-The following example depends on enabling *PII* detection in your guard.
+> **note**: The following example depends on enabling *PII* detection in your guard.
 You can adjust the request content to match different guard's policies.
-:::
 
-<Tabs>
-<TabItem label="Successfully blocked request" value = "blocked">
-
-:::note
-When using LiteLLM with virtual keys, an `Authorization` header with the virtual key is required.
-:::
-
+> **note**: When using LiteLLM with virtual keys, an `Authorization` header with the virtual key is required.
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -98,14 +83,7 @@ If configured correctly, since `ishaan@berri.ai` would be detected by the Aim Gu
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successfully permitted request" value = "allowed">
-
-:::note
-When using LiteLLM with virtual keys, an `Authorization` header with the virtual key is required.
-:::
-
+> **note**: When using LiteLLM with virtual keys, an `Authorization` header with the virtual key is required.
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -135,11 +113,6 @@ The above request should not be blocked, and you should receive a regular LLM re
   ]
 }
 ```
-
-</TabItem>
-
-
-</Tabs>
 
 ## Advanced
 

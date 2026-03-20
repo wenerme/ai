@@ -12,9 +12,7 @@ Records the configuration information of Workload Policies.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

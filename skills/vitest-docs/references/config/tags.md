@@ -1,6 +1,5 @@
 ---
 title: tags | Config
-outline: deep
 ---
 
 # tags <Version>4.1.0</Version> {#tags}
@@ -32,8 +31,7 @@ export default defineConfig({
 })
 ```
 
-::: tip
-If you are using TypeScript, you can enforce what tags are available by augmenting the `TestTags` type with a property that contains a union of strings (make sure this file is included by your `tsconfig`):
+> **tip**: If you are using TypeScript, you can enforce what tags are available by augmenting the `TestTags` type with a property that contains a union of strings (make sure this file is included by your `tsconfig`):
 
 ```ts [vitest.shims.ts]
 import 'vitest'
@@ -48,7 +46,6 @@ declare module 'vitest' {
   }
 }
 ```
-:::
 
 ## description
 
@@ -101,11 +98,9 @@ When a test has both tags, the `timeout` will be `30_000` because `flaky` has a 
 
 Tags can define [test options](/api/test#test-options) that will be applied to every test marked with the tag. These options are merged with the test's own options, with the test's options taking precedence.
 
-::: warning
-The [`retry.condition`](/api/test#retry) can onle be a regexp because the config values need to be serialised.
+> **warning**: The [`retry.condition`](/api/test#retry) can onle be a regexp because the config values need to be serialised.
 
 Tags also cannot apply other [tags](/api/test#tags) via these options.
-:::
 
 ## Example
 

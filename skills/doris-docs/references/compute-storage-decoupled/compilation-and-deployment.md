@@ -87,8 +87,7 @@ doris_cloud start successfully
 
 The startup script returns a value of 0 to indicate that the startup was successful; otherwise, the startup fails.
 
-:::info
-In 3.0.4, the startup script will output more information:
+> **info**: In 3.0.4, the startup script will output more information:
 ```text
 2024-12-26 15:31:53 start with args: --meta-service
 wait and check MetaService and Recycler start successfully
@@ -99,7 +98,6 @@ version:{doris-3.0.4-release} code_version:{commit=fd44740fadabebfedb5da201d7ce4
 MetaService has been started successfully
 successfully started service listening on port=5000 time_elapsed_ms=19
 ```
-:::
 
 *Stop Command*
 
@@ -111,9 +109,7 @@ For production environment, please ensure that the total number of Meta Service 
 
 ## 4. Independent Deployment of Data Recycling Function (Optional)
 
-:::info
-The Meta Service itself has metadata management and recycling functions, which can be deployed independently. If you want to deploy them independently, you can refer to this section.
-:::
+> **info**: The Meta Service itself has metadata management and recycling functions, which can be deployed independently. If you want to deploy them independently, you can refer to this section.
 
 *Preparation Work*
 

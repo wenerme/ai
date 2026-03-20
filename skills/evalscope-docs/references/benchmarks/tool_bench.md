@@ -1,6 +1,5 @@
 # ToolBench-Static
 
-
 ## Overview
 
 ToolBench-Static is a benchmark for evaluating AI models' ability to use tools and execute function calls in a static evaluation setting. It tests models on realistic tool-use scenarios with ground-truth comparisons.
@@ -28,7 +27,6 @@ ToolBench-Static is a benchmark for evaluating AI models' ability to use tools a
 - HalluRate measures tool hallucination frequency
 - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/toolbench.html) for detailed setup
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ ToolBench-Static is a benchmark for evaluating AI models' ability to use tools a
 | **Metrics** | `Act.EM`, `Plan.EM`, `F1`, `HalluRate`, `Rouge-L` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -173,5 +170,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

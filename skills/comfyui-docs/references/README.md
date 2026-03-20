@@ -3,7 +3,6 @@
 
 ## Development
 
-
 To preview documentation changes locally, first install dependencies and then start the development server:
 
 ```
@@ -25,7 +24,6 @@ npx @mintlify/scraping@latest openapi-file <path-to-openapi-file>
 ```
 
 This will only generate the MDX files for each endpoint. You need to add a link to these files in `docs.json`, and the up-to-date API spec will be shown on that doc page.
-
 
 ## Special Note on Renaming Files
 
@@ -179,4 +177,3 @@ When adding workflow examples to the documentation, please:
    You can also click the "Raw" button on the GitHub file page and copy the URL directly.
 
 This ensures the workflow metadata is preserved in the docs site when dragging it into ComfyUI.
-

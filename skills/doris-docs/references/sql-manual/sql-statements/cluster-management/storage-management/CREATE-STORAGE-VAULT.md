@@ -12,13 +12,11 @@
 
 This command is used to create a storage vault. The topic of this document describes the syntax for creating a self-managed storage vault in Doris.
 
-
 ## Syntax
 
 ```sql
 CREATE STORAGE VAULT [IF NOT EXISTS] <vault_name> [ <properties> ]
 ```
-
 
 ## Required Parameters
 
@@ -167,7 +165,6 @@ PROPERTIES (
 **Note:&#x20;**
 
 Doris also support `AWS Assume Role` for S3 Vault(only for AWS S3 now), please refer to [AWS intergration](../../../../lakehouse/storages/s3.md)
-
 
 ### 7. Create MinIO storage vault
 

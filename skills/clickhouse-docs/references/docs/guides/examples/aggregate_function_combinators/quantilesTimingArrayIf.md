@@ -1,9 +1,7 @@
 ---
-slug: '/examples/aggregate-function-combinators/quantilesTimingArrayIf'
 title: 'quantilesTimingArrayIf'
 description: 'Example of using the quantilesTimingArrayIf combinator'
 keywords: ['quantilesTiming', 'array', 'if', 'combinator', 'examples', 'quantilesTimingArrayIf']
-sidebar_label: 'quantilesTimingArrayIf'
 doc_type: 'reference'
 ---
 

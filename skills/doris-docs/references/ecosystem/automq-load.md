@@ -7,7 +7,7 @@
 ---
 
 [AutoMQ](https://github.com/AutoMQ/automq) is a cloud-native fork of Kafka by separating storage to object storage like S3. It remains 100% compatible with Apache Kafka® while offering users up to a 10x cost-effective and 100x elasticity . Through its innovative shared storage architecture, it achieves capabilities such as reassign partitions in seconds, self-balancing and auto scaling in seconds while ensuring high throughput and low latency.
-![AutoMQ Storage Architecture](/images/automq/automq_storage_architecture.png)
+[AutoMQ Storage Architecture]
 
 This article will explain how to use Apache Doris Routine Load to import data from AutoMQ into Doris. For more details on Routine Load, please refer to the [Routine Load](../data-operate/import/import-way/routine-load-manual.md) document.
 

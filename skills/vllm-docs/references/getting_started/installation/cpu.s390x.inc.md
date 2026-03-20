@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+
 --8<-- [start:installation]
 
 vLLM has experimental support for s390x architecture on IBM Z platform. For now, users must build from source to natively run on IBM Z platform.

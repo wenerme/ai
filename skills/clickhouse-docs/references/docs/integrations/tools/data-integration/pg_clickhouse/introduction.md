@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Introduction'
 description: 'Run analytics queries on ClickHouse right from PostgreSQL without rewriting any SQL'
-slug: '/integrations/pg_clickhouse'
 title: 'pg_clickhouse Reference Documentation'
 doc_type: 'landing-page'
 keywords: ['PostgreSQL', 'Postgres', 'FDW', 'foreign data wrapper', 'pg_clickhouse', 'extension']

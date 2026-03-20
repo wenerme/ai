@@ -28,7 +28,7 @@ SELECT approx_topk(clientip, 10) FROM "demo1"
 ```
 This query returns an approximate list of the `top k` most frequently occurring values in the `clientip` field from the `demo1` stream.
 
-**Result of `approx_topk`** <br>
+**Result of `approx_topk`** 
 The result is returned as an array of objects, where each object includes the value and its corresponding count. For example:
 
 ```json
@@ -64,7 +64,7 @@ This provides a flat output as shown below:
 ## `GROUP BY` Versus `approx_topk`
 
 ### How `GROUP BY` Works
-The traditional way to find the top values in a field is by using a `GROUP BY` query combined with `ORDER BY` and `LIMIT`. <br>
+The traditional way to find the top values in a field is by using a `GROUP BY` query combined with `ORDER BY` and `LIMIT`. 
     For example:
 
     ```sql
@@ -92,11 +92,11 @@ The traditional way to find the top values in a field is by using a `GROUP BY` q
 
     This level of memory usage can overwhelm the system and cause failures.
 
-    **Typical Failure Message** <br>
+    **Typical Failure Message** 
     ```
     Resources exhausted: Failed to allocate additional 63232256 bytes for GroupedHashAggregateStream[20] with 0 bytes already allocated for this reservation - 51510301 bytes remain available for the total pool
     ```
-    ![Typical Failure Message](../../images/approx-top-k-error-in-traditional-method.png)
+    [Typical Failure Message]
     This is a common limitation of using traditional `GROUP BY` with high-cardinality fields in large environments.
 
 ### How `approx_topk` Works
@@ -115,10 +115,10 @@ Despite this optimization, `approx_topk()` still returns approximate results bec
 
 When querying high-cardinality fields like clientip in large datasets, performance becomes critical. This section compares the execution performance of a traditional `GROUP BY` query with a query that uses the `approx_topk()` function.
 
-**Use Case**<br>
+**Use Case**
 You want to identify the top 20 most frequent client IP addresses in the `demo1` stream based on request volume.
 
-**Query 1: Using `GROUP BY` and `LIMIT`**<br>
+**Query 1: Using `GROUP BY` and `LIMIT`**
 ```sql
 SELECT clientip as "x_axis_1", count(_timestamp) as "y_axis_1"
 FROM "demo1"
@@ -138,9 +138,9 @@ ORDER BY request_count DESC
 ```
 
 **Results**
-<br>
-![Performance Difference Between `GROUP BY` and `approx_topk()](../../images/approx-topk.png)
-<br>
+
+[Performance Difference Between `GROUP BY` and `approx_topk()]
+
 Both queries were run against the same dataset using OpenObserve dashboards. Here are the observed query durations from the browser developer tools:
 
 - The `GROUP BY` query without `approx_topk` took **1.46 seconds** to complete.
@@ -160,7 +160,7 @@ The following are the known limitations of `approx_topk()` function:
 ---
 
 ## Frequently Asked Questions
-**Q.** Can I use a `WHERE` clause with `approx_topk()`? <br>
+**Q.** Can I use a `WHERE` clause with `approx_topk()`? 
 **A.** Yes. You can apply a `WHERE` clause before calling the `approx_topk()` function to filter the dataset. This limits the scope of the top K calculation to only the matching records.
 
 ```sql
@@ -172,5 +172,5 @@ FROM (
 ) 
 ORDER BY request_count DESC
 ```
-<br>
-![WHERE clause with approx_topk](../../images/approx-topk-with-filter.png)
+
+[WHERE clause with approx_topk]

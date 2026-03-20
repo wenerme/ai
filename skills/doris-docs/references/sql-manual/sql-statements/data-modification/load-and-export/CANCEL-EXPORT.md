@@ -44,7 +44,6 @@ The user executing this SQL command must have at least the following privileges:
 |:--------------|:----------|:----------------------------------------------|
 | ALTER_PRIV    | Database  | Requires modification access to the database. |
 
-
 ## Usage Notes
 
 1. Only pending export jobs in PENDING, IN_QUEUE,EXPORTING state can be canceled.

@@ -16,4 +16,3 @@ A fixed-length string, M represents the byte length of a fixed-length string. Th
 
 ### keywords
 CHAR
-

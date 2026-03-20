@@ -1,11 +1,9 @@
 ---
 title: "Pika 2.2 Text to Video - ComfyUI Native Node Documentation"
 description: "A node that converts text descriptions into videos using Pika AI"
-sidebarTitle: "Pika 2.2 Text to Video"
-icon: "circle"
 ---
 
-![ComfyUI Native Pika 2.2 Text to Video Node](/images/built-in-nodes/api_nodes/pika/pika-2-2-text-to-video.jpg)
+[ComfyUI Native Pika 2.2 Text to Video Node]
 
 The Pika 2.2 Text to Video node uses Pika's 2.2 API to create videos from text descriptions. It connects to Pika's text-to-video API, allowing users to generate videos using text prompts with various control parameters.
 
@@ -26,7 +24,6 @@ The Pika 2.2 Text to Video node uses Pika's 2.2 API to create videos from text d
 | Output | Type  | Description     |
 | ------ | ----- | --------------- |
 | VIDEO  | Video | Generated video |
-
 
 ## Source Code
 
@@ -91,5 +88,4 @@ class PikaTextToVideoNodeV2_2(PikaNodeBase):
 
         return self.execute_task(initial_operation, auth_token)
 
-
-``` 
+```

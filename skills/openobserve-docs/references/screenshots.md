@@ -2,30 +2,28 @@
 
 ## Home
 
-![Home screen](images/screenshots/zo_home.webp)
+[Home screen]
 ## Search
-![Log Search screen](images/screenshots/search_screen.webp)
+[Log Search screen]
 
 ## Alerts
 
 ### Realtime alerts
 
-![Realtime alert](images/screenshots/alert_realtime.webp)
+[Realtime alert]
 
 ### Standard alerts
 
-![Standard alerts](images/screenshots/alert_scheduled.webp)
+[Standard alerts]
 
 ## Dashboards
 
-![Dashboards](images/screenshots/dashboard.webp)
+[Dashboards]
 
 ## Streams
 
-![Streams](images/screenshots/zo_streams.webp)
+[Streams]
 
 ## Users
 
-![Users](images/screenshots/zo_add_user.webp)
-
-
+[Users]

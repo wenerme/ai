@@ -4,7 +4,6 @@ To use Gemini CLI, you'll need to authenticate with Google. This guide helps you
 quickly find the best way to sign in based on your account type and how you're
 using the CLI.
 
-<!-- prettier-ignore -->
 > [!TIP]
 > Looking for a high-level comparison of all available subscriptions?
 > To compare features and find the right quota for your needs, see our
@@ -23,7 +22,7 @@ Select the authentication method that matches your situation in the table below:
 | Organization users with a company, school, or Google Workspace account | [Sign in with Google](#login-google)                             | [Yes](#set-gcp)                                             |
 | AI Studio user with a Gemini API key                                   | [Use Gemini API Key](#gemini-api)                                | No                                                          |
 | Google Cloud Vertex AI user                                            | [Vertex AI](#vertex-ai)                                          | [Yes](#set-gcp)                                             |
-| [Headless mode](#headless)                                             | [Use Gemini API Key](#gemini-api) or<br> [Vertex AI](#vertex-ai) | No (for Gemini API Key)<br> [Yes](#set-gcp) (for Vertex AI) |
+| [Headless mode](#headless)                                             | [Use Gemini API Key](#gemini-api) or [Vertex AI](#vertex-ai) | No (for Gemini API Key) [Yes](#set-gcp) (for Vertex AI) |
 
 ### What is my Google account type?
 
@@ -109,7 +108,6 @@ To authenticate and use Gemini CLI with a Gemini API key:
 
 4. Select **Use Gemini API key**.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Treat API keys, especially for services like Gemini, as sensitive
 > credentials. Protect them to prevent unauthorized access and potential misuse
@@ -238,7 +236,6 @@ Remove-Item Env:\GOOGLE_API_KEY, Env:\GEMINI_API_KEY -ErrorAction Ignore
 
 5.  Select **Vertex AI**.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Protect your service account key file as it gives access to
 > your resources.
@@ -280,7 +277,6 @@ Remove-Item Env:\GOOGLE_API_KEY, Env:\GEMINI_API_KEY -ErrorAction Ignore
 
 ## Set your Google Cloud project <a id="set-gcp"></a>
 
-<!-- prettier-ignore -->
 > [!IMPORTANT]
 > Most individual Google accounts (free and paid) don't require a
 > Google Cloud project for authentication.
@@ -347,7 +343,6 @@ persist them with the following methods:
     . $PROFILE
     ```
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Be aware that when you export API keys or service account
 > paths in your shell configuration file, any process launched from that

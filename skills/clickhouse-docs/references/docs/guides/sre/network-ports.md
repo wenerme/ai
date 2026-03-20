@@ -1,6 +1,4 @@
 ---
-slug: /guides/sre/network-ports
-sidebar_label: 'Network ports'
 title: 'Network ports'
 description: 'Description of available network ports and what they''re used for'
 doc_type: 'reference'
@@ -9,9 +7,7 @@ keywords: ['network', 'ports', 'configuration', 'security', 'firewall']
 
 # Network ports
 
-:::note
-Ports described as **default** mean that the port number is configured in `/etc/clickhouse-server/config.xml`.  To customize your settings, add a file to `/etc/clickhouse-server/config.d/`.  See the [configuration file](/operations/configuration-files) documentation.
-:::
+> **note**: Ports described as **default** mean that the port number is configured in `/etc/clickhouse-server/config.xml`.  To customize your settings, add a file to `/etc/clickhouse-server/config.d/`.  See the [configuration file](/operations/configuration-files) documentation.
 
 |Port|Description|Cloud|OSS|
 |----|-----------|-----|---|

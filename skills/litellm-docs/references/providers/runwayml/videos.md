@@ -263,4 +263,3 @@ For complete API details, see the [OpenAI Video Generation API specification](ht
 | Logging | ✅ |
 | Fallbacks | ✅ |
 | Load Balancing | ✅ |
-

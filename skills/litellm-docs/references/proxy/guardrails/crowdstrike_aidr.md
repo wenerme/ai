@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # CrowdStrike AIDR
 
@@ -76,15 +75,9 @@ export CS_AIDR_BASE_URL="https://api.crowdstrike.com/aidr/aiguard"
 export OPENAI_API_KEY="sk-proj-54bgCI...jX6GMA"
 ```
 
-<Tabs>
-<TabItem label="LiteLLM CLI (pip package)" value="litellm-cli">
-
 ```shell
 litellm --config config.yaml
 ```
-
-</TabItem>
-<TabItem label="LiteLLM Docker (container)" value="litellm-docker">
 
 ```shell
 docker run --rm \
@@ -98,15 +91,9 @@ docker run --rm \
   --config /app/config.yaml
 ```
 
-</TabItem>
-</Tabs>
-
 ### 4. Make request
 
 This example requires the **Malicious Prompt** detector to be enabled in your collector's policy input rules.
-
-<Tabs>
-<TabItem label="Blocked request" value = "blocked">
 
 ```shell
 curl -sSLX POST 'http://localhost:4000/v1/chat/completions' \
@@ -137,18 +124,10 @@ curl -sSLX POST 'http://localhost:4000/v1/chat/completions' \
 }
 ```
 
-</TabItem>
-
-<TabItem label="Redacted response" value="redacted">
-
 In this example, we simulate a response from a privately hosted LLM that inadvertently includes information that should not be exposed by the AI assistant.
 This example requires the **Confidential and PII** detector enabled in your collector's policy output rules and its **US Social Security Number** rule set to use a redact method.
 
-:::note
-
-If the policy input rules redact a sensitive value, you will not see redaction applied by the output rules in this test.
-
-:::
+> **note**: If the policy input rules redact a sensitive value, you will not see redaction applied by the output rules in this test.
 
 ```shell
 curl -sSLX POST 'http://localhost:4000/v1/chat/completions' \
@@ -188,10 +167,6 @@ When the guardrail detects PII, it redacts the sensitive content before returnin
 200
 ```
 
-</TabItem>
-
-<TabItem label="Allowed request and response" value = "allowed">
-
 ```shell
 curl -sSLX POST http://localhost:4000/v1/chat/completions \
 --header "Content-Type: application/json" \
@@ -222,10 +197,6 @@ The above request should not be blocked, and you should receive a regular LLM re
 }
 200
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Next Steps
 

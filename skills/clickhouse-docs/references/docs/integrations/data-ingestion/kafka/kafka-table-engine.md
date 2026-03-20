@@ -1,18 +1,9 @@
 ---
-sidebar_label: 'Kafka Table Engine'
-sidebar_position: 5
-slug: /integrations/kafka/kafka-table-engine
 description: 'Using the Kafka Table Engine'
 title: 'Using the Kafka table engine'
 doc_type: 'guide'
 keywords: ['kafka', 'table engine', 'streaming', 'real-time', 'message queue']
 ---
-
-import Image from '@theme/IdealImage';
-import kafka_01 from '@site/static/images/integrations/data-ingestion/kafka/kafka_01.png';
-import kafka_02 from '@site/static/images/integrations/data-ingestion/kafka/kafka_02.png';
-import kafka_03 from '@site/static/images/integrations/data-ingestion/kafka/kafka_03.png';
-import kafka_04 from '@site/static/images/integrations/data-ingestion/kafka/kafka_04.png';
 
 # Using the Kafka table engine
 
@@ -20,9 +11,7 @@ The Kafka table engine can be used to [**read** data from](#kafka-to-clickhouse)
 
 ### Kafka to ClickHouse {#kafka-to-clickhouse}
 
-:::note
-If you're on ClickHouse Cloud, we recommend using [ClickPipes](/integrations/clickpipes) instead. ClickPipes natively supports private network connections, scaling ingestion and cluster resources independently, and comprehensive monitoring for streaming Kafka data into ClickHouse.
-:::
+> **note**: If you're on ClickHouse Cloud, we recommend using [ClickPipes](/integrations/clickpipes) instead. ClickPipes natively supports private network connections, scaling ingestion and cluster resources independently, and comprehensive monitoring for streaming Kafka data into ClickHouse.
 
 To use the Kafka table engine, you should be broadly familiar with [ClickHouse materialized views](../../../guides/developer/cascading-materialized-views.md).
 

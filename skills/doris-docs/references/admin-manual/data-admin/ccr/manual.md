@@ -54,10 +54,10 @@ Assuming the environment variable ${SYNCER_HOME} is set to the working directory
 | `--daemon` | Run Syncer in the background | `bin/start_syncer.sh --daemon` | `false` |
 | `--db_type` | Syncer can use two types of databases to store metadata: `sqlite3` (local storage) and `mysql` (local or remote storage). When using `mysql` to store metadata, Syncer will create a database named `ccr` using `CREATE IF NOT EXISTS`, and the metadata table will be stored there. | `bin/start_syncer.sh --db_type mysql` | `sqlite3` |
 | `--db_dir` | **Effective only when using `sqlite3`**; specifies the filename and path of the SQLite3 generated database file. | `bin/start_syncer.sh --db_dir /path/to/ccr.db` | `SYNCER_HOME/db/ccr.db` |
-| `--db_host`<br>`--db_port`<br>`--db_user`<br>`--db_password` | **Effective only when using `mysql`**; used to set the host, port, user, and password for MySQL. | `bin/start_syncer.sh --db_host 127.0.0.1 --db_port 3306 --db_user root --db_password "qwe123456"` | `db_host` and `db_port` default to example values; `db_user` and `db_password` default to empty. |
+| `--db_host``--db_port``--db_user``--db_password` | **Effective only when using `mysql`**; used to set the host, port, user, and password for MySQL. | `bin/start_syncer.sh --db_host 127.0.0.1 --db_port 3306 --db_user root --db_password "qwe123456"` | `db_host` and `db_port` default to example values; `db_user` and `db_password` default to empty. |
 | `--log_dir` | Specify the log output path | `bin/start_syncer.sh --log_dir /path/to/ccr_syncer.log` | `SYNCER_HOME/log/ccr_syncer.log` |
-| `--log_level` | Specify the log output level; the log format is as follows: `time level msg hooks`. The default value is `info` when running in the background; when running in the foreground, the default value is `trace`, and logs are saved to `log_dir` using `tee`. | `bin/start_syncer.sh --log_level info` | `info` (background)<br>`trace` (foreground) |
-| `--host`<br>`--port` | Specify the `host` and `port` for Syncer. The `host` is used to distinguish instances of Syncer in the cluster and can be understood as the name of Syncer; the naming format for Syncer in the cluster is `host:port`. | `bin/start_syncer.sh --host 127.0.0.1 --port 9190` | `host` defaults to `127.0.0.1`<br>`port` defaults to `9190` |
+| `--log_level` | Specify the log output level; the log format is as follows: `time level msg hooks`. The default value is `info` when running in the background; when running in the foreground, the default value is `trace`, and logs are saved to `log_dir` using `tee`. | `bin/start_syncer.sh --log_level info` | `info` (background)`trace` (foreground) |
+| `--host``--port` | Specify the `host` and `port` for Syncer. The `host` is used to distinguish instances of Syncer in the cluster and can be understood as the name of Syncer; the naming format for Syncer in the cluster is `host:port`. | `bin/start_syncer.sh --host 127.0.0.1 --port 9190` | `host` defaults to `127.0.0.1``port` defaults to `9190` |
 | `--pid_dir` | Specify the path to save the PID file. The PID file is the credential for the `stop_syncer.sh` script to stop Syncer, saving the corresponding Syncer's process number. For ease of cluster management, you can customize the path. | `bin/start_syncer.sh --pid_dir /path/to/pids` | `SYNCER_HOME/bin` |
 
 ## Stop Syncer
@@ -75,7 +75,7 @@ Options for Method 3:
 | **Option** | **Description** | **Command Example** | **Default Value** |
 |------------|-----------------|---------------------|--------------------|
 | `--pid_dir` | Specify the directory where the PID files are located; all three stopping methods depend on this option to execute. | `bash bin/stop_syncer.sh --pid_dir /path/to/pids` | `SYNCER_HOME/bin` |
-| `--host`<br>`--port` | Stop the Syncer corresponding to `host:port` in the `pid_dir` path. If only `host` is specified, it degrades to **Method 3**; if both `host` and `port` are not empty, it will be effective as **Method 1**. | `bash bin/stop_syncer.sh --host 127.0.0.1 --port 9190` | `host`: 127.0.0.1<br>`port`: empty |
+| `--host``--port` | Stop the Syncer corresponding to `host:port` in the `pid_dir` path. If only `host` is specified, it degrades to **Method 3**; if both `host` and `port` are not empty, it will be effective as **Method 1**. | `bash bin/stop_syncer.sh --host 127.0.0.1 --port 9190` | `host`: 127.0.0.1`port`: empty |
 | `--files` | Stop the Syncers corresponding to the specified PID file names in the `pid_dir` path, separated by spaces and enclosed in `"` quotes. | `bash bin/stop_syncer.sh --files "127.0.0.1_9190.pid 127.0.0.1_9191.pid"` | None |
 
 ## Syncer Operation List
@@ -268,11 +268,7 @@ Upgrade the upstream system by following the instructions in the [Upgrade Doris]
 
 ## Usage Notes
 
-:::caution
-
-The `is_being_synced` attribute should be fully controlled by Syncer to turn on or off under normal circumstances; users should not modify this attribute themselves.
-
-:::
+> **caution**: The `is_being_synced` attribute should be fully controlled by Syncer to turn on or off under normal circumstances; users should not modify this attribute themselves.
 
 ### Important Notes
 

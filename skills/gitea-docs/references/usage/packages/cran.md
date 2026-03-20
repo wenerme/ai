@@ -1,7 +1,5 @@
 ---
 date: "2023-01-01T00:00:00+00:00"
-slug: "cran"
-sidebar_position: 35
 ---
 
 # CRAN Package Registry

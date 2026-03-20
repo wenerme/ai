@@ -4,7 +4,6 @@
 
 Download [MiniCPM-Llama3-V-2_5](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5) PyTorch model from huggingface to "MiniCPM-Llama3-V-2_5" folder.
 
-
 ### Build llama.cpp
 Readme modification time: 20250206
 
@@ -22,7 +21,6 @@ cmake -B build
 cmake --build build --config Release
 ```
 
-
 ### Usage of MiniCPM-Llama3-V 2.5
 
 Convert PyTorch model to gguf files (You can also download the converted [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) by us)
@@ -35,7 +33,6 @@ python ./convert_hf_to_gguf.py ../MiniCPM-Llama3-V-2_5/model
 # quantize int4 version
 ./build/bin/llama-quantize ../MiniCPM-Llama3-V-2_5/model/model-8B-F16.gguf ../MiniCPM-Llama3-V-2_5/model/ggml-model-Q4_K_M.gguf Q4_K_M
 ```
-
 
 Inference on Linux or Mac
 ```bash

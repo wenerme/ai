@@ -20,7 +20,6 @@ Special characters include:
 Control characters include:
 * `CHAR(0)` is escaped as `\u0000`
 
-
 ## Syntax
 ```sql
 JSON_UNQUOTE (<str>)

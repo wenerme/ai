@@ -10,8 +10,6 @@
 | Base URL | `https://api.gmi-serving.com/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage), [`/models`](#supported-models) |
 
-<br />
-
 ## What is GMI Cloud?
 
 GMI Cloud is a venture-backed digital infrastructure company ($82M+ funding) providing:

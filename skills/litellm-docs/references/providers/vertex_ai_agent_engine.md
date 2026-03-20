@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex AI Agent Engine
 
@@ -58,9 +57,6 @@ async for chunk in response:
 
 #### 1. Configure your model in config.yaml
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml showLineNumbers title="LiteLLM Proxy Configuration"
 model_list:
   - model_name: vertex-agent-1
@@ -70,9 +66,6 @@ model_list:
       vertex_location: us-central1
 ```
 
-</TabItem>
-</Tabs>
-
 #### 2. Start the LiteLLM Proxy
 
 ```bash showLineNumbers title="Start LiteLLM Proxy"
@@ -80,9 +73,6 @@ litellm --config config.yaml
 ```
 
 #### 3. Make requests to your Vertex AI Agent Engine
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Basic Agent Request"
 curl http://localhost:4000/v1/chat/completions \
@@ -95,10 +85,6 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Using OpenAI SDK with LiteLLM Proxy"
 from openai import OpenAI
@@ -117,9 +103,6 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-</Tabs>
 
 ## LiteLLM A2A Gateway
 

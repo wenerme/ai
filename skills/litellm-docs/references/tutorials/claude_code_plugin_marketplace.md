@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Claude Code Plugin Marketplace (Managed Skills)
 
@@ -188,9 +186,6 @@ curl -X DELETE http://localhost:4000/claude-code/plugins/my-plugin \
 
 ## Plugin Source Formats
 
-<Tabs>
-<TabItem value="github" label="GitHub">
-
 ```json
 {
   "name": "my-plugin",
@@ -200,9 +195,6 @@ curl -X DELETE http://localhost:4000/claude-code/plugins/my-plugin \
   }
 }
 ```
-
-</TabItem>
-<TabItem value="url" label="Git URL">
 
 ```json
 {
@@ -215,9 +207,6 @@ curl -X DELETE http://localhost:4000/claude-code/plugins/my-plugin \
 ```
 
 Use this format for GitLab, Bitbucket, or self-hosted git repositories.
-
-</TabItem>
-</Tabs>
 
 ## Example: Setting Up an Internal Plugin Marketplace
 

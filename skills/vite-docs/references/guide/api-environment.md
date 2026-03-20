@@ -1,6 +1,6 @@
 # Environment API
 
-:::info Release Candidate
+> **info**: Release Candidate
 The Environment API is generally in the release candidate phase. We'll maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. However, note that [some specific APIs](/changes/#considering) are still considered experimental.
 
 We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
@@ -11,7 +11,6 @@ Resources:
 - [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new APIs were implemented and reviewed.
 
 Please share your feedback with us.
-:::
 
 ## Formalizing Environments
 
@@ -30,7 +29,7 @@ In dev, Vite executes the server code in the same Node process as the Vite dev s
 
 Vite 6 allows users to configure their app during build and dev to map all of its environments. During dev, a single Vite dev server can now be used to run code in multiple different environments concurrently. The app source code is still transformed by Vite dev server. On top of the shared HTTP server, middlewares, resolved config, and plugins pipeline, the Vite dev server now has a set of independent dev environments. Each of them is configured to match the production environment as closely as possible, and is connected to a dev runtime where the code is executed (for workerd, the server code can now run in miniflare locally). In the client, the browser imports and executes the code. In other environments, a module runner fetches and evaluates the transformed code.
 
-![Vite Environments](../images/vite-environments.svg)
+[Vite Environments]
 
 ## Environments Configuration
 

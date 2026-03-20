@@ -48,7 +48,6 @@ The user who executes this SQL command must have at least the following permissi
 |:-----------|:---------------|:------------|
 | ADMIN_PRIV | Custom function| DROP is an administrative operation |
 
-
 ## Usage Notes
 
 - A function can be deleted only when its name and parameter types are identical
@@ -62,5 +61,3 @@ DROP FUNCTION my_add(INT, INT)
 ```sql
 DROP GLOBAL FUNCTION my_add(INT, INT)
 ```
-
-

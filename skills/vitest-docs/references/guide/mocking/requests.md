@@ -8,8 +8,6 @@ Mock Service Worker (MSW) works by intercepting the requests your tests make, al
 
 You can use it like below in your [setup file](/config/setupfiles)
 
-::: code-group
-
 ```js [HTTP Setup]
 import { afterAll, afterEach, beforeAll } from 'vitest'
 import { setupServer } from 'msw/node'
@@ -106,7 +104,6 @@ afterAll(() => server.close())
 // Reset handlers after each test for test isolation
 afterEach(() => server.resetHandlers())
 ```
-:::
 
 > Configuring the server with `onUnhandledRequest: 'error'` ensures that an error is thrown whenever there is a request that does not have a corresponding request handler.
 

@@ -38,6 +38,3 @@ By default, LiteLLM does not forward client headers to LLM provider APIs. Howeve
 ## Custom Headers
 
 Custom headers starting with `x-` can be forwarded to LLM provider APIs when the model is configured in `forward_client_headers_to_llm_api`. [Learn more about header forwarding configuration](./forward_client_headers.md).
-
-
-

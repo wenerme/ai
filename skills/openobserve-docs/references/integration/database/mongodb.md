@@ -71,7 +71,7 @@ Supported MongoDB versions: **4.0+**.
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your actual OpenObserve API endpoint and authentication token, which you can find in your Data Sources -> Databases -> MongoDB
 
-    ![Collect OpenObserve Credentials](../images/databases/otel-metrics-cred.png)
+    [Collect OpenObserve Credentials]
 
 ??? "Step 3: Run the Collector"
 
@@ -80,12 +80,12 @@ Supported MongoDB versions: **4.0+**.
     ```bash
     otelcol-contrib --config /path/to/config.yaml
     ```
-    ![Run the Collector](../images/databases/otel-collector.png)
+    [Run the Collector]
 
 ??? "Step 4: Visualize in OpenObserve"
 
     1. Open **OpenObserve → Streams**. Select your metrics stream .
-        ![Visualize in OpenObserve](../images/databases/visualize-mongo-metrics.png)
+        [Visualize in OpenObserve]
     2. Explore MongoDB metrics in dashboards or create custom queries.
 
 ## Troubleshooting

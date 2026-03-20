@@ -10,7 +10,6 @@
 
 The MICROSECOND function extracts the microsecond part (up to six digits after the decimal point) from the input datetime value, returning a range from 0 to 999999. This function supports processing DATETIME types with microsecond precision, and automatically pads zeros for inputs with insufficient precision.
 
-
 This function behaves the same as MySQL’s [microsecond function](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_microsecond).
 
 ## Syntax

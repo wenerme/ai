@@ -10,13 +10,13 @@ These functions allow you to filter records based on keyword or pattern matches 
 
 ### `str_match(field, 'value')`
 
-**Alias**: `match_field(field, 'value')` (Available in OpenObserve version 0.15.0 and later) <br> 
+**Alias**: `match_field(field, 'value')` (Available in OpenObserve version 0.15.0 and later)  
 
-**Description**: <br>
+**Description**: 
 
 - Filters logs where the specified field contains the exact string value. 
 - The match is case-sensitive. 
-- Only logs that include the exact characters and casing specified will be returned. <br>
+- Only logs that include the exact characters and casing specified will be returned. 
 
 **Example**:
 ```sql
@@ -24,42 +24,42 @@ SELECT * FROM "default" WHERE str_match(k8s_pod_name, 'main-openobserve-ingester
 ```
 This query filters logs from the `default` stream where the `k8s_pod_name` field contains the exact string `main-openobserve-ingester-1`. It does not match values such as `Main-OpenObserve-Ingester-1`, `main-openobserve-ingester-0`, or any case variation.
 
-![str_match](./images/sql-reference/str-match.png)
+[str_match]
 
 ### `not str_match(field, 'value')`
-**Description**:<br>
+**Description**:
 
 - Filters logs where the specified field does NOT contain the exact string value.
 - The match is case-sensitive.
 - Only logs that do not include the exact characters and casing specified will be returned.
 - Can be combined with other conditions using AND/OR operators.
 
-**Example**: <br>
+**Example**: 
 ```sql
 SELECT * FROM "default" WHERE NOT str_match(k8s_app_instance, 'dev2')
 ```
-![not str_match](./images/sql-reference/not-str-match.png)
+[not str_match]
 
 **Combining multiple NOT conditions with AND:**
 ```sql
 SELECT * FROM "default" WHERE (NOT str_match(k8s_app_instance, 'dev2')) AND (NOT str_match(k8s_cluster, 'dev2'))
 ```
-![not str_match with AND operator](./images/sql-reference/not-str-match-with-and.png)
+[not str_match with AND operator]
 
 **Combining NOT conditions with OR:**
 ```sql
 SELECT * FROM "default" WHERE NOT ((str_match(k8s_app_instance, 'dev2') OR str_match(k8s_cluster, 'dev2')))
 ```
-![not str_match with OR operator](./images/sql-reference/not-str-match-with-or.png)
+[not str_match with OR operator]
 ---
 ### `str_match_ignore_case(field, 'value')`
-**Alias**: `match_field_ignore_case(field, 'value')` (Available in OpenObserve version 0.15.0 and later)<br>
+**Alias**: `match_field_ignore_case(field, 'value')` (Available in OpenObserve version 0.15.0 and later)
 
-**Description**: <br>
+**Description**: 
 
 - Filters logs where the specified field contains the string value. 
 - The match is case-insensitive. 
-- Logs are returned even if the casing of the value differs from what is specified in the query. <br>
+- Logs are returned even if the casing of the value differs from what is specified in the query. 
 
 **Example**:
 ```sql
@@ -67,12 +67,12 @@ SELECT * FROM "default" WHERE str_match_ignore_case(k8s_pod_name, 'MAIN-OPENOBSE
 ```
 This query filters logs from the `default` stream where the `k8s_pod_name` field contains any casing variation of `main-openobserve-ingester-1`, such as `MAIN-OPENOBSERVE-INGESTER-1`, `Main-OpenObserve-Ingester-1`, or `main-openobserve-ingester-1`.
 
-![str_match_ignore_case](./images/sql-reference/str-ignore-case.png)
+[str_match_ignore_case]
 
 ---
 
 ### `match_all('value')`
-**Description**: <br>
+**Description**: 
 
 - Filters logs by searching for the keyword across all fields that have the Index Type set to Full Text Search in the [stream settings](../user-guide/streams/schema-settings/). 
 - This function is case-insensitive and returns matches regardless of the keyword's casing.
@@ -88,7 +88,7 @@ SELECT * FROM "default" WHERE match_all('openobserve-querier')
 ```
 This query returns all logs in the `default` stream where the keyword `openobserve-querier` appears in any of the full-text indexed fields. It matches all casing variations, such as `OpenObserve-Querier` or `OPENOBSERVE-QUERIER`.
 
-![match_all](./images/sql-reference/match-all.png)
+[match_all]
 
 **More pattern support**
 The `match_all` function also supports the following patterns for flexible searching:
@@ -110,7 +110,7 @@ SELECT * FROM "default" WHERE match_all('*ab*')
 SELECT * FROM "default" WHERE match_all('key1 key2*')
 ```
 ### `not match_all('value')`
-**Description**: <br>
+**Description**: 
 
 - Filters logs by excluding records where the keyword appears in any field that has the Index Type set to Full Text Search in the stream settings. 
 - This function is case-insensitive and excludes matches regardless of the keyword's casing.
@@ -137,14 +137,13 @@ This query returns logs where BOTH conditions are false: field `f1` does NOT con
 
 ---
 ### `re_match(field, 'pattern')`
-**Description**: <br>
+**Description**: 
 
 - Filters logs by applying a regular expression to the specified field. 
 - The function returns records where the field value matches the given pattern. 
 - This function is useful for identifying complex patterns, partial matches, or multiple keywords in a single query.
 
 > You can use standard regular expression syntax as defined in the [Regex Documentation](https://docs.rs/regex/latest/regex/).
-
 
 **Example**:
 
@@ -153,8 +152,7 @@ SELECT * FROM "default" WHERE re_match(k8s_container_name, 'openobserve-querier|
 ```
 This query returns logs from the `default` stream where the `k8s_container_name` field matches any of the strings `openobserve-querier`, `controller`, or `nats`. The match is case-sensitive.
 
-![re_match](./images/sql-reference/re-match.png)
-
+[re_match]
 
 To perform a case-insensitive search:
 
@@ -163,12 +161,12 @@ SELECT * FROM "default" WHERE re_match(k8s_container_name, '(?i)openobserve-quer
 ```
 This query returns logs where the `k8s_container_name` field contains any casing variation of `openobserve-querier`, such as `OpenObserve-Querier` or `OPENOBSERVE-QUERIER`.
 
-![re_match_ignore_case](./images/sql-reference/re-match-ignore-case.png)
+[re_match_ignore_case]
 
 ---
 
 ### `re_not_match(field, 'pattern')`
-**Description**: <br>
+**Description**: 
 
 - Filters logs by applying a regular expression to the specified field and returns records that do not match the given pattern.
 - This function is useful when you want to exclude specific patterns or values from your search results.
@@ -179,20 +177,20 @@ SELECT * FROM "default" WHERE re_not_match(k8s_container_name, 'openobserve-quer
 ```
 This query returns logs from the `default` stream where the `k8s_container_name` field does not match any of the values `openobserve-querier`, `controller`, or `nats`. The match is case-sensitive.
 
-![re_not_match](./images/sql-reference/re-not-match.png)
+[re_not_match]
 
 ---
 
 ## Array functions
 The array functions operate on fields that contain arrays. In OpenObserve, array fields are typically stored as stringified JSON arrays.
-<br>For example, in a stream named `default`, there may be a field named `emails` that contains the following value:
-`["jim@email.com", "john@doe.com", "jene@doe.com"]` <br>
+For example, in a stream named `default`, there may be a field named `emails` that contains the following value:
+`["jim@email.com", "john@doe.com", "jene@doe.com"]` 
 Although the value appears as a valid array, it is stored as a string. The array functions in this section are designed to work on such stringified JSON arrays and provide support for sorting, counting, joining, slicing, and combining elements.
 
 --- 
 
 ### `arr_descending(field)`
-**Description**: <br>
+**Description**: 
 ß
 - Sorts the elements in the specified array field in descending order. 
 - The array must be a stringified JSON array. 
@@ -205,12 +203,12 @@ SELECT *, arr_descending(emails) as sorted_emails FROM "default" ORDER BY _times
 In this query, the emails field contains a stringified JSON array such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The query creates a new field `sorted_emails`, which contains the elements sorted in descending order:
 `["john@doe.com", "jene@doe.com", "jim@email.com"]`
 
-![arr_descending](./images/sql-reference/array-descending.png)
+[arr_descending]
 
 ---
 
 ### `arrcount(arrfield)`
-**Description**: <br>
+**Description**: 
 Counts the number of elements in a stringified JSON array stored in the specified field. The field must contain a valid JSON array as a string.
 
 **Example**:
@@ -219,7 +217,7 @@ SELECT *, arrcount(emails) as email_count FROM "default" ORDER BY _timestamp DES
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function counts the number of elements in the array and returns the result: `3`.
 
-![arrcount](./images/sql-reference/array-count.png)
+[arrcount]
 
 ---
 
@@ -236,7 +234,7 @@ SELECT *, arrindex(emails, 0, 1) as selected_emails FROM "default" ORDER BY _tim
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function extracts elements at index `0` and `1`. The result is:
 `["jim@email.com", "john@doe.com"]`
 
-![arrindex](./images/sql-reference/array-index.png)
+[arrindex]
 
 ---
 
@@ -252,7 +250,7 @@ SELECT *, arrjoin(emails, ' | ') as joined_numbers FROM "default" ORDER BY _time
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function joins all elements using the delimiter `|`. The result is:
 `"jim@email.com | john@doe.com | jene@doe.com"`
 
-![arr_join](./images/sql-reference/array-join.png)
+[arr_join]
 
 ---
 
@@ -268,8 +266,7 @@ SELECT *, arrsort(emails) as increasing_numbers FROM "default" ORDER BY _timesta
 In this query, the emails field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function sorts the elements in increasing lexicographical order. The result is:
 `["jene@doe.com", "jim@email.com", "john@doe.com"]`.
 
-![arrsort](./images/sql-reference/array-sort.png)
-
+[arrsort]
 
 ---
 
@@ -287,7 +284,7 @@ In this query, the `emails` field contains `["jim@email.com", "john@doe.com"]` a
 The result is:
 `["jim@email.com | jim", "john@doe.com | john"]`
 
-![arrzip](./images/sql-reference/array-zip.png)
+[arrzip]
 
 ---
 
@@ -311,11 +308,11 @@ The result is: `23`.
 
 Sample Input in log stream:
 
-![Nested Input](./images/sql-reference/nested-input.png)
+[Nested Input]
 
 Running SQL query using spath():
 
-![Nested value extraction](./images/sql-reference/nested.png)
+[Nested value extraction]
 
 ---
 
@@ -343,7 +340,7 @@ In this query:
 - The function `cast_to_arr` is used to convert these fields into native arrays.
 - The result of `array_union` is a merged array with unique values: `[1, 2, 3, 4]`.
 
-![cast_to_arr](./images/sql-reference/cast-to-array.png)
+[cast_to_arr]
 
 ---
 
@@ -368,7 +365,7 @@ In this query:
 - `to_array_string` converts the result back into a stringified array.
 - `arrsort` then sorts the array in increasing order.
 
-![to_array_string](./images/sql-reference/to-array-string.png)
+[to_array_string]
 
 ---
 
@@ -376,10 +373,10 @@ In this query:
 Aggregate functions compute a single result from a set of input values. For usage of standard SQL aggregate functions such as `COUNT`, `SUM`, `AVG`, `MIN`, and `MAX`, refer to [PostgreSQL documentation](https://www.postgresql.org/docs/).
 
 ### `histogram(field, 'duration')`
-**Description:** <br>
+**Description:** 
 Use the `histogram` function to divide your time-based log data into time buckets of a fixed duration and then apply aggregate functions such as `COUNT()` or `SUM()` to those intervals.
-This helps in visualizing time-series trends and performing meaningful comparisons over time. <br><br>
-**Syntax:** <br>
+This helps in visualizing time-series trends and performing meaningful comparisons over time. 
+**Syntax:** 
 ```sql
 histogram(<timestamp_field>, '<duration>')
 ```
@@ -387,14 +384,14 @@ histogram(<timestamp_field>, '<duration>')
 - `timestamp_field`: A valid timestamp field, such as _timestamp.
 - `duration`: A fixed time interval in readable units such as '30 seconds', '1 minute', '15 minutes', or '1 hour'.
 
-**Histogram with aggregate function** <br>
+**Histogram with aggregate function** 
 ```sql
 SELECT histogram(_timestamp, '30 seconds') AS key, COUNT(*) AS num
 FROM "default"
 GROUP BY key
 ORDER BY key
 ```
-**Expected output**: <br>
+**Expected output**: 
 
 This query divides the log data into 30-second intervals. 
 Each row in the result shows:
@@ -402,7 +399,7 @@ Each row in the result shows:
 - **`key`**: The start time of the 30-second bucket.
 - **`num`**: The count of log records that fall within that time bucket.
 
-![histogram](./images/sql-reference/histogram.png)
+[histogram]
 
 !!! note
     To avoid unexpected bucket sizes based on internal defaults, always specify the bucket duration explicitly using units. 
@@ -466,8 +463,8 @@ ORDER BY request_count DESC
 ```
 
 ??? info "The Space-Saving Algorithm Explained:"
-    The Space-Saving algorithm enables efficient top-K queries on high-cardinality data by limiting memory usage during distributed query execution. This approach trades exact precision for system stability and performance. <br> 
-    **Problem Statement** <br>
+    The Space-Saving algorithm enables efficient top-K queries on high-cardinality data by limiting memory usage during distributed query execution. This approach trades exact precision for system stability and performance.  
+    **Problem Statement** 
 
     Traditional GROUP BY operations on high-cardinality fields can cause memory exhaustion in distributed systems. Consider this query:
 
@@ -491,7 +488,7 @@ ORDER BY request_count DESC
     Resources exhausted: Failed to allocate additional 63232256 bytes for GroupedHashAggregateStream[20] with 0 bytes already allocated for this reservation - 51510301 bytes remain available for the total pool
     ```
 
-    **Solution: Space-Saving Mechanism** <br>
+    **Solution: Space-Saving Mechanism** 
 
     ```sql
     SELECT approx_topk(clientip, 10) FROM default
@@ -499,12 +496,12 @@ ORDER BY request_count DESC
 
     Instead of returning all unique values from each partition, each partition returns only its top 10 results. The leader node then aggregates these partial results to compute the final top 10.
 
-    **Example: Web Server Log Analysis** <br>
+    **Example: Web Server Log Analysis** 
 
-    **Scenario** <br>
+    **Scenario** 
     Find the top 10 client IPs by request count from web server logs distributed across 3 follower query nodes.
 
-    **Raw data distribution** <br>
+    **Raw data distribution** 
 
     | Rank | Node 1 | Requests | Node 2 | Requests | Node 3 | Requests |
     |------|---------|----------|---------|----------|---------|----------|
@@ -519,8 +516,7 @@ ORDER BY request_count DESC
     | 9 | 203.0.113.80 | 460 | 10.0.0.25 | 560 | 172.16.0.30 | 490 |
     | 10 | 192.168.1.150 | 440 | 192.168.1.150 | 520 | 192.168.1.150 | 450 |
 
-
-    **Follower query nodes process data** <br>
+    **Follower query nodes process data** 
 
     Each follower node executes the query locally and returns only its top 10 results:
 
@@ -537,7 +533,7 @@ ORDER BY request_count DESC
     | 9 | 203.0.113.80 | 460 | 10.0.0.25 | 560 | 172.16.0.30 | 490 |
     | 10 | 192.168.1.150 | 440 | 192.168.1.150 | 520 | 192.168.1.150 | 450 |
 
-    **Leader query node aggregates results** <br>
+    **Leader query node aggregates results** 
 
     | Client IP | Node 1 | Node 2 | Node 3 | Total Requests |
     |-----------|---------|---------|---------|----------------|
@@ -567,7 +563,7 @@ ORDER BY request_count DESC
     | 9 | 172.16.0.30 | 1,550 |
     | 10 | 192.168.1.150 | 1,410 |
 
-    **Why results are approximate** <br>
+    **Why results are approximate** 
 
     The approx_topk function returns approximate results because it relies on each query node sending only its local top N entries to the leader. The leader combines these partial lists to produce the final result.
 
@@ -575,7 +571,7 @@ ORDER BY request_count DESC
 
     For example, if an IP receives 400, 450, and 500 requests across three nodes but ranks 11th on each, it will not appear in any node’s top 10. Even though the global total is 1,350, it will be missed.
 
-    **Limitations** <br>
+    **Limitations** 
 
     - Results are approximate, not exact.
     - Accuracy depends on data distribution across partitions.
@@ -753,7 +749,6 @@ ORDER BY distinct_count DESC
     | 9 | 172.16.0.30 | 790 |
     | 10 | 192.168.1.150 | 690 |
 
-
     **Why results are approximate**
     Results are approximate due to two factors:
 
@@ -766,9 +761,7 @@ ORDER BY distinct_count DESC
     - Distinct count accuracy depends on HyperLogLog algorithm precision.
     - Filter clauses are not currently supported with `approx_topk_distinct`.
 
-
 ---
 
 ## Related Links
 OpenObserve uses [Apache DataFusion](https://datafusion.apache.org/user-guide/sql/index.html) as its query engine. All supported SQL syntax and functions are available through DataFusion.
-

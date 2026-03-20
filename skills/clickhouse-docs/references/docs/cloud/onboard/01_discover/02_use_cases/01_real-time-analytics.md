@@ -1,17 +1,9 @@
 ---
-slug: /cloud/get-started/cloud/use-cases/real-time-analytics
 title: 'Real-time analytics'
 description: 'Learn how to build real-time analytics applications with ClickHouse Cloud for instant insights and data-driven decision making'
 keywords: ['use cases', 'real-time analytics']
-sidebar_label: 'Real-time analytics'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import rta_0 from '@site/static/images/cloud/onboard/discover/use_cases/0_rta.png';
-import rta_1 from '@site/static/images/cloud/onboard/discover/use_cases/1_rta.png';
-import rta_2 from '@site/static/images/cloud/onboard/discover/use_cases/2_rta.png';
-import rta_3 from '@site/static/images/cloud/onboard/discover/use_cases/3_rta.png';
 
 <iframe width="758" height="426" src="https://www.youtube.com/embed/SnFff0KYwuo?si=aNpGzSobzFhUlyX5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

@@ -59,8 +59,6 @@ ALTER TABLE tbl1 REPLACE WITH TABLE tbl2 PROPERTIES('swap' = 'true');
 ALTER TABLE tbl1 REPLACE WITH TABLE tbl2 PROPERTIES('swap' = 'false');
 ```
 
-
-
 ## Keywords
 
 ```text

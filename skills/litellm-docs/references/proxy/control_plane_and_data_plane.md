@@ -1,20 +1,14 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Control Plane for Multi-region Architecture (Enterprise)
 
 Learn how to deploy LiteLLM across multiple regions while maintaining centralized administration and avoiding duplication of management overhead.
 
-:::info
-
-✨ This requires LiteLLM Enterprise features.
+> **info**: ✨ This requires LiteLLM Enterprise features.
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-:::
 
 ## Overview
 
@@ -86,15 +80,11 @@ DISABLE_ADMIN_UI=true
 
 ### `DISABLE_ADMIN_ENDPOINTS`
 
-:::info
-
-✨ This is an Enterprise feature.
+> **info**: ✨ This is an Enterprise feature.
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-:::
 
 Disables all management/admin API endpoints.
 
@@ -123,18 +113,13 @@ DISABLE_ADMIN_ENDPOINTS=true
 - `/metrics` - Prometheus metrics
 - All other LLM API endpoints
 
-
 ### `DISABLE_LLM_API_ENDPOINTS`
 
-:::info
-
-✨ This is an Enterprise feature.
+> **info**: ✨ This is an Enterprise feature.
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-:::
 
 Disables all LLM API endpoints.
 
@@ -147,14 +132,12 @@ Disables all LLM API endpoints.
 DISABLE_LLM_API_ENDPOINTS=true
 ```
 
-
 **Disabled Endpoints Include**:
 - `/chat/completions` - LLM requests
 - `/v1/*` - OpenAI-compatible APIs
 - `/vertex_ai/*` - Vertex AI pass-through APIs
 - `/bedrock/*` - Bedrock pass-through APIs
 - All other LLM API endpoints
-
 
 **Available Endpoints** (when disabled):
 - `/key/*` - Key management
@@ -166,7 +149,6 @@ DISABLE_LLM_API_ENDPOINTS=true
 ### `LITELLM_UI_API_DOC_BASE_URL`
 
 Optional override for the API Reference base URL (used in sample code/docs) when the admin UI runs on a different host than the proxy.
-
 
 ## Usage Patterns
 
@@ -211,4 +193,4 @@ response = requests.post(
 - [Virtual Keys](./virtual_keys.md) - Managing API keys and users
 - [Health Checks](./health.md) - Monitoring instance health  
 - [Prometheus Metrics](./logging.md#prometheus-metrics) - Collecting metrics
-- [Production Deployment](./prod.md) - Production best practices 
+- [Production Deployment](./prod.md) - Production best practices

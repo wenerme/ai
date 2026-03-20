@@ -11,7 +11,6 @@ This guide provides step-by-step instructions to integrate AWS Application Load 
 
 Ingest ALB access logs into OpenObserve for monitoring and troubleshooting. ALB access logs provide details such as client IPs, request paths, status codes, and processing times. Forwarding these logs to OpenObserve lets you store, search, and visualize ALB traffic to analyze usage, performance, and issues.
 
-
 ## Integration Options
 
 You can integrate ALB logs with OpenObserve in **two ways**:
@@ -19,10 +18,8 @@ You can integrate ALB logs with OpenObserve in **two ways**:
 1. **Manually using Console**: good for testing, learning, small environments
 2. **Automated Setup with CloudFormation**: best for repeatable, production-ready deployments
 
-
 ## Manually using Console
 Use this flow if you want to get started step-by-step using the AWS Console.
-
 
 ??? "Prerequisites"
     - AWS account with an Application Load Balancer configured and serving traffic
@@ -31,22 +28,20 @@ Use this flow if you want to get started step-by-step using the AWS Console.
     - OpenObserve account with valid API credentials
     - Lambda execution role with `s3:GetObject` and `s3:ListBucket` permissions
 
-
 ??? "Step 1: Enable ALB Access Logs"
 
     1. In the AWS Console, open **EC2 → Load Balancers**.
     2. Select your ALB → **Description → Edit attributes**.
     3. Enable **Access logs** and **Connection Logs**, enter your S3 bucket name, add a prefix if needed, and save.
 
-    ![Enable ALB Access Logs](../images/aws-integrations/alb/enable-access-log-alb.png)
+    [Enable ALB Access Logs]
 
 ??? "Step 2: Verify Logs in S3"
 
     1. Send traffic through your ALB (e.g., use `curl` on your ALB DNS name).
     2. In your **S3 bucket**, confirm that `.log.gz` files appear under the prefix.
 
-    ![Verify Logs in S3](../images/aws-integrations/alb/verify-logs-in-s3.png)
-
+    [Verify Logs in S3]
 
 ??? "Step 3: Deploy a Lambda to Forward Logs"
 
@@ -113,14 +108,13 @@ Use this flow if you want to get started step-by-step using the AWS Console.
     - (Optional) Add a prefix filter.
     - Click **Add**.
 
-    ![Attach an S3 Trigger in Lambda](../images/aws-integrations/alb/add-trigger.png)
+    [Attach an S3 Trigger in Lambda]
 
 ??? "Step 5: Verify"
 
     - In OpenObserve → Logs → filter your stream → logs should appear.
 
-    ![Verify in Openobserve](../images/aws-integrations/alb/logs-verification.png)
-
+    [Verify in Openobserve]
 
 ??? "Troubleshooting"
 
@@ -148,18 +142,16 @@ Use this flow if you want to get started step-by-step using the AWS Console.
 
 Use this option to automatically deploy the entire ALB → S3 → Lambda → OpenObserve pipeline using AWS CloudFormation.
 
-
 ??? "Step 1: Download the CloudFormation Template"
 
     - Download the prebuilt CloudFormation template from:
       [https://github.com/openobserve/cloudformation-templates/blob/main/aws_alb/alb.yaml](https://github.com/openobserve/cloudformation-templates/blob/main/aws_alb/alb.yaml)
 
-
 ??? "Step 2: Configure CloudFormation with Parameters"
 
     - In AWS Console → **CloudFormation** → **Create stack → With new resources (standard)**.
             
-        ![Create Stack](../images/aws-integrations/alb/create-stack.png)
+        [Create Stack]
 
     - Upload the `alb.yaml` template.
     - Enter required parameters:
@@ -169,9 +161,8 @@ Use this option to automatically deploy the entire ALB → S3 → Lambda → Ope
         - **IAM role**
         - **OpenObserve credentials** (username/password or token)
         - **ELBAccountId** 
-            ![Create Stack](../images/aws-integrations/alb/stack-parameters.png)
+            [Create Stack]
     - Click **Next** → keep defaults → **Create stack**.
-
 
 ??? "Step 3: Validate the CloudFormation Deployment"
 
@@ -179,7 +170,7 @@ Use this option to automatically deploy the entire ALB → S3 → Lambda → Ope
     - Go to **S3** → verify the bucket was created.
     - Go to **Lambda** → verify the function exists.
 
-    ![Validate the CloudFormation Deployment](../images/aws-integrations/alb/validating-deployment.png)
+    [Validate the CloudFormation Deployment]
 
 ??? "Step 4: Enable Monitoring in AWS ALB"
 
@@ -189,14 +180,13 @@ Use this option to automatically deploy the entire ALB → S3 → Lambda → Ope
     - Pick the S3 bucket created by CloudFormation.
     - Add your chosen prefix and save the changes
 
-        ![Enable ALB Access Logs](../images/aws-integrations/alb/enable-access-log-alb.png)
-
+        [Enable ALB Access Logs]
 
 ??? "Step 5: Verify Logs in OpenObserve"
 
     - Go to **OpenObserve → Logs → your ALB stream → Run Query** to see ingested logs.
 
-    ![Verify in Openobserve](../images/aws-integrations/alb/logs-verification.png)
+    [Verify in Openobserve]
 
 ??? "Trobubleshooting"
 

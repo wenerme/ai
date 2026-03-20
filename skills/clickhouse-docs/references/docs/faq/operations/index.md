@@ -1,7 +1,4 @@
 ---
-slug: /faq/operations/
-sidebar_position: 3
-sidebar_label: 'Question about operating ClickHouse servers and clusters'
 title: 'Question about operating ClickHouse servers and clusters'
 description: 'Landing page for questions about operating ClickHouse servers and clusters'
 doc_type: 'landing-page'
@@ -19,6 +16,5 @@ keywords: ['operations', 'administration', 'deployment', 'cluster management', '
 - [Can you update or delete rows in ClickHouse?](/guides/starter_guides/mutations.md)
 - [Does ClickHouse support multi-region replication?](/faq/operations/multi-region-replication.md)
 
-:::info Don't see what you're looking for?
+> **info**: Don't see what you're looking for?
 Check out our [Knowledge Base](/knowledgebase/) and also browse the many helpful articles found here in the documentation.
-:::

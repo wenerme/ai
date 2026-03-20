@@ -1,6 +1,5 @@
 # General-VQA
 
-
 ## Overview
 
 General-VQA is a customizable visual question answering benchmark for evaluating multimodal models. It supports OpenAI-compatible message format with flexible image input (local paths, URLs, or base64).
@@ -27,7 +26,6 @@ General-VQA is a customizable visual question answering benchmark for evaluating
 - Evaluates on **test** split
 - See [User Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/custom_dataset/vlm.html) for dataset format
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ General-VQA is a customizable visual question answering benchmark for evaluating
 | **Metrics** | `BLEU`, `Rouge` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -82,5 +79,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

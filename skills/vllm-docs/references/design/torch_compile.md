@@ -115,7 +115,6 @@ through the `--compilation-config` flag:
 vllm serve meta-llama/Llama-3.2-1B \
   --compilation-config '{"dynamic_shapes_config": {"type": "unbacked"}}'
 
-
 # Alternative: Using dot notation (simpler for single values)
 vllm serve meta-llama/Llama-3.2-1B -cc.dynamic_shapes_config.type=unbacked
 ```

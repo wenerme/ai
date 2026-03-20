@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Overview'
-sidebar_position: 1
 keywords: ['ClickHouse', 'connect', 'Luzmo', 'Explo', 'Fabi.ai', 'Tableau', 'Grafana', 'Metabase', 'Mitzu', 'superset', 'Databrain','Deepnote', 'Draxlr', 'RocketBI', 'Omni', 'Querio', 'bi', 'visualization', 'tool', 'lightdash']
 title: 'Visualizing Data in ClickHouse'
-slug: /integrations/data-visualization
 description: 'Learn about Visualizing Data in ClickHouse'
 doc_type: 'guide'
 ---
@@ -20,8 +17,6 @@ doc_type: 'guide'
    allowfullscreen>
 </iframe>
 </div>
-
-<br/>
 
 Now that your data is in ClickHouse, it's time to analyze it, which often involves building visualizations using a BI tool. Many of the popular BI and visualization tools connect to ClickHouse. Some connect to ClickHouse out-of-the-box, while others require a connector to be installed. We have docs for some of the tools, including:
 

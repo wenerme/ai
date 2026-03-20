@@ -1,6 +1,5 @@
 # MBPP
 
-
 ## Overview
 
 MBPP (Mostly Basic Python Problems) is a benchmark consisting of approximately 1,000 crowd-sourced Python programming problems designed for entry-level programmers. It evaluates a model's ability to understand problem descriptions and generate correct Python code.
@@ -28,7 +27,6 @@ MBPP (Mostly Basic Python Problems) is a benchmark consisting of approximately 1
 - Default timeout is 20 seconds per problem
 - Code is extracted from `[BEGIN]...[DONE]` blocks if present
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ MBPP (Mostly Basic Python Problems) is a benchmark consisting of approximately 1
 | **Evaluation Split** | `test` |
 | **Train Split** | `prompt` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -90,8 +87,7 @@ You are an expert Python programmer, and here is your task: {question} Your code
 {tests}
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 You are an expert Python programmer, and here is your task: Write a function to find the similar elements from the given two tuple lists. Your code should pass these tests:
@@ -135,8 +131,6 @@ You are an expert Python programmer, and here is your task: {question} Your code
 [BEGIN]
 
 ```
-
-</details>
 
 ## Sandbox Configuration
 
@@ -183,5 +177,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

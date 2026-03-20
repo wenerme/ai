@@ -1,7 +1,4 @@
 ---
-slug: /operations/access-rights
-sidebar_position: 1
-sidebar_label: 'Users and roles'
 title: 'Access Control and Account Management'
 keywords: ['ClickHouse Cloud', 'Access Control', 'User Management', 'RBAC', 'Security']
 description: 'Describes access control and account management in ClickHouse Cloud'
@@ -29,13 +26,9 @@ You can configure access entities using:
 
 We recommend using SQL-driven workflow. Both of the configuration methods work simultaneously, so if you use the server configuration files for managing accounts and access rights, you can smoothly switch to SQL-driven workflow.
 
-:::note
-You can't manage the same access entity by both configuration methods simultaneously.
-:::
+> **note**: You can't manage the same access entity by both configuration methods simultaneously.
 
-:::note
-If you're looking to manage ClickHouse Cloud console users, please refer to this [page](/cloud/security/manage-cloud-users)
-:::
+> **note**: If you're looking to manage ClickHouse Cloud console users, please refer to this [page](/cloud/security/manage-cloud-users)
 
 To see all users, roles, profiles, etc. and all their grants use [`SHOW ACCESS`](/sql-reference/statements/show#show-access) statement.
 
@@ -111,9 +104,7 @@ Privileges can be granted to a role by the [GRANT](/sql-reference/statements/gra
 
 Row policy is a filter that defines which of the rows are available to a user or a role. Row policy contains filters for one particular table, as well as a list of roles and/or users which should use this row policy.
 
-:::note
-Row policies makes sense only if you have readonly access. If you can modify table or copy partitions between tables, it defeats the restrictions of row policies.
-:::
+> **note**: Row policies makes sense only if you have readonly access. If you can modify table or copy partitions between tables, it defeats the restrictions of row policies.
 
 Management queries:
 
@@ -162,9 +153,7 @@ Management queries:
 
 ## Defining SQL users and roles {#defining-sql-users-and-roles}
 
-:::tip
-If you're working in ClickHouse Cloud, please see [Cloud access management](/cloud/security/console-roles).
-:::
+> **tip**: If you're working in ClickHouse Cloud, please see [Cloud access management](/cloud/security/console-roles).
 
 This article shows the basics of defining SQL users and roles and applying those privileges and permissions to databases, tables, rows, and columns.
 
@@ -228,14 +217,12 @@ CREATE TABLE my_db.my_table (id UInt64, column1 String) ENGINE = MergeTree() ORD
 CREATE USER my_alter_admin IDENTIFIED BY 'password';
 ```
 
-:::note
-To grant or revoke permissions, the admin user must have the `WITH GRANT OPTION` privilege.
+> **note**: To grant or revoke permissions, the admin user must have the `WITH GRANT OPTION` privilege.
 For example:
   ```sql
   GRANT ALTER ON my_db.* WITH GRANT OPTION
   ```
 To `GRANT` or `REVOKE` privileges, the user must have those privileges themselves first.
-:::
 
 **Granting or Revoking Privileges**
 

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Hugging Face
 LiteLLM supports running inference across multiple services for models hosted on the Hugging Face Hub.
@@ -8,24 +6,19 @@ LiteLLM supports running inference across multiple services for models hosted on
 - **Serverless Inference Providers** - Hugging Face offers an easy and unified access to serverless AI inference through multiple inference providers, like [Together AI](https://together.ai) and [Sambanova](https://sambanova.ai). This is the fastest way to integrate AI in your products with a maintenance-free and scalable solution. More details in the [Inference Providers documentation](https://huggingface.co/docs/inference-providers/index).
 - **Dedicated Inference Endpoints** - which is a product to easily deploy models to production. Inference is run by Hugging Face in a dedicated, fully managed infrastructure on a cloud provider of your choice. You can deploy your model on Hugging Face Inference Endpoints by following [these steps](https://huggingface.co/docs/inference-endpoints/guides/create_endpoint).
 
-
 ## Supported Models
 
 ### Serverless Inference Providers
 You can check available models for an inference provider by going to [huggingface.co/models](https://huggingface.co/models), clicking the "Other" filter tab, and selecting your desired provider:
 
-![Filter models by Inference Provider](../../img/hf_filter_inference_providers.png)
+[Filter models by Inference Provider]
 
 For example, you can find all Fireworks supported models [here](https://huggingface.co/models?inference_provider=fireworks-ai&sort=trending).
-
 
 ### Dedicated Inference Endpoints
 Refer to the [Inference Endpoints catalog](https://endpoints.huggingface.co/catalog) for a list of available models.
 
 ## Usage
-
-<Tabs>
-<TabItem value="serverless" label="Serverless Inference Providers">
 
 ### Authentication
 With a single Hugging Face token, you can access inference through multiple providers. Your calls are routed through Hugging Face and the usage is billed directly to your Hugging Face account at the standard provider API rates.
@@ -62,9 +55,8 @@ completion(model="huggingface/sambanova/Qwen/Qwen2.5-72B-Instruct",...)
 completion(model="huggingface/meta-llama/Llama-3.3-70B-Instruct",...)
 ```
 
-
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_HuggingFace.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ### Basic Completion
@@ -190,12 +182,8 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="endpoints" label="Inference Endpoints">
-
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_HuggingFace.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ### Basic Completion
@@ -296,9 +284,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ## LiteLLM Proxy Server with Hugging Face models
 You can set up a [LiteLLM Proxy Server](https://docs.litellm.ai/#litellm-proxy-server-llm-gateway) to serve Hugging Face models through any of the supported Inference Providers. Here's how to do it:
 
@@ -320,8 +305,6 @@ litellm --config /path/to/config.yaml
 ```
 
 ### Step 3. Make a request to the server
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -336,9 +319,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-<TabItem value="python" label="python">
 
 ```python
 # pip install openai
@@ -357,10 +337,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Embedding
 

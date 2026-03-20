@@ -78,8 +78,6 @@ For a general-purpose instruction-tuned model, you can use a dataset like `ultra
     ds = ds.map(tokenize, remove_columns=ds.column_names)
     ```
 
-</details>
-
 ### 3. Applying Quantization
 
 Now, apply the quantization algorithms:

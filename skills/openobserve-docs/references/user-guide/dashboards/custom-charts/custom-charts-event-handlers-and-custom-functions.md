@@ -79,7 +79,7 @@ You should see something like:
 ```  
 You clicked: A 10  
 ```  
-![custom-charts-event-handlers](../../../images/custom-charts-event-handlers.png)
+[custom-charts-event-handlers]
 
 ### Step 5 (optional): Add more events  
 Further, you can add more event handlers such as `mousemove`, `legendchanged` like this:  
@@ -166,8 +166,7 @@ The browser console will show:
 ```  
 You selected A with value 10  
 ```
-![custom-charts-custom-function](../../../images/custom-charts-custom-function.png)
-
+[custom-charts-custom-function]
 
 ## Troubleshooting
 
@@ -184,5 +183,4 @@ You selected A with value 10
 - When only one event works when multiple are defined:
 
     - Verify each event uses a uniquely named handler.  
-    - Ensure all handlers are declared before the chart is rendered. 
-
+    - Ensure all handlers are declared before the chart is rendered.

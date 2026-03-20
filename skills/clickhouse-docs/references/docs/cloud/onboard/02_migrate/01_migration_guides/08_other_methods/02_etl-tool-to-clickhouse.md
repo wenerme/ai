@@ -1,14 +1,9 @@
 ---
-sidebar_label: 'Using a third-party ETL tool'
 keywords: ['clickhouse', 'migrate', 'migration', 'migrating', 'data', 'etl', 'elt', 'clickhouse-local', 'clickhouse-client']
-slug: /cloud/migration/etl-tool-to-clickhouse
 title: 'Using a third-party ETL Tool'
 description: 'Page describing how to use a third-party ETL tool with ClickHouse'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import third_party_01 from '@site/static/images/integrations/migration/third-party-01.png';
 
 A great option for moving data from an external data source into ClickHouse is to use one of the many popular ETL and ELT. We have docs that cover the following:
 

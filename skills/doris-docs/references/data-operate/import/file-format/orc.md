@@ -59,4 +59,3 @@ FROM S3
     "format" = "orc",
     ...
 );
-

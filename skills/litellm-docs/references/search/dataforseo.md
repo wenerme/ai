@@ -88,4 +88,3 @@ response = search(
     os="windows"                   # Operating system
 )
 ```
-

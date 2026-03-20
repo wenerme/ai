@@ -22,35 +22,35 @@ As enterprises increasingly manage growing data assets under the Lakehouse archi
 
 In Unity Catalog, an [External Location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-locations) is a secure object that associates paths in cloud object storage with Storage Credentials. External Locations support external access, and Unity Catalog can issue short-term credentials to external systems through the Credential Vending feature, allowing external systems to access these paths.
 
-![unity1](/images/integrations/lakehouse/unity/unity-1.png)
+[unity1]
 
 This document uses AWS Quickstart to create an External Location in AWS S3.
 
-![unity2](/images/integrations/lakehouse/unity/unity-2.png)
+[unity2]
 
 After creation, you can see the External Catalog and its corresponding Credential:
 
-![unity3](/images/integrations/lakehouse/unity/unity-3.png)
+[unity3]
 
 ### Creating a Catalog
 
 Click the Create Catalog option in the interface.
 
-![unity4](/images/integrations/lakehouse/unity/unity-4.png)
+[unity4]
 
 Fill in the Catalog name. Uncheck `Use default storage` and select the External Location created earlier.
 
-![unity5](/images/integrations/lakehouse/unity/unity-5.png)
+[unity5]
 
 ### Enabling External Use Schema Permissions
 
 Click on the newly created `Catalog` → `Permissions` → `Grant`:
 
-![unity6](/images/integrations/lakehouse/unity/unity-6.png)
+[unity6]
 
 Select `All account users` and check the `EXTERNAL USE SCHEMA` option.
 
-![unity7](/images/integrations/lakehouse/unity/unity-7.png)
+[unity7]
 
 ### Creating Iceberg Tables and Inserting Data
 

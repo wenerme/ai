@@ -113,8 +113,6 @@ See the [Babel decorators versions guide](https://babeljs.io/docs/babel-plugin-p
 
 **Using Babel:**
 
-::: code-group
-
 ```bash [npm]
 $ npm install -D @rolldown/plugin-babel @babel/plugin-proposal-decorators
 ```
@@ -134,8 +132,6 @@ $ bun add -D @rolldown/plugin-babel @babel/plugin-proposal-decorators
 ```bash [Deno]
 $ deno add -D npm:@rolldown/plugin-babel npm:@babel/plugin-proposal-decorators
 ```
-
-:::
 
 ```ts [vite.config.ts]
 import { defineConfig } from 'vite'
@@ -162,8 +158,6 @@ export default defineConfig({
 
 **Using SWC:**
 
-::: code-group
-
 ```bash [npm]
 $ npm install -D @rollup/plugin-swc @swc/core
 ```
@@ -183,8 +177,6 @@ $ bun add -D @rollup/plugin-swc @swc/core
 ```bash [Deno]
 $ deno add -D npm:@rollup/plugin-swc npm:@swc/core
 ```
-
-:::
 
 ```js
 import { defineConfig, withFilter } from 'vite'
@@ -246,7 +238,7 @@ If it matches one of the following conditions, the `default` import is the `modu
 - The closest `package.json` for the importer has a `type` field set to `module`.
 - The `module.exports.__esModule` value of the importee CJS module is not set to true.
 
-::: details The previous behavior
+> **details**: The previous behavior
 
 In development, if it matches one of the following conditions, the `default` import is the `module.exports` value of the importee CJS module. Otherwise, the `default` import is the `module.exports.default` value of the importee CJS module:
 
@@ -260,8 +252,6 @@ In build, the conditions were:
 - _`default` property of `module.exports` does not exist_.
 
 (assuming [`build.commonjsOptions.defaultIsModuleExports`](https://github.com/rollup/plugins/tree/master/packages/commonjs#defaultismoduleexports) is not changed from the default `'auto'`)
-
-:::
 
 See Rolldown's docs about this problem for more details: [Ambiguous `default` import from CJS modules - Bundling CJS | Rolldown](https://rolldown.rs/in-depth/bundling-cjs#ambiguous-default-import-from-cjs-modules).
 

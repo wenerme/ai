@@ -66,7 +66,7 @@ Grafana opens the **Settings** tab where you configure the data source. A sideba
 
 The following sections describe the available configuration options.
 
-![InfluxDB data source configuration page showing the sidebar navigation and settings](/media/docs/influxdb/influxdb-updated-ui-v12.3.png)
+[InfluxDB data source configuration page showing the sidebar navigation and settings]
 
 First, configure the name of your connection.
 

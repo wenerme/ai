@@ -1,6 +1,5 @@
 ---
 title: Relationship Loading Strategies
-sidebar_label: Loading Strategies
 ---
 
 MikroORM supports three loading strategies:

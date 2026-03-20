@@ -1,6 +1,5 @@
 ---
 title: Getting Started Guide
-slug: /guide
 ---
 
 ## Introduction
@@ -15,11 +14,7 @@ To take a peek at the final project we will be building, try cloning the [`mikro
 git clone https://github.com/mikro-orm/guide.git
 ```
 
-:::info
-
-This guide focuses on "code first" approach to developing the application, but MikroORM can also be used with a "schema first" approach. Check out [the "schema first" guide](../schema-first-guide.md) for more details on that.
-
-:::
+> **info**: This guide focuses on "code first" approach to developing the application, but MikroORM can also be used with a "schema first" approach. Check out [the "schema first" guide](../schema-first-guide.md) for more details on that.
 
 ## The Stack
 
@@ -45,9 +40,7 @@ The `core` and driver packages are required, the rest of this list is optional a
 
 > There are more packages, some also live outside the `mikro-orm/mikro-orm` monorepo, such as the `@mikro-orm/nestjs` or `@mikro-orm/sql-highlighter` - unlike the ones from the monorepo, those usually have different versioning line.
 
-:::info
-
-Full list of currently available drivers:
+> **info**: Full list of currently available drivers:
 
 - `@mikro-orm/mysql`
 - `@mikro-orm/mariadb`
@@ -57,8 +50,6 @@ Full list of currently available drivers:
 - `@mikro-orm/mssql`
 - `@mikro-orm/oracledb`
 - `@mikro-orm/mongodb`
-
-:::
 
 ## What are we building?
 

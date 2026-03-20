@@ -7,9 +7,7 @@ description: A plugin that validates server responses against the contract schem
 
 The **Response Validation Plugin** validates server responses against your contract schema, ensuring that data returned from your server matches the expected types defined in your contract.
 
-::: info
-This plugin is best suited for [Contract-First Development](/docs/contract-first/define-contract). [Minified Contract](/docs/contract-first/router-to-contract#minify-export-the-contract-router-for-the-client) is **not supported** because it removes the schema from the contract.
-:::
+> **info**: This plugin is best suited for [Contract-First Development](/docs/contract-first/define-contract). [Minified Contract](/docs/contract-first/router-to-contract#minify-export-the-contract-router-for-the-client) is **not supported** because it removes the schema from the contract.
 
 ## Setup
 
@@ -31,9 +29,7 @@ const link = new RPCLink({
 const client: ContractRouterClient<typeof contract> = createORPCClient(link)
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
 
 ## Limitations
 

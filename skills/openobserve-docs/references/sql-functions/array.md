@@ -5,16 +5,16 @@ description: This page lists all supported array functions in OpenObserve, along
 This page lists the array functions supported in OpenObserve, along with their usage formats, descriptions, and examples.
 
 The array functions operate on fields that contain arrays. In OpenObserve, array fields are typically stored as stringified JSON arrays.
-<br>
+
 For example, in a stream named `default`, there may be a field named `emails` that contains the following value:
-`["jim@email.com", "john@doe.com", "jene@doe.com"]` <br>
+`["jim@email.com", "john@doe.com", "jene@doe.com"]` 
 Although the value appears as a valid array, it is stored as a string. The array functions in this section are designed to work on such stringified JSON arrays and provide support for sorting, counting, joining, slicing, and combining elements.
 
 --- 
 
 ### `arr_descending`
-**Syntax**: `arr_descending(field)`<br>
-**Description**: <br>
+**Syntax**: `arr_descending(field)`
+**Description**: 
 
 - Sorts the elements in the specified array field in descending order. 
 - The array must be a stringified JSON array. 
@@ -26,14 +26,14 @@ SELECT *, arr_descending(emails) as sorted_emails FROM "default" ORDER BY _times
 ```
 In this query, the emails field contains a stringified JSON array such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The query creates a new field `sorted_emails`, which contains the elements sorted in descending order:
 `["john@doe.com", "jene@doe.com", "jim@email.com"]`
-<br>
-![arr_descending](../images/sql-reference/array-descending.png)
+
+[arr_descending]
 
 ---
 
 ### `arrcount`
-**Syntax**: `arrcount(arrfield)`<br>
-**Description**: <br>
+**Syntax**: `arrcount(arrfield)`
+**Description**: 
 Counts the number of elements in a stringified JSON array stored in the specified field. The field must contain a valid JSON array as a string.
 
 **Example**:
@@ -41,13 +41,13 @@ Counts the number of elements in a stringified JSON array stored in the specifie
 SELECT *, arrcount(emails) as email_count FROM "default" ORDER BY _timestamp DESC
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function counts the number of elements in the array and returns the result: `3`.
-<br>
-![arrcount](../images/sql-reference/array-count.png)
+
+[arrcount]
 
 ---
 
 ### `arrindex`
-**Syntax**: `arrindex(field, start, end)`<br>
+**Syntax**: `arrindex(field, start, end)`
 **Description:**
 
 - Returns a subset of elements from a stringified JSON array stored in the specified field. 
@@ -59,13 +59,13 @@ SELECT *, arrindex(emails, 0, 1) as selected_emails FROM "default" ORDER BY _tim
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function extracts elements at index `0` and `1`. The result is:
 `["jim@email.com", "john@doe.com"]`
-<br>
-![arrindex](../images/sql-reference/array-index.png)
+
+[arrindex]
 
 ---
 
 ### `arrjoin`
-**Syntax**: `arrjoin(field, delimiter)`<br>
+**Syntax**: `arrjoin(field, delimiter)`
 **Description:**
 
 - Concatenates all elements in a stringified JSON array using the specified delimiter. 
@@ -76,13 +76,13 @@ SELECT *, arrjoin(emails, ' | ') as joined_numbers FROM "default" ORDER BY _time
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function joins all elements using the delimiter `|`. The result is:
 `"jim@email.com | john@doe.com | jene@doe.com"`
-<br>
-![arr_join](../images/sql-reference/array-join.png)
+
+[arr_join]
 
 ---
 
 ### `arrsort`
-**Syntax**: `arrsort(field)`<br>
+**Syntax**: `arrsort(field)`
 **Description:** 
 
 - Sorts the array field in increasing order. 
@@ -93,14 +93,13 @@ SELECT *, arrsort(emails) as increasing_numbers FROM "default" ORDER BY _timesta
 ```
 In this query, the emails field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function sorts the elements in increasing lexicographical order. The result is:
 `["jene@doe.com", "jim@email.com", "john@doe.com"]`.
-<br>
-![arrsort](../images/sql-reference/array-sort.png)
 
+[arrsort]
 
 ---
 
 ### `arrzip`
-**Syntax**: `arrzip(field1, field2, delimiter)`<br>
+**Syntax**: `arrzip(field1, field2, delimiter)`
 **Description:**
 
 - Combines two stringified JSON arrays element by element using the specified delimiter. 
@@ -113,13 +112,13 @@ SELECT *, arrzip(emails, usernames, '|') as zipped_field FROM "default" ORDER BY
 In this query, the `emails` field contains `["jim@email.com", "john@doe.com"]` and the `usernames` field contains `["jim", "john"]`. The function combines each pair of elements using the delimiter `|`.
 The result is:
 `["jim@email.com | jim", "john@doe.com | john"]`
-<br>
-![arrzip](../images/sql-reference/array-zip.png)
+
+[arrzip]
 
 ---
 
 ### `spath`
-**Syntax**: `spath(field, path)`<br>
+**Syntax**: `spath(field, path)`
 **Description:**
 
 - Extracts a nested value from a JSON object stored as a string by following the specified path. 
@@ -138,15 +137,15 @@ The function navigates the JSON structure and extracts the value associated with
 The result is: `23`.
 
 Sample Input in log stream:
-![Nested Input](../images/sql-reference/nested-input.png)
+[Nested Input]
 
 Running SQL query using spath():
-![Nested value extraction](../images/sql-reference/nested.png)
+[Nested value extraction]
 
 ---
 
 ### `cast_to_arr`
-**Syntax**: `cast_to_arr(field)`<br>
+**Syntax**: `cast_to_arr(field)`
 **Description:**
 
 - Converts a stringified JSON array into a native DataFusion array. 
@@ -170,13 +169,12 @@ In this query:
 - The function `cast_to_arr` is used to convert these fields into native arrays.
 - The result of `array_union` is a merged array with unique values: `[1, 2, 3, 4]`.
 
-<br>
-![cast_to_arr](../images/sql-reference/cast-to-array.png)
+[cast_to_arr]
 
 ---
 
 ### `to_array_string`
-**Syntax**: `to_array_string(array)`<br>
+**Syntax**: `to_array_string(array)`
 **Description:**
 
 - Converts a native DataFusion array back into a stringified JSON array. 
@@ -197,5 +195,4 @@ In this query:
 - `to_array_string` converts the result back into a stringified array.
 - `arrsort` then sorts the array in increasing order.
 
-<br>
-![to_array_string](../images/sql-reference/to-array-string.png)
+[to_array_string]

@@ -1,6 +1,5 @@
 ---
 title: slowTestThreshold | Config
-outline: deep
 ---
 
 # slowTestThreshold <CRoot />

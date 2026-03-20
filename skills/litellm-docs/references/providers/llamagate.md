@@ -10,8 +10,6 @@
 | Base URL | `https://api.llamagate.dev/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage), [`/embeddings`](#embeddings) |
 
-<br />
-
 ## What is LlamaGate?
 
 LlamaGate provides access to open-source LLMs through an OpenAI-compatible API:

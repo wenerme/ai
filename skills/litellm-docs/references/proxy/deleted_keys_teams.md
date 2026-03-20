@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Deleted Keys & Teams Audit Logs
 

@@ -202,16 +202,12 @@ To create a report, follow these steps:
 At this step, select the dashboard or dashboards on which the report is based, as well as the variables and time ranges for those dashboards.
 The options are:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Source dashboard (required) | Select or update the dashboard from which you want to generate the report. If you've created your report directly from a dashboard, this field is already filled in with the name of the current dashboard. |
 | [Time range](#time-range) | Update the report time range. If you've created the report directly from a dashboard, the default time range is that of the dashboard. Otherwise, the default time range is **Last 6 hours**. |
 | [Customize template variables](#customize-template-variables) | Select and customize the variable values for the selected dashboard. This section is only displayed if the dashboard has variables. |
 | + Add dashboard | Add more dashboards to the report. |
-
-<!-- prettier-ignore-end -->
 
 #### Time range
 
@@ -237,8 +233,6 @@ This option is only displayed if the dashboard has variables.
 At this step, set scheduling information.
 Options vary depending on the frequency you select.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Schedule | Choose one of the following:<ul><li>**Send now** sends the report immediately after you save it. To stop sending the report at some point in the future, add an end date.</li><li>**Send later** schedules a report for a later date. When you select this option, the required **Start date**, **Start time**, and **Time zone** options are displayed.</li></ul> |
@@ -249,8 +243,6 @@ Options vary depending on the frequency you select.
 | End date | Set the date when the report should stop being sent. If you leave this field empty, the report is sent out indefinitely. |
 | Send only from Monday to Friday | For reports that have an hourly or daily frequency, you can choose to send them only from Monday to Friday. |
 | Send on the last day of the month | When you schedule a report with a monthly frequency, and set the start date between the 29th and the 31st of the month, the report is only sent during the months that have those dates. If you want the report to be sent every month, select the **Send on the last day of the month** option. This way, the report is sent on the last day of every month regardless of how many days there are in the month. |
-
-<!-- prettier-ignore-end -->
 
 #### Time zone
 
@@ -268,10 +260,6 @@ Each dashboard's time zone setting is visible in the [time range controls](ref:t
 
 At this step, configure the report email:
 
-<!-- vale Grafana.GoogleLyHyphens = NO -->
-
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Email subject | If you leave this field empty, the report name is used as the email subject line. |
@@ -279,10 +267,6 @@ At this step, configure the report email:
 | Reply-to-email address | The address that appears in the **Reply to** field of the email. |
 | Include a dashboard link | Include links to the dashboards in the report email. |
 | Embed dashboard image | The report email is sent with an images of the dashboards embedded in it so recipients see them at a glance. |
-
-<!-- prettier-ignore-end -->
-
-<!-- vale Grafana.GoogleLyHyphens = YES -->
 
 ### 4. Recipients
 
@@ -301,8 +285,6 @@ You can select multiple options, but you must select _at least one_:
 
 If you selected a PDF attachment, configure the following formatting options:
 
-<!-- prettier-ignore-start -->
-
 | Option                          | Description                                                                                     |
 |---------------------------------|-------------------------------------------------------------------------------------------------|
 | Orientation                     | Set the report orientation in **Portrait** or **Landscape**. Refer to the [Layout and orientation table](#layout-and-orientation) to see examples. |
@@ -311,11 +293,8 @@ If you selected a PDF attachment, configure the following formatting options:
 | Combine all dashboard PDFs in one file     | Click the checkbox if you want to generate one PDF file for all the dashboards included in the report. This option is only displayed if there are multiple dashboards in the report. |
 | Show template variables         | Click the checkbox to show dashboard variables. This option is only displayed if the report contains variables. |
 | [Include table data as PDF appendix](#table-data-in-pdf) | Add an appendix of the dashboard table data to the report PDF. This is useful when there's more data in your table visualization than can be shown in the dashboard PDF. _Public preview only._ |
-<!-- prettier-ignore-end -->
 
 ##### Layout and orientation
-
-<!-- prettier-ignore-start -->
 
 | Layout | Orientation | Description                                                                                               | Preview    |
 | ------ | ----------- | --------------------------------------------------------------------------------------------------------- | ------------ |
@@ -323,8 +302,6 @@ If you selected a PDF attachment, configure the following formatting options:
 | Simple | Landscape   | Generates an A4 page in landscape mode with a single panel per page.                                      | {{< figure src="/static/img/docs/enterprise/reports_landscape_preview.png" max-width="500px" alt="Simple layout in landscape" >}}                     |
 | Grid   | Portrait    | Generates an A4 page in portrait mode with panels arranged in the same way as at the original dashboard.  | {{< figure src="/static/img/docs/enterprise/reports_grid_portrait_preview.png" max-width="500px" alt="Grid layout in portrait" >}} |
 | Grid   | Landscape   | Generates an A4 page in landscape mode with panels arranged in the same way as in the original dashboard. | {{< figure src="/static/img/docs/enterprise/reports_grid_landscape_preview.png" max-width="500px" alt="Grid layout in landscape" >}}                  |
-
-<!-- prettier-ignore-end -->
 
 #### Table data in PDF
 

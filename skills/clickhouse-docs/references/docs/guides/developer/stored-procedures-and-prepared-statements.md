@@ -1,15 +1,9 @@
 ---
-sidebar_label: 'Stored procedures & query parameters'
-sidebar_position: 19
 keywords: ['clickhouse', 'stored procedures', 'prepared statements', 'query parameters', 'UDF', 'parameterized views']
 description: 'Guide on stored procedures, prepared statements, and query parameters in ClickHouse'
-slug: /guides/developer/stored-procedures-and-prepared-statements
 title: 'Stored Procedures and Query Parameters'
 doc_type: 'guide'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Stored procedures and query parameters in ClickHouse
 
@@ -37,8 +31,7 @@ User-Defined Functions let you encapsulate reusable logic without control flow. 
 
 Create functions using SQL expressions and lambda syntax:
 
-<details>
-<summary>Sample data for examples</summary>
+Sample data for examples
 
 ```sql
 -- Create the products table
@@ -63,7 +56,6 @@ INSERT INTO products (product_id, product_name, price) VALUES
 (9, 'Headphones', 149.00),
 (10, 'Phone Stand', 15.99);
 ```
-</details>
 
 ```sql
 -- Simple calculation function
@@ -144,8 +136,7 @@ See [Executable UDFs](/sql-reference/functions/udf) for details.
 Parameterized views act like functions that return datasets.
 They're ideal for reusable queries with dynamic filtering:
 
-<details>
-<summary>Sample data for example</summary>
+Sample data for example
 
 ```sql
 -- Create the sales table
@@ -175,7 +166,6 @@ INSERT INTO sales VALUES
 ('2024-02-15', 12350, 'Webcam HD', 'Electronics', 3, 164.85, 164.85);
 ```
 
-</details>
 ```sql
 -- Create a parameterized view
 CREATE VIEW sales_by_date AS
@@ -328,9 +318,6 @@ using language clients.
 
 Here's a side-by-side comparison showing how a MySQL stored procedure translates to application code with ClickHouse:
 
-<Tabs>
-<TabItem value="mysql" label="MySQL Stored Procedure" default>
-
 ```sql
 DELIMITER $$
 
@@ -405,15 +392,10 @@ CALL process_order(12345, 5678, 250.00, @status, @points);
 SELECT @status, @points;
 ```
 
-</TabItem>
-<TabItem value="clickhouse" label="ClickHouse Application Code">
-
-:::note Query parameters
+> **note**: Query parameters
 The example below uses query parameters in ClickHouse.
 Skip ahead to ["Alternatives to prepared statements in ClickHouse"](/guides/developer/stored-procedures-and-prepared-statements#alternatives-to-prepared-statements-in-clickhouse)
 if you're not yet familiar with query parameters in ClickHouse.
-:::
-
 ```python
 # Python example using clickhouse-connect
 import clickhouse_connect
@@ -553,11 +535,6 @@ status, points = process_order(
 print(f"Status: {status}, Loyalty Points: {points}")
 ```
 
-</TabItem>
-</Tabs>
-
-<br/>
-
 #### Key differences {#key-differences}
 
 1. **Control flow** - MySQL stored procedure uses `IF/ELSE`, `WHILE` loops. In ClickHouse, implement this logic in your application code (Python, Java, etc.)
@@ -566,12 +543,10 @@ print(f"Status: {status}, Loyalty Points: {points}")
 4. **Variables and state** - MySQL stored procedures can declare variables (`DECLARE v_discount`). With ClickHouse, manage state in your application code
 5. **Error handling** - MySQL supports `SIGNAL` and exception handlers. In application code, use your language's native error handling (try/catch)
 
-:::tip
-**When to use each approach:**
+> **tip**: **When to use each approach:**
 - **OLTP workloads** (orders, payments, user accounts) → Use MySQL/PostgreSQL with stored procedures
 - **Analytics workloads** (reporting, aggregations, time-series) → Use ClickHouse with application orchestration
 - **Hybrid architecture** → Use both! Stream transactional data from OLTP to ClickHouse for analytics
-:::
 
 #### Using workflow orchestration tools {#using-workflow-orchestration-tools}
 
@@ -598,8 +573,7 @@ There are two ways to define query parameters:
 
 #### Method 1: using `SET` {#method-1-using-set}
 
-<details>
-<summary>Example table and data</summary>
+Example table and data
 
 ```sql
 -- Create the user_events table (ClickHouse syntax)
@@ -632,8 +606,6 @@ INSERT INTO user_events (event_id, user_id, event_name, event_date, event_timest
 (16, 12345, 'page_view', '2024-02-01', '2024-02-01 10:00:00'),
 (17, 12345, 'add_to_cart', '2024-02-01', '2024-02-01 10:05:00');
 ```
-
-</details>
 
 ```sql
 SET param_user_id = 12345;
@@ -670,8 +642,7 @@ Parameters are referenced using: `{parameter_name: DataType}`
 
 ### Data type examples {#data-type-examples}
 
-<details>
-<summary>Tables and sample data for example</summary>
+Tables and sample data for example
 
 ```sql
 -- 1. Create a table for string and number tests
@@ -724,10 +695,6 @@ CREATE TABLE IF NOT EXISTS sales_2024 (
 
 INSERT INTO sales_2024 VALUES (100), (200), (300);
 ```
-</details>
-
-<Tabs>
-<TabItem value="strings" label="Strings & Numbers" default>
 
 ```sql
 SET param_name = 'John Doe';
@@ -740,9 +707,6 @@ WHERE name = {name: String}
   AND salary <= {salary: Float64};
 ```
 
-</TabItem>
-<TabItem value="dates" label="Dates & Times">
-
 ```sql
 SET param_date = '2024-01-15';
 SET param_timestamp = '2024-01-15 14:30:00';
@@ -752,17 +716,11 @@ WHERE event_date = {date: Date}
    OR event_timestamp > {timestamp: DateTime};
 ```
 
-</TabItem>
-<TabItem value="arrays" label="Arrays">
-
 ```sql
 SET param_ids = [1, 2, 3, 4, 5];
 
 SELECT * FROM products WHERE id IN {ids: Array(UInt32)};
 ```
-
-</TabItem>
-<TabItem value="maps" label="Maps">
 
 ```sql
 SET param_filters = {'target_status': 'active'};
@@ -774,19 +732,12 @@ WHERE status = arrayElement(
 );
 ```
 
-</TabItem>
-<TabItem value="identifiers" label="Identifiers">
-
 ```sql
 SET param_table = 'sales_2024';
 
 SELECT count() FROM {table: Identifier};
 ```
 
-</TabItem>
-</Tabs>
-
-<br/>
 For use of query parameters in [language clients](/integrations/language-clients), refer to the documentation for
 the specific language client you're interested in.
 
@@ -882,15 +833,13 @@ PREPARE stmt FROM 'SELECT * FROM users WHERE id = ?';
 EXECUTE stmt USING @user_id;  -- Parameter binding not supported
 ```
 
-:::tip
-**Use ClickHouse's native query parameters instead.** They provide full parameter binding support, type safety, and SQL injection prevention across all ClickHouse interfaces:
+> **tip**: **Use ClickHouse's native query parameters instead.** They provide full parameter binding support, type safety, and SQL injection prevention across all ClickHouse interfaces:
 
 ```sql
 -- ClickHouse native query parameters (recommended)
 SET param_user_id = 12345;
 SELECT * FROM users WHERE id = {user_id: UInt64};
 ```
-:::
 
 For more details, see the [MySQL Interface documentation](/interfaces/mysql) and the [blog post on MySQL support](https://clickhouse.com/blog/mysql-support-in-clickhouse-the-journey).
 

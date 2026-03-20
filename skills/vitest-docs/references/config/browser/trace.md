@@ -1,6 +1,5 @@
 ---
 title: browser.trace | Config
-outline: deep
 ---
 
 # browser.trace
@@ -43,6 +42,5 @@ interface TraceOptions {
 }
 ```
 
-::: danger WARNING
+> **danger**: WARNING
 This option is supported only by the [**playwright**](/config/browser/playwright) provider.
-:::

@@ -87,7 +87,6 @@ The command-line arguments will be introduced in four categories: basic argument
 - 🔥model_author: Used only for self-cognition tasks, and only affects the `swift/self-cognition` dataset. Replaces the `{{AUTHOR}}` placeholder. Provide the model author's Chinese and English names, separated by space, e.g., `--model_author '魔搭' 'ModelScope'`. Default is `None`.
 - custom_dataset_info: Path to a JSON file for custom dataset registration. See [Custom Dataset Guide](../Customization/Custom-dataset.md) and the [built-in dataset_info.json](https://github.com/modelscope/ms-swift/blob/main/swift/dataset/data/dataset_info.json). Default is `[]`.
 
-
 ### Template Arguments
 - 🔥template: The type of conversation template. Default is `None`, which automatically selects the corresponding template for the given model. See [List of Supported Models](./Supported-models-and-datasets.md) for mapping details.
 - 🔥system: Custom system message field. Accepts either a string or a **path to a .txt file**. Default is `None`, using the default system message defined in the registered template.
@@ -122,7 +121,6 @@ The command-line arguments will be introduced in four categories: basic argument
 - enable_thinking: This parameter takes effect during inference, indicating whether to enable thinking mode. Default is None, the default value is determined by the template (model) type (True for thinking/hybrid thinking templates, False for non-thinking templates). If enable_thinking is False, a non-thinking prefix is added, for example the Qwen3-8B hybrid thinking model adds the prefix `'<think>\n\n</think>\n\n'`, while Qwen3-8B-Thinking does not add a prefix. If enable_thinking is True, a thinking prefix is added, for example `'<think>\n'`. Note: The priority of this parameter is lower than the response_prefix parameter.
   - Note: For thinking models (thinking/hybrid thinking) or when enable_thinking is explicitly enabled, we will remove historical thinking content during both inference and training (the thinking content of the last round is retained, i.e., the content after the last user message). If the basic strategy of loss_scale during training is not last_round, for example 'default', then historical thinking content will not be removed.
 - add_non_thinking_prefix: This parameter only takes effect during training, indicating whether to add a non-thinking prefix to data samples whose assistant part **does not start with the thinking marker `'<think>'`** (typically hybrid thinking models contain a non-thinking prefix). This feature allows swift's built-in datasets to train hybrid thinking models. Default value is True. For example: the non-thinking prefix for the Qwen3-8B hybrid thinking model is `'<think>\n\n</think>\n\n'`, while the non-thinking prefix for Qwen3-8B-Thinking/Instruct is `''`. Note: During training, if the basic strategy of loss_scale is last_round, this modification is only applied to the last round; otherwise, for example 'default' or 'all', this modification is applied to every round of data. If set to False, no non-thinking prefix is added to data samples.
-
 
 ### Generation Arguments
 
@@ -303,7 +301,6 @@ Other important parameters:
 - use_rslora: Defaults to `False`, indicating whether to use `RS-LoRA`.
 - 🔥lorap_lr_ratio: Parameter for LoRA+. Default is `None`. Recommended values: `10–16`. Setting this when using LoRA enables the LoRA+ variant.
 
-
 ##### LoRA-GA
 - lora_ga_batch_size: The default value is `2`. The batch size used for estimating gradients during initialization in LoRA-GA.
 - lora_ga_iters: The default value is `2`. The number of iterations for estimating gradients during initialization in LoRA-GA.
@@ -447,7 +444,6 @@ Parameter meanings can be found in the [sglang documentation](https://docs.sglan
 - sglang_speculative_eagle_topk: The number of tokens sampled from the draft model at each step in the EAGLE2 algorithm. Default is None.
 - sglang_speculative_num_draft_tokens: The number of tokens sampled from the draft model in speculative decoding. Default is None.
 
-
 ### LMDeploy Arguments
 
 Parameter meanings can be found in the [lmdeploy documentation](https://lmdeploy.readthedocs.io/en/latest/api/pipeline.html#turbomindengineconfig).
@@ -558,7 +554,6 @@ The reward model parameters will be used in PPO and GRPO.
 - teacher_model_revision: Default is None.
 - teacher_deepspeed: Same as the deepspeed parameter, controls the DeepSpeed configuration for the teacher model. By default, uses the DeepSpeed configuration of the training model.
 
-
 #### PPO Arguments
 
 The meanings of the following parameters can be referenced [here](https://huggingface.co/docs/trl/main/ppo_trainer):
@@ -575,7 +570,6 @@ The meanings of the following parameters can be referenced [here](https://huggin
 - local_rollout_forward_batch_size: Defaults to 64
 - num_sample_generations: Defaults to 10
 - missing_eos_penalty: Defaults to None
-
 
 #### GRPO Arguments
 - beta: KL regularization coefficient; default 0.04. Setting it to 0 disables the reference model.
@@ -651,7 +645,6 @@ The hyperparameters for the reward function can be found in the [Built-in Reward
 - log_rollout_offpolicy_metrics: Whether to log training-inference mismatch diagnostic metrics (KL, PPL, χ², etc.) when `rollout_importance_sampling_mode` is not set. When `rollout_importance_sampling_mode` is set, metrics are always logged. Default is False.
 - off_policy_sequence_mask_delta: Off-Policy Sequence Masking threshold from [DeepSeek-V3.2 paper](https://arxiv.org/abs/2512.02556). When set, computes `mean(old_policy_logps - policy_logps)` for each sequence. If this value exceeds the threshold AND the sequence has negative advantage, the sequence is masked out from loss computation. Default is None (disabled). For details, refer to the [documentation](./GRPO/AdvancedResearch/training_inference_mismatch.md#off-policy-sequence-masking).
 
-
 ##### Reward function parameters
 Refer to the [documentation](./GRPO/DeveloperGuide/reward_function.md) for built-in reward functions.
 
@@ -713,7 +706,6 @@ The rollout parameters inherit from the [deployment parameters](#deployment-argu
 - share: Default is False.
 - lang: Language for the web UI, options are 'zh', 'en'. Default is 'zh'.
 
-
 ### App Arguments
 App parameters inherit from [deployment arguments](#deployment-arguments) and [Web-UI Arguments](#web-ui-arguments).
 
@@ -737,7 +729,6 @@ Evaluation Arguments inherit from the [deployment arguments](#deployment-argumen
 - extra_eval_args: Additional evaluation parameters, should be passed as a JSON string, defaults to empty. Only effective for Native evaluation. For more parameter descriptions, please refer to [here](https://evalscope.readthedocs.io/en/latest/get_started/parameters.html).
 - local_dataset: Some evaluation sets, such as `CMB`, require additional data packages to be downloaded for utilization. Setting this parameter to `true` will automatically download the full data package, create a `data` folder in the current directory, and start the evaluation. The data package will only be downloaded once, and future evaluations will use the cache. This parameter defaults to `false`.
   - Note: By default, evaluation uses the dataset under `~/.cache/opencompass`. After specifying this parameter, it will directly use the data folder in the current directory.
-
 
 ### Export Arguments
 
@@ -794,7 +785,6 @@ In addition to the parameters listed above, some models support additional model
 - Model-specific parameters can be set via `--model_kwargs` or environment variables. For example: `--model_kwargs '{"fps_max_frames": 12}'` or `FPS_MAX_FRAMES=12`.
 - Note: If you specify model-specific parameters during training, please also set the corresponding parameters during inference to achieve optimal performance.
 
-
 ### qwen2_vl, qvq, qwen2_5_vl, mimo_vl, keye_vl, keye_vl_1_5
 These parameters have the same meaning as in `qwen_vl_utils<0.0.12` or the `qwen_omni_utils` library. See [here](https://github.com/QwenLM/Qwen2.5-VL/blob/main/qwen-vl-utils/src/qwen_vl_utils/vision_process.py#L24) for details. MS-Swift adjusts these constant values to control image resolution and video frame rate, preventing out-of-memory (OOM) errors during training.
 
@@ -818,7 +808,6 @@ These parameters have the same meaning as in `qwen_vl_utils<0.0.12` or the `qwen
 ### qwen3_vl, qwen3_5
 The parameter meanings are the same as in the `qwen_vl_utils>=0.0.14` library — see here: https://github.com/QwenLM/Qwen2.5-VL/blob/main/qwen-vl-utils/src/qwen_vl_utils/vision_process.py#L24. By passing the following environment variables you can override the library's global default values: (It is also compatible with environment variables used by `qwen2_5_vl`, such as: `MAX_PIXELS`, `VIDEO_MAX_PIXELS`, and will perform automatic conversion.)
 
-
 - SPATIAL_MERGE_SIZE: default 2.
 - IMAGE_MIN_TOKEN_NUM: default `4`, denotes the minimum number of image tokens per image.
 - 🔥IMAGE_MAX_TOKEN_NUM: default `16384`, denotes the maximum number of image tokens per image. (used to avoid OOM)
@@ -831,13 +820,11 @@ The parameter meanings are the same as in the `qwen_vl_utils>=0.0.14` library �
 - FPS_MIN_FRAMES: default 4, denotes the minimum number of sampled frames for a video segment.
 - 🔥FPS_MAX_FRAMES: default 768, denotes the maximum number of sampled frames for a video segment. (used to avoid OOM)
 
-
 ### qwen2_5_omni, qwen3_omni
 qwen2_5_omni not only includes the model-specific parameters of qwen2_5_vl and qwen2_audio, but also contains the following parameter: (Note: qwen3_omni includes model-specific parameters of **qwen3_vl** and qwen2_audio)
 - USE_AUDIO_IN_VIDEO: Whether to use audio information from video. Default is `False`.
 - 🔥ENABLE_AUDIO_OUTPUT: Defaults to None, which means the value from `config.json` will be used. If training with zero3, please set it to False.
   - Tip: ms-swift only fine-tunes the "thinker" component; it is recommended to set this to `False` to reduce GPU memory usage (only the thinker part of the model structure will be created).
-
 
 ### qwen3_vl_emb, qwen3_vl_reranker
 
@@ -846,7 +833,6 @@ The parameter meanings are the same as `qwen3_vl`, see the description above. Th
 - IMAGE_MAX_TOKEN_NUM: Default is 1800 for qwen3_vl_emb, and 1280 for qwen3_vl_reranker. For details, please refer to: [qwen3_vl_embedding](https://modelscope.cn/models/Qwen/Qwen3-VL-Embedding-2B/file/view/master/scripts%2Fqwen3_vl_embedding.py?status=1#L26), [qwen3_vl_reranker](https://modelscope.cn/models/Qwen/Qwen3-VL-Reranker-2B/file/view/master/scripts%2Fqwen3_vl_reranker.py?status=1#L16).
 - FPS: Default is 1.
 - FPS_MAX_FRAMES: Default is 64.
-
 
 ### internvl, internvl_phi3
 For the meaning of the arguments, please refer to [here](https://modelscope.cn/models/OpenGVLab/Mini-InternVL-Chat-2B-V1-5)
@@ -901,7 +887,6 @@ The meanings of the following parameters can be found in the example code [here]
 
 ### video_llava
 - NUM_FRAMES: Default is 16
-
 
 ## Other Environment Variables
 

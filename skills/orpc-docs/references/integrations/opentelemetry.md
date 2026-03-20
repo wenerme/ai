@@ -7,19 +7,13 @@ description: Seamlessly integrate oRPC with OpenTelemetry for distributed tracin
 
 [OpenTelemetry](https://opentelemetry.io/) provides observability APIs and instrumentation for applications. oRPC integrates seamlessly with OpenTelemetry to instrument your APIs for distributed tracing.
 
-::: warning
-This guide assumes familiarity with [OpenTelemetry](https://opentelemetry.io/). Review the official documentation if needed.
-:::
+> **warning**: This guide assumes familiarity with [OpenTelemetry](https://opentelemetry.io/). Review the official documentation if needed.
 
-![oRPC OpenTelemetry Integration Preview](/images/opentelemetry-integration-preview.png)
+[oRPC OpenTelemetry Integration Preview]
 
-::: info
-See the complete example in our [Bun WebSocket + OpenTelemetry Playground](/docs/playgrounds).
-:::
+> **info**: See the complete example in our [Bun WebSocket + OpenTelemetry Playground](/docs/playgrounds).
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/otel@latest
@@ -41,13 +35,9 @@ bun add @orpc/otel@latest
 deno add npm:@orpc/otel@latest
 ```
 
-:::
-
 ## Setup
 
 To set up OpenTelemetry with oRPC, use the `ORPCInstrumentation` class. This class automatically instruments your oRPC client and server for distributed tracing.
-
-::: code-group
 
 ```ts twoslash [server]
 import { NodeSDK } from '@opentelemetry/sdk-node'
@@ -78,11 +68,7 @@ registerInstrumentations({
 })
 ```
 
-:::
-
-::: info
-While OpenTelemetry can be used on both server and client sides, using it on the server only is sufficient in most cases.
-:::
+> **info**: While OpenTelemetry can be used on both server and client sides, using it on the server only is sufficient in most cases.
 
 ## Middleware Span
 
@@ -105,9 +91,7 @@ Object.defineProperty(someMiddleware, 'name', {
 })
 ```
 
-::: tip
-Define the `name` property on your middleware to improve span naming and make traces easier to read.
-:::
+> **tip**: Define the `name` property on your middleware to improve span naming and make traces easier to read.
 
 ## Handling Uncaught Exceptions
 
@@ -170,6 +154,4 @@ const handler = new RPCHandler(router, {
 
 When using oRPC with HTTP/fetch adapters, you should set up proper HTTP instrumentation for [context propagation](https://opentelemetry.io/docs/concepts/context-propagation/) on both client and server. This ensures trace context propagates between services, maintaining distributed tracing integrity.
 
-::: info
-Common libraries for HTTP instrumentation include [@hono/otel](https://www.npmjs.com/package/@hono/otel), [@opentelemetry/instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http), [@opentelemetry/instrumentation-fetch](https://www.npmjs.com/package/@opentelemetry/instrumentation-fetch), etc.
-:::
+> **info**: Common libraries for HTTP instrumentation include [@hono/otel](https://www.npmjs.com/package/@hono/otel), [@opentelemetry/instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http), [@opentelemetry/instrumentation-fetch](https://www.npmjs.com/package/@opentelemetry/instrumentation-fetch), etc.

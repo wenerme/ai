@@ -1,14 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Weights & Biases Inference
 https://weave-docs.wandb.ai/quickstart-inference
 
-:::tip
-
-Litellm provides support to all models from W&B Inference service. To use a model, set `model=wandb/<any-model-on-wandb-inference-dashboard>` as a prefix for litellm requests. The full list of supported models is provided at https://docs.wandb.ai/guides/inference/models/
-
-:::
+> **tip**: Litellm provides support to all models from W&B Inference service. To use a model, set `model=wandb/<any-model-on-wandb-inference-dashboard>` as a prefix for litellm requests. The full list of supported models is provided at https://docs.wandb.ai/guides/inference/models/
 
 ## API Key
 
@@ -69,11 +64,7 @@ for chunk in response:
     print(chunk)
 ```
 
-:::tip
-
-The above examples may not work if the model has been taken offline. Check the full list of available models at https://docs.wandb.ai/guides/inference/models/.
-
-:::
+> **tip**: The above examples may not work if the model has been taken offline. Check the full list of available models at https://docs.wandb.ai/guides/inference/models/.
 
 ## Usage with LiteLLM Proxy Server
 
@@ -95,9 +86,9 @@ Here's how to call a W&B Inference model with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -118,9 +109,9 @@ Here's how to call a W&B Inference model with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -136,9 +127,9 @@ Here's how to call a W&B Inference model with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
+  
 
 ## Supported Parameters
 
@@ -162,7 +153,6 @@ The W&B Inference provider supports the following parameters:
 | temperature | number | Controls randomness (0-2) |
 | top_p | number | Controls nucleus sampling |
 
-
 ## Error Handling
 
 The integration uses the standard LiteLLM error handling. Further, here's a list of commonly encountered errors with the W&B Inference API - 
@@ -176,7 +166,6 @@ The integration uses the standard LiteLLM error handling. Further, here's a list
 | 429 | W&B Inference isn't available for personal accounts. | Switch to a non-personal account.  | Follow [the instructions below](#error-429-personal-entities-unsupported) for a work around. |
 | 500 | The server had an error while processing your request | Internal server error. | Retry after a brief wait and contact support if it persists. |
 | 503 | The engine is currently overloaded, please try again later | Server is experiencing high traffic. | Retry your request after a short delay. |
-
 
 ### Error 429: Personal entities unsupported
 

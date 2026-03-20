@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Letta Integration
 
@@ -20,9 +19,6 @@ pip install letta litellm
 ```
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ### 1. Start LiteLLM Proxy
 
@@ -82,9 +78,6 @@ client.set_default_embedding_config(
 )
 ```
 
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK">
-
 ### 1. Configure LiteLLM SDK
 
 Set up your API keys and configure LiteLLM:
@@ -138,13 +131,7 @@ llm_config = LLMConfig(
 client.set_default_llm_config(llm_config)
 ```
 
-</TabItem>
-</Tabs>
-
 ### 3. Create and Use a Letta Agent
-
-<Tabs>
-<TabItem value="proxy" label="Using LiteLLM Proxy">
 
 ```python
 import letta
@@ -177,9 +164,6 @@ response = client.user_message(
 
 print(f"Agent response: {response.messages[-1].text}")
 ```
-
-</TabItem>
-<TabItem value="sdk" label="Using LiteLLM SDK">
 
 ```python
 import letta
@@ -218,15 +202,9 @@ response = client.user_message(
 print(f"Agent response: {response.messages[-1].text}")
 ```
 
-</TabItem>
-</Tabs>
-
 ## Advanced Configuration
 
 ### Using Different Models for Different Agents
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python
 from letta import LLMConfig, EmbeddingConfig
@@ -259,9 +237,6 @@ creative_agent = client.create_agent(
     llm_config=gpt4_config  # Use GPT-4 for creative tasks
 )
 ```
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK">
 
 ```python
 import os
@@ -299,13 +274,7 @@ creative_agent = client.create_agent(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ### Function Calling with Tools
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python
 # Define custom tools for your agent
@@ -334,9 +303,6 @@ response = client.user_message(
     message="Search for recent developments in AI and save important findings."
 )
 ```
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK">
 
 ```python
 import litellm
@@ -376,13 +342,7 @@ response = client.user_message(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Authentication
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy Authentication">
 
 If your LiteLLM proxy requires authentication:
 
@@ -431,9 +391,6 @@ llm_config = LLMConfig(
 )
 ```
 
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK Authentication">
-
 With LiteLLM SDK, set up your provider API keys directly:
 
 ```python
@@ -468,13 +425,7 @@ azure_config = LLMConfig(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Load Balancing and Fallbacks
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy Features">
 
 LiteLLM proxy's load balancing and fallback features work seamlessly with Letta:
 
@@ -503,9 +454,6 @@ router_settings:
 ```
 
 The proxy handles all routing, load balancing, and fallbacks transparently for Letta.
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK Router">
 
 With LiteLLM SDK, you can set up routing and fallbacks programmatically:
 
@@ -553,13 +501,7 @@ def custom_completion(messages, model="gpt-4", **kwargs):
 litellm.completion = custom_completion
 ```
 
-</TabItem>
-</Tabs>
-
 ## Monitoring and Observability
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy Monitoring">
 
 Enable logging to track your Letta agents' LLM usage through the proxy:
 
@@ -581,9 +523,6 @@ View metrics in the proxy dashboard:
 # Start proxy with UI
 litellm --config config.yaml --port 4000 --detailed_debug
 ```
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK Monitoring">
 
 Set up observability directly in your SDK integration:
 
@@ -621,13 +560,7 @@ def logged_completion(messages, model="gpt-4", **kwargs):
 litellm.completion = logged_completion
 ```
 
-</TabItem>
-</Tabs>
-
 ## Example: Multi-Agent System
-
-<Tabs>
-<TabItem value="proxy" label="Using LiteLLM Proxy">
 
 ```python
 import letta
@@ -682,9 +615,6 @@ def research_and_write_workflow(topic: str):
 article = research_and_write_workflow("The future of AI in healthcare")
 print(article)
 ```
-
-</TabItem>
-<TabItem value="sdk" label="Using LiteLLM SDK">
 
 ```python
 import letta
@@ -762,13 +692,7 @@ article = enhanced_workflow("The future of AI in healthcare")
 print(article)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Best Practices
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy Best Practices">
 
 1. **Model Selection**: Use appropriate models for different tasks:
    - Claude for analysis and reasoning
@@ -788,9 +712,6 @@ print(article)
    - Monitor token usage through proxy dashboard
 
 5. **Monitoring**: Enable observability to track agent performance and token usage
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK Best Practices">
 
 1. **Model Selection**: Choose models based on task requirements:
    - Use `openai/gpt-4` for complex reasoning
@@ -831,13 +752,7 @@ print(article)
    - Rotate keys regularly
    - Implement rate limiting
 
-</TabItem>
-</Tabs>
-
 ## Troubleshooting
-
-<Tabs>
-<TabItem value="proxy" label="LiteLLM Proxy Issues">
 
 ### Connection Issues
 ```bash
@@ -866,9 +781,6 @@ print(client.get_default_llm_config())
 - **Model not found**: Verify model names match your config.yaml
 - **Authentication errors**: Check master key configuration
 - **Rate limiting**: Monitor proxy logs for rate limit hits
-
-</TabItem>
-<TabItem value="sdk" label="LiteLLM SDK Issues">
 
 ### API Key Issues
 ```python
@@ -914,9 +826,6 @@ for model in models:
 - **Model format**: Use `provider/model` format (e.g., `openai/gpt-4`)
 - **API key format**: Different providers have different key formats
 - **Rate limits**: Implement exponential backoff for retries
-
-</TabItem>
-</Tabs>
 
 ## Resources
 

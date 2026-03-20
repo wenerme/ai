@@ -1,13 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # GradientAI
 https://digitalocean.com/products/gradientai
 
-
 LiteLLM provides native support for GradientAI models.
 To use a GradientAI model, specify it as `gradient_ai/<model-name>` in your LiteLLM requests.
-
 
 ## API Key & Endpoint
 

@@ -151,7 +151,6 @@ This provides GPU acceleration using an NVIDIA GPU. Make sure to have the [CUDA 
 #### Download directly from NVIDIA
 You may find the official downloads here: [NVIDIA developer site](https://developer.nvidia.com/cuda-downloads).
 
-
 #### Compile and run inside a Fedora Toolbox Container
 We also have a [guide](./backend/CUDA-FEDORA.md) for setting up CUDA toolkit in a Fedora [toolbox container](https://containertoolbx.org/).
 
@@ -162,7 +161,6 @@ We also have a [guide](./backend/CUDA-FEDORA.md) for setting up CUDA toolkit in 
   - (for example, you may have [Fedora 42 Beta](https://fedoramagazine.org/announcing-fedora-linux-42-beta/) as your host operating system)
 - ***Convenient*** For those running [Fedora Workstation](https://fedoraproject.org/workstation/) or [Fedora KDE Plasma Desktop](https://fedoraproject.org/spins/kde), and want to keep their host system clean.
 - *Optionally* toolbox packages are available: [Arch Linux](https://archlinux.org/), [Red Hat Enterprise Linux >= 8.5](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux), or [Ubuntu](https://ubuntu.com/download)
-
 
 ### Compilation
 
@@ -227,7 +225,6 @@ If you try to use an old CUDA version (e.g. v11.7) with a new glibc version you 
 ```
 /usr/include/bits/mathcalls.h(83): error: exception specification is
   incompatible with that of previous function "cospi"
-
 
   /opt/cuda-11.7/bin/../targets/x86_64-linux/include/crt/math_functions.h(5545):
   here
@@ -386,7 +383,6 @@ You can download it from your Linux distro's package manager or from here: [ROCm
   ```
   If necessary, adapt `GPU_TARGETS` to the GPU arch you want to compile for. The above example uses `gfx1100` that corresponds to Radeon RX 7900XTX/XT/GRE. You can find a list of targets [here](https://llvm.org/docs/AMDGPUUsage.html#processors)
   Find your gpu version string by matching the most significant version information from `rocminfo | grep gfx | head -1 | awk '{print $2}'` with the list of processors, e.g. `gfx1035` maps to `gfx1030`.
-
 
 The environment variable [`HIP_VISIBLE_DEVICES`](https://rocm.docs.amd.com/en/latest/understand/gpu_isolation.html#hip-visible-devices) can be used to specify which GPU(s) will be used.
 If your GPU is not officially supported you can use the environment variable [`HSA_OVERRIDE_GFX_VERSION`] set to a similar GPU, for example 10.3.0 on RDNA2 (e.g. gfx1030, gfx1031, or gfx1035) or 11.0.0 on RDNA3.
@@ -752,7 +748,6 @@ To read documentation for how to build on IBM Z & LinuxONE, [click here](./build
 [OpenVINO](https://docs.openvino.ai/) is an open-source toolkit for optimizing and deploying high-performance AI inference, specifically designed for Intel hardware (CPUs, GPUs, and NPUs).
 
 For build instructions and usage examples, refer to [OPENVINO.md](backend/OPENVINO.md).
-
 
 ---
 ## Notes about GPU-accelerated backends

@@ -6,7 +6,7 @@ This guide helps you migrate from the deprecated monkey-patching approach to the
 
 The old approach of monkey-patching `LGraphCanvas.prototype.getCanvasMenuOptions` and `nodeType.prototype.getExtraMenuOptions` is deprecated:
 
-<Tip>If you see deprecation warnings in your browser console, your extension is using the old API and should be migrated.</Tip>
+If you see deprecation warnings in your browser console, your extension is using the old API and should be migrated.
 
 ## Migrating Canvas Menus
 
@@ -207,7 +207,7 @@ getNodeMenuItems(node) {
 
 This declarative approach is cleaner and matches the patterns used throughout the ComfyUI codebase.
 
-<Tip>While a callback-based approach with `has_submenu: true` and `new LiteGraph.ContextMenu()` is also supported, the declarative `submenu` property is preferred for better maintainability.</Tip>
+While a callback-based approach with `has_submenu: true` and `new LiteGraph.ContextMenu()` is also supported, the declarative `submenu` property is preferred for better maintainability.
 
 ### Accessing State
 

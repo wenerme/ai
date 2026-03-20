@@ -41,9 +41,7 @@ const link = new RPCLink<ORPCClientContext>({
 const client: RouterClient<typeof router, ORPCClientContext> = createORPCClient(link)
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or custom implementations.
 
 ## Usage
 
@@ -70,8 +68,7 @@ const planets = await client.planet.list({ limit: 10 }, {
 })
 ```
 
-::: info
-By default, retries are disabled unless a `retry` count is explicitly set.
+> **info**: By default, retries are disabled unless a `retry` count is explicitly set.
 
 - **retry:** Maximum retry attempts before throwing an error (default: `0`).
 - **retryDelay:** Delay between retries (default: `(o) => o.lastEventRetry ?? 2000`).

@@ -11,13 +11,13 @@ This guide demonstrates an optimized approach for setting up Server-Side Renderi
 
 In a typical SSR setup within fullstack frameworks, data fetching often involves the server making an HTTP request back to its own API endpoints.
 
-![Standard SSR: Server calls its own API via HTTP.](/images/standard-ssr-diagram.svg)
+[Standard SSR: Server calls its own API via HTTP.]
 
 This pattern works, but it introduces unnecessary overhead: the server needs to make an HTTP request to itself to fetch the data, which can add extra latency and consume resources.
 
 Ideally, during SSR, the server should fetch data by directly invoking the relevant API logic within the same process.
 
-![Optimized SSR: Server calls API logic directly.](/images/optimized-ssr-diagram.svg)
+[Optimized SSR: Server calls API logic directly.]
 
 Fortunately, oRPC provides both a [server-side client](/docs/client/server-side) and [client-side client](/docs/client/client-side), so you can leverage the former during SSR and automatically fall back to the latter in the browser.
 
@@ -36,8 +36,6 @@ But how? A naive `typeof window === 'undefined'` check works, but exposes your r
 ## Implementation
 
 We'll use `globalThis` to share the server client without bundling it into client code.
-
-::: code-group
 
 ```ts [lib/orpc.ts]
 import type { RouterClient } from '@orpc/server'
@@ -83,12 +81,8 @@ globalThis.$client = createRouterClient(router, {
 })
 ```
 
-:::
-
-::: details `OpenAPILink` support?
+> **details**: `OpenAPILink` support?
 When you use [OpenAPILink](/docs/openapi/client/openapi-link), its `JsonifiedClient` turns native values (like Date or URL) into plain JSON, so your client types no longer match the output of `createRouterClient`. To fix this, oRPC offers `createJsonifiedRouterClient`, which builds a router client that matches the output of OpenAPILink.
-
-::: code-group
 
 ```ts [lib/orpc.ts]
 import type { RouterClient } from '@orpc/server'
@@ -135,11 +129,7 @@ globalThis.$client = createJsonifiedRouterClient(router, {
 })
 ```
 
-:::
-
 Finally, ensure `lib/orpc.server.ts` is imported before any other code on the server. In Next.js, add it to both `instrumentation.ts` and `app/layout.tsx`:
-
-::: code-group
 
 ```ts [instrumentation.ts]
 export async function register() {
@@ -156,18 +146,13 @@ import '../lib/orpc.server' // for pre-rendering
 // Rest of the code
 ```
 
-:::
-
 Now, importing `client` from `lib/orpc.ts` gives you a server-side client during SSR and a client-side client on the client without leaking your router logic.
 
 ## Alternative Approach
 
 The above approach is the most straightforward and performant, but you can also use a `fetch` adapter approach that enables plugins like `DedupeRequestsPlugin` and works with any `handler/link` pair that supports the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-::: info
-oRPC doesn't restrict you to any specific approach for optimizing SSR - you can choose whatever approach works best for your framework or requirements.
-:::
-
+> **info**: oRPC doesn't restrict you to any specific approach for optimizing SSR - you can choose whatever approach works best for your framework or requirements.
 ```ts [lib/orpc.server.ts]
 import 'server-only'
 
@@ -219,9 +204,7 @@ export default async function PlanetListPage() {
 }
 ```
 
-::: info
-This example uses Next.js, but you can apply the same pattern in SvelteKit, Nuxt, or any framework.
-:::
+> **info**: This example uses Next.js, but you can apply the same pattern in SvelteKit, Nuxt, or any framework.
 
 ## TanStack Query
 
@@ -245,6 +228,4 @@ export default function PlanetListPage() {
 }
 ```
 
-:::warning
-Above example uses suspense hooks, you might need to wrap your app within `<Suspense />` (or corresponding APIs) to make it work. In Next.js, maybe you need create `loading.tsx`.
-:::
+> **warning**: Above example uses suspense hooks, you might need to wrap your app within `<Suspense />` (or corresponding APIs) to make it work. In Next.js, maybe you need create `loading.tsx`.

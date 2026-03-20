@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Batching Completion()
 LiteLLM allows you to:
@@ -7,18 +6,14 @@ LiteLLM allows you to:
 * Send 1 completion call to many models: Return Fastest Response
 * Send 1 completion call to many models: Return All Responses
 
-:::info
-
-Trying to do batch completion on LiteLLM Proxy ? Go here: https://docs.litellm.ai/docs/proxy/user_keys#beta-batch-completions---pass-model-as-list
-
-:::
+> **info**: Trying to do batch completion on LiteLLM Proxy ? Go here: https://docs.litellm.ai/docs/proxy/user_keys#beta-batch-completions---pass-model-as-list
 
 ## Send multiple completion calls to 1 model
 
 In the batch_completion method, you provide a list of `messages` where each sub-list of messages is passed to `litellm.completion()`, allowing you to process multiple prompts efficiently in a single API call.
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_batch_completion.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ### Example Code
@@ -28,7 +23,6 @@ import os
 from litellm import batch_completion
 
 os.environ['ANTHROPIC_API_KEY'] = ""
-
 
 responses = batch_completion(
     model="claude-2",
@@ -54,9 +48,6 @@ This makes parallel calls to the specified `models` and returns the first respon
 
 Use this to reduce latency
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ### Example Code
 ```python
 import litellm
@@ -74,17 +65,9 @@ response = batch_completion_models(
 print(result)
 ```
 
-
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 [how to setup proxy config](#example-setup)
 
 Just pass a comma-separated string of model names and the flag `fastest_response=True`.
-
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```bash
 
@@ -105,9 +88,6 @@ curl -X POST 'http://localhost:4000/chat/completions' \
 
 '
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI SDK">
 
 ```python
 import openai
@@ -131,9 +111,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ---
 
 ### Example Setup: 
@@ -155,9 +132,6 @@ litellm --config /path/to/config.yaml
 
 # RUNNING on http://0.0.0.0:4000
 ```
-
-</TabItem>
-</Tabs>
 
 ### Output
 Returns the first response in OpenAI format. Cancels other LLM API calls. 
@@ -185,7 +159,6 @@ Returns the first response in OpenAI format. Cancels other LLM API calls.
   }
 }
 ```
-
 
 ## Send 1 completion call to many models: Return All Responses
 This makes parallel calls to the specified models and returns all responses

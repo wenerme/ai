@@ -16,7 +16,7 @@ Bun's CSS bundler lets you use modern/future CSS features without having to worr
 
 Bun's CSS parser and bundler is a direct Rust → Zig port of LightningCSS, with a bundling approach inspired by esbuild. The transpiler converts modern CSS syntax into backwards-compatible equivalents that work across browsers.
 
-<Note>A huge thanks goes to the amazing work from the authors of LightningCSS and esbuild.</Note>
+A huge thanks goes to the amazing work from the authors of LightningCSS and esbuild.
 
 ## Browser Compatibility
 
@@ -542,11 +542,9 @@ For browsers that don't support `:is()`, Bun's CSS bundler provides fallbacks us
 }
 ```
 
-<Warning>
   The vendor-prefixed versions have some limitations compared to the standardized `:is()` selector, particularly with
   complex selectors. Bun handles these limitations intelligently, only using prefixed versions when they'll work
   correctly.
-</Warning>
 
 ### :not() selector
 
@@ -981,10 +979,8 @@ Would be the same as writing:
 
 There are a couple rules to keep in mind when using `composes`:
 
-<Info>
   **Composition Rules:** - A `composes` property must come before any regular CSS properties or declarations - You can
   only use `composes` on a simple selector with a single class name
-</Info>
 
 ```css title="styles.module.css" icon="file-code"
 #button {
@@ -1016,9 +1012,6 @@ You can also compose from a separate CSS module file:
 }
 ```
 
-<Warning>
 When composing classes from separate files, be sure that they do not contain the same properties.
 
 The CSS module spec says that composing classes from separate files with conflicting properties is undefined behavior, meaning that the output may differ and be unreliable.
-
-</Warning>

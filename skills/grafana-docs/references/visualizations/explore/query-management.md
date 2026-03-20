@@ -99,5 +99,3 @@ Toggle **Change the default active tab from "Query history" to "Starred"** to ma
 {{< admonition type="note" >}}
 Query history settings are global, and applied to both panels in split mode.
 {{< /admonition >}}
-
-<!-- All queries that have been starred in the Query history tab are displayed in the Starred tab. This allows you to access your favorite queries faster and to reuse these queries without typing them from scratch. -->

@@ -262,13 +262,11 @@ pip install "math_verify"
 pip install vllm==0.8.5.post1
 ```
 
-
 ### Data Preparation
 
 The dataset format used for GRPO training with ms-swift is similar to that of SFT, but it does not require the final assistant's response part. If accuracy is used as the reward, an additional `solution` column is required to calculate accuracy.
 
 Example dataset format:
-
 
 ```jsonl
 {"messages": [{"role": "user", "content": "Tell me tomorrow's weather"}]}
@@ -380,15 +378,13 @@ megatron sft \
     --attention_backend flash
 ```
 
-
 Training loss chart (partial):
 
-<img width="910" alt="Image" src="https://github.com/user-attachments/assets/9fe393aa-8299-4659-aa2f-be5d44f0730b" />
+[Image]
 
 Effect screenshot:
 
-<img width="1066" alt="Image" src="https://github.com/user-attachments/assets/1a924130-1954-43e9-9093-b019aeef5949" />
-
+[Image]
 
 The custom dataset format is the same as that used in `swift sft`. For details, see the previous sections. Simply specify `--dataset <dataset_path>`.
 

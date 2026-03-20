@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Lambda AI
 
@@ -12,9 +11,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc | [Lambda AI API Documentation ↗](https://docs.lambda.ai/api) |
 | Base URL | `https://api.lambda.ai/v1` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
-
-<br />
-<br />
 
 https://docs.lambda.ai/api
 

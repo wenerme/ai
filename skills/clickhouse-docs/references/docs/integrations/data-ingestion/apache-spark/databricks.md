@@ -1,17 +1,9 @@
 ---
-sidebar_label: 'Databricks'
-sidebar_position: 3
-slug: /integrations/data-ingestion/apache-spark/databricks
 description: 'Integrate ClickHouse with Databricks'
 keywords: ['clickhouse', 'databricks', 'spark', 'unity catalog', 'data']
 title: 'Integrating ClickHouse with Databricks'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Integrating ClickHouse with Databricks
 
@@ -94,9 +86,6 @@ When Unity Catalog is enabled (default), you **must** use the TableProvider API 
 
 ### Reading data {#reading-data-table-provider}
 
-<Tabs groupId="databricks_usage">
-<TabItem value="Python" label="Python" default>
-
 ```python
 # Read from ClickHouse using TableProvider API
 df = spark.read \
@@ -115,9 +104,6 @@ df = spark.read \
 df.display()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 val df = spark.read
   .format("clickhouse")
@@ -134,13 +120,7 @@ val df = spark.read
 df.show()
 ```
 
-</TabItem>
-</Tabs>
-
 ### Writing data {#writing-data-unity}
-
-<Tabs groupId="databricks_usage">
-<TabItem value="Python" label="Python" default>
 
 ```python
 # Write to ClickHouse - table will be created automatically if it doesn't exist
@@ -160,9 +140,6 @@ df.write \
     .save()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 df.write
   .format("clickhouse")
@@ -180,12 +157,7 @@ df.write
   .save()
 ```
 
-</TabItem>
-</Tabs>
-
-:::note
-This example assumes preconfigured secret scopes in Databricks. For setup instructions, see the Databricks [Secret management documentation](https://docs.databricks.com/aws/en/security/secrets/).
-:::
+> **note**: This example assumes preconfigured secret scopes in Databricks. For setup instructions, see the Databricks [Secret management documentation](https://docs.databricks.com/aws/en/security/secrets/).
 
 ## Databricks-specific considerations {#considerations}
 
@@ -211,8 +183,6 @@ password = dbutils.secrets.get(scope="clickhouse", key="password")
 
 For setup instructions, see the Databricks [Secret management documentation](https://docs.databricks.com/aws/en/security/secrets/).
 
-<!-- TODO: Add screenshot of Databricks secret scopes configuration -->
-
 ### ClickHouse Cloud connection {#clickhouse-cloud}
 
 When connecting to ClickHouse Cloud from Databricks:
@@ -223,9 +193,6 @@ When connecting to ClickHouse Cloud from Databricks:
 ## Examples {#examples}
 
 ### Complete workflow example {#workflow-example}
-
-<Tabs groupId="databricks_usage">
-<TabItem value="Python" label="Python" default>
 
 ```python
 from pyspark.sql import SparkSession
@@ -268,9 +235,6 @@ transformed_df.write \
     .save()
 ```
 
-</TabItem>
-<TabItem value="Scala" label="Scala">
-
 ```scala
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.col
@@ -311,9 +275,6 @@ transformedDF.write
   .mode("append")
   .save()
 ```
-
-</TabItem>
-</Tabs>
 
 ## Related documentation {#related}
 

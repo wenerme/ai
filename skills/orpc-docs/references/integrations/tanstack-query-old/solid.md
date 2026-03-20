@@ -9,8 +9,6 @@ This guide shows how to integrate oRPC with Tanstack Query for Solid. For an int
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/solid-query@latest @tanstack/solid-query@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/solid-query@latest @tanstack/solid-query@latest
 ```sh [deno]
 deno add npm:@orpc/solid-query@latest npm:@tanstack/solid-query@latest
 ```
-
-:::
 
 ## Setup
 
@@ -68,10 +64,7 @@ const postORPC = createORPCSolidQueryUtils(postClient, {
 
 ## Usage
 
-:::warning
-Unlike the React version, when creating a Solid Query Signal, the first argument must be a callback.
-:::
-
+> **warning**: Unlike the React version, when creating a Solid Query Signal, the first argument must be a callback.
 ```ts twoslash
 import type { router } from './shared/planet'
 import type { RouterClient } from '@orpc/server'

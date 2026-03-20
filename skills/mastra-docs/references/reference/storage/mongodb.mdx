@@ -70,7 +70,6 @@ const storage = new MongoDBStore({
 
 :::note[Deprecation Notice]
 The `url` parameter is deprecated but still supported for backward compatibility. Please use `uri` instead in all new code.
-:::
 
 ## Constructor examples
 
@@ -152,9 +151,7 @@ const memoryStore = await storage.getStore('memory')
 const thread = await memoryStore?.getThreadById({ threadId: '...' })
 ```
 
-:::warning
-If `init()` isn't called, collections won't be created and storage operations will fail silently or throw errors.
-:::
+> **warning**: If `init()` isn't called, collections won't be created and storage operations will fail silently or throw errors.
 
 ## Vector search capabilities
 

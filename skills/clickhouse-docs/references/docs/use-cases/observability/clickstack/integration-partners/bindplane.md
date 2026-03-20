@@ -1,19 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/integration-partners/bindplane
 title: 'Sending OpenTelemetry to ClickStack with Bindplane'
-sidebar_label: 'Bindplane'
-pagination_prev: null
-pagination_next: null
 description: 'Route telemetry to ClickStack using Bindplane for centralized collector management'
 doc_type: 'guide'
 keywords: ['Bindplane', 'OTEL', 'ClickStack', 'OpenTelemetry', 'collector management']
 ---
-
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import bindplane_hyperdx from '@site/static/images/clickstack/bindplane/bindplane-hyperdx.png';
-import bindplane_configuration from '@site/static/images/clickstack/bindplane/bindplane-configuration.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Sending OpenTelemetry to ClickStack with Bindplane {#bindplane-clickstack}
 
@@ -30,7 +20,6 @@ This guide shows you how to route telemetry to ClickStack using Bindplane's nati
 This integration pairs ClickStack's high-performance ingestion with Bindplane's centralized collector management, making it easier to scale observability without operational overhead.
 
 Time required: 10-15 minutes
-:::
 
 ## What is Bindplane? {#what-is-bindplane}
 
@@ -48,10 +37,9 @@ Bindplane solves this by providing:
 - Fan-out routing, so the same telemetry streams can be sent to ClickStack and other destinations simultaneously
 - Full pipeline visibility, including collector health, throughput, and end-to-end performance
 
-:::tip Key takeaways
+> **tip**: Key takeaways
 - **ClickStack handles extreme ingestion volumes, storage, and fast analytical queries**
 - **Bindplane manages the ingestion pipeline and operational complexity of running collector fleets**
-:::
 
 ## Prerequisites {#prerequisites}
 
@@ -80,9 +68,8 @@ Bindplane solves this by providing:
 6. Give the destination a name (e.g., "ClickStack Production")
 7. Click **Save** to create the destination
 
-:::tip Key takeaways
+> **tip**: Key takeaways
 The ClickStack destination supports both HTTP and gRPC protocols. For high-volume scenarios, gRPC with compression (gzip, zstd, or snappy) is recommended for better performance.
-:::
 
 #### Create a configuration {#create-configuration}
 
@@ -100,9 +87,8 @@ Once your ClickStack destination is configured, create a configuration to proces
    - Select the ClickStack destination you created in the previous step
    - Choose which telemetry types to send (Logs, Metrics, Traces, or all)
 
-:::tip Key takeaways
+> **tip**: Key takeaways
 You can add processors for filtering, sampling, masking, enrichment, batching, and more to shape telemetry before it reaches ClickStack. This ensures consistent, structured data arrives in ClickHouse.
-:::
 
 #### Add processors (optional) {#add-processors}
 
@@ -132,9 +118,8 @@ These processors are applied consistently across your collector fleet before dat
    - Bindplane will validate the configuration before rolling it out
    - Monitor the rollout status in the Bindplane UI
 
-:::tip Key takeaways
+> **tip**: Key takeaways
 Bindplane provides safe, one-click rollouts with validation. You can monitor collector health, throughput, and any errors in real-time through the Bindplane interface.
-:::
 
 <Image img={bindplane_configuration} alt="Telemetry Signals in ClickStack via Bindplane" size="lg"/>
 
@@ -184,4 +169,3 @@ Now that you have telemetry flowing from Bindplane to ClickStack, you can:
 ## Read more {#read-more}
 
 - [ClickStack Integration in the Bindplane Documentation](https://docs.bindplane.com/integrations/destinations/clickstack)
-<!-- - ["Bindplane + ClickStack Integration: Send OpenTelemetry (OTel) to ClickStack" in the Bindplane Blog](tbd) -- add link once published -->

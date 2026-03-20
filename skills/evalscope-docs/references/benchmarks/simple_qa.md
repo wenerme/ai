@@ -1,6 +1,5 @@
 # SimpleQA
 
-
 ## Overview
 
 SimpleQA is a benchmark by OpenAI designed to evaluate language models' ability to answer short, fact-seeking questions accurately. It focuses on measuring factual accuracy with clear grading criteria for correct, incorrect, and not-attempted answers.
@@ -28,7 +27,6 @@ SimpleQA is a benchmark by OpenAI designed to evaluate language models' ability 
 - Allows hedging if correct information is included
 - Tests models' ability to admit uncertainty appropriately
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ SimpleQA is a benchmark by OpenAI designed to evaluate language models' ability 
 | **Metrics** | `is_correct`, `is_incorrect`, `is_not_attempted` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -116,5 +113,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

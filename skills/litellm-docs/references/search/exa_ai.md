@@ -74,4 +74,3 @@ response = search(
     use_autoprompt=True              # Enable Exa's autoprompt
 )
 ```
-

@@ -11,7 +11,6 @@
  - [Environment variable setup](#environment-variable-setup)
  - [TODO](#todo)
 
-
 ## Background
 
 **Ascend NPU** is a range of AI processors using Neural Processing Unit. It will efficiently handle matrix-matrix multiplication, dot-product and scalars.
@@ -37,7 +36,6 @@ The llama.cpp CANN backend is designed to support Ascend NPU. It utilize the abi
 |:-------:|:-------:|:----------------------------------------------:|
 | Linux   | Support | Ubuntu 22.04, OpenEuler22.03                   |
 
-
 ## Hardware
 
 ### Ascend NPU
@@ -53,7 +51,6 @@ The llama.cpp CANN backend is designed to support Ascend NPU. It utilize the abi
 
 - If you have trouble with Ascend NPU device, please create a issue with **[CANN]** prefix/tag.
 - If you run successfully with your Ascend NPU device, please help update the upper table.
-
 
 ## Model Supports
 
@@ -118,7 +115,6 @@ The llama.cpp CANN backend is designed to support Ascend NPU. It utilize the abi
 | Trillion-7B-preview         |   √   |   √  |   √  |
 | Ling models                 |   √   |   √  |   √  |
 
-
 **Multimodal**
 | Model Name                  | FP16  | Q4_0 | Q8_0 |
 |:----------------------------|:-----:|:----:|:----:|
@@ -133,8 +129,6 @@ The llama.cpp CANN backend is designed to support Ascend NPU. It utilize the abi
 |  Bunny                      |   √   |   -  |   -  |
 |  GLM-EDGE                   |   √   |   √  |   √  |
 |  Qwen2-VL                   |   √   |   √  |   √  |
-
-
 
 ## DataType Supports
 
@@ -214,7 +208,6 @@ docker run --name llamacpp --device /dev/davinci0  --device /dev/davinci_manager
     ```sh
     Firmware package installed successfully!
     ```
-
 
 3. **Install CANN toolkit and kernels**
 

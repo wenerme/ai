@@ -1,25 +1,9 @@
 ---
-sidebar_label: 'Backup or restore using UI'
-slug: /cloud/manage/backups/backup-restore-via-ui
 title: 'Take a backup or restore a backup from the UI'
 description: 'Page describing how to take a backup or restore a backup from the UI with your own bucket'
-sidebar_position: 2
 doc_type: 'guide'
 keywords: ['backups', 'disaster recovery', 'data protection', 'restore', 'cloud features']
 ---
-
-import Image from '@theme/IdealImage'
-import arn from '@site/static/images/cloud/manage/backups/arn.png'
-import change_external_backup from '@site/static/images/cloud/manage/backups/change_external_backup.png'
-import configure_arn_s3_details from '@site/static/images/cloud/manage/backups/configure_arn_s3_details.png'
-import view_backups from '@site/static/images/cloud/manage/backups/view_backups.png'
-import backup_command from '@site/static/images/cloud/manage/backups/backup_command.png'
-import gcp_configure from '@site/static/images/cloud/manage/backups/gcp_configure.png'
-import gcp_stored_backups from '@site/static/images/cloud/manage/backups/gcp_stored_backups.png'
-import gcp_restore_command from '@site/static/images/cloud/manage/backups/gcp_restore_command.png'
-import azure_connection_details from '@site/static/images/cloud/manage/backups/azure_connection_details.png'
-import view_backups_azure from '@site/static/images/cloud/manage/backups/view_backups_azure.png'
-import restore_backups_azure from '@site/static/images/cloud/manage/backups/restore_backups_azure.png'
 
 # Backup / restore via user-interface {#ui-experience}
 
@@ -29,9 +13,7 @@ import restore_backups_azure from '@site/static/images/cloud/manage/backups/rest
 
 #### 1. Steps to follow in AWS {#aws-steps}
 
-:::note
-These steps are similar to the secure s3 setup as described in ["Accessing S3 data securely"](/cloud/data-sources/secure-s3), however, there are additional actions required in the role permissions
-:::
+> **note**: These steps are similar to the secure s3 setup as described in ["Accessing S3 data securely"](/cloud/data-sources/secure-s3), however, there are additional actions required in the role permissions
 
 Follow the steps below on your AWS account:
 
@@ -174,17 +156,15 @@ UI to get the SQL command to restore the backup. The command will look like this
 
 <Image img={backup_command} alt="Get SQL command used to restore backup" size="md" />
 
-:::warning Moving backups to another location
+> **warning**: Moving backups to another location
 If you move the backups to another location, you will need to customize the restore command to reference the new location.
-:::
 
-:::tip ASYNC command
+> **tip**: ASYNC command
 For the Restore command you can also optionally add an `ASYNC` command at the end for large restores.
 This allows the restores to happen asynchronously, so that if connection is lost, the restore keeps running.
 It is important to note that the ASYNC command immediately returns a status of success.
 This doesn't mean the restore was successful.
 You will need to monitor the `system.backups` table to see if the restore has finished and if it succeeded or failed.
-:::
 
 ##### Run the restore command {#run-the-restore-command}
 
@@ -288,17 +268,15 @@ to the command:
 
 <Image img={gcp_restore_command} alt="Get SQL command used to restore backup" size="md" />
 
-:::warning Moving backups to another location
+> **warning**: Moving backups to another location
 If you move the backups to another location, you will need to customize the restore command to reference the new location.
-:::
 
-:::tip ASYNC command
+> **tip**: ASYNC command
 For the Restore command you can also optionally add an `ASYNC` command at the end for large restores.
 This allows the restores to happen asynchronously, so that if connection is lost, the restore keeps running.
 It is important to note that the ASYNC command immediately returns a status of success.
 This doesn't mean the restore was successful.
 You will need to monitor the `system.backups` table to see if the restore has finished and if it succeeded or failed.
-:::
 
 ##### Run SQL command to restore backup {#gcp-run-sql-command-to-restore-backup}
 
@@ -390,17 +368,15 @@ storage account connection string to the command.
 
 <Image img={restore_backups_azure} alt="Restore backups in Azure" size="md" />
 
-:::warning Moving backups to another location
+> **warning**: Moving backups to another location
 If you move the backups to another location, you will need to customize the restore command to reference the new location.
-:::
 
-:::tip ASYNC command
+> **tip**: ASYNC command
 For the Restore command you can also optionally add an `ASYNC` command at the end for large restores.
 This allows the restores to happen asynchronously, so that if connection is lost, the restore keeps running.
 It is important to note that the ASYNC command immediately returns a status of success.
 This doesn't mean the restore was successful.
 You will need to monitor the `system.backups` table to see if the restore has finished and if it succeeded or failed.
-:::
 
 ##### Run SQL command to restore backup {#azure-run-sql-command-to-restore-backup}
 

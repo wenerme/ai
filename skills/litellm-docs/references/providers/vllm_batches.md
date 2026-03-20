@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # vLLM - Batch + Files API
 
@@ -42,14 +41,10 @@ Create a JSONL file with your batch requests:
 
 ### 4. Upload File & Create Batch
 
-:::tip Model Routing
+> **tip**: Model Routing
 LiteLLM needs to know which model (and therefore which vLLM server) to use for batch operations. Specify the model using the `x-litellm-model` header when uploading files. LiteLLM will encode this model info into the file ID, so subsequent batch operations automatically route to the correct server.
 
 See [Multi-Account / Model-Based Routing](../batches#multi-account--model-based-routing) for more details.
-:::
-
-<Tabs>
-<TabItem value="curl" label="cURL">
 
 **Upload File**
 
@@ -80,9 +75,6 @@ curl http://localhost:4000/v1/batches \
 curl http://localhost:4000/v1/batches/batch_abc123 \
   -H "Authorization: Bearer sk-1234"
 ```
-
-</TabItem>
-<TabItem value="python" label="Python SDK">
 
 ```python
 import litellm
@@ -131,9 +123,6 @@ async def run_vllm_batch():
 
 asyncio.run(run_vllm_batch())
 ```
-
-</TabItem>
-</Tabs>
 
 ## Supported Operations
 

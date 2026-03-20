@@ -1,7 +1,5 @@
 ---
 title: 'Performance Guide'
-sidebar_label: 'Performance Guide'
-slug: /chdb/guides/pandas-performance
 description: 'Performance optimization tips for DataStore vs pandas'
 keywords: ['chdb', 'datastore', 'pandas', 'performance', 'benchmark', 'optimization']
 doc_type: 'guide'
@@ -172,11 +170,10 @@ def complex_function(row):
 df['result'] = df.apply(complex_function, axis=1)
 ```
 
-:::note Important
+> **note**: Important
 Even in scenarios where DataStore is "slower", performance is typically **on par with pandas** - the difference is negligible for practical use. DataStore's advantages in complex operations far outweigh these edge cases.
 
 For fine-grained control over execution, see [Execution Engine Configuration](../configuration/execution-engine.md).
-:::
 
 ---
 
@@ -388,8 +385,6 @@ print(f"Approach 2: {time2:.0f}ms")
 | Custom Python lambda functions | Use pandas or convert late |
 | Very small data (&lt;1,000 rows) | Either (negligible difference) |
 
-:::tip
-For automatic optimal engine selection, use `config.set_execution_engine('auto')` (default).
+> **tip**: For automatic optimal engine selection, use `config.set_execution_engine('auto')` (default).
 For maximum throughput on aggregation workloads, use `config.use_performance_mode()`.
 See [Execution Engine](../configuration/execution-engine.md) and [Performance Mode](../configuration/performance-mode.md) for details.
-:::

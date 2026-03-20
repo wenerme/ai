@@ -1,15 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Using Vision Models
 
 ## Quick Start
 Example passing images to a model 
-
-
-<Tabs>
-
-<TabItem label="LiteLLMPython SDK" value="Python">
 
 ```python
 import os 
@@ -41,9 +35,6 @@ response = completion(
 
 ```
 
-</TabItem>
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
 1. Define vision models on config.yaml
 
 ```yaml
@@ -69,7 +60,6 @@ litellm --config config.yaml
 ```
 
 3. Test it using the OpenAI Python SDK
-
 
 ```python
 import os 
@@ -102,18 +92,7 @@ response = client.chat.completions.create(
 
 ```
 
-
-
-
-</TabItem>
-</Tabs>
-
-
-
 ## Checking if a model supports `vision`
-
-<Tabs>
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 Use `litellm.supports_vision(model="")` -> returns `True` if model supports `vision` and `False` if not
 
@@ -124,10 +103,6 @@ assert litellm.supports_vision(model="openai/gpt-3.5-turbo") == False
 assert litellm.supports_vision(model="xai/grok-2-vision-latest") == True
 assert litellm.supports_vision(model="xai/grok-2-latest") == False
 ```
-</TabItem>
-
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
 
 1. Define vision models on config.yaml
 
@@ -188,10 +163,6 @@ Expected Response
 }
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Explicitly specify image type 
 
 If you have images without a mime-type, or if litellm is incorrectly inferring the mime type of your image (e.g. calling `gs://` url's with vertex ai), you can set this explicitly via the `format` param. 
@@ -206,9 +177,6 @@ If you have images without a mime-type, or if litellm is incorrectly inferring t
 LiteLLM will use this for any API endpoint, which supports specifying mime-type (e.g. anthropic/bedrock/vertex ai). 
 
 For others (e.g. openai), it will be ignored. 
-
-<Tabs>
-<TabItem label="SDK" value="sdk">
 
 ```python
 import os 
@@ -241,9 +209,6 @@ response = completion(
 
 ```
 
-</TabItem>
-<TabItem label="PROXY" value="proxy">
-
 1. Define vision models on config.yaml
 
 ```yaml
@@ -269,7 +234,6 @@ litellm --config config.yaml
 ```
 
 3. Test it using the OpenAI Python SDK
-
 
 ```python
 import os 
@@ -302,14 +266,6 @@ response = client.chat.completions.create(
 )
 
 ```
-
-
-
-
-</TabItem>
-</Tabs>
-
-
 
 ## Spec 
 

@@ -45,14 +45,12 @@ DISTRIBUTED BY HASH(user_id) BUCKETS 10;
 
 ### Step 3: Load data using S3 Load
 
-:::caution Caution
+> **caution**: Caution
 The endpoint URLs for public and internal access are different.
 If the server and OSS are in the same region, it is recommended to use the internal endpoint link.
 
 - internal endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`
 - public endpoint: `oss-cn-hangzhou.aliyuncs.com`
-:::
-
 ```sql
 LOAD LABEL s3_load_2022_04_01
 (
@@ -136,14 +134,12 @@ DISTRIBUTED BY HASH(user_id) BUCKETS 10;
 
 ### Step 3: Load data using TVF
 
-:::caution Caution
+> **caution**: Caution
 The endpoint URLs for public and internal access are different.
 If the server and OSS are in the same region, it is recommended to use the internal endpoint link.
 
 - internal endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`
 - public endpoint: `oss-cn-hangzhou.aliyuncs.com`
-:::
-
 ```sql
 INSERT INTO test_s3load
 SELECT * FROM S3

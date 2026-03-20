@@ -61,7 +61,7 @@ where $g_t = g^{+}_t$ when $A > 0$, $g_t = g^{-}_t$ when $A < 0$.
 
 The temperature parameter $\tau$ controls the decay rate of the soft gate function—larger values result in faster decay.
 
-![tau curve](../../../../resources/sapo_tau.png)
+[tau curve]
 
 The paper points out that positive advantages increase the logit of sampled tokens while decreasing the logits of all unsampled tokens; negative advantages do the opposite, increasing the logits of many unsampled tokens, which may spread to a large number of irrelevant tokens and introduce instability. Therefore, the paper recommends setting $\tau_\text{neg} > \tau_\text{pos}$ to make the gradient decay faster for tokens with negative rewards, improving training stability and performance.
 

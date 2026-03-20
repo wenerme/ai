@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Gemini - Google AI Studio
 
@@ -13,9 +11,7 @@ import TabItem from '@theme/TabItem';
 | Supported OpenAI Endpoints | `/chat/completions`, [`/embeddings`](../embedding/supported_embedding#gemini-ai-embedding-models), `/completions`, [`/videos`](./gemini/videos.md), [`/images/edits`](../image_edits.md) |
 | Pass-through Endpoint | [Supported](../pass_through/google_ai_studio.md) |
 
-<br />
-
-:::tip Gemini API vs Vertex AI
+> **tip**: Gemini API vs Vertex AI
 | Model Format | Provider | Auth Required |
 |-------------|----------|---------------|
 | `gemini/gemini-2.0-flash` | Gemini API | `GEMINI_API_KEY` (simple API key) |
@@ -25,7 +21,6 @@ import TabItem from '@theme/TabItem';
 **If you just want to use an API key** (like OpenAI), use the `gemini/` prefix.
 
 Models without a prefix default to Vertex AI which requires full GCP authentication.
-:::
 
 ## API Keys
 
@@ -69,25 +64,19 @@ response = completion(
 
 [**See Updated List**](https://github.com/BerriAI/litellm/blob/main/litellm/llms/gemini/chat/transformation.py#L70)
 
-
-
 ## Usage - Thinking / `reasoning_content`
 
 LiteLLM translates OpenAI's `reasoning_effort` to Gemini's `thinking` parameter. [Code](https://github.com/BerriAI/litellm/blob/620664921902d7a9bfb29897a7b27c1a7ef4ddfb/litellm/llms/vertex_ai/gemini/vertex_and_google_ai_studio_gemini.py#L362)
 
 **Cost Optimization:** Use `reasoning_effort="none"` (OpenAI standard) for significant cost savings - up to 96% cheaper. [Google's docs](https://ai.google.dev/gemini-api/docs/openai)
 
-:::info
-Note: Reasoning cannot be turned off on Gemini 2.5 Pro models.
-:::
+> **info**: Note: Reasoning cannot be turned off on Gemini 2.5 Pro models.
 
-:::tip Gemini 3 Models
+> **tip**: Gemini 3 Models
 For **Gemini 3+ models** (e.g., `gemini-3-pro-preview`), LiteLLM automatically maps `reasoning_effort` to the new `thinking_level` parameter instead of `thinking_budget`. The `thinking_level` parameter uses `"low"` or `"high"` values for better control over reasoning depth.
-:::
 
-:::warning Image Models
+> **warning**: Image Models
 **Gemini image models** (e.g., `gemini-3-pro-image-preview`, `gemini-2.0-flash-exp-image-generation`) do **not** support the `thinking_level` parameter. LiteLLM automatically excludes image models from receiving thinking configuration to prevent API errors.
-:::
 
 **Mapping for Gemini 2.5 and earlier models**
 
@@ -110,9 +99,6 @@ For **Gemini 3+ models** (e.g., `gemini-3-pro-preview`), LiteLLM automatically m
 | "disable"        | "low" | Cannot fully disable thinking in Gemini 3 |
 | "none"           | "low" | Cannot fully disable thinking in Gemini 3 |
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -131,10 +117,6 @@ resp = completion(
 )
 
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -164,15 +146,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Gemini 3+ Models - `thinking_level` Parameter
 
 For Gemini 3+ models (e.g., `gemini-3-pro-preview`), you can use the new `thinking_level` parameter directly:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -192,10 +168,6 @@ resp = completion(
 )
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -207,11 +179,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-:::warning
-**Temperature Recommendation for Gemini 3 Models**
+> **warning**: **Temperature Recommendation for Gemini 3 Models**
 
 For Gemini 3 models, LiteLLM defaults `temperature` to `1.0` and strongly recommends keeping it at this default. Setting `temperature < 1.0` can cause:
 - Infinite loops
@@ -219,7 +187,6 @@ For Gemini 3 models, LiteLLM defaults `temperature` to `1.0` and strongly recomm
 - Failure on complex tasks
 
 LiteLLM will automatically set `temperature=1.0` if not specified for Gemini 3+ models.
-:::
 
 **Expected Response**
 
@@ -266,9 +233,6 @@ You can also pass the `thinking` parameter to Gemini models.
 
 This is translated to Gemini's [`thinkingConfig` parameter](https://ai.google.dev/gemini-api/docs/thinking#set-budget).
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.completion(
   model="gemini/gemini-2.5-flash-preview-04-17",
@@ -276,9 +240,6 @@ response = litellm.completion(
   thinking={"type": "enabled", "budget_tokens": 1024},
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -291,20 +252,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
-
 ## Text-to-Speech (TTS) Audio Output
 
-:::info
-
-LiteLLM supports Gemini TTS models that can generate audio responses using the OpenAI-compatible `audio` parameter format.
-
-:::
+> **info**: LiteLLM supports Gemini TTS models that can generate audio responses using the OpenAI-compatible `audio` parameter format.
 
 ### Supported Models
 
@@ -312,19 +262,12 @@ LiteLLM supports Gemini TTS models with audio capabilities (e.g. `gemini-2.5-fla
 
 ### Limitations
 
-:::warning
-
-**Important Limitations**:
+> **warning**: **Important Limitations**:
 - Gemini TTS models only support the `pcm16` audio format
 - **Streaming support has not been added** to TTS models yet
 - The `modalities` parameter must be set to `['audio']` for TTS requests
 
-:::
-
 ### Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -344,9 +287,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -385,9 +325,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Advanced Usage
 
 You can combine TTS with other Gemini features:
@@ -416,8 +353,6 @@ For more information about Gemini's TTS capabilities and available voices, see t
 LiteLLM supports sending `response_schema` as a param for Gemini-1.5-Pro on Google AI Studio. 
 
 **Response Schema**
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -446,7 +381,6 @@ response_schema = {
         },
     }
 
-
 completion(
     model="gemini/gemini-1.5-pro", 
     messages=messages, 
@@ -455,9 +389,6 @@ completion(
 
 print(json.loads(completion.choices[0].message.content))
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -501,15 +432,9 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
 **Validate Schema**
 
 To validate the response_schema, set `enforce_validation: true`.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion, JSONSchemaValidationError
@@ -527,8 +452,6 @@ except JSONSchemaValidationError as e:
 	print("Raw Response: {}".format(e.raw_response))
 	raise e
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -574,25 +497,17 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
 LiteLLM will validate the response against the schema, and raise a `JSONSchemaValidationError` if the response does not match the schema. 
 
 JSONSchemaValidationError inherits from `openai.APIError` 
 
 Access the raw response with `e.raw_response`
 
-
-
 ### GenerationConfig Params 
 
 To pass additional GenerationConfig params - e.g. `topK`, just pass it in the request body of the call, and LiteLLM will pass it straight through as a key-value pair in the request body. 
 
 [**See Gemini GenerationConfigParams**](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -616,9 +531,6 @@ completion(
 
 print(json.loads(completion.choices[0].message.content))
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -651,15 +563,9 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
 **Validate Schema**
 
 To validate the response_schema, set `enforce_validation: true`.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion, JSONSchemaValidationError
@@ -677,8 +583,6 @@ except JSONSchemaValidationError as e:
 	print("Raw Response: {}".format(e.raw_response))
 	raise e
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -723,9 +627,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }
 '
 ```
-
-</TabItem>
-</Tabs>
 
 ## Specifying Safety Settings 
 In certain use-cases you may need to make calls to the models and pass [safety settings](https://ai.google.dev/docs/safety_setting_gemini) different from the defaults. To do so, simple pass the `safety_settings` argument to `completion` or `acompletion`. For example:
@@ -797,14 +698,9 @@ assert isinstance(
     response.choices[0].message.tool_calls[0].function.arguments, str
 )
 
-
 ```
 
-
 ### Google Search Tool
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -822,9 +718,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -853,13 +746,7 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
 ### URL Context 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -884,9 +771,6 @@ urlMetadata = url_context_metadata[0]['urlMetadata'][0]
 print(f"Retrieved URL: {urlMetadata['retrievedUrl']}")
 print(f"Retrieval Status: {urlMetadata['urlRetrievalStatus']}")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -913,14 +797,8 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "tools": [{"urlContext": {}}]
   }'
 ```
-</TabItem>
-</Tabs>
 
 ### Google Search Retrieval
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -938,9 +816,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -969,15 +844,7 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Code Execution Tool
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -995,9 +862,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -1026,14 +890,7 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Computer Use Tool
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python
 from litellm import completion
@@ -1108,9 +965,6 @@ if response.choices[0].message.tool_calls:
     )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy Server">
-
 1. Add model to config.yaml
 
 ```yaml
@@ -1182,9 +1036,6 @@ When responding to Computer Use tool calls, include the URL and screenshot:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ### Environment Mapping
 
 | LiteLLM Input | Gemini API Value |
@@ -1193,10 +1044,6 @@ When responding to Computer Use tool calls, include the URL and screenshot:
 | `"unspecified"` | `ENVIRONMENT_UNSPECIFIED` |
 | `ENVIRONMENT_BROWSER` | `ENVIRONMENT_BROWSER` (passed through) |
 | `ENVIRONMENT_UNSPECIFIED` | `ENVIRONMENT_UNSPECIFIED` (passed through) |
-
-
-
-
 
 ## Thought Signatures
 
@@ -1216,9 +1063,6 @@ Thought signatures are particularly important for multi-turn function calling sc
 
 To enable thought signatures, you need to enable thinking/reasoning:
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -1229,9 +1073,6 @@ response = completion(
     reasoning_effort="low",  # Enable thinking to get thought signatures
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://localhost:4000/v1/chat/completions \
@@ -1245,15 +1086,9 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Multi-Turn Function Calling with Thought Signatures
 
 When building conversation history for multi-turn function calling, you must include the thought signatures from previous responses. LiteLLM handles this automatically when you append the full assistant message to your conversation history.
-
-<Tabs>
-<TabItem value="sdk" label="OpenAI Client">
 
 ```python
 from openai import OpenAI
@@ -1324,9 +1159,6 @@ response2 = client.chat.completions.create(
 
 print(response2.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="curl" label="cURL">
 
 ```bash
 # Step 1: Initial request
@@ -1472,9 +1304,6 @@ curl --location 'http://localhost:4000/v1/chat/completions' \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Important Notes
 
 1. **Automatic Handling**: LiteLLM automatically extracts thought signatures from Gemini responses and preserves them when you include assistant messages in conversation history. You don't need to manually extract or manage them.
@@ -1491,9 +1320,6 @@ curl --location 'http://localhost:4000/v1/chat/completions' \
 
 ## JSON Mode
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion 
 import json 
@@ -1508,8 +1334,6 @@ messages = [
     }
 ]
 
-
-
 completion(
     model="gemini/gemini-1.5-pro", 
     messages=messages, 
@@ -1518,9 +1342,6 @@ completion(
 
 print(json.loads(completion.choices[0].message.content))
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -1553,8 +1374,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
 # Gemini-Pro-Vision
 LiteLLM Supports the following image types passed in `url`
 - Images with direct links - https://storage.googleapis.com/github-repo/img/gemini/intro/landmark3.jpg
@@ -1577,9 +1396,6 @@ LiteLLM supports OpenAI's `detail` parameter for specifying the image resolution
 - `"auto"` or `None` - Model decides optimal resolution (no `media_resolution` set)
 
 **Usage Examples:**
-
-<Tabs>
-<TabItem value="images" label="Images">
 
 ```python
 from litellm import completion
@@ -1617,9 +1433,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="videos" label="Videos with Files">
-
 ```python
 from litellm import completion
 
@@ -1649,14 +1462,9 @@ response = completion(
 )
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-**Gemini 3+ Per-Part Resolution:** Each image or video can have its own `detail` setting, allowing mixed-resolution requests (e.g., a high-res chart alongside a low-res icon). This works with both `image_url` and `file` content types.
+> **info**: **Gemini 3+ Per-Part Resolution:** Each image or video can have its own `detail` setting, allowing mixed-resolution requests (e.g., a high-res chart alongside a low-res icon). This works with both `image_url` and `file` content types.
 
 **Gemini 2.x Global Resolution:** When multiple images have different `detail` values, LiteLLM uses the highest resolution found and applies it globally via `mediaResolution` in `generationConfig` (e.g., if one image has `"low"` and another has `"high"`, all images will use `"high"`).
-:::
 
 ## Video Metadata Control
 
@@ -1670,23 +1478,16 @@ For Gemini 3+ models, LiteLLM supports fine-grained video processing control thr
 | `start_offset` | String | Start time for video clip processing | `"10s"` |
 | `end_offset` | String | End time for video clip processing | `"60s"` |
 
-:::note
-**Field Name Conversion:** LiteLLM automatically converts snake_case field names to camelCase for the Gemini API:
+> **note**: **Field Name Conversion:** LiteLLM automatically converts snake_case field names to camelCase for the Gemini API:
 - `start_offset` → `startOffset`
 - `end_offset` → `endOffset`
 - `fps` remains unchanged
-:::
 
-:::warning
-- **Gemini 3+ Only:** This feature is only available for Gemini 3.0 and newer models
+> **warning**: - **Gemini 3+ Only:** This feature is only available for Gemini 3.0 and newer models
 - **Video Files Recommended:** While `video_metadata` is designed for video files, error handling for other media types is delegated to the Vertex AI API
 - **File Formats Supported:** Works with `gs://`, `https://`, and base64-encoded video files
-:::
 
 **Usage Examples:**
-
-<Tabs>
-<TabItem value="basic" label="Basic Video Metadata">
 
 ```python
 from litellm import completion
@@ -1718,9 +1519,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="combined" label="Combined with Detail">
-
 ```python
 from litellm import completion
 
@@ -1751,9 +1549,6 @@ response = completion(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1802,9 +1597,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Sample Usage
 ```python
@@ -2033,13 +1825,9 @@ response = litellm.completion(
 )
 ```
 
-
 ## Chat Models
-:::tip
+> **tip**: **We support ALL Gemini models, just set `model=gemini/<any-model-on-gemini>` as a prefix when sending litellm requests**
 
-**We support ALL Gemini models, just set `model=gemini/<any-model-on-gemini>` as a prefix when sending litellm requests**
-
-:::
 | Model Name            | Function Call                                          | Required OS Variables          |
 |-----------------------|--------------------------------------------------------|--------------------------------|
 | gemini-pro            | `completion(model='gemini/gemini-pro', messages)`            | `os.environ['GEMINI_API_KEY']` |
@@ -2052,8 +1840,6 @@ response = litellm.completion(
 | gemini-3.1-flash-lite-preview     | `completion(model='gemini/gemini-3.1-flash-lite-preview', messages)`     | `os.environ['GEMINI_API_KEY']` |
 | gemini-flash-latest     | `completion(model='gemini/gemini-flash-latest', messages)`     | `os.environ['GEMINI_API_KEY']` |
 | gemini-flash-lite-latest     | `completion(model='gemini/gemini-flash-lite-latest', messages)`     | `os.environ['GEMINI_API_KEY']` |
-
-
 
 ## Context Caching
 
@@ -2133,9 +1919,6 @@ curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5
 
 ### Example Usage
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion 
 
@@ -2169,9 +1952,6 @@ for _ in range(2):
 
     print(resp.usage) # 👈 2nd usage block will be less, since cached tokens used
 ```
-
-</TabItem>
-<TabItem value="sdk-ttl" label="SDK with Custom TTL">
 
 ```python
 from litellm import completion 
@@ -2212,9 +1992,6 @@ resp = completion(
 print(resp.usage)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Setup config.yaml
 
 ```yaml
@@ -2234,9 +2011,6 @@ litellm --config /path/to/config.yaml
 3. Test it! 
 
 [**See Langchain, OpenAI JS, Llamaindex, etc. examples**](../proxy/user_keys.md#request-format)
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -2268,8 +2042,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
             }],
 }'
 ```
-</TabItem>
-<TabItem value="curl-ttl" label="Curl with Custom TTL">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -2306,8 +2078,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-<TabItem value="openai-python" label="OpenAI Python SDK">
 
 ```python 
 import openai
@@ -2315,7 +2085,6 @@ client = openai.AsyncOpenAI(
     api_key="anything",            # litellm proxy api key
     base_url="http://0.0.0.0:4000" # litellm proxy base url
 )
-
 
 response = await client.chat.completions.create(
     model="gemini-1.5-pro",
@@ -2338,9 +2107,6 @@ response = await client.chat.completions.create(
 )
 
 ```
-
-</TabItem>
-<TabItem value="openai-python-ttl" label="OpenAI Python SDK with TTL">
 
 ```python 
 import openai
@@ -2373,16 +2139,7 @@ response = await client.chat.completions.create(
 )
 ```
 
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
 ## Image Generation
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -2394,8 +2151,6 @@ response = completion(
 )
 assert response.choices[0].message.content is not None # "data:image/png;base64,e4rr.."
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -2425,9 +2180,6 @@ curl -L -X POST 'http://localhost:4000/v1/chat/completions' \
     "modalities": ["image", "text"]
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Image Generation Pricing
 
@@ -2459,4 +2211,3 @@ LiteLLM automatically calculates costs using `output_cost_per_image_token` from 
 ```
 
 For more details, see [Google's Gemini pricing documentation](https://ai.google.dev/gemini-api/docs/pricing).
-

@@ -14,7 +14,6 @@ We recommend Fluent Bit over Fluentd due to its lower resource usage. For existi
 
 > A sidecar is just an extra container that runs in the same ECS task (or Kubernetes pod) as your main application container, but it provides a supporting service rather than running the main app.
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -28,7 +27,7 @@ We recommend Fluent Bit over Fluentd due to its lower resource usage. For existi
 
     You can find the config details under Data sources -> fluentbit
 
-    ![Ingestion config](../images/firelens/data_sources.png)
+    [Ingestion config]
 
     You can use the configuration details from this section in your task definition
 
@@ -134,19 +133,19 @@ We recommend Fluent Bit over Fluentd due to its lower resource usage. For existi
 ??? "Verify result"
 
     1. If all goes well, you should see a running service on ECS console:
-      ![ECS service](../images/firelens/ecs_service.png)
+      [ECS service]
 
     2. Now click on the tasks tab. You should see a task running as part of the service:
-      ![ECS task](../images/firelens/ecs_task.png)
+      [ECS task]
 
     3. Now click on the task:
-      ![ Task details](../images/firelens/task_details.png)
+      [ Task details]
 
     4. You should see the `Public IP` for the task. Click `open address`. You should see the following page:
-      ![Nginx page](../images/firelens/nginx.png)
+      [Nginx page]
     
     5. Now head on the OpenObserve / OpenObserve Cloud and see the logs flowing in there.
-      ![ECS logs in OpenObserve](../images/firelens/zo_logs.png)
+      [ECS logs in OpenObserve]
 
 ## Conclusion
 

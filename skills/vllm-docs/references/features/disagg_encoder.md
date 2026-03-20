@@ -66,7 +66,7 @@ All related code is under `vllm/distributed/ec_transfer`.
 
 Here is a figure illustrating disaggregate encoder flow:
 
-![Disaggregated Encoder Flow](../assets/features/disagg_encoder/disagg_encoder_flow.png)
+[Disaggregated Encoder Flow]
 
 For the PD disaggregation part, the Prefill instance receives cache exactly the same as the disaggregated encoder flow above. Prefill instance executes 1 step (prefill -> 1 token output) and then transfers KV cache to the Decode instance for the remaining execution. The KV transfer part purely happens after the execution of the PD instance.
 

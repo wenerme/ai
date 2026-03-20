@@ -11,9 +11,7 @@ Used to view metrics of Frontend nodes
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

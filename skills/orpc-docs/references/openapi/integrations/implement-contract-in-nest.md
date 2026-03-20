@@ -9,8 +9,6 @@ This guide explains how to easily implement [oRPC contract](/docs/contract-first
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/nest@latest
 ```
@@ -30,8 +28,6 @@ bun add @orpc/nest@latest
 ```sh [deno]
 deno add npm:@orpc/nest@latest
 ```
-
-:::
 
 ## Requirements
 
@@ -61,7 +57,7 @@ oRPC is an ESM-only library. Therefore, your NestJS application must be configur
 
 Before implementation, define your oRPC contract. This process is consistent with the standard oRPC methodology. For detailed guidance, refer to the main [Contract-First guide](/docs/contract-first/define-contract).
 
-::: details Example Contract
+> **details**: Example Contract
 
 ```ts
 import { oc, populateContractRouterPaths } from '@orpc/contract'
@@ -117,20 +113,14 @@ export const contract = populateContractRouterPaths({
 })
 ```
 
-:::
-
-::: warning
-For a contract to be implementable in NestJS using `@orpc/nest`, each contract **must** define a `path` in its `.route`. Omitting it will cause a build‑time error.
+> **warning**: For a contract to be implementable in NestJS using `@orpc/nest`, each contract **must** define a `path` in its `.route`. Omitting it will cause a build‑time error.
 You can avoid this by using the `populateContractRouterPaths` utility to automatically fill in any missing paths.
-:::
 
 ## Path Parameters
 
 Aside from [oRPC Path Parameters](/docs/openapi/routing#path-parameters), regular NestJS route patterns still work out of the box. However, they are not standard in OpenAPI, so we recommend using oRPC Path Parameters exclusively.
 
-::: warning
-[oRPC Path Parameter matching with slashes (/)](/docs/openapi/routing#path-parameters) does not work on the NestJS Fastify platform, because Fastify does not allow wildcard (`*`) aliasing in path parameters.
-:::
+> **warning**: [oRPC Path Parameter matching with slashes (/)](/docs/openapi/routing#path-parameters) does not work on the NestJS Fastify platform, because Fastify does not allow wildcard (`*`) aliasing in path parameters.
 
 ## Implement Your Contract
 
@@ -184,9 +174,7 @@ export class PlanetController {
 }
 ```
 
-::: info
-The `@Implement` decorator functions similarly to NestJS built-in HTTP method decorators (e.g., `@Get`, `@Post`). Handlers decorated with `@Implement` are standard NestJS controller handlers and can leverage all NestJS features.
-:::
+> **info**: The `@Implement` decorator functions similarly to NestJS built-in HTTP method decorators (e.g., `@Get`, `@Post`). Handlers decorated with `@Implement` are standard NestJS controller handlers and can leverage all NestJS features.
 
 ## Body Parser
 
@@ -210,9 +198,7 @@ async function bootstrap() {
 }
 ```
 
-::: info
-oRPC will use NestJS parsed body when it's available, and only use the oRPC parser if the body is not parsed by NestJS.
-:::
+> **info**: oRPC will use NestJS parsed body when it's available, and only use the oRPC parser if the body is not parsed by NestJS.
 
 ## Configuration
 
@@ -265,12 +251,8 @@ declare module '@orpc/nest' {
 export class AppModule {}
 ```
 
-::: info
-
-- **`interceptors`** - [Server-side client interceptors](/docs/client/server-side#lifecycle) for intercepting input, output, and errors.
+> **info**: - **`interceptors`** - [Server-side client interceptors](/docs/client/server-side#lifecycle) for intercepting input, output, and errors.
 - **`eventIteratorKeepAliveInterval`** - Keep-alive interval for event streams (see [Event Iterator Keep Alive](/docs/rpc-handler#event-iterator-keep-alive))
-
-:::
 
 ## Create a Type-Safe Client
 
@@ -293,9 +275,7 @@ const link = new OpenAPILink(contract, {
 const client: JsonifiedClient<ContractRouterClient<typeof contract>> = createORPCClient(link)
 ```
 
-::: info
-Please refer to the [OpenAPILink](/docs/openapi/client/openapi-link) documentation for more information on client setup and options.
-:::
+> **info**: Please refer to the [OpenAPILink](/docs/openapi/client/openapi-link) documentation for more information on client setup and options.
 
 ## Advanced
 

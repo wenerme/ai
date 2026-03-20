@@ -1,7 +1,5 @@
 ---
 title: 'SQL Reference'
-sidebar_label: 'SQL reference'
-slug: /chdb/reference/sql-reference
 description: 'SQL Reference for chDB'
 keywords: ['chdb', 'sql reference']
 doc_type: 'reference'

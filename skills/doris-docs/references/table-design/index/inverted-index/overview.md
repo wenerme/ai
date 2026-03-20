@@ -57,17 +57,13 @@ The functionality of inverted indexes is briefly introduced as follows:
 
 - Support for deleting inverted indexes from existing tables without rewriting existing data in the table
 
-:::tip
-
-There are some limitations to using inverted indexes:
+> **tip**: There are some limitations to using inverted indexes:
 
 1. Floating-point types FLOAT and DOUBLE, which have precision issues, do not support inverted indexes due to inaccurate precision. The solution is to use the precisely accurate DECIMAL type, which supports inverted indexes.
 
 2. Some complex data types do not yet support inverted indexes, including MAP, STRUCT, JSON, HLL, BITMAP, QUANTILE_STATE, AGG_STATE.
 
 3. DUPLICATE and UNIQUE table models with Merge-on-Write enabled support building inverted indexes on any column. However, AGGREGATE and UNIQUE models without Merge-on-Write enabled only support building inverted indexes on Key columns, as non-Key columns cannot have inverted indexes. This is because these two models require reading all data for merging, so indexes cannot be used for pre-filtering.
-
-:::
 
 ## Managing Indexes
 
@@ -95,8 +91,7 @@ Syntax explanation:
 
 **3. `PROPERTIES` is optional to specify additional properties of the inverted index, currently supported properties are:**
 
-<details>
-  <summary>parser: specifies the tokenizer</summary>
+  parser: specifies the tokenizer
   <p>- By default, it is unspecified, meaning no tokenization</p>
   <p>- `english`: English tokenization, suitable for columns with English text, uses spaces and punctuation for tokenization, high performance</p>
   <p>- `chinese`: Chinese tokenization, suitable for columns with mainly Chinese text, lower performance than English tokenization</p>
@@ -106,19 +101,15 @@ Syntax explanation:
   <p>- `ik` (Supported since 3.1.0): IK Chinese tokenization, specifically designed for Chinese text analysis.</p>
 
   Tokenization results can be verified using the `TOKENIZE` SQL function, see the following sections for details.
-</details>
 
-<details>
-  <summary>parser_mode</summary>
+  parser_mode
 
   **Specifies the tokenization mode, currently supported modes for `parser = chinese` are:**
   <p>- fine_grained: fine-grained mode, tends to generate shorter, more words, e.g., '武汉市长江大桥' will be tokenized into '武汉', '武汉市', '市长', '长江', '长江大桥', '大桥'</p>
   <p>- coarse_grained: coarse-grained mode, tends to generate longer, fewer words, e.g., '武汉市长江大桥' will be tokenized into '武汉市', '长江大桥'</p>
   <p>- default coarse_grained</p>
-</details>
 
-<details>
-  <summary>support_phrase</summary>
+  support_phrase
 
   **Specifies whether the index supports MATCH_PHRASE phrase query acceleration**
   <p>- true: supported, but the index requires more storage space</p>
@@ -129,10 +120,8 @@ Syntax explanation:
 ```sql
    INDEX idx_name(column_name) USING INVERTED PROPERTIES("parser" = "chinese", "parser_mode" = "coarse_grained", "support_phrase" = "true")
 ```
-</details>
 
-<details>
-  <summary>char_filter</summary>
+  char_filter
 
   **Specifies preprocessing the text before tokenization, usually to affect tokenization behavior**
 
@@ -147,36 +136,27 @@ Syntax explanation:
    INDEX idx_name(column_name) USING INVERTED PROPERTIES("parser" = "unicode", "char_filter_type" = "char_replace", "char_filter_pattern" = "._", "char_filter_replacement" = " ")
 ```
 `
-</details>
 
-<details>
-  <summary>ignore_above</summary>
+  ignore_above
 
   **Specifies the length limit for non-tokenized string indexes (parser not specified)**
   <p>- Strings longer than the length set by ignore_above will not be indexed. For string arrays, ignore_above applies to each array element separately, and elements longer than ignore_above will not be indexed.</p>
   <p>- Default is 256, unit is bytes</p>
 
-</details>
-
-<details>
-  <summary>lower_case</summary>
+  lower_case
 
   **Whether to convert tokens to lowercase for case-insensitive matching**
   <p>- true: convert to lowercase</p>
   <p>- false: do not convert to lowercase</p>
   <p>- From versions 2.0.7 and 2.1.2, the default is true, automatically converting to lowercase. Earlier versions default to false.</p>
-</details>
 
-<details>
-  <summary>stopwords</summary>
+  stopwords
 
   **Specifying the stopword list to use, which will affect the behavior of the tokenizer**
   <p>- The default built-in stopword list includes meaningless words such as 'is,' 'the,' 'a,' etc. When writing or querying, the tokenizer will ignore words that are in the stopword list.</p>
   <p>- none: Use an empty stopword list</p>
-</details>
 
-<details>
-  <summary>dict_compression (Supported since 3.1.0)</summary>
+  dict_compression (Supported since 3.1.0)
 
   **Specifies whether to enable ZSTD dictionary compression for the inverted index term dictionary**
   <p>- true: Enable dictionary compression, which can reduce index storage size by up to 20%, especially effective for large-scale text data and log analysis scenarios</p>
@@ -187,7 +167,6 @@ Syntax explanation:
 ```sql
    INDEX idx_name(column_name) USING INVERTED PROPERTIES("parser" = "english", "dict_compression" = "true")
 ```
-</details>
 
 **4. `COMMENT` is optional for specifying index comments**
 
@@ -254,17 +233,13 @@ CANCEL BUILD INDEX ON table_name;
 CANCEL BUILD INDEX ON table_name (job_id1, job_id2, ...);
 ```
 
-:::tip
-
-`BUILD INDEX` creates an asynchronous task executed by multiple threads on each BE. The number of threads can be set using the BE config `alter_index_worker_count`, with a default value of 3.
+> **tip**: `BUILD INDEX` creates an asynchronous task executed by multiple threads on each BE. The number of threads can be set using the BE config `alter_index_worker_count`, with a default value of 3.
 
 In versions before 2.0.12 and 2.1.4, `BUILD INDEX` would keep retrying until it succeeded. Starting from these versions, failure and timeout mechanisms prevent endless retries. 3.0 (Cloud Mode) does not support this command as this moment.
 
 1. If the majority of replicas for a tablet fail to `BUILD INDEX`, the entire `BUILD INDEX` operation fails.
 2. If the time exceeds `alter_table_timeout_second`, the `BUILD INDEX` operation times out.
 3. Users can trigger `BUILD INDEX` multiple times; indexes that have already been built successfully will not be rebuilt.
-
-:::
 
 ### Deleting Inverted Indexes from Existing Tables
 
@@ -275,11 +250,7 @@ DROP INDEX idx_name ON table_name;
 ALTER TABLE table_name DROP INDEX idx_name;
 ```
 
-:::tip
-
-`DROP INDEX` deletes the index definition, so new data will no longer write to the index. This creates an asynchronous task to perform the index deletion, executed by multiple threads on each BE. The number of threads can be set using the BE parameter `alter_index_worker_count`, with a default value of 3.
-
-:::
+> **tip**: `DROP INDEX` deletes the index definition, so new data will no longer write to the index. This creates an asynchronous task to perform the index deletion, executed by multiple threads on each BE. The number of threads can be set using the BE parameter `alter_index_worker_count`, with a default value of 3.
 
 ### Viewing Inverted Index
 
@@ -374,7 +345,6 @@ The acceleration effect of the inverted index can be analyzed using the followin
 - InvertedIndexFilterTime: The time consumed by the inverted index.
   - InvertedIndexSearcherOpenTime: The time taken to open the inverted index.
   - InvertedIndexSearcherSearchTime: The time taken for internal queries within the inverted index.
-
 
 ### Verifying Tokenization Effects Using Tokenization Functions
 
@@ -552,7 +522,6 @@ SELECT count() FROM hackernews_1m;
   |      48 |
   +---------+
 
-
   SELECT count() FROM hackernews_1m WHERE comment MATCH_ANY 'OLTP';
   +---------+
   | count() |
@@ -572,7 +541,6 @@ SELECT count() FROM hackernews_1m;
   +---------+
   |      14 |
   +---------+
-
 
   SELECT count() FROM hackernews_1m WHERE comment MATCH_ALL 'OLAP OLTP';
   +---------+
@@ -673,10 +641,8 @@ SELECT count() FROM hackernews_1m;
   -- ALTER TABLE t ADD INDEX is the second syntax for creating an index
   ALTER TABLE hackernews_1m ADD INDEX idx_parent(parent) USING INVERTED;
 
-
   -- Execute BUILD INDEX to create the inverted index for existing data
   BUILD INDEX idx_parent ON hackernews_1m;
-
 
   SHOW ALTER TABLE COLUMN;
   +-------+---------------+-------------------------+-------------------------+---------------+---------+---------------+---------------+---------------+----------+------+----------+---------+
@@ -692,7 +658,6 @@ SELECT count() FROM hackernews_1m;
   +-------+---------------+---------------+----------------------------------------------------+-------------------------+-------------------------+---------------+----------+------+----------+
   | 11005 | hackernews_1m | hackernews_1m | [ADD INDEX idx_parent (`parent`) USING INVERTED],  | 2023-06-26 16:25:10.167 | 2023-06-26 16:25:10.838 | 1002          | FINISHED |      | NULL     |
   +-------+---------------+---------------+----------------------------------------------------+-------------------------+-------------------------+---------------+----------+------+----------+
-
 
   SELECT count() FROM hackernews_1m WHERE parent = 11189;
   +---------+
@@ -753,4 +718,3 @@ SELECT count() FROM hackernews_1m WHERE author = 'faster';
 |      20 |
 +---------+
 ```
-

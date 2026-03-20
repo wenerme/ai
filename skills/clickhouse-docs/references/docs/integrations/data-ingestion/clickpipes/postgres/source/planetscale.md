@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Planetscale for Postgres'
 description: 'Set up Planetscale for Postgres as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/planetscale
 title: 'PlanetScale for Postgres Source Setup Guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
@@ -10,15 +8,9 @@ integration:
    - category: 'clickpipes'
 ---
 
-import planetscale_wal_level_logical from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/planetscale/planetscale_wal_level_logical.png';
-import planetscale_max_slot_wal_keep_size from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/planetscale/planetscale_max_slot_wal_keep_size.png';
-import Image from '@theme/IdealImage';
-
 # PlanetScale for Postgres source setup guide
 
-:::info
-PlanetScale for Postgres is currently in [early access](https://planetscale.com/postgres).
-:::
+> **info**: PlanetScale for Postgres is currently in [early access](https://planetscale.com/postgres).
 
 ## Supported Postgres versions {#supported-postgres-versions}
 
@@ -40,9 +32,7 @@ ClickPipes supports Postgres version 12 and later.
 
 <Image img={planetscale_wal_level_logical} alt="Adjusting wal_level in PlanetScale console" size="md" border/>
 
-:::warning
-Changing this in the PlanetScale console WILL trigger a restart.
-:::
+> **warning**: Changing this in the PlanetScale console WILL trigger a restart.
 
 2. Additionally, it is recommended to increase the setting `max_slot_wal_keep_size` from its default of 4GB. This is also done via the PlanetScale console by going to `Cluster configuration->Parameters` and then scroll down to `Write-ahead log`. To help determine the new value, please take a look [here](../faq#recommended-max_slot_wal_keep_size-settings).
 

@@ -1,14 +1,10 @@
 ---
-slug: /integrations/postgresql/connecting-to-postgresql
 title: 'Connecting to PostgreSQL'
 keywords: ['clickhouse', 'postgres', 'postgresql', 'connect', 'integrate', 'table', 'engine']
 description: 'Page describing the various ways to connect PostgreSQL to ClickHouse'
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
-import ExperimentalBadge from '@theme/badges/ExperimentalBadge';
 
 # Connecting ClickHouse to PostgreSQL
 
@@ -17,9 +13,7 @@ This page covers following options for integrating PostgreSQL with ClickHouse:
 - using the `PostgreSQL` table engine, for reading from a PostgreSQL table
 - using the experimental `MaterializedPostgreSQL` database engine, for syncing a database in PostgreSQL with a database in ClickHouse
 
-:::tip
-Check out our [Managed Postgres](/docs/cloud/managed-postgres) service. Backed by NVMe storage that is physically collocated with compute, it delivers up to 10x faster performance for workloads that are disk-bound compared to alternatives using network-attached storage like EBS and allows you to replicate your Postgres data to ClickHouse using the Postgres CDC connector in ClickPipes.
-:::
+> **tip**: Check out our [Managed Postgres](/docs/cloud/managed-postgres) service. Backed by NVMe storage that is physically collocated with compute, it delivers up to 10x faster performance for workloads that are disk-bound compared to alternatives using network-attached storage like EBS and allows you to replicate your Postgres data to ClickHouse using the Postgres CDC connector in ClickPipes.
 
 ## Using the PostgreSQL table engine {#using-the-postgresql-table-engine}
 
@@ -75,10 +69,8 @@ This article is to illustrate basic methods of integration using one table.
   psql -U clickhouse_user -W -d db_in_psg -h <your_postgresql_host>
   ```
 
-:::note
-If you're using this feature in ClickHouse Cloud, you may need the to allow the ClickHouse Cloud IP addresses to access your PostgreSQL instance.
+> **note**: If you're using this feature in ClickHouse Cloud, you may need the to allow the ClickHouse Cloud IP addresses to access your PostgreSQL instance.
 Check the ClickHouse [Cloud Endpoints API](/cloud/get-started/query-endpoints) for egress traffic details.
-:::
 
 ### 2. Define a Table in ClickHouse {#2-define-a-table-in-clickhouse}
 1. Login to the `clickhouse-client`:
@@ -282,9 +274,7 @@ minimum options:
 |password |password to connect to postgres|ClickHouse_123       |
 |settings |additional settings for the engine| materialized_postgresql_tables_list = 'table1'|
 
-:::info
-For complete guide to the PostgreSQL database engine, refer to https://clickhouse.com/docs/engines/database-engines/materialized-postgresql/#settings
-:::
+> **info**: For complete guide to the PostgreSQL database engine, refer to https://clickhouse.com/docs/engines/database-engines/materialized-postgresql/#settings
 
 4. Verify the initial table has data:
 
@@ -340,6 +330,4 @@ Query id: b0729816-3917-44d3-8d1a-fed912fb59ce
 ### 4. Summary {#4-summary}
 This integration guide focused on a simple example on how to replicate a database with a table, however, there exist more advanced options which include replicating the whole database or adding new tables and schemas to the existing replications. Although DDL commands aren't supported for this replication, the engine can be set to detect changes and reload the tables when there are structural changes made.
 
-:::info
-For more features available for advanced options, please see the [reference documentation](/engines/database-engines/materialized-postgresql).
-:::
+> **info**: For more features available for advanced options, please see the [reference documentation](/engines/database-engines/materialized-postgresql).

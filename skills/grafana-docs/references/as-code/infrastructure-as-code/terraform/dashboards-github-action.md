@@ -229,19 +229,19 @@ Once the GitHub workflow run is successful, you should be able to verify the fol
 
 - `ElasticSearch`, `InfluxDB` and `AWS` folders are created in the Grafana instance.
 
-  ![Folders in Dashboards](/media/docs/grafana-cloud/screenshot-folders-github-action-tf.png)
+  [Folders in Dashboards]
 
 - Dashboard represented as JSON source code from `elasticsearch` folder in GitHub are added under the `ElasticSearch` folder in the Grafana instance.
 
-  ![ElasticSearch Folder](/media/docs/grafana-cloud/screenshot-elastic-folder-github-action-tf.png)
+  [ElasticSearch Folder]
 
 - Dashboard source code from the `influxdb` folder in GitHub is added under the `InfluxDB` folder in the Grafana instance.
 
-  ![InfluxDB Folder](/media/docs/grafana-cloud/screenshot-influxdb-folder-github-action-tf.png)
+  [InfluxDB Folder]
 
 - Dashboards from `aws` folder in GitHub are added under the `AWS` folder in the Grafana instance.
 
-  ![AWS EC2 Folder](/media/docs/grafana-cloud/screenshots-aws-folder-github-action-tf.png)
+  [AWS EC2 Folder]
 
 ## Conclusion
 

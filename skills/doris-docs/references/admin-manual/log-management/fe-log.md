@@ -64,14 +64,10 @@ The following configuration items are configured in the `fe.conf` file.
 | `audit_log_enable_compress` | false | true, false | Whether to enable compression for historical `fe.audit.log` logs. Default is off. When enabled, historical audit logs will be archived using gzip compression. |
 | `sys_log_mode` | `NORMAL` | `NORMAL`, `BRIEF`, `ASYNC` | FE log output mode, where `NORMAL` is the default output mode, log output is synchronous and includes location information. `ASYNC` is the default log output is asynchronous and includes location information. `BRIEF` mode is log output asynchronously but does not include location information. The performance of the three log output modes increases in sequence. |
 
-::: note
-Starting from version 3.0.2, the default value of `sys_log_mode` configuration is changed to `ASYNC`.
-:::
+> **note**: Starting from version 3.0.2, the default value of `sys_log_mode` configuration is changed to `ASYNC`.
 
-:::tip
-`sys_log_roll_num` 控制的是一天的保留日志数量，而不是总数量，需要配合 `sys_log_delete_age` 共同确定总保留日志数量。
+> **tip**: `sys_log_roll_num` 控制的是一天的保留日志数量，而不是总数量，需要配合 `sys_log_delete_age` 共同确定总保留日志数量。
 `sys_log_roll_num` controls the number of retained logs per day, not the total number. It needs to be combined with `sys_log_delete_age` to determine the total number of retained logs.
-:::
 
 ## Enable DEBUG Log
 
@@ -98,11 +94,11 @@ The Debug level log of FE can be enabled by modifying the configuration file or 
 
    You can modify the log level at runtime through the UI interface. No need to restart the FE node. Open the FE node's http port in the browser (default is 8030) and log in to the UI interface. Then click on the `Log` tab in the top navigation bar.
 
-   ![Enable through FE UI interface](/images/log_manage/fe_web_log1.png)
+   [Enable through FE UI interface]
 
    In the Add input box, you can enter the package name or specific class name to open the corresponding Debug log. For example, entering `org.apache.doris.catalog.Catalog` will open the Debug log of the Catalog class:
 
-   ![Enable through FE UI interface](/images/log_manage/fe_web_log2.png)
+   [Enable through FE UI interface]
 
    You can also enter the package name or specific class name in the Delete input box to close the corresponding Debug log.
 

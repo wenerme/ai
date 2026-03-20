@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Create Pass Through Endpoints 
 
@@ -46,9 +44,7 @@ The above configuration creates these route mappings:
 | `/bria/v1/enhance_image` | `https://engine.prod.bria-api.com/v1/enhance_image` |
 | `/bria/<any-sub-path>` | `https://engine.prod.bria-api.com/<any-sub-path>` |
 
-:::info
-All routes are prefixed with your LiteLLM proxy base URL: `https://<litellm-proxy-base-url>`
-:::
+> **info**: All routes are prefixed with your LiteLLM proxy base URL: `https://<litellm-proxy-base-url>`
 
 ### Step 2: Configure Headers and Pricing
 
@@ -377,10 +373,6 @@ curl --location 'http://0.0.0.0:4000/v1/messages' \
 In this video, we'll add the Azure OpenAI Assistants API as a pass through endpoint to LiteLLM Proxy.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/12965cb299d24fc0bd7b6b413ab6d0ad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-<br/>
-<br/>
-
 
 ---
 

@@ -1,6 +1,5 @@
 # WMT2024++
 
-
 ## Overview
 
 WMT2024++ is a comprehensive machine translation benchmark based on the WMT 2024 news translation task. It supports 54 language pairs with English as the source language, enabling evaluation of translation quality across diverse target languages.
@@ -29,7 +28,6 @@ WMT2024++ is a comprehensive machine translation benchmark based on the WMT 2024
 - COMET metric requires `unbabel-comet` package
 - Subsets represent individual language pairs (e.g., `en-zh_cn`, `en-de_de`)
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ WMT2024++ is a comprehensive machine translation benchmark based on the WMT 2024
 | **Metrics** | `bleu`, `bert_score`, `comet` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -184,5 +181,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

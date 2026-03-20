@@ -1,6 +1,5 @@
 # EQ-Bench
 
-
 ## Overview
 
 EQ-Bench is a benchmark for evaluating language models on emotional intelligence tasks. It assesses the ability to predict likely emotional responses of characters in dialogues by rating the intensity of possible emotional reactions.
@@ -28,7 +27,6 @@ EQ-Bench is a benchmark for evaluating language models on emotional intelligence
 - Responses must include emotion ratings in specific JSON-like format
 - Official algorithm from [Paper](https://arxiv.org/abs/2312.06281) | [Homepage](https://eqbench.com/)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ EQ-Bench is a benchmark for evaluating language models on emotional intelligence
 | **Metrics** | `eq_bench_score` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -128,5 +125,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

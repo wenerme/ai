@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Lasso Security
 
@@ -48,7 +46,6 @@ guardrails:
 - `pre_call` - Run **before** LLM call to validate **user input**. Blocks requests with detected policy violations (jailbreaks, harmful prompts, PII, etc.)
 - `post_call` - Run **after** LLM call to validate **model output**. Blocks responses containing harmful content, policy violations, or sensitive information
 
-
 ### 2. Start LiteLLM Gateway 
 
 ```shell
@@ -56,9 +53,6 @@ litellm --config config.yaml --detailed_debug
 ```
 
 ### 3. Test request 
-
-<Tabs>
-<TabItem label="Pre-call Guardrail Test" value = "pre-call-test">
 
 Test input validation with a prompt injection attempt:
 
@@ -112,10 +106,6 @@ Expected response on policy violation:
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Post-call Guardrail Test" value = "post-call-test">
 
 Test output validation by requesting harmful content generation:
 
@@ -178,10 +168,6 @@ Expected response when model output violates policies:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call" value = "allowed">
-
 Test with safe content that passes all guardrails:
 
 ```shell
@@ -223,9 +209,6 @@ Expected response:
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## PII Masking with Lasso
 
 Lasso supports automatic PII detection and masking using the `/classifix` endpoint. When enabled, sensitive information like emails, phone numbers, and other PII will be automatically masked with appropriate placeholders.
@@ -266,9 +249,6 @@ When masking is enabled:
 
 ### Masking Example
 
-<Tabs>
-<TabItem label="Pre-call Masking" value="pre-call-masking">
-
 **Input with PII:**
 ```shell
 curl -i http://0.0.0.0:4000/v1/chat/completions \
@@ -284,10 +264,6 @@ curl -i http://0.0.0.0:4000/v1/chat/completions \
 
 The message sent to the LLM will be automatically masked:
 `"My email is <EMAIL_ADDRESS> and phone is <PHONE_NUMBER>"`
-
-</TabItem>
-
-<TabItem label="Post-call Masking" value="post-call-masking">
 
 **LLM Response with PII:**
 If the LLM responds with: `"You can contact us at support@company.com or call 555-0123"`
@@ -305,9 +281,6 @@ If the LLM responds with: `"You can contact us at support@company.com or call 55
   ]
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Supported PII Types
 
@@ -405,4 +378,4 @@ This provides granular control based on Lasso's risk assessment, allowing safe c
 
 ## Need Help?
 
-For any questions or support, please contact us at [support@lasso.security](mailto:support@lasso.security) 
+For any questions or support, please contact us at [support@lasso.security](mailto:support@lasso.security)

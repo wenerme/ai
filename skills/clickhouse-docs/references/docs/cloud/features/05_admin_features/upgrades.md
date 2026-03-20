@@ -1,29 +1,17 @@
 ---
-sidebar_label: 'Upgrades'
-slug: /manage/updates
 title: 'Upgrades'
 description: 'With ClickHouse Cloud you never have to worry about patching and upgrades. We roll out upgrades that include fixes, new features and performance improvements on a periodic basis.'
 doc_type: 'guide'
 keywords: ['upgrades', 'version management', 'cloud features', 'maintenance', 'updates']
 ---
 
-import Image from '@theme/IdealImage';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge'
-import fast_release from '@site/static/images/cloud/manage/fast_release.png';
-import enroll_fast_release from '@site/static/images/cloud/manage/enroll_fast_release.png';
-import scheduled_upgrades from '@site/static/images/cloud/manage/scheduled_upgrades.png';
-import scheduled_upgrade_window from '@site/static/images/cloud/manage/scheduled_upgrade_window.png';
-
 # Upgrades
 
 With ClickHouse Cloud you never have to worry about patching and upgrades. We roll out upgrades that include fixes, new features and performance improvements on a periodic basis. For the full list of what is new in ClickHouse refer to our [Cloud changelog](/whats-new/cloud).
 
-:::note
-We're introducing a new upgrade mechanism, a concept we call "make before break" (or MBB). With this new approach, we add updated replicas before removing the old ones during the upgrade operation. This results in more seamless upgrades that are less disruptive to running workloads.
+> **note**: We're introducing a new upgrade mechanism, a concept we call "make before break" (or MBB). With this new approach, we add updated replicas before removing the old ones during the upgrade operation. This results in more seamless upgrades that are less disruptive to running workloads.
 
 As part of this change, historical system table data will be retained for up to a maximum of 30 days as part of upgrade events. In addition, any system table data older than December 19, 2024, for services on AWS or GCP, and older than January 14, 2025, for services on Azure won't be retained as part of the migration to the new organization tiers.
-:::
 
 ## Version compatibility {#version-compatibility}
 
@@ -48,9 +36,7 @@ The three release channels are:
 - The [**regular release channel**](#regular-release-channel) is the default, and upgrades on this channel start two weeks after the fast release channel upgrades. If your service on the Scale and Enterprise tier doesn't have a release channel set, it is on the regular release channel by default.
 - The [**slow release channel**](#slow-release-channel-deferred-upgrades) is for deferred release. Upgrades on this channel occur two weeks after the regular release channel upgrades.
 
-:::note
-Basic tier services are automatically enlisted to the fast release channel
-:::
+> **note**: Basic tier services are automatically enlisted to the fast release channel
 
 ### Fast release channel (early upgrades) {#fast-release-channel-early-upgrades}
 
@@ -68,12 +54,10 @@ You can modify the release schedule of the service in the Cloud console as shown
 <div class="eighty-percent">
     <Image img={fast_release} size="lg" alt="Select Plan" border/>
 </div>
-<br/>
 
 <div class="eighty-percent">
     <Image img={enroll_fast_release} size="lg" alt="Select Plan" border/>
 </div>
-<br/>
 
 This **Fast release** channel is suitable for testing new features in non-critical environments. **It isn't recommended for production workloads with strict uptime and reliability requirements.**
 
@@ -83,9 +67,7 @@ For all Scale and Enterprise tier services that don't have a release channel or 
 
 Upgrades to the regular release channel are typically performed two weeks after the **Fast release channel**.
 
-:::note
-Basic tier services are upgraded soon after the Fast release channel.
-:::
+> **note**: Basic tier services are upgraded soon after the Fast release channel.
 
 ### Slow release channel (deferred upgrades) {#slow-release-channel-deferred-upgrades}
 
@@ -99,11 +81,9 @@ Specifically, services will:
 - Receive ClickHouse releases ~ 2 weeks after the regular release
 - Be meant for customers that want additional time to test ClickHouse releases on their non-production environments before the production upgrade. Non-production environments can either get upgrades on the Fast or the Regular release channel for testing and validation.
 
-:::note
-You can change release channels at any time. However, in certain cases, the change will only apply to future releases. 
+> **note**: You can change release channels at any time. However, in certain cases, the change will only apply to future releases. 
 - Moving to a faster channel will immediately upgrade your service. i.e. Slow to Regular, Regular to Fast
 - Moving to a slower channel won't downgrade your service and keep you on your current version until a newer one is available in that channel. i.e. Regular to Slow, Fast to Regular or Slow
-:::
 
 ## Scheduled upgrades {#scheduled-upgrades}
 
@@ -116,14 +96,11 @@ Select the service for which you wish to specify an upgrade scheduled, followed 
 <div class="eighty-percent">
     <Image img={scheduled_upgrades} size="lg" alt="Scheduled upgrades" border/>
 </div>
-<br/>
 
 Selecting this option will allow you to select the day of the week/time window for database and cloud upgrades.
 
 <div class="eighty-percent">
     <Image img={scheduled_upgrade_window} size="lg" alt="Scheduled upgrade window" border/>
 </div>
-<br/>
-:::note
-While scheduled upgrades follow the defined schedule, exceptions apply to critical security patches and vulnerability fixes, as well as to scenarios where potential issues could lead to data corruption or data loss. In cases where an urgent security issue is identified, upgrades may be performed outside the scheduled window. Customers will be notified of such exceptions as necessary.
-:::
+
+> **note**: While scheduled upgrades follow the defined schedule, exceptions apply to critical security patches and vulnerability fixes, as well as to scenarios where potential issues could lead to data corruption or data loss. In cases where an urgent security issue is identified, upgrades may be performed outside the scheduled window. Customers will be notified of such exceptions as necessary.

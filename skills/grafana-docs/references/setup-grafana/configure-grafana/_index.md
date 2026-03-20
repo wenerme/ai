@@ -753,7 +753,7 @@ If you want to use OAuth/SAML for login, it is necessary to configure this attri
 
 #### `allow_embedding`
 
-When `false`, the HTTP header `X-Frame-Options: deny` is set in Grafana HTTP responses which instructs browsers to not allow rendering Grafana in a `<frame>`, `<iframe>`, `<embed>` or `<object>`.
+When `false`, the HTTP header `X-Frame-Options: deny` is set in Grafana HTTP responses which instructs browsers to not allow rendering Grafana in a ``, `<iframe>`, `<embed>` or `<object>`.
 The main goal is to mitigate the risk of [Clickjacking](https://owasp.org/www-community/attacks/Clickjacking).
 Default is `false`.
 

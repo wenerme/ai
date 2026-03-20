@@ -6,25 +6,6 @@
 }
 ---
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-
 This page summarizes large-scale benchmark results in both single-node and distributed deployments. The purpose of these tests is to show query behavior at different data scales, and to illustrate how Doris extends vector query capacity from single-node workloads to larger distributed deployments.
 
 ## Test Matrix
@@ -47,17 +28,17 @@ The single-node results provide a baseline for ANN query performance on medium-t
 | Dimension | 768 | 1536 |
 | metric_type | inner_product | inner_product |
 | Rows | 10M | 5M |
-| Batch config | `NUM_PER_BATCH=500000`<br/>`--stream-load-rows-per-batch 500000` | `NUM_PER_BATCH=250000`<br/>`--stream-load-rows-per-batch 250000` |
+| Batch config | `NUM_PER_BATCH=500000``--stream-load-rows-per-batch 500000` | `NUM_PER_BATCH=250000``--stream-load-rows-per-batch 250000` |
 | Import time | 76m41s | 41m |
 | `show data all` | 56.498 GB (25.354 GB + 31.145 GB) | 55.223 GB (25.346 GB + 29.878 GB) |
 
 CPU utilization during import for Performance768D10M is shown below. The chart indicates that CPU usage remains relatively stable throughout ingestion.
 
-<img src="/images/vector-search/Performance768D-CPU-Import.png" alt="Performance768D10M import CPU" width="900" height="435" />
+[Performance768D10M import CPU]
 
 For Performance1536D5M, the dataset is smaller and the batch size is also smaller, so CPU utilization fluctuates more frequently during ingestion.
 
-<img src="/images/vector-search/Performance1536D5M-CPU-Import.png" alt="Performance1536D5M import CPU" width="900" height="432" />
+[Performance1536D5M import CPU]
 
 ### Query Performance
 
@@ -88,7 +69,7 @@ For the two single-node workloads, Doris reaches hundreds of QPS while maintaini
 
 In the single-node query test, the cold-query phase needs to load the full index into memory, so CPU utilization is relatively low while the system waits for IO. During the warm-query phase, CPU utilization increases significantly and approaches 100%.
 
-<img src="/images/vector-search/Performance768D10M.png" alt="Performance768D10M query CPU" width="900" height="430" />
+[Performance768D10M query CPU]
 
 ## Distributed Benchmark (3 x 16C64GB)
 
@@ -103,7 +84,7 @@ For 3BE testing, `Performance768D100M` was selected. Since single-node memory is
 | Dataset | Performance768D100M |
 | Rows | 100M |
 | Dimension | 768 |
-| Batch config | `NUM_PER_BATCH=500000`<br/>`--stream-load-rows-per-batch 500000` |
+| Batch config | `NUM_PER_BATCH=500000``--stream-load-rows-per-batch 500000` |
 | Index properties | `"dim"="768", "index_type"="hnsw", "metric_type"="l2_distance", "pq_m"="384", "pq_nbits"="8", "quantizer"="pq"` |
 | Build index time | 4h5min |
 | `show data all` | 198.809 GB (137.259 GB + 61.550 GB) |
@@ -134,11 +115,11 @@ Post-build distribution:
 
 During index build, CPU utilization stays around 50%, indicating that the build process does not saturate CPU resources for an extended period.
 
-<img src="/images/vector-search/Performance-3BE-Import.jpg" alt="Performance768D100M import CPU" width="900" height="444" />
+[Performance768D100M import CPU]
 
 The chart below shows CPU utilization during the query phase. CPU usage stays at a relatively high level across the nodes, indicating that the distributed query workload makes good use of available compute resources.
 
-<img src="/images/vector-search/Performance3BE.png" alt="Performance768D100M query CPU" width="900" height="323" />
+[Performance768D100M query CPU]
 
 ## Summary
 

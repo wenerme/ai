@@ -1,6 +1,5 @@
 # GenAI-Bench
 
-
 ## Overview
 
 GenAI-Bench is a comprehensive text-to-image benchmark featuring 1600 prompts designed to evaluate image generation models across diverse categories and complexity levels.
@@ -28,7 +27,6 @@ GenAI-Bench is a comprehensive text-to-image benchmark featuring 1600 prompts de
 - Prompts categorized as 'basic' or 'advanced' based on complexity
 - Part of the T2V-Eval-Prompts dataset collection
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ GenAI-Bench is a comprehensive text-to-image benchmark featuring 1600 prompts de
 | **Metrics** | `VQAScore` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -115,5 +112,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

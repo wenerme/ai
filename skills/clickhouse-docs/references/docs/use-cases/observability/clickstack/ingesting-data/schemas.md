@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/observability/clickstack/ingesting-data/schemas
-pagination_prev: null
-pagination_next: null
 description: 'Tables and schemas used by ClickStack - The ClickHouse Observability Stack'
-sidebar_label: 'Tables and schemas'
 title: 'Tables and schemas used by ClickStack'
 doc_type: 'reference'
 keywords: ['clickstack', 'schema', 'data model', 'table design', 'logs']
@@ -229,10 +225,7 @@ ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
 
 ### Exponential histograms {#exponential-histograms}
 
-:::note
-HyperDX doesn't support fetching/displaying exponential histogram metrics yet. You may configure them in the metrics source but future support is forthcoming.
-:::
-
+> **note**: HyperDX doesn't support fetching/displaying exponential histogram metrics yet. You may configure them in the metrics source but future support is forthcoming.
 ```sql
 CREATE TABLE otel_metrics_exponentialhistogram
 (

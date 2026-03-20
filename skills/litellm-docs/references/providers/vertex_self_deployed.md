@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex AI - Self Deployed Models
 
@@ -7,28 +6,17 @@ Deploy and use your own models on Vertex AI through Model Garden or custom endpo
 
 ## Model Garden
 
-:::tip
-
-All OpenAI compatible models from Vertex Model Garden are supported. 
-
-:::
+> **tip**: All OpenAI compatible models from Vertex Model Garden are supported. 
 
 ### Using Model Garden
 
 **Almost all Vertex Model Garden models are OpenAI compatible.**
-
-<Tabs>
-
-<TabItem value="openai" label="OpenAI Compatible Models">
 
 | Property | Details |
 |----------|---------|
 | Provider Route | `vertex_ai/openai/{MODEL_ID}` |
 | Vertex Documentation | [Model Garden LiteLLM Inference](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/open-models/use-cases/model_garden_litellm_inference.ipynb), [Vertex Model Garden](https://cloud.google.com/model-garden?hl=en) |
 | Supported Operations | `/chat/completions`, `/embeddings` |
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -43,11 +31,6 @@ response = completion(
   messages=[{ "content": "Hello, how are you?","role": "user"}]
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
-
 
 **1. Add to config**
 
@@ -85,17 +68,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
         }'
 ```
 
-
-
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-<TabItem value="non-openai" label="Non-OpenAI Compatible Models">
-
 ```python
 from litellm import completion
 import os
@@ -109,10 +81,6 @@ response = completion(
   messages=[{ "content": "Hello, how are you?","role": "user"}]
 )
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Gemma Models (Custom Endpoints)
 

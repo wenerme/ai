@@ -1,6 +1,5 @@
 # MathVision
 
-
 ## Overview
 
 MATH-Vision (MATH-V) is a meticulously curated dataset of 3,040 high-quality mathematical problems with visual contexts sourced from real math competitions. It evaluates mathematical reasoning abilities in multimodal settings.
@@ -28,7 +27,6 @@ MATH-Vision (MATH-V) is a meticulously curated dataset of 3,040 high-quality mat
 - Free-form answers use \boxed{} format (without units)
 - Multiple-choice uses CoT prompting with letter answers
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ MATH-Vision (MATH-V) is a meticulously curated dataset of 3,040 high-quality mat
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -68,7 +65,6 @@ MATH-Vision (MATH-V) is a meticulously curated dataset of 3,040 high-quality mat
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 54x40 - 2520x8526 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -153,5 +149,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

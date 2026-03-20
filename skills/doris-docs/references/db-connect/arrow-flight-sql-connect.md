@@ -12,10 +12,9 @@ Since Doris 2.1, a high-speed data link based on the Arrow Flight SQL protocol h
 
 In Doris, query results are organized in columnar format as Blocks. In versions prior to 2.1, data could be transferred to the target client via MySQL Client or JDBC/ODBC drivers, but this required deserializing row-based Bytes into columnar format. By building a high-speed data transfer link based on Arrow Flight SQL, if the target client also supports Arrow columnar format, the entire transfer process avoids serialization and deserialization operations, completely eliminating the time and performance overhead associated with them.
 
-![Arrow Flight SQL](/images/db-connect/arrow-flight-sql/Arrow_Flight_SQL.png)
+[Arrow Flight SQL]
 
 To install Apache Arrow, you can find detailed installation instructions in the official documentation [Apache Arrow](https://arrow.apache.org/install/). For more information on how Doris implements the Arrow Flight protocol, you can refer to [Doris support Arrow Flight SQL protocol](https://github.com/apache/doris/issues/25514).
-
 
 ## Python Usage
 
@@ -240,7 +239,6 @@ execute("""CREATE TABLE arrow_flight_sql_test
     PROPERTIES("replication_num" = "1");""")
 execute("show create table arrow_flight_sql_test;")
 
-
 # step4, insert into
 execute("""INSERT INTO arrow_flight_sql_test VALUES
         ('0', 0.1, "ID", 0.0001, 9999999999, '2023-10-21'),
@@ -248,7 +246,6 @@ execute("""INSERT INTO arrow_flight_sql_test VALUES
         ('2', 3.4, "ID_1", 3.1, 123456, '2023-10-22'),
         ('3', 4, "ID", 4, 4, '2023-10-22'),
         ('4', 122345.54321, "ID", 122345.54321, 5, '2023-10-22');""")
-
 
 # step5, execute queries, aggregation, sort, set session variable
 execute("select * from arrow_flight_sql_test order by k0;")
@@ -289,7 +286,7 @@ $ env _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" java -jar ...
 
 If debugging in IntelliJ IDEA, you need to add `--add-opens=java.base/java.nio=ALL-UNNAMED` in `Build and run` of `Run/Debug Configurations`, refer to the picture below:
 
-![arrow-flight-sql-IntelliJ](/images/db-connect/arrow-flight-sql/arrow-flight-sql-IntelliJ.png)
+[arrow-flight-sql-IntelliJ]
 
 The connection code example is as follows:
 

@@ -27,11 +27,7 @@ Let's call the VLLM [`/score` endpoint](https://vllm.readthedocs.io/en/latest/ap
 
 1. Add a VLLM hosted model to your LiteLLM Proxy 
 
-:::info
-
-Works with LiteLLM v1.72.0+. 
-
-:::
+> **info**: Works with LiteLLM v1.72.0+. 
 
 ```yaml
 model_list:
@@ -66,7 +62,6 @@ curl -X 'POST' \
 }'
 ```
 
-
 ## Examples
 
 Anything after `http://0.0.0.0:4000/vllm` is treated as a provider-specific route, and handled accordingly.
@@ -78,7 +73,6 @@ Key Changes:
 | `https://my-vllm-server.com`          | `http://0.0.0.0:4000/vllm` (LITELLM_PROXY_BASE_URL="http://0.0.0.0:4000")      |
 | `bearer $VLLM_API_KEY`                                 | `bearer anything` (use `bearer LITELLM_VIRTUAL_KEY` if Virtual Keys are setup on proxy)                    |
 
-
 ### **Example 1: Metrics endpoint**
 
 #### LiteLLM Proxy Call 
@@ -88,7 +82,6 @@ curl -L -X GET 'http://0.0.0.0:4000/vllm/metrics' \
 -H 'Content-Type: application/json' \
 -H 'Authorization: Bearer $LITELLM_VIRTUAL_KEY' \
 ```
-
 
 #### Direct VLLM API Call 
 
@@ -138,7 +131,6 @@ curl -L -X POST 'https://my-vllm-server.com/chat/completions' \
 }'
 ```
 
-
 ## Advanced - Use with Virtual Keys 
 
 Pre-requisites
@@ -181,7 +173,6 @@ Expected Response
 ```
 
 3. Test it! 
-
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/vllm/chat/completions' \

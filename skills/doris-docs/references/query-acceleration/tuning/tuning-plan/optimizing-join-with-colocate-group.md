@@ -12,4 +12,4 @@ However, in some use cases, even if a Colocate Group has been successfully estab
 
 You can view the Colocate Group status using the command `SHOW PROC "/colocation_group";`. As shown in the figure below, if `IsStable` is `false`, it indicates that there are unavailable Colocate Group instances.
 
-![Optimizing Join with Colocate Group](/images/use-colocate-group.jpg)
+[Optimizing Join with Colocate Group]

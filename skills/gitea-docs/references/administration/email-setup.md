@@ -1,7 +1,5 @@
 ---
 date: "2019-10-15T10:10:00+05:00"
-slug: "email-setup"
-sidebar_position: 12
 aliases:
   - /en-us/email-setup
 ---
@@ -10,22 +8,15 @@ aliases:
 
 Gitea has mailer functionality for sending transactional emails (such as registration confirmation). It can be configured to either use Sendmail (or compatible MTAs like Postfix and msmtp) or directly use SMTP server.
 
-:::note
-Be sure to set ENABLE_NOTIFY_MAIL=true to allow Gitea to send email notifications. Check the [Config Cheat Sheet](../administration/config-cheat-sheet.md#service-service) for details.
-:::
+> **note**: Be sure to set ENABLE_NOTIFY_MAIL=true to allow Gitea to send email notifications. Check the [Config Cheat Sheet](../administration/config-cheat-sheet.md#service-service) for details.
 
 ## Using Sendmail
 
 Use `sendmail` command as mailer.
 
-:::note
-For use in the official Gitea Docker image, please configure with the SMTP version (see the following section).
-:::
+> **note**: For use in the official Gitea Docker image, please configure with the SMTP version (see the following section).
 
-:::note
-For Internet-facing sites consult documentation of your MTA for instructions to send emails over TLS. Also set up SPF, DMARC, and DKIM DNS records to make emails sent be accepted as legitimate by various email providers.
-:::
-
+> **note**: For Internet-facing sites consult documentation of your MTA for instructions to send emails over TLS. Also set up SPF, DMARC, and DKIM DNS records to make emails sent be accepted as legitimate by various email providers.
 ```ini title="app.ini"
 [mailer]
 ENABLED       = true
@@ -56,9 +47,7 @@ To send a test email to validate the settings, go to Gitea > Site Administration
 
 For the full list of options check the [Config Cheat Sheet](../administration/config-cheat-sheet.md)
 
-:::note
-Authentication is only supported when the SMTP server communication is encrypted with TLS or `HOST=localhost`. TLS encryption can be through:
-:::
+> **note**: Authentication is only supported when the SMTP server communication is encrypted with TLS or `HOST=localhost`. TLS encryption can be through:
 
 - STARTTLS (also known as Opportunistic TLS) via port 587 with `PROTOCOL=smtp+starttls`. Initial connection is done over cleartext, but then be upgraded over TLS if the server supports it.
 - SMTPS connection (SMTP over TLS) via the default port 465. Connection to the server use TLS from the beginning.

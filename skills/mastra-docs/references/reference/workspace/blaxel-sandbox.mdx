@@ -5,18 +5,11 @@ packages:
   - "@mastra/blaxel"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # BlaxelSandbox
 
 Executes commands in isolated [Blaxel](https://blaxel.ai/) cloud sandboxes. Provides secure, isolated code execution environments with support for mounting cloud storage (S3, GCS) via FUSE.
 
-:::info
-
-For interface details, see [WorkspaceSandbox interface](/reference/workspace/sandbox).
-
-:::
+> **info**: For interface details, see [WorkspaceSandbox interface](/reference/workspace/sandbox).
 
 ## Installation
 
@@ -179,9 +172,7 @@ console.log(handle.stdout)
 await handle.kill()
 ```
 
-:::note
-Blaxel sandboxes don't support stdin. Calling `handle.sendStdin()` throws an error.
-:::
+> **note**: Blaxel sandboxes don't support stdin. Calling `handle.sendStdin()` throws an error.
 
 See [`SandboxProcessManager` reference](/reference/workspace/process-manager) for the full API.
 

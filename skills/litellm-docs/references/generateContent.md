@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /generateContent
 
@@ -21,9 +20,6 @@ Use LiteLLM to call Google AI's generateContent endpoints for text generation, m
 ---
 
 ### LiteLLM Python SDK 
-
-<Tabs>
-<TabItem value="basic" label="Basic Usage">
 
 #### Non-streaming example
 ```python showLineNumbers title="Basic Text Generation"
@@ -75,10 +71,6 @@ async for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-
-<TabItem value="sync" label="Sync Usage">
-
 #### Sync non-streaming example
 ```python showLineNumbers title="Sync Text Generation"
 from litellm.google_genai import generate_content
@@ -129,9 +121,6 @@ for chunk in response:
     print(chunk)
 ```
 
-</TabItem>
-</Tabs>
-
 ### LiteLLM Proxy Server 
 
 1. Setup config.yaml
@@ -151,9 +140,6 @@ litellm --config /path/to/config.yaml
 ```
 
 3. Test it! 
-
-<Tabs>
-<TabItem value="gemini-proxy" label="Google GenAI SDK">
 
 ```python showLineNumbers title="Google GenAI SDK with LiteLLM Proxy"
 from google.genai import Client
@@ -176,11 +162,6 @@ response = client.models.generate_content(
     config={"max_output_tokens": 100}
 )
 ```
-
-
-</TabItem>
-
-<TabItem value="curl-proxy" label="curl">
 
 #### Generate Content
 
@@ -227,10 +208,6 @@ curl -L -X POST 'http://localhost:4000/v1beta/models/gemini-flash:streamGenerate
   }
 }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Related 
 

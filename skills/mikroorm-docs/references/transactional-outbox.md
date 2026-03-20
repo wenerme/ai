@@ -1,10 +1,6 @@
 ---
 title: Transactional Outbox Pattern
-sidebar_label: Transactional Outbox
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 When building event-driven applications, you often want to publish domain events (e.g., `UserCreated`, `OrderPlaced`) only after the corresponding database transaction commits. A naive approach — emitting events in an `afterTransactionCommit` hook — leaves a dangerous window: if the process crashes after commit but before the events are published, those events are lost, leading to an inconsistent state.
 
@@ -12,18 +8,7 @@ The **transactional outbox pattern** solves this by persisting events into an `o
 
 ## Defining the Outbox Entity
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity-class"
-  values={[
-    {label: 'defineEntity + class', value: 'define-entity-class'},
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'reflect-metadata', value: 'reflect-metadata'},
-    {label: 'ts-morph', value: 'ts-morph'},
-]
-  }
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts title="./entities/OutboxEvent.ts"
 import { defineEntity, p } from '@mikro-orm/core';
@@ -43,9 +28,9 @@ export class OutboxEvent extends OutboxEventSchema.class {}
 OutboxEventSchema.setClass(OutboxEvent);
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="define-entity">
+  
 
 ```ts title="./entities/OutboxEvent.ts"
 import { type InferEntity, defineEntity, p } from '@mikro-orm/core';
@@ -64,8 +49,8 @@ export const OutboxEvent = defineEntity({
 export type IOutboxEvent = InferEntity<typeof OutboxEvent>;
 ```
 
-  </TabItem>
-  <TabItem value="reflect-metadata">
+  
+  
 
 ```ts title="./entities/OutboxEvent.ts"
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -91,8 +76,8 @@ export class OutboxEvent {
 }
 ```
 
-  </TabItem>
-  <TabItem value="ts-morph">
+  
+  
 
 ```ts title="./entities/OutboxEvent.ts"
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
@@ -118,8 +103,7 @@ export class OutboxEvent {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ## Writing Events Inside the Transaction
 

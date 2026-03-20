@@ -1,8 +1,6 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /responses
-
 
 LiteLLM provides an endpoint in the spec of [OpenAI's `/responses` API](https://platform.openai.com/docs/api-reference/responses)
 
@@ -26,9 +24,6 @@ Requests to /chat/completions may be bridged here automatically when the provide
 ## Usage
 
 ### LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 #### Non-streaming
 ```python showLineNumbers title="OpenAI Non-streaming Response"
@@ -245,7 +240,6 @@ print(cancel_response)
 # cancel_response = await litellm.acancel_responses(response_id=response_id)
 ```
 
-
 **REST API:**
 ```bash
 curl -X POST http://localhost:4000/v1/responses/response_id/cancel \
@@ -279,10 +273,6 @@ print(delete_response)
 # For async usage
 # delete_response = await litellm.adelete_responses(response_id=response_id)
 ```
-
-</TabItem>
-
-<TabItem value="anthropic" label="Anthropic">
 
 #### Non-streaming
 ```python showLineNumbers title="Anthropic Non-streaming Response"
@@ -320,10 +310,6 @@ response = litellm.responses(
 for event in response:
     print(event)
 ```
-
-</TabItem>
-
-<TabItem value="vertex" label="Vertex AI">
 
 #### Non-streaming
 ```python showLineNumbers title="Vertex AI Non-streaming Response"
@@ -366,10 +352,6 @@ for event in response:
     print(event)
 ```
 
-</TabItem>
-
-<TabItem value="bedrock" label="AWS Bedrock">
-
 #### Non-streaming
 ```python showLineNumbers title="AWS Bedrock Non-streaming Response"
 import litellm
@@ -411,10 +393,6 @@ for event in response:
     print(event)
 ```
 
-</TabItem>
-
-<TabItem value="gemini" label="Google AI Studio">
-
 #### Non-streaming
 ```python showLineNumbers title="Google AI Studio Non-streaming Response"
 import litellm
@@ -452,9 +430,6 @@ for event in response:
     print(event)
 ```
 
-</TabItem>
-</Tabs>
-
 ### LiteLLM Proxy with OpenAI SDK
 
 First, set up and start your LiteLLM proxy server.
@@ -464,9 +439,6 @@ litellm --config /path/to/config.yaml
 
 # RUNNING on http://0.0.0.0:4000
 ```
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="OpenAI Proxy Configuration"
@@ -531,7 +503,6 @@ stream = client.responses.create(
     tools=[{"type": "image_generation", "partial_images": 2}],
 )
 
-
 for event in stream:
     print(f"event: {event}")
     if event.type == "response.image_generation_call.partial_image":
@@ -593,10 +564,6 @@ delete_response = client.responses.delete(response_id)
 print(delete_response)
 ```
 
-</TabItem>
-
-<TabItem value="anthropic" label="Anthropic">
-
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="Anthropic Proxy Configuration"
 model_list:
@@ -645,10 +612,6 @@ response = client.responses.create(
 for event in response:
     print(event)
 ```
-
-</TabItem>
-
-<TabItem value="vertex" label="Vertex AI">
 
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="Vertex AI Proxy Configuration"
@@ -699,10 +662,6 @@ response = client.responses.create(
 for event in response:
     print(event)
 ```
-
-</TabItem>
-
-<TabItem value="bedrock" label="AWS Bedrock">
 
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="AWS Bedrock Proxy Configuration"
@@ -755,10 +714,6 @@ for event in response:
     print(event)
 ```
 
-</TabItem>
-
-<TabItem value="gemini" label="Google AI Studio">
-
 First, add this to your litellm proxy config.yaml:
 ```yaml showLineNumbers title="Google AI Studio Proxy Configuration"
 model_list:
@@ -808,9 +763,6 @@ for event in response:
     print(event)
 ```
 
-</TabItem>
-</Tabs>
-
 ## WebSocket Mode
 
 The Responses API supports **WebSocket mode** for lower-latency, persistent connections ideal for agentic workflows. WebSocket mode works with **all LiteLLM providers**, not just those with native WebSocket support.
@@ -825,9 +777,6 @@ LiteLLM provides two WebSocket modes:
 The system automatically selects the appropriate mode based on provider capabilities.
 
 ### Usage
-
-<Tabs>
-<TabItem value="python" label="Python (websocket-client)">
 
 ```python showLineNumbers title="WebSocket with Python"
 import json
@@ -890,9 +839,6 @@ finally:
     ws.close()
 ```
 
-</TabItem>
-<TabItem value="javascript" label="JavaScript (ws)">
-
 ```javascript showLineNumbers title="WebSocket with JavaScript"
 const WebSocket = require('ws'); // npm install ws
 
@@ -950,9 +896,6 @@ ws.on('error', (error) => {
 });
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl (websocat)">
-
 ```bash showLineNumbers title="WebSocket with websocat"
 # Install websocat: brew install websocat (macOS) or cargo install websocat
 
@@ -969,9 +912,6 @@ websocat "ws://localhost:4000/v1/responses?model=gemini-2.5-flash" \
 # {"type":"response.output_text.delta","delta":"Hello",...}
 # {"type":"response.completed",...}
 ```
-
-</TabItem>
-</Tabs>
 
 ### Event Types
 
@@ -1093,11 +1033,7 @@ This allows any user to access any response ID.
 
 When using the Responses API with multiple deployments of the same model (e.g., multiple Azure OpenAI endpoints), LiteLLM provides session continuity. This ensures that follow-up requests using a `previous_response_id` are routed to the same deployment that generated the original response.
 
-
 #### Example Usage
-
-<Tabs>
-<TabItem value="python-sdk" label="Python SDK">
 
 ```python showLineNumbers title="Python SDK with Session Continuity"
 import litellm
@@ -1152,9 +1088,6 @@ follow_up = await router.aresponses(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy-server" label="Proxy Server">
-
 #### 1. Setup session continuity on proxy config.yaml
 
 To enable session continuity for Responses API in your LiteLLM proxy, set `optional_pre_call_checks` in your proxy config.yaml.
@@ -1164,9 +1097,8 @@ To enable session continuity for Responses API in your LiteLLM proxy, set `optio
 - `session_affinity`: sticky sessions based on session id (takes priority over `deployment_affinity`)
 - `deployment_affinity`: sticky sessions based on user key (applies even without `previous_response_id`)
 
-:::tip Recommended: Use `encrypted_content_affinity`
+> **tip**: Recommended: Use `encrypted_content_affinity`
 For Responses API with load balancing across deployments with **different API keys**, use `encrypted_content_affinity` instead of `deployment_affinity`. It only pins requests that contain encrypted content, avoiding quota reduction while preventing `invalid_encrypted_content` errors.
-:::
 
 Notes:
 - User-key affinity is keyed on `metadata.user_api_key_hash` (the API key hash). The OpenAI `user` request parameter is an end-user identifier and is intentionally not used for deployment affinity.
@@ -1225,9 +1157,6 @@ follow_up = client.responses.create(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Encrypted Content Affinity (Multi-Region Load Balancing)
 
 When load balancing Responses API across deployments with **different API keys** (e.g., different Azure regions or OpenAI organizations), encrypted content items (like `rs_...` reasoning items) can only be decrypted by the API key that created them.
@@ -1273,9 +1202,6 @@ The `encrypted_content_affinity` pre-call check routes follow-up requests contai
 
 ### Configuration
 
-<Tabs>
-<TabItem value="sdk" label="Python SDK">
-
 ```python
 from litellm import Router
 
@@ -1314,9 +1240,6 @@ response2 = await router.aresponses(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy Server">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: gpt-5.1-codex
@@ -1351,9 +1274,6 @@ router_settings:
 litellm --config config.yaml
 ```
 
-</TabItem>
-</Tabs>
-
 ### When to Use Each Affinity Type
 
 | Affinity Type | Use Case | Scope | Quota Impact |
@@ -1363,11 +1283,9 @@ litellm --config config.yaml
 | `session_affinity` | Session-based applications | All requests with same `session_id` | ⚠️ Reduces quota by # of sessions |
 | `deployment_affinity` | Simple sticky sessions | All requests from same API key | ❌ Reduces quota by # of users |
 
-
 ## Calling non-Responses API endpoints (`/responses` to `/chat/completions` Bridge)
 
 LiteLLM allows you to call non-Responses API models via a bridge to LiteLLM's `/chat/completions` endpoint. This is useful for calling Anthropic, Gemini and even non-Responses API OpenAI models.
-
 
 #### Python SDK Usage
 
@@ -1419,12 +1337,6 @@ curl http://localhost:4000/v1/responses \
     "input": "who is Michael Jordan"
   }'
 ```
-
-
-
-
-
-
 
 ## Server-side compaction
 
@@ -1583,9 +1495,6 @@ general_settings:
 
 Start a new conversation by making a request without specifying a previous response ID.
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```curl
 curl http://localhost:4000/v1/responses \
   -H "Content-Type: application/json" \
@@ -1595,9 +1504,6 @@ curl http://localhost:4000/v1/responses \
     "input": "who is Michael Jordan"
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -1617,9 +1523,6 @@ response = client.responses.create(
 print(response.id)  # Store this ID for future requests in same session
 print(response.output[0].content[0].text)
 ```
-
-</TabItem>
-</Tabs>
 
 Response:
 
@@ -1641,9 +1544,6 @@ Response:
 
 Continue the conversation by referencing the previous response ID to maintain conversation context.
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```curl
 curl http://localhost:4000/v1/responses \
   -H "Content-Type: application/json" \
@@ -1654,9 +1554,6 @@ curl http://localhost:4000/v1/responses \
     "previous_response_id": "resp_123abc"
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -1676,9 +1573,6 @@ follow_up_response = client.responses.create(
 
 print(follow_up_response.output[0].content[0].text)
 ```
-
-</TabItem>
-</Tabs>
 
 Response:
 
@@ -1700,9 +1594,6 @@ Response:
 
 Start a brand new conversation without referencing previous context to demonstrate how context is not maintained between sessions.
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```curl
 curl http://localhost:4000/v1/responses \
   -H "Content-Type: application/json" \
@@ -1712,9 +1603,6 @@ curl http://localhost:4000/v1/responses \
     "input": "can you tell me more about him"
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -1735,9 +1623,6 @@ new_session_response = client.responses.create(
 print(new_session_response.output[0].content[0].text)
 ```
 
-</TabItem>
-</Tabs>
-
 Response:
 
 ```json
@@ -1753,11 +1638,3 @@ Response:
   }]
 }
 ```
-
-
-
-
-
-
-
-

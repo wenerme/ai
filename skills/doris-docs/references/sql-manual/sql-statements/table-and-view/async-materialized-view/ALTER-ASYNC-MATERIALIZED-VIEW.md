@@ -71,4 +71,3 @@ PROPERTIES('swap' = 'false');
 ## Keywords
 
     ALTER, ASYNC, MATERIALIZED, VIEW
-

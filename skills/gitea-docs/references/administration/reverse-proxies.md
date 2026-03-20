@@ -1,7 +1,5 @@
 ---
 date: "2018-05-22T11:00:00+00:00"
-slug: "reverse-proxies"
-sidebar_position: 16
 aliases:
   - /en-us/reverse-proxies
 ---
@@ -179,9 +177,7 @@ If you want Apache HTTPD to serve your Gitea instance, you can add the following
 </VirtualHost>
 ```
 
-:::note
-The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
-:::
+> **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
 
 If you wish to use Let's Encrypt with webroot validation, add the line `ProxyPass /.well-known !` before `ProxyPass` to disable proxying these requests to Gitea.
 
@@ -206,9 +202,7 @@ In case you already have a site, and you want Gitea to share the domain name, yo
 
 Then you **MUST** set something like `[server] ROOT_URL = http://git.example.com/git/` correctly in your configuration.
 
-:::note
-The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
-:::
+> **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
 
 ## Apache HTTPD and serve static resources directly
 

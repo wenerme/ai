@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Evaluate LLMs - MLflow Evals, Auto Eval
 
@@ -15,7 +13,6 @@ pip install litellm
 pip install mlflow
 ```
 
-
 ### Step 1: Start LiteLLM Proxy on the CLI
 LiteLLM allows you to create an OpenAI compatible server for all supported LLMs. [More information on litellm proxy here](https://docs.litellm.ai/docs/simple_proxy)
 
@@ -26,8 +23,6 @@ $ litellm --model huggingface/bigcode/starcoder
 ```
 
 **Here's how you can create the proxy for other supported llms**
-<Tabs>
-<TabItem value="bedrock" label="Bedrock">
 
 ```shell
 $ export AWS_ACCESS_KEY_ID=""
@@ -38,8 +33,6 @@ $ export AWS_SECRET_ACCESS_KEY=""
 ```shell
 $ litellm --model bedrock/anthropic.claude-v2
 ```
-</TabItem>
-<TabItem value="huggingface" label="Huggingface (TGI)">
 
 ```shell
 $ export HUGGINGFACE_API_KEY=my-api-key #[OPTIONAL]
@@ -48,9 +41,6 @@ $ export HUGGINGFACE_API_KEY=my-api-key #[OPTIONAL]
 $ litellm --model huggingface/<your model name> --api_base https://k58ory32yinf1ly0.us-east-1.aws.endpoints.huggingface.cloud
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```shell
 $ export ANTHROPIC_API_KEY=my-api-key
 ```
@@ -58,21 +48,15 @@ $ export ANTHROPIC_API_KEY=my-api-key
 $ litellm --model claude-instant-1
 ```
 
-</TabItem>
-<TabItem value="vllm-local" label="VLLM">
 Assuming you're running vllm locally
 
 ```shell
 $ litellm --model vllm/facebook/opt-125m
 ```
-</TabItem>
-<TabItem value="openai-proxy" label="OpenAI Compatible Server">
 
 ```shell
 $ litellm --model openai/<model_name> --api_base <your-api-base>
 ```
-</TabItem>
-<TabItem value="together_ai" label="TogetherAI">
 
 ```shell
 $ export TOGETHERAI_API_KEY=my-api-key
@@ -80,10 +64,6 @@ $ export TOGETHERAI_API_KEY=my-api-key
 ```shell
 $ litellm --model together_ai/lmsys/vicuna-13b-v1.5-16k
 ```
-
-</TabItem>
-
-<TabItem value="replicate" label="Replicate">
 
 ```shell
 $ export REPLICATE_API_KEY=my-api-key
@@ -93,17 +73,9 @@ $ litellm \
   --model replicate/meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3
 ```
 
-</TabItem>
-
-<TabItem value="petals" label="Petals">
-
 ```shell
 $ litellm --model petals/meta-llama/Llama-2-70b-chat-hf
 ```
-
-</TabItem>
-
-<TabItem value="palm" label="Palm">
 
 ```shell
 $ export PALM_API_KEY=my-palm-key
@@ -111,10 +83,6 @@ $ export PALM_API_KEY=my-palm-key
 ```shell
 $ litellm --model palm/chat-bison
 ```
-
-</TabItem>
-
-<TabItem value="azure" label="Azure OpenAI">
 
 ```shell
 $ export AZURE_API_KEY=my-api-key
@@ -124,10 +92,6 @@ $ export AZURE_API_BASE=my-api-base
 $ litellm --model azure/my-deployment-name
 ```
 
-</TabItem>
-
-<TabItem value="ai21" label="AI21">
-
 ```shell
 $ export AI21_API_KEY=my-api-key
 ```
@@ -136,10 +100,6 @@ $ export AI21_API_KEY=my-api-key
 $ litellm --model j2-light
 ```
 
-</TabItem>
-
-<TabItem value="cohere" label="Cohere">
-
 ```shell
 $ export COHERE_API_KEY=my-api-key
 ```
@@ -147,11 +107,6 @@ $ export COHERE_API_KEY=my-api-key
 ```shell
 $ litellm --model command-nightly
 ```
-
-</TabItem>
-
-</Tabs>
-
 
 ### Step 2: Run MLflow
 Before running the eval we will set `openai.api_base` to the litellm proxy from Step 1
@@ -165,7 +120,6 @@ import openai
 import pandas as pd
 openai.api_key = "anything"             # this can be anything, we set the key on the proxy
 openai.api_base = "http://0.0.0.0:8000" # set api base to the proxy from step 1
-
 
 import mlflow
 eval_data = pd.DataFrame(
@@ -206,7 +160,6 @@ with mlflow.start_run() as run:
     eval_table = results.tables["eval_results_table"]
     print(f"See evaluation table below: \n{eval_table}")
 
-
 ```
 
 ### MLflow Output
@@ -218,7 +171,6 @@ See evaluation table below:
 0  What is the largest country  India is a large country   Russia is the largest country in the world in...           14           0.000146
 1   What is the weather in sf?     It's cold in SF today   I'm sorry, I cannot provide the current weath...           36           0.000143
 ```
-
 
 ## Using LiteLLM with AutoEval
 AutoEvals is a tool for quickly and easily evaluating AI model outputs using best practices.
@@ -280,14 +232,3 @@ Score(
     error=None
 )
 ```
-
-
-
-
-
-
-
-
-
-
-

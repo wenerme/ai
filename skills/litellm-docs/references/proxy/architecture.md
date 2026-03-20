@@ -1,13 +1,10 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Life of a Request
 
 ## High Level architecture
 
 <Image img={require('../../img/litellm_gateway.png')} style={{ width: '100%', maxWidth: '4000px' }} />
-
 
 ### Request Flow 
 

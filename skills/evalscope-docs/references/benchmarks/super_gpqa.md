@@ -1,6 +1,5 @@
 # SuperGPQA
 
-
 ## Overview
 
 SuperGPQA is a large-scale multiple-choice question answering dataset designed to evaluate model generalization across diverse fields. It contains 26,000+ questions from 50+ fields, with each question featuring 10 answer options.
@@ -31,7 +30,6 @@ SuperGPQA is a large-scale multiple-choice question answering dataset designed t
 - Uses Chain-of-Thought (CoT) prompting
 - Results can be grouped by field or discipline category
 
-
 ## Properties
 
 | Property | Value |
@@ -43,7 +41,6 @@ SuperGPQA is a large-scale multiple-choice question answering dataset designed t
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -214,5 +211,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

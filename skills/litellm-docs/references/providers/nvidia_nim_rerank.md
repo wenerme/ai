@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Nvidia NIM - Rerank
 
@@ -21,18 +20,11 @@ Nvidia NIM rerank models help you:
 **Supported Models:**
 - All Nvidia NIM rerank models on their platform
 
-:::tip
-
-See the full list of LiteLLM supported Nvidia NIM rerank models on [Nvidia NIM](https://models.litellm.ai)
-
-:::
+> **tip**: See the full list of LiteLLM supported Nvidia NIM rerank models on [Nvidia NIM](https://models.litellm.ai)
 
 ## Usage
 
 ### LiteLLM Python SDK
-
-<Tabs>
-<TabItem value="llama-1b" label="LLaMa 1B Model">
 
 ```python
 import litellm
@@ -54,9 +46,6 @@ response = litellm.rerank(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="mistral-4b" label="Mistral 4B Model">
-
 ```python
 import litellm
 import os
@@ -76,9 +65,6 @@ response = litellm.rerank(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 **Response:**
 ```json
@@ -101,7 +87,6 @@ print(response)
     ]
 }
 ```
-
 
 ## Usage with LiteLLM Proxy
 
@@ -224,7 +209,6 @@ model: "nvidia_nim/nvidia/model-name"
                             1. Extracts model: nvidia/model-name
                             2. Routes to default endpoint ──────▶ POST /v1/retrieval/nvidia/model-name/reranking
 
-
 # Forced ranking endpoint  
 model: "nvidia_nim/ranking/nvidia/model-name"
                             1. Detects "ranking/" prefix
@@ -240,11 +224,7 @@ model: "nvidia_nim/ranking/nvidia/model-name"
 | `/v1/retrieval/{model}/reranking` | `nvidia_nim/<model>` | Default for most rerank models |
 | `/v1/ranking` | `nvidia_nim/ranking/<model>` | For models like `nvidia/llama-3.2-nv-rerankqa-1b-v2` that require this endpoint |
 
-:::tip
-
-Check the [Nvidia NIM model deployment page](https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy) to see which endpoint your model requires.
-
-:::
+> **tip**: Check the [Nvidia NIM model deployment page](https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy) to see which endpoint your model requires.
 
 ## API Parameters
 
@@ -282,15 +262,9 @@ response = litellm.rerank(
 
 Set your Nvidia NIM API key:
 
-<Tabs>
-<TabItem value="env" label="Environment Variable">
-
 ```bash
 export NVIDIA_NIM_API_KEY="nvapi-..."
 ```
-
-</TabItem>
-<TabItem value="python" label="Python">
 
 ```python
 import os
@@ -304,9 +278,6 @@ response = litellm.rerank(
     api_key="nvapi-...",
 )
 ```
-
-</TabItem>
-</Tabs>
 
 ## Custom API Base URL
 

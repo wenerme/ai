@@ -1,21 +1,12 @@
 ---
 title: 'Pausing and Resuming a MongoDB ClickPipe'
 description: 'Pausing and Resuming a MongoDB ClickPipe'
-sidebar_label: 'Pause table'
-slug: /integrations/clickpipes/mongodb/pause_and_resume
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import Image from '@theme/IdealImage';
-import pause_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/pause_button.png'
-import pause_dialog from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/pause_dialog.png'
-import pause_status from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/pause_status.png'
-import resume_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/resume_button.png'
-import resume_dialog from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/resume_dialog.png'
 
 There are scenarios where it would be useful to pause a MongoDB ClickPipe. For example, you may want to run some analytics on existing data in a static state. Or, you might be performing upgrades on MongoDB. Here is how you can pause and resume a MongoDB ClickPipe.
 

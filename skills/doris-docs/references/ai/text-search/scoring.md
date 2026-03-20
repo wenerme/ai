@@ -57,7 +57,6 @@ Where:
 
 The final score of a row is the sum of the BM25 scores for all query terms.
 
-
 ## Using Scoring in Doris
 
 ### Supported Index Types

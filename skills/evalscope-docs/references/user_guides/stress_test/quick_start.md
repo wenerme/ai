@@ -11,7 +11,6 @@ EvalScope supports usage in Python environments. Users can install EvalScope via
 # Install additional dependencies
 pip install evalscope[perf] -U
 ```
-:::
 
 :::{tab-item} Source installation
 ```shell
@@ -19,7 +18,7 @@ git clone https://github.com/modelscope/evalscope.git
 cd evalscope
 pip install -e '.[perf]'
 ```
-:::
+
 ::::
 
 ## Basic Usage
@@ -45,7 +44,6 @@ evalscope perf \
   --tokenizer-path Qwen/Qwen2.5-0.5B-Instruct \
   --extra-args '{"ignore_eos": true}'
 ```
-:::
 
 :::{tab-item} Python script startup
 ```python
@@ -69,7 +67,7 @@ task_cfg = Arguments(
 )
 results = run_perf_benchmark(task_cfg)
 ```
-:::
+
 ::::
 
 **Parameter description**:
@@ -91,7 +89,7 @@ results = run_perf_benchmark(task_cfg)
 
 The output test report summary is shown in the image below, including basic information, metrics for each concurrency, and performance test suggestions:
 
-![multi_perf](./images/multi_perf.png)
+[multi_perf]
 
 ```{note}
 - The stress test report in the diagram is a summary of test results across multiple concurrency levels, allowing users to compare model performance under different concurrency settings. No summary report is generated for a single concurrency level.
@@ -185,7 +183,6 @@ Percentile results:
 | Output Throughput | The number of tokens output per second: Output tokens / Latency. |
 | Total Throughput | The number of tokens processed per second: (Input tokens + Output tokens) / Latency. |
 
-
 ## Visualizing Test Results
 
 ### Using WandB
@@ -205,7 +202,6 @@ To upload the test results to the wandb server and visualize them, add the follo
 For example:
 
 ![wandb sample](https://modelscope.oss-cn-beijing.aliyuncs.com/resource/wandb_sample.png)
-
 
 ### Using SwanLab
 
@@ -257,4 +253,3 @@ Add the following parameters before starting the test:
 ```
 
 ![clearml sample](https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/evalscope/doc/clearml_vis.jpg)
-

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Computer Use
 
@@ -19,9 +18,6 @@ Computer use allows models to interact with computer interfaces by taking screen
 LiteLLM will standardize the computer use tools across all supported providers.
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python
 import os 
@@ -66,9 +62,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy Server">
 
 1. Define computer use models on config.yaml
 
@@ -138,13 +131,7 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Checking if a model supports `computer use`
-
-<Tabs>
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 Use `litellm.supports_computer_use(model="")` -> returns `True` if model supports computer use and `False` if not
 
@@ -157,9 +144,6 @@ assert litellm.supports_computer_use(model="bedrock/anthropic.claude-3-5-sonnet-
 assert litellm.supports_computer_use(model="vertex_ai/claude-3-5-sonnet") == True
 assert litellm.supports_computer_use(model="openai/gpt-4") == False
 ```
-</TabItem>
-
-<TabItem label="LiteLLM Proxy Server" value="proxy">
 
 1. Define computer use models on config.yaml
 
@@ -223,15 +207,9 @@ Expected Response
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## Different Tool Types
 
 Computer use supports several different tool types for various interaction modes:
-
-<Tabs>
-<TabItem value="computer" label="Computer Tool">
 
 The `computer_20241022` tool provides direct screen interaction capabilities.
 
@@ -278,9 +256,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="bash" label="Bash Tool">
-
 The `bash_20241022` tool provides command line interface access.
 
 ```python
@@ -312,9 +287,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="text_editor" label="Text Editor Tool">
-
 The `text_editor_20250124` tool provides text file editing capabilities.
 
 ```python
@@ -345,9 +317,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced Usage with Multiple Tools
 

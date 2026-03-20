@@ -7,14 +7,10 @@ description: Comprehensive Guide to the RPCHandler in oRPC
 
 The `RPCHandler` enables communication with clients over oRPC's proprietary [RPC protocol](/docs/advanced/rpc-protocol), built on top of HTTP. While it efficiently transfers native types, the protocol is neither human-readable nor OpenAPI-compatible. For OpenAPI support, use the [OpenAPIHandler](/docs/openapi/openapi-handler).
 
-:::warning
-`RPCHandler` is designed exclusively for [RPCLink](/docs/client/rpc-link) and **does not** support OpenAPI. Avoid sending requests to it manually.
-:::
+> **warning**: `RPCHandler` is designed exclusively for [RPCLink](/docs/client/rpc-link) and **does not** support OpenAPI. Avoid sending requests to it manually.
 
-:::warning
-This documentation is focused on the [HTTP Adapter](/docs/adapters/http).
+> **warning**: This documentation is focused on the [HTTP Adapter](/docs/adapters/http).
 Other adapters may remove or change options to keep things simple.
-:::
 
 ## Supported Data Types
 
@@ -37,9 +33,7 @@ Other adapters may remove or change options to keep things simple.
 - **File** (unsupported in `AsyncIteratorObject`)
 - **AsyncIteratorObject** (only at the root level; powers the [Event Iterator](/docs/event-iterator))
 
-:::tip
-You can extend the list of supported types by [creating a custom serializer](/docs/advanced/rpc-json-serializer#extending-native-data-types).
-:::
+> **tip**: You can extend the list of supported types by [creating a custom serializer](/docs/advanced/rpc-json-serializer#extending-native-data-types).
 
 ## Setup and Integration
 
@@ -91,9 +85,7 @@ const handler = new RPCHandler(router, {
 | -------------------------------------------------------- | ----------------------------------- | ------------------------------ |
 | [StrictGetMethodPlugin](/docs/plugins/strict-get-method) | [HTTP Adapter](/docs/adapters/http) | `strictGetMethodPluginEnabled` |
 
-::: info
-You can safely disable default plugins if they don't provide any meaningful benefit for your use case.
-:::
+> **info**: You can safely disable default plugins if they don't provide any meaningful benefit for your use case.
 
 ## Lifecycle
 
@@ -127,13 +119,7 @@ sequenceDiagram
   P3 ->> A1: response
 ```
 
-::: tip
-Interceptors can be used to intercept and modify the lifecycle at various stages.
-:::
+> **tip**: Interceptors can be used to intercept and modify the lifecycle at various stages.
 
-:::info
-
-- The Server-side Procedure Client is a [Server-Side Client](/docs/client/server-side), and `clientInterceptors` are the same as [Server-Side Client Interceptors](/docs/client/server-side#lifecycle).
+> **info**: - The Server-side Procedure Client is a [Server-Side Client](/docs/client/server-side), and `clientInterceptors` are the same as [Server-Side Client Interceptors](/docs/client/server-side#lifecycle).
 - Some `RPCHandler` implementations may omit the `Request/Response encoder` when it's not required.
-
-:::

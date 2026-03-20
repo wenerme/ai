@@ -25,13 +25,12 @@ Doris supports various compression algorithms, each with different trade-offs be
 | **Compression Type**           | **Characteristics**          | **Applicable Scenarios**                                       |
 |---------------------------------|--------------------------------------------|----------------------------------------------|
 | **No Compression**             | - No compression applied to data.                                                                                     | Suitable for scenarios where compression is not needed, such as when the data is already compressed or storage space is not an issue. |
-| **LZ4**                        | - Very fast compression and decompression speeds. <br /> - Moderate compression ratio.                                 | Suitable for scenarios with high decompression speed requirements, such as real-time queries or high-concurrency loads. |
-| **LZ4F (LZ4 Frame)**           | - Extended version of LZ4 supporting more flexible compression configurations. <br /> - Fast speed with moderate compression ratio. | Needed when fast compression is required with fine control over configurations. |
-| **LZ4HC (LZ4 High Compression)** | - Higher compression ratio compared to LZ4, but slower compression speed. <br /> - Decompression speed is comparable to LZ4. | Needed when a higher compression ratio is required, while still focusing on decompression speed. |
-| **ZSTD (Zstandard)**           | - High compression ratio with flexible compression level adjustments. <br /> - Decompression speed remains fast even at high compression ratios. | Required for high storage efficiency demands, while balancing query performance. |
-| **Snappy**                     | - Designed for fast decompression. <br /> - Moderate compression ratio.                                                 | Required for scenarios with high decompression speed and low CPU overhead demands. |
-| **Zlib**                       | - Good balance between compression ratio and speed. <br /> - Slower compression and decompression speeds compared to other algorithms, but higher compression ratio. | Required for scenarios with high storage efficiency demands and insensitivity to decompression speed, such as archiving and cold data storage. |
-
+| **LZ4**                        | - Very fast compression and decompression speeds.  - Moderate compression ratio.                                 | Suitable for scenarios with high decompression speed requirements, such as real-time queries or high-concurrency loads. |
+| **LZ4F (LZ4 Frame)**           | - Extended version of LZ4 supporting more flexible compression configurations.  - Fast speed with moderate compression ratio. | Needed when fast compression is required with fine control over configurations. |
+| **LZ4HC (LZ4 High Compression)** | - Higher compression ratio compared to LZ4, but slower compression speed.  - Decompression speed is comparable to LZ4. | Needed when a higher compression ratio is required, while still focusing on decompression speed. |
+| **ZSTD (Zstandard)**           | - High compression ratio with flexible compression level adjustments.  - Decompression speed remains fast even at high compression ratios. | Required for high storage efficiency demands, while balancing query performance. |
+| **Snappy**                     | - Designed for fast decompression.  - Moderate compression ratio.                                                 | Required for scenarios with high decompression speed and low CPU overhead demands. |
+| **Zlib**                       | - Good balance between compression ratio and speed.  - Slower compression and decompression speeds compared to other algorithms, but higher compression ratio. | Required for scenarios with high storage efficiency demands and insensitivity to decompression speed, such as archiving and cold data storage. |
 
 ## Compression Principles
 

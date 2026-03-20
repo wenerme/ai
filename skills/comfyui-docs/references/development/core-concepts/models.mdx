@@ -1,13 +1,6 @@
 ---
 title: "Models"
-icon: "cube"
 ---
-
-import ExternalModels from "/snippets/install/add-external-models.mdx"
-
-{/*
-description: "Understand AI models and their role in ComfyUI"
-*/}
 
 ## Models are essential
 
@@ -47,7 +40,7 @@ Organizations and companies such as Stability AI and Black Forest Labs release â
 
 Model functionality can be extended with auxiliary models. For example, art directing a text-to-image workflow to achieve a specific result may be difficult or impossible using a diffusion model alone. Additional models can refine a diffusion model within the workflow graph to produce desired results. Examples include **LoRA** (Low Rank Adaptation), a small model that is trained on a specific subject; **ControlNet**, a model that helps control composition using a guide image; and **Inpainting**, a model that allows certain diffusion models to generate new content within an existing image.
 
-![auxiliary models](/images/concepts/core-concepts_auxiliary-model.png)
+[auxiliary models]
 
 ## Uninstalling models
 
@@ -55,12 +48,11 @@ ComfyUI does not currently support uninstalling models through the frontend inte
 
 ## Common issues
 
-<AccordionGroup>
-  <Accordion title="Does ComfyUI support GGUF format models?">
+  
     ComfyUI does not natively support GGUF format models. To use GGUF models, you need to install community custom nodes such as [ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF).
-  </Accordion>
+  
 
-  <Accordion title="Why can't I find my model?">
+  
     If you've installed a model but can't find it in ComfyUI, try these steps:
     
     - Verify the model is in the correct location:
@@ -69,5 +61,3 @@ ComfyUI does not currently support uninstalling models through the frontend inte
     - Press the `r` key to refresh node definitions so ComfyUI can detect the model
     - Restart ComfyUI
     - Ensure the correct model is selected in the model loader node
-  </Accordion>
-</AccordionGroup>

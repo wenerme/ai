@@ -3,25 +3,16 @@ title: "Cloud API Reference"
 description: "Complete API reference with code examples for Comfy Cloud"
 ---
 
-import PollJobCompletion from '/snippets/cloud/poll-job-completion.mdx'
-import WebSocketProgress from '/snippets/cloud/websocket-progress.mdx'
-import DownloadOutputs from '/snippets/cloud/download-outputs.mdx'
-
-<Warning>
   **Experimental API:** This API is experimental and subject to change. Endpoints, request/response formats, and behavior may be modified without notice. Some endpoints are maintained for compatibility with local ComfyUI but may have different semantics (e.g., ignored fields).
-</Warning>
 
 This page provides complete examples for common Comfy Cloud API operations.
 
-<Note>
   **Subscription Required:** Running workflows via the API requires an active Comfy Cloud subscription. See [pricing plans](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for details.
-</Note>
 
 ## Setup
 
 All examples use these common imports and configuration:
 
-<CodeGroup>
 ```bash curl
 export COMFY_CLOUD_API_KEY="your-api-key"
 export BASE_URL="https://cloud.comfy.org"
@@ -58,7 +49,6 @@ def get_headers():
         "Content-Type": "application/json"
     }
 ```
-</CodeGroup>
 
 ---
 
@@ -66,7 +56,6 @@ def get_headers():
 
 Retrieve available node definitions. This is useful for understanding what nodes are available and their input/output specifications.
 
-<CodeGroup>
 ```bash curl
 curl -X GET "$BASE_URL/api/object_info" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY"
@@ -107,7 +96,6 @@ ksampler = object_info.get("KSampler", {})
 inputs = list(ksampler.get('input', {}).get('required', {}).keys())
 print(f"KSampler inputs: {inputs}")
 ```
-</CodeGroup>
 
 ---
 
@@ -117,7 +105,6 @@ Upload images, masks, or other files for use in workflows.
 
 ### Direct Upload (Multipart)
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/upload/image" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY" \
@@ -178,15 +165,11 @@ def upload_input(file_path: str, input_type: str = "input") -> dict:
 result = upload_input("my_image.png")
 print(f"Uploaded: {result['name']} to {result['subfolder']}")
 ```
-</CodeGroup>
 
 ### Upload Mask
 
-<Note>
   The `subfolder` parameter is accepted for API compatibility but ignored in cloud storage. All files are stored in a flat, content-addressed namespace.
-</Note>
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/upload/mask" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY" \
@@ -250,7 +233,6 @@ def upload_mask(file_path: str, original_ref: dict) -> dict:
     response.raise_for_status()
     return response.json()
 ```
-</CodeGroup>
 
 ---
 
@@ -260,7 +242,6 @@ Submit a workflow for execution.
 
 ### Submit Workflow
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/prompt" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY" \
@@ -319,17 +300,13 @@ with open("workflow_api.json") as f:
 prompt_id = submit_workflow(workflow)
 print(f"Submitted job: {prompt_id}")
 ```
-</CodeGroup>
 
 ### Using Partner Nodes
 
 If your workflow contains [Partner Nodes](/tutorials/api-nodes/overview) (nodes that call external AI services like Flux Pro, Ideogram, etc.), you must include your Comfy API key in the `extra_data` field of the request payload.
 
-<Note>
   The ComfyUI frontend automatically packages your API key into `extra_data` when running workflows in the browser. This section is only relevant when calling the API directly.
-</Note>
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/prompt" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY" \
@@ -393,15 +370,11 @@ def submit_workflow_with_partner_nodes(workflow: dict, api_key: str) -> str:
 # Use when workflow contains Partner Nodes
 prompt_id = submit_workflow_with_partner_nodes(workflow, API_KEY)
 ```
-</CodeGroup>
 
-<Info>
   Generate your API key at [platform.comfy.org](https://platform.comfy.org/login). This is the same key used for Cloud API authentication (`X-API-Key` header).
-</Info>
 
 ### Modify Workflow Inputs
 
-<CodeGroup>
 ```typescript TypeScript
 function setWorkflowInput(
   workflow: Record<string, any>,
@@ -442,7 +415,6 @@ def set_workflow_input(workflow: dict, node_id: str, input_name: str, value) -> 
 workflow = set_workflow_input(workflow, "3", "seed", 12345)
 workflow = set_workflow_input(workflow, "6", "text", "a beautiful landscape")
 ```
-</CodeGroup>
 
 ---
 
@@ -458,9 +430,7 @@ Poll for job completion.
 
 Connect to the WebSocket for real-time execution updates.
 
-<Note>
   The `clientId` parameter is currently ignored—all connections for a user receive the same messages. Pass a unique `clientId` for forward compatibility.
-</Note>
 
 <WebSocketProgress />
 
@@ -494,25 +464,24 @@ During image generation, ComfyUI sends **binary WebSocket frames** containing pr
 
 **Binary frame formats** (all integers are big-endian):
 
-<Tabs>
-  <Tab title="PREVIEW_IMAGE (1)">
+  
     | Offset | Size | Field | Description |
     |--------|------|-------|-------------|
     | 0 | 4 bytes | `type` | `0x00000001` |
     | 4 | 4 bytes | `image_type` | Format code (1=JPEG, 2=PNG) |
     | 8 | variable | `image_data` | Raw image bytes |
-  </Tab>
   
-  <Tab title="TEXT (3)">
+  
+  
     | Offset | Size | Field | Description |
     |--------|------|-------|-------------|
     | 0 | 4 bytes | `type` | `0x00000003` |
     | 4 | 4 bytes | `node_id_len` | Length of node_id string |
     | 8 | N bytes | `node_id` | UTF-8 encoded node ID |
     | 8+N | variable | `text` | UTF-8 encoded progress text |
-  </Tab>
   
-  <Tab title="PREVIEW_WITH_METADATA (4)">
+  
+  
     | Offset | Size | Field | Description |
     |--------|------|-------|-------------|
     | 0 | 4 bytes | `type` | `0x00000004` |
@@ -530,12 +499,9 @@ During image generation, ComfyUI sends **binary WebSocket frames** containing pr
       "parent_node_id": null
     }
     ```
-  </Tab>
-</Tabs>
+  
 
-<Note>
   See the [OpenAPI Specification](/development/cloud/openapi) for complete schema definitions of each JSON message type.
-</Note>
 
 ---
 
@@ -551,7 +517,6 @@ Retrieve generated files after job completion.
 
 Here's a full example that ties everything together:
 
-<CodeGroup>
 ```typescript TypeScript
 const BASE_URL = "https://cloud.comfy.org";
 const API_KEY = process.env.COMFY_CLOUD_API_KEY!;
@@ -786,7 +751,6 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-</CodeGroup>
 
 ---
 
@@ -794,7 +758,6 @@ if __name__ == "__main__":
 
 ### Get Queue Status
 
-<CodeGroup>
 ```bash curl
 curl -X GET "$BASE_URL/api/queue" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY"
@@ -831,11 +794,9 @@ queue = get_queue()
 print(f"Running: {len(queue.get('queue_running', []))}")
 print(f"Pending: {len(queue.get('queue_pending', []))}")
 ```
-</CodeGroup>
 
 ### Cancel a Job
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/queue" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY" \
@@ -865,11 +826,9 @@ def cancel_job(prompt_id: str):
     response.raise_for_status()
     return response.json()
 ```
-</CodeGroup>
 
 ### Interrupt Current Execution
 
-<CodeGroup>
 ```bash curl
 curl -X POST "$BASE_URL/api/interrupt" \
   -H "X-API-Key: $COMFY_CLOUD_API_KEY"
@@ -894,7 +853,6 @@ def interrupt():
     )
     response.raise_for_status()
 ```
-</CodeGroup>
 
 ---
 

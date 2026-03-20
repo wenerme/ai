@@ -54,7 +54,7 @@ You can write raw InfluxQL queries by switching to raw query mode. Click the pen
 
 If you use raw query mode, your query must include `WHERE $timeFilter`. You should also provide a group by time and an aggregation function. Otherwise, InfluxDB may return hundreds of thousands of data points, potentially causing your browser to hang.
 
-![InfluxQL query editor](/static/img/docs/influxdb/influxql-query-editor-8-0.png)
+[InfluxQL query editor]
 
 ### Match by regular expressions
 
@@ -70,8 +70,6 @@ In the `SELECT` row, you can specify which fields and functions to use.
 If you **group by time** you must use an aggregation function. Certain functions such as `derivative` also require an aggregation function.
 
 If you have the following:
-
-![](/static/img/docs/influxdb/select_editor.png)
 
 The query editor input generates an InfluxDB `SELECT` clause:
 

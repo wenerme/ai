@@ -10,7 +10,7 @@ This variable dynamically fetches values from a selected field in a stream. It s
 
 **Use Case:** Filter the dashboard panels by Pod name using values from logs.
 
-![Query variable](../../../images/variables-query.png)
+[Query variable]
 !!! Configuration
     **Basic**:
     
@@ -29,7 +29,6 @@ This variable dynamically fetches values from a selected field in a stream. It s
     - **Hide on Dashboard**: Disabled
     - **Escape Single Quotes**: Disabled
 
-
 **Result**: 
 
 - This configuration allows users to dynamically select one or more Kubernetes pod names from the logs stream to apply that selection across dashboard panels.
@@ -46,7 +45,7 @@ This variable allows you to set a fixed value that cannot be changed by dashboar
 **When to use:** When the value should always stay the same and must not be changed by anyone using the dashboard.
 
 **Use case:** Building a dashboard that focuses only on logs from a specific Kubernetes namespace named ziox.
-![Constant variable](../../../images/constant-variable.png)
+[Constant variable]
 
 !!! Configuration
     **Basic**: 
@@ -73,7 +72,7 @@ This variable provides a free-form text input field on the dashboard.
 **When to use:** When users need to manually enter a value that may not exist in the dropdown, such as custom IDs or strings.
 
 **Use Case:** You want users to manually enter the cluster name they want to filter logs by.
-![Textbox variable](../../../images/textbox-variable.png)
+[Textbox variable]
 !!! Configuration
     **Basic**:
 
@@ -86,7 +85,6 @@ This variable provides a free-form text input field on the dashboard.
 
     - **Hide On Dashboard**: Disabled
     - **Escape Single Quotes**: Disabled
-
 
 **Result**: 
 
@@ -104,8 +102,6 @@ This variable provides a free-form text input field on the dashboard.
     - No validation is performed on the input. The value is passed directly into the query.
     - To match all values, users must enter exactly `_o2_all_`. Writing `ALL`, `all`, or `<ALL>` will not match all values.
 
-
-
 ## 4. Custom
 
 This variable lets you predefine a list of selectable values.
@@ -113,7 +109,7 @@ This variable lets you predefine a list of selectable values.
 **When to use:** When values are known in advance and should not be fetched from data.
 
 **Use Case:** You want to allow users to select a predefined service from a list, such as openobserve or ingress-nginx. This is useful when the possible values are known and limited, and you want to control what the user can select.
-![Custom variable](../../../images/custom-variable.png)
+[Custom variable]
 !!! Configuration
 
     **Basic**: 
@@ -146,9 +142,6 @@ This variable lets you predefine a list of selectable values.
     - One value must be selected as the default.
     - Labels are shown on the dashboard, while values are used in the query.
     - The values are injected into queries as-is. No validation or transformation is applied.
-
-
-
 
 ## Next Steps
 

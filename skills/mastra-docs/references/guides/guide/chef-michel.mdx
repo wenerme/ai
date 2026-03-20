@@ -3,10 +3,6 @@ title: "Guide: How to build an AI chef assistant"
 description: Guide on creating a Chef Assistant agent in Mastra to help users cook meals with available ingredients.
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-import YouTube from "@site/src/components/YouTube-player";
-
 # How to build an AI chef assistant
 
 In this guide, you'll create a "Chef Assistant" agent that helps users cook meals with available ingredients.
@@ -25,7 +21,6 @@ You'll learn how to create the agent and register it with Mastra. Next, you'll i
 
 To create an agent in Mastra use the `Agent` class to define it and then register it with Mastra.
 
-<Steps>
   <StepItem>
     Create a new file `src/mastra/agents/chefAgent.ts` and define your agent:
 
@@ -55,13 +50,11 @@ To create an agent in Mastra use the `Agent` class to define it and then registe
     })
     ```
   </StepItem>
-</Steps>
 
 ## Interact with the agent
 
 Depending on your requirements you can interact and get responses from the agent in different formats. In the following steps you'll learn how to generate, stream, and get structured output.
 
-<Steps>
   <StepItem>
     Create a new file `src/index.ts` and add a `main()` function to it. Inside, craft a query to ask the agent and log its response.
 
@@ -190,13 +183,11 @@ Depending on your requirements you can interact and get responses from the agent
     }
     ```
   </StepItem>
-</Steps>
 
 ## Run the agent server
 
 Learn how to interact with your agent through Mastra's API.
 
-<Steps>
   <StepItem>
     You can run your agent as a service using the `mastra dev` command:
 
@@ -239,4 +230,3 @@ Learn how to interact with your agent through Mastra's API.
     }
     ```
   </StepItem>
-</Steps>

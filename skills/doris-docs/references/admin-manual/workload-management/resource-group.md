@@ -8,7 +8,7 @@
 
 Resource Group is a mechanism under the compute-storage integration architecture that achieves physical isolation between different workloads. Its basic principle is illustrated in this diagram:
 
-![Resource Group under the compute-storage integration architecture](/images/resource_group.png)
+[Resource Group under the compute-storage integration architecture]
 
 - By using tags, BEs are divided into different groups, each identified by the tag's name. For example, in the diagram above, host1, host2, and host3 are all set to group a, while host4 and host5 are set to group b.
 
@@ -50,7 +50,6 @@ We can use the following commands to divide these 6 nodes into 3 resource groups
     Here, we will form Resource Group group_a with host[1-2], Resource Group group_b with host[3-4], and Resource Group group_c with host[5-6].
 
    > Note: A BE can only belong to one Resource Group.
-
 
 ### Redistribution data by Resource Group
 
@@ -117,7 +116,6 @@ The following diagram demonstrates the current division of nodes and data distri
 
     Create table1 with a specific distribution strategy:
 
-
    ```sql
    CREATE TABLE table1
    (k1 int, k2 int)
@@ -132,7 +130,6 @@ The following diagram demonstrates the current division of nodes and data distri
    :::caution
    Changing the replica distribution strategy at the database level will not affect existing tables.
    :::
-
 
 ## Setting Resource Groups for Users
 

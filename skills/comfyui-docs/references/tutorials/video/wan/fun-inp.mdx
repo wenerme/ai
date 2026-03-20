@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.1 Fun InP Video Examples"
 description: "This guide demonstrates how to use Wan2.1 Fun InP in ComfyUI to generate videos with first and last frame control"
-sidebarTitle: "Wan2.1 Fun InP"
 ---
-
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 ## About Wan2.1-Fun-InP
 
@@ -24,11 +21,7 @@ Below are the relevant model weights and code repositories:
 - [Wan2.1-Fun-14B-Input](https://huggingface.co/alibaba-pai/Wan2.1-Fun-14B-Input)
 - Code repository: [VideoX-Fun](https://github.com/aigc-apps/VideoX-Fun)
 
-<Tip>
 Currently, ComfyUI natively supports the Wan2.1 Fun InP model. Before starting this tutorial, please update your ComfyUI to ensure your version is after [this commit](https://github.com/comfyanonymous/ComfyUI/commit/0a1f8869c9998bbfcfeb2e97aa96a6d3e0a2b5df).
-</Tip>
-
-<UpdateReminder/>
 
 ## Wan2.1 Fun InP Workflow
 
@@ -74,7 +67,7 @@ File storage location:
 
 ### 3. Complete the Workflow Step by Step
 
-![ComfyUI Wan2.1 Fun InP Video Generation Workflow Diagram](/images/tutorial/video/wan/fun_inp_flow_diagram.png)
+[ComfyUI Wan2.1 Fun InP Video Generation Workflow Diagram]
 
 1. Ensure the `Load Diffusion Model` node has loaded `wan2.1_fun_inp_1.3B_bf16.safetensors`
 2. Ensure the `Load CLIP` node has loaded `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
@@ -88,9 +81,7 @@ File storage location:
 
 ### 4. Workflow Notes
 
-<Tip>
 Please make sure to use the correct model, as `wan2.1_fun_inp_1.3B_bf16.safetensors` and `wan2.1_fun_control_1.3B_bf16.safetensors` are stored in the same folder and have very similar names. Ensure you're using the right model.
-</Tip>
 
 - When using Wan Fun InP, you may need to frequently modify prompts to ensure the accuracy of the corresponding scene transitions.
 

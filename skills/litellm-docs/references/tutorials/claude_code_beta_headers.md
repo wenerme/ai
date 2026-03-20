@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Claude Code - Managing Anthropic Beta Headers
 
@@ -129,11 +128,10 @@ litellm --config config.yaml
 # Just restart your Python application
 ```
 
-:::tip Zero-Downtime Updates
+> **tip**: Zero-Downtime Updates
 With dynamic reloading, you can fix invalid beta header errors **without restarting your service**! This is especially useful in production environments where downtime is costly.
 
 See [Auto Sync Anthropic Beta Headers](../proxy/sync_anthropic_beta_headers.md) for complete documentation.
-:::
 
 ## Fixing Invalid Beta Header Errors
 
@@ -193,7 +191,6 @@ Tested with:
 - Anthropic docs: [link]
 - AWS Bedrock docs: [link]
 ```
-
 
 ## How Beta Header Filtering Works
 

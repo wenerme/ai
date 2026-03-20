@@ -1,6 +1,5 @@
 # ARC
 
-
 ## Overview
 
 ARC (AI2 Reasoning Challenge) is a benchmark designed to evaluate science question answering capabilities of AI models. It consists of multiple-choice science questions from grade 3 to grade 9, divided into an Easy set and a Challenge set based on difficulty.
@@ -27,7 +26,6 @@ ARC (AI2 Reasoning Challenge) is a benchmark designed to evaluate science questi
 - Challenge set is commonly used for leaderboard comparisons
 - Supports few-shot evaluation with train split examples
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ ARC (AI2 Reasoning Challenge) is a benchmark designed to evaluate science questi
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -129,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

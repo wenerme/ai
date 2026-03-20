@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'SSL user certificate authentication'
-sidebar_position: 3
-slug: /guides/sre/ssl-user-auth
 title: 'Configuring SSL User Certificate for Authentication'
 description: 'This guide provides simple and minimal settings to configure authentication with SSL user certificates.'
 doc_type: 'guide'
@@ -9,27 +6,22 @@ keywords: ['ssl', 'authentication', 'security', 'certificates', 'user management
 ---
 
 # Configuring SSL user certificate for authentication
-import SelfManaged from '@site/docs/_snippets/_self_managed_only_no_roadmap.md';
 
 <SelfManaged />
 
 This guide provides simple and minimal settings to configure authentication with SSL user certificates. The tutorial builds on the [Configuring TLS user guide](../tls/configuring-tls.md).
 
-:::note
-SSL user authentication is supported when using the `https`, `native`, `mysql`, and `postgresql` interfaces.
+> **note**: SSL user authentication is supported when using the `https`, `native`, `mysql`, and `postgresql` interfaces.
 
 ClickHouse nodes need `<verificationMode>strict</verificationMode>` set for secure authentication (although `relaxed` will work for testing purposes).
 
 If you use AWS NLB with the MySQL interface, you have to ask AWS support to enable the undocumented option:
 
 > I would like to be able to configure our NLB proxy protocol v2 as below `proxy_protocol_v2.client_to_server.header_placement,Value=on_first_ack`.
-:::
 
 ## 1. Create SSL user certificates {#1-create-ssl-user-certificates}
 
-:::note
-This example uses self-signed certificates with a self-signed CA. For production environments, create a CSR and submit to your PKI team or certificate provider to obtain a proper certificate.
-:::
+> **note**: This example uses self-signed certificates with a self-signed CA. For production environments, create a CSR and submit to your PKI team or certificate provider to obtain a proper certificate.
 
 1. Generate a Certificate Signing Request (CSR) and key. The basic format is the following:
     ```bash
@@ -54,9 +46,7 @@ This example uses self-signed certificates with a self-signed CA. For production
 
 ## 2. Create a SQL user and grant permissions {#2-create-a-sql-user-and-grant-permissions}
 
-:::note
-For details on how to enable SQL users and set roles, refer to [Defining SQL Users and Roles](index.md) user guide.
-:::
+> **note**: For details on how to enable SQL users and set roles, refer to [Defining SQL Users and Roles](index.md) user guide.
 
 1. Create a SQL user defined to use the certificate authentication:
     ```sql
@@ -84,7 +74,7 @@ For details on how to enable SQL users and set roles, refer to [Defining SQL Use
             </networks>
             <profile>default</profile>
             <access_management>1</access_management>
-            <!-- additional options-->
+            
         </cert_user>
     </users>
     ```

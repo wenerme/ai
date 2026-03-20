@@ -8,9 +8,7 @@ Litellm Proxy has the following release cycle:
 
 In production, we recommend using the latest `v1.x.x:main-stable` release.
 
-
 Follow our release notes [here](https://github.com/BerriAI/litellm/releases).
-
 
 ## FAQ
 
@@ -26,6 +24,5 @@ Stable releases come out every week (typically Sunday)
 
 ### Enterprise Support
 
-
 - Stable releases come out every week. Once a new one is available, we no longer provide support for an older one. 
-- If there is a MAJOR change (according to semvar conventions - e.g. 1.x.x -> 2.x.x), we can provide support for upto 90 days on the prior stable image. 
+- If there is a MAJOR change (according to semvar conventions - e.g. 1.x.x -> 2.x.x), we can provide support for upto 90 days on the prior stable image.

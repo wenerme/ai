@@ -58,7 +58,6 @@ select dayofyear('2023-12-31');
 |                     365 |
 +-------------------------+
 
-
 ---Calculate day number in a leap year
 select dayofyear('2024-12-31');
 +-------------------------+

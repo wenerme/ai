@@ -1,16 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/java
-pagination_prev: null
-pagination_next: null
-sidebar_position: 3
 description: 'Java SDK for ClickStack - The ClickHouse Observability Stack'
 title: 'Java'
 doc_type: 'guide'
 keywords: ['Java SDK ClickStack', 'Java OpenTelemetry ClickStack', 'Java observability SDK', 'ClickStack Java integration', 'Java application monitoring']
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ClickStack uses the OpenTelemetry standard for collecting telemetry data (logs and
 traces). Traces are auto-generated with automatic instrumentation, so manual
@@ -30,9 +23,7 @@ instrumentation isn't required to get value out of tracing.
 
 ## Getting started {#getting-started}
 
-:::note
-At present, the integration is compatible exclusively with **Java 8+**
-:::
+> **note**: At present, the integration is compatible exclusively with **Java 8+**
 
 ### Download OpenTelemetry Java agent {#download-opentelemetry-java-agent}
 
@@ -49,9 +40,6 @@ curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/
 
 Afterwards you'll need to configure the following environment variables in your shell to ship telemetry to ClickStack via the OpenTelemetry collector:
 
-<Tabs groupId="service-type">
-<TabItem value="clickstack-managed" label="Managed ClickStack" default>
-
 ```shell
 export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
 OTEL_EXPORTER_OTLP_ENDPOINT=https://your-otel-collector:4318 \
@@ -59,10 +47,6 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf \
 OTEL_LOGS_EXPORTER=otlp \
 OTEL_SERVICE_NAME='<NAME_OF_YOUR_APP_OR_SERVICE>'
 ```
-
-</TabItem>
-
-<TabItem value="clickstack-oss" label="ClickStack Open Source" >
 
 ```shell
 export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
@@ -73,9 +57,6 @@ OTEL_LOGS_EXPORTER=otlp \
 OTEL_SERVICE_NAME='<NAME_OF_YOUR_APP_OR_SERVICE>'
 ```
 
-</TabItem>
-</Tabs>
-
 _The `OTEL_SERVICE_NAME` environment variable is used to identify your service in the HyperDX app, it can be any name you want._
 
 The `OTEL_EXPORTER_OTLP_HEADERS` environment variable contains the API Key available via HyperDX app in `Team Settings → API Keys`.
@@ -85,5 +66,5 @@ The `OTEL_EXPORTER_OTLP_HEADERS` environment variable contains the API Key avail
 ```shell
 java -jar target/<APPLICATION_JAR_FILE>
 ```
-<br/>
+
 Read more about Java OpenTelemetry instrumentation here: [https://opentelemetry.io/docs/instrumentation/java/](https://opentelemetry.io/docs/instrumentation/java/)

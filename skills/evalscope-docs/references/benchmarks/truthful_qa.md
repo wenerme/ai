@@ -1,6 +1,5 @@
 # TruthfulQA
 
-
 ## Overview
 
 TruthfulQA is a benchmark designed to measure whether language models generate truthful answers to questions. It focuses on questions where humans might give false answers due to misconceptions, superstitions, or false beliefs.
@@ -28,7 +27,6 @@ TruthfulQA is a benchmark designed to measure whether language models generate t
 - Uses multi_choice_acc metric for scoring
 - Important benchmark for safety and alignment research
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ TruthfulQA is a benchmark designed to measure whether language models generate t
 | **Metrics** | `multi_choice_acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -132,5 +129,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Guardrails - Quick Start
 
@@ -89,9 +87,7 @@ Need to distribute guardrail requests across multiple accounts or regions? See [
 - Weighted distribution across guardrail instances
 - Multi-region guardrail deployments
 
-
 ## 2. Start LiteLLM Gateway 
-
 
 ```shell
 litellm --config config.yaml --detailed_debug
@@ -100,9 +96,6 @@ litellm --config config.yaml --detailed_debug
 ## 3. Test request 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since `ishaan@berri.ai` in the request is PII
 
@@ -141,10 +134,6 @@ Expected response on failure
 
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -157,12 +146,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "guardrails": ["aporia-pre-guard", "aporia-post-guard"]
   }'
 ```
-
-</TabItem>
-
-
-</Tabs>
-
 
 ## **Default On Guardrails**
 
@@ -182,7 +165,6 @@ guardrails:
 **Test Request**
 
 In this request, the guardrail `aporia-pre-guard` will run on every request because `default_on: true` is set.
-
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -217,7 +199,6 @@ Need more control? Use [Guardrail Policies](./guardrail_policies.md) to:
 
 Pass `guardrails` to your request body to test it
 
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -238,7 +219,6 @@ Follow this simple workflow to implement and tune guardrails:
 ### 1. View Available Guardrails
 
 First, check what guardrails are available and their parameters:
-
 
 Call `/guardrails/list` to view available guardrails and the guardrail info (supported parameters, description, etc)
 
@@ -291,7 +271,6 @@ This config will return the `/guardrails/list` response above. The `guardrail_in
           type: "boolean"
 ```
 
-
 ### 2. Apply Guardrails
 Add selected guardrails to your chat completion request:
 ```shell
@@ -322,21 +301,11 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-
 ### 4. ✨ Pass Dynamic Parameters to Guardrail
 
-:::info
-
-✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 Use this to pass additional parameters to the guardrail API call. e.g. things like success threshold. **[See `guardrails` spec for more details](#spec-guardrails-parameter)**
-
-
-<Tabs>
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 Set `guardrails={"aporia-pre-guard": {"extra_body": {"success_threshold": 0.9}}}` to pass additional parameters to the guardrail
 
@@ -371,10 +340,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -396,21 +361,12 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-</TabItem>
-
-
-</Tabs>
-
-
-
 
 ## **Proxy Admin Controls**
 
 ### Monitoring Guardrails
 
 Monitor which guardrails were executed and whether they passed or failed. e.g. guardrail going rogue and failing requests we don't intend to fail
-
-:::
 
 #### Setup
 
@@ -426,24 +382,14 @@ Monitor which guardrails were executed and whether they passed or failed. e.g. g
 
 <Image img={require('../../../img/gd_fail.png')} />
 
-
-
-
 ### ✨ Control Guardrails per API Key
 
-:::info
-
-✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 Use this to control what guardrails run per API Key. In this tutorial we only want the following guardrails to run for 1 API Key
 - `guardrails`: ["aporia-pre-guard", "aporia-post-guard"]
 
 **Step 1** Create Key with guardrail settings
-
-<Tabs>
-<TabItem value="/key/generate" label="/key/generate">
 
 ```shell
 curl -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -454,9 +400,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
     }'
 ```
 
-</TabItem>
-<TabItem value="/key/update" label="/key/update">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/key/update' \
     --header 'Authorization: Bearer sk-1234' \
@@ -466,9 +409,6 @@ curl --location 'http://0.0.0.0:4000/key/update' \
         "guardrails": ["aporia-pre-guard", "aporia-post-guard"]
 }'
 ```
-
-</TabItem>
-</Tabs>
 
 **Step 2** Test it with new key
 
@@ -489,18 +429,11 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 ### ✨ Tag-based Guardrail Modes
 
-:::info
-
-✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 Run guardrails based on the user-agent header. This is useful for running pre-call checks on OpenWebUI but only masking in logs for Claude CLI.
 
 Both `default` and tag values can be a single mode string or a list of modes.
-
-<Tabs>
-<TabItem value="single" label="Single Default Mode">
 
 ```yaml
 model_list:
@@ -522,9 +455,6 @@ guardrails:
       default_on: true # run on every request
 ```
 
-</TabItem>
-<TabItem value="multi" label="Multiple Default Modes">
-
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -544,9 +474,6 @@ guardrails:
       api_base: os.environ/GUARDRAILS_AI_API_BASE
       default_on: true
 ```
-
-</TabItem>
-<TabItem value="tag-list" label="Multiple Tag Modes">
 
 ```yaml
 model_list:
@@ -568,21 +495,11 @@ guardrails:
       default_on: true
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### ✨ Model-level Guardrails
 
-:::info
-
-✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 This is great for cases when you have an on-prem and hosted model, and just want to run prevent sending PII to the hosted model.
-
 
 ```yaml
 model_list:
@@ -614,12 +531,7 @@ guardrails:
 
 ### ✨ Disable team from turning on/off guardrails
 
-:::info
-
-✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 #### 1. Disable team from modifying guardrails 
 
@@ -668,10 +580,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Expect to NOT see `+1 412-612-9992` in your server logs on your callback. 
 
-:::info
-The `pii_masking` guardrail ran on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"pii_masking": true}`
-:::
-
+> **info**: The `pii_masking` guardrail ran on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"pii_masking": true}`
 
 ## Specification 
 

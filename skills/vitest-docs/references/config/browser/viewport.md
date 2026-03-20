@@ -1,6 +1,5 @@
 ---
 title: browser.viewport | Config
-outline: deep
 ---
 
 # browser.viewport

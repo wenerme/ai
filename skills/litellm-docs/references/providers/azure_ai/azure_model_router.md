@@ -151,15 +151,15 @@ Navigate to the Models page and select "Azure AI Foundry (Studio)" as the provid
 
 ##### Navigate to Models Page
 
-![Navigate to Models](./img/azure_model_router_01.jpeg)
+[Navigate to Models]
 
 ##### Click Provider Dropdown
 
-![Click Provider](./img/azure_model_router_02.jpeg)
+[Click Provider]
 
 ##### Choose Azure AI Foundry
 
-![Select Azure AI Foundry](./img/azure_model_router_03.jpeg)
+[Select Azure AI Foundry]
 
 #### Step 2: Enter Deployment Name
 
@@ -173,15 +173,15 @@ Navigate to the Models page and select "Azure AI Foundry (Studio)" as the provid
 
 Switch to Azure AI Foundry and copy your model router deployment name.
 
-![Azure Portal Model Name](./img/azure_model_router_09.jpeg)
+[Azure Portal Model Name]
 
-![Copy Model Name](./img/azure_model_router_10.jpeg)
+[Copy Model Name]
 
 ##### Enter Deployment Name in LiteLLM
 
 Paste your deployment name (e.g., `azure-model-router`) directly into the text field.
 
-![Enter Deployment Name](./img/azure_model_router_04.jpeg)
+[Enter Deployment Name]
 
 **What happens behind the scenes:**
 - You enter: `azure-model-router`
@@ -195,21 +195,21 @@ Copy the endpoint URL and API key from Azure portal.
 
 ##### Copy API Base URL from Azure
 
-![Copy API Base](./img/azure_model_router_12.jpeg)
+[Copy API Base]
 
 ##### Enter API Base in LiteLLM
 
-![Click API Base Field](./img/azure_model_router_13.jpeg)
+[Click API Base Field]
 
-![Paste API Base](./img/azure_model_router_14.jpeg)
+[Paste API Base]
 
 ##### Copy API Key from Azure
 
-![Copy API Key](./img/azure_model_router_15.jpeg)
+[Copy API Key]
 
 ##### Enter API Key in LiteLLM
 
-![Enter API Key](./img/azure_model_router_16.jpeg)
+[Enter API Key]
 
 #### Step 4: Test and Add Model
 
@@ -217,15 +217,15 @@ Verify your configuration works and save the model.
 
 ##### Test Connection
 
-![Test Connection](./img/azure_model_router_17.jpeg)
+[Test Connection]
 
 ##### Close Test Dialog
 
-![Close Dialog](./img/azure_model_router_18.jpeg)
+[Close Dialog]
 
 ##### Add Model
 
-![Add Model](./img/azure_model_router_19.jpeg)
+[Add Model]
 
 #### Step 5: Verify in Playground
 
@@ -233,25 +233,25 @@ Test your model and verify cost tracking is working.
 
 ##### Open Playground
 
-![Go to Playground](./img/azure_model_router_20.jpeg)
+[Go to Playground]
 
 ##### Select Model
 
-![Select Model](./img/azure_model_router_21.jpeg)
+[Select Model]
 
 ##### Send Test Message
 
-![Send Message](./img/azure_model_router_22.jpeg)
+[Send Message]
 
 ##### View Logs
 
-![View Logs](./img/azure_model_router_23.jpeg)
+[View Logs]
 
 ##### Verify Cost Tracking
 
 Cost is tracked based on the actual model used (e.g., `gpt-4.1-nano`), plus a flat infrastructure cost of $0.14 per million input tokens for using the Model Router.
 
-![Verify Cost](./img/azure_model_router_24.jpeg)
+[Verify Cost]
 
 ## Cost Tracking
 
@@ -335,5 +335,3 @@ When viewing logs in the LiteLLM UI, you'll see:
 - **Total Cost**: Sum of both costs
 
 This breakdown helps you understand exactly what you're paying for when using the Model Router.
-
-

@@ -1,6 +1,5 @@
 ---
 title: Unit of Work and Transactions
-sidebar_label: Unit of Work
 ---
 
 MikroORM uses the Identity Map pattern to track objects. Whenever you fetch an object from the database, MikroORM will keep a reference to this object inside its `UnitOfWork`.

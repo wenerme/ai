@@ -248,19 +248,19 @@ After you've run the Ansible playbooks, you can verify the following:
 
 - The new Grafana Cloud stack is created and visible in the Cloud Portal.
 
-  ![Cloud Portal](/static/img/docs/grafana-cloud/terraform/cloud_portal_tf.png)
+  [Cloud Portal]
 
 - A new data source (InfluxDB in this example) is visible in the Grafana stack.
 
-  ![InfluxDB datasource](/media/docs/grafana-cloud/screenshot-influxdb_datasource_tf.png)
+  [InfluxDB datasource]
 
 - A new folder is available in your Grafana stack. In the following image, a folder named `Demos` was added.
 
-  ![Folder](/media/docs/grafana-cloud/screenshot-folder_tf.png)
+  [Folder]
 
 - A new dashboard is visible in the Grafana stack. In the following image, a dashboard named `InfluxDB Cloud Demos` was created inside the "Demos" folder.
 
-  ![InfluxDB dashboard](/static/img/docs/grafana-cloud/terraform/influxdb_dashboard_tf.png)
+  [InfluxDB dashboard]
 
 ## Next steps
 

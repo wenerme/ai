@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Structured Output /v1/messages
 
@@ -17,9 +16,6 @@ Use LiteLLM to call Anthropic's structured output feature via the `/v1/messages`
 ## Usage
 
 ### LiteLLM Proxy Server
-
-<Tabs>
-<TabItem value="anthropic" label="Anthropic">
 
 1. Setup config.yaml
 
@@ -70,10 +66,6 @@ curl http://localhost:4000/v1/messages \
   }'
 ```
 
-</TabItem>
-
-<TabItem value="azure_ai" label="Azure AI (Anthropic)">
-
 1. Setup config.yaml
 
 ```yaml
@@ -123,10 +115,6 @@ curl http://localhost:4000/v1/messages \
     }
   }'
 ```
-
-</TabItem>
-
-<TabItem value="bedrock" label="Bedrock (Converse)">
 
 1. Setup config.yaml
 
@@ -179,10 +167,6 @@ curl http://localhost:4000/v1/messages \
   }'
 ```
 
-</TabItem>
-
-<TabItem value="bedrock_invoke" label="Bedrock (Invoke)">
-
 1. Setup config.yaml
 
 ```yaml
@@ -233,10 +217,6 @@ curl http://localhost:4000/v1/messages \
     }
   }'
 ```
-
-
-</TabItem>
-</Tabs>
 
 ## Example Response
 

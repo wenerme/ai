@@ -24,9 +24,7 @@ it('works', async () => {
 })
 ```
 
-::: info
-You can also use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to create production-like clients for testing purposes. [Learn more](/docs/best-practices/optimize-ssr#alternative-approach)
-:::
+> **info**: You can also use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to create production-like clients for testing purposes. [Learn more](/docs/best-practices/optimize-ssr#alternative-approach)
 
 ## Mocking
 
@@ -42,10 +40,6 @@ const fakeListPlanet = implement(router.planet.list).handler(() => [])
 
 You can use `fakeListPlanet` to replace the actual `listPlanet` implementation during tests.
 
-::: info
-The `implement` function is also useful for creating mock servers for frontend testing scenarios.
-:::
+> **info**: The `implement` function is also useful for creating mock servers for frontend testing scenarios.
 
-::: warning
-The `implement` function doesn't support [lazy routers](/docs/router#lazy-router) yet. Use the `unlazyRouter` utility to convert your lazy router before implementing. [Learn more](/docs/contract-first/router-to-contract#unlazy-the-router)
-:::
+> **warning**: The `implement` function doesn't support [lazy routers](/docs/router#lazy-router) yet. Use the `unlazyRouter` utility to convert your lazy router before implementing. [Learn more](/docs/contract-first/router-to-contract#unlazy-the-router)

@@ -6,16 +6,13 @@
 }
 ---
 
-:::info
-The GEO type described in this document is not an actual data type in Doris, but rather a specific format of data stored based on String/Varchar type, along with the usage of related functions.
-:::
+> **info**: The GEO type described in this document is not an actual data type in Doris, but rather a specific format of data stored based on String/Varchar type, along with the usage of related functions.
 
 Geospatial types are special data types in databases used to store and manipulate geospatial data, which can represent geometric objects such as points, lines, and polygons,Core purposes are as follows:.
 - Store geographic location information (e.g., longitude and latitude).
 - Support spatial queries (e.g., distance calculation, area inclusion, intersection judgment).
 - Process geospatial analysis (e.g., buffer analysis, path planning).
 Geographic Information Systems are widely used in map services, logistics scheduling, location-based social networking, meteorological monitoring, etc. The core requirement is to efficiently store massive spatial data and support low-latency spatial computing.
-
 
 ## Core Encoding Technologies
 ### S2 Geometry Library
@@ -32,7 +29,6 @@ S2 Geometry is a spherical geometry encoding system developed by Google. Its cor
 - Efficiency in global range queries: Suitable for large-scale spatial queries (e.g., cross-continental, cross-country regional analysis) with no significant performance degradation.
 - Efficient spatial relationship calculation: Inclusion, intersection, and other relationships can be quickly judged through cell IDs, avoiding complex geometric operations.
 
-
 ### GeoHash Encoding
 GeoHash is a geocoding method based on equirectangular projection, which realizes spatial indexing by converting longitude and latitude into strings.
 
@@ -48,13 +44,11 @@ GeoHash is a geocoding method based on equirectangular projection, which realize
   - Mutability of Z-order curves: Spatially adjacent areas may have discontinuous codes due to curve jumps, affecting the accuracy of range queries.
   - Low efficiency in large-scale queries: When querying global ranges, a large number of discrete cells need to be scanned, resulting in poor performance.
 
-
 ### Comprehensive Comparison and Selection
 Comprehensively comparing the characteristics of S2 Geometry Library and GeoHash, we choose S2 Geometry Library as the third-party dependency for geospatial processing, mainly for the following reasons:
 - Adaptability to global range queries: S2's hierarchical grid design is more suitable for large-scale spatial analysis, while GeoHash has performance bottlenecks in cross-region queries.
 - Precision and smoothness: S2's 30-level hierarchy can achieve smooth transition from global to centimeter-level, meeting multi-scenario precision requirements, which is better than GeoHash's 12-level division.
 - Spatial continuity: Hilbert curves have better spatial continuity than Z-order curves, which can reduce redundant calculations in range queries.
-
 
 ## Introduction to WKT
 WKT (Well-Known Text) is a standard text format for representing geospatial data.
@@ -71,7 +65,6 @@ WKT (Well-Known Text) is a standard text format for representing geospatial data
   - LineString: LINESTRING(point1, point2)  
     Example: LINESTRING(0 0, 1 1) represents a line segment connecting two points.
   - Polygon: POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
-
 
 ## Introduction to WKB
 WKB (Well-Known Binary) is a standard binary data format for representing geospatial data.
@@ -114,7 +107,6 @@ create table simple_point(id int, wkt VARCHAR(255);
 INSERT INTO simple_point VALUES(1,'POINT(121.4737 31.2304)');
 ```
 
-
 Querying WKT Format
 
 ```sql
@@ -155,7 +147,6 @@ CREATE TABLE simple_point_double (id INT,x DOUBLE,y DOUBLE)
 INSERT INTO simple_point_double VALUES(0,1,2);
 ```
 
-
 Querying Floating-Point Format
 
 ```sql
@@ -166,7 +157,6 @@ select st_astext(st_point(x,y)) from simple_point_double;
 | POINT (1 2)              |
 +--------------------------+
 ```
-
 
 ## GeoLine type
 
@@ -179,7 +169,6 @@ INSERT INTO simple_line VALUES(1,'LINESTRING(116.4074 39.9042, 121.4737 31.2304)
 CREATE TABLE simple_line (  id INT,  wkt VARCHAR(255)）
 INSERT INTO simple_line VALUES(1,'LINESTRING(116.4074 39.9042, 121.4737 31.2304)');
 ```
-
 
 Querying WKT Format
 
@@ -258,7 +247,6 @@ select st_astext(st_geometryfromwkb(wkb)) from simple_polygon_wkb;
 
 ## GeoMultiPolygon type
 
-
 1. Storing WKT Format Using String or Varchar
 
 ```sql
@@ -269,7 +257,6 @@ CREATE TABLE simple_multipolygon (  id INT,  wkt VARCHAR(255)）
 INSERT INTO simple_multipolygon VALUES(1,'MULTIPOLYGON(((0 0, 0 10, 10 10, 10 0, 0 0)),  -- 第一个多边形((20 20, 20 30, 30 30, 30 20, 20 20))  -- 第二个多边形)');
 
 ```
-
 
 Querying WKT Format
 
@@ -318,7 +305,6 @@ mysql> SELECT ST_AsText(ST_GeometryFromText("POINT (1 3.1415926535897223)"));
 +----------------------------------------------------------------+
 ```
 
-
 Only 13-digit precision can be guaranteed when converting binary to GEO output:
 
 ```sql
@@ -329,8 +315,6 @@ mysql> select ST_AsText(ST_GeomFromWKB(ST_AsBinary(ST_Point(24.7,3.1415926535897
 | POINT (24.7 3.1415926535898)                                             |
 +--------------------------------------------------------------------------+
 ```
-
-
 
 ## Common Uses and Methods of Geo Types in Doris
 ### Calculating Distance Between Two Points on Earth
@@ -347,9 +331,7 @@ select ST_DISTANCE_SPHERE(116.4074, 39.9042, 121.4737, 31.2304);
 +----------------------------------------------------------+
 ```
 
-
-![alt text](/images/BeijingToShanghai.png)
-
+[alt text]
 
 Distance of Beijing to New York
 Coordinates of Beijing (116.4074, 39.9042) and New York (-74.0060, 40.7128):
@@ -363,8 +345,7 @@ select ST_DISTANCE_SPHERE(116.4074, 39.9042, -74.0060, 40.7128);
 +----------------------------------------------------------+
 ```
 
-![alt text](/images/BeijingToNewyork.png)
-
+[alt text]
 
 ### Calculating Area of a Region on the Earth's Sphere
 
@@ -394,5 +375,4 @@ SELECT ST_AREA_SQUARE_KM(
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-![alt text](/images/Newyork.png)
-
+[alt text]

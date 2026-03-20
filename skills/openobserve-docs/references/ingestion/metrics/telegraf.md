@@ -6,7 +6,6 @@ description: Configure Telegraf agent for system metrics collection, server moni
 
 Telegraf is a plugin-driven server agent for collecting and reporting metrics from systems, services, and IoT sensors. Configure Telegraf for system monitoring, infrastructure metrics collection, and application performance monitoring, sending metrics to OpenObserve via Prometheus remote write.
 
-
 You can enable some inputs first
 
 ```toml

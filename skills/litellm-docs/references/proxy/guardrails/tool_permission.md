@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # LiteLLM Tool Permission Guardrail
 
@@ -126,9 +125,6 @@ litellm --config config.yaml --port 4000
 
 ## Examples
 
-<Tabs>
-<TabItem value="block" label="Block Request">
-
 **Block request (`on_disallowed_action: block`)**
 
 ```bash
@@ -164,9 +160,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
     }
 }
 ```
-
-</TabItem>
-<TabItem value="rewrite" label="Rewrite Request">
 
 **Rewrite request (`on_disallowed_action: rewrite`)**
 
@@ -220,9 +213,6 @@ curl -X POST "http://localhost:4000/v1/chat/completions" \
 	"service_tier": "default"
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Constrain Tool Arguments
 

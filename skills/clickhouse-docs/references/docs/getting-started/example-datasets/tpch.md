@@ -1,7 +1,5 @@
 ---
 description: 'The TPC-H benchmark data set and queries.'
-sidebar_label: 'TPC-H'
-slug: /getting-started/example-datasets/tpch
 title: 'TPC-H (1999)'
 doc_type: 'guide'
 keywords: ['example dataset', 'tpch', 'benchmark', 'sample data', 'performance testing']
@@ -73,8 +71,7 @@ clickhouse-client --format_csv_delimiter '|' --query "INSERT INTO orders FORMAT 
 clickhouse-client --format_csv_delimiter '|' --query "INSERT INTO lineitem FORMAT CSV" < lineitem.tbl
 ```
 
-:::note
-Instead of using tpch-kit and generating the tables by yourself, you can alternatively import the data from a public S3 bucket. Make sure
+> **note**: Instead of using tpch-kit and generating the tables by yourself, you can alternatively import the data from a public S3 bucket. Make sure
 to create empty tables first using [`init.sql`](https://github.com/ClickHouse/ClickHouse/blob/master/tests/benchmarks/tpc-h/init.sql).
 
 ```sql
@@ -98,7 +95,6 @@ INSERT INTO customer SELECT * FROM s3('https://clickhouse-datasets.s3.amazonaws.
 INSERT INTO orders SELECT * FROM s3('https://clickhouse-datasets.s3.amazonaws.com/h/100/orders.tbl.gz', NOSIGN, CSV) SETTINGS format_csv_delimiter = '|', input_format_defaults_for_omitted_fields = 1, input_format_csv_empty_as_default = 1;
 INSERT INTO lineitem SELECT * FROM s3('https://clickhouse-datasets.s3.amazonaws.com/h/100/lineitem.tbl.gz', NOSIGN, CSV) SETTINGS format_csv_delimiter = '|', input_format_defaults_for_omitted_fields = 1, input_format_csv_empty_as_default = 1;
 ````
-:::
 
 ## Queries {#queries}
 

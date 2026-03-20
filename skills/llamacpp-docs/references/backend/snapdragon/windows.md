@@ -2,7 +2,6 @@
 
 The document covers procedures for installing the latest GPU and NPU drivers, and OpenCL and Hexagon SDKs.
 
-
 In order to use Hexagon NPU on Snapdragon Windows devices the underlying HTP Ops libraries (e.g libggml-htp-v73.so)
 must be included in the .cat file digitally signed with a trusted certificate.
 

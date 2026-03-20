@@ -20,8 +20,7 @@ TASKS(
 ## Required Parameters
 | Field         | Description                                                                                       |
 |---------------|---------------------------------------------------------------------------------------------------|
-| **`<type>`**  | Type of the task: <br/> `insert`: insert into type task. <br/> `mv`: materialized view type task. |
-
+| **`<type>`**  | Type of the task:  `insert`: insert into type task.  `mv`: materialized view type task. |
 
 ## Return Value
 
@@ -64,7 +63,6 @@ TASKS(
    | **CompletedPartitions** | The partition information that has been refreshed for this task          |
    | **Progress**          | Task running progress                                                       |
 
-
 ## Examples
 
 View tasks for all materialized views
@@ -100,4 +98,3 @@ select * from tasks("type"="insert");
 | 79133848479750 | 78533940810334 | insert_tab_job | 78533940810334_79133848479750 | SUCCESS |          | 2025-01-17 14:42:54 | 2025-01-17 14:42:54 | 2025-01-17 14:42:54 |             |               | root |
 +----------------+----------------+----------------+-------------------------------+---------+----------+---------------------+---------------------+---------------------+-------------+---------------+------+
 ```
-

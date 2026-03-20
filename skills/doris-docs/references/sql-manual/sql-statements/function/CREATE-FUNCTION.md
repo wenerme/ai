@@ -12,7 +12,6 @@ This statement is used to create a custom function.
 
 ## Syntax
 
-
 ```sql
 CREATE [ GLOBAL ] 
     [{AGGREGATE | TABLES | ALIAS }] FUNCTION <function_name>

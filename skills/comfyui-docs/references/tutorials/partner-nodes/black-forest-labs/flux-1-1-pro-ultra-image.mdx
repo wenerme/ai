@@ -1,11 +1,7 @@
 ---
 title: "Flux 1.1 Pro Ultra Image API Node ComfyUI Official Workflow Examples"
 description: "This guide covers how to use the Flux 1.1 Pro Ultra Image Partner node in ComfyUI"
-sidebarTitle: "Flux 1.1 Pro Ultra Image"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 FLUX 1.1 Pro Ultra is a high-performance AI image generation tool by BlackForestLabs, featuring ultra-high resolution and efficient generation capabilities. It supports up to 4MP resolution (4x the standard version) while keeping single image generation time under 10 seconds - 2.5x faster than similar high-resolution models.
 
@@ -16,9 +12,6 @@ The tool offers two core modes:
 We now support the Flux 1.1 Pro Ultra Image node in ComfyUI. This guide will cover:
 - Flux 1.1 Pro Text-to-Image
 - Flux 1.1 Pro Image-to-Image (Remix)
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Flux 1.1 Pro Ultra Image Node Documentation
 
@@ -36,7 +29,7 @@ Download and drag the following file into ComfyUI to load the workflow:
 
 ### 2. Complete the Workflow Steps
 
-![Workflow Steps](/images/tutorial/api_nodes/bfl/flux_1_1_pro_t2i_step_guide.jpg)
+[Workflow Steps]
 
 Follow the numbered steps to complete the basic workflow:
 
@@ -60,7 +53,7 @@ We'll use this image as input:
 
 ### 2. Complete the Workflow Steps
 
-![Workflow Steps](/images/tutorial/api_nodes/bfl/flux_1_1_pro_i2i_step_guide.jpg)
+[Workflow Steps]
 
 Follow these numbered steps:
 1. Click **Upload** on the `Load Image` node to upload your input image
@@ -69,4 +62,4 @@ Follow these numbered steps:
 4. After the API returns results, view the generated image in the `Save Image` node. Images are saved to the `ComfyUI/output/` directory
 
 Here's a comparison of outputs with different `image_prompt_strength` values:
-![Comparison](/images/tutorial/api_nodes/bfl/flux_1_1_pro_image_prompt_strength.jpg)
+[Comparison]

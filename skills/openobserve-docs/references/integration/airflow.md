@@ -14,7 +14,7 @@ Apache Airflow is a **workflow automation and orchestration tool** widely used f
 
 With OpenTelemetry and OpenObserve, you gain **real-time observability** into Airflow DAG runs, task execution, scheduler activity, and worker performance.
 
-![Airflow architechture](images/airflow-arch.png)
+[Airflow architechture]
 
 ## Steps to Integrate
 
@@ -61,7 +61,7 @@ With OpenTelemetry and OpenObserve, you gain **real-time observability** into Ai
 
     1. In OpenObserve: go to **Data Sources → Otel Collector**  
     2. Copy the **Ingestion URL** and **Access Token**  
-    ![Get OpenObserve Ingestion URL and Token](images/messagebroker/otel-metrics-source.png)
+    [Get OpenObserve Ingestion URL and Token]
 
 ??? "Step 4: Configure OpenTelemetry Collector"
 
@@ -128,7 +128,7 @@ With OpenTelemetry and OpenObserve, you gain **real-time observability** into Ai
 
     1. Go to **Streams → airflow** in OpenObserve to query logs. Airflow logs collected include: DAG execution logs, Scheduler logs, Worker logs and Task execution logs
      
-     ![Visualize Logs in OpenObserve](images/airflow-logs.png)
+     [Visualize Logs in OpenObserve]
     
 
 !!! tip "Prebuilt Dashboards"
@@ -155,4 +155,3 @@ With OpenTelemetry and OpenObserve, you gain **real-time observability** into Ai
         otelcol --config /etc/otel-config.yaml --dry-run
         ```
     - Fix syntax or missing receivers.
-

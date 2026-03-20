@@ -54,7 +54,6 @@ Users executing this SQL command must have at least the following privileges:
 | :--------- | :----- | :------------------------------------------- |
 | ALTER_PRIV | Materialized View  | REFRESH is an ALTER operation on a materialized view |
 
-
 ## Usage Notes
 
 - AUTO: The calculation will determine which partitions of the materialized view are not synchronized with the base table. (Currently, if the base table is an external table, it is considered to be always synchronized with the materialized view. Therefore, if the base table is an external table, it is necessary to specify `COMPLETE` or designate the partitions to be refreshed), and then proceed to refresh the corresponding partitions accordingly.
@@ -68,7 +67,6 @@ Users executing this SQL command must have at least the following privileges:
     ```sql
     REFRESH MATERIALIZED VIEW mv1 AUTO;
     ```
-
 
 - Refresh partition named p_19950801_19950901 and p_19950901_19951001
 

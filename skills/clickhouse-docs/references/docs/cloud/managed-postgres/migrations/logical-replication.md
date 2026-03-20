@@ -1,19 +1,9 @@
 ---
-slug: /cloud/managed-postgres/migrations/logical-replication
-sidebar_label: 'Logical replication'
 title: 'Migrate PostgreSQL data using logical replication'
 description: 'Learn how to migrate your PostgreSQL data to ClickHouse Managed Postgres using logical replication'
 keywords: ['postgres', 'postgresql', 'logical replication', 'migration', 'data transfer', 'managed postgres']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import createPgForMigrate from '@site/static/images/managed-postgres/pg_dump_restore/create-pg-for-migration.png';
-import sourceReplicationSetup from '@site/static/images/managed-postgres/logical_replication/source-setup.png';
-import targetInitialSetup from '@site/static/images/managed-postgres/logical_replication/target-initial-setup.png';
-import migrationResult from '@site/static/images/managed-postgres/logical_replication/migration-result.png';
-import sourceSetup from '@site/static/images/managed-postgres/pg_dump_restore/source-setup.png';
 
 # Migrate to Managed Postgres using logical replication {#logical-replication-migration}
 This guide provides step-by-step instructions on how to migrate your PostgreSQL database to ClickHouse Managed Postgres using Postgres native logical replication.
@@ -97,9 +87,7 @@ Connect to your source PostgreSQL database and create a publication that include
 ```sql
 CREATE PUBLICATION <pub_name> FOR TABLE table1, table2...;
 ```
-:::info
-Creating a publication FOR ALL TABLES can incur network overhead if there are many tables. It's recommended to specify only the tables you want to replicate.
-:::
+> **info**: Creating a publication FOR ALL TABLES can incur network overhead if there are many tables. It's recommended to specify only the tables you want to replicate.
 
 ### Create a subscription on the target ClickHouse Managed Postgres database {#migration-logical-replication-create-subscription}
 Next, connect to your target ClickHouse Managed Postgres database and create a subscription that connects to the publication on the source database.

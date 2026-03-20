@@ -1,15 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Budget Manager
 
 Don't want to get crazy bills because either while you're calling LLM APIs **or** while your users are calling them? use this. 
 
-:::info
-
-If you want a server to manage user keys, budgets, etc. use our [LiteLLM Proxy Server](./proxy/virtual_keys.md)
-
-:::
+> **info**: If you want a server to manage user keys, budgets, etc. use our [LiteLLM Proxy Server](./proxy/virtual_keys.md)
 
 LiteLLM exposes: 
 * `litellm.max_budget`: a global variable you can use to set the max budget (in USD) across all your litellm calls. If this budget is exceeded, it will raise a BudgetExceededError 
@@ -35,7 +30,7 @@ completion(model="gpt-4", messages=messages)
 
 ## User-based rate limiting 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_User_Based_Rate_Limits.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ```python
@@ -82,8 +77,6 @@ print(budget_manager.get_current_cost(user))
 In production, we will need to 
 * store user budgets in a database
 * reset user budgets based on a set duration 
-
-
 
 ### LiteLLM API
 
@@ -156,7 +149,6 @@ def __init__(self, project_name: str, client_type: str = "local", api_base: Opti
 - `project_name` (str): The name of the project.
 - `client_type` (str): The client type ("local" or "hosted"). Defaults to "local".
 - `api_base` (Optional[str]): The base URL of the API. Defaults to None.
-
 
 ### create_budget
 ```python

@@ -1,8 +1,6 @@
 ---
 title: "ClipTextEncodeSdxlRefiner - ComfyUI Built-in Node Documentation"
 description: "The ClipTextEncodeSdxlRefiner node is used to encode text prompts into SDXL Refiner-compatible conditioning embeddings."
-sidebarTitle: "ClipTextEncodeSdxlRefiner"
-icon: "circle"
 ---
 
 This node is specifically designed for the SDXL Refiner model to convert text prompts into conditioning information by incorporating aesthetic scores and dimensional information to enhance the conditions for generation tasks, thereby improving the final refinement effect. It acts like a professional art director, not only conveying your creative intent but also injecting precise aesthetic standards and specification requirements into the work.
@@ -24,7 +22,7 @@ Refiner can be used in two ways:
 | Parameter Name | Data Type | Input Type | Default Value | Value Range | Description |
 |----------------|-----------|------------|---------------|-------------|-------------|
 | `clip` | CLIP | Required | - | - | CLIP model instance used for text tokenization and encoding, the core component for converting text into model-understandable format |
-| `ascore` | FLOAT | Optional | 6.0 | 0.0-1000.0 | Controls the visual quality and aesthetics of generated images, similar to setting quality standards for artwork:<br/>- High scores(7.5-8.5): Pursues more refined, detail-rich effects<br/>- Medium scores(6.0-7.0): Balanced quality control<br/>- Low scores(2.0-3.0): Suitable for negative prompts |
+| `ascore` | FLOAT | Optional | 6.0 | 0.0-1000.0 | Controls the visual quality and aesthetics of generated images, similar to setting quality standards for artwork:- High scores(7.5-8.5): Pursues more refined, detail-rich effects- Medium scores(6.0-7.0): Balanced quality control- Low scores(2.0-3.0): Suitable for negative prompts |
 | `width` | INT | Required | 1024 | 64-16384 | Specifies output image width (pixels), must be multiple of 8. SDXL performs best when total pixel count is close to 1024×1024 (about 1M pixels) |
 | `height` | INT | Required | 1024 | 64-16384 | Specifies output image height (pixels), must be multiple of 8. SDXL performs best when total pixel count is close to 1024×1024 (about 1M pixels) |
 | `text` | STRING | Required | - | - | Text prompt description, supports multi-line input and dynamic prompt syntax. In Refiner, text prompts should focus more on describing desired visual quality and detail characteristics |

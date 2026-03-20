@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Deepgram 
 
@@ -56,18 +55,12 @@ litellm --config /path/to/config.yaml
 
 ### Test 
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/v1/audio/transcriptions' \
 --header 'Authorization: Bearer sk-1234' \
 --form 'file=@"/Users/krrishdholakia/Downloads/gettysburg.wav"' \
 --form 'model="nova-2"'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI">
 
 ```python
 from openai import OpenAI
@@ -76,12 +69,9 @@ client = openai.OpenAI(
     base_url="http://0.0.0.0:4000"
 )
 
-
 audio_file = open("speech.mp3", "rb")
 transcript = client.audio.transcriptions.create(
   model="nova-2",
   file=audio_file
 )
 ```
-</TabItem>
-</Tabs>

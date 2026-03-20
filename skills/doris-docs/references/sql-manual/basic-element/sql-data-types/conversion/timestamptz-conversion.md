@@ -30,13 +30,11 @@ The string `0000-01-01 00:00:00+08:00` is a valid DATETIME value, but after conv
 
 For detailed conversion rules, refer to the [Convert to DATETIME Type](./datetime-conversion.md) documentation.
 
-
 ## From Datelike Types
 
 Supports conversion from Datetime type to Timestamptz type. During conversion, the DATETIME is converted to UTC time based on the current session's time zone. There may be cases where the DATETIME value is valid but the value after conversion to UTC time is invalid.
 
 Since Timestamptz has different precision values, there are also conversions between different precision Timestamptz types.
-
 
 ### Timestamptz
 
@@ -99,7 +97,6 @@ When converting from high precision to low precision, rounding will occur, and t
 If overflow occurs, an error is reported.
 
 ##### Examples
-
 
 | Input DATETIME                  | Source Type         | Target Type        | Result TIMESTAMPTZ                  | Comment              |
 | ---------------------------- | ----------- | ----------- | ---------------------------- | -------------------- |

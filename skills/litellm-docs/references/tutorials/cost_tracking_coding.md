@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Track Usage for Coding Tools
 
@@ -12,7 +10,6 @@ Monitor requests, costs, and user engagement metrics for each coding tool using 
   img={require('../../img/agent_1.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-
 
 ## Who This Is For
 

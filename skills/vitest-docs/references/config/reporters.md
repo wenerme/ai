@@ -25,9 +25,7 @@ Alongside built-in reporters, you can also pass down a custom implementation of 
 
 You can configure a reporter by providing a tuple: `[string, object]`, where the string is a reporter name, and the object is the reporter's options.
 
-::: warning
-Note that the [coverage](/guide/coverage) feature uses a different [`coverage.reporter`](/config/coverage#reporter) option instead of this one.
-:::
+> **warning**: Note that the [coverage](/guide/coverage) feature uses a different [`coverage.reporter`](/config/coverage#reporter) option instead of this one.
 
 ## Built-in Reporters
 
@@ -47,7 +45,6 @@ Note that the [coverage](/guide/coverage) feature uses a different [`coverage.re
 
 ## Example
 
-::: code-group
 ```js [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -70,4 +67,3 @@ export default defineConfig({
 ```bash [CLI]
 vitest --reporter=github-actions --reporter=junit
 ```
-:::

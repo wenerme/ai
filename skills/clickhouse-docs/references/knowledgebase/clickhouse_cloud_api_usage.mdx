@@ -7,7 +7,6 @@ keywords: ['cURL', 'Manage Cloud', 'ClickHouse API']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## How to start, stop and resume a Cloud service using the ClickHouse API and cURL \{#how-to-start-stop-and-resume-a-cloud-service-using-the-clickhouse-api-and-curl\}
 
@@ -47,8 +46,7 @@ The output looks like:
 curl -X PATCH https://api.clickhouse.cloud/v1/organizations/123abcd0-e9b5-4f55-9e42-0fb04392445c/services/2e2124ca-c5ac-459d-a6f2-abc123549d2a/state -u abc123:ABC123 -H "Content-Type: application/json" -d '{"command": "start"}'
 ```
 
-:::note
-Here are the various states that a service can be in:
+> **note**: Here are the various states that a service can be in:
 
 ```
 "state":"stopping"
@@ -57,8 +55,5 @@ Here are the various states that a service can be in:
 "state":"running"
 "state":"idle"
 ```
-:::
 
-:::note
-A Cloud service that is **"idle"** is considered started, so a `start` command will not resume/wake it up. Use the `ping` endpoint shown in Step 1 to wake up a service.
-:::
+> **note**: A Cloud service that is **"idle"** is considered started, so a `start` command will not resume/wake it up. Use the `ping` endpoint shown in Step 1 to wake up a service.

@@ -11,11 +11,9 @@ book.author = author;
 console.log(author.books.contains(book)); // true
 ```
 
-:::caution Warning
+> **caution**: Warning
 
 Propagation on new entities you create via constructor is supported too, by modifying the entity class prototype, but this technique fails when `useDefineForClassFields` TypeScript compiler flag is enabled (which is true when targeting `ES2022` or higher). You can get around this by using `declare` keyword in your entity definition, or by creating entity instances via `em.create()`, which will ensure the propagation is enabled.
-
-:::
 
 ## Propagation of Collection's add() and remove() operations
 

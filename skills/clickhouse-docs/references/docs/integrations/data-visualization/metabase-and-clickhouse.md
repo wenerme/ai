@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Metabase'
-sidebar_position: 131
-slug: /integrations/metabase
 keywords: ['Metabase']
 description: 'Metabase is an easy-to-use, open source UI tool for asking questions about your data.'
 title: 'Connecting Metabase to ClickHouse'
@@ -12,17 +9,6 @@ integration:
   - category: 'data_visualization'
   - website: 'https://github.com/clickhouse/metabase-clickhouse-driver'
 ---
-
-import Image from '@theme/IdealImage';
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import metabase_01 from '@site/static/images/integrations/data-visualization/metabase_01.png';
-import metabase_02 from '@site/static/images/integrations/data-visualization/metabase_02.png';
-import metabase_03 from '@site/static/images/integrations/data-visualization/metabase_03.png';
-import metabase_04 from '@site/static/images/integrations/data-visualization/metabase_04.png';
-import metabase_06 from '@site/static/images/integrations/data-visualization/metabase_06.png';
-import metabase_07 from '@site/static/images/integrations/data-visualization/metabase_07.png';
-import metabase_08 from '@site/static/images/integrations/data-visualization/metabase_08.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Connecting Metabase to ClickHouse
 
@@ -37,9 +23,8 @@ In this guide you will ask some questions of your ClickHouse data with Metabase 
   <Image size="md" img={metabase_08} alt="Metabase pie chart visualization showing data from ClickHouse" border />
 <p/>
 
-:::tip Add some data
+> **tip**: Add some data
 If you don't have a dataset to work with you can add one of the examples.  This guide uses the [UK Price Paid](/getting-started/example-datasets/uk-price-paid.md) dataset, so you might choose that one.  There are several others to look at in the same documentation category.
-:::
 
 ## 1. Gather your connection details {#1-gather-your-connection-details}
 <ConnectionDetails />

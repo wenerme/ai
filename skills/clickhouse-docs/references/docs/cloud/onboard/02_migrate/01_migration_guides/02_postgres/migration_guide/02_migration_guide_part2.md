@@ -1,9 +1,7 @@
 ---
-slug: /migrations/postgresql/rewriting-queries
 title: 'Rewriting PostgreSQL Queries'
 keywords: ['postgres', 'postgresql', 'rewriting queries']
 description: 'Part 2 of a guide on migrating from PostgreSQL to ClickHouse'
-sidebar_label: 'Part 2'
 doc_type: 'guide'
 ---
 

@@ -64,7 +64,6 @@ select from_microsecond(1700000000123456) as dt_with_micro;
  select from_microsecond(-1);
 ERROR 1105 (HY000): errCode = 2, detailMessage = (10.16.10.3)[E-218]Operation from_microsecond of -1 out of range
 
-
 -- Input NULL, returns NULL
 select from_microsecond(NULL);
 +------------------------+

@@ -5,8 +5,6 @@ description: Available commands and arguments in the Biome CLI.
 
 [//]: # (Start-codegen)
 
-
-
 # Command summary
 
   * [`biome`↴](#biome)
@@ -39,8 +37,6 @@ Biome official CLI. Use it to check the health of your project or run it to chec
 - **`-V`**, **`--version`** &mdash; 
   Prints version information
 
-
-
 **Available commands:**
 - **`version`** &mdash; 
   Shows the Biome version information and quit.
@@ -70,7 +66,6 @@ Biome official CLI. Use it to check the health of your project or run it to chec
   Shows documentation of various aspects of the CLI.
 - **`clean`** &mdash; 
   Cleans the logs emitted by the daemon.
-
 
 ## biome version
 
@@ -108,12 +103,9 @@ Shows the Biome version information and quit.
    
   [default: info]
 
-
-
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome rage
 
@@ -151,8 +143,6 @@ Prints information for debugging.
    
   [default: info]
 
-
-
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
   Optional path/file to redirect log messages to. This option is applicable only to the CLI.
@@ -185,8 +175,6 @@ Prints information for debugging.
    
   [default: pretty]
 
-
-
 **Available options:**
 - **`    --daemon-logs`** &mdash; 
   Prints the Biome daemon server logs
@@ -196,7 +184,6 @@ Prints information for debugging.
   Prints the linter options applied
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome start
 
@@ -236,8 +223,6 @@ Starts the Biome daemon server process.
    
   [default: pretty]
 
-
-
 **Controls various aspects of the Biome Daemon.**
 - **`    --watcher-kind`**=_`<polling|recommended|none>`_ &mdash; 
   Controls how the Biome file watcher should behave.
@@ -252,12 +237,9 @@ Starts the Biome daemon server process.
    
   [default: 2000]
 
-
-
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome stop
 
@@ -268,7 +250,6 @@ Stops the Biome daemon server process.
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome check
 
@@ -281,8 +262,6 @@ Runs formatter, linter and import sorting to the requested files.
   Allow parsing comments in `.json` files
 - **`    --json-parse-allow-trailing-commas`**=_`<true|false>`_ &mdash; 
   Allow parsing trailing commas in `.json` files
-
-
 
 **The configuration that is contained inside the file `biome.json`**
 - **`    --vcs-enabled`**=_`<true|false>`_ &mdash; 
@@ -520,8 +499,6 @@ Runs formatter, linter and import sorting to the requested files.
 - **`    --assist-enabled`**=_`<true|false>`_ &mdash; 
   Whether Biome should enable assist via LSP and CLI.
 
-
-
 **Global options applied to all commands**
 - **`    --colors`**=_`<off|force>`_ &mdash; 
   Set the formatting mode for markup: "off" prints everything as plain text, "force" forces the formatting of markup using ANSI even if the console output is determined to be incompatible
@@ -551,8 +528,6 @@ Runs formatter, linter and import sorting to the requested files.
   The level of diagnostics to show. In order, from the lowest to the most important: info, warn, error. Passing `--diagnostic-level=error` will cause Biome to print only diagnostics that contain only errors.
    
   [default: info]
-
-
 
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
@@ -586,13 +561,9 @@ Runs formatter, linter and import sorting to the requested files.
    
   [default: pretty]
 
-
-
 **Available positional items:**
 - _`PATH`_ &mdash; 
   Single file, single path or list of paths
-
-
 
 **Available options:**
 - **`    --write`** &mdash; 
@@ -652,7 +623,6 @@ Runs formatter, linter and import sorting to the requested files.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome lint
 
 Run various checks on a set of files.
@@ -664,8 +634,6 @@ Run various checks on a set of files.
   Allow parsing comments in `.json` files
 - **`    --json-parse-allow-trailing-commas`**=_`<true|false>`_ &mdash; 
   Allow parsing trailing commas in `.json` files
-
-
 
 **Set of properties to integrate Biome with a VCS software.**
 - **`    --vcs-enabled`**=_`<true|false>`_ &mdash; 
@@ -681,27 +649,19 @@ Run various checks on a set of files.
 - **`    --vcs-default-branch`**=_`BRANCH`_ &mdash; 
   The main branch of the project
 
-
-
 **The configuration of the filesystem**
 - **`    --files-max-size`**=_`NUMBER`_ &mdash; 
   The maximum allowed size for source code files in bytes. Files above this limit will be ignored for performance reasons. Defaults to 1 MiB
 - **`    --files-ignore-unknown`**=_`<true|false>`_ &mdash; 
   Tells Biome to not emit diagnostics when handling files that it doesn't know
 
-
-
 **Linter options specific to the JavaScript linter**
 - **`    --javascript-linter-enabled`**=_`<true|false>`_ &mdash; 
   Control the linter for JavaScript (and its super languages) files.
 
-
-
 **Linter options specific to the JSON linter**
 - **`    --json-linter-enabled`**=_`<true|false>`_ &mdash; 
   Control the linter for JSON (and its super languages) files.
-
-
 
 **Global options applied to all commands**
 - **`    --colors`**=_`<off|force>`_ &mdash; 
@@ -732,8 +692,6 @@ Run various checks on a set of files.
   The level of diagnostics to show. In order, from the lowest to the most important: info, warn, error. Passing `--diagnostic-level=error` will cause Biome to print only diagnostics that contain only errors.
    
   [default: info]
-
-
 
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
@@ -767,13 +725,9 @@ Run various checks on a set of files.
    
   [default: pretty]
 
-
-
 **Available positional items:**
 - _`PATH`_ &mdash; 
   Single file, single path or list of paths
-
-
 
 **Available options:**
 - **`    --write`** &mdash; 
@@ -825,7 +779,6 @@ Run various checks on a set of files.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome format
 
 Run the formatter on a set of files.
@@ -863,8 +816,6 @@ Run the formatter on a set of files.
   Use any `.editorconfig` files to configure the formatter. Configuration in `biome.json` will override `.editorconfig` configuration.
 
   Default: `false`.
-
-
 
 **Formatting options specific to the JavaScript files**
 - **`    --javascript-formatter-enabled`**=_`<true|false>`_ &mdash; 
@@ -908,23 +859,17 @@ Run the formatter on a set of files.
 
   Defaults to true.
 
-
-
 **Options that changes how the JSON parser behaves**
 - **`    --json-parse-allow-comments`**=_`<true|false>`_ &mdash; 
   Allow parsing comments in `.json` files
 - **`    --json-parse-allow-trailing-commas`**=_`<true|false>`_ &mdash; 
   Allow parsing trailing commas in `.json` files
 
-
-
 **Options that changes how the CSS parser behaves**
 - **`    --css-parse-css-modules`**=_`<true|false>`_ &mdash; 
   Enables parsing of CSS Modules specific features. Enable this feature only when your files don't end in `.module.css`.
 - **`    --css-parse-tailwind-directives`**=_`<true|false>`_ &mdash; 
   Enables parsing of Tailwind CSS 4.0 directives and functions.
-
-
 
 **Options that changes how the GraphQL formatter behaves**
 - **`    --graphql-formatter-enabled`**=_`<true|false>`_ &mdash; 
@@ -950,8 +895,6 @@ Run the formatter on a set of files.
 
   Defaults to true.
 
-
-
 **Options that changes how the CSS formatter behaves**
 - **`    --css-formatter-enabled`**=_`<true|false>`_ &mdash; 
   Control the formatter for CSS (and its super languages) files.
@@ -973,8 +916,6 @@ Run the formatter on a set of files.
   Disable the option at your own risk.
 
   Defaults to true.
-
-
 
 **Options that changes how the HTML formatter behaves**
 - **`    --html-formatter-enabled`**=_`<true|false>`_ &mdash; 
@@ -1006,8 +947,6 @@ Run the formatter on a set of files.
 
   Defaults to true.
 
-
-
 **Set of properties to integrate Biome with a VCS software.**
 - **`    --vcs-enabled`**=_`<true|false>`_ &mdash; 
   Whether Biome should integrate itself with the VCS client
@@ -1022,15 +961,11 @@ Run the formatter on a set of files.
 - **`    --vcs-default-branch`**=_`BRANCH`_ &mdash; 
   The main branch of the project
 
-
-
 **The configuration of the filesystem**
 - **`    --files-max-size`**=_`NUMBER`_ &mdash; 
   The maximum allowed size for source code files in bytes. Files above this limit will be ignored for performance reasons. Defaults to 1 MiB
 - **`    --files-ignore-unknown`**=_`<true|false>`_ &mdash; 
   Tells Biome to not emit diagnostics when handling files that it doesn't know
-
-
 
 **Global options applied to all commands**
 - **`    --colors`**=_`<off|force>`_ &mdash; 
@@ -1061,8 +996,6 @@ Run the formatter on a set of files.
   The level of diagnostics to show. In order, from the lowest to the most important: info, warn, error. Passing `--diagnostic-level=error` will cause Biome to print only diagnostics that contain only errors.
    
   [default: info]
-
-
 
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
@@ -1096,13 +1029,9 @@ Run the formatter on a set of files.
    
   [default: pretty]
 
-
-
 **Available positional items:**
 - _`PATH`_ &mdash; 
   Single file, single path or list of paths.
-
-
 
 **Available options:**
 - **`    --json-formatter-enabled`**=_`<true|false>`_ &mdash; 
@@ -1150,7 +1079,6 @@ Run the formatter on a set of files.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome ci
 
 Command to use in CI environments. Runs formatter, linter and import sorting to the requested files.
@@ -1164,8 +1092,6 @@ Files won't be modified, the command is a read-only operation.
   Allow parsing comments in `.json` files
 - **`    --json-parse-allow-trailing-commas`**=_`<true|false>`_ &mdash; 
   Allow parsing trailing commas in `.json` files
-
-
 
 **The configuration that is contained inside the file `biome.json`**
 - **`    --vcs-enabled`**=_`<true|false>`_ &mdash; 
@@ -1403,8 +1329,6 @@ Files won't be modified, the command is a read-only operation.
 - **`    --assist-enabled`**=_`<true|false>`_ &mdash; 
   Whether Biome should enable assist via LSP and CLI.
 
-
-
 **Global options applied to all commands**
 - **`    --colors`**=_`<off|force>`_ &mdash; 
   Set the formatting mode for markup: "off" prints everything as plain text, "force" forces the formatting of markup using ANSI even if the console output is determined to be incompatible
@@ -1434,8 +1358,6 @@ Files won't be modified, the command is a read-only operation.
   The level of diagnostics to show. In order, from the lowest to the most important: info, warn, error. Passing `--diagnostic-level=error` will cause Biome to print only diagnostics that contain only errors.
    
   [default: info]
-
-
 
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
@@ -1469,13 +1391,9 @@ Files won't be modified, the command is a read-only operation.
    
   [default: pretty]
 
-
-
 **Available positional items:**
 - _`PATH`_ &mdash; 
   Single file, single path or list of paths
-
-
 
 **Available options:**
 - **`    --formatter-enabled`**=_`<true|false>`_ &mdash; 
@@ -1519,7 +1437,6 @@ Files won't be modified, the command is a read-only operation.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome init
 
 Bootstraps a new biome project. Creates a configuration file with some defaults.
@@ -1531,7 +1448,6 @@ Bootstraps a new biome project. Creates a configuration file with some defaults.
   Tells Biome to emit a `biome.jsonc` file.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome lsp-proxy
 
@@ -1571,8 +1487,6 @@ Acts as a server for the Language Server Protocol over stdin/stdout.
    
   [default: pretty]
 
-
-
 **Controls various aspects of the Biome Daemon.**
 - **`    --watcher-kind`**=_`<polling|recommended|none>`_ &mdash; 
   Controls how the Biome file watcher should behave.
@@ -1587,12 +1501,9 @@ Acts as a server for the Language Server Protocol over stdin/stdout.
    
   [default: 2000]
 
-
-
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome migrate
 
@@ -1630,8 +1541,6 @@ Updates the configuration when there are breaking changes.
    
   [default: info]
 
-
-
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
   Optional path/file to redirect log messages to. This option is applicable only to the CLI.
@@ -1664,8 +1573,6 @@ Updates the configuration when there are breaking changes.
    
   [default: pretty]
 
-
-
 **Available options:**
 - **`    --write`** &mdash; 
   Writes the new configuration file to disk
@@ -1674,14 +1581,11 @@ Updates the configuration when there are breaking changes.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
-
 **Available commands:**
 - **`prettier`** &mdash; 
   It attempts to find the files `.prettierrc`/`prettier.json` and `.prettierignore`, and map the Prettier's configuration into Biome's configuration file.
 - **`eslint`** &mdash; 
   It attempts to find the ESLint configuration file in the working directory, and update the Biome's configuration file as a result.
-
 
 ## biome migrate prettier
 
@@ -1692,7 +1596,6 @@ It attempts to find the files `.prettierrc`/`prettier.json` and `.prettierignore
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome migrate eslint
 
@@ -1708,7 +1611,6 @@ It attempts to find the ESLint configuration file in the working directory, and 
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome search
 
 EXPERIMENTAL: Searches for Grit patterns across a project.
@@ -1720,7 +1622,6 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
   ```shell
   biome search '`console.log($message)`' # find all `console.log` invocations
   ```
-
 
 **Usage**: **`biome`** **`search`** \[**`-l`**=_`ARG`_\] _`PATTERN`_ \[_`PATH`_\]...
 
@@ -1754,8 +1655,6 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
    
   [default: info]
 
-
-
 **Options to control logging (CLI and Daemon)**
 - **`    --log-file`**=_`STRING`_ &mdash; 
   Optional path/file to redirect log messages to. This option is applicable only to the CLI.
@@ -1788,15 +1687,11 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
    
   [default: pretty]
 
-
-
 **The configuration of the filesystem**
 - **`    --files-max-size`**=_`NUMBER`_ &mdash; 
   The maximum allowed size for source code files in bytes. Files above this limit will be ignored for performance reasons. Defaults to 1 MiB
 - **`    --files-ignore-unknown`**=_`<true|false>`_ &mdash; 
   Tells Biome to not emit diagnostics when handling files that it doesn't know
-
-
 
 **Set of properties to integrate Biome with a VCS software.**
 - **`    --vcs-enabled`**=_`<true|false>`_ &mdash; 
@@ -1812,8 +1707,6 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
 - **`    --vcs-default-branch`**=_`BRANCH`_ &mdash; 
   The main branch of the project
 
-
-
 **Available positional items:**
 - _`PATTERN`_ &mdash; 
   The GritQL pattern to search for.
@@ -1821,8 +1714,6 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
   Note that the search command (currently) does not support rewrites.
 - _`PATH`_ &mdash; 
   Single file, single path or list of paths.
-
-
 
 **Available options:**
 - **`    --stdin-file-path`**=_`PATH`_ &mdash; 
@@ -1840,7 +1731,6 @@ Note: GritQL escapes code snippets using backticks, but most shells interpret ba
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
 ## biome explain
 
 Shows documentation of various aspects of the CLI.
@@ -1851,11 +1741,9 @@ Shows documentation of various aspects of the CLI.
   biome explain noDebugger
   ```
 
-
   ```shell
   biome explain daemon-logs
   ```
-
 
 **Usage**: **`biome`** **`explain`** _`NAME`_
 
@@ -1863,12 +1751,9 @@ Shows documentation of various aspects of the CLI.
 - _`NAME`_ &mdash; 
   Single name to display documentation for.
 
-
-
 **Available options:**
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
-
 
 ## biome clean
 
@@ -1880,10 +1765,7 @@ Cleans the logs emitted by the daemon.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
-
-
 [//]: # (End-codegen)
-
 
 ## Useful information
 

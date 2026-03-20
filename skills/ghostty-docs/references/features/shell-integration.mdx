@@ -32,12 +32,10 @@ description: |-
 Ghostty will automatically inject the shell integration code for `bash`,
 `zsh`, `fish`, and `elvish`.
 
-<Note>
   The version of Bash distributed with macOS (`/bin/bash`) does not support
   automatic shell integration. You'll need to manually source the shell
   integration script (as shown below). You can also install a standard version
   of Bash from Homebrew or elsewhere and set it as your shell.
-</Note>
 
 Other shells do not have shell integration code written, but they will function
 fine within Ghostty, although some or all of the above-mentioned shell
@@ -122,12 +120,10 @@ if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
 fi
 ```
 
-<Note>
   Technically, the bash shell integration script could be sourced from anywhere,
   but some bash configurations may interfere with the shell integration. To
   avoid this, we recommend sourcing the script as early as possible in your
   shell configuration.
-</Note>
 
 Each shell integration's installation instructions are documented inline:
 

@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Overview'
-slug: /cloud/manage/billing/overview
 title: 'Pricing'
 description: 'Overview page for ClickHouse Cloud pricing'
 doc_type: 'reference'
@@ -13,10 +11,8 @@ To understand what can affect your bill, and ways that you can manage your spend
 
 ## Amazon Web Services (AWS) example {#amazon-web-services-aws-example}
 
-:::note
-- Prices reflect AWS us-east-1 pricing.
+> **note**: - Prices reflect AWS us-east-1 pricing.
 - Explore applicable data transfer and ClickPipes charges [here](/cloud/manage/network-data-transfer).
-:::
 
 ### Basic: from $66.52 per month {#basic-from-6652-per-month}
 
@@ -94,15 +90,15 @@ Pricing breakdown for this example:
 <tbody>
   <tr>
     <td>Compute</td>
-    <td>2 replicas x 8 GiB RAM, 2 vCPU<br></br>\$436.95</td>
-    <td>2 replicas x 16 GiB RAM, 4 vCPU<br></br>\$873.89</td>
-    <td>3 replicas x 16 GiB RAM, 4 vCPU<br></br>\$1,310.84</td>
+    <td>2 replicas x 8 GiB RAM, 2 vCPU</br>\$436.95</td>
+    <td>2 replicas x 16 GiB RAM, 4 vCPU</br>\$873.89</td>
+    <td>3 replicas x 16 GiB RAM, 4 vCPU</br>\$1,310.84</td>
   </tr>
   <tr>
     <td>Storage</td>
-    <td>1 TB of data + 1 backup<br></br>\$50.60</td>
-    <td>2 TB of data + 1 backup<br></br>\$101.20</td>
-    <td>3 TB of data + 1 backup<br></br>\$151.80</td>
+    <td>1 TB of data + 1 backup</br>\$50.60</td>
+    <td>2 TB of data + 1 backup</br>\$101.20</td>
+    <td>3 TB of data + 1 backup</br>\$151.80</td>
   </tr>
   <tr>
     <td>Public internet egress data transfer</td>
@@ -144,15 +140,15 @@ Best for: large scale, mission critical deployments that have stringent security
 <tbody>
   <tr>
     <td>Compute</td>
-    <td>2 replicas x 32 GiB RAM, 8 vCPU<br></br>\$2,285.60</td>
-    <td>2 replicas x 64 GiB RAM, 16 vCPU<br></br>\$4,571.19</td>
-    <td>2 x 120 GiB RAM, 30 vCPU<br></br>\$8,570.99</td>
+    <td>2 replicas x 32 GiB RAM, 8 vCPU</br>\$2,285.60</td>
+    <td>2 replicas x 64 GiB RAM, 16 vCPU</br>\$4,571.19</td>
+    <td>2 x 120 GiB RAM, 30 vCPU</br>\$8,570.99</td>
   </tr>
   <tr>
     <td>Storage</td>
-    <td>5 TB + 1 backup<br></br>\$253.00</td>
-    <td>10 TB + 1 backup<br></br>\$506.00</td>
-    <td>20 TB + 1 backup<br></br>\$1,012.00</td>
+    <td>5 TB + 1 backup</br>\$253.00</td>
+    <td>10 TB + 1 backup</br>\$506.00</td>
+    <td>20 TB + 1 backup</br>\$1,012.00</td>
   </tr>
   <tr>
     <td>Public internet egress data transfer</td>
@@ -181,9 +177,7 @@ Best for: large scale, mission critical deployments that have stringent security
 
 A ClickHouse Credit is a unit of credit toward Customer's usage of ClickHouse Cloud equal to one (1) US dollar, to be applied based on ClickHouse's then-current published price list.
 
-:::note 
-If you're being billed through Stripe then you will see that 1 CHC is equal to \$0.01 USD on your Stripe invoice. This is to allow accurate billing on Stripe due to their limitation on not being able to bill fractional quantities of our standard SKU of 1 CHC = \$1 USD.
-:::
+> **note**: If you're being billed through Stripe then you will see that 1 CHC is equal to \$0.01 USD on your Stripe invoice. This is to allow accurate billing on Stripe due to their limitation on not being able to bill fractional quantities of our standard SKU of 1 CHC = \$1 USD.
 
 ### Where can I find legacy pricing? {#find-legacy-pricing}
 
@@ -235,9 +229,7 @@ ClickHouse Cloud supports the following billing options:
 - Direct-sales annual / multi-year (through pre-paid "ClickHouse Credits", in USD, with additional payment options).
 - Through the AWS, GCP, and Azure marketplaces (either pay-as-you-go (PAYG) or commit to a contract with ClickHouse Cloud through the marketplace).
 
-:::note
-ClickHouse Cloud credits for PAYG are invoiced in \$0.01 units, allowing us to charge customers for partial ClickHouse credits based on their usage. This differs from committed spend ClickHouse credits, which are purchased in advance in whole \$1 units.
-:::
+> **note**: ClickHouse Cloud credits for PAYG are invoiced in \$0.01 units, allowing us to charge customers for partial ClickHouse credits based on their usage. This differs from committed spend ClickHouse credits, which are purchased in advance in whole \$1 units.
 
 ### Can I delete my credit card? {#can-i-delete-my-credit-card}
 You can’t remove a credit card in the Billing UI, but you can update it anytime. This helps ensure your organization always has a valid payment method. If you need to remove your credit card, please contact [ClickHouse Cloud support](https://console.clickhouse.cloud/support) for help.
@@ -345,9 +337,9 @@ Cost estimation (per month) for this example on the **Scale Tier**:
 <table class="nowrap-header"><thead>
   <tr>
     <th></th>
-    <th><span>Child service</span><br/><span>active 1 hour/day</span></th>
-    <th><span>Child service</span><br/><span>active 2 hours/day</span></th>
-    <th><span>Child service</span><br/><span>active 4 hours/day</span></th>
+    <th><span>Child service</span><span>active 1 hour/day</span></th>
+    <th><span>Child service</span><span>active 2 hours/day</span></th>
+    <th><span>Child service</span><span>active 4 hours/day</span></th>
   </tr></thead>
 <tbody>
   <tr>

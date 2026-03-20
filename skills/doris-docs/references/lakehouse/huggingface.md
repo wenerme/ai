@@ -10,9 +10,7 @@
 
 Doris can directly access and analyze data from Hugging Face datasets using SQL through the [HTTP Table Valued Function](../sql-manual/sql-functions/table-valued-functions/http.md).
 
-:::note
-This feature is supported starting from version 4.0.2.
-:::
+> **note**: This feature is supported starting from version 4.0.2.
 
 ## Features
 

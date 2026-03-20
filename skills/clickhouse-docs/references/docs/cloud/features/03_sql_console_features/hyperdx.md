@@ -1,15 +1,9 @@
 ---
-sidebar_label: 'HyperDX'
-slug: /cloud/manage/hyperdx
 title: 'HyperDX'
 description: 'Provides HyperDX, the UI for ClickStack - a  production-grade observability platform built on ClickHouse and OpenTelemetry (OTel), unifying logs, traces, metrics, and sessions in a single high-performance scalable solution.'
 doc_type: 'guide'
 keywords: ['hyperdx', 'observability', 'integration', 'cloud features', 'monitoring']
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import hyperdx_cloud from '@site/static/images/use-cases/observability/hyperdx_cloud.png';
 
 <PrivatePreviewBadge/>
 
@@ -28,4 +22,4 @@ HyperDX in ClickHouse Cloud is currently in private preview and must be enabled 
 
 To get started with HyperDX in ClickHouse Cloud, we recommend our dedicated [getting started guide](/use-cases/observability/clickstack/deployment/clickstack-clickhouse-cloud).
 
-For further details on ClickStack, see the [full documentation](/use-cases/observability/clickstack). 
+For further details on ClickStack, see the [full documentation](/use-cases/observability/clickstack).

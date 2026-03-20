@@ -1,25 +1,16 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Control Model Access with OIDC (Azure AD/Keycloak/etc.)
 
-:::info
-
-✨ JWT Auth is on LiteLLM Enterprise
+> **info**: ✨ JWT Auth is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
 
-:::
-
 <Image img={require('../../img/control_model_access_jwt.png')} style={{ width: '100%', maxWidth: '4000px' }} />
 
 ## Example Token 
-
-<Tabs>
-<TabItem value="Azure AD">
 
 ```bash
 {
@@ -29,8 +20,6 @@ import TabItem from '@theme/TabItem';
   "roles": ["basic_user"] # 👈 ROLE
 }
 ```
-</TabItem>
-<TabItem value="Keycloak">
 
 ```bash
 {
@@ -44,13 +33,8 @@ import TabItem from '@theme/TabItem';
   }
 }
 ```
-</TabItem>
-</Tabs>
 
 ## Proxy Configuration
-
-<Tabs>
-<TabItem value="Azure AD">
 
 ```yaml
 general_settings:
@@ -73,9 +57,6 @@ model_list:
         model: gpt-4o
 ```
 
-</TabItem>
-<TabItem value="Keycloak">
-
 ```yaml
 general_settings:
   enable_jwt_auth: True 
@@ -96,10 +77,6 @@ model_list:
       litellm_params:
         model: gpt-4o
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## How it works
 

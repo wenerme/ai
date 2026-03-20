@@ -5,12 +5,11 @@ This document provides training scripts for various human preference alignment a
 ## Dataset
 The data required by the PPO and GRPO algorithm consists solely of model inputs, which include the system prompt (optional) and the query. In the case of the GRPO algorithm, the reward function may require additional data columns. For example, to calculate accuracy, a `solution` column is needed as a reference answer.
 
-For RM and DPO-type algorithms such as ORPO, CPO, and SimPO, $(x,y_w,y_l)$ formatted data is required, where $x$ is the model input, $y_w$ is the preferred answer that aligns with human preferences, and $y_l$ is the rejected answer that does not align with human preferences, as shown in ![dpo_data](../../resources/dpo_data.png).
+For RM and DPO-type algorithms such as ORPO, CPO, and SimPO, $(x,y_w,y_l)$ formatted data is required, where $x$ is the model input, $y_w$ is the preferred answer that aligns with human preferences, and $y_l$ is the rejected answer that does not align with human preferences, as shown in [dpo_data].
 
-In contrast, the KTO algorithm has a special data format that only requires $(x,y,\text{label})$, where $x$ is the model input, $y$ is the model output, and the label indicates whether the answer aligns with human preferences, as shown in ![kto_data](../../resources/kto_data.png).
+In contrast, the KTO algorithm has a special data format that only requires $(x,y,\text{label})$, where $x$ is the model input, $y$ is the model output, and the label indicates whether the answer aligns with human preferences, as shown in [kto_data].
 
 For RLHF training of text models or multimodal large models using a custom dataset, you can refer to the [custom dataset documentation](../Customization/Custom-dataset.md#rlhf).
-
 
 ## GRPO
 [Paper on arXiv](https://arxiv.org/abs/2402.03300)
@@ -58,7 +57,6 @@ $
 - $r^{(r)}$: The score assigned by the model to the rejected response.
 - $\lambda$: L2 regularization coefficient that encourages the model outputs to be close to zero. It is set by the parameter `center_rewards_coefficient`, as described in [the paper](https://arxiv.org/pdf/2307.09288), and defaults to 0.
 - $m$: Margin term that encourages the model to distinguish between samples of different difficulty levels. The dataset needs to provide a `margin` column for this; by default, it is 0. This term is also introduced in [the paper](https://arxiv.org/pdf/2307.09288).
-
 
 Reference the training script [here](https://github.com/modelscope/ms-swift/tree/main/examples/train/rlhf/rm.sh).
 

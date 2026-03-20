@@ -100,8 +100,6 @@ The data is converted as follows:
 
 Use the following options to refine your histogram visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Bucket count | Specifies the number of bins used to group your data in the histogram, affecting the granularity of the displayed distribution. Leave this empty for automatic bucket count of 30. |
@@ -112,8 +110,6 @@ Use the following options to refine your histogram visualization.
 | Line width | Controls line width of the bars. |
 | Fill opacity | Controls the fill opacity bars. |
 | [Gradient mode](#gradient-mode) | Set the mode of the gradient fill. Fill gradient is based on the line color. |
-
-<!-- prettier-ignore-end -->
 
 #### Bucket offset
 

@@ -36,11 +36,11 @@ See [the prompt object](/custom-nodes/js/javascript_objects_and_hijacking#prompt
 `EXTRA_PNGINFO` is a dictionary that will be copied into the metadata of any `.png` files saved. Custom nodes can store additional
 information in this dictionary for saving (or as a way to communicate with a downstream node).
 
-<Tip>Note that if Comfy is started with the `disable_metadata` option, this data won't be saved.</Tip>
+Note that if Comfy is started with the `disable_metadata` option, this data won't be saved.
 
 ### DYNPROMPT
 `DYNPROMPT` is an instance of `comfy_execution.graph.DynamicPrompt`. It differs from `PROMPT` in that it may mutate during the course of execution in response to [Node Expansion](/custom-nodes/backend/expansion).
-<Tip>`DYNPROMPT` should only be used for advanced cases (like implementing loops in custom nodes).</Tip>
+`DYNPROMPT` should only be used for advanced cases (like implementing loops in custom nodes).
 
 ## Flexible inputs
 
@@ -104,4 +104,4 @@ def main_method(self, **kwargs):
     # the dynamically created input data will be in the dictionary kwargs
 
 ```
-<Tip>Hat tip to rgthree for this pythonic trick!</Tip>
+Hat tip to rgthree for this pythonic trick!

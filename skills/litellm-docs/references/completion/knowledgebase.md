@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Using Vector Stores (Knowledge Bases)
 
@@ -11,7 +9,6 @@ import Image from '@theme/IdealImage';
 <p style={{textAlign: 'left', color: '#666'}}>
   Use Vector Stores with any LiteLLM supported model
 </p>
-
 
 LiteLLM integrates with vector stores, allowing your models to access your organization's data for more accurate and contextually relevant responses.
 
@@ -51,7 +48,6 @@ litellm.vector_store_registry = VectorStoreRegistry(
     ]
 )
 
-
 # Make a completion request with vector_store_ids parameter
 response = await litellm.acompletion(
     model="anthropic/claude-3-5-sonnet", 
@@ -73,9 +69,6 @@ print(response.choices[0].message.content)
 
 In order to use a vector store with LiteLLM, you need to configure your vector_store_registry. This tells litellm which vector stores to use and api provider to use for the vector store.
 
-<Tabs>
-<TabItem value="config-yaml" label="config.yaml">
-
 ```yaml showLineNumbers title="config.yaml"
 model_list:
   - model_name: claude-3-5-sonnet
@@ -94,27 +87,13 @@ vector_store_registry:
 
 ```
 
-</TabItem>
-
-<TabItem value="litellm-ui" label="LiteLLM UI">
-
 On the LiteLLM UI, Navigate to Experimental > Vector Stores > Create Vector Store. On this page you can create a vector store with a name, vector store id and credentials.
 <Image 
   img={require('../../img/kb_2.png')}
   style={{width: '50%'}}
 />
 
-
-
-
-</TabItem>
-
-</Tabs>
-
 #### 2. Make a request with vector_store_ids parameter
-
-<Tabs>
-<TabItem value="curl" label="Curl">
 
 ```bash showLineNumbers title="Curl Request to LiteLLM Proxy"
 curl http://localhost:4000/v1/chat/completions \
@@ -131,10 +110,6 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="OpenAI Python SDK Request"
 from openai import OpenAI
@@ -160,9 +135,6 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Provider Specific Guides
 
 This section covers how to add your vector stores to LiteLLM. If you want support for a new provider, please file an issue [here](https://github.com/BerriAI/litellm/issues).
@@ -183,7 +155,6 @@ Ensure you have a Bedrock Knowledge Base created in your AWS account with the ap
   img={require('../../img/kb_2.png')}
   style={{width: '60%', display: 'block'}}
 />
-
 
 ### Vertex AI RAG Engine
 
@@ -287,8 +258,6 @@ Once your litellm-pg-vector-store is deployed:
 />
 </div>
 
-
-
 ## Advanced
 
 ### Logging Vector Store Usage
@@ -304,7 +273,6 @@ After completing a request with a vector store, navigate to the `Logs` page on L
 <p style={{textAlign: 'left', color: '#666'}}>
   LiteLLM Logs Page: Vector Store Usage
 </p>
-
 
 ### Listing available vector stores
 
@@ -342,7 +310,6 @@ The response will be a list of all vector stores that are available to use with 
   "total_pages": 1
 }
 ```
-
 
 ### Always on for a model
 
@@ -427,7 +394,6 @@ For streaming: Results appear in the **final chunk** when `finish_reason == "sto
 
 ### Non-Streaming Example
 
-
 **Non-Streaming Response with search results:**
 
 ```json
@@ -455,9 +421,6 @@ For streaming: Results appear in the **final chunk** when `finish_reason == "sto
 }
 ```
 
-<Tabs>
-<TabItem value="python-sdk" label="Python SDK">
-
 ```python
 from openai import OpenAI
 
@@ -482,10 +445,6 @@ for result_page in search_results:
     for idx, item in enumerate(result_page['data'], 1):
         print(f"[{idx}] {item.get('filename', 'Unknown')} (score: {item['score']:.2f})")
 ```
-
-</TabItem>
-
-<TabItem value="typescript" label="TypeScript SDK">
 
 ```typescript
 import OpenAI from 'openai';
@@ -515,9 +474,6 @@ searchResults.forEach((page: any) => {
 });
 ```
 
-</TabItem>
-</Tabs>
-
 ### Streaming Example
 
 **Streaming Response with search results (final chunk):**
@@ -544,9 +500,6 @@ searchResults.forEach((page: any) => {
   }]
 }
 ```
-
-<Tabs>
-<TabItem value="python-sdk" label="Python SDK">
 
 ```python
 from openai import OpenAI
@@ -578,10 +531,6 @@ for chunk in stream:
                     print(f"  [{idx}] {item.get('filename', 'Unknown')} ({item['score']:.2f})")
 ```
 
-</TabItem>
-
-<TabItem value="typescript" label="TypeScript SDK">
-
 ```typescript
 import OpenAI from 'openai';
 
@@ -612,9 +561,6 @@ for await (const chunk of stream) {
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Search Result Fields
 
@@ -694,5 +640,3 @@ vector_store_registry:
 ```
 
 The `litellm_params` section accepts all the same parameters as the `LiteLLM_ManagedVectorStore` constructor in the Python SDK.
-
-

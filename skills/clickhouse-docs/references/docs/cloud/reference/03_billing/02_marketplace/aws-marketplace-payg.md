@@ -1,21 +1,9 @@
 ---
-slug: /cloud/billing/marketplace/aws-marketplace-payg
 title: 'AWS Marketplace PAYG'
 description: 'Subscribe to ClickHouse Cloud through the AWS Marketplace (PAYG).'
 keywords: ['aws', 'marketplace', 'billing', 'PAYG']
 doc_type: 'guide'
 ---
-
-import aws_marketplace_payg_1 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-1.png';
-import aws_marketplace_payg_2 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-2.png';
-import aws_marketplace_payg_3 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-3.png';
-import aws_marketplace_payg_4 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-4.png';
-import aws_marketplace_payg_5 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-5.png';
-import aws_marketplace_payg_6 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-6.png';
-import aws_marketplace_payg_7 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-7.png';
-import aws_marketplace_payg_8 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-8.png';
-import aws_marketplace_payg_9 from '@site/static/images/cloud/manage/billing/marketplace/aws-marketplace-payg-9.png';
-import Image from '@theme/IdealImage';
 
 Get started with ClickHouse Cloud on the [AWS Marketplace](https://aws.amazon.com/marketplace) via a PAYG (Pay-as-you-go) Public Offer.
 
@@ -25,9 +13,7 @@ Get started with ClickHouse Cloud on the [AWS Marketplace](https://aws.amazon.co
 - To purchase, you must be logged into the AWS marketplace with this account.
 - To connect a ClickHouse organization to your subscription, you must be an admin of that organization.
 
-:::note
-One AWS account can only subscribe to one “ClickHouse Cloud - Pay As You Go” subscription which can only be linked to one ClickHouse organization.
-:::
+> **note**: One AWS account can only subscribe to one “ClickHouse Cloud - Pay As You Go” subscription which can only be linked to one ClickHouse organization.
 
 ## Steps to sign up {#steps-to-sign-up}
 
@@ -49,10 +35,8 @@ Click on the [listing](https://aws.amazon.com/marketplace/pp/prodview-p4gwofrqpk
 
 On the next screen, click subscribe.
 
-:::note
-**Purchase order (PO) number** is optional and can be ignored.
+> **note**: **Purchase order (PO) number** is optional and can be ignored.
 **There are two offers available on this listing.** If you choose the offer option for "ClickHouse Cloud - Pay As You Go Free Trial," you’ll be subscribing to a 30-day AWS-managed free trial. However, once the 30 days have passed, the listing subscription will end, and you’ll need to re-subscribe to the other "ClickHouse Cloud - Pay As You Go" offer option on this listing to continue using ClickHouse Pay As You Go.
-:::
 
 <Image img={aws_marketplace_payg_3} alt="AWS Marketplace subscribe" border/>
 
@@ -66,10 +50,8 @@ Once you redirect to ClickHouse Cloud, you can either login with an existing acc
 
 :::note[New Clickhouse Cloud Users]
 If you're a new ClickHouse Cloud user, follow the steps below.
-:::
 
-<details>
-<summary><strong>Steps for new users</strong></summary>
+<strong>Steps for new users</strong>
 
 If you're a new ClickHouse Cloud user, click Register at the bottom of the page. You will be prompted to create a new user and verify the email. After verifying your email, you can leave the ClickHouse Cloud login page and login using the new username at the https://console.clickhouse.cloud.
 
@@ -77,13 +59,10 @@ If you're a new ClickHouse Cloud user, click Register at the bottom of the page.
 
 :::note[New users]
 You will also need to provide some basic information about your business. See the screenshots below.
-:::
 
 <Image img={aws_marketplace_payg_6} size="md" alt="Before you start"/>
 
 <Image img={aws_marketplace_payg_7} size="md" alt="Before you star continued"/>
-
-</details>
 
 If you're an existing ClickHouse Cloud user, simply log in using your credentials.
 

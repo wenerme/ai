@@ -5,4 +5,4 @@ Learn more:
 - [Full-Text Search](../sql-functions/full-text-search/)
 - [Array](../sql-functions/array)
 - [Aggregate](../sql-functions/aggregate)
-- [Approximate Aggregate](../sql-functions/approximate-aggregate)  
+- [Approximate Aggregate](../sql-functions/approximate-aggregate)

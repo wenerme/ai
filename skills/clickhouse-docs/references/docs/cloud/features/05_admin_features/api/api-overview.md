@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Overview'
-sidebar_position: 1
 title: 'ClickHouse Cloud API'
-slug: /cloud/manage/api/api-overview
 description: 'Learn about ClickHouse Cloud API'
 doc_type: 'reference'
 keywords: ['ClickHouse Cloud', 'API overview', 'cloud API', 'REST API', 'programmatic access']
@@ -27,12 +24,10 @@ consume the ClickHouse Cloud API docs, we offer a JSON-based Swagger endpoint
 via https://api.clickhouse.cloud/v1. You can also find the API docs via
 the [Swagger UI](https://clickhouse.com/docs/cloud/manage/api/swagger).
 
-:::note 
-If your organization has been migrated to one of the [new pricing plans](https://clickhouse.com/pricing?plan=scale&provider=aws&region=us-east-1&hours=8&storageCompressed=false), and you use OpenAPI you will be required to remove the `tier` field in the service creation `POST` request.
+> **note**: If your organization has been migrated to one of the [new pricing plans](https://clickhouse.com/pricing?plan=scale&provider=aws&region=us-east-1&hours=8&storageCompressed=false), and you use OpenAPI you will be required to remove the `tier` field in the service creation `POST` request.
 
 The `tier` field has been removed from the service object as we no longer have service tiers.  
 This will affect the objects returned by the `POST`, `GET`, and `PATCH` service requests. Therefore, any code that consumes these APIs may need to be adjusted to handle these changes.
-:::
 
 ## Rate limits {#rate-limits}
 
@@ -52,11 +47,9 @@ You can view the Terraform provider docs in the [Terraform registry](https://reg
 If you'd like to contribute to the ClickHouse Terraform Provider, you can view 
 the source [in the GitHub repo](https://github.com/ClickHouse/terraform-provider-clickhouse).
 
-:::note 
-If your organization has been migrated to one of the [new pricing plans](https://clickhouse.com/pricing?plan=scale&provider=aws&region=us-east-1&hours=8&storageCompressed=false), you will be required to use our [ClickHouse Terraform provider](https://registry.terraform.io/providers/ClickHouse/clickhouse/latest/docs) version 2.0.0 or above. This upgrade is required to handle changes in the `tier` attribute of the service since, after pricing migration, the `tier` field is no longer accepted and references to it should be removed.
+> **note**: If your organization has been migrated to one of the [new pricing plans](https://clickhouse.com/pricing?plan=scale&provider=aws&region=us-east-1&hours=8&storageCompressed=false), you will be required to use our [ClickHouse Terraform provider](https://registry.terraform.io/providers/ClickHouse/clickhouse/latest/docs) version 2.0.0 or above. This upgrade is required to handle changes in the `tier` attribute of the service since, after pricing migration, the `tier` field is no longer accepted and references to it should be removed.
 
 You will now also be able to specify the `num_replicas` field as a property of the service resource.
-:::
 
 ## Terraform and OpenAPI New Pricing: Replica Settings Explained {#terraform-and-openapi-new-pricing---replica-settings-explained}
 

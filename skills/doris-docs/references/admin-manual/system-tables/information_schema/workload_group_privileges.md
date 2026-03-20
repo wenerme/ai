@@ -12,9 +12,7 @@ Stores permission information for Workload Groups.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

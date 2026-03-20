@@ -1,15 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /assistants
 
-:::warning Deprecation Notice
+> **warning**: Deprecation Notice
 
 OpenAI has deprecated the Assistants API. It will shut down on **August 26, 2026**.
 
 Consider migrating to the [Responses API](/docs/response_api) instead. See [OpenAI's migration guide](https://platform.openai.com/docs/guides/responses-vs-assistants) for details.
-
-:::
 
 Covers Threads, Messages, Assistants. 
 
@@ -22,7 +19,6 @@ LiteLLM currently covers:
 - Add Messages
 - Get Messages
 - Run Thread
-
 
 ## **Supported Providers**:
 - [OpenAI](#quick-start)
@@ -42,11 +38,8 @@ Call an existing Assistant.
 - Run the Assistant on the Thread to generate a response by calling the model and the tools.
 
 ### SDK + PROXY
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 **Create an Assistant**
-
 
 ```python
 import litellm
@@ -172,8 +165,6 @@ response = run_thread(
 
 print(f"run_thread: {run_thread}")
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 assistant_settings:
@@ -190,7 +181,6 @@ $ litellm --config /path/to/config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-
 **Create the Assistant**
 
 ```bash
@@ -204,7 +194,6 @@ curl "http://localhost:4000/v1/assistants" \
     "model": "gpt-4-turbo"
   }'
 ```
-
 
 **Get the Assistant**
 
@@ -254,13 +243,7 @@ curl http://0.0.0.0:4000/v1/threads/thread_abc123/runs \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Streaming 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import run_thread_stream 
@@ -280,9 +263,6 @@ with run as run:
     run.until_done()
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl -X POST 'http://0.0.0.0:4000/threads/{thread_id}/runs' \
 -H 'Authorization: Bearer sk-1234' \
@@ -293,11 +273,7 @@ curl -X POST 'http://0.0.0.0:4000/threads/{thread_id}/runs' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## [👉 Proxy API Reference](https://litellm-api.up.railway.app/#/assistants)
-
 
 ## Azure OpenAI
 
@@ -327,7 +303,6 @@ curl -X POST "http://localhost:4000/v1/assistants" \
 ## OpenAI-Compatible APIs 
 
 To call openai-compatible Assistants API's (eg. Astra Assistants API), just add `openai/` to the model name: 
-
 
 **config**
 ```yaml

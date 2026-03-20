@@ -99,9 +99,8 @@ If a callback is passed, a boolean can be returned to opt-in or opt-out. If noth
 
 Git LFS placeholders are automatically excluded from inlining because they do not contain the content of the file they represent.
 
-::: tip Note
+> **tip**: Note
 If you specify `build.lib`, `build.assetsInlineLimit` will be ignored and assets will always be inlined, regardless of file size or being a Git LFS placeholder.
-:::
 
 ## build.cssCodeSplit
 
@@ -112,9 +111,8 @@ Enable/disable CSS code splitting. When enabled, CSS imported in async JS chunks
 
 If disabled, all CSS in the entire project will be extracted into a single CSS file.
 
-::: tip Note
+> **tip**: Note
 If you specify `build.lib`, `build.cssCodeSplit` will be `false` as default.
-:::
 
 ## build.cssTarget
 
@@ -219,9 +217,7 @@ If `fileName` is passed, it will be used as the license file name relative to th
 ]
 ```
 
-::: tip
-
-If you'd like to reference the license file in the built code, you can use [`build.rolldownOptions.output.postBanner`](https://rolldown.rs/reference/OutputOptions.postBanner#postbanner) to inject a comment at the top of the files. For example:
+> **tip**: If you'd like to reference the license file in the built code, you can use [`build.rolldownOptions.output.postBanner`](https://rolldown.rs/reference/OutputOptions.postBanner#postbanner) to inject a comment at the top of the files. For example:
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
@@ -238,8 +234,6 @@ export default defineConfig({
   },
 })
 ```
-
-:::
 
 ## build.manifest
 
@@ -353,9 +347,7 @@ Limit for chunk size warnings (in kB). It is compared against the uncompressed c
 
 Set to `{}` to enable rollup watcher. This is mostly used in cases that involve build-only plugins or integrations processes.
 
-::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
+> **warning**: Using Vite on Windows Subsystem for Linux (WSL) 2
 
 There are cases that file system watching does not work with WSL2.
 See [`server.watch`](./server-options.md#server-watch) for more details.
-
-:::

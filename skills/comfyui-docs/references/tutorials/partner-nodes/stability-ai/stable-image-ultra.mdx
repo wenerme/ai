@@ -1,18 +1,11 @@
 ---
 title: "Stability AI Stable Image Ultra API Node ComfyUI Official Example"
 description: "This article will introduce how to use the Stability AI Stable Image Ultra Partner node's text-to-image and image-to-image capabilities in ComfyUI"
-sidebarTitle: "Stable Image Ultra"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 The [Stability Stable Image Ultra](/images/built-in-nodes/api_nodes/stability-ai/stability-ai-stable-image-ultra.jpg) node allows you to use Stability AI's Stable Image Ultra model to create high-quality, detailed image content through text prompts or reference images.
 
 In this guide, we will show you how to set up workflows for both text-to-image and image-to-image generation using this node.
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Stability AI Stable Image Ultra Text-to-Image Workflow
 
@@ -24,7 +17,7 @@ The workflow information is included in the metadata of the image below. Please 
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![Stability AI Stable Image Ultra Text-to-Image Step Guide](/images/tutorial/api_nodes/stability_ai/stable_image_ultra_t2i_step_guide.jpg)
+[Stability AI Stable Image Ultra Text-to-Image Step Guide]
 
 You can follow the numbered steps in the image to complete the basic text-to-image workflow:
 1. (Optional) Modify the `prompt` parameter in the `Stability AI Stable Image Ultra` node to input your desired image description. More detailed prompts often lead to better image quality. You can use the `(word:weight)` format to control specific word weights, for example: `The sky was crisp (blue:0.3) and (green:0.8)` indicates the sky is blue and green, but green is more prominent.
@@ -53,7 +46,7 @@ Download the image below which we will use as input
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![Stability Stable Image Ultra Image-to-Image Step Guide](/images/tutorial/api_nodes/stability_ai/stable_image_ultra_i2i_step_guide.jpg)
+[Stability Stable Image Ultra Image-to-Image Step Guide]
 
 You can follow the numbered steps in the image to complete the image-to-image workflow:
 1. Load a reference image through the `Load Image` node, which will serve as the basis for generation.
@@ -69,7 +62,7 @@ You can follow the numbered steps in the image to complete the image-to-image wo
 
 **Image Denoise**: This parameter determines how much of the original image's features are preserved during generation, and is the most crucial adjustment parameter in image-to-image mode. The image below shows the effects of different denoising strengths
 
-![Stability Stable Image Ultra Image-to-Image Denoise Explanation](/images/tutorial/api_nodes/stability_ai/i2i_image_denoise.jpg)
+[Stability Stable Image Ultra Image-to-Image Denoise Explanation]
 
 - **Reference Image Selection**: Choosing images with clear subjects and good composition usually leads to better results.
 - **Prompt Tips**: In image-to-image mode, prompts should focus more on what you want to change or enhance, rather than describing all elements already present in the image.
@@ -78,6 +71,4 @@ You can follow the numbered steps in the image to complete the image-to-image wo
 
 You can refer to the documentation below for detailed parameter settings and more information about the corresponding nodes
 
-<Card title="Stability Stable Image Ultra Node Documentation" icon="book" href="/built-in-nodes/partner-node/image/stability-ai/stability-ai-stable-image-ultra">
 Stability Stable Image Ultra API Node Documentation
-</Card>

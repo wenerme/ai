@@ -51,7 +51,6 @@ limit_clause
 >
 > For more details, see Identifier Requirements and Reserved Keywords.
 
-
 **`<WHERE output_column_name = value>`**
 
 > Specifies the output filter condition, where output_column_name must be in the output field list.

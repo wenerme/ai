@@ -32,9 +32,7 @@ This is the simplest option, though it may not be ideal for your project.
 
 By explicitly specifying the `.output` or your `handler's return type`, you enable TypeScript to infer the output without parsing the handler's code. This approach can dramatically enhance both type-checking and IDE-suggestion speed.
 
-:::tip
-Use the [type](/docs/procedure#type-utility) utility if you just want to specify the output type without validating the output.
-:::
+> **tip**: Use the [type](/docs/procedure#type-utility) utility if you just want to specify the output type without validating the output.
 
 ### 3. Export the Router in Parts
 

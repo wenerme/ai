@@ -5,12 +5,7 @@
 - If we introduce a new feature that may move to the Enterprise Tier it will be clearly labeled as **Beta**. With the following example disclaimer
 **Example Disclaimer**
 
-:::info
-
-Beta Feature -  This feature might move to LiteLLM Enterprise
-
-:::
-
+> **info**: Beta Feature -  This feature might move to LiteLLM Enterprise
 
 ## Policy if a Beta Feature moves to Enterprise
 

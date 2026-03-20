@@ -18,7 +18,6 @@ The commands are used to display warm-up jobs in Doris.
 
 ## Parameters
 
-
 | Parameter Name                  | Description                                                         |
 |---------------------------|--------------------------------------------------------------|
 | id                        | The ID of the warm-up job                                                |
@@ -39,4 +38,3 @@ The commands are used to display warm-up jobs in Doris.
 ## Related Commands
 
  - [WARMUP COMPUTE GROUP](./WARM-UP.md)
-

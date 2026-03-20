@@ -1,6 +1,5 @@
 ---
 title: cache | Config
-outline: deep
 ---
 
 # cache <CRoot />

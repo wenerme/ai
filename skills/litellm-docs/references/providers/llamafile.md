@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Llamafile
 
@@ -11,7 +10,6 @@ LiteLLM supports all models on Llamafile.
 | Provider Route on LiteLLM | `llamafile/` (for OpenAI compatible server)                                                                                          |
 | Provider Doc              | [llamafile ↗](https://github.com/Mozilla-Ocho/llamafile/blob/main/llama.cpp/server/README.md#api-endpoints)                          |
 | Supported Endpoints       | `/chat/completions`, `/embeddings`, `/completions`                                                                                   |
-
 
 # Quick Start
 
@@ -36,7 +34,6 @@ response = litellm.completion(
 print(response)
 ```
 
-
 ## Usage -  LiteLLM Proxy Server (calling OpenAI compatible endpoint)
 
 Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
@@ -59,9 +56,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
 1. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -82,9 +79,9 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -100,15 +97,11 @@ Here's how to call an OpenAI-Compatible Endpoint with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
+  
 
 ## Embeddings
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import embedding   
@@ -116,14 +109,10 @@ import os
 
 os.environ["LLAMAFILE_API_BASE"] = "http://localhost:8080/v1"
 
-
 embedding = embedding(model="llamafile/sentence-transformers/all-MiniLM-L6-v2", input=["Hello world"])
 
 print(embedding)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -153,6 +142,3 @@ curl -L -X POST 'http://0.0.0.0:4000/embeddings' \
 ```
 
 [See OpenAI SDK/Langchain/etc. examples](../proxy/user_keys.md#embeddings)
-
-</TabItem>
-</Tabs>

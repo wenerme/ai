@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/cloud-monitoring
 title: 'ClickHouse Cloud monitoring'
-sidebar_label: 'ClickHouse Cloud monitoring'
 description: 'ClickHouse Cloud Monitoring Guide'
 doc_type: 'guide'
 keywords: ['observability', 'monitoring', 'cloud', 'metrics', 'system health']
 ---
-
-import AdvancedDashboard from '@site/static/images/cloud/manage/monitoring/advanced_dashboard.png';
-import NativeAdvancedDashboard from '@site/static/images/cloud/manage/monitoring/native_advanced_dashboard.png';
-import Image from '@theme/IdealImage';
-import ObservabilityIntegrations from '@site/docs/_snippets/_observability_integration_options.md';
-import DirectIntegrations from '@site/docs/_snippets/_direct_observability_integration_options.md';
-import CommunityMonitoring from '@site/docs/_snippets/_community_monitoring.md';
 
 # ClickHouse Cloud monitoring {#cloud-monitoring}
 
@@ -24,9 +15,7 @@ ClickHouse Cloud provides comprehensive monitoring through built-in dashboard in
 
 - **Advanced Dashboard**: The main dashboard interface accessible via Monitoring → Advanced dashboard provides real-time visibility into query rates, resource usage, system health, and storage performance. This dashboard doesn't require separate authentication, won't prevent instances from idling, and doesn't add query load to your production system. Each visualization is powered by customizable SQL queries, with out-of-the-box charts grouped into ClickHouse-specific, system health, and Cloud-specific metrics. You can extend monitoring by creating custom queries directly in the SQL console.
 
-:::note
-Accessing these metrics doesn't issue a query to the underlying service and won't wake idle services. 
-:::
+> **note**: Accessing these metrics doesn't issue a query to the underlying service and won't wake idle services. 
 
 <Image img={AdvancedDashboard} size="lg" alt="Advanced dashboard"/>
 
@@ -57,9 +46,7 @@ The organization-level endpoint federates metrics from all services, while per-s
 - Filtered metrics option: The optional filtered_metrics=true parameter reduces payload from 1000+ available metrics to 125 'mission critical' metrics for cost optimization and easier monitoring focus
 - Cached metric delivery: Uses materialized views refreshed every minute to minimize query load on production systems
 
-:::note
-This approach respects service idling behavior, allowing for cost optimization when services aren't actively processing queries. This API endpoint relies on ClickHouse Cloud API credentials. For complete endpoint configuration details, see the cloud [Prometheus documentation](/integrations/prometheus).
-:::
+> **note**: This approach respects service idling behavior, allowing for cost optimization when services aren't actively processing queries. This API endpoint relies on ClickHouse Cloud API credentials. For complete endpoint configuration details, see the cloud [Prometheus documentation](/integrations/prometheus).
 
 <ObservabilityIntegrations/>
 
@@ -72,9 +59,7 @@ This approach respects service idling behavior, allowing for cost optimization w
 
 For complete deployment options and architecture details, see the [ClickStack documentation](/use-cases/observability/clickstack/overview) and [data ingestion guide](/use-cases/observability/clickstack/ingesting-data/overview).
 
-:::note
-You can also collect metrics from the ClickHouse Cloud Prometheus endpoint via an OpenTelemetry Collector and forward them to a separate ClickStack deployment for visualization.
-:::
+> **note**: You can also collect metrics from the ClickHouse Cloud Prometheus endpoint via an OpenTelemetry Collector and forward them to a separate ClickStack deployment for visualization.
 
 <DirectIntegrations/>
 

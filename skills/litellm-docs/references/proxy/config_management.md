@@ -17,7 +17,6 @@ litellm_settings:
   callbacks: ["prometheus"] 
 ```
 
-
 Contents of `model_config.yaml`:
 ```yaml
 model_list:
@@ -38,10 +37,6 @@ This will start the proxy server with config `parent_config.yaml`. Since the `in
 ```
 litellm --config parent_config.yaml --detailed_debug
 ```
-
-
-
-
 
 ## Examples using `include`
 

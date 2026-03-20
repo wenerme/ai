@@ -1,7 +1,4 @@
 ---
-slug: /use-cases/observability/clickstack/integration-partners
-pagination_prev: null
-pagination_next: null
 description: 'Integration partners for ClickStack - The ClickHouse Observability Stack'
 title: 'Integration partners'
 doc_type: 'landing-page'

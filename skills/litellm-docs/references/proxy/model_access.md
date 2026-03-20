@@ -1,12 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Restrict Model Access
 
 ## **Restrict models by Virtual Key**
 
 Set allowed models for a key using the `models` param
-
 
 ```shell
 curl 'http://0.0.0.0:4000/key/generate' \
@@ -15,16 +13,9 @@ curl 'http://0.0.0.0:4000/key/generate' \
 --data-raw '{"models": ["gpt-3.5-turbo", "gpt-4"]}'
 ```
 
-:::info
-
-This key can only make requests to `models` that are `gpt-3.5-turbo` or `gpt-4`
-
-:::
+> **info**: This key can only make requests to `models` that are `gpt-3.5-turbo` or `gpt-4`
 
 Verify this is set correctly by 
-
-<Tabs>
-<TabItem label="Allowed Access" value = "allowed">
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -38,15 +29,7 @@ curl -i http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-
-<TabItem label="Disallowed Access" value = "not-allowed">
-
-:::info
-
-Expect this to fail since gpt-4o is not in the `models` for the key generated
-
-:::
+> **info**: Expect this to fail since gpt-4o is not in the `models` for the key generated
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -59,11 +42,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-
-</Tabs>
-
 
 ### [API Reference](https://litellm-api.up.railway.app/#/key%20management/generate_key_fn_key_generate_post)
 
@@ -113,16 +91,13 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 ### [API Reference](https://litellm-api.up.railway.app/#/team%20management/new_team_team_new_post)
 
-
 ## **View Available Fallback Models**
 
 Use the `/v1/models` endpoint to discover available fallback models for a given model. This helps you understand which backup models are available when your primary model is unavailable or restricted.
 
-:::info Extension Point
+> **info**: Extension Point
 
 The `include_metadata` parameter serves as an extension point for exposing additional model metadata in the future. While currently focused on fallback models, this approach will be expanded to include other model metadata such as pricing information, capabilities, rate limits, and more.
-
-:::
 
 ### Basic Usage
 
@@ -146,19 +121,12 @@ curl -X GET 'http://localhost:4000/v1/models?include_metadata=true' \
 
 You can specify the type of fallbacks you want to see:
 
-<Tabs>
-<TabItem value="general" label="General Fallbacks">
-
 ```shell
 curl -X GET 'http://localhost:4000/v1/models?include_metadata=true&fallback_type=general' \
   -H 'Authorization: Bearer <your-api-key>'
 ```
 
 General fallbacks are alternative models that can handle the same types of requests.
-
-</TabItem>
-
-<TabItem value="context_window" label="Context Window Fallbacks">
 
 ```shell
 curl -X GET 'http://localhost:4000/v1/models?include_metadata=true&fallback_type=context_window' \
@@ -167,20 +135,12 @@ curl -X GET 'http://localhost:4000/v1/models?include_metadata=true&fallback_type
 
 Context window fallbacks are models with larger context windows that can handle requests when the primary model's context limit is exceeded.
 
-</TabItem>
-
-<TabItem value="content_policy" label="Content Policy Fallbacks">
-
 ```shell
 curl -X GET 'http://localhost:4000/v1/models?include_metadata=true&fallback_type=content_policy' \
   -H 'Authorization: Bearer <your-api-key>'
 ```
 
 Content policy fallbacks are models that can handle requests when the primary model rejects content due to safety policies.
-
-</TabItem>
-
-</Tabs>
 
 ### Example Response
 

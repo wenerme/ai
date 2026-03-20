@@ -181,8 +181,6 @@ The **Span filters** options control the initial state of the span filters when 
 
 The following options support variable interpolation, where you can set the service name to a variable `$var` and the visualization will replace it with the value for the variable named `$var` in the span filters: **Service name**, **Span name**, **Min duration**, **Max duration**, and **Tags**.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Find in trace | Set the initial value to focus on spans relevant to your query. |
@@ -193,5 +191,3 @@ The following options support variable interpolation, where you can set the serv
 | Min duration | Set the minimum duration threshold to exclude spans outside the desired time range. |
 | Max duration | Set the maximum duration threshold to exclude spans outside the desired time range. |
 | Tags | Add one or more tags to further refine the filtering criteria so only relevant spans are displayed. |
-
-<!-- prettier-ignore-end -->

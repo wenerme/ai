@@ -1,13 +1,9 @@
 ---
-slug: /migrations/postgresql/appendix
 title: 'Appendix'
 keywords: ['postgres', 'postgresql', 'data types', 'types']
 description: 'Additional information relative to migrating from PostgreSQL'
 doc_type: 'reference'
 ---
-
-import postgresReplicas from '@site/static/images/integrations/data-ingestion/dbms/postgres-replicas.png';
-import Image from '@theme/IdealImage';
 
 ## Postgres vs ClickHouse: Equivalent and different concepts {#postgres-vs-clickhouse-equivalent-and-different-concepts}
 
@@ -93,8 +89,6 @@ This can be achieved in several ways (in order of preference):
 1. **Read/Write to the same node** - If you're using native protocol, or a [session to do your write/read via HTTP](/interfaces/http#default-database), you should then be connected to the same replica: in this scenario you're reading directly from the node where you're writing, then your read will always be consistent.
 1. **Sync replicas manually** - If you write to one replica and read from another, you can use issue `SYSTEM SYNC REPLICA LIGHTWEIGHT` prior to reading.
 1. **Enable sequential consistency** - via the query setting [`select_sequential_consistency = 1`](/operations/settings/settings#select_sequential_consistency). In OSS, the setting `insert_quorum = 'auto'` must also be specified.
-
-<br />
 
 See [here](/cloud/reference/shared-merge-tree#consistency) for further details on enabling these settings.
 

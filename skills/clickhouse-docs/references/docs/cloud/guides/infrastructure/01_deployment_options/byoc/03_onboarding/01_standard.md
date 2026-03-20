@@ -1,17 +1,9 @@
 ---
 title: 'Standard Onboarding'
-slug: /cloud/reference/byoc/onboarding/standard
-sidebar_label: 'Standard Process'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc_onboarding_1 from '@site/static/images/cloud/reference/byoc-onboarding-1.png'
-import byoc_onboarding_2 from '@site/static/images/cloud/reference/byoc-onboarding-2.png'
-import byoc_onboarding_3 from '@site/static/images/cloud/reference/byoc-onboarding-3.png'
-import byoc_new_service_1 from '@site/static/images/cloud/reference/byoc-new-service-1.png' 
 
 ## What is Standard Onboarding? {#what-is-standard-onboarding}
 
@@ -45,9 +37,8 @@ The initial BYOC setup can be performed using either a [CloudFormation template(
 
 <Image img={byoc_onboarding_2} size="lg" alt="BYOC initialize account" background='black'/>
 
-:::note
-Storage buckets, VPC, Kubernetes cluster, and compute resources required for running ClickHouse aren't included in this initial setup. They will be provisioned in the next step.
-:::
+> **note**: Storage buckets, VPC, Kubernetes cluster, and compute resources required for running ClickHouse aren't included in this initial setup. They will be provisioned in the next step.
+
 #### Alternative Terraform Module for AWS {#terraform-module-aws}
 
 If you prefer to use Terraform instead of CloudFormation for AWS deployments, we also provide a [Terraform module for AWS](https://s3.us-east-2.amazonaws.com/clickhouse-public-resources.clickhouse.cloud/tf/byoc.tar.gz).

@@ -40,11 +40,7 @@ Mastra organizes storage into domains, each handling a specific type of data. Ea
 | `datasets` | Evaluation datasets used for experiment runs. Stores dataset definitions, schemas, and versioned items. |
 | `experiments` | Experiment runs and per-item experiment results linked to datasets and targets. |
 
-:::note
-
-`MastraCompositeStore` accepts all of the domain keys above, but storage adapter support varies by package. You can mix adapters per domain, but only for domains implemented and exported by those adapters. For example, `memory: new MemoryLibSQL(...)` and `workflows: new WorkflowsPG(...)` is valid because both packages export those domain classes.
-
-:::
+> **note**: `MastraCompositeStore` accepts all of the domain keys above, but storage adapter support varies by package. You can mix adapters per domain, but only for domains implemented and exported by those adapters. For example, `memory: new MemoryLibSQL(...)` and `workflows: new WorkflowsPG(...)` is valid because both packages export those domain classes.
 
 ## Usage
 
@@ -272,8 +268,4 @@ const storage = new MastraCompositeStore({
 })
 ```
 
-:::info
-
-This approach is also required when using storage providers that don't support observability (like Convex, DynamoDB, or Cloudflare). See the [DefaultExporter documentation](/docs/observability/tracing/exporters/default#storage-provider-support) for the full list of supported providers.
-
-:::
+> **info**: This approach is also required when using storage providers that don't support observability (like Convex, DynamoDB, or Cloudflare). See the [DefaultExporter documentation](/docs/observability/tracing/exporters/default#storage-provider-support) for the full list of supported providers.

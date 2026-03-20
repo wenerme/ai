@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Lifecycle of a MySQL ClickPipe'
 description: 'Various pipe statuses and their meanings'
-slug: /integrations/clickpipes/mysql/lifecycle
 title: 'Lifecycle of a MySQL ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
@@ -36,21 +34,18 @@ Once the pipe is in the `Running` state, you can pause it. This will stop the CD
 
 ## Pausing {#pausing}
 
-:::note
-This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
-:::
+> **note**: This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
+
 When you click on the Pause button, the pipe enters the `Pausing` state. This is a transient state where we're in the process of stopping the CDC process. Once the CDC process is fully stopped, the pipe will enter the `Paused` state.
 
 ## Modifying {#modifying}
-:::note
-This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
-:::
+> **note**: This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
+
 Currently, this indicates the pipe is in the process of removing tables.
 
 ## Resync {#resync}
-:::note
-This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
-:::
+> **note**: This state is coming soon. If you're using our [OpenAPI](https://clickhouse.com/docs/cloud/manage/openapi), consider adding support for it now to ensure your integration continues working when it's released.
+
 This state indicates the pipe is in the phase of resync where it is performing an atomic swap of the _resync tables with the original tables. More information on resync can be found in the [resync documentation](./resync).
 
 ## Completed {#completed}

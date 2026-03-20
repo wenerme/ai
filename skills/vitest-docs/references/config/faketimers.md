@@ -1,6 +1,5 @@
 ---
 title: fakeTimers | Config
-outline: deep
 ---
 
 # fakeTimers

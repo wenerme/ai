@@ -1,6 +1,4 @@
 ---
-slug: /integrations/dbeaver
-sidebar_label: 'DBeaver'
 description: 'DBeaver is a multi-platform database tool.'
 title: 'Connect DBeaver to ClickHouse'
 doc_type: 'guide'
@@ -11,25 +9,13 @@ integration:
 keywords: ['DBeaver', 'database management', 'SQL client', 'JDBC connection', 'multi-platform']
 ---
 
-import Image from '@theme/IdealImage';
-import dbeaver_add_database from '@site/static/images/integrations/sql-clients/dbeaver-add-database.png';
-import dbeaver_host_port from '@site/static/images/integrations/sql-clients/dbeaver-host-port.png';
-import dbeaver_use_ssl from '@site/static/images/integrations/sql-clients/dbeaver-use-ssl.png';
-import dbeaver_test_connection from '@site/static/images/integrations/sql-clients/dbeaver-test-connection.png';
-import dbeaver_download_driver from '@site/static/images/integrations/sql-clients/dbeaver-download-driver.png';
-import dbeaver_sql_editor from '@site/static/images/integrations/sql-clients/dbeaver-sql-editor.png';
-import dbeaver_query_log_select from '@site/static/images/integrations/sql-clients/dbeaver-query-log-select.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
-
 # Connect DBeaver to ClickHouse
 
 <PartnerBadge/>
 
 DBeaver is available in multiple offerings. In this guide [DBeaver Community](https://dbeaver.io/) is used. See the various offerings and capabilities [here](https://dbeaver.com/edition/).  DBeaver connects to ClickHouse using JDBC.
 
-:::note
-Please use DBeaver version 23.1.0 or above for improved support of `Nullable` columns in ClickHouse.
-:::
+> **note**: Please use DBeaver version 23.1.0 or above for improved support of `Nullable` columns in ClickHouse.
 
 ## 1. Gather your ClickHouse details {#1-gather-your-clickhouse-details}
 

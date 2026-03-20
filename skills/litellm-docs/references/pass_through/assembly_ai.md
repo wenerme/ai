@@ -7,11 +7,9 @@ Pass-through endpoints for AssemblyAI - call AssemblyAI endpoints, in native for
 | Cost Tracking | ✅ | works across all integrations |
 | Logging | ✅ | works across all integrations |
 
-
 Supports **ALL** AssemblyAI Endpoints
 
 [**See All AssemblyAI Endpoints**](https://www.assemblyai.com/docs/api-reference)
-
 
 ## Supported Routes
 
@@ -104,7 +102,6 @@ print(transcript.text)
 ## Calling AssemblyAI EU endpoints
 
 If you want to send your request to the AssemblyAI EU endpoint, you can do so by setting the `LITELLM_PROXY_BASE_URL` to `<your-proxy-base-url>/eu.assemblyai`
-
 
 ```python
 import assemblyai as aai

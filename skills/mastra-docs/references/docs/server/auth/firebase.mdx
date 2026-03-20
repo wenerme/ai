@@ -7,9 +7,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Firebase
 
 The `@mastra/auth-firebase` package provides authentication for Mastra using Firebase Authentication. It verifies incoming requests using Firebase ID tokens and integrates with the Mastra server using the `auth` option.
@@ -30,11 +27,7 @@ FIRESTORE_DATABASE_ID=(default)
 # FIREBASE_DATABASE_ID=(default)
 ```
 
-:::note
-
-Store your service account JSON file securely and never commit it to version control.
-
-:::
+> **note**: Store your service account JSON file securely and never commit it to version control.
 
 ## Installation
 
@@ -87,11 +80,7 @@ The `MastraAuthFirebase` class can be configured through constructor options or 
 - `FIREBASE_SERVICE_ACCOUNT`: Path to Firebase service account JSON file
 - `FIRESTORE_DATABASE_ID` or `FIREBASE_DATABASE_ID`: Firestore database ID
 
-:::note
-
-When constructor options aren't provided, the class automatically reads these environment variables. This means you can call `new MastraAuthFirebase()` without any arguments if your environment variables are properly configured.
-
-:::
+> **note**: When constructor options aren't provided, the class automatically reads these environment variables. This means you can call `new MastraAuthFirebase()` without any arguments if your environment variables are properly configured.
 
 ### User Authorization
 
@@ -116,11 +105,7 @@ const firebaseAuth = new MastraAuthFirebase({
 })
 ```
 
-:::info
-
-Visit [MastraAuthFirebase](/reference/auth/firebase) for all available configuration options.
-
-:::
+> **info**: Visit [MastraAuthFirebase](/reference/auth/firebase) for all available configuration options.
 
 ## Client-side setup
 
@@ -183,11 +168,7 @@ export const signOutUser = async () => {
 }
 ```
 
-:::note
-
-Refer to the [Firebase documentation](https://firebase.google.com/docs/auth) for other authentication methods like email/password, phone authentication, and more.
-
-:::
+> **note**: Refer to the [Firebase documentation](https://firebase.google.com/docs/auth) for other authentication methods like email/password, phone authentication, and more.
 
 ## Configuring `MastraClient`
 
@@ -206,20 +187,15 @@ export const createMastraClient = (idToken: string) => {
 }
 ```
 
-:::info
-
-The ID token must be prefixed with `Bearer` in the Authorization header.
+> **info**: The ID token must be prefixed with `Bearer` in the Authorization header.
 
 Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
-
-:::
 
 ### Making authenticated requests
 
 Once `MastraClient` is configured with the Firebase ID token, you can send authenticated requests:
 
-<Tabs>
-  <TabItem value="react" label="React">
+  
     ```tsx title="src/components/test-agent.tsx"
     'use client'
 
@@ -250,9 +226,9 @@ Once `MastraClient` is configured with the Firebase ID token, you can send authe
       )
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="nodejs" label="Node.js">
+  
     ```typescript title="server.js"
     const express = require('express')
     const admin = require('firebase-admin')
@@ -291,9 +267,9 @@ Once `MastraClient` is configured with the Firebase ID token, you can send authe
       }
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="cURL">
+  
     ```bash
     curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
       -H "Content-Type: application/json" \
@@ -302,5 +278,3 @@ Once `MastraClient` is configured with the Firebase ID token, you can send authe
         "messages": "Weather in London"
       }'
     ```
-  </TabItem>
-</Tabs>

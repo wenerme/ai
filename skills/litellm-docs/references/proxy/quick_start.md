@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # CLI - Quick Start
 
@@ -25,10 +23,7 @@ $ litellm --model huggingface/bigcode/starcoder
 #INFO: Proxy running on http://0.0.0.0:4000
 ```
 
-
-:::info
-
-Run with `--detailed_debug` if you need detailed debug logs 
+> **info**: Run with `--detailed_debug` if you need detailed debug logs 
 
 ```shell
 $ litellm --model huggingface/bigcode/starcoder --detailed_debug
@@ -44,8 +39,6 @@ This will now automatically route any requests for gpt-3.5-turbo to bigcode star
 
 ### Supported LLMs
 All LiteLLM supported LLMs are supported on the Proxy. Seel all [supported llms](https://docs.litellm.ai/docs/providers)
-<Tabs>
-<TabItem value="bedrock" label="AWS Bedrock">
 
 ```shell
 $ export AWS_ACCESS_KEY_ID=
@@ -56,8 +49,6 @@ $ export AWS_SECRET_ACCESS_KEY=
 ```shell
 $ litellm --model bedrock/anthropic.claude-v2
 ```
-</TabItem>
-<TabItem value="azure" label="Azure OpenAI">
 
 ```shell
 $ export AZURE_API_KEY=my-api-key
@@ -67,9 +58,6 @@ $ export AZURE_API_BASE=my-api-base
 $ litellm --model azure/my-deployment-name
 ```
 
-</TabItem>
-<TabItem value="openai" label="OpenAI">
-
 ```shell
 $ export OPENAI_API_KEY=my-api-key
 ```
@@ -77,15 +65,10 @@ $ export OPENAI_API_KEY=my-api-key
 ```shell
 $ litellm --model gpt-3.5-turbo
 ```
-</TabItem>
-<TabItem value="ollama" label="Ollama">
 
 ```
 $ litellm --model ollama/<ollama-model-name>
 ```
-
-</TabItem>
-<TabItem value="openai-proxy" label="OpenAI Compatible Endpoint">
 
 ```shell
 $ export OPENAI_API_KEY=my-api-key
@@ -94,9 +77,6 @@ $ export OPENAI_API_KEY=my-api-key
 ```shell
 $ litellm --model openai/<your model name> --api_base <your-api-base> # e.g. http://0.0.0.0:3000
 ```
-</TabItem>
-
-<TabItem value="vertex-ai" label="Vertex AI [Gemini]">
 
 ```shell
 $ export VERTEX_PROJECT="hardy-project"
@@ -106,9 +86,6 @@ $ export VERTEX_LOCATION="us-west"
 ```shell
 $ litellm --model vertex_ai/gemini-pro
 ```
-</TabItem>
-
-<TabItem value="huggingface" label="Huggingface (TGI) Deployed">
 
 ```shell
 $ export HUGGINGFACE_API_KEY=my-api-key #[OPTIONAL]
@@ -117,15 +94,9 @@ $ export HUGGINGFACE_API_KEY=my-api-key #[OPTIONAL]
 $ litellm --model huggingface/<your model name> --api_base <your-api-base> # e.g. http://0.0.0.0:3000
 ```
 
-</TabItem>
-<TabItem value="huggingface-local" label="Huggingface (TGI) Local">
-
 ```shell
 $ litellm --model huggingface/<your model name> --api_base http://0.0.0.0:8001
 ```
-
-</TabItem>
-<TabItem value="aws-sagemaker" label="AWS Sagemaker">
 
 ```shell
 export AWS_ACCESS_KEY_ID=
@@ -137,9 +108,6 @@ export AWS_SECRET_ACCESS_KEY=
 $ litellm --model sagemaker/jumpstart-dft-meta-textgeneration-llama-2-7b
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```shell
 $ export ANTHROPIC_API_KEY=my-api-key
 ```
@@ -147,15 +115,11 @@ $ export ANTHROPIC_API_KEY=my-api-key
 $ litellm --model claude-instant-1
 ```
 
-</TabItem>
-<TabItem value="vllm-local" label="VLLM">
 Assuming you're running vllm locally
 
 ```shell
 $ litellm --model vllm/facebook/opt-125m
 ```
-</TabItem>
-<TabItem value="together_ai" label="TogetherAI">
 
 ```shell
 $ export TOGETHERAI_API_KEY=my-api-key
@@ -163,10 +127,6 @@ $ export TOGETHERAI_API_KEY=my-api-key
 ```shell
 $ litellm --model together_ai/lmsys/vicuna-13b-v1.5-16k
 ```
-
-</TabItem>
-
-<TabItem value="replicate" label="Replicate">
 
 ```shell
 $ export REPLICATE_API_KEY=my-api-key
@@ -176,17 +136,9 @@ $ litellm \
   --model replicate/meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3
 ```
 
-</TabItem>
-
-<TabItem value="petals" label="Petals">
-
 ```shell
 $ litellm --model petals/meta-llama/Llama-2-70b-chat-hf
 ```
-
-</TabItem>
-
-<TabItem value="palm" label="Palm">
 
 ```shell
 $ export PALM_API_KEY=my-palm-key
@@ -194,10 +146,6 @@ $ export PALM_API_KEY=my-palm-key
 ```shell
 $ litellm --model palm/chat-bison
 ```
-
-</TabItem>
-
-<TabItem value="ai21" label="AI21">
 
 ```shell
 $ export AI21_API_KEY=my-api-key
@@ -207,10 +155,6 @@ $ export AI21_API_KEY=my-api-key
 $ litellm --model j2-light
 ```
 
-</TabItem>
-
-<TabItem value="cohere" label="Cohere">
-
 ```shell
 $ export COHERE_API_KEY=my-api-key
 ```
@@ -218,10 +162,6 @@ $ export COHERE_API_KEY=my-api-key
 ```shell
 $ litellm --model command-nightly
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Quick Start - LiteLLM Proxy + Config.yaml
 The config allows you to create a model list and set `api_base`, `max_tokens` (all litellm params). See more details about the config [here](https://docs.litellm.ai/docs/proxy/configs)
@@ -254,18 +194,11 @@ model_list:
 litellm --config your_config.yaml
 ```
 
-
 ## Using LiteLLM Proxy - Curl Request, OpenAI Package, Langchain
 
-:::info
-LiteLLM is compatible with several SDKs - including OpenAI SDK, Anthropic SDK, Mistral SDK, LLamaIndex, Langchain (Js, Python)
+> **info**: LiteLLM is compatible with several SDKs - including OpenAI SDK, Anthropic SDK, Mistral SDK, LLamaIndex, Langchain (Js, Python)
 
 [More examples here](user_keys)
-:::
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -280,8 +213,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -301,8 +232,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo", messages = [
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -332,14 +261,10 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-<TabItem value="langchain-embedding" label="Langchain Embeddings">
-
 ```python
 from langchain.embeddings import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(model="sagemaker-embeddings", openai_api_base="http://0.0.0.0:4000", openai_api_key="temp-key")
-
 
 text = "This is a test document."
 
@@ -366,8 +291,6 @@ query_result = embeddings.embed_query(text)
 print(f"TITAN EMBEDDINGS")
 print(query_result[:5])
 ```
-</TabItem>
-<TabItem value="litellm" label="LiteLLM SDK">
 
 This is **not recommended**. There is duplicate logic as the proxy also uses the sdk, which might lead to unexpected errors. 
 
@@ -389,9 +312,6 @@ response = completion(
 print(response)
 
 ```
-</TabItem>
-
-<TabItem value="anthropic-py" label="Anthropic Python SDK">
 
 ```python
 import os
@@ -416,13 +336,7 @@ message = client.messages.create(
 print(message.content)
 ```
 
-</TabItem>
-
-</Tabs>
-
 [**More Info**](./configs.md)
-
-
 
 ## 📖 Proxy Endpoints - [Swagger Docs](https://litellm-api.up.railway.app/)
 - POST `/chat/completions` - chat completions endpoint to call 100+ LLMs
@@ -430,7 +344,6 @@ print(message.content)
 - POST `/embeddings` - embedding endpoint for Azure, OpenAI, Huggingface endpoints
 - GET `/models` - available models on server
 - POST `/key/generate` - generate a key to access the proxy
-
 
 ## Debugging Proxy 
 

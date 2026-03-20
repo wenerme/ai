@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Advanced Querying'
-sidebar_position: 4
 keywords: ['clickhouse', 'python', 'query', 'advanced']
 description: 'Advanced Querying with ClickHouse Connect'
-slug: /integrations/language-clients/python/advanced-querying
 title: 'Advanced Querying'
 doc_type: 'reference'
 ---
@@ -293,7 +290,6 @@ print(df.dtypes)
 # Output:
 # [UInt64, String]
 
-
 # Streaming into batches of DataFrames (polars shown)
 with client.query_df_arrow_stream(
     "SELECT number, toString(number) AS str FROM system.numbers LIMIT 100000", dataframe_library="polars"
@@ -405,7 +401,7 @@ client.query('SELECT device_id, dev_address, gw_address from devices', column_fo
 | Tuple                 | dict or tuple           | tuple, json       | Named tuples returned as dictionaries by default. Named tuples can also be returned as JSON strings               |
 | Map                   | dict                    | -                 |                                                                                                                   |
 | Nested                | Sequence[dict]          | -                 |                                                                                                                   |
-| UUID                  | uuid.UUID               | string            | UUIDs can be read as strings formatted as per RFC 4122<br/>                                                       |
+| UUID                  | uuid.UUID               | string            | UUIDs can be read as strings formatted as per RFC 4122                                                       |
 | JSON                  | dict                    | string            | A python dictionary is returned by default. The `string` format will return a JSON string                         |
 | Variant               | object                  | -                 | Returns the matching Python type for the ClickHouse datatype stored for the value                                 |
 | Dynamic               | object                  | -                 | Returns the matching Python type for the ClickHouse datatype stored for the value                                 |

@@ -32,9 +32,8 @@ When you need to operate across multiple geographical regions, multiple clusters
 
 ## Region and cluster hierarchy
 In a supercluster, regions organize clusters geographically. A region may contain one or more clusters.
-<br>
+
 **Example:**
-<br>
 
 ```bash
 Region: us-test-3
@@ -68,64 +67,55 @@ When a cluster receives a query:
 
 ### Query execution for your current cluster in a supercluster
 Your current cluster is the cluster you are logged into. When you select your current cluster from the Region dropdown, this is not federated search.
-<br>
+
 For example, if you are logged into Cluster A and you select Cluster A from the Region dropdown, the query executes using the normal cluster query execution process described above. No cross-cluster communication occurs, and no federated search coordination is needed.
 
 ### Federated search for one different cluster in a supercluster
 When you select a different cluster from the Region dropdown, not the cluster you are logged into, federated search coordination is used:
-<br>
 
 **Step 1: Coordination setup**
-<br>
+
 Your current cluster becomes the leader cluster.
-<br>
 
 **Step 2: Query distribution**
-<br>
+
 Leader cluster sends the query to the selected cluster via gRPC.
-<br>
 
 **Step 3: Query processing**
-<br>
+
 The selected cluster processes the query using its normal cluster query execution process.
-<br>
 
 **Step 4: Result return**
-<br>
+
 The selected cluster sends its results back to the leader cluster.
-<br>
 
 **Step 5: Result presentation**
-<br>
+
 The leader cluster displays the results.
 
 ### Federated search for multiple clusters in a supercluster
 
 When you select no cluster or multiple clusters from the Region dropdown, federated search extends the query across all selected clusters:
-<br>
 
 **Step 1: Coordination setup**
-<br>
+
 Your current cluster becomes the leader cluster. The leader cluster identifies all selected clusters, or all clusters if none selected, that contain data for the queried stream. These other clusters become worker clusters.
-<br>
 
 **Step 2: Query distribution**
-<br>
+
 The leader cluster sends the query to all worker clusters via gRPC. All clusters now have the same query to execute.
-<br>
 
 **Step 3: Parallel processing**
-<br>
+
 Each cluster processes the query using its normal cluster query execution process. The leader cluster searches its own data if it contains data for that stream. Worker clusters search their own data. All processing happens simultaneously.
-<br>
 
 **Step 4: Result aggregation**
-<br>
+
 Each cluster aggregates its own results internally using its leader querier and worker queriers. Worker clusters send their aggregated results to the leader cluster. The leader cluster merges all results from all clusters and returns the unified response.
 
 ## Metadata synchronization
 In a supercluster, clusters share configuration and schema information in real-time while keeping actual data separate. This synchronization happens via NATS, a messaging system that coordinates communication between clusters.
-<br>
+
 While stream schemas are synchronized across all clusters in real-time, the actual data for a stream only exists in the cluster or clusters where it was ingested.
 
 | **Synchronized across clusters** | **NOT synchronized (stays local)** |
@@ -144,9 +134,9 @@ This design maintains data residency compliance while enabling unified configura
 
 ## How nodes coordinate internally using NATS
 OpenObserve uses NATS for internal coordination between nodes within a region. This coordination enables nodes to share information for purposes such as caching and maintaining cluster awareness.
-<br>
+
 As part of the reliability improvement in inter-node communication, OpenObserve now uses NATS stream queues to broadcast NATS events instead of using NATS key-value watchers. The NATS stream queue ensures reliable delivery by retrying event transmission until all subscribers receive the event for processing.
-<br>
+
 Except for the nodes list, nothing is now stored in NATS key-value storage. 
 
 ## Limitations

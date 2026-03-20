@@ -1,7 +1,5 @@
 ---
 date: "2019-10-23T17:00:00-03:00"
-slug: "mail-templates"
-sidebar_position: 45
 aliases:
   - /en-us/mail-templates
 ---

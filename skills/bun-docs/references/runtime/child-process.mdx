@@ -414,7 +414,7 @@ When passing an existing `Terminal` object:
 
 This is useful for running multiple commands in sequence through the same terminal session.
 
-<Note>Terminal support is only available on POSIX systems (Linux, macOS). It is not available on Windows.</Note>
+Terminal support is only available on POSIX systems (Linux, macOS). It is not available on Windows.
 
 ---
 
@@ -439,10 +439,8 @@ As a rule of thumb, the asynchronous `Bun.spawn` API is better for HTTP servers 
 
 ## Benchmarks
 
-<Note>
   ⚡️ Under the hood, `Bun.spawn` and `Bun.spawnSync` use
   [`posix_spawn(3)`](https://man7.org/linux/man-pages/man3/posix_spawn.3.html).
-</Note>
 
 Bun's `spawnSync` spawns processes 60% faster than the Node.js `child_process` module.
 

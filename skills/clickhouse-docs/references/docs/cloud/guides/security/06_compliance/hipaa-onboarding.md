@@ -1,20 +1,9 @@
 ---
-sidebar_label: 'HIPAA onboarding'
-slug: /cloud/security/compliance/hipaa-onboarding
 title: 'HIPAA onboarding'
 description: 'Learn more about how to onboard to HIPAA compliant services'
 doc_type: 'guide'
 keywords: ['hipaa', 'compliance', 'healthcare', 'security', 'data protection']
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge';
-
-import Image from '@theme/IdealImage';
-import hipaa1 from '@site/static/images/cloud/security/compliance/hipaa_1.png';
-import hipaa2 from '@site/static/images/cloud/security/compliance/hipaa_2.png';
-import hipaa3 from '@site/static/images/cloud/security/compliance/hipaa_3.png';
-import hipaa4 from '@site/static/images/cloud/security/compliance/hipaa_4.png';
 
 <EnterprisePlanFeatureBadge feature="HIPAA"/>
 
@@ -42,38 +31,22 @@ This page describes the process for enabling deployment of HIPAA compliant servi
 2. Click **Organization details**.
 3. Toggle **Enable HIPAA** on.
 
-<br />
-
 <Image img={hipaa1} size="md" alt="Request HIPAA enablement" background='black'/>
-
-<br />
 
 4. Follow the instructions on the screen to submit a request to complete a BAA.
 
-<br />
-
 <Image img={hipaa2} size="md" alt="Submit a BAA request" background='black'/>
-
-<br />
 
 5. Once the BAA is completed, HIPAA will be enabled for the organization.
 
-<br />
-
 <Image img={hipaa3} size="md" alt="HIPAA enabled" background='black'/>
-
-<br />
 
 ### Deploy services to HIPAA compliant regions {#deploy-hipaa-services}
 
 1. Select **New service** in the upper left corner of the home screen in the console
 2. Change the **Region type** to **HIPAA compliant**
 
-<br />
-
 <Image img={hipaa4} size="md" alt="Deploy to HIPAA region" background='black'/>
-
-<br />
 
 3. Enter a name for the service and enter the remaining information
 
@@ -94,6 +67,5 @@ If migration from standard to HIPAA compliant regions is required, follow these 
 5. Once the restoration is complete, run a few queries to verify the schemas and record counts are as expected.
 6. Delete the old service.
 
-:::info Restrictions
+> **info**: Restrictions
 Services must remain in the same cloud provider and geographic region. This process migrates the service to the compliant environment in the same cloud provider and region.
-:::

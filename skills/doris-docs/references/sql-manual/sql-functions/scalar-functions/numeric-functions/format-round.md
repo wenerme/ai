@@ -10,9 +10,7 @@
 
 Formats a number in a format similar to "#,###,###.##", rounds to the specified decimal places, and returns the result as a string.
 
-:::tip
-This function is supported since version 3.0.6. 
-:::
+> **tip**: This function is supported since version 3.0.6. 
 
 ## Syntax
 

@@ -4,7 +4,6 @@ When you send a request to `/v1/messages` targeting an OpenAI or Azure model, Li
 
 The transformation lives in `litellm/llms/anthropic/experimental_pass_through/responses_adapters/transformation.py`.
 
-
 ## Request: Anthropic → Responses API
 
 ### Top-level parameters
@@ -28,7 +27,6 @@ The transformation lives in `litellm/llms/anthropic/experimental_pass_through/re
 | `top_k` | ❌ Not mapped | Dropped silently |
 | `speed` | ❌ Not mapped | Only used to set Anthropic beta headers on the native path |
 
-
 ### How messages get converted
 
 Each Anthropic message is expanded into one or more Responses API input items. The key difference is that `tool_result` and `tool_use` blocks become **top-level items** in the input array rather than being nested inside a message.
@@ -45,14 +43,12 @@ Each Anthropic message is expanded into one or more Responses API input items. T
 | `assistant` role, `{"type": "tool_use"}` block | Top-level `{"type": "function_call", "call_id": "<id>", "name": "...", "arguments": "<JSON string>"}` — pulled out of the message entirely |
 | `assistant` role, `{"type": "thinking"}` block | `{"type": "output_text", "text": "<thinking text>"}` inside an assistant message |
 
-
 ### tools
 
 | Anthropic tool | Responses API tool |
 |---|---|
 | Any tool where `type` starts with `"web_search"` or `name == "web_search"` | `{"type": "web_search_preview"}` |
 | All other tools | `{"type": "function", "name": "...", "description": "...", "parameters": <input_schema>}` |
-
 
 ### tool_choice
 
@@ -61,7 +57,6 @@ Each Anthropic message is expanded into one or more Responses API input items. T
 | `"auto"` | `{"type": "auto"}` |
 | `"any"` | `{"type": "required"}` |
 | `"tool"` | `{"type": "function", "name": "<tool name>"}` |
-
 
 ### thinking → reasoning
 
@@ -75,7 +70,6 @@ The `budget_tokens` value is mapped to a string effort level. `summary` is alway
 | < 2000 | `"minimal"` |
 
 If `thinking.type` is anything other than `"enabled"`, the `reasoning` field is not sent at all.
-
 
 ### context_management
 
@@ -97,7 +91,6 @@ Responses API output:
   {"type": "compaction", "compact_threshold": 150000}
 ]
 ```
-
 
 ## Response: Responses API → Anthropic
 

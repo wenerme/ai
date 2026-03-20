@@ -53,4 +53,4 @@ OpenObserve's architectural approach can transform how you handle observability 
 - Check out [Getting Started Guide](../docs/getting-started/) to start exploring
 - Join our [Community](https://github.com/openobserve/openobserve/discussions) to connect with other users
 
-*Sleep better at night knowing your observability stack is both powerful and affordable* 
+*Sleep better at night knowing your observability stack is both powerful and affordable*

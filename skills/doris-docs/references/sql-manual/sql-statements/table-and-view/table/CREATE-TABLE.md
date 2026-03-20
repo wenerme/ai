@@ -322,12 +322,10 @@ For a detailed introduction to partitioning, see the "Manual Partitioning" secti
 >
 > The format of `<partition_value>` is as follows: `(col_1_value, ...)`
 
-
 ### Synchronized Materialized View Related
 
-:::caution Note
+> **caution**: Note
 The functionality of creating synchronized materialized views with rollup is limited and no longer recommended. It is advised to use separate statements to create synchronized materialized views. For details, please refer to the [CREATE MATERIALIZED VIEW](../sync-materialized-view/CREATE-MATERIALIZED-VIEW.md) statement and the [Synchronized Materialized View](../../../../query-acceleration/materialized-view/sync-materialized-view.md) section.
-:::
 
 **<rollup_name>**
 
@@ -415,7 +413,6 @@ The [user](../../../../admin-manual/auth/authentication-and-authorization.md) ex
 - Indexes
   - Users can create multiple column indexes while creating a table. Indexes can also be added after the table is created.
   - If indexes are added during subsequent use and there is existing data in the table, all data will need to be rewritten; hence, the time to create an index depends on the current volume of data.
-
 
 ## Examples
 

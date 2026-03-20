@@ -12,7 +12,6 @@ This guide provides step-by-step instructions to collect and monitor Apache Zook
 Apache Zookeeper is a centralized service for maintaining configuration information, naming, distributed synchronization, and group services.  
 Monitoring Zookeeper is critical to ensure **availability, performance, and stability** across distributed systems.
 
-
 ## Steps to Integrate
 
 ??? "Prerequisites"
@@ -73,7 +72,7 @@ Monitoring Zookeeper is critical to ensure **availability, performance, and stab
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your actual OpenObserve details.  
 
-    ![OpenObserve Creds](../images/databases/otel-metrics-cred.png)
+    [OpenObserve Creds]
 
 ??? "Step 4: Run the Collector"
 
@@ -88,7 +87,7 @@ Monitoring Zookeeper is critical to ensure **availability, performance, and stab
 
     1. Navigate to **OpenObserve → Streams** and select your metrics stream.  
     2. Search for Zookeeper metrics.
-        ![Visualize Zookeeper Metrics](../images/databases/zookeeper-metrics.png)
+        [Visualize Zookeeper Metrics]
     3. Visualize and Analyze data using Dashboards
     > To make it easy, we have a prebuilt zookeeper dashboard that should help you get started with the metrics monitoring which can be found [here](https://github.com/openobserve/dashboards).
 
@@ -103,4 +102,4 @@ Monitoring Zookeeper is critical to ensure **availability, performance, and stab
 ??? "No Metrics in OpenObserve"
     - Check Collector logs for parsing errors.  
     - Confirm correct endpoint and auth token.  
-    - Ensure OpenObserve is reachable from your server.  
+    - Ensure OpenObserve is reachable from your server.

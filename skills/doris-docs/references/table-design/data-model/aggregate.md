@@ -36,7 +36,6 @@ Each data import creates a version in the Aggregate Key Table, and during the **
 
   * This process ensures that aggregation operations are performed efficiently, even with large data volumes. The aggregated results are optimized for fast querying, providing a significant performance improvement over raw data queries
 
-
 ## Table Creation Instructions
 
 When creating a table, the **AGGREGATE KEY** keyword can be used to specify the Aggregate Key Table. The Aggregate Key Table must specify Key columns, which are used to aggregate Value columns during storage.
@@ -59,7 +58,6 @@ In the example above, a fact table for user information and access behavior is d
 
 The following types of dimension aggregation are supported in the Aggregate Key Table:
 
-
 | Aggregation Method       | Description                                                         |
 |--------------------------|---------------------------------------------------------------------|
 | SUM                      | Sum, accumulates multiple Value rows.                               |
@@ -70,20 +68,15 @@ The following types of dimension aggregation are supported in the Aggregate Key 
 | HLL_UNION                | Aggregation method for HLL type columns, using the HyperLogLog algorithm. |
 | BITMAP_UNION             | Aggregation method for BITMAP type columns, performing bitmap union aggregation. |
 
-
-
-:::info Tip:
+> **info**: Tip:
 
 If the aggregation methods above do not meet your business requirements, consider using the `agg_state` type.
-
-:::
-
 
 ## Data Insertion and Storage
 
 In the Aggregate Key table, data is aggregated based on the primary key. After data insertion, aggregation operations are completed.
 
-![aggrate-key-table-insert](/images/table-desigin/aggrate-key-model-insert.png)
+[aggrate-key-table-insert]
 
 In the example above, there were originally 4 rows of data in the table. After inserting 2 rows, aggregation operations on the dimension columns are performed based on the Key columns:
 
@@ -115,9 +108,8 @@ SELECT * FROM example_tbl_agg;
 
 ## AGG_STATE
 
-::: Info Tips:
+> **Info**: Tips:
 AGG_STATE is an experimental feature and is recommended for use in development and testing environments.
-:::
 
 AGG_STATE cannot be used as a Key column. The aggregation function's signature must be declared when creating the table. Users don’t need to specify length or default values. The data storage size depends on the function implementation.
 
@@ -145,7 +137,7 @@ insert into aggstate values(2, 4, group_concat_state('d'));
 
 The calculation method in the table is shown in the diagram below:
 
-![state-func-group-concat-state-result-1](/images/table-desigin/state-func-group-concat-state-result-1.png)
+[state-func-group-concat-state-result-1]
 
 When querying the table, the [merge](../../sql-manual/sql-functions/combinators/merge/) operation can be used to merge multiple `state` values and return the final aggregation result. Since `group_concat` requires ordering, the result may be unstable.
 
@@ -166,7 +158,7 @@ insert into aggstate select 3,sum_union(k2),group_concat_union(k3) from aggstate
 
 The calculations in the table are as follows:
 
-![state-func-group-concat-state-result-2](/images/table-desigin/state-func-group-concat-state-result-2.png)
+[state-func-group-concat-state-result-2]
 
 The query result is as follows:
 

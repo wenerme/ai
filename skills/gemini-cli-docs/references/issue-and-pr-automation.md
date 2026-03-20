@@ -14,7 +14,6 @@ feature), while the PR is the "how" (the implementation). This separation helps
 us track work, prioritize features, and maintain clear historical context. Our
 automation is built around this principle.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > Issues tagged as "🔒Maintainers only" are reserved for project
 > maintainers. We will not accept pull requests related to these issues.

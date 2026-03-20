@@ -1,13 +1,7 @@
 ---
 id: index
 title: Getting Started
-sidebar_label: Quickstart
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import NavigationCards from '@site/src/components/NavigationCards';
-import Image from '@theme/IdealImage';
 
 <Image style={{padding: '10px', margin: '0 0 2.5rem'}} img={require('../img/hero.png')} />
 
@@ -41,9 +35,6 @@ pip install 'litellm[proxy]'
 
 Make your first LLM call using the provider of your choice:
 
-<Tabs>
-<TabItem value="openai" label="OpenAI">
-
 ```python
 from litellm import completion
 import os
@@ -57,9 +48,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 from litellm import completion
 import os
@@ -72,9 +60,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="vertex" label="Vertex AI">
 
 ```python
 from litellm import completion
@@ -91,9 +76,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="bedrock" label="Bedrock">
-
 ```python
 from litellm import completion
 import os
@@ -109,9 +91,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="ollama" label="Ollama">
-
 ```python
 from litellm import completion
 
@@ -122,9 +101,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="azure" label="Azure OpenAI">
 
 ```python
 from litellm import completion
@@ -140,9 +116,6 @@ response = completion(
 )
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-</Tabs>
 
 Every response follows the OpenAI Chat Completions format, regardless of provider. ✅
 
@@ -197,11 +170,10 @@ Streaming responses (`stream=True`) yield `ModelResponseStream` chunks:
 
 📖 [Full output format reference →](./completion/output)
 
-:::tip Open in Colab
+> **tip**: Open in Colab
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/liteLLM_Getting_Started.ipynb">
-<img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+[Open In Colab]
 </a>
-:::
 
 ---
 
@@ -335,16 +307,10 @@ The proxy is a self-hosted OpenAI-compatible gateway. Any client that works with
 
 #### Step 1 — Start the proxy
 
-<Tabs>
-<TabItem value="pip" label="pip">
-
 ```shell
 litellm --model huggingface/bigcode/starcoder
 # Proxy running on http://0.0.0.0:4000
 ```
-
-</TabItem>
-<TabItem value="docker" label="Docker">
 
 ```yaml title="litellm_config.yaml"
 model_list:
@@ -366,9 +332,6 @@ docker run \
   --config /app/config.yaml --detailed_debug
 ```
 
-</TabItem>
-</Tabs>
-
 #### Step 2 — Call it with the OpenAI client
 
 ```python
@@ -385,9 +348,8 @@ print(response.choices[0].message.content)
 
 👉 [Full proxy quickstart with Docker →](./proxy/docker_quick_start)
 
-:::tip Debugging tool
+> **tip**: Debugging tool
 Use [**`/utils/transform_request`**](./utils/transform_request) to inspect exactly what LiteLLM sends to any provider — useful for debugging prompt formatting, header issues, and provider-specific parameters.
-:::
 
 🔗 [Interactive API explorer (Swagger) →](https://litellm-api.up.railway.app/)
 

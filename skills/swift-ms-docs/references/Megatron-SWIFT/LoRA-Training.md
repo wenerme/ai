@@ -4,7 +4,6 @@ Best practice reference for single-node 8xH20 LoRA training with Qwen3-235B-A22B
 
 For environment setup, please refer to the [Quick Start Guide](./Quick-start.md) of Megatron-SWIFT.
 
-
 ## Traditional Method
 
 ### Converting HF to Mcore
@@ -12,7 +11,6 @@ For environment setup, please refer to the [Quick Start Guide](./Quick-start.md)
 Below, we introduce weight conversion using the `swift export` and `megatron export` commands respectively. Compared to `swift export`, `megatron export` supports multi-node and LoRA incremental weight conversion, but is also more complex, requiring additional specification of parallelism parameters during export, such as `--tensor_model_parallel_size` and `--export_model_parallel_size`. For details, refer to the [Mcore-Bridge Documentation](./Mcore-Bridge.md). To use the `swift export` command, refer to the [Quick Start Documentation](./Quick-start.md).
 - `swift export` uses a single process, places HF weights on the GPU, and uses device_map for parallelization; mcore weights are placed on the CPU without enabling parallelization. This approach is very easy to debug and test the precision alignment between HF and mcore.
 - `megatron export` launches multi-process execution via torchrun, placing mcore weights on GPU and supporting various parallelism modes, fp8, mtp, and other features. For precision alignment testing, HF weights are loaded on the first rank and placed in CPU memory.
-
 
 ```shell
 # megatron export
@@ -109,7 +107,6 @@ megatron export \
 
 - Note: The `--mcore_adapter` folder contains an `args.json` file. The conversion process will read the `--model/--mcore_model` and LoRA-related parameter information from this file. `swift export` does not currently support conversion of LoRA incremental weights. With `megatron export`, you can use the `--merge_lora` parameter to control whether to merge weights.
 
-
 ### Inference
 
 ```shell
@@ -119,7 +116,6 @@ swift infer \
     --adapters megatron_output/Qwen2.5-7B-Instruct/vx-xxx/checkpoint-xxx-hf \
     --stream true
 ```
-
 
 ### Merge-LoRA
 
@@ -147,7 +143,6 @@ megatron export \
 #     --output_dir megatron_output/Qwen2.5-7B-Instruct/vx-xxx/checkpoint-xxx-mcore \
 #     --test_convert_precision true
 ```
-
 
 ## Mcore-Bridge [Recommended]
 
@@ -194,7 +189,6 @@ megatron sft \
     --model_author swift \
     --model_name swift-robot
 ```
-
 
 ### Inference
 

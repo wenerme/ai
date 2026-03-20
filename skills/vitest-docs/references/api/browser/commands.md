@@ -1,6 +1,5 @@
 ---
 title: Commands | Browser Mode
-outline: deep
 ---
 
 # Commands
@@ -15,12 +14,9 @@ You can use the `readFile`, `writeFile`, and `removeFile` APIs to handle files i
 
 By default, Vitest uses `utf-8` encoding but you can override it with options.
 
-::: tip
-This API follows [`server.fs`](https://vitejs.dev/config/server-options.html#server-fs-allow) limitations for security reasons.
+> **tip**: This API follows [`server.fs`](https://vitejs.dev/config/server-options.html#server-fs-allow) limitations for security reasons.
 
 If [`browser.api.allowWrite`](/config/browser/api) or [`api.allowWrite`](/config/api#api-allowwrite) are disabled, `writeFile` and `removeFile` functions won't do anything.
-:::
-
 ```ts
 import { server } from 'vitest/browser'
 
@@ -57,9 +53,7 @@ await cdp().send('Input.dispatchKeyEvent', {
 expect(input).toHaveValue('a')
 ```
 
-::: warning
-CDP session works only with `playwright` provider and only when using `chromium` browser. You can read more about it in playwright's [`CDPSession`](https://playwright.dev/docs/api/class-cdpsession) documentation.
-:::
+> **warning**: CDP session works only with `playwright` provider and only when using `chromium` browser. You can read more about it in playwright's [`CDPSession`](https://playwright.dev/docs/api/class-cdpsession) documentation.
 
 ## Custom Commands
 
@@ -120,9 +114,7 @@ declare module 'vitest/browser' {
 }
 ```
 
-::: warning
-Custom functions will override built-in ones if they have the same name.
-:::
+> **warning**: Custom functions will override built-in ones if they have the same name.
 
 ### Custom `playwright` commands
 

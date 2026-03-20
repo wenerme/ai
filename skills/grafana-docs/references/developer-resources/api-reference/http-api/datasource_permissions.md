@@ -45,7 +45,7 @@ See note in the [introduction](#data-source-permissions-api) for an explanation.
 
 | Action                       | Scope                                                                                      |
 | ---------------------------- | ------------------------------------------------------------------------------------------ |
-| datasources.permissions:read | datasources:\*<br>datasources:uid:\*<br>datasources:uid:my_datasource (single data source) |
+| datasources.permissions:read | datasources:\*datasources:uid:\*datasources:uid:my_datasource (single data source) |
 
 ### Examples
 
@@ -140,7 +140,7 @@ See note in the [introduction](#data-source-permissions-api) for an explanation.
 
 | Action                        | Scope                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
-| datasources.permissions:write | datasources:\*<br>datasources:uid:\*<br>datasources:uid:my_datasource (single data source) |
+| datasources.permissions:write | datasources:\*datasources:uid:\*datasources:uid:my_datasource (single data source) |
 
 ### Examples
 
@@ -212,7 +212,7 @@ See note in the [introduction](#data-source-permissions-api) for an explanation.
 
 | Action                        | Scope                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
-| datasources.permissions:write | datasources:\*<br>datasources:uid:\*<br>datasources:uid:my_datasource (single data source) |
+| datasources.permissions:write | datasources:\*datasources:uid:\*datasources:uid:my_datasource (single data source) |
 
 ### Examples
 
@@ -286,7 +286,7 @@ See note in the [introduction](#data-source-permissions-api) for an explanation.
 
 | Action                        | Scope                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
-| datasources.permissions:write | datasources:\*<br>datasources:uid:\*<br>datasources:uid:my_datasource (single data source) |
+| datasources.permissions:write | datasources:\*datasources:uid:\*datasources:uid:my_datasource (single data source) |
 
 ### Examples
 

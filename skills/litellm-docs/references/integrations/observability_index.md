@@ -1,12 +1,8 @@
 ---
 title: Observability
-sidebar_label: Overview
-slug: observability_integrations
 ---
 
 Track, debug, and analyze LLM calls with observability platforms.
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 ## Observability Integrations
 

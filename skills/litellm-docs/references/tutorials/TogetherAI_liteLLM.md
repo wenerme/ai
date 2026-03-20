@@ -1,12 +1,9 @@
 # Llama2 Together AI Tutorial
 https://together.ai/
 
-
-
 ```python
 !pip install litellm
 ```
-
 
 ```python
 import os
@@ -25,12 +22,10 @@ response = completion(model=model_name, messages=messages)
 print(response)
 ```
 
-
 ```
 
     {'choices': [{'finish_reason': 'stop', 'index': 0, 'message': {'role': 'assistant', 'content': "\n\nI'm not able to provide real-time weather information. However, I can suggest"}}], 'created': 1691629657.9288375, 'model': 'togethercomputer/llama-2-70b-chat', 'usage': {'prompt_tokens': 9, 'completion_tokens': 17, 'total_tokens': 26}}
 ```
-
 
 LiteLLM handles the prompt formatting for Together AI's Llama2 models as well, converting your message to the 
 `[INST] <your instruction> [/INST]` format required. 
@@ -39,14 +34,12 @@ LiteLLM handles the prompt formatting for Together AI's Llama2 models as well, c
 
 ## With Streaming
 
-
 ```python
 response = completion(model=model_name, messages=messages, together_ai=True, stream=True)
 print(response)
 for chunk in response:
   print(chunk['choices'][0]['delta']) # same as openai format
 ```
-
 
 ## Use Llama2 variants with Custom Prompt Templates
 

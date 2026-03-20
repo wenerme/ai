@@ -42,7 +42,6 @@ where_clause
 > 
 > For more details, refer to the identifier requirements and reserved keywords.
 
-
 ## Optional Parameters
 
 **1. `<db_name>`**
@@ -94,7 +93,6 @@ where_clause
 | State              | String   | The current state of the replica (e.g., NORMAL).                          |
 | Status             | String   | The health status of the replica (e.g., OK).                              |
 
-
 ## Access Control Requirements
 
 The user executing this SQL command must have at least the following privileges:
@@ -102,7 +100,6 @@ The user executing this SQL command must have at least the following privileges:
 | Privilege  | Object   | Notes                                                                                                                            |
 |:-----------|:---------|:---------------------------------------------------------------------------------------------------------------------------------|
 | Admin_priv | Database | Required to execute administrative operations on the database, including managing tables, partitions, and system-level commands. |
-
 
 ## Examples
 

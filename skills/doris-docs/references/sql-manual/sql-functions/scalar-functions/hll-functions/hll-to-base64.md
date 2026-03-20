@@ -27,11 +27,7 @@ HLL_TO_BASE64(<hll_input>)
 A Base64 encoded string of the HLL.
 Returns `NULL` if the HLL is `NULL`.
 
-::: note
-
-Due to the non-guaranteed order of elements in a HLL, the generated Base64 string may not always be the same for the same content. However, the decoded HLL from `hll_from_base64` will be the same.
-
-:::
+> **note**: Due to the non-guaranteed order of elements in a HLL, the generated Base64 string may not always be the same for the same content. However, the decoded HLL from `hll_from_base64` will be the same.
 
 ## Examples
 

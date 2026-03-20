@@ -79,4 +79,3 @@ select kurt(val1), kurt(val2) from statistic_test group by tag;
 |       NULL |       NULL |
 +------------+------------+
 ```
-

@@ -1,16 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/ttl
 title: 'Managing TTL'
-sidebar_label: 'Managing TTL'
-pagination_prev: null
-pagination_next: null
 description: 'Managing TTL with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'ttl', 'data retention', 'lifecycle', 'storage management']
 ---
-
-import observability_14 from '@site/static/images/use-cases/observability/observability-14.png';
-import Image from '@theme/IdealImage';
 
 ## TTL in ClickStack {#ttl-clickstack}
 
@@ -64,15 +57,13 @@ As shown in the above example, partitioning is specified on a table when it is i
 
 The table schema also includes a `TTL TimestampTime + toIntervalDay(3)` and setting `ttl_only_drop_parts = 1`. The former clause ensures data will be dropped once it is older than 3 days. The setting `ttl_only_drop_parts = 1` enforces only expiring data parts where all of the data has expired (vs. attempting to partially delete rows). With partitioning ensuring data from separate days is never "merged," data can thus be efficiently dropped. 
 
-:::important `ttl_only_drop_parts`
+> **important**: `ttl_only_drop_parts`
 We recommend always using the setting [`ttl_only_drop_parts=1`](/operations/settings/merge-tree-settings#ttl_only_drop_parts). When this setting is enabled, ClickHouse drops a whole part when all rows in it are expired. Dropping whole parts instead of partial cleaning TTL-d rows (achieved through resource-intensive mutations when `ttl_only_drop_parts=0`) allows having shorter `merge_with_ttl_timeout` times and lower impact on system performance. If data is partitioned by the same unit at which you perform TTL expiration e.g. day, parts will naturally only contain data from the defined interval. This will ensure `ttl_only_drop_parts=1` can be efficiently applied.
-:::
 
 By default, data with an expired TTL is removed when ClickHouse [merges data parts](/engines/table-engines/mergetree-family/mergetree#mergetree-data-storage). When ClickHouse detects that data is expired, it performs an off-schedule merge.
 
-:::note TTL schedule
+> **note**: TTL schedule
 TTLs aren't applied immediately but rather on a schedule, as noted above. The MergeTree table setting `merge_with_ttl_timeout` sets the minimum delay in seconds before repeating a merge with delete TTL. The default value is 14400 seconds (4 hours). But that is just the minimum delay; it can take longer until a TTL merge is triggered. If the value is too low, it will perform many off-schedule merges that may consume a lot of resources. A TTL expiration can be forced using the command `ALTER TABLE my_table MATERIALIZE TTL`.
-:::
 
 ## Modifying TTL {#modifying-ttl}
 
@@ -111,6 +102,4 @@ ENGINE = MergeTree
 ORDER BY (ServiceName, Timestamp)
 ```
 
-:::note
-Specifying a column level TTL requires users to specify their own schema. This can't be specified in the OTel collector.
-:::
+> **note**: Specifying a column level TTL requires users to specify their own schema. This can't be specified in the OTel collector.

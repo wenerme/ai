@@ -17,8 +17,6 @@ oRPC is inherently compatible with OpenAPI, but you may need additional configur
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/server@latest @orpc/client@latest @orpc/openapi@latest
 ```
@@ -38,8 +36,6 @@ bun add @orpc/server@latest @orpc/client@latest @orpc/openapi@latest
 ```sh [deno]
 deno add npm:@orpc/server@latest npm:@orpc/client@latest npm:@orpc/openapi@latest
 ```
-
-:::
 
 ## Defining Routes
 
@@ -198,6 +194,4 @@ console.log(JSON.stringify(spec, null, 2))
 
 Run the script above to generate your OpenAPI spec.
 
-::: info
-oRPC supports a wide range of [Standard Schema](https://github.com/standard-schema/standard-schema) for OpenAPI generation. See the full list [here](/docs/openapi/openapi-specification#generating-specifications)
-:::
+> **info**: oRPC supports a wide range of [Standard Schema](https://github.com/standard-schema/standard-schema) for OpenAPI generation. See the full list [here](/docs/openapi/openapi-specification#generating-specifications)

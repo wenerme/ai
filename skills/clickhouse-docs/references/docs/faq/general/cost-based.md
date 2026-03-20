@@ -2,7 +2,6 @@
 title: 'Does ClickHouse have a cost-based optimizer'
 toc_hidden: true
 toc_priority: 10
-slug: /faq/general/cost-based
 description: 'ClickHouse has certain cost-based optimization mechanics'
 doc_type: 'reference'
 keywords: ['CBE', 'optimizer']

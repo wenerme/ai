@@ -1,6 +1,4 @@
 ---
-slug: /native-protocol/columns
-sidebar_position: 4
 title: 'Native protocol column types'
 description: 'Column types for the native protocol'
 keywords: ['native protocol columns', 'column types', 'data types', 'protocol data types', 'binary encoding']
@@ -11,9 +9,7 @@ doc_type: 'reference'
 
 See [Data Types](/sql-reference/data-types/) for general reference.
 
-:::tip
-Numeric types encoding matches memory layout of little endian CPUs like AMD64 or ARM64, allowing very efficient encoding and decoding.
-:::
+> **tip**: Numeric types encoding matches memory layout of little endian CPUs like AMD64 or ARM64, allowing very efficient encoding and decoding.
 
 | Type | Encoding |
 |------|----------|

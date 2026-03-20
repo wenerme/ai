@@ -1,8 +1,6 @@
 # assertType
 
-::: warning
-During runtime this function doesn't do anything. To [enable typechecking](/guide/testing-types#run-typechecking), don't forget to pass down `--typecheck` flag.
-:::
+> **warning**: During runtime this function doesn't do anything. To [enable typechecking](/guide/testing-types#run-typechecking), don't forget to pass down `--typecheck` flag.
 
 - **Type:** `<T>(value: T): void`
 

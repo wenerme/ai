@@ -1,9 +1,6 @@
 ---
 title: Tutorials
-sidebar_label: Overview
 ---
-
-import NavigationCards from '@site/src/components/NavigationCards';
 
 **Tutorials** are step-by-step walkthroughs for integrating LiteLLM with external tools, frameworks, and services — or building complete end-to-end workflows.
 

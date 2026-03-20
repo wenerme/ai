@@ -123,8 +123,6 @@ Becomes something like this:
 
 To use React in your client-side code, import `react-dom/client` and render your app.
 
-<CodeGroup>
-
 ```ts title="src/backend.ts" icon="/icons/typescript.svg"
 import dashboard from "../public/dashboard.html";
 import { serve } from "bun";
@@ -177,8 +175,6 @@ export default function App() {
   );
 }
 ```
-
-</CodeGroup>
 
 ## Development Mode
 
@@ -486,11 +482,9 @@ export default myPlugin;
 
 Bun will lazily resolve and load each plugin and use them to bundle your routes.
 
-<Note>
   This is currently in `bunfig.toml` to make it possible to know statically which plugins are in use when we eventually
   integrate this with the `bun build` CLI. These plugins work in `Bun.build()`'s JS API, but are not yet supported in
   the CLI.
-</Note>
 
 ## Inline Environment Variables
 
@@ -503,14 +497,11 @@ env = "PUBLIC_*"  # only inline env vars starting with PUBLIC_ (recommended)
 # env = "disable" # disable env var replacement (default)
 ```
 
-<Note>
   This only works with literal `process.env.FOO` references, not `import.meta.env` or indirect access like `const env =
   process.env; env.FOO`.
 
 If an environment variable is not set, you may see runtime errors like `ReferenceError: process
   is not defined` in the browser.
-
-</Note>
 
 See the [HTML & static sites documentation](/bundler/html-static#inline-environment-variables) for more details on build-time configuration and examples.
 
@@ -520,8 +511,7 @@ Bun uses `HTMLRewriter` to scan for `<script>` and `<link>` tags in HTML files, 
 
 ### Processing Pipeline
 
-<Steps>
-<Step title="1. <script> Processing">
+ Processing">
 - Transpiles TypeScript, JSX, and TSX in `<script>` tags
 - Bundles imported dependencies
 - Generates sourcemaps for debugging
@@ -531,8 +521,7 @@ Bun uses `HTMLRewriter` to scan for `<script>` and `<link>` tags in HTML files, 
 <script type="module" src="./counter.tsx"></script>
 ```
 
-</Step>
-<Step title="2. <link> Processing">
+ Processing">
 - Processes CSS imports and `<link>` tags
 - Concatenates CSS files
 - Rewrites url and asset paths to include content-addressable hashes in URLs
@@ -541,21 +530,16 @@ Bun uses `HTMLRewriter` to scan for `<script>` and `<link>` tags in HTML files, 
 <link rel="stylesheet" href="./styles.css" />
 ```
 
-</Step>
-<Step title="3. <img> & Asset Processing">
+ & Asset Processing">
 - Links to assets are rewritten to include content-addressable hashes in URLs
 - Small assets in CSS files are inlined into `data:` URLs, reducing the total number of HTTP requests sent over the wire
-</Step>
-<Step title="4. HTML Rewriting">
+
 - Combines all `<script>` tags into a single `<script>` tag with a content-addressable hash in the URL
 - Combines all `<link>` tags into a single `<link>` tag with a content-addressable hash in the URL
 - Outputs a new HTML file
-</Step>
-<Step title="5. Serving">
+
 - All the output files from the bundler are exposed as static routes, using the same mechanism internally as when you pass a Response object to `static` in `Bun.serve()`.
 - This works similarly to how `Bun.build` processes HTML files.
-</Step>
-</Steps>
 
 ## Complete Example
 
@@ -1083,4 +1067,4 @@ export default function handler(req, res) {
 - Built-in SSR support
 - Enhanced plugin ecosystem
 
-<Note>This is a work in progress. Features and APIs may change as Bun continues to evolve.</Note>
+This is a work in progress. Features and APIs may change as Bun continues to evolve.

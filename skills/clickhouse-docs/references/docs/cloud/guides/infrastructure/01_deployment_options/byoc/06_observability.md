@@ -1,18 +1,9 @@
 ---
 title: 'BYOC Observability'
-slug: /cloud/reference/byoc/observability
-sidebar_label: 'Observability'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'observability', 'monitoring', 'Prometheus', 'Grafana']
 description: 'Monitor and observe your BYOC ClickHouse deployment using built-in dashboards and Prometheus metrics'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc_mixin_1 from '@site/static/images/cloud/reference/byoc-mixin-1.png';
-import byoc_mixin_2 from '@site/static/images/cloud/reference/byoc-mixin-2.png';
-import byoc_mixin_3 from '@site/static/images/cloud/reference/byoc-mixin-3.png';
-import byoc_mixin_4 from '@site/static/images/cloud/reference/byoc-mixin-4.png';
-import byoc_mixin_5 from '@site/static/images/cloud/reference/byoc-mixin-5.png';
 
 BYOC deployments include comprehensive observability capabilities, allowing you to monitor your ClickHouse services through a dedicated Prometheus monitoring stack, and direct metric endpoints from ClickHouse Servers. All observability data remains within your cloud account, giving you complete control over your monitoring infrastructure.
 
@@ -60,9 +51,7 @@ Endpoint formats vary by connectivity type:
 | VPC / VPC peering | `https://prometheus-internal.<subdomain>.<region>.<cloud>.clickhouse-byoc.com` |
 | PrivateLink | `https://prometheus.vpce.<subdomain>.<region>.<cloud>.clickhouse-byoc.com` |
 
-:::note
-The Prometheus stack URL is only accessible via private network connections and doesn't require authentication. Access is restricted to networks that can reach your BYOC VPC through VPC peering or other private connectivity options.
-:::
+> **note**: The Prometheus stack URL is only accessible via private network connections and doesn't require authentication. Access is restricted to networks that can reach your BYOC VPC through VPC peering or other private connectivity options.
 
 ### Integrating with Your Monitoring Tools {#prometheus-stack-integration}
 

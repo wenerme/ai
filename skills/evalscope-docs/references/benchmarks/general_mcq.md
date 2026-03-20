@@ -1,6 +1,5 @@
 # General-MCQ
 
-
 ## Overview
 
 General-MCQ is a customizable multiple-choice question answering benchmark for evaluating language models. It supports flexible data formats and variable number of answer choices.
@@ -27,7 +26,6 @@ General-MCQ is a customizable multiple-choice question answering benchmark for e
 - Train split: **dev**, Eval split: **val**
 - See [User Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/custom_dataset/llm.html#mcq) for dataset format
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ General-MCQ is a customizable multiple-choice question answering benchmark for e
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
 | **Train Split** | `dev` |
-
 
 ## Data Statistics
 
@@ -91,5 +88,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

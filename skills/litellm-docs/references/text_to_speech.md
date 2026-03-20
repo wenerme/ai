@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /audio/speech
 
@@ -275,7 +273,6 @@ curl --location 'http://localhost:4000/v1/audio/transcriptions' \
 --form 'file=@"/Users/ishaanjaffer/Github/litellm/tests/gettysburg.wav"' \
 --form 'model="whisper"'
 ```
-
 
 Expect to see the follow response 
 

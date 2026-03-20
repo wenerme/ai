@@ -57,7 +57,7 @@ To generate a support bundle and send the support bundle to Grafana Labs via a s
 
 1. Click **Support Bundles**.
 
-   ![Support bundle panel](/static/img/docs/troubleshooting/support-bundle.png)
+   [Support bundle panel]
 
 1. Click **New Support Bundle**.
 

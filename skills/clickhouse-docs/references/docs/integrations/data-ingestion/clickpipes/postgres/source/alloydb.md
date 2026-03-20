@@ -1,19 +1,8 @@
 ---
-sidebar_label: 'AlloyDB Postgres'
 description: 'Set up an AlloyDB Postgres instance as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/alloydb
 title: 'AlloyDB Postgres Source Setup Guide'
 doc_type: 'guide'
 ---
-
-import edit_instance from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/alloydb/1_edit_instance.png';
-import set_flags from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/alloydb/2_set_flags.png';
-import verify_logical_replication from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/alloydb/3_verify_logical_replication.png';
-import configure_network_security from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/alloydb/4_configure_network_security.png';
-import configure_network_security2 from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/alloydb/5_configure_network_security.png';
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # AlloyDB Postgres source setup guide
 
@@ -31,9 +20,7 @@ SHOW  wal_level;
 
 If the result is `logical`, logical replication is already enabled and you can skip to the [next step](#create-a-clickpipes-user-and-manage-replication-permissions). If the result is `replica`, you must set the [`alloydb.enable_pglogical`](https://cloud.google.com/alloydb/docs/reference/alloydb-flags#alloydb.enable_pglogical) and [`alloydb.logical_decoding`](https://cloud.google.com/alloydb/docs/reference/alloydb-flags#alloydb.logical_decoding) flags to `on` in the primary instance.
 
-:::warning
-As noted in the [AlloyDB flags documentation](https://cloud.google.com/alloydb/docs/reference/alloydb-flags), modifying the flags that enable logical replication requires a restart of the primary instance.
-:::
+> **warning**: As noted in the [AlloyDB flags documentation](https://cloud.google.com/alloydb/docs/reference/alloydb-flags), modifying the flags that enable logical replication requires a restart of the primary instance.
 
 To enable these flags:
 
@@ -105,14 +92,9 @@ Connect to your AlloyDB instance as an admin user and execute the following comm
 
 ## Configure network access {#configure-network-access}
 
-:::note
-ClickPipes doesn't support Private Service Connect (PSC) connections. If you don't allow public access to your AlloyDB instance, you can [use an SSH tunnel](#configure-network-access) to connect securely. PSC will be supported in the future.
-:::
+> **note**: ClickPipes doesn't support Private Service Connect (PSC) connections. If you don't allow public access to your AlloyDB instance, you can [use an SSH tunnel](#configure-network-access) to connect securely. PSC will be supported in the future.
 
 Next, you must allow connections to your AlloyDB instance from ClickPipes.
-
-<Tabs groupId="network-configuration">
-<TabItem value="public-ip" label="Allow ClickPipes IPs">
 
 1. In the Google Cloud Console, navigate to the AlloyDB [Clusters](https://console.cloud.google.com/alloydb/clusters) page. Select your primary instance to open the **Overview** page.
 
@@ -130,9 +112,6 @@ Next, you must allow connections to your AlloyDB instance from ClickPipes.
 
 5. Click **Update instance** to save the network security configuration changes.
 
-</TabItem>
-<TabItem value="ssh-tunnel" label="Use an SSH tunnel">
-
 If you don't allow public access to your AlloyDB instance, you must first set up an SSH bastion host to securely tunnel your connection. To set up an SSH bastion host on Google Cloud Platform:
 
 1. Create and start a Google Compute Engine (GCE) instance following the [official documentation](https://cloud.google.com/compute/docs/instances/create-start-instance).
@@ -142,9 +121,6 @@ If you don't allow public access to your AlloyDB instance, you must first set up
 2. Update the firewall rules of the SSH bastion host to allow traffic from the [list of ClickPipes static IP addresses](../../index.md#list-of-static-ips) for the region your service is deployed in.
 
 3. Update the firewall rules of AlloyDB to allow traffic from the SSH bastion host.
-
-</TabItem>
-</Tabs>
 
 ## What's next? {#whats-next}
 

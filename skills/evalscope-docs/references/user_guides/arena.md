@@ -66,7 +66,7 @@ task_list = [TaskConfig(
 run_task(task_cfg=task_list)
 ```
 
-<details><summary>Click to view inference results</summary>
+Click to view inference results
 
 Since the `arena` subset does not have reference answers, no evaluation metrics are available for this subset. The `example` subset has reference answers, so evaluation metrics will be output.
 ```text
@@ -158,7 +158,6 @@ Since the `arena` subset does not have reference answers, no evaluation metrics 
 | qwen2.5-7b-instruct   | general_qa | bleu-4          | example  |    12 |  0.0556 | default |
 +-----------------------+------------+-----------------+----------+-------+---------+---------+
 ```
-</details>
 
 ## Candidate Model Battles
 
@@ -219,7 +218,7 @@ task_cfg = TaskConfig(
 run_task(task_cfg=task_cfg)
 ```
 
-<details><summary>Click to view evaluation results</summary>
+Click to view evaluation results
 
 ```text
 +---------+---------------+---------------+--------------------------------------------+-------+---------+---------+
@@ -256,8 +255,6 @@ run_task(task_cfg=task_cfg)
 | Arena   | general_arena | winrate_upper | OVERALL                                    |    44 |  0.4469 | -       |
 +---------+---------------+---------------+--------------------------------------------+-------+---------+---------+ 
 ```
-</details>
-
 
 The automatically generated model leaderboard is as follows (output file located in `outputs/xxx/reports/Arena/leaderboard.txt`):
 

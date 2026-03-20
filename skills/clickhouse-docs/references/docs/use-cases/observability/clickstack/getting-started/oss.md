@@ -1,28 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/oss
 title: 'Getting Started with Open Source ClickStack'
-sidebar_label: 'Open Source'
-pagination_prev: null
-pagination_next: use-cases/observability/clickstack/example-datasets/index
 description: 'Getting started with Open Source ClickStack'
 doc_type: 'guide'
 keywords: ['ClickStack Open Source', 'getting started', 'Docker deployment', 'HyperDX UI', 'local deployment']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import hyperdx_logs from '@site/static/images/use-cases/observability/hyperdx-logs.png';
-import hyperdx from '@site/static/images/use-cases/observability/hyperdx-1.png';
-import hyperdx_2 from '@site/static/images/use-cases/observability/hyperdx-2.png';
-import add_connection from '@site/static/images/use-cases/observability/add_connection.png';
-import hyperdx_cloud from '@site/static/images/use-cases/observability/hyperdx-cloud.png';
-import edit_cloud_connection from '@site/static/images/use-cases/observability/edit_cloud_connection.png';
-import delete_source from '@site/static/images/use-cases/observability/delete_source.png';
-import delete_connection from '@site/static/images/use-cases/observability/delete_connection.png';
-import created_sources from '@site/static/images/use-cases/observability/created_sources.png';
-import edit_connection from '@site/static/images/use-cases/observability/edit_connection.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 To deploy **ClickStack Open Source**, where you run and manage ClickHouse and the ClickStack UI yourself, we provide prebuilt Docker images that bundle the UI, an OpenTelemetry collector, and ClickHouse into a single container -  making local development, testing, and self-managed deployments straightforward to get started.
 
@@ -46,11 +27,10 @@ The following will run an OpenTelemetry collector (on port 4317 and 4318), the H
 docker run --name clickstack -p 8123:8123 -p 8080:8080 -p 4317:4317 -p 4318:4318 clickhouse/clickstack-all-in-one:latest clickstack
 ```
 
-:::note Image Name Update
+> **note**: Image Name Update
 ClickStack images are now published as `clickhouse/clickstack-*` (previously `docker.hyperdx.io/hyperdx/*`).
-:::
 
-:::tip Persisting data and settings
+> **tip**: Persisting data and settings
 To persist data and settings across restarts of the container, you can modify the above docker command to mount the paths `/data/db`, `/var/lib/clickhouse` and `/var/log/clickhouse-server`. 
 
 For example:
@@ -68,7 +48,6 @@ docker run \
   -v "$(pwd)/.volumes/ch_logs:/var/log/clickhouse-server" \
   clickhouse/clickstack-all-in-one:latest
 ```
-:::
 
 ## Navigate to the ClickStack UI {#navigate-to-hyperdx-ui}
 
@@ -89,7 +68,6 @@ To continue using the local cluster:
 - [Example dataset](/use-cases/observability/clickstack/getting-started/sample-data) - Load an example dataset from our public demo. Diagnose a simple issue.
 - [Local files and metrics](/use-cases/observability/clickstack/getting-started/local-data) - Load local files and monitor system on OSX or Linux using a local OTel collector.
 
-<br/>
 Alternatively, you can connect to a demo cluster where you can explore a larger dataset: 
 
 - [Remote demo dataset](/use-cases/observability/clickstack/getting-started/remote-demo-data) - Explore a demo dataset in our demo ClickHouse service.

@@ -8,9 +8,9 @@ Internally, the Comfy server represents data flowing from one node to the next a
 In normal operation, when a node returns an output, each element in the output `tuple` is separately wrapped in a list (length 1); then when the 
 next node is called, the data is unwrapped and passed to the main function.
 
-<Tip>You generally don't need to worry about this, since Comfy does the wrapping and unwrapping.</Tip>
+You generally don't need to worry about this, since Comfy does the wrapping and unwrapping.
 
-<Tip>This isn't about batches. A batch (of, for instance, latents, or images) is a *single entry* in the list (see [tensor datatypes](./images_and_masks))</Tip>
+This isn't about batches. A batch (of, for instance, latents, or images) is a *single entry* in the list (see [tensor datatypes](./images_and_masks))
 
 ## List processing
 
@@ -36,7 +36,7 @@ A node can also override the default input behaviour and receive the whole list 
 Here's a (lightly annotated) example from the built in nodes - `ImageRebatch` takes one or more batches of images (received as a list, because `INPUT_IS_LIST - True`)
 and rebatches them into batches of the requested size.
 
-<Tip>`INPUT_IS_LIST` is node level - all inputs get the same treatment. So the value of the `batch_size` widget is given by `batch_size[0]`.</Tip>
+`INPUT_IS_LIST` is node level - all inputs get the same treatment. So the value of the `batch_size` widget is given by `batch_size[0]`.
 
 ```Python
 
@@ -66,11 +66,4 @@ class ImageRebatch:
         return (output_list,)
 ```
 
-
-
-
-
-
-
 #### INPUT_IS_LIST
-

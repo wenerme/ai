@@ -1,7 +1,5 @@
 ---
 date: "2021-12-13:10:10+08:00"
-slug: "permissions"
-sidebar_position: 14
 aliases:
   - /en-us/permissions
   - /permissions

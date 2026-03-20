@@ -137,8 +137,6 @@ Notification policies routes alerts to contact points via label matching. They a
 
 {{< figure src="/media/docs/alerting/notification-routing.png" max-width="750px" alt="A diagram displaying how the notification policy tree routes alerts" caption="Routing firing alert instances through notification policies" >}}
 
-<br/>
-
 Each notification policy decides where to send the alert (contact point) and when to send the notification (timing options).
 
 ### Notification grouping

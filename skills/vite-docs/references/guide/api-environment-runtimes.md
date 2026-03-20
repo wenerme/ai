@@ -1,6 +1,6 @@
 # Environment API for Runtimes
 
-:::info Release Candidate
+> **info**: Release Candidate
 The Environment API is generally in the release candidate phase. We'll maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. However, note that [some specific APIs](/changes/#considering) are still considered experimental.
 
 We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
@@ -11,7 +11,6 @@ Resources:
 - [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new APIs were implemented and reviewed.
 
 Please share your feedback with us.
-:::
 
 ## Environment Factories
 
@@ -324,8 +323,6 @@ Transport object that communicates with the environment via an RPC or by directl
 
 You need to couple it with the `HotChannel` instance on the server like in this example where module runner is created in the worker thread:
 
-::: code-group
-
 ```js [worker.js]
 import { parentPort } from 'node:worker_threads'
 import { fileURLToPath } from 'node:url'
@@ -424,8 +421,6 @@ await createServer({
   },
 })
 ```
-
-:::
 
 Make sure to implement the `vite:client:connect` / `vite:client:disconnect` events in the `on` / `off` methods when those methods exist. `vite:client:connect` event should be emitted when the connection is established, and `vite:client:disconnect` event should be emitted when the connection is closed. The `HotChannelClient` object passed to the event handler must have the same reference for the same connection.
 

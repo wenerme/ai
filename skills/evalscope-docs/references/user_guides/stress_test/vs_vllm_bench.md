@@ -288,7 +288,6 @@ Percentile results:
 +-------------+----------+---------+----------+-------------+--------------+---------------+----------------+---------------+
 ```
 
-
 ---
 
 ## Metric Definitions and Naming Correspondence
@@ -347,4 +346,3 @@ The following are common sources of discrepancies between `vLLM` and `Evalscope`
 7. **Resource Contention**
    - Background processes, NVIDIA NVLink bandwidth, and PCIe throughput may introduce non-deterministic delays.
    - For consistent measurements, perform benchmarks in a stable and isolated environment.
-

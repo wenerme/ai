@@ -9,7 +9,7 @@ Organizations provide logical boundaries for separating data, users, and access 
 
 > You will encounter the concept of organization when you first log in or [ingest data into a stream](../../streams/streams-in-openobserve/#ingest-data-into-stream). To send data into OpenObserve, you must specify the **organization identifier** in your ingestion endpoint. 
 
-![Organizations in OpenObserve](../../images/organization-in-openobserve.png)
+[Organizations in OpenObserve]
 
 ## Organization types
 
@@ -49,11 +49,10 @@ To delegate organization management to users in enterprise mode:
     - **Update**: Modify organization details
     !!! note "Note"
         By default, OpenObserve displays the list of organizations a user belongs to. You do not need to explicitly grant permission to view or retrieve organization details.
-6. Click **Save**. <br>
-![Grant Organization Management Access in OpenObserve](../../images/organization-role-permission.png)
+6. Click **Save**. 
+[Grant Organization Management Access in OpenObserve]
 
 Once this role is assigned to a user within the **_meta** organization, they will have access to manage organizations across the system.
-
 
 ## Create an Organization
 
@@ -62,8 +61,8 @@ To create a new organization:
 
 1. Navigate to **IAM > Organizations**.
 2. Click **Add Organization**.
-3. Enter the organization name and save. <br>
-![Create an Organization](../../images/organization-create-new.png)
+3. Enter the organization name and save. 
+[Create an Organization]
 
 This option is available to the **root** user by default. In enterprise deployments, additional users may create organizations if they are granted permission through the meta organization.
 
@@ -87,5 +86,4 @@ When enabled:
 - **Identifier Visibility in UI**: The organization list in the UI displays both the name and the identifier, helping you distinguish between organizations with the same name.
 - **Switching Organizations**: Use the dropdown in the top navigation bar to switch between organizations you have access to. All actions, such as queries and configurations, apply only to the selected organization.
 - **Search by Name**: You can search for organizations by name using the search bar on the Organizations page.
-- **Rename and Delete Restrictions**: Organizations cannot be renamed or deleted. 
-
+- **Rename and Delete Restrictions**: Organizations cannot be renamed or deleted.

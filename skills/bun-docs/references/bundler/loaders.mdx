@@ -77,8 +77,6 @@ pkg.name;
 
 If a `.json` file is passed as an entrypoint to the bundler, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```json Input
 {
   "name": "John Doe",
@@ -94,8 +92,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ---
 
@@ -118,9 +114,7 @@ var config = {
 };
 ```
 
-<Note>
   Bun automatically uses the `jsonc` loader for `tsconfig.json`, `jsconfig.json`, `package.json`, and `bun.lock` files.
-</Note>
 
 ---
 
@@ -150,8 +144,6 @@ config.logLevel;
 
 If a `.toml` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```toml Input
 name = "John Doe"
 age = 35
@@ -165,8 +157,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ---
 
@@ -196,8 +186,6 @@ var config = {
 
 If a `.yaml` or `.yml` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
 
-<CodeGroup>
-
 ```yaml Input
 name: John Doe
 age: 35
@@ -211,8 +199,6 @@ export default {
   email: "johndoe@example.com",
 };
 ```
-
-</CodeGroup>
 
 ---
 
@@ -240,8 +226,6 @@ console.log(contents);
 
 If a `.txt` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the file contents.
 
-<CodeGroup>
-
 ```txt Input
 Hello, world!
 ```
@@ -249,8 +233,6 @@ Hello, world!
 ```js Output
 export default "Hello, world!";
 ```
-
-</CodeGroup>
 
 ---
 
@@ -265,7 +247,7 @@ import addon from "./addon.node";
 console.log(addon);
 ```
 
-<Note>In the bundler, `.node` files are handled using the file loader.</Note>
+In the bundler, `.node` files are handled using the file loader.
 
 ---
 
@@ -279,7 +261,7 @@ In the runtime and bundler, SQLite databases can be directly imported. This will
 import db from "./my.db" with { type: "sqlite" };
 ```
 
-<Warning>This is only supported when the target is `bun`.</Warning>
+This is only supported when the target is `bun`.
 
 By default, the database is external to the bundle (so that you can potentially use a database loaded elsewhere), so the database file on-disk won't be bundled into the final output.
 
@@ -290,12 +272,9 @@ You can change this behavior with the `"embed"` attribute:
 import db from "./my.db" with { type: "sqlite", embed: "true" };
 ```
 
-<Info>
 When using a standalone executable, the database is embedded into the single-file executable.
 
 Otherwise, the database to embed is copied into the `outdir` with a hashed filename.
-
-</Info>
 
 ---
 
@@ -307,7 +286,7 @@ The `html` loader processes HTML files and bundles any referenced assets. It wil
 
 - Bundle and hash referenced JavaScript files (`<script src="...">`)
 - Bundle and hash referenced CSS files (`<link rel="stylesheet" href="...">`)
-- Hash referenced images (`<img src="...">`)
+- Hash referenced images (``)
 - Preserve external URLs (by default, anything starting with `http://` or `https://`)
 
 For example, given this HTML file:
@@ -338,7 +317,6 @@ It will output a new HTML file with the bundled assets:
 
 Under the hood, it uses [`lol-html`](https://github.com/cloudflare/lol-html) to extract script and link tags as entrypoints, and other assets as external.
 
-<Accordion title="List of supported HTML selectors">
 Currently, the list of selectors is:
 
 - `audio[src]`
@@ -360,10 +338,6 @@ Currently, the list of selectors is:
 - `video[poster]`
 - `video[src]`
 
-</Accordion>
-
-<Note>
-
 **HTML Loader Behavior in Different Contexts**
 
 The `html` loader behaves differently depending on how it's used:
@@ -371,8 +345,6 @@ The `html` loader behaves differently depending on how it's used:
 - Static Build: When you run `bun build ./index.html`, Bun produces a static site with all assets bundled and hashed.
 - Runtime: When you run `bun run server.ts` (where `server.ts` imports an HTML file), Bun bundles assets on-the-fly during development, enabling features like hot module replacement.
 - Full-stack Build: When you run `bun build --target=bun server.ts` (where `server.ts` imports an HTML file), the import resolves to a manifest object that `Bun.serve` uses to efficiently serve pre-bundled assets in production.
-
-</Note>
 
 ---
 
@@ -443,9 +415,6 @@ If a value is specified for `publicPath`, the import will use value as a prefix 
 | `"/assets"`                  | `/assets/logo.svg`                 |
 | `"https://cdn.example.com/"` | `https://cdn.example.com/logo.svg` |
 
-<Note>
 The location and file name of the copied file is determined by the value of `naming.asset`.
 
 This loader is copied into the `outdir` as-is. The name of the copied file is determined using the value of `naming.asset`.
-
-</Note>

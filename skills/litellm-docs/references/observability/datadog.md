@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # DataDog
 
@@ -19,7 +17,6 @@ LiteLLM Supports logging to the following Datdog Integrations:
 | **Events** | Success + Failure |
 | **Product Link** | [Datadog Logs](https://docs.datadoghq.com/logs/) |
 
-
 We will use the `--config` to set `litellm.callbacks = ["datadog"]` this will log all successful LLM calls to DataDog
 
 **Step 1**: Create a `config.yaml` file and set `litellm_settings`: `success_callback`
@@ -33,7 +30,6 @@ litellm_settings:
   callbacks: ["datadog"] # logs llm success + failure logs on datadog
   service_callback: ["datadog"] # logs redis, postgres failures on datadog
 ```
-
 
 ## Datadog LLM Observability
 
@@ -53,8 +49,6 @@ model_list:
 litellm_settings:
   callbacks: ["datadog_llm_observability"] # logs llm success logs on datadog
 ```
-
-
 
 **Step 2**: Set Required env variables for datadog
 
@@ -124,7 +118,6 @@ Expected output on Datadog
 
 This section covers how to redact sensitive data from messages and responses in the logged payload on Datadog LLM Observability.
 
-
 When redaction is enabled, the actual message content and response text will be excluded from Datadog logs while preserving metadata like token counts, latency, and model information.
 
 **Step 1**: Configure redaction in your `config.yaml`
@@ -164,10 +157,7 @@ On the Datadog LLM Observability page, you should see that both input messages a
 
 <Image img={require('../../img/dd_llm_obs.png')} />
 
-
-
 <Image img={require('../../img/dd_llm_obs.png')} />
-
 
 ## Datadog Custom Metrics
 
@@ -268,7 +258,6 @@ litellm --config config.yaml
 * Requires `DD_APP_KEY` for the Custom Costs API.
 * Costs are uploaded periodically (flushed).
 
-
 ### Datadog Tracing
 
 Use `ddtrace-run` to enable [Datadog Tracing](https://ddtrace.readthedocs.io/en/stable/installation_quickstart.html) on litellm proxy
@@ -281,7 +270,6 @@ Pass `USE_DDTRACE=true` to the docker run command. When `USE_DDTRACE=true`, the 
 Pass `USE_DDPROFILER=true` to the docker run command. When `USE_DDPROFILER=true`, the proxy will activate the [Datadog Profiler](https://docs.datadoghq.com/profiler/enabling/python/). This is useful for debugging CPU% and memory usage.
 
 We don't recommend using `USE_DDPROFILER` in production. It is only recommended for debugging CPU% and memory usage.
-
 
 ```bash
 docker run \
@@ -321,4 +309,3 @@ LiteLLM automatically adds the following tags to your Datadog logs and metrics i
 |-----|-------------|--------|
 | `team` | The team alias or ID associated with the API Key | `user_api_key_team_alias`, `team_alias`, `user_api_key_team_id`, or `team_id` in metadata |
 | `request_tag` | Custom tags passed in the request | `request_tags` in logging payload |
-

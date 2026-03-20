@@ -1,16 +1,11 @@
-import Image from '@theme/IdealImage';
 
 # Hashicorp Vault
 
-:::info
-
-✨ **This is an Enterprise Feature**
+> **info**: ✨ **This is an Enterprise Feature**
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
 
 | Feature | Support | Description |
 |---------|----------|-------------|
@@ -44,7 +39,6 @@ HCP_VAULT_CLIENT_KEY="path/to/client.key"
 # OR - Authentication via token
 HCP_VAULT_TOKEN="hvs.CAESIG52gL6ljBSdmq*****"
 
-
 # OPTIONAL
 HCP_VAULT_REFRESH_INTERVAL="86400" # defaults to 86400, frequency of cache refresh for Hashicorp Vault
 HCP_VAULT_MOUNT_NAME="secret" # OPTIONAL. defaults to "secret", set this if your KV engine is mounted elsewhere
@@ -71,7 +65,6 @@ $ litellm --config /path/to/config.yaml
 ```
 
 [Quick Test Proxy](../proxy/user_keys)
-
 
 ## Authentication Methods
 
@@ -163,7 +156,6 @@ For example, if you have:
 - `HCP_VAULT_PATH_PREFIX="litellm"`
 - Secret name: `AZURE_API_KEY`
 
-
 LiteLLM will look up:
 ```
 https://vault.example.com:8200/v1/admin/secret/data/litellm/AZURE_API_KEY
@@ -190,7 +182,6 @@ When a Virtual Key is Created / Deleted on LiteLLM, LiteLLM will automatically c
 - Create Virtual Key on LiteLLM either through the LiteLLM Admin UI or API
 
 <Image img={require('../../img/hcorp_create_virtual_key.png')} />
-
 
 - Check Hashicorp Vault for secret
 

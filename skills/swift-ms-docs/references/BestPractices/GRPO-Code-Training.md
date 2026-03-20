@@ -1,7 +1,6 @@
 # Code Training with GRPO
 This document explains how to use GRPO to train models for code tasks.
 
-
 Model: [Qwen/Qwen2.5-7B-Instruct](https://www.modelscope.cn/models/Qwen/Qwen2.5-VL-7B-Instruct)
 
 Dataset: [open-r1/verifiable-coding-problems-python-10k](https://www.modelscope.cn/datasets/open-r1/verifiable-coding-problems-python-10k/dataPeview)
@@ -25,11 +24,9 @@ dataset example
 
 `verification_info` provides the programming language as well as test cases, which include input and expected output.
 
-
 ## Reward Functions
 
 The training process utilizes two reward functions: `code_reward` and `code_format`. For implementation details, refer to the [code](https://github.com/modelscope/ms-swift/blob/main/examples/train/grpo/plugin/plugin.py).
-
 
 - `code_reward` Executes the generated code using [e2b](https://e2b.dev/) or [judge0](https://judge0.com/). Validates the code against the test cases in the dataset and assigns a reward value based on correctness.
 - `code_format` Requires the model to produce formatted responses that include code blocks.
@@ -144,4 +141,4 @@ swift rlhf \
     --report_to wandb
 ```
 Training Reward Curve
-![Training Reward Curve](../../resources/grpo_code.png)
+[Training Reward Curve]

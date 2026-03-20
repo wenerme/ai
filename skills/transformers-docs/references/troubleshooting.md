@@ -1,22 +1,4 @@
-<!---
-Copyright 2022 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Troubleshoot
 
@@ -58,11 +40,7 @@ Here are some potential solutions you can try to lessen memory use:
 - Reduce the [`per_device_train_batch_size`](main_classes/trainer#transformers.TrainingArguments.per_device_train_batch_size) value in [`TrainingArguments`].
 - Try using [`gradient_accumulation_steps`](main_classes/trainer#transformers.TrainingArguments.gradient_accumulation_steps) in [`TrainingArguments`] to effectively increase overall batch size.
 
-<Tip>
-
 Refer to the Performance [guide](performance) for more details about memory-saving techniques.
-
-</Tip>
 
 ## ImportError
 
@@ -136,11 +114,7 @@ tensor([[-0.1008, -0.4061]], grad_fn=<AddmmBackward0>)
 
 Most of the time, you should provide an `attention_mask` to your model to ignore the padding tokens to avoid this silent error. Now the output of the second sequence matches its actual output:
 
-<Tip>
-
 By default, the tokenizer creates an `attention_mask` for you based on your specific tokenizer's defaults.
-
-</Tip>
 
 ```py
 >>> attention_mask = torch.tensor([[1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0]])

@@ -19,24 +19,15 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 This tutorial is a continuation of the [Get started with Grafana Alerting - Route alerts using dynamic labels](http://www.grafana.com/tutorials/alerting-get-started-pt5/) tutorial.
 
 {{< youtube id="mqj_hN24zLU" >}}
-
-<!-- USE CASE -->
 
 In this tutorial you will learn how to:
 
 - Link alert rules to time series panels for better visualization
 - View alert annotations directly on dashboards for better context
 - Write Prometheus queries
-
-<!-- INTERACTIVE page intro.md END -->
-<!-- INTERACTIVE page step1.md START -->
-
-<!-- INTERACTIVE ignore START -->
 
 ## Before you begin
 
@@ -47,8 +38,6 @@ In this tutorial you will learn how to:
   - If you opt to run a Grafana stack locally, ensure you have the following applications installed:
     - Docker Compose (included in Docker for Desktop for macOS and Windows)
     - Git
-
-<!-- INTERACTIVE ignore END -->
 
 ### Set up the Grafana stack
 
@@ -68,57 +57,57 @@ To observe data using the Grafana stack, download and run the following files.
 
 1. Build the Grafana stack:
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    ```
    docker compose build
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose build
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
 1. Bring up the containers:
 
-    <!-- INTERACTIVE ignore START -->
+    
 
    ```
    docker compose up -d
    ```
 
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
-   <!-- INTERACTIVE exec START -->
+   
 
    ```bash
    docker-compose up -d
    ```
 
-   <!-- INTERACTIVE exec END -->
+   
 
    {{< /docs/ignore >}}
 
    The first time you run `docker compose up -d`, Docker downloads all the necessary resources for the tutorial. This might take a few minutes, depending on your internet connection.
 
- <!-- INTERACTIVE ignore START -->
+ 
 
 {{< admonition type="note" >}}
 If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 {{< /admonition >}}
 
-   <!-- INTERACTIVE ignore END -->
+   
 
 {{< docs/ignore >}}
 
@@ -127,9 +116,6 @@ NOTE:
 If you already have Grafana, Loki, or Prometheus running on your system, you might see errors, because the Docker image is trying to use ports that your local installations are already using. If this is the case, stop the services, then run the command again.
 
 {{< /docs/ignore >}}
-
-<!-- INTERACTIVE page step1.md END -->
-<!-- INTERACTIVE page step2.md START -->
 
 ## Use case: monitoring and alerting for system health with Prometheus and Grafana
 
@@ -140,9 +126,6 @@ The script simulates random CPU and memory usage values (10% to 100%) every **10
 ### Objective
 
 You'll build a time series visualization to monitor CPU and memory usage, define alert rules with threshold-based conditions, and link those alerts to your dashboards to display real-time annotations when thresholds are breached.
-
-<!-- INTERACTIVE page step2.md END -->
-<!-- INTERACTIVE page step3.md START -->
 
 ## Step 1: Create a visualization to monitor metrics
 
@@ -188,9 +171,6 @@ The time-series visualization supports alert rules to provide more context in th
 
 We have our time-series panel ready. Feel free to combine metrics with labels such as `flask_app_cpu_usage{instance=“flask-staging:5000”}`, or other labels like `deployment`.
 
-<!-- INTERACTIVE page step3.md END -->
-<!-- INTERACTIVE page step4.md START -->
-
 ## Step 2: Create alert rules
 
 Follow these steps to manually create alert rules and link them to a visualization.
@@ -222,9 +202,6 @@ Make it short and descriptive, as this will appear in your alert notification. F
      {{< figure src="/media/docs/alerting/alert-condition-details-prod.png" max-width="1200px" caption="Preview of a query returning alert instances in Grafana." >}}
 
    The query returns the CPU usage of the Flask application in the production environment. In this case, the usage is `86.01%`, which exceeds the configured threshold of `75%`, causing the alert to fire.
-
-<!-- INTERACTIVE page step4.md END -->
-<!-- INTERACTIVE page step5.md START -->
 
 ### Add folders and labels
 
@@ -259,17 +236,11 @@ Try adding a second alert rule using the memory usage metric (`flask_app_memory_
 
 Check how your dashboard looks now that your alert has been linked to your dashboard panel.
 
-<!-- INTERACTIVE page step5.md END -->
-<!-- INTERACTIVE page step6.md START -->
-
 ## Step 3: Visualizing metrics and alert annotations
 
 After the alert rules are linked to visualization, they should appear as **health indicators** (colored heart icons: a red heart when the alert is in **Alerting** state, and a green heart when in **Normal** state) on the linked panel. In addition, annotations provide helpful context, such as the time the alert was triggered.
 
 {{< figure src="/media/docs/alerting/alert-in-panel.png" max-width="1200px" caption="Time series panel displaying health indicators and annotations." >}}
-
-<!-- INTERACTIVE page step6.md END -->
-<!-- INTERACTIVE page step7.md START -->
 
 ## Step 4: Receiving notifications
 
@@ -287,13 +258,8 @@ By default, this URL includes `from` and `to` query [parameters](https://grafana
 
 If you want to define a more intentional time range, you can customize your notifications using a [notification template](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/template-notifications/examples/#print-a-link-to-a-dashboard-with-time-range). With a template, you can explicitly set `from` and `to` values for more precise control over what users see when they follow the dashboard link. The final URL is constructed using a custom annotation (e.g., `MyDashboardURL`) along with the `from` and `to` parameters, which are calculated in the notification template.
 
-<!-- INTERACTIVE page step7.md END -->
-<!-- INTERACTIVE page finish.md START -->
-
 ## Conclusion
 
 You’ve now linked Prometheus-based alert rules to your Grafana visualizations, giving your dashboards real-time context with alert annotations and health indicators. By visualizing alerts alongside metrics, responders can quickly understand what’s happening and when. You also saw how alert notifications can include direct links to the affected dashboard or panel, helping teams jump straight into the right time window for faster troubleshooting.
 
 Have feedback or ideas to improve this tutorial? [Let us know](https://github.com/grafana/tutorials/issues/new).
-
-<!-- INTERACTIVE page finish.md END -->

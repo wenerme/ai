@@ -1,6 +1,5 @@
 # BC2GM
 
-
 ## Overview
 
 The BC2GM (BioCreative II Gene Mention) dataset is a widely used corpus for gene mention recognition, consisting of 20,000 sentences from MEDLINE abstracts where gene and protein names have been manually annotated by domain experts.
@@ -26,7 +25,6 @@ The BC2GM (BioCreative II Gene Mention) dataset is a widely used corpus for gene
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: GENE (gene and protein names)
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The BC2GM (BioCreative II Gene Mention) dataset is a widely used corpus for gene
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -147,8 +144,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -179,8 +175,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -210,5 +204,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

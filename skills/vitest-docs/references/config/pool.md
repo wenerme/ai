@@ -1,6 +1,5 @@
 ---
 title: pool | Config
-outline: deep
 ---
 
 # pool
@@ -25,8 +24,7 @@ Run tests using [VM context](https://nodejs.org/api/vm.html) (inside a sandboxed
 
 This makes tests run faster, but the VM module is unstable when running [ESM code](https://github.com/nodejs/node/issues/37648). Your tests will [leak memory](https://github.com/nodejs/node/issues/33439) - to battle that, consider manually editing [`vmMemoryLimit`](/config/vmmemorylimit) value.
 
-::: warning
-Running code in a sandbox has some advantages (faster tests), but also comes with a number of disadvantages.
+> **warning**: Running code in a sandbox has some advantages (faster tests), but also comes with a number of disadvantages.
 
 - The globals within native modules, such as (`fs`, `path`, etc), differ from the globals present in your test environment. As a result, any error thrown by these native modules will reference a different Error constructor compared to the one used in your code:
 
@@ -43,7 +41,6 @@ catch (err) {
 - Accessing globals [takes longer](https://github.com/nodejs/node/issues/31658) in a sandbox environment.
 
 Please, be aware of these issues when using this option. Vitest team cannot fix any of the issues on our side.
-:::
 
 ## vmForks
 

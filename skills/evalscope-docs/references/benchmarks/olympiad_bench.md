@@ -1,6 +1,5 @@
 # OlympiadBench
 
-
 ## Overview
 
 OlympiadBench is an Olympiad-level bilingual multimodal scientific benchmark featuring 8,476 problems from mathematics and physics competitions, including the Chinese college entrance exam (CEE). It provides rigorous evaluation of advanced scientific reasoning.
@@ -33,7 +32,6 @@ OlympiadBench is an Olympiad-level bilingual multimodal scientific benchmark fea
 - **Note**: `TP` (Theorem Proving) subsets cannot be auto-evaluated currently
 - Supports numerical precision/error thresholds for approximate answers
 
-
 ## Properties
 
 | Property | Value |
@@ -45,7 +43,6 @@ OlympiadBench is an Olympiad-level bilingual multimodal scientific benchmark fea
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -86,7 +83,6 @@ OlympiadBench is an Olympiad-level bilingual multimodal scientific benchmark fea
 | Images per Sample | min: 1, max: 9, mean: 1.21 |
 | Resolution Range | 64x46 - 1765x1947 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -176,5 +172,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

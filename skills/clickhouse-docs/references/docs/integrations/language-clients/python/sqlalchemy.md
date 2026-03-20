@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'SQLAlchemy'
-sidebar_position: 7
 keywords: ['clickhouse', 'python', 'sqlalchemy', 'integrate']
 description: 'ClickHouse SQLAlchemy Support'
-slug: /integrations/language-clients/python/sqlalchemy
 title: 'SQLAlchemy Support'
 doc_type: 'reference'
 ---

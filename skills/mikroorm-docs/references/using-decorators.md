@@ -1,6 +1,5 @@
 ---
 title: Using Decorators
-sidebar_label: Using Decorators
 ---
 
 This guide covers using class decorators to define entities. While the [Getting Started guide](./guide/01-first-entity.md) uses the `defineEntity` helper for its simplicity and full type inference, decorators remain a powerful and popular approach for entity definition.
@@ -76,15 +75,13 @@ export class User {
 }
 ```
 
-:::caution ES Spec Decorator Limitations
+> **caution**: ES Spec Decorator Limitations
 
 ES spec decorators do **not** support metadata reflection. This means:
 
 - You cannot use `reflect-metadata` with ES spec decorators
 - You must always provide the target entity type explicitly in relation decorators
 - The `TsMorphMetadataProvider` can still infer types from your source code
-
-:::
 
 ## Metadata Providers
 
@@ -174,11 +171,9 @@ export class Article {
 | Enums               | Automatic            | Requires `items: () => Enum`    |
 | Union types         | Supported            | Not supported                   |
 
-:::warning ES Spec Decorators
+> **warning**: ES Spec Decorators
 
 `ReflectMetadataProvider` only works with legacy decorators. ES spec decorators do not support `emitDecoratorMetadata`, so you cannot use reflect-metadata with them.
-
-:::
 
 ### TsMorphMetadataProvider
 

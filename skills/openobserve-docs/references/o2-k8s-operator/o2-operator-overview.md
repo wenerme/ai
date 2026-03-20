@@ -106,7 +106,6 @@ kubectl apply -f samples/pipelines/srctodest.yaml
 kubectl apply -f samples/functions/basic-function.yaml
 ```
 
-
 ### Basic Usage
 
 1. Create a Secret with OpenObserve Enterprise credentials:
@@ -256,15 +255,6 @@ spec:
 
 ## Documentation
 
-<!-- - [Product Requirements Document](PRD.md) -->
-<!-- - [API Reference](docs/api.md) (coming soon) -->
-<!-- - [Samples](samples/)
-  - [Alert Examples](samples/alerts/)
-  - [Alert Template Examples](samples/alerttemplates/)
-  - [Destination Examples](samples/destinations/)
-  - [Pipeline Examples](samples/pipelines/)
-  - [Function Examples](samples/functions/)
-  - [Function Template Reference](samples/functions/functions.template) -->
 - [Troubleshooting](o2-operator-troubleshoot.md)
 - [Manual Deployment](manual-deployment.md)
 - [Deploy Script Usage](deploy-script.md)

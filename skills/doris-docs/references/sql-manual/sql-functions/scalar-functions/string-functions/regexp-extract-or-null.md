@@ -11,9 +11,7 @@
 Extract the first substring that matches the target regular expression pattern from the text string, and extract a specific group from it based on the expression group index.
 
 It should be noted that when handling character set matching, Utf-8 standard character classes should be used. This ensures that functions can correctly identify and process various characters from different languages.
-:::info
-Support since Apache Doris 3.0.2
-:::
+> **info**: Support since Apache Doris 3.0.2
 
 If the 'pattern' is not allowed regexp regular,throw error
 

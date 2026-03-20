@@ -8,7 +8,6 @@
 
 ## Description
 
-
 The date_ceil function rounds up a specified date or time value to the nearest start of a specified time interval period. The period rules are defined by period (number of units) and type (unit), calculated from the fixed starting point 0001-01-01 00:00:00.
 
 Date calculation formula:
@@ -113,7 +112,6 @@ select date_ceil("2023-07-13 22:28:18",interval 5 month);
 +-------------------------------------------------------------+
 | 2023-12-01 00:00:00                                         |
 +-------------------------------------------------------------+
-
 
 -- Round up to the nearest 5-year interval
 select date_ceil("2023-07-13 22:28:18",interval 5 year);

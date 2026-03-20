@@ -66,13 +66,11 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-
 Expect to see the following warning on your litellm server logs
 
 ```shell
 LiteLLM Proxy:WARNING: secret_detection.py:88 - Detected and redacted secrets in message: ['Secret Keyword']
 ```
-
 
 You can also see the raw request sent from litellm to the API Provider with (`--detailed_debug`).
 ```json
@@ -100,7 +98,6 @@ https://api.groq.com/openai/v1/ \
 ## Control secret detectors
 
 LiteLLM uses the [`detect-secrets`](https://github.com/Yelp/detect-secrets) library for secret detection. See [all plugins run by default](#default-config-used)
-
 
 ### Usage
 

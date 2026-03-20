@@ -1,9 +1,6 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # 📈 Prometheus metrics
-
 
 LiteLLM Exposes a `/metrics` endpoint for Prometheus to Poll
 
@@ -72,7 +69,6 @@ Use this for for tracking per [user, key, team, etc.](virtual_keys)
 
 ### Team - Budget
 
-
 | Metric Name          | Description                          |
 |----------------------|--------------------------------------|
 | `litellm_team_max_budget_metric`                    | Max Budget for Team Labels: `"team", "team_alias"`|
@@ -94,7 +90,6 @@ Use this for for tracking per [user, key, team, etc.](virtual_keys)
 | `litellm_remaining_api_key_requests_for_model`                | Remaining Requests for a LiteLLM virtual API key, only if a model-specific rate limit (rpm) has been set for that virtual key. Labels: `"hashed_api_key", "api_key_alias", "model"`|
 | `litellm_remaining_api_key_tokens_for_model`                | Remaining Tokens for a LiteLLM virtual API key, only if a model-specific token limit (tpm) has been set for that virtual key. Labels: `"hashed_api_key", "api_key_alias", "model"`|
 
-
 ### Initialize Budget Metrics on Startup
 
 If you want litellm to emit the budget metrics for all keys, teams irrespective of whether they are getting requests or not, set `prometheus_initialize_budget_metrics` to `true` in the `config.yaml`
@@ -111,7 +106,6 @@ litellm_settings:
   callbacks: ["prometheus"]
   prometheus_initialize_budget_metrics: true
 ```
-
 
 ## Pod Health Metrics
 
@@ -238,7 +232,6 @@ litellm_settings:
   enable_end_user_cost_tracking_prometheus_only: true
 ```
 
-
 ### Emit Stream Label
 
 Add a `stream` label to `litellm_proxy_total_requests_metric` to split requests by streaming vs. non-streaming. Disabled by default.
@@ -256,10 +249,7 @@ litellm_proxy_total_requests_metric{..., stream="True"} 42
 litellm_proxy_total_requests_metric{..., stream="False"} 100
 ```
 
-:::note
-This label is opt-in because adding a new label to an existing metric changes its cardinality and breaks existing Prometheus queries / Grafana dashboards that target this metric. Enable it only on fresh deployments or when you are ready to update your dashboards.
-:::
-
+> **note**: This label is opt-in because adding a new label to an existing metric changes its cardinality and breaks existing Prometheus queries / Grafana dashboards that target this metric. Enable it only on fresh deployments or when you are ready to update your dashboards.
 
 ## [BETA] Custom Metrics
 
@@ -283,8 +273,6 @@ litellm_settings:
 
 2. Make a request with the custom metadata labels
 
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -308,8 +296,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="key" label="on Key">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -321,8 +307,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="team" label="on Team">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/team/new' \
@@ -334,8 +318,6 @@ curl -L -X POST 'http://0.0.0.0:4000/team/new' \
     }
 }'
 ```
-</TabItem>
-</Tabs>
 
 3. Check your `/metrics` endpoint for the custom metrics  
 
@@ -421,7 +403,6 @@ litellm_settings:
 - Team or service identification (`team-a`, `service-xyz`)
 - User-Agent Tracking - use this to track how much Roo Code, Claude Code, Gemini CLI are used (`User-Agent: RooCode/*`, `User-Agent: claude-cli/*`, `User-Agent: gemini-cli/*`)
 
-
 ## Configuring Metrics and Labels
 
 You can selectively enable specific metrics and control which labels are included to optimize performance and reduce cardinality.
@@ -456,7 +437,6 @@ On starting up LiteLLM if your metrics were correctly configured, you should see
   img={require('../../img/prom_config.png')}
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
-
 
 ### Filter Labels Per Metric
 
@@ -561,8 +541,6 @@ Use these metrics to monitor the health of the DB Transaction Queue. Eg. Monitor
 | `litellm_in_memory_spend_update_queue_size`         | In-memory aggregate spend values for keys, users, teams, team members, etc.| In-Memory    |
 | `litellm_redis_spend_update_queue_size`             | Redis aggregate spend values for keys, users, teams, etc.                  | Redis        |
 
-
-
 ## 🔥 LiteLLM Maintained Grafana Dashboards 
 
 Link to Grafana Dashboards maintained by LiteLLM
@@ -571,21 +549,17 @@ https://github.com/BerriAI/litellm/tree/main/cookbook/litellm_proxy_server/grafa
 
 Here is a screenshot of the metrics you can monitor with the LiteLLM Grafana Dashboard
 
-
 <Image img={require('../../img/grafana_1.png')} />
 
 <Image img={require('../../img/grafana_2.png')} />
 
 <Image img={require('../../img/grafana_3.png')} />
 
-
 ## Deprecated Metrics 
 
 | Metric Name          | Description                          |
 |----------------------|--------------------------------------|
 | `litellm_llm_api_failed_requests_metric`             | **deprecated** use `litellm_proxy_failed_requests_metric` |
-
-
 
 ## Add authentication on /metrics endpoint
 

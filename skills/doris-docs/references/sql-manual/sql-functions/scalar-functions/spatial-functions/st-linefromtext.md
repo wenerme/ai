@@ -37,7 +37,6 @@ Returns a geometric object of type Line, which is stored in memory in Doris's in
 
 ## Example
 
-
 Normal LINE type
 
 ```sql

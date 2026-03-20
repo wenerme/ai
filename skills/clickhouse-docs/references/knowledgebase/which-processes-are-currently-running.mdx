@@ -6,7 +6,6 @@ tags: ['Server Admin']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Check what code is currently running on a server \{#check-what-code-is-currently-running-on-a-server\}
 
@@ -43,9 +42,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 2:
 ──────
@@ -65,9 +62,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 3:
 ──────
@@ -83,9 +78,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 4:
 ──────
@@ -101,9 +94,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 5:
 ──────
@@ -123,9 +114,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 6:
 ──────
@@ -141,9 +130,7 @@ Poco::Net::TCPServer::run()
 Poco::ThreadImpl::runnableEntry(void*)
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 7:
 ──────
@@ -155,9 +142,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 8:
 ──────
@@ -185,9 +170,7 @@ Poco::PooledThread::run()
 Poco::ThreadImpl::runnableEntry(void*)
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 9:
 ───────
@@ -205,9 +188,7 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 Row 10:
 ───────
@@ -225,25 +206,20 @@ ThreadPoolImpl<std::__1::thread>::worker(std::__1::__list_iterator<std::__1::thr
 
     /usr/bin/clickhouse
 
-
 clone
-
 
 10 rows in set. Elapsed: 0.026 sec.
 ```
 
-:::note
-If you installed ClickHouse from a **.deb/.rpm/.tgz** you can also install the package with the debug info to see the line numbers from the source code:
+> **note**: If you installed ClickHouse from a **.deb/.rpm/.tgz** you can also install the package with the debug info to see the line numbers from the source code:
 
 ```bash
 sudo apt install clickhouse-common-static-dbg
 ```
 
 If you've installed ClickHouse as a single-binary, it already contains the debug info.
-:::
 
-:::tip
-For more high-level information, check out some of these other system tables:
+> **tip**: For more high-level information, check out some of these other system tables:
 
 - [system.processes](https://clickhouse.com/docs/operations/system-tables/processes)
 - [system.query_log](https://clickhouse.com/docs/operations/system-tables/query_log)
@@ -253,4 +229,3 @@ For more high-level information, check out some of these other system tables:
 - [system.processor_profile_log](https://clickhouse.com/docs/operations/system-tables/processors_profile_log)
 
 And there is handy info in the [other system tables](https://clickhouse.com/docs/operations/system-tables) also.
-:::

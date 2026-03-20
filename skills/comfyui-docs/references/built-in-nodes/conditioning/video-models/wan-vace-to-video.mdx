@@ -1,11 +1,9 @@
 ---
 title: "Wan Vace To Video - ComfyUI Built-in Node Documentation"
 description: "Create videos using Alibaba Tongyi Wanxiang's high-resolution video generation API"
-sidebarTitle: "Wan Vace To Video"
-icon: "circle"
 ---
 
-![Wan Vace To Video](/images/built-in-nodes/conditioning/video-models/wan-vace-to-video.jpg)
+[Wan Vace To Video]
 
 The Wan Vace To Video node allows you to generate videos through text prompts and supports multiple input methods, including text, images, videos, masks, and control signals.
 
@@ -42,7 +40,6 @@ When a reference image is provided, it serves as the initial reference for the v
 | negative    | CONDITIONING | Processed negative prompt condition                                                                                                                                                                                                                                                                                                                                                                   |
 | latent      | LATENT       | Generated video latent representation                                                                                                                                                                                                                                                                                                                                                                 |
 | trim_latent | INT          | Parameter for trimming latent representation, default value is 0. When a reference image is provided, this value is set to the shape size of the reference image in latent space. It indicates how much content from the reference image downstream nodes should trim from the generated latent representation to ensure proper control of the reference image's influence in the final video output. |
-
 
 ## Source Code
 

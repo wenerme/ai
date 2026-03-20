@@ -1,18 +1,17 @@
-This page provides an overview of pipelines, their types, and how they work.<br>
+This page provides an overview of pipelines, their types, and how they work.
 
 ## Overview
 Pipelines let you control what happens to your data after it is ingested into OpenObserve. They provide a clear way to read data from a source, apply changes, and send the processed output to a destination.  
-![Pipelines in OpenObserve](../../images/pipeline-new-editor.png)
+[Pipelines in OpenObserve]
 
 !!! note "Who can access pipelines"
     Access to pipelines is controlled through role permissions.
     Administrators can grant or restrict access from IAM > Roles > Permissions.
     To allow a user to work with pipelines, the role must have permissions for the **Pipelines** module. These permissions control whether the user can list, create, update, or delete pipelines.
-    ![pipeline-permission](../../images/pipeline-permission.png)
+    [pipeline-permission]
 
 !!! note "Where to find pipelines"
     You can access pipelines from the main navigation panel. Select **Pipelines** to view, create, and manage real-time and scheduled pipelines.
-
 
 ## Types of pipelines
 OpenObserve supports two types of pipelines: 
@@ -37,24 +36,24 @@ A real-time pipeline processes incoming data as soon as it is ingested into the 
 ### How real-time pipelines work
 
 ??? "Source" 
-    The pipeline starts from a source stream. As soon as new data is ingested into this stream, the pipeline begins processing it. <br>
+    The pipeline starts from a source stream. As soon as new data is ingested into this stream, the pipeline begins processing it. 
     **Each stream can be associated with only one real-time pipeline as its source.** This ensures a single, predictable processing flow for all new events in that stream.
-    ![Pipelines in OpenObserve](../../images/pipelines-new-realtime.png)
+    [Pipelines in OpenObserve]
 
 ??? "Transform" 
     The pipeline applies conditions or functions to filter and transform the data in real-time. 
-    ![Pipelines in OpenObserve](../../images/pipeline-new-realtime-transform-condition.png)
+    [Pipelines in OpenObserve]
 
 ??? "Destination" 
     The transformed data is written to one or more destinations: 
 
-    - **Stream**: The supported destination stream types are Logs, Metrics, Traces, or Enrichment tables. <br>**Note**: Enrichment Tables can only be used as destination streams in scheduled pipelines.
-    ![Pipelines in OpenObserve](../../images/pipeline-new-realtime-destination.png)
+    - **Stream**: The supported destination stream types are Logs, Metrics, Traces, or Enrichment tables. **Note**: Enrichment Tables can only be used as destination streams in scheduled pipelines.
+    [Pipelines in OpenObserve]
     - **Remote**: Select **Remote** if you wish to send data from the pipeline to [external destinations](https://openobserve.ai/docs/user-guide/pipelines/remote-destination/).
-    <br>
-    **Default destination added automatically** <br>
+    
+    **Default destination added automatically** 
     When you select a source stream for a real-time pipeline, OpenObserve automatically adds a destination that points back to the same stream. This ensures that your original data continues to be stored in the source stream even when you add filters or functions in the pipeline.
-    <br>
+    
     If this default destination is removed and you add only filtered or routed destinations, events that do not match any condition will be dropped. They will not be written to the source stream unless you explicitly add a destination for it.
 
     **Key points**: 
@@ -69,7 +68,6 @@ Use real-time pipelines when you need immediate processing, such as monitoring l
 ## Scheduled pipelines
 A scheduled pipeline processes historical data from an existing stream at user-defined intervals. This is useful when you need to extract, transform, and load (ETL) data at regular intervals without manual intervention. 
 
-
 > For more details, refer to the [Create and Use Scheduled Pipelines](../create-and-use-scheduled-pipeline/) guide. 
     
 ### How scheduled pipelines work
@@ -79,7 +77,7 @@ A scheduled pipeline processes historical data from an existing stream at user-d
 
 ??? "Query" 
     You define a SQL query that fetches historical data from the source stream. For metrics, you can also use PromQL. The query is controlled by **Frequency**, **Period**, and optional **Cron** settings. 
-    ![Scheduled Pipelines in OpenObserve](../../images/configure-scheduled-pipelines.png)
+    [Scheduled Pipelines in OpenObserve]
 
     !!! note "Frequency, period, and cron"
         Scheduled pipelines run according to the **Frequency** and **Period** you configure: 
@@ -91,12 +89,12 @@ A scheduled pipeline processes historical data from an existing stream at user-d
 
 ??? "Transform" 
     After the query runs, the retrieved data passes through transform nodes. It allows you to filter or modify data before it reaches the destination.
-    ![Scheduled Pipelines Transform in OpenObserve](../../images/pipeline-new-scheduled-condition.png)
+    [Scheduled Pipelines Transform in OpenObserve]
 
 ??? "Destination"
     The transformed data is written to one or more destinations.
 
-    - **Stream** destinations can be Logs, Metrics, Traces, or Enrichment tables. <br>**Note**: Enrichment Tables can only be used as destination streams in scheduled pipelines.
+    - **Stream** destinations can be Logs, Metrics, Traces, or Enrichment tables. **Note**: Enrichment Tables can only be used as destination streams in scheduled pipelines.
     - **Remote** destinations send data to external systems. To learn more about remote destinations, click [here](https://openobserve.ai/docs/user-guide/pipelines/remote-destination/).
 
 ### When to use scheduled pipelines

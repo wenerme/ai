@@ -55,7 +55,6 @@ Additionally, based on the practices of [Kimi-Researcher](https://moonshotai.git
 1. In the dataset, specify it using the `name` key in the [`ctx_config`](#Notes) column. Place related initialization parameters in other keys.
 2. Use the parameter `--context_manager ctx_name` to specify it.
 
-
 ```python
 class ContextManager(ABC):
     def __init__(self,ctx_config):
@@ -122,11 +121,9 @@ swift rollout \
     --max_turns xxx
 ```
 
-
 **Environment Selection**
 1. In the dataset, you need to specify it using the `name` key in the [`env_config`](#Notes) column. Place related initialization parameters in other keys.
 2. Use the parameter `--gym_env env_name` to specify it.
-
 
 ## Best Practices
 
@@ -145,7 +142,6 @@ Using the `external_plugins` parameter, we can register local `Env` and `Context
 
 3. Data Flow
 The entire gym data flow is as follows:
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/gym_env.png" width="250" />
 
 4. Reward Logging
 Since the gym reward is calculated within the `step` function, you need to manually return the log via `info`. The final record will be placed in the `trajectory_infos` field of `completions.jsonl`.

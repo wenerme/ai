@@ -132,11 +132,6 @@ print(response.data[0].url)
 - `vertex_ai/imagen-4.0-generate-001` - Latest Imagen model
 - `vertex_ai/imagen-3.0-generate-001` - Imagen 3.0 model
 
-:::tip
-
-**We support ALL Vertex AI Image Generation models, just set `model=vertex_ai/<any-model-on-vertex_ai>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Vertex AI Image Generation models, just set `model=vertex_ai/<any-model-on-vertex_ai>` as a prefix when sending litellm requests**
 
 For the complete and up-to-date list of supported models, visit: [https://models.litellm.ai/](https://models.litellm.ai/)
-

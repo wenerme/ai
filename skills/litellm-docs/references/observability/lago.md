@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Lago - Usage Based Billing
 
@@ -16,10 +14,6 @@ Get your Lago [API Key](https://docs.getlago.com/guide/self-hosted/docker#find-y
 ```python
 litellm.callbacks = ["lago"] # logs cost + usage of successful calls to lago
 ```
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 # pip install lago 
@@ -46,9 +40,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add to Config.yaml
 ```yaml
 model_list:
@@ -70,9 +61,6 @@ litellm --config /path/to/config.yaml
 
 3. Test it! 
 
-<Tabs>
-<TabItem value="curl" label="Curl">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -88,8 +76,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai_python" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -108,8 +94,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo", messages = [
 
 print(response)
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -144,11 +128,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-</TabItem>
-</Tabs>
-
 
 <Image img={require('../../img/lago_2.png')} />
 

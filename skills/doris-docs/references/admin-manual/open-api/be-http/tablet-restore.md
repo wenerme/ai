@@ -24,7 +24,6 @@ To restore the tablet data from trash dir on BE
 * `schema_hash`
     Schema hash       
 
-
 ## Request body
 
 None
@@ -39,9 +38,7 @@ None
     ```
 ## Examples
 
-
     ```
     curl -X POST "http://127.0.0.1:8040/api/restore_tablet?tablet_id=123456&schema_hash=1111111"
 
     ```
-

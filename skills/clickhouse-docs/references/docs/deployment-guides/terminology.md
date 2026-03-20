@@ -1,14 +1,9 @@
 ---
-slug: /architecture/introduction
-sidebar_label: 'Introduction'
 title: 'Introduction'
-sidebar_position: 1
 description: 'Page with deployment examples that are based on the advice provided to ClickHouse users by the ClickHouse Support and Services organization'
 doc_type: 'guide'
 keywords: ['deployment', 'architecture', 'replication', 'sharding', 'cluster setup']
 ---
-
-import ReplicationShardingTerminology from '@site/docs/_snippets/_replication-sharding-terminology.md';
 
 The deployment examples in this section are based on the advice provided to ClickHouse users by
 the ClickHouse Support and Services organization. These are working examples, and

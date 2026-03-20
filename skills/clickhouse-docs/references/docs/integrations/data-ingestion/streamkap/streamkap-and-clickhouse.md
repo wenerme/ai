@@ -1,10 +1,6 @@
 ---
-sidebar_label: 'Connect Streamkap to ClickHouse'
-sidebar_position: 11
 keywords: ['clickhouse', 'Streamkap', 'CDC', 'connect', 'integrate', 'etl', 'data integration', 'change data capture']
-slug: /integrations/sttreamkap
 description: 'Stream data into ClickHouse using Airbyte data pipelines'
-
 title: 'Connect Streamkap to ClickHouse'
 doc_type: 'guide'
 integration:
@@ -12,9 +8,6 @@ integration:
   - category: 'data_ingestion'
   - website: 'https://www.streamkap.com/'
 ---
-
-import Image from '@theme/IdealImage';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Connect Streamkap to ClickHouse
 

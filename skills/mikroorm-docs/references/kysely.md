@@ -1,6 +1,5 @@
 ---
 title: Using Kysely
-sidebar_label: Kysely
 ---
 
 MikroORM provides first-class integration with [Kysely](https://kysely.dev/), a type-safe SQL query builder. Through this integration, you can get a configured Kysely instance directly from `EntityManager`, leveraging MikroORM's metadata to drive Kysely's query transformation and type inference.

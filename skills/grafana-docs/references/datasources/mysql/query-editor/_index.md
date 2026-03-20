@@ -118,8 +118,6 @@ WHERE $__timeFilter(dashboard.created)
 
 Table panel results:
 
-![](/static/img/docs/v43/mysql_table.png)
-
 ## Time series queries
 
 Set the **Format** option to **Time series** to create and run time series queries.

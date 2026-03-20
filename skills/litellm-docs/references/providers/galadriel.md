@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Galadriel
 https://docs.galadriel.com/api-reference/chat-completion-API
@@ -45,7 +44,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 ## Supported Models
 ### Serverless Endpoints
 We support ALL Galadriel AI models, just set `galadriel/` as a prefix when sending completion requests
@@ -60,4 +58,3 @@ You can specify the model name either with the full name or with a simplified ve
 | neuralmagic/Meta-Llama-3.1-70B-Instruct-quantized.w4a16  | llama3.1:70b                     | `completion(model="galadriel/llama3.1:70b", messages)`  |
 | neuralmagic/Meta-Llama-3.1-405B-Instruct-quantized.w4a16 | llama3.1:405b                    | `completion(model="galadriel/llama3.1:405b", messages)` |
 | neuralmagic/Mistral-Nemo-Instruct-2407-quantized.w4a16   | mistral-nemo or mistral-nemo:12b | `completion(model="galadriel/mistral-nemo", messages)`  |
-

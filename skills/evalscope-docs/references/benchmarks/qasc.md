@@ -38,7 +38,6 @@ QASC (Question Answering via Sentence Composition) is a question-answering datas
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -116,5 +115,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

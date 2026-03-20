@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Pangea
 
@@ -50,15 +48,9 @@ export PANGEA_AI_GUARD_TOKEN="pts_5i47n5...m2zbdt"
 export OPENAI_API_KEY="sk-proj-54bgCI...jX6GMA"
 ```
 
-<Tabs>
-<TabItem label="LiteLLM CLI (Pip package)" value="litellm-cli">
-
 ```shell
 litellm --config config.yaml
 ```
-
-</TabItem>
-<TabItem label="LiteLLM Docker (Container)" value="litellm-docker">
 
 ```shell
 docker run --rm \
@@ -71,15 +63,9 @@ docker run --rm \
   --config /app/config.yaml
 ```
 
-</TabItem>
-</Tabs>
-
 ### 5. Make your first request
 
 The example below assumes the **Malicious Prompt** detector is enabled in your input recipe.
-
-<Tabs>
-<TabItem label="Blocked request" value = "blocked">
 
 ```shell
 curl -sSLX POST 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -109,10 +95,6 @@ curl -sSLX POST 'http://0.0.0.0:4000/v1/chat/completions' \
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Permitted request" value = "allowed">
 
 ```shell
 curl -sSLX POST http://localhost:4000/v1/chat/completions \
@@ -149,13 +131,8 @@ The above request should not be blocked, and you should receive a regular LLM re
 200
 ```
 
-</TabItem>
-
-<TabItem label="Redacted response" value="redacted">
-
 In this example, we simulate a response from a privately hosted LLM that inadvertently includes information that should not be exposed by the AI assistant.
 It assumes the **Confidential and PII** detector is enabled in your output recipe, and that the **US Social Security Number** rule is set to use the replacement method.
-
 
 ```shell
 curl -sSLX POST 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -197,10 +174,6 @@ When the recipe configured in the `pangea-ai-guard-response` plugin detects PII,
 }
 200
 ```
-
-</TabItem>
-
-</Tabs>
 
 ### 6. Next steps
 

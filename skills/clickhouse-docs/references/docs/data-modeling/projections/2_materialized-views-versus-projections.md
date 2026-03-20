@@ -1,6 +1,4 @@
 ---
-slug: /managing-data/materialized-views-versus-projections
-sidebar_label: 'Materialized views vs projections'
 title: 'Materialized Views versus Projections'
 hide_title: false
 description: 'Article comparing materialized views and projections in ClickHouse, including their use cases, performance, and limitations.'

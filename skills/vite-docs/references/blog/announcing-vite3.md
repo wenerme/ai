@@ -31,7 +31,7 @@ _July 23, 2022_ - Check out the [Vite 4.0 announcement](./announcing-vite4.md)
 
 In February last year, [Evan You](https://twitter.com/youyuxi) released Vite 2. Since then, its adoption has grown non-stop, reaching more than 1 million npm downloads per week. A sprawling ecosystem rapidly formed after the release. Vite is powering a renewed innovation race in Web frameworks. [Nuxt 3](https://v3.nuxtjs.org/) uses Vite by default. [SvelteKit](https://kit.svelte.dev/), [Astro](https://astro.build/), [Hydrogen](https://hydrogen.shopify.dev/), and [SolidStart](https://docs.solidjs.com/quick-start) are all built with Vite. [Laravel has now decided to use Vite by default](https://laravel.com/docs/9.x/vite). [Vite Ruby](https://vite-ruby.netlify.app/) shows how Vite can improve Rails DX. [Vitest](https://vitest.dev) is making strides as a Vite-native alternative to Jest. Vite is behind [Cypress](https://docs.cypress.io/guides/component-testing/writing-your-first-component-test) and [Playwright](https://playwright.dev/docs/test-components)'s new Component Testing features, Storybook has [Vite as an official builder](https://github.com/storybookjs/builder-vite). And [the list goes on](https://patak.dev/vite/ecosystem.html). Maintainers from most of these projects got involved in improving the Vite core itself, working closely with the Vite [team](https://vite.dev/team) and other contributors.
 
-![Vite 3 Announcement Cover Image](/og-image-announcing-vite3.webp)
+[Vite 3 Announcement Cover Image]
 
 Today, 16 months from the v2 launch we are happy to announce the release of Vite 3. We decided to release a new Vite major at least every year to align with [Node.js's EOL](https://nodejs.org/en/about/releases/), and take the opportunity to review Vite's API regularly with a short migration path for projects in the ecosystem.
 
@@ -47,7 +47,7 @@ If you are new to Vite, we recommend reading the [Why Vite Guide](https://vite.d
 
 Go to [vite.dev](https://vite.dev) to enjoy the new v3 docs. Vite is now using the new [VitePress](https://vitepress.vuejs.org) default theme, with a stunning dark mode between other features.
 
-[![Vite documentation frontpage](../images/v3-docs.webp)](https://vite.dev)
+[[Vite documentation frontpage]](https://vite.dev)
 
 Several projects in the ecosystem have already migrated to it (see [Vitest](https://vitest.dev), [vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/), and [VitePress](https://vitepress.vuejs.org/) itself).
 
@@ -64,12 +64,12 @@ There is also now an official Spanish translation, that has been added to the pr
 [create-vite](/guide/#trying-vite-online) templates have been a great tool to quickly test Vite with your favorite framework. In Vite 3, all of the templates got a new theme in line with the new docs. Open them online and start playing with Vite 3 now:
 
 <div class="stackblitz-links">
-<a target="_blank" href="https://vite.new"><img width="75" height="75" src="../images/vite.svg" alt="Vite logo"></a>
-<a target="_blank" href="https://vite.new/vue"><img width="75" height="75" src="../images/vue.svg" alt="Vue logo"></a>
-<a target="_blank" href="https://vite.new/svelte"><img width="60" height="60" src="../images/svelte.svg" alt="Svelte logo"></a>
-<a target="_blank" href="https://vite.new/react"><img width="75" height="75" src="../images/react.svg" alt="React logo"></a>
-<a target="_blank" href="https://vite.new/preact"><img width="65" height="65" src="../images/preact.svg" alt="Preact logo"></a>
-<a target="_blank" href="https://vite.new/lit"><img width="60" height="60" src="../images/lit.svg" alt="Lit logo"></a>
+<a target="_blank" href="https://vite.new">[Vite logo]</a>
+<a target="_blank" href="https://vite.new/vue">[Vue logo]</a>
+<a target="_blank" href="https://vite.new/svelte">[Svelte logo]</a>
+<a target="_blank" href="https://vite.new/react">[React logo]</a>
+<a target="_blank" href="https://vite.new/preact">[Preact logo]</a>
+<a target="_blank" href="https://vite.new/lit">[Lit logo]</a>
 </div>
 
 <style>
@@ -124,14 +124,11 @@ One of the pain points of Vite 2 was configuring the server when running behind 
 
 Vite now avoids full reload during cold start when imports are injected by plugins while crawling the initial statically imported modules ([#8869](https://github.com/vitejs/vite/issues/8869)).
 
-<details>
-  <summary><b>Click to learn more</b></summary>
+  <b>Click to learn more</b>
 
 In Vite 2.9, both the scanner and optimizer were run in the background. In the best scenario, where the scanner would find every dependency, no reload was needed in cold start. But if the scanner missed a dependency, a new optimization phase and then a reload were needed. Vite was able to avoid some of these reloads in v2.9, as we detected if the new optimized chunks were compatible with the ones the browser had. But if there was a common dep, the sub-chunks could change and a reload was required to avoid duplicated state. In Vite 3, the optimized deps aren't handed to the browser until the crawling of static imports is done. A quick optimization phase is issued if there is a missing dep (for example, injected by a plugin), and only then, the bundled deps are sent. So, a page reload is no longer needed for these cases.
 
-</details>
-
-<img style="background-color: var(--vp-code-block-bg);padding:4%;border-radius:8px;" width="100%" height="auto" src="../images/vite-3-cold-start.svg" alt="Two graphs comparing Vite 2.9 and Vite 3 optimization strategy">
+[Two graphs comparing Vite 2.9 and Vite 3 optimization strategy]
 
 ### import.meta.glob
 
@@ -223,9 +220,9 @@ In part, this reduction was possible by making some dependencies that most users
 
 A triaging marathon was spearheaded by [@bluwyoo](https://twitter.com/bluwyoo), [@sapphi_red](https://twitter.com/sapphi_red), that recently joined the Vite team. During the past three months, the Vite open issues were reduced from 770 to 400. And this dive was achieved while the newly open PRs were at an all-time high. At the same time, [@haoqunjiang](https://twitter.com/haoqunjiang) had also curated a comprehensive [overview of Vite issues](https://github.com/vitejs/vite/discussions/8232).
 
-[![Graph of open issues and pull requests in Vite](../images/v3-open-issues-and-PRs.webp)](https://www.repotrends.com/vitejs/vite)
+[[Graph of open issues and pull requests in Vite]](https://www.repotrends.com/vitejs/vite)
 
-[![Graph of new issues and pull requests in Vite](../images/v3-new-open-issues-and-PRs.webp)](https://www.repotrends.com/vitejs/vite)
+[[Graph of new issues and pull requests in Vite]](https://www.repotrends.com/vitejs/vite)
 
 ## Compatibility Notes
 

@@ -1,6 +1,5 @@
 # MMLU-Redux
 
-
 ## Overview
 
 MMLU-Redux is an improved version of the MMLU benchmark with corrected answers. It addresses known errors in the original MMLU dataset by fixing incorrect ground truth labels, missing correct options, and ambiguous questions.
@@ -30,7 +29,6 @@ MMLU-Redux is an improved version of the MMLU benchmark with corrected answers. 
 - Zero-shot evaluation only (few-shot not supported)
 - Results aggregated by subject and category (STEM, Humanities, Social Science, Other)
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ MMLU-Redux is an improved version of the MMLU benchmark with corrected answers. 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -190,5 +187,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

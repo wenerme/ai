@@ -63,7 +63,6 @@ The result will be:
 +-------+
 ```
 
-
 ```sql
 select bitmap_to_string(bitmap_subset_limit(bitmap_from_string('1,2,3,4,5'), 4, NULL)) value;
 ```

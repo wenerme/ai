@@ -14,7 +14,3 @@ OpenObserve provides a complete suite of observability tools designed for perfor
 - [Distributed Tracing](../features/distributed-tracing/)
 - [Frontend Observability](../features/frontend/)
 - [Enterprise Features](../features/enterprise/)
-
-
-
-

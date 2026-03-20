@@ -1,16 +1,9 @@
 ---
-sidebar_position: 1
-sidebar_label: 'Separation of storage and compute'
-slug: /guides/separation-storage-compute
 title: 'Separation of Storage and Compute'
 description: 'This guide explores how you can use ClickHouse and S3 to implement an architecture with separated storage and compute.'
 doc_type: 'guide'
 keywords: ['storage', 'compute', 'architecture', 'scalability', 'cloud']
 ---
-
-import Image from '@theme/IdealImage';
-import BucketDetails from '@site/docs/_snippets/_S3_authentication_and_bucket.md';
-import s3_bucket_example from '@site/static/images/guides/s3_bucket_example.png';
 
 # Separation of storage and compute
 
@@ -26,9 +19,7 @@ Please note that implementing and managing a separation of storage and compute a
 
 *This guide assumes you're using  ClickHouse version 22.8 or higher.*
 
-:::warning
-Don't configure any AWS/GCS life cycle policy. This isn't supported and could lead to broken tables.
-:::
+> **warning**: Don't configure any AWS/GCS life cycle policy. This isn't supported and could lead to broken tables.
 
 ## 1. Use S3 as a ClickHouse disk {#1-use-s3-as-a-clickhouse-disk}
 
@@ -163,9 +154,7 @@ If everything worked successfully, you're now using ClickHouse with separated st
 
 ## 3. Implementing replication for fault tolerance (optional) {#3-implementing-replication-for-fault-tolerance-optional}
 
-:::warning
-Don't configure any AWS/GCS life cycle policy. This isn't supported and could lead to broken tables.
-:::
+> **warning**: Don't configure any AWS/GCS life cycle policy. This isn't supported and could lead to broken tables.
 
 For fault tolerance, you can use multiple ClickHouse server nodes distributed across multiple AWS regions, with an S3 bucket for each node.
 

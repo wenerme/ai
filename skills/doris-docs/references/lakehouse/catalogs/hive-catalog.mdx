@@ -6,9 +6,6 @@
 }
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 By connecting to Hive Metastore or metadata services compatible with Hive Metastore, Doris can automatically retrieve Hive database and table information for data querying.
 
 In addition to Hive, many other systems use Hive Metastore to store metadata. Therefore, through the Hive Catalog, we can access not only Hive tables but also other table formats that use Hive Metastore for metadata storage, such as Iceberg and Hudi.
@@ -159,14 +156,12 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
 | struct        | struct        |                                                |
 | other         | unsupported   |                                                |
 
-
 ## Examples
 ### Hive Metastore
 
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 3.1+
+    
+        
             Access HMS and HDFS services without Kerberos authentication
             ```sql
             CREATE CATALOG hive_hms_hdfs_test_catalog PROPERTIES (
@@ -196,8 +191,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'hadoop.kerberos.keytab' = '/keytabs/hive-presto-master.keytab'
             );
             ```
-        </TabItem>
-        <TabItem value='ViewFs' label='ViewFs'>
+        
+        
             ```sql
             CREATE CATALOG hive_viewfs PROPERTIES (
                 'type' = 'hms',
@@ -212,8 +207,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'dfs.client.failover.proxy.provider.your-nameservice' = 'org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG hive_hms_s3_test_catalog PROPERTIES (
@@ -233,8 +228,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 's3.role_arn' = 'arn:aws:iam::543815668950:role/role'
             );
             ``` 
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG hive_hms_on_oss_catalog PROPERTIES (
@@ -266,8 +261,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG hive_hms_cos_test_region_catalog PROPERTIES (
@@ -299,8 +294,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG test_hive_on_hms_obs_catalog PROPERTIES (
@@ -333,8 +328,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG `hive_hms_on_gcs_new_catalog` PROPERTIES (
@@ -345,8 +340,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'fs.gcs.support'='true'
             );
             ```
-        </TabItem>
-        <TabItem value='Azure Blob' label='Azure Blob'>
+        
+        
             Supported since 3.1.3
             ```sql
             CREATE CATALOG `hive_hms_on_azure_blob_new_catalog` PROPERTIES (
@@ -358,8 +353,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'fs.azure.support'='true'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_hive_on_hms_minio_catalog PROPERTIES (
                 'type' = 'hms',
@@ -371,14 +366,13 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'minio.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
-<details>
-    <summary>Version 2.1 & 3.0</summary>
+        
+    
 
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 2.1 & 3.0
+
+    
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG hive_hms_hdfs_test_catalog PROPERTIES (
@@ -407,8 +401,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 DEFAULT'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG hms_on_s3_catalog PROPERTIES (
                 'type' = 'hms',
@@ -419,8 +413,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG hive_hms_on_oss_catalog PROPERTIES (
                 'type' = 'hms',
@@ -431,8 +425,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG hive_hms_cos_test_region_catalog PROPERTIES (
                 'type' = 'hms',
@@ -443,9 +437,9 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
+        
 
-        <TabItem value='OBS' label='OBS'>
+        
             ```sql
             CREATE CATALOG test_hive_on_hms_obs_catalog PROPERTIES (
                 'type' = 'hms',
@@ -456,8 +450,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG hive_hms_on_gcs_s3 PROPERTIES (
                 'type'='hms',
@@ -468,8 +462,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'gs.endpoint' = 'storage.googleapis.com'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_hive_on_hms_minio_catalog PROPERTIES (
                 'type' = 'hms',
@@ -480,15 +474,14 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 's3.path.style.access' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### AWS Glue
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='S3' label='S3' default>
+
+    Version 3.1+
+    
+        
             AWS Glue and S3 storage services share the same authentication information.
             ```sql
             CREATE CATALOG hive_glue_on_s3_catalog PROPERTIES (
@@ -526,13 +519,12 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'glue.endpoint' = 'https://glue.us-east-1.amazonaws.com',
                 'glue.role_arn' = '<role_arn>'
             );
-        </TabItem>
-    </Tabs>
-</details>
-<details>
-    <summary>Version 2.1 & 3.0</summary>
-    <Tabs>
-        <TabItem value='S3' label='S3' default>
+        
+    
+
+    Version 2.1 & 3.0
+    
+        
             AWS Glue and S3 storage services share the same authentication credentials.
 
             In non-EC2 environments, you need to use [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) to configure Credentials information and generate a credentials file in the ~/.aws directory.
@@ -551,15 +543,14 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'glue.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### Aliyun DLF
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+
+    Version 3.1+
+    
+        
             ```sql
             CREATE CATALOG hive_dlf_oss_test_catalog PROPERTIES (
                 'type' = 'hms',
@@ -572,14 +563,12 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
-<details>
-    <summary>Version 2.1 & 3.0</summary>
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+    Version 2.1 & 3.0
+    
+        
             ```sql
             CREATE CATALOG hive_dlf_oss_test_catalog PROPERTIES (
                 'type' = 'hms',
@@ -592,9 +581,8 @@ Hive transactional tables are supported from version 3.x onwards. For details, r
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ## Query Operations
 
@@ -799,9 +787,7 @@ To drop a database:
 DROP DATABASE [IF EXISTS] hive_ctl.hive_db;
 ```
 
-:::caution
-For a Hive Database, you must first delete all tables under that Database before you can delete the Database itself; otherwise, an error will occur. This operation will also delete the corresponding Database in Hive.
-:::
+> **caution**: For a Hive Database, you must first delete all tables under that Database before you can delete the Database itself; otherwise, an error will occur. This operation will also delete the corresponding Database in Hive.
 
 ### Creating and Dropping Tables
 
@@ -938,11 +924,9 @@ By having the FE nodes periodically read Notification Events from the HMS, Doris
 | DROP PARTITION   | Removes a partition from the cached partition list and invalidates the partition cache. |
 | ALTER PARTITION  | If renamed, deletes the old partition and creates a new one with the new name; otherwise, invalidates the partition cache. |
 
-:::tip
-1. When data import causes file changes, partitioned tables trigger an `ALTER PARTITION` event, while non-partitioned tables trigger an `ALTER TABLE` event.
+> **tip**: 1. When data import causes file changes, partitioned tables trigger an `ALTER PARTITION` event, while non-partitioned tables trigger an `ALTER TABLE` event.
 
 2. If you bypass HMS and directly manipulate the file system, HMS will not generate corresponding events, and Doris will not detect metadata changes.
-:::
 
 The following parameters in `fe.conf` are related to this feature:
 

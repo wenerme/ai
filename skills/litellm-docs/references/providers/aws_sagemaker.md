@@ -1,15 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem'
+
 
 # AWS Sagemaker
 LiteLLM supports All Sagemaker Huggingface Jumpstart Models
 
-:::tip
-
-**We support ALL Sagemaker models, just set `model=sagemaker/<any-model-on-sagemaker>` as a prefix when sending litellm requests**
-
-:::
-
+> **tip**: **We support ALL Sagemaker models, just set `model=sagemaker/<any-model-on-sagemaker>` as a prefix when sending litellm requests**
 
 ### API KEYS
 ```python
@@ -57,7 +51,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 ## **LiteLLM Proxy Usage**
 
 Here's how to call Sagemaker with the LiteLLM Proxy Server
@@ -94,10 +87,6 @@ litellm --config /path/to/config.yaml
 ```
 ### 3. Test it
 
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -112,8 +101,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -132,8 +119,6 @@ response = client.chat.completions.create(model="jumpstart-model", messages = [
 print(response)
 
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -162,13 +147,8 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Set temperature, top p, etc.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -185,8 +165,6 @@ response = completion(
   top_p=1
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -224,17 +202,11 @@ print(response)
 
 ```
 
-</TabItem>
-</Tabs>
-
 ## **Allow setting temperature=0** for Sagemaker
 
 By default when `temperature=0` is sent in requests to LiteLLM, LiteLLM rounds up to `temperature=0.1` since Sagemaker fails most requests when `temperature=0`
 
 If you want to send `temperature=0` for your model here's how to set it up (Since Sagemaker can host any kind of model, some models allow zero temperature)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -251,8 +223,6 @@ response = completion(
   aws_sagemaker_allow_zero_temp=True,
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set `aws_sagemaker_allow_zero_temp` on yaml**
 
@@ -288,15 +258,9 @@ print(response)
 
 ```
 
-</TabItem>
-</Tabs>
-
 ## Pass provider-specific params 
 
 If you pass a non-openai param to litellm, we'll assume it's provider-specific and send it as a kwarg in the request body. [See more](../completion/input.md#provider-specific-params)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -312,8 +276,6 @@ response = completion(
   top_k=1 # 👈 PROVIDER-SPECIFIC PARAM
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 **Set on yaml**
 
@@ -351,10 +313,6 @@ extra_body={
 print(response)
 
 ```
-
-</TabItem>
-</Tabs>
-
 
 ### Passing Inference Component Name
 
@@ -414,7 +372,6 @@ response = completion(
 
 You can also pass in your own [custom prompt template](../completion/prompt_formatting.md#format-prompt-yourself)
 
-
 ## Sagemaker Messages API 
 
 Use route `sagemaker_chat/*` to route to Sagemaker Messages API
@@ -422,9 +379,6 @@ Use route `sagemaker_chat/*` to route to Sagemaker Messages API
 ```
 model: sagemaker_chat/<your-endpoint-name>
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os
@@ -445,9 +399,6 @@ response = completion(
         )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 #### 1. Setup config.yaml 
 
 ```yaml
@@ -467,7 +418,6 @@ litellm --config /path/to/config.yaml
 ```
 #### 3. Test it
 
-
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -485,18 +435,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 [**👉 See OpenAI SDK/Langchain/Llamaindex/etc. examples**](../proxy/user_keys.md#chatcompletions)
 
-</TabItem>
-</Tabs>
-
-
 ## Completion Models 
 
-
-:::tip
-
-**We support ALL Sagemaker models, just set `model=sagemaker/<any-model-on-sagemaker>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Sagemaker models, just set `model=sagemaker/<any-model-on-sagemaker>` as a prefix when sending litellm requests**
 
 Here's an example of using a sagemaker model with LiteLLM 
 
@@ -524,8 +465,6 @@ os.environ["AWS_REGION_NAME"] = ""
 response = litellm.embedding(model="sagemaker/<your-deployment-name>", input=["good morning from litellm", "this is another item"])
 print(f"response: {response}")
 ```
-
-
 
 ## Nova Models on SageMaker
 

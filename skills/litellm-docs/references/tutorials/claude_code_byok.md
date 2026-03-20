@@ -29,11 +29,9 @@ litellm_settings:
   forward_llm_provider_auth_headers: true  # Required for BYOK
 ```
 
-:::info Why `forward_llm_provider_auth_headers`?
+> **info**: Why `forward_llm_provider_auth_headers`?
 
 By default, LiteLLM strips `x-api-key` from client requests for security. Setting this to `true` allows client-provided provider keys (like your Anthropic key from `/login`) to be forwarded to Anthropic, overriding any proxy-configured keys.
-
-:::
 
 ## Step 2: Create a LiteLLM Virtual Key
 
@@ -64,7 +62,7 @@ export ANTHROPIC_CUSTOM_HEADERS="x-litellm-api-key: sk-12345"
 
 Replace `sk-12345` with your actual LiteLLM virtual key.
 
-:::tip Multiple headers
+> **tip**: Multiple headers
 
 For multiple headers, use newline-separated values:
 
@@ -72,8 +70,6 @@ For multiple headers, use newline-separated values:
 export ANTHROPIC_CUSTOM_HEADERS="x-litellm-api-key: sk-12345
 x-litellm-user-id: my-user-id"
 ```
-
-:::
 
 ## Step 4: Sign In with Claude Code
 

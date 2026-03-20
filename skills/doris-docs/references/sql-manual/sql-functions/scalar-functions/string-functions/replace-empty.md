@@ -35,7 +35,6 @@ Returns the new string after replacing the substring. Special cases:
 
 ## Examples
 
-
 ```sql
 SELECT replace('hello world', 'world', 'universe');
 ```

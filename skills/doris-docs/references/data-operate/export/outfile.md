@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS tbl (
 DISTRIBUTED BY HASH(c1) BUCKETS 20
 PROPERTIES("replication_num" = "1");
 
-
 insert into tbl values
     (1, 'doris', 18),
     (2, 'nereids', 20),
@@ -203,7 +202,6 @@ If `"delete_existing_files" = "true"` is set, the export job will first delete a
 
 If you want to use the `delete_existing_files` parameter, you also need to add the configuration `enable_delete_existing_files = true` in `fe.conf` and restart the FE. Only then will the `delete_existing_files` parameter take effect. This operation will delete the data of the external system, which is a high-risk operation. Please ensure the permissions and data security of the external system on your own.
 
-
 ### Setting the Size of Exported Files
 
 ```sql
@@ -285,7 +283,4 @@ The specific BE node IP will be displayed in the returned results, such as:
 +------------+-----------+----------+--------------------------------------------------------------------------+
 ```
 
-:::caution
-This function is not suitable for the production environment, and please ensure the permissions and data security of the export directory on your own.
-:::
-
+> **caution**: This function is not suitable for the production environment, and please ensure the permissions and data security of the export directory on your own.

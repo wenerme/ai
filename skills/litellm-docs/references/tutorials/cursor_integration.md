@@ -1,12 +1,9 @@
-import Image from '@theme/IdealImage';
 
 # Cursor Integration
 
 Route Cursor IDE requests through LiteLLM for unified logging, budget controls, and access to any model.
 
-:::info
-**Supported modes:** Ask, Plan. Agent mode doesn't support custom API keys yet.
-:::
+> **info**: **Supported modes:** Ask, Plan. Agent mode doesn't support custom API keys yet.
 
 ## Quick Reference
 

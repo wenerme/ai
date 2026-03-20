@@ -24,8 +24,6 @@ weight: 300
 Instead of hard-coding details such as server, application, and sensor names in metric queries, you can use variables.
 Grafana lists these variables in drop-down select boxes at the top of the dashboard to help you change the data displayed in your dashboard, and they are called template variables
 
-<!-- Grafana refers to such variables as template variables. -->
-
 For an introduction to templating and template variables, refer to [Templating](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/variables/) and [Add and manage variables](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/variables/add-template-variables/).
 
 ## Use query variables

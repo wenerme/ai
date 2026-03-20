@@ -24,7 +24,6 @@ response2 = completion(
 # response1 == response2, response 1 is cached
 ```
 
-
 ## Usage - Embedding()
 
 ```python

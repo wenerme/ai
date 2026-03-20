@@ -1,24 +1,11 @@
 ---
-slug: /merges
 title: 'Part merges'
 description: 'What are part merges in ClickHouse'
 keywords: ['merges']
 doc_type: 'guide'
 ---
 
-import merges_01 from '@site/static/images/managing-data/core-concepts/merges_01.png';
-import merges_02 from '@site/static/images/managing-data/core-concepts/merges_02.png';
-import merges_03 from '@site/static/images/managing-data/core-concepts/merges_03.png';
-import merges_04 from '@site/static/images/managing-data/core-concepts/merges_04.png';
-import merges_05 from '@site/static/images/managing-data/core-concepts/merges_05.png';
-import merges_06 from '@site/static/images/managing-data/core-concepts/merges_06.png';
-import merges_07 from '@site/static/images/managing-data/core-concepts/merges_07.png';
-import merges_dashboard from '@site/static/images/managing-data/core-concepts/merges-dashboard.gif';
-import Image from '@theme/IdealImage';
-
 ## What are part merges in ClickHouse? \{#what-are-part-merges-in-clickhouse\}
-
-<br/>
 
 ClickHouse [is fast](/concepts/why-clickhouse-is-so-fast) not just for queries but also for inserts, thanks to its [storage layer](https://www.vldb.org/pvldb/vol17/p3731-schulze.pdf), which operates similarly to [LSM trees](https://en.wikipedia.org/wiki/Log-structured_merge-tree):
 
@@ -33,8 +20,6 @@ To control the number of parts per table and implement ② above, ClickHouse con
 The following diagram sketches this background merge process:
 
 <Image img={merges_01} size="lg" alt='PART MERGES'/>
-
-<br/>
 
 The `merge level` of a part is incremented by one with each additional merge. A level of `0` means the part is new and hasn't been merged yet. Parts that were merged into larger parts are marked as [inactive](/operations/system-tables/parts) and finally deleted after a [configurable](/operations/settings/merge-tree-settings#old_parts_lifetime) time (8 minutes by default). Over time, this creates a **tree** of merged parts. Hence the name [merge tree](/engines/table-engines/mergetree-family) table.
 
@@ -73,8 +58,6 @@ In ClickHouse 24.10, a new [merges dashboard](https://presentations.clickhouse.c
 
 <Image img={merges_dashboard} size="lg" alt='PART MERGES'/>
 
-<br/>
-
 The recorded dashboard above captures the entire process, from the initial data inserts to the final merge into a single part:
 
 ① Number of active parts.
@@ -88,8 +71,6 @@ The recorded dashboard above captures the entire process, from the initial data 
 A single ClickHouse server uses several background [merge threads](/operations/server-configuration-parameters/settings#background_pool_size) to execute concurrent part merges:
 
 <Image img={merges_02} size="lg" alt='PART MERGES'/>
-
-<br/>
 
 Each merge thread executes a loop:
 
@@ -113,8 +94,6 @@ The diagram below illustrates how a single background [merge thread](/merges#con
 
 <Image img={merges_03} size="lg" alt='PART MERGES'/>
 
-<br/>
-
 The part merging is performed in several steps:
 
 **① Decompression & Loading**: The [compressed binary column files](/parts#what-are-table-parts-in-clickhouse) from the parts to be merged are decompressed and loaded into memory.
@@ -137,8 +116,6 @@ The diagram below illustrates how parts in a standard [MergeTree](/engines/table
 
 <Image img={merges_04} size="lg" alt='PART MERGES'/>
 
-<br/>
-
 The DDL statement in the diagram above creates a `MergeTree` table with a sorting key `(town, street)`, [meaning](/parts#what-are-table-parts-in-clickhouse) data on disk is sorted by these columns, and a sparse primary index is generated accordingly.
 
 The ① decompressed, pre-sorted table columns are ② merged while preserving the table's global sorting order defined by the table's sorting key, ③ a new sparse primary index is generated, and ④ the merged column files and index are compressed and stored as a new data part on disk.
@@ -149,23 +126,17 @@ Part merges in a [ReplacingMergeTree](/engines/table-engines/mergetree-family/re
 
 <Image img={merges_05} size="lg" alt='PART MERGES'/>
 
-<br/>
-
 The DDL statement in the diagram above creates a `ReplacingMergeTree` table with a sorting key `(town, street, id)`, meaning data on disk is sorted by these columns, with a sparse primary index generated accordingly.
 
 The ② merging works similarly to a standard `MergeTree` table, combining decompressed, pre-sorted columns while preserving the global sorting order.
 
 However, the `ReplacingMergeTree` removes duplicate rows with the same sorting key, keeping only the most recent row based on the creation timestamp of its containing part.
 
-<br/>
-
 ### Summing merges \{#summing-merges\}
 
 Numeric data is automatically summarized during merges of parts from a [SummingMergeTree](/engines/table-engines/mergetree-family/summingmergetree) table:
 
 <Image img={merges_06} size="lg" alt='PART MERGES'/>
-
-<br/>
 
 The DDL statement in the diagram above defines a `SummingMergeTree` table with `town` as the sorting key, meaning that data on disk is sorted by this column and a sparse primary index is created accordingly.
 
@@ -176,8 +147,6 @@ In the ② merging step, ClickHouse replaces all rows with the same sorting key 
 The `SummingMergeTree` table example from above is a specialized variant of the [AggregatingMergeTree](/engines/table-engines/mergetree-family/aggregatingmergetree) table, allowing [automatic incremental data transformation](https://www.youtube.com/watch?v=QDAJTKZT8y4) by applying any of [90+](/sql-reference/aggregate-functions/reference) aggregation functions during part merges:
 
 <Image img={merges_07} size="lg" alt='PART MERGES'/>
-
-<br/>
 
 The DDL statement in the diagram above creates an `AggregatingMergeTree` table with `town` as the sorting key, ensuring data is ordered by this column on disk and a corresponding sparse primary index is generated.
 

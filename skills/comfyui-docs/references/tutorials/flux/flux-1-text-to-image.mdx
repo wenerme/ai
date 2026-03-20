@@ -1,10 +1,9 @@
 ---
 title: "ComfyUI Flux.1 Text-to-Image Workflow Example"
 description: "This guide provides a brief introduction to the Flux.1 model and guides you through using the Flux.1 model for text-to-image generation with examples including the full version and the FP8 Checkpoint version."
-sidebarTitle: "Flux.1 Text-to-Image"
 ---
 
-![Flux](/images/tutorial/flux/flux_example.png)
+[Flux]
 Flux is one of the largest open-source text-to-image generation models, with 12B parameters and an original file size of approximately 23GB. It was developed by [Black Forest Labs](https://blackforestlabs.ai/), a team founded by former Stable Diffusion team members.
 Flux is known for its excellent image quality and flexibility, capable of generating high-quality, diverse images.
 
@@ -23,21 +22,17 @@ In this example, we'll introduce text-to-image examples using both Flux.1 Dev an
 - **Flux Full Version:** Best performance, but requires larger VRAM resources and installation of multiple model files.
 - **Flux FP8 Checkpoint:** Requires only one fp8 version of the model, but quality is slightly reduced compared to the full version.
 
-<Tip>
 All workflow images's Metadata contains the corresponding model download information. You can load the workflows by:
 - Dragging them directly into ComfyUI
 - Or using the menu `Workflows` -> `Open（ctrl+o）`
 
 If you're not using the Desktop Version or some models can't be downloaded automatically, please refer to the manual installation sections to save the model files to the corresponding folder.
 Make sure your ComfyUI is updated to the latest version before starting.
-</Tip>
 
 ## Flux.1 Full Version Text-to-Image Example
 
-<Note>
 If you can't download models from [black-forest-labs/FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev), make sure you've logged into Huggingface and agreed to the corresponding repository's license agreement.
-![Flux Agreement](/images/tutorial/flux/flux_agreement.jpg)
-</Note>
+[Flux Agreement]
 
 ### Flux.1 Dev
 
@@ -52,10 +47,8 @@ Please download the image below and drag it into ComfyUI to load the workflow.
 
 #### 2. Manual Model Installation
 
-<Note>
 - The `flux1-dev.safetensors` file requires agreeing to the [black-forest-labs/FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) agreement before downloading via browser.
 - If your VRAM is low, you can try using [t5xxl_fp8_e4m3fn.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true) to replace the `t5xxl_fp16.safetensors` file.
-</Note>
 
 Please download the following model files:
 - [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true)
@@ -80,7 +73,7 @@ ComfyUI/
 
 Please refer to the image below to ensure all model files are loaded correctly
 
-![ComfyUI Flux Dev Workflow](/images/tutorial/flux/flow_diagram_flux_dev_t5fp16.jpg)
+[ComfyUI Flux Dev Workflow]
 
 1. Ensure the `DualCLIPLoader` node has the following models loaded:
    - clip_name1: t5xxl_fp16.safetensors
@@ -89,9 +82,8 @@ Please refer to the image below to ensure all model files are loaded correctly
 3. Make sure the `Load VAE` node has `ae.safetensors` loaded
 4. Click the `Queue` button, or use the shortcut `Ctrl(cmd) + Enter` to run the workflow
 
-<Tip>
 Thanks to Flux's excellent prompt following capability, we don't need any negative prompts
-</Tip>
+
 ### Flux.1 Schnell
 
 #### 1. Workflow File
@@ -106,11 +98,9 @@ Please download the image below and drag it into ComfyUI to load the workflow.
 
 #### 2. Manual Models Installation
 
-<Note>
 In this workflow, only two model files are different from the Flux1 Dev version workflow. For t5xxl, you can still use the fp16 version for better results.
 - **t5xxl_fp16.safetensors** -> **t5xxl_fp8.safetensors**
 - **flux1-dev.safetensors** -> **flux1-schnell.safetensors** 
-</Note>
 
 Complete model file list:
 - [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true)
@@ -133,7 +123,7 @@ ComfyUI/
 
 #### 3. Steps to Run the Workflow
 
-![Flux Schnell Version Workflow](/images/tutorial/flux/flow_diagram_flux_schnell_t5fp8.jpg)
+[Flux Schnell Version Workflow]
 
 1. Ensure the `DualCLIPLoader` node has the following models loaded:
    - clip_name1: t5xxl_fp8_e4m3fn.safetensors

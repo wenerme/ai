@@ -6,9 +6,7 @@
 }
 ---
 
-:::info
-We highly recommend using [Auto Partitioning](./auto-partitioning) for automated partition management, as it serves as a superior alternative to dynamic partitioning.
-:::
+> **info**: We highly recommend using [Auto Partitioning](./auto-partitioning) for automated partition management, as it serves as a superior alternative to dynamic partitioning.
 
 Dynamic partitioning will add and remove partitions in a rolling manner according to predefined rules, thereby managing the lifecycle of table partitions (TTL) and reducing data storage pressure. In scenarios such as log management and time-series data management, dynamic partitioning can typically be used to roll-delete expired data.
 
@@ -20,7 +18,7 @@ The diagram below illustrates lifecycle management using dynamic partitioning, w
 
 According to the above rules, as time progresses, a total of 4 partitions will always be retained: the partition from the past day, the current day partition, and the partitions for the next two days.
 
-![dynamic-partition](/images/getting-started/dynamic-partition.png)
+[dynamic-partition]
 
 ## Usage Restrictions
 
@@ -61,11 +59,9 @@ For detailed `dynamic_partition` parameters, refer to [Dynamic Partition Paramet
 
 ### Modifying Dynamic Partition Properties
 
-:::info Tip:
+> **info**: Tip:
 
 When using the ALTER TABLE statement to modify dynamic partitioning, the changes will not take effect immediately. The dynamic partitions will be polled and checked at intervals specified by the `dynamic_partition_check_interval_seconds` parameter to complete the necessary partition creation and deletion operations.
-
-:::
 
 In the example below, the ALTER TABLE statement is used to modify a non-dynamic partitioned table to a dynamic partitioned table:
 

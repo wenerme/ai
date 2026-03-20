@@ -12,7 +12,7 @@ Monitor AWS Lambda functions with comprehensive serverless monitoring, collectin
 The [OpenObserve Lambda Extension](https://github.com/openobserve/openobserve-lambda-extension) runs alongside your AWS Lambda function and forwards serverless logs directly to OpenObserve for Lambda monitoring.
 This eliminates the need to store or process Lambda logs in CloudWatch, while providing centralized log analysis, serverless dashboards, and alerts in OpenObserve for serverless application monitoring.
 
-![OpenObserve Lambda Extension Workflow](../images/aws-integrations/lambda/workflow.png){:style="height:300px"}
+[OpenObserve Lambda Extension Workflow]{:style="height:300px"}
 
 ## Steps to Integrate
 
@@ -29,7 +29,7 @@ This eliminates the need to store or process Lambda logs in CloudWatch, while pr
     ```
     aws lambda get-function-configuration --function-name <function_name> --query 'Architectures'
     ```
-    ![Check Your Lambda Architecture](../images/aws-integrations/lambda/check-architechture.png)
+    [Check Your Lambda Architecture]
     Based on the returned architecture (x86_64 or arm64), copy the compatible ARN values for the OpenObserve Lambda Extension layer.
 
     - For x86_64: `arn:aws:lambda:<aws_region_id>:325553860333:layer:openobserve-extension-x86_64:1`
@@ -40,11 +40,11 @@ This eliminates the need to store or process Lambda logs in CloudWatch, while pr
 ??? "Step 2: Add OpenObserve Lambda Extension Layer"
 
     1. In AWS Lambda console, open your target function  
-    ![Add OpenObserve Lambda Extension Layer](../images/aws-integrations/lambda/adding-layer.png)
+    [Add OpenObserve Lambda Extension Layer]
     2. Go to **Layers → Add a Layer**  
-    ![Add OpenObserve Lambda Extension Layer](../images/aws-integrations/lambda/edit-lambda-layers.png)
+    [Add OpenObserve Lambda Extension Layer]
     3. Choose “Specify an ARN” and Paste the ARN you got from Step 1
-    ![Add OpenObserve Lambda Extension Layer](../images/aws-integrations/lambda/specify-arn.png)
+    [Add OpenObserve Lambda Extension Layer]
     4. Save the changes  
 
 ??? "Step 3: Configure Environment Variables"
@@ -61,7 +61,7 @@ This eliminates the need to store or process Lambda logs in CloudWatch, while pr
 
     > Note: You can fetch these credentials from OpenObserve UI, Go to Data Sources -> Logs -> OTEL Collector
     
-    ![Configure Environment Variables](../images/aws-integrations/lambda/add-environment-variables-in-lambda.png)
+    [Configure Environment Variables]
 
     > Security Note: Use AWS Secrets Manager to store credentials like O2_AUTHORIZATION_HEADER securely.
 
@@ -77,14 +77,12 @@ This eliminates the need to store or process Lambda logs in CloudWatch, while pr
 
     1. Go to **Logs** in OpenObserve -> Select your log stream. 
     2. Set a recent time range and click **Run Query**  
-        ![Verify Logs in OpenObserve](../images/aws-integrations/lambda/verify-lambda-logs-in-openobserve.png)  
+        [Verify Logs in OpenObserve]  
     3. Filter out on logs where type= function using SQL query:
         ```
         SELECT * FROM "<log-stream>" where type = 'function'
         ```
-        ![](../images/aws-integrations/lambda/fucntion-logs.png)
-
-
+        
 
 ## Troubleshooting
 
@@ -107,12 +105,9 @@ This eliminates the need to store or process Lambda logs in CloudWatch, while pr
     - `logs:CreateLogStream`  
     - `logs:PutLogEvents`  
 
-
 ## Next Steps
 
 Once logs are flowing into OpenObserve, you can:  
 
 - **Build [dashboards](../../user-guide/dashboards/index.md)** around function latency, memory usage, and errors  
-- **Set up [alerts](../../user-guide/alerts/alerts.md)** on anomalies or failures  
-
-
+- **Set up [alerts](../../user-guide/alerts/alerts.md)** on anomalies or failures

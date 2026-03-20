@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Neon Postgres'
 description: 'Set up Neon Postgres instance as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/neon-postgres
 title: 'Neon Postgres Source Setup Guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
@@ -9,12 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import neon_enable_replication from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/neon-postgres/neon-enable-replication.png'
-import neon_enabled_replication from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/neon-postgres/neon-enabled-replication.png'
-import neon_ip_allow from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/neon-postgres/neon-ip-allow.png'
-import neon_conn_details from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/setup/neon-postgres/neon-conn-details.png'
-import Image from '@theme/IdealImage';
 
 # Neon Postgres source setup guide
 

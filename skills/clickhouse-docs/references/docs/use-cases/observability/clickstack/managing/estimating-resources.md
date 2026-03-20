@@ -1,15 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/estimating-resources
 title: 'Estimating Resources'
-sidebar_label: 'Estimating Resources'
-pagination_prev: null
-pagination_next: null
 description: 'Resource estimation guidance for Managed ClickStack deployments'
 doc_type: 'guide'
 keywords: ['clickstack', 'resources', 'sizing', 'compute', 'production', 'capacity planning']
 ---
-
-import ResourceEstimation from '@site/docs/use-cases/observability/clickstack/managing/_snippets/_resource_estimation.md';
 
 <ResourceEstimation/>
 

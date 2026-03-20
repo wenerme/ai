@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Logfire
 
@@ -7,10 +6,8 @@ Detailed production traces and a granular view on quality, cost and latency
 
 <Image img={require('../../img/logfire.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-:::
 
 ## Pre-Requisites
 

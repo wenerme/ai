@@ -1,6 +1,5 @@
 # C-MMLU
 
-
 ## Overview
 
 C-MMLU (Chinese Massive Multitask Language Understanding) is a comprehensive Chinese evaluation benchmark covering 67 subjects across STEM, humanities, social sciences, and China-specific topics. It evaluates models' knowledge and reasoning in Chinese contexts.
@@ -28,7 +27,6 @@ C-MMLU (Chinese Massive Multitask Language Understanding) is a comprehensive Chi
 - Categories: STEM, Humanities, Social Science, China-specific, Other
 - Evaluates on test split
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ C-MMLU (Chinese Massive Multitask Language Understanding) is a comprehensive Chi
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -196,5 +193,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

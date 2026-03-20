@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'QuickSight'
-slug: /integrations/quicksight
 keywords: ['clickhouse', 'aws', 'amazon', 'QuickSight', 'mysql', 'connect', 'integrate', 'ui']
 description: 'Amazon QuickSight powers data-driven organizations with unified business intelligence (BI).'
 title: 'QuickSight'
@@ -9,17 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_visualization'
 ---
-
-import MySQLOnPremiseSetup from '@site/docs/_snippets/_clickhouse_mysql_on_premise_setup.mdx';
-import Image from '@theme/IdealImage';
-import quicksight_01 from '@site/static/images/integrations/data-visualization/quicksight_01.png';
-import quicksight_02 from '@site/static/images/integrations/data-visualization/quicksight_02.png';
-import quicksight_03 from '@site/static/images/integrations/data-visualization/quicksight_03.png';
-import quicksight_04 from '@site/static/images/integrations/data-visualization/quicksight_04.png';
-import quicksight_05 from '@site/static/images/integrations/data-visualization/quicksight_05.png';
-import quicksight_06 from '@site/static/images/integrations/data-visualization/quicksight_06.png';
-import quicksight_07 from '@site/static/images/integrations/data-visualization/quicksight_07.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # QuickSight
 
@@ -124,38 +111,31 @@ Read 4 rows, 603.00 B in 0.00156 sec., 2564 rows/sec., 377.48 KiB/sec.
 First of all, go to [https://quicksight.aws.amazon.com](https://quicksight.aws.amazon.com), navigate to Datasets and click "New dataset":
 
 <Image size="md" img={quicksight_01} alt="Amazon QuickSight dashboard showing the New dataset button in Datasets section" border />
-<br/>
 
 Search for the official MySQL connector bundled with QuickSight (named just **MySQL**):
 
 <Image size="md" img={quicksight_02} alt="QuickSight data source selection screen with MySQL highlighted in search results" border />
-<br/>
 
 Specify your connection details. Please note that MySQL interface port is 9004 by default,
 and it might be different depending on your server configuration.
 
 <Image size="md" img={quicksight_03} alt="QuickSight MySQL connection configuration form with hostname, port, database and credential fields" border />
-<br/>
 
 Now, you have two options on how to fetch the data from ClickHouse. First, you could select a table from the list:
 
 <Image size="md" img={quicksight_04} alt="QuickSight table selection interface showing database tables available from ClickHouse" border />
-<br/>
 
 Alternatively, you could specify a custom SQL to fetch your data:
 
 <Image size="md" img={quicksight_05} alt="QuickSight custom SQL query editor for fetching data from ClickHouse" border />
-<br/>
 
 By clicking "Edit/Preview data", you should be able to see the introspected table structure or adjust your custom SQL, if that's how you decided to access the data:
 
 <Image size="md" img={quicksight_06} alt="QuickSight data preview showing table structure with columns and sample data" border />
-<br/>
 
 Make sure you have "Direct Query" mode selected in the bottom left corner of the UI:
 
 <Image size="md" img={quicksight_07} alt="QuickSight interface with Direct Query mode option highlighted in bottom corner" border />
-<br/>
 
 Now you can proceed with publishing your dataset and creating a new visualization!
 

@@ -1,6 +1,5 @@
 ---
 title: expandSnapshotDiff | Config
-outline: deep
 ---
 
 # expandSnapshotDiff

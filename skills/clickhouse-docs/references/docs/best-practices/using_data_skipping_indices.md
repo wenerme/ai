@@ -1,17 +1,10 @@
 ---
-slug: /best-practices/use-data-skipping-indices-where-appropriate
-sidebar_position: 10
-sidebar_label: 'Data skipping indices'
 title: 'Use data skipping indices where appropriate'
 description: 'Page describing how and when to use data skipping indices'
 keywords: ['data skipping index', 'skip index']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import building_skipping_indices from '@site/static/images/bestpractices/building_skipping_indices.gif';
-import using_skipping_indices from '@site/static/images/bestpractices/using_skipping_indices.gif';
 
 Data skipping indices should be considered when previous best practices have been followed i.e. types are optimized, a good primary key has been selected and materialized views have been exploited. If you're new to skipping indices, [this guide](/optimize/skipping-indexes) is a good place to start.
 

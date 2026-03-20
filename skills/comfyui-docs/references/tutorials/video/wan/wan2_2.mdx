@@ -1,10 +1,7 @@
 ---
 title: "Wan2.2 Video Generation ComfyUI Official Native Workflow Example"
 description: "Official usage guide for Alibaba Cloud Tongyi Wanxiang 2.2 video generation model in ComfyUI"
-sidebarTitle: Wan2.2
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 <iframe
   className="w-full aspect-video rounded-xl"
@@ -66,18 +63,13 @@ For ComfyUI Wan2.2 usage, we have conducted live streams, which you can view to 
   allowFullScreen
 ></iframe>
 
-
 This tutorial will use the [🤗 Comfy-Org/Wan_2.2_ComfyUI_Repackaged](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged) version.
 
-<UpdateReminder/>
-
-![Wan2.2 template](/images/tutorial/video/wan/wan2_2/template.jpg)
+[Wan2.2 template]
 
 ## Wan2.2 TI2V 5B Hybrid Version Workflow Example
 
-<Tip>
   The Wan2.2 5B version should fit well on 8GB vram with the ComfyUI native offloading.
-</Tip>
 
 ### 1. Download Workflow File
 
@@ -120,7 +112,7 @@ ComfyUI/
 ```
 
 ### 3. Follow the Steps
-![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_5b_t2v.jpg)
+[Step Diagram]
 
 1. Ensure the `Load Diffusion Model` node loads the `wan2.2_ti2v_5B_fp16.safetensors` model.
 2. Ensure the `Load CLIP` node loads the `umt5_xxl_fp8_e4m3fn_scaled.safetensors` model.
@@ -164,7 +156,6 @@ Or update your ComfyUI to the latest version, then download the following video 
 **Text Encoder**   
 - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
 
-
 ```
 ComfyUI/
 ├───📂 models/
@@ -178,7 +169,7 @@ ComfyUI/
 ```
 
 ### 3. Follow the Steps
-![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_t2v.jpg)
+[Step Diagram]
 
 1. Ensure the first `Load Diffusion Model` node loads the `wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors` model.
 2. Ensure the second `Load Diffusion Model` node loads the `wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors` model.
@@ -236,7 +227,7 @@ ComfyUI/
 │       └── wan_2.1_vae.safetensors
 ```
 ### 3. Follow the Steps
-![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_i2v.jpg)
+[Step Diagram]
 
 1. Make sure the first `Load Diffusion Model` node loads the `wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors` model.
 2. Make sure the second `Load Diffusion Model` node loads the `wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors` model.
@@ -275,7 +266,7 @@ Download the following images as input materials:
 
 ### 2. Follow the Steps
 
-![Step Diagram](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_flf2v.jpg)
+[Step Diagram]
 
 1. Upload the image to be used as the starting frame in the first `Load Image` node.
 2. Upload the image to be used as the ending frame in the second `Load Image` node.

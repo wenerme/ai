@@ -1,23 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/kubernetes
 title: 'Monitoring Kubernetes'
-sidebar_position: 1
-pagination_prev: null
-pagination_next: null
 description: 'Getting started with ClickStack and monitoring Kubernetes'
 doc_type: 'guide'
 keywords: ['clickstack', 'kubernetes', 'logs', 'observability', 'container monitoring']
 ---
-
-import Image from '@theme/IdealImage';
-import DemoArchitecture from '@site/docs/use-cases/observability/clickstack/example-datasets/_snippets/_demo.md';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import hyperdx_kubernetes_data from '@site/static/images/use-cases/observability/hyperdx-kubernetes-data.png';
-import copy_api_key from '@site/static/images/use-cases/observability/copy_api_key.png';
-import hyperdx_cloud_datasource from '@site/static/images/use-cases/observability/hyperdx_cloud_datasource.png';
-import hyperdx_create_new_source from '@site/static/images/use-cases/observability/hyperdx_create_new_source.png';
-import hyperdx_create_trace_datasource from '@site/static/images/use-cases/observability/hyperdx_create_trace_datasource.png';
-import dashboard_kubernetes from '@site/static/images/use-cases/observability/hyperdx-dashboard-kubernetes.png';
 
 This guide allows you to collect logs and metrics from your Kubernetes system, sending them to **ClickStack** for visualization and analysis. For demo data we use optionally use the ClickStack fork of the official OpenTelemetry demo.
 
@@ -122,10 +108,8 @@ helm repo update
 ### Deploy ClickStack {#deploy-clickstack}
 
 With the Helm chart installed, you can deploy ClickStack to your cluster. You can either run all components, including ClickHouse and HyperDX, within your Kubernetes environment, or just deploy the collector and rely on Managed ClickStack for ClickHouse and the UI HyperDX.
-<br/>
 
-<details>
-<summary>ClickStack Open Source (self-managed)</summary>
+ClickStack Open Source (self-managed)
 
 The following command installs ClickStack to the `otel-demo` namespace. The helm chart deploys:
 
@@ -134,9 +118,7 @@ The following command installs ClickStack to the `otel-demo` namespace. The helm
 - The ClickStack distribution of the OTel collector
 - MongoDB for storage of HyperDX application state
 
-:::note
-You might need to adjust the `storageClassName` according to your Kubernetes cluster configuration. 
-:::
+> **note**: You might need to adjust the `storageClassName` according to your Kubernetes cluster configuration. 
 
 Users not deploying the OTel demo can modify this, selecting an appropriate namespace.
 
@@ -144,7 +126,7 @@ Users not deploying the OTel demo can modify this, selecting an appropriate name
 helm install my-hyperdx hyperdx/hdx-oss-v2   --set clickhouse.persistence.dataSize=100Gi --set global.storageClassName="standard-rwo" -n otel-demo
 ```
 
-:::warning ClickStack in production
+> **warning**: ClickStack in production
 
 This chart also installs ClickHouse and the OTel collector. For production, it is recommended that you use the clickhouse and OTel collector operators and/or use Managed ClickStack.
 
@@ -154,19 +136,11 @@ To disable clickhouse and OTel collector, set the following values:
 helm install myrelease <chart-name-or-path> --set clickhouse.enabled=false --set clickhouse.persistence.enabled=false --set otel.enabled=false
 ```
 
-:::
-
-</details>
-
-<details>
-<summary>Managed ClickStack</summary>
+Managed ClickStack
 
 If you'd rather use Managed ClickStack, you can deploy ClickStack and [disable the included ClickHouse](https://clickhouse.com/docs/use-cases/observability/clickstack/deployment/helm#using-clickhouse-cloud). 
 
-:::note
-The chart currently always deploys both HyperDX and MongoDB. While these components offer an alternative access path, they're not integrated with ClickHouse Cloud authentication. These components are intended for administrators in this deployment model, [providing access to the secure ingestion key](#retrieve-ingestion-api-key) needed to ingest through the deployed OTel collector, but shouldn't be exposed to end users.
-:::
-
+> **note**: The chart currently always deploys both HyperDX and MongoDB. While these components offer an alternative access path, they're not integrated with ClickHouse Cloud authentication. These components are intended for administrators in this deployment model, [providing access to the secure ingestion key](#retrieve-ingestion-api-key) needed to ingest through the deployed OTel collector, but shouldn't be exposed to end users.
 ```shell
 # specify ClickHouse Cloud credentials
 export CLICKHOUSE_URL=<CLICKHOUSE_CLOUD_URL> # full https url
@@ -175,8 +149,6 @@ export CLICKHOUSE_PASSWORD=<CLICKHOUSE_PASSWORD>
 
 helm install my-hyperdx hyperdx/hdx-oss-v2  --set clickhouse.enabled=false --set clickhouse.persistence.enabled=false --set otel.clickhouseEndpoint=${CLICKHOUSE_URL} --set clickhouse.config.users.otelUserName=${CLICKHOUSE_USER} --set clickhouse.config.users.otelUserPassword=${CLICKHOUSE_PASSWORD} --set global.storageClassName="standard-rwo" -n otel-demo
 ```
-
-</details>
 
 To verify the deployment status, run the following command and confirm all components are in the `Running` state. Note that ClickHouse will be absent if you're using Managed ClickStack:
 
@@ -192,9 +164,7 @@ my-hyperdx-hdx-oss-v2-otel-collector-64cf698f5c-8s7qj   1/1     Running   0     
 
 ### Access the HyperDX UI {#access-the-hyperdx-ui}
 
-:::note
-Even when using Managed ClickStack, the local HyperDX instance deployed in the Kubernetes cluster is still required. It provides an ingestion key managed by the OpAMP server bundled with HyperDX, with secures ingestion through the deployed OTel collector - a capability not currently available in Managed ClickStack.
-:::
+> **note**: Even when using Managed ClickStack, the local HyperDX instance deployed in the Kubernetes cluster is still required. It provides an ingestion key managed by the OpAMP server bundled with HyperDX, with secures ingestion through the deployed OTel collector - a capability not currently available in Managed ClickStack.
 
 For security, the service uses `ClusterIP` and isn't exposed externally by default.
 
@@ -275,8 +245,7 @@ curl -O https://raw.githubusercontent.com/ClickHouse/clickhouse-docs/refs/heads/
 helm install --namespace otel-demo k8s-otel-deployment open-telemetry/opentelemetry-collector -f k8s_deployment.yaml
 ```
 
-<details>
-<summary>k8s_deployment.yaml</summary>
+k8s_deployment.yaml
 
 ```yaml
 # k8s_deployment.yaml
@@ -339,8 +308,6 @@ config:
           - otlphttp
 ```
 
-</details>
-
 Next, deploy the collector as a DaemonSet for node and pod-level metrics and logs:
 
 ```shell
@@ -350,11 +317,7 @@ curl -O https://raw.githubusercontent.com/ClickHouse/clickhouse-docs/refs/heads/
 helm install --namespace otel-demo k8s-otel-daemonset open-telemetry/opentelemetry-collector -f k8s_daemonset.yaml
 ```
 
-<details>
-
-<summary>
 `k8s_daemonset.yaml`
-</summary>
 
 ```yaml
 # k8s_daemonset.yaml
@@ -459,25 +422,19 @@ config:
           - otlphttp
 ```
 
-</details>
-
 ### Explore Kubernetes data in HyperDX {#explore-kubernetes-data-hyperdx}
 
 Navigate to your HyperDX UI - either using your Kubernetes-deployed instance or via Managed ClickStack.
 
 <p/>
-<details>
-<summary>Managed ClickStack</summary>
+
+Managed ClickStack
 
 If using Managed ClickStack, simply log in to your ClickHouse Cloud service and select "ClickStack" from the left menu. You will be automatically authenticated and won't need to create a user.
 
 Data sources for logs, metrics and traces will be pre-created for you.
 
-</details>
-
-<details>
-
-<summary>ClickStack Open Source</summary>
+ClickStack Open Source
 
 To access the local deployed HyperDX, you can port forward using the local command and access HyperDX at [http://localhost:8080](http://localhost:8080).
 
@@ -488,7 +445,7 @@ kubectl port-forward \
  -n otel-demo
 ```
 
-:::note ClickStack in production
+> **note**: ClickStack in production
 In production, we recommend using an ingress with TLS if you're not using Managed ClickStack. For example:
 
 ```shell
@@ -498,8 +455,6 @@ helm upgrade my-hyperdx hyperdx/hdx-oss-v2 \
 --set hyperdx.ingress.tls.enabled=true
 ```
 ::::
-
-</details>
 
 To explore the Kubernetes data, navigate to the dedicated present dashboard at `/kubernetes` e.g. [http://localhost:8080/kubernetes](http://localhost:8080/kubernetes).
 

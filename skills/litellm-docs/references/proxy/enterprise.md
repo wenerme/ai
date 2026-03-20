@@ -1,13 +1,7 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # ✨ Enterprise Features
-:::tip
-
-To get a license, get in touch with us [here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **tip**: To get a license, get in touch with us [here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 Features: 
 
@@ -36,7 +30,6 @@ Features:
     - ✅ [Custom Branding + Routes on Swagger Docs](#swagger-docs---custom-routes--branding)
     - ✅ [Custom Email Branding](./email.md#customizing-email-branding)
 
-
 ### Blocking web crawlers
 
 To block web crawlers from indexing the proxy server endpoints, set the `block_robots` setting to `true` in your `litellm_config.yaml` file.
@@ -55,15 +48,8 @@ User-agent: *
 Disallow: /
 ```
 
-
-
 ### Required Params for LLM Requests
 Use this when you want to enforce all requests to include certain params. Example you need all requests to include the `user` and `["metadata]["generation_name"]` params.
-
-
-<Tabs>
-
-<TabItem value="config" label="Set on Config">
 
 **Step 1** Define all Params you want to enforce on config.yaml
 
@@ -76,9 +62,6 @@ general_settings:
     - user
     - metadata.generation_name
 ```
-</TabItem>
-
-<TabItem value="key" label="Set on Key">
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -89,14 +72,7 @@ curl -L -X POST 'http://0.0.0.0:4000/key/generate' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 **Step 2 Verify if this works**
-
-<Tabs>
-
-<TabItem value="bad" label="Invalid Request (No `user` passed)">
 
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
@@ -118,10 +94,6 @@ Expected Response
 ```shell
 {"error":{"message":"Authentication Error, BadRequest please pass param=user in request body. This is a required param","type":"auth_error","param":"None","code":401}}% 
 ```
-
-</TabItem>
-
-<TabItem value="bad2" label="Invalid Request (No `metadata` passed)">
 
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
@@ -146,10 +118,6 @@ Expected Response
 {"error":{"message":"Authentication Error, BadRequest please pass param=[metadata][generation_name] in request body. This is a required param","type":"auth_error","param":"None","code":401}}% 
 ```
 
-
-</TabItem>
-<TabItem value="good" label="Valid Request">
-
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
     --header 'Authorization: Bearer sk-5fmYeaUEbAMpwBNT-QpxyA' \
@@ -172,11 +140,6 @@ Expected Response
 ```shell
 {"id":"chatcmpl-9XALnHqkCBMBKrOx7Abg0hURHqYtY","choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello! How can I assist you today?","role":"assistant"}}],"created":1717691639,"model":"gpt-3.5-turbo-0125","object":"chat.completion","system_fingerprint":null,"usage":{"completion_tokens":9,"prompt_tokens":8,"total_tokens":17}}%  
 ```
-
-</TabItem>
-</Tabs>
-
-
 
 ### Control available public, private routes
 
@@ -213,11 +176,7 @@ curl -X GET "http://0.0.0.0:4000/spend/tags" \
 ]
 ```
 
-:::tip
-For comprehensive spend tracking features including budgets, alerts, and detailed analytics, check out [Spend Tracking](https://docs.litellm.ai/docs/proxy/cost_tracking).
-
-:::
-
+> **tip**: For comprehensive spend tracking features including budgets, alerts, and detailed analytics, check out [Spend Tracking](https://docs.litellm.ai/docs/proxy/cost_tracking).
 
 ## Guardrails - Secret Detection/Redaction
 ❓ Use this to REDACT API Keys, Secrets sent in requests to an LLM. 
@@ -283,13 +242,11 @@ curl --location 'http://localhost:4000/chat/completions' \
 }'
 ```
 
-
 Expect to see the following warning on your litellm server logs
 
 ```shell
 LiteLLM Proxy:WARNING: secret_detection.py:88 - Detected and redacted secrets in message: ['Secret Keyword']
 ```
-
 
 You can also see the raw request sent from litellm to the API Provider
 ```json
@@ -320,9 +277,6 @@ https://api.groq.com/openai/v1/ \
 
 This means the `hide_secrets` guardrail is off for all requests from this API Key
 
-<Tabs>
-<TabItem value="/key/generate" label="/key/generate">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/key/generate' \
     --header 'Authorization: Bearer sk-1234' \
@@ -335,9 +289,6 @@ curl --location 'http://0.0.0.0:4000/key/generate' \
 ```shell
 # {"permissions":{"hide_secrets":false},"key":"sk-jNm1Zar7XfNdZXp49Z1kSQ"}  
 ```
-
-</TabItem>
-<TabItem value="/key/update" label="/key/update">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/key/update' \
@@ -352,9 +303,6 @@ curl --location 'http://0.0.0.0:4000/key/update' \
 ```shell
 # {"permissions":{"hide_secrets":false},"key":"sk-jNm1Zar7XfNdZXp49Z1kSQ"}  
 ```
-
-</TabItem>
-</Tabs>
 
 **Step 2** Test it with new key
 
@@ -375,10 +323,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Expect to see `sk-1234777` in your server logs on your callback. 
 
-:::info
-The `hide_secrets` guardrail check did not run on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"hide_secrets": false}`
-:::
-
+> **info**: The `hide_secrets` guardrail check did not run on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"hide_secrets": false}`
 
 ## Content Moderation
 ### Content Moderation with LLM Guard
@@ -469,9 +414,6 @@ curl --location 'http://localhost:4000/key/generate' \
 
 **3. Test it!**
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
-
 ```python
 import openai
 client = openai.OpenAI(
@@ -499,8 +441,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="curl" label="Curl Request">
 
 ```bash
 curl --location 'http://0.0.0.0:4000/v1/chat/completions' \
@@ -512,9 +452,6 @@ curl --location 'http://0.0.0.0:4000/v1/chat/completions' \
     ]
     }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Content Moderation with LlamaGuard 
 
@@ -547,8 +484,6 @@ callbacks: ["llamaguard_moderations"]
   llamaguard_model_name: "sagemaker/jumpstart-dft-meta-textgeneration-llama-guard-7b"
   llamaguard_unsafe_content_categories: /path/to/llamaguard_prompt.txt
 ```
-
-
 
 ### Content Moderation with Google Text Moderation 
 
@@ -604,14 +539,9 @@ Here are the category specific values:
 | "finance" | finance_threshold: 0.1 | 
 | "legal" | legal_threshold: 0.1 |
 
-
 ## Swagger Docs - Custom Routes + Branding 
 
-:::info 
-
-Requires a LiteLLM Enterprise key to use. Get a free 2-week license [here](https://forms.gle/sTDVprBs18M4V8Le8)
-
-:::
+> **info**: Requires a LiteLLM Enterprise key to use. Get a free 2-week license [here](https://forms.gle/sTDVprBs18M4V8Le8)
 
 Set LiteLLM Key in your environment
 
@@ -640,7 +570,6 @@ DOCS_FILTERED="True" # only shows openai routes to user
 
 <Image img={require('../../img/custom_swagger.png')}  style={{ width: '900px', height: 'auto' }} />
 
-
 ## Enable Blocked User Lists 
 If any call is made to proxy with this user id, it'll be rejected - use this if you want to let users opt-out of ai features 
 
@@ -651,11 +580,6 @@ litellm_settings:
 ```
 
 ### How to test
-
-<Tabs>
-
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 Set `user=<user_id>` to the user id of the user who might have opted out.
 
@@ -680,9 +604,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 ```bash 
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -700,17 +621,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
-:::info 
-
-[Suggest a way to improve this](https://github.com/BerriAI/litellm/issues/new/choose)
-
-:::
+> **info**: [Suggest a way to improve this](https://github.com/BerriAI/litellm/issues/new/choose)
 
 ### Using via API
-
 
 **Block all calls for a customer id**
 
@@ -731,8 +644,6 @@ curl -X POST "http://0.0.0.0:4000/user/unblock" \
 "user_ids": [<user_id>, ...] 
 }'
 ```
-
-
 
 ## Enable Banned Keywords List
 
@@ -767,11 +678,9 @@ Share a public page of available models and agents for users
 
 <Image img={require('../../img/model_hub.png')} style={{ width: '900px', height: 'auto' }}/>
 
-
 ## [BETA] AWS Key Manager - Key Decryption
 
 This is a beta feature, and subject to changes.
-
 
 **Step 1.** Add `USE_AWS_KMS` to env
 
@@ -799,7 +708,6 @@ How it works?
 
 **Note:** Setting an environment variable within a Python script using os.environ will not make that variable accessible via SSH sessions or any other new processes that are started independently of the Python script. Environment variables set this way only affect the current process and its child processes.
 
-
 ## Set Max Request / Response Size on LiteLLM Proxy
 
 Use this if you want to set a maximum request / response size for your proxy server. If a request size is above the size it gets rejected + slack alert triggered
@@ -809,10 +717,7 @@ Use this if you want to set a maximum request / response size for your proxy ser
 
 For this example we set a very low limit on `max_request_size_mb` and expect it to get rejected 
 
-:::info
-In production we recommend setting a `max_request_size_mb` /  `max_response_size_mb` around `32 MB`
-
-:::
+> **info**: In production we recommend setting a `max_request_size_mb` /  `max_response_size_mb` around `32 MB`
 
 ```yaml
 model_list:

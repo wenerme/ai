@@ -12,7 +12,6 @@ This statement is used to modify an SQL block rule.
 
 ## Syntax
 
-
 ```sql
 ALTER SQL_BLOCK_RULE <rule_name>
 PROPERTIES (
@@ -44,7 +43,6 @@ The user executing this SQL command must have at least the following permissions
 ## Example
 
 1. Modify the SQL and enable the rule
-
 
   ```sql
   ALTER SQL_BLOCK_RULE test_rule PROPERTIES("sql"="select \\* from test_table","enable"="true")

@@ -14,12 +14,12 @@ General settings provides the following configuration options:
 ### Scrape interval
 > This setting is available for all organizations.
 
-![theme-config](../../images/theme-config.png)
+[theme-config]
 The scrape interval defines how often the monitoring system collects metrics. Enter the number of seconds and select Save.
 
 ### Theme configuration
 Theme configuration allows you to manage the default colors for light mode and dark mode for your organization. When you save these values, they are applied across the UI for all users in the organization.
-![theme-config](../../images/theme-config.png)
+[theme-config]
 
 You can set the following fields:
 
@@ -38,12 +38,10 @@ If these variables are set, the UI loads these colors automatically unless overr
 
 ### Enterprise branding
 Enterprise branding options appear only in the `_meta` org when Enterprise features are enabled.
-![enterprise-branding](../../images/enterprise-branding.png)
-<br>
+[enterprise-branding]
 
 **Custom logo text**
 Use this field to replace the default OpenObserve text shown in the header. Enter the required text and save the changes.
-<br>
 
 **Custom logo**
 Upload a custom branding logo to replace the default OpenObserve logo in the header.

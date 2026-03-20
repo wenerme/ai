@@ -12,9 +12,7 @@ Returns basic information about the Rowset.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

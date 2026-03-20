@@ -29,8 +29,8 @@ If a tensor has a dimension of size 1 (known as a collapsed dimension), it is eq
 (a batch with 1 image is just an image). Removing such a collapsed dimension is referred to as squeezing, and
 inserting one is known as unsqueezing. 
 
-<Warning>Some torch code, and some custom node authors, will return a squeezed tensor when a dimension is collapsed - such 
-as when a batch has only one member. This is a common cause of bugs!</Warning>
+Some torch code, and some custom node authors, will return a squeezed tensor when a dimension is collapsed - such 
+as when a batch has only one member. This is a common cause of bugs!
 
 To represent the same data in a different shape is referred to as reshaping. This often requires you to know
 the underlying data structure, so handle with care!
@@ -93,7 +93,7 @@ RuntimeError: The size of tensor a (2) must match the size of tensor b (3) at no
 
 ### Tensor truthiness
 
-<Warning>The 'truthiness' value of a Tensor is not the same as that of Python lists.</Warning>
+The 'truthiness' value of a Tensor is not the same as that of Python lists.
 
 You may be familiar with the truthy value of a Python list as `True` for any non-empty list, and `False` for `None` or `[]`. 
 By contrast A `torch.Tensor` (with more than one elements) does not have a defined truthy value. Instead you need to use

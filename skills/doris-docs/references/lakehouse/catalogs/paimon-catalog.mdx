@@ -6,9 +6,6 @@
 }
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Doris currently supports accessing Paimon table metadata through various metadata services and querying Paimon data.
 
 At present, only read operations on Paimon tables are supported. Write operations to Paimon tables will be supported in the future.
@@ -157,22 +154,20 @@ The currently dependent Paimon version is 1.0.0.
 | row                                | struct        |                                                                         |
 | other                              | UNSUPPORTED   |                                                                         |
 
-:::info Note
+> **info**: Note
 Doris currently does not support `Timestamp` types with timezone. All `timestamp_without_time_zone` and `timestamp_with_local_time_zone` will be uniformly mapped to `datetime(N)` type. However, during reading, Doris will correctly handle timezones based on the actual source type. For example, after specifying a timezone with `SET time_zone=<tz>`, it will affect the return results of `timestamp_with_local_time_zone` columns.
 
 You can check whether the source type contains timezone information in the Extra column of the `DESCRIBE table_name` statement. If it displays `WITH_TIMEZONE`, it indicates that the source type is a timezone-aware type. (This feature is supported since 3.0.8)
 
 Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to Doris `timestamptz` type.
-:::
 
 ## Examples
 
 ### Hive Metastore
 
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 3.1+
+    
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_hdfs_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -183,8 +178,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'hadoop.username' = 'doris'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_aws_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -208,8 +203,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 's3.role_arn' = 'arn:aws:iam::543815668950:role/role'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_ali_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -223,8 +218,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
             );
             ```
 
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_tx_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -237,8 +232,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_hw_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -251,8 +246,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG `paimon_on_gcs` PROPERTIES (
                 'type' = 'paimon',
@@ -264,8 +259,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'gs.access_key' = '<ak>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG paimon_hms_on_minio_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -279,14 +274,12 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'minio.use_path_style' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
-<details>
-    <summary>Version 2.1 & 3.0</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 2.1 & 3.0
+    
+        
             Access HMS without Kerberos authentication
             ```sql
             CREATE CATALOG paimon_hms_on_hdfs_catalog PROPERTIES (
@@ -317,8 +310,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'hadoop.kerberos.keytab' = '/keytabs/hive-presto-master.keytab'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_aws_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -335,8 +328,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'paimon.s3.secret-key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_ali_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -349,8 +342,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'oss.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_tx_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -363,8 +356,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_hw_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -377,8 +370,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_hms_minio_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -394,16 +387,14 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 's3.path.style.access' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### Aliyun DLF Metastore
 
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+    Version 3.1+
+    
+        
             ```sql
             CREATE CATALOG paimon_dlf_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -417,8 +408,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='DLF(2.5+)' label='DLF(2.5+)'>
+        
+        
             ```sql
             CREATE CATALOG paimon_dlf_test PROPERTIES (
                 'type' = 'paimon',
@@ -430,15 +421,13 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'paimon.rest.dlf.access-key-secret' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
-<details>
-    <summary>Version 2.1 & 3.0</summary>
+    Version 2.1 & 3.0
 
-    <Tabs>
-        <TabItem value='DLF 1.0' label='DLF 1.0' default>
+    
+        
             ```sql
             CREATE CATALOG paimon_dlf_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -452,16 +441,14 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'dlf.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### FileSystem Metastore
 
-<details>
-    <summary>Version 3.1+</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 3.1+
+    
+        
             Access HMS and HDFS services without Kerberos authentication
             ```sql
             CREATE CATALOG ctl_test_paimon_catalog PROPERTIES (
@@ -471,8 +458,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'fs.defaultFS' = 'hdfs://127.0.0.1:8020'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_fs_aws_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -496,8 +483,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 's3.role_arn' = 'arn:aws:iam::543815668950:role/role'
             );
             ``` 
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             Use OSS
 
             ```sql
@@ -526,8 +513,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'oss.hdfs.region' = 'cn-beijing'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG paimon_base_filesystem_paimon_cosn PROPERTIES (
                 'type' = 'paimon',
@@ -539,8 +526,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG paimon_base_filesystem_paimon_obs PROPERTIES (
                 'type' = 'paimon',
@@ -552,8 +539,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='GCS' label='GCS'>
+        
+        
             ```sql
             CREATE CATALOG paimon_on_gcs_s3_fs PROPERTIES (
                 'type' = 'paimon',
@@ -564,8 +551,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'gs.access_key' = '<ak>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_minio_minio PROPERTIES (
                 'type' = 'paimon',
@@ -577,14 +564,12 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'minio.use_path_style' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
-<details>
-    <summary>Version 2.1 & 3.0</summary>
-    <Tabs>
-        <TabItem value='HDFS' label='HDFS' default>
+    Version 2.1 & 3.0
+    
+        
             Access HMS and HDFS services without Kerberos authentication
             ```sql
             CREATE CATALOG ctl_test_paimon_catalog PROPERTIES (
@@ -594,8 +579,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'fs.defaultFS' = 'hdfs://127.0.0.1:8020'
             );
             ```
-        </TabItem>
-        <TabItem value='S3' label='S3'>
+        
+        
             ```sql
             CREATE CATALOG test_paimon_on_fs_aws_catalog PROPERTIES (
                 'type' = 'paimon',
@@ -607,8 +592,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 's3.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OSS' label='OSS'>
+        
+        
             Use OSS
 
             ```sql
@@ -637,8 +622,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'oss.region' = 'cn-hangzhou'
             );
             ```
-        </TabItem>
-        <TabItem value='COS' label='COS'>
+        
+        
             ```sql
             CREATE CATALOG paimon_base_filesystem_paimon_cosn PROPERTIES (
                 'type' = 'paimon',
@@ -650,8 +635,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'cos.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='OBS' label='OBS'>
+        
+        
             ```sql
             CREATE CATALOG paimon_base_filesystem_paimon_obs PROPERTIES (
                 'type' = 'paimon',
@@ -663,8 +648,8 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 'obs.secret_key' = '<sk>'
             );
             ```
-        </TabItem>
-        <TabItem value='MinIO' label='MinIO'>
+        
+        
             ```sql
             CREATE CATALOG paimon_base_filesystem_paimon_minio PROPERTIES (
                 'type' = 'paimon',
@@ -676,20 +661,17 @@ Supported since version 4.0.3, `timestamp_with_local_time_zone` can be mapped to
                 's3.path.style.access' = 'true'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ### Paimon JDBC Catalog
 
-:::tip Note
+> **tip**: Note
 This is an experimental feature, supported since version 4.1.0.
-:::
 
-<details>
-    <summary>Version 4.1+</summary>
-    <Tabs>
-        <TabItem value='PostgreSQL' label='PostgreSQL' default>
+    Version 4.1+
+    
+        
             Using PostgreSQL as metadata storage with S3 storage
             ```sql
             CREATE CATALOG paimon_jdbc_postgresql PROPERTIES (
@@ -707,8 +689,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.region' = 'us-east-1'
             );
             ```
-        </TabItem>
-        <TabItem value='MySQL' label='MySQL'>
+        
+        
             Using MySQL as metadata storage with S3 storage
             ```sql
             CREATE CATALOG paimon_jdbc_mysql PROPERTIES (
@@ -726,9 +708,8 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.region' = 'us-east-1'
             );
             ```
-        </TabItem>
-    </Tabs>
-</details>
+        
+    
 
 ## Query Operations
 
@@ -782,13 +763,12 @@ Parameter:
 | `startTimestamp` | Starting snapshot timestamp, must be greater than or equal to 0. Unit is millisecond. | `'startTimestamp'='1750844949000'` |
 | `endTimestamp` | Ending snapshot timestamp, must be greater than `startTimestamp`. Optional, if not specified, reads from `startTimestamp` to the latest snapshot. Unit is millisecond. | `'endTimestamp'='1750944949000'` |
 
-:::tip Notice
+> **tip**: Notice
 `startSnapshotId` and `endSnapshotId` will compose the Paimon parameter `'incremental-between'='3,10'`
 
 `startTimestamp` and `endTimestamp` will compose the Paimon parameter `'incremental-between-timestamp'='1750844949000,1750944949000'`
 
 `incrementalBetweenScanMode` corresponds to the Paimon parameter `incremental-between-scan-mode`.
-:::
 
 Refer to the [Paimon documentation](https://paimon.apache.org/docs/master/maintenance/configurations/) for further details about these parameters.
 
@@ -884,9 +864,8 @@ To access metadata of a Paimon table, add a `$` symbol after the table name, fol
 SELECT * FROM my_table$system_table_name;
 ```
 
-:::info Note
+> **info**: Note
 Doris does not support reading Paimon global system tables, which are only supported in Flink.
-:::
 
 ### schemas
 
@@ -1168,9 +1147,8 @@ Result:
 SELECT `bucket`, COUNT(*) as file_count, SUM(file_size_in_bytes)/1024/1024 as total_size_mb FROM paimon_s3.tpcds.catalog_sales$files GROUP BY `bucket` ORDER BY total_size_mb;
 ```
 
-:::info Note
+> **info**: Note
 Many fields in Paimon system tables are keywords in Doris, so they need to be enclosed in backticks.
-:::
 
 Result:
 

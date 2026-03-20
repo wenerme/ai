@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Security'
-slug: /cloud/security
 title: 'Security'
 description: 'Learn more about securing ClickHouse Cloud and BYOC'
 doc_type: 'reference'

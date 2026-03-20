@@ -54,9 +54,8 @@ DELETE FROM table_name
 3. Wheny you use syntax 1, conditions can only have an "and" relationship. If you want to achieve an "or" relationship, you need to write the conditions in two DELETE statements.
 4. In syntax 1, if it is a partitioned table, you can specify a partition. If not specified, Doris will infer partition from the given conditions. In two cases, Doris cannot infer the partition from conditions: 1) the conditions do not contain partition columns; 2) The operator of the partition column is not in. When the partitioned table is not a Unique table, and it does not specify the partition, or the partition cannot be inferred from the conditions, the session variable delete_without_partition needs to be true to make delete statement be applied to all partitions.
 
-:::tip Tips
+> **tip**: Tips
 This feature is supported since the Apache Doris 1.2 version
-:::
 
 5. This statement may reduce query efficiency for a period of time after execution. The degree of impact depends on the number of delete conditions specified in the statement. The more conditions you specify, the greater the impact.
 
@@ -184,4 +183,3 @@ This feature is supported since the Apache Doris 1.2 version
     DELETE
 
 ## Best Practice
-

@@ -11,7 +11,6 @@ description: >-
 !!! warning "Deprecation Notice"
     Support for **etcd** has been deprecated in OpenObserve.
 
-
 ## Overview
 
 An etcd cluster needs periodic maintenance to remain reliable. Depending on an etcd application's needs, this maintenance can usually be automated and performed without downtime or significantly degraded performance.

@@ -1,6 +1,5 @@
 ---
 position: 1
-slug: /clickhouse-operator/guides/introduction
 title: 'Introduction'
 keywords: ['kubernetes']
 description: 'This document provides an overview of key concepts and usage patterns for the ClickHouse Operator.'
@@ -81,9 +80,7 @@ Each ClickHouseCluster must have its own dedicated KeeperCluster. You can't shar
 - Multiple ClickHouseClusters can't reference the same KeeperCluster
 - Recreating a ClickHouseCluster requires recreating its KeeperCluster
 
-:::note
-Persistent Volumes aren't deleted automatically when ClickHouseCluster or KeeperCluster resources are deleted.
-:::
+> **note**: Persistent Volumes aren't deleted automatically when ClickHouseCluster or KeeperCluster resources are deleted.
 
 When recreating a cluster:
 1. Delete the ClickHouseCluster resource
@@ -111,9 +108,8 @@ The operator does **not** synchronize:
 
 ### Recommended: Use Replicated database engine {#recommended-use-replicated-database-engine}
 
-:::tip Best practice
+> **tip**: Best practice
 Always use the [Replicated](/docs/engines/database-engines/replicated) database engine for production deployments.
-:::
 
 Benefits:
 - Automatic schema replication across all nodes

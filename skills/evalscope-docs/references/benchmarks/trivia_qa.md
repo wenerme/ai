@@ -1,6 +1,5 @@
 # TriviaQA
 
-
 ## Overview
 
 TriviaQA is a large-scale reading comprehension dataset containing over 650K question-answer-evidence triples. Questions are collected from trivia enthusiast websites and paired with Wikipedia articles as evidence documents.
@@ -28,7 +27,6 @@ TriviaQA is a large-scale reading comprehension dataset containing over 650K que
 - Supports inclusion-based matching for answer comparison
 - Evaluates on validation split
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ TriviaQA is a large-scale reading comprehension dataset containing over 650K que
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -129,5 +126,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

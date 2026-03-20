@@ -74,7 +74,6 @@ print("Headers for call 1 - {}".format(response.headers))
 _response = response.parse()
 print("Total tokens for call - {}".format(_response.usage.total_tokens))
 
-
 # call proxy with key 2 -  works 
 openai_client_2 = OpenAI(api_key=key_2, base_url="http://0.0.0.0:4000")
 
@@ -100,7 +99,6 @@ except RateLimitError as e:
 This was rate limited b/c - Error code: 429 - {'error': {'message': {'error': 'Key=<hashed_token> over available TPM=0. Model TPM=0, Active keys=2'}, 'type': 'None', 'param': 'None', 'code': 429}}
 ```
 
-
 ## [BETA] Set Priority / Reserve Quota
 
 Reserve TPM/RPM capacity for different environments or use cases. This ensures critical production workloads always have guaranteed capacity, while development or lower-priority tasks use remaining quota.
@@ -110,10 +108,7 @@ Reserve TPM/RPM capacity for different environments or use cases. This ensures c
 - Real-time applications vs batch processing
 - Critical services vs experimental features
 
-:::tip
-
-Reserving TPM/RPM on keys based on priority is a premium feature. Please [get an enterprise license](./enterprise.md) for it. 
-:::
+> **tip**: Reserving TPM/RPM on keys based on priority is a premium feature. Please [get an enterprise license](./enterprise.md) for it. 
 
 ### How Priority Reservation Works
 
@@ -304,4 +299,3 @@ This video walks through setting up dynamic rate limiting with priority reservat
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/1b54b93139ee415d959402cc0629f3f7
 " frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-

@@ -1,6 +1,5 @@
 # InfoVQA
 
-
 ## Overview
 
 InfoVQA (Infographic Visual Question Answering) is a benchmark designed to evaluate AI models' ability to answer questions based on information-dense images such as charts, graphs, diagrams, maps, and infographics. It focuses on understanding complex visual information presentations.
@@ -28,7 +27,6 @@ InfoVQA (Infographic Visual Question Answering) is a benchmark designed to evalu
 - Includes OCR text extraction as metadata for analysis
 - Uses same dataset source as DocVQA (InfographicVQA subset)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ InfoVQA (Infographic Visual Question Answering) is a benchmark designed to evalu
 | **Metrics** | `anls` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ InfoVQA (Infographic Visual Question Answering) is a benchmark designed to evalu
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 600x340 - 6250x9375 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -133,5 +129,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

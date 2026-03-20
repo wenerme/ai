@@ -28,9 +28,3 @@ OpenObserve supports ingestion in both JSON and HEC formats.
 
 !!! Note
     Ensure that the log file matches the required format for the selected endpoint. Improperly formatted files will result in ingestion errors.
-
-
-
-
-
-

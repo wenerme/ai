@@ -1,6 +1,5 @@
 ---
 title: Command Line Interface | Guide
-outline: deep
 ---
 
 # Command Line Interface
@@ -25,8 +24,7 @@ Since Vitest 3, you can also specify the test by filename and line number:
 $ vitest basic/foo.test.ts:10
 ```
 
-::: warning
-Note that Vitest requires the full filename for this feature to work. It can be relative to the current working directory or an absolute file path.
+> **warning**: Note that Vitest requires the full filename for this feature to work. It can be relative to the current working directory or an absolute file path.
 
 ```bash
 $ vitest basic/foo.js:10 # ✅
@@ -42,7 +40,6 @@ At the moment Vitest also doesn't support ranges:
 $ vitest basic/foo.test.ts:10, basic/foo.test.ts:25 # ✅
 $ vitest basic/foo.test.ts:10-25 # ❌
 ```
-:::
 
 ### `vitest run`
 
@@ -66,15 +63,13 @@ Useful to run with [`lint-staged`](https://github.com/okonet/lint-staged) or wit
 vitest related /src/index.ts /src/hello-world.js
 ```
 
-::: tip
-Don't forget that Vitest runs with enabled watch mode by default. If you are using tools like `lint-staged`, you  should also pass `--run` option, so that command can exit normally.
+> **tip**: Don't forget that Vitest runs with enabled watch mode by default. If you are using tools like `lint-staged`, you  should also pass `--run` option, so that command can exit normally.
 
 ```js [.lintstagedrc.js]
 export default {
   '*.{js,ts}': 'vitest related --run',
 }
 ```
-:::
 
 ### `vitest bench`
 
@@ -140,8 +135,6 @@ source <(vitest complete zsh)
 
 `@bomb.sh/tab` integrates with [package managers](https://github.com/bombshell-dev/tab?tab=readme-ov-file#package-manager-completions). Autocompletions work when running vitest directly:
 
-::: code-group
-
 ```bash [npm]
 npm vitest <Tab>
 ```
@@ -162,14 +155,11 @@ yarn vitest <Tab>
 bun vitest <Tab>
 ```
 
-:::
-
 For package manager autocompletions, you should install [tab's package manager completions](https://github.com/bombshell-dev/tab?tab=readme-ov-file#package-manager-completions) separately.
 
 ## Options
 
-::: tip
-Vitest supports both camel case and kebab case for [CLI arguments](https://github.com/cacjs/cac#dot-nested-options). For example, `--passWithNoTests` and `--pass-with-no-tests` will both work (`--no-color` and `--inspect-brk` are the exceptions).
+> **tip**: Vitest supports both camel case and kebab case for [CLI arguments](https://github.com/cacjs/cac#dot-nested-options). For example, `--passWithNoTests` and `--pass-with-no-tests` will both work (`--no-color` and `--inspect-brk` are the exceptions).
 
 Vitest also supports different ways of specifying the value: `--reporter dot` and `--reporter=dot` are both valid.
 
@@ -185,9 +175,6 @@ Boolean options can be negated with `no-` prefix. Specifying the value as `false
 vitest --no-api
 vitest --api=false
 ```
-:::
-
-<!--@include: ./cli-generated.md-->
 
 ### changed
 
@@ -220,13 +207,9 @@ vitest run --shard=2/3
 vitest run --shard=3/3
 ```
 
-:::warning
-You cannot use this option with `--watch` enabled (enabled in dev by default).
-:::
+> **warning**: You cannot use this option with `--watch` enabled (enabled in dev by default).
 
-::: tip
-If `--reporter=blob` is used without an output file, the default path will include the current shard config to avoid collisions with other Vitest processes.
-:::
+> **tip**: If `--reporter=blob` is used without an output file, the default path will include the current shard config to avoid collisions with other Vitest processes.
 
 ### merge-reports
 

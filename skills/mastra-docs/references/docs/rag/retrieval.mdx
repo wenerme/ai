@@ -17,9 +17,6 @@ packages:
   - "@mastra/vectorize"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Retrieval in RAG systems
 
 After storing embeddings, you need to retrieve relevant chunks to answer user queries.
@@ -188,12 +185,9 @@ This is particularly useful when:
 
 The Vector Query Tool supports database-specific configurations that enable you to leverage unique features and optimizations of different vector stores.
 
-:::note
-These configurations are for **query-time options** like namespaces, performance tuning, and filtering—not for database connection setup.
+> **note**: These configurations are for **query-time options** like namespaces, performance tuning, and filtering—not for database connection setup.
 
 Connection credentials (URLs, auth tokens) are configured when you instantiate the vector store class (e.g., `new LibSQLVector({ url: '...' })`).
-:::
-
 ```ts
 import { createVectorQueryTool } from '@mastra/rag'
 import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
@@ -289,8 +283,7 @@ For detailed configuration options and advanced usage, see the [Vector Query Too
 Vector store prompts define query patterns and filtering capabilities for each vector database implementation.
 When implementing filtering, these prompts are required in the agent's instructions to specify valid operators and syntax for each vector store implementation.
 
-<Tabs>
-  <TabItem value="pgvector" label="pgVector">
+  
     ```ts
     import { PGVECTOR_PROMPT } from '@mastra/pg'
 
@@ -305,9 +298,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="pinecone" label="Pinecone">
+  
     ```ts title="vector-store.ts"
     import { PINECONE_PROMPT } from '@mastra/pinecone'
 
@@ -322,9 +315,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="qdrant" label="Qdrant">
+  
     ```ts title="vector-store.ts"
     import { QDRANT_PROMPT } from '@mastra/qdrant'
 
@@ -339,9 +332,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="chroma" label="Chroma">
+  
     ```ts title="vector-store.ts"
     import { CHROMA_PROMPT } from '@mastra/chroma'
 
@@ -356,9 +349,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="astra" label="Astra">
+  
     ```ts title="vector-store.ts"
     import { ASTRA_PROMPT } from '@mastra/astra'
 
@@ -373,9 +366,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="libsql" label="libSQL">
+  
     ```ts title="vector-store.ts"
     import { LIBSQL_PROMPT } from '@mastra/libsql'
 
@@ -390,9 +383,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="upstash" label="Upstash">
+  
     ```ts title="vector-store.ts"
     import { UPSTASH_PROMPT } from '@mastra/upstash'
 
@@ -407,9 +400,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="vectorize" label="Vectorize">
+  
     ```ts title="vector-store.ts"
     import { VECTORIZE_PROMPT } from '@mastra/vectorize'
 
@@ -424,9 +417,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="mongodb" label="MongoDB">
+  
     ```ts title="vector-store.ts"
     import { MONGODB_PROMPT } from '@mastra/mongodb'
 
@@ -441,9 +434,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="opensearch" label="OpenSearch">
+  
     ```ts title="vector-store.ts"
     import { OPENSEARCH_PROMPT } from '@mastra/opensearch'
 
@@ -458,9 +451,9 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="s3vectors" label="S3Vectors">
+  
     ```ts title="vector-store.ts"
     import { S3VECTORS_PROMPT } from '@mastra/s3vectors'
 
@@ -475,8 +468,7 @@ When implementing filtering, these prompts are required in the agent's instructi
       tools: { vectorQueryTool },
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
 ### Re-ranking
 
@@ -523,9 +515,7 @@ The weights control how different factors influence the final ranking:
 - `vector`: Higher values favor the original vector similarity scores
 - `position`: Higher values help maintain the original ordering of results
 
-:::note
-For semantic scoring to work properly during re-ranking, each result must include the text content in its `metadata.text` field.
-:::
+> **note**: For semantic scoring to work properly during re-ranking, each result must include the text content in its `metadata.text` field.
 
 You can also use other relevance score providers like Cohere or ZeroEntropy:
 

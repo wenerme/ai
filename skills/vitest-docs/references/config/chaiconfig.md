@@ -1,6 +1,5 @@
 ---
 title: chaiConfig | Config
-outline: deep
 ---
 
 # chaiConfig

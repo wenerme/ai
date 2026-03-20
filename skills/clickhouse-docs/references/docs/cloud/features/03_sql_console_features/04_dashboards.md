@@ -1,24 +1,9 @@
 ---
-sidebar_label: 'Dashboards'
-slug: /cloud/manage/dashboards
 title: 'Dashboards'
 description: 'The SQL Console''s dashboards feature allows you to collect and share visualizations from saved queries.'
 doc_type: 'guide'
 keywords: ['ClickHouse Cloud', 'dashboards', 'data visualization', 'SQL console dashboards', 'cloud analytics']
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
-import Image from '@theme/IdealImage';
-import dashboards_2 from '@site/static/images/cloud/dashboards/2_dashboards.png';
-import dashboards_3 from '@site/static/images/cloud/dashboards/3_dashboards.png';
-import dashboards_4 from '@site/static/images/cloud/dashboards/4_dashboards.png';
-import dashboards_5 from '@site/static/images/cloud/dashboards/5_dashboards.png';
-import dashboards_6 from '@site/static/images/cloud/dashboards/6_dashboards.png';
-import dashboards_7 from '@site/static/images/cloud/dashboards/7_dashboards.png';
-import dashboards_8 from '@site/static/images/cloud/dashboards/8_dashboards.png';
-import dashboards_9 from '@site/static/images/cloud/dashboards/9_dashboards.png';
-import dashboards_10 from '@site/static/images/cloud/dashboards/10_dashboards.png';
-import dashboards_11 from '@site/static/images/cloud/dashboards/11_dashboards.png';
 
 # Dashboards
 

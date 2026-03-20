@@ -11,14 +11,9 @@ description: Use oRPC inside a React Native project
 
 React Native includes a [Fetch API](https://reactnative.dev/docs/network), so you can use oRPC out of the box.
 
-::: warning
-However, the Fetch API in React Native has limitations. oRPC features like [File/Blob](/docs/file-upload-download), and [Event Iterator](/docs/event-iterator) aren't supported. Follow [Support Stream #27741](https://github.com/facebook/react-native/issues/27741) for updates.
-:::
+> **warning**: However, the Fetch API in React Native has limitations. oRPC features like [File/Blob](/docs/file-upload-download), and [Event Iterator](/docs/event-iterator) aren't supported. Follow [Support Stream #27741](https://github.com/facebook/react-native/issues/27741) for updates.
 
-::: tip
-If you're using `RPCHandler/Link`, you can temporarily add support for binary data by extending the [RPC JSON Serializer](/docs/advanced/rpc-json-serializer#extending-native-data-types) to encode these types as Base64.
-:::
-
+> **tip**: If you're using `RPCHandler/Link`, you can temporarily add support for binary data by extending the [RPC JSON Serializer](/docs/advanced/rpc-json-serializer#extending-native-data-types) to encode these types as Base64.
 ```ts
 import { RPCLink } from '@orpc/client/fetch'
 
@@ -31,9 +26,7 @@ const link = new RPCLink({
 })
 ```
 
-::: info
-The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or another custom link.
-:::
+> **info**: The `link` can be any supported oRPC link, such as [RPCLink](/docs/client/rpc-link), [OpenAPILink](/docs/openapi/client/openapi-link), or another custom link.
 
 ### `expo/fetch`
 

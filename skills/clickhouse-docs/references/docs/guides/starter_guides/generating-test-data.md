@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Generating random test data'
 title: 'Generating random test data in ClickHouse'
-slug: /guides/generating-test-data
 description: 'Learn about Generating Random Test Data in ClickHouse'
 show_related_blogs: true
 doc_type: 'guide'
@@ -141,9 +139,7 @@ FROM numbers(20000);
 * Random array length between 1–3
 * Three per-user scores for each interest
 
-:::tip
-Read the [Generating Random Data in ClickHouse](https://clickhouse.com/blog/generating-random-test-distribution-data-for-clickhouse) blog for even more examples.
-:::
+> **tip**: Read the [Generating Random Data in ClickHouse](https://clickhouse.com/blog/generating-random-test-distribution-data-for-clickhouse) blog for even more examples.
 
 ## Generating random tables {#generating-random-tables}
 

@@ -1,34 +1,10 @@
 ---
 description: 'Learn how to load OpenCelliD data into ClickHouse, connect Apache Superset
   to ClickHouse and build a dashboard based on data'
-sidebar_label: 'Cell towers'
-slug: /getting-started/example-datasets/cell-towers
 title: 'Geo Data using the Cell Tower Dataset'
 keywords: ['cell tower data', 'geo data', 'OpenCelliD', 'geospatial dataset', 'getting started']
 doc_type: 'guide'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-import ActionsMenu from '@site/docs/_snippets/_service_actions_menu.md';
-import SQLConsoleDetail from '@site/docs/_snippets/_launch_sql_console.md';
-import SupersetDocker from '@site/docs/_snippets/_add_superset_detail.md';
-import cloud_load_data_sample from '@site/static/images/_snippets/cloud-load-data-sample.png';
-import cell_towers_1 from '@site/static/images/getting-started/example-datasets/superset-cell-tower-dashboard.png'
-import add_a_database from '@site/static/images/getting-started/example-datasets/superset-add.png'
-import choose_clickhouse_connect from '@site/static/images/getting-started/example-datasets/superset-choose-a-database.png'
-import add_clickhouse_as_superset_datasource from '@site/static/images/getting-started/example-datasets/superset-connect-a-database.png'
-import add_cell_towers_table_as_dataset from '@site/static/images/getting-started/example-datasets/superset-add-dataset.png'
-import create_a_map_in_superset from '@site/static/images/getting-started/example-datasets/superset-create-map.png'
-import specify_long_and_lat from '@site/static/images/getting-started/example-datasets/superset-lon-lat.png'
-import superset_mcc_2024 from '@site/static/images/getting-started/example-datasets/superset-mcc-204.png'
-import superset_radio_umts from '@site/static/images/getting-started/example-datasets/superset-radio-umts.png'
-import superset_umts_netherlands from '@site/static/images/getting-started/example-datasets/superset-umts-netherlands.png'
-import superset_cell_tower_dashboard from '@site/static/images/getting-started/example-datasets/superset-cell-tower-dashboard.png'
 
 ## Goal {#goal}
 
@@ -48,9 +24,6 @@ This dataset is from [OpenCelliD](https://www.opencellid.org/) - The world's lar
 As of 2021, it contains more than 40 million records about cell towers (GSM, LTE, UMTS, etc.) around the world with their geographical coordinates and metadata (country code, network, etc.).
 
 OpenCelliD Project is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License, and we redistribute a snapshot of this dataset under the terms of the same license. The up-to-date version of the dataset is available to download after sign in.
-
-<Tabs groupId="deployMethod">
-<TabItem value="serverless" label="ClickHouse Cloud" default>
 
 ### Load the sample data {#load-the-sample-data}
 
@@ -88,9 +61,6 @@ This is the output of `DESCRIBE`.  Down further in this guide the field type cho
 └───────────────┴───────────────────────────────────────────────────────────────────────┴
 ```
 
-</TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
-
 1. Create a table:
 
 ```sql
@@ -119,9 +89,6 @@ ENGINE = MergeTree ORDER BY (radio, mcc, net, created);
 ```sql
 INSERT INTO cell_towers SELECT * FROM s3('https://datasets-documentation.s3.amazonaws.com/cell_towers/cell_towers.csv.xz', 'CSVWithNames')
 ```
-
-</TabItem>
-</Tabs>
 
 ## Run some example queries {#examples}
 
@@ -174,24 +141,15 @@ Using the [`pointInPolygon`](/sql-reference/functions/geo/coordinates.md/#pointi
 
 1. Create a table where we will store polygons:
 
-<Tabs groupId="deployMethod">
-<TabItem value="serverless" label="ClickHouse Cloud" default>
-
 ```sql
 CREATE TABLE moscow (polygon Array(Tuple(Float64, Float64)))
 ORDER BY polygon;
 ```
 
-</TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
-
 ```sql
 CREATE TEMPORARY TABLE
 moscow (polygon Array(Tuple(Float64, Float64)));
 ```
-
-</TabItem>
-</Tabs>
 
 2. This is a rough shape of Moscow (without "new Moscow"):
 
@@ -274,9 +232,8 @@ Here is a description of the columns taken from the OpenCelliD forum:
 | lon          | Longitude: With Latitude, approximate tower location   |
 | lat          | Latitude: With Longitude, approximate tower location   |
 
-:::tip mcc
+> **tip**: mcc
 To find your MCC check [Mobile network codes](https://en.wikipedia.org/wiki/Mobile_country_code), and use the three digits in the **Mobile country code** column.
-:::
 
 The schema for this table was designed for compact storage on disk and query speed.
 - The `radio` data is stored as an `Enum8` (`UInt8`) rather than a string.
@@ -309,15 +266,11 @@ To build a Superset dashboard using the OpenCelliD dataset you should:
 
   <Image img={choose_clickhouse_connect} size="md" alt="Choose clickhouse connect as database type"/>
 
-:::note
-  If **ClickHouse Connect** isn't one of your options, then you will need to install it. The command is `pip install clickhouse-connect`, and more info is [available here](https://pypi.org/project/clickhouse-connect/).
-:::
+> **note**: If **ClickHouse Connect** isn't one of your options, then you will need to install it. The command is `pip install clickhouse-connect`, and more info is [available here](https://pypi.org/project/clickhouse-connect/).
 
 #### Add your connection details {#add-your-connection-details}
 
-:::tip
-  Make sure that you set **SSL** on when connecting to ClickHouse Cloud or other ClickHouse systems that enforce the use of SSL.
-:::
+> **tip**: Make sure that you set **SSL** on when connecting to ClickHouse Cloud or other ClickHouse systems that enforce the use of SSL.
 
   <Image img={add_clickhouse_as_superset_datasource} size="md" alt="Add ClickHouse as a Superset data source"/>
 
@@ -361,10 +314,8 @@ This screenshot shows cell tower locations with LTE, UMTS, and GSM radios.  The 
 
 <Image img={superset_cell_tower_dashboard} size="md" alt="Dashboard of cell towers by radio type in mcc 204"/>
 
-:::tip
-The data is also available for interactive queries in the [Playground](https://sql.clickhouse.com).
+> **tip**: The data is also available for interactive queries in the [Playground](https://sql.clickhouse.com).
 
 This [example](https://sql.clickhouse.com?query_id=UV8M4MAGS2PWAUOAYAAARM) will populate the username and even the query for you.
 
 Although you can't create tables in the Playground, you can run all of the queries and even use Superset (adjust the host name and port number).
-:::

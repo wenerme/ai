@@ -1,7 +1,5 @@
 ---
 title: 'Infrastructure Configuration'
-slug: /cloud/reference/byoc/configurations
-sidebar_label: 'Infrastructure Configuration'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'infrastructure', 'configuration']
 description: 'Configure load balancers, node groups, and other BYOC infrastructure components'
 doc_type: 'reference'
@@ -42,9 +40,7 @@ To set up the security group for your private load balancer:
 - **PrivateLink**: No security group changes required, as traffic isn't governed by the load balancer's security group.
 - **Other network setups**: Specify your scenario so support can assist accordingly.
 
-:::note
-All changes to private load balancer security groups must be performed by ClickHouse Support. This ensures configuration consistency and avoids conflicts within the ClickHouse Cloud-managed environment.
-:::
+> **note**: All changes to private load balancer security groups must be performed by ClickHouse Support. This ensures configuration consistency and avoids conflicts within the ClickHouse Cloud-managed environment.
 
 ## PrivateLink or Private Service Connect {#privatelink-or-private-service-connect}
 
@@ -56,9 +52,7 @@ For step-by-step setup instructions, see the [Private Networking Setup guide](/c
 
 By default, the Kubernetes API server endpoint for your BYOC cluster is accessible from the public internet, but access is restricted with IP filtering to allow only ClickHouse NAT Gateway IPs. For stronger security, you can restrict the Kubernetes API server so that it is accessible exclusively through private network connections using Tailscale.
 
-:::note
-If you rely solely on Tailscale for private connectivity, there is a risk that ClickHouse Support will lose access to your environment if the Tailscale agent becomes unavailable. This could delay troubleshooting or support response times.
-:::
+> **note**: If you rely solely on Tailscale for private connectivity, there is a risk that ClickHouse Support will lose access to your environment if the Tailscale agent becomes unavailable. This could delay troubleshooting or support response times.
 
 **Contact ClickHouse Support** to request configuration of a private API endpoint.
 
@@ -89,9 +83,7 @@ Need specialized resources or architectures? The following customizations are av
 
 > **Note:** Spot (preemptable) instances are _not_ supported; all BYOC node groups run on on-demand instances by default.
 
-:::note
-All node group customization and configuration changes must be coordinated through ClickHouse Support. This ensures compatibility, stability, and optimal performance.
-:::
+> **note**: All node group customization and configuration changes must be coordinated through ClickHouse Support. This ensures compatibility, stability, and optimal performance.
 
 ### Automatic Scaling {#auto-scaling}
 

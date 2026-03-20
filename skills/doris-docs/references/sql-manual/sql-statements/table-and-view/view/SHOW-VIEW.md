@@ -29,4 +29,3 @@ grammar:
     SHOW, VIEW
 
 ## Best Practice
-

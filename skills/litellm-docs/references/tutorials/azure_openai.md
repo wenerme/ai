@@ -4,7 +4,7 @@
 * [Supported Azure OpenAI LLMs](https://docs.litellm.ai/docs/providers/azure)
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/LiteLLM_Azure_and_OpenAI_example.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ## Completion() - Quick Start
@@ -19,8 +19,6 @@ os.environ["OPENAI_API_KEY"] = ""
 os.environ["AZURE_API_KEY"] = ""
 os.environ["AZURE_API_BASE"] = "https://openai-gpt-4-test-v-1.openai.azure.com/"
 os.environ["AZURE_API_VERSION"] = "2023-05-15"
-
-
 
 # openai call
 response = completion(
@@ -51,8 +49,6 @@ os.environ["OPENAI_API_KEY"] = ""
 os.environ["AZURE_API_KEY"] = ""
 os.environ["AZURE_API_BASE"] = "https://openai-gpt-4-test-v-1.openai.azure.com/"
 os.environ["AZURE_API_VERSION"] = "2023-05-15"
-
-
 
 # openai call
 response = completion(
@@ -88,8 +84,6 @@ os.environ["OPENAI_API_KEY"] = ""
 os.environ["AZURE_API_KEY"] = ""
 os.environ["AZURE_API_BASE"] = "https://openai-gpt-4-test-v-1.openai.azure.com/"
 os.environ["AZURE_API_VERSION"] = "2023-05-15"
-
-
 
 # openai call
 response = acompletion(

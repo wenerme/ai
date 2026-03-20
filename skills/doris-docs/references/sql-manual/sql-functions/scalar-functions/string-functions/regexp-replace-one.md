@@ -53,7 +53,6 @@ mysql> SELECT regexp_replace_one('a b c', ' ', '-');
 
 Replace the first matched group.Here, the input string <str> is 'a b b', the regular expression pattern <pattern> is '(b)', which is a capturing group that matches the character 'b'. The replacement string <repl> is '<\1>', where \1 refers to the first capturing group (in this case, the matched 'b'). The function finds the first occurrence of 'b' in the string 'a b b' and replaces it with '<b>'. Thus, the output is 'a <b> b'.
 
-
 ```sql
 mysql> SELECT regexp_replace_one('a b b', '(b)', '<\\1>');
 +----------------------------------------+
@@ -128,7 +127,6 @@ SELECT regexp_replace_one('😀😊😀', '😀|😊', '[SMILE]');
 | [SMILE]😊😀                                                    |
 +------------------------------------------------------------+
 ```
-
 
 'str' is NULL,return NULL
 ```sql

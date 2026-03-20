@@ -1,22 +1,9 @@
 ---
 title: 'AWS PrivateLink'
 description: 'This document describes how to connect to ClickHouse Cloud using AWS PrivateLink.'
-slug: /manage/security/aws-privatelink
 keywords: ['PrivateLink']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge';
-import aws_private_link_pecreate from '@site/static/images/cloud/security/aws-privatelink-pe-create.png';
-import aws_private_link_endpoint_settings from '@site/static/images/cloud/security/aws-privatelink-endpoint-settings.png';
-import aws_private_link_select_vpc from '@site/static/images/cloud/security/aws-privatelink-select-vpc-and-subnets.png';
-import aws_private_link_vpc_endpoint_id from '@site/static/images/cloud/security/aws-privatelink-vpc-endpoint-id.png';
-import aws_private_link_endpoints_menu from '@site/static/images/cloud/security/aws-privatelink-endpoints-menu.png';
-import aws_private_link_modify_dnsname from '@site/static/images/cloud/security/aws-privatelink-modify-dns-name.png';
-import pe_remove_private_endpoint from '@site/static/images/cloud/security/pe-remove-private-endpoint.png';
-import aws_private_link_pe_filters from '@site/static/images/cloud/security/aws-privatelink-pe-filters.png';
-import aws_private_link_ped_nsname from '@site/static/images/cloud/security/aws-privatelink-pe-dns-name.png';
 
 # AWS PrivateLink
 
@@ -26,8 +13,7 @@ You can use [AWS PrivateLink](https://aws.amazon.com/privatelink/) to establish 
 
 To restrict access to your ClickHouse Cloud services exclusively through AWS PrivateLink addresses, follow the instructions provided by ClickHouse Cloud [IP Access Lists](/cloud/security/setting-ip-filters).
 
-:::note
-ClickHouse Cloud supports [cross-region PrivateLink](https://aws.amazon.com/about-aws/whats-new/2024/11/aws-privatelink-across-region-connectivity/) from the following regions:
+> **note**: ClickHouse Cloud supports [cross-region PrivateLink](https://aws.amazon.com/about-aws/whats-new/2024/11/aws-privatelink-across-region-connectivity/) from the following regions:
 - sa-east-1
 - il-central-1
 - me-central-1
@@ -58,7 +44,6 @@ ClickHouse Cloud supports [cross-region PrivateLink](https://aws.amazon.com/abou
 - us-east-2
 - us-east-1
 Pricing considerations: AWS will charge users for cross region data transfer, see pricing [here](https://aws.amazon.com/privatelink/pricing/).
-:::
 
 **Please complete the following to enable AWS PrivateLink**:
 1. Obtain Endpoint "Service name".
@@ -135,13 +120,11 @@ Make a note of the `endpointServiceId` and `privateDnsHostname` [move onto next 
 
 ### Create AWS endpoint {#create-aws-endpoint}
 
-:::important
-This section covers ClickHouse-specific details for configuring ClickHouse via AWS PrivateLink. AWS-specific steps are provided as a reference to guide you on where to look, but they may change over time without notice from the AWS cloud provider. Please consider AWS configuration based on your specific use case.  
+> **important**: This section covers ClickHouse-specific details for configuring ClickHouse via AWS PrivateLink. AWS-specific steps are provided as a reference to guide you on where to look, but they may change over time without notice from the AWS cloud provider. Please consider AWS configuration based on your specific use case.  
 
 Please note that ClickHouse isn't responsible for configuring the required AWS VPC endpoints, security group rules or DNS records.  
 
 If you previously enabled "private DNS names" while setting up PrivateLink and are experiencing difficulties configuring new services via PrivateLink, please contact ClickHouse support. For any other issues related to AWS configuration tasks, contact AWS Support directly.
-:::
 
 #### Option 1: AWS console {#option-1-aws-console}
 
@@ -161,9 +144,7 @@ Next, select your VPC and subnets:
 
 As an optional step, assign Security groups/Tags:
 
-:::note
-Make sure that ports `443`, `8443`, `9440`, `3306` are allowed in the security group.
-:::
+> **note**: Make sure that ports `443`, `8443`, `9440`, `3306` are allowed in the security group.
 
 After creating the VPC Endpoint, make a note of the `Endpoint ID` value; you'll need it for an upcoming step.
 
@@ -217,9 +198,7 @@ After creating the VPC Endpoint, make a note of the `Endpoint ID` value; you'll 
 
 #### Set private DNS name for endpoint {#set-private-dns-name-for-endpoint}
 
-:::note
-There are various ways to configure DNS. Please set up DNS according to your specific use case.
-:::
+> **note**: There are various ways to configure DNS. Please set up DNS according to your specific use case.
 
 You need to point "DNS name", taken from [Obtain Endpoint "Service name" ](#obtain-endpoint-service-info) step, to AWS Endpoint network interfaces. This ensures that services/components within your VPC/Network can resolve it properly.
 
@@ -229,9 +208,7 @@ You need to point "DNS name", taken from [Obtain Endpoint "Service name" ](#obta
 
 To add, please navigate to the ClickHouse Cloud console, open the service that you would like to connect via PrivateLink then navigate to **Settings**. Click **Set up private endpoint** to open private endpoints settings. Enter the `Endpoint ID` obtained from the [Create AWS Endpoint](#create-aws-endpoint) step. Click "Create endpoint".
 
-:::note
-If you want to allow access from an existing PrivateLink connection, use the existing endpoint drop-down menu.
-:::
+> **note**: If you want to allow access from an existing PrivateLink connection, use the existing endpoint drop-down menu.
 
 <Image img={aws_private_link_pe_filters} size="md" alt="Private Endpoints Filter" border/>
 

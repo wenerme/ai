@@ -1,7 +1,4 @@
 ---
-slug: /integrations/s3
-sidebar_position: 1
-sidebar_label: 'Integrating S3 with ClickHouse'
 title: 'Integrating S3 with ClickHouse'
 description: 'Page describing how to integrate S3 with ClickHouse'
 keywords: ['Amazon S3', 'object storage', 'cloud storage', 'data lake', 'S3 integration']
@@ -10,12 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_ingestion'
 ---
-
-import BucketDetails from '@site/docs/_snippets/_S3_authentication_and_bucket.md';
-import S3J from '@site/static/images/integrations/data-ingestion/s3/s3-j.png';
-import Bucket1 from '@site/static/images/integrations/data-ingestion/s3/bucket1.png';
-import Bucket2 from '@site/static/images/integrations/data-ingestion/s3/bucket2.png';
-import Image from '@theme/IdealImage';
 
 # Integrating S3 with ClickHouse
 
@@ -233,9 +224,7 @@ If network security policies prevent your ClickHouse cluster from making outboun
 clickhouse-local --query "INSERT INTO TABLE FUNCTION remote('localhost:9000', 'default.trips', 'username', 'password') (*) SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/nyc-taxi/trips_*.gz', 'TabSeparatedWithNames') LIMIT 10"
 ```
 
-:::note
-To execute this over a secure SSL connection, utilize the `remoteSecure` function.
-:::
+> **note**: To execute this over a secure SSL connection, utilize the `remoteSecure` function.
 
 ### Exporting data {#exporting-data}
 
@@ -494,8 +483,8 @@ In the previous examples, we have passed credentials in the `s3` function or `S3
                 <endpoint>https://dalem-files.s3.amazonaws.com/test/</endpoint>
                 <access_key_id>key</access_key_id>
                 <secret_access_key>secret</secret_access_key>
-                <!-- <use_environment_credentials>false</use_environment_credentials> -->
-                <!-- <header>Authorization: Bearer SOME-TOKEN</header> -->
+                
+                
             </endpoint-name>
         </s3>
     </clickhouse>
@@ -727,15 +716,13 @@ vim /etc/clickhouse-server/config.d/storage_config.xml
 </clickhouse>
 ```
 
-:::note
-The tags `s3_disk` and `s3_cache` within the `<disks>` tag are arbitrary labels. These can be set to something else but the same label must be used in the `<disk>` tab under the `<policies>` tab to reference the disk.
+> **note**: The tags `s3_disk` and `s3_cache` within the `<disks>` tag are arbitrary labels. These can be set to something else but the same label must be used in the `<disk>` tab under the `<policies>` tab to reference the disk.
 The `<S3_main>` tag is also arbitrary and is the name of the policy which will be used as the identifier storage target when creating resources in ClickHouse.
 
 The configuration shown above is for ClickHouse version 22.8 or higher, if you're using an older version please see the [storing data](/operations/storing-data.md/#using-local-cache) docs.
 
 For more information about using S3:
 Integrations Guide: [S3 Backed MergeTree](#s3-backed-mergetree)
-:::
 
 3. Update the owner of the file to the `clickhouse` user and group
 ```bash
@@ -816,9 +803,7 @@ You should see something like the following:
 
 ## Replicating a single shard across two AWS regions using S3 Object Storage {#s3-multi-region}
 
-:::tip
-Object storage is used by default in ClickHouse Cloud, you don't need to follow this procedure if you're running in ClickHouse Cloud.
-:::
+> **tip**: Object storage is used by default in ClickHouse Cloud, you don't need to follow this procedure if you're running in ClickHouse Cloud.
 
 ### Plan the deployment {#plan-the-deployment}
 This tutorial is based on deploying two ClickHouse Server nodes and three ClickHouse Keeper nodes in AWS EC2.  The data store for the ClickHouse servers is S3. Two AWS regions, with a ClickHouse Server and an S3 Bucket in each region, are used in order to support disaster recovery.
@@ -885,9 +870,7 @@ The configuration files will then be placed in `/etc/clickhouse-server/config.d/
    </storage_configuration>
 </clickhouse>
 ```
-:::note
-Many of the steps in this guide will ask you to place a configuration file in `/etc/clickhouse-server/config.d/`.  This is the default location on Linux systems for configuration override files.  When you put these files into that directory ClickHouse will use the content to override the default configuration.  By placing these files in the override directory you will avoid losing your configuration during an upgrade.
-:::
+> **note**: Many of the steps in this guide will ask you to place a configuration file in `/etc/clickhouse-server/config.d/`.  This is the default location on Linux systems for configuration override files.  When you put these files into that directory ClickHouse will use the content to override the default configuration.  By placing these files in the override directory you will avoid losing your configuration during an upgrade.
 
 ### Configure ClickHouse Keeper {#configure-clickhouse-keeper}
 
@@ -986,9 +969,7 @@ When working with clusters it is handy to define macros that populate DDL querie
     </macros>
 </clickhouse>
 ```
-:::note
-The above macros are for `chnode1`, on `chnode2` set `replica` to `replica_2`.
-:::
+> **note**: The above macros are for `chnode1`, on `chnode2` set `replica` to `replica_2`.
 
 #### Disable zero-copy replication {#disable-zero-copy-replication}
 
@@ -1225,9 +1206,7 @@ These tests will verify that data is being replicated across the two servers, an
 
 You could refer to this [blog](https://aws.amazon.com/blogs/storage/clickhouse-cloud-amazon-s3-express-one-zone-making-a-blazing-fast-analytical-database-even-faster/) to read about our experience testing S3Express with ClickHouse.
 
-:::note
-  S3Express stores data within a single AZ. It means data will be unavailable in case of AZ outage.
-:::
+> **note**: S3Express stores data within a single AZ. It means data will be unavailable in case of AZ outage.
 
 ### S3 disk {#s3-disk}
 

@@ -33,7 +33,7 @@ export default {
 } satisfies Reporter
 ```
 
-::: danger BEWARE
+> **danger**: BEWARE
 Vitest uses different methods to communicate with the Node.js process.
 
 - If Vitest runs tests inside worker threads, it will send data via [message port](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort)
@@ -43,7 +43,6 @@ Vitest uses different methods to communicate with the Node.js process.
 This property is also present on every test in the `json` reporter, so make sure that data can be serialized into JSON.
 
 Also, make sure you serialize [Error properties](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#error_types) before you set them.
-:::
 
 You can also get this information from Vitest state when tests finished running:
 

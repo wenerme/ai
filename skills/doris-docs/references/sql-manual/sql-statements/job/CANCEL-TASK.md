@@ -37,7 +37,6 @@ The user executing this SQL command must have at least ADMIN_PRIV privileges.
 
 Cancel a background task with jobName 'example' and taskId 378912.
 
-
 ```sql
 CANCEL TASK WHERE jobName='example' AND taskId=378912
 ```

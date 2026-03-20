@@ -1,7 +1,5 @@
 ---
 date: "2022-04-14T00:00:00+00:00"
-slug: "helm"
-sidebar_position: 50
 ---
 
 # Helm Chart Registry

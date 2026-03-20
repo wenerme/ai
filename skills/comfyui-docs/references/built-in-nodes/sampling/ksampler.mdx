@@ -1,11 +1,9 @@
 ---
 title: "Ksampler - ComfyUI Built-in Node Documentation"
 description: "The Ksampler node is a commonly used sampling node in ComfyUI."
-sidebarTitle: "Ksampler"
-icon: "circle"
 ---
 
-![Ksampler](/images/built-in-nodes/sampling/ksampler.jpg)
+[Ksampler]
 
 The KSampler node performs multi-step denoising sampling on latent images. It combines positive and negative conditions (prompts) and uses specified sampling algorithms and schedulers to generate high-quality latent images. It is commonly used in AI image generation workflows like text-to-image and image-to-image.
 
@@ -32,12 +30,9 @@ The KSampler node performs multi-step denoising sampling on latent images. It co
 
 ## Usage Examples
 
-<Card title="Stable diffusion 1.5 Text-to-Image Workflow Example" icon="book" href="/tutorials/basic/text-to-image">
 Stable diffusion 1.5 Text-to-Image Workflow Example
-</Card>
-<Card title="Stable diffusion 1.5 Image-to-Image Workflow Example" icon="book" href="/tutorials/basic/image-to-image">
+
 Stable diffusion 1.5 Image-to-Image Workflow Example
-</Card>
 
 ## Source Code
 
@@ -67,7 +62,6 @@ def common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, 
     out = latent.copy()
     out["samples"] = samples
     return (out, )
-
 
 class KSampler:
     @classmethod

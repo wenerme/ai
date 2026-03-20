@@ -35,7 +35,7 @@ The following table lists the CSV format parameters supported by various loading
 | Trim Double Quotes | false | trim_double_quotes | Not supported | PROPERTIES.trim_double_quotes | Not supported | trim_double_quotes |
 | Compression Format | plain | compress_type | PROPERTIES.compress_type | Not supported | Not supported | compress_type |
 
-:::tip Note
+> **tip**: Note
 1. Stream Load: Parameters are specified directly through HTTP Headers, e.g., `-H "line_delimiter:\n"`
 2. Broker Load: Parameters are specified in SQL statements, where:
    - Delimiters are specified through `COLUMNS TERMINATED BY`, `LINES TERMINATED BY`
@@ -47,7 +47,6 @@ The following table lists the CSV format parameters supported by various loading
    - Delimiters are specified through `LINES TERMINATED BY`, `COLUMNS TERMINATED BY`
    - Other parameters are specified through `PROPERTIES`, e.g., `PROPERTIES("escape"="\\")`
 5. TVF: Parameters are specified in TVF statements, e.g., `S3("line_delimiter"="\n")`
-:::
 
 ### Parameter Description
 

@@ -1,11 +1,7 @@
 # Volcano Engine (Volcengine)
 https://www.volcengine.com/docs/82379/1263482
 
-:::tip
-
-**We support ALL Volcengine models including Chat and Embeddings, just set `model=volcengine/<any-model-on-volcengine>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL Volcengine models including Chat and Embeddings, just set `model=volcengine/<any-model-on-volcengine>` as a prefix when sending litellm requests**
 
 ## API Key
 ```python

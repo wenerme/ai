@@ -30,10 +30,8 @@ Those will continue to use the default system language. There are also many
 non-GUI elements in Ghostty that are not translated - this setting will have
 no effect on those.
 
-<Warning>
  This setting cannot be reloaded at runtime. To change the language
 you must fully restart Ghostty.
-</Warning>
 
 GTK only.
 Available since 1.3.0.
@@ -140,12 +138,10 @@ instead if the requested style is not available. If the font has the
 requested style, then the font will be used as-is since the style is
 not synthetic.
 
-<Warning>
  An easy mistake is to disable `bold` or `italic` but not
 `bold-italic`. Disabling only `bold` or `italic` will NOT disable either
 in the `bold-italic` style. If you want to disable `bold-italic`, you must
 explicitly disable it. You cannot partially disable `bold-italic`.
-</Warning>
 
 By default, synthetic styles are enabled.
 
@@ -259,9 +255,7 @@ This configuration can be repeated multiple times to specify multiple
 mappings. Later entries take priority over earlier ones for overlapping
 ranges.
 
-<Note>
  This only applies to text copying operations, not URL copying.
-</Note>
 
 ## `font-thicken`
 
@@ -570,12 +564,10 @@ The background image is currently per-terminal, not per-window. If
 you are a heavy split user, the background image will be repeated across
 splits. A future improvement to Ghostty will address this.
 
-<Warning>
  Background images are currently duplicated in VRAM per-terminal.
 For sufficiently large images, this could lead to a large increase in
 memory usage (specifically VRAM usage). A future Ghostty improvement
 will resolve this by sharing image textures across terminals.
-</Warning>
 
 Available since: 1.2.0
 
@@ -1032,13 +1024,11 @@ Supported on macOS and on some Linux desktop environments, including:
 
   * KDE Plasma (Wayland and X11)
 
-<Warning>
  the exact blur intensity is _ignored_ under KDE Plasma, and setting
 this setting to either `true` or any positive blur intensity value would
 achieve the same effect. The reason is that KWin, the window compositor
 powering Plasma, only has one global blur setting and does not allow
 applications to specify individual blur settings.
-</Warning>
 
 To configure KWin's global blur setting, open System Settings and go to
 "Apps & Windows" > "Window Management" > "Desktop Effects" and select the
@@ -1613,11 +1603,9 @@ Valid modifiers are `shift`, `ctrl` (alias: `control`), `alt` (alias: `opt`,
 or the alias. When debugging keybinds, the non-aliased modifier will always
 be used in output.
 
-<Note>
  The fn or "globe" key on keyboards are not supported as a
 modifier. This is a limitation of the operating systems and GUI toolkits
 that Ghostty uses.
-</Note>
 
 Some additional notes for triggers:
 
@@ -1635,11 +1623,9 @@ user presses `ctrl+a` followed separately by `n`. In other software, this
 is sometimes called a leader key, a key chord, a key table, etc. There
 is no hardcoded limit on the number of parts in a sequence.
 
-<Warning>
  If you define a sequence as a CLI argument to `ghostty`,
 you probably have to quote the keybind since `>` is a special character
 in most shells. Example: ghostty --keybind='ctrl+a>n=new_window'
-</Warning>
 
 A trigger sequence has some special handling:
 
@@ -1772,9 +1758,7 @@ Multiple prefixes can be specified. For example,
 `global:unconsumed:ctrl+a=reload_config` will make the keybind global
 and not consume the input to reload the config.
 
-<Note>
  `global:` is only supported on macOS and certain Linux platforms.
-</Note>
 
 On macOS, this feature requires accessibility permissions to be granted
 to Ghostty. When a `global:` keybind is specified and Ghostty is launched
@@ -2407,7 +2391,6 @@ Valid values are:
   * `allow`
   * `deny`
 
-
 ## `clipboard-trim-trailing-spaces`
 
 Trims trailing whitespace on data that is copied to the clipboard. This does
@@ -2978,11 +2961,9 @@ need KAM, you don't need it.
 Custom shaders to run after the default shaders. This is a file path
 to a GLSL-syntax shader for all platforms.
 
-<Warning>
  Invalid shaders can cause Ghostty to become unusable such as by
 causing the window to be completely black. If this happens, you can
 unset this configuration to disable the shader.
-</Warning>
 
 Custom shader support is based on and compatible with the Shadertoy shaders.
 Shaders should specify a `mainImage` function and the available uniforms
@@ -3414,10 +3395,8 @@ Available values:
   * `never` - The macOS app is never hidden.
   * `always` - The macOS app is always hidden.
 
-<Note>
  When the macOS application is hidden, keyboard layout changes
 will no longer be automatic. This is a limitation of macOS.
-</Note>
 
 Available since: 1.2.0
 
@@ -3487,11 +3466,9 @@ Valid values:
    The `macos-icon-ghost-color` and `macos-icon-screen-color`
    configurations are required for this style.
 
-<Warning>
  The `custom-style` option is _experimental_. We may change
 the format of the custom styles in the future. We're still finalizing
 the exact layers and customization options that will be available.
-</Warning>
 
 Other caveats:
 
@@ -3518,19 +3495,15 @@ Valid values:
  * `plastic` - A glossy, dark plastic frame.
  * `chrome` - A shiny chrome frame.
 
-<Note>
  This configuration is required when `macos-icon` is set to
 `custom-style`.
-</Note>
 
 ## `macos-icon-ghost-color`
 
 The color of the ghost in the macOS app icon.
 
-<Note>
  This configuration is required when `macos-icon` is set to
 `custom-style`.
-</Note>
 
 Specified as either hex (`#RRGGBB` or `RRGGBB`) or a named X11 color.
 
@@ -3544,10 +3517,8 @@ specified as either hex (`#RRGGBB` or `RRGGBB`) or as named X11
 colors. The first color is the bottom of the gradient and the last
 color is the top of the gradient.
 
-<Note>
  This configuration is required when `macos-icon` is set to
 `custom-style`.
-</Note>
 
 ## `macos-shortcuts`
 

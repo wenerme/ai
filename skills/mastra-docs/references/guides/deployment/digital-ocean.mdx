@@ -3,18 +3,11 @@ title: "Deploy Mastra to Digital Ocean | Deployment"
 description: "Deploy your Mastra applications to Digital Ocean."
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Deploy Mastra to Digital Ocean
 
 This guide covers Digital Ocean's App Platform and Droplets. Each of these offerings has its own set of strengths and is suited for different types of projects and developer expertise. Read [Digital Ocean's comparison](https://www.digitalocean.com/community/conceptual-articles/digitalocean-app-platform-vs-doks-vs-droplets) to understand the differences and choose the best option for your project.
 
-:::info
-This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
-:::
+> **info**: This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
 
 ## Before you begin
 
@@ -26,7 +19,6 @@ The **App Platform** uses an ephemeral filesystem, so any storage you configure 
 
 After setting up your project, push it to your remote Git provider of choice (e.g. GitHub).
 
-<Steps>
   <StepItem>
     Follow the official [App Platform quickstart](https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/#create-an-app). It'll guide you through connecting your repository, selecting the branch to deploy from, and configuring the source directory if necessary.
   </StepItem>
@@ -54,7 +46,6 @@ After setting up your project, push it to your remote Git provider of choice (e.
     Set up [authentication](/docs/server/auth) before exposing your endpoints publicly.
     :::
   </StepItem>
-</Steps>
 
 ## Droplets
 
@@ -70,23 +61,22 @@ After setting up your project, push it to your remote Git provider of choice (e.
 
 After setting up your project, push it to your remote Git provider of choice (e.g. GitHub). Connect to your Droplet and make sure `git` is installed.
 
-<Steps>
   <StepItem>
     Clone your repository:
 
-    <Tabs>
-      <TabItem value="public" label="Public Repository">
+    
+      
         ```bash
         git clone https://github.com/<your-username>/<your-repository>.git
         ```
-      </TabItem>
+      
 
-      <TabItem value="private" label="Private Repository">
+      
         ```bash
         git clone https://<your-username>:<your-personal-access-token>@github.com/<your-username>/<your-repository>.git
         ```
-      </TabItem>
-    </Tabs>
+      
+    
 
     Navigate to the repository directory:
 
@@ -146,7 +136,6 @@ After setting up your project, push it to your remote Git provider of choice (e.
     Set up [authentication](/docs/server/auth) before exposing your endpoints publicly.
     :::
   </StepItem>
-</Steps>
 
 ## Related
 

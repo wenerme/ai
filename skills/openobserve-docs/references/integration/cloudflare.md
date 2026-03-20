@@ -13,7 +13,6 @@ This integration can help you monitor performance, identify security issues, and
 
 ## Steps to Integrate
 
-
 ??? "Prerequisites"
     - **A Cloudflare account**: Sign up [here](https://dash.cloudflare.com/sign-up).
     - **An OpenObserve account**: Sign up [here](https://openobserve.ai/downloads/).
@@ -27,14 +26,13 @@ This integration can help you monitor performance, identify security issues, and
         - **Tools**: Python 3.8 or later, terminal access, and ability to use a virtual environment.
         - **Traffic Source**: A live website, a Cloudflare Worker, or an existing traffic.
 
-
 ??? "Step 1: Retrieve Your OpenObserve Endpoint and Credentials"
     To stream Cloudflare logs, log in to OpenObserve and follow these steps:
 
     1. From the left menu, select **Data Sources > Custom > Logs > Curl**.
     2. Extract the following details from the sample curl command: 
 
-    ![Extract endpoint and credentials](images/extract-creds-from-data-sources.png)
+    [Extract endpoint and credentials]
 
     - **Endpoint**: `https://api.openobserve.ai/api/<organization_name>/<stream_name>/_json`. 
     Replace `organization_name` with the organization name shown at the top right corner of the screen. Replace the `stream_name` with **cloudflare_logs**.
@@ -74,16 +72,16 @@ This integration can help you monitor performance, identify security issues, and
     4. Select **Deploy** and note the generated URL, such as `log-generator.example-subdomain.workers.dev`.
     5. You may optionally add a route under **Workers Routes**, such as `example.com/log/*`.
     6. Generate traffic by visiting the Worker URL, linking it on a webpage, or enabling access through a known route.
-    ![Generate traffic visiting the Worker URL](images/cloudflare-worker-setup.gif)
+    [Generate traffic visiting the Worker URL]
 
-    ![Cloudflare worker.js](images/cloudflare-worker-js.png)
+    [Cloudflare worker.js]
 
     **Option 3: Existing traffic on Business or Enterprise plans**
 
     - Use a domain or Cloudflare Worker that is already proxied through Cloudflare.
     - If the service already receives external traffic, no additional configuration is required. Logs will begin flowing automatically as requests are processed.
 
-    **Verify traffic in Cloudflare** <br>
+    **Verify traffic in Cloudflare** 
 
     1. From the Cloudflare dashboard, navigate to **Analytics** and select the **Traffic** tab.
     2. Verify that incoming request data appears. This usually takes only a few minutes.
@@ -284,7 +282,7 @@ This integration can help you monitor performance, identify security issues, and
     "requests": 1
     }
     ```
-    ![Verify the Cloudflare and OpenObserve integration](images/cloudflare-verify-ingestion.gif)
+    [Verify the Cloudflare and OpenObserve integration]
 
     Logs appear immediately when using Logpush. If you are testing with GraphQL, the simulated data appears first. Real logs are usually visible within 5 to 10 minutes.
 

@@ -39,7 +39,6 @@ MathQA is a large-scale dataset for mathematical word problem solving, gathered 
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -116,5 +115,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -336,19 +336,19 @@ After you apply the changes in the Terraform configurations, you can verify the 
 
 - Two new Schedules named `Devs` and `SREs` are created in Grafana IRM:
 
-  ![`Devs` and `SREs` OnCall schedules](/media/docs/grafana-cloud/alerting-and-irm/screenshot-oncall-schedules-tf.png)
+  [`Devs` and `SREs` OnCall schedules]
 
 - New Escalation chain named `SREs` is created in Grafana IRM:
 
-  ![`SREs` escalation chain](/media/docs/grafana-cloud/alerting-and-irm/screenshot-oncall-escalation-sre-tf.png)
+  [`SREs` escalation chain]
 
 - New Escalation chain named `Devs` is created in Grafana IRM:
 
-  ![`Devs` escalation chain](/media/docs/grafana-cloud/alerting-and-irm/screenshot-oncall-escalation-devs-tf.png)
+  [`Devs` escalation chain]
 
 - The Alertmanager integration is added and configured with escalation policies:
 
-  ![Alertmanager integration for SREs escalation](/media/docs/grafana-cloud/alerting-and-irm/screenshot-oncall-alertmanager-tf.png)
+  [Alertmanager integration for SREs escalation]
 
 ## Conclusion
 

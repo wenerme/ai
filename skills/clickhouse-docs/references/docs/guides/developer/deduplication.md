@@ -1,15 +1,9 @@
 ---
-slug: /guides/developer/deduplication
-sidebar_label: 'Deduplication strategies'
-sidebar_position: 3
 description: 'Use deduplication when you need to perform frequent upserts, updates and deletes.'
 title: 'Deduplication Strategies'
 keywords: ['deduplication strategies', 'data deduplication', 'upserts', 'updates and deletes', 'developer guide']
 doc_type: 'guide'
 ---
-
-import deduplication from '@site/static/images/guides/developer/de_duplication.png';
-import Image from '@theme/IdealImage';
 
 # Deduplication strategies
 
@@ -105,11 +99,9 @@ FINAL
 
 The result only has 2 rows, and the last row inserted is the row that gets returned.
 
-:::note
-Using `FINAL` works okay if you have a small amount of data. If you're dealing with a large amount of data, 
+> **note**: Using `FINAL` works okay if you have a small amount of data. If you're dealing with a large amount of data, 
 using `FINAL` is probably not the best option. Let's discuss a better option for 
 finding the latest value of a column.
-:::
 
 ### Avoiding FINAL {#avoiding-final}
 
@@ -241,14 +233,12 @@ FINAL
 
 But of course, using `FINAL` isn't recommended for large tables.
 
-:::note
-The value passed in for the `views` column in our example isn't really needed, nor does it have to match the current value of `views` of the old row. In fact, you can cancel a row with just the primary key and a -1:
+> **note**: The value passed in for the `views` column in our example isn't really needed, nor does it have to match the current value of `views` of the old row. In fact, you can cancel a row with just the primary key and a -1:
 
 ```sql
 INSERT INTO hackernews_views(id, author, sign) VALUES
    (123, 'ricardo', -1)
 ```
-:::
 
 ## Real-time updates from multiple threads {#real-time-updates-from-multiple-threads}
 

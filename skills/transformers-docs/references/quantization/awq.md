@@ -1,18 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # AWQ
 
@@ -139,11 +125,11 @@ The speed and throughput of fused and unfused modules were also tested with the 
 
 <div class="flex gap-4">
   <div>
-    <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/quantization/fused_forward_memory_plot.png" alt="generate throughput per batch size" />
+    [generate throughput per batch size]
     <figcaption class="mt-2 text-center text-sm text-gray-500">forward peak memory/batch size</figcaption>
   </div>
   <div>
-    <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/quantization/fused_generate_throughput_plot.png" alt="forward latency per batch size" />
+    [forward latency per batch size]
     <figcaption class="mt-2 text-center text-sm text-gray-500">generate throughput/batch size</figcaption>
   </div>
 </div>

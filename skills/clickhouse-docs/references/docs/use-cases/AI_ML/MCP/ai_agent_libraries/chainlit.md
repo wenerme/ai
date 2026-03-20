@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/AI/MCP/ai-agent-libraries/chainlit
-sidebar_label: 'Integrate Chainlit'
 title: 'How to build an AI Agent with Chainlit and the ClickHouse MCP Server'
-pagination_prev: null
-pagination_next: null
 description: 'Learn how to use Chainlit to build LLM-based chat apps together with the ClickHouse MCP Server'
 keywords: ['ClickHouse', 'MCP', 'Chainlit']
 show_related_blogs: true
@@ -47,9 +43,8 @@ to be used:
     allowed_executables = [ "npx", "uvx", "uv" ]
 ```
 
-:::note config.toml
+> **note**: config.toml
 Find the full `config.toml` file in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/chainlit/.chainlit/config.toml)
-:::
 
 There's some glue code to get MCP Servers working with Chainlit, so we'll need to
 run this command to launch Chainlit instead:

@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Overview
 Set model list, `api_base`, `api_key`, `temperature` & proxy server settings (`master-key`) on the config.yaml. 
@@ -14,7 +12,6 @@ Set model list, `api_base`, `api_key`, `temperature` & proxy server settings (`m
 | `environment_variables`   | Environment Variables example, `REDIS_HOST`, `REDIS_PORT` |
 
 **Complete List:** Check the Swagger UI docs on `<your-proxy-url>/#/config.yaml` (e.g. http://0.0.0.0:4000/#/config.yaml), for everything you can pass in the config.yaml.
-
 
 ## Quick Start 
 
@@ -76,11 +73,7 @@ general_settings:
   master_key: sk-1234 # [OPTIONAL] Only use this if you to require all calls to contain this key (Authorization: Bearer sk-1234)
   alerting: ["slack"] # [OPTIONAL] If you want Slack Alerts for Hanging LLM requests, Slow llm responses, Budget Alerts. Make sure to set `SLACK_WEBHOOK_URL` in your env
 ```
-:::info
-
-For more provider-specific info, [go here](../providers/)
-
-:::
+> **info**: For more provider-specific info, [go here](../providers/)
 
 #### Step 2: Start Proxy with config
 
@@ -88,15 +81,11 @@ For more provider-specific info, [go here](../providers/)
 $ litellm --config /path/to/config.yaml
 ```
 
-:::tip
-
-Run with `--detailed_debug` if you need detailed debug logs 
+> **tip**: Run with `--detailed_debug` if you need detailed debug logs 
 
 ```shell
 $ litellm --config /path/to/config.yaml --detailed_debug
 ```
-
-:::
 
 #### Step 3: Test it
 
@@ -175,10 +164,6 @@ LiteLLM: Proxy initialized with Config, Set models:
 
 See supported Embedding Providers & Models [here](https://docs.litellm.ai/docs/embedding/supported_embedding)
 
-
-<Tabs>
-<TabItem value="bedrock" label="Bedrock Completion/Chat">
-
 ```yaml
 model_list:
   - model_name: bedrock-cohere
@@ -195,10 +180,6 @@ model_list:
       aws_region_name: "us-east-1"
 
 ```
-
-</TabItem>
-
-<TabItem value="sagemaker" label="Sagemaker, Bedrock Embeddings">
 
 Here's how to route between GPT-J embedding (sagemaker endpoint), Amazon Titan embedding (Bedrock) and Azure OpenAI embedding on the proxy server: 
 
@@ -221,9 +202,6 @@ general_settings:
   master_key: sk-1234 # [OPTIONAL] if set all calls to proxy will require either this key or a valid generated token
 ```
 
-</TabItem>
-
-<TabItem value="Hugging Face emb" label="Hugging Face Embeddings">
 LiteLLM Proxy supports all <a href="https://huggingface.co/models?pipeline_tag=feature-extraction">Feature-Extraction Embedding models</a>.
 
 ```yaml
@@ -242,10 +220,6 @@ model_list:
 
 ```
 
-</TabItem>
-
-<TabItem value="azure" label="Azure OpenAI Embeddings">
-
 ```yaml
 model_list:
   - model_name: azure-embedding-model # model group
@@ -255,10 +229,6 @@ model_list:
       api_key: your-api-key
       api_version: 2023-07-01-preview
 ```
-
-</TabItem>
-
-<TabItem value="openai" label="OpenAI Embeddings">
 
 ```yaml
 model_list:
@@ -272,11 +242,6 @@ model_list:
     api_key: your-api-key-2
 ```
 
-</TabItem>
-
-
-<TabItem value="xinf" label="XInference">
-
 https://docs.litellm.ai/docs/providers/xinference
 
 **Note add `xinference/` prefix to `litellm_params`: `model` so litellm knows to route to OpenAI**
@@ -289,10 +254,6 @@ model_list:
     api_base: http://0.0.0.0:9997/v1
 ```
 
-</TabItem>
-
-<TabItem value="openai emb" label="OpenAI Compatible Embeddings">
-
 <p>Use this for calling <a href="https://github.com/xorbitsai/inference">/embedding endpoints on OpenAI Compatible Servers</a>.</p>
 
 **Note add `openai/` prefix to `litellm_params`: `model` so litellm knows to route to OpenAI**
@@ -304,9 +265,6 @@ model_list:
     model: openai/<your-model-name>   # model name for litellm.embedding(model=text-embedding-ada-002) 
     api_base: <model-api-base>
 ```
-
-</TabItem>
-</Tabs>
 
 #### Start Proxy
 
@@ -330,7 +288,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
   ]
 }'
 ```
-
 
 ### Multiple OpenAI Organizations 
 
@@ -359,9 +316,7 @@ curl --location 'http://0.0.0.0:4000/v1/model/info' \
 
 ### Load Balancing 
 
-:::info
-For more on this, go to [this page](https://docs.litellm.ai/docs/proxy/load_balancing)
-:::
+> **info**: For more on this, go to [this page](https://docs.litellm.ai/docs/proxy/load_balancing)
 
 Use this to call multiple instances of the same model and configure things like [routing strategy](https://docs.litellm.ai/docs/routing#advanced).
 
@@ -425,7 +380,6 @@ router_settings: # router_settings are optional
 
 You can view your cost once you set up [Virtual keys](https://docs.litellm.ai/docs/proxy/virtual_keys) or [custom_callbacks](https://docs.litellm.ai/docs/proxy/logging)
 
-
 ### Load API Keys / config values from Environment 
 
 If you have secrets saved in your environment, and don't want to expose them in the config.yaml, here's how to load model-specific keys from the environment. **This works for ANY value on the config.yaml**
@@ -481,7 +435,6 @@ credential_list:
 
 [**Using Secret Managers with LiteLLM Proxy**](../secret)
 
-
 ### Set Supported Environments for a model - `production`, `staging`, `development`
 
 Use this if you want to control which model is exposed on a specific litellm environment
@@ -492,7 +445,6 @@ Supported Environments:
 - `development`
 
 1. Set `LITELLM_ENVIRONMENT="<environment>"` in your environment. Can be one of `production`, `staging` or `development`
-
 
 2. For each model set the list of supported environments in `model_info.supported_environments`
 ```yaml
@@ -516,7 +468,6 @@ model_list:
    model_info:
      supported_environments: ["production"]
 ```
-
 
 ### Set Custom Prompt Templates
 
@@ -602,8 +553,23 @@ Since you shouldn't use 12.5, round down to **10** to leave a safety buffer. Thi
 - Total maximum connections: 8 workers × 10 connections = 80 connections
 - This stays safely under your database's 100 connection limit
 
-## Extras
+## LiteLLM License Key (Enterprise)
 
+To enable [LiteLLM Enterprise features](https://docs.litellm.ai/docs/proxy/enterprise), set your license key as an environment variable:
+
+```bash
+export LITELLM_LICENSE="eyJ..."
+```
+
+The license key is a JWT token provided when you purchase a LiteLLM Enterprise license. Once set, LiteLLM will automatically detect and activate enterprise features.
+
+You can also add it to your `.env` file:
+
+```env
+LITELLM_LICENSE="eyJ..."
+```
+
+## Extras
 
 ### Disable Swagger UI 
 
@@ -651,15 +617,11 @@ $ litellm
 # RUNNING on http://0.0.0.0:4000
 ```
 
-
 ### Providing LiteLLM config.yaml file as a s3, GCS Bucket Object/url
 
 Use this if you cannot mount a config file on your deployment service (example - AWS Fargate, Railway etc)
 
 LiteLLM Proxy will read your config.yaml from an s3 Bucket or GCS Bucket 
-
-<Tabs>
-<TabItem value="gcs" label="GCS Bucket">
 
 Set the following .env vars 
 ```shell
@@ -680,10 +642,6 @@ docker run --name litellm-proxy \
    docker.litellm.ai/berriai/litellm-database:main-latest --detailed_debug
 ```
 
-</TabItem>
-
-<TabItem value="s3" label="s3">
-
 Set the following .env vars 
 ```shell
 LITELLM_CONFIG_BUCKET_NAME = "litellm-proxy"                    # your bucket name on s3 
@@ -700,5 +658,3 @@ docker run --name litellm-proxy \
    -p 4000:4000 \
    docker.litellm.ai/berriai/litellm-database:main-latest
 ```
-</TabItem>
-</Tabs>

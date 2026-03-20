@@ -102,7 +102,7 @@ Main considerations:
 
 ## 4. Compaction Process
 
-![compaction_workflow](/images/compaction_workflow.png)
+[compaction_workflow]
 
 Compaction execution follows a producer-consumer model:
 1. Tablet scanning and task generation

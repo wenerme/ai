@@ -3,10 +3,8 @@ title: FFI
 description: Use Bun's FFI module to efficiently call native libraries from JavaScript
 ---
 
-<Warning>
   `bun:ffi` is **experimental**, with known bugs and limitations, and should not be relied on in production. The most
   stable way to interact with native code from Bun is to write a [Node-API module](/runtime/node-api).
-</Warning>
 
 Use the built-in `bun:ffi` module to efficiently call native libraries from JavaScript. It works with languages that support the C ABI (Zig, Rust, C/C++, C#, Nim, Kotlin, etc).
 
@@ -156,7 +154,6 @@ Note: `buffer` arguments must be a `TypedArray` or `DataView`.
 
 JavaScript strings and C-like strings are different, and that complicates using strings with native libraries.
 
-<Accordion title="How are JavaScript strings and C strings different?">
 JavaScript strings:
 
 - UTF16 (2 bytes per letter) or potentially latin1, depending on the JavaScript engine &amp; what characters are used
@@ -168,8 +165,6 @@ C strings:
 - UTF8 (1 byte per letter), usually
 - The length is not stored. Instead, the string is null-terminated which means the length is the index of the first `\0` it finds
 - Mutable
-
-</Accordion>
 
 To solve this, `bun:ffi` exports `CString` which extends JavaScript's built-in `String` to support null-terminated strings and add a few extras:
 
@@ -220,7 +215,7 @@ When used in `returns`, `FFIType.cstring` coerces the pointer to a JavaScript `s
 
 ## Function pointers
 
-<Note>Async functions are not yet supported</Note>
+Async functions are not yet supported
 
 To call a function pointer from JavaScript, use `CFunction`. This is useful if using Node-API (napi) with Bun, and you've already loaded some symbols.
 
@@ -323,7 +318,6 @@ const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(
 });
 ```
 
-<Note>
 **⚡️ Performance tip** — For a slight performance boost, directly pass `JSCallback.prototype.ptr` instead of the `JSCallback` object:
 
 ```ts
@@ -344,23 +338,17 @@ setOnResolve(onResolve.ptr);
 setOnResolve(onResolve);
 ```
 
-</Note>
-
 ---
 
 ## Pointers
 
 Bun represents [pointers](<https://en.wikipedia.org/wiki/Pointer_(computer_programming)>) as a `number` in JavaScript.
 
-<Accordion title="How does a 64 bit pointer fit in a JavaScript number?">
-
 64-bit processors support up to [52 bits of addressable space](https://en.wikipedia.org/wiki/64-bit_computing#Limits_of_processors). [JavaScript numbers](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64) support 53 bits of usable space, so that leaves us with about 11 bits of extra space.
 
 **Why not `BigInt`?** `BigInt` is slower. JavaScript engines allocate a separate `BigInt` which means they can't fit into a regular JavaScript value. If you pass a `BigInt` to a function, it will be converted to a `number`
 
 **Windows Note**: The Windows API type HANDLE does not represent a virtual address, and using `ptr` for it will _not_ work as expected. Use `u64` to safely represent HANDLE values.
-
-</Accordion>
 
 To convert from a `TypedArray` to a pointer:
 
@@ -513,8 +501,6 @@ const out = encode_png(
 
 The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the pointer to a `TypedArray`.
 
-<Accordion title="Hardmode">
-
 If you don't want the automatic conversion or you want a pointer to a specific byte offset within the `TypedArray`, you can also directly get the pointer to the `TypedArray`:
 
 ```ts
@@ -544,8 +530,6 @@ const out = encode_png(
   128,
 );
 ```
-
-</Accordion>
 
 ### Reading pointers
 

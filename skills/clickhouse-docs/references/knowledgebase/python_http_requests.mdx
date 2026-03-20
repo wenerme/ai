@@ -7,7 +7,6 @@ keywords: ['Python']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Question \{#question\}
 
@@ -36,7 +35,6 @@ headers["X-ClickHouse-Key"] = CH_PASSWORD
 now = (datetime.datetime.now())
 print("{} - starting...".format(now))
 
-
 # create/replace table
 now = (datetime.datetime.now())
 print("{} - creating/replacing table...".format(now))
@@ -58,7 +56,6 @@ response = requests.post(url=CH_URL,
 now = (datetime.datetime.now())
 print("{} - elements in test_table before insert: {}".format(
     now, response.content.decode('utf-8')))
-
 
 # insert
 now = (datetime.datetime.now())
@@ -106,5 +103,3 @@ requests==2.31.0
 ```
 
 See this other [KB](https://clickhouse.com/docs/knowledgebase/python-clickhouse-connect-example#steps) for steps on how setup your python venv.
-
-

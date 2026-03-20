@@ -1,6 +1,5 @@
 ---
 title: snapshotSerializers | Config
-outline: deep
 ---
 
 # snapshotSerializers <CRoot />

@@ -13,14 +13,12 @@ This typically happens when:
 - A small interval is used over a long time range, resulting in too many rows.
 - Large text fields, such as `log.body`, are included, increasing payload size.
 
-
  
 Use the guidance below to understand these risks and avoid them when building queries and dashboards.
 
 ## 1. Long Range Queries with Small Intervals 
 
 > **Where this issue can occur**: Log Search and Dashboards
-<br>
 
 When you run histogram queries using `histogram("timestamp", interval)`, the `interval` defines how the data is grouped over time. For example, an `interval` of `5m` groups logs into 5-minute buckets. The longer the time range and the smaller the interval, the more buckets the query will return.
 
@@ -39,12 +37,11 @@ ORDER BY log_time_interval ASC
 
 The above query returns the number of logs collected every 5 minutes. When run over a 7-day period, it generates more than 2,000 time buckets, each representing a row that the browser must load and render. This volume of data can cause the UI to become unresponsive or crash.
 
-
 !!! Note
     **In Dashboard Panels- Breakdown Fields Multiply the Problem**
 
     In dashboard panels, if you add a breakdown to the query (e.g., by `log.level`), it multiplies the number of rows. If the query is long range and has small time interval, adding breakdown to the Panels would further worsen the problem. 
-    <br> For example,
+     For example,
 
     - You already have 2,000 time buckets  
     - `log.level` has 5 unique values: `INFO`, `ERROR`, `DEBUG`, `WARN`, `TRACE`
@@ -58,7 +55,6 @@ The above query returns the number of logs collected every 5 minutes. When run o
 ## 2. Tables that Include Large Text Fields 
 
 > **Where this issue can occur**: Dashboards
-
 
 When you display logs in a table on a dashboard, avoid including large text fields such as `log.body`. 
 

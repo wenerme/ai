@@ -1,6 +1,5 @@
 # AIME-2024
 
-
 ## Overview
 
 AIME 2024 (American Invitational Mathematics Examination 2024) is a benchmark based on problems from the prestigious AIME competition. These problems represent some of the most challenging high school mathematics problems, requiring creative problem-solving and advanced mathematical reasoning.
@@ -27,7 +26,6 @@ AIME 2024 (American Invitational Mathematics Examination 2024) is a benchmark ba
 - Only integer answers are accepted (matching AIME format)
 - Problems are significantly harder than GSM8K or standard MATH benchmark
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ AIME 2024 (American Invitational Mathematics Examination 2024) is a benchmark ba
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -108,5 +105,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

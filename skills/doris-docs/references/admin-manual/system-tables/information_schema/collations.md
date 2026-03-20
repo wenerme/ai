@@ -12,9 +12,7 @@ View all collation methods for character sets. This table is only used for compa
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

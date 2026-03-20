@@ -1,6 +1,5 @@
 # SEED-Bench-2-Plus
 
-
 ## Overview
 
 SEED-Bench-2-Plus is a large-scale benchmark designed to evaluate Multimodal Large Language Models (MLLMs) on text-rich visual understanding tasks. It contains 2.3K multiple-choice questions with precise human annotations across real-world scenarios.
@@ -28,7 +27,6 @@ SEED-Bench-2-Plus is a large-scale benchmark designed to evaluate Multimodal Lar
 - Uses Chain-of-Thought (CoT) prompting for reasoning
 - Rich metadata including data source, type, and difficulty level
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ SEED-Bench-2-Plus is a large-scale benchmark designed to evaluate Multimodal Lar
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -66,7 +63,6 @@ SEED-Bench-2-Plus is a large-scale benchmark designed to evaluate Multimodal Lar
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 800x800 - 800x800 |
 | Formats | png |
-
 
 ## Sample Example
 
@@ -155,5 +151,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

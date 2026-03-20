@@ -7,9 +7,7 @@ description: Use oRPC inside an Fastify project
 
 [Fastify](https://fastify.dev/) is a web framework highly focused on providing the best developer experience with the least overhead and a powerful plugin architecture. For additional context, refer to the [HTTP Adapter](/docs/adapters/http) guide.
 
-::: warning
-Fastify parses common request content types by default. oRPC will use the parsed body when available.
-:::
+> **warning**: Fastify parses common request content types by default. oRPC will use the parsed body when available.
 
 ## Basic
 
@@ -48,6 +46,4 @@ fastify.all('/rpc/*', async (req, reply) => {
 fastify.listen({ port: 3000 }).then(() => console.log('Server running on http://localhost:3000'))
 ```
 
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.

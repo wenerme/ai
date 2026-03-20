@@ -26,7 +26,6 @@ class YourProviderRerankConfig(BaseRerankConfig):
         return RerankResponse(**raw_response_json)
 ```
 
-
 ## 2. Register Your Provider
 Add your provider to `litellm.utils.get_provider_rerank_config()`:
 
@@ -35,11 +34,9 @@ elif litellm.LlmProviders.YOUR_PROVIDER == provider:
     return litellm.YourProviderRerankConfig()
 ```
 
-
 ## 3. Add Provider to `rerank_api/main.py`
 
 Add a code block to handle when your provider is called. Your provider should use the `base_llm_http_handler.rerank` method
-
 
 ```python
 elif _custom_llm_provider == "your_provider":
@@ -78,7 +75,6 @@ def test_basic_rerank_cohere():
     assert response.id is not None
     assert response.results is not None
 ```
-
 
 ## Reference PRs
 - [Add Infinity Rerank](https://github.com/BerriAI/litellm/pull/7321)

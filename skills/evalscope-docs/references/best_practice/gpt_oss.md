@@ -88,7 +88,6 @@ Basic Information:
 │ Avg Output Rate       │ 2153.10 tokens/sec               │
 └───────────────────────┴──────────────────────────────────┘
 
-
                                     Detailed Performance Metrics                                    
 ┏━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┓
 ┃      ┃      ┃      Avg ┃      P99 ┃    Gen. ┃      Avg ┃     P99 ┃      Avg ┃     P99 ┃   Success┃
@@ -99,7 +98,6 @@ Basic Information:
 │   50 │ 2.47 │   20.222 │   22.612 │ 2529.14 │    2.051 │   5.446 │    0.018 │   0.020 │    100.0%│
 │  100 │ 3.37 │   29.570 │   35.594 │ 3455.61 │    2.354 │   6.936 │    0.027 │   0.028 │    100.0%│
 └──────┴──────┴──────────┴──────────┴─────────┴──────────┴─────────┴──────────┴─────────┴──────────┘
-
 
                Best Performance Configuration               
  Highest RPS         Concurrency 100 (3.37 req/sec)         
@@ -158,8 +156,6 @@ EvalScope supports visualizing results so you can see the model’s specific out
 pip install 'evalscope[app]'
 evalscope app --lang en
 ```
-
-
 
 ## Summary
 Through the above steps, we have successfully tested the inference speed and benchmark capabilities of the GPT-OSS model using EvalScope. GPT-OSS performs excellently in both inference speed and benchmarking, making it suitable for production and high-performance scenarios.

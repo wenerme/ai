@@ -4,13 +4,10 @@ title: Debugging | Guide
 
 # Debugging
 
-:::tip
-When debugging tests you might want to use following options:
+> **tip**: When debugging tests you might want to use following options:
 
 - [`--test-timeout=0`](/guide/cli#testtimeout) to prevent tests from timing out when stopping at breakpoints
 - [`--no-file-parallelism`](/guide/cli#fileparallelism) to prevent test files from running parallel
-
-:::
 
 ## VS Code
 
@@ -46,7 +43,6 @@ Then in the debug tab, ensure 'Debug Current Test File' is selected. You can the
 
 To debug [Vitest Browser Mode](/guide/browser/index.md), pass `--inspect` or `--inspect-brk` in CLI or define it in your Vitest configuration:
 
-::: code-group
 ```bash [CLI]
 vitest --inspect-brk --browser --no-file-parallelism
 ```
@@ -65,7 +61,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 By default Vitest will use port `9229` as debugging port. You can overwrite it with by passing value in `--inspect-brk`:
 

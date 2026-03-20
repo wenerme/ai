@@ -1,8 +1,5 @@
 # Sarvam.ai
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 LiteLLM supports all the text models from [Sarvam ai](https://docs.sarvam.ai/api-reference-docs/chat/chat-completions)
 
 ## Usage
@@ -45,9 +42,9 @@ Here's how to call a Sarvam.ai model with the LiteLLM Proxy Server
 
 3. **Send a request to LiteLLM Proxy Server:**
 
-    <Tabs>
+    
 
-    <TabItem value="openai" label="OpenAI Python v1.0.0+">
+    
 
     ```python
     import openai
@@ -69,9 +66,9 @@ Here's how to call a Sarvam.ai model with the LiteLLM Proxy Server
 
     print(response)
     ```
-    </TabItem>
+    
 
-    <TabItem value="curl" label="curl">
+    
 
     ```shell
     curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -87,6 +84,3 @@ Here's how to call a Sarvam.ai model with the LiteLLM Proxy Server
         ]
     }'
     ```
-    </TabItem>
-
-    </Tabs>

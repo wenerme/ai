@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/ingesting-data/opentelemetry
-pagination_prev: null
-pagination_next: null
-toc_max_heading_level: 2
 description: 'Data ingestion with OpenTelemetry for ClickStack - The ClickHouse Observability Stack'
 title: 'Ingesting with OpenTelemetry'
 doc_type: 'guide'
 keywords: ['clickstack', 'opentelemetry', 'traces', 'observability', 'telemetry']
 ---
-
-import Image from '@theme/IdealImage';
-import ingestion_key from '@site/static/images/use-cases/observability/ingestion-keys.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 All data is ingested into ClickStack via an **OpenTelemetry (OTel) collector** instance, which acts as the primary entry point for logs, metrics, traces, and session data. We recommend using the official [ClickStack distribution](#installing-otel-collector) of the collector for this instance.
 
@@ -20,16 +11,12 @@ Users send data to this collector from [language SDKs](/use-cases/observability/
 
 ## Sending OpenTelemetry data {#sending-otel-data}
 
-<Tabs groupId="os-type">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
-
 ### Installing ClickStack OpenTelemetry collector {#installing-otel-collector-managed}
 
 To send data to Managed ClickStack, an OTel collector should be deployed in a [gateway role](/use-cases/observability/clickstack/ingesting-data/otel-collector#collector-roles). OTel compatible instrumentation will send events to this collector via OTLP over HTTP or gRPC.
 
-:::note We recommend using the ClickStack OpenTelemetry collector
+> **note**: We recommend using the ClickStack OpenTelemetry collector
 This allows you to benefit from standardized ingestion, enforced schemas, and out-of-the-box compatibility with the ClickStack UI (HyperDX). Using the default schema enables automatic source detection and preconfigured column mappings.
-:::
 
 For further details see ["Deploying the collector"](/use-cases/observability/clickstack/ingesting-data/otel-collector).
 
@@ -85,10 +72,6 @@ service:
       exporters: [otlphttp/hdx]
 ```
 
-</TabItem>
-
-<TabItem value="oss-clickstack" label="Open Source ClickStack" default>
-
 The ClickStack OpenTelemetry collector is included in most ClickStack distributions, including:
 
 - [All-in-One](/use-cases/observability/clickstack/deployment/all-in-one)
@@ -104,9 +87,8 @@ If you're using the [HyperDX-only](/use-cases/observability/clickstack/deploymen
 - Running your own OpenTelemetry collector and pointing it at ClickHouse - see below.
 - Sending directly to ClickHouse using alternative tooling, such as [Vector](https://vector.dev/), [Fluentd](https://www.fluentd.org/) etc, or even the default [OTel contrib collector distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib).
 
-:::note We recommend using the ClickStack OpenTelemetry collector
+> **note**: We recommend using the ClickStack OpenTelemetry collector
 This allows you to benefit from standardized ingestion, enforced schemas, and out-of-the-box compatibility with the HyperDX UI. Using the default schema enables automatic source detection and preconfigured column mappings.
-:::
 
 For further details see ["Deploying the collector"](/use-cases/observability/clickstack/ingesting-data/otel-collector).
 
@@ -175,6 +157,3 @@ service:
       processors: [batch]
       exporters: [otlphttp/hdx]
 ```
-
-</TabItem>
-</Tabs>

@@ -2,7 +2,7 @@
 
 To conduct speed tests and obtain a speed benchmark report similar to the [official Qwen](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html) report, as shown below:
 
-![image](./images/qwen_speed_benchmark.png)
+[image]
 
 You can specify the dataset for speed testing using `--dataset [speed_benchmark|speed_benchmark_long]`:
 

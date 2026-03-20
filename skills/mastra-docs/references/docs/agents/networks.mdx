@@ -15,8 +15,6 @@ Agent networks are deprecated and will be removed in a future major release. [Su
 
 See the [migration guide](/guides/migrations/network-to-supervisor) to upgrade.
 
-:::
-
 A **routing agent** uses an LLM to interpret a request and decide which primitives (subagents, workflows, or tools) to call, in what order, and with what data.
 
 ## Create an agent network
@@ -64,11 +62,7 @@ export const routingAgent = new Agent({
 })
 ```
 
-:::note
-
-Subagents need a `description` on the `Agent` instance. Workflows and tools need a `description` plus `inputSchema` and `outputSchema` on `createWorkflow()` or `createTool()`.
-
-:::
+> **note**: Subagents need a `description` on the `Agent` instance. Workflows and tools need a `description` plus `inputSchema` and `outputSchema` on `createWorkflow()` or `createTool()`.
 
 ## Call the network
 

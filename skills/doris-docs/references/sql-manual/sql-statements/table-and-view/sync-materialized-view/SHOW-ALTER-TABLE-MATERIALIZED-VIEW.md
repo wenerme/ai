@@ -14,7 +14,6 @@ Since creating a synchronized materialized view is an asynchronous operation, af
 
 ## Syntax
 
-
 ```sql
 SHOW ALTER TABLE MATERIALIZED VIEW FROM <database>
 ```

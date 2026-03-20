@@ -12,9 +12,7 @@ View the metadata cache information of the External Catalog in the currently con
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 
@@ -24,7 +22,6 @@ View the metadata cache information of the External Catalog in the currently con
 | CACHE_NAME   | text | The name of the cache   |
 | METRIC_NAME  | text | The name of the metric  |
 | METRIC_VALUE | text | The value of the metric |
-
 
 ## Usage Example
 
@@ -59,5 +56,3 @@ The METRIC_NAME column contains the following Caffeine cache performance metrics
 - estimated_size: The approximate number of entries in the cache
 - hit_count: The number of times cache lookup methods have returned a cached value
 - read_count: The total number of times cache lookup methods have been called
-
-

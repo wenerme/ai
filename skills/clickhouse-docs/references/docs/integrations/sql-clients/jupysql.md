@@ -1,6 +1,4 @@
 ---
-slug: /integrations/jupysql
-sidebar_label: 'Jupyter notebooks'
 description: 'JupySQL is a multi-platform database tool for Jupyter.'
 title: 'Using JupySQL with ClickHouse'
 keywords: ['JupySQL', 'Jupyter notebook', 'Python', 'data analysis', 'interactive SQL']
@@ -9,11 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'sql_client'
 ---
-
-import Image from '@theme/IdealImage';
-import jupysql_plot_1 from '@site/static/images/integrations/sql-clients/jupysql-plot-1.png';
-import jupysql_plot_2 from '@site/static/images/integrations/sql-clients/jupysql-plot-2.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Using JupySQL with ClickHouse
 

@@ -1,12 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Budget Routing
 LiteLLM Supports setting the following budgets:
 - Provider budget - $100/day for OpenAI, $100/day for Azure.
 - Model budget - $100/day for gpt-4  https://api-base-1, $100/day for gpt-4o https://api-base-2
 - Tag budget - $10/day for tag=`product:chat-bot`, $100/day for tag=`product:chat-bot-2`
-
 
 ## Provider Budgets
 Use this to set budgets for LLM Providers - example $100/day for OpenAI, $100/day for Azure.
@@ -53,11 +51,7 @@ general_settings:
 
 We expect the first request to succeed, and the second request to fail since we cross the budget for `openai`
 
-
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Successful Call " value = "allowed">
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -70,9 +64,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since we cross the budget for provider `openai`
 
@@ -100,13 +91,6 @@ Expected response on failure
   }
 }
 ```
-
-</TabItem>
-
-
-</Tabs>
-
-
 
 #### How provider budget routing works
 
@@ -188,7 +172,6 @@ This metric indicates the remaining budget for a provider in dollars (USD)
 litellm_provider_remaining_budget_metric{api_provider="openai"} 10
 ```
 
-
 ## Model Budgets
 
 Use this to set budgets for models - example $10/day for openai/gpt-4o, $100/day for openai/gpt-4o-mini
@@ -212,18 +195,13 @@ model_list:
       max_budget: 100 # (USD)
       budget_duration: 30d # (Duration. can be 1s, 1m, 1h, 1d, 1mo)
 
-
 ```
-
 
 #### Make a test request
 
 We expect the first request to succeed, and the second request to fail since we cross the budget for `openai/gpt-4o`
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Successful Call " value = "allowed">
 
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
@@ -236,9 +214,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since we cross the budget for `openai/gpt-4o`
 
@@ -266,20 +241,12 @@ Expected response on failure
     }
 }
 ```
-</TabItem>
-
-</Tabs>
 
 ## ✨ Tag Budgets
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://www.litellm.ai/#pricing)
-
-:::
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://www.litellm.ai/#pricing)
 
 Use this to set budgets for tags - example $10/day for tag=`product:chat-bot`, $100/day for tag=`product:chat-bot-2`
-
 
 ### Quick Start
 
@@ -308,9 +275,6 @@ We expect the first request to succeed, and the second request to fail since we 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
-<Tabs>
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -323,9 +287,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "metadata": {"tags": ["product:chat-bot"]}
   }'
 ```
-
-</TabItem>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since we cross the budget for tag=`product:chat-bot`
 
@@ -355,10 +316,6 @@ Expected response on failure
     }
 }
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Multi-instance setup
 

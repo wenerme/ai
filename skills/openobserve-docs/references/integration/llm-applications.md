@@ -81,8 +81,7 @@ uv run examples/openai_example.py
 
 Open your **OpenObserve dashboard → Traces** to see the spans appear.
 
-![LLM Traces](../images/llm-applications/llm-tokens-cost-latency.png)
-
+[LLM Traces]
 
 ## **Option B: Integrate into your own project using the OpenObserve SDK**
 
@@ -163,15 +162,13 @@ The `opentelemetry-instrumentation-openai` library attaches the following attrib
 1. Log in to your OpenObserve instance  
 2. Navigate to **Traces** in the left sidebar  
 3. Filter by service name, model, or time range
-![LLM Traces](../images/llm-applications/llm-traces.png)
+[LLM Traces]
 
 4. Click any span to inspect token counts, latency, and full request metadata
 
-![LLM Traces](../images/llm-applications/llm-spans.png)
+[LLM Traces]
 
-![LLM Traces](../images/llm-applications/llm-span-attributes.png)
-
-
+[LLM Traces]
 
 ## **Troubleshooting**
 

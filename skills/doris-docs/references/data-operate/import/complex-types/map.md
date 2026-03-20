@@ -120,4 +120,3 @@ mysql> SELECT * FROM map_test;
 +------+-------------------------+
 4 rows in set (0.01 sec)
 ```
-

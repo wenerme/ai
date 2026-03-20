@@ -33,8 +33,6 @@ This makes it practical to distribute web pages the same way you'd distribute a 
 
 ## Quick start
 
-<CodeGroup>
-
 ```html index.html icon="file-code"
 <!doctype html>
 <html>
@@ -67,8 +65,6 @@ body {
 }
 ```
 
-</CodeGroup>
-
 ```bash terminal icon="terminal"
 bun build --compile --target=browser ./index.html --outdir=dist
 ```
@@ -85,8 +81,8 @@ Bun inlines every local asset it finds in your HTML. If it has a relative path, 
 | ------------------------------------------------ | ------------------------------------------------------------------------ |
 | `<script src="./app.tsx">`                       | `<script type="module">...bundled code...</script>`                      |
 | `<link rel="stylesheet" href="./styles.css">`    | `<style>...bundled CSS...</style>`                                       |
-| `<img src="./logo.png">`                         | `<img src="data:image/png;base64,...">`                                  |
-| `<img src="./icon.svg">`                         | `<img src="data:image/svg+xml;base64,...">`                              |
+| ``                         | ``                                  |
+| ``                         | ``                              |
 | `<video src="./demo.mp4">`                       | `<video src="data:video/mp4;base64,...">`                                |
 | `<audio src="./click.wav">`                      | `<audio src="data:audio/wav;base64,...">`                                |
 | `<source src="./clip.webm">`                     | `<source src="data:video/webm;base64,...">`                              |
@@ -109,8 +105,6 @@ React apps work out of the box. Bun handles JSX transpilation and npm package re
 ```bash terminal icon="terminal"
 bun install react react-dom
 ```
-
-<CodeGroup>
 
 ```html index.html icon="file-code"
 <!doctype html>
@@ -154,8 +148,6 @@ export function Counter() {
 }
 ```
 
-</CodeGroup>
-
 ```bash terminal icon="terminal"
 bun build --compile --target=browser ./index.html --outdir=dist
 ```
@@ -169,8 +161,6 @@ Install the plugin and reference Tailwind in your HTML or CSS:
 ```bash terminal icon="terminal"
 bun install --dev bun-plugin-tailwind
 ```
-
-<CodeGroup>
 
 ```html index.html icon="file-code"
 <!doctype html>
@@ -200,8 +190,6 @@ function App() {
 
 createRoot(document.getElementById("root")!).render(<App />);
 ```
-
-</CodeGroup>
 
 Build with the plugin using the JavaScript API:
 

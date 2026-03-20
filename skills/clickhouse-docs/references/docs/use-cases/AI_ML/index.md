@@ -1,8 +1,5 @@
 ---
 description: 'Landing page for Machine Learning and GenAI use case guides'
-pagination_prev: null
-pagination_next: null
-slug: /use-cases/AI/ask-ai
 title: 'Machine learning and GenAI'
 keywords: ['machine learning', 'genAI', 'AI']
 doc_type: 'landing-page'

@@ -8,7 +8,6 @@
 
 ## Description
 
-
 The week_ceil function rounds up an input datetime value to the nearest specified week interval start time. If origin is specified, it uses that as the reference; otherwise, it defaults to 0000-01-01 00:00:00.
 
 Date calculation formula:

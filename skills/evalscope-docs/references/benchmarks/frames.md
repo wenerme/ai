@@ -1,6 +1,5 @@
 # FRAMES
 
-
 ## Overview
 
 FRAMES is a comprehensive evaluation dataset designed to test the capabilities of Retrieval-Augmented Generation (RAG) systems. It evaluates factuality, retrieval accuracy, and reasoning abilities in long-context scenarios.
@@ -28,7 +27,6 @@ FRAMES is a comprehensive evaluation dataset designed to test the capabilities o
 - Uses normalized answer comparison for exact matching
 - LLM judge provides flexible semantic matching
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ FRAMES is a comprehensive evaluation dataset designed to test the capabilities o
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -154,5 +151,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

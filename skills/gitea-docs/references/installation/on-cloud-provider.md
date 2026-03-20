@@ -1,7 +1,5 @@
 ---
 date: "2016-12-01T16:00:00+02:00"
-slug: "install-on-cloud-provider"
-sidebar_position: 90
 aliases:
   - /en-us/install-on-cloud-provider
 ---
@@ -13,7 +11,7 @@ aliases:
 Gitea is available as a 1-click install on [Cloudron](https://cloudron.io).
 Cloudron makes it easy to run apps like Gitea on your server and keep them up-to-date and secure.
 
-[![Install](/cloudron.svg)](https://cloudron.io/button.html?app=io.gitea.cloudronapp)
+[[Install]](https://cloudron.io/button.html?app=io.gitea.cloudronapp)
 
 The Gitea package is maintained [here](https://git.cloudron.io/cloudron/gitea-app).
 

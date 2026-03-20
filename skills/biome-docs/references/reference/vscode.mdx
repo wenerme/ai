@@ -2,9 +2,6 @@
 title: VS Code extension
 description: Notes about the Biome's VSCode extension
 ---
-import { FileTree } from '@astrojs/starlight/components';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { Badge } from '@astrojs/starlight/components';
 
 Biome comes with an official [VS Code extension] that tightly integrates with
 your code editor, providing formatting, linting, and code refactoring features to your
@@ -15,9 +12,7 @@ development workflow.
 This reference document provides an overview of the extension's features, how to install
 it, and how to configure it for your projects.
 
-:::tip
-If you're upgrading from the `2.x` version of the extension, check out the [migration instructions](#migrating-from-the-2x-extension) at the end of this document.
-:::
+> **tip**: If you're upgrading from the `2.x` version of the extension, check out the [migration instructions](#migrating-from-the-2x-extension) at the end of this document.
 
 ## Installing the extension
 
@@ -29,7 +24,6 @@ for VS Code users, or the [Open VSX registry] for VSCodium and other derivatives
 
 - [![](https://img.shields.io/badge/Install%20Biome-in%20VS%20Code-007ACC?style=flat&logo=biome)](vscode:extension/biomejs.biome)
 - [![](https://img.shields.io/badge/Install%20Biome-in%20VSCodium-007ACC?style=flat&logo=biome)](vscodium:extension/biomejs.biome)
-
 
 ## Common use cases
 
@@ -111,8 +105,6 @@ The extension is able to sort imports on save for [supported file types](/intern
 }
 ```
 
-
-
 ## Settings reference
 
 The following settings are available for the extension.
@@ -121,7 +113,6 @@ The following settings are available for the extension.
 All settings are resolved using VS Code's [settings precedence](https://code.visualstudio.com/docs/getstarted/settings#_settings-precedence) rules.
 This means that the value of the setting at the most specific level will be used. This allows you to set a global setting, and override it for specific
 workspace folders.
-:::
 
 ### `biome.enabled`
 
@@ -133,7 +124,6 @@ This setting controls whether the extension will create LSP session for a worksp
 
 :::caution[Biome v2 only]
 This setting will only take effect when using Biome `v2`. If you are using Biome `v1`, this setting will be ignored.
-:::
 
 **Default:** `null` | **Scopes:** `global`, `workspace`, `workspace folder`
 
@@ -147,9 +137,7 @@ This setting controls whether Biome will register itself as a formatter and diag
 
 When set to `true`, the extension will only register itself as a formatter and diagnostics provider if a `biome.json` file is present in the workspace folder.
 
-:::caution
-The `biome.enabled` setting must be set to `true` (default) in the same scope for this setting to take effect.
-:::
+> **caution**: The `biome.enabled` setting must be set to `true` (default) in the same scope for this setting to take effect.
 
 ### `biome.inlineConfig`
 
@@ -192,15 +180,14 @@ However, during local development, you want to disable this rule because it's us
 This setting allows you to override the path to the `biome` binary. This is useful if you want to use a different version of Biome,
 or if you want to use a binary that's not on your `PATH`. In can be either a path to a binary, or an object that maps a platform to a path.
 
-<Tabs>
-	<TabItem label="string">
+	
 		```json
 		{
 			"biome.lsp.bin": "/path/to/biome"
 		}
 		```
-	</TabItem>
-	<TabItem label="object">
+	
+	
 
 		When using an object, the key is the platform identifier, constructed from the `<process.os>-<process.arch>` value, and the value is the path to the binary.
 		```json
@@ -211,10 +198,7 @@ or if you want to use a binary that's not on your `PATH`. In can be either a pat
 			}
 		}
 		```
-	</TabItem>
-</Tabs>
-
-
+	
 
 You should be aware of that `@biomejs/biome` doesn't ship any binaries. The file `@biomejs/biome/bin` is just a tiny
 wrapper that delegates the operation to the real binary. The binary installed on your machine depends on the architecture of your OS and architecture.
@@ -222,16 +206,14 @@ wrapper that delegates the operation to the real binary. The binary installed on
 The binaries are packages that start with `@biomejs/cli-*`, and can be found in [this list](https://www.npmjs.com/search?q=%40biomejs%2Fcli-*).
 So, if you're pointing to the binary installed via `npm`, the configuration will look like this:
 
-
-<Tabs>
-	<TabItem label="string">
+	
 		```json
 		{
 			"biome.lsp.bin": "./node_modules/@biomejs/cli-linux-x64/bin"
 		}
 		```
-	</TabItem>
-	<TabItem label="object">
+	
+	
 
 		When using an object, the key is the platform identifier, constructed from the `<process.os>-<process.arch>` value, and the value is the path to the binary.
 		```json
@@ -242,8 +224,7 @@ So, if you're pointing to the binary installed via `npm`, the configuration will
 			}
 		}
 		```
-	</TabItem>
-</Tabs>
+	
 
 ### `biome.runFromTemporaryLocation`
 
@@ -273,7 +254,6 @@ You may want to set this setting to `verbose` when you encounter issues with the
 
 :::caution[Biome `2.4.0+` required]
 This setting will only take effect when using Biome `2.4.0` or later; otherwise, this setting will be ignored.
-:::
 
 **Default:** `null` | **Scopes:** `global`, `workspace`, `workspace folder`
 
@@ -289,7 +269,6 @@ repercussions on some lint rules that might rely on updated types or updated pat
 
 :::caution[Biome `2.4.0+` required]
 This setting will only take effect when using Biome `2.4.0` or later; otherwise, this setting will be ignored.
-:::
 
 **Default:** `null` | **Scopes:** `global`, `workspace`, `workspace folder`
 

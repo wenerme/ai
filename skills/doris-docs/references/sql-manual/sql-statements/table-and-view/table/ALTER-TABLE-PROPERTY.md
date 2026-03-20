@@ -6,8 +6,7 @@
 }
 ---
 
-:::caution
-Differences between Partition Attributes and Table Attributes
+> **caution**: Differences between Partition Attributes and Table Attributes
 - Partition attributes generally focus on the number of buckets (buckets), storage medium (storage_medium), replication num (replication_num), and hot/cold data separation policies (storage_policy).
   - For existing partitions, you can use ALTER TABLE {tableName} MODIFY PARTITION ({partitionName}) SET ({key}={value}) to modify them, but the number of buckets (buckets) cannot be changed.
   - For not-created dynamic partitions, you can use ALTER TABLE {tableName} SET (dynamic_partition.{key} = {value}) to modify their attributes.
@@ -15,7 +14,6 @@ Differences between Partition Attributes and Table Attributes
   - If users want to modify partition attributes, they need to modify the attributes of the already created partitions, as well as the attributes of not-created partitions.
 - Aside from the above attributes, all others are at the table level.
 - For the specific attributes, please refer to [create table attributes](../../../../sql-manual/sql-statements/table-and-view/table/CREATE-TABLE.md#properties)
-:::
 
 ## Description
 
@@ -259,7 +257,6 @@ ALTER TABLE create_table_partition MODIFY PARTITION (*) SET("storage_policy"="cr
 ```
 NOTE: The table's partition can be successfully added only if it hasn't been associated with a storage policy. A table just can have one storage policy.
 
-
 ## Keywords
 
 ```text
@@ -267,4 +264,3 @@ ALTER, TABLE, PROPERTY, ALTER TABLE
 ```
 
 ## Best Practice
-

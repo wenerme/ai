@@ -18,7 +18,7 @@ Install FineBI 5.0 or later, Download link: https://intl.finebi.com/
 
 1. Create  account and  log in FineBI
 
-   ![login page](/images/bi-finebi-en-1.png)
+   [login page]
 
 2. Select the Built-in database, If you need to select an external database configuration, the documentation is available: https://help.fanruan.com/finebi-en/doc-view-4437.html
 
@@ -26,15 +26,15 @@ Install FineBI 5.0 or later, Download link: https://intl.finebi.com/
    It is recommended to select the built-in database as the information repository of FineBI. The database type selected here is not the target database for querying and analyzing data, but the database for storing and maintaining FineBI model, dashboard and other information. FineBI needs to add, delete, modify and check it.
    :::
 
-   ![select database](/images/bi-finebi-en-2.png)
+   [select database]
 
 3. Click the Management System button and select the database connection management in Data Connections to create a new database connection.
 
-   ![data connection](/images/bi-finebi-en-3.png)
+   [data connection]
 
 4. On the new database connection page, select MySQL database
 
-   ![select connection](/images/bi-finebi-en-4.png)
+   [select connection]
 
 5. Fill in the link information of the Doris database
 
@@ -52,26 +52,26 @@ Install FineBI 5.0 or later, Download link: https://intl.finebi.com/
 
         - Name Database: Target database in Doris cluster.
 
-   ![connection information](/images/bi-finebi-en-5-1.png)
+   [connection information]
 
 6. Click the test link. Connection succeeded is displayed when the connection information is correct
 
-   ![connection test](/images/bi-finebi-en-6.png)
+   [connection test]
 
 ## Create  model
 
 1. In the "Public Data" section, click to create a new dataset. Then click the database table
 
-   ![new dataset](/images/bi-finebi-en-7.png)
+   [new dataset]
 
 2. You need to import tables in the existing database connection
 
-   ![select table](/images/bi-finebi-en-8-2.png)
+   [select table]
 
 3. You need to refresh each imported table after importing the table. You can analyze the table in the topic only after refreshing the table
 
-   ![refresh table](/images/bi-finebi-en-9.png)
+   [refresh table]
 
 4. Add the imported public data to the edited topic, and then conduct compass analysis and configuration according to business logic.
 
-   ![data analysis](/images/bi-finebi-en-10.png)
+   [data analysis]

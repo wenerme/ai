@@ -12,8 +12,8 @@ This is useful when dealing with hierarchical data structures, where a logical r
 
 ## Example
 
-**Kubernetes Monitoring** <br>
-![Kubernetes Monitoring](../../../images/variable-dependencies-1.png) 
+**Kubernetes Monitoring** 
+[Kubernetes Monitoring] 
 
 Consider an observability scenario involving Kubernetes:
 
@@ -41,10 +41,10 @@ In the above image:
 ### Step 1: Navigate to Variables Configuration Page
 
 1. From the Dashboard toolbar, select **Dashboard Settings**. 
-![Dashboard Settings](../../../images/variable-dependencies-2.png)
+[Dashboard Settings]
 
 2. Click **Add Variable.**
-![Add Variable](../../../images/variable-dependencies-3.png)
+[Add Variable]
 
 ### Step 2: Define the Parent Variable
 
@@ -58,7 +58,7 @@ Configure the parent variable (`k8s_namespace_name`) in the **Add Variable** for
 - **Field**: `k8s_namespace_name`  
 - **Filters**: None
 
-![parent variable](../../../images/variable-dependencies-4.png)
+[parent variable]
 
 ### Step 3: Configure the First-Level Dependent Variable
 
@@ -75,7 +75,7 @@ Configure the dependent variable (`k8s_pod_name`) as shown below:
     - **Value**: `$a_k8s_namespace_name`
 
 This setup ensures that only pods from the selected namespace are shown.  
-![first-dependent-variable](../../../images/variable-dependencies-5..png)
+[first-dependent-variable]
 
 ### Step 4: Configure the Second-Level Dependent Variable
 
@@ -90,7 +90,7 @@ Configure the second-level dependent variable (`k8s_container_name`) as shown be
     - **Field**: k8s_pod_name   
     - **Value**: $b_k8s_pod_name
 
-![second-dependent-variable](../../../images/variable-dependencies-6.png)
+[second-dependent-variable]
 
 !!! Note
 
@@ -99,4 +99,4 @@ Configure the second-level dependent variable (`k8s_container_name`) as shown be
 
 ## Variable Dependency Graph  
 The **Variable Dependency Graph** visually maps these relationships, showing how each variable is linked.  
-![Variable Dependency Graph](../../../images/variable-dependencies-7.png)
+[Variable Dependency Graph]

@@ -1,10 +1,7 @@
 ---
 title: "ComfyUI Wan2.2 Fun Camera Control: Video Generation Workflow Example"
 description: "This article demonstrates how to use camera control for video generation with Wan2.2 Fun Camera Control in ComfyUI."
-sidebarTitle: "Wan2.2 Fun Camera"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 **Wan2.2-Fun-Camera-Control** is a next-generation video generation and camera control model developed by Alibaba PAI. By introducing innovative Camera Control Codes and combining deep learning with multimodal conditional inputs, it generates high-quality videos that adhere to predefined camera motion conditions. The model is released under the **Apache 2.0 license**, allowing for commercial use.
 
@@ -18,8 +15,6 @@ Here are the relevant model weights and code repository:
 - Code Repository: [VideoX-Fun](https://github.com/aigc-apps/VideoX-Fun)
 
 ## Wan2.2 Fun Camera Control: Video Generation Workflow Example
-
-<UpdateReminder/>
 
 The workflow provided includes two versions:
 1. Using the [Wan2.2-Lightning](https://huggingface.co/lightx2v/Wan2.2-Lightning) 4-step LoRA via lightx2v: This may result in reduced video dynamics but offers faster generation.
@@ -89,11 +84,9 @@ ComfyUI/
 
 ### 3. Complete the Workflow Step-by-Step
 
-![Wan2.2 Fun Camera Control Workflow Steps](/images/tutorial/video/wan/wan_2.2_14b_fun_camera.jpg)
+[Wan2.2 Fun Camera Control Workflow Steps]
 
-<Note>
   This workflow uses LoRA. Ensure the Diffusion model and LoRA are consistent; high noise and low noise models and LoRA must be paired accordingly.
-</Note>
 
 1. **High noise** model and **LoRA** loading
   - Ensure the `Load Diffusion Model` node loads `wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors`

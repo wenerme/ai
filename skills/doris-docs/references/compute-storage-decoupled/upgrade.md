@@ -95,9 +95,7 @@ Verify that the new MetaService is running and that a new version number is pres
 
 #### 2. Upgrade Recycler (if have)
 
-:::caution
-If you have not deployed the Recycler component separately, you can skip this step.
-:::
+> **caution**: If you have not deployed the Recycler component separately, you can skip this step.
 
 Assuming the following environment variables:
 - `${RECYCLER_HOME}`: Working directory of Recycler

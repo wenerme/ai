@@ -40,4 +40,3 @@ ZO_DISK_CACHE_STRATEGY=<strategy_name>
 
 - Groups files using time-based keys. For example, 2025040806.
 - Evicts from the oldest time group first. Within that group, it removes the least recently accessed file.
-

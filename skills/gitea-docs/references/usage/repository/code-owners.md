@@ -1,7 +1,5 @@
 ---
 date: "2023-05-24T16:00:00+00:00"
-slug: "code-owners"
-sidebar_position: 30
 aliases:
   - /en-us/code-owners
   - /code-owners

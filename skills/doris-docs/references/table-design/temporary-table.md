@@ -15,13 +15,9 @@ To address the above issues, Doris introduces the temporary table feature. Tempo
 
 By introducing the temporary table feature, Doris not only simplifies the temporary data storage and management in complex data processing but also further enhances the flexibility and security of data processing.
 
-
-:::note
-
-Similar to internal tables, temporary tables must be created under a Database within the Internal Catalog. However, since temporary tables are session-based, their naming is not subject to uniqueness constraints. You can create temporary tables with the same name in different sessions or create temporary tables with the same names as other internal tables.
+> **note**: Similar to internal tables, temporary tables must be created under a Database within the Internal Catalog. However, since temporary tables are session-based, their naming is not subject to uniqueness constraints. You can create temporary tables with the same name in different sessions or create temporary tables with the same names as other internal tables.
 
 If a temporary table and a non-temporary table with the same name exist simultaneously in the same Database, the temporary table has the highest access priority. Within that session, all queries and operations on the table with the same name will only affect the temporary table (except for creating materialized views).
-:::
 
 ## Usage
 

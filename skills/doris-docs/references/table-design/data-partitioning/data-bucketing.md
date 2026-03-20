@@ -16,7 +16,7 @@ Doris supports two bucket methods: Hash Bucketing and Random Bucketing.
 
 When creating a table or adding a partition, users need to select one or more columns as the bucket columns and specify the number of buckets. Within the same partition, the system performs a hash calculation based on the bucket key and the number of buckets. Data with the same hash value will be allocated to the same bucket. For example, in the figure below, partition p250102 is divided into three buckets based on the region column, and rows with the same hash value are placed into the same bucket.
 
-![hash-bucket](/images/table-desigin/hash-bucket.png)
+[hash-bucket]
 
 It is recommended to use Hash Bucketing in the following scenarios:
 
@@ -43,14 +43,13 @@ DISTRIBUTED BY HASH(region) BUCKETS 8;
 
 In the example, `DISTRIBUTED BY HASH(region)` specifies the creation of Hash Bucketing and selects the `region` column as the bucket key. Meanwhile, `BUCKETS 8` specifies the creation of 8 buckets.
 
-
 ### Random Bucketing
 
 In each partition, Random Bucketing randomly distributes data to various buckets without relying on the hash value of a certain field. Random Bucketing ensures uniform data distribution, thus avoiding data skew caused by improper bucket key selection.
 
 During data import, each batch of a single import job will be randomly written to a tablet, ensuring uniform data distribution. For example, in one operation, eight batches of data are randomly allocated to three buckets under partition `p250102`.
 
-![random-bucket](/images/table-desigin/random-bucket.png)
+[random-bucket]
 
 When using Random Bucketing, you can enable the single-tablet import mode (set `load_to_single_tablet` to `true`). During large-scale data imports, one batch of data will only be written to one data tablet, helping to improve the concurrency and throughput of data imports, reducing write amplification caused by data imports and Compaction, thereby ensuring cluster stability.
 
@@ -85,11 +84,9 @@ In the example, the statement `DISTRIBUTED BY RANDOM` specifies the use of Rando
 
 ## Choosing Bucket Keys
 
-:::tip Note
+> **tip**: Note
 
 Only Hash Bucketing requires selecting bucket keys; Random Bucketing does not require selecting bucket keys.
-
-:::
 
 Bucket keys can be one or more columns. If it is a DUPLICATE table, any Key column or Value column can be used as the bucket key. If it is an AGGREGATE or UNIQUE table, to ensure gradual aggregation, the bucket column must be a Key column.
 
@@ -140,16 +137,13 @@ For example, assuming there are 10 BE machines with one disk per BE, you can fol
 
 Data sizes refer to compressed data size in Doris. You can check actual sizes with `SHOW TABLETS FROM your_table`.
 
-:::tip Note
+> **tip**: Note
 
 The data volume of the table can be viewed using the `SHOW DATA` command. The result needs to be divided by the number of replicas and the data volume of the table.
-
-:::
 
 ### Automatic Bucket Number Setting
 
 The automatic bucket number calculation function will automatically predict the future partition size based on the partition size over a period of time, and determine the number of buckets accordingly.
-
 
 ```sql
 -- Set hash bucket auto
@@ -165,7 +159,7 @@ When creating buckets, you can adjust the estimated partition size through the `
 
 ## Maintaining Data Buckets
 
-:::tip Note
+> **tip**: Note
 
 Currently, Doris only supports modifying the number of buckets in newly added partitions and does not support the following operations:
 
@@ -173,10 +167,7 @@ Currently, Doris only supports modifying the number of buckets in newly added pa
 2. Modifying the bucket key
 3. Modifying the number of buckets for existing buckets
 
-:::
-
 When creating a table, the number of buckets for each partition is uniformly specified through the `DISTRIBUTED` statement. To cope with data growth or reduction, you can specify the number of buckets for the new partition when dynamically adding partitions. The following example shows how to modify the number of buckets in newly added partitions using the `ALTER TABLE` command:
-
 
 ```sql
 -- Modify hash bucket table

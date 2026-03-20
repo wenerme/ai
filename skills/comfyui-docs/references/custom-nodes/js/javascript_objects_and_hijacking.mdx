@@ -14,11 +14,9 @@ which can be found at `doc/index.html`.
 The `app` object (always accessible by `import { app } from "../../scripts/app.js";`) represents the Comfy application running in the browser,
 and contains a number of useful properties and functions, some of which are listed below.
 
-<Note>
 **Deprecated:** Hijacking/monkey-patching functions on `app` or prototypes is deprecated and subject to change at any point in the near future. Use the official [extension hooks](/custom-nodes/js/javascript_hooks) and [Context Menu API](/custom-nodes/js/context-menu-migration) instead.
-</Note>
 
-<Warning>Hijacking functions on `app` is not recommended, as Comfy is under constant development, and core behavior may change.</Warning>
+Hijacking functions on `app` is not recommended, as Comfy is under constant development, and core behavior may change.
 
 ### Properties
 
@@ -72,7 +70,7 @@ to node `link.target_id` slot `link.target_slot`. It also has a string represent
 
 `LLink`s are created in the `connect` method of a `LGraphNode` (of which `ComfyNode` is a subclass). 
 
-<Tip>Avoid creating your own LLink objects - use the LiteGraph functions instead.</Tip>
+Avoid creating your own LLink objects - use the LiteGraph functions instead.
 
 ## ComfyNode
 
@@ -80,16 +78,15 @@ to node `link.target_id` slot `link.target_slot`. It also has a string represent
 operations. However, Comfy has significantly extended the LiteGraph core behavior, and also does not make 
 use of all LiteGraph functionality.
 
-<Tip>The description that follows applies to a normal node. 
-Group nodes, primitive nodes, notes, and redirect nodes have different properties.</Tip>
+The description that follows applies to a normal node. 
+Group nodes, primitive nodes, notes, and redirect nodes have different properties.
 
 A `ComfyNode` object represents a node in the current workflow. It has a number of important properties 
 that you may wish to make use of, a very large number of functions that you may wish to use, or hijack to 
 modify behavior.
 
-<Note>
 **Deprecated:** Hijacking prototype methods on `ComfyNode` or `LGraphNode` is deprecated and subject to change at any point in the near future. Use the official [extension hooks](/custom-nodes/js/javascript_hooks) where available, such as `getNodeMenuItems` for context menus. See the [Context Menu Migration Guide](/custom-nodes/js/context-menu-migration) for examples.
-</Note> 
+ 
 
 To get a more complete sense of the node object, you may find it helpful to insert the following
 code into your extension and place a breakpoint on the `console.log` command. When you then create a new node
@@ -122,7 +119,6 @@ async nodeCreated(node) {
 | `type`            | The unique name (from Python) of the node class                                                                                     |
 | `widgets`         | A list of widgets (discussed below)                                                                                                 |
 | `widgets_values`  | A list of the current values of widgets                                                                                             |
-
 
 ### Functions
 
@@ -169,16 +165,15 @@ Most of these functions are unmodified from the LiteGraph core code.
 | `getTitle`         | The title to be displayed.                                                                             |
 | `collapse`         | Toggles the collapsed state of the node.                                                               |
 
-<Warning>`collapse` is badly named; it _toggles_ the collapsed state. 
+`collapse` is badly named; it _toggles_ the collapsed state. 
 It takes a boolean parameter, which can be used to override 
-`node.collapsable === false`.</Warning>
+`node.collapsable === false`.
 
 #### Other
 
 | function     | notes                                                              |
 | ------------ | ------------------------------------------------------------------ |
 | `changeMode` | Use to set the node to bypassed (`mode == 4`) or not (`mode == 0`) |
-
 
 ## Inputs and Widgets
 
@@ -210,7 +205,6 @@ as well as `STRING` (which comes in two flavours, single line and multiline),
 `COMBO` for dropdown selection from a list, and `IMAGEUPLOAD`, used in Load Image nodes.
 
 Custom widget types can be added by providing a `getCustomWidgets` method in your extension.
-{/* TODO add link */}
 
 ### Linked widgets
 
@@ -236,7 +230,7 @@ current graph into a prompt that can be sent to the server.
     - undefined, if it is a widget that has been converted to an input and is not connected
     - other unconnected inputs are not included in `.inputs`
 
-<Tip>Note that the `upstream_node_id` in the array describing a connected input is represented as a string, not an integer.</Tip>
+Note that the `upstream_node_id` in the array describing a connected input is represented as a string, not an integer.
 
 ### workflow
 
@@ -260,4 +254,4 @@ current graph into a prompt that can be sent to the server.
         - `slot_index` - the slot number of the output
 - `version` - the LiteGraph version number (at time of writing, `0.4`)
 
-<Tip>`nodes.output` is absent for nodes with no outputs, not an empty list.</Tip>
+`nodes.output` is absent for nodes with no outputs, not an empty list.

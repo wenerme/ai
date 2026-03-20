@@ -1,20 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/text-to-chart
 title: 'Text-to-Chart'
-sidebar_label: 'Text-to-Chart'
-pagination_prev: null
-pagination_next: null
 description: 'Generate charts from natural language prompts in ClickStack using the AI-powered Text-to-Chart feature.'
 doc_type: 'guide'
 keywords: ['clickstack', 'text-to-chart', 'AI', 'visualization', 'Chart Explorer', 'natural language', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import text_to_chart from '@site/static/images/clickstack/text-to-chart/text-to-chart.png';
-import chart_explorer from '@site/static/images/clickstack/text-to-chart/chart-explorer.png';
-import create_connection from '@site/static/images/clickstack/text-to-chart/create-connection.png';
 
 ClickStack's Text-to-Chart feature allows you to create visualizations by describing what you want to see in plain text. Rather than manually selecting metrics, filters, and group-by fields, you can type a prompt such as "error rates by service over the last 24 hours" and ClickStack will generate the corresponding chart automatically.
 
@@ -26,22 +15,13 @@ Text-to-Chart requires an [Anthropic API key](https://console.anthropic.com/). S
 
 For open source deployments, pass the key as an environment variable. The method varies by deployment type:
 
-<Tabs groupId="deployMethod">
-<TabItem value="docker-aio" label="Docker (All-in-One or Local Mode)" default>
-
 ```bash
 docker run -e ANTHROPIC_API_KEY='<YOUR_KEY>' -p 8080:8080 -p 4317:4317 -p 4318:4318 clickhouse/clickstack-all-in-one:latest
 ```
 
-</TabItem>
-<TabItem value="docker-hyperdx" label="Docker (HyperDX Only)">
-
 ```bash
 docker run -e ANTHROPIC_API_KEY='<YOUR_KEY>' -p 8080:8080 docker.hyperdx.io/hyperdx/hyperdx-local
 ```
-
-</TabItem>
-<TabItem value="docker-compose" label="Docker Compose">
 
 Add the variable to your `.env` file or set it directly in the `docker-compose.yaml`:
 
@@ -52,9 +32,6 @@ services:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
 ```
 
-</TabItem>
-<TabItem value="helm" label="Helm">
-
 Pass the key using `--set`:
 
 ```bash
@@ -62,9 +39,6 @@ helm install my-hyperdx hyperdx/hdx-oss-v2 \
   --set env[0].name=ANTHROPIC_API_KEY \
   --set env[0].value=<YOUR_KEY>
 ```
-
-</TabItem>
-</Tabs>
 
 ## Using Text-to-Chart {#using-text-to-chart}
 

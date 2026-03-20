@@ -6,9 +6,6 @@
 }
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This document mainly introduces table creation and data partitioning in Doris, as well as potential problems and solutions encountered during table creation operations.
 
 ## Row & Column
@@ -103,8 +100,6 @@ The default type of `ENGINE` is `OLAP`. Only OLAP is responsible for data manage
 
 Doris supports advanced data partitioning methods, including Dynamic Partition, Auto Partition, and Auto Bucket, which enable more flexible data management. The following are examples of implementations:
 
-<Tabs>
-<TabItem value="Auto Partition" label="Auto Partition" default>
 <div>
 
 [Auto Partition](./auto-partitioning) supports automatic creation of corresponding partitions according to user-defined rules during data import, which is more convenient. Rewrite the above example with Auto Range Partition as follows:
@@ -137,9 +132,7 @@ PROPERTIES
 As above, when the data is imported, Doris will automatically create the corresponding partitions as `date` with a granularity of month level. `2018-12-01` and `2018-12-31` will fall into the same partition, while `2018-11-12` will fall into the leading partition. Auto Partition also supports List partition, please check Auto Partition's documentation for more usage.
 
 </div>
-</TabItem>
 
-<TabItem value="Dynamic Partition" label="Dynamic Partition">
 <div>
 
 [Dynamic Partition](./dynamic-partitioning) is an automatic partition creation and recovery management method based on the real time, rewrite the above example with dynamic partitioning as follows:
@@ -178,9 +171,7 @@ PROPERTIES
 Dynamic partition supports tiered storage, customised copy number and other features, see the dynamic partition documentation for details.
 
 </div>
-</TabItem>
 
-<TabItem value="Auto&Dynamic Partition" label="Auto&Dynamic Partition">
 <div>
 
 Auto Partition and Dynamic Partition each have their own advantages, and combining the two enables flexible on-demand partition creation and automatic reclamation:
@@ -219,9 +210,7 @@ PROPERTIES
 For detailed suggestions on this feature, see [Auto Partition Conjunct with Dynamic Partition](./auto-partitioning#conjunct-with-dynamic-partition).
 
 </div>
-</TabItem>
 
-<TabItem value="Auto Bucket" label="Auto Bucket">
 <div>
 
 When the user is not sure of a reasonable number of buckets, Auto Bucket for Doris to complete the estimation, and the user only needs to provide the estimated amount of table data:
@@ -260,9 +249,6 @@ PROPERTIES
 Note that this approach does not apply to cases where the amount of table data is particularly large. 
 
 </div>
-</TabItem>
-
-</Tabs>
 
 ## View partitions
 

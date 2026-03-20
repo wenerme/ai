@@ -106,5 +106,3 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = (...)[INVALID_ARGUMENT]Illegal 
 ### Keywords
 
 CUT_IPV6
-
-

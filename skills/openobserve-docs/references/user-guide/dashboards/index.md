@@ -16,7 +16,3 @@ In OpenObserve, Dashboards are used to visualize and monitor both real-time and 
 - [Variable Dependencies in Dashboards](variables/variable-dependencies.md)
 - [Comparison Against in Dashboards](comparison-against-in-dashboards.md)
 - [Custom Charts](custom-charts)
-
-
-
-

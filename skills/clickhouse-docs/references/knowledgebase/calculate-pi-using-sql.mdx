@@ -7,12 +7,10 @@ keywords: ['Calculate Pi', 'SQL']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## It's Pi Day! Let's calculate pi using SQL \{#its-pi-day-lets-calculate-pi-using-sql\}
 
 Happy Pi Day! We thought it would be fun to calculate pi using SQL queries in ClickHouse. Here is what we came up with so far...
-
 
 1. This one uses the ClickHouse `numbers_mt` table function to return 1B rows and only takes 40ms to compute the calculation:
 
@@ -88,7 +86,6 @@ WITH random_points AS
 SELECT (4 * countIf(L2Norm(point) < 1)) / count() AS pi
 FROM random_points
 
-
 ┌──────────pi─┐
 │ 3.141627208 │
 └─────────────┘
@@ -115,7 +112,6 @@ WITH
 SELECT pow((2 * length) * avg(exp(-(x * x))), 2) AS pi
 FROM numbers_mt(1000000000.)
 
-
 ┌─────────────────pi─┐
 │ 3.1415926890388595 │
 └────────────────────┘
@@ -123,6 +119,4 @@ FROM numbers_mt(1000000000.)
 1 row in set. Elapsed: 1.245 sec. Processed 1.00 billion rows, 8.00 GB (803.25 million rows/s., 6.43 GB/s.)
 ```
 
-:::note
-If you have any more, we'd love for you to contribute. Thanks!
-:::
+> **note**: If you have any more, we'd love for you to contribute. Thanks!

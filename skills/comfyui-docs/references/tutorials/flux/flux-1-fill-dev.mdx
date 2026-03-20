@@ -1,10 +1,9 @@
 ---
 title: "ComfyUI Flux.1 fill dev Example"
 description: "This guide demonstrates how to use Flux.1 fill dev to create Inpainting and Outpainting workflows."
-sidebarTitle: "Flux.1 fill dev"
 ---
 
-![Flux.1 fill dev](/images/tutorial/flux/flux-fill-dev-demo.jpeg)
+[Flux.1 fill dev]
 
 ## Introduction to Flux.1 fill dev Model
 
@@ -28,7 +27,7 @@ If you've previously used the full version of the [Flux.1 Text-to-Image workflow
 then you only need to download the **flux1-fill-dev.safetensors** model file in this section.
 
 However, since downloading the corresponding model requires agreeing to the corresponding usage agreement, please visit the [black-forest-labs/FLUX.1-Fill-dev](https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev) page and make sure you have agreed to the corresponding agreement as shown in the image below.
-![Flux Agreement](/images/tutorial/flux/flux1_fill_dev_agreement.jpg)
+[Flux Agreement]
 
 Complete model list:
 - [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true)
@@ -67,14 +66,12 @@ Please download the image below and drag it into ComfyUI to load the correspondi
 Please download the image below, we will use it as the input image
 ![ComfyUI Flux.1 inpaint input](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/inpaint/flux_fill_inpaint_input.png)
 
-<Note>
 The corresponding image already contains an alpha channel, so you don't need to draw a mask separately.
 If you want to draw your own mask, please [click here](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/inpaint/flux_fill_inpaint_input_original.png) to get the image without a mask, and refer to the MaskEditor usage section in the [ComfyUI Layout Inpainting Example](/tutorials/basic/inpaint#using-the-mask-editor) to learn how to draw a mask in the `Load Image` node.
-</Note>
 
 ### 2. Steps to run the workflow
 
-![ComfyUI Flux.1 Fill dev Inpainting Workflow](/images/tutorial/flux/flow_diagram_inpaint.jpg)
+[ComfyUI Flux.1 Fill dev Inpainting Workflow]
 
 1. Ensure the `Load Diffusion Model` node has `flux1-fill-dev.safetensors` loaded.
 2. Ensure the `DualCLIPLoader` node has the following models loaded:
@@ -96,7 +93,7 @@ Please download the image below, we will use it as the input image
 
 ### 2. Steps to run the workflow
 
-![ComfyUI Flux.1 Fill dev Outpainting Workflow](/images/tutorial/flux/flow_diagram_outpaint.jpg)
+[ComfyUI Flux.1 Fill dev Outpainting Workflow]
 
 1. Ensure the `Load Diffusion Model` node has `flux1-fill-dev.safetensors` loaded.
 2. Ensure the `DualCLIPLoader` node has the following models loaded:

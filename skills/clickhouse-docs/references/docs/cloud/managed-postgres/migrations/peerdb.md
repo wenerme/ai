@@ -1,22 +1,9 @@
 ---
-slug: /cloud/managed-postgres/migrations/peerdb
-sidebar_label: 'PeerDB'
 title: 'Migrate PostgreSQL data using PeerDB'
 description: 'Learn how to migrate your PostgreSQL data to ClickHouse Managed Postgres using PeerDB'
 keywords: ['postgres', 'postgresql', 'logical replication', 'migration', 'data transfer', 'managed postgres', 'peerdb']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import sourcePeer from '@site/static/images/managed-postgres/peerdb/source-peer.png';
-import targetPeer from '@site/static/images/managed-postgres/peerdb/target-peer.png';
-import peers from '@site/static/images/managed-postgres/peerdb/peers.png';
-import createMirror from '@site/static/images/managed-postgres/peerdb/create-mirror.png';
-import tablePicker from '@site/static/images/managed-postgres/peerdb/table-picker.png';
-import initialLoad from '@site/static/images/managed-postgres/peerdb/initial-load.png';
-import mirrors from '@site/static/images/managed-postgres/peerdb/mirrors.png';
-import settings from '@site/static/images/managed-postgres/peerdb/settings.png';
 
 # Migrate to Managed Postgres using PeerDB {#peerdb-migration}
 This guide provides step-by-step instructions on how to migrate your PostgreSQL database to ClickHouse Managed Postgres using PeerDB.
@@ -51,9 +38,7 @@ Now, you should see both the source and target peers listed in the "Peers" secti
 ### Obtain source schema dump {#migration-peerdb-source-schema-dump}
 To mirror the setup of the source database in the target database, we need to obtain a schema dump of the source database. You can use `pg_dump` to create a schema-only dump of your source PostgreSQL database:
 
-<details>
-
-<summary>Installing pg_dump</summary>
+Installing pg_dump
 
 **Ubuntu:**
 
@@ -85,8 +70,6 @@ Verify installation:
 ```shell
 pg_dump --version
 ```
-
-</details>
 
 ```shell
 pg_dump -d 'postgresql://<user>:<password>@<host>:<port>/<database>'  -s > source_schema.sql
@@ -127,9 +110,8 @@ Next, we need to create a mirror to define the data migration process between th
 4. Select the tables you want to migrate. You can choose specific tables or select all tables from the source database.
 <Image img={tablePicker} alt="Table Picker" size="md" border />
 
-:::info Selecting tables
+> **info**: Selecting tables
 Make sure the destination table names are the same as the source table names in the target database, as we have migrated the schema as is in the earlier step.
-:::
 
 5. Once you have configured the mirror settings, click on the `Create mirror` button.
 
@@ -148,9 +130,7 @@ If you click on the source peer, you can see a list of running commands which Pe
 3. We then do FETCH commands to pull data from the source database and then PeerDB syncs them to the target database.
 
 ## Post-migration tasks {#migration-peerdb-considerations}
-:::note 
-These steps may vary based on your specific use case and application requirements. The key is to ensure data consistency, minimize downtime, and validate the integrity of the migrated data before fully switching over to the new system.
-:::
+> **note**: These steps may vary based on your specific use case and application requirements. The key is to ensure data consistency, minimize downtime, and validate the integrity of the migrated data before fully switching over to the new system.
 
 After the migration is complete:
 
@@ -248,9 +228,8 @@ Once validation passes and sequences/constraints are in place:
 
 Once you're satisfied with the migration and have switched your application to use ClickHouse Managed Postgres, you can delete the mirror and peers in PeerDB.
 
-:::info Replication slots
+> **info**: Replication slots
 If you enabled continuous replication, PeerDB will create a **replication slot** on the source PostgreSQL database. Make sure to drop the replication slot manually from the source database after you're done with the migration to avoid unnecessary resource usage.
-:::
 
 ## References {#migration-peerdb-references}
 - [ClickHouse Managed Postgres Documentation](../)

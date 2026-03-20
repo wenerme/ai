@@ -1,20 +1,9 @@
 ---
 title: 'Warehouses'
-slug: /cloud/reference/warehouses
 keywords: ['compute separation', 'cloud', 'architecture', 'compute-compute', 'warehouse', 'warehouses', 'hydra']
 description: 'Compute-compute separation in ClickHouse Cloud'
 doc_type: 'reference'
 ---
-
-import compute_1 from '@site/static/images/cloud/reference/compute-compute-1.png';
-import compute_2 from '@site/static/images/cloud/reference/compute-compute-2.png';
-import compute_3 from '@site/static/images/cloud/reference/compute-compute-3.png';
-import compute_4 from '@site/static/images/cloud/reference/compute-compute-4.png';
-import compute_5 from '@site/static/images/cloud/reference/compute-compute-5.png';
-import compute_7 from '@site/static/images/cloud/reference/compute-compute-7.png';
-import compute_8 from '@site/static/images/cloud/reference/compute-compute-8.png';
-import Image from '@theme/IdealImage';
-import ScalePlanFeatureBadge from '@theme/badges/ScalePlanFeatureBadge';
 
 # Warehouses
 
@@ -31,8 +20,6 @@ Each ClickHouse Cloud service includes:
 
 <Image img={compute_1} size="md" alt="Single Service in ClickHouse Cloud" />
 
-<br/>
-
 _Fig. 1 - Single service in ClickHouse Cloud_
 
 Rather than having a single service, you can create multiple services that have access to the same shared storage, which allows you to dedicate resources to specific workloads without having to duplicate data.
@@ -44,8 +31,6 @@ This means you can choose the right size compute for your workload. Some of your
 Compute-compute separation also allows you to separate read operations from write operations so they don't interfere with each other:
 
 <Image img={compute_2} size="md" alt="Compute separation in ClickHouse Cloud" />
-
-<br/>
 
 _Fig. 2 - Compute separation in ClickHouse Cloud_
 
@@ -59,8 +44,6 @@ For example, in the screenshot below, you can see a warehouse "DWH Prod" consist
 - Secondary service `DWH Prod Subservice`
 
 <Image img={compute_8} size="lg" alt="Warehouse example with primary and secondary services" background='white' />
-
-<br/>
 
 _Fig. 3 - Warehouse example_
 
@@ -81,8 +64,6 @@ A different endpoint is used for each service, but the same username and passwor
 
 <Image img={compute_3} size="md" alt="User access across services sharing same data" />
 
-<br/>
-
 _Fig. 4 - User Alice was created in Service 1, but she can use the same credentials to access all services that share same data_
 
 ### Network access control {#network-access-control}
@@ -96,8 +77,6 @@ This allows you to restrict users from using specific services.
 In the example below, Alice is restricted from accessing service 2 in the warehouse:
 
 <Image img={compute_4} size="md" alt="Network access control settings"/>
-
-<br/>
 
 _Fig. 5 - Alice is restricted from accessing service 2 because of network access control settings_
 
@@ -121,14 +100,10 @@ You can do so for the second service and any additional services you create, how
 
 <Image img={compute_5} size="lg" alt="Read-write and Read-only services in a warehouse"/>
 
-<br/>
-
 _Fig. 6 - Read-write and Read-only services in a warehouse_
 
-:::note
-1. Read-only services currently support user management operations (CREATE, DROP, etc).
+> **note**: 1. Read-only services currently support user management operations (CREATE, DROP, etc).
 2. [Refreshable materialized views](/materialized-view/refreshable-materialized-view) run **only** on read-write (RW) services in a warehouse. 
-:::
 
 ## Scaling {#scaling}
 
@@ -152,9 +127,7 @@ To query across all services in the warehouse, use the `all_groups.default` clus
 SELECT * FROM clusterAllReplicas('all_groups.default', system, processes)
 ```
 
-:::note
-Secondary single-node services can scale vertically, while primary single-node services cannot.
-:::
+> **note**: Secondary single-node services can scale vertically, while primary single-node services cannot.
 
 ## Limitations {#limitations}
 
@@ -205,8 +178,6 @@ Please refer to the pricing calculator on the [pricing](https://clickhouse.com/p
 To create a warehouse, you need to create a second service that will share the data with an existing service. This can be done by clicking the plus sign on any of the existing services:
 
 <Image img={compute_7} size="md" alt="Creating a new service in a warehouse"/>
-
-<br/>
 
 _Fig. 7 - Click the plus sign to create a new service in a warehouse_
 

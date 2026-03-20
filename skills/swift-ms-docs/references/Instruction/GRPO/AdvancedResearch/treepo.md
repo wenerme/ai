@@ -7,7 +7,7 @@ Author: [li2zhi](https://github.com/li2zhi)
 ## Principle Introduction
 [TreePO paper](https://arxiv.org/abs/2508.17445) proposes a tree-structured modeling method. This method organizes sequence generation into a segmented tree structure search. Through dynamic branching, backtracking, and early termination mechanisms, it significantly improves the reuse rate of the key-value cache, thereby reducing computational overhead, while maintaining or even enhancing the diversity of exploration.
 
-![TreePO Overview](../../../../resources/treepo.png)
+[TreePO Overview]
 
 ## Implementation Details
 [TreePO implementation example](https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin/treepo/tree_rollout_plugin.py), which references the [official implementation](https://github.com/multimodal-art-projection/TreePO/blob/main/recipe/treepo/vllm_rollout_tree.py) provides sample code for a TreePO training plugin，covering logic related to multi-round interactions, termination judgment, and branch rollback.

@@ -269,8 +269,7 @@ On headless servers and CI environments where the current user's [Security Ident
 
 #### Trigger limit
 
-:::caution
-Windows Task Scheduler enforces a limit of [48 triggers per task](https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-triggers-tasktype-element) (the `CalendarTrigger` element has [`maxOccurs="48"`](https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-calendartrigger-triggergroup-element)). Some cron expressions that work on Linux and macOS exceed this limit on Windows.
+> **caution**: Windows Task Scheduler enforces a limit of [48 triggers per task](https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-triggers-tasktype-element) (the `CalendarTrigger` element has [`maxOccurs="48"`](https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-calendartrigger-triggergroup-element)). Some cron expressions that work on Linux and macOS exceed this limit on Windows.
 
 **Expressions that work on all platforms:**
 
@@ -309,13 +308,9 @@ await Bun.cron("./job.ts", "*/7 9-13 * * *", "my-job");
 await Bun.cron("./job.ts", "*/5 * * * *", "my-job");
 ```
 
-:::
-
 #### Windows containers
 
-:::caution
-`Bun.cron()` is not supported in Windows Docker containers. The Task Scheduler service is not running in `servercore` or `nanoserver` images. Use an in-process scheduler for containerized workloads.
-:::
+> **caution**: `Bun.cron()` is not supported in Windows Docker containers. The Task Scheduler service is not running in `servercore` or `nanoserver` images. Use an in-process scheduler for containerized workloads.
 
 **Viewing registered jobs:**
 

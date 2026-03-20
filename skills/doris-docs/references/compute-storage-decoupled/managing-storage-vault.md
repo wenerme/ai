@@ -20,7 +20,6 @@ PROPERTIES
 
 <vault_name> is the user-defined name of the Storage Vault, which serves as the identifier for accessing the Storage Vault.
 
-
 ### Create an HDFS Storage Vault
 
 To create an HDFS-based decoupled storage-compute Doris cluster, ensure that all nodes (including FE/BE nodes, Meta Service) have privilege to access the specified HDFS, including completing Kerberos authorization configuration and connectivity checks in advance (which can be tested using Hadoop Client on each corresponding node).
@@ -115,16 +114,13 @@ PROPERTIES (
 );
 ```
 
-:::info Note
+> **info**: Note
 
 This feature is supported since version 3.0.5.
 
 The priority order for using Storage Vault when creating a table is: Table -> Database -> Default Storage Vault. If Storage Vault is not specified in the table's PROPERTY, it will check if Storage Vault is specified in the database; if the database also does not specify it, it will further check if there is a default Storage Vault.
 
 If the `VAULT_NAME` attribute of Storage Vault is modified, it may cause the Storage Vault set in the database to become invalid, resulting in an error. Users will need to configure a valid `storage_vault_name` for the database based on the actual situation.
-
-:::
-
 
 ## Alter Storage Vault
 

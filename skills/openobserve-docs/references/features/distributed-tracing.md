@@ -6,7 +6,7 @@ OpenObserve provides powerful distributed tracing capabilities that enable you t
 
 Distributed tracing in OpenObserve allows you to visualize the complete journey of requests across multiple services, understand service dependencies, and pinpoint the root cause of performance issues. Built for modern cloud-native applications, OpenObserve efficiently handles trace ingestion, correlation, and analysis at enterprise scale while maintaining exceptional query performance.
 
-![Tracing Page](../images/features/traces-hero.png)
+[Tracing Page]
 *Distributed Tracing overview page*
 
 ## Key Features
@@ -15,7 +15,7 @@ Distributed tracing in OpenObserve allows you to visualize the complete journey 
 
 - **OpenTelemetry Native**: Full support for OpenTelemetry protocol with automatic trace collection
 
-![OpenTelemetry Native](../images/features/traces-otel-support.png)
+[OpenTelemetry Native]
 
 - **High Throughput**: Process millions of spans per second with sub-millisecond latency
 
@@ -23,11 +23,11 @@ Distributed tracing in OpenObserve allows you to visualize the complete journey 
 
 - **Hierarchical Spans**: Complete trace trees showing parent-child relationships between operations
 
-![Hierarchical Spans](../images/features/trace-spans.png)
+[Hierarchical Spans]
 
 - **Rich Metadata**: Capture detailed span attributes, tags, and contextual information
 
-![Rich Metadata](../images/features/traces-metadata.png)
+[Rich Metadata]
 
 - **Custom Instrumentation**: Support for manual and automatic instrumentation
 
@@ -35,30 +35,29 @@ Distributed tracing in OpenObserve allows you to visualize the complete journey 
 
 - **Advanced Filtering**: Search traces by service, operation, duration, errors, and custom attributes
 
-![Trace Search](../images/features/trace-search.png)
+[Trace Search]
 
 - **Performance Profiling**: Identify slow operations and bottlenecks across your distributed system
 
 - **Error Investigation**: Quickly locate and analyze failed requests and exceptions
 
-![Error Investigation](../images/features/trace-error.png)
-
+[Error Investigation]
 
 ### Visualization & Insights
 
 - **Gantt Chart Views**: Interactive timeline visualization showing span relationships and durations
 
-![Traces Gnatt Chart View](../images/features/trace-timeline.png)
+[Traces Gnatt Chart View]
 
 - **Service Map**: Real-time service topology with performance metrics and error rates
 
-![Traces Service Map](../images/features/traces-service-map.png)
+[Traces Service Map]
 
 ### Storage & Performance
 
 - **Smart Indexing**: High-performance indexing optimized for trace queries and span searches
 
-![Smart Indexing](../images/features/trace-settings.png)
+[Smart Indexing]
 
 - **Retention Management**: [Flexible retention policies](../user-guide/streams/extended-retention.md) for cost-effective long-term storage
 

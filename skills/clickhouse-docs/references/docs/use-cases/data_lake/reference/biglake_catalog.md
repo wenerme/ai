@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/data-lake/biglake-catalog
-sidebar_label: 'BigLake Metastore'
 title: 'BigLake Metastore'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data in Google Cloud Storage using ClickHouse and the BigLake Metastore.'
 keywords: ['BigLake', 'GCS', 'Data Lake', 'Iceberg', 'Google Cloud']
@@ -11,16 +7,12 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import BetaBadge from '@theme/badges/BetaBadge';
-
 <BetaBadge/>
 
 ClickHouse supports integration with multiple catalogs (Unity, Glue, Polaris, etc.). This guide will walk you through the steps to query your Iceberg tables in [BigLake Metastore](https://cloud.google.com/biglake/docs) via ClickHouse.
 
-:::note
-As this feature is beta, you will need to enable it using:
+> **note**: As this feature is beta, you will need to enable it using:
 `SET allow_database_iceberg = 1;`
-:::
 
 ## Prerequisites {#prerequisites}
 
@@ -71,9 +63,8 @@ Example output:
 SELECT count(*) FROM `icebench.my_iceberg_table`;
 ```
 
-:::note Backticks required
+> **note**: Backticks required
 Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
 
 To inspect the table definition:
 

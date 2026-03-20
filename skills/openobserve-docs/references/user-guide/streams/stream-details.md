@@ -11,40 +11,38 @@ Use **Stream Details** to inspect schemas, apply sensitive-data redaction using 
 !!! note "Where to find it" 
     1. Go to **Streams**.
     2. In the **Actions** column, select **Stream Details**.
-    ![stream details access](../../images/stream-details-access.png) 
+    [stream details access] 
 
 !!! note "Who can access it" 
     User roles that have permission to update Streams can modify the stream settings from the **Stream Details** page. The permission needs to be assigned to appropriate user roles using role-based access control (RBAC). 
-
 
 ## Stream details
 The header cards in the **Stream Details** page shows high-level status for the selected stream:
 
 - **Stream Name**: Name of the selected stream.
-![stream name](../../images/stream-name.png) 
+[stream name] 
 - **Events**: Total number of ingested events.
-![stream details](../../images/stream-details.png)   
+[stream details]   
 - **Ingested Data**: Uncompressed size of the stored data.  
 - **Compressed Size**: Storage space used after compression.  
 - **Index Size**: Size of the tantivy files generated for full text search index. Other index types, such as KeyValue filters and hash partitions, do not affect this value.   
-![stream-start-end-time](../../images/stream-start-end-time.png)
+[stream-start-end-time]
 - **Time range**: Start time is the timestamp of the oldest data and end time is the timestamp of the newest data. If the ingested data has a `_timestamp` field, it will be according to that. If the ingested data does not have a ` _timestamp` field, then the start time will be the oldest time of ingestion and end time will be the newest time of ingestion.  
 
 ## Schema Settings
-Inspect and manage the schema of a stream. <br>
-This tab allows you to review detected fields, assign index types, define user-defined schemas, and apply sensitive data redaction patterns. <br>
-![schema settings](../../images/stream-details-schema-settings.png)
-<br>
+Inspect and manage the schema of a stream. 
+This tab allows you to review detected fields, assign index types, define user-defined schemas, and apply sensitive data redaction patterns. 
+[schema settings]
+
 To learn more about Schema Settings, visit the [Schema Settings](https://openobserve.ai/docs/user-guide/streams/schema-settings/) page. 
 
-
 ## Extended Retention
-![extended retention](../../images/extended-retention.png)
+[extended retention]
 Allows you to retain specific segments of your stream data beyond the configured stream-level or global retention period. To learn more, see the [Extended Retention](https://openobserve.ai/docs/user-guide/streams/extended-retention/) page.
 
 ## Configuration
 The **Configuration** tab provides options to configure stream-level limits and ingestion behavior.
-![stream-details-configuration](../../images/stream-details-configuration.png)
+[stream-details-configuration]
 
 ### Data Retention in days
 Sets how long data is retained in this stream. If not configured, the global retention period applies. Default global is 30 days.
@@ -56,7 +54,7 @@ Sets the maximum time span allowed per query. This can help reduce query load. N
 ```
 ZO_DEFAULT_MAX_QUERY_RANGE_DAYS  
 ```  
-However, when a non-zero Max query range is set on a stream, the value set through **Stream Details** overrides the global value. <br> By default, both the environment variable and the **Max Query Range** value are set to zero, which means there is no limit.
+However, when a non-zero Max query range is set on a stream, the value set through **Stream Details** overrides the global value.  By default, both the environment variable and the **Max Query Range** value are set to zero, which means there is no limit.
 
 ### Flatten Level
  
@@ -77,7 +75,6 @@ Useful for audits and reprocessing. Increases storage because raw payloads are p
 ### Enable Distinct Values
 Enables tracking of distinct values for fields to speed up filters and aggregations that rely on unique values.
 Improves responsiveness on high-cardinality fields. 
-
 
 ## Troubleshooting
 

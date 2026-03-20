@@ -1,6 +1,5 @@
 # CoNLL++
 
-
 ## Overview
 
 The CoNLL++ dataset is a corrected and cleaner version of the test set from the widely-used CoNLL2003 NER benchmark. It provides improved annotation quality for evaluating named entity recognition systems on news text.
@@ -26,7 +25,6 @@ The CoNLL++ dataset is a corrected and cleaner version of the test set from the 
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: PER, ORG, LOC, MISC
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The CoNLL++ dataset is a corrected and cleaner version of the test set from the 
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -127,8 +124,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -159,8 +155,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -190,5 +184,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

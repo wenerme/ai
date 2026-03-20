@@ -140,9 +140,7 @@ pathIgnorePatterns = [
 ]
 ```
 
-<Note>
   Command-line `--path-ignore-patterns` flags override the `bunfig.toml` value entirely -- the two are not merged.
-</Note>
 
 ## Timeouts
 
@@ -416,10 +414,8 @@ Internally, Bun transpiles every file. That means code coverage must also go thr
 coverageIgnoreSourcemaps = true  # Don't use sourcemaps for coverage analysis
 ```
 
-<Warning>
   When using this option, you probably want to stick a `// @bun` comment at the top of the source file to opt out of the
   transpilation process.
-</Warning>
 
 ## Install Settings Inheritance
 

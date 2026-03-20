@@ -1,7 +1,5 @@
 ---
 date: "2021-07-20T00:00:00+00:00"
-slug: "npm"
-sidebar_position: 70
 ---
 
 # NPM Package Registry

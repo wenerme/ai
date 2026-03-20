@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Message Sanitization for Tool Calling for anthropic models
 
@@ -28,9 +27,6 @@ Different LLM providers have varying requirements for message formats, especiall
 Without sanitization, these issues cause API errors that interrupt your workflows. With `modify_params=True`, LiteLLM handles these edge cases automatically.
 
 ## Quick Start
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -71,9 +67,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 litellm_settings:
   modify_params: true  # Enable automatic message sanitization
@@ -83,9 +76,6 @@ model_list:
     litellm_params:
       model: anthropic/claude-3-5-sonnet-20241022
 ```
-
-</TabItem>
-</Tabs>
 
 ## Sanitization Cases
 
@@ -213,9 +203,6 @@ response = litellm.completion(
 
 ### Enable Globally
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 
@@ -223,23 +210,14 @@ import litellm
 litellm.modify_params = True
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 litellm_settings:
   modify_params: true
 ```
 
-</TabItem>
-<TabItem value="env" label="Environment Variable">
-
 ```bash
 export LITELLM_MODIFY_PARAMS=True
 ```
-
-</TabItem>
-</Tabs>
 
 ### Enable Per-Request
 

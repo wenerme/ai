@@ -1,7 +1,6 @@
 ---
 title: Start a cluster of HTTP servers
 description: Run multiple HTTP servers concurrently via the "reusePort" option to share the same port across multiple processes
-sidebarTitle: Start a cluster of HTTP servers
 mode: center
 ---
 
@@ -30,10 +29,8 @@ serve({
 
 ---
 
-<Note>
   **Linux only** &mdash; Windows and macOS ignore the `reusePort` option. This is an operating system limitation with
   `SO_REUSEPORT`, unfortunately.
-</Note>
 
 After saving the file, start your servers on the same port.
 

@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Query Builder'
-sidebar_position: 2
-slug: /integrations/grafana/query-builder
 description: 'Using the Query Builder in the ClickHouse Grafana plugin'
 title: 'Query Builder'
 doc_type: 'guide'
@@ -10,18 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_visualization'
 ---
-
-import Image from '@theme/IdealImage';
-import demo_table_query from '@site/static/images/integrations/data-visualization/grafana/demo_table_query.png';
-import demo_logs_query from '@site/static/images/integrations/data-visualization/grafana/demo_logs_query.png';
-import demo_logs_query_fields from '@site/static/images/integrations/data-visualization/grafana/demo_logs_query_fields.png';
-import demo_time_series_query from '@site/static/images/integrations/data-visualization/grafana/demo_time_series_query.png';
-import demo_trace_query from '@site/static/images/integrations/data-visualization/grafana/demo_trace_query.png';
-import demo_raw_sql_query from '@site/static/images/integrations/data-visualization/grafana/demo_raw_sql_query.png';
-import trace_id_in_table from '@site/static/images/integrations/data-visualization/grafana/trace_id_in_table.png';
-import trace_id_in_logs from '@site/static/images/integrations/data-visualization/grafana/trace_id_in_logs.png';
-import demo_data_links from '@site/static/images/integrations/data-visualization/grafana/demo_data_links.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Query Builder
 
@@ -88,7 +73,6 @@ The logs query type supports [data links](#data-links).
 
 <Image size="md" img={demo_logs_query} alt="Example OTel logs query" border />
 
-<br/>
 This query type will render the data in the logs panel along with a logs histogram panel at the top.
 
 Extra columns that are selected in the query can be viewed in the expanded log row:
@@ -104,11 +88,10 @@ The two views are mostly the same, with these notable differences:
 - In Aggregate mode, the "Columns" field is hidden.
 - A time range filter and Order By are automatically added for the **Time** field.
 
-:::important Is your visualization missing data?
+> **important**: Is your visualization missing data?
 In some cases the time series panel will appear to be cut off because the limit defaults to `1000`.
 
 Try removing the `LIMIT` clause by setting it to `0` (if your dataset allows).
-:::
 
 | Field | Description |
 |----|----|

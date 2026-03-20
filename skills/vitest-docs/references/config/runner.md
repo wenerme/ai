@@ -1,6 +1,5 @@
 ---
 title: runner | Config
-outline: deep
 ---
 
 # runner

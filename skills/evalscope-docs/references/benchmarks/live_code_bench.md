@@ -1,6 +1,5 @@
 # Live-Code-Bench
 
-
 ## Overview
 
 LiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.
@@ -28,7 +27,6 @@ LiveCodeBench is a contamination-free benchmark for evaluating code generation m
 - Default timeout is 6 seconds per test case
 - Supports `pass@k` metric calculation
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ LiveCodeBench is a contamination-free benchmark for evaluating code generation m
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -83,7 +80,6 @@ LiveCodeBench is a contamination-free benchmark for evaluating code generation m
 {question_content}
 
 {format_prompt} ### Answer: (use the provided format with backticks)
-
 
 ```
 
@@ -145,5 +141,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

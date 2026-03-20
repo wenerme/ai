@@ -1,15 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # AWS Bedrock - Rerank API
 
 Use Bedrock's Rerank API in the Cohere `/rerank` format.
 
-:::info Cost Tracking
+> **info**: Cost Tracking
 
 ✅ **Cost tracking is supported** for Bedrock Rerank API calls.
-
-:::
 
 ## Supported Parameters
 
@@ -19,9 +16,6 @@ Use Bedrock's Rerank API in the Cohere `/rerank` format.
 - `top_n` - the number of results to return
 
 ## Usage
-
-<Tabs>
-<TabItem label="SDK" value="sdk">
 
 ```python
 from litellm import rerank
@@ -40,9 +34,6 @@ response = rerank(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem label="PROXY" value="proxy">
 
 ### 1. Setup config.yaml
 
@@ -81,14 +72,9 @@ curl http://0.0.0.0:4000/rerank \
     ],
     "top_n": 3
 
-
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Authentication
 
 All standard Bedrock authentication methods are supported for rerank. See [Bedrock Authentication](./bedrock#boto3---authentication) for details.
-

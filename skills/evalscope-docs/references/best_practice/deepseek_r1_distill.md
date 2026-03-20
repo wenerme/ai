@@ -55,7 +55,7 @@ evalscope perf \
 
 For parameter explanations, please refer to the [Performance Evaluation Quick Start](https://evalscope.readthedocs.io/zh-cn/latest/user_guides/stress_test/quick_start.html).
 
-<details><summary>Inference Service Performance Test Results</summary>
+Inference Service Performance Test Results
 
 ```text
 Benchmarking summary:
@@ -111,8 +111,6 @@ Percentile results:
 |    99%     | 11.1688  |   nan    |   11.1688   |      20      |     2048      |       197.4991       |
 +------------+----------+----------+-------------+--------------+---------------+----------------------+
 ```
-
-</details>
 
 ## Evaluating the Model
 
@@ -203,13 +201,13 @@ The terminal will output the following link content:
 Click the link to see the visualization interface. You need to select the evaluation report and then click load:
 
 <p align="center">
-  <img src="https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/distill/score.png" alt="alt text" width="100%">
+  [alt text]
 </p>
 
 Additionally, by selecting the corresponding sub-dataset, you can also view the model's output and check whether the output is correct (or if there are issues with answer matching):
 
 <p align="center">
-  <img src="https://sail-moe.oss-cn-hangzhou.aliyuncs.com/yunlin/images/distill/detail.png" alt="alt text" width="100%">
+  [alt text]
 </p>
 
 ## Tips
@@ -227,7 +225,6 @@ Additionally, by selecting the corresponding sub-dataset, you can also view the 
     - When evaluating reasoning models, it is advisable to set a 0-shot configuration; overly complex prompts or few-shot examples may degrade model performance.
 3. **Parsing and Matching Generated Answers**:
     - We reused the parsing method from the Qwen-Math project, which is based on rules for answer parsing. However, this rule-based parsing might lead to matching errors, slightly affecting the reported metrics. It is recommended to utilize the evaluation result visualization feature to check for any discrepancies in parsing results.
-:::
 
 ## Conclusion
 

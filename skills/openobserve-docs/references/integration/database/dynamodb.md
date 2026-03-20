@@ -22,16 +22,14 @@ Applications that rely on **Amazon DynamoDB** often require real-time insights i
 
     1. Open the [Kinesis Console](https://console.aws.amazon.com/kinesis).  
     2. Follow the instructions and create a new data stream.  
-        ![Enable Kinesis Stream](../images/databases/kinesis-datastream.png)
-
+        [Enable Kinesis Stream]
 
 ??? "Step 2: Enable Kinesis Data Stream on DynamoDB"
 
     1. Go to the **DynamoDB Console → Table → Exports and Streams tab**.  
     2. Enable **Kinesis Data Stream** and select your Kinesis data stream.  
 
-        ![Enable Kinesis Stream](../images/databases/enable-stream.png)
-
+        [Enable Kinesis Stream]
 
 ??? "Step 3: Create Kinesis Data Firehose Delivery Stream"
 
@@ -44,18 +42,16 @@ Applications that rely on **Amazon DynamoDB** often require real-time insights i
     5. (Optional) Configure an **S3 bucket** for backup of failed records.  
     6. Review and **Create Firehose Stream**.  
 
-    ![Kinesis Firehose Config](../images/databases/firehose-stream.png)
+    [Kinesis Firehose Config]
 
 ??? "Step 4: Monitor DynamoDB Changes in OpenObserve"
 
     Once the Firehose is active, DynamoDB changes begin flowing to OpenObserve. Access at Logs -> Stream name 
-    ![Visualize DynamoDB Changes](../images/databases/dynamodb-logs.png)
-
+    [Visualize DynamoDB Changes]
 
 ??? "Troubleshooting"
 
     **No logs appearing in OpenObserve?**
-
 
     - Firehose:
         -  Verify the delivery stream is active and error-free.

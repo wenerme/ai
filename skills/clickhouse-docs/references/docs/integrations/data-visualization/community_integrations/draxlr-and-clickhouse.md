@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Draxlr'
-sidebar_position: 131
-slug: /integrations/draxlr
 keywords: ['clickhouse', 'Draxlr', 'connect', 'integrate', 'ui']
 description: 'Draxlr is a Business intelligence tool with data visualization and analytics.'
 title: 'Connecting Draxlr to ClickHouse'
@@ -10,16 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'data_visualization'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import draxlr_01 from '@site/static/images/integrations/data-visualization/draxlr_01.png';
-import draxlr_02 from '@site/static/images/integrations/data-visualization/draxlr_02.png';
-import draxlr_03 from '@site/static/images/integrations/data-visualization/draxlr_03.png';
-import draxlr_04 from '@site/static/images/integrations/data-visualization/draxlr_04.png';
-import draxlr_05 from '@site/static/images/integrations/data-visualization/draxlr_05.png';
-import draxlr_06 from '@site/static/images/integrations/data-visualization/draxlr_06.png';
-import Image from '@theme/IdealImage';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connecting Draxlr to ClickHouse
 

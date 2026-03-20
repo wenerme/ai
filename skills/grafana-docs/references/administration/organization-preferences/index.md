@@ -95,13 +95,13 @@ The theme affects how Grafana displays graphs, menus, other UI elements.
 
 Here is an example of the dark theme.
 
-![Dark theme example](/static/img/docs/preferences/dark-theme-7-4.png)
+[Dark theme example]
 
 #### Light
 
 Here is an example of the light theme.
 
-![Light theme example](/static/img/docs/preferences/light-theme-7-4.png)
+[Light theme example]
 
 #### Experimental
 

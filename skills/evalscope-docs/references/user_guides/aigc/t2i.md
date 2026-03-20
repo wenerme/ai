@@ -10,7 +10,6 @@ Please refer to the [documentation](../../get_started/supported_dataset/aigc.md)
 
 The EvalScope framework supports a variety of evaluation metrics, allowing users to select suitable metrics based on their requirements. Below is the list of supported evaluation metrics:
 
-
 | Evaluation Metric | Project Link       | Scoring Range (Higher is Better) | Remarks                  |
 |-------------------|--------------------|----------------------------------|--------------------------|
 | `VQAScore`        | [Github](https://github.com/linzhiqiu/t2v_metrics) | [0, 1] (Typically)      | Evaluates text-image consistency using Q&A |
@@ -21,7 +20,6 @@ The EvalScope framework supports a variety of evaluation metrics, allowing users
 | `ImageReward`     | [Github](https://github.com/THUDM/ImageReward) | [-3, 1] (Typically)      | A reward model trained through human feedback, reflecting human preference for images |
 | `MPS`             | [Github](https://github.com/Kwai-Kolors/MPS) | [0, 15] (Typically)      | Kuaishou: A multi-dimensional preference scoring method that comprehensively considers multiple attributes (e.g., realism, semantic alignment) of generated images to assess their quality |
 | `FGA_BLIP2Score`  | [Github](https://github.com/DYEvaLab/EvalMuse) | Overall [0, 5] (Typically, each dimension is [0, 1]) | ByteDance: Used for evaluating the quality and semantic alignment of finely generated images |
-
 
 ## Install Dependencies
 
@@ -89,7 +87,6 @@ Important parameters to note:
 
 Upon completion of the evaluation, EvalScope will output the evaluation results, including model ID, dataset, metric, subset, quantity, and score. Below is an example of the output result:
 
-
 ```text
 +------------------------------+-------------+------------------------------+------------------+-------+---------+---------+
 | Model                        | Dataset     | Metric                       | Subset           |   Num |   Score | Cat.0   |
@@ -129,7 +126,6 @@ Upon completion of the evaluation, EvalScope will output the evaluation results,
 ## Custom Evaluation
 
 Users can configure custom prompts to evaluate tasks using the command below.
-
 
 ### Custom Dataset Evaluation
 
@@ -262,4 +258,4 @@ For usage documentation, please refer to the [visualization documentation](../..
 
 An example is shown below:
 
-![image](./images/example.jpg)
+[image]

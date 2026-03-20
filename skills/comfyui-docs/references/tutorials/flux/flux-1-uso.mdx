@@ -1,10 +1,7 @@
 ---
 title: "ByteDance USO ComfyUI Native Workflow example"
 description: "Unified Style and Subject-Driven Generation with ByteDance's USO model"
-sidebarTitle: "ByteDance USO"
 ---
-
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 **USO (Unified Style-Subject Optimized)** is a model developed by ByteDance's UXO Team that unifies style-driven and subject-driven generation tasks. 
 Built on FLUX.1-dev architecture, the model achieves both style similarity and subject consistency through disentangled learning and style reward learning (SRL).
@@ -20,8 +17,6 @@ USO supports three main approaches:
 - [Model Weights](https://huggingface.co/bytedance-research/USO)
 
 ## ByteDance USO ComfyUI Native Workflow
-
-<UpdateReminder/>
 
 ### 1. Workflow and input
 
@@ -47,7 +42,6 @@ Use the image below as an input image.
 ![input](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/flux/bytedance-uso/input.png)
 
 ### 2. Model links
-
 
 **checkpoints**
 
@@ -79,10 +73,9 @@ Please download all models and place them in the following directories:
 │   │   └── sigclip_vision_patch14_384.safetensors
 ```
 
-
 ### 3. Workflow instructions
 
-![Workflow instructions](/images/tutorial/flux/flux1_uso_reference_image_gen.jpg)
+[Workflow instructions]
 
 1. Load models:
     - 1.1 Ensure the `Load Checkpoint` node has `flux1-dev-fp8.safetensors` loaded
@@ -104,7 +97,7 @@ Please download all models and place them in the following directories:
 
 We also provide a workflow that only uses style reference in the same workflow we provided
 
-![Workflow](/images/tutorial/flux/flux1_uso_reference_image_gen_style_reference_only.jpg)
+[Workflow]
 The only different is we replaced the `content reference` node and only use an `Empty Latent Image` node.
 
 2. You can also bypass whole `Style Reference` group and use the workflow as a text to image workflow, which means this workflow has 4 variations

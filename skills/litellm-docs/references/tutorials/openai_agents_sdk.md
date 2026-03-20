@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI Agents SDK with LiteLLM
 
@@ -15,14 +14,13 @@ The OpenAI Agents SDK provides a high-level interface for building AI agents. By
 - Switch easily between models from different providers
 - Connect to a LiteLLM proxy for centralized model management
 
-:::tip Built-in LiteLLM Extension
+> **tip**: Built-in LiteLLM Extension
 
 The OpenAI Agents SDK includes an official LiteLLM extension (`LitellmModel`) that works without a proxy. If you don't need centralized proxy features (cost tracking, rate limiting, load balancing), you can use it directly:
 
 ```python
 from agents import Agent, Runner
 from agents.extensions.models.litellm_model import LitellmModel
-
 
 agent = Agent(
     name="Assistant",
@@ -35,8 +33,6 @@ print(result.final_output)
 ```
 
 See the [Docs](https://openai.github.io/openai-agents-python/models/litellm/) for more details. The rest of this tutorial focuses on the **proxy-based approach** for teams that need centralized model management.
-
-:::
 
 ## Prerequisites
 
@@ -142,7 +138,6 @@ class LiteLLMModelProvider(ModelProvider):
             openai_client=client,
         )
 
-
 LITELLM_MODEL_PROVIDER = LiteLLMModelProvider()
 ```
 
@@ -203,7 +198,6 @@ async def test_bedrock_agent():
     )
     print(f"<<< Agent Response: {result.final_output}")
 
-
 asyncio.run(test_bedrock_agent())
 ```
 
@@ -231,7 +225,6 @@ async def test_openai_agent():
     )
     print(f"<<< Agent Response: {result.final_output}")
 
-
 asyncio.run(test_openai_agent())
 ```
 
@@ -258,7 +251,6 @@ async def test_anthropic_agent():
         ),
     )
     print(f"<<< Agent Response: {result.final_output}")
-
 
 asyncio.run(test_anthropic_agent())
 ```
@@ -294,7 +286,6 @@ MODEL_NAME = os.getenv("MODEL_NAME") or "bedrock-claude-sonnet-4"
 client = AsyncOpenAI(base_url=BASE_URL, api_key=API_KEY)
 set_tracing_disabled(disabled=True)
 
-
 class LiteLLMModelProvider(ModelProvider):
     def get_model(self, model_name: str | None) -> Model:
         return OpenAIChatCompletionsModel(
@@ -302,9 +293,7 @@ class LiteLLMModelProvider(ModelProvider):
             openai_client=client,
         )
 
-
 LITELLM_MODEL_PROVIDER = LiteLLMModelProvider()
-
 
 @function_tool
 def get_weather(city: str) -> str:
@@ -322,7 +311,6 @@ def get_weather(city: str) -> str:
         return mock_weather_db[city_normalized]
     else:
         return f"Sorry, I don't have weather information for '{city}'."
-
 
 async def main():
     agent = Agent(
@@ -351,7 +339,6 @@ async def main():
         ),
     )
     print(result.final_output)
-
 
 if __name__ == "__main__":
     asyncio.run(main())

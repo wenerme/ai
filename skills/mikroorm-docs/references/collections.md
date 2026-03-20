@@ -2,9 +2,6 @@
 title: Collections
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 `OneToMany` and `ManyToMany` properties are stored in a `Collection` wrapper.
 
 ## Working with collections
@@ -138,18 +135,7 @@ author.books.slice(0, 5); // T[] — slice of items (like Array.slice)
 
 `OneToMany` collections are inverse side of `ManyToOne` references, to which they need to point via `mappedBy` attribute:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BookSchema = defineEntity({
@@ -175,9 +161,7 @@ export class Author extends AuthorSchema.class {}
 AuthorSchema.setClass(Author);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Book = defineEntity({
@@ -196,9 +180,6 @@ export const Author = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -228,9 +209,6 @@ export class Author {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class Book {
@@ -255,9 +233,6 @@ export class Author {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## ManyToMany Collections
 
 For ManyToMany, SQL drivers use pivot table that holds reference to both entities.
@@ -268,18 +243,7 @@ As opposed to them, with MongoDB you do not need to have join tables for `ManyTo
 
 Unidirectional `ManyToMany` relations are defined only on one side, if you define only `entity` attribute, then it will be considered the owning side:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const AuthorSchema = defineEntity({
@@ -294,9 +258,7 @@ export class Author extends AuthorSchema.class {}
 AuthorSchema.setClass(Author);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Author = defineEntity({
@@ -308,9 +270,6 @@ export const Author = defineEntity({
 });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @ManyToMany(() => Book)
 books = new Collection<Book>(this);
@@ -320,33 +279,16 @@ books = new Collection<Book>(this);
 books2 = new Collection<Book>(this);
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @ManyToMany()
 books = new Collection<Book>(this);
 ```
 
-</TabItem>
-</Tabs>
-
 ### Bidirectional
 
 Bidirectional `ManyToMany` relations are defined on both sides, while one is owning side (where references are stored), marked by `inversedBy` attribute pointing to the inverse side:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 // owning side
@@ -374,9 +316,7 @@ export class BookTag extends BookTagSchema.class {}
 BookTagSchema.setClass(BookTag);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 // owning side
@@ -398,9 +338,6 @@ export const BookTag = defineEntity({
 });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 // owning side
 @ManyToMany(() => BookTag, tag => tag.books, { owner: true })
@@ -419,9 +356,6 @@ books = new Collection<Book>(this);
 books = new Collection<Book>(this);
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 // owning side
 @ManyToMany({ inversedBy: 'books' })
@@ -432,27 +366,13 @@ tags = new Collection<BookTag>(this);
 books = new Collection<Book>(this);
 ```
 
-</TabItem>
-</Tabs>
-
 ### Custom pivot table entity
 
 By default, a generated pivot table entity is used under the hood to represent the pivot table. You can provide your own implementation via `pivotEntity` option.
 
 The pivot table entity needs to have exactly two many-to-one properties, where first one needs to point to the owning entity and the second to the target entity of the many-to-many relation.
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const OrderSchema = defineEntity({
@@ -490,9 +410,7 @@ export class OrderItem extends OrderItemSchema.class {}
 OrderItemSchema.setClass(OrderItem);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Order = defineEntity({
@@ -520,9 +438,6 @@ export const OrderItem = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -562,9 +477,6 @@ export class OrderItem {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 export class Order {
@@ -602,9 +514,6 @@ export class OrderItem {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 For bidirectional M:N relations, it is enough to specify the `pivotEntity` option only on the owning side. You still need to link the sides via `inversedBy` or `mappedBy` option.
 
@@ -707,18 +616,7 @@ See [Default Entity Ordering](./defining-entities.md#default-entity-ordering) fo
 
 Collections can also represent only a subset of the target entities:
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const AuthorSchema = defineEntity({
@@ -734,9 +632,7 @@ export class Author extends AuthorSchema.class {}
 AuthorSchema.setClass(Author);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Author = defineEntity({
@@ -749,9 +645,6 @@ export const Author = defineEntity({
 });
 ```
 
-</TabItem>
-<TabItem value="reflect-metadata">
-
 ```ts
 @Entity()
 class Author {
@@ -765,9 +658,6 @@ class Author {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 class Author {
@@ -780,24 +670,10 @@ class Author {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 This works also for M:N relations. Note that if you want to declare more relations mapping to the same pivot table, you need to explicitly specify its name (or use the same pivot entity):
 
-<Tabs
-groupId="entity-def"
-defaultValue="define-entity-class"
-values={[
-{label: 'defineEntity + class', value: 'define-entity-class'},
-{label: 'defineEntity', value: 'define-entity'},
-{label: 'reflect-metadata', value: 'reflect-metadata'},
-{label: 'ts-morph', value: 'ts-morph'},
-]
-}
->
-  <TabItem value="define-entity-class">
+  
 
 ```ts
 const BookSchema = defineEntity({
@@ -813,9 +689,7 @@ export class Book extends BookSchema.class {}
 BookSchema.setClass(Book);
 ```
 
-  </TabItem>
-
-<TabItem value="define-entity">
+  
 
 ```ts
 export const Book = defineEntity({
@@ -827,9 +701,6 @@ export const Book = defineEntity({
   },
 });
 ```
-
-</TabItem>
-<TabItem value="reflect-metadata">
 
 ```ts
 @Entity()
@@ -848,9 +719,6 @@ class Book {
 }
 ```
 
-</TabItem>
-<TabItem value="ts-morph">
-
 ```ts
 @Entity()
 class Book {
@@ -867,9 +735,6 @@ class Book {
 
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Filtering Collections
 

@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # MCP from OpenAPI Specs
 
@@ -53,8 +51,6 @@ Once tools are loaded, you'll see them in the Tool Configuration section:
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-<br/>
-
 ## Step 2 — Optionally Override Tool Names and Descriptions
 
 By default, tool names and descriptions come from the `operationId` and description fields in your spec. You can rename or rewrite them so MCP clients see something cleaner — without touching the upstream spec.
@@ -68,8 +64,6 @@ Each tool card has a pencil icon. Click it to open the inline editor:
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-<br/>
-
 - **Display Name** — overrides the name MCP clients see
 - **Description** — overrides the description MCP clients see
 - Leave a field blank to keep the original from the spec
@@ -80,8 +74,6 @@ After setting overrides, a purple **Custom name** badge appears on the tool card
   img={require('../img/mcp_openapi_custom_name_badge.png')}
   style={{width: '80%', display: 'block', margin: '0'}}
 />
-
-<br/>
 
 ### From the API
 
@@ -144,9 +136,6 @@ Description: "Returns all pets matching a given status (available, pending, sold
 
 ## Using the Server
 
-<Tabs>
-<TabItem value="fastmcp" label="Python FastMCP">
-
 ```python title="Using OpenAPI-based MCP Server" showLineNumbers
 from fastmcp import Client
 import asyncio
@@ -179,10 +168,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 ```json title="Cursor MCP Configuration" showLineNumbers
 {
   "mcpServers": {
@@ -195,10 +180,6 @@ if __name__ == "__main__":
   }
 }
 ```
-
-</TabItem>
-
-<TabItem value="openai" label="OpenAI Responses API">
 
 ```bash title="Using OpenAPI MCP Server with OpenAI" showLineNumbers
 curl --location 'https://api.openai.com/v1/responses' \
@@ -221,6 +202,3 @@ curl --location 'https://api.openai.com/v1/responses' \
     "tool_choice": "required"
 }'
 ```
-
-</TabItem>
-</Tabs>

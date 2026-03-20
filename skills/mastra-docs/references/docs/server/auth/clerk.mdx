@@ -7,9 +7,6 @@ packages:
   - "@mastra/core"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # Clerk
 
 The `@mastra/auth-clerk` package provides authentication for Mastra using Clerk. It verifies incoming requests using Clerk's authentication system and integrates with the Mastra server using the `auth` option.
@@ -24,11 +21,7 @@ CLERK_SECRET_KEY=sk_test_...
 CLERK_JWKS_URI=https://your-clerk-domain.clerk.accounts.dev/.well-known/jwks.json
 ```
 
-:::note
-
-You can find these keys in your Clerk Dashboard under "API Keys".
-
-:::
+> **note**: You can find these keys in your Clerk Dashboard under "API Keys".
 
 ## Installation
 
@@ -55,13 +48,9 @@ export const mastra = new Mastra({
 })
 ```
 
-:::info
-
-The default `authorizeUser` method allows all authenticated users. To customize user authorization, provide a custom `authorizeUser` function when constructing the provider.
+> **info**: The default `authorizeUser` method allows all authenticated users. To customize user authorization, provide a custom `authorizeUser` function when constructing the provider.
 
 Visit [MastraAuthClerk](/reference/auth/clerk) for all available configuration options.
-
-:::
 
 ## Client-side setup
 
@@ -86,11 +75,7 @@ export const useClerkAuth = () => {
 }
 ```
 
-:::info
-
-Refer to the [Clerk documentation](https://clerk.com/docs) for more information.
-
-:::
+> **info**: Refer to the [Clerk documentation](https://clerk.com/docs) for more information.
 
 ## Configuring `MastraClient`
 
@@ -107,20 +92,15 @@ export const mastraClient = new MastraClient({
 })
 ```
 
-:::info
-
-The access token must be prefixed with `Bearer` in the Authorization header.
+> **info**: The access token must be prefixed with `Bearer` in the Authorization header.
 
 Visit [Mastra Client SDK](/docs/server/mastra-client) for more configuration options.
-
-:::
 
 ### Making authenticated requests
 
 Once `MastraClient` is configured with the Clerk access token, you can send authenticated requests:
 
-<Tabs>
-  <TabItem value="react" label="React">
+  
     ```tsx title="src/components/test-agent.tsx"
     'use client'
 
@@ -147,9 +127,9 @@ Once `MastraClient` is configured with the Clerk access token, you can send auth
       return <button onClick={handleClick}>Test Agent</button>
     }
     ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="cURL">
+  
     ```bash
     curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
       -H "Content-Type: application/json" \
@@ -158,5 +138,3 @@ Once `MastraClient` is configured with the Clerk access token, you can send auth
         "messages": "Weather in London"
       }'
     ```
-  </TabItem>
-</Tabs>

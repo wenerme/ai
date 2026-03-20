@@ -1,6 +1,5 @@
 # BC5CDR
 
-
 ## Overview
 
 The BC5CDR corpus is a manually annotated resource of 1,500 PubMed articles developed for the BioCreative V challenge, containing over 4,400 chemical mentions, 5,800 disease mentions, and 3,100 chemical-disease interactions.
@@ -26,7 +25,6 @@ The BC5CDR corpus is a manually annotated resource of 1,500 PubMed articles deve
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: CHEMICAL, DISEASE
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The BC5CDR corpus is a manually annotated resource of 1,500 PubMed articles deve
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -147,8 +144,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -179,8 +175,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -210,5 +204,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -43,8 +43,7 @@ const Dog = vi.fn(class {
 })
 ```
 
-::: warning
-If a non-primitive is returned from the constructor function, that value will become the result of the new expression. In this case the `[[Prototype]]` may not be correctly bound:
+> **warning**: If a non-primitive is returned from the constructor function, that value will become the result of the new expression. In this case the `[[Prototype]]` may not be correctly bound:
 
 ```ts
 const CorrectDogClass = vi.fn(function (name) {
@@ -63,9 +62,8 @@ Newt instanceof IncorrectDogClass // ❌ false!
 ```
 
 If you are mocking classes, prefer the class syntax over the function.
-:::
 
-::: tip WHEN TO USE?
+> **tip**: WHEN TO USE?
 Generally speaking, you would re-create a class like this inside the module factory if the class is re-exported from another module:
 
 ```ts
@@ -104,7 +102,6 @@ test('can feed dogs', () => {
   expect(dogMax.isHungry()).toBe(false)
 })
 ```
-:::
 
 Now, when we create a new instance of the `Dog` class its `speak` method (alongside `feed` and `greet`) is already mocked:
 
@@ -149,10 +146,6 @@ expect(dog.name).toBe('Max')
 expect(nameSpy).toHaveBeenCalledTimes(1)
 ```
 
-::: tip
-You can also spy on getters and setters using the same method.
-:::
+> **tip**: You can also spy on getters and setters using the same method.
 
-::: danger
-Using classes with `vi.fn()` was introduced in Vitest 4. Previously, you had to use `function` and `prototype` inheritence directly. See [v3 guide](https://v3.vitest.dev/guide/mocking.html#classes).
-:::
+> **danger**: Using classes with `vi.fn()` was introduced in Vitest 4. Previously, you had to use `function` and `prototype` inheritence directly. See [v3 guide](https://v3.vitest.dev/guide/mocking.html#classes).

@@ -1,18 +1,11 @@
 ---
 title: "Stability AI Stable Diffusion 3.5 API Node ComfyUI Official Example"
 description: "This article will introduce how to use Stability AI Stable Diffusion 3.5 Partner node's text-to-image and image-to-image capabilities in ComfyUI"
-sidebarTitle: "Stable Diffusion 3.5 Image"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 The [Stability AI Stable Diffusion 3.5 Image](/built-in-nodes/partner-node/image/stability-ai/stability-ai-stable-diffusion-3-5-image) node allows you to use Stability AI's Stable Diffusion 3.5 model to create high-quality, detail-rich image content through text prompts or reference images.
 
 In this guide, we will show you how to set up workflows for both text-to-image and image-to-image generation using this node.
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Stability AI Stable Diffusion 3.5 Text-to-Image Workflow
 
@@ -24,7 +17,7 @@ The image below contains workflow information in its `metadata`. Please download
 
 ### 2. Complete the Workflow Step by Step
 
-![Stability AI Stable Diffusion 3.5 Text-to-Image Step Guide](/images/tutorial/api_nodes/stability_ai/stable_diffusion_3_5_image_t2i_step_guide.jpg)
+[Stability AI Stable Diffusion 3.5 Text-to-Image Step Guide]
 
 You can follow the numbered steps in the image to complete the basic text-to-image workflow:
 1. (Optional) Modify the `prompt` parameter in the `Stability AI Stable Diffusion 3.5 Image` node to input your desired image description. More detailed prompts often result in better image quality.
@@ -53,12 +46,11 @@ The image below contains workflow information in its `metadata`. Please download
 ![Stability AI Stable Diffusion 3.5 Image-to-Image Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/stability_ai/sd3-5-i2i/stable_diffusion_3_5-i2i.png)
 
 Download the image below to use as input
-![Stability AI Stable Diffusion 3.5 Image-to-Image Workflow Input Image](![Stability AI Stable Diffusion 3.5 图生图工作流输入图片](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/stability_ai/sd3-5-i2i/input.jpg)
-
+[Stability AI Stable Diffusion 3.5 Image-to-Image Workflow Input Image]
 
 ### 2. Complete the Workflow Step by Step
 
-![Stability AI Stable Diffusion 3.5 Image-to-Image Step Guide](/images/tutorial/api_nodes/stability_ai/stable_diffusion_3_5_image_i2i_step_guide.jpg)
+[Stability AI Stable Diffusion 3.5 Image-to-Image Step Guide]
 
 You can follow the numbered steps in the image to complete the image-to-image workflow:
 1. Load a reference image through the `Load Image` node, which will serve as the basis for generation.
@@ -75,11 +67,11 @@ You can follow the numbered steps in the image to complete the image-to-image wo
 
 The image below shows a comparison of results with and without input image using the same parameter settings:
 
-![Stability AI Stable Diffusion 3.5 With/Without Image Input Comparison](/images/tutorial/api_nodes/stability_ai/stable_diffusion_3_5_compare.jpg)
+[Stability AI Stable Diffusion 3.5 With/Without Image Input Comparison]
 
 **Image Denoise**: This parameter determines how much of the original image's features are preserved during generation. It's the most crucial adjustment parameter in image-to-image mode. The image below shows the effects of different denoising strengths:
 
-![Stability AI Stable Diffusion 3.5 Image-to-Image Denoise Strength Explanation](/images/tutorial/api_nodes/stability_ai/stable_diffusion_3_5_image_i2i_image_denoise.jpg)
+[Stability AI Stable Diffusion 3.5 Image-to-Image Denoise Strength Explanation]
 
 - **Reference Image Selection**: Choosing images with clear subjects and good composition usually yields better results.
 - **Prompt Tips**: In image-to-image mode, prompts should focus more on elements you want to change or enhance, rather than describing everything already present in the image.
@@ -89,6 +81,4 @@ The image below shows a comparison of results with and without input image using
 
 You can refer to the documentation below to understand detailed parameter settings for the corresponding node
 
-<Card title="Stability Stable Diffusion 3.5 Image Node Documentation" icon="book" href="/built-in-nodes/partner-node/image/stability-ai/stability-ai-stable-diffusion-3-5-image">
 Stability Stable Diffusion 3.5 Image API Node Documentation
-</Card>

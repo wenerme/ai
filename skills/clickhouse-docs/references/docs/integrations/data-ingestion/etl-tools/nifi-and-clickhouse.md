@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'NiFi'
-sidebar_position: 12
 keywords: ['clickhouse', 'NiFi', 'connect', 'integrate', 'etl', 'data integration']
-slug: /integrations/nifi
 description: 'Stream data into ClickHouse using NiFi data pipelines'
 title: 'Connect Apache NiFi to ClickHouse'
 doc_type: 'guide'
@@ -10,25 +7,6 @@ integration:
   - support_level: 'community'
   - category: 'data_ingestion'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
-import nifi01 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_01.png';
-import nifi02 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_02.png';
-import nifi03 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_03.png';
-import nifi04 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_04.png';
-import nifi05 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_05.png';
-import nifi06 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_06.png';
-import nifi07 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_07.png';
-import nifi08 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_08.png';
-import nifi09 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_09.png';
-import nifi10 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_10.png';
-import nifi11 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_11.png';
-import nifi12 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_12.png';
-import nifi13 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_13.png';
-import nifi14 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_14.png';
-import nifi15 from '@site/static/images/integrations/data-ingestion/etl-tools/nifi_15.png';
-import CommunityMaintainedBadge from '@theme/badges/CommunityMaintained';
 
 # Connect Apache NiFi to ClickHouse
 
@@ -88,7 +66,7 @@ For a new setup, download the binary from https://nifi.apache.org/download.html 
 
     <Image img={nifi06} size="lg" border alt="Controller Services list with lightning button highlighted" />
 
-    <br/>
+    
 
     <Image img={nifi07} size="lg" border alt="Enable Controller Service confirmation dialog" />
 

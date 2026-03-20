@@ -3,16 +3,11 @@ title: "Deploy Mastra to AWS Lambda | Deployment"
 description: "Learn how to deploy a Mastra application to AWS Lambda using Docker containers"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Deploy Mastra to AWS Lambda
 
 Deploy your Mastra application to AWS Lambda using Docker containers and the [AWS Lambda Web Adapter](https://github.com/awslabs/aws-lambda-web-adapter). This approach runs your Mastra server as a containerized Lambda function with automatic scaling.
 
-:::info
-This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
-:::
+> **info**: This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
 
 ## Before you begin
 
@@ -23,9 +18,7 @@ You'll need:
 - **[AWS CLI](https://aws.amazon.com/cli/)** installed — run `aws configure` to authenticate
 - **[Docker](https://www.docker.com/)** installed and running
 
-:::warning
-On AWS Lambda, the filesystem is ephemeral, so any local database file will be lost between invocations. If you're using [LibSQLStore](/reference/storage/libsql) with a local file, configure it to use a remote LibSQL-compatible database (for example, [Turso](https://turso.tech/)) instead.
-:::
+> **warning**: On AWS Lambda, the filesystem is ephemeral, so any local database file will be lost between invocations. If you're using [LibSQLStore](/reference/storage/libsql) with a local file, configure it to use a remote LibSQL-compatible database (for example, [Turso](https://turso.tech/)) instead.
 
 ## Create a Dockerfile
 
@@ -66,13 +59,10 @@ ENV AWS_LWA_READINESS_CHECK_PATH="/api"
 CMD ["node", ".mastra/output/index.mjs"]
 ```
 
-:::note
-This Dockerfile uses npm. If you're using pnpm, yarn, or another package manager, adjust the commands accordingly (e.g. `npm ci` won't work with pnpm lockfiles).
-:::
+> **note**: This Dockerfile uses npm. If you're using pnpm, yarn, or another package manager, adjust the commands accordingly (e.g. `npm ci` won't work with pnpm lockfiles).
 
 ## Build and push the Docker image
 
-<Steps>
   <StepItem>
     Set up environment variables for the deployment. Use the same region for all AWS services (ECR, Lambda) to avoid issues with resources not appearing across regions:
 
@@ -125,11 +115,9 @@ This Dockerfile uses npm. If you're using pnpm, yarn, or another package manager
       "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$PROJECT_NAME":latest
     ```
   </StepItem>
-</Steps>
 
 ## Create the Lambda function
 
-<Steps>
   <StepItem>
     Navigate to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/) and click **Create function**. Make sure you have the same region selected as where you created your ECR repository.
   </StepItem>
@@ -174,11 +162,9 @@ This Dockerfile uses npm. If you're using pnpm, yarn, or another package manager
 
     Click **Save**.
   </StepItem>
-</Steps>
 
 ## Verify your deployment
 
-<Steps>
   <StepItem>
     Copy the **Function URL** from the Lambda console and visit `<your-function-url>/api/agents` in your browser. You should see a JSON list of your agents.
   </StepItem>
@@ -190,7 +176,6 @@ This Dockerfile uses npm. If you're using pnpm, yarn, or another package manager
     For production deployments, set up [authentication](/docs/server/auth) before exposing your endpoints publicly, restrict CORS origins to your trusted domains, use AWS IAM roles for secure access to other AWS services, and store sensitive environment variables in AWS Secrets Manager or Parameter Store.
     :::
   </StepItem>
-</Steps>
 
 ## Next steps
 

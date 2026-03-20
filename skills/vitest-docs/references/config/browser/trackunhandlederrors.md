@@ -1,6 +1,5 @@
 ---
 title: browser.trackUnhandledErrors | Config
-outline: deep
 ---
 
 # browser.trackUnhandledErrors

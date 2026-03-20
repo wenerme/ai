@@ -11,7 +11,6 @@ locations:
 - **User settings**: `~/.gemini/settings.json`
 - **Workspace settings**: `your-project/.gemini/settings.json`
 
-<!-- prettier-ignore -->
 > [!IMPORTANT]
 > Workspace settings override user settings.
 
@@ -19,8 +18,6 @@ locations:
 
 Here is a list of all the available settings, grouped by category and ordered as
 they appear in the UI.
-
-<!-- SETTINGS-AUTOGEN:START -->
 
 ### General
 
@@ -171,5 +168,3 @@ they appear in the UI.
 | ------------------ | --------------------------- | -------------------------------------------------------------------------------- | ------- |
 | Enable Hooks       | `hooksConfig.enabled`       | Canonical toggle for the hooks system. When disabled, no hooks will be executed. | `true`  |
 | Hook Notifications | `hooksConfig.notifications` | Show visual indicators when hooks are executing.                                 | `true`  |
-
-<!-- SETTINGS-AUTOGEN:END -->

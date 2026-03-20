@@ -1,7 +1,5 @@
 ---
 date: "2022-07-31T00:00:00+00:00"
-slug: "pub"
-sidebar_position: 90
 ---
 
 # Pub Package Registry

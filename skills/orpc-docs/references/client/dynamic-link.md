@@ -41,6 +41,4 @@ const link = new DynamicLink<ClientContext>((options, path, input) => {
 const client: RouterClient<typeof router, ClientContext> = createORPCClient(link)
 ```
 
-:::info
-Any oRPC's link is supported, not strictly limited to `RPCLink`.
-:::
+> **info**: Any oRPC's link is supported, not strictly limited to `RPCLink`.

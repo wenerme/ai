@@ -1,6 +1,5 @@
 ---
 title: maxConcurrency | Config
-outline: deep
 ---
 
 # maxConcurrency

@@ -1,16 +1,14 @@
 # `this.environment` in Hooks
 
-::: tip Feedback
+> **tip**: Feedback
 Give us feedback at [Environment API feedback discussion](https://github.com/vitejs/vite/discussions/16358)
-:::
 
 Before Vite 6, only two environments were available: `client` and `ssr`. A single `options.ssr` plugin hook argument in `resolveId`, `load` and `transform` allowed plugin authors to differentiate between these two environments when processing modules in plugin hooks. In Vite 6, a Vite application can define any number of named environments as needed. We're introducing `this.environment` in the plugin context to interact with the environment of the current module in hooks.
 
 Affected scope: `Vite Plugin Authors`
 
-::: warning Future Deprecation
+> **warning**: Future Deprecation
 `this.environment` was introduced in `v6.0`. The deprecation of `options.ssr` is planned for a future major. At that point we'll start recommending migrating your plugins to use the new API. To identify your usage, set `future.removePluginHookSsrArgument` to `"warn"` in your vite config.
-:::
 
 ## Motivation
 

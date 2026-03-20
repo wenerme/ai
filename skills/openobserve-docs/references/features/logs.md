@@ -6,7 +6,7 @@ OpenObserve provides powerful log management capabilities for collecting, storin
 
 Logs in OpenObserve offer comprehensive observability into your system's behavior, allowing you to track events, debug issues, and monitor application performance. Built with high performance and cost efficiency in mind, OpenObserve handles log ingestion and querying at scale.
 
-![Logs Page](../images/features/logs-hero.png)
+[Logs Page]
 *Logs Page view*
 
 ## Key Features
@@ -20,33 +20,33 @@ Logs in OpenObserve offer comprehensive observability into your system's behavio
 
 - **Field Extraction**: Automatic field detection and parsing for structured data.
 
-![Field Extraction](../images/features/log-feilds-detection.png)
+[Field Extraction]
 
 The [Schema Settings](../user-guide/streams/schema-settings.md) tab in the Stream Details panel allows you to inspect and manage the schema used to store and query ingested data. 
 
 - **Full-text Search**: Powerful search capabilities across all log fields
 
-![Full-text Search](../images/features/log-settings.png)
+[Full-text Search]
 
 - **SQL Queries**: Use familiar SQL syntax for complex filtering and aggregation.
 
-![SQL Queries](../images/features/sql-based-log-search.png)
+[SQL Queries]
 
 - **Time-based Filtering**: Query logs within specific time windows using absolute or relative ranges.
 
-![Time-based Filtering](../images/features/time-selection.png)
+[Time-based Filtering]
 
 ### Storage & Performance
 - **Compressed Storage**: Efficient compression reduces storage costs significantly
 
-![Compressed Storage](../images/features/data-compression.png)
+[Compressed Storage]
 
 - **Fast Retrieval**: Optimized indexing for quick log searches and aggregations
 
-![Indexing](../images/features/log-settings.png)
+[Indexing]
 
 Know more about [Streams](../user-guide/streams/streams-in-openobserve.md) and its [details](../user-guide/streams/stream-details.md#stream-details)
 
 - **Retention Policies**: [Configurable data retention](../user-guide/streams/extended-retention.md) to manage storage costs
 
-![Retention Policies](../images/features/data-retention.png)
+[Retention Policies]

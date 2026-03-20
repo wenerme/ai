@@ -113,10 +113,10 @@ The output is as follows (truncated):
 
 Evaluation reports and corresponding heatmaps will be generated in the outputs/xxx/reports directory, as shown below:
 
-![needle_haystack_report](./images/needle_haystack_heatmap_chinese.png)
+[needle_haystack_report]
 *Chinese Test*
 
-![needle_haystack_report](./images/needle_haystack_heatmap_english.png)
+[needle_haystack_report]
 *English Test*
 
 It can be observed that the model's performance varies with different context lengths and insertion positions, and it performs better in the Chinese context.

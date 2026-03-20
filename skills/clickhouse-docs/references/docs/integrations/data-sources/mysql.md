@@ -1,6 +1,4 @@
 ---
-slug: /integrations/mysql
-sidebar_label: 'MySQL'
 title: 'MySQL'
 hide_title: true
 description: 'Page describing MySQL integration'
@@ -12,16 +10,11 @@ integration:
 keywords: ['mysql', 'database integration', 'external table', 'data source', 'sql database']
 ---
 
-import CloudNotSupportedBadge from '@theme/badges/CloudNotSupportedBadge';
-import ExperimentalBadge from '@theme/badges/ExperimentalBadge';
-
 # Integrating MySQL with ClickHouse
 
 This page covers using the `MySQL` table engine, for reading from a MySQL table.
 
-:::note
-For ClickHouse Cloud, you can also use the [MySQL ClickPipe](/integrations/clickpipes/mysql) (currently in public beta) to easily move data from your MySQL tables to ClickHouse.
-:::
+> **note**: For ClickHouse Cloud, you can also use the [MySQL ClickPipe](/integrations/clickpipes/mysql) (currently in public beta) to easily move data from your MySQL tables to ClickHouse.
 
 ## Connecting ClickHouse to MySQL using the MySQL Table Engine {#connecting-clickhouse-to-mysql-using-the-mysql-table-engine}
 
@@ -62,10 +55,8 @@ The `MySQL` table engine allows you to connect ClickHouse to MySQL. **SELECT** a
   GRANT ALL PRIVILEGES ON *.* TO 'mysql_clickhouse'@'%';
   ```
 
-:::note
-If you're using this feature in ClickHouse Cloud, you may need the to allow the ClickHouse Cloud IP addresses to access your MySQL instance.
+> **note**: If you're using this feature in ClickHouse Cloud, you may need the to allow the ClickHouse Cloud IP addresses to access your MySQL instance.
 Check the ClickHouse [Cloud Endpoints API](//cloud/get-started/query-endpoints.md) for egress traffic details.
-:::
 
 ### 2. Define a Table in ClickHouse {#2-define-a-table-in-clickhouse}
 
@@ -88,9 +79,7 @@ The minimum parameters are:
 |user     |username to connect to mysql|mysql_clickhouse     |
 |password |password to connect to mysql|Password123!         |
 
-:::note
-View the [MySQL table engine](/engines/table-engines/integrations/mysql.md) doc page for a complete list of parameters.
-:::
+> **note**: View the [MySQL table engine](/engines/table-engines/integrations/mysql.md) doc page for a complete list of parameters.
 
 ### 3. Test the Integration {#3-test-the-integration}
 

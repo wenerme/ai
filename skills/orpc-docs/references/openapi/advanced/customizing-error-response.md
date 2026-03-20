@@ -7,9 +7,7 @@ description: Learn how to customize the error response format in oRPC OpenAPI to
 
 By default, [OpenAPIHandler](/docs/openapi/openapi-handler), [OpenAPIGenerator](/docs/openapi/openapi-specification), and [OpenAPILink](/docs/openapi/client/openapi-link) share the same error response format. You can customize one, some, or all of them based on your requirements.
 
-::: info
-The examples below use options very close to the default behavior.
-:::
+> **info**: The examples below use options very close to the default behavior.
 
 ## `OpenAPIHandler`
 
@@ -23,9 +21,7 @@ const handler = new OpenAPIHandler(router, {
 })
 ```
 
-::: info
-Return `null` or `undefined` from `customErrorResponseBodyEncoder` to fallback to the default behavior.
-:::
+> **info**: Return `null` or `undefined` from `customErrorResponseBodyEncoder` to fallback to the default behavior.
 
 ## `OpenAPIGenerator`
 
@@ -71,9 +67,7 @@ const spec = await generator.generate(router, {
 })
 ```
 
-::: info
-Return `null` or `undefined` from `customErrorResponseBodySchema` to fallback to the default behavior.
-:::
+> **info**: Return `null` or `undefined` from `customErrorResponseBodySchema` to fallback to the default behavior.
 
 ## `OpenAPILink`
 
@@ -91,6 +85,4 @@ const link = OpenAPILink(contract, {
 })
 ```
 
-::: info
-Return `null` or `undefined` from `customErrorResponseBodyDecoder` to fallback to the default behavior.
-:::
+> **info**: Return `null` or `undefined` from `customErrorResponseBodyDecoder` to fallback to the default behavior.

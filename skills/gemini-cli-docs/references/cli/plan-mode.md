@@ -405,7 +405,6 @@ To build a custom planning workflow, you can use:
   [custom plan directories](#custom-plan-directory-and-policies) and
   [custom policies](#custom-policies).
 
-<!-- prettier-ignore -->
 > [!TIP]
 > Use [Conductor] as a reference when building your own custom
 > planning workflow.

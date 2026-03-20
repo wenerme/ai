@@ -12,9 +12,7 @@ View the resource usage of Query or Load tasks currently running on Backends.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

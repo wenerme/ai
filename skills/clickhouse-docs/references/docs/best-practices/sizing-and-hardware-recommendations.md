@@ -1,7 +1,4 @@
 ---
-slug: /guides/sizing-and-hardware-recommendations
-sidebar_label: 'Sizing and hardware recommendations'
-sidebar_position: 4
 title: 'Sizing and hardware recommendations'
 description: 'This guide discusses our general recommendations regarding hardware, compute, memory, and disk configurations for open-source users.'
 doc_type: 'guide'

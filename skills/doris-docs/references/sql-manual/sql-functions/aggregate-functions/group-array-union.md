@@ -28,7 +28,6 @@ Returns an array containing the union results. If there is no valid data in the 
 
 ## Example
 
-
 ```sql
 -- setup
 CREATE TABLE group_array_union_test (
@@ -78,5 +77,3 @@ select GROUP_ARRAY_UNION(c_array_string) from group_array_union_test where id in
 | []                                |
 +-----------------------------------+
 ```
-
-

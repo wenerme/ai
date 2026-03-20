@@ -49,9 +49,8 @@ When connecting to Doris through MySQL client, you can choose the following SSL 
 | DISABLE | Disable SSL, use normal connection | `mysql --ssl-mode=DISABLE -uroot -P9030 -h127.0.0.1` |
 | REQUIRED | Force SSL connection | `mysql --ssl-mode=REQUIRED -uroot -P9030 -h127.0.0.1` |
 
-:::note Note
+> **note**: Note
 The `--ssl-mode` parameter was introduced in MySQL 5.7.11. For MySQL clients lower than this version, please refer to [MySQL official documentation](https://dev.mysql.com/doc/connector-j/en/connector-j-connp-props-security.html).
-:::
 
 ## Configure Mutual Authentication (mTLS)
 
@@ -165,10 +164,8 @@ openssl pkcs12 -inkey ca-key.pem -in ca.pem -export -out ca_certificate.p12
 openssl pkcs12 -inkey server-key.pem -in server-cert.pem -export -out server_certificate.p12
 ```
 
-:::tip Tip
+> **tip**: Tip
 You can also specify other certificate formats by modifying the `conf/fe.conf` configuration file and adding the `ssl_trust_store_type` parameter. The default is PKCS12.
-:::
 
-:::info More Information
+> **info**: More Information
 For more information about generating self-signed certificates using OpenSSL, please refer to [IBM Official Documentation](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl).
-:::

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Benchmark LLMs - LM Harness, FastEval, Flask
 

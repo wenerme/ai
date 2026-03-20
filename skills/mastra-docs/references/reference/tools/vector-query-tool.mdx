@@ -7,9 +7,6 @@ packages:
   - "@mastra/rag"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # createVectorQueryTool()
 
 The `createVectorQueryTool()` function creates a tool for semantic search over vector stores. It supports filtering, reranking, database-specific configurations, and integrates with various vector store backends.
@@ -29,15 +26,11 @@ const queryTool = createVectorQueryTool({
 
 ## Parameters
 
-:::note
-
-**Parameter Requirements:** Most fields can be set at creation as defaults.
+> **note**: **Parameter Requirements:** Most fields can be set at creation as defaults.
 Some fields can be overridden at runtime via the request context or input. If
 a required field is missing from both creation and runtime, an error will be
 thrown. Note that `model`, `id`, and `description` can only be set at creation
 time.
-
-:::
 
 <PropertiesTable
   content={[
@@ -376,8 +369,7 @@ This example shows how to customize the tool description for a specific use case
 
 The `databaseConfig` parameter allows you to leverage unique features and optimizations specific to each vector database. These configurations are automatically applied during query execution.
 
-<Tabs>
-  <TabItem value="pinecone" label="Pinecone">
+  
     ### Pinecone Configuration
 
     ```typescript
@@ -403,9 +395,9 @@ The `databaseConfig` parameter allows you to leverage unique features and optimi
     - **Namespace**: Isolate different data sets within the same index
     - **Sparse Vector**: Combine dense and sparse embeddings for improved search quality
     - **Use Cases**: Multi-tenant applications, hybrid semantic search
-  </TabItem>
+  
 
-  <TabItem value="pgvector" label="pgVector">
+  
     ### pgVector Configuration
 
     ```typescript
@@ -429,9 +421,9 @@ The `databaseConfig` parameter allows you to leverage unique features and optimi
     - **ef (HNSW)**: Control accuracy vs speed for HNSW indexes
     - **probes (IVFFlat)**: Control recall vs speed for IVFFlat indexes
     - **Use Cases**: Performance tuning, quality filtering
-  </TabItem>
+  
 
-  <TabItem value="chroma" label="Chroma">
+  
     ### Chroma Configuration
 
     ```typescript
@@ -460,9 +452,9 @@ The `databaseConfig` parameter allows you to leverage unique features and optimi
     - **where**: Filter by metadata fields
     - **whereDocument**: Filter by document content
     - **Use Cases**: Advanced filtering, content-based search
-  </TabItem>
+  
 
-  <TabItem value="multiple-configs" label="Multiple Configs">
+  
     ### Multiple Database Configurations
 
     ```typescript
@@ -491,8 +483,7 @@ The `databaseConfig` parameter allows you to leverage unique features and optimi
     - Support multiple vector stores with one tool
     - Database-specific optimizations are automatically applied
     - Flexible deployment scenarios
-  </TabItem>
-</Tabs>
+  
 
 ### Runtime Configuration Override
 

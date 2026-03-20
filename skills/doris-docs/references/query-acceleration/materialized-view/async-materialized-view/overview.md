@@ -51,7 +51,6 @@ The syntax for creating asynchronous materialized views based on data lakes is e
 - When creating partitioned materialized views based on Iceberg, only Iceberg tables with a single partition column are supported. Limited support is provided for partition evolution. For example, changes to the time range of a time-based partition are supported, but changes to the partition field are not. If the partition field is modified, the materialized view refresh will fail.
 - When creating materialized views based on Hudi, there is no awareness of whether the base table data has changed. Therefore, once the materialized view (or a partition of the materialized view) has been refreshed, it is considered synchronized with the base table. As a result, creating materialized views based on Hudi is only suitable for scenarios requiring manual on-demand refresh.
 
-
 ### Support for Materialized Refresh Data Lake
 
 The support for materialized refresh data lakes varies by table type and catalog.

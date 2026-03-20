@@ -6,7 +6,7 @@ OpenObserve provides comprehensive metrics collection, storage, and visualizatio
 
 Metrics in OpenObserve enable you to track key performance indicators, monitor system health, and gain insights into your application's behavior over time. Designed for high-throughput environments, OpenObserve efficiently handles metrics ingestion, storage, and querying at scale while maintaining cost-effectiveness.
 
-![Metrics Page](../images/features/metrics-hero.png)
+[Metrics Page]
 *Metrics Page view*
 
 ## Key Features
@@ -27,13 +27,13 @@ Metrics in OpenObserve enable you to track key performance indicators, monitor s
 
 - **PromQL Support**: Full compatibility with Prometheus Query Language for familiar querying
 
-![PromQL Queries](../images/features/promql-queries.png)
+[PromQL Queries]
 
 - **SQL Interface**: Use SQL syntax for complex metrics analysis and reporting
 
 - **Time Range Selection**: Flexible time range queries with support for relative and absolute time periods
 
-![Time Range Selection](../images/features/metrics-time-selection.png)
+[Time Range Selection]
 
 - **Mathematical Operations**: Perform calculations and transformations on metrics data
 
@@ -41,19 +41,19 @@ Metrics in OpenObserve enable you to track key performance indicators, monitor s
 
 - **Real-time Charts**: Interactive time-series visualizations with multiple chart types
 
-![Metrics Visualization](../images/features/metrics-charts.png)
+[Metrics Visualization]
 
 - **Custom Dashboards**: Create comprehensive dashboards with multiple metrics panels
 
 - **Alerting Integration**: Set up alerts based on metrics thresholds and conditions
 
-![Metrics Alerting](../images/features/metrics-alerts.png)
+[Metrics Alerting]
 
 ### Storage & Performance
 
 - **Optimized Compression**: Advanced compression algorithms reduce storage costs.
 
-![Metrics Compression](../images/features/metrics-compression.png)
+[Metrics Compression]
 
 - **Efficient Indexing**: High-performance indexing for fast query execution across large datasets
 
@@ -61,7 +61,7 @@ Metrics in OpenObserve enable you to track key performance indicators, monitor s
 
 - **Retention Policies**: [Configurable retention settings](../user-guide/streams/extended-retention.md) to balance storage costs and data availability
 
-![Metrics Retention](../images/features/metrics-retention.png)
+[Metrics Retention]
 
 ### Integration & Compatibility
 - **Prometheus Compatible**: Full compatibility with Prometheus ecosystem and exporters

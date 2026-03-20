@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+
 --8<-- [start:installation]
 
 vLLM initially supports basic model inference and serving on Intel GPU platform.

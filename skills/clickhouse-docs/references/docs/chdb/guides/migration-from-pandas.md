@@ -1,7 +1,5 @@
 ---
 title: 'Migration from pandas'
-sidebar_label: 'Migration from pandas'
-slug: /chdb/guides/migration-from-pandas
 description: 'Step-by-step guide to migrate from pandas to DataStore'
 keywords: ['chdb', 'datastore', 'pandas', 'migration', 'guide']
 doc_type: 'guide'

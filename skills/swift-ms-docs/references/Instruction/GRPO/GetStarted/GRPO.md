@@ -22,8 +22,7 @@ $
 \hat{A}_{i,t} = \frac{R_i - \text{mean}(\{R_j\}_{j=1}^G)}{\text{std}(\{R_j\}_{j=1}^G)}
 $
 
-
-<details> <summary>GRPO Algorithm Pseudocode</summary>
+ GRPO Algorithm Pseudocode
 
 ```python
 # ========== 1. Rollout Generation Phase ==========
@@ -105,16 +104,12 @@ optimizer.zero_grad()
 total_loss.backward()
 optimizer.step()
 ```
-</details>
-
 
 For training script examples, refer to [examples](https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo).
 
 For GRPO parameters, refer to the [documentation](../../../Instruction/Command-line-parameters.md#grpo-arguments)
 
 ## Cluster Support
-
-![](../../../../resources/grpo.png)
 
 The GRPO training framework supports integration with high-performance inference engines (e.g., vLLM) to accelerate the sampling process, offering the following two deployment modes:
 
@@ -134,7 +129,6 @@ When running in Colocate mode, out-of-memory (OOM) issues may frequently occur. 
 1. Reduce the vllm_gpu_memory_utilization parameter.
 
 2. During the training phase, release the GPU memory occupied by vLLM:
-
 
 ```bash
 --sleep_level 1
@@ -326,7 +320,6 @@ The parameter `num_generations` must be divisible by the total batch size used i
 - generation_batch_size = 512
 - num_generations = 64
 
-
 1. Total prompts needed for sampling: 512 / 64 = 8
 2. Generate 512 responses from the model per sampling step
 3. Model update batch size: 8 * 4 * 8 = 256
@@ -386,7 +379,4 @@ steps_per_generation = 16, gradient_accumulation_steps = 8, mini_batch_size = st
 
 Set the parameter `--beta 0` to disable KL loss calculation. The reference model (ref model) will not be loaded in this case.
 
-
 ## RL WeChat Group
-
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/wechat/grpo.png" width="250">

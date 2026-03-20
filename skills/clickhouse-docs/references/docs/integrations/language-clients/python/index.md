@@ -1,6 +1,5 @@
 ---
 keywords: ['clickhouse', 'python', 'client', 'connect', 'integrate']
-slug: /integrations/python
 description: 'The ClickHouse Connect project suite for connecting Python to ClickHouse'
 title: 'Python Integration with ClickHouse Connect'
 doc_type: 'guide'
@@ -9,12 +8,6 @@ integration:
   - category: 'language_client'
   - website: 'https://github.com/ClickHouse/clickhouse-connect'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
 
 # Introduction {#introduction}
 
@@ -28,9 +21,7 @@ ClickHouse Connect is a core database driver providing interoperability with a w
 
 This documentation is current as of the clickhouse-connect release 0.9.2.
 
-:::note
-The official ClickHouse Connect Python driver uses the HTTP protocol for communication with the ClickHouse server. This enables HTTP load balancer support and works well in enterprise environments with firewalls and proxies, but has slightly lower compression and performance compared to the native TCP-based protocol, and lacks support for some advanced features like query cancellation. For some use cases, you may consider using one of the [Community Python drivers](/interfaces/third-party/client-libraries.md) that use the native TCP-based protocol.
-:::
+> **note**: The official ClickHouse Connect Python driver uses the HTTP protocol for communication with the ClickHouse server. This enables HTTP load balancer support and works well in enterprise environments with firewalls and proxies, but has slightly lower compression and performance compared to the native TCP-based protocol, and lacks support for some advanced features like query cancellation. For some use cases, you may consider using one of the [Community Python drivers](/interfaces/third-party/client-libraries.md) that use the native TCP-based protocol.
 
 ## Requirements and compatibility {#requirements-and-compatibility}
 
@@ -87,10 +78,7 @@ client = clickhouse_connect.get_client(host='localhost', username='default', pas
 
 #### Use a ClickHouse Connect client instance to connect to a ClickHouse Cloud service: {#use-a-clickhouse-connect-client-instance-to-connect-to-a-clickhouse-cloud-service}
 
-:::tip
-Use the connection details gathered earlier. ClickHouse Cloud services require TLS, so use port 8443.
-:::
-
+> **tip**: Use the connection details gathered earlier. ClickHouse Cloud services require TLS, so use port 8443.
 ```python
 import clickhouse_connect
 

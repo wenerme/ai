@@ -11,7 +11,6 @@ Tool search enables Claude to dynamically discover and load tools on-demand from
 | **Google Cloud Vertex AI** | ✅ | ✅ |
 | **Amazon Bedrock** | ✅ (Invoke API only, Opus 4.5 only) | ✅ (Invoke API only, Opus 4.5 only) |
 
-
 ## Benefits
 
 - **Context efficiency**: Avoid consuming massive portions of your context window with tool definitions

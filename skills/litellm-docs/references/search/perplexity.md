@@ -54,4 +54,3 @@ curl http://0.0.0.0:4000/v1/search/perplexity-search \
     "max_results": 5
   }'
 ```
-

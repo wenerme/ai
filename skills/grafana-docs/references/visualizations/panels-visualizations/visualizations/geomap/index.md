@@ -160,22 +160,18 @@ The initial view configures how the geomap renders when the panel is first loade
 - **Zoom** - Sets the initial zoom level.
 - **Use current map settings** - Use the settings of the current map to set the center.
 
-<!-- prettier-ignore-start -->
 | View selection | Description |
 |---|---|
 | Fit to data | fits the map view based on the data extents of Map layers and updates when data changes.<ul><li>**Data** - option allows selection of extent based on data from "All layers", a single "Layer", or the "Last value" from a selected layer.</li><li>**Layer** - can be selected if fitting data from a single "Layer" or the "Last value" of a layer.</li><li>**Padding** - sets padding in relative percent beyond data extent (not available when looking at "Last value" only).</li><li>**Max zoom** - sets the maximum zoom level when fitting data.</li> |
 | (0°, 0°) |  |
 | Coordinates | sets the map view based on: **Latitude** and **Longitude**. |
-<!-- prettier-ignore-end -->
 
 Default Views are also available including:
 
-<!-- prettier-ignore-start -->
 |               |               |        |        |           |
 | ------------- | ------------- | ------ | ------ | --------- |
 | North America | South America | Europe | Africa | West Asia |
 | South Asia | South-East Asia | East Asia | Australia | Oceania |
-<!-- prettier-ignore-end -->
 
 #### Share view
 
@@ -280,9 +276,8 @@ There are four options to map the data returned by the selected query:
 
 The markers layer allows you to display data points as different marker shapes such as circles, squares, triangles, stars, and more.
 
-![Markers Layer](/static/img/docs/geomap-panel/geomap-markers-8-1-0.png)
+[Markers Layer]
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | Configure the data settings for the layer. For more information, refer to [Data](#data). |
@@ -297,7 +292,6 @@ The markers layer allows you to display data points as different marker shapes s
 | Text label | Configures a text label for each marker. |
 | Show legend | Allows you to toggle the legend for the layer. |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 #### Heatmap layer
 
@@ -308,9 +302,8 @@ Click on the drop-down menu under Data Layer and choose `Heatmap`.
 
 Similar to `Markers`, you are prompted with various options to determine which data points to visualize and how you want to visualize them.
 
-![Heatmap Layer](/static/img/docs/geomap-panel/geomap-heatmap-8-1-0.png)
+[Heatmap Layer]
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | Configure the data settings for the layer. For more information, refer to [Data](#data). |
@@ -320,20 +313,17 @@ Similar to `Markers`, you are prompted with various options to determine which d
 | Blur | Configures the amount of blur on each cluster. |
 | Opacity | Configures the opacity of each cluster. |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 #### GeoJSON layer
 
 The GeoJSON layer allows you to select and load a static GeoJSON file from the filesystem.
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | GeoJSON URL | Provides a choice of GeoJSON files that are included with Grafana. You can also enter a URL manually, which supports variables. |
 | Default Style | Controls which styles to apply when no rules above match.<ul><li>**Color** - configures the color of the default style</li><li>**Opacity** - configures the default opacity</li></ul> |
 | Style Rules | Apply styles based on feature properties <ul><li>**Rule** - allows you to select a _feature_, _condition_, and _value_ from the GeoJSON file in order to define a rule. The trash bin icon can be used to delete the current rule.</li><li>**Color** - configures the color of the style for the current rule</li><li>**Opacity** - configures the transparency level for the current rule</li> |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 Styles can be set within the "properties" object of the GeoJSON with support for the following geometries:
 
@@ -359,7 +349,6 @@ The Night / Day layer displays night and day regions based on the current time r
 
 {{< figure src="/static/img/docs/geomap-panel/geomap-day-night-9-1-0.png" max-width="600px" alt="Geomap panel Night / Day" >}}
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | Configures the data set for the layer. For more information, refer to [Data](#data). |
@@ -368,7 +357,6 @@ The Night / Day layer displays night and day regions based on the current time r
 | Display sun | Toggles the sun icon. |
 | Opacity | Set the opacity from `0` (transparent) to `1` (opaque). |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 [Extensions for OpenLayers - DayNight](https://viglino.github.io/ol-ext/examples/layer/map.daynight.html)
 
@@ -382,7 +370,6 @@ The layer can also render a route with arrows.
 
 {{< figure src="/media/docs/grafana/geomap-route-layer-arrow-size-9-4-0.png" max-width="600px" alt="Geomap panel Route arrows with size" >}}
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | configure the data settings for the layer. For more information, refer to [Data](#data). |
@@ -393,7 +380,6 @@ The layer can also render a route with arrows.
 | Text label | configures a text label for each route. |
 | Arrow | sets the arrow styling to display along route, in order of data. Choose from: **None**, **Forward**, and **Reverse** |
 | Display tooltip | allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 [Extensions for OpenLayers - Flow Line Style](http://viglino.github.io/ol-ext/examples/style/map.style.gpxline.html)
 
@@ -403,7 +389,6 @@ The Photos layer renders a photo at each data point.
 
 {{< figure src="/static/img/docs/geomap-panel/geomap-photos-9-3-0.png" max-width="600px" alt="Geomap panel Photos" >}}
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | Configure the data settings for the layer. For more information, refer to [Data](#data). |
@@ -416,7 +401,6 @@ The Photos layer renders a photo at each data point.
 | Border color | Sets the border color around images. |
 | Radius | Sets the overall size of images in pixels. |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 [Extensions for OpenLayers - Image Photo Style](http://viglino.github.io/ol-ext/examples/style/map.style.photo.html)
 
@@ -429,7 +413,6 @@ The Network layer renders a network graph. This layer supports the same [data fo
 You can convert node graph data to a network layer:
 {{< video-embed src="/media/docs/grafana/screen-recording-10-1-geomap-network-layer-from-node-graph.mp4" max-width="750px" alt="Node graph to Geomap network layer" >}}
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Data | Configure the data settings for the layer. For more information, refer to [Data](#data). |
@@ -437,11 +420,9 @@ You can convert node graph data to a network layer:
 | Arrow | Sets the arrow direction to display for each edge, with forward meaning source to target. Choose from: **None**, **Forward**, **Reverse** and **Both**. |
 | Show legend | Allows you to toggle the legend for the layer. **Note:** The legend currently only supports node data. |
 | Display tooltip | Allows you to toggle tooltips for the layer. |
-<!-- prettier-ignore-end -->
 
 ##### Node styles options
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Size | Configures the size of the nodes. The default is `Fixed size`, which makes all node sizes the same regardless of the data; however, there is also an option to size the nodes based on data corresponding to a selected field. `Min` and `Max` node sizes have to be set such that the nodes can scale within this range. |
@@ -450,18 +431,15 @@ You can convert node graph data to a network layer:
 | Fill opacity | Configures the transparency of each node. |
 | Rotation angle | Configures the rotation angle of each node in degrees. The default is `Fixed value`, which makes all nodes rotate to the same angle regardless of the data; however, there is also an option to set the rotation of the nodes based on data corresponding to a selected field. |
 | Text label | Configures a text label for each node. |
-<!-- prettier-ignore-end -->
 
 ##### Edge styles options
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | Size | Configures the line width of the edges. The default is `Fixed size`, which makes all edge line widths the same regardless of the data; however, there is also an option to size the edges based on data corresponding to a selected field. `Min` and `Max` eges sizes have to be set such that the edges can scale within this range. |
 | Color | Configures the color of the edges. The default `Fixed color` sets all edges to a specific color. There is also an option to have conditional colors depending on the selected field data point values and the color scheme set in the `Standard options` section. |
 | Fill opacity | Configures the transparency of each edge. |
 | Text label | Configures a text label for each edge. |
-<!-- prettier-ignore-end -->
 
 #### Open Street Map layer
 
@@ -560,7 +538,7 @@ There are five basemap layer types to choose from in a geomap.
 
 The default basemap layer uses the CARTO map. You can define custom default base layers in the `.ini` configuration file.
 
-![Basemap layer options](/static/img/docs/geomap-panel/geomap-baselayer-8-1-0.png)
+[Basemap layer options]
 
 #### Configure the default base layer with provisioning
 
@@ -649,7 +627,6 @@ default_baselayer_config = `{
 
 The map controls section contains various options for map information and tool overlays.
 
-<!-- prettier-ignore-start -->
 | Option | Description |
 | ------ | ----------- |
 | [Show zoom control](#show-zoom-control) | Displays zoom controls in the upper left corner. |
@@ -659,7 +636,6 @@ The map controls section contains various options for map information and tool o
 | [Show measure tools](#show-measure-tools) | Displays measure tools in the upper right corner. This includes the [Length](#length) and [Area](#area) options. |
 | [Show debug](#show-debug) | Displays debug information in the upper right corner. |
 | [Tooltip](#tooltip) | Controls display of tooltips. |
-<!-- prettier-ignore-end -->
 
 #### Show zoom control
 

@@ -70,7 +70,6 @@ When input violates Zscaler AI Guard policies, return example as below:
 - `transactionId`: Zscaler AI Guard transactionId for debugging
 - `blockingDetectors`: the list of Zscaler AI Guard detectors that block the request
 
-
 ### LLM response Blocked
 When output violates Zscaler AI Guard policies, return example as below:
 ```json
@@ -85,7 +84,6 @@ When output violates Zscaler AI Guard policies, return example as below:
 ```
 - `transactionId`: Zscaler AI Guard transactionId for debugging
 - `blockingDetectors`: the list of Zscaler AI Guard detectors that block the request
-
 
 ## 5. Error Handling
 

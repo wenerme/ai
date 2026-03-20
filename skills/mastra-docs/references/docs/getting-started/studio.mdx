@@ -3,9 +3,6 @@ title: "Studio | Getting Started"
 description: Learn how to use Mastra Studio to build, test, and manage your agents, workflows, and tools.
 ---
 
-import YouTube from "@site/src/components/YouTube-player";
-import { VideoPlayer } from "@site/src/components/video-player";
-
 # Studio
 
 Studio provides an interactive UI for building, testing, and managing your agents, workflows, and tools. Run it locally during development, or [deploy it](/docs/deployment/studio) to production so your team can manage agents, monitor performance, and gain insights through built-in observability.
@@ -99,11 +96,7 @@ You can explore all available endpoints in the OpenAPI specification at [http://
 
 To explore the API interactively, visit the Swagger UI at [http://localhost:4111/swagger-ui](http://localhost:4111/swagger-ui). Here, you can discover endpoints and test them directly from your browser.
 
-:::note
-
-The OpenAPI and Swagger endpoints are disabled in production by default. To enable them, set [`server.build.openAPIDocs`](/reference/configuration#serverbuild) and [`server.build.swaggerUI`](/reference/configuration#serverbuild) to `true` respectively.
-
-:::
+> **note**: The OpenAPI and Swagger endpoints are disabled in production by default. To enable them, set [`server.build.openAPIDocs`](/reference/configuration#serverbuild) and [`server.build.swaggerUI`](/reference/configuration#serverbuild) to `true` respectively.
 
 ## Configuration
 

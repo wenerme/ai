@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Setting Tag Budgets
 
@@ -79,9 +77,6 @@ Navigate to the **Tag Management** page and click **Create New Tag**. Fill in th
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-<br />
-
-
 **Possible values for `budget_duration`:**
 
 | `budget_duration` | When Budget will reset |
@@ -97,15 +92,9 @@ Navigate to the **Tag Management** page and click **Create New Tag**. Fill in th
 
 Add tags to your API requests in the `metadata` field:
 
-:::info Tags Budgets on API Keys
+> **info**: Tags Budgets on API Keys
 
 Currently, tag budget enforcement is only supported per request. If you'd like to set tags on API keys so all requests automatically inherit the tags budgets, please [create a feature request on GitHub](https://github.com/BerriAI/litellm/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml&title=%5BFeat%5D%3A).
-
-:::
-
-<Tabs>
-
-<TabItem value="openai" label="OpenAI SDK">
 
 ```python
 import openai
@@ -126,10 +115,6 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```shell
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
      -H 'Authorization: Bearer sk-1234' \
@@ -142,10 +127,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
            }
          }'
 ```
-
-</TabItem>
-
-</Tabs>
 
 ### 3. Test It
 

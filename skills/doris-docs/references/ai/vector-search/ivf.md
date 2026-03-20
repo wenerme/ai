@@ -6,25 +6,7 @@
 }
 ---
 
-<!-- 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-  http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-
 # IVF and How to use it in Apache Doris
-
 
 IVF index is an efficient data structure used for Approximate Nearest Neighbor (ANN) search. It helps narrow down the scope of vectors during search, significantly improving search speed. Since Apache Doris 4.x, an ANN index based on IVF has been supported. This document walks through the IVF algorithm, key parameters, and engineering practices, and explains how to build and tune IVF‑based ANN indexes in production Doris clusters.
 
@@ -34,7 +16,6 @@ For completeness, here’s some historical context. The term IVF (inverted file)
 
 Consider a simple example of a few text documents. To search documents that contain a given word, a **forward index** stores a list of words for each document. You must read each document explicitly to find the relevant ones.
 
-
 |Document|Words|
 |---|---|
 |Document 1|the,cow,says,moo|
@@ -43,7 +24,6 @@ Consider a simple example of a few text documents. To search documents that cont
 
 In contrast, an **inverted index** would contain a dictionary of all the words that you can search, and for each word, you have a list of document indices where the word occurs. This is the inverted list (inverted file), and it enables you to restrict the search to the selected lists.
 
-
 | Word | Documents                                                  |
 | ---- | ---------------------------------------------------------- |
 | the  | Document 1, Document 3, Document 4, Document 5, Document 7 |
@@ -51,9 +31,7 @@ In contrast, an **inverted index** would contain a dictionary of all the words
 | says | Document 5                                                 |
 | moo  | Document 7                                                 |
 
-
 Today, text data is often represented as vector embeddings. The IVF method defines cluster centers and these centers are analogous to the dictionary of words in the preceding example. For each cluster center, you have a list of vector indices that belong to the cluster, and search is accelerated because you only have to inspect the selected clusters.
-
 
 ## Using IVF indexes for efficient vector search
 
@@ -65,9 +43,7 @@ The fundamental principle behind IVF is "partition and conquer." Instead of sear
 
 IVF works by partitioning a large dataset of vectors into smaller, manageable clusters, each represented by a central point called a "centroid." These centroids act as anchors for their respective partitions. During a search, the system quickly identifies the clusters whose centroids are closest to the query vector and only searches within those, ignoring the rest of the dataset.
 
-
-![ivf search](/images/vector-search/dataset-points-query-clusters.png)
-
+[ivf search]
 
 ## IVF in Apache Doris
 
@@ -154,7 +130,6 @@ BUILD INDEX idx_test_ann ON sift_1M;
 
 `BUILD INDEX` is executed asynchronously. You can use `SHOW BUILD INDEX` (in some versions `SHOW ALTER`) to check the job status.
 
-
 ```sql
 SHOW BUILD INDEX WHERE TableName = "sift_1M";
 
@@ -180,7 +155,6 @@ mysql> SHOW DATA ALL FROM sift_1M;
 
 You can drop an unsuitable ANN index with `ALTER TABLE sift_1M DROP INDEX idx_test_ann`. Dropping and recreating indexes is common during hyperparameter tuning, when you need to test different parameter combinations to achieve the desired recall.
 
-
 ### Querying
 
 ANN indexes support both Top‑N search and range search.
@@ -188,7 +162,6 @@ ANN indexes support both Top‑N search and range search.
 When the vector column has high dimensionality, the literal representation of the query vector itself can incur extra parsing overhead. Therefore, directly embedding the full query vector into raw SQL is not recommended in production, especially under high concurrency. A better practice is to use prepared statements, which avoid repetitive SQL parsing.
 
 We recommend using the [doris-vector-search](https://github.com/uchenily/doris_vector_search) python library, which wraps the necessary operations for vector search in Doris based on prepared statements, and includes data conversion utilities that map Doris query results into Pandas `DataFrame`s for convenient downstream AI application development.
-
 
 ```python
 from doris_vector_search import DorisVectorClient, AuthOptions
@@ -212,7 +185,6 @@ result = tbl.search(query, metric_type="l2_distance").limit(10).select(["id"]).t
 print(result)
 ```
 
-
 Sample output:
 
 ```text
@@ -229,9 +201,7 @@ Sample output:
 9  124048
 ```
 
-
 ### Recall Optimization
-
 
 In vector search, recall is the most important metric; performance numbers only make sense under a given recall level. The main factors that affect recall are:
 
@@ -240,7 +210,6 @@ In vector search, recall is the most important metric; performance numbers only 
 3. Segment size and the number of segments.
 
 This article focuses on the impact of (1) and (3) on recall. Vector quantization will be covered in a separate document.
-
 
 #### Index Hyperparameters
 
@@ -262,12 +231,9 @@ In summary:
 
 `nprobe` defines the number of clusters to search during a query. A larger `nprobe` increases recall and query latency (more vectors are examined). A smaller nprobe makes queries faster but may miss neighbors that reside in non‑probed clusters.
 
-
 By default, Doris uses `nlist = 1024` and `nprobe = 64`.
 
-
 The above is a qualitative analysis of these two hyperparameters. The following table shows empirical results on the SIFT_1M dataset:
-
 
 | nlist | nprobe | recall_at_100 |
 | ----- | ------ | ------------- |
@@ -278,7 +244,6 @@ The above is a qualitative analysis of these two hyperparameters. The following 
 | 512   | 32     | 0.9384        |
 | 512   | 16     | 0.8763        |
 | 512   | 8      | 0.7869        |
-
 
 It is hard to provide one single optimal setting in advance, but you can follow a practical workflow for hyperparameter selection:
 
@@ -300,9 +265,7 @@ CREATE INDEX idx_embedding ON tbl (`embedding`) USING ANN PROPERTIES (
 BUILD INDEX idx_embedding ON tbl;
 ```
 
-
 #### Number of Rows Covered per Index
-
 
 Internally, Doris organizes data in multiple layers.
 
@@ -313,8 +276,6 @@ Internally, Doris organizes data in multiple layers.
 Similar to inverted indexes, vector indexes are built at the **segment** level. The segment size is determined by BE configuration options like `write_buffer_size` and `vertical_compaction_max_segment_size`. During ingestion and compaction, when the in‑memory memtable reaches a certain size, it is flushed to disk as a segment file, and a vector index (or multiple indexes for multiple vector columns) is built for that segment. The index only covers the rows in that segment.
 
 Given a fixed set of IVF parameters, there is always a limit to the number of vectors for which the index can still maintain high recall. Once the number of vectors in a segment grows beyond that limit, recall starts to degrade.
-
-
 
 > You can use `SHOW TABLETS FROM table` to inspect the compaction status of a table. By following the corresponding URL, you can see how many segments it has.
 

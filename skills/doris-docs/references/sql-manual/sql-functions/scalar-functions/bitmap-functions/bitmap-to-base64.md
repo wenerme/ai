@@ -27,12 +27,8 @@ BITMAP_TO_BASE64(<bitmap>)
 A Base64 encoded string of the Bitmap.  
 Returns `NULL` if the Bitmap is `NULL`.
 
-::: note
-
-The BE configuration option `enable_set_in_bitmap_value` changes the specific format of bitmap values in memory, which affects the result of this function.  
+> **note**: The BE configuration option `enable_set_in_bitmap_value` changes the specific format of bitmap values in memory, which affects the result of this function.  
 Due to the non-guaranteed order of elements in a bitmap, the generated Base64 string may not always be the same for the same content. However, the decoded bitmap from `bitmap_from_base64` will be the same.
-
-:::
 
 ## Examples
 

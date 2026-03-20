@@ -1,17 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # AWS Secret Manager
 
-:::info
-
-✨ **This is an Enterprise Feature**
+> **info**: ✨ **This is an Enterprise Feature**
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
 
 Store your proxy keys in AWS Secret Manager.
 
@@ -31,9 +26,6 @@ os.environ["AWS_REGION_NAME"] = "" # us-east-1, us-east-2, us-west-1, us-west-2
 
 2. Enable AWS Secret Manager in config. 
 
-<Tabs>
-<TabItem value="read_only" label="Read Keys from AWS Secret Manager">
-
 ```yaml
 general_settings:
   master_key: os.environ/litellm_master_key 
@@ -42,10 +34,6 @@ general_settings:
     hosted_keys: ["litellm_master_key"] # 👈 Specify which env keys you stored on AWS 
 
 ```
-
-</TabItem>
-
-<TabItem value="write_only" label="Write Virtual Keys to AWS Secret Manager">
 
 This will only store virtual keys in AWS Secret Manager. No keys will be read from AWS Secret Manager.
 
@@ -61,8 +49,6 @@ general_settings:
       Environment: "Prod"
       Owner: "AI Platform team"
 ```
-</TabItem>
-<TabItem value="read_and_write" label="Read + Write Keys with AWS Secret Manager">
 
 ```yaml
 general_settings:
@@ -74,9 +60,6 @@ general_settings:
     access_mode: "read_and_write" # Literal["read_only", "write_only", "read_and_write"]
     hosted_keys: ["litellm_master_key"] # OPTIONAL. Specify which env keys you stored on AWS
 ```
-
-</TabItem>
-</Tabs>
 
 3. Run proxy
 
@@ -161,6 +144,3 @@ general_settings:
 | `aws_profile_name` | AWS profile from `~/.aws/credentials` |
 | `aws_web_identity_token` | OIDC token path for IRSA |
 | `aws_sts_endpoint` | Custom STS endpoint for VPC |
-
-
-

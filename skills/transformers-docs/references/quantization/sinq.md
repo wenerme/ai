@@ -23,7 +23,6 @@
 | ⚡ Quantization Speed | ~2× **Faster** than HQQ | Slower | ~4× **Faster** than AWQ | Slower |
 | 📈 Model Quality | **Higher** | Lower | **Higher** | Lower |
 
-
 📄 **Want to know more?** 
 - Read our paper on [**arXiv**](http://arxiv.org/abs/2509.22944)
 - Check the official [**SINQ**](https://github.com/huawei-csl/SINQ/tree/main) github repository

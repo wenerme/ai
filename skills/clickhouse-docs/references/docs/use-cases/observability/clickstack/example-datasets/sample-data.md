@@ -1,46 +1,13 @@
 ---
-slug: /use-cases/observability/clickstack/getting-started/sample-data
 title: 'Sample Logs, Traces and Metrics'
-sidebar_position: 0
-pagination_prev: null
-pagination_next: null
 description: 'Getting started with ClickStack and a sample dataset with logs, sessions, traces and metrics'
 doc_type: 'guide'
-toc_max_heading_level: 2
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx from '@site/static/images/use-cases/observability/hyperdx.png';
-import hyperdx_2 from '@site/static/images/use-cases/observability/hyperdx-2.png';
-import hyperdx_3 from '@site/static/images/use-cases/observability/hyperdx-3.png';
-import hyperdx_4 from '@site/static/images/use-cases/observability/hyperdx-4.png';
-import hyperdx_5 from '@site/static/images/use-cases/observability/hyperdx-5.png';
-import hyperdx_6 from '@site/static/images/use-cases/observability/hyperdx-6.png';
-import hyperdx_7 from '@site/static/images/use-cases/observability/hyperdx-7.png';
-import hyperdx_8 from '@site/static/images/use-cases/observability/hyperdx-8.png';
-import hyperdx_9 from '@site/static/images/use-cases/observability/hyperdx-9.png';
-import hyperdx_10 from '@site/static/images/use-cases/observability/hyperdx-10.png';
-import hyperdx_11 from '@site/static/images/use-cases/observability/hyperdx-11.png';
-import hyperdx_12 from '@site/static/images/use-cases/observability/hyperdx-12.png';
-import hyperdx_13 from '@site/static/images/use-cases/observability/hyperdx-13.png';
-import hyperdx_14 from '@site/static/images/use-cases/observability/hyperdx-14.png';
-import hyperdx_15 from '@site/static/images/use-cases/observability/hyperdx-15.png';
-import hyperdx_16 from '@site/static/images/use-cases/observability/hyperdx-16.png';
-import hyperdx_17 from '@site/static/images/use-cases/observability/hyperdx-17.png';
-import hyperdx_18 from '@site/static/images/use-cases/observability/hyperdx-18.png';
-import hyperdx_19 from '@site/static/images/use-cases/observability/hyperdx-19.png';
-import copy_api_key from '@site/static/images/use-cases/observability/copy_api_key.png';
-import select_service from '@site/static/images/clickstack/select_service.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # ClickStack - Sample logs, traces and metrics {#clickstack-sample-dataset}
 
 This guide demonstrates both ClickStack Open Source and Managed ClickStack using a sample data set.
-
-<Tabs groupId="sample-logs">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 <VerticalStepper headerLevel="h3">
 
@@ -117,9 +84,7 @@ Select a trace with a failure and associated email. The subsequent view allows u
 
 The replay shows the user navigating the site, adding items to their cart. Feel free to skip to later in the session where they attempt to complete a payment.
 
-:::tip
-Any errors are annotated on the timeline in red. 
-:::
+> **tip**: Any errors are annotated on the timeline in red. 
 
 The user was unable to place the order, with no obvious error. Scroll to the bottom of the left panel, containing the network and console events from the user's browser. You will notice a 500 error was thrown on making a `/api/checkout` call. 
 
@@ -166,9 +131,6 @@ Select `Metrics` as the data source. Complete the chart builder to plot the `Max
 <Image img={hyperdx_19} alt="Metrics" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-<TabItem value="oss-clickstack" label="ClickStack Open Source">
 
 The following example assumes you have started Open Source ClickStack using the [instructions for the all-in-one image](/use-cases/observability/clickstack/getting-started/oss) and connected to the [local ClickHouse instance](/use-cases/observability/clickstack/getting-started/oss#complete-connection-credentials). 
 
@@ -253,9 +215,7 @@ Select a trace with a failure and associated email. The subsequent view allows u
 
 The replay shows the user navigating the site, adding items to their cart. Feel free to skip to later in the session where they attempt to complete a payment.
 
-:::tip
-Any errors are annotated on the timeline in red. 
-:::
+> **tip**: Any errors are annotated on the timeline in red. 
 
 The user was unable to place the order, with no obvious error. Scroll to the bottom of the left panel, containing the network and console events from the user's browser. You will notice a 500 error was thrown on making a `/api/checkout` call. 
 
@@ -302,6 +262,3 @@ Select `Metrics` as the data source. Complete the chart builder to plot the `Max
 <Image img={hyperdx_19} alt="Metrics" size="lg"/>
 
 </VerticalStepper>
-
-</TabItem>
-</Tabs>

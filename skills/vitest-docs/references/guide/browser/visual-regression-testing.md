@@ -1,6 +1,5 @@
 ---
 title: Visual Regression Testing
-outline: [2, 3]
 ---
 
 # Visual Regression Testing
@@ -28,7 +27,7 @@ catching these visual changes before they reach production.
 
 ## Getting Started
 
-::: warning Browser Rendering Differences
+> **warning**: Browser Rendering Differences
 Visual regression tests are **inherently unstable across different
 environments**. Screenshots will look different on different machines because
 of:
@@ -47,7 +46,6 @@ For stable tests, use the same environment everywhere. We **strongly recommend**
 cloud services like
 [Azure App Testing](https://azure.microsoft.com/en-us/products/app-testing/)
 or [Docker containers](https://playwright.dev/docs/docker).
-:::
 
 Visual regression testing in Vitest can be done through the
 [`toMatchScreenshot` assertion](/api/browser/assertions.html#tomatchscreenshot):
@@ -81,10 +79,8 @@ Reference screenshot:
 This is normal. Check that the screenshot looks right, then run the test again.
 Vitest will now compare future runs against this baseline.
 
-::: tip
-Reference screenshots live in `__screenshots__` folders next to your tests.
+> **tip**: Reference screenshots live in `__screenshots__` folders next to your tests.
 **Don't forget to commit them!**
-:::
 
 ### Screenshot Organization
 
@@ -227,11 +223,9 @@ a custom CSS snippet:
 }
 ```
 
-::: tip
-When using the Playwright provider, animations are automatically disabled
+> **tip**: When using the Playwright provider, animations are automatically disabled
 when using the assertion: the `animations` option's value in `screenshotOptions`
 is set to `"disabled"` by default.
-:::
 
 ### Set Appropriate Thresholds
 
@@ -314,10 +308,8 @@ Diff image:
 - **Yellow pixels** are anti-aliasing differences (when anti-alias is not ignored)
 - **Transparent/original** are unchanged areas
 
-:::tip
-If the diff is mostly red, something's really wrong. If it's speckled with a
+> **tip**: If the diff is mostly red, something's really wrong. If it's speckled with a
 few red pixels around text, you probably just need to bump your threshold.
-:::
 
 ## Common Issues and Solutions
 
@@ -384,7 +376,6 @@ locally)
 with Playwright
 
 :::: tabs key:vrt-for-teams
-=== GitHub Actions
 
 The trick here is keeping visual tests separate from your regular tests,
 otherwise, you'll waste hours checking failing logs of screenshot mismatches.
@@ -406,20 +397,16 @@ makes sense for your project):
 Now developers can run `npm run test:unit` locally without visual tests getting
 in the way. Visual tests stay in CI where the environment is consistent.
 
-::: tip Alternative
+> **tip**: Alternative
 Not a fan of glob patterns? You could also use separate
 [Test Projects](/guide/projects) instead and run them using:
 
 - `vitest --project unit`
 - `vitest --project visual`
-:::
 
 ### CI Setup
 
 Your CI needs browsers installed. How you do this depends on your provider:
-
-::: tabs key:provider
-== Playwright
 
 [Playwright](https://npmx.dev/package/playwright) makes this easy. Just pin
 your version and add this before running tests:
@@ -429,8 +416,6 @@ your version and add this before running tests:
 - name: Install Playwright Browsers
   run: npx --no playwright install --with-deps --only-shell
 ```
-
-== WebdriverIO
 
 [WebdriverIO](https://npmx.dev/package/webdriverio) expects you to bring
 your own browsers. The folks at
@@ -442,8 +427,6 @@ your own browsers. The folks at
   with:
     chrome-version: 120
 ```
-
-:::
 
 Then run your visual tests:
 
@@ -468,21 +451,18 @@ The workflow below:
 - Shows a nice summary:
   - **When screenshots changed**, it lists what changed
 
-    <img alt="Action summary after updates" img-light src="/vrt-gha-summary-update-light.png">
-    <img alt="Action summary after updates" img-dark src="/vrt-gha-summary-update-dark.png">
+    [Action summary after updates]
+    [Action summary after updates]
 
   - **When nothing changed**, well, it tells you that too
 
-    <img alt="Action summary after no updates" img-light src="/vrt-gha-summary-no-update-light.png">
-    <img alt="Action summary after no updates" img-dark src="/vrt-gha-summary-no-update-dark.png">
+    [Action summary after no updates]
+    [Action summary after no updates]
 
-::: tip
-This is just one approach. Some teams prefer PR comments (`/update-screenshots`),
+> **tip**: This is just one approach. Some teams prefer PR comments (`/update-screenshots`),
 others use labels. Adjust it to fit your workflow!
 
 The important part is having a controlled way to update baselines.
-:::
-
 ```yaml [.github/workflows/update-screenshots.yml]
 name: Update Visual Regression Screenshots
 
@@ -594,8 +574,6 @@ jobs:
           fi
 ```
 
-=== Azure App Testing
-
 Your tests stay local, only the browsers run in the cloud. It's Playwright's
 remote browser feature, but Microsoft handles all the infrastructure.
 
@@ -669,11 +647,10 @@ Once your workspace is created, configure Vitest to use it:
 1. **Set the endpoint URL**: following the [official guide](https://learn.microsoft.com/en-us/azure/app-testing/playwright-workspaces/quickstart-run-end-to-end-tests?tabs=playwrightcli&pivots=playwright-test-runner#configure-the-browser-endpoint), retrieve the URL and set it as the `PLAYWRIGHT_SERVICE_URL` environment variable.
 1. **Enable token authentication**: [enable access tokens](https://learn.microsoft.com/en-us/azure/app-testing/playwright-workspaces/how-to-manage-authentication?pivots=playwright-test-runner#enable-authentication-using-access-tokens) for your workspace, then [generate a token](https://learn.microsoft.com/en-us/azure/app-testing/playwright-workspaces/how-to-manage-access-tokens#generate-a-workspace-access-token) and set it as the `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` environment variable.
 
-::: danger Keep that Token Secret!
+> **danger**: Keep that Token Secret!
 Never commit `PLAYWRIGHT_SERVICE_ACCESS_TOKEN` to your repository. Anyone with
 the token can rack up your bill. Use environment variables locally and secrets
 in CI.
-:::
 
 Then split your `test` script like this:
 

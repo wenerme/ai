@@ -160,11 +160,10 @@ mysql> SELECT CAST(CAST(MAKEDATE(2021, 1) AS BIGINT) AS JSON);
 
 ## Cast from JSON
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Before version 4.0, Doris had more relaxed requirements for JSON CAST behavior and didn't handle overflow situations properly.
 
 Starting from version 4.0, overflow in JSON CAST will result in an error in strict mode or return null in non-strict mode.
-:::
 
 ### TO Boolean
 

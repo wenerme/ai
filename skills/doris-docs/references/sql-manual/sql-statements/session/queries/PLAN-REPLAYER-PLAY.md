@@ -25,7 +25,6 @@ PLAN REPLAYER PLAY <absolute-directory-of-dumpfile>；
 
 ## Example
 
-
 When we have a `dumpfile: /home/wangwu/dumpfile.json`, we can use the following SQL to reproduce the scenario:
 
 ```sql

@@ -1,6 +1,5 @@
 # DROP
 
-
 ## Overview
 
 DROP (Discrete Reasoning Over Paragraphs) is a challenging reading comprehension benchmark that requires models to perform discrete reasoning operations over text passages. Unlike simple extractive QA, DROP questions require numerical reasoning, counting, and comparison operations.
@@ -28,7 +27,6 @@ DROP (Discrete Reasoning Over Paragraphs) is a challenging reading comprehension
 - F1 score is the primary metric for comparison
 - Validates answers against multiple reference answers
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ DROP (Discrete Reasoning Over Paragraphs) is a challenging reading comprehension
 | **Metrics** | `em`, `f1` |
 | **Default Shots** | 3-shot |
 | **Evaluation Split** | `validation` |
-
 
 ## Data Statistics
 
@@ -162,5 +159,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

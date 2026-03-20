@@ -49,6 +49,3 @@ Sort the `values` array according to the order of a `keys` array.
 
 - Multi-dimensional array sort: the key sorting rules follow the type of the inner elements.
   - `ARRAY_SORTBY(x -> x[1], [[1,2],[0,1]])` -> `[[0, 1], [1, 2]]`
-
-
-

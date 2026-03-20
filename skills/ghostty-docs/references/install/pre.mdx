@@ -11,13 +11,11 @@ by running prerelease builds of Ghostty. This helps the project
 significantly by providing feedback on new features and addressing
 possible issues before they are released to the public.
 
-<Note>
 During the private beta period of Ghostty, testers daily drove
 prerelease builds using this same process. Many didn't have a single
 issue for months or even over a year. The prerelease builds are
 generally stable, but users should always be prepared for the
 possibility of stability issues.
-</Note>
 
 An overview of how to install prerelease builds is provided below
 with more details in the sections following the table.
@@ -43,25 +41,19 @@ by setting [`auto-update-channel`](/docs/config/reference#auto-update-channel) t
 auto-update-channel = tip
 ```
 
-<Tip>
 Don't forget to restart Ghostty after changing the `auto-update-channel`
 setting! This setting does not take effect until Ghostty is restarted.
-</Tip>
 
-<Warning>
 While you can set this setting back to `stable` at any time, this will
 only take effect when a later stable release is available. If you want
 to downgrade back to the previous stable release, you must
 [re-download](/download) Ghostty.
-</Warning>
 
-<Note>
 **Why is this setting called "tip"?** The term "tip" is a common term
 to refer to the latest commit on a branch in Git. Since we build
 prerelease builds from the latest commit on the `main` branch, we
 use the term "tip" to refer to the latest prerelease build rather than
 something like "nightly".
-</Note>
 
 ### Homebrew
 
@@ -72,22 +64,16 @@ You can also install prerelease builds using Homebrew using the
 brew install --cask ghostty@tip
 ```
 
-<Warning>
 This is community-maintained. The `auto-update-channel` setting
 is an official distribution channel.
-</Warning>
 
 ## Linux
 
 ### AUR
 
-<Warning>
-
 The AUR package is community-maintained. Any issues regarding packaging
 or the build process should be reported to the AUR maintainer first,
 and then to the Ghostty project.
-
-</Warning>
 
 The [`ghostty-git`] package on the Arch User Repository (AUR) provides
 a way to automatically build and install the latest prerelease version
@@ -115,22 +101,14 @@ primary development and CI environment.
 nix run github:ghostty-org/ghostty
 ```
 
-<Note>
-
 The Flake currently does not support macOS builds due to limitations of
 the Nix ecosystem. See the [Nix (macOS binary)](/docs/install/binary#nix-(macos-binary))
 section of the "Prebuilt Binaries and Packages" page for more details.
-
-</Note>
-
-<Warning>
 
 If you are installing the Flake on a non-NixOS system, be sure to read
 the [important caveats](/docs/install/binary#nix-on-other-distros) regarding
 running OpenGL programs built with Nix on non-NixOS systems. Ghostty will
 likely **fail to launch** without the workarounds described there.
-
-</Warning>
 
 NixOS users can install Ghostty either directly as a package under
 `packages.<system>.default` (where `<system>` is your current host system,
@@ -164,4 +142,3 @@ cost of performance; and `releasesafe` is rarely used.
 
 `debug` and `releasefast` are also available as overlays, under `overlays.debug`
 and `overlays.releasefast` respectively.
-

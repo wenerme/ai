@@ -1,7 +1,5 @@
 ---
 date: "2018-06-01T19:00:00+02:00"
-slug: "pull-request"
-sidebar_position: 13
 aliases:
   - /en-us/pull-request
 ---

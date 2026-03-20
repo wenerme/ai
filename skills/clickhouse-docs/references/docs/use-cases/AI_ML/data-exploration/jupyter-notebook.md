@@ -1,22 +1,9 @@
 ---
-slug: /use-cases/AI/jupyter-notebook
-sidebar_label: 'Exploring data with Jupyter notebooks and chDB'
 title: 'Exploring data in Jupyter notebooks with chDB'
 description: 'This guide explains how to setup and use chDB to explore data from ClickHouse Cloud or local files in Jupyer notebooks'
 keywords: ['ML', 'Jupyer', 'chDB', 'pandas']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import image_1 from '@site/static/images/use-cases/AI_ML/jupyter/1.png';
-import image_2 from '@site/static/images/use-cases/AI_ML/jupyter/2.png';
-import image_3 from '@site/static/images/use-cases/AI_ML/jupyter/3.png';
-import image_4 from '@site/static/images/use-cases/AI_ML/jupyter/4.png';
-import image_5 from '@site/static/images/use-cases/AI_ML/jupyter/5.png';
-import image_6 from '@site/static/images/use-cases/AI_ML/jupyter/6.png';
-import image_7 from '@site/static/images/use-cases/AI_ML/jupyter/7.png';
-import image_8 from '@site/static/images/use-cases/AI_ML/jupyter/8.png';
-import image_9 from '@site/static/images/use-cases/AI_ML/jupyter/9.png';
 
 # Exploring data with Jupyter notebooks and chDB
 
@@ -26,10 +13,8 @@ In this guide, you will learn how you can explore a dataset on ClickHouse Cloud 
 - a virtual environment
 - a working ClickHouse Cloud service and your [connection details](/cloud/guides/sql-console/gather-connection-details)
 
-:::tip
-If you don't yet have a ClickHouse Cloud account, you can [sign up](https://console.clickhouse.cloud/signUp?loc=docs-juypter-chdb) for
+> **tip**: If you don't yet have a ClickHouse Cloud account, you can [sign up](https://console.clickhouse.cloud/signUp?loc=docs-juypter-chdb) for
 a trial and get $300 in free-credits to begin.
-:::
 
 **What you'll learn:**
 - Connect to ClickHouse Cloud from Jupyter notebooks using chDB
@@ -66,10 +51,8 @@ export CLICKHOUSE_USER=default
 export CLICKHOUSE_PASSWORD=your_actual_password
 ```
 
-:::note
-The environment variables above persist only as long as your terminal session.
+> **note**: The environment variables above persist only as long as your terminal session.
 To set them permanently, add them to your shell configuration file.
-:::
 
 Now activate your virtual environment.
 From within your virtual environment, install Jupyter Notebook with the following command:
@@ -232,8 +215,7 @@ df_2 = chdb.query(query, "DataFrame")
 df_2.head()
 ```
 
-<details>
-<summary>Read from multiple sources in a single step</summary>
+Read from multiple sources in a single step
 It's also possible to read from multiple sources in a single step. You could use the query below using a `JOIN` to do so:
 
 ```python
@@ -261,7 +243,6 @@ GROUP BY toYear(date)
 ORDER BY year;
 """
 ```
-</details>
 
 <Image size="md" img={image_8} alt="dataframe preview"/>
 

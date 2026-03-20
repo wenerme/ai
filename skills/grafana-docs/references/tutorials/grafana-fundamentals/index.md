@@ -23,8 +23,6 @@ killercoda:
     imageid: ubuntu
 ---
 
-<!-- INTERACTIVE page intro.md START -->
-
 ## Introduction
 
 In this tutorial, you'll learn how to use Grafana to set up a monitoring solution for your application, and:
@@ -33,8 +31,6 @@ In this tutorial, you'll learn how to use Grafana to set up a monitoring solutio
 - Build dashboards
 - Annotate dashboards
 - Set up alert rules
-
-<!-- INTERACTIVE ignore START -->
 
 Alternatively, you can also watch our Grafana for Beginners series where we discuss fundamental concepts to help you get started with Grafana.
 
@@ -58,16 +54,10 @@ Alternatively, you can try out this example in our interactive learning environm
 
 It's a fully configured environment with all the dependencies already installed.
 
-![Interactive](/media/docs/grafana/full-stack-ile.png)
+[Interactive]
 
 Provide feedback, report bugs, and raise issues in the [Grafana Killercoda repository](https://github.com/grafana/killercoda).
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
-
-<!-- INTERACTIVE page intro.md END -->
-
-<!-- INTERACTIVE page step1.md START -->
 
 ## Set up the sample application
 
@@ -131,32 +121,21 @@ To add a link:
 
 To vote for a link, click the triangle icon next to the name of the link.
 
-<!-- INTERACTIVE page step1.md END -->
-
-<!-- INTERACTIVE page step2.md START -->
-
 ## Open Grafana
 
 Grafana is an open source platform for monitoring and observability that lets you visualize and explore the state of your systems.
 
-<!-- INTERACTIVE ignore START -->
-
 1. Open a new tab.
 1. Browse to [http://localhost:3000](http://localhost:3000).
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
 1. Browse to [http://localhost:3000](http://localhost:3000).
    {{< /docs/ignore >}}
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="note" >}}
 This demo does not require a login page or credentials. However, if you choose to install Grafana locally, you need to log in and provide credentials. In that case, the default username and password is `admin`.
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore START -->
 
 {{< docs/ignore >}}
 
@@ -166,10 +145,6 @@ This demo does not require a login page or credentials. However, if you choose t
 The first thing you see is the Home dashboard, which helps you get started.
 
 In the top left corner, you can see the menu icon. Clicking it opens the _sidebar_, the main menu for navigating Grafana.
-
-<!-- INTERACTIVE page step2.md END -->
-
-<!-- INTERACTIVE page step3.md START -->
 
 ## Explore your metrics
 
@@ -209,10 +184,6 @@ Grafana Explore is a workflow for troubleshooting and data exploration. In this 
 
 Depending on your use case, you might want to group on other labels. Try grouping by other labels, such as `status_code`, by changing the `by(route)` part of the query to `by(status_code)`.
 
-<!-- INTERACTIVE page step3.md END -->
-
-<!-- INTERACTIVE page step4.md START -->
-
 ## Add a logging data source
 
 Grafana supports log data sources, like [Loki](/oss/loki/). Just like for metrics, you first need to add your data source to Grafana.
@@ -224,10 +195,6 @@ Grafana supports log data sources, like [Loki](/oss/loki/). Just like for metric
 1. Scroll to the bottom of the page and click **Save & Test** to save your changes.
 
 You should see the message "Data source successfully connected." Loki is now available as a data source in Grafana.
-
-<!-- INTERACTIVE page step4.md END -->
-
-<!-- INTERACTIVE page step5.md START -->
 
 ## Explore your logs
 
@@ -263,10 +230,6 @@ Let's generate an error, and analyze it with Explore.
 
 Logs are helpful for understanding what went wrong. Later in this tutorial, you'll see how you can correlate logs with metrics from Prometheus to better understand the context of the error.
 
-<!-- INTERACTIVE page step5.md END -->
-
-<!-- INTERACTIVE page step6.md START -->
-
 ## Build a dashboard
 
 A _dashboard_ gives you an at-a-glance view of your data and lets you track metrics through different visualizations.
@@ -293,10 +256,6 @@ Every panel consists of a _query_ and a _visualization_. The query defines _what
    You should now have a panel added to your dashboard.
 
    {{< figure src="/media/tutorials/grafana-fundamentals-dashboard.png" alt="A panel in a Grafana dashboard" caption="A panel in a Grafana dashboard" >}}
-
-<!-- INTERACTIVE page step6.md END -->
-
-<!-- INTERACTIVE page step7.md START -->
 
 ## Annotate events
 
@@ -349,10 +308,6 @@ Being able to combine data from multiple data sources in one graph allows you to
 
 Annotations also work very well alongside alert rules. In the next and final section, we set up an alert rules for our app `grafana.news` and then we trigger it. This provides a quick intro to our new Alerting platform.
 
-<!-- INTERACTIVE page step7.md END -->
-
-<!-- INTERACTIVE page step8.md START -->
-
 ## Create a Grafana-managed alert rule
 
 Alert rules allow you to identify problems in your system moments after they occur. By quickly identifying unintended changes in your system, you can minimize disruptions to your services.
@@ -363,12 +318,12 @@ The most basic alert rule consists of two parts:
 
 1. A _Contact point_ - A Contact point defines how Grafana delivers an alert instance. When the conditions of an _alert rule_ are met, Grafana notifies the contact points, or channels, configured for that alert rule.
 
-   <!-- INTERACTIVE ignore START -->
+   
 
    {{< admonition type="note" >}}
    An [alert instance](https://grafana.com/docs/grafana/latest/alerting/fundamentals/#alert-instances) is a specific occurrence that matches a condition defined by an alert rule, such as when the rate of requests for a specific route suddenly increases.
    {{< /admonition >}}
-   <!-- INTERACTIVE ignore END -->
+   
 
    {{< docs/ignore >}}
 
@@ -385,10 +340,6 @@ The most basic alert rule consists of two parts:
 1. An _Alert rule_ - An Alert rule defines one or more _conditions_ that Grafana regularly evaluates. When these evaluations meet the rule's criteria, the alert rule is triggered.
 
 To begin, let's set up a webhook contact point. Once we have a usable endpoint, we write an alert rule and trigger a notification.
-
-<!-- INTERACTIVE page step8.md END -->
-
-<!-- INTERACTIVE page step9.md START -->
 
 ### Create a contact point for Grafana-managed alert rules
 
@@ -412,10 +363,6 @@ Next, let's configure a Contact Point in Grafana's Alerting UI to send notificat
 1. Return to Grafana and click **Save contact point**.
 
 We have now created a dummy webhook endpoint and created a new Alerting Contact Point in Grafana. Now we can create an alert rule and link it to this new channel.
-
-<!-- INTERACTIVE page step9.md END -->
-
-<!-- INTERACTIVE page step10.md START -->
 
 ### Add an alert rule to Grafana
 
@@ -453,13 +400,9 @@ We have now configured an alert rule and a contact point. Now let's see if we ca
 
 Once the query `sum(rate(tns_request_duration_seconds_count[5m])) by(route)` returns a value greater than `0.2` Grafana triggers our alert rule. Browse to the webhook endpoint we created earlier and find the sent Grafana alert notification with details and metadata.
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="note" >}}
 The alert rule may be triggered by the `/metrics` endpoint which is frequently accessed by Grafana when pulling metrics from the application. If this happens, you can increase the **Threshold** value in **Section 2** for testing purposes.
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore START -->
 
 {{< docs/ignore >}}
 
@@ -470,11 +413,7 @@ The alert rule may be triggered by the `/metrics` endpoint which is frequently a
 
 In most cases, it's also valuable to display Grafana alert instances as annotations to your dashboard. Check out the video tutorial below to learn how to display alerting to your dashboard.
 
-<!-- INTERACTIVE ignore START -->
-
 {{< youtube id="ClLp-iSoaSY" >}}
-
-<!-- INTERACTIVE ignore END -->
 
 Let's see how we can configure this.
 
@@ -490,15 +429,11 @@ Let's see how we can configure this.
 
    {{< figure src="/media/tutorials/grafana-alert-on-dashboard.png" alt="A panel in a Grafana dashboard with alerting and annotations configured" caption="Displaying Grafana-managed alert rules on a dashboard" >}}
 
-<!-- INTERACTIVE ignore START -->
-
 {{< admonition type="tip" >}}
 
 In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials/alerting-get-started-pt2/) you can advance your skills by exploring alert instances and notification routing.
 
 {{< /admonition >}}
-
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
@@ -506,21 +441,13 @@ In [Get started with Grafana Alerting - Part 2](http://www.grafana.com/tutorials
 
 {{< /docs/ignore >}}
 
-<!-- INTERACTIVE page step10.md END -->
-
-<!-- INTERACTIVE page finish.md START -->
-
 ## Summary
-
-<!-- INTERACTIVE ignore START -->
 
 In this tutorial you learned about fundamental features of Grafana. To do so, we ran several Docker containers on your local machine. When you are ready to clean up this local tutorial environment, run the following command:
 
 ```
 docker-compose down -v
 ```
-
-<!-- INTERACTIVE ignore END -->
 
 {{< docs/ignore >}}
 
@@ -538,5 +465,3 @@ Check out the links below to continue your learning journey with Grafana's LGTM 
 - [Alerting Overview](/docs/grafana/latest/alerting/)
 - [Alert rules](/docs/grafana/latest/alerting/create-alerts/)
 - [Contact points](/docs/grafana/latest/alerting/fundamentals/contact-points/)
-
-<!-- INTERACTIVE page finish.md END -->

@@ -76,7 +76,7 @@ To grant other Admins access to the migration assistant in Grafana Enterprise:
 1. In the **Organizations** section, click **Change role**.
 1. Select **Organization resource migrator** from the role selector menu under **Migration Assistant**.
 
-   ![The Organization resource migrator role in the role picker](/media/docs/grafana-cloud/account-management/screenshot-grant-migration-assistant-access.png)
+   [The Organization resource migrator role in the role picker]
 
 1. Click **Apply**.
 
@@ -125,7 +125,7 @@ After connecting to the cloud stack, this is the empty state of the migration as
 
 1. Click **Build snapshot**
 
-   ![A list of resources selected for migration and the Build snapshot button](/media/docs/grafana/screenshot-grafana-12-select-resources.png)
+   [A list of resources selected for migration and the Build snapshot button]
 
 ### Upload resources to the cloud
 
@@ -142,7 +142,7 @@ After a snapshot is created, a list of resources appears with resource Type and 
 
    The Snapshot information also updates to inform the user of total resources, errors, and total number of successfully migrated resources.
 
-   ![An updates list of resources with snapshots built after attempting to upload them to Grafana Cloud](/media/docs/grafana/screenshot-grafana-12-updated-snapshot-page.png)
+   [An updates list of resources with snapshots built after attempting to upload them to Grafana Cloud]
 
 1. Review error details for any issues that need manual resolution.
 

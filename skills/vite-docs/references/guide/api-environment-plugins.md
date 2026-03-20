@@ -1,6 +1,6 @@
 # Environment API for Plugins
 
-:::info Release Candidate
+> **info**: Release Candidate
 The Environment API is generally in the release candidate phase. We'll maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. However, note that [some specific APIs](/changes/#considering) are still considered experimental.
 
 We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
@@ -11,7 +11,6 @@ Resources:
 - [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new APIs were implemented and reviewed.
 
 Please share your feedback with us.
-:::
 
 ## Accessing the Current Environment in Hooks
 
@@ -231,11 +230,9 @@ The `applyToEnvironment` hook is called at config time, currently after `configR
 
 `environment.hot` allows plugins to communicate with the code on the application side for a given environment. This is the equivalent of [the Client-server Communication feature](/guide/api-plugin#client-server-communication), but supports environments other than the client environment.
 
-:::warning Note
+> **warning**: Note
 
 Note that this feature is only available for environments that support HMR.
-
-:::
 
 ### Managing the Application Instances
 

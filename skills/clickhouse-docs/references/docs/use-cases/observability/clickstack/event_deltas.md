@@ -1,24 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/event_deltas
 title: 'Event Deltas with ClickStack'
-sidebar_label: 'Event Deltas'
-pagination_prev: null
-pagination_next: null
 description: 'Event Deltas with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'event deltas', 'change tracking', 'logs', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import event_deltas from '@site/static/images/use-cases/observability/hyperdx-demo/step_17.png';
-import event_deltas_no_selected from '@site/static/images/use-cases/observability/event_deltas_no_selected.png';
-import event_deltas_highlighted from '@site/static/images/use-cases/observability/event_deltas_highlighted.png';
-import event_deltas_selected from '@site/static/images/use-cases/observability/event_deltas_selected.png';
-import event_deltas_issue from '@site/static/images/use-cases/observability/event_deltas_issue.png';
-import event_deltas_outliers from '@site/static/images/use-cases/observability/event_deltas_outliers.png';
-import event_deltas_separation from '@site/static/images/use-cases/observability/event_deltas_separation.png';
-import event_deltas_customization from '@site/static/images/use-cases/observability/event_deltas_customization.png';
-import event_deltas_inappropriate from '@site/static/images/use-cases/observability/event_deltas_inappropriate.png';
 
 Event Deltas in ClickStack are a trace-focused feature that automatically analyzes the properties of traces to uncover what changed when performance regresses. By comparing the latency distributions of normal versus slow traces within a corpus, ClickStack highlights which attributes are most correlated with the difference - whether that's a new deployment version, a specific endpoint, or a particular user ID.
 

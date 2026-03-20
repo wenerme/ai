@@ -7,17 +7,11 @@ description: Seamlessly integrate oRPC with Pinia Colada
 
 [Pinia Colada](https://pinia-colada.esm.dev/) is the data fetching layer for Pinia and Vue. oRPC's integration with Pinia Colada is lightweight and straightforward - there's no extra overhead.
 
-::: warning
-This documentation assumes you are already familiar with [Pinia Colada](https://pinia-colada.esm.dev/). If you need a refresher, please review the official Pinia Colada documentation before proceeding.
-:::
+> **warning**: This documentation assumes you are already familiar with [Pinia Colada](https://pinia-colada.esm.dev/). If you need a refresher, please review the official Pinia Colada documentation before proceeding.
 
-::: warning
-[Pinia Colada](https://pinia-colada.esm.dev/) is still in an unstable stage. As a result, this integration may introduce breaking changes in the future to keep up with its ongoing development.
-:::
+> **warning**: [Pinia Colada](https://pinia-colada.esm.dev/) is still in an unstable stage. As a result, this integration may introduce breaking changes in the future to keep up with its ongoing development.
 
 ## Installation
-
-::: code-group
 
 ```sh [npm]
 npm install @orpc/vue-colada@latest @pinia/colada@latest
@@ -38,8 +32,6 @@ bun add @orpc/vue-colada@latest @pinia/colada@latest
 ```sh [deno]
 deno add npm:@orpc/vue-colada@latest npm:@pinia/colada@latest
 ```
-
-:::
 
 ## Setup
 

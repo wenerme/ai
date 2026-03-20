@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Using ChatLiteLLM() - Langchain
 
@@ -8,9 +7,6 @@ import TabItem from '@theme/TabItem';
 !pip install litellm langchain
 ```
 ## Quick Start
-
-<Tabs>
-<TabItem value="openai" label="OpenAI">
 
 ```python
 import os
@@ -33,10 +29,6 @@ messages = [
 chat.invoke(messages)
 ```
 
-</TabItem>
-
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 import os
 from langchain_community.chat_models import ChatLiteLLM
@@ -57,10 +49,6 @@ messages = [
 ]
 chat.invoke(messages)
 ```
-
-</TabItem>
-
-<TabItem value="replicate" label="Replicate">
 
 ```python
 import os
@@ -83,10 +71,6 @@ messages = [
 chat.invoke(messages)
 ```
 
-</TabItem>
-
-<TabItem value="cohere" label="Cohere">
-
 ```python
 import os
 from langchain_community.chat_models import ChatLiteLLM
@@ -107,9 +91,6 @@ messages = [
 ]
 chat.invoke(messages)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Use Langchain ChatLiteLLM with MLflow
 
@@ -169,9 +150,6 @@ Tags are a powerful feature in LiteLLM that allow you to categorize, filter, and
 
 ### Basic Tag Usage
 
-<Tabs>
-<TabItem value="openai" label="OpenAI">
-
 ```python
 import os
 from langchain_openai import ChatOpenAI
@@ -198,10 +176,6 @@ response = chat.invoke(messages)
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="anthropic" label="Anthropic">
-
 ```python
 import os
 from langchain_openai import ChatOpenAI
@@ -227,10 +201,6 @@ messages = [
 response = chat.invoke(messages)
 print(response)
 ```
-
-</TabItem>
-
-<TabItem value="litellm-proxy" label="LiteLLM Proxy">
 
 ```python
 import os
@@ -259,9 +229,6 @@ messages = [
 response = chat.invoke(messages)
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Advanced Tag Patterns
 

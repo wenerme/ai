@@ -99,9 +99,8 @@ Doris-Operator uses a ConfigMap to mount the startup configuration file for comp
     ```
    Here, `${msConfigMapName}` is the name of the ConfigMap containing the MetaService startup configuration. Update this configuration in the [DorisDisaggregatedCluster resource](./install-doris-cluster.md#step-3-deploy-the-compute-storage-decoupled-cluster) that you intend to deploy. The mount path must be `/etc/doris`.
 
-:::tip Tip
+> **tip**: Tip
 When customizing the MetaService startup configuration in a Kubernetes deployment, do not include the fdb_cluster configuration; Doris Operator will handle that automatically.
-:::
 
 ## Configuring Service Probe Timeouts
 Doris Operator provides two timeout parameters for decoupled storage and compute services: liveness probe timeout and startup timeout.

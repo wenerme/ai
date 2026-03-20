@@ -7,7 +7,6 @@ keywords: ['Automatic Schema Migration']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 # Schema Migration Tools for ClickHouse
 
@@ -45,7 +44,6 @@ There is a third category of tools that focus less on the database schema change
 For this document, we will focus solely on tools for database schema changes.
 
 Overall, we recommend that you choose a tool that aligns with how you and your team want to operate. Imperative tools give full visibility into exactly what DDL will run. But it requires dedicated user focus for diff-ing and managing schema drift. Declarative tools are valuable for automating a lot of the boilerplate maintenance and preventing schema drift, but you should always review the generated plan before applying it to ClickHouse to ensure no surprise mutation or expensive rewrite hidden behind an auto-generated plan.
-
 
 ## What to Consider When Choosing a Tool
 

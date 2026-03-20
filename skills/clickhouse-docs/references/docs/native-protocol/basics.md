@@ -1,6 +1,4 @@
 ---
-slug: /native-protocol/basics
-sidebar_position: 1
 title: 'Basics'
 description: 'Native protocol basics'
 keywords: ['native protocol', 'TCP protocol', 'protocol basics', 'binary protocol', 'client-server communication']
@@ -9,14 +7,9 @@ doc_type: 'guide'
 
 # Basics
 
-:::note
-Client protocol reference is in progress.
+> **note**: Client protocol reference is in progress.
 
 Most examples are only in Go.
-:::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 This document describes binary protocol for ClickHouse TCP clients.
 
@@ -25,23 +18,15 @@ This document describes binary protocol for ClickHouse TCP clients.
 For lengths, packet codes and other cases the *unsigned varint* encoding is used.
 Use [binary.PutUvarint](https://pkg.go.dev/encoding/binary#PutUvarint) and [binary.ReadUvarint](https://pkg.go.dev/encoding/binary#ReadUvarint).
 
-:::note
-*Signed* varint isn't used.
-:::
+> **note**: *Signed* varint isn't used.
 
 ## String {#string}
 
 Variable length strings are encoded as *(length, value)*, where *length* is [varint](#varint) and *value* is utf8 string.
 
-:::important
-Validate length to prevent OOM:
+> **important**: Validate length to prevent OOM:
 
 `0 ≤ len < MAX`
-:::
-
-<Tabs>
-<TabItem value="encode" label="Encode">
-
 ```go
 s := "Hello, world!"
 
@@ -53,9 +38,6 @@ buf = buf[:n]
 // Writing string value.
 buf = append(buf, s...)
 ```
-
-</TabItem>
-<TabItem value="decode" label="Decode">
 
 ```go
 r := bytes.NewReader([]byte{
@@ -84,25 +66,13 @@ fmt.Println(string(buf))
 // Hello, world!
 ```
 
-</TabItem>
-</Tabs>
-
-<Tabs>
-<TabItem value="hexdump" label="Hex dump">
-
 ```hexdump
 00000000  0d 48 65 6c 6c 6f 2c 20  77 6f 72 6c 64 21        |.Hello, world!|
 ```
 
-</TabItem>
-<TabItem value="base64" label="Base64">
-
 ```text
 DUhlbGxvLCB3b3JsZCE
 ```
-
-</TabItem>
-<TabItem value="go" label="Go">
 
 ```go
 data := []byte{
@@ -111,14 +81,9 @@ data := []byte{
 }
 ```
 
-</TabItem>
-</Tabs>
-
 ## Integers {#integers}
 
-:::tip
-ClickHouse uses **Little Endian** for fixed size integers.
-:::
+> **tip**: ClickHouse uses **Little Endian** for fixed size integers.
 
 ### Int32 {#int32}
 ```go
@@ -133,22 +98,13 @@ d := int32(binary.LittleEndian.Uint32(buf))
 fmt.Println(d) // 1000
 ```
 
-<Tabs>
-<TabItem value="hexdump" label="Hex dump">
-
 ```hexdump
 00000000  e8 03 00 00 00 00 00 00                           |........|
 ```
 
-</TabItem>
-<TabItem value="base64" label="Base64">
-
 ```text
 6AMAAAAAAAA
 ```
-
-</TabItem>
-</Tabs>
 
 ## Boolean {#boolean}
 

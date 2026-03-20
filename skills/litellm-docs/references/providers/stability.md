@@ -173,13 +173,12 @@ Stability AI returns images in base64 format. The response is OpenAI-compatible:
 
 Stability AI supports various image editing operations including inpainting, upscaling, outpainting, background removal, and more.
 
-:::info Optional Parameters
+> **info**: Optional Parameters
 **Important:** Different Stability models have different parameter requirements:
 - Some models don't require a `prompt` (e.g., upscaling, background removal)
 - The `style-transfer` model uses `init_image` and `style_image` instead of `image`
 - The `outpaint` model requires numeric parameters (`left`, `right`, `up`, `down`)
 LiteLLM automatically handles these differences for you.
-:::
 
 ### Usage - LiteLLM Python SDK
 

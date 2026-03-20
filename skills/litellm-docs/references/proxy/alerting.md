@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Alerting / Webhooks
 
@@ -12,8 +10,6 @@ Get alerts for:
 | **Budget & Spend** | Budget tracking per key/user, Soft budget alerts, Weekly & Monthly spend reports per Team/Tag |
 | **System Health** | Failed database read/writes |
 | **Daily Reports** | Top 5 slowest LLM deployments, Top 5 LLM deployments with most failed requests, Weekly & Monthly spend per Team/Tag |
-
-
 
 Works across: 
 - [Slack](#quick-start)
@@ -29,7 +25,6 @@ Set up a slack alert channel to receive alerts from proxy.
 Get a slack webhook url from https://api.slack.com/messaging/webhooks
 
 You can also use Discord Webhooks, see [here](#using-discord-webhooks)
-
 
 Set `SLACK_WEBHOOK_URL` in your proxy env to enable Slack alerts.
 
@@ -64,9 +59,7 @@ Start proxy
 $ litellm --config /path/to/config.yaml
 ```
 
-
 ### Step 3: Test it!
-
 
 ```bash
 curl -X GET 'http://0.0.0.0:4000/health/services?service=slack' \
@@ -78,7 +71,6 @@ curl -X GET 'http://0.0.0.0:4000/health/services?service=slack' \
 ### Redacting Messages from Alerts
 
 By default alerts show the `messages/input` passed to the LLM. If you want to redact this from slack alerting set the following setting on your config
-
 
 ```shell
 general_settings:
@@ -131,9 +123,6 @@ curl http://0.0.0.0:4000/chat/completions \
 Step 3. Check slack for Expected Alert
 
 <Image img={require('../../img/soft_budget_alert.png')}/>
-
-
-
 
 ### Add Metadata to alerts 
 
@@ -198,10 +187,6 @@ spend_reports -> go to slack channel #llm-spend-reports
 
 Set `alert_to_webhook_url` on your config.yaml
 
-<Tabs>
-
-<TabItem label="1 channel per alert" value="1">
-
 ```yaml
 model_list:
   - model_name: gpt-4
@@ -230,9 +215,6 @@ general_settings:
 litellm_settings:
   success_callback: ["langfuse"]
 ```
-</TabItem>
-
-<TabItem label="multiple channels per alert" value="2">
 
 Provide multiple slack channels for a given alert type
 
@@ -265,10 +247,6 @@ litellm_settings:
   success_callback: ["langfuse"]
 ```
 
-</TabItem>
-
-</Tabs>
-
 Test it - send a valid llm request - expect to see a `llm_too_slow` alert in it's own slack channel
 
 ```shell
@@ -282,7 +260,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     ]
 }'
 ```
-
 
 ### MS Teams Webhooks
 
@@ -321,7 +298,6 @@ curl --location 'http://0.0.0.0:4000/health/services?service=slack' \
 --header 'Authorization: Bearer sk-1234'
 ```
 
-
 **Expected Response**
 
 <Image img={require('../../img/ms_teams_alerting.png')}/>
@@ -356,7 +332,6 @@ general_settings:
 environment_variables:
     SLACK_WEBHOOK_URL: "https://discord.com/api/webhooks/1240030362193760286/cTLWt5ATn1gKmcy_982rl5xmYHsrM1IWJdmCL1AyOmU9JdQXazrp8L1_PYgUtgxj8x4f/slack"
 ```
-
 
 ##  [BETA] Webhooks for Budget Alerts
 
@@ -493,9 +468,7 @@ API Base: `None`
 
 ## Region-outage alerting (✨ Enterprise feature)
 
-:::info
-[Get a free 2-week license](https://forms.gle/P518LXsAZ7PhXpDn8)
-:::
+> **info**: [Get a free 2-week license](https://forms.gle/P518LXsAZ7PhXpDn8)
 
 Setup alerts if a provider region is having an outage. 
 
@@ -564,7 +537,6 @@ Management Endpoint Alerts - Virtual Key, Team, Internal User
 | `new_internal_user_created` | Notifications for new internal user accounts | ❌ |
 | `internal_user_updated` | Alerts when an internal user's details are changed | ❌ |
 | `internal_user_deleted` | Notifications when an internal user account is removed | ❌ |
-
 
 ## `alerting_args` Specification
 

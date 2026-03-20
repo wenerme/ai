@@ -1,21 +1,8 @@
 ---
 title: 'Uploading files'
-slug: /cloud/migrate/upload-a-csv-file
 description: 'Learn how to upload files to Cloud'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import csv_01 from '@site/static/images/cloud/migrate/csv_01.png';
-import csv_02 from '@site/static/images/cloud/migrate/csv_02.png';
-import csv_03 from '@site/static/images/cloud/migrate/csv_03.png';
-import csv_04 from '@site/static/images/cloud/migrate/csv_04.png';
-import csv_05 from '@site/static/images/cloud/migrate/csv_05.png';
-import csv_06 from '@site/static/images/cloud/migrate/csv_06.png';
-import csv_07 from '@site/static/images/cloud/migrate/csv_07.png';
-import csv_08 from '@site/static/images/cloud/migrate/csv_08.png';
-import csv_09 from '@site/static/images/cloud/migrate/csv_09.png';
-import csv_10 from '@site/static/images/cloud/migrate/csv_10.png';
 
 # Upload files to Cloud
 
@@ -67,7 +54,6 @@ You can now select a destination table. The options are:
 - a new table
 - an existing table
 
-<br/>
 You can specify which database you want to upload the data to, and in the case of 
 a new table, the name of the table that will be created. You will also be able to select the sorting key:
 
@@ -81,9 +67,8 @@ can change:
 
 <Image img={csv_06} alt="upload_file_06" />
 
-:::note Excluding fields
+> **note**: Excluding fields
 You can also remove a field if you don't want to include it in the import
-:::
 
 You can specify the type of table engine that you want to use:
 
@@ -91,7 +76,7 @@ You can specify the type of table engine that you want to use:
 - `ReplacingMergeTree`
 - `SummingMergeTree`
 - `Null`
-<br/>
+
 You can specify a partitioning key expression and primary
 key expression.
 

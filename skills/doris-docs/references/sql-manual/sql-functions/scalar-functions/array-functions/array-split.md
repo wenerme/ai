@@ -51,4 +51,3 @@ Split the input array into multiple subarrays according to given boolean flags.
 
 - `lambda= (x,y) -> x-y` applied to `arr0=[1, 2, 3]` and `arr1=[0,1,2]` produces `flags=[true,true,true]`
   - `ARRAY_SPLIT((x,y) -> x-y, [1, 2, 3], [0, 1, 2])` is equivalent to `ARRAY_SPLIT([1, 2, 3], [true,true,true])` -> `[[1], [2], [3]]`
-

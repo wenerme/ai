@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+
 ---
 
 # Notification
@@ -314,7 +314,7 @@ Registers a callback function to handle notification responses when users intera
 
 **Go:** `OnNotificationResponse(ctx context.Context, callback func(result NotificationResult))`
 
-:::note JavaScript
+> **note**: JavaScript
 
 `OnNotificationResponse` is not available in the JavaScript runtime. Instead, JavaScript applications should use the [Events API](/docs/reference/runtime/events) to listen for notification responses. From your Go callback, emit an event that your JavaScript code can listen to.
 
@@ -342,8 +342,6 @@ runtime.EventsOn("notification-response", (response) => {
     }
 });
 ```
-
-:::
 
 ## Options
 

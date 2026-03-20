@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Prompt Caching 
 
@@ -38,9 +37,6 @@ For the supported providers, LiteLLM follows the OpenAI prompt caching usage obj
 ## Quick Start
 
 Note: OpenAI caching is only available for prompts containing 1024 tokens or more
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -96,9 +92,6 @@ print("response.usage=", response.usage)
 assert "prompt_tokens_details" in response.usage
 assert response.usage.prompt_tokens_details.cached_tokens > 0
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -176,9 +169,6 @@ assert "prompt_tokens_details" in response.usage
 assert response.usage.prompt_tokens_details.cached_tokens > 0
 ```
 
-</TabItem>
-</Tabs>
-
 ### OpenAI `prompt_cache_key` and `prompt_cache_retention`
 
 OpenAI prompt caching is [**automatic**](https://platform.openai.com/docs/guides/prompt-caching) — no `cache_control` message annotations are needed. Any request with 1024+ prompt tokens is eligible for caching.
@@ -187,9 +177,6 @@ OpenAI also supports two optional parameters for more control over caching behav
 
 - **`prompt_cache_key`** (string) — A routing hint that improves cache hit rates for requests sharing long common prefixes. Requests with the same cache key are routed to the same backend, increasing the likelihood of a cache hit.
 - **`prompt_cache_retention`** (`"in_memory"` or `"24h"`) — Controls cache TTL. Default is `"in_memory"` (5–10 min). Set to `"24h"` for extended caching that offloads KV tensors to GPU-local storage.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -215,9 +202,6 @@ response = completion(
 )
 print(response.usage)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```python
 from openai import OpenAI
@@ -248,9 +232,6 @@ response = client.chat.completions.create(
 print(response.usage)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Anthropic Example 
 
 Anthropic charges for cache writes. 
@@ -258,9 +239,6 @@ Anthropic charges for cache writes.
 Specify the content to cache with `"cache_control": {"type": "ephemeral"}`.
 
 If you pass that in for any other llm provider, it will be ignored. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python 
 from litellm import completion 
@@ -296,8 +274,6 @@ response = completion(
 
 print(response.usage)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -352,9 +328,6 @@ response = client.chat.completions.create(
 
 print(response.usage)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Deepeek Example 
 
@@ -424,7 +397,6 @@ response_2 = litellm.completion(model=model_name, messages=message_2)
 print(response_2.usage)
 ```
 
-
 ## Calculate Cost 
 
 Cost cache-hit prompt tokens can differ from cache-miss prompt tokens.
@@ -436,9 +408,6 @@ cost = completion_cost(completion_response=response, model=model)
 ```
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion, completion_cost
@@ -479,8 +448,6 @@ cost = completion_cost(completion_response=response, model=model)
 formatted_string = f"${float(cost):.10f}"
 print(formatted_string)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 LiteLLM returns the calculated cost in the response headers - `x-litellm-response-cost` 
 
@@ -504,15 +471,9 @@ completion = response.parse()  # get the object that `chat.completions.create()`
 print(completion)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Check Model Support
 
 Check if a model supports prompt caching with `supports_prompt_caching()` 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm.utils import supports_prompt_caching
@@ -521,9 +482,6 @@ supports_pc: bool = supports_prompt_caching(model="anthropic/claude-3-5-sonnet-2
 
 assert supports_pc
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 Use the `/model/info` endpoint to check if a model on the proxy supports prompt caching 
 
@@ -570,15 +528,11 @@ curl -L -X GET 'http://0.0.0.0:4000/v1/model/info' \
 }
 ```
 
-</TabItem>
-</Tabs>
-
 This checks our maintained [model info/cost map](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json)
 
 ## Read More
 
-:::tip Auto-Inject Prompt Caching
+> **tip**: Auto-Inject Prompt Caching
 Want LiteLLM to automatically add `cache_control` directives without modifying your code? 
 
 See [**Auto-Inject Prompt Caching Tutorial**](../tutorials/prompt_caching.md) to learn how to use `cache_control_injection_points` to automatically cache system messages, specific messages by index, or custom injection patterns.
-:::

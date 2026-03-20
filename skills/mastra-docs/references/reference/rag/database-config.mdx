@@ -6,9 +6,6 @@ packages:
   - "@mastra/rag"
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 # DatabaseConfig
 
 The `DatabaseConfig` type allows you to specify database-specific configurations when using vector query tools. These configurations enable you to leverage unique features and optimizations offered by different vector stores.
@@ -165,8 +162,7 @@ whereDocument: { "$contains": "API documentation" }
 
 ## Usage examples
 
-<Tabs>
-  <TabItem value="basic-usage" label="Basic Usage">
+  
     ### Basic Database Configuration
 
     ```typescript
@@ -183,9 +179,9 @@ whereDocument: { "$contains": "API documentation" }
       },
     })
     ```
-  </TabItem>
+  
 
-  <TabItem value="runtime-override" label="Runtime Override">
+  
     ### Runtime Configuration Override
 
     ```typescript
@@ -213,9 +209,9 @@ whereDocument: { "$contains": "API documentation" }
 
     await vectorTool.execute({ queryText: 'search query' }, { mastra, requestContext })
     ```
-  </TabItem>
+  
 
-  <TabItem value="multi-database" label="Multi-Database">
+  
     ### Multi-Database Configuration
 
     ```typescript
@@ -243,9 +239,9 @@ whereDocument: { "$contains": "API documentation" }
     **Multi-Database Support**: When you configure multiple databases, only the configuration matching the actual vector store being used will be applied.
 
     :::
-  </TabItem>
+  
 
-  <TabItem value="performance-tuning" label="Performance Tuning">
+  
     ### Performance Tuning
 
     ```typescript
@@ -277,8 +273,7 @@ whereDocument: { "$contains": "API documentation" }
       },
     })
     ```
-  </TabItem>
-</Tabs>
+  
 
 ## Extensibility
 

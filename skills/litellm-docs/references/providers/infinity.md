@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Infinity
 
@@ -82,9 +81,6 @@ curl http://0.0.0.0:4000/rerank \
 
 ### Usage - Return Documents
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = rerank(
     model="infinity/rerank",
@@ -93,10 +89,6 @@ response = rerank(
     return_documents=True,
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/rerank \
@@ -115,15 +107,9 @@ curl http://0.0.0.0:4000/rerank \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Pass Provider-specific Params
 
 Any unmapped params will be passed to the provider as-is.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import rerank
@@ -138,10 +124,6 @@ response = rerank(
     raw_scores=True, # 👈 PROVIDER-SPECIFIC PARAM
 )
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -180,10 +162,6 @@ curl http://0.0.0.0:4000/rerank \
     "raw_scores": True # 👈 PROVIDER-SPECIFIC PARAM
   }'
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Embeddings
 
@@ -225,9 +203,6 @@ curl http://0.0.0.0:4000/embeddings \
 
 ### Usage - Basic Examples
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import embedding
 import os
@@ -242,10 +217,6 @@ response = embedding(
 print(response.data[0]['embedding'])
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/embeddings \
   -H "Authorization: Bearer sk-1234" \
@@ -256,13 +227,7 @@ curl http://0.0.0.0:4000/embeddings \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Usage - OpenAI Client
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from openai import OpenAI
@@ -281,10 +246,6 @@ response = client.embeddings.create(
 print(response.data[0].embedding)
 ```
 
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/embeddings \
   -H "Authorization: Bearer sk-1234" \
@@ -295,6 +256,3 @@ curl http://0.0.0.0:4000/embeddings \
     "encoding_format": "float"
   }'
 ```
-
-</TabItem>
-</Tabs>

@@ -7,9 +7,7 @@ description: Seamlessly use AI SDK inside your oRPC projects without any extra o
 
 [AI SDK](https://ai-sdk.dev/) is a free open-source library for building AI-powered products. You can seamlessly integrate it with oRPC without any extra overhead.
 
-::: warning
-This documentation requires AI SDK v5.0.0 or later. For a refresher, review the [AI SDK documentation](https://ai-sdk.dev/docs).
-:::
+> **warning**: This documentation requires AI SDK v5.0.0 or later. For a refresher, review the [AI SDK documentation](https://ai-sdk.dev/docs).
 
 ## Server
 
@@ -112,15 +110,11 @@ export function Example() {
 }
 ```
 
-::: info
-The `reconnectToStream` function is not supported by default, which is fine for most use cases. If you need reconnection support, implement it similar to `sendMessages` with custom reconnection logic. See this [reconnect example](<https://github.com/vercel/ai-chatbot/blob/main/app/(chat)/api/chat/%5Bid%5D/stream/route.ts>).
-:::
+> **info**: The `reconnectToStream` function is not supported by default, which is fine for most use cases. If you need reconnection support, implement it similar to `sendMessages` with custom reconnection logic. See this [reconnect example](<https://github.com/vercel/ai-chatbot/blob/main/app/(chat)/api/chat/%5Bid%5D/stream/route.ts>).
 
-::: info
-Prefer `eventIteratorToUnproxiedDataStream` over `eventIteratorToStream`.
+> **info**: Prefer `eventIteratorToUnproxiedDataStream` over `eventIteratorToStream`.
 AI SDK internally uses `structuredClone`, which doesn't support proxied data.
 oRPC may proxy events for [metadata](/docs/event-iterator#last-event-id-event-metadata), so unproxy before passing to AI SDK.
-:::
 
 ## `implementTool` helper
 
@@ -164,13 +158,9 @@ const getWeatherTool = implementTool(getWeatherContract, {
 })
 ```
 
-::: warning
-The `implementTool` helper requires a contract with an `input` schema defined
-:::
+> **warning**: The `implementTool` helper requires a contract with an `input` schema defined
 
-::: info
-Standard [procedures](/docs/procedure) are also compatible with [procedure contracts](/docs/contract-first/define-contract).
-:::
+> **info**: Standard [procedures](/docs/procedure) are also compatible with [procedure contracts](/docs/contract-first/define-contract).
 
 ## `createTool` helper
 
@@ -215,6 +205,4 @@ const getWeatherTool = createTool(getWeatherProcedure, {
 })
 ```
 
-::: warning
-The `createTool` helper requires a procedure with an `input` schema defined
-:::
+> **warning**: The `createTool` helper requires a procedure with an `input` schema defined

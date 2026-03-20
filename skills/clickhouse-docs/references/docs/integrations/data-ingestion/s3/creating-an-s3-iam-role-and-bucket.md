@@ -2,32 +2,8 @@
 title: 'How to create an AWS IAM user and S3 bucket'
 description: 'How to create an AWS IAM user and S3 bucket.'
 keywords: ['AWS', 'IAM', 'S3 bucket']
-slug: /integrations/s3/creating-iam-user-and-s3-bucket
-sidebar_label: 'How to create an AWS IAM user and S3 bucket'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import s3_1 from '@site/static/images/_snippets/s3/2025/s3-1.png';
-import s3_2 from '@site/static/images/_snippets/s3/2025/s3-2.png';
-import s3_3 from '@site/static/images/_snippets/s3/2025/s3-3.png';
-import s3_4 from '@site/static/images/_snippets/s3/2025/s3-4.png';
-import s3_5 from '@site/static/images/_snippets/s3/2025/s3-5.png';
-import s3_6 from '@site/static/images/_snippets/s3/2025/s3-6.png';
-import s3_7 from '@site/static/images/_snippets/s3/2025/s3-7.png';
-import s3_8 from '@site/static/images/_snippets/s3/2025/s3-8.png';
-import s3_9 from '@site/static/images/_snippets/s3/2025/s3-9.png';
-import s3_10 from '@site/static/images/_snippets/s3/2025/s3-10.png';
-import s3_11 from '@site/static/images/_snippets/s3/2025/s3-11.png';
-import s3_12 from '@site/static/images/_snippets/s3/2025/s3-12.png';
-import s3_13 from '@site/static/images/_snippets/s3/2025/s3-13.png';
-import s3_14 from '@site/static/images/_snippets/s3/2025/s3-14.png';
-import s3_15 from '@site/static/images/_snippets/s3/2025/s3-15.png';
-import s3_16 from '@site/static/images/_snippets/s3/2025/s3-16.png';
-import s3_17 from '@site/static/images/_snippets/s3/2025/s3-17.png';
-import s3_18 from '@site/static/images/_snippets/s3/2025/s3-18.png';
-import s3_19 from '@site/static/images/_snippets/s3/2025/s3-19.png';
-import s3_20 from '@site/static/images/_snippets/s3/2025/s3-20.png';
 
 > This guide shows you how you can set up an IAM user and S3 bucket in AWS,
 > a prerequisite step for taking backups to S3 or configuring ClickHouse to
@@ -88,9 +64,7 @@ Click on the newly created user
 
 <Image size="lg" img={s3_11} alt="AWS IAM Management Console - Adding a new user" />
 
-:::note
-The bucket name must be unique across AWS, not just the organization, or it will emit an error.
-:::
+> **note**: The bucket name must be unique across AWS, not just the organization, or it will emit an error.
 
 3. Leave `Block all Public Access` enabled; public access isn't needed.
 
@@ -149,9 +123,7 @@ The bucket name must be unique across AWS, not just the organization, or it will
 }
 ```
 
-:::note
-The policy above makes it possible to perform all actions on the bucket
-:::
+> **note**: The policy above makes it possible to perform all actions on the bucket
 
 |Parameter | Description | Example Value |
 |----------|-------------|----------------|
@@ -162,10 +134,8 @@ The policy above makes it possible to perform all actions on the bucket
 |Action | What operations are allowed on the bucket| s3:*|
 |Resource | Which resources in the bucket will operations be allowed in | "arn:aws:s3:::ch-docs-s3-bucket", "arn:aws:s3:::ch-docs-s3-bucket/*" |
 
-:::note
-You should work with your security team to determine the permissions to be used, consider these as a starting point.
+> **note**: You should work with your security team to determine the permissions to be used, consider these as a starting point.
 For more information on Policies and settings, refer to AWS documentation:
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html
-:::
 
 13. Save the policy configuration

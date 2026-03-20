@@ -12,9 +12,7 @@ Records the configuration information of Workload Groups.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

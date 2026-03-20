@@ -1,9 +1,6 @@
 ---
-sidebar_label: 'Advanced Usage'
-sidebar_position: 6
 keywords: ['clickhouse', 'python', 'advanced', 'raw', 'async', 'threading']
 description: 'Advanced Usage with ClickHouse Connect'
-slug: /integrations/language-clients/python/advanced-usage
 title: 'Advanced Usage'
 doc_type: 'reference'
 ---
@@ -94,7 +91,6 @@ To get an instance of the `AsyncClient`, you can use the `get_async_client` fact
 import asyncio
 
 import clickhouse_connect
-
 
 async def main():
     client = await clickhouse_connect.get_async_client()

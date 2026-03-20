@@ -1,20 +1,12 @@
 ---
 title: 'Controlling the Syncing of a MySQL ClickPipe'
 description: 'Doc for controllling the sync a MySQL ClickPipe'
-slug: /integrations/clickpipes/mysql/sync_control
-sidebar_label: 'Controlling syncs'
 keywords: ['MySQL ClickPipe', 'ClickPipe sync control', 'MySQL CDC replication', 'ClickHouse MySQL connector', 'database synchronization ClickHouse']
 doc_type: 'guide'
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import edit_sync_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/edit_sync_button.png'
-import create_sync_settings from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/create_sync_settings.png'
-import edit_sync_settings from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/sync_settings_edit.png'
-import cdc_syncs from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/cdc_syncs.png'
-import Image from '@theme/IdealImage';
 
 This document describes how to control the sync of a MySQL ClickPipe when the ClickPipe is in **CDC (Running) mode**.
 

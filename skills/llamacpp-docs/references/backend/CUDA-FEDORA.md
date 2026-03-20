@@ -150,7 +150,6 @@ sudo rpm --install --verbose --hash --justdb /tmp/nvidia-driver-libs/*
 
 **Note:** This is the same command as in the *"Install the Nvidia Driver Libraries on Guest"* for if *`libcuda.so.1`* was missing.
 
-
 ```bash
 sudo dnf install nvidia-driver-cuda nvidia-driver-libs nvidia-driver-cuda-libs nvidia-persistenced
 ```

@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Vertex AI Text to Speech
 
@@ -53,9 +52,6 @@ litellm --config /path/to/config.yaml
 
 **3. Make requests**
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Chirp3 Quick Start"
 curl http://0.0.0.0:4000/v1/audio/speech \
   -H "Authorization: Bearer sk-1234" \
@@ -67,9 +63,6 @@ curl http://0.0.0.0:4000/v1/audio/speech \
   }' \
   --output speech.mp3
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Chirp3 Quick Start"
 import openai
@@ -83,9 +76,6 @@ response = client.audio.speech.create(
 )
 response.stream_to_file("speech.mp3")
 ```
-
-</TabItem>
-</Tabs>
 
 ### Voice Mapping
 
@@ -135,9 +125,6 @@ response.stream_to_file("speech.mp3")
 
 #### LiteLLM AI Gateway
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Chirp3 HD Voice"
 curl http://0.0.0.0:4000/v1/audio/speech \
   -H "Authorization: Bearer sk-1234" \
@@ -161,9 +148,6 @@ curl http://0.0.0.0:4000/v1/audio/speech \
   }' \
   --output speech.mp3
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Chirp3 HD Voice"
 import openai
@@ -190,9 +174,6 @@ response = client.audio.speech.create(
 )
 response.stream_to_file("speech.mp3")
 ```
-
-</TabItem>
-</Tabs>
 
 Browse available voices: [Google Cloud Text-to-Speech Console](https://console.cloud.google.com/vertex-ai/generative/speech/text-to-speech)
 
@@ -237,9 +218,6 @@ response.stream_to_file("speech.mp3")
 
 #### LiteLLM AI Gateway
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="SSML Input"
 curl http://0.0.0.0:4000/v1/audio/speech \
   -H "Authorization: Bearer sk-1234" \
@@ -251,9 +229,6 @@ curl http://0.0.0.0:4000/v1/audio/speech \
   }' \
   --output speech.mp3
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="SSML Input"
 import openai
@@ -269,9 +244,6 @@ response = client.audio.speech.create(
 )
 response.stream_to_file("speech.mp3")
 ```
-
-</TabItem>
-</Tabs>
 
 ### Supported Parameters
 
@@ -307,13 +279,11 @@ asyncio.run(main())
 
 Gemini models with audio output capabilities using the chat completions API.
 
-:::warning
-**Limitations:**
+> **warning**: **Limitations:**
 - Only supports `pcm16` audio format
 - Streaming not yet supported
 - Must set `modalities: ["audio"]`
 - When using via LiteLLM Proxy, must include `"allowed_openai_params": ["audio", "modalities"]` in the request body to enable audio parameters
-:::
 
 ### Quick Start
 
@@ -362,9 +332,6 @@ litellm --config /path/to/config.yaml
 
 **3. Make requests**
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Gemini TTS Request"
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -377,9 +344,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "allowed_openai_params": ["audio", "modalities"]
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI Python SDK">
 
 ```python showLineNumbers title="Gemini TTS Request"
 import openai
@@ -395,9 +359,6 @@ response = client.chat.completions.create(
 )
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ### Supported Models
 

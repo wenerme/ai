@@ -1,6 +1,5 @@
 ---
 title: coverage | Config
-outline: deep
 ---
 
 # coverage <CRoot /> {#coverage}
@@ -13,9 +12,7 @@ You can provide coverage options to CLI with dot notation:
 npx vitest --coverage.enabled --coverage.provider=istanbul
 ```
 
-::: warning
-If you are using coverage options with dot notation, don't forget to specify `--coverage.enabled`. Do not provide a single `--coverage` option in that case.
-:::
+> **warning**: If you are using coverage options with dot notation, don't forget to specify `--coverage.enabled`. Do not provide a single `--coverage` option in that case.
 
 ## coverage.provider
 
@@ -83,9 +80,7 @@ Clean coverage report on watch rerun. Set to `false` to preserve coverage result
 - **Available for providers:** `'v8' | 'istanbul'`
 - **CLI:** `--coverage.reportsDirectory=<path>`
 
-::: warning
-Vitest will delete this directory before running tests if `coverage.clean` is enabled (default value).
-:::
+> **warning**: Vitest will delete this directory before running tests if `coverage.clean` is enabled (default value).
 
 Directory to write coverage report to.
 
@@ -103,7 +98,7 @@ The reporter has three different types:
 - A single reporter: `{ reporter: 'html' }`
 - Multiple reporters without options: `{ reporter: ['html', 'json'] }`
 - A single or multiple reporters with reporter options:
-  <!-- eslint-skip -->
+  
   ```ts
   {
     reporter: [
@@ -116,7 +111,6 @@ The reporter has three different types:
 
 You can also pass custom coverage reporters. See [Guide - Custom Coverage Reporter](/guide/coverage#custom-coverage-reporter) for more information.
 
-<!-- eslint-skip -->
 ```ts
   {
     reporter: [
@@ -180,7 +174,6 @@ If a threshold is set to a positive number, it will be interpreted as the minimu
 
 If a threshold is set to a negative number, it will be treated as the maximum number of uncovered items allowed. For example, setting the lines threshold to `-10` means that no more than 10 lines may be uncovered.
 
-<!-- eslint-skip -->
 ```ts
 {
   coverage: {
@@ -248,7 +241,6 @@ This option helps to maintain thresholds when coverage is improved.
 
 You can also pass a function for formatting the updated threshold values:
 
-<!-- eslint-skip -->
 ```ts
 {
   coverage: {
@@ -281,12 +273,10 @@ Shortcut for `--coverage.thresholds.lines 100 --coverage.thresholds.functions 10
 
 Sets thresholds for files matching the glob pattern.
 
-::: tip NOTE
+> **tip**: NOTE
 Vitest counts all files, including those covered by glob-patterns, into the global coverage thresholds.
 This is different from Jest behavior.
-:::
 
-<!-- eslint-skip -->
 ```ts
 {
   coverage: {
@@ -321,7 +311,6 @@ This is different from Jest behavior.
 
 Sets thresholds to 100 for files matching the glob pattern.
 
-<!-- eslint-skip -->
 ```ts
 {
   coverage: {
@@ -351,7 +340,7 @@ See [istanbul documentation](https://github.com/istanbuljs/nyc#ignoring-methods)
 ## coverage.watermarks
 
 - **Type:**
-<!-- eslint-skip -->
+
 ```ts
 {
   statements?: [number, number],
@@ -362,7 +351,7 @@ See [istanbul documentation](https://github.com/istanbuljs/nyc#ignoring-methods)
 ```
 
 - **Default:**
-<!-- eslint-skip -->
+
 ```ts
 {
   statements: [50, 80],

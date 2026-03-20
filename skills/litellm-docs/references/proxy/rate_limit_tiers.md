@@ -4,16 +4,11 @@ Define tiers with rate limits. Assign them to keys.
 
 Use this to control access and budgets across a lot of keys.
 
-:::info 
-
-This is a LiteLLM Enterprise feature.
+> **info**: This is a LiteLLM Enterprise feature.
 
 Get a 7 day free trial + get in touch [here](https://litellm.ai/#trial).
 
 See pricing [here](https://litellm.ai/#pricing).
-
-:::
-
 
 ## 1. Create a budget 
 
@@ -65,6 +60,4 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 }'
 ```
 
-
 ## [API Reference](https://litellm-api.up.railway.app/#/budget%20management)
-

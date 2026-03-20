@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Kafka Connector Sink on Confluent Cloud'
-sidebar_position: 2
-slug: /integrations/kafka/cloud/confluent/sink-connector
 description: 'Guide to using the fully managed ClickHouse Connector Sinkon Confluent Cloud'
 title: 'Integrating Confluent Cloud with ClickHouse'
 keywords: ['Kafka', 'Confluent Cloud']
@@ -11,9 +8,6 @@ integration:
   - category: 'data_ingestion'
   - website: 'https://clickhouse.com/cloud/clickpipes'
 ---
-
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-import Image from '@theme/IdealImage';
 
 # Integrating Confluent Cloud with ClickHouse
 
@@ -60,9 +54,7 @@ During the configuration of the ClickHouse Sink Connector, you will need to prov
 
 The Confluent Cloud UI supports advanced configuration options to adjust poll intervals, batch sizes, and other parameters to optimize performance.
 
-:::note  
-On Confluent Cloud, adjustment of certain settings such as [fetch settings](/integrations/kafka/clickhouse-kafka-connect-sink/#fetch-settings) and [poll settings](/integrations/kafka/clickhouse-kafka-connect-sink/#poll-settings) requires opening a support case through Confluent Cloud.
-:::  
+> **note**: On Confluent Cloud, adjustment of certain settings such as [fetch settings](/integrations/kafka/clickhouse-kafka-connect-sink/#fetch-settings) and [poll settings](/integrations/kafka/clickhouse-kafka-connect-sink/#poll-settings) requires opening a support case through Confluent Cloud.
 
 #### Known limitations {#known-limitations}
 * See the list of [Connectors limitations in the official docs](https://docs.confluent.io/cloud/current/connectors/cc-clickhouse-sink-connector/cc-clickhouse-sink.html#limitations)

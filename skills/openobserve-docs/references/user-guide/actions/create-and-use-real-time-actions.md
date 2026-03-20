@@ -27,24 +27,23 @@ This guide provides instruction on how to create Real-time Actions.
     **To create and assign Service Accounts for Actions:**
 
     1. From the left navigation bar, go to **IAM** > **Service Accounts** > **Add Service Account**.  
-    2. Creates a Service Account with an email ID. Example: `action_script@gmail.com`. <br>
-    ![create service account](../../images/create-service-account.png)
+    2. Creates a Service Account with an email ID. Example: `action_script@gmail.com`. 
+    [create service account]
     3. Go to **IAM** > **Roles** and assign a role to the Service Account. This can either be:  
 
         - An existing role  
         - A newly created role tailored to the specific use case
         
-        ![add role to the service account](../../images/create-real-time-action-add-role.png)
+        [add role to the service account]
 
     4. Edit the role and grant the appropriate permission to the role to enable Action execution. 
-    ![edit the role assigned to the service account](../../images/create-real-time-action-edit-role-permissions.png)
+    [edit the role assigned to the service account]
 
     **Note:** 
 
     - The role must include at least `GET` permission for Action Scripts. This allows OpenObserve to retrieve and run the uploaded script.
     - If your script needs access to other OpenObserve services (such as Streams), make sure the Service Account also has permission for those services.
     - You may use an existing Service Account if it already has the required role and permissions.
-
 
 ??? "Step 1: Create the Action Script"
     Based on your requirements, create the Python script that needs to get executed when the Action executes.  
@@ -69,8 +68,8 @@ This guide provides instruction on how to create Real-time Actions.
 
     Additionally, you can break the logic of the script into reusable components and import them into the main script using Python modules, as shown below:   
 
-    **Example**<br>
-    **File 1: `main.py`** <br> 
+    **Example**
+    **File 1: `main.py`**  
     This script converts the strings from lowercase to uppercase and calculates the distinct elements in the list and appends the result into the stream data.  
 
     ```python linenums="1"
@@ -120,7 +119,7 @@ This guide provides instruction on how to create Real-time Actions.
     dependencies = []  
     ```  
     If you are using external libraries, list them in the `dependencies` section. 
-    <br> 
+     
     **Note**: OpenObserve supports two ways to manage dependencies for your Action scripts:
 
     - `pyproject.toml` File
@@ -140,30 +139,30 @@ This guide provides instruction on how to create Real-time Actions.
 
 ??? "Step 3: Configure the Real-time Action"
 
-    ![configure the action](../../images/create-real-time-action-configure-action.png)
+    [configure the action]
 
     1. Go to **Actions** in the OpenObserve UI.  
-    2. Click **Add Action**.<br>
-    ![add action](../../images/create-real-time-action-add-action.png)
+    2. Click **Add Action**.
+    [add action]
 
     3. In the **Add Action** page:  
 
         - **Name**: Provide a name for your Action. Note that characters like :, ?, /, #, and spaces are not allowed.  
         - **Description**: Enter an appropriate description.   
-        - **Type**: Select **Real-time**.<br>
-    ![add action screen](../../images/create-real-time-action-add-desc-type.png)
+        - **Type**: Select **Real-time**.
+    [add action screen]
 
-    4. In the **Upload Script Zip** section, upload the Action script package in `.zip` format and click **Continue**. OpenObserve stores the ZIP file in object storage.<br> 
+    4. In the **Upload Script Zip** section, upload the Action script package in `.zip` format and click **Continue**. OpenObserve stores the ZIP file in object storage. 
     **Note:** Only `.zip` files are accepted and it may contain various resources such as `main.py`, `.txt` etc.  
-    ![Upload script](../../images/create-real-time-action-upload-script.png)  
+    [Upload script]  
 
     The file is now securely stored and tied to that Action configuration. Note that the Actions scripts are not executable yet.
 
 ??? "Step 4: Select the Service Account"
 
-    Under **Select Service Account**, select a service account that the Action should use for credentials or identity. <br>
+    Under **Select Service Account**, select a service account that the Action should use for credentials or identity. 
     **Note**: Now, OpenObserve knows which token to use when it needs to run the Action.  
-    ![select the service account](../../images/create-real-time-action-select-service-account.png)
+    [select the service account]
 
 ??? "Step 5: Add Environment Variables (optional)"
 
@@ -188,8 +187,8 @@ The following steps describe what happens when an Action gets executed:
 ## Use Real-time Action to Transform Logs
 
 1. From the left navigation menu, select **Logs**.  
-2. Select the stream on which you want to apply the logs transformation. <br>  
-![select stream to apply the action](../../images/actions-how-to-1.png)  
+2. Select the stream on which you want to apply the logs transformation.   
+[select stream to apply the action]  
 3. From the toolbar, use the **Transform Type** dropdown to select **Action**.   
 4. Select the appropriate Action to apply. For example, `real_time_action_script` that converts the strings from lowercase to uppercase and calculates the distinct elements in the list and appends the result into the stream data.  
 5. Select the time period for which you want to transform the data.   
@@ -197,6 +196,6 @@ The following steps describe what happens when an Action gets executed:
 
 ## Result
 Expand the logs to view the result. In this example, the Action converts the log strings get into uppercase, as shown below:  
-![result after applying real-time action on logs](../../images/actions-how-to-2.png)  
+[result after applying real-time action on logs]  
 Also, the calculation gets appended at the end of the logs as shown below:  
-![result after applying real-time action on logs](../../images/actions-how-to-3.png)
+[result after applying real-time action on logs]

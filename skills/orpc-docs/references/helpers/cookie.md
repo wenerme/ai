@@ -23,9 +23,7 @@ deleteCookie(resHeaders, 'sessionId')
 const sessionId = getCookie(reqHeaders, 'sessionId')
 ```
 
-::: info
-Both helpers accept `undefined` as headers for seamless integration with plugins like [Request Headers](/docs/plugins/request-headers) or [Response Headers](/docs/plugins/response-headers).
-:::
+> **info**: Both helpers accept `undefined` as headers for seamless integration with plugins like [Request Headers](/docs/plugins/request-headers) or [Response Headers](/docs/plugins/response-headers).
 
 ## Security with Signing and Encryption
 

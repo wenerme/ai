@@ -1,6 +1,5 @@
 ---
 title: browser.orchestratorScripts | Config
-outline: deep
 ---
 
 # browser.orchestratorScripts

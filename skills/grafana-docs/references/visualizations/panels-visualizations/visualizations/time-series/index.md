@@ -90,7 +90,7 @@ In the following example, there are three numeric fields represented by three li
 | 2022-11-01 12:00:00 | 7      | 8      | 9      |
 | 2022-11-01 13:00:00 | 4      | 5      | 6      |
 
-![Time series line chart with multiple numeric fields](/media/docs/grafana/panels-visualizations/screenshot-grafana-11.1-timeseries-example1v2.png 'Time series line chart with multiple numeric fields')
+[Time series line chart with multiple numeric fields]
 
 If the time field isn't automatically detected, you might need to convert the data to a time format using a [data transformation](ref:panel-data-section).
 
@@ -115,7 +115,7 @@ The time series visualization also supports multiple datasets. If all datasets a
 | 2022-11-01 12:30:00 | 17      | 18      | 19      |
 | 2022-11-01 13:30:00 | 14      | 15      | 16      |
 
-![Time series line chart with two datasets](/media/docs/grafana/panels-visualizations/screenshot-grafana-11.1-timeseries-example2v2.png 'Time series line chart with two datasets')
+[Time series line chart with two datasets]
 
 ### Example 3
 
@@ -138,7 +138,7 @@ If you want to more easily compare events between different, but overlapping, ti
 | 2022-11-01 12:30:00 | 17      | 18      | 19      |
 | 2022-11-01 13:30:00 | 14      | 15      | 16      |
 
-![Time Series Example with second Data Set offset](/media/docs/grafana/panels-visualizations/screenshot-grafana-11.1-timeseries-example3v2.png 'Time Series Example with second Data Set offset')
+[Time Series Example with second Data Set offset]
 
 When you add the offset, the resulting visualization makes the datasets appear to be occurring at the same time so that you can compare them more easily.
 

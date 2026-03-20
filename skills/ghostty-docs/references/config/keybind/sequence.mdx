@@ -19,11 +19,9 @@ An example is shown below:
 keybind = ctrl+a>n=new_window
 ```
 
-<Warning>
  If you define a sequence as a CLI argument to `ghostty`,
 you probably have to quote the keybind since `>` is a special character
 in most shells. Example: ghostty --keybind='ctrl+a>n=new_window'
-</Warning>
 
 A trigger sequence has some special handling:
 
@@ -46,5 +44,3 @@ A trigger sequence has some special handling:
 
   * Trigger sequences are not allowed for `global:` or `all:`-prefixed
     triggers. This is a limitation we could remove in the future.
-
-

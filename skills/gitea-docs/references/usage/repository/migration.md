@@ -1,7 +1,5 @@
 ---
 date: "2024-09-11T09:30:00+08:00"
-slug: "migration"
-sidebar_position: 40
 aliases:
   - /migration
 ---

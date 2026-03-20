@@ -5,7 +5,6 @@
 mteb.md
 clip_benchmark.md
 ragas.md
-:::
 
 This project supports independent evaluation and end-to-end evaluation for RAG and multimodal RAG:
 
@@ -28,19 +27,17 @@ This framework supports the following:
 :link-type: ref
 
 For independent evaluation of the retrieval module, supporting embedding models and reranker models.
-:::
 
 :::{grid-item-card} CLIP Benchmark
 :link: clip_benchmark
 :link-type: ref
 
 For independent evaluation of the multimodal image-text retrieval module, supporting CLIP models.
-:::
 
 :::{grid-item-card} RAGAS
 :link: ragas
 :link-type: ref
 
 For end-to-end generation evaluation of RAG and multimodal RAG, also supporting automatic generation of evaluation sets.
-:::
+
 ::::

@@ -1,22 +1,10 @@
 ---
-slug: /use-cases/AI/MCP/anythingllm
-sidebar_label: 'Integrate AnythingLLM'
 title: 'Set Up ClickHouse MCP Server with AnythingLLM and ClickHouse Cloud'
-pagination_prev: null
-pagination_next: null
 description: 'This guide explains how to set up AnythingLLM with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'AnythingLLM', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import {CardHorizontal} from '@clickhouse/click-ui/bundled'
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
-
-import Conversation from '@site/static/images/use-cases/AI_ML/MCP/allm_conversation.png';
-import MCPServers from '@site/static/images/use-cases/AI_ML/MCP/allm_mcp-servers.png';
-import ToolIcon from '@site/static/images/use-cases/AI_ML/MCP/alm_tool-icon.png';
 
 # Using ClickHouse MCP server with AnythingLLM
 
@@ -32,7 +20,7 @@ You will need Docker to run LibreChat and the MCP server. To get Docker:
 2. Download Docker desktop for your operating system
 3. Install Docker by following the instructions for your operating system
 4. Open Docker Desktop and ensure it is running
-<br/>
+
 For more information, see the [Docker documentation](https://docs.docker.com/get-docker/).
 
 ## Pull AnythingLLM Docker image {#pull-anythingllm-docker-image}

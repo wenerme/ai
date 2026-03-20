@@ -1,7 +1,6 @@
 ---
 title: 'Manage and Deploy Overview'
 description: 'Overview page for Manage and Deploy'
-slug: /guides/manage-and-deploy-index
 doc_type: 'landing-page'
 keywords: ['deployment', 'management', 'administration', 'operations', 'guides']
 ---

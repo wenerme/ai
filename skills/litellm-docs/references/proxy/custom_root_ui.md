@@ -1,16 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # UI - Custom Root Path 
 
 💥 Use this when you want to serve LiteLLM on a custom base url path like `https://localhost:4000/api/v1` 
 
-:::info
-
-Requires v1.72.3 or higher.
-
-:::
+> **info**: Requires v1.72.3 or higher.
 
 Limitations:
 - This does not work in [litellm non-root](./deploy#non-root---without-internet-connection) images, as it requires write access to the UI files.
@@ -38,7 +32,6 @@ After running the proxy you can access it on `http://0.0.0.0:4000/api/v1/` (sinc
 <Image img={require('../../img/custom_root_path.png')} />
 
 **That's it**, that's all you need to run the proxy on a custom root path
-
 
 ## Demo
 

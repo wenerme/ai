@@ -22,16 +22,13 @@ ADMIN CLEAN TRASH [ON ("<be_host>:<be_heartbeat_port>" [, ...])]
 
 Specify the backend to be cleaned up. If you do not add ON, all backend is cleared by default.
 
-
 ## Access Control Requirements
 
 Users executing this SQL command must have at least the following privileges:
 
-
 | Privilege  | Object | Notes                                        |
 | :--------- | :----- | :------------------------------------------- |
 | ADMIN_PRIV | User or Role  | Only users or roles with the ADMIN_PRIV privilege can perform the CLEAN TRASH  operation. |
-
 
 ## Examples
 

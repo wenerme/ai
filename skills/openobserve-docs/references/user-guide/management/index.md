@@ -12,5 +12,3 @@ The Management section includes tools for maintaining and securing OpenObserve o
     - ### [Nodes in OpenObserve](../management/nodes/)
     - ### [SSO Domain Restrictions](../management/sso-domain-restrictions/)
     - ### [Sensitive Data Redaction](../management/sensitive-data-redaction/)
-
-

@@ -1,7 +1,5 @@
 ---
 description: 'A collection of dislikes of YouTube videos.'
-sidebar_label: 'YouTube dislikes'
-slug: /getting-started/example-datasets/youtube-dislikes
 title: 'YouTube dataset of dislikes'
 doc_type: 'guide'
 keywords: ['example dataset', 'youtube', 'sample data', 'video analytics', 'dislikes']
@@ -9,17 +7,13 @@ keywords: ['example dataset', 'youtube', 'sample data', 'video analytics', 'disl
 
 In November of 2021, YouTube removed the public ***dislike*** count from all of its videos. While creators can still see the number of dislikes, viewers can only see how many ***likes*** a video has received.
 
-:::important
-The dataset has over 4.55 billion records, so be careful just copying-and-pasting the commands below unless your resources can handle that type of volume. The commands below were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud).
-:::
+> **important**: The dataset has over 4.55 billion records, so be careful just copying-and-pasting the commands below unless your resources can handle that type of volume. The commands below were executed on a **Production** instance of [ClickHouse Cloud](https://clickhouse.cloud).
 
 The data is in a JSON format and can be downloaded from [archive.org](https://archive.org/download/dislikes_youtube_2021_12_video_json_files). We have made this same data available in S3 so that it can be downloaded more efficiently into a ClickHouse Cloud instance.
 
 Here are the steps to create a table in ClickHouse Cloud and insert the data.
 
-:::note
-The steps below will easily work on a local install of ClickHouse too. The only change would be to use the `s3` function instead of `s3cluster` (unless you have a cluster configured - in which case change `default` to the name of your cluster).
-:::
+> **note**: The steps below will easily work on a local install of ClickHouse too. The only change would be to use the `s3` function instead of `s3cluster` (unless you have a cluster configured - in which case change `default` to the name of your cluster).
 
 ## Step-by-step instructions {#step-by-step-instructions}
 
@@ -102,10 +96,7 @@ ORDER BY (uploader, upload_date)
 
 The following command streams the records from the S3 files into the `youtube` table.
 
-:::important
-This inserts a lot of data - 4.65 billion rows. If you don't want the entire dataset, simply add a `LIMIT` clause with the desired number of rows.
-:::
-
+> **important**: This inserts a lot of data - 4.65 billion rows. If you don't want the entire dataset, simply add a `LIMIT` clause with the desired number of rows.
 ```sql
 INSERT INTO youtube
 SETTINGS input_format_null_as_default = 1
@@ -177,9 +168,7 @@ WHERE uploader = 'ClickHouse';
 1 row in set. Elapsed: 0.570 sec. Processed 237.57 thousand rows, 5.77 MB (416.54 thousand rows/s., 10.12 MB/s.)
 ```
 
-:::note
-The query above runs so quickly because we chose `uploader` as the first column of the primary key - so it only had to process 237k rows.
-:::
+> **note**: The query above runs so quickly because we chose `uploader` as the first column of the primary key - so it only had to process 237k rows.
 
 Let's look and likes and dislikes of ClickHouse videos:
 

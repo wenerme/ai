@@ -1,17 +1,12 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: noBeforeInteractiveScriptOutsideDocument
 description: Learn more about noBeforeInteractiveScriptOutsideDocument
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JSX and TSX" icon="seti:javascript">
-:::caution
-This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-:::
+> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
+
 ## Summary
 - Rule available since: `v2.3.11`
 - Diagnostic Category: [`lint/nursery/noBeforeInteractiveScriptOutsideDocument`](/reference/diagnostics#diagnostic-category)
@@ -63,7 +58,7 @@ export default function Index() {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.jsx:7:7 <a href="https://biomejs.dev/linter/rules/no-before-interactive-script-outside-document">lint/nursery/noBeforeInteractiveScriptOutsideDocument</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Don't use </span><span style="color: Orange;"><strong>next/script</strong></span><span style="color: Orange;"> component with the &#96;</span><span style="color: Orange;"><strong>beforeInteractive</strong></span><span style="color: Orange;">&#96; strategy outside of </span><span style="color: Orange;"><strong>pages/&#95;document.js</strong></span><span style="color: Orange;">.</span><br />  <br />     <strong>5 │ </strong>  return (<br />     <strong>6 │ </strong>    &lt;div&gt;<br />   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>7 │ </strong>      &lt;Script<br />    <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>8 │ </strong>        src=&quot;https://example.com/script.js&quot;<br />   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>9 │ </strong>        strategy=&quot;beforeInteractive&quot;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>10 │ </strong>      &gt;&lt;/Script&gt;<br />    <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong><br />    <strong>11 │ </strong>    &lt;/div&gt;<br />    <strong>12 │ </strong>  )<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">See the </span><span style="color: lightgreen;"><a href="https://nextjs.org/docs/messages/no-before-interactive-script-outside-document">Next.js docs</a></span><span style="color: lightgreen;"> for more details.</span><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.jsx:7:7 <a href="https://biomejs.dev/linter/rules/no-before-interactive-script-outside-document">lint/nursery/noBeforeInteractiveScriptOutsideDocument</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Don't use </span><span style="color: Orange;"><strong>next/script</strong></span><span style="color: Orange;"> component with the &#96;</span><span style="color: Orange;"><strong>beforeInteractive</strong></span><span style="color: Orange;">&#96; strategy outside of </span><span style="color: Orange;"><strong>pages/&#95;document.js</strong></span><span style="color: Orange;">.</span>       <strong>5 │ </strong>  return (     <strong>6 │ </strong>    &lt;div&gt;   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>7 │ </strong>      &lt;Script    <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>8 │ </strong>        src=&quot;https://example.com/script.js&quot;   <strong><span style="color: Tomato;">&gt;</span></strong> <strong>9 │ </strong>        strategy=&quot;beforeInteractive&quot;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>10 │ </strong>      &gt;&lt;/Script&gt;    <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong>    <strong>11 │ </strong>    &lt;/div&gt;    <strong>12 │ </strong>  )    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">See the </span><span style="color: lightgreen;"><a href="https://nextjs.org/docs/messages/no-before-interactive-script-outside-document">Next.js docs</a></span><span style="color: lightgreen;"> for more details.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
 
 ### Valid
 
@@ -96,7 +91,3 @@ export default function Document() {
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/no_before_interactive_script_outside_document.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/noBeforeInteractiveScriptOutsideDocument)
-
-</TabItem>
-</Tabs>
-

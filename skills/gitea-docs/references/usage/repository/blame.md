@@ -1,7 +1,5 @@
 ---
 date: "2023-08-14T00:00:00+00:00"
-slug: "blame"
-sidebar_position: 13
 aliases:
   - /en-us/blame
   - /blame
@@ -15,7 +13,7 @@ You can also use [`git blame`](https://git-scm.com/docs/git-blame) on the comman
 1. Navigate to and open the file whose line history you want to view.
 1. Click the `Blame` button in the file header bar.
 1. The new view shows the line-by-line revision history for a file with author and commit information on the left side.
-1. To navigate to an older commit, click the ![versions](/octicon-versions.svg) icon.
+1. To navigate to an older commit, click the [versions] icon.
 
 ## Ignore commits in the blame view
 

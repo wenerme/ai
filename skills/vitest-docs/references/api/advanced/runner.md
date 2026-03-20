@@ -1,8 +1,6 @@
 # Runner API <Badge type="danger">advanced</Badge>
 
-::: warning
-This is advanced API. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
-:::
+> **warning**: This is advanced API. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
 
 You can specify a path to your test runner with the `runner` option in your configuration file. This file should have a default export with a class constructor implementing these methods:
 
@@ -123,8 +121,7 @@ class CustomRunner extends TestRunner implements VitestTestRunner {
 export default CustomRunner
 ```
 
-::: warning
-Vitest also injects an instance of `ModuleRunner` from `vite/module-runner` as `moduleRunner` property. You can use it to process files in `importFile` method (this is default behavior of `TestRunner` and `BenchmarkRunner`).
+> **warning**: Vitest also injects an instance of `ModuleRunner` from `vite/module-runner` as `moduleRunner` property. You can use it to process files in `importFile` method (this is default behavior of `TestRunner` and `BenchmarkRunner`).
 
 `ModuleRunner` exposes `import` method, which is used to import test files in a Vite-friendly environment. Meaning, it will resolve imports and transform file content at runtime so that Node can understand it:
 
@@ -135,23 +132,16 @@ export default class Runner {
   }
 }
 ```
-:::
 
-::: warning
-If you don't have a custom runner or didn't define `runTest` method, Vitest will try to retrieve a task automatically. If you didn't add a function with `setFn`, it will fail.
-:::
+> **warning**: If you don't have a custom runner or didn't define `runTest` method, Vitest will try to retrieve a task automatically. If you didn't add a function with `setFn`, it will fail.
 
-::: tip
-Snapshot support and some other features depend on the runner. If you don't want to lose it, you can extend your runner from `VitestTestRunner` imported from `vitest/runners`. It also exposes `NodeBenchmarkRunner`, if you want to extend benchmark functionality.
-:::
+> **tip**: Snapshot support and some other features depend on the runner. If you don't want to lose it, you can extend your runner from `VitestTestRunner` imported from `vitest/runners`. It also exposes `NodeBenchmarkRunner`, if you want to extend benchmark functionality.
 
 ## Tasks
 
-::: warning
-The "Runner Tasks API" is experimental and should primarily be used only in the test runtime. Vitest also exposes the ["Reported Tasks API"](/api/advanced/test-module), which should be preferred when working in the main thread (inside the reporter, for example).
+> **warning**: The "Runner Tasks API" is experimental and should primarily be used only in the test runtime. Vitest also exposes the ["Reported Tasks API"](/api/advanced/test-module), which should be preferred when working in the main thread (inside the reporter, for example).
 
 The team is currently discussing if "Runner Tasks" should be replaced by "Reported Tasks" in the future.
-:::
 
 Suites and tests are called `tasks` internally. Vitest runner initiates a `File` task before collecting any tests - this is a superset of `Suite` with a few additional properties. It is available on every task (including `File`) as a `file` property.
 

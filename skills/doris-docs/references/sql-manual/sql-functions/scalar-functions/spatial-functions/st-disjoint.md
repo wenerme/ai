@@ -10,9 +10,8 @@
 
 Determines whether two geometric shapes are completely disjoint (i.e., have no common points). Returns 1 if there is no intersection in the boundaries or interiors of the two shapes (no shared points); returns 0 if there is at least one common point (including boundary contact or interior overlap).
 
-:::info Note
+> **info**: Note
 Supported since Apache Doris 3.0.6.
-:::
 
 ## Sytax
 

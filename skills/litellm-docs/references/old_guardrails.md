@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # 🛡️ [Beta] Guardrails
 
@@ -32,11 +31,7 @@ litellm_settings:
         default_on: false
 ```
 
-:::info
-
-Since `pii_masking` is default Off for all requests, [you can switch it on per API Key](#switch-guardrails-onoff-per-api-key)
-
-:::
+> **info**: Since `pii_masking` is default Off for all requests, [you can switch it on per API Key](#switch-guardrails-onoff-per-api-key)
 
 ### 2. Test it
 
@@ -47,7 +42,6 @@ litellm --config config.yaml
 ```
 
 Make LLM API request
-
 
 Test it with this request -> expect it to get rejected by LiteLLM Proxy
 
@@ -82,11 +76,6 @@ This will
 "metadata": {"guardrails": {"prompt_injection": false, "hide_secrets_guard": true}}
 ```
 
-
-
-<Tabs>
-<TabItem value="js" label="Langchain JS">
-
 ```js
 const model = new ChatOpenAI({
   modelName: "llama3",
@@ -99,9 +88,6 @@ const model = new ChatOpenAI({
 const message = await model.invoke("Hi there!");
 console.log(message);
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -118,9 +104,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     ]
 }'
 ```
-</TabItem>
-
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -145,9 +128,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="langchain" label="Langchain Py">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -181,10 +161,6 @@ response = chat(messages)
 
 print(response)
 ```
-</TabItem>
-
-
-</Tabs>
 
 ## Switch Guardrails On/Off Per API Key
 
@@ -198,15 +174,7 @@ print(response)
 
 This means the `pii_masking` guardrail is on for all requests from this API Key
 
-:::info
-
-If you need to switch `pii_masking` off for an API Key set `"permissions": {"pii_masking": false}` with either `/key/generate` or `/key/update`
-
-:::
-
-
-<Tabs>
-<TabItem value="/key/generate" label="/key/generate">
+> **info**: If you need to switch `pii_masking` off for an API Key set `"permissions": {"pii_masking": false}` with either `/key/generate` or `/key/update`
 
 ```shell
 curl -X POST 'http://0.0.0.0:4000/key/generate' \
@@ -221,9 +189,6 @@ curl -X POST 'http://0.0.0.0:4000/key/generate' \
 # {"permissions":{"pii_masking":true},"key":"sk-jNm1Zar7XfNdZXp49Z1kSQ"}  
 ```
 
-</TabItem>
-<TabItem value="/key/update" label="/key/update">
-
 ```shell
 curl --location 'http://0.0.0.0:4000/key/update' \
     --header 'Authorization: Bearer sk-1234' \
@@ -237,9 +202,6 @@ curl --location 'http://0.0.0.0:4000/key/update' \
 ```shell
 # {"permissions":{"pii_masking":true},"key":"sk-jNm1Zar7XfNdZXp49Z1kSQ"}  
 ```
-
-</TabItem>
-</Tabs>
 
 **Step 2** Test it with new key
 
@@ -259,7 +221,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ```
 
 ## Disable team from turning on/off guardrails
-
 
 ### 1. Disable team from modifying guardrails 
 
@@ -308,12 +269,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Expect to NOT see `+1 412-612-9992` in your server logs on your callback. 
 
-:::info
-The `pii_masking` guardrail ran on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"pii_masking": true}`
-:::
-
-
-
+> **info**: The `pii_masking` guardrail ran on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"pii_masking": true}`
 
 ## Spec for `guardrails` on litellm config
 
@@ -352,4 +308,3 @@ litellm_settings:
         callbacks: [hide_secrets]
         default_on: false
 ```
-

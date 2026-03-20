@@ -6,7 +6,6 @@
 }
 ---
 
-
 # Condition Cache
 
 ## Introduction

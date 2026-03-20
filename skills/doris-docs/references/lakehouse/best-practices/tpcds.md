@@ -12,9 +12,7 @@ Combined with the data write-back function of Hive/Iceberg tables, you can quick
 
 This document mainly introduces how to deploy and use the TPCDS Connector to build test data sets.
 
-:::tip
-This feature is supported starting from Doris version 3.0.0.
-:::
+> **tip**: This feature is supported starting from Doris version 3.0.0.
 
 ## Compile TPCDS Connector
 
@@ -117,9 +115,7 @@ mysql> SHOW TABLES;
 
 You can directly query these tables using the SELECT statement.
 
-:::tip
-The data of these pre-built datasets is not actually stored but is generated in real-time during queries. Therefore, these pre-built datasets are not suitable for direct Benchmark testing. They are suitable for writing datasets into other target tables (such as Doris internal tables, Hive, Iceberg, and other data sources that Doris supports writing to) through `INSERT INTO SELECT`, and then performing performance testing on the target tables.
-:::
+> **tip**: The data of these pre-built datasets is not actually stored but is generated in real-time during queries. Therefore, these pre-built datasets are not suitable for direct Benchmark testing. They are suitable for writing datasets into other target tables (such as Doris internal tables, Hive, Iceberg, and other data sources that Doris supports writing to) through `INSERT INTO SELECT`, and then performing performance testing on the target tables.
 
 ## Build TPCDS Test Data Set
 
@@ -153,7 +149,4 @@ CREATE TABLE hive.tpcds100.web_sales              PROPERTIES("file_format" = "pa
 CREATE TABLE hive.tpcds100.web_site               PROPERTIES("file_format" = "parquet") AS SELECT * FROM tpcds.sf100.web_site              ;
 ```
 
-:::tip
-In a Doris cluster with 3 16C BE nodes, creating a TPCDS 1000 Hive dataset takes about 3 to 4 hours.
-:::
-
+> **tip**: In a Doris cluster with 3 16C BE nodes, creating a TPCDS 1000 Hive dataset takes about 3 to 4 hours.

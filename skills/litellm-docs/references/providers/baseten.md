@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Baseten
 
@@ -17,12 +16,9 @@ LiteLLM supports both Baseten Model APIs and dedicated deployments with automati
 - **Format**: `baseten/{8-digit-alphanumeric-code}` (e.g., `baseten/abcd1234`)
 - **Best for**: Custom models, latency SLAs
 
-:::tip
-**Automatic Routing**: LiteLLM detects the type based on model format:
+> **tip**: **Automatic Routing**: LiteLLM detects the type based on model format:
 - 8-digit alphanumeric codes → Dedicated deployment
 - All other formats → Model API
-:::
-
 
 ## Quick Start
 

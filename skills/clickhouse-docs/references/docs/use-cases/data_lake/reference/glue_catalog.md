@@ -1,9 +1,5 @@
 ---
-slug: /use-cases/data-lake/glue-catalog
-sidebar_label: 'AWS Glue catalog'
 title: 'AWS Glue catalog'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query
  your data in S3 buckets using ClickHouse and the AWS Glue Data Catalog.'
 keywords: ['Glue', 'Data Lake']
@@ -11,17 +7,13 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-import BetaBadge from '@theme/badges/BetaBadge';
-
 <BetaBadge/>
 
 ClickHouse supports integration with multiple catalogs (Unity, Glue, Polaris, 
 etc.). In this guide, we will walk you through the steps to query your data in 
 S3 buckets using ClickHouse and the Glue Data Catalog.
 
-:::note
-Glue supports many different table formats, but this integration only supports Iceberg tables.
-:::
+> **note**: Glue supports many different table formats, but this integration only supports Iceberg tables.
 
 ## Configuring Glue in AWS {#configuring}
 
@@ -31,9 +23,7 @@ To connect to the glue catalog, you will need:
 
 For AWS Role auth, AWS Role Session Name is an additional optional field. 
 
-:::note
-You will need to enable it using `SET allow_database_glue_catalog = 1;`
-:::
+> **note**: You will need to enable it using `SET allow_database_glue_catalog = 1;`
 
 ## Creating a connection between Glue data catalog and ClickHouse {#connecting}
 
@@ -91,9 +81,7 @@ To query a table:
 SELECT count(*) FROM `iceberg-benchmark.hitsiceberg`;
 ```
 
-:::note
-Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
+> **note**: Backticks are required because ClickHouse doesn't support more than one namespace.
 
 To inspect the table DDL, run the following query:
 

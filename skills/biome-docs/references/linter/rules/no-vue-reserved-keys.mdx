@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: noVueReservedKeys
 description: Learn more about noVueReservedKeys
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JavaScript (and super languages)" icon="seti:javascript">
 ## Summary
 - Rule available since: `v2.1.3`
 - Diagnostic Category: [`lint/correctness/noVueReservedKeys`](/reference/diagnostics#diagnostic-category)
@@ -59,7 +55,7 @@ export default {
 </script>
 ```
 
-<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$el</strong></span><span style="color: Tomato;"> is reserved in Vue.</span><br />  <br />    <strong>1 │ </strong>export default &#123;<br />    <strong>2 │ </strong>    data: &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $el: '',<br />   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>4 │ </strong>    &#125;,<br />    <strong>5 │ </strong>&#125;;<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$el</strong></span><span style="color: Tomato;"> is reserved in Vue.</span>      <strong>1 │ </strong>export default &#123;    <strong>2 │ </strong>    data: &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $el: '',   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>    &#125;,    <strong>5 │ </strong>&#125;;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span>  </code></pre>
 
 ```vue
 <script>
@@ -73,7 +69,7 @@ export default {
 </script>
 ```
 
-<pre class="language-text"><code class="language-text">code-block.vue:4:13 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Keys starting with an underscore are reserved in Vue.</span><br />  <br />    <strong>2 │ </strong>    data() &#123;<br />    <strong>3 │ </strong>        return &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>            &#95;foo: 'bar',<br />   <strong>   │ </strong>            <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>5 │ </strong>        &#125;;<br />    <strong>6 │ </strong>    &#125;,<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.vue:4:13 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Keys starting with an underscore are reserved in Vue.</span>      <strong>2 │ </strong>    data() &#123;    <strong>3 │ </strong>        return &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>            &#95;foo: 'bar',   <strong>   │ </strong>            <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>        &#125;;    <strong>6 │ </strong>    &#125;,    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span>  </code></pre>
 
 ```vue
 <script>
@@ -87,7 +83,7 @@ export default {
 </script>
 ```
 
-<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$data</strong></span><span style="color: Tomato;"> is reserved in Vue.</span><br />  <br />    <strong>1 │ </strong>export default &#123;<br />    <strong>2 │ </strong>    computed: &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $data() &#123;<br />   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>4 │ </strong>            return this.someData;<br />    <strong>5 │ </strong>        &#125;,<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$data</strong></span><span style="color: Tomato;"> is reserved in Vue.</span>      <strong>1 │ </strong>export default &#123;    <strong>2 │ </strong>    computed: &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $data() &#123;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>            return this.someData;    <strong>5 │ </strong>        &#125;,    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span>  </code></pre>
 
 ```vue
 <script>
@@ -101,7 +97,7 @@ export default {
 </script>
 ```
 
-<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$emit</strong></span><span style="color: Tomato;"> is reserved in Vue.</span><br />  <br />    <strong>1 │ </strong>export default &#123;<br />    <strong>2 │ </strong>    methods: &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $emit() &#123;<br />   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>4 │ </strong>            // This conflicts with Vue's built-in $emit<br />    <strong>5 │ </strong>        &#125;,<br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.vue:3:9 <a href="https://biomejs.dev/linter/rules/no-vue-reserved-keys">lint/correctness/noVueReservedKeys</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Key </span><span style="color: Tomato;"><strong>$emit</strong></span><span style="color: Tomato;"> is reserved in Vue.</span>      <strong>1 │ </strong>export default &#123;    <strong>2 │ </strong>    methods: &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>        $emit() &#123;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>            // This conflicts with Vue's built-in $emit    <strong>5 │ </strong>        &#125;,    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the key to avoid conflicts with Vue reserved keys.</span>  </code></pre>
 
 ### Valid
 
@@ -137,7 +133,3 @@ export default {
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/correctness/no_vue_reserved_keys.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/correctness/noVueReservedKeys)
-
-</TabItem>
-</Tabs>
-

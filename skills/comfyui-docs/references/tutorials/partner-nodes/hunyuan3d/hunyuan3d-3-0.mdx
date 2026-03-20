@@ -1,11 +1,7 @@
 ---
 title: "Hunyuan 3D API Node Model Generation ComfyUI Official Example"
 description: "This article will introduce how to use Hunyuan 3D node's API in ComfyUI for 3D model generation"
-sidebarTitle: "Hunyuan 3D 3.0"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Hunyuan 3D 3.0 is Tencent's state-of-the-art 3D generation model that enables minutes-level 3D content creation. It can generate production-ready 3D assets from text prompts, images, or sketches with far lower barriers to entry than traditional 3D modeling pipelines.
 
@@ -15,9 +11,6 @@ Currently, ComfyUI's Partner nodes support the following Hunyuan 3D model genera
 - Text-to-3D generation
 - Image-to-3D generation
 - Multi-view-to-3D generation
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Use cases
 
@@ -46,25 +39,19 @@ Enter a text description to generate a 3D model in one click. The model accurate
 
 **Example prompt**: "Mechanical dolphin with gears, steampunk"
 
-<Card title="Hunyuan 3D Text-to-3D Workflow" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_text_to_model&utm_source=docs&utm_medium=inhouse_social&utm_campaign=inhouse_feature_launches&utm_content=post&utm_niche=workflow_engineering&utm_creator=purz">
   Run on Comfy Cloud
-</Card>
 
 ## Image-to-3D workflow
 
 Upload one or more images to generate high-quality 3D models. Support for 2–4 multi-view images improves geometry and material fidelity.
 
-<Card title="Hunyuan 3D Image-to-3D Workflow" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_image_to_model&utm_source=docs&utm_medium=inhouse_social&utm_campaign=inhouse_feature_launches&utm_content=post&utm_niche=workflow_engineering&utm_creator=purz">
   Run on Comfy Cloud
-</Card>
 
 ## Multi-view-to-3D workflow
 
 Provide multiple view images (front, back, side) to generate 3D models with improved accuracy and detail. This uses the same workflow as Image-to-3D—simply upload 2–4 images from different angles.
 
-<Card title="Hunyuan 3D Image-to-3D Workflow" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_image_to_model&utm_source=docs&utm_medium=inhouse_social&utm_campaign=inhouse_feature_launches&utm_content=post&utm_niche=workflow_engineering&utm_creator=purz">
   Run on Comfy Cloud
-</Card>
 
 ## Advanced features
 
@@ -74,37 +61,30 @@ Following the [initial HY 3D 3.0 integration](https://blog.comfy.org/p/hunyuan-3
 
 Split a complete 3D model into meaningful structural parts, such as armor pieces, accessories, wheels, or other distinct components. This makes it easier to edit specific regions of an asset, swap parts for variations, and prepare models for modular workflows, animation, or downstream assembly.
 
-<CardGroup cols={2}>
-  <Card title="Try on Comfy Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_part&utm_source=docs">
+  
     Run the workflow
-  </Card>
-  <Card title="Download Workflow" icon="github" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_hunyuan3d_part.json">
+  
+  
     Get the JSON file
-  </Card>
-</CardGroup>
+  
 
 ### UV unwrapping
 
 Automatically generate UV layouts for supported 3D models, turning raw geometry into assets that are much easier to texture. Instead of manually cutting seams and organizing UV islands, creators can move more quickly into painting, baking, and material work with a cleaner starting point.
 
-<CardGroup cols={2}>
-  <Card title="Try on Comfy Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_model2uv&utm_source=docs">
+  
     Run the workflow
-  </Card>
-  <Card title="Download Workflow" icon="github" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_hunyuan3d_model2uv.json">
+  
+  
     Get the JSON file
-  </Card>
-</CardGroup>
+  
 
 ### Smart topology
 
 Convert dense geometry into cleaner meshes with more organized edge flow, helping generated models become easier to optimize and reuse in real production pipelines. This is especially useful when preparing assets for game engines, real-time rendering, or any workflow that benefits from lower-density, better-structured geometry.
 
-<CardGroup cols={2}>
-  <Card title="Try on Comfy Cloud" icon="cloud" href="https://cloud.comfy.org/?template=api_hunyuan3d_smart_topology&utm_source=docs">
+  
     Run the workflow
-  </Card>
-  <Card title="Download Workflow" icon="github" href="https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_hunyuan3d_smart_topology.json">
+  
+  
     Get the JSON file
-  </Card>
-</CardGroup>

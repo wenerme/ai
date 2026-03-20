@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Logging'
-sidebar_label: 'Logging'
-slug: /chdb/debugging/logging
 description: 'Configure DataStore logging for debugging and monitoring'
 keywords: ['chdb', 'datastore', 'logging', 'debug', 'log', 'level']
 doc_type: 'reference'

@@ -12,9 +12,8 @@ A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that mat
 
 Vitest uses the [`tinyglobby`](https://npmx.dev/package/tinyglobby) package to resolve the globs.
 
-::: tip NOTE
+> **tip**: NOTE
 When using coverage, Vitest automatically adds test files `include` patterns to coverage's default `exclude` patterns. See [`coverage.exclude`](/config/coverage#exclude).
-:::
 
 ## Example
 
@@ -56,8 +55,7 @@ export default defineConfig({
 })
 ```
 
-::: warning
-This option will override Vitest defaults. If you just want to extend them, use `configDefaults` from `vitest/config`:
+> **warning**: This option will override Vitest defaults. If you just want to extend them, use `configDefaults` from `vitest/config`:
 
 ```js{6}
 import { configDefaults, defineConfig } from 'vitest/config'
@@ -72,4 +70,3 @@ export default defineConfig({
   },
 })
 ```
-:::

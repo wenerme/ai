@@ -18,7 +18,6 @@ NGINX web server monitoring requires structured log collection for effective log
     - NGINX installed and running
     - OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../../getting-started/#self-hosted-installation))
 
-
 ??? "Step 1: Configure NGINX to Emit JSON Logs"
 
     1. **Open your NGINX configuration file**:
@@ -97,8 +96,7 @@ NGINX web server monitoring requires structured log collection for effective log
     ```
         - Adjust the access log path if you're using macOS (`/opt/homebrew/var/...`)
         - Replace `<YOUR_PASSWORD>` with your OpenObserve password.  
-        ![Openobserve-Fluent Bit](../images/servers/nginx/fetch-creds.png)
-
+        [Openobserve-Fluent Bit]
 
 ??? "Step 4: Start Fluent Bit"
 
@@ -106,7 +104,7 @@ NGINX web server monitoring requires structured log collection for effective log
     ```bash
     fluent-bit -c nginx-fluent-bit.conf
     ```
-        ![Start Fluent Bit](../images/servers/nginx/start-fluentbit.png)
+        [Start Fluent Bit]
 
     2. **Optionally, run in verbose mode** for debugging:
     ```bash
@@ -131,7 +129,7 @@ NGINX web server monitoring requires structured log collection for effective log
       }
     }
     ```
-    ![Verify Logs in Openobserve](../images/servers/nginx/verify-logs.png)
+    [Verify Logs in Openobserve]
 ## Troubleshooting
 
 ??? "No logs appearing in OpenObserve?"
@@ -156,4 +154,3 @@ NGINX web server monitoring requires structured log collection for effective log
     - Check if `tail` input path is correct
     - Ensure permission to read the access log
     - Delete or reset the `.db` file if state is stale
-

@@ -2,9 +2,6 @@
 title: Usage with CockroachDB
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 MikroORM supports [CockroachDB](https://www.cockroachlabs.com/) through the `@mikro-orm/postgresql` driver. CockroachDB is PostgreSQL wire-compatible, so most MikroORM features work out of the box. This guide covers configuration and the key differences you need to be aware of.
 
 ## Installation
@@ -65,15 +62,7 @@ CockroachDB's `serial` type uses `unique_rowid()` which generates 64-bit integer
 
 CockroachDB recommends UUID primary keys for optimal data distribution across nodes. Using `serial`/auto-increment keys can lead to write hotspots.
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity"
-  values={[
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'Decorators', value: 'decorators'},
-  ]
-  }>
-  <TabItem value="define-entity">
+  
 
 ```ts
 const Author = defineEntity({
@@ -85,8 +74,8 @@ const Author = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity()
@@ -101,22 +90,13 @@ class Author {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Option 2: Serial with `BigIntType`
 
 If you prefer auto-increment style keys, use `BigIntType` to map the `serial` value to `string` or `bigint`:
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity"
-  values={[
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'Decorators', value: 'decorators'},
-  ]
-  }>
-  <TabItem value="define-entity">
+  
 
 ```ts
 const Author = defineEntity({
@@ -140,8 +120,8 @@ const Author = defineEntity({
 });
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity()
@@ -165,8 +145,7 @@ class Author {
 }
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 > The only thing that does **not** work is `@PrimaryKey() id!: number` / `p.integer().primary()` - CockroachDB's `serial` values are too large for JavaScript's `number` type.
 
@@ -225,15 +204,7 @@ The following features have been tested and work with CockroachDB:
 
 ## Full Example
 
-<Tabs
-  groupId="entity-def"
-  defaultValue="define-entity"
-  values={[
-    {label: 'defineEntity', value: 'define-entity'},
-    {label: 'Decorators', value: 'decorators'},
-  ]
-  }>
-  <TabItem value="define-entity">
+  
 
 ```ts
 const Author = defineEntity({
@@ -277,8 +248,8 @@ console.log(books[0].author.name); // 'John'
 await orm.close();
 ```
 
-  </TabItem>
-  <TabItem value="decorators">
+  
+  
 
 ```ts
 @Entity()
@@ -335,6 +306,3 @@ console.log(books[0].author.name); // 'John'
 
 await orm.close();
 ```
-
-  </TabItem>
-</Tabs>

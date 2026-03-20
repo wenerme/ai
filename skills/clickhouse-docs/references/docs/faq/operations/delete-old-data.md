@@ -1,5 +1,4 @@
 ---
-slug: /faq/operations/delete-old-data
 title: 'Is it possible to delete old records from a ClickHouse table?'
 toc_hidden: true
 toc_priority: 20
@@ -18,21 +17,17 @@ ClickHouse allows to automatically drop values when some condition happens. This
 
 The key advantage of this approach is that it doesn't need any external system to trigger, once TTL is configured, data removal happens automatically in background.
 
-:::note
-TTL can also be used to move data not only to [/dev/null](https://en.wikipedia.org/wiki/Null_device), but also between different storage systems, like from SSD to HDD.
-:::
+> **note**: TTL can also be used to move data not only to [/dev/null](https://en.wikipedia.org/wiki/Null_device), but also between different storage systems, like from SSD to HDD.
 
 More details on [configuring TTL](../../engines/table-engines/mergetree-family/mergetree.md#table_engine-mergetree-ttl).
 
 ## DELETE FROM {#delete-from}
 [DELETE FROM](/sql-reference/statements/delete.md) allows standard DELETE queries to be run in ClickHouse. The rows targeted in the filter clause are marked as deleted, and removed from future result sets.  Cleanup of the rows happens asynchronously.
 
-:::note
-DELETE FROM is generally available from version 23.3 and newer. On older versions, it is experimental and must be enabled with:
+> **note**: DELETE FROM is generally available from version 23.3 and newer. On older versions, it is experimental and must be enabled with:
 ```sql
 SET allow_experimental_lightweight_delete = true;
 ```
-:::
 
 ## ALTER DELETE {#alter-delete}
 

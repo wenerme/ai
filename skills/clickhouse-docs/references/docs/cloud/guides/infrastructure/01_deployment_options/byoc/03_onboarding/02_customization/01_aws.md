@@ -1,16 +1,9 @@
 ---
 title: 'AWS Customized Setup'
-slug: /cloud/reference/byoc/onboarding/customization-aws
-sidebar_label: 'AWS Customized Setup'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding', 'AWS', 'VPC']
 description: 'Deploy ClickHouse BYOC into your existing AWS VPC'
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import byoc_subnet_1 from '@site/static/images/cloud/reference/byoc-subnet-1.png';
-import byoc_subnet_2 from '@site/static/images/cloud/reference/byoc-subnet-2.png';
-import byoc_s3_endpoint from '@site/static/images/cloud/reference/byoc-s3-endpoint.png'
 
 ## Customer-managed VPC (BYO-VPC) for AWS {#customer-managed-vpc-aws}
 
@@ -47,9 +40,7 @@ To allow ClickHouse Cloud to deploy into your existing VPC, you need to grant th
 2. Set the `IncludeVPCWritePermissions` parameter to `false` to ensure ClickHouse Cloud doesn't receive permissions to modify your customer-managed VPC.
 3. This will create the `ClickHouseManagementRole` in your AWS account, granting ClickHouse Cloud only the minimum permissions needed to provision and manage your BYOC deployment.
 
-:::note
-While you control your VPC, ClickHouse Cloud still requires IAM permissions to create and manage the Kubernetes cluster, IAM roles for service accounts, S3 buckets, and other essential resources in your AWS account.
-:::
+> **note**: While you control your VPC, ClickHouse Cloud still requires IAM permissions to create and manage the Kubernetes cluster, IAM roles for service accounts, S3 buckets, and other essential resources in your AWS account.
 
 ### Contact ClickHouse Support {#contact-clickhouse-support}
 
@@ -67,13 +58,11 @@ Our team will review your configuration and complete the provisioning from our s
 
 For organizations with advanced security requirements or strict compliance policies, you can provide your own IAM roles instead of having ClickHouse Cloud create them. This approach gives you complete control over IAM permissions and allows you to enforce your organization's security policies.
 
-:::info
-Customer-managed IAM roles are currently in private preview. If you require this capability, please contact ClickHouse Support to discuss your specific requirements and timeline.
+> **info**: Customer-managed IAM roles are currently in private preview. If you require this capability, please contact ClickHouse Support to discuss your specific requirements and timeline.
 
 When available, this feature will allow you to:
 * Provide pre-configured IAM roles for ClickHouse Cloud to use
 * Remove write permissions to IAM related permissions for `ClickHouseManagementRole` used for cross-account access
 * Maintain full control over role permissions and trust relationships
-:::
 
 For information about the IAM roles that ClickHouse Cloud creates by default, see the [BYOC Privilege Reference](/cloud/reference/byoc/reference/privilege).

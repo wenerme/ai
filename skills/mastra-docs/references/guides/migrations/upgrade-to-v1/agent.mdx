@@ -28,8 +28,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/mastra-plural-apis .
 ```
 
-:::
-
 ### `RuntimeContext` to `RequestContext`
 
 The `RuntimeContext` class has been renamed to `RequestContext` throughout the codebase. This change provides clearer naming that better describes its purpose as request-specific data and aligns with web framework conventions.
@@ -57,8 +55,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/runtime-context .
 ```
 
-:::
-
 ### Direct property access to getter methods
 
 Direct property access to `agent.llm`, `agent.tools`, and `agent.instructions` is deprecated. This change provides better encapsulation and consistency with the broader API design.
@@ -82,8 +78,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/agent-property-access .
 ```
 
-:::
-
 ### Voice methods moved to `agent.voice` namespace
 
 Voice-related methods have been moved from the Agent class to the `agent.voice` namespace. This change provides better organization and clearer separation of concerns.
@@ -106,8 +100,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/agent-voice .
 ```
-
-:::
 
 ### `agent.fetchMemory()` to `(await agent.getMemory()).recall()`
 
@@ -142,8 +134,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/agent-processor-methods .
 ```
-
-:::
 
 ### Default options method renames for AI SDK versions
 
@@ -184,8 +174,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/agent-abort-signal .
 ```
-
-:::
 
 ### `output` to `structuredOutput.schema`
 
@@ -265,8 +253,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/agent-generate-stream-v-next .
 ```
-
-:::
 
 ### `format` parameter from `stream()` and `generate()`
 

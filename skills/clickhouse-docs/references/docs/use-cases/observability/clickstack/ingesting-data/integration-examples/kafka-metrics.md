@@ -1,27 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/kafka-metrics
 title: 'Monitoring Kafka Metrics with ClickStack'
-sidebar_label: 'Kafka Metrics'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Kafka Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['Kafka', 'metrics', 'OTEL', 'ClickStack', 'JMX']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/kafka/import-kafka-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/kafka/kafka-metrics-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Kafka Metrics with ClickStack {#kafka-metrics-clickstack}
 
 :::note[TL;DR]
 Monitor Apache Kafka performance metrics in ClickStack using the OTel JMX Metric Gatherer. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with an existing Kafka deployment {#existing-kafka}
 
@@ -188,9 +175,7 @@ docker exec kafka bash -c "unset JMX_PORT && kafka-topics --create --topic test-
 echo -e "Message 1\nMessage 2\nMessage 3" | docker exec -i kafka bash -c "unset JMX_PORT && kafka-console-producer --topic test-topic --bootstrap-server kafka:9092"
 ```
 
-:::note
-When running Kafka client commands (kafka-topics, kafka-console-producer, etc.) from within the Kafka container, prefix with `unset JMX_PORT &&` to prevent JMX port conflicts.
-:::
+> **note**: When running Kafka client commands (kafka-topics, kafka-console-producer, etc.) from within the Kafka container, prefix with `unset JMX_PORT &&` to prevent JMX port conflicts.
 
 </VerticalStepper>
 
@@ -250,7 +235,6 @@ Proceed to the [Dashboards and visualization](#dashboards) section to import the
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-05 16:00:00 - 2025-11-06 16:00:00 (UTC)**. Set your time range to **2025-11-04 16:00:00 - 2025-11-07 16:00:00** to ensure you see the demo metrics regardless of your location. Once you see the metrics, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 </VerticalStepper>
 
@@ -279,9 +263,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={example_dashboard} alt="Kafka Metrics dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-11-05 16:00:00 - 2025-11-06 16:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-05 16:00:00 - 2025-11-06 16:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

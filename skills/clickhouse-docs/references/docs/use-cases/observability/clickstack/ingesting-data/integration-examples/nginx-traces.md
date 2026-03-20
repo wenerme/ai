@@ -1,27 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/nginx-traces
 title: 'Monitoring Nginx Traces with ClickStack'
-sidebar_label: 'Nginx Traces'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring Nginx Traces with ClickStack'
 doc_type: 'guide'
 keywords: ['ClickStack', 'Nginx', 'traces', 'otel']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import finish_import from '@site/static/images/clickstack/finish-nginx-traces-dashboard.png';
-import example_dashboard from '@site/static/images/clickstack/nginx-traces-dashboard.png';
-import view_traces from '@site/static/images/clickstack/nginx-traces-search-view.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring Nginx Traces with ClickStack {#nginx-traces-clickstack}
 
 :::note[TL;DR]
 Capture distributed traces from Nginx in ClickStack using the OpenTelemetry Nginx module. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing Nginx {#existing-nginx}
 
@@ -51,9 +38,7 @@ image: nginx:1.27-otel
 
 This image includes the `ngx_otel_module.so` pre-installed and ready to use.
 
-:::note
-If you're running Nginx outside of Docker, refer to the [OpenTelemetry Nginx documentation](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx) for manual installation instructions.
-:::
+> **note**: If you're running Nginx outside of Docker, refer to the [OpenTelemetry Nginx documentation](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx) for manual installation instructions.
 
 #### Configure Nginx to send traces to ClickStack {#configure-nginx}
 
@@ -121,11 +106,9 @@ services:
 
 Replace `<clickstack-host>` with your ClickStack instance hostname or IP address.
 
-:::note
-- **Port 4317** is the gRPC endpoint used by the Nginx module
+> **note**: - **Port 4317** is the gRPC endpoint used by the Nginx module
 - **otel_service_name** should be descriptive of your Nginx instance (e.g., "api-gateway", "frontend-proxy")
 - Change **otel_service_name** to match your environment for easier identification in HyperDX
-:::
 
 ##### Understanding the configuration {#understanding-configuration}
 
@@ -223,7 +206,6 @@ curl -X POST http://localhost:4318/v1/traces \
 
 :::note[Running on localhost]
 This demo assumes ClickStack is running locally on `localhost:4318`. For remote instances, replace `localhost` with your ClickStack hostname.
-:::
 
 You should see a response like `{"partialSuccess":{}}` indicating the traces were successfully sent. All 1,000 traces will be ingested into ClickStack.
 
@@ -237,7 +219,6 @@ Here's what you should see in your search view:
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)**. The wide time range ensures you'll see the demo traces regardless of your location. Once you see the traces, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 <Image img={view_traces} alt="View Traces"/>
 
@@ -263,9 +244,7 @@ To help you get started monitoring traces with ClickStack, we provide essential 
 
 #### The dashboard will be created with all visualizations pre-configured. {#created-dashboard}
 
-:::note
-For the demo dataset, set the time range to **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-10-26 13:00:00 - 2025-10-27 13:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 <Image img={example_dashboard} alt="Example Dashboard"/>
 

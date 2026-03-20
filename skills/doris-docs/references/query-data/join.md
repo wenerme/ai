@@ -1,7 +1,6 @@
 ---
 { 'title': 'Join', 'language': 'en',
   "description": "In relational databases, data is distributed across multiple tables, which are interconnected through specific relationships."
-
 }
 ---
 
@@ -46,7 +45,7 @@ As a distributed MPP database, Apache Doris requires data shuffling during the H
 
 This method is suitable for various scenarios but is not applicable for RIGHT OUTER, RIGHT ANTI, and RIGHT SEMI types of Hash Join. Its network overhead is calculated as the number of JOIN nodes N multiplied by the volume of right table's data T(R).
 
-![Implementation of Hash Join in Doris](/images/broadcast-join.jpg)
+[Implementation of Hash Join in Doris]
 
 ### Partition Shuffle Join
 
@@ -54,7 +53,7 @@ This method computes hash values based on the JOIN conditions and performs bucke
 
 The network overhead of this method mainly includes two parts: the cost of transferring the left table's data T(S) and the cost of transferring the right table's data T(R). This method only supports Hash Join operations because it relies on the JOIN conditions to perform data bucketing.
 
-![Partition Shuffle Join](/images/partition-shuffle-join.jpg)
+[Partition Shuffle Join]
 
 ### Bucket Shuffle Join
 
@@ -66,7 +65,7 @@ For example, in the case of physical tables of Doris, since the table data is st
 
 The primary network overhead for this process comes from the movement of the right table's data, denoted as T(R).
 
-![Bucket Shuffle Join](/images/bucket-shuffle-join.png)
+[Bucket Shuffle Join]
 
 ### Colocate Join
 
@@ -74,11 +73,9 @@ Similar to Bucket Shuffle Join, if both tables involved in the Join are already 
 
 When creating a table in Doris with the specification of DISTRIBUTED BY HASH, the system distributes data based on the Hash distribution key during data import. If the Hash distribution keys of both tables happen to match the Join condition columns, it can be said that the data in these two tables is already pre-distributed according to the Join requirements, eliminating the need for additional Shuffle operations. Therefore, during actual queries, the Join calculation can be executed directly on these two tables. 
 
-:::caution
-For scenarios where Join is executed after directly scanning data, certain conditions must be met during table creation; please refer to the subsequent restrictions regarding Colocate Join between the two physical tables.
-:::
+> **caution**: For scenarios where Join is executed after directly scanning data, certain conditions must be met during table creation; please refer to the subsequent restrictions regarding Colocate Join between the two physical tables.
 
-![Colocate Join](/images/colocate-join.png)
+[Colocate Join]
 
 ## Bucket Shuffle Join VS Colocate Join
 
@@ -381,11 +378,10 @@ From the results of the following Explain execution plan, it can be seen that th
 | Bucket Shuffle  | T(R)             | Hash Join                 | JOIN condition includes the left table's bucketed column, with the left table being single-partitioned. |
 | Colocate        | 0                | Hash Join                 | JOIN condition includes the left table's bucketed column, and both tables belong to the same Colocate Group. |
 
-:::info NOTE
+> **info**: NOTE
 N: Number of instances participating in the Join calculation
 
 T(Relation): Number of tuples in the relation
-:::
 
 The flexibility of the four Shuffle methods decreases in order, and their requirements for data distribution become increasingly strict. In most cases, as the requirements for data distribution increase, the performance of Join calculations tends to improve gradually. It is important to note that if the number of buckets in a table is small, Bucket Shuffle or Colocate Join may experience a decrease in performance due to lower parallelism, potentially resulting in slower performance than Shuffle Join. This is because the Shuffle operation can more effectively balance data distribution, thereby providing higher parallelism in subsequent processing.
 

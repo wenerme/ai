@@ -17,9 +17,9 @@ Query your current cluster when you know the data is in your cluster or when you
     - You are querying the current cluster.
     - No cross-cluster communication occurs.
     - Results will include data from the current cluster only.
-<br>
+
 **Steps:**
-![current-cluster-query](../../images/current-cluster-query.png)
+[current-cluster-query]
 
 1. Navigate to the **Logs** page.
 2. Enter your query in the SQL Query Editor.
@@ -28,12 +28,10 @@ Query your current cluster when you know the data is in your cluster or when you
 5. Select **Run query**.
 
 > For detailed explanation, see **Normal cluster query execution** in the [Federated Search Architecture](https://openobserve.ai/docs/user-guide/federated-search/federated-search-architecture/) page.
-<br>
 
-**Result**<br>
+**Result**
 Data from the selected cluster only.
-![current-cluster-query-result](../../images/current-cluster-query-result.png)
-
+[current-cluster-query-result]
 
 ## How to query one or more different clusters in a supercluster
 
@@ -45,8 +43,8 @@ Use federated search when you need data from multiple clusters.
     - Results will combine data from all selected clusters.
 
 **Steps**
-<br>
-![federated-search-multi-select](../../images/federated-search-multi-select.png)
+
+[federated-search-multi-select]
 
 1. Navigate to the **Logs** page.
 2. Enter your query in the SQL Query Editor.
@@ -55,11 +53,10 @@ Use federated search when you need data from multiple clusters.
 5. Select **Run query**.
 
 > For detailed explanation, see **Federated search for one different cluster** and **Federated search for multiple clusters** in the [Federated search architecture](https://openobserve.ai/docs/user-guide/federated-search/federated-search-architecture/) page.
-<br>
 
-**Result**<br>
+**Result**
 Combined data from all selected clusters.
-![federated-search-result](../../images/federated-search-result.png)
+[federated-search-result]
 ## Region selection reference
 
 Use this quick reference to understand how region selection affects query execution:
@@ -71,7 +68,6 @@ Use this quick reference to understand how region selection affects query execut
 | One different cluster selected (same region) | Queries only that cluster | Federated search | Cross-cluster via gRPC |
 | One different cluster selected (different region) | Queries only that cluster | Federated search | Cross-cluster via gRPC |
 | Multiple clusters selected | Queries all selected clusters | Federated search | Cross-cluster via gRPC |
-
 
 **Next step**
 

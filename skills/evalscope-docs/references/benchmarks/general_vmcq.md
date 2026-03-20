@@ -1,6 +1,5 @@
 # General-VMCQ
 
-
 ## Overview
 
 General-VMCQ is a customizable visual multiple-choice question answering benchmark for multimodal models. It uses MMMU-style format with image placeholders in text, supporting flexible image inputs.
@@ -28,7 +27,6 @@ General-VMCQ is a customizable visual multiple-choice question answering benchma
 - Images are plain strings (do not wrap in `{{"url": ...}}`)
 - See [User Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/custom_dataset/vlm.html) for dataset format
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ General-VMCQ is a customizable visual multiple-choice question answering benchma
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
 | **Train Split** | `dev` |
-
 
 ## Data Statistics
 
@@ -91,5 +88,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

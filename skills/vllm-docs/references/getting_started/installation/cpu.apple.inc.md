@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+
 --8<-- [start:installation]
 
 vLLM has experimental support for macOS with Apple Silicon. For now, users must build from source to natively run on macOS.

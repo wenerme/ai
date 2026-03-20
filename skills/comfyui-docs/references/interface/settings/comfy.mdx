@@ -1,8 +1,6 @@
 ---
 title: "Comfy Settings"
 description: "Detailed description of ComfyUI core setting options"
-icon: "sliders"
-sidebarTitle: "Comfy"
 ---
 
 ## API Nodes
@@ -11,7 +9,7 @@ sidebarTitle: "Comfy"
 - **Default Value**: Enabled
 - **Function**: Controls whether to display pricing badges on API nodes, helping users identify the usage cost of API nodes
 
-![Show API node pricing badge](/images/interface/setting/comfy/api_node_pricing_badge.jpg)
+[Show API node pricing badge]
 
 > For more information about API nodes, please refer to [API Nodes](/tutorials/partner-nodes/overview)
 
@@ -20,7 +18,6 @@ sidebarTitle: "Comfy"
 ### Enable dev mode options (API save, etc.)
 - **Default Value**: Disabled
 - **Function**: Enables development mode options (such as API save, etc.)
-
 
 ## Edit Token Weight
 
@@ -45,29 +42,27 @@ sidebarTitle: "Comfy"
 - **Default Value**: Top
 - **Function**: Select menu interface and position, currently only supports Top, Bottom, Disabled
 
-<Tabs>
-    <Tab title="Top">
+    
         The menu interface will be displayed at the top of the workspace
-        ![Top Menu](/images/interface/setting/comfy/UseNewMenu_top.jpg)
-    </Tab>
-    <Tab title="Bottom">
+        [Top Menu]
+    
+    
         The menu bar interface will be displayed at the bottom of the workspace
-        ![Bottom Menu](/images/interface/setting/comfy/UseNewMenu_bottom.jpg)
-    </Tab>
-    <Tab title="Disabled">
+        [Bottom Menu]
+    
+    
         If you prefer the early legacy menu, you can try this option.
-        <Tip>
+        
         Since we are constantly updating, some new features will not be synchronized and supported in the legacy menu.
-        </Tip>
-        ![Legacy Menu](/images/interface/setting/comfy/UseNewMenu_disable.jpg)
-    </Tab>
-</Tabs>
+        
+        [Legacy Menu]
+    
 
 ## Model Library
 
 Model Library refers to the model management function in the ComfyUI sidebar menu. You can use this function to view models in your `ComfyUI/models` and additionally configured model folders.
 
-![Model Library](/images/interface/sidepanel/model_library.jpg)
+[Model Library]
 
 ### What name to display in the model library tree view
 - **Default Value**: title
@@ -85,15 +80,13 @@ During the iteration process of ComfyUI, we will adjust some nodes and enable so
 - **Default Value**: Disabled
 - **Function**: Controls whether to display deprecated nodes in search. Deprecated nodes are hidden by default in the UI, but remain effective in existing workflows.
 
-![Show deprecated nodes in search](/images/interface/setting/comfy/depr_node.jpg)
-
+[Show deprecated nodes in search]
 
 ### Show experimental nodes in search
 - **Default Value**: Enabled
 - **Function**: Controls whether to display experimental nodes in search. Experimental nodes are some new feature support, but are not fully stable and may change or be removed in future versions.
 
-![Show experimental nodes in search](/images/interface/setting/comfy/beta_node.jpg)
-
+[Show experimental nodes in search]
 
 ## Node Search Box
 
@@ -101,20 +94,19 @@ During the iteration process of ComfyUI, we will adjust some nodes and enable so
 - **Default Value**: 5
 - **Function**: Used to modify the number of recommended nodes in the related node context menu. The larger the value, the more related recommended nodes are displayed.
 
-![Number of nodes suggestions](/images/interface/setting/comfy/node_suggestions.jpg)
+[Number of nodes suggestions]
 
 ### Show node frequency in search results
 - **Default Value**: Disabled
 - **Function**: Controls whether to display node usage frequency in search results
 
-![Show node frequency in search results](/images/interface/setting/comfy/node_frequency.png)
+[Show node frequency in search results]
 
 ### Show node id name in search results
 - **Default Value**: Disabled
 - **Function**: Controls whether to display node ID names in search results
 
-![Show node id name in search results](/images/interface/setting/comfy/node_id_name.jpg)
-
+[Show node id name in search results]
 
 ### Show node category in search results
 - **Default Value**: Enabled
@@ -157,9 +149,7 @@ During the iteration process of ComfyUI, we will adjust some nodes and enable so
 - **Function**: Controls whether to validate all node definitions at startup (slow). Only recommended for node developers. When enabled, the system will use Zod schemas to strictly validate each node definition. This functionality will consume more memory and time
 - **Error Handling**: Failed node definitions will be skipped and warning information will be output to the console
 
-<Tip>
     Since detailed schema validation needs to be performed on all node definitions, this feature will significantly increase startup time, so it is disabled by default and only recommended for node developers
-</Tip>
 
 ### Validate workflows
 - **Default Value**: Enabled

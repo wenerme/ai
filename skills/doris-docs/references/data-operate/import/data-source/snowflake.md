@@ -8,7 +8,6 @@
 
 During the migration from Snowflake to Doris, object storage is typically used as an intermediate medium. The core process is as follows: First, export data to object storage using Snowflake's [COPY INTO](https://docs.snowflake.com/en/user-guide/data-unload-overview) statement. Then, use Doris' S3 Load feature to read data from the object storage and load it into Doris. For details, refer to [S3 Load](./amazon-s3.md).
 
-
 ## Considerations
 
 Before migration, select Doris' [data model](../../../table-design/data-model/overview.md), [partitioning](../../../table-design/data-partitioning/dynamic-partitioning.md), and [bucketing](../../../table-design/data-partitioning/data-bucketing.md) strategies based on Snowflake's table structure. For more table creation strategies, refer to [Load Best Practices](../load-best-practices.md).
@@ -106,9 +105,9 @@ PROPERTIES (
 
    Exported files are organized into **subdirectories by partition** on S3:
 
-    ![snowflake_s3_out_en](/images/data-operate/snowflake_s3_out_en.png)
+    [snowflake_s3_out_en]
 
-    ![snowflake_s3_out2_en](/images/data-operate/snowflake_s3_out2_en.png)
+    [snowflake_s3_out2_en]
 
 ## 3. Load Data to Doris
 

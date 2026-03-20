@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenMeter - Usage-Based Billing
 
@@ -8,11 +6,8 @@ import TabItem from '@theme/TabItem';
 
 <Image img={require('../../img/openmeter.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-::: 
-
 
 ## Quick Start
 Use just 2 lines of code, to instantly log your responses **across all providers** with OpenMeter
@@ -22,10 +17,6 @@ Get your OpenMeter API Key from https://openmeter.cloud/meters
 ```python
 litellm.callbacks = ["openmeter"] # logs cost + usage of successful calls to openmeter
 ```
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 # pip install openmeter 
@@ -50,9 +41,6 @@ response = litellm.completion(
   ]
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add to Config.yaml
 ```yaml
@@ -89,9 +77,5 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-
-</TabItem>
-</Tabs>
-
 
 <Image img={require('../../img/openmeter_img_2.png')} />

@@ -28,7 +28,6 @@ IS_UUID ( <str> )
 |------------|-----------------|
 | `<str>` | a string |
 
-
 ## Return Value
 
 `<str>` is a valid UUID, returns 1; otherwise returns 0.
@@ -37,7 +36,6 @@ Special cases:
 - If the parameter is NULL, returns NULL.
 
 ## Examples
-
 
 ```sql
 select is_uuid("88a06b4a-732c-48bd-9984-fecb81285cc1");

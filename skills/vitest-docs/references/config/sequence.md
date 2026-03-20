@@ -1,6 +1,5 @@
 ---
 title: sequence | Config
-outline: deep
 ---
 
 # sequence
@@ -40,7 +39,7 @@ Controls the order in which this project runs its tests when using multiple [pro
 This setting only affects the order in which projects run, not the order of tests within a project.
 To control test isolation or the order of tests inside a project, use the [`isolate`](/config/isolate) and [`sequence.sequencer`](/config/sequence#sequence-sequencer) options.
 
-::: details Example
+> **details**: Example
 Consider this example:
 
 ```ts
@@ -87,7 +86,6 @@ Tests in these projects will run in this order:
 
  1. flaky |> runs after slow and fast alone
 ```
-:::
 
 ## sequence.shuffle
 
@@ -123,9 +121,7 @@ Whether to randomize tests.
 
 If you want tests to run in parallel, you can enable it with this option, or CLI argument [`--sequence.concurrent`](/guide/cli).
 
-::: warning
-When you run tests with `sequence.concurrent` and `expect.requireAssertions` set to `true`, you should use [local expect](/guide/test-context.html#expect) instead of the global one. Otherwise, this may cause false negatives in [some situations (#8469)](https://github.com/vitest-dev/vitest/issues/8469).
-:::
+> **warning**: When you run tests with `sequence.concurrent` and `expect.requireAssertions` set to `true`, you should use [local expect](/guide/test-context.html#expect) instead of the global one. Otherwise, this may cause false negatives in [some situations (#8469)](https://github.com/vitest-dev/vitest/issues/8469).
 
 ## sequence.seed <CRoot />
 
@@ -147,9 +143,7 @@ Changes the order in which hooks are executed.
 - `list` will order all hooks in the order they are defined
 - `parallel` runs hooks in a single group in parallel (hooks in parent suites still run before the current suite's hooks). The actual number of simultaneously running hooks is limited by [`maxConcurrency`](/config/maxconcurrency).
 
-::: tip
-This option doesn't affect [`onTestFinished`](/api/hooks#ontestfinished). It is always called in reverse order.
-:::
+> **tip**: This option doesn't affect [`onTestFinished`](/api/hooks#ontestfinished). It is always called in reverse order.
 
 ## sequence.setupFiles {#sequence-setupfiles}
 

@@ -130,7 +130,7 @@ If you set the legend placement to **Right**, the **Width** option becomes avail
 
 You can add more context to a visualization by adding series data values or [calculations](ref:calculations) to a legend. You can add as many values as you'd like. After you apply your changes, you can scroll the legend to see all values.
 
-![Legend showing values](/media/docs/grafana/panels-visualizations/screenshot-legend-values-10.3.png)
+[Legend showing values]
 
 ## Change a series color
 
@@ -141,7 +141,7 @@ By default, Grafana sets the colors of your series data, but you can change them
 1. Select a pre-set color in the **Colors** tab or set a custom color in the **Custom** tab, using the picker or RGB values.
 1. Save the dashboard.
 
-![Change legend series color](/static/img/docs/legend/legend-series-color-7-5.png)
+[Change legend series color]
 
 ## Isolate series data in a visualization
 
@@ -174,7 +174,7 @@ When you format a legend as a table and add values to it, you can sort series in
 
 1. Click the calculation name header in the legend table to sort the values in the table in ascending or descending order.
 
-![Legend formatted as a table showing sorted values](/media/docs/grafana/panels-visualizations/screenshot-legend-sorted-10.3-v2.png)
+[Legend formatted as a table showing sorted values]
 
 {{< admonition type="note" >}}
 This feature is only supported for the following visualizations: bar chart, histogram, time series.

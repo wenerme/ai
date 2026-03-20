@@ -41,7 +41,7 @@ To get started adding panels, ensure that you have configured a data source:
 
 The following image and descriptions highlight the panel features:
 
-![Annotated panel with time series visualization](/media/docs/grafana/panels-visualizations/screenshot-panel-overview-ann-v11.0.png)
+[Annotated panel with time series visualization]
 
 1. **Panel title** - You can create your own panel titles or have Grafana create them for you using [generative AI features](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/manage-dashboards/#set-up-generative-ai-features-for-dashboards).
 1. **Panel description** - You can create your own panel descriptions or have Grafana create them for you using [generative AI features](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/manage-dashboards/#set-up-generative-ai-features-for-dashboards)
@@ -158,14 +158,14 @@ Time series
 
 To add a panel in a new dashboard click **+ Add visualization** in the middle of the dashboard:
 
-![Empty dashboard state](/media/docs/grafana/dashboards/empty-dashboard-10.2.png)
+[Empty dashboard state]
 
 To add a panel to an existing dashboard, follow these steps:
 
 1. Click **Edit** in the top-right corner of the dashboard.
 1. Click the **Add** drop-down and select **Visualization**:
 
-   ![Add dropdown](/media/docs/grafana/panels-visualizations/screenshot-add-dropdown-11.2.png)
+   [Add dropdown]
 
 ## Panel configuration
 

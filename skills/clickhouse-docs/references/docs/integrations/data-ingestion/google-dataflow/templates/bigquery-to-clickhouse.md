@@ -1,22 +1,9 @@
 ---
-sidebar_label: 'BigQuery To ClickHouse'
-sidebar_position: 1
-slug: /integrations/google-dataflow/templates/bigquery-to-clickhouse
 description: 'You can ingest data from BigQuery into ClickHouse using Google Dataflow Template'
 title: 'Dataflow BigQuery to ClickHouse template'
 doc_type: 'guide'
 keywords: ['Dataflow', 'BigQuery']
 ---
-
-import TOCInline from '@theme/TOCInline';
-import Image from '@theme/IdealImage';
-import dataflow_inqueue_job from '@site/static/images/integrations/data-ingestion/google-dataflow/dataflow-inqueue-job.png'
-import dataflow_create_job_from_template_button from '@site/static/images/integrations/data-ingestion/google-dataflow/create_job_from_template_button.png'
-import dataflow_template_clickhouse_search from '@site/static/images/integrations/data-ingestion/google-dataflow/template_clickhouse_search.png'
-import dataflow_template_initial_form from '@site/static/images/integrations/data-ingestion/google-dataflow/template_initial_form.png'
-import dataflow_extended_template_form from '@site/static/images/integrations/data-ingestion/google-dataflow/extended_template_form.png'
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Dataflow BigQuery to ClickHouse template
 
@@ -32,9 +19,6 @@ The template can read the entire table or filter specific records using a provid
 * The ClickHouse host must be accessible from the Dataflow worker machines.
 
 ## Template parameters {#template-parameters}
-
-<br/>
-<br/>
 
 | Parameter Name          | Parameter Description                                                                                                                                                                                                                                                                                                                              | Required | Notes                                                                                                                                                                                                                                                            |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -55,9 +39,7 @@ The template can read the entire table or filter specific records using a provid
 | `queryTempDataset`      | Set an existing dataset to create the temporary table to store the results of the query. For example, `temp_dataset`.                                                                                                                                                                                                                              |          |                                                                                                                                                                                                                                                                  |
 | `KMSEncryptionKey`      | If reading from BigQuery using the query source, use this Cloud KMS key to encrypt any temporary tables created. For example, `projects/your-project/locations/global/keyRings/your-keyring/cryptoKeys/your-key`.                                                                                                                                  |          |                                                                                                                                                                                                                                                                  |
 
-:::note
-Default values for all `ClickHouseIO` parameters can be found in [`ClickHouseIO` Apache Beam Connector](/integrations/apache-beam#clickhouseiowrite-parameters)
-:::
+> **note**: Default values for all `ClickHouseIO` parameters can be found in [`ClickHouseIO` Apache Beam Connector](/integrations/apache-beam#clickhouseiowrite-parameters)
 
 ## Source and target tables schema {#source-and-target-tables-schema}
 
@@ -66,12 +48,8 @@ To effectively load the BigQuery dataset into ClickHouse, the pipeline performs 
 1. The templates build a schema object based on the target ClickHouse table.
 2. The templates iterate over the BigQuery dataset, and attempts to match columns based on their names.
 
-<br/>
-
-:::important
-Having said that, your BigQuery dataset (either table or query) must have the exact same column names as your ClickHouse
+> **important**: Having said that, your BigQuery dataset (either table or query) must have the exact same column names as your ClickHouse
 target table.
-:::
 
 ## Data type mapping {#data-types-mapping}
 
@@ -92,14 +70,9 @@ recommended mapping you should have in your target ClickHouse table (for a given
 
 The BigQuery to ClickHouse template is available for execution via the Google Cloud CLI.
 
-:::note
-Be sure to review this document, and specifically the above sections, to fully understand the template's configuration
+> **note**: Be sure to review this document, and specifically the above sections, to fully understand the template's configuration
 requirements and prerequisites.
 
-:::
-
-<Tabs>
-  <TabItem value="console" label="Google Cloud Console" default>
     Sign in to your Google Cloud Console and search for DataFlow.
 
 1. Press the `CREATE JOB FROM TEMPLATE` button
@@ -113,20 +86,16 @@ requirements and prerequisites.
     * The ClickHouse username.
     * The ClickHouse target table name.
 
-<br/>
-
-:::note
-The ClickHouse password option is marked as optional, for use cases where there is no password configured.
+> **note**: The ClickHouse password option is marked as optional, for use cases where there is no password configured.
 To add it, please scroll down to the `Password for ClickHouse Endpoint` option.
-:::
 
 <Image img={dataflow_extended_template_form} border alt="BigQuery to ClickHouse extended template form" />
 
 5. Customize and add any BigQuery/ClickHouseIO related configurations, as detailed in
    the [Template Parameters](#template-parameters) section
 
-  </TabItem>
-  <TabItem value="cli" label="Google Cloud CLI">
+  
+  
 
 ### Install & Configure `gcloud` CLI {#install--configure-gcloud-cli}
 
@@ -170,8 +139,7 @@ job:
   startTime: '2025-01-26T14:34:04.608442Z'
 ```
 
-  </TabItem>
-</Tabs>
+  
 
 ### Monitor the job {#monitor-the-job}
 

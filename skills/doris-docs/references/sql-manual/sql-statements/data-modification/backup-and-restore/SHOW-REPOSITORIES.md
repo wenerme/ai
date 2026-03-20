@@ -29,7 +29,6 @@ SHOW REPOSITORIES;
 | **Type**        | The repository type, currently supporting S3 and HDFS |
 | **ErrMsg**      | The error message of the repository. Typically `NULL` if no error occurs |
 
-
 ## Examples
 
 View the created repository:
@@ -44,4 +43,3 @@ SHOW REPOSITORIES;
 | 43411  | example_repo | 2025-01-17 18:50:47 | false      | s3://rep1  | -      | S3   | NULL   |
 +--------+--------------+---------------------+------------+----------+--------+------+--------+
 ```
-

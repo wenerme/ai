@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Amazon RDS MariaDB'
 description: 'Step-by-step guide on how to set up Amazon RDS MariaDB as a source for ClickPipes'
-slug: /integrations/clickpipes/mysql/source/rds_maria
 title: 'RDS MariaDB source setup guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
@@ -10,23 +8,11 @@ integration:
    - category: 'clickpipes'
 ---
 
-import rds_backups from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/rds/rds-backups.png';
-import rds_config from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/rds_config.png';
-import edit_button from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/edit_button.png';
-import binlog_format from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_format.png';
-import binlog_row_image from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_row_image.png';
-import binlog_row_metadata from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/parameter_group/binlog_row_metadata.png';
-import security_group_in_rds_mysql from '@site/static/images/integrations/data-ingestion/clickpipes/mysql/source/rds/security-group-in-rds-mysql.png';
-import edit_inbound_rules from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/edit_inbound_rules.png';
-import Image from '@theme/IdealImage';
-
 # RDS MariaDB source setup guide
 
 This is a step-by-step guide on how to configure your RDS MariaDB instance for replicating its data via the MySQL ClickPipe.
-<br/>
-:::info
-We also recommend going through the MySQL FAQs [here](/integrations/data-ingestion/clickpipes/mysql/faq.md). The FAQs page is being actively updated.
-:::
+
+> **info**: We also recommend going through the MySQL FAQs [here](/integrations/data-ingestion/clickpipes/mysql/faq.md). The FAQs page is being actively updated.
 
 ## Enable binary log retention {#enable-binlog-retention-rds}
 The binary log is a set of log files that contain information about data modifications made to a MySQL server instance. Binary log files are required for replication. Both of the steps below must be followed:
@@ -74,10 +60,7 @@ Settings `binlog_format`, `binlog_row_metadata` and `binlog_row_image` need to b
 
 Next, click on `Save Changes` in the top-right. You may need to reboot your instance for the changes to take effect. If you see `Pending reboot` next to the parameter group link in the Configurations tab of the RDS instance, this is a good indication that a reboot of your instance is needed.
 
-<br/>
-:::tip
-If you have a MariaDB cluster, the above parameters would be found in a [DB Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.CreatingCluster.html) parameter group and not the DB instance group.
-:::
+> **tip**: If you have a MariaDB cluster, the above parameters would be found in a [DB Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.CreatingCluster.html) parameter group and not the DB instance group.
 
 ## Enabling GTID Mode {#gtid-mode-rds}
 Global Transaction Identifiers (GTIDs) are unique IDs assigned to each committed transaction in MySQL/MariaDB. They simplify binlog replication and make troubleshooting more straightforward. MariaDB enables GTID mode by default, so no user action is needed to use it.

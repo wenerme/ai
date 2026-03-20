@@ -9,14 +9,11 @@ import instructor
 from litellm import completion
 from pydantic import BaseModel
 
-
 client = instructor.from_litellm(completion)
-
 
 class User(BaseModel):
     name: str
     age: int
-
 
 def extract_user(text: str):
     return client.chat.completions.create(
@@ -45,14 +42,11 @@ import instructor
 from litellm import acompletion
 from pydantic import BaseModel
 
-
 client = instructor.from_litellm(acompletion)
-
 
 class User(BaseModel):
     name: str
     age: int
-
 
 async def extract(text: str) -> User:
     return await client.chat.completions.create(

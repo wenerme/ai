@@ -51,11 +51,8 @@ For example:
 **1. Attention:**
 
 ```python
---8<-- "vllm/model_executor/layers/attention/mm_encoder_attention.py:mm_encoder_attn"
-
 --8<-- "vllm/model_executor/layers/mla.py:multi_head_latent_attention"
 
---8<-- "vllm/model_executor/models/deepencoder.py:rel_pos_attention"
 ```
 
 **2. Activation:**
@@ -170,6 +167,16 @@ For example:
 --8<-- "vllm/model_executor/layers/rotary_embedding/common.py:apply_rotary_emb"
 ```
 
+**12. Encoder:**
+
+```python
+--8<-- "vllm/model_executor/models/deepencoder2.py:qwen2_decoder"
+
+--8<-- "vllm/model_executor/layers/attention/mm_encoder_attention.py:mm_encoder_attn"
+
+--8<-- "vllm/model_executor/models/deepencoder.py:rel_pos_attention"
+```
+
 ## Guidelines for Implementing a New CustomOp
 
 ### Implement a New CustomOp in vLLM
@@ -276,7 +283,6 @@ Taking `MMEncoderAttention` as an example:
     from vllm.model_executor.layers.attention import MMEncoderAttention
     from vllm.model_executor.custom_op import CustomOp
 
-
     @CustomOp.register_oot("MMEncoderAttention")
     class CustomMMEncoderAttention(MMEncoderAttention):
 
@@ -298,7 +304,6 @@ In addition, you can also register all your `CustomOp` at one place for better m
 
     ```python
     from vllm.model_executor.custom_op import CustomOp
-
 
     REGISTERED_CUSTOM_OPS = {
         "CustomOP1": YourCustomOp1,

@@ -1,6 +1,5 @@
 # Humanity's-Last-Exam
 
-
 ## Overview
 
 Humanity's Last Exam (HLE) is a comprehensive language model benchmark consisting of 2,500 questions across a broad range of subjects. Created jointly by the Center for AI Safety and Scale AI, it represents one of the most challenging academic benchmarks available.
@@ -28,7 +27,6 @@ Humanity's Last Exam (HLE) is a comprehensive language model benchmark consistin
 - **Note**: Set `extra_params["include_multi_modal"]` to `False` for text-only models
 - Uses GRADE: C/I format for LLM judge scoring
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ Humanity's Last Exam (HLE) is a comprehensive language model benchmark consistin
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -71,7 +68,6 @@ Humanity's Last Exam (HLE) is a comprehensive language model benchmark consistin
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 329x12 - 14950x2780 |
 | Formats | gif, jpeg, png, webp |
-
 
 ## Sample Example
 
@@ -158,5 +154,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

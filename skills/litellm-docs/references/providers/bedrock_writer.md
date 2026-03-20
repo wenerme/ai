@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock - Writer Palmyra
 
@@ -54,9 +53,6 @@ litellm --config config.yaml
 
 **3. Call the proxy**
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="curl Request"
 curl -X POST http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -66,9 +62,6 @@ curl -X POST http://localhost:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Hello, how are you?"}]
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="OpenAI SDK"
 from openai import OpenAI
@@ -85,9 +78,6 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Tool Calling
 
@@ -127,9 +117,6 @@ response = litellm.completion(
 
 ### LiteLLM Proxy
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Tool Calling - curl"
 curl -X POST http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -153,9 +140,6 @@ curl -X POST http://localhost:4000/v1/chat/completions \
     }]
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="Tool Calling - OpenAI SDK"
 from openai import OpenAI
@@ -191,9 +175,6 @@ response = client.chat.completions.create(
     tools=tools
 )
 ```
-
-</TabItem>
-</Tabs>
 
 ## Document Input
 
@@ -233,9 +214,6 @@ response = litellm.completion(
 
 ### LiteLLM Proxy
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="PDF Document Input - curl"
 # First, base64 encode your PDF
 PDF_BASE64=$(base64 -i document.pdf)
@@ -260,9 +238,6 @@ curl -X POST http://localhost:4000/v1/chat/completions \
     }]
   }'
 ```
-
-</TabItem>
-<TabItem value="openai-sdk" label="OpenAI SDK">
 
 ```python showLineNumbers title="PDF Document Input - OpenAI SDK"
 from openai import OpenAI
@@ -299,9 +274,6 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-</Tabs>
-
 ## Supported Models
 
 | Model ID | Context Window | Input Cost (per 1K tokens) | Output Cost (per 1K tokens) |
@@ -311,6 +283,5 @@ response = client.chat.completions.create(
 | `bedrock/writer.palmyra-x5-v1:0` | 1M tokens | $0.0006 | $0.006 |
 | `bedrock/writer.palmyra-x4-v1:0` | 128K tokens | $0.0025 | $0.010 |
 
-:::info Cross-Region Inference
+> **info**: Cross-Region Inference
 The `us.writer.*` model IDs use cross-region inference profiles. Use these for production workloads.
-:::

@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Benchmark LLMs
 Easily benchmark LLMs for a given question by viewing 
@@ -84,7 +83,6 @@ Benchmark Results for 'When will BerriAI IPO?':
 ## Support
 **🤝 Schedule a 1-on-1 Session:** Book a [1-on-1 session](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions) with Krrish and Ishaan, the founders, to discuss any issues, provide feedback, or explore how we can improve LiteLLM for you.
 
-
 <!-- 
 ## Pre-requisites:
 ``` python
@@ -116,7 +114,6 @@ response = completion("command-nightly", messages)
 
 """
 
-
 # questions/logs you want to run the LLM on
 questions = [
     "what is litellm?",
@@ -140,12 +137,10 @@ import time
 # litellm.use_client = True
 # litellm.token = "ishaan_2@berri.ai" # set your email
 
-
 # set API keys
 os.environ['TOGETHERAI_API_KEY'] = ""
 os.environ['OPENAI_API_KEY'] = ""
 os.environ['ANTHROPIC_API_KEY'] = ""
-
 
 # select LLMs to benchmark
 # using https://api.together.xyz/playground for llama2
@@ -176,7 +171,6 @@ for question in questions: # group by question
     # print(response)
     cost = completion_cost(response) # cost for completion
     raw_response = response['choices'][0]['message']['content'] # response string
-
 
     # add log to pandas df
     data.append(
@@ -312,7 +306,6 @@ for question in questions: # group by question
             'ResponseTime': total_time,
             'Cost': cost
         })
-
 
 ```
 ### View Logs - Group by Question

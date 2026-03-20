@@ -134,7 +134,6 @@ mysql> SELECT ST_Contains(NULL, ST_Point(5, 5));
 +-----------------------------------+
 ```
 
-
 Self-intersecting polygon as parameter
 
 ```sql

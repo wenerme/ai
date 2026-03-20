@@ -38,7 +38,6 @@ import os
 import sys
 from typing import Optional, List, Any
 
-
 def init_gflags(
     usage: Optional[Any] = None,
     raw_args: Optional[List[str]] = None,
@@ -57,7 +56,6 @@ def init_gflags(
             print(usage % dict(cmd=sys.argv[0], flags=gflags.FLAGS))
         sys.exit(1)
     return argv
-
 
 def init_gflags_for_worker():
     """Re-initialize gflags in each worker process.

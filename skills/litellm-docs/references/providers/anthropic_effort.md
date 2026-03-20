@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Anthropic Effort Parameter
 
@@ -45,9 +44,6 @@ This gives a much greater degree of control over efficiency.
 
 ### Using LiteLLM SDK
 
-<Tabs>
-<TabItem value="python" label="Python">
-
 ```python
 import litellm
 
@@ -76,9 +72,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="typescript" label="TypeScript">
-
 ```typescript
 import Anthropic from "@anthropic-ai/sdk";
 
@@ -102,9 +95,6 @@ const response = await client.messages.create({
 console.log(response.content[0].text);
 ```
 
-</TabItem>
-</Tabs>
-
 ### Using LiteLLM Proxy
 
 ```bash
@@ -122,9 +112,6 @@ curl http://localhost:4000/v1/chat/completions \
 ```
 
 ### Direct Anthropic API Call
-
-<Tabs>
-<TabItem value="46" label="Claude 4.6 (stable)">
 
 ```bash
 # Claude 4.6 — no beta header needed
@@ -144,9 +131,6 @@ curl https://api.anthropic.com/v1/messages \
     }
   }'
 ```
-
-</TabItem>
-<TabItem value="45" label="Claude Opus 4.5 (beta)">
 
 ```bash
 # Claude Opus 4.5 — requires beta header
@@ -168,9 +152,6 @@ curl https://api.anthropic.com/v1/messages \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Model Compatibility
 
 The effort parameter is supported by:
@@ -178,9 +159,7 @@ The effort parameter is supported by:
 - **Claude Sonnet 4.6** (`claude-sonnet-4-6`) — supports `high`, `medium`, `low`
 - **Claude Opus 4.5** (`claude-opus-4-5-20251101`) — supports `high`, `medium`, `low`
 
-:::info
-`effort="max"` is only available on Claude Opus 4.6. Using it with other models will raise a validation error.
-:::
+> **info**: `effort="max"` is only available on Claude Opus 4.6. Using it with other models will raise a validation error.
 
 ## When Should I Adjust the Effort Parameter?
 
@@ -331,4 +310,3 @@ The effort parameter is supported by Claude Opus 4.6, Sonnet 4.6, and Opus 4.5. 
 - [Anthropic Effort Documentation](https://docs.anthropic.com/en/docs/build-with-claude/effort)
 - [LiteLLM Anthropic Provider Guide](/docs/providers/anthropic)
 - [Cost Optimization Best Practices](/docs/guides/cost_optimization)
-

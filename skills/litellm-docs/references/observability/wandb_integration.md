@@ -1,24 +1,15 @@
-import Image from '@theme/IdealImage';
 
 # Weights & Biases - Logging LLM Input/Output
 
-
-:::tip
-
-This is community maintained, Please make an issue if you run into a bug
+> **tip**: This is community maintained, Please make an issue if you run into a bug
 https://github.com/BerriAI/litellm
-
-:::
-
 
 Weights & Biases helps AI developers build better models faster https://wandb.ai
 
 <Image img={require('../../img/wandb.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-::: 
 
 ## Pre-Requisites
 Ensure you have run `pip install wandb` for this integration

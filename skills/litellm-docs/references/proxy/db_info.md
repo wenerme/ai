@@ -41,7 +41,6 @@ You can see the full DB Schema [here](https://github.com/BerriAI/litellm/blob/ma
 |------------|-------------|---------------------|
 | LiteLLM_BudgetTable | Stores budget and rate limit configurations for organizations, keys, and end users. Tracks max budgets, soft budgets, TPM/RPM limits, and model-specific budgets. Handles budget duration and reset timing. | Low - Configuration only |
 
-
 ### Tracking & Logging
 
 | Table Name | Description | Row Insert Frequency |
@@ -69,11 +68,9 @@ When disabling error logs (`disable_error_logs: True`):
 - You **will not** be able to view Errors on the LiteLLM UI
 - You **will** continue seeing error logs in your application logs and any other logging integrations you are using
 
-
 ## Migrating Databases 
 
 If you need to migrate Databases the following Tables should be copied to ensure continuation of services and no downtime
-
 
 | Table Name | Description | 
 |------------|-------------|
@@ -87,5 +84,3 @@ If you need to migrate Databases the following Tables should be copied to ensure
 | LiteLLM_ProxyModelTable | **Optional** Only migrate if you store your LLMs in the DB (i.e you set `STORE_MODEL_IN_DB=True`) |
 | LiteLLM_SpendLogs | **Optional** Only migrate if you want historical data on LiteLLM UI |
 | LiteLLM_ErrorLogs | **Optional** Only migrate if you want historical data on LiteLLM UI |
-
-

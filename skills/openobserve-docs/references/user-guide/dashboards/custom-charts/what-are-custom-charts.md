@@ -28,14 +28,13 @@ This guide introduces the fundamentals of custom charts in OpenObserve, includin
 4. Enter a name for the panel.  
 5. In the **Add Panel** page, select **Custom Chart** from the list of charts.
 
-![custom-chart](../../../images/custom-chart.png)
+[custom-chart]
 
 After selecting **Custom Chart**, the screen displays: 
 
 1. A SQL editor to write your query
 2. A JavaScript editor to define how the chart should be displayed
 3. A chart preview panel to preview the output
-
 
 ## How Does Custom Charts Work
 
@@ -52,7 +51,6 @@ Creating a custom chart involves these high-level steps:
 6. **Preview**: Preview the chart and adjust your SQL or JavaScript as needed.
 
 > **Note**: Using custom charts, you can create and configure any chart supported by [ECharts](https://echarts.apache.org/examples/en/).  
-
 
 ## Choose the Chart
 
@@ -80,7 +78,6 @@ Use the following table to choose an appropriate chart for your use case and not
     | **Scatter Plot**       | Spot relationships between two metrics, like payload size vs. response time        | `{"x": 3000, "y": 150}`                              |
     | **Step Line Chart**    | Show when something changed, like a feature flag turning on/off                    | `{"timestamp": "10:00", "state": "on"}`             |
     | **Table**              | Show raw results in a tabular format, like the top 10 slowest queries              | List of records like `{"query": "...", "duration": 1200}` |
-
 
 === "Charts That Expect Nested Data"
 
@@ -112,7 +109,6 @@ The chart building stage involves the following steps:
 2. **Reshape the data (if needed) using JavaScript**: If the chart expects a nested structure, convert data[0] into a new variable (e.g., treeData). For charts that expect flat data, no reshaping is needed. 
 3. **Use the `data` object or the reshaped variable in your chart config**: Flat charts can use data[0] directly; nested charts require the reshaped data.
 4. **Pass the final dataset to the [`option` object](#the-option-object)**: Use the selected data source to configure how the chart appears and behaves.
-
 
 ## Key Concepts
 
@@ -206,4 +202,4 @@ option.series[0].name = 'Errors';
 
 - [Custom Charts: Flat Data](custom-charts-flat-data.md)  
 - [Custom Charts: Nested Data](custom-charts-nested-data.md)  
-- [Custom Charts: Event Handlers and Reusable Function (CustomFn)](custom-charts-event-handlers-and-custom-functions.md)  
+- [Custom Charts: Event Handlers and Reusable Function (CustomFn)](custom-charts-event-handlers-and-custom-functions.md)

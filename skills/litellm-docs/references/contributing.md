@@ -2,7 +2,6 @@
 
 Thanks for contributing to the LiteLLM UI! This guide will help you set up your local development environment.
 
-
 ## 1. Clone the repo
 
 ```bash
@@ -54,9 +53,7 @@ npm run dev
 3. After logging in, manually navigate back to `http://localhost:3000/`
 4. You're now authenticated and can develop with hot reload
 
-:::note
-If you experience redirect loops or authentication issues, clear your browser cookies for localhost or use Build Mode instead.
-:::
+> **note**: If you experience redirect loops or authentication issues, clear your browser cookies for localhost or use Build Mode instead.
 
 ### Option B: Build Mode
 

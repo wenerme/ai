@@ -7,9 +7,7 @@ description: Configure procedure routing with oRPC.
 
 Define how procedures map to HTTP methods, paths, and response statuses.
 
-:::warning
-This feature applies only when using [OpenAPIHandler](/docs/openapi/openapi-handler).
-:::
+> **warning**: This feature applies only when using [OpenAPIHandler](/docs/openapi/openapi-handler).
 
 ## Basic Routing
 
@@ -20,9 +18,7 @@ os.route({ method: 'GET', path: '/example', successStatus: 200 })
 os.route({ method: 'POST', path: '/example', successStatus: 201 })
 ```
 
-:::info
-The `.route` can be called multiple times; each call [spread merges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) the new route with the existing route.
-:::
+> **info**: The `.route` can be called multiple times; each call [spread merges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) the new route with the existing route.
 
 ## Path Parameters
 
@@ -48,27 +44,20 @@ const router = os.prefix('/planets').router({
 })
 ```
 
-::: warning
-The prefix only applies to procedures that specify a `path`.
-:::
+> **warning**: The prefix only applies to procedures that specify a `path`.
 
 ## Lazy Router
 
 When combining a [Lazy Router](/docs/router#lazy-router) with [OpenAPIHandler](/docs/openapi/openapi-handler), a prefix is required for lazy loading. Without it, the router behaves like a regular router.
 
-:::info
-If you follow the [contract-first approach](/docs/contract-first/define-contract), you can ignore this requirement - oRPC knows the full contract and loads the router lazily properly.
-:::
-
+> **info**: If you follow the [contract-first approach](/docs/contract-first/define-contract), you can ignore this requirement - oRPC knows the full contract and loads the router lazily properly.
 ```ts
 const router = {
   planet: os.prefix('/planets').lazy(() => import('./planet'))
 }
 ```
 
-:::warning
-Do not use the `lazy` helper from `@orpc/server` here, as it cannot apply route prefixes.
-:::
+> **warning**: Do not use the `lazy` helper from `@orpc/server` here, as it cannot apply route prefixes.
 
 ## Initial Configuration
 

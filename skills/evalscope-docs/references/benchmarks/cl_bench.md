@@ -1,6 +1,5 @@
 # CL-bench
 
-
 ## Overview
 
 CL-bench represents a step towards building LMs with this fundamental capability (Context Learning), making them more intelligent and advancing their deployment in real-world scenarios. This benchmark is specifically designed to evaluate a model's ability to learn specific, often novel or long-tail knowledge directly from the context and apply it to solve problems, simulating real-world learning processes.
@@ -29,7 +28,6 @@ CL-bench represents a step towards building LMs with this fundamental capability
 - Answers are often evaluated against specific ground-truth rules defined in the context
 - Crucial for assessing how well models can adapt to private data or dynamic environments without fine-tuning
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ CL-bench represents a step towards building LMs with this fundamental capability
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -125,5 +122,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

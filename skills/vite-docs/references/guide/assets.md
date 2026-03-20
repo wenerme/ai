@@ -32,7 +32,7 @@ The behavior is similar to webpack's `file-loader`. The difference is that the i
 
 - TypeScript, by default, does not recognize static asset imports as valid modules. To fix this, include [`vite/client`](./features#client-types).
 
-::: tip Inlining SVGs through `url()`
+> **tip**: Inlining SVGs through `url()`
 When passing a URL of SVG to a manually constructed `url()` by JS, the variable should be wrapped within double quotes.
 
 ```js twoslash
@@ -41,8 +41,6 @@ import 'vite/client'
 import imgUrl from './img.svg'
 document.getElementById('hero-img').style.background = `url("${imgUrl}")`
 ```
-
-:::
 
 ### Explicit URL Imports
 
@@ -119,11 +117,9 @@ The directory defaults to `<root>/public`, but can be configured via the [`publi
 
 Note that you should always reference `public` assets using root absolute path - for example, `public/icon.png` should be referenced in source code as `/icon.png`.
 
-::: tip Choosing between imports and the `public` directory
+> **tip**: Choosing between imports and the `public` directory
 
 In general, prefer **importing assets** unless you specifically need the guarantees provided by the `public` directory.
-
-:::
 
 ## new URL(url, import.meta.url)
 
@@ -153,7 +149,7 @@ During the production build, Vite will perform necessary transforms so that the 
 const imgUrl = new URL(imagePath, import.meta.url).href
 ```
 
-::: details How it works
+> **details**: How it works
 
 Vite will transform the `getImageUrl` function to:
 
@@ -170,8 +166,5 @@ function getImageUrl(name) {
 }
 ```
 
-:::
-
-::: warning Does not work with SSR
+> **warning**: Does not work with SSR
 This pattern does not work if you are using Vite for Server-Side Rendering, because `import.meta.url` has different semantics in browsers vs. Node.js. The server bundle also cannot determine the client host URL ahead of time.
-:::

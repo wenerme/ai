@@ -65,11 +65,11 @@ jdbc:mysql://FE_IP:FE_PORT/demo?sessionVariables=key1=val1,key2=val2
 
 Create a MySQL connection to Apache Doris:
 
-![database connect via dbeaver](/images/database-connect-dbeaver.png)
+[database connect via dbeaver]
 
 Query in DBeaver:
 
-![query in dbeaver](/images/query-in-dbeaver.png)
+[query in dbeaver]
 
 ## Built-in Web UI of Doris
 
@@ -79,7 +79,7 @@ To access the Web UI, simply enter the URL in a web browser: http://fe_ip:fe_por
 
 The built-in Web console is primarily intended for use by the root account of the cluster. By default, the root account password is empty after installation.
 
-![Built in WebUI of Doris](/images/web-login-username-password.png)
+[Built in WebUI of Doris]
 
 For example, you can execute the following command in the Playground to add a BE node.
 
@@ -87,10 +87,8 @@ For example, you can execute the following command in the Playground to add a BE
 ALTER SYSTEM ADD BACKEND "be_host_ip:heartbeat_service_port";
 ```
 
-![Doris WebUI Playground](/images/Doris-Web-UI-Playground-en.png)
+[Doris WebUI Playground]
 
-:::tip 
-For successful execution of statements that are not related to specific databases/tables in the Playground, it is necessary to randomly select a database from the left-hand database panel. This limitation will be removed later.
+> **tip**: For successful execution of statements that are not related to specific databases/tables in the Playground, it is necessary to randomly select a database from the left-hand database panel. This limitation will be removed later.
 
-The current built-in web console cannot execute SET type SQL statements. Therefore, the web console does not support statements like SET PASSWORD FOR 'user' = PASSWORD('user_password'). 
-:::
+The current built-in web console cannot execute SET type SQL statements. Therefore, the web console does not support statements like SET PASSWORD FOR 'user' = PASSWORD('user_password').

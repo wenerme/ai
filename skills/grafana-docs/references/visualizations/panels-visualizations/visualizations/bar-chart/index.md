@@ -40,7 +40,7 @@ refs:
 A bar chart is a visual representation that uses rectangular bars, where the length of each bar represents each value.
 You can use the bar chart visualization when you want to compare values over different categories or time periods. The visualization can display the bars horizontally or vertically, and can be customized to group or stack bars for more complex data analysis.
 
-![Bar chart visualizations](/media/docs/grafana/panels-visualizations/screenshot-bar-charts-v11.3.png)
+[Bar chart visualizations]
 
 You can use the bar chart visualization if you need to show:
 
@@ -69,7 +69,7 @@ The text or time field is used to label the bars or values in each row of data a
 | ----- | ------ | ------ | ------ |
 | uno   | 5      | 3      | 2      |
 
-![Bar chart single row example](/media/docs/grafana/panels-visualizations/screenshot-grafana-11.1-barchart-example1.png 'Bar chart single row example')
+[Bar chart single row example]
 
 If you have more than one text or time field, by default, the visualization uses the first one, but you can change this in the x-axis option as described in the [Bar chart options](#bar-chart-options) section.
 
@@ -83,14 +83,11 @@ If your dataset contains multiple rows, the visualization displays multiple bar 
 | dos   | 10     | 6      | 4      |
 | tres  | 20     | 8      | 2      |
 
-![Bar chart multiple row example](/media/docs/grafana/panels-visualizations/screenshot-grafana-11.1-barchart-example2.png 'Bar chart multiple row example')
+[Bar chart multiple row example]
 
 While the first field can be time-based and you can use a bar chart to plot time-series data, for large amounts of time-series data, we recommend that you use the [time series visualization](ref:time-series) and configure it to be displayed as bars.
 
 We recommend that you only use one dataset in a bar chart because using multiple datasets can result in unexpected behavior.
-
-<!-- vale Grafana.WordList = NO -->
-<!-- vale Grafana.Spelling = NO -->
 
 ## Apply ad hoc filters from the bar chart
 
@@ -101,9 +98,6 @@ To display the filter button, hover your cursor over the bar that has the value 
 {{< figure src="/media/docs/grafana/panels-visualizations/screenshot-adhoc-filter-icon-bar-v12.2.png" max-width="300px" alt="The ad hoc filter button in a bar chart tooltip">}}
 
 For more information about applying ad hoc filters this way, refer to [Dashboard drilldown with ad hoc filters](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/variables/add-template-variables/#dashboard-drilldown-with-ad-hoc-filters).
-
-<!-- vale Grafana.Spelling = YES -->
-<!-- vale Grafana.WordList = YES -->
 
 ## Configuration options
 
@@ -116,8 +110,6 @@ For more information about applying ad hoc filters this way, refer to [Dashboard
 ### Bar chart options
 
 Use these options to refine your visualization.
-
-<!-- prettier-ignore-start -->
 
 | Option                           | Description                                                                                      |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -136,8 +128,6 @@ Use these options to refine your visualization.
 | Line width                       | Controls line width of the bars.    |
 | Fill opacity                     | Controls the fill opacity bars.                    |
 | [Gradient mode](#gradient-mode)  | Set the mode of the gradient fill. Fill gradient is based on the line color. To change the color, use the standard color scheme field option. Gradient appearance is influenced by the **Fill opacity** setting.                                                                               |
-
-<!-- prettier-ignore-end -->
 
 #### Gradient mode
 
@@ -175,21 +165,17 @@ For guidance on configuring more than one y-axis, refer to [Multiple y-axes](#mu
 
 Some field options will not affect the visualization until you click outside of the field option box you are editing or press Enter.
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Placement | Select the placement of the Y-axis. Choose from: <ul><li>**Auto** - Grafana automatically assigns Y-axis to the series. When there are two or more series with different units, then Grafana assigns the left axis to the first unit and right to the following units.</li><li>**Left** - Display all Y-axes on the left side.</li><li>**Right** - Display all Y-axes on the right side.</li><li>**Hidden** - Hide all axes. To selectively hide axes, [add a field override](ref:add-a-field-override) that targets specific fields.</li></ul> |
 | Label | Set a Y-axis text label. If you have more than one Y-axis, then you can assign different labels with an override. |
-| Width | Set a fixed width of the axis. By default, Grafana dynamically calculates the width of an axis.<br></br>By setting the width of the axis, data whose axes types are different can share the same display proportions. This makes it easier to compare more than one graph’s worth of data because the axes are not shifted or stretched within visual proximity of each other. |
+| Width | Set a fixed width of the axis. By default, Grafana dynamically calculates the width of an axis.</br>By setting the width of the axis, data whose axes types are different can share the same display proportions. This makes it easier to compare more than one graph’s worth of data because the axes are not shifted or stretched within visual proximity of each other. |
 | Show grid lines | Set whether grid lines are displayed in the chart. Choose from: <ul><li>**Auto** - Grafana automatically determines whether grid lines are displayed.</li><li>**On** - Grid lines are always displayed.</li><li>**Off** - Grid lines are never displayed</li></ul> |
 | Color | Choose whether the axis color is the **Text** or **Series** color. |
 | Show border | Toggle the switch to hide or display the border. |
 | Scale | Set how the y-axis is split. Choose from: <ul><li>**Linear**</li><li>**Logarithmic** - Choose between log base 2 or log base 10.</li><li>**Symlog** - Uses a symmetrical logarithmic scale. Choose between log base 2 or log base 10, allowing for negative values.</li></ul> |
 | Centered zero | Set the y-axis so it's centered on zero. |
 | [Soft min and soft max](#soft-min-and-soft-max) | Set a **Soft min** or **soft max** option for better control of Y-axis limits. By default, Grafana sets the range for the Y-axis automatically based on the dataset. |
-
-<!-- prettier-ignore-end -->
 
 #### Soft min and soft max
 

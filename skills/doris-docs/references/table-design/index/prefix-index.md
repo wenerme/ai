@@ -14,10 +14,7 @@ In the Aggregate, Unique, and Duplicate data models, the underlying data storage
 
 Based on the sort keys, Doris introduces a prefix index. The prefix index is a sparse index. The data in the table forms a logical data block (Data Block) according to the corresponding number of rows. Each logical data block stores an index entry in the prefix index table, where the length of the index entry does not exceed 36 bytes. The entry content is the prefix composed of the sorted columns of the first row in the data block. When looking up the prefix index table, it helps determine the starting row number of the logical data block where the row data is located. Because the prefix index is relatively small, it can be fully cached in memory, allowing for quick data block location and significantly improving query efficiency.
 
-:::tip
-
-The first 36 bytes of a row in a data block are used as the prefix index for that row. When encountering a VARCHAR type, the prefix index is directly truncated. If the first column is VARCHAR, even if it does not reach 36 bytes, it will be directly truncated, and the subsequent columns will not be included in the prefix index.
-:::
+> **tip**: The first 36 bytes of a row in a data block are used as the prefix index for that row. When encountering a VARCHAR type, the prefix index is directly truncated. If the first column is VARCHAR, even if it does not reach 36 bytes, it will be directly truncated, and the subsequent columns will not be included in the prefix index.
 
 ## Use Cases
 
@@ -29,17 +26,13 @@ There is no specific syntax to define a prefix index. When creating a table, the
 
 ### Recommendations for Prefix Index Selection
 
-:::tip
-
-Because the Key definition of a table is unique, a table has only one set of prefix indexes. Therefore, it is important to choose an appropriate prefix index when designing the table structure. The following recommendations can be considered:
+> **tip**: Because the Key definition of a table is unique, a table has only one set of prefix indexes. Therefore, it is important to choose an appropriate prefix index when designing the table structure. The following recommendations can be considered:
 1. Choose the fields most commonly used in WHERE filtering conditions as the Key.
 2. Place the more frequently used fields at the front, as prefix indexes are only effective for fields in the WHERE condition that are part of the Key's prefix.
 
 For queries that use other columns not covered by the prefix index as conditions, the efficiency may not meet the requirements. There are two solutions:
 1. Create an inverted index on the columns that require accelerated queries, as a table can have many inverted indexes.
 2. For DUPLICATE tables, multi-prefix indexes can be indirectly achieved by creating corresponding strongly consistent materialized views with adjusted column orders. For more details, refer to query acceleration/materialized views.
-
-:::
 
 ## Using Indexes
 

@@ -114,7 +114,7 @@ Deployment examples for FoundationDB are available in the fdb-kubernetes-operato
       ```
    The Doris Operator repository provides four deployment configurations for FoundationDB: [Minimal single-replica deployment](https://raw.githubusercontent.com/apache/doris-operator/refs/heads/master/doc/examples/disaggregated/fdb/cluster-single.yaml), [Minimal two-replica deployment](https://raw.githubusercontent.com/apache/doris-operator/refs/heads/master/doc/examples/disaggregated/fdb/cluster.yaml), [Production-grade two-replica deployment](https://raw.githubusercontent.com/apache/doris-operator/refs/heads/master/doc/examples/disaggregated/fdb/fdb_product.yaml), [Production-grade two-replica deployment using a private image registry](https://raw.githubusercontent.com/apache/doris-operator/refs/heads/master/doc/examples/disaggregated/fdb/fdb_product_private_env.yaml).
 
-:::tip Tip
+> **tip**: Tip
 - When deploying FoundationDB, FoundationDBCluster resources, `.spec.version` must be configured.
 - When FoundationDB is deployed based on fdb-kubernetes-operator, at least three hosts are required to meet the high availability requirements of the production environment.  
   :::

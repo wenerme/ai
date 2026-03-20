@@ -54,7 +54,7 @@ To import curated dashboards:
 
 1. Click **Import** for each dashboard you want to import.
 
-![CloudWatch pre-configured dashboards Grafana v12.1](/media/docs/cloudwatch/preconfigured-dashboards-cloudwatch-v12.1.png)
+[CloudWatch pre-configured dashboards Grafana v12.1]
 
 To customize one of these dashboards, Grafana recommends saving it under a different name; otherwise, Grafana upgrades will overwrite your customizations with the new version.
 

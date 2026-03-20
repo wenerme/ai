@@ -1,7 +1,5 @@
 ---
 description: 'Ingest and query Tab Separated Value data in 5 steps'
-sidebar_label: 'NYPD complaint data'
-slug: /getting-started/example-datasets/nypd_complaint_data
 title: 'NYPD Complaint Data'
 doc_type: 'guide'
 keywords: ['example dataset', 'nypd', 'crime data', 'sample data', 'public data']
@@ -30,9 +28,7 @@ There are two types of commands in this guide:
 - Some of the commands are querying the TSV files, these are run at the command prompt.
 - The rest of the commands are querying ClickHouse, and these are run in the `clickhouse-client` or Play UI.
 
-:::note
-The examples in this guide assume that you have saved the TSV file to `${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv`, please adjust the commands if needed.
-:::
+> **note**: The examples in this guide assume that you have saved the TSV file to `${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv`, please adjust the commands if needed.
 
 ## Familiarize yourself with the TSV file {#familiarize-yourself-with-the-tsv-file}
 
@@ -55,12 +51,10 @@ CMPLNT_FR_DT                Nullable(String)
 CMPLNT_FR_TM                Nullable(String)
 ```
 
-:::tip
-Most of the time the above command will let you know which fields in the input data are numeric, and which are strings, and which are tuples.  This isn't always the case.  Because ClickHouse is routineley used with datasets containing billions of records there is a default number (100) of rows examined to [infer the schema](/integrations/data-formats/json/inference) in order to avoid parsing billions of rows to infer the schema. The response below may not match what you see, as the dataset is updated several times each year. Looking at the Data Dictionary you can see that CMPLNT_NUM is specified as text, and not numeric.  By overriding the default of 100 rows for inference with the setting `SETTINGS input_format_max_rows_to_read_for_schema_inference=2000`
+> **tip**: Most of the time the above command will let you know which fields in the input data are numeric, and which are strings, and which are tuples.  This isn't always the case.  Because ClickHouse is routineley used with datasets containing billions of records there is a default number (100) of rows examined to [infer the schema](/integrations/data-formats/json/inference) in order to avoid parsing billions of rows to infer the schema. The response below may not match what you see, as the dataset is updated several times each year. Looking at the Data Dictionary you can see that CMPLNT_NUM is specified as text, and not numeric.  By overriding the default of 100 rows for inference with the setting `SETTINGS input_format_max_rows_to_read_for_schema_inference=2000`
 you can get a better idea of the content.
 
 Note: as of version 22.5 the default is now 25,000 rows for inferring the schema, so only change the setting if you're on an older version or if you need more than 25,000 rows to be sampled.
-:::
 
 Run this command at your command prompt.  You will be using `clickhouse-local` to query the data in the TSV file you downloaded.
 ```sh
@@ -273,9 +267,7 @@ Based on the above investigation:
 - Dates and times can be concatenated into DateTime types
 - There are some dates before January 1st 1970, which means we need a 64 bit DateTime
 
-:::note
-There are many more changes to be made to the types, they all can be determined by following the same investigation steps.  Look at the number of distinct strings in a field, the min and max of the numerics, and make your decisions.  The table schema that is given later in the guide has many low cardinality strings and unsigned integer fields and very few floating point numerics.
-:::
+> **note**: There are many more changes to be made to the types, they all can be determined by following the same investigation steps.  Look at the number of distinct strings in a field, the min and max of the numerics, and make your decisions.  The table schema that is given later in the guide has many low cardinality strings and unsigned integer fields and very few floating point numerics.
 
 ## Concatenate the date and time fields {#concatenate-the-date-and-time-fields}
 
@@ -355,9 +347,7 @@ Result:
 │ 1988-07-29 12:00:00.000 │ 1990-07-27 22:00:00.000 │
 └─────────────────────────┴─────────────────────────┘
 ```
-:::note
-The dates shown as `1925` above are from errors in the data.  There are several records in the original data with dates in the years `1019` - `1022` that should be `2019` - `2022`.  They're being stored as Jan 1st 1925 as that is the earliest date with a 64 bit DateTime.
-:::
+> **note**: The dates shown as `1925` above are from errors in the data.  There are several records in the original data with dates in the years `1019` - `1022` that should be `2019` - `2022`.  They're being stored as Jan 1st 1925 as that is the earliest date with a 64 bit DateTime.
 
 ## Create a table {#create-a-table}
 
@@ -410,12 +400,10 @@ Ordering by cardinality, the `ORDER BY` becomes:
 ```sql
 ORDER BY ( BORO_NM, OFNS_DESC, RPT_DT )
 ```
-:::note
-The table below will use more easily read column names, the above names will be mapped to
+> **note**: The table below will use more easily read column names, the above names will be mapped to
 ```sql
 ORDER BY ( borough, offense_description, date_reported )
 ```
-:::
 
 Putting together the changes to data types and the `ORDER BY` tuple gives this table structure:
 
@@ -492,10 +480,7 @@ We will use `clickhouse-local` tool for data preprocessing and `clickhouse-clien
 
 ### `clickhouse-local` arguments used {#clickhouse-local-arguments-used}
 
-:::tip
-`table='input'` appears in the arguments to clickhouse-local below.  clickhouse-local takes the provided input (`cat ${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv`) and inserts the input into a table.  By default the table is named `table`.  In this guide the name of the table is set to `input` to make the data flow clearer. The final argument to clickhouse-local is a query that selects from the table (`FROM input`) which is then piped to `clickhouse-client` to populate the table `NYPD_Complaint`.
-:::
-
+> **tip**: `table='input'` appears in the arguments to clickhouse-local below.  clickhouse-local takes the provided input (`cat ${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv`) and inserts the input into a table.  By default the table is named `table`.  In this guide the name of the table is set to `input` to make the data flow clearer. The final argument to clickhouse-local is a query that selects from the table (`FROM input`) which is then piped to `clickhouse-client` to populate the table `NYPD_Complaint`.
 ```sql
 cat ${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv \
   | clickhouse-local --table='input' --input-format='TSVWithNames' \
@@ -542,9 +527,7 @@ cat ${HOME}/NYPD_Complaint_Data_Current__Year_To_Date_.tsv \
 
 ## Validate the data {#validate-data}
 
-:::note
-The dataset changes once or more per year, your counts may not match what is in this document.
-:::
+> **note**: The dataset changes once or more per year, your counts may not match what is in this document.
 
 Query:
 

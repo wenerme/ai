@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Azure Anthropic (Claude via Azure Foundry)
 
@@ -188,9 +187,6 @@ model_list:
 
 ### 3. Test it
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
 --header 'Content-Type: application/json' \
@@ -205,9 +201,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     "max_tokens": 1000
 }'
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 from openai import OpenAI
@@ -227,9 +220,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 ## Messages API
 
@@ -294,11 +284,7 @@ Azure Anthropic supports the same parameters as the main Anthropic provider:
 "reasoning_effort"
 ```
 
-:::info
-
-Azure Anthropic API requires `max_tokens` to be passed. LiteLLM automatically passes `max_tokens=4096` when no `max_tokens` are provided.
-
-:::
+> **info**: Azure Anthropic API requires `max_tokens` to be passed. LiteLLM automatically passes `max_tokens=4096` when no `max_tokens` are provided.
 
 ## Differences from Standard Anthropic Provider
 

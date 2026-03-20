@@ -1,7 +1,4 @@
 ---
-sidebar_position: 1
-slug: /community-wisdom/cost-optimization
-sidebar_label: 'Cost optimization'
 doc_type: 'guide'
 keywords: [
   'cost optimization',
@@ -82,9 +79,7 @@ This architecture preserves the user experience - people still see meaningful la
 - Reduced memory usage for joins and aggregations
 - Lower network transfer costs for large result sets
 
-:::note
-This is a an example specifically used for Microsoft Clarity's data scenario. If you have all your data in ClickHouse or don't have constraints against moving data to ClickHouse, try using [dictionaries](/dictionary) instead.
-:::
+> **note**: This is a an example specifically used for Microsoft Clarity's data scenario. If you have all your data in ClickHouse or don't have constraints against moving data to ClickHouse, try using [dictionaries](/dictionary) instead.
 
 ## Video sources {#video-sources}
 

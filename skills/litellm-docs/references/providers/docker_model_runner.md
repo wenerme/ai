@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Docker Model Runner
 
@@ -12,9 +11,6 @@ import TabItem from '@theme/TabItem';
 | Link to Provider Doc | [Docker Model Runner ↗](https://docs.docker.com/ai/model-runner/) |
 | Base URL | `http://localhost:22088` |
 | Supported Operations | [`/chat/completions`](#sample-usage) |
-
-<br />
-<br />
 
 https://docs.docker.com/ai/model-runner/
 
@@ -164,9 +160,6 @@ litellm --config config.yaml
 # RUNNING on http://0.0.0.0:4000
 ```
 
-<Tabs>
-<TabItem value="openai-sdk" label="OpenAI SDK">
-
 ```python showLineNumbers title="Docker Model Runner via Proxy - Non-streaming"
 from openai import OpenAI
 
@@ -206,10 +199,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="litellm-sdk" label="LiteLLM SDK">
-
 ```python showLineNumbers title="Docker Model Runner via Proxy - LiteLLM SDK"
 import litellm
 
@@ -241,10 +230,6 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="Docker Model Runner via Proxy - cURL"
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -266,12 +251,8 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 For more detailed information on using the LiteLLM Proxy, see the [LiteLLM Proxy documentation](../providers/litellm_proxy).
 
 ## API Reference
 
 For detailed API information, see the [Docker Model Runner API Reference](https://docs.docker.com/ai/model-runner/api-reference/).
-

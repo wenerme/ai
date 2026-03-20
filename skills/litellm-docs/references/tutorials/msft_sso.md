@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Microsoft SSO: Sync Groups, Members with LiteLLM
 
@@ -6,16 +5,11 @@ Sync Microsoft SSO Groups, Members with LiteLLM Teams.
 
 <Image img={require('../../img/litellm_entra_id.png')}  style={{ width: '800px', height: 'auto' }} />
 
-<br />
-<br />
-
-
 ## Prerequisites
 
 - An Azure Entra ID account with administrative access
 - A LiteLLM Enterprise App set up in your Azure Portal
 - Access to Microsoft Entra ID (Azure AD)
-
 
 ## Overview of this tutorial
 
@@ -29,7 +23,6 @@ In this step, our goal is to have LiteLLM automatically create a new team on the
 
 ### 1.1 Create a new group in Entra ID
 
-
 Navigate to [your Azure Portal](https://portal.azure.com/) > Groups > New Group. Create a new group. 
 
 <Image img={require('../../img/entra_create_team.png')}  style={{ width: '800px', height: 'auto' }} />
@@ -40,19 +33,13 @@ On your Azure Portal, navigate to `Enterprise Applications` > Select your litell
 
 <Image img={require('../../img/msft_enterprise_app.png')}  style={{ width: '800px', height: 'auto' }} />
 
-<br />
-<br />
-
 Once you've selected your litellm app, click on `Users and Groups` > `Add user/group` 
 
 <Image img={require('../../img/msft_enterprise_assign_group.png')}  style={{ width: '800px', height: 'auto' }} />
 
-<br />
-
 Now select the group you created in step 1.1. And add it to the LiteLLM Enterprise App. At this point we have added `Production LLM Evals Group` to the LiteLLM Enterprise App. The next steps is having LiteLLM automatically create the `Production LLM Evals Group` on the LiteLLM DB when a new user signs in.
 
 <Image img={require('../../img/msft_enterprise_select_group.png')}  style={{ width: '800px', height: 'auto' }} />
-
 
 ### 1.3 Sign in to LiteLLM UI via SSO
 
@@ -86,7 +73,6 @@ Navigate to the `Production LLM Evals` Group in Entra ID.
 
 <Image img={require('../../img/msft_member_1.png')}  style={{ width: '800px', height: 'auto' }} />
 
-
 ### 2.2 Add a member to the group in Entra ID
 
 Select `Members` > `Add members`
@@ -95,15 +81,11 @@ In this stage you should add the user you want to add to the `Production LLM Eva
 
 <Image img={require('../../img/msft_member_2.png')}  style={{ width: '800px', height: 'auto' }} />
 
-
-
 ### 2.3 Sign in as the new user on LiteLLM UI
 
 Sign in as the new user on LiteLLM UI. You should be redirected to the Entra ID SSO page. This SSO sign in flow will trigger LiteLLM to fetch the latest Groups and Members from Azure Entra ID. During this step LiteLLM sync it's teams, team members with what is available from Entra ID
 
 <Image img={require('../../img/msft_sso_sign_in.png')}  style={{ width: '800px', height: 'auto' }} />
-
-
 
 ### 2.4 Check the team membership on LiteLLM UI
 
@@ -139,7 +121,6 @@ litellm_settings:
 
 <Image img={require('../../img/msft_default_settings.png')}  style={{ width: '900px', height: 'auto' }} />
 
-
 ## 4. Using Entra ID App Roles for User Permissions
 
 You can assign user roles directly from Entra ID using App Roles. LiteLLM will automatically read the app roles from the JWT token during SSO sign-in and assign the corresponding role to the user.
@@ -164,7 +145,6 @@ LiteLLM supports the following app roles (case-insensitive):
    - **Description**: Administrator access to LiteLLM proxy
    - **Allowed member types**: Users/Groups
 
-
 4. Click **Apply** to save the role
 
 ### 4.3 Assign Users to App Roles
@@ -173,7 +153,6 @@ LiteLLM supports the following app roles (case-insensitive):
 2. Select your LiteLLM application
 3. Go to **Users and groups** > **Add user/group**
 4. Select the user and assign them to one of the app roles you created
-
 
 ### 4.4 Test the Role Assignment
 
@@ -195,16 +174,3 @@ This walks through setting up sso auto-add for **Microsoft Entra ID**
 Follow along this video for a walkthrough of how to set this up with Microsoft Entra ID
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/ea711323aa9a496d84a01fd7b2a12f54?sid=c53e238c-5bfd-4135-b8fb-b5b1a08632cf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-
-
-
-
-
-
-
-
-
-
-
-

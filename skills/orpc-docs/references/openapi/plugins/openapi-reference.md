@@ -7,9 +7,7 @@ description: A plugin that serves API reference documentation and the OpenAPI sp
 
 This plugin provides API reference documentation powered by [Scalar](https://github.com/scalar/scalar) or [Swagger UI](https://swagger.io/tools/swagger-ui/), along with the OpenAPI specification in JSON format.
 
-::: info
-This plugin relies on the [OpenAPI Generator](/docs/openapi/openapi-specification). Please review its documentation before using this plugin.
-:::
+> **info**: This plugin relies on the [OpenAPI Generator](/docs/openapi/openapi-specification). Please review its documentation before using this plugin.
 
 ## Setup
 
@@ -38,6 +36,4 @@ const handler = new OpenAPIHandler(router, {
 })
 ```
 
-::: info
-By default, the API reference client is served at the root path (`/`), and the OpenAPI specification is available at `/spec.json`. You can customize these paths by providing the `docsPath` and `specPath` options.
-:::
+> **info**: By default, the API reference client is served at the root path (`/`), and the OpenAPI specification is available at `/spec.json`. You can customize these paths by providing the `docsPath` and `specPath` options.

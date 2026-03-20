@@ -82,7 +82,6 @@ import asyncio
 
 import litellm
 
-
 async def main():
     response = await litellm.acompletion(
         model="aiml/anthropic/claude-3-5-haiku",  # The model name must include prefix "openai" + the model name from ai/ml api
@@ -97,7 +96,6 @@ async def main():
     )
     print(response)
 
-
 if __name__ == "__main__":
     asyncio.run(main())
 ```
@@ -109,7 +107,6 @@ import asyncio
 import traceback
 
 import litellm
-
 
 async def main():
     try:
@@ -128,7 +125,6 @@ async def main():
         print(f"error occurred: {traceback.format_exc()}")
         pass
 
-
 if __name__ == "__main__":
     asyncio.run(main())
 ```
@@ -140,7 +136,6 @@ import asyncio
 
 import litellm
 
-
 async def main():
     response = await litellm.aembedding(
         model="aiml/text-embedding-3-small", # The model name must include prefix "openai" + the model name from ai/ml api
@@ -149,7 +144,6 @@ async def main():
         input="Your text string",
     )
     print(response)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -162,7 +156,6 @@ import asyncio
 
 import litellm
 
-
 async def main():
     response = await litellm.aimage_generation(
         model="aiml/dall-e-3",  # The model name must include prefix "openai" + the model name from ai/ml api
@@ -171,7 +164,6 @@ async def main():
         prompt="A cute baby sea otter",
     )
     print(response)
-
 
 if __name__ == "__main__":
     asyncio.run(main())

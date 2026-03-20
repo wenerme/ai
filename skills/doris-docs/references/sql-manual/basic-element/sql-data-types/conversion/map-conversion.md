@@ -12,10 +12,9 @@ MAP type is used to store and process key-value pair data, which can contain var
 
 ### FROM String
 
-:::caution Behavior Change
+> **caution**: Behavior Change
 Before version 4.0, some strings that didn't meet the MAP format might be converted normally (for example, '{1:1,2}').
 Starting from version 4.0, strings that don't meet the MAP format will report an error in strict mode and return NULL in non-strict mode.
-:::
 
 #### Strict Mode
 

@@ -59,7 +59,6 @@ claude mcp add <server-name> <O2_URL>/api/<ORG_ID>/mcp -t http --header "Authori
     claude mcp add o2 http://localhost:5080/api/default/mcp -t http --header "Authorization: Basic <YOUR_BASE64_TOKEN>"
     ```
 
-
 ### Configuration Scope
 
 By default, MCP servers are added to **local scope** (project-specific). You can specify different scopes:
@@ -299,7 +298,6 @@ Once connected, you can ask Claude to:
 * Never commit Base64 tokens; store credentials securely using environment variables or a secrets manager and rotate them regularly.
 * Always test MCP connections in a non-production environment and verify permissions and network access before going live.
 * Keep Claude Code CLI updated and review release notes to stay current with MCP features and improvements.
-
 
 ## Notes
 

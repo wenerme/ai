@@ -12,7 +12,7 @@ Set this to `0.0.0.0` or `true` to listen on all addresses, including LAN and pu
 
 This can be set via the CLI using `--host 0.0.0.0` or `--host`.
 
-::: tip NOTE
+> **tip**: NOTE
 
 There are cases when other servers might respond instead of Vite.
 
@@ -33,14 +33,10 @@ export default defineConfig({
 
 The second case is when wildcard hosts (e.g. `0.0.0.0`) are used. This is because servers listening on non-wildcard hosts take priority over those listening on wildcard hosts.
 
-:::
-
-::: tip Accessing the server on WSL2 from your LAN
+> **tip**: Accessing the server on WSL2 from your LAN
 
 When running Vite on WSL2, it is not sufficient to set `host: true` to access the server from your LAN.
 See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan) for more details.
-
-:::
 
 ## server.allowedHosts
 
@@ -53,7 +49,7 @@ When using HTTPS, this check is skipped.
 
 If a string starts with `.`, it will allow that hostname without the `.` and all subdomains under the hostname. For example, `.example.com` will allow `example.com`, `foo.example.com`, and `foo.bar.example.com`. If set to `true`, the server is allowed to respond to requests for any hosts.
 
-::: details What hosts are safe to be added?
+> **details**: What hosts are safe to be added?
 
 Hosts that you have control over which IP addresses they resolve to are safe to add to the list of allowed hosts.
 
@@ -61,17 +57,10 @@ For example, if you own a domain `vite.dev`, you can add `vite.dev` and `.vite.d
 
 Especially, you should never add Top-Level Domains like `.com` to the list. This is because anyone can purchase a domain like `example.com` and control the IP address it resolves to.
 
-:::
+> **danger**: Setting `server.allowedHosts` to `true` allows any website to send requests to your dev server through DNS rebinding attacks, allowing them to download your source code and content. We recommend always using an explicit list of allowed hosts. See [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6) for more details.
 
-::: danger
-
-Setting `server.allowedHosts` to `true` allows any website to send requests to your dev server through DNS rebinding attacks, allowing them to download your source code and content. We recommend always using an explicit list of allowed hosts. See [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6) for more details.
-
-:::
-
-::: details Configure via environment variable
+> **details**: Configure via environment variable
 You can set the environment variable `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` to add an additional allowed host.
-:::
 
 ## server.port
 
@@ -180,11 +169,7 @@ export default defineConfig({
 
 Configure CORS for the dev server. Pass an [options object](https://github.com/expressjs/cors#configuration-options) to fine tune the behavior or `true` to allow any origin.
 
-::: danger
-
-Setting `server.cors` to `true` allows any website to send requests to your dev server and download your source code and content. We recommend always using an explicit list of allowed origins.
-
-:::
+> **danger**: Setting `server.cors` to `true` allows any website to send requests to your dev server and download your source code and content. We recommend always using an explicit list of allowed origins.
 
 ## server.headers
 
@@ -208,7 +193,7 @@ When `server.hmr.server` is defined, Vite will process the HMR connection reques
 
 Check out [`vite-setup-catalogue`](https://github.com/sapphi-red/vite-setup-catalogue) for some examples.
 
-::: tip NOTE
+> **tip**: NOTE
 
 With the default configuration, reverse proxies in front of Vite are expected to support proxying WebSocket. If the Vite HMR client fails to connect WebSocket, the client will fall back to connecting the WebSocket directly to the Vite HMR server bypassing the reverse proxies:
 
@@ -221,8 +206,6 @@ The error that appears in the Browser when the fallback happens can be ignored. 
 - configure the reverse proxy to proxy WebSocket too
 - set [`server.strictPort = true`](#server-strictport) and set `server.hmr.clientPort` to the same value with `server.port`
 - set `server.hmr.port` to a different value from [`server.port`](#server-port)
-
-:::
 
 ## server.forwardConsole
 
@@ -294,13 +277,11 @@ The Vite server watcher watches the `root` and skips the `.git/`, `node_modules/
 
 If set to `null`, no files will be watched. [`server.watcher`](/guide/api-javascript.html#vitedevserver) will provide a compatible event emitter, but calling `add` or `unwatch` will have no effect.
 
-::: warning Watching files in `node_modules`
+> **warning**: Watching files in `node_modules`
 
 It's currently not possible to watch files and packages in `node_modules`. For further progress and workarounds, you can follow [issue #8619](https://github.com/vitejs/vite/issues/8619).
 
-:::
-
-::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
+> **warning**: Using Vite on Windows Subsystem for Linux (WSL) 2
 
 When running Vite on WSL2, file system watching does not work when a file is edited by Windows applications (non-WSL2 process). This is due to [a WSL2 limitation](https://github.com/microsoft/WSL/issues/4739). This also applies to running on Docker with a WSL2 backend.
 
@@ -310,8 +291,6 @@ To fix it, you could either:
   - It is also recommended to move the project folder outside of a Windows filesystem. Accessing Windows filesystem from WSL2 is slow. Removing that overhead will improve performance.
 - Set `{ usePolling: true }`.
   - Note that [`usePolling` leads to high CPU utilization](https://github.com/paulmillr/chokidar/tree/3.6.0#performance).
-
-:::
 
 ## server.middlewareMode
 
@@ -413,11 +392,9 @@ export default defineConfig({
 
 Blocklist for sensitive files being restricted to be served by Vite dev server. This will have higher priority than [`server.fs.allow`](#server-fs-allow). [picomatch patterns](https://github.com/micromatch/picomatch#globbing-features) are supported.
 
-::: tip NOTE
+> **tip**: NOTE
 
 This blocklist does not apply to [the public directory](/guide/assets.md#the-public-directory). All files in the public directory are served without any filtering, since they are copied directly to the output directory during build.
-
-:::
 
 ## server.origin
 
@@ -456,6 +433,5 @@ export default defineConfig({
 })
 ```
 
-::: tip Note
+> **tip**: Note
 [`server.sourcemapIgnoreList`](#server-sourcemapignorelist) and [`build.rollupOptions.output.sourcemapIgnoreList`](https://rollupjs.org/configuration-options/#output-sourcemapignorelist) need to be set independently. `server.sourcemapIgnoreList` is a server only config and doesn't get its default value from the defined rollup options.
-:::

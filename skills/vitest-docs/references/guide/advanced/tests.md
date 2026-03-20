@@ -1,8 +1,6 @@
 # Running Tests <Badge type="danger">advanced</Badge> {#running-tests}
 
-::: warning
-This guide explains how to use the advanced API to run tests via a Node.js script. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
-:::
+> **warning**: This guide explains how to use the advanced API to run tests via a Node.js script. If you just want to [run tests](/guide/), you probably don't need this. It is primarily used by library authors.
 
 Vitest exposes two methods to initiate Vitest:
 
@@ -81,8 +79,7 @@ watcher.on('change', async (file) => {
 })
 ```
 
-::: warning
-The example above shows a potential use-case if you disable the default watcher behaviour. By default, Vitest already reruns tests if files change.
+> **warning**: The example above shows a potential use-case if you disable the default watcher behaviour. By default, Vitest already reruns tests if files change.
 
 Also note that `getModuleSpecifications` will not resolve test files unless they were already processed by `globTestSpecifications`. If the file was just created, use `project.matchesGlobPattern` instead:
 
@@ -100,7 +97,6 @@ watcher.on('add', async (file) => {
   }
 })
 ```
-:::
 
 In cases where you need to disable the watcher, you can pass down `server.watch: null` since Vite 5.3 or `server.watch: { ignored: ['*/*'] }` to a Vite config:
 

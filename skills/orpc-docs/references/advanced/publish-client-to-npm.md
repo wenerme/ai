@@ -7,17 +7,13 @@ description: How to publish your oRPC client to NPM for users to consume your AP
 
 Publishing your oRPC client to NPM allows users to easily consume your APIs as a software development kit (SDK).
 
-::: info
-Before you start, we recommend watching some [publish typescript library to npm tutorials](https://www.youtube.com/results?search_query=publish+typescript+library+to+npm) to get familiar with the process.
-:::
+> **info**: Before you start, we recommend watching some [publish typescript library to npm tutorials](https://www.youtube.com/results?search_query=publish+typescript+library+to+npm) to get familiar with the process.
 
 ## Prerequisites
 
 You must have a project already set up with oRPC. [Contract First](/docs/contract-first/define-contract) is the preferred approach. If you haven't set one up yet, you can clone an [oRPC playground](/docs/playgrounds) and start from there.
 
-::: info
-In this guide, we'll use [pnpm](https://pnpm.io/) as the package manager and [tsdown](https://tsdown.dev/) for bundling the package. You can use other package managers and bundlers, but the commands may differ.
-:::
+> **info**: In this guide, we'll use [pnpm](https://pnpm.io/) as the package manager and [tsdown](https://tsdown.dev/) for bundling the package. You can use other package managers and bundlers, but the commands may differ.
 
 ## Export & Scripts
 
@@ -40,9 +36,7 @@ export function createMyApi(apiKey: string): ContractRouterClient<typeof contrac
 }
 ```
 
-::: info
-This example uses [RPCLink](/docs/client/rpc-link) combined with [Contract First](/docs/contract-first/define-contract) to create a client. This is just an example, you can use any other link or client setup that you prefer.
-:::
+> **info**: This example uses [RPCLink](/docs/client/rpc-link) combined with [Contract First](/docs/contract-first/define-contract) to create a client. This is just an example, you can use any other link or client setup that you prefer.
 
 Next, configure your `package.json` with the necessary fields for publishing to NPM.
 
@@ -106,6 +100,4 @@ const myApi = createMyApi('your-api-key')
 const output = await myApi.someMethod('input')
 ```
 
-::: info
-This client includes all oRPC client features, so you can use it with any supported integrations like [Tanstack Query](/docs/integrations/tanstack-query).
-:::
+> **info**: This client includes all oRPC client features, so you can use it with any supported integrations like [Tanstack Query](/docs/integrations/tanstack-query).

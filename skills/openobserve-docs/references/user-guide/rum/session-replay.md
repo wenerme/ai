@@ -58,7 +58,6 @@ The main area shows the reconstructed view of what the user saw. This includes:
 #### Timeline
 A visual timeline at the bottom shows:
 
-
 - **Duration**: Total session length (e.g., `00:00 / 01:10:14`)
 - **Playback position**: Current position in the replay
 - **Event markers**: Visual indicators for important events:
@@ -562,7 +561,6 @@ openobserveRum.init({
 ### Analysis Workflow
 
 **Daily**:
-
 
 - Review sessions with errors
 - Check new feature adoption

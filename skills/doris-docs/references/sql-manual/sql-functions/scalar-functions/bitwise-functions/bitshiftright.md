@@ -18,7 +18,6 @@ Right shifting a number by a negative value always results in 0.
 BIT_SHIFT_RIGHT(<x>, <bits>)
 ```
 
-
 ## Parameters
 - `<x>`: The number to be shifted.
 - `<bits>`: The number of positions to shift right. It is an integer that determines how many positions `<x>` will be shifted.

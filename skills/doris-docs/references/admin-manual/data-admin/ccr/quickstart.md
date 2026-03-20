@@ -79,4 +79,3 @@ If synchronizing at the database level, fill in your_db_name, and leave your_tab
 If synchronizing at the table level, fill in both your_db_name and your_table_name
 The name used to initiate the synchronization job can only be used once
 ```
-

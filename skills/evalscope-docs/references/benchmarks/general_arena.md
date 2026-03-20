@@ -1,6 +1,5 @@
 # GeneralArena
 
-
 ## Overview
 
 GeneralArena is a custom benchmark designed to evaluate the performance of large language models in a competitive setting, where models are pitted against each other in custom tasks to determine their relative strengths and weaknesses.
@@ -28,7 +27,6 @@ GeneralArena is a custom benchmark designed to evaluate the performance of large
 - Aggregation: ELO rating calculation
 - See [Arena User Guide](https://evalscope.readthedocs.io/en/latest/user_guides/arena.html) for details
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ GeneralArena is a custom benchmark designed to evaluate the performance of large
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `elo` |
-
 
 ## Data Statistics
 
@@ -131,5 +128,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

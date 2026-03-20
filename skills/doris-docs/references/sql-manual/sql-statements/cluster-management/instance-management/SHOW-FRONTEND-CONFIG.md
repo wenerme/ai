@@ -20,7 +20,6 @@ SHOW FRONTEND CONFIG [LIKE "<pattern>"];
 **`<pattern>`**
 > A string that can contain ordinary characters and wildcards.
 
-
 ## Return Values
 | Column name | Describe                                            |
 |-------------|-----------------------------------------------------|
@@ -29,7 +28,6 @@ SHOW FRONTEND CONFIG [LIKE "<pattern>"];
 | IsMutable   | Whether it can be set by `ADMIN SET CONFIG` command |
 | MasterOnly  | Is it only applicable to Master FE                  |
 | Comment     | Configuration item description                      |
-
 
 ## Example
 
@@ -51,4 +49,3 @@ SHOW FRONTEND CONFIG [LIKE "<pattern>"];
     | check_java_version | true  | boolean | false     | false      |         |
     +--------------------+-------+---------+-----------+------------+---------+
     ```
-

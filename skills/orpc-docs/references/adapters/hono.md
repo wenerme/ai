@@ -40,7 +40,7 @@ app.use('/rpc/*', async (c, next) => {
 export default app
 ```
 
-::: details Body Already Used Error?
+> **details**: Body Already Used Error?
 
 If Hono middleware reads the request body before the oRPC handler processes it, an error will occur. You can solve this by using a proxy to intercept the request body parsers with Hono parsers.
 
@@ -72,8 +72,4 @@ app.use('/rpc/*', async (c, next) => {
 })
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.

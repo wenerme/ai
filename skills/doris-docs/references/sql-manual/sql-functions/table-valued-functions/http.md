@@ -14,9 +14,7 @@ Typical use cases include:
 - Directly querying HTTP API endpoints that return JSON-formatted data.
 - Accessing datasets hosted on Hugging Face.
 
-:::note
-Supported since version 4.0.2.
-:::
+> **note**: Supported since version 4.0.2.
 
 ## Syntax
 
@@ -97,6 +95,4 @@ HTTP(
 );
 ```
 
-:::tip
-For HTTP API endpoints that do not support Range Requests, the system will automatically fall back to non-Range Request mode. You can manually disable Range Requests via the `http.enable.range.request` parameter.
-:::
+> **tip**: For HTTP API endpoints that do not support Range Requests, the system will automatically fall back to non-Range Request mode. You can manually disable Range Requests via the `http.enable.range.request` parameter.

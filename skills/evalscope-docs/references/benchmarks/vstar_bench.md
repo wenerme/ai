@@ -1,6 +1,5 @@
 # V*Bench
 
-
 ## Overview
 
 V*Bench is a benchmark designed for evaluating visual search capabilities within multimodal reasoning systems. It focuses on actively locating and identifying specific visual information in high-resolution images, crucial for fine-grained visual understanding.
@@ -27,7 +26,6 @@ V*Bench is a benchmark designed for evaluating visual search capabilities within
 - Uses Chain-of-Thought (CoT) prompting with "ANSWER: [LETTER]" format
 - Metadata includes category and question ID for analysis
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ V*Bench is a benchmark designed for evaluating visual search capabilities within
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ V*Bench is a benchmark designed for evaluating visual search capabilities within
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 1690x1500 - 5759x1440 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -134,5 +130,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

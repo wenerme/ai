@@ -8,7 +8,7 @@ The distinct values feature automatically collects unique values for a stream wh
 !!! note "Who can access it"
     By default, the `Root` user has access. Access for other users is managed through **IAM** permissions in the **Metadata** module.
 
-    ![access to distinct values stream](../../images/distinct-values-access.png)
+    [access to distinct values stream]
 !!! note "Where to find it"
     Distinct values are written into automatically created metadata streams. The naming pattern is `distinct_values_<type>_<stream>`. For example, For example: `distinct_values_logs_default` and `distinct_values_logs_k8s_events`.
 ## Environment Variables
@@ -19,7 +19,7 @@ The distinct values feature automatically collects unique values for a stream wh
 ## How it works
 1. During ingestion, OpenObserve automatically collects distinct values for each stream.
 2. These values are stored in memory and written to disk in the `distinct_values_<type>_<stream>` under **Streams > Metadata** at intervals defined by `ZO_DISTINCT_VALUES_INTERVAL`.
-![metadata distinct values](../../images/metadata-distinct-values.png)
+[metadata distinct values]
 3. If `ZO_DISTINCT_VALUES_HOURLY` is enabled, values in the `distinct_values` stream are further deduplicated at the hourly level, with counts aggregated.
 - The `distinct_values` streams help accelerate `DISTINCT` queries by using pre-computed distinct values instead of scanning all ingested logs.
 ## Example

@@ -1,9 +1,7 @@
 ---
 title: "Wan2.2 Animate ComfyUI native workflow"
 description: "Unified character animation and replacement framework with precise motion and expression replication."
-sidebarTitle: "Wan2.2 Animate"
 ---
-import UpdateReminder from '/snippets/tutorials/update-reminder.mdx'
 
 Wan-Animate is a unified framework for character animation and replacement developed by the WAN Team.
 
@@ -29,9 +27,6 @@ It can also replace characters in a video with animated characters, preserving t
  referrerpolicy="strict-origin-when-cross-origin" 
  allowfullscreen>
  </iframe>
-
-<UpdateReminder/>
-
 
 ## About Wan2.2 Animate workflow
 
@@ -118,7 +113,7 @@ The Wan2.2 animate has two modes: Mix and move
 - Move: Use the character movement from the input video to animate the character in the reference image (like Wan2.2 Fun Control)
 
 #### 4.1 Mix mode
-![Workflow Instructions](/images/tutorial/video/wan/wan2_2/wan_2.2_14b_animate.jpg)
+[Workflow Instructions]
 
 0. If you are running this workflow for the first time, please use a small size for video generation, in case you don't have enough VRAM to run the workflow, and due to the `WanAnimateToVideo` limited, the video width or height should be multiples of 16.
 1. Make sure all the models are loaded correctly
@@ -137,6 +132,6 @@ The Wan2.2 animate has two modes: Mix and move
 
 We used [subgraph](/interface/features/subgraph) in the Wan2.2 animate workflow, here is how to switching to move mode:
 
-![Subgraph](/images/tutorial/video/wan/wan2_2/wan2.2_animate_subgraph.jpg)
+[Subgraph]
 
 If you want to switch to Move mode, you can disconnect `background_video` and `character_mask` inputs from the `Video Sampling and output(Subgraph)` node.

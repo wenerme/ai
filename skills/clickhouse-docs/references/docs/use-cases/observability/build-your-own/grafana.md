@@ -1,23 +1,10 @@
 ---
 title: 'Using Grafana'
 description: 'Using Grafana and ClickHouse for observability'
-slug: /observability/grafana
 keywords: ['Observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import observability_15 from '@site/static/images/use-cases/observability/observability-15.png';
-import observability_16 from '@site/static/images/use-cases/observability/observability-16.png';
-import observability_17 from '@site/static/images/use-cases/observability/observability-17.png';
-import observability_18 from '@site/static/images/use-cases/observability/observability-18.png';
-import observability_19 from '@site/static/images/use-cases/observability/observability-19.png';
-import observability_20 from '@site/static/images/use-cases/observability/observability-20.png';
-import observability_21 from '@site/static/images/use-cases/observability/observability-21.png';
-import observability_22 from '@site/static/images/use-cases/observability/observability-22.png';
-import observability_23 from '@site/static/images/use-cases/observability/observability-23.png';
-import observability_24 from '@site/static/images/use-cases/observability/observability-24.png';
-import Image from '@theme/IdealImage';
 
 # Using Grafana and ClickHouse for Observability
 
@@ -30,9 +17,8 @@ Part of this has been placing OpenTelemetry (OTel) at the core of the plugin, as
 
 On configuring a ClickHouse datasource in Grafana, the plugin allows the user to specify a default database and table for logs and traces and whether these tables conform to the OTel schema. This allows the plugin to return the columns required for correct log and trace rendering in Grafana. If you've made changes to the default OTel schema and prefer to use your own column names, these can be specified. Usage of the default OTel column names for columns such as time (`Timestamp`), log level (`SeverityText`), or message body (`Body`) means no changes need to be made.
 
-:::note HTTP or Native
+> **note**: HTTP or Native
 You can connect Grafana to ClickHouse over either the HTTP or Native protocol. The latter offers marginal performance advantages which are unlikely to be appreciable in the aggregation queries issued by Grafana users. Conversely, the HTTP protocol is typically simpler for you to proxy and introspect.
-:::
 
 The Logs configuration requires a time, log level, and message column in order for logs to be rendered correctly.
 
@@ -111,9 +97,7 @@ WHERE traceID = trace_id
 LIMIT 1000
 ```
 
-:::note
-Note how the above query uses the materialized view `otel_traces_trace_id_ts` to perform the trace id lookup. See [Accelerating Queries - Using Materialized views for lookups](/use-cases/observability/schema-design#using-materialized-views-incremental--for-fast-lookups) for further details.
-:::
+> **note**: Note how the above query uses the materialized view `otel_traces_trace_id_ts` to perform the trace id lookup. See [Accelerating Queries - Using Materialized views for lookups](/use-cases/observability/schema-design#using-materialized-views-incremental--for-fast-lookups) for further details.
 
 <Image img={observability_19} alt="Trace Details" size="lg" border/>
 

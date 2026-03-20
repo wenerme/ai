@@ -107,11 +107,9 @@ After evaluation, you can use:
 
 **Specific evaluation commands and sample outputs:** See [How to Evaluate](evaluate.md).
 
-
 :::{toctree}
 :maxdepth: 1
 
 schema.md
 sample.md
 evaluate.md
-:::

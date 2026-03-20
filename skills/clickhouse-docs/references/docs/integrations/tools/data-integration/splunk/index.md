@@ -1,26 +1,9 @@
 ---
-sidebar_label: 'Splunk'
-slug: /integrations/audit-splunk
 keywords: ['clickhouse', 'Splunk', 'audit', 'cloud']
 description: 'Store ClickHouse Cloud audit logs into Splunk.'
 title: 'Storing ClickHouse Cloud Audit logs into Splunk'
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import splunk_001 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_001.png';
-import splunk_002 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_002.png';
-import splunk_003 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_003.png';
-import splunk_004 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_004.png';
-import splunk_005 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_005.png';
-import splunk_006 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_006.png';
-import splunk_007 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_007.png';
-import splunk_008 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_008.png';
-import splunk_009 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_009.png';
-import splunk_010 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_010.png';
-import splunk_011 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_011.png';
-import splunk_012 from '@site/static/images/integrations/tools/data-integration/splunk/splunk_012.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Storing ClickHouse Cloud Audit logs into Splunk
 

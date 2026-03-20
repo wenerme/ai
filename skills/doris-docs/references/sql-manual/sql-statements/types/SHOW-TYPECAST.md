@@ -79,5 +79,3 @@ database associated with the current session by default.
     | DECIMAL256     | STRING         |
     +----------------+----------------+
     ```
-
-

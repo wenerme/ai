@@ -13,8 +13,6 @@ Bun aims to provide a consistent and predictable module resolution system that j
 
 Consider the following files.
 
-<CodeGroup>
-
 ```ts index.ts icon="/icons/typescript.svg"
 import { hello } from "./hello";
 
@@ -26,8 +24,6 @@ export function hello() {
   console.log("Hello world!");
 }
 ```
-
-</CodeGroup>
 
 When we run `index.ts`, it prints "Hello world!".
 
@@ -70,8 +66,6 @@ import { hello } from "./hello.js"; // this also works
 
 Bun supports both ES modules (`import`/`export` syntax) and CommonJS modules (`require()`/`module.exports`). The following CommonJS version would also work in Bun.
 
-<CodeGroup>
-
 ```js index.js icon="/icons/javascript.svg"
 const { hello } = require("./hello");
 
@@ -85,8 +79,6 @@ function hello() {
 
 exports.hello = hello;
 ```
-
-</CodeGroup>
 
 That said, using CommonJS is discouraged in new projects.
 
@@ -112,8 +104,6 @@ const { foo } = require("./foo"); // extensions are optional
 const { bar } = require("./bar.mjs");
 const { baz } = require("./baz.tsx");
 ```
-
-<Accordion title="What is a CommonJS module?">
 
 In 2016, ECMAScript added support for [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). ES Modules are the standard for JavaScript modules. However, millions of npm packages still use CommonJS modules.
 
@@ -141,8 +131,6 @@ The biggest difference between CommonJS and ES Modules is that CommonJS modules 
 
 - CommonJS modules and static ES Modules (`import` statements) work in a similar synchronous way, like reading a book from start to finish.
 - ES Modules also offer the option to import modules asynchronously using the `import()` function. This is like looking up additional information in the middle of reading the book without stopping.
-
-</Accordion>
 
 ### Using `import`
 
@@ -255,11 +243,9 @@ import stuff from "foo"; // this works
 import stuff from "foo/index.mjs"; // this doesn't
 ```
 
-<Note>
   **Shipping TypeScript** — Note that Bun supports the special `"bun"` export condition. If your library is written in
   TypeScript, you can publish your (un-transpiled!) TypeScript files to `npm` directly. If you specify your package's
   `*.ts` entrypoint in the `"bun"` condition, Bun will directly import and execute your TypeScript source files.
-</Note>
 
 If `exports` is not defined, Bun falls back to `"module"` (ESM imports only) then [`"main"`](https://nodejs.org/api/packages.html#main).
 
@@ -323,8 +309,6 @@ Bun also supports [Node.js-style subpath imports](https://nodejs.org/api/package
 }
 ```
 
-<Accordion title="Low-level details of CommonJS interop in Bun">
-
 Bun's JavaScript runtime has native support for CommonJS. When Bun's JavaScript transpiler detects usages of `module.exports`, it treats the file as CommonJS. The module loader will then wrap the transpiled module in a function shaped like this:
 
 ```js
@@ -338,8 +322,6 @@ Bun's JavaScript runtime has native support for CommonJS. When Bun's JavaScript 
 Once the CommonJS module is successfully evaluated, a Synthetic Module Record is created with the `default` ES Module [export set to `module.exports`](https://github.com/oven-sh/bun/blob/9b6913e1a674ceb7f670f917fc355bb8758c6c72/src/bun.js/bindings/CommonJSModuleRecord.cpp#L212-L213) and keys of the `module.exports` object are re-exported as named exports (if the `module.exports` object is an object).
 
 When using Bun's bundler, this works differently. The bundler will wrap the CommonJS module in a `require_${moduleName}` function which returns the `module.exports` object.
-
-</Accordion>
 
 ---
 

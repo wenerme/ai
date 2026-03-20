@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Introduction'
 description: 'Seamlessly connect your external data sources to ClickHouse Cloud.'
-slug: /integrations/clickpipes
 title: 'Integrating with ClickHouse Cloud'
 doc_type: 'guide'
 keywords: ['ClickPipes', 'data ingestion platform', 'streaming data', 'integration platform', 'ClickHouse Cloud']
@@ -9,25 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import Kafkasvg from '@site/static/images/integrations/logos/kafka.svg';
-import Confluentsvg from '@site/static/images/integrations/logos/confluent.svg';
-import Msksvg from '@site/static/images/integrations/logos/msk.svg';
-import Azureeventhubssvg from '@site/static/images/integrations/logos/azure_event_hubs.svg';
-import Warpstreamsvg from '@site/static/images/integrations/logos/warpstream.svg';
-import S3svg from '@site/static/images/integrations/logos/amazon_s3_logo.svg';
-import Amazonkinesis from '@site/static/images/integrations/logos/amazon_kinesis_logo.svg';
-import Gcssvg from '@site/static/images/integrations/logos/gcs.svg';
-import DOsvg from '@site/static/images/integrations/logos/digitalocean.svg';
-import ABSsvg from '@site/static/images/integrations/logos/azureblobstorage.svg';
-import Postgressvg from '@site/static/images/integrations/logos/postgresql.svg';
-import Mysqlsvg from '@site/static/images/integrations/logos/mysql.svg';
-import Mongodbsvg from '@site/static/images/integrations/logos/mongodb.svg';
-import redpanda_logo from '@site/static/images/integrations/logos/logo_redpanda.png';
-import clickpipes_stack from '@site/static/images/integrations/data-ingestion/clickpipes/clickpipes_stack.png';
-import cp_custom_role from '@site/static/images/integrations/data-ingestion/clickpipes/cp_custom_role.png';
-import cp_advanced_settings from '@site/static/images/integrations/data-ingestion/clickpipes/cp_advanced_settings.png';
-import Image from '@theme/IdealImage';
 
 # Integrating with ClickHouse Cloud
 

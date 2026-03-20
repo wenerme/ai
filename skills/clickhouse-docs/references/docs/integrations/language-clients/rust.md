@@ -1,8 +1,5 @@
 ---
-sidebar_label: 'Rust'
-sidebar_position: 5
 keywords: ['clickhouse', 'rs', 'rust', 'cargo', 'crate', 'http', 'client', 'connect', 'integrate']
-slug: /integrations/rust
 description: 'The official Rust client for connecting to ClickHouse.'
 title: 'ClickHouse Rust Client'
 doc_type: 'reference'
@@ -51,10 +48,8 @@ See also: [crates.io page](https://crates.io/crates/clickhouse).
 * `uuid` — adds `serde::uuid` to work with [uuid](https://docs.rs/uuid) crate.
 * `time` — adds `serde::time` to work with [time](https://docs.rs/time) crate.
 
-:::important
-When connecting to ClickHouse via an `HTTPS` url, either the `native-tls` or `rustls-tls` feature should be enabled.
+> **important**: When connecting to ClickHouse via an `HTTPS` url, either the `native-tls` or `rustls-tls` feature should be enabled.
 If both are enabled, the `rustls-tls` feature will take precedence.
-:::
 
 ## ClickHouse versions compatibility {#clickhouse-versions-compatibility}
 
@@ -71,16 +66,11 @@ If something is unclear or missing from the examples or from the following docum
 
 ## Usage {#usage}
 
-:::note
-[ch2rs](https://github.com/ClickHouse/ch2rs) crate is useful to generate a row type from ClickHouse.
-:::
+> **note**: [ch2rs](https://github.com/ClickHouse/ch2rs) crate is useful to generate a row type from ClickHouse.
 
 ### Creating a client instance {#creating-a-client-instance}
 
-:::tip
-Reuse created clients or clone them in order to reuse the underlying hyper connection pool.
-:::
-
+> **tip**: Reuse created clients or clone them in order to reuse the underlying hyper connection pool.
 ```rust
 use clickhouse::Client;
 
@@ -98,10 +88,7 @@ HTTPS works with either `rustls-tls` or `native-tls` cargo features.
 
 Then, create client as usual. In this example, the environment variables are used to store the connection details:
 
-:::important
-The URL should include both protocol and port, e.g. `https://instance.clickhouse.cloud:8443`.
-:::
-
+> **important**: The URL should include both protocol and port, e.g. `https://instance.clickhouse.cloud:8443`.
 ```rust
 fn read_env_var(key: &str) -> String {
     env::var(key).unwrap_or_else(|_| panic!("{key} env variable should be set"))
@@ -147,9 +134,7 @@ while let Some(row) = cursor.next().await? { .. }
 
 NB: as the entire response is streamed, cursors can return an error even after producing some rows. If this happens in your use case, you could try `query(...).with_option("wait_end_of_query", "1")` in order to enable response buffering on the server-side. [More details](/interfaces/http/#response-buffering). The `buffer_size` option can be useful, too.
 
-:::warning
-Use `wait_end_of_query` with caution when selecting rows, as it can will to higher memory consumption on the server side and will likely decrease the overall performance.
-:::
+> **warning**: Use `wait_end_of_query` with caution when selecting rows, as it can will to higher memory consumption on the server side and will likely decrease the overall performance.
 
 ### Inserting rows {#inserting-rows}
 
@@ -219,12 +204,10 @@ inserter.end().await?;
 * Time thresholds implemented by using [quanta](https://docs.rs/quanta) crate to speed the `inserter` up. Not used if `test-util` is enabled (thus, time can be managed by `tokio::time::advance()` in custom tests).
 * All rows between `commit()` calls are inserted in the same `INSERT` statement.
 
-:::warning
-Don't forget to flush if you want to terminate/finalize inserting:
+> **warning**: Don't forget to flush if you want to terminate/finalize inserting:
 ```rust
 inserter.end().await?;
 ```
-:::
 
 ### Executing DDLs {#executing-ddls}
 
@@ -274,9 +257,7 @@ let numbers = client
 
 Besides `query`, it works similarly with `insert` and `inserter` methods.
 
-:::danger
-If you set `query_id` manually, make sure that it is unique. UUIDs are a good choice for this.
-:::
+> **danger**: If you set `query_id` manually, make sure that it is unique. UUIDs are a good choice for this.
 
 See also: [query_id example](https://github.com/ClickHouse/clickhouse-rs/blob/main/examples/query_id.rs) in the client repo.
 
@@ -290,9 +271,7 @@ let client = Client::default()
     .with_option("session_id", "my-session");
 ```
 
-:::danger
-With clustered deployments, due to lack of "sticky sessions", you need to be connected to a _particular cluster node_ in order to properly utilize this feature, cause, for example, a round-robin load-balancer won't guarantee that the consequent requests will be processed by the same ClickHouse node.
-:::
+> **danger**: With clustered deployments, due to lack of "sticky sessions", you need to be connected to a _particular cluster node_ in order to properly utilize this feature, cause, for example, a round-robin load-balancer won't guarantee that the consequent requests will be processed by the same ClickHouse node.
 
 See also: [session_id example](https://github.com/ClickHouse/clickhouse-rs/blob/main/examples/session_id.rs) in the client repo.
 
@@ -330,19 +309,15 @@ let hyper_client = HyperClient::builder(TokioExecutor::new())
 let client = Client::with_http_client(hyper_client).with_url("http://localhost:8123");
 ```
 
-:::warning
-This example relies on the legacy Hyper API and is a subject to change in the future.
-:::
+> **warning**: This example relies on the legacy Hyper API and is a subject to change in the future.
 
 See also: [custom HTTP client example](https://github.com/ClickHouse/clickhouse-rs/blob/main/examples/custom_http_client.rs) in the client repo.
 
 ## Data types {#data-types}
 
-:::info
-See also the additional examples:
+> **info**: See also the additional examples:
 * [Simpler ClickHouse data types](https://github.com/ClickHouse/clickhouse-rs/blob/main/examples/data_types_derive_simple.rs)
 * [Container-like ClickHouse data types](https://github.com/ClickHouse/clickhouse-rs/blob/main/examples/data_types_derive_containers.rs)
-:::
 
 * `(U)Int(8|16|32|64|128)` maps to/from corresponding `(u|i)(8|16|32|64|128)` types or newtypes around them.
 * `(U)Int256` aren't supported directly, but there is [a workaround for it](https://github.com/ClickHouse/clickhouse-rs/issues/48).

@@ -1,6 +1,5 @@
 ---
 title: attachmentsDir | Config
-outline: deep
 ---
 
 # attachmentsDir

@@ -1,17 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Tensor parallelism
 
@@ -19,8 +6,7 @@ rendered properly in your Markdown viewer.
 
 The list below shows models with native tensor parallelism support. Open a GitHub issue or pull request to add support for a model.
 
-<details>
-<summary>Show supported models</summary>
+Show supported models
 
 * [Cohere](./model_doc/cohere) and [Cohere 2](./model_doc/cohere2)
 * [Gemma](./model_doc/gemma) and [Gemma 2](./model_doc/gemma2)
@@ -33,8 +19,6 @@ The list below shows models with native tensor parallelism support. Open a GitHu
 * [Phi](./model_doc/phi) and [Phi-3](./model_doc/phi3)
 * [Qwen2](./model_doc/qwen2), [Qwen2Moe](./model_doc/qwen2_moe), and [Qwen2-VL](./model_doc/qwen2_5_vl)
 * [Starcoder2](./model_doc/starcoder2)
-
-</details>
 
 This guide covers enabling tensor parallelism in Transformers and the available partitioning strategies.
 
@@ -163,12 +147,6 @@ def forward(self, hidden_states):
 
 Local strategies (`local_colwise`, `local_rowwise`, `local_packed_rowwise`) don't use [DTensor](https://docs.pytorch.org/docs/stable/distributed.tensor.html) because it lacks support for some operations like [torch.chunk](https://docs.pytorch.org/docs/stable/generated/torch.chunk.html). Instead, local strategies use the basic [torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html) and perform distributed logic manually.
 
-<!--
-Readd this when I get the exact error message
-> [!TIP]
-> If you are using a custom partitioning strategy, and it's not working with `... is not supported` error, try using the `local*` strategies to see if they work better.
--->
-
 ## Custom partitioning strategies
 
 Inherit from [TensorParallelLayer](https://github.com/huggingface/transformers/blob/main/src/transformers/integrations/tensor_parallel.py) to create a custom partitioning strategy. Implement `partition_tensor`, `_prepare_input_fn` and `_prepare_output_fn`.
@@ -249,7 +227,7 @@ Tensor parallelism significantly speeds up inference, especially for large batch
 This chart shows the expected speedup for a single forward pass on [Llama](./model_doc/llama) with a sequence length of 512.
 
 <div style="text-align: center">
-    <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Meta-Llama-3-8B-Instruct%2C%20seqlen%20%3D%20512%2C%20python%2C%20w_%20compile.png">
+    
 </div>
 
 ## Design implementation

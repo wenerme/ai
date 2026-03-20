@@ -31,7 +31,6 @@ If decryption is successful: Returns the decrypted data, usually a binary repres
 
 If decryption fails: Returns NULL.
 
-
 ## Examples
 
 ### Decryption successful

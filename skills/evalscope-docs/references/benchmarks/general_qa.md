@@ -1,6 +1,5 @@
 # General-QA
 
-
 ## Overview
 
 General-QA is a customizable question answering benchmark for evaluating language models on open-ended text generation tasks. It supports flexible data formats and configurable evaluation metrics.
@@ -27,7 +26,6 @@ General-QA is a customizable question answering benchmark for evaluating languag
 - Evaluates on **test** split
 - See [User Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/custom_dataset/llm.html#qa) for dataset format
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ General-QA is a customizable question answering benchmark for evaluating languag
 | **Metrics** | `BLEU`, `Rouge` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -86,5 +83,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

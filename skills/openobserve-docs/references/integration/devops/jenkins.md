@@ -23,8 +23,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
     1. In Jenkins, go to **Manage Jenkins → Manage Plugins**
     2. Under **Available Plugins**, search for **OpenTelemetry**
     3. Select and install the plugin, Restart Jenkins if prompted
-    ![Install the OpenTelemetry Plugin](../images/devops/jenkins/otel-plugin.png)
-
+    [Install the OpenTelemetry Plugin]
 
 ??? "Step 2: Configure OpenTelemetry with OpenObserve"
 
@@ -38,7 +37,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
         ```
         Basic <OpenObserveToken>
         ```
-        ![OTLP Authorization](../images/devops/jenkins/header.png)
+        [OTLP Authorization]
     5. **Add Configuration Properties (Advanced Settings)** : Under **Advanced → Configuration Properties**, add:
 
         ```
@@ -46,7 +45,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
         otel.exporter.otlp.headers=organization=prometheus-demo,stream-name=default
         otel.logs.exporter=otlp
         ```
-        ![Configure OpenTelemetry with OpenObserve](../images/devops/jenkins/config.png){: style="height:500px"}
+        [Configure OpenTelemetry with OpenObserve]{: style="height:500px"}
 
         > These settings configure the OpenTelemetry plugin to export logs and traces directly to OpenObserve.
 
@@ -54,7 +53,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
         - Under **Visualization Backend**, select **Custom Observability Backend**
         - **Trace Visualization URL Template**: `https://<O2_HOST>/web/traces`
         - **Metrics Visualization URL Template**: `https://<O2_HOST>/web/metrics`
-        ![Set Observability Backend URLs](../images/devops/jenkins/observability-backend.png){: style="height:500px"}
+        [Set Observability Backend URLs]{: style="height:500px"}
         > These URLs allow Jenkins to link directly to OpenObserve dashboards and trace views.
 
 ??? "Step 3: Create a Sample Jenkins Pipeline (Optional)"
@@ -63,7 +62,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 
     1. Go to **New Item** → Name: `Test Pipeline` → Select **Pipeline**
 
-        ![Create a Sample Jenkins Pipeline](../images/devops/jenkins/sample-pipeline.png){: style="height:500px"}
+        [Create a Sample Jenkins Pipeline]{: style="height:500px"}
     2. In the **Pipeline script** field, paste the following:
         ```groovy
         pipeline {
@@ -143,7 +142,6 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
     - Confirm the URLs:
         - Traces: `https://<O2_HOST>/web/traces`
         - Metrics: `https://<O2_HOST>/web/metrics`
-
 
 ??? "No pipeline logs or metrics?"
 

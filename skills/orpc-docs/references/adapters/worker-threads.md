@@ -56,6 +56,4 @@ const link = new RPCLink({
 clientPort.start()
 ```
 
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).

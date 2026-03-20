@@ -46,7 +46,6 @@ By default, LiteLLM will map `dolphin` and `chatdolphin` to nlp cloud.
 
 If you're trying to call any other model (e.g. GPT-J, Llama-2, etc.) with nlp cloud, just set it as your custom llm provider. 
 
-
 ```python
 import os
 from litellm import completion 

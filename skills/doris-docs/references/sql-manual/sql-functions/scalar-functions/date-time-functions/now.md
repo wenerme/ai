@@ -25,7 +25,7 @@ NOW([`<precision>`])
 
 | Parameter | Description |
 | --------- | ----------- |
-| `<precision>` | Optional parameter indicating the precision of the fractional seconds part of the return value, with a range from 0 to 6. Default is 0, meaning no fractional seconds are returned. `<br/>`Due to JDK implementation limitations, if users build FE with JDK8, precision is only supported up to milliseconds (three digits after the decimal point), and higher precision digits will be filled with zeros. For higher precision requirements, please use JDK11. |
+| `<precision>` | Optional parameter indicating the precision of the fractional seconds part of the return value, with a range from 0 to 6. Default is 0, meaning no fractional seconds are returned. ``Due to JDK implementation limitations, if users build FE with JDK8, precision is only supported up to milliseconds (three digits after the decimal point), and higher precision digits will be filled with zeros. For higher precision requirements, please use JDK11. |
 
 ## Return Value
 

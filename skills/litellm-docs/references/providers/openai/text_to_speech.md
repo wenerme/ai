@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI - Text-to-speech
 
@@ -103,7 +101,6 @@ litellm --config /path/to/config.yaml
 | tts-1-hd | speech(model="tts-1-hd", voice="alloy", input="Hello, world!") |
 | gpt-4o-mini-tts | speech(model="gpt-4o-mini-tts", voice="alloy", input="Hello, world!") |
 
-
 ## ✨ Enterprise LiteLLM Proxy - Set Max Request File Size 
 
 Use this when you want to limit the file size for requests sent to `audio/transcriptions`
@@ -125,7 +122,6 @@ curl --location 'http://localhost:4000/v1/audio/transcriptions' \
 --form 'file=@"/Users/ishaanjaffer/Github/litellm/tests/gettysburg.wav"' \
 --form 'model="whisper"'
 ```
-
 
 Expect to see the follow response 
 

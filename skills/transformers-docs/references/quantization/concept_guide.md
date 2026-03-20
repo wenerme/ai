@@ -1,18 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
-
--->
 
 # Quantization concepts
 
@@ -35,7 +21,7 @@ The core idea is to map the range of values found in the original float32 weight
 This section covers how some quantization techniques work.
 
 <div class="flex justify-center">
-    <img width="606" alt="quant_visual" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/quant_visual.png" />
+    [quant_visual]
 </div>
 
 ### Affine quantization
@@ -75,7 +61,7 @@ x \approx S \cdot (q - Z)
 $$
 
 <div class="flex justify-center">
-    <img width="606" alt="dequant" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/dequant.png" />
+    [dequant]
 </div>
 
 During inference, computations like matrix multiplication are performed using the int8 values ( $q$ ), and the result is dequantized back to float32 (often using a higher-precision accumulation type like int32 internally) before it is passed to the next layer.
@@ -83,7 +69,7 @@ During inference, computations like matrix multiplication are performed using th
 ### int4 and weight packing
 
 <div class="flex justify-center">
-    <img width="606" alt="weight packing" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/weight_packing.png" />
+    [weight packing]
 </div>
 
 int4 quantization further reduces the model size and memory usage (halving it compared to int8). The same affine or symmetric quantization principles apply, mapping the float32 range to the 16 possible values representable by int4 ( $[-8, 7]$ for signed int4).
@@ -97,7 +83,7 @@ However, int4 quantization typically results in a larger accuracy drop compared 
 ### FP8 Quantization (A8W8)
 
 <div class="flex justify-center">
-    <img width="606" alt="fp8" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/fp8.png" />
+    [fp8]
 </div>
 A newer datatype, 8-bit floating-point (FP8), offers another way to reduce precision while retaining more accuracy than int8 in certain scenarios. FP8 keeps the floating-point structure (sign, exponent, mantissa) but uses fewer bits.
 
@@ -120,7 +106,7 @@ Quantization parameters ( $S$ and $Z$) can be calculated in one of two ways.
 - Per-Channel (or Per-Group/Block): Separate $S$ and $Z$ for each channel or group. More accurate and better performance at the cost of slightly more complexity and memory.
 
 <div class="flex justify-center">
-    <img width="625" alt="Granularities" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Granularities.png" />
+    [Granularities]
 </div>
 
 ## Quantization techniques

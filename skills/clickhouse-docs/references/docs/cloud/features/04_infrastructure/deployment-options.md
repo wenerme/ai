@@ -1,6 +1,5 @@
 ---
 title: 'Deployment Options'
-slug: /infrastructure/deployment-options
 description: 'Deployment options available for ClickHouse customers'
 keywords: ['bring yor own cloud', 'byoc', 'private', 'government', 'self-deployed']
 doc_type: 'reference'

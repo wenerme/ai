@@ -1,13 +1,8 @@
 ---
-sidebar_label: 'Langfuse'
-slug: /cloud/features/ai-ml/langfuse
 title: 'Langfuse'
 description: 'Langfuse is an open-source LLM engineering platform that helps teams collaboratively debug, analyze, and iterate on their LLM applications.'
 doc_type: 'reference'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Langfuse
 
@@ -78,107 +73,63 @@ flowchart TB
 
 _📹 Want to learn more? [**Watch end-to-end walkthrough**](https://langfuse.com/watch-demo?tab=observability) of Langfuse Observability and how to integrate it with your application._
 
-<Tabs groupId="observability">
-<TabItem value="trace-details" label="Trace Details">
-
 Traces allow you to track every LLM call and other relevant logic in your app.
 
 <video src="https://static.langfuse.com/docs-videos/trace-new-ui.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="sessions" label="Sessions">
 
 Sessions allow you to track multi-step conversations or agentic workflows.
 
 <video src="https://static.langfuse.com/docs-videos/sessions-new-ui.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="timeline" label="Timeline">
-
 Debug latency issues by inspecting the timeline view.
 
 <video src="https://static.langfuse.com/docs-videos/timeline-new-ui.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="users" label="Users">
 
 Add your own `userId` to monitor costs and usage for each user. Optionally, create a deep link to this view in your systems.
 
 <video src="https://static.langfuse.com/docs-videos/users-new-ui.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="agent-graphs" label="Agent Graphs">
-
 LLM agents can be visualized as a graph to illustrate the flow of complex agentic workflows.
 
 <video src="https://static.langfuse.com/docs-videos/langgraph-new-ui.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="dashboard" label="Dashboard">
 
 See quality, cost, and latency metrics in the dashboard to monitor your LLM application.
 
 <video src="https://static.langfuse.com/docs-videos/dashboard.mp4%20MOVED%20TO%20R2.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-</Tabs>
 ### Prompt management {#prompt-management}
 
 [Prompt Management](https://langfuse.com/docs/prompt-management/overview) is critical in building effective LLM applications. Langfuse provides tools to help you manage, version, and optimize your prompts throughout the development lifecycle.
 
 _📹 Want to learn more? [**Watch end-to-end walkthrough**](https://langfuse.com/watch-demo?tab=prompt) of Langfuse Prompt Management and how to integrate it with your application._
 
-<Tabs groupId="prompt-management">
-<TabItem value="create" label="Create">
-
 Create a new prompt via UI, SDKs, or API.
 
 <video src="https://static.langfuse.com/docs-videos/create-update-prompts.mp4%20MOVED%20TO%20R2.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="version-control" label="Version Control">
 
 Collaboratively version and edit prompts via UI, API, or SDKs.
 
 <video src="https://static.langfuse.com/docs-videos/create-prompt-version.mp4%20MOVED%20TO%20R2.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="deploy" label="Deploy">
-
 Deploy prompts to production or any environment via labels - without any code changes.
 
 <video src="https://static.langfuse.com/docs-videos/deploy-prompt.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="metrics" label="Metrics">
 
 Compare latency, cost, and evaluation metrics across different versions of your prompts.
 
 <video src="https://static.langfuse.com/docs-videos/prompt-metrics.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="test-in-playground" label="Test in Playground">
-
 Instantly test your prompts in the playground.
 
 <video src="https://static.langfuse.com/docs-videos/prompt-to-playground.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="link-with-traces" label="Link with Traces">
 
 Link prompts with traces to understand how they perform in the context of your LLM application.
 
 <video src="https://static.langfuse.com/docs-videos/linked-generations.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="track-changes" label="Track Changes">
-
 Track changes to your prompts to understand how they evolve over time.
 
 <video src="https://static.langfuse.com/docs-videos/track-changes.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-</Tabs>
 
 ### Evaluation & datasets {#evaluation}
 
@@ -186,43 +137,25 @@ Track changes to your prompts to understand how they evolve over time.
 
 _📹 Want to learn more? [**Watch end-to-end walkthrough**](https://langfuse.com/watch-demo?tab=evaluation) of Langfuse Evaluation and how to use it to improve your LLM application._
 
-<Tabs groupId="evaluation">
-<TabItem value="analytics" label="Analytics">
-
 Plot evaluation results in the Langfuse Dashboard.
 
 <video src="https://static.langfuse.com/docs-videos/scores-dashboard.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="user-feedback" label="User Feedback">
 
 Collect feedback from your users. Can be captured in the frontend via our Browser SDK, server-side via the SDKs or API. Video includes example application.
 
 <video src="https://static.langfuse.com/docs-videos/scores-user-feedback.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="llm-as-a-judge" label="LLM-as-a-Judge">
-
 Run fully managed LLM-as-a-judge evaluations on production or development traces. Can be applied to any step within your application for step-wise evaluations.
 
 <video src="https://static.langfuse.com/docs-videos/scores-llm-as-a-judge.mp4%20MOVED%20TO%20R2.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="experiments" label="Experiments">
 
 Evaluate prompts and models on datasets directly in the user interface. No custom code is needed.
 
 <video src="https://static.langfuse.com/docs-videos/prompt-experiments.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
 
-</TabItem>
-<TabItem value="annotation-queue" label="Annotation Queue">
-
 Baseline your evaluation workflow with human annotations via Annotation Queues.
 
 <video src="https://static.langfuse.com/docs-videos/scores-annotation-queue.mp4" autoPlay loop muted playsInline width="100%" style={{boxShadow: "0px 1px 8px -1px rgba(21, 21, 21, 0.20)", borderRadius: "4px"}} />
-
-</TabItem>
-<TabItem value="custom-evals" label="Custom Evals">
 
 Add custom evaluation results; supports numeric, boolean, and categorical values.
 
@@ -240,8 +173,6 @@ langfuse.score(
 )
 ```
 
-</TabItem>
-</Tabs>
 ## Quickstarts {#quickstarts}
 
 Get up and running with Langfuse in minutes. Choose the path that best fits your current needs:

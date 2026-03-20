@@ -45,11 +45,9 @@ TRUNCATE TABLE [<db_name>.]<table_name>[ PARTITION ( <partition_name1> [, <parti
 >
 > See Identifier Requirements and Reserved Keywords for more details.
 
-
 ## Access Control Requirements
 
 The user executing this SQL command must have at least the following permissions:
-
 
 | Privilege       | Object    | Notes                      |
 |:----------------|:----------|:---------------------------|

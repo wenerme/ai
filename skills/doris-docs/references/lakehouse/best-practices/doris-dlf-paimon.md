@@ -26,9 +26,7 @@ Alibaba Cloud [Data Lake Formation (DLF)](https://cn.aliyun.com/product/bigdata/
 
 DLF supports Paimon Rest Catalog starting from version 2.5. Doris supports integration with DLF 2.5+ Paimon Rest Catalog starting from version 3.0.3/3.1.0, enabling seamless connection to DLF for accessing and analyzing Paimon table data. This article demonstrates how to connect Apache Doris with DLF 2.5+ and access Paimon table data.
 
-:::tip
-This feature is supported starting from Doris version 3.0.3/3.1.0.
-:::
+> **tip**: This feature is supported starting from Doris version 3.0.3/3.1.0.
 
 ## Usage Guide
 
@@ -148,4 +146,3 @@ Please refer to the DLF official documentation to enable the DLF service and cre
     |       4 | 18-24     | F                 |    0 |
     +---------+-----------+-------------------+------+
     ```
-    

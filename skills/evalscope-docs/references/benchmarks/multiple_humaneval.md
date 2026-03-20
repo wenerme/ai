@@ -1,6 +1,5 @@
 # MultiPL-E HumanEval
 
-
 ## Overview
 
 MultiPL-E HumanEval is a multilingual code generation benchmark derived from OpenAI's HumanEval. It extends the original HumanEval to 18 programming languages, enabling cross-lingual evaluation of code generation capabilities.
@@ -28,7 +27,6 @@ MultiPL-E HumanEval is a multilingual code generation benchmark derived from Ope
 - Timeout: 30 seconds per test case
 - See [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for setup
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MultiPL-E HumanEval is a multilingual code generation benchmark derived from Ope
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `mean_and_pass_at_k` |
-
 
 ## Data Statistics
 
@@ -163,5 +160,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

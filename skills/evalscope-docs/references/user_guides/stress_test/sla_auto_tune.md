@@ -14,7 +14,7 @@ The SLA (Service Level Agreement) auto-tuning feature allows users to define ser
 | Parameter | Type | Description | Default |
 |------|------|------|--------|
 | `--sla-auto-tune` | `bool` | Whether to enable SLA auto-tuning mode | `False` |
-| `--sla-variable` | `str` | Variable for auto-tuning<br>Options: `parallel` (concurrency), `rate` (request rate) | `parallel` |
+| `--sla-variable` | `str` | Variable for auto-tuningOptions: `parallel` (concurrency), `rate` (request rate) | `parallel` |
 | `--sla-params` | `str` | SLA constraint conditions, JSON string, supports multiple constraint groups (AND/OR logic), see [description below](#sla-params-logic) | `None` |
 | `--sla-upper-bound` | `int` | Maximum concurrency/rate limit during auto-tuning | `65536` |
 | `--sla-lower-bound` | `int` | Minimum concurrency/rate limit during auto-tuning | `1` |
@@ -131,7 +131,6 @@ evalscope perf \
 │    8 │  INF │ 4.03 │   1.286 │   3.181 │   0.044 │   0.081 │   0.003 │  0.004 │ 1615.33 │  100.0%│
 └──────┴──────┴──────┴─────────┴─────────┴─────────┴─────────┴─────────┴────────┴─────────┴────────┘
 
-
                Best Performance Configuration               
  Highest RPS         Concurrency 2 (INF req/sec)            
  Lowest Latency      Concurrency 2 (2.19 seconds)           
@@ -189,7 +188,6 @@ Example output:
 │512.0 │ 7.76 │   57.843 │   70.814 │ 7941.28 │   25.967 │  37.136 │    0.031 │   0.033 │    100.0%│
 └──────┴──────┴──────────┴──────────┴─────────┴──────────┴─────────┴──────────┴─────────┴──────────┘
 
-
                Best Performance Configuration               
  Highest RPS         Concurrency 384.0 (7.87 req/sec)       
  Lowest Latency      Concurrency 32.0 (5.590 seconds)       
@@ -241,7 +239,6 @@ Example output:
 │   40 │   19 │ 12.83 │   0.611 │   1.682 │   0.021 │  0.027 │   0.004 │  0.005 │ 2296.22 │  100.0%│
 │   40 │   20 │ 11.81 │   0.744 │   1.861 │   0.023 │  0.054 │   0.004 │  0.006 │ 2435.94 │  100.0%│
 └──────┴──────┴───────┴─────────┴─────────┴─────────┴────────┴─────────┴────────┴─────────┴────────┘
-
 
                Best Performance Configuration               
  Highest RPS         Concurrency 40 (20 req/sec)            

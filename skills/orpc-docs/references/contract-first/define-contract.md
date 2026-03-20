@@ -11,8 +11,6 @@ In oRPC, a **contract** specifies the rules and expectations for a procedure. It
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/contract@latest
 ```
@@ -32,8 +30,6 @@ bun add @orpc/contract@latest
 ```sh [deno]
 deno add npm:@orpc/contract@latest
 ```
-
-:::
 
 ## Procedure Contract
 

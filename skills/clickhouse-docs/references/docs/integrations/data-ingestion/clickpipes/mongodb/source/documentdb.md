@@ -1,17 +1,9 @@
 ---
-sidebar_label: 'Amazon DocumentDB'
 description: 'Step-by-step guide on how to set up Amazon DocumentDB as a source for ClickPipes'
-slug: /integrations/clickpipes/mongodb/source/documentdb
 title: 'Amazon DocumentDB source setup guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'documentdb', 'cdc', 'data ingestion', 'real-time sync']
 ---
-
-import docdb_select_parameter_group from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/docdb-select-parameter-group.png'
-import docdb_modify_parameter_group from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/docdb-modify-parameter-group.png'
-import docdb_apply_parameter_group from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/docdb-apply-parameter-group.png'
-import docdb_parameter_group_status from '@site/static/images/integrations/data-ingestion/clickpipes/mongodb/docdb-parameter-group-status.png'
-import Image from '@theme/IdealImage';
 
 # Amazon DocumentDB source setup guide
 
@@ -62,9 +54,7 @@ db.getSiblingDB("admin").createUser({
 })
 ```
 
-:::note
-Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
-:::
+> **note**: Make sure to replace `clickpipes_user` and `some_secure_password` with your desired username and password.
 
 ## What's next? {#whats-next}
 

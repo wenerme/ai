@@ -1,6 +1,5 @@
 ---
 title: browser.screenshotDirectory | Config
-outline: deep
 ---
 
 # browser.screenshotDirectory

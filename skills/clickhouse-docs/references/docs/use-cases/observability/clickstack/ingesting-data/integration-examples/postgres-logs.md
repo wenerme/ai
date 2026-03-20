@@ -1,28 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/integrations/postgresql-logs
 title: 'Monitoring PostgreSQL Logs with ClickStack'
-sidebar_label: 'PostgreSQL Logs'
-pagination_prev: null
-pagination_next: null
 description: 'Monitoring PostgreSQL Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'logs', 'OTEL', 'ClickStack', 'database monitoring']
 ---
 
-import Image from '@theme/IdealImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import import_dashboard from '@site/static/images/clickstack/import-dashboard.png';
-import logs_search_view from '@site/static/images/clickstack/postgres/postgres-logs-search-view.png';
-import log_view from '@site/static/images/clickstack/postgres/postgres-log-view.png';
-import logs_dashboard from '@site/static/images/clickstack/postgres/postgres-logs-dashboard.png';
-import finish_import from '@site/static/images/clickstack/postgres/import-logs-dashboard.png';
-import { TrackedLink } from '@site/src/components/GalaxyTrackedLink/GalaxyTrackedLink';
-
 # Monitoring PostgreSQL Logs with ClickStack {#postgres-logs-clickstack}
 
 :::note[TL;DR]
 Collect and visualize PostgreSQL server logs (CSV format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
-:::
 
 ## Integration with existing PostgreSQL {#existing-postgres}
 
@@ -65,9 +51,7 @@ log_disconnections = on
 #log_lock_waits = on                 # Log lock contention
 ```
 
-:::note
-This guide uses PostgreSQL's `csvlog` format for reliable structured parsing. If you're using `stderr` or `jsonlog` formats, you'll need to adjust the OpenTelemetry collector configuration accordingly.
-:::
+> **note**: This guide uses PostgreSQL's `csvlog` format for reliable structured parsing. If you're using `stderr` or `jsonlog` formats, you'll need to adjust the OpenTelemetry collector configuration accordingly.
 
 After making these changes, restart PostgreSQL:
 
@@ -142,13 +126,11 @@ This configuration:
 - Adds `source: postgresql` attribute for filtering in HyperDX
 - Routes logs to the ClickHouse exporter via a dedicated pipeline
 
-:::note
-- You only define new receivers and pipelines in the custom config
+> **note**: - You only define new receivers and pipelines in the custom config
 - The processors (`memory_limiter`, `transform`, `batch`) and exporters (`clickhouse`) are already defined in the base ClickStack configuration - you just reference them by name
 - The `csv_parser` operator extracts all standard PostgreSQL CSV log fields into structured attributes
 - This configuration uses `start_at: end` to avoid re-ingesting logs on collector restarts. For testing, change to `start_at: beginning` to see historical logs immediately.
 - Adjust the `include` path to match your PostgreSQL log directory location
-:::
 
 #### Configure ClickStack to load custom configuration {#load-custom}
 
@@ -186,9 +168,7 @@ docker run --name clickstack \
   clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note
-Ensure the ClickStack collector has appropriate permissions to read the PostgreSQL log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
-:::
+> **note**: Ensure the ClickStack collector has appropriate permissions to read the PostgreSQL log files. In production, use read-only mounts (`:ro`) and follow the principle of least privilege.
 
 #### Verifying Logs in HyperDX {#verifying-logs}
 
@@ -287,7 +267,6 @@ Once ClickStack is running:
 
 :::note[Timezone Display]
 HyperDX displays timestamps in your browser's local timezone. The demo data spans **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)**. The wide time range ensures you'll see the demo logs regardless of your location. Once you see the logs, you can narrow the range to a 24-hour period for clearer visualizations.
-:::
 
 <Image img={logs_search_view} alt="Logs search view"/>
 
@@ -320,9 +299,7 @@ The dashboard will be created with all visualizations pre-configured:
 
 <Image img={logs_dashboard} alt="Logs dashboard"/>
 
-:::note
-For the demo dataset, set the time range to **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
-:::
+> **note**: For the demo dataset, set the time range to **2025-11-10 00:00:00 - 2025-11-11 00:00:00 (UTC)** (adjust based on your local timezone). The imported dashboard won't have a time range specified by default.
 
 </VerticalStepper>
 

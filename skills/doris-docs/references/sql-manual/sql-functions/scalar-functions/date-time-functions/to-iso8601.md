@@ -85,4 +85,3 @@ SELECT TO_ISO8601(NULL) AS null_input;
 | NULL       |
 +------------+
 ```
-

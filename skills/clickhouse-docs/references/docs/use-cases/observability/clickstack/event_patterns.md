@@ -1,17 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/event_patterns
 title: 'Event Patterns with ClickStack'
-sidebar_label: 'Event Patterns'
-pagination_prev: null
-pagination_next: null
 description: 'Event Patterns with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'event patterns', 'log analysis', 'pattern matching', 'observability']
 ---
-
-import Image from '@theme/IdealImage';
-import event_patterns from '@site/static/images/use-cases/observability/event_patterns.png';
-import event_patterns_highlight from '@site/static/images/use-cases/observability/event_patterns_highlight.png';
 
 Event patterns in ClickStack allow you to quickly make sense of large volumes of logs or traces by automatically clustering similar messages together, so instead of digging through millions of individual events, you only need to review a small number of meaningful groups.
 

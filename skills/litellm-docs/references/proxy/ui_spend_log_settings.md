@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # UI Spend Log Settings
 
@@ -16,9 +15,8 @@ Previously, spend log options (such as storing request/response content and rete
 - **Set retention period** – Configure how long spend logs are kept before automatic cleanup (e.g. `7d`, `30d`)
 - **Apply changes immediately** – No proxy restart needed; settings take effect for new requests as soon as you save
 
-:::warning UI overrides config
+> **warning**: UI overrides config
 Settings changed in the UI **override** the values in your config file. For example, if `store_prompts_in_spend_logs` is explicitly set to `false` in `general_settings`, turning it on in the UI will still enable storing prompts. Use the UI when you want runtime control without redeploying.
-:::
 
 ## Settings You Can Configure
 

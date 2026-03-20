@@ -142,4 +142,3 @@ print(response_body['content'][0]['text'])
 
 For complete documentation including Guardrails, Knowledge Bases, and Agents, see:
 - [Full Bedrock Passthrough Docs](./pass_through/bedrock)
-

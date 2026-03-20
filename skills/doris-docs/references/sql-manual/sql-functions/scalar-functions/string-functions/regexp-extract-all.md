@@ -119,12 +119,10 @@ CREATE TABLE test_regexp_extract_all (
     pattern VARCHAR(255)
 ) PROPERTIES ("replication_num"="1");
 
-
 INSERT INTO test_regexp_extract_all VALUES
 (1, 'apple1, banana2, cherry3', '([a-zA-Z]+)\\d'),
 (2, 'red#123, blue#456, green#789', '([a-zA-Z]+)#\\d+'),
 (3, 'hello@example.com, world@test.net', '([a-zA-Z]+)@');
-
 
 SELECT id, regexp_extract_all(text_content, pattern) AS extracted_data
 FROM test_regexp_extract_all;
@@ -152,7 +150,6 @@ SELECT REGEXP_EXTRACT_ALL('ABC', '(\\d+)');
 +-------------------------------------+
 ```
 
-
 emoji match
 ```sql
 mysql> SELECT REGEXP_EXTRACT_ALL('👩‍💻,👨‍🚀', '(💻|🚀)');
@@ -162,7 +159,6 @@ mysql> SELECT REGEXP_EXTRACT_ALL('👩‍💻,👨‍🚀', '(💻|🚀)');
 | ['💻','🚀']                                                 |
 +--------------------------------------------------------------+
 ```
-
 
 'Str' is NULL,return NULL
 

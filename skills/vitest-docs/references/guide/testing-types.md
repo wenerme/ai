@@ -4,11 +4,9 @@ title: Testing Types | Guide
 
 # Testing Types
 
-::: tip Sample Project
+> **tip**: Sample Project
 
 [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/typecheck) - [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/typecheck?initialPath=__vitest__/)
-
-:::
 
 Vitest allows you to write tests for your types, using `expectTypeOf` or `assertType` syntaxes. By default all tests inside `*.test-d.ts` files are considered type tests, but you can change it with [`typecheck.include`](/config/typecheck#typecheck-include) config option.
 
@@ -16,11 +14,9 @@ Under the hood Vitest calls `tsc` or `vue-tsc`, depending on your config, and pa
 
 Keep in mind that Vitest doesn't run these files, they are only statically analyzed by the compiler. Meaning, that if you use a dynamic name or `test.each` or `test.for`, the test name will not be evaluated - it will be displayed as is.
 
-::: warning
-Before Vitest 2.1, your `typecheck.include` overrode the `include` pattern, so your runtime tests did not actually run; they were only type-checked.
+> **warning**: Before Vitest 2.1, your `typecheck.include` overrode the `include` pattern, so your runtime tests did not actually run; they were only type-checked.
 
 Since Vitest 2.1, if your `include` and `typecheck.include` overlap, Vitest will report type tests and runtime tests as separate entries.
-:::
 
 Using CLI flags, like `--allowOnly` and `-t` are also supported for type checking.
 
@@ -110,8 +106,7 @@ assertType<number>(answer)
 assertType<string>(answer)
 ```
 
-::: tip
-When using `@ts-expect-error` syntax, you might want to make sure that you didn't make a typo. You can do that by including your type files in [`test.include`](/config/include) config option, so Vitest will also actually *run* these tests and fail with `ReferenceError`.
+> **tip**: When using `@ts-expect-error` syntax, you might want to make sure that you didn't make a typo. You can do that by including your type files in [`test.include`](/config/include) config option, so Vitest will also actually *run* these tests and fail with `ReferenceError`.
 
 This will pass, because it expects an error, but the word “answer” has a typo, so it's a false positive error:
 
@@ -119,7 +114,6 @@ This will pass, because it expects an error, but the word “answer” has a typ
 // @ts-expect-error answer is not a string
 assertType<string>(answr)
 ```
-:::
 
 ## Run Typechecking
 
@@ -135,7 +129,6 @@ To enable typechecking, just add [`--typecheck`](/config/typecheck) flag to your
 
 Now you can run typecheck:
 
-::: code-group
 ```bash [npm]
 npm run test
 ```
@@ -148,6 +141,5 @@ pnpm run test
 ```bash [bun]
 bun test
 ```
-:::
 
 Vitest uses `tsc --noEmit` or `vue-tsc --noEmit`, depending on your configuration, so you can remove these scripts from your pipeline.

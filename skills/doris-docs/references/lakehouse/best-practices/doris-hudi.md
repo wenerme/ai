@@ -14,7 +14,7 @@ In recent versions, Apache Doris has deepened its integration with data lakes an
 - Starting from version 1.2, Apache Doris officially introduced the Multi-Catalog feature, enabling automatic metadata mapping and data access for various data sources, along with numerous performance optimizations for external data reading and query execution. It now fully possesses the ability to build a high-speed and user-friendly Lakehouse architecture.
 - In version 2.1, Apache Doris' Data Lakehouse architecture was significantly enhanced, improving the reading and writing capabilities of mainstream data lake formats (Hudi, Iceberg, Paimon, etc.), introducing compatibility with multiple SQL dialects, and seamless migration from existing systems to Apache Doris. For data science and large-scale data reading scenarios, Doris integrated the Arrow Flight high-speed reading interface, achieving a 100-fold increase in data transfer efficiency.
 
-![Building lakehouse using doris and huid](/images/lakehouse-architecture-for-doris-and-hudi.png)
+[Building lakehouse using doris and huid]
 
 ## Apache Doris & Hudi
 

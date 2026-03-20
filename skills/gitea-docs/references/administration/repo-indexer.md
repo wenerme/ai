@@ -1,7 +1,5 @@
 ---
 date: "2019-09-06T01:35:00-03:00"
-slug: "repo-indexer"
-sidebar_position: 45
 aliases:
   - /en-us/repo-indexer
 ---

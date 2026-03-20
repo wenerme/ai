@@ -16,7 +16,6 @@ This statement is used to display storage format information on the Backend.
 SHOW TABLET STORAGE FORMAT [VERBOSE]
 ```
 
-
 ## Optional Parameters
 
 ** 1. `VERBOSE` **

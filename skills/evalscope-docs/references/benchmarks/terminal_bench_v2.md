@@ -1,6 +1,5 @@
 # Terminal-Bench-2.0
 
-
 ## Overview
 
 Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 89 real-world, multi-step terminal tasks. Tasks range from compiling and debugging to system administration, running within isolated containers with rigorous validation.
@@ -28,7 +27,6 @@ Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 
 - Maximum turns configurable (default: 200)
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/terminal_bench.html)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -100,5 +97,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -1,17 +1,14 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Invoking A2A Agents
 
 Learn how to invoke A2A agents through LiteLLM using different methods.
 
-:::tip Deploy Your Own A2A Agent
+> **tip**: Deploy Your Own A2A Agent
 
 Want to test with your own agent? Deploy this template A2A agent powered by Google Gemini:
 
 [**shin-bot-litellm/a2a-gemini-agent**](https://github.com/shin-bot-litellm/a2a-gemini-agent) - Simple deployable A2A agent with streaming support
-
-:::
 
 ## A2A SDK
 
@@ -134,9 +131,6 @@ You can also invoke A2A agents using the familiar OpenAI SDK by using the `a2a/`
 
 ### Non-Streaming
 
-<Tabs>
-<TabItem value="python" label="Python" default>
-
 ```python showLineNumbers title="openai_non_streaming.py"
 import openai
 
@@ -154,9 +148,6 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="typescript" label="TypeScript">
 
 ```typescript showLineNumbers title="openai_non_streaming.ts"
 import OpenAI from 'openai';
@@ -176,9 +167,6 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 ```
 
-</TabItem>
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="curl_non_streaming.sh"
 curl -X POST http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer sk-1234" \
@@ -191,13 +179,7 @@ curl -X POST http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ### Streaming
-
-<Tabs>
-<TabItem value="python" label="Python" default>
 
 ```python showLineNumbers title="openai_streaming.py"
 import openai
@@ -219,9 +201,6 @@ for chunk in stream:
     if chunk.choices[0].delta.content:
         print(chunk.choices[0].delta.content, end="", flush=True)
 ```
-
-</TabItem>
-<TabItem value="typescript" label="TypeScript">
 
 ```typescript showLineNumbers title="openai_streaming.ts"
 import OpenAI from 'openai';
@@ -247,9 +226,6 @@ for await (const chunk of stream) {
 }
 ```
 
-</TabItem>
-<TabItem value="curl" label="cURL">
-
 ```bash showLineNumbers title="curl_streaming.sh"
 curl -X POST http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer sk-1234" \
@@ -263,18 +239,13 @@ curl -X POST http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Key Differences
 
 | Method | Use Case | Advantages |
 |--------|----------|------------|
-| **A2A SDK** | Native A2A protocol integration | • Full A2A protocol support<br/>• Access to task states and artifacts<br/>• Context management |
-| **OpenAI SDK** | Familiar OpenAI-style interface | • Drop-in replacement for OpenAI calls<br/>• Easier migration from LLM to agent workflows<br/>• Works with existing OpenAI tooling |
+| **A2A SDK** | Native A2A protocol integration | • Full A2A protocol support• Access to task states and artifacts• Context management |
+| **OpenAI SDK** | Familiar OpenAI-style interface | • Drop-in replacement for OpenAI calls• Easier migration from LLM to agent workflows• Works with existing OpenAI tooling |
 
-:::tip Model Prefix
+> **tip**: Model Prefix
 
 When using the OpenAI SDK, always prefix your agent name with `a2a/` (e.g., `a2a/my-agent`) to route requests to the A2A agent instead of an LLM provider.
-
-:::

@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Amazon RDS Postgres'
 description: 'Set up Amazon RDS Postgres as a source for ClickPipes'
-slug: /integrations/clickpipes/postgres/source/rds
 title: 'RDS Postgres Source Setup Guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
@@ -9,15 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-import parameter_group_in_blade from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/parameter_group_in_blade.png';
-import change_rds_logical_replication from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/change_rds_logical_replication.png';
-import change_wal_sender_timeout from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/change_wal_sender_timeout.png';
-import modify_parameter_group from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/modify_parameter_group.png';
-import reboot_rds from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/reboot_rds.png';
-import security_group_in_rds_postgres from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/security_group_in_rds_postgres.png';
-import edit_inbound_rules from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/source/rds/edit_inbound_rules.png';
-import Image from '@theme/IdealImage';
 
 # RDS Postgres source setup guide
 

@@ -31,13 +31,9 @@ export const ping = os
   })
 ```
 
-:::tip
-We recommend using [Execution Context](/docs/context#execution-context) instead of [Initial Context](/docs/context#initial-context) when working with Server Actions.
-:::
+> **tip**: We recommend using [Execution Context](/docs/context#execution-context) instead of [Initial Context](/docs/context#initial-context) when working with Server Actions.
 
-:::warning
-Special errors such as `redirect`, `notFound`, and similar are **only supported in [Next.js](https://nextjs.org/) and [TanStack Start](https://tanstack.com/start/latest)** at the moment.
-:::
+> **warning**: Special errors such as `redirect`, `notFound`, and similar are **only supported in [Next.js](https://nextjs.org/) and [TanStack Start](https://tanstack.com/start/latest)** at the moment.
 
 ## Client Side
 
@@ -110,8 +106,6 @@ The `@orpc/react` package offers utilities to integrate oRPC with React and Reac
 
 ### Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/react@latest
 ```
@@ -131,8 +125,6 @@ bun add @orpc/react@latest
 ```sh [deno]
 deno add npm:@orpc/react@latest
 ```
-
-:::
 
 ### `useServerAction` Hook
 
@@ -227,9 +219,7 @@ export function MyComponent() {
 }
 ```
 
-:::info
-The `onSuccessDeferred` interceptor defers execution, useful for updating states.
-:::
+> **info**: The `onSuccessDeferred` interceptor defers execution, useful for updating states.
 
 ### `createFormAction` Utility
 
@@ -273,9 +263,7 @@ export function MyComponent() {
 
 By moving the `redirect('/some-where')` logic into `createFormAction` rather than the procedure, you enhance the procedure's reusability beyond Server Actions.
 
-::: info
-When using `createFormAction`, any `ORPCError` with a status of `401`, `403`, or `404` is automatically converted into the corresponding Next.js error responses: [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized), [forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden), and [not found](https://nextjs.org/docs/app/api-reference/functions/not-found).
-:::
+> **info**: When using `createFormAction`, any `ORPCError` with a status of `401`, `403`, or `404` is automatically converted into the corresponding Next.js error responses: [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized), [forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden), and [not found](https://nextjs.org/docs/app/api-reference/functions/not-found).
 
 ### Form Data Utilities
 

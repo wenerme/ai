@@ -36,7 +36,7 @@ OpenObserve offers two powerful approaches for Windows monitoring:
 
     1. Log in to your OpenObserve instance. 
     2. Navigate to **Data Sources > Recommended > Windows**.
-    ![windows-integration](../images/windows-integration.png)
+    [windows-integration]
     3. Copy the provided PowerShell command. 
     4. Open PowerShell as Administrator and execute the command:
 
@@ -56,7 +56,7 @@ OpenObserve offers two powerful approaches for Windows monitoring:
     For more advanced configurations or if you're already using OpenTelemetry in your environment, you can use the OpenTelemetry Collector with the Windows Event Log Receiver.
 
     1. Setting Up the OpenTelemetry Collector
-    First, set up the OpenTelemetry Collector: <br>
+    First, set up the OpenTelemetry Collector: 
     **Create a directory for the collector**
     ```
     New-Item -Path "C:\otel-collector" -ItemType Directory -Force

@@ -1,15 +1,10 @@
 ---
-slug: /best-practices/use-json-where-appropriate
-sidebar_position: 10
-sidebar_label: 'Using JSON'
 title: 'Use JSON where appropriate'
 description: 'Page describing when to use JSON'
 keywords: ['JSON']
 show_related_blogs: true
 doc_type: 'reference'
 ---
-
-import WhenToUseJson from '@site/docs/best-practices/_snippets/_when-to-use-json.md';
 
 ClickHouse now offers a native JSON column type designed for semi-structured and dynamic data. It's important to clarify that **this is a column type, not a data format**—you can insert JSON into ClickHouse as a string or via supported formats like [JSONEachRow](/interfaces/formats/JSONEachRow), but that doesn't imply using the JSON column type. You should only use the JSON type when the structure of your data is dynamic, not when you simply happen to store JSON.
 
@@ -23,9 +18,8 @@ The JSON type enables efficient columnar storage by flattening paths into subcol
 * **Skip paths** if you don't need the values, with [SKIP and SKIP REGEXP](/sql-reference/data-types/newjson) to reduce storage and improve performance.
 * **Avoid setting [`max_dynamic_paths`](/sql-reference/data-types/newjson#reaching-the-limit-of-dynamic-paths-inside-json) too high**—large values increase resource consumption and reduce efficiency. As a rule of thumb, keep it below 10,000.
 
-:::note Type hints 
+> **note**: Type hints 
 Type hints offer more than just a way to avoid unnecessary type inference—they eliminate storage and processing indirection entirely. JSON paths with type hints are always stored just like traditional columns, bypassing the need for [**discriminator columns**](https://clickhouse.com/blog/a-new-powerful-json-data-type-for-clickhouse#storage-extension-for-dynamically-changing-data) or dynamic resolution during query time. This means that with well-defined type hints, nested JSON fields achieve the same performance and efficiency as if they were modeled as top-level fields from the outset. As a result, for datasets that are mostly consistent but still benefit from the flexibility of JSON, type hints provide a convenient way to preserve performance without needing to restructure your schema or ingest pipeline.
-:::
 
 ## Advanced features {#advanced-features}
 
@@ -209,9 +203,7 @@ ENGINE = MergeTree
 ORDER BY doc.update_date
 ```
 
-:::note
-We provide a type hint for the `update_date` column in the JSON definition, as we use it in the ordering/primary key. This helps ClickHouse to know that this column won't be null and ensures it knows which `update_date` subcolumn to use (there may be multiple for each type, so this is ambiguous otherwise).
-:::
+> **note**: We provide a type hint for the `update_date` column in the JSON definition, as we use it in the ordering/primary key. This helps ClickHouse to know that this column won't be null and ensures it knows which `update_date` subcolumn to use (there may be multiple for each type, so this is ambiguous otherwise).
 
 We can insert into this table and view the subsequently inferred schema using the [`JSONAllPathsWithTypes`](/sql-reference/functions/json-functions#JSONAllPathsWithTypes) function and [`PrettyJSONEachRow`](/interfaces/formats/PrettyJSONEachRow) output format:
 

@@ -63,7 +63,6 @@ The result will be:
 +-------+
 ```
 
-
 ```sql
 select bitmap_to_string(bitmap_subset_in_range(bitmap_from_string('1,2,3,4,5'), 2, NULL)) value;
 ```
@@ -78,7 +77,6 @@ The result will be:
 +-------+
 ```
 
-
 ```sql
 select bitmap_to_string(bitmap_subset_in_range(bitmap_from_string('1,2,3,4,5'), 2, -10000)) value;
 ```
@@ -92,4 +90,3 @@ The result will be:
 | NULL  |
 +-------+
 ```
-

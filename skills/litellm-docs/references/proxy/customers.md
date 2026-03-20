@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Customers / End-Users
 
@@ -103,9 +101,6 @@ If the customer_id already exists, spend will be incremented.
 
 ### 2. Get Customer Spend 
 
-<Tabs>
-<TabItem value="all-up" label="All-up spend">
-
 Call `/customer/info` to get a customer's all up spend
 
 ```bash showLineNumbers title="Get customer spend"
@@ -126,9 +121,6 @@ Expected Response:
     "litellm_budget_table": null
 }
 ```
-
-</TabItem>
-<TabItem value="event-webhook" label="Event Webhook">
 
 To update spend in your client-side DB, point the proxy to your webhook. 
 
@@ -187,10 +179,6 @@ Expected Response
 ```
 
 [See Webhook Spec](./alerting.md#api-spec-for-webhook-event)
-
-</TabItem>
-</Tabs>
-
 
 ## Setting Customer Object Permissions
 
@@ -438,17 +426,11 @@ Create and assign customers to pricing tiers.
 
 #### 1. Create a budget
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 - Go to the 'Budgets' tab on the UI. 
 - Click on '+ Create Budget'.
 - Create your pricing tier (e.g. 'my-free-tier' with budget $4). This means each user on this pricing tier will have a max budget of $4. 
 
 <Image img={require('../../img/create_budget_modal.png')} />
-
-</TabItem>
-<TabItem value="api" label="API">
 
 Use the `/budget/new` endpoint for creating a new budget. [API Reference](https://litellm-api.up.railway.app/#/budget%20management/new_budget_budget_new_post)
 
@@ -461,10 +443,6 @@ curl -X POST 'http://localhost:4000/budget/new' \
     "max_budget": 4 
 }
 ```
-
-</TabItem>
-</Tabs>
-
 
 #### 2. Assign Budget to Customer 
 
@@ -484,9 +462,6 @@ curl -X POST 'http://localhost:4000/customer/new' \
 
 #### 3. Test it! 
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Test with curl"
 curl -X POST 'http://localhost:4000/customer/new' \
 -H 'Content-Type: application/json' \
@@ -496,9 +471,6 @@ curl -X POST 'http://localhost:4000/customer/new' \
     "budget_id": "my-free-tier" # 👈 KEY CHANGE
 }
 ```
-
-</TabItem>
-<TabItem value="openai" label="OpenAI">
 
 ```python showLineNumbers title="Test with OpenAI SDK"
 from openai import OpenAI
@@ -518,6 +490,3 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message)
 ```
-
-</TabItem>
-</Tabs>

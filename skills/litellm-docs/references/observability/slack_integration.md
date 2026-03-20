@@ -1,13 +1,10 @@
-import Image from '@theme/IdealImage';
 
 # Slack - Logging LLM Input/Output, Exceptions
 
 <Image img={require('../../img/slack.png')} />
 
-:::info
-We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
+> **info**: We want to learn how we can make the callbacks better! Meet the LiteLLM [founders](https://calendly.com/d/4mp-gd3-k5k/berriai-1-1-onboarding-litellm-hosted-version) or
 join our [discord](https://discord.gg/wuPM9dRgDw)
-::: 
 
 ## Pre-Requisites
 
@@ -18,8 +15,6 @@ pip install litellm
 
 ### Step 2
 Get a slack webhook url from https://api.slack.com/messaging/webhooks
-
-
 
 ## Quick Start
 ### Create a custom Callback to log to slack

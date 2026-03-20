@@ -21,9 +21,8 @@ This is Vite performing what we call "dependency pre-bundling". This process ser
 
    By pre-bundling `lodash-es` into a single module, we now only need one HTTP request instead!
 
-::: tip NOTE
+> **tip**: NOTE
 Dependency pre-bundling only applies in development mode.
-:::
 
 ## Automatic Dependency Discovery
 

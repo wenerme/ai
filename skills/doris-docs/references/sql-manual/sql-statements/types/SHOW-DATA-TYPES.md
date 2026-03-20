@@ -68,4 +68,3 @@ The user executing this SQL command does not require specific privileges.
     | VARCHAR        | 16   |
     +----------------+------+
     ```
-

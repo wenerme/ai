@@ -3,10 +3,8 @@ title: Workers
 description: Use Bun's Workers API to create and communicate with a new JavaScript instance running on a separate thread while sharing I/O resources with the main thread
 ---
 
-<Warning>
   The `Worker` API is still experimental (particularly for terminating workers). We are actively working on improving
   this.
-</Warning>
 
 [`Worker`](https://developer.mozilla.org/en-US/docs/Web/API/Worker) lets you start and communicate with a new JavaScript instance running on a separate thread while sharing I/O resources with the main thread.
 
@@ -270,9 +268,7 @@ const worker = new Worker("./i-am-smol.ts", {
 });
 ```
 
-<Accordion title="What does `smol` mode actually do?">
   Setting `smol: true` sets `JSC::HeapSize` to be `Small` instead of the default `Large`.
-</Accordion>
 
 ## Environment Data
 

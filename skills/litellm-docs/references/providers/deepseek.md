@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Deepseek
 https://deepseek.com/
@@ -45,7 +44,6 @@ for chunk in response:
     print(chunk)
 ```
 
-
 ## Supported Models - ALL Deepseek Models Supported!
 We support ALL Deepseek models, just set `deepseek/` as a prefix when sending completion requests
 
@@ -53,7 +51,6 @@ We support ALL Deepseek models, just set `deepseek/` as a prefix when sending co
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | deepseek-chat | `completion(model="deepseek/deepseek-chat", messages)` | 
 | deepseek-coder | `completion(model="deepseek/deepseek-coder", messages)` | 
-
 
 ## Reasoning Models
 | Model Name               | Function Call                                                                                                                                                      |
@@ -63,9 +60,6 @@ We support ALL Deepseek models, just set `deepseek/` as a prefix when sending co
 ### Thinking / Reasoning Mode
 
 Enable thinking mode for DeepSeek reasoner models using `thinking` or `reasoning_effort` parameters:
-
-<Tabs>
-<TabItem value="thinking" label="thinking param">
 
 ```python
 from litellm import completion
@@ -82,9 +76,6 @@ print(resp.choices[0].message.reasoning_content)  # Model's reasoning
 print(resp.choices[0].message.content)  # Final answer
 ```
 
-</TabItem>
-<TabItem value="reasoning_effort" label="reasoning_effort param">
-
 ```python
 from litellm import completion
 import os
@@ -100,17 +91,9 @@ print(resp.choices[0].message.reasoning_content)  # Model's reasoning
 print(resp.choices[0].message.content)  # Final answer
 ```
 
-</TabItem>
-</Tabs>
-
-:::note
-DeepSeek only supports `{"type": "enabled"}` - unlike Anthropic, it doesn't support `budget_tokens`. Any `reasoning_effort` value other than `"none"` enables thinking mode.
-:::
+> **note**: DeepSeek only supports `{"type": "enabled"}` - unlike Anthropic, it doesn't support `budget_tokens`. Any `reasoning_effort` value other than `"none"` enables thinking mode.
 
 ### Basic Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -126,9 +109,6 @@ print(
     resp.choices[0].message.reasoning_content
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -167,7 +147,3 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     ]
 }'
 ```
-
-</TabItem>
-
-</Tabs>

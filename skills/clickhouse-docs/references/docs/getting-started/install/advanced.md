@@ -1,8 +1,6 @@
 ---
 description: 'Instructions for compiling ClickHouse from source or installing a CI-generated binary'
 keywords: ['ClickHouse', 'install', 'advanced', 'compile from source', 'CI generated binary']
-sidebar_label: 'Advanced install'
-slug: /install/advanced
 title: 'Advanced installation methods'
 hide_title: false
 doc_type: 'guide'
@@ -35,10 +33,8 @@ repository](https://github.com/clickhouse/clickhouse/), e.g. [sanitized](https:/
 builds, cross-compiled builds etc. While such builds are normally only useful during development, they can in certain situations also be
 interesting for you.
 
-:::note
-Since ClickHouse's CI is evolving over time, the exact steps to download CI-generated builds may vary.
+> **note**: Since ClickHouse's CI is evolving over time, the exact steps to download CI-generated builds may vary.
 Also, CI may delete old build artifacts, making them unavailable for download.
-:::
 
 For example, to download an aarch64 binary for ClickHouse v23.4, follow these steps:
 

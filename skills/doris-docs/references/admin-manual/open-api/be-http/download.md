@@ -34,8 +34,6 @@ None
 
 ## Examples
 
-
     ```
     curl "http://127.0.0.1:8040/api/_load_error_log?file=a&token=1"
     ```
-

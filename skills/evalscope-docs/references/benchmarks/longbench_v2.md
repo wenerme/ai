@@ -1,6 +1,5 @@
 # LongBench-v2
 
-
 ## Overview
 
 LongBench v2 is a challenging benchmark for evaluating long-context understanding of large language models. It covers a wide variety of real-world tasks that require reading and comprehending long documents (ranging from a few thousand to over 2 million tokens), spanning multiple domains such as single-document QA, multi-document QA, long in-context learning, long-structured data understanding, and code repository understanding.
@@ -30,7 +29,6 @@ LongBench v2 is a challenging benchmark for evaluating long-context understandin
 - Samples are split into **3 subsets by context length**: `short`, `medium`, `long`
 - Use `subset_list` to evaluate specific length subsets (e.g., `['short', 'medium']`)
 
-
 ## Properties
 
 | Property | Value |
@@ -42,7 +40,6 @@ LongBench v2 is a challenging benchmark for evaluating long-context understandin
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -144,5 +141,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

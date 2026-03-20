@@ -38,10 +38,8 @@ For Customers
   - Adjusting the retention period for active data (0-365 days)
 - Custom retention policies must be configured through the LiteLLM Cloud dashboard or via API
 
-
 ### Protection of Records
 
 - LiteLLM Cloud takes measures to ensure that all records under its control are protected against loss, destruction, falsification, and unauthorized access or disclosure. These measures are aligned with relevant legislative, regulatory, contractual, and business obligations.
 - When working with a third-party CSP, LiteLLM Cloud requests comprehensive information regarding the CSP’s security mechanisms to protect data, including records stored or processed on behalf of LiteLLM Cloud.
 - Cloud service providers engaged by LiteLLM Cloud must disclose their safeguarding practices for records they gather and store on LiteLLM Cloud’s behalf.
-

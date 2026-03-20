@@ -140,9 +140,7 @@ const memoryStore = await storage.getStore('memory')
 const thread = await memoryStore?.getThreadById({ threadId: '...' })
 ```
 
-:::warning
-If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
-:::
+> **warning**: If `init()` isn't called, tables won't be created and storage operations will fail silently or throw errors.
 
 ### Direct Database and Pool Access
 

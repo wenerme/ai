@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Exposing MCPs on the Public Internet
 
@@ -186,13 +185,7 @@ This time, only DeepWiki's tools appear — Exa is gone. LiteLLM detected that C
 
 ### Per-Server Setting
 
-<Tabs>
-<TabItem value="ui" label="UI">
-
 Toggle **"Available on Public Internet"** in the Permission Management section when creating or editing an MCP server.
-
-</TabItem>
-<TabItem value="config" label="config.yaml">
 
 ```yaml title="config.yaml" showLineNumbers
 mcp_servers:
@@ -206,9 +199,6 @@ mcp_servers:
     auth_value: os.environ/EXA_API_KEY
     available_on_public_internet: false  # internal only (default)
 ```
-
-</TabItem>
-<TabItem value="api" label="API">
 
 ```bash title="Create a public MCP server" showLineNumbers
 curl -X POST <your-litellm-url>/v1/mcp/server \
@@ -231,9 +221,6 @@ curl -X PUT <your-litellm-url>/v1/mcp/server \
     "available_on_public_internet": false
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ### Custom Private IP Ranges
 

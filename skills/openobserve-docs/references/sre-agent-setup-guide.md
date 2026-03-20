@@ -10,7 +10,6 @@ keywords: 'openobserve, sre agent, ai assistant, setup, configuration, incidents
 
 The O2 SRE Agent is a background service that powers AI-driven features in OpenObserve Enterprise. It handles AI request processing, tool execution, and intelligence for observability workflows.
 
-
 ## Features Enabled by SRE Agent
 
 ### 1. AI Assistant
@@ -449,13 +448,10 @@ O2_MCP_PASSWORD: "SecurePassword123"
 
 1. Log into OpenObserve
 2. Click the AI Assistant icon in the sidebar
-![AI Assistant in OpenObserve](images/ai-assistant-in-o2.gif)
-
+[AI Assistant in OpenObserve]
 
 3. Navigate to Incidents page in OpenObserve side-menu
-![Incidents UI in OpenObserve](images/incidents-in-openobserve.gif)
-
-
+[Incidents UI in OpenObserve]
 
 ### Example Queries
 
@@ -595,12 +591,9 @@ O2_INCIDENTS_RCA_ENABLED: "true"
 
 ## Support
 
-
 - [Community Slack](https://short.openobserve.ai/community) 
 
 - [GitHub](https://github.com/openobserve/openobserve)
-
-
 
 **Before contacting support, verify:**
 - SRE Agent pod is running and healthy

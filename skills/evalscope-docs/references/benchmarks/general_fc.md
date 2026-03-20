@@ -1,6 +1,5 @@
 # General-FunctionCalling
 
-
 ## Overview
 
 General-FunctionCalling is a customizable benchmark for evaluating function calling (tool use) capabilities of language models. It tests both the decision to call tools and the accuracy of generated function calls.
@@ -28,7 +27,6 @@ General-FunctionCalling is a customizable benchmark for evaluating function call
 - Validates function calls against JSON schema
 - See [User Guide](https://evalscope.readthedocs.io/en/latest/advanced_guides/custom_dataset/llm.html#fc) for dataset format
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ General-FunctionCalling is a customizable benchmark for evaluating function call
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
 | **Aggregation** | `f1` |
-
 
 ## Data Statistics
 
@@ -293,5 +290,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

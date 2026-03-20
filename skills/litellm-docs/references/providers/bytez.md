@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bytez
 
@@ -10,9 +9,6 @@ That also means multi-modal models are supported 🔥
 Tasks supported: `chat`, `image-text-to-text`, `audio-text-to-text`, `video-text-to-text`
 
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### API KEYS
 
@@ -35,9 +31,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 1. Add models to your config.yaml
 
 ```yaml
@@ -56,9 +49,9 @@ $ BYTEZ_API_KEY=YOUR_BYTEZ_API_KEY_HERE litellm --config /path/to/config.yaml --
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
 ```py
 import openai
@@ -84,9 +77,9 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -107,13 +100,9 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-  </TabItem>
+  
 
-  </Tabs>
-
-</TabItem>
-
-</Tabs>
+  
 
 ## Automatic Prompt Template Handling
 

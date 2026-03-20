@@ -1,6 +1,4 @@
 ---
-slug: /guides/developer/merge-table-function
-sidebar_label: 'Merge table function'
 title: 'Merge table function'
 description: 'Query multiple tables at the same time.'
 doc_type: 'reference'

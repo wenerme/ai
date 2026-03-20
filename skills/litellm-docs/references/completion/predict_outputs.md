@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Predicted Outputs
 
@@ -10,12 +9,7 @@ import TabItem from '@theme/TabItem';
 | Link to OpenAI doc on Predicted Outputs | [Predicted Outputs ↗](https://platform.openai.com/docs/guides/latency-optimization#use-predicted-outputs) |
 | Supported from LiteLLM Version | `v1.51.4` |
 
-
-
 ## Using Predicted Outputs
-
-<Tabs>
-<TabItem label="LiteLLM Python SDK" value="Python">
 
 In this example we want to refactor a piece of C# code, and convert the Username property to Email instead:
 ```python
@@ -59,9 +53,6 @@ completion = litellm.completion(
 print(completion)
 ```
 
-</TabItem>
-<TabItem label="LiteLLM Proxy Server" value="proxy">
-
 1. Define models on config.yaml
 
 ```yaml
@@ -80,7 +71,6 @@ litellm --config config.yaml
 ```
 
 3. Test it using the OpenAI Python SDK
-
 
 ```python
 from openai import OpenAI
@@ -104,6 +94,3 @@ completion = client.chat.completions.create(
 
 print(completion)
 ```
-
-</TabItem>
-</Tabs>

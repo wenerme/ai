@@ -1,7 +1,5 @@
 # Guardrails on Pass-Through Endpoints
 
-import Image from '@theme/IdealImage';
-
 ## Overview
 
 | Property | Details |
@@ -24,9 +22,8 @@ Go to **Models + Endpoints** → Click **+ Add Pass-Through Endpoint**
 
 Scroll to the **Guardrails** section and select which guardrails to enforce.
 
-:::tip Default Behavior
+> **tip**: Default Behavior
 By default, you don't need to specify fields - LiteLLM will JSON dump the entire request/response payload and send it to the guardrail.
-:::
 
 #### 2. Target Specific Fields (Optional)
 
@@ -103,7 +100,6 @@ When guardrails are enabled, the system collects and executes:
 
 ---
 
-
 ## How It Works
 
 The diagram below shows what happens when a client makes a request to `/special/rerank` - a pass-through endpoint configured with guardrails in your `config.yaml`.
@@ -115,10 +111,7 @@ When guardrails are configured on a pass-through endpoint:
 4. **Post-call guardrails** run on the response from the target API
 5. If `response_fields` is specified (e.g., `["results[*].text"]`), only those fields are evaluated. Otherwise, the entire response is checked.
 
-:::info
-If the `guardrails` block is omitted or empty in your pass-through endpoint config, the request skips the guardrail flow entirely and goes directly to the target API.
-:::
-
+> **info**: If the `guardrails` block is omitted or empty in your pass-through endpoint config, the request skips the guardrail flow entirely and goes directly to the target API.
 ```mermaid
 sequenceDiagram
     participant Client

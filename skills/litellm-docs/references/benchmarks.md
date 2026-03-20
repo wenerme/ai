@@ -1,5 +1,4 @@
 
-import Image from '@theme/IdealImage';
 
 # Benchmarks
 
@@ -72,13 +71,6 @@ In these tests the baseline latency characteristics are measured against a fake-
 | POST | /chat/completions | 200 | 630 | 1200 | 262.46 | 1035.7 |
 | Custom | LiteLLM Overhead Duration (ms) | 12 | 29 | 43 | 14.74 | 1035.7 |
 |  | Aggregated | 100 | 430 | 930 | 138.6 | 2071.4 |
-
-<!-- <Image img={require('../img/1_instance_proxy.png')} /> -->
-
-<!-- ## **Horizontal Scaling - 10K RPS**
-
-<Image img={require('../img/instances_vs_rps.png')} /> -->
-
 
 ### 4 Instances
 
@@ -171,9 +163,7 @@ litellm_settings:
     password: os.environ/REDIS_PASSWORD
 ```
 
-:::tip
-Use `redis_host`, `redis_port`, and `redis_password` instead of `redis_url` for ~80 RPS better performance.
-:::
+> **tip**: Use `redis_host`, `redis_port`, and `redis_password` instead of `redis_url` for ~80 RPS better performance.
 
 **Scaling:** DB connections scale linearly with instances. Consider PostgreSQL read replicas beyond 5K RPS.
 
@@ -187,7 +177,6 @@ See [Production Configuration](./proxy/prod) for detailed best practices.
 ## How to measure LiteLLM Overhead
 
 All responses from litellm will include the `x-litellm-overhead-duration-ms` header, this is the latency overhead in milliseconds added by LiteLLM Proxy.
-
 
 If you want to measure this on locust you can use the following code:
 
@@ -240,7 +229,6 @@ class MyUser(HttpUser):
                 error_log.write(response.text + "\n")
 ```
 
-
 ## LiteLLM vs Portkey Performance Comparison
 
 **Test Configuration**: 4 CPUs, 8 GB RAM per instance | Load: 1k concurrent users, 500 ramp-up
@@ -258,7 +246,6 @@ class MyUser(HttpUser):
 | **p99 Latency**     | 500 ms          | 240 ms            | LiteLLM lower  |
 | **Average Latency** | 123 ms          | 111 ms            | LiteLLM lower  |
 | **Current RPS**     | 1,170.9         | 1,170             | Same           |
-
 
 *Lower is better for latency metrics; higher is better for requests and RPS.*
 
@@ -287,8 +274,6 @@ class MyUser(HttpUser):
 
 * High memory usage during initialization and per request
 
-
-
 ## Logging Callbacks
 
 ### [GCS Bucket Logging](https://docs.litellm.ai/docs/observability/gcs_bucket_integration)
@@ -299,7 +284,6 @@ Using GCS Bucket has **no impact on latency, RPS compared to Basic Litellm Proxy
 |--------|------------------------|---------------------|
 | RPS | 1133.2 | 1137.3 |
 | Median Latency (ms) | 140 | 138 |
-
 
 ### [LangSmith logging](https://docs.litellm.ai/docs/proxy/logging)
 

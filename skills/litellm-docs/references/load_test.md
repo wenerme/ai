@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # LiteLLM Proxy - Locust Load Test
 
@@ -50,4 +49,3 @@ model_list:
   Avg →  /health/readiness is `219ms`
 
   <Image img={require('../img/litellm_load_test.png')} />
-

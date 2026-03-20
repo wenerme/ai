@@ -7,9 +7,7 @@ description: Seamlessly use Better Auth inside your oRPC projects without any ex
 
 [Better Auth](https://better-auth.com/) is a framework-agnostic, universal authentication and authorization framework for TypeScript.
 
-::: warning
-This documentation assumes you are already familiar with [Better Auth](https://better-auth.com/). If you need a refresher, please review the official Better Auth documentation before proceeding.
-:::
+> **warning**: This documentation assumes you are already familiar with [Better Auth](https://better-auth.com/). If you need a refresher, please review the official Better Auth documentation before proceeding.
 
 ## Step 1: Define Context Headers
 
@@ -23,9 +21,7 @@ import { os } from '@orpc/server'
 export const base = os.$context<{ headers: Headers }>()
 ```
 
-::: tip
-Don't forget to provide the `headers` when creating the context. This is typically done in your server adapter.
-:::
+> **tip**: Don't forget to provide the `headers` when creating the context. This is typically done in your server adapter.
 
 ### Option B: Using Request Headers Plugin
 

@@ -1,5 +1,5 @@
 ---
-outline: deep
+
 ---
 
 # Configuring Vitest

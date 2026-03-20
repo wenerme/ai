@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # AWS Bedrock - Image Generation
 
@@ -17,9 +16,6 @@ Use Bedrock for image generation with Stable Diffusion, Amazon Titan Image Gener
 | Amazon Nova Canvas - v1 | `image_generation(model="bedrock/amazon.nova-canvas-v1:0", prompt=prompt)` | ✅ |
 
 ## Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### Basic Usage
 
@@ -58,9 +54,6 @@ response = image_generation(
 )
 print(f"response: {response}")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ### 1. Setup config.yaml
 
@@ -108,15 +101,9 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/images/generations' \
 }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Using Inference Profiles with Image Generation
 
 For AWS Bedrock Application Inference Profiles with image generation, use the `model_id` parameter to specify the inference profile ARN:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import image_generation
@@ -129,9 +116,6 @@ response = image_generation(
 print(f"response: {response}")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 model_list:
   - model_name: nova-canvas-inference-profile
@@ -141,10 +125,6 @@ model_list:
       aws_region_name: "eu-west-1"
 ```
 
-</TabItem>
-</Tabs>
-
 ## Authentication
 
 All standard Bedrock authentication methods are supported for image generation. See [Bedrock Authentication](./bedrock#boto3---authentication) for details.
-

@@ -1,36 +1,9 @@
 ---
-slug: /whats-new/cloud
-sidebar_label: 'Cloud changelog'
 title: 'Cloud Changelog'
 description: 'ClickHouse Cloud changelog providing descriptions of what is new in each ClickHouse Cloud release'
 doc_type: 'changelog'
 keywords: ['changelog', 'release notes', 'updates', 'new features', 'cloud changes']
 ---
-
-import Image from '@theme/IdealImage';
-import add_marketplace from '@site/static/images/cloud/reference/add_marketplace.png';
-import beta_dashboards from '@site/static/images/cloud/reference/beta_dashboards.png';
-import api_endpoints from '@site/static/images/cloud/reference/api_endpoints.png';
-import cross_vpc from '@site/static/images/cloud/reference/cross-vpc-clickpipes.png';
-import nov_22 from '@site/static/images/cloud/reference/nov-22-dashboard.png';
-import private_endpoint from '@site/static/images/cloud/reference/may-30-private-endpoints.png';
-import notifications from '@site/static/images/cloud/reference/nov-8-notifications.png';
-import kenesis from '@site/static/images/cloud/reference/may-17-kinesis.png';
-import s3_gcs from '@site/static/images/cloud/reference/clickpipes-s3-gcs.png';
-import tokyo from '@site/static/images/cloud/reference/create-tokyo-service.png';
-import cloud_console from '@site/static/images/cloud/reference/new-cloud-console.gif';
-import copilot from '@site/static/images/cloud/reference/nov-22-copilot.gif';
-import latency_insights from '@site/static/images/cloud/reference/oct-4-latency-insights.png';
-import cloud_console_2 from '@site/static/images/cloud/reference/aug-15-compute-compute.png';
-import compute_compute from '@site/static/images/cloud/reference/july-18-table-inspector.png';
-import query_insights from '@site/static/images/cloud/reference/june-28-query-insights.png';
-import prometheus from '@site/static/images/cloud/reference/june-28-prometheus.png';
-import kafka_config from '@site/static/images/cloud/reference/june-13-kafka-config.png';
-import fast_releases from '@site/static/images/cloud/reference/june-13-fast-releases.png';
-import share_queries from '@site/static/images/cloud/reference/may-30-share-queries.png';
-import query_endpoints from '@site/static/images/cloud/reference/may-17-query-endpoints.png';
-import dashboards from '@site/static/images/cloud/reference/may-30-dashboards.png';
-import crash_reports_collection from '@site/static/images/cloud/reference/crash-reports-collection.png';
 
 In addition to this ClickHouse Cloud changelog, please see the [Cloud Compatibility](/whats-new/cloud-compatibility) page.
 
@@ -38,7 +11,6 @@ In addition to this ClickHouse Cloud changelog, please see the [Cloud Compatibil
   <a href="/docs/cloud/changelog-rss.xml">
     Subscribe to Cloud Changelog via RSS
   </a>
-:::
 
 ## February 20, 2026 {#february-20-2026}
 - **ClickPipes:** Reverse private endpoints in an inactive state will now be automatically removed after a defined grace period. This ensures unused or misconfigured endpoints are not persisted indefinitely in the backend. See the automatic clean up [documentation](/integrations/clickpipes/aws-privatelink#automatic-cleanup) for more details.
@@ -528,8 +500,6 @@ Please see the [ClickHouse docs](/cloud/notifications) to learn more about how t
 
 <Image img={notifications} size="lg" alt="ClickHouse Cloud notification center interface showing configuration options for different notification types" border />
 
-<br />
-
 ## October 4, 2024 {#october-4-2024}
 
 ### ClickHouse Cloud now offers HIPAA-ready services in Beta for GCP {#clickhouse-cloud-now-offers-hipaa-ready-services-in-beta-for-gcp}
@@ -561,8 +531,6 @@ ClickPipes for Kafka now supports custom authentication certificates for Kafka b
 Performance visibility is crucial. ClickPipes now features a latency graph, giving you insight into the time between message production (whether from a Kafka Topic or a Kinesis Stream) to ingestion in ClickHouse Cloud. With this new metric, you can keep a closer eye on the performance of your data pipelines and optimize accordingly.
 
 <Image img={latency_insights} size="lg" alt="ClickPipes interface showing latency metrics graph for data ingestion performance" border />
-
-<br />
 
 *Scaling Controls for Kafka and Kinesis (Private Beta)*
 
@@ -1183,15 +1151,12 @@ This release brings the public beta of ClickHouse Cloud on GCP
 for details), extends administrators' rights to grant terminate query permissions,
 and adds more visibility into the status of MFA users in the Cloud console.
 
-:::note Update
+> **note**: Update
 ClickHouse Cloud on GCP is now GA, see the entry for June twenty above. 
-:::
 
 ### ClickHouse Cloud on GCP is now available in public beta {#clickhouse-cloud-on-gcp-is-now-available-in-public-beta-now-ga-see-june-20th-entry-above}
 
-:::note
-ClickHouse Cloud on GCP is now GA, see the [June 20th](#june-20-2023) entry above.
-:::
+> **note**: ClickHouse Cloud on GCP is now GA, see the [June 20th](#june-20-2023) entry above.
 
 - Launches a fully-managed separated storage and compute ClickHouse offering, running on top of Google Compute and Google Cloud Storage
 - Available in Iowa (us-central1), Netherlands (europe-west4), and Singapore (asia-southeast1) regions

@@ -63,25 +63,25 @@ This is a fairly typical Flux query. Let's go through it function by function. W
 
 This Flux query will yield a time-series graph like this:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-timeseries-graph.png)
+[grafana alerts from flux queries]
 
 ### Add expressions to your Grafana Alert rule
 
 With data now appearing in our rule setup, our next step is to create an [expression](/docs/grafana/v9.0/panels/query-a-data-source/use-expressions-to-manipulate-data/about-expressions/#using-expressions). Move to section `B`. For this scenario, we want to create a Reduce expression that will reduce the above to a single value. In this image, you can see that we have chosen to reduce our time-series data the `Last` value from input `A`. In this case, it returns a value 53 degrees celsius for Tank A5:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-reduce-expression.png)
+[grafana alerts from flux queries]
 
 Finally, we need to create a math expression that Grafana will alert on. In our case we will write an expression with two conditions separated by the OR `||` operator. We want to trigger an alert any time our result in section `B` is less than 30 or more than 60. This looks like `$B < 30 || $B > 60`:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-math-expression.png)
+[grafana alerts from flux queries]
 
 Set the alert condition to `C - expression`. We can now preview our alert. Here is a preview of this alert when the state is `Normal`:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-alert-preview-state-normal.png)
+[grafana alerts from flux queries]
 
 And here is a preview of this alert when the state is `Alerting`:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-alert-alert-preview-state-alerting.png)
+[grafana alerts from flux queries]
 
 Note that the Reduce expression above is needed. Without it, when previewing the results, Grafana would display `invalid format of evaluation results for the alert definition B: looks like time series data, only reduced data can be alerted on`.
 
@@ -135,15 +135,15 @@ We are now ready to modify this data using expressions.
 
 1. Let's now use the same steps to reduce each query to the last (most recent) value. Reducing Query `A` to a single value might look like this:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-additional-queries-reduce-expression-A.png)
+   [grafana alerts from flux queries]
 
 1. And here we are reducing query `B`:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-additional-queries-reduce-expression-B.png)
+   [grafana alerts from flux queries]
 
 1. Now, in section `C` we need to create a math expression to be alerted on. In this case we will use the AND `&&` operator to specify that two conditions must be met: the value of `C` (the reduced value from query `A`) must be greater than 88.0 while the value of `D` (the reduced value from query `B`) must be greater than 1.21. We write this as `$C > 88.0 && $D > 1.21`
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-additional-queries-math-expression.png)
+   [grafana alerts from flux queries]
 
 And here is a preview of our alerts:
 
@@ -156,7 +156,7 @@ And here is a preview of our alerts:
 ```
 
 This will display as follows:
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-tip-significant-figures.png))
+[grafana alerts from flux queries])
 
 You can reference our documentation on [alert message templating](/docs/grafana/latest/alerting/contact-points/message-templating/) to learn more about this powerful feature.
 
@@ -186,7 +186,7 @@ Let’s assume our electricity meter sends a reading to InfluxDB once per hour a
 
    We can see the same pattern of Flux functions here that we say in examples 1 and 2. A query like this would produce a graph similar to the following:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-aggregatewindow-timeseries-graph.png)
+   [grafana alerts from flux queries]
 
 1. Now let's adjust our query to calculate daily usage. With many datasources, this can be a rather complex operation. But with Flux, by simply changing the aggregateWindow function parameters we can calculate the daily usage over the same 7-day period:
 
@@ -202,7 +202,7 @@ Let’s assume our electricity meter sends a reading to InfluxDB once per hour a
 
    Note how we've adjusted our `aggregateWindow()` function to `aggregateWindow(every: 1d, fn: sum)`. This results in a graph like so:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-aggregatewindow-aggregated.png)
+   [grafana alerts from flux queries]
 
 1. Add expressions to your Grafana Alert rule.
 
@@ -210,15 +210,15 @@ Let’s assume our electricity meter sends a reading to InfluxDB once per hour a
 
    As before, let's reduce our query to a single value:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-aggregatewindow-reduce-expression.png)
+   [grafana alerts from flux queries]
 
    Now create a math expression to be alerted on and set the evaluation behavior. In this case we want to write `$B > 5000`:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-aggregatewindow-math-expression.png)
+   [grafana alerts from flux queries]
 
    And now we are alerting on our daily electricity consumption whenever we exceed 5000 kWh. Here is preview of our alert:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-aggregatewindow-alert-preview.png)
+   [grafana alerts from flux queries]
 
 ### Conclusion
 
@@ -252,17 +252,17 @@ from(bucket: "HyperEncabulator")
 
 A query like the one above will produce a time series graph like this:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-multidimensional-timeseries-graph.png)
+[grafana alerts from flux queries]
 
 ### Add expressions to your Grafana Alert rule
 
 1. We create a Reduce expression that will reduce the time series for each tank to a single value. This gives us five distinct temperatures:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-multidimensional-reduce-expression.png))
+   [grafana alerts from flux queries])
 
 1. Create a math expression to be alerted on. This is the exact same expression from example 1, `$B < 30 || $B > 60`:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-multidimensional-math-expression.png)
+   [grafana alerts from flux queries]
 
 As we can see three tanks are within the acceptable thresholds while two tanks have crossed the upper boundary. This would trigger an alert for tanks `D2` and `E1`.
 
@@ -316,22 +316,22 @@ Note in the above that we are calculating the difference between the actual and 
 
 The above query results in this time series:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-complex-query-timeseries-graph.png)
+[grafana alerts from flux queries]
 
 ### Add expressions to your Grafana Alert rule
 
 1. Again, we create a Reduce expression for the above query to reduce each of the above to a single value. This value represents the temperature differential between each tank's setpoint and its actual real-time temperature:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-complex-query-reduce-expression.png)
+   [grafana alerts from flux queries]
 
 1. Now we create a math expression to be alerted on. This time we will create a condition that checks if the absolute value of our reduce calculation is greater than 3, `abs($(B))>3.0`:
 
-   ![grafana alerts from flux queries](/media/tutorials/screenshot-flux-complex-query-math-expression.png)
+   [grafana alerts from flux queries]
 
 We can now see that two tanks, `D2` and `E1`, are evaluating to true. When we preview the alert we can see that those two tanks will trigger a notification and change their state from `Normal` to `Alerting`:
 
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-complex-query-alert-preview-state-normal.png)
-![grafana alerts from flux queries](/media/tutorials/screenshot-flux-complex-query-alert-preview-state-alerting.png)
+[grafana alerts from flux queries]
+[grafana alerts from flux queries]
 
 ### Conclusion
 

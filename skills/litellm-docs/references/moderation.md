@@ -1,12 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # /moderations
 
-
 ### Usage
-<Tabs>
-<TabItem value="python" label="LiteLLM Python SDK">
 
 ```python
 from litellm import moderation
@@ -17,11 +13,7 @@ response = moderation(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy Server">
-
 For `/moderations` endpoint, there is **no need to specify `model` in the request or on the litellm config.yaml**
-
 
 1. Setup config.yaml
 ```yaml
@@ -37,10 +29,6 @@ model_list:
 litellm --config /path/to/config.yaml
 ```
 
-
-<Tabs>
-<TabItem value="python" label="OpenAI Python SDK">
-
 ```python
 from openai import OpenAI
 
@@ -55,9 +43,6 @@ response = client.moderations.create(
 
 print(response)
 ```
-</TabItem>
-
-<TabItem value="curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/moderations' \
@@ -65,11 +50,6 @@ curl --location 'http://0.0.0.0:4000/moderations' \
     --header 'Authorization: Bearer sk-1234' \
     --data '{"input": "Sample text goes here", "model": "text-moderation-stable"}'
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 ## Input Params
 LiteLLM accepts and translates the [OpenAI Moderation params](https://platform.openai.com/docs/api-reference/moderations) across all supported providers.
@@ -95,7 +75,6 @@ LiteLLM accepts and translates the [OpenAI Moderation params](https://platform.o
 Here's the exact json output and type you can expect from all moderation calls:
 
 [**LiteLLM follows OpenAI's output format**](https://platform.openai.com/docs/api-reference/moderations/object)
-
 
 ```python
 {
@@ -136,11 +115,10 @@ Here's the exact json output and type you can expect from all moderation calls:
 
 ```
 
-
 ## **Supported Providers**
 
 #### ⚡️See all supported models and providers at [models.litellm.ai](https://models.litellm.ai/)
 
 | Provider    |
 |-------------|
-| OpenAI      |  
+| OpenAI      |

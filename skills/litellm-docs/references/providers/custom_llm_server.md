@@ -1,16 +1,11 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Custom API Server (Custom Format)
 
 Call your custom torch-serve / internal LLM APIs via LiteLLM
 
-:::info
-
-- For calling an openai-compatible endpoint, [go here](./openai_compatible.md)
+> **info**: - For calling an openai-compatible endpoint, [go here](./openai_compatible.md)
 - For modifying incoming/outgoing calls on proxy, [go here](../proxy/call_hooks.md)
-:::
 
 Supported Routes:
 - `/v1/chat/completions` -> `litellm.acompletion`
@@ -26,7 +21,6 @@ Supported Routes:
 ```python showLineNumbers
 import litellm
 from litellm import CustomLLM, completion, get_llm_provider
-
 
 class MyCustomLLM(CustomLLM):
     def completion(self, *args, **kwargs) -> litellm.ModelResponse:
@@ -58,7 +52,6 @@ assert resp.choices[0].message.content == "Hi!"
 import litellm
 from litellm import CustomLLM, completion, get_llm_provider
 
-
 class MyCustomLLM(CustomLLM):
     def completion(self, *args, **kwargs) -> litellm.ModelResponse:
         return litellm.completion(
@@ -73,7 +66,6 @@ class MyCustomLLM(CustomLLM):
             messages=[{"role": "user", "content": "Hello world"}],
             mock_response="Hi!",
         )  # type: ignore
-
 
 my_custom_llm = MyCustomLLM()
 ```
@@ -204,7 +196,6 @@ import litellm
 from litellm import CustomLLM
 from litellm.types.utils import ImageResponse, ImageObject
 
-
 class MyCustomLLM(CustomLLM):
     async def aimage_generation(self, model: str, prompt: str, model_response: ImageResponse, optional_params: dict, logging_obj: Any, timeout: Optional[Union[float, httpx.Timeout]] = None, client: Optional[AsyncHTTPHandler] = None,) -> ImageResponse:
         return ImageResponse(
@@ -214,7 +205,6 @@ class MyCustomLLM(CustomLLM):
 
 my_custom_llm = MyCustomLLM()
 ```
-
 
 2. Add to `config.yaml` 
 
@@ -297,7 +287,6 @@ class MyCustomLLM(CustomLLM):
 my_custom_llm = MyCustomLLM()
 ```
 
-
 2. Add to `config.yaml`
 
 In the config below, we pass
@@ -352,7 +341,6 @@ Expected Response
 import litellm
 from litellm import CustomLLM, completion, get_llm_provider
 
-
 class MyCustomLLM(CustomLLM):
     async def acompletion(self, *args, **kwargs) -> litellm.ModelResponse:
         return litellm.completion(
@@ -360,7 +348,6 @@ class MyCustomLLM(CustomLLM):
             messages=[{"role": "user", "content": "Hello world"}],
             mock_response="Hi!",
         )  # type: ignore
-
 
 my_custom_llm = MyCustomLLM()
 ```
@@ -436,20 +423,15 @@ Expected Response
 }
 ```
 
-
 ## Additional Parameters
 
 Additional parameters are passed inside `optional_params` key in the `completion` or `image_generation` function.
 
 Here's how to set this: 
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 import litellm
 from litellm import CustomLLM, completion, get_llm_provider
-
 
 class MyCustomLLM(CustomLLM):
     def completion(self, *args, **kwargs) -> litellm.ModelResponse:
@@ -469,16 +451,11 @@ litellm.custom_provider_map = [ # 👈 KEY STEP - REGISTER HANDLER
 resp = completion(model="my-custom-llm/my-model", my_custom_param="my-custom-param")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="Proxy">
-
-
 1. Setup your `custom_handler.py` file 
 ```python
 import litellm
 from litellm import CustomLLM
 from litellm.types.utils import ImageResponse, ImageObject
-
 
 class MyCustomLLM(CustomLLM):
     async def aimage_generation(self, model: str, prompt: str, model_response: ImageResponse, optional_params: dict, logging_obj: Any, timeout: Optional[Union[float, httpx.Timeout]] = None, client: Optional[AsyncHTTPHandler] = None,) -> ImageResponse:
@@ -490,7 +467,6 @@ class MyCustomLLM(CustomLLM):
 
 my_custom_llm = MyCustomLLM()
 ```
-
 
 2. Add to `config.yaml` 
 
@@ -531,11 +507,6 @@ curl -X POST 'http://0.0.0.0:4000/v1/images/generations' \
     "prompt": "A cute baby sea otter",
 }'
 ```
-
-</TabItem>
-</Tabs>
-
-
 
 ## Custom Handler Spec
 

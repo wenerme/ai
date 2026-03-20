@@ -18,15 +18,9 @@ Doris enables access to external data sources by configuring `AWS IAM User` cred
 
 1. Login to the `AWS Console` and create an `IAM User`​
 
-![](/images/integrations/create_iam_user.png)
-
 2. Enter the IAM User name and attach policies directly​
 
-![](/images/integrations/iam_user_attach_policy1.png)
-
 3. Define AWS resource policies in the policy editor​​, below are read/write policy templates for accessing an S3 bucket
-
-![](/images/integrations/iam_user_attach_policy2.png)
 
 S3 read policy template​,applies to Doris features requiring read/list access, e.g: S3 Load, TVF, External Catalog
 
@@ -100,8 +94,6 @@ S3 write policy template​​ (Applies to Doris features requiring read/write a
 ```
 
 4. After successfully creating the IAM User, create access/secret key pair
-
-![](/images/integrations/iam_user_create_ak_sk.png)
 
 ### Step2 Use doris features with access/secret key pair via SQL
 
@@ -219,8 +211,6 @@ You can specify different IAM User credentials (`access_key` and `secret_key`) a
 
 Assumed Role allows accessing external data sources by assuming an AWS IAM Role(for details, refer to AWS documentation [assume role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)), the following diagram illustrates the configuration workflow:
 
-![](/images/integrations/assumed_role_flow.png)
-
 Terminology:
 
 `Source Account`: The AWS account initiating the Assume Role action (where Doris FE/BE EC2 instances reside);
@@ -246,16 +236,12 @@ Terminology:
 
 After attaching `ec2_role` to `EC2 instances`, you can find the `role_arn` as shown below:
 
-![](/images/integrations/ec2_instance.png)
-
 ### Step2 Configure Permissions for Source Account IAM Role (EC2 Instance Role)
 
 1. Log in to the [AWS IAM Console](https://us-east-1.console.aws.amazon.com/iamv2/home#/home),navigate to ​​`Access management` > `Roles`；
 2. Find the EC2 instance role and click its name;
 3. On the role details page, go to the ​​`Permissions`​​ tab, click ​​`Add permissions`​​, then select `​​Create inline policy`​​;
 4. In the ​​`Specify permissions​​ section`, switch to the `​​JSON`​​ tab, paste the following policy, and click ​​`Review policy`​​:
-
-![](/images/integrations/source_role_permission.png)
 
 ```JSON
 {
@@ -275,8 +261,6 @@ After attaching `ec2_role` to `EC2 instances`, you can find the `role_arn` as sh
 1. Log in [AWS IAM Console](https://us-east-1.console.aws.amazon.com/iamv2/home#/home), navigate to ​​Access management > Roles​​, find the target role (bucket_role), and click its name;
 
 2. Go to the `​​Trust relationships`​​ tab, click `​​Edit trust policy`​​, and paste the following JSON (replace <ec2_iam_role_arn> with your EC2 instance role ARN). Click ​​Update policy
-
-![](/images/integrations/target_role_trust_policy.png)
 
 **Note: The `ExternalId` in the `Condition` section is an optional string parameter used to distinguish scenarios where multiple source users need to assume the same role. If configured, include it in the corresponding Doris SQL statements. For a detailed explanation of ExternalId, refer to [aws doc](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)**
 
@@ -301,8 +285,6 @@ After attaching `ec2_role` to `EC2 instances`, you can find the `role_arn` as sh
 ```
 
 3. On the role details page, go to the ​​`Permissions`​​ tab, click `​​Add permissions`​​, then select `​​Create inline policy`​​. In the `​​JSON`​​ tab, paste one of the following policies based on your requirements;
-
-![](/images/integrations/target_role_permission2.png)
 
 S3 read policy template​,applies to Doris features requiring read/list access, e.g: S3 Load, TVF, External Catalog
 
@@ -594,4 +576,3 @@ Configure aws_log_level=5 in be.conf and doris_cloud.conf, then restart the proc
 `OpenSSL SSL_connect: Connection reset by peer in connection to sts.me-south-1.amazonaws.com:443 `
 
 Check whether the AWS VPC network configuration or firewall port settings have issues preventing access to the STS service in the corresponding AWS region (verify connectivity via telnet host:port).
-

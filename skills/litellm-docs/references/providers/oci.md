@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Oracle Cloud Infrastructure (OCI)
 LiteLLM supports the following models for OCI on-demand GenAI API.
@@ -57,9 +56,6 @@ This method is an alternative when using the LiteLLM SDK on Oracle Cloud Infrast
 
 ## Usage
 
-<Tabs>
-<TabItem value="manual" label="Manual Credentials" default>
-
 Input the parameters obtained from the OCI signing key creation process into the `completion` function:
 
 ```python
@@ -83,9 +79,6 @@ response = completion(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="oci-sdk" label="OCI SDK Signer">
 
 Use the OCI SDK `Signer` for authentication:
 
@@ -187,14 +180,9 @@ response = completion(
 )
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Usage - Streaming
 Just set `stream=True` when calling completion.
-
-<Tabs>
-<TabItem value="manual-stream" label="Manual Credentials" default>
 
 ```python
 from litellm import completion
@@ -220,9 +208,6 @@ for chunk in response:
     print(chunk["choices"][0]["delta"]["content"])  # same as openai format
 ```
 
-</TabItem>
-<TabItem value="oci-sdk-stream" label="OCI SDK Signer">
-
 ```python
 from litellm import completion
 from oci.signer import Signer
@@ -247,15 +232,9 @@ for chunk in response:
     print(chunk["choices"][0]["delta"]["content"])  # same as openai format
 ```
 
-</TabItem>
-</Tabs>
-
 ## Usage Examples by Model Type
 
 ### Using Cohere Models
-
-<Tabs>
-<TabItem value="cohere-manual" label="Manual Credentials" default>
 
 ```python
 from litellm import completion
@@ -273,9 +252,6 @@ response = completion(
 )
 print(response)
 ```
-
-</TabItem>
-<TabItem value="cohere-sdk" label="OCI SDK Signer">
 
 ```python
 from litellm import completion
@@ -299,15 +275,9 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Using Dedicated Endpoints
 
 OCI supports dedicated endpoints for hosting models. Use the `oci_serving_mode="DEDICATED"` parameter along with `oci_endpoint_id` to specify the endpoint ID.
-
-<Tabs>
-<TabItem value="dedicated-manual" label="Manual Credentials" default>
 
 ```python
 from litellm import completion
@@ -328,9 +298,6 @@ response = completion(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="dedicated-sdk" label="OCI SDK Signer">
-
 ```python
 from litellm import completion
 from oci.signer import Signer
@@ -354,9 +321,6 @@ response = completion(
 )
 print(response)
 ```
-
-</TabItem>
-</Tabs>
 
 **Important:** When using `oci_serving_mode="DEDICATED"`:
 - The `model` parameter **must match the type of model hosted on your dedicated endpoint** (e.g., use `"oci/cohere.command-latest"` for Cohere models, `"oci/xai.grok-4"` for Grok models)

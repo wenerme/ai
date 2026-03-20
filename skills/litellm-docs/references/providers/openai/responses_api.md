@@ -1,12 +1,10 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI - Response API
 
 ## Usage
 
 ### LiteLLM Python SDK
-
 
 #### Non-streaming
 ```python showLineNumbers title="OpenAI Non-streaming Response"
@@ -128,7 +126,6 @@ print(delete_response)
 # delete_response = await litellm.adelete_responses(response_id=response_id)
 ```
 
-
 ### LiteLLM Proxy with OpenAI SDK
 
 1. Set up config.yaml
@@ -206,7 +203,6 @@ stream = client.responses.create(
     tools=[{"type": "image_generation", "partial_images": 2}],
 )
 
-
 for event in stream:
     print(f"event: {event}")
     if event.type == "response.image_generation_call.partial_image":
@@ -268,7 +264,6 @@ delete_response = client.responses.delete(response_id)
 print(delete_response)
 ```
 
-
 ## Supported Responses API Parameters
 
 | Provider | Supported Parameters |
@@ -321,9 +316,6 @@ print(response)
 
 ## Computer Use 
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 ```python
 import litellm
 
@@ -360,9 +352,6 @@ response = litellm.responses(
 
 print(response.output)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Set up config.yaml
 
@@ -427,15 +416,7 @@ response = client.responses.create(
 print(response)
 ```
 
-
-</TabItem>
-</Tabs>
-
-
 ## MCP Tools 
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python showLineNumbers title="MCP Tools with LiteLLM SDK"
 import litellm
@@ -481,9 +462,6 @@ response_with_mcp_call = litellm.responses(
 
 print(response_with_mcp_call)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Set up config.yaml
 
@@ -556,16 +534,9 @@ response_with_mcp_call = client.responses.create(
 print(response_with_mcp_call)
 ```
 
-</TabItem>
-</Tabs>
-
-
 ## Verbosity Parameter
 
 The `verbosity` parameter is supported for the `responses` API.
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python showLineNumbers title="Verbosity Parameter"
 from litellm import responses
@@ -581,9 +552,6 @@ for verbosity in ["low", "medium", "high"]:
 
     print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python
 from openai import OpenAI
@@ -636,10 +604,6 @@ styled_df = df.style.set_table_styles(
 display(styled_df)
 
 ```
-
-
-</TabItem>
-</Tabs>
 
 ## Function Calling
 
@@ -698,9 +662,6 @@ Set `parallel_tool_calls=False` to ensure zero or one tool is called per turn. [
 Tool search lets models dynamically load tools at runtime instead of sending every tool definition in the prompt. Group functions into **namespaces** and mark them with `defer_loading: true` — the model only loads the schemas it actually needs, saving tokens.
 
 Requires `gpt-5.4` or later. See [OpenAI Tool Search docs](https://developers.openai.com/api/docs/guides/tools-tool-search) for full details.
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python showLineNumbers title="Tool Search with Namespaces"
 import litellm
@@ -782,9 +743,6 @@ for item in response.output:
             print(f"Called: {item.namespace}.{item.name}({item.arguments})")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
-
 1. Set up config.yaml
 
 ```yaml showLineNumbers title="OpenAI Proxy Configuration"
@@ -842,15 +800,9 @@ response = client.responses.create(
 print(response.output)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Tool Search via Chat Completions Bridge
 
 You can also use tool search through the `/v1/chat/completions` endpoint by prefixing the model with `openai/responses/`. The request is routed through the Responses API but returns a standard chat completions response.
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
 
 ```python showLineNumbers title="Tool Search via Chat Completions Bridge"
 import litellm
@@ -886,9 +838,6 @@ for tool_call in response.choices[0].message.tool_calls:
     print(f"Called: {tool_call.function.name}({tool_call.function.arguments})")
 ```
 
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
-
 ```bash showLineNumbers title="Tool Search via /v1/chat/completions"
 curl http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer $LITELLM_API_KEY" \
@@ -920,14 +869,7 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Free-form Function Calling
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 
 ```python showLineNumbers title="Free-form Function Calling"
 import litellm
@@ -946,9 +888,6 @@ response = litellm.responses(
 )
 print(response.output)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python showLineNumbers title="Free-form Function Calling"
 from openai import OpenAI
@@ -972,16 +911,9 @@ response = client.responses.create(
 )
 print(response.output)
 ```
-
-
-</TabItem>
-</Tabs>
 
 ## Context-Free Grammar 
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 ```python showLineNumbers title="Context-Free Grammar"
 import litellm
 
@@ -1025,7 +957,6 @@ sql_prompt_mssql = (
     "where total_amount > 500 and order_date is after '2025-01-01'. "
 )
 
-
 response = litellm.responses(
     model="gpt-5",
     input=sql_prompt_mssql,
@@ -1048,9 +979,6 @@ response = litellm.responses(
 print("--- MS SQL Query ---")
 print(response_mssql.output[1].input)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python showLineNumbers title="Context-Free Grammar"
 from openai import OpenAI
@@ -1100,7 +1028,6 @@ sql_prompt_mssql = (
     "where total_amount > 500 and order_date is after '2025-01-01'. "
 )
 
-
 response = client.responses.create(
     model="gpt-5",
     input=sql_prompt_mssql,
@@ -1124,14 +1051,7 @@ print("--- MS SQL Query ---")
 print(response_mssql.output[1].input)
 ```
 
-</TabItem>
-</Tabs>
-
 ## Minimal Reasoning
-
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 
 ```python showLineNumbers title="Minimal Reasoning"
 import litellm
@@ -1147,8 +1067,6 @@ response = litellm.responses(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 ```python showLineNumbers title="Minimal Reasoning"
 from openai import OpenAI
@@ -1158,9 +1076,7 @@ client = OpenAI(
     api_key="your-api-key"             # Your proxy API key
 )
 
-
 prompt = "Classify sentiment of the review as positive|neutral|negative. Return one word only." 
-
 
 response = client.responses.create(
     model="gpt-5",
@@ -1186,10 +1102,4 @@ print("--------------------------------")
 print("Output:")
 print(output_text)
 
-
-
 ```
-
-
-</TabItem>
-</Tabs>

@@ -130,8 +130,6 @@ The script authenticates to Anypoint with a username/password, fetches logs from
 
             return all_logs
 
-
-
         def parse_log(log):
             if isinstance(log, dict):
                 return {
@@ -214,7 +212,6 @@ The script authenticates to Anypoint with a username/password, fetches logs from
         pip install requests
         ```
 
-
     3. Edit the script and set:
 
         * `ANYPOINT_USERNAME` / `ANYPOINT_PASSWORD` → your MuleSoft account.
@@ -231,7 +228,7 @@ The script authenticates to Anypoint with a username/password, fetches logs from
 ??? "Step 2: Verify Logs in OpenObserve"
 
     1. Go to **Streams → mulesoft** in OpenObserve to query logs. 
-    ![Verify Logs in OpenObserve](images/mulesoft-logs.png)
+    [Verify Logs in OpenObserve]
 
 ??? "Step 3: Automate"
 
@@ -242,7 +239,6 @@ The script authenticates to Anypoint with a username/password, fetches logs from
     ```
 
     Because the script saves the last log timestamp in `last_log_time.json`, it **only pushes new logs** each run.
-
 
 !!! tip 
 

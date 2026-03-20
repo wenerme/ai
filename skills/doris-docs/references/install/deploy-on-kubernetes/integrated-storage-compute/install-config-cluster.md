@@ -78,9 +78,8 @@ spec:
 ```
 Update the configuration in the target [DorisCluster resource](install-doris-cluster.md#step-2-custom-the-template-and-deploy-cluster).
 
-:::tip Tip  
+> **tip**: Tip  
 The minimum required resources for FE and BE to start are 4 CPUs and 8Gi of memory. For normal performance testing, it is recommended to configure  8 CPUs and 8Gi of memory.  
-:::
 
 ## Custom startup configuration
 
@@ -162,9 +161,8 @@ spec:
 ```
 Update the configuration to the [DorisCluster resource](install-doris-cluster.md#step-2-custom-the-template-and-deploy-cluster) that needs to be deployed.
 
-:::tip Tip
+> **tip**: Tip
 Please ensure that `enable_fqdn_mode=true` is included in the startup configuration.. If you want to use IP mode and K8s have the ability that the pod IP keep the same after restarted, please refer to the issue [#138](https://github.com/apache/doris-operator/issues/138) to config.
-:::
 
 ### Custom BE startup configuration
 #### Step 1: Create and deploy the BE ConfigMap  
@@ -264,9 +262,8 @@ spec:
       resolveKey: be.conf
 ```
 
-:::tip Tip  
+> **tip**: Tip  
 Please use the startup configMap to mount files, when you want mount the file into the config directory in container, the config directory is ${DORIS_HOME}/conf.  
-:::
 
 ### Mounting multiple ConfigMaps
 The Doris Operator supports mounting multiple ConfigMaps into different directories within the container, allowing flexible configuration management.
@@ -342,9 +339,8 @@ spec:
 ```
 In the above configuration, ${your_storageclass} represents the name of the StorageClass you want to use, and ${storageSize} represents the storage size you want to allocation. The format of ${storageSize} follows the [quantity expression](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/) method of K8s, such as: 100Gi. Please replace them as needed when using.
 
-:::tip Tip  
+> **tip**: Tip  
 If you have reconfigured meta_dir or `LOG_DIR` in the [customized configuration file](#custom-fe-startup-configuration), please reconfigure the mountPath.
-:::
 
 ### Persistent storage for BE
 For BE nodes in a Doris deployment, it is recommended to persist the following paths:  
@@ -716,9 +712,8 @@ For enhanced security, it is recommended to create a non-root user for managemen
 
   Here, ${secretName} is the name of the deployed Basic authentication Secret.
 
-:::tip Tip  
+> **tip**: Tip  
 After deployment, please set the root password. Doris Operator will switch to using the automatically newly created username and password to manage the nodes. Please avoid deleting the automatically created user.  
-:::
 
 ### Setting the root user password after cluster deployment
 After deploying the Doris cluster and setting the root user's password, it's essential to create a management user with the necessary [Node_priv](../../../admin-manual/auth/authentication-and-authorization.md#types-of-permissions) permission to allow Doris Operator to automatically manage the cluster nodes. Using the root user for this purpose is not recommended. Instead, please refer to [the User Creation and Permission Assignment Section](../../../sql-manual/sql-statements/account-management/CREATE-USER) to create a new user and grant Node_priv permission.
@@ -777,9 +772,8 @@ For more details on creating users, setting passwords, and granting permissions,
   ```
   Here, ${secretName} is the name of the deployed Basic authentication Secret.
 
-:::tip Tip  
+> **tip**: Tip  
 After setting the root password and configuring the new username and password for managing nodes after deployment, the existing services will be restarted once in a rolling manner.  
-:::
 
 ## Automatic Service Restart on Configuration Changes
 Doris specifies startup parameters through configuration files. While most parameters can be modified through web interfaces and take effect immediately, certain parameters requiring service restart can now be automatically handled through Doris Operator's restart capability introduced in version 25.1.0.    
@@ -846,9 +840,8 @@ spec:
 - `${sharedPVCName}` refers to the name of the `PersistentVolumeClaim` to be mounted.
 - `supportComponents` lists the names of the components that require the shared storage. In the example above, both the FE and BE components will mount the shared storage. If the supportComponents array is left empty, all deployed components will mount the shared storage by default.
 
-:::tip Tip
+> **tip**: Tip
 The `mountPath` parameter can use `${DORIS_HOME}` as a prefix. When `${DORIS_HOME}` is used, it resolves to `/opt/apache-doris/fe` within FE containers and `/opt/apache-doris/be` within BE containers.
-:::
 
 ## Configuring Probe Timeouts
 DorisCluster provides two types of probe timeout configurations for each service: `startup probe timeout` and `liveness probe timeout`. If a service fails to start within the specified startup timeout period, it is considered to have failed and will be restarted.

@@ -2,15 +2,11 @@
 
 This walks through how to set the maximum retention period for spend logs. This helps manage database size by deleting old logs automatically.
 
-:::info
-
-✨ This is on LiteLLM Enterprise
+> **info**: ✨ This is on LiteLLM Enterprise
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-:::
 
 ### Requirements
 
@@ -75,7 +71,7 @@ If Redis is enabled, LiteLLM uses it to make sure only one instance runs the cle
 - If no lock is present:
   - Cleanup still runs (useful for single-node setups)
 
-![Working of spend log deletions](../../img/spend_log_deletion_working.png)  
+[Working of spend log deletions]  
 *Working of spend log deletions*
 
 ### Step 2. Batch Deletion
@@ -101,5 +97,5 @@ SPEND_LOG_CLEANUP_BATCH_SIZE=2000
 
 This would allow up to 200,000 logs to be deleted in one run.
 
-![Batch deletion of old logs](../../img/spend_log_deletion_multi_pod.jpg)  
+[Batch deletion of old logs]  
 *Batch deletion of old logs*

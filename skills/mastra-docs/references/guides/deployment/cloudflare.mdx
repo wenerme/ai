@@ -3,26 +3,17 @@ title: "Deploy Mastra to Cloudflare | Deployment"
 description: "Learn how to deploy a Mastra application to Cloudflare"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Deploy Mastra to Cloudflare
 
 Use `@mastra/deployer-cloudflare` to deploy your Mastra server to Cloudflare Workers. The deployer bundles your code and generates a `wrangler.jsonc` file conforming to Cloudflare's [wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/), ready to deploy with no additional configuration.
 
-:::info
-
-If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
-
-:::
+> **info**: If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
 
 ## Before you begin
 
 You'll need a [Mastra application](/guides/getting-started/quickstart) and a [Cloudflare](https://cloudflare.com/) account.
 
-:::warning
-Cloudflare Workers use an ephemeral filesystem, so any storage you configure (including observability storage) must be hosted externally. If you're using [LibSQLStore](/reference/storage/libsql) with a file URL, switch to a remotely hosted database.
-:::
+> **warning**: Cloudflare Workers use an ephemeral filesystem, so any storage you configure (including observability storage) must be hosted externally. If you're using [LibSQLStore](/reference/storage/libsql) with a file URL, switch to a remotely hosted database.
 
 ## Installation
 
@@ -61,7 +52,6 @@ npm install -D wrangler
 
 After setting up your project, push it to your remote Git provider of choice (e.g. GitHub).
 
-<Steps>
   <StepItem>
     Connect your repository to Cloudflare. On the "Workers & Pages" dashboard, select **Create application** and choose your Git provider in the next step. Continue with the setup process and select the repository you want to deploy.
 
@@ -91,4 +81,3 @@ After setting up your project, push it to your remote Git provider of choice (e.
 
     :::
   </StepItem>
-</Steps>

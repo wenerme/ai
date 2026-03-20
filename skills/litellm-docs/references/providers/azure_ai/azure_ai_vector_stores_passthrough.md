@@ -14,7 +14,6 @@ model_list:
     litellm_params:
       model: openai/text-embedding-3-large
 
-
 vector_store_registry:
   - vector_store_name: "azure-ai-search"
     litellm_params:
@@ -106,8 +105,6 @@ AZURE_AI_SEARCH_ENDPOINT = "http://0.0.0.0:4000/azure_ai" # IMPORTANT: Use the '
 SEARCH_API_KEY = "sk-my-virtual-key"
 INDEX_NAME = "dall-e-4"
 
-
-
 # Vector dimensions (text-embedding-3-large uses 3072 dimensions)
 VECTOR_DIMENSIONS = 3072
 
@@ -116,7 +113,6 @@ documents = [
     {"id": "1", "content": "Refunds must be requested within 30 days."},
     {"id": "2", "content": "We offer 24/7 support for all enterprise customers."},
 ]
-
 
 # ----------------------------
 # 📋 STEP 0 — Create Index Schema
@@ -138,7 +134,6 @@ def delete_index_if_exists():
         print(f"⚠️  Delete response: {response.status_code}")
         print(f"    Message: {response.text}")
         return False
-
 
 def create_index():
     """Create the Azure AI Search index with proper schema"""
@@ -196,14 +191,12 @@ def create_index():
         print(f"    Message: {response.text}")
         return False
 
-
 # Delete and recreate the index with correct schema
 print("🔄 Setting up Azure AI Search index...")
 delete_index_if_exists()
 if not create_index():
     print("❌ Could not create index. Exiting.")
     exit(1)
-
 
 # ----------------------------
 # 🧠 STEP 1 — Generate Embeddings
@@ -217,7 +210,6 @@ def get_embedding(text: str):
     if response.status_code != 200:
         raise Exception(f"Embedding failed: {response.status_code}\n{response.text}")
     return response.json()["data"][0]["embedding"]
-
 
 # Generate embeddings for each document
 for doc in documents:
@@ -255,9 +247,7 @@ else:
 
 ```
 
-
 ### 2. Search the vector store. 
-
 
 ```python
 import requests
@@ -276,7 +266,6 @@ AZURE_AI_SEARCH_ENDPOINT = "http://0.0.0.0:4000/azure_ai"
 SEARCH_API_KEY = "sk-my-virtual-key"
 INDEX_NAME = "dall-e-4"
 
-
 # ----------------------------
 # 🧠 Generate Query Embedding
 # ----------------------------
@@ -290,7 +279,6 @@ def get_embedding(text: str):
     if response.status_code != 200:
         raise Exception(f"Embedding failed: {response.status_code}\n{response.text}")
     return response.json()["data"][0]["embedding"]
-
 
 # ----------------------------
 # 🔍 Vector Search Function
@@ -341,7 +329,6 @@ def search_knowledge_base(query: str, top_k: int = 3):
     results = response.json()
     return results.get("value", [])
 
-
 # ----------------------------
 # 📊 Display Results
 # ----------------------------
@@ -360,7 +347,6 @@ def display_results(results):
         print(f"   Score: {result.get('@search.score', 'N/A')}")
         print(f"   Content: {result.get('content', 'N/A')}")
         print("-" * 80)
-
 
 # ----------------------------
 # 🎯 MAIN - Example Queries

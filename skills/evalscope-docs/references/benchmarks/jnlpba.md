@@ -1,6 +1,5 @@
 # JNLPBA
 
-
 ## Overview
 
 The JNLPBA dataset is a widely-used resource for bio-entity recognition, consisting of 2,404 MEDLINE abstracts from the GENIA corpus annotated for five key molecular biology entity types. It is a standard benchmark for biomedical NER.
@@ -26,7 +25,6 @@ The JNLPBA dataset is a widely-used resource for bio-entity recognition, consist
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: PROTEIN, DNA, RNA, CELL_LINE, CELL_TYPE
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The JNLPBA dataset is a widely-used resource for bio-entity recognition, consist
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -129,8 +126,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -161,8 +157,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -192,5 +186,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

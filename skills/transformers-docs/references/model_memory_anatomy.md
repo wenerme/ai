@@ -1,18 +1,4 @@
-<!---
-Copyright 2023 The HuggingFace Team. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
 
 # Model training anatomy
 
@@ -37,7 +23,6 @@ In total, we get 512 sequences each with length 512 and store them in a [`~datas
 >>> import numpy as np
 >>> from datasets import Dataset
 
-
 >>> seq_len, dataset_size = 512, 512
 >>> dummy_data = {
 ...     "input_ids": np.random.randint(100, 30000, (dataset_size, seq_len)),
@@ -52,13 +37,11 @@ To print summary statistics for the GPU utilization and the training run with th
 ```py
 >>> from pynvml import *
 
-
 >>> def print_gpu_utilization():
 ...     nvmlInit()
 ...     handle = nvmlDeviceGetHandleByIndex(0)
 ...     info = nvmlDeviceGetMemoryInfo(handle)
 ...     print(f"GPU memory occupied: {info.used//1024**2} MB.")
-
 
 >>> def print_summary(result):
 ...     print(f"Time: {result.metrics['train_runtime']:.2f}")
@@ -81,7 +64,6 @@ much it is we load a tiny tensor into the GPU which triggers the kernels to be l
 ```py
 >>> import torch
 
-
 >>> torch.ones((1, 1)).to("cuda")
 >>> print_gpu_utilization()
 GPU memory occupied: 1343 MB.
@@ -96,7 +78,6 @@ how much space just the weights use.
 
 ```py
 >>> from transformers import AutoModelForSequenceClassification
-
 
 >>> model = AutoModelForSequenceClassification.from_pretrained("google-bert/bert-large-uncased").to("cuda")
 >>> print_gpu_utilization()
@@ -149,12 +130,8 @@ default_args = {
 }
 ```
 
-<Tip>
-
  If you plan to run multiple experiments, in order to properly clear the memory between experiments, restart the Python
  kernel between experiments.
-
-</Tip>
 
 ## Memory utilization at vanilla training
 
@@ -164,7 +141,6 @@ Let's use the [`Trainer`] and train the model without using any GPU performance 
 >>> from transformers import TrainingArguments, Trainer, logging
 
 >>> logging.set_verbosity_error()
-
 
 >>> training_args = TrainingArguments(per_device_train_batch_size=4, **default_args)
 >>> trainer = Trainer(model=model, args=training_args, train_dataset=ds)

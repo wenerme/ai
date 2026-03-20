@@ -1,11 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Calling Finetuned Models
 
 ## OpenAI
-
 
 | Model Name                | Function Call                                                          |
 |---------------------------|-----------------------------------------------------------------|
@@ -15,13 +12,9 @@ import TabItem from '@theme/TabItem';
 | fine tuned `gpt-3.5-turbo-1106` | `response = completion(model="ft:gpt-3.5-turbo-1106", messages=messages)` |
 | fine tuned `gpt-3.5-turbo-0613` | `response = completion(model="ft:gpt-3.5-turbo-0613", messages=messages)` |
 
-
 ## Vertex AI
 
 Fine tuned models on vertex have a numerical model/endpoint id. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -37,9 +30,6 @@ response = completion(
   base_model="vertex_ai/gemini-1.5-pro" # the base model - used for routing
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add Vertex Credentials to your env 
 
@@ -67,8 +57,3 @@ curl --location 'https://0.0.0.0:4000/v1/chat/completions' \
 --header 'Authorization: <LITELLM_KEY>' \
 --data '{"model": "finetuned-gemini" ,"messages":[{"role": "user", "content":[{"type": "text", "text": "hi"}]}]}'
 ```
-
-</TabItem>
-</Tabs>
-
-

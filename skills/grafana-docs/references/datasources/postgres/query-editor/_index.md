@@ -95,7 +95,7 @@ PostgreSQL expands macros into native SQL. When the [TimescaleDB](https://www.ti
 
 If the **Format** option is set to **Table**, you can execute virtually any type of SQL query. The Table panel will automatically display the resulting columns and rows from your query.
 
-![Table query](/media/docs/postgres/PostgreSQL-query-editor-v11.4.png)
+[Table query]
 
 You can change or customize the name of a Table panel column by using the SQL keyword `AS` syntax.
 

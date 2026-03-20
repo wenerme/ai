@@ -40,15 +40,11 @@ Doris supports the use of Java to develop UDFs, UDAFs, and UDTFs. Unless otherwi
 | `struct<Type...>`     | `ArrayList<Object>` (from version 3.0.0) or`List<Object>`|
 | VarBinary     | byte[], Byte[] (The VARBINARY type is supported starting from version 4.0; prefer using byte[] to avoid an extra conversion layer.) |
 
-:::tip
-`array/map/struct` types can be nested with other types. For instance, Doris: `array<array<int>>` corresponds to JAVA UDF Argument Type: `ArrayList<ArrayList<Integer>>`. Other types follow the same pattern.
+> **tip**: `array/map/struct` types can be nested with other types. For instance, Doris: `array<array<int>>` corresponds to JAVA UDF Argument Type: `ArrayList<ArrayList<Integer>>`. Other types follow the same pattern.
 And `List`,`Map` class is supported from version 3.1.0
-:::
 
-:::caution Warning
+> **caution**: Warning
 When creating functions, avoid using `varchar` in place of `string`, as this may cause the function to fail.
-:::
-
 
 ## Usage Notes
 
@@ -87,7 +83,6 @@ PROPERTIES (
 insert into test_table values (1, 111.11, "a,b,c");
 insert into test_table values (6, 666.66, "d,e");
 ```
-
 
 ### Introduction to Java-UDF Example
 When writing a UDF in Java, the main entry point must be the `evaluate` function. This is consistent with other engines like Hive. In this example, we write an `AddOne` UDF to perform an increment operation on integer inputs.
@@ -135,8 +130,7 @@ When writing a `UDAF` using Java, there are some functions that must be implemen
 
 1. Write the corresponding Java UDAF code and package it into a JAR file.
 
-<details>
-<summary> Example 1: SimpleDemo will implement a simple function similar to sum, where the input parameter is INT and the output parameter is INT.</summary> 
+ Example 1: SimpleDemo will implement a simple function similar to sum, where the input parameter is INT and the output parameter is INT. 
 
 ```java
 package org.apache.doris.udf;
@@ -212,11 +206,7 @@ public class SimpleDemo  {
 }
 ```
 
-</details>
-
-
-<details>
-<summary> Example 2: MedianUDAF is a function that calculates the median. The input types are (DOUBLE, INT), and the output type is DOUBLE. </summary>
+ Example 2: MedianUDAF is a function that calculates the median. The input types are (DOUBLE, INT), and the output type is DOUBLE. 
 
 ```java
 package org.apache.doris.udf.demo;  
@@ -312,8 +302,6 @@ public class MedianUDAF {
 }
 ```
     
-</details>
-
 
 2. Register and create the Java-UDAF function in Doris. For more syntax details, please refer to [CREATE FUNCTION](../../sql-manual/sql-statements/function/CREATE-FUNCTION).
 
@@ -380,9 +368,7 @@ public class MedianUDAF {
 
 ### Introduction to Java-UDTF Example
 
-:::tip
-UDTF is supported starting from Doris version 3.0.
-:::
+> **tip**: UDTF is supported starting from Doris version 3.0.
 
 1. Similar to UDFs, UDTFs require users to implement an `evaluate` method. However, the return value of a UDTF must be of the Array type.
 

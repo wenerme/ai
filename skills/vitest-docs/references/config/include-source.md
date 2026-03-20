@@ -11,9 +11,7 @@ A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that mat
 
 When defined, Vitest will run all matched files that have `import.meta.vitest` inside.
 
-::: warning
-Vitest performs a simple text-based inclusion check on source files. If a file contains `import.meta.vitest`, even in a comment, it will be matched as an in-source test file.
-:::
+> **warning**: Vitest performs a simple text-based inclusion check on source files. If a file contains `import.meta.vitest`, even in a comment, it will be matched as an in-source test file.
 
 Vitest uses the [`tinyglobby`](https://npmx.dev/package/tinyglobby) package to resolve the globs.
 
@@ -50,7 +48,6 @@ if (import.meta.vitest) {
 
 For your production build, you need to replace the `import.meta.vitest` with `undefined`, letting the bundler do the dead code elimination.
 
-::: code-group
 ```js [vite.config.ts]
 import { defineConfig } from 'vite'
 
@@ -104,10 +101,8 @@ module.exports = {
   ],
 }
 ```
-:::
 
-::: tip
-To get TypeScript support for `import.meta.vitest`, add `vitest/importMeta` to your `tsconfig.json`:
+> **tip**: To get TypeScript support for `import.meta.vitest`, add `vitest/importMeta` to your `tsconfig.json`:
 
 ```json [tsconfig.json]
 {
@@ -116,4 +111,3 @@ To get TypeScript support for `import.meta.vitest`, add `vitest/importMeta` to y
   }
 }
 ```
-:::

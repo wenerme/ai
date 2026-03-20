@@ -1,18 +1,11 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Virtual Keys
 Track Spend, and control model access via virtual keys for the proxy
 
-:::info
-
-- 🔑 [UI to Generate, Edit, Delete Keys (with SSO)](https://docs.litellm.ai/docs/proxy/ui)
+> **info**: - 🔑 [UI to Generate, Edit, Delete Keys (with SSO)](https://docs.litellm.ai/docs/proxy/ui)
 - [Deploy LiteLLM Proxy with Key Management](https://docs.litellm.ai/docs/proxy/deploy#deploy-with-database)
 - [Dockerfile.database for LiteLLM Proxy + Key Management](https://github.com/BerriAI/litellm/blob/main/docker/Dockerfile.database)
-
-
-:::
 
 ## Setup
 
@@ -29,7 +22,6 @@ Requirements:
 ```shell
 export DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<dbname>
 ```
-
 
 You can then generate keys by hitting the `/key/generate` endpoint.
 
@@ -83,9 +75,6 @@ The cost per model is stored [here](https://github.com/BerriAI/litellm/blob/main
 
 Spend is automatically tracked for the key in the "LiteLLM_VerificationTokenTable". If the key has an attached 'user_id' or 'team_id', the spend for that user is tracked in the "LiteLLM_UserTable", and team in the "LiteLLM_TeamTable".
 
-<Tabs>
-<TabItem value="key-info" label="Key Spend">
-
 You can get spend for a key by using the `/key/info` endpoint. 
 
 ```bash
@@ -117,9 +106,6 @@ This is automatically updated (in USD) when calls are made to /completions, /cha
     }
 }
 ```
-
-</TabItem>
-<TabItem value="user-info" label="User Spend">
 
 **1. Create a user**
 
@@ -168,9 +154,6 @@ Expected Response
   "spend": 0 # 👈 SPEND
 }
 ```
-
-</TabItem>
-<TabItem value="team-info" label="Team Spend">
 
 Use teams, if you want keys to be owned by multiple people (e.g. for a production app).
 
@@ -221,10 +204,6 @@ Expected Response
   "spend": 0 # 👈 SPEND
 }
 ```
-
-</TabItem>
-</Tabs>
-
 
 ## Model Aliases
 
@@ -289,7 +268,6 @@ curl -X POST "https://0.0.0.0:4000/key/generate" \
 }'
 ```
 
-
 ## Advanced
 
 ### Pass LiteLLM Key in custom header
@@ -316,9 +294,6 @@ general_settings:
 
 In this request, litellm will use the Virtual key in the `X-Litellm-Key` header
 
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```shell
 curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -339,10 +314,6 @@ Expect to see a successful response from the litellm proxy since the key passed 
 {"id":"chatcmpl-f9b2b79a7c30477ab93cd0e717d1773e","choices":[{"finish_reason":"stop","index":0,"message":{"content":"\n\nHello there, how may I assist you today?","role":"assistant","tool_calls":null,"function_call":null}}],"created":1677652288,"model":"gpt-3.5-turbo-0125","object":"chat.completion","system_fingerprint":"fp_44709d6fcb","usage":{"completion_tokens":12,"prompt_tokens":9,"total_tokens":21}
 ```
 
-</TabItem>
-
-<TabItem value="python" label="OpenAI Python SDK">
-
 ```python
 client = openai.OpenAI(
     api_key="not-used",
@@ -353,8 +324,6 @@ client = openai.OpenAI(
     }
 )
 ```
-</TabItem>
-</Tabs>
 
 ### Enable/Disable Virtual Keys
 
@@ -385,7 +354,6 @@ curl -L -X POST 'http://0.0.0.0:4000/key/unblock' \
 -d '{"key": "KEY-TO-UNBLOCK"}'
 ```
 
-
 ```bash
 {
   ...
@@ -393,13 +361,11 @@ curl -L -X POST 'http://0.0.0.0:4000/key/unblock' \
 }
 ```
 
-
 ### Custom /key/generate
 
 If you need to add custom logic before generating a Proxy API Key (Example Validating `team_id`)
 
 #### 1. Write a custom `custom_generate_key_fn`
-
 
 The input to the custom_generate_key_fn function is a single parameter: `data` [(Type: GenerateKeyRequest)](https://github.com/BerriAI/litellm/blob/main/litellm/proxy/_types.py#L125)
 
@@ -415,7 +381,6 @@ The output of your `custom_generate_key_fn` should be a dictionary with the foll
 - decision (Type: bool): A boolean value indicating whether the key generation is allowed (True) or not (False).
 
 - message (Type: str, Optional): An optional message providing additional information about the decision. This field is included when the decision is False.
-
 
 ```python
 async def custom_generate_key_fn(data: GenerateKeyRequest)-> dict:
@@ -463,7 +428,6 @@ async def custom_generate_key_fn(data: GenerateKeyRequest)-> dict:
             }
 ```
 
-
 #### 2. Pass the filepath (relative to the config.yaml)
 
 Pass the filepath to the config.yaml 
@@ -482,7 +446,6 @@ litellm_settings:
 general_settings:
   custom_key_generate: custom_auth.custom_generate_key_fn
 ```
-
 
 ### Upperbound /key/generate params
 Use this, if you need to set default upperbounds for `max_budget`, `budget_duration` or any `key/generate` param per key. 
@@ -522,16 +485,11 @@ litellm_settings:
 
 ### ✨ Key Rotations 
 
-:::info
-
-This is an Enterprise feature.
+> **info**: This is an Enterprise feature.
 
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
 [Get free 7-day trial key](https://www.litellm.ai/enterprise#trial)
-
-
-:::
 
 Rotate an existing API Key, while optionally updating its parameters.
 
@@ -562,7 +520,6 @@ curl 'http://localhost:4000/key/sk-1234/regenerate' \
 - [Write rotated keys to secrets manager](https://docs.litellm.ai/docs/secret#aws-secret-manager)
 
 [**👉 API REFERENCE DOCS**](https://litellm-api.up.railway.app/#/key%20management/regenerate_key_fn_key__key__regenerate_post)
-
 
 ### Scheduled Key Rotations
 
@@ -667,7 +624,6 @@ curl -L -X POST 'http://localhost:4000/key/update' \
 
 [API Reference](https://litellm-api.up.railway.app/#/key%20management/update_key_fn_key_update_post)
 
-
 ### Restricting Key Generation
 
 Use this to control who can generate keys. Useful when letting others create keys on the UI. 
@@ -699,11 +655,9 @@ class TeamUIKeyGenerationConfig(TypedDict):
     allowed_team_member_roles: List[str] # either 'user' or 'admin'
     required_params: List[str] # require params on `/key/generate` to be set if a team key (team_id in request) is being generated
 
-
 class PersonalUIKeyGenerationConfig(TypedDict):
     allowed_user_roles: List[LitellmUserRoles] 
     required_params: List[str] # require params on `/key/generate` to be set if a personal key (no team_id in request) is being generated
-
 
 class LitellmUserRoles(str, enum.Enum):
     """
@@ -716,10 +670,8 @@ class LitellmUserRoles(str, enum.Enum):
     INTERNAL_USER: can login, view/create/delete their own keys, view their spend
     INTERNAL_USER_VIEW_ONLY: can login, view their own keys, view their own spend
 
-
     Team Roles:
     TEAM: used for JWT auth
-
 
     Customer Roles:
     CUSTOMER: External users -> these are customers
@@ -744,7 +696,6 @@ class LitellmUserRoles(str, enum.Enum):
     CUSTOMER = "customer"
 ```
 
-
 ## **Next Steps - Set Budgets, Rate Limits per Virtual Key**
 
 [Follow this doc to set budgets, rate limiters per virtual key with LiteLLM](users)
@@ -759,11 +710,6 @@ class LitellmUserRoles(str, enum.Enum):
 
 #### [**👉 API REFERENCE DOCS**](https://litellm-api.up.railway.app/#/user%20management/)
 
-
 ### Teams
 
 #### [**👉 API REFERENCE DOCS**](https://litellm-api.up.railway.app/#/team%20management)
-
-
-
-

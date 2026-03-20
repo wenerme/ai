@@ -1,7 +1,5 @@
 ---
 date: "2019-12-28"
-slug: adding-legal-pages
-sidebar_position: 110
 aliases:
   - /en-us/adding-legal-pages
 ---

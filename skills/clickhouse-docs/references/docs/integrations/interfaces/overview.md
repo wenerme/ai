@@ -3,8 +3,6 @@ description: 'Overview of network interfaces, drivers, and tools for connecting 
   ClickHouse'
 keywords: ['clickhouse', 'network', 'interfaces', 'http', 'tcp', 'grpc', 'command-line',
   'client', 'jdbc', 'odbc', 'driver']
-sidebar_label: 'Overview'
-slug: /interfaces/overview
 title: 'Drivers and Interfaces'
 doc_type: 'reference'
 ---
@@ -36,7 +34,6 @@ ClickHouse server provides embedded visual interfaces for power users:
 
 :::info[ClickStack]
 This version of ClickStack is great for local debugging and quick investigation, but isn't meant for production environments. For production ready full-featured ClickStack, see [Open Source ClickStack](/use-cases/observability/clickstack/getting-started/oss).
-:::
 
 There are also a wide range of third-party libraries for working with ClickHouse:
 

@@ -1,16 +1,9 @@
 ---
-slug: /cloud/managed-postgres/scaling
-sidebar_label: 'Scaling'
 title: 'Scaling'
 description: 'Scale your Postgres managed by ClickHouse instance vertically with flexible VM types and independent resource scaling'
 keywords: ['postgres scaling', 'vertical scaling', 'vm types', 'nvme scaling', 'instance types', 'performance scaling']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import instanceTypes from '@site/static/images/managed-postgres/instance-types.png';
-import scalingSettings from '@site/static/images/managed-postgres/scaling-settings.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="scaling" />
 
@@ -75,7 +68,6 @@ The restore time can range from a few minutes to a few hours, but the maintenanc
 
 :::important[Minimal downtime]
 Your application will experience approximately 30 seconds of downtime during the failover, regardless of how long the overall scaling process takes. All the restore and catch-up work happens in the background on the standby instance.
-:::
 
 ### Parallel restore with WAL-G {#parallel-restore}
 
@@ -133,7 +125,6 @@ This allows you to optimize the replication throughput separately from your Post
 
 :::note[Coming soon]
 Automatic storage scaling is on the roadmap for Managed Postgres. This feature will automatically increase instance size as your database grows, eliminating the need for manual intervention.
-:::
 
 ## Additional resources {#resources}
 

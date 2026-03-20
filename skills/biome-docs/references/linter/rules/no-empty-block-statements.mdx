@@ -1,14 +1,10 @@
 ---
 # Don't modify this file manually. This file is auto generated from source, and you will lose your changes next time the website is built.
 # Head to the `biomejs/biome` repository, and modify the source code in there.
-
 title: noEmptyBlockStatements
 description: Learn more about noEmptyBlockStatements
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="JavaScript (and super languages)" icon="seti:javascript">
 ## Summary
 - Rule available since: `v1.3.0`
 - Diagnostic Category: [`lint/suspicious/noEmptyBlockStatements`](/reference/diagnostics#diagnostic-category)
@@ -50,7 +46,7 @@ This rule ignores block statements or static blocks which contain a comment (for
 function emptyFunctionBody () {}
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:31 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span><br />  <br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>function emptyFunctionBody () &#123;&#125;<br />   <strong>   │ </strong>                              <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>2 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:31 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>function emptyFunctionBody () &#123;&#125;   <strong>   │ </strong>                              <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span>  </code></pre>
 
 ```js
 try {
@@ -60,7 +56,7 @@ try {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:3:13 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span><br />  <br />    <strong>1 │ </strong>try &#123;<br />    <strong>2 │ </strong>    doSomething();<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>&#125; catch(ex) &#123;<br />   <strong>   │ </strong>            <strong><span style="color: Tomato;">^</span></strong><br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong><br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>5 │ </strong>&#125;<br />   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>6 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:3:13 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span>      <strong>1 │ </strong>try &#123;    <strong>2 │ </strong>    doSomething();  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>&#125; catch(ex) &#123;   <strong>   │ </strong>            <strong><span style="color: Tomato;">^</span></strong>  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>5 │ </strong>&#125;   <strong>   │ </strong><strong><span style="color: Tomato;">^</span></strong>    <strong>6 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span>  </code></pre>
 
 ```js
 class Foo {
@@ -68,7 +64,7 @@ class Foo {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:2:3 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br /><br />  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span><br />  <br />    <strong>1 │ </strong>class Foo &#123;<br />  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  static &#123;&#125;<br />   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><br />    <strong>3 │ </strong>&#125;<br />    <strong>4 │ </strong><br />  <br />  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span><br />  <br /></code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:2:3 <a href="https://biomejs.dev/linter/rules/no-empty-block-statements">lint/suspicious/noEmptyBlockStatements</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">Unexpected empty block.</span>      <strong>1 │ </strong>class Foo &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  static &#123;&#125;   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>&#125;    <strong>4 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Empty blocks are usually the result of an incomplete refactoring. Remove the empty block or add a comment inside it if it is intentional.</span>  </code></pre>
 
 ### Valid
 
@@ -93,7 +89,3 @@ try {
 - [Rule options](/linter/#rule-options)
 - [Source Code](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/suspicious/no_empty_block_statements.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/suspicious/noEmptyBlockStatements)
-
-</TabItem>
-</Tabs>
-

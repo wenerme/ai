@@ -89,15 +89,15 @@ The following parameters need to be configured when connecting to Apache Doris:
 
 2. Click the gear icon in the upper right corner and select **Admin Settings**.
 
-![Metabase Admin Settings](/images/ecomsystem/metabase/metabase-01.png)
+[Metabase Admin Settings]
 
 3. In the left-hand menu, select **Databases**, and click the **Add database** button in the upper right corner.
 
-![Add database](/images/ecomsystem/metabase/metabase-02.png)
+[Add database]
 
 4. In the **Database type** dropdown menu, select **Apache Doris**.
 
-![Select Apache Doris](/images/ecomsystem/metabase/metabase-03.png)
+[Select Apache Doris]
 
 5. Fill in the connection information:
 
@@ -108,13 +108,13 @@ The following parameters need to be configured when connecting to Apache Doris:
 - **Username**: admin
 - **Password**: ******
 
-![Fill in connection information](/images/ecomsystem/metabase/metabase-04.png)
+[Fill in connection information]
 
 6. Click **Save** to save the configuration.
 
 7. Metabase will automatically test the connection and synchronize database metadata. If the connection is successful, a success message will be displayed.
 
-![Connection successful](/images/ecomsystem/metabase/metabase-05.png)
+[Connection successful]
 
 At this point, the data source configuration is complete! Next, we can build visualizations in Metabase.
 
@@ -130,13 +130,13 @@ Suppose we need to analyze the order amount growth curve over time for different
 
 1. Click the **New +** button in the upper right corner of the homepage and select **Question**.
 
-![Create a new question](/images/ecomsystem/metabase/metabase-06.png)
+[Create a new question]
 
 2. Select the data source:
     - **Database**: Doris TPCH
     - **Table**: lineitem
 
-![Select the table](/images/ecomsystem/metabase/metabase-07.png)
+[Select the table]
 
 ### Building Custom Metrics Using SQL
 
@@ -144,7 +144,7 @@ To calculate revenue, we need to use a custom SQL expression:
 
 1. Click the **view sql** switch in the upper right corner, then click **convert this question to SQL** to edit the SQL.
 
-![Switch to SQL mode](/images/ecomsystem/metabase/metabase-08.png)
+[Switch to SQL mode]
 
 2. Enter the following SQL query:
 
@@ -164,14 +164,13 @@ ORDER BY ship_month, l_shipmode
 
 3. Click the **Visualize** button in the lower right corner to view the results.
 
-![View Results](/images/ecomsystem/metabase/metabase-09.png)
-
+[View Results]
 
 ### Configure Visualization Charts
 
 1. The default display is a table. Click the **Visualization** button in the lower left corner and select the **Line** chart type.
 
-![Select Line Chart](/images/ecomsystem/metabase/metabase-10.png)
+[Select Line Chart]
 
 2. Configure chart parameters as needed (metabase automatically configures as follows):
     - **X-axis**: ship_month (shipping month)
@@ -186,21 +185,21 @@ ORDER BY ship_month, l_shipmode
 
 5. Enter the issue name: **my-tpch**, and select the collection to save to.
 
-![Naming the issue](/images/ecomsystem/metabase/metabase-11.png)
+[Naming the issue]
 
 ### Creating a Dashboard
 
 1. Click **+ New** → **Dashboard** to create a new dashboard. Enter the dashboard name: **my-tpch**
 
-![Creating a Dashboard](/images/ecomsystem/metabase/metabase-12.png)
+[Creating a Dashboard]
 
 2. Click **Add a chart** to add the saved question to the dashboard.
 
-![Adding a Question](/images/ecomsystem/metabase/metabase-13.png)
+[Adding a Question]
 
 3. Adjust the chart position and size, and click **Save** in the upper right corner to save the dashboard.
 
-![Saving the Dashboard](/images/ecomsystem/metabase/metabase-14.png)
+[Saving the Dashboard]
 
 At this point, Metabase has been successfully connected to Apache Doris, and data analysis and visualization dashboard creation have been implemented!
 
@@ -213,7 +212,7 @@ Doris supports multi-catalog functionality, allowing queries to external data so
 1. Configure `Catalog` in the Links configuration interface, and configure the external database under that catalog in `Database`, for example:  
    `catalog: hive_catalog`, `database: warehouse` - Access the warehouse database named hive_catalog
 
-![Configuring catalog](/images/ecomsystem/metabase/metabase-15.png)
+[Configuring catalog]
 
 2. Or explicitly specify the Catalog in an SQL query:
 
@@ -267,4 +266,3 @@ After saving, data can be dynamically filtered in the dashboard using dropdown m
   ```sql
   SELECT CAST(large_int_col AS STRING) FROM table
   ```
-  

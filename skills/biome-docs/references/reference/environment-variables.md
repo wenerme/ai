@@ -1,6 +1,5 @@
 ---
 # Don't modify this file. This file is autogenerate by `codegen/src/env_variables.rs`
-
 title: Environment variables
 description: A list of the environment variables available via Biome
 ---
@@ -15,7 +14,6 @@ description: A list of the environment variables available via Biome
 ### `BIOME_CONFIG_PATH`
 
  A path to the configuration file
-
 
 ### `BIOME_BINARY`
 

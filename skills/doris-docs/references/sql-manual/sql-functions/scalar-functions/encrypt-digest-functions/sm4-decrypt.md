@@ -16,7 +16,6 @@ SM4 is a national standard symmetric key encryption algorithm, widely used in fi
 SM4_DECRYPT( <str>, <key_str>[, <init_vector>][, <encryption_mode>])
 ```
 
-
 ## Parameters
 
 | parameter           | description                                                                                                                                                                                         |
@@ -25,7 +24,6 @@ SM4_DECRYPT( <str>, <key_str>[, <init_vector>][, <encryption_mode>])
 | `<key_str>`         | is the key. Note that this key is not a hexadecimal encoding, but an encoded string representation. For example, for 128-bit key encryption, the length of `key_str` should be 16. If the key length is insufficient, use **zero padding** to make it complete. If the length exceeds, use circular XOR to find the final key. For example, if the 128-bit key used by the algorithm is `key`, then `key[i] = key_str[i] ^ key_str[i+128] ^ key_str[i+256] ^ ...` |
 | `<init_vector>`     | It is the initial vector used in the algorithm. It is only effective under specific algorithms. If not specified, Doris uses the built-in vector                                                                                                                                                          |
 | `<encryption_mode>` | For encryption algorithms, optional values are given in variables                                                                                                                                   |
-
 
 ## Return Value
 

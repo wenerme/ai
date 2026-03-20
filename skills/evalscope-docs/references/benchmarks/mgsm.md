@@ -1,6 +1,5 @@
 # MGSM
 
-
 ## Overview
 
 MGSM (Multilingual Grade School Math) is a benchmark designed to evaluate multilingual mathematical reasoning capabilities of language models. It extends GSM8K to 11 typologically diverse languages, testing whether models can perform chain-of-thought reasoning across different languages.
@@ -28,7 +27,6 @@ MGSM (Multilingual Grade School Math) is a benchmark designed to evaluate multil
 - Cross-lingual performance comparison supported
 - Few-shot examples are drawn from the train split in the same language
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ MGSM (Multilingual Grade School Math) is a benchmark designed to evaluate multil
 | **Default Shots** | 4-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -98,11 +95,9 @@ MGSM (Multilingual Grade School Math) is a benchmark designed to evaluate multil
 {question}
 Please reason step by step, and put your final answer within \boxed{{}}.
 
-
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of how to solve similar problems:
@@ -112,10 +107,7 @@ Here are some examples of how to solve similar problems:
 {question}
 Please reason step by step, and put your final answer within \boxed{{}}.
 
-
 ```
-
-</details>
 
 ## Usage
 
@@ -151,5 +143,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

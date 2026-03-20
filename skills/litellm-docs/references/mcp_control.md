@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # MCP Permission Management
 
@@ -17,12 +15,11 @@ LiteLLM provides fine-grained permission management for MCP servers, allowing yo
 
 This ensures that only authorized entities can discover and use MCP tools, providing an additional security layer for your MCP infrastructure.
 
-:::info Related Documentation
+> **info**: Related Documentation
 - [MCP Overview](./mcp.md) - Learn about MCP in LiteLLM
 - [MCP Cost Tracking](./mcp_cost.md) - Track costs for MCP tool calls
 - [MCP Guardrails](./mcp_guardrail.md) - Apply security guardrails to MCP calls
 - [Using MCP](./mcp_usage.md) - How to use MCP with LiteLLM
-:::
 
 ## How It Works
 
@@ -35,13 +32,9 @@ When Creating a Key, Team, or Organization, you can select the allowed MCP Serve
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-
 ## Allow/Disallow MCP Tools
   
 Control which tools are available from your MCP servers. You can either allow only specific tools or block dangerous ones.
-
-<Tabs>
-<TabItem value="allowed" label="Only Allow Specific Tools">
 
 Use `allowed_tools` to specify exactly which tools users can access. All other tools will be blocked.
 
@@ -64,9 +57,6 @@ mcp_servers:
 - You're in a high-security environment
 - You're testing a new MCP server with limited tools
 
-</TabItem>
-<TabItem value="blocked" label="Block Specific Tools">
-
 Use `disallowed_tools` to block specific tools. All other tools will be available.
 
 ```yaml title="config.yaml" showLineNumbers
@@ -88,9 +78,6 @@ mcp_servers:
 - You want to prevent expensive API calls
 - You're gradually adding restrictions to an existing server
 
-</TabItem>
-</Tabs>
-
 ### Important Notes
 
 - If you specify both `allowed_tools` and `disallowed_tools`, the allowed list takes priority
@@ -99,9 +86,6 @@ mcp_servers:
 ## Public MCP Servers (allow_all_keys)
 
 Some MCP servers are meant to be shared broadly—think internal knowledge bases, calendar integrations, or other low-risk utilities where every team should be able to connect without requesting access. Instead of adding those servers to every key, team, or organization, enable the new `allow_all_keys` toggle.
-
-<Tabs>
-<TabItem value="ui" label="UI">
 
 1. Open **MCP Servers → Add / Edit** in the Admin UI.
 2. Expand **Permission Management / Access Control**.
@@ -115,9 +99,6 @@ Some MCP servers are meant to be shared broadly—think internal knowledge bases
 
 The toggle makes the server “public” without touching existing access groups.
 
-</TabItem>
-<TabItem value="config" label="config.yaml">
-
 Set `allow_all_keys: true` to mark the server as public:
 
 ```yaml title="Make an MCP server public" showLineNumbers
@@ -126,9 +107,6 @@ mcp_servers:
     url: https://mcp.deepwiki.com/mcp
     allow_all_keys: true
 ```
-
-</TabItem>
-</Tabs>
 
 ### When to use it
 
@@ -282,9 +260,6 @@ LiteLLM Proxy supports URL-based namespacing for MCP servers using the format `/
 
 #### Usage Examples
 
-<Tabs>
-<TabItem value="openai" label="OpenAI API">
-
 ```bash title="cURL Example with URL Namespacing" showLineNumbers
 curl --location 'https://api.openai.com/v1/responses' \
 --header 'Content-Type: application/json' \
@@ -308,10 +283,6 @@ curl --location 'https://api.openai.com/v1/responses' \
 ```
 
 This example uses URL namespacing to access only the "github" MCP server.
-
-</TabItem>
-
-<TabItem value="litellm" label="LiteLLM Proxy">
 
 ```bash title="cURL Example with URL Namespacing" showLineNumbers
 curl --location '<your-litellm-proxy-base-url>/v1/responses' \
@@ -337,10 +308,6 @@ curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 
 This example uses the `x-mcp-servers` header to access all servers in the "dev_group" access group. Use `server_url: "litellm_proxy"` when calling the proxy's `/v1/responses` endpoint—do not use the full proxy URL.
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 ```json title="Cursor MCP Configuration with URL Namespacing" showLineNumbers
 {
   "mcpServers": {
@@ -355,9 +322,6 @@ This example uses the `x-mcp-servers` header to access all servers in the "dev_g
 ```
 
 This configuration uses URL namespacing to access tools from both "github" and "zapier" MCP servers.
-
-</TabItem>
-</Tabs>
 
 #### Benefits of URL Namespacing
 
@@ -380,9 +344,6 @@ The header accepts a comma-separated list of server aliases: `"alias_1,Server2,S
 **Notes:**
 - If the header is not provided, tools from all available MCP servers will be accessible
 - This method works with the standard LiteLLM MCP endpoint
-
-<Tabs>
-<TabItem value="openai" label="OpenAI API">
 
 ```bash title="cURL Example with Header Namespacing" showLineNumbers
 curl --location 'https://api.openai.com/v1/responses' \
@@ -408,10 +369,6 @@ curl --location 'https://api.openai.com/v1/responses' \
 ```
 
 In this example, the request will only have access to tools from the "alias_1" MCP server.
-
-</TabItem>
-
-<TabItem value="litellm" label="LiteLLM Proxy">
 
 ```bash title="cURL Example with Header Namespacing" showLineNumbers
 curl --location '<your-litellm-proxy-base-url>/v1/responses' \
@@ -438,10 +395,6 @@ curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 
 This configuration restricts the request to only use tools from the specified MCP servers. Use `server_url: "litellm_proxy"` when calling the proxy's `/v1/responses` endpoint.
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 ```json title="Cursor MCP Configuration with Header Namespacing" showLineNumbers
 {
   "mcpServers": {
@@ -458,9 +411,6 @@ This configuration restricts the request to only use tools from the specified MC
 
 This configuration in Cursor IDE settings will limit tool access to only the specified MCP servers.
 
-</TabItem>
-</Tabs>
-
 ---
 
 ### Comparison: Header vs URL Namespacing
@@ -474,9 +424,6 @@ This configuration in Cursor IDE settings will limit tool access to only the spe
 | **Access Groups** | Supported via header | Supported via URL path |
 | **Client Support** | Works with all MCP clients | Works with URL-aware MCP clients |
 | **Use Case** | Dynamic server selection | Fixed server configuration |
-
-<Tabs>
-<TabItem value="openai" label="OpenAI API">
 
 ```bash title="cURL Example with Server Segregation" showLineNumbers
 curl --location 'https://api.openai.com/v1/responses' \
@@ -503,10 +450,6 @@ curl --location 'https://api.openai.com/v1/responses' \
 
 In this example, the request will only have access to tools from the "alias_1" MCP server.
 
-</TabItem>
-
-<TabItem value="litellm" label="LiteLLM Proxy">
-
 ```bash title="cURL Example with Server Segregation" showLineNumbers
 curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 --header 'Content-Type: application/json' \
@@ -532,10 +475,6 @@ curl --location '<your-litellm-proxy-base-url>/v1/responses' \
 
 This configuration restricts the request to only use tools from the specified MCP servers.
 
-</TabItem>
-
-<TabItem value="cursor" label="Cursor IDE">
-
 ```json title="Cursor MCP Configuration with Server Segregation" showLineNumbers
 {
   "mcpServers": {
@@ -551,9 +490,6 @@ This configuration restricts the request to only use tools from the specified MC
 ```
 
 This configuration in Cursor IDE settings will limit tool access to only the specified MCP server.
-
-</TabItem>
-</Tabs>
 
 ### Grouping MCPs (Access Groups)
 
@@ -624,17 +560,13 @@ When creating API keys, you can assign them to specific access groups for permis
   style={{width: '80%', display: 'block', margin: '0'}}
 />
 
-
-
 ## Set Allowed Tools for a Key, Team, or Organization
 
 Control which tools different teams can access from the same MCP server. For example, give your Engineering team access to `list_repositories`, `create_issue`, and `search_code`, while Sales only gets `search_code` and `close_issue`.
 
-
 This video shows how to set allowed tools for a Key, Team, or Organization.
 
 <iframe width="840" height="500" src="https://www.loom.com/embed/7464d444c3324078892367272fe50745" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
 
 ## Dashboard View Modes
 
@@ -650,7 +582,6 @@ general_settings:
 
 This is useful when you want discoverability for MCP offerings without granting additional execution privileges.
 
-
 ## Publish MCP Registry
 
 If you want other systems—for example external agent frameworks such as MCP-capable IDEs running outside your network—to automatically discover the MCP servers hosted on LiteLLM, you can expose a Model Context Protocol Registry endpoint. This registry lists the built-in LiteLLM MCP server and every server you have configured, using the [official MCP Registry spec](https://github.com/modelcontextprotocol/registry).
@@ -659,6 +590,5 @@ If you want other systems—for example external agent frameworks such as MCP-ca
 2. LiteLLM will serve the registry at `GET /v1/mcp/registry.json`.
 3. Each entry points to either `/mcp` (built-in server) or `/{mcp_server_name}/mcp` for your custom servers, so clients can connect directly using the advertised Streamable HTTP URL.
 
-:::note Permissions still apply
+> **note**: Permissions still apply
 The registry only advertises server URLs. Actual access control is still enforced by LiteLLM when the client connects to `/mcp` or `/{server}/mcp`, so publishing the registry does not bypass per-key permissions.
-:::

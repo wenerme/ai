@@ -100,7 +100,7 @@ To configure basic settings for the data source, complete the following steps:
 
 ### Trace to logs
 
-![Trace to logs settings](/media/docs/tempo/tempo-trace-to-logs-9-4.png)
+[Trace to logs settings]
 
 {{< admonition type="note" >}}
 If you use Grafana Cloud, open a [support ticket in the Cloud Portal](/profile/org#support) to access this feature.
@@ -322,7 +322,7 @@ If the file has multiple traces, Grafana visualizes its first trace.
 
 ## Span Filters
 
-![Screenshot of span filtering](/media/docs/tempo/screenshot-grafana-tempo-span-filters-v10-1.png)
+[Screenshot of span filtering]
 
 Using span filters, you can filter your spans in the trace timeline viewer. The more filters you add, the more specific are the filtered spans.
 

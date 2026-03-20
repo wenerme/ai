@@ -1,15 +1,10 @@
 ---
-slug: /cloud/get-started/cloud/resource-tour
 title: 'Resource tour'
 description: 'Overview of ClickHouse Cloud documentation resources for query optimization, scaling strategies, monitoring, and best practices'
 keywords: ['clickhouse cloud']
 hide_title: true
 doc_type: 'guide'
 ---
-
-import TableOfContentsBestPractices from '@site/docs/best-practices/_snippets/_table_of_contents.md';
-import TableOfContentsOptimizationAndPerformance from '@site/docs/guides/best-practices/_snippets/_performance_optimizations_table_of_contents.md';
-import TableOfContentsSecurity from '@site/docs/cloud/_snippets/_security_table_of_contents.md';
 
 # Resource tour
 

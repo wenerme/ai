@@ -99,9 +99,7 @@ response = speech(
 
 Maya, Arjun, Serene, Bernard, Billy, Mark, Clint, Mabel, Chad, Leslie, Eleanor, Elias, Elliot, Grungle, Brodie, Sandra, Kirk, Kylie, Lara, Lisa, Malachi, Marlene, Martin, Miriam, Monster, Paula, Pip, Rusty, Ragnar, Xylar, Maggie, Jack, Katie, Noah, James, Rina, Ella, Mariah, Frank, Claudia, Niki, Vincent, Kendrick, Myrna, Tom, Wanda, Benjamin, Kiana, Rachel
 
-:::tip
-Simply pass the voice name as a string - LiteLLM automatically handles the internal RunwayML API format conversion.
-:::
+> **tip**: Simply pass the voice name as a string - LiteLLM automatically handles the internal RunwayML API format conversion.
 
 ## Async Usage
 
@@ -241,4 +239,3 @@ sequenceDiagram
     Note over LiteLLM: Return audio content
     LiteLLM-->>Client: Audio Response (binary)
 ```
-

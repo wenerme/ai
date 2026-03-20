@@ -1,7 +1,5 @@
 ---
 title: 'chDB for Node.js'
-sidebar_label: 'Node.js'
-slug: /chdb/install/nodejs
 description: 'How to install and use chDB with Node.js'
 keywords: ['chdb', 'nodejs', 'javascript', 'embedded', 'clickhouse', 'sql', 'olap']
 doc_type: 'guide'

@@ -1,7 +1,5 @@
 ---
 date: "2016-12-01T16:00:00+02:00"
-slug: "authentication"
-sidebar_position: 10
 aliases:
   - /en-us/authentication
 ---
@@ -346,6 +344,4 @@ You can enable the this authentication method for the API with
 ENABLE_REVERSE_PROXY_AUTHENTICATION_API = true
 ```
 
-:::note
-When this method is enabled for the API, the reverse proxy is responsible for handling CSRF protection.
-:::
+> **note**: When this method is enabled for the API, the reverse proxy is responsible for handling CSRF protection.

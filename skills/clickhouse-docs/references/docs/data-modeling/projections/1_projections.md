@@ -1,5 +1,4 @@
 ---
-slug: /data-modeling/projections
 title: 'Projections'
 description: 'Page describing what projections are, how they can be used to improve
 query performance, and how they differ from materialized views.'
@@ -7,10 +6,6 @@ keywords: ['projection', 'projections', 'query optimization']
 sidebar_order: 1
 doc_type: 'guide'
 ---
-
-import projections_1 from '@site/static/images/data-modeling/projections_1.png';
-import projections_2 from '@site/static/images/data-modeling/projections_2.png';
-import Image from '@theme/IdealImage';
 
 # Projections
 
@@ -26,7 +21,6 @@ queries by creating a reordering of data by attributes of interest. This can be:
 3. A precomputed aggregation (similar to a materialized view) but with an ordering
    aligned to the aggregation.
 
-<br/>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6CdnUdZSEG0?si=1zUyrP-tCvn9tXse" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## How do Projections work? {#how-do-projections-work}
@@ -298,12 +292,10 @@ ALTER TABLE uk.uk_price_paid_with_projections
 SETTINGS mutations_sync = 1
 ```
 
-:::note
-If there is a `GROUP BY` clause used in a projection like in the `prj_gby_county`
+> **note**: If there is a `GROUP BY` clause used in a projection like in the `prj_gby_county`
 projection above, then the underlying storage engine for the (hidden) table 
 becomes `AggregatingMergeTree`, and all aggregate functions are converted to 
 `AggregateFunction`. This ensures proper incremental data aggregation.
-:::
 
 The figure below is a visualization of the main table `uk_price_paid_with_projections`
 and its two projections:
@@ -588,10 +580,8 @@ INSERT INTO page_views VALUES (
 5, '2025-07-03', 104, 'https://example.com/page5', 'asia');
 ```
 
-:::note
-Note: The table uses custom settings for illustration, such as one-row granules 
+> **note**: Note: The table uses custom settings for illustration, such as one-row granules 
 and disabled part merges, which aren't recommended for production use.
-:::
 
 This setup produces:
 - Five separate parts (one per inserted row)

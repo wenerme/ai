@@ -17,12 +17,12 @@ The following environment variables can be set before launch to control global d
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--model` | `str` | Name of the model to be evaluated<br>• ModelScope model ID (e.g., `Qwen/Qwen2.5-0.5B-Instruct`)<br>• Local model path (e.g., `/path/to/model`)<br>• Model ID for API service (e.g., `Qwen2.5-0.5B-Instruct`) | - |
+| `--model` | `str` | Name of the model to be evaluated• ModelScope model ID (e.g., `Qwen/Qwen2.5-0.5B-Instruct`)• Local model path (e.g., `/path/to/model`)• Model ID for API service (e.g., `Qwen2.5-0.5B-Instruct`) | - |
 | `--model-id` | `str` | Alias for the evaluated model, used in reports | Last part of `model` |
-| `--api-url` | `str` | Model API endpoint, supports OpenAI-compatible format<br>Example: `http://127.0.0.1:8000/v1` | `None` |
+| `--api-url` | `str` | Model API endpoint, supports OpenAI-compatible formatExample: `http://127.0.0.1:8000/v1` | `None` |
 | `--api-key` | `str` | Model API endpoint key | `EMPTY` |
-| `--model-args` | `str` | Model loading parameters, comma-separated `key=value` or JSON string<br>• `revision`: Model revision<br>• `precision`: Model precision<br>• `device_map`: Device allocation | `revision=master`<br>`precision=torch.float16`<br>`device_map=auto` |
-| `--model-task` | `str` | Model task type | `text_generation`<br>(Options: `image_generation`) |
+| `--model-args` | `str` | Model loading parameters, comma-separated `key=value` or JSON string• `revision`: Model revision• `precision`: Model precision• `device_map`: Device allocation | `revision=master``precision=torch.float16``device_map=auto` |
+| `--model-task` | `str` | Model task type | `text_generation`(Options: `image_generation`) |
 | `--chat-template` | `str` | Model inference template, supports Jinja template string | `None` (uses transformers default) |
 
 **Example:**
@@ -49,7 +49,7 @@ The `--generation-config` parameter supports the following options (comma-separa
 | `temperature` | `float` | Sampling temperature, range 0~2; higher means more randomness | All |
 | `frequency_penalty` | `float` | Range -2.0~2.0; positive values penalize repeated tokens | OpenAI-compatible |
 | `presence_penalty` | `float` | Range -2.0~2.0; positive values penalize already appeared tokens | OpenAI-compatible |
-| `logit_bias` | `dict` | Mapping of token IDs to bias values (-100~100)<br>Example: `"42=10,43=-10"` | OpenAI, Grok, vLLM |
+| `logit_bias` | `dict` | Mapping of token IDs to bias values (-100~100)Example: `"42=10,43=-10"` | OpenAI, Grok, vLLM |
 | `seed` | `int` | Random seed | OpenAI, Google, Mistral, Groq, HuggingFace, vLLM |
 | `do_sample` | `bool` | Whether to use sampling strategy (otherwise greedy decoding) | Transformers |
 | `top_k` | `int` | Sample next token from the top_k most likely candidates | Anthropic, Google, HuggingFace, vLLM, SGLang |
@@ -78,10 +78,10 @@ The `--generation-config` parameter supports the following options (comma-separa
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--datasets` | `list[str]` | Dataset name list, space-separated<br>Refer to [Dataset List](./supported_dataset/llm.md) | - |
+| `--datasets` | `list[str]` | Dataset name list, space-separatedRefer to [Dataset List](./supported_dataset/llm.md) | - |
 | `--dataset-dir` | `str` | Dataset download path | `~/.cache/modelscope/datasets` |
-| `--dataset-hub` | `str` | Dataset source | `modelscope`<br>(Options: `huggingface`) |
-| `--limit` | `int`/`float` | Maximum samples to evaluate per dataset<br>• int: First N samples<br>• float: First N% of samples<br>Example: `100` or `0.1` | `None` (evaluate all) |
+| `--dataset-hub` | `str` | Dataset source | `modelscope`(Options: `huggingface`) |
+| `--limit` | `int`/`float` | Maximum samples to evaluate per dataset• int: First N samples• float: First N% of samplesExample: `100` or `0.1` | `None` (evaluate all) |
 | `--repeats` | `int` | Number of times to repeat inference on the same sample | `1` |
 | `--dataset-args` | `str` | Dataset configuration parameters (JSON string), see table below | `{}` |
 
@@ -102,8 +102,8 @@ The `--generation-config` parameter supports the following options (comma-separa
 | `shuffle` | `bool` | Whether to shuffle the data |
 | `shuffle_choices` | `bool` | Whether to shuffle choice order (multiple-choice only) |
 | `metric_list` | `list[str\|dict]` | Metric list, default supports `acc` |
-| `aggregation` | `str` | Aggregation method for evaluation results, default is `mean`. Options: `mean_and_pass_at_k`, `mean_and_vote_at_k`, `mean_and_pass_hat_k` (all require setting `repeats=k`).<br>• `pass_at_k`: Probability that the same sample passes at least once in k generations (e.g., set `repeats=5` for `humaneval`)<br>• `vote_at_k`: Scoring by voting on k results for the same sample<br>• `pass_hat_k`: Probability that the same sample passes all k times (e.g., set `repeats=3` for `tau2_bench`) |
-| `filters` | `dict` | Output filters<br>• `remove_until`: Remove content before specified string<br>• `extract`: Extract regex-matched content |
+| `aggregation` | `str` | Aggregation method for evaluation results, default is `mean`. Options: `mean_and_pass_at_k`, `mean_and_vote_at_k`, `mean_and_pass_hat_k` (all require setting `repeats=k`).• `pass_at_k`: Probability that the same sample passes at least once in k generations (e.g., set `repeats=5` for `humaneval`)• `vote_at_k`: Scoring by voting on k results for the same sample• `pass_hat_k`: Probability that the same sample passes all k times (e.g., set `repeats=3` for `tau2_bench`) |
+| `filters` | `dict` | Output filters• `remove_until`: Remove content before specified string• `extract`: Extract regex-matched content |
 | `force_redownload` | `bool` | Whether to force re-download the dataset |
 | `extra_params` | `dict` | Dataset-related extra parameters, refer to [dataset documentation](./supported_dataset/index.md), specify `{<param_name>:<value>}` as needed, where the type (`type`) and choices (`choices`) of `value` depend on the specific parameter |
 | `sandbox_config` | `dict` | Sandbox configuration (see Sandbox Parameters below) |
@@ -144,9 +144,9 @@ The `--generation-config` parameter supports the following options (comma-separa
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--eval-type` | `str` | Evaluation type<br>• `llm_ckpt`: Local model inference (transformers)<br>• `openai_api`: OpenAI-compatible API service<br>• `anthropic_api`: Anthropic Claude API service<br>• `text2image`: Text-to-image model (diffusers)<br>• `mock_llm`: Simulated inference (for verification) | `None` (auto-detect) |
-| `--eval-batch-size` | `int` | Evaluation batch size<br>For `eval-type=service`, means concurrent requests | `1` (service mode: `8`) |
-| `--eval-backend` | `str` | Evaluation backend<br>• `Native`: Default backend<br>• `OpenCompass`: LLM evaluation<br>• `VLMEvalKit`: Multimodal model evaluation<br>• `RAGEval`: RAG/Embedding/Reranker/CLIP evaluation<br>• `ThirdParty`: Special task evaluation | `Native` |
+| `--eval-type` | `str` | Evaluation type• `llm_ckpt`: Local model inference (transformers)• `openai_api`: OpenAI-compatible API service• `anthropic_api`: Anthropic Claude API service• `text2image`: Text-to-image model (diffusers)• `mock_llm`: Simulated inference (for verification) | `None` (auto-detect) |
+| `--eval-batch-size` | `int` | Evaluation batch sizeFor `eval-type=service`, means concurrent requests | `1` (service mode: `8`) |
+| `--eval-backend` | `str` | Evaluation backend• `Native`: Default backend• `OpenCompass`: LLM evaluation• `VLMEvalKit`: Multimodal model evaluation• `RAGEval`: RAG/Embedding/Reranker/CLIP evaluation• `ThirdParty`: Special task evaluation | `Native` |
 | `--eval-config` | `str` | Configuration file path for non-Native backends | - |
 
 ```{seealso}
@@ -159,7 +159,7 @@ LLM-as-a-Judge evaluation parameters using a judge model to determine correctnes
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--judge-strategy` | `str` | Judge model strategy<br>• `auto`: Automatically decide based on dataset requirements<br>• `llm`: Always use judge model<br>• `rule`: Use rule-based judgment only<br>• `llm_recall`: Use judge model after rule-based judgment fails | `auto` |
+| `--judge-strategy` | `str` | Judge model strategy• `auto`: Automatically decide based on dataset requirements• `llm`: Always use judge model• `rule`: Use rule-based judgment only• `llm_recall`: Use judge model after rule-based judgment fails | `auto` |
 | `--judge-worker-num` | `int` | Judge model concurrency | `1` |
 | `--judge-model-args` | `str` | Judge model configuration (JSON string), see table below | - |
 | `--analysis-report` | `bool` | Whether to generate analysis report (language auto-detected) | `false` |
@@ -169,20 +169,20 @@ LLM-as-a-Judge evaluation parameters using a judge model to determine correctnes
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
 | `api_key` | `str` | API key | Read from `MODELSCOPE_SDK_TOKEN`, default `EMPTY` |
-| `api_url` | `str` | API endpoint | Read from `MODELSCOPE_API_BASE`,<br>default `https://api-inference.modelscope.cn/v1/` |
-| `model_id` | `str` | Model ID | Read from `MODELSCOPE_JUDGE_LLM`,<br>default `Qwen/Qwen3-235B-A22B` |
+| `api_url` | `str` | API endpoint | Read from `MODELSCOPE_API_BASE`,default `https://api-inference.modelscope.cn/v1/` |
+| `model_id` | `str` | Model ID | Read from `MODELSCOPE_JUDGE_LLM`,default `Qwen/Qwen3-235B-A22B` |
 | `system_prompt` | `str` | System prompt | - |
 | `prompt_template` | `str` | Prompt template | Auto-selected based on `score_type` |
 | `generation_config` | `dict` | Generation parameters (same as `--generation-config`) | - |
-| `score_type` | `str` | Scoring method<br>• `pattern`: Judge if answer matches reference<br>• `numeric`: Score without reference (0-1) | `pattern` |
-| `score_pattern` | `str` | Regex to parse output | `pattern` mode: `(A\|B)`<br>`numeric` mode: `\[\[(\d+(?:\.\d+)?)\]\]` |
+| `score_type` | `str` | Scoring method• `pattern`: Judge if answer matches reference• `numeric`: Score without reference (0-1) | `pattern` |
+| `score_pattern` | `str` | Regex to parse output | `pattern` mode: `(A\|B)``numeric` mode: `\[\[(\d+(?:\.\d+)?)\]\]` |
 | `score_mapping` | `dict` | Score mapping for `pattern` mode | `{'A': 1.0, 'B': 0.0}` |
 
 ```{seealso}
 For more information on ModelScope model inference services, refer to [ModelScope API Inference Services](https://modelscope.cn/docs/model-service/API-Inference/intro)
 ```
 
-<details><summary>pattern Mode Default Prompt Template</summary>
+pattern Mode Default Prompt Template
 
 ```text
 Your job is to look at a question, a gold target, and a predicted answer, and return a letter "A" or "B" to indicate whether the predicted answer is correct or incorrect.
@@ -203,9 +203,8 @@ B: INCORRECT
 
 Just return the letters "A" or "B", with no text around it.
 ```
-</details>
 
-<details><summary>numeric Mode Default Prompt Template</summary>
+numeric Mode Default Prompt Template
 
 ```text
 Please act as an impartial judge and evaluate the quality of the response provided by an AI assistant to the user question displayed below. Your evaluation should consider factors such as the helpfulness, relevance, accuracy, depth, creativity, and level of detail of the response.
@@ -220,14 +219,13 @@ After providing your explanation, you must rate the response on a scale of 0 (wo
 [Response]
 {pred}
 ```
-</details>
 
 ## Sandbox Parameters
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--use-sandbox` | `bool` | Whether to use [ms-enclave](https://github.com/modelscope/ms-enclave) to isolate code execution environment<br>Currently only effective for code evaluation tasks (e.g., `humaneval`) | `false` |
-| `--sandbox-manager-config` | `str` | Sandbox manager configuration (JSON string)<br>• `base_url`: Manager URL (default `None` for local manager) | `{}` |
+| `--use-sandbox` | `bool` | Whether to use [ms-enclave](https://github.com/modelscope/ms-enclave) to isolate code execution environmentCurrently only effective for code evaluation tasks (e.g., `humaneval`) | `false` |
+| `--sandbox-manager-config` | `str` | Sandbox manager configuration (JSON string)• `base_url`: Manager URL (default `None` for local manager) | `{}` |
 | `--sandbox-type` | `str` | Sandbox type | `docker` |
 
 ## Other Parameters
@@ -236,7 +234,7 @@ After providing your explanation, you must rate the response on a scale of 0 (wo
 |-----------|------|-------------|---------|
 | `--work-dir` | `str` | Evaluation output path (see directory structure below) | `./outputs` |
 | `--no-timestamp` | `bool` | Do not add timestamp to work_dir | `false` |
-| `--use-cache` | `str` | Reuse local cache path (e.g., `outputs/20241210_194434`)<br>Reuses inference and evaluation results | `None` |
+| `--use-cache` | `str` | Reuse local cache path (e.g., `outputs/20241210_194434`)Reuses inference and evaluation results | `None` |
 | `--rerun-review` | `bool` | Only rerun evaluation (reuses inference results) | `false` |
 | `--enable-progress-tracker` | `bool` | Whether to enable progress tracking, writing hierarchical evaluation progress to `progress.json` in real time, queryable via the service API | `false` |
 | `--seed` | `int` | Random seed | `42` |

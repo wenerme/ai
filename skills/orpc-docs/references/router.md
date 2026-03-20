@@ -39,15 +39,11 @@ const router = os.use(requiredAuth).router({
 })
 ```
 
-::: warning
-If you apply middleware using `.use` at both the router and procedure levels, it may execute multiple times. This duplication can lead to performance issues. For guidance on avoiding redundant middleware execution, please see our [best practices for middleware deduplication](/docs/best-practices/dedupe-middleware).
-:::
+> **warning**: If you apply middleware using `.use` at both the router and procedure levels, it may execute multiple times. This duplication can lead to performance issues. For guidance on avoiding redundant middleware execution, please see our [best practices for middleware deduplication](/docs/best-practices/dedupe-middleware).
 
 ## Lazy Router
 
 In oRPC, routers can be lazy-loaded, making them ideal for code splitting and enhancing cold start performance. Lazy loading allows you to defer the initialization of routes until they are actually needed, which reduces the initial load time and improves resource management.
-
-::: code-group
 
 ```ts [router.ts]
 const router = {
@@ -82,10 +78,7 @@ export default {
 }
 ```
 
-:::
-
-::: tip
-Alternatively, you can use the standalone `lazy` helper from `@orpc/server`. This helper is faster for type inference, and doesn't require matching the [Initial Context](/docs/context#initial-context).
+> **tip**: Alternatively, you can use the standalone `lazy` helper from `@orpc/server`. This helper is faster for type inference, and doesn't require matching the [Initial Context](/docs/context#initial-context).
 
 ```ts [router.ts]
 import { lazy } from '@orpc/server'
@@ -97,13 +90,9 @@ const router = {
 }
 ```
 
-:::
-
 ## Utilities
 
-::: info
-Every [procedure](/docs/procedure) is also a router, so you can apply these utilities to procedures as well.
-:::
+> **info**: Every [procedure](/docs/procedure) is also a router, so you can apply these utilities to procedures as well.
 
 ### Infer Router Inputs
 

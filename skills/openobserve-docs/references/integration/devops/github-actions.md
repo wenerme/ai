@@ -45,10 +45,10 @@ This integration captures metadata and logs from GitHub Actions jobs and pushes 
       1. In your GitHub repository, go to **Settings → Environments**
       2. Click **New environment** and name it `dev`
 
-          ![Create GitHub Environment](../images/devops/github-actions/dev-env.png){: style="height:500px"}
+          [Create GitHub Environment]{: style="height:500px"}
       3. Under the `dev` environment, click **Environment secrets → Add environment secret** and add the following: `OPENOBSERVE_USERNAME`, `OPENOBSERVE_KEY`, and `OPENOBSERVE_ENDPOINT` using the values from Step 1.
 
-          ![Add Secrets to GitHub Environment](../images/devops/github-actions/add-secret.png){: style="height:300px"}
+          [Add Secrets to GitHub Environment]{: style="height:300px"}
 
 ??? "Step 3: Add GitHub Action to Your Workflow"
 
@@ -89,7 +89,7 @@ This integration captures metadata and logs from GitHub Actions jobs and pushes 
 
     1. In your Openobserve instance, Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-      ![Verify Logs](../images/devops/github-actions/verify-logs.png)
+      [Verify Logs]
 
 ## Troubleshooting
 
@@ -98,4 +98,3 @@ This integration captures metadata and logs from GitHub Actions jobs and pushes 
     * Double-check that the GitHub secrets were added under the correct **environment (`dev`)**
     * Ensure the `openobserve_endpoint` is correct and matches the `curl` example
     * Confirm the `send_logs_to_openobserve` job ran successfully in GitHub Actions
-

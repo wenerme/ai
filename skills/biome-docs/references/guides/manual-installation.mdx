@@ -3,17 +3,13 @@ title: Manual installation
 description: Install the Biome manually
 ---
 
-import { Code } from '@astrojs/starlight/components';
-import { getLatestVersion } from "@biomejs/version-utils";
 export const version = await getLatestVersion("stable");
 
 Using Biome's standalone CLI binary can be a great choice if you aren't already using Node.js or `npm` (or any other package manager).
 Or in other words, Biome shouldn't be the only reason for you to have a `package.json`.
 
-:::note
-If you're already using `npm` or another package manager, then using the package manager is the [preferred way to install](/guides/getting-started#installation) Biome.
+> **note**: If you're already using `npm` or another package manager, then using the package manager is the [preferred way to install](/guides/getting-started#installation) Biome.
 You're already familiar with the tooling, and installing and updating are simpler.
-:::
 
 ## Supported platforms
 
@@ -24,9 +20,7 @@ You have to pick the correct binary for your platform for Biome work. The follow
 | `arm64`          | `win32-arm64` | `darwin-arm64` (M1 or newer) | `linux-arm64` | `linux-arm64-musl` |
 | `x64`            | `win32-x64`   | `darwin-x64`                 | `linux-x64`   | `linux-x64-musl`   |
 
-:::note
-Use the Linux variant for Windows Subsystem for Linux (WSL).
-:::
+> **note**: Use the Linux variant for Windows Subsystem for Linux (WSL).
 
 ## Homebrew
 
@@ -40,10 +34,7 @@ brew install biome
 
 Biome is available as a community maintained binary from the [Arch Linux Extra repository](https://archlinux.org/packages/extra/x86_64/biome). 
 
-:::note
-The [extra] repository is usually enabled by default in /etc/pacman.conf. If it is disabled, uncomment the following lines:
-::: 
-
+> **note**: The [extra] repository is usually enabled by default in /etc/pacman.conf. If it is disabled, uncomment the following lines:
 ```ini
 [extra]
 Include = /etc/pacman.d/mirrorlist
@@ -68,10 +59,7 @@ ghcr.io/biomejs/biome:{major}.{minor}.{patch}
 
 Here are a couple examples on how to use the Docker image:
 
-:::note
-The default workdir is `/code` in the Docker image.
-:::
-
+> **note**: The default workdir is `/code` in the Docker image.
 ```shell
 # Lint files
 docker run -v $(pwd):/code ghcr.io/biomejs/biome lint
@@ -81,8 +69,6 @@ docker run -v $(pwd):/code ghcr.io/biomejs/biome lint --write
 docker run -v $(pwd):/code ghcr.io/biomejs/biome format
 docker run -v $(pwd):/code ghcr.io/biomejs/biome format --write
 ```
-
-
 
 ## Using a published binary
 

@@ -1,7 +1,5 @@
 ---
 date: "2017-01-01T16:00:00+02:00"
-slug: "backup-and-restore"
-sidebar_position: 11
 aliases:
   - /en-us/backup-and-restore
 ---

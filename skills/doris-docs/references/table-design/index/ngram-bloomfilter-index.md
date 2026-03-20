@@ -16,13 +16,9 @@ Unlike the BloomFilter index, the NGram BloomFilter index is used to accelerate 
 
 The NGram BloomFilter index can only accelerate string LIKE queries, and the number of consecutive characters in the LIKE pattern must be greater than or equal to the N defined in the NGram index.
 
-:::tip
-
-- NGram BloomFilter only supports string columns and can only accelerate LIKE queries.
+> **tip**: - NGram BloomFilter only supports string columns and can only accelerate LIKE queries.
 - NGram BloomFilter index and BloomFilter index are mutually exclusive, meaning a column can only have one or the other.
 - The performance analysis of the NGram BloomFilter index is similar to that of the BloomFilter index.
-
-:::
 
 ## Managing Indexes
 
@@ -143,13 +139,11 @@ curl --location-trusted -u root: -T amazon_reviews_2014.snappy.parquet -H "forma
 curl --location-trusted -u root: -T amazon_reviews_2015.snappy.parquet -H "format:parquet" http://127.0.0.1:8030/api/${DB}/amazon_reviews/_stream_load
 ```
 
-:::info
-The data file may exceed 10 GB, and you may need to adjust the streaming_road_max_mb in be.conf to prevent exceeding the upload size limit of the stream load. You can dynamically adjust it by following the steps below:
+> **info**: The data file may exceed 10 GB, and you may need to adjust the streaming_road_max_mb in be.conf to prevent exceeding the upload size limit of the stream load. You can dynamically adjust it by following the steps below:
 ```bash
 curl -X POST http://{be_ip}:{be_http_port}/api/update_config?streaming_load_max_mb=32768
 ```
 Every BE needs to execute the above command.
-:::
 
 **Run a count query to confirm successful data import:**
 

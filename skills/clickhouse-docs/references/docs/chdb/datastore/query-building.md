@@ -1,7 +1,5 @@
 ---
 title: 'DataStore Query Building'
-sidebar_label: 'Query Building'
-slug: /chdb/datastore/query-building
 description: 'Build SQL-style queries with DataStore using fluent method chaining'
 keywords: ['chdb', 'datastore', 'query', 'select', 'filter', 'where', 'join', 'groupby']
 doc_type: 'reference'

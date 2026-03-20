@@ -8,7 +8,6 @@ description: >-
 
 Managing credentials in OpenObserve is critical for securing your observability platform. Incorrect or outdated credentials can block access, cause downtime, or expose your system to security risks. This page explains how to update usernames and passwords through the UI or CLI, and provides best practices for secure credential management.
 
-
 ## Overview
 
 OpenObserve provides multiple ways to manage user credentials:
@@ -24,14 +23,13 @@ Use the OpenObserve UI to manage users easily.
 
 1. Log in as an administrator.
 2. Navigate to **IAM → Users**. Click the **Edit** icon under **Actions** for the user you want to update.
-    ![](images/users.png)
+    
 3. Enable **Change Password** and enter the new password.
-    ![](images/enable-change-password.png){:style="height:300px"}
+    {:style="height:300px"}
 4. Click **Save Changes**.
 5. Log out and verify that the updated credentials work.
 
 > **Tip:** You can also update user roles at the same time to enforce correct permissions.
-
 
 ## Resetting the Root Password via CLI
 
@@ -53,7 +51,6 @@ If you are locked out of the root account, you can reset the root password from 
 3. After the reset completes, log in with the updated root credentials.
 
 > **Note:** For Docker or Kubernetes deployments, set the environment variables inside the container or pod before running the reset command.
-
 
 ## Best Practices
 

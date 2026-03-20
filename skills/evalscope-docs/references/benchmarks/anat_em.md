@@ -1,6 +1,5 @@
 # AnatEM
 
-
 ## Overview
 
 The AnatEM corpus is an extensive resource for anatomical entity recognition, created by extending and combining previous corpora. It includes over 13,000 annotations across 1,212 biomedical documents, focusing on identifying anatomical structures from subcellular components to organ systems.
@@ -26,7 +25,6 @@ The AnatEM corpus is an extensive resource for anatomical entity recognition, cr
 - Metrics: Precision, Recall, F1-Score, Accuracy
 - Entity types: ANATOMY (subcellular structures, cells, tissues, organs)
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ The AnatEM corpus is an extensive resource for anatomical entity recognition, cr
 | **Default Shots** | 5-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -123,8 +120,7 @@ Text to process:
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of named entity recognition:
@@ -155,8 +151,6 @@ Text to process:
 
 ```
 
-</details>
-
 ## Usage
 
 ### Using CLI
@@ -186,5 +180,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

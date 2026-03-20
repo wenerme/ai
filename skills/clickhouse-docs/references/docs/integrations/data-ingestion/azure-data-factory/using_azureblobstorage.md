@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Using the azureBlobStorage table function'
-slug: /integrations/azure-data-factory/table-function
 description: 'Using ClickHouse''s azureBlobStorage table function'
 keywords: ['azure data factory', 'azure', 'microsoft', 'data', 'azureBlobStorage']
 title: 'Using ClickHouse''s azureBlobStorage table function to bring Azure data into ClickHouse'
@@ -9,10 +7,6 @@ integration:
    - support_level: 'core'
    - category: 'data_ingestion'
 ---
-
-import Image from '@theme/IdealImage';
-import azureDataStoreSettings                   from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-data-store-settings.png';
-import azureDataStoreAccessKeys                 from '@site/static/images/integrations/data-ingestion/azure-data-factory/azure-data-store-access-keys.png';
 
 # Using ClickHouse's azureBlobStorage table function {#using-azureBlobStorage-function}
 
@@ -91,11 +85,9 @@ Dataset.
 
 2. In the Azure Portal, create a new storage account if you don't already have one.
 
-:::warning
-Make sure that **Allow storage account key access** is enabled for your storage
+> **warning**: Make sure that **Allow storage account key access** is enabled for your storage
 account, otherwise you won't be able to use the account keys to access the
 data.
-:::
 
 3. Create a new container in your storage account. In this example, we name it sensors.
    You can skip this step if you're using an existing container.
@@ -134,11 +126,9 @@ Now that everything is set up, you can query the data directly from Azure Blob S
     ORDER BY (timestamp, sensor_id);
     ```
 
-:::info
-For more information on configuration options and schema inference when
+> **info**: For more information on configuration options and schema inference when
 querying external sources like Azure Blob Storage, see [Automatic schema
 inference from input data](https://clickhouse.com/docs/interfaces/schema-inference)
-:::
 
 8. Now insert the data from Azure Blob Storage into the sensors table:
     ```sql

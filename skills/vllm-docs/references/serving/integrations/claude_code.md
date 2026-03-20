@@ -67,7 +67,7 @@ The environment variables:
 
 Once Claude Code launches, try a simple prompt to verify the connection:
 
-![Claude Code example chat](../../assets/deployment/claude-code-example.png)
+[Claude Code example chat]
 
 If the model responds correctly, your setup is working. You can now use Claude Code with your vLLM-served model for coding tasks.
 

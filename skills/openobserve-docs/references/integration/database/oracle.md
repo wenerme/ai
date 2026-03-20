@@ -105,7 +105,7 @@ With the **OpenTelemetry Collector** and **OpenObserve**, you can ingest Oracle 
 
     Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your OpenObserve details.  
 
-    ![OpenObserve Metrics Creds](../images/databases/otel-metrics-cred.png)
+    [OpenObserve Metrics Creds]
 
 ??? "Step 4: Run the Collector"
 
@@ -115,12 +115,12 @@ With the **OpenTelemetry Collector** and **OpenObserve**, you can ingest Oracle 
     otelcol-contrib --config /path/to/config.yaml
     ```
 
-    ![Run the Collector](../images/databases/otel-collector.png)
+    [Run the Collector]
 
 ??? "Step 5: Visualize in OpenObserve"
 
     1. Open **OpenObserve → Streams** and select your Oracle metrics/logs stream.  
-        ![Visualize Oracle Metrics](../images/databases/oracle-metrics.png)
+        [Visualize Oracle Metrics]
     2. Create dashboards to track:  
         - Active sessions  
         - Tablespace usage  
@@ -148,4 +148,4 @@ Common issues and fixes:
 
 ??? "Collector Errors"  
       - Check startup logs: `otelcol-contrib --config config.yaml`.  
-      - Increase `timeout` if queries are slow.  
+      - Increase `timeout` if queries are slow.

@@ -1,16 +1,14 @@
 # HMR `hotUpdate` Plugin Hook
 
-::: tip Feedback
+> **tip**: Feedback
 Give us feedback at [Environment API feedback discussion](https://github.com/vitejs/vite/discussions/16358)
-:::
 
 We're planning to deprecate the `handleHotUpdate` plugin hook in favor of [`hotUpdate` hook](/guide/api-environment#the-hotupdate-hook) to be [Environment API](/guide/api-environment.md) aware, and handle additional watch events with `create` and `delete`.
 
 Affected scope: `Vite Plugin Authors`
 
-::: warning Future Deprecation
+> **warning**: Future Deprecation
 `hotUpdate` was first introduced in `v6.0`. The deprecation of `handleHotUpdate` is planned for a future major. We don't recommend moving away from `handleHotUpdate` yet. If you want to experiment and give us feedback, you can use the `future.removePluginHookHandleHotUpdate` to `"warn"` in your vite config.
-:::
 
 ## Motivation
 

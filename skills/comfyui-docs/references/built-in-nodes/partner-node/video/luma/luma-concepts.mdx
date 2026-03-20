@@ -1,11 +1,9 @@
 ---
 title: "Luma Concepts - ComfyUI Native Node Documentation"
 description: "A helper node that provides concept guidance for Luma image generation"
-sidebarTitle: "Luma Concepts"
-icon: "circle"
 ---
 
-![ComfyUI Native Luma Concepts Node](/images/built-in-nodes/api_nodes/luma/luma-concepts.jpg)
+[ComfyUI Native Luma Concepts Node]
 
 The Luma Concepts node allows you to apply predefined camera concepts to the Luma generation process, providing precise control over camera angles and perspectives without complex prompt descriptions.
 
@@ -38,13 +36,9 @@ This node serves as a helper tool for Luma generation nodes, enabling users to s
 
 ## Usage Examples
 
-<Card title="Luma Text to Video Workflow Example" icon="book" href="/tutorials/partner-nodes/luma/luma-text-to-video">
 Luma Text to Video Workflow Example
-</Card>
 
-<Card title="Luma Image to Video Workflow Example" icon="book" href="/tutorials/partner-nodes/luma/luma-image-to-video">
 Luma Image to Video Workflow Example
-</Card>
 
 ## How It Works
 
@@ -106,6 +100,5 @@ class LumaConceptsNode(ComfyNodeABC):
         if luma_concepts is not None:
             chain = luma_concepts.clone_and_merge(chain)
         return (chain,)
-
 
 ```

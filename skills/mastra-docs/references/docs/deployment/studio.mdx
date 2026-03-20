@@ -5,9 +5,6 @@ packages:
   - "mastra"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Deploying Studio
 
 [Studio](/docs/getting-started/studio) provides an interactive UI for building and testing your agents. It's a React-based Single Page Application (SPA) that runs in the browser and connects to a running [Mastra server](/docs/deployment/mastra-server).
@@ -53,13 +50,9 @@ The command uses Node's built-in `http` module and [`serve-handler`](https://www
 
 Running `mastra studio` as a long-running process is no different from running any other Node.js service. All the best practices, tools, and options for deployment apply here as well. You can use process managers like PM2, use Docker, or cloud services that support Node.js applications. You'll need to ensure CORS is configured correctly and errors are monitored, as with any web service.
 
-:::warning
-
-Once Studio is connected to your Mastra server, it has full access to your agents, workflows, and tools. Be sure to secure it properly in production (e.g. behind authentication, VPN, etc.) to prevent unauthorized access.
+> **warning**: Once Studio is connected to your Mastra server, it has full access to your agents, workflows, and tools. Be sure to secure it properly in production (e.g. behind authentication, VPN, etc.) to prevent unauthorized access.
 
 Visit the [Authentication](/docs/server/auth/) docs to learn more.
-
-:::
 
 ### Alongside your API
 
@@ -83,7 +76,6 @@ Currently, you can't directly deploy the built Studio assets to a CDN, as the UI
 
 Follow the example below to create a SPA using Vite.
 
-<Steps>
   <StepItem>
     Create a new folder and initialize a new Node.js project:
 
@@ -195,4 +187,3 @@ Follow the example below to create a SPA using Vite.
   <StepItem>
     Point your hosting provider to the `dist` folder and deploy!
   </StepItem>
-</Steps>

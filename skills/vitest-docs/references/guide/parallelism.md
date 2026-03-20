@@ -1,6 +1,5 @@
 ---
 title: Parallelism | Guide
-outline: deep
 ---
 
 # Parallelism

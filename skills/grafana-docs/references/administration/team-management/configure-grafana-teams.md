@@ -155,7 +155,6 @@ resource "grafana_folder" "awesome_folder" {
   title = "Awesome Team Folder"
 }
 
-
 resource "grafana_team" "awesome-team" {
   name  = "Awesome Team"
 }

@@ -12,9 +12,7 @@ View the configurations on Backends.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

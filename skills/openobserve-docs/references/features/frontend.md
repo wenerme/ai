@@ -6,7 +6,6 @@ OpenObserve provides robust frontend observability tools that help monitor user 
 
 Frontend Observability in OpenObserve enables real user monitoring, performance tracking (including Core Web Vitals), JavaScript error capture, and session replay. These tools are optimized for modern frontend architectures and come with a lightweight SDK for easy integration.
 
-
 ## Key Features
 
 ### Real User Monitoring (RUM)
@@ -15,34 +14,31 @@ Frontend Observability in OpenObserve enables real user monitoring, performance 
 
 - **Web Vitals Monitoring**: Automatically capture Google's Core Web Vitals
 
-![Web Vitals Monitoring](../images/features/frontend-webvitals.png)
+[Web Vitals Monitoring]
 
 - **Geographic & Device Context**: Analyze user experience by browser, device, and approximate location.
 
 - **Network Insights**: Track HTTP requests and network timing
-
 
 ### [Error Tracking](../user-guide/rum.md#error-tracking)
 
 - **JavaScript Errors**: Automatically capture exceptions and errors with full stack traces
 - **Error Context**: Includes user session metadata and browser details
 
-![Error Tracking](../images/frontend/error-tracking.webp)
+[Error Tracking]
 
 ### [Session Replay](../user-guide/rum.md#session-replay)
 
 - **User Interaction Recording**: Replay user sessions to understand behavior and debug issues
 
-![User Interaction Recording](../images/features/user-interaction.png)
+[User Interaction Recording]
 
 - **Event Timeline**: View DOM changes, clicks, inputs, and navigation in order
 
-![Event Timeline](../images/features/event-timeline.png)
+[Event Timeline]
 
 - **Privacy Features**: Configurable masking for sensitive fields
-
 
 ## Integration
 
 Getting started with [OpenObserve's RUM](../user-guide/rum.md) is straightforward. Add our JavaScript snippet to your application's entry point eg: index.js or main.js, and you'll begin collecting user experience data immediately.
-

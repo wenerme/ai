@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `article`
 -- -----------------------------------------------------
@@ -101,7 +100,6 @@ CREATE TABLE IF NOT EXISTS `article` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `comment`
@@ -128,7 +126,6 @@ CREATE TABLE IF NOT EXISTS `comment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `tag`
 -- -----------------------------------------------------
@@ -139,7 +136,6 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `name` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `article_tag`
@@ -160,7 +156,6 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -2224,11 +2219,9 @@ You can now adjust your test accordingly:
 ...
 ```
 
-:::info Exercise
+> **info**: Exercise
 
 You can try to generalize this to work for any unique constraint violation by analyzing the `sqlMessage` property of `UniqueConstraintViolationException` and searching the metadata based on the parsing results. You can then produce error messages that point the client to the one or multiple properties that causes a duplicate entry. Doing so will tie you to your SQL driver, and possibly even database engine version, so if you go on this route, you should do so with care. Do unit tests for your parsing in addition to your error conditions themselves, and make sure to run all tests after an upgrade of the database. If the error messages have changed, you will want to support parsing both forms until your production database is updated.
-
-:::
 
 ### Reusing the user authentication check
 
@@ -2451,11 +2444,9 @@ export default defineConfig({
 
 Regeneration at this point should produce results no different from what we've had so far. But you can now add extra `*.gen.ts` files, each modifying some aspect of some entities.
 
-:::info Exercise
+> **info**: Exercise
 
 You can try to implement a different pattern for handling the `*.gen.ts` files, such as accepting the metadata of a given entity based on the table name, and register file name entries as needed during those extensions. By the time `fileName` is first called, `onInitialMetadata` and `onProcessedMetadata` have already finished executing, so they can determine its behavior. Doing this is probably overkill for most cases, but it may be helpful if you have extensions that you want to apply on different schemas, not just one you are fully in control of.
-
-:::
 
 ## ⛳ Checkpoint 3
 
@@ -2542,11 +2533,9 @@ You should be seeing a type error. This is because our entity declares slug and 
 
 The second is to create a custom entity repository for article, in which we override the create method or add a custom one that calls the constructor and persists the new entity. We'll skip showing these solutions.
 
-:::info Exercise
+> **info**: Exercise
 
 Try to implement these solutions as well. Step back as soon as you can build the application.
-
-:::
 
 And the third one is to declare those properties as optional. The best way to do that is to declare them as optional in our mapped superclass.
 
@@ -2675,11 +2664,9 @@ Let's also add an endpoint to update our user profile:
 +  });
 ```
 
-:::info Exercise
+> **info**: Exercise
 
 Add unit tests for those new endpoints.
-
-:::
 
 ### Embeddable entities
 
@@ -2763,11 +2750,7 @@ export default settings;
 
 If you regenerate the entities now, you'll see "src/modules/common/track.entity.ts" created, and other classes are now referencing it. Since the class is being created dynamically, you can keep it saved with an `*.entity.ts` extension.
 
-:::warning
-
-When working on bigger projects and doing similar modifications, you should do extra checks on the column type, nullability, and default value. Take action to group columns only when all of their metadata lines up with what you have in the embeddable. Otherwise, leave the properties alone. Mistakes can happen during the authoring of migrations. Your entity generation extensions can (and should) be made resilient towards such mistakes. Not getting the modification in the output when you expect it will alert you that there is such a mistake.
-
-:::
+> **warning**: When working on bigger projects and doing similar modifications, you should do extra checks on the column type, nullability, and default value. Take action to group columns only when all of their metadata lines up with what you have in the embeddable. Otherwise, leave the properties alone. Mistakes can happen during the authoring of migrations. Your entity generation extensions can (and should) be made resilient towards such mistakes. Not getting the modification in the output when you expect it will alert you that there is such a mistake.
 
 #### Embeddable as a type of JSON column
 
@@ -2846,11 +2829,9 @@ Now, let's modify our `user.gen.ts` to reference the embeddable:
 
 Regenerating the entities again, you now have the embeddable representing the contents of the JSON column. Just as with column groups, there is a prefix for the related JSON properties, but by setting "prefix" to "false", you can ensure the props in your entities map to the same properties in the JSON column. And the "object" option being set to "true" is how you set that property to represent a JSON column, rather than a group of columns.
 
-:::info Exercise
+> **info**: Exercise
 
 Try to add a check constraint to the JSON column too. The embeddable helps ensure your application won't get exposed to unknown properties, or be able to enter unknown properties into the database. However, direct queries to your database may insert objects that won't have the required shape. Worse still, they may set the same properties, but with a different data type inside. That may ultimately crash your application if read out. A check constraint that at least checks the known properties will remove any possibility of that.
-
-:::
 
 Update your user endpoints to accept this new property:
 

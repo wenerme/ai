@@ -21,7 +21,6 @@ Supported character matching types when the session variable `enable_extended_re
 
 Note: After enabling this variable, performance will only be affected when the regular expression contains advanced syntax (such as look-around). Therefore, for better performance, it is recommended to optimize your regular expressions as much as possible and avoid using such zero-width assertions.
 
-
 ## Syntax
 
 ```sql
@@ -73,7 +72,6 @@ CREATE TABLE test ( k1 VARCHAR(255) ) properties("replication_num"="1")
 
 INSERT INTO test (k1) VALUES ('billie eillish'), ('It\'s ok'), ('billie jean'), ('hello world');
 ```
-
 
 ```sql
 --- Find all data in the k1 column starting with 'billie'
@@ -183,7 +181,6 @@ SELECT 'Hello' REGEXP '😀';
 |                     0 |
 +-----------------------+
 ```
-
 
 'str' is NULL,return NULL
 

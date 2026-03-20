@@ -21,9 +21,7 @@ JOBS(
 ## Required Parameters
 | Field         | Description                                                                                   |
 |---------------|-----------------------------------------------------------------------------------------------|
-| **`<type>`**  | The type of the job: <br/> `insert`: Insert into type job. <br/> `mv`: Materialized view job. |
-
-
+| **`<type>`**  | The type of the job:  `insert`: Insert into type job.  `mv`: Materialized view job. |
 
 ## Return Value
 
@@ -44,7 +42,6 @@ JOBS(
     | CanceledTaskCount  | Number of canceled tasks   |
     | Comment            | Job comment                |
 
-
 - **`jobs("type"="mv")`** MV type job return value
 
     | Field                | Description                                                 |
@@ -59,7 +56,6 @@ JOBS(
     | RecurringStrategy    | Loop strategy                                               |
     | Status               | Job status                                                  |
     | CreateTime           | Task creation time                                          |
-
 
 ## Examples
 

@@ -27,9 +27,7 @@ featuring pre-configured examples accessible instantly via StackBlitz or local s
 | Multiservice Monorepo Playground |                                                                                                            | [View Source](https://github.com/middleapi/orpc-multiservice-monorepo-playground)            |
 | Vue + Bun + Monorepo (Community) |                                                                                                            | [View Source](https://github.com/hunterwilhelm/orpc-community-playgrounds/tree/main/vue-bun) |
 
-:::warning
-StackBlitz has own limitations, so some features may not work as expected.
-:::
+> **warning**: StackBlitz has own limitations, so some features may not work as expected.
 
 ## Local Development
 

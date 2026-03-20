@@ -3,26 +3,16 @@ title: Linter
 description: How to use the Biome linter.
 ---
 
-import NumberOfRules from "@/components/generated/linter/NumberOfRules.astro";
-import PackageManagerBiomeCommand from "@/components/PackageManagerBiomeCommand.astro";
-import { Steps } from '@astrojs/starlight/components';
-import EditorAction from "@/components/EditorAction.astro";
-
 Biome's linter statically analyzes your code to find and fix common errors and to help you write better, modern code.
 It [supports multiple languages](/internals/language-support) and provides a total of **<NumberOfRules/> rules**.
 
 You can quickly try the Biome linter via the CLI. The following command runs the linter on all files from the root of your project:
 
-<PackageManagerBiomeCommand command="lint" />
-
 Or you can specify one or multiple folders, for example `./src` and `./public`
-
-<PackageManagerBiomeCommand command="lint ./src ./public" />
 
 The command accepts a list of files and directories.
 
-:::caution
-If you pass a glob as a parameter, your shell will expand it. **Biome doesn't support globs**.
+> **caution**: If you pass a glob as a parameter, your shell will expand it. **Biome doesn't support globs**.
 The result of the expansion depends on your shell.
 For example, some shells don't support the recursive glob `**` or the alternation `{}` in the following command:
 
@@ -33,10 +23,8 @@ biome lint ./src/**/*.test.{js,ts}
 Shell expansion has a performance cost and a limit on the number of files you can pass to the command.
 
 The use of globs is **discouraged**, instead use the `includes` configuration.
-:::
 
 For more information about all the available options, check the [CLI reference](/reference/cli#biome-lint).
-
 
 ## Rules
 
@@ -73,8 +61,6 @@ They can be applied without explicit review.
 
 To apply _safe fixes_ from the CLI, use `--write`:
 
-<PackageManagerBiomeCommand command="lint --write ./src" />
-
 From an LSP-compatible editor, you can apply safe fixes **on save** with the code action `source.fixAll.biome`.
 Refer to the documentation of your extension to learn how to apply it.
 
@@ -84,8 +70,6 @@ Unsafe fixes may change the semantic of your program.
 Therefore, it's advised to manually review the changes.
 
 To apply both _safe fixes_ and _unsafe fixes_ from the CLI, use `--write --unsafe`:
-
-<PackageManagerBiomeCommand command="lint --write --unsafe ./src" />
 
 From an LSP-compatible editor, it's not possible to apply all unsafe fixes on save. It would be undesirable to change the semantics of your code on save. However, you can review the single code fix and choose to apply it.
 
@@ -105,7 +89,6 @@ If you think a rule doesn't follow these pillars, please [open an issue](https:/
 
 In many cases, you want to change the linter based on your personal needs, or the needs or your organisation/project.
 Biome allows you to customise the linter, and in this section you will learn how to do it.
-
 
 ### Disable a rule
 
@@ -288,7 +271,6 @@ However, if there's no `package.json` or the default configuration doesn't apply
 
 Additionally, you can enable **all** rules that belong to a domain using the `"all"` value:
 
-
 ```json title="biome.json" ins={4} mark="all"
 {
   "linter": {
@@ -337,7 +319,6 @@ Use the `source.fixAll.biome` code action to instruct Biome to apply all **safe 
 
 <EditorAction action="source.fixAll.biome" />
 
-
 ### Editor suppressions
 
 Use `source.suppressRule.inline.biome` to control whether the editor should show the inline suppression code action:
@@ -348,15 +329,11 @@ Use `source.suppressRule.topLevel.biome` to control whether the editor should sh
 
 <EditorAction action="source.suppressRule.topLevel.biome" off={true} />
 
-
-
 ## Migrate from other linters
 
 Many of Biome lint rules are inspired from other linters.
 If you want to migrate from other linters such as ESLint or `typescript-eslint`, check the [rules sources page](/linter/rules-sources).
 If you are migrating from ESLint, there's a dedicated [migration guide](/guides/migrate-eslint-prettier#migrate-from-eslint).
-
-<Steps>
 
 1. Use the command `biome migrate eslint` to port the rules defined in your `eslint` configuration file to `biome.json`:
     ```shell
@@ -367,8 +344,6 @@ If you are migrating from ESLint, there's a dedicated [migration guide](/guides/
     biome lint --write --unsafe --suppress="suppressed due to migration"
     ```
    The command will suppress all linting violation that Biome finds, using the reason `"suppressed due to migration"`. Now the linter shouldn't error anymore, and it's possible to remove the suppression comments at a later stage.
-</Steps>
-
 
 ## Linter Groups
 
@@ -389,9 +364,7 @@ New rules that are still under development.
 
 Nursery rules require explicit opt-in via configuration on stable versions because they may still have bugs or performance problems (even if they are marked as recommended). They are enabled by default on nightly builds, but as they are unstable their diagnostic severity may be set to either error or warning, depending on whether we intend for the rule to be recommended or not when it eventually gets stabilized. Nursery rules get promoted to other groups once they become stable or may be removed.
 
-:::caution
-Rules that belong to this group are not subject to semantic version.
-:::
+> **caution**: Rules that belong to this group are not subject to semantic version.
 
 ### Performance
 Rules catching ways your code could be written to run faster, or generally be more efficient.
@@ -404,7 +377,6 @@ Rules enforcing a consistent and idiomatic way of writing your code. By default,
 
 ### Suspicious
 Rules that detect code that is likely to be incorrect or useless.
-
 
 ## Frequently Asked Questions (FAQ)
 

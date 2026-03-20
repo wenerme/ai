@@ -9,8 +9,6 @@ description: Use oRPC inside a Solid Start project
 
 ## Server
 
-::: code-group
-
 ```ts [src/routes/rpc/[...rest].ts]
 import type { APIEvent } from '@solidjs/start/server'
 import { RPCHandler } from '@orpc/server/fetch'
@@ -52,11 +50,7 @@ export const PATCH = handle
 export const DELETE = handle
 ```
 
-:::
-
-::: info
-The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
-:::
+> **info**: The `handler` can be any supported oRPC handler, such as [RPCHandler](/docs/rpc-handler), [OpenAPIHandler](/docs/openapi/openapi-handler), or another custom handler.
 
 ## Client
 
@@ -72,15 +66,11 @@ const link = new RPCLink({
 })
 ```
 
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
 
 ## Optimize SSR
 
 To reduce HTTP requests and improve latency during SSR, you can utilize a [Server-Side Client](/docs/client/server-side) during SSR. Below is a quick setup, see [Optimize SSR](/docs/best-practices/optimize-ssr) for more details.
-
-::: code-group
 
 ```ts [src/lib/orpc.ts]
 if (typeof window === 'undefined') {
@@ -136,5 +126,3 @@ globalThis.$client = createRouterClient(router, {
   },
 })
 ```
-
-:::

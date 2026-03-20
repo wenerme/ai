@@ -57,8 +57,6 @@ You can use any type of tabular data with at least two numeric fields in an xy c
 
 The following options let you control how data is displayed in an xy chart:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | [Series mapping](#series-mapping) | Set how series data is mapped in the chart. Choose from: **Auto** and **Manual**. Depending on your series mapping selection, the **Frame**, **X-field**, and **Y-field** options differ. For information on setting these specific fields, refer to the [Series mapping section](#series-mapping). |
@@ -72,8 +70,6 @@ The following options let you control how data is displayed in an xy chart:
 | Fill opacity | The opacity of the point fill. The default is 50. |
 | [Line style](#line-style) | Set the style of the lines that connect points. Choose from: **Solid**, **Dash**, or **Dots**. |
 | Line width | The width of the lines that connect points, in pixels. |
-
-<!-- prettier-ignore-end -->
 
 #### Series mapping
 
@@ -90,15 +86,11 @@ These options are described in the tabs that follow:
 
 When you select **Auto** as your series mapping mode, the following options are preconfigured, but you can also define them yourself:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Frame | By default, an xy chart displays all data frames. You can filter to select only one frame. |
 | [X field](#x-field) | Select which field or fields x represents. By default, this is the first number or time field in each data frame. For an example of this in **Auto** mode, refer to the [X field section](#x-field). |
 | [Y field](#y-field) | After the x-field is set, by default, all the remaining number fields in the data frame are designated as the y-fields. You can use this option to explicitly choose which fields to use for y. For more information on how to use this in **Auto** mode, refer to the [Y field section](#y-field). |
-
-<!-- prettier-ignore-end -->
 
 {{< /tab-content >}}
 {{< tab-content name="Manual series mapping options" >}}
@@ -108,15 +100,11 @@ To manage a series, click the **Series** field; to rename the series, click the 
 
 In **Manual** mode, these fields are required:
 
-<!-- prettier-ignore-start -->
-
 | Option | Description |
 | ------ | ----------- |
 | Frame | Select your data frame or dataset. You can add as many frames as you want. |
 | X field | Select which field x represents. |
 | Y field | Select which field y represents. |
-
-<!-- prettier-ignore-end -->
 
 {{< /tab-content >}}
 {{< /tabs >}}
@@ -174,14 +162,10 @@ Set the style of the lines that connect points. To change the color, use the sta
 
 Tooltip options control the information overlay that appears when you hover over data points in the visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option       | Description |
 | ------------ | ----------- |
 | Tooltip mode | When you hover your cursor over the visualization, Grafana can display tooltips. Choose how they behave:<ul><li>**Single** - The hover tooltip shows only a single series, the one that you are hovering over on the visualization.</li><li>**Hidden** - Do not display the tooltip when you interact with the visualization.</li></ul> |
 | Max width    | Set the maximum width of the tooltip box. |
-
-<!-- prettier-ignore-end -->
 
 ### Legend options
 

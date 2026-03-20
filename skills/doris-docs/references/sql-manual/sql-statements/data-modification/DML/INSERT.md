@@ -90,7 +90,6 @@ INSERT INTO test PARTITION(p1, p2) WITH LABEL `label1` SELECT * FROM test2;
 INSERT INTO test WITH LABEL `label1` (c1, c2) SELECT * from test2;
 ```
 
-
 ## Keywords
 
     INSERT

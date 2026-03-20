@@ -10,9 +10,6 @@ OSS core, everything can run in your environment. An extensible platform you can
 [![Static Badge][github-shield]][github-url]
 [![X (formerly Twitter) Follow][twitter-shield]][twitter-url]
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
 [docs-shield]: https://img.shields.io/badge/docs-site-black?logo=materialformkdocs
 [docs-url]: https://docqai.github.io/docq/
 [github-shield]: https://img.shields.io/badge/Github-repo-black?logo=github

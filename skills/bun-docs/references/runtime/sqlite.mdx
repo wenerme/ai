@@ -32,10 +32,8 @@ Features include:
 
 The `bun:sqlite` module is roughly 3-6x faster than `better-sqlite3` and 8-9x faster than `deno.land/x/sqlite` for read queries. Each driver was benchmarked against the [Northwind Traders](https://github.com/jpwhite3/northwind-SQLite3/blob/46d5f8a64f396f87cd374d1600dbf521523980e8/Northwind_large.sqlite.zip) dataset. View and run the [benchmark source](https://github.com/oven-sh/bun/tree/main/bench/sqlite).
 
-<Frame caption="Benchmarked on an M1 MacBook Pro (64GB) running macOS 12.3.1">
   ![SQLite benchmarks for Bun, better-sqlite3, and
   deno.land/x/sqlite](https://user-images.githubusercontent.com/709451/168459263-8cd51ca3-a924-41e9-908d-cf3478a3b7f3.png)
-</Frame>
 
 ---
 
@@ -128,10 +126,8 @@ const db = new Database();
 db.close(true);
 ```
 
-<Note>
   `close(false)` is called automatically when the database is garbage collected. It is safe to call multiple times but
   has no effect after the first.
-</Note>
 
 ### `using` statement
 
@@ -171,7 +167,6 @@ Use the `db.query()` method on your `Database` instance to [prepare](https://www
 const query = db.query(`select "Hello world" as message`);
 ```
 
-<Note>
 **What does "cached" mean?**
 
 The caching refers to the **compiled prepared statement** (the SQL bytecode), not the query results. When you call `db.query()` with the same SQL string multiple times, Bun returns the same cached `Statement` object instead of recompiling the SQL.
@@ -192,8 +187,6 @@ Use `.prepare()` instead of `.query()` when you want a fresh `Statement` instanc
 const query = db.prepare("SELECT * FROM foo WHERE bar = ?");
 ```
 
-</Note>
-
 ---
 
 ## WAL mode
@@ -206,12 +199,10 @@ To enable WAL mode, run this pragma query at the beginning of your application:
 db.run("PRAGMA journal_mode = WAL;");
 ```
 
-<Accordion title="What is WAL mode?">
   In WAL mode, writes to the database are written directly to a separate file called the "WAL file" (`-wal`). A
   shared-memory index file (`-shm`) is also created for read coordination. The WAL file will be later integrated into
   the main database file. Think of it as a buffer for pending writes. Refer to the [SQLite
   docs](https://www.sqlite.org/wal.html) for a more detailed overview.
-</Accordion>
 
 ### WAL sidecar file cleanup
 
@@ -577,10 +568,7 @@ console.log(`Inserted ${count} cats`);
 
 The driver will automatically [`begin`](https://www.sqlite.org/lang_transaction.html) a transaction when `insertCats` is called and `commit` it when the wrapped function returns. If an exception is thrown, the transaction will be rolled back. The exception will propagate as usual; it is not caught.
 
-<Note>
 **Nested transactions** — Transaction functions can be called from inside other transaction functions. When doing so, the inner transaction becomes a [savepoint](https://www.sqlite.org/lang_savepoint.html).
-
-<Accordion title="View nested transaction example">
 
 ```ts db.ts icon="/icons/typescript.svg"
 // setup
@@ -606,9 +594,6 @@ adopt([
 ]);
 ```
 
-</Accordion>
-</Note>
-
 Transactions also come with `deferred`, `immediate`, and `exclusive` versions.
 
 ```ts
@@ -629,7 +614,6 @@ const db = new Database();
 db.loadExtension("myext");
 ```
 
-<Note>
 **MacOS users** By default, macOS ships with Apple's proprietary build of SQLite, which doesn't support extensions. To use extensions, you'll need to install a vanilla build of SQLite.
 
 ```bash terminal icon="terminal"
@@ -647,8 +631,6 @@ Database.setCustomSQLite("/path/to/libsqlite.dylib");
 const db = new Database();
 db.loadExtension("myext");
 ```
-
-</Note>
 
 ### `.fileControl(cmd: number, value: any)`
 

@@ -19,14 +19,13 @@ You can visit www.jetbrains.com/datagrip/ to download and install DataGrip
 
 ## Add data source
 
-:::info Note
+> **info**: Note
 Currently verified using DataGrip version 2023.3.4
-:::
 
 1. Start DataGrip
 2. Click the plus sign (**+**) icon in the upper left corner of the DataGrip window and select the MySQL data source
 
-    ![add data source](/images/datagrip1.png)
+    [add data source]
 
 3. Configure Doris connection
 
@@ -48,23 +47,23 @@ Currently verified using DataGrip version 2023.3.4
 
   - internal catalog
 
-    ![connect internal catalog](/images/datagrip2.png)
+    [connect internal catalog]
 
   - external catalog
 
-    ![connect external catalog](/images/datagrip3.png)
+    [connect external catalog]
 
 5. Test data source connection
 
     After filling in the connection information, click Test Connection in the lower left corner to verify the accuracy of the database connection information. If DataGrip returns the following pop-up window, the test connection is successful. Then click OK in the lower right corner to complete the connection configuration.
 
-   ![test connection](/images/datagrip4.png)
+   [test connection]
 
 6. Connect to database
 
     After the database connection is established, you can see the created data source connection in the database connection navigation on the left, and you can connect and manage the database through DataGrip.
 
-   ![create connection](/images/datagrip5.png)
+   [create connection]
 
 ## Function support
 

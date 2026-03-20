@@ -31,11 +31,7 @@ custom tinting styles.
 
 <p align="center">
   <a href="/images/1-2-0/macos.png" target="_blank">
-    <img
-      src="/images/1-2-0/macos.png"
-      width="160"
-      style={{ maxWidth: "50%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
@@ -46,21 +42,15 @@ environments.
 
 <p align="center">
   <a href="/images/1-2-0/gnome.png" target="_blank">
-    <img
-      src="/images/1-2-0/gnome.png"
-      width="200"
-      style={{ maxWidth: "50%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
-<Note>
   It's impossible to make a perfect, globally consistent icon for the Linux and
   BSD ecosystem due to the diversity of desktop environments. We believe this
   icon looks better in more environments than the prior icon, and avoids some
   negative reactions that the prior icon demonstrated a macOS-centric point of
   view.
-</Note>
 
 ### Command Palette
 
@@ -77,19 +67,13 @@ via the menubar on both macOS and GTK.
 
 <p align="center">
   <a href="/images/1-2-0/palette-macos.png" target="_blank">
-    <img
-      src="/images/1-2-0/palette-macos.png"
-      style={{ maxWidth: "90%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
 <p align="center">
   <a href="/images/1-2-0/palette-gtk.png" target="_blank">
-    <img
-      src="/images/1-2-0/palette-gtk.png"
-      style={{ maxWidth: "90%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
@@ -149,19 +133,13 @@ Screenshots with a couple examples on GTK are shown below:
 
 <p align="center">
   <a href="/images/1-2-0/quick-terminal-pos1.png" target="_blank">
-    <img
-      src="/images/1-2-0/quick-terminal-pos1.png"
-      style={{ maxWidth: "85%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
 <p align="center">
   <a href="/images/1-2-0/quick-terminal-pos2.png" target="_blank">
-    <img
-      src="/images/1-2-0/quick-terminal-pos2.png"
-      style={{ maxWidth: "85%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
@@ -251,19 +229,14 @@ configurations so that the image appears just how you'd like it:
 
 <p align="center">
   <a href="/images/1-2-0/background-image.png" target="_blank">
-    <img
-      src="/images/1-2-0/background-image.png"
-      style={{ maxWidth: "85%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
-<Warning>
   In Ghostty 1.2.0, the background image is duplicated in VRAM for each
   terminal. For sufficiently large images and many terminals, this can lead to a
   large increase in memory usage (specifically VRAM). A future Ghostty release
   will share image textures across terminals to avoid this issue.
-</Warning>
 
 ### Graphical Progress Bars
 
@@ -292,14 +265,12 @@ Today, Ghostty shows a simple, basic progress bar at the top of the terminal.
 In future versions, we will expand progress so it is shown in tab headers,
 task bars, dock icons, etc.
 
-<Note>
   The progress report `OSC 9;4` sequence collides with the iTerm2 notification
   sequence. Ghostty is the only emulator to support both sequences. To handle
   this, `OSC 9;4` always parses as a progress report, meaning you can't send any
   notifications starting with `;4` as notifications. We think this is a
   reasonable trade-off given the extremely specific text and the wider support
   for the more recommended `OSC 777` notification sequence.
-</Note>
 
 ### Fallback Font Size Adjustment
 
@@ -317,7 +288,7 @@ avoids having large vertical "gutters" between characters.
 
 | Ghostty 1.1.3 (Old)                                                                          | Ghostty 1.2.0 (New)                                                                          |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| <p align="center"><img src="/images/1-2-0/adjust-old.png" style={{ maxWidth: "90%" }} /></p> | <p align="center"><img src="/images/1-2-0/adjust-new.png" style={{ maxWidth: "90%" }} /></p> |
+| <p align="center"></p> | <p align="center"></p> |
 
 The example above is a subtle difference. The difference is more apparent
 when many differing font faces get used in a single line. To ensure we were
@@ -343,7 +314,7 @@ for TUI applications that use glyphs such as these for UI elements.
 
 | Ghostty 1.1.3 (Old)                                                                           | Ghostty 1.2.0 (New)                                                                           |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <p align="center"><img src="/images/1-2-0/sprites-old.png" style={{ maxWidth: "66%" }} /></p> | <p align="center"><img src="/images/1-2-0/sprites-new.png" style={{ maxWidth: "66%" }} /></p> |
+| <p align="center"></p> | <p align="center"></p> |
 
 ### Built-in Nerd Font Improvement
 
@@ -477,12 +448,10 @@ compatibility issues were also fixed.
 Ghostty 1.2 remains fully compatible with prior macOS versions back to
 and including macOS 13 (Ventura).
 
-<Note>
   Ghostty 1.1.x is functional on macOS 26. Due to the way macOS SDKs work,
   Ghostty 1.1.x will use the old pre-Tahoe UI styling. There are still some
   compatibility issues, but it is largely functional if you are unable to
   upgrade to Ghostty 1.2 in the near term.
-</Note>
 
 ### macOS: Undo/Redo Close
 
@@ -517,10 +486,7 @@ shortcut actions like taking screenshots, moving windows, etc.
 
 <p align="center">
   <a href="/images/1-2-0/shortcuts.png" target="_blank">
-    <img
-      src="/images/1-2-0/shortcuts.png"
-      style={{ maxWidth: "85%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
@@ -551,10 +517,7 @@ The quick terminal on Linux fully supports tabs and splits.
 
 <p align="center">
   <a href="/images/1-2-0/quick-terminal-gtk.png" target="_blank">
-    <img
-      src="/images/1-2-0/quick-terminal-gtk.png"
-      style={{ maxWidth: "90%", margin: "10px" }}
-    />
+    
   </a>
 </p>
 
@@ -651,11 +614,9 @@ run all Ghostty unit tests under Valgrind for every commit (GH-8309).
 Over 90% of our unit tests cover cross-platform code, so this helps
 ensure that all of Ghostty is more stable and reliable.
 
-<Note>
   Valgrind is only able to detect memory issues in executed code paths. We
   exercised every possible GUI interaction, but we didn't exercise every
   possible code path in Ghostty.
-</Note>
 
 ## System Requirements
 
@@ -713,11 +674,9 @@ There is no set timeline to remove these deprecations, but we recommend
 adapting to the new configurations sooner rather than later to avoid
 any possible disruptions in the future.
 
-<Note>
   The deprecations above will continue to work without any visible warnings. We
   plan to augment our GUI to show warnings about the configuration in a future
   release.
-</Note>
 
 ## Full Changelog
 

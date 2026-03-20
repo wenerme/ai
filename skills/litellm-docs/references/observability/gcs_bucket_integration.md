@@ -1,15 +1,9 @@
-import Image from '@theme/IdealImage';
 
 # Google Cloud Storage Buckets
 
 Log LLM Logs to [Google Cloud Storage Buckets](https://cloud.google.com/storage?hl=en)
 
-:::info
-
-✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
-
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 ### Usage
 
@@ -56,7 +50,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-
 ## Expected Logs on GCS Buckets
 
 <Image img={require('../../img/gcs_bucket.png')} />
@@ -64,7 +57,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ### Fields Logged on GCS Buckets
 
 [**The standard logging object is logged on GCS Bucket**](../proxy/logging)
-
 
 ## Getting `service_account.json` from Google Cloud Console
 

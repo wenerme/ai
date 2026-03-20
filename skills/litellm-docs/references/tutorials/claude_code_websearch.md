@@ -1,4 +1,3 @@
-import Image from '@theme/IdealImage';
 
 # Claude Code - WebSearch Across All Providers
 

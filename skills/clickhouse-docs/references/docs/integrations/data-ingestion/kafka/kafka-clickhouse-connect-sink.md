@@ -1,20 +1,14 @@
 ---
-sidebar_label: 'ClickHouse Kafka Connect Sink'
-sidebar_position: 2
-slug: /integrations/kafka/clickhouse-kafka-connect-sink
 description: 'The official Kafka connector from ClickHouse.'
 title: 'ClickHouse Kafka Connect Sink'
 doc_type: 'guide'
 keywords: ['ClickHouse Kafka Connect Sink', 'Kafka connector ClickHouse', 'official ClickHouse connector', 'ClickHouse Kafka integration']
 ---
 
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-
 # ClickHouse Kafka Connect Sink
 
-:::note
-If you need any help, please [file an issue in the repository](https://github.com/ClickHouse/clickhouse-kafka-connect/issues) or raise a question in [ClickHouse public Slack](https://clickhouse.com/slack).
-:::
+> **note**: If you need any help, please [file an issue in the repository](https://github.com/ClickHouse/clickhouse-kafka-connect/issues) or raise a question in [ClickHouse public Slack](https://clickhouse.com/slack).
+
 **ClickHouse Kafka Connect Sink** is the Kafka connector delivering data from a Kafka topic to a ClickHouse table.
 
 ### License {#license}
@@ -482,9 +476,7 @@ Kafka Connect (the framework) fetches messages from Kafka topics in the backgrou
 - **`fetch.max.bytes`**: Maximum amount of data to fetch in a single request (default: 52428800 / 50 MB)
 - **`fetch.max.wait.ms`**: Maximum time to wait before returning data if `fetch.min.bytes` isn't met (default: 500 ms)
 
-:::note  
-On Confluent Cloud, adjustment of these settings requires opening a support case through Confluent Cloud.  
-:::  
+> **note**: On Confluent Cloud, adjustment of these settings requires opening a support case through Confluent Cloud.  
 
 ##### Poll settings {#poll-settings}
 
@@ -493,9 +485,7 @@ The connector polls for messages from the framework's buffer:
 - **`max.poll.records`**: Maximum number of records returned in a single poll (default: 500)
 - **`max.partition.fetch.bytes`**: Maximum amount of data per partition (default: 1048576 / 1 MB)
 
-:::note  
-On Confluent Cloud, adjustment of these settings requires opening a support case through Confluent Cloud.  
-:::  
+> **note**: On Confluent Cloud, adjustment of these settings requires opening a support case through Confluent Cloud.  
 
 ##### Recommended settings for high throughput {#recommended-batch-settings}
 

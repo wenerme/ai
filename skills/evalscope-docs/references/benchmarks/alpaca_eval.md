@@ -1,6 +1,5 @@
 # AlpacaEval2.0
 
-
 ## Overview
 
 AlpacaEval 2.0 is an evaluation framework for instruction-following language models that uses an LLM judge to compare model outputs against a strong baseline. It provides win-rate metrics reflecting human preferences.
@@ -28,7 +27,6 @@ AlpacaEval 2.0 is an evaluation framework for instruction-following language mod
 - Reports win rate metric
 - Note: Length-controlled win rate not currently supported
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ AlpacaEval 2.0 is an evaluation framework for instruction-following language mod
 | **Metrics** | `winrate` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `eval` |
-
 
 ## Data Statistics
 
@@ -110,5 +107,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

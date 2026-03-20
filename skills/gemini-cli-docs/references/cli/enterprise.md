@@ -5,7 +5,6 @@ and managing Gemini CLI in an enterprise environment. By leveraging system-level
 settings, administrators can enforce security policies, manage tool access, and
 ensure a consistent experience for all users.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > The patterns described in this document are intended to help
 > administrators create a more controlled and secure environment for using
@@ -282,7 +281,6 @@ environment to a blocklist.
 }
 ```
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Blocklisting with `excludeTools` is less secure than
 > allowlisting with `coreTools`, as it relies on blocking known-bad commands,
@@ -498,7 +496,6 @@ other events. For more information, see the
 }
 ```
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > Ensure that `logPrompts` is set to `false` in an enterprise setting to
 > avoid collecting potentially sensitive information from user prompts.

@@ -14,7 +14,6 @@ The difference from `MURMUR_HASH3_64_V2` is: This version is specifically optimi
 
 -Note: After testing, the performance of `xxhash_64` is about twice that of `murmur_hash3_64`, so when calculating hash values, it is recommended to use `xxhash_64` instead of `murmur_hash3_64`.
 
-
 ## Syntax
 
 ```sql

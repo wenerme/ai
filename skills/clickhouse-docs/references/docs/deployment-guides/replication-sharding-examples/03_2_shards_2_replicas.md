@@ -1,23 +1,9 @@
 ---
-slug: /architecture/cluster-deployment
-sidebar_label: 'Replication + Scaling'
-sidebar_position: 100
 title: 'Replication + Scaling'
 description: 'By going through this tutorial, you will learn how to set up a simple ClickHouse cluster.'
 doc_type: 'guide'
 keywords: ['cluster deployment', 'replication', 'sharding', 'high availability', 'scalability']
 ---
-
-import Image from '@theme/IdealImage';
-import SharedReplicatedArchitecture from '@site/static/images/deployment-guides/replication-sharding-examples/both.png';
-import ConfigExplanation from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_config_explanation.mdx';
-import ListenHost from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_listen_host.mdx';
-import KeeperConfig from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_keeper_config.mdx';
-import KeeperConfigExplanation from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_keeper_explanation.mdx';
-import VerifyKeeperStatus from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_verify_keeper_using_mntr.mdx';
-import DedicatedKeeperServers from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_dedicated_keeper_servers.mdx';
-import ExampleFiles from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_working_example.mdx';
-import CloudTip from '@site/docs/deployment-guides/replication-sharding-examples/_snippets/_cloud_tip.mdx';
 
 > In this example, you'll learn how to set up a simple ClickHouse cluster which
 both replicates and scales. It consisting of two shards and two replicas with a 
@@ -355,10 +341,8 @@ Set up of ClickHouse Keeper is explained in the next step of the tutorial.
 </zookeeper>
 ```
 
-:::note
-Although it is possible to run ClickHouse Keeper on the same server as ClickHouse Server,
+> **note**: Although it is possible to run ClickHouse Keeper on the same server as ClickHouse Server,
 in production environments we strongly recommend that ClickHouse Keeper runs on dedicated hosts.
-:::
 
 #### Macros configuration {#macros-config-explanation}
 
@@ -421,9 +405,7 @@ Now modify each empty configuration file `users.xml` located at
 In this example, the default user is configured without a password for simplicity.
 In practice, this is discouraged.
 
-:::note
-In this example, each `users.xml` file is identical for all nodes in the cluster.
-:::
+> **note**: In this example, each `users.xml` file is identical for all nodes in the cluster.
 
 ## Configure ClickHouse Keeper {#configure-clickhouse-keeper-nodes}
 
@@ -632,8 +614,6 @@ It requires two parameters to be specified:
 
 - `zoo_path`: The Keeper/ZooKeeper path to the table's metadata.
 - `replica_name`: The table's replica name.
-
-<br/>
 
 The `zoo_path` parameter can be set to anything you choose, although it is recommended to follow 
 the convention of using prefix

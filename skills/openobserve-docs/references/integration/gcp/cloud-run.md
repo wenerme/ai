@@ -36,7 +36,6 @@ When you deploy a service on Cloud Run, logs are automatically collected in **Cl
         - **Authorization Key**: from **Data Sources → Recommended/GCP**
     3. These will be passed to your Cloud Run app as environment variables
 
-
 ??? "Step 2: Add Logging Code to Your App"
 
     Update your app to send logs via HTTP.
@@ -106,22 +105,20 @@ When you deploy a service on Cloud Run, logs are automatically collected in **Cl
 
     > Want to test quickly? Use the [cloudrun-openobserve-demo](https://github.com/openobserve/cloudrun-openobserve-demo) sample app.
 
-
 ??? "Step 3: Set Environment Variables in Cloud Run"
 
     1. Go to **Google Cloud Console → Cloud Run**
     2. Select your service → **Edit & Deploy New Revision**
-        ![Edit & Deploy New Revision in Cloud Run](../images/gcp/deploy-revision.png)
+        [Edit & Deploy New Revision in Cloud Run]
     3. Under **Variables & Secrets → Environment Variables**, add:
         -  `OPENOBSERVE_URL`  :  `https://api.openobserve.ai`
         - `OPENOBSERVE_ORG`      : your org name                
         - `OPENOBSERVE_STREAM`   : desired stream name          
         - `OPENOBSERVE_AUTH_KEY` : API Key from OpenObserve     
 
-            ![Add environment variables in Cloud Run](../images/gcp/variables-and-secret.png)
+            [Add environment variables in Cloud Run]
 
     4. Click **Deploy**
-
 
 ??? "Step 4: Test and Verify Logs"
 
@@ -138,7 +135,7 @@ When you deploy a service on Cloud Run, logs are automatically collected in **Cl
        }
        ```
 
-    ![Verify logs in OpenObserve](../images/gcp/cloud-run-logs.png)
+    [Verify logs in OpenObserve]
 
 ## Troubleshooting
 

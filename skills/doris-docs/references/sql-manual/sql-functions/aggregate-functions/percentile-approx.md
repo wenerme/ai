@@ -14,7 +14,6 @@ The `PERCENTILE_APPROX` function is used to calculate approximate percentiles, p
 2. Performance Advantage: Suitable for processing low-cardinality large-scale datasets with faster computation
 3. Adjustable Precision: Balance between precision and performance through the compression parameter
 
-
 ## Syntax
 
 ```sql
@@ -103,5 +102,3 @@ Returns NULL when all input data is NULL.
 |                          NULL  |
 +-------------------------------+
 ```
-
-

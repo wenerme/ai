@@ -17,11 +17,9 @@ The `runtimeContext` column in `mastra_scorers` was renamed to `requestContext`.
 
 :::note[Who needs this migration]
 Only if you use `@mastra/pg` or `@mastra/libsql` with evals/scoring and have existing data in the `runtimeContext` column.
-:::
 
 :::important[What breaks without it]
 Existing score records won't have their request context data accessible.
-:::
 
 After deploying v1 (which adds the new `requestContext` column on init), copy the data and drop the old column:
 
@@ -36,11 +34,9 @@ If you're upgrading from an older version of Mastra, you may have duplicate `(tr
 
 :::note[Who needs this migration]
 Only if you have existing spans data from Mastra versions prior to v1 and encounter errors about duplicate key violations or constraint creation failures.
-:::
 
 :::important[What breaks without it]
 The storage initialization may fail when trying to add the unique constraint, or you may see errors like "duplicate key value violates unique constraint".
-:::
 
 #### Option 1: Use the CLI (Recommended)
 
@@ -90,8 +86,6 @@ console.log(result)
 
 :::note[Recommended]
 Migrating to JSONB enables native PostgreSQL JSON operators and GIN indexing for better query performance on JSON fields.
-:::
-
 ```sql
 ALTER TABLE mastra_threads
 ALTER COLUMN metadata TYPE jsonb
@@ -157,9 +151,7 @@ To migrate, update your imports and instantiation:
   });
 ```
 
-:::note
-If you're using a single store implementation (like `PostgresStore` or `LibSQLStore`) directly, no changes are needed. This only affects code that explicitly uses `MastraStorage` for composite storage.
-:::
+> **note**: If you're using a single store implementation (like `PostgresStore` or `LibSQLStore`) directly, no changes are needed. This only affects code that explicitly uses `MastraStorage` for composite storage.
 
 ### Required `id` property for storage instances
 
@@ -232,8 +224,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/storage-get-messages-paginated .
 ```
 
-:::
-
 ### Domain-specific storage access via `getStore()`
 
 Storage operations are now accessed through domain-specific stores instead of directly on the storage instance.
@@ -280,11 +270,7 @@ To migrate, call `getStore()` with the domain name, then call methods on the ret
 
 The `getThreadsByResourceId()` method has been replaced with `listThreads()`. The new method adds pagination support and filtering by `resourceId`, `metadata`, or both.
 
-:::important
-
-The old `getThreadsByResourceId()` returned all matching threads without pagination. The new `listThreads()` requires pagination parameters. To preserve the old behavior of fetching all threads, use `perPage: false`.
-
-:::
+> **important**: The old `getThreadsByResourceId()` returned all matching threads without pagination. The new `listThreads()` requires pagination parameters. To preserve the old behavior of fetching all threads, use `perPage: false`.
 
 To migrate, use the memory store and the new `listThreads()` method with pagination and an optional filter object.
 
@@ -346,8 +332,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/storage-list-threads-by-resource-to-list-threads .
 ```
 
-:::
-
 ### `getWorkflowRuns` to `listWorkflowRuns`
 
 The `getWorkflowRuns()` method has been renamed to `listWorkflowRuns()`. This change aligns with the convention that `list*` methods return collections.
@@ -373,8 +357,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/storage-list-workflow-runs .
 ```
 
-:::
-
 ### `getMessagesById` to `listMessagesById`
 
 The `getMessagesById()` method has been renamed to `listMessagesById()`. This change aligns with the convention that `list*` methods return collections.
@@ -396,8 +378,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/storage-list-messages-by-id .
 ```
-
-:::
 
 ### Storage `getMessages` and `saveMessages` signatures
 
@@ -484,8 +464,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 npx @mastra/codemod@latest v1/vector-pg-constructor .
 ```
 
-:::
-
 ### PGVector `defineIndex` to `buildIndex`
 
 The `defineIndex()` method has been removed in favor of `buildIndex()`. This change provides clearer naming for the index building operation.
@@ -522,8 +500,6 @@ You can use Mastra's codemod CLI to update your code automatically:
 ```bash
 npx @mastra/codemod@latest v1/storage-postgres-schema-name .
 ```
-
-:::
 
 ### Score storage methods to `listScoresBy*` pattern
 

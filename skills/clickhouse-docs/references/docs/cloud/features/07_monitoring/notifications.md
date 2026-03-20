@@ -1,16 +1,9 @@
 ---
 title: 'Notifications'
-slug: /cloud/notifications
 description: 'Notifications for your ClickHouse Cloud service'
 keywords: ['cloud', 'notifications']
 doc_type: 'guide'
 ---
-
-import Image from '@theme/IdealImage';
-import notifications_1 from '@site/static/images/cloud/manage/notifications-1.png';
-import notifications_2 from '@site/static/images/cloud/manage/notifications-2.png';
-import notifications_3 from '@site/static/images/cloud/manage/notifications-3.png';
-import notifications_4 from '@site/static/images/cloud/manage/notifications-4.png';
 
 ClickHouse Cloud sends notifications about critical events related to your service or organization. There are a few concepts to keep in mind to understand how notifications are sent and configured:
 
@@ -38,14 +31,10 @@ To configure delivery for a specific notification, click on the pencil icon to m
 
 <Image img={notifications_4} size="md" alt="ClickHouse Cloud notification delivery settings" border/>
 
-:::note
-Certain **required** notifications such as **Payment failed** aren't configurable.
-:::
+> **note**: Certain **required** notifications such as **Payment failed** aren't configurable.
 
 ## Supported notifications {#supported-notifications}
 
 Currently, we send out notifications related to billing (payment failure, usage exceeded ascertain threshold, etc.) as well as notifications related to scaling events (scaling completed, scaling blocked etc.).
 
-:::note
-Credit threshold notifications are currently only available for organizations with committed spend contracts. Pay-as-you-go (PAYG) organizations do not receive these notifications.
-:::
+> **note**: Credit threshold notifications are currently only available for organizations with committed spend contracts. Pay-as-you-go (PAYG) organizations do not receive these notifications.

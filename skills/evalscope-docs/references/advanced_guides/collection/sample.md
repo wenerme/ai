@@ -113,7 +113,6 @@ dump_jsonl_data(mixed_data, 'outputs/uniform_mixed_data.jsonl')
 ```
 Expected: arc : ceval = 5 : 5
 
-
 ## Common Issues
 - Weights don't affect Uniform / Stratified allocation (only Weighted uses them).
 - Dataset with too few samples: Stratified sampling will force at least 1 sample; increase N or switch to Weighted.

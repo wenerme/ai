@@ -32,9 +32,8 @@ To solve this problem, Doris supports sequence columns. By specifying a sequence
 
 In implementation, Doris adds a hidden column **__DORIS_SEQUENCE_COL__**, whose type is specified by the user during table creation. The specific value of this column is determined during data loading, and the effective row for the same key column is decided based on this value.
 
-:::caution Note
+> **caution**: Note
 The sequence column currently only supports the Unique model.
-:::
 
 ### Enabling Sequence Column Support
 

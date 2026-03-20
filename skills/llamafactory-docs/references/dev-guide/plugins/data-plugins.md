@@ -10,7 +10,6 @@ DataConverter 负责将非标准格式的数据集转换为 v1 的标准 Message
 
 当前，LLaMA-Factory 已内置了 `Alpaca Converter` 和 `Pair Converter`，这两类数据集可以直接使用对应的 converter 进行标准化，无需自定义转换器。
 
-
 ### 2. Alpaca Converter 详解
 
 #### 2.1 Alpaca 格式
@@ -39,7 +38,6 @@ class AlpacaSample(TypedDict, total=False):
         output (str, 可选): 模型生成的目标输出（expected response）。
     """
     ...
-
 
 def alpaca_converter(raw_sample: AlpacaSample) -> SFTSample:
     """将 Alpaca 样本转换为 SFT（Supervised Fine-Tuning）标准样本格式
@@ -237,7 +235,6 @@ class DataLoaderPlugin:
     args: DataArguments
     """数据参数对象，包含数据目录、缓存路径、分片等配置信息。"""
 
-
     def _get_builder_name(self, path: str) -> Literal["arrow", "csv", "json", "parquet", "text"]:
         """获取数据集文件格式
 
@@ -257,7 +254,6 @@ class DataLoaderPlugin:
         """
         ...
 
-
     def auto_load_data(self, dataset_info: DatasetInfo) -> HFDataset:
         """根据传入的 `dataset_info` 自动选择合适的加载方式
 
@@ -275,7 +271,6 @@ class DataLoaderPlugin:
             >>> ds = plugin.auto_load_data({"file_name": "~/data.json", "split": "train"})
         """
         ...
-
 
     def load_data_from_file(self, filepath: str, split: str, streaming: bool) -> HFDataset:
         """从文件或目录加载数据集
@@ -373,7 +368,6 @@ class DataIndexPlugin:
         """
         ...
 
-
     def adjust_by_size(self, data_index: list[tuple[str, int]], size: int) -> list[tuple[str, int]]:
         """根据目标大小调整数据索引
 
@@ -394,7 +388,6 @@ class DataIndexPlugin:
             >>> plugin.adjust_by_size([("ds1", i) for i in range(10)], 20)
         """
         ...
-
 
     def adjust_by_weight(self, data_index: list[tuple[str, int]], weight: float) -> list[tuple[str, int]]:
         """根据权重调整数据索引
@@ -426,7 +419,6 @@ class DataIndexPlugin:
 
 `DataSelectorPlugin` 为 `DataEngine`提供基于索引访问数据的功能，由 `DataEngine` 的 `__getitem__` 方法自动调用。
 
-
 ### 2. DataSelectorPlugin 接口定义
 
 ```python
@@ -440,7 +432,6 @@ class DataSelectorPlugin:
 
     data_index: list[tuple[str, int]]
     """数据索引列表，每个元素为 (dataset_name, sample_index)。"""
-
 
     def select(self, index: Union[slice, list[int], Any]) -> Union[tuple[str, int], list[tuple[str, int]]]:
         """选择数据集样本

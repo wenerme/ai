@@ -33,17 +33,13 @@ All are signed integers. The differences among the INT types are the number of b
 
 - **[LARGEINT](../sql-data-types/numeric/LARGEINT.md)**: 16 bytes, [-2^127, 2^127 - 1]
 
-
 ### Floating-point
-
 
 Including imprecise floating-point types [FLOAT](../sql-data-types/numeric/FLOATING-POINT.md) and [DOUBLE](../sql-data-types/numeric/FLOATING-POINT.md), corresponding to the `float` and `double` in common programming languages
 
 ### Fixed-point
 
 The precise fixed-point type [DECIMAL](../sql-data-types/numeric/DECIMAL.md), used in financial and other cases that require strict accuracy.
-
-
 
 ## Date Types
 
@@ -52,9 +48,6 @@ Date types include DATE, TIME, DATETIME and TIMESTAMPTZ. DATE type only stores t
 Do calculation for datetime types or converting them to numeric types, please use functions like [TIME_TO_SEC](../../sql-functions/scalar-functions/date-time-functions/time-to-sec), [DATE_DIFF](../../sql-functions/scalar-functions/date-time-functions/datediff), [UNIX_TIMESTAMP](../../sql-functions/scalar-functions/date-time-functions/unix-timestamp) . The result of directly converting them as numeric types as not guaranteed.
 
 For more information refer to [DATE](../sql-data-types/date-time/DATE), [TIME](../sql-data-types/date-time/TIME), [DATETIME](../sql-data-types/date-time/DATETIME) and [TIMESTAMPTZ](../sql-data-types/date-time/TIMESTAMPTZ) documents.
-
-
-
 
 ## String Types
 
@@ -71,7 +64,6 @@ Doris supports both fixed-length and variable-length strings, including:
 - **[VARBINARY](./binary-type/VARBINARY)**: A variable-length binary byte sequence, where M is the maximum length (in bytes). Similar to VARCHAR, but uses byte-wise storage and comparison with no character set or collation involved; suitable for storing arbitrary binary data (e.g., file fragments, encrypted data, compressed data). Supported since 4.0; currently not supported for table creation and storage in Doris, but you can use Catalogs to map BINARY columns from other databases into Doris for use.
 
 ## Semi-Structured Types
-
 
 Doris supports different semi-structured data types for JSON data processing, each tailored to different use cases. 
 
@@ -93,12 +85,9 @@ The aggregation data types store aggregation results or intermediate results dur
 
 - **[AGG_STATE](../sql-data-types/aggregate/AGG-STATE.md)**: It is used to accelerate aggregations, utilized in combination with aggregation function combinators like state/merge/union.
 
-
 ## IP Types
-
 
 IP data types store IP addresses in a binary format, which is faster and more space-efficient for querying compared to storing them as strings. There are two supported IP data types:
 
 - **[IPv4](../sql-data-types/ip/IPV4.md)**: It stores IPv4 addresses as a 4-byte binary value. It is used in conjunction with the `ipv4_*` family of functions.
 - **[IPv6](../sql-data-types/ip/IPV6.md)**: It stores IPv6 addresses as a 16-byte binary value. It is used in conjunction with the `ipv6_*` family of functions.
-

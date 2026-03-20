@@ -3,8 +3,6 @@ title: Bundler
 description: Bun's fast native bundler for JavaScript, TypeScript, JSX, and more
 ---
 
-import Build from "/snippets/cli/build.mdx";
-
 Bun's fast native bundler can be used via the `bun build` CLI command or the `Bun.build()` JavaScript API.
 
 ### At a Glance
@@ -15,30 +13,23 @@ Bun's fast native bundler can be used via the `bun build` CLI command or the `Bu
 - Targets: `--target browser|bun|node`
 - Formats: `--format esm|cjs|iife` (experimental for cjs/iife)
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
       outdir: './build',
     });
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./build
     ```
-  </Tab>
-</Tabs>
+  
 
 It's fast. The numbers below represent performance on esbuild's [three.js benchmark](https://github.com/oven-sh/bun/tree/main/bench/bundle).
 
-<Frame>
-  <img
-    src="/images/bundler-speed.png"
-    caption="Bundling 10 copies of three.js from scratch, with sourcemaps and minification"
-  />
-</Frame>
+  
 
 ## Why bundle?
 
@@ -51,13 +42,11 @@ The bundler is a key piece of infrastructure in the JavaScript ecosystem. As a b
 
 Let's jump into the bundler API.
 
-<Note>The Bun bundler is not intended to replace `tsc` for typechecking or generating type declarations.</Note>
+The Bun bundler is not intended to replace `tsc` for typechecking or generating type declarations.
 
 ## Basic example
 
 Let's build our first bundle. You have the following two files, which implement a simple client-side rendered React app.
-
-<CodeGroup>
 
 ```tsx index.tsx icon="/icons/typescript.svg"
 import * as ReactDOM from "react-dom/client";
@@ -73,13 +62,9 @@ export function Component(props: { message: string }) {
 }
 ```
 
-</CodeGroup>
-
 Here, `index.tsx` is the "entrypoint" to our application. Commonly, this will be a script that performs some side effect, like starting a server or—in this case—initializing a React root. Because we're using TypeScript & JSX, we need to bundle our code before it can be sent to the browser.
 
 To create our bundle:
-
-<CodeGroup>
 
 ```ts build.ts icon="/icons/typescript.svg"
 await Bun.build({
@@ -91,8 +76,6 @@ await Bun.build({
 ```bash terminal icon="terminal"
 bun build ./index.tsx --outdir ./out
 ```
-
-</CodeGroup>
 
 For each file specified in `entrypoints`, Bun will generate a new bundle. This bundle will be written to disk in the `./out` directory (as resolved from the current working directory). After running the build, the file system looks like this:
 
@@ -159,11 +142,11 @@ Like the Bun runtime, the bundler supports an array of file types out of the box
 | Extensions                                            | Details                                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `.js` `.jsx` `.cjs` `.mjs` `.mts` `.cts` `.ts` `.tsx` | Uses Bun's built-in transpiler to parse the file and transpile TypeScript/JSX syntax to vanilla JavaScript. The bundler executes a set of default transforms including dead code elimination and tree shaking. At the moment Bun does not attempt to down-convert syntax; if you use recently ECMAScript syntax, that will be reflected in the bundled code. |
-| `.json`                                               | JSON files are parsed and inlined into the bundle as a JavaScript object.<br/><br/>`js<br/>import pkg from "./package.json";<br/>pkg.name; // => "my-package"<br/>`                                                                                                                                                                                          |
-| `.jsonc`                                              | JSON with comments. Files are parsed and inlined into the bundle as a JavaScript object.<br/><br/>`js<br/>import config from "./config.jsonc";<br/>config.name; // => "my-config"<br/>`                                                                                                                                                                      |
-| `.toml`                                               | TOML files are parsed and inlined into the bundle as a JavaScript object.<br/><br/>`js<br/>import config from "./bunfig.toml";<br/>config.logLevel; // => "debug"<br/>`                                                                                                                                                                                      |
-| `.yaml` `.yml`                                        | YAML files are parsed and inlined into the bundle as a JavaScript object.<br/><br/>`js<br/>import config from "./config.yaml";<br/>config.name; // => "my-app"<br/>`                                                                                                                                                                                         |
-| `.txt`                                                | The contents of the text file are read and inlined into the bundle as a string.<br/><br/>`js<br/>import contents from "./file.txt";<br/>console.log(contents); // => "Hello, world!"<br/>`                                                                                                                                                                   |
+| `.json`                                               | JSON files are parsed and inlined into the bundle as a JavaScript object.`jsimport pkg from "./package.json";pkg.name; // => "my-package"`                                                                                                                                                                                          |
+| `.jsonc`                                              | JSON with comments. Files are parsed and inlined into the bundle as a JavaScript object.`jsimport config from "./config.jsonc";config.name; // => "my-config"`                                                                                                                                                                      |
+| `.toml`                                               | TOML files are parsed and inlined into the bundle as a JavaScript object.`jsimport config from "./bunfig.toml";config.logLevel; // => "debug"`                                                                                                                                                                                      |
+| `.yaml` `.yml`                                        | YAML files are parsed and inlined into the bundle as a JavaScript object.`jsimport config from "./config.yaml";config.name; // => "my-app"`                                                                                                                                                                                         |
+| `.txt`                                                | The contents of the text file are read and inlined into the bundle as a string.`jsimport contents from "./file.txt";console.log(contents); // => "Hello, world!"`                                                                                                                                                                   |
 | `.html`                                               | HTML files are processed and any referenced assets (scripts, stylesheets, images) are bundled.                                                                                                                                                                                                                                                               |
 | `.css`                                                | CSS files are bundled together into a single `.css` file in the output directory.                                                                                                                                                                                                                                                                            |
 | `.node` `.wasm`                                       | These files are supported by the Bun runtime, but during bundling they are treated as assets.                                                                                                                                                                                                                                                                |
@@ -171,8 +154,6 @@ Like the Bun runtime, the bundler supports an array of file types out of the box
 ### Assets
 
 If the bundler encounters an import with an unrecognized extension, it treats the imported file as an external file. The referenced file is copied as-is into `outdir`, and the import is resolved as a path to the file.
-
-<CodeGroup>
 
 ```ts Input icon="/icons/typescript.svg"
 // bundle entrypoint
@@ -186,11 +167,9 @@ var logo = "./logo-a7305bdef.svg";
 console.log(logo);
 ```
 
-</CodeGroup>
-
 The exact behavior of the file loader is also impacted by [`naming`](#naming) and [`publicPath`](#publicpath).
 
-<Info>Refer to the [Bundler > Loaders](/bundler/loaders) page for more complete documentation on the file loader.</Info>
+Refer to the [Bundler > Loaders](/bundler/loaders) page for more complete documentation on the file loader.
 
 ### Plugins
 
@@ -204,21 +183,19 @@ The behavior described in this table can be overridden or extended with plugins.
 
 An array of paths corresponding to the entrypoints of our application. One bundle will be generated for each entrypoint.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     const result = await Bun.build({
       entrypoints: ["./index.ts"],
     });
     // => { success: boolean, outputs: BuildArtifact[], logs: BuildMessage[] }
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.ts
     ```
-  </Tab>
-</Tabs>
+  
 
 ### files
 
@@ -296,8 +273,7 @@ This is useful for code generation, injecting build-time constants, or testing w
 
 The directory where output files will be written.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     const result = await Bun.build({
       entrypoints: ['./index.ts'],
@@ -305,13 +281,12 @@ The directory where output files will be written.
     });
     // => { success: boolean, outputs: BuildArtifact[], logs: BuildMessage[] }
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.ts --outdir ./out
     ```
-  </Tab>
-</Tabs>
+  
 
 If `outdir` is not passed to the JavaScript API, bundled code will not be written to disk. Bundled files are returned in an array of `BuildArtifact` objects. These objects are Blobs with extra properties; see [Outputs](#outputs) for complete documentation.
 
@@ -338,8 +313,7 @@ When `outdir` is set, the `path` property on a `BuildArtifact` will be the absol
 
 The intended execution environment for the bundle.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.ts'],
@@ -347,23 +321,19 @@ The intended execution environment for the bundle.
       target: 'browser', // default
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.ts --outdir ./out --target browser
     ```
-  </Tab>
-</Tabs>
+  
 
 Depending on the target, Bun will apply different module resolution rules and optimizations.
 
-<Card title="browser" icon="globe">
   **Default.** For generating bundles that are intended for execution by a browser. Prioritizes the `"browser"` export
   condition when resolving imports. Importing any built-in modules, like `node:events` or `node:path` will work, but
   calling some functions, like `fs.readFile` will not work.
-</Card>
 
-<Card title="bun" icon="server">
 For generating bundles that are intended to be run by the Bun runtime. In many cases, it isn't necessary to bundle server-side code; you can directly execute the source code without modification. However, bundling your server code can reduce startup times and improve running performance. This is the target to use for building full-stack applications with build-time HTML imports, where both server and client code are bundled together.
 
 All bundles generated with `target: "bun"` are marked with a special `// @bun` pragma, which indicates to the Bun runtime that there's no need to re-transpile the file before execution.
@@ -372,13 +342,9 @@ If any entrypoints contains a Bun shebang (`#!/usr/bin/env bun`) the bundler wil
 
 When using `target: "bun"` and `format: "cjs"` together, the `// @bun @bun-cjs` pragma is added and the CommonJS wrapper function is not compatible with Node.js.
 
-</Card>
-
-<Card title="node" icon="node">
   For generating bundles that are intended to be run by Node.js. Prioritizes the `"node"` export condition when
   resolving imports, and outputs `.mjs`. In the future, this will automatically polyfill the Bun global and other
   built-in `bun:*` modules, though this is not yet implemented.
-</Card>
 
 ### format
 
@@ -390,8 +356,7 @@ Bun defaults to `"esm"`, and provides experimental support for `"cjs"` and `"iif
 
 This is the default format, which supports ES Module syntax including top-level await, `import.meta`, and more.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -399,13 +364,12 @@ This is the default format, which supports ES Module syntax including top-level 
       format: "esm",
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --format esm
     ```
-  </Tab>
-</Tabs>
+  
 
 To use ES Module syntax in browsers, set `format` to `"esm"` and make sure your `<script type="module">` tag has `type="module"` set.
 
@@ -413,8 +377,7 @@ To use ES Module syntax in browsers, set `format` to `"esm"` and make sure your 
 
 To build a CommonJS module, set `format` to `"cjs"`. When choosing `"cjs"`, the default target changes from `"browser"` (esm) to `"node"` (cjs). CommonJS modules transpiled with `format: "cjs"`, `target: "node"` can be executed in both Bun and Node.js (assuming the APIs in use are supported by both).
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -422,13 +385,12 @@ To build a CommonJS module, set `format` to `"cjs"`. When choosing `"cjs"`, the 
       format: "cjs",
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --format cjs
     ```
-  </Tab>
-</Tabs>
+  
 
 #### format: "iife" - IIFE
 
@@ -439,8 +401,6 @@ TODO: document IIFE once we support globalNames.
 Configure JSX transform behavior. Allows fine-grained control over how JSX is compiled.
 
 **Classic runtime example** (uses `factory` and `fragment`):
-
-<CodeGroup>
 
 ```ts index.ts icon="/icons/typescript.svg"
 await Bun.build({
@@ -459,11 +419,7 @@ await Bun.build({
 bun build ./app.tsx --outdir ./out
 ```
 
-</CodeGroup>
-
 **Automatic runtime example** (uses `importSource`):
-
-<CodeGroup>
 
 ```ts index.ts icon="/icons/typescript.svg"
 await Bun.build({
@@ -481,14 +437,11 @@ await Bun.build({
 bun build ./app.tsx --outdir ./out
 ```
 
-</CodeGroup>
-
 ### splitting
 
 Whether to enable code splitting.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -496,17 +449,14 @@ Whether to enable code splitting.
       splitting: false, // default
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --splitting
     ```
-  </Tab>
-</Tabs>
+  
 
 When `true`, the bundler will enable code splitting. When multiple entrypoints both import the same file, module, or set of files/modules, it's often useful to split the shared code into a separate bundle. This shared bundle is known as a chunk. Consider the following files:
-
-<CodeGroup>
 
 ```ts entry-a.ts icon="/icons/typescript.svg"
 import { shared } from "./shared.ts";
@@ -520,12 +470,9 @@ import { shared } from "./shared.ts";
 export const shared = "shared";
 ```
 
-</CodeGroup>
-
 To bundle `entry-a.ts` and `entry-b.ts` with code-splitting enabled:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./entry-a.ts', './entry-b.ts'],
@@ -533,13 +480,12 @@ To bundle `entry-a.ts` and `entry-b.ts` with code-splitting enabled:
       splitting: true,
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./entry-a.ts ./entry-b.ts --outdir ./out --splitting
     ```
-  </Tab>
-</Tabs>
+  
 
 Running this build will result in the following files:
 
@@ -580,8 +526,7 @@ Controls how environment variables are handled during bundling. Internally, this
 
 Injects environment variables into the bundled output by converting `process.env.FOO` references to string literals containing the actual environment variable values.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -589,13 +534,12 @@ Injects environment variables into the bundled output by converting `process.env
       env: "inline",
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --env inline
     ```
-  </Tab>
-</Tabs>
+  
 
 For the input below:
 
@@ -617,8 +561,7 @@ console.log("123");
 
 Inlines environment variables matching the given prefix (the part before the `*` character), replacing `process.env.FOO` with the actual environment variable value. This is useful for selectively inlining environment variables for things like public-facing URLs or client-side tokens, without worrying about injecting private credentials into output bundles.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -628,13 +571,12 @@ Inlines environment variables matching the given prefix (the part before the `*`
       env: "ACME_PUBLIC_*",
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --env ACME_PUBLIC_*
     ```
-  </Tab>
-</Tabs>
+  
 
 For example, given the following environment variables:
 
@@ -666,8 +608,7 @@ Disables environment variable injection entirely.
 
 Specifies the type of sourcemap to generate.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -675,20 +616,19 @@ Specifies the type of sourcemap to generate.
       sourcemap: 'linked', // default 'none'
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --sourcemap linked
     ```
-  </Tab>
-</Tabs>
+  
 
 | Value        | Description                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `"none"`     | Default. No sourcemap is generated.                                                                                                                                                                                                                                                                                                                                                             |
-| `"linked"`   | A separate `*.js.map` file is created alongside each `*.js` bundle using a `//# sourceMappingURL` comment to link the two. Requires `--outdir` to be set. The base URL of this can be customized with `--public-path`.<br/><br/>`js<br/>// <bundled code here><br/><br/>//# sourceMappingURL=bundle.js.map<br/>`                                                                                |
-| `"external"` | A separate `*.js.map` file is created alongside each `*.js` bundle without inserting a `//# sourceMappingURL` comment.<br/><br/>Generated bundles contain a debug id that can be used to associate a bundle with its corresponding sourcemap. This `debugId` is added as a comment at the bottom of the file.<br/><br/>`js<br/>// <generated bundle code><br/><br/>//# debugId=<DEBUG ID><br/>` |
-| `"inline"`   | A sourcemap is generated and appended to the end of the generated bundle as a base64 payload.<br/><br/>`js<br/>// <bundled code here><br/><br/>//# sourceMappingURL=data:application/json;base64,<encoded sourcemap here><br/>`                                                                                                                                                                 |
+| `"linked"`   | A separate `*.js.map` file is created alongside each `*.js` bundle using a `//# sourceMappingURL` comment to link the two. Requires `--outdir` to be set. The base URL of this can be customized with `--public-path`.`js// <bundled code here>//# sourceMappingURL=bundle.js.map`                                                                                |
+| `"external"` | A separate `*.js.map` file is created alongside each `*.js` bundle without inserting a `//# sourceMappingURL` comment.Generated bundles contain a debug id that can be used to associate a bundle with its corresponding sourcemap. This `debugId` is added as a comment at the bottom of the file.`js// <generated bundle code>//# debugId=<DEBUG ID>` |
+| `"inline"`   | A sourcemap is generated and appended to the end of the generated bundle as a base64 payload.`js// <bundled code here>//# sourceMappingURL=data:application/json;base64,<encoded sourcemap here>`                                                                                                                                                                 |
 
 The associated `*.js.map` sourcemap will be a JSON file containing an equivalent `debugId` property.
 
@@ -696,12 +636,11 @@ The associated `*.js.map` sourcemap will be a JSON file containing an equivalent
 
 Whether to enable minification. Default `false`.
 
-<Note>When targeting `bun`, identifiers will be minified by default.</Note>
+When targeting `bun`, identifiers will be minified by default.
 
 To enable all minification options:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -709,18 +648,16 @@ To enable all minification options:
       minify: true, // default false
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --minify
     ```
-  </Tab>
-</Tabs>
+  
 
 To granularly enable certain minifications:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -732,20 +669,18 @@ To granularly enable certain minifications:
       },
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --minify-whitespace --minify-identifiers --minify-syntax
     ```
-  </Tab>
-</Tabs>
+  
 
 ### external
 
 A list of import paths to consider external. Defaults to `[]`.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -753,13 +688,12 @@ A list of import paths to consider external. Defaults to `[]`.
       external: ["lodash", "react"], // default: []
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --external lodash --external react
     ```
-  </Tab>
-</Tabs>
+  
 
 An external import is one that will not be included in the final bundle. Instead, the import statement will be left as-is, to be resolved at runtime.
 
@@ -775,8 +709,7 @@ console.log(_.upperCase(value));
 
 Normally, bundling `index.tsx` would generate a bundle containing the entire source code of the "zod" package. If instead, we want to leave the import statement as-is, we can mark it as external:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -784,13 +717,12 @@ Normally, bundling `index.tsx` would generate a bundle containing the entire sou
       external: ['zod'],
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --external zod
     ```
-  </Tab>
-</Tabs>
+  
 
 The generated bundle will look something like this:
 
@@ -807,8 +739,7 @@ console.log(_.upperCase(value));
 
 To mark all imports as external, use the wildcard `*`:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -816,40 +747,36 @@ To mark all imports as external, use the wildcard `*`:
       external: ['*'],
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --external '*'
     ```
-  </Tab>
-</Tabs>
+  
 
 ### packages
 
 Control whether package dependencies are included to bundle or not. Possible values: `bundle` (default), `external`. Bun treats any import which path do not start with `.`, `..` or `/` as package.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.ts'],
       packages: 'external',
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.ts --packages external
     ```
-  </Tab>
-</Tabs>
+  
 
 ### naming
 
 Customizes the generated file names. Defaults to `./[dir]/[name].[ext]`.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -857,13 +784,12 @@ Customizes the generated file names. Defaults to `./[dir]/[name].[ext]`.
       naming: "[dir]/[name].[ext]", // default
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --entry-naming "[dir]/[name].[ext]"
     ```
-  </Tab>
-</Tabs>
+  
 
 By default, the names of the generated bundles are based on the name of the associated entrypoint.
 
@@ -903,8 +829,7 @@ For example:
 
 We can combine these tokens to create a template string. For instance, to include the hash in the generated bundle names:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -912,13 +837,12 @@ We can combine these tokens to create a template string. For instance, to includ
       naming: 'files/[dir]/[name]-[hash].[ext]',
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --entry-naming 'files/[dir]/[name]-[hash].[ext]'
     ```
-  </Tab>
-</Tabs>
+  
 
 This build would result in the following file structure:
 
@@ -932,8 +856,7 @@ This build would result in the following file structure:
 
 When a string is provided for the `naming` field, it is used only for bundles that correspond to entrypoints. The names of chunks and copied assets are not affected. Using the JavaScript API, separate template strings can be specified for each type of generated file.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -946,23 +869,21 @@ When a string is provided for the `naming` field, it is used only for bundles th
       },
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out \
       --entry-naming '[dir]/[name].[ext]' \
       --chunk-naming '[name]-[hash].[ext]' \
       --asset-naming '[name]-[hash].[ext]'
     ```
-  </Tab>
-</Tabs>
+  
 
 ### root
 
 The root directory of the project.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./pages/a.tsx', './pages/b.tsx'],
@@ -970,13 +891,12 @@ The root directory of the project.
       root: '.',
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./pages/a.tsx ./pages/b.tsx --outdir ./out --root .
     ```
-  </Tab>
-</Tabs>
+  
 
 If unspecified, it is computed to be the first common ancestor of all entrypoint files. Consider the following file structure:
 
@@ -989,21 +909,19 @@ If unspecified, it is computed to be the first common ancestor of all entrypoint
 
 We can build both entrypoints in the `pages` directory:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```js
     await Bun.build({
       entrypoints: ['./pages/index.tsx', './pages/settings.tsx'],
       outdir: './out',
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash
     bun build ./pages/index.tsx ./pages/settings.tsx --outdir ./out
     ```
-  </Tab>
-</Tabs>
+  
 
 This would result in a file structure like this:
 
@@ -1021,8 +939,7 @@ Since the `pages` directory is the first common ancestor of the entrypoint files
 
 This behavior can be overridden by specifying the `root` option:
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```js
     await Bun.build({
       entrypoints: ['./pages/index.tsx', './pages/settings.tsx'],
@@ -1030,13 +947,12 @@ This behavior can be overridden by specifying the `root` option:
       root: '.',
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash
     bun build ./pages/index.tsx ./pages/settings.tsx --outdir ./out --root .
     ```
-  </Tab>
-</Tabs>
+  
 
 By specifying `.` as `root`, the generated file structure will look like this:
 
@@ -1063,8 +979,6 @@ In many cases, generated bundles will contain no import statements. After all, t
 
 In any of these cases, the final bundles may contain paths to other files. By default these imports are relative. Here is an example of a simple asset import:
 
-<CodeGroup>
-
 ```ts Input icon="/icons/typescript.svg"
 import logo from "./logo.svg";
 console.log(logo);
@@ -1075,12 +989,9 @@ var logo = "./logo-a7305bdef.svg";
 console.log(logo);
 ```
 
-</CodeGroup>
-
 Setting `publicPath` will prefix all file paths with the specified value.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1088,13 +999,12 @@ Setting `publicPath` will prefix all file paths with the specified value.
       publicPath: 'https://cdn.example.com/', // default is undefined
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --public-path 'https://cdn.example.com/'
     ```
-  </Tab>
-</Tabs>
+  
 
 The output file would now look something like this.
 
@@ -1106,8 +1016,7 @@ var logo = "https://cdn.example.com/logo-a7305bdef.svg";
 
 A map of global identifiers to be replaced at build time. Keys of this object are identifier names, and values are JSON strings that will be inlined.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1118,20 +1027,18 @@ A map of global identifiers to be replaced at build time. Keys of this object ar
       },
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --define STRING='"value"' --define nested.boolean=true
     ```
-  </Tab>
-</Tabs>
+  
 
 ### loader
 
 A map of file extensions to built-in loader names. This can be used to quickly customize how certain files are loaded.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1142,20 +1049,18 @@ A map of file extensions to built-in loader names. This can be used to quickly c
       },
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --loader .png:dataurl --loader .txt:file
     ```
-  </Tab>
-</Tabs>
+  
 
 ### banner
 
 A banner to be added to the final bundle, this can be a directive like `"use client"` for react or a comment block such as a license for the code.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1163,20 +1068,18 @@ A banner to be added to the final bundle, this can be a directive like `"use cli
       banner: '"use client";'
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --banner '"use client";'
     ```
-  </Tab>
-</Tabs>
+  
 
 ### footer
 
 A footer to be added to the final bundle, this can be something like a comment block for a license or just a fun easter egg.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1184,20 +1087,18 @@ A footer to be added to the final bundle, this can be something like a comment b
       footer: '// built with love in SF'
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --footer '// built with love in SF'
     ```
-  </Tab>
-</Tabs>
+  
 
 ### drop
 
 Remove function calls from a bundle. For example, `--drop=console` will remove all calls to `console.log`. Arguments to calls will also be removed, regardless of if those arguments may have side effects. Dropping `debugger` will remove all `debugger` statements.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./index.tsx'],
@@ -1205,13 +1106,12 @@ Remove function calls from a bundle. For example, `--drop=console` will remove a
       drop: ["console", "debugger", "anyIdentifier.or.propertyAccess"],
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./index.tsx --outdir ./out --drop console --drop debugger
     ```
-  </Tab>
-</Tabs>
+  
 
 ### features
 
@@ -1231,8 +1131,7 @@ if (feature("DEBUG")) {
 }
 ```
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     await Bun.build({
       entrypoints: ['./app.ts'],
@@ -1240,13 +1139,12 @@ if (feature("DEBUG")) {
       features: ["PREMIUM"],  // PREMIUM=true, DEBUG=false
     })
     ```
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./app.ts --outdir ./out --feature PREMIUM
     ```
-  </Tab>
-</Tabs>
+  
 
 The `feature()` function is replaced with `true` or `false` at bundle time. Combined with minification, unreachable code is eliminated:
 
@@ -1322,8 +1220,7 @@ Generate metadata about the build in a structured format. The metafile contains 
 - **Dependency tracking**: See the full import graph of your application
 - **CI integration**: Track bundle size changes over time
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     const result = await Bun.build({
       entrypoints: ['./src/index.ts'],
@@ -1347,13 +1244,12 @@ Generate metadata about the build in a structured format. The metafile contains 
     }
     ```
 
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     bun build ./src/index.ts --outdir ./dist --metafile ./dist/meta.json
     ```
-  </Tab>
-</Tabs>
+  
 
 #### Markdown metafile
 
@@ -1490,8 +1386,6 @@ return new Response(artifact);
 
 The Bun runtime implements special pretty-printing of `BuildArtifact` object to make debugging easier.
 
-<CodeGroup>
-
 ```ts build.ts icon="/icons/typescript.svg"
 // build.ts
 const build = await Bun.build({
@@ -1526,8 +1420,6 @@ BuildArtifact (entry-point) {
 }
 ```
 
-</CodeGroup>
-
 ## Bytecode
 
 The `bytecode: boolean` option can be used to generate bytecode for any JavaScript/TypeScript entrypoints. This can greatly improve startup times for large applications. Requires `"target": "bun"` and is dependent on a matching version of Bun.
@@ -1537,8 +1429,7 @@ The `bytecode: boolean` option can be used to generate bytecode for any JavaScri
 
 Without an explicit `format`, bytecode defaults to CommonJS.
 
-<Tabs>
-  <Tab title="JavaScript">
+  
     ```ts title="build.ts" icon="/icons/typescript.svg"
     // CommonJS bytecode (generates .jsc files)
     await Bun.build({
@@ -1557,8 +1448,8 @@ Without an explicit `format`, bytecode defaults to CommonJS.
     })
     ```
 
-  </Tab>
-  <Tab title="CLI">
+  
+  
     ```bash terminal icon="terminal"
     # CommonJS bytecode
     bun build ./index.tsx --outdir ./out --bytecode
@@ -1567,8 +1458,7 @@ Without an explicit `format`, bytecode defaults to CommonJS.
     bun build ./index.tsx --outfile ./mycli --bytecode --format=esm --compile
     ```
 
-  </Tab>
-</Tabs>
+  
 
 ## Executables
 

@@ -69,7 +69,7 @@ For example:
 
 ### Reading Data from Doris
 
-![Flink Connector Principles JDBC Doris](/images/ecomsystem/flink-connector/FlinkConnectorPrinciples-JDBC-Doris.png)
+[Flink Connector Principles JDBC Doris]
 
 When reading data, Flink Doris Connector offers higher performance compared to Flink JDBC Connector and is recommended for use:
 
@@ -95,7 +95,6 @@ When using Flink Doris Connector for data writing, batch processing is performed
 | **Consistency** | Exactly-Once | At-Least-Once; Exactly-Once can be ensured with the primary key model |
 | **Latency** | Limited by the Flink checkpoint interval, generally higher | Independent batch mechanism with flexible adjustment |
 | **Fault Tolerance & Recovery** | Fully consistent with Flink state recovery | Relies on external deduplication logic (e.g., Doris primary key deduplication) |
-
 
 ## Quick Start
 
@@ -197,8 +196,6 @@ mysql> select * from test.student_trans;
 2 rows in set (0.02 sec)
 ```
 
-
-
 ## Scenarios and Operations
 
 ### Reading Data from Doris
@@ -280,11 +277,9 @@ For the complete code, refer to:[DorisSourceDataStream.java](https://github.com/
 
 Flink writes data to Doris using the Stream Load method, supporting both streaming and batch-insertion modes.
 
-:::info Difference Between Streaming and Batch-insertion
+> **info**: Difference Between Streaming and Batch-insertion
 
 Starting from Connector 1.5.0, batch-insertion is supported. Batch-insertion does not rely on Checkpoints; it buffers data in memory and controls the writing timing based on batch parameters. Streaming insertion requires Checkpoints to be enabled, continuously writing upstream data to Doris during the entire Checkpoint period, without keeping data in memory continuously.
-
-:::
 
 #### Using FlinkSQL to Write Data
 
@@ -331,11 +326,7 @@ INSERT INTO student_sink SELECT * FROM student_source;
 
 When using the DataStream API to write data, different serialization methods can be used to serialize the upstream data before writing it to the Doris table.
 
-:::info
-
-The Connector already contains the HttpClient4.5.13 version. If you reference HttpClient separately in your project, you need to ensure that the versions are consistent.
-
-:::
+> **info**: The Connector already contains the HttpClient4.5.13 version. If you reference HttpClient separately in your project, you need to ensure that the versions are consistent.
 
 ##### Standard String Format
 
@@ -577,7 +568,7 @@ ON a.city = c.city
 
 The Flink Doris Connector integrates **Flink CDC** ([Flink CDC Documentation](https://nightlies.apache.org/flink/flink-cdc-docs-release-3.2/docs/connectors/flink-sources/overview/)), making it easier to synchronize relational databases like MySQL to Doris. This integration also includes automatic table creation, schema changes, etc. Supported databases for synchronization include: MySQL, Oracle, PostgreSQL, SQLServer, MongoDB, and DB2.
 
-:::info Note
+> **info**: Note
 
 1. When using full database synchronization, you need to add the corresponding Flink CDC dependencies in the `$FLINK_HOME/lib` directory (Fat Jar), such as **flink-sql-connector-mysql-cdc-${version}.jar**, **flink-sql-connector-oracle-cdc-${version}.jar**. FlinkCDC version 3.1 and later is not compatible with previous versions. You can download the dependencies from the following links: [FlinkCDC 3.x](https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-mysql-cdc/), [FlinkCDC 2.x](https://repo.maven.apache.org/maven2/com/ververica/flink-sql-connector-mysql-cdc/).
 2. For versions after Connector 24.0.0, the required Flink CDC version must be 3.1 or higher. You can download it [here](https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-mysql-cdc/). If Flink CDC is used to synchronize MySQL and Oracle, you must also add the relevant JDBC drivers under `$FLINK_HOME/lib`.
@@ -788,7 +779,6 @@ After starting the Flink cluster, you can directly run the following command:
     --sink-conf sink.label-prefix=label \
     --table-conf replication_num=1 
 ```
-
 
 ## Usage Instructions
 
@@ -1074,8 +1064,6 @@ The Flink program can refer to the above CDC synchronization examples. After suc
 
 Generally, messages in Kafka use specific fields to mark the operation type, such as {"op_type":"delete",data:{...}}. For this kind of data, it is hoped to delete the data with op_type=delete.
 
-
-
 The DorisSink will, by default, distinguish the types of events according to RowKind. Usually, in the case of CDC, the event type can be directly obtained, and the hidden column `__DORIS_DELETE_SIGN__` can be assigned a value to achieve the purpose of deletion. However, for Kafka, it is necessary to judge according to the business logic and explicitly pass in the value of the hidden column.
 
 ```SQL
@@ -1125,7 +1113,6 @@ In the whole database synchronization tool provided by the Connector, no additio
 2. **errCode = 2, detailMessage = transaction [19650] not found**
 
    This occurs during the Commit stage. The transaction ID recorded in the checkpoint has expired on the FE side. When committing again at this time, the above error will occur. At this point, it's impossible to start from the checkpoint. Subsequently, you can extend the expiration time by modifying the `streaming_label_keep_max_second` configuration in `fe.conf`. The default expiration time is 12 hours. After doris version 2.0, it will also be limited by the `label_num_threshold` configuration in `fe.conf` (default 2000), which can be increased or changed to -1 (-1 means only limited by time).
-
 
 3. **errCode = 2, detailMessage = current running txns on db 10006 is 100, larger than limit 100**
 

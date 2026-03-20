@@ -24,7 +24,7 @@ weight: 400
 
 Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are never lost. You can see a list of dashboard versions in the **Versions** tab of the dashboard settings:
 
-![Dashboards versions list](/media/docs/grafana/dashboards/screenshot-dashboard-version-list-11.2.png)
+[Dashboards versions list]
 
 The dashboard version history feature lets you compare dashboards and restore previously saved dashboard versions. Grafana saves 20 versions by default. To change this limit, configure the [`[dashboards] versions_to_keep`](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/setup-grafana/configure-grafana/#dashboards) setting.
 
@@ -44,7 +44,7 @@ To compare two dashboard versions, follow these steps:
 
 When you're comparing versions, if one of the versions you've selected is the latest version, a button to restore the previous version is also displayed, so you can restore a version from the compare view:
 
-![Dashboards versions diff](/media/docs/grafana/dashboards/screenshot-dashboard-compare-versions-restore-11.2.png)
+[Dashboards versions diff]
 
 ## Restore a previously dashboard version
 

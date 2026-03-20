@@ -1,8 +1,6 @@
 # FriendliAI
 
-:::info
-**We support ALL FriendliAI models, just set `friendliai/` as a prefix when sending completion requests**
-:::
+> **info**: **We support ALL FriendliAI models, just set `friendliai/` as a prefix when sending completion requests**
 
 | Property                   | Details                                                                                         |
 | -------------------------- | ----------------------------------------------------------------------------------------------- |

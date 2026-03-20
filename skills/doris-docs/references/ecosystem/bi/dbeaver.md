@@ -19,23 +19,22 @@ You can visit https://dbeaver.io to download and install DBeaver
 
 ## Add data source
 
-:::info Note
+> **info**: Note
 Currently verified using DBeaver version 24.0.0
-:::
 
 1. Start DBeaver
 
 2. Click the plus sign (**+**) icon in the upper left corner of the DBeaver window, or select **Database > New Database Connection** in the menu bar to open the **Connect to a database** interface.
    
-    ![add connection 1](/images/dbeaver1.png)
+    [add connection 1]
 
-    ![add connection 2](/images/dbeaver2.png)
+    [add connection 2]
 
 3. Select the MySQL driver
 
     In the **Select your database** window, select **MySQL**.
 
-    ![chose driver](/images/dbeaver3.png)
+    [chose driver]
 
 4. Configure Doris connection
 
@@ -56,19 +55,19 @@ Currently verified using DBeaver version 24.0.0
    :::
 
   - internal catalog
-    ![connect internal catalog](/images/dbeaver4.png)
+    [connect internal catalog]
   - external catalog
-    ![connect external catalog](/images/dbeaver5.png)
+    [connect external catalog]
 
 5. Test data source connection
 
    After filling in the connection information, click Test Connection in the lower left corner to verify the accuracy of the database connection information. DBeaver returns to the following dialog box to confirm the configuration of the connection information. Click OK to confirm that the configured connection information is correct. Then click Finish in the lower right corner to complete the connection configuration.
-   ![test connection](/images/dbeaver6.png)
+   [test connection]
 
 6. Connect to database
 
    After the database connection is established, you can see the created data source connection in the database connection navigation on the left, and you can connect and manage the database through DBeaver.
-   ![create connection](/images/dbeaver7.png)
+   [create connection]
 
 ## Function support
 - fully support

@@ -465,11 +465,9 @@ HAVING grouping_id(YEAR(d_date), ca_state, i_category) = 0
     OR grouping_id(YEAR(d_date), ca_state, i_category) = 1;
 ```
 
-:::info Note
+> **info**: Note
 
 Using `CUBE` computes all possible aggregation levels (eight in this case), but in practice, you may only be interested in a few of them.
-
-:::
 
 **3. Semantic Equivalents**
 

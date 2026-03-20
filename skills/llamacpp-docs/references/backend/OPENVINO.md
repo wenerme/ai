@@ -113,9 +113,9 @@ The following models have been validated for functionality on Intel® Core™ Ul
 
 - **Linux:**
 
-    <details>
-    <summary>📦 Click to expand OpenVINO installation from an archive file on Ubuntu</summary>
-    <br>
+    
+    📦 Click to expand OpenVINO installation from an archive file on Ubuntu
+    
 
     ```bash
     wget https://raw.githubusercontent.com/ravi9/misc-scripts/main/openvino/ov-archive-install/install-openvino-from-archive.sh
@@ -127,8 +127,7 @@ The following models have been validated for functionality on Intel® Core™ Ul
     ```bash
     echo $OpenVINO_DIR
     ```
-    </details>
-
+    
 
 ### 2. Build llama.cpp with OpenVINO Backend
 
@@ -203,7 +202,6 @@ build\ReleaseOV\bin\llama-cli.exe -m "C:\models\Llama-3.2-1B-Instruct-Q4_0.gguf"
 ```
 > [!NOTE]
 > On systems with multiple GPUs, use `GPU.0` or `GPU.1` to explicitly target specific GPU. See [OpenVINO GPU Device](https://docs.openvino.ai/2026/openvino-workflow/running-inference/inference-devices-and-modes/gpu-device.html) for more details.
-
 
 ### Docker Build
 

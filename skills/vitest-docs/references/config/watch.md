@@ -1,6 +1,5 @@
 ---
 title: watch | Config
-outline: deep
 ---
 
 # watch <CRoot /> {#watch}

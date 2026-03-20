@@ -23,8 +23,6 @@ The `completion_with_fallbacks()` function attempts a completion call using the 
 ```
 Completion with 'bad-model': got exception Unable to map your input to a model. Check your input - {'model': 'bad-model'
 
-
-
 completion call gpt-3.5-turbo
 {
   "id": "chatcmpl-7qTmVRuO3m3gIBg4aTmAumV1TmQhB",

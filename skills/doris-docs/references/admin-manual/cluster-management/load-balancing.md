@@ -519,15 +519,11 @@ Add to `fe.conf` in FE:
 enable_proxy_protocol = true
 ```
 
-:::note
-
-1. Only supports Proxy Protocol V1.
+> **note**: 1. Only supports Proxy Protocol V1.
 
 2. Only supports and affects MySQL protocol ports, does not support or affect HTTP, ADBC, and other protocol ports.
 
 3. Before Doris 3.1 version, after enabling, you must use the Proxy Protocol protocol to connect, otherwise the connection will fail. Starting from version 3.1, after enabling Proxy Protocol, you can still connect using the standard MySQL connection protocol.
-
-:::
 
 ### 01 Nginx
 
@@ -592,4 +588,3 @@ mysql> show processlist;
 If you see the real client IP in the `Host` column, the verification is successful. Otherwise, you can only see the IP address of the proxy service.
 
 At the same time, the real client IP will also be recorded in fe.audit.log.
-

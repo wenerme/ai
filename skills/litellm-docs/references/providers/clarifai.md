@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Clarifai
 Anthropic, OpenAI, Qwen, xAI, Gemini and most of Open soured LLMs are Supported on Clarifai.
@@ -105,14 +104,12 @@ liteLLM supports all models on [Clarifai community](https://clarifai.com/explore
 - [o3](https://clarifai.com/openai/chat-completion/models/o3)
 - Many more...
 
-
 ### 🤖 Anthropic Models
 - [claude-sonnet-4](https://clarifai.com/anthropic/completion/models/claude-sonnet-4)
 - [claude-opus-4](https://clarifai.com/anthropic/completion/models/claude-opus-4)
 - [claude-3_5-haiku](https://clarifai.com/anthropic/completion/models/claude-3_5-haiku)
 - [claude-3_7-sonnet](https://clarifai.com/anthropic/completion/models/claude-3_7-sonnet)
 - Many more...
-
 
 ### 🪄 xAI Models
 - [grok-3](https://clarifai.com/xai/chat-completion/models/grok-3)
@@ -122,14 +119,12 @@ liteLLM supports all models on [Clarifai community](https://clarifai.com/explore
 - [grok-2-image-1212](https://clarifai.com/xai/image-generation/models/grok-2-image-1212)
 - Many more...
 
-
 ### 🔷 Google Gemini Models
 - [gemini-2_5-pro](https://clarifai.com/gcp/generate/models/gemini-2_5-pro)
 - [gemini-2_5-flash-lite](https://clarifai.com/gcp/generate/models/gemini-2_5-flash-lite)
 - [gemini-2_0-flash](https://clarifai.com/gcp/generate/models/gemini-2_0-flash)
 - [gemini-2_0-flash-lite](https://clarifai.com/gcp/generate/models/gemini-2_0-flash-lite)
 - Many more...
-
 
 ### 🧩 Qwen Models
 - [Qwen3-30B-A3B-Instruct-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Instruct-2507)
@@ -140,24 +135,20 @@ liteLLM supports all models on [Clarifai community](https://clarifai.com/explore
 - [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct)
 - Many more...
 
-
 ### 💡 MiniCPM (OpenBMB) Models
 - [MiniCPM-o-2_6-language](https://clarifai.com/openbmb/miniCPM/models/MiniCPM-o-2_6-language)
 - [MiniCPM3-4B](https://clarifai.com/openbmb/miniCPM/models/MiniCPM3-4B)
 - [MiniCPM4-8B](https://clarifai.com/openbmb/miniCPM/models/MiniCPM4-8B)
 - Many more...
 
-
 ### 🧬 Microsoft Phi Models
 - [Phi-4-reasoning-plus](https://clarifai.com/microsoft/text-generation/models/Phi-4-reasoning-plus)
 - [phi-4](https://clarifai.com/microsoft/text-generation/models/phi-4)
 - Many more...
 
-
 ### 🦙 Meta Llama Models
 - [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct)
 - Many more...
-
 
 ### 🔍 DeepSeek Models
 - [DeepSeek-R1-0528-Qwen3-8B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-0528-Qwen3-8B)
@@ -175,9 +166,6 @@ export CLARIFAI_PAT="CLARIFAI_API_KEY"
 
 ### 2. Start the proxy
 
-<Tabs>
-<TabItem value="config" label="config.yaml">
-
 ```yaml
 model_list:
   - model_name: clarifai-model
@@ -191,13 +179,8 @@ litellm --config /path/to/config.yaml
 
 # Server running on http://0.0.0.0:4000
 ```
-</TabItem>
-</Tabs>
 
 ### 3. Test it
-
-<Tabs>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -213,8 +196,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 '
 ```
-</TabItem>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -235,8 +216,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Important Notes
 
@@ -245,7 +224,6 @@ print(response)
 - Usage is tracked and billed through Clarifai
 - API rate limits are subject to your Clarifai account settings
 - Most OpenAI parameters are supported, but some advanced features may vary by model
-
 
 ## FAQs
 

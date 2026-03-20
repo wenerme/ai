@@ -1,7 +1,4 @@
 ---
-sidebar_label: 'Vector'
-sidebar_position: 220
-slug: /integrations/vector
 description: 'How to tail a log file into ClickHouse using Vector'
 title: 'Integrating Vector with ClickHouse'
 show_related_blogs: true
@@ -12,11 +9,6 @@ integration:
   - website: 'https://vector.dev/'
 keywords: ['vector', 'log collection', 'observability', 'data ingestion', 'pipeline']
 ---
-
-import Image from '@theme/IdealImage';
-import vector01 from '@site/static/images/integrations/data-ingestion/etl-tools/vector_01.png';
-import vector02 from '@site/static/images/integrations/data-ingestion/etl-tools/vector_02.png';
-import PartnerBadge from '@theme/badges/PartnerBadge';
 
 # Integrating Vector with ClickHouse
 
@@ -55,9 +47,7 @@ ENGINE = MergeTree()
 ORDER BY tuple()
 ```
 
-:::note
-**ORDER BY** is set to **tuple()** (an empty tuple) as there is no need for a primary key yet.
-:::
+> **note**: **ORDER BY** is set to **tuple()** (an empty tuple) as there is no need for a primary key yet.
 
 ## Configure Nginx {#2--configure-nginx}
 
@@ -223,10 +213,8 @@ SELECT * FROM nginxdb.access_logs_view
 
 <Image img={vector02} size="lg" border alt="View parsed ClickHouse logs in table format" />
 
-:::note
-The lesson above stored the data in two tables, but you could change the initial `nginxdb.access_logs` table to use the [`Null`](/engines/table-engines/special/null) table engine.
+> **note**: The lesson above stored the data in two tables, but you could change the initial `nginxdb.access_logs` table to use the [`Null`](/engines/table-engines/special/null) table engine.
 The parsed data will still end up in the `nginxdb.access_logs_view` table, but the raw data won't be stored in a table.
-:::
 
 </VerticalStepper>
 

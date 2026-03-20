@@ -39,7 +39,6 @@ Drivelology Multi-label Classification evaluates models' ability to categorize "
 | **Evaluation Split** | `test` |
 | **Aggregation** | `f1_weighted` |
 
-
 ## Data Statistics
 
 | Metric | Value |
@@ -123,5 +122,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

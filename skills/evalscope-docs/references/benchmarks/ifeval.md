@@ -1,6 +1,5 @@
 # IFEval
 
-
 ## Overview
 
 IFEval (Instruction-Following Eval) is a benchmark for evaluating how well language models follow explicit, verifiable instructions. It contains prompts with specific formatting, content, or structural requirements that can be objectively verified.
@@ -31,7 +30,6 @@ IFEval (Instruction-Following Eval) is a benchmark for evaluating how well langu
 - `prompt_level_strict` is the primary metric
 - Automatic verification of instruction compliance
 
-
 ## Properties
 
 | Property | Value |
@@ -43,7 +41,6 @@ IFEval (Instruction-Following Eval) is a benchmark for evaluating how well langu
 | **Metrics** | `prompt_level_strict`, `inst_level_strict`, `prompt_level_loose`, `inst_level_loose` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -193,5 +190,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

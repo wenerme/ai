@@ -7,9 +7,8 @@
 ---
 
 Database Hints are query optimization techniques used to guide the database query optimizer on how to generate a specific plan. By providing Hints, users can fine-tune the default behavior of the query optimizer in hopes of achieving better performance or meeting specific requirements.
-:::caution Note
+> **caution**: Note
 Currently, Doris possesses excellent out-of-the-box capabilities. In most scenarios, Doris adaptively optimizes performance across various situations without requiring users to manually control hints for business tuning. The content presented in this chapter is primarily intended for professional tuning personnel. Business users can have a brief understanding of it.
-:::
 
 ## Hint Classification
 
@@ -86,5 +85,3 @@ Users can view the effectiveness and reasons for non-effectiveness through the H
 ## Summary
 
 Hints are powerful tools for manually managing execution plans. Currently, Doris supports leading hint, ordered hint, distribute hint, etc., enabling users to manually manage join order, shuffle methods, and other variable configurations, providing users with more convenient and effective operational capabilities.
-
-

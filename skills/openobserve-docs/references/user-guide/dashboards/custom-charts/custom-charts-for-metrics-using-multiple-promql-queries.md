@@ -7,7 +7,7 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
 !!! note "Before you begin"
     Adding more than one PromQL query does not change the structure of the PromQL result.
     Instead of one entry in the data array, you will receive one entry per PromQL query.
-    <br>
+    
     **For example**:
 
     - `data[0]`  contains results of the first PromQL query.
@@ -77,7 +77,6 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
 
         This confirms that the structure you learned in the single-query guide remains the same.The only difference is the number of top-level items in the data array.
 
-
 ??? "Step 3: Build a chart that uses multiple PromQL queries"
     ### Step 3: Build a chart that uses multiple PromQL queries
 
@@ -145,10 +144,9 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
 ??? "Step 4: View the result"
     ### Step 4: View the result
     Click **Apply** to view the result. 
-    ![view-promql-chart-result](view-promql-chart-result.png)
+    [view-promql-chart-result]
     Each metric appears as a separate line in the chart.
     You can toggle lines using the legend.
-
 
 ??? "How to extend this code for advanced visualizations"
     ### How to extend this code for advanced visualizations
@@ -158,9 +156,9 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
     - Each entry has a `name`, `type`, and `data: [time, value]` points
     You can reuse this same `series` array to build more advanced charts such as dual-axis visualizations, bar charts, scatter plots, and simple heatmaps.
 
-    <br>
+    
     **Dual-axis line chart**
-    <br>
+    
     A dual-axis chart is helpful when you want to compare two related metrics that have different scales.
     For example, you may want to plot `container_cpu_time{}` on the left axis and `container_cpu_usage{}` on the right axis.
     The following example assumes that:
@@ -192,7 +190,7 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
     ```
     The data transformation remains the same. Only the axis configuration changes and two series are assigned to different `yAxisIndex` values.
     
-    <br>**Bar and scatter charts**<br>
+    **Bar and scatter charts**
     For bar or scatter charts, the structure of `series` can stay the same.
     Only the `type` field needs to change.
     In the Step 3 loop where the series objects are pushed, change this:
@@ -209,8 +207,8 @@ You will now learn how to add multiple PromQL queries in the same panel, inspect
     ```
     The rest of the code, including the `points` transformation, remains identical because the chart still expects `[time, value]` points.
     
-    <br>
-    **Simple heatmap example**<br>
+    
+    **Simple heatmap example**
     Heatmaps require a different data structure.
     Instead of `[time, value]` pairs, ECharts expects each point as `[xIndex, yIndex, value]`.
     The following example converts the first series from Step 3 into a one-row heatmap. This is useful when you want to show intensity over time for a single metric.

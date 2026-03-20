@@ -1,6 +1,5 @@
 # BBH
 
-
 ## Overview
 
 BBH (BIG-Bench Hard) is a subset of 23 challenging tasks from the BIG-Bench benchmark that are specifically selected because language models initially struggled with them. These tasks require complex reasoning abilities that benefit from Chain-of-Thought (CoT) prompting.
@@ -28,7 +27,6 @@ BBH (BIG-Bench Hard) is a subset of 23 challenging tasks from the BIG-Bench benc
 - Setting `few_shot_num=0` disables few-shot examples
 - Multiple-choice answers are normalized to single letters (A, B, C, etc.)
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ BBH (BIG-Bench Hard) is a subset of 23 challenging tasks from the BIG-Bench benc
 | **Metrics** | `acc` |
 | **Default Shots** | 3-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -115,8 +112,7 @@ A: Let's think step by step. Put your final answer in the format of "So the answ
 
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 {fewshot}
@@ -125,8 +121,6 @@ Q: {question}
 A: Let's think step by step. Put your final answer in the format of "So the answer is [ANSWER]" (without quotes and markdown) where [ANSWER] is the answer to the problem.
 
 ```
-
-</details>
 
 ## Usage
 
@@ -162,5 +156,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

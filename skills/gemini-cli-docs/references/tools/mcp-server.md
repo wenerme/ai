@@ -238,7 +238,6 @@ This follows the security principle that if a variable is explicitly configured
 by the user for a specific server, it constitutes informed consent to share that
 specific data with that server.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > Even when explicitly defined, you should avoid hardcoding secrets.
 > Instead, use environment variable expansion (e.g., `"MY_KEY": "$MY_KEY"`) to
@@ -285,7 +284,6 @@ When connecting to an OAuth-enabled server:
 
 #### Browser redirect requirements
 
-<!-- prettier-ignore -->
 > [!IMPORTANT]
 > OAuth authentication requires that your local machine can:
 >
@@ -581,7 +579,6 @@ every discovered MCP tool is assigned a strict namespace.
    [Special syntax for MCP tools](../reference/policy-engine.md#special-syntax-for-mcp-tools)
    in the Policy Engine documentation.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Do not use underscores (`_`) in your MCP server names (e.g., use
 > `my-server` rather than `my_server`). The policy parser splits Fully Qualified
@@ -1122,7 +1119,6 @@ command has no flags.
 gemini mcp list
 ```
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > For security, `stdio` MCP servers (those using the
 > `command` property) are only tested and displayed as "Connected" if the

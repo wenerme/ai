@@ -84,7 +84,6 @@ select * from tz_test;
 +---------------------------+
 ```
 
-
 ### 3. Daylight Saving Time
 
 Daylight Saving Time is essentially the actual time offset of a named time zone, which changes on certain dates.
@@ -205,13 +204,12 @@ Doris is currently compatible with importing data in various time zones into Dor
 
 **To sum up, the best practice for dealing with time zone issues is:**
 
-:::info Best Practices
+> **info**: Best Practices
 1. Confirm the time zone represented by the cluster and set `time_zone` before use, and do not change it after that.
 
 2. Set header `timezone` to be consistent with cluster `time_zone` when importing.
 
 3. For absolute time, import without time zone suffix; for time with time zone, import with specific time zone suffix, and it will be converted to Doris `time_zone` time zone after import.
-:::
 
 ### Daylight Saving Time
 

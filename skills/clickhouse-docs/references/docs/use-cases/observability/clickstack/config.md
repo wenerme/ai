@@ -1,19 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/config
 title: 'Configuration Options'
-pagination_prev: null
-pagination_next: null
 description: 'Configuration options for ClickStack - The ClickHouse Observability Stack'
 keywords: ['ClickStack configuration', 'observability configuration', 'HyperDX settings', 'collector configuration', 'environment variables']
 doc_type: 'reference'
 ---
-
-import Image from '@theme/IdealImage';
-import hyperdx_25 from '@site/static/images/use-cases/observability/hyperdx-25.png';
-import hyperdx_26 from '@site/static/images/use-cases/observability/hyperdx-26.png';
-import highlighted_attributes_config from '@site/static/images/use-cases/observability/hyperdx-highlighted-attributes-config.png';
-import highlighted_attributes from '@site/static/images/use-cases/observability/hyperdx-highlighted-attributes.png';
-import highlighted_attributes_search from '@site/static/images/use-cases/observability/hyperdx-highlighted-attributes-search.png';
 
 The following configuration options are available for each component of ClickStack:
 
@@ -115,9 +105,7 @@ Each of these sources require at least one table specified on creation and a set
 
 If using the [default OpenTelemetry (OTel) schema](/observability/integrating-opentelemetry#out-of-the-box-schema) distributed with ClickStack, these columns can be automatically inferred for each of the sources. If [modifying the schema](#clickhouse) or using a custom schema, users are required to specify and update these mappings.
 
-:::note
-The default schema for ClickHouse distributed with ClickStack is the schema created by the [ClickHouse exporter for the OTel collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter). These column names correlate with the OTel official specification documented [here](https://opentelemetry.io/docs/specs/otel/logs/data-model/).
-:::
+> **note**: The default schema for ClickHouse distributed with ClickStack is the schema created by the [ClickHouse exporter for the OTel collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter). These column names correlate with the OTel official specification documented [here](https://opentelemetry.io/docs/specs/otel/logs/data-model/).
 
 The following settings are available for each source:
 
@@ -241,9 +229,8 @@ For example, below is the Logs source configured with correlated sources:
 
 ### Application configuration settings {#application-configuration-settings}
 
-:::note HyperDX in ClickHouse Cloud
+> **note**: HyperDX in ClickHouse Cloud
 These settings can't be modified when HyperDX is managed in ClickHouse Cloud.
-:::
 
 - `HYPERDX_API_KEY`
   - **Default:** None (required)

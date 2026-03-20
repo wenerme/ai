@@ -1,12 +1,9 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Bedrock Guardrails
 
-:::tip ⚡️
+> **tip**: ⚡️
 If you haven't set up or authenticated your Bedrock provider yet, see the [Bedrock Provider Setup & Authentication Guide](../../providers/bedrock.md).
-:::
 
 LiteLLM supports Bedrock guardrails via the [Bedrock ApplyGuardrail API](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ApplyGuardrail.html). 
 
@@ -41,7 +38,6 @@ guardrails:
 
 ### 2. Start LiteLLM Gateway 
 
-
 ```shell
 litellm --config config.yaml --detailed_debug
 ```
@@ -49,9 +45,6 @@ litellm --config config.yaml --detailed_debug
 ### 3. Test request 
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
-
-<Tabs>
-<TabItem label="Unsuccessful call" value = "not-allowed">
 
 Expect this to fail since since `ishaan@berri.ai` in the request is PII
 
@@ -119,10 +112,6 @@ Expected response on failure
 
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call " value = "allowed">
-
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -135,11 +124,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "guardrails": ["bedrock-pre-guard"]
   }'
 ```
-
-</TabItem>
-
-
-</Tabs>
 
 ## PII Masking with Bedrock Guardrails
 
@@ -241,9 +225,6 @@ guardrails:
 
 ### Behavior Comparison
 
-<Tabs>
-<TabItem label="With Exceptions (Default)" value="with-exceptions">
-
 When `disable_exception_on_block: false` (default):
 
 ```shell
@@ -277,10 +258,6 @@ curl -i http://localhost:4000/v1/chat/completions \
   }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Without Exceptions" value="without-exceptions">
 
 When `disable_exception_on_block: true`:
 
@@ -319,6 +296,3 @@ curl -i http://localhost:4000/v1/chat/completions \
   }
 }
 ```
-
-</TabItem>
-</Tabs>

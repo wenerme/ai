@@ -1,7 +1,5 @@
 ---
-sidebar_label: 'Loading data'
 title: 'Loading data from BigQuery to ClickHouse'
-slug: /migrations/bigquery/loading-data
 description: 'How to load data from BigQuery to ClickHouse'
 keywords: ['migrate', 'migration', 'migrating', 'data', 'etl', 'elt', 'BigQuery']
 doc_type: 'guide'
@@ -108,11 +106,10 @@ FROM s3Cluster(
 
 The `ACCESS_ID` and `SECRET` used in the above query is your [HMAC key](https://cloud.google.com/storage/docs/authentication/hmackeys) associated with your GCS bucket.
 
-:::note Use `ifNull` when exporting nullable columns
+> **note**: Use `ifNull` when exporting nullable columns
 In the above query, we use the [`ifNull` function](/sql-reference/functions/functions-for-nulls#ifNull) with the `some_text` column to insert data into our ClickHouse table with a default value. You can also make your columns in ClickHouse [`Nullable`](/sql-reference/data-types/nullable), but this isn't recommended as it may affect negatively performance.
 
 Alternatively, you can `SET input_format_null_as_default=1` and any missing or NULL values will be replaced by default values for their respective columns, if those defaults are specified.
-:::
 
 ## Testing successful data export {#3-testing-successful-data-export}
 

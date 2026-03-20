@@ -86,7 +86,6 @@ illustrate:
 24. transactions : used to view the transaction details of the specified transaction id, equivalent to [SHOW TRANSACTION](../transaction/SHOW-TRANSACTION)
 25. trash: This statement is used to view the space occupied by garbage data in the backend. Equivalent to [SHOW TRASH](../table-and-view/data-and-status-management/SHOW-TRASH)
 
-
 ##   Detailed Description
 1. /binlog
 
@@ -255,7 +254,6 @@ Notes:
 	2 rows in set
 	```
 
-
 	View replica balance migration issues
 
 	```sql
@@ -278,4 +276,3 @@ Notes:
     SHOW, PROC
 
 ## Best Practice
-

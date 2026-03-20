@@ -41,4 +41,3 @@ The user executing this SQL command must have at least the following privileges:
    ```sql
    DROP INDEX IF EXISTS index_name ON table1 ;
    ```
-

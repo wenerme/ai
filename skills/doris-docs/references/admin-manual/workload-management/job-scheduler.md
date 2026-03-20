@@ -34,7 +34,6 @@ Doris Job Scheduler is a task management system based on preset schedules, capab
 
 **Related Documentation:** [CREATE-JOB](../../sql-manual/sql-statements/job/CREATE-JOB.md)
 
-
 ## Syntax Explanation
 
 A valid Job statement must include the following:
@@ -85,7 +84,6 @@ This statement creates a job named `my_job` that executes once every minute. The
 
 Create a one-time Job: Execute once at `2025-01-01 00:00:00`, importing data from `db2.tbl2` into `db1.tbl1`.
 
-
 ```sql
 CREATE JOB my_job ON SCHEDULE AT '2025-01-01 00:00:00' DO INSERT INTO db1.tbl1 SELECT * FROM db2.tbl2;
 ```
@@ -111,7 +109,6 @@ CREATE JOB my_job ON SCHEDULE AT current_timestamp DO INSERT INTO db1.tbl1 SELEC
 ## Data Automatic Synchronization Based on Catalog and Job Scheduler
 
 Taking an e-commerce scenario as an example, users often need to extract business data from MySQL and synchronize this data into Doris for data analysis, thereby supporting precise marketing activities. The Job Scheduler can work in conjunction with the Multi Catalog data lake capability to efficiently complete periodic data synchronization across data sources.
-
 
 ```sql
 CREATE TABLE IF NOT EXISTS user.activity (
@@ -209,7 +206,6 @@ For one-time events, the event definition is deleted after the task is scheduled
 
 For transactional tasks, the Job Scheduler can ensure that the execution results of transactional tasks match expectations through strong associations with transactions and the transaction callback mechanism, thus ensuring data integrity and consistency.
 
-
 ## Future Plans
 
 Doris Job Scheduler is a powerful and flexible task scheduling tool, an essential feature in data processing. In addition to common use cases such as data lake analytics and internal ETL, Job Scheduler also plays a key role in the implementation of asynchronous materialized views. An asynchronous materialized view is a precomputed and stored result set, where the frequency of data updates is closely related to changes in the source tables. When the source table data is updated frequently, periodic refreshing of the materialized view is required to keep its data up-to-date. In version 2.1, we cleverly utilized the JOB scheduling feature to ensure the consistency between materialized views and source table data, significantly reducing the cost of manual intervention.
@@ -218,5 +214,3 @@ In the future, Doris Job Scheduler will also support the following features:
 - Support for viewing the distribution of tasks executed during different time periods via the UI.
 - Support for JOB workflow orchestration, i.e., DAG JOB. This means we can implement internal data warehouse task orchestration, and with the Catalog functionality, it will more efficiently complete data processing and analysis tasks.
 - Support for scheduling import tasks, UPDATE, and DELETE operations.
-
-

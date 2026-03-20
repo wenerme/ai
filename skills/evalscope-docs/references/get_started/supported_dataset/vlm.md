@@ -83,4 +83,3 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/visulogic.md
 ../../benchmarks/vstar_bench.md
 ../../benchmarks/zerobench.md
-:::

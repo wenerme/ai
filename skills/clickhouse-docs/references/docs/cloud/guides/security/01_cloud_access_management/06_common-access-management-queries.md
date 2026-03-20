@@ -1,19 +1,14 @@
 ---
-sidebar_label: 'Common access management queries'
 title: 'Common access management queries'
-slug: /cloud/security/common-access-management-queries
 description: 'This article shows the basics of defining SQL users and roles and applying those privileges and permissions to databases, tables, rows, and columns.'
 keywords: ['ClickHouse Cloud', 'access management']
 doc_type: 'guide'
 ---
 
-import CommonUserRolesContent from '@site/docs/_snippets/_users-and-roles-common.md';
-
 # Common access management queries
 
-:::tip Self-managed
+> **tip**: Self-managed
 If you're working with self-managed ClickHouse please see [SQL users and roles](/guides/sre/user-management/index.md).
-:::
 
 This article shows the basics of defining SQL users and roles and applying those privileges and permissions to databases, tables, rows, and columns.
 
@@ -32,11 +27,9 @@ IDENTIFIED WITH sha256_password BY 'P!@ssword42!';
 GRANT default_role TO clickhouse_admin;
 ```
 
-:::note
-When using the SQL Console, your SQL statements won't be run as the `default` user. Instead, statements will be run as a user named `sql-console:${cloud_login_email}`, where `cloud_login_email` is the email of the user currently running the query.
+> **note**: When using the SQL Console, your SQL statements won't be run as the `default` user. Instead, statements will be run as a user named `sql-console:${cloud_login_email}`, where `cloud_login_email` is the email of the user currently running the query.
 
 These automatically generated SQL Console users have the `default` role.
-:::
 
 ## Passwordless authentication {#passwordless-authentication}
 

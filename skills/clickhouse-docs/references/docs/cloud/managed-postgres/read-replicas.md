@@ -1,16 +1,9 @@
 ---
-slug: /cloud/managed-postgres/read-replicas
-sidebar_label: 'Read replicas'
 title: 'Read replicas'
 description: 'Scale read-heavy workloads with read replicas in ClickHouse Managed Postgres'
 keywords: ['read replicas', 'scalability', 'read scaling', 'postgres replicas', 'horizontal scaling']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import warehouseView from '@site/static/images/managed-postgres/warehouse-view.png';
-import readReplicaDialog from '@site/static/images/managed-postgres/read-replica-dialog.png';
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="read-replicas" />
 

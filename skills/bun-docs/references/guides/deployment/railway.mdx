@@ -1,7 +1,6 @@
 ---
 title: Deploy a Bun application on Railway
 description: Deploy Bun applications to Railway with this step-by-step guide covering CLI and dashboard methods, optional PostgreSQL setup, and automatic SSL configuration.
-sidebarTitle: Deploy on Railway
 mode: center
 ---
 
@@ -15,7 +14,7 @@ You can either follow this guide step-by-step or simply deploy the pre-configure
   href="https://railway.com/deploy/bun-react-postgres?referralCode=Bun&utm_medium=integration&utm_source=template&utm_campaign=bun"
   target="_blank"
 >
-  <img src="https://railway.com/button.svg" alt="Deploy on Railway" />
+  [Deploy on Railway]
 </a>
 
 ---
@@ -31,35 +30,27 @@ You can either follow this guide step-by-step or simply deploy the pre-configure
 
 ## Method 1: Deploy via CLI
 
-<Steps>
-<Step title="Step 1">
 Ensure sure you have the Railway CLI installed.
 
 ```bash terminal icon="terminal"
 bun install -g @railway/cli
 ```
 
-</Step>
-<Step title="Step 2">
 Log into your Railway account.
 
 ```bash terminal icon="terminal"
 railway login
 ```
 
-</Step>
-<Step title="Step 3">
 After successfully authenticating, initialize a new project.
 
 ```bash terminal icon="terminal"
 railway init
 ```
 
-</Step>
-<Step title="Step 4">
 After initializing the project, add a new database and service.
 
-<Note>Step 4 is only necessary if your application uses a database. If you don't need PostgreSQL, skip to Step 5.</Note>
+Step 4 is only necessary if your application uses a database. If you don't need PostgreSQL, skip to Step 5.
 
 ```bash terminal icon="terminal"
 # Add PostgreSQL database. Make sure to add this first!
@@ -69,8 +60,6 @@ railway add --database postgres
 railway add --service bun-react-db --variables DATABASE_URL=\${{Postgres.DATABASE_URL}}
 ```
 
-</Step>
-<Step title="Step 5">
 After the services have been created and connected, deploy the application to Railway. By default, services are only accessible within Railway's private network. To make your app publicly accessible, you need to generate a public domain.
 
 ```bash terminal icon="terminal"
@@ -81,28 +70,21 @@ railway up
 railway domain
 ```
 
-</Step>
-</Steps>
-
 Your app is now live! Railway auto-deploys on every GitHub push.
 
 ---
 
 ## Method 2: Deploy via Dashboard
 
-<Steps>
-<Step title="Step 1">
 Create a new project
 
 1. Go to [Railway Dashboard](http://railway.com/dashboard?utm_medium=integration&utm_source=docs&utm_campaign=bun)
 2. Click **"+ New"** → **"GitHub repo"**
 3. Choose your repository
 
-</Step>
-<Step title="Step 2">
 Add a PostgreSQL database, and connect this database to the service
 
-<Note>Step 2 is only necessary if your application uses a database. If you don't need PostgreSQL, skip to Step 3.</Note>
+Step 2 is only necessary if your application uses a database. If you don't need PostgreSQL, skip to Step 3.
 
 1. Click **"+ New"** → **"Database"** → **"Add PostgreSQL"**
 2. After the database has been created, select your service (not the database)
@@ -110,16 +92,11 @@ Add a PostgreSQL database, and connect this database to the service
 4. Click **"+ New Variable"** → **"Add Reference"**
 5. Select `DATABASE_URL` from postgres
 
-</Step>
-<Step title="Step 3">
 Generate a public domain
 
 1. Select your service
 2. Go to **"Settings"** tab
 3. Under **"Networking"**, click **"Generate Domain"**
-
-</Step>
-</Steps>
 
 Your app is now live! Railway auto-deploys on every GitHub push.
 

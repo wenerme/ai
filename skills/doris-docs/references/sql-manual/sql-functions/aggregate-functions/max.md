@@ -27,7 +27,6 @@ MAX(<expr>)
 Returns the same data type as the input expression.
 If all records in the group are NULL, the function returns NULL.
 
-
 ## Example
 
 ```sql

@@ -65,7 +65,6 @@ curl -L -X POST 'http://0.0.0.0:4000/mistral/v1/ocr' \
 }'
 ```
 
-
 ## Examples
 
 Anything after `http://0.0.0.0:4000/mistral` is treated as a provider-specific route, and handled accordingly.
@@ -76,7 +75,6 @@ Key Changes:
 |------------------------------------------------------|-----------------------------------|
 | `https://api.mistral.ai/v1`          | `http://0.0.0.0:4000/mistral` (LITELLM_PROXY_BASE_URL="http://0.0.0.0:4000")      |
 | `bearer $MISTRAL_API_KEY`                                 | `bearer anything` (use `bearer LITELLM_VIRTUAL_KEY` if Virtual Keys are setup on proxy)                    |
-
 
 ### **Example 1: OCR endpoint**
 
@@ -94,7 +92,6 @@ curl -L -X POST 'http://0.0.0.0:4000/mistral/v1/ocr' \
     }
 }'
 ```
-
 
 #### Direct Mistral API Call 
 
@@ -153,7 +150,6 @@ curl -L -X POST 'https://api.mistral.ai/v1/chat/completions' \
 }'
 ```
 
-
 ## Advanced - Use with Virtual Keys 
 
 Pre-requisites
@@ -196,7 +192,6 @@ Expected Response
 ```
 
 3. Test it! 
-
 
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/mistral/v1/chat/completions' \

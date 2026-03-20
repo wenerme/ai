@@ -18,7 +18,6 @@ Training Capability:
 | [Reranker](https://github.com/modelscope/ms-swift/tree/main/examples/train/reranker) | ✅                                                            | ✅    | ✅                                                            | ✅                                                            | ✅                                                            | ✅                                                            |
 | [Sequence Classification](https://github.com/modelscope/ms-swift/blob/main/examples/train/seq_cls) | ✅                                                            | ✅    | ✅                                                            | ✅                                                            | ✅                                                            | ✅                                                            |
 
-
 ## Environment Preparation
 
 Refer to the [SWIFT installation documentation](../GetStarted/SWIFT-installation.md) for recommended versions of third-party libraries.
@@ -73,7 +72,6 @@ Additionally, we offer a series of scripts to help you understand the training c
   - Long Text Training: Refer to [here](https://github.com/modelscope/ms-swift/tree/main/examples/train/sequence_parallel).
   - Lazy Tokenize: Performs tokenization during training instead of pre-training (for multi-modal models, this avoids the need to load all multi-modal resources before training), which can reduce preprocessing wait times and save memory. Refer to [here](https://github.com/modelscope/ms-swift/blob/main/examples/train/streaming/lazy_tokenize.sh).
 
-
 ### Tips:
 
 - When fine-tuning a base model to a chat model using LoRA technology with `swift sft`, you may sometimes need to manually set the template. Add the `--template default` parameter to avoid issues where the base model may fail to stop correctly due to encountering special characters in the dialogue template that it has not seen before. For more details, see [here](https://github.com/modelscope/ms-swift/tree/main/examples/train/base_to_chat).
@@ -102,7 +100,6 @@ result = sft_main(SftArguments(
 ))
 ```
 
-
 ### Using Web-UI
 
 If you want to use the interface for training, you can refer to the [Web-UI documentation](../GetStarted/Web-UI.md).
@@ -115,7 +112,6 @@ If you want to use the interface for training, you can refer to the [Web-UI docu
 ## Merge LoRA
 
 - See [here](https://github.com/modelscope/ms-swift/blob/main/examples/export/merge_lora.sh).
-
 
 ## Inference (Fine-Tuned Model)
 
@@ -164,7 +160,6 @@ swift infer \
     --val_dataset <dataset-path> \
     --max_batch_size 1
 ```
-
 
 Example of Inference on LoRA-Trained Model Using Python:
 
@@ -260,7 +255,6 @@ print(f'args.default_system: {args.system}')
 - If you have trained multiple LoRAs and need to switch among them, refer to the [inference](https://github.com/modelscope/ms-swift/blob/main/examples/infer/demo_lora.py) and [deployment](https://github.com/modelscope/ms-swift/tree/main/examples/deploy/lora) examples.
 - For grounding tasks in multi-modal models, you can refer to [here](https://github.com/modelscope/ms-swift/blob/main/examples/infer/demo_grounding.py).
 - For inference on a LoRA fine-tuned BERT model, see [here](https://github.com/modelscope/ms-swift/blob/main/examples/infer/demo_bert.py).
-
 
 ## Deployment (Fine-Tuned Model)
 

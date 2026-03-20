@@ -21,7 +21,6 @@ This guide shows you how to stream Microsoft 365 logs into **OpenObserve** using
     - [Visual Studio Code](https://code.visualstudio.com/) with Azure Functions extension installed  
     - OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../getting-started.md))
 
-
 ???  "Step 1: Create an Azure Event Hub"
 
     1. In the Azure Portal, search for **Event Hubs** → click **+ Add** to create a namespace.  
@@ -31,20 +30,20 @@ This guide shows you how to stream Microsoft 365 logs into **OpenObserve** using
         - **Pricing Tier:** select based on log volume  
         - Click **Review + Create**  
 
-         ![Event Hub Namespace](../images/security/m365/namespace.png){:style="height:500px"}
+         [Event Hub Namespace]{:style="height:500px"}
 
     2. Once the namespace is created, click **+ Event Hub** inside it.  
 
         - Name it (e.g., `o2`)  
         - Leave default settings for partitions and retention and Save  
 
-            ![Event Hub](../images/security/m365/create-eventhub.png){:style="height:500px"}
+            [Event Hub]{:style="height:500px"}
 
     3. Under the namespace, go to **Shared Access Policies** → create a policy with **Manage** permission.
 
         - Save and note the **Connection String**  
 
-       ![Shared Access Policy](../images/security/m365/shared-policy.png)
+       [Shared Access Policy]
 
 ???  "Step 2: Enable Microsoft 365 Diagnostics Logging"
 
@@ -57,8 +56,7 @@ This guide shows you how to stream Microsoft 365 logs into **OpenObserve** using
         - Destination: **Stream to an Event Hub**  
         - Provide the Event Hub namespace and connection string  
 
-        ![Diagnostics](../images/security/m365/diagnostic.png)
-
+        [Diagnostics]
 
 ???  "Step 3: Deploy Azure Functions to Process Logs"
 
@@ -69,7 +67,7 @@ This guide shows you how to stream Microsoft 365 logs into **OpenObserve** using
         - Select runtime stack and pricing tier  
         - Deploy to your subscription  
 
-        ![Function App](../images/security/m365/function-app.png){:style="height:500px"}
+        [Function App]{:style="height:500px"}
 
     2. Clone the prebuilt function code from our [repository](https://github.com/openobserve/azure-function-openobserve/tree/feature/o365).  
     3. Open in **VS Code** and configure:  
@@ -97,7 +95,6 @@ This guide shows you how to stream Microsoft 365 logs into **OpenObserve** using
 
 !!! tip "Pre-built Dashboards"
      You can [import dashboards from the OpenObserve community repository](https://github.com/openobserve/dashboards/tree/main/Microsoft_O365) for quick insights
-
 
 ## Troubleshooting
 

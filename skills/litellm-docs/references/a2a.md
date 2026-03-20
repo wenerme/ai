@@ -1,6 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
+
 
 # Agent Gateway (A2A Protocol) - Overview
 
@@ -11,9 +9,6 @@ Add A2A Agents on LiteLLM AI Gateway, Invoke agents in A2A Protocol, track reque
   style={{width: '80%', display: 'block', margin: '0', borderRadius: '8px'}}
 />
 
-<br />
-<br />
-
 | Feature | Supported | 
 |---------|-----------|
 | Supported Agent Providers | A2A, Vertex AI Agent Engine, LangGraph, Azure AI Foundry, Bedrock AgentCore, Pydantic AI |
@@ -22,12 +17,7 @@ Add A2A Agents on LiteLLM AI Gateway, Invoke agents in A2A Protocol, track reque
 | Streaming | ✅ |
 | [Iteration Budgets](a2a_iteration_budgets) | ✅ |
 
-
-:::tip
-
-LiteLLM follows the [A2A (Agent-to-Agent) Protocol](https://github.com/google/A2A) for invoking agents.
-
-:::
+> **tip**: LiteLLM follows the [A2A (Agent-to-Agent) Protocol](https://github.com/google/A2A) for invoking agents.
 
 ## Adding your Agent
 
@@ -45,7 +35,6 @@ You can add A2A-compatible agents through the LiteLLM Admin UI.
 />
 
 The URL should be the invocation URL for your A2A agent (e.g., `http://localhost:10001`).
-
 
 ### Add Azure AI Foundry Agents
 
@@ -87,7 +76,6 @@ The logs show:
   style={{width: '100%', display: 'block', margin: '2rem auto'}}
 />
 
-
 ## Forwarding LiteLLM Context Headers
 
 When LiteLLM invokes your A2A agent, it sends special headers that enable:
@@ -98,7 +86,6 @@ When LiteLLM invokes your A2A agent, it sends special headers that enable:
 |--------|---------|
 | `X-LiteLLM-Trace-Id` | Links all LLM calls to the same execution flow |
 | `X-LiteLLM-Agent-Id` | Attributes spend to the correct agent |
-
 
 To enable these features, your A2A server must **forward these headers** to any LLM calls it makes back to LiteLLM.
 
@@ -116,8 +103,6 @@ To enable these features, your A2A server must **forward these headers** to any 
 
 **Step 2: Forward headers to your LLM calls**
 Pass the extracted headers when making calls back to LiteLLM:
-<Tabs>
-<TabItem value="openai" label="OpenAI SDK" default>
 
 ```python from openai import OpenAI
 
@@ -134,9 +119,6 @@ response = client.chat.completions.create(
     messages=[{"role": "user", "content": "Hello"}]
 )
 ```
-</TabItem>
-
-<TabItem value="langchain" label="LangChain">
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -150,8 +132,6 @@ llm = ChatOpenAI(
     default_headers=headers,  # Forward headers
 )
 ```
-</TabItem>
-<TabItem value="litellm" label="LiteLLM SDK">
 
 ```python
 import litellm
@@ -165,8 +145,6 @@ response = litellm.completion(
     extra_headers=headers,  # Forward headers
 )
 ```
-</TabItem>
-<TabItem value="requests" label="HTTP (requests/httpx)">
 
 ```python
 import httpx
@@ -180,8 +158,6 @@ response = httpx.post(
     json={"model": "gpt-4o", "messages": [{"role": "user", "content": "Hello"}]}
 )
 ```
-</TabItem>
-</Tabs>
 
 ### Result
 

@@ -59,7 +59,6 @@ Configuration | Description
 `log_request` | Whether to output Doris Stream Load request and response metadata in logs for troubleshooting, default is true
 `log_progress_interval` | Time interval for outputting speed in logs, unit is seconds, default is 10, setting to 0 can disable this type of logging
 
-
 ## Usage Example
 
 ### TEXT Log Collection Example
@@ -126,7 +125,6 @@ The filebeat log collection configuration file, such as filebeat_doris_log.yml, 
 3. queue.mem configures the internal buffer queue of filebeat.
 4. Output is responsible for sending the data to the output destination.
 
-
 ```
 # 1. input is responsible for reading raw data
 # type: log is a log input plugin that can be configured to read the path of the log file. It uses the multiline feature to concatenate lines that do not start with a timestamp to the end of the previous line, achieving the effect of merging stacktraces with the main log. The log input saves the log content in the message field, and there are also some metadata fields such as agent.host, log.file.path.
@@ -190,7 +188,6 @@ output.doris:
      load_to_single_tablet: "true"
 ```
 
-
 **4. Running filebeat**
 
 ```
@@ -224,7 +221,6 @@ doris stream load response:
 
 total 11 MB 18978 ROWS, total speed 0 MB/s 632 R/s, last 10 seconds speed 1 MB/s 1897 R/s
 ```
-
 
 ### JSON Log Collection Example
 
@@ -271,13 +267,11 @@ Below is a sample of the data. Normally, each piece of data is on a single line,
 }
 ```
 
-
 **2. Table Creation**
 
 ```
 CREATE DATABASE log_db;
 USE log_db;
-
 
 CREATE TABLE github_events
 (

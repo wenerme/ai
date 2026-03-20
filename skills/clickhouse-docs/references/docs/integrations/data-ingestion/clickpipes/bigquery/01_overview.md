@@ -1,15 +1,8 @@
 ---
-sidebar_label: 'Overview'
 description: 'How to export data from BigQuery to ClickHouse Cloud using ClickPipes.'
-slug: /integrations/clickpipes/bigquery/overview
-sidebar_position: 1
 title: 'Integrating BigQuery with ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-import IntroClickPipe from '@site/docs/_snippets/clickpipes/bigquery/_intro.md';
-import cp_iam from '@site/static/images/integrations/data-ingestion/clickpipes/bigquery/cp_iam.png';
-import Image from '@theme/IdealImage';
 
 <IntroClickPipe/>
 
@@ -19,9 +12,7 @@ import Image from '@theme/IdealImage';
 
 The BigQuery ClickPipe will load selected tables in a BigQuery [dataset](https://docs.cloud.google.com/bigquery/docs/datasets-intro) into the ClickHouse destination tables in a single batch operation. Once the ingestion task completes, the ClickPipe stops automatically. The initial load ingestion process requires a user-provided Google Cloud Storage (GCS) bucket for staging. In the future, the intermediary bucket will be provided and managed by ClickPipes.
 
-:::note
-ClickPipes relies on batch extract jobs to fetch data from BigQuery into the staging GCS bucket. This operations incurs **no processing charges** in BigQuery.
-:::
+> **note**: ClickPipes relies on batch extract jobs to fetch data from BigQuery into the staging GCS bucket. This operations incurs **no processing charges** in BigQuery.
 
 ### CDC (Change Data Capture) {#cdc}
 

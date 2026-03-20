@@ -1,14 +1,10 @@
 ---
-slug: /materialized-view/incremental-materialized-view
 title: 'Incremental materialized view'
 description: 'How to use incremental materialized views to speed up queries'
 keywords: ['incremental materialized views', 'speed up queries', 'query optimization']
 score: 10000
 doc_type: 'guide'
 ---
-
-import materializedViewDiagram from '@site/static/images/materialized-view/materialized-view-diagram.png';
-import Image from '@theme/IdealImage';
 
 ## Background {#background}
 
@@ -170,9 +166,8 @@ Peak memory usage: 567.61 KiB.
 
 This has sped up our query from 0.133s to 0.004s – an over 25x improvement!
 
-:::important Important: `ORDER BY` = `GROUP BY`
+> **important**: Important: `ORDER BY` = `GROUP BY`
 In most cases the columns used in the `GROUP BY` clause of the Materialized Views transformation, should be consistent with those used in the `ORDER BY` clause of the target table if using the `SummingMergeTree` or `AggregatingMergeTree` table engines. These engines rely on the `ORDER BY` columns to merge rows with identical values during background merge operations. Misalignment between `GROUP BY` and `ORDER BY` columns can lead to inefficient query performance, suboptimal merges, or even data discrepancies.
-:::
 
 ### A more complex example {#a-more-complex-example}
 
@@ -374,9 +369,8 @@ For more information see the guide ["Cascading materialized views"](https://clic
 
 ## Materialized views and JOINs {#materialized-views-and-joins}
 
-:::note Refreshable Materialized Views
+> **note**: Refreshable Materialized Views
 The following applies to Incremental Materialized Views only. Refreshable Materialized Views execute their query periodically over the full target dataset and fully support JOINs. Consider using them for complex JOINs if a reduction in result freshness can be tolerated.
-:::
 
 Incremental Materialized views in ClickHouse fully support `JOIN` operations, but with one crucial constraint: **the materialized view only triggers on inserts to the source table (the left-most table in the query).** Right-side tables in JOINs don't trigger updates, even if their data changes. This behavior is especially important when building **Incremental** Materialized Views, where data is aggregated or transformed during insert time.
 
@@ -456,9 +450,8 @@ LEFT JOIN users AS u ON b.UserId = u.Id
 GROUP BY Day, b.UserId, u.DisplayName;
 ```
 
-:::note Grouping and Ordering Alignment
+> **note**: Grouping and Ordering Alignment
 The `GROUP BY` clause in the materialized view must include `DisplayName`, `UserId`, and `Day` to match the `ORDER BY` in the `SummingMergeTree` target table. This ensures rows are correctly aggregated and merged. Omitting any of these can lead to incorrect results or inefficient merges.
-:::
 
 If we now populate the badges, the view will be triggered - populating our `daily_badges_by_user` table.
 
@@ -517,9 +510,7 @@ WHERE DisplayName = 'gingerwizard'
 9 rows in set. Elapsed: 0.017 sec. Processed 32.77 thousand rows, 642.27 KB (1.96 million rows/s., 38.50 MB/s.)
 ```
 
-:::warning
-Notice the latency of the insert here. The inserted user row is joined against the entire `users` table, significantly impacting insert performance. We propose approaches to address this below in ["Using source table in filters and joins"](/materialized-view/incremental-materialized-view#using-source-table-in-filters-and-joins-in-materialized-views).
-:::
+> **warning**: Notice the latency of the insert here. The inserted user row is joined against the entire `users` table, significantly impacting insert performance. We propose approaches to address this below in ["Using source table in filters and joins"](/materialized-view/incremental-materialized-view#using-source-table-in-filters-and-joins-in-materialized-views).
 
 Conversely, if we insert a badge for a new user, followed by the row for the user, our materialized view will fail to capture the users' metrics. 
 
@@ -1080,9 +1071,8 @@ Enabling `parallel_view_processing=1` can significantly improve insert throughpu
 - **Increased insert pressure**: All Materialized Views are executed simultaneously, increasing CPU and memory usage. If each view performs heavy computation or JOINs, this can overload the system.
 - **Need for strict execution order**: In rare workflows where the order of view execution matters (e.g., chained dependencies), parallel execution may lead to inconsistent state or race conditions. While possible to design around this, such setups are fragile and may break with future versions.
 
-:::note Historical defaults and stability
+> **note**: Historical defaults and stability
 Sequential execution was the default for a long time, in part due to error handling complexities. Historically, a failure in one materialized view could prevent others from executing. Newer versions have improved this by isolating failures per block, but sequential execution still provides clearer failure semantics.
-:::
 
 In general, enable `parallel_view_processing=1` when:
 
@@ -1099,9 +1089,8 @@ Leave it disabled when:
 
 **Non-recursive** Common Table Expressions (CTEs) are supported in Materialized Views.
 
-:::note Common Table Expressions **aren't** materialized
+> **note**: Common Table Expressions **aren't** materialized
 ClickHouse doesn't materialize CTEs; instead, it substitutes the CTE definition directly into the query, which can lead to multiple evaluations of the same expression (if the CTE is used more than once).
-:::
 
 Consider the following example which computes daily activity for each post type.
 

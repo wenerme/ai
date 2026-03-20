@@ -101,7 +101,7 @@ curl http://localhost:4000/v1/chat/completions \
 
 Navigate to the **Logs** page in the LiteLLM Admin UI. You'll see the `user_api_key_project_id` tracked in the request metadata:
 
-![Project Spend Tracking](/img/project_spend.png)
+[Project Spend Tracking]
 
 As shown above, the spend logs metadata includes:
 - `"user_api_key_project_id": "e402a141-725a-4437-bff5-d47459189716"` - Links the request to your project

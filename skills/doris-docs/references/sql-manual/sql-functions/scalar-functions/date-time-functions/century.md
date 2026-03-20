@@ -57,5 +57,4 @@ SELECT CENTURY('10000-01-01') AS invalid_date;
 | NULL              |
 +-------------------+
 
-
 ```

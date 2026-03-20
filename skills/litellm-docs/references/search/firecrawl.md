@@ -134,4 +134,3 @@ Firecrawl supports advanced search operators:
 | intitle:    | Only returns results with a word in the title             | intitle:Firecrawl               |
 | allintitle: | Only returns results with multiple words in the title     | allintitle:firecrawl playground |
 | related:    | Only returns results related to a specific domain         | related:firecrawl.dev           |
-

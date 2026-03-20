@@ -10,9 +10,7 @@ Stream Load supports importing local files or data streams into Doris through th
 
 Stream Load is a synchronous import method that returns the import result after the import is executed, allowing you to determine the success of the import through the request response. Generally, users can use Stream Load to import files under 10GB. If the file is too large, it is recommended to split the file and then use Stream Load for importing. Stream Load can ensure the atomicity of a batch of import tasks, meaning that either all of them succeed or all of them fail.
 
-:::tip
-
-In comparison to single-threaded load using `curl`, Doris Streamloader is a client tool designed for loading data into Apache Doris. It reduces the ingestion latency of large datasets by its concurrent loading capabilities. It comes with the following features:
+> **tip**: In comparison to single-threaded load using `curl`, Doris Streamloader is a client tool designed for loading data into Apache Doris. It reduces the ingestion latency of large datasets by its concurrent loading capabilities. It comes with the following features:
 
 - **Parallel loading**: multi-threaded load for the Stream Load method. You can set the parallelism level using the `workers` parameter.
 - **Multi-file load:** simultaneously loading of multiple files and directories with one shot. It supports recursive file fetching and allows you to specify file names with wildcard characters.
@@ -21,7 +19,6 @@ In comparison to single-threaded load using `curl`, Doris Streamloader is a clie
 - **Automatic retry mechanism:** in case of loading failures, it can automatically retry a default number of times. If the loading remains unsuccessful, it will print the command for manual retry.
 
 See [Doris Streamloader](../../../ecosystem/doris-streamloader) for detailed instructions and best practices.
-:::
 
 ## User guide
 
@@ -36,7 +33,7 @@ When using Stream Load, it is necessary to initiate an import job through the HT
 
 The following figure shows the main flow of Stream Load, omitting some import details.
 
-![Stream load Basic principles](/images/stream-load.png)
+[Stream load Basic principles]
 
 1. The client submits a Stream Load imports job request to the FE (Frontend).
 2. The FE selects a BE (Backend) as the Coordinator node in a round-robin manner, which is responsible for scheduling the import job, and then returns an HTTP redirect to the client.
@@ -47,8 +44,6 @@ The following figure shows the main flow of Stream Load, omitting some import de
 ## Quick start
 
 Stream Load import data through the HTTP protocol. The following example uses the curl tool to demonstrate submitting an import job through Stream Load.
-
-
 
 ### Prerequisite check
 
@@ -186,12 +181,11 @@ curl --location-trusted -u <doris_user>:<doris_password> \
     -T streamload_example.json \
     -XPUT http://<fe_ip>:<fe_http_port>/api/testdb/test_streamload/_stream_load
 ```
-:::info Note
+> **info**: Note
 
 If the JSON file is not a JSON array but each line is a JSON object, add the headers `-H "strip_outer_array:false"` and `-H "read_json_by_line:true"`.
 
 If you need to load the JSON object at the root node of a JSON file, the jsonpaths should be specified as $., e.g., `-H "jsonpaths:[\"$.\"]`"
-:::
 
 ​	Stream Load is a synchronous method, where the result is directly returned to the user.
 
@@ -322,7 +316,7 @@ Parameter Description: The default timeout for Stream Load. The load job will be
 | jsonpaths                    | There are two ways to import JSON data format: Simple Mode and Matching Mode.  If no jsonpaths are specified, it is the simple mode that requires the JSON data to be of the object type.Matching mode used when the JSON data is relatively complex and requires matching the corresponding values through the jsonpaths parameter.In simple mode, the keys in JSON are required to correspond one-to-one with the column names in the table. For example, in the JSON data `{"k1":1, "k2":2, "k3":"hello"}`, k1, k2, and k3 correspond to the columns in the table respectively. |
 | strip_outer_array            | When `strip_outer_array` is set to true, it indicates that the JSON data starts with an array object and flattens the objects within the array. The default value is false. When the outermost layer of the JSON data is represented by `[]`, which denotes an array, `strip_outer_array` should be set to true. For example, with the following data, setting `strip_outer_array` to true will result in two rows of data being generated when imported into Doris: `[{"k1": 1, "v1": 2}, {"k1": 3, "v1": 4}]`. |
 | json_root                    | `json_root` is a valid jsonpath string that specifies the root node of a JSON document, with a default value of "". |
-| merge_type                   | The merge type of data. Three types are supported:<br/>- APPEND (default): Indicates that all data in this batch will be appended to existing data<br/>- DELETE: Indicates deletion of all rows with Keys matching this batch of data<br/>- MERGE: Must be used in conjunction with DELETE conditions. Data meeting DELETE conditions will be processed according to DELETE semantics, while the rest will be processed according to APPEND semantics<br/>For example, to specify merge mode as MERGE: `-H "merge_type: MERGE" -H "delete: flag=1"` |
+| merge_type                   | The merge type of data. Three types are supported:- APPEND (default): Indicates that all data in this batch will be appended to existing data- DELETE: Indicates deletion of all rows with Keys matching this batch of data- MERGE: Must be used in conjunction with DELETE conditions. Data meeting DELETE conditions will be processed according to DELETE semantics, while the rest will be processed according to APPEND semanticsFor example, to specify merge mode as MERGE: `-H "merge_type: MERGE" -H "delete: flag=1"` |
 | delete                       | It is only meaningful under MERGE, representing the deletion conditions for data. |
 | function_column.sequence_col | It is suitable only for the UNIQUE KEYS model. Within the same Key column, it ensures that the Value column is replaced according to the specified source_sequence column. The source_sequence can either be a column from the data source or an existing column in the table structure. |
 | fuzzy_parse                  | It is a boolean type. If set to true, the JSON will be parsed with the first row as the schema. Enabling this option can improve the efficiency of JSON imports, but it requires that the order of the keys in all JSON objects be consistent with the first line. The default is false and it is only used for JSON format. |
@@ -339,7 +333,7 @@ Parameter Description: The default timeout for Stream Load. The load job will be
 | escape                       | Specify the escape character. It is used to escape characters that are the same as the enclosure character within a field. For example, if the data is "a,'b,'c'", and the enclosure is "'", and you want "b,'c" to be parsed as a single field, you need to specify a single-byte escape character, such as "", and modify the data to "a,'b','c'". |
 | memtable_on_sink_node        | Whether to enable MemTable on DataSink node when loading data, default is false. |
 |unique_key_update_mode        | The update modes on Unique tables, currently are only effective for Merge-On-Write Unique tables. Supporting three types: `UPSERT`, `UPDATE_FIXED_COLUMNS`, and `UPDATE_FLEXIBLE_COLUMNS`. `UPSERT`: Indicates that data is loaded with upsert semantics; `UPDATE_FIXED_COLUMNS`: Indicates that data is loaded through partial updates; `UPDATE_FLEXIBLE_COLUMNS`: Indicates that data is loaded through flexible partial updates.|
-| partial_update_new_key_behavior | When performing partial column updates or flexible column updates on Unique tables, this parameter controls how new rows are handled. There are two types: `APPEND` and `ERROR`.<br/>- `APPEND`: Allows inserting new row data<br/>- `ERROR`: Fails and reports an error when inserting new rows |
+| partial_update_new_key_behavior | When performing partial column updates or flexible column updates on Unique tables, this parameter controls how new rows are handled. There are two types: `APPEND` and `ERROR`.- `APPEND`: Allows inserting new row data- `ERROR`: Fails and reports an error when inserting new rows |
 
 ### Load return value
 
@@ -1025,5 +1019,3 @@ The strict_mode attribute is used to set whether the import task runs in strict 
 ### Perform partial column updates/flexible partial update during import
 
 For how to express partial column updates during import, please refer to the [Partial Column Update](../../../data-operate/update/partial-column-update.md) documentation.
-
-

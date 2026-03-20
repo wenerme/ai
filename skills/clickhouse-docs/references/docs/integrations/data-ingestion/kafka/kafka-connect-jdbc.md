@@ -1,20 +1,13 @@
 ---
-sidebar_label: 'Kafka Connect JDBC Connector'
-sidebar_position: 4
-slug: /integrations/kafka/kafka-connect-jdbc
 description: 'Using JDBC Connector Sink with Kafka Connect and ClickHouse'
 title: 'JDBC Connector'
 doc_type: 'guide'
 keywords: ['kafka', 'kafka connect', 'jdbc', 'integration', 'data pipeline']
 ---
 
-import ConnectionDetails from '@site/docs/_snippets/_gather_your_details_http.mdx';
-
 # JDBC connector
 
-:::note
-This connector should only be used if your data is simple and consists of primitive data types e.g., int. ClickHouse specific types such as maps aren't supported.
-:::
+> **note**: This connector should only be used if your data is simple and consists of primitive data types e.g., int. ClickHouse specific types such as maps aren't supported.
 
 For our examples, we utilize the Confluent distribution of Kafka Connect.
 
@@ -41,11 +34,7 @@ For sending data to ClickHouse from Kafka, we use the Sink component of the conn
 
 Download and install the ClickHouse JDBC driver `clickhouse-jdbc-<version>-shaded.jar` from [here](https://github.com/ClickHouse/clickhouse-java/releases). Install this into Kafka Connect following the details [here](https://docs.confluent.io/kafka-connect-jdbc/current/#installing-jdbc-drivers). Other drivers may work but haven't been tested.
 
-:::note
-
-Common Issue: the docs suggest copying the jar to `share/java/kafka-connect-jdbc/`. If you experience issues with Connect finding the driver, copy the driver to `share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib/`. Or modify `plugin.path` to include the driver - see below.
-
-:::
+> **note**: Common Issue: the docs suggest copying the jar to `share/java/kafka-connect-jdbc/`. If you experience issues with Connect finding the driver, copy the driver to `share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib/`. Or modify `plugin.path` to include the driver - see below.
 
 #### 3. Prepare configuration {#3-prepare-configuration}
 

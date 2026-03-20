@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # OpenAI Moderation
 
@@ -20,9 +18,6 @@ import TabItem from '@theme/TabItem';
 ### 1. Define Guardrails on your LiteLLM config.yaml 
 
 Define your guardrails under the `guardrails` section:
-
-<Tabs>
-<TabItem value="config" label="Config.yaml">
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
@@ -52,18 +47,11 @@ guardrails:
 - `omni-moderation-latest` (default) - Latest multimodal moderation model
 - `text-moderation-latest` - Latest text-only moderation model
 
-</TabItem>
-
-<TabItem value="env" label="Environment Variables">
-
 Set your OpenAI API key:
 
 ```bash title="Setup Environment Variables"
 export OPENAI_API_KEY="your-openai-api-key"
 ```
-
-</TabItem>
-</Tabs>
 
 ### 2. Start LiteLLM Gateway 
 
@@ -72,9 +60,6 @@ litellm --config config.yaml --detailed_debug
 ```
 
 ### 3. Test request 
-
-<Tabs>
-<TabItem label="Blocked Request" value="blocked">
 
 Expect this to fail since the request contains harmful content:
 
@@ -116,10 +101,6 @@ Expected response on failure:
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call" value="allowed">
-
 ```shell
 curl -i http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -158,9 +139,6 @@ Expected response:
   }
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Advanced Configuration
 
@@ -309,4 +287,4 @@ The OpenAI Moderation API is **free to use** for content policy compliance. This
 For additional support:
 - Check the [OpenAI Moderation API documentation](https://platform.openai.com/docs/guides/moderation)
 - Review [LiteLLM Guardrails documentation](./quick_start)
-- Join our [Discord community](https://discord.gg/wuPM9dRgDw) 
+- Join our [Discord community](https://discord.gg/wuPM9dRgDw)

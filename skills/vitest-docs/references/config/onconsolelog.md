@@ -1,6 +1,5 @@
 ---
 title: onConsoleLog | Config
-outline: deep
 ---
 
 # onConsoleLog <CRoot />

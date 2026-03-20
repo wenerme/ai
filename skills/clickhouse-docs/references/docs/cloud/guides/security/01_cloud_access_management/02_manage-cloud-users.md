@@ -1,21 +1,9 @@
 ---
-sidebar_label: 'Manage cloud users'
-slug: /cloud/security/manage-cloud-users
 title: 'Manage cloud users'
 description: 'This page describes how administrators can add users, manage assignments, and remove users'
 doc_type: 'guide'
 keywords: ['cloud users', 'access management', 'security', 'permissions', 'team management']
 ---
-
-import Image from '@theme/IdealImage';
-import step_1 from '@site/static/images/cloud/guides/sql_console/org_level_access/1_org_settings.png'
-import step_2 from '@site/static/images/cloud/guides/sql_console/org_level_access/2_org_settings.png'
-import step_3 from '@site/static/images/cloud/guides/sql_console/org_level_access/3_org_settings.png'
-import step_4 from '@site/static/images/cloud/guides/sql_console/org_level_access/4_org_settings.png'
-import step_5 from '@site/static/images/cloud/guides/sql_console/org_level_access/5_org_settings.png'
-import step_6 from '@site/static/images/cloud/guides/sql_console/org_level_access/6_org_settings.png'
-import step_7 from '@site/static/images/cloud/guides/sql_console/org_level_access/7_org_settings.png'
-import EnterprisePlanFeatureBadge from '@theme/badges/EnterprisePlanFeatureBadge'
 
 This guide is intended for users with the Organization Admin role in ClickHouse Cloud.
 
@@ -98,9 +86,8 @@ Save your changes with the `Save changes` button at the bottom of the tab:
 </VerticalStepper>
 
 ## Remove a user {#remove-user}
-:::note Remove SAML users
+> **note**: Remove SAML users
 SAML users that have been unassigned from the ClickHouse application in your identity provider aren't able to log in to ClickHouse Cloud. The account isn't removed from the console and will need to be manually removed.
-:::
 
 Follow the steps below to remove a user. 
 

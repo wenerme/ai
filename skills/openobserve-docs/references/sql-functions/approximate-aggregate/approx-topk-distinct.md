@@ -60,9 +60,9 @@ FROM (
 ORDER BY distinct_user_agent_count DESC
 ```
 **Result**
-<br>
-This query using approx_topk_distinct() with unnest() returns a flat result, where each row represents a value from field1 and its corresponding approximate distinct count from field2: <br>
-![approx_topk_distinct](../../images/approx-topk-distinct.png)
+
+This query using approx_topk_distinct() with unnest() returns a flat result, where each row represents a value from field1 and its corresponding approximate distinct count from field2: 
+[approx_topk_distinct]
 
 ## Performance Considerations
 The `approx_topk_distinct()` function is designed for high-cardinality fields and large datasets. It uses the same distributed and memory-efficient architecture as `approx_topk()`.
@@ -74,9 +74,5 @@ For details on how this approach compares to traditional GROUP BY queries in ter
 ## Limitations
 The following are the known limitations of `approx_topk_distinct()` function:
 
-
 - Results are approximate, not guaranteed to be exact. 
 - Accuracy depends on data distribution across partitions.
-
-
-

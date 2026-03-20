@@ -41,7 +41,7 @@ refs:
 
 Alert lists allow you to display a list of important alerts that you want to track. You can configure the alert list to show the current state of your alert, such as firing, pending, or normal. Learn more about alerts in [Grafana Alerting overview](ref:grafana-alerting-overview).
 
-![An alert list visualization](/media/docs/grafana/panels-visualizations/screenshot-alert-list-v11.3.png)
+[An alert list visualization]
 
 On each dashboard load, this visualization queries the alert list, always providing the most up-to-date results.
 
@@ -65,8 +65,6 @@ Once you’ve [created a dashboard](ref:create-dashboard), the following video s
 
 Use the following options to refine your alert list visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | View mode  | Choose between **List** to display alerts in a detailed list format with comprehensive information, or **Stat** to show alerts as a summarized single-value statistic.  |
@@ -74,8 +72,6 @@ Use the following options to refine your alert list visualization.
 | Max items | Sets the maximum number of alerts to list. By default, Grafana sets this value to 10. |
 | [Sort order](#sort-order) | Select how to order the alerts displayed. |
 | Alerts linked to this dashboard | Toggle the switch on to only show alerts from the dashboard the alert list is in. |
-
-<!-- prettier-ignore-end -->
 
 #### Sort order
 
@@ -98,8 +94,6 @@ Select how to order the alerts displayed. Choose from:
 
 These options allow you to limit alerts shown to only those that match the query, folder, or tags you choose.
 
-<!-- prettier-ignore-start -->
-
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | Alert name | Filter alerts by name. |
@@ -112,8 +106,6 @@ These options allow you to limit alerts shown to only those that match the query
 
 Choose which alert states to display in this visualization.
 
-<!-- prettier-ignore-start -->
-
 | Option     | Description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | Alerting / Firing | Shows alerts that are currently active and triggering an alert condition. |
@@ -121,5 +113,3 @@ Choose which alert states to display in this visualization.
 | No Data | Shows alerts where the data source is not returning any data, which could indicate an issue with data collection. |
 | Normal | Shows alerts that are in a normal or resolved state, where no alert condition is currently met. |
 | Error | Shows alerts where an error has occurred, typically related to an issue in the alerting process. |
-
-<!-- prettier-ignore-end -->

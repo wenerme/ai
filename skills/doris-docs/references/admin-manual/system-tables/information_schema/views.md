@@ -12,9 +12,7 @@ Stores all view information.
 
 ## Database
 
-
 `information_schema`
-
 
 ## Table Information
 

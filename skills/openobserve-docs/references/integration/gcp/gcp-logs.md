@@ -23,13 +23,12 @@ The integration flow is: **Google Cloud Logs → Log Router Sink → Pub/Sub →
     1. In OpenObserve: go to **Data Sources → Recommended → GCP**
     2. Copy the ingestion URL and API Key
 
-    ![Get OpenObserve GCP Endpoint](image.png)
+    [Get OpenObserve GCP Endpoint]
 
     Example format:
     ```
     https://api.openobserve.ai/gcp/<org>/<stream>/_sub?API-Key=<YOUR_API_KEY>
     ```
-
 
 ??? "Step 2: Create a Pub/Sub Topic"
 
@@ -54,7 +53,7 @@ The integration flow is: **Google Cloud Logs → Log Router Sink → Pub/Sub →
     4. Enter the **OpenObserve ingestion URL** from Step 1 as the Push endpoint
     5. Click **Create**
 
-    ![Create Pub/Sub Subscription](../images/gcp/create-subscription.png)
+    [Create Pub/Sub Subscription]
 
     **Using gcloud CLI**
     ```bash
@@ -62,7 +61,6 @@ The integration flow is: **Google Cloud Logs → Log Router Sink → Pub/Sub →
       --topic=my-log-topic \
       --push-endpoint="https://api.openobserve.ai/gcp/myorg/mystream/_sub?API-Key=<YOUR_API_KEY>"
     ```
-
 
 ??? "Step 4: Create a Log Router Sink"
 
@@ -108,7 +106,6 @@ The integration flow is: **Google Cloud Logs → Log Router Sink → Pub/Sub →
     2. In OpenObserve, go to **Logs → select stream** (the one you used in the ingestion URL)
     3. Set **time range** and **Run Query**. You should see incoming GCP logs in real time
 
-
 ## Troubleshooting
 
 **No logs in OpenObserve?**
@@ -118,4 +115,3 @@ The integration flow is: **Google Cloud Logs → Log Router Sink → Pub/Sub →
 - Ensure the Log Router service account has **Pub/Sub Publisher** role.
 - Look in **Pub/Sub → Subscriptions → Metrics** to confirm messages are being delivered.
 - Check **OpenObserve ingestion page** for error responses.
-

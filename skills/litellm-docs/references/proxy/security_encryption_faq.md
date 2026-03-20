@@ -351,4 +351,3 @@ litellm --config config.yaml
 - **Secret Management:** https://docs.litellm.ai/docs/secret
 
 For security inquiries: support@berri.ai
-

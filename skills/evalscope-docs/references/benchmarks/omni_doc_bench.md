@@ -1,6 +1,5 @@
 # OmniDocBench
 
-
 ## Overview
 
 OmniDocBench is an evaluation dataset for diverse document parsing in real-world scenarios, covering 9 document types, 4 layout types, and 3 language types with 1,355 PDF pages.
@@ -27,7 +26,6 @@ OmniDocBench is an evaluation dataset for diverse document parsing in real-world
 - Requires: apted, distance, lxml, Polygon3, zss, rapidfuzz packages
 - Output format: Markdown with LaTeX formulas and HTML tables
 
-
 ## Properties
 
 | Property | Value |
@@ -39,7 +37,6 @@ OmniDocBench is an evaluation dataset for diverse document parsing in real-world
 | **Metrics** | `text_block`, `display_formula`, `table`, `reading_order` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `train` |
-
 
 ## Data Statistics
 
@@ -57,7 +54,6 @@ OmniDocBench is an evaluation dataset for diverse document parsing in real-world
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 516x729 - 10142x14342 |
 | Formats | jpeg |
-
 
 ## Sample Example
 
@@ -611,5 +607,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

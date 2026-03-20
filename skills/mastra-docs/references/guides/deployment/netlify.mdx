@@ -3,24 +3,17 @@ title: "Deploy Mastra to Netlify | Deployment"
 description: "Learn how to deploy a Mastra application to Netlify"
 ---
 
-import Steps from "@site/src/components/Steps";
-import StepItem from "@site/src/components/StepItem";
-
 # Deploy Mastra to Netlify
 
 Use `@mastra/deployer-netlify` to deploy your Mastra server as serverless functions on Netlify. The deployer bundles your code and generates a `.netlify` directory conforming to Netlify's [frameworks API](https://docs.netlify.com/build/frameworks/frameworks-api/#netlifyv1functions), ready to deploy.
 
-:::info
-This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
-:::
+> **info**: This guide covers deploying the [Mastra server](/docs/server/mastra-server). If you're using a [server adapter](/docs/server/server-adapters) or [web framework](/docs/deployment/web-framework), deploy the way you normally would for that framework.
 
 ## Before you begin
 
 You'll need a [Mastra application](/guides/getting-started/quickstart) and a [Netlify](https://www.netlify.com/) account.
 
-:::warning
-Netlify Functions use an ephemeral filesystem, so any storage you configure (including observability storage) must be hosted externally. If you're using [LibSQLStore](/reference/storage/libsql) with a file URL, switch to a remotely hosted database.
-:::
+> **warning**: Netlify Functions use an ephemeral filesystem, so any storage you configure (including observability storage) must be hosted externally. If you're using [LibSQLStore](/reference/storage/libsql) with a file URL, switch to a remotely hosted database.
 
 ## Installation
 
@@ -54,7 +47,6 @@ Create a `netlify.toml` file with the following contents in your project root:
 
 After setting up your project, push it to your remote Git provider of choice (e.g. GitHub).
 
-<Steps>
   <StepItem>
     Connect your repository to Netlify. During the setup process, Netlify will detect your `netlify.toml` file and set the build command to `mastra build`.
 
@@ -88,4 +80,3 @@ After setting up your project, push it to your remote Git provider of choice (e.
     Set up [authentication](/docs/server/auth) before exposing your endpoints publicly.
     :::
   </StepItem>
-</Steps>

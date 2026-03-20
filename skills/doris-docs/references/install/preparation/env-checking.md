@@ -49,7 +49,6 @@ Doris does not have strict memory limits. Generally, for production environments
 | FE        | At least 16GB recommended.        |
 | BE        | Memory should be at least 4 times the number of CPU cores (for example, for a 16-core machine, at least 64GB memory is recommended). Better performance can be achieved with memory 8 times the number of CPU cores. |
 
-
 ### Storage Check
 
 Doris allows data to be stored on SSD, HDD, or object storage during deployment.
@@ -111,7 +110,6 @@ In the Doris cluster, FE (Frontend) is mainly used for metadata storage, includi
 | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | FE        | It is recommended to reserve more than 100 GB of storage space, using SSD disks.                                      |
 | BE        | Doris uses LZ4 compression by default. The compression ratio is around 0.3 - 0.5. Disk space should be calculated as total data volume * 3 (for 3 replicas), and 40% of the space should be reserved for backend compaction and temporary data storage. |
-
 
 ## Java Environment Check
 

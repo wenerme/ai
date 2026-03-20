@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Javelin Guardrails
 
@@ -64,9 +62,6 @@ litellm --config config.yaml --detailed_debug
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
-<Tabs>
-<TabItem label="Prompt Injection Detection" value = "prompt-injection">
-
 This will be blocked due to prompt injection attempt
 
 ```shell showLineNumbers title="Curl Request"
@@ -91,10 +86,6 @@ Expected response on failure - user message gets replaced with reject prompt
   ]
 }
 ```
-
-</TabItem>
-
-<TabItem label="Trust & Safety Violation" value = "trust-safety">
 
 This will be blocked due to trust & safety violation
 
@@ -121,10 +112,6 @@ Expected response on failure
 }
 ```
 
-</TabItem>
-
-<TabItem label="Language Detection" value = "language-detection">
-
 This will be blocked due to language policy violation
 
 ```shell showLineNumbers title="Curl Request"
@@ -150,10 +137,6 @@ Expected response on failure
 }
 ```
 
-</TabItem>
-
-<TabItem label="Successful Call" value = "allowed">
-
 ```shell showLineNumbers title="Curl Request"
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -166,10 +149,6 @@ curl -i http://localhost:4000/v1/chat/completions \
     "guardrails": ["javelin-prompt-injection"]
   }'
 ```
-
-</TabItem>
-
-</Tabs>
 
 ## Supported Guardrail Types
 

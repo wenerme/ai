@@ -1,18 +1,9 @@
 ---
-slug: /use-cases/observability/clickstack/deployment/all-in-one
 title: 'All in one'
-pagination_prev: null
-pagination_next: null
-sidebar_position: 0
 description: 'Deploying ClickStack Open Source with All In One - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack Open Source ', 'observability', 'all-in-one', 'deployment']
 ---
-
-import JSONSupport from '@site/docs/use-cases/observability/clickstack/deployment/_snippets/_json_support.md';
-import Image from '@theme/IdealImage';
-import hyperdx_login from '@site/static/images/use-cases/observability/hyperdx-login.png';
-import hyperdx_logs from '@site/static/images/use-cases/observability/hyperdx-logs.png';
 
 This comprehensive Docker image bundles all ClickStack Open Source components:
 
@@ -29,7 +20,6 @@ This option includes authentication, enabling the persistence of dashboards, ale
 * Local testing of the full stack
 
 ## Deployment steps {#deployment-steps}
-<br/>
 
 <VerticalStepper headerLevel="h3">
 
@@ -41,9 +31,8 @@ The following will run an OpenTelemetry collector (on port 4317 and 4318) and th
 docker run -p 8080:8080 -p 4317:4317 -p 4318:4318 clickhouse/clickstack-all-in-one:latest
 ```
 
-:::note Image Name Update
+> **note**: Image Name Update
 ClickStack images are now published as `clickhouse/clickstack-*` (previously `docker.hyperdx.io/hyperdx/*`).
-:::
 
 ### Navigate to the HyperDX UI {#navigate-to-hyperdx-ui}
 

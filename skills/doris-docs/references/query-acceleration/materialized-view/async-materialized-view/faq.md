@@ -92,7 +92,6 @@ CREATE TABLE IF NOT EXISTS orders (
     ('2024-05-01') TO ('2024-06-30') INTERVAL 1 DAY
 ) DISTRIBUTED BY HASH(o_orderkey) BUCKETS 3 PROPERTIES ("replication_num" = "1");
 
-
 CREATE TABLE IF NOT EXISTS lineitem (
   l_orderkey INTEGER NOT NULL, 
   l_partkey INTEGER NOT NULL, 
@@ -172,7 +171,6 @@ When encountering data lakes that currently do not support retrieving version in
 
 For the progress of materialized view support for data lakes, please refer to[Data Lake Support Status.](./overview.md)
 
-
 ### Q15: Why is my partitioned materialized view always fully refreshed?
 The incremental refresh of a materialized view's partitions depends on version information from the base table partitions. If data in the base table partitions changes since the last refresh, the materialized view will refresh those corresponding partitions.
 If your partitioned materialized view is being fully refreshed, the possible reasons are:
@@ -239,7 +237,6 @@ Solution:
 If changes in lineitem or partsupp tables don't affect your materialized view,
 you can exclude these tables from triggering full refreshes by setting the `excluded_trigger_tables` property:
 `ALTER MATERIALIZED VIEW partition_mv set("excluded_trigger_tables"="lineitem,partsupp");`
-
 
 ## Queries and Transparent Rewriting
 

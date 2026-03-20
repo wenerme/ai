@@ -14,7 +14,7 @@ In recent versions, Apache Doris has deepened its integration with data lakes an
 - Starting from version 1.2, Apache Doris officially introduced the Multi-Catalog feature, achieving automatic metadata mapping and data access for various data sources, along with many performance optimizations for external data reading and query execution. It now fully possesses the ability to build a high-speed and user-friendly Lakehouse architecture.
 - In version 2.1, Apache Doris' Data Lakehouse architecture was significantly enhanced, strengthening the reading and writing capabilities of mainstream data lake formats (Hudi, Iceberg, Paimon, etc.), introducing compatibility with multiple SQL dialects, and seamless migration from existing systems to Apache Doris. For data science and large-scale data reading scenarios, Doris integrated the Arrow Flight high-speed reading interface, achieving a 100-fold improvement in data transfer efficiency.
 
-![Building lakehouse using Doris and Paimon](/images/lakehouse-architecture-for-doris-and-paimon.png)
+[Building lakehouse using Doris and Paimon]
 
 ## Apache Doris & Paimon
 
@@ -207,8 +207,6 @@ mysql> select * from customer where c_nationkey=1 limit 2;
 
 We conducted a simple test on the TPCDS 1000 dataset in Paimon (0.8) version, using Apache Doris 2.1.5 version and Trino 422 version, both with the Primary Key Table Read Optimized feature enabled.
 
-![](/images/quick-start/lakehouse-paimon-benchmark.PNG)
-
 From the test results, it can be seen that Doris' average query performance on the standard static test set is 3-5 times that of Trino. In the future, we will optimize the Deletion Vector to further improve query efficiency in real business scenarios.
 
 ## Query Optimization
@@ -248,4 +246,3 @@ mysql> explain verbose select * from customer where c_nationkey < 3;
 ```
 
 It can be seen that the table just updated by Flink SQL contains 4 shards, and all shards can be accessed through Native Reader (paimonNativeReadSplits=4/4). In addition, the hasDeletionVector property of the first shard is true, indicating that the shard has a corresponding Deletion Vector, and data will be filtered according to the Deletion Vector when reading.
-

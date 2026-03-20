@@ -1,6 +1,5 @@
 ---
 title: watchTriggerPatterns | Config
-outline: deep
 ---
 
 # watchTriggerPatterns <CRoot /> <Version>3.2.0</Version>
@@ -29,6 +28,4 @@ export default defineConfig({
 })
 ```
 
-::: warning
-Returned files should be either absolute or relative to the root. Note that this is a global option, and it cannot be used inside of [project](/guide/projects) configs.
-:::
+> **warning**: Returned files should be either absolute or relative to the root. Note that this is a global option, and it cannot be used inside of [project](/guide/projects) configs.

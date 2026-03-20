@@ -1,18 +1,10 @@
 ---
-slug: /getting-started/quick-start/oss
-sidebar_label: 'OSS'
-sidebar_position: 2
 keywords: ['getting started', 'quick start', 'beginner-friendly']
 title: 'ClickHouse OSS quick start'
 description: 'ClickHouse Quick Start guide'
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-import {VerticalStepper} from '@clickhouse/click-ui/bundled';
 
 # ClickHouse OSS quick start
 
@@ -30,15 +22,12 @@ the [WSL](https://learn.microsoft.com/en-us/windows/wsl/about). The simplest way
 following `curl` command. It determines if your operating system is supported,
 then downloads an appropriate ClickHouse binary built from master branch.
 
-:::note
-We recommend running the command below from a new and empty subdirectory as
+> **note**: We recommend running the command below from a new and empty subdirectory as
 some configuration files will be created in the directory the binary is located
 in the first time ClickHouse server is run.
 
 The script below isn't the recommended way to install ClickHouse for production.
 If you're looking to install a production instance of ClickHouse, please see the [install page](/install).
-:::
-
 ```bash
 curl https://clickhouse.com/ | sh
 ```
@@ -55,10 +44,8 @@ sudo ./clickhouse install
 
 At this stage, you can ignore the prompt to run the `install` command.
 
-:::note
-For Mac users: If you're getting errors that the developer of the binary can't
+> **note**: For Mac users: If you're getting errors that the developer of the binary can't
 be verified, please see ["Fix the Developer Verification Error in MacOS"](https://clickhouse.com/docs/knowledgebase/fix-developer-verification-error-in-macos).
-:::
 
 ## Start the server
 
@@ -158,8 +145,7 @@ and [integrations](/integrations) for ingesting data. We have some examples in t
 below, or you can check out our [Integrations](/integrations) page for a long list of
 technologies that integrate with ClickHouse.
 
-<Tabs groupId="read_data">
-    <TabItem value="S3" label="S3" default>
+    
 
         Use the [`s3` table function](/sql-reference/table-functions/s3.md) to
         read files from S3. It's a table function - meaning that the result is a table
@@ -197,9 +183,9 @@ technologies that integrate with ClickHouse.
         ```
 
         View our [collection of AWS S3 documentation pages](/integrations/data-ingestion/s3/index.md) for lots more details and examples of using S3 with ClickHouse.
-        <br/>
-    </TabItem>
-    <TabItem value="GCS" label="GCS">
+        
+    
+    
 
         The [`s3` table function](/sql-reference/table-functions/s3.md) used for
         reading data in AWS S3 also works on files in Google Cloud Storage.
@@ -219,9 +205,9 @@ technologies that integrate with ClickHouse.
         ```
 
         Find more details on the [`s3` table function page](/sql-reference/table-functions/s3.md).
-        <br/>
-    </TabItem>
-    <TabItem value="URL" label="Web">
+        
+    
+    
 
         The [`url` table function](/sql-reference/table-functions/url) reads
         files accessible from the web:
@@ -239,9 +225,9 @@ technologies that integrate with ClickHouse.
         ```
 
         Find more details on the [`url` table function page](/sql-reference/table-functions/url).
-        <br/>
-    </TabItem>
-    <TabItem value="local_file" label="Local">
+        
+    
+    
 
         Use the [`file` table engine](/sql-reference/table-functions/file) to
         read a local file. For simplicity, copy the file to the `user_files` directory
@@ -276,9 +262,9 @@ technologies that integrate with ClickHouse.
 
         View the [`file` table function](/sql-reference/table-functions/file)
         docs page for more details.
-        <br/>
-    </TabItem>
-    <TabItem value="PostgreSQL" label="PostgreSQL">
+        
+    
+    
 
         Use the [`postgresql` table function](/sql-reference/table-functions/postgresql)
         to read data from a table in PostgreSQL:
@@ -297,9 +283,9 @@ technologies that integrate with ClickHouse.
 
         View the [`postgresql` table function](/sql-reference/table-functions/postgresql)
         docs page for more details.
-        <br/>
-    </TabItem>
-    <TabItem value="MySQL" label="MySQL">
+        
+    
+    
 
         Use the [`mysql` table function](/sql-reference/table-functions/mysql)
         to read data from a table in MySQL:
@@ -318,9 +304,9 @@ technologies that integrate with ClickHouse.
 
         View the [`mysql` table function](/sql-reference/table-functions/mysql)
         docs page for more details.
-        <br/>
-    </TabItem>
-    <TabItem value="Other DBMS" label="ODBC/JDBC">
+        
+    
+    
 
         ClickHouse can read data from any ODBC or JDBC data source:
 
@@ -337,9 +323,9 @@ technologies that integrate with ClickHouse.
         View the [`odbc` table function](/sql-reference/table-functions/odbc)
         and the [`jdbc` table function](/sql-reference/table-functions/jdbc) docs
         pages for more details.
-        <br/>
-    </TabItem>
-    <TabItem value="messagequeue" label="Message Queues">
+        
+    
+    
 
         Message queues can stream data into ClickHouse using the corresponding table
         engine, including:
@@ -347,9 +333,9 @@ technologies that integrate with ClickHouse.
         - **Kafka**: integrate with Kafka using the [`Kafka` table engine](/engines/table-engines/integrations/kafka)
         - **Amazon MSK**: integrate with [Amazon Managed Streaming for Apache Kafka (MSK)](/integrations/kafka/cloud/amazon-msk/)
         - **RabbitMQ**: integrate with RabbitMQ using the [`RabbitMQ` table engine](/engines/table-engines/integrations/rabbitmq)
-        <br/>
-    </TabItem>
-    <TabItem value="datalake" label="Data Lakes">
+        
+    
+    
 
         ClickHouse has table functions to read data from the following sources:
 
@@ -357,14 +343,13 @@ technologies that integrate with ClickHouse.
         - **Hudi**: read from existing Apache Hudi tables in S3 using the [`hudi` table function](/sql-reference/table-functions/hudi)
         - **Iceberg**: read from existing Apache Iceberg tables in S3 using the [`iceberg` table function](/sql-reference/table-functions/iceberg)
         - **DeltaLake**: read from existing Delta Lake tables in S3 using the [`deltaLake` table function](/sql-reference/table-functions/deltalake)
-        <br/>
-    </TabItem>
-    <TabItem value="Other" label="Other">
+        
+    
+    
 
         Check out our [long list of ClickHouse integrations](/integrations) to find how to connect your existing frameworks and data sources to ClickHouse.
-        <br/>
-    </TabItem>
-</Tabs>
+        
+    
 
 ## Explore
 

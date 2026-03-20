@@ -1,7 +1,4 @@
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import Image from '@theme/IdealImage';
 
 # MCP Cost Tracking
 
@@ -52,7 +49,6 @@ Use this when you need dynamic cost calculation or want to modify the MCP respon
 from typing import Optional
 from litellm.integrations.custom_logger import CustomLogger
 from litellm.types.mcp import MCPPostCallResponseObject
-
 
 class CustomMCPCostTracker(CustomLogger):
     """
@@ -118,4 +114,3 @@ When MCP tools are called, your custom hook will:
 1. Calculate costs based on your custom logic
 2. Modify the response if needed
 3. Track costs in LiteLLM's logging system
-

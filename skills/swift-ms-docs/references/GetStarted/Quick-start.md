@@ -24,7 +24,6 @@
 - **Model Evaluation**: Uses EvalScope as the evaluation backend, supporting 100+ evaluation datasets for evaluating text-only and multimodal models.
 - **Model Quantization**: Supports quantization export for AWQ, GPTQ, FP8, and BNB. Exported models support inference acceleration using vLLM/SGLang/LmDeploy.
 
-
 ## Installation
 
 For the installation of ms-swift, please refer to the [installation documentation](./SWIFT-installation.md).

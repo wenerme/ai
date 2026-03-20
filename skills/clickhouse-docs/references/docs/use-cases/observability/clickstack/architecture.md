@@ -1,28 +1,15 @@
 ---
-slug: /use-cases/observability/clickstack/architecture
-pagination_prev: null
-pagination_next: null
 description: 'Architecture of ClickStack - The ClickHouse Observability Stack'
 title: 'Architecture'
-toc_max_heading_level: 2
 doc_type: 'reference'
 keywords: ['ClickStack architecture', 'observability architecture', 'HyperDX', 'OpenTelemetry collector', 'MongoDB', 'system design']
 ---
-
-import Image from '@theme/IdealImage';
-import oss_architecture from '@site/static/images/use-cases/observability/clickstack-oss-architecture.png';
-import managed_architecture from '@site/static/images/use-cases/observability/clickstack-managed-architecture.png';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 The ClickStack architecture varies depending on how it is deployed. There are important architectural distinctions between **ClickStack Open Source**, where all components are self-managed, and **Managed ClickStack**, where ClickHouse and the HyperDX UI are hosted and operated in ClickHouse Cloud. While the core components remain the same in both models, the responsibility for hosting, scaling, and securing each component differs.
 
 ## Architecture overview {#architecture-overview}
 
 The following provides an overview of the managed and open source ClickStack architectures.
-
-<Tabs groupId="architectures">
-<TabItem value="managed-clickstack" label="Managed ClickStack" default>
 
 Managed ClickStack runs entirely within **ClickHouse Cloud**, providing a fully managed observability backend while preserving the same ClickStack data model and user experience.
 
@@ -77,9 +64,6 @@ ClickStack UI (HyperDX) is the user interface for ClickStack. It offers:
 Designed specifically for ClickHouse, HyperDX combines powerful search with intuitive workflows, enabling you to spot anomalies, investigate issues, and gain insights fast. 
 
 In Managed ClickStack, the UI is integrated into the ClickHouse Cloud console authentication system.
-</TabItem>
-
-<TabItem value="oss-clickstack" label="Open Source ClickStack">
 
 The ClickStack Open Source architecture is built around three core components: **ClickHouse**, **HyperDX**, and a **OpenTelemetry (OTel) collector**. A **MongoDB** instance provides storage for the application state. Together, they provide a high-performance, open-source observability stack optimized for logs, metrics, and traces.
 
@@ -131,6 +115,3 @@ ClickStack uses MongoDB to store application-level state, including:
 This separation of state from event data ensures performance and scalability while simplifying backup and configuration.
 
 This modular architecture enables ClickStack to deliver an out-of-the-box observability platform that is fast, flexible, and open-source.
-
-</TabItem>
-</Tabs>

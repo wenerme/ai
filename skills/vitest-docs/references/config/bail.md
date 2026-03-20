@@ -1,6 +1,5 @@
 ---
 title: bail | Config
-outline: deep
 ---
 
 # bail

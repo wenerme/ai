@@ -27,9 +27,8 @@ Compared to storing JSON strings in a regular STRING type, the JSON type has two
 1. JSON format validation during data insertion.
 2. More efficient binary storage format, enabling faster access to JSON internal fields using functions like `json_extract`, compared to `get_json_xx` functions.
 
-:::caution Note
+> **caution**: Note
 In version 1.2.x, the JSON type was named JSONB. To maintain compatibility with MySQL, it was renamed to JSON starting from version 2.0.0. Older tables can still use the previous name.
-:::
 
 ## JSON Number Precision Issues
 
@@ -91,7 +90,6 @@ Doris JSONB supports all standard JSON types. The main difference is that Doris 
   - JSONB columns do not support ORDER BY operations.
 - Implicit Conversion:
   - Input Only: When inputting data into a JSONB column, STRING type can be implicitly converted to JSONB (provided the string content is valid JSON text). Other Doris types cannot be implicitly converted to JSONB.
-
 
 ## JSON 的分组支持
 
@@ -235,7 +233,6 @@ INSERT INTO table_name(id, json_column_name) VALUES (1, '{"k1": "100"}')
 
 - When the special character with `'\'` such as `'\r'`, `'\t'` appears in JSON, you need to use the replace function to replace `"\"` with `"\\"`, for example, you need replace `"\n"` to `"\\n"` 
 
-
 **Query:**
 - Directly select the entire JSON column:
 ```sql
@@ -254,9 +251,7 @@ SELECT CAST(json_column_name AS STRING) FROM table_name;
 SELECT CAST(json_extract(json_column_name, '$.k1') AS INT) FROM table_name;
 ```
 
-:::tip
-The JSON type currently cannot be used for `ORDER BY`, or comparison operations.
-:::
+> **tip**: The JSON type currently cannot be used for `ORDER BY`, or comparison operations.
 
 ## JSON Input
 
@@ -449,7 +444,6 @@ PROPERTIES("replication_num" = "1");
 
 - there are 2 columns, the 1st column is id and the 2nd column is json string
 - there are 25 rows, the first 18 rows are valid json and the last 7 rows are invalid
-
 
 ```
 1	\N
@@ -1133,7 +1127,6 @@ mysql> SELECT id, j, json_exists_path(j, '$[2]') FROM test_json ORDER BY id;
 +------+---------------------------------------------------------------+--------------------------------+
 19 rows in set (0.02 sec)
 
-
 ```
 
 ##### get the datatype of a field in json by json_type
@@ -1226,8 +1219,5 @@ mysql> SELECT JSON_EXTRACT_STRING('{"key1" : null}', "$.key_not_exist") IS NULL;
 
 The `GET_JSON_XXX` functions are designed for use on string types — they extract values directly from raw JSON strings. On the other hand, `JSON_EXTRACT_XXX` functions are implemented specifically for the JSON data type and are optimized for it.
 
-
 ### keywords
 JSONB, JSON, json_parse, json_parse_error_to_null, json_parse_error_to_value, json_extract, json_extract_isnull, json_extract_bool, json_extract_int, json_extract_bigint, json_extract_double, json_extract_string, json_exists_path, json_type
-
-

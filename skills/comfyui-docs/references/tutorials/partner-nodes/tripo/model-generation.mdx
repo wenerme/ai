@@ -1,11 +1,7 @@
 ---
 title: "Tripo API Node Model Generation ComfyUI Official Example"
 description: "This article will introduce how to use Tripo node's API in ComfyUI for model generation"
-sidebarTitle: "Model Generation"
 ---
-
-import ReqHint from "/snippets/tutorials/partner-nodes/req-hint.mdx";
-import UpdateReminder from "/snippets/tutorials/update-reminder.mdx";
 
 Tripo AI is a company focused on generative AI 3D modeling. It provides user-friendly platforms and API services that can quickly convert text prompts or 2D images (single or multiple) into high-quality 3D models.
 ComfyUI has now natively integrated the corresponding Tripo API, allowing you to conveniently use the related nodes in ComfyUI for model generation.
@@ -16,9 +12,6 @@ Currently, ComfyUI's Partner nodes support the following Tripo model generation 
 - Multi-view model generation
 - Rig model
 - Retarget rigged model
-
-<ReqHint/>
-<UpdateReminder/>
 
 ## Text-to-Model Workflow
 
@@ -32,7 +25,7 @@ Download the file below and drag it into ComfyUI to load the corresponding workf
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Tripo Text to Model Step Guide](/images/tutorial/api_nodes/tripo/tripo_text_to_model_step_guide.jpg)
+[ComfyUI Tripo Text to Model Step Guide]
 
 You can refer to the numbers in the image to complete the basic text-to-model workflow execution:  
 1. In the `Tripo: Text to Model` node, input your prompt in the `prompt` field
@@ -53,13 +46,12 @@ Download the file below and drag it into ComfyUI to load the corresponding workf
     <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Json Format Workflow File</p>
 </a>
 
-
 Download the image below as input image
 
 ![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/tripo/image_to_model/panda.jpg)
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Tripo Text to Model Step Guide](/images/tutorial/api_nodes/tripo/tripo_image_to_model_step_guide.jpg)
+[ComfyUI Tripo Text to Model Step Guide]
 
 You can refer to the numbers in the image to complete the basic image-to-model workflow execution:  
 1. In the `Load Image` node, load the provided input image
@@ -69,7 +61,6 @@ You can refer to the numbers in the image to complete the basic image-to-model w
    - texture_quality: You can set different texture qualities
 3. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute model generation. After the workflow completes, the corresponding model will be automatically saved to the `ComfyUI/output/` directory
 4. For model download, please refer to the instructions in the text-to-model section
-
 
 ## Multi-view Model Generation Workflow
 
@@ -81,7 +72,6 @@ Download the file below and drag it into ComfyUI to load the corresponding workf
     <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Json Format Workflow File</p>
 </a>
 
-
 Download the images below as input images
 
 ![Front View](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/tripo/multiview_to_image/front.jpg)
@@ -89,7 +79,7 @@ Download the images below as input images
 
 ### 2. Complete the Workflow Execution Step by Step
 
-![ComfyUI Tripo Text to Model Step Guide](/images/tutorial/api_nodes/tripo/tripo_multiview_to_model_step_guide.jpg)
+[ComfyUI Tripo Text to Model Step Guide]
 
 You can refer to the numbers in the image to complete the basic multi-view to model workflow execution:  
 1. In the `Load Image` nodes, load the provided input images respectively
@@ -105,7 +95,7 @@ You can refer to the numbers in the image to complete the basic multi-view to mo
 
 Tripo's corresponding nodes provide subsequent processing for the same task, you only need to input the corresponding `model_task_id` in the relevant nodes, and we have also provided the corresponding nodes in the relevant templates, you can also modify the corresponding node mode as needed to enable it
 
-![Tripo Task Processing](/images/tutorial/api_nodes/tripo/other_nodes.jpg)
+[Tripo Task Processing]
 
 <Error>
     The `Tripo: Refine Draft model` node only supports V1.4 model, other models do not support it

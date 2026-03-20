@@ -3,8 +3,6 @@ title: Use Biome in big projects
 description: A small guide how to set Biome in big projects
 ---
 
-import {FileTree, Steps} from '@astrojs/starlight/components';
-
 Biome can provide some tools that can help you to use it properly in big
 projects, such as monorepo or workspaces that contain multiple projects.
 
@@ -49,7 +47,6 @@ configuration.
 Since v2, Biome supports monorepos out of the box, and you'll need to set up the
 project in the following way.
 
-<Steps>
 1. Create a `biome.json` file at the root of the monorepo. We will use the
     recommended rules, and customise the formatter options:
 
@@ -138,15 +135,12 @@ project in the following way.
 4. Now that everything is set up, you have a few options. You can run `biome`
     commands from the root of the project, or from the single packages. Biome
     will respect all settings!
-</Steps>
 
-:::tip
-Sometimes, Biome may find a nested configuration file that doesn't have a
+> **tip**: Sometimes, Biome may find a nested configuration file that doesn't have a
 correct `"root": false` setting. This can happen if you have another project
 that uses Biome in a vendored folder or Git submodule, for instance. In such a
 case, we suggest ignoring the nested project entirely using
 [the `files.includes` field](/reference/configuration/#filesincludes).
-:::
 
 ## Other ways to share a configuration file
 
@@ -270,10 +264,8 @@ working directory. The working directory is:
   Usually it matches the location of your `package.json` file;
 - when using the LSP, the root folder of your project.
 
-:::caution
-Paths starting with a dot `.` or ending with `.json` or `.jsonc` are always
+> **caution**: Paths starting with a dot `.` or ending with `.json` or `.jsonc` are always
 treated as relative paths, so they won't be resolved from `node_modules/`.
-:::
 
 For more information about the resolution algorithm, refer to the
 [Node.js documentation](https://nodejs.org/api/esm.html#resolution-and-loading-algorithm).

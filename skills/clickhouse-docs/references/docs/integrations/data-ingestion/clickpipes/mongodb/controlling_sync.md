@@ -1,20 +1,12 @@
 ---
 title: 'Controlling the Syncing of a MongoDB ClickPipe'
 description: 'Doc for controllling the sync a MongoDB ClickPipe'
-slug: /integrations/clickpipes/mongodb/sync_control
-sidebar_label: 'Controlling syncs'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
 integration:
   - support_level: 'core'
   - category: 'clickpipes'
 ---
-
-import edit_sync_button from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/edit_sync_button.png'
-import create_sync_settings from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/create_sync_settings.png'
-import edit_sync_settings from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/sync_settings_edit.png'
-import cdc_syncs from '@site/static/images/integrations/data-ingestion/clickpipes/postgres/cdc_syncs.png'
-import Image from '@theme/IdealImage';
 
 This document describes how to control the sync of a MongoDB ClickPipe when the ClickPipe is in **CDC (Running) mode**.
 

@@ -8,7 +8,6 @@
 
 During the process of migrating BigQuery, it is usually necessary to use object storage as an intermediate medium. The core process is as follows: First, use BigQuery's [Export](https://cloud.google.com/bigquery/docs/exporting-data) statement to export data to GCS (Google Cloud Storage); then, use Doris's S3 Load function to read data from the object storage and load it into Doris. For details, please refer to [S3 Load](./amazon-s3.md).
 
-
 ## Considerations
 
 1. Before the migration, it is necessary to select Doris' [Data Model](../../../table-design/data-model/overview.md), as well as the strategies for [Partitioning](../../../table-design/data-partitioning/dynamic-partitioning.md) and [Bucketing](../../../table-design/data-partitioning/data-bucketing.md) according to the table structure of BigQuery. For more table creation strategies, please refer to [Load Best Practices](../load-best-practices.md).
@@ -47,7 +46,6 @@ CREATE OR REPLACE TABLE test.sales_data (
     country       STRING
 )
 PARTITION BY  order_date
-
 
 INSERT INTO test.sales_data (order_id, customer_name, order_date, amount, country) VALUES
 (1, 'Alice', '2025-04-08', 99.99, 'USA'),
@@ -102,8 +100,7 @@ PROPERTIES (
 
    The above command will export the data of sales_data to GCS, and each partition will generate one or more files with increasing file names. For details, please refer to [exporting-data](https://cloud.google.com/bigquery/docs/exporting-data#exporting_data_into_one_or_more_files), as follows:
 
-   ![gcs_export](/images/data-operate/gcs_export.png)
-
+   [gcs_export]
 
 ## 3. Load Data to Doris
 

@@ -30,7 +30,6 @@ The IP of the node where the broker process needs to be added. If FQDN is enable
 
 The PORT of the node where the broker process needs to be added, and the default value of this port is 8000.
 
-
 ## Access Control Requirements
 The user who executes this operation needs to have the NODE_PRIV permission.
 

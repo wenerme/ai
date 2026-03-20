@@ -4,13 +4,10 @@
 
 liteLLM provides `input_callbacks`, `success_callbacks` and `failure_callbacks`, making it easy for you to send data to a particular provider depending on the status of your responses.
 
-:::tip
-**New to LiteLLM Callbacks?**
+> **tip**: **New to LiteLLM Callbacks?**
 
 - For proxy/server logging and observability, see the [Proxy Logging Guide](https://docs.litellm.ai/docs/proxy/logging).
 - To write your own callback logic, see the [Custom Callbacks Guide](https://docs.litellm.ai/docs/observability/custom_callback).
-:::
-
 
 ### Supported Callback Integrations
 

@@ -17,7 +17,7 @@ When facing complex calculations and large-scale operations with huge memory res
 
 ## Doris BE memory structure
 
-![Doris BE memory structure](/images/memory-structure.png)
+[Doris BE memory structure]
 
 ```
 Server physical memory: The physical memory used by all processes on the server, MemTotal seen by `cat /proc/meminfo` or `free -h`.
@@ -63,7 +63,7 @@ Doris BE uses Memory Tracker to record process memory usage, supports Web page v
 
 Real-time memory statistics can be viewed through Doris BE's Web page `http://{be_host}:{be_web_server_port}/mem_tracker`, which displays the current memory size and peak memory size tracked by Memory Tracker of `type=overview`, including Query/Load/Compaction/Global, etc. `be_web_server_port` defaults to 8040.
 
-![image](/images/memory-used-by-subsystem.png)
+[image]
 
 Memory Tracker is divided into different types. Among the Memory Tracker of type=overview, except for `process resident memory`, `process virtual memory`, and `sum of all trackers`, the details of other Memory Trackers of type=overview can be viewed through `http://{be_host}:{be_web_server_port}/mem_tracker?type=Lable`.
 
@@ -82,7 +82,7 @@ For more information about Memory Tracker, refer to [Memory Tracker](./memory-fe
 
 Historical memory statistics can be viewed through Doris BE's Bvar page `http://{be_host}:{brpc_port}/vars/*memory_*`. Use the real-time memory statistics page `http://{be_host}:{be_web_server_port}/mem_tracker` to search for the Bvar page under the Memory Tracker Label to get the memory size change trend tracked by the corresponding Memory Tracker. `brpc_port` defaults to 8060.
 
-![Historical memory statistics-Bvar Memory](/images/bvar-memory.png)
+[Historical memory statistics-Bvar Memory]
 
 When the error process memory exceeds the limit or the available memory is insufficient, you can find the `Memory Tracker Summary` in the `be/log/be.INFO` log, which contains all the Memory Trackers of `Type=overview` and `Type=global`, to help users analyze the memory status at that time. For details, please refer to [Memory Log Analysis](./memory-analysis/memory-log-analysis.md)
 
@@ -146,4 +146,3 @@ Refer to [Memory problem FAQ](./memory-issue-faq.md) to analyze common memory pr
 ## Memory control strategy
 
 Refer to [Memory Control Strategy](./memory-feature/memory-control-strategy.md) for an introduction to memory allocation, monitoring, and recycling, which ensure the efficient and controllable memory of the Doris BE process.
-

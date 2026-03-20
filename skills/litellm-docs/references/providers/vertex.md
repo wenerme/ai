@@ -1,6 +1,4 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # VertexAI [Gemini]
 
@@ -11,10 +9,10 @@ import TabItem from '@theme/TabItem';
 | Description | Vertex AI is a fully-managed AI development platform for building and using generative AI. |
 | Provider Route on LiteLLM | `vertex_ai/` |
 | Link to Provider Doc | [Vertex AI ↗](https://cloud.google.com/vertex-ai) |
-| Base URL | 1. Regional endpoints<br/>`https://{vertex_location}-aiplatform.googleapis.com/`<br/>2. Global endpoints (limited availability)<br/>`https://aiplatform.googleapis.com/`|
+| Base URL | 1. Regional endpoints`https://{vertex_location}-aiplatform.googleapis.com/`2. Global endpoints (limited availability)`https://aiplatform.googleapis.com/`|
 | Supported Operations | [`/chat/completions`](#sample-usage), `/completions`, [`/embeddings`](#embedding-models), [`/audio/speech`](#text-to-speech-apis), [`/fine_tuning`](#fine-tuning-apis), [`/batches`](#batch-apis), [`/files`](#batch-apis), [`/images`](#image-generation-models), [`/rerank`](#rerank-api) |
 
-:::tip Vertex AI vs Gemini API
+> **tip**: Vertex AI vs Gemini API
 | Model Format | Provider | Auth Required |
 |-------------|----------|---------------|
 | `vertex_ai/gemini-2.0-flash` | Vertex AI | GCP credentials + project |
@@ -24,13 +22,9 @@ import TabItem from '@theme/TabItem';
 **If you just want to use an API key** (like OpenAI), use the `gemini/` prefix instead. See [Gemini - Google AI Studio](./gemini.md).
 
 Models without a prefix default to Vertex AI which requires GCP authentication.
-:::
-
-<br />
-<br />
 
 <a target="_blank" href="https://colab.research.google.com/github/BerriAI/litellm/blob/main/cookbook/liteLLM_VertextAI_Example.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  [Open In Colab]
 </a>
 
 ## `vertex_ai/` route 
@@ -78,7 +72,6 @@ with open(file_path, 'r') as file:
 # Convert to JSON string
 vertex_credentials_json = json.dumps(vertex_credentials)
 
-
 response = completion(
   model="vertex_ai/gemini-2.5-pro",
   messages=[{"content": "You are a good bot.","role": "system"}, {"content": "Hello, how are you?","role": "user"}], 
@@ -103,7 +96,6 @@ with open(file_path, 'r') as file:
 
 # Convert to JSON string
 vertex_credentials_json = json.dumps(vertex_credentials)
-
 
 messages = [
     {
@@ -154,8 +146,6 @@ print(completion(**data))
 From v`1.40.1+` LiteLLM supports sending `response_schema` as a param for Gemini-1.5-Pro on Vertex AI. For other models (e.g. `gemini-1.5-flash` or `claude-3-5-sonnet`), LiteLLM adds the schema to the message list with a user-controlled prompt.
 
 **Response Schema**
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -184,7 +174,6 @@ response_schema = {
         },
     }
 
-
 completion(
     model="vertex_ai/gemini-1.5-pro", 
     messages=messages, 
@@ -193,9 +182,6 @@ completion(
 
 print(json.loads(completion.choices[0].message.content))
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -254,15 +240,9 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
 **Validate Schema**
 
 To validate the response_schema, set `enforce_validation: true`.
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion, JSONSchemaValidationError
@@ -280,8 +260,6 @@ except JSONSchemaValidationError as e:
 	print("Raw Response: {}".format(e.raw_response))
 	raise e
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config.yaml
 ```yaml
@@ -328,9 +306,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }
 '
 ```
-
-</TabItem>
-</Tabs>
 
 LiteLLM will validate the response against the schema, and raise a `JSONSchemaValidationError` if the response does not match the schema. 
 
@@ -381,9 +356,6 @@ Add Google Search Result grounding to vertex ai calls.
 
 See the grounding metadata with `response_obj._hidden_params["vertex_ai_grounding_metadata"]`
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python showLineNumbers
 from litellm import completion 
 
@@ -400,11 +372,6 @@ resp = litellm.completion(
 
 print(resp)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -422,8 +389,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
 curl http://localhost:4000/v1/chat/completions \
@@ -442,11 +407,6 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 #### **Url Context**
 Using the URL context tool, you can provide Gemini with URLs as additional context for your prompt. The model can then retrieve content from the URLs and use that content to inform and shape its response.
@@ -454,9 +414,6 @@ Using the URL context tool, you can provide Gemini with URLs as additional conte
 [**Relevant Docs**](https://ai.google.dev/gemini-api/docs/url-context)
 
 See the grounding metadata with `response_obj._hidden_params["vertex_ai_url_context_metadata"]`
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import completion
@@ -481,9 +438,6 @@ urlMetadata = url_context_metadata[0]['urlMetadata'][0]
 print(f"Retrieved URL: {urlMetadata['retrievedUrl']}")
 print(f"Retrieval Status: {urlMetadata['urlRetrievalStatus']}")
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 ```yaml
@@ -510,15 +464,10 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
     "tools": [{"urlContext": {}}]
   }'
 ```
-</TabItem>
-</Tabs>
 
 #### **Enterprise Web Search**
 
 You can also use the `enterpriseWebSearch` tool for an [enterprise compliant search](https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/web-grounding-enterprise).
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import completion 
@@ -536,11 +485,6 @@ resp = litellm.completion(
 
 print(resp)
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python showLineNumbers
 from openai import OpenAI
@@ -558,8 +502,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
 curl http://localhost:4000/v1/chat/completions \
@@ -578,18 +520,8 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 #### **Code Execution**
-
-
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python showLineNumbers
 from litellm import completion
@@ -597,7 +529,6 @@ import os
 
 ## SETUP ENVIRONMENT
 # !gcloud auth application-default login - run this to add vertex credentials to your env
-
 
 tools = [{"codeExecution": {}}] # 👈 ADD CODE EXECUTION
 
@@ -609,9 +540,6 @@ response = completion(
 
 print(response)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```bash showLineNumbers
 curl -X POST 'http://0.0.0.0:4000/chat/completions' \
@@ -625,21 +553,11 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 '
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
-
 #### **Google Maps**
 
 Use Google Maps to provide location-based context to your Gemini models.
 
 [**Relevant Vertex AI Docs**](https://ai.google.dev/gemini-api/docs/grounding#google-maps)
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 **Basic Usage - Enable Widget Only**
 
@@ -688,12 +606,6 @@ resp = litellm.completion(
 print(resp)
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
-
 **Basic Usage - Enable Widget Only**
 
 ```python showLineNumbers
@@ -738,8 +650,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="curl" label="cURL">
 
 **Basic Usage - Enable Widget Only**
 
@@ -783,21 +693,14 @@ curl http://localhost:4000/v1/chat/completions \
     ]
   }'
 ```
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 #### **Moving from Vertex AI SDK to LiteLLM (GROUNDING)**
-
 
 If this was your initial VertexAI Grounding code,
 
 ```python
 import vertexai
 from vertexai.generative_models import GenerativeModel, GenerationConfig, Tool, grounding
-
 
 vertexai.init(project=project_id, location="us-central1")
 
@@ -823,7 +726,6 @@ then, this is what it looks like now
 ```python
 from litellm import completion
 
-
 # !gcloud auth application-default login - run this to add vertex credentials to your env
 
 tools = [{"googleSearch": {"disable_attributon": False}}] # 👈 ADD GOOGLE SEARCH
@@ -837,7 +739,6 @@ resp = litellm.completion(
 
 print(resp)
 ```
-
 
 ### **Thinking / `reasoning_content`**
 
@@ -854,9 +755,6 @@ Added an additional non-OpenAI standard "disable" value for non-reasoning Gemini
 | "medium"         | "budget_tokens": 2048 |
 | "high"           | "budget_tokens": 4096 |
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -871,10 +769,6 @@ resp = completion(
 )
 
 ```
-
-</TabItem>
-
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -905,10 +799,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "reasoning_effort": "low"
   }'
 ```
-
-</TabItem>
-</Tabs>
-
 
 **Expected Response**
 
@@ -955,9 +845,6 @@ You can also pass the `thinking` parameter to Gemini models.
 
 This is translated to Gemini's [`thinkingConfig` parameter](https://ai.google.dev/gemini-api/docs/thinking#set-budget).
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -972,9 +859,6 @@ response = litellm.completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -986,21 +870,13 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### **Context Caching**
 
 #### Unified Endpoint
 
 Use Vertex AI context caching in the same way as [**Google AI Studio -  Context Caching**](../providers/gemini.md#context-caching)
 
-
 ##### Example usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion 
@@ -1035,9 +911,6 @@ for _ in range(2):
 
     print(resp.usage) # 👈 2nd usage block will be less, since cached tokens used
 ```
-
-</TabItem>
-<TabItem value="sdk-ttl" label="SDK with Custom TTL">
 
 ```python
 from litellm import completion 
@@ -1077,9 +950,6 @@ resp = completion(
 
 print(resp.usage)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -1136,9 +1006,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 
 ```
 
-</TabItem>
-</Tabs>
-
 #### Calling provider api directly
 
 [**Go straight to provider**](../pass_through/vertex_ai.md#context-caching)
@@ -1146,9 +1013,6 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 ##### 1. Create the Cache
 
 First, create the cache by sending a `POST` request to the `cachedContents` endpoint via the LiteLLM proxy.
-
-<Tabs>
-<TabItem value="proxy" label="PROXY">
 
 ```bash
 curl http://0.0.0.0:4000/vertex_ai/v1/projects/{project_id}/locations/{location}/cachedContents \
@@ -1165,9 +1029,6 @@ curl http://0.0.0.0:4000/vertex_ai/v1/projects/{project_id}/locations/{location}
     }]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ##### 2. Get the Cache Name from the Response
 
@@ -1192,9 +1053,6 @@ Vertex AI will return a response containing the `name` of the cached content. Th
 
 Use the `name` from the response as `cachedContent` or `cached_content` in subsequent API calls to reuse the cached information. This is passed in the body of your request to `/chat/completions`.
 
-<Tabs>
-<TabItem value="proxy" label="PROXY">
-
 ```bash
 
 curl http://0.0.0.0:4000/chat/completions \
@@ -1211,9 +1069,6 @@ curl http://0.0.0.0:4000/chat/completions \
     ]
   }'
 ```
-
-</TabItem>
-</Tabs>
 
 ## Pre-requisites
 * `pip install google-cloud-aiplatform` (pre-installed on proxy docker image)
@@ -1243,9 +1098,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
 
 1. Modify the config.yaml 
 
-  <Tabs>
+  
 
-  <TabItem value="completion_param" label="Different location per model">
+  
 
   Use this when you need to set a different location for each vertex model
 
@@ -1263,9 +1118,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
         vertex_location: "us-east"
   ```
 
-  </TabItem>
+  
 
-  <TabItem value="litellm_param" label="One location all vertex models">
+  
 
   Use this when you have one vertex location for all models
 
@@ -1280,9 +1135,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
       model: gemini-2.5-pro
   ```
 
-  </TabItem>
+  
 
-  </Tabs>
+  
 
 2. Start the proxy 
 
@@ -1292,9 +1147,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python
   import openai
@@ -1315,9 +1170,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -1333,10 +1188,9 @@ Here's how to use Vertex AI with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
+  
 
 ## Authentication - vertex_project, vertex_location, etc. 
 
@@ -1344,7 +1198,6 @@ Set your vertex credentials via:
 - dynamic params
 OR
 - env vars 
-
 
 ### **Dynamic Params**
 
@@ -1354,9 +1207,6 @@ You can set:
 - `vertex_project` Optional[str] - use if vertex project different from the one in vertex_credentials
 
 as dynamic params for a `litellm.completion` call. 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -1372,7 +1222,6 @@ with open(file_path, 'r') as file:
 # Convert to JSON string
 vertex_credentials_json = json.dumps(vertex_credentials)
 
-
 response = completion(
   model="vertex_ai/gemini-2.5-pro",
   messages=[{"content": "You are a good bot.","role": "system"}, {"content": "Hello, how are you?","role": "user"}], 
@@ -1381,9 +1230,6 @@ response = completion(
   vertex_location="my-special-location"
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -1395,20 +1241,11 @@ model_list:
         vertex_location: "my-special-location:
 ```
 
-</TabItem>
-</Tabs>
-
-
-
-
 ### **Workload Identity Federation**
 
 LiteLLM supports [Google Cloud Workload Identity Federation (WIF)](https://cloud.google.com/iam/docs/workload-identity-federation), which allows you to grant on-premises or multi-cloud workloads access to Google Cloud resources without using a service account key. This is the recommended approach for workloads running in other cloud environments (AWS, Azure, etc.) or on-premises.
 
 To use Workload Identity Federation, pass the path to your WIF credentials configuration file via `vertex_credentials`:
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 from litellm import completion
@@ -1421,9 +1258,6 @@ response = completion(
     vertex_location="us-central1"
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -1446,9 +1280,6 @@ model_list:
       vertex_location: us-central1
       litellm_credential_name: my-vertex-wif-credential  # 👈 Reference credential stored in UI
 ```
-
-</TabItem>
-</Tabs>
 
 **WIF Credentials File Format**
 
@@ -1515,9 +1346,6 @@ Add the `aws_*` keys at the **top level** of your WIF credential JSON (alongside
 
 `aws_region_name` is always required when using explicit AWS credentials. The other parameters follow the same authentication flows as [Bedrock AWS auth](/docs/providers/bedrock#authentication) -- you can use role assumption, static keys, profiles, or web identity tokens.
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 from litellm import completion
 
@@ -1530,9 +1358,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="proxy" label="PROXY">
-
 ```yaml
 model_list:
   - model_name: gemini-model
@@ -1542,9 +1367,6 @@ model_list:
       vertex_location: us-central1
       vertex_credentials: /path/to/wif-credentials-with-aws.json  # WIF JSON with aws_* keys
 ```
-
-</TabItem>
-</Tabs>
 
 When `aws_*` keys are present in the JSON, LiteLLM automatically uses explicit AWS authentication instead of the EC2 metadata service. When they are absent, the standard metadata-based flow is used unchanged.
 
@@ -1573,15 +1395,10 @@ export VERTEXAI_LOCATION="us-central1" # can be any vertex location
 export VERTEXAI_PROJECT="my-test-project" # ONLY use if model project is different from service account project
 ```
 
-
 ## Specifying Safety Settings 
 In certain use-cases you may need to make calls to the models and pass [safety settings](https://ai.google.dev/docs/safety_setting_gemini) different from the defaults. To do so, simple pass the `safety_settings` argument to `completion` or `acompletion`. For example:
 
 ### Set per model/request
-
-<Tabs>
-
-<TabItem value="sdk" label="SDK">
 
 ```python
 response = completion(
@@ -1607,8 +1424,6 @@ response = completion(
     ]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 **Option 1: Set in config**
 ```yaml
@@ -1666,14 +1481,8 @@ response = client.chat.completions.create(
     }
 )
 ```
-</TabItem>
-</Tabs>
 
 ### Set Globally
-
-<Tabs>
-
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm 
@@ -1703,8 +1512,6 @@ response = completion(
     messages=[{"role": "user", "content": "write code for saying hi from LiteLLM"}]
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="Proxy">
 
 ```yaml
 model_list:
@@ -1725,8 +1532,6 @@ litellm_settings:
       - category: HARM_CATEGORY_DANGEROUS_CONTENT
         threshold: BLOCK_NONE
 ```
-</TabItem>
-</Tabs>
 
 ## Set Vertex Project & Vertex Location
 All calls using Vertex AI require the following parameters:
@@ -1843,9 +1648,6 @@ To use a model that follows the `/gemini` request/response format, simply set th
 model="vertex_ai/gemini/<your-finetuned-model>"
 ```
 
-<Tabs>
-<TabItem value="sdk" label="LiteLLM Python SDK">
-
 ```python showLineNumbers title="Example"
 import litellm
 import os
@@ -1859,9 +1661,6 @@ response = litellm.completion(
   messages=[{ "content": "Hello, how are you?","role": "user"}],
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM Proxy">
 
 1. Add Vertex Credentials to your env 
 
@@ -1881,9 +1680,6 @@ response = litellm.completion(
 
 3. Test it! 
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
-
 ```python showLineNumbers title="Example request"
 from openai import OpenAI
 
@@ -1901,21 +1697,12 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-<TabItem value="curl" label="curl">
-
 ```bash showLineNumbers title="Example request"
 curl --location 'https://0.0.0.0:4000/v1/chat/completions' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: <LITELLM_KEY>' \
 --data '{"model": "finetuned-gemini" ,"messages":[{"role": "user", "content":[{"type": "text", "text": "hi"}]}]}'
 ```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 ## Gemini Pro Vision
 | Model Name       | Function Call                        |
@@ -1929,9 +1716,6 @@ curl --location 'https://0.0.0.0:4000/v1/chat/completions' \
 | gemini-1.5-flash-preview-0514   | `completion('gemini-1.5-flash-preview-0514', messages)`, `completion('vertex_ai/gemini-1.5-flash-preview-0514', messages)` |
 | gemini-1.5-pro-preview-0514   | `completion('gemini-1.5-pro-preview-0514', messages)`, `completion('vertex_ai/gemini-1.5-pro-preview-0514', messages)` |
 
-
-
-
 #### Using Gemini Pro Vision
 
 Call `gemini-2.5-pro-vision` in the same input/output format as OpenAI [`gpt-4-vision`](https://docs.litellm.ai/docs/providers/openai#openai-vision-models)
@@ -1943,10 +1727,6 @@ LiteLLM Supports the following image types passed in `url`
 - Base64 Encoded Local Images
 
 **Example Request - image url**
-
-<Tabs>
-
-<TabItem value="direct" label="Images with direct links">
 
 ```python
 import litellm
@@ -1973,9 +1753,6 @@ response = litellm.completion(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="base" label="Local Base64 Images">
 
 ```python
 import litellm
@@ -2008,8 +1785,6 @@ response = litellm.completion(
 )
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## Usage - Function Calling 
 
@@ -2072,9 +1847,6 @@ For Gemini 3+ models, LiteLLM supports per-part media resolution control using O
 
 **Usage Examples:**
 
-<Tabs>
-<TabItem value="images" label="Images">
-
 ```python
 from litellm import completion
 
@@ -2110,9 +1882,6 @@ response = completion(
 )
 ```
 
-</TabItem>
-<TabItem value="videos" label="Videos with Files">
-
 ```python
 from litellm import completion
 
@@ -2142,12 +1911,7 @@ response = completion(
 )
 ```
 
-</TabItem>
-</Tabs>
-
-:::info
-**Per-Part Resolution:** Each image or video in your request can have its own `detail` setting, allowing mixed-resolution requests (e.g., a high-res chart alongside a low-res icon). This feature works with both `image_url` and `file` content types, and is only available for Gemini 3+ models.
-:::
+> **info**: **Per-Part Resolution:** Each image or video in your request can have its own `detail` setting, allowing mixed-resolution requests (e.g., a high-res chart alongside a low-res icon). This feature works with both `image_url` and `file` content types, and is only available for Gemini 3+ models.
 
 ## Video Metadata Control
 
@@ -2161,23 +1925,16 @@ For Gemini 3+ models, LiteLLM supports fine-grained video processing control thr
 | `start_offset` | String | Start time for video clip processing | `"10s"` |
 | `end_offset` | String | End time for video clip processing | `"60s"` |
 
-:::note
-**Field Name Conversion:** LiteLLM automatically converts snake_case field names to camelCase for the Gemini API:
+> **note**: **Field Name Conversion:** LiteLLM automatically converts snake_case field names to camelCase for the Gemini API:
 - `start_offset` → `startOffset`
 - `end_offset` → `endOffset`
 - `fps` remains unchanged
-:::
 
-:::warning
-- **Gemini 3+ Only:** This feature is only available for Gemini 3.0 and newer models
+> **warning**: - **Gemini 3+ Only:** This feature is only available for Gemini 3.0 and newer models
 - **Video Files Recommended:** While `video_metadata` is designed for video files, error handling for other media types is delegated to the Vertex AI API
 - **File Formats Supported:** Works with `gs://`, `https://`, and base64-encoded video files
-:::
 
 **Usage Examples:**
-
-<Tabs>
-<TabItem value="basic" label="Basic Video Metadata">
 
 ```python
 from litellm import completion
@@ -2209,9 +1966,6 @@ response = completion(
 print(response.choices[0].message.content)
 ```
 
-</TabItem>
-<TabItem value="combined" label="Combined with Detail">
-
 ```python
 from litellm import completion
 
@@ -2242,9 +1996,6 @@ response = completion(
 
 print(response.choices[0].message.content)
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -2295,9 +2046,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 ```
 
-</TabItem>
-</Tabs>
-
 ## Usage - PDF / Videos / Audio etc. Files 
 
 Pass any file supported by Vertex AI, through LiteLLM. 
@@ -2312,9 +2060,6 @@ Files with direct links - https://storage.googleapis.com/github-repo/img/gemini/
 Videos with Cloud Storage URIs - https://storage.googleapis.com/github-repo/img/gemini/multimodality_usecases_overview/pixel8.mp4
 Base64 Encoded Local Files
 ```
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ### **Using `gs://` or any URL**
 ```python
@@ -2385,8 +2130,6 @@ response = completion(
 
 print(response.choices[0])
 ```
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Add model to config 
 
@@ -2436,7 +2179,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 
 ```
 
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -2470,9 +2212,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   }'
 
 ```
-</TabItem>
-</Tabs>
-
 
 ## Chat Models
 | Model Name       | Function Call                        |
@@ -2502,13 +2241,9 @@ curl http://0.0.0.0:4000/v1/chat/completions \
 | code-gecko@001   | `completion('code-gecko@001', messages)` |
 | code-gecko@latest| `completion('code-gecko@latest', messages)` |
 
-
 ## **Embedding Models**
 
 #### Usage - Embedding
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 import litellm
@@ -2522,10 +2257,6 @@ response = embedding(
 )
 print(response)
 ```
-</TabItem>
-
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 1. Add model to config.yaml
 ```yaml
@@ -2562,10 +2293,6 @@ response = client.embeddings.create(
 print(response)
 ```
 
-
-</TabItem>
-</Tabs>
-
 #### Supported Embedding Models
 All models listed [here](https://github.com/BerriAI/litellm/blob/57f37f743886a0249f630a6792d49dffc2c5d9b7/model_prices_and_context_window.json#L835) are supported
 
@@ -2592,10 +2319,6 @@ All models listed [here](https://github.com/BerriAI/litellm/blob/57f37f743886a02
 
 #### Usage with OpenAI (Unified) Params
 
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.embedding(
     model="vertex_ai/text-embedding-004",
@@ -2604,9 +2327,6 @@ response = litellm.embedding(
     dimensions=1,
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 ```python
 import openai
@@ -2624,9 +2344,6 @@ response = client.embeddings.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
-
 
 ### Supported Vertex Specific Params
 
@@ -2642,9 +2359,6 @@ You can pass any vertex specific params to the embedding model. Just pass them t
 
 [Relevant Vertex AI doc with all embedding params](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api#request_body)
 
-<Tabs>
-<TabItem value="sdk" label="SDK">
-
 ```python
 response = litellm.embedding(
     model="vertex_ai/text-embedding-004",
@@ -2655,9 +2369,6 @@ response = litellm.embedding(
     auto_truncate=True,
 )
 ```
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY">
-
 
 ```python
 import openai
@@ -2677,20 +2388,14 @@ response = client.embeddings.create(
 
 print(response)
 ```
-</TabItem>
-</Tabs>
 
 ## **Multi-Modal Embeddings**
-
 
 Known Limitations:
 - Only supports 1 image / video / image per request
 - Only supports GCS or base64 encoded images / videos
 
 ### Usage
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Using GCS Images
 
@@ -2709,9 +2414,6 @@ response = await litellm.aembedding(
     input="data:image/jpeg;base64,..." # will be sent as a base64 encoded image
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY (Unified Endpoint)">
 
 1. Add model to config.yaml
 ```yaml
@@ -2734,11 +2436,6 @@ $ litellm --config /path/to/config.yaml
 ```
 
 3. Make Request use OpenAI Python SDK, Langchain Python SDK
-
-
-<Tabs>
-
-<TabItem value="OpenAI SDK" label="OpenAI SDK">
 
 Requests with GCS Image / Video URI
 
@@ -2772,10 +2469,6 @@ response = client.embeddings.create(
 print(response)
 ```
 
-</TabItem>
-
-<TabItem value="langchain" label="Langchain">
-
 Requests with GCS Image / Video URI
 ```python
 from langchain_openai import OpenAIEmbeddings
@@ -2787,7 +2480,6 @@ embeddings = OpenAIEmbeddings(
     base_url="http://0.0.0.0:4000",
     api_key="sk-1234",  # type: ignore
 )
-
 
 query_result = embeddings.embed_query(
     "gs://cloud-samples-data/vertex-ai/llm/prompts/landmark1.png"
@@ -2809,21 +2501,12 @@ embeddings = OpenAIEmbeddings(
     api_key="sk-1234",  # type: ignore
 )
 
-
 query_result = embeddings.embed_query(
     "data:image/jpeg;base64,..."
 )
 print(query_result)
 
 ```
-
-</TabItem>
-
-</Tabs>
-</TabItem>
-
-
-<TabItem value="proxy-vtx" label="LiteLLM PROXY (Vertex SDK)">
 
 1. Add model to config.yaml
 ```yaml
@@ -2847,7 +2530,6 @@ import vertexai
 from vertexai.vision_models import Image, MultiModalEmbeddingModel, Video
 from vertexai.vision_models import VideoSegmentConfig
 from google.auth.credentials import Credentials
-
 
 LITELLM_PROXY_API_KEY = "sk-1234"
 LITELLM_PROXY_BASE = "http://0.0.0.0:4000/vertex-ai"
@@ -2899,14 +2581,7 @@ print(f"Image Embedding: {embeddings.image_embedding}")
 print(f"Text Embedding: {embeddings.text_embedding}")
 ```
 
-</TabItem>
-</Tabs>
-
-
 ### Text + Image + Video Embeddings
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 Text + Image 
 
@@ -2935,10 +2610,6 @@ response = await litellm.aembedding(
 )
 ```
 
-
-</TabItem>
-<TabItem value="proxy" label="LiteLLM PROXY (Unified Endpoint)">
-
 1. Add model to config.yaml
 ```yaml
 model_list:
@@ -2960,7 +2631,6 @@ $ litellm --config /path/to/config.yaml
 ```
 
 3. Make Request use OpenAI Python SDK, Langchain Python SDK
-
 
 Text + Image 
 
@@ -3008,11 +2678,7 @@ response = client.embeddings.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
 ## **Fine Tuning APIs**
-
 
 | Property | Details |
 |----------|---------|
@@ -3040,9 +2706,6 @@ finetune_settings:
 
 #### 2. Create a Fine Tuning Job
 
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
-
 ```python
 ft_job = await client.fine_tuning.jobs.create(
     model="gemini-1.0-pro-002",                  # Vertex model you want to fine-tune
@@ -3050,9 +2713,6 @@ ft_job = await client.fine_tuning.jobs.create(
     extra_headers={"custom-llm-provider": "vertex_ai"}, # tell litellm proxy which provider to use
 )
 ```
-</TabItem>
-
-<TabItem value="curl" label="curl">
 
 ```shell
 curl http://localhost:4000/v1/fine_tuning/jobs \
@@ -3064,18 +2724,10 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
     "training_file": "gs://cloud-samples-data/ai-platform/generative_ai/sft_train_data.jsonl"
     }'
 ```
-</TabItem>
-
-</Tabs>
-
 
 **Advanced use case - Passing `adapter_size` to the Vertex AI API**
 
 Set hyper_parameters, such as `n_epochs`, `learning_rate_multiplier` and `adapter_size`. [See Vertex Advanced Hyperparameters](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/tuning#advanced_use_case)
-
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python SDK">
 
 ```python
 
@@ -3090,9 +2742,6 @@ ft_job = client.fine_tuning.jobs.create(
     extra_headers={"custom-llm-provider": "vertex_ai"},
 )
 ```
-</TabItem>
-
-<TabItem value="curl" label="curl">
 
 ```shell
 curl http://localhost:4000/v1/fine_tuning/jobs \
@@ -3109,18 +2758,12 @@ curl http://localhost:4000/v1/fine_tuning/jobs \
     }
     }'
 ```
-</TabItem>
-
-</Tabs>
-
 
 ## Labels
-
 
 Google enables you to add custom metadata to its `generateContent` and `streamGenerateContent` calls.
 This mechanism is useful in Vertex AI because it allows costs and usage tracking over multiple
 different applications or users.
-
 
 ### Usage
 
@@ -3132,7 +2775,6 @@ the LiteLLM will pass the `labels` field to the Vertex AI backend.
 If the client sets the `metadata` field in the request to the LiteLLM and the `labels` field is not set,
 the LiteLLM will create the `labels` field filled with `metadata` key/value pairs for all string values and
 pass it to the Vertex AI backend.
-
 
 Here is an example JSON request demonstrating the labels usage:
 
@@ -3150,13 +2792,10 @@ Here is an example JSON request demonstrating the labels usage:
 }
 ```
 
-
-
 ## Extra
 
 ### Using `GOOGLE_APPLICATION_CREDENTIALS`
 Here's the code for storing your service account credentials as `GOOGLE_APPLICATION_CREDENTIALS` environment variable:
-
 
 ```python
 import os 
@@ -3195,14 +2834,9 @@ def load_vertex_ai_credentials():
   os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.abspath(temp_file.name)
 ```
 
-
 ### Using GCP Service Account 
 
-:::info
-
-Trying to deploy LiteLLM on Google Cloud Run? Tutorial [here](https://docs.litellm.ai/docs/proxy/deploy#deploy-on-google-cloud-run)
-
-:::
+> **info**: Trying to deploy LiteLLM on Google Cloud Run? Tutorial [here](https://docs.litellm.ai/docs/proxy/deploy#deploy-on-google-cloud-run)
 
 1. Figure out the Service Account bound to the Google Cloud Run service
 
@@ -3221,7 +2855,6 @@ Click `Add Principal`
 <Image img={require('../../img/gcp_acc_3.png')}/>
 
 Once that's done, when you deploy the new container in the Google Cloud Run service, LiteLLM will have automatic access to all Vertex AI endpoints.
-
 
 s/o @[Darien Kindlund](https://www.linkedin.com/in/kindlund/) for this tutorial
 

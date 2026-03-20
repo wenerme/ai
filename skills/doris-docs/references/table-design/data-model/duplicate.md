@@ -24,7 +24,6 @@ In the Duplicate Key Table, data is generally only appended, and old data is not
 
 * **Transaction Data**: For storing transaction or order data, once a transaction is completed, there is typically no need for data changes...
 
-
 ## Table Creation Instructions
 
 When creating a table, the **DUPLICATE KEY** keyword can be used to specify the Duplicate Key Table. The Duplicate Key table must specify the Key columns, which are used to sort the data during storage. In the following example, the Duplicate Key table stores log information and sorts the data based on the `log_time`, `log_type`, and `error_code` columns:
@@ -47,7 +46,7 @@ DISTRIBUTED BY HASH(log_type) BUCKETS 10;
 
 In a Duplicate Key table, data is not deduplicated or aggregated; inserting data directly stores it. The Key columns in the Duplicate Key Table are used for sorting.
 
-![columnar_storage](/images/table-desigin/duplicate-table-insert.png)
+[columnar_storage]
 
 In the example above, after inserting 2 rows into the initial 4 rows, the data is appended, resulting in a total of 6 rows.
 
@@ -77,4 +76,3 @@ SELECT * FROM example_tbl_duplicate;
 | 2024-11-01 00:00:00 |        2 |          2 | timeout   |    12 | 2024-11-01 01:00:00 |
 +---------------------+----------+------------+-----------+-------+---------------------+
 ```
-

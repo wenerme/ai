@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Codestral API [Mistral AI]
 
@@ -13,15 +12,7 @@ os.environ['CODESTRAL_API_KEY']
 
 ## FIM / Completions
 
-:::info
-
-Official Mistral API Docs: https://docs.mistral.ai/api/#operation/createFIMCompletion
-
-:::
-
-
-<Tabs>
-<TabItem value="no-streaming" label="No Streaming">
+> **info**: Official Mistral API Docs: https://docs.mistral.ai/api/#operation/createFIMCompletion
 
 #### Sample Usage
 
@@ -69,10 +60,6 @@ response = await litellm.atext_completion(
 
 ```
 
-
-</TabItem>
-<TabItem value="stream" label="Streaming">
-
 #### Sample Usage - Streaming
 
 ```python
@@ -115,8 +102,6 @@ async for chunk in response:
 }
 
 ```
-</TabItem>
-</Tabs>
 
 ### Supported Models
 All models listed here https://docs.mistral.ai/platform/endpoints are supported. We actively maintain the list of models, pricing, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
@@ -126,19 +111,9 @@ All models listed here https://docs.mistral.ai/platform/endpoints are supported.
 | Codestral Latest  | `completion(model="text-completion-codestral/codestral-latest", messages)` |
 | Codestral 2405 | `completion(model="text-completion-codestral/codestral-2405", messages)`|
 
-
-
-
 ## Chat Completions
 
-:::info
-
-Official Mistral API Docs: https://docs.mistral.ai/api/#operation/createChatCompletion
-:::
-
-
-<Tabs>
-<TabItem value="no-streaming" label="No Streaming">
+> **info**: Official Mistral API Docs: https://docs.mistral.ai/api/#operation/createChatCompletion
 
 #### Sample Usage
 
@@ -189,12 +164,7 @@ response = await litellm.acompletion(
   }
 }
 
-
 ```
-
-
-</TabItem>
-<TabItem value="stream" label="Streaming">
 
 #### Sample Usage - Streaming
 
@@ -243,8 +213,6 @@ async for chunk in response:
 }
 
 ```
-</TabItem>
-</Tabs>
 
 ### Supported Models
 All models listed here https://docs.mistral.ai/platform/endpoints are supported. We actively maintain the list of models, pricing, token window, etc. [here](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).

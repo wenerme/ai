@@ -14,7 +14,6 @@ Checks whether the sequence contains an event chain that matches the pattern.
 
 Events that occur at the same second may lay in the sequence in an undefined order affecting the result.
 
-
 ## Syntax
 
 ```sql
@@ -67,7 +66,6 @@ INSERT INTO sequence_match_test1(uid, date, number) values
 (3, '2022-11-02 16:15:01', 1),
 (4, '2022-11-02 19:05:04', 2),
 (5, '2022-11-02 20:08:44', 3); 
-
 
 SELECT 
 sequence_match('(?1)(?2)', date, number = 1, number = 3) as c1,

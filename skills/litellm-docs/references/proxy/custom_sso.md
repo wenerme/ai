@@ -1,8 +1,6 @@
 # ✨ Event Hooks for SSO Login
 
-:::info
-✨ SSO is free for up to 5 users. After that, an enterprise license is required. [Get Started with Enterprise here](https://www.litellm.ai/enterprise)
-:::
+> **info**: ✨ SSO is free for up to 5 users. After that, an enterprise license is required. [Get Started with Enterprise here](https://www.litellm.ai/enterprise)
 
 ## Overview
 
@@ -39,7 +37,6 @@ This handler parses request headers and returns user information as an OpenID ob
 from fastapi import Request
 from fastapi_sso.sso.base import OpenID
 from litellm.integrations.custom_sso_handler import CustomSSOLoginHandler
-
 
 class MyCustomSSOLoginHandler(CustomSSOLoginHandler):
     """
@@ -129,7 +126,6 @@ from litellm.proxy import proxy_server
 # These imports are available if you need to create users or manage team membership:
 # from litellm.proxy.management_endpoints.internal_user_endpoints import new_user
 # from litellm.proxy.management_endpoints.team_endpoints import add_new_member
-
 
 async def custom_sso_handler(userIDPInfo: OpenID) -> SSOUserDefinedValues:
     try:

@@ -363,7 +363,6 @@ curl --location-trusted -u {user}:{passwd} -T data.csv -H "group_commit:sync_mod
 
 About Stream Load usage, please refer to [Stream Load](./import-way/stream-load-manual).
 
-
 Data is automatically committed when either time interval (default 10 seconds) or data volume (default 64 MB) condition is met. These parameters should be used together and tuned based on actual scenarios.
 
 ### Modifying Commit Interval
@@ -405,7 +404,6 @@ ALTER TABLE dt SET ("group_commit_data_bytes" = "134217728");
   - Cons: Uses more memory
 
 Recommend balancing based on system memory resources and data reliability requirements. If memory is sufficient and higher throughput is desired, consider increasing to 128MB or more.
-
 
 ### BE Configuration
 
@@ -534,7 +532,6 @@ Disable the printing of prepared statement audit logs to enhance performance.
 
 In the above test, the CPU usage of BE fluctuates between 10-20%, FE fluctuates between 60-70%.
 
-
 ### Insert into Sync Mode Small Batch Data
 
 **Machine Configuration**
@@ -581,8 +578,8 @@ PROPERTIES (
 
 JMeter Parameter Settings as Shown in the Images
 
-![jmeter parameter settings](/images/group-commit/jmeter1.jpg)
-![jmeter parameter settings](/images/group-commit/jmeter2.jpg)
+[jmeter parameter settings]
+[jmeter parameter settings]
 
 1. Set the Init Statement Before Testing:
 

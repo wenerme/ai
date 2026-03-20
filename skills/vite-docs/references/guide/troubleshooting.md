@@ -224,8 +224,6 @@ The hash key used to invalidate optimized dependencies depends on the package lo
 
 If you suffer any application performance bottlenecks resulting in slow load times, you can start the built-in Node.js inspector with your Vite dev server or when building your application to create the CPU profile:
 
-::: code-group
-
 ```bash [dev server]
 vite --profile --open
 ```
@@ -234,11 +232,8 @@ vite --profile --open
 vite build --profile
 ```
 
-:::
-
-::: tip Vite Dev Server
+> **tip**: Vite Dev Server
 Once your application is opened in the browser, just await finish loading it and then go back to the terminal and press `p` key (will stop the Node.js inspector) then press `q` key to stop the dev server.
-:::
 
 Node.js inspector will generate `vite-profile-0.cpuprofile` in the root folder, go to https://www.speedscope.app/, and upload the CPU profile using the `BROWSE` button to inspect the result.
 

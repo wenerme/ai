@@ -10,7 +10,6 @@
 
 <version since="1.2.3">
 
-
 </version>
 
 ## Description
@@ -179,4 +178,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = class org.apache.doris.nereids.
 
 ### Keywords
 
-ARRAY, APPLY, ARRAY_APPLY 
+ARRAY, APPLY, ARRAY_APPLY

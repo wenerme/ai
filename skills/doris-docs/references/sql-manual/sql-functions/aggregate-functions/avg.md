@@ -172,4 +172,3 @@ Using the DISTINCT keyword for deduplication calculation, [1000,2000,3000] after
 |                  2000 |
 +-----------------------+
 ```
-

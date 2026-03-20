@@ -113,7 +113,6 @@ There are three possible decisions a rule can enforce:
 - `ask_user`: The user is prompted to approve or deny the tool call. (In
   non-interactive mode, this is treated as `deny`.)
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > The `deny` decision is the recommended way to exclude tools. The
 > legacy `tools.exclude` setting in `settings.json` is deprecated in favor of
@@ -246,7 +245,6 @@ directory are **ignored**.
   non-admin groups. You may need to "Disable inheritance" in Advanced Security
   Settings.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > Supplemental admin policies (provided via `--admin-policy` or
 > `adminPolicyPaths` settings) are **NOT** subject to these strict ownership
@@ -352,7 +350,6 @@ using the `mcpName` field. **This is the recommended approach** for defining MCP
 policies, as it is much more robust than manually writing Fully Qualified Names
 (FQNs) or string wildcards.
 
-<!-- prettier-ignore -->
 > [!WARNING]
 > Do not use underscores (`_`) in your MCP server names (e.g., use
 > `my-server` rather than `my_server`). The policy parser splits Fully Qualified

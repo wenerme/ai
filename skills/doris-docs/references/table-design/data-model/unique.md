@@ -43,7 +43,6 @@ In Doris, there are two types of update semantics for the Unique Key Table:
 
 To create a Unique Key table, use the `UNIQUE KEY` keyword. Enable merge-on-write mode by setting the `enable_unique_key_merge_on_write` attribute (default since Doris 2.1):
 
-
 ```sql
 CREATE TABLE IF NOT EXISTS example_tbl_unique
 (
@@ -86,7 +85,7 @@ PROPERTIES (
 
 In a Unique Key table, the Key columns serve both for sorting and deduplication. New insertions overwrite existing records with matching keys.
 
-![unique-key-model-insert](/images/table-desigin/unique-key-model-insert.png)
+[unique-key-model-insert]
 
 As shown in the example, there were 4 rows of data in the original table. After inserting 2 new rows, the newly inserted rows are updated based on the unique key:
 

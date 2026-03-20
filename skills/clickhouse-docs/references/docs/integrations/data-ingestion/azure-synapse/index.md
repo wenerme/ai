@@ -1,6 +1,4 @@
 ---
-sidebar_label: 'Azure Synapse'
-slug: /integrations/azure-synapse
 description: 'Introduction to Azure Synapse with ClickHouse'
 keywords: ['clickhouse', 'azure synapse', 'azure', 'synapse', 'microsoft', 'azure spark', 'data']
 title: 'Integrating Azure Synapse with ClickHouse'
@@ -9,12 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'data_ingestion'
 ---
-
-import TOCInline from '@theme/TOCInline';
-import Image from '@theme/IdealImage';
-import sparkConfigViaNotebook from '@site/static/images/integrations/data-ingestion/azure-synapse/spark_notebook_conf.png';
-import sparkUICHSettings from '@site/static/images/integrations/data-ingestion/azure-synapse/spark_ui_ch_settings.png';
-import ClickHouseSupportedBadge from '@theme/badges/ClickHouseSupported';
 
 # Integrating Azure Synapse with ClickHouse
 
@@ -32,8 +24,6 @@ Azure Synapse supports three levels of [packages maintenance](https://learn.micr
 1. Default packages
 2. Spark pool level
 3. Session level
-
-<br/>
 
 Follow the [Manage libraries for Apache Spark pools guide](https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-manage-pool-packages) and add the following required dependencies to your Spark application
 - `clickhouse-spark-runtime-{spark_version}_{scala_version}-{connector_version}.jar` - [official maven](https://mvnrepository.com/artifact/com.clickhouse.spark)
@@ -74,9 +64,7 @@ Make sure it will be in the first cell as follows:
 
 Please visit the [ClickHouse Spark configurations page](/integrations/apache-spark/spark-native-connector#configurations) for additional settings.
 
-:::info
-When working with ClickHouse Cloud Please make sure to set the [required Spark settings](/integrations/apache-spark/spark-native-connector#clickhouse-cloud-settings).  
-:::
+> **info**: When working with ClickHouse Cloud Please make sure to set the [required Spark settings](/integrations/apache-spark/spark-native-connector#clickhouse-cloud-settings).  
 
 ## Setup verification {#setup-verification}
 

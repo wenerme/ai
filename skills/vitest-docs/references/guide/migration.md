@@ -1,6 +1,5 @@
 ---
 title: Migration Guide | Guide
-outline: deep
 ---
 
 # Migration Guide
@@ -9,12 +8,11 @@ outline: deep
 
 ## Migrating to Vitest 4.0 {#vitest-4}
 
-::: warning Prerequisites
+> **warning**: Prerequisites
 Vitest 4.0 requires **Vite >= 6.0.0** and **Node.js >= 20.0.0**. Before proceeding
 with any other migration steps, ensure your environment meets these requirements.
 Running Vitest 4.0 on older versions of Vite or Node.js is not supported and may
 result in unexpected errors.
-:::
 
 ### V8 Code Coverage Major Changes
 
@@ -195,7 +193,6 @@ $ vitest --standalone math.test.ts
 
 This allows users to create re-usable `package.json` scripts for standalone mode.
 
-::: code-group
 ```json [package.json]
 {
   "scripts": {
@@ -210,7 +207,6 @@ $ pnpm run test:dev
 # Run math.test.ts immediately
 $ pnpm run test:dev math.test.ts
 ```
-:::
 
 ### Replacing `vite-node` with [Module Runner](https://vite.dev/guide/api-environment-runtimes.html#modulerunner)
 
@@ -231,7 +227,6 @@ This update should not be noticeable unless you rely on advanced features mentio
 
 The `workspace` configuration option was renamed to [`projects`](/guide/projects) in Vitest 3.2. They are functionally the same, except you cannot specify another file as the source of your workspace (previously you could specify a file that would export an array of projects). Migrating to `projects` is easy, just move the code from `vitest.workspace.js` to `vitest.config.ts`:
 
-::: code-group
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -261,7 +256,6 @@ export default defineWorkspace([ // [!code --]
   } // [!code --]
 ]) // [!code --]
 ```
-:::
 
 ### Browser Provider Rework
 
@@ -315,9 +309,7 @@ import { utils } from 'vitest/browser' // [!code ++]
 const { getElementError } = utils // [!code ++]
 ```
 
-::: warning
-Both `@vitest/browser/context` and `@vitest/browser/utils` work at runtime during the transition period, but they will be removed in a future release.
-:::
+> **warning**: Both `@vitest/browser/context` and `@vitest/browser/utils` work at runtime during the transition period, but they will be removed in a future release.
 
 ### Pool Rework
 
@@ -356,7 +348,6 @@ export default defineConfig({
 
 Previously it was not possible to specify some pool related options per project when using [Vitest Projects](/guide/projects). With the new architecture this is no longer a blocker.
 
-::: code-group
 ```ts [Isolation per project]
 import { defineConfig } from 'vitest/config'
 
@@ -415,7 +406,6 @@ export default defineConfig({
   },
 })
 ```
-:::
 
 See [Recipes](/guide/recipes) for more examples.
 
@@ -587,8 +577,6 @@ If you want to modify the object, you will use [replaceProperty API](https://jes
 ### Done Callback
 
 Vitest does not support the callback style of declaring tests. You can rewrite them to use `async`/`await` functions, or use Promise to mimic the callback style.
-
-<!--@include: ./examples/promise-done.md-->
 
 ### Hooks
 

@@ -25,7 +25,6 @@ from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 
-
 # Service name is required for most backends
 resource = Resource(attributes={
     SERVICE_NAME: "python-service"
@@ -65,20 +64,18 @@ The server is now running, navigate to [http://127.0.0.1:5000](http://127.0.0.1:
 
 Refresh page couple of times to get more traces exported.
 
-![Traces Sample Configration](./images/python_app.png)
-
-
+[Traces Sample Configration]
 
 Traces are captured, you can check these captured traces here [https://cloud.openobserve.ai/web/traces](https://cloud.openobserve.ai/web/traces).
 
 Filter traces with your service name `python-service`
 
-![Filter traces with service name](./images/filter_traces_python.png)
+[Filter traces with service name]
 
 Click on any trace to check trace data
 
-![Trace details](./images/trace_details_1.png)
+[Trace details]
 
 Trace can have multiple spans, each span represents single operation or task within that trace. Click on any span to check span details.
 
-![Trace details](./images/trace_details_2.png)
+[Trace details]

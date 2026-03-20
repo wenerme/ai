@@ -1,19 +1,12 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # xAI
 
 https://docs.x.ai/docs
 
-:::tip
-
-**We support ALL xAI models, just set `model=xai/<any-model-on-xai>` as a prefix when sending litellm requests**
-
-:::
+> **tip**: **We support ALL xAI models, just set `model=xai/<any-model-on-xai>` as a prefix when sending litellm requests**
 
 ## Supported Models
-
-
 
 **Latest Release** - Grok 4.1 Fast: Optimized for high-performance agentic tool calling with 2M context and prompt caching.
 
@@ -183,7 +176,6 @@ Here's how to call a XAI model with the LiteLLM Proxy Server
         api_key: api-key                 # api key to send your model
   ```
 
-
 2. Start the proxy 
 
   ```bash
@@ -192,9 +184,9 @@ Here's how to call a XAI model with the LiteLLM Proxy Server
 
 3. Send Request to LiteLLM Proxy Server
 
-  <Tabs>
+  
 
-  <TabItem value="openai" label="OpenAI Python v1.0.0+">
+  
 
   ```python showLineNumbers
   import openai
@@ -215,9 +207,9 @@ Here's how to call a XAI model with the LiteLLM Proxy Server
 
   print(response)
   ```
-  </TabItem>
+  
 
-  <TabItem value="curl" label="curl">
+  
 
   ```shell
   curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -233,18 +225,13 @@ Here's how to call a XAI model with the LiteLLM Proxy Server
       ],
   }'
   ```
-  </TabItem>
+  
 
-  </Tabs>
-
+  
 
 ## Reasoning Usage
 
 LiteLLM supports reasoning usage for xAI models.
-
-<Tabs>
-
-<TabItem value="python" label="LiteLLM Python SDK">
 
 ```python showLineNumbers title="reasoning with xai/grok-3-mini-beta"
 import litellm
@@ -266,9 +253,6 @@ print(completion.usage.completion_tokens)
 print("\nNumber of reasoning tokens (input):")
 print(completion.usage.completion_tokens_details.reasoning_tokens)
 ```
-</TabItem>
-
-<TabItem value="curl" label="LiteLLM Proxy - OpenAI SDK Usage">
 
 ```python showLineNumbers title="reasoning with xai/grok-3-mini-beta"
 import openai
@@ -295,9 +279,6 @@ print(completion.usage.completion_tokens)
 print("\nNumber of reasoning tokens (input):")
 print(completion.usage.completion_tokens_details.reasoning_tokens)
 ```
-
-</TabItem>
-</Tabs>
 
 **Example Response:**
 

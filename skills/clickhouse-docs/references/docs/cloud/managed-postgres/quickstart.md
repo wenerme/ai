@@ -1,23 +1,9 @@
 ---
-slug: /cloud/managed-postgres/quickstart
-sidebar_label: 'Quickstart'
 title: 'Quickstart'
 description: 'Experience NVMe-powered Postgres performance and add real-time analytics with native ClickHouse integration'
 keywords: ['managed postgres', 'quickstart', 'getting started', 'create database', 'nvme', 'performance']
 doc_type: 'guide'
 ---
-
-import PrivatePreviewBadge from '@theme/badges/PrivatePreviewBadge';
-import Image from '@theme/IdealImage';
-import createPg from '@site/static/images/managed-postgres/create-service.png';
-import pgOverview from '@site/static/images/managed-postgres/overview.png';
-import connectModal from '@site/static/images/managed-postgres/connect-modal.png';
-import integrationLanding from '@site/static/images/managed-postgres/integration-landing.png';
-import postgresAnalyticsForm from '@site/static/images/managed-postgres/postgres-analytics-form.png';
-import tablePicker from '@site/static/images/managed-postgres/table-picker.png';
-import getClickHouseHost from '@site/static/images/managed-postgres/get-clickhouse-host.png';
-import analyticsList from '@site/static/images/managed-postgres/analytics-list.png';
-import replicatedTables from '@site/static/images/managed-postgres/replicated-tables.png';
 
 # Quickstart for Managed Postgres
 
@@ -117,11 +103,10 @@ INSERT 0 1000000
 Time: 3596.542 ms (00:03.597)
 ```
 
-:::tip NVMe Performance
+> **tip**: NVMe Performance
 1 million rows with JSONB data inserted in under 4 seconds. On traditional cloud databases using network-attached storage like EBS, this same operation typically takes 2-3x longer due to network round-trip latency and IOPS throttling. NVMe storage eliminates these bottlenecks by keeping storage physically attached to the compute.
 
 Performance varies based on instance size, current load, and data characteristics.
-:::
 
 Insert 1,000 users:
 
@@ -222,11 +207,10 @@ ORDER BY events DESC;
 Time: 224.670 ms
 ```
 
-:::note Your Postgres is ready
+> **note**: Your Postgres is ready
 At this point, you have a fully functional, high-performance Postgres database ready for your transactional workloads.
 
 Continue to Part 2 to see how native ClickHouse integration can supercharge your analytics.
-:::
 
 ---
 
@@ -243,9 +227,9 @@ This section shows you how to replicate your Postgres data to ClickHouse and que
 Now that we have tables and data in Postgres, let's replicate the tables to ClickHouse for analytics. We start by clicking on **ClickHouse integration** in the sidebar. Then you can click on **Replicate data in ClickHouse**.
 <Image img={integrationLanding} alt="Managed Postgres integration empty" size="md" border/>
 In the form that follows, you can enter a name for your integration and select an existing ClickHouse instance to replicate to. If you don't have a ClickHouse instance yet, you can create one directly from this form.
-:::info Important
+> **info**: Important
 Make sure the ClickHouse service you select is Running before proceeding.
-:::
+
 <Image img={postgresAnalyticsForm} alt="Managed Postgres integration form" size="md" border/>
 
 Click on **Next**, to be taken to the table picker. Here all you need to do is:
@@ -385,11 +369,10 @@ Time: 1245.560 ms  -- Same query on Postgres
 | Top users (5 aggregations) | 555 ms | 164 ms | 3.4x |
 | User engagement (JOIN + aggregations) | 1,246 ms | 170 ms | 7.3x |
 
-:::tip When to use ClickHouse
+> **tip**: When to use ClickHouse
 Even on this 1M row dataset, ClickHouse delivers 3-7x faster performance on complex analytical queries with JOINs and multiple aggregations. The difference becomes even more dramatic at larger scales (100M+ rows), where ClickHouse's columnar storage and vectorized execution can deliver 10-100x speedups.
 
 Query times vary based on instance size, network latency between services, data characteristics, and current load.
-:::
 
 ## Cleanup {#cleanup}
 

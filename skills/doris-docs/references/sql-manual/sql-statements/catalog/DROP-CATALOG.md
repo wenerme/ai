@@ -26,7 +26,6 @@ The name of the catalog to be dropped.
 |:----------|:--------|:--------------------------------------------------------------------|
 | DROP_PRIV | Catalog | The DROP_PRIV permission for the corresponding catalog is required. |
 
-
 ## Example
 
 1. Drop catalog hive
@@ -34,5 +33,3 @@ The name of the catalog to be dropped.
    ```sql
    DROP CATALOG hive;
    ```
-
-

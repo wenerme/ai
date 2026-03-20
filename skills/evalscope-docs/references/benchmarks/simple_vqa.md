@@ -1,6 +1,5 @@
 # SimpleVQA
 
-
 ## Overview
 
 SimpleVQA is the first comprehensive multimodal benchmark to evaluate the factuality ability of MLLMs to answer natural language short questions. It features high-quality, challenging queries with static and timeless reference answers.
@@ -28,7 +27,6 @@ SimpleVQA is the first comprehensive multimodal benchmark to evaluate the factua
 - LLM judge uses detailed grading rubric for semantic matching
 - Rich metadata includes language, source, and atomic facts
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ SimpleVQA is the first comprehensive multimodal benchmark to evaluate the factua
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -58,7 +55,6 @@ SimpleVQA is the first comprehensive multimodal benchmark to evaluate the factua
 | Images per Sample | min: 1, max: 1, mean: 1 |
 | Resolution Range | 106x56 - 5119x3413 |
 | Formats | jpeg, png |
-
 
 ## Sample Example
 
@@ -134,5 +130,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

@@ -7,7 +7,6 @@ keywords: ['MySQL', 'Parquet', 'CSV', 'JSON']
 ---
 
 {frontMatter.description}
-{/* truncate */}
 
 ## Exporting MySQL Data to Parquet, CSV, or JSON Using ClickHouse \{#exporting-mysql-data-to-parquet-csv-or-json-using-clickhouse\}
 
@@ -52,9 +51,7 @@ We can pipe the output of this query to a file using `INTO OUTFILE`. Use `FORMAT
 INTO OUTFILE 'my_output_file.parquet'"
 ```
 
-:::note
-Because the name of the output file has a `.parquet` extension, ClickHouse assumes we want the Parquet format, so notice we omitted the `FORMAT Parquet` clause.
-:::
+> **note**: Because the name of the output file has a `.parquet` extension, ClickHouse assumes we want the Parquet format, so notice we omitted the `FORMAT Parquet` clause.
 
 ## Export MySQL to CSV \{#export-mysql-to-csv\}
 

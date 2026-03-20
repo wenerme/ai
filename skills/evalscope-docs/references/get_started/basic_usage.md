@@ -40,7 +40,7 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-:::
+
 :::{tab-item} Using Python Dictionary
 ```python
 from evalscope.run import run_task
@@ -53,7 +53,7 @@ task_cfg = {
 
 run_task(task_cfg=task_cfg)
 ```
-:::
+
 :::{tab-item} Using YAML File
 ```{code-block} yaml
 :caption: config.yaml
@@ -69,7 +69,7 @@ from evalscope.run import run_task
 
 run_task(task_cfg="config.yaml")
 ```
-:::
+
 :::{tab-item} Using JSON File
 ```{code-block} json
 :caption: config.json
@@ -85,7 +85,7 @@ from evalscope.run import run_task
 
 run_task(task_cfg="config.json")
 ```
-:::
+
 ::::
 
 ### View Evaluation Results

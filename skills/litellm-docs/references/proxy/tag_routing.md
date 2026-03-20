@@ -5,11 +5,9 @@ This is useful for
 - Implementing free / paid tiers for users
 - Controlling model access per team, example Team A can access gpt-4 deployment A, Team B can access gpt-4 deployment B (LLM Access Control For Teams )
 
-:::info
-## See here for spend tags
+> **info**: ## See here for spend tags
 - [Track spend per tag](cost_tracking#-custom-tags)
 - [Setup Budgets per Virtual Key, Team](users)
-:::
 
 ## Quick Start
 
@@ -95,7 +93,6 @@ Response
  }
 }
 ```
-
 
 ### 3. Make Request with `tags=["paid"]`
 
@@ -298,14 +295,9 @@ When a regex matches, `tag_routing` is written into request metadata and flows t
 
 ### Security note
 
-:::caution
-
-**`User-Agent` is a client-supplied header and can be set to any value.** Any API consumer can send `User-Agent: claude-code/1.0` regardless of whether they are actually using Claude Code.
+> **caution**: **`User-Agent` is a client-supplied header and can be set to any value.** Any API consumer can send `User-Agent: claude-code/1.0` regardless of whether they are actually using Claude Code.
 
 Do not rely on `tag_regex` routing to enforce access controls or spend limits â€” use [team/key-based routing](./users) for that. `tag_regex` is a **traffic classification hint** (useful for billing visibility, capacity planning, and routing convenience), not a security boundary.
-
-:::
-
 
 ---
 
@@ -313,11 +305,7 @@ Do not rely on `tag_regex` routing to enforce access controls or spend limits â€
 
 LiteLLM Proxy supports team-based tag routing, allowing you to associate specific tags with teams and route requests accordingly. Example **Team A can access gpt-4 deployment A, Team B can access gpt-4 deployment B** (LLM Access Control For Teams)
 
-:::info
-
-This is an enterprise feature, [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
-
-:::
+> **info**: This is an enterprise feature, [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
 
 Here's how to set up and use team-based tag routing using curl commands:
 
@@ -429,5 +417,3 @@ Here's how to set up and use team-based tag routing using curl commands:
    ```
 
 By following these steps and using these curl commands, you can implement and test team-based tag routing in your LiteLLM Proxy setup, ensuring that different teams are routed to the appropriate models or deployments based on their assigned tags.
-
-

@@ -1,6 +1,5 @@
 ---
 title: Test Tags | Guide
-outline: deep
 ---
 
 # Test Tags <Version>4.1.0</Version> {#test-tags}
@@ -44,8 +43,7 @@ export default defineConfig({
 })
 ```
 
-::: warning
-If several tags have the same options and are used on the same test, they will be resolved in the order they were specified, or sorted by priority first (the lower the number, the higher the priority). Tags without a defined priority are merged first and will be overridden by higher priority ones:
+> **warning**: If several tags have the same options and are used on the same test, they will be resolved in the order they were specified, or sorted by priority first (the lower the number, the higher the priority). Tags without a defined priority are merged first and will be overridden by higher priority ones:
 
 ```ts
 test('flaky database test', { tags: ['flaky', 'db'] })
@@ -60,7 +58,6 @@ If test defines its own options, they will have the highest priority:
 test('flaky database test', { tags: ['flaky', 'db'], timeout: 120_000 })
 // { timeout: 120_000, retry: 3 }
 ```
-:::
 
 If you are using TypeScript, you can enforce what tags are available by augmenting the `TestTags` type with a property that contains a union of strings (make sure this file is included by your `tsconfig`):
 
@@ -157,8 +154,7 @@ test('dashboard renders items', () => {
 })
 ```
 
-::: danger
-A `@module-tag` in a JSDoc comment applies to all tests in that file, not just the test it precedes.
+> **danger**: A `@module-tag` in a JSDoc comment applies to all tests in that file, not just the test it precedes.
 
 Consider this example:
 
@@ -193,7 +189,6 @@ describe('forms', () => {
   })
 })
 ```
-:::
 
 ## Filtering Tests by Tag
 
@@ -206,8 +201,8 @@ vitest --tags-filter="frontend and backend"
 
 If you are running Vitest UI, you can start a filter with a `tag:` prefix to filter out tests by tags using the same tags expression syntax:
 
-<img alt="The tags filter in Vitest UI" img-light src="/ui/light-ui-tags.png">
-<img alt="The tags filter in Vitest UI" img-dark src="/ui/dark-ui-tags.png">
+[The tags filter in Vitest UI]
+[The tags filter in Vitest UI]
 
 If you are using a programmatic API, you can pass down a `tagsFilter` option to [`startVitest`](/guide/advanced/#startvitest) or [`createVitest`](/guide/advanced/#createvitest):
 
@@ -242,9 +237,8 @@ You can combine tags in different ways. Vitest supports these keywords:
 
 The parser follows standard [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence): `not`/`!` has the highest priority, then `and`/`&&`, then `or`/`||`. Use parentheses to override default precedence.
 
-::: warning Reserved Names
+> **warning**: Reserved Names
 Tag names cannot be `and`, `or`, or `not` (case-insensitive) as these are reserved keywords. Tag names also cannot contain special characters (`(`, `)`, `&`, `|`, `!`, `*`, spaces) as these are used by the expression parser.
-:::
 
 ### Wildcards
 

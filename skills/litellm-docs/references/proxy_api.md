@@ -56,7 +56,6 @@ For a complete list of models/providers that you can call with LiteLLM, [check o
     * claude-2
     * claude-instant-v1
 
-
 ## For OpenInterpreter
 This was initially built for the Open Interpreter community. If you're trying to use this feature in there, here's how you can do it:  
 **Note**: You will need to clone and modify the Github repo, until [this PR is merged.](https://github.com/KillianLucas/open-interpreter/pull/288)
@@ -81,6 +80,5 @@ poetry run interpreter --model litellm_proxy/claude-2
 And that's it! 
 
 Now you can call any model you like!
-
 
 Want us to add more models? [Let us know!](https://github.com/BerriAI/litellm/issues/new/choose)

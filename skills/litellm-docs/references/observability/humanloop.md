@@ -1,21 +1,12 @@
-import Image from '@theme/IdealImage';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Humanloop
 
 [Humanloop](https://humanloop.com/docs/v5/getting-started/overview) enables product teams to build robust AI features with LLMs, using best-in-class tooling for Evaluation, Prompt Management, and Observability.
 
-
 ## Getting Started
 
 Use Humanloop to manage prompts across all LiteLLM Providers.
-
-
-
-<Tabs>
-
-<TabItem value="sdk" label="SDK">
 
 ```python
 import os 
@@ -33,11 +24,6 @@ resp = litellm.completion(
     # humanloop_api_key="..." ## alternative to setting env var
 )
 ```
-
-
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 1. Setup config.yaml
 
@@ -58,9 +44,6 @@ litellm --config config.yaml --detailed_debug
 
 3. Test it! 
 
-<Tabs>
-<TabItem value="curl" label="CURL">
-
 ```bash
 curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
 -H 'Content-Type: application/json' \
@@ -78,8 +61,6 @@ curl -L -X POST 'http://0.0.0.0:4000/v1/chat/completions' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="OpenAI Python SDK" label="OpenAI Python SDK">
 
 ```python
 import openai
@@ -107,13 +88,6 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
-
 **Expected Logs:**
 
 ```
@@ -125,15 +99,11 @@ https://api.openai.com/v1/ \
 
 ## How to set model 
 
-
 ## How to set model 
 
 ### Set the model on LiteLLM 
 
 You can do `humanloop/<litellm_model_name>`
-
-<Tabs>
-<TabItem value="sdk" label="SDK">
 
 ```python
 litellm.completion(
@@ -141,9 +111,6 @@ litellm.completion(
     ...
 )
 ```
-
-</TabItem>
-<TabItem value="proxy" label="PROXY">
 
 ```yaml
 model_list:
@@ -153,9 +120,6 @@ model_list:
       prompt_id: <humanloop_prompt_id>
       api_key: os.environ/OPENAI_API_KEY
 ```
-
-</TabItem>
-</Tabs>
 
 ### Set the model on Humanloop
 
@@ -173,4 +137,3 @@ This also returns the template model set on Humanloop.
   "model": "gpt-3.5-turbo" # your template model
 }
 ```
-

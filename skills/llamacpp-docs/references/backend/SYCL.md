@@ -35,10 +35,9 @@ The following releases are verified and recommended:
 
 |Commit ID|Tag|Release|Verified  Platform| Update date|
 |-|-|-|-|-|
-|24e86cae7219b0f3ede1d5abdf5bf3ad515cccb8|b5377 |[llama-b5377-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b5377/llama-b5377-bin-win-sycl-x64.zip) |Arc B580/Linux/oneAPI 2025.1<br>LNL Arc GPU/Windows 11/oneAPI 2025.1.1|2025-05-15|
-|3bcd40b3c593d14261fb2abfabad3c0fb5b9e318|b4040 |[llama-b4040-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b4040/llama-b4040-bin-win-sycl-x64.zip) |Arc A770/Linux/oneAPI 2024.1<br>MTL Arc GPU/Windows 11/oneAPI 2024.1| 2024-11-19|
-|fb76ec31a9914b7761c1727303ab30380fd4f05c|b3038 |[llama-b3038-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b3038/llama-b3038-bin-win-sycl-x64.zip) |Arc A770/Linux/oneAPI 2024.1<br>MTL Arc GPU/Windows 11/oneAPI 2024.1||
-
+|24e86cae7219b0f3ede1d5abdf5bf3ad515cccb8|b5377 |[llama-b5377-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b5377/llama-b5377-bin-win-sycl-x64.zip) |Arc B580/Linux/oneAPI 2025.1LNL Arc GPU/Windows 11/oneAPI 2025.1.1|2025-05-15|
+|3bcd40b3c593d14261fb2abfabad3c0fb5b9e318|b4040 |[llama-b4040-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b4040/llama-b4040-bin-win-sycl-x64.zip) |Arc A770/Linux/oneAPI 2024.1MTL Arc GPU/Windows 11/oneAPI 2024.1| 2024-11-19|
+|fb76ec31a9914b7761c1727303ab30380fd4f05c|b3038 |[llama-b3038-bin-win-sycl-x64.zip](https://github.com/ggml-org/llama.cpp/releases/download/b3038/llama-b3038-bin-win-sycl-x64.zip) |Arc A770/Linux/oneAPI 2024.1MTL Arc GPU/Windows 11/oneAPI 2024.1||
 
 ## News
 
@@ -96,7 +95,6 @@ The following releases are verified and recommended:
 |---------|---------|------------------------------------------------|
 | Linux   | Support | Ubuntu 22.04, Fedora Silverblue 39, Arch Linux |
 | Windows | Support | Windows 11                                     |
-
 
 ## Hardware
 
@@ -458,7 +456,6 @@ Output (example):
 a. Download & install cmake for Windows: https://cmake.org/download/ (CMake can also be installed from Visual Studio Installer)
 b. The new Visual Studio will install Ninja as default. (If not, please install it manually: https://ninja-build.org/)
 
-
 #### II. Build llama.cpp
 
 You could download the release package for Windows directly, which including binary files and depended oneAPI dll files.
@@ -557,7 +554,6 @@ Once the Visual Studio solution is created, follow these steps:
 4. In the right panel, find **Enable SYCL Offload** and set it to `Yes`.
 
 5. Apply the changes and save.
-
 
 *Navigation Path:*
 
@@ -661,7 +657,6 @@ build\bin\llama-completion.exe -no-cnv -m models\llama-2-7b.Q4_0.gguf -p "Buildi
 build\bin\llama-completion.exe -no-cnv -m models\llama-2-7b.Q4_0.gguf -p "Building a website can be done in 10 simple steps:\nStep 1:" -n 400 -e -ngl 99 -sm layer --mmap
 ```
 
-
 Note:
 
 - Upon execution, verify the selected device(s) ID(s) in the output log, which can for instance be displayed as follow:
@@ -675,7 +670,6 @@ Or
 ```sh
 use 1 SYCL GPUs: [0] with Max compute units:512
 ```
-
 
 ## Environment Variable
 
@@ -703,7 +697,7 @@ use 1 SYCL GPUs: [0] with Max compute units:512
 | GGML_SYCL_DISABLE_OPT | 0 (default) or 1 | Disable optimize features for Intel GPUs. (Recommended to 1 for intel devices older than Gen 10) |
 | GGML_SYCL_DISABLE_GRAPH | 0 or 1 (default) | Disable running computations through SYCL Graphs feature. Disabled by default because SYCL Graph is still on development, no better performance. |
 | GGML_SYCL_DISABLE_DNN | 0 (default) or 1 | Disable running computations through oneDNN and always use oneMKL. |
-| ZES_ENABLE_SYSMAN | 0 (default) or 1 | Support to get free memory of GPU by sycl::aspect::ext_intel_free_memory.<br>Recommended to use when --split-mode = layer |
+| ZES_ENABLE_SYSMAN | 0 (default) or 1 | Support to get free memory of GPU by sycl::aspect::ext_intel_free_memory.Recommended to use when --split-mode = layer |
 | UR_L0_ENABLE_RELAXED_ALLOCATION_LIMITS | 0 (default) or 1 | Support malloc device memory more than 4GB.|
 
 ## Design Rule
@@ -776,7 +770,7 @@ use 1 SYCL GPUs: [0] with Max compute units:512
   |Reason|Solution|
   |-|-|
   | The default context is too big. It leads to excessive memory usage.|Set `-c 8192` or a smaller value.|
-  | The model is too big and requires more memory than what is available.|Choose a smaller model or change to a smaller quantization, like Q5 -> Q4;<br>Alternatively, use more than one device to load model.|
+  | The model is too big and requires more memory than what is available.|Choose a smaller model or change to a smaller quantization, like Q5 -> Q4;Alternatively, use more than one device to load model.|
 
 - `ggml_backend_sycl_buffer_type_alloc_buffer: can't allocate 5000000000 Bytes of memory on device`
 

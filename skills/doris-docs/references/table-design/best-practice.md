@@ -13,8 +13,7 @@
 
 > Doris arranges data in three models: DUPLICATE KEY model, UNIQUE KEY model, and AGGREGATE KEY model.
 
-:::tip
-**Recommendations**
+> **tip**: **Recommendations**
 
 Because the data model is determined and **immutable** during table creation, it is important to select the most suitable data model.
 
@@ -24,11 +23,10 @@ Because the data model is determined and **immutable** during table creation, it
 4. Users with partial column update requirements might select from the following data models:
    1. Unique Key model (Merge-on-Write mode)
    2. Aggregate Key model (aggregated by REPLACE_IF_NOT_NULL)
-:::
 
 ### DUPLICATE KEY model
 
-![duplicate-key-model-example](/images/duplicate-key-model-example.png)
+[duplicate-key-model-example]
 
 When only the sorting columns are specified, rows with the same key will not be merged.
 
@@ -58,7 +56,7 @@ DISTRIBUTED BY HASH(sessionid, visitorid) BUCKETS 10;
 
 ### AGGREGATE KEY model
 
-![aggregate-key-model-example](/images/aggregate-key-model-example.png)
+[aggregate-key-model-example]
 
 Old and new records with the same AGGREGATE KEY will be aggregated. The currently supported aggregation methods are as follows:
 
@@ -127,8 +125,7 @@ Prefix indexes are built-in indexes in the Aggregate, Unique, and Duplicate data
 
 Prefix indexes are sparse indexes and cannot locate the exact row where a key is present. Instead, they can only roughly identify the range where the key may exist, and then use binary search algorithms to accurately locate the position of the key.
 
-:::tip
-**Recommendations**
+> **tip**: **Recommendations**
 
 1. When creating a table, **the correct column order can greatly improve query efficiency**.
    1.  Since the column order is specified during table creation, a table can only have one type of prefix index. However, this may not be efficient enough for queries based on the columns without prefix index. In such cases, users can adjust the column order by creating materialized views.
@@ -141,7 +138,6 @@ Prefix indexes are sparse indexes and cannot locate the exact row where a key is
    6. If possible, include the most frequently used query fields in the prefix index. Otherwise, specify them as the bucketing fields.
 3. The field lengths in the prefix index should be as explicit as possible because Doris can only utilize the prefix index for the first 36 bytes.
 4. If it is difficult to design a partitioning, bucketing, and prefix index strategy for your data range, consider introducing inverted indexes for acceleration.
-:::
 
 ### **ZoneMap index**
 
@@ -179,21 +175,16 @@ table_properties;
 SELECT * FROM table_name WHERE column_name MATCH_ANY | MATCH_ALL 'keyword1 ...';
 ```
 
-:::tip
-**Recommendations**
+> **tip**: **Recommendations**
 
 1. If it is difficult to design a partitioning, bucketing, and prefix index strategy for your data range, consider introducing inverted indexes for acceleration.
-:::
 
-
-:::caution
-**Restrictions**
+> **caution**: **Restrictions**
 
 1. Different data models have different restrictions on inverted index.
    1. Aggregate KEY model: only allows inverted index for Key columns
    2. Unique KEY model: allows inverted index for any column after enabling Merge-on-Write
    3. Duplicate KEY model: allows inverted index for any column
-:::
 
 ### **BloomFilter index**
 
@@ -221,8 +212,7 @@ PROPERTIES (
 );
 ```
 
-:::caution
-**Restrictions**
+> **caution**: **Restrictions**
 
 1. BloomFilter indexes are not supported for columns of type Tinyint, Float, and Double.
 2. BloomFilter indexes can only accelerate filtering using "in" and "=" operators.
@@ -232,7 +222,6 @@ PROPERTIES (
    3. Unlike Bitmap indexes, BloomFilter indexes are suitable for high-cardinality columns, such as UserID. If created on low-cardinality columns like "gender", each block will contain almost all values, rendering the BloomFilter index meaningless.
    4. It is suitable for cases with data cardinality around half of the total range.
    5. For high-cardinality columns with equality (=) queries, such as ID numbers, using BloomFilter indexes can greatly accelerate performance.
-:::
 
 ### **Ngram BloomFilter index**
 
@@ -256,14 +245,12 @@ DISTRIBUTED BY HASH(`siteid`) BUCKETS 10;
 -- With high data cardinality, there is no need to set a large BloomFilter size. Conversely, with low data cardinality, increase the BloomFilter size to enhance filtering efficiency.
 ```
 
-:::caution
-**Restrictions**
+> **caution**: **Restrictions**
 
 1. NGram BloomFilter index only supports string columns.
 2. NGram BloomFilter indexes and BloomFilter indexes are mutually exclusive, meaning that only one of them can be set for the same column.
 3. The sizes of the NGram and the BloomFilter can both be optimized based on the actual situation. If the NGram size is relatively small, you may increase the BloomFilter size.
 4. For data at the scale of billions or above, if there is a need for fuzzy matching, it is recommended to use inverted indexes or NGram BloomFilter.
-:::
 
 ### **Bitmap index**
 
@@ -278,8 +265,7 @@ bitmap_table (siteid)
 USING BITMAP COMMENT 'bitmap_siteid';
 ```
 
-:::caution
-**Restrictions**
+> **caution**: **Restrictions**
 
 1. Bitmap indexes can only be created on a single column.
 2. Bitmap indexes can be applied to all columns in the `Duplicate` and `Unique` Key models, as well as the key columns in the `Aggregate` Key model.
@@ -299,14 +285,12 @@ USING BITMAP COMMENT 'bitmap_siteid';
 5. Bitmap indexes should be constructed within a certain cardinality range. It is not suitable for extremely high or low cardinality cases.
    1. It is recommended for columns with a cardinality between 100 and 100,000, such as the occupation field or city field. If the duplication rate is too high, there won't be significant advantages to build Bitmap indexes compared to other types of indexes. If the duplication rate is too low, Bitmap indexes can significantly reduce space efficiency and performance. Specific types of queries, such as count, OR, and AND operations, only require bitwise operations.
    2. Bitmap indexes are more suitable for orthogonal queries.
-:::
 
 ## Field type
 
 Doris supports various field types, including precise deduplication with BITMAP, fuzzy deduplication with HLL, semi-structured data types such as ARRAY/MAP/JSON, as well as common numeric, string, and time types.
 
-:::tip
-**Recommendations**
+> **tip**: **Recommendations**
 
 1. VARCHAR 
    1. Variable-length string with a length range of 1-65533 bytes. It is stored in UTF-8 encoding, where English characters typically occupy 1 byte.
@@ -318,11 +302,10 @@ Doris supports various field types, including precise deduplication with BITMAP,
 3. Numeric fields: Choose the appropriate data type based on the required precision. There is no special restrictions on this.
 4. Time fields: Note that if there is a high precision requirement (timestamp accurate to milliseconds), you need to specify the use of datetime(6). Otherwise, such timestamps are not supported by default.
 5. It is recommended to use the JSON data type instead of string type for storing JSON data.
-:::
 
 ## Create table
 
-![create-table-example](/images/create-table-example.png)
+[create-table-example]
 
 Considerations in creating a table include the setting of data partitions and buckets in addition to data model, index, and field types.
 
@@ -402,11 +385,7 @@ PROPERTIES (
 show partitions from tbl_unique_merge_on_write_p;
 ```
 
-
-
-
-:::caution
-**Restrictions**
+> **caution**: **Restrictions**
 
 1. The database character set should be specified as UTF-8 since only UTF-8 is supported.
 2. The replication factor for tables must be 3 (if not specified, it defaults to 3).
@@ -427,7 +406,6 @@ show partitions from tbl_unique_merge_on_write_p;
    5. Dimension tables, which grow slowly, can use a single partition and apply bucketing based on commonly used query conditions (where the data distribution of the bucketing field is relatively even).
    6. Fact tables: We recommend using DATE or DATETIME as the partitioning column. In most cases, one partition per day is sufficient. For the bucketing strategy, use frequently queried columns with relatively even data distribution as the bucketing columns.
 
-
 5. For scenarios where there is a large amount of historical partitioned data but the historical data is relatively small, unbalanced, or queried infrequently, you can use the following approach to place the data in special partitions. You can create historical partitions for historical data of small sizes (e.g., yearly partitions, monthly partitions). For example, you can create historical partitions for data `FROM ("2000-01-01") TO ("2022-01-01") INTERVAL 1 YEAR`:
   
    ```sql
@@ -447,6 +425,3 @@ show partitions from tbl_unique_merge_on_write_p;
    PARTITION p99991231 VALUES [('9999-12-31'), (MAXVALUE)) 
 
    ```
-
-:::
-

@@ -28,7 +28,7 @@ In Grafana, a server-side expression is a way to transform or calculate data aft
 
 For general information on Grafana expressions, refer to [Write expression queries](ref:expressions).
 
-![Example of a SQL expression](/media/docs/sql-expressions/sql-expressions-example-1.png)
+[Example of a SQL expression]
 
 ## Before you begin
 
@@ -103,7 +103,7 @@ After you have added a SQL expression, you can select from other data source que
 The **RefID** is a unique identifier assigned to each query within a Grafana panel that serves as a reference name for that query's data.
 {{< /admonition >}}
 
-![Using the RefID](/media/docs/sql-expressions/using-the-RefID.png)
+[Using the RefID]
 
 ## Workflow to build SQL expressions
 
@@ -335,11 +335,11 @@ This approach ensures that a schema exists even when one query returns no data.
 
    The panel displays the CPU usage by Go garbage collection (GC) over time, broken down by namespace.
 
-   ![Example using a Prometheus query](/media/docs/sql-expressions/sql-expressions-prom-query-example.png)
+   [Example using a Prometheus query]
 
 2. Add the SQL expression `SELECT * from A`. After you add a SQL expression that selects from RefID A, Grafana converts it to a table response:
 
-   ![Add the SQL expression](/media/docs/sql-expressions/add-the-sql-expression.png)
+   [Add the SQL expression]
 
 ## LLM integration
 

@@ -44,13 +44,10 @@ RENAME PARTITION old_partition_name new_partition_name;
 
 4. Modify the column name
 
-:::tip Tips
+> **tip**: Tips
 This feature is supported since the Apache Doris 1.2 version
-:::
 
 Modify the column name
-
-
 
 grammar:
 
@@ -61,7 +58,6 @@ RENAME COLUMN old_column_name new_column_name;
 Notice:
 
 - When creating a table, you need to set 'light_schema_change=true' in the property.
-
 
 ## Example
 
@@ -96,4 +92,3 @@ ALTER, TABLE, RENAME, ALTER TABLE
 ```
 
 ## Best Practice
-

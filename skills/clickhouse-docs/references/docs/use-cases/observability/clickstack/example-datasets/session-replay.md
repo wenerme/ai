@@ -1,25 +1,14 @@
 ---
-slug: /use-cases/observability/clickstack/example-datasets/session-replay-demo
 title: 'Session Replay Demo'
-sidebar_position: 4
-pagination_prev: null
-pagination_next: null
 description: 'Interactive demo application showing how to instrument a web app for ClickStack session replay'
 doc_type: 'guide'
 keywords: ['clickstack', 'session replay', 'browser sdk', 'demo', 'observability', 'instrumentation']
 ---
 
-import Image from '@theme/IdealImage';
-import api_key from '@site/static/images/clickstack/api-key.png';
-import demo_app from '@site/static/images/clickstack/session-replay/demo-app.png';
-import session_replay from '@site/static/images/clickstack/session-replay/session-replay.png';
-import replay_search from '@site/static/images/clickstack/session-replay/replay-search-view.png';
-
 :::note[TL;DR]
 This guide walks through instrumenting a web application for session replay using the ClickStack Browser SDK. Unlike other sample datasets that load pre-generated data, this demo provides an interactive application where you generate session data through your own interactions.
 
 Time required: 10-15 minutes
-:::
 
 ## Overview {#overview}
 
@@ -77,9 +66,7 @@ export CLICKSTACK_API_KEY='your-api-key-here'
 docker-compose --profile demo up demo-app
 ```
 
-:::note
-Ensure you run this command in the same terminal where you exported the `CLICKSTACK_API_KEY` variable.
-:::
+> **note**: Ensure you run this command in the same terminal where you exported the `CLICKSTACK_API_KEY` variable.
 
 Open [http://localhost:3000](http://localhost:3000) in your browser and interact with the app — search for topics, filter by category, view code examples, and bookmark items.
 

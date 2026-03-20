@@ -14,7 +14,6 @@ Rounds the number `x` to the specified number of digits.
 - If `x` or `d` is `null`, returns `null`.
 - If `d` is a column and the first argument is of type `Decimal`, the resulting `Decimal` will have the same number of decimal places as the input `Decimal`.
 
-
 ## Alias
 
 - `DROUND`

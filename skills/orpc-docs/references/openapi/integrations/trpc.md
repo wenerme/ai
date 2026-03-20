@@ -9,8 +9,6 @@ This guide explains how to integrate oRPC with tRPC, allowing you to leverage oR
 
 ## Installation
 
-::: code-group
-
 ```sh [npm]
 npm install @orpc/trpc@latest
 ```
@@ -31,8 +29,6 @@ bun add @orpc/trpc@latest
 deno add npm:@orpc/trpc@latest
 ```
 
-:::
-
 ## OpenAPI Support
 
 By converting a [tRPC router](https://trpc.io/docs/server/routers) to an [oRPC router](/docs/router), you can utilize most oRPC features, including OpenAPI specification generation and request handling.
@@ -45,8 +41,7 @@ export const t = initTRPC.context<Context>().meta<ORPCMeta>().create()
 const orpcRouter = toORPCRouter(trpcRouter)
 ```
 
-::: warning
-Ensure you set the `.meta` type to `ORPCMeta` when creating your tRPC builder. This is required for OpenAPI features to function properly.
+> **warning**: Ensure you set the `.meta` type to `ORPCMeta` when creating your tRPC builder. This is required for OpenAPI features to function properly.
 
 ```ts
 const example = t.procedure
@@ -56,8 +51,6 @@ const example = t.procedure
     return `Hello, ${input.name}!`
   })
 ```
-
-:::
 
 ### Specification Generation
 
@@ -78,9 +71,7 @@ const spec = await openAPIGenerator.generate(orpcRouter, {
 })
 ```
 
-::: info
-Learn more about [oRPC OpenAPI Specification Generation](/docs/openapi/openapi-specification).
-:::
+> **info**: Learn more about [oRPC OpenAPI Specification Generation](/docs/openapi/openapi-specification).
 
 ### Request Handling
 
@@ -104,9 +95,7 @@ export async function fetch(request: Request) {
 }
 ```
 
-::: info
-Learn more about [oRPC OpenAPI Handler](/docs/openapi/openapi-handler).
-:::
+> **info**: Learn more about [oRPC OpenAPI Handler](/docs/openapi/openapi-handler).
 
 ## Error Formatting
 

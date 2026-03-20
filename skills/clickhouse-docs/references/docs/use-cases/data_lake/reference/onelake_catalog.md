@@ -1,16 +1,10 @@
 ---
-slug: /use-cases/data-lake/onelake-catalog
-sidebar_label: 'Fabric OneLake'
 title: 'Fabric OneLake'
-pagination_prev: null
-pagination_next: null
 description: 'In this guide, we will walk you through the steps to query your data in Microsoft OneLake.'
 keywords: ['OneLake', 'Data Lake', 'Fabric']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-import BetaBadge from '@theme/badges/BetaBadge';
 
 <BetaBadge/>
 
@@ -18,10 +12,8 @@ ClickHouse supports integration with multiple catalogs (OneLake, Unity, Glue, Po
 
 Microsoft OneLake supports multiple table formats for their lakehouse. With ClickHouse, you can query Iceberg tables.
 
-:::note
-As this feature is beta, you will need to enable it using:
+> **note**: As this feature is beta, you will need to enable it using:
 `SET allow_database_iceberg = 1;`
-:::
 
 ## Gathering Requirements OneLake {#gathering-requirements}
 
@@ -115,9 +107,8 @@ congestion_surcharge:  ᴺᵁᴸᴸ
 source_file:           green_tripdata_2017-05.parquet
 ```
 
-:::note Backticks required
+> **note**: Backticks required
 Backticks are required because ClickHouse doesn't support more than one namespace.
-:::
 
 To inspect the table DDL:
 

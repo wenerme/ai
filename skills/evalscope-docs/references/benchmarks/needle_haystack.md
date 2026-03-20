@@ -1,6 +1,5 @@
 # Needle-in-a-Haystack
 
-
 ## Overview
 
 Needle in a Haystack is a benchmark focused on evaluating information retrieval capabilities in long-context scenarios. It tests a model's ability to find specific information (needles) within large documents (haystacks).
@@ -29,7 +28,6 @@ Needle in a Haystack is a benchmark focused on evaluating information retrieval 
 - Configurable via extra_params: needles, context lengths, depth intervals, tokenizer
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/needle_haystack.html)
 
-
 ## Properties
 
 | Property | Value |
@@ -41,7 +39,6 @@ Needle in a Haystack is a benchmark focused on evaluating information retrieval 
 | **Metrics** | `acc` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `test` |
-
 
 ## Data Statistics
 
@@ -159,5 +156,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

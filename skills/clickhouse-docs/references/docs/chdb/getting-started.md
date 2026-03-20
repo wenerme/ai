@@ -1,7 +1,5 @@
 ---
 title: 'Getting started with chDB'
-sidebar_label: 'Getting started'
-slug: /chdb/getting-started
 description: 'chDB is an in-process SQL OLAP Engine powered by ClickHouse'
 keywords: ['chdb', 'embedded', 'clickhouse-lite', 'in-process', 'in process']
 doc_type: 'guide'
@@ -140,9 +138,7 @@ chdb.query(
 )
 ```
 
-:::warning
-This is fine to do with variables defined in your program, but don't do it with user-provided input, otherwise your query is open to SQL injection.
-:::
+> **warning**: This is fine to do with variables defined in your program, but don't do it with user-provided input, otherwise your query is open to SQL injection.
 
 ## Configuring the output format {#configuring-the-output-format}
 

@@ -1,9 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # MCP Zero Trust Auth (JWT Signer)
 
-![Zero Trust MCP Gateway](/img/mcp_zero_trust_gateway.png)
+[Zero Trust MCP Gateway]
 
 MCP servers have no built-in way to verify that a request actually came through LiteLLM. Without this guardrail, any client that can reach your MCP server directly can call tools — bypassing your access controls entirely.
 

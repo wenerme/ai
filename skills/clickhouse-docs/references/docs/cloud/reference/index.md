@@ -1,5 +1,4 @@
 ---
-slug: /cloud/reference
 keywords: ['Cloud', 'reference', 'architecture', 'SharedMergeTree', 'Compute-compute Separation', 'Bring Your Own Cloud', 'Changelogs', 'Supported Cloud Regions', 'Cloud Compatibility']
 title: 'Overview'
 hide_title: true

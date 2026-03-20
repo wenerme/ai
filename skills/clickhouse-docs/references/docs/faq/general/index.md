@@ -1,7 +1,4 @@
 ---
-slug: /faq/general/
-sidebar_position: 1
-sidebar_label: 'General questions about ClickHouse'
 keywords: ['faq', 'questions', 'what is']
 title: 'General Questions About ClickHouse'
 description: 'Index page listing general questions about ClickHouse'
@@ -21,6 +18,5 @@ doc_type: 'landing-page'
 - [Why not use something like MapReduce?](../../faq/general/mapreduce.md)
 - [How do I contribute code to ClickHouse?](/knowledgebase/how-do-i-contribute-code-to-clickhouse)
 
-:::info Don't see what you're looking for?
+> **info**: Don't see what you're looking for?
 Check out our [Knowledge Base](/knowledgebase/) and also browse the many helpful articles found here in the documentation.
-:::

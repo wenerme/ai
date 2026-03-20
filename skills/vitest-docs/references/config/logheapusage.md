@@ -1,6 +1,5 @@
 ---
 title: logHeapUsage | Config
-outline: deep
 ---
 
 # logHeapUsage

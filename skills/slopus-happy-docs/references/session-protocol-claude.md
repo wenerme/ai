@@ -368,7 +368,7 @@ Relevant files:
 1. On startup with existing `sessionId`, it marks all existing messages as processed before watching.
 2. It de-duplicates globally with `processedMessageKeys`:
    - `user`/`assistant`/`system`: key = `uuid`
-   - `summary`: key = `summary:<leafUuid>:<summary>`
+   - `summary`: key = `summary:<leafUuid>:`
 3. On session changes (`onNewSession`), it:
    - skips same/already-pending/already-finished session IDs,
    - keeps watching old sessions too (Claude can still append there),

@@ -82,7 +82,6 @@ Users executing this SQL command must have at least the following permissions:
 |:--------------| :------------- |:---------------------------------------------|
 | SELECT_PRIV   | Table    | When executing DESC, you need to have SELECT_PRIV permission on the queried table |
 
-
 ## Examples
 
 1. Display Base Table Schema

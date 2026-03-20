@@ -1,13 +1,4 @@
-<!--Copyright 2024 The HuggingFace Team. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-⚠️ Note that this file is in Markdown but contain specific syntax for our doc-builder (similar to MDX) that may not be
-rendered properly in your Markdown viewer.
--->
+
 
 # torchao
 
@@ -331,7 +322,6 @@ from torchao.quantization import Int4WeightOnlyConfig
 from torchao.dtypes import Int4XPULayout
 from torchao.quantization.quant_primitives import ZeroPointDomain
 
-
 quant_config = Int4WeightOnlyConfig(group_size=128, layout=Int4XPULayout(), zero_point_domain=ZeroPointDomain.INT, int4_packing_format="plain_int32")
 quantization_config = TorchAoConfig(quant_type=quant_config)
 
@@ -586,7 +576,6 @@ correct_output_text = tokenizer.batch_decode(
     generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False
 )
 print("Response:", correct_output_text[0][len(prompt) :])
-
 
 # Load model from saved checkpoint
 reloaded_model = AutoModelForCausalLM.from_pretrained(

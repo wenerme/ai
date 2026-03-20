@@ -32,9 +32,7 @@ app.whenReady().then(() => {
 })
 ```
 
-:::info
-Channel `start-orpc-server` is arbitrary. you can use any name that fits your needs.
-:::
+> **info**: Channel `start-orpc-server` is arbitrary. you can use any name that fits your needs.
 
 ## Preload Process
 
@@ -66,6 +64,4 @@ const link = new RPCLink({
 clientPort.start()
 ```
 
-:::info
-This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).
-:::
+> **info**: This only shows how to configure the link. For full client examples, see [Client-Side Clients](/docs/client/client-side).

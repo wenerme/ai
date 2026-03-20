@@ -61,12 +61,10 @@ Connect to the MySQL client before executing the LOAD DATA command:
 mysql --local-infile  -h <fe_ip> -P <fe_query_port> -u root -D testdb
 ```
 
-:::caution
-Specific parameter options need to be used during the connection:
+> **caution**: Specific parameter options need to be used during the connection:
 
 1. When connecting to the MySQL client, `--local-infile` must be included, otherwise an error might be thrown.
 2. When connecting via JDBC, `allowLoadLocalInfile=true` must be specified in the URL.
-:::
 
 3. Create the test table
 

@@ -1,6 +1,5 @@
 # GSM8K
 
-
 ## Overview
 
 GSM8K (Grade School Math 8K) is a high-quality dataset of 8.5K linguistically diverse grade school math word problems created by human problem writers. The dataset is specifically designed to evaluate and improve the multi-step mathematical reasoning capabilities of language models.
@@ -27,7 +26,6 @@ GSM8K (Grade School Math 8K) is a high-quality dataset of 8.5K linguistically di
 - The metric extracts numerical values for accuracy comparison
 - Supports both zero-shot and few-shot evaluation modes
 
-
 ## Properties
 
 | Property | Value |
@@ -40,7 +38,6 @@ GSM8K (Grade School Math 8K) is a high-quality dataset of 8.5K linguistically di
 | **Default Shots** | 4-shot |
 | **Evaluation Split** | `test` |
 | **Train Split** | `train` |
-
 
 ## Data Statistics
 
@@ -81,8 +78,7 @@ GSM8K (Grade School Math 8K) is a high-quality dataset of 8.5K linguistically di
 Please reason step by step, and put your final answer within \boxed{{}}.
 ```
 
-<details>
-<summary>Few-shot Template</summary>
+Few-shot Template
 
 ```text
 Here are some examples of how to solve similar problems:
@@ -92,8 +88,6 @@ Here are some examples of how to solve similar problems:
 {question}
 Please reason step by step, and put your final answer within \boxed{{}}.
 ```
-
-</details>
 
 ## Usage
 
@@ -124,5 +118,3 @@ task_cfg = TaskConfig(
 
 run_task(task_cfg=task_cfg)
 ```
-
-

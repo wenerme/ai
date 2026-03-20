@@ -177,4 +177,4 @@ ERROR 1105 (HY000): errCode = 2, detailMessage = Can not find the compatibility 
 
 ### Keywords
 
-ARRAY, DIFFERENCE, ARRAY_DIFFERENCE 
+ARRAY, DIFFERENCE, ARRAY_DIFFERENCE

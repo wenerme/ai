@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+
 
 # Langchain, OpenAI SDK, LlamaIndex, Instructor, Curl examples
 
@@ -31,30 +30,19 @@ This doc covers:
 *   /chat/completion
 *   /embedding
 
-
 These are **selected examples**. LiteLLM Proxy is **OpenAI-Compatible**, it works with any project that calls OpenAI. Just change the `base_url`, `api_key` and `model`.
 
 To pass provider-specific args, [go here](https://docs.litellm.ai/docs/completion/provider_specific_params#proxy-usage)
 
 To drop unsupported params (E.g. frequency_penalty for bedrock with librechat), [go here](https://docs.litellm.ai/docs/completion/drop_params#openai-proxy-usage)
 
-
-:::info
-
-**Input, Output, Exceptions are mapped to the OpenAI format for all supported models**
-
-:::
+> **info**: **Input, Output, Exceptions are mapped to the OpenAI format for all supported models**
 
 How to send requests to the proxy, pass metadata, allow users to pass in their OpenAI API key
 
 ## `/chat/completions`
 
 ### Request Format
-
-<Tabs>
-
-
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 Set `extra_body={"metadata": { }}` to `metadata` you want to pass
 
@@ -86,13 +74,8 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="litellm_sdk" label="LiteLLM Python SDK">
 
 [**👉 Go Here**](../providers/litellm_proxy#send-all-sdk-requests-to-litellm-proxy)
-
-</TabItem>
-<TabItem value="azureopenai" label="AzureOpenAI Python">
 
 Set `extra_body={"metadata": { }}` to `metadata` you want to pass
 
@@ -124,8 +107,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-</TabItem>
-<TabItem value="LlamaIndex" label="LlamaIndex">
 
 ```python
 import os, dotenv
@@ -149,7 +130,6 @@ embed_model = AzureOpenAIEmbedding(
     api_version="2023-07-01-preview",
 )
 
-
 documents = SimpleDirectoryReader("llama_index_data").load_data()
 service_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)
 index = VectorStoreIndex.from_documents(documents, service_context=service_context)
@@ -159,9 +139,6 @@ response = query_engine.query("What did the author do growing up?")
 print(response)
 
 ```
-</TabItem>
-
-<TabItem value="Curl" label="Curl Request">
 
 Pass `metadata` as part of the request body
 
@@ -184,8 +161,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-</TabItem>
-<TabItem value="langchain" label="Langchain">
 
 ```python
 from langchain.chat_models import ChatOpenAI
@@ -226,12 +201,8 @@ response = chat(messages)
 print(response)
 ```
 
-</TabItem>
-<TabItem value="langchain js" label="Langchain JS">
-
 ```js
 import { ChatOpenAI } from "@langchain/openai";
-
 
 const model = new ChatOpenAI({
   modelName: "gpt-4",
@@ -246,9 +217,6 @@ const message = await model.invoke("Hi there!");
 console.log(message);
 
 ```
-
-</TabItem>
-<TabItem value="openai JS" label="OpenAI JS">
 
 ```js
 const { OpenAI } = require('openai');
@@ -274,10 +242,6 @@ main();
 
 ```
 
-</TabItem>
-
-<TabItem value="anthropic-py" label="Anthropic Python SDK">
-
 ```python
 import os
 
@@ -301,15 +265,10 @@ message = client.messages.create(
 print(message.content)
 ```
 
-</TabItem>
-
-<TabItem value="mistral-py" label="Mistral Python SDK">
-
 ```python
 import os
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
-
 
 client = MistralClient(api_key="sk-1234", endpoint="http://0.0.0.0:4000")
 chat_response = client.chat(
@@ -320,10 +279,6 @@ chat_response = client.chat(
 )
 print(chat_response.choices[0].message.content)
 ```
-
-</TabItem>
-
-<TabItem value="instructor" label="Instructor">
 
 ```python
 from openai import OpenAI
@@ -354,15 +309,10 @@ assert isinstance(user, UserDetail)
 assert user.name == "Jason"
 assert user.age == 25
 ```
-</TabItem>
-</Tabs>
 
 ## Using Tags for Categorization and Tracking
 
 Tags allow you to categorize, filter, and track your LLM requests. Add tags to your metadata for better organization and analytics.
-
-<Tabs>
-<TabItem value="openai-python" label="OpenAI Python">
 
 ```python
 import openai
@@ -384,10 +334,6 @@ response = client.chat.completions.create(
 )
 ```
 
-</TabItem>
-
-<TabItem value="langchain-python" label="LangChain Python">
-
 ```python
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
@@ -406,10 +352,6 @@ chat = ChatOpenAI(
 response = chat.invoke([HumanMessage(content="Generate a blog post")])
 ```
 
-</TabItem>
-
-<TabItem value="curl" label="Curl">
-
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
     --header 'Content-Type: application/json' \
@@ -422,10 +364,6 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
     }
 }'
 ```
-
-</TabItem>
-
-<TabItem value="openai-js" label="OpenAI JS">
 
 ```js
 const { OpenAI } = require('openai');
@@ -446,9 +384,6 @@ async function main() {
   });
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ### Tag Benefits
 
@@ -488,10 +423,6 @@ async function main() {
 
 ### **Streaming**
 
-
-<Tabs>
-<TabItem value="curl" label="curl">
-
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
 -H "Content-Type: application/json" \
@@ -507,8 +438,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   "stream": true
 }'
 ```
-</TabItem>
-<TabItem value="sdk" label="SDK">
 
 ```python 
 from openai import OpenAI
@@ -527,18 +456,12 @@ completion = client.chat.completions.create(
 print(completion)
 
 ```
-</TabItem>
-</Tabs>
-
 
 ### Function Calling 
 
 Here's some examples of doing function calling with the proxy. 
 
 You can use the proxy for function calling with **any** openai-compatible project. 
-
-<Tabs>
-<TabItem value="curl" label="curl">
 
 ```bash
 curl http://0.0.0.0:4000/v1/chat/completions \
@@ -578,8 +501,6 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   "tool_choice": "auto"
 }'
 ```
-</TabItem>
-<TabItem value="sdk" label="SDK">
 
 ```python 
 from openai import OpenAI
@@ -619,16 +540,11 @@ completion = client.chat.completions.create(
 print(completion)
 
 ```
-</TabItem>
-</Tabs>
 
 ## `/embeddings`
 
 ### Request Format
 Input, Output and Exceptions are mapped to the OpenAI format for all supported models
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -646,8 +562,6 @@ response = client.embeddings.create(
 print(response)
 
 ```
-</TabItem>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/embeddings' \
@@ -657,15 +571,11 @@ curl --location 'http://0.0.0.0:4000/embeddings' \
   "input": ["write a litellm poem"]
   }'
 ```
-</TabItem>
-
-<TabItem value="langchain-embedding" label="Langchain Embeddings">
 
 ```python
 from langchain.embeddings import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(model="sagemaker-embeddings", openai_api_base="http://0.0.0.0:4000", openai_api_key="temp-key")
-
 
 text = "This is a test document."
 
@@ -692,9 +602,6 @@ query_result = embeddings.embed_query(text)
 print(f"TITAN EMBEDDINGS")
 print(query_result[:5])
 ```
-</TabItem>
-</Tabs>
-
 
 ### Response Format
 
@@ -724,12 +631,8 @@ print(query_result[:5])
 
 ## `/moderations`
 
-
 ### Request Format
 Input, Output and Exceptions are mapped to the OpenAI format for all supported models
-
-<Tabs>
-<TabItem value="openai" label="OpenAI Python v1.0.0+">
 
 ```python
 import openai
@@ -747,8 +650,6 @@ response = client.moderations.create(
 print(response)
 
 ```
-</TabItem>
-<TabItem value="Curl" label="Curl Request">
 
 ```shell
 curl --location 'http://0.0.0.0:4000/moderations' \
@@ -756,9 +657,6 @@ curl --location 'http://0.0.0.0:4000/moderations' \
     --header 'Authorization: Bearer sk-1234' \
     --data '{"input": "Sample text goes here", "model": "text-moderation-stable"}'
 ```
-</TabItem>
-</Tabs>
-
 
 ### Response Format
 
@@ -800,12 +698,8 @@ curl --location 'http://0.0.0.0:4000/moderations' \
 }
 ```
 
-
 ## Using with OpenAI compatible projects
 Set `base_url` to the LiteLLM Proxy server
-
-<Tabs>
-<TabItem value="openai" label="OpenAI v1.0.0+">
 
 ```python
 import openai
@@ -825,8 +719,6 @@ response = client.chat.completions.create(model="gpt-3.5-turbo", messages = [
 print(response)
 
 ```
-</TabItem>
-<TabItem value="librechat" label="LibreChat">
 
 #### Start the LiteLLM proxy
 ```shell
@@ -840,7 +732,6 @@ litellm --model gpt-3.5-turbo
 ```shell
 git clone https://github.com/danny-avila/LibreChat.git
 ```
-
 
 #### 2. Modify Librechat's `docker-compose.yml`
 LiteLLM Proxy is running on port `4000`, set `4000` as the proxy below
@@ -859,9 +750,6 @@ OPENAI_API_KEY=sk-1234
 ```shell
 docker compose up
 ```
-</TabItem>
-
-<TabItem value="continue-dev" label="ContinueDev">
 
 Continue-Dev brings ChatGPT to VSCode. See how to [install it here](https://continue.dev/docs/quickstart).
 
@@ -876,17 +764,12 @@ In the [config.py](https://continue.dev/docs/reference/Models/openai) set this a
 ```
 
 Credits [@vividfog](https://github.com/ollama/ollama/issues/305#issuecomment-1751848077) for this tutorial. 
-</TabItem>
-
-<TabItem value="aider" label="Aider">
 
 ```shell
 $ pip install aider 
 
 $ aider --openai-api-base http://0.0.0.0:4000 --openai-api-key fake-key
 ```
-</TabItem>
-<TabItem value="autogen" label="AutoGen">
 
 ```python
 pip install pyautogen
@@ -916,9 +799,7 @@ user_proxy.initiate_chat(assistant, message="Plot a chart of META and TESLA stoc
 ```
 
 Credits [@victordibia](https://github.com/microsoft/autogen/issues/45#issuecomment-1749921972) for this tutorial.
-</TabItem>
 
-<TabItem value="guidance" label="guidance">
 A guidance language for controlling large language models.
 https://github.com/guidance-ai/guidance
 
@@ -957,8 +838,6 @@ Don't answer the question yet.
 result = experts(query='How can I be more productive?')
 print(result)
 ```
-</TabItem>
-</Tabs>
 
 ## Using with Vertex, Boto3, Anthropic SDK (Native format)
 
@@ -978,11 +857,6 @@ This same request will be sent to the following model groups on the [litellm pro
 - `model_name="llama3"`
 - `model_name="gpt-3.5-turbo"` 
 
-<Tabs>
-
-<TabItem value="openai-py" label="OpenAI Python SDK">
-
-
 ```python
 import openai
 
@@ -997,8 +871,6 @@ response = client.chat.completions.create(
 
 print(response)
 ```
-
-
 
 #### Expected Response Format
 
@@ -1059,14 +931,6 @@ Get a list of responses when `model` is passed as a list
 ]
 ```
 
-
-</TabItem>
-
-<TabItem value="curl" label="Curl">
-
-
-
-
 ```shell
 curl --location 'http://localhost:4000/chat/completions' \
     --header 'Authorization: Bearer sk-1234' \
@@ -1083,9 +947,6 @@ curl --location 'http://localhost:4000/chat/completions' \
     ]
 }'
 ```
-
-
-
 
 #### Expected Response Format
 
@@ -1139,10 +1000,3 @@ Get a list of responses when `model` is passed as a list
   }
 ]
 ```
-
-
-</TabItem>
-</Tabs>
-
-
-

@@ -89,7 +89,6 @@ NATS is a high-performance, cloud-native messaging system widely used in **micro
 
     > **Note:** Replace version numbers in download links if a newer release is available. Always check the [GitHub Releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) page.
 
-
 ??? "Step 4: Configure OpenTelemetry Collector"
 
     1. Edit config file:
@@ -157,21 +156,19 @@ NATS is a high-performance, cloud-native messaging system widely used in **micro
         ```bash
         nats bench sub demo --msgs 10000 --size 64   
         ```
-        ![Subcriber Test in NATS](../images/messagebroker/nats-sub.png)
+        [Subcriber Test in NATS]
     In Terminal 2:
         ```bash
         nats bench pub demo --clients 5 --msgs 10000 --size 64
         ```
-        ![Publisher Test in NATS](../images/messagebroker/nats-pub.png)
-
+        [Publisher Test in NATS]
 
 ??? "Step 7: Visualize in OpenObserve"
 
     1. Log in to OpenObserve and explore the **NATS stream** under Logs.
-        ![Visualize in OpenObserve](../images/messagebroker/nats-logs.png)
+        [Visualize in OpenObserve]
     2. Explore the **NATS stream** under Metrics.
-        ![Visualize in OpenObserve](../images/messagebroker/nats-metrics.png)
-
+        [Visualize in OpenObserve]
 
 !!! tip
     You can use preconfigured [Dashboard](https://openobserve-prod-website.s3.us-west-2.amazonaws.com/assets/nats_dashboard_c317f090bb.json) in OpenObserve to to visualize real-time logs and metrics.

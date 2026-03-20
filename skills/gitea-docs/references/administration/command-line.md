@@ -1,7 +1,5 @@
 ---
 date: "2017-01-01T16:00:00+02:00"
-slug: "command-line"
-sidebar_position: 1
 aliases:
   - /en-us/command-line
 ---
@@ -365,12 +363,10 @@ provided key. You should also set the value
 `SSH_CREATE_AUTHORIZED_KEYS_FILE=false` in the `[server]` section of
 `app.ini`.
 
-:::note
-opensshd requires the Gitea program to be owned by root and not
+> **note**: opensshd requires the Gitea program to be owned by root and not
 writable by group or others. The program must be specified by an absolute
 path.
 Gitea must be running for this command to succeed.
-:::
 
 ### migrate
 

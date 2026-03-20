@@ -18,7 +18,6 @@ The load testing was conducted using the following parameters:
     - Tested against a [fake openai endpoint](https://exampleopenaiendpoint-production.up.railway.app/)
     - Set `USE_AIOHTTP_TRANSPORT="True"` in the environment variables. This feature flag enables the aiohttp transport.
 
-
 ## Benchmark Results
 
 | Metric | httpx (Existing) | aiohttp (LiteLLM v1.71.1) | Improvement | Calculation |
@@ -34,5 +33,3 @@ The load testing was conducted using the following parameters:
 - **97% reduction** in median response time (from 2.5 seconds to 74ms)
 - **96% reduction** in 95th percentile latency (from 5.6 seconds to 250ms)
 - **95% reduction** in 99th percentile latency (from 6.2 seconds to 330ms)
-
-

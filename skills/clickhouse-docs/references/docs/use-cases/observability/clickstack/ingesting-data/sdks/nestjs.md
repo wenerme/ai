@@ -1,8 +1,4 @@
 ---
-slug: /use-cases/observability/clickstack/sdks/nestjs
-pagination_prev: null
-pagination_next: null
-sidebar_position: 4
 description: 'NestJS SDK for ClickStack - The ClickHouse Observability Stack'
 title: 'NestJS'
 doc_type: 'guide'
@@ -71,9 +67,8 @@ export class CatsController {
 
 ### Replacing the Nest logger (also for bootstrapping) {#replacing-the-nest-logger}
 
-:::note Important
+> **note**: Important
 By doing this, you give up the dependency injection, meaning that `forRoot` and `forRootAsync` aren't needed and shouldn't be used. Remove them from your main module.
-:::
 
 Using the dependency injection has one minor drawback. Nest has to bootstrap the
 application first (instantiating modules and providers, injecting dependencies,

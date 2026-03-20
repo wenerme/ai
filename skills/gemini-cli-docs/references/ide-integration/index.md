@@ -66,7 +66,6 @@ You can also install the extension directly from a marketplace.
   Follow your editor's instructions for installing extensions from this
   registry.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > The "Gemini CLI Companion" extension may appear towards the bottom of
 > search results. If you don't see it immediately, try scrolling down or
@@ -105,7 +104,6 @@ IDE, run:
 If connected, this command will show the IDE it's connected to and a list of
 recently opened files it is aware of.
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > The file list is limited to 10 recently accessed files within your
 > workspace and only includes local files on disk.)

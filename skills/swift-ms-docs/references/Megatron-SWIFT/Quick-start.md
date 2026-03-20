@@ -2,7 +2,6 @@
 
 ms-swift incorporates Megatron's parallelization techniques to accelerate the training of large models, including data parallelism, tensor parallelism, pipeline parallelism, sequence parallelism, context parallelism, and expert parallelism. It supports CPT/SFT/GRPO/DPO/KTO/RM for models such as Qwen3, Qwen3.5, Deepseek-R1, GLM4.5, GPT-OSS, and more. For a complete list of supported models, please refer to the [Supported Models and Datasets documentation](../Instruction/Supported-models-and-datasets.md).
 
-
 | Method                 | Full-Parameter | LoRA | MoE  | Multimodal | FP8  |
 | ---------------------- | -------------- | ---- | ---- | ---------- | ---- |
 | Pre-training           | ✅              | ✅    | ✅    | ✅          | ✅    |
@@ -74,7 +73,6 @@ Recommended Operating Environment:
 | modelscope   | >=1.23       |             |                    |
 | peft         | >=0.11,<0.19 |             |      LoRA          |
 | trl          | >=0.15,<0.29 |       |      RLHF        |
-
 
 ## Quick Start Example
 
@@ -221,7 +219,6 @@ swift infer \
 - Megatron-SWIFT uses the same dataset and template processing modules as ms-swift, thus supporting techniques such as packing, loss scale, and agent training. For custom dataset formats, please refer to the [Custom Dataset Documentation](../Customization/Custom-dataset.md).
 - **More Examples**: Including packing, multi-node training, 32K context length, DPO, MoE models, and pre-training, can be found [here](https://github.com/modelscope/ms-swift/tree/main/examples/megatron).
 
-
 ## Training Tips
 - Methods to increase training throughput: use packing (do not enable streaming), increase data parallelism (DP), reduce recomputation, and increase compute-communication overlap. MoE models can also be accelerated by dropping tokens.
 - Parallelism choices:
@@ -232,18 +229,15 @@ swift infer \
 - Choosing parallelism for weight conversion: Megatron-SWIFT uses the torch_dist storage format on the MCore side; you can adjust parallelism at training time and do not need to specify it during weight conversion.
 - Regarding log printing: Megatron-SWIFT logs are printed on the last rank, because in PP parallelism, only the last pp_rank has complete information.
 
-
 ## Benchmark
 The training speed comparison for full-parameter dense models with 8K context length, using `megatron sft` and `swift sft`, under a single-node, eight-GPU A800 environment is as follows:
 
 **Dense** Qwen2.5-14B:
 
-
 |                  | Megatron-LM | Deepspeed-ZeRO2 | Deepspeed-ZeRO3 |
 | ---------------- | ----------- | --------------- | --------------- |
 | Training Speed   | 9.04s/it    | 10.32s/it       | 10.56s/it       |
 | GPU Memory Usage | 8\*64GB      | 8\*80GB          | 8\*58GB          |
-
 
 The training speed comparison for full-parameter MoE models with 8K context length, using `megatron sft` and `swift sft`, under a two-node, 16-GPU A800 environment is as follows:
 
@@ -256,7 +250,4 @@ The training speed comparison for full-parameter MoE models with 8K context leng
 | Training Speed   | 9.6s/it    | -        | 91.2s/it       |
 | GPU Memory Usage | 16 * 60GiB  | OOM             | 16 * 80GiB      |
 
-
 ## Megatron-SWIFT Wechat Group
-
-<img src="https://raw.githubusercontent.com/modelscope/ms-swift/main/docs/resources/wechat/megatron.png" width="250">

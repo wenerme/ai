@@ -1,6 +1,4 @@
 ---
-slug: /integrations/cassandra
-sidebar_label: 'Cassandra'
 title: 'Cassandra'
 description: 'Page describing how you can integrate with Cassandra via a dictionary.'
 keywords: ['cassandra', 'integration', 'dictionary']
