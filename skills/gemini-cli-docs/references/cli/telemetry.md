@@ -785,6 +785,17 @@ Attributes
 
 - `available` (boolean)
 
+##### `gemini_cli.startup_stats`
+
+Logs detailed startup performance statistics.
+
+Attributes
+
+- `phases` (json array of startup phases)
+- `os_platform` (string)
+- `os_release` (string)
+- `is_docker` (boolean)
+
 ### Metrics
 
 Metrics provide numerical measurements of behavior over time.
@@ -798,6 +809,20 @@ Gemini CLI exports several custom metrics.
 ##### `gemini_cli.session.count`
 
 Incremented once per CLI startup.
+
+##### Onboarding
+
+Tracks onboarding flow from authentication to the user
+
+- `gemini_cli.onboarding.start` (Counter, Int): Incremented when the
+  authentication flow begins.
+
+- `gemini_cli.onboarding.success` (Counter, Int): Incremented when the user
+onboarding flow completes successfully.
+
+Attributes (Success)
+
+- `user_tier` (string)
 
 ##### Tools
 

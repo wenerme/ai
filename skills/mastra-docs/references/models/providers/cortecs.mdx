@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 23 models available."
+description: "Use Cortecs models with Mastra. 24 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 23 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 24 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -266,6 +266,18 @@ for await (const chunk of stream) {
     "maxOutput": 196000,
     "inputCost": 0.34,
     "outputCost": 1.34
+  },
+  {
+    "model": "cortecs/minimax-m2.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 196608,
+    "maxOutput": 196608,
+    "inputCost": 0.32,
+    "outputCost": 1.18
   },
   {
     "model": "cortecs/nova-pro-v1",
