@@ -272,13 +272,15 @@ const contextAwareTool = tool({
 
 ### Context Properties
 
-| Property        | Type                                         | Description                             |
-| --------------- | -------------------------------------------- | --------------------------------------- |
-| `numberOfTurns` | `number`                                     | Current turn number (1-indexed)         |
-| `turnRequest`   | `OpenResponsesRequest \| undefined`          | Current request object                  |
-| `toolCall`      | `OpenResponsesFunctionToolCall \| undefined` | The tool call being executed            |
-| `tools`         | `{ [toolName]: Readonly<TContext> }`         | This tool's context data (read-only)    |
-| `setContext`    | `(partial: Partial<TContext>) => void`       | Mutate this tool's context in the store |
+| Property           | Type                                         | Description                         |
+| ------------------ | -------------------------------------------- | ----------------------------------- |
+| `numberOfTurns`    | `number`                                     | Current turn number (1-indexed)     |
+| `turnRequest`      | `OpenResponsesRequest \| undefined`          | Current request object              |
+| `toolCall`         | `OpenResponsesFunctionToolCall \| undefined` | The tool call being executed        |
+| `local`            | `Readonly<TContext>`                         | This tool's own context (read-only) |
+| `setContext`       | `(partial: Partial<TContext>) => void`       | Mutate this tool's context          |
+| `shared`           | `Readonly<TShared>`                          | Shared context visible to all tools |
+| `setSharedContext` | `(partial: Partial<TShared>) => void`        | Mutate shared context               |
 
 ## Tool Context
 
@@ -304,8 +306,8 @@ const weatherTool = tool({
     units: z.enum(['celsius', 'fahrenheit']),
   }),
   execute: async (params, context) => {
-    // Access this tool's context via the tools map
-    const { apiKey, units } = context.tools.get_weather;
+    // Access this tool's own context via local
+    const { apiKey, units } = context.local;
 
     const weather = await fetchWeather(
       params.location,
@@ -366,8 +368,8 @@ const result = openrouter.callModel({
 
 Tools can update their own context using `setContext()`.
 Changes persist across turns via the shared store and
-are visible immediately — `context.tools[name]` is a
-live getter that always reads the latest values:
+are visible immediately — `context.local` is a live
+getter that always reads the latest values:
 
 ```typescript
 const authTool = tool({
@@ -378,7 +380,7 @@ const authTool = tool({
     refreshCount: z.number(),
   }),
   execute: async (params, context) => {
-    const { token } = context.tools.auth;
+    const { token } = context.local;
 
     if (isExpired(token)) {
       const newToken = await refreshToken(token);
@@ -386,7 +388,7 @@ const authTool = tool({
       context.setContext({
         token: newToken,
         refreshCount:
-          context.tools.auth.refreshCount + 1,
+          context.local.refreshCount + 1,
       });
     }
 
@@ -415,6 +417,50 @@ for await (const snapshot of result.getContextUpdates()) {
   // { auth: { token: 'new-token', refreshCount: 1 } }
 }
 ```
+
+### Shared Context
+
+Use `sharedSchema` on `tool()` and `sharedContextSchema`
+on `callModel` to share typed state across tools:
+
+```typescript
+const SharedContextSchema = z.object({
+  _sessionId: z.string().optional(),
+});
+
+const execTool = tool({
+  name: 'sandbox_exec',
+  inputSchema: z.object({ command: z.string() }),
+  sharedSchema: SharedContextSchema,
+  execute: async (input, ctx) => {
+    // Read shared state set by any tool
+    const sid = ctx.shared._sessionId;
+    const session = await connect(sid);
+    // Write shared state for other tools
+    ctx.setSharedContext({ _sessionId: session.id });
+    return await session.exec(input.command);
+  },
+});
+
+const result = openrouter.callModel({
+  model: 'openai/gpt-5-nano',
+  input: 'Run a command',
+  tools: [execTool] as const,
+  sharedContextSchema: SharedContextSchema,
+  context: {
+    shared: { _sessionId: 'existing-session' },
+    sandbox_exec: {},
+  },
+});
+```
+
+<Note>
+  `context.local` is scoped to one tool.
+  `context.shared` is visible to all tools and persists
+  across turns. Pass the same `sharedSchema` to each tool
+  for typed access, and `sharedContextSchema` to
+  `callModel` for runtime validation.
+</Note>
 
 ## Tool Execution
 
