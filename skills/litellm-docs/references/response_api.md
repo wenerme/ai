@@ -1093,12 +1093,12 @@ follow_up = await router.aresponses(
 To enable session continuity for Responses API in your LiteLLM proxy, set `optional_pre_call_checks` in your proxy config.yaml.
 
 - `responses_api_deployment_check`: high priority routing when `previous_response_id` is provided
-- `encrypted_content_affinity`: **[Recommended]** content-aware routing for encrypted items (e.g., `rs_...` reasoning items)
+- `encrypted_content_affinity`: **[Recommended]** content-aware routing for encrypted items (e.g., `rs_...` reasoning items) (**requires LiteLLM >= 1.82.3**)
 - `session_affinity`: sticky sessions based on session id (takes priority over `deployment_affinity`)
 - `deployment_affinity`: sticky sessions based on user key (applies even without `previous_response_id`)
 
 > **tip**: Recommended: Use `encrypted_content_affinity`
-For Responses API with load balancing across deployments with **different API keys**, use `encrypted_content_affinity` instead of `deployment_affinity`. It only pins requests that contain encrypted content, avoiding quota reduction while preventing `invalid_encrypted_content` errors.
+For Responses API with load balancing across deployments with **different API keys**, use `encrypted_content_affinity` instead of `deployment_affinity`. It only pins requests that contain encrypted content, avoiding quota reduction while preventing `invalid_encrypted_content` errors. (Requires LiteLLM >= 1.82.3.)
 
 Notes:
 - User-key affinity is keyed on `metadata.user_api_key_hash` (the API key hash). The OpenAI `user` request parameter is an end-user identifier and is intentionally not used for deployment affinity.
@@ -1282,6 +1282,76 @@ litellm --config config.yaml
 | `responses_api_deployment_check` | When `previous_response_id` is available | Requests with `previous_response_id` | ✅ None |
 | `session_affinity` | Session-based applications | All requests with same `session_id` | ⚠️ Reduces quota by # of sessions |
 | `deployment_affinity` | Simple sticky sessions | All requests from same API key | ❌ Reduces quota by # of users |
+
+## Per-Model-Group Affinity Configuration
+
+By default, `optional_pre_call_checks` applies globally to all model groups. Use `model_group_affinity_config` when you want different affinity behavior per model group — for example, enabling stickiness only for models spread across providers (Azure + Bedrock) while leaving single-provider groups free to load-balance.
+
+Groups not listed fall back to the global `optional_pre_call_checks` settings.
+
+```python
+router = litellm.Router(
+    model_list=[
+        {
+            "model_name": "gpt-4",
+            "litellm_params": {"model": "azure/gpt-4", "api_key": "...", "api_base": "https://endpoint1.openai.azure.com"},
+        },
+        {
+            "model_name": "gpt-4",
+            "litellm_params": {"model": "bedrock/anthropic.claude-v2", "aws_region_name": "us-east-1"},
+        },
+        {
+            "model_name": "text-embedding-ada-002",
+            "litellm_params": {"model": "azure/text-embedding-ada-002", "api_key": "...", "api_base": "https://endpoint1.openai.azure.com"},
+        },
+        {
+            "model_name": "text-embedding-ada-002",
+            "litellm_params": {"model": "azure/text-embedding-ada-002", "api_key": "...", "api_base": "https://endpoint2.openai.azure.com"},
+        },
+    ],
+    # gpt-4: cross-provider (Azure + Bedrock) — enable deployment affinity
+    # text-embedding-ada-002: same provider — no affinity, let it load balance freely
+    model_group_affinity_config={
+        "gpt-4": ["deployment_affinity", "responses_api_deployment_check"],
+    },
+)
+```
+
+```yaml title="config.yaml"
+model_list:
+  - model_name: gpt-4
+    litellm_params:
+      model: azure/gpt-4
+      api_key: os.environ/AZURE_API_KEY_1
+      api_base: https://endpoint1.openai.azure.com
+
+  - model_name: gpt-4
+    litellm_params:
+      model: bedrock/anthropic.claude-v2
+      aws_region_name: us-east-1
+
+  - model_name: text-embedding-ada-002
+    litellm_params:
+      model: azure/text-embedding-ada-002
+      api_key: os.environ/AZURE_API_KEY_1
+      api_base: https://endpoint1.openai.azure.com
+
+  - model_name: text-embedding-ada-002
+    litellm_params:
+      model: azure/text-embedding-ada-002
+      api_key: os.environ/AZURE_API_KEY_2
+      api_base: https://endpoint2.openai.azure.com
+
+router_settings:
+  # gpt-4: cross-provider — enable stickiness
+  # text-embedding-ada-002: not listed — load balances freely
+  model_group_affinity_config:
+    "gpt-4":
+      - deployment_affinity
+      - responses_api_deployment_check
+```
+
+**Supported values:** `deployment_affinity`, `responses_api_deployment_check`, `session_affinity`
 
 ## Calling non-Responses API endpoints (`/responses` to `/chat/completions` Bridge)
 
@@ -1467,6 +1537,12 @@ curl -X POST "http://localhost:4000/v1/responses" \
     "max_output_tokens": 1024
   }'
 ```
+
+## File Search (Vector Stores)
+
+For full `file_search` usage (native + emulated fallback), SDK/Proxy examples, architecture diagram, and Q&A, see:
+
+- [`File Search in the Responses API — E2E Testing Guide`](/docs/tutorials/file_search_responses_api)
 
 ## Session Management
 

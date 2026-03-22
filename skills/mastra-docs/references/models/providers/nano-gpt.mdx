@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 516 models available."
+description: "Use NanoGPT models with Mastra. 517 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 516 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 517 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -3641,6 +3641,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/minimax/minimax-m2.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "nano-gpt/minimax/minimax-m2.7",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
