@@ -148,4 +148,4 @@ expect(nameSpy).toHaveBeenCalledTimes(1)
 
 > **tip**: You can also spy on getters and setters using the same method.
 
-> **danger**: Using classes with `vi.fn()` was introduced in Vitest 4. Previously, you had to use `function` and `prototype` inheritence directly. See [v3 guide](https://v3.vitest.dev/guide/mocking.html#classes).
+> **danger**: Using classes with `vi.fn()` was introduced in Vitest 4. Previously, you had to use `function` and `prototype` inheritance directly. See [v3 guide](https://v3.vitest.dev/guide/mocking.html#classes).

@@ -30,7 +30,7 @@ This makes tests run faster, but the VM module is unstable when running [ESM cod
 
 ```ts
 try {
-  fs.writeFileSync('/doesnt exist')
+  fs.writeFileSync('/does-not-exist')
 }
 catch (err) {
   console.log(err instanceof Error) // false
