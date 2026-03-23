@@ -462,27 +462,31 @@ For models that only return raw reasoning strings, you can use the simpler `reas
 
   <ul>
     <li>
-      MiniMax M2 / M2.1
+      Alibaba: Qwen3.5 and newer
     </li>
 
     <li>
-      Kimi K2 Thinking / K2.5
+      MiniMax: MiniMax M2 and newer
     </li>
 
     <li>
-      INTELLECT-3
+      MoonShot: Kimi K2 Thinking and newer
     </li>
 
     <li>
-      Nemotron 3 Nano
+      NVIDIA: Nemotron 3 Nano and newer
     </li>
 
     <li>
-      MiMo-V2-Flash
+      Prime Intellect: INTELLECT-3
     </li>
 
     <li>
-      All Z.ai reasoning models (GLM 4.5 series and newer)
+      Xiaomi: MiMo-V2-Flash and newer
+    </li>
+
+    <li>
+      Z.ai: GLM 4.5 and newer
     </li>
   </ul>
 
