@@ -1,10 +1,15 @@
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 The Gemini API, using
 [Lyria RealTime](https://deepmind.google/technologies/lyria/realtime/),
 provides access to a state-of-the-art, real-time, streaming music
 generation model. It allows developers to build applications where users
 can interactively create, continuously steer, and perform instrumental
 music.
-| **Experimental:** Lyria RealTime is an [experimental model](https://ai.google.dev/gemini-api/docs/models/experimental-models).
+
+> [!WARNING]
+> **Experimental:** Lyria RealTime is an [experimental model](https://ai.google.dev/gemini-api/docs/models/experimental-models).
 
 To experience what can be built using Lyria RealTime, try it on AI Studio
 using the [Prompt DJ](https://aistudio.google.com/apps/bundled/promptdj) or the
@@ -23,7 +28,7 @@ in the sense that it is using websockets to keep a real-time communication with
 the model. It's still not exactly the same as you can't talk to the model and
 you have to use a specific format to prompt it.
 
-The following code demonstrates how to generate music:  
+The following code demonstrates how to generate music:
 
 ### Python
 
@@ -32,7 +37,7 @@ This example initializes the Lyria RealTime session using
 initial prompt with `session.set_weighted_prompts()` along with an initial
 configuration using `session.set_music_generation_config`, starts the music
 generation using `session.play()` and sets up
-`receive_audio()` to process the audio chunks it receives.  
+`receive_audio()` to process the audio chunks it receives.
 
       import asyncio
       from google import genai
@@ -71,12 +76,13 @@ generation using `session.play()` and sets up
       if __name__ == "__main__":
           asyncio.run(main())
 
-| For a more complete code sample, refer to the
-| "Lyria RealTime - Get Started" file in the cookbooks repository:
-|
-|
-| [View
-| on GitHub](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_LyriaRealTime.py)
+> [!NOTE]
+> For a more complete code sample, refer to the
+> "Lyria RealTime - Get Started" file in the cookbooks repository:
+>
+>
+> [View
+> on GitHub](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_LyriaRealTime.py)
 
 ### JavaScript
 
@@ -85,7 +91,7 @@ This example initializes the Lyria RealTime session using
 initial prompt with `session.setWeightedPrompts()` along with an initial
 configuration using `session.setMusicGenerationConfig`, starts the music
 generation using `session.play()` and sets up an
-`onMessage` callback to process the audio chunks it receives.  
+`onMessage` callback to process the audio chunks it receives.
 
     import { GoogleGenAI } from "@google/genai";
     import Speaker from "speaker";
@@ -139,13 +145,14 @@ generation using `session.play()` and sets up an
 
     main().catch(console.error);
 
-| For a more complete code sample, refer to those two AI studio apps:
-|
-|
-| [Try Prompt DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj)
-|
-|
-| [Try MIDI DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj-midi)
+> [!NOTE]
+> For a more complete code sample, refer to those two AI studio apps:
+>
+>
+> [Try Prompt DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj)
+>
+>
+> [Try MIDI DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj-midi)
 
 You can then use `session.play()`, `session.pause()`, `session.stop()` and
 `session.reset_context()` to start, pause, stop or reset the session.
@@ -160,7 +167,7 @@ on the new input.
 
 The prompts need to follow the right format with a `text` (the
 actual prompt), and a `weight`. The `weight` can take any value except `0`. `1.0`
-is usually a good starting point.  
+is usually a good starting point.
 
 ### Python
 
@@ -196,7 +203,7 @@ fields will be reset back to their default values.
 Since updating the bpm or the scale is a drastic change for the model you'll
 also need to tell it to reset its context using `reset_context()` to take the
 new config into account. It won't stop the stream, but it will be a hard
-transition. You don't need to do it for the other parameters.  
+transition. You don't need to do it for the other parameters.
 
 ### Python
 

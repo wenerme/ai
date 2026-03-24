@@ -150,6 +150,12 @@ Returns a list of input items for a given response.
 
       - `"developer"`
 
+    - `type: "message"`
+
+      The type of the message input. Always set to `message`.
+
+      - `"message"`
+
     - `status?: "in_progress" | "completed" | "incomplete"`
 
       The status of item. One of `in_progress`, `completed`, or
@@ -160,12 +166,6 @@ Returns a list of input items for a given response.
       - `"completed"`
 
       - `"incomplete"`
-
-    - `type?: "message"`
-
-      The type of the message input. Always set to `message`.
-
-      - `"message"`
 
   - `ResponseOutputMessage`
 
@@ -2879,8 +2879,8 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
         }
       ],
       "role": "user",
-      "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "status": "in_progress"
     }
   ],
   "first_id": "first_id",

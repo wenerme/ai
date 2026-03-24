@@ -1,5 +1,8 @@
 <br />
 
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 The Gemini API offers embedding models to generate embeddings for text, images,
 video, and other content. These resulting embeddings can then be used for tasks
 such as semantic search, classification, and clustering, providing more accurate,

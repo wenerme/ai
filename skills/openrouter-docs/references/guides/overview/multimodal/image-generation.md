@@ -38,7 +38,7 @@ To generate images, send a request to the `/api/v1/chat/completions` endpoint wi
 <Template
   data={{
   API_KEY_REF,
-  MODEL: 'google/gemini-2.5-flash-image-preview'
+  MODEL: 'google/gemini-2.5-flash-image'
 }}
 >
   <CodeGroup>
@@ -335,7 +335,7 @@ Image generation also works with streaming responses:
 <Template
   data={{
   API_KEY_REF,
-  MODEL: 'google/gemini-2.5-flash-image-preview'
+  MODEL: 'google/gemini-2.5-flash-image'
 }}
 >
   <CodeGroup>
@@ -475,7 +475,7 @@ Not all models support image generation. To use this feature:
 2. **Set Modalities Parameter**: Use `["image", "text"]` for models that output both, or `["image"]` for image-only models
 3. **Use Compatible Models**: Examples include:
    * `google/gemini-3.1-flash-image-preview` (supports extended aspect ratios and 0.5K resolution)
-   * `google/gemini-2.5-flash-image-preview`
+   * `google/gemini-2.5-flash-image`
    * `black-forest-labs/flux.2-pro`
    * `black-forest-labs/flux.2-flex`
    * `sourceful/riverflow-v2-standard-preview`

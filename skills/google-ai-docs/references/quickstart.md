@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 > [!TIP]
 > **Using a coding agent?** Your agent may not know the latest Gemini API. Run `npx skills add google-gemini/gemini-skills --skill gemini-api-dev --global` to keep it current. [Set up your coding agent →](https://ai.google.dev/gemini-api/docs/coding-agents)
 

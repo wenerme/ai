@@ -116,15 +116,14 @@ for item in response.output:
     if item.type == "function_call":
         if item.name == "get_horoscope":
             # 3. Execute the function logic for get_horoscope
-            horoscope = get_horoscope(json.loads(item.arguments))
+            sign = json.loads(item.arguments)["sign"]
+            horoscope = get_horoscope(sign)
             
             # 4. Provide function call results to the model
             input_list.append({
                 "type": "function_call_output",
                 "call_id": item.call_id,
-                "output": json.dumps({
-                  "horoscope": horoscope
-                })
+                "output": horoscope,
             })
 
 print("Final input:")
@@ -145,6 +144,7 @@ print("\\n" + response.output_text)
 
 ```javascript
 import OpenAI from "openai";
+
 const openai = new OpenAI();
 
 // 1. Define a list of callable tools for the model
@@ -162,12 +162,14 @@ const tools = [
         },
       },
       required: ["sign"],
+      additionalProperties: false,
     },
+    strict: true,
   },
 ];
 
 function getHoroscope(sign) {
-  return sign + " Next Tuesday you will befriend a baby otter.";
+  return \`\${sign}: Next Tuesday you will befriend a baby otter.\`;
 }
 
 // Create a running input list we will add to over time
@@ -182,22 +184,25 @@ let response = await openai.responses.create({
   input,
 });
 
-response.output.forEach((item) => {
-  if (item.type == "function_call") {
-    if (item.name == "get_horoscope"):
-      // 3. Execute the function logic for get_horoscope
-      const horoscope = get_horoscope(JSON.parse(item.arguments))
-      
-      // 4. Provide function call results to the model
-      input_list.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: json.dumps({
-            horoscope
-          })
-      })
+// Preserve model output for the next turn
+input.push(...response.output);
+
+for (const item of response.output) {
+  if (item.type !== "function_call") continue;
+
+  if (item.name === "get_horoscope") {
+    // 3. Execute the function logic for get_horoscope
+    const { sign } = JSON.parse(item.arguments);
+    const horoscope = getHoroscope(sign);
+
+    // 4. Provide function call results to the model
+    input.push({
+      type: "function_call_output",
+      call_id: item.call_id,
+      output: horoscope,
+    });
   }
-});
+}
 
 console.log("Final input:");
 console.log(JSON.stringify(input, null, 2));
@@ -211,7 +216,7 @@ response = await openai.responses.create({
 
 // 5. The model should be able to give a response!
 console.log("Final output:");
-console.log(JSON.stringify(response.output, null, 2));
+console.log(response.output_text);
 ```
 
 

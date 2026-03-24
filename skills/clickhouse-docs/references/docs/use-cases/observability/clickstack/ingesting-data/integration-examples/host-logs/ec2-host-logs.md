@@ -123,7 +123,7 @@ processors:
   
   batch:
     timeout: 10s
-    send_batch_size: 1024
+    send_batch_size: 10000
 
 exporters:
   otlphttp:
@@ -175,7 +175,7 @@ processors:
   
   batch:
     timeout: 10s
-    send_batch_size: 1024
+    send_batch_size: 10000
 
 exporters:
   otlphttp:

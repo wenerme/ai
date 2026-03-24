@@ -1,11 +1,11 @@
 ---
 title: "FastRouter | Models"
-description: "Use FastRouter models with Mastra. 14 models available."
+description: "Use FastRouter models with Mastra. 15 models available."
 ---
 
 # [FastRouter logo]FastRouter
 
-Access 14 FastRouter models through Mastra's model router. Authentication is handled automatically using the `FASTROUTER_API_KEY` environment variable.
+Access 15 FastRouter models through Mastra's model router. Authentication is handled automatically using the `FASTROUTER_API_KEY` environment variable.
 
 Learn more in the [FastRouter documentation](https://fastrouter.ai/models).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "fastrouter/z-ai/glm-5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
+    "inputCost": 0.95,
+    "outputCost": 3.15
   }
 ]}
 />
@@ -238,7 +250,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "fastrouter/x-ai/grok-4"
+      ? "fastrouter/z-ai/glm-5"
       : "fastrouter/anthropic/claude-opus-4.1";
   }
 });

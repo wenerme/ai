@@ -152,6 +152,12 @@ Returns a list of input items for a given response.
 
         - `"developer"`
 
+      - `type: "message"`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of item. One of `in_progress`, `completed`, or
@@ -162,12 +168,6 @@ Returns a list of input items for a given response.
         - `"completed"`
 
         - `"incomplete"`
-
-      - `type: optional "message"`
-
-        The type of the message input. Always set to `message`.
-
-        - `"message"`
 
     - `ResponseOutputMessage = object { id, content, role, 3 more }`
 
@@ -2935,8 +2935,8 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
         }
       ],
       "role": "user",
-      "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "status": "in_progress"
     }
   ],
   "first_id": "first_id",

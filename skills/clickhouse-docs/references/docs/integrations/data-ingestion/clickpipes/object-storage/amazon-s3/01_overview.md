@@ -6,7 +6,7 @@ doc_type: 'guide'
 
 The S3 ClickPipe provides a fully-managed and resilient way to ingest data from Amazon S3 and S3-compatible object stores into ClickHouse Cloud. It supports both **one-time** and **continuous ingestion** with exactly-once semantics.
 
-S3 ClickPipes can be deployed and managed manually using the ClickPipes UI, as well as programmatically using [OpenAPI](https://clickhouse.com/docs/cloud/manage/api/swagger#tag/ClickPipes/paths/~1v1~1organizations~1%7BorganizationId%7D~1services~1%7BserviceId%7D~1clickpipes/post) and [Terraform](https://registry.terraform.io/providers/ClickHouse/clickhouse/3.8.1-alpha1/docs/resources/clickpipe).
+S3 ClickPipes can be deployed and managed manually using the ClickPipes UI, as well as programmatically using [OpenAPI](https://clickhouse.com/docs/cloud/manage/api/swagger#tag/ClickPipes/paths/~1v1~1organizations~1%7BorganizationId%7D~1services~1%7BserviceId%7D~1clickpipes/post) and [Terraform](https://registry.terraform.io/providers/ClickHouse/clickhouse/latest/docs/resources/clickpipe).
 
 ## Supported data sources {#supported-data-sources}
 
@@ -45,9 +45,11 @@ In this mode, the S3 ClickPipe does an initial load of **all files** in the spec
 
 #### Any order {#continuous-ingestion-any-order}
 
-> **note**: Unordered mode is **only** supported for Amazon S3 and is **not** supported for public buckets. It requires setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket.
+> **tip**: See [Configuring unordered mode for continuous ingestion](/integrations/clickpipes/object-storage/s3/unordered-mode) for step-by-step instructions.
 
-It's possible to configure an S3 ClickPipe to ingest files that don't have an implicit order by setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket. This allows ClickPipes to listen for object created events and ingest any new files regardless of the file naming convention.
+It's possible to configure an S3 ClickPipe to ingest files that don't have an implicit order by setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket, optionally using [Amazon EventBridge](https://aws.amazon.com/eventbridge/) as an event router. This allows ClickPipes to listen for object created events and ingest any new files regardless of the file naming convention.
+
+> **note**: Unordered mode is **only** supported for Amazon S3 and is **not** supported for public buckets or S3-compatible services. It requires setting up an [Amazon SQS](https://aws.amazon.com/sqs/) queue connected to the bucket, optionally using [Amazon EventBridge](https://aws.amazon.com/eventbridge/) as an event router.
 
 In this mode, the S3 ClickPipe does an initial load of **all files** in the selected path, and then listens for `ObjectCreated:*` events in the queue that match the specified path. Any message for a previously seen file, file not matching the path, or event of a different type will be **ignored**.
 
@@ -56,6 +58,10 @@ In this mode, the S3 ClickPipe does an initial load of **all files** in the sele
 Files are ingested once the threshold configured in `max insert bytes` or `max file count` is reached, or after a configurable interval (by default, 30 seconds). It is **not possible** to start ingestion from a specific file or point in time — ClickPipes will always load all files in the selected path. If a DLQ is configured, failed messages will be reenqueued and reprocessed up to the number of times configured in the DLQ `maxReceiveCount` parameter.
 
 > **tip**: We strongly recommend configuring a **Dead-Letter-Queue (DLQ)** for the SQS queue, so it's easier to debug and retry failed messages.
+
+##### EventBridge to SQS {#eb-to-sqs}
+
+It is also possible to emit S3 event notifications to SQS via [Amazon EventBridge](https://aws.amazon.com/eventbridge/). This is the recommended approach for most use cases, as EventBridge supports richer event filtering, fan-out to multiple targets, and is not subject to S3's one notification rule per event type per prefix limitation. See [Configuring unordered mode for continuous ingestion](/integrations/clickpipes/object-storage/s3/unordered-mode) for step-by-step instructions.
 
 ##### SNS to SQS {#sns-to-sqs}
 

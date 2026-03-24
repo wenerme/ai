@@ -1,11 +1,16 @@
 <br />
 
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 Imagen is Google's high-fidelity image generation model, capable of generating
 realistic and high quality images from text prompts. All generated images
 include a SynthID watermark. To learn more about the available Imagen model
 variants, see the [Model versions](https://ai.google.dev/gemini-api/docs/imagen#model-versions) section.
-| **Note:** You can also generate images with Gemini's built-in multimodal capabilities. See the [Image generation
-| guide](https://ai.google.dev/gemini-api/docs/image-generation) for details.
+
+> [!NOTE]
+> **Note:** You can also generate images with Gemini's built-in multimodal capabilities. See the [Image generation
+> guide](https://ai.google.dev/gemini-api/docs/image-generation) for details.
 
 ## Generate images using the Imagen models
 
@@ -116,7 +121,9 @@ This example demonstrates generating images with an [Imagen model](https://deepm
 ### Imagen configuration
 
 Imagen supports English only prompts at this time and the following parameters:
-| **Note:** Naming conventions of parameters vary by programming language.
+
+> [!NOTE]
+> **Note:** Naming conventions of parameters vary by programming language.
 
 - `numberOfImages`: The number of images to generate, from 1 to 4 (inclusive). The default is 4.
 - `imageSize`: The size of the generated image. This is only supported for the Standard and Ultra models. The supported values are `1K` and `2K`. Default is `1K`.
@@ -128,7 +135,8 @@ Imagen supports English only prompts at this time and the following parameters:
   - `"allow_adult"`: Generate images of adults, but not children. This is the default.
   - `"allow_all"`: Generate images that include adults and children.
 
-  | **Note:** The `"allow_all"` parameter value is not allowed in EU, UK, CH, MENA locations.
+  > [!NOTE]
+  > **Note:** The `"allow_all"` parameter value is not allowed in EU, UK, CH, MENA locations.
 
 ## Imagen prompt guide
 
@@ -137,7 +145,8 @@ can produce different results, along with examples of images you can create.
 
 ### Prompt writing basics
 
-| **Note:** Maximum prompt length is 480 tokens.
+> [!NOTE]
+> **Note:** Maximum prompt length is 480 tokens.
 
 A good prompt is descriptive and clear, and makes use of meaningful keywords and
 modifiers. Start by thinking of your **subject** , **context** , and **style**.
@@ -395,7 +404,9 @@ Different versions of the image generation
 model might offer a mix of artistic and photorealistic output. Use the following
 wording in prompts to generate more photorealistic output, based on the subject
 you want to generate.
-| **Note:** Take these keywords as general guidance when you try to create photorealistic images. They aren't required to achieve your goal.
+
+> [!NOTE]
+> **Note:** Take these keywords as general guidance when you try to create photorealistic images. They aren't required to achieve your goal.
 
 | Use case | Lens type | Focal lengths | Additional details |
 |---|---|---|---|

@@ -150,6 +150,12 @@ Returns a list of input items for a given response.
 
       - `"developer"`
 
+    - `type: Literal["message"]`
+
+      The type of the message input. Always set to `message`.
+
+      - `"message"`
+
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
       The status of item. One of `in_progress`, `completed`, or
@@ -160,12 +166,6 @@ Returns a list of input items for a given response.
       - `"completed"`
 
       - `"incomplete"`
-
-    - `type: Optional[Literal["message"]]`
-
-      The type of the message input. Always set to `message`.
-
-      - `"message"`
 
   - `class ResponseOutputMessage: …`
 
@@ -2894,8 +2894,8 @@ print(page)
         }
       ],
       "role": "user",
-      "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "status": "in_progress"
     }
   ],
   "first_id": "first_id",
@@ -3042,6 +3042,12 @@ print(response.data)
 
         - `"developer"`
 
+      - `type: Literal["message"]`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
         The status of item. One of `in_progress`, `completed`, or
@@ -3052,12 +3058,6 @@ print(response.data)
         - `"completed"`
 
         - `"incomplete"`
-
-      - `type: Optional[Literal["message"]]`
-
-        The type of the message input. Always set to `message`.
-
-        - `"message"`
 
     - `class ResponseOutputMessage: …`
 

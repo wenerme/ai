@@ -1,5 +1,8 @@
-Start building free of charge with generous limits, then scale up with pay-as-you-go
-pricing for your production ready applications.
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
+Start building free of charge with generous limits, then scale up with
+prepaid then pay-as-you-go pricing for your production ready applications.
 
 ### Free
 

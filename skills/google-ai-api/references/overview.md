@@ -1,5 +1,8 @@
 <br />
 
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 This API reference describes the standard, streaming, and real-time APIs you can
 use to interact with the Gemini models. You can use the REST APIs in any
 environment that supports HTTP requests. Refer to the

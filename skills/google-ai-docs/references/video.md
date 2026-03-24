@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 > To learn about video understanding, see the [Video understanding](https://ai.google.dev/gemini-api/docs/video-understanding) guide.
 
 [Veo 3.1](https://deepmind.google/models/veo/) is Google's state-of-the-art

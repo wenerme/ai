@@ -430,8 +430,8 @@ Input images must meet the following requirements to be used in the API.
   <tr>
     <td>Size limits</td>
     <td>
-      - Up to 50 MB total payload size per request - Up to 500 individual image
-      inputs per request
+      - Up to 512 MB total payload size per request - Up to 1500 individual
+      image inputs per request
     </td>
   </tr>
   <tr>

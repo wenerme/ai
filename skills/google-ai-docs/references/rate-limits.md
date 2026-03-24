@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+
 Rate limits regulate the number of requests you can make to the Gemini API
 within a given timeframe. These limits help maintain fair usage, protect against
 abuse, and help maintain system performance for all users.
@@ -39,8 +42,8 @@ billing account linked to your project.
 
 | Usage tier | Qualifications |
 |---|---|
-| Free | Signup (Google account) |
-| Tier 1 | [Activate billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) |
+| Free | [Active project](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) or free trial |
+| Tier 1 | [Set up and link an active billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) |
 | Tier 2 | Paid $100 towards billing account, and at least 3 days since first successful payment |
 | Tier 3 | Paid $1,000 towards billing account, and at least 30 days since first successful payment |
 
@@ -53,9 +56,9 @@ for all users.
 
 ## Gemini API rate limits
 
-Rate limits depend on a variety of factors (such as your quota tier) and can be
+Rate limits depend on a variety of factors (such as your usage tier) and can be
 viewed in Google AI Studio. As your tier and account status change over time,
-your rate limits will automatically be updated.
+your rate limits will automatically update.
 
 [View your active rate limits in AI Studio](https://aistudio.google.com/rate-limit?timeRange=last-28-days)
 
