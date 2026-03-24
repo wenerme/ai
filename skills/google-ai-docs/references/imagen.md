@@ -14,7 +14,7 @@ variants, see the [Model versions](https://ai.google.dev/gemini-api/docs/imagen#
 
 ## Generate images using the Imagen models
 
-This example demonstrates generating images with an [Imagen model](https://deepmind.google/technologies/imagen-4/):
+This example demonstrates generating images with an [Imagen model](https://deepmind.google/technologies/imagen/):
 
 ### Python
 
