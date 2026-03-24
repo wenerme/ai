@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 75 skills available
+> 77 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -54,6 +54,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
 | `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... |  |
+| `luanti-docs` | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... |  |
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
 | `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... |  |
@@ -69,6 +70,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
 | `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... |  |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
+| `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... |  |
 | `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
@@ -491,6 +493,16 @@ USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KT
 
 </details>
 <details>
+<summary><code>luanti-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill luanti-docs
+```
+
+Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting (Linux/Docker/database backends), mod development (mapgen, models, schematics, player physics), player guides (commands, privileges, minetest.conf), and engine internals (network protocol, compiling). USE THIS SKILL WHEN the user asks about Luanti, Minetest, Luanti server, Luanti modding, Lua API, or minetest.conf.
+
+</details>
+<details>
 <summary><code>mastra</code></summary>
 
 ```bash
@@ -638,6 +650,16 @@ npx skills add wenerme/ai --skill orpc-implementation-sops
 ```
 
 Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration
+
+</details>
+<details>
+<summary><code>papermc-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill papermc-docs
+```
+
+PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers server admin (config, Aikar's flags, anti-xray, profiling, migration from Spigot), plugin development (Brigadier commands, events, Component/Adventure/MiniMessage, entity/inventory API, scheduler, PDC, Folia), Velocity proxy (forwarding, security, tuning), and Adventure library (serializers, MiniMessage format). USE THIS SKILL WHEN the user asks about PaperMC, Paper server, Velocity, Bukkit plugins, Adventure API, MiniMessage, or Minecraft Java server.
 
 </details>
 <details>
