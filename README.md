@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 77 skills available
+> 78 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
+| `k3s-docs` | K3s documentation — lightweight certified Kubernetes distribution for IoT and edge. Covers installation (air-gap,... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
@@ -450,6 +451,16 @@ npx skills add wenerme/ai --skill image-prompt-guide
 ```
 
 USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, scenario-specific templates, SD style presets, and Nano Banana (Gemini Flash) prompt techniques with 100 real-world cases. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, nano banana, gemini image, image generation.
+
+</details>
+<details>
+<summary><code>k3s-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill k3s-docs
+```
+
+K3s documentation — lightweight certified Kubernetes distribution for IoT and edge. Covers installation (air-gap, private registry, HA), cluster architecture (embedded etcd, external datastore), networking (Flannel, CoreDNS, Traefik, ServiceLB), security (secrets encryption, CIS hardening), upgrades (automated, manual, rollback), CLI reference (k3s server/agent/etcd-snapshot/certificate/token), storage, and Helm chart management. USE THIS SKILL WHEN the user asks about K3s, lightweight Kubernetes, k3s server, k3s agent, k3s installation, k3s networking, k3s security hardening, or edge Kubernetes.
 
 </details>
 <details>
