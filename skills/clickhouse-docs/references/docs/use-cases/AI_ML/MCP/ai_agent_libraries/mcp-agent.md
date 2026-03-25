@@ -1,15 +1,15 @@
 ---
-title: 'How to build an AI Agent with mcp-agent and the ClickHouse MCP Server'
-description: 'Learn how build an AI Agent with mcp-agent and the ClickHouse MCP Server'
+title: 'How to build an AI Agent with mcp-agent and the ClickHouse MCP server'
+description: 'Learn how build an AI Agent with mcp-agent and the ClickHouse MCP server'
 keywords: ['ClickHouse', 'MCP', 'mcp-agent']
 show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# How to build an AI Agent with CrewAI and the ClickHouse MCP Server
+# How to build an AI Agent with CrewAI and the ClickHouse MCP server
 
 In this guide you'll learn how to build a [mcp-agent](https://github.com/lastmile-ai/mcp-agent) AI agent that can interact with 
-[ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
+[ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP server](https://github.com/ClickHouse/mcp-clickhouse).
 
 > **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/mcp-agent/mcp-agent.ipynb).
@@ -58,9 +58,9 @@ env = {
 }
 ```
 
-## Initialize MCP Server and mcp-agent agent {#initialize-mcp-and-agent}
+## Initialize MCP server and mcp-agent agent {#initialize-mcp-and-agent}
 
-Now configure the ClickHouse MCP Server to point at the ClickHouse SQL playground 
+Now configure the ClickHouse MCP server to point at the ClickHouse SQL playground 
 and also initialize our agent and ask it a question:
 
 ```python

@@ -1,5 +1,5 @@
 ---
-title: 'SQL-based Visualizations'
+title: 'SQL-based visualizations'
 description: 'Creating visualizations using SQL queries in ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'dashboards', 'visualization', 'sql', 'observability']

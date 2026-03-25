@@ -1,6 +1,6 @@
 ---
-description: 'You can ingest data into ClickHouse using Google Dataflow Templates'
-title: 'Google Dataflow Templates'
+description: 'You can ingest data into ClickHouse using Google Dataflow templates'
+title: 'Google Dataflow templates'
 doc_type: 'guide'
 keywords: ['google dataflow', 'gcp', 'data pipeline', 'templates', 'batch processing']
 ---

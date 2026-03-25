@@ -1,15 +1,15 @@
 ---
-title: 'How to build an OpenAI agent using ClickHouse MCP Server.'
-description: 'Learn how to build an OpenAI agent that can interact with ClickHouse MCP Server.'
+title: 'How to build an OpenAI agent using ClickHouse MCP server.'
+description: 'Learn how to build an OpenAI agent that can interact with ClickHouse MCP server.'
 keywords: ['ClickHouse', 'MCP', 'OpenAI']
 show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# How to build an OpenAI agent using ClickHouse MCP Server
+# How to build an OpenAI agent using ClickHouse MCP server
 
 In this guide, you'll learn how to build an [OpenAI](https://github.com/openai/openai-agents-python) agent that
-can interact with [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
+can interact with [ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP server](https://github.com/ClickHouse/mcp-clickhouse).
 
 > **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/openai-agents/openai-agents.ipynb).
@@ -45,9 +45,9 @@ os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter OpenAI API Key:")
 Enter OpenAI API Key: ········
 ```
 
-## Initialize MCP Server and OpenAI agent {#initialize-mcp-and-agent}
+## Initialize MCP server and OpenAI agent {#initialize-mcp-and-agent}
 
-Now configure the ClickHouse MCP Server to point at the ClickHouse SQL playground,
+Now configure the ClickHouse MCP server to point at the ClickHouse SQL playground,
 initialize your OpenAI agent and ask it a question:
 
 ```python

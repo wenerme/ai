@@ -1,11 +1,11 @@
 ---
 description: 'Learn how to connect pg_clickhouse to ClickHouse and query a New York City taxi example dataset.'
-title: 'pg_clickhouse Tutorial'
+title: 'pg_clickhouse tutorial'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'FDW', 'foreign data wrapper', 'pg_clickhouse', 'extension', 'tutorial', 'taxi']
 ---
 
-# pg_clickhouse Tutorial
+# pg_clickhouse tutorial
 
 ## Overview {#overview}
 

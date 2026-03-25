@@ -1,6 +1,6 @@
 ---
 description: 'Use deduplication when you need to perform frequent upserts, updates and deletes.'
-title: 'Deduplication Strategies'
+title: 'Deduplication strategies'
 keywords: ['deduplication strategies', 'data deduplication', 'upserts', 'updates and deletes', 'developer guide']
 doc_type: 'guide'
 ---

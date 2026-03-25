@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Systemd Logs with ClickStack'
+title: 'Monitoring Systemd logs with ClickStack'
 description: 'Monitoring Systemd and Journald Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['systemd', 'journald', 'journal', 'OTEL', 'ClickStack', 'system logs', 'systemctl']

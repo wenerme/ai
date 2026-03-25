@@ -1,6 +1,6 @@
 ---
 keywords: ['clickhouse', 'migrate', 'migration', 'migrating', 'data', 'etl', 'elt', 'clickhouse-local', 'clickhouse-client']
-title: 'Using a third-party ETL Tool'
+title: 'Using a third-party ETL tool'
 description: 'Page describing how to use a third-party ETL tool with ClickHouse'
 doc_type: 'guide'
 ---

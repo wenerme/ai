@@ -1,5 +1,5 @@
 ---
-title: 'Guide for Query optimization'
+title: 'Guide for query optimization'
 description: 'A simple guide for query optimization that describe common path to improve query performance'
 doc_type: 'guide'
 keywords: ['query optimization', 'performance', 'best practices', 'query tuning', 'efficiency']

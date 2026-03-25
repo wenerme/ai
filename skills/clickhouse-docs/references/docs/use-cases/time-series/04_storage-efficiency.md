@@ -1,5 +1,5 @@
 ---
-title: 'Storage efficiency - Time-series'
+title: 'Storage efficiency - time-series'
 description: 'Improving time-series storage efficiency'
 keywords: ['time-series', 'storage efficiency', 'compression', 'data retention', 'TTL', 'storage optimization', 'disk usage']
 show_related_blogs: true

@@ -1,5 +1,5 @@
 ---
-title: 'ClickStack - Performance Tuning'
+title: 'ClickStack - performance tuning'
 description: 'Performance Tuning for ClickStack - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['clickstack', 'observability', 'logs', 'performance', 'optimization']

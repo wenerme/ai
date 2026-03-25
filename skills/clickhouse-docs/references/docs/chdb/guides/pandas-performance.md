@@ -1,5 +1,5 @@
 ---
-title: 'Performance Guide'
+title: 'Performance guide'
 description: 'Performance optimization tips for DataStore vs pandas'
 keywords: ['chdb', 'datastore', 'pandas', 'performance', 'benchmark', 'optimization']
 doc_type: 'guide'

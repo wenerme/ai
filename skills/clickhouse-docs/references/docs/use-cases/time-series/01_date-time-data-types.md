@@ -1,5 +1,5 @@
 ---
-title: 'Date and time data types - Time-series'
+title: 'Date and time data types - time-series'
 description: 'Time-series data types in ClickHouse.'
 keywords: ['time-series', 'DateTime', 'DateTime64', 'Date', 'Time', 'Time64', 'data types', 'temporal data', 'timestamp']
 show_related_blogs: true

@@ -1,5 +1,5 @@
 ---
-title: 'Going to Production'
+title: 'Going to production'
 description: 'Going to production with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'production', 'deployment', 'best practices', 'operations']

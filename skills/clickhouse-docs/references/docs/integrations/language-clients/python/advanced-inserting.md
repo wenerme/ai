@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'python', 'insert', 'advanced']
-description: 'Advanced Inserting with ClickHouse Connect'
-title: 'Advanced Inserting'
+description: 'Advanced inserting with ClickHouse Connect'
+title: 'Advanced inserting'
 doc_type: 'reference'
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Nginx Logs with ClickStack'
+title: 'Monitoring Nginx logs with ClickStack'
 description: 'Monitoring Nginx with ClickStack'
 doc_type: 'guide'
 ---

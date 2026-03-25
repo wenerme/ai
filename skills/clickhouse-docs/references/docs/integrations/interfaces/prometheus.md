@@ -1,6 +1,6 @@
 ---
 description: 'Documentation for the Prometheus protocol support in ClickHouse'
-title: 'Prometheus Protocols'
+title: 'Prometheus protocols'
 doc_type: 'reference'
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Aggregation Functions'
+title: 'DataStore aggregation functions'
 description: 'Aggregate functions, window functions, and the F namespace in DataStore'
 keywords: ['chdb', 'datastore', 'aggregation', 'window', 'groupby', 'sum', 'mean', 'avg']
 doc_type: 'reference'

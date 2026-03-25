@@ -1,5 +1,5 @@
 ---
-title: 'Getting Started with Open Source ClickStack'
+title: 'Getting started with open source ClickStack'
 description: 'Getting started with Open Source ClickStack'
 doc_type: 'guide'
 keywords: ['ClickStack Open Source', 'getting started', 'Docker deployment', 'HyperDX UI', 'local deployment']

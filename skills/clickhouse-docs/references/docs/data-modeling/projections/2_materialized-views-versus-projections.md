@@ -1,5 +1,5 @@
 ---
-title: 'Materialized Views versus Projections'
+title: 'Materialized views versus projections'
 hide_title: false
 description: 'Article comparing materialized views and projections in ClickHouse, including their use cases, performance, and limitations.'
 doc_type: 'reference'

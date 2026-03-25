@@ -1,5 +1,5 @@
 ---
-title: 'ClickPipes & Language Clients'
+title: 'ClickPipes & language clients'
 description: 'ClickPipes and Language Client integrations for ClickHouse Cloud'
 doc_type: 'landing-page'
 keywords: ['integrations', 'cloud features', 'clickpipes', 'language clients', 'connectors']

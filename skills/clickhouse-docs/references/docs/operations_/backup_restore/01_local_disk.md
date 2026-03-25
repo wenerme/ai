@@ -1,6 +1,6 @@
 ---
 description: 'Details backup/restore to or from a local disk'
-title: 'Backup and Restore in ClickHouse'
+title: 'Backup and restore in ClickHouse'
 doc_type: 'guide'
 ---
 

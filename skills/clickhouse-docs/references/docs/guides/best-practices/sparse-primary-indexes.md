@@ -1,6 +1,6 @@
 ---
 description: 'In this guide we''re going to do a deep dive into ClickHouse indexing.'
-title: 'A Practical Introduction to Primary Indexes in ClickHouse'
+title: 'A practical introduction to primary indexes in ClickHouse'
 show_related_blogs: true
 doc_type: 'guide'
 keywords: ['primary index', 'indexing', 'performance', 'query optimization', 'best practices']

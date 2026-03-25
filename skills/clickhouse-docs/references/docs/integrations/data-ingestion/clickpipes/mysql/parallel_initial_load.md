@@ -1,5 +1,5 @@
 ---
-title: 'Parallel Snapshot In The MySQL ClickPipe'
+title: 'Parallel snapshot in the MySQL ClickPipe'
 description: 'Doc for explaining parallel snapshot in the MySQL ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']

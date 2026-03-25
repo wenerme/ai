@@ -1,7 +1,7 @@
 ---
 description: 'Data for billions of taxi and for-hire vehicle (Uber, Lyft, etc.) trips
   originating in New York City since 2009'
-title: 'New York Taxi Data'
+title: 'New York taxi data'
 doc_type: 'guide'
 keywords: ['example dataset', 'nyc taxi', 'tutorial', 'sample data', 'getting started']
 ---

@@ -1,11 +1,11 @@
 ---
 description: 'Description of the features and general configurations available'
 keywords: ['clickhouse', 'dbt', 'features']
-title: 'Features and Configurations'
+title: 'Features and configurations'
 doc_type: 'guide'
 ---
 
-# Features and Configurations
+# Features and configurations
 
 <ClickHouseSupportedBadge/>
 

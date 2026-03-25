@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Class Reference'
+title: 'DataStore class reference'
 description: 'Complete API reference for DataStore, ColumnExpr, LazyGroupBy, and LazySeries classes'
 keywords: ['chdb', 'datastore', 'class', 'reference', 'api', 'columnexpr', 'lazygroupby']
 doc_type: 'reference'
@@ -105,7 +105,7 @@ See [Factory Methods](factory-methods.md) for details.
 
 See [Query Building](query-building.md) for details.
 
-### Pandas-Compatible Methods {#datastore-pandas}
+### Pandas-compatible methods {#datastore-pandas}
 
 See [Pandas Compatibility](pandas-compat.md) for the complete list of 209 methods.
 

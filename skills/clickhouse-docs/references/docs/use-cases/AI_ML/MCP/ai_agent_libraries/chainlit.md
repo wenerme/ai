@@ -1,17 +1,17 @@
 ---
-title: 'How to build an AI Agent with Chainlit and the ClickHouse MCP Server'
-description: 'Learn how to use Chainlit to build LLM-based chat apps together with the ClickHouse MCP Server'
+title: 'How to build an AI Agent with Chainlit and the ClickHouse MCP server'
+description: 'Learn how to use Chainlit to build LLM-based chat apps together with the ClickHouse MCP server'
 keywords: ['ClickHouse', 'MCP', 'Chainlit']
 show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# How to build an AI agent with Chainlit and the ClickHouse MCP Server
+# How to build an AI agent with Chainlit and the ClickHouse MCP server
 
 This guide explores how to combine Chainlit's powerful chat interface framework 
 with the ClickHouse Model Context Protocol (MCP) Server to create interactive data
 applications. Chainlit enables you to build conversational interfaces for AI 
-applications with minimal code, while the ClickHouse MCP Server provides seamless
+applications with minimal code, while the ClickHouse MCP server provides seamless
 integration with ClickHouse's high-performance columnar database.
 
 ## Prerequisites {#prerequisites}
@@ -28,9 +28,9 @@ uv run --with anthropic --with chainlit chainlit run chat_basic.py -w -h
 
 Then navigate to `http://localhost:8000`
 
-## Adding ClickHouse MCP Server {#adding-clickhouse-mcp-server}
+## Adding ClickHouse MCP server {#adding-clickhouse-mcp-server}
 
-Things get more interesting if we add the ClickHouse MCP Server.
+Things get more interesting if we add the ClickHouse MCP server.
 You'll need to update your `.chainlit/config.toml` file to allow the `uv` command
 to be used:
 
@@ -46,14 +46,14 @@ to be used:
 > **note**: config.toml
 Find the full `config.toml` file in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/chainlit/.chainlit/config.toml)
 
-There's some glue code to get MCP Servers working with Chainlit, so we'll need to
+There's some glue code to get MCP servers working with Chainlit, so we'll need to
 run this command to launch Chainlit instead:
 
 ```sh
 uv run --with anthropic --with chainlit chainlit run chat_mcp.py -w -h
 ```
 
-To add the MCP Server, click on the plug icon in the chat interface, and then 
+To add the MCP server, click on the plug icon in the chat interface, and then 
 add the following command to connect to use the ClickHouse SQL Playground:
 
 ```sh

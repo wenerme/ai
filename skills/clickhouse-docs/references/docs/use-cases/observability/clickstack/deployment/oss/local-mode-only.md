@@ -1,6 +1,6 @@
 ---
-title: 'Local Mode Only'
-description: 'Deploying ClickStack with Local Mode Only - The ClickHouse Observability Stack'
+title: 'Local mode only'
+description: 'Deploying ClickStack with Local mode only - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['clickstack', 'deployment', 'setup', 'configuration', 'observability']
 ---

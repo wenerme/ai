@@ -1,5 +1,5 @@
 ---
-title: 'AWS IAM DB Authentication (RDS/Aurora)'
+title: 'AWS IAM DB authentication (RDS/Aurora)'
 description: 'This article demonstrates how ClickPipes customers can leverage role-based access to authenticate with Amazon RDS/Aurora and access their database securely.'
 doc_type: 'guide'
 keywords: ['clickpipes', 'rds', 'security', 'aws', 'private connection']
@@ -10,7 +10,7 @@ integration:
 
 This article demonstrates how ClickPipes customers can leverage role-based access to authenticate with Amazon Aurora and RDS and access their databases securely.
 
-> **warning**: For AWS RDS Postgres and Aurora Postgres you can only run `Initial Load Only` ClickPipes due to the limitations of the AWS IAM DB Authentication.
+> **warning**: For AWS RDS Postgres and Aurora Postgres you can only run `Initial Load Only` ClickPipes due to the limitations of the AWS IAM DB authentication.
 
 For MySQL and MariaDB, this limitation doesn't apply, and you can run both `Initial Load Only` and `CDC` ClickPipes.
 

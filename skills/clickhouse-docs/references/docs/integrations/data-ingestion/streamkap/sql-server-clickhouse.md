@@ -1,11 +1,11 @@
 ---
 keywords: ['clickhouse', 'Streamkap', 'CDC', 'sql server', 'connect', 'integrate', 'etl', 'data integration', 'change data capture']
-description: 'Streaming Data from SQL Server to ClickHouse for Fast Analytics'
-title: 'Streaming Data from SQL Server to ClickHouse for Fast Analytics'
+description: 'Streaming Data from SQL Server to ClickHouse for fast analytics'
+title: 'Streaming Data from SQL Server to ClickHouse for fast analytics'
 doc_type: 'guide'
 ---
 
-# Streaming Data from SQL Server to ClickHouse for Fast Analytics: Step-by-Step Guide
+# Streaming Data from SQL Server to ClickHouse for fast analytics: Step-by-Step Guide
 
 In this article, we're breaking down a tutorial that shows you how to stream data from SQL Server to ClickHouse. ClickHouse is ideal if you want super fast analytics for reporting internal or customer-facing dashboards. We’ll walk step-by-step through getting both databases set up, how to connect them, and finally, how to use [Streamkap](https://streamkap.com) to stream your data. If SQL Server handles your day-to-day operations but you need the speed and smarts of ClickHouse for analytics, you’re in the right spot.
 

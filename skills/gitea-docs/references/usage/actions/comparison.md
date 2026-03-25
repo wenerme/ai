@@ -31,12 +31,6 @@ See [Using concurrency](https://docs.github.com/en/actions/using-jobs/using-conc
 
 It's ignored by Gitea Actions now.
 
-### `permissions` and `jobs.<job_id>.permissions`
-
-See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions).
-
-It's ignored by Gitea Actions now.
-
 ### `jobs.<job_id>.timeout-minutes`
 
 See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
@@ -105,6 +99,15 @@ As of v1.21.0, gitea behaves as if `concurrency.cancel-in-progress` is set to `t
 This means that newly-triggered workflows will pre-empt runs already in progress for previous triggers.
 
 See [PR #25716](https://github.com/go-gitea/gitea/pull/25716) for additional details.
+
+### Job token permissions (`permissions`)
+
+Gitea supports `permissions` and `jobs.<job_id>.permissions` to control the default `GITEA_TOKEN` permissions.
+
+The effective permissions are clamped by the repository/owner settings and are further restricted for fork pull requests and cross-repository access.
+GitHub-only scopes such as `statuses`, `checks`, `deployments`, `id-token`, `security-events`, and `pages` are not supported, while Gitea-specific scopes such as `code`, `releases`, `wiki`, and `projects` are available.
+
+See [Actions job token permissions](token-permissions.md).
 
 ### Downloading actions
 

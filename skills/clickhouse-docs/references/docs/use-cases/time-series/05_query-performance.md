@@ -1,5 +1,5 @@
 ---
-title: 'Query performance - Time-series'
+title: 'Query performance - time-series'
 description: 'Improving time-series query performance'
 keywords: ['time-series', 'query performance', 'optimization', 'indexing', 'partitioning', 'query tuning', 'performance']
 show_related_blogs: true

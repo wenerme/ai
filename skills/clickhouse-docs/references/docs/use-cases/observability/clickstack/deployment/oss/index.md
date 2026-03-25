@@ -1,5 +1,5 @@
 ---
-title: 'Open Source Deployment Options'
+title: 'Open source deployment options'
 description: 'Deploying Open Source ClickStack - The ClickHouse Observability Stack'
 doc_type: 'reference'
 keywords: ['ClickStack', 'observability', 'Open Source']

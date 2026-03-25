@@ -1,5 +1,5 @@
 ---
-title: 'Pandas Cookbook'
+title: 'Pandas cookbook'
 description: 'Common pandas patterns and their DataStore equivalents'
 keywords: ['chdb', 'datastore', 'pandas', 'cookbook', 'patterns', 'examples']
 doc_type: 'guide'

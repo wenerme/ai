@@ -1,6 +1,6 @@
 ---
 keywords: ['clickhouse', 'java', 'driver', 'integrate', 'r2dbc']
-description: 'ClickHouse R2DBC Driver'
+description: 'ClickHouse R2DBC driver'
 title: 'R2DBC driver'
 doc_type: 'reference'
 integration:

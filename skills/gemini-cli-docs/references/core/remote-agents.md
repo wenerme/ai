@@ -102,7 +102,7 @@ Gemini CLI supports the following authentication types:
 | `apiKey`             | Send a static API key as an HTTP header.                                                       |
 | `http`               | HTTP authentication (Bearer token, Basic credentials, or any IANA-registered scheme).          |
 | `google-credentials` | Google Application Default Credentials (ADC). Automatically selects access or identity tokens. |
-| `oauth2`             | OAuth 2.0 Authorization Code flow with PKCE. Opens a browser for interactive sign-in.          |
+| `oauth`              | OAuth 2.0 Authorization Code flow with PKCE. Opens a browser for interactive sign-in.          |
 
 ### Dynamic values
 
@@ -261,7 +261,7 @@ hosts:
 
 Requests to any other host will be rejected with an error. If your agent is
 hosted on a different domain, use one of the other auth types (`apiKey`, `http`,
-or `oauth2`).
+or `oauth`).
 
 #### Examples
 
@@ -295,7 +295,7 @@ auth:
 ---
 ```
 
-### OAuth 2.0 (`oauth2`)
+### OAuth 2.0 (`oauth`)
 
 Performs an interactive OAuth 2.0 Authorization Code flow with PKCE. On first
 use, Gemini CLI opens your browser for sign-in and persists the resulting tokens
@@ -303,7 +303,7 @@ for subsequent requests.
 
 | Field               | Type     | Required | Description                                                                                                                                        |
 | :------------------ | :------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`              | string   | Yes      | Must be `oauth2`.                                                                                                                                  |
+| `type`              | string   | Yes      | Must be `oauth`.                                                                                                                                   |
 | `client_id`         | string   | Yes\*    | OAuth client ID. Required for interactive auth.                                                                                                    |
 | `client_secret`     | string   | No\*     | OAuth client secret. Required by most authorization servers (confidential clients). Can be omitted for public clients that don't require a secret. |
 | `scopes`            | string[] | No       | Requested scopes. Can also be discovered from the agent card.                                                                                      |
@@ -316,7 +316,7 @@ kind: remote
 name: oauth-agent
 agent_card_url: https://example.com/.well-known/agent.json
 auth:
-  type: oauth2
+  type: oauth
   client_id: my-client-id.apps.example.com
 ---
 ```

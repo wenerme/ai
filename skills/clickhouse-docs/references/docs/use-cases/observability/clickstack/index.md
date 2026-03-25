@@ -1,5 +1,5 @@
 ---
-title: 'ClickStack - The ClickHouse Observability Stack'
+title: 'ClickStack - the ClickHouse observability stack'
 description: 'Landing page for the ClickHouse Observability Stack'
 keywords: ['ClickStack', 'observability stack', 'HyperDX', 'OpenTelemetry', 'logs', 'traces', 'metrics']
 doc_type: 'landing-page'

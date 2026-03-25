@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring MongoDB Logs with ClickStack'
+title: 'Monitoring MongoDB logs with ClickStack'
 description: 'Monitoring MongoDB Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['MongoDB', 'logs', 'OTEL', 'ClickStack', 'database monitoring', 'slow query']

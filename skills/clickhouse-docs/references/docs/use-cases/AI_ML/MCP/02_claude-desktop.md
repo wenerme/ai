@@ -1,5 +1,5 @@
 ---
-title: 'Set Up ClickHouse MCP Server with Claude Desktop'
+title: 'Set up ClickHouse MCP server with Claude Desktop'
 description: 'This guide explains how to set up Claude Desktop with a ClickHouse MCP server.'
 keywords: ['AI', 'Librechat', 'MCP']
 show_related_blogs: true
@@ -18,7 +18,7 @@ doc_type: 'guide'
 ## Install uv {#install-uv}
 
 You will need to install [uv](https://docs.astral.sh/uv/) to follow the instructions in this guide.
-If you don't want to use uv, you will need to update the MCP Server config to use an alternative package manager.
+If you don't want to use uv, you will need to update the MCP server config to use an alternative package manager.
 
 ## Download Claude Desktop {#download-claude-desktop}
 
@@ -43,7 +43,7 @@ The first time you open that file, it will likely contain the following content:
 }
 ```
 
-The `mcpServers` dictionary takes in the name of an MCP Server as a key, and a dictionary of configuration options as a value.  
+The `mcpServers` dictionary takes in the name of an MCP server as a key, and a dictionary of configuration options as a value.  
 For example, the ClickHouse MCP server configuration connecting to the ClickHouse Playground would look like this:
 
 ```json
@@ -95,11 +95,11 @@ You can then choose whether to disable all or some of the tools.
 Now we're ready to ask Claude some questions that will result in it using the ClickHouse MCP server.
 For example, we could ask it `What's the most interesting dataset in the SQL playground?`.
 
-Claude will ask us to confirm the use of each tool in the MCP Server the first time that it's called:
+Claude will ask us to confirm the use of each tool in the MCP server the first time that it's called:
 
 <Image img={MCPPermission} alt="Give permission to use the list_databases tool" size="md" />
 
-Below you can see part of a conversation that includes some tool calls to the ClickHouse MCP Server:
+Below you can see part of a conversation that includes some tool calls to the ClickHouse MCP server:
 
 <Image img={ClaudeConversation} alt="Claude conversation" size="md" />
 

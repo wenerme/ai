@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring AWS CloudWatch Logs with ClickStack'
+title: 'Monitoring AWS CloudWatch logs with ClickStack'
 description: 'Monitoring AWS CloudWatch Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['AWS', 'CloudWatch', 'OTEL', 'ClickStack', 'logs']

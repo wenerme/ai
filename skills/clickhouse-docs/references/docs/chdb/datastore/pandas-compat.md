@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Pandas Compatibility'
+title: 'DataStore Pandas compatibility'
 description: 'Complete list of pandas-compatible methods in DataStore (209 DataFrame methods)'
 keywords: ['chdb', 'datastore', 'pandas', 'compatibility', 'dataframe', 'methods']
 doc_type: 'reference'

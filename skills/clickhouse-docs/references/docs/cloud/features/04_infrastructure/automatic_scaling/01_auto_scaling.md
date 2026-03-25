@@ -1,7 +1,7 @@
 ---
 description: 'Configuring automatic scaling in ClickHouse Cloud'
 keywords: ['autoscaling', 'auto scaling', 'scaling', 'horizontal', 'vertical', 'bursts']
-title: 'Automatic Scaling'
+title: 'Automatic scaling'
 doc_type: 'guide'
 ---
 

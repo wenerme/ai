@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Nginx Traces with ClickStack'
+title: 'Monitoring Nginx traces with ClickStack'
 description: 'Monitoring Nginx Traces with ClickStack'
 doc_type: 'guide'
 keywords: ['ClickStack', 'Nginx', 'traces', 'otel']

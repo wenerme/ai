@@ -1,5 +1,5 @@
 ---
-title: 'DataStore - Pandas-Compatible API'
+title: 'DataStore - Pandas-compatible API'
 description: 'DataStore provides a pandas-compatible API with SQL optimization for high-performance data analysis'
 keywords: ['chdb', 'datastore', 'pandas', 'dataframe', 'sql', 'lazy evaluation']
 doc_type: 'guide'

@@ -1,5 +1,5 @@
 ---
-title: 'Enable and connect ClickHouse Cloud Remote MCP Server'
+title: 'Enable and connect ClickHouse Cloud remote MCP server'
 description: 'This guide explains how to enable and use the ClickHouse Cloud Remote MCP'
 keywords: ['AI', 'ClickHouse Cloud', 'MCP']
 show_related_blogs: true

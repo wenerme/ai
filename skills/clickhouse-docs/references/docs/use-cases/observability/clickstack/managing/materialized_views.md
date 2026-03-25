@@ -1,5 +1,5 @@
 ---
-title: 'ClickStack - Materialized Views'
+title: 'ClickStack - materialized views'
 description: 'Performance Tuning for ClickStack using Materialized Views'
 doc_type: 'guide'
 keywords: ['clickstack', 'observability', 'materialized views', 'performance', 'optimization', 'visualizations', 'aggregations']

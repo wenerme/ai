@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring PostgreSQL Metrics with ClickStack'
+title: 'Monitoring PostgreSQL metrics with ClickStack'
 description: 'Monitoring PostgreSQL Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'metrics', 'OTEL', 'ClickStack', 'database monitoring']

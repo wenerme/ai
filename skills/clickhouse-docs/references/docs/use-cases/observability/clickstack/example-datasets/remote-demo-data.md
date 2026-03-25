@@ -1,5 +1,5 @@
 ---
-title: 'Remote Demo Dataset'
+title: 'Remote demo dataset'
 description: 'Getting started with ClickStack and a remote demo dataset'
 doc_type: 'guide'
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']

@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'python', 'driver', 'api', 'client']
-description: 'ClickHouse Connect Driver API'
-title: 'ClickHouse Connect Driver API'
+description: 'ClickHouse Connect driver API'
+title: 'ClickHouse Connect driver API'
 doc_type: 'reference'
 ---
 

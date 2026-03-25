@@ -1,5 +1,5 @@
 ---
-title: 'Execution Engine Configuration'
+title: 'Execution engine configuration'
 description: 'Configure DataStore execution engine - auto, chdb, or pandas'
 keywords: ['chdb', 'datastore', 'execution', 'engine', 'chdb', 'pandas', 'auto']
 doc_type: 'guide'

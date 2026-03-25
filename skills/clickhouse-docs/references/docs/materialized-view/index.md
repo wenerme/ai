@@ -1,5 +1,5 @@
 ---
-title: 'Materialized Views'
+title: 'Materialized views'
 description: 'Index page for materialized views'
 keywords: ['materialized views', 'speed up queries', 'query optimization', 'refreshable', 'incremental']
 doc_type: 'landing-page'

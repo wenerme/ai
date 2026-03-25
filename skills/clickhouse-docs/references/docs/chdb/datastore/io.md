@@ -1,5 +1,5 @@
 ---
-title: 'DataStore I/O Operations'
+title: 'DataStore I/O operations'
 description: 'Reading and writing data with DataStore - all supported formats and destinations'
 keywords: ['chdb', 'datastore', 'io', 'read', 'write', 'csv', 'parquet', 'json', 'excel']
 doc_type: 'reference'

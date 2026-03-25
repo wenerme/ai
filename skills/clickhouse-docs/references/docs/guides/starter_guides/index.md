@@ -1,5 +1,5 @@
 ---
-title: 'Starter Guides'
+title: 'Starter guides'
 description: 'Landing page for starter guides'
 doc_type: 'landing-page'
 keywords: ['beginner', 'tutorial', 'create table', 'insert data', 'select data', 'update data', 'delete data']

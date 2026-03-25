@@ -1,7 +1,7 @@
 ---
 description: 'Guide to using the JDBC driver for connecting to ClickHouse from Java
   applications'
-title: 'JDBC Driver'
+title: 'JDBC driver'
 doc_type: 'guide'
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Getting Started with Managed ClickStack'
+title: 'Getting started with managed ClickStack'
 description: 'Getting started with Managed ClickStack'
 doc_type: 'guide'
 keywords: ['Managed ClickStack', 'getting started', 'ClickHouse Cloud']

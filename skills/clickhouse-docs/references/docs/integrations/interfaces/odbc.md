@@ -1,6 +1,6 @@
 ---
 description: 'Documentation for the ClickHouse ODBC driver'
-title: 'ODBC Driver'
+title: 'ODBC driver'
 doc_type: 'reference'
 ---
 

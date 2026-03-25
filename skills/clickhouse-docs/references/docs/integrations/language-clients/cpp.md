@@ -1,7 +1,7 @@
 ---
 description: 'Documentation for the ClickHouse C++ client library and integration
   with u-server framework'
-title: 'C++ Client Library'
+title: 'C++ client library'
 doc_type: 'reference'
 ---
 

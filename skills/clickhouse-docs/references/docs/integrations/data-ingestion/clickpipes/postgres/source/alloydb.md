@@ -1,6 +1,6 @@
 ---
 description: 'Set up an AlloyDB Postgres instance as a source for ClickPipes'
-title: 'AlloyDB Postgres Source Setup Guide'
+title: 'AlloyDB Postgres source setup guide'
 doc_type: 'guide'
 ---
 

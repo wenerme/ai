@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Profiling'
+title: 'DataStore profiling'
 description: 'Measure DataStore performance with the built-in profiler'
 keywords: ['chdb', 'datastore', 'profiling', 'performance', 'timing', 'benchmark']
 doc_type: 'guide'

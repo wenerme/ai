@@ -1,6 +1,6 @@
 ---
 description: 'Overview of the advanced guides'
-title: 'Advanced Guides'
+title: 'Advanced guides'
 keywords: ['ClickHouse advanced guides', 'developer guides', 'query optimization', 'materialized views', 'deduplication', 'time series', 'query execution']
 doc_type: 'guide'
 ---

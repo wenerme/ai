@@ -1,7 +1,7 @@
 ---
 description: 'Over 20 billion records of data from Sensor.Community, a contributors-driven
   global sensor network that creates Open Environmental Data.'
-title: 'Environmental Sensors Data'
+title: 'Environmental sensors data'
 doc_type: 'guide'
 keywords: ['environmental sensors', 'Sensor.Community', 'air quality data', 'environmental data', 'getting started']
 ---

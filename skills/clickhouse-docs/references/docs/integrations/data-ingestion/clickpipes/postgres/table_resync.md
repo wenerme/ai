@@ -1,5 +1,5 @@
 ---
-title: 'Resyncing Specific Tables'
+title: 'Resyncing specific tables'
 description: 'Resyncing specific tables in a Postgres ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']

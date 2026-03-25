@@ -1,5 +1,5 @@
 ---
-title: 'BYOC Operations and Maintenance'
+title: 'BYOC operations and maintenance'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'operations', 'maintenance']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'

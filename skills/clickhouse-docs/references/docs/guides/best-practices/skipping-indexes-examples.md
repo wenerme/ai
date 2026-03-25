@@ -1,6 +1,6 @@
 ---
 description: 'Consolidated Skip Index Examples'
-title: 'Data Skipping Index Examples'
+title: 'Data skipping index examples'
 doc_type: 'guide'
 keywords: ['skipping indexes', 'data skipping', 'performance', 'indexing', 'best practices']
 ---

@@ -163,7 +163,6 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `DEFAULT_MERGE_MESSAGE_OFFICIAL_APPROVERS_ONLY`: **true**: In default merge messages only include approvers who are officially allowed to review.
 - `POPULATE_SQUASH_COMMENT_WITH_COMMIT_MESSAGES`: **false**: In default squash-merge messages include the commit message of all commits comprising the pull request.
 - `ADD_CO_COMMITTER_TRAILERS`: **true**: Add co-authored-by and co-committed-by trailers to merge commit messages if committer does not match author.
-- `TEST_CONFLICTING_PATCHES_WITH_GIT_APPLY`: **false**: PR patches are tested using a three-way merge method to discover if there are conflicts. If this setting is set to **true**, conflicting patches will be retested using `git apply` - This was the previous behaviour in 1.18 (and earlier) but is somewhat inefficient. Please report if you find that this setting is required.
 - `RETARGET_CHILDREN_ON_MERGE`: **true**: Retarget child pull requests to the parent pull request branch target on merge of parent pull request. It only works on merged PRs where the head and base branch target the same repo.
 - `DEFAULT_DELETE_BRANCH_AFTER_MERGE`: **false**: Set the default value for "Delete pull request branch after merge by default" for new repositories.
 
@@ -334,8 +333,7 @@ The following configuration set `Content-Type: application/vnd.android.package-a
 - `ROOT_URL`: **`{PROTOCOL}://{DOMAIN}:{HTTP_PORT}/`**:
    Overwrite the automatically generated public URL.
    This is useful if the internal and the external URL don't match (e.g. behind a reverse proxy).
-- `PUBLIC_URL_DETECTION`: **`legacy`**: Controls how to generate the public URL.
-   Although it defaults to "legacy" (to avoid breaking existing users), most instances should use the "auto" behavior,
+- `PUBLIC_URL_DETECTION`: **`auto`**: Controls how to generate the public URL. Most instances should use the "auto" behavior,
    especially when the Gitea instance needs to be accessed in a container network.
    - "legacy": generate the public URL by "Host" header if "X-Forwarded-Proto" header exists, otherwise use "ROOT_URL".
    - "auto": always use "Host" header, and also use "X-Forwarded-Proto" header if it exists. If no "Host" header, use "ROOT_URL".

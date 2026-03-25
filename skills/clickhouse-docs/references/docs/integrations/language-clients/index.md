@@ -1,7 +1,7 @@
 ---
-title: 'Language Clients'
+title: 'Language clients'
 description: 'Table of contents page for Language Clients.'
-keywords: ['Language Clients', 'C++', 'Go', 'JavaScript', 'Java', 'Python', 'Rust']
+keywords: ['Language clients', 'C++', 'Go', 'JavaScript', 'Java', 'Python', 'Rust']
 doc_type: 'landing-page'
 ---
 

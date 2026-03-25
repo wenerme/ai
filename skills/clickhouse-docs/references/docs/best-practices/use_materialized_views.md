@@ -1,5 +1,5 @@
 ---
-title: 'Use Materialized Views'
+title: 'Use materialized views'
 description: 'Page describing Materialized Views'
 keywords: ['materialized views', 'medallion architecture']
 show_related_blogs: true

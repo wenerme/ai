@@ -1,6 +1,6 @@
 ---
 description: 'Over 150M customer reviews of Amazon products'
-title: 'Amazon Customer Review'
+title: 'Amazon customer review'
 doc_type: 'guide'
 keywords: ['Amazon reviews', 'customer reviews dataset', 'e-commerce data', 'example dataset', 'getting started']
 ---

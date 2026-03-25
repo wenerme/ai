@@ -1,5 +1,5 @@
 ---
-title: 'Getting Started with ClickStack'
+title: 'Getting started with ClickStack'
 description: 'Getting started with ClickStack - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['ClickStack', 'Managed ClickStack', 'getting started', 'Docker deployment', 'HyperDX UI', 'ClickHouse Cloud', 'local deployment']

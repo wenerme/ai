@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Redis Logs with ClickStack'
+title: 'Monitoring Redis logs with ClickStack'
 description: 'Monitoring Redis Logs with ClickStack'
 doc_type: 'guide'
 ---

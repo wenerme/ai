@@ -1,5 +1,5 @@
 ---
-title: 'Deployment Options'
+title: 'Deployment options'
 description: 'Deploying ClickStack - The ClickHouse Observability Stack'
 doc_type: 'reference'
 keywords: ['ClickStack', 'observability']

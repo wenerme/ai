@@ -1,5 +1,5 @@
 ---
-title: 'Parallel Snapshot In The Postgres ClickPipe'
+title: 'Parallel snapshot in the Postgres ClickPipe'
 description: 'Doc for explaining parallel snapshot in the Postgres ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']

@@ -1,6 +1,6 @@
 ---
-title: 'Migrating to ClickStack from other Observability solutions'
-description: 'Migrating to ClickStack from other Observability solutions'
+title: 'Migrating to ClickStack from other observability solutions'
+description: 'Migrating to ClickStack from other observability solutions'
 doc_type: 'guide'
 keywords: ['migrate to ClickStack', 'ClickStack migration guide
 ', 'ClickStack migration from Elastic', 'ELK']

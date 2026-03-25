@@ -1,6 +1,6 @@
 ---
-title: 'Pausing and Resuming a MongoDB ClickPipe'
-description: 'Pausing and Resuming a MongoDB ClickPipe'
+title: 'Pausing and resuming a MongoDB ClickPipe'
+description: 'Pausing and resuming a MongoDB ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
 integration:

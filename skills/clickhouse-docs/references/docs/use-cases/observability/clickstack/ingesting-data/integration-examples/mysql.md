@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring MySQL Logs with ClickStack'
+title: 'Monitoring MySQL logs with ClickStack'
 description: 'Monitoring MySQL Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['MySQL', 'logs', 'OTEL', 'ClickStack', 'database monitoring', 'slow query']

@@ -1,5 +1,5 @@
 ---
-title: 'AWS Marketplace Committed Contract'
+title: 'AWS Marketplace committed contract'
 description: 'Subscribe to ClickHouse Cloud through the AWS Marketplace (Committed Contract)'
 keywords: ['aws', 'amazon', 'marketplace', 'billing', 'committed', 'committed contract']
 doc_type: 'guide'

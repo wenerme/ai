@@ -1,5 +1,5 @@
 ---
-title: 'BYOC Observability'
+title: 'BYOC observability'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'observability', 'monitoring', 'Prometheus', 'Grafana']
 description: 'Monitor and observe your BYOC ClickHouse deployment using built-in dashboards and Prometheus metrics'
 doc_type: 'reference'

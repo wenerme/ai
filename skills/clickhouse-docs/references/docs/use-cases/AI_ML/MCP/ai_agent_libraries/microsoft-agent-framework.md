@@ -1,15 +1,15 @@
 ---
-title: 'How to build an AI Agent with Microsoft Agent Framework and the ClickHouse MCP Server'
-description: 'Learn how build an AI Agent with Microsoft Agent Framework and the ClickHouse MCP Server'
+title: 'How to build an AI Agent with Microsoft Agent framework and the ClickHouse MCP server'
+description: 'Learn how build an AI Agent with Microsoft Agent framework and the ClickHouse MCP server'
 keywords: ['ClickHouse', 'MCP', 'Microsoft']
 show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# How to build an AI Agent with Microsoft Agent Framework and the ClickHouse MCP Server
+# How to build an AI Agent with Microsoft Agent framework and the ClickHouse MCP server
 
-In this guide you'll learn how to build a [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) AI agent that can interact with 
-[ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP Server](https://github.com/ClickHouse/mcp-clickhouse).
+In this guide you'll learn how to build a [Microsoft Agent framework](https://github.com/microsoft/agent-framework) AI agent that can interact with 
+[ClickHouse's SQL playground](https://sql.clickhouse.com/) using [ClickHouse's MCP server](https://github.com/ClickHouse/mcp-clickhouse).
 
 > **note**: Example notebook
 This example can be found as a notebook in the [examples repository](https://github.com/ClickHouse/examples/blob/main/ai/mcp/microsoft-agent-framework/microsoft-agent-framework.ipynb).
@@ -25,7 +25,7 @@ You can run the following steps either from your Python REPL or via script.
 
 ## Install libraries {#install-libraries}
 
-Install the Microsoft Agent Framework library by running the following commands:
+Install the Microsoft Agent framework library by running the following commands:
 
 ```python
 pip install -q --upgrade pip
@@ -58,9 +58,9 @@ env = {
 }
 ```
 
-## Initialize MCP Server and Microsoft Agent Framework agent {#initialize-mcp-and-agent}
+## Initialize MCP server and Microsoft Agent framework agent {#initialize-mcp-and-agent}
 
-Now configure the ClickHouse MCP Server to point at the ClickHouse SQL playground 
+Now configure the ClickHouse MCP server to point at the ClickHouse SQL playground 
 and also initialize our agent and ask it a question:
 
 ```python

@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring JVM Metrics with ClickStack'
+title: 'Monitoring JVM metrics with ClickStack'
 description: 'Monitoring JVM with ClickStack'
 doc_type: 'guide'
 ---

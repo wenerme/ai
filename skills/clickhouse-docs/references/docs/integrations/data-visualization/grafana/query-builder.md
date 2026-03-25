@@ -1,6 +1,6 @@
 ---
-description: 'Using the Query Builder in the ClickHouse Grafana plugin'
-title: 'Query Builder'
+description: 'Using the Query builder in the ClickHouse Grafana plugin'
+title: 'Query builder'
 doc_type: 'guide'
 keywords: ['grafana', 'query builder', 'visualization', 'dashboards', 'plugin']
 integration:
@@ -8,7 +8,7 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Query Builder
+# Query builder
 
 <ClickHouseSupportedBadge/>
 

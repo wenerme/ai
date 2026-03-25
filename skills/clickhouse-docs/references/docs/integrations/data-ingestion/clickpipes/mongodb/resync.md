@@ -1,5 +1,5 @@
 ---
-title: 'Resyncing a Database ClickPipe'
+title: 'Resyncing a database ClickPipe'
 description: 'Doc for resyncing a database ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']

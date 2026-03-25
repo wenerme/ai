@@ -1,5 +1,5 @@
 ---
-title: 'Local Logs & Metrics'
+title: 'Local logs & metrics'
 description: 'Getting started with ClickStack local and system data and metrics'
 doc_type: 'guide'
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']

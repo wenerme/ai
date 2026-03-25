@@ -1,5 +1,5 @@
 ---
-title: 'Data Formats'
+title: 'Data formats'
 description: 'Data Formats for chDB'
 keywords: ['chdb', 'data formats']
 doc_type: 'reference'

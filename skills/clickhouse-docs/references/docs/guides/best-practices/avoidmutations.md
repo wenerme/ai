@@ -1,5 +1,5 @@
 ---
-title: 'Avoid Mutations'
+title: 'Avoid mutations'
 description: 'Mutations refers to ALTER queries that manipulate table data'
 doc_type: 'guide'
 keywords: ['avoid mutations', 'ALTER queries', 'table data manipulation', 'best practices', 'performance optimization']

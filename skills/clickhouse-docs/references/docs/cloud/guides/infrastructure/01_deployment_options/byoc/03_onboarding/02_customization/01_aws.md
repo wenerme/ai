@@ -1,5 +1,5 @@
 ---
-title: 'AWS Customized Setup'
+title: 'AWS customized setup'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding', 'AWS', 'VPC']
 description: 'Deploy ClickHouse BYOC into your existing AWS VPC'
 doc_type: 'reference'

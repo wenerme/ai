@@ -1,5 +1,5 @@
 ---
-title: 'Rewriting PostgreSQL Queries'
+title: 'Rewriting PostgreSQL queries'
 keywords: ['postgres', 'postgresql', 'rewriting queries']
 description: 'Part 2 of a guide on migrating from PostgreSQL to ClickHouse'
 doc_type: 'guide'

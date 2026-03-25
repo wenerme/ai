@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Node.js Traces with ClickStack'
+title: 'Monitoring Node.js traces with ClickStack'
 description: 'Monitoring Node.js application traces with ClickStack'
 doc_type: 'guide'
 keywords: ['Node.js', 'traces', 'OTEL', 'ClickStack', 'distributed tracing']

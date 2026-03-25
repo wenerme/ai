@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Cloudflare Logs with ClickStack'
+title: 'Monitoring Cloudflare logs with ClickStack'
 description: 'Ingest Cloudflare Logpush data into ClickStack using ClickPipes for continuous log ingestion from S3'
 doc_type: 'guide'
 keywords: ['Cloudflare', 'logs', 'ClickStack', 'ClickPipes', 'S3', 'HTTP', 'Logpush']

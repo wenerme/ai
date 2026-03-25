@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring EC2 Host Logs with ClickStack'
+title: 'Monitoring EC2 host logs with ClickStack'
 description: 'Monitoring EC2 Host Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['EC2', 'AWS', 'host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'cloud metadata']

@@ -1,5 +1,5 @@
 ---
-title: 'HyperDX Only'
+title: 'HyperDX only'
 description: 'Deploying HyperDX only'
 doc_type: 'guide'
 keywords: ['HyperDX standalone deployment', 'HyperDX ClickHouse integration', 'deploy HyperDX only', 'HyperDX Docker installation', 'ClickHouse visualization tool']

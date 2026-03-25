@@ -1,6 +1,6 @@
 ---
-title: 'Pausing and Resuming a MySQL ClickPipe'
-description: 'Pausing and Resuming a MySQL ClickPipe'
+title: 'Pausing and resuming a MySQL ClickPipe'
+description: 'Pausing and resuming a MySQL ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mysql', 'cdc', 'data ingestion', 'real-time sync']
 integration:

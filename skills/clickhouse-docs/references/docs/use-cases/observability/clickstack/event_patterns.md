@@ -1,6 +1,6 @@
 ---
-title: 'Event Patterns with ClickStack'
-description: 'Event Patterns with ClickStack'
+title: 'Event patterns with ClickStack'
+description: 'Event patterns with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'event patterns', 'log analysis', 'pattern matching', 'observability']
 ---
@@ -17,7 +17,7 @@ Beyond incident response, this high-level view also helps you identify noisy log
 
 Event patterns are available directly through the **Search** panel in ClickStack.  
 
-From the top-left **Analysis Mode** selector, choose **Event Patterns** to switch from the standard results table to a clustered view of similar events.  
+From the top-left **Analysis Mode** selector, choose **Event patterns** to switch from the standard results table to a clustered view of similar events.  
 
 <Image img={event_patterns_highlight} alt="Event patterns" size="lg"/>
 

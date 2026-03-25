@@ -1,0 +1,20 @@
+---
+title: "RecraftStyleV3VectorIllustrationNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftStyleV3VectorIllustrationNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3VectorIllustrationNode/en.md)
+
+This node configures a style for use with the Recraft API, specifically selecting the `vector_illustration` style. It allows you to optionally choose a more specific substyle within that category. The node outputs a style configuration object that can be passed to other Recraft API nodes.
+
+## Inputs
+
+| Parameter | Data Type | Required | Range | Description |
+|-----------|-----------|----------|-------|-------------|
+| `substyle` | STRING | No | `"vector_illustration"``"vector_illustration_flat"``"vector_illustration_3d"``"vector_illustration_hand_drawn"``"vector_illustration_retro"``"vector_illustration_modern"``"vector_illustration_abstract"``"vector_illustration_geometric"``"vector_illustration_organic"``"vector_illustration_minimalist"``"vector_illustration_detailed"``"vector_illustration_colorful"``"vector_illustration_monochrome"``"vector_illustration_grayscale"``"vector_illustration_pastel"``"vector_illustration_vibrant"``"vector_illustration_muted"``"vector_illustration_warm"``"vector_illustration_cool"``"vector_illustration_neutral"``"vector_illustration_bold"``"vector_illustration_subtle"``"vector_illustration_playful"``"vector_illustration_serious"``"vector_illustration_elegant"``"vector_illustration_rustic"``"vector_illustration_urban"``"vector_illustration_nature"``"vector_illustration_fantasy"``"vector_illustration_sci_fi"``"vector_illustration_historical"``"vector_illustration_futuristic"``"vector_illustration_whimsical"``"vector_illustration_surreal"``"vector_illustration_realistic"``"vector_illustration_stylized"``"vector_illustration_cartoony"``"vector_illustration_anime"``"vector_illustration_comic"``"vector_illustration_pixel"``"vector_illustration_low_poly"``"vector_illustration_high_poly"``"vector_illustration_isometric"``"vector_illustration_orthographic"``"vector_illustration_perspective"``"vector_illustration_2d"``"vector_illustration_2.5d"``"vector_illustration_3d"``"vector_illustration_4d"` | An optional, more specific style within the `vector_illustration` category. If not selected, the base `vector_illustration` style is used. |
+
+## Outputs
+
+| Output Name | Data Type | Description |
+|-------------|-----------|-------------|
+| `recraft_style` | STYLEV3 | A Recraft API style configuration object containing the selected `vector_illustration` style and optional substyle. This can be connected to other Recraft nodes. |

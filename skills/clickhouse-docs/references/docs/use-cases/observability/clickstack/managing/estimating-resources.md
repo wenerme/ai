@@ -1,5 +1,5 @@
 ---
-title: 'Estimating Resources'
+title: 'Estimating resources'
 description: 'Resource estimation guidance for Managed ClickStack deployments'
 doc_type: 'guide'
 keywords: ['clickstack', 'resources', 'sizing', 'compute', 'production', 'capacity planning']

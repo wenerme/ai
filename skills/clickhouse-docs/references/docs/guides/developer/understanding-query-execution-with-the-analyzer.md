@@ -1,5 +1,5 @@
 ---
-title: 'Understanding Query Execution with the Analyzer'
+title: 'Understanding query execution with the analyzer'
 description: 'Describes how you can use the analyzer to understand how ClickHouse executes your queries'
 doc_type: 'guide'
 keywords: ['query execution', 'analyzer', 'query optimization', 'explain', 'performance']

@@ -1,5 +1,5 @@
 ---
-title: 'SQL for pandas Users'
+title: 'SQL for pandas users'
 description: 'Understanding how pandas operations map to SQL in DataStore'
 keywords: ['chdb', 'datastore', 'pandas', 'sql', 'mapping', 'query']
 doc_type: 'guide'

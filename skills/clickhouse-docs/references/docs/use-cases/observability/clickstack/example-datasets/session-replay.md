@@ -1,5 +1,5 @@
 ---
-title: 'Session Replay Demo'
+title: 'Session replay demo'
 description: 'Interactive demo application showing how to instrument a web app for ClickStack session replay'
 doc_type: 'guide'
 keywords: ['clickstack', 'session replay', 'browser sdk', 'demo', 'observability', 'instrumentation']

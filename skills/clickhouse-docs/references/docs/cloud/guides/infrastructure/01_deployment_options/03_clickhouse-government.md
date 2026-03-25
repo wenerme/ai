@@ -1,5 +1,5 @@
 ---
-title: 'ClickHouse Government'
+title: 'ClickHouse government'
 keywords: ['government', 'fips', 'fedramp', 'gov cloud']
 description: 'Overview of ClickHouse Government offering'
 doc_type: 'reference'

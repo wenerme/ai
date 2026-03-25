@@ -1,5 +1,5 @@
 ---
-title: 'Key Differences from pandas'
+title: 'Key differences from pandas'
 description: 'Important differences between DataStore and pandas'
 keywords: ['chdb', 'datastore', 'pandas', 'differences', 'behavior']
 doc_type: 'guide'

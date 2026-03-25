@@ -1,5 +1,5 @@
 ---
-title: 'Export Backups to your Own Cloud Account'
+title: 'Export backups to your own cloud account'
 description: 'Describes how to export backups to your own Cloud account'
 doc_type: 'guide'
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Deploying Additional Infrastructure'
+title: 'Deploying additional infrastructure'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding', 'additional infrastructure', 'multi-region', 'multi-account']
 description: 'Deploy additional BYOC infrastructure in new regions or accounts'
 doc_type: 'reference'

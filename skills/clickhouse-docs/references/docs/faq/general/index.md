@@ -1,6 +1,6 @@
 ---
 keywords: ['faq', 'questions', 'what is']
-title: 'General Questions About ClickHouse'
+title: 'General questions about ClickHouse'
 description: 'Index page listing general questions about ClickHouse'
 doc_type: 'landing-page'
 ---

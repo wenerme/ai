@@ -1,5 +1,5 @@
 ---
-title: 'explain() Method'
+title: 'explain() method'
 description: 'View DataStore execution plans with the explain() method'
 keywords: ['chdb', 'datastore', 'explain', 'execution', 'plan', 'sql']
 doc_type: 'reference'

@@ -1,11 +1,11 @@
 ---
 keywords: ['clickhouse', 'Splunk', 'audit', 'cloud']
 description: 'Store ClickHouse Cloud audit logs into Splunk.'
-title: 'Storing ClickHouse Cloud Audit logs into Splunk'
+title: 'Storing ClickHouse Cloud audit logs into Splunk'
 doc_type: 'guide'
 ---
 
-# Storing ClickHouse Cloud Audit logs into Splunk
+# Storing ClickHouse Cloud audit logs into Splunk
 
 <PartnerBadge/>
 

@@ -1,5 +1,5 @@
 ---
-title: 'Analysis functions - Time-series'
+title: 'Analysis functions - time-series'
 description: 'Functions for analyzing time-series data in ClickHouse.'
 keywords: ['time-series', 'analysis functions', 'window functions', 'aggregation functions', 'moving averages', 'trend analysis']
 show_related_blogs: true

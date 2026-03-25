@@ -1,6 +1,6 @@
 ---
 description: 'Overview of ClickHouse backup and restore'
-title: 'Backup and Restore in ClickHouse'
+title: 'Backup and restore in ClickHouse'
 doc_type: 'reference'
 ---
 

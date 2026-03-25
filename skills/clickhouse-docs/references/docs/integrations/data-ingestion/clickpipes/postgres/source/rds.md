@@ -1,6 +1,6 @@
 ---
 description: 'Set up Amazon RDS Postgres as a source for ClickPipes'
-title: 'RDS Postgres Source Setup Guide'
+title: 'RDS Postgres source setup guide'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
 integration:

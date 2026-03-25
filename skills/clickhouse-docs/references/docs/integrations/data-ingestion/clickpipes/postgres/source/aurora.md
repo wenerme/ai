@@ -1,6 +1,6 @@
 ---
 description: 'Set up Amazon Aurora Postgres as a source for ClickPipes'
-title: 'Aurora Postgres Source Setup Guide'
+title: 'Aurora Postgres source setup guide'
 doc_type: 'guide'
 keywords: ['Amazon Aurora', 'PostgreSQL', 'ClickPipes', 'AWS database', 'logical replication setup']
 integration:

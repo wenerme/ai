@@ -1,5 +1,5 @@
 ---
-title: 'chDB Guides'
+title: 'chDB guides'
 description: 'Index page for chDB guides'
 keywords: ['chdb', 'guides']
 doc_type: 'landing-page'
@@ -15,9 +15,9 @@ Take a look at our chDB developer guides below:
 | [How to query Pandas DataFrames with chDB](/chdb/guides/pandas) | Learn how to query Pandas DataFrames with chDB |
 | [How to query Parquet files](/chdb/guides/querying-parquet) | Learn how to query Parquet files with chDB. |
 | [JupySQL and chDB](/chdb/guides/jupysql) | How to install chDB for Bun |
-| [Key Differences from pandas](/chdb/guides/pandas-differences) | Important differences between DataStore and pandas |
+| [Key differences from pandas](/chdb/guides/pandas-differences) | Important differences between DataStore and pandas |
 | [Migration from pandas](/chdb/guides/migration-from-pandas) | Step-by-step guide to migrate from pandas to DataStore |
-| [Pandas Cookbook](/chdb/guides/pandas-cookbook) | Common pandas patterns and their DataStore equivalents |
-| [Performance Guide](/chdb/guides/pandas-performance) | Performance optimization tips for DataStore vs pandas |
-| [SQL for pandas Users](/chdb/guides/pandas-to-sql) | Understanding how pandas operations map to SQL in DataStore |
+| [Pandas cookbook](/chdb/guides/pandas-cookbook) | Common pandas patterns and their DataStore equivalents |
+| [Performance guide](/chdb/guides/pandas-performance) | Performance optimization tips for DataStore vs pandas |
+| [SQL for pandas users](/chdb/guides/pandas-to-sql) | Understanding how pandas operations map to SQL in DataStore |
 | [Using a clickhouse-local database](/chdb/guides/clickhouse-local) | Learn how to use a clickhouse-local database with chDB |

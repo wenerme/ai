@@ -1,5 +1,5 @@
 ---
-title: 'chDB Python API Reference'
+title: 'chDB Python API reference'
 description: 'Complete Python API reference for chDB'
 keywords: ['chdb', 'embedded', 'clickhouse-lite', 'python', 'api', 'reference']
 doc_type: 'reference'

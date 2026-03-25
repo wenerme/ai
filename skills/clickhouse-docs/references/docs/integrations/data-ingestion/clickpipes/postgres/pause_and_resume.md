@@ -1,6 +1,6 @@
 ---
-title: 'Pausing and Resuming a Postgres ClickPipe'
-description: 'Pausing and Resuming a Postgres ClickPipe'
+title: 'Pausing and resuming a Postgres ClickPipe'
+description: 'Pausing and resuming a Postgres ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'postgresql', 'cdc', 'data ingestion', 'real-time sync']
 integration:

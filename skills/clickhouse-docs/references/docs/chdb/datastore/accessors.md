@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Accessors'
+title: 'DataStore accessors'
 description: 'String, DateTime, Array, JSON, URL, IP, and Geo accessors with 185+ methods'
 keywords: ['chdb', 'datastore', 'accessor', 'str', 'dt', 'arr', 'json', 'url', 'ip', 'geo']
 doc_type: 'reference'

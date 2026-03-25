@@ -1,7 +1,7 @@
 ---
 description: 'Dataset containing all of the commits and changes for the ClickHouse
   repository'
-title: 'Writing Queries in ClickHouse using GitHub Data'
+title: 'Writing queries in ClickHouse using GitHub data'
 keywords: ['Github']
 show_related_blogs: true
 doc_type: 'guide'

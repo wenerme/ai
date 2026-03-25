@@ -1,5 +1,5 @@
 ---
-title: 'Private Networking Setup'
+title: 'Private networking setup'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'vpc peering', 'privatelink']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'

@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring PostgreSQL Logs with ClickStack'
+title: 'Monitoring PostgreSQL logs with ClickStack'
 description: 'Monitoring PostgreSQL Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'logs', 'OTEL', 'ClickStack', 'database monitoring']

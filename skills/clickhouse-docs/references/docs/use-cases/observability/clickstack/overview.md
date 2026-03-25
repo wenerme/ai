@@ -1,5 +1,5 @@
 ---
-title: 'ClickStack - The ClickHouse Observability Stack'
+title: 'ClickStack - the ClickHouse observability stack'
 description: 'Overview for ClickStack - The ClickHouse Observability Stack'
 doc_type: 'guide'
 keywords: ['clickstack', 'observability', 'logs', 'monitoring', 'platform']

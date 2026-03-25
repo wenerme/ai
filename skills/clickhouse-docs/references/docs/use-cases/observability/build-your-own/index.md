@@ -1,5 +1,5 @@
 ---
-title: 'Build Your Own Observability Stack'
+title: 'Build your own observability stack'
 description: 'Landing page building your own observability stack'
 doc_type: 'landing-page'
 keywords: ['observability', 'custom stack', 'build your own', 'logs', 'traces', 'metrics', 'OpenTelemetry']

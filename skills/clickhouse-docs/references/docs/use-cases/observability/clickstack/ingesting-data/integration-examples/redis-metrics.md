@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Redis Metrics with ClickStack'
+title: 'Monitoring Redis metrics with ClickStack'
 description: 'Monitoring Redis Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['Redis', 'metrics', 'OTEL', 'ClickStack']

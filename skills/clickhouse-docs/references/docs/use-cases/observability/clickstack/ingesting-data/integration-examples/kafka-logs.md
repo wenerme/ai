@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Kafka Logs with ClickStack'
+title: 'Monitoring Kafka logs with ClickStack'
 description: 'Monitoring Kafka Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['Kafka', 'logs', 'OTEL', 'ClickStack', 'broker monitoring', 'Log4j']

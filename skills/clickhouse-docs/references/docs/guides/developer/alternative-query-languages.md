@@ -1,5 +1,5 @@
 ---
-title: 'Alternative Query Languages'
+title: 'Alternative query languages'
 description: 'Use alternative query languages in ClickHouse'
 keywords: ['alternative query languages', 'query dialects', 'MySQL dialect', 'PostgreSQL dialect', 'developer guide']
 doc_type: 'reference'

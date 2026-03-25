@@ -1,5 +1,5 @@
 ---
-title: 'BYOC Privilege'
+title: 'BYOC privilege'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'privilege']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'

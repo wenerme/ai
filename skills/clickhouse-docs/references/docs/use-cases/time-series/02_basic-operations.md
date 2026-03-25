@@ -1,5 +1,5 @@
 ---
-title: 'Basic operations - Time-series'
+title: 'Basic operations - time-series'
 description: 'Basic time-series operations in ClickHouse.'
 keywords: ['time-series', 'basic operations', 'data ingestion', 'querying', 'filtering', 'grouping', 'aggregation']
 show_related_blogs: true

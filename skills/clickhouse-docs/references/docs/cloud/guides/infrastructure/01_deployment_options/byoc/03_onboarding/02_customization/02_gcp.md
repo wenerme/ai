@@ -1,5 +1,5 @@
 ---
-title: 'GCP Customized Setup'
+title: 'GCP customized setup'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding', 'GCP', 'VPC']
 description: 'Deploy ClickHouse BYOC into your existing GCP VPC'
 doc_type: 'reference'

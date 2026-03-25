@@ -1,7 +1,7 @@
 In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers two different caching mechanisms:
 
-- Implicit caching (automatically enabled on most Gemini models, no cost saving guarantee)
+- Implicit caching (automatically enabled on Gemini 2.5 and newer models, no cost saving guarantee)
 - Explicit caching (can be manually enabled on most models, cost saving guarantee)
 
 Explicit caching is useful in cases where you want to guarantee cost savings,
@@ -9,15 +9,15 @@ but with some added developer work.
 
 ## Implicit caching
 
-Implicit caching is enabled by default and available for most Gemini models. We automatically
+Implicit caching is enabled by default for all Gemini 2.5 and newer models. We automatically
 pass on cost savings if your request hits caches. There is nothing you need to do
-in order to enable this. It is effective as of May 8th, 2025. The minimum input
+in order to enable this. The minimum input
 token count for context caching is listed in the following table for each model:
 
 | Model | Min token limit |
 |---|---|
-| Gemini 3.1 Pro Preview | 4096 |
 | Gemini 3 Flash Preview | 1024 |
+| Gemini 3 Pro Preview | 4096 |
 | Gemini 2.5 Flash | 1024 |
 | Gemini 2.5 Pro | 4096 |
 

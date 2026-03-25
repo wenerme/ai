@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'stored procedures', 'prepared statements', 'query parameters', 'UDF', 'parameterized views']
 description: 'Guide on stored procedures, prepared statements, and query parameters in ClickHouse'
-title: 'Stored Procedures and Query Parameters'
+title: 'Stored procedures and query parameters'
 doc_type: 'guide'
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Configuration Options'
+title: 'Configuration options'
 description: 'Configuration options for ClickStack - The ClickHouse Observability Stack'
 keywords: ['ClickStack configuration', 'observability configuration', 'HyperDX settings', 'collector configuration', 'environment variables']
 doc_type: 'reference'

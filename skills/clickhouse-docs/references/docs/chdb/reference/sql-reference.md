@@ -1,5 +1,5 @@
 ---
-title: 'SQL Reference'
+title: 'SQL reference'
 description: 'SQL Reference for chDB'
 keywords: ['chdb', 'sql reference']
 doc_type: 'reference'

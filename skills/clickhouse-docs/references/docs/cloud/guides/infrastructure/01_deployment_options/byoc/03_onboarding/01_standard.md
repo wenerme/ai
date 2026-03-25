@@ -1,11 +1,11 @@
 ---
-title: 'Standard Onboarding'
+title: 'Standard onboarding'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding']
 description: 'Deploy ClickHouse on your own cloud infrastructure'
 doc_type: 'reference'
 ---
 
-## What is Standard Onboarding? {#what-is-standard-onboarding}
+## What is standard onboarding? {#what-is-standard-onboarding}
 
 **Standard onboarding** is the default, guided workflow for deploying ClickHouse in your own cloud account using BYOC. In this approach, ClickHouse Cloud provisions all of the core cloud resources required for your deployment—such as the VPC, subnets, security groups, Kubernetes (EKS/GKE) cluster, and supporting IAM roles/service accounts—within your AWS account/GCP project. This ensures consistent, secure configuration, and minimizes the manual steps required from your team.
 

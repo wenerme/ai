@@ -1,5 +1,5 @@
 ---
-title: 'Controlling the Syncing of a Postgres ClickPipe'
+title: 'Controlling the syncing of a Postgres ClickPipe'
 description: 'Doc for controlling the sync a Postgres ClickPipe'
 keywords: ['sync control', 'postgres', 'clickpipes', 'batch size', 'sync interval']
 doc_type: 'guide'

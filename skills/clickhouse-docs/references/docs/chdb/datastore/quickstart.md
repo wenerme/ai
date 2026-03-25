@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Quickstart'
+title: 'DataStore quickstart'
 description: 'Get started with DataStore - installation, one-line migration from pandas, and basic usage'
 keywords: ['chdb', 'datastore', 'quickstart', 'installation', 'pandas', 'migration']
 doc_type: 'guide'

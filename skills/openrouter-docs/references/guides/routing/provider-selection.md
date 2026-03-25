@@ -944,7 +944,22 @@ Here's an example with `allow_fallbacks` set to `false` that skips over OpenAI (
 
 ## Targeting Specific Provider Endpoints
 
-Each provider on OpenRouter may host multiple endpoints for the same model, such as a default endpoint and a specialized "turbo" endpoint. To target a specific endpoint, you can use the copy button next to the provider name on the model detail page to obtain the exact provider slug.
+Each provider on OpenRouter may host multiple endpoints for the same model, such as a default endpoint and a specialized "turbo" endpoint, or region-specific endpoints like `google-vertex/us-east5`. To target a specific endpoint, you can use the copy button next to the provider name on the model detail page to obtain the exact provider slug.
+
+### Base Slug Matching
+
+When you use a base provider slug (e.g. `"google-vertex"`) in any provider routing field (`order`, `only`, or `ignore`), it matches **all** endpoints for that provider, including any variants or regions. For example, `"google-vertex"` matches `google-vertex`, `google-vertex/us-east5`, `google-vertex/us-central1`, and so on.
+
+To target a **specific** variant or region, use the full slug including the suffix (e.g. `"google-vertex/us-east5"` or `"deepinfra/turbo"`).
+
+| Slug in request            | What it matches                            |
+| -------------------------- | ------------------------------------------ |
+| `"google-vertex"`          | All Google Vertex endpoints (every region) |
+| `"google-vertex/us-east5"` | Only the `us-east5` region endpoint        |
+| `"deepinfra"`              | All DeepInfra endpoints (default + turbo)  |
+| `"deepinfra/turbo"`        | Only the DeepInfra turbo endpoint          |
+
+### Example: Targeting a specific endpoint variant
 
 For example, DeepInfra offers DeepSeek R1 through multiple endpoints:
 
@@ -1014,6 +1029,10 @@ By copying the exact provider slug and using it in your request's `order` array,
 </CodeGroup>
 
 This approach is especially useful when you want to consistently use a specific variant of a model from a particular provider.
+
+<Tip>
+  To route to **all** endpoints of a provider (across all regions and variants), just use the base slug without a suffix. For example, `"google-vertex"` will route across all Vertex AI regions.
+</Tip>
 
 ## Requiring Providers to Support All Parameters
 

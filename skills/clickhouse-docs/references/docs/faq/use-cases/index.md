@@ -1,5 +1,5 @@
 ---
-title: 'Questions About ClickHouse Use Cases'
+title: 'Questions about ClickHouse use cases'
 description: 'Landing page listing common questions about ClickHouse use cases'
 keywords: ['ClickHouse use cases', 'time-series database', 'key-value storage', 'database applications', 'OLAP use cases']
 doc_type: 'landing-page'

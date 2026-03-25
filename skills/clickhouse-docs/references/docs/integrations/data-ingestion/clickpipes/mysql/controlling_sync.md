@@ -1,5 +1,5 @@
 ---
-title: 'Controlling the Syncing of a MySQL ClickPipe'
+title: 'Controlling the syncing of a MySQL ClickPipe'
 description: 'Doc for controllling the sync a MySQL ClickPipe'
 keywords: ['MySQL ClickPipe', 'ClickPipe sync control', 'MySQL CDC replication', 'ClickHouse MySQL connector', 'database synchronization ClickHouse']
 doc_type: 'guide'

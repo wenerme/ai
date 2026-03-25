@@ -1,6 +1,6 @@
 ---
 description: 'Set up Crunchy Bridge Postgres as a source for ClickPipes'
-title: 'Crunchy Bridge Postgres Source Setup Guide'
+title: 'Crunchy Bridge Postgres source setup guide'
 keywords: ['crunchy bridge', 'postgres', 'clickpipes', 'logical replication', 'data ingestion']
 doc_type: 'guide'
 integration:

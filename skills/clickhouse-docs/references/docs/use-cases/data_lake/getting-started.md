@@ -5,7 +5,7 @@ keywords: ['data lake', 'lakehouse', 'getting started', 'iceberg', 'delta lake',
 doc_type: 'guide'
 ---
 
-# Getting Started with Data Lakes {#data-lake-getting-started}
+# Getting started with data lakes {#data-lake-getting-started}
 
 :::note[TL;DR]
 A hands-on walkthrough of querying data lake tables, accelerating them with MergeTree, and writing results back to Iceberg. All steps use public datasets and work on both Cloud and OSS.

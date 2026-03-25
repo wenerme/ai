@@ -1,6 +1,6 @@
 ---
 description: 'Documentation for the PostgreSQL wire protocol interface in ClickHouse'
-title: 'PostgreSQL Interface'
+title: 'PostgreSQL interface'
 doc_type: 'reference'
 ---
 

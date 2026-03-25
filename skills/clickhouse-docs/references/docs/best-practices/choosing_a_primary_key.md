@@ -1,5 +1,5 @@
 ---
-title: 'Choosing a Primary Key'
+title: 'Choosing a primary key'
 description: 'Page describing how to choose a primary key in ClickHouse'
 keywords: ['primary key']
 show_related_blogs: true

@@ -1,5 +1,5 @@
 ---
-title: 'Compression Modes'
+title: 'Compression modes'
 description: 'ClickHouse column compression modes'
 keywords: ['compression', 'codec', 'encoding', 'modes']
 doc_type: 'reference'

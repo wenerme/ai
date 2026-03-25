@@ -1,5 +1,5 @@
 ---
-title: 'Use Case Guides'
+title: 'Use case guides'
 description: 'Landing page for use case guides'
 doc_type: 'landing-page'
 keywords: ['use cases', 'observability', 'time-series', 'data lake', 'machine learning', 'AI']

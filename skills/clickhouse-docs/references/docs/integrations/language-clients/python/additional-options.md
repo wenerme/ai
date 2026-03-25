@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'python', 'options', 'settings']
-description: 'Additional Options for ClickHouse Connect'
-title: 'Additional Options'
+description: 'Additional options for ClickHouse Connect'
+title: 'Additional options'
 doc_type: 'reference'
 ---
 

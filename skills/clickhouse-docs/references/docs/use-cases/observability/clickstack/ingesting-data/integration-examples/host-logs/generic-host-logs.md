@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Host Logs with ClickStack'
+title: 'Monitoring host logs with ClickStack'
 description: 'Monitoring Generic Host Logs with ClickStack'
 doc_type: 'guide'
 keywords: ['host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'server logs']

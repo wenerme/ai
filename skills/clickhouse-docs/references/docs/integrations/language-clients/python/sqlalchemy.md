@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'python', 'sqlalchemy', 'integrate']
-description: 'ClickHouse SQLAlchemy Support'
-title: 'SQLAlchemy Support'
+description: 'ClickHouse SQLAlchemy support'
+title: 'SQLAlchemy support'
 doc_type: 'reference'
 ---
 

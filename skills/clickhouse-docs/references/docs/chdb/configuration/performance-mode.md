@@ -1,5 +1,5 @@
 ---
-title: 'Performance Mode (compat_mode)'
+title: 'Performance mode (compat_mode)'
 description: 'SQL-first performance mode that disables pandas compatibility overhead for maximum throughput'
 keywords: ['chdb', 'datastore', 'performance', 'mode', 'compat', 'sql-first', 'optimization']
 doc_type: 'guide'

@@ -1,5 +1,5 @@
 ---
-title: 'Function-Level Configuration'
+title: 'Function-level configuration'
 description: 'Configure execution engine and Dtype correction at the function level'
 keywords: ['chdb', 'datastore', 'function', 'config', 'Dtype', 'correction']
 doc_type: 'reference'

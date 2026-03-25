@@ -1,6 +1,6 @@
 ---
-title: 'Visualizations and Dashboards with ClickStack'
-description: 'Visualizations and Dashboards with ClickStack'
+title: 'Visualizations and dashboards with ClickStack'
+description: 'Visualizations and dashboards with ClickStack'
 doc_type: 'guide'
 keywords: ['clickstack', 'dashboards', 'visualization', 'monitoring', 'observability']
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Logging'
+title: 'DataStore logging'
 description: 'Configure DataStore logging for debugging and monitoring'
 keywords: ['chdb', 'datastore', 'logging', 'debug', 'log', 'level']
 doc_type: 'reference'

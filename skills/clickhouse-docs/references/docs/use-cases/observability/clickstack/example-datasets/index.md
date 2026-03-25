@@ -1,5 +1,5 @@
 ---
-title: 'Sample Datasets'
+title: 'Sample datasets'
 description: 'Getting started with ClickStack and sample datasets'
 doc_type: 'landing-page'
 keywords: ['ClickStack sample datasets', 'ClickStack demo data', 'observability sample data', 'ClickStack getting started', 'ClickStack examples']

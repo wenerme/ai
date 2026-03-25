@@ -1,5 +1,5 @@
 ---
-title: 'Controlling the Syncing of a MongoDB ClickPipe'
+title: 'Controlling the syncing of a MongoDB ClickPipe'
 description: 'Doc for controllling the sync a MongoDB ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']

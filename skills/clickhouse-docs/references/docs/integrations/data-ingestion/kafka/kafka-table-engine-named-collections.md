@@ -1,5 +1,5 @@
 ---
-title: 'Integrating ClickHouse with Kafka using Named Collections'
+title: 'Integrating ClickHouse with Kafka using named collections'
 description: 'How to use named collections to connect clickhouse to kafka'
 keywords: ['named collection', 'how to', 'kafka']
 doc_type: 'guide'

@@ -1,6 +1,6 @@
 ---
 description: 'Documentation for the gRPC interface in ClickHouse'
-title: 'gRPC Interface'
+title: 'gRPC interface'
 doc_type: 'reference'
 ---
 

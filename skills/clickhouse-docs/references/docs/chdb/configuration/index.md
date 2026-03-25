@@ -1,5 +1,5 @@
 ---
-title: 'DataStore Configuration'
+title: 'DataStore configuration'
 description: 'Configure DataStore execution engine, logging, caching, and profiling'
 keywords: ['chdb', 'datastore', 'configuration', 'config', 'settings']
 doc_type: 'reference'

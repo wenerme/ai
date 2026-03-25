@@ -1,7 +1,7 @@
 ---
 description: 'Documentation for the SSH interface in ClickHouse'
 keywords: ['client', 'ssh', 'putty']
-title: 'SSH Interface'
+title: 'SSH interface'
 doc_type: 'reference'
 ---
 

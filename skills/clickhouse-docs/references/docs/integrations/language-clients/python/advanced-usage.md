@@ -1,11 +1,11 @@
 ---
 keywords: ['clickhouse', 'python', 'advanced', 'raw', 'async', 'threading']
-description: 'Advanced Usage with ClickHouse Connect'
-title: 'Advanced Usage'
+description: 'Advanced usage with ClickHouse Connect'
+title: 'Advanced usage'
 doc_type: 'reference'
 ---
 
-# Advanced Usage {#advanced-usage}
+# Advanced usage {#advanced-usage}
 
 ## Raw API {#raw-api}
 

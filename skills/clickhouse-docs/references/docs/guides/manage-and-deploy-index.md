@@ -1,5 +1,5 @@
 ---
-title: 'Manage and Deploy Overview'
+title: 'Manage and deploy overview'
 description: 'Overview page for Manage and Deploy'
 doc_type: 'landing-page'
 keywords: ['deployment', 'management', 'administration', 'operations', 'guides']

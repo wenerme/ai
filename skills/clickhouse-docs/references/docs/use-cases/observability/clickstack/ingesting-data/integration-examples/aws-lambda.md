@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring AWS Lambda Logs with ClickStack using Rotel'
+title: 'Monitoring AWS Lambda logs with ClickStack using Rotel'
 description: 'Monitoring AWS Lambda Logs with ClickStack using Rotel'
 doc_type: 'guide'
 keywords: ['AWS', 'Lambda', 'OTEL', 'ClickStack', 'logs', 'CloudWatch']

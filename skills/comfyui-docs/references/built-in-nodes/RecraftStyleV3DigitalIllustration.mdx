@@ -1,0 +1,20 @@
+---
+title: "RecraftStyleV3DigitalIllustration - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftStyleV3DigitalIllustration node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3DigitalIllustration/en.md)
+
+This node configures a style for use with the Recraft API, specifically selecting the "digital_illustration" style. It allows you to choose an optional substyle to further refine the artistic direction of the generated image.
+
+## Inputs
+
+| Parameter | Data Type | Required | Range | Description |
+|-----------|-----------|----------|-------|-------------|
+| `substyle` | STRING | No | `"digital_illustration"``"digital_illustration_anime"``"digital_illustration_cartoon"``"digital_illustration_comic"``"digital_illustration_concept_art"``"digital_illustration_fantasy"``"digital_illustration_futuristic"``"digital_illustration_graffiti"``"digital_illustration_graphic_novel"``"digital_illustration_hyperrealistic"``"digital_illustration_ink"``"digital_illustration_manga"``"digital_illustration_minimalist"``"digital_illustration_pixel_art"``"digital_illustration_pop_art"``"digital_illustration_retro"``"digital_illustration_sci_fi"``"digital_illustration_sticker"``"digital_illustration_street_art"``"digital_illustration_surreal"``"digital_illustration_vector"` | An optional substyle to specify a particular type of digital illustration. If not selected, the base "digital_illustration" style is used. |
+
+## Outputs
+
+| Output Name | Data Type | Description |
+|-------------|-----------|-------------|
+| `recraft_style` | STYLEV3 | A configured style object containing the selected "digital_illustration" style and optional substyle, ready to be passed to other Recraft API nodes. |

@@ -1,5 +1,5 @@
 ---
-title: 'ClickStack - Adminstration'
+title: 'ClickStack - administration'
 description: 'How to perform basic administration tasks with ClickStack.'
 doc_type: 'guide'
 keywords: ['clickstack', 'admin']

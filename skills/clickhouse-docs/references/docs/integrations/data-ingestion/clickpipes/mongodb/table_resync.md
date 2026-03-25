@@ -1,5 +1,5 @@
 ---
-title: 'Resyncing Specific Tables'
+title: 'Resyncing specific tables'
 description: 'Resyncing specific tables in a MongoDB ClickPipe'
 doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']

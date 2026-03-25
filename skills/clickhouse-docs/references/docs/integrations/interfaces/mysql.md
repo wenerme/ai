@@ -1,7 +1,7 @@
 ---
 description: 'Documentation for the MySQL protocol interface in ClickHouse, allowing
   MySQL clients to connect to ClickHouse'
-title: 'MySQL Interface'
+title: 'MySQL interface'
 doc_type: 'guide'
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Infrastructure Configuration'
+title: 'Infrastructure configuration'
 keywords: ['BYOC', 'cloud', 'bring your own cloud', 'infrastructure', 'configuration']
 description: 'Configure load balancers, node groups, and other BYOC infrastructure components'
 doc_type: 'reference'

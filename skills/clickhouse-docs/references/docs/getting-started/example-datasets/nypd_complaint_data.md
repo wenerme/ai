@@ -1,6 +1,6 @@
 ---
 description: 'Ingest and query Tab Separated Value data in 5 steps'
-title: 'NYPD Complaint Data'
+title: 'NYPD complaint data'
 doc_type: 'guide'
 keywords: ['example dataset', 'nypd', 'crime data', 'sample data', 'public data']
 ---

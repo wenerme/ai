@@ -1,5 +1,5 @@
 ---
-title: 'Monitoring Kafka Metrics with ClickStack'
+title: 'Monitoring Kafka metrics with ClickStack'
 description: 'Monitoring Kafka Metrics with ClickStack'
 doc_type: 'guide'
 keywords: ['Kafka', 'metrics', 'OTEL', 'ClickStack', 'JMX']

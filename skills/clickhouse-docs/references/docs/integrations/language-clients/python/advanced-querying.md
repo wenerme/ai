@@ -1,7 +1,7 @@
 ---
 keywords: ['clickhouse', 'python', 'query', 'advanced']
-description: 'Advanced Querying with ClickHouse Connect'
-title: 'Advanced Querying'
+description: 'Advanced querying with ClickHouse Connect'
+title: 'Advanced querying'
 doc_type: 'reference'
 ---
 
