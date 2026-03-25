@@ -50,7 +50,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
-| `k3s-docs` | K3s documentation — lightweight certified Kubernetes distribution for IoT and edge. Covers installation (air-gap,... |  |
+| `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
@@ -460,7 +460,7 @@ USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrati
 npx skills add wenerme/ai --skill k3s-docs
 ```
 
-K3s documentation — lightweight certified Kubernetes distribution for IoT and edge. Covers installation (air-gap, private registry, HA), cluster architecture (embedded etcd, external datastore), networking (Flannel, CoreDNS, Traefik, ServiceLB), security (secrets encryption, CIS hardening), upgrades (automated, manual, rollback), CLI reference (k3s server/agent/etcd-snapshot/certificate/token), storage, and Helm chart management. USE THIS SKILL WHEN the user asks about K3s, lightweight Kubernetes, k3s server, k3s agent, k3s installation, k3s networking, k3s security hardening, or edge Kubernetes.
+K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA), architecture (embedded etcd, external datastore), networking (Flannel, CoreDNS, Traefik), security (secrets encryption, CIS hardening), upgrades, CLI (k3s server/agent/etcd-snapshot/certificate/token), and Helm charts. USE THIS SKILL WHEN the user asks about K3s, k3s server, k3s agent, k3s install, k3s networking, k3s hardening, or edge Kubernetes.
 
 </details>
 <details>

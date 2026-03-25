@@ -398,7 +398,7 @@ Tools
         [
           pricingHtml("<code>gpt-4o</code> and <code>gpt-4.1</code> models"),
           pricingHtml(
-            "$10.00 / 1k calls<br /><small>Search content tokens billed at model rates.</small>"
+            "$25.00 / 1k calls<br /><small>Search content tokens billed at model rates.</small>"
           ),
         ],
         [
@@ -406,7 +406,7 @@ Tools
             "Reasoning models, including <code>gpt-5</code> and newer"
           ),
           pricingHtml(
-            "$25.00 / 1k calls<br /><small>Search content tokens are free.</small>"
+            "$10.00 / 1k calls<br /><small>Search content tokens are free.</small>"
           ),
         ],
       ],

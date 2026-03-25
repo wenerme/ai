@@ -145,7 +145,7 @@ The `--generation-config` parameter supports the following options (comma-separa
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
 | `--eval-type` | `str` | Evaluation type• `llm_ckpt`: Local model inference (transformers)• `openai_api`: OpenAI-compatible API service• `anthropic_api`: Anthropic Claude API service• `text2image`: Text-to-image model (diffusers)• `mock_llm`: Simulated inference (for verification) | `None` (auto-detect) |
-| `--eval-batch-size` | `int` | Evaluation batch sizeFor `eval-type=service`, means concurrent requests | `1` (service mode: `8`) |
+| `--eval-batch-size` | `int` | Evaluation batch size, applies to the following stages:• Inference: concurrent requests (service mode) or batch size (checkpoint mode)• LLM-judge review: number of concurrent threads• `batch_calculate_metrics`: number of samples per batch window | `1` (service mode: `8`) |
 | `--eval-backend` | `str` | Evaluation backend• `Native`: Default backend• `OpenCompass`: LLM evaluation• `VLMEvalKit`: Multimodal model evaluation• `RAGEval`: RAG/Embedding/Reranker/CLIP evaluation• `ThirdParty`: Special task evaluation | `Native` |
 | `--eval-config` | `str` | Configuration file path for non-Native backends | - |
 
@@ -160,7 +160,7 @@ LLM-as-a-Judge evaluation parameters using a judge model to determine correctnes
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
 | `--judge-strategy` | `str` | Judge model strategy• `auto`: Automatically decide based on dataset requirements• `llm`: Always use judge model• `rule`: Use rule-based judgment only• `llm_recall`: Use judge model after rule-based judgment fails | `auto` |
-| `--judge-worker-num` | `int` | Judge model concurrency | `1` |
+| `--judge-worker-num` | `int` | **[Deprecated]** Use `--eval-batch-size` instead. Will be removed in v2.0.0. | `1` |
 | `--judge-model-args` | `str` | Judge model configuration (JSON string), see table below | - |
 | `--analysis-report` | `bool` | Whether to generate analysis report (language auto-detected) | `false` |
 

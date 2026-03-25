@@ -1,11 +1,11 @@
 ---
 title: "SiliconFlow | Models"
-description: "Use SiliconFlow models with Mastra. 70 models available."
+description: "Use SiliconFlow models with Mastra. 71 models available."
 ---
 
 # [SiliconFlow logo]SiliconFlow
 
-Access 70 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
+Access 71 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
 
 Learn more in the [SiliconFlow documentation](https://cloud.siliconflow.com/models).
 
@@ -221,6 +221,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "siliconflow/MiniMaxAI/MiniMax-M2.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 197000,
+    "maxOutput": 131000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "siliconflow/MiniMaxAI/MiniMax-M2.5",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
