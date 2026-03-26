@@ -99,5 +99,15 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | Preview models ||||
+| `veo-3.1-generate-preview` | October 15, 2025 | No shutdown date announced |   |
+| `veo-3.1-fast-generate-preview` | October 15, 2025 | No shutdown date announced |   |
 | `veo-3.0-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-generate-preview` |
 | `veo-3.0-fast-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-fast-generate-preview` |
+
+## Lyria models
+
+| **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| `lyria-3-clip-preview` | March 25, 2026 | No shutdown date announced |   |
+| `lyria-3-pro-preview` | March 25, 2026 | No shutdown date announced |   |
+| `lyria-realtime-exp` | May 20, 2025 | No shutdown date announced |   |

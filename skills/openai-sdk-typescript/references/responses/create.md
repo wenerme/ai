@@ -663,9 +663,17 @@ as input for the model's response.
 
                 The y-coordinate where the click occurred.
 
+              - `keys?: Array<string> | null`
+
+                The keys being held while clicking.
+
             - `DoubleClick`
 
               A double click action.
+
+              - `keys: Array<string> | null`
+
+                The keys being held while double-clicking.
 
               - `type: "double_click"`
 
@@ -710,6 +718,10 @@ as input for the model's response.
 
                 - `"drag"`
 
+              - `keys?: Array<string> | null`
+
+                The keys being held while dragging the mouse.
+
             - `Keypress`
 
               A collection of keypresses the model would like to perform.
@@ -741,6 +753,10 @@ as input for the model's response.
               - `y: number`
 
                 The y-coordinate to move to.
+
+              - `keys?: Array<string> | null`
+
+                The keys being held while moving the mouse.
 
             - `Screenshot`
 
@@ -777,6 +793,10 @@ as input for the model's response.
               - `y: number`
 
                 The y-coordinate where the scroll occurred.
+
+              - `keys?: Array<string> | null`
+
+                The keys being held while scrolling.
 
             - `Type`
 
@@ -839,9 +859,17 @@ as input for the model's response.
 
                 The y-coordinate where the click occurred.
 
+              - `keys?: Array<string> | null`
+
+                The keys being held while clicking.
+
             - `DoubleClick`
 
               A double click action.
+
+              - `keys: Array<string> | null`
+
+                The keys being held while double-clicking.
 
               - `type: "double_click"`
 
@@ -886,6 +914,10 @@ as input for the model's response.
 
                 - `"drag"`
 
+              - `keys?: Array<string> | null`
+
+                The keys being held while dragging the mouse.
+
             - `Keypress`
 
               A collection of keypresses the model would like to perform.
@@ -917,6 +949,10 @@ as input for the model's response.
               - `y: number`
 
                 The y-coordinate to move to.
+
+              - `keys?: Array<string> | null`
+
+                The keys being held while moving the mouse.
 
             - `Screenshot`
 
@@ -953,6 +989,10 @@ as input for the model's response.
               - `y: number`
 
                 The y-coordinate where the scroll occurred.
+
+              - `keys?: Array<string> | null`
+
+                The keys being held while scrolling.
 
             - `Type`
 
@@ -5754,9 +5794,17 @@ as input for the model's response.
 
               The y-coordinate where the click occurred.
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while clicking.
+
           - `DoubleClick`
 
             A double click action.
+
+            - `keys: Array<string> | null`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -5801,6 +5849,10 @@ as input for the model's response.
 
               - `"drag"`
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress`
 
             A collection of keypresses the model would like to perform.
@@ -5832,6 +5884,10 @@ as input for the model's response.
             - `y: number`
 
               The y-coordinate to move to.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while moving the mouse.
 
           - `Screenshot`
 
@@ -5868,6 +5924,10 @@ as input for the model's response.
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while scrolling.
 
           - `Type`
 
@@ -5930,9 +5990,17 @@ as input for the model's response.
 
               The y-coordinate where the click occurred.
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while clicking.
+
           - `DoubleClick`
 
             A double click action.
+
+            - `keys: Array<string> | null`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -5977,6 +6045,10 @@ as input for the model's response.
 
               - `"drag"`
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress`
 
             A collection of keypresses the model would like to perform.
@@ -6008,6 +6080,10 @@ as input for the model's response.
             - `y: number`
 
               The y-coordinate to move to.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while moving the mouse.
 
           - `Screenshot`
 
@@ -6044,6 +6120,10 @@ as input for the model's response.
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while scrolling.
 
           - `Type`
 
@@ -8863,6 +8943,116 @@ as input for the model's response.
 
         - `"incomplete"`
 
+    - `ResponseFunctionToolCallOutputItem`
+
+      - `id: string`
+
+        The unique ID of the function call tool output.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: string | Array<ResponseInputText | ResponseInputImage | ResponseInputFile>`
+
+        The output from the function call generated by your code.
+        Can be a string or an list of output content.
+
+        - `string`
+
+        - `Array<ResponseInputText | ResponseInputImage | ResponseInputFile>`
+
+          - `ResponseInputText`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `ResponseInputImage`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+            - `detail: "low" | "high" | "auto" | "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url?: string | null`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `ResponseInputFile`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `file_data?: string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url?: string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename?: string`
+
+              The name of the file to be sent to the model.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
+
     - `ResponseFunctionWebSearch`
 
       The results of a web search tool call. See the
@@ -9041,9 +9231,17 @@ as input for the model's response.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -9088,6 +9286,10 @@ as input for the model's response.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -9119,6 +9321,10 @@ as input for the model's response.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -9155,6 +9361,10 @@ as input for the model's response.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -9217,9 +9427,17 @@ as input for the model's response.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -9264,6 +9482,10 @@ as input for the model's response.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -9295,6 +9517,10 @@ as input for the model's response.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -9332,6 +9558,10 @@ as input for the model's response.
 
             The y-coordinate where the scroll occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
+
         - `Type`
 
           An action to type in text.
@@ -9355,6 +9585,75 @@ as input for the model's response.
             Specifies the event type. For a wait action, this property is always set to `wait`.
 
             - `"wait"`
+
+    - `ResponseComputerToolCallOutputItem`
+
+      - `id: string`
+
+        The unique ID of the computer call tool output.
+
+      - `call_id: string`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: ResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: "computer_screenshot"`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id?: string`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url?: string`
+
+          The URL of the screenshot image.
+
+      - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
+      - `type: "computer_call_output"`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `acknowledged_safety_checks?: Array<AcknowledgedSafetyCheck>`
+
+        The safety checks reported by the API that have been acknowledged by the
+        developer.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code?: string | null`
+
+          The type of the pending safety check.
+
+        - `message?: string | null`
+
+          Details about the pending safety check.
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
 
     - `ResponseReasoningItem`
 
@@ -10749,6 +11048,34 @@ as input for the model's response.
 
         - `"local_shell_call"`
 
+    - `LocalShellCallOutput`
+
+      The output of a local shell tool call.
+
+      - `id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: string`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: "local_shell_call_output"`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
     - `ResponseFunctionShellToolCall`
 
       A tool call that executes one or more shell commands in a managed environment.
@@ -11140,6 +11467,32 @@ as input for the model's response.
 
         - `"mcp_approval_request"`
 
+    - `McpApprovalResponse`
+
+      A response to an MCP approval request.
+
+      - `id: string`
+
+        The unique ID of the approval response
+
+      - `approval_request_id: string`
+
+        The ID of the approval request being answered.
+
+      - `approve: boolean`
+
+        Whether the request was approved.
+
+      - `type: "mcp_approval_response"`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `reason?: string | null`
+
+        Optional reason for the decision.
+
     - `ResponseCustomToolCall`
 
       A call to a custom tool created by the model.
@@ -11169,6 +11522,29 @@ as input for the model's response.
       - `namespace?: string`
 
         The namespace of the custom tool being called.
+
+    - `ResponseCustomToolCallOutputItem extends ResponseCustomToolCallOutput`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `id: string`
+
+        The unique ID of the custom tool call output item.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
 
   - `parallel_tool_calls: boolean`
 

@@ -59,7 +59,7 @@ Returns a list of input items for a given response.
 
   A list of Response items.
 
-  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 19 more`
+  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 23 more`
 
     A list of items used to generate this response.
 
@@ -478,7 +478,7 @@ Returns a list of input items for a given response.
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -510,9 +510,17 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -528,7 +536,7 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -557,6 +565,10 @@ Returns a list of input items for a given response.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -571,7 +583,7 @@ Returns a list of input items for a given response.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -589,6 +601,10 @@ Returns a list of input items for a given response.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -599,7 +615,7 @@ Returns a list of input items for a given response.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -624,6 +640,10 @@ Returns a list of input items for a given response.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -654,7 +674,7 @@ Returns a list of input items for a given response.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -686,9 +706,17 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -704,7 +732,7 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -733,6 +761,10 @@ Returns a list of input items for a given response.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -747,7 +779,7 @@ Returns a list of input items for a given response.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -765,6 +797,10 @@ Returns a list of input items for a given response.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -775,7 +811,7 @@ Returns a list of input items for a given response.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -801,6 +837,10 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -825,7 +865,7 @@ Returns a list of input items for a given response.
 
             - `"wait"`
 
-    - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -854,6 +894,19 @@ Returns a list of input items for a given response.
 
           The URL of the screenshot image.
 
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -877,16 +930,9 @@ Returns a list of input items for a given response.
 
           Details about the pending safety check.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `created_by: optional string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `WebSearchCall = object { id, action, status, type }`
 
@@ -984,7 +1030,7 @@ Returns a list of input items for a given response.
 
         - `"web_search_call"`
 
-    - `FunctionCall = object { id, arguments, call_id, 4 more }`
+    - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -1002,17 +1048,7 @@ Returns a list of input items for a given response.
 
         The name of the function to run.
 
-      - `type: "function_call"`
-
-        The type of the function tool call. Always `function_call`.
-
-        - `"function_call"`
-
-      - `namespace: optional string`
-
-        The namespace of the function to run.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -1023,7 +1059,21 @@ Returns a list of input items for a given response.
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the function to run.
+
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -1116,13 +1166,7 @@ Returns a list of input items for a given response.
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -1132,6 +1176,16 @@ Returns a list of input items for a given response.
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -2296,6 +2350,89 @@ Returns a list of input items for a given response.
 
         The identifier of the actor that created the item.
 
+    - `Reasoning = object { id, summary, type, 3 more }`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](/docs/guides/conversation-state).
+
+      - `id: string`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: array of SummaryTextContent`
+
+        Reasoning summary content.
+
+        - `text: string`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: "summary_text"`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: "reasoning"`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `content: optional array of object { text, type }`
+
+        Reasoning text content.
+
+        - `text: string`
+
+          The reasoning text from the model.
+
+        - `type: "reasoning_text"`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: optional string`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: optional "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `Compaction = object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
     - `ImageGenerationCall = object { id, result, status, type }`
 
       An image generation request made by the model.
@@ -2897,6 +3034,163 @@ Returns a list of input items for a given response.
         - `"calling"`
 
         - `"failed"`
+
+    - `CustomToolCall = object { id, call_id, input, 5 more }`
+
+      - `id: string`
+
+        The unique ID of the custom tool call item.
+
+      - `call_id: string`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: string`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: string`
+
+        The name of the custom tool being called.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "custom_tool_call"`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the custom tool being called.
+
+    - `CustomToolCallOutput = object { id, call_id, output, 3 more }`
+
+      - `id: string`
+
+        The unique ID of the custom tool call output item.
+
+      - `call_id: string`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `StringOutput = string`
+
+          A string of the output of the custom tool call.
+
+        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+          Text, image, or file output of the custom tool call.
+
+          - `ResponseInputText = object { text, type }`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+            - `detail: "low" or "high" or "auto" or "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: optional string`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `file_data: optional string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: optional string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: optional string`
+
+              The name of the file to be sent to the model.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "custom_tool_call_output"`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
   - `first_id: string`
 
@@ -2988,7 +3282,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
   A list of Response items.
 
-  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 19 more`
+  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 23 more`
 
     A list of items used to generate this response.
 
@@ -3407,7 +3701,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -3439,9 +3733,17 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -3457,7 +3759,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -3486,6 +3788,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -3500,7 +3806,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -3518,6 +3824,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -3528,7 +3838,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -3553,6 +3863,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -3583,7 +3897,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -3615,9 +3929,17 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -3633,7 +3955,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -3662,6 +3984,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -3676,7 +4002,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -3694,6 +4020,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -3704,7 +4034,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -3730,6 +4060,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -3754,7 +4088,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"wait"`
 
-    - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -3783,6 +4117,19 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The URL of the screenshot image.
 
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -3806,16 +4153,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           Details about the pending safety check.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `created_by: optional string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `WebSearchCall = object { id, action, status, type }`
 
@@ -3913,7 +4253,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"web_search_call"`
 
-    - `FunctionCall = object { id, arguments, call_id, 4 more }`
+    - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -3931,17 +4271,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The name of the function to run.
 
-      - `type: "function_call"`
-
-        The type of the function tool call. Always `function_call`.
-
-        - `"function_call"`
-
-      - `namespace: optional string`
-
-        The namespace of the function to run.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -3952,7 +4282,21 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the function to run.
+
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -4045,13 +4389,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -4061,6 +4399,16 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -5225,6 +5573,89 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The identifier of the actor that created the item.
 
+    - `Reasoning = object { id, summary, type, 3 more }`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](/docs/guides/conversation-state).
+
+      - `id: string`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: array of SummaryTextContent`
+
+        Reasoning summary content.
+
+        - `text: string`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: "summary_text"`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: "reasoning"`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `content: optional array of object { text, type }`
+
+        Reasoning text content.
+
+        - `text: string`
+
+          The reasoning text from the model.
+
+        - `type: "reasoning_text"`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: optional string`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: optional "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `Compaction = object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
     - `ImageGenerationCall = object { id, result, status, type }`
 
       An image generation request made by the model.
@@ -5826,6 +6257,163 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"calling"`
 
         - `"failed"`
+
+    - `CustomToolCall = object { id, call_id, input, 5 more }`
+
+      - `id: string`
+
+        The unique ID of the custom tool call item.
+
+      - `call_id: string`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: string`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: string`
+
+        The name of the custom tool being called.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "custom_tool_call"`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the custom tool being called.
+
+    - `CustomToolCallOutput = object { id, call_id, output, 3 more }`
+
+      - `id: string`
+
+        The unique ID of the custom tool call output item.
+
+      - `call_id: string`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `StringOutput = string`
+
+          A string of the output of the custom tool call.
+
+        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+          Text, image, or file output of the custom tool call.
+
+          - `ResponseInputText = object { text, type }`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+            - `detail: "low" or "high" or "auto" or "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: optional string`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `file_data: optional string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: optional string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: optional string`
+
+              The name of the file to be sent to the model.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "custom_tool_call_output"`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
   - `first_id: string`
 

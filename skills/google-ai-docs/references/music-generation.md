@@ -1,351 +1,1109 @@
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
+Lyria 3 is Google's family of music generation models, available
+through the Gemini API. With Lyria 3, you can generate high-quality, 48kHz
+stereo audio from text prompts or from images. These models deliver structural
+coherence, including vocals, timed lyrics, and full instrumental arrangements.
 
-The Gemini API, using
-[Lyria RealTime](https://deepmind.google/technologies/lyria/realtime/),
-provides access to a state-of-the-art, real-time, streaming music
-generation model. It allows developers to build applications where users
-can interactively create, continuously steer, and perform instrumental
-music.
+The Lyria 3 family includes two models:
 
-> [!WARNING]
-> **Experimental:** Lyria RealTime is an [experimental model](https://ai.google.dev/gemini-api/docs/models/experimental-models).
+| Model | Model ID | Best for | Duration | Output |
+|---|---|---|---|---|
+| **Lyria 3 Clip** | `lyria-3-clip-preview` | Short clips, loops, previews | 30 seconds | MP3 |
+| **Lyria 3 Pro** | `lyria-3-pro-preview` | Full-length songs with verses, choruses, bridges | A couple of minutes (controllable via prompt) | MP3, WAV |
 
-To experience what can be built using Lyria RealTime, try it on AI Studio
-using the [Prompt DJ](https://aistudio.google.com/apps/bundled/promptdj) or the
-[MIDI DJ](https://aistudio.google.com/apps/bundled/promptdj-midi) apps!
+Both models can be used using the standard `generateContent` method and the new
+[Interactions API](https://ai.google.dev/gemini-api/docs/interactions), supporting multimodal
+inputs (text and images), and produce **48kHz high-fidelity stereo** audio.
 
-## How music generation works
+> [!NOTE]
+> **Note:** Looking for real-time, streaming music generation? See [Real-time music generation with Lyria RealTime](https://ai.google.dev/gemini-api/docs/realtime-music-generation).
 
-Lyria RealTime music generation uses a persistent, bidirectional,
-low-latency streaming connection using
-[WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API).
+## Generate a music clip
 
-## Generate and control music
-
-Lyria RealTime works a bit like the [Live API](https://ai.google.dev/gemini-api/docs/live)
-in the sense that it is using websockets to keep a real-time communication with
-the model. It's still not exactly the same as you can't talk to the model and
-you have to use a specific format to prompt it.
-
-The following code demonstrates how to generate music:
+The Lyria 3 Clip model always generates a **30-second** clip. To generate a
+clip, call the `generateContent` method and set `response_modalities` to
+`["AUDIO", "TEXT"]`. Including `TEXT` lets you receive the generated lyrics
+or song structure alongside the audio.
 
 ### Python
 
-This example initializes the Lyria RealTime session using
-`client.aio.live.music.connect()`, then sends an
-initial prompt with `session.set_weighted_prompts()` along with an initial
-configuration using `session.set_music_generation_config`, starts the music
-generation using `session.play()` and sets up
-`receive_audio()` to process the audio chunks it receives.
+    from google import genai
+    from google.genai import types
 
-      import asyncio
-      from google import genai
-      from google.genai import types
+    client = genai.Client()
 
-      client = genai.Client(http_options={'api_version': 'v1alpha'})
+    response = client.models.generate_content(
+        model="lyria-3-clip-preview",
+        contents="Create a 30-second cheerful acoustic folk song with "
+                 "guitar and harmonica.",
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
 
-      async def main():
-          async def receive_audio(session):
-            """Example background task to process incoming audio."""
-            while True:
-              async for message in session.receive():
-                audio_data = message.server_content.audio_chunks[0].data
-                # Process audio...
-                await asyncio.sleep(10**-12)
-
-          async with (
-            client.aio.live.music.connect(model='models/lyria-realtime-exp') as session,
-            asyncio.TaskGroup() as tg,
-          ):
-            # Set up task to receive server messages.
-            tg.create_task(receive_audio(session))
-
-            # Send initial prompts and config
-            await session.set_weighted_prompts(
-              prompts=[
-                types.WeightedPrompt(text='minimal techno', weight=1.0),
-              ]
-            )
-            await session.set_music_generation_config(
-              config=types.LiveMusicGenerationConfig(bpm=90, temperature=1.0)
-            )
-
-            # Start streaming music
-            await session.play()
-      if __name__ == "__main__":
-          asyncio.run(main())
-
-> [!NOTE]
-> For a more complete code sample, refer to the
-> "Lyria RealTime - Get Started" file in the cookbooks repository:
->
->
-> [View
-> on GitHub](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_LyriaRealTime.py)
+    # Parse the response
+    for part in response.parts:
+        if part.text is not None:
+            print(part.text)
+        elif part.inline_data is not None:
+            with open("clip.mp3", "wb") as f:
+                f.write(part.inline_data.data)
+            print("Audio saved to clip.mp3")
 
 ### JavaScript
-
-This example initializes the Lyria RealTime session using
-`client.live.music.connect()`, then sends an
-initial prompt with `session.setWeightedPrompts()` along with an initial
-configuration using `session.setMusicGenerationConfig`, starts the music
-generation using `session.play()` and sets up an
-`onMessage` callback to process the audio chunks it receives.
 
     import { GoogleGenAI } from "@google/genai";
-    import Speaker from "speaker";
-    import { Buffer } from "buffer";
+    import * as fs from "node:fs";
 
-    const client = new GoogleGenAI({
-      apiKey: GEMINI_API_KEY,
-        apiVersion: "v1alpha" ,
-    });
+    const ai = new GoogleGenAI({});
 
     async function main() {
-      const speaker = new Speaker({
-        channels: 2,       // stereo
-        bitDepth: 16,      // 16-bit PCM
-        sampleRate: 44100, // 44.1 kHz
-      });
-
-      const session = await client.live.music.connect({
-        model: "models/lyria-realtime-exp",
-        callbacks: {
-          onmessage: (message) => {
-            if (message.serverContent?.audioChunks) {
-              for (const chunk of message.serverContent.audioChunks) {
-                const audioBuffer = Buffer.from(chunk.data, "base64");
-                speaker.write(audioBuffer);
-              }
-            }
-          },
-          onerror: (error) => console.error("music session error:", error),
-          onclose: () => console.log("Lyria RealTime stream closed."),
+      const response = await ai.models.generateContent({
+        model: "lyria-3-clip-preview",
+        contents: "Create a 30-second cheerful acoustic folk song with " +
+                  "guitar and harmonica.",
+        config: {
+          responseModalities: ["AUDIO", "TEXT"],
         },
       });
 
-      await session.setWeightedPrompts({
-        weightedPrompts: [
-          { text: "Minimal techno with deep bass, sparse percussion, and atmospheric synths", weight: 1.0 },
-        ],
-      });
-
-      await session.setMusicGenerationConfig({
-        musicGenerationConfig: {
-          bpm: 90,
-          temperature: 1.0,
-          audioFormat: "pcm16",  // important so we know format
-          sampleRateHz: 44100,
-        },
-      });
-
-      await session.play();
+      for (const part of response.candidates[0].content.parts) {
+        if (part.text) {
+          console.log(part.text);
+        } else if (part.inlineData) {
+          const buffer = Buffer.from(part.inlineData.data, "base64");
+          fs.writeFileSync("clip.mp3", buffer);
+          console.log("Audio saved to clip.mp3");
+        }
+      }
     }
 
-    main().catch(console.error);
+    main();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        config := &genai.GenerateContentConfig{
+            ResponseModalities: []string{"AUDIO", "TEXT"},
+        }
+
+        result, err := client.Models.GenerateContent(
+            ctx,
+            "lyria-3-clip-preview",
+            genai.Text("Create a 30-second cheerful acoustic folk song " +
+                       "with guitar and harmonica."),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, part := range result.Candidates[0].Content.Parts {
+            if part.Text != "" {
+                fmt.Println(part.Text)
+            } else if part.InlineData != nil {
+                err := os.WriteFile("clip.mp3", part.InlineData.Data, 0644)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                fmt.Println("Audio saved to clip.mp3")
+            }
+        }
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+
+    import java.io.IOException;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+
+    public class GenerateMusicClip {
+      public static void main(String[] args) throws IOException {
+
+        try (Client client = new Client()) {
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .responseModalities("AUDIO", "TEXT")
+              .build();
+
+          GenerateContentResponse response = client.models.generateContent(
+              "lyria-3-clip-preview",
+              "Create a 30-second cheerful acoustic folk song with "
+                  + "guitar and harmonica.",
+              config);
+
+          for (Part part : response.parts()) {
+            if (part.text().isPresent()) {
+              System.out.println(part.text().get());
+            } else if (part.inlineData().isPresent()) {
+              var blob = part.inlineData().get();
+              if (blob.data().isPresent()) {
+                Files.write(Paths.get("clip.mp3"), blob.data().get());
+                System.out.println("Audio saved to clip.mp3");
+              }
+            }
+          }
+        }
+      }
+    }
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-clip-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "Create a 30-second cheerful acoustic folk song with guitar and harmonica."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+### C#
+
+    using System.Threading.Tasks;
+    using Google.GenAI;
+    using Google.GenAI.Types;
+    using System.IO;
+
+    public class GenerateMusicClip {
+      public static async Task main() {
+        var client = new Client();
+        var config = new GenerateContentConfig {
+          ResponseModalities = { "AUDIO", "TEXT" }
+        };
+
+        var response = await client.Models.GenerateContentAsync(
+          model: "lyria-3-clip-preview",
+          contents: "Create a 30-second cheerful acoustic folk song with guitar and harmonica.",
+          config: config
+        );
+
+        foreach (var part in response.Candidates[0].Content.Parts) {
+          if (part.Text != null) {
+            Console.WriteLine(part.Text);
+          } else if (part.InlineData != null) {
+            await File.WriteAllBytesAsync("clip.mp3", part.InlineData.Data);
+            Console.WriteLine("Audio saved to clip.mp3");
+          }
+        }
+      }
+    }
 
 > [!NOTE]
-> For a more complete code sample, refer to those two AI studio apps:
->
->
-> [Try Prompt DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj)
->
->
-> [Try MIDI DJ on AI Studio](https://aistudio.google.com/apps/bundled/promptdj-midi)
+> **Objective:** For more examples, refer to the [Lyria 3 Notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_Lyria.ipynb) in the Cookbooks repository.
 
-You can then use `session.play()`, `session.pause()`, `session.stop()` and
-`session.reset_context()` to start, pause, stop or reset the session.
+## Generate a full-length song
 
-## Steer music in real-time
-
-### Prompt Lyria RealTime
-
-While the stream is active, you can send new `WeightedPrompt` messages at any
-time to alter the generated music. The model will smoothly transition based
-on the new input.
-
-The prompts need to follow the right format with a `text` (the
-actual prompt), and a `weight`. The `weight` can take any value except `0`. `1.0`
-is usually a good starting point.
+Use the `lyria-3-pro-preview` model to generate full-length songs that last a
+couple of minutes. The Pro model understands musical structure and can create
+compositions with distinct verses, choruses, and bridges. You can influence the
+duration by specifying it in your prompt (e.g., "create a 2-minute song") or by
+using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing) to define the structure.
 
 ### Python
 
-      from google.genai import types
-
-      await session.set_weighted_prompts(
-        prompts=[
-          {"text": "Piano", "weight": 2.0},
-          types.WeightedPrompt(text="Meditation", weight=0.5),
-          types.WeightedPrompt(text="Live Performance", weight=1.0),
-        ]
-      )
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents="An epic cinematic orchestral piece about a journey home. "
+                 "Starts with a solo piano intro, builds through sweeping "
+                 "strings, and climaxes with a massive wall of sound.",
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
 
 ### JavaScript
 
-      await session.setMusicGenerationConfig({
-        weightedPrompts: [
-          { text: 'Harmonica', weight: 0.3 },
-          { text: 'Afrobeat', weight: 0.7 }
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: "An epic cinematic orchestral piece about a journey home. " +
+                "Starts with a solo piano intro, builds through sweeping " +
+                "strings, and climaxes with a massive wall of sound.",
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
+
+### Go
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        genai.Text("An epic cinematic orchestral piece about a journey " +
+                   "home. Starts with a solo piano intro, builds through " +
+                   "sweeping strings, and climaxes with a massive wall of sound."),
+        config,
+    )
+
+### Java
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        "An epic cinematic orchestral piece about a journey home. "
+            + "Starts with a solo piano intro, builds through sweeping "
+            + "strings, and climaxes with a massive wall of sound.",
+        config);
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+### C#
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: "An epic cinematic orchestral piece about a journey home. " +
+                "Starts with a solo piano intro, builds through sweeping " +
+                "strings, and climaxes with a massive wall of sound.",
+      config: config
+    );
+
+## Parse the response
+
+The response from Lyria 3 contains multiple parts. Text parts contain the
+generated lyrics or a JSON description of the song structure. Parts with
+`inline_data` contain the audio bytes.
+
+> [!IMPORTANT]
+> **Important:** You should not assume the lyrics are always the first part. Always iterate through all parts and check the type of each one.
+
+### Python
+
+    lyrics = []
+    audio_data = None
+
+    for part in response.parts:
+        if part.text is not None:
+            lyrics.append(part.text)
+        elif part.inline_data is not None:
+            audio_data = part.inline_data.data
+
+    if lyrics:
+        print("Lyrics:\n" + "\n".join(lyrics))
+
+    if audio_data:
+        with open("output.mp3", "wb") as f:
+            f.write(audio_data)
+
+### JavaScript
+
+    const lyrics = [];
+    let audioData = null;
+
+    for (const part of response.candidates[0].content.parts) {
+      if (part.text) {
+        lyrics.push(part.text);
+      } else if (part.inlineData) {
+        audioData = Buffer.from(part.inlineData.data, "base64");
+      }
+    }
+
+    if (lyrics.length) {
+      console.log("Lyrics:\n" + lyrics.join("\n"));
+    }
+
+    if (audioData) {
+      fs.writeFileSync("output.mp3", audioData);
+    }
+
+### Go
+
+    var lyrics []string
+    var audioData []byte
+
+    for _, part := range result.Candidates[0].Content.Parts {
+        if part.Text != "" {
+            lyrics = append(lyrics, part.Text)
+        } else if part.InlineData != nil {
+            audioData = part.InlineData.Data
+        }
+    }
+
+    if len(lyrics) > 0 {
+        fmt.Println("Lyrics:\n" + strings.Join(lyrics, "\n"))
+    }
+
+    if audioData != nil {
+        err := os.WriteFile("output.mp3", audioData, 0644)
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
+### Java
+
+    List<String> lyrics = new ArrayList<>();
+    byte[] audioData = null;
+
+    for (Part part : response.parts()) {
+      if (part.text().isPresent()) {
+        lyrics.add(part.text().get());
+      } else if (part.inlineData().isPresent()) {
+        audioData = part.inlineData().get().data().get();
+      }
+    }
+
+    if (!lyrics.isEmpty()) {
+      System.out.println("Lyrics:\n" + String.join("\n", lyrics));
+    }
+
+    if (audioData != null) {
+      Files.write(Paths.get("output.mp3"), audioData);
+    }
+
+### C#
+
+    var lyrics = new List<string>();
+    byte[] audioData = null;
+
+    foreach (var part in response.Candidates[0].Content.Parts) {
+      if (part.Text != null) {
+        lyrics.Add(part.Text);
+      } else if (part.InlineData != null) {
+        audioData = part.InlineData.Data;
+      }
+    }
+
+    if (lyrics.Count > 0) {
+      Console.WriteLine("Lyrics:\n" + string.Join("\n", lyrics));
+    }
+
+    if (audioData != null) {
+      await File.WriteAllBytesAsync("output.mp3", audioData);
+    }
+
+### REST
+
+    # The output from the REST API is a JSON object containing base64 encoded data.
+    # You can extract the text or the audio data using a tool like jq.
+    # To extract the audio and save it to a file:
+    curl ... | jq -r '.candidates[0].content.parts[] | select(.inlineData) | .inlineData.data' | base64 -d > output.mp3
+
+## Generate music from images
+
+Lyria 3 supports multimodal inputs --- you can provide up to **10 images**
+alongside your text prompt and the model will compose music inspired by the
+visual content.
+
+### Python
+
+    from PIL import Image
+
+    image = Image.open("desert_sunset.jpg")
+
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents=[
+            "An atmospheric ambient track inspired by the mood and "
+            "colors in this image.",
+            image,
         ],
-      });
-
-Note that the model transitions can be a bit abrupt when drastically changing
-the prompts so it's recommended to implement some kind of cross-fading by
-sending intermediate weight values to the model.
-
-### Update the configuration
-
-You can also update the music generation parameters in real time. You can't just
-update a parameter, you need to set the whole configuration otherwise the other
-fields will be reset back to their default values.
-
-Since updating the bpm or the scale is a drastic change for the model you'll
-also need to tell it to reset its context using `reset_context()` to take the
-new config into account. It won't stop the stream, but it will be a hard
-transition. You don't need to do it for the other parameters.
-
-### Python
-
-      from google.genai import types
-
-      await session.set_music_generation_config(
-        config=types.LiveMusicGenerationConfig(
-          bpm=128,
-          scale=types.Scale.D_MAJOR_B_MINOR,
-          music_generation_mode=types.MusicGenerationMode.QUALITY
-        )
-      )
-      await session.reset_context();
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
 
 ### JavaScript
 
-      await session.setMusicGenerationConfig({
-        musicGenerationConfig: { 
-          bpm: 120,
-          density: 0.75,
-          musicGenerationMode: MusicGenerationMode.QUALITY
+    const imageData = fs.readFileSync("desert_sunset.jpg");
+    const base64Image = imageData.toString("base64");
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: [
+        { text: "An atmospheric ambient track inspired by the mood " +
+                "and colors in this image." },
+        {
+          inlineData: {
+            mimeType: "image/jpeg",
+            data: base64Image,
+          },
         },
-      });
-      await session.reset_context();
+      ],
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
 
-## Prompt guide for Lyria RealTime
+### Go
 
-Here's a non-exhaustive list of prompts you can use to prompt Lyria RealTime:
+    imgData, err := os.ReadFile("desert_sunset.jpg")
+    if err != nil {
+        log.Fatal(err)
+    }
 
-- Instruments: `303 Acid Bass, 808 Hip Hop Beat, Accordion, Alto Saxophone,
-  Bagpipes, Balalaika Ensemble, Banjo, Bass Clarinet, Bongos, Boomy Bass,
-  Bouzouki, Buchla Synths, Cello, Charango, Clavichord, Conga Drums,
-  Didgeridoo, Dirty Synths, Djembe, Drumline, Dulcimer, Fiddle, Flamenco
-  Guitar, Funk Drums, Glockenspiel, Guitar, Hang Drum, Harmonica, Harp,
-  Harpsichord, Hurdy-gurdy, Kalimba, Koto, Lyre, Mandolin, Maracas, Marimba,
-  Mbira, Mellotron, Metallic Twang, Moog Oscillations, Ocarina, Persian Tar,
-  Pipa, Precision Bass, Ragtime Piano, Rhodes Piano, Shamisen, Shredding
-  Guitar, Sitar, Slide Guitar, Smooth Pianos, Spacey Synths, Steel Drum, Synth
-  Pads, Tabla, TR-909 Drum Machine, Trumpet, Tuba, Vibraphone, Viola Ensemble,
-  Warm Acoustic Guitar, Woodwinds, ...`
-- Music Genre: `Acid Jazz, Afrobeat, Alternative Country, Baroque, Bengal Baul,
-  Bhangra, Bluegrass, Blues Rock, Bossa Nova, Breakbeat, Celtic Folk, Chillout,
-  Chiptune, Classic Rock, Contemporary R&B, Cumbia, Deep House, Disco Funk,
-  Drum & Bass, Dubstep, EDM, Electro Swing, Funk Metal, G-funk, Garage Rock,
-  Glitch Hop, Grime, Hyperpop, Indian Classical, Indie Electronic, Indie Folk,
-  Indie Pop, Irish Folk, Jam Band, Jamaican Dub, Jazz Fusion, Latin Jazz, Lo-Fi
-  Hip Hop, Marching Band, Merengue, New Jack Swing, Minimal Techno, Moombahton,
-  Neo-Soul, Orchestral Score, Piano Ballad, Polka, Post-Punk, 60s Psychedelic
-  Rock, Psytrance, R&B, Reggae, Reggaeton, Renaissance Music, Salsa, Shoegaze,
-  Ska, Surf Rock, Synthpop, Techno, Trance, Trap Beat, Trip Hop, Vaporwave,
-  Witch house, ...`
-- Mood/Description: `Acoustic Instruments, Ambient, Bright Tones, Chill,
-  Crunchy Distortion, Danceable, Dreamy, Echo, Emotional, Ethereal Ambience,
-  Experimental, Fat Beats, Funky, Glitchy Effects, Huge Drop, Live Performance,
-  Lo-fi, Ominous Drone, Psychedelic, Rich Orchestration, Saturated Tones,
-  Subdued Melody, Sustained Chords, Swirling Phasers, Tight Groove,
-  Unsettling, Upbeat, Virtuoso, Weird Noises, ...`
+    parts := []*genai.Part{
+        genai.NewPartFromText("An atmospheric ambient track inspired " +
+            "by the mood and colors in this image."),
+        &genai.Part{
+            InlineData: &genai.Blob{
+                MIMEType: "image/jpeg",
+                Data:     imgData,
+            },
+        },
+    }
 
-These are just some examples, Lyria RealTime can do much more. Experiment
-with your own prompts!
+    contents := []*genai.Content{
+        genai.NewContentFromParts(parts, genai.RoleUser),
+    }
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        contents,
+        config,
+    )
+
+### Java
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        Content.fromParts(
+            Part.fromText("An atmospheric ambient track inspired by "
+                + "the mood and colors in this image."),
+            Part.fromBytes(
+                Files.readAllBytes(Path.of("desert_sunset.jpg")),
+                "image/jpeg")),
+        config);
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d "{
+        \"contents\": [{
+          \"parts\":[
+              {\"text\": \"An atmospheric ambient track inspired by the mood and colors in this image.\"},
+              {
+                \"inline_data\": {
+                  \"mime_type\":\"image/jpeg\",
+                  \"data\": \"<BASE64_IMAGE_DATA>\"
+                }
+              }
+          ]
+        }],
+        \"generationConfig\": {
+          \"responseModalities\": [\"AUDIO\", \"TEXT\"]
+        }
+      }"
+
+### C#
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: new List<Part> {
+        Part.FromText("An atmospheric ambient track inspired by the mood and colors in this image."),
+        Part.FromBytes(await File.ReadAllBytesAsync("desert_sunset.jpg"), "image/jpeg")
+      },
+      config: config
+    );
+
+## Provide custom lyrics
+
+You can write your own lyrics and include them in the prompt. Use section tags
+like `[Verse]`, `[Chorus]`, and `[Bridge]` to help the model understand the
+song structure:
+
+### Python
+
+    prompt = """
+    Create a dreamy indie pop song with the following lyrics:
+
+    [Verse 1]
+    Walking through the neon glow,
+    city lights reflect below,
+    every shadow tells a story,
+    every corner, fading glory.
+
+    [Chorus]
+    We are the echoes in the night,
+    burning brighter than the light,
+    hold on tight, don't let me go,
+    we are the echoes down below.
+
+    [Verse 2]
+    Footsteps lost on empty streets,
+    rhythms sync to heartbeats,
+    whispers carried by the breeze,
+    dancing through the autumn leaves.
+    """
+
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
+
+### JavaScript
+
+    const prompt = `
+    Create a dreamy indie pop song with the following lyrics:
+
+    [Verse 1]
+    Walking through the neon glow,
+    city lights reflect below,
+    every shadow tells a story,
+    every corner, fading glory.
+
+    [Chorus]
+    We are the echoes in the night,
+    burning brighter than the light,
+    hold on tight, don't let me go,
+    we are the echoes down below.
+
+    [Verse 2]
+    Footsteps lost on empty streets,
+    rhythms sync to heartbeats,
+    whispers carried by the breeze,
+    dancing through the autumn leaves.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: prompt,
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
+
+### Go
+
+    prompt := `
+    Create a dreamy indie pop song with the following lyrics:
+
+    [Verse 1]
+    Walking through the neon glow,
+    city lights reflect below,
+    every shadow tells a story,
+    every corner, fading glory.
+
+    [Chorus]
+    We are the echoes in the night,
+    burning brighter than the light,
+    hold on tight, don't let me go,
+    we are the echoes down below.
+
+    [Verse 2]
+    Footsteps lost on empty streets,
+    rhythms sync to heartbeats,
+    whispers carried by the breeze,
+    dancing through the autumn leaves.
+    `
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        genai.Text(prompt),
+        config,
+    )
+
+### Java
+
+    String prompt = """
+        Create a dreamy indie pop song with the following lyrics:
+
+        [Verse 1]
+        Walking through the neon glow,
+        city lights reflect below,
+        every shadow tells a story,
+        every corner, fading glory.
+
+        [Chorus]
+        We are the echoes in the night,
+        burning brighter than the light,
+        hold on tight, don't let me go,
+        we are the echoes down below.
+
+        [Verse 2]
+        Footsteps lost on empty streets,
+        rhythms sync to heartbeats,
+        whispers carried by the breeze,
+        dancing through the autumn leaves.
+        """;
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        prompt,
+        config);
+
+### C#
+
+    var prompt = @"
+    Create a dreamy indie pop song with the following lyrics:
+
+    [Verse 1]
+    Walking through the neon glow,
+    city lights reflect below,
+    every shadow tells a story,
+    every corner, fading glory.
+
+    [Chorus]
+    We are the echoes in the night,
+    burning brighter than the light,
+    hold on tight, don't let me go,
+    we are the echoes down below.
+
+    [Verse 2]
+    Footsteps lost on empty streets,
+    rhythms sync to heartbeats,
+    whispers carried by the breeze,
+    dancing through the autumn leaves.
+    ";
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: prompt,
+      config: config
+    );
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "Create a dreamy indie pop song with the following lyrics: ..."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+## Control timing and structure
+
+You can specify exactly what happens at specific moments in the song using
+timestamps. This is useful for controlling when instruments enter, when lyrics
+are delivered, and how the song progresses:
+
+### Python
+
+    prompt = """
+    [0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled
+                  vinyl crackle.
+    [0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody
+                  and gentle vocals singing about a rainy morning.
+    [0:30 - 0:50] Chorus: Full band with upbeat drums and soaring
+                  synth leads. The lyrics are hopeful and uplifting.
+    [0:50 - 1:00] Outro: Fade out with the piano melody alone.
+    """
+
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
+
+### JavaScript
+
+    const prompt = `
+    [0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled
+                  vinyl crackle.
+    [0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody
+                  and gentle vocals singing about a rainy morning.
+    [0:30 - 0:50] Chorus: Full band with upbeat drums and soaring
+                  synth leads. The lyrics are hopeful and uplifting.
+    [0:50 - 1:00] Outro: Fade out with the piano melody alone.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: prompt,
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
+
+### Go
+
+    prompt := `
+    [0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled
+                  vinyl crackle.
+    [0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody
+                  and gentle vocals singing about a rainy morning.
+    [0:30 - 0:50] Chorus: Full band with upbeat drums and soaring
+                  synth leads. The lyrics are hopeful and uplifting.
+    [0:50 - 1:00] Outro: Fade out with the piano melody alone.
+    `
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        genai.Text(prompt),
+        config,
+    )
+
+### Java
+
+    String prompt = """
+        [0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled
+                      vinyl crackle.
+        [0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody
+                      and gentle vocals singing about a rainy morning.
+        [0:30 - 0:50] Chorus: Full band with upbeat drums and soaring
+                      synth leads. The lyrics are hopeful and uplifting.
+        [0:50 - 1:00] Outro: Fade out with the piano melody alone.
+        """;
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        prompt,
+        config);
+
+### C#
+
+    var prompt = @"
+    [0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled
+                  vinyl crackle.
+    [0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody
+                  and gentle vocals singing about a rainy morning.
+    [0:30 - 0:50] Chorus: Full band with upbeat drums and soaring
+                  synth leads. The lyrics are hopeful and uplifting.
+    [0:50 - 1:00] Outro: Fade out with the piano melody alone.
+    ";
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: prompt,
+      config: config
+    );
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "[0:00 - 0:10] Intro: ..."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+## Generate instrumental tracks
+
+For background music, game soundtracks, or any use case where vocals are not
+required, you can prompt the model to produce instrumental-only tracks:
+
+### Python
+
+    response = client.models.generate_content(
+        model="lyria-3-clip-preview",
+        contents="A bright chiptune melody in C Major, retro 8-bit "
+                 "video game style. Instrumental only, no vocals.",
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
+
+### JavaScript
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-clip-preview",
+      contents: "A bright chiptune melody in C Major, retro 8-bit " +
+                "video game style. Instrumental only, no vocals.",
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
+
+### Go
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-clip-preview",
+        genai.Text("A bright chiptune melody in C Major, retro 8-bit " +
+                   "video game style. Instrumental only, no vocals."),
+        config,
+    )
+
+### Java
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-clip-preview",
+        "A bright chiptune melody in C Major, retro 8-bit "
+            + "video game style. Instrumental only, no vocals.",
+        config);
+
+### C#
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-clip-preview",
+      contents: "A bright chiptune melody in C Major, retro 8-bit " +
+                "video game style. Instrumental only, no vocals.",
+      config: config
+    );
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-clip-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+> [!TIP]
+> **Tip:** For [best results](https://ai.google.dev/gemini-api/docs/music-generation#prompt-guide), include "Instrumental only, no vocals" explicitly in your prompt.
+
+## Generate music in different languages
+
+Lyria 3 generates lyrics in the language of your prompt. To generate a song
+with French lyrics, write your prompt in French. The model adapts its vocal
+style and pronunciation to match the language.
+
+### Python
+
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents="Crée une chanson pop romantique en français sur un "
+                 "coucher de soleil à Paris. Utilise du piano et de "
+                 "la guitare acoustique.",
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+        ),
+    )
+
+### JavaScript
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: "Crée une chanson pop romantique en français sur un " +
+                "coucher de soleil à Paris. Utilise du piano et de " +
+                "la guitare acoustique.",
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+      },
+    });
+
+### Go
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        genai.Text("Crée une chanson pop romantique en français sur un " +
+                   "coucher de soleil à Paris. Utilise du piano et de " +
+                   "la guitare acoustique."),
+        config,
+    )
+
+### Java
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        "Crée une chanson pop romantique en français sur un "
+            + "coucher de soleil à Paris. Utilise du piano et de "
+            + "la guitare acoustique.",
+        config);
+
+### C#
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: "Crée une chanson pop romantique en français sur un " +
+                "coucher de soleil à Paris. Utilise du piano et de " +
+                "la guitare acoustique.",
+      config: config
+    );
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"]
+        }
+      }'
+
+## Model intelligence
+
+Lyria 3 analyzes your prompt process where the
+model reasons through musical structure (intro, verse, chorus, bridge, etc.)
+based on your prompt.
+This happens before the audio is generated and ensures structural coherence and
+musicality.
+
+> [!IMPORTANT]
+> **Important:** While Lyria 3 uses a prompt rewriter internally to interpret natural language instructions, it does **not** expose intermediate "thought" blocks or thought signatures to the user.
+
+## Interactions API
+
+You can use Lyria 3 models with the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions);
+a unified interface for interacting with Gemini models and agents. It simplifies
+state management and long-running tasks for complex multimodal use cases.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    interaction = client.interactions.create(
+        model="lyria-3-pro-preview",
+        input="An epic cinematic orchestral piece about a journey home. " +
+              "Starts with a solo piano intro, builds through sweeping " +
+              "strings, and climaxes with a massive wall of sound.",
+        response_modalities=["AUDIO", "TEXT"]
+    )
+
+    for output in interaction.outputs:
+        if output.text:
+            print(output.text)
+        elif output.inline_data:
+             with open("interaction_output.mp3", "wb") as f:
+                f.write(output.inline_data.data)
+             print("Audio saved to interaction_output.mp3")
+
+### JavaScript
+
+    import { GoogleGenAI } from '@google/genai';
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+      model: 'lyria-3-pro-preview',
+      input: 'An epic cinematic orchestral piece about a journey home. ' +
+             'Starts with a solo piano intro, builds through sweeping ' +
+             'strings, and climaxes with a massive wall of sound.',
+      responseModalities: ['AUDIO', 'TEXT'],
+    });
+
+    for (const output of interaction.outputs) {
+      if (output.text) {
+        console.log(output.text);
+      } else if (output.inlineData) {
+        const buffer = Buffer.from(output.inlineData.data, 'base64');
+        fs.writeFileSync('interaction_output.mp3', buffer);
+        console.log('Audio saved to interaction_output.mp3');
+      }
+    }
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "Content-Type: application/json" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -d '{
+        "model": "lyria-3-pro-preview",
+        "input": "An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound.",
+        "responseModalities": ["AUDIO", "TEXT"]
+    }'
+
+## Prompting guide
+
+The more specific your prompt, the better the results. Here's what you can
+include to guide the generation:
+
+- **Genre**: Specify a genre or blend of genres (e.g., "lo-fi hip hop", "jazz fusion", "cinematic orchestral").
+- **Instruments**: Name specific instruments (e.g., "Fender Rhodes piano", "slide guitar", "TR-808 drum machine").
+- **BPM**: Set the tempo (e.g., "120 BPM", "slow tempo around 70 BPM").
+- **Key/Scale**: Specify a musical key (e.g., "in G major", "D minor").
+- **Mood and atmosphere**: Use descriptive adjectives (e.g., "nostalgic", "aggressive", "ethereal", "dreamy").
+- **Structure** : Use tags like `[Verse]`, `[Chorus]`, `[Bridge]`, `[Intro]`, `[Outro]` or timestamps to control the song's progression.
+- **Duration**: The Clip model always produces 30-second clips. For the Pro model, specify the desired length in your prompt (e.g., "create a 2-minute song") or use timestamps to control duration.
+
+### Example prompts
+
+Here are some examples of effective prompts:
+
+- `"A 30-second lofi hip hop beat with dusty vinyl crackle, mellow Rhodes
+  piano chords, a slow boom-bap drum pattern at 85 BPM, and a jazzy upright
+  bass line. Instrumental only."`
+- `"An upbeat, feel-good pop song in G major at 120 BPM with bright acoustic
+  guitar strumming, claps, and warm vocal harmonies about a summer road trip."`
+- `"A dark, atmospheric trap beat at 140 BPM with heavy 808 bass, eerie synth
+  pads, sharp hi-hats, and a haunting vocal sample. In D minor."`
 
 ## Best practices
 
-- Client applications must implement robust audio buffering to ensure smooth playback. This helps account for network jitter and slight variations in generation latency.
-- Effective prompting:
-  - Be descriptive. Use adjectives describing mood, genre, and instrumentation.
-  - Iterate and steer gradually. Rather than completely changing the prompt, try adding or modifying elements to morph the music more smoothly.
-  - Experiment with weight on `WeightedPrompt` to influence how strongly a new prompt affects the ongoing generation.
+- **Iterate with Clip first.** Use the faster `lyria-3-clip-preview` model to experiment with prompts before committing to a full-length generation with `lyria-3-pro-preview`.
+- **Be specific.** Vague prompts produce generic results. Mention instruments, BPM, key, mood, and structure for the best output.
+- **Match your language.** Prompt in the language you want the lyrics in.
+- **Use section tags.** `[Verse]`, `[Chorus]`, `[Bridge]` tags give the model clear structure to follow.
+- **Separate lyrics from instructions.** When providing custom lyrics, clearly separate them from your musical direction instructions.
 
-## Technical details
+## Limitations
 
-This section describes the specifics of how to use Lyria RealTime music
-generation.
-
-### Specifications
-
-- Output format: Raw 16-bit PCM Audio
-- Sample rate: 48kHz
-- Channels: 2 (stereo)
-
-### Controls
-
-Music generation can be influenced in real time by sending messages containing:
-
-- `WeightedPrompt`: A text string describing a musical idea, genre, instrument, mood, or characteristic. Multiple prompts can potentially be supplied to blend influences. See [above](https://ai.google.dev/gemini-api/docs/:#steer-music) for more details on how to best prompt Lyria RealTime.
-- `MusicGenerationConfig`: Configuration for the music generation process, influencing the characteristics of the output audio.). Parameters include:
-  - `guidance`: (float) Range: `[0.0, 6.0]`. Default: `4.0`. Controls how strictly the model follows the prompts. Higher guidance improves adherence to the prompt, but makes transitions more abrupt.
-  - `bpm`: (int) Range: `[60, 200]`. Sets the Beats Per Minute you want for the generated music. You need to stop/play or reset the context for the model it take into account the new bpm.
-  - `density`: (float) Range: `[0.0, 1.0]`. Controls the density of musical notes/sounds. Lower values produce sparser music; higher values produce "busier" music.
-  - `brightness`: (float) Range: `[0.0, 1.0]`. Adjusts the tonal quality. Higher values produce "brighter" sounding audio, generally emphasizing higher frequencies.
-  - `scale`: (Enum) Sets the musical scale (Key and Mode) for the generation. Use the [`Scale` enum values](https://ai.google.dev/gemini-api/docs/music-generation#scale-enum) provided by the SDK. You need to stop/play or reset the context for the model it take into account the new scale.
-  - `mute_bass`: (bool) Default: `False`. Controls whether the model reduces the outputs' bass.
-  - `mute_drums`: (bool) Default: `False`. Controls whether the model outputs reduces the outputs' drums.
-  - `only_bass_and_drums`: (bool) Default: `False`. Steer the model to try to only output bass and drums.
-  - `music_generation_mode`: (Enum) Indicates to the model if it should focus on `QUALITY` (default value) or `DIVERSITY` of music. It can also be set to `VOCALIZATION` to let the model generate vocalizations as another instrument (add them as new pompts).
-- `PlaybackControl`: Commands to control playback aspects, such as play, pause, stop or reset the context.
-
-For `bpm`, `density`, `brightness` and `scale`, if no value is provided, the
-model will decide what's best according to your initial prompts.
-
-More classical parameters like `temperature` (0.0 to 3.0, default 1.1), `top_k`
-(1 to 1000, default 40), and `seed` (0 to 2 147 483 647, randomly selected by
-default) are also customizable in the `MusicGenerationConfig`.
-
-#### Scale Enum Values
-
-Here are all the scale values that the model can accept:
-
-| Enum Value | Scale / Key |
-|---|---|
-| `C_MAJOR_A_MINOR` | C major / A minor |
-| `D_FLAT_MAJOR_B_FLAT_MINOR` | D♭ major / B♭ minor |
-| `D_MAJOR_B_MINOR` | D major / B minor |
-| `E_FLAT_MAJOR_C_MINOR` | E♭ major / C minor |
-| `E_MAJOR_D_FLAT_MINOR` | E major / C♯/D♭ minor |
-| `F_MAJOR_D_MINOR` | F major / D minor |
-| `G_FLAT_MAJOR_E_FLAT_MINOR` | G♭ major / E♭ minor |
-| `G_MAJOR_E_MINOR` | G major / E minor |
-| `A_FLAT_MAJOR_F_MINOR` | A♭ major / F minor |
-| `A_MAJOR_G_FLAT_MINOR` | A major / F♯/G♭ minor |
-| `B_FLAT_MAJOR_G_MINOR` | B♭ major / G minor |
-| `B_MAJOR_A_FLAT_MINOR` | B major / G♯/A♭ minor |
-| `SCALE_UNSPECIFIED` | Default / The model decides |
-
-The model is capable of guiding the notes that are played, but does
-not distinguish between relative keys. Thus each enum corresponds both to the
-relative major and minor. For example, `C_MAJOR_A_MINOR` would correspond to all
-the white keys of a piano, and `F_MAJOR_D_MINOR` would be all the white keys
-except B flat.
-
-### Limitations
-
-- Instrumental only: The model generates instrumental music only.
-- Safety: Prompts are checked by safety filters. Prompts triggering the filters will be ignored in which case an explanation will be written in the output's `filtered_prompt` field.
-- Watermarking: Output audio is always watermarked for identification following our [Responsible AI](https://ai.google/responsibility/principles/) principles.
+- **Safety**: All prompts are checked by safety filters. Prompts that trigger the filters will be blocked. This includes prompts that request specific artist voices or the generation of copyrighted lyrics.
+- **Watermarking** : All generated audio includes a [SynthID audio watermark](https://ai.google.dev/responsible/docs/safeguards/synthid) for identification. This watermark is imperceptible to the human ear and does not affect the listening experience.
+- **Multi-turn editing**: Music generation is a single-turn process. Iterative editing or refining a generated clip through multiple prompts is not supported in the current version of Lyria 3.
+- **Length**: The Clip model always generates 30-second clips. The Pro model generates songs that last a couple of minutes; exact duration can be influenced through your prompt.
+- **Determinism**: Results may vary between calls, even with the same prompt.
 
 ## What's next
 
-- Instead of music, learn how to generate multi-speakers conversation using the [TTS models](https://ai.google.dev/gemini-api/docs/audio-generation),
+- Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3 models,
+- Try [real-time, streaming music generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime,
+- Generate multi-speaker conversations with the [TTS models](https://ai.google.dev/gemini-api/docs/audio-generation),
 - Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video),
-- Instead of generation music or audio, find out how to Gemini can [understand Audio files](https://ai.google.dev/gemini-api/docs/audio),
+- Find out how Gemini can [understand audio files](https://ai.google.dev/gemini-api/docs/audio),
 - Have a real-time conversation with Gemini using the [Live API](https://ai.google.dev/gemini-api/docs/live).
-
-Explore the [Cookbook](https://github.com/google-gemini/cookbook) for more
-code examples and tutorials.

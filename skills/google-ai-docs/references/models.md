@@ -78,10 +78,6 @@ Fast and controllable text-to-speech for low-latency, cost-efficient application
 
 High-fidelity speech synthesis optimized for quality in structured workflows like podcasts and audiobooks.
 
-### [Lyria Experimental](https://ai.google.dev/gemini-api/docs/models/lyria-realtime-exp)
-
-High-fidelity music generation model providing granular creative control over instruments, BPM, and complex compositions.
-
 *** ** * ** ***
 
 ## Generative media models
@@ -111,6 +107,22 @@ State-of-the-art native image generation and editing designed for fast, creative
 ### [Imagen 4](https://ai.google.dev/gemini-api/docs/models/imagen)
 
 Text-to-image model yet, featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution.
+
+*** ** * ** ***
+
+## Music generation models
+
+### [Lyria 3 Pro Preview](https://ai.google.dev/gemini-api/docs/models/lyria-3-pro-preview)
+
+Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+
+### [Lyria 3 Clip Preview](https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview)
+
+Optimized for generating short musical clips, loops, and previews up to 30 seconds.
+
+### [Lyria RealTime Experimental](https://ai.google.dev/gemini-api/docs/models/lyria-realtime-exp)
+
+High-fidelity music generation model providing granular creative control and real-time streaming capabilities.
 
 *** ** * ** ***
 

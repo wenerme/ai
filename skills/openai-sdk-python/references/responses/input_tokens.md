@@ -606,9 +606,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the click occurred.
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
         - `class ActionDoubleClick: …`
 
           A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
 
           - `type: Literal["double_click"]`
 
@@ -653,6 +661,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"drag"`
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
         - `class ActionKeypress: …`
 
           A collection of keypresses the model would like to perform.
@@ -684,6 +696,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: int`
 
             The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
 
         - `class ActionScreenshot: …`
 
@@ -720,6 +736,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: int`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
 
         - `class ActionType: …`
 
@@ -782,9 +802,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the click occurred.
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
         - `class DoubleClick: …`
 
           A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
 
           - `type: Literal["double_click"]`
 
@@ -829,6 +857,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"drag"`
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
         - `class Keypress: …`
 
           A collection of keypresses the model would like to perform.
@@ -860,6 +892,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: int`
 
             The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
 
         - `class Screenshot: …`
 
@@ -896,6 +932,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: int`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
 
         - `class Type: …`
 

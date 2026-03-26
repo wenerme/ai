@@ -9,7 +9,7 @@ doc_type: 'guide'
 
 <BetaBadge/>
 
-ClickHouse supports integration with multiple catalogs (Unity, Glue, Polaris, etc.). This guide will walk you through the steps to query your Iceberg tables in [BigLake Metastore](https://cloud.google.com/biglake/docs) via ClickHouse.
+ClickHouse supports integration with multiple catalogs (Unity, Glue, Polaris, etc.). This guide will walk you through the steps to query your Iceberg tables in [BigLake Metastore](https://docs.cloud.google.com/biglake/docs/) via ClickHouse.
 
 > **note**: As this feature is beta, you will need to enable it using:
 `SET allow_database_iceberg = 1;`

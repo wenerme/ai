@@ -580,9 +580,17 @@ Create a conversation.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -627,6 +635,10 @@ Create a conversation.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -658,6 +670,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -694,6 +710,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -756,9 +776,17 @@ Create a conversation.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -803,6 +831,10 @@ Create a conversation.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -834,6 +866,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -870,6 +906,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 

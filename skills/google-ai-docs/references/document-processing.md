@@ -19,7 +19,7 @@ for larger documents that you need to refer to in multi-turn interactions to
 improve request latency and reduce bandwidth usage.
 
 The following example shows you how to fetch a PDF from a URL and convert it to
-bytes for processing:  
+bytes for processing:
 
 ### Python
 
@@ -169,7 +169,7 @@ bytes for processing:
     # Clean up the downloaded PDF
     rm "${DISPLAY_NAME}.pdf"
 
-You can also read a PDF from a local file for processing:  
+You can also read a PDF from a local file for processing:
 
 ### Python
 
@@ -269,11 +269,13 @@ You can also read a PDF from a local file for processing:
 We recommend you use Files API for larger files or when you intend to reuse a
 document across multiple requests. This improves request latency and reduces
 bandwidth usage by decoupling the file upload from the model requests.
-| **Note:** The Files API is available at no cost in all regions where the Gemini API is available. Uploaded files are stored for 48 hours.
+
+> [!NOTE]
+> **Note:** The Files API is available at no cost in all regions where the Gemini API is available. Uploaded files are stored for 48 hours.
 
 ### Large PDFs from URLs
 
-Use the File API to simplify uploading and processing large PDF files from URLs:  
+Use the File API to simplify uploading and processing large PDF files from URLs:
 
 ### Python
 
@@ -639,7 +641,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
 You can verify the API successfully stored the uploaded file and get its
 metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/get). Only the `name`
-(and by extension, the `uri`) are unique.  
+(and by extension, the `uri`) are unique.
 
 ### Python
 
@@ -671,7 +673,7 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 
 The Gemini API is capable of processing multiple PDF documents (up to 1000 pages)
 in a single request, as long as the combined size of the documents and the text
-prompt stays within the model's context window.  
+prompt stays within the model's context window.
 
 ### Python
 

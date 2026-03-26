@@ -680,7 +680,7 @@ Retrieves a model response with the given ID.
 
           A click action.
 
-          - `Click = object { button, type, x, y }`
+          - `Click = object { button, type, x, 2 more }`
 
             A click action.
 
@@ -712,9 +712,17 @@ Retrieves a model response with the given ID.
 
               The y-coordinate where the click occurred.
 
-          - `DoubleClick = object { type, x, y }`
+            - `keys: optional array of string`
+
+              The keys being held while clicking.
+
+          - `DoubleClick = object { keys, type, x, y }`
 
             A double click action.
+
+            - `keys: array of string`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -730,7 +738,7 @@ Retrieves a model response with the given ID.
 
               The y-coordinate where the double click occurred.
 
-          - `Drag = object { path, type }`
+          - `Drag = object { path, type, keys }`
 
             A drag action.
 
@@ -759,6 +767,10 @@ Retrieves a model response with the given ID.
 
               - `"drag"`
 
+            - `keys: optional array of string`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress = object { keys, type }`
 
             A collection of keypresses the model would like to perform.
@@ -773,7 +785,7 @@ Retrieves a model response with the given ID.
 
               - `"keypress"`
 
-          - `Move = object { type, x, y }`
+          - `Move = object { type, x, y, keys }`
 
             A mouse move action.
 
@@ -791,6 +803,10 @@ Retrieves a model response with the given ID.
 
               The y-coordinate to move to.
 
+            - `keys: optional array of string`
+
+              The keys being held while moving the mouse.
+
           - `Screenshot = object { type }`
 
             A screenshot action.
@@ -801,7 +817,7 @@ Retrieves a model response with the given ID.
 
               - `"screenshot"`
 
-          - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+          - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
             A scroll action.
 
@@ -826,6 +842,10 @@ Retrieves a model response with the given ID.
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys: optional array of string`
+
+              The keys being held while scrolling.
 
           - `Type = object { text, type }`
 
@@ -856,7 +876,7 @@ Retrieves a model response with the given ID.
           Flattened batched actions for `computer_use`. Each action includes an
           `type` discriminator and action-specific fields.
 
-          - `Click = object { button, type, x, y }`
+          - `Click = object { button, type, x, 2 more }`
 
             A click action.
 
@@ -888,9 +908,17 @@ Retrieves a model response with the given ID.
 
               The y-coordinate where the click occurred.
 
-          - `DoubleClick = object { type, x, y }`
+            - `keys: optional array of string`
+
+              The keys being held while clicking.
+
+          - `DoubleClick = object { keys, type, x, y }`
 
             A double click action.
+
+            - `keys: array of string`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -906,7 +934,7 @@ Retrieves a model response with the given ID.
 
               The y-coordinate where the double click occurred.
 
-          - `Drag = object { path, type }`
+          - `Drag = object { path, type, keys }`
 
             A drag action.
 
@@ -935,6 +963,10 @@ Retrieves a model response with the given ID.
 
               - `"drag"`
 
+            - `keys: optional array of string`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress = object { keys, type }`
 
             A collection of keypresses the model would like to perform.
@@ -949,7 +981,7 @@ Retrieves a model response with the given ID.
 
               - `"keypress"`
 
-          - `Move = object { type, x, y }`
+          - `Move = object { type, x, y, keys }`
 
             A mouse move action.
 
@@ -967,6 +999,10 @@ Retrieves a model response with the given ID.
 
               The y-coordinate to move to.
 
+            - `keys: optional array of string`
+
+              The keys being held while moving the mouse.
+
           - `Screenshot = object { type }`
 
             A screenshot action.
@@ -977,7 +1013,7 @@ Retrieves a model response with the given ID.
 
               - `"screenshot"`
 
-          - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+          - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
             A scroll action.
 
@@ -1002,6 +1038,10 @@ Retrieves a model response with the given ID.
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys: optional array of string`
+
+              The keys being held while scrolling.
 
           - `Type = object { text, type }`
 
@@ -3837,6 +3877,120 @@ Retrieves a model response with the given ID.
 
         - `"incomplete"`
 
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+
+      - `id: string`
+
+        The unique ID of the function call tool output.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+        The output from the function call generated by your code.
+        Can be a string or an list of output content.
+
+        - `StringOutput = string`
+
+          A string of the output of the function call.
+
+        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+          Text, image, or file output of the function call.
+
+          - `ResponseInputText = object { text, type }`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+            - `detail: "low" or "high" or "auto" or "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: optional string`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `file_data: optional string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: optional string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: optional string`
+
+              The name of the file to be sent to the model.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
     - `WebSearchCall = object { id, action, status, type }`
 
       The results of a web search tool call. See the
@@ -3983,7 +4137,7 @@ Retrieves a model response with the given ID.
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -4015,9 +4169,17 @@ Retrieves a model response with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -4033,7 +4195,7 @@ Retrieves a model response with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -4062,6 +4224,10 @@ Retrieves a model response with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -4076,7 +4242,7 @@ Retrieves a model response with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -4094,6 +4260,10 @@ Retrieves a model response with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -4104,7 +4274,7 @@ Retrieves a model response with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -4129,6 +4299,10 @@ Retrieves a model response with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -4159,7 +4333,7 @@ Retrieves a model response with the given ID.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -4191,9 +4365,17 @@ Retrieves a model response with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -4209,7 +4391,7 @@ Retrieves a model response with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -4238,6 +4420,10 @@ Retrieves a model response with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -4252,7 +4438,7 @@ Retrieves a model response with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -4270,6 +4456,10 @@ Retrieves a model response with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -4280,7 +4470,7 @@ Retrieves a model response with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -4306,6 +4496,10 @@ Retrieves a model response with the given ID.
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -4329,6 +4523,75 @@ Retrieves a model response with the given ID.
             Specifies the event type. For a wait action, this property is always set to `wait`.
 
             - `"wait"`
+
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+
+      - `id: string`
+
+        The unique ID of the computer call tool output.
+
+      - `call_id: string`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: ResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: "computer_screenshot"`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id: optional string`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url: optional string`
+
+          The URL of the screenshot image.
+
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
+      - `type: "computer_call_output"`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `acknowledged_safety_checks: optional array of object { id, code, message }`
+
+        The safety checks reported by the API that have been acknowledged by the
+        developer.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code: optional string`
+
+          The type of the pending safety check.
+
+        - `message: optional string`
+
+          Details about the pending safety check.
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `Reasoning = object { id, summary, type, 3 more }`
 
@@ -5554,7 +5817,7 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ResponseCompactionItem = object { id, encrypted_content, type, created_by }`
+    - `Compaction = object { id, encrypted_content, type, created_by }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -5732,6 +5995,34 @@ Retrieves a model response with the given ID.
         The type of the local shell call. Always `local_shell_call`.
 
         - `"local_shell_call"`
+
+    - `LocalShellCallOutput = object { id, output, type, status }`
+
+      The output of a local shell tool call.
+
+      - `id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: string`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: "local_shell_call_output"`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `status: optional "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
 
     - `ShellCall = object { id, action, call_id, 4 more }`
 
@@ -6124,6 +6415,32 @@ Retrieves a model response with the given ID.
 
         - `"mcp_approval_request"`
 
+    - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+
+      A response to an MCP approval request.
+
+      - `id: string`
+
+        The unique ID of the approval response
+
+      - `approval_request_id: string`
+
+        The ID of the approval request being answered.
+
+      - `approve: boolean`
+
+        Whether the request was approved.
+
+      - `type: "mcp_approval_response"`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `reason: optional string`
+
+        Optional reason for the decision.
+
     - `CustomToolCall = object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
@@ -6153,6 +6470,120 @@ Retrieves a model response with the given ID.
       - `namespace: optional string`
 
         The namespace of the custom tool being called.
+
+    - `CustomToolCallOutput = object { id, call_id, output, 3 more }`
+
+      - `id: string`
+
+        The unique ID of the custom tool call output item.
+
+      - `call_id: string`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `StringOutput = string`
+
+          A string of the output of the custom tool call.
+
+        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+          Text, image, or file output of the custom tool call.
+
+          - `ResponseInputText = object { text, type }`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+            - `detail: "low" or "high" or "auto" or "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: optional string`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `file_data: optional string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: optional string`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: optional string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: optional string`
+
+              The name of the file to be sent to the model.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "custom_tool_call_output"`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
   - `parallel_tool_calls: boolean`
 

@@ -506,9 +506,17 @@ Returns a list of input items for a given response.
 
           The y-coordinate where the click occurred.
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while clicking.
+
       - `class ActionDoubleClick: …`
 
         A double click action.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while double-clicking.
 
         - `type: Literal["double_click"]`
 
@@ -553,6 +561,10 @@ Returns a list of input items for a given response.
 
           - `"drag"`
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while dragging the mouse.
+
       - `class ActionKeypress: …`
 
         A collection of keypresses the model would like to perform.
@@ -584,6 +596,10 @@ Returns a list of input items for a given response.
         - `y: int`
 
           The y-coordinate to move to.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while moving the mouse.
 
       - `class ActionScreenshot: …`
 
@@ -620,6 +636,10 @@ Returns a list of input items for a given response.
         - `y: int`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while scrolling.
 
       - `class ActionType: …`
 
@@ -682,9 +702,17 @@ Returns a list of input items for a given response.
 
           The y-coordinate where the click occurred.
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while clicking.
+
       - `class DoubleClick: …`
 
         A double click action.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while double-clicking.
 
         - `type: Literal["double_click"]`
 
@@ -729,6 +757,10 @@ Returns a list of input items for a given response.
 
           - `"drag"`
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while dragging the mouse.
+
       - `class Keypress: …`
 
         A collection of keypresses the model would like to perform.
@@ -760,6 +792,10 @@ Returns a list of input items for a given response.
         - `y: int`
 
           The y-coordinate to move to.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while moving the mouse.
 
       - `class Screenshot: …`
 
@@ -796,6 +832,10 @@ Returns a list of input items for a given response.
         - `y: int`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while scrolling.
 
       - `class Type: …`
 
@@ -850,6 +890,19 @@ Returns a list of input items for a given response.
 
         The URL of the screenshot image.
 
+    - `status: Literal["completed", "incomplete", "failed", "in_progress"]`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: Literal["computer_call_output"]`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -873,16 +926,9 @@ Returns a list of input items for a given response.
 
         Details about the pending safety check.
 
-    - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+    - `created_by: Optional[str]`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `class ResponseFunctionWebSearch: …`
 
@@ -989,6 +1035,21 @@ Returns a list of input items for a given response.
 
       The unique ID of the function tool call.
 
+    - `status: Literal["in_progress", "completed", "incomplete"]`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
+
   - `class ResponseFunctionToolCallOutputItem: …`
 
     - `id: str`
@@ -1082,13 +1143,7 @@ Returns a list of input items for a given response.
 
             The name of the file to be sent to the model.
 
-    - `type: Literal["function_call_output"]`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+    - `status: Literal["in_progress", "completed", "incomplete"]`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -1098,6 +1153,16 @@ Returns a list of input items for a given response.
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: Literal["function_call_output"]`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
 
   - `class ResponseToolSearchCall: …`
 
@@ -2262,6 +2327,89 @@ Returns a list of input items for a given response.
 
       The identifier of the actor that created the item.
 
+  - `class ResponseReasoningItem: …`
+
+    A description of the chain of thought used by a reasoning model while generating
+    a response. Be sure to include these items in your `input` to the Responses API
+    for subsequent turns of a conversation if you are manually
+    [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `id: str`
+
+      The unique identifier of the reasoning content.
+
+    - `summary: List[Summary]`
+
+      Reasoning summary content.
+
+      - `text: str`
+
+        A summary of the reasoning output from the model so far.
+
+      - `type: Literal["summary_text"]`
+
+        The type of the object. Always `summary_text`.
+
+        - `"summary_text"`
+
+    - `type: Literal["reasoning"]`
+
+      The type of the object. Always `reasoning`.
+
+      - `"reasoning"`
+
+    - `content: Optional[List[Content]]`
+
+      Reasoning text content.
+
+      - `text: str`
+
+        The reasoning text from the model.
+
+      - `type: Literal["reasoning_text"]`
+
+        The type of the reasoning text. Always `reasoning_text`.
+
+        - `"reasoning_text"`
+
+    - `encrypted_content: Optional[str]`
+
+      The encrypted content of the reasoning item - populated when a response is
+      generated with `reasoning.encrypted_content` in the `include` parameter.
+
+    - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+  - `class ResponseCompactionItem: …`
+
+    A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+    - `id: str`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: str`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: Literal["compaction"]`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
+
   - `class ImageGenerationCall: …`
 
     An image generation request made by the model.
@@ -2864,6 +3012,52 @@ Returns a list of input items for a given response.
 
       - `"failed"`
 
+  - `class ResponseCustomToolCallItem: …`
+
+    A call to a custom tool created by the model.
+
+    - `id: str`
+
+      The unique ID of the custom tool call item.
+
+    - `status: Literal["in_progress", "completed", "incomplete"]`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
+
+  - `class ResponseCustomToolCallOutputItem: …`
+
+    The output of a custom tool call from your code, being sent back to the model.
+
+    - `id: str`
+
+      The unique ID of the custom tool call output item.
+
+    - `status: Literal["in_progress", "completed", "incomplete"]`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
+
 ### Example
 
 ```python
@@ -3398,9 +3592,17 @@ print(response.data)
 
             The y-coordinate where the click occurred.
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
         - `class ActionDoubleClick: …`
 
           A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
 
           - `type: Literal["double_click"]`
 
@@ -3445,6 +3647,10 @@ print(response.data)
 
             - `"drag"`
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
         - `class ActionKeypress: …`
 
           A collection of keypresses the model would like to perform.
@@ -3476,6 +3682,10 @@ print(response.data)
           - `y: int`
 
             The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
 
         - `class ActionScreenshot: …`
 
@@ -3512,6 +3722,10 @@ print(response.data)
           - `y: int`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
 
         - `class ActionType: …`
 
@@ -3574,9 +3788,17 @@ print(response.data)
 
             The y-coordinate where the click occurred.
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
         - `class DoubleClick: …`
 
           A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
 
           - `type: Literal["double_click"]`
 
@@ -3621,6 +3843,10 @@ print(response.data)
 
             - `"drag"`
 
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
         - `class Keypress: …`
 
           A collection of keypresses the model would like to perform.
@@ -3652,6 +3878,10 @@ print(response.data)
           - `y: int`
 
             The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
 
         - `class Screenshot: …`
 
@@ -3688,6 +3918,10 @@ print(response.data)
           - `y: int`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
 
         - `class Type: …`
 
@@ -3742,6 +3976,19 @@ print(response.data)
 
           The URL of the screenshot image.
 
+      - `status: Literal["completed", "incomplete", "failed", "in_progress"]`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: Literal["computer_call_output"]`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -3765,16 +4012,9 @@ print(response.data)
 
           Details about the pending safety check.
 
-      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+      - `created_by: Optional[str]`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `class ResponseFunctionWebSearch: …`
 
@@ -3881,6 +4121,21 @@ print(response.data)
 
         The unique ID of the function tool call.
 
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by: Optional[str]`
+
+        The identifier of the actor that created the item.
+
     - `class ResponseFunctionToolCallOutputItem: …`
 
       - `id: str`
@@ -3974,13 +4229,7 @@ print(response.data)
 
               The name of the file to be sent to the model.
 
-      - `type: Literal["function_call_output"]`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+      - `status: Literal["in_progress", "completed", "incomplete"]`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -3990,6 +4239,16 @@ print(response.data)
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: Literal["function_call_output"]`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: Optional[str]`
+
+        The identifier of the actor that created the item.
 
     - `class ResponseToolSearchCall: …`
 
@@ -5154,6 +5413,89 @@ print(response.data)
 
         The identifier of the actor that created the item.
 
+    - `class ResponseReasoningItem: …`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `id: str`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: List[Summary]`
+
+        Reasoning summary content.
+
+        - `text: str`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: Literal["summary_text"]`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: Literal["reasoning"]`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `content: Optional[List[Content]]`
+
+        Reasoning text content.
+
+        - `text: str`
+
+          The reasoning text from the model.
+
+        - `type: Literal["reasoning_text"]`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: Optional[str]`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ResponseCompactionItem: …`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `id: str`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: str`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: Literal["compaction"]`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: Optional[str]`
+
+        The identifier of the actor that created the item.
+
     - `class ImageGenerationCall: …`
 
       An image generation request made by the model.
@@ -5755,6 +6097,52 @@ print(response.data)
         - `"calling"`
 
         - `"failed"`
+
+    - `class ResponseCustomToolCallItem: …`
+
+      A call to a custom tool created by the model.
+
+      - `id: str`
+
+        The unique ID of the custom tool call item.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by: Optional[str]`
+
+        The identifier of the actor that created the item.
+
+    - `class ResponseCustomToolCallOutputItem: …`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `id: str`
+
+        The unique ID of the custom tool call output item.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by: Optional[str]`
+
+        The identifier of the actor that created the item.
 
   - `first_id: str`
 

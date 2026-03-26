@@ -603,9 +603,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The y-coordinate where the click occurred.
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while clicking.
+
           - `DoubleClick`
 
             A double click action.
+
+            - `keys: Array<string> | null`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -650,6 +658,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"drag"`
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress`
 
             A collection of keypresses the model would like to perform.
@@ -681,6 +693,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `y: number`
 
               The y-coordinate to move to.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while moving the mouse.
 
           - `Screenshot`
 
@@ -717,6 +733,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while scrolling.
 
           - `Type`
 
@@ -779,9 +799,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The y-coordinate where the click occurred.
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while clicking.
+
           - `DoubleClick`
 
             A double click action.
+
+            - `keys: Array<string> | null`
+
+              The keys being held while double-clicking.
 
             - `type: "double_click"`
 
@@ -826,6 +854,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"drag"`
 
+            - `keys?: Array<string> | null`
+
+              The keys being held while dragging the mouse.
+
           - `Keypress`
 
             A collection of keypresses the model would like to perform.
@@ -857,6 +889,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `y: number`
 
               The y-coordinate to move to.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while moving the mouse.
 
           - `Screenshot`
 
@@ -893,6 +929,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `y: number`
 
               The y-coordinate where the scroll occurred.
+
+            - `keys?: Array<string> | null`
+
+              The keys being held while scrolling.
 
           - `Type`
 

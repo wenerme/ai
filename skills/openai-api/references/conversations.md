@@ -548,7 +548,7 @@ Create a conversation.
 
       A click action.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -580,9 +580,17 @@ Create a conversation.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -598,7 +606,7 @@ Create a conversation.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -627,6 +635,10 @@ Create a conversation.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -641,7 +653,7 @@ Create a conversation.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -659,6 +671,10 @@ Create a conversation.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -669,7 +685,7 @@ Create a conversation.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -694,6 +710,10 @@ Create a conversation.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -724,7 +744,7 @@ Create a conversation.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -756,9 +776,17 @@ Create a conversation.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -774,7 +802,7 @@ Create a conversation.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -803,6 +831,10 @@ Create a conversation.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -817,7 +849,7 @@ Create a conversation.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -835,6 +867,10 @@ Create a conversation.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -845,7 +881,7 @@ Create a conversation.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -870,6 +906,10 @@ Create a conversation.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -4497,7 +4537,7 @@ Create items in a conversation with the given ID.
 
       A click action.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -4529,9 +4569,17 @@ Create items in a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -4547,7 +4595,7 @@ Create items in a conversation with the given ID.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -4576,6 +4624,10 @@ Create items in a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -4590,7 +4642,7 @@ Create items in a conversation with the given ID.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -4608,6 +4660,10 @@ Create items in a conversation with the given ID.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -4618,7 +4674,7 @@ Create items in a conversation with the given ID.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -4643,6 +4699,10 @@ Create items in a conversation with the given ID.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -4673,7 +4733,7 @@ Create items in a conversation with the given ID.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -4705,9 +4765,17 @@ Create items in a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -4723,7 +4791,7 @@ Create items in a conversation with the given ID.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -4752,6 +4820,10 @@ Create items in a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -4766,7 +4838,7 @@ Create items in a conversation with the given ID.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -4784,6 +4856,10 @@ Create items in a conversation with the given ID.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -4794,7 +4870,7 @@ Create items in a conversation with the given ID.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -4819,6 +4895,10 @@ Create items in a conversation with the given ID.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -7472,7 +7552,7 @@ Create items in a conversation with the given ID.
 
         - `"message"`
 
-    - `FunctionCall = object { id, arguments, call_id, 4 more }`
+    - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -7490,17 +7570,7 @@ Create items in a conversation with the given ID.
 
         The name of the function to run.
 
-      - `type: "function_call"`
-
-        The type of the function tool call. Always `function_call`.
-
-        - `"function_call"`
-
-      - `namespace: optional string`
-
-        The namespace of the function to run.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -7511,7 +7581,21 @@ Create items in a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the function to run.
+
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -7604,13 +7688,7 @@ Create items in a conversation with the given ID.
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -7620,6 +7698,16 @@ Create items in a conversation with the given ID.
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `FileSearchCall = object { id, queries, status, 2 more }`
 
@@ -7865,7 +7953,7 @@ Create items in a conversation with the given ID.
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -7897,9 +7985,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -7915,7 +8011,7 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -7944,6 +8040,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -7958,7 +8058,7 @@ Create items in a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -7976,6 +8076,10 @@ Create items in a conversation with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -7986,7 +8090,7 @@ Create items in a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -8011,6 +8115,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -8041,7 +8149,7 @@ Create items in a conversation with the given ID.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -8073,9 +8181,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -8091,7 +8207,7 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -8120,6 +8236,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -8134,7 +8254,7 @@ Create items in a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -8152,6 +8272,10 @@ Create items in a conversation with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -8162,7 +8286,7 @@ Create items in a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -8188,6 +8312,10 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -8212,7 +8340,7 @@ Create items in a conversation with the given ID.
 
             - `"wait"`
 
-    - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -8241,6 +8369,19 @@ Create items in a conversation with the given ID.
 
           The URL of the screenshot image.
 
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -8264,16 +8405,9 @@ Create items in a conversation with the given ID.
 
           Details about the pending safety check.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `created_by: optional string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -9498,6 +9632,28 @@ Create items in a conversation with the given ID.
         - `"completed"`
 
         - `"incomplete"`
+
+    - `Compaction = object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 
@@ -10719,7 +10875,7 @@ List all items for a conversation with the given ID.
 
         - `"message"`
 
-    - `FunctionCall = object { id, arguments, call_id, 4 more }`
+    - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -10737,17 +10893,7 @@ List all items for a conversation with the given ID.
 
         The name of the function to run.
 
-      - `type: "function_call"`
-
-        The type of the function tool call. Always `function_call`.
-
-        - `"function_call"`
-
-      - `namespace: optional string`
-
-        The namespace of the function to run.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -10758,7 +10904,21 @@ List all items for a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the function to run.
+
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -10851,13 +11011,7 @@ List all items for a conversation with the given ID.
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -10867,6 +11021,16 @@ List all items for a conversation with the given ID.
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `FileSearchCall = object { id, queries, status, 2 more }`
 
@@ -11112,7 +11276,7 @@ List all items for a conversation with the given ID.
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -11144,9 +11308,17 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -11162,7 +11334,7 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -11191,6 +11363,10 @@ List all items for a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -11205,7 +11381,7 @@ List all items for a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -11223,6 +11399,10 @@ List all items for a conversation with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -11233,7 +11413,7 @@ List all items for a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -11258,6 +11438,10 @@ List all items for a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -11288,7 +11472,7 @@ List all items for a conversation with the given ID.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -11320,9 +11504,17 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -11338,7 +11530,7 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -11367,6 +11559,10 @@ List all items for a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -11381,7 +11577,7 @@ List all items for a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -11399,6 +11595,10 @@ List all items for a conversation with the given ID.
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -11409,7 +11609,7 @@ List all items for a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -11435,6 +11635,10 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -11459,7 +11663,7 @@ List all items for a conversation with the given ID.
 
             - `"wait"`
 
-    - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -11488,6 +11692,19 @@ List all items for a conversation with the given ID.
 
           The URL of the screenshot image.
 
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -11511,16 +11728,9 @@ List all items for a conversation with the given ID.
 
           Details about the pending safety check.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `created_by: optional string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -12746,6 +12956,28 @@ List all items for a conversation with the given ID.
 
         - `"incomplete"`
 
+    - `Compaction = object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
     - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 
       A tool call to run code.
@@ -13565,7 +13797,7 @@ Get a single item from a conversation with the given IDs.
 
 ### Returns
 
-- `ConversationItem = Message or object { id, arguments, call_id, 4 more }  or object { id, call_id, output, 2 more }  or 21 more`
+- `ConversationItem = Message or object { id, arguments, call_id, 5 more }  or object { id, call_id, output, 3 more }  or 22 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
@@ -13899,7 +14131,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"message"`
 
-  - `FunctionCall = object { id, arguments, call_id, 4 more }`
+  - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
     - `id: string`
 
@@ -13917,17 +14149,7 @@ Get a single item from a conversation with the given IDs.
 
       The name of the function to run.
 
-    - `type: "function_call"`
-
-      The type of the function tool call. Always `function_call`.
-
-      - `"function_call"`
-
-    - `namespace: optional string`
-
-      The namespace of the function to run.
-
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `status: "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -13938,7 +14160,21 @@ Get a single item from a conversation with the given IDs.
 
       - `"incomplete"`
 
-  - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+    - `type: "function_call"`
+
+      The type of the function tool call. Always `function_call`.
+
+      - `"function_call"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
+
+    - `namespace: optional string`
+
+      The namespace of the function to run.
+
+  - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
     - `id: string`
 
@@ -14031,13 +14267,7 @@ Get a single item from a conversation with the given IDs.
 
             The name of the file to be sent to the model.
 
-    - `type: "function_call_output"`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `status: "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -14047,6 +14277,16 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: "function_call_output"`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
 
   - `FileSearchCall = object { id, queries, status, 2 more }`
 
@@ -14292,7 +14532,7 @@ Get a single item from a conversation with the given IDs.
 
       A click action.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -14324,9 +14564,17 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -14342,7 +14590,7 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -14371,6 +14619,10 @@ Get a single item from a conversation with the given IDs.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -14385,7 +14637,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -14403,6 +14655,10 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -14413,7 +14669,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -14438,6 +14694,10 @@ Get a single item from a conversation with the given IDs.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -14468,7 +14728,7 @@ Get a single item from a conversation with the given IDs.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -14500,9 +14760,17 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -14518,7 +14786,7 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -14547,6 +14815,10 @@ Get a single item from a conversation with the given IDs.
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -14561,7 +14833,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -14579,6 +14851,10 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -14589,7 +14865,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -14615,6 +14891,10 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the scroll occurred.
 
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
+
       - `Type = object { text, type }`
 
         An action to type in text.
@@ -14639,7 +14919,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"wait"`
 
-  - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+  - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
     - `id: string`
 
@@ -14668,6 +14948,19 @@ Get a single item from a conversation with the given IDs.
 
         The URL of the screenshot image.
 
+    - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: "computer_call_output"`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -14691,16 +14984,9 @@ Get a single item from a conversation with the given IDs.
 
         Details about the pending safety check.
 
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `created_by: optional string`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -15925,6 +16211,28 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `Compaction = object { id, encrypted_content, type, created_by }`
+
+    A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+    - `id: string`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: string`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: "compaction"`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
 
   - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 
@@ -16750,7 +17058,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
 ### Conversation Item
 
-- `ConversationItem = Message or object { id, arguments, call_id, 4 more }  or object { id, call_id, output, 2 more }  or 21 more`
+- `ConversationItem = Message or object { id, arguments, call_id, 5 more }  or object { id, call_id, output, 3 more }  or 22 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
@@ -17084,7 +17392,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"message"`
 
-  - `FunctionCall = object { id, arguments, call_id, 4 more }`
+  - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
     - `id: string`
 
@@ -17102,17 +17410,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The name of the function to run.
 
-    - `type: "function_call"`
-
-      The type of the function tool call. Always `function_call`.
-
-      - `"function_call"`
-
-    - `namespace: optional string`
-
-      The namespace of the function to run.
-
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `status: "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -17123,7 +17421,21 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"incomplete"`
 
-  - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+    - `type: "function_call"`
+
+      The type of the function tool call. Always `function_call`.
+
+      - `"function_call"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
+
+    - `namespace: optional string`
+
+      The namespace of the function to run.
+
+  - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
     - `id: string`
 
@@ -17216,13 +17528,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The name of the file to be sent to the model.
 
-    - `type: "function_call_output"`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `status: "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -17232,6 +17538,16 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: "function_call_output"`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
 
   - `FileSearchCall = object { id, queries, status, 2 more }`
 
@@ -17477,7 +17793,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       A click action.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -17509,9 +17825,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -17527,7 +17851,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -17556,6 +17880,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -17570,7 +17898,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -17588,6 +17916,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -17598,7 +17930,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -17623,6 +17955,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
 
       - `Type = object { text, type }`
 
@@ -17653,7 +17989,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, y }`
+      - `Click = object { button, type, x, 2 more }`
 
         A click action.
 
@@ -17685,9 +18021,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the click occurred.
 
-      - `DoubleClick = object { type, x, y }`
+        - `keys: optional array of string`
+
+          The keys being held while clicking.
+
+      - `DoubleClick = object { keys, type, x, y }`
 
         A double click action.
+
+        - `keys: array of string`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -17703,7 +18047,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type }`
+      - `Drag = object { path, type, keys }`
 
         A drag action.
 
@@ -17732,6 +18076,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"drag"`
 
+        - `keys: optional array of string`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress = object { keys, type }`
 
         A collection of keypresses the model would like to perform.
@@ -17746,7 +18094,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"keypress"`
 
-      - `Move = object { type, x, y }`
+      - `Move = object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -17764,6 +18112,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate to move to.
 
+        - `keys: optional array of string`
+
+          The keys being held while moving the mouse.
+
       - `Screenshot = object { type }`
 
         A screenshot action.
@@ -17774,7 +18126,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -17800,6 +18152,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the scroll occurred.
 
+        - `keys: optional array of string`
+
+          The keys being held while scrolling.
+
       - `Type = object { text, type }`
 
         An action to type in text.
@@ -17824,7 +18180,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"wait"`
 
-  - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+  - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
     - `id: string`
 
@@ -17853,6 +18209,19 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The URL of the screenshot image.
 
+    - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: "computer_call_output"`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -17876,16 +18245,9 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Details about the pending safety check.
 
-    - `status: optional "in_progress" or "completed" or "incomplete"`
+    - `created_by: optional string`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -19110,6 +19472,28 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       - `"completed"`
 
       - `"incomplete"`
+
+  - `Compaction = object { id, encrypted_content, type, created_by }`
+
+    A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+    - `id: string`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: string`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: "compaction"`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by: optional string`
+
+      The identifier of the actor that created the item.
 
   - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 
@@ -20154,7 +20538,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"message"`
 
-    - `FunctionCall = object { id, arguments, call_id, 4 more }`
+    - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -20172,17 +20556,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The name of the function to run.
 
-      - `type: "function_call"`
-
-        The type of the function tool call. Always `function_call`.
-
-        - `"function_call"`
-
-      - `namespace: optional string`
-
-        The namespace of the function to run.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -20193,7 +20567,21 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 2 more }`
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+      - `namespace: optional string`
+
+        The namespace of the function to run.
+
+    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -20286,13 +20674,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -20302,6 +20684,16 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `FileSearchCall = object { id, queries, status, 2 more }`
 
@@ -20547,7 +20939,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -20579,9 +20971,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -20597,7 +20997,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -20626,6 +21026,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -20640,7 +21044,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -20658,6 +21062,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -20668,7 +21076,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -20693,6 +21101,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -20723,7 +21135,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -20755,9 +21167,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -20773,7 +21193,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -20802,6 +21222,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -20816,7 +21240,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -20834,6 +21258,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -20844,7 +21272,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -20870,6 +21298,10 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the scroll occurred.
 
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type = object { text, type }`
 
           An action to type in text.
@@ -20894,7 +21326,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"wait"`
 
-    - `ComputerCallOutput = object { id, call_id, output, 3 more }`
+    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -20923,6 +21355,19 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The URL of the screenshot image.
 
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -20946,16 +21391,9 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Details about the pending safety check.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `created_by: optional string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
 
@@ -22180,6 +22618,28 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         - `"completed"`
 
         - `"incomplete"`
+
+    - `Compaction = object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
 

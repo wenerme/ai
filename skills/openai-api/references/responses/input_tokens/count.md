@@ -573,7 +573,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         A click action.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -605,9 +605,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -623,7 +631,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -652,6 +660,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -666,7 +678,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -684,6 +696,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -694,7 +710,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -719,6 +735,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 
@@ -749,7 +769,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, y }`
+        - `Click = object { button, type, x, 2 more }`
 
           A click action.
 
@@ -781,9 +801,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the click occurred.
 
-        - `DoubleClick = object { type, x, y }`
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick = object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -799,7 +827,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type }`
+        - `Drag = object { path, type, keys }`
 
           A drag action.
 
@@ -828,6 +856,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"drag"`
 
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress = object { keys, type }`
 
           A collection of keypresses the model would like to perform.
@@ -842,7 +874,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"keypress"`
 
-        - `Move = object { type, x, y }`
+        - `Move = object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -860,6 +892,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The y-coordinate to move to.
 
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot = object { type }`
 
           A screenshot action.
@@ -870,7 +906,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 2 more }`
+        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -895,6 +931,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
 
         - `Type = object { text, type }`
 

@@ -65,6 +65,11 @@ complete it:
 Notice how "cheeseburger" was excluded from the output because it wasn't a part
 of the order.
 
+While you can specify the format of simple JSON response objects using prompts,
+we recommend using Gemini API's
+[structured output](https://ai.google.dev/gemini-api/docs/structured-output) feature when specifying
+a more complex JSON Schema for the response.
+
 ### Constraints
 
 Specify any constraints on reading the prompt or generating a response. You can

@@ -5,7 +5,9 @@ filter categories to restrict or allow certain types of content.
 
 This guide covers how the Gemini API handles safety settings and filtering and
 how you can change the safety settings for your application.
-| **Note:** Applications that use less restrictive safety settings may be subject to review. See the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions) for more information.
+
+> [!NOTE]
+> **Note:** Applications that use less restrictive safety settings may be subject to review. See the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions) for more information.
 
 ## Safety filters
 
@@ -113,9 +115,11 @@ safety settings** modal. In the modal, you can use the sliders to adjust the
 content filtering level per safety category:
 
 ![](https://ai.google.dev/static/gemini-api/docs/images/safety_settings_ui.png)
-| **Note:** You are responsible for ensuring that safety settings for your intended use case comply with the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions).
 
-When you send a request (for example, by asking the model a question), a warning
+> [!NOTE]
+> **Note:** You are responsible for ensuring that safety settings for your intended use case comply with the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions).
+
+When you send a request (for example, by asking the model a question), a
 **Content blocked** message appears if the request's content is blocked. To see
 more details, hold the pointer over the
 **Content blocked** text to see the category and the probability of the harm
@@ -128,7 +132,7 @@ The following code snippet shows how to set safety settings in your
 (`HARM_CATEGORY_HATE_SPEECH`) category. Setting this category to
 `BLOCK_LOW_AND_ABOVE` blocks any content that has a low or higher probability of
 being hate speech. To understand the threshold settings, see [Safety filtering
-per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filtering-per-request).  
+per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filtering-per-request).
 
 ### Python
 

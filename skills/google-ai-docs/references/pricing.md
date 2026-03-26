@@ -617,6 +617,19 @@ paid tier of the Gemini API.
 | Video price | Not available | $0.35 |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
+## Lyria 3
+
+*`lyria-3-clip-preview` and `lyria-3-pro-preview`*
+
+Google's family of music generation models. Preview models may change
+before becoming stable and have more restrictive rate limits.
+
+|   | Free Tier | Paid Tier, per request in USD |
+|---|---|---|
+| Lyria 3 Pro Preview (Full Song) | Not available | $0.08 per song |
+| Lyria 3 Clip Preview (30s) | Not available | $0.04 per song |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
 ## Gemini Embedding 2 Preview
 
 *`gemini-embedding-2-preview`*

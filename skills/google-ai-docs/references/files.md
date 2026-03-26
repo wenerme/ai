@@ -337,7 +337,10 @@ You can improve your multimodal prompts by following these best practices:
   - **If the model output is too generic (not tailored enough to the image/video input):**At the start of the prompt, try asking the model to describe the image(s) or video before providing the task instruction, or try asking the model to refer to what's in the image.
   - **To troubleshoot which part failed:** Ask the model to describe the image, or ask the model to explain its reasoning, to gauge the model's initial understanding.
   - **If your prompt results in hallucinated content:** Try dialing down the temperature setting or asking the model for shorter descriptions so that it's less likely to extrapolate additional details.
-  - **Tuning the sampling parameters:** Experiment with different temperature settings and top-k selections to adjust the model's creativity. When using Gemini 3 models, we strongly recommend keeping the `temperature` at its default value of 1.0. Changing the temperature (setting it below 1.0) may lead to unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
+  - **Tuning the sampling parameters:** Experiment with different temperature settings and top-k selections to adjust the model's creativity.
+
+    > [!NOTE]
+    > When using Gemini 3 models, we strongly recommend keeping the `temperature` at its default value of 1.0. Changing the temperature (setting it below 1.0) may lead to unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
 
 ### Be specific in your instructions
 

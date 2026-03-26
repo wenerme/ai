@@ -14,10 +14,10 @@ This guide shows you how to enable the ClickHouse Cloud Remote MCP Server and se
 
 ## Enable remote MCP server for Cloud {#enable-remote-mcp-server}
 
-Connect to the ClickHouse Cloud service for which you want to enable remote MCP server, click on the `Connect` button in the left hand menu.
-A box with connection details will open.
+Connect to the ClickHouse Cloud service for which you want to enable the remote MCP server.
+In the left-hand menu, click **Connect**. A box with connection details will open.
 
-Select "Connect with MCP":
+Select **Connect with MCP**:
 
 <Image img={img1} alt="Select MCP in the Connect Modal" size="md"/>
 
@@ -86,7 +86,7 @@ Add the following configuration to your `.vscode/mcp.json`:
 }
 ```
 
-For more details refer to the [Visual Studio Code docs](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
+For more details refer to the [Visual Studio Code docs](https://code.visualstudio.com/docs/copilot/customization/mcp-servers).
 
 ### Windsurf {#windsurf}
 
@@ -103,7 +103,7 @@ Edit your `mcp_config.json` file with the following config:
 }
 ```
 
-For more details refer to the [Windsurf docs](https://docs.windsurf.com/windsurf/cascade/mcp#adding-a-new-mcp)
+For more details refer to the [Windsurf docs](https://docs.windsurf.com/windsurf/cascade/mcp#adding-a-new-mcp).
 
 ### Zed {#zed}
 
@@ -121,7 +121,7 @@ Add the following to your Zed settings under **context_servers**:
 ```
 
 Zed should then prompt you to authenticate via OAuth when it first connects to the server.
-For more details refer to the [Zed docs](https://zed.dev/docs/ai/mcp#as-custom-servers)
+For more details refer to the [Zed docs](https://zed.dev/docs/ai/mcp#as-custom-servers).
 
 ### Codex {#codex}
 

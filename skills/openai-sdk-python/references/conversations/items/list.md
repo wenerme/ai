@@ -403,6 +403,21 @@ List all items for a conversation with the given ID.
 
       The unique ID of the function tool call.
 
+    - `status: Literal["in_progress", "completed", "incomplete"]`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
+
   - `class ResponseFunctionToolCallOutputItem: …`
 
     - `id: str`
@@ -496,13 +511,7 @@ List all items for a conversation with the given ID.
 
             The name of the file to be sent to the model.
 
-    - `type: Literal["function_call_output"]`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+    - `status: Literal["in_progress", "completed", "incomplete"]`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -512,6 +521,16 @@ List all items for a conversation with the given ID.
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: Literal["function_call_output"]`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
 
   - `class ResponseFileSearchToolCall: …`
 
@@ -789,9 +808,17 @@ List all items for a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while clicking.
+
       - `class ActionDoubleClick: …`
 
         A double click action.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while double-clicking.
 
         - `type: Literal["double_click"]`
 
@@ -836,6 +863,10 @@ List all items for a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while dragging the mouse.
+
       - `class ActionKeypress: …`
 
         A collection of keypresses the model would like to perform.
@@ -867,6 +898,10 @@ List all items for a conversation with the given ID.
         - `y: int`
 
           The y-coordinate to move to.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while moving the mouse.
 
       - `class ActionScreenshot: …`
 
@@ -903,6 +938,10 @@ List all items for a conversation with the given ID.
         - `y: int`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while scrolling.
 
       - `class ActionType: …`
 
@@ -965,9 +1004,17 @@ List all items for a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while clicking.
+
       - `class DoubleClick: …`
 
         A double click action.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while double-clicking.
 
         - `type: Literal["double_click"]`
 
@@ -1012,6 +1059,10 @@ List all items for a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys: Optional[List[str]]`
+
+          The keys being held while dragging the mouse.
+
       - `class Keypress: …`
 
         A collection of keypresses the model would like to perform.
@@ -1043,6 +1094,10 @@ List all items for a conversation with the given ID.
         - `y: int`
 
           The y-coordinate to move to.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while moving the mouse.
 
       - `class Screenshot: …`
 
@@ -1079,6 +1134,10 @@ List all items for a conversation with the given ID.
         - `y: int`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys: Optional[List[str]]`
+
+          The keys being held while scrolling.
 
       - `class Type: …`
 
@@ -1133,6 +1192,19 @@ List all items for a conversation with the given ID.
 
         The URL of the screenshot image.
 
+    - `status: Literal["completed", "incomplete", "failed", "in_progress"]`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: Literal["computer_call_output"]`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -1156,16 +1228,9 @@ List all items for a conversation with the given ID.
 
         Details about the pending safety check.
 
-    - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+    - `created_by: Optional[str]`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `class ResponseToolSearchCall: …`
 
@@ -2390,6 +2455,28 @@ List all items for a conversation with the given ID.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class ResponseCompactionItem: …`
+
+    A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+    - `id: str`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: str`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: Literal["compaction"]`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by: Optional[str]`
+
+      The identifier of the actor that created the item.
 
   - `class ResponseCodeInterpreterToolCall: …`
 

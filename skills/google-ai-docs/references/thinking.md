@@ -615,6 +615,9 @@ Depending on the prompt, the model might overflow or underflow the token budget.
 
 ## Thought signatures
 
+> [!IMPORTANT]
+> **Important:** The [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries) automatically handles the return of thought signatures for you. You only need to [manage thought signatures manually](https://ai.google.dev/gemini-api/docs/function-calling#thought-signatures) if you're modifying conversation history or using the REST API.
+
 The Gemini API is stateless, so the model treats every API request independently
 and doesn't have access to thought context from previous turns in multi-turn
 interactions.
@@ -624,19 +627,7 @@ Gemini returns thought signatures, which are encrypted representations of the
 model's internal thought process.
 
 - **Gemini 2.5 models** return thought signatures when thinking is enabled and the request includes [function calling](https://ai.google.dev/gemini-api/docs/function-calling#thinking), specifically [function declarations](https://ai.google.dev/gemini-api/docs/function-calling#step-2).
-- **Gemini 3 models** may return thought signatures for all types of [parts](https://ai.google.dev/api/caching#Part).
-  We recommend you always pass all signatures back as received, but it's
-  *required* for function calling signatures. Read the
-  [Thought Signatures](https://ai.google.dev/gemini-api/docs/thought-signatures) page to
-  learn more.
-
-  > [!NOTE]
-  > **Note:** Circulation of thought signatures is required even when set to `minimal` for Gemini Flash 3.
-
-The [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries) automatically handles the
-return of thought signatures for you. You only need to
-[manage thought signatures manually](https://ai.google.dev/gemini-api/docs/function-calling#thought-signatures)
-if you're modifying conversation history or using the REST API.
+- **Gemini 3 models** may return thought signatures for all types of [parts](https://ai.google.dev/api/caching#Part). We recommend you always pass all signatures back as received, but it's *required* for function calling signatures. Read the [Thought Signatures](https://ai.google.dev/gemini-api/docs/thought-signatures) page to learn more.
 
 Other usage limitations to consider with function calling include:
 

@@ -45,7 +45,7 @@ const loggingProcessor: Processor<'logger'> = {
   },
 }
 
-const model = withMastra(openai('gpt-4o'), {
+const model = withMastra(openai('gpt-5.4'), {
   inputProcessors: [loggingProcessor],
   outputProcessors: [loggingProcessor],
 })
@@ -74,7 +74,7 @@ await storage.init()
 
 const memoryStorage = await storage.getStore('memory')
 
-const model = withMastra(openai('gpt-4o'), {
+const model = withMastra(openai('gpt-5.4'), {
   memory: {
     storage: memoryStorage!,
     threadId: 'user-thread-123',
@@ -104,7 +104,7 @@ await storage.init()
 
 const memoryStorage = await storage.getStore('memory')
 
-const model = withMastra(openai('gpt-4o'), {
+const model = withMastra(openai('gpt-5.4'), {
   inputProcessors: [myGuardProcessor],
   outputProcessors: [myLoggingProcessor],
   memory: {

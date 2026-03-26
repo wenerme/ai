@@ -582,9 +582,17 @@ Create a conversation.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -629,6 +637,10 @@ Create a conversation.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -660,6 +672,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -696,6 +712,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -758,9 +778,17 @@ Create a conversation.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -805,6 +833,10 @@ Create a conversation.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -836,6 +868,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -872,6 +908,10 @@ Create a conversation.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -4523,9 +4563,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -4570,6 +4618,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -4601,6 +4653,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -4637,6 +4693,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -4699,9 +4759,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -4746,6 +4814,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -4777,6 +4849,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -4813,6 +4889,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -7480,6 +7560,21 @@ Create items in a conversation with the given ID.
 
         The unique ID of the function tool call.
 
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
+
     - `ResponseFunctionToolCallOutputItem`
 
       - `id: string`
@@ -7569,13 +7664,7 @@ Create items in a conversation with the given ID.
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status?: "in_progress" | "completed" | "incomplete"`
+      - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -7585,6 +7674,16 @@ Create items in a conversation with the given ID.
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
 
     - `ResponseFileSearchToolCall`
 
@@ -7862,9 +7961,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -7909,6 +8016,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -7940,6 +8051,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -7976,6 +8091,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -8038,9 +8157,17 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -8085,6 +8212,10 @@ Create items in a conversation with the given ID.
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -8116,6 +8247,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -8152,6 +8287,10 @@ Create items in a conversation with the given ID.
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -8206,6 +8345,19 @@ Create items in a conversation with the given ID.
 
           The URL of the screenshot image.
 
+      - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -8229,16 +8381,9 @@ Create items in a conversation with the given ID.
 
           Details about the pending safety check.
 
-      - `status?: "in_progress" | "completed" | "incomplete"`
+      - `created_by?: string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `ResponseToolSearchCall`
 
@@ -9454,6 +9599,28 @@ Create items in a conversation with the given ID.
 
         - `"incomplete"`
 
+    - `ResponseCompactionItem`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
+
     - `ResponseCodeInterpreterToolCall`
 
       A tool call to run code.
@@ -10339,7 +10506,7 @@ List all items for a conversation with the given ID.
 
 ### Returns
 
-- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 21 more`
+- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 22 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](https://platform.openai.com/docs/api-reference/responses/object#responses/object-output).
 
@@ -10682,6 +10849,21 @@ List all items for a conversation with the given ID.
 
       The unique ID of the function tool call.
 
+    - `status: "in_progress" | "completed" | "incomplete"`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
+
   - `ResponseFunctionToolCallOutputItem`
 
     - `id: string`
@@ -10771,13 +10953,7 @@ List all items for a conversation with the given ID.
 
             The name of the file to be sent to the model.
 
-    - `type: "function_call_output"`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `status: "in_progress" | "completed" | "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -10787,6 +10963,16 @@ List all items for a conversation with the given ID.
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: "function_call_output"`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseFileSearchToolCall`
 
@@ -11064,9 +11250,17 @@ List all items for a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -11111,6 +11305,10 @@ List all items for a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -11142,6 +11340,10 @@ List all items for a conversation with the given ID.
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -11178,6 +11380,10 @@ List all items for a conversation with the given ID.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -11240,9 +11446,17 @@ List all items for a conversation with the given ID.
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -11287,6 +11501,10 @@ List all items for a conversation with the given ID.
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -11318,6 +11536,10 @@ List all items for a conversation with the given ID.
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -11354,6 +11576,10 @@ List all items for a conversation with the given ID.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -11408,6 +11634,19 @@ List all items for a conversation with the given ID.
 
         The URL of the screenshot image.
 
+    - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: "computer_call_output"`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -11431,16 +11670,9 @@ List all items for a conversation with the given ID.
 
         Details about the pending safety check.
 
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `created_by?: string`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `ResponseToolSearchCall`
 
@@ -12655,6 +12887,28 @@ List all items for a conversation with the given ID.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `ResponseCompactionItem`
+
+    A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+    - `id: string`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: string`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: "compaction"`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseCodeInterpreterToolCall`
 
@@ -13468,7 +13722,7 @@ Get a single item from a conversation with the given IDs.
 
 ### Returns
 
-- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 21 more`
+- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 22 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](https://platform.openai.com/docs/api-reference/responses/object#responses/object-output).
 
@@ -13811,6 +14065,21 @@ Get a single item from a conversation with the given IDs.
 
       The unique ID of the function tool call.
 
+    - `status: "in_progress" | "completed" | "incomplete"`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
+
   - `ResponseFunctionToolCallOutputItem`
 
     - `id: string`
@@ -13900,13 +14169,7 @@ Get a single item from a conversation with the given IDs.
 
             The name of the file to be sent to the model.
 
-    - `type: "function_call_output"`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `status: "in_progress" | "completed" | "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -13916,6 +14179,16 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: "function_call_output"`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseFileSearchToolCall`
 
@@ -14193,9 +14466,17 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -14240,6 +14521,10 @@ Get a single item from a conversation with the given IDs.
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -14271,6 +14556,10 @@ Get a single item from a conversation with the given IDs.
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -14307,6 +14596,10 @@ Get a single item from a conversation with the given IDs.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -14369,9 +14662,17 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -14416,6 +14717,10 @@ Get a single item from a conversation with the given IDs.
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -14447,6 +14752,10 @@ Get a single item from a conversation with the given IDs.
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -14483,6 +14792,10 @@ Get a single item from a conversation with the given IDs.
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -14537,6 +14850,19 @@ Get a single item from a conversation with the given IDs.
 
         The URL of the screenshot image.
 
+    - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: "computer_call_output"`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -14560,16 +14886,9 @@ Get a single item from a conversation with the given IDs.
 
         Details about the pending safety check.
 
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `created_by?: string`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `ResponseToolSearchCall`
 
@@ -15784,6 +16103,28 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `ResponseCompactionItem`
+
+    A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+    - `id: string`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: string`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: "compaction"`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseCodeInterpreterToolCall`
 
@@ -16640,7 +16981,7 @@ console.log(conversation);
 
 ### Conversation Item
 
-- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 21 more`
+- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 22 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](https://platform.openai.com/docs/api-reference/responses/object#responses/object-output).
 
@@ -16983,6 +17324,21 @@ console.log(conversation);
 
       The unique ID of the function tool call.
 
+    - `status: "in_progress" | "completed" | "incomplete"`
+
+      The status of the item. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when items are returned via API.
+
+      - `"in_progress"`
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
+
   - `ResponseFunctionToolCallOutputItem`
 
     - `id: string`
@@ -17072,13 +17428,7 @@ console.log(conversation);
 
             The name of the file to be sent to the model.
 
-    - `type: "function_call_output"`
-
-      The type of the function tool call output. Always `function_call_output`.
-
-      - `"function_call_output"`
-
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `status: "in_progress" | "completed" | "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
       `incomplete`. Populated when items are returned via API.
@@ -17088,6 +17438,16 @@ console.log(conversation);
       - `"completed"`
 
       - `"incomplete"`
+
+    - `type: "function_call_output"`
+
+      The type of the function tool call output. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseFileSearchToolCall`
 
@@ -17365,9 +17725,17 @@ console.log(conversation);
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -17412,6 +17780,10 @@ console.log(conversation);
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -17443,6 +17815,10 @@ console.log(conversation);
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -17479,6 +17855,10 @@ console.log(conversation);
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -17541,9 +17921,17 @@ console.log(conversation);
 
           The y-coordinate where the click occurred.
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while clicking.
+
       - `DoubleClick`
 
         A double click action.
+
+        - `keys: Array<string> | null`
+
+          The keys being held while double-clicking.
 
         - `type: "double_click"`
 
@@ -17588,6 +17976,10 @@ console.log(conversation);
 
           - `"drag"`
 
+        - `keys?: Array<string> | null`
+
+          The keys being held while dragging the mouse.
+
       - `Keypress`
 
         A collection of keypresses the model would like to perform.
@@ -17619,6 +18011,10 @@ console.log(conversation);
         - `y: number`
 
           The y-coordinate to move to.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while moving the mouse.
 
       - `Screenshot`
 
@@ -17655,6 +18051,10 @@ console.log(conversation);
         - `y: number`
 
           The y-coordinate where the scroll occurred.
+
+        - `keys?: Array<string> | null`
+
+          The keys being held while scrolling.
 
       - `Type`
 
@@ -17709,6 +18109,19 @@ console.log(conversation);
 
         The URL of the screenshot image.
 
+    - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+      The status of the message input. One of `in_progress`, `completed`, or
+      `incomplete`. Populated when input items are returned via API.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+      - `"failed"`
+
+      - `"in_progress"`
+
     - `type: "computer_call_output"`
 
       The type of the computer tool call output. Always `computer_call_output`.
@@ -17732,16 +18145,9 @@ console.log(conversation);
 
         Details about the pending safety check.
 
-    - `status?: "in_progress" | "completed" | "incomplete"`
+    - `created_by?: string`
 
-      The status of the message input. One of `in_progress`, `completed`, or
-      `incomplete`. Populated when input items are returned via API.
-
-      - `"in_progress"`
-
-      - `"completed"`
-
-      - `"incomplete"`
+      The identifier of the actor that created the item.
 
   - `ResponseToolSearchCall`
 
@@ -18956,6 +19362,28 @@ console.log(conversation);
       - `"completed"`
 
       - `"incomplete"`
+
+  - `ResponseCompactionItem`
+
+    A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+    - `id: string`
+
+      The unique ID of the compaction item.
+
+    - `encrypted_content: string`
+
+      The encrypted content that was produced by compaction.
+
+    - `type: "compaction"`
+
+      The type of the item. Always `compaction`.
+
+      - `"compaction"`
+
+    - `created_by?: string`
+
+      The identifier of the actor that created the item.
 
   - `ResponseCodeInterpreterToolCall`
 
@@ -20005,6 +20433,21 @@ console.log(conversation);
 
         The unique ID of the function tool call.
 
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
+
     - `ResponseFunctionToolCallOutputItem`
 
       - `id: string`
@@ -20094,13 +20537,7 @@ console.log(conversation);
 
               The name of the file to be sent to the model.
 
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `status?: "in_progress" | "completed" | "incomplete"`
+      - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
         `incomplete`. Populated when items are returned via API.
@@ -20110,6 +20547,16 @@ console.log(conversation);
         - `"completed"`
 
         - `"incomplete"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
 
     - `ResponseFileSearchToolCall`
 
@@ -20387,9 +20834,17 @@ console.log(conversation);
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -20434,6 +20889,10 @@ console.log(conversation);
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -20465,6 +20924,10 @@ console.log(conversation);
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -20501,6 +20964,10 @@ console.log(conversation);
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -20563,9 +21030,17 @@ console.log(conversation);
 
             The y-coordinate where the click occurred.
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
         - `DoubleClick`
 
           A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
 
           - `type: "double_click"`
 
@@ -20610,6 +21085,10 @@ console.log(conversation);
 
             - `"drag"`
 
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress`
 
           A collection of keypresses the model would like to perform.
@@ -20641,6 +21120,10 @@ console.log(conversation);
           - `y: number`
 
             The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
 
         - `Screenshot`
 
@@ -20677,6 +21160,10 @@ console.log(conversation);
           - `y: number`
 
             The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
 
         - `Type`
 
@@ -20731,6 +21218,19 @@ console.log(conversation);
 
           The URL of the screenshot image.
 
+      - `status: "completed" | "incomplete" | "failed" | "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
       - `type: "computer_call_output"`
 
         The type of the computer tool call output. Always `computer_call_output`.
@@ -20754,16 +21254,9 @@ console.log(conversation);
 
           Details about the pending safety check.
 
-      - `status?: "in_progress" | "completed" | "incomplete"`
+      - `created_by?: string`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
+        The identifier of the actor that created the item.
 
     - `ResponseToolSearchCall`
 
@@ -21978,6 +22471,28 @@ console.log(conversation);
         - `"completed"`
 
         - `"incomplete"`
+
+    - `ResponseCompactionItem`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by?: string`
+
+        The identifier of the actor that created the item.
 
     - `ResponseCodeInterpreterToolCall`
 
