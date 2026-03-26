@@ -2,7 +2,7 @@
 
 # /fine_tuning
 
-> **info**: This is an Enterprise only endpoint [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: This is an Enterprise only endpoint [Get Started with Enterprise here](https://enterprise.litellm.ai/demo)
 
 | Feature | Supported | Notes | 
 |-------|-------|-------|

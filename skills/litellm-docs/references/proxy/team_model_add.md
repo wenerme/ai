@@ -3,7 +3,7 @@
 > **info**: This is an Enterprise feature.
 [Enterprise Pricing](https://www.litellm.ai/#pricing)
 
-[Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+[Contact us here to get a free trial](https://enterprise.litellm.ai/demo)
 
 Allow team to add a their own models/key for that project - so any OpenAI call they make uses their OpenAI key.
 

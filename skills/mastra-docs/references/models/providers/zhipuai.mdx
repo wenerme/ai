@@ -1,11 +1,11 @@
 ---
 title: "Zhipu AI | Models"
-description: "Use Zhipu AI models with Mastra. 9 models available."
+description: "Use Zhipu AI models with Mastra. 10 models available."
 ---
 
 # [Zhipu AI logo]Zhipu AI
 
-Access 9 Zhipu AI models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
+Access 10 Zhipu AI models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
 
 Learn more in the [Zhipu AI documentation](https://docs.z.ai/guides/overview/pricing).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "zhipuai/glm-4.7-flashx",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
+    "inputCost": 0.07,
+    "outputCost": 0.4
   },
   {
     "model": "zhipuai/glm-5",

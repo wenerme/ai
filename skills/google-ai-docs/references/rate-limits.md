@@ -40,12 +40,12 @@ The qualifications for Tiers 2 and 3 are based on the total cumulative spending
 on Google Cloud services (including, but not limited to, the Gemini API) for the
 billing account linked to your project.
 
-| Usage tier | Qualifications |
-|---|---|
-| Free | [Active project](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) or free trial |
-| Tier 1 | [Set up and link an active billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) |
-| Tier 2 | Paid $100 towards billing account, and at least 3 days since first successful payment |
-| Tier 3 | Paid $1,000 towards billing account, and at least 30 days since first successful payment |
+| Usage tier | Qualification | [Billing tier cap](https://ai.google.dev/gemini-api/docs/rate-limits#spend-caps) |
+|---|---|---|
+| **Free** | [Active project](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) or free trial | N/A |
+| **Tier 1** | [Set up and link an active billing account](https://ai.google.dev/gemini-api/docs/rate-limits#setup-billing) | $250 |
+| **Tier 2** | Paid $100 + 3 days from first successful payment | $2,000 |
+| **Tier 3** | Paid $1,000 + 30 days from first successful payment | $20,000 - $100,000+ |
 
 While meeting the stated qualification criteria is generally
 sufficient for approval, in rare cases an upgrade request may be denied based on

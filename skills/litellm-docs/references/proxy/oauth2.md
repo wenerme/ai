@@ -2,7 +2,7 @@
 
 Use this if you want to use an Oauth2.0 token to make `/chat`, `/embeddings` requests to the LiteLLM Proxy
 
-> **info**: This is an Enterprise Feature - [get in touch with us if you want a free trial to test if this feature meets your needs]((https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions))
+> **info**: This is an Enterprise Feature - [get in touch with us if you want a free trial to test if this feature meets your needs]((https://enterprise.litellm.ai/demo))
 
 ## Usage 
 

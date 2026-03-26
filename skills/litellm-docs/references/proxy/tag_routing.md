@@ -305,7 +305,7 @@ Do not rely on `tag_regex` routing to enforce access controls or spend limits â€
 
 LiteLLM Proxy supports team-based tag routing, allowing you to associate specific tags with teams and route requests accordingly. Example **Team A can access gpt-4 deployment A, Team B can access gpt-4 deployment B** (LLM Access Control For Teams)
 
-> **info**: This is an enterprise feature, [Contact us here to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: This is an enterprise feature, [Contact us here to get a free trial](https://enterprise.litellm.ai/demo)
 
 Here's how to set up and use team-based tag routing using curl commands:
 

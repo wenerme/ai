@@ -2,7 +2,7 @@
 
 # Control Public & Private Routes
 
-> **info**: Requires a LiteLLM Enterprise License. [Get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions).
+> **info**: Requires a LiteLLM Enterprise License. [Get a free trial](https://enterprise.litellm.ai/demo).
 
 Control which routes require authentication and which routes are publicly accessible.
 

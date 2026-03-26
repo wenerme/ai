@@ -976,7 +976,7 @@ litellm_settings:
 
 Log LLM Logs to [Google Cloud Storage Buckets](https://cloud.google.com/storage?hl=en)
 
-> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://enterprise.litellm.ai/demo)
 
 | Property                     | Details                                                        |
 | ---------------------------- | -------------------------------------------------------------- |
@@ -1050,7 +1050,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Log LLM Logs/SpendLogs to [Google Cloud Storage PubSub Topic](https://cloud.google.com/pubsub/docs/reference/rest)
 
-> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://enterprise.litellm.ai/demo)
 
 | Property    | Details                                                            |
 | ----------- | ------------------------------------------------------------------ |
@@ -1342,7 +1342,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 
 Log LLM Logs to [Azure Data Lake Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction)
 
-> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: ✨ This is an Enterprise only feature [Get Started with Enterprise here](https://enterprise.litellm.ai/demo)
 
 | Property                        | Details                                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------- |

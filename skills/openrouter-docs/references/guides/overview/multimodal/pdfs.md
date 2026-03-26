@@ -25,7 +25,7 @@ To configure PDF processing, use the `plugins` parameter in your request. OpenRo
     {
       id: 'file-parser',
       pdf: {
-        engine: 'pdf-text', // or 'mistral-ocr' or 'native'
+        engine: 'cloudflare-ai', // or 'mistral-ocr' or 'native'
       },
     },
   ],
@@ -38,10 +38,15 @@ OpenRouter provides several PDF processing engines:
 
 1. <code>"{PDFParserEngine.MistralOCR}"</code>: Best for scanned documents or
    PDFs with images (\${MISTRAL_OCR_COST.toString()} per 1,000 pages).
-2. <code>"{PDFParserEngine.PDFText}"</code>: Best for well-structured PDFs with
-   clear text content (Free).
+2. <code>"{PDFParserEngine.CloudflareAI}"</code>: Converts PDFs to markdown
+   using Cloudflare Workers AI (Free).
 3. <code>"{PDFParserEngine.Native}"</code>: Only available for models that
    support file input natively (charged as input tokens).
+
+<Info>
+  The `"pdf-text"` engine is deprecated and automatically redirected to
+  `"cloudflare-ai"`. Existing requests using `"pdf-text"` will continue to work.
+</Info>
 
 If you don't explicitly specify an engine, OpenRouter will default first to the model's native file processing capabilities, and if that's not available, we will use the <code>"{DEFAULT_PDF_ENGINE}"</code> engine.
 
@@ -205,7 +210,7 @@ For local PDF files or when you need to send PDF content directly, you can base6
   data={{
   API_KEY_REF,
   MODEL: 'google/gemma-3-27b-it',
-  ENGINE: PDFParserEngine.PDFText,
+  ENGINE: PDFParserEngine.CloudflareAI,
   DEFAULT_PDF_ENGINE,
 }}
 >

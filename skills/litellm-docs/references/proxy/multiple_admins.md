@@ -14,7 +14,7 @@ LiteLLM tracks changes to the following entities and actions:
 - **Entities:** Keys, Teams, Users, Models
 - **Actions:** Create, Update, Delete, Regenerate
 
-> **tip**: Requires Enterprise License, Get in touch with us [here](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **tip**: Requires Enterprise License, Get in touch with us [here](https://enterprise.litellm.ai/demo)
 
 ## Usage
 

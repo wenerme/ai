@@ -344,7 +344,7 @@ curl -i  -X POST http://localhost:4000/v1/chat/completions \
 
 ## ✨ Pass additional parameters to guardrail
 
-> **info**: ✨ This is an Enterprise only feature [Contact us to get a free trial](https://calendly.com/d/cx9p-5yf-2nm/litellm-introductions)
+> **info**: ✨ This is an Enterprise only feature [Contact us to get a free trial](https://enterprise.litellm.ai/demo)
 
 Use this to pass additional parameters to the guardrail API call. e.g. things like success threshold
 
