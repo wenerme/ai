@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 78 skills available
+> 79 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
+| `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... |  |
 | `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
 | `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
@@ -451,6 +452,16 @@ npx skills add wenerme/ai --skill image-prompt-guide
 ```
 
 USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics, diagrams, or any visual content. Covers prompt structure, visual styles, color palettes, layout types, composition principles, scenario-specific templates, SD style presets, and Nano Banana (Gemini Flash) prompt techniques with 100 real-world cases. Triggers on: image prompt, generate image, illustration, cover image, infographic, 配图, 封面图, 信息图, dall-e prompt, midjourney prompt, nano banana, gemini image, image generation.
+
+</details>
+<details>
+<summary><code>justfile-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill justfile-docs
+```
+
+justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies, shebang/script recipes), justfile language (settings, strings, functions, constants, attributes, conditionals, backticks), modules/imports, variables, shell configuration, and CLI options. USE THIS SKILL WHEN the user asks about just, justfile syntax, just recipes, just modules, just functions, or just settings.
 
 </details>
 <details>

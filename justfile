@@ -136,6 +136,10 @@ update-litellm-docs:
 update-mihomo-docs:
     bun scripts/sync-mihomo-docs.ts
 
+# Sync justfile (just) docs from local casey/just clone
+update-justfile-docs:
+    bun scripts/sync-justfile-docs.ts
+
 # Sync K3s docs from local k3s-io/docs clone
 update-k3s-docs:
     bun scripts/sync-k3s-docs.ts
@@ -176,6 +180,7 @@ update:
     -just update-litellm-docs
     -just update-mihomo-docs
     -just update-k3s-docs
+    -just update-justfile-docs
     just update-readme
 
 # Lint skills for best practices
