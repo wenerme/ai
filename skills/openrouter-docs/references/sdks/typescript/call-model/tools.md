@@ -899,6 +899,7 @@ const longRunningTool = tool({
 
 ## Next Steps
 
+* **[Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state)** - Human-in-the-loop approval and conversation persistence
 * **[nextTurnParams](/docs/sdks/typescript/call-model/next-turn-params)** - Tool-driven context injection
 * **[Stop Conditions](/docs/sdks/typescript/call-model/stop-conditions)** - Advanced execution control
 * **[Examples](/docs/sdks/typescript/call-model/examples/weather-tool)** - Complete tool implementations

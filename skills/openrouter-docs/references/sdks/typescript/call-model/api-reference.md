@@ -113,7 +113,7 @@ Stream reasoning deltas (for reasoning models).
 getNewMessagesStream(): AsyncIterableIterator<ResponsesOutputMessage | OpenResponsesFunctionCallOutput>
 ```
 
-Stream incremental message updates in OpenResponses format.
+Stream cumulative message snapshots in OpenResponses format.
 
 #### getFullResponsesStream()
 

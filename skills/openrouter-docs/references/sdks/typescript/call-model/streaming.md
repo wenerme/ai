@@ -107,7 +107,7 @@ This stream yields all item types:
   includes all item types and follows the items-based paradigm.
 </Warning>
 
-Stream incremental message updates in the OpenResponses format:
+Stream cumulative message snapshots in the OpenResponses format:
 
 ```typescript
 // Deprecated - use getItemsStream() instead
