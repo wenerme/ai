@@ -8,13 +8,13 @@ and [Google Search](https://ai.google.dev/gemini-api/docs/grounding) with the Li
 
 Here's a brief overview of the available tools for Live API models:
 
-| Tool | `gemini-2.5-flash-native-audio-preview-12-2025` |
-|---|---|
-| **Search** | Yes |
-| **Function calling** | Yes |
-| **Google Maps** | No |
-| **Code execution** | No |
-| **URL context** | No |
+| Tool | Gemini 3.1 Flash Live Preview | Gemini 2.5 Flash Live Preview |
+|---|---|---|
+| **Search** | Supported | Supported |
+| **Function calling** | Supported (synchronous only) | Supported (synchronous and [asynchronous](https://ai.google.dev/gemini-api/docs/live-api/tools#async-function-calling)) |
+| **Google Maps** | Not supported | Not supported |
+| **Code execution** | Not supported | Not supported |
+| **URL context** | Not supported | Not supported |
 
 ## Function calling
 
@@ -41,7 +41,7 @@ more.
 
     client = genai.Client()
 
-    model = "gemini-2.5-flash-native-audio-preview-12-2025"
+    model = "gemini-3.1-flash-live-preview"
 
     # Simple function definitions
     turn_on_the_lights = {"name": "turn_on_the_lights"}
@@ -89,7 +89,7 @@ more.
     const { WaveFile } = pkg;
 
     const ai = new GoogleGenAI({});
-    const model = 'gemini-2.5-flash-native-audio-preview-12-2025';
+    const model = 'gemini-3.1-flash-live-preview';
 
     // Simple function definitions
     const turn_on_the_lights = { name: "turn_on_the_lights" } // , description: '...', parameters: { ... }
@@ -214,6 +214,9 @@ until the results of each function call are available. This ensures sequential
 processing, which means you won't be able to continue interacting with the model
 while the functions are being run.
 
+> [!NOTE]
+> **Note:** Asynchronous function calling is not yet supported in Gemini 3.1 Flash Live. The model will not start responding until you've sent the tool response.
+
 If you don't want to block the conversation, you can tell the model to run the
 functions asynchronously. To do so, you first need to add a `behavior` to the
 function definitions:
@@ -289,7 +292,7 @@ learn more.
 
     client = genai.Client()
 
-    model = "gemini-2.5-flash-native-audio-preview-12-2025"
+    model = "gemini-3.1-flash-live-preview"
 
     tools = [{'google_search': {}}]
     config = {"response_modalities": ["AUDIO"], "tools": tools}
@@ -332,7 +335,7 @@ learn more.
     const { WaveFile } = pkg;
 
     const ai = new GoogleGenAI({});
-    const model = 'gemini-2.5-flash-native-audio-preview-12-2025';
+    const model = 'gemini-3.1-flash-live-preview';
 
     const tools = [{ googleSearch: {} }]
     const config = {

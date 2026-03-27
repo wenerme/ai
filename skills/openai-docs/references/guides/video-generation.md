@@ -1,5 +1,8 @@
 # Video generation with Sora
 
+<div className="mt-6 mb-8">
+  </div>
+
 ## Overview
 
 Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.

@@ -247,7 +247,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
 - `file_id: string`
 
-  A [File](/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files.
+  A [File](/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
 
 - `attributes: optional map[string or number or boolean]`
 

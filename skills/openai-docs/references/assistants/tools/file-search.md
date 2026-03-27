@@ -584,9 +584,13 @@ Adding files to vector stores is an async operation. To ensure the operation is 
 
 Files can also be added to a vector store after it's created by [creating vector store files](https://developers.openai.com/api/docs/api-reference/vector-stores/createFile).
 
+Adding files is rate limited per vector store ID. Requests to `/vector_stores/{vector_store_id}/files` and `/vector_stores/{vector_store_id}/file_batches` share a per-vector-store limit of 300 requests per minute.
+
 Alternatively, you can add several files to a vector store by [creating batches](https://developers.openai.com/api/docs/api-reference/vector-stores/createBatch) of up to 500 files.
 
 Batch creation accepts either a simple list of `file_ids` or a `files` array made up of objects with a `file_id` plus optional `attributes` and `chunking_strategy`. Use `files` when you need per-file metadata or chunking settings, and note that `file_ids` and `files` are mutually exclusive in a single request.
+
+For high-throughput ingestion into one vector store, prefer file batches whenever possible to reduce request volume and improve latency.
 
 Similarly, these files can be removed from a vector store by either:
 

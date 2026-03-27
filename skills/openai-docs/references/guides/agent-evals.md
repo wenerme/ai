@@ -47,7 +47,7 @@ For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/
 </a>
 
 <a
-  href="https://cookbook.openai.com/examples/evaluation/Building_resilient_prompts_using_an_evaluation_flywheel.md"
+  href="https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel"
   target="_blank"
   rel="noreferrer"
 >

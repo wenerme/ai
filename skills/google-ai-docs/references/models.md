@@ -18,7 +18,9 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview)
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) [### Gemini 3.1 Flash Live
+High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
+New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)
 
 *** ** * ** ***
 
@@ -65,6 +67,10 @@ High-fidelity speech synthesis optimized for quality in structured workflows lik
 ## Audio models
 
 *This section contains all audio models, including ones that may already be listed in other sections*
+
+### [Gemini 3.1 Flash Live Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)
+
+Our high-quality, low-latency audio-to-audio (A2A) model designed for real-time dialogue and voice-first AI applications.
 
 ### [Gemini 2.5 Flash Live Preview](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-native-audio-preview-12-2025)
 

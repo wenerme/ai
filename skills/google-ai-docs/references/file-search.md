@@ -505,6 +505,13 @@ of the response.
 
     console.log(JSON.stringify(response.candidates?.[0]?.groundingMetadata, null, 2));
 
+For detailed information on the structure of the grounding metadata, see the
+examples in the [File Search
+cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/File_Search.ipynb)
+or [the grounding section of the Grounding with Google
+Search](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
+docs.
+
 ## Structured output
 
 Starting with Gemini 3 models, you can combine file search tool with

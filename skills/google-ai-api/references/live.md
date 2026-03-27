@@ -226,6 +226,7 @@ Clients should wait for a `BidiGenerateContentSetupComplete` message before send
 | `inputAudioTranscription` | `https://ai.google.dev/api/live#AudioTranscriptionConfig` Optional. If set, enables transcription of voice input. The transcription aligns with the input audio language, if configured. |
 | `outputAudioTranscription` | `https://ai.google.dev/api/live#AudioTranscriptionConfig` Optional. If set, enables transcription of the model's audio output. The transcription aligns with the language code specified for the output audio, if configured. |
 | `proactivity` | `https://ai.google.dev/api/live#ProactivityConfig` Optional. Configures the proactivity of the model. This allows the model to respond proactively to the input and to ignore irrelevant input. |
+| `historyConfig` | `https://ai.google.dev/api/live#HistoryConfig` Optional. Configures the exchange of history between the client and the server. |
 
 ### BidiGenerateContentSetupComplete
 
@@ -293,6 +294,16 @@ A notice that the server will soon disconnect.
 | Fields ||
 |---|---|
 | `timeLeft` | `https://protobuf.dev/reference/protobuf/google.protobuf#duration` The remaining time before the connection will be terminated as ABORTED. This duration will never be less than a model-specific minimum, which will be specified together with the rate limits for the model. |
+
+### HistoryConfig
+
+History configuration.
+
+This message is included in the session configuration as `BidiGenerateContentSetup.historyConfig`. Configures the exchange of history messages.
+
+| Fields ||
+|---|---|
+| `initialHistoryInClientContent` | `bool` Optional. If true, after sending `setupComplete`, the server will wait and at first process `https://ai.google.dev/api/live#BidiGenerateContentClientContent` messages until `turnComplete` is `true`. This initial history will not trigger a model call and may end with role `MODEL`. After `turnComplete` is `true`, the client can start the realtime conversation via `https://ai.google.dev/api/live#BidiGenerateContentRealtimeInput`. |
 
 ### ProactivityConfig
 

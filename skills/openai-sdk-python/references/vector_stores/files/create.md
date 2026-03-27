@@ -12,7 +12,7 @@ Create a vector store file by attaching a [File](https://platform.openai.com/doc
 
 - `file_id: str`
 
-  A [File](https://platform.openai.com/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files.
+  A [File](https://platform.openai.com/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](https://platform.openai.com/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
 
 - `attributes: Optional[Dict[str, Union[str, float, bool]]]`
 

@@ -146,7 +146,7 @@ Datasets are great for rapid iteration. When you're ready to track performance o
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook/topic/evals), which contains example code and links to third-party resources, or learn more about our evaluation tools:
 
 <a
-  href="https://cookbook.openai.com/examples/evaluation/Building_resilient_prompts_using_an_evaluation_flywheel.md"
+  href="https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel"
   target="_blank"
   rel="noreferrer"
 >

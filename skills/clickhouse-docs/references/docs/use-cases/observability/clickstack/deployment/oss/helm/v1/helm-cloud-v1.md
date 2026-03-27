@@ -1,11 +1,14 @@
 ---
-title: 'Helm cloud deployments'
-description: 'Cloud-specific configurations for deploying ClickStack on GKE, EKS, and AKS'
+title: 'Helm cloud deployments (v1.x)'
+description: 'Cloud-specific configurations for deploying ClickStack on GKE, EKS, and AKS with the v1.x Helm chart'
 doc_type: 'guide'
 keywords: ['ClickStack GKE', 'ClickStack EKS', 'ClickStack AKS', 'Kubernetes cloud deployment', 'production deployment']
 ---
 
-This guide covers cloud-specific configurations for deploying ClickStack on managed Kubernetes services. For basic installation, see the [main Helm deployment guide](/docs/use-cases/observability/clickstack/deployment/helm).
+> **warning**: Deprecated — v1.x chart
+This page documents cloud deployments for the **v1.x** inline-template Helm chart, which is in maintenance mode. For the v2.x chart, see [Helm cloud deployments](/docs/use-cases/observability/clickstack/deployment/helm-cloud). To migrate, see the [Upgrade guide](/docs/use-cases/observability/clickstack/deployment/helm-upgrade).
+
+This guide covers cloud-specific configurations for deploying ClickStack on managed Kubernetes services. For basic installation, see the [main Helm deployment guide](/docs/use-cases/observability/clickstack/deployment/helm-v1).
 
 ## Google Kubernetes Engine (GKE) {#google-kubernetes-engine-gke}
 
@@ -120,7 +123,7 @@ hyperdx:
 ```yaml
 hyperdx:
   replicaCount: 3
-  
+
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
@@ -155,10 +158,12 @@ clickhouse:
 
 For HTTP-only deployments (development/testing), some browsers may show crypto API errors due to secure context requirements. For production deployments, always use HTTPS with proper TLS certificates through ingress configuration.
 
-See [Ingress configuration](/docs/use-cases/observability/clickstack/deployment/helm-configuration#ingress-setup) for TLS setup instructions.
+See [Ingress configuration](/docs/use-cases/observability/clickstack/deployment/helm-configuration-v1#ingress-setup) for TLS setup instructions.
 
 ## Next steps {#next-steps}
 
-- [Configuration guide](/docs/use-cases/observability/clickstack/deployment/helm-configuration) - API keys, secrets, and ingress
-- [Deployment options](/docs/use-cases/observability/clickstack/deployment/helm-deployment-options) - External systems configuration
-- [Main Helm guide](/docs/use-cases/observability/clickstack/deployment/helm) - Basic installation
+- [Configuration guide (v1.x)](/docs/use-cases/observability/clickstack/deployment/helm-configuration-v1) - API keys, secrets, and ingress
+- [Deployment options (v1.x)](/docs/use-cases/observability/clickstack/deployment/helm-deployment-options-v1) - External systems configuration
+- [Main Helm guide (v1.x)](/docs/use-cases/observability/clickstack/deployment/helm-v1) - Basic installation
+- [Cloud deployments (v2.x)](/docs/use-cases/observability/clickstack/deployment/helm-cloud) - v2.x cloud guide
+- [Upgrade guide](/docs/use-cases/observability/clickstack/deployment/helm-upgrade) - Migrating from v1.x to v2.x

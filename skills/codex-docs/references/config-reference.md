@@ -301,6 +301,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Enable ChatGPT Apps/connectors support (experimental).",
     },
     {
+      key: "features.codex_hooks",
+      type: "boolean",
+      description:
+        "Enable lifecycle hooks loaded from `hooks.json` (under development; off by default).",
+    },
+    {
       key: "mcp_servers.<id>.command",
       type: "string",
       description: "Launcher command for an MCP stdio server.",

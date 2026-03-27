@@ -18,6 +18,19 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 All deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-03-24: Sora 2 video generation models and Videos API
+
+On March 24th, 2026, we notified developers using the Videos API and Sora 2 video generation model aliases and snapshots of their deprecation and removal from the API on September 24, 2026.
+
+| Shutdown date | Model / system          | Recommended replacement |
+| ------------- | ----------------------- | ----------------------- |
+| 2026-09-24    | Videos API              | ---                     |
+| 2026-09-24    | `sora-2`                | ---                     |
+| 2026-09-24    | `sora-2-pro`            | ---                     |
+| 2026-09-24    | `sora-2-2025-10-06`     | ---                     |
+| 2026-09-24    | `sora-2-2025-12-08`     | ---                     |
+| 2026-09-24    | `sora-2-pro-2025-10-06` | ---                     |
+
 ### 2025-11-18: chatgpt-4o-latest snapshot
 
 On November 18th, 2025, we notified developers using `chatgpt-4o-latest` model snapshot of its deprecation and removal from the API on February 17, 2026.
