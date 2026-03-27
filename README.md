@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 79 skills available
+> 81 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
+| `immich-docs` | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... |  |
 | `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... |  |
 | `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... |  |
 | `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
@@ -79,6 +80,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... |  |
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... |  |
+| `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... |  |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
 | `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... |  |
 | `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
@@ -455,6 +457,16 @@ USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrati
 
 </details>
 <details>
+<summary><code>immich-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill immich-docs
+```
+
+Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS, Unraid), administration (backup, OAuth, reverse proxy, storage templates), features (facial recognition, ML acceleration, hardware transcoding, mobile backup, libraries, search), and developer guides. USE THIS SKILL WHEN the user asks about Immich, immich install, immich backup, immich facial recognition, or immich transcoding.
+
+</details>
+<details>
 <summary><code>justfile-docs</code></summary>
 
 ```bash
@@ -742,6 +754,16 @@ npx skills add wenerme/ai --skill swift-ms-docs
 ```
 
 USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO reinforcement learning, RLHF (DPO/KTO/SimPO), pre-training, Megatron distributed training, inference/deployment with vLLM/SGLang/LmDeploy, quantization (AWQ/GPTQ/BNB/FP8), evaluation, custom datasets/models, or Web-UI. Triggers on: ms-swift, swift train, swift infer, swift deploy, swift export, LoRA fine-tuning ModelScope, GRPO training.
+
+</details>
+<details>
+<summary><code>tea-cli</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill tea-cli
+```
+
+tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge, review), labels, milestones, releases, repositories, branches, organizations, time tracking, actions (secrets, variables, runs), webhooks, notifications, admin commands, and direct API calls. USE THIS SKILL WHEN the user asks about tea CLI, Gitea CLI, tea command, tea login, tea pr, tea issues, or interacting with Gitea from the terminal.
 
 </details>
 <details>

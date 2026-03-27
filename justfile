@@ -144,6 +144,14 @@ update-justfile-docs:
 update-k3s-docs:
     bun scripts/sync-k3s-docs.ts
 
+# Sync tea CLI docs from local gitea/tea clone
+update-tea-cli-docs:
+    bun scripts/sync-tea-cli-docs.ts
+
+# Sync Immich docs from local immich-app/immich clone
+update-immich-docs:
+    bun scripts/sync-immich-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -181,6 +189,8 @@ update:
     -just update-mihomo-docs
     -just update-k3s-docs
     -just update-justfile-docs
+    -just update-immich-docs
+    -just update-tea-cli-docs
     just update-readme
 
 # Lint skills for best practices
