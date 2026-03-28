@@ -81,7 +81,7 @@ Launch a Codex Cloud task, choose environments, and apply the resulting diffs wi
 
   </BentoContent>
 
-  <BentoContent href="/codex/sdk#using-codex-cli-programmatically">
+  <BentoContent href="/codex/noninteractive">
 
 ### Scripting Codex
 

@@ -1,24 +1,26 @@
 ---
-title: 'Private networking setup'
-keywords: ['BYOC', 'cloud', 'bring your own cloud', 'vpc peering', 'privatelink']
-description: 'Deploy ClickHouse on your own cloud infrastructure'
+title: 'BYOC AWS private networking setup'
+keywords: ['BYOC', 'cloud', 'bring your own cloud', 'vpc peering', 'aws', 'privatelink']
+description: 'Set up VPC Peering or PrivateLink for BYOC on AWS'
 doc_type: 'reference'
 ---
 
-ClickHouse BYOC supports various private networking options to enhance security and enable direct connectivity for your services. This guide walks you through the recommended approaches for securely connecting ClickHouse Cloud deployments in your own AWS or GCP account to other networks or services, such as your internal applications or analytics tools. We cover options such as VPC Peering, AWS PrivateLink, and GCP Private Service Connect, and outline the main steps and considerations for each.
+ClickHouse BYOC on AWS supports two private connection options including VPC Peering and AWS PrivateLink.
 
-If you require a private network connection to your ClickHouse BYOC deployment, follow the steps in this guide or consult ClickHouse Support for assistance with more advanced scenarios.
+## Prerequisites {#common-prerequisites}
 
-## Setup VPC Peering (AWS) {#aws-vpc-peering}
+Common steps required by both VPC peering and Privatelink.
+
+### Enable private load balancer for ClickHouse BYOC {#step-enable-private-load-balancer-for-clickhouse-byoc}
+Contact ClickHouse Support to enable Private Load Balancer.
+
+## Set up VPC peering {#aws-vpc-peering}
 
 To create or delete VPC peering for ClickHouse BYOC, follow the steps:
 
 <VerticalStepper headerLevel="h3">
 
-### Enable private load balancer for ClickHouse BYOC {#step-1-enable-private-load-balancer-for-clickhouse-byoc}
-Contact ClickHouse Support to enable Private Load Balancer.
-
-### Create a peering connection {#step-2-create-a-peering-connection}
+### Create a peering connection {#step-1-create-a-peering-connection}
 1. Navigate to the VPC Dashboard in ClickHouse BYOC account.
 2. Select Peering Connections.
 3. Click Create Peering Connection
@@ -28,12 +30,12 @@ Contact ClickHouse Support to enable Private Load Balancer.
 
 <Image img={byoc_vpcpeering} size="lg" alt="BYOC Create Peering Connection" border />
 
-### Accept the peering connection request {#step-3-accept-the-peering-connection-request}
+### Accept the peering connection request {#step-2-accept-the-peering-connection-request}
 Go to the peering account, in the (VPC -> Peering connections -> Actions -> Accept request) page customer can approve this VPC peering request.
 
 <Image img={byoc_vpcpeering2} size="lg" alt="BYOC Accept Peering Connection" border />
 
-### Add destination to ClickHouse VPC route tables {#step-4-add-destination-to-clickhouse-vpc-route-tables}
+### Add destination to ClickHouse VPC route tables {#step-3-add-destination-to-clickhouse-vpc-route-tables}
 In ClickHouse BYOC account,
 1. Select Route Tables in the VPC Dashboard.
 2. Search for the ClickHouse VPC ID. Edit each route table attached to the private subnets.
@@ -44,7 +46,7 @@ In ClickHouse BYOC account,
 
 <Image img={byoc_vpcpeering3} size="lg" alt="BYOC Add route table" border />
 
-### Add destination to the target VPC route tables {#step-5-add-destination-to-the-target-vpc-route-tables}
+### Add destination to the target VPC route tables {#step-4-add-destination-to-the-target-vpc-route-tables}
 In the peering AWS account,
 1. Select Route Tables in the VPC Dashboard.
 2. Search for the target VPC ID.
@@ -55,7 +57,7 @@ In the peering AWS account,
 
 <Image img={byoc_vpcpeering4} size="lg" alt="BYOC Add route table" border />
 
-### Edit security group to allow peered VPC access {#step-6-edit-security-group-to-allow-peered-vpc-access}
+### Edit security group to allow peered VPC access {#step-5-edit-security-group-to-allow-peered-vpc-access}
 
 In the ClickHouse BYOC account, you need to update the Security Group settings to allow traffic from your peered VPC. Please contact ClickHouse Support to request the addition of inbound rules that include the CIDR ranges of your peered VPC.
 
@@ -69,7 +71,7 @@ To access ClickHouse privately, a private load balancer and endpoint are provisi
 
 Optional, after verifying that peering is working, you can request the removal of the public load balancer for ClickHouse BYOC.
 
-## Setup PrivateLink (AWS) {#setup-privatelink}
+## Set up PrivateLink {#setup-privatelink}
 
 AWS PrivateLink provides secure, private connectivity to your ClickHouse BYOC services without requiring VPC peering or internet gateways. Traffic flows entirely within the AWS network, never traversing the public internet.
 
@@ -99,7 +101,7 @@ After ClickHouse Support has enabled PrivateLink on their side, you need to crea
    - Select or create a security group for the endpoint
    - Click "Create Endpoint"
 
-> **important**: **DNS Requirements**: 
+> **important**: **DNS Requirements**:
 - Enable "Private DNS names" when creating the VPC endpoint
 - Ensure your VPC has "DNS Hostnames" enabled (VPC Settings → DNS resolution and DNS hostnames)
 
@@ -107,7 +109,7 @@ These settings are required for the PrivateLink DNS to function correctly.
 
 3. **Approve the Endpoint Connection**:
    - After creating the endpoint, you need to approve the connection request
-   - In the VPC Console, go to "Endpoint Connections" 
+   - In the VPC Console, go to "Endpoint Connections"
    - Find the connection request from ClickHouse and click "Accept" to approve it
 
 <Image img={byoc_privatelink_2} size="lg" alt="BYOC PrivateLink Approve" border />
@@ -156,7 +158,3 @@ PrivateLink DNS for BYOC endpoints (using the `*.vpce.{subdomain}` format) lever
 - Your VPC has "DNS Hostnames" enabled
 
 This ensures that connections using the `vpce` subdomain automatically route through the PrivateLink endpoint without additional DNS configuration.
-
-## VPC Peering (GCP) and Private Service Connect (GCP) {#setup-gcp}
-
-GCP VPC Peering and Private Service Connect provides similar private connectivity for GCP-based BYOC deployments. This feature is currently in development. If you need VPC Peering or Private Service Connect for your GCP BYOC deployment, please [contact ClickHouse Support](https://clickhouse.com/cloud/bring-your-own-cloud) to discuss availability and setup requirements.
