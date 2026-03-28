@@ -3229,8 +3229,6 @@ Create items in a conversation with the given ID.
 
   - `"file_search_call.results"`
 
-  - `"web_search_call.results"`
-
   - `"web_search_call.action.sources"`
 
   - `"message.input_image.image_url"`
@@ -6518,8 +6516,6 @@ List all items for a conversation with the given ID.
 
   - `"file_search_call.results"`
 
-  - `"web_search_call.results"`
-
   - `"web_search_call.action.sources"`
 
   - `"message.input_image.image_url"`
@@ -9764,8 +9760,6 @@ Get a single item from a conversation with the given IDs.
   parameter for [listing Conversation items above](https://platform.openai.com/docs/api-reference/conversations/list-items#conversations_list_items-include) for more information.
 
   - `"file_search_call.results"`
-
-  - `"web_search_call.results"`
 
   - `"web_search_call.action.sources"`
 

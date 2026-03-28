@@ -1117,6 +1117,13 @@ Synchronize external user data (only LDAP user synchronization is supported)
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling deleted branches cleanup.
 - `OLDER_THAN`: **24h**: Branches deleted OLDER_THAN ago will be cleaned up.
 
+#### Cron - Synchronize repository licenses (`cron.sync_repo_licenses`)
+
+- `ENABLED`: **false**: Enable deleted branches cleanup.
+- `RUN_AT_START`: **false**: Run job at start time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to log a success message.
+- `SCHEDULE`: **@annually*: Cron syntax for scheduling synchronization of repository licenses
+
 ### Extended cron tasks
 
 #### Cron - Delete all repository archives (`cron.delete_repo_archives`)
@@ -1140,7 +1147,14 @@ Synchronize external user data (only LDAP user synchronization is supported)
 - `ENABLED`: **false**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
 - `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
-- `SCHEDULE`: **@every 72h**: Cron syntax for scheduling repository archive cleanup, e.g. `@every 1h`.
+- `SCHEDULE`: **@every 72h**: Cron syntax for scheduling synchronization of gitea ssh keys, e.g. `@every 1h`.
+
+#### Cron - Update the '.ssh/authorized_principals' file (`cron.resync_all_sshprincipals`)
+
+- `ENABLED`: **false**: Enable service.
+- `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
+- `SCHEDULE`: **@every 72h**: Cron syntax for scheduling update of authorized_principals, e.g. `@every 1h`.
 
 #### Cron - Resynchronize pre-receive, update and post-receive hooks of all repositories (`cron.resync_all_hooks`)
 
@@ -1203,6 +1217,43 @@ Synchronize external user data (only LDAP user synchronization is supported)
 - `LAST_UPDATED_MORE_THAN_AGO`: **72h**: Only attempt to garbage collect LFSMetaObjects that have not been attempted to be garbage collected for this long (default 3 days)
 - `NUMBER_TO_CHECK_PER_REPO`: **100**: Minimum number of stale LFSMetaObjects to check per repo. Set to `0` to always check all.
 - `PROPORTION_TO_CHECK_PER_REPO`: **0.6**: Check at least this proportion of LFSMetaObjects per repo. (This may cause all stale LFSMetaObjects to be checked.)
+
+### Actions cron tasks
+
+#### Cron - Rebuild issue index (`cron.rebuild_issue_indexer`)
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
+- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `SCHEDULE`: **@annually**: Cron syntax to set how often to rebuild
+
+#### Cron - Stop running tasks which haven't been updated for a long time (`cron.stop_zombie_tasks`)
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
+- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `SCHEDULE`: **@every 5m**: Cron syntax to set how often tasks to run the check
+
+#### Cron - Stop running tasks which have running status and continuous updates but don't end for a long time (`cron.stop_endless_tasks`)
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
+- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `SCHEDULE`: **@every 30m**: Cron syntax to set how often to run the check.
+
+#### Cron - Cancel jobs which haven't been picked up for a long time (`cron.cancel_abandoned_jobs`)
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `SCHEDULE`: **@every 6h**: Cron syntax to set how often to run the check.
+
+#### Cron - Start cron based actions (`cron.start_schedule_tasks`)
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `SCHEDULE`: **@every 1m**: Cron syntax to set how often to schedule tasks
 
 ## Git (`git`)
 

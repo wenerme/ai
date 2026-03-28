@@ -917,7 +917,7 @@ effort\_ratio is 0.95 for xhigh effort, 0.8 for high effort, 0.5 for medium effo
 
 ### Google Gemini 3 Models with Thinking Levels
 
-Gemini 3 models (such as [google/gemini-3-pro-preview](https://openrouter.ai/google/gemini-3-pro-preview) and [google/gemini-3-flash-preview](https://openrouter.ai/google/gemini-3-flash-preview)) use Google's `thinkingLevel` API instead of the older `thinkingBudget` API used by Gemini 2.5 models.
+Gemini 3 models (such as [google/gemini-3.1-pro-preview](https://openrouter.ai/google/gemini-3.1-pro-preview) and [google/gemini-3-flash-preview](https://openrouter.ai/google/gemini-3-flash-preview)) use Google's `thinkingLevel` API instead of the older `thinkingBudget` API used by Gemini 2.5 models.
 
 OpenRouter maps the `reasoning.effort` parameter directly to Google's `thinkingLevel` values:
 
@@ -944,7 +944,7 @@ If you specify `reasoning.max_tokens` explicitly, OpenRouter will pass it throug
 <Template
   data={{
   API_KEY_REF,
-  MODEL: "google/gemini-3-pro-preview"
+  MODEL: "google/gemini-3.1-pro-preview"
 }}
 >
   <CodeGroup>

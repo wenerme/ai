@@ -82,6 +82,7 @@ components:
       enum:
         - completions
         - embeddings
+        - video
       description: Type of API used for the generation
       title: GenerationGetResponsesContentApplicationJsonSchemaDataApiType
     GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItemsProviderName:
@@ -173,6 +174,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Reka
         - Relace
         - SambaNova
         - Seed

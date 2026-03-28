@@ -727,7 +727,7 @@ Returns the created client secret and the effective session object. The client s
 
     - `tracing: optional RealtimeTracingConfig`
 
-      Realtime API can write session traces to the [Traces Dashboard](/logs?api=traces). Set to null to disable tracing. Once
+      Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
       tracing is enabled for a session, the configuration cannot be modified.
 
       `auto` will create a trace for the session with default values for the
@@ -1712,7 +1712,7 @@ Returns the created client secret and the effective session object. The client s
 
     - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
-      Realtime API can write session traces to the [Traces Dashboard](/logs?api=traces). Set to null to disable tracing. Once
+      Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
       tracing is enabled for a session, the configuration cannot be modified.
 
       `auto` will create a trace for the session with default values for the
@@ -2806,7 +2806,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
   - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
-    Realtime API can write session traces to the [Traces Dashboard](/logs?api=traces). Set to null to disable tracing. Once
+    Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
     tracing is enabled for a session, the configuration cannot be modified.
 
     `auto` will create a trace for the session with default values for the

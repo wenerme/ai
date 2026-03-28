@@ -19,8 +19,6 @@ Get a single item from a conversation with the given IDs.
 
   - `"file_search_call.results"`
 
-  - `"web_search_call.results"`
-
   - `"web_search_call.action.sources"`
 
   - `"message.input_image.image_url"`

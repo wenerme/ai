@@ -221,7 +221,7 @@ Example model references that work:
 * "Claude Sonnet" → `anthropic/claude-sonnet-4.5`
 * "Claude Opus" → `anthropic/claude-opus-4.5`
 * "GPT-5" → `openai/gpt-5.1`
-* "Gemini" → `google/gemini-3-pro-preview`
+* "Gemini" → `google/gemini-3.1-pro-preview`
 * "DeepSeek" → `deepseek/deepseek-v3.2`
 
 ## Pricing

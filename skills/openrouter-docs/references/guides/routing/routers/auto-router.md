@@ -125,7 +125,7 @@ The Auto Router selects from a curated set of high-quality models including:
 * Claude Sonnet 4.5 (`anthropic/claude-sonnet-4.5`)
 * Claude Opus 4.5 (`anthropic/claude-opus-4.5`)
 * GPT-5.1 (`openai/gpt-5.1`)
-* Gemini 3 Pro (`google/gemini-3-pro-preview`)
+* Gemini 3.1 Pro (`google/gemini-3.1-pro-preview`)
 * DeepSeek 3.2 (`deepseek/deepseek-v3.2`)
 * And other top-performing models
 

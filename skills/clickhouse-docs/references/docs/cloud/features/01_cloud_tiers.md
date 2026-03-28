@@ -1,5 +1,5 @@
 ---
-title: 'ClickHouse Cloud Tiers'
+title: 'ClickHouse Cloud tiers'
 description: 'Cloud tiers available in ClickHouse Cloud'
 keywords: ['cloud tiers', 'service plans', 'cloud pricing tiers', 'cloud service levels']
 doc_type: 'reference'

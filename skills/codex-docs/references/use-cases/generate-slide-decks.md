@@ -1,0 +1,119 @@
+---
+name: Generate slide decks
+tagline: Manipulate pptx files and use image generation to automate slide creation.
+summary: Use Codex to update existing presentations or build new decks by
+  editing slides directly through code, generating visuals, and applying
+  repeatable layout rules slide by slide.
+skills:
+  - token: $slides
+    url: https://github.com/openai/skills/tree/main/skills/.curated/slides
+    description: Create and edit `.pptx` decks in JavaScript with PptxGenJS, bundled
+      helpers, and render and validation scripts for overflow, overlap, and font
+      checks.
+  - token: $imagegen
+    url: https://github.com/openai/skills/tree/main/skills/.curated/imagegen
+    description: Generate illustrations, cover art, diagrams, and slide visuals that
+      match one reusable visual direction.
+bestFor:
+  - Teams turning notes or structured inputs into repeatable slide decks
+  - Creating new visual presentations from scratch
+  - Rebuilding or extending decks from screenshots, PDFs, or reference
+    presentations
+starterPrompt:
+  title: Create a new slide deck
+  body: >-
+    Use $slides with $imagegen to edit this slide deck in the following way: 
+
+    - If present, add logo.png in the bottom right corner on every slide
+
+    - On slides X, Y and Z, move the text to the left and use image generation
+    to generate an illustration (style: abstract, digital art) on the right
+
+    - Preserve text as text and simple charts as native PowerPoint charts where
+    practical.
+
+    - Add these slides: [describe new slides here]
+
+    - Use the existing branding on new slides and new text (colors, fonts,
+    layout, etc.) 
+
+    - Render the updated deck to slide images, review the output, and fix layout
+    issues before delivery.
+
+    - Run overflow and font-substitution checks before delivery, especially if
+    the deck is dense.
+
+    - Save reusable prompts or generation notes when you create a batch of
+    related images.
+
+
+    Output:
+
+    - A copy of the slide deck with the changes applied
+
+    - notes on which slides were generated, rewritten, or left unchanged
+relatedLinks:
+  - label: Image generation guide
+    url: /api/docs/guides/image-generation
+---
+
+## Introduction
+
+You can use Codex to manipulate PowerPoint decks in a systematic way, using the Slides skill to create and edit decks with PptxGenJS, and using image generation to generate visuals for the slides.
+
+Skills can be installed directly from the Codex app–see our [skills documentation](https://developers.openai.com/codex/skills) for more details.
+
+You can create new decks from scratch, describing what you want, but the ideal workflow is to start from an existing deck–already set up with your branding guidelines–and ask Codex to edit it.
+
+## Start from the source deck and references
+
+If a deck already exists, ask Codex to inspect it before making changes.
+
+The slides skill is opinionated here: match the source aspect ratio before you rebuild layout, and default to 16:9 only when the source material does not already define the deck size. If the references are screenshots or a PDF, ask Codex to render or inspect them first so it can compare slide geometry visually instead of guessing.
+
+## Keep the deck editable
+
+When building out new slides, ask Codex to keep the slides editable: when slides contain text, charts, or simple layout elements, those should stay PowerPoint-native when practical. Text should stay text. Simple bar, line, pie, and histogram visuals should stay native charts when possible. For diagrams or visuals that are too custom for native slide objects, Codex can generate or place SVG and image assets deliberately instead of rasterizing the whole slide.
+
+For example, if you want to build a complex timeline with illustrations, instead of generating a whole image, ask Codex to generate each illustration separately (using a set style prompt as reference), place them on the slide, then link them using native lines. The text and dates should be text objects as well, and not included in the illustrations.
+
+## Generate visuals intentionally
+
+Image generation is most useful when the slides need a cover image, a concept illustration, or a lightweight diagram that would otherwise take manual design work. Ask Codex to define the visual direction first, then reuse that direction consistently across the whole deck.
+
+When several slides need related visuals, have Codex save the prompts or generation notes it used. That makes the deck easier to extend later without starting over stylistically.
+
+## Keep slide logic explicit
+
+Deck automation works better when Codex treats each slide as its own decision. Some slides should preserve exact copy, some need a stronger headline and cleaner structure, and some should stay mostly untouched apart from asset cleanup or formatting fixes.
+
+The slides skill also ships with bundled layout helpers. Ask Codex to copy those helpers into the working directory and reuse them instead of reimplementing spacing, text-sizing, and image-placement logic on every deck.
+
+## Validation before delivery
+
+Decks are easy to get almost right and still ship with clipped text, substituted fonts, or layout drift that only shows up after export. The slides skill includes scripts to render decks to per-slide PNGs, build a quick montage for review, detect overflow beyond the slide canvas, and report missing or substituted fonts.
+
+Ask Codex to use those checks before it hands back the final deck, especially when slides are dense or margins are tight.
+
+## Example ideas
+
+Here are some ideas you could try with this use case:
+
+### New deck from scratch
+
+You can create new slide decks from scratch, describing what you want slide by slide and the overall vibe.
+If you have assets like logos or images, you can copy them in the same folder so that Codex can easily access them.
+
+### Deck template update
+
+You can update a deck template on a regular basis (weekly, monthly, quarterly, etc.) with new content.
+If you're doing this frequently, create a file like `guidelines.md` to define the content and structure of the deck and how it should be updated.
+
+Combine it with other skills to fetch information from your preferred data
+  sources.
+
+For example, if you need to give quarterly updates to your stakeholders, you can update the deck template with new numbers and insights.
+
+### Adjust existing deck
+
+If you built a deck but want to adjust it to fix spacing, misaligned text, or other layout issues, you can ask Codex to fix it.

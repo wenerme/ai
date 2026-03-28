@@ -9,6 +9,7 @@
 | Provider Doc | [Google AI Studio ↗](https://aistudio.google.com/) |
 | API Endpoint for Provider | https://generativelanguage.googleapis.com |
 | Supported OpenAI Endpoints | `/chat/completions`, [`/embeddings`](../embedding/supported_embedding#gemini-ai-embedding-models), `/completions`, [`/videos`](./gemini/videos.md), [`/images/edits`](../image_edits.md) |
+| Lyria (music) | [Cost map & notes](./gemini/music.md) |
 | Pass-through Endpoint | [Supported](../pass_through/google_ai_studio.md) |
 
 > **tip**: Gemini API vs Vertex AI

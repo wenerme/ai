@@ -52,11 +52,7 @@ Specifically, services will:
 You can modify the release schedule of the service in the Cloud console as shown below:
 
 <div class="eighty-percent">
-    <Image img={fast_release} size="lg" alt="Select Plan" border/>
-</div>
-
-<div class="eighty-percent">
-    <Image img={enroll_fast_release} size="lg" alt="Select Plan" border/>
+    <Image img={fast_release} size="lg" alt="Select release channel type" border/>
 </div>
 
 This **Fast release** channel is suitable for testing new features in non-critical environments. **It isn't recommended for production workloads with strict uptime and reliability requirements.**

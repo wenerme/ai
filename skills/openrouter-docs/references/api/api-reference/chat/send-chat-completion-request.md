@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChatResponse'
+                $ref: '#/components/schemas/ChatResult'
         '400':
           description: Bad Request - Invalid request parameters or malformed input
           content:
@@ -108,7 +108,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChatGenerationParams'
+              $ref: '#/components/schemas/ChatRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
@@ -189,6 +189,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Reka
         - Relace
         - SambaNova
         - Seed
@@ -207,21 +208,21 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ChatGenerationParamsProviderOrderItems:
+    ChatRequestProviderOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatGenerationParamsProviderOrderItems
-    ChatGenerationParamsProviderOnlyItems:
+      title: ChatRequestProviderOrderItems
+    ChatRequestProviderOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatGenerationParamsProviderOnlyItems
-    ChatGenerationParamsProviderIgnoreItems:
+      title: ChatRequestProviderOnlyItems
+    ChatRequestProviderIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatGenerationParamsProviderIgnoreItems
+      title: ChatRequestProviderIgnoreItems
     Quantization:
       type: string
       enum:
@@ -235,47 +236,47 @@ components:
         - fp32
         - unknown
       title: Quantization
-    ChatGenerationParamsProviderSort:
+    ChatRequestProviderSort:
       type: object
       properties: {}
-      title: ChatGenerationParamsProviderSort
+      title: ChatRequestProviderSort
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ChatGenerationParamsProviderMaxPriceCompletion:
+    ChatRequestProviderMaxPriceCompletion:
       type: object
       properties: {}
-      title: ChatGenerationParamsProviderMaxPriceCompletion
-    ChatGenerationParamsProviderMaxPriceImage:
+      title: ChatRequestProviderMaxPriceCompletion
+    ChatRequestProviderMaxPriceImage:
       type: object
       properties: {}
-      title: ChatGenerationParamsProviderMaxPriceImage
-    ChatGenerationParamsProviderMaxPriceAudio:
+      title: ChatRequestProviderMaxPriceImage
+    ChatRequestProviderMaxPriceAudio:
       type: object
       properties: {}
-      title: ChatGenerationParamsProviderMaxPriceAudio
-    ChatGenerationParamsProviderMaxPriceRequest:
+      title: ChatRequestProviderMaxPriceAudio
+    ChatRequestProviderMaxPriceRequest:
       type: object
       properties: {}
-      title: ChatGenerationParamsProviderMaxPriceRequest
-    ChatGenerationParamsProviderMaxPrice:
+      title: ChatRequestProviderMaxPriceRequest
+    ChatRequestProviderMaxPrice:
       type: object
       properties:
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderMaxPriceCompletion'
+          $ref: '#/components/schemas/ChatRequestProviderMaxPriceCompletion'
         image:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderMaxPriceImage'
+          $ref: '#/components/schemas/ChatRequestProviderMaxPriceImage'
         audio:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderMaxPriceAudio'
+          $ref: '#/components/schemas/ChatRequestProviderMaxPriceAudio'
         request:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderMaxPriceRequest'
+          $ref: '#/components/schemas/ChatRequestProviderMaxPriceRequest'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: ChatGenerationParamsProviderMaxPrice
+      title: ChatRequestProviderMaxPrice
     PercentileThroughputCutoffs:
       type: object
       properties:
@@ -365,7 +366,7 @@ components:
         using fallback models, this may cause a fallback model to be used
         instead of the primary model if it meets the threshold.
       title: PreferredMaxLatency
-    ChatGenerationParamsProvider:
+    ChatRequestProvider:
       type: object
       properties:
         allow_fallbacks:
@@ -412,7 +413,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatGenerationParamsProviderOrderItems'
+            $ref: '#/components/schemas/ChatRequestProviderOrderItems'
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -424,7 +425,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatGenerationParamsProviderOnlyItems'
+            $ref: '#/components/schemas/ChatRequestProviderOnlyItems'
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -433,7 +434,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatGenerationParamsProviderIgnoreItems'
+            $ref: '#/components/schemas/ChatRequestProviderIgnoreItems'
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
@@ -445,9 +446,9 @@ components:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
         sort:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderSort'
+          $ref: '#/components/schemas/ChatRequestProviderSort'
         max_price:
-          $ref: '#/components/schemas/ChatGenerationParamsProviderMaxPrice'
+          $ref: '#/components/schemas/ChatRequestProviderMaxPrice'
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -458,17 +459,17 @@ components:
       description: >-
         When multiple model providers are available, optionally indicate your
         routing preference.
-      title: ChatGenerationParamsProvider
-    ChatGenerationParamsPluginsItemsOneOf0Id:
+      title: ChatRequestProvider
+    ChatRequestPluginsItemsOneOf0Id:
       type: string
       enum:
         - auto-router
-      title: ChatGenerationParamsPluginsItemsOneOf0Id
-    ChatGenerationParamsPluginsItems0:
+      title: ChatRequestPluginsItemsOneOf0Id
+    ChatRequestPluginsItems0:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf0Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf0Id'
         enabled:
           type: boolean
           description: >-
@@ -485,25 +486,25 @@ components:
             models list.
       required:
         - id
-      title: ChatGenerationParamsPluginsItems0
-    ChatGenerationParamsPluginsItemsOneOf1Id:
+      title: ChatRequestPluginsItems0
+    ChatRequestPluginsItemsOneOf1Id:
       type: string
       enum:
         - moderation
-      title: ChatGenerationParamsPluginsItemsOneOf1Id
-    ChatGenerationParamsPluginsItems1:
+      title: ChatRequestPluginsItemsOneOf1Id
+    ChatRequestPluginsItems1:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf1Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf1Id'
       required:
         - id
-      title: ChatGenerationParamsPluginsItems1
-    ChatGenerationParamsPluginsItemsOneOf2Id:
+      title: ChatRequestPluginsItems1
+    ChatRequestPluginsItemsOneOf2Id:
       type: string
       enum:
         - web
-      title: ChatGenerationParamsPluginsItemsOneOf2Id
+      title: ChatRequestPluginsItemsOneOf2Id
     WebSearchEngine:
       type: string
       enum:
@@ -513,11 +514,11 @@ components:
         - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
-    ChatGenerationParamsPluginsItems2:
+    ChatRequestPluginsItems2:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf2Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf2Id'
         enabled:
           type: boolean
           description: >-
@@ -548,19 +549,31 @@ components:
             "openai.com/blog").
       required:
         - id
-      title: ChatGenerationParamsPluginsItems2
-    ChatGenerationParamsPluginsItemsOneOf3Id:
+      title: ChatRequestPluginsItems2
+    ChatRequestPluginsItemsOneOf3Id:
       type: string
       enum:
         - file-parser
-      title: ChatGenerationParamsPluginsItemsOneOf3Id
-    PDFParserEngine:
+      title: ChatRequestPluginsItemsOneOf3Id
+    PdfParserEngine0:
       type: string
       enum:
         - mistral-ocr
-        - pdf-text
         - native
-      description: The engine to use for parsing PDF files.
+        - cloudflare-ai
+      title: PdfParserEngine0
+    PdfParserEngine1:
+      type: string
+      enum:
+        - pdf-text
+      title: PdfParserEngine1
+    PDFParserEngine:
+      oneOf:
+        - $ref: '#/components/schemas/PdfParserEngine0'
+        - $ref: '#/components/schemas/PdfParserEngine1'
+      description: >-
+        The engine to use for parsing PDF files. "pdf-text" is deprecated and
+        automatically redirected to "cloudflare-ai".
       title: PDFParserEngine
     PDFParserOptions:
       type: object
@@ -569,11 +582,11 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    ChatGenerationParamsPluginsItems3:
+    ChatRequestPluginsItems3:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf3Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf3Id'
         enabled:
           type: boolean
           description: >-
@@ -583,17 +596,17 @@ components:
           $ref: '#/components/schemas/PDFParserOptions'
       required:
         - id
-      title: ChatGenerationParamsPluginsItems3
-    ChatGenerationParamsPluginsItemsOneOf4Id:
+      title: ChatRequestPluginsItems3
+    ChatRequestPluginsItemsOneOf4Id:
       type: string
       enum:
         - response-healing
-      title: ChatGenerationParamsPluginsItemsOneOf4Id
-    ChatGenerationParamsPluginsItems4:
+      title: ChatRequestPluginsItemsOneOf4Id
+    ChatRequestPluginsItems4:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf4Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf4Id'
         enabled:
           type: boolean
           description: >-
@@ -601,23 +614,23 @@ components:
             request. Defaults to true.
       required:
         - id
-      title: ChatGenerationParamsPluginsItems4
-    ChatGenerationParamsPluginsItemsOneOf5Id:
+      title: ChatRequestPluginsItems4
+    ChatRequestPluginsItemsOneOf5Id:
       type: string
       enum:
         - context-compression
-      title: ChatGenerationParamsPluginsItemsOneOf5Id
+      title: ChatRequestPluginsItemsOneOf5Id
     ContextCompressionEngine:
       type: string
       enum:
         - middle-out
       description: The compression engine to use. Defaults to "middle-out".
       title: ContextCompressionEngine
-    ChatGenerationParamsPluginsItems5:
+    ChatRequestPluginsItems5:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatGenerationParamsPluginsItemsOneOf5Id'
+          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf5Id'
         enabled:
           type: boolean
           description: >-
@@ -627,17 +640,17 @@ components:
           $ref: '#/components/schemas/ContextCompressionEngine'
       required:
         - id
-      title: ChatGenerationParamsPluginsItems5
-    ChatGenerationParamsPluginsItems:
+      title: ChatRequestPluginsItems5
+    ChatRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems0'
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems1'
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems2'
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems3'
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems4'
-        - $ref: '#/components/schemas/ChatGenerationParamsPluginsItems5'
-      title: ChatGenerationParamsPluginsItems
-    ChatGenerationParamsTrace:
+        - $ref: '#/components/schemas/ChatRequestPluginsItems0'
+        - $ref: '#/components/schemas/ChatRequestPluginsItems1'
+        - $ref: '#/components/schemas/ChatRequestPluginsItems2'
+        - $ref: '#/components/schemas/ChatRequestPluginsItems3'
+        - $ref: '#/components/schemas/ChatRequestPluginsItems4'
+        - $ref: '#/components/schemas/ChatRequestPluginsItems5'
+      title: ChatRequestPluginsItems
+    ChatRequestTrace:
       type: object
       properties:
         trace_id:
@@ -655,71 +668,71 @@ components:
         trace_name, span_name, generation_name, parent_span_id) have special
         handling. Additional keys are passed through as custom metadata to
         configured broadcast destinations.
-      title: ChatGenerationParamsTrace
-    SystemMessageRole:
+      title: ChatRequestTrace
+    ChatSystemMessageRole:
       type: string
       enum:
         - system
-      title: SystemMessageRole
-    ChatMessageContentItemTextType:
+      title: ChatSystemMessageRole
+    ChatContentTextType:
       type: string
       enum:
         - text
-      title: ChatMessageContentItemTextType
-    ChatMessageContentItemCacheControlType:
+      title: ChatContentTextType
+    ChatContentCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: ChatMessageContentItemCacheControlType
-    ChatMessageContentItemCacheControlTtl:
+      title: ChatContentCacheControlType
+    ChatContentCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: ChatMessageContentItemCacheControlTtl
-    ChatMessageContentItemCacheControl:
+      title: ChatContentCacheControlTtl
+    ChatContentCacheControl:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemCacheControlType'
+          $ref: '#/components/schemas/ChatContentCacheControlType'
         ttl:
-          $ref: '#/components/schemas/ChatMessageContentItemCacheControlTtl'
+          $ref: '#/components/schemas/ChatContentCacheControlTtl'
       required:
         - type
       description: Cache control for the content part
-      title: ChatMessageContentItemCacheControl
-    ChatMessageContentItemText:
+      title: ChatContentCacheControl
+    ChatContentText:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemTextType'
+          $ref: '#/components/schemas/ChatContentTextType'
         text:
           type: string
         cache_control:
-          $ref: '#/components/schemas/ChatMessageContentItemCacheControl'
+          $ref: '#/components/schemas/ChatContentCacheControl'
       required:
         - type
         - text
       description: Text content part
-      title: ChatMessageContentItemText
-    SystemMessageContent1:
+      title: ChatContentText
+    ChatSystemMessageContent1:
       type: array
       items:
-        $ref: '#/components/schemas/ChatMessageContentItemText'
-      title: SystemMessageContent1
-    SystemMessageContent:
+        $ref: '#/components/schemas/ChatContentText'
+      title: ChatSystemMessageContent1
+    ChatSystemMessageContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/SystemMessageContent1'
+        - $ref: '#/components/schemas/ChatSystemMessageContent1'
       description: System message content
-      title: SystemMessageContent
-    SystemMessage:
+      title: ChatSystemMessageContent
+    ChatSystemMessage:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/SystemMessageRole'
+          $ref: '#/components/schemas/ChatSystemMessageRole'
         content:
-          $ref: '#/components/schemas/SystemMessageContent'
+          $ref: '#/components/schemas/ChatSystemMessageContent'
           description: System message content
         name:
           type: string
@@ -728,55 +741,55 @@ components:
         - role
         - content
       description: System message for setting behavior
-      title: SystemMessage
-    UserMessageRole:
+      title: ChatSystemMessage
+    ChatUserMessageRole:
       type: string
       enum:
         - user
-      title: UserMessageRole
-    ChatMessageContentItemImageType:
+      title: ChatUserMessageRole
+    ChatContentImageType:
       type: string
       enum:
         - image_url
-      title: ChatMessageContentItemImageType
-    ChatMessageContentItemImageImageUrlDetail:
+      title: ChatContentImageType
+    ChatContentImageImageUrlDetail:
       type: string
       enum:
         - auto
         - low
         - high
       description: Image detail level for vision models
-      title: ChatMessageContentItemImageImageUrlDetail
-    ChatMessageContentItemImageImageUrl:
+      title: ChatContentImageImageUrlDetail
+    ChatContentImageImageUrl:
       type: object
       properties:
         url:
           type: string
           description: 'URL of the image (data: URLs supported)'
         detail:
-          $ref: '#/components/schemas/ChatMessageContentItemImageImageUrlDetail'
+          $ref: '#/components/schemas/ChatContentImageImageUrlDetail'
           description: Image detail level for vision models
       required:
         - url
-      title: ChatMessageContentItemImageImageUrl
-    ChatMessageContentItemImage:
+      title: ChatContentImageImageUrl
+    ChatContentImage:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemImageType'
+          $ref: '#/components/schemas/ChatContentImageType'
         image_url:
-          $ref: '#/components/schemas/ChatMessageContentItemImageImageUrl'
+          $ref: '#/components/schemas/ChatContentImageImageUrl'
       required:
         - type
         - image_url
       description: Image content part for vision models
-      title: ChatMessageContentItemImage
-    ChatMessageContentItemAudioType:
+      title: ChatContentImage
+    ChatContentAudioType:
       type: string
       enum:
         - input_audio
-      title: ChatMessageContentItemAudioType
-    ChatMessageContentItemAudioInputAudio:
+      title: ChatContentAudioType
+    ChatContentAudioInputAudio:
       type: object
       properties:
         data:
@@ -790,25 +803,25 @@ components:
       required:
         - data
         - format
-      title: ChatMessageContentItemAudioInputAudio
-    ChatMessageContentItemAudio:
+      title: ChatContentAudioInputAudio
+    ChatContentAudio:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemAudioType'
+          $ref: '#/components/schemas/ChatContentAudioType'
         input_audio:
-          $ref: '#/components/schemas/ChatMessageContentItemAudioInputAudio'
+          $ref: '#/components/schemas/ChatContentAudioInputAudio'
       required:
         - type
         - input_audio
       description: Audio input content part. Supported audio formats vary by provider.
-      title: ChatMessageContentItemAudio
-    ChatMessageContentItemVideoLegacyType:
+      title: ChatContentAudio
+    LegacyChatContentVideoType:
       type: string
       enum:
         - input_video
-      title: ChatMessageContentItemVideoLegacyType
-    VideoInput:
+      title: LegacyChatContentVideoType
+    ChatContentVideoInput:
       type: object
       properties:
         url:
@@ -817,47 +830,47 @@ components:
       required:
         - url
       description: Video input object
-      title: VideoInput
-    ChatMessageContentItemVideoLegacy:
+      title: ChatContentVideoInput
+    Legacy_ChatContentVideo:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemVideoLegacyType'
+          $ref: '#/components/schemas/LegacyChatContentVideoType'
         video_url:
-          $ref: '#/components/schemas/VideoInput'
+          $ref: '#/components/schemas/ChatContentVideoInput'
       required:
         - type
         - video_url
       description: Video input content part (legacy format - deprecated)
-      title: ChatMessageContentItemVideoLegacy
-    ChatMessageContentItemVideoType:
+      title: Legacy_ChatContentVideo
+    ChatContentVideoType:
       type: string
       enum:
         - video_url
-      title: ChatMessageContentItemVideoType
-    ChatMessageContentItemVideo:
+      title: ChatContentVideoType
+    ChatContentVideo:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemVideoType'
+          $ref: '#/components/schemas/ChatContentVideoType'
         video_url:
-          $ref: '#/components/schemas/VideoInput'
+          $ref: '#/components/schemas/ChatContentVideoInput'
       required:
         - type
         - video_url
       description: Video input content part
-      title: ChatMessageContentItemVideo
-    ChatMessageContentItem3:
+      title: ChatContentVideo
+    ChatContentItems3:
       oneOf:
-        - $ref: '#/components/schemas/ChatMessageContentItemVideoLegacy'
-        - $ref: '#/components/schemas/ChatMessageContentItemVideo'
-      title: ChatMessageContentItem3
-    ChatMessageContentItemFileType:
+        - $ref: '#/components/schemas/Legacy_ChatContentVideo'
+        - $ref: '#/components/schemas/ChatContentVideo'
+      title: ChatContentItems3
+    ChatContentFileType:
       type: string
       enum:
         - file
-      title: ChatMessageContentItemFileType
-    ChatMessageContentItemFileFile:
+      title: ChatContentFileType
+    ChatContentFileFile:
       type: object
       properties:
         file_data:
@@ -869,46 +882,46 @@ components:
         filename:
           type: string
           description: Original filename
-      title: ChatMessageContentItemFileFile
-    ChatMessageContentItemFile:
+      title: ChatContentFileFile
+    ChatContentFile:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatMessageContentItemFileType'
+          $ref: '#/components/schemas/ChatContentFileType'
         file:
-          $ref: '#/components/schemas/ChatMessageContentItemFileFile'
+          $ref: '#/components/schemas/ChatContentFileFile'
       required:
         - type
         - file
       description: File content part for document processing
-      title: ChatMessageContentItemFile
-    ChatMessageContentItem:
+      title: ChatContentFile
+    ChatContentItems:
       oneOf:
-        - $ref: '#/components/schemas/ChatMessageContentItemText'
-        - $ref: '#/components/schemas/ChatMessageContentItemImage'
-        - $ref: '#/components/schemas/ChatMessageContentItemAudio'
-        - $ref: '#/components/schemas/ChatMessageContentItem3'
-        - $ref: '#/components/schemas/ChatMessageContentItemFile'
+        - $ref: '#/components/schemas/ChatContentText'
+        - $ref: '#/components/schemas/ChatContentImage'
+        - $ref: '#/components/schemas/ChatContentAudio'
+        - $ref: '#/components/schemas/ChatContentItems3'
+        - $ref: '#/components/schemas/ChatContentFile'
       description: Content part for chat completion messages
-      title: ChatMessageContentItem
-    UserMessageContent1:
+      title: ChatContentItems
+    ChatUserMessageContent1:
       type: array
       items:
-        $ref: '#/components/schemas/ChatMessageContentItem'
-      title: UserMessageContent1
-    UserMessageContent:
+        $ref: '#/components/schemas/ChatContentItems'
+      title: ChatUserMessageContent1
+    ChatUserMessageContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/UserMessageContent1'
+        - $ref: '#/components/schemas/ChatUserMessageContent1'
       description: User message content
-      title: UserMessageContent
-    UserMessage:
+      title: ChatUserMessageContent
+    ChatUserMessage:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/UserMessageRole'
+          $ref: '#/components/schemas/ChatUserMessageRole'
         content:
-          $ref: '#/components/schemas/UserMessageContent'
+          $ref: '#/components/schemas/ChatUserMessageContent'
           description: User message content
         name:
           type: string
@@ -917,30 +930,30 @@ components:
         - role
         - content
       description: User message
-      title: UserMessage
-    DeveloperMessageRole:
+      title: ChatUserMessage
+    ChatDeveloperMessageRole:
       type: string
       enum:
         - developer
-      title: DeveloperMessageRole
-    DeveloperMessageContent1:
+      title: ChatDeveloperMessageRole
+    ChatDeveloperMessageContent1:
       type: array
       items:
-        $ref: '#/components/schemas/ChatMessageContentItemText'
-      title: DeveloperMessageContent1
-    DeveloperMessageContent:
+        $ref: '#/components/schemas/ChatContentText'
+      title: ChatDeveloperMessageContent1
+    ChatDeveloperMessageContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/DeveloperMessageContent1'
+        - $ref: '#/components/schemas/ChatDeveloperMessageContent1'
       description: Developer message content
-      title: DeveloperMessageContent
-    DeveloperMessage:
+      title: ChatDeveloperMessageContent
+    ChatDeveloperMessage:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/DeveloperMessageRole'
+          $ref: '#/components/schemas/ChatDeveloperMessageRole'
         content:
-          $ref: '#/components/schemas/DeveloperMessageContent'
+          $ref: '#/components/schemas/ChatDeveloperMessageContent'
           description: Developer message content
         name:
           type: string
@@ -949,30 +962,30 @@ components:
         - role
         - content
       description: Developer message
-      title: DeveloperMessage
-    AssistantMessageRole:
+      title: ChatDeveloperMessage
+    ChatAssistantMessageRole:
       type: string
       enum:
         - assistant
-      title: AssistantMessageRole
-    AssistantMessageContent1:
+      title: ChatAssistantMessageRole
+    ChatAssistantMessageContent1:
       type: array
       items:
-        $ref: '#/components/schemas/ChatMessageContentItem'
-      title: AssistantMessageContent1
-    AssistantMessageContent:
+        $ref: '#/components/schemas/ChatContentItems'
+      title: ChatAssistantMessageContent1
+    ChatAssistantMessageContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/AssistantMessageContent1'
+        - $ref: '#/components/schemas/ChatAssistantMessageContent1'
         - description: Any type
       description: Assistant message content
-      title: AssistantMessageContent
-    ChatMessageToolCallType:
+      title: ChatAssistantMessageContent
+    ChatToolCallType:
       type: string
       enum:
         - function
-      title: ChatMessageToolCallType
-    ChatMessageToolCallFunction:
+      title: ChatToolCallType
+    ChatToolCallFunction:
       type: object
       properties:
         name:
@@ -984,23 +997,23 @@ components:
       required:
         - name
         - arguments
-      title: ChatMessageToolCallFunction
-    ChatMessageToolCall:
+      title: ChatToolCallFunction
+    ChatToolCall:
       type: object
       properties:
         id:
           type: string
           description: Tool call identifier
         type:
-          $ref: '#/components/schemas/ChatMessageToolCallType'
+          $ref: '#/components/schemas/ChatToolCallType'
         function:
-          $ref: '#/components/schemas/ChatMessageToolCallFunction'
+          $ref: '#/components/schemas/ChatToolCallFunction'
       required:
         - id
         - type
         - function
       description: Tool call made by the assistant
-      title: ChatMessageToolCall
+      title: ChatToolCall
     ReasoningDetailSummaryType:
       type: string
       enum:
@@ -1127,13 +1140,13 @@ components:
         - $ref: '#/components/schemas/ReasoningDetailText'
       description: Reasoning detail union schema
       title: ReasoningDetailUnion
-    AssistantMessageReasoningDetails:
+    ChatReasoningDetails:
       type: array
       items:
         $ref: '#/components/schemas/ReasoningDetailUnion'
       description: Reasoning details for extended thinking models
-      title: AssistantMessageReasoningDetails
-    AssistantMessageImagesItemsImageUrl:
+      title: ChatReasoningDetails
+    ChatAssistantImagesItemsImageUrl:
       type: object
       properties:
         url:
@@ -1141,22 +1154,22 @@ components:
           description: URL or base64-encoded data of the generated image
       required:
         - url
-      title: AssistantMessageImagesItemsImageUrl
-    AssistantMessageImagesItems:
+      title: ChatAssistantImagesItemsImageUrl
+    ChatAssistantImagesItems:
       type: object
       properties:
         image_url:
-          $ref: '#/components/schemas/AssistantMessageImagesItemsImageUrl'
+          $ref: '#/components/schemas/ChatAssistantImagesItemsImageUrl'
       required:
         - image_url
-      title: AssistantMessageImagesItems
-    AssistantMessageImages:
+      title: ChatAssistantImagesItems
+    ChatAssistantImages:
       type: array
       items:
-        $ref: '#/components/schemas/AssistantMessageImagesItems'
+        $ref: '#/components/schemas/ChatAssistantImagesItems'
       description: Generated images from image generation models
-      title: AssistantMessageImages
-    ChatCompletionAudioOutput:
+      title: ChatAssistantImages
+    ChatAudioOutput:
       type: object
       properties:
         id:
@@ -1173,14 +1186,14 @@ components:
           type: string
           description: Audio transcript
       description: Audio output data or reference
-      title: ChatCompletionAudioOutput
-    AssistantMessage:
+      title: ChatAudioOutput
+    ChatAssistantMessage:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/AssistantMessageRole'
+          $ref: '#/components/schemas/ChatAssistantMessageRole'
         content:
-          $ref: '#/components/schemas/AssistantMessageContent'
+          $ref: '#/components/schemas/ChatAssistantMessageContent'
           description: Assistant message content
         name:
           type: string
@@ -1188,7 +1201,7 @@ components:
         tool_calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChatMessageToolCall'
+            $ref: '#/components/schemas/ChatToolCall'
           description: Tool calls made by the assistant
         refusal:
           type:
@@ -1201,38 +1214,38 @@ components:
             - 'null'
           description: Reasoning output
         reasoning_details:
-          $ref: '#/components/schemas/AssistantMessageReasoningDetails'
+          $ref: '#/components/schemas/ChatReasoningDetails'
         images:
-          $ref: '#/components/schemas/AssistantMessageImages'
+          $ref: '#/components/schemas/ChatAssistantImages'
         audio:
-          $ref: '#/components/schemas/ChatCompletionAudioOutput'
+          $ref: '#/components/schemas/ChatAudioOutput'
       required:
         - role
       description: Assistant message for requests and responses
-      title: AssistantMessage
-    ToolResponseMessageRole:
+      title: ChatAssistantMessage
+    ChatToolMessageRole:
       type: string
       enum:
         - tool
-      title: ToolResponseMessageRole
-    ToolResponseMessageContent1:
+      title: ChatToolMessageRole
+    ChatToolMessageContent1:
       type: array
       items:
-        $ref: '#/components/schemas/ChatMessageContentItem'
-      title: ToolResponseMessageContent1
-    ToolResponseMessageContent:
+        $ref: '#/components/schemas/ChatContentItems'
+      title: ChatToolMessageContent1
+    ChatToolMessageContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/ToolResponseMessageContent1'
+        - $ref: '#/components/schemas/ChatToolMessageContent1'
       description: Tool response content
-      title: ToolResponseMessageContent
-    ToolResponseMessage:
+      title: ChatToolMessageContent
+    ChatToolMessage:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/ToolResponseMessageRole'
+          $ref: '#/components/schemas/ChatToolMessageRole'
         content:
-          $ref: '#/components/schemas/ToolResponseMessageContent'
+          $ref: '#/components/schemas/ChatToolMessageContent'
           description: Tool response content
         tool_call_id:
           type: string
@@ -1242,31 +1255,31 @@ components:
         - content
         - tool_call_id
       description: Tool response message
-      title: ToolResponseMessage
-    Message:
+      title: ChatToolMessage
+    ChatMessages:
       oneOf:
-        - $ref: '#/components/schemas/SystemMessage'
-        - $ref: '#/components/schemas/UserMessage'
-        - $ref: '#/components/schemas/DeveloperMessage'
-        - $ref: '#/components/schemas/AssistantMessage'
-        - $ref: '#/components/schemas/ToolResponseMessage'
+        - $ref: '#/components/schemas/ChatSystemMessage'
+        - $ref: '#/components/schemas/ChatUserMessage'
+        - $ref: '#/components/schemas/ChatDeveloperMessage'
+        - $ref: '#/components/schemas/ChatAssistantMessage'
+        - $ref: '#/components/schemas/ChatToolMessage'
       description: Chat completion message with role-based discrimination
-      title: Message
+      title: ChatMessages
     ModelName:
       type: string
       description: Model to use for completion
       title: ModelName
-    ModelNamesItems:
+    ChatModelNamesItems:
       type: object
       properties: {}
-      title: ModelNamesItems
-    ModelNames:
+      title: ChatModelNamesItems
+    ChatModelNames:
       type: array
       items:
-        $ref: '#/components/schemas/ModelNamesItems'
+        $ref: '#/components/schemas/ChatModelNamesItems'
       description: Models to use for completion
-      title: ModelNames
-    ChatGenerationParamsReasoningEffort:
+      title: ChatModelNames
+    ChatRequestReasoningEffort:
       type: string
       enum:
         - xhigh
@@ -1276,66 +1289,66 @@ components:
         - minimal
         - none
       description: Constrains effort on reasoning for reasoning models
-      title: ChatGenerationParamsReasoningEffort
-    ReasoningSummaryVerbosity:
+      title: ChatRequestReasoningEffort
+    ChatReasoningSummaryVerbosityEnum:
       type: string
       enum:
         - auto
         - concise
         - detailed
-      title: ReasoningSummaryVerbosity
-    ChatGenerationParamsReasoningSummary:
+      title: ChatReasoningSummaryVerbosityEnum
+    ChatRequestReasoningSummary:
       oneOf:
-        - $ref: '#/components/schemas/ReasoningSummaryVerbosity'
+        - $ref: '#/components/schemas/ChatReasoningSummaryVerbosityEnum'
         - description: Any type
         - description: Any type
-      title: ChatGenerationParamsReasoningSummary
-    ChatGenerationParamsReasoning:
+      title: ChatRequestReasoningSummary
+    ChatRequestReasoning:
       type: object
       properties:
         effort:
           oneOf:
-            - $ref: '#/components/schemas/ChatGenerationParamsReasoningEffort'
+            - $ref: '#/components/schemas/ChatRequestReasoningEffort'
             - type: 'null'
           description: Constrains effort on reasoning for reasoning models
         summary:
-          $ref: '#/components/schemas/ChatGenerationParamsReasoningSummary'
+          $ref: '#/components/schemas/ChatRequestReasoningSummary'
       description: Configuration options for reasoning models
-      title: ChatGenerationParamsReasoning
-    ResponseFormatTextType:
+      title: ChatRequestReasoning
+    ChatFormatTextConfigType:
       type: string
       enum:
         - text
-      title: ResponseFormatTextType
-    ResponseFormatText:
+      title: ChatFormatTextConfigType
+    ChatFormatTextConfig:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ResponseFormatTextType'
+          $ref: '#/components/schemas/ChatFormatTextConfigType'
       required:
         - type
       description: Default text response format
-      title: ResponseFormatText
-    ResponseFormatJsonObjectType:
+      title: ChatFormatTextConfig
+    FormatJsonObjectConfigType:
       type: string
       enum:
         - json_object
-      title: ResponseFormatJsonObjectType
-    ResponseFormatJSONObject:
+      title: FormatJsonObjectConfigType
+    FormatJsonObjectConfig:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ResponseFormatJsonObjectType'
+          $ref: '#/components/schemas/FormatJsonObjectConfigType'
       required:
         - type
       description: JSON object response format
-      title: ResponseFormatJSONObject
-    ResponseFormatJsonSchemaType:
+      title: FormatJsonObjectConfig
+    ChatFormatJsonSchemaConfigType:
       type: string
       enum:
         - json_schema
-      title: ResponseFormatJsonSchemaType
-    JSONSchemaConfig:
+      title: ChatFormatJsonSchemaConfigType
+    ChatJsonSchemaConfig:
       type: object
       properties:
         name:
@@ -1357,29 +1370,29 @@ components:
       required:
         - name
       description: JSON Schema configuration object
-      title: JSONSchemaConfig
-    ResponseFormatJSONSchema:
+      title: ChatJsonSchemaConfig
+    ChatFormatJsonSchemaConfig:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ResponseFormatJsonSchemaType'
+          $ref: '#/components/schemas/ChatFormatJsonSchemaConfigType'
         json_schema:
-          $ref: '#/components/schemas/JSONSchemaConfig'
+          $ref: '#/components/schemas/ChatJsonSchemaConfig'
       required:
         - type
         - json_schema
       description: JSON Schema response format for structured outputs
-      title: ResponseFormatJSONSchema
-    ResponseFormatTextGrammarType:
+      title: ChatFormatJsonSchemaConfig
+    ChatFormatGrammarConfigType:
       type: string
       enum:
         - grammar
-      title: ResponseFormatTextGrammarType
-    ResponseFormatTextGrammar:
+      title: ChatFormatGrammarConfigType
+    ChatFormatGrammarConfig:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ResponseFormatTextGrammarType'
+          $ref: '#/components/schemas/ChatFormatGrammarConfigType'
         grammar:
           type: string
           description: Custom grammar for text generation
@@ -1387,31 +1400,31 @@ components:
         - type
         - grammar
       description: Custom grammar response format
-      title: ResponseFormatTextGrammar
-    ResponseFormatTextPythonType:
+      title: ChatFormatGrammarConfig
+    ChatFormatPythonConfigType:
       type: string
       enum:
         - python
-      title: ResponseFormatTextPythonType
-    ResponseFormatTextPython:
+      title: ChatFormatPythonConfigType
+    ChatFormatPythonConfig:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ResponseFormatTextPythonType'
+          $ref: '#/components/schemas/ChatFormatPythonConfigType'
       required:
         - type
       description: Python code response format
-      title: ResponseFormatTextPython
-    ChatGenerationParamsResponseFormat:
+      title: ChatFormatPythonConfig
+    ChatRequestResponseFormat:
       oneOf:
-        - $ref: '#/components/schemas/ResponseFormatText'
-        - $ref: '#/components/schemas/ResponseFormatJSONObject'
-        - $ref: '#/components/schemas/ResponseFormatJSONSchema'
-        - $ref: '#/components/schemas/ResponseFormatTextGrammar'
-        - $ref: '#/components/schemas/ResponseFormatTextPython'
+        - $ref: '#/components/schemas/ChatFormatTextConfig'
+        - $ref: '#/components/schemas/FormatJsonObjectConfig'
+        - $ref: '#/components/schemas/ChatFormatJsonSchemaConfig'
+        - $ref: '#/components/schemas/ChatFormatGrammarConfig'
+        - $ref: '#/components/schemas/ChatFormatPythonConfig'
       description: Response format configuration
-      title: ChatGenerationParamsResponseFormat
-    ChatGenerationParamsStop:
+      title: ChatRequestResponseFormat
+    ChatRequestStop:
       oneOf:
         - type: string
         - type: array
@@ -1419,7 +1432,7 @@ components:
             type: string
         - description: Any type
       description: Stop sequences (up to 4)
-      title: ChatGenerationParamsStop
+      title: ChatRequestStop
     ChatStreamOptions:
       type: object
       properties:
@@ -1430,27 +1443,27 @@ components:
             included.
       description: Streaming configuration options
       title: ChatStreamOptions
-    ToolChoiceOption0:
+    ChatToolChoice0:
       type: string
       enum:
         - none
-      title: ToolChoiceOption0
-    ToolChoiceOption1:
+      title: ChatToolChoice0
+    ChatToolChoice1:
       type: string
       enum:
         - auto
-      title: ToolChoiceOption1
-    ToolChoiceOption2:
+      title: ChatToolChoice1
+    ChatToolChoice2:
       type: string
       enum:
         - required
-      title: ToolChoiceOption2
-    NamedToolChoiceType:
+      title: ChatToolChoice2
+    ChatNamedToolChoiceType:
       type: string
       enum:
         - function
-      title: NamedToolChoiceType
-    NamedToolChoiceFunction:
+      title: ChatNamedToolChoiceType
+    ChatNamedToolChoiceFunction:
       type: object
       properties:
         name:
@@ -1458,33 +1471,33 @@ components:
           description: Function name to call
       required:
         - name
-      title: NamedToolChoiceFunction
-    NamedToolChoice:
+      title: ChatNamedToolChoiceFunction
+    ChatNamedToolChoice:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/NamedToolChoiceType'
+          $ref: '#/components/schemas/ChatNamedToolChoiceType'
         function:
-          $ref: '#/components/schemas/NamedToolChoiceFunction'
+          $ref: '#/components/schemas/ChatNamedToolChoiceFunction'
       required:
         - type
         - function
       description: Named tool choice for specific function
-      title: NamedToolChoice
-    ToolChoiceOption:
+      title: ChatNamedToolChoice
+    ChatToolChoice:
       oneOf:
-        - $ref: '#/components/schemas/ToolChoiceOption0'
-        - $ref: '#/components/schemas/ToolChoiceOption1'
-        - $ref: '#/components/schemas/ToolChoiceOption2'
-        - $ref: '#/components/schemas/NamedToolChoice'
+        - $ref: '#/components/schemas/ChatToolChoice0'
+        - $ref: '#/components/schemas/ChatToolChoice1'
+        - $ref: '#/components/schemas/ChatToolChoice2'
+        - $ref: '#/components/schemas/ChatNamedToolChoice'
       description: Tool choice configuration
-      title: ToolChoiceOption
-    ToolDefinitionJsonOneOf0Type:
+      title: ChatToolChoice
+    ChatFunctionToolOneOf0Type:
       type: string
       enum:
         - function
-      title: ToolDefinitionJsonOneOf0Type
-    ToolDefinitionJsonOneOf0Function:
+      title: ChatFunctionToolOneOf0Type
+    ChatFunctionToolOneOf0Function:
       type: object
       properties:
         name:
@@ -1506,21 +1519,21 @@ components:
       required:
         - name
       description: Function definition for tool calling
-      title: ToolDefinitionJsonOneOf0Function
-    ToolDefinitionJson0:
+      title: ChatFunctionToolOneOf0Function
+    ChatFunctionTool0:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ToolDefinitionJsonOneOf0Type'
+          $ref: '#/components/schemas/ChatFunctionToolOneOf0Type'
         function:
-          $ref: '#/components/schemas/ToolDefinitionJsonOneOf0Function'
+          $ref: '#/components/schemas/ChatFunctionToolOneOf0Function'
           description: Function definition for tool calling
         cache_control:
-          $ref: '#/components/schemas/ChatMessageContentItemCacheControl'
+          $ref: '#/components/schemas/ChatContentCacheControl'
       required:
         - type
         - function
-      title: ToolDefinitionJson0
+      title: ChatFunctionTool0
     DatetimeServerToolType:
       type: string
       enum:
@@ -1544,23 +1557,26 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
-    WebSearchServerToolType:
+    ChatWebSearchServerToolType:
       type: string
       enum:
         - openrouter:web_search
-      title: WebSearchServerToolType
-    WebSearchServerToolParametersEngine:
+      title: ChatWebSearchServerToolType
+    ChatWebSearchServerToolParametersEngine:
       type: string
       enum:
         - auto
         - native
         - exa
+        - firecrawl
+        - parallel
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API.
-      title: WebSearchServerToolParametersEngine
-    WebSearchServerToolParametersSearchContextSize:
+        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
+        (requires BYOK). "parallel" uses the Parallel search API.
+      title: ChatWebSearchServerToolParametersEngine
+    ChatWebSearchServerToolParametersSearchContextSize:
       type: string
       enum:
         - low
@@ -1568,18 +1584,20 @@ components:
         - high
       description: >-
         How much context to retrieve per result. Defaults to medium (15000
-        chars).
-      title: WebSearchServerToolParametersSearchContextSize
-    WebSearchServerToolParametersUserLocationType:
+        chars). Only applies when using the Exa engine; ignored with native
+        provider search.
+      title: ChatWebSearchServerToolParametersSearchContextSize
+    ChatWebSearchServerToolParametersUserLocationType:
       type: string
       enum:
         - approximate
-      title: WebSearchServerToolParametersUserLocationType
-    WebSearchServerToolParametersUserLocation:
+      title: ChatWebSearchServerToolParametersUserLocationType
+    ChatWebSearchServerToolParametersUserLocation:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchServerToolParametersUserLocationType'
+          $ref: >-
+            #/components/schemas/ChatWebSearchServerToolParametersUserLocationType
         city:
           type: string
         region:
@@ -1589,22 +1607,24 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: WebSearchServerToolParametersUserLocation
-    WebSearchServerToolParameters:
+      title: ChatWebSearchServerToolParametersUserLocation
+    ChatWebSearchServerToolParameters:
       type: object
       properties:
         engine:
-          $ref: '#/components/schemas/WebSearchServerToolParametersEngine'
+          $ref: '#/components/schemas/ChatWebSearchServerToolParametersEngine'
           description: >-
             Which search engine to use. "auto" (default) uses native if the
             provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API.
+            built-in search. "exa" forces the Exa search API. "firecrawl" uses
+            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
         max_results:
           type: number
           format: double
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5.
+            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
+            native provider search.
         max_total_results:
           type: number
           format: double
@@ -1614,57 +1634,67 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: '#/components/schemas/WebSearchServerToolParametersSearchContextSize'
+          $ref: >-
+            #/components/schemas/ChatWebSearchServerToolParametersSearchContextSize
           description: >-
             How much context to retrieve per result. Defaults to medium (15000
-            chars).
+            chars). Only applies when using the Exa engine; ignored with native
+            provider search.
         user_location:
-          $ref: '#/components/schemas/WebSearchServerToolParametersUserLocation'
+          $ref: '#/components/schemas/ChatWebSearchServerToolParametersUserLocation'
           description: Approximate user location for location-biased results.
         allowed_domains:
           type: array
           items:
             type: string
-          description: Limit search results to these domains.
+          description: >-
+            Limit search results to these domains. Applies to Exa and Parallel
+            engines. Not supported with Firecrawl or native provider search.
         excluded_domains:
           type: array
           items:
             type: string
-          description: Exclude search results from these domains.
-      title: WebSearchServerToolParameters
-    WebSearchServerTool:
+          description: >-
+            Exclude search results from these domains. Applies to Exa and
+            Parallel engines. Not supported with Firecrawl or native provider
+            search.
+      title: ChatWebSearchServerToolParameters
+    ChatWebSearchServerTool:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchServerToolType'
+          $ref: '#/components/schemas/ChatWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/WebSearchServerToolParameters'
+          $ref: '#/components/schemas/ChatWebSearchServerToolParameters'
       required:
         - type
       description: >-
         OpenRouter built-in server tool: searches the web for current
         information
-      title: WebSearchServerTool
-    WebSearchShorthandType:
+      title: ChatWebSearchServerTool
+    ChatWebSearchShorthandType:
       type: string
       enum:
         - web_search
         - web_search_preview
         - web_search_preview_2025_03_11
         - web_search_2025_08_26
-      title: WebSearchShorthandType
-    WebSearchShorthandEngine:
+      title: ChatWebSearchShorthandType
+    ChatWebSearchShorthandEngine:
       type: string
       enum:
         - auto
         - native
         - exa
+        - firecrawl
+        - parallel
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API.
-      title: WebSearchShorthandEngine
-    WebSearchShorthandSearchContextSize:
+        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
+        (requires BYOK). "parallel" uses the Parallel search API.
+      title: ChatWebSearchShorthandEngine
+    ChatWebSearchShorthandSearchContextSize:
       type: string
       enum:
         - low
@@ -1672,18 +1702,19 @@ components:
         - high
       description: >-
         How much context to retrieve per result. Defaults to medium (15000
-        chars).
-      title: WebSearchShorthandSearchContextSize
-    WebSearchShorthandUserLocationType:
+        chars). Only applies when using the Exa engine; ignored with native
+        provider search.
+      title: ChatWebSearchShorthandSearchContextSize
+    ChatWebSearchShorthandUserLocationType:
       type: string
       enum:
         - approximate
-      title: WebSearchShorthandUserLocationType
-    WebSearchShorthandUserLocation:
+      title: ChatWebSearchShorthandUserLocationType
+    ChatWebSearchShorthandUserLocation:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchShorthandUserLocationType'
+          $ref: '#/components/schemas/ChatWebSearchShorthandUserLocationType'
         city:
           type: string
         region:
@@ -1693,19 +1724,22 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: WebSearchShorthandUserLocation
-    WebSearchShorthandParametersEngine:
+      title: ChatWebSearchShorthandUserLocation
+    ChatWebSearchShorthandParametersEngine:
       type: string
       enum:
         - auto
         - native
         - exa
+        - firecrawl
+        - parallel
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API.
-      title: WebSearchShorthandParametersEngine
-    WebSearchShorthandParametersSearchContextSize:
+        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
+        (requires BYOK). "parallel" uses the Parallel search API.
+      title: ChatWebSearchShorthandParametersEngine
+    ChatWebSearchShorthandParametersSearchContextSize:
       type: string
       enum:
         - low
@@ -1713,18 +1747,20 @@ components:
         - high
       description: >-
         How much context to retrieve per result. Defaults to medium (15000
-        chars).
-      title: WebSearchShorthandParametersSearchContextSize
-    WebSearchShorthandParametersUserLocationType:
+        chars). Only applies when using the Exa engine; ignored with native
+        provider search.
+      title: ChatWebSearchShorthandParametersSearchContextSize
+    ChatWebSearchShorthandParametersUserLocationType:
       type: string
       enum:
         - approximate
-      title: WebSearchShorthandParametersUserLocationType
-    WebSearchShorthandParametersUserLocation:
+      title: ChatWebSearchShorthandParametersUserLocationType
+    ChatWebSearchShorthandParametersUserLocation:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchShorthandParametersUserLocationType'
+          $ref: >-
+            #/components/schemas/ChatWebSearchShorthandParametersUserLocationType
         city:
           type: string
         region:
@@ -1734,22 +1770,24 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: WebSearchShorthandParametersUserLocation
-    WebSearchShorthandParameters:
+      title: ChatWebSearchShorthandParametersUserLocation
+    ChatWebSearchShorthandParameters:
       type: object
       properties:
         engine:
-          $ref: '#/components/schemas/WebSearchShorthandParametersEngine'
+          $ref: '#/components/schemas/ChatWebSearchShorthandParametersEngine'
           description: >-
             Which search engine to use. "auto" (default) uses native if the
             provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API.
+            built-in search. "exa" forces the Exa search API. "firecrawl" uses
+            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
         max_results:
           type: number
           format: double
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5.
+            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
+            native provider search.
         max_total_results:
           type: number
           format: double
@@ -1759,41 +1797,50 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: '#/components/schemas/WebSearchShorthandParametersSearchContextSize'
+          $ref: >-
+            #/components/schemas/ChatWebSearchShorthandParametersSearchContextSize
           description: >-
             How much context to retrieve per result. Defaults to medium (15000
-            chars).
+            chars). Only applies when using the Exa engine; ignored with native
+            provider search.
         user_location:
-          $ref: '#/components/schemas/WebSearchShorthandParametersUserLocation'
+          $ref: '#/components/schemas/ChatWebSearchShorthandParametersUserLocation'
           description: Approximate user location for location-biased results.
         allowed_domains:
           type: array
           items:
             type: string
-          description: Limit search results to these domains.
+          description: >-
+            Limit search results to these domains. Applies to Exa and Parallel
+            engines. Not supported with Firecrawl or native provider search.
         excluded_domains:
           type: array
           items:
             type: string
-          description: Exclude search results from these domains.
-      title: WebSearchShorthandParameters
-    WebSearchShorthand:
+          description: >-
+            Exclude search results from these domains. Applies to Exa and
+            Parallel engines. Not supported with Firecrawl or native provider
+            search.
+      title: ChatWebSearchShorthandParameters
+    ChatWebSearchShorthand:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/WebSearchShorthandType'
+          $ref: '#/components/schemas/ChatWebSearchShorthandType'
         engine:
-          $ref: '#/components/schemas/WebSearchShorthandEngine'
+          $ref: '#/components/schemas/ChatWebSearchShorthandEngine'
           description: >-
             Which search engine to use. "auto" (default) uses native if the
             provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API.
+            built-in search. "exa" forces the Exa search API. "firecrawl" uses
+            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
         max_results:
           type: number
           format: double
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5.
+            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
+            native provider search.
         max_total_results:
           type: number
           format: double
@@ -1803,42 +1850,48 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: '#/components/schemas/WebSearchShorthandSearchContextSize'
+          $ref: '#/components/schemas/ChatWebSearchShorthandSearchContextSize'
           description: >-
             How much context to retrieve per result. Defaults to medium (15000
-            chars).
+            chars). Only applies when using the Exa engine; ignored with native
+            provider search.
         user_location:
-          $ref: '#/components/schemas/WebSearchShorthandUserLocation'
+          $ref: '#/components/schemas/ChatWebSearchShorthandUserLocation'
           description: Approximate user location for location-biased results.
         allowed_domains:
           type: array
           items:
             type: string
-          description: Limit search results to these domains.
+          description: >-
+            Limit search results to these domains. Applies to Exa and Parallel
+            engines. Not supported with Firecrawl or native provider search.
         excluded_domains:
           type: array
           items:
             type: string
-          description: Exclude search results from these domains.
+          description: >-
+            Exclude search results from these domains. Applies to Exa and
+            Parallel engines. Not supported with Firecrawl or native provider
+            search.
         parameters:
-          $ref: '#/components/schemas/WebSearchShorthandParameters'
+          $ref: '#/components/schemas/ChatWebSearchShorthandParameters'
       required:
         - type
       description: >-
         Web search tool using OpenAI Responses API syntax. Automatically
         converted to openrouter:web_search.
-      title: WebSearchShorthand
-    ToolDefinitionJson:
+      title: ChatWebSearchShorthand
+    ChatFunctionTool:
       oneOf:
-        - $ref: '#/components/schemas/ToolDefinitionJson0'
+        - $ref: '#/components/schemas/ChatFunctionTool0'
         - $ref: '#/components/schemas/DatetimeServerTool'
-        - $ref: '#/components/schemas/WebSearchServerTool'
-        - $ref: '#/components/schemas/WebSearchShorthand'
+        - $ref: '#/components/schemas/ChatWebSearchServerTool'
+        - $ref: '#/components/schemas/ChatWebSearchShorthand'
       description: >-
         Tool definition for function calling (regular function or OpenRouter
         built-in server tool)
-      title: ToolDefinitionJson
-    DebugOptions:
+      title: ChatFunctionTool
+    ChatDebugOptions:
       type: object
       properties:
         echo_upstream_body:
@@ -1847,8 +1900,8 @@ components:
             If true, includes the transformed upstream request body in a debug
             chunk at the start of the stream. Only works with streaming mode.
       description: Debug options for inspecting request transformations (streaming only)
-      title: DebugOptions
-    ChatGenerationParamsImageConfig:
+      title: ChatDebugOptions
+    ChatRequestImageConfig:
       oneOf:
         - type: string
         - type: number
@@ -1856,45 +1909,55 @@ components:
         - type: array
           items:
             description: Any type
-      title: ChatGenerationParamsImageConfig
-    ChatGenerationParamsModalitiesItems:
+      title: ChatRequestImageConfig
+    ChatRequestModalitiesItems:
       type: string
       enum:
         - text
         - image
         - audio
-      title: ChatGenerationParamsModalitiesItems
-    ChatGenerationParamsCacheControlType:
+      title: ChatRequestModalitiesItems
+    ChatRequestCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: ChatGenerationParamsCacheControlType
-    ChatGenerationParamsCacheControlTtl:
+      title: ChatRequestCacheControlType
+    ChatRequestCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: ChatGenerationParamsCacheControlTtl
-    ChatGenerationParamsCacheControl:
+      title: ChatRequestCacheControlTtl
+    ChatRequestCacheControl:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatGenerationParamsCacheControlType'
+          $ref: '#/components/schemas/ChatRequestCacheControlType'
         ttl:
-          $ref: '#/components/schemas/ChatGenerationParamsCacheControlTtl'
+          $ref: '#/components/schemas/ChatRequestCacheControlTtl'
       required:
         - type
       description: >-
         Enable automatic prompt caching. When set, the system automatically
         applies cache breakpoints to the last cacheable block in the request.
         Currently supported for Anthropic Claude models.
-      title: ChatGenerationParamsCacheControl
-    ChatGenerationParams:
+      title: ChatRequestCacheControl
+    ChatRequestServiceTier:
+      type: string
+      enum:
+        - auto
+        - default
+        - flex
+        - priority
+        - scale
+      description: The service tier to use for processing this request.
+      title: ChatRequestServiceTier
+    ChatRequest:
       type: object
       properties:
         provider:
           oneOf:
-            - $ref: '#/components/schemas/ChatGenerationParamsProvider'
+            - $ref: '#/components/schemas/ChatRequestProvider'
             - type: 'null'
           description: >-
             When multiple model providers are available, optionally indicate
@@ -1902,7 +1965,7 @@ components:
         plugins:
           type: array
           items:
-            $ref: '#/components/schemas/ChatGenerationParamsPluginsItems'
+            $ref: '#/components/schemas/ChatRequestPluginsItems'
           description: >-
             Plugins you want to enable for this request, including their
             settings.
@@ -1915,9 +1978,9 @@ components:
             A unique identifier for grouping related requests (e.g., a
             conversation or agent workflow) for observability. If provided in
             both the request body and the x-session-id header, the body value
-            takes precedence. Maximum of 128 characters.
+            takes precedence. Maximum of 256 characters.
         trace:
-          $ref: '#/components/schemas/ChatGenerationParamsTrace'
+          $ref: '#/components/schemas/ChatRequestTrace'
           description: >-
             Metadata for observability and tracing. Known keys (trace_id,
             trace_name, span_name, generation_name, parent_span_id) have special
@@ -1926,12 +1989,12 @@ components:
         messages:
           type: array
           items:
-            $ref: '#/components/schemas/Message'
+            $ref: '#/components/schemas/ChatMessages'
           description: List of messages for the conversation
         model:
           $ref: '#/components/schemas/ModelName'
         models:
-          $ref: '#/components/schemas/ModelNames'
+          $ref: '#/components/schemas/ChatModelNames'
         frequency_penalty:
           type:
             - number
@@ -1985,10 +2048,10 @@ components:
           format: double
           description: Presence penalty (-2.0 to 2.0)
         reasoning:
-          $ref: '#/components/schemas/ChatGenerationParamsReasoning'
+          $ref: '#/components/schemas/ChatRequestReasoning'
           description: Configuration options for reasoning models
         response_format:
-          $ref: '#/components/schemas/ChatGenerationParamsResponseFormat'
+          $ref: '#/components/schemas/ChatRequestResponseFormat'
           description: Response format configuration
         seed:
           type:
@@ -1996,7 +2059,7 @@ components:
             - 'null'
           description: Random seed for deterministic outputs
         stop:
-          $ref: '#/components/schemas/ChatGenerationParamsStop'
+          $ref: '#/components/schemas/ChatRequestStop'
           description: Stop sequences (up to 4)
         stream:
           type: boolean
@@ -2016,11 +2079,11 @@ components:
             - boolean
             - 'null'
         tool_choice:
-          $ref: '#/components/schemas/ToolChoiceOption'
+          $ref: '#/components/schemas/ChatToolChoice'
         tools:
           type: array
           items:
-            $ref: '#/components/schemas/ToolDefinitionJson'
+            $ref: '#/components/schemas/ChatFunctionTool'
           description: Available tools for function calling
         top_p:
           type:
@@ -2030,11 +2093,11 @@ components:
           default: 1
           description: Nucleus sampling parameter (0-1)
         debug:
-          $ref: '#/components/schemas/DebugOptions'
+          $ref: '#/components/schemas/ChatDebugOptions'
         image_config:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/ChatGenerationParamsImageConfig'
+            $ref: '#/components/schemas/ChatRequestImageConfig'
           description: >-
             Provider-specific image configuration options. Keys and values vary
             by model/provider. See
@@ -2043,21 +2106,26 @@ components:
         modalities:
           type: array
           items:
-            $ref: '#/components/schemas/ChatGenerationParamsModalitiesItems'
+            $ref: '#/components/schemas/ChatRequestModalitiesItems'
           description: >-
             Output modalities for the response. Supported values are "text",
             "image", and "audio".
         cache_control:
-          $ref: '#/components/schemas/ChatGenerationParamsCacheControl'
+          $ref: '#/components/schemas/ChatRequestCacheControl'
           description: >-
             Enable automatic prompt caching. When set, the system automatically
             applies cache breakpoints to the last cacheable block in the
             request. Currently supported for Anthropic Claude models.
+        service_tier:
+          oneOf:
+            - $ref: '#/components/schemas/ChatRequestServiceTier'
+            - type: 'null'
+          description: The service tier to use for processing this request.
       required:
         - messages
       description: Chat completion request parameters
-      title: ChatGenerationParams
-    ChatCompletionFinishReason:
+      title: ChatRequest
+    ChatFinishReasonEnum:
       type: string
       enum:
         - tool_calls
@@ -2065,14 +2133,14 @@ components:
         - length
         - content_filter
         - error
-      title: ChatCompletionFinishReason
-    ChatResponseChoiceFinishReason:
+      title: ChatFinishReasonEnum
+    ChatChoiceFinishReason:
       oneOf:
-        - $ref: '#/components/schemas/ChatCompletionFinishReason'
+        - $ref: '#/components/schemas/ChatFinishReasonEnum'
         - description: Any type
         - description: Any type
-      title: ChatResponseChoiceFinishReason
-    ChatMessageTokenLogprobTopLogprobsItems:
+      title: ChatChoiceFinishReason
+    ChatTokenLogprobTopLogprobsItems:
       type: object
       properties:
         token:
@@ -2091,8 +2159,8 @@ components:
         - token
         - logprob
         - bytes
-      title: ChatMessageTokenLogprobTopLogprobsItems
-    ChatMessageTokenLogprob:
+      title: ChatTokenLogprobTopLogprobsItems
+    ChatTokenLogprob:
       type: object
       properties:
         token:
@@ -2113,7 +2181,7 @@ components:
         top_logprobs:
           type: array
           items:
-            $ref: '#/components/schemas/ChatMessageTokenLogprobTopLogprobsItems'
+            $ref: '#/components/schemas/ChatTokenLogprobTopLogprobsItems'
           description: Top alternative tokens with probabilities
       required:
         - token
@@ -2121,8 +2189,8 @@ components:
         - bytes
         - top_logprobs
       description: Token log probability information
-      title: ChatMessageTokenLogprob
-    ChatMessageTokenLogprobs:
+      title: ChatTokenLogprob
+    ChatTokenLogprobs:
       type: object
       properties:
         content:
@@ -2130,44 +2198,44 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatMessageTokenLogprob'
+            $ref: '#/components/schemas/ChatTokenLogprob'
           description: Log probabilities for content tokens
         refusal:
           type:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatMessageTokenLogprob'
+            $ref: '#/components/schemas/ChatTokenLogprob'
           description: Log probabilities for refusal tokens
       required:
         - content
       description: Log probabilities for the completion
-      title: ChatMessageTokenLogprobs
-    ChatResponseChoice:
+      title: ChatTokenLogprobs
+    ChatChoice:
       type: object
       properties:
         finish_reason:
-          $ref: '#/components/schemas/ChatResponseChoiceFinishReason'
+          $ref: '#/components/schemas/ChatChoiceFinishReason'
         index:
           type: number
           format: double
           description: Choice index
         message:
-          $ref: '#/components/schemas/AssistantMessage'
+          $ref: '#/components/schemas/ChatAssistantMessage'
         logprobs:
-          $ref: '#/components/schemas/ChatMessageTokenLogprobs'
+          $ref: '#/components/schemas/ChatTokenLogprobs'
       required:
         - finish_reason
         - index
         - message
       description: Chat completion choice
-      title: ChatResponseChoice
-    ChatResponseObject:
+      title: ChatChoice
+    ChatResultObject:
       type: string
       enum:
         - chat.completion
-      title: ChatResponseObject
-    ChatGenerationTokenUsageCompletionTokensDetails:
+      title: ChatResultObject
+    ChatUsageCompletionTokensDetails:
       type: object
       properties:
         reasoning_tokens:
@@ -2195,8 +2263,8 @@ components:
           format: double
           description: Rejected prediction tokens
       description: Detailed completion token usage
-      title: ChatGenerationTokenUsageCompletionTokensDetails
-    ChatGenerationTokenUsagePromptTokensDetails:
+      title: ChatUsageCompletionTokensDetails
+    ChatUsagePromptTokensDetails:
       type: object
       properties:
         cached_tokens:
@@ -2218,8 +2286,8 @@ components:
           format: double
           description: Video input tokens
       description: Detailed prompt token usage
-      title: ChatGenerationTokenUsagePromptTokensDetails
-    ChatGenerationTokenUsage:
+      title: ChatUsagePromptTokensDetails
+    ChatUsage:
       type: object
       properties:
         completion_tokens:
@@ -2236,13 +2304,12 @@ components:
           description: Total number of tokens
         completion_tokens_details:
           oneOf:
-            - $ref: >-
-                #/components/schemas/ChatGenerationTokenUsageCompletionTokensDetails
+            - $ref: '#/components/schemas/ChatUsageCompletionTokensDetails'
             - type: 'null'
           description: Detailed completion token usage
         prompt_tokens_details:
           oneOf:
-            - $ref: '#/components/schemas/ChatGenerationTokenUsagePromptTokensDetails'
+            - $ref: '#/components/schemas/ChatUsagePromptTokensDetails'
             - type: 'null'
           description: Detailed prompt token usage
       required:
@@ -2250,8 +2317,8 @@ components:
         - prompt_tokens
         - total_tokens
       description: Token usage statistics
-      title: ChatGenerationTokenUsage
-    ChatResponse:
+      title: ChatUsage
+    ChatResult:
       type: object
       properties:
         id:
@@ -2260,7 +2327,7 @@ components:
         choices:
           type: array
           items:
-            $ref: '#/components/schemas/ChatResponseChoice'
+            $ref: '#/components/schemas/ChatChoice'
           description: List of completion choices
         created:
           type: number
@@ -2270,14 +2337,19 @@ components:
           type: string
           description: Model used for completion
         object:
-          $ref: '#/components/schemas/ChatResponseObject'
+          $ref: '#/components/schemas/ChatResultObject'
         system_fingerprint:
           type:
             - string
             - 'null'
           description: System fingerprint
+        service_tier:
+          type:
+            - string
+            - 'null'
+          description: The service tier used by the upstream provider for this request
         usage:
-          $ref: '#/components/schemas/ChatGenerationTokenUsage'
+          $ref: '#/components/schemas/ChatUsage'
       required:
         - id
         - choices
@@ -2286,7 +2358,7 @@ components:
         - object
         - system_fingerprint
       description: Chat completion response
-      title: ChatResponse
+      title: ChatResult
     BadRequestResponseErrorData:
       type: object
       properties:

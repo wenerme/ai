@@ -1,5 +1,5 @@
 ---
-title: 'Cloud Console monitoring'
+title: 'Cloud console monitoring'
 description: 'Built-in monitoring dashboards in the ClickHouse Cloud Console'
 keywords: ['cloud', 'monitoring', 'dashboards', 'service health', 'resource utilization', 'advanced dashboard']
 doc_type: 'guide'

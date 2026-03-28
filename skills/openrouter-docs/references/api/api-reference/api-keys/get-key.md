@@ -158,6 +158,14 @@ components:
           description: >-
             ISO 8601 UTC timestamp when the API key expires, or null if no
             expiration
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
       required:
         - hash
         - name
@@ -177,6 +185,7 @@ components:
         - byok_usage_monthly
         - created_at
         - updated_at
+        - creator_user_id
       description: The API key information
       title: KeysHashGetResponsesContentApplicationJsonSchemaData
     API Keys_getKey_Response_200:

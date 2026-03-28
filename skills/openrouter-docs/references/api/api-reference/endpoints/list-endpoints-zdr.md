@@ -191,6 +191,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Reka
         - Relace
         - SambaNova
         - Seed

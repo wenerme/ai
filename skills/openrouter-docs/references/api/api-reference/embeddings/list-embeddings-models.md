@@ -385,6 +385,13 @@ components:
           description: List of supported parameters for this model
         default_parameters:
           $ref: '#/components/schemas/DefaultParameters'
+        knowledge_cutoff:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The date up to which the model was trained on data. ISO 8601 date
+            string (YYYY-MM-DD) or null if unknown.
         expiration_date:
           type:
             - string

@@ -1,11 +1,11 @@
 ---
 title: "Zhipu AI Coding Plan | Models"
-description: "Use Zhipu AI Coding Plan models with Mastra. 12 models available."
+description: "Use Zhipu AI Coding Plan models with Mastra. 13 models available."
 ---
 
 # [Zhipu AI Coding Plan logo]Zhipu AI Coding Plan
 
-Access 12 Zhipu AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
+Access 13 Zhipu AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
 
 Learn more in the [Zhipu AI Coding Plan documentation](https://docs.bigmodel.cn/cn/coding-plan/overview).
 
@@ -182,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "zhipuai-coding-plan/glm-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -214,7 +226,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "zhipuai-coding-plan/glm-5-turbo"
+      ? "zhipuai-coding-plan/glm-5.1"
       : "zhipuai-coding-plan/glm-4.5";
   }
 });

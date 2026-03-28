@@ -30,8 +30,6 @@ List all items for a conversation with the given ID.
 
     - `"file_search_call.results"`
 
-    - `"web_search_call.results"`
-
     - `"web_search_call.action.sources"`
 
     - `"message.input_image.image_url"`

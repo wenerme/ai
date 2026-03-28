@@ -151,6 +151,14 @@ components:
           description: >-
             ISO 8601 UTC timestamp when the API key expires, or null if no
             expiration
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
         rate_limit:
           $ref: >-
             #/components/schemas/KeyGetResponsesContentApplicationJsonSchemaDataRateLimit
@@ -172,6 +180,7 @@ components:
         - limit_remaining
         - limit_reset
         - include_byok_in_limit
+        - creator_user_id
         - rate_limit
       description: Current API key information
       title: KeyGetResponsesContentApplicationJsonSchemaData

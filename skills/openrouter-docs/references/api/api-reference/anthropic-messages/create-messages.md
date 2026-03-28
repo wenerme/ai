@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnthropicMessagesResponse'
+                $ref: '#/components/schemas/MessagesResult'
         '400':
           description: Invalid request error
           content:
@@ -85,34 +85,33 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AnthropicMessagesRequest'
+              $ref: '#/components/schemas/MessagesRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    OpenRouterAnthropicMessageParamRole:
+    MessagesMessageParamRole:
       type: string
       enum:
         - user
         - assistant
-      title: OpenRouterAnthropicMessageParamRole
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0Type:
+      title: MessagesMessageParamRole
+    MessagesMessageParamContentOneOf1ItemsOneOf0Type:
       type: string
       enum:
         - text
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems0:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -135,19 +134,18 @@ components:
         - document_title
         - start_char_index
         - end_char_index
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems1:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -170,19 +168,18 @@ components:
         - document_title
         - start_page_number
         - end_page_number
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems2:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -205,19 +202,18 @@ components:
         - document_title
         - start_block_index
         - end_block_index
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems3:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -234,19 +230,18 @@ components:
         - encrypted_index
         - title
         - url
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems4:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -272,49 +267,49 @@ components:
         - title
         - start_block_index
         - end_block_index
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems4
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlType:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items0:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl
+    MessagesMessageParamContentOneOf1Items0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0Type
         text:
           type: string
         citations:
@@ -323,194 +318,191 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf0CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl
       required:
         - type
         - text
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Type:
+      title: MessagesMessageParamContentOneOf1Items0
+    MessagesMessageParamContentOneOf1ItemsOneOf1Type:
       type: string
       enum:
         - image
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type:
       type: string
       enum:
         - base64
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
       type: string
       enum:
         - image/jpeg
         - image/png
         - image/gif
         - image/webp
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source0:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf1Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
         data:
           type: string
       required:
         - type
         - media_type
         - data
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type:
       type: string
       enum:
         - url
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source1:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf1Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
         url:
           type: string
       required:
         - type
         - url
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf1Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source1
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlType:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source
+    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items1:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl
+    MessagesMessageParamContentOneOf1Items1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf1CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl
       required:
         - type
         - source
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Type:
+      title: MessagesMessageParamContentOneOf1Items1
+    MessagesMessageParamContentOneOf1ItemsOneOf2Type:
       type: string
       enum:
         - document
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type:
       type: string
       enum:
         - base64
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType:
       type: string
       enum:
         - application/pdf
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source0:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf2Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
         data:
           type: string
       required:
         - type
         - media_type
         - data
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type:
       type: string
       enum:
         - text
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType:
       type: string
       enum:
         - text/plain
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source1:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf2Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
         data:
           type: string
       required:
         - type
         - media_type
         - data
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type:
       type: string
       enum:
         - content
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type:
       type: string
       enum:
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -534,19 +526,19 @@ components:
         - start_char_index
         - end_char_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -570,19 +562,19 @@ components:
         - start_page_number
         - end_page_number
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -606,19 +598,19 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -636,19 +628,19 @@ components:
         - title
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -675,53 +667,53 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
         text:
           type: string
         citations:
@@ -730,28 +722,28 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
       required:
         - type
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type:
       type: string
       enum:
         - image
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
       type: string
       enum:
         - base64
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
       type: string
       enum:
         - image/jpeg
@@ -759,16 +751,16 @@ components:
         - image/gif
         - image/webp
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
         data:
           type: string
       required:
@@ -776,182 +768,180 @@ components:
         - media_type
         - data
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
       type: string
       enum:
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
         url:
           type: string
       required:
         - type
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
       required:
         - type
         - source
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1:
+        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1:
       type: array
       items:
         $ref: >-
-          #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content:
+          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content:
       oneOf:
         - type: string
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source2:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
+    MessagesMessageParamContentOneOf1ItemsOneOf2Source2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
         content:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
       required:
         - type
         - content
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source2
+    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type:
       type: string
       enum:
         - url
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source3:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf2Source3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
         url:
           type: string
       required:
         - type
         - url
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source3
+    MessagesMessageParamContentOneOf1ItemsOneOf2Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source3
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Citations:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source3
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source
+    MessagesMessageParamContentOneOf1ItemsOneOf2Citations:
       type: object
       properties:
         enabled:
           type: boolean
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Citations
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2Citations
+    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items2:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl
+    MessagesMessageParamContentOneOf1Items2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source
         citations:
           oneOf:
             - $ref: >-
-                #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2Citations
+                #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Citations
             - type: 'null'
         context:
           type:
@@ -963,45 +953,45 @@ components:
             - 'null'
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf2CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl
       required:
         - type
         - source
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3Type:
+      title: MessagesMessageParamContentOneOf1Items2
+    MessagesMessageParamContentOneOf1ItemsOneOf3Type:
       type: string
       enum:
         - tool_use
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items3:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl
+    MessagesMessageParamContentOneOf1Items3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3Type
         id:
           type: string
         name:
@@ -1012,35 +1002,34 @@ components:
             - type: 'null'
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf3CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl
       required:
         - type
         - id
         - name
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Type:
+      title: MessagesMessageParamContentOneOf1Items3
+    MessagesMessageParamContentOneOf1ItemsOneOf4Type:
       type: string
       enum:
         - tool_result
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type:
       type: string
       enum:
         - text
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -1064,19 +1053,19 @@ components:
         - start_char_index
         - end_char_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -1100,19 +1089,19 @@ components:
         - start_page_number
         - end_page_number
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -1136,19 +1125,19 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -1166,19 +1155,19 @@ components:
         - title
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -1205,53 +1194,53 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
         text:
           type: string
         citations:
@@ -1260,28 +1249,26 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
       required:
         - type
         - text
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type:
       type: string
       enum:
         - image
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type:
       type: string
       enum:
         - base64
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
       type: string
       enum:
         - image/jpeg
@@ -1289,16 +1276,16 @@ components:
         - image/gif
         - image/webp
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
         data:
           type: string
       required:
@@ -1306,120 +1293,116 @@ components:
         - media_type
         - data
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type:
       type: string
       enum:
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
         url:
           type: string
       required:
         - type
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
       required:
         - type
         - source
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type:
       type: string
       enum:
         - tool_reference
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
         tool_name:
           type: string
       required:
         - type
         - tool_name
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type:
       type: string
       enum:
         - search_result
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType:
       type: string
       enum:
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -1443,19 +1426,19 @@ components:
         - start_char_index
         - end_char_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -1479,19 +1462,19 @@ components:
         - start_page_number
         - end_page_number
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -1515,19 +1498,19 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -1545,19 +1528,19 @@ components:
         - title
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -1584,53 +1567,53 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
         text:
           type: string
         citations:
@@ -1639,54 +1622,54 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
       required:
         - type
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations:
       type: object
       properties:
         enabled:
           type: boolean
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
         source:
           type: string
         title:
@@ -1695,47 +1678,45 @@ components:
           type: array
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
         citations:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
       required:
         - type
         - source
         - title
         - content
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type:
       type: string
       enum:
         - document
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type:
       type: string
       enum:
         - base64
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType:
       type: string
       enum:
         - application/pdf
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
         data:
           type: string
       required:
@@ -1743,28 +1724,28 @@ components:
         - media_type
         - data
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type:
       type: string
       enum:
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType:
       type: string
       enum:
         - text/plain
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
         data:
           type: string
       required:
@@ -1772,31 +1753,31 @@ components:
         - media_type
         - data
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type:
       type: string
       enum:
         - content
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type:
       type: string
       enum:
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -1820,19 +1801,19 @@ components:
         - start_char_index
         - end_char_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -1856,19 +1837,19 @@ components:
         - start_page_number
         - end_page_number
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -1892,19 +1873,19 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -1922,19 +1903,19 @@ components:
         - title
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -1961,53 +1942,53 @@ components:
         - start_block_index
         - end_block_index
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
         text:
           type: string
         citations:
@@ -2016,28 +1997,28 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
       required:
         - type
         - text
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type:
       type: string
       enum:
         - image
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
       type: string
       enum:
         - base64
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
       type: string
       enum:
         - image/jpeg
@@ -2045,16 +2026,16 @@ components:
         - image/gif
         - image/webp
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
         media_type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
         data:
           type: string
       required:
@@ -2062,190 +2043,190 @@ components:
         - media_type
         - data
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
       type: string
       enum:
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
         url:
           type: string
       required:
         - type
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
       required:
         - type
         - source
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1:
       type: array
       items:
         $ref: >-
-          #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
+          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content:
       oneOf:
         - type: string
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
         content:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
       required:
         - type
         - content
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type:
       type: string
       enum:
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
         url:
           type: string
       required:
         - type
         - url
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations:
       type: object
       properties:
         enabled:
           type: boolean
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType:
       type: string
       enum:
         - ephemeral
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
       required:
         - type
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4:
+        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
         source:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
         citations:
           oneOf:
             - $ref: >-
-                #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
+                #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
             - type: 'null'
         context:
           type:
@@ -2257,92 +2238,90 @@ components:
             - 'null'
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
       required:
         - type
         - source
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content1:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
+    MessagesMessageParamContentOneOf1ItemsOneOf4Content1:
       type: array
       items:
         $ref: >-
-          #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content:
+          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf4Content:
       oneOf:
         - type: string
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content1
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlType:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content
+    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items4:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl
+    MessagesMessageParamContentOneOf1Items4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Type
         tool_use_id:
           type: string
         content:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4Content
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content
         is_error:
           type: boolean
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf4CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl
       required:
         - type
         - tool_use_id
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf5Type:
+      title: MessagesMessageParamContentOneOf1Items4
+    MessagesMessageParamContentOneOf1ItemsOneOf5Type:
       type: string
       enum:
         - thinking
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf5Type
-    OpenRouterAnthropicMessageParamContentOneOf1Items5:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf5Type
+    MessagesMessageParamContentOneOf1Items5:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf5Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf5Type
         thinking:
           type: string
         signature:
@@ -2351,30 +2330,30 @@ components:
         - type
         - thinking
         - signature
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items5
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf6Type:
+      title: MessagesMessageParamContentOneOf1Items5
+    MessagesMessageParamContentOneOf1ItemsOneOf6Type:
       type: string
       enum:
         - redacted_thinking
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf6Type
-    OpenRouterAnthropicMessageParamContentOneOf1Items6:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf6Type
+    MessagesMessageParamContentOneOf1Items6:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf6Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf6Type
         data:
           type: string
       required:
         - type
         - data
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items6
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Type:
+      title: MessagesMessageParamContentOneOf1Items6
+    MessagesMessageParamContentOneOf1ItemsOneOf7Type:
       type: string
       enum:
         - server_tool_use
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Name:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7Type
+    MessagesMessageParamContentOneOf1ItemsOneOf7Name:
       type: string
       enum:
         - web_search
@@ -2384,70 +2363,69 @@ components:
         - text_editor_code_execution
         - tool_search_tool_regex
         - tool_search_tool_bm25
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Name
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7Name
+    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items7:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl
+    MessagesMessageParamContentOneOf1Items7:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Type
         id:
           type: string
         name:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7Name
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Name
         input:
           oneOf:
             - description: Any type
             - type: 'null'
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf7CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl
       required:
         - type
         - id
         - name
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items7
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Type:
+      title: MessagesMessageParamContentOneOf1Items7
+    MessagesMessageParamContentOneOf1ItemsOneOf8Type:
       type: string
       enum:
         - web_search_tool_result
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Type
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType:
       type: string
       enum:
         - web_search_result
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
         encrypted_content:
           type: string
         title:
@@ -2463,20 +2441,19 @@ components:
         - encrypted_content
         - title
         - url
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content0:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content0:
       type: array
       items:
         $ref: >-
-          #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type:
+          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content0
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type:
       type: string
       enum:
         - web_search_tool_result_error
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode:
       type: string
       enum:
         - invalid_tool_input
@@ -2484,92 +2461,91 @@ components:
         - max_uses_exceeded
         - too_many_requests
         - query_too_long
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content1:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
         error_code:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
       required:
         - type
         - error_code
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content1
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlType:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content
+    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items8:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl
+    MessagesMessageParamContentOneOf1Items8:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Type
         tool_use_id:
           type: string
         content:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8Content
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf8CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl
       required:
         - type
         - tool_use_id
         - content
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items8
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Type:
+      title: MessagesMessageParamContentOneOf1Items8
+    MessagesMessageParamContentOneOf1ItemsOneOf9Type:
       type: string
       enum:
         - search_result
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType:
       type: string
       enum:
         - text
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0:
+        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -2592,20 +2568,19 @@ components:
         - document_title
         - start_char_index
         - end_char_index
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1:
+        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -2628,20 +2603,19 @@ components:
         - document_title
         - start_page_number
         - end_page_number
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2:
+        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -2664,20 +2638,19 @@ components:
         - document_title
         - start_block_index
         - end_block_index
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3:
+        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -2694,20 +2667,19 @@ components:
         - encrypted_index
         - title
         - url
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
       title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4:
+        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -2733,54 +2705,49 @@ components:
         - title
         - start_block_index
         - end_block_index
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
         - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType:
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
       required:
         - type
-      title: >-
-        OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItems:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
+    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType
         text:
           type: string
         citations:
@@ -2789,49 +2756,49 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
       required:
         - type
         - text
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItems
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Citations:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems
+    MessagesMessageParamContentOneOf1ItemsOneOf9Citations:
       type: object
       properties:
         enabled:
           type: boolean
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Citations
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlType:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9Citations
+    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlType
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlTtl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType
+    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
-    OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControl:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
+    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlType
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType
         ttl:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
       required:
         - type
-      title: OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControl
-    OpenRouterAnthropicMessageParamContentOneOf1Items9:
+      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl
+    MessagesMessageParamContentOneOf1Items9:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Type
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9Type
         source:
           type: string
         title:
@@ -2840,80 +2807,70 @@ components:
           type: array
           items:
             $ref: >-
-              #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9ContentItems
+              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems
         citations:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9Citations
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9Citations
         cache_control:
           $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1ItemsOneOf9CacheControl
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl
       required:
         - type
         - source
         - title
         - content
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items9
-    OpenRouterAnthropicMessageParamContentOneOf1Items:
+      title: MessagesMessageParamContentOneOf1Items9
+    MessagesMessageParamContentOneOf1Items:
       oneOf:
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items0
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items1
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items2
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items3
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items4
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items5
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items6
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items7
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items8
-        - $ref: >-
-            #/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items9
-      title: OpenRouterAnthropicMessageParamContentOneOf1Items
-    OpenRouterAnthropicMessageParamContent1:
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items0'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items1'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items2'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items3'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items4'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items5'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items6'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items7'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items8'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items9'
+      title: MessagesMessageParamContentOneOf1Items
+    MessagesMessageParamContent1:
       type: array
       items:
-        $ref: '#/components/schemas/OpenRouterAnthropicMessageParamContentOneOf1Items'
-      title: OpenRouterAnthropicMessageParamContent1
-    OpenRouterAnthropicMessageParamContent:
+        $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items'
+      title: MessagesMessageParamContent1
+    MessagesMessageParamContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/OpenRouterAnthropicMessageParamContent1'
-      title: OpenRouterAnthropicMessageParamContent
-    OpenRouterAnthropicMessageParam:
+        - $ref: '#/components/schemas/MessagesMessageParamContent1'
+      title: MessagesMessageParamContent
+    MessagesMessageParam:
       type: object
       properties:
         role:
-          $ref: '#/components/schemas/OpenRouterAnthropicMessageParamRole'
+          $ref: '#/components/schemas/MessagesMessageParamRole'
         content:
-          $ref: '#/components/schemas/OpenRouterAnthropicMessageParamContent'
+          $ref: '#/components/schemas/MessagesMessageParamContent'
       required:
         - role
         - content
       description: Anthropic message with OpenRouter extensions
-      title: OpenRouterAnthropicMessageParam
-    AnthropicMessagesRequestSystemOneOf1ItemsType:
+      title: MessagesMessageParam
+    MessagesRequestSystemOneOf1ItemsType:
       type: string
       enum:
         - text
-      title: AnthropicMessagesRequestSystemOneOf1ItemsType
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type:
+      title: MessagesRequestSystemOneOf1ItemsType
+    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems0:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
+    MessagesRequestSystemOneOf1ItemsCitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -2936,18 +2893,18 @@ components:
         - document_title
         - start_char_index
         - end_char_index
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems0
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems0
+    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems1:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
+    MessagesRequestSystemOneOf1ItemsCitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -2970,18 +2927,18 @@ components:
         - document_title
         - start_page_number
         - end_page_number
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems1
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems1
+    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems2:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
+    MessagesRequestSystemOneOf1ItemsCitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -3004,18 +2961,18 @@ components:
         - document_title
         - start_block_index
         - end_block_index
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems2
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems2
+    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems3:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
+    MessagesRequestSystemOneOf1ItemsCitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -3032,18 +2989,18 @@ components:
         - encrypted_index
         - title
         - url
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems3
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems3
+    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems4:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
+    MessagesRequestSystemOneOf1ItemsCitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -3069,48 +3026,42 @@ components:
         - title
         - start_block_index
         - end_block_index
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems4
-    AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems:
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems4
+    MessagesRequestSystemOneOf1ItemsCitationsItems:
       oneOf:
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems0
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems1
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems2
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems3
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems4
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems
-    AnthropicMessagesRequestSystemOneOf1ItemsCacheControlType:
+        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems0'
+        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems1'
+        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems2'
+        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems3'
+        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems4'
+      title: MessagesRequestSystemOneOf1ItemsCitationsItems
+    MessagesRequestSystemOneOf1ItemsCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCacheControlType
-    AnthropicMessagesRequestSystemOneOf1ItemsCacheControlTtl:
+      title: MessagesRequestSystemOneOf1ItemsCacheControlType
+    MessagesRequestSystemOneOf1ItemsCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCacheControlTtl
-    AnthropicMessagesRequestSystemOneOf1ItemsCacheControl:
+      title: MessagesRequestSystemOneOf1ItemsCacheControlTtl
+    MessagesRequestSystemOneOf1ItemsCacheControl:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCacheControlType
+            #/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControlType
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestSystemOneOf1ItemsCacheControl
-    AnthropicMessagesRequestSystemOneOf1Items:
+      title: MessagesRequestSystemOneOf1ItemsCacheControl
+    MessagesRequestSystemOneOf1Items:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsType'
+          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsType'
         text:
           type: string
         citations:
@@ -3119,33 +3070,32 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCitationsItems
+              #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestSystemOneOf1ItemsCacheControl
+          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControl'
       required:
         - type
         - text
-      title: AnthropicMessagesRequestSystemOneOf1Items
-    AnthropicMessagesRequestSystem1:
+      title: MessagesRequestSystemOneOf1Items
+    MessagesRequestSystem1:
       type: array
       items:
-        $ref: '#/components/schemas/AnthropicMessagesRequestSystemOneOf1Items'
-      title: AnthropicMessagesRequestSystem1
-    AnthropicMessagesRequestSystem:
+        $ref: '#/components/schemas/MessagesRequestSystemOneOf1Items'
+      title: MessagesRequestSystem1
+    MessagesRequestSystem:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/AnthropicMessagesRequestSystem1'
-      title: AnthropicMessagesRequestSystem
-    AnthropicMessagesRequestMetadata:
+        - $ref: '#/components/schemas/MessagesRequestSystem1'
+      title: MessagesRequestSystem
+    MessagesRequestMetadata:
       type: object
       properties:
         user_id:
           type:
             - string
             - 'null'
-      title: AnthropicMessagesRequestMetadata
-    AnthropicMessagesRequestToolsItemsOneOf0InputSchema:
+      title: MessagesRequestMetadata
+    MessagesRequestToolsItemsOneOf0InputSchema:
       type: object
       properties:
         type:
@@ -3161,36 +3111,34 @@ components:
             - 'null'
           items:
             type: string
-      title: AnthropicMessagesRequestToolsItemsOneOf0InputSchema
-    AnthropicMessagesRequestToolsItemsOneOf0Type:
+      title: MessagesRequestToolsItemsOneOf0InputSchema
+    MessagesRequestToolsItemsOneOf0Type:
       type: string
       enum:
         - custom
-      title: AnthropicMessagesRequestToolsItemsOneOf0Type
-    AnthropicMessagesRequestToolsItemsOneOf0CacheControlType:
+      title: MessagesRequestToolsItemsOneOf0Type
+    MessagesRequestToolsItemsOneOf0CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestToolsItemsOneOf0CacheControlType
-    AnthropicMessagesRequestToolsItemsOneOf0CacheControlTtl:
+      title: MessagesRequestToolsItemsOneOf0CacheControlType
+    MessagesRequestToolsItemsOneOf0CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestToolsItemsOneOf0CacheControlTtl
-    AnthropicMessagesRequestToolsItemsOneOf0CacheControl:
+      title: MessagesRequestToolsItemsOneOf0CacheControlTtl
+    MessagesRequestToolsItemsOneOf0CacheControl:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf0CacheControlType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControlType'
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf0CacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf0CacheControl
-    AnthropicMessagesRequestToolsItems0:
+      title: MessagesRequestToolsItemsOneOf0CacheControl
+    MessagesRequestToolsItems0:
       type: object
       properties:
         name:
@@ -3198,132 +3146,123 @@ components:
         description:
           type: string
         input_schema:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf0InputSchema
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0InputSchema'
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf0Type'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0Type'
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf0CacheControl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControl'
       required:
         - name
         - input_schema
-      title: AnthropicMessagesRequestToolsItems0
-    AnthropicMessagesRequestToolsItemsOneOf1Type:
+      title: MessagesRequestToolsItems0
+    MessagesRequestToolsItemsOneOf1Type:
       type: string
       enum:
         - bash_20250124
-      title: AnthropicMessagesRequestToolsItemsOneOf1Type
-    AnthropicMessagesRequestToolsItemsOneOf1Name:
+      title: MessagesRequestToolsItemsOneOf1Type
+    MessagesRequestToolsItemsOneOf1Name:
       type: string
       enum:
         - bash
-      title: AnthropicMessagesRequestToolsItemsOneOf1Name
-    AnthropicMessagesRequestToolsItemsOneOf1CacheControlType:
+      title: MessagesRequestToolsItemsOneOf1Name
+    MessagesRequestToolsItemsOneOf1CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestToolsItemsOneOf1CacheControlType
-    AnthropicMessagesRequestToolsItemsOneOf1CacheControlTtl:
+      title: MessagesRequestToolsItemsOneOf1CacheControlType
+    MessagesRequestToolsItemsOneOf1CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestToolsItemsOneOf1CacheControlTtl
-    AnthropicMessagesRequestToolsItemsOneOf1CacheControl:
+      title: MessagesRequestToolsItemsOneOf1CacheControlTtl
+    MessagesRequestToolsItemsOneOf1CacheControl:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf1CacheControlType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControlType'
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf1CacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf1CacheControl
-    AnthropicMessagesRequestToolsItems1:
+      title: MessagesRequestToolsItemsOneOf1CacheControl
+    MessagesRequestToolsItems1:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf1Type'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1Type'
         name:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf1Name'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1Name'
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf1CacheControl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControl'
       required:
         - type
         - name
-      title: AnthropicMessagesRequestToolsItems1
-    AnthropicMessagesRequestToolsItemsOneOf2Type:
+      title: MessagesRequestToolsItems1
+    MessagesRequestToolsItemsOneOf2Type:
       type: string
       enum:
         - text_editor_20250124
-      title: AnthropicMessagesRequestToolsItemsOneOf2Type
-    AnthropicMessagesRequestToolsItemsOneOf2Name:
+      title: MessagesRequestToolsItemsOneOf2Type
+    MessagesRequestToolsItemsOneOf2Name:
       type: string
       enum:
         - str_replace_editor
-      title: AnthropicMessagesRequestToolsItemsOneOf2Name
-    AnthropicMessagesRequestToolsItemsOneOf2CacheControlType:
+      title: MessagesRequestToolsItemsOneOf2Name
+    MessagesRequestToolsItemsOneOf2CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestToolsItemsOneOf2CacheControlType
-    AnthropicMessagesRequestToolsItemsOneOf2CacheControlTtl:
+      title: MessagesRequestToolsItemsOneOf2CacheControlType
+    MessagesRequestToolsItemsOneOf2CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestToolsItemsOneOf2CacheControlTtl
-    AnthropicMessagesRequestToolsItemsOneOf2CacheControl:
+      title: MessagesRequestToolsItemsOneOf2CacheControlTtl
+    MessagesRequestToolsItemsOneOf2CacheControl:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf2CacheControlType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControlType'
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf2CacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf2CacheControl
-    AnthropicMessagesRequestToolsItems2:
+      title: MessagesRequestToolsItemsOneOf2CacheControl
+    MessagesRequestToolsItems2:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf2Type'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2Type'
         name:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf2Name'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2Name'
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf2CacheControl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControl'
       required:
         - type
         - name
-      title: AnthropicMessagesRequestToolsItems2
-    AnthropicMessagesRequestToolsItemsOneOf3Type:
+      title: MessagesRequestToolsItems2
+    MessagesRequestToolsItemsOneOf3Type:
       type: string
       enum:
         - web_search_20250305
-      title: AnthropicMessagesRequestToolsItemsOneOf3Type
-    AnthropicMessagesRequestToolsItemsOneOf3Name:
+      title: MessagesRequestToolsItemsOneOf3Type
+    MessagesRequestToolsItemsOneOf3Name:
       type: string
       enum:
         - web_search
-      title: AnthropicMessagesRequestToolsItemsOneOf3Name
-    AnthropicMessagesRequestToolsItemsOneOf3UserLocationType:
+      title: MessagesRequestToolsItemsOneOf3Name
+    MessagesRequestToolsItemsOneOf3UserLocationType:
       type: string
       enum:
         - approximate
-      title: AnthropicMessagesRequestToolsItemsOneOf3UserLocationType
-    AnthropicMessagesRequestToolsItemsOneOf3UserLocation:
+      title: MessagesRequestToolsItemsOneOf3UserLocationType
+    MessagesRequestToolsItemsOneOf3UserLocation:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3UserLocationType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3UserLocationType'
         city:
           type:
             - string
@@ -3342,37 +3281,35 @@ components:
             - 'null'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf3UserLocation
-    AnthropicMessagesRequestToolsItemsOneOf3CacheControlType:
+      title: MessagesRequestToolsItemsOneOf3UserLocation
+    MessagesRequestToolsItemsOneOf3CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestToolsItemsOneOf3CacheControlType
-    AnthropicMessagesRequestToolsItemsOneOf3CacheControlTtl:
+      title: MessagesRequestToolsItemsOneOf3CacheControlType
+    MessagesRequestToolsItemsOneOf3CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestToolsItemsOneOf3CacheControlTtl
-    AnthropicMessagesRequestToolsItemsOneOf3CacheControl:
+      title: MessagesRequestToolsItemsOneOf3CacheControlTtl
+    MessagesRequestToolsItemsOneOf3CacheControl:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3CacheControlType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControlType'
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3CacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf3CacheControl
-    AnthropicMessagesRequestToolsItems3:
+      title: MessagesRequestToolsItemsOneOf3CacheControl
+    MessagesRequestToolsItems3:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3Type'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3Type'
         name:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3Name'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3Name'
         allowed_domains:
           type:
             - array
@@ -3392,44 +3329,41 @@ components:
           format: double
         user_location:
           oneOf:
-            - $ref: >-
-                #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3UserLocation
+            - $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3UserLocation'
             - type: 'null'
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf3CacheControl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControl'
       required:
         - type
         - name
-      title: AnthropicMessagesRequestToolsItems3
-    AnthropicMessagesRequestToolsItemsOneOf4Type:
+      title: MessagesRequestToolsItems3
+    MessagesRequestToolsItemsOneOf4Type:
       type: string
       enum:
         - web_search_20260209
-      title: AnthropicMessagesRequestToolsItemsOneOf4Type
-    AnthropicMessagesRequestToolsItemsOneOf4Name:
+      title: MessagesRequestToolsItemsOneOf4Type
+    MessagesRequestToolsItemsOneOf4Name:
       type: string
       enum:
         - web_search
-      title: AnthropicMessagesRequestToolsItemsOneOf4Name
-    AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems:
+      title: MessagesRequestToolsItemsOneOf4Name
+    MessagesRequestToolsItemsOneOf4AllowedCallersItems:
       type: string
       enum:
         - direct
         - code_execution_20250825
         - code_execution_20260120
-      title: AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems
-    AnthropicMessagesRequestToolsItemsOneOf4UserLocationType:
+      title: MessagesRequestToolsItemsOneOf4AllowedCallersItems
+    MessagesRequestToolsItemsOneOf4UserLocationType:
       type: string
       enum:
         - approximate
-      title: AnthropicMessagesRequestToolsItemsOneOf4UserLocationType
-    AnthropicMessagesRequestToolsItemsOneOf4UserLocation:
+      title: MessagesRequestToolsItemsOneOf4UserLocationType
+    MessagesRequestToolsItemsOneOf4UserLocation:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4UserLocationType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4UserLocationType'
         city:
           type:
             - string
@@ -3448,42 +3382,40 @@ components:
             - 'null'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf4UserLocation
-    AnthropicMessagesRequestToolsItemsOneOf4CacheControlType:
+      title: MessagesRequestToolsItemsOneOf4UserLocation
+    MessagesRequestToolsItemsOneOf4CacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControlType
-    AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl:
+      title: MessagesRequestToolsItemsOneOf4CacheControlType
+    MessagesRequestToolsItemsOneOf4CacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl
-    AnthropicMessagesRequestToolsItemsOneOf4CacheControl:
+      title: MessagesRequestToolsItemsOneOf4CacheControlTtl
+    MessagesRequestToolsItemsOneOf4CacheControl:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControlType
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControlType'
         ttl:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControlTtl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestToolsItemsOneOf4CacheControl
-    AnthropicMessagesRequestToolsItems4:
+      title: MessagesRequestToolsItemsOneOf4CacheControl
+    MessagesRequestToolsItems4:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4Type'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4Type'
         name:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4Name'
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4Name'
         allowed_callers:
           type: array
           items:
             $ref: >-
-              #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4AllowedCallersItems
+              #/components/schemas/MessagesRequestToolsItemsOneOf4AllowedCallersItems
         allowed_domains:
           type:
             - array
@@ -3503,16 +3435,14 @@ components:
           format: double
         user_location:
           oneOf:
-            - $ref: >-
-                #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4UserLocation
+            - $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4UserLocation'
             - type: 'null'
         cache_control:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestToolsItemsOneOf4CacheControl
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControl'
       required:
         - type
         - name
-      title: AnthropicMessagesRequestToolsItems4
+      title: MessagesRequestToolsItems4
     DatetimeServerToolType:
       type: string
       enum:
@@ -3536,23 +3466,26 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
-    AnthropicWebSearchServerToolType:
+    MessagesWebSearchServerToolType:
       type: string
       enum:
         - openrouter:web_search
-      title: AnthropicWebSearchServerToolType
-    AnthropicWebSearchServerToolParametersEngine:
+      title: MessagesWebSearchServerToolType
+    MessagesWebSearchServerToolParametersEngine:
       type: string
       enum:
         - auto
         - native
         - exa
+        - firecrawl
+        - parallel
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API.
-      title: AnthropicWebSearchServerToolParametersEngine
-    AnthropicWebSearchServerToolParametersSearchContextSize:
+        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
+        (requires BYOK). "parallel" uses the Parallel search API.
+      title: MessagesWebSearchServerToolParametersEngine
+    MessagesWebSearchServerToolParametersSearchContextSize:
       type: string
       enum:
         - low
@@ -3560,19 +3493,20 @@ components:
         - high
       description: >-
         How much context to retrieve per result. Defaults to medium (15000
-        chars).
-      title: AnthropicWebSearchServerToolParametersSearchContextSize
-    AnthropicWebSearchServerToolParametersUserLocationType:
+        chars). Only applies when using the Exa engine; ignored with native
+        provider search.
+      title: MessagesWebSearchServerToolParametersSearchContextSize
+    MessagesWebSearchServerToolParametersUserLocationType:
       type: string
       enum:
         - approximate
-      title: AnthropicWebSearchServerToolParametersUserLocationType
-    AnthropicWebSearchServerToolParametersUserLocation:
+      title: MessagesWebSearchServerToolParametersUserLocationType
+    MessagesWebSearchServerToolParametersUserLocation:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicWebSearchServerToolParametersUserLocationType
+            #/components/schemas/MessagesWebSearchServerToolParametersUserLocationType
         city:
           type: string
         region:
@@ -3582,22 +3516,24 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: AnthropicWebSearchServerToolParametersUserLocation
-    AnthropicWebSearchServerToolParameters:
+      title: MessagesWebSearchServerToolParametersUserLocation
+    MessagesWebSearchServerToolParameters:
       type: object
       properties:
         engine:
-          $ref: '#/components/schemas/AnthropicWebSearchServerToolParametersEngine'
+          $ref: '#/components/schemas/MessagesWebSearchServerToolParametersEngine'
           description: >-
             Which search engine to use. "auto" (default) uses native if the
             provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API.
+            built-in search. "exa" forces the Exa search API. "firecrawl" uses
+            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
         max_results:
           type: number
           format: double
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5.
+            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
+            native provider search.
         max_total_results:
           type: number
           format: double
@@ -3608,101 +3544,107 @@ components:
             in agentic loops.
         search_context_size:
           $ref: >-
-            #/components/schemas/AnthropicWebSearchServerToolParametersSearchContextSize
+            #/components/schemas/MessagesWebSearchServerToolParametersSearchContextSize
           description: >-
             How much context to retrieve per result. Defaults to medium (15000
-            chars).
+            chars). Only applies when using the Exa engine; ignored with native
+            provider search.
         user_location:
           $ref: >-
-            #/components/schemas/AnthropicWebSearchServerToolParametersUserLocation
+            #/components/schemas/MessagesWebSearchServerToolParametersUserLocation
           description: Approximate user location for location-biased results.
         allowed_domains:
           type: array
           items:
             type: string
-          description: Limit search results to these domains.
+          description: >-
+            Limit search results to these domains. Applies to Exa and Parallel
+            engines. Not supported with Firecrawl or native provider search.
         excluded_domains:
           type: array
           items:
             type: string
-          description: Exclude search results from these domains.
-      title: AnthropicWebSearchServerToolParameters
-    AnthropicWebSearchServerTool:
+          description: >-
+            Exclude search results from these domains. Applies to Exa and
+            Parallel engines. Not supported with Firecrawl or native provider
+            search.
+      title: MessagesWebSearchServerToolParameters
+    MessagesWebSearchServerTool:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicWebSearchServerToolType'
+          $ref: '#/components/schemas/MessagesWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/AnthropicWebSearchServerToolParameters'
+          $ref: '#/components/schemas/MessagesWebSearchServerToolParameters'
       required:
         - type
       description: >-
         OpenRouter built-in server tool: searches the web for current
         information
-      title: AnthropicWebSearchServerTool
-    AnthropicMessagesRequestToolsItems:
+      title: MessagesWebSearchServerTool
+    MessagesRequestToolsItems:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems0'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems1'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems2'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems3'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems4'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems0'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems1'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems2'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems3'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems4'
         - $ref: '#/components/schemas/DatetimeServerTool'
-        - $ref: '#/components/schemas/AnthropicWebSearchServerTool'
-      title: AnthropicMessagesRequestToolsItems
-    AnthropicMessagesRequestToolChoiceOneOf0Type:
+        - $ref: '#/components/schemas/MessagesWebSearchServerTool'
+      title: MessagesRequestToolsItems
+    MessagesRequestToolChoiceOneOf0Type:
       type: string
       enum:
         - auto
-      title: AnthropicMessagesRequestToolChoiceOneOf0Type
-    AnthropicMessagesRequestToolChoice0:
+      title: MessagesRequestToolChoiceOneOf0Type
+    MessagesRequestToolChoice0:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolChoiceOneOf0Type'
+          $ref: '#/components/schemas/MessagesRequestToolChoiceOneOf0Type'
         disable_parallel_tool_use:
           type: boolean
       required:
         - type
-      title: AnthropicMessagesRequestToolChoice0
-    AnthropicMessagesRequestToolChoiceOneOf1Type:
+      title: MessagesRequestToolChoice0
+    MessagesRequestToolChoiceOneOf1Type:
       type: string
       enum:
         - any
-      title: AnthropicMessagesRequestToolChoiceOneOf1Type
-    AnthropicMessagesRequestToolChoice1:
+      title: MessagesRequestToolChoiceOneOf1Type
+    MessagesRequestToolChoice1:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolChoiceOneOf1Type'
+          $ref: '#/components/schemas/MessagesRequestToolChoiceOneOf1Type'
         disable_parallel_tool_use:
           type: boolean
       required:
         - type
-      title: AnthropicMessagesRequestToolChoice1
-    AnthropicMessagesRequestToolChoiceOneOf2Type:
+      title: MessagesRequestToolChoice1
+    MessagesRequestToolChoiceOneOf2Type:
       type: string
       enum:
         - none
-      title: AnthropicMessagesRequestToolChoiceOneOf2Type
-    AnthropicMessagesRequestToolChoice2:
+      title: MessagesRequestToolChoiceOneOf2Type
+    MessagesRequestToolChoice2:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolChoiceOneOf2Type'
+          $ref: '#/components/schemas/MessagesRequestToolChoiceOneOf2Type'
       required:
         - type
-      title: AnthropicMessagesRequestToolChoice2
-    AnthropicMessagesRequestToolChoiceOneOf3Type:
+      title: MessagesRequestToolChoice2
+    MessagesRequestToolChoiceOneOf3Type:
       type: string
       enum:
         - tool
-      title: AnthropicMessagesRequestToolChoiceOneOf3Type
-    AnthropicMessagesRequestToolChoice3:
+      title: MessagesRequestToolChoiceOneOf3Type
+    MessagesRequestToolChoice3:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolChoiceOneOf3Type'
+          $ref: '#/components/schemas/MessagesRequestToolChoiceOneOf3Type'
         name:
           type: string
         disable_parallel_tool_use:
@@ -3710,70 +3652,70 @@ components:
       required:
         - type
         - name
-      title: AnthropicMessagesRequestToolChoice3
-    AnthropicMessagesRequestToolChoice:
+      title: MessagesRequestToolChoice3
+    MessagesRequestToolChoice:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolChoice0'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolChoice1'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolChoice2'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestToolChoice3'
-      title: AnthropicMessagesRequestToolChoice
-    AnthropicMessagesRequestThinkingOneOf0Type:
+        - $ref: '#/components/schemas/MessagesRequestToolChoice0'
+        - $ref: '#/components/schemas/MessagesRequestToolChoice1'
+        - $ref: '#/components/schemas/MessagesRequestToolChoice2'
+        - $ref: '#/components/schemas/MessagesRequestToolChoice3'
+      title: MessagesRequestToolChoice
+    MessagesRequestThinkingOneOf0Type:
       type: string
       enum:
         - enabled
-      title: AnthropicMessagesRequestThinkingOneOf0Type
-    AnthropicMessagesRequestThinking0:
+      title: MessagesRequestThinkingOneOf0Type
+    MessagesRequestThinking0:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestThinkingOneOf0Type'
+          $ref: '#/components/schemas/MessagesRequestThinkingOneOf0Type'
         budget_tokens:
           type: number
           format: double
       required:
         - type
         - budget_tokens
-      title: AnthropicMessagesRequestThinking0
-    AnthropicMessagesRequestThinkingOneOf1Type:
+      title: MessagesRequestThinking0
+    MessagesRequestThinkingOneOf1Type:
       type: string
       enum:
         - disabled
-      title: AnthropicMessagesRequestThinkingOneOf1Type
-    AnthropicMessagesRequestThinking1:
+      title: MessagesRequestThinkingOneOf1Type
+    MessagesRequestThinking1:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestThinkingOneOf1Type'
+          $ref: '#/components/schemas/MessagesRequestThinkingOneOf1Type'
       required:
         - type
-      title: AnthropicMessagesRequestThinking1
-    AnthropicMessagesRequestThinkingOneOf2Type:
+      title: MessagesRequestThinking1
+    MessagesRequestThinkingOneOf2Type:
       type: string
       enum:
         - adaptive
-      title: AnthropicMessagesRequestThinkingOneOf2Type
-    AnthropicMessagesRequestThinking2:
+      title: MessagesRequestThinkingOneOf2Type
+    MessagesRequestThinking2:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestThinkingOneOf2Type'
+          $ref: '#/components/schemas/MessagesRequestThinkingOneOf2Type'
       required:
         - type
-      title: AnthropicMessagesRequestThinking2
-    AnthropicMessagesRequestThinking:
+      title: MessagesRequestThinking2
+    MessagesRequestThinking:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicMessagesRequestThinking0'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestThinking1'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestThinking2'
-      title: AnthropicMessagesRequestThinking
-    AnthropicMessagesRequestServiceTier:
+        - $ref: '#/components/schemas/MessagesRequestThinking0'
+        - $ref: '#/components/schemas/MessagesRequestThinking1'
+        - $ref: '#/components/schemas/MessagesRequestThinking2'
+      title: MessagesRequestThinking
+    MessagesRequestServiceTier:
       type: string
       enum:
         - auto
         - standard_only
-      title: AnthropicMessagesRequestServiceTier
-    AnthropicOutputConfigEffort:
+      title: MessagesRequestServiceTier
+    MessagesOutputConfigEffort:
       type: string
       enum:
         - low
@@ -3784,17 +3726,17 @@ components:
         How much effort the model should put into its response. Higher effort
         levels may result in more thorough analysis but take longer. Valid
         values are `low`, `medium`, `high`, or `max`.
-      title: AnthropicOutputConfigEffort
-    AnthropicOutputConfigFormatType:
+      title: MessagesOutputConfigEffort
+    MessagesOutputConfigFormatType:
       type: string
       enum:
         - json_schema
-      title: AnthropicOutputConfigFormatType
-    AnthropicOutputConfigFormat:
+      title: MessagesOutputConfigFormatType
+    MessagesOutputConfigFormat:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicOutputConfigFormatType'
+          $ref: '#/components/schemas/MessagesOutputConfigFormatType'
         schema:
           type: object
           additionalProperties:
@@ -3805,13 +3747,13 @@ components:
       description: >-
         A schema to specify Claude's output format in responses. See [structured
         outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
-      title: AnthropicOutputConfigFormat
-    AnthropicOutputConfig:
+      title: MessagesOutputConfigFormat
+    MessagesOutputConfig:
       type: object
       properties:
         effort:
           oneOf:
-            - $ref: '#/components/schemas/AnthropicOutputConfigEffort'
+            - $ref: '#/components/schemas/MessagesOutputConfigEffort'
             - type: 'null'
           description: >-
             How much effort the model should put into its response. Higher
@@ -3819,7 +3761,7 @@ components:
             Valid values are `low`, `medium`, `high`, or `max`.
         format:
           oneOf:
-            - $ref: '#/components/schemas/AnthropicOutputConfigFormat'
+            - $ref: '#/components/schemas/MessagesOutputConfigFormat'
             - type: 'null'
           description: >-
             A schema to specify Claude's output format in responses. See
@@ -3828,137 +3770,134 @@ components:
       description: >-
         Configuration for controlling output behavior. Supports the effort
         parameter and structured output format.
-      title: AnthropicOutputConfig
-    AnthropicMessagesRequestCacheControlType:
+      title: MessagesOutputConfig
+    MessagesRequestCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicMessagesRequestCacheControlType
-    AnthropicMessagesRequestCacheControlTtl:
+      title: MessagesRequestCacheControlType
+    MessagesRequestCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: AnthropicMessagesRequestCacheControlTtl
-    AnthropicMessagesRequestCacheControl:
+      title: MessagesRequestCacheControlTtl
+    MessagesRequestCacheControl:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicMessagesRequestCacheControlType'
+          $ref: '#/components/schemas/MessagesRequestCacheControlType'
         ttl:
-          $ref: '#/components/schemas/AnthropicMessagesRequestCacheControlTtl'
+          $ref: '#/components/schemas/MessagesRequestCacheControlTtl'
       required:
         - type
-      title: AnthropicMessagesRequestCacheControl
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0Type:
+      title: MessagesRequestCacheControl
+    MessagesRequestContextManagementEditsItemsOneOf0Type:
       type: string
       enum:
         - clear_tool_uses_20250919
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType:
+      title: MessagesRequestContextManagementEditsItemsOneOf0Type
+    MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType:
       type: string
       enum:
         - input_tokens
-      title: >-
-        AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast:
+      title: MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
+    MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs:
+      title: MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
+    MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs:
       oneOf:
         - type: boolean
         - type: array
           items:
             type: string
         - description: Any type
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0KeepType:
+      title: MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
+    MessagesRequestContextManagementEditsItemsOneOf0KeepType:
       type: string
       enum:
         - tool_uses
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0KeepType
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0Keep:
+      title: MessagesRequestContextManagementEditsItemsOneOf0KeepType
+    MessagesRequestContextManagementEditsItemsOneOf0Keep:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0KeepType
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0KeepType
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0Keep
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type:
+      title: MessagesRequestContextManagementEditsItemsOneOf0Keep
+    MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type:
       type: string
       enum:
         - input_tokens
-      title: >-
-        AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger0:
+      title: MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
+    MessagesRequestContextManagementEditsItemsOneOf0Trigger0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger0
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type:
+      title: MessagesRequestContextManagementEditsItemsOneOf0Trigger0
+    MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type:
       type: string
       enum:
         - tool_uses
-      title: >-
-        AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger1:
+      title: MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
+    MessagesRequestContextManagementEditsItemsOneOf0Trigger1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger1
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger:
+      title: MessagesRequestContextManagementEditsItemsOneOf0Trigger1
+    MessagesRequestContextManagementEditsItemsOneOf0Trigger:
       oneOf:
         - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger0
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger0
         - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger1
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger
-    AnthropicMessagesRequestContextManagementEditsItems0:
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger1
+      title: MessagesRequestContextManagementEditsItemsOneOf0Trigger
+    MessagesRequestContextManagementEditsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Type
         clear_at_least:
           oneOf:
             - $ref: >-
-                #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
+                #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
             - type: 'null'
         clear_tool_inputs:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
         exclude_tools:
           type:
             - array
@@ -3967,105 +3906,105 @@ components:
             type: string
         keep:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0Keep
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Keep
         trigger:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf0Trigger
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger
       required:
         - type
-      title: AnthropicMessagesRequestContextManagementEditsItems0
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1Type:
+      title: MessagesRequestContextManagementEditsItems0
+    MessagesRequestContextManagementEditsItemsOneOf1Type:
       type: string
       enum:
         - clear_thinking_20251015
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type:
+      title: MessagesRequestContextManagementEditsItemsOneOf1Type
+    MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type:
       type: string
       enum:
         - thinking_turns
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep0:
+      title: MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
+    MessagesRequestContextManagementEditsItemsOneOf1Keep0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep0
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type:
+      title: MessagesRequestContextManagementEditsItemsOneOf1Keep0
+    MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type:
       type: string
       enum:
         - all
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep1:
+      title: MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type
+    MessagesRequestContextManagementEditsItemsOneOf1Keep1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type
       required:
         - type
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep1
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep2:
+      title: MessagesRequestContextManagementEditsItemsOneOf1Keep1
+    MessagesRequestContextManagementEditsItemsOneOf1Keep2:
       type: string
       enum:
         - all
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep2
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep:
+      title: MessagesRequestContextManagementEditsItemsOneOf1Keep2
+    MessagesRequestContextManagementEditsItemsOneOf1Keep:
       oneOf:
         - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep0
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep0
         - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep1
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep1
         - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep2
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep
-    AnthropicMessagesRequestContextManagementEditsItems1:
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep2
+      title: MessagesRequestContextManagementEditsItemsOneOf1Keep
+    MessagesRequestContextManagementEditsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Type
         keep:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf1Keep
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep
       required:
         - type
-      title: AnthropicMessagesRequestContextManagementEditsItems1
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf2Type:
+      title: MessagesRequestContextManagementEditsItems1
+    MessagesRequestContextManagementEditsItemsOneOf2Type:
       type: string
       enum:
         - compact_20260112
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf2Type
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf2TriggerType:
+      title: MessagesRequestContextManagementEditsItemsOneOf2Type
+    MessagesRequestContextManagementEditsItemsOneOf2TriggerType:
       type: string
       enum:
         - input_tokens
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf2TriggerType
-    AnthropicMessagesRequestContextManagementEditsItemsOneOf2Trigger:
+      title: MessagesRequestContextManagementEditsItemsOneOf2TriggerType
+    MessagesRequestContextManagementEditsItemsOneOf2Trigger:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf2TriggerType
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2TriggerType
         value:
           type: number
           format: double
       required:
         - type
         - value
-      title: AnthropicMessagesRequestContextManagementEditsItemsOneOf2Trigger
-    AnthropicMessagesRequestContextManagementEditsItems2:
+      title: MessagesRequestContextManagementEditsItemsOneOf2Trigger
+    MessagesRequestContextManagementEditsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf2Type
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2Type
         instructions:
           type:
             - string
@@ -4075,29 +4014,25 @@ components:
         trigger:
           oneOf:
             - $ref: >-
-                #/components/schemas/AnthropicMessagesRequestContextManagementEditsItemsOneOf2Trigger
+                #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2Trigger
             - type: 'null'
       required:
         - type
-      title: AnthropicMessagesRequestContextManagementEditsItems2
-    AnthropicMessagesRequestContextManagementEditsItems:
+      title: MessagesRequestContextManagementEditsItems2
+    MessagesRequestContextManagementEditsItems:
       oneOf:
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItems0
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItems1
-        - $ref: >-
-            #/components/schemas/AnthropicMessagesRequestContextManagementEditsItems2
-      title: AnthropicMessagesRequestContextManagementEditsItems
-    AnthropicMessagesRequestContextManagement:
+        - $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems0'
+        - $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems1'
+        - $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems2'
+      title: MessagesRequestContextManagementEditsItems
+    MessagesRequestContextManagement:
       type: object
       properties:
         edits:
           type: array
           items:
-            $ref: >-
-              #/components/schemas/AnthropicMessagesRequestContextManagementEditsItems
-      title: AnthropicMessagesRequestContextManagement
+            $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems'
+      title: MessagesRequestContextManagement
     DataCollection:
       type: string
       enum:
@@ -4174,6 +4109,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Reka
         - Relace
         - SambaNova
         - Seed
@@ -4192,21 +4128,21 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    AnthropicMessagesRequestProviderOrderItems:
+    MessagesRequestProviderOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: AnthropicMessagesRequestProviderOrderItems
-    AnthropicMessagesRequestProviderOnlyItems:
+      title: MessagesRequestProviderOrderItems
+    MessagesRequestProviderOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: AnthropicMessagesRequestProviderOnlyItems
-    AnthropicMessagesRequestProviderIgnoreItems:
+      title: MessagesRequestProviderOnlyItems
+    MessagesRequestProviderIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: AnthropicMessagesRequestProviderIgnoreItems
+      title: MessagesRequestProviderIgnoreItems
     Quantization:
       type: string
       enum:
@@ -4220,48 +4156,47 @@ components:
         - fp32
         - unknown
       title: Quantization
-    AnthropicMessagesRequestProviderSort:
+    MessagesRequestProviderSort:
       type: object
       properties: {}
-      title: AnthropicMessagesRequestProviderSort
+      title: MessagesRequestProviderSort
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    AnthropicMessagesRequestProviderMaxPriceCompletion:
+    MessagesRequestProviderMaxPriceCompletion:
       type: object
       properties: {}
-      title: AnthropicMessagesRequestProviderMaxPriceCompletion
-    AnthropicMessagesRequestProviderMaxPriceImage:
+      title: MessagesRequestProviderMaxPriceCompletion
+    MessagesRequestProviderMaxPriceImage:
       type: object
       properties: {}
-      title: AnthropicMessagesRequestProviderMaxPriceImage
-    AnthropicMessagesRequestProviderMaxPriceAudio:
+      title: MessagesRequestProviderMaxPriceImage
+    MessagesRequestProviderMaxPriceAudio:
       type: object
       properties: {}
-      title: AnthropicMessagesRequestProviderMaxPriceAudio
-    AnthropicMessagesRequestProviderMaxPriceRequest:
+      title: MessagesRequestProviderMaxPriceAudio
+    MessagesRequestProviderMaxPriceRequest:
       type: object
       properties: {}
-      title: AnthropicMessagesRequestProviderMaxPriceRequest
-    AnthropicMessagesRequestProviderMaxPrice:
+      title: MessagesRequestProviderMaxPriceRequest
+    MessagesRequestProviderMaxPrice:
       type: object
       properties:
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: >-
-            #/components/schemas/AnthropicMessagesRequestProviderMaxPriceCompletion
+          $ref: '#/components/schemas/MessagesRequestProviderMaxPriceCompletion'
         image:
-          $ref: '#/components/schemas/AnthropicMessagesRequestProviderMaxPriceImage'
+          $ref: '#/components/schemas/MessagesRequestProviderMaxPriceImage'
         audio:
-          $ref: '#/components/schemas/AnthropicMessagesRequestProviderMaxPriceAudio'
+          $ref: '#/components/schemas/MessagesRequestProviderMaxPriceAudio'
         request:
-          $ref: '#/components/schemas/AnthropicMessagesRequestProviderMaxPriceRequest'
+          $ref: '#/components/schemas/MessagesRequestProviderMaxPriceRequest'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: AnthropicMessagesRequestProviderMaxPrice
+      title: MessagesRequestProviderMaxPrice
     PercentileThroughputCutoffs:
       type: object
       properties:
@@ -4351,7 +4286,7 @@ components:
         using fallback models, this may cause a fallback model to be used
         instead of the primary model if it meets the threshold.
       title: PreferredMaxLatency
-    AnthropicMessagesRequestProvider:
+    MessagesRequestProvider:
       type: object
       properties:
         allow_fallbacks:
@@ -4398,7 +4333,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/AnthropicMessagesRequestProviderOrderItems'
+            $ref: '#/components/schemas/MessagesRequestProviderOrderItems'
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -4410,7 +4345,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/AnthropicMessagesRequestProviderOnlyItems'
+            $ref: '#/components/schemas/MessagesRequestProviderOnlyItems'
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -4419,7 +4354,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/AnthropicMessagesRequestProviderIgnoreItems'
+            $ref: '#/components/schemas/MessagesRequestProviderIgnoreItems'
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
@@ -4431,9 +4366,9 @@ components:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
         sort:
-          $ref: '#/components/schemas/AnthropicMessagesRequestProviderSort'
+          $ref: '#/components/schemas/MessagesRequestProviderSort'
         max_price:
-          $ref: '#/components/schemas/AnthropicMessagesRequestProviderMaxPrice'
+          $ref: '#/components/schemas/MessagesRequestProviderMaxPrice'
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -4444,17 +4379,17 @@ components:
       description: >-
         When multiple model providers are available, optionally indicate your
         routing preference.
-      title: AnthropicMessagesRequestProvider
-    AnthropicMessagesRequestPluginsItemsOneOf0Id:
+      title: MessagesRequestProvider
+    MessagesRequestPluginsItemsOneOf0Id:
       type: string
       enum:
         - auto-router
-      title: AnthropicMessagesRequestPluginsItemsOneOf0Id
-    AnthropicMessagesRequestPluginsItems0:
+      title: MessagesRequestPluginsItemsOneOf0Id
+    MessagesRequestPluginsItems0:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf0Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf0Id'
         enabled:
           type: boolean
           description: >-
@@ -4471,25 +4406,25 @@ components:
             models list.
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems0
-    AnthropicMessagesRequestPluginsItemsOneOf1Id:
+      title: MessagesRequestPluginsItems0
+    MessagesRequestPluginsItemsOneOf1Id:
       type: string
       enum:
         - moderation
-      title: AnthropicMessagesRequestPluginsItemsOneOf1Id
-    AnthropicMessagesRequestPluginsItems1:
+      title: MessagesRequestPluginsItemsOneOf1Id
+    MessagesRequestPluginsItems1:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf1Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf1Id'
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems1
-    AnthropicMessagesRequestPluginsItemsOneOf2Id:
+      title: MessagesRequestPluginsItems1
+    MessagesRequestPluginsItemsOneOf2Id:
       type: string
       enum:
         - web
-      title: AnthropicMessagesRequestPluginsItemsOneOf2Id
+      title: MessagesRequestPluginsItemsOneOf2Id
     WebSearchEngine:
       type: string
       enum:
@@ -4499,11 +4434,11 @@ components:
         - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
-    AnthropicMessagesRequestPluginsItems2:
+    MessagesRequestPluginsItems2:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf2Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf2Id'
         enabled:
           type: boolean
           description: >-
@@ -4534,19 +4469,31 @@ components:
             "openai.com/blog").
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems2
-    AnthropicMessagesRequestPluginsItemsOneOf3Id:
+      title: MessagesRequestPluginsItems2
+    MessagesRequestPluginsItemsOneOf3Id:
       type: string
       enum:
         - file-parser
-      title: AnthropicMessagesRequestPluginsItemsOneOf3Id
-    PDFParserEngine:
+      title: MessagesRequestPluginsItemsOneOf3Id
+    PdfParserEngine0:
       type: string
       enum:
         - mistral-ocr
-        - pdf-text
         - native
-      description: The engine to use for parsing PDF files.
+        - cloudflare-ai
+      title: PdfParserEngine0
+    PdfParserEngine1:
+      type: string
+      enum:
+        - pdf-text
+      title: PdfParserEngine1
+    PDFParserEngine:
+      oneOf:
+        - $ref: '#/components/schemas/PdfParserEngine0'
+        - $ref: '#/components/schemas/PdfParserEngine1'
+      description: >-
+        The engine to use for parsing PDF files. "pdf-text" is deprecated and
+        automatically redirected to "cloudflare-ai".
       title: PDFParserEngine
     PDFParserOptions:
       type: object
@@ -4555,11 +4502,11 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    AnthropicMessagesRequestPluginsItems3:
+    MessagesRequestPluginsItems3:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf3Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf3Id'
         enabled:
           type: boolean
           description: >-
@@ -4569,17 +4516,17 @@ components:
           $ref: '#/components/schemas/PDFParserOptions'
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems3
-    AnthropicMessagesRequestPluginsItemsOneOf4Id:
+      title: MessagesRequestPluginsItems3
+    MessagesRequestPluginsItemsOneOf4Id:
       type: string
       enum:
         - response-healing
-      title: AnthropicMessagesRequestPluginsItemsOneOf4Id
-    AnthropicMessagesRequestPluginsItems4:
+      title: MessagesRequestPluginsItemsOneOf4Id
+    MessagesRequestPluginsItems4:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf4Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf4Id'
         enabled:
           type: boolean
           description: >-
@@ -4587,23 +4534,23 @@ components:
             request. Defaults to true.
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems4
-    AnthropicMessagesRequestPluginsItemsOneOf5Id:
+      title: MessagesRequestPluginsItems4
+    MessagesRequestPluginsItemsOneOf5Id:
       type: string
       enum:
         - context-compression
-      title: AnthropicMessagesRequestPluginsItemsOneOf5Id
+      title: MessagesRequestPluginsItemsOneOf5Id
     ContextCompressionEngine:
       type: string
       enum:
         - middle-out
       description: The compression engine to use. Defaults to "middle-out".
       title: ContextCompressionEngine
-    AnthropicMessagesRequestPluginsItems5:
+    MessagesRequestPluginsItems5:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItemsOneOf5Id'
+          $ref: '#/components/schemas/MessagesRequestPluginsItemsOneOf5Id'
         enabled:
           type: boolean
           description: >-
@@ -4613,17 +4560,17 @@ components:
           $ref: '#/components/schemas/ContextCompressionEngine'
       required:
         - id
-      title: AnthropicMessagesRequestPluginsItems5
-    AnthropicMessagesRequestPluginsItems:
+      title: MessagesRequestPluginsItems5
+    MessagesRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems0'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems1'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems2'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems3'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems4'
-        - $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems5'
-      title: AnthropicMessagesRequestPluginsItems
-    AnthropicMessagesRequestTrace:
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems0'
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems1'
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems2'
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems3'
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems4'
+        - $ref: '#/components/schemas/MessagesRequestPluginsItems5'
+      title: MessagesRequestPluginsItems
+    MessagesRequestTrace:
       type: object
       properties:
         trace_id:
@@ -4641,8 +4588,18 @@ components:
         trace_name, span_name, generation_name, parent_span_id) have special
         handling. Additional keys are passed through as custom metadata to
         configured broadcast destinations.
-      title: AnthropicMessagesRequestTrace
-    AnthropicMessagesRequest:
+      title: MessagesRequestTrace
+    MessagesRequestSpeed:
+      type: string
+      enum:
+        - fast
+        - standard
+      description: >-
+        Controls output generation speed. When set to `fast`, uses a
+        higher-speed inference configuration at premium pricing. Defaults to
+        `standard` when omitted.
+      title: MessagesRequestSpeed
+    MessagesRequest:
       type: object
       properties:
         model:
@@ -4655,11 +4612,11 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/OpenRouterAnthropicMessageParam'
+            $ref: '#/components/schemas/MessagesMessageParam'
         system:
-          $ref: '#/components/schemas/AnthropicMessagesRequestSystem'
+          $ref: '#/components/schemas/MessagesRequestSystem'
         metadata:
-          $ref: '#/components/schemas/AnthropicMessagesRequestMetadata'
+          $ref: '#/components/schemas/MessagesRequestMetadata'
         stop_sequences:
           type: array
           items:
@@ -4676,26 +4633,26 @@ components:
         tools:
           type: array
           items:
-            $ref: '#/components/schemas/AnthropicMessagesRequestToolsItems'
+            $ref: '#/components/schemas/MessagesRequestToolsItems'
         tool_choice:
-          $ref: '#/components/schemas/AnthropicMessagesRequestToolChoice'
+          $ref: '#/components/schemas/MessagesRequestToolChoice'
         thinking:
-          $ref: '#/components/schemas/AnthropicMessagesRequestThinking'
+          $ref: '#/components/schemas/MessagesRequestThinking'
         service_tier:
-          $ref: '#/components/schemas/AnthropicMessagesRequestServiceTier'
+          $ref: '#/components/schemas/MessagesRequestServiceTier'
         output_config:
-          $ref: '#/components/schemas/AnthropicOutputConfig'
+          $ref: '#/components/schemas/MessagesOutputConfig'
         cache_control:
-          $ref: '#/components/schemas/AnthropicMessagesRequestCacheControl'
+          $ref: '#/components/schemas/MessagesRequestCacheControl'
         stream:
           type: boolean
         context_management:
           oneOf:
-            - $ref: '#/components/schemas/AnthropicMessagesRequestContextManagement'
+            - $ref: '#/components/schemas/MessagesRequestContextManagement'
             - type: 'null'
         provider:
           oneOf:
-            - $ref: '#/components/schemas/AnthropicMessagesRequestProvider'
+            - $ref: '#/components/schemas/MessagesRequestProvider'
             - type: 'null'
           description: >-
             When multiple model providers are available, optionally indicate
@@ -4703,7 +4660,7 @@ components:
         plugins:
           type: array
           items:
-            $ref: '#/components/schemas/AnthropicMessagesRequestPluginsItems'
+            $ref: '#/components/schemas/MessagesRequestPluginsItems'
           description: >-
             Plugins you want to enable for this request, including their
             settings.
@@ -4714,16 +4671,16 @@ components:
             distinguish between different users of your app. This allows your
             app to identify specific users in case of abuse reports, preventing
             your entire app from being affected by the actions of individual
-            users. Maximum of 128 characters.
+            users. Maximum of 256 characters.
         session_id:
           type: string
           description: >-
             A unique identifier for grouping related requests (e.g., a
             conversation or agent workflow) for observability. If provided in
             both the request body and the x-session-id header, the body value
-            takes precedence. Maximum of 128 characters.
+            takes precedence. Maximum of 256 characters.
         trace:
-          $ref: '#/components/schemas/AnthropicMessagesRequestTrace'
+          $ref: '#/components/schemas/MessagesRequestTrace'
           description: >-
             Metadata for observability and tracing. Known keys (trace_id,
             trace_name, span_name, generation_name, parent_span_id) have special
@@ -4733,22 +4690,28 @@ components:
           type: array
           items:
             type: string
+        speed:
+          $ref: '#/components/schemas/MessagesRequestSpeed'
+          description: >-
+            Controls output generation speed. When set to `fast`, uses a
+            higher-speed inference configuration at premium pricing. Defaults to
+            `standard` when omitted.
       required:
         - model
         - messages
       description: Request schema for Anthropic Messages API endpoint
-      title: AnthropicMessagesRequest
-    BaseAnthropicMessagesResponseType:
+      title: MessagesRequest
+    BaseMessagesResultType:
       type: string
       enum:
         - message
-      title: BaseAnthropicMessagesResponseType
-    BaseAnthropicMessagesResponseRole:
+      title: BaseMessagesResultType
+    BaseMessagesResultRole:
       type: string
       enum:
         - assistant
-      title: BaseAnthropicMessagesResponseRole
-    BaseAnthropicMessagesResponseContainer:
+      title: BaseMessagesResultRole
+    BaseMessagesResultContainer:
       type: object
       properties:
         id:
@@ -4758,23 +4721,23 @@ components:
       required:
         - id
         - expires_at
-      title: BaseAnthropicMessagesResponseContainer
-    BaseAnthropicMessagesResponseContentItemsOneOf0Type:
+      title: BaseMessagesResultContainer
+    BaseMessagesResultContentItemsOneOf0Type:
       type: string
       enum:
         - text
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf0Type
+    BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf0Type:
       type: string
       enum:
         - char_location
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems0:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf0Type
+    BaseMessagesResultContentItemsOneOf0CitationsItems0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf0Type
         cited_text:
           type: string
         document_index:
@@ -4802,18 +4765,18 @@ components:
         - start_char_index
         - end_char_index
         - file_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems0
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems0
+    BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf1Type:
       type: string
       enum:
         - page_location
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems1:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf1Type
+    BaseMessagesResultContentItemsOneOf0CitationsItems1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf1Type
         cited_text:
           type: string
         document_index:
@@ -4841,18 +4804,18 @@ components:
         - start_page_number
         - end_page_number
         - file_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems1
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems1
+    BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf2Type:
       type: string
       enum:
         - content_block_location
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems2:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf2Type
+    BaseMessagesResultContentItemsOneOf0CitationsItems2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf2Type
         cited_text:
           type: string
         document_index:
@@ -4880,18 +4843,18 @@ components:
         - start_block_index
         - end_block_index
         - file_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems2
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf3Type:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems2
+    BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf3Type:
       type: string
       enum:
         - web_search_result_location
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf3Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems3:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf3Type
+    BaseMessagesResultContentItemsOneOf0CitationsItems3:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf3Type
         cited_text:
           type: string
         encrypted_index:
@@ -4908,18 +4871,18 @@ components:
         - encrypted_index
         - title
         - url
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems3
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf4Type:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems3
+    BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf4Type:
       type: string
       enum:
         - search_result_location
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf4Type
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems4:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf4Type
+    BaseMessagesResultContentItemsOneOf0CitationsItems4:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItemsOneOf4Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItemsOneOf4Type
         cited_text:
           type: string
         search_result_index:
@@ -4945,26 +4908,25 @@ components:
         - title
         - start_block_index
         - end_block_index
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems4
-    BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems:
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems4
+    BaseMessagesResultContentItemsOneOf0CitationsItems:
       oneOf:
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems0
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems0
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems1
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems1
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems2
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems2
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems3
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems3
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems4
-      title: BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems
-    BaseAnthropicMessagesResponseContentItems0:
+            #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems4
+      title: BaseMessagesResultContentItemsOneOf0CitationsItems
+    BaseMessagesResultContentItems0:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf0Type'
         text:
           type: string
         citations:
@@ -4973,85 +4935,80 @@ components:
             - 'null'
           items:
             $ref: >-
-              #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf0CitationsItems
+              #/components/schemas/BaseMessagesResultContentItemsOneOf0CitationsItems
       required:
         - type
         - text
         - citations
-      title: BaseAnthropicMessagesResponseContentItems0
-    BaseAnthropicMessagesResponseContentItemsOneOf1Type:
+      title: BaseMessagesResultContentItems0
+    BaseMessagesResultContentItemsOneOf1Type:
       type: string
       enum:
         - tool_use
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf1Type
+    BaseMessagesResultContentItemsOneOf1CallerOneOf0Type:
       type: string
       enum:
         - direct
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf1Caller0:
+      title: BaseMessagesResultContentItemsOneOf1CallerOneOf0Type
+    BaseMessagesResultContentItemsOneOf1Caller0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf1CallerOneOf0Type
       required:
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1Caller0
-    BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf1Caller0
+    BaseMessagesResultContentItemsOneOf1CallerOneOf1Type:
       type: string
       enum:
         - code_execution_20250825
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf1Caller1:
+      title: BaseMessagesResultContentItemsOneOf1CallerOneOf1Type
+    BaseMessagesResultContentItemsOneOf1Caller1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf1CallerOneOf1Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1Caller1
-    BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf1Caller1
+    BaseMessagesResultContentItemsOneOf1CallerOneOf2Type:
       type: string
       enum:
         - code_execution_20260120
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf1Caller2:
+      title: BaseMessagesResultContentItemsOneOf1CallerOneOf2Type
+    BaseMessagesResultContentItemsOneOf1Caller2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1CallerOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf1CallerOneOf2Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1Caller2
-    BaseAnthropicMessagesResponseContentItemsOneOf1Caller:
+      title: BaseMessagesResultContentItemsOneOf1Caller2
+    BaseMessagesResultContentItemsOneOf1Caller:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1Caller0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1Caller1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1Caller2
-      title: BaseAnthropicMessagesResponseContentItemsOneOf1Caller
-    BaseAnthropicMessagesResponseContentItems1:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf1Caller0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf1Caller1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf1Caller2'
+      title: BaseMessagesResultContentItemsOneOf1Caller
+    BaseMessagesResultContentItems1:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf1Type'
         id:
           type: string
         caller:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf1Caller
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf1Caller'
         name:
           type: string
         input:
@@ -5063,18 +5020,17 @@ components:
         - id
         - caller
         - name
-      title: BaseAnthropicMessagesResponseContentItems1
-    BaseAnthropicMessagesResponseContentItemsOneOf2Type:
+      title: BaseMessagesResultContentItems1
+    BaseMessagesResultContentItemsOneOf2Type:
       type: string
       enum:
         - thinking
-      title: BaseAnthropicMessagesResponseContentItemsOneOf2Type
-    BaseAnthropicMessagesResponseContentItems2:
+      title: BaseMessagesResultContentItemsOneOf2Type
+    BaseMessagesResultContentItems2:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf2Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf2Type'
         thinking:
           type: string
         signature:
@@ -5083,87 +5039,83 @@ components:
         - type
         - thinking
         - signature
-      title: BaseAnthropicMessagesResponseContentItems2
-    BaseAnthropicMessagesResponseContentItemsOneOf3Type:
+      title: BaseMessagesResultContentItems2
+    BaseMessagesResultContentItemsOneOf3Type:
       type: string
       enum:
         - redacted_thinking
-      title: BaseAnthropicMessagesResponseContentItemsOneOf3Type
-    BaseAnthropicMessagesResponseContentItems3:
+      title: BaseMessagesResultContentItemsOneOf3Type
+    BaseMessagesResultContentItems3:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf3Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf3Type'
         data:
           type: string
       required:
         - type
         - data
-      title: BaseAnthropicMessagesResponseContentItems3
-    BaseAnthropicMessagesResponseContentItemsOneOf4Type:
+      title: BaseMessagesResultContentItems3
+    BaseMessagesResultContentItemsOneOf4Type:
       type: string
       enum:
         - server_tool_use
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Type
-    BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf4Type
+    BaseMessagesResultContentItemsOneOf4CallerOneOf0Type:
       type: string
       enum:
         - direct
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf4Caller0:
+      title: BaseMessagesResultContentItemsOneOf4CallerOneOf0Type
+    BaseMessagesResultContentItemsOneOf4Caller0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf4CallerOneOf0Type
       required:
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Caller0
-    BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf4Caller0
+    BaseMessagesResultContentItemsOneOf4CallerOneOf1Type:
       type: string
       enum:
         - code_execution_20250825
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf4Caller1:
+      title: BaseMessagesResultContentItemsOneOf4CallerOneOf1Type
+    BaseMessagesResultContentItemsOneOf4Caller1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf4CallerOneOf1Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Caller1
-    BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf4Caller1
+    BaseMessagesResultContentItemsOneOf4CallerOneOf2Type:
       type: string
       enum:
         - code_execution_20260120
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf4Caller2:
+      title: BaseMessagesResultContentItemsOneOf4CallerOneOf2Type
+    BaseMessagesResultContentItemsOneOf4Caller2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4CallerOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf4CallerOneOf2Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Caller2
-    BaseAnthropicMessagesResponseContentItemsOneOf4Caller:
+      title: BaseMessagesResultContentItemsOneOf4Caller2
+    BaseMessagesResultContentItemsOneOf4Caller:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Caller0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Caller1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Caller2
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Caller
-    BaseAnthropicMessagesResponseContentItemsOneOf4Name:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Caller0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Caller1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Caller2'
+      title: BaseMessagesResultContentItemsOneOf4Caller
+    BaseMessagesResultContentItemsOneOf4Name:
       type: string
       enum:
         - web_search
@@ -5173,21 +5125,18 @@ components:
         - text_editor_code_execution
         - tool_search_tool_regex
         - tool_search_tool_bm25
-      title: BaseAnthropicMessagesResponseContentItemsOneOf4Name
-    BaseAnthropicMessagesResponseContentItems4:
+      title: BaseMessagesResultContentItemsOneOf4Name
+    BaseMessagesResultContentItems4:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Type'
         id:
           type: string
         caller:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Caller
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Caller'
         name:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf4Name
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf4Name'
         input:
           oneOf:
             - description: Any type
@@ -5197,80 +5146,77 @@ components:
         - id
         - caller
         - name
-      title: BaseAnthropicMessagesResponseContentItems4
-    BaseAnthropicMessagesResponseContentItemsOneOf5Type:
+      title: BaseMessagesResultContentItems4
+    BaseMessagesResultContentItemsOneOf5Type:
       type: string
       enum:
         - web_search_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Type
-    BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf5Type
+    BaseMessagesResultContentItemsOneOf5CallerOneOf0Type:
       type: string
       enum:
         - direct
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf5Caller0:
+      title: BaseMessagesResultContentItemsOneOf5CallerOneOf0Type
+    BaseMessagesResultContentItemsOneOf5Caller0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5CallerOneOf0Type
       required:
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Caller0
-    BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf5Caller0
+    BaseMessagesResultContentItemsOneOf5CallerOneOf1Type:
       type: string
       enum:
         - code_execution_20250825
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf5Caller1:
+      title: BaseMessagesResultContentItemsOneOf5CallerOneOf1Type
+    BaseMessagesResultContentItemsOneOf5Caller1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5CallerOneOf1Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Caller1
-    BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf5Caller1
+    BaseMessagesResultContentItemsOneOf5CallerOneOf2Type:
       type: string
       enum:
         - code_execution_20260120
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf5Caller2:
+      title: BaseMessagesResultContentItemsOneOf5CallerOneOf2Type
+    BaseMessagesResultContentItemsOneOf5Caller2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5CallerOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5CallerOneOf2Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Caller2
-    BaseAnthropicMessagesResponseContentItemsOneOf5Caller:
+      title: BaseMessagesResultContentItemsOneOf5Caller2
+    BaseMessagesResultContentItemsOneOf5Caller:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Caller0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Caller1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Caller2
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Caller
-    BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0ItemsType:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Caller0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Caller1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Caller2'
+      title: BaseMessagesResultContentItemsOneOf5Caller
+    BaseMessagesResultContentItemsOneOf5ContentOneOf0ItemsType:
       type: string
       enum:
         - web_search_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0ItemsType
-    BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0Items:
+      title: BaseMessagesResultContentItemsOneOf5ContentOneOf0ItemsType
+    BaseMessagesResultContentItemsOneOf5ContentOneOf0Items:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0ItemsType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5ContentOneOf0ItemsType
         encrypted_content:
           type: string
         page_age:
@@ -5287,19 +5233,19 @@ components:
         - page_age
         - title
         - url
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0Items
-    BaseAnthropicMessagesResponseContentItemsOneOf5Content0:
+      title: BaseMessagesResultContentItemsOneOf5ContentOneOf0Items
+    BaseMessagesResultContentItemsOneOf5Content0:
       type: array
       items:
         $ref: >-
-          #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf0Items
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1Type:
+          #/components/schemas/BaseMessagesResultContentItemsOneOf5ContentOneOf0Items
+      title: BaseMessagesResultContentItemsOneOf5Content0
+    BaseMessagesResultContentItemsOneOf5ContentOneOf1Type:
       type: string
       enum:
         - web_search_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf5ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf5ContentOneOf1ErrorCode:
       type: string
       enum:
         - invalid_tool_input
@@ -5308,115 +5254,107 @@ components:
         - too_many_requests
         - query_too_long
         - request_too_large
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf5Content1:
+      title: BaseMessagesResultContentItemsOneOf5ContentOneOf1ErrorCode
+    BaseMessagesResultContentItemsOneOf5Content1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5ContentOneOf1Type
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5ContentOneOf1ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf5ContentOneOf1ErrorCode
       required:
         - type
         - error_code
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf5Content:
+      title: BaseMessagesResultContentItemsOneOf5Content1
+    BaseMessagesResultContentItemsOneOf5Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Content1
-      title: BaseAnthropicMessagesResponseContentItemsOneOf5Content
-    BaseAnthropicMessagesResponseContentItems5:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Content1'
+      title: BaseMessagesResultContentItemsOneOf5Content
+    BaseMessagesResultContentItems5:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Type'
         caller:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Caller
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Caller'
         tool_use_id:
           type: string
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf5Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf5Content'
       required:
         - type
         - caller
         - tool_use_id
         - content
-      title: BaseAnthropicMessagesResponseContentItems5
-    BaseAnthropicMessagesResponseContentItemsOneOf6Type:
+      title: BaseMessagesResultContentItems5
+    BaseMessagesResultContentItemsOneOf6Type:
       type: string
       enum:
         - web_fetch_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf6Type
+    BaseMessagesResultContentItemsOneOf6CallerOneOf0Type:
       type: string
       enum:
         - direct
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6Caller0:
+      title: BaseMessagesResultContentItemsOneOf6CallerOneOf0Type
+    BaseMessagesResultContentItemsOneOf6Caller0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6CallerOneOf0Type
       required:
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Caller0
-    BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf6Caller0
+    BaseMessagesResultContentItemsOneOf6CallerOneOf1Type:
       type: string
       enum:
         - code_execution_20250825
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6Caller1:
+      title: BaseMessagesResultContentItemsOneOf6CallerOneOf1Type
+    BaseMessagesResultContentItemsOneOf6Caller1:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6CallerOneOf1Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Caller1
-    BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf6Caller1
+    BaseMessagesResultContentItemsOneOf6CallerOneOf2Type:
       type: string
       enum:
         - code_execution_20260120
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6Caller2:
+      title: BaseMessagesResultContentItemsOneOf6CallerOneOf2Type
+    BaseMessagesResultContentItemsOneOf6Caller2:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6CallerOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6CallerOneOf2Type
         tool_id:
           type: string
       required:
         - type
         - tool_id
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Caller2
-    BaseAnthropicMessagesResponseContentItemsOneOf6Caller:
+      title: BaseMessagesResultContentItemsOneOf6Caller2
+    BaseMessagesResultContentItemsOneOf6Caller:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Caller0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Caller1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Caller2
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Caller
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0Type:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Caller0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Caller1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Caller2'
+      title: BaseMessagesResultContentItemsOneOf6Caller
+    BaseMessagesResultContentItemsOneOf6ContentOneOf0Type:
       type: string
       enum:
         - web_fetch_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf0Type
+    BaseMessagesResultContentItemsOneOf6ContentOneOf0ErrorCode:
       type: string
       enum:
         - invalid_tool_input
@@ -5427,142 +5365,136 @@ components:
         - too_many_requests
         - max_uses_exceeded
         - unavailable
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf6Content0:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf0ErrorCode
+    BaseMessagesResultContentItemsOneOf6Content0:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf0Type
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf0ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf0ErrorCode
       required:
         - type
         - error_code
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentCitations:
+      title: BaseMessagesResultContentItemsOneOf6Content0
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentCitations:
       type: object
       properties:
         enabled:
           type: boolean
       required:
         - enabled
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentCitations
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentCitations
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType:
       type: string
       enum:
         - application/pdf
       title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type:
+        BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type:
       type: string
       enum:
         - base64
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource0:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource0:
       type: object
       properties:
         data:
           type: string
         media_type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0MediaType
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf0Type
       required:
         - data
         - media_type
         - type
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource0
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource0
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType:
       type: string
       enum:
         - text/plain
       title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type:
+        BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type:
       type: string
       enum:
         - text
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource1:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1:
       type: object
       properties:
         data:
           type: string
         media_type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
       required:
         - data
         - media_type
         - type
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource1
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource:
       oneOf:
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource0
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource0
         - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource1
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentType:
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentType:
       type: string
       enum:
         - document
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentType
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Content:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentType
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1Content:
       type: object
       properties:
         citations:
           oneOf:
             - $ref: >-
-                #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentCitations
+                #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentCitations
             - type: 'null'
         source:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentSource
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource
         title:
           type:
             - string
             - 'null'
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1ContentType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentType
       required:
         - citations
         - source
         - title
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Content
-    BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1Content
+    BaseMessagesResultContentItemsOneOf6ContentOneOf1Type:
       type: string
       enum:
         - web_fetch_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf6Content1:
+      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf6Content1:
       type: object
       properties:
         content:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Content
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1Content
         retrieved_at:
           type:
             - string
             - 'null'
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1Type
         url:
           type: string
       required:
@@ -5570,26 +5502,21 @@ components:
         - retrieved_at
         - type
         - url
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf6Content:
+      title: BaseMessagesResultContentItemsOneOf6Content1
+    BaseMessagesResultContentItemsOneOf6Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Content1
-      title: BaseAnthropicMessagesResponseContentItemsOneOf6Content
-    BaseAnthropicMessagesResponseContentItems6:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Content1'
+      title: BaseMessagesResultContentItemsOneOf6Content
+    BaseMessagesResultContentItems6:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Type'
         caller:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Caller
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Caller'
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf6Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf6Content'
         tool_use_id:
           type: string
       required:
@@ -5597,69 +5524,68 @@ components:
         - caller
         - content
         - tool_use_id
-      title: BaseAnthropicMessagesResponseContentItems6
-    BaseAnthropicMessagesResponseContentItemsOneOf7Type:
+      title: BaseMessagesResultContentItems6
+    BaseMessagesResultContentItemsOneOf7Type:
       type: string
       enum:
         - code_execution_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7Type
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf7Type
+    BaseMessagesResultContentItemsOneOf7ContentOneOf0ErrorCode:
       type: string
       enum:
         - invalid_tool_input
         - unavailable
         - too_many_requests
         - execution_time_exceeded
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf0ErrorCode
+    BaseMessagesResultContentItemsOneOf7ContentOneOf0Type:
       type: string
       enum:
         - code_execution_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf7Content0:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf0Type
+    BaseMessagesResultContentItemsOneOf7Content0:
       type: object
       properties:
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf0ErrorCode
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf0Type
       required:
         - error_code
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItemsType:
+      title: BaseMessagesResultContentItemsOneOf7Content0
+    BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItemsType:
       type: string
       enum:
         - code_execution_output
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItemsType
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItems:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItemsType
+    BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItems:
       type: object
       properties:
         file_id:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItemsType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItemsType
       required:
         - file_id
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItems
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItems
+    BaseMessagesResultContentItemsOneOf7ContentOneOf1Type:
       type: string
       enum:
         - code_execution_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf7Content1:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf7Content1:
       type: object
       properties:
         content:
           type: array
           items:
             $ref: >-
-              #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1ContentItems
+              #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItems
         return_code:
           type: number
           format: double
@@ -5669,45 +5595,44 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf1Type
       required:
         - content
         - return_code
         - stderr
         - stdout
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItemsType:
+      title: BaseMessagesResultContentItemsOneOf7Content1
+    BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItemsType:
       type: string
       enum:
         - code_execution_output
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItemsType
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItems:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItemsType
+    BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItems:
       type: object
       properties:
         file_id:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItemsType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItemsType
       required:
         - file_id
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItems
-    BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItems
+    BaseMessagesResultContentItemsOneOf7ContentOneOf2Type:
       type: string
       enum:
         - encrypted_code_execution_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf7Content2:
+      title: BaseMessagesResultContentItemsOneOf7ContentOneOf2Type
+    BaseMessagesResultContentItemsOneOf7Content2:
       type: object
       properties:
         content:
           type: array
           items:
             $ref: >-
-              #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2ContentItems
+              #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf2ContentItems
         encrypted_stdout:
           type: string
         return_code:
@@ -5717,45 +5642,40 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7ContentOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf2Type
       required:
         - content
         - encrypted_stdout
         - return_code
         - stderr
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7Content2
-    BaseAnthropicMessagesResponseContentItemsOneOf7Content:
+      title: BaseMessagesResultContentItemsOneOf7Content2
+    BaseMessagesResultContentItemsOneOf7Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7Content1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7Content2
-      title: BaseAnthropicMessagesResponseContentItemsOneOf7Content
-    BaseAnthropicMessagesResponseContentItems7:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf7Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf7Content1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf7Content2'
+      title: BaseMessagesResultContentItemsOneOf7Content
+    BaseMessagesResultContentItems7:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf7Type'
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf7Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf7Content'
         tool_use_id:
           type: string
       required:
         - type
         - content
         - tool_use_id
-      title: BaseAnthropicMessagesResponseContentItems7
-    BaseAnthropicMessagesResponseContentItemsOneOf8Type:
+      title: BaseMessagesResultContentItems7
+    BaseMessagesResultContentItemsOneOf8Type:
       type: string
       enum:
         - bash_code_execution_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8Type
-    BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf8Type
+    BaseMessagesResultContentItemsOneOf8ContentOneOf0ErrorCode:
       type: string
       enum:
         - invalid_tool_input
@@ -5763,56 +5683,55 @@ components:
         - too_many_requests
         - execution_time_exceeded
         - output_file_too_large
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf8ContentOneOf0ErrorCode
+    BaseMessagesResultContentItemsOneOf8ContentOneOf0Type:
       type: string
       enum:
         - bash_code_execution_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf8Content0:
+      title: BaseMessagesResultContentItemsOneOf8ContentOneOf0Type
+    BaseMessagesResultContentItemsOneOf8Content0:
       type: object
       properties:
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf0ErrorCode
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf0Type
       required:
         - error_code
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItemsType:
+      title: BaseMessagesResultContentItemsOneOf8Content0
+    BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItemsType:
       type: string
       enum:
         - bash_code_execution_output
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItemsType
-    BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItems:
+      title: BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItemsType
+    BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItems:
       type: object
       properties:
         file_id:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItemsType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItemsType
       required:
         - file_id
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItems
-    BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItems
+    BaseMessagesResultContentItemsOneOf8ContentOneOf1Type:
       type: string
       enum:
         - bash_code_execution_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf8Content1:
+      title: BaseMessagesResultContentItemsOneOf8ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf8Content1:
       type: object
       properties:
         content:
           type: array
           items:
             $ref: >-
-              #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1ContentItems
+              #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItems
         return_code:
           type: number
           format: double
@@ -5822,43 +5741,39 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf1Type
       required:
         - content
         - return_code
         - stderr
         - stdout
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf8Content:
+      title: BaseMessagesResultContentItemsOneOf8Content1
+    BaseMessagesResultContentItemsOneOf8Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8Content1
-      title: BaseAnthropicMessagesResponseContentItemsOneOf8Content
-    BaseAnthropicMessagesResponseContentItems8:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf8Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf8Content1'
+      title: BaseMessagesResultContentItemsOneOf8Content
+    BaseMessagesResultContentItems8:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf8Type'
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf8Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf8Content'
         tool_use_id:
           type: string
       required:
         - type
         - content
         - tool_use_id
-      title: BaseAnthropicMessagesResponseContentItems8
-    BaseAnthropicMessagesResponseContentItemsOneOf9Type:
+      title: BaseMessagesResultContentItems8
+    BaseMessagesResultContentItemsOneOf9Type:
       type: string
       enum:
         - text_editor_code_execution_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Type
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf9Type
+    BaseMessagesResultContentItemsOneOf9ContentOneOf0ErrorCode:
       type: string
       enum:
         - invalid_tool_input
@@ -5866,50 +5781,50 @@ components:
         - too_many_requests
         - execution_time_exceeded
         - file_not_found
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf0ErrorCode
+    BaseMessagesResultContentItemsOneOf9ContentOneOf0Type:
       type: string
       enum:
         - text_editor_code_execution_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf9Content0:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf0Type
+    BaseMessagesResultContentItemsOneOf9Content0:
       type: object
       properties:
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf0ErrorCode
         error_message:
           type:
             - string
             - 'null'
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf0Type
       required:
         - error_code
         - error_message
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1FileType:
+      title: BaseMessagesResultContentItemsOneOf9Content0
+    BaseMessagesResultContentItemsOneOf9ContentOneOf1FileType:
       type: string
       enum:
         - text
         - image
         - pdf
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1FileType
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf1FileType
+    BaseMessagesResultContentItemsOneOf9ContentOneOf1Type:
       type: string
       enum:
         - text_editor_code_execution_view_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf9Content1:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf9Content1:
       type: object
       properties:
         content:
           type: string
         file_type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1FileType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf1FileType
         num_lines:
           type:
             - number
@@ -5927,7 +5842,7 @@ components:
           format: double
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf1Type
       required:
         - content
         - file_type
@@ -5935,30 +5850,30 @@ components:
         - start_line
         - total_lines
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf2Type:
+      title: BaseMessagesResultContentItemsOneOf9Content1
+    BaseMessagesResultContentItemsOneOf9ContentOneOf2Type:
       type: string
       enum:
         - text_editor_code_execution_create_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf2Type
-    BaseAnthropicMessagesResponseContentItemsOneOf9Content2:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf2Type
+    BaseMessagesResultContentItemsOneOf9Content2:
       type: object
       properties:
         is_file_update:
           type: boolean
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf2Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf2Type
       required:
         - is_file_update
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Content2
-    BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf3Type:
+      title: BaseMessagesResultContentItemsOneOf9Content2
+    BaseMessagesResultContentItemsOneOf9ContentOneOf3Type:
       type: string
       enum:
         - text_editor_code_execution_str_replace_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf3Type
-    BaseAnthropicMessagesResponseContentItemsOneOf9Content3:
+      title: BaseMessagesResultContentItemsOneOf9ContentOneOf3Type
+    BaseMessagesResultContentItemsOneOf9Content3:
       type: object
       properties:
         lines:
@@ -5989,7 +5904,7 @@ components:
           format: double
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9ContentOneOf3Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf3Type
       required:
         - lines
         - new_lines
@@ -5997,165 +5912,153 @@ components:
         - old_lines
         - old_start
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Content3
-    BaseAnthropicMessagesResponseContentItemsOneOf9Content:
+      title: BaseMessagesResultContentItemsOneOf9Content3
+    BaseMessagesResultContentItemsOneOf9Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Content1
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Content2
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Content3
-      title: BaseAnthropicMessagesResponseContentItemsOneOf9Content
-    BaseAnthropicMessagesResponseContentItems9:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Content1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Content2'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Content3'
+      title: BaseMessagesResultContentItemsOneOf9Content
+    BaseMessagesResultContentItems9:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Type'
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf9Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf9Content'
         tool_use_id:
           type: string
       required:
         - type
         - content
         - tool_use_id
-      title: BaseAnthropicMessagesResponseContentItems9
-    BaseAnthropicMessagesResponseContentItemsOneOf10Type:
+      title: BaseMessagesResultContentItems9
+    BaseMessagesResultContentItemsOneOf10Type:
       type: string
       enum:
         - tool_search_tool_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10Type
-    BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0ErrorCode:
+      title: BaseMessagesResultContentItemsOneOf10Type
+    BaseMessagesResultContentItemsOneOf10ContentOneOf0ErrorCode:
       type: string
       enum:
         - invalid_tool_input
         - unavailable
         - too_many_requests
         - execution_time_exceeded
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0ErrorCode
-    BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0Type:
+      title: BaseMessagesResultContentItemsOneOf10ContentOneOf0ErrorCode
+    BaseMessagesResultContentItemsOneOf10ContentOneOf0Type:
       type: string
       enum:
         - tool_search_tool_result_error
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0Type
-    BaseAnthropicMessagesResponseContentItemsOneOf10Content0:
+      title: BaseMessagesResultContentItemsOneOf10ContentOneOf0Type
+    BaseMessagesResultContentItemsOneOf10Content0:
       type: object
       properties:
         error_code:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0ErrorCode
+            #/components/schemas/BaseMessagesResultContentItemsOneOf10ContentOneOf0ErrorCode
         error_message:
           type:
             - string
             - 'null'
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf0Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf10ContentOneOf0Type
       required:
         - error_code
         - error_message
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10Content0
-    BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItemsType:
+      title: BaseMessagesResultContentItemsOneOf10Content0
+    BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItemsType:
       type: string
       enum:
         - tool_reference
       title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItemsType
-    BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItems:
+        BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItemsType
+    BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItems:
       type: object
       properties:
         tool_name:
           type: string
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItemsType
+            #/components/schemas/BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItemsType
       required:
         - tool_name
         - type
-      title: >-
-        BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItems
-    BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1Type:
+      title: BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItems
+    BaseMessagesResultContentItemsOneOf10ContentOneOf1Type:
       type: string
       enum:
         - tool_search_tool_search_result
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1Type
-    BaseAnthropicMessagesResponseContentItemsOneOf10Content1:
+      title: BaseMessagesResultContentItemsOneOf10ContentOneOf1Type
+    BaseMessagesResultContentItemsOneOf10Content1:
       type: object
       properties:
         tool_references:
           type: array
           items:
             $ref: >-
-              #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1ToolReferencesItems
+              #/components/schemas/BaseMessagesResultContentItemsOneOf10ContentOneOf1ToolReferencesItems
         type:
           $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10ContentOneOf1Type
+            #/components/schemas/BaseMessagesResultContentItemsOneOf10ContentOneOf1Type
       required:
         - tool_references
         - type
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10Content1
-    BaseAnthropicMessagesResponseContentItemsOneOf10Content:
+      title: BaseMessagesResultContentItemsOneOf10Content1
+    BaseMessagesResultContentItemsOneOf10Content:
       oneOf:
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10Content0
-        - $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10Content1
-      title: BaseAnthropicMessagesResponseContentItemsOneOf10Content
-    BaseAnthropicMessagesResponseContentItems10:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf10Content0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf10Content1'
+      title: BaseMessagesResultContentItemsOneOf10Content
+    BaseMessagesResultContentItems10:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf10Type'
         content:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf10Content
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf10Content'
         tool_use_id:
           type: string
       required:
         - type
         - content
         - tool_use_id
-      title: BaseAnthropicMessagesResponseContentItems10
-    BaseAnthropicMessagesResponseContentItemsOneOf11Type:
+      title: BaseMessagesResultContentItems10
+    BaseMessagesResultContentItemsOneOf11Type:
       type: string
       enum:
         - container_upload
-      title: BaseAnthropicMessagesResponseContentItemsOneOf11Type
-    BaseAnthropicMessagesResponseContentItems11:
+      title: BaseMessagesResultContentItemsOneOf11Type
+    BaseMessagesResultContentItems11:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/BaseAnthropicMessagesResponseContentItemsOneOf11Type
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf11Type'
         file_id:
           type: string
       required:
         - type
         - file_id
-      title: BaseAnthropicMessagesResponseContentItems11
-    BaseAnthropicMessagesResponseContentItems:
+      title: BaseMessagesResultContentItems11
+    BaseMessagesResultContentItems:
       oneOf:
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems0'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems1'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems2'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems3'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems4'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems5'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems6'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems7'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems8'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems9'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems10'
-        - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems11'
-      title: BaseAnthropicMessagesResponseContentItems
-    BaseAnthropicMessagesResponseStopReason:
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems0'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems1'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems2'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems3'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems4'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems5'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems6'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems7'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems8'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems9'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems10'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems11'
+      title: BaseMessagesResultContentItems
+    BaseMessagesResultStopReason:
       type: string
       enum:
         - end_turn
@@ -6164,8 +6067,8 @@ components:
         - tool_use
         - pause_turn
         - refusal
-      title: BaseAnthropicMessagesResponseStopReason
-    BaseAnthropicMessagesResponseUsageCacheCreation:
+      title: BaseMessagesResultStopReason
+    BaseMessagesResultUsageCacheCreation:
       type: object
       properties:
         ephemeral_5m_input_tokens:
@@ -6177,8 +6080,8 @@ components:
       required:
         - ephemeral_5m_input_tokens
         - ephemeral_1h_input_tokens
-      title: BaseAnthropicMessagesResponseUsageCacheCreation
-    BaseAnthropicMessagesResponseUsageServerToolUse:
+      title: BaseMessagesResultUsageCacheCreation
+    BaseMessagesResultUsageServerToolUse:
       type: object
       properties:
         web_search_requests:
@@ -6190,15 +6093,21 @@ components:
       required:
         - web_search_requests
         - web_fetch_requests
-      title: BaseAnthropicMessagesResponseUsageServerToolUse
-    BaseAnthropicMessagesResponseUsageServiceTier:
+      title: BaseMessagesResultUsageServerToolUse
+    BaseMessagesResultUsageServiceTier:
       type: string
       enum:
         - standard
         - priority
         - batch
-      title: BaseAnthropicMessagesResponseUsageServiceTier
-    BaseAnthropicMessagesResponseUsage:
+      title: BaseMessagesResultUsageServiceTier
+    BaseMessagesResultUsageSpeed:
+      type: string
+      enum:
+        - fast
+        - standard
+      title: BaseMessagesResultUsageSpeed
+    BaseMessagesResultUsage:
       type: object
       properties:
         input_tokens:
@@ -6219,8 +6128,7 @@ components:
           format: double
         cache_creation:
           oneOf:
-            - $ref: >-
-                #/components/schemas/BaseAnthropicMessagesResponseUsageCacheCreation
+            - $ref: '#/components/schemas/BaseMessagesResultUsageCacheCreation'
             - type: 'null'
         inference_geo:
           type:
@@ -6228,13 +6136,15 @@ components:
             - 'null'
         server_tool_use:
           oneOf:
-            - $ref: >-
-                #/components/schemas/BaseAnthropicMessagesResponseUsageServerToolUse
+            - $ref: '#/components/schemas/BaseMessagesResultUsageServerToolUse'
             - type: 'null'
         service_tier:
           oneOf:
-            - $ref: >-
-                #/components/schemas/BaseAnthropicMessagesResponseUsageServiceTier
+            - $ref: '#/components/schemas/BaseMessagesResultUsageServiceTier'
+            - type: 'null'
+        speed:
+          oneOf:
+            - $ref: '#/components/schemas/BaseMessagesResultUsageSpeed'
             - type: 'null'
       required:
         - input_tokens
@@ -6245,8 +6155,118 @@ components:
         - inference_geo
         - server_tool_use
         - service_tier
-      title: BaseAnthropicMessagesResponseUsage
-    AnthropicMessagesResponseProvider:
+      title: BaseMessagesResultUsage
+    MessagesResultUsageCacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: number
+          format: double
+        ephemeral_1h_input_tokens:
+          type: number
+          format: double
+      required:
+        - ephemeral_5m_input_tokens
+        - ephemeral_1h_input_tokens
+      title: MessagesResultUsageCacheCreation
+    MessagesResultUsageServerToolUse:
+      type: object
+      properties:
+        web_search_requests:
+          type: number
+          format: double
+        web_fetch_requests:
+          type: number
+          format: double
+      required:
+        - web_search_requests
+        - web_fetch_requests
+      title: MessagesResultUsageServerToolUse
+    MessagesResultUsageSpeed:
+      type: string
+      enum:
+        - fast
+        - standard
+      title: MessagesResultUsageSpeed
+    MessagesResultUsageCostDetails:
+      type: object
+      properties:
+        upstream_inference_cost:
+          type:
+            - number
+            - 'null'
+          format: double
+        upstream_inference_prompt_cost:
+          type: number
+          format: double
+        upstream_inference_completions_cost:
+          type: number
+          format: double
+      required:
+        - upstream_inference_prompt_cost
+        - upstream_inference_completions_cost
+      title: MessagesResultUsageCostDetails
+    MessagesResultUsage:
+      type: object
+      properties:
+        input_tokens:
+          type: number
+          format: double
+        output_tokens:
+          type: number
+          format: double
+        cache_creation_input_tokens:
+          type:
+            - number
+            - 'null'
+          format: double
+        cache_read_input_tokens:
+          type:
+            - number
+            - 'null'
+          format: double
+        cache_creation:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesResultUsageCacheCreation'
+            - type: 'null'
+        inference_geo:
+          type:
+            - string
+            - 'null'
+        server_tool_use:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesResultUsageServerToolUse'
+            - type: 'null'
+        service_tier:
+          type:
+            - string
+            - 'null'
+        speed:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesResultUsageSpeed'
+            - type: 'null'
+        cost:
+          type:
+            - number
+            - 'null'
+          format: double
+        is_byok:
+          type: boolean
+        cost_details:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesResultUsageCostDetails'
+            - type: 'null'
+      required:
+        - input_tokens
+        - output_tokens
+        - cache_creation_input_tokens
+        - cache_read_input_tokens
+        - cache_creation
+        - inference_geo
+        - server_tool_use
+        - service_tier
+      title: MessagesResultUsage
+    MessagesResultProvider:
       type: string
       enum:
         - AnyScale
@@ -6335,6 +6355,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Reka
         - Relace
         - SambaNova
         - Seed
@@ -6352,38 +6373,38 @@ components:
         - xAI
         - Z.AI
         - FakeProvider
-      title: AnthropicMessagesResponseProvider
-    AnthropicMessagesResponse:
+      title: MessagesResultProvider
+    MessagesResult:
       type: object
       properties:
         id:
           type: string
         type:
-          $ref: '#/components/schemas/BaseAnthropicMessagesResponseType'
+          $ref: '#/components/schemas/BaseMessagesResultType'
         role:
-          $ref: '#/components/schemas/BaseAnthropicMessagesResponseRole'
+          $ref: '#/components/schemas/BaseMessagesResultRole'
         container:
           oneOf:
-            - $ref: '#/components/schemas/BaseAnthropicMessagesResponseContainer'
+            - $ref: '#/components/schemas/BaseMessagesResultContainer'
             - type: 'null'
         content:
           type: array
           items:
-            $ref: '#/components/schemas/BaseAnthropicMessagesResponseContentItems'
+            $ref: '#/components/schemas/BaseMessagesResultContentItems'
         model:
           type: string
         stop_reason:
           oneOf:
-            - $ref: '#/components/schemas/BaseAnthropicMessagesResponseStopReason'
+            - $ref: '#/components/schemas/BaseMessagesResultStopReason'
             - type: 'null'
         stop_sequence:
           type:
             - string
             - 'null'
         usage:
-          $ref: '#/components/schemas/BaseAnthropicMessagesResponseUsage'
+          $ref: '#/components/schemas/MessagesResultUsage'
         provider:
-          $ref: '#/components/schemas/AnthropicMessagesResponseProvider'
+          $ref: '#/components/schemas/MessagesResultProvider'
       required:
         - id
         - type
@@ -6397,7 +6418,7 @@ components:
       description: >-
         Non-streaming response from the Anthropic Messages API with OpenRouter
         extensions
-      title: AnthropicMessagesResponse
+      title: MessagesResult
     MessagesPostResponsesContentApplicationJsonSchemaType:
       type: string
       enum:
