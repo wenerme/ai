@@ -172,18 +172,6 @@ for await (const chunk of stream) {
     "outputCost": 12
   },
   {
-    "model": "firmware/glm-5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 198000,
-    "maxOutput": 8192,
-    "inputCost": 1,
-    "outputCost": 3.2
-  },
-  {
     "model": "firmware/gpt-4o",
     "imageInput": true,
     "audioInput": false,
@@ -326,6 +314,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "firmware/zai-glm-5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 198000,
+    "maxOutput": 8192,
+    "inputCost": 1,
+    "outputCost": 3.2
   }
 ]}
 />
@@ -358,7 +358,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "firmware/minimax-m2-5"
+      ? "firmware/zai-glm-5"
       : "firmware/claude-haiku-4-5";
   }
 });
