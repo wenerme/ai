@@ -1,0 +1,43 @@
+---
+title: '`glab mr rebase`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Rebase the source branch of a merge request against its target branch.
+
+## Synopsis
+
+If you don't have permission to push to the merge request's source branch, you'll get a 403 Forbidden response.
+
+```plaintext
+glab mr rebase [<id> | <branch>] [flags]
+```
+
+## Examples
+
+```console
+# Rebase merge request 123
+glab mr rebase 123
+
+# Rebase current branch
+glab mr rebase
+
+# Rebase merge request from branch
+glab mr rebase branch
+glab mr rebase branch --skip-ci
+```
+
+## Options
+
+```plaintext
+      --skip-ci   Rebase merge request while skipping CI/CD pipeline.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

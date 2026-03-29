@@ -1,0 +1,43 @@
+---
+title: '`glab issue`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Work with GitLab issues.
+
+## Examples
+
+```console
+glab issue list
+glab issue create --label --confidential
+glab issue view --web 123
+glab issue note -m "closing because !123 was merged" <issue number>
+```
+
+## Options
+
+```plaintext
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`board`](board/_index.md)
+- [`close`](close.md)
+- [`create`](create.md)
+- [`delete`](delete.md)
+- [`list`](list.md)
+- [`note`](note.md)
+- [`reopen`](reopen.md)
+- [`subscribe`](subscribe.md)
+- [`unsubscribe`](unsubscribe.md)
+- [`update`](update.md)
+- [`view`](view.md)

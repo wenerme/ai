@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 81 skills available
+> 82 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -45,6 +45,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... |  |
 | `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... |  |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
+| `glab-docs` | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... |  |
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
@@ -404,6 +405,16 @@ npx skills add wenerme/ai --skill glab-cli
 ```
 
 Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD pipelines, making API calls, or performing any GitLab operation from the terminal. Triggers on glab, gitlab cli, merge request, MR create, pipeline status, ci lint.
+
+</details>
+<details>
+<summary><code>glab-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill glab-docs
+```
+
+glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines, repositories, runners, releases, clusters, stacks, variables, schedules, labels, milestones, auth, config, snippets, deploy keys, SSH/GPG keys, Duo AI, MCP, and OpenTofu. USE THIS SKILL WHEN the user asks about glab commands, glab CLI reference, glab mr, glab ci, glab issue, glab repo, glab runner, or GitLab CLI docs.
 
 </details>
 <details>

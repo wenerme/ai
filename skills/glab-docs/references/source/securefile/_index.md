@@ -1,0 +1,35 @@
+---
+title: '`glab securefile`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Manage secure files for a project.
+
+## Synopsis
+
+Store up to 100 files for secure use in CI/CD pipelines. Secure files are
+stored outside of your project's repository, not in version control.
+It is safe to store sensitive information in these files. Both plain text
+and binary files are supported, but they must be smaller than 5 MB.
+
+## Options
+
+```plaintext
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`create`](create.md)
+- [`download`](download.md)
+- [`get`](get.md)
+- [`list`](list.md)
+- [`remove`](remove.md)

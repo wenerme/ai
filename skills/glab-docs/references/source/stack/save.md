@@ -1,0 +1,52 @@
+---
+title: '`glab stack save`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Save your progress within a stacked diff. (EXPERIMENTAL)
+
+## Synopsis
+
+Save your current progress with a diff on the stack.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack save [flags]
+```
+
+## Examples
+
+```console
+# Save currently staged changes as diff with description
+glab stack save -m "added a function"
+
+# Add specified file to staged changes and save diff
+glab stack save added_file
+
+# Add all tracked files to staged changes and save diff
+glab stack save -a -m "added a function to exisiting file"
+
+# Add all tracked and untracked files to staged changes and save diff
+glab stack save . -m "added new file"
+```
+
+## Options
+
+```plaintext
+  -a, --all                  Automatically stage modified and deleted tracked files
+  -d, --description string   Description of the change.
+  -m, --message string       Alias for the description flag.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

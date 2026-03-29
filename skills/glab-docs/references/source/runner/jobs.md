@@ -1,0 +1,49 @@
+---
+title: '`glab runner jobs`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List jobs processed by a runner.
+
+## Synopsis
+
+Lists jobs processed by the specified runner, including jobs that are currently running.
+
+Requires the Maintainer or Owner role for the project.
+
+```plaintext
+glab runner jobs <runner-id> [flags]
+```
+
+## Examples
+
+```console
+# List all jobs for runner 9
+glab runner jobs 9
+
+# List only running jobs
+glab runner jobs 9 --status running
+
+# List jobs as JSON
+glab runner jobs 9 --output json
+```
+
+## Options
+
+```plaintext
+      --order-by string   Order jobs by: id (default "id")
+  -F, --output string     Format output as: text, json. (default "text")
+  -p, --page int          Page number (default 1)
+  -P, --per-page int      Number of items to list per page (default 30)
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+      --sort string       Sort order: asc or desc (default "desc")
+      --status string     Filter jobs by status: running, success, failed, canceled
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

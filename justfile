@@ -144,6 +144,10 @@ update-justfile-docs:
 update-k3s-docs:
     bun scripts/sync-k3s-docs.ts
 
+# Sync glab CLI docs from local gitlab-org/cli clone
+update-glab-docs:
+    bun scripts/sync-glab-docs.ts
+
 # Sync tea CLI docs from local gitea/tea clone
 update-tea-cli-docs:
     bun scripts/sync-tea-cli-docs.ts
@@ -190,6 +194,7 @@ update:
     -just update-k3s-docs
     -just update-justfile-docs
     -just update-immich-docs
+    -just update-glab-docs
     -just update-tea-cli-docs
     just update-readme
 

@@ -1,0 +1,48 @@
+---
+title: '`glab repo list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Get list of repositories.
+
+```plaintext
+glab repo list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+glab repo list
+```
+
+## Options
+
+```plaintext
+  -a, --all                 List all projects on the instance.
+      --archived            Limit by archived status. Use 'false' to exclude archived repositories. Used with the '--group' flag.
+  -g, --group string        Return repositories in only the given group.
+  -G, --include-subgroups   Include projects in subgroups of this group. Default is false. Used with the '--group' flag.
+      --member              List only projects of which you are a member.
+  -m, --mine                List only projects you own. Default if no filters are provided.
+  -o, --order string        Return repositories ordered by id, name, path, created_at, updated_at, similarity, star_count, last_activity_at. (default "last_activity_at")
+  -F, --output string       Format output as: text, json. (default "text")
+  -p, --page int            Page number. (default 1)
+  -P, --per-page int        Number of items to list per page. (default 30)
+  -s, --sort string         Sort direction for --order field: asc or desc.
+      --starred             List only starred projects.
+  -u, --user string         List user projects.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

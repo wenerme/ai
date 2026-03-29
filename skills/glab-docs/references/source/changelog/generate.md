@@ -1,0 +1,36 @@
+---
+title: '`glab changelog generate`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Generate a changelog for the repository or project.
+
+```plaintext
+glab changelog generate [flags]
+```
+
+## Examples
+
+```console
+# Generate a changelog
+glab changelog generate
+```
+
+## Options
+
+```plaintext
+      --config-file string          Path of the changelog configuration file in the project's Git repository. Defaults to '.gitlab/changelog_config.yml'.
+      --date 2016-03-11T03:45:40Z   Date and time of the release. Uses ISO 8601 (2016-03-11T03:45:40Z) format. Defaults to the current time.
+      --from string                 Start of the range of commits (as a SHA) to use when generating the changelog. This commit itself isn't included in the list.
+      --to string                   End of the range of commits (as a SHA) to use when generating the changelog. This commit is included in the list. Defaults to the HEAD of the project's default branch.
+      --trailer string              The Git trailer to use for including commits. Defaults to 'Changelog'.
+  -v, --version string              Version to generate the changelog for. Must follow semantic versioning. Defaults to the version of the local checkout, like using 'git describe'.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

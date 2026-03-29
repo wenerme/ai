@@ -1,0 +1,35 @@
+---
+title: '`glab check-update`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Check for latest glab releases.
+
+## Synopsis
+
+Checks for the latest version of glab available on GitLab.com.
+
+When run explicitly, this command always checks for updates regardless of when the last check occurred.
+
+When run automatically after other glab commands, it checks for updates at most once every 24 hours.
+
+To disable the automatic update check entirely, run 'glab config set check_update false'.
+To re-enable the automatic update check, run 'glab config set check_update true'.
+
+```plaintext
+glab check-update [flags]
+```
+
+## Aliases
+
+```plaintext
+update
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

@@ -1,0 +1,58 @@
+---
+title: '`glab runner-controller scope delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a scope from a runner controller. (EXPERIMENTAL)
+
+## Synopsis
+
+Deletes a scope from a runner controller. This is an administrator-only feature.
+
+Use one of the following flags to specify the scope type:
+
+- --instance: Remove an instance-level scope from the runner controller.
+- --runner <id>: Remove a runner-level scope for a specific runner. Multiple IDs
+  can be comma-separated or specified by repeating the flag.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab runner-controller scope delete <controller-id> [flags]
+```
+
+## Examples
+
+```console
+# Remove an instance-level scope from runner controller 42 (with confirmation)
+glab runner-controller scope delete 42 --instance
+
+# Remove an instance-level scope without confirmation
+glab runner-controller scope delete 42 --instance --force
+
+# Remove a runner-level scope for runner 5 from runner controller 42
+glab runner-controller scope delete 42 --runner 5 --force
+
+# Remove runner-level scopes for multiple runners
+glab runner-controller scope delete 42 --runner 5 --runner 10 --force
+glab runner-controller scope delete 42 --runner 5,10 --force
+```
+
+## Options
+
+```plaintext
+  -f, --force               Skip confirmation prompt.
+      --instance            Remove an instance-level scope.
+      --runner int64Slice   Remove a runner-level scope for the specified runner ID. Multiple IDs can be comma-separated or specified by repeating the flag. (default [])
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

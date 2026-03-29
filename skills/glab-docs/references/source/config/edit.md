@@ -1,0 +1,50 @@
+---
+title: '`glab config edit`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Opens the glab configuration file.
+
+## Synopsis
+
+Opens the glab configuration file.
+The command uses the following order when choosing the editor to use:
+
+1. 'glab_editor' field in the configuration file
+2. 'VISUAL' environment variable
+3. 'EDITOR' environment variable
+
+```plaintext
+glab config edit [flags]
+```
+
+## Examples
+
+```console
+# Open the configuration file with the default editor
+glab config edit
+
+# Open the configuration file with vim
+EDITOR=vim glab config edit
+
+# Set vim to be used for all future 'glab config edit' invocations
+glab config set editor vim
+glab config edit
+
+# Open the local configuration file with the default editor
+glab config edit -l
+```
+
+## Options
+
+```plaintext
+  -l, --local   Open '.git/glab-cli/config.yml' file instead of the global '~/.config/glab-cli/config.yml' file.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

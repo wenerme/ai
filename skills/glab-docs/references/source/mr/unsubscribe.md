@@ -1,0 +1,37 @@
+---
+title: '`glab mr unsubscribe`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Unsubscribe from a merge request.
+
+```plaintext
+glab mr unsubscribe [<id> | <branch>] [flags]
+```
+
+## Aliases
+
+```plaintext
+unsub
+```
+
+## Examples
+
+```console
+# Unsubscribe from a merge request
+glab mr unsubscribe 123
+glab mr unsub 123
+glab mr unsubscribe branch
+
+# Unsubscribe from multiple merge requests
+glab mr unsubscribe 123 branch
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

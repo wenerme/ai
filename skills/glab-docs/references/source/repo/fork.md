@@ -1,0 +1,35 @@
+---
+title: '`glab repo fork`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Fork a GitLab repository.
+
+```plaintext
+glab repo fork <repo> [flags]
+```
+
+## Examples
+
+```console
+glab repo fork
+glab repo fork namespace/repo
+glab repo fork namespace/repo --clone
+```
+
+## Options
+
+```plaintext
+  -c, --clone         Clone the fork. Options: true, false.
+  -n, --name string   The name assigned to the new project after forking.
+  -p, --path string   The path assigned to the new project after forking.
+      --remote        Add a remote for the fork. Options: true, false.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

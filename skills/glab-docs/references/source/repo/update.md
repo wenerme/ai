@@ -1,0 +1,43 @@
+---
+title: '`glab repo update`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update an existing GitLab project or repository.
+
+```plaintext
+glab repo update [path] [flags]
+```
+
+## Examples
+
+```console
+# Update the description for my-project.
+glab repo update my-project --description "This project is cool."
+
+# Update the default branch for my-project.
+glab repo update my-project --defaultBranch main
+
+# Archive my-project.
+glab repo update my-project --archive
+glab repo update my-project --archive=true
+
+# Unarchive my-project.
+glab repo update my-project --archive=false
+```
+
+## Options
+
+```plaintext
+      --archive                Whether the project should be archived.
+      --defaultBranch string   New default branch for the project.
+  -d, --description string     New description for the project.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

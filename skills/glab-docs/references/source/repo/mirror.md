@@ -1,0 +1,65 @@
+---
+title: '`glab repo mirror`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Configure mirroring on an existing project to sync with a remote repository.
+
+## Synopsis
+
+Configure repository mirroring for an existing GitLab project.
+
+The GitLab project must already exist. This command configures mirroring
+on existing projects but does not create new projects.
+
+Mirror types:
+
+- Pull mirror: Syncs changes from an external repository to your GitLab project. The external repository is the source of truth. Use pull mirrors to sync from GitHub, Bitbucket, or other GitLab instances.
+- Push mirror: Syncs changes from your GitLab project to an external repository. Your GitLab project is the source of truth. Use push mirrors to sync to GitHub, Bitbucket, or other GitLab instances.
+
+Authentication:
+
+- For pull mirrors from private repositories, embed credentials in the URL: `https://username:token@gitlab.example.com/org/repo`
+- For push mirrors to private repositories, configure credentials in the GitLab UI or use SSH URLs with deploy keys.
+
+```plaintext
+glab repo mirror [ID | URL | PATH] [flags]
+```
+
+## Examples
+
+```console
+# Create a project, then configure pull mirroring
+glab repo create mygroup/myproject --public
+glab repo mirror mygroup/myproject --direction=pull --url="https://gitlab.example.com/org/repo"
+
+# Configure pull mirroring from a private repository
+glab repo mirror mygroup/myproject --direction=pull --url="https://username:token@gitlab.example.com/org/private-repo"
+
+# Configure pull mirroring for protected branches only
+glab repo mirror mygroup/myproject --direction=pull --url="https://gitlab.example.com/org/repo" --protected-branches-only
+
+# Configure push mirroring to another GitLab instance
+glab repo mirror mygroup/myproject --direction=push --url="https://gitlab-backup.example.com/backup/myproject"
+
+# Configure push mirroring and allow divergent refs
+glab repo mirror mygroup/myproject --direction=push --url="https://gitlab-backup.example.com/backup/repo" --allow-divergence
+```
+
+## Options
+
+```plaintext
+      --allow-divergence          Determines if divergent refs are skipped.
+      --direction string          Mirror direction. Options: pull, push. (default "pull")
+      --enabled                   Determines if the mirror is enabled. (default true)
+      --protected-branches-only   Determines if only protected branches are mirrored.
+      --url string                The target URL to which the repository is mirrored.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

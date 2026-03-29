@@ -1,0 +1,48 @@
+---
+title: '`glab repo view`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+View a project or repository.
+
+## Synopsis
+
+Display the description and README of a project, or open it in the browser.
+
+```plaintext
+glab repo view [repository] [flags]
+```
+
+## Examples
+
+```console
+# View project information for the current directory.
+# Must be a Git repository.
+glab repo view
+
+# View project information of specified name.
+# glab repo view my-project
+glab repo view user/repo
+glab repo view group/namespace/repo
+
+# Specify repository by full [Git] URL.
+glab repo view git@gitlab.com:user/repo.git
+glab repo view https://gitlab.company.org/user/repo
+glab repo view https://gitlab.company.org/user/repo.git
+```
+
+## Options
+
+```plaintext
+  -b, --branch string   View a specific branch of the repository.
+  -F, --output string   Format output as: text, json. (default "text")
+  -w, --web             Open a project in the browser.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

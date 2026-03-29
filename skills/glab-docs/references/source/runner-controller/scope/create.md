@@ -1,0 +1,60 @@
+---
+title: '`glab runner-controller scope create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a scope for a runner controller. (EXPERIMENTAL)
+
+## Synopsis
+
+Creates a scope for a runner controller. This is an administrator-only feature.
+
+Use one of the following flags to specify the scope type:
+
+- --instance: Add an instance-level scope, allowing the runner controller
+  to evaluate jobs for all runners in the GitLab instance.
+- --runner <id>: Add a runner-level scope, allowing the runner controller
+  to evaluate jobs for a specific instance-level runner. Multiple IDs can
+  be comma-separated or specified by repeating the flag.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab runner-controller scope create <controller-id> [flags]
+```
+
+## Examples
+
+```console
+# Add an instance-level scope to runner controller 42
+glab runner-controller scope create 42 --instance
+
+# Add a runner-level scope for runner 5 to runner controller 42
+glab runner-controller scope create 42 --runner 5
+
+# Add runner-level scopes for multiple runners
+glab runner-controller scope create 42 --runner 5 --runner 10
+glab runner-controller scope create 42 --runner 5,10
+
+# Add a runner-level scope and output as JSON
+glab runner-controller scope create 42 --runner 5 --output json
+```
+
+## Options
+
+```plaintext
+      --instance            Add an instance-level scope.
+  -F, --output string       Format output as: text, json. (default "text")
+      --runner int64Slice   Add a runner-level scope for the specified runner ID. Multiple IDs can be comma-separated or specified by repeating the flag. (default [])
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

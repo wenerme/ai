@@ -1,0 +1,60 @@
+---
+title: '`glab securefile download`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Download a secure file for a project.
+
+```plaintext
+glab securefile download <fileID> [flags]
+```
+
+## Examples
+
+```console
+# Download a project's secure file using the file's ID by argument or flag.
+glab securefile download 1
+glab securefile download --id 1
+
+# Download a project's secure file using the file's ID to a given path.
+glab securefile download 1 --path="securefiles/file.txt"
+
+# Download a project's secure file without verifying its checksum.
+glab securefile download 1 --no-verify
+
+# Download a project's secure file even if checksum verification fails.
+glab securefile download 1 --force-download
+
+# Download a project's secure file using the file's name to the current directory.
+glab securefile download --name my-secure-file.pem
+
+# Download a project's secure file using the file's name to a given path.
+glab securefile download --name my-secure-file.pem --path=securefiles/some-other-name.pem
+
+# Download all (limit 100) of a project's secure files.
+glab securefile download --all
+
+# Download all (limit 100) of a project's secure files to a given directory.
+glab securefile download --all --output-dir secure_files/
+```
+
+## Options
+
+```plaintext
+      --all                 Download all (limit 100) of a project's secure files. Files are downloaded with their original name and file extension.
+      --force-download      Force download file(s) even if checksum verification fails. Warning: when enabled, this setting allows the download of files that are corrupt or tampered with.
+      --id int              ID of the secure file to download.
+      --name string         Name of the secure file to download. Saves the file with this name, or to the path specified by --path.
+      --no-verify           Do not verify the checksum of the downloaded file(s). Warning: when enabled, this setting allows the download of files that are corrupt or tampered with.
+      --output-dir string   Output directory for files downloaded with --all. (default ".")
+  -p, --path string         Path to download the secure file to, including filename and extension. (default "./downloaded.tmp")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

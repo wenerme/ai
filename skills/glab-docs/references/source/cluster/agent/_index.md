@@ -1,0 +1,30 @@
+---
+title: '`glab cluster agent`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Manage GitLab Agents for Kubernetes.
+
+## Options
+
+```plaintext
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`bootstrap`](bootstrap.md)
+- [`check_manifest_usage`](check_manifest_usage.md)
+- [`get-token`](get-token.md)
+- [`list`](list.md)
+- [`token`](token/_index.md)
+- [`token-cache`](token-cache/_index.md)
+- [`update-kubeconfig`](update-kubeconfig.md)

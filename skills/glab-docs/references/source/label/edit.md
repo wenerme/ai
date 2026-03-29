@@ -1,0 +1,36 @@
+---
+title: '`glab label edit`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Edit group or project label.
+
+```plaintext
+glab label edit [flags]
+```
+
+## Examples
+
+```console
+glab label edit
+glab label edit -R owner/repo
+```
+
+## Options
+
+```plaintext
+  -c, --color string         The color of the label given in 6-digit hex notation with leading ‘#’ sign.
+  -d, --description string   Label description.
+  -l, --label-id int         The label ID we are updating.
+  -n, --new-name string      The new name of the label.
+  -p, --priority int         Label priority.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

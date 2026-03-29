@@ -1,0 +1,57 @@
+---
+title: '`glab stack`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create, manage, and work with stacked diffs. (EXPERIMENTAL)
+
+## Synopsis
+
+Stacked diffs are a way of creating small changes that build upon each other to ultimately deliver a feature. This kind of workflow can be used to accelerate development time by continuing to build upon your changes, while earlier changes in the stack are reviewed and updated based on feedback.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Aliases
+
+```plaintext
+stacks
+```
+
+## Examples
+
+```console
+glab stack create cool-new-feature
+glab stack sync
+```
+
+## Options
+
+```plaintext
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`amend`](amend.md)
+- [`create`](create.md)
+- [`first`](first.md)
+- [`last`](last.md)
+- [`list`](list.md)
+- [`move`](move.md)
+- [`next`](next.md)
+- [`prev`](prev.md)
+- [`reorder`](reorder.md)
+- [`save`](save.md)
+- [`switch`](switch.md)
+- [`sync`](sync.md)

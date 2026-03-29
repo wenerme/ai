@@ -1,0 +1,80 @@
+---
+title: '`glab token create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Creates user, group, or project access tokens.
+
+## Synopsis
+
+Creates a new access token for a user, group, or project. Defaults to a
+project access token, unless user or group name is specified.
+
+The expiration date of the token is calculated by adding the duration
+(default: 30 days) to the current date, with expiration occurring at midnight
+UTC on the calculated date. You can specify a different duration using days (d),
+weeks (w), or hours (h), or provide an explicit end date.
+
+The name of the token must be unique. The token is printed to stdout.
+
+Administrators can create full-featured personal access tokens for themselves and for other users.
+
+Non-administrators can create personal access tokens only for
+themselves (@me). These tokens must use the scope 'k8s_proxy'. For more
+information, see the GitLab documentation for the
+[User tokens API](https://docs.gitlab.com/api/user_tokens/#create-a-personal-access-token).
+
+```plaintext
+glab token create <name> [flags]
+```
+
+## Aliases
+
+```plaintext
+create
+new
+```
+
+## Examples
+
+```console
+# Create project access token for current project (default 30 days)
+glab token create --access-level developer --scope read_repository --scope read_registry my-project-token
+
+# Create project access token with 7 day lifetime
+glab token create --repo user/my-repo --access-level owner --scope api my-project-token --duration 7d
+
+# Create a group access token expiring in 2 weeks
+glab token create --group group/sub-group --access-level owner --scope api my-group-token --duration 2w
+
+# Create a personal access token for current user with 90 day lifetime
+glab token create --user @me --scope k8s_proxy my-personal-token --duration 90d
+
+# (administrator only) Create a personal access token for another user
+glab token create --user johndoe --scope api johns-personal-token --duration 180d
+
+# Create a token with explicit expiration date
+glab token create --access-level developer --scope api my-token --expires-at 2025-12-31
+```
+
+## Options
+
+```plaintext
+  -A, --access-level AccessLevel   Access level of the token: one of 'guest', 'reporter', 'developer', 'maintainer', 'owner'. (default no)
+      --description string         Sets the token's description.
+  -D, --duration duration          Sets the token lifetime in days. Accepts: days (30d), weeks (4w), or hours in multiples of 24 (24h, 168h, 720h). Maximum: 365d. The token expires at midnight UTC on the calculated date. (default 30d)
+  -E, --expires-at DATE            Sets the token's expiration date and time, in YYYY-MM-DD format. If not specified, --duration is used. (default 0001-01-01)
+  -g, --group string               Create a group access token. Ignored if a user or repository argument is set.
+  -F, --output string              Format output as 'text' for the token value, 'json' for the actual API token structure. (default "text")
+  -R, --repo OWNER/REPO            Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -S, --scope strings              Scopes for the token. Multiple scopes can be comma-separated or specified by repeating the flag. For a list, see https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes. (default [read_repository])
+  -U, --user string                Create a personal access token. For the current user, use @me.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

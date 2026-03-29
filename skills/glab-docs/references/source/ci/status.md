@@ -1,0 +1,49 @@
+---
+title: '`glab ci status`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+View a running CI/CD pipeline on current or other branch specified.
+
+```plaintext
+glab ci status [flags]
+```
+
+## Aliases
+
+```plaintext
+stats
+```
+
+## Examples
+
+```console
+glab ci status --live
+
+# A more compact view
+glab ci status --compact
+
+# Get the pipeline for the main branch
+glab ci status --branch=main
+
+# Get the pipeline for the current branch
+glab ci status
+```
+
+## Options
+
+```plaintext
+  -b, --branch string   Check pipeline status for a branch. (default current branch)
+  -c, --compact         Show status in compact format.
+  -l, --live            Show status in real time until the pipeline ends.
+  -F, --output string   Format output as: text, json. Note: JSON output is not compatible with --live or --compact flags. (default "text")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

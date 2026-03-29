@@ -1,0 +1,40 @@
+---
+title: '`glab variable delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a variable for a project or group.
+
+```plaintext
+glab variable delete <key> [flags]
+```
+
+## Aliases
+
+```plaintext
+remove
+```
+
+## Examples
+
+```console
+glab variable delete VAR_NAME
+glab variable delete VAR_NAME --scope=prod
+glab variable delete VARNAME -g mygroup
+```
+
+## Options
+
+```plaintext
+  -g, --group string   Delete variable from a group.
+  -s, --scope string   The 'environment_scope' of the variable. Options: all (*), or specific environments. (default "*")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

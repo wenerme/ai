@@ -1,0 +1,24 @@
+---
+title: '`glab version`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Show version information for glab.
+
+```plaintext
+glab version [flags]
+```
+
+## Aliases
+
+```plaintext
+v
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
