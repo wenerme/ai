@@ -1,0 +1,92 @@
+---
+title: "ComfyUI Wan2.1 Fun InP 视频示例"
+description: "本文介绍了如何在 ComfyUI 中完成 Wan2.1 Fun InP 视频首尾帧视频生成示例"
+---
+
+## 关于 Wan2.1-Fun-InP
+
+Wan-Fun InP 是阿里巴巴推出的开源视频生成模型，属于 ​​Wan2.1-Fun​​ 系列的一部分，专注于通过图像生成视频并实现首尾帧控制。
+
+**核心功能**：
+- 首尾帧控制：支持输入首帧和尾帧图像，生成中间过渡视频，提升视频连贯性与创意自由度。相比早期社区版本，阿里官方模型的生成效果更稳定且质量显著提升。
+- 多分辨率支持：支持生成512×512、768×768、1024×1024等分辨率的视频，适配不同场景需求。
+
+**模型版本方面**：
+- 1.3B 轻量版：适合本地部署和快速推理，对显存要求较低
+- 14B 高性能版：模型体积达 32GB+，效果更优但需高显存支持
+
+下面是相关模型权重和代码仓库：
+
+- [Wan2.1-Fun-1.3B-Input](https://huggingface.co/alibaba-pai/Wan2.1-Fun-1.3B-Input)
+- [Wan2.1-Fun-14B-Input](https://huggingface.co/alibaba-pai/Wan2.1-Fun-14B-Input)
+- 代码仓库：[VideoX-Fun](https://github.com/aigc-apps/VideoX-Fun)
+
+目前 ComfyUI 已原生支持了 Wan2.1 Fun InP 模型，在开始本篇教程前，请更新你的 ComfyUI 保证你的版本在[这个提交](https://github.com/comfyanonymous/ComfyUI/commit/0a1f8869c9998bbfcfeb2e97aa96a6d3e0a2b5df)版本之后
+
+## Wan2.1 Fun Control 工作流
+
+下载下面的图片，并拖入 ComfyUI 中以加载对应的工作流
+
+![工作流文件](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/wan2.1_fun_inp/wan2.1_fun_inp.webp)
+
+### 1. 工作流文件下载
+
+### 2. 手动模型安装
+
+如果对应的自动模型下载无效，请手动进行模型下载，并保存到对应的文件夹
+
+下面的模型你可以在 [Wan_2.1_ComfyUI_repackaged](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged) 和 [Wan2.1-Fun](https://huggingface.co/collections/alibaba-pai/wan21-fun-67e4fb3b76ca01241eb7e334) 找到
+
+**Diffusion models** 选择 1.3B 或 14B, 14B 的文件体积更大（32GB）但是对于运行显存要求也较高，
+- [wan2.1_fun_inp_1.3B_bf16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_fun_inp_1.3B_bf16.safetensors?download=true)
+- [Wan2.1-Fun-14B-InP](https://huggingface.co/alibaba-pai/Wan2.1-Fun-14B-InP/resolve/main/diffusion_pytorch_model.safetensors?download=true)： 建议下载后重命名为 `Wan2.1-Fun-14B-InP.safetensors`
+
+**Text encoders** 选择下面两个模型中的一个，fp16 精度体积较大对性能要求高
+- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)
+- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)
+
+**VAE**
+- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)
+
+**CLIP Vision** 
+- [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors?download=true)
+
+文件保存位置
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── wan2.1_fun_inp_1.3B_bf16.safetensors
+│   ├── 📂 text_encoders/
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors
+│   └── 📂 vae/
+│   │   └── wan_2.1_vae.safetensors
+│   └── 📂 clip_vision/
+│       └──  clip_vision_h.safetensors                 
+```
+
+### 3. 按步骤完成工作流
+
+[ComfyUI Wan2.1 Fun Control 视频生成工作流步骤图]
+
+1. 确保 `Load Diffusion Model` 节点加载了 `wan2.1_fun_inp_1.3B_bf16.safetensors`
+2. 确保 `Load CLIP` 节点加载了 `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
+3. 确保 `Load VAE` 节点加载了 `wan_2.1_vae.safetensors`
+4. 确保 `Load CLIP Vision` 节点加载了 `clip_vision_h.safetensors `
+5. 在 `Load Image` 节点（已被重命名为`Start_image`） 上传起始帧
+6. 在第二个 `Load Image` 节点上传用于控制视频。注意： 目前这个节点还不支持 mp4 只能使用 Webp 视频
+7. （可选）修改 Prompt 使用中英文都可以
+8. （可选）在 `WanFunInpaintToVideo` 修改对应视频的尺寸，不要使用过大的尺寸
+9. 点击 `Run` 按钮，或者使用快捷键 `Ctrl(cmd) + Enter(回车)` 来执行视频生成
+
+### 4. 工作流说明
+
+请注意要使用正确的模型，因为 `wan2.1_fun_inp_1.3B_bf16.safetensors` 和  `wan2.1_fun_control_1.3B_bf16.safetensors` 都保存在同一文件夹，同时名称又极为相似，请确保使用了正确的模型。
+
+- 在体验 Wan Fun InP 时，你可能需要频繁修改提示词，从而来确保对应画面的过渡的准确性
+
+## 其它 Wan2.1 Fun Inp 或者视频相关自定义节点
+
+- [ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite) 
+- [ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper)
+- [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)

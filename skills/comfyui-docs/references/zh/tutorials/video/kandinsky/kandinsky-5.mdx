@@ -1,0 +1,106 @@
+---
+title: "Kandinsky 5.0"
+description: "本指南介绍如何在 ComfyUI 中使用 Kandinsky 5.0 视频生成工作流"
+---
+
+[Kandinsky 5.0](https://huggingface.co/kandinskylab/Kandinsky-5.0-I2V-Lite-5s) 是由 [Kandinsky Lab](https://huggingface.co/kandinskylab) 开发的视频和图像生成扩散模型系列。Kandinsky 5.0 T2V Lite 是一个轻量级的 2B 参数模型，在开源视频生成模型中名列前茅，能够生成长达 10 秒的视频。
+
+## 概述
+
+Kandinsky 5.0 使用带有 Flow Matching 的潜在扩散管道，具有以下特点：
+
+- **扩散 Transformer (DiT)：** 主要生成骨干网络，通过交叉注意力连接文本嵌入
+- **Qwen2.5-VL 和 CLIP：** 提供高质量的文本嵌入
+- **HunyuanVideo 3D VAE：** 将视频编码和解码到潜在空间
+
+该模型系列包含多个针对不同用例优化的变体：
+- **SFT 模型：** 最高生成质量
+- **CFG-distilled：** 推理速度提升 2 倍
+- **Diffusion-distilled：** 速度提升 6 倍，质量损失极小（16 步）
+- **Pretrain 模型：** 专为微调设计
+
+所有模型均提供 5 秒和 10 秒视频生成版本。
+
+## 模型变体
+
+| 模型 | 视频时长 | NFE | 延迟 (H100) |
+|-------|---------------|-----|----------------|
+| Kandinsky 5.0 T2V Lite SFT | 5s / 10s | 100 | 139s / 224s |
+| Kandinsky 5.0 T2V Lite no-CFG | 5s / 10s | 50 | 77s / 124s |
+| Kandinsky 5.0 T2V Lite distill | 5s / 10s | 16 | 35s / 61s |
+| Kandinsky 5.0 I2V Lite | 5s | 100 | 673s |
+
+## 文生视频工作流
+
+### 1. 下载工作流文件
+
+请更新你的 ComfyUI 到最新版本，并通过菜单 `工作流` -> `浏览模板` -> `视频` 找到 "Kandinsky 5.0 T2V" 以加载工作流。
+
+<a className="prose" target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_kandinsky5_t2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>下载 JSON 格式工作流</p>
+</a>
+
+### 2. 手动下载模型
+
+**Text Encoders**
+- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)
+- [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors)
+
+**Diffusion Model**
+- [kandinsky5lite_t2v_sft_5s.safetensors](https://huggingface.co/kandinskylab/Kandinsky-5.0-T2V-Lite-sft-5s/resolve/main/model/kandinsky5lite_t2v_sft_5s.safetensors)
+
+**VAE**
+- [hunyuan_video_vae_bf16.safetensors](https://huggingface.co/Kijai/HunyuanVideo_comfy/resolve/main/hunyuan_video_vae_bf16.safetensors)
+
+```
+ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      ├── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   │      └── clip_l.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── kandinsky5lite_t2v_sft_5s.safetensors
+│   └── 📂 vae/
+│          └── hunyuan_video_vae_bf16.safetensors
+```
+
+## 图生视频工作流
+
+### 1. 下载工作流文件
+
+请更新你的 ComfyUI 到最新版本，并通过菜单 `工作流` -> `浏览模板` -> `视频` 找到 "Kandinsky 5.0 I2V" 以加载工作流。
+
+<a className="prose" target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_kandinsky5_i2v.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>下载 JSON 格式工作流</p>
+</a>
+
+### 2. 手动下载模型
+
+**Text Encoders**
+- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)
+- [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors)
+
+**Diffusion Model**
+- [kandinsky5lite_i2v_5s.safetensors](https://huggingface.co/kandinskylab/Kandinsky-5.0-I2V-Lite-5s/resolve/main/model/kandinsky5lite_i2v_5s.safetensors)
+
+**VAE**
+- [hunyuan_video_vae_bf16.safetensors](https://huggingface.co/Kijai/HunyuanVideo_comfy/resolve/main/hunyuan_video_vae_bf16.safetensors)
+
+```
+ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      ├── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   │      └── clip_l.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── kandinsky5lite_i2v_5s.safetensors
+│   └── 📂 vae/
+│          └── hunyuan_video_vae_bf16.safetensors
+```
+
+## 资源
+
+- [HuggingFace 模型合集](https://huggingface.co/collections/kandinskylab/kandinsky-50-video-lite)
+- [GitHub 仓库](https://github.com/ai-forever/Kandinsky-5)
+- [ComfyUI 集成](https://github.com/ai-forever/Kandinsky-5/blob/main/comfyui/README.md)
+- [项目主页](https://ai-forever.github.io/Kandinsky-5/)

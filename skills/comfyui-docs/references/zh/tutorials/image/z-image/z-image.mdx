@@ -1,0 +1,53 @@
+---
+title: "Z-Image ComfyUI 工作流示例"
+description: "Z-Image 是一个拥有 6B 参数的高效图像生成基础模型，采用单流扩散变换器架构，适用于社区驱动的微调和自定义开发。"
+---
+
+**Z-Image（造相）** 是阿里巴巴通义实验室开发的一个强大且高效的图像生成模型，拥有 **6B** 参数。它采用 **可扩展单流 DiT**（S3-DiT）架构，将文本、视觉语义 token 和图像 VAE token 在序列级别进行拼接，作为统一的输入流，最大化参数效率。
+
+Z-Image（Base）是非蒸馏基础模型，专为社区驱动的微调和自定义开发而设计。
+
+**模型亮点**：
+- **照片级真实质量**：在保持出色美学质量的同时，提供强大的照片级真实图像生成
+- **精准的双语文本渲染**：擅长准确渲染复杂的中英文文本
+- **提示词增强与推理**：提示词增强器赋予模型推理能力
+- **微调就绪**：适合自定义训练和适配的理想基础模型
+
+**相关链接**：
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image)
+- [ModelScope](https://modelscope.cn/models/Tongyi-MAI/Z-Image)
+
+## Z-Image 文生图工作流
+
+  
+    下载 Z-Image 文生图工作流 JSON 文件。
+  
+  
+    在 ComfyUI Cloud 上直接运行此工作流。
+  
+
+## Z-Image 模型下载
+
+  
+    Z-Image 文本编码器。
+  
+  
+    Z-Image 扩散模型。
+  
+  
+    Z-Image VAE。
+  
+
+**模型存储位置**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```

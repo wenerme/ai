@@ -1,0 +1,86 @@
+---
+title: "Z-Image-Turbo ComfyUI 工作流示例"
+description: "Z-Image-Turbo 是一个蒸馏版 6B 参数高效图像生成模型，可实现亚秒级推理延迟。"
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HvaEsnyOfSw?si=bsOQzcL0vsPcaE83" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Z-Image（造相）** 是阿里巴巴通义实验室开发的一个强大且高效的图像生成模型，拥有 **6B** 参数。它采用 **可扩展单流 DiT**（S3-DiT）架构，将文本、视觉语义 token 和图像 VAE token 在序列级别进行拼接，作为统一的输入流，最大化参数效率。
+
+**模型变体**：
+- 🚀 **Z-Image-Turbo** – 蒸馏版本，仅需 **8 NFEs**（函数评估次数）即可达到或超越领先竞争对手。在企业级 H800 GPU 上可实现**亚秒级推理延迟**，并可在 **16GB 显存的消费级设备**上运行。
+- 🧱 **Z-Image-Base** – 非蒸馏基础模型，用于社区驱动的微调和自定义开发。
+- ✍️ **Z-Image-Edit** – 针对图像编辑任务微调的变体，具有出色的指令遵循能力。
+
+**模型亮点**：
+- **照片级真实质量**：在保持出色美学质量的同时，提供强大的照片级真实图像生成
+- **精准的双语文本渲染**：擅长准确渲染复杂的中英文文本
+- **提示词增强与推理**：提示词增强器赋予模型推理能力
+- **亚秒级推理**：在支持的硬件上实现快速生成
+
+**相关链接**：
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image-Turbo)
+
+## Z-Image-Turbo 文生图工作流
+
+  
+    下载 Z-Image-Turbo 文生图工作流 JSON 文件。
+  
+  
+    在 ComfyUI Cloud 上直接运行此工作流。
+  
+
+### Z-Image-Turbo 模型下载
+
+  
+    Z-Image-Turbo 文本编码器。
+  
+  
+    Z-Image-Turbo 扩散模型。
+  
+  
+    Z-Image-Turbo VAE。
+  
+
+**Z-Image-Turbo 模型存储位置**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```
+
+## Z-Image-Turbo Fun Union ControlNet 工作流
+
+此工作流使用 Z-Image-Turbo Fun Union ControlNet 模型生成带有 ControlNet 引导的图像。它对参考图像应用 Canny 边缘检测，并使用 ControlNet 来引导生成过程。
+
+  
+    下载 Z-Image-Turbo Fun Union ControlNet 工作流 JSON 文件。
+  
+
+### ControlNet 所需的额外模型
+
+  
+    Z-Image-Turbo ControlNet 模型补丁。
+  
+
+**模型存储位置**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   ├── 📂 vae/
+│   │      └── ae.safetensors
+│   └── 📂 model_patches/
+│          └── Z-Image-Turbo-Fun-Controlnet-Union.safetensors
+```
