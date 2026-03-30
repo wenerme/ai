@@ -1,11 +1,11 @@
 ---
 title: "Mistral | Models"
-description: "Use Mistral models with Mastra. 26 models available."
+description: "Use Mistral models with Mastra. 27 models available."
 ---
 
 # [Mistral logo]Mistral
 
-Access 26 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
+Access 27 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
 
 Learn more in the [Mistral documentation](https://docs.mistral.ai/getting-started/models/).
 
@@ -278,16 +278,28 @@ for await (const chunk of stream) {
     "outputCost": 0.3
   },
   {
+    "model": "mistral/mistral-small-2603",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
+  },
+  {
     "model": "mistral/mistral-small-latest",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.1,
-    "outputCost": 0.3
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "mistral/open-mistral-7b",
