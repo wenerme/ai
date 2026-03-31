@@ -143,8 +143,8 @@ minimum balance that triggers a reload payment.
 ### Postpay
 
 In the Postpay billing plan, your Cloud Billing account accrues costs and you
-are automatically charged at the end of the month, or when your costs meet an
-[automatically assigned threshold amount](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps).
+are automatically charged at the end of the month, or when your costs reach an
+[automatically assigned spend cap](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) based on your account tier.
 The payment is charged to the payment method attached to your Postpay payments
 account, which you can manage on the [AI Studio Billing](https://aistudio.google.com/billing) page.
 
@@ -250,9 +250,8 @@ latencies to learn more about potential billing delays.
 
 ## Refunds
 
-Refunds aren't allowed for **Prepay** billing accounts. Purchased credits
-expire after 1 year. After expiration, credits are forfeited and can't be
-retrieved.
+Refunds aren't allowed for **Prepay** billing accounts, except when switching
+account types.
 
 **When a Prepay account switches to the Postpay account type** (after you
 meet the [criteria](https://ai.google.dev/gemini-api/docs/billing#about-billing) and [manually upgrade](https://ai.google.dev/gemini-api/docs/billing#postpay)
@@ -263,6 +262,9 @@ If you [close](https://docs.cloud.google.com/billing/docs/how-to/close-or-reopen
 your Prepay account for any reason other than upgrading to Postpay, any
 remaining prepaid credits are forfeited.
 
+Purchased credits expire after 1 year. After expiration, credits are forfeited
+and can't be retrieved.
+
 **Postpay** accounts follow the [Google Cloud refund policy](https://docs.cloud.google.com/billing/docs/how-to/resolve-issues#request_a_refund).
 
 ## Cloud Billing accounts
@@ -272,7 +274,7 @@ can [set up directly in AI Studio](https://ai.google.dev/gemini-api/docs/billing
 You can use AI Studio to track spending, understand costs, and make payments.
 
 > [!NOTE]
-> **Note:** New users might be granted a [$300 welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits) in their new Google Cloud Billing accounts. If you opened your account **after March 2, 2026** , you can't use these credits to pay for Gemini API and AI Studio usage, but you can use them on [other Google Cloud products](https://docs.cloud.google.com/free/docs/free-cloud-features) in the [Google Cloud console](https://console.cloud.google.com/).
+> **Note:** New users might be granted a [$300 Welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits) in their new Google Cloud Billing accounts. If you opened your account **after March 2, 2026** , you can't use these credits to pay for Gemini API and AI Studio usage, but you can use them on [other Google Cloud products](https://docs.cloud.google.com/free/docs/free-cloud-features) in the [Google Cloud console](https://console.cloud.google.com/).
 
 Tiers, rate limits, and billing account caps are all determined at the billing
 account level.
@@ -318,10 +320,10 @@ For pricing information, see the [Pricing page](https://ai.google.dev/pricing).
 You can view your quota and system limits in
 [AI Studio](https://aistudio.google.com/usage).
 
-### How do I request more quota?
+### How do I move to a higher rate limit tier, or request more quota?
 
 You will automatically be granted more quota when your account reaches the next
-[tier requirements](https://ai.google.dev/gemini-api/docs/billing#about-billing).
+[tier requirements](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
 
 ### Can I use the Gemini API for free in EEA (including EU), the UK, and CH?
 
@@ -333,7 +335,17 @@ AI Studio usage remains free of charge unless users link a paid API key for
 access to paid features.
 Once you link a paid API key as part of a paid project in AI Studio, you will be
 charged for AI Studio usage for that key. You can switch between Paid Tier
-projects and Free Tier projects in AI Studio as needed.
+projects and Free Tier projects as needed by using the respective API keys
+linked to each type.
+
+### If I'm on the Free Tier, how do I upgrade to higher tiers?
+
+To access higher tiers, you must set up billing on your project. Click [**Set up
+billing**](https://ai.google.dev/gemini-api/docs/billing#setup-billing) in Google AI Studio. This will walk you through
+selecting or creating a Cloud Billing account. If you are required to be on the
+prepaid billing model, the **Set up billing** process will guide you through the
+process to create your Prepay account that is linked to your Cloud Billing
+account.
 
 ### Can I use 1M tokens in the free tier?
 
@@ -344,19 +356,40 @@ can try the 1M token context window in the following ways:
 - With free-of-charge plans for select models
 - With postpaid plans
 
+### Can I revert back to Free Tier after I've upgraded to higher (paid) tiers?
+
+To downgrade to the Free Tier, you can [disable billing](https://docs.cloud.google.com/billing/docs/how-to/modify-project#disable_billing_for_a_project)
+on each of your projects that you want to downgrade.
+
 ### How can I calculate the number of tokens I'm using?
 
 Use the [`GenerativeModel.count_tokens`](https://ai.google.dev/api/python/google/generativeai/GenerativeModel#count_tokens)
 method to count the number of tokens. Refer to the [Tokens guide](https://ai.google.dev/gemini-api/docs/tokens) to learn more about tokens.
 
-### Can I use my Google Cloud welcome credit with the Gemini API?
+### If I sign up for my first Cloud Billing account through AI Studio, will I still get a Google Cloud Free Trial?
 
-No, the Google Cloud [welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits)
+When you sign up for your first ever Cloud Billing account, your [Google Cloud
+Free Trial](https://docs.cloud.google.com/free/docs/free-cloud-features#free-trial) starts
+and you are granted a $300 [Welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits).
+However, those credits can't be used to pay for AI Studio usage. You can use the
+Welcome credit to pay for other eligible services within Google Cloud (note that
+once those credits are consumed or expire (within 90 days), any additional usage
+costs are automatically billed to your established form of payment).
+
+### Can I use my Google Cloud Welcome credit with the Gemini API?
+
+No, the Google Cloud [Welcome credit](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#welcome-credits)
 or free trial credit can't be used towards the Gemini API or AI Studio.
 
 If you were granted a Google Cloud welcome credit before they became
 ineligible, you are allowed to spend your remaining credits on the Gemini API
-and AI Studio up until the credits expire after 90 days.
+and AI Studio up until the credits expire (after 90 days).
+
+### Does the Google Cloud Free Trial apply to Gemini API usage?
+
+No, starting March 2026, Gemini API usage costs are specifically excluded from
+the [$300 Google Cloud Free Trial](https://docs.cloud.google.com/free/docs/free-cloud-features#free-trial)
+program.
 
 ### How is billing handled?
 
@@ -383,6 +416,36 @@ has billing enabled, which you can validate on the
 [Gemini API key page](https://aistudio.google.com/api-keys) if you see any
 projects marked as "Paid" under "Plan".
 
+### What is prepaid billing and who is required to use the prepaid billing model?
+
+Prepaid billing allows users of Gemini API in AI Studio to pre-purchase credits.
+Starting Mar 23, 2026, new users to AI Studio might be required to be on the
+Prepaid billing plan. During the AI Studio [Set up Billing](https://ai.google.dev/gemini-api/docs/billing#setup-billing)
+process, the UI will guide you through the billing set up flow and will indicate
+if you are required to prepay.
+
+### How do I purchase prepay credits, and is there a minimum amount or maximum?
+
+You can [purchase credits](https://ai.google.dev/gemini-api/docs/billing#buy-credits) on the AI Studio Billing page. During
+the purchase process, the UI will provide the minimum pre-purchase amount that
+is required for your region and tier level, as well as a maximum amount that can
+be in your account at one time.
+
+### Can I configure my Prepay account to automatically purchase more credits as needed?
+
+Yes, we recommend that you configure [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload) in the AI
+Studio Billing settings. You specify a "trigger" credit balance (e.g., "when my
+balance falls below $30") and a "reload value" (e.g., "add $100").
+
+### Can I get a refund for my unused credits?
+
+All prepaid API credits expire after 1 year and cannot be refunded. Read the
+[refund policy for Prepay accounts](https://ai.google.dev/gemini-api/docs/billing#refunds).
+
+### Do my prepaid credits expire?
+
+Yes, credits expire 12 months after their purchase date.
+
 ### What happens when my prepaid credit balance hits $0?
 
 All Gemini API services in all projects paid for by that Cloud Billing Prepay
@@ -396,9 +459,12 @@ able to use the Gemini API. Note that there might be a [delay](https://ai.google
 Optionally, to downgrade to the Free Tier, you can [disable billing](https://docs.cloud.google.com/billing/docs/how-to/modify-project#disable_billing_for_a_project)
 on the projects you want to downgrade.
 
-### Do my prepaid credits expire?
+### Why did my usage stop even though my Prepay credit balance is greater than $0?
 
-Yes, credits expire 12 months after their purchase date.
+You may have hit the [usage limit](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) for your current tier.
+Usage limits will increase automatically as you progress to higher tiers. Your
+Gemini API AI Studio usage can also be impacted due to [the status of your
+Cloud Billing account](https://ai.google.dev/gemini-api/docs/billing#missed-payment).
 
 ### Why is my Prepay account credit balance negative?
 
@@ -416,7 +482,26 @@ credit balance falls below a value you specify.
 
 No, Prepay credits are strictly locked to Gemini API usage. Any
 other Google Cloud services you use (Compute, Storage, Vertex) are billed using
-the standard Cloud charging cycle.
+the standard [Cloud charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle).
+
+### Can I switch to a Postpay billing plan?
+
+When you establish a payment history and [reach a tier eligible](https://ai.google.dev/gemini-api/docs/billing#about-billing)
+for the Postpay billing plan, you can optionally choose to transition all your
+future Gemini API usage costs to a standard, consolidated Google Cloud
+[Postpay charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle#view-your-charging-cycle).
+
+### What happens to my prepaid credits if I switch to Postpay?
+
+When you upgrade to [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay), Cloud Billing closes your Prepay
+payments account, turns off [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload), and automatically
+refunds any unused Prepay credits to you (subject to standard refund processing
+time).
+
+### Where can I see my current Prepay credit balance and transaction history?
+
+All balance management and transaction history for the Gemini API must be
+done directly within the Google AI Studio Billing tab.
 
 ### Why am I seeing "The billing account type is inactive or unsupported"?
 
@@ -430,6 +515,41 @@ billing account's status. One ineligible type could be *Free trial account* , in
 which case you can [activate billing](https://ai.google.dev/gemini-api/docs/billing#setup-billing) in AI Studio to become
 eligible. One inactive state could be *Closed* , in which case you can [reopen
 the account](https://docs.cloud.google.com/billing/docs/how-to/close-or-reopen-billing-account).
+
+### Will my Gemini API usage costs show up in the Google Cloud console?
+
+Yes, Gemini API costs, alongside costs associated with any other Google Cloud
+services that are paid for by your Cloud Billing account, are viewable on the
+[Cost management pages](https://docs.cloud.google.com/billing/docs/how-to/split-charging-cycle#cost-reports)
+in the [Cloud Billing console](https://console.cloud.google.com/billing). Note
+that you can only manage your Prepay credit balance in AI Studio.
+
+### Why isn't my Gemini API Usage showing up in the Cloud Billing Console, when I can see it in AI Studio Billing, along with the consumption of my credits?
+
+Google Cloud and AI Studio report usage data to Cloud Billing at varying
+intervals. Due to the complexity of our billing and processing systems, you
+might see a delay between your use of services, and the usage and costs being
+available to view in Cloud Billing. Typically, your cost details are available
+within a day, but can sometimes take more than 24 hours.
+Learn more about delayed billing in the [Cloud Billing documentation](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle#delayed-billing).
+
+### If I use other Google Cloud services with costs that are subject to a Postpay charging cycle, what happens if I miss a payment?
+
+Missing a payment for other Google Cloud services can suspend your Gemini API
+access in AI Studio, **regardless of how many prepaid credits you have
+available**. AI Studio usage is powered by a Google Cloud Billing account, which
+can share both Prepay billing for AI Studio and Postpay billing for other Cloud
+services. An issue with your Postpay balance halts all services tied to that
+account. Your Gemini API usage will be suspended if your Cloud Billing account
+is flagged for issues such as:
+
+- A delinquent or overdue balance
+- A declined payment
+- An invalid or expired payment method
+
+To restore service, you must [resolve the Postpay account issue](https://docs.cloud.google.com/billing/docs/how-to/resolve-issues#resolving-declined-payments)
+in the Google Cloud Billing console. Once you resolve the issue, you will regain
+access to your Prepaid Gemini API credits and services.
 
 ### Where can I get help with billing?
 

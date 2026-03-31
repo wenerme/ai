@@ -26,7 +26,7 @@ title: Dashboard HTTP API
 
 ## Create Dashboard
 
-`POST /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards`
+`POST /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards`
 
 Creates a new dashboard.
 
@@ -45,7 +45,7 @@ See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 **Example Create Request**:
 
 ```http
-POST /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards HTTP/1.1
+POST /apis/dashboard.grafana.app/v1/namespaces/default/dashboards HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -242,7 +242,7 @@ Content-Length: 485
 
 {
   "kind": "Dashboard",
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v1",
   "metadata": {
     "name": "gdxccn",
     "namespace": "default",
@@ -474,7 +474,7 @@ Status Codes:
 
 ## Update Dashboard
 
-`PUT /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards/:uid`
+`PUT /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards/:uid`
 
 Updates an existing dashboard via the dashboard uid.
 
@@ -493,7 +493,7 @@ See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 **Example Update Request**:
 
 ```http
-POST /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards/gdxccn HTTP/1.1
+POST /apis/dashboard.grafana.app/v1/namespaces/default/dashboards/gdxccn HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -534,7 +534,7 @@ Content-Length: 485
 
 {
   "kind": "Dashboard",
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v1",
   "metadata": {
     "name": "gdxccn",
     "namespace": "default",
@@ -567,7 +567,7 @@ Status Codes:
 
 ## Get Dashboard
 
-`GET /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards/:uid`
+`GET /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards/:uid`
 
 Gets a dashboard via the dashboard uid.
 
@@ -586,7 +586,7 @@ See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 **Example Get Request**:
 
 ```http
-GET /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards/gdxccn HTTP/1.1
+GET /apis/dashboard.grafana.app/v1/namespaces/default/dashboards/gdxccn HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -601,7 +601,7 @@ Content-Length: 485
 
 {
   "kind": "Dashboard",
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v1",
   "metadata": {
     "name": "gdxccn",
     "namespace": "default",
@@ -632,7 +632,7 @@ Status Codes:
 
 ### Retrieve additional access information
 
-`GET /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards/:uid/dto`
+`GET /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards/:uid/dto`
 
 Retrieves a dashboard with additional access information.
 
@@ -640,7 +640,7 @@ The `GET` response includes an additional `access` section with data such as if 
 
 ## List Dashboards
 
-`GET /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards`
+`GET /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards`
 
 Lists all dashboards in the given organization. You can control the maximum number of dashboards returned through the `limit` query parameter. You can then use the `continue` token returned to fetch the next page of dashboards.
 
@@ -663,7 +663,7 @@ See note in the [introduction]({{< ref "#dashboard-api" >}}) for an explanation.
 **Example Get Request**:
 
 ```http
-GET /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards?limit=1 HTTP/1.1
+GET /apis/dashboard.grafana.app/v1/namespaces/default/dashboards?limit=1 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -717,7 +717,7 @@ The `metadata.continue` field contains a token to fetch the next page.
 **Example subsequent request using continue token**:
 
 ```http
-GET /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards?limit=1&continue=eyJvIjoxNTIsInYiOjE3NjE3MDQyMjQyMDcxODksInMiOmZhbHNlfQ== HTTP/1.1
+GET /apis/dashboard.grafana.app/v1/namespaces/default/dashboards?limit=1&continue=eyJvIjoxNTIsInYiOjE3NjE3MDQyMjQyMDcxODksInMiOmZhbHNlfQ== HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -771,7 +771,7 @@ Status Codes:
 
 ## Delete Dashboard
 
-`DELETE /apis/dashboard.grafana.app/v1beta1/namespaces/:namespace/dashboards/:uid`
+`DELETE /apis/dashboard.grafana.app/v1/namespaces/:namespace/dashboards/:uid`
 
 Deletes a dashboard via the dashboard uid.
 
@@ -790,7 +790,7 @@ See note in the [introduction](#new-dashboard-apis) for an explanation.
 **Example Delete Request**:
 
 ```http
-DELETE /apis/dashboard.grafana.app/v1beta1/namespaces/default/dashboards/gdxccn HTTP/1.1
+DELETE /apis/dashboard.grafana.app/v1/namespaces/default/dashboards/gdxccn HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
@@ -1056,7 +1056,7 @@ Content-Length: 97
 
 Will return the dashboard given the dashboard unique identifier (uid). Information about the unique identifier of a folder containing the requested dashboard might be found in the metadata.
 
-Optional query parameter **`apiVersion`** requests which API version Grafana tries first when loading the dashboard (for example `v1beta1`). If that request fails, Grafana retries using the default version. When omitted, only the default is used.
+Optional query parameter **`apiVersion`** requests which API version Grafana tries first when loading the dashboard (for example `v1`). If that request fails, Grafana retries using the default version. When omitted, only the default is used.
 
 **Required permissions**
 
@@ -1079,7 +1079,7 @@ Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
 Example with an explicit API version:
 
 ```http
-GET /api/dashboards/uid/cIBgcSjkk?apiVersion=v1beta1 HTTP/1.1
+GET /api/dashboards/uid/cIBgcSjkk?apiVersion=v1 HTTP/1.1
 Accept: application/json
 Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
 ```

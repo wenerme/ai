@@ -16,7 +16,9 @@ in order to enforce our policies.
 ## How We Handle Data
 
 Google retains the following data for fifty-five
-(55) days for the purposes of detecting violations of the Prohibited Use Policy:
+(55) days for the purposes of detecting and preventing violations of the
+Prohibited Use Policy to maintain the safety and security of the Services, and
+any required legal or regulatory disclosures:
 
 - **Prompts:** The text prompts you submit to the API.
 - **Contextual Information:** Any additional context you provide with your prompts.
@@ -30,8 +32,9 @@ content, and either confirm or correct the classification or determination based
 on predefined guidelines and policies. Data can be accessed for human review
 only by authorized Google employees via an internal governance assessment and
 review management platform. When data is logged for abuse monitoring, it is used
-solely for the purpose of policy enforcement and is not used to train or
-fine-tune any AI/ML models.
+solely for the purpose of policy enforcement and preventing policy violations.
+It is not used to train or fine-tune any AI/ML models besides those used
+specifically for policy enforcement.
 
 ## Working with You on Policy Compliance
 

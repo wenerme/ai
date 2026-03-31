@@ -12,7 +12,8 @@ shutdown dates are tracked on this page.
 Already-shutdown models are indicated with gray backgrounds.
 
 > [!NOTE]
-> **Note:** The shutdown dates listed in the table indicate the earliest possible dates on which a model might be retired. We will communicate the exact shutdown date to users with advance notice to ensure a smooth transition to a replacement model.
+> **Note:** The **shutdown dates listed in the table indicate the *earliest possible
+> dates* on which a model might be retired**. We will communicate the exact shutdown date to users with advance notice to ensure a smooth transition to a replacement model.
 
 ## Gemini 3 models
 
