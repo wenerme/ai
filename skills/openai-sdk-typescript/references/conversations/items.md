@@ -3570,6 +3570,14 @@ Create items in a conversation with the given ID.
 
         - `"message"`
 
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
     - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 
       A tool call to run a function. See the
@@ -6394,7 +6402,8 @@ console.log(conversationItemList.first_id);
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "first_id": "first_id",
@@ -6856,6 +6865,14 @@ List all items for a conversation with the given ID.
       The type of the message. Always set to `message`.
 
       - `"message"`
+
+    - `phase?: "commentary" | "final_answer" | null`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
 
   - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 
@@ -9656,7 +9673,8 @@ for await (const conversationItem of client.conversations.items.list('conv_123')
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "first_id": "first_id",
@@ -10070,6 +10088,14 @@ Get a single item from a conversation with the given IDs.
       The type of the message. Always set to `message`.
 
       - `"message"`
+
+    - `phase?: "commentary" | "final_answer" | null`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
 
   - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 
@@ -12869,7 +12895,8 @@ console.log(conversationItem);
   ],
   "role": "unknown",
   "status": "in_progress",
-  "type": "message"
+  "type": "message",
+  "phase": "commentary"
 }
 ```
 
@@ -13329,6 +13356,14 @@ console.log(conversation);
       The type of the message. Always set to `message`.
 
       - `"message"`
+
+    - `phase?: "commentary" | "final_answer" | null`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
 
   - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 
@@ -16438,6 +16473,14 @@ console.log(conversation);
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 

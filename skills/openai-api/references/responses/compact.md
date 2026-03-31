@@ -3460,7 +3460,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     The compacted list of output items.
 
-    - `Message = object { id, content, role, 2 more }`
+    - `Message = object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -3789,6 +3789,14 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase: optional "commentary" or "final_answer"`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `FunctionCall = object { arguments, call_id, name, 4 more }`
 
@@ -6657,7 +6665,8 @@ curl https://api.openai.com/v1/responses/compact \
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "usage": {

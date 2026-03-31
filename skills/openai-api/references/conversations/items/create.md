@@ -3256,7 +3256,7 @@ Create items in a conversation with the given ID.
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 2 more }`
+    - `Message = object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -3585,6 +3585,14 @@ Create items in a conversation with the given ID.
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase: optional "commentary" or "final_answer"`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
@@ -6442,7 +6450,8 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "first_id": "first_id",

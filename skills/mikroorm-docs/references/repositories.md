@@ -149,7 +149,7 @@ export class Author {
 const repo = em.getRepository(Author); // repo has type AuthorRepository
 ```
 
-> You can also register a custom base repository (for all entities where you do not specify `repository`) globally, via `MikroORM.init({ entityRepository: () => CustomBaseRepository })`.
+> You can also register a custom base repository (for all entities where you do not specify `repository`) globally, via `MikroORM.init({ entityRepository: CustomBaseRepository })`.
 
 ## Generic Custom Repository
 
@@ -186,9 +186,11 @@ Register it globally so all entities use it by default:
 
 ```ts
 MikroORM.init({
-  entityRepository: () => BaseRepository,
+  entityRepository: BaseRepository,
 });
 ```
+
+> **Note:** The global `entityRepository` config option only affects **runtime behavior** — it controls which class gets instantiated, but TypeScript cannot infer the repository type from it. To get proper type inference from `em.getRepository()`, you need to specify the `repository` option on the entity definition, or use the `EntityRepositoryType` symbol on a base entity (see [below](#using-entityrepositorytype-with-a-base-entity)).
 
 ### Entity-specific repositories extending the generic base
 
@@ -279,6 +281,7 @@ If you use a common base entity, you can set the `EntityRepositoryType` there so
 const BaseEntitySchema = defineEntity({
   name: 'BaseEntity',
   abstract: true,
+  repository: () => BaseRepository,
   properties: {
     id: p.integer().primary(),
   },
@@ -294,13 +297,14 @@ BaseEntitySchema.setClass(BaseEntity);
 export const BaseEntity = defineEntity({
   name: 'BaseEntity',
   abstract: true,
+  repository: () => BaseRepository,
   properties: {
     id: p.integer().primary(),
   },
 });
 ```
 
-With `defineEntity`, when you set `repository` globally via the ORM config, the repository type is resolved automatically for all entities — no `EntityRepositoryType` symbol needed.
+With `defineEntity`, the `repository` option provides both the runtime binding and the type inference — no `EntityRepositoryType` symbol needed. All entities extending this base will inherit the repository type.
 
 ```ts
 import { EntityRepositoryType, PrimaryKey } from '@mikro-orm/core';
@@ -380,7 +384,7 @@ And specify it in the ORM config:
 
 ```ts
 MikroORM.init({
-  entityRepository: () => ExtendedEntityRepository,
+  entityRepository: ExtendedEntityRepository,
 });
 ```
 

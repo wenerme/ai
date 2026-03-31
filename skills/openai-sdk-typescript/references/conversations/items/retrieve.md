@@ -371,6 +371,14 @@ Get a single item from a conversation with the given IDs.
 
       - `"message"`
 
+    - `phase?: "commentary" | "final_answer" | null`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
+
   - `ResponseFunctionToolCallItem extends ResponseFunctionToolCall`
 
     A tool call to run a function. See the
@@ -3169,7 +3177,8 @@ console.log(conversationItem);
   ],
   "role": "unknown",
   "status": "in_progress",
-  "type": "message"
+  "type": "message",
+  "phase": "commentary"
 }
 ```
 

@@ -3602,7 +3602,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Message
 
-- `Message = object { id, content, role, 2 more }`
+- `Message = object { id, content, role, 3 more }`
 
   A message to or from the model.
 
@@ -3931,6 +3931,14 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
     The type of the message. Always set to `message`.
 
     - `"message"`
+
+  - `phase: optional "commentary" or "final_answer"`
+
+    Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+    - `"commentary"`
+
+    - `"final_answer"`
 
 ### Summary Text Content
 
@@ -7220,7 +7228,7 @@ Create items in a conversation with the given ID.
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 2 more }`
+    - `Message = object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -7549,6 +7557,14 @@ Create items in a conversation with the given ID.
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase: optional "commentary" or "final_answer"`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
@@ -10406,7 +10422,8 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "first_id": "first_id",
@@ -10541,7 +10558,7 @@ List all items for a conversation with the given ID.
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 2 more }`
+    - `Message = object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -10870,6 +10887,14 @@ List all items for a conversation with the given ID.
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase: optional "commentary" or "final_answer"`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
@@ -13717,7 +13742,8 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
       ],
       "role": "unknown",
       "status": "in_progress",
-      "type": "message"
+      "type": "message",
+      "phase": "commentary"
     }
   ],
   "first_id": "first_id",
@@ -13795,7 +13821,7 @@ Get a single item from a conversation with the given IDs.
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
-  - `Message = object { id, content, role, 2 more }`
+  - `Message = object { id, content, role, 3 more }`
 
     A message to or from the model.
 
@@ -14124,6 +14150,14 @@ Get a single item from a conversation with the given IDs.
       The type of the message. Always set to `message`.
 
       - `"message"`
+
+    - `phase: optional "commentary" or "final_answer"`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
 
   - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
@@ -16951,7 +16985,8 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
   ],
   "role": "unknown",
   "status": "in_progress",
-  "type": "message"
+  "type": "message",
+  "phase": "commentary"
 }
 ```
 
@@ -17056,7 +17091,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
-  - `Message = object { id, content, role, 2 more }`
+  - `Message = object { id, content, role, 3 more }`
 
     A message to or from the model.
 
@@ -17385,6 +17420,14 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       The type of the message. Always set to `message`.
 
       - `"message"`
+
+    - `phase: optional "commentary" or "final_answer"`
+
+      Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+      - `"commentary"`
+
+      - `"final_answer"`
 
   - `FunctionCall = object { id, arguments, call_id, 5 more }`
 
@@ -20202,7 +20245,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 2 more }`
+    - `Message = object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -20531,6 +20574,14 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         The type of the message. Always set to `message`.
 
         - `"message"`
+
+      - `phase: optional "commentary" or "final_answer"`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
 
     - `FunctionCall = object { id, arguments, call_id, 5 more }`
 

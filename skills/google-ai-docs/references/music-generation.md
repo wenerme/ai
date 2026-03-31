@@ -539,6 +539,8 @@ visual content.
       config: config
     );
 
+![](https://storage.googleapis.com/generativeai-downloads/images/desert_sunset.jpg)  
+
 ## Provide custom lyrics
 
 You can write your own lyrics and include them in the prompt. Use section tags
@@ -1009,9 +1011,9 @@ state management and long-running tasks for complex multimodal use cases.
 
     interaction = client.interactions.create(
         model="lyria-3-pro-preview",
-        input="An epic cinematic orchestral piece about a journey home. " +
-              "Starts with a solo piano intro, builds through sweeping " +
-              "strings, and climaxes with a massive wall of sound.",
+        input="A melancholic jazz fusion track in D minor, " +
+              "featuring a smooth saxophone melody, walking bass line, " +
+              "and complex drum rhythms.",
         response_modalities=["AUDIO", "TEXT"]
     )
 
@@ -1031,9 +1033,9 @@ state management and long-running tasks for complex multimodal use cases.
 
     const interaction = await client.interactions.create({
       model: 'lyria-3-pro-preview',
-      input: 'An epic cinematic orchestral piece about a journey home. ' +
-             'Starts with a solo piano intro, builds through sweeping ' +
-             'strings, and climaxes with a massive wall of sound.',
+      input: 'A melancholic jazz fusion track in D minor, ' +
+             'featuring a smooth saxophone melody, walking bass line, ' +
+             'and complex drum rhythms.',
       responseModalities: ['AUDIO', 'TEXT'],
     });
 
@@ -1054,7 +1056,7 @@ state management and long-running tasks for complex multimodal use cases.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
         "model": "lyria-3-pro-preview",
-        "input": "An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound.",
+        "input": "A melancholic jazz fusion track in D minor, featuring a smooth saxophone melody, walking bass line, and complex drum rhythms.",
         "responseModalities": ["AUDIO", "TEXT"]
     }'
 

@@ -219,15 +219,82 @@ as a list of strings.
 
 You can use embeddings for a wide range of tasks from classification to document
 search. Specifying the right task type helps optimize the embeddings for the
-intended relationships, maximizing accuracy and efficiency. For a complete list
-of supported task types, see the [Supported task types](https://ai.google.dev/gemini-api/docs/embeddings#supported-task-types)
+intended relationships, maximizing accuracy and efficiency.
+
+### Task types with Embeddings 2
+
+For text-only tasks with `gemini-embedding-2-preview`, we strongly recommend you
+add the task instruction in your prompt. This can be done by formatting the
+query and the document with the correct task prefix.
+
+The following tables show examples of how to format queries and documents for
+symmetric and asymmetric use cases using the `gemini-embedding-2-preview` model.
+
+**Retrieval use cases (Asymmetric format)**
+
+In asymmetric use cases, add the task prefix to the query and apply
+the document structure for the content you want to embed and retrieve.
+
+| Use case | Query structure | Document structure |
+|---|---|---|
+| Search query | `task: search result | query: {content}` | `title: {title} | text: {content}` If there is no title, use `title: none`. |
+| Question answering | `task: question answering | query: {content}` | `title: {title} | text: {content}` |
+| Fact checking | `task: fact checking | query: {content}` | `title: {title} | text: {content}` |
+| Code retrieval | `task: code retrieval | query: {content}` | `title: {title} | text: {content}` |
+
+**Example usage**
+
+### Python
+
+    # Generate embedding for a task's query. Use your correct task here:
+    def prepare_query(query):
+        # return f"task: question answering | query: {query}"
+        # return f"task: fact checking | query: {query}"
+        # return f"task: code retrieval | query: {query}"
+        return f"task: search result | query: {query}"
+
+    # Generate embedding for document of an asymmetric retrieval task:
+    def prepare_document(content, title=None):
+        if title is None:
+            title = "none"
+        return f"title: {title} | text: {content}"
+
+**Single-input use cases (Symmetric format)**
+
+In symmetric use cases, for the same task, use the same formatting
+for the query and the document.
+
+| Use case | Input structure |
+|---|---|
+| Classification | `task: classification | query: {content}` |
+| Clustering | `task: clustering | query: {content}` |
+| Semantic similarity | `task: sentence similarity | query: {content}` Do not use this for search or retrieval. It is intended for semantic textual similarity. |
+
+**Example usage**
+
+### Python
+
+    # Generate embedding for query & document of your task.
+    def prepare_query_and_document(content):
+        # return f'task: clustering | query: {content}'
+        # return f'task: sentence similarity | query: {content}'
+        return f'task: classification | query: {content}'
+
+It is important that the task is used consistently. E.g., if documents are
+embedded with `f'task: classification | query: {content}'`, the query should
+also be embedded following this task format.
+
+### Task types with Embeddings 1
+
+For `gemini-embedding-001`, you can specify the `task_type` in the `embedContent`
+method. For a complete list of supported task types, see the [Supported task types](https://ai.google.dev/gemini-api/docs/embeddings#supported-task-types)
 table.
 
-The following example shows how you can use
-`SEMANTIC_SIMILARITY` to check how similar in meaning strings of texts are.
-
 > [!NOTE]
-> **Note:** Cosine similarity is a good distance metric because it focuses on direction rather than magnitude, which more accurately reflects conceptual closeness. Values range from -1 (opposite) to 1 (greatest similarity).
+> **Note:** You cannot use the `task_type` field for the `gemini-embedding-2-preview` model. Instead, include the task as an instruction in your prompt, as detailed in the [above section](https://ai.google.dev/gemini-api/docs/embeddings#task-types-embeddings-2).
+
+The following example shows how you can use `SEMANTIC_SIMILARITY` to check how
+similar in meaning strings of texts are.
 
 ### Python
 
@@ -384,7 +451,12 @@ The following example shows how you can use
 The code snippets will show how similar the different chunks of text are to one
 another when run.
 
-### Supported task types
+> [!NOTE]
+> **Note:** Cosine similarity is a good distance metric because it focuses on direction rather than magnitude, which more accurately reflects conceptual closeness. Values range from -1 (opposite) to 1 (greatest similarity).
+
+#### Supported task types
+
+Supported task types for `gemini-embedding-001`:
 
 | Task type | Description | Examples |
 |---|---|---|
