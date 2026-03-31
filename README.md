@@ -29,7 +29,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
 | `biome-docs` | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... | [biomejs/website](https://github.com/biomejs/website) |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
-| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... |  |
+| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
 | `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
@@ -40,7 +40,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
-| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... |  |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
 | `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
 | `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
@@ -49,7 +49,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
-| `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
+| `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | `immich-docs` | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
 | `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
