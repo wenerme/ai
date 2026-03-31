@@ -9,9 +9,8 @@ Peekaboo is a full macOS UI automation CLI: capture/inspect screens, target UI
 elements, drive input, and manage apps/windows/menus. Commands share a snapshot
 cache and support `--json`/`-j` for scripting. Run `peekaboo` or
 `peekaboo <cmd> --help` for flags; `peekaboo --version` prints build metadata.
-Install: `brew install steipete/tap/peekaboo`
 
-## Features (all CLI capabilities, excluding agent/MCP)
+## Features
 
 Core
 
@@ -19,6 +18,7 @@ Core
 - `capture`: live capture or video ingest + frame extraction
 - `clean`: prune snapshot cache and temp files
 - `config`: init/show/edit/validate, providers, models, credentials
+- `daemon`: manage headless Peekaboo daemon (start/stop/status)
 - `image`: capture screenshots (screen/window/menu bar regions)
 - `learn`: print the full agent guide + tool catalog
 - `list`: apps, windows, screens, menubar, permissions
@@ -55,6 +55,14 @@ System
 Vision
 
 - `see`: annotated UI maps, snapshot IDs, optional analysis
+
+AI
+
+- `agent`: execute complex automation via natural-language goals (supports session resume, dry-run, audio input, multi-model)
+
+MCP
+
+- `mcp`: run Peekaboo as an MCP server, exposing tools to AI clients (stdio/http transport)
 
 Global runtime flags
 
