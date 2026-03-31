@@ -6,6 +6,7 @@ const projectDir = join(import.meta.dirname, "..");
 const skillsDir = join(projectDir, "skills");
 const readmePath = join(projectDir, "README.md");
 const skillsJsonPath = join(skillsDir, "skills.json");
+const metadataJsonPath = join(skillsDir, "metadata.json");
 
 interface ExternalSkill {
   repo: string;
@@ -13,15 +14,45 @@ interface ExternalSkill {
   name: string;
 }
 
+interface SourceMeta {
+  repo?: string;
+  url?: string;
+  host?: string; // non-GitHub host, e.g. "gitlab.alpinelinux.org"
+}
+
 interface SkillMeta {
   name: string;
   description: string;
-  source?: string; // "repo" link or "local"
+  source?: string; // markdown link or empty
 }
 
-// Load external skills map: name -> repo
+// Load external skills map (rsync-based): name -> repo
 const externalSkills: ExternalSkill[] = JSON.parse(readFileSync(skillsJsonPath, "utf-8"));
 const externalMap = new Map(externalSkills.map((s) => [s.name, s.repo]));
+
+// Load metadata (manual source mapping): name -> SourceMeta
+const metadata: { sources: Record<string, SourceMeta> } = JSON.parse(readFileSync(metadataJsonPath, "utf-8"));
+
+function resolveSource(name: string): string {
+  // 1. skills.json (rsync-based external)
+  const extRepo = externalMap.get(name);
+  if (extRepo) return `[${extRepo}](https://github.com/${extRepo})`;
+
+  // 2. metadata.json (manual)
+  const meta = metadata.sources[name];
+  if (!meta) return "";
+
+  if (meta.repo) {
+    const host = meta.host ?? "github.com";
+    return `[${meta.repo}](https://${host}/${meta.repo})`;
+  }
+  if (meta.url) {
+    // Show domain as label
+    const label = meta.url.replace(/^https?:\/\//, "").replace(/\/.*$/, "");
+    return `[${label}](${meta.url})`;
+  }
+  return "";
+}
 
 function truncate(s: string, max: number): string {
   if (s.length <= max) return s;
@@ -42,11 +73,10 @@ function parseSkillMeta(skillDir: string): SkillMeta | undefined {
   if (!match) return undefined;
 
   const meta = parseYaml(match[1]);
-  const repo = externalMap.get(skillDir);
   return {
     name: meta.name,
     description: String(meta.description || "").trim(),
-    source: repo ? `[${repo}](https://github.com/${repo})` : "",
+    source: resolveSource(skillDir),
   };
 }
 

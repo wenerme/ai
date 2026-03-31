@@ -16,82 +16,82 @@ npx skills add wenerme/ai --skill <skill-name>
 |-------|-------------|--------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
-| `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... |  |
-| `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... |  |
-| `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... |  |
-| `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... |  |
-| `anthropic-sdk-csharp` | Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
-| `anthropic-sdk-go` | Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
-| `anthropic-sdk-java` | Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
-| `anthropic-sdk-python` | Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
-| `anthropic-sdk-ruby` | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
-| `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... |  |
+| `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
+| `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
+| `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
+| `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... | [docs.anthropic.com](https://docs.anthropic.com) |
+| `anthropic-sdk-csharp` | Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-csharp](https://github.com/anthropics/anthropic-sdk-csharp) |
+| `anthropic-sdk-go` | Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-go](https://github.com/anthropics/anthropic-sdk-go) |
+| `anthropic-sdk-java` | Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-java](https://github.com/anthropics/anthropic-sdk-java) |
+| `anthropic-sdk-python` | Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
+| `anthropic-sdk-ruby` | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-ruby](https://github.com/anthropics/anthropic-sdk-ruby) |
+| `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) |
 | `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
-| `biome-docs` | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... |  |
+| `biome-docs` | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... | [biomejs/website](https://github.com/biomejs/website) |
 | `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... |  |
-| `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... |  |
+| `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
-| `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... |  |
-| `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... |  |
-| `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... |  |
-| `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... |  |
-| `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... |  |
-| `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... |  |
-| `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... |  |
+| `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
+| `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
+| `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... | [openai/codex](https://github.com/openai/codex) |
+| `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
+| `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
+| `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
+| `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... |  |
-| `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... |  |
-| `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... |  |
-| `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... |  |
-| `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... |  |
-| `glab-docs` | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... |  |
-| `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... |  |
-| `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... |  |
-| `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... |  |
+| `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
+| `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
+| `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
+| `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
+| `glab-docs` | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
+| `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
+| `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
+| `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... |  |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
-| `immich-docs` | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... |  |
-| `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... |  |
-| `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... |  |
-| `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... |  |
-| `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... |  |
-| `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... |  |
-| `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... |  |
-| `luanti-docs` | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... |  |
+| `immich-docs` | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
+| `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
+| `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... | [k3s-io/docs](https://github.com/k3s-io/docs) |
+| `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... | [larksuite/node-sdk](https://github.com/larksuite/node-sdk) |
+| `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... | [BerriAI/litellm](https://github.com/BerriAI/litellm) |
+| `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) |
+| `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... | [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) |
+| `luanti-docs` | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... | [luanti-org/luanti](https://github.com/luanti-org/luanti) |
 | `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
-| `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... |  |
-| `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... |  |
+| `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) |
+| `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... | [MetaCubeX/Meta-Docs](https://github.com/MetaCubeX/Meta-Docs) |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
-| `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... |  |
-| `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... |  |
-| `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... |  |
-| `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... |  |
-| `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
-| `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... |  |
-| `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... |  |
-| `openobserve-docs` | OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture,... |  |
-| `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... |  |
-| `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... |  |
+| `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... | [mikro-orm/mikro-orm](https://github.com/mikro-orm/mikro-orm) |
+| `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... | [docs.anthropic.com](https://docs.anthropic.com) |
+| `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... | [platform.openai.com](https://platform.openai.com/docs) |
+| `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... | [platform.openai.com](https://platform.openai.com/docs) |
+| `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-python](https://github.com/openai/openai-python) |
+| `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-node](https://github.com/openai/openai-node) |
+| `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... | [anomalyco/opencode](https://github.com/anomalyco/opencode) |
+| `openobserve-docs` | OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture,... | [openobserve/openobserve-docs](https://github.com/openobserve/openobserve-docs) |
+| `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... | [openrouter.ai](https://openrouter.ai/docs) |
+| `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... | [unnoq/orpc](https://github.com/unnoq/orpc) |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
-| `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... |  |
-| `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... |  |
+| `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
+| `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
-| `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... |  |
-| `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... |  |
-| `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... |  |
-| `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... |  |
-| `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... |  |
+| `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
+| `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
+| `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
+| `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
+| `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... | [mrdoob/three.js](https://github.com/mrdoob/three.js) |
 | `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
-| `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... |  |
+| `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... | [huggingface/transformers](https://github.com/huggingface/transformers) |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
-| `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... |  |
-| `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... |  |
-| `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... |  |
-| `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... |  |
+| `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... | [vitejs/vite](https://github.com/vitejs/vite) |
+| `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
+| `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
+| `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... | [wailsapp/wails](https://github.com/wailsapp/wails) |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -654,7 +654,7 @@ Use when writing TypeScript code with the OpenAI SDK (openai package): creating 
 npx skills add wenerme/ai --skill opencode-docs
 ```
 
-Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude, OpenAI, Google, local models), custom agents, custom commands, LSP integration, key bindings, themes, or OpenCode development setup.
+Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude, OpenAI, Google, local models), custom agents, custom tools, MCP servers, LSP integration, key bindings, themes, modes, plugins, permissions, TUI, SDK, or OpenCode development setup.
 
 </details>
 <details>
